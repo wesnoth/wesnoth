@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -25,6 +26,9 @@
 #include "serialization/unicode_cast.hpp"
 #include "utils/name_generator.hpp"
 #include "utils/name_generator_factory.hpp"
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 /** Dummy race used when a race is not yet known. */
 const unit_race unit_race::null_race;
@@ -76,11 +80,9 @@ unit_race::unit_race(const config& cfg) :
 		help_taxonomy_(cfg["help_taxonomy"])
 
 {
-	if (id_.empty()) {
-		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing an id field.";
-	}
 	if (plural_name_.empty()) {
-		lg::wml_error() << "[race] '" << cfg["name"] << "' is missing a plural_name field.";
+		lg::log_to_chat() << "[race] id='" << id_ << "' is missing a plural_name field.\n";
+		ERR_WML << "[race] id='" << id_ << "' is missing a plural_name field.";
 		plural_name_ = (cfg["name"]);
 	}
 
@@ -93,6 +95,13 @@ unit_race::unit_race(const config& cfg) :
 	if(name_[FEMALE].empty()) {
 		name_[FEMALE] = (cfg["name"]);
 	}
+	if(std::any_of(name_.begin(), name_.end(), [](const auto& n) { return n.empty(); })) {
+		lg::log_to_chat()
+			<< "[race] id='" << id_
+			<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').\n";
+		ERR_WML << "[race] id'" << id_
+				<< "' is missing a singular name field (either 'name' or both 'male_name' and 'female_name').";
+	}
 
 	name_generator_factory generator_factory = name_generator_factory(cfg, {"male", "female"});
 
@@ -104,7 +113,7 @@ unit_race::unit_race(const config& cfg) :
 
 std::string unit_race::generate_name(unit_race::GENDER gender) const
 {
-    return name_generator_[gender]->generate();
+	return name_generator_[gender]->generate();
 }
 
 const name_generator& unit_race::generator(unit_race::GENDER gender) const
@@ -124,7 +133,7 @@ const config::const_child_itors &unit_race::additional_traits() const
 
 const config::const_child_itors &unit_race::additional_topics() const
 {
-  return topics_;
+	return topics_;
 }
 
 unsigned int unit_race::num_traits() const { return ntraits_; }

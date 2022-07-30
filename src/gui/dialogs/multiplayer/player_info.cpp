@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "gui/dialogs/multiplayer/player_info.hpp"
@@ -28,15 +29,13 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(lobby_player_info)
 
 lobby_player_info::lobby_player_info(events::chat_handler& chat,
-									   mp::user_info& info,
+									   const mp::user_info& info,
 									   const mp::lobby_info& li)
 	: chat_(chat)
 	, info_(info)
@@ -60,7 +59,7 @@ void lobby_player_info::pre_show(window& window)
 	relation_ = find_widget<label>(&window, "relation_info", false, true);
 
 	button& whisper = find_widget<button>(&window, "start_whisper", false);
-	if(info_.relation != mp::user_info::user_relation::ME) {
+	if(info_.get_relation() != mp::user_info::user_relation::ME) {
 		connect_signal_mouse_left_click(whisper,
 			std::bind(&lobby_player_info::start_whisper_button_callback, this));
 	} else {
@@ -138,7 +137,7 @@ void lobby_player_info::update_relation()
 	add_to_friends_->set_active(false);
 	add_to_ignores_->set_active(false);
 	remove_from_list_->set_active(false);
-	switch(info_.relation) {
+	switch(info_.get_relation()) {
 		case mp::user_info::user_relation::FRIEND:
 			relation_->set_label(_("On friends list"));
 			add_to_ignores_->set_active(true);
@@ -165,21 +164,18 @@ void lobby_player_info::update_relation()
 void lobby_player_info::add_to_friends_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "friend", "");
-	info_.relation = mp::user_info::user_relation::FRIEND;
 	update_relation();
 }
 
 void lobby_player_info::add_to_ignores_button_callback()
 {
 	preferences::add_acquaintance(info_.name, "ignore", "");
-	info_.relation = mp::user_info::user_relation::IGNORED;
 	update_relation();
 }
 
 void lobby_player_info::remove_from_list_button_callback()
 {
 	preferences::remove_acquaintance(info_.name);
-	info_.relation = mp::user_info::user_relation::NEUTRAL;
 	update_relation();
 }
 
@@ -239,4 +235,3 @@ void lobby_player_info::do_kick_ban(bool ban)
 }
 
 } // namespace dialogs
-} // namespace gui2

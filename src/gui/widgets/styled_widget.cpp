@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -28,6 +29,7 @@
 #include "gui/widgets/window.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "sdl/rect.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 #include <functional>
 
@@ -86,11 +88,11 @@ styled_widget::styled_widget(const implementation::builder_styled_widget& builde
 			&styled_widget::signal_handler_notify_remove_tooltip, this, std::placeholders::_2, std::placeholders::_3));
 }
 
-void styled_widget::set_members(const string_map& data)
+void styled_widget::set_members(const widget_item& data)
 {
 	/** @todo document this feature on the wiki. */
 	/** @todo do we need to add the debug colors here as well? */
-	string_map::const_iterator itor = data.find("id");
+	widget_item::const_iterator itor = data.find("id");
 	if(itor != data.end()) {
 		set_id(itor->second);
 	}
@@ -131,9 +133,9 @@ bool styled_widget::disable_click_dismiss() const
 	return get_visible() == widget::visibility::visible && get_active();
 }
 
-iteration::walker_base* styled_widget::create_walker()
+iteration::walker_ptr styled_widget::create_walker()
 {
-	return new iteration::walker::widget(*this);
+	return std::make_unique<iteration::walker::widget>(*this);
 }
 
 point styled_widget::get_config_minimum_size() const
@@ -142,7 +144,7 @@ point styled_widget::get_config_minimum_size() const
 
 	point result(config_->min_width, config_->min_height);
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -152,7 +154,7 @@ point styled_widget::get_config_default_size() const
 
 	point result(config_->default_width, config_->default_height);
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -162,7 +164,7 @@ point styled_widget::get_config_maximum_size() const
 
 	point result(config_->max_width, config_->max_height);
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -207,7 +209,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
 				  << "' maximum_width " << maximum_width << " result " << size
-				  << ".\n";
+				  << ".";
 
 	} else if(label_.empty() || text_can_shrink()) {
 		point size = get_best_size();
@@ -217,10 +219,10 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
 		          << " maximum_width " << maximum_width << " result " << size
-		          << ".\n";
+		          << ".";
 	} else {
 		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-				  << "' failed; either no label or wrapping not allowed.\n";
+				  << "' failed; either no label or wrapping not allowed.";
 	}
 }
 
@@ -236,7 +238,7 @@ void styled_widget::request_reduce_height(const unsigned maximum_height)
 
 		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
 		          << " maximum_height " << maximum_height << " result " << size
-		          << ".\n";
+		          << ".";
 	}
 }
 
@@ -244,7 +246,7 @@ point styled_widget::calculate_best_size() const
 {
 	assert(config_);
 	if(label_.empty()) {
-		DBG_GUI_L << LOG_HEADER << " empty label return default.\n";
+		DBG_GUI_L << LOG_HEADER << " empty label return default.";
 		return get_config_default_size();
 	}
 
@@ -257,7 +259,7 @@ point styled_widget::calculate_best_size() const
 	 */
 	point result = get_best_text_size(minimum, maximum);
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-			  << "' result " << result << ".\n";
+			  << "' result " << result << ".";
 	return result;
 }
 
@@ -266,8 +268,7 @@ void styled_widget::place(const point& origin, const point& size)
 	// resize canvasses
 	for(auto & canvas : canvases_)
 	{
-		canvas.set_width(size.x);
-		canvas.set_height(size.y);
+		canvas.set_size(size);
 	}
 
 	// Note we assume that the best size has been queried but otherwise it
@@ -328,7 +329,7 @@ void styled_widget::set_label(const t_string& label)
 	label_ = label;
 	set_layout_size(point());
 	update_canvas();
-	set_is_dirty(true);
+	queue_redraw();
 
 	// FIXME: This isn't the most elegant solution. Typically, we don't rely on the text rendering
 	// cache for anything except size calculations, but since we have link awareness now we need to
@@ -348,7 +349,7 @@ void styled_widget::set_use_markup(bool use_markup)
 
 	use_markup_ = use_markup;
 	update_canvas();
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
@@ -359,7 +360,7 @@ void styled_widget::set_text_alignment(const PangoAlignment text_alignment)
 
 	text_alignment_ = text_alignment;
 	update_canvas();
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
@@ -370,7 +371,7 @@ void styled_widget::set_text_ellipse_mode(const PangoEllipsizeMode ellipse_mode)
 
 	text_ellipse_mode_ = ellipse_mode;
 	update_canvas();
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void styled_widget::update_canvas()
@@ -430,22 +431,15 @@ int styled_widget::get_text_maximum_height() const
 	return get_height() - config_->text_extra_height;
 }
 
-void styled_widget::impl_draw_background(surface& frame_buffer,
-									int x_offset,
-									int y_offset)
+void styled_widget::impl_draw_background()
 {
 	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
-			  << get_rectangle() << ".\n";
+			  << get_rectangle() << ".";
 
-	get_canvas(get_state()).blit(frame_buffer,
-							 calculate_blitting_rectangle(x_offset, y_offset));
+	get_canvas(get_state()).draw();
 }
 
-void styled_widget::impl_draw_foreground(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+void styled_widget::impl_draw_foreground()
 {
 	/* DO NOTHING */
 }
@@ -481,7 +475,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	if(get_characters_per_line() != 0 && !can_wrap()) {
 		WRN_GUI_L << LOG_HEADER
 			<< " Limited the number of characters per line, "
-			<< "but wrapping is not set, output may not be as expected.\n";
+			<< "but wrapping is not set, output may not be as expected.";
 	}
 
 	DBG_GUI_L << LOG_HEADER << "\n"
@@ -494,16 +488,18 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		<< "can_wrap: " << can_wrap() << "\n"
 		<< "characters_per_line: " << get_characters_per_line() << "\n"
 		<< "truncated: " << renderer_.is_truncated() << "\n"
-		<< "renderer size: " << renderer_.get_size() << "\n\n"
+		<< "renderer size: " << renderer_.get_size() << "\n"
 		<< std::noboolalpha;
 
-	const point border(config_->text_extra_width, config_->text_extra_height);
+	const point border(config_->text_extra_width,
+	                   config_->text_extra_height);
 
 	// If doesn't fit try the maximum.
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
-		maximum_size = point(config_->max_width, config_->max_height);
+		maximum_size = point(config_->max_width,
+		                     config_->max_height);
 
 		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x : -1);
 	}
@@ -520,7 +516,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 	}
 
 	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
-			  << "' result " << size << ".\n";
+			  << "' result " << size << ".";
 	return size;
 }
 
@@ -528,7 +524,7 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(!tooltip_.empty()) {
 		std::string tip = tooltip_;
@@ -536,7 +532,7 @@ void styled_widget::signal_handler_show_tooltip(const event::ui_event event,
 			utils::string_map symbols;
 			symbols["hotkey"] = hotkey::get_names(
 					hotkey::hotkey_command::get_command_by_command(
-							hotkey::GLOBAL__HELPTIP).command);
+							hotkey::GLOBAL__HELPTIP).id);
 
 			tip = tooltip_ + utils::interpolate_variables_into_string(
 									 settings::has_helptip_message, &symbols);
@@ -551,7 +547,7 @@ void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 										   bool& handled,
 										   const point& location)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(!help_message_.empty()) {
 		event::message_show_helptip message(help_message_, location, get_rectangle());
@@ -562,7 +558,7 @@ void styled_widget::signal_handler_show_helptip(const event::ui_event event,
 void styled_widget::signal_handler_notify_remove_tooltip(const event::ui_event event,
 													bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	/*
 	 * This makes the class know the tip code rather intimately. An
@@ -610,10 +606,10 @@ builder_styled_widget::builder_styled_widget(const config& cfg)
 
 
 	DBG_GUI_P << "Window builder: found styled_widget with id '" << id
-			  << "' and definition '" << definition << "'.\n";
+			  << "' and definition '" << definition << "'.";
 }
 
-widget* builder_styled_widget::build(const replacements_map& /*replacements*/) const
+std::unique_ptr<widget> builder_styled_widget::build(const replacements_map& /*replacements*/) const
 {
 	return build();
 }

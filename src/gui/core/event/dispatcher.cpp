@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -26,7 +27,7 @@ namespace event
 /***** dispatcher class. *****/
 
 dispatcher::dispatcher()
-	: mouse_behavior_(all)
+	: mouse_behavior_(mouse_behavior::all)
 	, want_keyboard_input_(true)
 	, signal_queue_()
 	, signal_mouse_queue_()
@@ -58,7 +59,7 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 {
 #if 0
 	const bool res = dispatcher_implementation::has_handler(*this, event_type, event);
-	std::cerr << "Event '" << event << " '" << (res ? "found" : "not found") << "in queue\n";
+	PLAIN_LOG << "Event '" << event << " '" << (res ? "found" : "not found") << "in queue";
 	return res;
 #else
 	return dispatcher_implementation::has_handler(*this, event_type, event);
@@ -67,29 +68,29 @@ bool dispatcher::has_event(const ui_event event, const event_queue_type event_ty
 
 bool dispatcher::fire(const ui_event event, widget& target)
 {
-	assert(is_general_event(event));
+	assert(is_in_category(event, event_category::general));
 	switch(event) {
-		case LEFT_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_left_double_click, signal_function>(this, &target);
+	case LEFT_BUTTON_DOUBLE_CLICK:
+		return fire_event_double_click<LEFT_BUTTON_CLICK, LEFT_BUTTON_DOUBLE_CLICK,
+			&event_executor::wants_mouse_left_double_click>(this, &target);
 
-		case MIDDLE_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<MIDDLE_BUTTON_CLICK, MIDDLE_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_middle_double_click, signal_function>(this, &target);
+	case MIDDLE_BUTTON_DOUBLE_CLICK:
+		return fire_event_double_click<MIDDLE_BUTTON_CLICK, MIDDLE_BUTTON_DOUBLE_CLICK,
+			&event_executor::wants_mouse_middle_double_click>(this, &target);
 
-		case RIGHT_BUTTON_DOUBLE_CLICK:
-			return fire_event_double_click<RIGHT_BUTTON_CLICK, RIGHT_BUTTON_DOUBLE_CLICK,
-					&event_executor::wants_mouse_right_double_click, signal_function>(this, &target);
+	case RIGHT_BUTTON_DOUBLE_CLICK:
+		return fire_event_double_click<RIGHT_BUTTON_CLICK, RIGHT_BUTTON_DOUBLE_CLICK,
+			&event_executor::wants_mouse_right_double_click>(this, &target);
 
-		default:
-			return fire_event<signal_function>(event, this, &target);
+	default:
+		return fire_event<event_category::general>(event, this, &target);
 	}
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& coordinate)
 {
-	assert(is_mouse_event(event));
-	return fire_event<signal_mouse_function>(event, this, &target, coordinate);
+	assert(is_in_category(event, event_category::mouse));
+	return fire_event<event_category::mouse>(event, this, &target, coordinate);
 }
 
 bool dispatcher::fire(const ui_event event,
@@ -98,44 +99,44 @@ bool dispatcher::fire(const ui_event event,
 		const SDL_Keymod modifier,
 		const std::string& unicode)
 {
-	assert(is_keyboard_event(event));
-	return fire_event<signal_keyboard_function>(event, this, &target, key, modifier, unicode);
+	assert(is_in_category(event, event_category::keyboard));
+	return fire_event<event_category::keyboard>(event, this, &target, key, modifier, unicode);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
 {
-	assert(is_touch_motion_event(event));
-	return fire_event<signal_touch_motion_function>(event, this, &target, pos, distance);
+	assert(is_in_category(event, event_category::touch_motion));
+	return fire_event<event_category::touch_motion>(event, this, &target, pos, distance);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, uint8_t numFingers)
 {
-	assert(is_touch_gesture_event(event));
-	return fire_event<signal_touch_gesture_function>(event, this, &target, center, dTheta, dDist, numFingers);
+	assert(is_in_category(event, event_category::touch_gesture));
+	return fire_event<event_category::touch_gesture>(event, this, &target, center, dTheta, dDist, numFingers);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const SDL_Event& sdlevent)
 {
-	assert(is_raw_event_event(event));
-	return fire_event<signal_raw_event_function>(event, this, &target, sdlevent);
+	assert(is_in_category(event, event_category::raw_event));
+	return fire_event<event_category::raw_event>(event, this, &target, sdlevent);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const std::string& text, int32_t start, int32_t len)
 {
-	assert(is_text_input_event(event));
-	return fire_event<signal_text_input_function>(event, this, &target, text, start, len);
+	assert(is_in_category(event, event_category::text_input));
+	return fire_event<event_category::text_input>(event, this, &target, text, start, len);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, void*)
 {
-	assert(is_notification_event(event));
-	return fire_event<signal_notification_function>(event, this, &target, nullptr);
+	assert(is_in_category(event, event_category::notification));
+	return fire_event<event_category::notification>(event, this, &target, nullptr);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 {
-	assert(is_message_event(event));
-	return fire_event<signal_message_function>(event, this, &target, msg);
+	assert(is_in_category(event, event_category::message));
+	return fire_event<event_category::message>(event, this, &target, msg);
 }
 
 void dispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id, const hotkey_function& function)
@@ -163,32 +164,43 @@ bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 	return true;
 }
 
-void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard_function& signal)
+void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard& signal)
 {
 	dispatcher.connect_signal<SDL_KEY_DOWN>(signal, dispatcher::front_child);
 }
 
-void connect_signal_mouse_left_click(dispatcher& dispatcher, const signal_function& signal)
+void connect_signal_mouse_left_click(dispatcher& dispatcher, const signal& signal)
 {
 	dispatcher.connect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
-void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal_function& signal)
+void disconnect_signal_mouse_left_click(dispatcher& dispatcher, const signal& signal)
 {
 	dispatcher.disconnect_signal<LEFT_BUTTON_CLICK>(signal);
 }
 
-void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal_function& signal)
+void connect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal)
+{
+	dispatcher.connect_signal<LEFT_BUTTON_UP>(signal);
+}
+
+void disconnect_signal_mouse_left_release(dispatcher& dispatcher, const signal& signal)
+{
+	dispatcher.disconnect_signal<LEFT_BUTTON_UP>(signal);
+}
+
+
+void connect_signal_mouse_left_double_click(dispatcher& dispatcher, const signal& signal)
 {
 	dispatcher.connect_signal<LEFT_BUTTON_DOUBLE_CLICK>(signal, dispatcher::back_post_child);
 }
 
-void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification_function& signal)
+void connect_signal_notify_modified(dispatcher& dispatcher, const signal_notification& signal)
 {
 	dispatcher.connect_signal<NOTIFY_MODIFIED>(signal);
 }
 
-void connect_signal_on_draw(dispatcher& dispatcher, const signal_function& signal)
+void connect_signal_on_draw(dispatcher& dispatcher, const signal& signal)
 {
 	// TODO: evaluate whether draw events need go in this queue position.
 	dispatcher.connect_signal<DRAW>(signal, dispatcher::front_child);

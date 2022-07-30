@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -21,7 +22,7 @@
 #include "help_text_area.hpp"           // for help_text_area
 #include "widgets/button.hpp"           // for button
 #include "widgets/widget.hpp"           // for widget
-class CVideo;  // lines 18-18
+
 struct SDL_Rect;
 
 namespace help {
@@ -30,7 +31,7 @@ namespace help {
 class help_browser : public gui::widget
 {
 public:
-	help_browser(CVideo& video, const section &toplevel);
+	help_browser(const section &toplevel);
 
 	void adjust_layout();
 

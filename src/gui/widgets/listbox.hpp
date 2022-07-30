@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -38,12 +39,15 @@ struct builder_grid_listbox;
 struct builder_styled_widget;
 }
 
+class generator_base;
+
 /** The listbox class. */
 class listbox : public scrollbar_container
 {
 	friend struct implementation::builder_listbox;
 	friend struct implementation::builder_horizontal_listbox;
 	friend struct implementation::builder_grid_listbox;
+
 	friend class debug_layout_graph;
 
 public:
@@ -53,19 +57,13 @@ public:
 	 * @param builder             The builder for the appropriate listbox variant.
 	 * @param placement           How are the items placed.
 	 * @param list_builder        Grid builder for the listbox definition grid.
-	 * @param has_minimum         Does the listbox need to have one item selected.
-	 * @param has_maximum         Can the listbox only have one item selected.
-	 * @param select              Select an item when selected. If false it changes
-	 *                            the visible state instead. Default true.
 	 */
 	listbox(const implementation::builder_styled_widget& builder,
 			const generator_base::placement placement,
-			builder_grid_ptr list_builder,
-			const bool has_minimum,
-			const bool has_maximum,
-			const bool select = true);
+			builder_grid_ptr list_builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
+
 	/**
 	 * When an item in the list is selected by the user we need to
 	 * update the state. We installed a callback handler which
@@ -76,7 +74,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const string_map& item, const int index = -1);
+	grid& add_row(const widget_item& item, const int index = -1);
 
 	/**
 	 * Adds single row to the grid.
@@ -95,7 +93,7 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	grid& add_row(const std::map<std::string /* widget id */, string_map>& data, const int index = -1);
+	grid& add_row(const widget_data& data, const int index = -1);
 
 	/**
 	 * Removes a row in the listbox.
@@ -255,12 +253,6 @@ public:
 	/** See @ref widget::place. */
 	virtual void place(const point& origin, const point& size) override;
 
-	/** See @ref widget::layout_children. */
-	virtual void layout_children() override;
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override;
-
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void order_by(const generator_base::order_func& func);
@@ -281,7 +273,7 @@ public:
 	/** Registers a special sorting function specifically for translatable values. */
 	void register_translatable_sorting_option(const int col, translatable_sorter_func_t f);
 
-	using order_pair = std::pair<int, preferences::SORT_ORDER>;
+	using order_pair = std::pair<int, sort_order::type>;
 
 	/**
 	 * Sorts the listbox by a pre-set sorting option. The corresponding header widget will also be toggled.
@@ -302,7 +294,7 @@ public:
 	void mark_as_unsorted();
 
 	/** Registers a callback to be called when the active sorting option changes. */
-	void set_callback_order_change(std::function<void(unsigned, preferences::SORT_ORDER)> callback)
+	void set_callback_order_change(std::function<void(unsigned, sort_order::type)> callback)
 	{
 		callback_order_change_ = callback;
 	}
@@ -348,19 +340,21 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
+	 * @param generator           Generator for the list
 	 * @param header              Builder for the header.
 	 * @param footer              Builder for the footer.
 	 * @param list_data           The initial data to fill the listbox with.
 	 */
-	void finalize(builder_grid_const_ptr header,
+	void finalize(std::unique_ptr<generator_base> generator,
+			builder_grid_const_ptr header,
 			builder_grid_const_ptr footer,
-			const std::vector<std::map<std::string, string_map>>& list_data);
+			const std::vector<widget_data>& list_data);
+
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the scrollbar_container super class and freed when it's grid is
-	 * freed.
+	 * of the scrollbar_container super class and freed when it's grid is freed.
 	 */
 	generator_base* generator_;
 
@@ -369,12 +363,10 @@ private:
 	/** Contains the builder for the new items. */
 	builder_grid_const_ptr list_builder_;
 
-	bool need_layout_;
-
 	typedef std::vector<std::pair<selectable_item*, generator_sort_array>> torder_list;
 	torder_list orders_;
 
-	std::function<void(unsigned, preferences::SORT_ORDER)> callback_order_change_;
+	std::function<void(unsigned, sort_order::type)> callback_order_change_;
 
 	/**
 	 * Resizes the content.
@@ -390,8 +382,8 @@ private:
 	 *                            * negative values reduce height.
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
-	 * @param width_modification_pos 
-	 * @param height_modification_pos 
+	 * @param width_modification_pos
+	 * @param height_modification_pos
 	 */
 	void resize_content(const int width_modification,
 			const int height_modification,
@@ -407,8 +399,8 @@ private:
 	 */
 	void resize_content(const widget& row);
 
-	/** Layouts the children if needed. */
-	void layout_children(const bool force);
+	/** Updates internal layout. */
+	void update_layout();
 
 	/** Inherited from scrollbar_container. */
 	virtual void set_content_size(const point& origin, const point& size) override;
@@ -444,15 +436,15 @@ namespace implementation
 {
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A listbox is a control that holds several items of the same type.
  * Normally the items in a listbox are ordered in rows, this version might allow more options for ordering the items in the future.
  * The definition of a listbox contains the definition of its scrollbar:
- * Key                      |Type                                |Default     |Description  
+ * Key                      |Type                                |Default     |Description
  * -------------------------|------------------------------------|------------|-------------
  * scrollbar                | @ref guivartype_section "section"  |mandatory   |A grid containing the widgets for the scrollbar. The scrollbar has some special widgets so it can make default behavior for certain widgets.
  * The resolution for a listbox also contains the following keys:
- * ID (return value)        |Type                |Mandatory   |Description  
+ * ID (return value)        |Type                |Mandatory   |Description
  * -------------------------|--------------------|------------|-------------
  * _begin                   | clickable          |no          |Moves the position to the beginning of the list.
  * _line_up                 | clickable          |no          |Move the position one item up. (NOTE: if too many items to move per item it might be more items.)
@@ -470,7 +462,7 @@ namespace implementation
  * * state_enabled - the listbox is enabled.
  * * state_disabled - the listbox is disabled.
  * List with the listbox specific variables:
- * Key                      |Type                                            |Default     |Description  
+ * Key                      |Type                                            |Default     |Description
  * -------------------------|------------------------------------------------|------------|-------------
  * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
  * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
@@ -491,7 +483,7 @@ struct builder_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -507,18 +499,18 @@ struct builder_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A horizontal listbox is a control that holds several items of the same type. Normally the items in a listbox are ordered in rows, this version orders them in columns instead. The definition of a horizontal listbox is the same as for a normal listbox.
- * 
+ *
  * List with the horizontal listbox specific variables:
- * Key                      |Type                                            |Default     |Description  
+ * Key                      |Type                                            |Default     |Description
  * -------------------------|------------------------------------------------|------------|-------------
  * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
  * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
@@ -526,7 +518,7 @@ struct builder_listbox : public builder_styled_widget
  * list_data                | @ref guivartype_section "section"              |[]         |A grid alike section which stores the initial data for the listbox. Every row must have the same number of columns as the 'list_definition'.
  * has_minimum              | @ref guivartype_bool "bool"                    |true       |If false, less than one row can be selected.
  * has_maximum              | @ref guivartype_bool "bool"                    |true       |If false, more than one row can be selected.
- * 
+ *
  * In order to force widgets to be the same size inside a horizontal listbox, the widgets need to be inside a linked_group.
  * Inside the list section there are only the following widgets allowed:
  * * grid (to nest)
@@ -539,7 +531,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -552,19 +544,19 @@ struct builder_horizontal_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A grid listbox is a styled_widget that holds several items of the same type.
  * Normally the items in a listbox are ordered in rows, this version orders them in a grid instead.
- * 
+ *
  * List with the grid listbox specific variables:
- * Key                      |Type                                            |Default     |Description  
+ * Key                      |Type                                            |Default     |Description
  * -------------------------|------------------------------------------------|------------|-------------
  * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
  * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
@@ -572,7 +564,7 @@ struct builder_horizontal_listbox : public builder_styled_widget
  * list_data                | @ref guivartype_section "section"              |[]         |A grid alike section which stores the initial data for the listbox. Every row must have the same number of columns as the 'list_definition'.
  * has_minimum              | @ref guivartype_bool "bool"                    |true        |If false, less than one row can be selected.
  * has_maximum              | @ref guivartype_bool "bool"                    |true        |If false, more than one row can be selected.
- * 
+ *
  * In order to force widgets to be the same size inside a horizontal listbox, the widgets need to be inside a linked_group.
  * Inside the list section there are only the following widgets allowed:
  * * grid (to nest)
@@ -585,7 +577,7 @@ struct builder_grid_listbox : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
@@ -598,7 +590,7 @@ struct builder_grid_listbox : public builder_styled_widget
 	 * Contains a vector with the data to set in every cell, it's used to
 	 * serialize the data in the config, so the config is no longer required.
 	 */
-	std::vector<std::map<std::string, string_map>> list_data;
+	std::vector<widget_data> list_data;
 
 	bool has_minimum_, has_maximum_;
 };

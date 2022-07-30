@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -142,9 +143,9 @@ team::team_info::team_info()
 	, objectives_changed(false)
 	, controller()
 	, is_local(true)
-	, defeat_condition(team::DEFEAT_CONDITION::NO_LEADER)
-	, proxy_controller(team::PROXY_CONTROLLER::PROXY_HUMAN)
-	, share_vision(team::SHARE_VISION::ALL)
+	, defeat_cond(defeat_condition::type::no_leader_left)
+	, proxy_controller(side_proxy_controller::type::human)
+	, share_vision(team_shared_vision::type::all)
 	, disallow_observers(false)
 	, allow_player(false)
 	, chose_random(false)
@@ -185,7 +186,7 @@ void team::team_info::read(const config& cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = cfg["defeat_condition"].to_enum<team::DEFEAT_CONDITION>(team::DEFEAT_CONDITION::NO_LEADER);
+	defeat_cond = defeat_condition::get_enum(cfg["defeat_condition"].str()).value_or(defeat_condition::type::no_leader_left);
 	lost = cfg["lost"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -242,38 +243,37 @@ void team::team_info::read(const config& cfg)
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 	}
 
-	controller = team::CONTROLLER::AI;
-	controller.parse(cfg["controller"].str());
+	controller = side_controller::get_enum(cfg["controller"].str()).value_or(side_controller::type::ai);
 
 	// TODO: Why do we read disallow observers differently when controller is empty?
-	if(controller == CONTROLLER::EMPTY) {
+	if(controller == side_controller::type::none) {
 		disallow_observers = cfg["disallow_observers"].to_bool(true);
 	}
 
 	// override persistence flag if it is explicitly defined in the config
 	// by default, persistence of a team is set depending on the controller
-	persistent = cfg["persistent"].to_bool(this->controller == CONTROLLER::HUMAN);
+	persistent = cfg["persistent"].to_bool(this->controller == side_controller::type::human);
 
 	//========================================================
 	// END OF MESSY CODE
 
 	// Share_view and share_maps can't both be enabled,
 	// so share_view overrides share_maps.
-	share_vision = cfg["share_vision"].to_enum<team::SHARE_VISION>(team::SHARE_VISION::ALL);
+	share_vision = team_shared_vision::get_enum(cfg["share_vision"].str()).value_or(team_shared_vision::type::all);
 	handle_legacy_share_vision(cfg);
 
-	LOG_NG << "team_info::team_info(...): team_name: " << team_name << ", share_vision: " << share_vision << ".\n";
+	LOG_NG << "team_info::team_info(...): team_name: " << team_name << ", share_vision: " << team_shared_vision::get_string(share_vision) << ".";
 }
 
 void team::team_info::handle_legacy_share_vision(const config& cfg)
 {
 	if(cfg.has_attribute("share_view") || cfg.has_attribute("share_maps")) {
 		if(cfg["share_view"].to_bool()) {
-			share_vision = team::SHARE_VISION::ALL;
+			share_vision = team_shared_vision::type::all;
 		} else if(cfg["share_maps"].to_bool(true)) {
-			share_vision = team::SHARE_VISION::SHROUD;
+			share_vision = team_shared_vision::type::shroud;
 		} else {
-			share_vision = team::SHARE_VISION::NONE;
+			share_vision = team_shared_vision::type::none;
 		}
 	}
 }
@@ -304,13 +304,13 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = defeat_condition;
+	cfg["defeat_condition"] = defeat_condition::get_string(defeat_cond);
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = controller;
+	cfg["controller"] = side_controller::get_string(controller);
 	cfg["recruit"] = utils::join(can_recruit);
-	cfg["share_vision"] = share_vision;
+	cfg["share_vision"] = team_shared_vision::get_string(share_vision);
 
 	cfg["color"] = color;
 	cfg["persistent"] = persistent;
@@ -362,7 +362,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 	auto_shroud_updates_ = cfg["auto_shroud"].to_bool(auto_shroud_updates_);
 
 	LOG_NG << "team::team(...): team_name: " << info_.team_name << ", shroud: " << uses_shroud()
-		   << ", fog: " << uses_fog() << ".\n";
+		   << ", fog: " << uses_fog() << ".";
 
 	// Load the WML-cleared fog.
 	const config& fog_override = cfg.child("fog_override");
@@ -389,8 +389,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		if(map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc
-				   << std::endl;
+			WRN_NG << "[side] " << current_player() << " [village] points to a non-village location " << loc;
 		}
 	}
 
@@ -532,16 +531,14 @@ bool team::calculate_is_enemy(std::size_t index) const
 
 	for(const std::string& t : our_teams) {
 		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()) {
-			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1
-					<< std::endl;
+			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1;
 			return false;
 		} else {
-			LOG_NGE << "team " << info_.side << " not found same team name [" << t << "] in team " << index + 1
-					<< std::endl;
+			LOG_NGE << "team " << info_.side << " not found same team name [" << t << "] in team " << index + 1;
 		}
 	}
 
-	LOG_NGE << "team " << info_.side << " has enemy in team " << index + 1 << std::endl;
+	LOG_NGE << "team " << info_.side << " has enemy in team " << index + 1;
 	return true;
 }
 
@@ -550,7 +547,7 @@ namespace
 class controller_server_choice : public synced_context::server_choice
 {
 public:
-	controller_server_choice(team::CONTROLLER new_controller, const team& team)
+	controller_server_choice(side_controller::type new_controller, const team& team)
 		: new_controller_(new_controller)
 		, team_(team)
 	{
@@ -559,14 +556,14 @@ public:
 	/** We are in a game with no mp server and need to do this choice locally */
 	virtual config local_choice() const
 	{
-		return config{"controller", new_controller_, "is_local", true};
+		return config{"controller", side_controller::get_string(new_controller_), "is_local", true};
 	}
 
 	/** The request which is sent to the mp server. */
 	virtual config request() const
 	{
 		return config{
-				"new_controller", new_controller_, "old_controller", team_.controller(), "side", team_.side(),
+				"new_controller", side_controller::get_string(new_controller_), "old_controller", side_controller::get_string(team_.controller()), "side", team_.side(),
 		};
 	}
 
@@ -576,29 +573,29 @@ public:
 	}
 
 private:
-	team::CONTROLLER new_controller_;
+	side_controller::type new_controller_;
 	const team& team_;
 };
 } // end anon namespace
 
 void team::change_controller_by_wml(const std::string& new_controller_string)
 {
-	CONTROLLER new_controller;
-	if(!new_controller.parse(new_controller_string)) {
-		WRN_NG << "ignored attempt to change controller to " << new_controller_string << std::endl;
+	auto new_controller = side_controller::get_enum(new_controller_string);
+	if(!new_controller) {
+		WRN_NG << "ignored attempt to change controller to " << new_controller_string;
 		return;
 	}
 
-	if(new_controller == CONTROLLER::EMPTY && resources::controller->current_side() == this->side()) {
-		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'" << std::endl;
+	if(new_controller == side_controller::type::none && resources::controller->current_side() == this->side()) {
+		WRN_NG << "ignored attempt to change the currently playing side's controller to 'null'";
 		return;
 	}
 
-	config choice = synced_context::ask_server_choice(controller_server_choice(new_controller, *this));
-	if(!new_controller.parse(choice["controller"])) {
-		// TODO: this should be more than a ERR_NG message.
-		// GL-2016SEP02 Oh? So why was ERR_NG defined as warning level? Making the call fit the definition.
-		WRN_NG << "Received an invalid controller string from the server" << choice["controller"] << std::endl;
+	config choice = synced_context::ask_server_choice(controller_server_choice(*new_controller, *this));
+	if(!side_controller::get_enum(choice["controller"].str())) {
+		WRN_NG << "Received an invalid controller string from the server" << choice["controller"];
+	} else {
+		new_controller = side_controller::get_enum(choice["controller"].str());
 	}
 
 	if(!resources::controller->is_replay()) {
@@ -611,7 +608,7 @@ void team::change_controller_by_wml(const std::string& new_controller_string)
 		}
 	}
 
-	change_controller(new_controller);
+	change_controller(*new_controller);
 }
 
 void team::change_team(const std::string& name, const t_string& user_name)
@@ -675,7 +672,7 @@ bool team::fogged(const map_location& loc) const
 	return fog_.shared_value(ally_fog(resources::gameboard->teams()), loc.wml_x(), loc.wml_y());
 }
 
-const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
+const std::vector<const shroud_map*>& team::ally_shroud(const std::vector<team>& teams) const
 {
 	if(ally_shroud_.empty()) {
 		for(std::size_t i = 0; i < teams.size(); ++i) {
@@ -688,7 +685,7 @@ const std::vector<const team::shroud_map*>& team::ally_shroud(const std::vector<
 	return ally_shroud_;
 }
 
-const std::vector<const team::shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
+const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& teams) const
 {
 	if(ally_fog_.empty()) {
 		for(std::size_t i = 0; i < teams.size(); ++i) {
@@ -765,7 +762,20 @@ void validate_side(int side)
 	}
 }
 
-bool team::shroud_map::clear(int x, int y)
+int shroud_map::width() const
+{
+	return data_.size();
+}
+
+int shroud_map::height() const
+{
+	if(data_.size() == 0) return 0;
+	return std::max_element(data_.begin(), data_.end(), [](const auto& a, const auto& b) {
+		return a.size() < b.size();
+	})->size();
+}
+
+bool shroud_map::clear(int x, int y)
 {
 	if(enabled_ == false || x < 0 || y < 0) {
 		return false;
@@ -787,7 +797,7 @@ bool team::shroud_map::clear(int x, int y)
 	return false;
 }
 
-void team::shroud_map::place(int x, int y)
+void shroud_map::place(int x, int y)
 {
 	if(enabled_ == false || x < 0 || y < 0) {
 		return;
@@ -795,16 +805,16 @@ void team::shroud_map::place(int x, int y)
 
 	if(x >= static_cast<int>(data_.size())) {
 		DBG_NG << "Couldn't place shroud on invalid x coordinate: (" << x << ", " << y
-			   << ") - max x: " << data_.size() - 1 << "\n";
+			   << ") - max x: " << data_.size() - 1;
 	} else if(y >= static_cast<int>(data_[x].size())) {
 		DBG_NG << "Couldn't place shroud on invalid y coordinate: (" << x << ", " << y
-			   << ") - max y: " << data_[x].size() - 1 << "\n";
+			   << ") - max y: " << data_[x].size() - 1;
 	} else {
 		data_[x][y] = false;
 	}
 }
 
-void team::shroud_map::reset()
+void shroud_map::reset()
 {
 	if(enabled_ == false) {
 		return;
@@ -815,7 +825,7 @@ void team::shroud_map::reset()
 	}
 }
 
-bool team::shroud_map::value(int x, int y) const
+bool shroud_map::value(int x, int y) const
 {
 	if(!enabled_) {
 		return false;
@@ -835,7 +845,7 @@ bool team::shroud_map::value(int x, int y) const
 	return !data_[x][y];
 }
 
-bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
+bool shroud_map::shared_value(const std::vector<const shroud_map*>& maps, int x, int y) const
 {
 	if(!enabled_) {
 		return false;
@@ -856,7 +866,7 @@ bool team::shroud_map::shared_value(const std::vector<const shroud_map*>& maps, 
 	return true;
 }
 
-std::string team::shroud_map::write() const
+std::string shroud_map::write() const
 {
 	std::stringstream shroud_str;
 	for(const auto& sh : data_) {
@@ -872,7 +882,7 @@ std::string team::shroud_map::write() const
 	return shroud_str.str();
 }
 
-void team::shroud_map::read(const std::string& str)
+void shroud_map::read(const std::string& str)
 {
 	data_.clear();
 
@@ -891,7 +901,7 @@ void team::shroud_map::read(const std::string& str)
 	}
 }
 
-void team::shroud_map::merge(const std::string& str)
+void shroud_map::merge(const std::string& str)
 {
 	int x = 0, y = 0;
 	for(std::size_t i = 1; i < str.length(); ++i) {
@@ -907,7 +917,7 @@ void team::shroud_map::merge(const std::string& str)
 	}
 }
 
-bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
+bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 {
 	if(enabled_ == false) {
 		return false;
@@ -1022,12 +1032,12 @@ std::string team::get_side_highlight_pango(int side)
 
 void team::log_recruitable() const
 {
-	LOG_NG << "Adding recruitable units: \n";
+	LOG_NG << "Adding recruitable units:";
 	for(const std::string& recruit : info_.can_recruit) {
-		LOG_NG << recruit << std::endl;
+		LOG_NG << recruit;
 	}
 
-	LOG_NG << "Added all recruitable units\n";
+	LOG_NG << "Added all recruitable units";
 }
 
 config team::to_config() const

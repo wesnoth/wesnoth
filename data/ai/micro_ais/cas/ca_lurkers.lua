@@ -24,17 +24,17 @@ function ca_lurkers:execution(cfg)
     -- Sort targets by hitpoints (lurkers choose lowest HP target)
     table.sort(targets, function(a, b) return (a.hitpoints < b.hitpoints) end)
 
-    local reach = LS.of_pairs(wesnoth.find_reach(lurker.x, lurker.y))
+    local reach = LS.of_pairs(wesnoth.paths.find_reach(lurker.x, lurker.y))
     local lurk_area = wml.get_child(cfg, "filter_location")
     local reachable_attack_terrain =
-         LS.of_pairs(wesnoth.get_locations  {
+         LS.of_pairs(wesnoth.map.find  {
             { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
             { "and", lurk_area }
         })
     reachable_attack_terrain:inter(reach)
 
     -- Need to restrict that to reachable and not occupied by an ally (except own position)
-    local reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
+    reachable_attack_terrain = reachable_attack_terrain:filter(function(x, y, v)
         local occ_hex = AH.get_visible_units(wesnoth.current.side, {
             x = x, y = y,
             { "not", { x = lurker.x, y = lurker.y } }
@@ -46,7 +46,7 @@ function ca_lurkers:execution(cfg)
     for _,target in ipairs(targets) do
         -- Get reachable attack terrain next to target unit
         local reachable_attack_terrrain_adj_target = LS.of_pairs(
-            wesnoth.get_locations { x = target.x, y = target.y, radius = 1 }
+            wesnoth.map.find { x = target.x, y = target.y, radius = 1 }
         )
         reachable_attack_terrrain_adj_target:inter(reachable_attack_terrain)
 
@@ -63,14 +63,14 @@ function ca_lurkers:execution(cfg)
     -- If we got here, unit did not attack: go to random wander terrain hex
     if (lurker.moves > 0) and (not cfg.stationary) then
         local reachable_wander_terrain =
-            LS.of_pairs( wesnoth.get_locations {
+            LS.of_pairs( wesnoth.map.find {
                 { "and", { x = lurker.x, y = lurker.y, radius = lurker.moves } },
                 { "and", wml.get_child(cfg, "filter_location_wander") or lurk_area }
             })
         reachable_wander_terrain:inter(reach)
 
         -- Need to restrict that to reachable and not occupied by an ally (except own position)
-        local reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
+        reachable_wander_terrain = reachable_wander_terrain:filter(function(x, y, v)
             local occ_hex = AH.get_visible_units(wesnoth.current.side, {
                 x = x, y = y,
                 { "not", { x = lurker.x, y = lurker.y } }

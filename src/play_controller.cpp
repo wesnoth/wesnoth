@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -36,6 +37,7 @@
 #include "game_state.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_handler.hpp"
@@ -64,6 +66,8 @@
 #include "units/id.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
+#include "video.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <functional>
@@ -123,8 +127,8 @@ static void clear_resources()
 	resources::filter_con = nullptr;
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
-	resources::game_events = nullptr;
 	resources::lua_kernel = nullptr;
+	resources::game_events = nullptr;
 	resources::persist = nullptr;
 	resources::soundsources = nullptr;
 	resources::tod_manager = nullptr;
@@ -135,7 +139,7 @@ static void clear_resources()
 	resources::classification = nullptr;
 }
 
-play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay)
+play_controller::play_controller(const config& level, saved_game& state_of_game, bool skip_replay, bool start_faded)
 	: controller_base()
 	, observer()
 	, quit_confirmation()
@@ -162,11 +166,12 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, linger_(false)
 	, init_side_done_now_(false)
 	, map_start_()
+	, start_faded_(start_faded)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
 	, remove_from_carryover_on_defeat_(level["remove_from_carryover_on_defeat"].to_bool(true))
 	, victory_music_()
 	, defeat_music_()
-	, scope_()
+	, scope_(hotkey::scope_game)
 	, ignore_replay_errors_(false)
 	, player_type_changed_(false)
 {
@@ -184,8 +189,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	persist_.start_transaction();
 
 	game_config::add_color_info(game_config_view::wrap(level));
-	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 	try {
 		init(level);
@@ -198,7 +201,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 play_controller::~play_controller()
 {
 	unit_types.remove_scenario_fixes();
-	hotkey::delete_all_wml_hotkeys();
 	clear_resources();
 }
 
@@ -207,7 +209,7 @@ void play_controller::init(const config& level)
 	gui2::dialogs::loading_screen::display([this, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 
-		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "initializing game_state..." << (SDL_GetTicks() - ticks());
 		gamestate_.reset(new game_state(level, *this));
 
 		resources::gameboard = &gamestate().board_;
@@ -222,25 +224,32 @@ void play_controller::init(const config& level)
 		gamestate_->init(level, *this);
 		resources::tunnels = gamestate().pathfind_manager_.get();
 
-		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "initializing whiteboard..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_whiteboard);
 		whiteboard_manager_.reset(new wb::manager());
 		resources::whiteboard = whiteboard_manager_;
 
-		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "loading units..." << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::load_units);
 		preferences::encounter_all_content(gamestate().board_);
 
-		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_theme);
-		const config& theme_cfg = controller_base::get_theme(game_config_, theme());
 
-		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks());
 		gui2::dialogs::loading_screen::progress(loading_stage::build_terrain);
-		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme_cfg, level));
-		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
 
-		if(!gui_->video().faked()) {
+		gui_.reset(new game_display(gamestate().board_, whiteboard_manager_, *gamestate().reports_, theme(), level));
+		map_start_ = map_location(level.child_or_empty("display").child_or_empty("location"));
+		if(start_faded_) {
+			gui_->set_fade({0,0,0,255});
+			gui_->set_prevent_draw(true);
+		}
+
+		// Ensure the loading screen doesn't end up underneath the game display
+		gui2::dialogs::loading_screen::raise();
+
+		if(!video::headless()) {
 			if(saved_game_.mp_settings().mp_countdown) {
 				gui_->get_theme().modify_label("time-icon", _("time left for current turn"));
 			} else {
@@ -252,9 +261,9 @@ void play_controller::init(const config& level)
 		mouse_handler_.set_gui(gui_.get());
 		menu_handler_.set_gui(gui_.get());
 
-		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks());
 
-		LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks()) << std::endl;
+		LOG_NG << "building gamestate to gui and whiteboard... " << (SDL_GetTicks() - ticks());
 		// This *needs* to be created before the show_intro and show_map_scene
 		// as that functions use the manager state_of_game
 		// Has to be done before registering any events!
@@ -286,9 +295,6 @@ void play_controller::init(const config& level)
 		plugins_context_->set_callback("quit", [](const config&) { throw_quit_game_exception(); }, false);
 		plugins_context_->set_accessor_string("scenario_name", [this](config) { return get_scenario_name(); });
 	});
-
-	// Do this after the loadingscreen, so that ita happens in the main thread.
-	gui_->join();
 }
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
@@ -332,13 +338,11 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 
 void play_controller::init_managers()
 {
-	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
-	preferences::set_preference_display_settings();
-	tooltips_manager_.reset(new tooltips::manager());
+	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks());
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
 
 	resources::soundsources = soundsources_manager_.get();
-	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks()) << std::endl;
+	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks());
 }
 
 void play_controller::fire_preload()
@@ -346,13 +350,13 @@ void play_controller::fire_preload()
 	// Run initialization scripts, even if loading from a snapshot.
 	gamestate().gamedata_.get_variable("turn_number") = static_cast<int>(turn());
 	pump().fire("preload");
+	gamestate().lua_kernel_->preload_finished();
 }
 
 void play_controller::fire_prestart()
 {
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
-	update_locker lock_display(gui_->video());
 	gamestate().gamedata_.set_phase(game_data::PRESTART);
 
 	// Fire these right before prestart events, to catch only the units sides
@@ -633,23 +637,66 @@ void play_controller::enter_textbox()
 	switch(menu_handler_.get_textbox().mode()) {
 	case gui::TEXTBOX_SEARCH:
 		menu_handler_.do_search(str);
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().memorize_command(str);
+		menu_handler_.get_textbox().close();
 		break;
 	case gui::TEXTBOX_MESSAGE:
 		menu_handler_.do_speak();
-		menu_handler_.get_textbox().close(*gui_); // need to close that one after executing do_speak() !
+		menu_handler_.get_textbox().close(); // need to close that one after executing do_speak() !
 		break;
 	case gui::TEXTBOX_COMMAND:
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().memorize_command(str);
+		menu_handler_.get_textbox().close();
 		menu_handler_.do_command(str);
 		break;
 	case gui::TEXTBOX_AI:
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().memorize_command(str);
+		menu_handler_.get_textbox().close();
 		menu_handler_.do_ai_formula(str, team_num, mousehandler);
 		break;
 	default:
-		menu_handler_.get_textbox().close(*gui_);
-		ERR_DP << "unknown textbox mode" << std::endl;
+		menu_handler_.get_textbox().close();
+		ERR_DP << "unknown textbox mode";
+	}
+}
+
+void play_controller::textbox_move_vertically(bool up)
+{
+	if(menu_handler_.get_textbox().active() == false) {
+		return;
+	}
+
+	if(menu_handler_.get_textbox().mode() == gui::TEXTBOX_MESSAGE
+		|| menu_handler_.get_textbox().mode() == gui::TEXTBOX_NONE) {
+		// Not handling messages to avoid spam
+		return;
+	}
+
+	const std::string str = menu_handler_.get_textbox().box()->text();
+	const std::vector<std::string>& command_history = menu_handler_.get_textbox().command_history();
+
+	auto prev = std::find(command_history.begin(), command_history.end(), str);
+
+	if (prev != command_history.end())
+	{
+		if(up) {
+			if(prev != command_history.begin()) {
+				menu_handler_.get_textbox().box()->set_text(*--prev);
+			}
+		} else {
+			if(++prev != command_history.end()) {
+				menu_handler_.get_textbox().box()->set_text(*prev);
+			} else {
+				menu_handler_.get_textbox().box()->set_text("");
+			}
+		}
+	} else if (up) {
+		if(command_history.size() > 0) {
+			menu_handler_.get_textbox().box()->set_text(*--prev);
+		}
+		if(!str.empty()) {
+			menu_handler_.get_textbox().memorize_command(str);
+		}
 	}
 }
 
@@ -703,7 +750,7 @@ void play_controller::tab()
 	}
 
 	default:
-		ERR_DP << "unknown textbox mode" << std::endl;
+		ERR_DP << "unknown textbox mode";
 	} // switch(mode)
 
 	menu_handler_.get_textbox().tab(dictionary);
@@ -788,9 +835,13 @@ bool play_controller::have_keyboard_focus()
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
-		menu_handler_.get_textbox().close(*gui_);
+		menu_handler_.get_textbox().close();
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();
+	} else if(event.key.keysym.sym == SDLK_UP) {
+		textbox_move_vertically(true);
+	} else if(event.key.keysym.sym == SDLK_DOWN) {
+		textbox_move_vertically(false);
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 		enter_textbox();
 	}
@@ -982,16 +1033,16 @@ void play_controller::check_victory()
 		}
 	}
 
-	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
-	DBG_EE << "found_player: " << found_player << std::endl;
-	DBG_EE << "found_network_player: " << found_network_player << std::endl;
+	DBG_EE << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_;
+	DBG_EE << "found_player: " << found_player;
+	DBG_EE << "found_network_player: " << found_network_player;
 
 	if(!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
 
-	if(gui_->video().non_interactive()) {
+	if(video::headless()) {
 		LOG_AIT << "winner: ";
 		for(unsigned l : not_defeated) {
 			std::string ai = ai::manager::get_singleton().get_active_ai_identifier_for_side(l);
@@ -1000,11 +1051,11 @@ void play_controller::check_victory()
 			LOG_AIT << l << " (using " << ai << ") ";
 		}
 
-		LOG_AIT << std::endl;
+		LOG_AIT;
 		ai_testing::log_victory(not_defeated);
 	}
 
-	DBG_EE << "throwing end level exception..." << std::endl;
+	DBG_EE << "throwing end level exception...";
 	// Also proceed to the next scenario when another player survived.
 	end_level_data el_data;
 	el_data.proceed_to_next_level = found_player || found_network_player;
@@ -1014,7 +1065,7 @@ void play_controller::check_victory()
 
 void play_controller::process_oos(const std::string& msg) const
 {
-	if(gui_->video().non_interactive()) {
+	if(video::headless()) {
 		throw game::game_error(msg);
 	}
 
@@ -1128,7 +1179,7 @@ void play_controller::start_game()
 		}
 
 		init_gui();
-		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip") << "\n";
+		LOG_NG << "first_time..." << (is_skipping_replay() ? "skipping" : "no skip");
 
 		fire_start();
 		if(is_regular_game_end()) {
@@ -1149,6 +1200,91 @@ void play_controller::start_game()
 		gamestate().gamedata_.set_phase(game_data::PLAY);
 		gui_->recalculate_minimap();
 	}
+
+	check_next_scenario_is_known();
+}
+
+/**
+ * Find all [endlevel]next_scenario= attributes, and add them to @a result.
+ */
+static void find_next_scenarios(const config& parent, std::set<std::string>& result) {
+	for(const auto& endlevel : parent.child_range("endlevel")) {
+		if(endlevel.has_attribute("next_scenario")) {
+			result.insert(endlevel["next_scenario"]);
+		}
+	}
+	for(const auto cfg : parent.all_children_range()) {
+		find_next_scenarios(cfg.cfg, result);
+	}
+};
+
+void play_controller::check_next_scenario_is_known() {
+	// Which scenarios are reachable from the current one?
+	std::set<std::string> possible_next_scenarios;
+	possible_next_scenarios.insert(gamestate().gamedata_.next_scenario());
+
+	// Find all "endlevel" tags that could be triggered in events
+	config events;
+	gamestate().events_manager_->write_events(events);
+	find_next_scenarios(events, possible_next_scenarios);
+
+	// Are we looking for [scenario]id=, [multiplayer]id= or [test]id=?
+	const auto tagname = saved_game_.classification().get_tagname();
+
+	// Of the possible routes, work out which exist.
+	bool possible_this_is_the_last_scenario = false;
+	std::vector<std::string> known;
+	std::vector<std::string> unknown;
+	for(const auto& x : possible_next_scenarios) {
+		if(x.empty() || x == "null") {
+			possible_this_is_the_last_scenario = true;
+			LOG_NG << "This can be the last scenario";
+		} else if(utils::contains(x, '$')) {
+			// Assume a WML variable will be set to a correct value before the end of the scenario
+			known.push_back(x);
+			LOG_NG << "Variable value for next scenario '" << x << "'";
+		} else if(game_config_.find_child(tagname, "id", x)) {
+			known.push_back(x);
+			LOG_NG << "Known next scenario '" << x << "'";
+		} else {
+			unknown.push_back(x);
+			ERR_NG << "Unknown next scenario '" << x << "'";
+		}
+	}
+
+	if(unknown.empty()) {
+		// everything's good
+		return;
+	}
+
+	std::string title = _("Warning: broken campaign branches");
+	std::stringstream message;
+
+	message << _n(
+		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
+		// said "okay" to a "loading saves from an old version might not work" dialog.
+		"The next scenario is missing, you will not be able to finish this campaign.",
+		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
+		// said "okay" to a "loading saves from an old version might not work" dialog.
+		"Some of the possible next scenarios are missing, you might not be able to finish this campaign.",
+		unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0));
+	message << "\n\n";
+	message << _n(
+		"Please report the following missing scenario to the campaign’s author:\n$unknown_list|",
+		"Please report the following missing scenarios to the campaign’s author:\n$unknown_list|",
+		unknown.size());
+	message << "\n";
+	message << _("Once this is fixed, you will need to restart this scenario.");
+
+	std::stringstream unknown_list;
+	for(const auto& x : unknown) {
+		unknown_list << font::unicode_bullet << " " << x << "\n";
+	}
+	utils::string_map symbols;
+	symbols["unknown_list"] = unknown_list.str();
+	auto message_str = utils::interpolate_variables_into_string(message.str(), &symbols);
+	ERR_NG << message_str;
+	gui2::show_message(title, message_str, gui2::dialogs::message::close_button);
 }
 
 bool play_controller::can_use_synced_wml_menu() const
@@ -1206,10 +1342,10 @@ void play_controller::play_turn()
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 
-	LOG_NG << "turn: " << turn() << "\n";
+	LOG_NG << "turn: " << turn();
 
-	if(gui_->video().non_interactive()) {
-		LOG_AIT << "Turn " << turn() << ":" << std::endl;
+	if(video::headless()) {
+		LOG_AIT << "Turn " << turn() << ":";
 	}
 
 	int last_player_number = gamestate_->player_number_;
@@ -1250,8 +1386,8 @@ void play_controller::play_turn()
 				return;
 			}
 
-			if(gui_->video().non_interactive()) {
-				LOG_AIT << " Player " << current_side() << ": " << current_team().villages().size() << " Villages" << std::endl;
+			if(video::headless()) {
+				LOG_AIT << " Player " << current_side() << ": " << current_team().villages().size() << " Villages";
 				ai_testing::log_turn_end(current_side());
 			}
 		}
@@ -1277,18 +1413,18 @@ void play_controller::check_time_over()
 	const bool time_left = gamestate().tod_manager_.next_turn(&gamestate().gamedata_);
 
 	if(!time_left) {
-		LOG_NG << "firing time over event...\n";
+		LOG_NG << "firing time over event...";
 		set_scontext_synced_base sync;
 		pump().fire("time_over");
-		LOG_NG << "done firing time over event...\n";
+		LOG_NG << "done firing time over event...";
 
 		// If turns are added while handling 'time over' event.
 		if(gamestate().tod_manager_.is_time_left()) {
 			return;
 		}
 
-		if(gui_->video().non_interactive()) {
-			LOG_AIT << "time over (draw)\n";
+		if(video::headless()) {
+			LOG_AIT << "time over (draw)";
 			ai_testing::log_draw();
 		}
 

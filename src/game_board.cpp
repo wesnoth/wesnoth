@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_board.hpp"
@@ -123,18 +124,18 @@ void game_board::check_victory(bool& continue_level,
 	not_defeated = std::set<unsigned>();
 
 	for(const unit& i : units()) {
-		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side() << std::endl;
+		DBG_EE << "Found a unit: " << i.id() << " on side " << i.side();
 		const team& tm = get_team(i.side());
-		DBG_EE << "That team's defeat condition is: " << tm.defeat_condition() << std::endl;
-		if(i.can_recruit() && tm.defeat_condition() == team::DEFEAT_CONDITION::NO_LEADER) {
+		DBG_EE << "That team's defeat condition is: " << defeat_condition::get_string(tm.defeat_cond());
+		if(i.can_recruit() && tm.defeat_cond() == defeat_condition::type::no_leader_left) {
 			not_defeated.insert(i.side());
-		} else if(tm.defeat_condition() == team::DEFEAT_CONDITION::NO_UNITS) {
+		} else if(tm.defeat_cond() == defeat_condition::type::no_units_left) {
 			not_defeated.insert(i.side());
 		}
 	}
 
 	for(team& tm : teams_) {
-		if(tm.defeat_condition() == team::DEFEAT_CONDITION::NEVER) {
+		if(tm.defeat_cond() == defeat_condition::type::never) {
 			not_defeated.insert(tm.side());
 		}
 
@@ -156,7 +157,7 @@ void game_board::check_victory(bool& continue_level,
 
 	for(std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
 		std::size_t side = *n - 1;
-		DBG_EE << "Side " << (side + 1) << " is a not-defeated team" << std::endl;
+		DBG_EE << "Side " << (side + 1) << " is a not-defeated team";
 
 		std::set<unsigned>::iterator m(n);
 		for(++m; m != not_defeated.end(); ++m) {
@@ -164,7 +165,7 @@ void game_board::check_victory(bool& continue_level,
 				return;
 			}
 
-			DBG_EE << "Side " << (side + 1) << " and " << *m << " are not enemies." << std::endl;
+			DBG_EE << "Side " << (side + 1) << " and " << *m << " are not enemies.";
 		}
 
 		if(teams()[side].is_local_human()) {
@@ -217,7 +218,7 @@ unit* game_board::get_visible_unit(const map_location& loc, const team& current_
 	return &*ui;
 }
 
-void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_CONTROLLER proxy)
+void game_board::side_drop_to(int side_num, side_controller::type ctrl, side_proxy_controller::type proxy)
 {
 	team& tm = get_team(side_num);
 
@@ -225,11 +226,11 @@ void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl, team::PROXY_C
 	tm.change_proxy(proxy);
 	tm.set_local(true);
 
-	tm.set_current_player(ctrl.to_string() + std::to_string(side_num));
+	tm.set_current_player(side_controller::get_string(ctrl) + std::to_string(side_num));
 
 	unit_map::iterator leader = units_.find_leader(side_num);
 	if(leader.valid()) {
-		leader->rename(ctrl.to_string() + std::to_string(side_num));
+		leader->rename(side_controller::get_string(ctrl) + std::to_string(side_num));
 	}
 }
 
@@ -241,10 +242,10 @@ void game_board::side_change_controller(
 	tm.set_local(is_local);
 
 	// only changing the type of controller
-	if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::AI) && !tm.is_ai()) {
+	if(controller_type == side_controller::ai && !tm.is_ai()) {
 		tm.make_ai();
 		return;
-	} else if(controller_type == team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN) && !tm.is_human()) {
+	} else if(controller_type == side_controller::human && !tm.is_human()) {
 		tm.make_human();
 		return;
 	}
@@ -263,18 +264,18 @@ void game_board::side_change_controller(
 
 bool game_board::team_is_defeated(const team& t) const
 {
-	switch(t.defeat_condition().v) {
-	case team::DEFEAT_CONDITION::ALWAYS:
+	switch(t.defeat_cond()) {
+	case defeat_condition::type::always:
 		return true;
-	case team::DEFEAT_CONDITION::NO_LEADER:
+	case defeat_condition::type::no_leader_left:
 		return !units_.find_leader(t.side()).valid();
-	case team::DEFEAT_CONDITION::NO_UNITS:
+	case defeat_condition::type::no_units_left:
 		for(const unit& u : units_) {
 			if(u.side() == t.side())
 				return false;
 		}
 		return true;
-	case team::DEFEAT_CONDITION::NEVER:
+	case defeat_condition::type::never:
 	default:
 		return false;
 	}
@@ -338,6 +339,10 @@ bool game_board::change_terrain(
 		mode = terrain_type_data::OVERLAY;
 	}
 
+	return change_terrain(loc, terrain, mode, replace_if_failed);
+}
+
+bool game_board::change_terrain(const map_location &loc, const t_translation::terrain_code &terrain, terrain_type_data::merge_mode& mode, bool replace_if_failed) {
 	/*
 	 * When a hex changes from a village terrain to a non-village terrain, and
 	 * a team owned that village it loses that village. When a hex changes from

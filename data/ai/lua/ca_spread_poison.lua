@@ -9,7 +9,7 @@ local SP_attack
 local ca_spread_poison = {}
 
 function ca_spread_poison:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'spread_poison'
     if AH.print_eval() then AH.print_ts('     - Evaluating spread_poison CA:') end
 
     local attacks_aspect = ai.aspects.attacks
@@ -44,7 +44,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
     -- Go through all possible attacks with poisoners
-    local max_rating, best_attack = - math.huge
+    local max_rating, best_attack = - math.huge, nil
     for i,a in ipairs(attacks) do
         if target_map:get(a.target.x, a.target.y) and (not avoid_map:get(a.dst.x, a.dst.y)) then
             local attacker = wesnoth.units.get(a.src.x, a.src.y)
@@ -54,8 +54,8 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
             local cant_poison = defender.status.poisoned or defender.status.unpoisonable
 
             -- For now, we also simply don't poison units on healing locations (unless standard combat CA does it)
-            local defender_terrain = wesnoth.get_terrain(defender.x, defender.y)
-            local healing = wesnoth.get_terrain_info(defender_terrain).healing
+            local defender_terrain = wesnoth.current.map[defender]
+            local healing = wesnoth.terrain_types[defender_terrain].healing
 
             -- Also, poisoning units that would level up through the attack or could level on their turn as a result is very bad
             local about_to_level = defender.max_experience - defender.experience <= (attacker.level * 2 * wesnoth.game_config.combat_experience)
@@ -63,6 +63,7 @@ function ca_spread_poison:evaluation(cfg, data, filter_own)
             if (not cant_poison) and (healing == 0) and (not about_to_level) then
                 local _, poison_weapon = attacker:find_attack { special_id = "poison" }
                 local dst = { a.dst.x, a.dst.y }
+                wesnoth.interface.handle_user_interact()
                 local att_stats, def_stats = BC.simulate_combat_loc(attacker, dst, defender, poison_weapon)
                 local _, defender_rating, attacker_rating = BC.attack_rating(attacker, defender, dst, { att_stats = att_stats, def_stats = def_stats })
 

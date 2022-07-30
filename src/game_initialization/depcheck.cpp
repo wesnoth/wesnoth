@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Boldizsár Lipka <lipkab@zoho.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_initialization/depcheck.hpp"
@@ -17,6 +18,7 @@
 #include <algorithm>
 
 #include "serialization/string_utils.hpp"
+#include "game_initialization/component_availability.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "utils/general.hpp"
@@ -65,12 +67,12 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	, prev_scenario_()
 	, prev_mods_()
 {
-	DBG_MP << "Initializing the dependency manager" << std::endl;
+	DBG_MP << "Initializing the dependency manager";
 
 	for(const config& cfg : gamecfg.child_range("modification")) {
-		component_availability type = cfg["type"].to_enum<component_availability>(component_availability::HYBRID);
+		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::hybrid);
 
-		if((type != component_availability::MP || mp) && (type != component_availability::SP || !mp)) {
+		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp)) {
 			config info;
 			info["id"] = cfg["id"];
 			info["name"] = cfg["name"];
@@ -84,9 +86,9 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 	}
 
 	for(const config& cfg : gamecfg.child_range("era")) {
-		component_availability type = cfg["type"].to_enum<component_availability>(component_availability::MP);
+		component_availability::type type = component_availability::get_enum(cfg["type"].str()).value_or(component_availability::type::mp);
 
-		if((type != component_availability::MP || mp) && (type != component_availability::SP || !mp)) {
+		if((type != component_availability::type::mp || mp) && (type != component_availability::type::sp || !mp)) {
 			config info;
 			info["id"] = cfg["id"];
 			info["name"] = cfg["name"];
@@ -126,7 +128,7 @@ manager::manager(const game_config_view& gamecfg, bool mp)
 
 void manager::save_state()
 {
-	DBG_MP << "Saving current state" << std::endl;
+	DBG_MP << "Saving current state";
 	prev_era_ = era_;
 	prev_scenario_ = scenario_;
 	prev_mods_ = mods_;
@@ -134,7 +136,7 @@ void manager::save_state()
 
 void manager::revert()
 {
-	DBG_MP << "Restoring previous state" << std::endl;
+	DBG_MP << "Restoring previous state";
 	era_ = prev_era_;
 	scenario_ = prev_scenario_;
 	mods_ = prev_mods_;

@@ -2,7 +2,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local M = wesnoth.map
 
-local ca_healer_move, best_healer, best_hex = {}
+local ca_healer_move, best_healer, best_hex = {}, nil, nil
 
 function ca_healer_move:evaluation(cfg, data)
     -- Should happen with higher priority than attacks, except at beginning of turn,
@@ -41,7 +41,7 @@ function ca_healer_move:evaluation(cfg, data)
         -- Also, they cannot be on a healing location or regenerate
         if (healee.moves == 0) then
             if (not healee:matches { ability = "regenerates" }) then
-                local healing = wesnoth.get_terrain_info(wesnoth.get_terrain(healee.x, healee.y)).healing
+                local healing = wesnoth.terrain_types[wesnoth.current.map[healee]].healing
                 if (healing == 0) then
                     local is_healee = true
                     for _,healer in ipairs(healers_noMP) do
@@ -74,7 +74,7 @@ function ca_healer_move:evaluation(cfg, data)
             --  - either can be attacked by an enemy (15 points per enemy)
             --  - or has non-perfect HP (1 point per missing HP)
 
-            local rating, adjacent_healer = 0
+            local rating, adjacent_healer = 0, nil
             for _,healee in ipairs(healees) do
                 if (M.distance_between(healee.x, healee.y, x, y) == 1) then
                     -- Note: These ratings have to be positive or the method doesn't work
@@ -100,8 +100,8 @@ function ca_healer_move:evaluation(cfg, data)
                 rating = rating - enemies_in_reach * 1000
 
                 -- All else being more or less equal, prefer villages and strong terrain
-                local terrain = wesnoth.get_terrain(x, y)
-                local is_village = wesnoth.get_terrain_info(terrain).village
+                local terrain = wesnoth.current.map[{x, y}]
+                local is_village = wesnoth.terrain_types[terrain].village
                 if is_village then rating = rating + 2 end
 
                 local defense = healer:defense_on(terrain)

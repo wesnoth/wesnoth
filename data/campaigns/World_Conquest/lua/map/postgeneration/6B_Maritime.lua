@@ -8,7 +8,7 @@ function get_possible_maritime_bridge()
 	return {
 		{
 			type = "Bsb|",
-			locs = map:get_locations(f.all(
+			locs = map:find(f.all(
 				f.terrain("Ww"),
 				f.adjacent(f.terrain("Chw"), "s,n", nil),
 				f.adjacent(f.terrain("Ch,Kh"), "s,n", nil),
@@ -17,7 +17,7 @@ function get_possible_maritime_bridge()
 		},
 		{
 			type = "Bsb\\",
-			locs = map:get_locations(f.all(
+			locs = map:find(f.all(
 				f.terrain("Ww"),
 				f.adjacent(f.terrain("Chw"), "se,nw", nil),
 				f.adjacent(f.terrain("Ch,Kh"), "se,nw", nil),
@@ -26,7 +26,7 @@ function get_possible_maritime_bridge()
 		},
 		{
 			type = "Bsb/",
-			locs = map:get_locations(f.all(
+			locs = map:find(f.all(
 				f.terrain("Ww"),
 				f.adjacent(f.terrain("Chw"), "sw,ne", nil),
 				f.adjacent(f.terrain("Ch,Kh"), "sw,ne", nil),
@@ -42,9 +42,9 @@ function wct_maritime_bridges()
 	local pb = get_possible_maritime_bridge()
 	while #pb[1].locs > 0 or #pb[2].locs > 0 or #pb[3].locs > 0 do
 		pb = functional.filter(pb, function(t) return #t.locs >0 end)
-		local sel = pb[wesnoth.random(#pb)]
-		local loc = sel.locs[wesnoth.random(#sel.locs)]
-		map:set_terrain(loc, "Ww^" .. sel.type)
+		local sel = pb[mathx.random(#pb)]
+		local loc = sel.locs[mathx.random(#sel.locs)]
+		map[loc] = "Ww^" .. sel.type
 		pb = get_possible_maritime_bridge()
 	end
 end
@@ -61,7 +61,7 @@ function roads_to_dock(radius)
 end
 
 function wct_roads_to_dock(radius)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*^*"),
 		f.adjacent(f.all(
 			f.terrain("Iwr^Vl,Rp"),
@@ -88,13 +88,13 @@ function roads_to_river(radius)
 	--old implementation: wct_iterate_roads_to(wct_roads_to_river, 3, "Rp")
 end
 
--- todo: the old code used 
+-- todo: the old code used
 -- `wct_iterate_roads_to(wct_roads_to_river, 3, "Rp")`
 -- but the new code uses roads_to_river(4) i guess
--- wct_iterate_roads_to_ex defeind radiosu differently thatn 
+-- wct_iterate_roads_to_ex defeind radiosu differently thatn
 -- wct_iterate_roads_to ?
--- anyway leavong this function in as a sekeltong on how 
--- wct_iterate_roads_to worked. in particular if we want to convert the remaining cases to 
+-- anyway leavong this function in as a sekeltong on how
+-- wct_iterate_roads_to worked. in particular if we want to convert the remaining cases to
 -- wct_iterate_roads_to_ex
 function wct_roads_to_river(radius)
 
@@ -103,7 +103,7 @@ function wct_roads_to_river(radius)
 	local f_src = f.terrain("*^Vhc")
 	local f_path_taken = f.terrain("Rp")
 
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f_valid_path_tiles,
 		-- adjacent to open ends or startign points.
 		f.adjacent(f.all(
@@ -184,14 +184,14 @@ function world_conquest_tek_map_decoration_6b()
 	roads_to_dock(4)
 	roads_to_river(4)
 
-	if #map:get_locations(f.terrain("Iwr^Vl")) == 0 then
-		local locs = map:get_locations(f.all(
+	if #map:find(f.terrain("Iwr^Vl")) == 0 then
+		local locs = map:find(f.all(
 			f.terrain("*^V*"),
 			f.adjacent(f.terrain("W*^*"), nil, "2-5"),
 			f.adjacent(f.terrain("Wog,Wwg"))
 		))
-		loc = locs[wesnoth.random(#locs)];
-		map:set_terrain(loc, "Iwr^Vl")
+		loc = locs[mathx.random(#locs)];
+		map[loc] = "Iwr^Vl"
 	end
 
 	set_terrain { "Wwg,Iwr,Wwg^Bw\\,Wwg^Bw\\,Wwg^Bw\\,Wwg^Bw\\",
@@ -236,9 +236,9 @@ function world_conquest_tek_map_decoration_6b()
 			f.adjacent(f.terrain("Iwr"), "s,n", nil)
 		),
 	}
-	local locs = map:get_locations(f.terrain("Iwr"))
+	local locs = map:find(f.terrain("Iwr"))
 	for ship_i, ship_loc in ipairs(locs) do
-		if wesnoth.random(2) == 1 then
+		if mathx.random(2) == 1 then
 			table.insert(prestart_event, wml.tag.item {
 				x = ship_loc[1],
 				y = ship_loc[2],
@@ -336,7 +336,7 @@ function world_conquest_tek_map_decoration_6b()
 		),
 		fraction = 8,
 	}
-	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Uf,Ss^Uf,Ss^Uf",
+	set_terrain { "Gs^Fp,Hh^Fp,Hh,Mm,Gs^Fp,Ss^Tf,Ss^Tf,Ss^Tf",
 		f.all(
 			f.terrain("Ss"),
 			f.none(
@@ -347,7 +347,7 @@ function world_conquest_tek_map_decoration_6b()
 	}
 
 	-- some mushrooms on hills near river or caves
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh,Hh^F*"),
 			f.radius(5, f.terrain("Ww,Wwf,U*^*"))
@@ -368,9 +368,9 @@ function world_conquest_tek_map_decoration_6b()
 	}
 
 	-- chance of expand rivers into sea
-	local r = tonumber(helper.rand("0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,2,3"))
+	local r = tonumber(mathx.random_choice("0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,2,3"))
 	for i = 1 , r do
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Wog,Wwg,Wwrg"),
 			f.adjacent(f.terrain("Ww,Wwf,Wo"))
 		))
@@ -408,7 +408,7 @@ function world_conquest_tek_map_decoration_6b()
 end
 
 function world_conquest_tek_map_repaint_6b()
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uu^Uf,Uh,Ql,Qxu,Xu,Uu,Ur")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uu^Tf,Uh,Ql,Qxu,Xu,Uu,Ur")
 	wct_fill_lava_chasms()
 	wct_volcanos()
 	world_conquest_tek_map_decoration_6b()
@@ -446,6 +446,8 @@ function world_conquest_tek_map_repaint_6b()
 	wct_map_cave_path_to("Rb")
 	wct_noise_snow_to("Rb")
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Maritime")

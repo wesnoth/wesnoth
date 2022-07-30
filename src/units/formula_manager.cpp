@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "units/formula_manager.hpp"
@@ -19,6 +20,7 @@
 #include "formula/formula.hpp"
 #include "map/location.hpp"
 #include "log.hpp"
+#include "deprecation.hpp"
 
 void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)
 {
@@ -28,16 +30,16 @@ void unit_formula_manager::add_formula_var(std::string str,wfl:: variant var)
 
 void unit_formula_manager::read(const config & ai)
 {
-	unit_formula_ = ai["formula"].str();
-	unit_loop_formula_ = ai["loop_formula"].str();
-	unit_priority_formula_ = ai["priority"].str();
+	unit_formula_ = ai.get_deprecated_attribute("formula", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17").str();
+	unit_loop_formula_ = ai.get_deprecated_attribute("loop_formula", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17").str();
+	unit_priority_formula_ = ai.get_deprecated_attribute("priority", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17").str();
 
-	if (const config &ai_vars = ai.child("vars"))
+	if (auto ai_vars = ai.get_deprecated_child("vars", "unit][ai", DEP_LEVEL::FOR_REMOVAL, "FormulaAI will be removed in 1.17"))
 	{
 		formula_vars_ = std::make_shared<wfl::map_formula_callable>();
 
 		wfl::variant var;
-		for (const config::attribute &i : ai_vars.attribute_range()) {
+		for (const config::attribute &i : ai_vars->attribute_range()) {
 			var.serialize_from_string(i.second);
 			formula_vars_->add(i.first, var);
 		}

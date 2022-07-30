@@ -18,10 +18,10 @@ local function handle_default_recruitment(cfg)
 end
 
 function wesnoth.micro_ais.recruit_rushers(cfg)
-	local optional_keys = { "high_level_fraction", "randomness" }
+	local optional_keys = { high_level_fraction = 'float', randomness = 'float' }
 	local CA_parms = {
 		ai_id = 'mai_rusher_recruit',
-		{ ca_id = "move", location = 'ca_recruit_rushers.lua', score = cfg.ca_score or 180000 }
+		{ ca_id = "move", location = '../../lua/ca_recruit_rushers.lua', score = cfg.ca_score or 180000 }
 	}
 
 	handle_default_recruitment(cfg)
@@ -29,7 +29,7 @@ function wesnoth.micro_ais.recruit_rushers(cfg)
 end
 
 function wesnoth.micro_ais.recruit_random(cfg)
-	local optional_keys = { "skip_low_gold_recruiting", "[probability]" }
+	local optional_keys = { skip_low_gold_recruiting = 'boolean', probability = 'tag' }
 	local CA_parms = {
 		ai_id = 'mai_random_recruit',
 		{ ca_id = "move", location = 'ca_recruit_random.lua', score = cfg.ca_score or 180000 }

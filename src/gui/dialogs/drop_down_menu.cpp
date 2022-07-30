@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -32,9 +33,7 @@
 #include "sdl/rect.hpp"
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(drop_down_menu)
 
@@ -92,7 +91,6 @@ drop_down_menu::drop_down_menu(styled_widget* parent, const std::vector<config>&
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
 {
-	set_restore(true);
 }
 
 drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open)
@@ -104,7 +102,6 @@ drop_down_menu::drop_down_menu(SDL_Rect button_pos, const std::vector<config>& i
 	, keep_open_(keep_open)
 	, mouse_down_happened_(false)
 {
-	set_restore(true);
 }
 
 void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
@@ -145,8 +142,7 @@ void drop_down_menu::mouse_up_callback(bool&, bool&, const point& coordinate)
 		list.select_row(sel, false);
 	}
 
-	SDL_Rect rect = get_window()->get_rectangle();
-	if(!sdl::point_in_rect(coordinate, rect)) {
+	if(!get_window()->get_rectangle().contains(coordinate)) {
 		set_retval(retval::CANCEL);
 	} else if(!keep_open_) {
 		set_retval(retval::OK);
@@ -168,8 +164,8 @@ void drop_down_menu::pre_show(window& window)
 	listbox& list = find_widget<listbox>(&window, "list", true);
 
 	for(const auto& entry : items_) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		//
 		// These widgets can be initialized here since they don't require widget type swapping.
@@ -197,7 +193,7 @@ void drop_down_menu::pre_show(window& window)
 		find_widget<toggle_panel>(&new_row, "panel", false).set_tooltip(entry.tooltip);
 
 		if(entry.checkbox) {
-			toggle_button* checkbox = build_single_widget_instance<toggle_button>();
+			auto checkbox = build_single_widget_instance<toggle_button>();
 			checkbox->set_id("checkbox");
 			checkbox->set_value_bool(*entry.checkbox);
 
@@ -208,14 +204,14 @@ void drop_down_menu::pre_show(window& window)
 				}));
 			}
 
-			mi_grid.swap_child("icon", checkbox, false);
+			mi_grid.swap_child("icon", std::move(checkbox), false);
 		}
 
 		if(entry.image) {
-			image* img = build_single_widget_instance<image>();
+			auto img = build_single_widget_instance<image>();
 			img->set_label(*entry.image);
 
-			mi_grid.swap_child("label", img, false);
+			mi_grid.swap_child("label", std::move(img), false);
 		}
 	}
 
@@ -269,4 +265,3 @@ boost::dynamic_bitset<> drop_down_menu::get_toggle_states() const
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-   Copyright (C) 2008 - 2020 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/manager.hpp"
@@ -105,13 +106,13 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"
 				<< addon_name << "' from " << info_path << ":\n"
-				<< e.message << std::endl;
+				<< e.message;
 	}
 }
 
 void write_addon_install_info(const std::string& addon_name, const config& cfg)
 {
-	LOG_CFG << "Writing version info for add-on '" << addon_name << "'\n";
+	LOG_CFG << "Writing version info for add-on '" << addon_name << "'";
 
 	const auto& info_path = get_info_file_path(addon_name);
 	auto out = filesystem::ostream_file(info_path);
@@ -130,11 +131,11 @@ bool remove_local_addon(const std::string& addon)
 {
 	const std::string addon_dir = filesystem::get_addons_dir() + "/" + addon;
 
-	LOG_CFG << "removing local add-on: " << addon << '\n';
+	LOG_CFG << "removing local add-on: " << addon;
 
 	if(filesystem::file_exists(addon_dir) && !filesystem::delete_directory(addon_dir, true)) {
-		ERR_CFG << "Failed to delete directory/file: " << addon_dir << '\n';
-		ERR_CFG << "removal of add-on " << addon << " failed!" << std::endl;
+		ERR_CFG << "Failed to delete directory/file: " << addon_dir;
+		ERR_CFG << "removal of add-on " << addon << " failed!";
 		return false;
 	}
 	return true;
@@ -227,13 +228,13 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 	const std::string ign_file = parentd + "/" + addon_name + "/_server.ign";
 
 	filesystem::blacklist_pattern_list patterns;
-	LOG_CFG << "searching for .ign file for '" << addon_name << "'...\n";
+	LOG_CFG << "searching for .ign file for '" << addon_name << "'...";
 	if (!filesystem::file_exists(ign_file)) {
 		LOG_CFG << "no .ign file found for '" << addon_name << "'\n"
-		        << "using default ignore patterns...\n";
+		        << "using default ignore patterns...";
 		return filesystem::default_blacklist;
 	}
-	LOG_CFG << "found .ign file: " << ign_file << '\n';
+	LOG_CFG << "found .ign file: " << ign_file;
 	auto stream = filesystem::istream_file(ign_file);
 	std::string line;
 	while (std::getline(*stream, line)) {
@@ -374,7 +375,7 @@ void refresh_addon_version_info_cache()
 {
 	version_info_cache.clear();
 
-	LOG_CFG << "refreshing add-on versions cache\n";
+	LOG_CFG << "refreshing add-on versions cache";
 
 	const std::vector<std::string>& addons = installed_addons();
 	if(addons.empty()) {
@@ -401,12 +402,12 @@ void refresh_addon_version_info_cache()
 			}
 
 			const std::string& version = info_cfg["version"].str();
-			LOG_CFG << "cached add-on version: " << addon << " [" << version << "]\n";
+			LOG_CFG << "cached add-on version: " << addon << " [" << version << "]";
 
 			version_info_cache[addon] = version;
 		} else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {
 			// Don't print the warning if the user is clearly the author
-			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info" << std::endl;
+			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info";
 		}
 	}
 }

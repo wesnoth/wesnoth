@@ -179,7 +179,7 @@ local IMG_DETRITUS_2 = "misc/blank-hex.png~BLIT(terrain/misc/detritus/detritusC-
 
 local IMG_LILIES = "terrain/embellishments/water-lilies-flower-small4.png~BLIT(terrain/embellishments/water-lilies-flower-small5.png~CROP(40,28,17,17),40,28)"
 
-local IMG_LILIES_2 = "misc/blank-hex.png~BLIT(terrain/embellishments/water-lilies-flower5.png~CROP(21,12,72,72)~BLIT(terrain/embellishments/water-lilies-flower-small2.png~CROP(0,8,55,64),17,0)"
+local IMG_LILIES_2 = "misc/blank-hex.png~BLIT(terrain/embellishments/water-lilies-flower5.png~CROP(21,12,72,72))~BLIT(terrain/embellishments/water-lilies-flower-small2.png~CROP(0,8,55,64),17,0)"
 
 local IMG_OAK_1 = "terrain/embellishments/flowers-mixed4.png~MASK(scenery/whirlpool.png)~BLIT(scenery/oak-leaning.png)"
 

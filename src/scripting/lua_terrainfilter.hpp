@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2018 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -18,6 +19,7 @@
 #include <memory>
 #include <map>
 #include <set>
+#include "map/map.hpp"
 
 #include "scripting/lua_common.hpp"
 struct lua_State;
@@ -45,7 +47,7 @@ namespace lua_mapgen
 
 		~filter();
 
-		bool matches(const mapgen_gamemap& m, map_location l);
+		bool matches(const gamemap_base& m, map_location l);
 		//todo: add a clear cache function.
 	private:
 		std::map<std::string, std::set<map_location>> known_sets_;
@@ -63,7 +65,7 @@ lua_mapgen::filter& luaW_check_mgfilter(lua_State *L, int index);
 
 void lua_mgfilter_setmetatable(lua_State *L);
 
-int intf_terainfilter_create(lua_State *L);
+int intf_terrainfilter_create(lua_State *L);
 
 int intf_mg_get_locations(lua_State* L);
 int intf_mg_get_tiles_radius(lua_State* L);

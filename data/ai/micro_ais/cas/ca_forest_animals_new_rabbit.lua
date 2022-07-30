@@ -21,10 +21,9 @@ function ca_forest_animals_new_rabbit:execution(cfg)
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes
     -- We also add a random number to the ones we keep, for selection of the holes later
-    local width, height = wesnoth.get_map_size()
     local holes = {}
     for _,item in ipairs(all_items) do
-        if (item.x > 0) and (item.x <= width) and (item.y > 0) and (item.y <= height) then
+        if wesnoth.current.map:on_board(item) then
             local enemies = AH.get_attackable_enemies {
                 { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
             }
@@ -54,12 +53,12 @@ function ca_forest_animals_new_rabbit:execution(cfg)
     for i = 1,number do
         local x, y = -1, -1
         if tmp_unit then
-            x, y = wesnoth.find_vacant_tile(holes[i].x, holes[i].y, tmp_unit)
+            x, y = wesnoth.paths.find_vacant_hex(holes[i].x, holes[i].y, tmp_unit)
         else
-            x, y = wesnoth.find_vacant_tile(holes[i].x, holes[i].y)
+            x, y = wesnoth.paths.find_vacant_hex(holes[i].x, holes[i].y)
         end
 
-        wesnoth.invoke_synced_command("rabbit_spawn", { rabbit_type = cfg.rabbit_type, x = x, y = y})
+        wesnoth.sync.invoke_command("rabbit_spawn", { rabbit_type = cfg.rabbit_type, x = x, y = y})
     end
 
     if wesnoth.sides[wesnoth.current.side].shroud then

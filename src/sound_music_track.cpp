@@ -1,16 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>, Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "sound_music_track.hpp"
@@ -70,21 +70,21 @@ music_track::music_track(const std::string& v_name) :
 void music_track::resolve()
 {
 	if (id_.empty()) {
-		LOG_AUDIO << "empty track filename specified for track identification\n";
+		LOG_AUDIO << "empty track filename specified for track identification";
 		return;
 	}
 
 	file_path_ = filesystem::get_binary_file_location("music", id_);
 
 	if (file_path_.empty()) {
-		LOG_AUDIO << "could not find track '" << id_ << "' for track identification\n";
+		LOG_AUDIO << "could not find track '" << id_ << "' for track identification";
 		return;
 	}
 
 	if (title_.empty()) {
 		OggVorbis_File vf;
 		if(ov_fopen(file_path_.c_str(), &vf) < 0) {
-			LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification\n";
+			LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification";
 			return;
 		}
 
@@ -102,13 +102,13 @@ void music_track::resolve()
 			}
 		}
 		if (!found) {
-			LOG_AUDIO << "No title for music track '" << id_ << "'\n";
+			LOG_AUDIO << "No title for music track '" << id_ << "'";
 		}
 
 	ov_clear(&vf);
 	}
 
-	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";
+	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'";
 }
 
 void music_track::write(config &parent_node, bool append) const

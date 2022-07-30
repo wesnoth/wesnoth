@@ -1,13 +1,12 @@
 local on_event = wesnoth.require("on_event")
-local helper = wesnoth.require("helper")
 
 local enemy = {}
 
 local function get_advanced_units(level, list, res)
 	res = res or {}
 	-- guards against units that can advance in circles or to themselves
-	res_set = {}
-	local add_units = function(units)
+	local res_set = {}
+	local function add_units(units)
 		for unused, typename in ipairs(units) do
 			local unittype = wesnoth.unit_types[typename]
 			if unittype.level == level then
@@ -23,7 +22,7 @@ local function get_advanced_units(level, list, res)
 end
 
 function enemy.pick_suitable_enemy_item(unit)
-	local enemy_items = wc2_utils.split_to_array(wml.variables["wc2_enemy_army.artifacts"])
+	local enemy_items = stringx.split(wml.variables["wc2_enemy_army.artifacts"] or "")
 	if #enemy_items == 0 then
 		enemy_items = wc2_artifacts.fresh_artifacts_list("enemy")
 	end
@@ -38,7 +37,7 @@ function enemy.pick_suitable_enemy_item(unit)
 	if #possible_artifacts == 0 then
 		return
 	end
-	local i = possible_artifacts[wesnoth.random(#possible_artifacts)]
+	local i = possible_artifacts[mathx.random(#possible_artifacts)]
 	local artifact_id = tonumber(enemy_items[i])
 	table.remove(enemy_items, i)
 	wml.variables["wc2_enemy_army.artifacts"] = table.concat(enemy_items, ",")
@@ -59,7 +58,7 @@ on_event("recruit", function(ec)
 		return
 	end
 	side_variables["wc2.random_items"] = needs_item - 1
-	local unit = wesnoth.get_unit(ec.x1, ec.y1)
+	local unit = wesnoth.units.get(ec.x1, ec.y1)
 	local item_id = enemy.pick_suitable_enemy_item(unit)
 	wc2_artifacts.give_item(unit, item_id, false)
 	if true then
@@ -75,9 +74,9 @@ function enemy.do_commander(cfg, group_id, loc)
 		return
 	end
 	local scenario = wc2_scenario.scenario_num()
-	--wesnoth.message("do_commander", wml.variables[("wc2_enemy_army.group[%d].allies_available"):format(group_id)])
+	--wesnoth.interface.add_chat_message("do_commander", wml.variables[("wc2_enemy_army.group[%d].allies_available"):format(group_id)])
 	local ally_i = wc2_utils.pick_random(("wc2_enemy_army.group[%d].allies_available"):format(group_id)) - 1
-	local leader_index = wesnoth.random(wml.variables[("wc2_enemy_army.group[%d].leader.length"):format(ally_i)]) - 1
+	local leader_index = mathx.random(wml.variables[("wc2_enemy_army.group[%d].leader.length"):format(ally_i)]) - 1
 	local new_recruits = wml.variables[("wc2_enemy_army.group[%d].leader[%d].recruit"):format(ally_i, leader_index)]
 	wesnoth.wml_actions.allow_recruit {
 		side = cfg.side,
@@ -87,7 +86,7 @@ function enemy.do_commander(cfg, group_id, loc)
 	wesnoth.wml_actions.unit {
 		x = loc[1],
 		y = loc[2],
-		type = helper.rand(commander_options),
+		type = mathx.random_choice(commander_options),
 		side = cfg.side,
 		generate_name = true,
 		role = "commander",
@@ -104,7 +103,7 @@ function enemy.do_supply(cfg, group_id, loc)
 	if not (cfg.supply == 1) then
 		return
 	end
-	local u = wesnoth.get_unit(loc[1], loc[2])
+	local u = wesnoth.units.get(loc[1], loc[2])
 	u:add_modification("trait", wc2_heroes.trait_expert)
 
 	wesnoth.wml_actions.event {
@@ -121,11 +120,11 @@ end
 on_event("recruit", function(ec)
 	local side_num = wesnoth.current.side
 	local side_variables = wesnoth.sides[side_num].variables
-	local to_recall = wc2_utils.split_to_array(side_variables["wc2.to_recall"] or "")
+	local to_recall = stringx.split(side_variables["wc2.to_recall"] or "")
 	if #to_recall == 0 then
 		return
 	end
-	local candidates = wesnoth.get_locations {
+	local candidates = wesnoth.map.find {
 		terrain = "K*,C*,*^C*,*^K*",
 		wml.tag["and"] {
 			wml.tag.filter {
@@ -144,7 +143,7 @@ on_event("recruit", function(ec)
 			wml.tag.filter {}
 		}
 	}
-	helper.shuffle(candidates)
+	mathx.shuffle(candidates)
 	while #candidates > 0 and #to_recall > 0 do
 		enemy.fake_recall(side_num, to_recall[1], candidates[1])
 		table.remove(to_recall, 1)
@@ -161,15 +160,15 @@ function enemy.do_recall(cfg, group_id, loc)
 	local side_variables = wesnoth.sides[side_num].variables
 
 	local group = wml.variables[("wc2_enemy_army.group[%d]"):format(group_id)]
-	local to_recall = wc2_utils.split_to_array(side_variables["wc2.to_recall"])
+	local to_recall = stringx.split(side_variables["wc2.to_recall"] or "")
 	local function recall_level(level)
 		local amount = wml.get_child(cfg, "recall")["level" .. level] or 0
-		local types =  wc2_utils.split_to_array(wml.get_child(group, "recall")["level" .. level] or "")
+		local types =  stringx.split(wml.get_child(group, "recall")["level" .. level] or "")
 		if #types == 0 then
-			get_advanced_units(level, wc2_utils.split_to_array(group.recruit), types)
+			get_advanced_units(level, stringx.split(group.recruit or ""), types)
 		end
 		for i = 1, amount do
-			table.insert(to_recall, types[wesnoth.random(#types)])
+			table.insert(to_recall, types[mathx.random(#types)])
 		end
 	end
 	recall_level(2)
@@ -180,7 +179,7 @@ end
 -- WCT_ENEMY_FAKE_RECALL
 function enemy.fake_recall(side_num, t, loc)
 	local side = wesnoth.sides[side_num]
-	local u = wesnoth.create_unit {
+	local u = wesnoth.units.create {
 		side = side_num,
 		type = t,
 		generate_name = true,
@@ -188,6 +187,7 @@ function enemy.fake_recall(side_num, t, loc)
 	}
 	wc2_training.apply(u)
 	u:to_map(loc)
+	wesnoth.add_known_unit(t)
 	side.gold = side.gold - 20
 end
 
@@ -215,7 +215,7 @@ end
 function enemy.init_data()
 	if wml.variables.wc2_enemy_army == nil then
 		-- give eras an option to overwrite the enemy data.
-		wesnoth.fire_event("wc2_init_enemy")
+		wesnoth.game_events.fire("wc2_init_enemy")
 	end
 	if wml.variables.wc2_enemy_army == nil then
 		-- give eras an option to overwrite the enemy data.
@@ -247,7 +247,7 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 
 	enemy.do_gold(cfg, side)
 
-	local dummy_unit = wesnoth.get_units({side = side_num, canrecruit = true})[1]
+	local dummy_unit = wesnoth.units.find_on_map({side = side_num, canrecruit = true})[1]
 	local loc = {dummy_unit.x,dummy_unit.y}
 	dummy_unit:erase()
 	local enemy_type_id = wc2_utils.pick_random("wc2_enemy_army.factions_available") - 1
@@ -255,13 +255,13 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 		--should't happen, added for robustness.
 		local n_groups = wml.variables["wc2_enemy_army.group.length"]
 		if n_groups > 0 then
-			enemy_type_id = wesnoth.random(n_groups) - 1
+			enemy_type_id = mathx.random(n_groups) - 1
 		else
 			error("no enemy groups defined")
 		end
 	end
 	local leader_cfg = wc2_utils.pick_random_t(("wc2_enemy_army.group[%d].leader"):format(enemy_type_id))
-	local unit = wesnoth.create_unit {
+	local unit = wesnoth.units.create {
 		x = loc[1],
 		y = loc[2],
 		type = scenario == 1 and leader_cfg.level2 or leader_cfg.level3,
@@ -273,9 +273,10 @@ function wesnoth.wml_actions.wc2_enemy(cfg)
 	}
 	if unit.name == "" then
 		-- give names to undead
-		unit.name = wc2_random_names.generate()
+		unit.name = wc2_random_names()
 	end
 	unit:to_map()
+	wesnoth.add_known_unit(unit.type)
 	wesnoth.wml_actions.set_recruit {
 		side = side_num,
 		recruit = wml.variables[("wc2_enemy_army.group[%d].recruit"):format(enemy_type_id)]

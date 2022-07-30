@@ -45,7 +45,7 @@ function muff_toras_move:execution()
         end
 
         -- All else being equal, go with good terrain
-        local hit_chance = muff_toras:defense(wesnoth.get_terrain(x, y))
+        local hit_chance = muff_toras:defense(wesnoth.current.map[{x, y}])
         rating = rating - hit_chance
 
         -- Finally, we want to run away from enemies if there are no other factors.
@@ -73,7 +73,7 @@ function muff_toras_move:execution()
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = muff_toras.id } } }
 
-    local max_rating, best_target, best_weapon = - math.huge
+    local max_rating, best_target, best_weapon = - math.huge, nil, nil
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(muff_toras.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(muff_toras, n_weapon, target)

@@ -1,16 +1,18 @@
 /*
-   Copyright (C) 2008 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
+
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/map/map_context.hpp"
@@ -178,7 +180,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 		boost::regex rexpression_scenario(R"""(\[(scenario|test|multiplayer|tutorial)\])""");
 		if(!boost::regex_search(file_string, rexpression_scenario)) {
-			LOG_ED << "Loading generated scenario file" << std::endl;
+			LOG_ED << "Loading generated scenario file";
 			// 4.0 editor generated scenario
 			try {
 				load_scenario();
@@ -187,7 +189,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 				throw editor_map_load_exception("load_scenario", e.message);
 			}
 		} else {
-			LOG_ED << "Loading embedded map file" << std::endl;
+			LOG_ED << "Loading embedded map file";
 			embedded_ = true;
 			pure_map_ = true;
 			map_ = editor_map::from_string(map_data);
@@ -199,7 +201,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 	// 3.0 Macro referenced pure map
 	const std::string& macro_argument = matched_macro[1];
-	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}" << std::endl;
+	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}";
 
 	std::string new_filename = filesystem::get_wml_location(macro_argument,
 		filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
@@ -211,7 +213,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 		throw editor_map_load_exception(filename, message);
 	}
 
-	LOG_ED << "New filename is: " << new_filename << std::endl;
+	LOG_ED << "New filename is: " << new_filename;
 
 	filename_ = new_filename;
 	file_string = filesystem::read_file(filename_);
@@ -319,7 +321,7 @@ void map_context::load_scenario()
 	try {
 		read(scenario, *(preprocess_file(filename_)));
 	} catch(const config::error& e) {
-		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message << std::endl;
+		LOG_ED << "Caught a config error while parsing file: '" << filename_ << "'\n" << e.message;
 		throw;
 	}
 
@@ -388,7 +390,7 @@ void map_context::draw_terrain_actual(
 	if(!map_.on_board_with_border(loc)) {
 		// requests for painting off the map are ignored in set_terrain anyway,
 		// but ideally we should not have any
-		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")\n";
+		LOG_ED << "Attempted to draw terrain off the map (" << loc << ")";
 		return;
 	}
 
@@ -511,6 +513,9 @@ config map_context::to_config()
 			item["name"].write_if_not_empty(o.name);
 			item["team_name"].write_if_not_empty(o.team_name);
 			item["halo"].write_if_not_empty(o.halo);
+			if(o.submerge) {
+				item["submerge"] = o.submerge;
+			}
 		}
 	}
 
@@ -526,7 +531,7 @@ config map_context::to_config()
 		side["side"] = side_num;
 		side["hidden"] = t->hidden();
 
-		side["controller"] = t->controller();
+		side["controller"] = side_controller::get_string(t->controller());
 		side["no_leader"] = t->no_leader();
 
 		side["team_name"] = t->team_name();
@@ -537,7 +542,7 @@ config map_context::to_config()
 
 		side["fog"] = t->uses_fog();
 		side["shroud"] = t->uses_shroud();
-		side["share_vision"] = t->share_vision();
+		side["share_vision"] = team_shared_vision::get_string(t->share_vision());
 
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();
@@ -683,7 +688,7 @@ void map_context::set_map(const editor_map& map)
 void map_context::perform_action(const editor_action& action)
 {
 	LOG_ED << "Performing action " << action.get_id() << ": " << action.get_name() << ", actions count is "
-		   << action.get_instance_count() << std::endl;
+		   << action.get_instance_count();
 	auto undo = action.perform(*this);
 	if(actions_since_save_ < 0) {
 		// set to a value that will make it impossible to get to zero, as at this point
@@ -703,7 +708,7 @@ void map_context::perform_action(const editor_action& action)
 void map_context::perform_partial_action(const editor_action& action)
 {
 	LOG_ED << "Performing (partial) action " << action.get_id() << ": " << action.get_name() << ", actions count is "
-		   << action.get_instance_count() << std::endl;
+		   << action.get_instance_count();
 	if(!can_undo()) {
 		throw editor_logic_exception("Empty undo stack in perform_partial_action()");
 	}
@@ -768,30 +773,30 @@ const editor_action* map_context::last_redo_action() const
 
 void map_context::undo()
 {
-	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "undo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 
 	if(can_undo()) {
 		perform_action_between_stacks(undo_stack_, redo_stack_);
 		actions_since_save_--;
 	} else {
-		WRN_ED << "undo() called with an empty undo stack" << std::endl;
+		WRN_ED << "undo() called with an empty undo stack";
 	}
 
-	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 }
 
 void map_context::redo()
 {
-	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "redo() beg, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 
 	if(can_redo()) {
 		perform_action_between_stacks(redo_stack_, undo_stack_);
 		++actions_since_save_;
 	} else {
-		WRN_ED << "redo() called with an empty redo stack" << std::endl;
+		WRN_ED << "redo() called with an empty redo stack";
 	}
 
-	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << std::endl;
+	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size();
 }
 
 void map_context::partial_undo()

@@ -1,18 +1,18 @@
 -- Wetland
 function world_conquest_tek_map_repaint_3f()
 	set_terrain { "Ur",
-		f.terrain("U*^Uf,U*"),
+		f.terrain("U*^Tf,U*"),
 		fraction = 10,
 	}
 
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Uu,Uu,Qxu,Uu,Wwf")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uh,Uu,Uu,Qxu,Uu,Wwf")
 
 	-- soft rough terrain generated
 	local terrain_to_change = wct_store_cave_passages_candidates()
 	while #terrain_to_change > 0 do
-		-- the oriignal code also did not randomize this.
-		-- todo: but maybe we should? (use wesnoth.random(#terrain_to_change[) instead of 1 here)
-		map:set_terrain(terrain_to_change[1], "Mm")
+		-- the original code also did not randomize this.
+		-- todo: but maybe we should? (use mathx.random(#terrain_to_change) instead of 1 here)
+		map[terrain_to_change[1]] = "Mm"
 		terrain_to_change = wct_store_cave_passages_candidates()
 	end
 	set_terrain { "Gd",
@@ -20,7 +20,7 @@ function world_conquest_tek_map_repaint_3f()
 		fraction = 4,
 	}
 	set_terrain { "Gd",
-		f.terrain("Hh,Hh^F*,Hh^Uf"),
+		f.terrain("Hh,Hh^F*,Hh^Tf"),
 		fraction = 4,
 	}
 	set_terrain { "Ss",
@@ -32,7 +32,7 @@ function world_conquest_tek_map_repaint_3f()
 		fraction = 5,
 		layer = "overlay",
 	}
-	set_terrain { "*^Uf",
+	set_terrain { "*^Tf",
 		f.terrain("G*"),
 		fraction = 13,
 		layer = "overlay",
@@ -145,7 +145,7 @@ function wct_map_3f_post_bunus_decoration(bonus_points)
 		fraction = 4,
 	}
 
-	if wesnoth.random(7) == 1 then
+	if mathx.random(7) == 1 then
 		set_terrain { "Wwf",
 			f.all(
 				f.terrain("G*"),
@@ -160,7 +160,7 @@ function wct_map_3f_post_bunus_decoration(bonus_points)
 		}
 
 	end
-	if wesnoth.random(7) == 1 then
+	if mathx.random(7) == 1 then
 		set_terrain { "Wwf",
 			f.all(
 				f.terrain("G*"),
@@ -238,7 +238,7 @@ function wct_map_3f_post_bunus_decoration(bonus_points)
 end
 
 function wct_store_cave_passages_candidates()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Mm^Xm"),
 		f.adjacent(f.terrain("Mm^Xm,Xu"), nil, "2-6"),
 		f.adjacent(f.terrain("U*^*"))
@@ -246,6 +246,7 @@ function wct_store_cave_passages_candidates()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Wetland")

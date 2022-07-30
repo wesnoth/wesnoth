@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2010 - 2022
+	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -218,7 +219,7 @@ void move::execute(bool& success, bool& complete)
 		return;
 	}
 
-	LOG_WB << "Executing: " << shared_from_this() << "\n";
+	LOG_WB << "Executing: " << shared_from_this();
 
 	// Copy the current route to ensure it remains valid throughout the animation.
 	const std::vector<map_location> steps = route_->steps;
@@ -240,13 +241,13 @@ void move::execute(bool& success, bool& complete)
 
 	if ( num_steps == 0 )
 	{
-		LOG_WB << "Move execution resulted in zero movement.\n";
+		LOG_WB << "Move execution resulted in zero movement.";
 		success = false;
 		complete = true;
 	}
 	else if ( unit_it == resources::gameboard->units().end()  ||  (unit_id_.empty() && ( unit_it->id() != unit_id_ )))
 	{
-		WRN_WB << "Unit disappeared from map during move execution." << std::endl;
+		WRN_WB << "Unit disappeared from map during move execution.";
 		success = false;
 		complete = true;
 	}
@@ -259,14 +260,14 @@ void move::execute(bool& success, bool& complete)
 		{
 			if ( complete )
 			{
-				LOG_WB << "Move completed, but interrupted on final hex. Halting.\n";
+				LOG_WB << "Move completed, but interrupted on final hex. Halting.";
 				//reset to a single-hex path, just in case *this is a wb::attack
 				route_->steps = std::vector<map_location>(1, final_location);
 				arrow_.reset();
 			}
 			else
 			{
-				LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "). Setting new path.\n";
+				LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "). Setting new path.";
 				route_->steps = std::vector<map_location>(steps.begin() + num_steps, steps.end());
 				//FIXME: probably better to use the new calculate_new_route() instead of the above:
 				//calculate_new_route(final_location, steps.back());
@@ -359,10 +360,10 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	//Modify movement points
 	DBG_WB <<"Move: Changing movement points for unit " << unit->name() << " [" << unit->id()
 			<< "] from " << unit->movement_left() << " to "
-			<< calculate_moves_left(*unit) << ".\n";
+			<< calculate_moves_left(*unit) << ".";
 	// Move the unit
 	DBG_WB << "Move: Temporarily moving unit " << unit->name() << " [" << unit->id()
-			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
+			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")";
 	mover_.reset(new temporary_unit_mover(unit_map, get_source_hex(), get_dest_hex(), calculate_moves_left(*unit)));
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
@@ -386,7 +387,7 @@ void move::remove_temp_modifier(unit_map&)
 		}
 		DBG_WB << "Move: Movement points for unit " << unit->name() << " [" << unit->id()
 					<< "] should get changed from " << unit->movement_left() << " to "
-					<< calculate_moves_left(*unit) << ".\n";
+					<< calculate_moves_left(*unit) << ".";
 	}
 
 	// Restore the unit to its original position and movement.
@@ -548,7 +549,7 @@ int move::calculate_moves_left(unit& u)
 		// @todo: find a better treatment of movement points when defining moves out-of-turn
 		if(u.movement_left() - route_->move_cost < 0
 				&& resources::controller->current_side() == display::get_singleton()->viewing_side()) {
-			WRN_WB << shared_from_this() << " defined with insufficient movement left." << std::endl;
+			WRN_WB << shared_from_this() << " defined with insufficient movement left.";
 		}
 
 		// If unit finishes move in a village it captures, set the move cost to unit's movement_left()

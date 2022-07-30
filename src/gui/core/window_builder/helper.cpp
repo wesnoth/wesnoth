@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -43,7 +44,7 @@ unsigned get_v_align(const std::string& v_align)
 	} else {
 		if(!v_align.empty() && v_align != "center") {
 			ERR_GUI_E << "Invalid vertical alignment '" << v_align
-					  << "' falling back to 'center'.\n";
+					  << "' falling back to 'center'.";
 		}
 		return grid::VERTICAL_ALIGN_CENTER;
 	}
@@ -58,7 +59,7 @@ unsigned get_h_align(const std::string& h_align)
 	} else {
 		if(!h_align.empty() && h_align != "center") {
 			ERR_GUI_E << "Invalid horizontal alignment '" << h_align
-					  << "' falling back to 'center'.\n";
+					  << "' falling back to 'center'.";
 		}
 		return grid::HORIZONTAL_ALIGN_CENTER;
 	}
@@ -97,7 +98,7 @@ unsigned read_flags(const config& cfg)
 
 		if(!(cfg["vertical_alignment"]).empty()) {
 			ERR_GUI_P << "vertical_grow and vertical_alignment "
-						 "can't be combined, alignment is ignored.\n";
+						 "can't be combined, alignment is ignored.";
 		}
 	} else {
 		flags |= v_flags;
@@ -108,7 +109,7 @@ unsigned read_flags(const config& cfg)
 
 		if(!(cfg["horizontal_alignment"]).empty()) {
 			ERR_GUI_P << "horizontal_grow and horizontal_alignment "
-						 "can't be combined, alignment is ignored.\n";
+						 "can't be combined, alignment is ignored.";
 		}
 	} else {
 		flags |= h_flags;
@@ -125,7 +126,7 @@ scrollbar_mode get_scrollbar_mode(const std::string& scrollbar_mode)
 
 	if(scrollbar_mode_map.find(scrollbar_mode) == scrollbar_mode_map.end()) {
 		ERR_GUI_E << "Invalid scrollbar mode '" << scrollbar_mode << "'."
-		          << "Falling back to 'initial_auto'." << std::endl;
+		          << "Falling back to 'initial_auto'.";
 
 		return scrollbar_container::AUTO_VISIBLE_FIRST_RUN;
 	}
@@ -143,7 +144,7 @@ int get_retval(const std::string& retval_id,
 			return result;
 		} else {
 			ERR_GUI_E << "Window builder: retval_id '" << retval_id
-					  << "' is unknown.\n";
+					  << "' is unknown.";
 		}
 	}
 

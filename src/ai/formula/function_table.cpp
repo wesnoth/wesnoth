@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Bartosz Waresiak <dragonking@o2.pl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Bartosz Waresiak <dragonking@o2.pl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <queue>
@@ -410,7 +411,7 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 	//NOTE: get_wml_location also filters file path to ensure it doesn't contain things like "../../top/secret"
 	std::string path = filesystem::get_wml_location(filename);
 	if(path.empty()) {
-		ERR_AI << "run_file : not found [" << filename <<"]"<< std::endl;
+		ERR_AI << "run_file : not found [" << filename <<"]";
 		return variant(); //no suitable file
 	}
 
@@ -418,7 +419,7 @@ DEFINE_FAI_FUNCTION(run_file, 1, 1)
 	//need to get function_table from somewhere or delegate to someone who has access to it
 	formula_ptr parsed_formula = ai_.create_optional_formula(formula_string);
 	if(parsed_formula == formula_ptr()) {
-		ERR_AI << "run_file : unable to create formula"<< std::endl;
+		ERR_AI << "run_file : unable to create formula";
 		return variant(); //was unable to create a formula from file
 	}
 	return parsed_formula->evaluate(variables,add_debug_info(fdb,-1,"run_file:formula_from_file"));
@@ -570,7 +571,7 @@ DEFINE_FAI_FUNCTION(close_enemies, 2, 2)
 	const map_location loc = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "close_enemies:location")).convert_to<location_callable>()->loc();
 	int range_s = args()[1]->evaluate(variables,add_debug_info(fdb,1,"close_enemies:distance")).as_int();
 	if (range_s < 0) {
-		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")" << std::endl;
+		WRN_AI << "close_enemies_function: range is negative (" << range_s << ")";
 		range_s = 0;
 	}
 	std::size_t range = static_cast<std::size_t>(range_s);
@@ -599,7 +600,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 		args()[0]->evaluate(variables, add_debug_info(fdb, 0, "calculate_outcome:attacker_current_location")).convert_to<location_callable>()->loc();
 	if(units.count(attacker_location) == 0) {
 		ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
-			attacker_location.wml_x() << "," << attacker_location.wml_y() << ")\n";
+			attacker_location.wml_x() << "," << attacker_location.wml_y() << ")";
 		return variant();
 	}
 
@@ -607,7 +608,7 @@ DEFINE_WFL_FUNCTION(calculate_outcome, 3, 4)
 		args()[2]->evaluate(variables,add_debug_info(fdb, 2, "calculate_outcome:defender_location")).convert_to<location_callable>()->loc();
 	if(units.count(defender_location) == 0) {
 		ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
-			defender_location.wml_x() << "," << defender_location.wml_y() << ")\n";
+			defender_location.wml_x() << "," << defender_location.wml_y() << ")";
 		return variant();
 	}
 
@@ -859,7 +860,7 @@ DEFINE_WFL_FUNCTION(move, 2, 2)
 {
 	const map_location src = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "move:src")).convert_to<location_callable>()->loc();
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "move:dst")).convert_to<location_callable>()->loc();
-	LOG_AI << "move(): " << src << ", " << dst << ")\n";
+	LOG_AI << "move(): " << src << ", " << dst << ")";
 	return variant(std::make_shared<move_callable>(src, dst));
 }
 
@@ -867,7 +868,7 @@ DEFINE_WFL_FUNCTION(move_partial, 2, 2)
 {
 	const map_location src = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "move_partial:src")).convert_to<location_callable>()->loc();
 	const map_location dst = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "move_partial:dst")).convert_to<location_callable>()->loc();
-	LOG_AI << "move_partial(): " << src << ", " << dst << ")\n";
+	LOG_AI << "move_partial(): " << src << ", " << dst << ")";
 	return variant(std::make_shared<move_partial_callable>(src, dst));
 }
 
@@ -892,7 +893,7 @@ DEFINE_WFL_FUNCTION(attack, 3, 4)
 	const map_location dst = args()[2]->evaluate(variables, add_debug_info(fdb, 2, "attack:dst")).convert_to<location_callable>()->loc();
 	const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
 	if(resources::gameboard->units().count(move_from) == 0 || resources::gameboard->units().count(dst) == 0) {
-		ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << std::endl;
+		ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst;
 		return variant();
 	}
 	return variant(std::make_shared<attack_callable>(move_from, src, dst, weapon));

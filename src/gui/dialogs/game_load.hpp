@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -31,9 +32,9 @@ namespace dialogs
 {
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * This shows the dialog to select and load a savegame file.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * txtFilter         | text         |yes      |The filter for the listbox items.
  * savegame_list     | @ref listbox |yes      |List of savegames.
@@ -50,16 +51,11 @@ class game_load : public modal_dialog
 public:
 	game_load(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
-	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
-	{
-		return game_load(cache_config, data).show();
-	}
+	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
 
 private:
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
 	void set_save_dir_list(menu_button& dir_list);
@@ -72,7 +68,8 @@ private:
 	void delete_button_callback();
 	void handle_dir_select();
 
-	void display_savegame_internal();
+	/** Part of display_savegame that might throw a config::error if the savegame data is corrupt. */
+	void display_savegame_internal(const savegame::save_info& game);
 	void display_savegame();
 	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 

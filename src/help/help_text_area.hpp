@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -18,9 +19,9 @@
 #include <string>                       // for string
 #include <utility>                      // for pair
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
-#include "sdl/surface.hpp"                // for surface
+#include "sdl/texture.hpp"              // for texture
 #include "widgets/scrollarea.hpp"       // for scrollarea
-class CVideo;
+
 class config;
 namespace help { struct section; }
 namespace help { struct topic; }
@@ -32,7 +33,7 @@ namespace help {
 class help_text_area : public gui::scrollarea
 {
 public:
-	help_text_area(CVideo &video, const section &toplevel);
+	help_text_area(const section &toplevel);
 	/** Display the topic. */
 	void show_topic(const topic &t);
 
@@ -58,17 +59,17 @@ private:
 	 */
 	struct item {
 
-		item(surface surface, int x, int y, const std::string& text="",
+		item(const texture& tex, int x, int y, const std::string& text="",
 			 const std::string& reference_to="", bool floating=false,
 			 bool box=false, ALIGNMENT alignment=HERE);
 
-		item(surface surface, int x, int y,
+		item(const texture& tex, int x, int y,
 			 bool floating, bool box=false, ALIGNMENT=HERE);
 
 		/** Relative coordinates of this item. */
-		SDL_Rect rect;
+		rect rect_;
 
-		surface surf;
+		texture tex;
 
 		// If this item contains text, this will contain that text.
 		std::string text;

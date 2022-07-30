@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -199,6 +200,8 @@ public:
 
 	virtual double get_aggression() const = 0;
 
+	virtual bool get_allow_ally_villages() const = 0;
+
 	virtual const aspect_map& get_aspects() const = 0;
 
 	virtual aspect_map& get_aspects() = 0;
@@ -263,6 +266,10 @@ public:
 	virtual int get_recruitment_randomness() const = 0;
 
 	virtual const config get_recruitment_save_gold() const = 0;
+
+	virtual double get_retreat_enemy_weight() const = 0;
+
+	virtual double get_retreat_factor() const = 0;
 
 	virtual double get_scout_village_targeting() const = 0;
 
@@ -548,6 +555,11 @@ public:
 		return target_->get_aggression();
 	}
 
+	virtual bool get_allow_ally_villages() const override
+	{
+		return target_->get_allow_ally_villages();
+	}
+
 	virtual const aspect_map& get_aspects() const override
 	{
 		return target_->get_aspects();
@@ -711,6 +723,16 @@ public:
 	virtual const move_map& get_srcdst() const override
 	{
 		return target_->get_srcdst();
+	}
+
+	virtual double get_retreat_enemy_weight() const override
+	{
+		return target_->get_retreat_enemy_weight();
+	}
+
+	virtual double get_retreat_factor() const override
+	{
+		return target_->get_retreat_factor();
 	}
 
 	virtual double get_scout_village_targeting() const override
@@ -1122,6 +1144,8 @@ public:
 
 	virtual double get_aggression() const override;
 
+	virtual bool get_allow_ally_villages() const override;
+
 	virtual const aspect_map& get_aspects() const override;
 
 	virtual aspect_map& get_aspects() override;
@@ -1179,6 +1203,10 @@ public:
 	virtual int get_recruitment_randomness() const override;
 
 	virtual const config get_recruitment_save_gold() const override;
+
+	virtual double get_retreat_enemy_weight() const override;
+
+	virtual double get_retreat_factor() const override;
 
 	virtual double get_scout_village_targeting() const override;
 
@@ -1263,6 +1291,7 @@ private:
 
 	typesafe_aspect_ptr<unit_advancements_aspect> advancements_;
 	typesafe_aspect_ptr<double> aggression_;
+	typesafe_aspect_ptr<bool> allow_ally_villages_;
 	aspect_map aspects_;
 	typesafe_aspect_ptr<attacks_vector> attacks_;
 	mutable typesafe_aspect_ptr<terrain_filter> avoid_;
@@ -1295,6 +1324,8 @@ private:
 	typesafe_aspect_ptr<int> recruitment_randomness_;
 	typesafe_aspect_ptr<config> recruitment_save_gold_;
 	recursion_counter recursion_counter_;
+	typesafe_aspect_ptr<double> retreat_enemy_weight_;
+	typesafe_aspect_ptr<double> retreat_factor_;
 	typesafe_aspect_ptr<double> scout_village_targeting_;
 	typesafe_aspect_ptr<bool> simple_targeting_;
 	mutable move_map srcdst_;

@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local M = wesnoth.map
@@ -12,8 +11,8 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 
     if (hunter.attacks_left == 0) then return 'no_attack' end
 
-    local min_hp, target = math.huge
-    for xa,ya in H.adjacent_tiles(hunter.x, hunter.y) do
+    local min_hp, target = math.huge, nil
+    for xa,ya in wesnoth.current.map:iter_adjacent(hunter) do
         local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then
@@ -61,10 +60,9 @@ function ca_hunter:execution(cfg)
     -- If hunting_status is not set for the hunter -> default behavior -> random wander
     if (not hunter_vars.hunting_status) then
         -- Hunter gets a new goal if none exist or on any move with 10% random chance
-        local rand = math.random(10)
-        if (not hunter_vars.goal_x) or (rand == 1) then
+        if (not hunter_vars.goal_x) or (math.random(10) == 1) then
             -- 'locs' includes border hexes, but that does not matter here
-            locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
+            local locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
             local rand = math.random(#locs)
 
             hunter_vars.goal_x, hunter_vars.goal_y = locs[rand][1], locs[rand][2]
@@ -74,14 +72,14 @@ function ca_hunter:execution(cfg)
         local reach_map = AH.get_reachable_unocc(hunter)
 
         -- Now find the one of these hexes that is closest to the goal
-        local max_rating, best_hex = - math.huge
+        local max_rating, best_hex = - math.huge, nil
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
             local rating = -M.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
 
             -- Huge rating bonus if this is next to an enemy
             local enemy_hp = 500
-            for xa,ya in H.adjacent_tiles(x, y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
                 local enemy = wesnoth.units.get(xa, ya)
                 if AH.is_attackable_enemy(enemy) then
                     if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
@@ -130,7 +128,7 @@ function ca_hunter:execution(cfg)
     -- If we got here, this means the hunter is either returning, or resting
     if (hunter_vars.hunting_status == 'returning') then
         local home_loc = AH.get_named_loc_xy('home', cfg)
-        goto_x, goto_y = wesnoth.find_vacant_tile(home_loc[1], home_loc[2], hunter)
+        local goto_x, goto_y = wesnoth.paths.find_vacant_hex(home_loc[1], home_loc[2], hunter)
 
         local next_hop = AH.next_hop(hunter, goto_x, goto_y)
         if next_hop then

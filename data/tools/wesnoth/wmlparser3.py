@@ -323,6 +323,9 @@ class RootNode(TagNode):
                 s += subline + "\n"
         return s
 
+    def get_name(self):
+        return "root"
+
     def __str__(self):
         return "RootNode()"
 
@@ -685,6 +688,7 @@ def xmlify(tree, verbose=False, depth=0):
 
     def node_to_et(n):
         et = ET.Element(n.get_name())
+
         for att in n.get_all(att=""):
             attel = ET.Element(att.get_name())
             attel.text = att.get_text()
@@ -693,9 +697,7 @@ def xmlify(tree, verbose=False, depth=0):
             et.append(node_to_et(tag))
         return et
 
-    ET.ElementTree(node_to_et(tree.get_all()[0])).write(
-        sys.stdout, encoding="unicode")
-
+    ET.ElementTree(node_to_et(tree)).write(sys.stdout, encoding="unicode")
 
 if __name__ == "__main__":
     arg = argparse.ArgumentParser()
@@ -1015,8 +1017,6 @@ foo='bar' .. 'baz'
         print()
     elif args.to_xml:
         print('<?xml version="1.0" encoding="UTF-8" ?>')
-        print('<root>')
         xmlify(p.root, True, 1)
-        print('</root>')
     else:
         print((p.root.debug()))

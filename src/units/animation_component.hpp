@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 // This class encapsulates the animation functionality of unit.
@@ -58,11 +59,11 @@ public:
 		unit_halo_() {}
 
 	/** Chooses an appropriate animation from the list of known animations. */
-	const unit_animation* choose_animation(const display& disp,
+	const unit_animation* choose_animation(
 			const map_location& loc, const std::string& event,
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,
-			const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID,
+			const strike_result::type hit_type = strike_result::type::invalid,
 			const_attack_ptr attack=nullptr,const_attack_ptr second_attack = nullptr,
 			int swing_num =0);
 

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -182,14 +183,14 @@ void scrollbar_base::update_canvas()
 		tmp.set_variable("positioner_offset", wfl::variant(positioner_offset_));
 		tmp.set_variable("positioner_length", wfl::variant(positioner_length_));
 	}
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void scrollbar_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -228,7 +229,7 @@ void scrollbar_base::recalculate()
 		assert(window);
 		window->invalidate_layout();
 		ERR_GUI_G << LOG_HEADER
-				  << " Can't recalculate size, force a window layout phase.\n";
+				  << " Can't recalculate size, force a window layout phase.";
 		return;
 	}
 
@@ -247,7 +248,7 @@ void scrollbar_base::recalculate()
 
 	set_item_position(item_position_ * step_size_);
 #if 0
-	std::cerr << "Scrollbar recalculate overview:\n"
+	PLAIN_LOG << "Scrollbar recalculate overview:\n"
 		<< "item_count_ " << item_count_
 		<< " visible_items_ " << visible_items_
 		<< " step_size_ " << step_size_
@@ -313,7 +314,7 @@ void scrollbar_base::move_positioner(const int distance)
 		// positioner_moved_notifier_.notify();
 	}
 #if 0
-	std::cerr << "Scrollbar move overview:\n"
+	PLAIN_LOG << "Scrollbar move overview:\n"
 		<< "item_count_ " << item_count_
 		<< " visible_items_ " << visible_items_
 		<< " step_size_ " << step_size_
@@ -335,7 +336,7 @@ void scrollbar_base::signal_handler_mouse_enter(const event::ui_event event,
 											 bool& handled,
 											 bool& halt)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// Send the motion under our event id to make debugging easier.
 	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
@@ -346,7 +347,7 @@ void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 											  bool& halt,
 											  const point& coordinate)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".";
 
 	point mouse = coordinate;
 	mouse.x -= get_x();
@@ -390,7 +391,7 @@ void scrollbar_base::signal_handler_mouse_motion(const event::ui_event event,
 void scrollbar_base::signal_handler_mouse_leave(const event::ui_event event,
 											 bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ == FOCUSED) {
 		set_state(ENABLED);
@@ -402,7 +403,7 @@ void scrollbar_base::signal_handler_mouse_leave(const event::ui_event event,
 void scrollbar_base::signal_handler_left_button_down(const event::ui_event event,
 												  bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();
@@ -433,7 +434,7 @@ void scrollbar_base::signal_handler_left_button_down(const event::ui_event event
 void scrollbar_base::signal_handler_left_button_up(const event::ui_event event,
 												bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();

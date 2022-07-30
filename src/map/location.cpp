@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -195,7 +196,7 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 		try {
 			x = std::stoi(xs) - 1;
 		} catch(const std::invalid_argument&) {
-			ERR_CF << "Invalid map coordinate: " << xs << "\n";
+			ERR_CF << "Invalid map coordinate: " << xs;
 		}
 	}
 
@@ -203,7 +204,7 @@ map_location::map_location(const config& cfg, const variable_set *variables) :
 		try {
 			y = std::stoi(ys) - 1;
 		} catch(const std::invalid_argument&) {
-			ERR_CF << "Invalid map coordinate: " << ys << "\n";
+			ERR_CF << "Invalid map coordinate: " << ys;
 		}
 	}
 }
@@ -328,7 +329,7 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 	//
 	// No warning if only x or only y was given, as matching only that coordinate seems sane.
 	if(xlocs.size() != ylocs.size() && xlocs.size() && ylocs.size()) {
-		ERR_CF << "Different size lists when pairing coordinate ranges: " << xloc << " vs " << yloc << "\n";
+		ERR_CF << "Different size lists when pairing coordinate ranges: " << xloc << " vs " << yloc;
 	}
 
 	std::size_t i = 0;

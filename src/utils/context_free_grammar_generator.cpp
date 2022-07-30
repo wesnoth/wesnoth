@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2016 - 2018 by Ján Dugáček
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	by Ján Dugáček
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -27,6 +28,9 @@
 #include <algorithm>
 
 #include <boost/algorithm/string.hpp>
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 context_free_grammar_generator::~context_free_grammar_generator()
 {
@@ -143,7 +147,8 @@ std::string context_free_grammar_generator::print_nonterminal(const std::string&
 
 		std::map<std::string,nonterminal>::const_iterator found = nonterminals_.find(name);
 		if (found == nonterminals_.end()) {
-			lg::wml_error() << "[context_free_grammar_generator] Warning: needed nonterminal" << name << " not defined";
+			lg::log_to_chat() << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined\n";
+			ERR_WML << "[context_free_grammar_generator] Warning: needed nonterminal " << name << " not defined";
 			return "!" + name;
 		}
 		const context_free_grammar_generator::nonterminal& got = found->second;

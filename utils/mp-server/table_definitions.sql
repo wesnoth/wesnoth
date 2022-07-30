@@ -18,6 +18,13 @@
 --     PRIMARY KEY (USER_ID, GROUP_ID)
 -- ) ENGINE=InnoDB;
 
+-- a minimal topics table, if not using a phpbb3 installation
+-- create table topics
+-- (
+--     TOPIC_ID MEDIUMINT(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+--     PRIMARY KEY (TOPIC_ID)
+-- ) ENGINE=InnoDB;
+
 -- table which the forum inserts bans into, which wesnothd checks during login
 -- create table ban
 -- (
@@ -84,6 +91,7 @@ CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 -- FACTION: the faction being played by this side
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
+-- USER_NAME: the username logged in with
 create table game_player_info
 (
     INSTANCE_UUID  CHAR(36) NOT NULL,
@@ -116,3 +124,47 @@ create table game_content_info
     VERSION           VARCHAR(255) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- information about an uploaded addon
+-- INSTANCE_VERSION: the version of the addons server instance
+-- ADDON_ID: the ID of the addon (folder name)
+-- ADDON_NAME: the name of the addon
+-- TYPE: the type of the addon
+-- VERSION: the version of the addon
+-- FORUM_AUTH: whether forum authentication is to be used when uploading
+-- UPLOADED_ON: when the addon was uploaded
+-- FEEDBACK_TOPIC: the forum topic ID where feedback for the addon can be posted, 0 if not set
+-- DOWNLOAD_COUNT: the number of times the add-on has been downloaded by players (does not count downloads from https://addons.wesnoth.org)
+create table addon_info
+(
+    INSTANCE_VERSION VARCHAR(255) NOT NULL,
+    ADDON_ID         VARCHAR(255) NOT NULL,
+    ADDON_NAME       VARCHAR(255) NOT NULL,
+    TYPE             VARCHAR(255) NOT NULL,
+    VERSION          VARCHAR(255) NOT NULL,
+    FORUM_AUTH       BIT(1) NOT NULL,
+    UPLOADED_ON      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FEEDBACK_TOPIC   INT UNSIGNED NOT NULL,
+    DOWNLOAD_COUNT   INT UNSIGNED NOT NULL DEFAULT 0,
+    PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, VERSION)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- history of user sessions
+-- LOGIN_ID: auto generated ID to use as a primary key
+-- USER_NAME: the username logged in with
+-- IP: the IP address the login originated from
+-- LOGIN_TIME: when the user logged in
+-- LOGOUT_TIME: when the user logged out
+-- VERSION: the version the user logged in with
+create table connection_history
+(
+    LOGIN_ID    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    USER_NAME   VARCHAR(255) NOT NULL,
+    IP          VARCHAR(255) NOT NULL,
+    LOGIN_TIME  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    LOGOUT_TIME TIMESTAMP NULL DEFAULT NULL,
+    VERSION     VARCHAR(255),
+    PRIMARY KEY (LOGIN_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX CONNECTION_IP_IDX ON connection_history(IP);
+CREATE INDEX CONNECTION_USERNAME_IDX ON connection_history(USER_NAME);

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -156,7 +157,7 @@ static component *find_component(component *root, const std::string &path, path_
 				pe.position = -2;
 			}
 		}
-		//DBG_AI_COMPONENT << "adding path element: "<< pe << std::endl;
+		//DBG_AI_COMPONENT << "adding path element: "<< pe;
 		elements.push_back(pe);
 	}
 	if (elements.size()<1) {
@@ -243,7 +244,7 @@ std::string component_manager::print_component_tree(component *root, const std::
 	if (!path.empty()) {
 		c = find_component(root,path,tail);
 		if (c==nullptr) {
-			ERR_AI_COMPONENT << "unable to find component" <<std::endl;
+			ERR_AI_COMPONENT << "unable to find component";
 			return "";
 		}
 	} else {

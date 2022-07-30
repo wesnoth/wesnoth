@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -20,8 +21,37 @@
 #include <deque>
 #include <unordered_map>
 
+class game_lua_kernel;
+
 namespace game_events
 {
+class event_handlers;
+/**
+ * Represents a handler that is about to be added to the events manager but is still waiting for some data.
+ * The handler will automatically be added when this class is destroyed, unless it has become invalid somehow.
+ */
+class pending_event_handler
+{
+	event_handlers& list_;
+	handler_ptr handler_;
+	pending_event_handler(const pending_event_handler&) = delete;
+	pending_event_handler& operator=(const pending_event_handler&) = delete;
+	// It's move-constructible, but there's no way to make it move-assignable since it contains a reference...
+	pending_event_handler& operator=(pending_event_handler&&) = delete;
+public:
+	pending_event_handler(event_handlers& list, handler_ptr handler)
+		: list_(list)
+		, handler_(handler)
+	{}
+	/** Check if this handler is valid. */
+	bool valid() const {return handler_.get();}
+	/** Access the event handler. */
+	event_handler* operator->() {return handler_.get();}
+	event_handler& operator*() {return *handler_;}
+	pending_event_handler(pending_event_handler&&) = default;
+	~pending_event_handler();
+};
+
 // event_handlers is essentially the implementation details of the manager
 class event_handlers
 {
@@ -47,6 +77,9 @@ private:
 	id_map_t id_map_;
 
 	void log_handlers();
+
+	friend pending_event_handler;
+	void finish_adding_event_handler(handler_ptr new_handler);
 
 public:
 	/** Utility to standardize the event names used in by_name_. */
@@ -81,7 +114,7 @@ public:
 	handler_list& get(const std::string& name);
 
 	/** Adds an event handler. */
-	void add_event_handler(const config& cfg, bool is_menu_item = false);
+	pending_event_handler add_event_handler(const std::string& name, const std::string& id, bool repeat, bool is_menu_item = false);
 
 	/** Removes an event handler, identified by its ID. */
 	void remove_event_handler(const std::string& id);

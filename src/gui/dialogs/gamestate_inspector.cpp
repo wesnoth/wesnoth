@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -33,6 +34,7 @@
 
 #include "game_board.hpp"
 #include "game_data.hpp"
+#include "gettext.hpp"
 #include "recall_list_manager.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -66,9 +68,7 @@ inline std::string config_to_string(const config& cfg, std::string only_children
 
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class gamestate_inspector::model
@@ -141,7 +141,7 @@ public:
 
 	stuff_list_adder& widget(const std::string& ref, const std::string& label, bool markup = false)
 	{
-		string_map& item = data_[ref];
+		widget_item& item = data_[ref];
 		item["label"] = label;
 		item["use_markup"] = utils::bool_string(markup);
 		return *this;
@@ -150,7 +150,7 @@ public:
 private:
 	tree_view_node& stuff_list_;
 	const std::string defn_;
-	std::map<std::string, string_map> data_;
+	widget_data data_;
 };
 
 class gamestate_inspector::view
@@ -264,6 +264,8 @@ public:
 
 	void show_list(tree_view_node& node);
 	void show_unit(tree_view_node& node);
+	void show_var(tree_view_node& node);
+	void show_array(tree_view_node& node);
 };
 
 class team_mode_controller : public single_mode_controller
@@ -282,6 +284,9 @@ public:
 	void show_recall_unit(tree_view_node& node, int side);
 	void show_units(tree_view_node& node, int side);
 	void show_unit(tree_view_node& node, int side);
+	void show_vars(tree_view_node& node, int side);
+	void show_var(tree_view_node& node, int side);
+	void show_array(tree_view_node& node, int side);
 };
 
 class gamestate_inspector::controller
@@ -485,7 +490,7 @@ const display_context& single_mode_controller::dc() const {
 event_mode_controller::event_mode_controller(gamestate_inspector::controller& c)
 	: single_mode_controller(c)
 {
-	single_mode_controller::events().write_events(events);
+	single_mode_controller::events().write_events(events, true);
 }
 
 void variable_mode_controller::show_list(tree_view_node& node)
@@ -507,7 +512,7 @@ void variable_mode_controller::show_list(tree_view_node& node)
 
 	std::map<std::string, std::size_t> wml_array_sizes;
 
-	for(const auto& ch : vars().all_children_range())
+	for(const auto ch : vars().all_children_range())
 	{
 
 		std::ostringstream cur_str;
@@ -640,6 +645,61 @@ void unit_mode_controller::show_unit(tree_view_node& node)
 	config c_unit;
 	u->write(c_unit);
 	model().set_data(config_to_string(c_unit));
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	for(const auto& attr : u->variables().attribute_range())
+	{
+		c.set_node_callback(
+			view().stuff_list_entry(&node, "basic")
+				.widget("name", attr.first)
+				.add(),
+			&unit_mode_controller::show_var);
+	}
+
+	std::map<std::string, std::size_t> wml_array_sizes;
+
+	for(const auto ch : u->variables().all_children_range())
+	{
+
+		std::ostringstream cur_str;
+		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+
+		this->c.set_node_callback(
+			view().stuff_list_entry(&node, "basic")
+				.widget("name", cur_str.str())
+				.add(),
+			&unit_mode_controller::show_array);
+		wml_array_sizes[ch.key]++;
+	}
+}
+
+void unit_mode_controller::show_var(tree_view_node& node)
+{
+	widget* w = node.find("name", false);
+	int i = node.describe_path().back();
+	unit_map::const_iterator u = dc().units().begin();
+	std::advance(u, i);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		model().set_data(u->variables()[lbl->get_label().str()]);
+	}
+}
+
+void unit_mode_controller::show_array(tree_view_node& node)
+{
+	widget* w = node.find("name", false);
+	int i = node.describe_path().back();
+	unit_map::const_iterator u = dc().units().begin();
+	std::advance(u, i);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		const std::string& var = lbl->get_label();
+		std::size_t n_start = var.find_last_of('[') + 1;
+		std::size_t n_len = var.size() - n_start - 1;
+		int n = std::stoi(var.substr(n_start, n_len));
+		model().set_data(config_to_string(u->variables().child(var.substr(1, n_start - 3), n)));
+	}
 }
 
 void team_mode_controller::show_list(tree_view_node& node, int side)
@@ -669,6 +729,12 @@ void team_mode_controller::show_list(tree_view_node& node, int side)
 			.widget("name", "units")
 			.add(),
 		&team_mode_controller::show_units,
+		side);
+	c.set_node_callback(
+		view().stuff_list_entry(&node, "basic")
+			.widget("name", "variables")
+			.add(),
+		&team_mode_controller::show_vars,
 		side);
 }
 
@@ -778,6 +844,66 @@ void team_mode_controller::show_units(tree_view_node&, int side)
 	model().set_data(s.str());
 }
 
+void team_mode_controller::show_vars(tree_view_node& node, int side)
+{
+	model().clear_data();
+
+	if(node.count_children() > 0) {
+		return;
+	}
+
+	const team& t = dc().get_team(side);
+
+	for(const auto& attr : t.variables().attribute_range())
+	{
+		c.set_node_callback(
+			view().stuff_list_entry(&node, "basic")
+				.widget("name", attr.first)
+				.add(),
+			&team_mode_controller::show_var,
+			side);
+	}
+
+	std::map<std::string, std::size_t> wml_array_sizes;
+
+	for(const auto ch : t.variables().all_children_range())
+	{
+
+		std::ostringstream cur_str;
+		cur_str << "[" << ch.key << "][" << wml_array_sizes[ch.key] << "]";
+
+		this->c.set_node_callback(
+			view().stuff_list_entry(&node, "basic")
+				.widget("name", cur_str.str())
+				.add(),
+			&team_mode_controller::show_array,
+			side);
+		wml_array_sizes[ch.key]++;
+	}
+}
+
+void team_mode_controller::show_var(tree_view_node& node, int side)
+{
+	widget* w = node.find("name", false);
+	const team& t = dc().get_team(side);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		model().set_data(t.variables()[lbl->get_label().str()]);
+	}
+}
+
+void team_mode_controller::show_array(tree_view_node& node, int side)
+{
+	widget* w = node.find("name", false);
+	const team& t = dc().get_team(side);
+	if(label* lbl = dynamic_cast<label*>(w)) {
+		const std::string& var = lbl->get_label();
+		std::size_t n_start = var.find_last_of('[') + 1;
+		std::size_t n_len = var.size() - n_start - 1;
+		int n = std::stoi(var.substr(n_start, n_len));
+		model().set_data(config_to_string(t.variables().child(var.substr(1, n_start - 3), n)));
+	}
+}
+
 REGISTER_DIALOG(gamestate_inspector)
 
 gamestate_inspector::gamestate_inspector(const config& vars, const game_events::manager& events, const display_context& dc, const std::string& title)
@@ -802,4 +928,3 @@ void gamestate_inspector::pre_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

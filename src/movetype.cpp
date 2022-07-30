@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -282,7 +283,7 @@ int movetype::terrain_info::data::calc_value(
 		ERR_CF << "infinite terrain_info recursion on "
 		       << (params_.use_move ? "movement" : "defense") << ": "
 			   << t_translation::write_terrain_code(terrain)
-			   << " depth " << recurse_count << '\n';
+			   << " depth " << recurse_count;
 		return params_.default_value;
 	}
 
@@ -319,14 +320,14 @@ int movetype::terrain_info::data::calc_value(
 			WRN_CF << "Terrain '" << terrain << "' has evaluated to " << result
 				   << " (" << (params_.use_move ? "cost" : "defense")
 			       << "), which is less than " << params_.min_value
-			       << "; resetting to " << params_.min_value << ".\n";
+			       << "; resetting to " << params_.min_value << ".";
 			result = params_.min_value;
 		}
 		if ( result > params_.max_value ) {
 			WRN_CF << "Terrain '" << terrain << "' has evaluated to " << result
 				   << " (" << (params_.use_move ? "cost" : "defense")
 				   << "), which is more than " << params_.max_value
-			       << "; resetting to " << params_.max_value << ".\n";
+			       << "; resetting to " << params_.max_value << ".";
 			result = params_.max_value;
 		}
 
@@ -518,6 +519,7 @@ void swap(movetype & a, movetype & b)
 	swap(a.defense_, b.defense_);
 	std::swap(a.resist_, b.resist_);
 	std::swap(a.flying_, b.flying_);
+	std::swap(a.special_notes_, b.special_notes_);
 }
 
 movetype & movetype::operator=(const movetype & that)
@@ -801,7 +803,8 @@ movetype::movetype() :
 	jamming_(mvj_params_, &vision_),
 	defense_(),
 	resist_(),
-	flying_(false)
+	flying_(false),
+	special_notes_()
 {
 }
 
@@ -819,6 +822,10 @@ movetype::movetype(const config & cfg) :
 {
 	// 1.15 will support both "flying" and "flies", with "flies" being deprecated
 	flying_ = cfg["flying"].to_bool(flying_);
+
+	for(const config& sn : cfg.child_range("special_note")) {
+		special_notes_.push_back(sn["note"]);
+	}
 }
 
 
@@ -831,7 +838,8 @@ movetype::movetype(const movetype & that) :
 	jamming_(that.jamming_, &vision_),
 	defense_(that.defense_),
 	resist_(that.resist_),
-	flying_(that.flying_)
+	flying_(that.flying_),
+	special_notes_(that.special_notes_)
 {
 }
 
@@ -844,7 +852,8 @@ movetype::movetype(movetype && that) :
 	jamming_(std::move(that.jamming_), &vision_),
 	defense_(std::move(that.defense_)),
 	resist_(std::move(that.resist_)),
-	flying_(std::move(that.flying_))
+	flying_(std::move(that.flying_)),
+	special_notes_(std::move(that.special_notes_))
 {
 }
 
@@ -897,7 +906,7 @@ void movetype::merge(const config & new_cfg, const std::string & applies_to, boo
 		resist_.merge(new_cfg, overwrite);
 	}
 	else {
-		ERR_CF << "movetype::merge with unknown applies_to: " << applies_to << std::endl;
+		ERR_CF << "movetype::merge with unknown applies_to: " << applies_to;
 	}
 }
 
@@ -920,4 +929,8 @@ void movetype::write(config & cfg) const
 
 	if ( flying_ )
 		cfg["flying"] = true;
+
+	for(const auto& note : special_notes_) {
+		cfg.add_child("special_note", config{"note", note});
+	}
 }

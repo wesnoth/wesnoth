@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local F = wesnoth.require "functional"
 
@@ -21,7 +20,7 @@ end
 
 function ca_coward:execution(cfg)
     local coward = get_coward(cfg)
-    local reach = wesnoth.find_reach(coward)
+    local reach = wesnoth.paths.find_reach(coward)
 
     local filter_second =
         wml.get_child(cfg, "filter_second")
@@ -84,10 +83,10 @@ function ca_coward:execution(cfg)
 
     -- As final step, if there are more than one remaining locations,
     -- we take the one with the minimum score in the distance-from-enemy criterion
-    local max_rating, best_hex = - math.huge
+    local max_rating1, best_hex = - math.huge, nil
     for _,pos in ipairs(best_overall) do
-        if (pos[3] > max_rating) then
-            max_rating, best_hex = pos[3], pos
+        if (pos[3] > max_rating1) then
+            max_rating1, best_hex = pos[3], pos
         end
     end
 
@@ -96,14 +95,14 @@ function ca_coward:execution(cfg)
 
     -- If 'attack_if_trapped' is set, the coward attacks the weakest unit it ends up next to
     if cfg.attack_if_trapped then
-        local max_rating, best_target = - math.huge
-        for xa,ya in H.adjacent_tiles(coward.x, coward.y) do
+        local max_rating2, best_target = - math.huge, nil
+        for xa,ya in wesnoth.current.map:iter_adjacent(coward) do
             local target = wesnoth.units.get(xa, ya)
             if target and wesnoth.sides.is_enemy(coward.side, target.side) then
                 local rating = - target.hitpoints
 
-                if (rating > max_rating) then
-                    max_rating, best_target = rating, target
+                if (rating > max_rating2) then
+                    max_rating2, best_target = rating, target
                 end
             end
         end

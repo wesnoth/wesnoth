@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2005 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -61,8 +62,8 @@ public:
 	{
 	}
 
-	LEVEL_RESULT play_game();
-	LEVEL_RESULT play_replay()
+	level_result::type play_game();
+	level_result::type play_replay()
 	{
 		is_replay_ = true;
 		return play_game();
@@ -74,11 +75,11 @@ public:
 	}
 
 private:
-	LEVEL_RESULT playsingle_scenario(end_level_data& end_level);
-	LEVEL_RESULT playmp_scenario(end_level_data& end_level);
+	level_result::type playsingle_scenario(end_level_data& end_level);
+	level_result::type playmp_scenario(end_level_data& end_level);
 
 	void show_carryover_message(
-		playsingle_controller& playcontroller, const end_level_data& end_level, LEVEL_RESULT res);
+		playsingle_controller& playcontroller, const end_level_data& end_level, level_result::type res);
 
 	saved_game& state_;
 	const bool is_unit_test_;

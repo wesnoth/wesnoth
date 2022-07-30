@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -53,8 +54,8 @@ mp_game_settings::mp_game_settings() :
 	allow_observers(true),
 	private_replay(false),
 	shuffle_sides(false),
-	saved_game(SAVED_GAME_MODE::NONE),
-	random_faction_mode(RANDOM_FACTION_MODE::DEFAULT),
+	saved_game(saved_game_mode::type::no),
+	mode(random_faction_mode::type::independent),
 	options(),
 	addons()
 {}
@@ -84,8 +85,8 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, allow_observers(cfg["observer"].to_bool())
 	, private_replay(cfg["private_replay"].to_bool())
 	, shuffle_sides(cfg["shuffle_sides"].to_bool())
-	, saved_game(cfg["savegame"].to_enum<SAVED_GAME_MODE>(SAVED_GAME_MODE::NONE))
-	, random_faction_mode(cfg["random_faction_mode"].to_enum<RANDOM_FACTION_MODE>(RANDOM_FACTION_MODE::DEFAULT))
+	, saved_game(saved_game_mode::get_enum(cfg["savegame"].str()).value_or(saved_game_mode::type::no))
+	, mode(random_faction_mode::get_enum(cfg["random_faction_mode"].str()).value_or(random_faction_mode::type::independent))
 	, options(cfg.child_or_empty("options"))
 	, addons()
 {
@@ -123,8 +124,8 @@ config mp_game_settings::to_config() const
 	cfg["observer"] = allow_observers;
 	cfg["private_replay"] = private_replay;
 	cfg["shuffle_sides"] = shuffle_sides;
-	cfg["random_faction_mode"] = random_faction_mode;
-	cfg["savegame"] = saved_game;
+	cfg["random_faction_mode"] = random_faction_mode::get_string(mode);
+	cfg["savegame"] = saved_game_mode::get_string(saved_game);
 	cfg.add_child("options", options);
 
 	for(auto& p : addons) {
@@ -174,11 +175,20 @@ void mp_game_settings::addon_version_info::write(config & cfg) const {
 
 void mp_game_settings::update_addon_requirements(const config & cfg) {
 	if (cfg["id"].empty()) {
-		WRN_NG << "Tried to add add-on metadata to a game, missing mandatory id field... skipping.\n" << cfg.debug() << "\n";
+		WRN_NG << "Tried to add add-on metadata to a game, missing mandatory id field... skipping.\n" << cfg.debug();
 		return;
 	}
 
 	mp_game_settings::addon_version_info new_data(cfg);
+
+	// if the add-on doesn't require all players have it, then min_version is irrelevant
+	if(!new_data.required) {
+		new_data.min_version = {};
+	}
+	// else if it is required and no min_version was explicitly specified, default the min_version to the add-on's version
+	else if(new_data.required && !new_data.min_version) {
+		new_data.min_version = new_data.version;
+	}
 
 	std::map<std::string, addon_version_info>::iterator it = addons.find(cfg["id"].str());
 	// Check if this add-on already has an entry as a dependency for this scenario. If so, try to reconcile their version info,
@@ -193,23 +203,19 @@ void mp_game_settings::update_addon_requirements(const config & cfg) {
 		}
 
 		if(addon.version != new_data.version) {
-			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.\n";
+			ERR_NG << "Addon version data mismatch! Not all local WML has same version of the addon: '" << cfg["id"].str() << "'.";
 		}
 
 		if(new_data.required) {
 			addon.required = true;
 
-			if (new_data.min_version) {
-				if (!addon.min_version || (*new_data.min_version > *addon.min_version)) {
-					addon.min_version = *new_data.min_version;
-				}
+			// if the existing entry for the add-on didn't have a min_version or had a lower min_version, update it to this min_version
+			if (!addon.min_version || *new_data.min_version > *addon.min_version) {
+				addon.min_version = new_data.min_version;
 			}
 		}
 	} else {
-		// Didn't find this addon-id in the map, so make a new entry without setting the min_version.
-		if(!new_data.required) {
-			new_data.min_version.reset();
-		}
+		// Didn't find this addon-id in the map, so make a new entry.
 		addons.emplace(cfg["id"].str(), new_data);
 	}
 }

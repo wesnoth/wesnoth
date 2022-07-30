@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Pauli Nieminen <paniemin@cc.hut.fi>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
@@ -88,10 +89,9 @@ namespace test_utils {
 			unit_types.set_config(game_config_view_.merged_children_view("units"));
 
 			game_config::load_config(cfg_.child("game_config"));
-			hotkey::deactivate_all_scopes();
-			hotkey::set_scope_active(hotkey::SCOPE_GAME);
+			const hotkey::scope_changer hk_scope{hotkey::scope_game, false};
 
-			hotkey::load_hotkeys(game_config_view_);
+			hotkey::load_default_hotkeys(game_config_view_);
 			paths_manager_.set_paths(game_config_view_);
 			font::load_font_config();
 

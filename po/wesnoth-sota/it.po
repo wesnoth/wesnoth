@@ -1,12 +1,12 @@
 # Copyright (C) 2017-2018 Wesnoth development team
-# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2017-2019
+# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2017-2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
-"PO-Revision-Date: 2019-09-07 17:00+0200\n"
+"POT-Creation-Date: 2022-06-19 14:02 UTC\n"
+"PO-Revision-Date: 2022-01-21 13:24+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: \n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -60,9 +60,15 @@ msgstr "Difficile"
 
 #. [campaign]: id=Secrets of the Ancients
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Rediscover the secrets known by the lich lords of the Green Isle. They "
+#| "knew how to live forever, so why can’t you?\n"
+#| "\n"
+#| "(Hard level, 18 scenarios.)\n"
 msgid ""
 "Rediscover the secrets known by the lich lords of the Green Isle. They knew "
-"how to live forever, so why can't you?\n"
+"how to live forever, so why can’t you?\n"
 "\n"
 "(Hard level, 18 scenarios.)\n"
 msgstr ""
@@ -86,6 +92,41 @@ msgstr "Manutenzione della campagna"
 #: data/campaigns/Secrets_of_the_Ancients/_main.cfg:42
 msgid "Additional Artwork"
 msgstr "Grafica addizionale"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:106
+msgid "Lvl 0"
+msgstr "Liv 0"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:128
+msgid "Undead"
+msgstr "Non-morto"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:171
+msgid "Traits"
+msgstr "Caratteristiche"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:205
+msgid "Attacks"
+msgstr "Attacchi"
+
+#. [label]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:271
+msgid "Choose a Corpse"
+msgstr "Scegli un cadavere"
+
+#. [button]
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:337
+msgid "Recruit"
+msgstr "Recluta"
+
+#. [button]: id=cancel
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:343
+msgid "Cancel"
+msgstr "Annulla"
 
 #. [scenario]: id=01_Slipping_Away
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:22
@@ -297,8 +338,11 @@ msgstr "Lo sapevo che alcuni ratti si sarebbero fatti vivi."
 msgid ""
 "<span color='cyan'>Special Note: </span>In this campaign, if a unit is "
 "killed and not immediately raised as a corpse, its corpse type will be "
-"permanantly added to the recruit list instead."
+"permanently added to the recruit list instead."
 msgstr ""
+"<span color='cyan'>Nota Speciale: </span>In questa campagna, se una unità "
+"viene uccisa e non viene immediatamente resuscitata come cadavere, il suo "
+"tipo di cadavere verrà aggiunto nella lista di quelli recrutabili."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:327
@@ -334,13 +378,17 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:343
+#, fuzzy
+#| msgid ""
+#| "A wolf! This journey may be more dangerous than I thought. If we need to, "
+#| "I suppose we could rest inside a farmer’s or woodcutter’s fence."
 msgid ""
 "A wolf! This journey may be more dangerous than I thought. If we need to, I "
-"suppose we could rest inside a farmer's or woodcutter's fence."
+"suppose we could rest inside a farmer’s or woodcutter’s fence."
 msgstr ""
 "Un lupo! Questo viaggio potrebbe rivelarsi più pericoloso del previsto. Beh, "
-"potremmo trovare riparo all’interno delle solide staccionate create dai "
-"contadini e dai taglialegna."
+"se necessario, potremmo trovare riparo all’interno delle solide staccionate "
+"create dai contadini e dai taglialegna."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/01_Slipping_Away.cfg:366
@@ -379,21 +427,23 @@ msgstr "Guardie"
 #. [set_variable]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:92
 msgid "Raise Walking Corpse (8 Gold)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (8 mo)"
 
 #. [set_variable]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:99
 msgid "Raise Skeleton (15 Gold)"
-msgstr "Rianima scheletro (15 mo)"
+msgstr "Rianima Scheletro (15 mo)"
 
 #. [set_variable]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:106
 msgid "Raise Skeleton Archer (14 Gold)"
-msgstr "Rianima scheletro arciere (14 mo)"
+msgstr "Rianima Scheletro Arciere (14 mo)"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:159
-msgid "You don't have enough gold to raise that unit."
+#, fuzzy
+#| msgid "You don’t have enough gold to raise that unit."
+msgid "You don’t have enough gold to raise that unit."
 msgstr "Non disponi di oro a sufficienza per rianimare quell’unità."
 
 #. [objective]: condition=win
@@ -419,13 +469,16 @@ msgid "Guardhouse"
 msgstr "Caserma"
 
 #. [label]
+#. In English, this label bled into the two hexes on either side, and obscured
+#. the units there, which is why it's split across two lines. The extra spaces
+#. before "Temple" are to center that word above the others.
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:274
 msgid ""
 "  Temple\n"
 "of Healing"
 msgstr ""
 "  Tempio\n"
-"di guarigione"
+"di Guarigione"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:283
@@ -464,79 +517,93 @@ msgid "Caradoc"
 msgstr "Caradoc"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:396
-msgid "Oh, hello friend! I didn't know you were hiding in there."
+#. She's speaking to a bat from scenario 1
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:397
+#, fuzzy
+#| msgid "Oh, hello friend! I didn’t know you were hiding in there."
+msgid "Oh, hello friend! I didn’t know you were hiding in there."
 msgstr "Oh, ciao amico! Non sapevo ti nascondessi qui."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:402
-msgid "Oh, hello! You're a handsome one."
+#. She's speaking to a bat that she hasn't met before
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:404
+#, fuzzy
+#| msgid "Oh, hello! You’re a handsome one."
+msgid "Oh, hello! You’re a handsome one."
 msgstr "Oh, ciao! Sei un bel tipo."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:419
-msgid "Hey, come back! I didn't mean to frighten you."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:421
+#, fuzzy
+#| msgid "Hey, come back! I didn’t mean to frighten you."
+msgid "Hey, come back! I didn’t mean to frighten you."
 msgstr "Ehi, torna indietro! Non volevo spaventarti."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:423
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:425
 msgid "Maybe I could attract it if I jingled some coins."
 msgstr "Forse potrei attirarlo se faccio tintinnare qualche moneta."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:446
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:448
 msgid "Right-click adjacent to your leader to summon the bat."
 msgstr ""
 "Fai clic col tasto destro su una tomba adiacente al tuo condottiero per "
 "evocare un pipistrello."
 
 #. [set_menu_item]: id=summon_bat
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:454
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:456
 msgid "Summon the Bat (20 gold)"
-msgstr "Evoca un pipistrello (20 monete)"
+msgstr "Evoca un pipistrello (20 mo)"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:494
-msgid "You don't have enough gold to summon the bat."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:496
+#, fuzzy
+#| msgid "You don’t have enough gold to summon the bat."
+msgid "You don’t have enough gold to summon the bat."
 msgstr "Non disponi di oro a sufficienza per evocare un pipistrello."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:576
-msgid "You can now recruit skeletons and skeleton archers!"
-msgstr "Ora puoi reclutare scheletri e scheletri arcieri!"
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:578
+msgid ""
+"You can now recruit skeletons and skeleton archers! You will lose this "
+"ability if the guardhouse is retaken by the guards!"
+msgstr ""
+"Ora puoi reclutare scheletri e scheletri arcieri! Perderai questa abilità se "
+"la caserma viene riconquistata dalle guardie!"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:630
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:632
 msgid "Blollyn"
 msgstr "Blollyn"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:631
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:633
 msgid "Ceoran"
 msgstr "Ceoran"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:633
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:635
 msgid "Vindry"
 msgstr "Vindry"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:634
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:636
 msgid "Aethacyn"
 msgstr "Aethacyn"
 
 #. [event]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:635
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:637
 msgid "Elomyr"
 msgstr "Elomyr"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:665
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:667
 msgid "You can no longer recruit skeletons and skeleton archers."
 msgstr "Non puoi più reclutare scheletri né scheletri arcieri."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:727
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:729
 msgid ""
 "Wait, that guard said there were twelve of them, so where are the other five?"
 msgstr ""
@@ -544,20 +611,20 @@ msgstr ""
 "cinque?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:729
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:731
 msgid ""
 "Wait, that guard said there were seven of them, so where are the other two?"
 msgstr ""
 "Ebbene? Quella guardia ha detto che erano in sette: dove sono gli altri due?"
 
 #. [message]: speaker=Syrillin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:748
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:750
 msgid "Why are we stuck guarding a cemetery all night?"
 msgstr ""
 "Perché siamo qui bloccati a fare la guardia a un cimitero tutta la notte?"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:754
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:756
 msgid ""
 "And why <i>twelve</i> of us? Who wants to break into a cemetery that badly?"
 msgstr ""
@@ -565,7 +632,7 @@ msgstr ""
 "irruzione in un cimitero?"
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:756
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:758
 msgid ""
 "And why <i>seven</i> of us? Who wants to break into a cemetery that badly?"
 msgstr ""
@@ -573,23 +640,27 @@ msgstr ""
 "irruzione in un cimitero?"
 
 #. [message]: speaker=Glant
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:761
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:763
+#, fuzzy
+#| msgid ""
+#| "I don’t know, but this evening a mage from the Academy was here talking "
+#| "to the mayor, my brother says."
 msgid ""
-"I don’t know, but this evening a mage from the academy was here talking to "
+"I don’t know, but this evening a mage from the Academy was here talking to "
 "the mayor, my brother says."
 msgstr ""
 "Non saprei, ma mio fratello mi ha detto che stasera un mago dell’Accademia è "
 "venuto qui a discutere col sindaco."
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:765
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:767
 msgid "Well <i>I</i> say you shouldn’t question orders, so pipe down."
 msgstr ""
 "Ebbene, <i>io</i> dico che gli ordini non si devono discutere, perciò fate "
 "silenzio."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:804
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:806
 msgid ""
 "They must be guarding the cemetery from <i>me</i>! Maybe Aimucasur really "
 "was suspicious. It’s a good thing I’m here already, but how am I going to "
@@ -605,27 +676,27 @@ msgstr ""
 "dopo di come uscire da qui."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:837
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:839
 msgid "Hello?"
 msgstr "Salve?"
 
 #. [message]: speaker=first_zombie
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:842
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:844
 msgid "Uhngh."
 msgstr "Uhngh."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:846
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:848
 msgid "Do you remember anything?"
 msgstr "Ricordi niente?"
 
 #. [message]: speaker=first_zombie
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:851
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:853
 msgid "Uhrrr."
 msgstr "Uhrrr."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:855
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:857
 msgid ""
 "It seems that my first guess was correct. The poor creature is mindless."
 msgstr ""
@@ -633,37 +704,44 @@ msgstr ""
 "senza cervello."
 
 #. [message]: speaker=Veomyr
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:869
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:871
 msgid "I heard something over there!"
 msgstr "Ho sentito dei rumori laggiù!"
 
 #. [message]: speaker=Glant
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:879
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:881
 msgid "Who’s there?"
 msgstr "Chi va là?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:900
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:902
 msgid "It’s only me. Is the cemetery closed then? I was about to leave."
 msgstr ""
 "Sono io, tutto qui. Dunque il cimitero è chiuso? Stavo giusto per andarmene."
 
 #. [message]: speaker=Syrillin
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:904
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:906
 msgid "You and that... other person. Who is that?"
 msgstr "Voi e... quell’altra persona. Chi è costui?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:908
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:910
+#, fuzzy
+#| msgid ""
+#| "Oh, him. See here, I don’t want any trouble, but he is a little... ah..."
 msgid ""
-"Oh, him. See here, I don't want any trouble, but he is a little... ah..."
+"Oh, him. See here, I don’t want any trouble, but he is a little... ah..."
 msgstr ""
 "Oh, lui! Vedete, non intendo cercare guai, ma lui è un pochino... ah..."
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:912
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:914
+#, fuzzy
+#| msgid ""
+#| "He’s <i>dead</i>! This is dark sorcery like in my granddad’s time in the "
+#| "old country! The penalty is death. Attack and destroy them both!"
 msgid ""
-"He's <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
+"He’s <i>dead</i>! This is dark sorcery like in my granddad’s time in the old "
 "country! The penalty is death. Attack and destroy them both!"
 msgstr ""
 "Ma lui è <i>morto</i>! Questa è magia nera, come ai tempi di mio nonno nel "
@@ -671,12 +749,14 @@ msgstr ""
 "fateli fuori entrambi!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:916
-msgid "Hey! Don't do that, or I will need more of them."
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:918
+#, fuzzy
+#| msgid "Hey! Don’t do that, or I will need more of them."
+msgid "Hey! Don’t do that, or I will need more of them."
 msgstr "Ehi! Non fatelo, o sarò costretta a richiamarne altri."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:920
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:922
 msgid ""
 "I would do better if I had weapons, and I bet I can find some in the "
 "guardhouse. Go take it, my companions."
@@ -685,12 +765,12 @@ msgstr ""
 "nella caserma. Compagni miei, andate a prenderle."
 
 #. [message]: speaker=Caradoc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:924
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:926
 msgid "Gwyllin, don’t move from that guardhouse."
 msgstr "Gwyllin, tu non muoverti dalla caserma."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:933
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:935
 msgid ""
 "The morning has come, and we have not escaped the city. We will be caught "
 "for sure!"
@@ -840,36 +920,94 @@ msgstr "Bonaccia"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:25
+#, fuzzy
+#| msgid ""
+#| "22 III, 23 YW\n"
+#| "\n"
+#| "Research sometimes requires experiments, so I began. I knew the bandit "
+#| "had intended to rob me, and once I had killed his beloved, he had "
+#| "intended to torture and kill me. Now that I was in control, he was afraid "
+#| "and defensive, and while his hatred of me was unabated, his desire to "
+#| "live made him somewhat malleable."
 msgid ""
 "22 III, 23 YW\n"
 "\n"
-"Research sometimes requires experiments, so I began.  I knew the bandit had "
+"Research sometimes requires experiments, so I began. I knew the bandit had "
 "intended to rob me, and once I had killed his beloved, he had intended to "
-"torture and kill me.  Now that I was in control, he was afraid and "
-"defensive, and while his hatred of me was unabated, his desire to live made "
-"him somewhat malleable."
+"torture and kill me. Now that I was in control, he was afraid and defensive, "
+"and while his hatred of me was unabated, his desire to live made him "
+"somewhat malleable."
 msgstr ""
+"22 III, 23 AW\n"
+"\n"
+"La ricerca talvolta richiede sperimentazione, quindi ho iniziato. Sapevo che "
+"il bandito era intenzionato a rapinarmi, e dopo aver ucciso la sua amata, "
+"voleva torturarmi e uccidermi. Adesso che avevo io il controllo della "
+"situazione, era spaventato e sulla difensiva, e mentre il suo odio verso di "
+"me non diminuiva, il suo desiderio di vivere lo rendeva in qualche modo "
+"malleabile."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:58
+#, fuzzy
+#| msgid ""
+#| "I passed him a wineskin, to put him at ease. He eyed me suspiciously, "
+#| "then took a sip, calculating my intentions. I then placed a portion of my "
+#| "gold resources on the table, and his eyes locked upon it.\n"
+#| "\n"
+#| "I then placed upon the table a ring stripped off the bandit named "
+#| "‘Mossa’, his beloved partner in crime. His gaze shifted from the gold to "
+#| "the ring, and then quickly to my eyes. Had he not been tied to the chair, "
+#| "he would have attacked me.\n"
+#| "\n"
+#| "I added more gold to the pile, but he didn’t notice, he only glared at me "
+#| "with such hatred. The hunger for vengeance radiated off him like heat "
+#| "from a thousand suns — I could feel it more strongly than the fear or "
+#| "hunger from any of my pets..."
 msgid ""
 "I passed him a wineskin, to put him at ease. He eyed me suspiciously, then "
 "took a sip, calculating my intentions. I then placed a portion of my gold "
 "resources on the table, and his eyes locked upon it.\n"
 "\n"
-"I then placed upon the table a ring stripped off the bandit named 'Mossa', "
-"his beloved partner in crime.  His gaze shifted from the gold to the ring, "
-"and then quickly to my eyes.  Had he not been tied to the chair, he would "
+"I then placed upon the table a ring stripped off the bandit named ‘Mossa’, "
+"his beloved partner in crime. His gaze shifted from the gold to the ring, "
+"and then quickly to my eyes. Had he not been tied to the chair, he would "
 "have attacked me.\n"
 "\n"
-"I added more gold to the pile, but he didn't notice, he only glared at me "
-"with such hatred.  The hunger for vengeance radiated off of him like heat "
-"from a thousand suns - I could feel it more strongly than the fear or hunger "
-"from any of my pets..."
+"I added more gold to the pile, but he didn’t notice, he only glared at me "
+"with such hatred. The hunger for vengeance radiated off him like heat from a "
+"thousand suns — I could feel it more strongly than the fear or hunger from "
+"any of my pets..."
 msgstr ""
+"Gli ho passato un fiasco di vino, per metterlo a suo agio. Mi guardava con "
+"sospetto, poi ha bevuto un sorso, osservando le mie intenzioni. Ho quindi "
+"messo una parte del mio oro sul tavolo e i suoi occhi si sono messi a "
+"fissarla.\n"
+"\n"
+"Poi ho messo sul tavolo un anello strappato al bandito chiamato ’Mossa’, il "
+"suo complice preferito. Il suo sguardo si spostava dall’oro all’anello, e "
+"poi velocemente ai miei occhi. Se non fosse stato legato alla sedia, mi "
+"avrebbe attaccato.\n"
+"\n"
+"Ho aggiunto altro oro al mucchio, ma non lo ha notato: continuava a fissarmi "
+"con uno sguardo pieno di odio. La sete di vendetta si irradiava da lui come "
+"il calore di mille soli: la sentivo più forte della paura o della fame di "
+"qualsiasi altro mio animaletto domestico..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
+#, fuzzy
+#| msgid ""
+#| "This rich vein into the life-force of the bandit was like nothing I had "
+#| "ever seen, but I knew enough to bend his hunger to my will. With further "
+#| "study, I may one day be able to stop it there, but today I could not: The "
+#| "single-minded hunger consumed the man, it was all I could do to control "
+#| "its direction!\n"
+#| "\n"
+#| "The bandit howled, thrashed, tore at his clothes and bindings, eventually "
+#| "digging into his own flesh. Eventually, when all but the hunger had been "
+#| "flensed from his being, he calmed down. Now hairless, bloody, naked, and "
+#| "unthinking, the bandit was unrecognizable as the man he once was."
 msgid ""
 "This rich vein into the life-force of the bandit was like nothing I had ever "
 "seen, but I knew enough to bend his hunger to my will. With further study, I "
@@ -878,10 +1016,21 @@ msgid ""
 "direction!\n"
 "\n"
 "The bandit howled, thrashed, tore at his clothes and bindings, eventually "
-"digging into his own flesh.  Eventually, when all but the hunger had been "
-"flensed from his being, he calmed down.  Now hairless, bloody, naked, and "
+"digging into his own flesh. Eventually, when all but the hunger had been "
+"flensed from his being, he calmed down. Now hairless, bloody, naked, and "
 "unthinking, the bandit was unrecognizable as the man he once was."
 msgstr ""
+"Questa ricca vena nella forza vitale del bandito non assomigliava a nulla "
+"che avessi mai visto, ma ne sapevo abbastanza per piegare la sua fame alla "
+"mia volontà. Con ulteriori studi, un giorno potrei essere in grado di "
+"fermarlo lì, ma oggi non potrei farlo: la fame risoluta ha consumato l’uomo "
+"e tutto quello che potevo fare era soltanto controllarne la sua direzione.\n"
+"\n"
+"Il bandito ululò, si dibatté, si strappò le vesti e ruppe le funi che lo "
+"legavano, fino a strapparsi la qua stessa carne. Alla fine, quando dal suo "
+"essere si fu allontanato tutto tranne la fame, si calmò. Ora glabro, "
+"sanguinante, nudo e incapace di pensare, il bandito era irriconoscibile come "
+"l’uomo che era una volta."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:93
@@ -891,6 +1040,11 @@ msgid ""
 "could. In some ways, this experiment was a failure, but the creature it "
 "created would be useful..."
 msgstr ""
+"Non c’è dubbio che qualunque cosa fosse rimasta all’interno della mente, "
+"borbottava su ciò che era diventata, ma ora il bandito era il mio burattino "
+"e ho ricucito le sue ferite come meglio potevo. In un certo senso, questo "
+"esperimento è stato un fallimento, ma la creatura che ha generato potrebbe "
+"rivelarsi utile..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:100
@@ -956,27 +1110,36 @@ msgstr "Puoi reclutare unità in qualsiasi punto dei due ponti superiori."
 
 #. [note]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:263
+msgid ""
+"Player and Enemy units can move between the surface and the interior of the "
+"ship via stairs."
+msgstr ""
+"Le unità del giocatore e quelle nemiche possono muoversi tra la coperta e la "
+"stiva della nave tramite le scale."
+
+#. [note]
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:266
 msgid "Barrels act as villages."
 msgstr "I barili fungono da villaggi."
 
 #. [note]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:266
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:269
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:130
 msgid "Right-click to simplify the ship graphics."
 msgstr "Fai clic col tasto destro per semplificare la grafica della nave."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:505
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:508
 msgid "You can now recruit ghouls!"
 msgstr "Ora puoi reclutare i divoratori di cadaveri!"
 
 #. [unit]: type=Sailor, id=Joc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:539
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:542
 msgid "Joc"
 msgstr "Joc"
 
 #. [message]: speaker=Joc
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:547
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:550
 msgid ""
 "I found Janryn in the hold. Or, ah... some of him. He’s dead. I didn’t stay "
 "to find out what killed him, but there was someone shuffling around in the "
@@ -987,7 +1150,7 @@ msgstr ""
 "aggirava lentamente tra le ombre, e aveva un odore di marcio."
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:551
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:554
 msgid ""
 "Murderous stowaways on my ship? I won’t have it! Go round up the rest of the "
 "crew and get them up here. We’re going hunting. All passengers are confined "
@@ -998,22 +1161,22 @@ msgstr ""
 "i passeggeri devono essere rinchiusi nelle loro cabine con effetto immediato."
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:612
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:615
 msgid "You! Dark girl. Why are you not in your cabin?"
 msgstr "Tu, ragazza dagli abiti scuri! Perché non sei nella tua cabina?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:616
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:619
 msgid "What if I said something in defense of the stowaways?"
 msgstr "Cosa accadrebbe se dicessi qualcosa in difesa dei clandestini?"
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:620
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:623
 msgid "I would pitch you over the side with them. What do you know?"
 msgstr "Ti butterei in mare insieme a loro. Cosa sai al riguardo?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:624
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:627
 msgid ""
 "They are my companions, and the poor things are just terribly hungry. I’m "
 "sorry we didn’t pay the full amount, but maybe we can reach some arrangement."
@@ -1023,7 +1186,7 @@ msgstr ""
 "potremmo raggiungere un accordo."
 
 #. [message]: speaker=Rudic
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:628
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:631
 msgid ""
 "They killed my crew member and played me for a fool! The only arrangement "
 "that suits me is the lot of you off my ship, preferably at the bottom of the "
@@ -1034,7 +1197,7 @@ msgstr ""
 "il vostro gruppo giù dalla mia nave, preferibilmente in fondo al mare."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:632
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:635
 msgid ""
 "Oh dear. We must do this again. Come to me my friends! If you are still "
 "hungry, feed on a passenger first."
@@ -1043,7 +1206,7 @@ msgstr ""
 "fame, affondate prima le zanne su uno dei passeggeri."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:644
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:647
 msgid ""
 "Good riddance. But, with the captain dead, who will sail the ship and guide "
 "us into port now?"
@@ -1052,22 +1215,22 @@ msgstr ""
 "nave e ci guiderà in porto?"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:648
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:651
 msgid "Rise Captain, and please retain your memories."
 msgstr "Alzatevi, Capitano, e cercate di conservare i vostri ricordi."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:672
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:675
 msgid "Can you still sail this ship?"
 msgstr "Siete ancora in grado di guidare questa nave?"
 
 #. [message]: speaker=Bone Captain
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:677
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:680
 msgid "Sail. Yes. Need wind."
 msgstr "Guidare... Sì. Bisogno di vento."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:681
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:684
 msgid ""
 "Oh! It worked! Take us to port, Captain, as soon as you do have the wind."
 msgstr ""
@@ -1123,8 +1286,8 @@ msgstr "Gweddyn"
 msgid "Bremen"
 msgstr "Bremen"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/05_Blackwater.cfg:116
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/08_Carcyn.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:87
@@ -1366,10 +1529,16 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:253
-msgid "If there is one bat, there are certainly more. We should be careful."
+#, fuzzy
+#| msgid ""
+#| "If there is one bat, there are certainly more. We should be careful. It "
+#| "would be foolish to explore this cave alone."
+msgid ""
+"If there is one bat, there are certainly more. We should be careful. It "
+"would be foolish to explore this cave alone."
 msgstr ""
 "Se c’è un pipistrello, ce ne saranno certamente degli altri. Dobbiamo essere "
-"cauti."
+"cauti. Sarebbe da sciocchi esplorare questa caverna da sola."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:275
@@ -1406,8 +1575,12 @@ msgstr "Seguiamolo fin dentro quella caverna."
 
 #. [message]: speaker=Blaust
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:570
+#, fuzzy
+#| msgid ""
+#| "I don’t know, Bogdush. The Chief said he wanted stuff that was helpful "
+#| "for the war."
 msgid ""
-"I don’t know, Bogdush. The chief said he wanted stuff that was helpful for "
+"I don’t know, Bogdush. The Chief said he wanted stuff that was helpful for "
 "the war."
 msgstr ""
 "Non so, Bogdush. Il capo ha detto che voleva delle cose utili per la guerra."
@@ -1438,7 +1611,10 @@ msgstr "Sì, e questo rende il nostro compito di ucciderli ancora più facile!"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:592
-msgid "You must be Goblins. You will stand out of my way if you wish to live."
+#, fuzzy
+#| msgid ""
+#| "You must be goblins. You will stand out of my way if you wish to live."
+msgid "You must be goblins. You will stand out of my way if you wish to live."
 msgstr ""
 "Voi dovete essere dei goblin. State alla larga da me, se desiderate avere "
 "salva la vita."
@@ -1507,10 +1683,18 @@ msgstr "Come fate a sapere il mio nome?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:193
+#, fuzzy
+#| msgid ""
+#| "I know much about you. My ghosts have been watching you for some time "
+#| "now, and you and I share the goal of resisting death. I have been hoping "
+#| "several students would free themselves from that conservative Academy, "
+#| "but it seems that you will be the only one. Fortunately, you are quite "
+#| "innovative, and have even accomplished something which I have not. You "
+#| "have useful creatures — I believe you call them ghouls?"
 msgid ""
 "I know much about you. My ghosts have been watching you for some time now, "
 "and you and I share the goal of resisting death. I have been hoping several "
-"students would free themselves from that conservative academy, but it seems "
+"students would free themselves from that conservative Academy, but it seems "
 "that you will be the only one. Fortunately, you are quite innovative, and "
 "have even accomplished something which I have not. You have useful creatures "
 "— I believe you call them ghouls?"
@@ -1604,10 +1788,19 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:221
+#, fuzzy
+#| msgid ""
+#| "Splendid. Here is what I propose. First, we part ways for a time, and you "
+#| "raise a force of ghosts following my instructions. Meanwhile, I am going "
+#| "to try to train some local peasants in the magical arts. I don’t expect "
+#| "much from that uneducated rabble, but hopefully some will be intelligent "
+#| "enough to add to our firepower. When we reunite, you will show me how to "
+#| "make one of those shambling ghouls. I am actually in no hurry, as they "
+#| "have a terrible odor."
 msgid ""
 "Splendid. Here is what I propose. First, we part ways for a time, and you "
 "raise a force of ghosts following my instructions. Meanwhile, I am going to "
-"try to train some local peasants in the magical arts. I don't expect much "
+"try to train some local peasants in the magical arts. I don’t expect much "
 "from that uneducated rabble, but hopefully some will be intelligent enough "
 "to add to our firepower. When we reunite, you will show me how to make one "
 "of those shambling ghouls. I am actually in no hurry, as they have a "
@@ -1641,9 +1834,18 @@ msgstr "Perché non posso semplicemente rianimare alcuni dei goblin là fuori?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/07_Meeting_of_the_Minds.cfg:237
+#, fuzzy
+#| msgid ""
+#| "Those goblins were too weak, and it would take their spirits a long time "
+#| "to become strong enough to be useful. You are going to raise elvish "
+#| "warriors instead. A few miles into the Grey Woods, there lies an ancient "
+#| "battleground from a civil war hundreds of years ago. You will follow an "
+#| "old elf road there and raise an army of ghosts while I visit Carcyn, a "
+#| "nearby town. We will meet at the end of the elf road by the Great River, "
+#| "and I will explain where we should go next."
 msgid ""
 "Those goblins were too weak, and it would take their spirits a long time to "
-"become strong enough to be useful. You are going to raise Elvish warriors "
+"become strong enough to be useful. You are going to raise elvish warriors "
 "instead. A few miles into the Grey Woods, there lies an ancient battleground "
 "from a civil war hundreds of years ago. You will follow an old elf road "
 "there and raise an army of ghosts while I visit Carcyn, a nearby town. We "
@@ -2013,7 +2215,7 @@ msgstr "Possiamo dare una mano anche noi?"
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:369
 msgid "plural^As you wish. (<i>Cough, cough</i>)"
-msgstr "Suppongo di sì. (<i>colpi di tosse</i>)"
+msgstr "Come desiderate. (<i>colpi di tosse</i>)"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/09_Training_Session.cfg:379
@@ -2059,8 +2261,8 @@ msgstr ""
 "Grande Fiume, dove avrebbe dovuto aspettare l’arrivo di Ardonna. Mentre "
 "giungevano a destinazione, sopraggiunse anche un altro gruppo."
 
-#. [side]
 #. [side]: type=Merman Triton, id=Okean
+#. [side]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:46
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:132
 msgid "Merfolk"
@@ -2074,14 +2276,14 @@ msgstr "Okean"
 #. [message]: speaker=$unit.id
 #. Bones examined by a ghost, skeleton, ghoul, or corpse.
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:134
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:161
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:160
 msgid "Bones. Claws and wings."
 msgstr "Ossa. Artigli e ali."
 
 #. [message]: speaker=$unit.id
 #. Bones examined by a human.
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:141
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:168
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:167
 msgid "There are some large bones here. I can see claws and wings."
 msgstr ""
 "Ho trovato delle enormi ossa da questa parte. Riesco a distinguere artigli e "
@@ -2089,7 +2291,9 @@ msgstr ""
 
 #. [message]: speaker=$other_human
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:186
-msgid "How odd. I wonder what are they from. A gryphon perhaps?"
+#, fuzzy
+#| msgid "How odd. I wonder what they are from. A gryphon perhaps?"
+msgid "How odd. I wonder what they are from. A gryphon perhaps?"
 msgstr ""
 "Che strano... Mi chiedo da dove saltino fuori... Forse appartenevano a un "
 "grifone?"
@@ -2111,16 +2315,19 @@ msgstr "Certo che sì. Vediamo un po’."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:204
+#, fuzzy
+#| msgid ""
+#| "I wonder what they are from. A large flightless bird perhaps? Let us see."
 msgid ""
-"I wonder what are they from. A large flightless bird perhaps? Let us see."
+"I wonder what they are from. A large flightless bird perhaps? Let us see."
 msgstr ""
 "Mi chiedo da dove saltino fuori. Forse appartenevano ad un grosso uccello "
 "incapace di volare? Vediamo un po’."
 
-#. [message]: speaker=Ardonna
 #. [message]: speaker=$other_human
+#. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:246
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:243
 msgid "Oh, you were right!"
 msgstr "Oh, avevate ragione!"
 
@@ -2138,7 +2345,7 @@ msgstr "Splendido! Questi uccelli potrebbero esserci piuttosto utili."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/10_Merfolk_Revenge.cfg:318
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:341
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:340
 msgid "You can now recruit chocobones!"
 msgstr "Ora puoi reclutare i cavalcaossi!"
 
@@ -2294,11 +2501,21 @@ msgstr "Il campo di battaglia"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:18
+#, fuzzy
+#| msgid ""
+#| "11 IV, 23 YW\n"
+#| "\n"
+#| "Ras-Tabahn seems like an acceptable ally. He is quite different from the "
+#| "stodgy teachers at the Academy who were so full of themselves and loved "
+#| "to hear themselves talk. He also never once disparaged me for being a "
+#| "girl or even mentioned my hair. As long as he continues to respect me, "
+#| "everything will go fine. If not, well, I am surrounded by the remnants of "
+#| "those who assumed I was weak."
 msgid ""
 "11 IV, 23 YW\n"
 "\n"
-"Rastaban seems like an acceptable ally. He is quite different from the "
-"stodgy teachers at the academy who were so full of themselves and loved to "
+"Ras-Tabahn seems like an acceptable ally. He is quite different from the "
+"stodgy teachers at the Academy who were so full of themselves and loved to "
 "hear themselves talk. He also never once disparaged me for being a girl or "
 "even mentioned my hair. As long as he continues to respect me, everything "
 "will go fine. If not, well, I am surrounded by the remnants of those who "
@@ -2316,9 +2533,18 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:27
+#, fuzzy
+#| msgid ""
+#| "The question remains whether or not it is wise to trust him. As he said, "
+#| "I don’t need to at this time, but if we are to travel together it will "
+#| "become necessary. He has shown me something marvelous in the ghosts, so "
+#| "that is a large mark in his favor. On consideration, I have decided to "
+#| "trust him, but only provisionally. For now, we are both vulnerable, and "
+#| "he must know that attacking me would be unwise. However, if he were to "
+#| "become indestructible first, I would do well to stay alert."
 msgid ""
 "The question remains whether or not it is wise to trust him. As he said, I "
-"don't need to at this time, but if we are to travel together it will become "
+"don’t need to at this time, but if we are to travel together it will become "
 "necessary. He has shown me something marvelous in the ghosts, so that is a "
 "large mark in his favor. On consideration, I have decided to trust him, but "
 "only provisionally. For now, we are both vulnerable, and he must know that "
@@ -2357,9 +2583,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:41
+#, fuzzy
+#| msgid ""
+#| "Well, these combatants were going to get a second chance for glory when "
+#| "they fought for me. The more strong-willed among them may even remember "
+#| "desiring it."
 msgid ""
 "Well, these combatants were going to get a second chance for glory when they "
-"fought for me. The more strong willed among them may even remember desiring "
+"fought for me. The more strong-willed among them may even remember desiring "
 "it."
 msgstr ""
 "Ebbene, se avessero combattuto per me, quei combattenti avrebbero avuto una "
@@ -2775,9 +3006,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:154
+#, fuzzy
+#| msgid ""
+#| "Before we leave, I have an unrelated question. Vendraxis here has said "
+#| "that my name is untrue. Do you have an idea what that could mean?"
 msgid ""
 "Before we leave, I have an unrelated question. Vendraxis here has said that "
-"my name is untrue. Do you have an idea what could that mean?"
+"my name is untrue. Do you have an idea what that could mean?"
 msgstr ""
 "Prima di partire, ho una domanda slegata da questo argomento. Il qui "
 "presente Vendraxis mi ha detto che il mio nome non dice il vero su di me. "
@@ -2785,9 +3020,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:160
+#, fuzzy
+#| msgid ""
+#| "Before we leave, I have an unrelated question. I met a mystic who said "
+#| "that my name was untrue. Do you have an idea what that could mean?"
 msgid ""
 "Before we leave, I have an unrelated question. I met a mystic who said that "
-"my name was untrue. Do you have an idea what could that mean?"
+"my name was untrue. Do you have an idea what that could mean?"
 msgstr ""
 "Prima di partire, ho una domanda slegata da questo argomento. Ho incontrato "
 "una figura mistica, la quale mi ha detto che il mio nome non dice il vero su "
@@ -2795,8 +3034,15 @@ msgstr ""
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:166
+#, fuzzy
+#| msgid ""
+#| "Possibly. When an Academy mage completes his studies, he is granted "
+#| "syllables of power, which become his new name. You are well beyond that "
+#| "point, but you are with the free magi now, so choose your own name. I was "
+#| "originally Rassin Tabin, but that is fairly ordinary, and at one point, "
+#| "it no longer suited."
 msgid ""
-"Possibly. When an academy mage completes his studies, he is granted "
+"Possibly. When an Academy mage completes his studies, he is granted "
 "syllables of power, which become his new name. You are well beyond that "
 "point, but you are with the free magi now, so choose your own name. I was "
 "originally Rassin Tabin, but that is fairly ordinary, and at one point, it "
@@ -2811,9 +3057,13 @@ msgstr ""
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/13_Together_Again.cfg:170
+#, fuzzy
+#| msgid ""
+#| "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
+#| "Vendraxis was correct. From now on I shall be... Ardryn-Na."
 msgid ""
 "I suppose you are right. I am no longer the ordinary girl Ardonna, and "
-"Vendraxis was correct. From now I shall be... Ardryn-Na."
+"Vendraxis was correct. From now on I shall be... Ardryn-Na."
 msgstr ""
 "Suppongo che voi abbiate ragione. Ora non sono più una ragazza comune di "
 "nome Ardonna: Vendraxis ci aveva visto giusto. D’ora in avanti il mio nome "
@@ -2843,6 +3093,21 @@ msgstr "<i>Capitolo III:</i> Sconfiggere la morte"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:29
+#, fuzzy
+#| msgid ""
+#| "24 IV, 23 YW\n"
+#| "\n"
+#| "We reached the Ford of Abez as the dawn light spread behind the mountain "
+#| "peaks to the north. As we waded across, the dark water reached to our "
+#| "waists, which made for slow going. I dared not imagine what manner of "
+#| "tentacled creature lurked below, but we completed the crossing without "
+#| "incident. The water was chill with snowmelt, so our teeth were chattering "
+#| "when we reached the far shore. The rising sun was warm though, and had us "
+#| "dried in short order. Despite this, Ras-Tabahn was not well. He collapsed "
+#| "in the sand and went into a paroxysm of coughing the like of which I had "
+#| "never seen. When he could speak again, he assured me that it was only on "
+#| "account of the cold, and I should not be unduly troubled. I am uneasy all "
+#| "the same."
 msgid ""
 "24 IV, 23 YW\n"
 "\n"
@@ -2852,11 +3117,10 @@ msgid ""
 "tentacled creature lurked below, but we completed the crossing without "
 "incident. The water was chill with snowmelt, so our teeth were chattering "
 "when we reached the far shore. The rising sun was warm though, and had us "
-"dried in short order. Despite this, Ras-Tabahn was not well off. He "
-"collapsed in the sand and went into a paroxysm of coughing the like of which "
-"I had never seen. When he could speak again, he assured me that it was only "
-"on account of the cold, and I should not be unduly troubled. I am uneasy all "
-"the same."
+"dried in short order. Despite this, Ras-Tabahn was not well. He collapsed in "
+"the sand and went into a paroxysm of coughing the like of which I had never "
+"seen. When he could speak again, he assured me that it was only on account "
+"of the cold, and I should not be unduly troubled. I am uneasy all the same."
 msgstr ""
 "24 IV, 23 AW\n"
 "\n"
@@ -2874,14 +3138,14 @@ msgstr ""
 "assicurato che era accaduto solo per via del freddo e che non avevo motivo "
 "di preoccuparmi. Ciò nonostante, mi sento comunque a disagio."
 
-#. [side]: type=Orcish Sovereign, id=Rod-Ishnak
+#. [side]: type=Orcish Warlord, id=Rod-Ishnak
 #. [side]: type=Orcish Warlord, id=Vok-Hroog
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:53
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:67
 msgid "Orcs"
 msgstr "Orchi"
 
-#. [side]: type=Orcish Sovereign, id=Rod-Ishnak
+#. [side]: type=Orcish Warlord, id=Rod-Ishnak
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:54
 msgid "Rod-Ishnak"
 msgstr "Rod-Ishnak"
@@ -2898,9 +3162,13 @@ msgstr "Krongk"
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/14_Entering_the_Northlands.cfg:173
+#, fuzzy
+#| msgid ""
+#| "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. "
+#| "We may meet our doom if we don’t have enough coinsss."
 msgid ""
 "I have a sssense of dark foreboding regarding the sssnowy peaksss ahead. We "
-"may meet our doom if we don't have enough coinsss."
+"may meet our doom if we don’t have enough coinsss."
 msgstr ""
 "Ho degli ossscuri presssentimenti per quanto riguarda le cime innevate più "
 "avanti. Potremmo incontrare il nostro fato ssse non abbiamo abbassstanza "
@@ -3022,6 +3290,19 @@ msgstr "Il passo di montagna"
 #. [part]
 #. "consumption" is an old word for tuberculosis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:23
+#, fuzzy
+#| msgid ""
+#| "6 V, 23 YW\n"
+#| "\n"
+#| "We have reached a pass through the mountains that Ras-Tabahn knew of. The "
+#| "air is cool in these upper reaches. Mist rises from the snow in the "
+#| "afternoon, and the icicles drip the purest water from rock overhangs. I "
+#| "find it all refreshing, but Ras-Tabahn’s coughing fits are frequent. "
+#| "Sometimes he is reduced to speaking in short phrases due to lack of "
+#| "breath. Of course, he is quite old — at least fifty — but I am also "
+#| "certain that he is ill. His thinness leads me to believe it is "
+#| "consumption, but he refuses to discuss it, preferring to deny the "
+#| "severity of his problem."
 msgid ""
 "6 V, 23 YW\n"
 "\n"
@@ -3029,8 +3310,8 @@ msgid ""
 "air is cool in these upper reaches. Mist rises from the snow in the "
 "afternoon, and the icicles drip the purest water from rock overhangs. I find "
 "it all refreshing, but Ras-Tabahn’s coughing fits are frequent. Sometimes he "
-"is reduced to speaking in short phrases due to lack of breath. Of course he "
-"is quite old — 50 at least — but I am also certain that he is ill. His "
+"is reduced to speaking in short phrases due to lack of breath. Of course, he "
+"is quite old — at least fifty — but I am also certain that he is ill. His "
 "thinness leads me to believe it is consumption, but he refuses to discuss "
 "it, preferring to deny the severity of his problem."
 msgstr ""
@@ -3048,82 +3329,84 @@ msgstr ""
 "del suo problema di salute."
 
 #. [side]: type=Gryphon
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:47
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:58
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:46
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:57
 msgid "Gryphons"
 msgstr "Grifoni"
 
 #. [objective]: condition=win
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:74
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:73
 msgid "Move Ardryn-Na and Ras-Tabahn to level ground in the northeast corner"
 msgstr "Sposta Ardryn-Na e Ras-Tabahn sulla prateria nell’angolo a nord-est"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:148
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:147
 msgid "There are some... large bones there. Claws and wings... I think."
 msgstr ""
 "Ho trovato alcune... enormi ossa da questa parte. Credo di vedere... artigli "
 "e ali."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:177
-msgid "I wonder what are they from. A gryphon perhaps?"
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:176
+#, fuzzy
+#| msgid "I wonder what they are from. A gryphon perhaps?"
+msgid "I wonder what they are from. A gryphon perhaps?"
 msgstr "Mi chiedo a chi appartenessero... Forse a un grifone?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:181
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:180
 msgid "A large (<i>cough, cough</i>) flightless bird... would be my guess."
 msgstr ""
 "Io direi piuttosto (<i>colpi di tosse</i>) a un grosso uccello... incapace "
 "di volare."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:185
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:184
 msgid "Well, there is an easy way to discover the truth."
 msgstr "Beh, c’è un modo facile per scoprire la verità."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:254
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:253
 msgid "I wonder... if it could carry... someone light. Vendraxis perhaps."
 msgstr ""
 "Mi domando... se sia in grado di trasportare... una creatura poco pesante, "
 "come Vendraxis."
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:258
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:257
 msgid "I will not climb on that ridiculous thing!"
 msgstr "Non sssalirò mai sssu una creatura cosssì ridicola!"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:264
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:263
 msgid "I wonder... if it could carry... someone light."
 msgstr ""
 "Mi domando... se sia in grado di trasportare... una creatura poco pesante."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:271
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:270
 msgid "A skeleton could ride it I think."
 msgstr "Credo che uno scheletro potrebbe essere in grado di cavalcarlo."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:332
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:331
 msgid "That’s fantastic! These birds could be quite useful."
 msgstr "Fantastico! Questi uccelli potrebbero esserci piuttosto utili."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:351
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:350
 msgid "What dangers may lurk in this fog?"
 msgstr "Quali pericoli potrebbero mai celarsi dietro questa nebbia?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:355
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:354
 msgid "Gryphons... live at this height. We should be cautious."
 msgstr "A queste altitudini vivono... i grifoni. Dobbiamo essere prudenti."
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:364
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:363
 msgid "Yesss. The danger I sssensed is here."
-msgstr ""
+msgstr "Sssicuro. Il pericolo che ho percepito è qui."
 
 #. [scenario]: id=16_The_Mage
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:9
@@ -3558,7 +3841,7 @@ msgid "You can only do this in a castle."
 msgstr "Puoi compiere tale operazione solamente in un castello."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:424
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:423
 msgid ""
 "You can now advance dark sorcerers to liches! For the rest of the campaign, "
 "you can also right-click on an existing necromancer to turn it into a lich "
@@ -3572,17 +3855,21 @@ msgstr ""
 "di livello tramutandosi in un lich antico!"
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:429
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:428
+#, fuzzy
+#| msgid ""
+#| "We have conquered death! Let us bring the news back to Wesnoth! Let all "
+#| "in this world know that nobody ever need die again."
 msgid ""
-"We have conquered death! Let us bring the news back to Wesnoth. We should to "
-"let them know that nobody ever need die again."
+"We have conquered death! Let us bring the news back to Wesnoth! Let all in "
+"this world know that nobody ever need die again."
 msgstr ""
 "Abbiamo sconfitto la morte! Ritorniamo indietro a portare la notizia a "
 "Wesnoth. Dobbiamo fare in modo che tutto il popolo sappia che d’ora in "
 "avanti nessuno dovrà più morire."
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:433
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:432
 msgid ""
 "I was planning to go that direction myself, so I have no objection. But, let "
 "us not go over those wretched mountain passes again. These tunnels should "
@@ -3594,35 +3881,37 @@ msgstr ""
 "direttamente."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:437
-msgid "Why would the Dwarvish empire abandon an outpost like this?"
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:436
+#, fuzzy
+#| msgid "Why would the dwarvish empire abandon an outpost like this?"
+msgid "Why would the dwarvish empire abandon an outpost like this?"
 msgstr ""
 "Perché mai l’impero dei nani avrebbe voluto abbandonare un avamposto del "
 "genere?"
 
 #. [message]: speaker=Ras-Tabahn
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:441
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:440
 msgid "We may find out. We should proceed cautiously."
 msgstr "Lo scopriremo presto. Dovremmo procedere con cautela."
 
 #. [message]: speaker=Vendraxis
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:457
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:456
 msgid "Giant spidersss! That explainsss the cobwebsss everywhere."
 msgstr "Ragni gigantessschi! Ecco ssspiegate tutte le ragnatele qui intorno..."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:463
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:462
 msgid "Giant spiders! That explains the cobwebs everywhere."
 msgstr "Ragni giganteschi! Ecco spiegate tutte le ragnatele qui intorno..."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:469
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:468
 msgid "They are not moving much. Hopefully they continue to stay sleepy."
 msgstr ""
 "Non si stanno muovendo granché. Spero proprio che continuino a dormire..."
 
 #. [message]: speaker=Shynal
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:475
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:474
 msgid "They’re waking up now. Watch out."
 msgstr "Proprio adesso dovevano svegliarsi... Facciamo attenzione."
 
@@ -3661,10 +3950,22 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/19_Lava_and_Stone.cfg:25
+#, fuzzy
+#| msgid ""
+#| "Ras-Tabahn has tried to persuade me to join him in his endeavor, but I "
+#| "have serious misgivings about his plan. I am not positive he can defeat "
+#| "the city guard, and enslaving the population is one of the ways the old "
+#| "Wesfolk leaders earned their poor reputations. I think a more benevolent "
+#| "approach has a better chance of ensuring our legacy. We should spread the "
+#| "news of our success and invite the citizenry to join us voluntarily. I "
+#| "will journey south into Wesnoth proper, and visit Dan’Tonk and Weldyn. At "
+#| "some point in the distant future, my new friends and Ras-Tabahn’s "
+#| "population will probably clash, but that will be a worry for another "
+#| "time, and for now, we each continue to regard the other as an ally."
 msgid ""
 "Ras-Tabahn has tried to persuade me to join him in his endeavor, but I have "
 "serious misgivings about his plan. I am not positive he can defeat the city "
-"guard, and enslaving the population is the one of the ways the old Wesfolk "
+"guard, and enslaving the population is one of the ways the old Wesfolk "
 "leaders earned their poor reputations. I think a more benevolent approach "
 "has a better chance of ensuring our legacy. We should spread the news of our "
 "success and invite the citizenry to join us voluntarily. I will journey "
@@ -3786,13 +4087,13 @@ msgstr ""
 
 #. [side]: type=Dwarvish Lord, id=Golbanduth
 #. [side]
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:40
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:39
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:90
 msgid "Dwarves"
 msgstr "Nani"
 
 #. [side]: type=Dwarvish Lord, id=Golbanduth
-#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:43
+#: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:42
 msgid "Golbanduth"
 msgstr "Golbanduth"
 
@@ -3831,8 +4132,12 @@ msgstr "E adesso, dove siamo finiti?"
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:712
+#, fuzzy
+#| msgid ""
+#| "We are in a dwarvish burial chamber it seems. That is good. We could "
+#| "always use some more soldiers."
 msgid ""
-"We are in a Dwarvish burial chamber it seems. That is good. We could always "
+"We are in a dwarvish burial chamber it seems. That is good. We could always "
 "use some more soldiers."
 msgstr ""
 "Pare che siamo finiti in una camera ardente nanica. Ciò è un bene: potremmo "
@@ -3859,12 +4164,16 @@ msgstr "Bene, da questa parte non si passa."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:773
+#, fuzzy
+#| msgid ""
+#| "But look. There is a large crack in the wall to our right! I’m certain we "
+#| "could squeeze through."
 msgid ""
-"But look. There is a large crack in the wall to our left! I’m certain we "
+"But look. There is a large crack in the wall to our right! I’m certain we "
 "could squeeze through."
 msgstr ""
-"Guarda qui: c’è una larga fenditura nel muro alla nostra sinistra! Sono "
-"certo che potremo passare per di là."
+"Guarda qui: c’è una larga fenditura nel muro alla nostra destra! Sono certo "
+"che potremo passare per di là."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/20_North_Knalga.cfg:777
@@ -3888,16 +4197,23 @@ msgstr "Il mondo contro"
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:19
+#, fuzzy
+#| msgid ""
+#| "30 VI, 23 YW\n"
+#| "\n"
+#| "From the northern part of the Kingdom of Knalga, the tunnel split into "
+#| "many passageways. Being able to feel the life force of the dwarves "
+#| "allowed us to take mostly unoccupied tunnels, which we did."
 msgid ""
 "30 VI, 23 YW\n"
 "\n"
-"From the northern part of the kingdom of Knalga, the tunnel split into many "
+"From the northern part of the Kingdom of Knalga, the tunnel split into many "
 "passageways. Being able to feel the life force of the dwarves allowed us to "
 "take mostly unoccupied tunnels, which we did."
 msgstr ""
 "30 VI, 23 AW\n"
 "\n"
-"Dalla regione settentrionale del regno di Knalga, il tunnel si diramava in "
+"Dalla regione settentrionale del Regno di Knalga, il tunnel si diramava in "
 "numerose gallerie. La nostra capacità di percepire la forza vitale dei nani "
 "ci consentiva di seguire gallerie perlopiù libere: un vantaggio che abbiamo "
 "sfruttato."
@@ -4031,12 +4347,14 @@ msgstr ""
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:588
 msgid "Except for the male of oursss with them. He will come with usss."
-msgstr ""
+msgstr "Ad eccezione del nossstro massschio con loro. Lui verrà con noi."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:592
 msgid "No! I will not return yet, I still have sssecrets to learn!"
 msgstr ""
+"No! Non ritornerò ancora con voi, ci sssono altri sssegreti che devo "
+"apprendere!"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:619
@@ -4315,17 +4633,23 @@ msgstr "Nano minatore"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/campaigns/Secrets_of_the_Ancients/units/Dwarvish_Miner.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Dwarvish miners are the grunt workers of dwarvish society. They take the "
+#| "precious ores out of the ground, but do not ever take part in the "
+#| "crafting of weapons or artifacts. They have no military training, but "
+#| "they can still do some damage with their picks."
 msgid ""
-"Dwarvish miners are the grunt workers of Dwarvish society. They take the "
+"Dwarvish miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
-"I minatori costituiscono la manovalanza della società dei nani. Essi "
-"estraggono preziosi minerali dal terreno, ma non prendono minimamente parte "
-"alla realizzazione di armi o artefatti. Non hanno alcun addestramento "
-"militare, ma sono comunque in grado di arrecare danni di una certa entità "
-"con i loro picconi."
+"I minatori costituiscono la manovalanza della società dei nani. Estraggono "
+"preziosi minerali dal terreno, ma non prendono minimamente parte alla "
+"realizzazione di armi o artefatti. Non hanno alcun addestramento militare, "
+"ma sono comunque in grado di arrecare danni di una certa entità con i loro "
+"picconi."
 
 #. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/Dwarvish_Miner.cfg:22
@@ -4354,20 +4678,28 @@ msgstr "Sciamano degli orchi"
 
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life."
 msgid ""
 "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
 "tribes, they form the Orcish Council, which makes important decisions for "
 "the whole Orcish community and arbitrates the many conflicts that arise "
 "between tribes of this argumentative race. Although physically weak (for "
-"Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
 "draining their life."
 msgstr ""
 "Gli sciamani degli orchi sono i custodi della magia tra gli orchi. "
-"Rispettati fra le tribù orchesche, costituiscono il Consiglio degli orchi, "
-"il quale prende le decisioni importanti per l’intera comunità orchesca e "
-"funge da arbitro nei numerosi conflitti che nascono fra le tribù di questa "
-"razza litigiosa. Nonostante siano fisicamente deboli per essere degli orchi, "
-"gli sciamani sono ottimi incantatori e possono maledire i loro nemici, "
+"Rispettati fra le tribù orchesche, costituiscono il Consiglio degli Orchi, "
+"che prende le decisioni importanti per l’intera comunità orchesca e funge da "
+"arbitro nei numerosi conflitti che nascono fra le tribù di questa razza "
+"litigiosa. Nonostante siano fisicamente deboli per essere degli orchi, gli "
+"sciamani sono ottimi incantatori e possono maledire i loro nemici, "
 "assorbendone la forza vitale."
 
 #. [unit_type]: id=Sailor, race=human
@@ -4412,26 +4744,28 @@ msgstr ""
 #. recruit it launches the zombie recruit dialog as a child of the normal
 #. recruitment dialog. "Walking Corpse" is not used here because some swim,
 #. and some fly.
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:93
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:92
 msgid "All Corpses"
-msgstr ""
+msgstr "Tutti i cadaveri"
 
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:105
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:104
 msgid "Choose this “unit” to get a list of available corpses."
 msgstr ""
+"Scegli questa “unità” per visualizzare una lista con tutti i cadaveri "
+"disponibili."
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:157
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:156
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:314
 msgid "Flying Corpse"
-msgstr ""
+msgstr "Cadavere Volante"
 
 #. [unit_type]: id=SotA Swimming Corpse
-#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:205
+#: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:204
 msgid "Swimming Corpse"
-msgstr ""
+msgstr "Cadavere Acquatico"
 
 #: data/campaigns/Secrets_of_the_Ancients/utils/characters.cfg:7
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:7
@@ -4464,7 +4798,9 @@ msgstr "Urgh."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:163
-msgid "But I don't know how to bring you back yet!"
+#, fuzzy
+#| msgid "But I don’t know how to bring you back yet!"
+msgid "But I don’t know how to bring you back yet!"
 msgstr "Ma io non so ancora come riportarti in vita!"
 
 #. [message]: speaker=Carcyn
@@ -4481,7 +4817,9 @@ msgstr "Riportatela in vita, per favore!"
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:202
-msgid "I'm not sure that's such a good..."
+#, fuzzy
+#| msgid "I’m not sure that’s such a good..."
+msgid "I’m not sure that’s such a good..."
 msgstr "Non sono certa che sia un bene..."
 
 #. [message]: speaker=Ras-Tabahn
@@ -4508,8 +4846,12 @@ msgstr "Forse è stato meglio così."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:259
+#, fuzzy
+#| msgid ""
+#| "It’s not possible. She was already back from the dead. She has been "
+#| "utterly destroyed this time."
 msgid ""
-"It's not possible. She was already back from the dead. She has been utterly "
+"It’s not possible. She was already back from the dead. She has been utterly "
 "destroyed this time."
 msgstr ""
 "Non è possibile: era già risorta dal regno dei morti. Questa volta il suo "
@@ -4534,61 +4876,66 @@ msgstr "Mi mancherai."
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:307
 msgid "Now I will never learn the sssecret of exssstending my ssspan."
 msgstr ""
+"Adessso non apprenderò più il sssegreto per essstendere la mi esssissstenza."
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
-msgid "I'm going to miss him."
-msgstr ""
+#, fuzzy
+#| msgid "I’m going to miss him."
+msgid "I’m going to miss him."
+msgstr "Mi mancherà."
 
 #. [message]: speaker=Ras-Tabahn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:329
 msgid "Unfortunate. He was useful."
-msgstr ""
+msgstr "Peccato. Era utile."
 
 #. [message]: speaker=Shynal
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:340
 msgid "Yes, he was helpful."
-msgstr ""
+msgstr "Sì, era utile."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:346
 msgid "Indeed, he will be missed."
-msgstr ""
+msgstr "Infatti, ci mancherà."
 
 #. [message]: speaker=Ardonna
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:368
-msgid "Don't worry, my pet. I can save you."
-msgstr ""
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:375
+#, fuzzy
+#| msgid "Don’t worry, my pet. I can save you."
+msgid "Don’t worry, my pet. I can save you."
+msgstr "Non ti preccupare, piccolo mio. Posso salvarti."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:424
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:431
 msgid "Aww. I wanted to be a mage like Shynal."
 msgstr "Accidenti! Volevo diventare un mago come Shynal."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:430
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:437
 msgid "Aww. I wanted to be a mage like Carcyn."
 msgstr "Accidenti! Volevo diventare una maga come Carcyn."
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:437
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:444
 msgid "Do not make me regret liberating you from jail. My decision is final."
 msgstr ""
 "Non farmi pentire di averti liberato dalla prigione. La mia decisione è "
 "definitiva."
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:440
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:447
 msgid "I have reconsidered. Perhaps you will be very powerful one day."
 msgstr "Ho cambiato idea. Forse, un giorno, diventerai davvero potente."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:451
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:458
 msgid "Thanks!"
 msgstr "Vi ringrazio!"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:466
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:473
 msgid ""
 "Hey, I wanted to be a wizard like you and live forever when you figure it "
 "out! I know I could be super-powerful in the end."
@@ -4598,186 +4945,136 @@ msgstr ""
 "diventare davvero potente."
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:472
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:479
 msgid "Hold your tongue. You will do as I command."
 msgstr "Tieni a freno la lingua! Farai come ordino io."
 
 #. [option]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:481
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:488
 msgid "Very well. Having more adepts might be a good idea after all."
 msgstr ""
 "Molto bene. Avere più adepti a disposizione potrebbe essere una buona idea, "
 "dopotutto."
 
 #. [unstore_unit]
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:870
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:877
 msgid "Lich"
 msgstr "Lich"
 
 #. [set_menu_item]: id=hide-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:913
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:920
 msgid "Hide Sails and Rigging"
 msgstr "Nascondi vele e sartiame"
 
 #. [set_menu_item]: id=show-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:952
+#: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:959
 msgid "Show Sails and Rigging"
 msgstr "Mostra vele e sartiame"
 
-#. [terrain_type]: id=zgrave
 #. [terrain_type]: id=grave
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:19
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:15
 msgid "Grave"
 msgstr "Tomba"
 
-#. [terrain_type]: id=zgrave
 #. [terrain_type]: id=grave
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:20
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:16
 msgid "Grave Overlay"
 msgstr "Sovrapposizione – Tomba"
 
-#. [terrain_type]: id=znot_here
 #. [terrain_type]: id=not_here
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:31
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:27
 msgid "Not Here Overlay"
 msgstr "Sovrapposizione – Non qui"
 
-#. [terrain_type]: id=zcrystal
 #. [terrain_type]: id=crystal
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:50
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:46
 msgid "Crystal Caves"
 msgstr "Grotte di Cristallo"
 
-#. [terrain_type]: id=zpassageway
 #. [terrain_type]: id=passageway
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:60
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:56
 msgid "Passageway"
 msgstr "Passaggio"
 
-#. [terrain_type]: id=zgate_open
-#. [terrain_type]: id=zgate_closed
 #. [terrain_type]: id=gate_open
 #. [terrain_type]: id=gate_closed
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:69
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:79
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:65
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:75
 msgid "Gate"
 msgstr "Cancello"
 
-#. [terrain_type]: id=zweb
 #. [terrain_type]: id=web
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:89
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:85
 msgid "Spiderweb"
 msgstr "Ragnatela"
 
-#. [terrain_type]: id=zgraveyard-fence-top
 #. [terrain_type]: id=graveyard-fence-top
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:99
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:95
 msgid "Fence-Top"
 msgstr "Staccionata – Parte alta"
 
-#. [terrain_type]: id=zgraveyard-fence-bottom
 #. [terrain_type]: id=graveyard-fence-bottom
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:108
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:104
 msgid "Fence"
 msgstr "Staccionata"
 
-#. [terrain_type]: id=zgraveyard-fence-bottom
 #. [terrain_type]: id=graveyard-fence-bottom
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:105
 msgid "Fence-Bottom"
 msgstr "Staccionata – Parte bassa"
 
-#. [terrain_type]: id=zship--forecastle
 #. [terrain_type]: id=ship--forecastle
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:128
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:124
 msgid "Ship Forecastle"
 msgstr "Castello di prua"
 
-#. [terrain_type]: id=zship--main-deck
 #. [terrain_type]: id=ship--main-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:141
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:137
 msgid "Ship Main Deck"
 msgstr "Ponte principale"
 
-#. [terrain_type]: id=zship--poop-deck
 #. [terrain_type]: id=ship--poop-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:151
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:147
 msgid "Ship Poop Deck"
 msgstr "Ponte di poppa"
 
-#. [terrain_type]: id=zship--hull
-#. [terrain_type]: id=zship--railing
 #. [terrain_type]: id=ship--hull
 #. [terrain_type]: id=ship--railing
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:164
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:256
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:274
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:252
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:270
 msgid "Ship Hull"
 msgstr "Scafo"
 
-#. [terrain_type]: id=zship--rigging-and-sails
 #. [terrain_type]: id=ship--rigging-and-sails
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:173
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:169
 msgid "Ship Rigging and Sails"
 msgstr "Sartiame e vele"
 
-#. [terrain_type]: id=zship--railing
 #. [terrain_type]: id=ship--railing
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:182
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:178
 msgid "Ship Railing"
 msgstr "Parapetto"
 
-#. [terrain_type]: id=zship--bits-and-pieces
 #. [terrain_type]: id=ship--bits-and-pieces
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:191
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:187
 msgid "Ship Pieces"
 msgstr "Parti della nave"
 
-#. [terrain_type]: id=zship--lower-deck
 #. [terrain_type]: id=ship--lower-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:200
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:196
 msgid "Ship Lower Deck"
 msgstr "Sottocoperta"
 
-#. [terrain_type]: id=zship--lower-deck-edge
 #. [terrain_type]: id=ship--lower-deck-edge
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:209
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:205
 msgid "Ship Lower Deck Edge"
 msgstr "Bordo controchiglia"
 
-#. [terrain_type]: id=zship--forecastle
-#. [terrain_type]: id=ship--main-deck
-#. [terrain_type]: id=zship--poop-deck
-#. [terrain_type]: id=zship--lower-deck
 #. [terrain_type]: id=ship--forecastle
+#. [terrain_type]: id=ship--main-deck
 #. [terrain_type]: id=ship--poop-deck
 #. [terrain_type]: id=ship--lower-deck
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:220
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:233
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:243
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:305
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:216
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:229
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:239
@@ -4785,23 +5082,17 @@ msgstr "Bordo controchiglia"
 msgid "Ship"
 msgstr "Nave"
 
-#. [terrain_type]: id=zfull-void
 #. [terrain_type]: id=full-void
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:327
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:323
 msgid "Full Void"
 msgstr "Vuoto completo"
 
-#. [terrain_type]: id=zfull-void-overlay
 #. [terrain_type]: id=full-void-overlay
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:337
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:333
 msgid "Void Overlay"
 msgstr "Sovrapposizione – Vuoto"
 
-#. [terrain_type]: id=zhalf-void-overlay
 #. [terrain_type]: id=half-void-overlay
-#: data/campaigns/Secrets_of_the_Ancients/utils/terrain-compat.cfg:347
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:343
 msgid "Half Void"
 msgstr "Vuoto a metà"
@@ -4810,381 +5101,177 @@ msgstr "Vuoto a metà"
 #. shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:24
 msgid "recruit^Flying Corpse (Bat)"
-msgstr ""
+msgstr "Cadavere Volante (Pipistrello)"
 
 #. [value]: type=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:25
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise bat corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di pipistrello!"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:30
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Rat)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Ratto)"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:31
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise rat corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di ratto!"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:36
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Lupo)"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:37
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wolf corpses!"
-msgstr "Ora puoi reclutare i cavalcaossi!"
+msgstr "Ora puoi rianimare cadaveri di lupo!"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:42
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Human)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Umano)"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:43
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise human corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri umani!"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #. the mount is an undead horse (not a wolf), this is shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:49
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Mounted)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Cavaliere)"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:50
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise mounted corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di cavalieri!"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:55
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wolf Rider)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Cavalcalupi)"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:56
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise wolf rider corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di cavalcalupi!"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:62
 msgid "recruit^Swimming Corpse"
-msgstr ""
+msgstr "Cadavere Acquatico"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:64
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise swimming corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri acquatici!"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:69
 msgid "recruit^Walking Corpse (Saurian)"
-msgstr ""
+msgstr "Morto Vivente (Sauro)"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:70
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise saurian corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di sauro!"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:75
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Wose)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Morto Vivente (Wose)"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:76
-#, fuzzy
-#| msgid "You can now recruit chocobones!"
 msgid "You can now raise wose corpses!"
-msgstr "Ora puoi reclutare i cavalcaossi!"
+msgstr "Ora puoi rianimare cadaveri di wose!"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:81
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Goblin)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Goblin)"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:82
-#, fuzzy
-#| msgid "You can now recruit ghouls!"
 msgid "You can now raise goblin corpses!"
-msgstr "Ora puoi reclutare i divoratori di cadaveri!"
+msgstr "Ora puoi rianimare cadaveri di goblin!"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:87
 msgid "recruit^Flying Corpse (Gryphon)"
-msgstr ""
+msgstr "Cadavere Volante (Grifone)"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:88
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise gryphon corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di grifone!"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:93
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Spider)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Ragno)"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:94
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise spider corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di ragno!"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:99
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Troll)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Troll)"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:100
-#, fuzzy
-#| msgid "You can now recruit ghosts!"
 msgid "You can now raise troll corpses!"
-msgstr "Ora puoi reclutare i fantasmi!"
+msgstr "Ora puoi rianimare cadaveri di troll!"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:105
-#, fuzzy
-#| msgid "Raise Walking Corpse (8 Gold)"
 msgid "recruit^Walking Corpse (Dwarf)"
-msgstr "Rianima morto vivente (8 mo)"
+msgstr "Rianima Morto Vivente (Nano)"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:106
-#, fuzzy
-#| msgid "You can now recruit dark adepts!"
 msgid "You can now raise dwarf corpses!"
-msgstr "Ora puoi reclutare gli adepti dell’Oscurità!"
+msgstr "Ora puoi rianimare cadaveri di nano!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:372
 msgid "A lua error has occurred, and a corpse cannot be recruited."
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:33
-msgid "Lvl 0"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:36
-msgid "Undead"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:41
-msgid "Traits"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:44
-msgid "Attacks"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:56
-msgid "Choose a Corpse"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:71
-msgid "Recruit"
-msgstr ""
-
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:72
-msgid "Cancel"
-msgstr ""
+msgstr "Si è verificato un errore lua e non è possibile reclutare un cadavere."
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:23
 msgid "HP: "
-msgstr ""
+msgstr "PF: "
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:23
 msgid "MP: "
-msgstr ""
+msgstr "PM: "
 
 #. [lua]: select
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:85
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:23
 msgid "XP: "
-msgstr ""
+msgstr "PE: "
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:150
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:88
 msgid "There are no corpses available."
-msgstr ""
+msgstr "Non ci sono cadaveri a disposizione."
 
 #. [lua]: postshow
-#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:155
-#, fuzzy
-#| msgid "You don't have enough gold to raise that unit."
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:96
 msgid "You do not have enough gold to recruit that unit"
-msgstr "Non disponi di oro a sufficienza per rianimare quell’unità."
-
-#~ msgid ""
-#~ "22 III, 23 YW\n"
-#~ "\n"
-#~ "Research sometimes requires experiments, so I began. I forced my will "
-#~ "into the life-force pathways of the bandit, thus turning him into my "
-#~ "puppet. He resisted, but on account of my recent practice, my will proved "
-#~ "the stronger. More strangely, the inside of his body also resisted, "
-#~ "attacking me, the invader. However, since I wasn’t physically there, it "
-#~ "ended up attacking itself! Over a period of hours, slabs of flesh became "
-#~ "weak and threatened to fall off his frame. I was obliged to stitch them "
-#~ "in place."
-#~ msgstr ""
-#~ "22 III, 23 AW\n"
-#~ "\n"
-#~ "A volte le ricerche richiedono esperimenti, perciò ho iniziato il mio. Ho "
-#~ "sospinto la mia forza di volontà lungo i meridiani della forza vitale del "
-#~ "bandito, trasformandolo nel mio fantoccio. Ha opposto resistenza, ma "
-#~ "grazie al mio addestramento recente la mia mente si è rivelata più forte "
-#~ "della sua. Cosa ancor più strana, anche gli organi interni del suo corpo "
-#~ "hanno opposto resistenza attaccando l’invasore, ossia me. Tuttavia, non "
-#~ "essendo io fisicamente presente, il suo corpo ha finito con l’attaccarsi "
-#~ "da solo! Nel giro di qualche ora, pezzi interi di carne si erano "
-#~ "indeboliti e minacciavano di cadere dall’ossatura scheletrica, perciò mi "
-#~ "sono vista costretta a ricucirli al loro posto."
-
-#~ msgid ""
-#~ "Some of the bandit’s companions had perished in better condition than the "
-#~ "leader, and I got the idea to add their flesh to my puppet. I stitched on "
-#~ "muscles where they seemed to fit, and used enchantments to improve the "
-#~ "bonding, thus improving the strength of the creature. At first, each new "
-#~ "piece of flesh caused another violent reaction from the body’s defenses. "
-#~ "Eventually, the reactions weakened, and the body stabilized in its new "
-#~ "configuration, though by this time it was suppurating and unrecognizable. "
-#~ "The mind inside gibbered at what it had become, but the bandit had wished "
-#~ "for me a fate worse than death, so it didn’t seem unfair."
-#~ msgstr ""
-#~ "Alcuni dei compagni del bandito erano deceduti in condizioni migliori di "
-#~ "quelle del loro capo, così ho avuto l’idea di aggiungere la loro carne a "
-#~ "quella del mio fantoccio. Ho ricucito i muscoli laddove le fibre parevano "
-#~ "combaciare e ho usato alcuni incantesimi per rinforzare tali saldature, "
-#~ "aumentando così la forza della creatura. Inizialmente, ogni nuovo pezzo "
-#~ "di carne causava un’altra reazione violenta di rigetto da parte delle "
-#~ "difese corporee. Alla fine, però, il rigetto si era indebolito e il corpo "
-#~ "si era stabilizzato nella sua nuova configurazione, sebbene a quel punto "
-#~ "fosse ormai in putrefazione e quindi irriconoscibile. La mente "
-#~ "all’interno del corpo farfugliava strane parole in merito a ciò che era "
-#~ "diventata; ma il bandito aveva desiderato per me un fato peggiore della "
-#~ "morte, perciò non mi sembrava una cosa ingiusta."
+msgstr "Non disponi di oro a sufficienza per reclutare quell’unità"
 
 #, fuzzy
-#~| msgid "Goblin Raiders"
-#~ msgid "(Wolf Rider)"
-#~ msgstr "Goblin razziatori"
-
-#, fuzzy
-#~| msgid "Merfolk"
-#~ msgid "(Merfolk)"
-#~ msgstr "Nereidi"
-
-#, fuzzy
-#~| msgid "You can now recruit ghosts!"
-#~ msgid "You can now raise merfolk corpses!"
-#~ msgstr "Ora puoi reclutare i fantasmi!"
-
-#, fuzzy
-#~| msgid "Saurians"
-#~ msgid "(Saurian)"
-#~ msgstr "Sauri"
-
-#, fuzzy
-#~| msgid "Gryphons"
-#~ msgid "(Gryphon)"
-#~ msgstr "Grifoni"
-
-#, fuzzy
-#~| msgid "Spiders"
-#~ msgid "(Spider)"
-#~ msgstr "Ragni"
-
-#, fuzzy
-#~| msgid "Trolls"
-#~ msgid "(Troll)"
-#~ msgstr "Troll"
-
-#~ msgid ""
-#~ "You can recruit or recall from your starting position on the first turn "
-#~ "only. To get more units, raise them from their graves."
-#~ msgstr ""
-#~ "Puoi reclutare o richiamare unità dalla tua posizione iniziale solamente "
-#~ "durante il primo turno. Per ottenere altre unità, rianimale dalle loro "
-#~ "tombe."
-
-#~ msgid "Galoïndrath"
-#~ msgstr "Galoïndrath"
-
-#~ msgid "Translations"
-#~ msgstr "Traduzioni"
-
-#~ msgid "Hungarian - WhiteWolf"
-#~ msgstr "Ungherese - whiteWolf"
-
-#~ msgid "Japanese - RatArmy"
-#~ msgstr "Giapponese - RatArmy"
-
-#~ msgid "Russian - iven, olga_flox, and marat"
-#~ msgstr "Russo - iven, olga_flox e marat"
-
-#~ msgid "Gwillyn"
-#~ msgstr "Gwillyn"
-
-#~ msgid "You kids may watch."
-#~ msgstr "Voi ragazzi potete godervi lo spettacolo."
-
-#~ msgid ""
-#~ "This is going to cost us, but I want to keep some gold around for "
-#~ "emergencies — I think 50 is about right. You kids help me collect some. "
-#~ "(<i>Cough, cough</i>)"
-#~ msgstr ""
-#~ "Questa missione ci costerà parecchio, ma vorrei tenere da parte un po’ di "
-#~ "oro per le emergenze – credo che 50 monete andranno bene. Aiutatemi a "
-#~ "raccogliere l’oro che ci serve. (<i>colpi di tosse</i>)"
-
-#~ msgid "Ancient Lich"
-#~ msgstr "Lich antico"
-
-#~ msgid "Khalif"
-#~ msgstr "Khalif"
-
-#~ msgid "Noble"
-#~ msgstr "Nobile"
+#~| msgid "You can no longer recruit skeletons and skeleton archers."
+#~ msgid "You can now recruit skeletons and skeleton archers!"
+#~ msgstr "Non puoi più reclutare scheletri né scheletri arcieri."

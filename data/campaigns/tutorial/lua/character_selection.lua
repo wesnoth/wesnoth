@@ -8,83 +8,13 @@ local wml_actions = wesnoth.wml_actions
 local _ = wesnoth.textdomain "wesnoth-tutorial"
 
 function wml_actions.select_character()
-	local character_selection_dialog = {
-		maximum_height = 250,
-		maximum_width = 400,
-		T.helptip { id="tooltip_large" }, -- mandatory field
-		T.tooltip { id="tooltip_large" }, -- mandatory field
-		T.grid {
-			T.row {
-				T.column {
-					grow_factor = 1,
-					border = "all",
-					border_size = 5,
-					horizontal_alignment = "left",
-					T.label {
-						definition = "title",
-						label = _"Select Character"
-					}
-				}
-			},
-			T.row {
-				T.column {
-					grow_factor = 1,
-					border = "all",
-					border_size = 5,
-					horizontal_alignment = "left",
-					T.label {
-						label = _"Who do you want to play?"
-					}
-				}
-			},
-			T.row {
-				T.column {
-					T.grid {
-						T.row {
-							T.column {
-								grow_factor = 1,
-								border = "all",
-								border_size = 5,
-								T.image {
-									label = "units/konrad-fighter.png"
-								}
-							},
-							T.column {
-								grow_factor = 1,
-								border = "all",
-								border_size = 5,
-								T.image {
-									label = "units/human-princess.png~TC(1,magenta)"
-								}
-							}
-						},
-						T.row {
-							T.column {
-								grow_factor = 1,
-								border = "all",
-								border_size = 5,
-								T.button {
-									label = _"Konrad",
-									return_value = 1
-								}
-							},
-							T.column {
-								grow_factor = 1,
-								border = "all",
-								border_size = 5,
-								T.button {
-									label = _"Li’sar",
-									return_value = 2
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	local character_selection_dialog = wml.load "campaigns/tutorial/gui/character_selection.cfg"
+	local dialog_wml = wml.get_child(character_selection_dialog, 'resolution')
 
-	local character = gui.show_dialog(character_selection_dialog)
+	local result = wesnoth.sync.evaluate_single(function()
+		return { value = gui.show_dialog(dialog_wml) }
+	end)
+	local character = result.value
 	local unit = wml.variables.student_store
 
 	if character == 2 then
@@ -93,7 +23,7 @@ function wml_actions.select_character()
 			id = unit.id,
 			name = _"Li’sar",
 			unrenamable = true,
-			profile = "portraits/lisar.png",
+			profile = "portraits/lisar.webp",
 			canrecruit = true,
 			facing = unit.facing,
 		}, unit.x, unit.y )

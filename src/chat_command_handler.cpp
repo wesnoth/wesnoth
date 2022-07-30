@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "chat_command_handler.hpp"
@@ -49,49 +50,12 @@ void chat_command_handler::do_network_send_req_arg()
 	do_network_send();
 }
 
-void chat_command_handler::do_room_query_noarg()
-{
-	config data;
-	config& q = data.add_child("room_query");
-	q.add_child(get_cmd());
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_room_query()
-{
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	config data;
-	config& q = data.add_child("room_query");
-	q["room"] = get_arg(1);
-	q.add_child(get_cmd());
-	chat_handler_.send_to_server(data);
-}
-
-void chat_command_handler::do_gen_room_query()
-{
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	config data;
-	config& q = data.add_child("room_query");
-	q["room"] = get_arg(1);
-	config& c = q.add_child(get_arg(2));
-	c["value"] = get_data(3);
-	chat_handler_.send_to_server(data);
-}
-
 void chat_command_handler::do_whisper()
 {
 	if (get_data(1).empty()) return command_failed_need_arg(1);
 	if (get_data(2).empty()) return command_failed_need_arg(2);
 	chat_handler_.send_whisper(get_arg(1), get_data(2));
 	chat_handler_.add_whisper_sent(get_arg(1), get_data(2));
-}
-
-void chat_command_handler::do_chanmsg()
-{
-	if (get_data(1).empty()) return command_failed_need_arg(1);
-	if (get_data(2).empty()) return command_failed_need_arg(2);
-	chat_handler_.send_chat_room_message(get_arg(1), get_data(2));
-	chat_handler_.add_chat_room_message_sent(get_arg(1), get_data(2));
 }
 
 void chat_command_handler::do_log()
@@ -169,6 +133,10 @@ void chat_command_handler::do_info() {
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
 	chat_handler_.send_to_server(data);
+}
+
+void chat_command_handler::do_clear_messages() {
+	chat_handler_.clear_messages();
 }
 
 }

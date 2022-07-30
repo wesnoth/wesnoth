@@ -1,39 +1,44 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
+#include "gui/core/top_level_drawable.hpp"
+#include "sdl/rect.hpp"
+
 #include <string>
-#include "sdl/surface.hpp"
 
 struct SDL_Rect;
 
 namespace tooltips {
 
-struct manager
+class manager : public gui2::top_level_drawable
 {
+public:
 	manager();
 	~manager();
+	// TLD interface
+	virtual void layout() override;
+	virtual bool expose(const SDL_Rect& region) override;
+	virtual rect screen_location() override;
 };
 
 void clear_tooltips();
 void clear_tooltips(const SDL_Rect& rect);
-int  add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="", bool use_markup = true, const surface& foreground = surface(nullptr));
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
-		const std::string& action, bool use_markup, const surface& foreground);
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message,
-		const std::string& action, bool use_markup);
+int  add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="");
+bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message);
 void remove_tooltip(int id);
 void process(int mousex, int mousey);
 

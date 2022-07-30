@@ -7,4 +7,4 @@ mkdir ../steambuild
 if [ -d "$PWD"/../../../build ]; then
     echo "Existing scons 'build' directory found, this may cause the build to fail!"
 fi
-docker run -it -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec -u "$UID" steamos-wesnoth
+docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec -u "$UID" steamos-wesnoth

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -20,6 +21,7 @@
 #include "gui/widgets/debug.hpp"
 
 #include "formatter.hpp"
+#include "log.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
@@ -27,7 +29,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <fstream>
-#include <iostream>
+#include <iomanip>
 
 namespace gui2
 {
@@ -131,8 +133,7 @@ void debug_layout_graph::set_level(const std::string& level)
 		} else if(param == "state") {
 			level_ |= STATE_INFO;
 		} else {
-			// logging might not be up yet.
-			std::cerr << "Unknown level '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown level '" << param << "' is ignored.";
 		}
 	}
 }
@@ -159,8 +160,7 @@ void debug_layout_graph::set_domain(const std::string& domain)
 		} else if(param == "layout") {
 			domain_ |= LAYOUT;
 		} else {
-			// logging might not be up yet.
-			std::cerr << "Unknown domain '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown domain '" << param << "' is ignored.";
 		}
 	}
 }
@@ -231,8 +231,8 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 				= dynamic_cast<const class scrollbar_container*>(widget);
 
 		if(scrollbar_container) {
-			widget_generate_info(
-            out, scrollbar_container->content_grid_.get(), id + "_C", true);
+			widget_generate_info(out,
+				scrollbar_container->content_grid_.get(), id + "_C", true);
 			out << "\t" << id << " -> " << id << "_C"
 				<< " [label=\"(content)\"];\n";
 		}
@@ -316,7 +316,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "active=" << control->get_active() << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
-        << "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
+		<< "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "drawing action=" << static_cast<int>(control->get_drawing_action()) << '\n'
 		<< "</td></tr>\n"
@@ -401,7 +401,7 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-            const widget* widget = grid->get_widget(row, col);
+			const widget* widget = grid->get_widget(row, col);
 			assert(widget);
 
 			widget_generate_info(

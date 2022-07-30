@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -24,18 +25,18 @@ namespace t_translation { struct terrain_code; }
 /**
  * The basic "size" of the unit - flying, small land, large land, etc.
  * This encompasses terrain costs, defenses, and resistances.
- * 
+ *
  * This class is used for both [movetype] and [unit] configs, which use the
  * same data in their configs for [movement_costs], [defense], etc. However,
  * the data for whether the unit flies is historically held in [movetype]'s
  * "flies" vs [unit]'s "flying".
- * 
+ *
  * Existing behavior of 1.14:
  * * movetype::movetype(const config & cfg) will read only the "flies" key
  * * movetype::merge(const config & cfg, bool overwrite) will read both keys,
  *     with "flying" taking priority if both are supplied
  * * movetype::write() will write only the "flying" key
- * 
+ *
  * @todo make this more logical. Ideas:
  * * for 1.15, support both "flying" and "flies" in [movetype]
  * * for 1.17 or later, drop the "flies"
@@ -56,7 +57,7 @@ public:
 
 		/**
 		 * Returns the value associated with the given terrain.
-		 * 
+		 *
 		 * Calculated values are cached for later queries.
 		 */
 		virtual int value(const t_translation::terrain_code & terrain) const = 0;
@@ -93,7 +94,7 @@ private:
 	/**
 	 * Stores a set of data based on terrain, in some cases with raw pointers to
 	 * other instances of terrain_info (the fallback_).
-	 * 
+	 *
 	 * The data can either be a single instance (in which case it's
 	 * writable and stored in unique_data_) or may have already been shared
 	 * (via make_data_shareable()), in which case it's stored in shared_data_.
@@ -310,7 +311,25 @@ public:
 
 	/**
 	 * Merges the given config over the existing data, the config should have zero or more
-	 * children named "movement_costs", "defense", etc.
+	 * children named "movement_costs", "defense", etc. Only those children will be affected
+	 * (in the case of movement and vision the cascaded values in vision and jamming will also
+	 * be affected).
+	 *
+	 * If @a overwrite is true, the new values will replace the old ones. If it's false, the
+	 * new values are relative improvements or maluses which will be applied on top of the old
+	 * values.
+	 *
+	 * If the old values included defense caps and @a overwrite is false, the calculations are
+	 * done with absolute values and then changed back to the old sign. This means that merge()
+	 * doesn't create or remove defense caps when @a overwrite is false.
+	 *
+	 * If @a new_cfg["flying"] is provided, it overrides the old value, regardless of the value
+	 * of @a overwrite.
+	 *
+	 * This neither adds nor removes special notes. One purpose of this function is to have
+	 * [unit_type][movement_costs] partially overwrite data from [unit_type]movetype=, and it
+	 * would be unhelpful if an unrelated [unit_type][special_note] cleared the movetype's
+	 * special notes.
 	 */
 	void merge(const config & new_cfg, bool overwrite=true);
 
@@ -324,6 +343,9 @@ public:
 	/** The set of applicable effects for movement types */
 	static const std::set<std::string> effects;
 
+	/** Contents of any [special_note] tags */
+	const std::vector<t_string>& special_notes() const { return special_notes_; }
+
 	/** Writes the movement type data to the provided config. */
 	void write(config & cfg) const;
 
@@ -335,4 +357,5 @@ private:
 	resistances resist_;
 
 	bool flying_;
+	std::vector<t_string> special_notes_;
 };

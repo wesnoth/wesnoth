@@ -1,14 +1,15 @@
 /*
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2020 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -38,7 +39,7 @@ class dbconn
 	public:
 		/**
 		 * Initializes the synchronous query connection as well as the account object that has the connection settings.
-		 * 
+		 *
 		 * @param c The config object to read information from.
 		 */
 		dbconn(const config& c);
@@ -60,7 +61,7 @@ class dbconn
 
 		/**
 		 * This is an asynchronous query that is executed on a separate connection to retrieve the game history for the provided player.
-		 * 
+		 *
 		 * @param player_id The forum ID of the player to get the game history for.
 		 * @param offset The offset to provide to the database for where to start returning rows from.
 		 * @return The simple_wml document containing the query results, or simply the @a error attribute if an exception is thrown.
@@ -106,7 +107,7 @@ class dbconn
 
 		/**
 		 * The provided value is updated if a row exists or a new row inserted otherwise.
-		 * 
+		 *
 		 * @param column The column that the value will be put into.
 		 * @param name The player's username.
 		 * @param value The value to be put into the column.
@@ -136,12 +137,47 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().
 		 */
-		void insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 		/**
 		 * @see forum_user_handler::db_set_oos_flag().
 		 */
 		void set_oos_flag(const std::string& uuid, int game_id);
+
+		/**
+		 * @see forum_user_handler::db_topic_id_exists().
+		 */
+		bool topic_id_exists(int topic_id);
+
+		/**
+		 * @see forum_user_handler::db_insert_addon_info().
+		 */
+		void insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
+
+		/**
+		 * @see forum_user_handler::db_insert_login().
+		 */
+		unsigned long long insert_login(const std::string& username, const std::string& ip, const std::string& version);
+
+		/**
+		 * @see forum_user_handler::db_update_logout().
+		 */
+		void update_logout(unsigned long long login_id);
+
+		/**
+		 * @see forum_user_handler::get_users_for_ip().
+		 */
+		void get_users_for_ip(const std::string& ip, std::ostringstream* out);
+
+		/**
+		 * @see forum_user_handler::get_ips_for_users().
+		 */
+		void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
+		/**
+		 * @see forum_user_handler::db_update_addon_download_count().
+		 */
+		void update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
 
 	private:
 		/**
@@ -169,10 +205,16 @@ class dbconn
 		std::string db_user_group_table_;
 		/** The text of the SQL query to use to retrieve any currently active tournaments. */
 		std::string db_tournament_query_;
+		/** The name of the table that contains phpbb forum thread information */
+		std::string db_topics_table_;
+		/** The name of the table that contains add-on information. */
+		std::string db_addon_info_table_;
+		/** The name of the table that contains user connection history. */
+		std::string db_connection_history_table_;
 
 		/**
 		 * This is used to write out error text when an SQL-related exception occurs.
-		 * 
+		 *
 		 * @param text Some custom text to log.
 		 * @param e The exception that occurred which has information about what went wrong.
 		 */
@@ -186,7 +228,7 @@ class dbconn
 		/**
 		 * Queries can return data with various types that can't be easily fit into a pre-determined structure.
 		 * Therefore for queries that can return multiple rows with multiple columns, a class that extends @ref rs_base handles reading the results.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param base The class that will handle reading the results.
 		 * @param sql The SQL text to be executed.
@@ -226,7 +268,7 @@ class dbconn
 
 		/**
 		 * Executes a select statement.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param args The parameterized values to be inserted into the query.
@@ -237,18 +279,29 @@ class dbconn
 
 		/**
 		 * Executes non-select statements (ie: insert, update, delete).
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param args The parameterized values to be inserted into the query.
 		 * @return The number of rows modified.
 		 */
 		template<typename... Args>
-		int modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+
+		/**
+		 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a generated ID.
+		 *
+		 * @param connection The database connecion that will be used to execute the query.
+		 * @param sql The SQL text to be executed.
+		 * @param args The parameterized values to be inserted into the query.
+		 * @return The value of an AUTO_INCREMENT column on the table being modified.
+		 */
+		template<typename... Args>
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param args The parameterized values to be inserted into the query.
@@ -259,7 +312,7 @@ class dbconn
 
 		/**
 		 * The next parameter to be added is split off from the parameter pack.
-		 * 
+		 *
 		 * @param stmt The statement that will have parameterized values set on it.
 		 * @param i The index of the current parameterized value.
 		 * @param arg The next parameter to be added.
@@ -271,7 +324,7 @@ class dbconn
 		/**
 		 * Specializations for each type of value to be parameterized.
 		 * There are other parameter setters than those currently implemented, but so far there hasn't been a reason to add them.
-		 * 
+		 *
 		 * @param stmt The statement that will have parameterized values set on it.
 		 * @param i The index of the current parameterized value.
 		 * @param arg The next parameter to be added.

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Pauli Nieminen <paniemin@cc.hut.fi>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Pauli Nieminen <paniemin@cc.hut.fi>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-test"
@@ -20,6 +21,7 @@
 #include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "reports.hpp"
+#include "video.hpp"
 
 namespace wb
 {
@@ -32,7 +34,6 @@ class fake_display_manager
 {
 	static fake_display_manager* manager_;
 
-	CVideo video_;
 	config dummy_cfg_;
 	config dummy_cfg2_;
 	game_board dummy_board_;
@@ -61,13 +62,13 @@ fake_display_manager* fake_display_manager::get_manager()
 }
 
 fake_display_manager::fake_display_manager()
-	: video_(CVideo::FAKE_TEST)
-	, dummy_cfg_()
+	: dummy_cfg_()
 	, dummy_cfg2_()
 	, dummy_board_(dummy_cfg2_)
 	, main_event_context_()
-	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, dummy_cfg_, dummy_cfg_)
+	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
 {
+	video::init(video::fake::draw);
 }
 
 game_display& fake_display_manager::get_display()
@@ -80,7 +81,7 @@ game_display& get_fake_display(const int width, const int height)
 	game_display& display = fake_display_manager::get_manager()->get_display();
 
 	if(width >= 0 && height >= 0) {
-		display.video().make_test_fake(width, height);
+		video::set_resolution({width, height});
 	}
 
 	return display;

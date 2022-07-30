@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "log.hpp"
@@ -27,14 +28,14 @@ namespace n_unit
 	unit_id id_manager::next_id()
 	{
 		assert(next_id_ < unit_id::highest_bit);
-		DBG_UT << "id: " << next_id_ << "\n";
+		DBG_UT << "id: " << next_id_;
 		return unit_id::create_real(++next_id_);
 	}
 
 	unit_id id_manager::next_fake_id()
 	{
 		assert(fake_id_ < unit_id::highest_bit);
-		DBG_UT << "fake id: " << fake_id_ << "\n";
+		DBG_UT << "fake id: " << fake_id_;
 		return unit_id::create_fake(++fake_id_);
 	}
 
@@ -46,7 +47,7 @@ namespace n_unit
 	void id_manager::set_save_id(std::size_t id)
 	{
 		clear();
-		DBG_UT << "set save id: " << id << "\n";
+		DBG_UT << "set save id: " << id;
 		next_id_ = id;
 	}
 

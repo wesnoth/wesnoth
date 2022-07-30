@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_wml.hpp"
@@ -24,7 +25,6 @@
 
 #include <fstream>
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 namespace lua_wml {
@@ -58,7 +58,7 @@ static int intf_load_wml(lua_State* L)
 		preprocess = luaW_toboolean(L, 2);
 	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
 		lua_len(L, 2);
-		int n = lua_tonumber(L, -1);
+		int n = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 		for(int i = 0; i < n; i++) {
 			lua_geti(L, 2, i);
@@ -175,7 +175,7 @@ static int intf_wml_merge(lua_State* L)
 		base.append_children(merge);
 	} else {
 		if(mode == "replace") {
-			for(const auto& c : merge.all_children_range()) {
+			for(const auto c : merge.all_children_range()) {
 				base.clear_children(c.key);
 			}
 		} else if(mode != "merge") {

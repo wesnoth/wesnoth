@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -51,9 +52,10 @@
 #include "units/udisplay.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include <optional>
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
+
+#include <optional>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -120,7 +122,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	if(u.hitpoints() < 0) {
-		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations\n";
+		LOG_CF << "Unit with " << u.hitpoints() << " hitpoints found, set to 0 for damage calculations";
 		hp = 0;
 	} else if(u.hitpoints() > u.max_hitpoints()) {
 		// If a unit has more hp than its maximum, the engine will fail with an
@@ -143,27 +145,23 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
 	}
 
-	slows = weapon->bool_ability("slow");
-	drains = !opp.get_state("undrainable") && weapon->bool_ability("drains");
-	petrifies = weapon->bool_ability("petrifies");
-	poisons = !opp.get_state("unpoisonable") && weapon->bool_ability("poison") && !opp.get_state(unit::STATE_POISONED);
+	slows = weapon->has_special_or_ability("slow") && !opp.get_state("unslowable") ;
+	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
+	petrifies = !opp.get_state("unpetrifiable") && weapon->has_special_or_ability("petrifies");
+	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
 	backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, resources::gameboard->teams());
-	rounds = weapon->get_special_ability("berserk").highest("value", 1).first;
+	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
 
-	firststrike = weapon->bool_ability("firststrike");
+	firststrike = weapon->has_special_or_ability("firststrike");
 
 	{
 		const int distance = distance_between(u_loc, opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
-		disable = weapon->get_special_bool("disable") || out_of_range;
+		disable = weapon->has_special("disable") || out_of_range;
 	}
 
 	// Handle plague.
-	unit_ability_list plague_specials = weapon->get_specials("plague");
-	unit_ability_list alt_plague_specials = weapon->get_special_ability("plague");
-	if(!alt_plague_specials.empty() && plague_specials.empty()){
-		plague_specials = alt_plague_specials;
-	}
+	unit_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
@@ -181,7 +179,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	cth = std::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_special_ability("chance_to_hit");
+	unit_ability_list cth_specials = weapon->get_specials_and_abilities("chance_to_hit");
 	unit_abilities::effect cth_effects(cth_specials, cth, backstab_pos, weapon);
 	cth = cth_effects.get_composite_value();
 
@@ -221,14 +219,14 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_special_ability("drains");
+		unit_ability_list drain_specials = weapon->get_specials_and_abilities("drains");
 		// Compute the drain percent (with 50% as the base for backward compatibility)
 		unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos, weapon);
 		drain_percent = drain_percent_effects.get_composite_value();
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_special_ability("heal_on_hit");
+	unit_ability_list heal_on_hit_specials = weapon->get_specials_and_abilities("heal_on_hit");
 	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos, weapon);
 	drain_constant += heal_on_hit_effects.get_composite_value();
 
@@ -305,13 +303,13 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
 	}
 
-	slows = weapon->get_special_bool("slow");
-	drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
-	petrifies = weapon->get_special_bool("petrifies");
-	poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
+	slows = weapon->has_special("slow");
+	drains = !opp_type->musthave_status("undrainable") && weapon->has_special("drains");
+	petrifies = weapon->has_special("petrifies");
+	poisons = !opp_type->musthave_status("unpoisonable") && weapon->has_special("poison");
 	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->get_special_bool("firststrike");
-	disable = weapon->get_special_bool("disable");
+	firststrike = weapon->has_special("firststrike");
+	disable = weapon->has_special("disable");
 
 	unit_ability_list plague_specials = weapon->get_specials("plague");
 	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
@@ -518,11 +516,11 @@ bool battle_context::better_combat(const combatant& us_a,
 		return true;
 	}
 
-	// Add poison to calculations
-	double poison_a_us = (us_a.poisoned) * game_config::poison_amount;
-	double poison_a_them = (them_a.poisoned) * game_config::poison_amount;
-	double poison_b_us = (us_b.poisoned) * game_config::poison_amount;
-	double poison_b_them = (them_b.poisoned) * game_config::poison_amount;
+	// Add poison to calculations, but poison bonus should only be applied if the unit survives
+	double poison_a_us = us_a.poisoned > 0 ? (us_a.poisoned - us_a.hp_dist[0]) * game_config::poison_amount : 0;
+	double poison_a_them = them_a.poisoned > 0 ? (them_a.poisoned - them_a.hp_dist[0]) * game_config::poison_amount : 0;
+	double poison_b_us = us_b.poisoned > 0 ? (us_b.poisoned - us_b.hp_dist[0]) * game_config::poison_amount : 0;
+	double poison_b_them = them_b.poisoned > 0 ? (them_b.poisoned - them_b.hp_dist[0]) * game_config::poison_amount : 0;
 
 	// Compare: damage to them - damage to us (average_hp replaces -damage)
 	a = (us_a.average_hp() - poison_a_us) * harm_weight - (them_a.average_hp() - poison_a_them);
@@ -867,13 +865,13 @@ attack::attack(const map_location& attacker,
 	, prng_defender_()
 {
 	if(use_prng_) {
-		LOG_NG << "Using experimental PRNG for combat\n";
+		LOG_NG << "Using experimental PRNG for combat";
 	}
 }
 
 void attack::fire_event(const std::string& n)
 {
-	LOG_NG << "attack: firing '" << n << "' event\n";
+	LOG_NG << "attack: firing '" << n << "' event";
 
 	// prepare the event data for weapon filtering
 	config ev_data;
@@ -1102,7 +1100,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 			damage,
 			*attacker_stats->weapon, defender_stats->weapon,
 			abs_n, float_text.str(), drains_damage, "",
-			&extra_hit_sounds
+			&extra_hit_sounds, attacker_turn
 		);
 	}
 
@@ -1196,14 +1194,14 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 
 		if(attacker_stats->poisons && !defender_unit.get_state(unit::STATE_POISONED)) {
 			defender_unit.set_state(unit::STATE_POISONED, true);
-			LOG_NG << "defender poisoned\n";
+			LOG_NG << "defender poisoned";
 		}
 
 		if(attacker_stats->slows && !defender_unit.get_state(unit::STATE_SLOWED)) {
 			defender_unit.set_state(unit::STATE_SLOWED, true);
 			update_fog = true;
 			defender.damage_ = defender_stats->slow_damage;
-			LOG_NG << "defender slowed\n";
+			LOG_NG << "defender slowed";
 		}
 
 		// If the defender is petrified, the fight stops immediately
@@ -1224,6 +1222,16 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	}
 
 	--attacker.n_attacks_;
+
+	// If an event removed a unit's weapon, set number of remaining attacks to zero
+	// for that unit, but let the other unit continue
+	if (attacker_stats->weapon == nullptr){
+        attacker.n_attacks_ = 0;
+	}
+	if (defender_stats->weapon == nullptr){
+        defender.n_attacks_ = 0;
+	}
+
 	return true;
 }
 
@@ -1301,10 +1309,10 @@ void attack::unit_killed(unit_info& attacker,
 
 	// Plague units make new units on the target hex.
 	if(attacker.valid() && attacker_stats->plagues && !drain_killed) {
-		LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
+		LOG_NG << "trying to reanimate " << attacker_stats->plague_type;
 
 		if(const unit_type* reanimator = unit_types.find(attacker_stats->plague_type)) {
-			LOG_NG << "found unit type:" << reanimator->id() << '\n';
+			LOG_NG << "found unit type:" << reanimator->id();
 
 			unit_ptr newunit = unit::create(*reanimator, attacker.get_unit().side(), true, unit_race::MALE);
 			newunit->set_attacks(0);
@@ -1334,7 +1342,7 @@ void attack::unit_killed(unit_info& attacker,
 			}
 		}
 	} else {
-		LOG_NG << "unit not reanimated\n";
+		LOG_NG << "unit not reanimated";
 	}
 }
 
@@ -1355,7 +1363,7 @@ void attack::perform()
 	}
 
 	if(a_.get_unit().attacks_left() <= 0) {
-		LOG_NG << "attack::perform(): not enough ap.\n";
+		LOG_NG << "attack::perform(): not enough ap.";
 		return;
 	}
 
@@ -1381,7 +1389,7 @@ void attack::perform()
 	d_stats_ = &bc_->get_defender_stats();
 
 	if(a_stats_->disable) {
-		LOG_NG << "attack::perform(): tried to attack with a disabled attack.\n";
+		LOG_NG << "attack::perform(): tried to attack with a disabled attack.";
 		return;
 	}
 
@@ -1401,7 +1409,7 @@ void attack::perform()
 
 	refresh_bc();
 
-	DBG_NG << "getting attack statistics\n";
+	DBG_NG << "getting attack statistics";
 	statistics::attack_context attack_stats(
 			a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
@@ -1420,18 +1428,18 @@ void attack::perform()
 		   << a_stats_->damage << "-" << a_stats_->num_blows << "(" << a_stats_->chance_to_hit
 		   << "%) vs DEF: " << (d_stats_->weapon ? d_stats_->weapon->name() : "none") << " " << d_stats_->damage << "-"
 		   << d_stats_->num_blows << "(" << d_stats_->chance_to_hit << "%)"
-		   << (defender_strikes_first ? " defender first-strike" : "") << "\n";
+		   << (defender_strikes_first ? " defender first-strike" : "");
 
 	// Play the pre-fight animation
 	unit_display::unit_draw_weapon(a_.loc_, a_.get_unit(), a_stats_->weapon, d_stats_->weapon, d_.loc_, d_.get_unit_ptr());
 
 	while(true) {
-		DBG_NG << "start of attack loop...\n";
+		DBG_NG << "start of attack loop...";
 		++abs_n_attack_;
 
 		if(a_.n_attacks_ > 0 && !defender_strikes_first) {
 			if(!perform_hit(true, attack_stats)) {
-				DBG_NG << "broke from attack loop on attacker turn\n";
+				DBG_NG << "broke from attack loop on attacker turn";
 				break;
 			}
 		}
@@ -1442,7 +1450,7 @@ void attack::perform()
 
 		if(d_.n_attacks_ > 0) {
 			if(!perform_hit(false, attack_stats)) {
-				DBG_NG << "broke from attack loop on defender turn\n";
+				DBG_NG << "broke from attack loop on defender turn";
 				break;
 			}
 		}
@@ -1588,14 +1596,14 @@ void attack_unit_and_advance(const map_location& attacker,
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
 	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
-	unit_abilities::effect leader_effect(abil, 0, false);
+	unit_abilities::effect leader_effect(abil, 0, false, nullptr, true);
 	return leader_effect.get_composite_value();
 }
 
 int combat_modifier(const unit_map& units,
 		const gamemap& map,
 		const map_location& loc,
-		unit_type::ALIGNMENT alignment,
+		unit_alignments::type alignment,
 		bool is_fearless)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
@@ -1604,7 +1612,7 @@ int combat_modifier(const unit_map& units,
 }
 
 int combat_modifier(const time_of_day& effective_tod,
-		unit_type::ALIGNMENT alignment,
+		unit_alignments::type alignment,
 		bool is_fearless)
 {
 	const tod_manager& tod_m = *resources::tod_manager;
@@ -1612,22 +1620,22 @@ int combat_modifier(const time_of_day& effective_tod,
 	return generic_combat_modifier(lawful_bonus, alignment, is_fearless, tod_m.get_max_liminal_bonus());
 }
 
-int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment, bool is_fearless, int max_liminal_bonus)
+int generic_combat_modifier(int lawful_bonus, unit_alignments::type alignment, bool is_fearless, int max_liminal_bonus)
 {
 	int bonus;
 
-	switch(alignment.v) {
-	case unit_type::ALIGNMENT::LAWFUL:
+	switch(alignment) {
+	case unit_alignments::type::lawful:
 		bonus = lawful_bonus;
 		break;
-	case unit_type::ALIGNMENT::NEUTRAL:
+	case unit_alignments::type::neutral:
 		bonus = 0;
 		break;
-	case unit_type::ALIGNMENT::CHAOTIC:
+	case unit_alignments::type::chaotic:
 		bonus = -lawful_bonus;
 		break;
-	case unit_type::ALIGNMENT::LIMINAL:
-		bonus = std::max(0, max_liminal_bonus-std::abs(lawful_bonus));
+	case unit_alignments::type::liminal:
+		bonus = max_liminal_bonus-std::abs(lawful_bonus);
 		break;
 	default:
 		bonus = 0;

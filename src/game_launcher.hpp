@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -31,7 +32,6 @@
 
 class commandline_options;
 class config;
-class CVideo;
 
 struct jump_to_campaign_info
 {
@@ -70,10 +70,14 @@ public:
 		// 2 is reserved for timeouts
 		TEST_FAIL_LOADING_REPLAY = 3,
 		TEST_FAIL_PLAYING_REPLAY = 4,
-		TEST_FAIL_BROKE_STRICT = 5,
+		//TEST_FAIL_BROKE_STRICT = 5,
 		TEST_FAIL_WML_EXCEPTION = 6,
 		TEST_FAIL_BY_DEFEAT = 7,
 		TEST_PASS_BY_VICTORY = 8,
+		BROKE_STRICT_TEST_PASS = 9,
+		BROKE_STRICT_TEST_FAIL = 10,
+		BROKE_STRICT_TEST_FAIL_BY_DEFEAT = 11,
+		BROKE_STRICT_TEST_PASS_BY_VICTORY = 12,
 	};
 
 	bool init_video();
@@ -117,7 +121,7 @@ private:
 	void start_wesnothd();
 
 	editor::EXIT_STATUS start_editor(const std::string& filename);
-	unit_test_result pass_victory_or_defeat(LEVEL_RESULT res);
+	unit_test_result pass_victory_or_defeat(level_result::type res);
 
 	/**
 	 * Internal to the implementation of unit_test(). If a single instance of
@@ -126,8 +130,7 @@ private:
 	unit_test_result single_unit_test();
 
 	const commandline_options& cmdline_opts_;
-	//Never null.
-	const std::unique_ptr<CVideo> video_;
+	bool start_in_fullscreen_ = false;
 
 	font::manager font_manager_;
 	const preferences::manager prefs_manager_;

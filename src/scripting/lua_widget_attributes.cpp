@@ -1,19 +1,21 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "gui/core/canvas.hpp"
 #include "gui/dialogs/drop_down_menu.hpp"
+#include "gui/auxiliary/iterator/iterator.hpp"
 #include "gui/widgets/clickable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -53,20 +55,19 @@
 #include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
+#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
-    assert(i > 0);
-    if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
+	assert(i > 0);
+	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
 		int n = list->get_item_count();
 		if(i > n) {
 			for(; n < i; ++n) {
-				list->add_row(utils::string_map());
+				list->add_row(gui2::widget_item{});
 			}
 		}
 		return list->get_row_grid(i - 1);
@@ -74,7 +75,7 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 		int n = multi_page->get_page_count();
 		if(i > n) {
 			for(; n < i; ++n) {
-				multi_page->add_page(utils::string_map());
+				multi_page->add_page(gui2::widget_item{});
 			}
 		}
 		return &multi_page->page_grid(i - 1);
@@ -103,54 +104,88 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 
 static gui2::widget* find_child_by_name(gui2::widget& w, const std::string& m)
 {
-    return w.find(m, false);
+	return w.find(m, false);
 }
 
-using tgetters = std::map<std::string, std::vector<std::function<bool(lua_State*, gui2::widget&)>>>;
+using tgetters = std::map<std::string, std::vector<std::function<bool(lua_State*, gui2::widget&, bool)>>>;
 static tgetters getters;
 
-using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*, int, gui2::widget&)>>>;
+using tsetters = std::map<std::string, std::vector<std::function<bool(lua_State*, int, gui2::widget&, bool)>>>;
 static tsetters setters;
 
+template<typename widget_type, typename value_type>
+struct widget_getter
+{
+	virtual value_type get(lua_State* L, widget_type& w) const = 0;
+	virtual ~widget_getter() = default;
+};
+
+template<typename widget_type, typename value_type>
+struct widget_setter
+{
+	virtual void set(lua_State* L, widget_type& w, const value_type& value) const = 0;
+	virtual ~widget_setter() = default;
+};
+
+template<typename widget_type, typename value_type, typename action_type, bool setter>
+void register_widget_attribute(const char* name)
+{
+	utils::split_foreach(name, ',', 0, [](std::string_view name_part) {
+		using map_type = std::conditional_t<setter, tsetters, tgetters>;
+		using list_type = typename map_type::mapped_type;
+		using callback_type = typename list_type::value_type;
+		map_type* map;
+		callback_type fcn;
+		if constexpr(setter) {
+			map = &setters;
+			fcn = [action = action_type()](lua_State* L, int idx, gui2::widget& w, bool nop) {
+				if(widget_type* pw = dynamic_cast<widget_type*>(&w)) {
+					if(!nop) action.set(L, *pw, lua_check<value_type>(L, idx));
+					return true;
+				}
+				return false;
+			};
+		} else {
+			map = &getters;
+			fcn = [action = action_type()](lua_State* L, gui2::widget& w, bool nop) {
+				if(widget_type* pw = dynamic_cast<widget_type*>(&w)) {
+					if(!nop) lua_push(L, action.get(L, *pw));
+					return true;
+				}
+				return false;
+			};
+		}
+		list_type& list = (*map)[std::string(name_part)];
+		list.push_back(fcn);
+	});
+}
+
 #define WIDGET_GETTER4(name, value_type, widgt_type, id) \
-/* use a class member for L to surpress unused parameter wanring */ \
-struct BOOST_PP_CAT(getter_, id) { value_type do_it(widgt_type& w); lua_State* L; }; \
+struct BOOST_PP_CAT(getter_, id) : public widget_getter<widgt_type, value_type> { \
+	value_type get(lua_State* L, widgt_type& w) const override; \
+}; \
 struct BOOST_PP_CAT(getter_adder_, id) { \
 	BOOST_PP_CAT(getter_adder_, id) () \
 	{ \
-		utils::split_foreach(name, ',', 0, [](std::string_view name_part){\
-			getters[std::string(name_part)].push_back([](lua_State* L, gui2::widget& w) { \
-				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
-					lua_push(L, BOOST_PP_CAT(getter_, id){L}.do_it(*pw)); \
-					return true; \
-				} \
-				return false; \
-			}); \
-		}); \
+		register_widget_attribute<widgt_type, value_type, BOOST_PP_CAT(getter_, id), false>(name); \
 	} \
 }; \
 static BOOST_PP_CAT(getter_adder_, id) BOOST_PP_CAT(getter_adder_instance_, id) ; \
-value_type BOOST_PP_CAT(getter_, id)::do_it(widgt_type& w)
+value_type BOOST_PP_CAT(getter_, id)::get([[maybe_unused]] lua_State* L, widgt_type& w) const
 
 
 #define WIDGET_SETTER4(name, value_type, widgt_type, id) \
-struct BOOST_PP_CAT(setter_, id) { void do_it(widgt_type& w, const value_type& value); lua_State* L; }; \
+struct BOOST_PP_CAT(setter_, id) : public widget_setter<widgt_type, value_type> { \
+	void set(lua_State* L, widgt_type& w, const value_type& value) const override; \
+}; \
 struct BOOST_PP_CAT(setter_adder_, id) { \
 	BOOST_PP_CAT(setter_adder_, id) ()\
 	{ \
-		utils::split_foreach(name, ',', 0, [](std::string_view name_part){\
-			setters[std::string(name_part)].push_back([](lua_State* L, int idx, gui2::widget& w) { \
-				if(widgt_type* pw = dynamic_cast<widgt_type*>(&w)) { \
-					BOOST_PP_CAT(setter_, id){L}.do_it(*pw, lua_check<value_type>(L, idx)); \
-					return true; \
-				} \
-				return false; \
-			}); \
-		}); \
+		register_widget_attribute<widgt_type, value_type, BOOST_PP_CAT(setter_, id), true>(name); \
 	} \
 }; \
 static BOOST_PP_CAT(setter_adder_, id) BOOST_PP_CAT(setter_adder_instance_, id); \
-void BOOST_PP_CAT(setter_, id)::do_it(widgt_type& w, const value_type& value)
+void BOOST_PP_CAT(setter_, id)::set([[maybe_unused]] lua_State* L, widgt_type& w, const value_type& value) const
 
 
 /**
@@ -205,7 +240,7 @@ WIDGET_SETTER("selected_index", int, gui2::selectable_item)
 	if(value > int(w.num_states())) {
 		throw std::invalid_argument("invalid index");
 	}
-	w.set_value(value + 1);
+	w.set_value(value - 1);
 }
 
 WIDGET_GETTER("value_compat,selected", bool, gui2::selectable_item)
@@ -344,7 +379,7 @@ WIDGET_SETTER("tooltip", t_string, gui2::styled_widget)
 WIDGET_SETTER("callback", lua_index_raw, gui2::widget)
 {
 	if(!luaW_getglobal(L, "gui", "widget", "set_callback")) {
-		ERR_LUA << "gui.widget.set_callback didn't exist\n";
+		ERR_LUA << "gui.widget.set_callback didn't exist";
 	}
 	luaW_pushwidget(L, w);
 	lua_pushvalue(L, value.index);
@@ -384,16 +419,23 @@ WIDGET_SETTER("visible", lua_index_raw, gui2::styled_widget)
 
 	w.set_visible(flag);
 
-	//if(flag == visibility::hidden) {
-	//	// HACK: this is needed to force the widget to be repainted immediately
-	//	//       to get rid of its ghost image.
-	//	scoped_dialog::current->window->invalidate_layout();
-	//}
+	if(flag == visibility::hidden) {
+		// HACK: this is needed to force the widget to be repainted immediately
+		//       to get rid of its ghost image.
+		gui2::window* window = w.get_window();
+		if(window) {
+			window->invalidate_layout();
+		}
+	}
 }
 
 //must be last
 WIDGET_SETTER("value_compat,label", t_string, gui2::styled_widget)
 {
+	gui2::window* window = w.get_window();
+	if(window) {
+		window->invalidate_layout();
+	}
 	w.set_label(value);
 }
 
@@ -422,12 +464,12 @@ void dialog_callback(lua_State* L, lua_ptr<gui2::widget>& wp, const std::string&
 {
 	gui2::widget* w = wp.get_ptr();
 	if(!w) {
-		ERR_LUA << "widget was deleted\n";
+		ERR_LUA << "widget was deleted";
 		return;
 	}
 	gui2::window* wd = w->get_window();
 	if(!wd) {
-		ERR_LUA << "cannot find window in widget callback\n";
+		ERR_LUA << "cannot find window in widget callback";
 		return;
 	}
 	luaW_callwidgetcallback(L, w, wd, id);
@@ -494,7 +536,7 @@ int impl_widget_get(lua_State* L)
 	tgetters::iterator it = getters.find(std::string(str));
 	if(it != getters.end()) {
 		for(const auto& func : it->second) {
-			if(func(L, w)) {
+			if(func(L, w, false)) {
 				return 1;
 			}
 		}
@@ -506,7 +548,7 @@ int impl_widget_get(lua_State* L)
 		luaW_pushwidget(L, *pwidget);
 		return 1;
 	}
-	ERR_LUA << "invalid property of '" <<  typeid(w).name()<< "' widget :" << str << "\n";
+	ERR_LUA << "invalid property of '" <<  typeid(w).name()<< "' widget :" << str;
 	return luaL_argerror(L, 2, "invalid property of widget");
 }
 
@@ -519,17 +561,60 @@ int impl_widget_set(lua_State* L)
 	tsetters::iterator it = setters.find(std::string(str));
 	if(it != setters.end()) {
 		for(const auto& func : it->second) {
-			if(func(L, 3, w)) {
+			if(func(L, 3, w, false)) {
 				return 0;
 			}
 		}
-		ERR_LUA << "none of "<< it->second.size() << " setters matched\n";
+		ERR_LUA << "none of "<< it->second.size() << " setters matched";
 	}
 	else {
-		ERR_LUA << "unknown property id : " << str << " #known properties="  << setters.size() << "\n";
+		ERR_LUA << "unknown property id : " << str << " #known properties="  << setters.size();
 
 	}
-	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str << "\n";
+	ERR_LUA << "invalid modifiable property of '" <<  typeid(w).name()<< "' widget:" << str;
 	return luaL_argerror(L, 2, "invalid modifiable property of widget");
+}
+
+int impl_widget_dir(lua_State* L)
+{
+	gui2::widget& w = luaW_checkwidget(L, 1);
+	std::vector<std::string> keys;
+	// Add any readable keys
+	for(const auto& [key, funcs] : getters) {
+		if(key == "value_compat") continue;
+		for(const auto& func : funcs) {
+			if(func(L, w, true)){
+				keys.push_back(key);
+				break;
+			}
+		}
+	}
+	// Add any writable keys
+	for(const auto& [key, funcs] : setters) {
+		if(key == "value_compat") continue;
+		if(key == "callback") continue;
+		for(const auto& func : funcs) {
+			if(func(L, 0, w, true)){
+				keys.push_back(key);
+				break;
+			}
+		}
+	}
+	// Add any nested widget IDs
+	using iter_t = gui2::iteration::top_down_iterator<true, true, true>;
+	for(auto child = iter_t(w); !child.at_end(); child.next()) {
+		const auto& key = child->id();
+		if(!key.empty() && key != w.id()) {
+			keys.push_back(key);
+		}
+	}
+	// Add the gui.widget methods
+	luaW_getglobal(L, "dir");
+	luaW_getglobal(L, "gui", "widget");
+	lua_call(L, 1, 1);
+	auto methods = lua_check<std::vector<std::string>>(L, -1);
+	keys.insert(keys.end(), methods.begin(), methods.end());
+	lua_push(L, keys);
+	return 1;
 }
 }

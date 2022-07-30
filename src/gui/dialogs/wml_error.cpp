@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -129,9 +130,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 }
 }
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(wml_error)
@@ -144,8 +143,6 @@ wml_error::wml_error(const std::string& summary,
 	, have_post_summary_(!post_summary.empty())
 	, report_()
 {
-	set_restore(true);
-
 	const std::string& file_list_text = format_file_list(files);
 
 	report_ = summary;
@@ -201,4 +198,3 @@ void wml_error::copy_report_callback()
 }
 
 } // end namespace dialogs
-} // end namespace gui2

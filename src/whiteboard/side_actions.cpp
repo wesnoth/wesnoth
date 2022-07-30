@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2010 - 2022
+	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -81,10 +82,10 @@ std::size_t side_actions_container::get_turn_impl(std::size_t begin, std::size_t
 {
 	if(begin+1 >= end) {
 		if(begin+1 != end) {
-			ERR_WB << "get_turn: begin >= end\n";
+			ERR_WB << "get_turn: begin >= end";
 		}
 		else if(it < turn_beginnings_[begin]) {
-			ERR_WB << "get_turn failed\n";
+			ERR_WB << "get_turn failed";
 		}
 		return begin;
 	}
@@ -324,7 +325,7 @@ bool side_actions::execute_next()
 bool side_actions::execute(side_actions::iterator position)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
 	if(actions_.empty() || position == actions_.end()) {
@@ -333,12 +334,12 @@ bool side_actions::execute(side_actions::iterator position)
 
 	assert(position < turn_end(0)); //can't execute actions from future turns
 
-	LOG_WB << "Before execution, " << *this << "\n";
+	LOG_WB << "Before execution, " << *this;
 
 	action_ptr action = *position;
 
 	if(!action->valid()) {
-		LOG_WB << "Invalid action sent to execution, deleting.\n";
+		LOG_WB << "Invalid action sent to execution, deleting.";
 		synced_erase(position);
 		return true;
 	}
@@ -350,7 +351,7 @@ bool side_actions::execute(side_actions::iterator position)
 		 action->execute(action_successful, action_complete);
 	} catch (const return_to_play_side_exception&) {
 		synced_erase(position);
-		LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
+		LOG_WB << "End turn exception caught during execution, deleting action. " << *this;
 		//validate actions at next map rebuild
 		resources::whiteboard->on_gamestate_change();
 		throw;
@@ -361,7 +362,7 @@ bool side_actions::execute(side_actions::iterator position)
 			resources::undo_stack->clear();
 		}
 		else {
-			WRN_WB << "not clearing undo stack because dsu is active\n";
+			WRN_WB << "not clearing undo stack because dsu is active";
 		}
 	}
 
@@ -414,11 +415,11 @@ void side_actions::show()
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 	iterator valid_position = synced_insert(position, action);
 	LOG_WB << "Inserted into turn #" << get_turn(valid_position) << " at position #"
-			<< actions_.position_in_turn(valid_position) << " : " << action <<"\n";
+			<< actions_.position_in_turn(valid_position) << " : " << action;
 	resources::whiteboard->validate_viewer_actions();
 	return valid_position;
 }
@@ -426,10 +427,10 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 side_actions::iterator side_actions::queue_action(std::size_t turn_num, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 	iterator result = synced_enqueue(turn_num, action);
-	LOG_WB << "Queue into turn #" << turn_num << " : " << action <<"\n";
+	LOG_WB << "Queue into turn #" << turn_num << " : " << action;
 	resources::whiteboard->validate_viewer_actions();
 	return result;
 }
@@ -492,7 +493,7 @@ namespace
 side_actions::iterator side_actions::bump_earlier(side_actions::iterator position, bool send_to_net)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
 	assert(position <= end());
@@ -520,21 +521,22 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 		}
 	}
 
-	LOG_WB << "Before bumping earlier, " << *this << "\n";
+	LOG_WB << "Before bumping earlier, " << *this;
 
 	int turn_number = get_turn(position);
 	int action_number = actions_.position_in_turn(position);
 	int last_position = turn_size(turn_number) - 1;
 	LOG_WB << "In turn #" << turn_number
 			<< ", bumping action #" << action_number << "/" << last_position
-			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
+			<< " to position #" << action_number - 1  << "/" << last_position
+			<< ".";
 
 	if (send_to_net) {
 		resources::whiteboard->queue_net_cmd(team_index_, make_net_cmd_bump_later(position - 1));
 	}
 	actions_.bump_earlier(position);
 
-	LOG_WB << "After bumping earlier, " << *this << "\n";
+	LOG_WB << "After bumping earlier, " << *this;
 	return position - 1;
 }
 
@@ -557,12 +559,12 @@ side_actions::iterator side_actions::bump_later(iterator position, bool send_to_
 side_actions::iterator side_actions::remove_action(side_actions::iterator position, bool validate_after_delete)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
 	assert(position < end());
 
-	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position) << "\n";
+	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position);
 
 
 	if(resources::gameboard->get_team(team_index_ + 1).is_local()) {
@@ -686,7 +688,7 @@ void side_actions::change_gold_spent_by(int difference)
 
 void side_actions::reset_gold_spent()
 {
-	DBG_WB << "Resetting gold spent for side " << (team_index() + 1) << " to 0.\n";
+	DBG_WB << "Resetting gold spent for side " << (team_index() + 1) << " to 0.";
 	gold_spent_ = 0;
 }
 
@@ -784,17 +786,17 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		std::size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.child("action"), hidden_);
 		if(!act) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
 		}
 
 		iterator itor = safe_insert(turn, pos, act);
 		if(itor >= end()) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!";
 			return;
 		}
 
-		LOG_WB << "Command received: action inserted on turn #" << turn << ", position #" << pos << ": " << act << "\n";
+		LOG_WB << "Command received: action inserted on turn #" << turn << ", position #" << pos << ": " << act;
 
 		//update numbering hexes as necessary
 		++itor;
@@ -806,35 +808,35 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		std::size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.child("action"), hidden_);
 		if(!act) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): received invalid action data!";
 			return;
 		}
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
 
 		if(!actions_.replace(itor, act)){
-			ERR_WB << "side_actions::execute_network_command(): replace failed!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): replace failed!";
 			return;
 		}
 
-		LOG_WB << "Command received: action replaced on turn #" << turn << ", position #" << pos << ": " << act << "\n";
+		LOG_WB << "Command received: action replaced on turn #" << turn << ", position #" << pos << ": " << act;
 	} else if(type=="remove") {
 		std::size_t turn = cmd["turn"].to_int();
 		std::size_t pos = cmd["pos"].to_int();
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
 
 		itor = safe_erase(itor);
 
-		LOG_WB << "Command received: action removed on turn #" << turn << ", position #" << pos << "\n";
+		LOG_WB << "Command received: action removed on turn #" << turn << ", position #" << pos;
 
 		//update numbering hexes as necessary
 		for(iterator end_itor = end(); itor != end_itor; ++itor) {
@@ -846,7 +848,7 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor+1 >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!";
 			return;
 		}
 
@@ -854,21 +856,21 @@ void side_actions::execute_net_cmd(const net_cmd& cmd)
 		action_ptr second_action = itor[1];
 		bump_later(itor, false);
 
-		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos << "\n";
+		LOG_WB << "Command received: action bumped later from turn #" << turn << ", position #" << pos;
 
 		//update numbering hexes as necessary
 		display::get_singleton()->invalidate(first_action->get_numbering_hex());
 		display::get_singleton()->invalidate(second_action->get_numbering_hex());
 	} else if(type=="clear") {
-		LOG_WB << "Command received: clear\n";
+		LOG_WB << "Command received: clear";
 		clear();
 	} else if(type=="refresh") {
-		LOG_WB << "Command received: refresh\n";
+		LOG_WB << "Command received: refresh";
 		clear();
 		for(const net_cmd& sub_cmd : cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);
 	} else {
-		ERR_WB << "side_actions::execute_network_command(): received invalid type!" << std::endl;
+		ERR_WB << "side_actions::execute_network_command(): received invalid type!";
 		return;
 	}
 

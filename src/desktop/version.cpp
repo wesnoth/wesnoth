@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2015 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2015 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -31,10 +32,18 @@
 #if defined(__APPLE__)
 
 #include "apple_version.hpp"
+#include "serialization/string_utils.hpp"
+
+#include <map>
+#include <boost/algorithm/string/trim.hpp>
 
 #elif defined(_X11)
 
+#include "serialization/string_utils.hpp"
+
 #include <cerrno>
+#include <map>
+#include <boost/algorithm/string/trim.hpp>
 
 #endif
 
@@ -88,7 +97,11 @@ std::string windows_release_id()
 	char buf[256]{""};
 	DWORD size = sizeof(buf);
 
-	const auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
+	auto res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "DisplayVersion", RRF_RT_REG_SZ, nullptr, buf, &size);
+	if(res != ERROR_SUCCESS) {
+		res = RegGetValueA(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", "ReleaseId", RRF_RT_REG_SZ, nullptr, buf, &size);
+	}
+
 	return std::string{res == ERROR_SUCCESS ? buf : ""};
 }
 
@@ -156,6 +169,47 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 
 	return ver;
 }
+
+std::map<std::string, std::string> parse_fdo_osrelease(const std::string& path)
+{
+	auto in = filesystem::istream_file(path);
+	if(!in->good()) {
+		return {};
+	}
+
+	std::map<std::string, std::string> res;
+
+	// NOTE:  intentionally basic "parsing" here. We are not supposed to see
+	//        more complex shell syntax anyway.
+	//        <https://www.freedesktop.org/software/systemd/man/os-release.html>
+	for(std::string s; std::getline(*in, s);) {
+		if(s.empty() || s.front() == '#') {
+			continue;
+		}
+
+		auto eqsign_pos = s.find('=');
+		if(!eqsign_pos || eqsign_pos == std::string::npos) {
+			continue;
+		}
+
+		auto lhs = s.substr(0, eqsign_pos),
+			 rhs = eqsign_pos + 1 < s.length() ? utils::unescape(s.substr(eqsign_pos + 1)) : "";
+
+		boost::algorithm::trim(lhs);
+		boost::algorithm::trim(rhs);
+
+		// Unquote if the quotes match on both sides
+		if(rhs.length() >= 2 && rhs.front() == '"' && rhs.back() == '"') {
+			rhs.pop_back();
+			rhs.erase(0, 1);
+		}
+
+		res.emplace(std::move(lhs), std::move(rhs));
+	}
+
+	return res;
+}
+
 #endif
 
 } // end anonymous namespace
@@ -163,10 +217,11 @@ std::string read_pipe_line(scoped_posix_pipe& p)
 std::string os_version()
 {
 #if defined(__APPLE__) || defined(_X11)
-	utsname u;
+	// Some systems, e.g. SunOS, need "struct" here
+	struct utsname u;
 
 	if(uname(&u) != 0) {
-		ERR_DU << "os_version: uname error (" << strerror(errno) << ")\n";
+		ERR_DU << "os_version: uname error (" << strerror(errno) << ")";
 	}
 #endif
 
@@ -181,7 +236,32 @@ std::string os_version()
 #elif defined(_X11)
 
 	//
-	// Linux Standard Base version.
+	// systemd/freedesktop.org method.
+	//
+
+	std::map<std::string, std::string> osrel;
+
+	static const std::string fdo_osrel_etc = "/etc/os-release";
+	static const std::string fdo_osrel_usr = "/usr/lib/os-release";
+
+	if(filesystem::file_exists(fdo_osrel_etc)) {
+		osrel = parse_fdo_osrelease(fdo_osrel_etc);
+	} else if(filesystem::file_exists(fdo_osrel_usr)) {
+		osrel = parse_fdo_osrelease(fdo_osrel_usr);
+	}
+
+	// Check both existence and emptiness in case some vendor sets PRETTY_NAME=""
+	auto osrel_distname = osrel["PRETTY_NAME"];
+	if(osrel_distname.empty()) {
+		osrel_distname = osrel["NAME"];
+	}
+
+	if(!osrel_distname.empty()) {
+		return osrel_distname + " " + u.machine;
+	}
+
+	//
+	// Linux Standard Base fallback.
 	//
 
 	static const std::string lsb_release_bin = "/usr/bin/lsb_release";
@@ -234,8 +314,7 @@ std::string os_version()
 #pragma warning(disable:4996)
 #endif
 	if(!GetVersionEx(reinterpret_cast<OSVERSIONINFO*>(&v))) {
-		ERR_DU << "os_version: GetVersionEx error ("
-			   << GetLastError() << ")\n";
+		ERR_DU << "os_version: GetVersionEx error (" << GetLastError() << ')';
 		return base;
 	}
 #ifdef _MSC_VER
@@ -287,7 +366,7 @@ std::string os_version()
 			break;
 		case 1000:
 			if(v.wProductType == VER_NT_WORKSTATION) {
-				version = "10";
+				version = v.dwBuildNumber < 22000 ? "10" : "11";
 				const auto& release_id = windows_release_id();
 				if(!release_id.empty()) {
 					version += ' ';
@@ -302,7 +381,7 @@ std::string os_version()
 			}
 	}
 
-	if(v.szCSDVersion && *v.szCSDVersion) {
+	if(*v.szCSDVersion) {
 		version += " ";
 		version += unicode_cast<std::string>(std::wstring(v.szCSDVersion));
 	}
@@ -323,7 +402,7 @@ std::string os_version()
 	// "I don't know where I am" version.
 	//
 
-	ERR_DU << "os_version(): unsupported platform\n";
+	ERR_DU << "os_version(): unsupported platform";
 	return _("operating_system^<unknown>");
 
 #endif

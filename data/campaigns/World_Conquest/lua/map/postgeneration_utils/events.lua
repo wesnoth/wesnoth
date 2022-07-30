@@ -1,5 +1,5 @@
 
--- The invest dialog spawns items below the keeps, so we have to 
+-- The invest dialog spawns items below the keeps, so we have to
 -- make sure the tiles below keeps are passable for all units
 function wct_fix_impassible_item_spawn()
 
@@ -58,7 +58,7 @@ function wct_volcanos()
 			f.adjacent(f.terrain("Mv"), "n,ne,nw", nil)
 		),
 	}
-	local terrain_to_change = map:get_locations(f.terrain("Mv"))
+	local terrain_to_change = map:find(f.terrain("Mv"))
 	--todo figure out whether there is a differnce between many sound_source and on with a hige x,y list.
 	for volcano_i, volcano_loc in ipairs(terrain_to_change) do
 		table.insert(prestart_event, wml.tag.sound_source {
@@ -111,8 +111,8 @@ function wct_castle_expansion_side(side_num)
 	if keep_loc == nil then
 		return
 	end
-	local castle = map:get_tiles_radius({keep_loc}, wesnoth.create_filter(f.terrain("C*,K*")), 1)
-	local keep_area = map:get_tiles_radius({keep_loc}, wesnoth.create_filter(f.all()), 2)
+	local castle = map:find_in_radius({keep_loc}, 1, wesnoth.map.filter(f.terrain("C*,K*")))
+	local keep_area = map:find_in_radius({keep_loc}, 2, wesnoth.map.filter(f.all()))
 
 	local candidates = get_locations {
 		filter = f.all(
@@ -146,9 +146,9 @@ function wct_castle_expansion_side(side_num)
 		wesnoth.log("warn", "Too few tiles in castle expansion for side " .. side_num .. ", wanted: " .. n_tiles_wanted .. " but we got only " .. #candidates)
 		n_tiles_wanted = #candidates
 	end
-	helper.shuffle(candidates)
+	mathx.shuffle(candidates)
 	for i = 1, n_tiles_wanted do
-		map:set_terrain(candidates[i], "Ch")
+		map[candidates[i]] = "Ch"
 	end
 end
 
@@ -165,11 +165,11 @@ function get_oceanic()
 		f.x("1," .. tostring(map.width - 1)),
 		f.y("1," .. tostring(map.height - 1))
 	)
-	local water_border_tiles = map:get_locations(f.all(f_is_border, f.terrain("Wo*")))
-	local filter_radius = wesnoth.create_filter(f.all(
+	local water_border_tiles = map:find(f.all(f_is_border, f.terrain("Wo*")))
+	local filter_radius = wesnoth.map.filter(f.all(
 		f.terrain("W*^V*,Wwr*,Ww,Wwg,Wwt,Wo*"),
 		--ignore rivers
 		f.adjacent(f.terrain("!,W*^*,S*^*,D*^*,Ai"), nil, "0-3")
 	))
-	return map:get_tiles_radius(water_border_tiles, filter_radius, 999)
+	return map:find_in_radius(water_border_tiles, 999, filter_radius)
 end

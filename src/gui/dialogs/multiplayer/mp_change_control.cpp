@@ -1,16 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Lukasz Dobrogowski
-   <lukasz.dobrogowski@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -40,9 +40,7 @@ static lg::log_domain log_gui("gui/dialogs/mp_change_control");
 #define LOG_GUI LOG_STREAM(info,  log_gui)
 #define DBG_GUI LOG_STREAM(debug, log_gui)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_change_control)
@@ -79,8 +77,8 @@ void mp_change_control::pre_show(window& window)
 
 		sides_.push_back(side);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
 		side_str = font::span_color(team::get_side_color(side)) + side_str + "</span>";
@@ -117,8 +115,8 @@ void mp_change_control::pre_show(window& window)
 	for(const std::string& nick : temp_nicks) {
 		nicks_.push_back(nick);
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["id"] = nick;
 		item["label"] = nick;
@@ -171,7 +169,7 @@ void mp_change_control::post_show(window& window)
 	if(window.get_retval() == retval::OK) {
 		DBG_GUI << "Main: changing control of side "
 		        << sides_[selected_side_] << " to nick "
-		        << nicks_[selected_nick_] << std::endl;
+		        << nicks_[selected_nick_];
 
 		menu_handler_.request_control_change(
 			sides_[selected_side_],
@@ -181,4 +179,3 @@ void mp_change_control::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

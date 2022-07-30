@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -18,25 +19,26 @@
 
 #include "exceptions.hpp"
 
+#include "sdl/texture.hpp"
 
 namespace gui {
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A button is a control that can be pushed to start an action or close a dialog.
- * 
+ *
  * When a button has a return value it sets the return value for the window.
  * Normally this closes the window and returns this value to the caller.
  * The return value can either be defined by the user or determined from the id of the button.
  * The return value has a higher precedence as the one defined by the id.
  * (Of course it's weird to give a button an id and then override its return value.)
- * 
+ *
  * When the button doesn't have a standard id, but you still want to use the return value of that id, use return_value_id instead.
  * This has a higher precedence as return_value.
- * 
+ *
  * List with the button specific variables:
- * Key            |Type                            |Default|Description  
+ * Key            |Type                            |Default|Description
  * ---------------|--------------------------------|-------|-----------
  * return_value_id| @ref guivartype_string "string"|""     |The return value id.
  * return_value   | @ref guivartype_int "int"      |0      |The return value.
@@ -50,19 +52,19 @@ class button : public widget
 {
 public:
 	struct error : public game::error {
-        error()
-            : game::error("GUI1 button error")
-            {}
-    };
+		error()
+			: game::error("GUI1 button error")
+			{}
+	};
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE, TYPE_RADIO };
 	TYPE get_type() const { return type_; }
 
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
-	button(CVideo& video, const std::string& label, TYPE type=TYPE_PRESS,
+	button(const std::string& label, TYPE type=TYPE_PRESS,
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
-		   const bool auto_join=true, std::string overlay_image="");
+	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
@@ -98,7 +100,7 @@ private:
 
 	std::string label_text_;
 
-	surface image_, pressedImage_, activeImage_, pressedActiveImage_,
+	texture image_, pressedImage_, activeImage_, pressedActiveImage_,
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;
@@ -116,6 +118,11 @@ private:
 	std::string button_image_name_;
 	std::string button_overlay_image_name_;
 	std::string button_image_path_suffix_;
+
+	int font_size_;
+	int horizontal_padding_;
+	int checkbox_horizontal_padding_;
+	int vertical_padding_;
 
 }; //end class button
 

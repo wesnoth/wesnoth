@@ -53,6 +53,18 @@
 # it has seen.  This will be useful mainly for symbols that have different
 # definitions enabled by an #ifdef.
 #
+# Due to a preprocessor limitation, inline macros cannot contain a documentation
+# string. If you need to document these macros in the HTML macro reference, you
+# can use the following directive:
+#
+#     # wmlscope: docstring FOOBAR
+#
+# The docstring for the FOOBAR macro will be collected until a non-comment line,
+# a #define or another # wmlscope: docstring are found. External docstrings
+# *must* be defined before the macro they're referring to; defining two or more
+# external docstrings keeps only the most recent one, but having both an
+# external and an internal docstring is allowed (in this case, the internal one
+# will be appended to the external one in the macro reference).
 #
 # This tool does catch one kind of implicit reference: if an attack name
 # is specified but no icon is given, the attack icon will default to
@@ -95,6 +107,7 @@
 
 import sys, os, time, re, argparse, hashlib, glob, codecs
 from wesnoth.wmltools3 import *
+from wesnoth import version
 
 def interpret(lines, css):
     "Interpret the ! convention for .cfg comments."
@@ -162,6 +175,7 @@ class CrossRefLister(CrossRef):
         if len(self.unresolved) == 0 and len(self.missing) == 0:
             print("# No unresolved references")
         else:
+            print("# Unresolved references:")
             #print(list(self.fileref.keys()))
             for (name, reference) in self.unresolved + self.missing:
                 print("%s: Unresolved reference -> %s" % (reference, name))
@@ -192,6 +206,15 @@ class CrossRefLister(CrossRef):
                                ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)]),
                                ", " if optional_args else "",
                                ", ".join(["{}=optional {}".format(f, actualtype(oa)) for f,oa in optional_args.items()])))
+
+    def deprecateddump(self):
+        "Report calls to deprecated macros"
+        if not self.deprecated:
+            print("# No calls to deprecated macros")
+            return
+        print("# Calls to deprecated macros:")
+        for (name, reference) in self.deprecated:
+            print("%s: Deprecated macro call -> %s" % (reference, name))
 
     def incorrectlysized(self):
         "Report incorrectly sized images that cannot be safely used for their intended purpose"
@@ -337,7 +360,9 @@ class CrossRefLister(CrossRef):
     def extracthelp(self, pref, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
-        doclist = [x for x in self.xref.keys()]
+        # macros starting with INTERNAL: are only for internal use
+        # and aren't supposed to be reported in the macro reference
+        doclist = [x for x in self.xref.keys() if not x.startswith("INTERNAL:")]
         doclist.sort(key=lambda element: self.xref[element][0])
         outstr = ""
         filename = None
@@ -407,7 +432,7 @@ class CrossRefLister(CrossRef):
         fp.write(outstr)
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog="wmlscope")
     parser.add_argument("-c", "--crossreference", action="store_true",
                         help="Report resolved macro references (implies -w 1)")
     parser.add_argument("-C", "--collisions", action="store_true",
@@ -441,6 +466,8 @@ if __name__ == "__main__":
     parser.add_argument("directories", action="store", nargs="*",
                         help="""Any number of directiories to check. If no
 directories are given, all files under the current directory are checked.""")
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s " + version.as_string)
     namespace = parser.parse_args()
 
     try:
@@ -535,9 +562,10 @@ directories are given, all files under the current directory are checked.""")
                 xref.deflist(predicate)
             if unresolved:
                 xref.incorrectlysized()
+                xref.deprecateddump()
                 xref.unresdump()
                 xref.duplicates(exportonly=True)
     except KeyboardInterrupt:
-        print("wmlscope: aborted.", file=sys.stderr)
+        print("Aborted by pressing ctrl-c", file=sys.stderr)
 
 # wmlscope ends here

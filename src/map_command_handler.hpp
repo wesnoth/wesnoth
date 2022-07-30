@@ -1,16 +1,17 @@
 /*
-Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -189,10 +190,45 @@ public:
 		}
 		else if (help_on_unknown_) {
 			utils::string_map symbols;
-			symbols["command"] = get_cmd();
-			symbols["help_command"] = cmd_prefix_ + "help";
-			print("help", VGETTEXT("Unknown command '$command', try $help_command "
-				"for a list of available commands.", symbols));
+			if(!cmd_flag_) {
+				symbols["help_command"] = cmd_prefix_ + "help";
+				symbols["command"] = cmd_prefix_ + get_cmd();
+			}
+			else {
+				symbols["help_command"] = "help";
+				symbols["command"] = get_cmd();
+			}
+			std::string string_user = get_cmd();
+			int distance = 0;
+			// Minimum length of the two compared strings.
+			int len_min = 0;
+			bool has_command_proposal = false;
+			// Compare the input with every command (excluding alias).
+			for(const auto& [key, index] : command_map_) {
+				// No need to test commands that are not enabled.
+				if(is_enabled(index)) {
+					distance = edit_distance_approx(string_user, key);
+					len_min = std::min(string_user.length(), key.length());
+					// Maximum of a third of the letters are wrong. The ratio
+					// between the edit distance and the minimum length, multiplied
+					// by a hundred gives us the  percentage of errors.
+					if(distance * 100 / len_min < 34) {
+						symbols["command_proposal"] = key;
+						has_command_proposal = true;
+						// If a good enough candidate is found, exit the loop.
+						break;
+					}
+				}
+			}
+			// If a proposal for a command is found, print it
+			if(has_command_proposal) {
+				print("help", VGETTEXT("Unknown command '$command', did you mean '$command_proposal'? try $help_command "
+					"for a list of available commands.", symbols));
+			}
+			else {
+				print("help", VGETTEXT("Unknown command '$command', try $help_command "
+					"for a list of available commands.", symbols));
+			}
 		}
 	}
 
@@ -310,7 +346,12 @@ protected:
 		utils::string_map symbols;
 		symbols["flags_description"] = get_flags_description();
 		symbols["list_of_commands"] = ss.str();
-		symbols["help_command"] = cmd_prefix_ + "help";
+		if(!cmd_flag_) {
+			symbols["help_command"] = cmd_prefix_ + "help";
+		}
+		else {
+			symbols["help_command"] = "help";
+		}
 		print(_("help"), VGETTEXT("Available commands $flags_description:\n$list_of_commands", symbols));
 		print(_("help"), VGETTEXT("Type $help_command <command> for more info.", symbols));
 	}
@@ -321,7 +362,12 @@ protected:
 		const command* c = get_command(cmd);
 		if (c) {
 			std::stringstream ss;
-			ss << cmd_prefix_ << cmd;
+			if(!cmd_flag_) {
+				ss << cmd_prefix_ << cmd;
+			}
+			else {
+				ss << cmd;
+			}
 			if (c->help.empty() && c->usage.empty()) {
 				ss << _(" No help available.");
 			}
@@ -329,7 +375,12 @@ protected:
 				ss << " - " << c->help << "\n";
 			}
 			if (!c->usage.empty()) {
-				ss << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage << "\n";
+				if(!cmd_flag_) {
+					ss << _("Usage:") << " " << cmd_prefix_ << cmd << " " << c->usage << "\n";
+				}
+				else {
+					ss << _("Usage:") << " " << cmd << " " << c->usage << "\n";
+				}
 			}
 			const auto flags_description = get_command_flags_description(*c);
 			if (!flags_description.empty()) {
@@ -357,6 +408,13 @@ protected:
 	static void set_cmd_prefix(const std::string& value)
 	{
 		cmd_prefix_ = value;
+	}
+	//sets the "cmd_flag_" flag as "true" when "cmd_prefix_" is in command
+	//line mode and to "false" when "cmd_prefix_" is in message line mode.
+	//The "help" message's symbols depend on the flag's value.
+	static void set_cmd_flag(bool value)
+	{
+		cmd_flag_ = value;
 	}
 	virtual void register_command(const std::string& cmd,
 		command_handler h, const std::string& help = "",
@@ -389,27 +447,12 @@ protected:
 		return aliases;
 	}
 private:
-	static command_map command_map_;
-	static command_alias_map command_alias_map_;
-	static bool help_on_unknown_;
-	static bool show_unavailable_;
-	static std::string cmd_prefix_;
+	static inline command_map command_map_ {};
+	static inline command_alias_map command_alias_map_ {};
+	static inline bool help_on_unknown_ = true;
+	static inline bool show_unavailable_ = false;
+	static inline std::string cmd_prefix_ {};
+	static inline bool cmd_flag_ = false;
 };
-
-//static member definitions
-template <class Worker>
-typename map_command_handler<Worker>::command_map map_command_handler<Worker>::command_map_;
-
-template <class Worker>
-typename map_command_handler<Worker>::command_alias_map map_command_handler<Worker>::command_alias_map_;
-
-template <class Worker>
-bool map_command_handler<Worker>::help_on_unknown_ = true;
-
-template <class Worker>
-bool map_command_handler<Worker>::show_unavailable_ = false;
-
-template <class Worker>
-std::string map_command_handler<Worker>::cmd_prefix_;
 
 }

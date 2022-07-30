@@ -1,8 +1,8 @@
 -- Springs
 function world_conquest_tek_map_repaint_2a()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Ql,Qxu,Xu,Ww,Ww", 3)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uh,Ql,Qxu,Xu,Ww,Ww", 3)
 	world_conquest_tek_map_decoration_2a()
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gg^Uf,Gs^Uf")
+	world_conquest_tek_map_dirt("Gg^Tf,Gg^Tf,Gg^Tf,Gs^Tf")
 end
 
 function world_conquest_tek_map_decoration_2a()
@@ -19,29 +19,29 @@ function world_conquest_tek_map_decoration_2a()
 	}
 
 	-- chances of tropical palm forest near caves
-	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+	if mathx.random(2) == 1 then
+		local terrain_to_change = map:find(f.all(
 			f.terrain("Hh*^F*"),
 			f.adjacent(f.terrain("Xu,U*^*,Mv,Ql,Qxu"))
 		))
 		if #terrain_to_change > 3 then
-			local r = wesnoth.random(0, #terrain_to_change - 3)
+			local r = mathx.random(0, #terrain_to_change - 3)
 			for i = 1, r do
-				local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-				map:set_terrain(loc, "Hh^Ftp")
+				local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+				map[loc] = "Hh^Ftp"
 			end
 		end
 	end
-	if wesnoth.random(2) == 1 then
-		local terrain_to_change = map:get_locations(f.all(
+	if mathx.random(2) == 1 then
+		local terrain_to_change = map:find(f.all(
 			f.terrain("G*^F*"),
 			f.adjacent(f.terrain("Xu,U*^*,Mv,Ql,Qxu"))
 		))
 		if #terrain_to_change > 3 then
-		local r = wesnoth.random(0, #terrain_to_change - 3)
+		local r = mathx.random(0, #terrain_to_change - 3)
 			for i = 1, r do
-				local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-				map:set_terrain(loc, "Gs^Ftp")
+				local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+				map[loc] = "Gs^Ftp"
 			end
 		end
 	end
@@ -106,7 +106,7 @@ function world_conquest_tek_map_decoration_2a()
 		f.all(
 			f.terrain("Hh^Fp"),
 			f.radius(3, f.all(
-				f.terrain("Ql,Uu,Hu,Uu^Uf,Qxu,Mv"),
+				f.terrain("Ql,Uu,Hu,Uu^Tf,Qxu,Mv"),
 				f.none(
 					f.radius(3, f.terrain("Ds,Dd,Hd"))
 				)
@@ -139,7 +139,7 @@ function world_conquest_tek_map_decoration_2a()
 
 	-- fords
 
-	local r = wesnoth.random(0, 4)
+	local r = mathx.random(0, 4)
 	for i = 1, r do
 		set_terrain { "Wwf",
 			f.all(
@@ -152,10 +152,10 @@ function world_conquest_tek_map_decoration_2a()
 	end
 	-- chances flowers
 	local terrain_to_change = wct_store_possible_flowers("G*^Fet")
-	while #terrain_to_change > 0 and wesnoth.random(10) ~= 1 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, "Gg^Efm", "overlay")
-		local terrain_to_change = wct_store_possible_flowers("G*^Fet")
+	while #terrain_to_change > 0 and mathx.random(10) ~= 1 do
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+		map[loc] = "^Efm"
+		terrain_to_change = wct_store_possible_flowers("G*^Fet")
 	end
 	-- extra coast
 	set_terrain { "Ww,Ww,Ww,Wwr",
@@ -167,7 +167,7 @@ function world_conquest_tek_map_decoration_2a()
 	}
 
 	wct_map_reduce_castle_expanding_recruit("Ce", "Re")
-	if wesnoth.random(5) ~= 1 then
+	if mathx.random(5) ~= 1 then
 		wct_map_decorative_docks()
 	end
 end
@@ -177,6 +177,7 @@ function wct_map_2a_post_bunus_decoration()
 	wct_noise_snow_to("Wwf")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"water^Springs")

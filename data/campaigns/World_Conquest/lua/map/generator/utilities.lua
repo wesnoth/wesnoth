@@ -65,7 +65,7 @@ end
 
 function dr_road(from, to, cost)
 	return { {
-		terrain = from, 
+		terrain = from,
 		cost = cost,
 		convert_to = to
 	} }
@@ -73,7 +73,7 @@ end
 
 function dr_bridge(from, bridge, road, cost)
 	return { {
-		terrain = from, 
+		terrain = from,
 		cost = cost,
 		convert_to_bridge = bridge .. "|," .. bridge .. "/," .. bridge .. "\\",
 		convert_to = road,
@@ -213,26 +213,26 @@ end
 function default_generate_map(data)
 	local max_island = 10
 	local max_coastal = 5
-	
+
 	data.village = flatten1(data.village or {})
 	data.road_cost = flatten1(data.road_cost or {})
 	data.convert = flatten1(data.convert or {})
-	
+
 	local cfg = wc2_convert.lon_to_wml(data, "mg_main")
-	
+
 	local w, h = cfg.map_width, cfg.map_height
 	local orig_island_size = cfg.island_size
 	local orig_nvillages = cfg.villages
-	
+
 	cfg.island_size = 0;
 	cfg.nvillages = (orig_nvillages * w * h) // 1000;
 	cfg.island_off_center = 0;
-	
+
 	if orig_island_size >= max_coastal then
 		-- Islands look good with much fewer iterations than normal, and fewer lakes
 		cfg.iterations = cfg.iterations // 10
 		cfg.max_lakes = (cfg.max_lakes or 0) // 9
-		
+
 		-- The radius of the island should be up to half the width of the map
 		local island_radius = 50 + ((max_island - orig_island_size) * 50) // (max_island - max_coastal)
 		cfg.island_size = (island_radius * (w/2)) // 100;
@@ -241,17 +241,16 @@ function default_generate_map(data)
 		local island_radius = 40 + ((max_coastal - orig_island_size) * 40) // max_coastal;
 		cfg.island_size = (island_radius * w * 2) // 100;
 		cfg.island_off_center = math.min(w, h);
-	else
 	end
 	for i = 1, 20 do
 		local status, map = pcall(function()
-			cfg.seed = wesnoth.random(5000) + 7
-			return wesnoth.generate_default_map(w, h, cfg)
+			cfg.seed = mathx.random(5000) + 7
+			return wesnoth.map.generate(w, h, cfg)
 		end)
 		if status then
 			return map
 		end
 	end
-	cfg.seed = wesnoth.random(5000) + 7
-	return wesnoth.generate_default_map(w, h, cfg)
+	cfg.seed = mathx.random(5000) + 7
+	return wesnoth.map.generate(w, h, cfg)
 end

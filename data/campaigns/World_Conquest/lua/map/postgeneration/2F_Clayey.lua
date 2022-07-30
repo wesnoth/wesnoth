@@ -1,6 +1,6 @@
 -- Clayey
 function world_conquest_tek_map_repaint_2f()
-	wct_reduce_wall_clusters("Uu,Uu^Uf,Uh,Uu^Uf,Uu,Uh,Ql,Uu,Xu,Uu,Ww")
+	wct_reduce_wall_clusters("Uu,Uu^Tf,Uh,Uu^Tf,Uu,Uh,Ql,Uu,Xu,Uu,Ww")
 	set_terrain { "Xu",
 		f.all(
 			f.adjacent(f.terrain("Uu^*")),
@@ -121,6 +121,7 @@ function wct_map_2f_post_bunus_decoration()
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Clayey")

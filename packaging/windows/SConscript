@@ -6,16 +6,14 @@ Import("env")
 
 binaries = ["wesnoth", "wesnothd"]
 for bin in binaries:
-    #icon = env.Command(bin + "-icon.ico", join("../../icons", bin + "-icon.png"), "$IM_CONVERT $SOURCE $TARGET")
     try:
         env["RCCOM"] = '$RC $_CPPDEFFLAGS $RCINCFLAGS ${RCINCPREFIX} ${SOURCE.dir} $RCFLAGS -i $SOURCE -o $TARGET'
         res = [env.RES(bin + ".rc", CPPPATH=["#/"])]
-        #env.Depends(res, icon)
     except AttributeError:
         res = []
     env[bin + "_res"] = res
-if env["multilib_arch"] == "32":
-    env.AppendUnique(RCFLAGS = Split("-F pe-i386"))
+
+Depends(env["wesnoth_res"], File("wesnoth.exe.manifest"))
 
 def WindowsInstaller(env, files):
     files = [Entry(file) for file in Flatten(files)]

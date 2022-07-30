@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2011 - 2018 by Tommy Schmitz
- Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2011 - 2022
+	by Tommy Schmitz
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -117,7 +118,7 @@ void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 	// Remove the unit
 	const unit_const_ptr removed_unit = unit_map.extract(loc_);
 	DBG_WB << "Suppose dead: Temporarily removing unit " << removed_unit->name() << " [" << removed_unit->id()
-			<< "] from (" << loc_ << ")\n";
+			<< "] from (" << loc_ << ")";
 
 	// Just check to make sure we removed the unit we expected to remove
 	assert(get_unit().get() == removed_unit.get());
@@ -135,16 +136,20 @@ void suppose_dead::remove_temp_modifier(unit_map& unit_map)
 
 void suppose_dead::draw_hex(const map_location& hex)
 {
-	if(hex == loc_) //add symbol to hex
-	{
-		//@todo: Possibly use a different layer
-		const display::drawing_layer layer = display::LAYER_ARROWS;
-
-		int xpos = display::get_singleton()->get_location_x(loc_);
-		int ypos = display::get_singleton()->get_location_y(loc_);
-		display::get_singleton()->drawing_buffer_add(layer, loc_, xpos, ypos,
-				image::get_image("whiteboard/suppose_dead.png", image::SCALED_TO_HEX));
+	if (hex != loc_) {
+		return;
 	}
+
+	//@todo: Possibly use a different layer
+	const display::drawing_layer layer = display::LAYER_ARROWS;
+
+	auto disp = display::get_singleton();
+	int x = disp->get_location_x(loc_);
+	int y = disp->get_location_y(loc_);
+	const texture& tex = image::get_texture(
+		"whiteboard/suppose_dead.png", image::HEXED);
+	const SDL_Rect dest = disp->scaled_to_zoom({x, y, tex.w(), tex.h()});
+	disp->drawing_buffer_add(layer, loc_, dest, tex);
 }
 
 void suppose_dead::redraw()

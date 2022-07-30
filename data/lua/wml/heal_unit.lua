@@ -23,7 +23,7 @@ function wesnoth.wml_actions.heal_unit(cfg)
 
 	local heal_full = cfg.amount == "full" or cfg.amount == nil
 	local moves_full = cfg.moves == "full"
-	local heal_amount_set = false
+	local variable = cfg.variable
 	for i,u in ipairs(who) do
 		local heal_amount = u.max_hitpoints - u.hitpoints
 		local new_hitpoints
@@ -36,7 +36,7 @@ function wesnoth.wml_actions.heal_unit(cfg)
 		end
 
 		if cfg.animate then
-			local animator = wesnoth.create_animator()
+			local animator = wesnoth.units.create_animator()
 			if heal_amount > 0 then
 				animator:add(u, 'healed', 'hit', {value = heal_amount, text = heal_amount, color = {0, 255, 0}})
 			end
@@ -65,9 +65,8 @@ function wesnoth.wml_actions.heal_unit(cfg)
 			u.status.unhealable = false
 		end
 
-		if not heal_amount_set then
-			heal_amount_set = true
-			wml.variables["heal_amount"] = heal_amount
+		if variable then
+			wml.variables[string.format("%s[%d]", variable, i-1)] = {id = u.id, heal_amount = heal_amount}
 		end
 	end
 end

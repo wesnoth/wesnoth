@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_cpp_function.hpp"
@@ -20,7 +21,6 @@
 #include <string>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 #include "scripting/lua_common.hpp" // for new(L)
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -47,8 +47,8 @@ static int intf_cleanup ( lua_State* L )
 {
 	lua_function * d = static_cast< lua_function *> (luaL_testudata(L, 1, cpp_function));
 	if (d == nullptr) {
-		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
-		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+		ERR_LUA << "lua_cpp::intf_cleanup called on data of type: " << lua_typename( L, lua_type( L, 1 ) );
+		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org";
 		lua_pushstring(L, "C++ function object garbage collection failure");
 		lua_error(L);
 	} else {

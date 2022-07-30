@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -31,14 +32,16 @@
 
 #pragma once
 
+#include "color.hpp"
 #include "exceptions.hpp"               // for error
-#include "font/sdl_ttf.hpp"             // for line_width, relative_size
+#include "font/constants.hpp"
 #include "gettext.hpp"
 #include <optional>
 #include <cstring>
 #include <list>                         // for list
 #include <memory>
 #include <ostream>                      // for operator<<, stringstream, etc
+#include <sstream>
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
@@ -182,16 +185,20 @@ private:
 class title_less
 {
 public:
-	bool operator()(const topic &t1, const topic &t2) {
-            return translation::compare(t1.title, t2.title) < 0; }
+	bool operator()(const topic &t1, const topic &t2)
+	{
+		return translation::compare(t1.title, t2.title) < 0;
+	}
 };
 
 /** To be used as a function object when sorting section lists on the title. */
 class section_less
 {
 public:
-	bool operator()(const section& s1, const section& s2) {
-            return translation::compare(s1.title, s2.title) < 0; }
+	bool operator()(const section& s1, const section& s2)
+	{
+		return translation::compare(s1.title, s2.title) < 0;
+	}
 };
 
 class string_less

@@ -5,7 +5,7 @@ local images = {
 
 function wct_map_4c_conect_rails()
 	-- conect rails where possible
-	local terrain_to_change = map:get_locations(f.any(
+	local terrain_to_change = map:find(f.any(
 		f.all(
 			f.terrain("*^Br|"),
 			f.adjacent(f.terrain("*^Br*"), "n,s", 0)
@@ -230,7 +230,7 @@ function world_conquest_tek_map_decoration_4c()
 		layer = "overlay",
 	}
 
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_change_map_water("t")
 	end
 end
@@ -252,23 +252,23 @@ function world_conquest_tek_map_repaint_4c()
 	wct_reduce_wall_clusters("Uu^Br/,Uu^Br\\,Uu^Br|,Uu^Dr,Qxu")
 	world_conquest_tek_map_decoration_4c()
 	wct_fill_lava_chasms()
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gs^Uf")
+	world_conquest_tek_map_dirt("Gg^Tf,Gg^Tf,Gs^Tf")
 end
 function wct_map_4c_post_bunus_decoration()
 	-- dwarvish forges and keeps
-	local terrain_to_change = map:get_locations(f.all(
-		f.terrain("*^Uf"),
+	local terrain_to_change = map:find(f.all(
+		f.terrain("*^Tf"),
 		f.adjacent(f.terrain("*^Vud"))
 	))
 
 	for forge_i, v in ipairs(terrain_to_change) do
-		local r = wesnoth.random(6)
+		local r = mathx.random(6)
 		if r == 1 then
-			map:set_terrain(v, "Cud")
+			map[v] = "Cud"
 		elseif r == 2 then
-			map:set_terrain(v, "Kud")
+			map[v] = "Kud"
 		elseif r == 3 then
-			map:set_terrain(v, "Kv")
+			map[v] = "Kv"
 		end
 	end
 
@@ -281,6 +281,8 @@ function wct_map_4c_post_bunus_decoration()
 	}
 	wct_noise_snow_to("Rb")
 end
+
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Mines")

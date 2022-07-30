@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -41,9 +42,7 @@
 #include "units/types.hpp"
 #include "wesnothd_connection.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_staging)
@@ -98,10 +97,6 @@ void mp_staging::pre_show(window& window)
 	//
 	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
 
-	if(network_connection_) {
-		chat.set_wesnothd_connection(*network_connection_);
-	}
-
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
 	chat.load_log(default_chat_log, false);
@@ -141,7 +136,7 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 template<typename... T>
 tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&... params)
 {
-	static const std::map<std::string, string_map> empty_map;
+	static const widget_data empty_map;
 
 	// If there is no team node in the map, this will return nullptr
 	tree_view_node* team_node = team_tree_map_[side->team_name()];
@@ -150,10 +145,10 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 	if(team_node == nullptr) {
 		tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
 
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
+		widget_data tree_data;
+		widget_item tree_item;
 
-		tree_item["label"] = (formatter() << _("Team:") << " " << side->user_team_name()).str();
+		tree_item["label"] = side->user_team_name();
 		tree_data.emplace("tree_view_node_label", tree_item);
 
 		team_node = &tree.add_node("team_header", tree_data);
@@ -168,8 +163,8 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 
 void mp_staging::add_side_node(ng::side_engine_ptr side)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = std::to_string(side->index() + 1);
 	data.emplace("side_number", item);
@@ -198,7 +193,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	const bool lock_team   = side->cfg()["team_lock"].to_bool(fls);
 	const bool lock_color  = side->cfg()["color_lock"].to_bool(fls);
 
-	const bool saved_game = connect_engine_.params().saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME;
+	const bool saved_game = connect_engine_.params().saved_game == saved_game_mode::type::midgame;
 
 	//
 	// AI Algorithm
@@ -431,11 +426,9 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 
 	// Last, remove the old team node if it's now empty
 	if(old_team_node->empty()) {
-		// Only sibling should be the decor line, and it should be last
-		auto decor = old_team_node->siblings().back();
-
+		// Decor node will be immediately after team node. Remove this first!
+		tree.remove_node(old_team_node->get_node_below());
 		tree.remove_node(old_team_node);
-		tree.remove_node(decor.get());
 
 		team_tree_map_[old_team] = nullptr;
 	}
@@ -455,7 +448,7 @@ void mp_staging::select_leader_callback(ng::side_engine_ptr side, grid& row_grid
 template<void(ng::side_engine::*fptr)(int)>
 void mp_staging::on_side_slider_change(ng::side_engine_ptr side, slider& slider)
 {
-	((*side).*fptr)(slider.get_value());
+	std::invoke(fptr, side, slider.get_value());
 
 	set_state_changed();
 }
@@ -569,7 +562,7 @@ void mp_staging::network_handler()
 	update_status_label_and_buttons();
 
 	if(!was_able_to_start && connect_engine_.can_start_game()) {
-		mp_ui_alerts::ready_for_start();
+		mp::ui_alerts::ready_for_start();
 	}
 
 	state_changed_ = false;
@@ -590,4 +583,3 @@ void mp_staging::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
@@ -7,8 +6,8 @@ local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 local M = wesnoth.map
 
 local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, multiplier)
-    local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = unit:movement(terrain)
+    local terrain = wesnoth.current.map[{x, y}]
+    local move_cost = unit:movement_on(terrain)
 
     if avoid_map and avoid_map:get(x, y) then
         move_cost = move_cost + AH.no_path
@@ -22,7 +21,7 @@ local function custom_cost(x, y, unit, avoid_map, enemy_map, enemy_attack_map, m
     return move_cost
 end
 
-local ca_goto, GO_units, GO_locs, GO_avoid_map = {}
+local ca_goto, GO_units, GO_locs, GO_avoid_map = {}, nil, nil, nil
 
 function ca_goto:evaluation(cfg, data)
     -- If cfg.release_all_units_at_goal is set, check whether the goal has
@@ -69,18 +68,18 @@ function ca_goto:evaluation(cfg, data)
     local locs = {}
     if cfg.unique_goals then
         -- First, some cleanup of previous turn data
-        local str = 'goal_taken_' .. (wesnoth.current.turn - 1)
+        local str1 = 'goal_taken_' .. (wesnoth.current.turn - 1)
         local old_goals = MAISD.get_mai_self_data(data, cfg.ai_id)
         for goal,_ in pairs(old_goals) do
-            if string.find(goal, str) then
+            if string.find(goal, str1) then
                 old_goals[goal] = nil  -- This also removes it from data
             end
         end
 
         -- Now on to the current turn
         for _,loc in ipairs(valid_locs) do
-            local str = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. loc[1] .. '_' .. loc[2]
-            if (not MAISD.get_mai_self_data(data, cfg.ai_id, str)) then
+            local str2 = 'goal_taken_' .. wesnoth.current.turn  .. '_' .. loc[1] .. '_' .. loc[2]
+            if (not MAISD.get_mai_self_data(data, cfg.ai_id, str2)) then
                 table.insert(locs, loc)
             end
         end
@@ -98,11 +97,12 @@ end
 function ca_goto:execution(cfg, data)
     local units, locs = GO_units, GO_locs
 
-    local enemy_map, enemy_attack_map
+    local enemy_map, enemy_attack_map, avoid_enemies
     if cfg.avoid_enemies then
-        if (type(cfg.avoid_enemies) ~= 'number') then
+        avoid_enemies = tonumber(cfg.avoid_enemies)
+        if (not avoid_enemies) then
             wml.error("Goto AI avoid_enemies= requires a number as argument")
-        elseif (cfg.avoid_enemies <= 0) then
+        elseif (avoid_enemies <= 0) then
             wml.error("Goto AI avoid_enemies= argument must be >0")
         end
 
@@ -121,7 +121,7 @@ function ca_goto:execution(cfg, data)
             enemy_map:insert(enemy.x, enemy.y, (enemy_map:get(enemy.x, enemy.y) or 0) + 1000)
         end
         for _,enemy in ipairs(live_enemies) do
-            for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
                 enemy_map:insert(xa, ya, (enemy_map:get(xa, ya) or 0) + 10)
             end
         end
@@ -129,7 +129,7 @@ function ca_goto:execution(cfg, data)
         enemy_attack_map = BC.get_attack_map(live_enemies)
     end
 
-    local max_rating, closest_hex, best_path, best_unit = - math.huge
+    local max_rating, closest_hex, best_path, best_unit = - math.huge, nil, nil, nil
     for _,unit in ipairs(units) do
         for _,loc in ipairs(locs) do
             -- If cfg.use_straight_line is set, we simply find the closest
@@ -149,10 +149,11 @@ function ca_goto:execution(cfg, data)
                 end
             else  -- Otherwise find the best path to take
                 local path, cost
-                if GO_avoid_map or cfg.avoid_enemies then
-                    path, cost = wesnoth.find_path(unit, loc[1], loc[2], {
+                if avoid_enemies then
+                    wesnoth.interface.handle_user_interact()
+                    path, cost = wesnoth.paths.find_path(unit, loc[1], loc[2], {
                         calculate = function(x, y, current_cost)
-                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, cfg.avoid_enemies)
+                            return custom_cost(x, y, unit, GO_avoid_map, enemy_map, enemy_attack_map, avoid_enemies)
                         end
                     })
                 else
@@ -165,7 +166,8 @@ function ca_goto:execution(cfg, data)
                             enemy_at_goal = nil
                         end
                     end
-                    path, cost = AH.find_path_with_shroud(unit, loc[1], loc[2], { ignore_units = cfg.ignore_units })
+                    path, cost = AH.find_path_with_avoid(unit, loc[1], loc[2], GO_avoid_map, { ignore_enemies = cfg.ignore_units })
+
                     if enemy_at_goal then
                         enemy_at_goal:to_map()
                         --- Give massive penalty for this goal hex
@@ -206,13 +208,15 @@ function ca_goto:execution(cfg, data)
     -- rather than using ai_helper.next_hop for standard pathfinding
     -- Also, straight-line does not produce a path, so we do that first
     if not best_path then
-        best_path = AH.find_path_with_shroud(best_unit, closest_hex[1], closest_hex[2])
+        best_path = AH.find_path_with_avoid(best_unit, closest_hex[1], closest_hex[2], GO_avoid_map)
     end
 
     -- Now go through the hexes along that path, use normal path finding
+    -- We cannot ignore units in this case though, as we need to determine which hexes
+    -- the unit can actually get to
     closest_hex = best_path[1]
     for i = 2,#best_path do
-        local sub_path, sub_cost = AH.find_path_with_shroud(best_unit, best_path[i][1], best_path[i][2], cfg)
+        local sub_path, sub_cost = AH.find_path_with_avoid(best_unit, best_path[i][1], best_path[i][2], GO_avoid_map)
         if sub_cost <= best_unit.moves then
             local unit_in_way = wesnoth.units.get(best_path[i][1], best_path[i][2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
@@ -223,9 +227,12 @@ function ca_goto:execution(cfg, data)
         end
     end
 
+    local remove_movement = cfg.remove_movement
+    if (remove_movement == nil) then remove_movement = true end
+
     if closest_hex then
         AH.checked_move_full(ai, best_unit, closest_hex[1], closest_hex[2])
-    else
+    elseif remove_movement then
         AH.checked_stopunit_moves(ai, best_unit)
     end
 

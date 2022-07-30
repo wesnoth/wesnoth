@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "playmp_controller.hpp"
@@ -34,6 +35,7 @@
 #include "savegame.hpp"
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
+#include "video.hpp" // only for faked
 #include "wesnothd_connection.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -90,8 +92,8 @@ void playmp_controller::remove_blindfold()
 {
 	if(gui_->is_blindfolded()) {
 		blindfold_.unblind();
-		LOG_NG << "Taking off the blindfold now " << std::endl;
-		gui_->redraw_everything();
+		LOG_NG << "Taking off the blindfold now";
+		gui_->queue_rerender();
 	}
 }
 
@@ -115,14 +117,14 @@ void playmp_controller::play_linger_turn()
 
 void playmp_controller::play_human_turn()
 {
-	LOG_NG << "playmp::play_human_turn...\n";
+	LOG_NG << "playmp::play_human_turn...";
 	assert(!linger_);
 	assert(gamestate_->init_side_done());
 	assert(gamestate().gamedata_.phase() == game_data::PLAY);
 
-	mp_ui_alerts::turn_changed(current_team().current_player());
+	mp::ui_alerts::turn_changed(current_team().current_player());
 
-	LOG_NG << "events::commands_disabled=" << events::commands_disabled << "\n";
+	LOG_NG << "events::commands_disabled=" << events::commands_disabled;
 
 	remove_blindfold();
 
@@ -189,7 +191,7 @@ void playmp_controller::play_human_turn()
 
 void playmp_controller::play_idle_loop()
 {
-	LOG_NG << "playmp::play_human_turn...\n";
+	LOG_NG << "playmp::play_human_turn...";
 
 	remove_blindfold();
 
@@ -216,22 +218,20 @@ void playmp_controller::set_end_scenario_button()
 	}
 
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 }
 
 void playmp_controller::reset_end_scenario_button()
 {
 	// revert the end-turn button text to its normal label
 	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->invalidate_theme();
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 	gui_->set_game_mode(game_display::RUNNING);
 }
 
 void playmp_controller::linger()
 {
-	LOG_NG << "beginning end-of-scenario linger\n";
+	LOG_NG << "beginning end-of-scenario linger";
 	linger_ = true;
 
 	// If we need to set the status depending on the completion state
@@ -259,9 +259,9 @@ void playmp_controller::linger()
 			end_turn_ = END_TURN_NONE;
 			play_linger_turn();
 			after_human_turn();
-			LOG_NG << "finished human turn" << std::endl;
+			LOG_NG << "finished human turn";
 		} catch(const savegame::load_game_exception&) {
-			LOG_NG << "caught load-game-exception" << std::endl;
+			LOG_NG << "caught load-game-exception";
 			// this should not happen, the option to load a game is disabled
 			throw;
 		} catch(const leavegame_wesnothd_error& e) {
@@ -278,14 +278,14 @@ void playmp_controller::linger()
 			}
 			throw;
 		} catch(const ingame_wesnothd_error&) {
-			LOG_NG << "caught network-error-exception" << std::endl;
+			LOG_NG << "caught network-error-exception";
 			quit = false;
 		}
 	} while(!quit);
 
 	reset_end_scenario_button();
 
-	LOG_NG << "ending end-of-scenario linger\n";
+	LOG_NG << "ending end-of-scenario linger";
 }
 
 void playmp_controller::wait_for_upload()
@@ -338,7 +338,7 @@ void playmp_controller::after_human_turn()
 		resources::recorder->add_countdown_update(new_time, current_side());
 	}
 
-	LOG_NG << "playmp::after_human_turn...\n";
+	LOG_NG << "playmp::after_human_turn...";
 
 	// Normal post-processing for human turns (clear undos, end the turn, etc.)
 	playsingle_controller::after_human_turn();
@@ -349,7 +349,7 @@ void playmp_controller::after_human_turn()
 
 void playmp_controller::play_network_turn()
 {
-	LOG_NG << "is networked...\n";
+	LOG_NG << "is networked...";
 
 	end_turn_enable(false);
 	turn_data_.send_data();
@@ -368,7 +368,7 @@ void playmp_controller::play_network_turn()
 		}
 	}
 
-	LOG_NG << "finished networked...\n";
+	LOG_NG << "finished networked...";
 }
 
 void playmp_controller::process_oos(const std::string& err_msg) const
@@ -415,7 +415,6 @@ void playmp_controller::handle_generic_event(const std::string& name)
 		mp_info_->is_host = true;
 		if(linger_) {
 			end_turn_enable(true);
-			gui_->invalidate_theme();
 		}
 	}
 }
@@ -436,7 +435,7 @@ void playmp_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if(!get_end_level_data().transient.linger_mode || get_teams().empty() || gui_->video().faked()) {
+	if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless()) {
 		const bool has_next_scenario
 			= !gamestate().gamedata_.next_scenario().empty() && gamestate().gamedata_.next_scenario() != "null";
 		if(!is_host() && has_next_scenario) {

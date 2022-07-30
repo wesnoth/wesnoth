@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -57,6 +58,8 @@ class game_lua_kernel : public lua_kernel_base
 	tod_manager & tod_man();
 
 	config level_lua_;
+	int EVENT_TABLE;
+	bool has_preloaded_ = false;
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
@@ -74,6 +77,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_cancel_action(lua_State *);
 	int intf_add_time_area(lua_State *);
 	int intf_remove_time_area(lua_State *);
+	int intf_get_time_area(lua_State *);
 	int intf_animate_unit(lua_State *);
 	int intf_gamestate_inspector(lua_State *);
 	int impl_run_animation(lua_State *);
@@ -84,41 +88,40 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_match_unit(lua_State *L);
 	int intf_get_recall_units(lua_State *L);
 	int intf_get_variable(lua_State *L);
-	int intf_get_side_variable(lua_State *L);
 	int intf_set_variable(lua_State *L);
-	int intf_set_side_variable(lua_State *L);
 	int intf_highlight_hex(lua_State *L);
 	int intf_is_enemy(lua_State *L);
 	int intf_unit_ability(lua_State *L);
 	int intf_view_locked(lua_State *L);
 	int intf_lock_view(lua_State *L);
-	int intf_get_terrain(lua_State *L);
-	int intf_set_terrain(lua_State *L);
-	int intf_terrain_mask(lua_State *L);
-	int intf_get_terrain_info(lua_State *L);
+	int impl_get_terrain_info(lua_State *L);
+	template<bool consider_illuminates>
 	int intf_get_time_of_day(lua_State *L);
-	int intf_get_max_liminal_bonus(lua_State *L);
+	int impl_schedule_get(lua_State *L);
+	int impl_schedule_len(lua_State *L);
+	void luaW_push_schedule(lua_State* L, int area_index);
 	int intf_get_village_owner(lua_State *L);
 	int intf_set_village_owner(lua_State *L);
-	int intf_get_map_size(lua_State *L);
 	int intf_get_mouseover_tile(lua_State *L);
 	int intf_get_selected_tile(lua_State *L);
 	int impl_game_config_get(lua_State *L) override;
 	int impl_game_config_set(lua_State *L) override;
+	int impl_scenario_get(lua_State *L);
+	int impl_scenario_set(lua_State *L);
 	int impl_current_get(lua_State *L);
 	int intf_clear_messages(lua_State*);
-	int intf_end_level(lua_State*);
 	int impl_end_level_data_set(lua_State*);
-	int intf_get_end_level_data(lua_State*);
 	int intf_end_turn(lua_State*);
+	int intf_find_cost_map(lua_State *L);
 	int intf_find_path(lua_State *L);
 	int intf_find_reach(lua_State *L);
-	int intf_find_cost_map(lua_State *L);
+	int intf_find_vision_range(lua_State *L);
 	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
-	int intf_open_help(lua_State *L);
 	int intf_play_sound(lua_State *L);
-	int intf_print(lua_State *L);
+	int intf_set_floating_label(lua_State* L, bool spawn);
+	int intf_remove_floating_label(lua_State* L);
+	int intf_move_floating_label(lua_State* L);
 	void put_unit_helper(const map_location& loc);
 	int intf_put_unit(lua_State *L);
 	int intf_erase_unit(lua_State *L);
@@ -131,17 +134,15 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_clear_menu_item(lua_State *L);
 	int intf_create_side(lua_State *L);
 	int intf_set_menu_item(lua_State *L);
-	int intf_set_next_scenario(lua_State *L);
-	int intf_shroud_op(lua_State *L, bool place_shroud);
+	int intf_toggle_shroud(lua_State *L, bool place_shroud);
+	int intf_override_shroud(lua_State *L);
 	int intf_simulate_combat(lua_State *L);
 	int intf_scroll_to_tile(lua_State *L);
-	int intf_select_hex(lua_State *L);
 	int intf_select_unit(lua_State *L);
 	int intf_deselect_hex(lua_State *L);
 	int intf_is_skipping_messages(lua_State *L);
 	int intf_skip_messages(lua_State *L);
 	int intf_get_locations(lua_State *L);
-	int intf_get_villages(lua_State *L);
 	int intf_match_location(lua_State *L);
 	int intf_match_side(lua_State *L);
 	int intf_set_side_id(lua_State *L);
@@ -150,14 +151,21 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_side(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);
+	template<bool is_menu_item>
+	int intf_add_event_simple(lua_State* L);
+	int intf_add_event_wml(lua_State* L);
 	int intf_add_event(lua_State *L);
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
+	int intf_get_color_adjust(lua_State *L);
+	int intf_screen_fade(lua_State *L);
 	int intf_delay(lua_State *L);
-	int intf_label(lua_State *L);
+	int intf_add_label(lua_State *L);
+	int intf_remove_label(lua_State *L);
+	int intf_get_label(lua_State* L);
 	int intf_redraw(lua_State *L);
 	int intf_replace_schedule(lua_State *l);
-	int intf_set_time_of_day(lua_State *L);
+	int impl_schedule_set(lua_State *L);
 	int intf_scroll(lua_State *L);
 	int intf_get_all_vars(lua_State *L);
 	int impl_theme_item(lua_State *L, std::string name);
@@ -168,9 +176,6 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_fire_event(lua_State *L, const bool by_id);
 	int intf_fire_wml_menu_item(lua_State *L);
 	int intf_teleport(lua_State *L);
-	int intf_remove_sound_source(lua_State *L);
-	int intf_add_sound_source(lua_State *L);
-	int intf_get_sound_source(lua_State *L);
 	int intf_log(lua_State *L);
 	int intf_toggle_fog(lua_State *L, const bool clear);
 	int intf_get_fog_or_shroud(lua_State *L, bool fog);
@@ -218,6 +223,42 @@ public:
 	bool run_filter(char const *name, const team& t);
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, const vconfig&);
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Uses a default function that interprets ActionWML.
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event();
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Compiles the function from the given code.
+	 * @param name The event name, used to generate a chunk name for the compiled function
+	 * @param id The event id, used to generate a chunk name for the compiled function
+	 * @param code The actual code of the function
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event(const std::string& name, const std::string& id, const std::string& code);
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Uses the function at the specified Lua stack index.
+	 * @param idx The Lua stack index of the function to store
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event(int idx);
+	/**
+	 * Clear a WML event store in the Lua registry.
+	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
+	 */
+	void clear_wml_event(int ref);
+	/**
+	 * Run a WML stored in the Lua registry.
+	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
+	 * @param args Arguments to pass to the event function, as a config
+	 * @param ev The event data for the event being fired
+	 * @param out If non-null, receives the result of the called function (provided it is a boolean value)
+	 * @return Whether the function was successfully called; could be false if @a ref was invalid or if the function raised an error
+	 */
+	bool run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev, bool* out = nullptr);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 
@@ -226,4 +267,5 @@ public:
 
 	void mouse_over_hex_callback(const map_location& loc);
 	void select_hex_callback(const map_location& loc);
+	void preload_finished() {has_preloaded_ = true;}
 };

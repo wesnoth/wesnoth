@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2006 - 2018 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -20,9 +21,8 @@
 #include "halo.hpp"
 #include "units/frame.hpp"
 #include "units/ptr.hpp"
-#include "utils/make_enum.hpp"
+#include "units/strike_result.hpp"
 
-class display;
 class unit;
 
 class unit_animation
@@ -33,17 +33,12 @@ public:
 
 	enum variation_type {MATCH_FAIL = -10 , DEFAULT_ANIM = -9};
 
-	MAKE_ENUM(hit_type,
-		(HIT, "hit")
-		(MISS, "miss")
-		(KILL, "kill")
-		(INVALID, "invalid")
-	);
-
 	static void fill_initial_animations(std::vector<unit_animation>& animations, const config& cfg);
 	static void add_anims(std::vector<unit_animation>& animations, const config& cfg);
 
-	int matches(const display& disp, const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "", const int value = 0, hit_type hit = hit_type::INVALID, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr, int value2 = 0) const;
+	int matches(const map_location& loc, const map_location& second_loc, unit_const_ptr my_unit, const std::string& event = "",
+		const int value = 0, strike_result::type hit = strike_result::type::invalid, const_attack_ptr attack = nullptr, const_attack_ptr second_attack = nullptr,
+		int value2 = 0) const;
 
 	const unit_frame& get_last_frame() const
 	{
@@ -180,7 +175,7 @@ private:
 	std::vector<int> value_;
 	std::vector<config> primary_attack_filter_;
 	std::vector<config> secondary_attack_filter_;
-	std::vector<hit_type> hits_;
+	std::vector<strike_result::type> hits_;
 	std::vector<int> value2_;
 	std::map<std::string,particle> sub_anims_;
 	particle unit_anim_;
@@ -216,11 +211,32 @@ public:
 		, bool with_bars = false
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
-		, const unit_animation::hit_type hit_type =
-			unit_animation::hit_type::INVALID
+		, const strike_result::type hit_type = strike_result::type::invalid
 		, const_attack_ptr attack = nullptr
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);
+
+	/** has_animation : return an boolean value if animated unit present and have animation specified, used for verify prensence of [leading_anim] or [resistance_anim] for playability of [teaching_anim]
+	 * @return True if the  @a animated_unit is present and have animation.
+	 * @param animated_unit the unit who is checked.
+	 * @param event the animation who is checked([leading_anim] or [resistance_anim].
+	 * @param src the location of animated_unit.
+	 * @param dst location of unit student(attacker or defender).
+	 * @param value value of damage.
+	 * @param hit_type type of damage inflicted.
+	 * @param attack weapon used by student.
+	 * @param second_attack weapon used by opponent.
+	 * @param value2 i don't understand myself.but this value is used in choose_animation.
+	 */
+	bool has_animation(unit_const_ptr animated_unit
+		, const std::string& event
+		, const map_location& src = map_location::null_location()
+		, const map_location& dst = map_location::null_location()
+		, const int value = 0
+		, const strike_result::type hit_type = strike_result::type::invalid
+		, const_attack_ptr attack = nullptr
+		, const_attack_ptr second_attack = nullptr
+		, int value2 = 0) const;
 
 	void replace_anim_if_invalid(unit_const_ptr animated_unit
 		, const std::string& event
@@ -230,7 +246,7 @@ public:
 		, bool with_bars = false
 		, const std::string& text = ""
 		, const color_t text_color = {0,0,0}
-		, const unit_animation::hit_type hit_type = unit_animation::hit_type::INVALID
+		, const strike_result::type hit_type = strike_result::type::invalid
 		, const_attack_ptr attack = nullptr
 		, const_attack_ptr second_attack = nullptr
 		, int value2 = 0);

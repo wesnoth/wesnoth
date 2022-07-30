@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -38,16 +39,16 @@ class tree_view_node;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A tree view is a control that holds several items of the same or different types.
  * The items shown are called tree view nodes and when a node has children, these can be shown or hidden.
  * Nodes that contain children need to provide a clickable button in order to fold or unfold the children.
- * 
+ *
  * The following states exist:
  * * state_enabled - the listbox is enabled.
  * * state_disabled - the listbox is disabled.
  * List with the tree view specific variables:
- * Key                      |Type                                            |Default     |Description  
+ * Key                      |Type                                            |Default     |Description
  * -------------------------|------------------------------------------------|------------|-------------
  * vertical_scrollbar_mode  | @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
  * horizontal_scrollbar_mode| @ref guivartype_scrollbar_mode "scrollbar_mode"|initial_auto|Determines whether or not to show the scrollbar.
@@ -59,6 +60,7 @@ class tree_view_node;
 class tree_view : public scrollbar_container
 {
 	friend struct implementation::builder_tree_view;
+	friend struct implementation::tree_node;
 	friend class tree_view_node;
 
 public:
@@ -75,10 +77,8 @@ public:
 		return *root_node_;
 	}
 
-	tree_view_node&
-	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data,
-			 const int index = -1);
+	tree_view_node& add_node(
+		const std::string& id, const widget_data& data, const int index = -1);
 
 	/**
 	 * Removes the given node as a child of its parent node.
@@ -88,14 +88,9 @@ public:
 	 * @returns         A pair consisting of a smart pointer managing the removed
 	 *                  node, and its position before removal.
 	 */
-	std::pair<tree_view_node::ptr_t, int> remove_node(tree_view_node* node);
+	std::pair<std::shared_ptr<tree_view_node>, int> remove_node(tree_view_node* node);
 
 	void clear();
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
 
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
@@ -141,7 +136,10 @@ protected:
 
 	/** Inherited from scrollbar_container. */
 	void handle_key_right_arrow(SDL_Keymod modifier, bool& handled) override;
+
 private:
+	static inline const std::string root_node_id = "root";
+
 	/**
 	 * @todo evaluate which way the dependency should go.
 	 *
@@ -172,8 +170,8 @@ private:
 	 *                            * negative values reduce height.
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
-	 * @param width_modification_pos 
-	 * @param height_modification_pos 
+	 * @param width_modification_pos
+	 * @param height_modification_pos
 	 */
 	void resize_content(const int width_modification,
 						const int height_modification,
@@ -189,6 +187,14 @@ private:
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
+
+	/** Optionally returns the node definition with the given id, or nullopt if not found. */
+	std::optional<decltype(node_definitions_)::const_iterator> get_node_definition(const std::string& id) const
+	{
+		const auto def = std::find_if(
+			node_definitions_.begin(), node_definitions_.end(), [&id](const auto& d) { return d.id == id; });
+		return def != node_definitions_.end() ? std::optional{def} : std::nullopt;
+	}
 
 private:
 	/** Inherited from styled_widget, implemented by REGISTER_WIDGET. */
@@ -231,7 +237,7 @@ struct builder_tree_view : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

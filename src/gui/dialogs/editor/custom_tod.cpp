@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
@@ -32,9 +33,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 static custom_tod::string_pair tod_getter_image(const time_of_day& tod)
@@ -223,9 +222,9 @@ void custom_tod::color_slider_callback()
 {
 	time_of_day& current_tod = times_[current_tod_];
 
-	current_tod.color.r = color_field_r_->get_widget_value(*get_window());
-	current_tod.color.g = color_field_g_->get_widget_value(*get_window());
-	current_tod.color.b = color_field_b_->get_widget_value(*get_window());
+	current_tod.color.r = color_field_r_->get_widget_value();
+	current_tod.color.g = color_field_g_->get_widget_value();
+	current_tod.color.b = color_field_b_->get_widget_value();
 
 	update_tod_display();
 }
@@ -235,30 +234,11 @@ void custom_tod::update_tod_display()
 	display* disp = display::get_singleton();
 	assert(disp && "Display pointer is null!");
 
-	// Prevent a floating slice of window appearing alone over the
-	// theme UI sidebar after redrawing tiles and before we have a
-	// chance to redraw the rest of this window.
-	get_window()->undraw();
-
-	// NOTE: We only really want to re-render the gamemap tiles here.
-	// Redrawing everything is a significantly more expensive task.
-	// At this time, tiles are the only elements on which ToD tint is
-	// meant to have a visible effect. This is very strongly tied to
-	// the image caching mechanism.
-	//
-	// If this ceases to be the case in the future, you'll need to call
-	// redraw_everything() instead.
-
+	// The display handles invaliding whatever tiles need invalidating.
 	disp->update_tod(&get_selected_tod());
 
-	// invalidate all tiles so they are redrawn with the new ToD tint next
-	disp->invalidate_all();
-
-	// redraw tiles
-	disp->draw(false);
-
 	// NOTE: revert to invalidate_layout if necessary to display the ToD mask image.
-	get_window()->set_is_dirty(true);
+	get_window()->queue_redraw();
 }
 
 void custom_tod::update_lawful_bonus()
@@ -282,9 +262,9 @@ void custom_tod::update_selected_tod_info()
 
 	find_widget<slider>(get_window(), "lawful_bonus", false).set_value(current_tod.lawful_bonus);
 
-	color_field_r_->set_widget_value(*get_window(), current_tod.color.r);
-	color_field_g_->set_widget_value(*get_window(), current_tod.color.g);
-	color_field_b_->set_widget_value(*get_window(), current_tod.color.b);
+	color_field_r_->set_widget_value(current_tod.color.r);
+	color_field_g_->set_widget_value(current_tod.color.g);
+	color_field_b_->set_widget_value(current_tod.color.b);
 
 	const std::string new_index_str = formatter() << (current_tod_ + 1) << "/" << times_.size();
 	find_widget<label>(get_window(), "tod_number", false).set_label(new_index_str);
@@ -307,4 +287,3 @@ void custom_tod::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

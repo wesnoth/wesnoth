@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "gui/dialogs/addon/uninstall_list.hpp"
@@ -23,17 +24,13 @@
 
 #include <algorithm>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(addon_uninstall_list)
 
 void addon_uninstall_list::pre_show(window& window)
 {
-	set_restore(true);
-
 	listbox& list = find_widget<listbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);
 
@@ -47,8 +44,8 @@ void addon_uninstall_list::pre_show(window& window)
 		this->ids_.push_back(id);
 		this->selections_[id] = false;
 
-		std::map<std::string, string_map> data;
-		string_map column;
+		widget_data data;
+		widget_item column;
 
 		column["label"] = title;
 		data.emplace("name", column);
@@ -91,4 +88,3 @@ std::vector<std::string> addon_uninstall_list::selected_addons() const
 }
 
 } // namespace dialogs
-} // namespace gui2

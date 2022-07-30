@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2018 wesnoth "Battle for Wesnoth"
+.TH WESNOTH 6 2021 wesnoth "Battle for Wesnoth"
 .
 .SH NAME
 wesnoth \- Battle for Wesnoth, a turn\-based fantasy strategy game
@@ -96,6 +96,9 @@ mode).
 \fB\-\-debug\-lua\fP
 enables some Lua debugging mechanisms
 .TP 
+\fB\-\-strict\-lua\fP
+disallow deprecated Lua API calls
+.TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 compares the two WML files; does not pre\-process them first (to do that, run
 them through \fB\-p\fP first). Outputs the difference as DiffWML on standard
@@ -106,8 +109,9 @@ start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
 to \fB\-l\fP \fB\-\-load\fP.
 .TP 
 \fB\-\-fps\fP
-displays the number of frames per second the game is currently running at,
-in a corner of the screen.
+displays the number of frames per second the game is currently running at in
+a corner of the screen as well as writes these values to a file in the
+user\-data directory.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 runs the game in full screen mode.
@@ -127,7 +131,7 @@ displays a summary of command line options to standard output, and exits.
 loads the savegame \fIfile\fP from the standard save game directory. If the
 \fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
 from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+map dialogue opened there.
 .TP 
 \fB\-L,\ \-\-language\fP\fI\ lang\fP
 uses language \fIlang\fP (symbol) this session.  Example: \fB\-\-language
@@ -180,6 +184,9 @@ disables caching of game data.
 \fB\-\-nogui\fP
 runs the game without the GUI. Only available in combination with
 \fB\-\-multiplayer\fP or \fB\-\-screenshot\fP or \fB\-\-plugin\fP.
+.TP 
+\fB\-\-nobanner\fP
+suppress the start\-up banner.
 .TP 
 \fB\-\-nomusic\fP
 runs the game without music.
@@ -330,6 +337,9 @@ assumes that the cache is valid. (dangerous)
 \fB\-v, \-\-version\fP
 shows the version number and exits.
 .TP 
+\fB\-\-simple\-version\fP
+shows the version number and nothing else, then exits.
+.TP 
 \fB\-w, \-\-windowed\fP
 runs the game in windowed mode.
 .TP 
@@ -419,7 +429,7 @@ Visit the official homepage: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2018 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 This is Free Software; this software is licensed under the GPL version 2, as
 published by the Free Software Foundation.  There is NO warranty; not even

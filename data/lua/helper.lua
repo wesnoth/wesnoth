@@ -1,5 +1,7 @@
 --! #textdomain wesnoth
 
+wesnoth.deprecated_message('helper.lua', 3, '1.19', 'Everything in this module has been moved into the core modules')
+
 local helper = {}
 
 local wml_actions = wesnoth.wml_actions
@@ -44,7 +46,8 @@ end
 local fire_action_mt = {
 	__metatable = "WML actions",
 	__index = function(t, n)
-		return function(cfg) wesnoth.fire(n, cfg) end
+		wesnoth.deprecated_message('helper.set_wml_action_metatable', 3, '1.19', 'Use wml.fire instead - wml.fire.tag_name(arguments)')
+		return function(cfg) wml.fire(n, cfg) end
 	end
 }
 
@@ -72,132 +75,17 @@ end
 -- Not deprecated because, unlike wesnoth.map.get_adjacent_tiles,
 -- this verifies that the locations are on the map.
 function helper.adjacent_tiles(x, y, with_borders)
-	local x1,y1,x2,y2,b = 1,1,wesnoth.get_map_size()
-	if with_borders then
-		x1 = x1 - b
-		y1 = y1 - b
-		x2 = x2 + b
-		y2 = y2 + b
-	end
-	local adj = {wesnoth.map.get_adjacent_tiles(x, y)}
+	local adj = {wesnoth.map.get_adjacent_hexes(x, y)}
 	local i = 0
 	return function()
 		while i < #adj do
 			i = i + 1
 			local u, v = adj[i][1], adj[i][2]
-			if u >= x1 and u <= x2 and v >= y1 and v <= y2 then
+			if wesnoth.current.map:on_board(u, v, with_borders) then
 				return u, v
 			end
 		end
 		return nil
-	end
-end
-
-function helper.rand (possible_values, random_func)
-	random_func = random_func or wesnoth.random
-	assert(type(possible_values) == "table" or type(possible_values) == "string",
-		string.format("helper.rand expects a string or table as parameter, got %s instead",
-		type(possible_values)))
-
-	local items = {}
-	local num_choices = 0
-
-	if type(possible_values) == "string" then
-		-- split on commas
-		for word in possible_values:gmatch("[^,]+") do
-			-- does the word contain two dots? If yes, that's a range
-			local dots_start, dots_end = word:find("%.%.")
-			if dots_start then
-				-- split on the dots if so and cast as numbers
-				local low = tonumber(word:sub(1, dots_start-1))
-				local high = tonumber(word:sub(dots_end+1))
-				-- perhaps someone passed a string as part of the range, intercept the issue
-				if not (low and high) then
-					wesnoth.message("Malformed range: " .. possible_values)
-					table.insert(items, word)
-					num_choices = num_choices + 1
-				else
-					if low > high then
-						-- low is greater than high, swap them
-						low, high = high, low
-					end
-
-					-- if both ends represent the same number, then just use that number
-					if low == high then
-						table.insert(items, low)
-						num_choices = num_choices + 1
-					else
-						-- insert a table representing the range
-						table.insert(items, {low, high})
-						-- how many items does the range contain? Increase difference by 1 because we include both ends
-						num_choices = num_choices + (high - low) + 1
-					end
-				end
-			else
-				-- handle as a string
-				table.insert(items, word)
-				num_choices = num_choices + 1
-			end
-		end
-	else
-		num_choices = #possible_values
-		items = possible_values
-		-- We need to parse ranges separately anyway
-		for i, val in ipairs(possible_values) do
-			if type(val) == "table" then
-				assert(#val == 2 and type(val[1]) == "number" and type(val[2]) == "number", "Malformed range for helper.rand")
-				if val[1] > val[2] then
-					val = {val[2], val[1]}
-				end
-				num_choices = num_choices + (val[2] - val[1])
-			end
-		end
-	end
-
-	local idx = random_func(1, num_choices)
-
-	for i, item in ipairs(items) do
-		if type(item) == "table" then -- that's a range
-			local elems = item[2] - item[1] + 1 -- amount of elements in the range, both ends included
-			if elems >= idx then
-				return item[1] + elems - idx
-			else
-				idx = idx - elems
-			end
-		else -- that's a single element
-			idx = idx - 1
-			if idx == 0 then
-				return item
-			end
-		end
-	end
-
-	return nil
-end
-
-function helper.round( number )
-	-- code converted from util.hpp, round_portable function
-	-- round half away from zero method
-	if number >= 0 then
-		number = math.floor( number + 0.5 )
-	else
-		number = math.ceil ( number - 0.5 )
-	end
-
-	return number
-end
-
-function helper.shuffle( t, random_func )
-	random_func = random_func or wesnoth.random
-	-- since tables are passed by reference, this is an in-place shuffle
-	-- it uses the Fisher-Yates algorithm, also known as Knuth shuffle
-	assert(
-		type( t ) == "table",
-		string.format( "helper.shuffle expects a table as parameter, got %s instead", type( t ) ) )
-	local length = #t
-	for index = length, 2, -1 do
-		local random = random_func( 1, index )
-		t[index], t[random] = t[random], t[index]
 	end
 end
 
@@ -224,5 +112,11 @@ helper.shallow_parsed = wesnoth.deprecate_api('helper.shallow_parsed', 'wml.shal
 helper.set_wml_var_metatable = wesnoth.deprecate_api('helper.set_wml_var_metatable', 'wml.variable.proxy', 2, nil, helper.set_wml_var_metatable)
 helper.set_wml_tag_metatable = wesnoth.deprecate_api('helper.set_wml_tag_metatable', 'wml.tag', 2, nil, helper.set_wml_tag_metatable)
 helper.get_user_choice = wesnoth.deprecate_api('helper.get_user_choice', 'gui.get_user_choice', 1, nil, gui.get_user_choice)
+helper.rand = wesnoth.deprecate_api('helper.rand', 'mathx.random_choice', 1, nil, mathx.random_choice)
+helper.round = wesnoth.deprecate_api('helper.round', 'mathx.round', 1, nil, mathx.round)
+helper.shuffle = wesnoth.deprecate_api('helper.shuffle', 'mathx.shuffle', 1, nil, mathx.shuffle)
+helper.all_teams = wesnoth.deprecate_api('helper.all_teams', 'wesnoth.sides.iter', 1, nil, helper.all_teams)
+helper.get_sides = wesnoth.deprecate_api('helper.get_sides', 'wesnoth.sides.iter', 1, nil, helper.get_sides)
+helper.adjacent_tiles = wesnoth.deprecate_api('helper.adjacent_tiles', 'wesnoth.map.iter_adjacent', 1, nil, helper.adjacent_tiles)
 
 return helper

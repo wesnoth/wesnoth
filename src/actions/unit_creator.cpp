@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -103,7 +104,7 @@ unit_creator& unit_creator::allow_add_to_recall(bool b)
 map_location unit_creator::find_location(const config &cfg, const unit* pass_check)
 {
 
-	DBG_NG << "finding location for unit with id=["<<cfg["id"]<<"] placement=["<<cfg["placement"]<<"] x=["<<cfg["x"]<<"] y=["<<cfg["y"]<<"] for side " << team_.side() << "\n";
+	DBG_NG << "finding location for unit with id=["<<cfg["id"]<<"] placement=["<<cfg["placement"]<<"] x=["<<cfg["x"]<<"] y=["<<cfg["y"]<<"] for side " << team_.side();
 
 	std::vector<std::string> placements = utils::split(cfg["placement"]);
 
@@ -187,13 +188,13 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		if ( loc.valid() ) {
 			//add the new unit to map
 			board_->units().replace(loc, new_unit);
-			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
+			LOG_NG << "inserting unit for side " << new_unit->side();
 			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 		}
 		else if ( add_to_recall_ ) {
 			//add to recall list
 			team_.recall_list().add(new_unit);
-			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
+			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side();
 			preferences::encountered_units().insert(new_unit->type_id());
 		}
 	} else {
@@ -201,13 +202,13 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		map_location loc = find_location(temp_cfg, recall_list_element.get());
 		if ( loc.valid() ) {
 			board_->units().replace(loc, recall_list_element);
-			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
+			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id;
 			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 			//if id is not empty, delete units with this ID from recall list
 			team_.recall_list().erase_if_matches_id( id);
 		}
 		else if ( add_to_recall_ ) {
-			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
+			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id;
 			return;
 		}
 	}

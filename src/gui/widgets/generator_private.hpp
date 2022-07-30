@@ -1,21 +1,23 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 #include "gui/widgets/generator.hpp"
 
+#include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -510,7 +512,7 @@ struct selection : public virtual generator_base
 	 *                            in the grid is (de)selected.
 	 */
 	void init(grid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const std::function<void(widget&)>& callback);
 };
 
@@ -533,7 +535,7 @@ struct show : public virtual generator_base
 	 *                            should be nullptr.
 	 */
 	void init(grid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const std::function<void(widget&)>& callback);
 };
 
@@ -716,10 +718,10 @@ public:
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
 			const builder_grid& list_builder,
-			const string_map& item_data,
+			const widget_item& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 
 		data.emplace("", item_data);
 		return create_item(index, list_builder, data, callback);
@@ -728,13 +730,13 @@ public:
 	/** Inherited from generator_base. */
 	grid& create_item(const int index,
 			const builder_grid& list_builder,
-			const std::map<std::string /* widget id */, string_map>& item_data,
+			const widget_data& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
 		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
 
 		child* item = new child;
-		list_builder.build(&item->child_grid);
+		list_builder.build(item->child_grid);
 
 		init(&item->child_grid, item_data, callback);
 
@@ -758,7 +760,7 @@ public:
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
 			const builder_grid& list_builder,
-			const std::vector<std::map<std::string /*widget id*/, string_map>>& data,
+			const std::vector<widget_data>& data,
 			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
@@ -767,7 +769,7 @@ public:
 	/** Inherited from generator_base. */
 	virtual void create_items(const int index,
 			const builder_grid& list_builder,
-			const std::vector<string_map>& data,
+			const std::vector<widget_item>& data,
 			const std::function<void(widget&)>& callback) override
 	{
 		impl_create_items(index, list_builder, data, callback);
@@ -826,7 +828,7 @@ public:
 	}
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer, int x_offset, int y_offset) override
+	virtual void impl_draw_children() override
 	{
 		assert(this->get_visible() == widget::visibility::visible);
 
@@ -836,17 +838,8 @@ public:
 			child* item = items_[index].get();
 
 			if(item->child_grid.get_visible() == widget::visibility::visible && item->shown) {
-				item->child_grid.draw_children(frame_buffer, x_offset, y_offset);
+				item->child_grid.draw_children();
 			}
-		}
-	}
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack) override
-	{
-		for(auto& item : items_) {
-			std::vector<widget*> child_call_stack = call_stack;
-			item->child_grid.populate_dirty_list(caller, child_call_stack);
 		}
 	}
 
@@ -879,7 +872,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
+	virtual iteration::walker_ptr create_walker() override
 	{
 		return nullptr;
 	}
@@ -983,25 +976,8 @@ private:
 	{
 		order_func_ = order;
 		order_dirty_ = true;
-		this->set_is_dirty(true);
+		this->queue_redraw();
 	}
-
-	struct calculate_order_helper
-	{
-		const order_func& order_func_;
-		const child_list& items_;
-
-		calculate_order_helper(const order_func& order_func, const child_list& items)
-			: order_func_(order_func)
-			, items_(items)
-		{
-		}
-
-		bool operator()(std::size_t a, std::size_t b)
-		{
-			return order_func_(a, b);
-		}
-	};
 
 	virtual unsigned get_ordered_index(unsigned index) const override
 	{
@@ -1029,7 +1005,7 @@ private:
 			}
 
 			if(order_func_) {
-				std::stable_sort(order_.begin(), order_.end(), calculate_order_helper(order_func_, items_));
+				std::stable_sort(order_.begin(), order_.end(), order_func_);
 			}
 
 			for(std::size_t i = 0; i < order_.size(); ++i) {
@@ -1098,8 +1074,7 @@ private:
 	 * @param callback            The callback function to call when an item
 	 *                            in the grid is (de)selected.
 	 */
-	void init(grid* grid,
-			const std::map<std::string /* widget id */, string_map>& data,
+	void init(grid* grid, const widget_data& data,
 			const std::function<void(widget&)>& callback)
 	{
 		assert(grid);

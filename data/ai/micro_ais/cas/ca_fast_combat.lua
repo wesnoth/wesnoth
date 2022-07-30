@@ -58,7 +58,7 @@ function ca_fast_combat:evaluation(cfg, data)
     end
 
     -- Exclude hidden enemies, except if attack_hidden_enemies=yes is set in [micro_ai] tag
-    local viewing_side = wesnoth.current.side
+    local viewing_side, ignore_visibility = wesnoth.current.side, false
     if (not cfg.attack_hidden_enemies) then
         local hidden_enemies = AH.get_live_units {
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
@@ -69,7 +69,7 @@ function ca_fast_combat:evaluation(cfg, data)
             enemy_map:remove(e.x, e.y)
         end
     else
-        viewing_side = 0
+        ignore_visibility = true
     end
 
     local aggression = ai.aspects.aggression
@@ -84,10 +84,10 @@ function ca_fast_combat:evaluation(cfg, data)
         if unit and unit.valid and (unit.attacks_left > 0) and (#unit.attacks > 0) then
             local unit_info = FAU.get_unit_info(unit, gamedata)
             local unit_copy = FAU.get_unit_copy(unit.id, gamedata)
-            local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side })
+            local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side, ignore_visibility = ignore_visibility })
 
             if (#attacks > 0) then
-                local max_rating, best_target, best_dst = - math.huge
+                local max_rating, best_target, best_dst = - math.huge, nil, nil
                 for _,attack in ipairs(attacks) do
                     if enemy_map:get(attack.target.x, attack.target.y)
                         and (not avoid_map:get(attack.dst.x, attack.dst.y))

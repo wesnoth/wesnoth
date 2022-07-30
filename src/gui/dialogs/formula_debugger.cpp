@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -26,9 +27,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(formula_debugger)
@@ -47,8 +46,8 @@ void formula_debugger::pre_show(window& window)
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
-		stack_text << "#<span color=\"green\">" << i.counter()
-				   << "</span>: \"<span color=\"green\">" << font::escape_text(i.name())
+		stack_text << "#<span color=\"#00ff00\">" << i.counter()
+				   << "</span>: \"<span color=\"#00ff00\">" << font::escape_text(i.name())
 				   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		++c;
 	}
@@ -69,14 +68,14 @@ void formula_debugger::pre_show(window& window)
 			execution_text << indent;
 		}
 		if(!i.evaluated()) {
-			execution_text << "#<span color=\"green\">" << i.counter()
-						   << "</span>: \"<span color=\"green\">" << font::escape_text(i.name())
+			execution_text << "#<span color=\"#00ff00\">" << i.counter()
+						   << "</span>: \"<span color=\"#00ff00\">" << font::escape_text(i.name())
 						   << "</span>\": (" << font::escape_text(i.str()) << ") " << std::endl;
 		} else {
-			execution_text << "#<span color=\"yellow\">" << i.counter()
-						   << "</span>: \"<span color=\"yellow\">" << font::escape_text(i.name())
+			execution_text << "#<span color=\"#ffff00\">" << i.counter()
+						   << "</span>: \"<span color=\"#ffff00\">" << font::escape_text(i.name())
 						   << "</span>\": (" << font::escape_text(i.str()) << ") = "
-						   << "<span color=\"orange\">"
+						   << "<span color=\"#ffa500\">"
 						   << font::escape_text(i.value().to_debug_string())
 						   << "</span>" << std::endl;
 		}
@@ -153,4 +152,3 @@ void formula_debugger::callback_stepout_button()
 }
 
 } // namespace dialogs
-} // namespace gui2

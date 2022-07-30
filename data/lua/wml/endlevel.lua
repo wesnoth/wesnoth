@@ -3,20 +3,23 @@ local already_ended = false
 function wesnoth.wml_actions.endlevel(cfg)
 	local parsed = wml.parsed(cfg)
 	if already_ended then
-		wesnoth.message("Repeated [endlevel] execution, ignoring")
+		wesnoth.interface.add_chat_message("Repeated [endlevel] execution, ignoring")
 		return
 	end
 	already_ended = true
 
 	local next_scenario = cfg.next_scenario
 	if next_scenario then
-		wesnoth.game_config.next_scenario = next_scenario
+		wesnoth.scenario.next = next_scenario
 	end
 
 	local end_text = cfg.end_text
 	local end_text_duration = cfg.end_text_duration
-	if end_text or end_text_duration then
-		wesnoth.set_end_campaign_text(end_text or "", end_text_duration)
+	if end_text then
+		wesnoth.scenario.end_text = end_text
+	end
+	if end_text_duration then
+		wesnoth.scenario.end_text_duration = end_text_duration
 	end
 
 	local end_credits = cfg.end_credits
@@ -86,13 +89,13 @@ function wesnoth.wml_actions.endlevel(cfg)
 	if cfg.music then
 		local music = cfg.music:split()
 		if victory then
-			wesnoth.game_config.victory_music = music
+			wesnoth.scenario.victory_music = music
 		else
-			wesnoth.game_config.defeat_music = music
+			wesnoth.scenario.defeat_music = music
 		end
 	end
 
-	wesnoth.end_level {
+	wesnoth.scenario.end_level_data = {
 		carryover_report = cfg.carryover_report,
 		save = cfg.save,
 		replay_save = cfg.replay_save,

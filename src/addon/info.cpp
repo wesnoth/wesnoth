@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/info.hpp"
@@ -31,7 +32,7 @@ namespace {
 	{
 		addons_list::const_iterator it = addons.find(base_id);
 		if(it == addons.end()) {
-			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list\n";
+			LOG_AC << "resolve_deps_recursive(): " << base_id << " not in add-ons list";
 			return;
 		}
 
@@ -43,10 +44,10 @@ namespace {
 
 		for(const std::string& dep : base_deps) {
 			if(base_id == dep) {
-				LOG_AC << dep << " depends upon itself; breaking circular dependency\n";
+				LOG_AC << dep << " depends upon itself; breaking circular dependency";
 				continue;
 			} else if(dest.find(dep) != dest.end()) {
-				LOG_AC << dep << " already in dependency tree; breaking circular dependency\n";
+				LOG_AC << dep << " already in dependency tree; breaking circular dependency";
 				continue;
 			}
 
@@ -233,12 +234,12 @@ std::string addon_info::display_icon() const
 	std::string ret = icon;
 
 	if(ret.empty()) {
-		ERR_AC << "add-on '" << id << "' doesn't have an icon path set" << std::endl;
+		ERR_AC << "add-on '" << id << "' doesn't have an icon path set";
 	} else if(!image::exists(ret)) {
-		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'" << std::endl;
+		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful
-		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications\n";
+		LOG_AC << "add-on '" << id << "' uses a unit baseframe as icon without TC/RC specifications";
 		ret += "~RC(magenta>red)";
 	}
 
@@ -283,7 +284,7 @@ std::set<std::string> addon_info::resolve_dependencies(const addons_list& addons
 	resolve_deps_recursive(addons, id, deps);
 
 	if(deps.find(id) != deps.end()) {
-		LOG_AC << id << " depends upon itself; breaking circular dependency\n";
+		LOG_AC << id << " depends upon itself; breaking circular dependency";
 		deps.erase(id);
 	}
 
@@ -300,7 +301,7 @@ void read_addons_list(const config& cfg, addons_list& dest)
 	for(const config& addon_cfg : addon_cfgs) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
-			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;
+			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them";
 			continue;
 		}
 		dest[id].read(addon_cfg);

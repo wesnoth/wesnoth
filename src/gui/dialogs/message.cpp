@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -66,8 +67,6 @@ struct message_implementation
 
 void message::pre_show(window& window)
 {
-	set_restore(true);
-
 	// ***** Validate the required buttons ***** ***** ***** *****
 	message_implementation::init_button(window, buttons_[left_1], "left_side");
 	message_implementation::init_button(window, buttons_[cancel], "cancel");
@@ -205,7 +204,7 @@ int show_message(const std::string& title,
 void show_error_message(const std::string& msg,
 						bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general()) << msg << '\n';
+	LOG_STREAM(err, lg::general()) << msg;
 	(void) show_message(
 				 _("Error"),
 				 msg,

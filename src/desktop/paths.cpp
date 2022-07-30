@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2016 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -68,7 +69,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 			std::string u8drive = "A:";
 			u8drive[0] += n;
 
-			LOG_DU << "enumerate_win32_drives(): " << u8drive << " is reported to be present\n";
+			LOG_DU << "enumerate_win32_drives(): " << u8drive << " is reported to be present";
 
 			wchar_t drive[] = L"A:\\";
 			drive[0] += n;
@@ -79,7 +80,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 			if(GetVolumeInformation(drive, label, label_bufsize, nullptr, nullptr, nullptr, nullptr, 0) == 0) {
 				// Probably an empty removable drive, just ignore it and carry on.
 				const DWORD err = GetLastError();
-				LOG_DU << "enumerate_win32_drives(): GetVolumeInformation() failed (" << err << ")\n";
+				LOG_DU << "enumerate_win32_drives(): GetVolumeInformation() failed (" << err << ")";
 				continue;
 			}
 
@@ -110,14 +111,14 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 		bsys::error_code e;
 		try {
 			if(bfs::is_directory(mnt, e) && !bfs::is_empty(mnt, e) && !e) {
-				DBG_DU << "enumerate_mount_parents(): " << mnt << " appears to be a non-empty dir\n";
+				DBG_DU << "enumerate_mount_parents(): " << mnt << " appears to be a non-empty dir";
 				res.push_back({mnt, "", mnt});
 			}
 		}
 		catch(...) {
 			//bool is_empty(const path& p, system::error_code& ec) might throw.
 			//For example if you have no permission on that directory. Don't list the file in that case.
-			DBG_DU << "caught exception in enumerate_storage_devices\n";
+			DBG_DU << "caught exception in enumerate_storage_devices";
 		}
 	}
 

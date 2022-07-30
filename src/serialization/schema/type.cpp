@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Sytyi Nick <nsytyi@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Sytyi Nick <nsytyi@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -21,6 +22,29 @@
 
 #include "config.hpp"
 #include <optional>
+
+struct is_translatable
+{
+	bool empty;
+	is_translatable(bool b) : empty(b) {}
+	bool operator()(const std::string& str) const
+	{
+		return str.empty() ? empty : false;
+	}
+	bool operator()(const t_string&) const
+	{
+		return true;
+	}
+	bool operator()(const std::monostate&) const
+	{
+		return true;
+	}
+	template<typename T>
+	bool operator()(const T&) const
+	{
+		return false;
+	}
+};
 
 namespace schema_validation
 {
@@ -43,7 +67,9 @@ std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 		type = std::make_shared<wml_type_list>(cfg["name"], list_cfg["split"].str("\\s*,\\s*"), list_min, list_max);
 		composite_range.emplace(list_cfg.child_range("element"));
 	} else if(cfg.has_attribute("value")) {
-		type = std::make_shared<wml_type_simple>(cfg["name"], cfg["value"]);
+		auto t = std::make_shared<wml_type_simple>(cfg["name"], cfg["value"]);
+		if(cfg["allow_translatable"].to_bool()) t->allow_translatable();
+		type = t;
 	} else if(cfg.has_attribute("link")) {
 		type = std::make_shared<wml_type_alias>(cfg["name"], cfg["link"]);
 	}
@@ -56,13 +82,14 @@ std::shared_ptr<wml_type> wml_type::from_config(const config& cfg)
 	return type;
 }
 
-bool wml_type_simple::matches(const std::string& value, const map&) const
+bool wml_type_simple::matches(const config_attribute_value& value, const map&) const
 {
+	if(!allow_translatable_ && value.apply_visitor(is_translatable(false))) return false;
 	boost::smatch sub;
-	return boost::regex_match(value, sub, pattern_);
+	return boost::regex_match(value.str(), sub, pattern_);
 }
 
-bool wml_type_alias::matches(const std::string& value, const map& type_map) const
+bool wml_type_alias::matches(const config_attribute_value& value, const map& type_map) const
 {
 	if(!cached_) {
 		auto it = type_map.find(link_);
@@ -75,7 +102,7 @@ bool wml_type_alias::matches(const std::string& value, const map& type_map) cons
 	return cached_->matches(value, type_map);
 }
 
-bool wml_type_union::matches(const std::string& value, const map& type_map) const
+bool wml_type_union::matches(const config_attribute_value& value, const map& type_map) const
 {
 	for(const auto& type : subtypes_) {
 		if(type->matches(value, type_map)) {
@@ -85,7 +112,7 @@ bool wml_type_union::matches(const std::string& value, const map& type_map) cons
 	return false;
 }
 
-bool wml_type_intersection::matches(const std::string& value, const map& type_map) const
+bool wml_type_intersection::matches(const config_attribute_value& value, const map& type_map) const
 {
 	for(const auto& type : subtypes_) {
 		if(!type->matches(value, type_map)) {
@@ -95,17 +122,25 @@ bool wml_type_intersection::matches(const std::string& value, const map& type_ma
 	return true;
 }
 
-bool wml_type_list::matches(const std::string& value, const map& type_map) const
+bool wml_type_list::matches(const config_attribute_value& value_attr, const map& type_map) const
 {
+	auto value = value_attr.str();
 	boost::sregex_token_iterator it(value.begin(), value.end(), split_, -1), end;
 	int n = 0;
 	bool result = std::all_of(it, end, [this, &type_map, &n](const boost::ssub_match& match){
 		// Not sure if this is necessary?
 		if(!match.matched) return true;
 		n++;
-		return this->wml_type_union::matches(std::string(match.first, match.second), type_map);
+		config_attribute_value elem;
+		elem = std::string(match.first, match.second);
+		return this->wml_type_union::matches(elem, type_map);
 	});
 	return result && n >= min_ && n <= max_;
+}
+
+bool wml_type_tstring::matches(const config_attribute_value& value, const map&) const
+{
+	return value.apply_visitor(is_translatable(true));
 }
 
 } // namespace schema_validation

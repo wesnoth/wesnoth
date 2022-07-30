@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local M = wesnoth.map
@@ -95,12 +94,13 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
 
     local aggression = ai.aspects.aggression
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
-    local max_ca_score, max_rating, best_attack = 0, 0
+    local max_ca_score, max_rating, best_attack = 0, 0, nil
     for _,target_info in ipairs(target_infos) do
+        wesnoth.interface.handle_user_interact()
         local target = attacks_aspect.enemy[target_info.ind_target]
         local can_force_level = {}
         local attack_hexes = LS.create()
-        for xa,ya in H.adjacent_tiles(target.x, target.y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(target) do
             if (not avoid_map:get(xa, ya)) then
                 local unit_in_way = wesnoth.units.get(xa, ya)
 
@@ -110,7 +110,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
                         if reaches:get(unit_in_way.x, unit_in_way.y) then
                             uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
                         else
-                            uiw_reach = wesnoth.find_reach(unit_in_way)
+                            uiw_reach = wesnoth.paths.find_reach(unit_in_way)
                             reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
                         end
 
@@ -148,7 +148,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
                     if reaches:get(attacker.x, attacker.y) then
                         reach = reaches:get(attacker.x, attacker.y)
                     else
-                        reach = wesnoth.find_reach(attacker)
+                        reach = wesnoth.paths.find_reach(attacker)
                         reaches:insert(attacker.x, attacker.y, reach)
                     end
 
@@ -193,7 +193,7 @@ function ca_attack_highxp:evaluation(cfg, data, filter_own)
                         if reaches:get(unit.x, unit.y) then
                             reach = reaches:get(unit.x, unit.y)
                         else
-                            reach = wesnoth.find_reach(unit)
+                            reach = wesnoth.paths.find_reach(unit)
                             reaches:insert(unit.x, unit.y, reach)
                         end
 

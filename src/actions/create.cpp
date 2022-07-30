@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -61,7 +62,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 {
 	const team & current_team = resources::gameboard->get_team(side);
 
-	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc << "\n";
+	LOG_NG << "getting recruit list for side " << side << " at location " << recruit_loc;
 
 	std::set<std::string> local_result;
 	std::set<std::string> global_result;
@@ -159,7 +160,7 @@ namespace { // Helpers for get_recalls()
 
 std::vector<unit_const_ptr > get_recalls(int side, const map_location &recall_loc)
 {
-	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
+	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc;
 
 	std::vector<unit_const_ptr > result;
 
@@ -329,26 +330,26 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
 
 std::string find_recall_location(const int side, map_location& recall_location, map_location& recall_from, const unit &unit_recall)
 {
-	LOG_NG << "finding recall location for side " << side << " and unit " << unit_recall.id() << "\n";
+	LOG_NG << "finding recall location for side " << side << " and unit " << unit_recall.id();
 
 	// This function basically translates check_recall_location() to a
 	// human-readable string.
 	switch ( check_recall_location(side, recall_location, recall_from, unit_recall) )
 	{
 	case RECRUIT_NO_LEADER:
-		LOG_NG << "No leaders on side " << side << " when recalling " << unit_recall.id() << ".\n";
+		LOG_NG << "No leaders on side " << side << " when recalling " << unit_recall.id() << ".";
 		return _("You do not have a leader to recall with.");
 
 	case RECRUIT_NO_ABLE_LEADER:
-		LOG_NG << "No leader is able to recall " << unit_recall.id() << " on side " << side << ".\n";
+		LOG_NG << "No leader is able to recall " << unit_recall.id() << " on side " << side << ".";
 		return _("None of your leaders are able to recall that unit.");
 
 	case RECRUIT_NO_KEEP_LEADER:
-		LOG_NG << "No leader able to recall " << unit_recall.id() << " is on a keep.\n";
+		LOG_NG << "No leader able to recall " << unit_recall.id() << " is on a keep.";
 		return _("You must have a leader on a keep who is able to recall that unit.");
 
 	case RECRUIT_NO_VACANCY:
-		LOG_NG << "No vacant castle tiles around a keep are available for recalling " << unit_recall.id() << "; requested location is " << recall_location << ".\n";
+		LOG_NG << "No vacant castle tiles around a keep are available for recalling " << unit_recall.id() << "; requested location is " << recall_location << ".";
 		return _("There are no vacant castle tiles in which to recall the unit.");
 
 	case RECRUIT_ALTERNATE_LOCATION:
@@ -358,7 +359,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
 
 	// We should never get down to here. But just in case someone decides to
 	// mess with the enum without updating this function:
-	ERR_NG << "Unrecognized enum in find_recall_location()" << std::endl;
+	ERR_NG << "Unrecognized enum in find_recall_location()";
 	return _("An unrecognized error has occurred.");
 }
 
@@ -465,26 +466,26 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 std::string find_recruit_location(const int side, map_location& recruit_location, map_location& recruited_from, const std::string& unit_type)
 {
-	LOG_NG << "finding recruit location for side " << side << "\n";
+	LOG_NG << "finding recruit location for side " << side;
 
 	// This function basically translates check_recruit_location() to a
 	// human-readable string.
 	switch ( check_recruit_location(side, recruit_location, recruited_from, unit_type) )
 	{
 	case RECRUIT_NO_LEADER:
-		LOG_NG << "No leaders on side " << side << " when recruiting '" << unit_type << "'.\n";
+		LOG_NG << "No leaders on side " << side << " when recruiting '" << unit_type << "'.";
 		return _("You do not have a leader to recruit with.");
 
 	case RECRUIT_NO_ABLE_LEADER:
-		LOG_NG << "No leader is able to recruit '" << unit_type << "' on side " << side << ".\n";
+		LOG_NG << "No leader is able to recruit '" << unit_type << "' on side " << side << ".";
 		return _("None of your leaders are able to recruit this unit.");
 
 	case RECRUIT_NO_KEEP_LEADER:
-		LOG_NG << "No leader able to recruit '" << unit_type << "' is on a keep.\n";
+		LOG_NG << "No leader able to recruit '" << unit_type << "' is on a keep.";
 		return _("You must have a leader on a keep who is able to recruit the unit.");
 
 	case RECRUIT_NO_VACANCY:
-		LOG_NG << "No vacant castle tiles around a keep are available for recruiting '" << unit_type << "'; requested location is " << recruit_location  << ".\n";
+		LOG_NG << "No vacant castle tiles around a keep are available for recruiting '" << unit_type << "'; requested location is " << recruit_location  << ".";
 		return _("There are no vacant castle tiles in which to recruit the unit.");
 
 	case RECRUIT_ALTERNATE_LOCATION:
@@ -494,7 +495,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 	// We should never get down to here. But just in case someone decides to
 	// mess with the enum without updating this function:
-	ERR_NG << "Unrecognized enum in find_recruit_location()" << std::endl;
+	ERR_NG << "Unrecognized enum in find_recruit_location()";
 	return _("An unrecognized error has occurred.");
 }
 
@@ -610,11 +611,11 @@ namespace { // Helpers for place_recruit()
 }// anonymous namespace
 //Used by recalls and recruits
 place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
-    int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
-    bool wml_triggered)
+	int cost, bool is_recall, map_location::DIRECTION facing, bool show, bool fire_event, bool full_movement,
+	bool wml_triggered)
 {
 	place_recruit_result res(false, 0, false);
-	LOG_NG << "placing new unit on location " << recruit_location << "\n";
+	LOG_NG << "placing new unit on location " << recruit_location;
 	if (full_movement) {
 		u->set_movement(u->total_movement(), true);
 	} else {
@@ -655,7 +656,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";
-		LOG_NG << "firing " << event_name << " event\n";
+		LOG_NG << "firing " << event_name << " event";
 		{
 			std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire(event_name, current_loc, recruited_from));
 		}
@@ -691,7 +692,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "recall" : "recruit";
-		LOG_NG << "firing " << event_name << " event\n";
+		LOG_NG << "firing " << event_name << " event";
 		{
 			std::get<0>(res) |= std::get<0>(resources::game_events->pump().fire(event_name, current_loc, recruited_from));
 		}

@@ -24,6 +24,7 @@ local function add_overlay(x, y, cfg)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			submerge = cfg.submerge,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
@@ -31,6 +32,10 @@ local function add_overlay(x, y, cfg)
 		})
 end
 
+---Remove an item from the map
+---@param x integer
+---@param y integer
+---@param name string
 function wesnoth.interface.remove_item(x, y, name)
 	local items = scenario_items:get(x, y)
 	if not items then return end
@@ -48,6 +53,24 @@ function wesnoth.interface.remove_item(x, y, name)
 	end
 end
 
+---@class item_info
+---@field x integer
+---@field y integer
+---@field image string
+---@field halo string
+---@field team_name string
+---@field filter_team WML
+---@field visible_in_fog boolean
+---@field submerge number
+---@field redraw boolean
+---@field name string
+---@field z_order integer
+---@field variables WMLTable
+
+---Get items on a given hex
+---@param x integer
+---@param y integer
+---@return item_info[]
 function wesnoth.interface.get_items(x, y)
 	local res = {}
 	local items = scenario_items:get(x, y) or {}
@@ -61,6 +84,7 @@ function wesnoth.interface.get_items(x, y)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			submerge = cfg.submerge,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
@@ -94,7 +118,7 @@ end
 
 -- returns the 'name' of an item, this can be used as an id to remove the iten later.
 function wml_actions.item(cfg)
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	cfg = wml.parsed(cfg)
 	if not cfg.image and not cfg.halo then
 		wml.error "[item] missing required image= and halo= attributes."
@@ -110,7 +134,7 @@ function wml_actions.item(cfg)
 end
 
 function wml_actions.remove_item(cfg)
-	local locs = wesnoth.get_locations(cfg)
+	local locs = wesnoth.map.find(cfg)
 	for i, loc in ipairs(locs) do
 		wesnoth.interface.remove_item(loc[1], loc[2], cfg.image)
 	end
@@ -122,7 +146,7 @@ function wml_actions.store_items(cfg)
 	variable = tostring(variable or wml.error("invalid variable= in [store_items]"))
 	wml.variables[variable] = nil
 	local index = 0
-	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
+	for i, loc in ipairs(wesnoth.map.find(cfg)) do
 		local items = scenario_items[loc]
 		if items then
 			for j, item in ipairs(items) do
@@ -139,10 +163,18 @@ function wml_actions.store_items(cfg)
 	end
 end
 
+---Add an item image to a hex
+---@param x integer
+---@param y integer
+---@param name string
 function wesnoth.interface.add_item_image(x, y, name)
 	add_overlay(x, y, { x = x, y = y, image = name })
 end
 
+---Add an item halo to a hex
+---@param x integer
+---@param y integer
+---@param name string
 function wesnoth.interface.add_item_halo(x, y, name)
 	add_overlay(x, y, { x = x, y = y, halo = name })
 end

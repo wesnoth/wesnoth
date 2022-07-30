@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2003 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "serialization/string_utils.hpp"
@@ -103,6 +104,10 @@ std::string color_t::to_hex_string() const
 	  << std::setw(2) << static_cast<int>(r)
 	  << std::setw(2) << static_cast<int>(g)
 	  << std::setw(2) << static_cast<int>(b);
+
+	if(a != ALPHA_OPAQUE) {
+		h << std::setw(2) << static_cast<int>(a);
+	}
 
 	return h.str();
 }

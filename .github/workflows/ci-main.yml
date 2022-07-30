@@ -8,152 +8,93 @@ on:
   workflow_dispatch:
 
 jobs:
-# run after all other jobs have completed to check overall build status
-  discord-notification:
+  ubuntu-2004:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - tool: scons
+            cc: gcc
+            cxx: g++
+            cfg: release
+            lto: true
+          - tool: cmake
+            cc: clang
+            cxx: clang++
+            cfg: debug
+            lto: false
     runs-on: ubuntu-20.04
-
-    name: Discord Notification
-
-    needs: [ubuntu-2004-scons-gcc-release-lto, ubuntu-2004-scons-clang-debug, ubuntu-2004-cmake-clang-release, ubuntu-2004-cmake-gcc-debug, ubuntu-1804, steam-runtime, mingw, flatpak, translations, macos-intel-master-release, macos-intel-master-debug, windows-release, windows-debug]
-    if: always()
-
-    steps:
-      - uses: technote-space/workflow-conclusion-action@v2
-      - uses: rjstone/discord-webhook-notify@v1
-        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
-        with:
-          severity: error
-          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
-          description: |-
-            pusher: ${{ github.actor }}
-            commit: ${{ github.event.head_commit.message }}
-            commit url: ${{ github.event.head_commit.url }}
-
-  ubuntu-2004-scons-gcc-release-lto:
-    runs-on: ubuntu-20.04
+    container:
+      image: wesnoth/wesnoth:2004-master
+      options: --tty # docker create options
+      env:
+        TOOL: ${{ matrix.tool }}
+        CFG: ${{ matrix.cfg }}
+        CC: ${{ matrix.cc }}
+        CXX: ${{ matrix.cxx }}
+        CXX_STD: 17
+        LTO: ${{ matrix.lto }}
+        NLS: false
+        CLICOLOR_FORCE: 1
+        DISPLAY: :99.0
+    defaults:
+      run:
+        shell: bash
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
 
-      - name: Ubuntu 20.04
+      - name: Build wesnoth, wesnothd, campaignd and unit tests
+        id: build # needed to check step outcome
         run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=true
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
-  ubuntu-2004-scons-clang-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=scons
-          export CC=clang
-          export CXX=clang++
-          export CXX_STD=17
-          export CFG=debug
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh master
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-Clang-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
-  ubuntu-2004-cmake-clang-release:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=cmake
-          export CC=clang
-          export CXX=clang++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
-  ubuntu-2004-cmake-gcc-debug:
-    runs-on: ubuntu-20.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 20.04
-        run: |
-          export BRANCH=master
-          export IMAGE=2004
-          export NLS=false
-          export TOOL=cmake
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=debug
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
-
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Ubuntu-GCC-Debug
-          path: |
-            ~/build-cache/wesnoth
-            ~/build-cache/wesnothd
-
-  ubuntu-1804:
-    runs-on: ubuntu-18.04
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: Ubuntu 18.04
-        run: |
-          export BRANCH=master
-          export IMAGE=1804
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
-          ./.github/workflows/ci-scripts/ubuntu.sh
+          case $TOOL in
+            scons)
+              scons wesnoth wesnothd campaignd boost_unit_tests \
+                build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
+                extra_flags_config="-pipe" strict=true forum_user_handler=true \
+                nls="$NLS" enable_lto="$LTO" force_color=true jobs=2 --debug=time
+              ;;
+            cmake)
+              cmake -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true \
+                -DENABLE_TESTS=true -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
+                -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
+                -DENABLE_NLS="$NLS" -DFORCE_COLOR_OUTPUT=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 .
+              make conftests
+              make VERBOSE=1 -j2
+              ;;
+          esac
+#      - name: Rename debug binaries
+#        if: matrix.cfg == 'debug'
+#        run: mv wesnoth{-debug,}; mv wesnothd{-debug,}; mv campaignd{-debug,}; mv boost_unit_tests{-debug,}
+      - name: Start Xvfb
+        if: success() || failure()
+        run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
+      - name: Whitespace and WML indentation check
+        if: success() || failure()
+        run: ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
+      - name: Run luacheck
+        if: success() || failure()
+        run: luacheck .
+      - name: Doxygen check
+        if: success() || failure()
+        run: ./utils/CI/doxygen-check.sh
+      - name: WML validation
+        if: success() || steps.build.outcome == 'success'
+        run: ./utils/CI/schema_validation.sh
+      - name: Run WML tests
+        if: success() || steps.build.outcome == 'success'
+        run: ./run_wml_tests -g -c -t 20
+      - name: Run play tests
+        if: success() || steps.build.outcome == 'success'
+        run: ./utils/CI/play_test_executor.sh
+      - name: Run MP tests
+        if: success() || steps.build.outcome == 'success'
+        run: ./utils/CI/mp_test_executor.sh
+      - name: Run unit tests
+        if: success() || steps.build.outcome == 'success'
+        run: ./utils/CI/test_executor.sh
 
   steam-runtime:
     runs-on: ubuntu-20.04
@@ -174,8 +115,15 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Steam-Linux
+          path: |
+            ~/steambuild-*.tar
 
   mingw:
     runs-on: ubuntu-20.04
@@ -196,8 +144,22 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
+
+      - name: Upload 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: Source
+          path: |
+            ~/wesnoth-*.tar.bz2
+
+      - name: Upload 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: Windows-Installer
+          path: |
+            ~/wesnoth-*-win64.exe
 
   flatpak:
     runs-on: ubuntu-20.04
@@ -218,7 +180,7 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   translations:
@@ -240,80 +202,55 @@ jobs:
           export CXX_STD=17
           export CFG=release
           export LTO=false
-          export CACHE_DIR=/home/wesnoth-CI/build
+          export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
-  macos-intel-master-release:
-    runs-on: macos-10.15
+  macos-intel:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-11.0
+            cfg: Debug
+          - os: macos-11.0
+            cfg: Release
+    runs-on: ${{ matrix.os }}
+    env:
+      CFG: ${{ matrix.cfg }}
 
     steps:
       - uses: actions/checkout@v2
         with:
           submodules: "recursive"
 
-      - name: macOS Intel Release
+      - name: Get dependencies
         run: |
-          export CFG=Release
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install scons
+          ./projectfiles/Xcode/Fix_Xcode_Dependencies
+      - name: Build translations
+        run: scons translations build=release --debug=time nls=true jobs=2
+      - name: Build wesnoth and unit tests
+        working-directory: projectfiles/Xcode
+        run: xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
+#      - name: Create disk image
+#        working-directory: projectfiles/Xcode
+#        run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+      - name: Run WML tests
+        if: matrix.cfg == 'Release'
+        run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
+      - name: Run unit tests
+        run: projectfiles/Xcode/build/"$CFG"/unit_tests --color_output --log_level=test_suite
 
-  macos-intel-master-debug:
-    runs-on: macos-10.15
-
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: "recursive"
-
-      - name: macOS Intel Debug
-        run: |
-          export CFG=Debug
-          export CACHE_DIR=~/build-cache
-          ./.github/workflows/ci-scripts/macos.sh
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: macOS-Intel-Debug
-          path: |
-            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
-
-#  macos-arm-master-release:
-#    runs-on: macos-11.0
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: "recursive"
-#
-#      - name: macOS ARM Release
-#        run: |
-#          export CFG=Release
-#          export CACHE_DIR=~/build-cache
-#          ./.github/workflows/ci-scripts/macos.sh
-
-#  macos-arm-master-debug:
-#    runs-on: macos-11.0
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#        with:
-#          submodules: "recursive"
-#
-#      - name: macOS ARM Debug
-#        run: |
-#          export CFG=Debug
-#          export CACHE_DIR=~/build-cache
-#          ./.github/workflows/ci-scripts/macos.sh
-#      - name: Upload
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: macOS-ARM-Debug
-#          path: |
-#            ~/work/wesnoth/wesnoth/projectfiles/Xcode/Wesnoth_Debug.dmg
-
-# in the case of needing to recompile the vcpkg-created Windows dependencies, increment the cache-name and key for both Release and Debug
-# this will create a brand new cache and recompile the vcpkg dependencies from scratch
-  windows-release:
+  windows:
+    strategy:
+      fail-fast: false
+      matrix:
+        cfg: [Debug, Release]
+    env:
+      CFG: ${{ matrix.cfg }}
+    defaults:
+      run:
+        shell: cmd
     runs-on: windows-2019
 
     steps:
@@ -322,69 +259,65 @@ jobs:
           submodules: "recursive"
 
       - name: Cache object files
+        id: windows-cache
         uses: actions/cache@v2
-        env:
-          cache-name: windows-release-cache-master
         with:
-          path: D:/a/wesnoth/vcpkg
-          key: windows-master-N003
+          path: |
+            D:/a/wesnoth/vcpkg
+            D:/a/wesnoth/wesnoth/vcpkg_installed
+          key: win-cache-0005
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
 
-      - name: DOS1
-        shell: cmd
+      - name: Build vcpkg
         run: |
-          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
-          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-      - name: DOS2
-        shell: cmd
+          if not exist "D:/a/wesnoth/vcpkg" git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          if not exist "D:/a/wesnoth/vcpkg" cd D:/a/wesnoth/vcpkg
+          if not exist "D:/a/wesnoth/vcpkg" D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.9
+        with:
+          cmake-version: '3.20.6'
+
+      - name: Run cmake
         run: |
-          %~dp0../wesnoth/vcpkg/vcpkg integrate install
-          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-logic:x64-windows boost-format:x64-windows boost-scope-exit:x64-windows boost-circular-buffer:x64-windows boost-ptr-container:x64-windows
-      - name: DOS3
-        shell: cmd
+          cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+
+      - name: vcpkg_abi_info
+        run: type "D:\a\wesnoth\vcpkg\buildtrees\bzip2\x64-windows.vcpkg_abi_info.txt"
+
+# delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
+# otherwise the job was failing when trying to write a .obj file
+# building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
+      - name: Build wesnoth, wesnothd, campaignd and unit tests
         run: |
-          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Release -p:Platform=Win64
-  windows-debug:
-    runs-on: windows-2019
+          rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
+          MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
+
+      - name: Run WML unit tests
+        if: matrix.cfg == 'Release'
+        run: python run_wml_tests -v -g -c -t 20 -p D:/a/wesnoth/wesnoth/%CFG%/wesnoth.exe
+
+# run after all other jobs have completed to check overall build status
+  discord-notification:
+    runs-on: ubuntu-20.04
+
+    name: Discord Notification
+
+    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
+    if: always()
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: rjstone/discord-webhook-notify@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
-          submodules: "recursive"
+          severity: error
+          webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
+          description: |-
+            pusher: ${{ github.actor }}
+            commit: ${{ github.event.head_commit.message }}
+            commit url: ${{ github.event.head_commit.url }}
 
-      - name: Cache object files
-        uses: actions/cache@v2
-        env:
-          cache-name: windows-debug-cache-master
-        with:
-          path: D:/a/wesnoth/vcpkg
-          key: windows-master-N003
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
-
-      - name: DOS1
-        shell: cmd
-        run: |
-          git clone --depth=1 https://github.com/microsoft/vcpkg.git ../vcpkg
-          %~dp0../wesnoth/vcpkg/bootstrap-vcpkg.bat
-      - name: DOS2
-        shell: cmd
-        run: |
-          %~dp0../wesnoth/vcpkg/vcpkg integrate install
-          %~dp0../wesnoth/vcpkg/vcpkg install sdl2:x64-windows sdl2-image:x64-windows sdl2-image[libjpeg-turbo]:x64-windows sdl2-mixer[libvorbis,dynamic-load]:x64-windows sdl2-ttf:x64-windows bzip2:x64-windows zlib:x64-windows pango:x64-windows cairo:x64-windows fontconfig:x64-windows libvorbis:x64-windows libogg:x64-windows boost-filesystem:x64-windows boost-iostreams:x64-windows boost-locale[icu]:x64-windows boost-random:x64-windows boost-regex[icu]:x64-windows boost-asio:x64-windows boost-program-options:x64-windows boost-system:x64-windows boost-thread:x64-windows boost-bimap:x64-windows boost-multi-array:x64-windows boost-logic:x64-windows boost-format:x64-windows boost-scope-exit:x64-windows boost-circular-buffer:x64-windows boost-ptr-container:x64-windows
-      - name: DOS3
-        shell: cmd
-        run: |
-          MSBuild.exe projectfiles/VC16/wesnoth.sln -p:Configuration=Debug -p:Platform=Win64
-      - name: Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: Windows-Debug
-          path: |
-            D:/a/wesnoth/wesnoth/wesnoth.exe
-            D:/a/wesnoth/wesnoth/wesnothd.exe
-            D:/a/wesnoth/wesnoth/wesnoth.pdb
-            D:/a/wesnoth/wesnoth/wesnothd.pdb

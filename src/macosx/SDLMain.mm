@@ -1,3 +1,17 @@
+/*
+	Copyright (C) 2010 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
+
+	See the COPYING file for more details.
+*/
+
 /*	SDLMain.m - main entry point for our Cocoa-ized SDL app
 	Initial Version: Darrell Walisser <dwaliss1@purdue.edu>
 	Non-NIB-Code & other changes: Max Horn <max@quendi.de>
@@ -7,6 +21,12 @@
 #import "SDL.h"
 #import "SDLMain.h"
 #include <vector>
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 101200
+#define NSEventTypeKeyDown NSKeyDown
+#define NSEventTypeKeyUp NSKeyUp
+#define NSEventModifierFlagCommand NSCommandKeyMask
+#endif
 
 extern "C" int wesnoth_main(int argc, char **argv);
 static std::vector<char*> gArgs;
@@ -54,6 +74,12 @@ static std::vector<char*> gArgs;
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.wesnoth.org/"]];
 }
 
+- (IBAction) openChangelog:(id)sender
+{
+	(void) sender;
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/wesnoth/wesnoth/blob/master/changelog.md"]];
+}
+
 /* Called when the internal event loop has just started running */
 - (void) applicationDidFinishLaunching: (NSNotification *) note
 {
@@ -62,7 +88,7 @@ static std::vector<char*> gArgs;
 	setenv ("SDL_ENABLEAPPEVENTS", "1", 1);
 	setenv ("SDL_VIDEO_ALLOW_SCREENSAVER", "1", 1);
 
-    /* Set config files for pango and fontconfig, so the data they need can be found */
+	/* Set config files for pango and fontconfig, so the data they need can be found */
 	setenv ("PANGO_RC_FILE", "./pangorc", 1);
 	setenv ("PANGO_SYSCONFDIR", ".", 1);
 	setenv ("PANGO_LIBDIR", ".", 1);

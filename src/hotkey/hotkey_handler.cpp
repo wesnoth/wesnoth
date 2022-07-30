@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "hotkey/hotkey_handler.hpp"
@@ -214,15 +215,18 @@ void play_controller::hotkey_handler::toggle_accelerated_speed()
 {
 	preferences::set_turbo(!preferences::turbo());
 
+	display::announce_options ao;
+	ao.discard_previous = true;
+
 	if (preferences::turbo())
 	{
 		utils::string_map symbols;
-		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).command);
-		gui()->announce(_("Accelerated speed enabled!") + "\n" + VGETTEXT("(press $hk to disable)", symbols), font::NORMAL_COLOR);
+		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).id);
+		gui()->announce(_("Accelerated speed enabled!") + "\n" + VGETTEXT("(press $hk to disable)", symbols), font::NORMAL_COLOR, ao);
 	}
 	else
 	{
-		gui()->announce(_("Accelerated speed disabled!"), font::NORMAL_COLOR);
+		gui()->announce(_("Accelerated speed disabled!"), font::NORMAL_COLOR, ao);
 	}
 }
 
@@ -248,7 +252,7 @@ void play_controller::hotkey_handler::scroll_right(bool on)
 
 bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
+	hotkey::HOTKEY_COMMAND command = cmd.command;
 	if(index >= 0) {
 		unsigned i = static_cast<unsigned>(index);
 		if(i < savenames_.size() && !savenames_[i].empty()) {
@@ -261,9 +265,9 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_co
 		}
 	}
 	int prefixlen = wml_menu_hotkey_prefix.length();
-	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
+	if(command == hotkey::HOTKEY_WML && cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
-		std::string name = cmd.command.substr(prefixlen);
+		std::string name = cmd.id.substr(prefixlen);
 		const map_location& hex = mouse_handler_.get_last_hex();
 
 		return gamestate().get_wml_menu_items().fire_item(
@@ -281,7 +285,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 			return true;
 		}
 	}
-	switch(cmd.id) {
+	switch(cmd.command) {
 
 	// Commands we can always do:
 	case hotkey::HOTKEY_LEADER:
@@ -463,7 +467,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 		const std::string& id = item["id"];
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if(id == "wml" || (can_execute_command(command) && (!context_menu || in_context_menu(command.id)))) {
+		if(id == "wml" || (can_execute_command(command) && (!context_menu || in_context_menu(command.command)))) {
 			items.emplace_back("id", id);
 		}
 	}

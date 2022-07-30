@@ -1,22 +1,24 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 李信融 <magiclen0810@gmail.com>, 2010.
 # 楊綮銘 <steven2880@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:17 UTC\n"
-"PO-Revision-Date: 2019-07-21 11:10+0800\n"
-"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"POT-Creation-Date: 2022-01-02 18:00 UTC\n"
+"PO-Revision-Date: 2022-05-30 14:44+0800\n"
+"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:13
@@ -26,17 +28,17 @@ msgstr "死亡之海"
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:14
 msgid "DW"
-msgstr "DW"
-
-#. [campaign]: id=Dead_Water
-#: data/campaigns/Dead_Water/_main.cfg:18
-msgid "Beginner"
-msgstr "簡單"
+msgstr "死亡之海"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:18
 msgid "Citizen"
 msgstr "平民"
+
+#. [campaign]: id=Dead_Water
+#: data/campaigns/Dead_Water/_main.cfg:18
+msgid "Easy"
+msgstr "簡單"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:19
@@ -79,16 +81,16 @@ msgid ""
 "your troops!\n"
 "\n"
 msgstr ""
-"你叫凱．克萊利斯，是人魚國王唯一的兒子，同時也是繼承人。一個死靈法師將會把你"
-"的部隊變成不死的奴隸，你必須帶領你的人去說服一個強大的人魚女神官來幫助你擊退"
-"這些入侵者。靠近北島的海洋很危險，所以你需要智慧與勇氣好生存下去，但首先你要"
-"讓你的部隊更尊敬你。\n"
+"你叫凱‧克瑞利斯，是人魚國王唯一的兒子，同時也是繼承人。一個死靈法師將會把你的"
+"部隊變成不死的奴隸，你必須帶領你的人去說服一個強大的人魚女神官來幫助你擊退這"
+"些入侵者。靠近北島的海洋很危險，所以你需要智慧與勇氣好生存下去，但首先你要讓"
+"你的部隊更尊敬你。\n"
 "\n"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:25
 msgid "(Intermediate level, 10 scenarios.)"
-msgstr "（中等等級，10個章節。）"
+msgstr "（中等等級，10個章節）"
 
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:31
@@ -98,12 +100,12 @@ msgstr "戰役設計和程式設計"
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:37
 msgid "Script-doctoring and cleanup for mainline"
-msgstr "劇本修改"
+msgstr "劇本修飾和主線劇情改編"
 
 #. [about]
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
-msgstr "美工"
+msgstr "藝術"
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Dead_Water/_main.cfg:94
@@ -117,16 +119,6 @@ msgstr "入侵！"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:45
-#, fuzzy
-#| msgid ""
-#| "In the Far North, where the Mountains of Dorth approach the coast, lies a "
-#| "bay with a narrow mouth. In the calm waters of this bay lies the merfolk "
-#| "city of Jotha. The natural harbor and the prosperity of the dwellers "
-#| "within drew many envious eyes, but none could match the prowess of the "
-#| "merfolk in their aquatic domain. In most years, orcs from the port city "
-#| "of Tirigaz, further north, would raid against Jotha as predictably as the "
-#| "spring rains; always, they were driven back to dry land with heavy "
-#| "losses, the salt water of the bay stinging their wounds."
 msgid ""
 "In the Far North, where the foothills of the Heart Mountains approach the "
 "coast, lies a bay with a narrow mouth. In the calm waters of this bay lies "
@@ -137,12 +129,12 @@ msgid ""
 "spring rains; always, they were driven back to dry land with heavy losses, "
 "the salt water of the bay stinging their wounds."
 msgstr ""
-"在遙遠的北方，有座靠近海岸的杜斯山，在那兒形成一個狹窄的海灣。人魚城市─礁沙"
-"城，就位在這個海灣平靜的水面上。天然的良港和繁榮的居民引來了無數羨慕的眼光，"
-"而且沒有人能夠與這個海域強大的人魚相比。但多年來，半獸人總會從更北的特瑞格茲"
-"港南下襲擊春雨綿綿的礁沙城。可是每次都會被人魚們趕回他們乾燥的土地，而且海灣"
-"的鹹水會刺痛著他們的傷口，使他們損失慘重。每個半獸人的臉色均顯現出對人魚們的"
-"憎恨與積怨。"
+"在遠北，有條靠近海岸的心之山脈，在那裡形成一個狹窄的海灣。人魚城市──礁沙，就"
+"位在這個海灣平靜的水面上。天然的良港和繁榮的居民引來了無數羨慕的眼光，而且沒"
+"有人能夠與這個海域強大的人魚相比。但多年來，半獸人總會從更北的特瑞格茲港城南"
+"下襲擊春雨綿綿的礁沙。可是每次都會被人魚趕回他們乾燥的土地，而且海灣的鹹水會"
+"刺痛著他們的傷口，使他們損失慘重。每個半獸人的臉色均顯現出對人魚們的憎恨與積"
+"怨。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:50
@@ -157,12 +149,12 @@ msgid ""
 "steer well clear of the merfolk. The merfolk army caught up with the orc "
 "band as it reached Tirigaz."
 msgstr ""
-"韋諾626年，礁沙城遭遇到前所未有的入侵。凱．勞迪斯率領部隊擊退入侵者，最後雖然"
-"成功了，但人魚的傷亡人數比平常還多很多。凱．勞迪斯的妻子也在此戰役中不幸犧"
-"牲。凱．勞迪斯非常悲憤，高得嚇人的怒氣連他自己都無法hold住。他快速部署好他的"
-"軍隊，準備追隨離去的半獸人進行反攻。他氣志高昂地說他的目的不是報復，而是想教"
-"訓一下那些半獸人，讓他們知道人魚的厲害，以確保礁沙城的安全。於是，人魚的軍隊"
-"尾隨半獸人船隊來到特瑞格茲港。"
+"韋諾626年，礁沙遭遇到前所未有的入侵。凱‧勞迪斯率領部隊擊退入侵者，最後雖然成"
+"功了，但人魚的傷亡人數比平常還多很多。凱‧勞迪斯的妻子也在此戰役中不幸犧牲。"
+"凱‧勞迪斯非常悲痛，但他臉上顯現的憤怒也十分可怕。他快速部署好他的軍隊，準備追"
+"隨離去的半獸人進行反攻。他氣志高昂地說他的目的不是報復，而是想教訓一下那些半"
+"獸人，讓他們知道人魚的厲害，以確保礁沙的安全。於是，人魚的軍隊尾隨半獸人船隊"
+"來到特瑞格茲。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:55
@@ -174,10 +166,9 @@ msgid ""
 "poured forth from the city. The merfolk were trapped, and found themselves "
 "vastly outnumbered."
 msgstr ""
-"在夜幕的掩蔽下，人魚們潛入海港，計畫在黎明時分發動突襲。但半獸人早有防備，急"
-"忙擬出一個反突襲的奇襲策略。夜半子時，停在灣口的廢棄船骸忽然出現一大群半獸"
-"人，而城內也有許多半獸人奔湧而出。人魚們被包圍，他們發現敵人的數量遠遠多過己"
-"方。"
+"在夜幕的掩蔽下，人魚潛入海灣，計畫在黎明時分發動突襲。但半獸人早有防備，急忙"
+"擬出一個反突襲的奇襲策略。夜半子時，停在灣口的廢棄船骸忽然出現數群半獸人，而"
+"城內也有許多半獸人奔湧而出。人魚們被包圍，他們發現敵人的數量遠遠多過己方。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:60
@@ -192,13 +183,13 @@ msgid ""
 "destroyed. When the remaining soldiers returned to Jotha, Krellis, the young "
 "son of Kai Laudiss, learned that he had become kai."
 msgstr ""
-"凱．勞迪斯的軍隊驍勇善戰，每個陣亡的戰士都至少殺死了五個半獸人。凱．勞迪斯更"
-"是戰到渾然忘我，摒棄一切，衝鋒陷陣。他每揮動一次權杖，就有好幾個敵人應聲而"
-"倒。半獸人發現，這些被圍困的人魚，比他們想像的還要更強硬。他們只好退守到森"
-"林。正和凱．勞迪斯所想的一樣，這場驚心動魄，被他們逆轉勝的戰鬥，肯定能讓這些"
-"半獸人銘記在心。但他們付出的代價非常沉重，凱．勞迪斯被半獸人的毒標擊中而毒發"
-"身亡，他的軍隊也大部分被殲滅。殘存的戰士帶著噩耗，拖著疲憊的身軀回到礁沙城。"
-"得知國王駕崩的消息，凱．勞迪斯唯一的幼子─克萊利斯，便繼承了父親的王位。"
+"凱‧勞迪斯的軍隊驍勇善戰，每個陣亡的戰士都至少殺死了五個半獸人。凱‧勞迪斯更是"
+"戰到渾然忘我，摒棄一切，衝鋒陷陣。他每揮動一次他的大釘鎚，就有好幾個敵人應聲"
+"而倒。半獸人發現，這些被圍困的人魚，比他們想像的還要更強硬。他們只好退守到森"
+"林。正和凱‧勞迪斯所想的一樣，這場驚心動魄，被他們逆轉勝的戰鬥，肯定能讓這些半"
+"獸人銘記在心。但他們付出的代價非常沉重，凱‧勞迪斯被半獸人的毒標擊中而毒發身"
+"亡，他的軍隊也大部分被殲滅。殘存的戰士帶著噩耗，拖著疲憊的身軀回到礁沙。得知"
+"國王駕崩的消息，凱‧勞迪斯唯一的幼子──克瑞利斯，便繼承了父親的王位。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:65
@@ -210,10 +201,10 @@ msgid ""
 "to preside over an age of peace. Unfortunately, that was not to be. A new "
 "enemy appeared from under the mountains."
 msgstr ""
-"可是凱．克萊利斯覺得自己還太年輕，沒有辦法承擔領導整個王國的責任，所以讓一個"
-"聰明的女祭司希蘭娜來輔佐他。這名女祭司曾經是他父親的青梅竹馬，早在他父親剛懂"
-"事的時候，他們就認識彼此了。希蘭娜為已故的勞迪斯感到哀傷，但她認為勞迪斯的犧"
-"牲能替克萊利斯爭取到一段和平的時期。然而事與願違，山腳下又出現了新的敵人。"
+"可是凱‧克瑞利斯覺得自己還太年輕，沒有辦法承擔領導整個王國的責任，所以讓一個聰"
+"明的女祭司希蘭娜來輔佐他。這名女祭司曾經是他父親的青梅竹馬，早在他父親剛懂事"
+"的時候，他們就認識彼此了。希蘭娜為已故的勞迪斯感到哀傷，但她認為勞迪斯的犧牲"
+"能替克瑞利斯爭取到一段和平的時期。然而事與願違，山腳下又出現了新的敵人。"
 
 #. [side]: type=Dark Sorcerer, id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:83
@@ -226,7 +217,7 @@ msgstr "不死族"
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:126
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:39
 msgid "Mal-Kevek"
-msgstr "莫．卡衛可"
+msgstr "馬爾-卡維克"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:202
@@ -234,7 +225,7 @@ msgstr "莫．卡衛可"
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:115
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:107
 msgid "Defeat enemy leader"
-msgstr "擊敗敵人首領"
+msgstr "擊敗敵方首領"
 
 #. [unit]: type=Mermaid Priestess, id=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:228
@@ -244,7 +235,7 @@ msgstr "希蘭娜"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:265
 msgid "Is something wrong, priestess?"
-msgstr "祭司，有什麼問題嗎？"
+msgstr "有什麼問題嗎，祭司？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:270
@@ -259,7 +250,7 @@ msgstr "戈瓦布"
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:319
 msgid "Back, you fiend! You have not won...I will return to finish this."
-msgstr "給我回墳場，你這個惡魔！你還沒有贏，我會回來打倒你的。"
+msgstr "給我回墳場，你這個惡魔！你還沒有贏……我會回來打倒你的。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:330
@@ -284,9 +275,9 @@ msgid ""
 "our weapons. And they smelled like nothing in the sea, of dank earth and "
 "rottenness."
 msgstr ""
-"我活到現在從來沒有見過他們。他們長得像人，可是沒有皮膚。我嘗試用矛攻擊他們，"
-"卻直接穿過去，無法造成傷害！他們還l嘲笑我們的武器。還有，他們聞起來不像海中的"
-"任何東西，反而有潮濕腐朽的泥土氣味。"
+"我活到現在從來沒有見過他們。他們長得像人，可是沒有皮膚。我們嘗試用矛攻擊他"
+"們，卻直接穿過去，無法造成傷害！他們還<i>嘲笑</i>我們的武器。還有，他們聞起來"
+"不像海中的任何東西，反而有潮濕腐朽的泥土氣味。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:345
@@ -294,13 +285,13 @@ msgid ""
 "Undead. This will be your first real test as a leader, Kai Krellis. You must "
 "defeat these creatures."
 msgstr ""
-"那是亡靈。凱．克萊利斯，這將會是你成為領袖的第一個測驗。你必須擊敗這些生物。"
+"那是亡靈。這將會是你成為領袖的第一個測驗，凱‧克瑞利斯。你必須擊敗這些生物。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:350
 msgid ""
 "Kai, please lead us against them yourself, it will hearten the folk. And — "
-"if you will permit — you reach the age now where a kai must learn battle "
+"if you will permit — you now reach the age where a kai must learn battle "
 "skills."
 msgstr ""
 "凱，請你親自領導我們對抗這些亡靈，這將會使我們士氣大振。況且，請容我直說，你"
@@ -312,8 +303,8 @@ msgid ""
 "Gwabbo speaks wisely. You must fight; I will protect you as much as I can..."
 "but when war looms, a kai must lead. It is our way."
 msgstr ""
-"戈瓦布說得很好，你必須要戰鬥！我會盡全力保護你，但是，當戰爭開始時，身為凱氏"
-"的你就必須要帶頭領導，這就是我們的生存方式！"
+"戈瓦布說得很好，你必須要戰鬥！我會盡全力保護你……但是，當戰爭開始時，身為凱的"
+"你就必須要帶頭領導，這就是我們的生存方式。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:360
@@ -321,12 +312,13 @@ msgid ""
 "You have few trained fighters, so you can only recruit three of each level 1 "
 "unit. There is no limit on citizens."
 msgstr ""
-"你沒有幾個訓練有素的戰士，所以你只能招募三個等級1的單位，但人魚平民不在此限。"
+"你沒有幾個訓練有素的戰士，所以每一種等級1的單位你只能各招募三個，但人魚平民不"
+"在此限。"
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:389
 msgid "Rise, my slaves! We will create an army for Lord Ravanal."
-msgstr "起來吧，我的奴隸！我們將為瑞文諾領主創立一個軍隊。"
+msgstr "起來吧，我的奴隸們！我們將為拉瓦諾領主創立一個軍隊。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:398
@@ -334,13 +326,13 @@ msgid ""
 "He is raising our dead to fight against us! Even though they were your own "
 "citizens, Krellis, show no mercy. Destroy them if you can."
 msgstr ""
-"他正在召喚我們死去的亡者來攻擊我們！克萊利斯，即使他們以前是我們的國民，也還"
-"是不能手軟。盡你所能打敗他們！"
+"他正在召喚我們的亡者來攻擊我們！即使他們以前是我們的國民，也還是不能手軟，克"
+"瑞利斯。盡你所能打敗他們。"
 
 #. [message]: id=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:419
 msgid "Foolish fish-men. You cannot kill <i>me</i> that easily."
-msgstr "愚蠢的人魚，你沒辦法輕而易舉地殺掉我。"
+msgstr "愚蠢的人魚，你沒辦法輕而易舉地殺掉<i>我</i>。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:424
@@ -352,12 +344,12 @@ msgstr "人魚看到一個黑霧從死去的死靈法師身上緩緩升起，然
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:590
 msgid "He is raising the dead from every village!"
-msgstr "他正在召喚每個村莊的死者！"
+msgstr "他正在從每個村莊召喚死者！"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:594
 msgid "This will be a dark day, but we <i>will</i> prevail."
-msgstr "這真是個黑暗的一天，但我們一定會戰勝！"
+msgstr "這真是個黑暗的一天，但我們<i>一定</i>會戰勝。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:620
@@ -372,7 +364,7 @@ msgstr "凱，你做得好啊！忍不住想誇獎你一下。"
 #. [scenario]: id=02_Flight
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:27
 msgid "Flight"
-msgstr "三面包圍"
+msgstr "逃跑"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:36
@@ -383,24 +375,24 @@ msgid ""
 "north and south along the coast to learn what they might about this Ravanal. "
 "The news they brought him was not good."
 msgstr ""
-"凱．克萊利斯擔心這些不死族可能會再回來，所以他決定盡可能地了解他們。他唯一的"
-"的線索是那位死靈法師說的「瑞文諾領主」。他派出他最快的偵查兵到北邊和南邊的海"
-"岸去打探有關瑞文諾的事情，但是他們帶回來的消息並不太好。"
+"凱‧克瑞利斯擔心這些亡靈可能會再回來，所以他決定儘可能地了解他們。他唯一的的線"
+"索是那位死靈法師說的<i>「拉瓦諾領主」</i>。他派出他最快的偵查兵沿著海岸到北邊"
+"和南邊去打探有關拉瓦諾的事情，但是他們帶回來的消息並不太好。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:41
 msgid ""
 "Mal-Ravanal, it seemed, was a great human wizard who had transformed himself "
-"into a lich. He had attacked the edges of the kingdom of Wesnoth, and was "
+"into a lich. He had attacked the edges of the Kingdom of Wesnoth, and was "
 "building a fearsome army of undead humans there. He had also sent "
 "necromancers to attack the orcs, and even the elves, in a quest for undead "
 "soldiers of different races. It seemed that he also lusted for merfolk "
 "slaves. Krellis’ scouts reported that more dark armies were heading north."
 msgstr ""
-"傳言說，麥爾-諾曼鈉似乎是一位將自己轉為巫妖的偉大人類巫師，他襲擊了韋諾王國的"
-"邊境，建立起可怕的不死族的軍隊。他還派出死靈法師們攻擊半獸人和精靈，甚至是不"
-"同種族的亡靈。也有人說他特別喜歡拿人魚作為奴隸。根據克萊利斯的偵查兵回報，有"
-"更多黑暗的軍隊正朝向北方前進。"
+"傳言說，馬爾-拉瓦諾似乎是一位將自己轉為巫妖的偉大人類巫師，他襲擊了韋諾王國的"
+"邊境，建立起可怕的亡靈軍隊。他還派出死靈法師們攻擊半獸人和精靈，甚至是不同種"
+"族的亡靈。也有人說他特別喜歡拿人魚作為奴隸。根據克瑞利斯的偵查兵回報，有更多"
+"黑暗的軍隊正朝向北方前進。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:46
@@ -409,33 +401,33 @@ msgid ""
 "recruits. Krellis’ army did not yet match his father’s, but he now had many "
 "competent soldiers. As he had expected, their adversaries soon arrived."
 msgstr ""
-"幾個星期以來，上次戰爭的老兵不斷訓練新戰士。克萊利斯的軍隊雖然還沒有辦法跟他"
-"的父親相提並論，但他現在已經有許多素質良好的戰士了。正如他所預料的，他們的對"
-"手，那些不死族軍隊，很快就到了。"
+"幾個星期以來，上次戰鬥留下來的老兵一直在幫忙訓練新戰士。克瑞利斯的軍隊雖然還"
+"沒有辦法跟他的父親相提並論，但他現在已經有許多素質良好的戰士了。正如他所預料"
+"的，他們的對手，那些亡靈軍隊，很快就到了。"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:80
 msgid ""
 "Move Kai Krellis to the north-west corner of the map. He must be level one "
 "or higher."
-msgstr "移動凱．克萊利斯到地圖西北邊的角落。他的等級必須至少1級！"
+msgstr "移動凱‧克瑞利斯到地圖西北邊的角落。他的等級必須為1級或更高。"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:85
 msgid "(different bonus for each)"
-msgstr "（兩種通過之後的獎勵不同）"
+msgstr "（每個首領都有不同的獎勵）"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:85
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:70
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:271
 msgid "Defeat all enemy leaders"
-msgstr "擊敗所有敵人的領袖"
+msgstr "擊敗所有敵方首領"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:92
 msgid "Have a unit pick up the ring of power."
-msgstr "讓一個單位撿起這枚戒指，來獲得更強大的力量。"
+msgstr "讓一個單位撿起這枚力量戒指。"
 
 #. [side]: type=Lich, id=Mal-Kevek
 #. [side]: type=Necromancer, id=Mel Daveth
@@ -449,13 +441,13 @@ msgstr "讓一個單位撿起這枚戒指，來獲得更強大的力量。"
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:90
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:105
 msgid "Mal-Ravanal’s Forces"
-msgstr "麥爾-諾曼鈉的軍隊"
+msgstr "馬爾-拉瓦諾的軍隊"
 
 #. [side]: type=Necromancer, id=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:150
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:55
 msgid "Mel Daveth"
-msgstr "梅．戴衛斯"
+msgstr "梅爾‧戴衛斯"
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:279
@@ -463,8 +455,8 @@ msgid ""
 "You may have ended my first life, but you have only made me more powerful in "
 "death. Now I will teach you a lesson!"
 msgstr ""
-"你已經殺過我一次了，但那只不過是我的第一個人生，我反而還應該要感謝你讓我在死"
-"亡後變得更強大！不過現在，我要先給你一點教訓！"
+"你也許已經結束我的第一個生命，但你只不過是讓我在死後變得更加強大罷了。現在我"
+"要給你一點教訓！"
 
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:284
@@ -475,7 +467,7 @@ msgstr "留幾個人魚給我玩玩。"
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:290
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:492
 msgid "Uhhh."
-msgstr "喀...喀..."
+msgstr "啊啊。"
 
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:295
@@ -496,19 +488,19 @@ msgid ""
 "help we could probably defeat these enemies. Our task is to convince her to "
 "leave her enclave."
 msgstr ""
-"恐怕我們沒辦法。我們需要尋求幫助，我的老師父，在北方的島嶼任教。她跟她的祭司"
-"們都很強大。如果有她們的幫助，我們也許可以戰勝這些敵人。當然，我們要能說服她"
-"離開她的領地。"
+"恐怕我們沒辦法。我們需要尋求幫助，我以前的導師，泰格亞，在北方的島嶼任教。她"
+"跟她的祭司們都很強大。如果有她們的幫助，我們也許可以戰勝這些敵人。我們的任務"
+"是說服她離開她的群落。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:310
 msgid "You can do that, right?"
-msgstr "妳可以說服她，對吧？"
+msgstr "你可以說服她，對吧？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:315
 msgid "I am not sure that I can. However, you could."
-msgstr "我不確定我可不可以，但你一定可以。"
+msgstr "我不確定我可不可以，但你可以。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:320
@@ -516,20 +508,20 @@ msgid ""
 "Me? I’ve never even met Tyegëa. How can I convince her to help us if you "
 "cannot?"
 msgstr ""
-"我？此話怎講？我從來沒見過泰戈雅。妳都不一定能辦到了，我要怎麼才能夠得到她的"
-"信賴，讓她來幫助我們呢？"
+"我？我連泰格亞都沒見過。你都不一定能辦到了，我要怎麼才能夠得到她的信賴，讓她"
+"來幫助我們呢？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:325
 msgid ""
 "You will just have to trust me on this. She will listen to you. I will say "
 "no more on the matter."
-msgstr "你只要相信我就好，她會聽你的。我不能再多說了。"
+msgstr "你只要相信我就好，她會聽你的。我不能再對這件事多說了。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:330
 msgid "Very well. How do we get there?"
-msgstr "嗯...很好，那我該怎麼去那邊？"
+msgstr "那好吧。我要如何去那邊呢？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:335
@@ -539,9 +531,9 @@ msgid ""
 "southwest of Tirigaz. Everyone will have to go; it is now deadly perilous "
 "here, and the open ocean west of Tirigaz can be dangerous for small groups."
 msgstr ""
-"我們沿著海岸向北，然後到西邊的碧爾瀚島，泰戈雅就住在碧爾瀚島西邊的小島上，那"
-"裡位於特瑞格茲港西南邊的海洋。所有人都要去，不能在這裡坐以待斃，況且只有我們"
-"幾個人前往特瑞格茲港的西方海域是很危險的。"
+"我們沿著海岸向北，然後到西邊的比爾黑爾德島，泰格亞就住在比爾黑爾西邊的小島"
+"上，那裡位於特瑞格茲港西南邊的海洋。所有人都要去，不能在這裡坐以待斃，況且只"
+"有我們幾個人前往特瑞格茲港的西方海域是很危險的。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:360
@@ -550,19 +542,19 @@ msgid ""
 "will not be voiced aloud, but if you leave now, some of the people will "
 "think this mission is just an excuse to run away."
 msgstr ""
-"可是，我們大部分的居民都不是戰士，他們不會絕對服從命令。而且這項任務不能到處"
-"聲張，所以如果我們現在離開，有些不明白事情真相的人會認為我們去北方島嶼的任務"
-"只是一個逃跑的藉口罷了。"
+"你大部分的居民不是戰士，他們不會輕易服從你的命令。而且這項任務不能到處聲張，"
+"所以如果我們現在離開，有些不明白事情真相的人會認為我們去北方島嶼的任務只是一"
+"個逃跑的藉口罷了。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:366
 msgid ""
 "However, I am afraid that not everyone will follow you on so perilous an "
-"adventure. First you must prove you are not afraid of danger. If you leave "
+"adventure. First, you must prove you are not afraid of danger. If you leave "
 "now, many will think the mission is but an excuse to flee."
 msgstr ""
-"但是，我擔心不是所有人都願意跟你一起去冒這個險。你必須先向大家證明你不是因怕"
-"死而逃走。如果你現在就走，很多人會覺得這個計畫只不過是你逃跑的藉口！"
+"但是，我擔心不是所有人都願意跟你一起去冒這個大險。你必須先向大家證明你不是因"
+"怕死而逃走。如果你現在就走，很多人會覺得這個計畫只不過是你逃跑的藉口。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:373
@@ -570,15 +562,15 @@ msgid ""
 "I am not afraid! My people will see me fight the undead before we leave, "
 "even if defeating them all is impossible."
 msgstr ""
-"我不怕！我的人民在我們走之前，會看到我們依然在跟不死族對抗，即使我們是不可能"
-"擊敗他的。"
+"我不怕！我的人民在我們走之前，會看到我與亡靈戰鬥，即便我們是不可能擊敗他們全"
+"部的。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:379
 msgid ""
 "But will everyone follow me on so perilous an adventure? I am still a youth; "
 "it may be they will not trust me."
-msgstr "但是，所有人都會跟我去冒這個險嗎？我還太年輕了，說不定他們不相信我。"
+msgstr "但是所有人都會跟我去冒這個險嗎？我還仍是個小伙子，說不定他們不相信我。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:388
@@ -586,15 +578,15 @@ msgid ""
 "They will follow. You proved your courage in our last battle. Your father, "
 "the Kai-that-was, would have been proud."
 msgstr ""
-"他們會追隨你的，在我們上一場的戰鬥中，你已經證明了自己的勇敢。倘若你的父親地"
-"下有知，也會為你感到驕傲。"
+"他們會追隨你的。在我們上一場的戰鬥中，你已經證明了自己的勇敢。你的父親，前任"
+"的凱，也會為你感到驕傲。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:394
 msgid ""
 "You have proven your courage in battle, as tradition required of a kai; they "
 "will follow you now."
-msgstr "你已經在戰鬥中證明了你擁有凱氏家族所必須的勇氣，他們會追隨你的！"
+msgstr "你已經在戰鬥中證明了你擁有一個凱所必須的勇氣，他們會追隨你的。"
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:416
@@ -605,7 +597,7 @@ msgstr "這不可能！"
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:446
 msgid "With their master gone, the undead are vanishing!"
-msgstr "他們的首領倒下後，亡靈們也消失了！"
+msgstr "因為他們的主人倒下，亡靈們也跟著消失！"
 
 #. [unit]: type=Dread Bat, id=Fearsome Bat
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:460
@@ -616,7 +608,7 @@ msgstr "可怕的蝙蝠"
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:475
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:501
 msgid "That is a mighty bat!"
-msgstr "這是一隻很強的蝙蝠！"
+msgstr "那是一隻很強的蝙蝠！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:479
@@ -625,205 +617,207 @@ msgstr "沒關係的，我可以立刻打死牠。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:483
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:509
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:510
 msgid ""
 "Hold a moment! Do you think, with its master gone, it might desire a new one?"
-msgstr "等一下！你真的認為牠的主人死了，牠會立刻想找一個新主人？"
+msgstr "等一下！你覺不覺得，也許因為牠的主人死了，所以想找個新主人？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:487
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:513
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:514
 msgid "If it does not attack, do not kill it. Let us see if it follows us."
-msgstr "如果牠不攻擊，我們就不殺牠。讓我們看看牠會不會跟著我們走。"
+msgstr "如果牠不攻擊，我們就不殺牠。來看看牠是否會聽我們的話。"
 
 #. [message]: speaker=second_unit
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:505
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:631
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:743
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:800
+#. This should just be "translated" to whatever noise a bat makes in your language.
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:506
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:632
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:744
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:801
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:248
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:710
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:843
 msgid "Neep, neep!"
-msgstr "嘶～嘶～"
+msgstr "嘰，嘰！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:520
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:521
 msgid "Look! There is a massive bat back here."
 msgstr "快看！這裡有一隻巨大的蝙蝠。"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:524
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:525
 msgid "Be courageous, and attack it anyway!"
-msgstr "勇敢一點，攻擊牠吧！"
+msgstr "勇敢一點，總之攻擊牠吧！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:528
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:529
 msgid ""
 "But it isn’t attacking <i>me</i>. Do you think, with its master gone, it "
 "might desire a new one?"
-msgstr "但牠沒有攻擊我。是不是因為牠的主人死了，所以想找個新主人？"
+msgstr ""
+"但牠沒有攻擊<i>我</i>。你覺不覺得，也許因為牠的主人死了，所以想找個新主人？"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:532
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:533
 msgid ""
 "If it does not attack, we shall not kill it. Let us see if it follows us."
 msgstr "如果牠沒有攻擊我們，我們就不殺牠。來看看牠是否會聽我們的話。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:571
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:572
 msgid "With their master gone, the undead are fading away!"
-msgstr "他們的首領倒下後，亡靈們也跟著消失了！"
+msgstr "因為他們的主人倒下，亡靈們也跟著消失！"
 
 #. [unit]: type=Vampire Bat, id=Friendly Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:586
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:587
 msgid "Friendly Bat"
 msgstr "友善的蝙蝠"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:601
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:602
 msgid "Look! There is a bat cowering in the corner here."
 msgstr "瞧！這裡有一直蝙蝠蜷縮在角落。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:605
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:639
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:606
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:640
 msgid "Aren’t you going to kill it? We need to keep moving."
 msgstr "你要殺了牠嗎？要就快一點，我們還得繼續前進。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:609
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:610
 msgid "I would feel bad about that. It is, uh, licking my hand."
-msgstr "我覺得蝙蝠好噁心......啊，牠正在舔我的頭！"
+msgstr "我覺得蝙蝠好噁心……啊，牠正在舔我的手。"
 
 #. [message]: speaker=Friendly Bat
 #. [message]: speaker=unit
 #. This should just be "translated" to whatever noise a bat makes in your language.
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:613
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:647
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:671
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:702
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:614
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:648
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:672
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:703
 msgid "Neep?"
-msgstr "嘶～"
+msgstr "嘰？"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:617
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:651
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:618
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:652
 msgid "Apparently you have your own bat."
-msgstr "顯然，你已經擁有屬於你的蝙蝠了。"
+msgstr "看來你已經擁有屬於你的蝙蝠了。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:635
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:636
 msgid "Look! There is a bat."
 msgstr "快看！這裡有一隻蝙蝠。"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:643
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:675
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:644
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:676
 msgid "It’s kind of cute."
 msgstr "牠真是可愛。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:658
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:659
 msgid "And look! There is a bat cowering in the corner here."
 msgstr "再看！有一隻蝙蝠蜷縮在角落。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:662
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:663
 msgid "Well, kill it, and let’s keep moving."
 msgstr "好，殺了牠，然後我們繼續前進。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:666
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:667
 msgid "But look, it’s licking my hand."
 msgstr "但是你看，牠正在舔我的手。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:679
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:680
 msgid "Very well then. I suppose we have our own bat."
-msgstr "做得很好，我想我們有自己的蝙蝠了。"
+msgstr "那好吧，我想我們有自己的蝙蝠了。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:715
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:716
 msgid "With their master gone, the skeletons are crumbling!"
-msgstr "他們的首領倒下後，骷髏們的骨頭全都散了！"
+msgstr "因為他們的主人倒下，骷髏們也跟著變成碎屑！"
 
 #. [unit]: type=Walking Corpse, id=Undead Bat
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:728
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:729
 msgid "Undead Bat"
 msgstr "不死蝙蝠"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:747
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:748
 msgid "Look! There is a bat. It is moving, but it looks half dead."
 msgstr "快看！這裡有一隻蝙蝠。牠還在動，但看起來已經快死了。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:754
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:755
 msgid ""
 "Look! There is a bat in the corner here. It is moving, but it looks half "
 "dead."
 msgstr "快看！這裡個角落有一隻蝙蝠。牠還在動，但看起來已經快死了。"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:766
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:767
 msgid "No, that thing is all the way dead."
 msgstr "不對，那個東西一直都是死的。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:772
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:773
 msgid "Actually, I believe it is truly dead."
-msgstr "事實上，我相信牠真的已經死了。"
+msgstr "事實上，我認為牠真的已經死了。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:778
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:779
 msgid ""
 "I believe it is undead and has no will of its own, but the Kai may have the "
-"will power to direct it."
+"willpower to direct it."
 msgstr "我相信牠是沒有自我意識的亡靈，凱好像有指揮牠的力量。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:782
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:783
 msgid "Fascinating. I shall certainly try."
 msgstr "真神奇，我試試看。"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:804
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:810
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:805
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:811
 msgid "He had a chest in his tent, too. It is filled with gold!"
 msgstr "在牠的帳篷裡有個寶箱，裡面都是金幣！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:825
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:826
 msgid "You receive 120 gold."
 msgstr "你得到120枚金幣。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:832
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:833
 msgid "It galls me to flee from our home, but we will return."
-msgstr "我們雖然狼狽的逃離咱們的家園，但我們一定會回來的！"
+msgstr "我們雖然狼狽地逃離我們的家園，但我們會回來的。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:916
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:917
 msgid "Have a unit pick up the ring to end the scenario."
-msgstr "讓一個單位撿起這枚戒指，結束這個任務。"
+msgstr "讓一個單位撿起這枚戒指來結束這個章節。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:931
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:932
 msgid ""
-"Killing these enemies was good, but there were many more on the way. It will "
+"Killing these enemies was good, but there are many more on the way. It will "
 "take greater might than we have to defeat them."
 msgstr ""
-"殺光這些敵人非常好，但有更多的敵人已經在來的路上了。我們將需要更強大的戰力來"
-"擊敗他們。"
+"殺光這些敵人很好，但有更多的敵人已經在來的路上了。我們將需要更強大的戰力來擊"
+"敗他們。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:935
+#: data/campaigns/Dead_Water/scenarios/02_Flight.cfg:936
 msgid "Onward to Tyegëa’s island, then."
-msgstr "然後他們輾轉來到泰戈雅的小島。"
+msgstr "然後他們輾轉來到泰格亞的小島。"
 
 #. [scenario]: id=03_Wolf_Coast
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:13
@@ -833,7 +827,7 @@ msgstr "惡狼海岸"
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:21
 msgid "Distrustful of the open ocean, Kai Krellis led his people up the coast."
-msgstr "凱．克萊利斯帶著他的人，有驚無險地闖過外海，來到海岸。"
+msgstr "凱‧克瑞利斯帶著他的人有驚無險地闖過外海，來到海岸。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:26
@@ -844,10 +838,9 @@ msgid ""
 "to bother the merfolk, but these goblins were bandits and outcasts even to "
 "their own kind."
 msgstr ""
-"但狼群早就憑著海岸吹來的風，嗅到戰爭的氣息，而前來與他們會面，這真是個艱苦的"
-"開始啊！這些狼被一群地精駕馭著。特瑞格茲港港的半獸人們，在與凱．勞迪斯的戰爭"
-"中受到不小的教訓，應該還不會來侵擾人魚。但是這些地精就很難說了，他們會搶劫同"
-"族，已經被族人趕了出去。"
+"他們才正要開始艱苦的徒步旅行時，就遇到了早已嗅到戰爭氣息的狼群。許多狼被地精"
+"駕馭著。特瑞格茲的半獸人們，在與凱‧勞迪斯的戰爭中受到不小的教訓，應該還不會來"
+"侵擾人魚。但是這些地精就很難說了，他們甚至會搶劫、排擠同族。"
 
 #. [side]: id=Gashnok, type=Goblin Knight, type=Goblin Knight, type=Direwolf Rider, type=Direwolf Rider
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:81
@@ -857,7 +850,7 @@ msgstr "狼騎兵"
 #. [side]: id=Gashnok, type=Goblin Knight, type=Goblin Knight, type=Direwolf Rider, type=Direwolf Rider
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:85
 msgid "Gashnok"
-msgstr "葛斯奴卡"
+msgstr "格索諾克"
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:143
@@ -867,14 +860,14 @@ msgstr "野生狼群"
 #. [unit]: type=Goblin Knight, id=Vrunt
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:200
 msgid "Vrunt"
-msgstr "烏藍特"
+msgstr "弗倫特"
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:210
 msgid ""
 "Smells like lots of death in the south near that merman town. Hey, Vrunt, "
 "you think the wolves like eatin’ merfish?"
-msgstr "南方人魚城鎮有許多死亡的氣味。嘿，烏藍特，你猜狼群喜歡吃人魚嗎？"
+msgstr "南方人魚城鎮有許多死亡的氣味。嘿，弗倫特，你猜狼群喜歡吃人魚嗎？"
 
 #. [message]: speaker=Vrunt
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:215
@@ -882,15 +875,15 @@ msgid ""
 "Talking or not, fish are fish. Wolves’ll probably love them. Besides, look "
 "there! Some fresh ones are coming our way!"
 msgstr ""
-"不管會不會說話，魚就是魚。狼群肯定喜歡吃。還有，看那！有些新鮮貨正朝著我們過"
-"來！"
+"不管會不會說話，魚就是魚，狼群肯定喜歡吃。還有，看那邊！有些新鮮貨正朝著我們"
+"過來！"
 
 #. [message]: speaker=Gashnok
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:220
 msgid ""
 "They look mighty good to me. Might even have a taste later, myself. Let’s "
 "get ’em, boys!"
-msgstr "他們看起來很營養。也許待會我會親自來嚐嚐。上吧，兄弟們！"
+msgstr "他們看起來很營養。也許待會我會親自來嘗嘗。上吧，小的們！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:225
@@ -900,37 +893,37 @@ msgstr "大家小心一點！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:253
 msgid "Someone go find out what is exciting the bat."
-msgstr "去看看這隻蝙蝠發現了什麼有趣的東西。"
+msgstr "哪個人去看看這隻蝙蝠發現了什麼有趣的東西。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:277
 msgid ""
 "I wonder why such a strangely colored wolf emerged from the forest over "
 "there."
-msgstr "我想知道那個奇怪的狼為什麼從那邊的森林過來。"
+msgstr "我想知道為什麼會有一匹毛色奇怪的狼那邊的森林出現。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:306
 msgid "There is something sticking out of the mud here. Ah! I got it."
-msgstr "好像有什麼東西從這邊的泥土裡伸出來。啊！我找到它了！"
+msgstr "好像有什麼東西從這邊的泥土裡伸出來。啊！我拿到它了。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:313
 msgid ""
 "I know what that is. It’s a storm trident. It is supposed to let you control "
 "the lightning."
-msgstr "我知道這是什麼，這是一個風暴三叉戟，它可以讓你操控閃電。"
+msgstr "我知道這是什麼，這是一個風暴三叉戟，它應該可以讓你操控雷電。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:318
 msgid "The trident is 14×2, magical, ranged, with <i>fire</i> damage."
-msgstr "這個三叉戟有14×2的傷害力，屬於遠程魔法，同時還附加<i>火焰</i>傷害."
+msgstr "這個三叉戟有14×2的遠程火焰魔法傷害。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:325
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:903
 msgid "That sounds great! I’ll take it."
-msgstr "聽起來真棒！我想拿著它。"
+msgstr "聽起來真棒！我要拿著它。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:334
@@ -940,7 +933,7 @@ msgstr "聽起來真可怕，讓別人來拿吧。"
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:372
 msgid "Let me have that trident. I want to control lightning!"
-msgstr "讓我拿著這個三叉戟吧，我想要控制閃電！"
+msgstr "讓我拿著這個三叉戟吧，我想要控制雷電！"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/03_Wolf_Coast.cfg:381
@@ -950,7 +943,7 @@ msgstr "我還是把這個三叉戟放回原處吧。"
 #. [scenario]: id=04_Slavers
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:33
 msgid "Slavers"
-msgstr "解放奴隸"
+msgstr "奴隸"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:42
@@ -958,8 +951,8 @@ msgid ""
 "Now, they were farther away from home than most merfolk ever went. Only "
 "Cylanna and a few soldiers had been farther."
 msgstr ""
-"現在，他們走了更遠，來到大部分的人魚們從沒來過的地方。只有希蘭娜和少數幾個戰"
-"士有來過而已。"
+"現在，他們比大部分的人魚都要離家更遠。只有希蘭娜和少數幾個士兵曾去過遠方而"
+"已。"
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:86
@@ -976,12 +969,21 @@ msgstr "蜥蜴人奴隸"
 #. [side]: id=Gilak, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:114
 msgid "Gilak"
-msgstr "吉雷克"
+msgstr "吉拉克"
+
+#. [unit]: type=Saurian Skirmisher
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:150
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:157
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:205
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:255
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:262
+msgid "Guardian"
+msgstr "守護者"
 
 #. [side]: id=Raxisz, type=Saurian Ambusher, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:170
 msgid "Raxisz"
-msgstr "萊克西斯"
+msgstr "瑞克西斯"
 
 #. [side]: id=Aglizix, type=Saurian Ambusher, type=Saurian Flanker, type=Saurian Flanker, type=Saurian Flanker
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:214
@@ -996,22 +998,22 @@ msgstr "艾格利茲克斯"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:316
 msgid "There are cages on the shore. I wonder why."
-msgstr "岸上有好多個籠子，不知道是做什麼的。"
+msgstr "岸上有好多個籠子，我想知道為什麼。"
 
 #. [unit]: type=Merman Brawler, id=Teeloa
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:329
 msgid "Teelöa"
-msgstr "涕洛亞"
+msgstr "蒂洛亞"
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:342
 msgid "Help! Save me!"
-msgstr "救命！拜託救我！"
+msgstr "救命！救我！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:347
 msgid "Who are you? What is happening?"
-msgstr "你是誰？發生什麼事了？"
+msgstr "你是誰？發生什麼事？"
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:352
@@ -1020,20 +1022,21 @@ msgid ""
 "years. I saw you coming up the coast in strength, so I fled. They follow in "
 "my wake, and without your protection they will surely kill me."
 msgstr ""
-"我的名字是涕洛亞，我已經做這些蜥蜴人的奴隸將近兩年了。我看到你到這個海岸，來"
-"勢洶洶，所以我逃了出來。他們正在後面追殺我，我需要你的保護！"
+"我的名字是蒂洛亞，我已經做這些蜥蜴人的奴隸將近兩年了。我看到你們到這個海岸，"
+"來勢洶洶，所以我逃了出來。他們正在後面追殺我，沒有你們的保護，我確定他們將會"
+"殺了我。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:357
 msgid "A slave!"
-msgstr "你是奴隸！？"
+msgstr "奴隸！"
 
 #. [message]: speaker=Gilak
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:363
 msgid ""
 "You! Merman! You have some property of oursss. Return it at once if you "
 "value your life."
-msgstr "你，對，就是你，人魚！如果你想活命的話，就把我們的奴隸交出來！"
+msgstr "你！人魚！你把我們的財產拿走了。立刻交出來，如果你重視你的性命。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:368
@@ -1042,13 +1045,13 @@ msgid ""
 "should be the property of another. Release all your slaves, or the wrath of "
 "the merfolk will fall upon you!"
 msgstr ""
-"如果你是在說人魚涕洛亞，那他已經不再是你的奴隸了。沒有任何人可以奴役其他人。"
-"釋放你所有的的奴隸吧！否則讓你嘗嘗我們人魚的怒氣！"
+"如果你是在說這個人魚，蒂洛亞，那他已經不再是你的奴隸了。沒有任何人可以奴役其"
+"他人。釋放你所有的的奴隸吧，否則人魚的怒氣將會壓垮你們！"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:373
 msgid "A brave and kindhearted choice! I cannot abide slavery."
-msgstr "說得好！你真是勇敢，也很仁慈。我也跟你一樣，不能容忍奴役。"
+msgstr "真是一個勇敢又仁慈的選擇！我不能容忍奴役。"
 
 #. [message]: speaker=Gwabbo
 #. The phrase 'words of a man' does *not* have the sense of
@@ -1059,8 +1062,7 @@ msgid ""
 "Those were the words of a man and a leader, Kai Krellis, and well spoken. "
 "The folk are truly yours now."
 msgstr ""
-"這正是一個領袖該說的話，凱．克萊利斯。人魚就是要這樣說話，現在大家都跟你是同"
-"一條心了！"
+"那些正是一個領袖該說的話，凱‧克瑞利斯，說得好。現在大家都真正與你同心了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:387
@@ -1069,20 +1071,20 @@ msgid ""
 "from fleeing their enemies, cheered his ultimatum and made ready to fight "
 "with a will."
 msgstr ""
-"凱．克萊利斯發現確實如此。他們這些離鄉背井，亡命天涯的人魚們，原本士氣低落。"
-"現在因他剛才的義正嚴詞，而鼓舞了群眾。他們燃起鬥志，撩起衣袖，準備大幹一場。"
+"凱‧克瑞利斯發現確實如此。他們這些離鄉背井、亡命天涯的人魚，原本士氣低落，但因"
+"他的最後通牒而被鼓舞了。他們燃起鬥志，準備戰鬥。"
 
 #. [message]: speaker=Gilak
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:393
 msgid "Foolish merman! You will sssoon wish you had minded your own affairs."
-msgstr "愚蠢的人魚們，你們很快就會後悔自己不該多管閒事！"
+msgstr "愚蠢的人魚！你很快就會後悔自己不該多管閒事。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:402
 msgid ""
 "Perhaps if I called out to the slaves, I could rouse them to help us fight "
 "against their captors."
-msgstr "也許我可以喚醒他們的奴隸，來幫我對抗這群蜥蜴人。"
+msgstr "也許如果我向這些奴隸喊話，可以刺激他們來幫我們對抗捕捉他們的人。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:412
@@ -1090,8 +1092,8 @@ msgid ""
 "I think that would work. If I may make a suggestion though, I think we "
 "should wait for a more strategic moment."
 msgstr ""
-"好主意，我覺得這應該可行。不過我有個建議請你允許，就是我認為我們應該先等待一"
-"個適當的時機。"
+"我覺得那應該可行。不過我有個建議請你允許，就是我認為我們應該等待一個更適當的"
+"時機。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:416
@@ -1107,21 +1109,24 @@ msgstr ""
 msgid ""
 "Those are the words of a true kai and your father’s son. I am proud of you, "
 "Krellis."
-msgstr "這些才是一個真正的凱氏傳人應該要說的話。克萊利斯，我替你感到驕傲。"
+msgstr ""
+"那些才是一個真正的凱以及作為你父親的兒子應該要說的話。我為你感到驕傲，克瑞利"
+"斯。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:426
 msgid ""
 "I believe that would work, but many of them will be killed if you do it now. "
 "It might be better to wait."
-msgstr "我希望可以成功，但如果你這樣做，會害大部分的人被殺。現在最好先等一等。"
+msgstr ""
+"我希望可以成功，但如果你現在這樣做，會害大部分的奴隸被殺。最好先等一等。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:434
 msgid ""
 "You can choose when the slaves come out of their villages and attack their "
-"captors. When you are ready, right click anywhere and select the slave "
-"revolt."
+"captors. When you are ready, right-click anywhere and select 'Inspire the "
+"slaves to revolt'."
 msgstr ""
 "你可以選擇你認為最適當的時機，來讓奴隸們從村莊裡衝出來對抗這群蜥蜴人。當你覺"
 "得時機成熟的時候，按滑鼠右鍵點及任何地方，選擇「奴隸起義」。"
@@ -1137,180 +1142,184 @@ msgid ""
 "Hear this! Slaves, the merfolk have sworn war against your tormentors. If "
 "you would be free, arise and seize your liberty!"
 msgstr ""
-"奴隸們，聽著！我們人魚正替你們的自由而戰。如果你們想要重獲新生，就站出來對抗"
-"你們的主人吧！"
+"聽著！奴隸們，我們人魚正替你們的自由而戰。如果你們想要重獲新生，就站出來奪回"
+"你們的自由吧！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:502
+#. "to hand" is an expression that means "nearby".
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:503
 msgid ""
 "Cheers erupted from several villages, and former slaves rushed out with "
 "whatever meager weapons they could find, or fists and rocks if no weapons "
 "were to hand. Screams and curses came from the saurian castles."
 msgstr ""
-"數個村莊中傳出歡呼聲，奴隸們衝了出來，手上拿著五花八門的武器，有鋤頭、耙子、"
-"棒子等等。而沒找到武器的人則揮舞著拳頭或是石塊。尖叫和咒罵聲從蜥蜴人的城堡裡"
-"傳出來。"
+"數個村莊中傳出歡呼聲，奴隸們衝了出來，手上拿著五花八門的武器，而沒找到武器的"
+"人則揮舞著拳頭或是石塊。尖叫和咒罵聲從蜥蜴人的城堡裡傳出來。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:540
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:541
 msgid "There is a treasure chest there! Good bat!"
-msgstr "這裡有個寶箱！蝙蝠幹得好！"
+msgstr "那裡有個寶箱！乖蝙蝠！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:546
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:547
 msgid "There is a treasure chest here!"
 msgstr "這裡有個寶箱！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:559
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:560
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:184
 msgid "You receive 100 gold."
-msgstr "你得到100個金幣。"
+msgstr "你得到100枚金幣。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:581
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:582
 msgid "Neep!"
-msgstr "嘶！"
+msgstr "嘰！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:585
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:586
 msgid ""
 "I believe our bat is impressed! That must be a drake. I am told they are "
 "fearsome, but honorable, creatures. I think we can let him out of the cage."
 msgstr ""
-"我覺得我們的蝙蝠很特別！牠說不定是一條龍。我聽說牠們是一種長得很可怕，但其實"
-"很高貴的生物。我認為我們應該把牠放出來。"
+"我覺得我們的蝙蝠被動搖了！那說不定是一個龍族。我聽說他們是一種長得很可怕，但"
+"其實很高貴的生物。我認為我們應該把他放出來。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:597
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:598
 msgid ""
 "This must be a drake. I am told they are honorable creatures. I am going to "
 "let him out of the cage."
-msgstr "這一定是條龍。我聽說他們是高貴的物種，我要把他從籠子裡救出來。"
+msgstr "這一定是一個龍族。我聽說他們是一種高貴的生物。我要把他放出來。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:603
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:604
 msgid ""
 "That must be a drake. I am told they are fearsome, but honorable, creatures. "
 "Let him out of the cage."
-msgstr "那一定是條龍。我聽說他們很可怕，但實際是卻是高貴的物種。把他放出來吧！"
+msgstr ""
+"那一定是一個龍族。我聽說他們是一種長得很可怕，但其實很高貴的生物。把他放出來"
+"吧。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:607
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:608
 msgid "Uh...If you say so."
-msgstr "嗯......如果你這樣說。"
+msgstr "嗯……如果你這樣說，那就這麼辦。"
 
 #. [unit]: type=Drake Burner, id=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:620
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:621
 msgid "Keshan"
-msgstr "凱軒"
+msgstr "柯珊"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:633
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:634
 msgid "What is your name?"
 msgstr "你叫什麼名字？"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:638
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:639
 msgid "I am Keshan."
-msgstr "我叫凱軒。"
+msgstr "我叫柯珊。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:643
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:644
 msgid "How did you come to be in a cage?"
-msgstr "你怎麼會在籠子裡？"
+msgstr "你怎麼會跑進籠子裡？"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:648
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:649
 msgid ""
 "I was hunting north of here when the small ones captured me. I killed many, "
 "but I was humiliated in the end."
 msgstr ""
-"我在北方受傷了，這些蜥蜴人想抓住我。我殺了很多他們的人，但終究還是被抓到了。"
+"我在這裡的北方受傷了，這些蜥蜴人便抓住了我。我殺生無數，但終究還是落得如此下"
+"場。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:653
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:654
 msgid "Will you fight with us, Keshan?"
-msgstr "凱軒，你會與我們並肩作戰吧？"
+msgstr "你想跟我們一起作戰嗎，柯珊？"
 
 #. [message]: speaker=Keshan
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:658
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:659
 msgid "You have released me, so I owe you a great debt. I will fight with you."
-msgstr "你救了我，我欠你一個人情。我當然會幫你！"
+msgstr "你們釋放了我，所以我欠你們一個大人情。我會跟你們一起作戰的。"
 
 #. [message]: speaker=Gwabbo
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:663
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:664
 msgid ""
-"Don’t let him go too crazy. Those saurian spears will go right through his "
+"Don’t let him go too crazy. Those saurian spears can go right through his "
 "scales."
-msgstr "別讓他衝到太前面，這些蜥蜴人的長毛會刺穿他的鱗片。"
+msgstr "別讓他衝到太前面。那些蜥蜴人的長矛會刺穿他的鱗片。"
 
 #. [unit]: type=Poacher, id=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:683
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:684
 msgid "Siddry"
-msgstr "希捷"
+msgstr "希德里"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=unit
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:706
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:712
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:707
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:713
 msgid "Who are you, and what are you doing in a cage?"
-msgstr "你是誰？怎麼會被關在籠子裡？"
+msgstr "你是誰？你在籠子裡做什麼？"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:719
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:720
 msgid ""
 "My name is Siddry. These cursed saurians nabbed me a week ago — wanted me to "
 "turn overseer to their other slaves. I wouldn’t do it, so they caged me with "
 "them. They tried to take my bow too, but they had some trouble with that."
 msgstr ""
-"我的名字是希捷。這些該死的蜥蜴人在一星期前抓了我，要我做他們奴隸的監察。我不"
-"想要，所以他們就把我和奴隸關在一起。他們嘗試想拿走我的弓，我拚死反抗，他們也"
-"束手無策。"
+"我的名字是希德里。這些該死的蜥蜴人在一星期前抓了我，要我做他們奴隸的監察。我"
+"不想要，所以他們就把我和奴隸關在一起。他們嘗試想拿走我的弓，我拚死反抗，他們"
+"也束手無策。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:724
-msgid "So you will help us defeat them?"
-msgstr "你會幫我們對抗他們吧？"
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:725
+msgid "So, you will help us defeat them?"
+msgstr "那你會幫我們對抗他們吧？"
 
 #. [message]: speaker=Siddry
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:729
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:730
 msgid ""
 "The way I see it, you’re helping me. There is nothing I would like better "
 "than to put their slavery to an end. I can’t swim, so I won’t be able to "
 "come with you on your travels, but I will owe you. If there is anything I "
 "can do in the future, I will do it."
 msgstr ""
-"摧毀他們的奴隸制度正是我最想做的事，但我不會游泳，所以我不能和你一起踏上旅"
-"程。我還欠你一個人情，如果未來你有什麼需要我的地方，我會盡力而為！"
+"在我看來，是你們正在幫我。摧毀他們的奴隸制度正是我最想做的事，但我不會游泳，"
+"所以我不能和你們一起踏上旅程。我還欠你們一個人情，如果未來你們有什麼需要我的"
+"地方，我會盡力而為。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:734
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:735
 msgid ""
 "Well met, then, friend. I am Kai Krellis, leader of the people of Jotha."
-msgstr "我是凱．克萊利斯，礁沙城的國王。很高興遇到你，朋友。"
+msgstr "那麼，很高興遇到你，朋友。我是凱‧克瑞利斯，礁沙的國王。"
 
 #. [message]
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:749
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:750
 msgid ""
 "Kai Krellis, you have freed us, and we are forever in your debt. How can we "
 "repay you?"
-msgstr "凱．克萊利斯，你讓我們重獲自由，我們都欠你一個人情，該怎麼報答你才好？"
+msgstr "凱‧克瑞利斯，你讓我們重獲自由，我們永遠欠你人情。我們可以怎麼報答你？"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:754
+#: data/campaigns/Dead_Water/scenarios/04_Slavers.cfg:755
 msgid ""
 "I will not ask you to follow me. You have suffered enough for the benefit of "
 "others. Go back to your families if you have them, and work for yourselves "
 "from now on."
 msgstr ""
-"我不會叫妳們跟著我，你們已經被那些蜥蜴人剝削了許久。回去陪你們的家人吧！往後"
+"我不會叫你們跟著我，你們已經被那些蜥蜴人剝削了許久。回去陪你們的家人吧！往後"
 "替自己做事就好。"
 
 #. [scenario]: id=05_Tirigaz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:23
 msgid "Tirigaz"
-msgstr "特瑞格茲港"
+msgstr "特瑞格茲"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:32
@@ -1319,24 +1328,24 @@ msgid ""
 "soundly beaten the orcs. Bilheld was due west from there. The merfolk felt "
 "uneasy, so they took shelter in an abandoned orcish encampment as night fell."
 msgstr ""
-"海岸的另一邊就是特瑞格茲港，那裡就是凱．勞迪斯大戰半獸人的地方，而碧爾瀚島就"
-"在特瑞格茲港的西邊。人魚們感到很疲倦，所以他們在夜晚降臨的時候，到半獸人廢棄"
+"海岸的另一邊就是特瑞格茲港城，那裡就是凱‧勞迪斯大戰半獸人的地方，而比爾黑爾德"
+"就在特瑞格茲的西邊。人魚們感到很疲倦，所以他們在夜晚降臨的時候，到半獸人廢棄"
 "的營地休息。"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:66
 msgid "Destroy all the undead"
-msgstr "擊敗所有不死族"
+msgstr "擊敗所有亡靈"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:77
 msgid "(you can destroy the undead first)"
-msgstr "（你可以先解決掉幽魂）"
+msgstr "（你可以先解決掉亡靈）"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:77
 msgid "Also kill Marg-Tonz"
-msgstr "並且殺死馬格．唐茲"
+msgstr "並且殺死馬格-唐茲"
 
 #. [side]: id=Marg-Tonz, type=Orcish Sovereign
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:110
@@ -1346,17 +1355,18 @@ msgstr "半獸人"
 #. [side]: id=Marg-Tonz, type=Orcish Sovereign
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:114
 msgid "Marg-Tonz"
-msgstr "馬格．唐茲"
+msgstr "馬格-唐茲"
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:142
 msgid "Undead"
 msgstr "不死族"
 
+# 這邊故意不翻成「找到他們了」。
 #. [message]: speaker=ghost scout
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:240
 msgid "Found. Them."
-msgstr "找到他們了。"
+msgstr "找到了。他們。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:357
@@ -1365,20 +1375,21 @@ msgid ""
 "the undead have caught up with us. The spirits may have trapped us here for "
 "the night, but in the morning we will..."
 msgstr ""
-"我擔心的事情終究發生了。我們花了太多的時間來對抗蜥蜴人，以致於讓這些亡靈們找"
-"到了我們。這些幽魂或許可以在這個夜晚困住我們，但到了早上，我們就會......"
+"我擔心的事情終究發生了。我們花了太多的時間來對抗蜥蜴人，以至於讓這些亡靈們找"
+"到了我們。這些亡靈或許可以在這個夜晚困住我們，但到了早上，我們就會……"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:362
 msgid ""
 "What’s going on? What are you fish-men doing here? Are we constantly to be "
 "pestered by you creatures?"
-msgstr "發生什麼事了？你們這些人魚們在這裡幹嘛？你們一定要一直糾纏我們嗎？"
+msgstr ""
+"發生什麼事？你們這些人魚在這裡做什麼？我們一定要被你們這種生物一直糾纏嗎？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:367
 msgid "He’s one to complain about <i>that</i>..."
-msgstr "他在抱怨那場戰爭......"
+msgstr "他還有臉抱怨<i>那場戰爭</i>……"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:372
@@ -1395,7 +1406,7 @@ msgstr "很好，那就快滾。"
 msgid ""
 "Actually, we have some ghosts after us now, and we would like to shelter "
 "here for a while."
-msgstr "事實上，現在有很多幽魂追著我們，我們想要在這裡待一下子，來解決他們。"
+msgstr "事實上，現在有很多亡靈追著我們，我們想要在這裡待一下子，來解決他們。"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:387
@@ -1403,7 +1414,7 @@ msgid ""
 "Forget about it! We don’t want no trouble, but get off our land! Ghosts who "
 "don’t like fish are your problem."
 msgstr ""
-"免談！我們才不想要惹麻煩，你們快滾！幽魂不喜歡你們，那是你們自己的問題。"
+"免談！我們才不想要惹麻煩，快滾出我們的土地！亡靈不喜歡人魚是你們自己的問題。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:392
@@ -1421,44 +1432,45 @@ msgid ""
 "And don’t touch the ships neither!"
 msgstr ""
 "你只有一個小時。如果超過了，我們就會拆除你們的營地。你們最好待回水裡，如果你"
-"們用腳......或是其他方法踏上這片土粒，我們將會切斷你們的喉嚨。你們必須遠離我"
-"們的港口，不能碰到任何的船！"
+"們用腳……或是其他方法踏上這片土地，我們將會切開你們的喉嚨。你們必須遠離我們的"
+"碼頭，也不能碰任何的船！"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:402
 msgid "I wonder how he gets customers with manners like that."
 msgstr "我想知道他們是不是都這樣對待客人。"
 
+# 因為是中文，所以結尾不需要空格。
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:407
 msgid ""
 "One hour will work for us. It will not take all of us to defeat the undead. "
-msgstr "一小時已經足夠了，我們不需要所有人都上場。"
+msgstr "一小時對我們來說就足夠了。我們不需要所有人都上場。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:407
 msgid "We can decide what to do about the orc after that."
-msgstr "我們之後可以決定解決掉幽魂後，要怎麼處置這些半獸人"
+msgstr "我們可以在解決掉亡靈之後，決定要怎麼處置這些半獸人。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:412
 msgid "You will only be able to use your keep for one turn."
-msgstr "你的營地只能使用一個回合。"
+msgstr "你的主堡只能使用一個回合。"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:480
 msgid "You’re still squatting on our land! I warned you."
-msgstr "你們仍然站在我們的島上，我警告過你了。"
+msgstr "你們仍然站在我們的土地上，我警告過你了。"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:514
 msgid "I told you to stay off our land! Now you’re in for it."
-msgstr "我早就警告過你趕快離開我們的島了，現在我要你付出代價！"
+msgstr "我早就警告過你遠離我們的土地了！現在你要付出代價。"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:548
-msgid "I told not to bother the ships! Now you’re in for it."
-msgstr "我警告過你們別動我們的船，現在我要你付出代價！"
+msgid "I told you not to bother the ships! Now you’re in for it."
+msgstr "我早就警告過你別碰我們的船了！現在你要付出代價。"
 
 #. [message]: speaker=Marg-Tonz
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:581
@@ -1466,15 +1478,15 @@ msgid ""
 "You crazy fish men are attacking us? After we tried to be nice? That’s it. "
 "We’re going to end you once and for all."
 msgstr ""
-"你的人魚居然趕攻擊我？簡直是把我的好意丟到地上踩！既然你們這樣做，那我就失禮"
-"了。"
+"你的人魚居然敢攻擊我？簡直是把我的好意丟到地上踩！我們將要解決你們，一勞永"
+"逸。"
 
 #. [message]: speaker=Kai Krellis
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:649
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:662
 msgid "Now maybe we can head west undisturbed."
-msgstr "我們直接到西邊，才不會跟半獸人打起來。"
+msgstr "現在我們也許可以不受打擾地前往西邊了。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:660
@@ -1487,8 +1499,7 @@ msgid ""
 "This orc leader has not learned that threatening merfolk is a bad idea. We "
 "shall defeat him before we go."
 msgstr ""
-"這個半獸人首領好像不知道威脅人魚是個很糟的主意，在離開先，先為我們尊嚴出一口"
-"氣吧！"
+"這個半獸人首領不知道威脅人魚是個很糟的主意。在離開前，我們應該要擊敗他們。"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
@@ -1496,12 +1507,12 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:721
 msgid ""
 "It seems that orc was rich! He has a chest here with over 100 pieces of gold!"
-msgstr "這個半獸人好像很有錢，他有一個寶箱，裡面裝著100個金幣！"
+msgstr "這個半獸人好像很有錢，他有一個寶箱，裡面裝著100枚金幣！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/05_Tirigaz.cfg:729
 msgid "Now we must defeat the undead."
-msgstr "現在我們必須擊敗不死族。"
+msgstr "現在我們必須擊敗亡靈。"
 
 #. [message]: speaker=Marg-Tonz
 #. orc's boss' last breath, deliberately gendered instead of changing to "merfolk"
@@ -1512,7 +1523,7 @@ msgstr "我討厭人魚！"
 #. [scenario]: id=06_Uncharted_Islands
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:26
 msgid "Uncharted Islands"
-msgstr "未知島嶼"
+msgstr "無人的島嶼"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:35
@@ -1523,19 +1534,19 @@ msgid ""
 "needed a break from travel; Cylanna only vaguely remembered them, but "
 "thought they might be safe."
 msgstr ""
-"現在他們別無選擇地只能穿過比淺水更危險的外海。幾天之後，他們的前方慢慢浮現出"
-"幾座島嶼。柔弱和年幼者經過這長途跋涉，已經快撐不下去了，他們需要休息。希蘭娜"
-"對這些島嶼沒什麼印象，但她認為這裡應該蠻安全的。於是，他們就來到了島上。"
+"現在他們別無選擇，只能穿過比淺水更危險的外海。幾天之後，他們的前方慢慢浮現出"
+"幾座島嶼。柔弱和年幼的人魚在這長途跋涉下，已經快撐不下去了，他們需要休息。希"
+"蘭娜對這些島嶼沒什麼印象，但她認為這裡應該是安全的。"
 
 #. [side]: id=Growloff, type=Ranger
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:53
 msgid "Growloff and His Pets"
-msgstr "葛雷洛夫和他的寵物"
+msgstr "格羅洛夫和他的寵物"
 
 #. [side]: id=Growloff, type=Ranger
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:58
 msgid "Growloff"
-msgstr "葛雷洛夫"
+msgstr "格羅洛夫"
 
 #. [unit]: type=Cuttle Fish, id=pet
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:133
@@ -1545,9 +1556,8 @@ msgstr "心愛的寵物"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:166
 msgid ""
-"Uh oh. There is someone else here. Hey! He is being attacked by a cuttle "
-"fish!"
-msgstr "歐！不！這裡已經有其他人在了......嘿！他正被一隻大海怪攻擊耶！"
+"Uh oh. There is someone else here. Hey! He is being attacked by a cuttlefish!"
+msgstr "啊哦。這裡已經有其他人在了……嘿！他正被一隻大海怪攻擊耶！"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:170
@@ -1557,29 +1567,30 @@ msgstr "我的寵物，你快看，這裡有多美味的食物啊！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:174
 msgid "Or...is he <i>talking</i> to it?!"
-msgstr "不...他是在跟那隻大海怪<i>說話</i>嗎？！"
+msgstr "不……他是在跟那隻大海怪<i>說話</i>嗎？！"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:178
 msgid "It is worse than that. I think <i>we</i> are the treat!"
-msgstr "比那個更糟的是，我認為他說的美味食物就是我們！"
+msgstr "比那個更糟的是，我認為他說的美味食物就是<i>我們</i>！"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:182
 msgid "Who is ready for a merfolk snack?"
-msgstr "哪隻人魚已經準備好要當我的點心了？"
+msgstr "哪隻人魚準備好要當點心了？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:186
 msgid "Brace yourselves."
-msgstr "大家小心！"
+msgstr "大家警戒。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:199
 msgid ""
-"Oh no! Look what he has frisking at his heels now. And I thought the cuttle "
-"fish was bad!"
-msgstr "歐，不！看看他腳邊那些剛被他放的生物，剛剛的大海怪還算是小隻的！"
+"Oh no! Look what he has frisking at his heels now. And I thought the "
+"cuttlefish was bad!"
+msgstr ""
+"噢，不！看看他腳邊那些正在活蹦亂跳的東西。我還以為那隻大海怪已經夠糟了！"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:211
@@ -1594,22 +1605,22 @@ msgstr "別殺我！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:234
 msgid "But you attacked us with these monsters."
-msgstr "不殺你的話，你用這些怪物攻擊我們。"
+msgstr "但你用這些怪物攻擊我們。"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:238
 msgid ""
 "They are my friends. I’ve been so lonely here...and you killed so many of my "
 "friends. They could be your friends too. Spare me, and I’ll give you my "
-"favorite cuttle fish. His name is Inky."
+"favorite cuttlefish. His name is Inky."
 msgstr ""
-"他們都是我的朋友，我在這裡好寂寞......而你卻殺死了我好多個朋友。她們也是可以"
-"成為你們的朋友的！我把我最喜歡的烏賊大海怪送你。牠叫做墨黑。"
+"牠們都是我的朋友。我在這裡好寂寞……而你卻殺了我好多個朋友。牠們也是可以成為你"
+"們的朋友的！我要把我最喜歡的烏賊大海怪送你。牠叫做墨黑。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:242
 msgid "I do not want a dangerous beast like that!"
-msgstr "我不想要像牠那樣的危險怪物！"
+msgstr "我不想要像牠那樣的危險野獸！"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:246
@@ -1617,8 +1628,8 @@ msgid ""
 "But he’s tame! Really! He understands dozens of commands. He’ll do what you "
 "tell him. He’s a really nice fish."
 msgstr ""
-"牠已經被我馴服了！我是說真的！牠了解數十種命令。你要求牠做什麼，牠都會完成，"
-"牠真的是一個很棒的烏賊。"
+"但牠已經被我馴服了！真的！牠了解數十種命令。你要求牠做什麼，牠都會完成，牠真"
+"的是一條很乖的烏賊。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:250
@@ -1628,18 +1639,18 @@ msgstr "也許我們可以養一個寵物海怪。"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:254
 msgid ""
-"Very well. I will take the cuttle fish. But do not trouble us again, or I "
+"Very well. I will take the cuttlefish. But do not trouble us again, or I "
 "shall kill you and all the rest of your pets."
 msgstr ""
-"那好，我就帶著這隻烏賊，但請你別再來煩我們了，不然我會殺了你，和你所有的寵"
-"物。"
+"那好吧，這隻烏賊我就收下了。但請你別再來煩我們了，不然我會殺了你，和你所有的"
+"寵物。"
 
 #. [message]: speaker=Growloff
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:258
 msgid ""
 "Of course, of course. I promise! I never wanted to hurt you nice people "
 "anyway."
-msgstr "當然、當然！我保證！我不會再傷害你們幾個好人。"
+msgstr "當然、當然！我保證！反正我從來就不想傷害你們這些好人。"
 
 #. [unit]: type=Cuttle Fish, id=Inky
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:266
@@ -1649,12 +1660,12 @@ msgstr "墨黑"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/06_Uncharted_Islands.cfg:275
 msgid "Right. Tell me how to control this thing."
-msgstr "非常好，快點告訴我要怎麼控制這個東西吧。"
+msgstr "對了，告訴我要怎麼控制這個東西吧。"
 
 #. [scenario]: id=07_Bilheld
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:24
 msgid "Bilheld"
-msgstr "碧爾瀚島"
+msgstr "比爾黑爾德"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:33
@@ -1663,7 +1674,7 @@ msgid ""
 "just behind it. The island was inhabited, however, and the residents didn’t "
 "look happy to see them."
 msgstr ""
-"終於，這些人魚們來到碧爾瀚島。他們的求援目的，就快達成了。這個島上有人居住，"
+"終於，這些人魚來到比爾黑爾德。他們的求援目的，就快達成了。這個島上有人居住，"
 "然而，這些居民似乎不怎麼高興他們的到來。"
 
 #. [side]: id=Vlagnor, type=Drake Flameheart
@@ -1674,22 +1685,22 @@ msgstr "龍族"
 #. [side]: id=Vlagnor, type=Drake Flameheart
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:55
 msgid "Vlagnor"
-msgstr "麥可諾"
+msgstr "弗拉葛諾"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:124
 msgid "What are you merfolk doing here?"
-msgstr "你們這些人魚在這裡幹嘛？"
+msgstr "你們人魚在這裡做什麼？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:128
 msgid "We have business with Tyegëa on the other side of the island."
-msgstr "我們有事情要找過去島的另一邊找泰戈雅。"
+msgstr "我們有事情要找過去島的另一邊找泰格亞。"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:132
 msgid "The mermaid witch?"
-msgstr "這個人魚女巫？"
+msgstr "那個人魚女巫？"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:136
@@ -1707,60 +1718,60 @@ msgid ""
 "She kill drakes. If you are her friend, we will kill you. We do not want "
 "MORE merfolk blasting and stabbing."
 msgstr ""
-"她殺了我的族人們。如果你們是她的朋友，那我們就要殺了你們。我們可不希望又\"更"
-"多\"的人魚拿著長矛來這裡搞破壞。"
+"她殺了我的族人們。如果你們是她的朋友，那我們就要殺了你們。我們可不希望又<b>更"
+"多</b>的人魚拿著長矛來這裡搞破壞。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:148
 msgid "We are going around this island whether you want us to or not."
-msgstr "不管你們同意與否，這島我們一定繞過去。"
+msgstr "不管你們想不想要殺我們，這座島我們都要繞過去。"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:152
 msgid "This is OUR territory and you will not pass."
-msgstr "這個地方是我們的領土，我不會讓你們通過的。"
+msgstr "這個地方是<b>我們的</b>領土，我不會讓你們通過的。"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:162
 msgid "You! Drake. Do we kill you too?"
-msgstr "那條龍，我們也要殺了你嗎？"
+msgstr "你！那個龍族。我們也要殺了你嗎？"
 
 #. [message]: speaker=Keshan
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:166
 msgid "These are my friends. I will fight with them."
-msgstr "他們是我的朋友，我會跟他們一起戰鬥。"
+msgstr "這些是我的朋友，我會跟他們一起戰鬥。"
 
 #. [message]: speaker=Vlagnor
 #: data/campaigns/Dead_Water/scenarios/07_Bilheld.cfg:170
 msgid "Then you will die with them!"
-msgstr "等一下你就會跟他們死在一起！"
+msgstr "那你就會跟他們死在一起！"
 
 #. [scenario]: id=08_Talking_to_Tyegea
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:7
 msgid "Talking to Tyegëa"
-msgstr "與泰戈雅的對話"
+msgstr "和泰格亞交談"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:16
 msgid ""
-"It had been more of an adventure than the Kai Krellis had planned, but they "
-"were finally at their destination. The small island where Tyegëa and her "
-"students lived was before them."
+"It had been more of an adventure than Kai Krellis had planned, but they were "
+"finally at their destination. The small island where Tyegëa and her students "
+"lived was before them."
 msgstr ""
-"隨然經歷的艱苦與磨難遠超乎凱．克萊利斯的想像，但他們最後還是來到了目的地。泰"
-"戈雅和她的學生所住的小島，就在他們的面前。"
+"雖然經歷的艱苦與磨難遠超乎凱‧克瑞利斯的想像，但他們最後還是來到了目的地。泰格"
+"亞和她的學生所住的小島，就在他們的面前。"
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:37
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:35
 msgid "Tyegëa and Priestesses"
-msgstr "泰戈雅和女祭司"
+msgstr "泰格亞和女祭司"
 
 #. [side]: id=Tyegea, type=Mermaid Diviner
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:41
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:39
 msgid "Tyegëa"
-msgstr "泰戈雅"
+msgstr "泰格亞"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:67
@@ -1768,65 +1779,65 @@ msgid "Choose a unit to take the holy water"
 msgstr "選擇一個單位取走聖水"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:107
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:111
 msgid "Krellis...choose your words carefully. Tyegëa is a bit unpredictable."
-msgstr "克萊利斯，待會兒注意你說話的用詞，泰戈雅的脾氣有一點古怪。"
+msgstr "克瑞利斯……待會兒注意你說話的用詞，泰格亞的脾氣有一點古怪。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:111
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:115
 msgid ""
 "Welcome, merfolk! It has been a long time since outsiders have visited. And "
 "Cylanna! It is pleasant to see you."
 msgstr ""
-"歡迎，人魚們！已經很久沒有外來的客人了。還有，希蘭娜，我很高興能見到妳。"
+"歡迎，人魚們！已經很久沒有外來人來拜訪了。還有希蘭娜！我很高興能見到你。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:115
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:119
 msgid "The honor is ours. I present Kai Krellis of Jotha."
-msgstr "我們才很榮幸能見到您。我來向您介紹礁沙城的凱．克萊利斯。"
+msgstr "我們才很榮幸能見到您。我來向您介紹礁沙的凱‧克瑞利斯。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:119
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:123
 msgid "Indeed! So this is the one. Does he know?"
-msgstr "原來就是你呀，他自己知道嗎？"
+msgstr "確實！原來就是他呀。他知道嗎？"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:123
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:127
 msgid "Know what?"
 msgstr "知道什麼？"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:127
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:131
 msgid ""
 "Now is not the time. We have a desperate errand, Tyegëa. Jotha has been "
 "attacked and taken."
 msgstr ""
-"泰戈雅，現在還不是時候，我們遇到一個令人絕望的大麻煩。礁沙城被攻擊，而且被奪"
-"走了。"
+"現在不是時候。我們有一個非常迫切的事，泰格亞。礁沙被攻擊，而且已經被奪走了。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:131
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:135
 msgid ""
 "We were forced to flee for our lives from legions of undead. If you help us, "
 "we can remove these spirits from our home."
 msgstr ""
-"不死軍團圍攻我們，我們被迫放棄家園來到這裡。如果您肯幫助我們，我們就可以把這"
-"些亡靈驅逐出去。"
+"我們被迫為了保命而從亡靈軍團那逃離。如果您幫助我們，我們就可以把這些亡靈趕出"
+"我們的家園。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:135
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:139
 msgid ""
 "And what makes you think I want to leave my comfortable home and risk death "
 "by attacking armies of undead?"
-msgstr "是什麼讓你認為我會離開我舒適的家，冒著被不死族殺死的風險跟你們回去呢？"
+msgstr ""
+"是什麼讓你認為我會離開我舒適的家，冒著被亡靈軍隊殺死的風險跟你們回去呢？"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:139
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:143
 msgid "I had hoped..."
-msgstr "我只是希望......"
+msgstr "我只是希望……"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:143
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:147
 msgid ""
 "I am sure it was Cylanna’s idea that you come here. She has a reason. Don’t "
 "you Cylanna? Tell him what it is."
@@ -1834,94 +1845,89 @@ msgstr ""
 "我想這一定是希蘭娜出的主意，她有她的理由。不是嗎，希蘭娜？告訴他是什麼吧。"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:147
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:151
 msgid "(Sigh.) I had hoped to avoid this, but it seems I cannot."
-msgstr "唉，我真希望我可以避開這個，但我不行。"
+msgstr "（嘆氣）我真希望我可以避開這個，但顯然我不行。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:151
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:155
 msgid ""
 "I never agreed that secrecy was necessary, but I respected Maudin’s wishes "
 "in the matter. Now Indress and Maudin are dead, and I am not. Tell the boy "
 "the truth."
 msgstr ""
-"我從來沒答應過要保密，我只是尊重馬丁，所以沒說出來。現在馬丁和依德斯都死了，"
-"我還活著。告訴這孩子的真相吧。"
+"我從來不贊同保密是必要的，我只是尊重莫丁對此事的意願。現在伊翠斯和莫丁都去世"
+"了，而我還沒。告訴這男孩真相吧。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:155
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:159
 msgid "You knew my grandparents?"
 msgstr "您知道我的祖父？"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:159
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:163
 msgid "Actually, Tyegëa is your grandmother."
-msgstr "事實上，泰戈雅是你的祖母。"
+msgstr "事實上，泰格亞是你的祖母。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:163
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:167
 msgid "What? How is that possible?"
 msgstr "什麼？這怎麼可能？"
 
 #. [message]: speaker=Cylanna
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:167
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:171
 msgid ""
 "When your grandfather married Indress, he did not know that Tyegëa had "
 "already born him a son. When she delivered your father to Jotha, your "
 "grandmother Indress agreed to keep it secret and raise the infant as her own."
 msgstr ""
-"當時你的祖父馬丁和依德斯結婚的時候，他不知道泰戈雅已經生了一個他的兒子。後來"
-"她把你還在襁褓中的父親送到礁沙城，你的祖母依德斯同意保守這個秘密，像對待自己"
-"親生兒子一樣把你父親養大。"
+"當時你的祖父和伊翠斯結婚的時候，他不知道泰格亞已經生了一個他的兒子。後來她把"
+"你還在襁褓中的父親送到礁沙，你的祖母伊翠斯同意保守這個祕密，像對待自己親生兒"
+"子一樣把你父親養大。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:171
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:175
 msgid "That was quite a scandal, too, but I was not cut out to be a mother."
-msgstr "這真的相當丟臉，但我從沒切斷我我跟你父親的母子關係。"
+msgstr "那真的是個黑歷史，但我從沒切斷我跟你父親的母子關係。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:175
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:179
 msgid ""
 "I am astonished. I suppose I should be honored to have such a distinguished "
 "ancestor. Now I understand why Cylanna knew you would help us."
 msgstr ""
-"我實在是太驚訝了。我想我應該要很榮幸自己有一個這樣尊貴的祖母。現在我終於知道"
-"為什麼希蘭娜知道你會幫助我們了。"
+"我實在是太驚訝了。我想我應該要很榮幸自己有一個這樣尊貴的祖母。現在我終於瞭解"
+"為什麼希蘭娜知道您會幫助我們了。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:179
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:183
 msgid ""
-"That remains to be seen. I find it disturbing that a Kai — and my descendant "
+"That remains to be seen. I find it disturbing that a kai — and my descendant "
 "— would run here begging for help. Before I agree to save you, you have to "
 "prove that my blood flows in your veins. Prove that your are, despite "
 "appearances, courageous, and worthy of my help."
 msgstr ""
-"我還沒答應要幫助你。你是凱氏後人，也是我的孫子，居然跑來這裡乞求我的協助，這"
-"實在是令人無法安心。在我同意要幫助你之前，你必須要證明你的身體裡流著我的血"
-"脈。證明你的勇敢，讓我知道你是值得我幫助的人。"
+"我還沒答應要幫助你。你是凱，也是我的孫子，居然跑來這裡乞求我的協助，這實在是"
+"令人無法安心。在我同意要幫助你之前，你必須要證明你的身體裡流著我的血液。證明"
+"你的勇敢──儘管你看上去並非那樣，讓我知道你是值得我幫助的人。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:183
-msgid "Well, I defeated the Drakes on your island."
-msgstr "好吧，我剛才打贏了你島上的龍族。"
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:187
+msgid "Well, I defeated the drakes on your island."
+msgstr "好吧，我打贏了在你們島上的龍族。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:187
-#, fuzzy
-#| msgid ""
-#| "Bah! Drakes only look dangerous. Soldiers carrying spears make short work "
-#| "of them. No, I have something else in mind. You will complete a task for "
-#| "the good of the merfolk. Listen."
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:191
 msgid ""
 "Drakes only look dangerous. Soldiers carrying spears make short work of "
 "them. No, I have something else in mind. You will complete a task for the "
 "good of the merfolk. Listen."
 msgstr ""
-"哼！龍族只是看起來很危險，的紙老虎罷了。拿著長矛的戰士可以輕易擊敗他們。那不"
-"算，我有一個更好的點子。你必須要完成一個造福人魚群的任務。聽好......"
+"龍族只是看起來很危險的紙老虎罷了。拿著長矛的士兵可以輕易擊敗他們。那不算，我"
+"有一個更好的點子。你必須要完成一個造福人魚群的任務。聽好。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:191
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:195
 msgid ""
 "About 200 years ago, a powerful mermaid named Imirna fell in love with a "
 "human wizard named Agnovon. Agnovon cared not for love, but he smiled "
@@ -1931,14 +1937,14 @@ msgid ""
 "very sword to defeat Imirna’s own people and steal their wealth. In her "
 "grief, Imirna poisoned herself."
 msgstr ""
-"大約200年以前，有一個強大的人魚伊莫娜，她愛上了一個人類巫師艾格諾文。艾格諾文"
-"一點也不在乎她的感情，但他還是假裝對她微笑，讓伊莫娜更加信任他。艾格諾文要伊"
-"莫娜幫的寶劍附魔，使那把寶劍持續閃耀著魔法火焰。伊莫娜盡其所能的完成這把武"
-"器。後來艾格諾文用這把超級寶劍打敗了伊莫娜的人民，還搶走了它們的財產。伊莫娜"
-"悲憤交加，最後終於hold不住，服毒自盡了。"
+"大約200年以前，有一個強大的人魚伊米爾娜，她愛上了一個人類巫師艾格諾文。艾格諾"
+"文一點也不在乎她的感情，但他還是假裝對她微笑，讓伊米爾娜更加信任他。艾格諾文"
+"要伊米爾娜幫他附魔一把寶劍，使那把劍持續纏繞著魔法火焰。伊米爾娜盡她所能地完"
+"成這了把武器。後來艾格諾文用這同一把劍打敗了伊米爾娜的人民，還搶走了他們的財"
+"產。伊米爾娜悲憤交加，服毒自盡了。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:195
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:199
 msgid ""
 "I have long desired to see the sword returned to the merfolk to whom it "
 "should belong. If you retrieve it, you would prove yourself to be worthy of "
@@ -1948,63 +1954,64 @@ msgid ""
 "years, so he will know where to find the lich who keeps it."
 msgstr ""
 "我一直希望這把寶劍能回到它真正的主人，也就是人魚的手裡。如果你能把它找回來，"
-"就足以證明你有這個價值讓我盡全力幫你。我不知道去那裡把它找回來，但有個人知"
-"道。在荒蕪沼澤的南邊，城堡廢墟的附近，有一位叫做卡萊登的法師住在那邊。他覬覦"
-"寶劍已久，他一定知道持有這把寶劍的巫妖在哪。"
+"就足以證明你有這個價值讓我盡全力幫你。我不知道去哪裡把它找回來，但有個人知"
+"道。在荒蕪沼澤的南邊，城堡廢墟的附近，有一位叫做卡拉登的法師住在那邊。他覬覦"
+"寶劍，他一定知道持有這把寶劍的巫妖在哪。"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:199
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:203
 msgid "A lich has it? We were fleeing liches in the first place."
-msgstr "劍在巫妖的手哩，我們就是因為巫妖，才從礁沙城逃到這裡來的呀。"
+msgstr "巫妖有這把劍？我們就是因為巫妖，才從礁沙逃到這裡來的呀。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:203
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:207
 msgid ""
 "There is only one of them. If you cannot defeat even one lich, you must be "
 "expecting me to get rid of all of your undead myself!"
 msgstr ""
-"只有一個巫妖擁有這把寶劍。如果你連一個巫妖都無法擊敗，難道你要期望我去幫你殺"
-"掉所有的不死族嗎！"
+"只有一個巫妖擁有這把劍。如果你連一個巫妖都無法擊敗，難道你要期望我去幫你殺掉"
+"所有的亡靈嗎！"
 
 #. [message]: speaker=Kai Krellis
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:207
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:211
 msgid "My apologies. You are right, of course. We will undertake this task."
-msgstr "對不起，您當然是對的。我們將會接下這個任務。"
+msgstr "對不起，您是對的。我們會接下這個任務。"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:211
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:215
 msgid ""
 "I will not send you away completely empty-handed, though. I can spare some "
 "holy water for one of your soldiers."
-msgstr "當然，我也不會讓你們空手去的。我可以替你其中一個戰士淋上聖水。"
+msgstr "當然，我也不會讓你們空手去的。我可以替你其中一個士兵淋上聖水。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:222
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:226
 msgid ""
 "The holy water will make melee attacks do <i>arcane</i> damage for the rest "
 "of the campaign. Choose a unit to take it. You may recruit or recall a unit "
 "if you want."
 msgstr ""
-"聖水可以在近戰造成祕法傷害，接下來的戰役中你都可以一直使用它。選擇一個單位來"
-"拿聖水，當然，你也可以徵招或是招募一個新單位。"
+"聖水可以在近戰造成<i>秘法</i>傷害，接下來的戰役中你都可以一直使用它。選擇一個"
+"單位來拿聖水，當然，你也可以招募或是招回一個單位。"
 
 #. [object]: id=holywater1
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:235
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:239
 msgid "Holy Water"
 msgstr "聖水"
 
 #. [message]: speaker=Tyegea
-#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:248
+#: data/campaigns/Dead_Water/scenarios/08_Talking_to_Tyegea.cfg:252
 msgid ""
 "Now, go. Come back with the flaming sword, and my priestesses and I will "
 "help you take back Jotha."
-msgstr "現在，去吧。把烈焰寶劍帶回來，而我和我的女祭司將會幫助你奪回礁沙城。"
+msgstr "現在，去吧。把烈焰寶劍帶回來，而我和我的女祭司將會幫助你奪回礁沙。"
 
 #. [scenario]: id=09_The_Mage
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:12
 msgid "The Mage"
-msgstr "巫師"
+msgstr "法師"
 
+# 這裡的第一點，不知道是什麼問題無法回答。
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:21
 msgid ""
@@ -2016,10 +2023,11 @@ msgid ""
 "sometimes angry at Tyegëa for sending him on this extra journey, and "
 "sometimes grateful that she was willing to help at all."
 msgstr ""
-"一行人回到了韋諾大陸，沿著海岸朝著北邊邁進。此時凱．克萊利斯的腦筋一直在苦"
-"思。第一，泰戈雅所剛才說的那些話，實在有太多疑點了。第二，雖然克萊利斯對他的"
-"人民有信心，但還是擔心要付出巨大的傷亡才能通過泰戈雅的考驗。他很氣泰戈雅丟給"
-"他這個考驗，可同時他也很感激泰戈雅願意幫忙。"
+"一行人回到了大陸，沿著海岸朝著北邊前進。凱‧克瑞利斯想了很多。首先，泰格亞透露"
+"他的身世，這給了他一些他無法回答的問題。其次，他對未來的任務感到很緊張，雖然"
+"克瑞利斯對他的人民有信心，但還是擔心要付出巨大的傷亡才能通過泰格亞的考驗。他"
+"有時會對泰格亞派他去進行這個額外的旅程而感到生氣，而有時他也很感激泰格亞願意"
+"幫忙。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:26
@@ -2030,9 +2038,9 @@ msgid ""
 "Krellis was in a hurry, now that the end of their journey was in sight. He "
 "decided to go ashore and try to find the mage immediately."
 msgstr ""
-"幾天之後，他們來到泰戈雅所提到的地方，一個已經坍塌的小城堡，這裡充斥著沼氣。"
-"此時夜幕降臨，樹林裡非常漆黑，但凱．克萊利斯反而加快步伐，現在旅途的終點已近"
-"在咫尺。他決定立刻上岸找到那個巫師。"
+"幾天之後，他們來到泰格亞所提到的地方，一個已經坍塌且充斥著沼氣的小城堡。此時"
+"夜幕降臨，樹林裡非常漆黑，但凱‧克瑞利斯反而加快步伐，現在旅途的終點已近在咫"
+"尺。他決定立刻上岸嘗試尋找那位法師。"
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:49
@@ -2042,47 +2050,46 @@ msgstr "飢餓的生物"
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:70
 msgid "Find Caladon the mage"
-msgstr "找出巫師卡萊登"
+msgstr "找出法師卡拉登"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:141
 msgid ""
 "I do not much care for the look of this area. The darkness seems to hang "
 "beneath the trees, unnaturally dense."
-msgstr ""
-"雖然我不是很清楚這個地方應該要長什麼樣子，但被黑暗盤據的樹林實在是很不正常。"
+msgstr "雖然我不太關心這個地區的樣子，但黑暗似乎盤據在樹林之下，濃密得不尋常。"
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:145
 msgid "I just heard a splash. I think something’s out there."
-msgstr "我聽到了濺水聲，好像有什麼東西要來了。"
+msgstr "我聽到了濺水聲。我覺得有東西從那裡出來了。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:149
 msgid "Let us find the mage quickly and leave."
-msgstr "我們得盡快找出巫師，然後離開這裡！"
+msgstr "讓我們趕快找到那位法師然後離開。"
 
 #. [message]: speaker=Teeloa
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:339
 msgid "Hey, that cavern is full of bats! I HATE those things."
-msgstr "哇！這個洞穴都是蝙蝠，我好討厭牠們。"
+msgstr "嘿，那個洞穴裡都是蝙蝠！我討厭牠們。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:343
 msgid "I hope there aren’t any more bats in there."
-msgstr "我希望這裡只有這些蝙蝠。"
+msgstr "我希望沒有更多蝙蝠在那裡面。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:353
 msgid ""
 "This is a good place for a large colony, so I think we will see more soon."
-msgstr "這地方很適合牠們繁衍，我想我們還會看到更多。"
+msgstr "這地方很適合牠們大量繁衍，我想我們很快就會看到更多。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:359
 msgid ""
 "This is a good place for a large colony, so I imagine we will see more soon."
-msgstr "這地方很適合牠們繁衍，我能想像我們還會看到更多。"
+msgstr "這地方很適合牠們大量繁衍，我能想像我們很快就會看到更多。"
 
 #. [unit]: type=Silver Mage, id=Caladon
 #. [side]
@@ -2090,7 +2097,7 @@ msgstr "這地方很適合牠們繁衍，我能想像我們還會看到更多。
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:96
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:98
 msgid "Caladon"
-msgstr "卡萊登"
+msgstr "卡拉登"
 
 #. [message]: speaker=Keshan
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:400
@@ -2100,7 +2107,7 @@ msgstr "有一個人在這裡。"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:404
 msgid "Whoa there! BACK off or else!"
-msgstr "誰在這裡！給我滾開！"
+msgstr "誰在那裡！<b>滾開</b>！否則……"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:408
@@ -2110,7 +2117,7 @@ msgstr "別擔心他，他很友善的。"
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:420
 msgid "Neep, neep, neep!"
-msgstr "嘶嘶嘶～"
+msgstr "嘰，嘰，嘰！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:426
@@ -2120,19 +2127,20 @@ msgstr "嘿，我發現一個人了！"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:434
 msgid "You must be Caladon. We are glad to see you."
-msgstr "你一定就是卡萊登了。我很高興能見到你。"
+msgstr "你一定就是卡拉登了。我們很高興能見到你。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:438
 msgid "I am Caladon. Am I glad to see YOU?"
-msgstr "我是卡萊登沒錯。我也該高興見到你嗎？"
+msgstr "我是卡拉登沒錯。我該高興見到<b>你們</b>嗎？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:442
 msgid ""
 "I am Kai Krellis of Jotha. I am seeking a flaming sword, and I am told you "
 "know where to find it."
-msgstr "我是礁沙城的凱．克萊利斯。我正在找一把烈焰寶劍，我聽說你知道它在哪。"
+msgstr ""
+"我是礁沙的凱‧克瑞利斯。我正在找一把烈焰寶劍，我聽說你知道哪裡可以找到它。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:446
@@ -2141,13 +2149,13 @@ msgid ""
 "get it when so many others could NOT? Although you do have an impressive "
 "collection of allies there."
 msgstr ""
-"哈哈！一個人魚居然也想要艾格諾文的烈焰寶劍！目前沒有任何能人得到它，你憑什麼"
-"可以？就憑你這些看起來很能幹的盟友嗎？"
+"哈！<b>一個人魚</b>居然也想要<b>艾格諾文</b>的烈焰寶劍！有這麼多人都<b>不</b>"
+"能得到它，<b>你</b>憑什麼可以？雖然你確實有一群令人印象深刻的盟友。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:450
 msgid "Whether I can succeed or not, I must try. Will you help me find it?"
-msgstr "我不知道我能不能成功，但是我會努力嘗試。你會幫我找到它嗎？"
+msgstr "無論我是否能成功，我還是得嘗試。你會幫我找到它嗎？"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:454
@@ -2155,8 +2163,8 @@ msgid ""
 "I will show you EXACTLY where it is, but knowing where to FIND it isn’t the "
 "hard part. Oh, no! You will see, my fine merman, you will see."
 msgstr ""
-"我會詳細的跟你說明它在哪裡，但是「知道它在哪」和「得到它」是兩碼子事。差太遠"
-"了，你會明白的，我的好人魚啊，你們都會明白的。"
+"我會<b>準確地</b>指出它在哪裡，但是知道要去哪裡<b>找</b>它並不是困難的部分。"
+"噢，不！你會明白的，我的好人魚，你會明白的。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:458
@@ -2168,27 +2176,29 @@ msgstr "如果你肯指引我們，我們會很感激你的。"
 msgid ""
 "I would be HAPPY to guide such a pretty mermaid AND her friends. Follow me "
 "everybody!"
-msgstr "我也很高興能指引你這隻漂亮的美人魚，大家跟我來吧！"
+msgstr ""
+"我也<b>很高興</b>能指引你這位如此漂亮的美人魚<b>和</b>她的朋友們。大家跟我來"
+"吧！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:486
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1098
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:135
 msgid "Cylanna! I need you!"
-msgstr "希蘭娜！我需要妳！"
+msgstr "希蘭娜！我需要你！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:490
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1102
 msgid "Tyegëa will never forgive me. We are lost."
-msgstr "泰戈雅不會原諒我的，我們輸了。"
+msgstr "泰格亞永遠不會原諒我的。我們輸了。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:504
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1116
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:149
 msgid "We are lost without our king!"
-msgstr "我們失去了我們的國王！"
+msgstr "失去了國王，我們輸了！"
 
 #. [scenario]: id=10_The_Flaming_Sword
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:14
@@ -2202,14 +2212,14 @@ msgid ""
 "was not actually desolate on the outskirts. A hardy population of humans "
 "coaxed a living out of the damp soil."
 msgstr ""
-"卡萊登帶著他們沿著海岸走了一小段路。雖然這裡叫做「荒蕪沼澤」，但實際上並非裊"
-"無人煙。有一些強壯的人們生活在這裡潮濕的土壤上。"
+"卡拉登帶著他們沿著海岸走了一小段路。雖然這裡叫做「荒蕪沼澤」，但實際上並非裊"
+"無人煙。有一群強壯的人類們在這個潮濕的土壤上不擇手段地生存。"
 
 #. [side]: type=Lich, id=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:49
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:51
 msgid "Mal-Govon"
-msgstr "莫．葛文"
+msgstr "馬爾-葛文"
 
 #. [side]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:81
@@ -2219,47 +2229,48 @@ msgstr "村民"
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:184
 msgid "Pry the flaming sword from the dead hand of its owner"
-msgstr "從亡靈的手中奪回烈焰寶劍"
+msgstr "把烈焰寶劍從它死去的擁有者手中撬出來"
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:188
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:275
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:116
 msgid "Death of Kai Krellis"
-msgstr "凱．克萊利斯 死亡"
+msgstr "凱‧克瑞利斯死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:192
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:120
 msgid "Death of Cylanna"
-msgstr "希蘭娜 死亡"
+msgstr "希蘭娜死亡"
 
 #. [objective]: condition=lose
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:196
 msgid "Death of Caladon"
-msgstr "卡萊登死亡"
+msgstr "卡拉登死亡"
 
+# 這句話在顯示上有點問題。原本便有半形括號括著，或許以後會修正。「(whisper)」不寫進翻譯，因為雙層括號看起來很奇怪。
 #. [message]: speaker=$spy_unit.id
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:270
 msgid ""
 "(whisper) Kai, I heard Caladon muttering about the sword. I think he may try "
 "to take it for himself."
-msgstr "（小聲說）凱，我聽到卡萊登不斷叨念著那把寶劍。我想他想自己得到它。"
+msgstr "凱，我聽到卡拉登不斷叨念著那把寶劍。我認為他想嘗試自己得到它。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:274
 msgid ""
 "Thank you, $spy_unit.name|. I will keep that in mind, but it may be hard for "
 "us to stop him with that teleporting trick he has."
-msgstr ""
-"謝謝你，$spy_unit.name|。我會注意的，但我們很難防範他突如其來的遠距法術。"
+msgstr "謝謝你，$spy_unit.name|。我會注意的，但我們很難防範他擁有的傳送法術。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:283
 msgid ""
 "Here we are. There’s a castle up ahead in the fog. That’s where Agnovon has "
 "the sword."
-msgstr "我們到了。這裡有座被濃霧籠罩的城堡，艾格諾文和寶劍就在那裡。"
+msgstr ""
+"我們到了。前方有座被濃霧籠罩的城堡，那裡就是艾格諾文得到那把寶劍的地方。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:287
@@ -2270,16 +2281,16 @@ msgstr "那個巫妖就是艾格諾文？"
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:291
 msgid ""
 "Well, he calls himself Mal-Govon now, but yes. He called this land the "
-"KINGDOM of Agnovon. He was its first king. And its last, and every one in "
-"between, too! He kept getting older and older, but he never died. Well, NOW "
+"KINGDOM of Agnovon. He was its first king. And its last. And each one in "
+"between too! He kept getting older and older, but he never died. Well, NOW "
 "he’s dead of course. He still putters around in that castle over there, but "
 "he hasn’t really cared about keeping his kingdom under control for a good "
 "long while. I bet I can wake him up, though. Watch THIS!"
 msgstr ""
-"也算是，不過他現在稱自己為莫．葛文。他把這片土地叫做艾格諾文王國，自封為首任"
-"國王。當然，他也是最後一任，不過要說他是第二任或是第三任也無所謂，他已經活了"
-"好久了。當然，他現在已經死了。他的靈魂還在城堡周圍徘徊，但他已經很久沒有起來"
-"關心過他的王國了。我打賭我可以叫他起床，你們看好了！"
+"也算是，不過他現在稱自己為馬爾-葛文。他把這片土地叫做艾格諾文<b>王國</b>，自"
+"封為首任國王，而他也是最後一任和之間的每一任。他持續變老，卻不會死去。當然，"
+"<b>現在</b>他已經死了。他仍然在城堡周圍徘徊，但他已經很久沒有在維持他王國的運"
+"作上真正用心了。我打賭我可以叫他起床。看<b>這招</b>！"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:295
@@ -2287,8 +2298,8 @@ msgid ""
 "Suddenly, Caladon’s strident voice shrieked out louder than seemed possible, "
 "as if there were dozens of men shouting at once."
 msgstr ""
-"突然，卡萊登扯動嗓子，發出令人難以置信，威力大到連數十個男人一起喊叫都無法比"
-"擬的嘶吼聲。"
+"突然，卡拉登扯動嗓子，發出令人難以置信，威力大到如同十個男人一起喊叫的嘶吼"
+"聲。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:300
@@ -2296,8 +2307,8 @@ msgid ""
 "AGNOVON, I’VE COME FOR YOUR SWORD! TODAY YOU WILL REMEMBER FEAR! Heh heh. "
 "Nice trick, huh?"
 msgstr ""
-"艾格諾文，我已經來到這裡準備取你的寶劍！今天我會讓你知道什麼叫做恐懼！嘿嘿～"
-"我剛才喊得不錯吧？"
+"<b>艾格諾文，我已經來到這裡要取你的寶劍！今天我會讓你想起恐懼！</b>嘿嘿，喊得"
+"不錯吧？"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:305
@@ -2311,30 +2322,30 @@ msgstr ""
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:310
 msgid ""
 "What I remember, you old fool, is you leaving behind the smoldering bodies "
-"of the orcs you had hired to steal my sword. Now, you bring mer to do your "
-"dirty work. When they lay expiring like gasping fish on the shore, will you "
-"not flee again? Do not speak to <i>me</i> of fear."
+"of the orcs you had hired to steal my sword. Now, you bring merfolk to do "
+"your dirty work. When they lie expiring like gasping fish on the shore, will "
+"you not flee again? Do not speak to <i>me</i> of fear."
 msgstr ""
-"我記得你這個老混帳，你上次才雇用半獸人來偷我的寶劍，結果趁我正在燒死半獸人的"
-"時候逃走。現在，你又帶人魚過來做壞事，你是不是當他們像缺水的魚一樣垂死掙扎的"
-"時候又要逃之夭夭？別害怕面對<i>我</i>。"
+"你這個老混帳，我想起來的是，你僱用了半獸人來偷我的寶劍，結果趁我正在燒死半獸"
+"人的時候逃走。現在，你又帶人魚來做你的骯髒勾當，你是不是在他們像缺水的魚一樣"
+"垂死掙扎的時候又要逃之夭夭？別跟<i>我</i>提到恐懼。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:314
 msgid "We are here of our own accord, and we will take that sword."
-msgstr "我們是自己要來拿寶劍的。"
+msgstr "我們是自己要來的，而我們將會拿走那把寶劍。"
 
 #. [message]: speaker=Mal-Govon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:318
 msgid ""
 "The merman speaks. Tell it to go away, Caladon, if it doesn’t want to get "
 "hurt."
-msgstr "人魚也會說大話啊。卡萊登，叫他快滾，否則我取你們的小命。"
+msgstr "人魚也會說大話啊。叫他快滾，卡拉登，如果他不想受傷的話。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:322
 msgid "That does it. Attack!"
-msgstr "就是要這樣，大家攻擊吧！"
+msgstr "少廢話。攻擊！"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:331
@@ -2342,28 +2353,28 @@ msgid ""
 "A word of warning, young Kai. I carry a staff of righteous FLAME. If you let "
 "me die, I will take YOU all with me!"
 msgstr ""
-"孩子，我給你一個忠告。我帶著正義之火的法寶，如果你敢讓我死，我就要拉你們下來"
-"陪葬！"
+"給你一個警告，年輕的凱。我拿著正義<b>火焰</b>之杖，如果你害我死，我就要拉<b>"
+"你們</b>全部下來陪葬！"
 
 #. [unit]: type=Outlaw, id=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:353
 msgid "Howyrth"
-msgstr "豪以爾斯"
+msgstr "霍爾斯"
 
 #. [message]: speaker=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:367
 msgid ""
 "Hello there! Who are you? Were you the ones shouting about taking a sword?"
-msgstr "歡迎！你是誰？你就是那些說要來拿寶劍的人嗎？"
+msgstr "哈囉！你們是誰？你們就是那些喊說要來拿一把寶劍的人嗎？"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:372
 msgid ""
 "I am Kai Krellis of Jotha. I am attempting to defeat Mal-Govon and take his "
-"sword. Will you to join us in battle against a common enemy?"
+"sword. Will you join us in battle against a common enemy?"
 msgstr ""
-"我是礁沙城的凱．克萊利斯。我正在嘗試打敗莫．葛文，然後拿走他的寶劍。你願意和"
-"我一起對抗這個我們共同的敵人嗎？"
+"我是礁沙的凱‧克瑞利斯。我正在嘗試打敗馬爾-葛文，然後拿走他的寶劍。你願意和我"
+"一起對抗這個我們共同的敵人嗎？"
 
 #. [message]: speaker=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:377
@@ -2374,32 +2385,33 @@ msgid ""
 "to get rid of the monster just in case."
 msgstr ""
 "我不確定那個生物是不是真的是我們的敵人。他從來沒有打擾我們，況且我還得留在我"
-"的崗位上。不過，如果我敢肯定如果你肯花錢雇用他們，許多鄉民願意追隨你。我猜我"
-"們會比較喜歡把這件事情當作是一個能賺錢的工作。"
+"的崗位上。不過，我肯定如果你肯花錢僱用他們，許多鎮民會願意追隨你。我猜我們會"
+"很高興能擺脫那個怪物，以防萬一嘛。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:381
 msgid ""
 "You can now recruit human villagers, but you will not be able to recall them "
 "in future scenarios."
-msgstr "你可以招募人類的村民了，但是在之後的任務中你不能召回他們。"
+msgstr "你可以招募人類的村民了，但是在未來的章節中你不能招回他們。"
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:430
 msgid ""
 "Kai Krellis! What are you doing here? I thought you were traveling south "
 "when I met you."
-msgstr "凱．克萊利斯，你在這裡幹什麼？我還以為你去了南方呢。"
+msgstr ""
+"凱‧克瑞利斯！你在這裡做什麼？我還以為你正前往南方，在我跟你見面的時候。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:434
 msgid "Friend Siddry!"
-msgstr "好朋友！沒想到居然會在這裡遇到你！"
+msgstr "朋友希德里！"
 
 #. [message]: speaker=Howyrth
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:438
 msgid "You know each other?!"
-msgstr "你們認識嗎？！"
+msgstr "你們互相認識嗎？！"
 
 #. [message]: speaker=Siddry
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:442
@@ -2409,57 +2421,59 @@ msgid ""
 "join you in your fight, Kai Krellis. We are yours to command, and we refuse "
 "to be paid."
 msgstr ""
-"豪以爾斯，凱．克萊利斯就是那個把我從奴役裡救出來的人。我告訴過他我會報答他"
-"的，現在我的機會來了！凱．克萊利斯，我的朋友和我會加入你們的戰鬥，你可以使喚"
-"我們，我們不會跟你收取任何的費用。"
+"凱‧克瑞利斯就是那個把我從奴役裡救出來的人，霍爾斯。我告訴過他我會報答他的，現"
+"在我的機會來了！凱‧克瑞利斯，我的朋友和我會加入你們的戰鬥，你可以使喚我們，我"
+"們不會跟你收取任何的費用。"
 
 #. [unit]: type=Footpad, id=Lyllan
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:451
 msgid "Lyllan"
-msgstr ""
+msgstr "莉蘭"
 
 #. [unit]: type=Thug, id=Trudd
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:463
 msgid "Trudd"
-msgstr ""
+msgstr "特魯德"
 
 #. [unit]: type=Thug, id=Dorcyn
 #. [unit]: type=Footpad, id=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:475
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:492
 msgid "Dorcyn"
-msgstr ""
+msgstr "多辛"
 
 #. [message]: speaker=Dorcyn
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:500
 msgid "I’ll join you right now! That monster is just unnatural."
-msgstr "我也要加入你們！殺死那些基因突變的怪物。"
+msgstr "我也要立刻加入你們！那個怪物太不尋常了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:574
 msgid ""
 "The merfolk clapped their hands over their ears as a terrible wail echoed "
 "off the castle walls."
-msgstr "城牆那邊傳來淒厲的哀嚎，人魚們趕緊用手摀住耳朵。"
+msgstr "當城牆迴盪起淒厲的哀嚎時，人魚們趕緊用手摀住他們的耳朵。"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:605
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:611
 msgid "Now we have the sword!"
-msgstr "現在，我們有寶劍了！"
+msgstr "現在我們有寶劍了！"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:618
 msgid "Correction. Now I have the sword!"
-msgstr "正確來說，是「我」有寶劍了！"
+msgstr "更正。現在「我」有寶劍了！"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:676
 msgid ""
 "It’s MINE! The Flaming Sword of Agnovon IS ALL MINE! I can feel warmth "
 "SPREADING through me!"
-msgstr "它是我的了！烈焰寶劍是我的了！我可以感覺到炙熱的力量穿過我的身體！"
+msgstr ""
+"它是<b>我的</b>了！烈焰寶劍<b>是我的了</b>！我可以感覺到一股暖意<b>流遍</b>我"
+"的全身！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:701
@@ -2473,21 +2487,21 @@ msgid ""
 "so leave my realm. Go on. I will grant you some time. The benevolence of "
 "Caladon will be LEGENDARY! Heh heh, HA!"
 msgstr ""
-"好吧，你說的沒錯，沒有你們的幫助，我也拿不到它，所以我不會殺你們。但我不信任"
-"你們，請你們離開我的領土，我會給你們一些時間。哈哈！仁慈的卡萊登將成為傳說！"
-"啊哈啊哈啊哈！"
+"好吧，確實你們有幫忙，所以我不會殺了你們。但我不信任你們，所以請你們離開我的"
+"領土。走吧，我會給你們一些時間。仁慈的卡拉登將成為<b>傳奇</b>！嘿嘿，<b>哈</"
+"b>！"
 
 #. [message]: speaker=$staff_tip_off
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:711
 msgid "Kai! He dropped his staff! We can attack him whenever we want now!"
-msgstr "凱！他丟掉他的正義之火了！我們應該要趁現在攻擊他！"
+msgstr "凱！他丟掉他的法仗了！現在我們可以隨時攻擊他！"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:715
 msgid ""
 "We can pretend we are going to leave though. That would buy me some time to "
 "heal the wounded."
-msgstr "我們可以先假裝離開，這樣我們就有時間來治療傷者。"
+msgstr "不過我們可以先假裝離開，這樣就能給我一些時間來治療傷者。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:751
@@ -2495,8 +2509,8 @@ msgid ""
 "You DARE attack ME! You will regret that. Witness the POWER of the Flaming "
 "Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
 msgstr ""
-"你竟敢攻擊我！你會後悔的。讓你看看卡萊登烈焰寶劍的威力吧！我要召喚烈焰使者來"
-"燒毀你們！"
+"你<b>竟敢</b>攻擊<b>我</b>！你會後悔的。讓你見證卡拉登的烈焰寶劍的<b>威力</b>"
+"吧！我要召喚<b>火焰元素</b>，讓它<b>遵從我的命令</b>！"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:818
@@ -2504,38 +2518,38 @@ msgid ""
 "You haven’t left yet? My patience is at an END! Witness the POWER of the "
 "Flaming Sword of Caladon! I call on the ELEMENT OF FIRE to DO MY BIDDING!"
 msgstr ""
-"你們怎麼還不走？我的忍耐已經到達極限了！讓你們看看烈焰寶劍的威力吧！我要召喚"
-"烈焰使者來燒光你們！"
+"你們怎麼還不走？我的忍耐已經<b>到達極限</b>了！讓你見證卡拉登的烈焰寶劍的<b>"
+"威力</b>吧！我要召喚<b>火焰元素</b>，讓它<b>遵從我的命令</b>！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:910
 msgid "Now we can finally grab that sword."
-msgstr "我們現在終於可以拿起烈焰寶劍了。"
+msgstr "現在我們終於可以拿起那把寶劍了。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:926
 msgid "I am not going with you. One of your people should take the sword."
-msgstr "我不會跟你走的，寶劍應該讓你們的人使用。"
+msgstr "我沒有要跟你們離開。寶劍應該讓你們的人拿走。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:944
 msgid "This is not food. And it is definitely not a toy. Leave it."
-msgstr "這裡沒有食物。而且這個更不是玩具。放下它。"
+msgstr "這個不是食物。而且這個更不是玩具。放下它。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:973
 msgid "This sword is 8×4, magical, with <i>fire</i> damage."
-msgstr "烈焰寶劍有8×4的魔法攻擊，附加<i>火焰</i>傷害。"
+msgstr "這把劍有8×4的<i>火焰</i>魔法傷害。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:980
 msgid "I’ll carry this sword and destroy undead with blasts of flame."
-msgstr "我想要使用這把寶劍來燒死那群不死族。"
+msgstr "我要拿著這把寶劍，並以熊熊烈火來毀滅亡靈。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:989
 msgid "This sword is not right for me. Let someone else have it."
-msgstr "這把寶劍不適合我，讓別的人來擁有它吧。"
+msgstr "這把寶劍不適合我，讓別人來擁有它吧。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1024
@@ -2550,11 +2564,11 @@ msgstr "讓其他人擁有它。"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1071
 msgid ""
-"We thank all you humans for your help, and release you from any farther "
+"We thank all you humans for your help, and release you from any further "
 "obligations. Where we are going, you cannot easily follow."
 msgstr ""
-"我們很感謝你們人類的幫助，你已經不再欠我什麼了。我們現在要去一個地方，是你無"
-"法輕易跟上的。"
+"我們感謝你們所有人類的幫助，你們已經不再欠我什麼了。我們現在要去的地方，是你"
+"無法輕易跟來的。"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1132
@@ -2564,12 +2578,12 @@ msgstr "詛咒你們人魚！"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1147
 msgid "Aghh! Die!"
-msgstr "哇哈哈！去死吧！"
+msgstr "啊啊！去死吧！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/10_The_Flaming_Sword.cfg:1152
 msgid "He has that staff of..."
-msgstr "他有那個法寶......"
+msgstr "他有那根正義火焰……"
 
 #. [scenario]: id=11_Getting_Help
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:4
@@ -2582,25 +2596,26 @@ msgid ""
 "Kai Krellis and his people no longer feared the open ocean, and they made "
 "straight for Tyegëa’s island to show her the flaming sword."
 msgstr ""
-"凱．克萊利斯和他的人民不再懼怕外海，他們直接來到泰戈雅的小島，要烈焰寶劍展示"
-"給她看。"
+"凱‧克瑞利斯和他的人民不再懼怕外海，他們直接來到泰格亞的小島，將烈焰寶劍展示給"
+"她看。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:100
 msgid ""
 "We have brought the Flaming Sword. Caladon tried to steal it for himself, "
 "but we were able to get it back from him."
-msgstr "我們已經拿到烈焰寶劍了。卡萊登把它占為己有，但我們將它拿了回來。"
+msgstr ""
+"我們已經拿到烈焰寶劍了。卡拉登嘗試將它占為己用，但我們還是能夠將它拿回來。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:104
 msgid "He did not part with it willingly, so he must be dead."
-msgstr "他沒有跟你們一起來分享這項榮耀，看來他已經死了。"
+msgstr "他不可能自願和寶劍分開，看來他一定死了。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:108
 msgid "It is as you say."
-msgstr "您說的不錯。"
+msgstr "您說得不錯。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:112
@@ -2609,20 +2624,19 @@ msgid ""
 "travel with you to your home and help you rid it of restless spirits. My "
 "priestesses will come as well, and will be at your disposal."
 msgstr ""
-"算了，不管，反正他只不過是個笨蛋。我的孫子，既然你們已經完成我的要求，所以我"
-"會跟你們一起回家，支援你們對抗那些亡靈。我的女祭司們也會跟著去，她們可以由你"
-"徵招。"
+"隨便。反正他只不過是個笨蛋。現在，你已經完成我的要求，孫子，所以我會跟你們一"
+"起回家，支援你們對抗那些亡靈。我的女祭司們也會跟著去，並且可以供你使用。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:135
 msgid "You may now recruit mermaid priestesses!"
-msgstr "你現在可以徵招人魚女祭司了！"
+msgstr "你現在可以招募人魚女祭司了！"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:155
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:173
 msgid "Also, I have a little gold I can bring along."
-msgstr "另外，我還準備帶一些金幣。"
+msgstr "另外，我有一些金幣可以一起帶去。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/11_Getting_Help.cfg:166
@@ -2632,7 +2646,7 @@ msgstr "你得到55枚金幣。"
 #. [scenario]: id=12_Revenge
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:4
 msgid "Revenge"
-msgstr "反攻"
+msgstr "雪恥"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:13
@@ -2643,10 +2657,10 @@ msgid ""
 "whole contingent of them. Tyegëa was even more powerful, though as "
 "unpredictable as Cylanna had said."
 msgstr ""
-"這項任務的困難度已經遠遠超乎凱．克萊利斯當初的想像。不過，勝利已經指日可待"
-"了。他們曾經見識過女祭司們如何從中間衝過大量的亡靈，而現在他們帶了一整群的女"
-"祭司，要解決這些亡靈更是輕而易舉。泰戈雅的能力更是深不可測，雖然她就像希蘭娜"
-"說的那樣，性格有點古怪。"
+"這項任務的困難度已經遠遠超出凱‧克瑞利斯當初的想像。不過，勝利已經指日可待了。"
+"他們曾經見識過女祭司們如何從中間衝過大量的亡靈，而現在他們帶了一整群的女祭"
+"司，要解決這些亡靈更是輕而易舉。泰格亞的能力更是深不可測，雖然她就像希蘭娜說"
+"的那樣，性格有點古怪。"
 
 #. [part]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:17
@@ -2658,42 +2672,43 @@ msgid ""
 "headed south along the coast to some outlying villages to gather news of the "
 "invaders."
 msgstr ""
-"這些從礁沙城流亡出去的軟弱部隊終於回來了，在外頭的磨練後，他們都變得更強，而"
-"且還有個戰爭之王領導著他們。返回家鄉的喜悅使他們的疲倦感一掃而空。人魚們於夜"
-"間抵達礁沙城，他們發現海口有守衛，於是他們沿著海岸向南邊，到偏遠的村莊去打聽"
-"這些侵略者的消息。"
+"這些從礁沙流亡出去的軟弱部隊終於回來了，成為一隊由經驗豐富的戰士所組成的強硬"
+"軍團，被一個戰爭之王領導。返回家鄉的喜悅使他們的疲倦感一掃而空。人魚們於夜間"
+"抵達礁沙，他們發現海口有守衛，於是他們沿著海岸向南邊，到偏遠的村莊去打聽這些"
+"侵略者的消息。"
 
 #. [modify_unit]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:296
 msgid "Mal-Necross"
-msgstr ""
+msgstr "馬爾-尼克羅斯"
 
 #. [modify_unit]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:312
 msgid "Mal-Verloth"
-msgstr ""
+msgstr "馬爾-維洛斯"
 
 #. [unit]: type=Merman Fighter, id=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:381
 msgid "Nebthun"
-msgstr ""
+msgstr "尼布桑"
 
 #. [unit]: type=Merman Hunter, id=Jarla
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:393
 msgid "Jarla"
-msgstr ""
+msgstr "賈拉"
 
 #. [unit]: type=Merman Brawler, id=Tabomo
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:405
 msgid "Tabomo"
-msgstr ""
+msgstr "特博姆"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:414
 msgid ""
 "Kai Krellis! You live! We thought you and your people had all been killed "
 "when Jotha fell."
-msgstr "凱．克萊利斯，你還活著！我們還以為你和你的人在礁沙城被占領時就被殺了。"
+msgstr ""
+"凱‧克瑞利斯，你還活著！我們還以為你和你的人在礁沙被佔領時就已經被殺了。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:418
@@ -2701,19 +2716,18 @@ msgid ""
 "No, most of us escaped. I thought your settlements might be far enough away "
 "to escape harm, but you look as if you had seen battle."
 msgstr ""
-"不，我們大部分都逃走了。我以為你們這裡已經夠偏僻而沒有被波及到，但你看起來像"
-"是才剛剛戰鬥過。"
+"不，我們大部分都逃走了。我以為你們的據點已經離得夠遠而能夠避開傷害，但你看起"
+"來像是已經見過了戰鬥。"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:422
 msgid ""
-"Indeed, though we have not been hard pressed. The creatures have been busy "
+"Indeed, though we have not been hard-pressed. The creatures have been busy "
 "fouling the waters and making the bay more to their liking. We worry that "
 "they will soon be back to finish with us, and I fear we will not survive."
 msgstr ""
-"你說的沒錯，他們確實還沒有過來，但我們還是得每天防備他們。那些生物現在正忙著"
-"汙染海水，讓海灣變得跟他們一樣骯髒。我們擔心他們很快就會抽空來對付我們，我們"
-"都很害怕未來還能不能生存下去。"
+"是的，不過我們還沒受到很大的壓迫。那些生物現在正忙著汙染海水，讓海灣變得跟他"
+"們一樣骯髒。我們擔心他們很快就會回頭對付我們，我怕我們將不能生存下去。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:426
@@ -2721,8 +2735,8 @@ msgid ""
 "We come prepared for battle, and have brought help. We will reclaim our home "
 "and make yours safe as well. Mal-Ravanal will pay this day."
 msgstr ""
-"我們替這場戰鬥做好萬全準備了。我們將會奪回我們的家園，你們將會跟以前一樣安"
-"全。麥爾-諾曼鈉在這天將會付出代價。"
+"我們做好準備回來戰鬥，還帶了一些支援。我們將會奪回我們的家園，你們將會跟以前"
+"一樣安全。馬爾-拉瓦諾將在這天付出代價。"
 
 #. [message]: speaker=Nebthun
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:430
@@ -2732,14 +2746,14 @@ msgid ""
 "our base. The undead cut down many trees there to make bridges, and it is "
 "much easier to move through now."
 msgstr ""
-"太好了，我們也要加入你！你們一定會對特博姆殺掉骷髏的速度感到吃驚的。我認為我"
-"們應該用大陸上荒廢的城堡做為我們的基地，那一帶的樹都被亡靈砍去座橋了，現在那"
-"裡好走多了。"
+"太好了，我們會加入你。你們一定會對特博姆敲碎骷髏的速度感到印象深刻的。我認為"
+"我們應該用大陸上荒廢的城堡做為我們的基地，那一帶的樹都被亡靈砍去座橋了，現在"
+"那裡好走多了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:466
 msgid "At dawn, the merfolk got a good look at their opponents."
-msgstr "黎明來臨，人魚們可以看清敵人的狀況了。"
+msgstr "黎明來臨，人魚們看清了他們的對手。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:472
@@ -2749,20 +2763,20 @@ msgstr "看起來不太糟。"
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:477
 msgid "Maybe not yet, but just wait."
-msgstr "也許還沒，還要等一下。"
+msgstr "也許還沒有，只不過要等一下。"
 
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:482
 msgid ""
 "The merfolk...they came back! Bring back the search parties! Call back the "
 "hordes!"
-msgstr "這些人魚......他們回來了！快把搜索隊找回來！召喚大軍！"
+msgstr "那些人魚……他們回來了！快把搜索隊找回來！召回軍團！"
 
 #. [message]: speaker=Mal-Kevek
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:487
 msgid ""
 "Just make some more, you fool. There are plenty of corpses to go around."
-msgstr "白癡！叫更多人來的話，地上的屍體會更多。"
+msgstr "做更多就好了，你這個蠢貨。周圍有充足的屍體可以用。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:517
@@ -2770,33 +2784,33 @@ msgid ""
 "I suppose this <i>does</i> look a little overwhelming. I may enjoy it "
 "though. It can be satisfying to rain holy fire down on misbehaving spirits."
 msgstr ""
-"看起來敵人有壓倒性的數量，不過我喜歡有挑戰性的戰鬥。給這些不乖的亡靈降下一場"
-"神聖的火雨應該不錯。"
+"我想這<i>確實</i>有點難以抵擋，不過我也許會享受它。給這些不乖的亡靈降下一場神"
+"聖的火雨應該不錯。"
 
 #. [message]: speaker=Gwabbo
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:522
 msgid "Absolutely! Bring ’em on!"
-msgstr "當然要！給他們一點顏色瞧瞧！"
+msgstr "絕對要！給他們一點顏色瞧瞧！"
 
 #. [unit]: type=$type_3, id=Carallcyn
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:593
 msgid "Carallcyn"
-msgstr ""
+msgstr "卡羅森"
 
 #. [message]: speaker=Carallcyn
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:599
 msgid "We searched up the coast for miles, and here they are!"
-msgstr "我們已經沿著海岸找了好幾公里，結果現在他們居然在這裡！"
+msgstr "我們沿著海岸找了好幾哩，而他們在這裡！"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:709
 msgid "I was wrong. You are no grandson of <i>mine</i>!"
-msgstr "我錯了，你根本不是我的孫子！"
+msgstr "我錯了，你不是<i>我的</i>孫子！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:720
 msgid "I have failed my people."
-msgstr "我對不起我的人民。"
+msgstr "我辜負了我的人民。"
 
 #. [message]: speaker=Dead Knight
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:743
@@ -2806,39 +2820,39 @@ msgstr "咕！"
 #. [message]: speaker=Mel Daveth
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:755
 msgid "Save me Lord Rava...uhh!"
-msgstr "救我啊...首領瑞文...呃！"
+msgstr "救我，拉瓦諾領主……呃！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:772
 msgid "We have retaken our home!"
-msgstr "我們成功奪回家園了！"
+msgstr "我們成功奪回我們的家園了！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:783
 msgid "Cylanna! I will miss you."
-msgstr "希蘭娜！我會失去妳。"
+msgstr "希蘭娜！我會想你的。"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:794
 msgid "Tyegëa! No!"
-msgstr "不！泰戈雅！"
+msgstr "泰格亞！不！"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:820
 msgid "Inky has found something. Someone should check it out."
-msgstr "墨黑發現了什麼。得有人去瞧瞧。"
+msgstr "墨黑發現了什麼。應該要有一個人去瞧瞧。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:847
 msgid "Something must be there! Good bat! Someone should find out what it is."
-msgstr "那裡肯定有些什麼！乖蝙蝠！得有人去瞧瞧到底是什麼。"
+msgstr "那裡肯定有些什麼！乖蝙蝠！應該要有人去瞧瞧到底是什麼。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:884
 msgid ""
 "This man was wearing a necklace with a pendant on it. I’m sure the shape "
 "means something."
-msgstr "這個人帶著一條項鍊墜飾，我敢確定這個形狀不平凡。"
+msgstr "這個人帶著一條項鍊墜飾，我確定這個形狀意義非凡。"
 
 #. [message]: speaker=Tyegea
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:891
@@ -2850,7 +2864,7 @@ msgstr "確實如此，它是一個十字架，這個墜飾可以用來強化你
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:896
 msgid "The ankh necklace provides 70% resistance to <i>arcane</i> damage."
-msgstr "這條十字架項鍊可以讓你抵抗70%的秘術傷害。"
+msgstr "這條十字架項鍊可以讓你抵抗70%的<i>秘法</i>傷害。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:916
@@ -2860,12 +2874,12 @@ msgstr "牠好像沒有幫上牠前主人的忙。我才不要牠。"
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:952
 msgid "I would like my life force protected."
-msgstr "我想要增強我的生命力。"
+msgstr "我想要保護我的生命力。"
 
 #. [option]
 #: data/campaigns/Dead_Water/scenarios/12_Revenge.cfg:965
 msgid "My life force feels fine as it is."
-msgstr "我的生命力已經夠強了。"
+msgstr "我的生命力已經感覺夠強了。"
 
 #. [scenario]: id=13_Epilogue
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:4
@@ -2882,10 +2896,10 @@ msgid ""
 "defeated the undead at Jotha. With the evil wizard gone, the merfolk relaxed "
 "and began rebuilding in earnest, and soon Jotha was restored."
 msgstr ""
-"解決掉麥爾-諾曼鈉的不死軍隊後，凱．克萊利斯做好了迎接敵人反擊的準備，但他們始"
-"終沒有到來。克萊利斯派遣信使到南方調查原因。信使帶回來一個非常好的消息：在他"
-"們對抗礁沙城的不死族時，麥爾-諾曼鈉已經被韋諾的士兵殺死了。邪惡的巫妖死了，人"
-"魚們終於鬆了一口氣，他們開始努力重建家園。很快地，礁沙城再次在這塊土地上取回"
+"解決掉馬爾-拉瓦諾的不死軍隊後，凱‧克瑞利斯做好了迎接敵人反擊的準備，但他們始"
+"終沒有到來。克瑞利斯派遣信使到南方調查原因。信使帶回來一個非常好的消息，那就"
+"是在他們對抗礁沙的亡靈時，馬爾-拉瓦諾已經被韋諾的士兵殺死了。邪惡的巫妖死了，"
+"人魚們終於鬆了一口氣，他們開始努力重建家園。很快地，礁沙再次在這塊土地上取回"
 "舉足輕重的地位。"
 
 #. [message]: speaker=narrator
@@ -2898,10 +2912,10 @@ msgid ""
 "shallows. Many of those children were named after Kai Krellis, Gwabbo, "
 "Cylanna, and the other heroes."
 msgstr ""
-"然而，並不是所有的東西回到跟從前一樣。許多優秀的人魚在戰爭和旅途中離開了大"
+"然而，並不是所有的東西都回到跟從前一樣。許多優秀的人魚在戰爭和旅途中離開了大"
 "家。來訪的女祭司們忙著安慰這些失去親人的家庭。死亡一直在發生，生活還是要過。"
-"幾個月後，淺灘上又想起孩子們天真無邪的笑聲。許多父母以這些英雄的名字替小孩命"
-"名，像是凱．克萊利斯、戈瓦布、希蘭娜，及其他參與過大戰的英雄。"
+"幾個月後，淺灘上又響起孩子們咯咯的笑聲。這些孩子中，有許多是以凱‧克瑞利斯、戈"
+"瓦布、希蘭娜，及其他參與過大戰的英雄的名字來命名。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:50
@@ -2910,8 +2924,8 @@ msgid ""
 "grandson. Most of her priestesses went with her, but a few of them stayed in "
 "Jotha, enriching the culture of the city."
 msgstr ""
-"泰戈雅回到了她的家，但依然跟她的孫子保持聯繫。她的許多祭司也跟著她回去，但也"
-"有一些留在礁沙城，幫助發展城市的文化。"
+"泰格亞回到了她的家，但依然跟她的孫子保持聯繫。她的許多祭司也跟著她回去，但也"
+"有一些留在礁沙，幫助發展城市的文化。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:63
@@ -2921,9 +2935,9 @@ msgid ""
 "presiding at naming ceremonies and weddings. All this agreed with her "
 "disposition much better than battling undead."
 msgstr ""
-"希蘭娜在此之後就沒有去過其他遙遠的地方，一直留在礁沙城作一位受人尊敬的長者。"
-"她仍然是個國家顧問，但她現在的主要工作則是治療病人和主持典禮和婚禮。大家現在"
-"都比不死族出現以前還要更能信賴她了。"
+"希蘭娜在此之後就沒有去過其它遙遠的地方，一直留在礁沙作一位受人尊敬的長者。她"
+"仍然是個皇家顧問，但她現在的主要工作則是治療病人和主持典禮和婚禮。大家現在都"
+"比亡靈出現以前還要更能信賴她了。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:70
@@ -2931,8 +2945,8 @@ msgid ""
 "Kai Krellis was somber over the next months as he grieved over the loss of "
 "Cylanna, but the grief diminished with time leaving only fond memories."
 msgstr ""
-"希蘭娜過世後，凱．克萊利斯傷心了好幾個月，天天鬱鬱寡歡。不過隨著時間的推移，"
-"他的哀愁慢慢消散，心裡只留下他與希蘭娜美好的回憶。"
+"希蘭娜過世後，凱‧克瑞利斯傷心了好幾個月，天天鬱鬱寡歡。不過隨著時間的推移，他"
+"的哀愁慢慢消散，心裡只留下他與希蘭娜美好的回憶。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:83
@@ -2941,8 +2955,8 @@ msgid ""
 "merfolk children for generations thereafter. He became an almost legendary "
 "figure."
 msgstr ""
-"戈瓦布住在礁沙城裡，他活到很老。他的英勇事蹟被世世代代傳頌著，最後他成了一個"
-"傳奇英雄。"
+"戈瓦布住在礁沙，他活到很老。他的英勇事蹟被世世代代傳頌著，幾乎成了一個傳奇英"
+"雄。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:101
@@ -2950,8 +2964,8 @@ msgid ""
 "Gwabbo and Cylanna were often together, and when Kai Krellis found a wife "
 "(which is a tale for another time!) they presided at his wedding."
 msgstr ""
-"戈瓦布和希蘭娜常常膩在一起，而且當凱．克萊利斯要娶老婆的時候(這又是另一個故事"
-"了！)，他們還共同主持他的婚禮。"
+"戈瓦布和希蘭娜常常膩在一起，而且當凱‧克瑞利斯要娶老婆的時候（這又是另一個故事"
+"了！），他們還共同主持他的婚禮。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:114
@@ -2960,8 +2974,8 @@ msgid ""
 "was delighted to find that many of his family members had also returned. He "
 "visited Jotha frequently, and remained friends with all the other veterans."
 msgstr ""
-"涕洛亞回到了自己的家中，蜥蜴人曾闖進這裡把他擄走。他很高興看到大部分的家人也"
-"都回來了。他經常到礁沙城，那裡所有的老戰士都是他的朋友。"
+"蒂洛亞回到了自己的家中，蜥蜴人曾闖進這裡把他擄走。他很高興看到大部分的家人也"
+"都回來了。他經常拜訪礁沙，和那裡的所有其他老兵維持著友誼。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:127
@@ -2970,8 +2984,8 @@ msgid ""
 "them all into submission (which is the drake way) and ruled there with an "
 "iron fist."
 msgstr ""
-"凱軒回到了碧爾瀚島，他以龍族的方式與島上所有的龍族競爭，最後以強力的手腕統治"
-"著那裡。"
+"柯珊回到了群龍無首的比爾黑爾德。他將他們打得服服貼貼（這是龍族的方式），然後"
+"以鐵拳統治著那裡。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:135
@@ -2980,8 +2994,8 @@ msgid ""
 "beautiful daughters. When the orcs who had learned to fear his father tested "
 "Jotha again, they learned to fear Kai Krellis even more."
 msgstr ""
-"克萊利斯在幾年後結婚，他有了強壯的兒子和漂亮的女人。比起凱．勞迪斯，這些之後"
-"還和礁沙城有過衝突的半獸人，覺得凱．克萊利斯更可怕。"
+"克瑞利斯自己則在幾年後結婚了，他有了強壯的兒子和漂亮的女兒。當那些曾經認識到"
+"要畏懼他父親的半獸人們又來考驗礁沙時，他們認識到要更畏懼凱‧克瑞利斯。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/scenarios/13_Epilogue.cfg:146
@@ -2989,8 +3003,8 @@ msgid ""
 "Inky lived with Krellis at court and frolicked in the kelp beds of Jotha "
 "until he became fat and lazy in his old age."
 msgstr ""
-"墨黑住在克萊利斯的閣樓裡，他喜歡在礁沙城海底的海藻中嬉戲，直到他後來年紀大"
-"了，變得又懶又肥，再也玩不動了。"
+"墨黑和克瑞利斯一起住在王宮裡。牠喜歡在礁沙海底的海藻床中嬉戲，直到牠老年之"
+"時，變得又懶又肥為止。"
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/campaigns/Dead_Water/units/Brawler.cfg:4
@@ -3003,17 +3017,18 @@ msgid ""
 "Exceptionally large and strong mermen are sometimes more comfortable with "
 "their own fists and tails than with other weapons."
 msgstr ""
-"體型龐大或是身體強壯的人魚由時候用不慣武器，他們更喜歡用自己的拳頭和尾巴。"
+"體型特別龐大且身體強壯的人魚有時候用不慣別的武器，他們覺得自己的拳頭和尾巴用"
+"起來更自在。"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
+#: data/campaigns/Dead_Water/units/Brawler.cfg:95
+#: data/campaigns/Dead_Water/units/Brawler.cfg:142
 msgid "stunned"
 msgstr "暈眩"
 
 #. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:97
-#: data/campaigns/Dead_Water/units/Brawler.cfg:144
+#: data/campaigns/Dead_Water/units/Brawler.cfg:96
+#: data/campaigns/Dead_Water/units/Brawler.cfg:143
 msgid "female^stunned"
 msgstr "暈眩"
 
@@ -3030,8 +3045,8 @@ msgid ""
 "as they are told, but a very young king will get little real respect."
 msgstr ""
 "人魚國王駕崩之後，第一順位的繼承人將登上王位，無論這個繼承人有多年輕。他的使"
-"命就是要在必要時領導軍隊進行戰鬥。雖然好的戰士會服從命令，但一個年輕的國王真"
-"正得到尊敬有限。"
+"命就是要在必要時領導軍隊進行戰鬥。雖然好的戰士會服從命令，但一個非常年輕的國"
+"王真正能得到的尊敬並不多。"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
@@ -3055,7 +3070,7 @@ msgstr ""
 #. [unit_type]: id=Kraken, race=monster
 #: data/campaigns/Dead_Water/units/Kraken.cfg:5
 msgid "Kraken"
-msgstr "巨型烏賊"
+msgstr "克拉肯"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/campaigns/Dead_Water/units/Kraken.cfg:20
@@ -3064,7 +3079,7 @@ msgid ""
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"巨型烏賊是一種體型比大烏賊海怪還要更巨大的怪獸。牠們會用強而有力的觸手抓住敵"
+"克拉肯是一種體型比大烏賊海怪還要更巨大的怪獸。牠們會用強而有力的觸手抓住敵"
 "人，或是從遠處向敵人噴出有毒的黑色墨汁。遇到這種生物的存活方法，就是乖乖地待"
 "在陸地上。"
 
@@ -3080,8 +3095,8 @@ msgid ""
 "soldiers. His strength allows him to wield powerful weapons and move "
 "quickly, even with heavy armor. His leadership abilities inspire his troops."
 msgstr ""
-"一位戰鬥技能出色而受到尊敬的國王（特別是在戰士之中），他的力量很強大，可以輕"
-"鬆揮舞重型武器，即使身披重甲，它們也能快速移動。他的領導能力更能鼓舞周圍的軍"
+"一位戰鬥技能出色而受到尊敬的國王──特別是在戰士之中。他的力量很強大，可以輕鬆"
+"揮舞重型武器，即使身披重甲，它們也能快速移動。他的領導能力更能鼓舞周圍的軍"
 "隊。"
 
 #. [unit_type]: id=Merman Warrior King, race=merman
@@ -3103,17 +3118,17 @@ msgstr ""
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:4
 msgid "Young King"
-msgstr "人魚國王"
+msgstr "人魚年輕國王"
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:20
 msgid ""
 "A young king with some battle experience will be treated with some respect. "
 "Common citizens will be inspired to do their utmost when the king is nearby, "
-"but battle-hardened veterens will be less impressed."
+"but battle-hardened veterans will be less impressed."
 msgstr ""
-"一個有一點戰鬥經驗的人魚國王可以得到一些人的尊敬。當這個人魚國王在人魚平民的"
-"附近時，他們會受到鼓舞，但是久經沙場的老兵們則不屑一顧。"
+"一個有著一些戰鬥經驗的年輕人魚國王會受到一些尊敬。當這個人魚國王在人魚平民的"
+"附近時，他們會受到鼓舞而盡最大的力量，但是久經沙場的老兵們則不屑一顧。"
 
 #. shown in the status table
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:73
@@ -3122,7 +3137,7 @@ msgstr "人魚"
 
 #: data/campaigns/Dead_Water/utils/dw-utils.cfg:77
 msgid "Kai Krellis"
-msgstr "凱．克萊利斯"
+msgstr "凱‧克瑞利斯"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:8
@@ -3133,11 +3148,11 @@ msgstr "風暴三叉戟"
 #: data/campaigns/Dead_Water/utils/items.cfg:11
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
-msgstr "這個武器給予人魚能向敵人發出強力的閃電。"
+msgstr "這個武器給予人魚向敵人發出雷電的能力。"
 
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:13
-msgid "Only the merfolk can use this item."
+msgid "Only merfolk can use this item."
 msgstr "只有人魚可以使用這個物品。"
 
 #. [effect]: type=fire
@@ -3158,14 +3173,14 @@ msgstr "烈焰寶劍"
 #. [object]: id={ID}
 #: data/campaigns/Dead_Water/utils/items.cfg:90
 msgid "Ankh Necklace"
-msgstr "十字型項鍊"
+msgstr "生命之符"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/utils/items.cfg:187
 msgid ""
 "The bat slips the ring over a claw, and flies straight up, flapping "
 "powerfully."
-msgstr "這隻蝙蝠從空中掠過指環，用爪子抓住了牠，然後有力的搧動翅膀飛了起來。"
+msgstr "這隻蝙蝠將爪子穿過戒指，然後有力地搧動著翅膀直直地向上飛。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dead_Water/utils/items.cfg:193
@@ -3178,12 +3193,12 @@ msgstr "這枚戒指可以增加一點擁有者的攻擊傷害和三點的生命
 #. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:207
 msgid "We will let the bat have the ring. It will make him more helpful."
-msgstr "我們將會讓這個蝙蝠擁有這枚戒指。它一定能讓牠變得更強大！"
+msgstr "我們要讓這個蝙蝠擁有這枚戒指。它一定能讓牠變得更有幫助。"
 
 #. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:216
 msgid "Someone take that off him before he hurts himself."
-msgstr "在他傷害他自己之前，有人把戒指從他那裡拿走了。"
+msgstr "哪個人來把那東西從他身上拿走，免得讓他傷害他自己。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:236
@@ -3198,38 +3213,35 @@ msgstr "讓我戴戴看這枚戒指吧。"
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/utils/items.cfg:256
 msgid "I feel different, and all my weapons are lighter!"
-msgstr "（戴上戒指）嗯...我感覺到不太一樣，我的武器也變輕了！"
+msgstr "我感覺到不太一樣，我的武器也變輕了！"
 
 #. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:274
 msgid "I’ll take this ring, and you can rely on my strength."
-msgstr "我想要戴著戒指，你可以利用我的新力量來取得勝利。"
+msgstr "我要戴這枚戒指，然後你就可以利用我的新力量來取得勝利。"
 
 #. [option]
 #: data/campaigns/Dead_Water/utils/items.cfg:283
 msgid "This thing makes me dizzy. Someone else can have it."
-msgstr "這個戒指讓我頭暈目眩。（拿下戒指）有別人想戴上它嗎？"
+msgstr "這枚戒指讓我頭暈目眩。把它給別人吧。"
 
 #. [object]: id=power_ring2
 #: data/campaigns/Dead_Water/utils/items.cfg:304
 msgid "Ring of Power"
-msgstr "戒指的能力"
+msgstr "力量戒指"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/utils/items.cfg:352
 msgid ""
-"Killing these enemies was good, but there were many more on the way. I’m "
-"sure it is still unsafe here."
+"Killing these enemies was good, but there are many more on the way. I’m sure "
+"it is still unsafe here."
 msgstr ""
-"殺光這些敵人非常好，但有更多的敵人已經在來的路上了。我能肯定這裡已經不安全"
-"了。"
+"殺光這些敵人很好，但有更多的敵人已經在來的路上了。我能肯定這裡仍然不安全。"
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/utils/items.cfg:357
 msgid "I agree. I hate to leave our home, but we will return."
-msgstr ""
-"我同意。雖然我也不想離開我們的家園，但迫於情勢只能這樣做......不過我們一定會"
-"再回來的！"
+msgstr "我同意。我不想離開我們的家園，但我們會回來的。"
 
 #. [message]: speaker=Kai Krellis
 #. [message]: speaker=second_unit
@@ -3239,58 +3251,29 @@ msgid ""
 "The human wizard was wearing a ring! Maybe it is magic. Someone should try "
 "it on to see what it does."
 msgstr ""
-"這個人類巫師戴著一枚戒指，也許它蘊藏著魔力。應該要有一個人試著將它戴上，看看"
+"這個人類巫師戴著一枚戒指！也許它蘊藏著魔力，應該要有一個人試著將它戴上，看看"
 "它是做什麼用的。"
 
-#. [special_note]
-#: data/campaigns/Dead_Water/utils/specials.cfg:5
-#, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"這個單位可以擊暈敵人，使其無法控制周圍的區域（無法遮擋其他人的移動區塊）。"
-
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:12
+#: data/campaigns/Dead_Water/utils/specials.cfg:6
 msgid "stun"
 msgstr "擊暈"
 
 #. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:13
+#: data/campaigns/Dead_Water/utils/specials.cfg:7
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
-"這個技能可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域，換"
-"句話說就是敵人移動的時候無法擋住敵人。而暈眩的效果將在敵人的下個回合解除。"
+"這種攻擊可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域。而"
+"暈眩的效果將在敵人的下個回合解除。"
 
-#~ msgid ""
-#~ "Let’s hope those wild wolves over there don’t get to it before we do."
-#~ msgstr "真希望那邊的野生狼群還沒先動口。(流口水貌)"
+#. [damage]: id=tail_stun
+#: data/campaigns/Dead_Water/utils/specials.cfg:8
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"這個單位可以擊暈敵人，使其無法控制周圍的區域（無法遮擋敵方單位的移動區域）。"
 
-#~ msgid ""
-#~ "Hold on...It looks like a better feast is coming our way! Fresh fish, "
-#~ "boys! Go get it."
-#~ msgstr ""
-#~ "聞起來真的好香啊......不行，我得撐得住！看來等一下就可以享用到美味大餐了，"
-#~ "兄弟們，一起去吧！"
-
-#~ msgid "Merman Forces"
-#~ msgstr "人魚部隊"
-
-#~ msgid "fist"
-#~ msgstr "拳頭"
-
-#~ msgid "tail"
-#~ msgstr "尾巴"
-
-#~ msgid "tentacle"
-#~ msgstr "觸手"
-
-#~ msgid "ink"
-#~ msgstr "墨水"
-
-#~ msgid "mace"
-#~ msgstr "棒槌"
+#~ msgid "Beginner"
+#~ msgstr "初學者"

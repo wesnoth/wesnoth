@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 
@@ -25,6 +26,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "game_config_view.hpp"
+#include "deprecation.hpp"
 #include <vector>
 #include <deque>
 #include <set>
@@ -37,6 +39,9 @@ static lg::log_domain log_ai_configuration("ai/config");
 #define WRN_AI_CONFIGURATION LOG_STREAM(warn, log_ai_configuration)
 #define ERR_AI_CONFIGURATION LOG_STREAM(err, log_ai_configuration)
 
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
+
 void configuration::init(const game_config_view &game_config)
 {
 	ai_configurations_.clear();
@@ -46,12 +51,12 @@ void configuration::init(const game_config_view &game_config)
 	const config &ais = game_config.child("ais");
 	default_config_ = ais.child("default_config");
 	if (!default_config_) {
-		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty." << std::endl;
+		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty.";
 		default_config_.clear();
 	}
 	default_ai_algorithm_ = ais["default_ai_algorithm"].str();
 	if (default_ai_algorithm_.empty()) {
-		ERR_AI_CONFIGURATION << "Missing default_ai_algorithm. This will result in no AI being loaded by default." << std::endl;
+		ERR_AI_CONFIGURATION << "Missing default_ai_algorithm. This will result in no AI being loaded by default.";
 	}
 
 
@@ -59,11 +64,11 @@ void configuration::init(const game_config_view &game_config)
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
-			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 		if (ai_configurations_.count(id)>0){
-			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 
@@ -74,7 +79,7 @@ void configuration::init(const game_config_view &game_config)
 		desc.cfg=ai_configuration;
 
 		ai_configurations_.emplace(id, desc);
-		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
+		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"];
 	}
 }
 
@@ -85,11 +90,11 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		const std::string &id = ai_configuration["id"];
 		if (id.empty()){
 
-			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to missing id" << ". Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 		if (storage.count(id)>0){
-			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration << std::endl;
+			ERR_AI_CONFIGURATION << "skipped AI config due to duplicate id [" << id << "]. Config contains:"<< std::endl << ai_configuration;
 			continue;
 		}
 
@@ -100,7 +105,7 @@ void extract_ai_configurations(std::map<std::string, description> &storage, cons
 		desc.cfg=ai_configuration;
 
 		storage.emplace(id, desc);
-		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"] << std::endl;
+		LOG_AI_CONFIGURATION << "loaded AI config: " << ai_configuration["description"];
 	}
 }
 }
@@ -129,7 +134,7 @@ std::vector<description*> configuration::get_available_ais()
 		if(!cfg["hidden"].to_bool(false)) {
 			ais_list.push_back(d);
 
-			DBG_AI_CONFIGURATION << "has ai with config: " << std::endl << cfg << std::endl;
+			DBG_AI_CONFIGURATION << "has ai with config: " << std::endl << cfg;
 		}
 	};
 
@@ -147,10 +152,10 @@ std::vector<description*> configuration::get_available_ais()
 
 	// Sort by mp_rank. For same mp_rank, keep alphabetical order.
 	std::stable_sort(ais_list.begin(), ais_list.end(),
-        [](const description* a, const description* b) {
+		[](const description* a, const description* b) {
 			return a->mp_rank < b->mp_rank;
 		}
-    );
+	);
 
 	return ais_list;
 }
@@ -174,23 +179,16 @@ const config& configuration::get_ai_config_for(const std::string &id)
 	return cfg_it->second.cfg;
 }
 
-
-configuration::description_map configuration::ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::era_ai_configurations_ = configuration::description_map();
-configuration::description_map configuration::mod_ai_configurations_ = configuration::description_map();
-config configuration::default_config_ = config();
-std::string configuration::default_ai_algorithm_;
-
 bool configuration::get_side_config_from_file(const std::string& file, config& cfg ){
 	try {
 		filesystem::scoped_istream stream = preprocess_file(filesystem::get_wml_location(file));
 		read(cfg, *stream);
-		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'" << std::endl;
+		LOG_AI_CONFIGURATION << "Reading AI configuration from file '" << file  << "'";
 	} catch(const config::error &) {
-		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'" << std::endl;
+		ERR_AI_CONFIGURATION << "Error while reading AI configuration from file '" << file  << "'";
 		return false;
 	}
-	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'" << std::endl;
+	LOG_AI_CONFIGURATION << "Successfully read AI configuration from file '" << file  << "'";
 	return true;
 }
 
@@ -202,7 +200,7 @@ const config& configuration::get_default_ai_parameters()
 
 bool configuration::parse_side_config(side_number side, const config& original_cfg, config &cfg )
 {
-	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config" << std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": parsing AI configuration from config";
 
 	//leave only the [ai] children
 	cfg.clear();
@@ -216,40 +214,40 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		ai_a["ai_algorithm"] = *v;
 		cfg.add_child("ai",ai_a);
 	}
-	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg << std::endl;
+	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg;
 
 	//insert default config at the beginning
 	if (default_config_) {
-		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration" << std::endl;
+		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration";
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
-		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, not applying it" << std::endl;
+		ERR_AI_CONFIGURATION << "side "<< side <<": default configuration is not available, not applying it";
 	}
 
-	LOG_AI_CONFIGURATION << "side "<< side << ": expanding simplified aspects into full facets"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side << ": expanding simplified aspects into full facets";
 	expand_simplified_aspects(side, cfg);
 
 	//construct new-style integrated config
-	LOG_AI_CONFIGURATION << "side "<< side << ": doing final operations on AI config"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side << ": doing final operations on AI config";
 	config parsed_cfg = config();
 
-	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI configurations";
 	for (const config &aiparam : cfg.child_range("ai")) {
 		parsed_cfg.append(aiparam);
 	}
 
 
-	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id";
 	parsed_cfg.merge_children_by_attribute("aspect","id");
 
-	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects"<< std::endl;
+	LOG_AI_CONFIGURATION << "side "<< side <<": removing duplicate [default] tags from aspects";
 	for (config &aspect_cfg : parsed_cfg.child_range("aspect")) {
 		if (aspect_cfg["name"] != "composite_aspect") {
 			// No point in warning about Lua or standard aspects lacking [default]
 			continue;
 		}
 		if (!aspect_cfg.child("default")) {
-			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!" <<std::endl;
+			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!";
 			continue;
 		}
 		aspect_cfg.merge_children("default");
@@ -261,8 +259,8 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 		}
 	}
 
-	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg << std::endl;
-	LOG_AI_CONFIGURATION << "side "<< side <<": done parsing side config"<< std::endl;
+	DBG_AI_CONFIGURATION << "side "<< side <<": done parsing side config, it contains:"<< std::endl << parsed_cfg;
+	LOG_AI_CONFIGURATION << "side "<< side <<": done parsing side config";
 
 	cfg = parsed_cfg;
 	return true;
@@ -270,7 +268,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 }
 
 static const std::set<std::string> non_aspect_attributes {"turns", "time_of_day", "engine", "ai_algorithm", "id", "description", "hidden", "mp_rank"};
-static const std::set<std::string> just_copy_tags {"engine", "stage", "aspect", "goal", "modify_ai"};
+static const std::set<std::string> just_copy_tags {"engine", "stage", "aspect", "goal", "modify_ai", "micro_ai"};
 static const std::set<std::string> old_goal_tags {"target", "target_location", "protect_unit", "protect_location"};
 
 void configuration::expand_simplified_aspects(side_number side, config &cfg) {
@@ -286,13 +284,17 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 		}
 		if (aiparam.has_attribute("engine")) {
 			engine = aiparam["engine"].str();
+			if(engine == "fai") {
+				deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
+			}
 		}
 		if (aiparam.has_attribute("ai_algorithm")) {
 			if (algorithm.empty()) {
 				algorithm = aiparam["ai_algorithm"].str();
 				base_config = get_ai_config_for(algorithm);
 			} else if(algorithm != aiparam["ai_algorithm"]) {
-				lg::wml_error() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+				lg::log_to_chat() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
+				ERR_WML << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.";
 			}
 		}
 		std::deque<std::pair<std::string, config>> facet_configs;
@@ -308,10 +310,16 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 			facet_config["value"] = attr.second;
 			facet_configs.emplace_back(attr.first, facet_config);
 		}
-		for (const config::any_child &child : aiparam.all_children_range()) {
+		for (const config::any_child child : aiparam.all_children_range()) {
 			if (just_copy_tags.count(child.key)) {
 				// These aren't simplified, so just copy over unchanged.
 				parsed_config.add_child(child.key, child.cfg);
+				if(
+				   (child.key != "modify_ai" && child.cfg["engine"] == "fai") ||
+				   (child.key == "modify_ai" && child.cfg.all_children_count() > 0 && child.cfg.all_children_range().front().cfg["engine"] == "fai")
+				) {
+					deprecated_message("FormulaAI", DEP_LEVEL::FOR_REMOVAL, "1.17", "FormulaAI is slated to be removed. Use equivalent Lua AIs instead");
+				}
 				continue;
 			} else if(old_goal_tags.count(child.key)) {
 				// A simplified goal, mainly kept around just for backwards compatibility.
@@ -327,6 +335,7 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 					goal_config["value"] = criteria_config["value"];
 					criteria_config.remove_attribute("value");
 				}
+				goal_config.add_child("criteria", criteria_config);
 				parsed_config.add_child("goal", std::move(goal_config));
 				continue;
 			}
@@ -369,13 +378,14 @@ void configuration::expand_simplified_aspects(side_number side, config &cfg) {
 	// Support old recruitment aspect syntax
 	for(auto& child : parsed_config.child_range("aspect")) {
 		if(child["id"] == "recruitment") {
+			deprecated_message("AI recruitment aspect", DEP_LEVEL::INDEFINITE, "", "Use the recruitment_instructions aspect instead");
 			child["id"] = "recruitment_instructions";
 		}
 	}
 	if (algorithm.empty() && !parsed_config.has_child("stage")) {
 		base_config = get_ai_config_for(default_ai_algorithm_);
 	}
-	for (const config::any_child &child : parsed_config.all_children_range()) {
+	for (const config::any_child child : parsed_config.all_children_range()) {
 		base_config.add_child(child.key, child.cfg);
 	}
 	cfg.clear_children("ai");

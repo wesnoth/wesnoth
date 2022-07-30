@@ -1,24 +1,26 @@
 /*
- * Copyright (C) 2016 - 2018 by Jyrki Vesterinen <sandgtx@gmail.com>
- * Part of the Battle for Wesnoth Project https://www.wesnoth.org/
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY.
- *
- * See the COPYING file for more details.
- */
+	Copyright (C) 2016 - 2022
+	by Jyrki Vesterinen <sandgtx@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
+
+	See the COPYING file for more details.
+*/
 
 #include "scripting/lua_preferences.hpp"
 
 #include "config.hpp"
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
+#include "preferences/advanced.hpp"
 #include "preferences/general.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/push_check.hpp"
 
 /**
  * The __index metamethod.
@@ -49,6 +51,20 @@ static int impl_preferences_set(lua_State* L)
 	return 0;
 }
 
+static int impl_preferences_dir(lua_State* L)
+{
+	std::vector<std::string> all_prefs;
+	for(const auto& [key, value] : preferences::get_prefs()->attribute_range()) {
+		all_prefs.push_back(key);
+	}
+	// This will result in some duplicates, but dir() automatically strips those out so who cares,
+	for(const auto& pref : preferences::get_advanced_preferences()) {
+		all_prefs.push_back(pref.field);
+	}
+	lua_push(L, all_prefs);
+	return 1;
+}
+
 namespace lua_preferences
 {
 	std::string register_table(lua_State* L)
@@ -62,6 +78,8 @@ namespace lua_preferences
 		lua_setfield(L, -2, "__index");
 		lua_pushcfunction(L, impl_preferences_set);
 		lua_setfield(L, -2, "__newindex");
+		lua_pushcfunction(L, impl_preferences_dir);
+		lua_setfield(L, -2, "__dir");
 		lua_pushstring(L, "src/scripting/lua_preferences.cpp");
 		lua_setfield(L, -2, "__metatable");
 

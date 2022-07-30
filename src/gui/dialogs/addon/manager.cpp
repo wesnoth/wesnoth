@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -25,9 +26,9 @@
 
 #include "help/help.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
+#include "gui/dialogs/addon/addon_auth.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/button.hpp"
@@ -38,11 +39,12 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
@@ -58,9 +60,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 namespace {
@@ -207,6 +207,40 @@ const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
 	[](const addon_info& a, const addon_info& b) { return a.created > b.created; }}
 };
 
+namespace
+{
+struct addon_tag
+{
+	/** Text to match against addon_info.tags() */
+	std::string id;
+	/** What to show in the filter's drop-down list */
+	std::string label;
+	/** Shown when hovering over an entry in the filter's drop-down list */
+	std::string tooltip;
+};
+
+const std::vector<addon_tag> tag_filter_types_{
+	{"cooperative", N_("addon_tag^Cooperative"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^All human players are on the same team, versus the AI")},
+	{"cosmetic", N_("addon_tag^Cosmetic"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^These make the game look different, without changing gameplay")},
+	{"difficulty", N_("addon_tag^Difficulty"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Can make campaigns easier or harder")},
+	{"rng", N_("addon_tag^RNG"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Modify the randomness in the combat mechanics, or remove it entirely")},
+	{"survival", N_("addon_tag^Survival"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Fight against waves of enemies")},
+	{"terraforming", N_("addon_tag^Terraforming"),
+		// TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
+		N_("addon_tag^Players can change the terrain")},
+};
+};
+
 addon_manager::addon_manager(addons_client& client)
 	: orders_()
 	, cfg_()
@@ -276,6 +310,24 @@ void addon_manager::pre_show(window& window)
 {
 	window.set_escape_disabled(true);
 
+	stacked_widget& addr_info = find_widget<stacked_widget>(&window, "server_conn_info", false);
+	grid* addr_visible;
+
+	if(client_.using_tls()) {
+		addr_info.select_layer(1);
+		addr_visible = addr_info.get_layer_grid(1);
+	} else {
+		addr_info.select_layer(0);
+		addr_visible = addr_info.get_layer_grid(0);
+	}
+
+	if(addr_visible) {
+		auto addr_box = dynamic_cast<styled_widget*>(addr_visible->find("server_addr", false));
+		if(addr_box) {
+			addr_box->set_label(client_.addr());
+		}
+	}
+
 	addon_list& list = find_widget<addon_list>(&window, "addons", false);
 
 	text_box& filter = find_widget<text_box>(&window, "filter", false);
@@ -310,6 +362,22 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(status_filter,
 		std::bind(&addon_manager::apply_filters, this));
 
+	// The tag filter
+	auto& tag_filter = find_widget<multimenu_button>(&window, "tag_filter", false);
+
+	std::vector<config> tag_filter_entries;
+	for(const auto& f : tag_filter_types_) {
+		tag_filter_entries.emplace_back("label", t_string(f.label, GETTEXT_DOMAIN), "checkbox", false);
+		if(!f.tooltip.empty()) {
+			tag_filter_entries.back()["tooltip"] = t_string(f.tooltip, GETTEXT_DOMAIN);
+		}
+	}
+
+	tag_filter.set_values(tag_filter_entries);
+
+	connect_signal_notify_modified(tag_filter, std::bind(&addon_manager::apply_filters, this));
+
+	// The type filter
 	multimenu_button& type_filter = find_widget<multimenu_button>(&window, "type_filter", false);
 
 	std::vector<config> type_filter_entries;
@@ -322,6 +390,7 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(type_filter,
 		std::bind(&addon_manager::apply_filters, this));
 
+	// Sorting order
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
 	std::vector<config> order_dropdown_entries;
@@ -343,8 +412,7 @@ void addon_manager::pre_show(window& window)
 	order_dropdown.set_values(order_dropdown_entries);
 	{
 		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
-		const preferences::SORT_ORDER saved_order_direction =
-			static_cast<preferences::SORT_ORDER>(preferences::addon_manager_saved_order_direction());
+		const sort_order::type saved_order_direction = preferences::addon_manager_saved_order_direction();
 
 		if(!saved_order_name.empty()) {
 			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
@@ -352,7 +420,7 @@ void addon_manager::pre_show(window& window)
 			if(order_it != all_orders_.end()) {
 				int index = 2 * (std::distance(all_orders_.begin(), order_it));
 				addon_list::addon_sort_func func;
-				if(saved_order_direction == preferences::SORT_ORDER::ASCENDING) {
+				if(saved_order_direction == sort_order::type::ascending) {
 					func = order_it->sort_func_asc;
 				} else {
 					func = order_it->sort_func_desc;
@@ -424,8 +492,7 @@ void addon_manager::pre_show(window& window)
 	window.keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
-	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this,
-		std::placeholders::_1, std::placeholders::_2));
+	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
 	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
@@ -437,7 +504,7 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 		btn.set_label(_("addons^Back to List"));
 		stk.select_layer(1);
 	} else {
-		btn.set_label(_("Addon Details"));
+		btn.set_label(_("Add-on Details"));
 		stk.select_layer(0);
 	}
 }
@@ -556,6 +623,38 @@ boost::dynamic_bitset<> addon_manager::get_status_filter_visibility() const
 	return res;
 }
 
+boost::dynamic_bitset<> addon_manager::get_tag_filter_visibility() const
+{
+	const auto& tag_filter = find_widget<const multimenu_button>(get_window(), "tag_filter", false);
+	const auto toggle_states = tag_filter.get_toggle_states();
+	if(toggle_states.none()) {
+		// Nothing selected. It means that all add-ons are shown.
+		boost::dynamic_bitset<> res_flipped(addons_.size());
+		return ~res_flipped;
+	}
+
+	std::vector<std::string> selected_tags;
+	for(std::size_t i = 0; i < tag_filter_types_.size(); ++i) {
+		if(toggle_states[i]) {
+			selected_tags.push_back(tag_filter_types_[i].id);
+		}
+	}
+
+	boost::dynamic_bitset<> res;
+	for(const auto& a : addons_) {
+		bool matched_tag = false;
+		for(const auto& id : selected_tags) {
+			if(utils::contains(a.second.tags, id)) {
+				matched_tag = true;
+				break;
+			}
+		}
+		res.push_back(matched_tag);
+	}
+
+	return res;
+}
+
 boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 {
 	const multimenu_button& type_filter = find_widget<const multimenu_button>(get_window(), "type_filter", false);
@@ -584,20 +683,33 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 
 void addon_manager::apply_filters()
 {
+	// In the small-screen layout, the text_box for the filter keeps keyboard focus even when the
+	// details panel is visible, which means this can be called when the list isn't visible. That
+	// causes problems both because find_widget can throw exceptions, but also because changing the
+	// filters can hide the currently-shown add-on, triggering a different one to be selected in a
+	// way that would seem random unless the user realised that they were typing into a filter box.
+	//
+	// Quick workaround is to not process the new filter if the list isn't visible.
+	auto list = find_widget<addon_list>(get_window(), "addons", false, false);
+	if(!list) {
+		return;
+	}
+
 	boost::dynamic_bitset<> res =
 		get_status_filter_visibility()
+		& get_tag_filter_visibility()
 		& get_type_filter_visibility()
 		& get_name_filter_visibility();
-	find_widget<addon_list>(get_window(), "addons", false).set_addon_shown(res);
+	list->set_addon_shown(res);
 }
 
 void addon_manager::order_addons()
 {
 	const menu_button& order_menu = find_widget<const menu_button>(get_window(), "order_dropdown", false);
 	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
-	preferences::SORT_ORDER order = order_menu.get_value() % 2 == 0 ? preferences::SORT_ORDER::ASCENDING : preferences::SORT_ORDER::DESCENDING;
+	sort_order::type order = order_menu.get_value() % 2 == 0 ? sort_order::type::ascending : sort_order::type::descending;
 	addon_list::addon_sort_func func;
-	if(order == preferences::SORT_ORDER::ASCENDING) {
+	if(order == sort_order::type::ascending) {
 		func = order_struct.sort_func_asc;
 	} else {
 		func = order_struct.sort_func_desc;
@@ -608,13 +720,13 @@ void addon_manager::order_addons()
 	preferences::set_addon_manager_saved_order_direction(order);
 }
 
-void addon_manager::on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order)
+void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type order)
 {
 	menu_button& order_menu = find_widget<menu_button>(get_window(), "order_dropdown", false);
 	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
 	int index = 2 * (std::distance(all_orders_.begin(), order_it));
-	if(order == preferences::SORT_ORDER::DESCENDING) {
+	if(order == sort_order::type::descending) {
 		++index;
 	}
 	order_menu.set_value(index);
@@ -628,7 +740,7 @@ void addon_manager::execute_action_on_selected_addon()
 	// Explicitly return to the main page if we're in low-res mode so the list is visible.
 	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
 		stk->select_layer(0);
-		find_widget<button>(get_window(), "details_toggle", false).set_label(_("Addon Details"));
+		find_widget<button>(get_window(), "details_toggle", false).set_label(_("Add-on Details"));
 	}
 
 	addon_list& addons = find_widget<addon_list>(get_window(), "addons", false);
@@ -740,6 +852,16 @@ void addon_manager::publish_addon(const addon_info& addon)
 		}
 	}
 
+	// if the passphrase isn't provided from the _server.pbl, try to pre-populate it from the preferences before prompting for it
+	if(cfg["passphrase"].empty()) {
+		cfg["passphrase"] = preferences::password(preferences::campaign_server(), cfg["author"]);
+		if(!gui2::dialogs::addon_auth::execute(cfg)) {
+			return;
+		} else {
+			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
+		}
+	}
+
 	if(!::image::exists(cfg["icon"].str())) {
 		gui2::show_error_message(_("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client_.request_distribution_terms(server_msg)) {
@@ -835,11 +957,13 @@ static std::string format_addon_time(std::time_t time)
 	if(time) {
 		std::ostringstream ss;
 
-		const char* format = preferences::use_twelve_hour_clock_format()
-			? "%Y-%m-%d %I:%M %p"
-			: "%Y-%m-%d %H:%M";
+		const std::string format = preferences::use_twelve_hour_clock_format()
+			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			? _("%B %d %Y, %I:%M %p")
+			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			: _("%B %d %Y, %H:%M");
 
-		ss << std::put_time(std::localtime(&time), format);
+		ss << translation::strftime(format, std::localtime(&time));
 
 		return ss.str();
 	}
@@ -849,15 +973,17 @@ static std::string format_addon_time(std::time_t time)
 
 void addon_manager::on_addon_select()
 {
-	const addon_info* info = find_widget<addon_list>(get_window(), "addons", false).get_selected_addon();
+	widget* parent = get_window();
+	widget* parent_of_addons_list = parent;
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+		parent_of_addons_list = stk->get_layer_grid(0);
+	}
+
+	const addon_info* info = find_widget<addon_list>(parent_of_addons_list, "addons", false).get_selected_addon();
 
 	if(info == nullptr) {
 		return;
-	}
-
-	widget* parent = get_window();
-	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
-		parent = stk->get_layer_grid(1);
 	}
 
 	find_widget<drawing>(parent, "image", false).set_label(info->display_icon());
@@ -922,7 +1048,6 @@ void addon_manager::on_addon_select()
 		for(const auto& f : info->versions) {
 			version_filter_entries.emplace_back("label", f.str());
 		}
-		version_filter.set_active(true);
 	} else {
 		action_stack.select_layer(1);
 
@@ -932,19 +1057,22 @@ void addon_manager::on_addon_select()
 
 		// Show only the version to be published
 		version_filter_entries.emplace_back("label", info->current_version.str());
-		version_filter.set_active(false);
 	}
+
 	version_filter.set_values(version_filter_entries);
+	version_filter.set_active(version_filter_entries.size() > 1);
 }
 
 void addon_manager::on_selected_version_change()
 {
 	widget* parent = get_window();
+	widget* parent_of_addons_list = parent;
 	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
 		parent = stk->get_layer_grid(1);
+		parent_of_addons_list = stk->get_layer_grid(0);
 	}
 
-	const addon_info* info = find_widget<addon_list>(get_window(), "addons", false).get_selected_addon();
+	const addon_info* info = find_widget<addon_list>(parent_of_addons_list, "addons", false).get_selected_addon();
 
 	if(info == nullptr) {
 		return;
@@ -973,4 +1101,3 @@ bool addon_manager::exit_hook(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

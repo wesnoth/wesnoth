@@ -1,22 +1,22 @@
 /*
-   Copyright (C) 2008 - 2018 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "hash.hpp"
 
 #include "serialization/base64.hpp"
 
-#include <iostream>
 #include <string>
 #include <sstream>
 #include <string.h>
@@ -28,18 +28,13 @@ extern "C" {
 
 #ifndef __APPLE__
 
-#include <openssl/sha.h>
-#include <openssl/md5.h>
-
-static_assert(utils::md5::DIGEST_SIZE == MD5_DIGEST_LENGTH, "Constants mismatch");
-static_assert(utils::sha1::DIGEST_SIZE == SHA_DIGEST_LENGTH, "Constants mismatch");
+#include <openssl/evp.h>
 
 #else
 
 #include <CommonCrypto/CommonDigest.h>
 
 static_assert(utils::md5::DIGEST_SIZE == CC_MD5_DIGEST_LENGTH, "Constants mismatch");
-static_assert(utils::sha1::DIGEST_SIZE == CC_SHA1_DIGEST_LENGTH, "Constants mismatch");
 
 #endif
 
@@ -70,10 +65,19 @@ namespace utils {
 md5::md5(const std::string& input) {
 
 #ifndef __APPLE__
-	MD5_CTX md5_worker;
-	MD5_Init(&md5_worker);
-	MD5_Update(&md5_worker, input.data(), input.size());
-	MD5_Final(hash.data(), &md5_worker);
+	EVP_MD_CTX *mdctx = EVP_MD_CTX_new();
+	unsigned int md5_digest_len = EVP_MD_size(EVP_md5());
+	assert(utils::md5::DIGEST_SIZE == md5_digest_len);
+
+	// MD5_Init
+	EVP_DigestInit_ex(mdctx, EVP_md5(), NULL);
+
+	// MD5_Update
+	EVP_DigestUpdate(mdctx, input.c_str(), input.size());
+
+	// MD5_Final
+	EVP_DigestFinal_ex(mdctx, hash.data(), &md5_digest_len);
+	EVP_MD_CTX_free(mdctx);
 #else
 	CC_MD5(input.data(), static_cast<CC_LONG>(input.size()), hash.data());
 #endif
@@ -119,28 +123,6 @@ std::string md5::hex_digest() const
 }
 
 std::string md5::base64_digest() const
-{
-	return encode_hash<DIGEST_SIZE>(hash);
-}
-
-sha1::sha1(const std::string& str)
-{
-#ifndef __APPLE__
-	SHA_CTX hasher;
-	SHA1_Init(&hasher);
-	SHA1_Update(&hasher, str.data(), str.size());
-	SHA1_Final(hash.data(), &hasher);
-#else
-	CC_MD5(str.data(), static_cast<CC_LONG>(str.size()), hash.data());
-#endif
-}
-
-std::string sha1::hex_digest() const
-{
-	return hexencode_hash<DIGEST_SIZE>(hash);
-}
-
-std::string sha1::base64_digest() const
 {
 	return encode_hash<DIGEST_SIZE>(hash);
 }

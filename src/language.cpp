@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "filesystem.hpp"
@@ -90,6 +91,16 @@ const t_string& symbol_table::operator[](const char* key) const
 	return (*this)[std::string(key)];
 }
 
+utils::string_map::const_iterator symbol_table::find(const std::string& key) const
+{
+	return strings_.find(key);
+}
+
+utils::string_map::const_iterator symbol_table::end() const
+{
+	return strings_.end();
+}
+
 bool load_language_list()
 {
 	config cfg;
@@ -113,13 +124,13 @@ bool load_language_list()
 	return true;
 }
 
-language_list get_languages()
+language_list get_languages(bool all)
 {
 	// We sort every time, the local might have changed which can modify the
 	// sort order.
 	std::sort(known_languages.begin(), known_languages.end());
 
-	if(min_translation_percent == 0) {
+	if(all || min_translation_percent == 0) {
 		return known_languages;
 	}
 
@@ -244,7 +255,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 			locale = lang + encoding[j] + extra;
 			res = std::setlocale(category, locale.c_str());
 			if (res) {
-				LOG_G << "Set locale to '" << locale << "' result: '" << res << "'.\n";
+				LOG_G << "Set locale to '" << locale << "' result: '" << res << "'.";
 				goto done;
 			}
 		}
@@ -254,7 +265,7 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 		++i;
 	}
 
-	WRN_G << "setlocale() failed for '" << slocale << "'." << std::endl;
+	WRN_G << "setlocale() failed for '" << slocale << "'.";
 
 	if (category == LC_TIME) {
 		time_locale_correct() = false;
@@ -262,15 +273,15 @@ static void wesnoth_setlocale(int category, const std::string& slocale,
 
 #ifndef _WIN32
 		//if(category == LC_MESSAGES) {
-		//	WRN_G << "Setting LANGUAGE to '" << slocale << "'." << std::endl;
+		//	WRN_G << "Setting LANGUAGE to '" << slocale << "'.";
 		//	setenv("LANGUAGE", slocale.c_str(), 1);
 		//	std::setlocale(LC_MESSAGES, "");
 		//}
 #endif
 
 	done:
-	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr) << '\n';
-	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr) << '\n';
+	DBG_G << "Numeric locale: " << std::setlocale(LC_NUMERIC, nullptr);
+	DBG_G << "Full locale: " << std::setlocale(LC_ALL, nullptr);
 }
 
 void set_language(const language_def& locale)
@@ -292,23 +303,23 @@ void set_language(const language_def& locale)
 
 bool load_strings(bool complain)
 {
-	DBG_G << "Loading strings\n";
+	DBG_G << "Loading strings";
 	config cfg;
 
-	LOG_G << "There are " << languages_.size() << " [language] blocks\n";
+	LOG_G << "There are " << languages_.size() << " [language] blocks";
 	if (complain && languages_.empty()) {
-		std::cerr << "No [language] block found\n";
+		PLAIN_LOG << "No [language] block found";
 		return false;
 	}
 	for (const config &lang : languages_) {
-		DBG_G << "[language]\n";
+		DBG_G << "[language]";
 		for (const config::attribute &j : lang.attribute_range()) {
-			DBG_G << j.first << "=\"" << j.second << "\"\n";
+			DBG_G << j.first << "=\"" << j.second << "\"";
 			strings_[j.first] = j.second;
 		}
-		DBG_G << "[/language]\n";
+		DBG_G << "[/language]";
 	}
-	DBG_G << "done\n";
+	DBG_G << "done";
 
 	return true;
 }
@@ -329,7 +340,7 @@ const language_def& get_locale()
 			if (prefs_locale == i->localename)
 				return *i;
 		}
-		LOG_G << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale\n";
+		LOG_G << "'" << prefs_locale << "' locale not found in known array; defaulting to system locale";
 		return known_languages[0];
 	}
 
@@ -349,7 +360,7 @@ const language_def& get_locale()
 	}
 #endif
 
-	LOG_G << "locale could not be determined; defaulting to system locale\n";
+	LOG_G << "locale could not be determined; defaulting to system locale";
 	return known_languages[0];
 }
 
@@ -368,7 +379,7 @@ void init_textdomains(const game_config_view& cfg)
 			if (location.empty()) {
 				//if location is empty, this causes a crash on Windows, so we
 				//disallow adding empty domains
-				WRN_G << "no location found for '" << path << "', skipping textdomain" << std::endl;
+				WRN_G << "no location found for '" << path << "', skipping textdomain";
 			} else {
 				t_string::add_textdomain(name, location);
 			}

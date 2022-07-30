@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011 - 2018 by Sergey Popov <loonycyborg@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Sergey Popov <loonycyborg@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -17,15 +18,9 @@
 #include "events.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
+#include "utils/optional_reference.hpp"
 
-#include <boost/optional.hpp>
-
-#include <atomic>
-#include <future>
-
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
@@ -55,19 +50,15 @@ private:
 	class pump_monitor : public events::pump_monitor
 	{
 	public:
-		virtual void process(events::pump_info&) override;
-
-		pump_monitor(connection_data*& connection);
-
 		connection_data*& connection_;
+		virtual void process(events::pump_info&);
 
-		boost::optional<window&> window_;
+		pump_monitor(connection_data*& connection)
+			: connection_(connection), window_()
+		{
+		}
 
-		std::atomic_size_t completed_, total_;
-
-		std::atomic_bool stop_;
-
-		std::future<void> poller_;
+		utils::optional_reference<window> window_;
 	} pump_monitor_;
 
 public:
@@ -76,10 +67,8 @@ public:
 						  const std::string& subtitle);
 
 protected:
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog. */
 	virtual void post_show(window& window) override;
 
 private:
@@ -91,9 +80,7 @@ private:
 	 */
 	std::string subtitle_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 };
 
 } // namespace dialogs
-} // namespace gui2

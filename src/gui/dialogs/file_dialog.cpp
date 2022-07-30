@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2011, 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2011 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -96,9 +97,7 @@ inline void isort_dir_entries(std::vector<std::string>& entries)
 
 } // unnamed namespace
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(file_dialog)
@@ -118,7 +117,6 @@ file_dialog::file_dialog()
 	, current_bookmark_()
 	, user_bookmarks_begin_()
 {
-	set_restore(true);
 }
 
 std::string file_dialog::path() const
@@ -200,7 +198,7 @@ void file_dialog::pre_show(window& window)
 	bookmark_paths_.clear();
 	current_bookmark_ = user_bookmarks_begin_ = -1;
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 
 	for(const auto& pinfo : bookmarks) {
 		bookmark_paths_.push_back(pinfo.path);
@@ -308,7 +306,7 @@ bool file_dialog::process_submit_common(const std::string& name)
 {
 	const auto stype = register_new_selection(name);
 
-	//DBG_FILEDLG << "current_dir_=" << current_dir_ << "  current_entry_=" << current_entry_ << '\n';
+	//DBG_FILEDLG << "current_dir_=" << current_dir_ << "  current_entry_=" << current_entry_;
 
 	if(is_selection_type_acceptable(stype)) {
 		return save_mode_ ? confirm_overwrite(stype) : true;
@@ -397,33 +395,33 @@ file_dialog::SELECTION_TYPE file_dialog::register_new_selection(const std::strin
 		// here. This makes it the only platform where is_relative() and is_root()
 		// aren't mutually exclusive.
 		if(fs::is_root(name)) {
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is relative to a root resource\n";
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is relative to a root resource";
 			// Using the browsed dir's root drive instead of the cwd's makes the most
 			// sense for users.
 			new_parent = fs::root_name(current_dir_);
 			new_path = fs::normalize_path(concat_path(new_parent, name), true, true);
 		} else {
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems relative\n";
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems relative";
 			new_parent = current_dir_;
 			new_path = fs::normalize_path(concat_path(current_dir_, name), true, true);
 		}
 	} else {
-		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems absolute\n";
+		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' seems absolute";
 		new_parent = fs::directory_name(name);
 		new_path = fs::normalize_path(name, true, true);
-		DBG_FILEDLG << "register_new_selection(): new selection is " << new_path << '\n';
+		DBG_FILEDLG << "register_new_selection(): new selection is " << new_path;
 	}
 
 	if(!new_path.empty()) {
 		if(fs::is_directory(new_path)) {
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a directory: " << new_path << '\n';
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a directory: " << new_path;
 			current_dir_ = new_path;
 			current_entry_.clear();
 			return SELECTION_IS_DIR;
 		} else if(fs::file_exists(new_path)) {
 			// FIXME: Perhaps redundant since the three-params call to normalize_path()
 			//        above necessarily validates existence.
-			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a file, symbolic link, or special: " << new_path << '\n';
+			DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' is a file, symbolic link, or special: " << new_path;
 			current_dir_ = fs::directory_name(new_path);
 			current_entry_ = fs::base_name(new_path);
 			return SELECTION_IS_FILE;
@@ -435,13 +433,13 @@ file_dialog::SELECTION_TYPE file_dialog::register_new_selection(const std::strin
 	// exists).
 	const std::string& absolute_parent = fs::normalize_path(new_parent, true, true);
 	if(!absolute_parent.empty()) {
-		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible, but parent exists\n";
+		DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible, but parent exists";
 		current_dir_ = absolute_parent;
 		current_entry_ = fs::base_name(name);
 		return SELECTION_NOT_FOUND;
 	}
 
-	DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible\n";
+	DBG_FILEDLG << "register_new_selection(): new selection '" << name << "' does not exist or is not accessible";
 	return SELECTION_PARENT_NOT_FOUND;
 }
 
@@ -531,7 +529,7 @@ void file_dialog::push_fileview_row(listbox& filelist, const std::string& name, 
 	std::string label = name;
 	utils::ellipsis_truncate(label, FILE_DIALOG_MAX_ENTRY_LENGTH);
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 	data["icon"]["label"] = icon;
 	data["file"]["label"] = label;
 
@@ -670,7 +668,7 @@ void file_dialog::on_bookmark_add_cmd()
 		user_bookmarks_begin_ = top_bookmark;
 	}
 
-	std::map<std::string, string_map> data;
+	widget_data data;
 	data["bookmark"]["label"] = label;
 	bookmarks_bar.add_row(data);
 
@@ -745,4 +743,3 @@ void file_dialog::on_file_delete_cmd()
 }
 
 } // namespace dialogs
-} // namespace gui2

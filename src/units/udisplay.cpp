@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "units/udisplay.hpp"
@@ -30,6 +31,7 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/scope_exit.hpp"
+#include "video.hpp"
 
 #define LOG_DP LOG_STREAM(info, display)
 
@@ -108,7 +110,6 @@ void teleport_unit_between(const map_location& a, const map_location& b, unit& t
 	}
 
 	temp_unit.anim_comp().set_standing();
-	disp.update_display();
 	events::pump();
 }
 
@@ -144,7 +145,7 @@ int move_unit_between(const map_location& a,
 	disp.invalidate(a);
 	temp_unit->set_facing(a.get_relative_dir(b));
 	animator.replace_anim_if_invalid(temp_unit,"movement",a,b,step_num,
-			false,"",{0,0,0},unit_animation::hit_type::INVALID,nullptr,nullptr,step_left);
+			false,"",{0,0,0},strike_result::type::invalid,nullptr,nullptr,step_left);
 	animator.start_animations();
 	animator.pause_animation();
 	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
@@ -166,7 +167,7 @@ int move_unit_between(const map_location& a,
 bool do_not_show_anims(display* disp)
 {
 
-	return !disp || disp->video().update_locked() || disp->video().faked();
+	return !disp || video::headless();
 }
 
 } // end anon namespace
@@ -176,8 +177,7 @@ bool do_not_show_anims(display* disp)
  */
 unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool force_scroll) :
 	disp_(game_display::get_singleton()),
-	can_draw_(disp_  &&  !disp_->video().update_locked()  &&
-	          !disp_->video().faked()  &&  path.size() > 1),
+	can_draw_(disp_ && !video::headless() && path.size() > 1),
 	animate_(animate),
 	force_scroll_(force_scroll),
 	animator_(),
@@ -530,9 +530,9 @@ void unit_draw_weapon(const map_location& loc, unit& attacker,
 	unit_animator animator;
 	attacker.set_facing(loc.get_relative_dir(defender_loc));
 	defender->set_facing(defender_loc.get_relative_dir(loc));
-	animator.add_animation(attacker.shared_from_this(),"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},unit_animation::hit_type::HIT,attack,secondary_attack,0);
+	animator.add_animation(attacker.shared_from_this(),"draw_weapon",loc,defender_loc,0,true,"",{0,0,0},strike_result::type::hit,attack,secondary_attack,0);
 	if(defender) {
-		animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},unit_animation::hit_type::MISS,secondary_attack,attack,0);
+		animator.add_animation(defender,"draw_weapon",defender_loc,loc,0,true,"",{0,0,0},strike_result::type::miss,secondary_attack,attack,0);
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -549,10 +549,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit_ptr primary_unit,
 	}
 	unit_animator animator;
 	if(primary_unit) {
-		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,true,"",{0,0,0},unit_animation::hit_type::INVALID,primary_attack,secondary_attack,0);
+		animator.add_animation(primary_unit,"sheath_weapon",primary_loc,secondary_loc,0,true,"",{0,0,0},strike_result::type::invalid,primary_attack,secondary_attack,0);
 	}
 	if(secondary_unit) {
-		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,true,"",{0,0,0},unit_animation::hit_type::INVALID,secondary_attack,primary_attack,0);
+		animator.add_animation(secondary_unit,"sheath_weapon",secondary_loc,primary_loc,0,true,"",{0,0,0},strike_result::type::invalid,secondary_attack,primary_attack,0);
 	}
 
 	if(primary_unit || secondary_unit) {
@@ -579,11 +579,11 @@ void unit_die(const map_location& loc, unit& loser,
 	}
 	unit_animator animator;
 	// hide the hp/xp bars of the loser (useless and prevent bars around an erased unit)
-	animator.add_animation(loser.shared_from_this(),"death",loc,winner_loc,0,false,"",{0,0,0},unit_animation::hit_type::KILL,attack,secondary_attack,0);
+	animator.add_animation(loser.shared_from_this(),"death",loc,winner_loc,0,false,"",{0,0,0},strike_result::type::kill,attack,secondary_attack,0);
 	// but show the bars of the winner (avoid blinking and show its xp gain)
 	if(winner) {
 		animator.add_animation(winner,"victory",winner_loc,loc,0,true,"",{0,0,0},
-			unit_animation::hit_type::KILL,secondary_attack,attack,0);
+			strike_result::type::kill,secondary_attack,attack,0);
 	}
 	animator.start_animations();
 	animator.wait_for_end();
@@ -599,7 +599,10 @@ void unit_die(const map_location& loc, unit& loser,
 void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const_attack_ptr secondary_attack,
-                 int swing,const std::string& hit_text,int drain_amount,const std::string& att_text, const std::vector<std::string>* extra_hit_sounds)
+                 int swing, const std::string& hit_text, int drain_amount,
+                 const std::string& att_text,
+                 const std::vector<std::string>* extra_hit_sounds,
+                 bool attacking)
 {
 	if(do_not_show_anims(disp) || (disp->fogged(a) && disp->fogged(b)) || !preferences::show_combat()) {
 		return;
@@ -620,6 +623,13 @@ void unit_attack(display * disp, game_board & board,
 	assert(def.valid());
 	unit &defender = *def;
 	int def_hitpoints = defender.hitpoints();
+	const_attack_ptr weapon = attack.shared_from_this();
+	auto ctx = weapon->specials_context(attacker.shared_from_this(), defender.shared_from_this(), a, b, attacking, secondary_attack);
+	std::optional<decltype(ctx)> opp_ctx;
+
+	if(secondary_attack) {
+		opp_ctx.emplace(secondary_attack->specials_context(defender.shared_from_this(), attacker.shared_from_this(), b, a, !attacking, weapon));
+	}
 
 	att->set_facing(a.get_relative_dir(b));
 	def->set_facing(b.get_relative_dir(a));
@@ -628,28 +638,30 @@ void unit_attack(display * disp, game_board & board,
 	std::string text = number_and_text(damage, hit_text);
 	std::string text_2 = number_and_text(std::abs(drain_amount), att_text);
 
-	unit_animation::hit_type hit_type;
+	strike_result::type hit_type;
 	if(damage >= defender.hitpoints()) {
-		hit_type = unit_animation::hit_type::KILL;
+		hit_type = strike_result::type::kill;
 	} else if(damage > 0) {
-		hit_type = unit_animation::hit_type::HIT;
+		hit_type = strike_result::type::hit;
 	}else {
-		hit_type = unit_animation::hit_type::MISS;
+		hit_type = strike_result::type::miss;
 	}
 
 	unit_animator animator;
 
 	animator.add_animation(attacker.shared_from_this(), "attack", att->get_location(), def->get_location(), damage, true, text_2,
-		(drain_amount >= 0) ? color_t(0, 255, 0) : color_t(255, 0, 0), hit_type, attack.shared_from_this(),
+		(drain_amount >= 0) ? color_t(0, 255, 0) : color_t(255, 0, 0), hit_type, weapon,
 		secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
-	const unit_animation* defender_anim = def->anim_comp().choose_animation(*disp, def->get_location(), "defend",
-		att->get_location(), damage, hit_type, attack.shared_from_this(), secondary_attack, swing);
+	const unit_animation* defender_anim = def->anim_comp().choose_animation(def->get_location(), "defend",
+		att->get_location(), damage, hit_type, weapon, secondary_attack, swing);
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	for(const unit_ability& ability : attacker.get_abilities_weapons("leadership", attack.shared_from_this(), secondary_attack)) {
+	unit_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
+	unit_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
+	for(const unit_ability& ability : leadership_list) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -661,12 +673,13 @@ void unit_attack(display * disp, game_board & board,
 		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
 		assert(leader.valid());
 		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
+		leader->anim_comp().invalidate(*disp);
 		animator.add_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
 			att->get_location(), damage, true,  "", {0,0,0},
-			hit_type, attack.shared_from_this(), secondary_attack, swing);
+			hit_type, weapon, secondary_attack, swing);
 	}
 
-	for(const unit_ability& ability : defender.get_abilities_weapons("resistance", secondary_attack, attack.shared_from_this())) {
+	for(const unit_ability& ability : resistance_list) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -680,7 +693,53 @@ void unit_attack(display * disp, game_board & board,
 		helper->set_facing(ability.teacher_loc.get_relative_dir(b));
 		animator.add_animation(helper.get_shared_ptr(), "resistance", ability.teacher_loc,
 			def->get_location(), damage, true,  "", {0,0,0},
-			hit_type, attack.shared_from_this(), secondary_attack, swing);
+			hit_type, weapon, secondary_attack, swing);
+	}
+
+	unit_ability_list abilities = att->get_location();
+	for(auto& special : attacker.checking_tags()) {
+		abilities.append(weapon->get_weapon_ability(special));
+	}
+
+	for(const unit_ability& ability : abilities) {
+		if(ability.teacher_loc == a) {
+			continue;
+		}
+
+		if(ability.teacher_loc == b) {
+			continue;
+		}
+
+		bool leading_playable = false;
+		bool helping_playable = false;
+		for(const unit_ability& leader_list : leadership_list) {
+			if(ability.teacher_loc == leader_list.teacher_loc) {
+				leading_playable = true;
+				break;
+			}
+		}
+
+		for(const unit_ability& helper_list : resistance_list) {
+			if(ability.teacher_loc == helper_list.teacher_loc) {
+				helping_playable = true;
+				break;
+			}
+		}
+
+		unit_map::const_iterator leader = board.units().find(ability.teacher_loc);
+		assert(leader.valid());
+		leader->set_facing(ability.teacher_loc.get_relative_dir(a));
+		if(animator.has_animation(leader.get_shared_ptr(), "leading", ability.teacher_loc,
+			att->get_location(), damage, hit_type, weapon, secondary_attack, swing) && leading_playable){
+				continue;
+		}
+		if(animator.has_animation(leader.get_shared_ptr(), "resistance", ability.teacher_loc,
+			def->get_location(), damage, hit_type, weapon, secondary_attack, swing) && helping_playable){
+				continue;
+		}
+		animator.add_animation(leader.get_shared_ptr(), "teaching", ability.teacher_loc,
+			att->get_location(), damage, true,  "", {0,0,0},
+			hit_type, weapon, secondary_attack, swing);
 	}
 
 
@@ -717,7 +776,11 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->get_units();
 	if(attacker) {
-		for(const unit_ability& ability : attacker->get_abilities("leadership")) {
+		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
+		for(auto& special : attacker->checking_tags()) {
+			attacker_abilities.append(attacker->get_abilities(special));
+		}
+		for(const unit_ability& ability : attacker_abilities) {
 			unit_map::const_iterator leader = units.find(ability.teacher_loc);
 			assert(leader != units.end());
 			leader->anim_comp().set_standing();
@@ -725,7 +788,11 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	}
 
 	if(defender) {
-		for(const unit_ability& ability : defender->get_abilities("resistance")) {
+		unit_ability_list defender_abilities = defender->get_abilities("resistance");
+		for(auto& special : defender->checking_tags()) {
+			defender_abilities.append(defender->get_abilities(special));
+		}
+		for(const unit_ability& ability : defender_abilities) {
 			unit_map::const_iterator helper = units.find(ability.teacher_loc);
 			assert(helper != units.end());
 			helper->anim_comp().set_standing();
@@ -753,7 +820,9 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	unit_animator animator;
 
 	{
-		utils::scope_exit se([u] () { u->set_hidden(false); });
+		ON_SCOPE_EXIT(u) {
+			u->set_hidden(false);
+		};
 		u->set_hidden(true);
 
 		if (leader_visible && unit_visible) {
@@ -771,8 +840,6 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 				animator.add_animation(leader.get_shared_ptr(), "recruiting", leader_loc, loc, 0, true);
 			}
 		}
-
-		disp->draw();
 	}
 	animator.add_animation(u.get_shared_ptr(), "recruited", loc, leader_loc);
 	animator.start_animations();

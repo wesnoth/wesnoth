@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 // For some reason, it became necessary to include this before the header
@@ -25,6 +26,7 @@
 
 #include <ctime>
 #include <iomanip>
+#include <iostream>
 
 #include <boost/algorithm/string/predicate.hpp>
 
@@ -48,75 +50,6 @@ namespace lg
 namespace
 {
 
-// Prefix and extension for log files. This is used both to generate the unique
-// log file name during startup and to find old files to delete.
-const std::string log_file_prefix = "wesnoth-";
-const std::string log_file_suffix = ".log";
-
-// Maximum number of older log files to keep intact. Other files are deleted.
-// Note that this count does not include the current log file!
-const unsigned max_logs = 8;
-
-/** Helper function for rotate_logs. */
-bool is_not_log_file(const std::string& fn)
-{
-	return !(boost::algorithm::istarts_with(fn, log_file_prefix) &&
-			 boost::algorithm::iends_with(fn, log_file_suffix));
-}
-
-/**
- * Deletes old log files from the log directory.
- */
-void rotate_logs(const std::string& log_dir)
-{
-	std::vector<std::string> files;
-	filesystem::get_files_in_dir(log_dir, &files);
-
-	files.erase(std::remove_if(files.begin(), files.end(), is_not_log_file), files.end());
-
-	if(files.size() <= max_logs) {
-		return;
-	}
-
-	// Sorting the file list and deleting all but the last max_logs items
-	// should hopefully be faster than stat'ing every single file for its
-	// time attributes (which aren't very reliable to begin with.
-
-	std::sort(files.begin(), files.end());
-
-	for(std::size_t j = 0; j < files.size() - max_logs; ++j) {
-		const std::string path = log_dir + '/' + files[j];
-		LOG_LS << "rotate_logs(): delete " << path << '\n';
-		if(!filesystem::delete_file(path)) {
-			WRN_LS << "rotate_logs(): failed to delete " << path << "!\n";
-		}
-	}
-}
-
-/**
- * Generates a "unique" log file name.
- *
- * This is really not guaranteed to be unique, but it's close enough, since
- * the odds of having multiple Wesnoth instances spawn with the same PID within
- * a second span are close to zero.
- *
- * The file name includes a timestamp in order to satisfy the requirements of
- * the rotate_logs logic.
- */
-std::string unique_log_filename()
-{
-	std::ostringstream o;
-
-	o << log_file_prefix;
-
-	const std::time_t cur = std::time(nullptr);
-	o << std::put_time(std::localtime(&cur), "%Y%m%d-%H%M%S-");
-
-	o << GetCurrentProcessId() << log_file_suffix;
-
-	return o.str();
-}
-
 /**
  * Returns the path to a system-defined temporary files dir.
  */
@@ -136,7 +69,7 @@ std::string temp_dir()
  */
 void log_init_panic(const std::string& msg)
 {
-	ERR_LS << "Log initialization panic call: " << msg << '\n';
+	ERR_LS << "Log initialization panic call: " << msg;
 
 	const std::string full_msg = msg + "\n\n" + "This may indicate an issue with your Wesnoth launch configuration. If the problem persists, contact the development team for technical support, including the full contents of this message (copy with CTRL+C).";
 
@@ -279,18 +212,18 @@ private:
 };
 
 log_file_manager::log_file_manager(bool native_console)
-	: fn_(unique_log_filename())
+	: fn_(lg::unique_log_filename())
 	, cur_path_()
 	, use_wincon_(console_attached())
 	, created_wincon_(false)
 {
-	DBG_LS << "Early init message\n";
+	DBG_LS << "Early init message";
 
 	if(use_wincon_) {
 		// Someone already attached a console to us. Assume we were compiled
 		// with the console subsystem flag and that the standard streams are
 		// already pointing to the console.
-		LOG_LS << "Console already attached at startup, log file disabled.\n";
+		LOG_LS << "Console already attached at startup, log file disabled.";
 		return;
 	}
 
@@ -310,7 +243,7 @@ log_file_manager::log_file_manager(bool native_console)
 		log_init_panic(e, new_path, cur_path_);
 	}
 
-	LOG_LS << "Opened log file at " << new_path << '\n';
+	LOG_LS << "Opened log file at " << new_path;
 }
 
 log_file_manager::~log_file_manager()
@@ -357,7 +290,7 @@ void log_file_manager::move_log_file(const std::string& log_dir)
 		log_init_panic(e, new_path, cur_path_);
 	}
 
-	LOG_LS << "Moved log file to " << new_path << '\n';
+	LOG_LS << "Moved log file to " << new_path;
 }
 
 void log_file_manager::open_log_file(const std::string& file_path, bool truncate)
@@ -372,7 +305,7 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 												 log_file_manager::STREAM_ID stream,
 												 bool truncate)
 {
-	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side A]\n";
+	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side A]";
 
 	FILE* crts = stream == STREAM_STDERR ? stderr : stdout;
 	std::ostream& cxxs = stream == STREAM_STDERR ? std::cerr : std::cout;
@@ -389,7 +322,7 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 
 	//setbuf(crts, nullptr);
 
-	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]\n";
+	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]";
 }
 
 bool log_file_manager::console_enabled() const
@@ -416,10 +349,10 @@ void log_file_manager::enable_native_console_output()
 	}
 
 	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
-		LOG_LS << "Attached parent process console.\n";
+		LOG_LS << "Attached parent process console.";
 		created_wincon_ = false;
 	} else if(AllocConsole()) {
-		LOG_LS << "Allocated own console.\n";
+		LOG_LS << "Allocated own console.";
 		created_wincon_ = true;
 	} else {
 		// Wine as of version 4.21 just goes ERROR_ACCESS_DENIED when trying
@@ -427,20 +360,20 @@ void log_file_manager::enable_native_console_output()
 		// this since the user purportedly knows what they're doing and if they
 		// get radio silence from Wesnoth and no log files they'll realize that
 		// something went wrong.
-		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)\n";
+		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)";
 	}
 
-	DBG_LS << "stderr to console\n";
+	DBG_LS << "stderr to console";
 	fflush(stderr);
 	std::cerr.flush();
 	assert(freopen("CONOUT$", "wb", stderr) == stderr);
 
-	DBG_LS << "stdout to console\n";
+	DBG_LS << "stdout to console";
 	fflush(stdout);
 	std::cout.flush();
 	assert(freopen("CONOUT$", "wb", stdout) == stdout);
 
-	DBG_LS << "stdin from console\n";
+	DBG_LS << "stdin from console";
 	assert(freopen("CONIN$",  "rb", stdin) == stdin);
 
 	// At this point the log file has been closed and it's no longer our
@@ -449,7 +382,7 @@ void log_file_manager::enable_native_console_output()
 	cur_path_.clear();
 	use_wincon_ = true;
 
-	LOG_LS << "Console streams handover complete!\n";
+	LOG_LS << "Console streams handover complete!";
 }
 
 std::unique_ptr<log_file_manager> lfm;
@@ -465,9 +398,16 @@ std::string log_file_path()
 	return "";
 }
 
-void early_log_file_setup()
+static bool disable_redirect;
+
+void early_log_file_setup(bool disable)
 {
 	if(lfm) {
+		return;
+	}
+
+	if(disable) {
+		disable_redirect = true;
 		return;
 	}
 
@@ -491,8 +431,9 @@ bool using_own_console()
 
 void finish_log_file_setup()
 {
+	if(disable_redirect) return;
 	// Make sure the LFM is actually set up just in case.
-	early_log_file_setup();
+	early_log_file_setup(false);
 
 	if(lfm->console_enabled()) {
 		// Nothing to do if running in console mode.
@@ -502,16 +443,16 @@ void finish_log_file_setup()
 	static bool setup_complete = false;
 
 	if(setup_complete) {
-		ERR_LS << "finish_log_file_setup() called more than once!\n";
+		ERR_LS << "finish_log_file_setup() called more than once!";
 		return;
 	}
 
-	const std::string log_dir = filesystem::get_user_data_dir() + "/logs";
+	const std::string log_dir = filesystem::get_logs_dir();
 	if(!filesystem::file_exists(log_dir) && !filesystem::make_directory(log_dir)) {
 		log_init_panic(std::string("Could not create logs directory at ") +
 					   log_dir + ".");
 	} else {
-		rotate_logs(log_dir);
+		lg::rotate_logs(log_dir);
 	}
 
 	lfm->move_log_file(log_dir);

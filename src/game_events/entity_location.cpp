@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -88,8 +89,7 @@ bool entity_location::matches_unit(const unit_map::const_iterator & un_it) const
  * the unit is required to additionally match the unit that was supplied
  * when this was constructed.
  */
-bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it,
-                                          const vconfig & filter) const
+bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it, const unit_filter& filter) const
 {
 	if ( !un_it.valid() )
 		return false;
@@ -100,7 +100,7 @@ bool entity_location::matches_unit_filter(const unit_map::const_iterator & un_it
 
 	// Filter the unit at the filter location (should be the unit's
 	// location if no special filter location was specified).
-	return unit_filter(filter).matches(*un_it, filter_loc_)  &&
+	return filter.matches(*un_it, filter_loc_)  &&
 	       matches_unit(un_it);
 }
 

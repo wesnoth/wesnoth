@@ -1,6 +1,4 @@
 
-local helper = wesnoth.require("helper")
-
 globals = {}
 setmetatable(globals, {
 	["__index"] = function(t, k)
@@ -37,7 +35,7 @@ function shuffle_special_locations(map, loc_ids)
 		locs[i] = map.special_locations[tostring(v)]
 	end
 	assert(#locs == #loc_ids)
-	helper.shuffle(locs)
+	mathx.shuffle(locs)
 	for i , v in ipairs(loc_ids) do
 		map.special_locations[tostring(v)] = locs[i]
 	end

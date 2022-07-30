@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Fabian Mueller <fabianmueller5@gmx.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
@@ -28,18 +29,19 @@ namespace editor {
 
 void mouse_action_item::move(editor_display& disp, const map_location& hex)
 {
-	if (hex != previous_move_hex_) {
-
-		update_brush_highlights(disp, hex);
-
-		std::set<map_location> adjacent_set;
-		for(const map_location& adj : get_adjacent_tiles(previous_move_hex_)) {
-			adjacent_set.insert(adj);
-		}
-
-		disp.invalidate(adjacent_set);
-		previous_move_hex_ = hex;
+	if (hex == previous_move_hex_) {
+		return;
 	}
+
+	update_brush_highlights(disp, hex);
+
+	std::set<map_location> adjacent_set;
+	for(const map_location& adj : get_adjacent_tiles(previous_move_hex_)) {
+		adjacent_set.insert(adj);
+	}
+
+	disp.invalidate(adjacent_set);
+	previous_move_hex_ = hex;
 }
 
 std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& disp, int x, int y)
@@ -50,7 +52,7 @@ std::unique_ptr<editor_action> mouse_action_item::click_left(editor_display& dis
 	}
 
 	const overlay& item = item_palette_.selected_fg_item();
-	disp.add_overlay(start_hex_, item.image, item.halo, "", "", true);
+	disp.add_overlay(start_hex_, item.image, item.halo, "", "", item.visible_in_fog, item.submerge);
 
 	click_ = true;
 	return nullptr;
@@ -81,7 +83,7 @@ std::unique_ptr<editor_action> mouse_action_item::up_left(editor_display& disp, 
 //	const item_type *new_item_type = item_types.find(type_id);
 //	if (!new_item_type) {
 //		//TODO rewrite the error message.
-//		ERR_ED << "create item dialog returned inexistent or unusable item_type id '" << type_id << "'" << std::endl;
+//		ERR_ED << "create item dialog returned inexistent or unusable item_type id '" << type_id << "'";
 //		return nullptr;
 //	}
 //
@@ -125,22 +127,7 @@ void mouse_action_item::set_mouse_overlay(editor_display& disp)
 
 void mouse_action_item::set_item_mouse_overlay(editor_display& disp, const overlay& u)
 {
-
-	std::stringstream filename;
-	filename << u.image; // << "~RC(" << u.flag_rgb() << '>'
-		//	<< team::get_side_color_id(disp.viewing_side()) << ')';
-
-	surface image(image::get_image(filename.str()));
-	uint8_t alpha = 196;
-	//TODO don't hardcode
-	int size = 72;
-	//int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(image::get_texture(u.image));
 }
 
 

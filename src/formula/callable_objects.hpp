@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -25,9 +26,32 @@ class team;
 class terrain_type;
 class unit;
 class unit_type;
+namespace game_events {struct queued_event;}
 
 namespace wfl
 {
+
+/** An object representing the state of the game, providing access to the map and basic information */
+class gamestate_callable : public formula_callable
+{
+public:
+	// Currently it accesses all its state through the resources namespace, so nothing is passed into it.
+
+	void get_inputs(formula_input_vector& inputs) const override;
+	variant get_value(const std::string& key) const override;
+};
+
+/** An object representing the state of the current event; equivalent to Lua's wesnoth.current.event_context */
+class event_callable : public formula_callable
+{
+public:
+	event_callable(const game_events::queued_event& event) : event_info(event) {}
+
+	void get_inputs(formula_input_vector& inputs) const override;
+	variant get_value(const std::string& key) const override;
+private:
+	const game_events::queued_event& event_info;
+};
 
 class terrain_callable : public formula_callable
 {

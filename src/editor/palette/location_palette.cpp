@@ -1,34 +1,35 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/palette/location_palette.hpp"
 
-#include "gettext.hpp"
-#include "font/marked-up_text.hpp"
-#include "font/standard_colors.hpp"
-#include "tooltips.hpp"
-
+#include "draw.hpp"
 #include "editor/editor_common.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
+#include "floating_label.hpp"
+#include "font/sdl_ttf_compat.hpp"
+#include "font/standard_colors.hpp"
+#include "formula/string_utils.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "tooltips.hpp"
 
-#include "formula/string_utils.hpp"
-
-#include <regex>
+#include <boost/regex.hpp>
 
 static bool is_positive_integer(const std::string& str) {
 	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !std::isdigit(c); }) == str.end();
@@ -50,8 +51,8 @@ public:
 		}
 
 	};
-	location_palette_item(CVideo& video, editor::location_palette* parent)
-		: gui::widget(video, true)
+	location_palette_item(editor::location_palette* parent)
+		: gui::widget(true)
 		, parent_(parent)
 	{
 	}
@@ -59,18 +60,18 @@ public:
 	void draw_contents() override
 	{
 		if (state_.mouseover) {
-			sdl::fill_rectangle(location(), {200, 200, 200, 26});
+			draw::fill(location(), 200, 200, 200, 26);
 		}
 		if (state_.selected) {
-			sdl::draw_rectangle(location(), {255, 255, 255, 255});
+			draw::rect(location(), 255, 255, 255, 255);
 		}
-		font::draw_text(&video(), location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
+		font::pango_draw_text(true, location(), 16, font::NORMAL_COLOR, desc_.empty() ? id_ : desc_, location().x + 2, location().y, 0);
 	}
 
 	//TODO move to widget
 	bool hit(int x, int y) const
 	{
-		return sdl::point_in_rect(x, y, location());
+		return location().contains(x, y);
 	}
 
 	void mouse_up(const SDL_MouseButtonEvent& e)
@@ -126,7 +127,7 @@ public:
 	{
 		state_.selected = selected;
 	}
-	void draw() override { gui::widget::draw(); }
+
 private:
 	std::string id_;
 	std::string desc_;
@@ -137,8 +138,8 @@ private:
 class location_palette_button : public gui::button
 {
 public:
-	location_palette_button(CVideo& video, const SDL_Rect& location, const std::string& text, const std::function<void (void)>& callback)
-		: gui::button(video, text)
+	location_palette_button(const SDL_Rect& location, const std::string& text, const std::function<void (void)>& callback)
+		: gui::button(text)
 		, callback_(callback)
 	{
 		this->set_location(location.x, location.y);
@@ -160,12 +161,10 @@ protected:
 namespace editor {
 location_palette::location_palette(editor_display &gui, const game_config_view& /*cfg*/,
                                    editor_toolkit &toolkit)
-		: common_palette(gui.video())
+		: common_palette()
 		, item_size_(20)
 		//TODO avoid magic number
 		, item_space_(20 + 3)
-		, palette_y_(0)
-		, palette_x_(0)
 		, items_start_(0)
 		, selected_item_()
 		, items_()
@@ -174,7 +173,6 @@ location_palette::location_palette(editor_display &gui, const game_config_view& 
 		, button_add_()
 		, button_delete_()
 		, button_goto_()
-		, help_handle_(-1)
 		, disp_(gui)
 	{
 		for (int i = 1; i < 10; ++i) {
@@ -199,7 +197,7 @@ void location_palette::hide(bool hidden)
 {
 	widget::hide(hidden);
 
-	disp_.video().clear_help_string(help_handle_);
+	font::clear_help_string();
 
 	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
 	palette_menu_button->set_overlay("");
@@ -212,13 +210,14 @@ void location_palette::hide(bool hidden)
 
 bool location_palette::scroll_up()
 {
-	int decrement = 1;
-	if(items_start_ >= decrement) {
-		items_start_ -= decrement;
-		draw();
-		return true;
+	bool scrolled = false;
+	if(can_scroll_up()) {
+		--items_start_;
+		scrolled = true;
+		set_dirty(true);
 	}
-	return false;
+
+	return scrolled;
 }
 bool location_palette::can_scroll_up()
 {
@@ -232,39 +231,34 @@ bool location_palette::can_scroll_down()
 
 bool location_palette::scroll_down()
 {
-	bool end_reached = (!(items_start_ + num_visible_items() + 1 <= num_items()));
 	bool scrolled = false;
-
-	// move downwards
-	if(!end_reached) {
-		items_start_ += 1;
+	if(can_scroll_down()) {
+		++items_start_;
 		scrolled = true;
 		set_dirty(true);
 	}
-	draw();
+
 	return scrolled;
 }
 
 void location_palette::adjust_size(const SDL_Rect& target)
 {
-	palette_x_ = target.x;
-	palette_y_ = target.y;
 	const int button_height = 22;
 	const int button_y = 30;
 	int bottom = target.y + target.h;
 	if (!button_goto_) {
-		button_goto_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
+		button_goto_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Go To"), [this]() {
 			//static_cast<mouse_action_starting_position&>(toolkit_.get_mouse_action()). ??
 			map_location pos = disp_.get_map().special_location(selected_item_);
 			if (pos.valid()) {
 				disp_.scroll_to_tile(pos, display::WARP);
 			}
 		}));
-		button_add_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
+		button_add_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Add"), [this]() {
 			std::string newid;
 			if (gui2::dialogs::edit_text::execute(_("New Location Identifier"), "", newid)) {
-				static const std::regex valid_id("[a-zA-Z0-9_]+");
-				if(std::regex_match(newid, valid_id)) {
+				static const boost::regex valid_id("[a-zA-Z0-9_]+");
+				if(boost::regex_match(newid, valid_id)) {
 					add_item(newid);
 				}
 				else {
@@ -273,11 +267,11 @@ void location_palette::adjust_size(const SDL_Rect& target)
 						_("Invalid location id")
 					);
 					//TODO: a user visible messae would be nice.
-					ERR_ED  << "entered invalid location id\n";
+					ERR_ED  << "entered invalid location id";
 				}
 			}
 		}));
-		button_delete_.reset(new location_palette_button(video(), SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
+		button_delete_.reset(new location_palette_button(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height }, _("Delete"), nullptr));
 	}
 	else {
 		button_goto_->set_location(SDL_Rect{ target.x , bottom -= button_y, target.w - 10, button_height });
@@ -290,15 +284,32 @@ void location_palette::adjust_size(const SDL_Rect& target)
 	// This might be called while the palette is not visible onscreen.
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
-	if(items_fitting > 0 && num_visible_items() != items_fitting) {
-		location_palette_item lpi(disp_.video(), this);
-		buttons_.resize(items_fitting, lpi);
+	if(items_fitting > 0) {
+		// Items may be added dynamically via add_item(), so this creates all the buttons that
+		// fit in the space, even if some of them will be hidden until more items are added.
+		// This simplifies the scrolling code in add_item.
+		const std::size_t buttons_needed = items_fitting;
+		if(buttons_.size() != buttons_needed) {
+			location_palette_item lpi(this);
+			buttons_.resize(buttons_needed, lpi);
+		}
+	}
+
+	// Update button locations and sizes. Needs to be done even if the number of buttons hasn't changed,
+	// because adjust_size() also handles moving left and right when the window's width is changed.
+	SDL_Rect dstrect;
+	dstrect.w = target.w - 10;
+	dstrect.h = item_size_ + 2;
+	for(std::size_t i = 0; i < buttons_.size(); ++i) {
+		dstrect.x = target.x;
+		dstrect.y = target.y + i * item_space_;
+		buttons_[i].set_location(dstrect);
 	}
 
 	set_location(target);
 	set_dirty(true);
-	disp_.video().clear_help_string(help_handle_);
-	help_handle_ = disp_.video().set_help_string(get_help_string());
+	font::clear_help_string();
+	font::set_help_string(get_help_string());
 }
 
 void location_palette::select_item(const std::string& item_id)
@@ -307,15 +318,15 @@ void location_palette::select_item(const std::string& item_id)
 		selected_item_ = item_id;
 		set_dirty();
 	}
-	disp_.video().clear_help_string(help_handle_);
-	help_handle_ = disp_.video().set_help_string(get_help_string());
+	font::clear_help_string();
+	font::set_help_string(get_help_string());
 }
 
-int location_palette::num_items()
+std::size_t location_palette::num_items()
 {
 	return items_.size();
 }
-int location_palette::num_visible_items()
+std::size_t location_palette::num_visible_items()
 {
 	return buttons_.size();
 }
@@ -325,61 +336,67 @@ bool location_palette::is_selected_item(const std::string& id)
 	return selected_item_ == id;
 }
 
-void location_palette::draw_contents()
+void location_palette::layout()
 {
-	toolkit_.set_mouseover_overlay(disp_);
-	int y = palette_y_;
-	const int x = palette_x_;
-	const int starting = items_start_;
-	int ending = std::min<int>(starting + num_visible_items(), num_items());
-	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
-	if (upscroll_button)
-		upscroll_button->enable(starting != 0);
-	std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
-	if (downscroll_button)
-		downscroll_button->enable(ending != num_items());
+	if (!dirty()) {
+		return;
+	}
 
-	if (button_goto_) {
+	toolkit_.set_mouseover_overlay(disp_);
+
+	// The hotkey system will automatically enable and disable the buttons when it runs, but it doesn't
+	// get triggered when handling mouse-wheel scrolling. Therefore duplicate that functionality here.
+	std::shared_ptr<gui::button> upscroll_button = disp_.find_action_button("upscroll-button-editor");
+	if(upscroll_button)
+		upscroll_button->enable(can_scroll_up());
+	std::shared_ptr<gui::button> downscroll_button = disp_.find_action_button("downscroll-button-editor");
+	if(downscroll_button)
+		downscroll_button->enable(can_scroll_down());
+
+	if(button_goto_) {
 		button_goto_->set_dirty(true);
 	}
-	if (button_add_) {
+	if(button_add_) {
 		button_add_->set_dirty(true);
 	}
-	if (button_delete_) {
+	if(button_delete_) {
 		button_delete_->set_dirty(true);
 	}
-	for (int i = 0, size = num_visible_items(); i < size; i++) {
-
-		location_palette_item & tile = buttons_[i];
+	for(std::size_t i = 0; i < num_visible_items(); ++i) {
+		const auto item_index = items_start_ + i;
+		location_palette_item& tile = buttons_[i];
 
 		tile.hide(true);
 
-		if (i >= ending) {
-			//We want to hide all following buttons so we cannot use break here.
+		// If we've scrolled to the end of the list, or if there aren't many items, leave the button hidden
+		if(item_index >= num_items()) {
+			// We want to hide all following buttons so we cannot use break here.
 			continue;
 		}
 
-		const std::string item_id = items_[starting + i];
+		const std::string item_id = items_[item_index];
 
+		// These could have tooltips, but currently don't. Adding their hex co-ordinates would be an option,
+		// and for player starts adding the raw ID next might be good.
 		std::stringstream tooltip_text;
 
-		SDL_Rect dstrect;
-		dstrect.x = x;
-		dstrect.y = y;
-		dstrect.w = location().w - 10;
-		dstrect.h = item_size_ + 2;
-
-		tile.set_location(dstrect);
 		tile.set_tooltip_string(tooltip_text.str());
 		tile.set_item_id(item_id);
 		tile.set_selected(is_selected_item(item_id));
 		tile.set_dirty(true);
 		tile.hide(false);
-		tile.draw();
-
-		// Adjust location
-		y += item_space_;
 	}
+
+	set_dirty(false);
+}
+
+void location_palette::draw_contents()
+{
+	// This is unnecessary as every GUI1 widget is a TLD.
+	//for(std::size_t i = 0; i < num_visible_items(); ++i) {
+	//	location_palette_item& tile = buttons_[i];
+	//	tile.draw();
+	//}
 }
 
 std::vector<std::string> location_palette::action_pressed() const
@@ -412,7 +429,8 @@ static bool loc_id_comp(const std::string& lhs, const std::string& rhs) {
 
 void location_palette::add_item(const std::string& id)
 {
-	int pos;
+	decltype(items_)::difference_type pos;
+
 	// Insert the new ID at the sorted location, unless it's already in the list
 	const auto itor = std::upper_bound(items_.begin(), items_.end(), id, loc_id_comp);
 	if(itor == items_.begin() || *(itor - 1) != id) {
@@ -421,13 +439,25 @@ void location_palette::add_item(const std::string& id)
 		pos = std::distance(items_.begin(), itor);
 	}
 	selected_item_ = id;
-	if(num_visible_items() == 0) {
-		items_start_ = 0;
-	} else {
-		items_start_ = std::max(pos - num_visible_items() + 1, items_start_);
-		items_start_ = std::min(pos, items_start_);
+
+	// pos will always be positive because begin() was used as the first arg of std::distance(),
+	// but we need this (or casts) to prevent warnings about signed/unsigned comparisons.
+	const std::size_t unsigned_pos = pos;
+
+	// Scroll if necessary so that the new item is visible
+	if(unsigned_pos < items_start_ || unsigned_pos >= items_start_ + num_visible_items()) {
+		if(unsigned_pos < num_visible_items()) {
+			items_start_ = 0;
+		} else if(unsigned_pos + num_visible_items() > num_items()) {
+			// This can't underflow, because unsigned_pos < num_items() and the
+			// previous conditional block would have been entered instead.
+			items_start_ = num_items() - num_visible_items();
+		} else {
+			items_start_ = unsigned_pos - num_visible_items() / 2;
+		}
 	}
-	adjust_size(location());
+
+	// No need to call adjust_size(), because initialisation creates all possible buttons even when num_visible_items() > num_items().
 }
 
 } // end namespace editor

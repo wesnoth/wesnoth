@@ -1,11 +1,11 @@
 -- Feudal
 
--- unused function, replaces by roads_to_feudal_castle below, 
+-- unused function, replaces by roads_to_feudal_castle below,
 -- the odl code used
 -- `wct_iterate_roads_to(wct_roads_to_feudal_castle, 3, "Rr")`
 -- instead of `roads_to_feudal_castle(3)`
 local function wct_roads_to_feudal_castle(radius)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("!,W*,*^V*,Ds,C*,K*,R*"),
 		f.adjacent(f.all(
 			f.terrain("Chs,Rr"),
@@ -118,55 +118,39 @@ local function world_conquest_tek_map_repaint_6d()
 	set_terrain { "Khs",
 		f.terrain("Chs"),
 	}
-	if false then
-		-- this one was slow.
-		set_terrain { "Chs",
-			f.all(
-				f.terrain("!,W*,Ds,Ss,C*,K*,*^V*"),
-				f.adjacent(f.terrain("C*,K*"), nil, 0),
-				f.none(
-					f.radius(8, f.terrain("Re"))
-				),
-				f.radius(6, f.terrain("Khs"))
+	local r8_Re = map:find_in_radius(
+		map:find(f.terrain("Re")),
+		8,
+		wesnoth.map.filter(f.all())
+	)
+	local r6_Khs = map:find_in_radius(
+		map:find(f.terrain("Khs")),
+		6,
+		wesnoth.map.filter(f.all())
+	)
+	set_terrain { "Chs",
+		f.all(
+			f.terrain("!,W*,Ds,Ss,C*,K*,*^V*"),
+			f.adjacent(f.terrain("C*,K*"), nil, 0),
+			f.none(
+				f.find_in("r8_Re")
 			),
-			fraction = 40,
-		}
-	else
-		-- this is faster.
-		local r8_Re = map:get_tiles_radius(
-			map:get_locations(f.terrain("Re")),
-			wesnoth.create_filter(f.all()),
-			8
-		)
-		local r6_Khs = map:get_tiles_radius(
-			map:get_locations(f.terrain("Khs")),
-			wesnoth.create_filter(f.all()),
-			6
-		)
-		set_terrain { "Chs",
-			f.all(
-				f.terrain("!,W*,Ds,Ss,C*,K*,*^V*"),
-				f.adjacent(f.terrain("C*,K*"), nil, 0),
-				f.none(
-					f.find_in("r8_Re")
-				),
-				f.find_in("r6_Khs")
-			),
-			filter_extra = {
-				r6_Khs = r6_Khs,
-				r8_Re = r8_Re,
-			},
-			fraction = 40,
-		}
-	end
+			f.find_in("r6_Khs")
+		),
+		filter_extra = {
+			r6_Khs = r6_Khs,
+			r8_Re = r8_Re,
+		},
+		fraction = 40,
+	}
 	roads_to_feudal_castle(5)
 	-- rebuild cave
 	wct_reduce_wall_clusters("Uu")
-	set_terrain { "Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uh,Uu^Uf,Uh,Uu^Uf,Uu,Qxu,Qxu,Ql",
+	set_terrain { "Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uh,Uu^Tf,Uh,Uu^Tf,Uu,Qxu,Qxu,Ql",
 		f.terrain("Uu"),
 		fraction = 4,
 	}
-	set_terrain { "Qxu,Uh^Uf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Uf",
+	set_terrain { "Qxu,Uh^Tf,Ql,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Urb,Uh,Uh,Uu^Tf",
 		f.terrain("Uu"),
 		fraction = 5,
 	}
@@ -174,8 +158,8 @@ local function world_conquest_tek_map_repaint_6d()
 	wct_fill_lava_chasms()
 	wct_volcanos()
 	wct_volcanos_dirt()
-	wct_break_walls("M*^Xm", "Mm,Mm,Hh,Hh,Hh^Fp,Hh^Fp,Hh^Uf,Hh^Uf,Gs^Fp,Rb,Rb,Rb")
-	wct_break_walls("X*", "Uh,Uh,Uh,Uh,Uh^Uf,Uu^Uf,Uu,Rd,Rd,Rd")
+	wct_break_walls("M*^Xm", "Mm,Mm,Hh,Hh,Hh^Fp,Hh^Fp,Hh^Tf,Hh^Tf,Gs^Fp,Rb,Rb,Rb")
+	wct_break_walls("X*", "Uh,Uh,Uh,Uh,Uh^Tf,Uu^Tf,Uu,Rd,Rd,Rd")
 	set_terrain { "Mm^Xm",
 		f.all(
 			f.terrain("X*"),
@@ -213,7 +197,7 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Hh"),
 		fraction = 5,
 	}
-	set_terrain { "Hh^Fp,Hh^Uf",
+	set_terrain { "Hh^Fp,Hh^Tf",
 		f.terrain("Hh"),
 		fraction = 12,
 	}
@@ -221,17 +205,17 @@ local function world_conquest_tek_map_repaint_6d()
 		f.terrain("Hhd"),
 		fraction = 5,
 	}
-	set_terrain { "Hhd^Fp,Hhd^Fp,Hh^Uf,Gg^Uf",
+	set_terrain { "Hhd^Fp,Hhd^Fp,Hh^Tf,Gg^Tf",
 		f.terrain("Hhd"),
 		fraction = 10,
 	}
 
 	-- extra rough terrain
-	set_terrain { "Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hhd^Fp,Hhd^Fp,Mm,Mm,Mm,Gg^Uf,Hh^Uf,Ss",
+	set_terrain { "Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Gg^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hhd^Fp,Hhd^Fp,Mm,Mm,Mm,Gg^Tf,Hh^Tf,Ss",
 		f.terrain("Gg"),
 		fraction = 3,
 	}
-	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Mm,Mm,Gs^Uf,Hh^Uf,Ss",
+	set_terrain { "Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Gs^Fp,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh,Hh^Fp,Hh^Fp,Mm,Mm,Mm,Gs^Tf,Hh^Tf,Ss",
 		f.terrain("Gs"),
 		fraction = 4,
 	}
@@ -453,7 +437,7 @@ local function world_conquest_tek_map_repaint_6d()
 		fraction_rand = "24..240",
 	}
 
-	if wesnoth.random(20) == 1 then
+	if mathx.random(20) == 1 then
 		wct_map_decorative_docks()
 	end
 	-- beachs sand and stones
@@ -467,6 +451,7 @@ local function world_conquest_tek_map_repaint_6d()
 
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Feudal")

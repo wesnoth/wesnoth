@@ -34,6 +34,7 @@
 import os
 import re
 import sys
+import signal
 import warnings
 import argparse
 from datetime import datetime
@@ -48,7 +49,7 @@ def commandline(args):
                    [--directory=START_PATH]
                    [--recursive] [--initialdomain=INITIAL_DOMAIN]
                    [--package-version=PACKAGE_VERSION]
-                   [--no-text-colors] [--fuzzy] [--warnall]
+                   [--no-sort-by-file] [--no-text-colors] [--fuzzy] [--warnall]
                    FILE1 FILE2 ... FILEN'''
     )
     parser.add_argument(
@@ -100,6 +101,16 @@ def commandline(args):
         help=('Version number of your wesnoth add-on. You don\'t actually '
               'require to set this option since you can directly edit the '
               'po file produced by wmlxgettext.')
+    )
+    parser.add_argument(
+        '--no-sort-by-file',
+        action='store_false',
+        default=True,
+        dest='sort_by_file',
+        help=("By default the list of input files is sorted so that they "
+              "are processed in a deterministic order. Use this flag to "
+              "process the files in the order that they're named on the "
+              "command line.")
     )
     parser.add_argument(
         '--no-text-colors',
@@ -162,6 +173,7 @@ def commandline(args):
 
 
 def main():
+    signal.signal(signal.SIGINT, sigint_handler)
     args = commandline(sys.argv[1:])
     pywmlx.ansi_setEnabled(args.text_col)
     pywmlx.wincol_setEnabled(args.text_col)
@@ -209,6 +221,8 @@ def main():
     # if args.recursive is True and args.filelist is None:
     else:
         startPath, filelist = pywmlx.autof.autoscan(startPath)
+    if args.sort_by_file:
+        filelist.sort()
     for fileno, fx in enumerate(filelist):
         fname = os.path.join(startPath, os.path.normpath(fx))
         is_file = os.path.isfile(fname)
@@ -261,6 +275,16 @@ def main():
         outfile.close()
     if args.debugmode:
         fdebug.close()
+
+
+
+def sigint_handler(signal, frame):
+    """This function defines what happens when the SIGINT signal is encountered by pressing ctrl-c during runtime. 
+    When ctrl-c is pressed, a one-line message is displayed and Python exits with Status 1.
+    This overrides Python's default behavior of displaying a traceback when ctrl-c is pressed.
+    """
+    print ('Aborted by pressing ctrl-c')
+    sys.exit(1)
 
 
 

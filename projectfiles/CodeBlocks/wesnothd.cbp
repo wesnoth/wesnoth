@@ -29,13 +29,15 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add option="-std=c++20" />
+			<Add option="-std=c++17" />
 			<Add option="-mthreads" />
 			<Add option="-fexceptions" />
 			<Add option="-fdiagnostics-show-option" />
 			<Add option="-fopenmp" />
 			<Add option="-Wunused" />
 			<Add option="-Wunused-parameter" />
+			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
+			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
 			<Add option="-D_WIN32_WINNT=0x0601" />
@@ -52,6 +54,7 @@
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
 			<Add library="shlwapi" />
+			<Add library="libbcrypt" />
 			<Add library="libboost_iostreams"/>
 			<Add library="libboost_bzip2"/>
 			<Add library="libboost_filesystem"/>
@@ -68,10 +71,15 @@
 			<Add library="libole32" />
 			<Add library="libuuid" />
 			<Add library="libcrypto-1_1"/>
+			<Add library="libssl" />
 			</Linker>
 		<Unit filename="../../packaging/windows/wesnothd.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../../src/crypt_blowfish/crypt_blowfish.h" />
 		<Unit filename="../../src/about.hpp" />
 		<Unit filename="../../src/color.cpp" />
 		<Unit filename="../../src/color.hpp" />
@@ -94,6 +102,8 @@
 		<Unit filename="../../src/gettext.hpp" />
 		<Unit filename="../../src/gettext.cpp" />
 		<Unit filename="../../src/global.hpp" />
+		<Unit filename="../../src/hash.cpp" />
+		<Unit filename="../../src/hash.hpp" />
 		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
@@ -141,7 +151,6 @@
 		<Unit filename="../../src/server/common/resultsets/game_history.hpp" />
 		<Unit filename="../../src/server/common/resultsets/tournaments.cpp" />
 		<Unit filename="../../src/server/common/resultsets/tournaments.hpp" />
-		<Unit filename="../../src/server/common/user_handler.cpp" />
 		<Unit filename="../../src/server/common/user_handler.hpp" />
 		<Unit filename="../../src/server/room.hpp" />
 		<Unit filename="../../src/server/wesnothd/ban.cpp" />
@@ -158,6 +167,8 @@
 		<Unit filename="../../src/server/wesnothd/player_network.hpp" />
 		<Unit filename="../../src/server/wesnothd/server.cpp" />
 		<Unit filename="../../src/server/wesnothd/server.hpp" />
+		<Unit filename="../../src/string_enums/enum_base.hpp" />
+		<Unit filename="../../src/string_enums/side_controller.hpp" />
 		<Unit filename="../../src/tstring.cpp" />
 		<Unit filename="../../src/tstring.hpp" />
 		<Unit filename="../../src/util.hpp" />

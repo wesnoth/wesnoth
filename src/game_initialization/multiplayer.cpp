@@ -1,20 +1,20 @@
 /*
-   Copyright (C) 2007 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2007 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "game_initialization/multiplayer.hpp"
 
-#include "addon/manager.hpp" // for installed_addons
 #include "build_info.hpp"
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
@@ -31,7 +31,6 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
-#include "hash.hpp"
 #include "log.hpp"
 #include "map_settings.hpp"
 #include "multiplayer_error_codes.hpp"
@@ -53,6 +52,8 @@
 
 static lg::log_domain log_mp("mp/main");
 #define DBG_MP LOG_STREAM(debug, log_mp)
+#define LOG_MP LOG_STREAM(info, log_mp)
+#define WRN_MP LOG_STREAM(warn, log_mp)
 #define ERR_MP LOG_STREAM(err, log_mp)
 
 namespace mp
@@ -68,6 +69,8 @@ class mp_manager
 public:
 	// Declare this as a friend to allow direct access to enter_create_mode
 	friend void mp::start_local_game();
+	friend void mp::send_to_server(const config&);
+	friend mp::lobby_info* mp::get_lobby_info();
 
 	mp_manager(const std::optional<std::string> host);
 
@@ -145,10 +148,17 @@ private:
 
 	mp::lobby_info lobby_info;
 
+	std::list<mp::network_registrar::handler> process_handlers;
+
 public:
 	const session_metadata& get_session_info() const
 	{
 		return session_info;
+	}
+
+	auto add_network_handler(decltype(process_handlers)::value_type func)
+	{
+		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
 };
 
@@ -158,9 +168,10 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 	, connection(nullptr)
 	, session_info()
 	, state()
-	, lobby_info(::installed_addons())
+	, lobby_info()
+	, process_handlers()
 {
-	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	state.classification().type = campaign_type::type::multiplayer;
 
 	if(host) {
 		gui2::dialogs::loading_screen::display([&]() {
@@ -175,40 +186,31 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 
 			gui2::dialogs::loading_screen::progress(loading_stage::download_lobby_data);
 
-			std::promise<void> received_initial_gamelist;
+			config data;
 
-			network_worker = std::thread([this, &received_initial_gamelist]() {
-				config data;
+			while(!stop) {
+				connection->wait_and_receive_data(data);
 
-				while(!stop) {
-					connection->wait_and_receive_data(data);
+				if(const auto error = data.optional_child("error")) {
+					throw wesnothd_error((*error)["message"]);
+				}
 
-					if(const config& error = data.child("error")) {
-						throw wesnothd_error(error["message"]);
-					}
+				else if(data.has_child("gamelist")) {
+					this->lobby_info.process_gamelist(data);
+					break;
+				}
 
-					else if(data.has_child("gamelist")) {
-						this->lobby_info.process_gamelist(data);
+				else if(const auto gamelist_diff = data.optional_child("gamelist_diff")) {
+					this->lobby_info.process_gamelist_diff(*gamelist_diff);
+				}
 
-						try {
-							received_initial_gamelist.set_value();
-							// TODO: only here while we transition away from dialog-bound timer-based handling
-							return;
-						} catch(const std::future_error& e) {
-							if(e.code() == std::future_errc::promise_already_satisfied) {
-								// We only need this for the first gamelist
-							}
-						}
-					}
-
-					else if(const config& gamelist_diff = data.child("gamelist_diff")) {
-						this->lobby_info.process_gamelist_diff(gamelist_diff);
+				else {
+					// No special actions to take. Pass the data on to the network handlers.
+					for(const auto& handler : process_handlers) {
+						handler(data);
 					}
 				}
-			});
-
-			// Wait at the loading screen until the initial gamelist has been processed
-			received_initial_gamelist.get_future().wait();
+			}
 		});
 	}
 
@@ -220,7 +222,7 @@ mp_manager::mp_manager(const std::optional<std::string> host)
 
 std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
 {
-	DBG_MP << "opening connection" << std::endl;
+	DBG_MP << "opening connection";
 
 	if(host.empty()) {
 		return nullptr;
@@ -254,11 +256,11 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 		data.clear();
 		conn->wait_and_receive_data(data);
 
-		if(data.has_child("reject") || data.has_attribute("version")) {
+		if(const auto reject = data.optional_child("reject"); reject || data.has_attribute("version")) {
 			std::string version;
 
-			if(const config& reject = data.child("reject")) {
-				version = reject["accepted_versions"].str();
+			if(reject) {
+				version = (*reject)["accepted_versions"].str();
 			} else {
 				// Backwards-compatibility "version" attribute
 				version = data["version"].str();
@@ -273,9 +275,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 		}
 
 		// Check for "redirect" messages
-		if(const config& redirect = data.child("redirect")) {
-			auto redirect_host = redirect["host"].str();
-			auto redirect_port = redirect["port"].str("15000");
+		if(const auto redirect = data.optional_child("redirect")) {
+			auto redirect_host = (*redirect)["host"].str();
+			auto redirect_port = (*redirect)["port"].str("15000");
 
 			bool recorded_host;
 			std::tie(std::ignore, recorded_host) = shown_hosts.emplace(redirect_host, redirect_port);
@@ -305,8 +307,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			conn->send_data(res);
 		}
 
-		if(const config& error = data.child("error")) {
-			throw wesnothd_rejected_client_error(error["message"].str());
+		if(const auto error = data.optional_child("error")) {
+			throw wesnothd_rejected_client_error((*error)["message"].str());
 		}
 
 		// Continue if we did not get a direction to login
@@ -327,16 +329,16 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
-			if(const config& warning = data.child("warning")) {
+			if(const auto warning = data.optional_child("warning")) {
 				std::string warning_msg;
 
-				if(warning["warning_code"] == MP_NAME_INACTIVE_WARNING) {
+				if((*warning)["warning_code"] == MP_NAME_INACTIVE_WARNING) {
 					warning_msg = VGETTEXT("The nickname ‘$nick’ is inactive. "
 						"You cannot claim ownership of this nickname until you "
 						"activate your account via email or ask an "
 						"administrator to do it for you.", {{"nick", login}});
 				} else {
-					warning_msg = warning["message"].str();
+					warning_msg = (*warning)["message"].str();
 				}
 
 				warning_msg += "\n\n";
@@ -349,10 +351,10 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				}
 			}
 
-			config* error = &data.child("error");
+			auto error = data.optional_child("error");
 
 			// ... and get us out of here if the server did not complain
-			if(!*error) break;
+			if(!error) break;
 
 			do {
 				std::string password = preferences::password(host, login);
@@ -361,58 +363,20 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					? (gui2::show_message(_("Confirm"), (*error)["message"], gui2::dialogs::message::ok_cancel_buttons) == gui2::retval::CANCEL)
 					: false;
 
-				const bool is_pw_request = !((*error)["password_request"].empty()) && !(password.empty());
+				// If:
+				// * the server asked for a password
+				// * the password isn't empty
+				// * the user didn't press Cancel
+				// * the connection is secure or the client was started with the option to use insecure connections
+				// send the password to the server
+				// otherwise go directly to the username/password dialog
+				if(!(*error)["password_request"].empty() && !password.empty() && !fall_through && (conn->using_tls() || game_config::allow_insecure)) {
+					// the possible cases here are that either:
+					// 1) TLS encryption is enabled, thus sending the plaintext password is still secure
+					// 2) TLS encryption is not enabled, in which case the server should not be requesting a password in the first place
+					// 3) This is being used for local testing/development, so using an insecure connection is enabled manually
 
-				// If the server asks for a password, provide one if we can
-				// or request a password reminder.
-				// Otherwise or if the user pressed 'cancel' in the confirmation dialog
-				// above go directly to the username/password dialog
-				if(is_pw_request && !fall_through) {
-					if((*error)["phpbb_encryption"].to_bool()) {
-						// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
-						// I will do closer investigations on this, for now let's just hope these are all of them.
-
-						// Note: we must obviously replace '&' first, I wasted some time before I figured that out... :)
-						for(std::string::size_type pos = 0; (pos = password.find('&', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&amp;");
-						for(std::string::size_type pos = 0; (pos = password.find('\"', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&quot;");
-						for(std::string::size_type pos = 0; (pos = password.find('<', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&lt;");
-						for(std::string::size_type pos = 0; (pos = password.find('>', pos)) != std::string::npos; ++pos)
-							password.replace(pos, 1, "&gt;");
-
-						const std::string salt = (*error)["salt"];
-						if(salt.length() < 12) {
-							throw wesnothd_error(_("Bad data received from server"));
-						}
-
-						if(utils::md5::is_valid_prefix(salt)) {
-							sp["password"] = utils::md5(
-								utils::md5(password, utils::md5::get_salt(salt), utils::md5::get_iteration_count(salt)).base64_digest(),
-								salt.substr(12, 8)
-							).base64_digest();
-						} else if(utils::bcrypt::is_valid_prefix(salt)) {
-							try {
-								auto bcrypt_salt = utils::bcrypt::from_salted_salt(salt);
-								auto hash = utils::bcrypt::hash_pw(password, bcrypt_salt);
-
-								const std::string outer_salt = salt.substr(bcrypt_salt.iteration_count_delim_pos + 23);
-								if(outer_salt.size() != 32) {
-									throw utils::hash_error("salt wrong size");
-								}
-
-								sp["password"] = utils::md5(hash.base64_digest(), outer_salt).base64_digest();
-							} catch(const utils::hash_error& err) {
-								ERR_MP << "bcrypt hash failed: " << err.what() << std::endl;
-								throw wesnothd_error(_("Bad data received from server"));
-							}
-						} else {
-							throw wesnothd_error(_("Bad data received from server"));
-						}
-					} else {
-						sp["password"] = password;
-					}
+					sp["password"] = password;
 
 					// Once again send our request...
 					conn->send_data(response);
@@ -420,10 +384,10 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
 
-					error = &data.child("error");
+					error = data.optional_child("error");
 
 					// ... and get us out of here if the server is happy now
-					if(!*error) break;
+					if(!error) break;
 				}
 
 				// Providing a password either was not attempted because we did not
@@ -435,14 +399,16 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				utils::string_map i18n_symbols;
 				i18n_symbols["nick"] = login;
 
-				const bool has_extra_data = error->has_child("data");
-				if(has_extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*error).child("data")["duration"]);
+				const auto extra_data = error->optional_child("data");
+				if(extra_data) {
+					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"]);
 				}
 
 				const std::string ec = (*error)["error_code"];
 
-				if(ec == MP_MUST_LOGIN) {
+				if(!(*error)["password_request"].empty() && !conn->using_tls() && !game_config::allow_insecure) {
+					error_message = _("The remote server requested a password while using an insecure connection.");
+				} else if(ec == MP_MUST_LOGIN) {
 					error_message = _("You must login first.");
 				} else if(ec == MP_NAME_TAKEN_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is already taken.", i18n_symbols);
@@ -458,19 +424,19 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
-					if(has_extra_data) {
+					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
 					} else {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums.", i18n_symbols);
 					}
 				} else if(ec == MP_NAME_AUTH_BAN_IP_ERROR) {
-					if(has_extra_data) {
+					if(extra_data) {
 						error_message = VGETTEXT("Your IP address is banned on this server’s forums for $duration|.", i18n_symbols);
 					} else {
 						error_message = _("Your IP address is banned on this server’s forums.");
 					}
 				} else if(ec == MP_NAME_AUTH_BAN_EMAIL_ERROR) {
-					if(has_extra_data) {
+					if(extra_data) {
 						error_message = VGETTEXT("The email address for the nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
 					} else {
 						error_message = VGETTEXT("The email address for the nickname ‘$nick’ is banned on this server’s forums.", i18n_symbols);
@@ -481,12 +447,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					error_message = VGETTEXT("The nickname ‘$nick’ is registered on this server.", i18n_symbols)
 							+ "\n\n" + _("WARNING: There is already a client using this nickname, "
 							"logging in will cause that client to be kicked!");
-				} else if(ec == MP_NO_SEED_ERROR) {
-					error_message = _("Error in the login procedure (the server had no seed for your connection).");
 				} else if(ec == MP_INCORRECT_PASSWORD_ERROR) {
 					error_message = _("The password you provided was incorrect.");
 				} else if(ec == MP_TOO_MANY_ATTEMPTS_ERROR) {
 					error_message = _("You have made too many login attempts.");
+				} else if(ec == MP_HASHING_PASSWORD_FAILED) {
+					error_message = _("Password hashing failed.");
 				} else {
 					error_message = (*error)["message"].str();
 				}
@@ -509,13 +475,13 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 			} while(login == preferences::login());
 
 			// Somewhat hacky...
-			// If we broke out of the do-while loop above error is still going to be nullptr
-			if(!*error) break;
+			// If we broke out of the do-while loop above error is still going to be nullopt
+			if(!error) break;
 		} // end login loop
 
-		if(const config& join_lobby = data.child("join_lobby")) {
+		if(const auto join_lobby = data.optional_child("join_lobby")) {
 			// Note any session data sent with the response. This should be the only place session_info is set.
-			session_info = { join_lobby };
+			session_info = { join_lobby.value() };
 
 			// All done!
 			break;
@@ -539,11 +505,7 @@ void mp_manager::run_lobby_loop()
 		gcm->reload_changed_game_config();
 		gcm->load_game_config_for_create(true); // NOTE: Using reload_changed_game_config only doesn't seem to work here
 
-		// This function does not refer to an addon database, it calls filesystem functions.
-		// For the sanity of the mp lobby, this list should be fixed for the entire lobby session,
-		// even if the user changes the contents of the addon directory in the meantime.
-		// TODO: do we want to handle fetching the installed addons in the lobby_info ctor?
-		lobby_info.set_installed_addons(::installed_addons());
+		lobby_info.refresh_installed_addons_cache();
 
 		connection->send_data(config("refresh_lobby"));
 	}
@@ -551,7 +513,7 @@ void mp_manager::run_lobby_loop()
 
 bool mp_manager::enter_lobby_mode()
 {
-	DBG_MP << "entering lobby mode" << std::endl;
+	DBG_MP << "entering lobby mode";
 
 	// Connection should never be null in the lobby.
 	assert(connection);
@@ -609,7 +571,7 @@ bool mp_manager::enter_lobby_mode()
 
 void mp_manager::enter_create_mode()
 {
-	DBG_MP << "entering create mode" << std::endl;
+	DBG_MP << "entering create mode";
 
 	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode();
@@ -620,7 +582,7 @@ void mp_manager::enter_create_mode()
 
 void mp_manager::enter_staging_mode()
 {
-	DBG_MP << "entering connect mode" << std::endl;
+	DBG_MP << "entering connect mode";
 
 	std::unique_ptr<mp_game_metadata> metadata;
 
@@ -650,7 +612,7 @@ void mp_manager::enter_staging_mode()
 
 void mp_manager::enter_wait_mode(int game_id, bool observe)
 {
-	DBG_MP << "entering wait mode" << std::endl;
+	DBG_MP << "entering wait mode";
 
 	// The connection should never be null here, since one should never reach this screen in local game mode.
 	assert(connection);
@@ -717,13 +679,13 @@ bool mp_manager::post_scenario_wait(bool observe)
 
 void start_client(const std::string& host)
 {
-	DBG_MP << "starting client" << std::endl;
+	DBG_MP << "starting client";
 	mp_manager(host).run_lobby_loop();
 }
 
 void start_local_game()
 {
-	DBG_MP << "starting local game" << std::endl;
+	DBG_MP << "starting local game";
 
 	preferences::set_message_private(false);
 
@@ -732,7 +694,7 @@ void start_local_game()
 
 void start_local_game_commandline(const commandline_options& cmdline_opts)
 {
-	DBG_MP << "starting local MP game from commandline" << std::endl;
+	DBG_MP << "starting local MP game from commandline";
 
 	const game_config_view& game_config = game_config_manager::get()->game_config();
 
@@ -741,11 +703,11 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// needed in commandline mode, but they are required by the functions called.
 	preferences::set_message_private(false);
 
-	DBG_MP << "entering create mode" << std::endl;
+	DBG_MP << "entering create mode";
 
 	// Set the default parameters
 	saved_game state;
-	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	state.classification().type = campaign_type::type::multiplayer;
 
 	mp_game_settings& parameters = state.mp_settings();
 
@@ -761,7 +723,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 
 	// Do not use map settings if --ignore-map-settings commandline option is set
 	if(cmdline_opts.multiplayer_ignore_map_settings) {
-		DBG_MP << "ignoring map settings" << std::endl;
+		DBG_MP << "ignoring map settings";
 		parameters.use_map_settings = false;
 	} else {
 		parameters.use_map_settings = true;
@@ -770,7 +732,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	// None of the other parameters need to be set, as their creation values above are good enough for CL mode.
 	// In particular, we do not want to use the preferences values.
 
-	state.classification().campaign_type = game_classification::CAMPAIGN_TYPE::MULTIPLAYER;
+	state.classification().type = campaign_type::type::multiplayer;
 
 	// [era] define.
 	if(cmdline_opts.multiplayer_era) {
@@ -780,7 +742,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	if(const config& cfg_era = game_config.find_child("era", "id", state.classification().era_id)) {
 		state.classification().era_define = cfg_era["define"].str();
 	} else {
-		std::cerr << "Could not find era '" << state.classification().era_id << "'\n";
+		PLAIN_LOG << "Could not find era '" << state.classification().era_id << "'";
 		return;
 	}
 
@@ -792,7 +754,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	if(const config& cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
 		state.classification().scenario_define = cfg_multiplayer["define"].str();
 	} else {
-		std::cerr << "Could not find [multiplayer] '" << parameters.name << "'\n";
+		PLAIN_LOG << "Could not find [multiplayer] '" << parameters.name << "'";
 		return;
 	}
 
@@ -808,11 +770,11 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 
 	// Should number of turns be determined from scenario data?
 	if(parameters.use_map_settings && state.get_starting_point()["turns"]) {
-		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"] << std::endl;
+		DBG_MP << "setting turns from scenario data: " << state.get_starting_point()["turns"];
 		parameters.num_turns = state.get_starting_point()["turns"];
 	}
 
-	DBG_MP << "entering connect mode" << std::endl;
+	DBG_MP << "entering connect mode";
 
 	statistics::fresh_stats();
 
@@ -862,6 +824,32 @@ std::string get_profile_link(int user_id)
 	}
 
 	return "";
+}
+
+void send_to_server(const config& data)
+{
+	if(manager && manager->connection) {
+		manager->connection->send_data(data);
+	}
+}
+
+network_registrar::network_registrar(handler func)
+{
+	if(manager /*&& manager->connection*/) {
+		remove_handler = manager->add_network_handler(func);
+	}
+}
+
+network_registrar::~network_registrar()
+{
+	if(remove_handler) {
+		remove_handler();
+	}
+}
+
+lobby_info* get_lobby_info()
+{
+	return manager ? &manager->lobby_info : nullptr;
 }
 
 } // end namespace mp

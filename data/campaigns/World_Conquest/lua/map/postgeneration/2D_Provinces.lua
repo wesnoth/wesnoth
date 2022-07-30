@@ -2,7 +2,7 @@
 
 function world_conquest_tek_map_repaint_2d()
 	world_conquest_tek_map_decoration_2d()
-	world_conquest_tek_map_rebuild("Uu,Uu^Uf,Uu^Dr,Ql,Qxu,Cud", 2)
+	world_conquest_tek_map_rebuild("Uu,Uu^Tf,Uu^Dr,Ql,Qxu,Cud", 2)
 	set_terrain { "Uh",
 		f.all(
 			f.adjacent(f.terrain("Ch*,Kh*,Cd,Cv^Fds,Ce,Co*")),
@@ -10,13 +10,13 @@ function world_conquest_tek_map_repaint_2d()
 		),
 	}
 
-	world_conquest_tek_map_dirt("Gg^Uf,Gg^Uf,Gg^Uf,Gs^Uf")
+	world_conquest_tek_map_dirt("Gg^Tf,Gg^Tf,Gg^Tf,Gs^Tf")
 end
 
 function wct_provinces_castle(terrain_to_change, terrain)
 	if #terrain_to_change > 0 then
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, terrain)
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+		map[loc] = terrain
 	end
 end
 
@@ -26,31 +26,31 @@ end
 
 function world_conquest_tek_map_decoration_2d()
 	for i = 1, 2 do
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change1 = map:find(f.all(
 			f.terrain("Hh,Mm,Mm^Xm,Xu,*^F*"),
 			f.adjacent(f.terrain("D*^*,Hd*^*")),
 			wct_provinces_castle_separation()
 		))
-		wct_provinces_castle(terrain_to_change, "Cd")
+		wct_provinces_castle(terrain_to_change1, "Cd")
 
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change2 = map:find(f.all(
 			f.terrain("Hh^F*"),
 			wct_provinces_castle_separation()
 		))
-		wct_provinces_castle(terrain_to_change,  "Cv^Fds")
+		wct_provinces_castle(terrain_to_change2,  "Cv^Fds")
 
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change3 = map:find(f.all(
 			f.terrain("Hh"),
 			f.none(f.radius(2, f.terrain("D*^*,Hd*^*"))),
 			wct_provinces_castle_separation()
 		))
-		wct_provinces_castle(terrain_to_change,  "Ce")
+		wct_provinces_castle(terrain_to_change3,  "Ce")
 
-		local terrain_to_change = map:get_locations(f.all(
+		local terrain_to_change4 = map:find(f.all(
 			f.terrain("Mm"),
 			wct_provinces_castle_separation()
 		))
-		wct_provinces_castle(terrain_to_change,  "Co")
+		wct_provinces_castle(terrain_to_change4,  "Co")
 	end
 
 	set_terrain { "*^Fds",
@@ -159,6 +159,7 @@ function wct_map_2d_post_bunus_decoration()
 	wct_noise_snow_to("Gd")
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"Provinces")

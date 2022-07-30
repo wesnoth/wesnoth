@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -29,20 +30,20 @@ struct builder_toggle_panel;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Class for a toggle button.
- * 
+ *
  * Quite some code looks like toggle_button maybe we should inherit from that but let's test first.
  * the problem is that the toggle_button has an icon we don't want, but maybe look at refactoring later.
  * but maybe we should also ditch the icon, not sure however since it's handy for checkboxes...
- * 
+ *
  * A toggle panel is an item which can hold multiple other items.
  * The difference between a grid and a panel is that it's possible to define how a panel looks.
  * A grid in an invisible container to just hold the items.
  * The toggle panel is a combination of the panel and a toggle button, it allows a toggle button with its own grid.
- * 
+ *
  * The resolution for a toggle panel also contains the following keys:
- * Key          |Type                                |Default|Description  
+ * Key          |Type                                |Default|Description
  * -------------|------------------------------------|-------|-------------
  * top_border   | @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
  * bottom_border| @ref guivartype_unsigned "unsigned"|0      |The size which isn't used for the client area.
@@ -76,8 +77,7 @@ public:
 	 * @param data                Map with the key value pairs to set the
 	 *                            members.
 	 */
-	void set_child_members(
-			const std::map<std::string /* widget id */, string_map>& data);
+	void set_child_members(const widget_data& data);
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
@@ -175,14 +175,10 @@ private:
 	std::function<void(widget&)> callback_mouse_left_double_click_;
 
 	/** See @ref widget::impl_draw_background. */
-	virtual void impl_draw_background(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_background() override;
 
 	/** See @ref widget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(surface& frame_buffer,
-									  int x_offset,
-									  int y_offset) override;
+	virtual void impl_draw_foreground() override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -236,7 +232,7 @@ struct builder_toggle_panel : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	builder_grid_ptr grid;
 

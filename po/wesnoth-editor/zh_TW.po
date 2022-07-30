@@ -1,46 +1,48 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 楊綮銘 <steven2880@gmail.com>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 17:17+0300\n"
-"PO-Revision-Date: 2020-02-10 01:06+0800\n"
-"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"POT-Creation-Date: 2022-07-19 19:22-0500\n"
+"PO-Revision-Date: 2022-05-30 14:44+0800\n"
+"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "單一六角格"
+msgstr "單1格"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "半徑為1的六角格"
+msgstr "半徑1格"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "半徑為2的六角格"
+msgstr "半徑2格"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr "西北－東南格線"
+msgstr "格線 西北─東南"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 msgid "Hex Line SW-NE"
-msgstr "西南－東北格線"
+msgstr "格線 西南─東北"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -50,7 +52,7 @@ msgstr "全部"
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:17
 msgid "water"
-msgstr "水面"
+msgstr "水"
 
 #. [editor_group]: id=flat
 #: data/core/editor/terrain-groups.cfg:24
@@ -75,27 +77,27 @@ msgstr "森林"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr "秋天"
+msgstr "秋季"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
 msgid "frozen"
-msgstr "雪地"
+msgstr "冰雪"
 
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
-msgstr "山脈"
+msgstr "崎嶇地"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:73
 msgid "cave"
-msgstr "洞窟"
+msgstr "洞穴"
 
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr "障礙物"
+msgstr "障礙"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
@@ -136,22 +138,22 @@ msgstr "預設"
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
-msgstr "夏天"
+msgstr "夏季"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
-msgstr "冬天"
+msgstr "冬季"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
-msgstr "24小時制時段"
+msgstr "24小時制"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
-msgstr "毀滅之後"
+msgstr "秋季之後"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -191,17 +193,17 @@ msgstr "視窗"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:110
 msgid "Areas"
-msgstr "區域"
+msgstr "地區"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:118
 msgid "Assign Local Time"
-msgstr "指定本地時間"
+msgstr "指定本地區的晝夜時間"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:124
 msgid "Assign Local Time Schedule"
-msgstr "指定本地時段"
+msgstr "指定本地區的晝夜類型"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:132
@@ -226,290 +228,298 @@ msgstr "時段選單"
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:455
 msgid "Playlist"
-msgstr "播放列表"
+msgstr "播放清單"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:461
 msgid "Assign Time Schedule"
 msgstr "指定時段"
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:61
+#: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Identifier: "
-msgstr "識別： "
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:63
-msgid "Name: "
-msgstr "名字： "
-
-#: src/editor/action/mouse/mouse_action_unit.cpp:65
-msgid "Type: "
-msgstr "類型： "
+msgstr "識別："
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
+msgid "Name: "
+msgstr "名稱："
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:68
+msgid "Type: "
+msgstr "類型："
+
+#: src/editor/action/mouse/mouse_action_unit.cpp:69
 msgid "Level: "
-msgstr "等級： "
+msgstr "等級："
 
-#: src/editor/action/mouse/mouse_action_unit.cpp:67
+#: src/editor/action/mouse/mouse_action_unit.cpp:70
 msgid "Cost: "
-msgstr "費用： "
+msgstr "費用："
 
-#: src/editor/controller/editor_controller.cpp:179
+#: src/editor/controller/editor_controller.cpp:181
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: src/editor/controller/editor_controller.cpp:209
-msgid "Do you really want to quit?"
-msgstr "您確定要退出嗎？"
-
 #: src/editor/controller/editor_controller.cpp:211
-msgid ""
-"Do you really want to quit? Changes to this map since the last save will be "
-"lost."
-msgstr "您確定要退出嗎？從上次儲存完到現在對地圖所作的更動將遺失。"
+msgid "Do you really want to quit?"
+msgstr "你真的想要退出嗎？"
 
 #: src/editor/controller/editor_controller.cpp:213
 msgid ""
+"Do you really want to quit? Changes to this map since the last save will be "
+"lost."
+msgstr "你真的想要退出嗎？將會遺失從上次儲存後到現在對地圖所作的更動。"
+
+#: src/editor/controller/editor_controller.cpp:215
+msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
-msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
+msgstr "你真的想要退出嗎？將遺失對以下地圖所作的更動："
 
-#: src/editor/controller/editor_controller.cpp:222
+#: src/editor/controller/editor_controller.cpp:224
 msgid "No editor time-of-day found."
 msgstr "沒有找到時段編輯器。"
 
-#: src/editor/controller/editor_controller.cpp:1135
+#: src/editor/controller/editor_controller.cpp:1141
 msgid "Change Unit ID"
 msgstr "更改單位ID"
 
-#: src/editor/controller/editor_controller.cpp:1136
+#: src/editor/controller/editor_controller.cpp:1142
 msgid "ID:"
 msgstr "ID："
 
-#: src/editor/controller/editor_controller.cpp:1152
+#: src/editor/controller/editor_controller.cpp:1158
 msgid "Rename Unit"
 msgstr "重新命名單位"
 
-#: src/editor/controller/editor_controller.cpp:1153
+#: src/editor/controller/editor_controller.cpp:1159
 msgid "Name:"
-msgstr "名字："
+msgstr "名稱："
 
-#: src/editor/map/context_manager.cpp:208
+#: src/editor/map/context_manager.cpp:210
 msgid "Load Map"
 msgstr "載入地圖"
 
-#: src/editor/map/context_manager.cpp:276 src/editor/map/map_context.cpp:851
+#: src/editor/map/context_manager.cpp:278 src/editor/map/map_context.cpp:853
 msgid "New Map"
 msgstr "新地圖"
 
-#: src/editor/map/context_manager.cpp:289 src/editor/map/map_context.cpp:851
+#: src/editor/map/context_manager.cpp:291 src/editor/map/map_context.cpp:853
 msgid "New Scenario"
 msgstr "新章節"
 
-#: src/editor/map/context_manager.cpp:345
+#: src/editor/map/context_manager.cpp:347
 msgid "No Recent Files"
 msgstr "沒有最近使用過的檔案"
 
-#: src/editor/map/context_manager.cpp:383
+#: src/editor/map/context_manager.cpp:385
 msgid "Unnamed Area"
-msgstr "未命名區域"
+msgstr "未命名地區"
 
-#: src/editor/map/context_manager.cpp:414
+#: src/editor/map/context_manager.cpp:416
 msgid "New Side"
 msgstr "新陣營"
 
-#: src/editor/map/context_manager.cpp:470
+#: src/editor/map/context_manager.cpp:472
 msgid "Apply Mask"
 msgstr "套用遮罩"
 
-#: src/editor/map/context_manager.cpp:479
+#: src/editor/map/context_manager.cpp:481
 msgid "Error loading mask"
 msgstr "讀取遮罩時錯誤"
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:501
 msgid "Identifier:"
 msgstr "識別："
 
-#: src/editor/map/context_manager.cpp:499
+#: src/editor/map/context_manager.cpp:501
 msgid "Rename Area"
-msgstr "重新命名區域"
+msgstr "重新命名地區"
 
-#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:515
 msgid "Choose Target Map"
 msgstr "選擇目標地圖"
 
-#: src/editor/map/context_manager.cpp:522
-#: src/editor/map/context_manager.cpp:931
+#: src/editor/map/context_manager.cpp:524
+#: src/editor/map/context_manager.cpp:933
 msgid "Error loading map"
 msgstr "讀取地圖錯誤"
 
-#: src/editor/map/context_manager.cpp:648
+#: src/editor/map/context_manager.cpp:650
 msgid "Save Map As"
-msgstr "另存地圖為"
+msgstr "儲存地圖至"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:671
 msgid "Save Scenario As"
-msgstr "另存章節為"
+msgstr "儲存章節至"
 
-#: src/editor/map/context_manager.cpp:701
+#: src/editor/map/context_manager.cpp:703
 msgid "No random map generators found."
 msgstr "沒有找到隨機地圖產生器。"
 
-#: src/editor/map/context_manager.cpp:714
-#: src/editor/map/context_manager.cpp:719
+#: src/editor/map/context_manager.cpp:716
+#: src/editor/map/context_manager.cpp:721
 msgid "Map creation failed."
-msgstr "創建地圖失敗。"
+msgstr "建立地圖失敗。"
 
-#: src/editor/map/context_manager.cpp:734
+#: src/editor/map/context_manager.cpp:736
 msgid "Unsaved Changes"
 msgstr "未儲存的更動"
 
-#: src/editor/map/context_manager.cpp:735
+#: src/editor/map/context_manager.cpp:737
 msgid "Do you want to discard all changes made to the map since the last save?"
-msgstr "您確定要放棄從上次儲存到現在對地圖的所有更動？"
+msgstr "你想要放棄從上次儲存到現在對地圖的所有更動？"
 
-#: src/editor/map/context_manager.cpp:791
+#: src/editor/map/context_manager.cpp:793
 msgid "This scenario is already open."
 msgstr "這個章節已被開啟。"
 
-#: src/editor/map/context_manager.cpp:814
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:816
+#: src/editor/map/context_manager.cpp:879
 msgid "This map is already open."
 msgstr "這個地圖已被開啟。"
 
-#: src/editor/map/context_manager.cpp:838
+#: src/editor/map/context_manager.cpp:840
 msgid "Scenario saved."
 msgstr "章節已儲存。"
 
-#: src/editor/map/context_manager.cpp:853
+#: src/editor/map/context_manager.cpp:855
 msgid "Map saved."
 msgstr "地圖已儲存。"
 
-#: src/editor/map/context_manager.cpp:910
+#: src/editor/map/context_manager.cpp:912
 msgid "Loaded embedded map data"
 msgstr "已讀取嵌入地圖的資料"
 
-#: src/editor/map/context_manager.cpp:911
-#: src/editor/map/context_manager.cpp:924
+#: src/editor/map/context_manager.cpp:913
+#: src/editor/map/context_manager.cpp:926
 msgid "Map loaded from scenario"
-msgstr "已從任務中讀取地圖"
+msgstr "已從章節中讀取地圖"
 
-#: src/editor/map/context_manager.cpp:921
+#: src/editor/map/context_manager.cpp:923
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
-"已讀取地圖引用檔案：\n"
+"已讀取引用的地圖檔案：\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:144
+#: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "玩家 $side_num"
 
-#: src/editor/map/editor_map.cpp:279
+#: src/editor/map/editor_map.cpp:281
 msgid "The size of the target map is different from the current map"
 msgstr "目標地圖尺寸與當前地圖不同"
 
-#: src/editor/map/map_context.cpp:145
+#: src/editor/map/map_context.cpp:147
 msgid "File not found"
-msgstr "檔案不存在"
+msgstr "找不到檔案"
 
-#: src/editor/map/map_context.cpp:152
+#: src/editor/map/map_context.cpp:154
 msgid "Empty file"
 msgstr "空白檔案"
 
-#: src/editor/map/map_context.cpp:208
+#: src/editor/map/map_context.cpp:210
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
-msgstr "這份地圖檔案像是一個章節，但是地圖資料連結一個不存在的檔案"
+msgstr "這個地圖檔案像是一個章節，但是「map_data」的值連結到一個不存在的檔案"
 
-#: src/editor/map/map_context.cpp:617
+#: src/editor/map/map_context.cpp:619
 msgid "Could not save the scenario: $msg"
 msgstr "無法儲存章節：$msg"
 
-#: src/editor/map/map_context.cpp:652
+#: src/editor/map/map_context.cpp:654
 msgid "Could not save into scenario"
-msgstr "無法儲存地圖"
+msgstr "無法儲存章節"
 
-#: src/editor/map/map_context.cpp:662
+#: src/editor/map/map_context.cpp:664
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖：$msg"
 
-#: src/editor/palette/editor_palettes.cpp:51
+#: src/editor/palette/editor_palettes.cpp:52
 msgid "(Unknown Group)"
-msgstr "（未知群組）"
+msgstr "（未知的群組）"
 
-#: src/editor/palette/editor_palettes.cpp:284
+#: src/editor/palette/editor_palettes.cpp:296
 msgid "(non-core)"
 msgstr "（非核心）"
 
-#: src/editor/palette/editor_palettes.cpp:285
+#: src/editor/palette/editor_palettes.cpp:297
 msgid "Will not work in game without extra care."
-msgstr "如果不特別注意，在遊戲中就不會正常運作。"
+msgstr "如果不特別處理，在遊戲中就不會正常運作。"
 
-#: src/editor/palette/location_palette.cpp:256
+#: src/editor/palette/location_palette.cpp:250
 msgid "Go To"
 msgstr "前往"
 
-#: src/editor/palette/location_palette.cpp:263
+#: src/editor/palette/location_palette.cpp:257
 msgid "Add"
 msgstr "增加"
 
-#: src/editor/palette/location_palette.cpp:265
+#: src/editor/palette/location_palette.cpp:259
 msgid "New Location Identifier"
 msgstr "新位置識別"
 
-#: src/editor/palette/location_palette.cpp:272
+#: src/editor/palette/location_palette.cpp:266
 msgid "Error"
 msgstr "錯誤"
 
-#: src/editor/palette/location_palette.cpp:273
+#: src/editor/palette/location_palette.cpp:267
 msgid "Invalid location id"
 msgstr "無效的位置 ID"
 
-#: src/editor/palette/location_palette.cpp:280
+#: src/editor/palette/location_palette.cpp:274
 msgid "Delete"
 msgstr "刪除"
 
-#: src/editor/palette/terrain_palettes.cpp:231
+#: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr ""
+msgstr "左鍵："
 
-#: src/editor/palette/terrain_palettes.cpp:232
+#: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr ""
+msgstr "右鍵："
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
-#: src/editor/palette/terrain_palettes.cpp:237
+#: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "shift + 左鍵：只繪製覆蓋層"
 
-#: src/editor/palette/terrain_palettes.cpp:239
+#: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "shift + 左鍵：只繪製基礎層"
 
-#: src/editor/palette/terrain_palettes.cpp:242
+# 這功能並不是複製貼上那樣的複製，所以不翻成「複製」。
+#: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "cmd + 左鍵或右鍵：選擇地形"
 
-#: src/editor/palette/terrain_palettes.cpp:244
+# 這功能並不是複製貼上那樣的複製，所以不翻成「複製」。
+#: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "ctrl + 左鍵或右鍵：選擇地形"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:140
+#: src/gui/dialogs/editor/custom_tod.cpp:93
 msgid "Clipboard support not found, contact your packager"
-msgstr "沒有剪貼簿，請聯絡相關人員"
+msgstr "不支援剪貼簿，請聯絡你的遊戲提供者"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:204
+#: src/gui/dialogs/editor/custom_tod.cpp:157
 msgid "Choose File"
 msgstr "選擇檔案"
 
-#: src/gui/dialogs/editor/custom_tod.cpp:205
+#: src/gui/dialogs/editor/custom_tod.cpp:158
 msgid "Select"
 msgstr "選擇"
+
+#~ msgid "(Unknown unit type: $type)"
+#~ msgstr "（未知的單位類型：$type|）"
+
+#~ msgid "Recruit: "
+#~ msgstr "招募："
 
 #~ msgid "player^None"
 #~ msgstr "無"
@@ -517,195 +527,8 @@ msgstr "選擇"
 #~ msgid "Player $player_number"
 #~ msgstr "玩家 $player_number"
 
-#~ msgid "(Unknown unit type: $type)"
-#~ msgstr "(未知單位類型：$type)"
-
-#~ msgid "Recruit: "
-#~ msgstr "招募： "
-
 #~ msgid "FG: "
-#~ msgstr "前景地形： "
+#~ msgstr "前景："
 
 #~ msgid "BG: "
-#~ msgstr "背景地形： "
-
-#~ msgid "Underground"
-#~ msgstr "地底"
-
-#~ msgid "Deep Underground"
-#~ msgstr "地底深處"
-
-#~ msgid "Indoors"
-#~ msgstr "室內"
-
-#~ msgid "None"
-#~ msgstr "無"
-
-#~ msgid "(New Map)"
-#~ msgstr "（新地圖）"
-
-#, fuzzy
-#~| msgid "(New Map)"
-#~ msgid "(New Scenario)"
-#~ msgstr "（新地圖）"
-
-#, fuzzy
-#~| msgid "Choose a Map to Open"
-#~ msgid "Choose a File to Open"
-#~ msgstr "選擇地圖載入"
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "選擇要套用的遮罩"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "地圖名稱已存在，確定要覆蓋？"
-
-#~ msgid "Player"
-#~ msgstr "玩家"
-
-#~ msgid "Quit"
-#~ msgstr "離開"
-
-#, fuzzy
-#~| msgid "Battle for Wesnoth Map Editor"
-#~ msgid "The Battle for Wesnoth"
-#~ msgstr "Battle for Wesnoth Map Editor"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "使用滑鼠左（右）鍵繪製前（背）景地形。按住Shift鍵可以只繪製地表圖形。Ctrl"
-#~ "+右鍵點選可對點選方格做地形位置取樣。"
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "使用滑鼠左鍵選擇，右鍵取消選擇。按住Shift鍵可以自動選擇同一地形的地面。"
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "點選滑鼠左鍵選擇玩家設置，右鍵取消。使用數字鍵移動地圖到起始點，Alt+數字鍵"
-#~ "設置玩家起始點。delete清除起始點。"
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr "點選貼上，貼上區域呈鏡面效果。"
-
-#, fuzzy
-#~| msgid "Action not implemented"
-#~ msgid "Not implemented yet."
-#~ msgstr "事件未執行"
-
-#~ msgid "Custom setting"
-#~ msgstr "自選設定"
-
-#~ msgid "Edit"
-#~ msgstr "編輯"
-
-#~ msgid "Undo"
-#~ msgstr "還原"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "無法還原"
-
-#~ msgid "Redo"
-#~ msgstr "重作"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "無法重作"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "自動更新地形轉換：是"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "自動更新地形轉換：部分"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "自動更新地形轉換：否"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "哪個玩家從這裡開始遊戲？您可以使用alt+數字鍵設定起始點，使用delete鍵清除起"
-#~ "始點。使用數字鍵可以移動到對應的起始點。"
-
-#~ msgid "FG"
-#~ msgstr "前置地形"
-
-#~ msgid "BG"
-#~ msgstr "後置地形"
-
-#~ msgid "Error creating action object"
-#~ msgstr "新增事件時錯誤"
-
-#~ msgid "Settings"
-#~ msgstr "設置"
-
-#~ msgid "Draw tiles"
-#~ msgstr "描繪"
-
-#~ msgid "Fill"
-#~ msgstr "填滿"
-
-#~ msgid "Set player's starting position"
-#~ msgstr "設置玩家啓始點"
-
-#~ msgid "Zoom in"
-#~ msgstr "放大"
-
-#~ msgid "Zoom out"
-#~ msgstr "縮小"
-
-#~ msgid "Zoom to default view"
-#~ msgstr "恢復預設視角"
-
-#~ msgid "Toggle grid"
-#~ msgstr "切換網格"
-
-#~ msgid "Resize the map"
-#~ msgstr "調整地圖大小"
-
-#~ msgid "Flip map"
-#~ msgstr "翻轉地圖"
-
-#~ msgid "Language"
-#~ msgstr "語言"
-
-#~ msgid "Choose your preferred language:"
-#~ msgstr "選擇你最愛的語言"
-
-#~ msgid "Which Player?"
-#~ msgstr "那個玩家？"
-
-#~ msgid "Which player should start here?"
-#~ msgstr "那個玩家在這裏開始？"
-
-#~ msgid ""
-#~ "Warning: Illegal characters found in the map name. Please save under a "
-#~ "different name."
-#~ msgstr "警告：地圖名稱中有不支援字元，請以另外的名稱儲存。"
-
-#~ msgid "The file does not contain a valid map."
-#~ msgstr "無法讀取此地圖。"
-
-#~ msgid "Do you want to save the map before quitting?"
-#~ msgstr "在退出編輯器之前儲存地圖？"
-
-#~ msgid "Error: Illegal character in filename."
-#~ msgstr "錯誤：檔案名稱中有不支援字元。"
-
-#~ msgid ""
-#~ "Can't resize the map, the requested size is bigger than the maximum, size="
-#~ msgstr "無法重新設定地圖大小，您的要求超出最大範圍，尺寸="
-
-#~ msgid " maximum="
-#~ msgstr "最大="
+#~ msgstr "背景："

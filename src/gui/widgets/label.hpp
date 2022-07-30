@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -30,25 +31,25 @@ namespace implementation
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A label displays a text, the text can be wrapped but no scrollbars are provided.
- * 
+ *
  * Although the label itself has no event interaction it still has two states.
  * The reason is that labels are often used as visual indication of the state of the widget it labels.
- * 
+ *
  * Note: The above is outdated, if "link_aware" is enabled then there is interaction.
- * 
+ *
  * The following states exist:
  * * state_enabled - the label is enabled.
  * * state_disabled - the label is disabled.
- * 
- * Key                |Type                                |Default |Description  
+ *
+ * Key                |Type                                |Default |Description
  * -------------------|------------------------------------|--------|-------------
  * link_aware         | @ref guivartype_f_bool "f_bool"    |false   |Whether the label is link aware. This means it is rendered with links highlighted, and responds to click events on those links.
  * link_color         | @ref guivartype_string "string"    |\#ffff00|The color to render links with. This string will be used verbatim in pango markup for each link.
- * 
+ *
  * The label specific variables:
- * Key                |Type                                |Default|Description  
+ * Key                |Type                                |Default|Description
  * -------------------|------------------------------------|-------|-------------
  * wrap               | @ref guivartype_bool "bool"        |false  |Is wrapping enabled for the label.
  * characters_per_line| @ref guivartype_unsigned "unsigned"|0      |Sets the maximum number of characters per line. The amount is an approximate since the width of a character differs. E.g. iii is smaller than MMM. When the value is non-zero it also implies can_wrap is true. When having long strings wrapping them can increase readability, often 66 characters per line is considered the optimum for a one column text.
@@ -251,7 +252,7 @@ struct builder_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	bool wrap;
 

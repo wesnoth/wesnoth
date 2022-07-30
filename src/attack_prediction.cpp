@@ -1,22 +1,16 @@
 /*
-   Copyright (C) 2006 - 2018 by Rusty Russell <rusty@rustcorp.com.au>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Rusty Russell <rusty@rustcorp.com.au>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
-
-   Full algorithm by Yogin.  Original typing and optimization by Rusty.
-
-   Monte Carlo simulation mode implemented by Jyrki Vesterinen.
-
-   This code has lots of debugging.  It is there for a reason:
-   this code is kinda tricky.  Do not remove it.
+	See the COPYING file for more details.
 */
 
 /**
@@ -46,7 +40,6 @@
 #include <array>
 #include <cfloat>
 #include <cmath>
-#include <iostream>
 #include <memory>
 #include <numeric>
 #include <sstream>
@@ -1757,12 +1750,12 @@ void conditional_levelup(std::vector<double>& hp_dist, double kill_prob)
 	hp_dist.back() += kill_prob;
 }
 
-/* Calculates the probability that we will be poisoned or slowed after the fight. Parameters:
- * initial_prob: how likely we are to be poisoned or slowed before the fight.
- * enemy_gives: true if the enemy poisons/slows us.
+/* Calculates the probability that we will be poisoned after the fight. Parameters:
+ * initial_prob: how likely we are to be poisoned before the fight.
+ * enemy_gives: true if the enemy poisons us.
  * prob_touched: probability the enemy touches us.
  * prob_stay_alive: probability we survive the fight alive.
- * kill_heals: true if killing the enemy heals the poison/slow (in other words, we get a level-up).
+ * kill_heals: true if killing the enemy heals the poison (in other words, we get a level-up).
  * prob_kill: probability we kill the enemy.
  */
 double calculate_probability_of_debuff(double initial_prob, bool enemy_gives, double prob_touched, double prob_stay_alive, bool kill_heals, double prob_kill)
@@ -2121,7 +2114,7 @@ void complex_fight(attack_prediction_mode mode,
 					double first_hit = hit_chance * opp_hit_unknown;
 					opp_hit += first_hit;
 					opp_hit_unknown -= first_hit;
-					double both_were_alive = (1.0 - b_already_dead) * (1.0 - pm->dead_prob_a());
+					double both_were_alive = 1.0 - b_already_dead - pm->dead_prob_a();
 					double this_hit_killed_b = both_were_alive != 0.0 ? (pm->dead_prob_b() - b_already_dead) / both_were_alive : 1.0;
 					self_hit_unknown *= (1.0 - this_hit_killed_b);
 				}
@@ -2134,7 +2127,7 @@ void complex_fight(attack_prediction_mode mode,
 					double first_hit = opp_hit_chance * self_hit_unknown;
 					self_hit += first_hit;
 					self_hit_unknown -= first_hit;
-					double both_were_alive = (1.0 - a_already_dead) * (1.0 - pm->dead_prob_b());
+					double both_were_alive = 1.0 - a_already_dead - pm->dead_prob_b();
 					double this_hit_killed_a = both_were_alive != 0.0 ? (pm->dead_prob_a() - a_already_dead) / both_were_alive : 1.0;
 					opp_hit_unknown *= (1.0 - this_hit_killed_a);
 				}
@@ -2406,13 +2399,13 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	assert(opponent.summary[0].size() == opp_res.size());
 	for(unsigned int i = 0; i < summary[0].size(); ++i) {
 		if(std::fabs(summary[0][i] - res[i]) > 0.000001) {
-			std::cerr << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i] << "\n";
+			PLAIN_LOG << "Mismatch for " << i << " hp: " << summary[0][i] << " should have been " << res[i];
 			assert(false);
 		}
 	}
 	for(unsigned int i = 0; i < opponent.summary[0].size(); ++i) {
 		if(std::fabs(opponent.summary[0][i] - opp_res[i]) > 0.000001) {
-			std::cerr << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i] << "\n";
+			PLAIN_LOG << "Mismatch for " << i << " hp: " << opponent.summary[0][i] << " should have been " << opp_res[i];
 			assert(false);
 		}
 	}
@@ -2446,19 +2439,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	opponent.poisoned = calculate_probability_of_debuff(opponent.poisoned, u_.poisons, opp_touched, 1.0 - opponent.hp_dist[0],
 		opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0] - self_already_dead);
 
-	if(!use_monte_carlo_simulation) {
-		slowed = calculate_probability_of_debuff(slowed, opponent.u_.slows, touched, 1.0 - hp_dist[0],
-			u_.experience + game_config::kill_xp(opponent.u_.level) >= u_.max_experience, opponent.hp_dist[0] - opp_already_dead);
-		opponent.slowed = calculate_probability_of_debuff(opponent.slowed, u_.slows, opp_touched, 1.0 - opponent.hp_dist[0],
-			opponent.u_.experience + game_config::kill_xp(u_.level) >= opponent.u_.max_experience, hp_dist[0] - self_already_dead);
-	} else {
-		/* The slowed probability depends on in how many rounds
-		 * the combatant happened to be slowed.
-		 * We need to recalculate it based on the HP distribution.
-		 */
-		slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
-		opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
-	}
+	/* The slowed probability depends on in how many rounds
+	 * the combatant happened to be slowed.
+	 * We need to recalculate it based on the HP distribution.
+	 */
+	slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
+	opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 
 	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		// We'll level up after the battle -> slow/poison will go away
@@ -2743,14 +2729,14 @@ static battle_context_unit_stats* parse_unit(char*** argv)
 		if(max) {
 			max_hp = atoi(max + strlen("maxhp="));
 			if(max_hp < hitpoints) {
-				std::cerr << "maxhp must be at least hitpoints." << std::endl;
+				PLAIN_LOG << "maxhp must be at least hitpoints.";
 				exit(1);
 			}
 		}
 
 		if(strstr((*argv)[5], "drain")) {
 			if(!max) {
-				std::cerr << "WARNING: drain specified without maxhp; assuming uninjured." << std::endl;
+				PLAIN_LOG << "WARNING: drain specified without maxhp; assuming uninjured.";
 			}
 
 			drains = true;
@@ -2774,7 +2760,7 @@ static battle_context_unit_stats* parse_unit(char*** argv)
 
 		if(strstr((*argv)[5], "swarm")) {
 			if(!max) {
-				std::cerr << "WARNING: swarm specified without maxhp; assuming uninjured." << std::endl;
+				PLAIN_LOG << "WARNING: swarm specified without maxhp; assuming uninjured.";
 			}
 
 			swarm = true;
@@ -2799,11 +2785,10 @@ int main(int argc, char* argv[])
 		run(argv[1] ? atoi(argv[1]) : 0);
 
 	if(argc < 9) {
-		std::cerr
+		PLAIN_LOG
 			<< "Usage: " << argv[0] << " [<battle>]\n\t" << argv[0] << " "
 			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,swarm,firststrike,berserk,maxhp=<num>] "
-			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ..."
-			<< std::endl;
+			<< "<damage> <attacks> <hp> <hitprob> [drain,slows,slowed,berserk,firststrike,swarm,maxhp=<num>] ...";
 		exit(1);
 	}
 

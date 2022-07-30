@@ -10,7 +10,7 @@ function wct_dirt_beachs(rng_range)
 		),
 		fraction_rand = rng_range,
 	}
-	
+
 end
 
 -- pack of generic tweaks to default generator
@@ -28,7 +28,7 @@ function world_conquest_tek_map_rebuild(cave, reef)
 		exact = false,
 		percentage = reef,
 	}
-	
+
 	-- add reefs
 	set_terrain { "Wwr",
 		f.any(
@@ -47,14 +47,14 @@ function world_conquest_tek_map_rebuild(cave, reef)
 
 	-- replace hills for mushrooms
 	-- base amount in map surface
-	local r = helper.rand(tostring(total_tiles // 500) .. ".." .. tostring(total_tiles // 250))
+	local r = mathx.random_choice(tostring(total_tiles // 500) .. ".." .. tostring(total_tiles // 250))
 	-- just to be sure.
 	r = tonumber(r)
-	set_terrain { "Hh^Uf",
+	set_terrain { "Hh^Tf",
 		f.all(
 			f.terrain("Hh,Hh^F*"),
 			f.adjacent(f.terrain("A*^*,Ms^*,Ha^*"), nil, 0),
-			f.radius(2, f.terrain("Mm,Md,Xu,Mm^Xm,Uu,Uh,Uu^Uf,Ql,Qxu,Mv"))
+			f.radius(2, f.terrain("Mm,Md,Xu,Mm^Xm,Uu,Uh,Uu^Tf,Ql,Qxu,Mv"))
 		),
 		nlocs = r,
 	}
@@ -68,7 +68,7 @@ function wct_fill_lava_chasms()
 		),
 		layer = "base",
 	}
-	
+
 end
 
 function world_conquest_tek_map_dirt(mushrooms)
@@ -76,11 +76,11 @@ function world_conquest_tek_map_dirt(mushrooms)
 	local terrain_to_change = wct_store_possible_muddy_swamps()
 	while #terrain_to_change > 0 do
 		for i, v in ipairs(terrain_to_change) do
-			map:set_terrain(v, "Sm")
+			map[v] = "Sm"
 		end
 		terrain_to_change = wct_store_possible_muddy_swamps()
 	end
-	
+
 	wct_randomize_snowed_forest()
 	wct_volcanos_dirt()
 	-- volcanos dry mountains
@@ -91,7 +91,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		),
 		layer = "base",
 	}
-	
+
 	-- lava dry mountains
 	set_terrain { "Md",
 		f.all(
@@ -100,7 +100,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		),
 		layer = "base",
 	}
-	
+
 	-- some impassible become mushrooms
 	set_terrain { mushrooms,
 		f.all(
@@ -109,7 +109,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		),
 		fraction_rand = "9..11",
 	}
-	
+
 	wct_dirt_beachs("9..11")
 end
 
@@ -124,7 +124,7 @@ function wct_change_map_water(t)
 	set_terrain { "Wo" .. t,
 		f.terrain("Wo"),
 	}
-	
+
 end
 
 function wct_map_decorative_docks()
@@ -153,7 +153,7 @@ function wct_map_decorative_docks()
 		exact = false,
 		percentage = 18,
 	}
-	
+
 	-- chance of trash near docks
 	set_terrain { "Ds,Ds,Ds,Ds,Ds,Ds^Edt",
 		f.all(
@@ -168,21 +168,21 @@ function wct_map_decorative_docks()
 			f.adjacent(f.terrain("Ds^Edt"))
 		),
 	}
-	
+
 end
 
 function wct_store_possible_flowers(terrain)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Gs,Gg"),
 		f.adjacent(f.terrain(terrain)),
 		f.adjacent(f.terrain("D*^*,S*^*,Hd"), nil, 0)
 	))
-	
-	
+
+
 end
 
 function wct_store_possible_map4_castle(value)
-	return  map:get_locations(f.all(
+	return  map:find(f.all(
 		f.terrain("H*^F*"),
 		f.adjacent(f.terrain("H*^F*"), nil, 6)
 	))
@@ -190,22 +190,22 @@ end
 
 function wct_possible_map4_castle(terrain, value)
 	local terrain_to_change = wct_store_possible_map4_castle(value)
-	while #terrain_to_change > 0 and wesnoth.random(value + 1) == 1 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, terrain)
+	while #terrain_to_change > 0 and mathx.random(value + 1) == 1 do
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+		map[loc] = terrain
 		terrain_to_change = wct_store_possible_map4_castle(value)
 	end
 end
 
 function wct_store_possible_dwarven_castle()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Uh"),
 		f.adjacent(f.terrain("Uh"), nil, "5-6")
 	))
 end
 
 function wct_store_possible_roads(village)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Gg,Gs"),
 		f.adjacent(f.all(
 			f.terrain(village),
@@ -213,28 +213,28 @@ function wct_store_possible_roads(village)
 		)),
 		f.adjacent(f.terrain("R*,Kh*,Ch*"))
 	))
-	
+
 end
 
 function wct_road_to_village(road, village)
 	-- build roads of 1 hex to conect villages
 	local terrain_to_change = wct_store_possible_roads(village)
 	while #terrain_to_change > 0 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, road)
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+		map[loc] = road
 		terrain_to_change = wct_store_possible_roads(village)
 	end
 end
 
 -- builds roads using terrain @a terrain
--- for each step we call @get_next 
+-- for each step we call @get_next
 function wct_iterate_roads_to(get_next, radius, terrain)
 	print_time("wct_iterate_roads_to start")
 	for r = radius, 1, -1 do
 		local locs = get_next(r)
 		while #locs > 0 do
-			local loc = locs[wesnoth.random(#locs)]
-			map:set_terrain(loc, terrain)
+			local loc = locs[mathx.random(#locs)]
+			map[loc] = terrain
 			locs = get_next(r)
 		end
 	end
@@ -247,14 +247,14 @@ end
 -- roads have a maximum length of @a radius and can only be
 -- placed on tiles that match @a f_dest
 function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius)
-	local src_tiles = map:get_locations(f_src)
-	local dest_tiles = map:get_locations(f_dest)
-	local filter_path = wesnoth.create_filter(f_validpath)
+	local src_tiles = map:find(f_src)
+	local dest_tiles = map:find(f_dest)
+	local filter_path = wesnoth.map.filter(f_validpath)
 	local map = _G.map
 
 	local function filter_path_function(x, y)
 		local xy_list = { {x,y} }
-		local res = #map:get_locations(filter_path, xy_list) > 0
+		local res = #map:find(filter_path, xy_list) > 0
 		return res
 	end
 	-- calculate for each tile its distance to any of the tiles in dest_tiles.
@@ -282,54 +282,54 @@ function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius
 					if (dist_ad or 999) < dist then
 						next_locs[#next_locs + 1] = loc_ad
 					end
-					if dist_ad and map:get_terrain(loc_ad) == terrain_road then
-						--we merged with another path. 
+					if dist_ad and map[loc_ad] == terrain_road then
+						--we merged with another path.
 						goto path_found
 					end
 				end
-				path[#path + 1] = next_locs[wesnoth.random(#next_locs)]
+				path[#path + 1] = next_locs[mathx.random(#next_locs)]
 				loc = path[#path]
 				dist = distmap:get(loc)
 			end
 			::path_found::
 			wesnoth.log("debug", "generated path: " .. debug_wml(path))
 			for i, ploc in ipairs(path) do
-				map:set_terrain(ploc, terrain_road)
+				map[ploc] = terrain_road
 			end
 		end
 	end
 end
 
-function wct_iterate_roads_to_ex(t)	
+function wct_iterate_roads_to_ex(t)
 	print_time("wct_iterate_roads_to_ex start")
 	wct_iterate_roads_to_2(t.f_validpath, t.f_src, t.f_dest, t.terrain_road, t.radius)
 	print_time("wct_iterate_roads_to_ex end")
 end
 function wct_break_walls(wall, terrain)
-	
+
 	local terrain_to_change = wct_store_broken_wall_candidates(wall)
 	while #terrain_to_change > 0 do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
-		map:set_terrain(loc, helper.rand(terrain))
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
+		map[loc] = mathx.random_choice(terrain)
 		terrain_to_change = wct_store_broken_wall_candidates(wall)
 	end
 end
 
 function wct_store_broken_wall_candidates(wall)
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain(wall),
 		f.adjacent(f.terrain("M*^Xm,X*"), nil, "2-6"),
 		f.adjacent(f.terrain("Mv"), nil, 0)
 	))
-	
+
 end
 
 function wct_store_possible_muddy_swamps()
-	return map:get_locations(f.all(
+	return map:find(f.all(
 		f.terrain("Ss"),
 		f.adjacent(f.terrain("D*^*,Hd,Sm,Rd"), nil, "5-6")
 	))
-	
+
 end
 
 function wct_map_reduce_castle_expanding_recruit(castle, terrain)
@@ -341,12 +341,12 @@ function wct_map_reduce_castle_expanding_recruit(castle, terrain)
 			f.terrain(castle)
 		),
 	}
-	
+
 end
 
 function wct_map_cave_path_to(terrain)
 	set_terrain { terrain,
 		f.terrain("Ur"),
 	}
-	
+
 end

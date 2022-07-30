@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2018 wesnoth 韦诺之战
+.TH WESNOTH 6 2021 wesnoth 韦诺之战
 .
 .SH 名称
 wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游戏
@@ -81,16 +81,17 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 \fB\-\-debug\-lua\fP
 启用一些Lua调试机制
 .TP 
+\fB\-\-strict\-lua\fP
+禁用已废弃的Lua API调用
+.TP 
 \fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+产生这两个WML文件的diff，不会对这两个文件先进行预处理（若要进行预处理，请对它们执行\fB\-p\fP命令）。将diff以DiffWML格式输出到标准输出或由\fI\-\-output\fP指定的文件中。
 .TP 
 \fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
 直接启动游戏内置的地图编辑器。如果指定了\fIfile\fP，则和 \fB\-l\fP \fB\-\-load\fP.等价。
 .TP 
 \fB\-\-fps\fP
-在屏幕的一角显示游戏当前的每秒帧数（FPS）。
+在屏幕的一角显示游戏当前的每秒帧数（FPS），并将这些数值写入玩家数据目录中的一个文件里。
 .TP 
 \fB\-f, \-\-fullscreen\fP
 使用全屏模式运行游戏。
@@ -115,7 +116,7 @@ to the file indicated by \fI\-\-output\fP.
 设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP, \ \fBnone\fP。对大多数日志域而言，默认日志级别是\fBwarning\fP，但\fBdeprecation\fP的默认级别是\fBnone\fP，除非和\fB\-d\fP选项并用。
 .TP 
 \fB\-\-log\-precise\fP
-shows the timestamps in log output with more precision.
+在日志输出中显示更高精度的时间戳。
 .TP 
 \fB\-\-log\-strict\fP
 设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和 \fB\-u\fP 共同使用时才有意义。
@@ -147,6 +148,9 @@ shows the timestamps in log output with more precision.
 \fB\-\-nogui\fP
 运行游戏，但不运行图形界面。只能与 \fB\-\-multiplayer\fP 或 \fB\-\-screenshot\fP 或 \fB\-\-plugin\fP 组合使用。
 .TP 
+\fB\-\-nobanner\fP
+跳过启动时的封面图像。
+.TP 
 \fB\-\-nomusic\fP
 以无音乐的方式运行游戏。
 .TP 
@@ -157,19 +161,17 @@ shows the timestamps in log output with more precision.
 以无音乐和音效的方式运行游戏。
 .TP 
 \fB\-\-output\fP\fI\ file\fP
-output to the specified file. Applicable to diffing operations.
+输出到指定的文件中。对diff操作适用。
 .TP 
 \fB\-\-password\fP\fI\ password\fP
 在连接服务器时使用 \fIpassword\fP ，忽略其他首选项。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-（试验性）读取定义了韦诺插件的
+（实验性）读取定义了韦诺插件的
 \fIscript\fP。与\fB\-\-script\fP类似，但Lua文件应返回一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。
 .TP 
 \fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
-by \fI\-\-output\fP.
+将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的WML输出到标准输出或由\fI\-\-output\fP指定的文件中。
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
 预处理指定的文件/文件夹。针对每个文件，一个未处理的.cfg文件和一个处理过的.cfg文件会被写入指定的目标目录中。如果指定的是个文件夹，那么将根据已知的预处理器规则递归地预处理之。“data/core/macros”目录中的常用宏会在指定的资源之前被预处理。例如：
@@ -177,7 +179,7 @@ by \fI\-\-output\fP.
 有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-由逗号分隔的定义列表，用于 \fB\-\-preprocess\fP 指令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
+由逗号分隔的定义列表，用于 \fB\-\-preprocess\fP 命令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
 仅供 \fB\-\-preprocess\fP 命令使用。用于指定一个包含了一个或多个 \fB[preproc_define]\fP
@@ -229,7 +231,7 @@ by \fI\-\-output\fP.
 使得\fBpackage\fP包在Lua脚本中可用，这样一来Lua脚本就可以载入任意包了。请不要对不可信的脚本使用此选项！此操作将赋予Lua与韦诺可执行文件相同的权限。
 .TP 
 \fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+设置\fB\-V,\-\-validate\fP所使用的WML schema。
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ name\fP
 设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
@@ -251,22 +253,25 @@ Games”之外。在Windows下，也可以使用以“.\e”或“..\e”开头�
 在连接服务器时使用 \fIusername\fP ，忽略其他首选项。
 .TP 
 \fB\-\-validate\fP\fI\ path\fP
-validates a file against the WML schema.
+使用WML schema来验证文件。
 .TP 
 \fB\-\-validate\-addon\fP\fI\ addon_id\fP
-validates the WML of the given addon as you play.
+在游戏过程中，验证指定附加组件的WML。
 .TP 
 \fB\-\-validate\-core\fP
-validates the core WML as you play.
+在游戏过程中，验证核心WML。
 .TP 
 \fB\-\-validate\-schema \ path\fP
-validates a file as a WML schema.
+验证文件是否为合法的WML schema。
 .TP 
 \fB\-\-validcache\fP
 假定缓存是有效的。（因此不进行缓存验证，危险）
 .TP 
 \fB\-v, \-\-version\fP
 显示版本号并退出。
+.TP 
+\fB\-\-simple\-version\fP
+仅显示版本号而不显示其他信息，之后退出。
 .TP 
 \fB\-w, \-\-windowed\fP
 使用窗口模式进入游戏。
@@ -337,7 +342,7 @@ Soliton <soliton.de@gmail.com> 编辑。
 .
 .SH 版权
 .
-版权所有 \(co 2003\-2018 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

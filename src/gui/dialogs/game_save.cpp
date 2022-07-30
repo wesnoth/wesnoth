@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -22,17 +23,13 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(game_save)
 
 game_save::game_save(std::string& filename, const std::string& title)
 {
-	set_restore(true);
-
 	register_text("txtFilename", false, filename, true);
 	register_label("lblTitle", true, title);
 }
@@ -43,8 +40,6 @@ game_save_message::game_save_message(std::string& filename,
 									   const std::string& title,
 									   const std::string& message)
 {
-	set_restore(true);
-
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
 	register_label("lblMessage", true, message);
@@ -67,4 +62,3 @@ game_save_oos::game_save_oos(bool& ignore_all,
 }
 
 } // namespace dialogs
-} // namespace gui2

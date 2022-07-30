@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -26,8 +27,7 @@
 #define DRAW_EVENT (SDL_USEREVENT + 3)
 #define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
 #define SHOW_HELPTIP_EVENT (SDL_USEREVENT + 5)
-#define DRAW_ALL_EVENT (SDL_USEREVENT + 6)
-#define INVOKE_FUNCTION_EVENT (SDL_USEREVENT + 7)
+#define INVOKE_FUNCTION_EVENT (SDL_USEREVENT + 6)
 
 namespace events
 {
@@ -75,12 +75,8 @@ class sdl_handler
 friend class context;
 public:
 	virtual void handle_event(const SDL_Event& event) = 0;
-	virtual void handle_window_event(const SDL_Event& event) = 0;
+	virtual void handle_window_event(const SDL_Event&) {};
 	virtual void process_event() {}
-	virtual void draw() {}
-
-	virtual void volatile_draw() {}
-	virtual void volatile_undraw() {}
 
 	virtual bool requires_event_focus(const SDL_Event * = nullptr) const { return false; }
 
@@ -125,6 +121,9 @@ void focus_handler(const sdl_handler* ptr);
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 
+// whether the currently executing thread is the main thread.
+bool is_in_main_thread();
+
 void call_in_main_thread(const std::function<void (void)>& f);
 
 //event_context objects control the handler objects that SDL events are sent
@@ -142,11 +141,15 @@ struct event_context
 	~event_context();
 };
 
-//causes events to be dispatched to all handler objects.
+/** Process all events currently in the queue. */
 void pump();
 
-//look for resize events and update references to the screen area
-void peek_for_resize();
+/** Trigger a draw cycle. */
+void draw();
+
+/** pump() then immediately draw() */
+inline void pump_and_draw() { pump(); draw(); }
+// TODO: draw_manager - should this also raise_process_event? Some things do some don't
 
 struct pump_info {
 	pump_info() : resize_dimensions(), ticks_(0) {}
@@ -166,11 +169,6 @@ public:
 
 void raise_process_event();
 void raise_resize_event();
-void raise_draw_event();
-void raise_draw_all_event();
-void raise_volatile_draw_event();
-void raise_volatile_draw_all_event();
-void raise_volatile_undraw_event();
 void raise_help_string_event(int mousex, int mousey);
 
 

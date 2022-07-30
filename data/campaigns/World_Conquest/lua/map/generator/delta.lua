@@ -36,11 +36,11 @@ local function generate(length, villages, castle, iterations, size, players, isl
 		dr_convert(nil, nil, 350, 420, "Gg", "Gs^Fp"),
 		-- fungus
 		-- DR_CONVERT MIN_HT MAX_HT MIN_TMP MAX_TMP FROM TO
-		dr_convert(825, 950, 500, 525, "Uue, Uue^Dr", "Uue^Uf"),
-		dr_convert(825, 950, 550, 575, "Uue, Uue^Dr", "Uue^Uf"),
-		dr_convert(825, 950, 600, 625, "Uue, Uue^Dr", "Uue^Uf"),
+		dr_convert(825, 950, 500, 525, "Uue, Uue^Dr", "Uue^Tf"),
+		dr_convert(825, 950, 550, 575, "Uue, Uue^Dr", "Uue^Tf"),
+		dr_convert(825, 950, 600, 625, "Uue, Uue^Dr", "Uue^Tf"),
 		-- lava
-		dr_convert(800, nil, 850, nil, "Uue, Uue^Dr, Uue^Uf", "Ql"),
+		dr_convert(800, nil, 850, nil, "Uue, Uue^Dr, Uue^Tf", "Ql"),
 	}
 	res.road_cost = {
 		dr_road("Gg", "Re", 10),

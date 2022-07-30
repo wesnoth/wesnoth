@@ -1,5 +1,5 @@
 
-local supply_images = 
+local supply_images =
 {
 	"misc/blank-hex.png~BLIT(items/straw-bale2.png~CROP(24,15,48,57))~BLIT(items/straw-bale1.png~CROP(0,9,72,63))",
 	"misc/blank-hex.png~BLIT(items/straw-bale1.png~CROP(8,15,64,57))~BLIT(items/leather-pack.png~CROP(0,10,62,62),10,0)~BLIT(items/leather-pack.png~CROP(0,0,69,72),3,0)",
@@ -15,12 +15,12 @@ local supply_images =
 }
 
 function wesnoth.wml_actions.wc2_map_supply_village(t)
-	local unit = wesnoth.get_unit(t.x, t.y)
+	local unit = wesnoth.units.get(t.x, t.y)
 	local loc = unit.loc
-	wesnoth.set_terrain(loc, "Kh^Vov", "overlay")
-	
-	wesnoth.set_village_owner(loc, unit.side, false)
-	
+	wesnoth.current.map[loc] = "^Vov"
+
+	wesnoth.map.set_owner(loc, unit.side, false)
+
 	local supply_image = ((wml.variables.wc2_supply_image_counter or 0) % #supply_images ) + 1
 	wml.variables.wc2_supply_image_counter = supply_image
 	wesnoth.wml_actions.item {

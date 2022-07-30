@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -117,7 +118,7 @@ void terrain_palette::setup(const game_config_view& cfg)
 		DBG_ED << "Palette: processing terrain " << t_info.name()
 			<< "(editor name: '" << t_info.editor_name() << "') "
 			<< "(" << t_info.number() << ")"
-			<< ": " << t_info.editor_group() << "\n";
+			<< ": " << t_info.editor_group();
 
 		// don't display terrains that were automatically created from base+overlay
 		if (t_info.is_combined()) continue;
@@ -132,7 +133,6 @@ void terrain_palette::setup(const game_config_view& cfg)
 
 		for (const std::string& k : keys) {
 			group_map_[k].push_back(get_id(t));
-			nmax_items_ = std::max<int>(nmax_items_, group_map_[k].size());
 			std::map<std::string, item_group*>::iterator i = id_to_group.find(k);
 			if (i != id_to_group.end()) {
 				if (i->second->core) {
@@ -146,7 +146,6 @@ void terrain_palette::setup(const game_config_view& cfg)
 		if (core) {
 			// Add the terrain to the default group
 			group_map_["all"].push_back(get_id(t));
-			nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 		} else {
 			non_core_items_.insert(get_id(t));
 		}
@@ -161,50 +160,44 @@ void terrain_palette::setup(const game_config_view& cfg)
 	set_group("all");
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found." << std::endl;
+		ERR_ED << "No items found.";
 	}
 }
 
-void terrain_palette::draw_item(const t_translation::terrain_code& terrain,
-		surface& image, std::stringstream& tooltip_text) {
-
+void terrain_palette::setup_item(
+	const t_translation::terrain_code& terrain,
+	texture& base_image,
+	texture& overlay_image,
+	std::stringstream& tooltip_text)
+{
 	const t_translation::terrain_code base_terrain = map().get_terrain_info(terrain).default_base();
 
 	//Draw default base for overlay terrains
 	if(base_terrain != t_translation::NONE_TERRAIN) {
 		const std::string base_filename = map().get_terrain_info(base_terrain).editor_image();
-		surface base_image(image::get_image(base_filename));
+		base_image = image::get_texture(base_filename);
 
-		if(base_image == nullptr) {
+		if(!base_image) {
 			tooltip_text << "BASE IMAGE NOT FOUND\n";
-			ERR_ED << "image for terrain : '" << base_filename << "' not found" << std::endl;
-			base_image = image::get_image(game_config::images::missing);
-			if(base_image == nullptr) {
-				ERR_ED << "Placeholder image not found" << std::endl;
+			ERR_ED << "image for terrain : '" << base_filename << "' not found";
+			base_image = image::get_texture(game_config::images::missing);
+			if(!base_image) {
+				ERR_ED << "Placeholder image not found";
 				return;
 			}
-		}
-
-		if(base_image->w != item_size_ || base_image->h != item_size_) {
-			base_image = scale_surface(base_image,
-				item_size_, item_size_);
 		}
 	}
 
 	const std::string filename = map().get_terrain_info(terrain).editor_image();
-	image = image::get_image(filename);
-	if(image == nullptr) {
+	overlay_image = image::get_texture(filename);
+	if(!overlay_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for terrain: '" << filename << "' not found" << std::endl;
-		image = image::get_image(game_config::images::missing);
-		if(image == nullptr) {
-			ERR_ED << "Placeholder image not found" << std::endl;
+		ERR_ED << "image for terrain: '" << filename << "' not found";
+		overlay_image = image::get_texture(game_config::images::missing);
+		if(!overlay_image) {
+			ERR_ED << "Placeholder image not found";
 			return;
 		}
-	}
-
-	if(image->w != item_size_ || image->h != item_size_) {
-		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << map().get_terrain_editor_string(terrain);

@@ -1,21 +1,23 @@
 # The Battle for Wesnoth - Traditional Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2020 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # 李昆融 <likwueron@gmail.com>, 2018.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
+"Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-01-16 14:18 UTC\n"
-"PO-Revision-Date: 2019-10-19 21:34+0800\n"
-"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"PO-Revision-Date: 2022-05-30 16:43+0800\n"
+"Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -25,7 +27,7 @@ msgstr "救援計畫"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:14
 msgid "AToTB"
-msgstr "AToTB"
+msgstr "救援計畫"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:18
@@ -40,14 +42,12 @@ msgstr "輕騎兵"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
 msgid "Challenging"
-msgstr "困難"
+msgstr "挑戰"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "騎士"
+msgstr "高階騎士"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -57,16 +57,14 @@ msgid ""
 "as planned. Can you help?\n"
 "\n"
 msgstr ""
-"一位邪惡的法師正在襲擊當地的村莊和居民。亞努派遣他的弟弟比昂前去幫忙，他拯救"
-"了村民但自己卻被劫持。您能營救他嗎？\n"
+"一位邪惡的法師正在襲擊當地的村莊和居民。村莊的法師向他的勇士兄弟尋求協助，但"
+"事情發展得不如預期。你能幫助他嗎？\n"
 "\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
-msgstr "（初學者等級，4個章節。）"
+msgstr "（新手等級，4個章節）"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -86,12 +84,12 @@ msgstr "戰役維護"
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:57
 msgid "Artwork and Graphics Design"
-msgstr "美術工程與繪圖設計"
+msgstr "美術與圖形設計"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:73
 msgid "Miscellaneous"
-msgstr "雜項"
+msgstr "其它"
 
 #. [entry]
 #: data/campaigns/Two_Brothers/_main.cfg:87
@@ -106,15 +104,15 @@ msgstr "徹底剿滅法師"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
 msgid ""
-"The remote freehold of Maghre in the western reaches of the kingdom of "
+"The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
 "comings and goings of the wider world. Wars and the rumor of wars touched "
 "them not, until the day a dark mage settled in the region and began seeking "
 "sacrifices for his evil summonings."
 msgstr ""
-"瑪葵坐落於韋諾王國西方邊境，它曾是和平的地方，其居民很少注意外界的紛紛擾擾。"
-"有關戰爭或是相關的謠言一直與他們無關，直到某一天，一位黑暗法師來到此處定居，"
-"並為了他的黑暗儀式尋找犧牲者。"
+"瑪葵坐落於韋諾王國西部邊境，它曾是和平的地方，它的居民很少注意外界的紛紛擾"
+"擾，有關戰爭或是相關的謠言一直與他們無關。直到某一天，一位黑暗法師來到此處定"
+"居，並開始為了他的邪惡儀式尋找犧牲者。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:54
@@ -126,10 +124,10 @@ msgid ""
 "more than a day’s ride distant, and messengers sent to seek his help did not "
 "return."
 msgstr ""
-"骷髏和僵屍屠殺牛隻並焚燒農場。<i>「恐懼並臣服於法師莫達克吧！」</i>它們在犯下"
-"暴行時發出如此的呼嚎。人們在孤立的農場上失蹤。人們開始害怕夜幕降臨，他們的孩"
-"子甚不不敢在白天出門。但最近的領主也要超過一天的時間才能抵達，所有外出求助的"
-"信使都一去不回。"
+"骷髏和僵屍屠殺牛隻並焚燒農場。<i>「恐懼並臣服於法師莫達克吧！」</i>他們在犯下"
+"暴行時發出如此地呼嚎。人們在孤立的農場上失蹤。男人和女人開始害怕夜幕降臨，他"
+"們的孩子甚至不敢在白天出門。但最靠近的領主需要超過一天的馳騁才能抵達，所有外"
+"出求助的信使都一去不回。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:58
@@ -142,9 +140,10 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
-"這裡一位叫比昂的，在年輕時就展現法師的天份，故前往艾頓島學院學習，學成後就便"
-"返繼續他的修行。人們前去尋求他的幫助。他找到一些鄉民們父執輩掛於牆上快被遺忘"
-"的武器，便吩付取下清理並上油，另外令瑪葵的鐵匠打造矛頭和斧刃給沒有武器的人。"
+"這裡有一位叫巴蘭的男人，在年輕時就展現法師的天份，並前往偉大的奥杜因島學院學"
+"習，學成後便返回出生地繼續他的修行。人們前去尋求他的幫助和領導。他找到一些村"
+"民們的父執輩掛於牆上快被遺忘的武器，便吩付取下清理並上油。另外還令瑪葵的鐵匠"
+"打造矛頭和斧刃給沒有武器的人。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:62
@@ -156,11 +155,11 @@ msgid ""
 "brother, with which they might call to each other when in dire need. Baran "
 "sent out that call."
 msgstr ""
-"比昂有個叫亞努哥哥的也外出尋找機會，現在成為一小團騎手的領䄂，做著護衛商團的"
-"生意。幸運的是，當比昂還是學徒時，做了一對護身符讓兄弟倆戴上，這讓他們可以在"
-"有難時呼喚對方。而現在，比昂發出求救。"
+"巴蘭有個叫阿維斯的兄弟也外出尋找機會，現在成為一小團輕騎兵的領䄂，做著護衛商"
+"隊的生意。幸運的是，當巴蘭還是魔法學徒時，做了一對護身符讓他們兄弟倆戴上，這"
+"讓他們可以在有難時呼喚對方。而現在，巴蘭發出求救。"
 
-# 因為月份採羅馬數字所以我改用中文的五來表示
+# 羅馬數字V表示5，這算是舊版的月份表示法。5月在韋諾的世界是「Scryer's Bloom」。
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:66
 msgid ""
@@ -176,23 +175,25 @@ msgid ""
 "spoken since that evil day at Toen Caric. If he will not come for me, "
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
-"韋曆363年五月12日\n"
-"摘自瑪葵的法師比昂的日誌\n"
+"占卜師花之月12日，363 YW\n"
+"摘自瑪葵的法師巴蘭的日誌\n"
 "\n"
-"如果我可以面對那叫莫達克的傢伙就好了！我覺得我的魔法比他高明。但他待在丘陵"
-"中，被他的僕人層層保護著，而我手上只有擔心受怕的農民，他們的破刀爛棒難以對付"
-"他的奴僕。我需要哥哥幫忙，他向來比我更擅長打仗。\n"
+"如果我可以面對那叫「莫達克」的傢伙就好了！我覺得我的魔法比他高明。但他待在丘"
+"陵中，被他的僕人層層保護著，而我只能集結到擔心受怕的農民，他們的破刀爛棒難以"
+"對付他的嘍囉。我需要哥哥幫忙，他向來比我更擅長打仗。\n"
 "\n"
-"他會聽到我的求救嗎？我不曉得他是不是還戴著護身符。自從那在托恩．卡里克該死的"
-"日子後，我們就再也沒說話了。就算他不幫我，至少也會在村子最艱難的時候回來幫"
-"忙。"
+"他會聽到我的求救嗎？我不曉得他是不是還戴著護身符。自從在那邪惡的一天，於托恩‧"
+"卡里克，我們就再也沒說話了。就算他不為我回來，也許他還是會在我們的村莊極需救"
+"助的時候回來支援吧。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:75
 msgid ""
 "Heeding the call of his amulet, Arvith gathered such men as he could and "
 "hurried to Maghre to help Baran."
-msgstr "在聽到求助後，亞努火速招集他能招集的人，並趕往瑪葵幫助比昂。"
+msgstr ""
+"透過他的護身符，阿維斯在聽到求助後，火速召集他能召集的人，並趕往瑪葵幫助巴"
+"蘭。"
 
 #. [side]
 #. [side]: type=Longbowman, id=Reeve Hoban
@@ -204,10 +205,10 @@ msgstr "在聽到求助後，亞努火速招集他能招集的人，並趕往瑪
 msgid "Humans"
 msgstr "人類"
 
-#. [side]: type=Orcish Warlord, id=Tairach
+#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Dark Sorcerer, id=Mordak
+#. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:131
@@ -223,12 +224,12 @@ msgstr "莫達克"
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:146
 msgid "Alwyn"
-msgstr "艾倫"
+msgstr "奧爾溫"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:147
 msgid "Brent"
-msgstr "布蘭"
+msgstr "布倫特"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:148
@@ -238,7 +239,7 @@ msgstr "卡戴爾"
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:149
 msgid "Dannen"
-msgstr "唐"
+msgstr "丹能"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:150
@@ -263,12 +264,12 @@ msgstr "漢"
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:156
 msgid "Magrid"
-msgstr "馬格瑞德"
+msgstr "馬格里德"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:161
 msgid "Slay Mordak, the evil mage"
-msgstr "殺死邪惡的法師 - 莫達克"
+msgstr "殺死莫達克，邪惡的法師"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:165
@@ -277,7 +278,7 @@ msgstr "殺死邪惡的法師 - 莫達克"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
 msgid "Death of Arvith"
-msgstr "亞努死亡"
+msgstr "阿維斯死亡"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:176
@@ -289,7 +290,7 @@ msgstr "用混混掩護你的忠誠單位，並在白天攻擊把傷害降到最
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:186
 msgid "Greetings, brother, and welcome home."
-msgstr "見到你真好，大哥，歡迎回家。"
+msgstr "見到你真好，哥哥，歡迎回家。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:191
@@ -299,7 +300,7 @@ msgstr "嗨。"
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:196
 msgid "Is that all, Arvith? I understand, but..."
-msgstr "就這些人嗎？亞努。我可以理解，但..."
+msgstr "就這些人嗎？阿維斯。我可以理解，但……"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:201
@@ -314,9 +315,9 @@ msgid ""
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; we need your men, and you to lead them."
 msgstr ""
-"一位黑暗法師來到這邊，他手下的邪惡怪物管叫他莫達克。它們在外圍農田橫行，人心"
-"惶惶，恐怕很快就會攻入村子了！瑪葵的村民雖有武器，但缺乏訓練，我們需要你的"
-"人，和你的領導。"
+"一位黑暗法師來到這邊，他的生物稱他為莫達克。他們在外圍農田橫行，搞得人心惶"
+"惶，恐怕很快就會攻入村子了！瑪葵的村民已經拿起武器，但他們不是受過訓練的戰"
+"士。我們需要你的人馬，還有你，來領導他們。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:211
@@ -324,15 +325,15 @@ msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
 msgstr ""
-"我能感應到莫達克的噁爛臭味在土壤和空氣中的足跡。他在北方某處，騎馬不到兩天的"
-"路程。"
+"我能從暗流中感應到莫達克留在土壤和空氣中的惡臭。他在北方某處，我覺得騎馬前"
+"去，不需兩天的路程。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:216
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
-msgstr "好。我會拯救這村子的。你能守住我們的背後，別讓那法師找麻煩嗎？"
+msgstr "好。我會為這個村子而戰的。你能防止那個法師從背後偷襲我們嗎？"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:221
@@ -342,30 +343,31 @@ msgid ""
 "Mordak himself with magic at an unguarded moment. You shall be the right "
 "hand, I the left... aye, brother?"
 msgstr ""
-"我會悄悄帶著一小隊最優秀的斥候和樵夫出發，當你正面對抗並擊殺他的怪物時，我會"
-"趁莫達克毫無防備時用魔法擊敗他。你右，我左...如何，哥哥？"
+"我會悄悄地帶著一小隊最優秀的偵察兵和樵夫出發。當你正面對抗並擊殺他的生物時，"
+"我會趁莫達克失去防備時用魔法擊敗他。你右，我左……如何，哥哥？"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:226
 msgid "... Aye. Just make sure you’re there when we need you."
-msgstr "...好。只要在我們需要時出現便行。"
+msgstr "……好。只要在我們需要時出現便行。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:237
 msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
-msgstr "比昂現在應該就位了，壓制他們，讓暗影學徒無法分心好讓比昂發動陷阱！"
+msgstr ""
+"巴蘭現在應該就位了。壓制他們，吸引黑暗使徒的注意力，好讓巴蘭能夠發動奇襲！"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:248
 msgid "Baran has not made his attack!"
-msgstr "比昂沒有發動攻擊！"
+msgstr "巴蘭沒有發動攻擊！"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:253
 msgid "Could he have abandoned us?"
-msgstr "他會是拋棄我們嗎？"
+msgstr "他會是拋棄我們了嗎？"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:258
@@ -373,41 +375,41 @@ msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
 msgstr ""
-"不...不，肯定是出了別的問題。我很擔心他...不過現在，我們得親自處理莫達克。"
+"不……不，肯定是出了別的問題。我很擔心他……不過現在，我們得親自處理莫達克。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:270
 msgid "Argh!"
-msgstr "啊!"
+msgstr "啊！"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:275
 msgid "Good work, men! But what has become of my brother?"
-msgstr "大伙幹得好！但我弟弟怎麼了？"
+msgstr "幹得好，大夥！但我弟弟究竟怎麼了？"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:280
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
-msgstr "擔心他？不如擔心你自己吧！噎嘿嘿...呵呵...嘎嘎..."
+msgstr "擔心他？不如擔心你自己吧！噎嘿嘿……呵呵……嘎嘎……"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:290
 msgid ""
 "There’s nothing more to be had from this one; we will have to search for "
 "Baran ourselves!"
-msgstr "看來這傢伙沒別的情報了，我們得自己去找比昂！"
+msgstr "看來這傢伙沒別的情報了，我們得自己去找巴蘭！"
 
 #. [message]: role=Reporter
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:312
 msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
-msgstr "大人！斥候回報比昂被抓住並被帶往北方！"
+msgstr "大人！偵察兵回報巴蘭被抓住並被帶往更遠的北方！"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:317
 msgid "That they should dare this! We will give chase at once."
-msgstr "他們竟敢如此！我們追。"
+msgstr "他們竟敢如此！我們立刻追。"
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:343
@@ -419,12 +421,12 @@ msgstr "你弟弟偷襲我的計劃失敗了。他現在是我的俘虜了。"
 msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
-msgstr "我弟弟被綁了？比昂，我讓你失望了！現在莫達克的軍隊已抵達村莊！"
+msgstr "我弟弟被綁了？巴蘭，我讓你失望了！現在莫達克的軍隊已抵達村莊！"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:364
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
-msgstr "我聽說這些怪物對我們的武器攻擊幾乎免役，走著瞧！"
+msgstr "我聽說這些生物對我們的武器攻擊幾乎免疫，我們走著瞧！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:380
@@ -439,27 +441,12 @@ msgstr "追逐"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:27
 msgid "Arvith and his band rode north in search of his missing brother."
-msgstr "亞努和他的手下乘馬前去北方尋找他失蹤的弟弟。"
+msgstr "阿維斯和他的手下乘馬前去北方尋找他失蹤的弟弟。"
 
+# 羅馬數字V表示5，這算是舊版的月份表示法。5月在韋諾的世界是「Scryer's Bloom」。下面的那個文本也是一樣。
+# 「although after their first campsite the tracks were merely those of men carrying heavy loads」的意思不太確定。
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -478,16 +465,17 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
-"韋曆363年五月16日\n"
-"摘自瑪葵的亞努的日誌\n"
+"占卜師花之月16日，363 YW\n"
+"摘自瑪葵的阿維斯的日誌\n"
 "\n"
-"我們尋找比昂已有三天，但仍一無所獲。我的直覺告訴我應前往死靈法師和他手下藏身"
-"的北方邊境。然而，我們只看見一個又一個的農田。最初，我覺得一切都是無用功，但"
-"後來，在第一天要結束之際，我們發現了一些足跡。其中一些是骷髏的腳印。\n"
+"我們尋找巴蘭已有三天，但仍一無所獲。我的直覺告訴我要前往死靈法師和他的嘍囉所"
+"藏身的北方邊境，畢竟所有其它地方都是農田。最初，我覺得一切都是徒勞，但後來，"
+"在第一天要結束之際，我們發現了一些足跡。其中一些是骷髏的腳印，然而在他們的第"
+"一個營地之後，再過去的足跡只剩下那些揹負著重物的人的。\n"
 "\n"
-"我們離目標更近了，這些足跡延伸到灰林中。但瑪葵或其它村莊的人自記憶以來都無人"
-"進入過這森林。許多關於它的恐怖故事代代相傳，說這地方有孤魂野鬼獵取人命，而死"
-"在此處的也會成為它們的一員。"
+"我們現在離目標更近了，這些足跡延伸到灰森林中。但瑪葵或其它村莊的人自記憶以來"
+"都無人進入過這森林。許多關於它的恐怖故事代代相傳，說這地方有孤魂野鬼獵取人"
+"命，而死在此處的人也會成為它們的一員。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
@@ -507,16 +495,16 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
-"韋曆363年五月16日\n"
-"摘自瑪葵的亞努的日誌\n"
+"占卜師花之月16日，363 YW\n"
+"摘自瑪葵的阿維斯的日誌\n"
 "\n"
-"但我現在不再迷信。我的見識已足夠看出這類傳說背後的真相。這森林是精靈——不友善"
-"的那種——的家，如果那傳說還有丁點根據的話。我擔心我的人，馬在森林中不好驅使，"
-"而精靈在他們的領域中更加危險。但事情總得完成，問題必需回答。有某件大事正在發"
-"生。死靈法師對鎮民的恐怖行動不是新聞，但為什麼他的僕人在他死後沒有潰散？他們"
-"現在前往何處？最重要的是，為什麼他們將比昂帶走？\n"
+"但我現在不再迷信。我的見識已足夠看出這類傳說背後的真相。這片森林住著精靈——不"
+"友善的那種，不曉得傳說是否有任何根據。我擔心我的人馬，馬在森林中不好驅使，而"
+"精靈在他們的領域中更加危險。但事情總得完成，問題必須回答。有某件更大的事正在"
+"發生。死靈法師對鎮民的恐怖行動不是新聞，但為什麼他的僕人在他死後沒有潰散？他"
+"們現在前往何處？最重要的是，為什麼他們將巴蘭帶走？\n"
 "\n"
-"此外...我想奪回我弟弟。"
+"此外……我想要奪回我的弟弟。"
 
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:88
@@ -526,7 +514,7 @@ msgstr "精靈"
 #. [side]: type=Elvish Rider, id=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:93
 msgid "Nil-Galion"
-msgstr "尼爾-佳里翁"
+msgstr "尼爾-加里恩"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
@@ -536,7 +524,7 @@ msgstr "綁匪"
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
 msgid "Muff Toras"
-msgstr "莫夫 陶喇斯"
+msgstr "莫夫‧托樂斯"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:239
@@ -550,45 +538,46 @@ msgstr "抓住綁匪"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-msgid "Kill the Dark Adept before his reinforcements arrive"
-msgstr "在暗黑技師的增援部隊到來前殺掉他"
+msgid "Kill the Dark Adept before more elves arrive"
+msgstr "在更多的精靈到來前殺掉黑暗使徒"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
 msgid ""
-"The Elvish forces are spread out. Seek to fight them one at a time with "
+"The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
-msgstr "精靈的軍隊是分散的。趁這機會一次處理一個。"
+msgstr "精靈的軍隊四處分散。使用你的幾個單位同時攻擊他們的一個單位，各個擊破。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:295
 msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
-msgstr "使用輕騎兵和混混快速探索森林並找出綁匪。"
+msgstr "使用輕騎兵或混混快速探索森林並找出綁匪。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:310
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
-msgstr "讓暗影學徒和他的護衛分開好輕鬆擊殺他。"
+msgstr "讓黑暗使徒和他的護衛分開好輕鬆擊殺他。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:353
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
-msgstr "來吧，各位，在可親的綠林中漫步，有什麼比這更好的？"
+msgstr "來吧，大夥，在美麗的綠林中散步，有什麼比這更好的？"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:358
 msgid "You there! Halt and explain yourself."
-msgstr "那裡的那個！報上名來。"
+msgstr "那邊的你！報上名來。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:363
 msgid "We’re chasing after some men who kidnapped my brother!"
-msgstr "我們正在追蹤一些綁架我兄弟的人！"
+msgstr "我們正在追蹤一些綁架我弟弟的人！"
 
+# 完全看不懂這段在講什麼。以前的敘述是「Those men told me their prisoner had attempted to murder their master, and warned that evil men would follow him. Advance no further, or you will die.」其實也不知道在講什麼。儘管如此還是直接照翻了。
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:368
 msgid ""
@@ -597,21 +586,25 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"那些人抓到他們的一個俘虜在練習死靈法術，為了你好，我希望他不是你的弟弟。假設"
+"他們抓的那個人是你的弟弟的兇手，別擔心，灰法師將會釋放他們的俘虜的邪惡魔法綁"
+"定到這個世界上的所有靈魂。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
 msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
-msgstr ""
+msgstr "我們在戰場上殺了那個死靈法師！我親自給予了致命一擊。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
 msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
-msgstr ""
+msgstr "我們在戰場上殺了那個死靈法師！我親眼看到了那個致命一擊。"
 
+# 完全看不懂這段在講什麼。
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
 msgid ""
@@ -622,19 +615,25 @@ msgid ""
 "could wish.\n"
 "\n"
 "Either way, nothing will be gained by your intrusion into our woods. Now "
-"advance no further, or you will die."
+"advance no further, for we will defend our land."
 msgstr ""
+"我們在三天前聽到戰鬥的聲音，但當那個俘虜經過我們時，那股死亡的惡臭是不會有錯"
+"的。如果你的弟弟真的是那個俘虜，那他也是一個死靈法師。記住你的弟弟，因為我們"
+"都希望他是，然後也要知道那個俘虜的命運將會被以你所能想到最恐怖的方式來報"
+"仇。\n"
+"\n"
+"無論如何，你對我們的樹林的入侵將無法獲得任何東西。現在別再前進，因為我們將會"
+"防禦我們的土地。"
 
+# 到底哪裡有鬼？observant又是在指哪方面？這部分劇情有看沒有懂。
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
-msgstr "鬼故事到此為止了。區區精靈是阻擋不了我解救比昂的！"
+msgstr ""
+"鬼故事到此為止了，不過就算是鬼，也許都還是比這些精靈更機警。他們仍然阻擋不了"
+"我解救巴蘭的！"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -652,109 +651,115 @@ msgid ""
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
-"呸，那就走道路，而我們的矛兵和弓手可以深入林子對付他們。說這些業餘戰士是比不"
-"上我們經大風大浪的人馬的。"
+"呸，那就待在道路，而我們的矛兵和弓箭手可以深入林子對付他們。那些業餘戰士是比"
+"不上我們這些經過大風大浪的人的。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:450
 msgid "I see them! There they are!"
-msgstr "我看到了，他們在那！"
+msgstr "我看到他們了！他們在那！"
 
 #. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:461
+#. There are no undead on the map yet, but Muff Toras summons some immediately after saying this
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:462
 msgid ""
-"Curses! If they had been an hour slower, our master’s reinforcements would "
-"already be here to meet us."
-msgstr "該死！要是他們晚一個鐘頭的話，我們主人的援軍早就在這和我們會合了。"
+"Curses! Had they been a few hours slower, I might have covered our tracks "
+"without arousing the elves’ suspicions. Still, no need for the disguise any "
+"more."
+msgstr ""
+"該死，如果他們再慢幾個小時，我也許就可以掩蓋我們的蹤跡而不引起精靈們的懷疑。"
+"不過，不需要再偽裝了。"
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:497
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "嗯，精靈？現在你們看出誰是死靈法師了嗎？"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:516
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:517
 msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"我聽到戰鬥的聲音，但沒想到會看到這個。我將通知議會，他們會弄清楚誰是死靈法師"
+"的。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:543
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
 msgid "Come on, men, let’s catch those kidnappers!"
-msgstr "大家上！抓住這些綁匪！"
+msgstr "來吧，各位，讓我們抓住那些綁匪！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:557
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master’s dungeons by now."
 msgstr ""
-"哈！你是抓住了我，但這對你沒任何意義。你那寶貴的弟弟法師早在一天前就被我一半"
-"的人送到北方了，他現在肯定安全的待在我主子的地牢中。"
+"哈！你是抓住了我，但這對你沒任何意義。你那寶貴的法師弟弟早在一天前就被我一半"
+"的人送到北方了，他現在肯定安全地被鎖在我主人的地牢中。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:562
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:561
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr "你最好告訴我我弟在哪，否則我一刀刺進你喉嚨，讓你髒血四濺。"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "Sithrak"
 msgstr "西斯拉克"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
 msgid "Eleben"
 msgstr "艾勒班"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Jarlom"
-msgstr "查儂"
+msgstr "加羅姆"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
 msgid "Hamik"
-msgstr "漢密克"
+msgstr "哈米克"
+
+#. [event]
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
+msgid "Akranbral"
+msgstr "阿卡蘭布羅"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
-msgid "Akranbral"
-msgstr "阿卡蘭布若"
-
-#. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Drakanal"
 msgstr "德拉卡諾"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Xaskanat"
 msgstr "薩斯卡那特"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
 msgid "Katklagad"
-msgstr "卡卡拉嘎"
+msgstr "卡特克拉加德"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:581
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
-"guards are $first_password_$first_password and $second_password_"
-"$second_password|."
+"guards are $first_password_$first_password and "
+"$second_password_$second_password|."
 msgstr ""
-"向北騎行三天，在一個廢棄的城堡。守衛的通行密語是 $first_password_"
-"$first_password_number 和 $second_password_$second_password_number|。"
+"向北騎行三天，在一個廢棄的城堡。守衛的通行密語是 "
+"$first_password_$first_password| 和 $second_password_$second_password|。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:589
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr "把他綁好並帶上。如果他耍我們，就得死。"
 
@@ -764,8 +769,8 @@ msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
 msgstr ""
-"隊長，我們要面對什麼呢？我還以為自從托恩．卡里克那件事之後，你就不想再和比昂"
-"扯上關係了。"
+"隊長，我們面對的究竟是什麼呢？我還以為自從托恩‧卡里克那件事之後，你就不想再和"
+"巴蘭扯上關係了。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:607
@@ -773,36 +778,37 @@ msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
 msgstr ""
-"我不是很確定，我們之間的芥蒂還剩多少。但現在有人要對他下手，情況就不一樣了。"
-"上馬，前進。"
+"我不是很確定我們之間的芥蒂還剩多少。但現在有人要對他下手，情況就不一樣了。上"
+"馬，讓我們繼續前進。"
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
 msgid "Brena"
-msgstr "布雷那"
+msgstr "布雷納"
 
+# Brena是鋼鐵重鎚手，跟騎士還是遊俠都沒關連。
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:631
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
-"你好，我是布雷那，一名周遊騎士。見到你在追趕並對坑這些醜惡的死靈。還有更多要"
-"催毀的嗎？"
+"你好，我是布雷納，一名流浪的鋼鐵重鎚手。見到你在追趕並對抗這些醜惡的死靈。還"
+"有更多要摧毀的嗎？"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:636
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
-msgstr "啊，我們認為東北方有一座他們巢穴。他們把我弟弟抓到那。"
+msgstr "是的，我們認為東北方有一座他們的巢穴。他們把我弟弟抓到那了。"
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:641
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
-msgstr "我超恨那些東西。如果你允許，我會跟隨你前去與之戰鬥。"
+msgstr "我超恨那些東西。如果你允許，我會跟隨你與他們戰鬥。"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:646
@@ -812,17 +818,17 @@ msgstr "他只會拖慢我們的速度！"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:651
 msgid "It is my place to decide this."
-msgstr "我才是老大。"
+msgstr "這事由我來決定。"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:653
 msgid "Oh, all right then. Come along with us."
-msgstr "噢，那好吧。跟我們一起來吧。"
+msgstr "喔，那好吧。跟我們一起來吧。"
 
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:657
 msgid "Thank you. My comrades and I will help you on your noble quest."
-msgstr "謝謝你。我的戰友們和我將任您差遣。"
+msgstr "謝謝你。我的戰友們和我將任你差遣。"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:662
@@ -834,40 +840,49 @@ msgstr "不好意思，我們不想浪費時間。"
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
-msgstr "那麼這個拿去吧，我覺得你正需要幫忙。我的戰友們會在你呼喚時前來幫忙。"
+msgstr "那麼這個拿去吧，我覺得你正需要幫忙。我的戰友們會在你呼喚時前來協助。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:681
 msgid "You receive 70 pieces of gold!"
-msgstr "你收到 70 枚金幣！"
-
-#. [message]: speaker=Muff Toras
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:704
-msgid "My reinforcements are here!"
-msgstr "我的增援部隊到了！"
+msgstr "你收到70枚金幣！"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:709
-msgid "He escaped us..."
-msgstr "他從我們手中逃掉了..."
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:710
+msgid ""
+"These elves have delayed us too long, the kidnappers’ trail will have faded "
+"by now."
+msgstr "這些精靈耽誤我們太久了，綁匪們的蹤跡此刻肯定消失了。"
+
+#. [message]: speaker=Arvith
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
+msgid ""
+"More elves are arriving; even if they believe me, the kidnappers’ trail is "
+"sure to fade before we can follow."
+msgstr ""
+"更多的精靈正在到來。即便他們相信我，綁匪們的蹤跡肯定會在我們能夠追蹤之前消"
+"失。"
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:721
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
 msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"上當的傻瓜，你正在解救一個死靈法師。我只能希望你們太遲了，並希望我們的靈魂將"
+"會安息。"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
 msgid "Follow their back trail!"
-msgstr "跟上他們！"
+msgstr "跟著他們回去的足跡！"
 
 #. [scenario]: id=03_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:5
 msgid "Guarded Castle"
 msgstr "守衛森嚴的城堡"
 
+# 羅馬數字V表示5，這算是舊版的月份表示法。5月在韋諾的世界是「Scryer's Bloom」。下面的那個文本也是一樣。
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:26
 msgid ""
@@ -890,17 +905,17 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"韋曆363年五月19日\n"
-"摘自無氏族的羅剎利克的日誌\n"
+"占卜師花之月19日，363 YW\n"
+"摘自無氏族的羅沙利克的日誌\n"
 "\n"
-"莫達克最後的僕人在今早帶來他的死訊，以及一包捆得十分扎實而看不出是人的東西。"
+"莫達克剩下的僕人在今早帶來他的死訊，以及一包捆得十分扎實而看不出是人的東西。"
 "莫達克總是不計後果，這整個挺而走險的計劃都是他搞出來的，雖然不是很重要，但我"
 "想我可以把一切我們遭到的麻煩都歸因於他。他也帶來了半獸人的憤怒，但同時，他也"
 "達成計劃中的目標。至今我仍無法相信最後發生的事情，畢竟，在這之前我們還在試著"
 "撐過去。\n"
 "\n"
-"我們希望把那法師送去泰拉克那可以求得活命。我不知道為什麼督軍想從這個人得到什"
-"麼，但他符合描述。我想，若不是那些騎馬武士，莫達克的計劃會十分完美的達成。但"
+"我們希望把那法師送去泰拉克那可以求得活命。我不知道督軍想從這個人身上得到什"
+"麼，但他符合描述。我想，若不是那些騎馬勇士，莫達克的計劃會十分完美的達成。但"
 "他們來了，據說由法師的哥哥的帶領。如果這是真的，那沒有東西能阻擋他，正如同若"
 "他們抓走莫達克，我也不會。"
 
@@ -920,21 +935,21 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"韋曆363年五月19日\n"
+"占卜師花之月19日，363 YW\n"
 "摘自無氏族的羅剎利克的日誌\n"
 "\n"
-"我已盡我所能加固這荒廢的城堡。跟我們來的半獸人守在城門那，而我則把我所有的僕"
-"人聚集到內部的私人房間和我待在一起。然而，等著我的只有悲慘的命運。無論我是否"
-"能擊敗這位騎馬武士，半獸人都不會放過我的。他們正全面清查邊境，並洗劫北邊的農"
-"莊好找到我們。\n"
+"我已盡我所能加固這荒廢的城堡。跟著我們來的半獸人守在城門那，而我則把我所有的"
+"僕人聚集到內部的私人房間和我待在一起。然而，等著我的只有悲慘的命運。無論我是"
+"否能擊敗這位騎馬武士，半獸人都不會放過我的。他們正全面清查邊境，並洗劫北部的"
+"農莊好找到我們。\n"
 "\n"
-"但不知為何，我更怕這對兄弟。要是莫達克在就好了，但我們骨肉分離...他們則一心一"
+"但不知為何，我更怕這對兄弟。要是莫達克在就好了，但我們分崩離析……他們則一心一"
 "意。在他們彼此連結的紐帶中，充滿了力量。"
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
 msgid "Rotharik"
-msgstr "羅剎利克"
+msgstr "羅沙利克"
 
 #. [unit]: role=Guard, id=Guard_leader, type=Assassin
 #. [unit]: role=Guard, type=Bandit
@@ -950,7 +965,7 @@ msgstr "羅剎利克"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:602
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:612
 msgid "Guard"
-msgstr "守衛"
+msgstr "衛兵"
 
 #. [unit]: id=Knago-Brek, type=Orcish Warrior
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:138
@@ -970,49 +985,49 @@ msgstr "城堡衛兵"
 #. similar string in the wesnoth-help textdomain
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:236
 msgid "Indoors (dark castle)"
-msgstr "室內（黑城堡）"
+msgstr "室內（黑暗的城堡）"
 
 #. [time]: id=indoors_dark_castle_lit
 #. similar string in th4e wesnoth-help textdomain
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:252
 msgid "Indoors (lit)"
-msgstr "室內（亮）"
+msgstr "室內（明亮）"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:309
 msgid "Rescue Baran"
-msgstr "拯救比昂"
+msgstr "拯救巴蘭"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:321
 msgid "Kill the dark sorcerer to get the cell key"
-msgstr "殺死暗黑法師取得牢房鑰匙"
+msgstr "殺死黑暗術士以取得牢房鑰匙"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:335
 msgid "Move Arvith to the cell with his brother to free him"
-msgstr "移動亞努到關押他兄弟的牢房來救他"
+msgstr "移動阿維斯到關押他弟弟的牢房來釋放他"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:147
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:292
 msgid "Death of Baran"
-msgstr "比昂死亡"
+msgstr "巴蘭死亡"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:360
 msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
-msgstr "當面對不明的情況時，可將故事內容納入你的策略考量中。"
+msgstr "當面對不明的情況時，可將故事內容及對話細節納入你的策略考量中。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:369
 msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
-msgstr "暗影術士是強大的單位，用多個單位同時攻擊並將他驅離主堡。"
+msgstr "黑暗術士是強大的單位，用多個單位同時攻擊並將他驅離主堡。"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:379
@@ -1027,13 +1042,13 @@ msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
 msgstr ""
-"亞努和他的人馬在城堡外佇足，盯著濃霧中若隱若現的笨重石頭好一段時間。薄霧中有"
-"了動靜。"
+"阿維斯和他的人馬在城堡外佇足，盯著濃霧中若隱若現的笨重石頭好一段時間。總算，"
+"霧中有了動靜。"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:421
 msgid "Halt! Friend or foe? Give the password."
-msgstr "站住！是友是敵？通關密語報上來。"
+msgstr "站住！是友是敵？通行密語報上來。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
@@ -1053,19 +1068,18 @@ msgstr "艾勒班！"
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:435
 msgid "Jarlom!"
-msgstr "查儂！"
+msgstr "加羅姆！"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:438
 msgid "Hamik!"
-msgstr "漢密克！"
+msgstr "哈米克！"
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:451
 msgid "Pass, friend."
-msgstr "朋友，過去吧。"
+msgstr "過去吧，朋友。"
 
-# be rid of有種擺脫對方的意思，加上前文說不太爽，那這邊用「叫他滾蛋」感覺比較適合
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:466
 msgid ""
@@ -1090,17 +1104,17 @@ msgstr "哈哈！我們很久沒有殺人了。刀劍需要飲血，我們要殺
 msgid ""
 "My sword-arm shall have a say in who will do the dying. Come on, men, let’s "
 "kill some orcs."
-msgstr "鹿死誰手還未知。來吧，兄弟們，殺掉半獸人。"
+msgstr "鹿死誰手還未知。來吧，大夥，殺掉半獸人。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:512
 msgid "One less braggart orc in the world."
-msgstr "世上又少了一個吹牛的半獸人。"
+msgstr "世上又少了一個愛吹牛的半獸人。"
 
 #. [message]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:520
 msgid "Captain, what are <i>orcs</i> doing this far south?"
-msgstr "長官，<i>半獸人</i>在這麼南的地方做什麼？"
+msgstr "長官，<i>半獸人</i>在這麼南邊的地方做什麼？"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:525
@@ -1110,7 +1124,7 @@ msgstr "好問題。也許我弟弟會有答案。"
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:625
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
-msgstr "來接班的？那我們可以走囉？"
+msgstr "來接班的？那我們現在可以走囉？"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:630
@@ -1125,12 +1139,12 @@ msgstr "嗯，你應該告訴我通行密語。"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:640
 msgid "Oh, of course. I had nearly forgotten."
-msgstr "噢，當然我差點忘了。"
+msgstr "噢，當然。當然我差點忘了。"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:643
 msgid "Akranbral!"
-msgstr "阿卡蘭布若！"
+msgstr "阿卡蘭布羅！"
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:646
@@ -1145,7 +1159,7 @@ msgstr "薩斯卡那特！"
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:652
 msgid "Katklagad!"
-msgstr "卡卡拉嘎！"
+msgstr "卡特克拉加德！"
 
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:665
@@ -1162,12 +1176,12 @@ msgstr "密語不對！他們不是接班的，抓住他們！"
 msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
-msgstr "我想我最好到前線支援我的部下，以確保我們能救到我的兄弟。"
+msgstr "我想我最好到前線支援我的部下，以確保我們能救到我的弟弟。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
 msgid "Your hand or Tairach’s, death is still death... (argh)"
-msgstr "死在你手上或泰拉克手上都沒...（呃）"
+msgstr "死在你手上或泰拉克手上都一樣是死……（啊呃）"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:705
@@ -1184,7 +1198,7 @@ msgstr "他的長袍裡有把鑰匙。"
 msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
-msgstr "這一定是他們關押比昂的牢房鑰匙！鑰匙給我，我等不及要見我的兄弟了。"
+msgstr "這一定是他們關押巴蘭的牢房鑰匙！鑰匙給我，我等不及要見我的弟弟了。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:748
@@ -1204,8 +1218,8 @@ msgid ""
 "(neutral time of day). Place your units carefully, as your troops will be "
 "weaker and enemy units stronger."
 msgstr ""
-"這個城堡處於在一個<i>混沌</i>時段（相當於永夜），石牆上點亮的區域除外（正常時"
-"段）。小心部屬您的單位，因為您的單位會變弱而敵人的單位會變強。"
+"這個城堡處於在一個<i>渾沌</i>時段（相當於永夜），石牆上點亮的區域除外（正常時"
+"段）。小心部屬你的單位，因為你的單位會變弱而敵人的單位會變強。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
@@ -1220,23 +1234,23 @@ msgstr "看看我在這裡找到什麼！我數得出這裡有五十枚金幣。
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:845
 msgid "I found Baran. He is in this cell."
-msgstr "我找到比昂了。他在這間牢房。"
+msgstr "我找到巴蘭了。他在這間牢房。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:856
 msgid "It’s good to see you, Arvith."
-msgstr "亞努，我很高興再看到你。"
+msgstr "阿維斯，我很高興能看到你。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:861
 msgid "And you too, brother."
-msgstr "你也一樣，老弟。"
+msgstr "我也一樣，老弟。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:867
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
-msgstr "你一定是亞努的屬下。請幫我離開這間監牢。"
+msgstr "你一定是阿維斯的屬下。請幫我離開這個地牢。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:874
@@ -1245,8 +1259,8 @@ msgid ""
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"該死的暗黑術士羅剎利克把我禁錮在這法力強化的鐵柵門後面。它只能用正確的鑰匙打"
-"開。你必須從他那裡才能拿到鑰匙來救我。"
+"該死的暗黑術士羅沙利克把我禁錮在這用魔法強化過的鐵柵門後面。它只能用正確的鑰"
+"匙打開。你必須從他那裡才能拿到鑰匙來釋放我。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:886
@@ -1265,26 +1279,26 @@ msgstr "沒錯。哥哥，快幫我打開牢房，讓我們離開這裡！"
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:944
 msgid "Thank you for saving me. I... was not certain you would come."
-msgstr "謝謝你救了我，我...幾乎快要放棄希望了。"
+msgstr "謝謝你救了我，我……幾乎快要放棄希望了。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:949
 msgid "Have you no faith in your brother, Baran?"
-msgstr "比昂，難道你對老哥沒信心嗎？"
+msgstr "巴蘭，難道你對老哥沒信心嗎？"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:954
 msgid ""
 "It’s not that. Perhaps I deserved to rot here. I failed you. I failed you "
 "again."
-msgstr "不是這樣的。我想也許我該腐朽而去。我之前失信於你，現在又一次。"
+msgstr "不是這樣的。我想也許我就該爛在這裡。我之前辜負於你，現在又一次。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:959
 msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
-msgstr "或許吧。但你仍是我弟弟。而且...我從不懷疑你會來救我。"
+msgstr "或許吧。但你仍是我弟弟。還有……我從沒懷疑過你會來救我。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:964
@@ -1292,8 +1306,8 @@ msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
 msgstr ""
-"噢這沒什麼，一點點精靈，一兩個暗黑法師，一群半獸人和一些不死族而己，這只花了"
-"我們傭兵團幾天的時間。"
+"這沒什麼，一點點精靈，一、兩個暗黑術士，一群半獸人和一些亡靈而己，這只花了我"
+"們傭兵團幾天的時間。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:969
@@ -1308,12 +1322,12 @@ msgstr "泰拉克的走狗"
 #. [message]: speaker=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1015
 msgid "You are too late! Your brother is already dead! Muahahaha...!"
-msgstr "你太慢啦！你的兄弟己經死啦！呣哈哈哈哈哈..."
+msgstr "你太慢了！你的弟弟已經死了！呣哇哈哈哈哈……！"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1020
 msgid "Argh!!"
-msgstr "啊～～！！！"
+msgstr "啊呃！"
 
 #. [scenario]: id=04_Return_to_the_Village
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:5
@@ -1339,16 +1353,16 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
-"韋曆363年五月27日\n"
-"摘自瑪葵的法師比昂的日誌\n"
+"占卜師花之月27日，363 YW\n"
+"摘自瑪葵的法師巴蘭的日誌\n"
 "\n"
-"快到家了。最近一星期，我感到五味雜陳——時而雀躍，時而憂愁。能離開那地牢重見天"
-"日真是太好了，而且也沒死亡的威脅或是可怕的東西懸在我頭上...但之後，我得面對一"
+"快到家了。最近一星期，我感到五味雜陳──時而雀躍，時而憂愁。能離開那地牢重見天"
+"日真是太好了，而且也沒死亡的威脅或是可怕的東西懸在我頭上……但之後，我得面對一"
 "項同樣艱鉅的任務，也就是和我哥哥重歸於好\n"
 "\n"
-"在亞努把我放出牢房時，他幾乎完全原諒我了。雖然，我們還是花了一星期的時間重建"
-"我們之間曾有的情誼。幸運的是，在回去前我們有很多時間——我們繞著灰林走，而走著"
-"走著，我們就穿過一些特別美麗的郊區，這讓我們有大把的時間交談。"
+"在阿維斯把我放出牢房時，他幾乎完全原諒我了，不過我們還是花了過去一星期的時間"
+"來重建我們之間曾有的情誼。我們繞著灰森林走，穿過一些特別美麗的郊區，一邊交談"
+"著。真慶幸在回去前能有這麼充足的時間。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
@@ -1371,18 +1385,18 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
-"韋曆363年五月27日\n"
-"摘自瑪葵的法師比昂的日誌\n"
+"占卜師花之月27日，363 YW\n"
+"摘自瑪葵的法師巴蘭的日誌\n"
 "\n"
-"雖然我現在感到輕鬆多了，但我的思緒常常回到托恩．卡里克。我們應該可以在不那麼"
-"重大戰損之下擊退半獸人的——要不是我的話，亞努那天的鉗形攻擊是會成功的。我自顧"
-"自的拋下了部下——我雖擊傷督軍，迫使他逃離戰場，但代價卻遠遠超過戰果。如果我和"
-"部下待在一起，他們本可活下來的。\n"
+"雖然我現在感到輕鬆多了，但我的思緒常會回到托恩‧卡里克。我們應該可以在不那麼重"
+"大戰損之下擊退半獸人的──要不是我的話，阿維斯那天的鉗形攻擊是會成功的。我魯莽"
+"地拋把部下甩在後頭，雖然擊傷了督軍，迫使他逃離戰場，但代價卻遠遠超過戰果。如"
+"果我和部下待在一起，他們本來是能活下來的。\n"
 "\n"
-"我們不能責怪亞努因他們的死而恨我，我也永遠無法彌補我的過錯，但，我仍希望時間"
-"可以化解一些傷痛。讓我們兄弟能再次回到村中。\n"
+"我們不能責怪阿維斯因他們的死而恨我，我也永遠無法彌補我的過錯，但，我仍希望時"
+"間可以化解一些傷痛。讓我們兄弟能再次回到村中。\n"
 "\n"
-"我仍有些心神不寧。這不詳的預感...是否只是被押在地牢時殘留的不安，或是壞事將要"
+"我仍有些心神不寧。這不詳的預感……是否只是被押在地牢時殘留的不安，或是壞事將要"
 "發生的預兆？"
 
 #. [side]: type=Orcish Warlord, id=Tairach
@@ -1394,7 +1408,7 @@ msgstr "泰拉克"
 #. [side]: type=Longbowman, id=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:116
 msgid "Reeve Hoban"
-msgstr "康瑟若．荷邦"
+msgstr "里夫‧何邦"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:139
@@ -1413,7 +1427,7 @@ msgstr "招募或招回移動力強的單位以便看穿隱身於迷霧中的單
 msgid ""
 "There. The village is just across those hills, and already I see men coming "
 "to greet us!"
-msgstr "嗨！村莊終於恢復了平靜，我己經看到有人來迎接我們了。"
+msgstr "那裡。丘陵的另一邊就是村莊，而且我已經能看到有人要來招呼我們了！"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:176
@@ -1430,7 +1444,7 @@ msgstr "各位！整裝就位！"
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
-msgstr "我們應該去那裡跟康瑟若．荷邦聊聊。也許他知道怎麼了。"
+msgstr "我們應該去那裡跟里夫‧何邦聊聊。也許他知道怎麼了。"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:201
@@ -1440,7 +1454,7 @@ msgstr "我們快到了！"
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:206
 msgid "That warlord! It’s..."
-msgstr "督軍！這..."
+msgstr "督軍！這……"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:211
@@ -1450,12 +1464,12 @@ msgstr "是啊，我認得這張臉，特別是你做了那件事之後。"
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
 msgid "The warlord from Toen Caric."
-msgstr "托恩．卡里克的督軍。"
+msgstr "托恩‧卡里克的督軍。"
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
 msgid "You! The mage who scarred me with fire! KILL THEM!"
-msgstr "你！用火毀我容的法師！宰光他們！"
+msgstr "你！用火將我毀容的法師！<b>宰光他們</b>！"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:226
@@ -1470,7 +1484,7 @@ msgstr "好，我右，你左。上吧！"
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:250
 msgid "I am glad to see you returned."
-msgstr "我很高興再看到你回來。"
+msgstr "我很高興看到你回來。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:255
@@ -1498,8 +1512,8 @@ msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
-"小心，他的人十分凶殘，殺了不少我的人。雖然現在很少人能上場作戰，但我還是會讓"
-"他們協助你。"
+"小心，他的半獸人十分凶殘，殺了不少我的人。雖然現在能上場作戰的人所剩無幾，但"
+"我還是會讓他們協助你。"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:284
@@ -1509,7 +1523,7 @@ msgstr "殺死半獸人督軍好解放村莊"
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
-msgstr "你可以使用康瑟若．荷邦的主堡招幕或招回額外單位。"
+msgstr "你可以使用里夫‧何邦的主堡招募或招回額外單位。"
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:341
@@ -1522,15 +1536,15 @@ msgid ""
 "I have already paid with the lives of my men at Toen Caric. It is time I "
 "righted that mistake and finished this once and for all."
 msgstr ""
-"我在托恩．卡里克的日子就已經付出了代價。該是我要彌補這個錯誤並且終結這一切的"
-"時候了。"
+"我在托恩‧卡里克的日子就已經付出了代價。該是我要彌補這個錯誤並且終結這一切的時"
+"候了。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:355
 msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
-msgstr "結束了。我們總算打敗他了。比昂，能和你並肩作戰真好。"
+msgstr "結束了。我們總算打敗他了。巴蘭，能和你並肩作戰真好。"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:360
@@ -1538,8 +1552,8 @@ msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"太多地方被摧毀了。我們得要花一些時間來復原半獸人和不死族造成的破壞。希望他們"
-"不會再來一次。"
+"太多地方被摧毀了。我們得要花一些時間來復原半獸人和亡靈造成的破壞。希望他們不"
+"會再來一次。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:365
@@ -1547,7 +1561,8 @@ msgid ""
 "I must go back to earning my living. But we have our amulets, little "
 "brother. If you are beset again, I will come."
 msgstr ""
-"我得回去為生活打拼。但有護身符在，老弟，當你再次被麻煩纏上時，我會來助你的。"
+"我得回去為生活打拼。但有護身符在，老弟，當你再次被麻煩纏上時，我會來幫助你"
+"的。"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:383
@@ -1562,8 +1577,9 @@ msgstr "我無法保護我的人民。噢！為什麼這要發生在我身上？
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:5
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr "救援計畫 — 尾聲"
+msgstr "救援計畫：尾聲"
 
+# 羅馬數字IX表示9，這算是舊版的月份表示法。9月在韋諾的世界是「Stillseed」。下面的那個文本也是一樣。
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
 msgid ""
@@ -1580,16 +1596,16 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
-"韋曆365年九月22日\n"
-"摘自瑪葵的亞努的日誌\n"
+"靜種之月22日，365 YW\n"
+"摘自瑪葵的阿維斯的日誌\n"
 "\n"
-"瑪葵比我上次看時好多了。比昂在這兩年間創造了奇跡。村莊已重建完成，週遭的農田"
+"瑪葵比我上次看時好多了。巴蘭在這兩年間創造了奇跡。村莊已重建完成，周遭的農田"
 "也重建並投入耕作。僅管我弟弟很擔心，不過我們的人民在此期間並無遭遇任何新威"
 "脅。\n"
 "\n"
-"離開村子在這兩年間更不容易了，但我們兄弟各有各的事業，所以少有機會再次見面。"
-"不過，當傭兵團隨新雇主穿過王國的這一地區時，我向他請求離開一陣子去探望我弟"
-"弟，而他准許了。"
+"這兩年想離開村子變得不容易了，再加上我們兄弟各有各的事業，以至於很少有機會再"
+"次見面。不過，當傭兵團隨新雇主穿過王國的這一個地區時，我向他請求離開一陣子去"
+"探望我弟弟，而他准許了。"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
@@ -1604,23 +1620,23 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-"韋曆365年九月22日\n"
-"摘自瑪葵的亞努的日誌\n"
+"靜種之月22日，365 YW\n"
+"摘自瑪葵的阿維斯的日誌\n"
 "\n"
-"令人驚訝的是，這次的雇主是位精靈。我從沒想過和精靈成為朋友，但他不若其他精靈"
-"那樣傲慢。他自稱克藍斯。我一看到他的眼睛便知道，他見過太多風浪。我想我該回去"
+"令人驚訝的是，這次的雇主是位精靈。我從沒想過和精靈成為朋友，但他不像其他精靈"
+"那樣傲慢。他自稱卡倫茲。我一看到他的眼睛便知道，他見過太多風浪。我想我該回去"
 "工作了。\n"
 "\n"
-"不過，順便休息並享受和平真的很棒。"
+"寫寫日記順便休息並享受和平真的很棒。"
 
 #: data/campaigns/Two_Brothers/utils/characters.cfg:6
 msgid "Arvith"
-msgstr "亞努"
+msgstr "阿維斯"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/utils/characters.cfg:21
 msgid "All is lost now that I am dead..."
-msgstr "一切都完了...我要死了..."
+msgstr "一切都完了……我要死了……"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/utils/characters.cfg:39
@@ -1628,248 +1644,37 @@ msgid "It is over, I am vanquished."
 msgstr "完蛋了，我被擊敗了。"
 
 #. [unit]: id=Baran, type=Red Mage
-#: data/campaigns/Two_Brothers/utils/characters.cfg:128
+#: data/campaigns/Two_Brothers/utils/characters.cfg:141
 msgid "Baran"
-msgstr "比昂"
+msgstr "巴蘭"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "提示："
 
 #~ msgid ""
+#~ "Curses! If they had been an hour slower, our master’s reinforcements "
+#~ "would already be here to meet us."
+#~ msgstr "該死！要是他們晚一個小時的話，我們主人的援軍早就在這和我們會合了。"
+
+#~ msgid "My reinforcements are here!"
+#~ msgstr "我的增援部隊到了！"
+
+#~ msgid "He escaped us..."
+#~ msgstr "他從我們手中逃掉了……"
+
+#~ msgid ""
 #~ "Those men told me their prisoner had attempted to murder their master, "
 #~ "and warned that evil men would follow him. Advance no further, or you "
 #~ "will die."
 #~ msgstr ""
-#~ "那些人告訴我這囚犯試著殺死他們的主人，並警告說有壞人會追著他而來。別再前"
-#~ "進，否則去死。"
+#~ "那些人告訴我這個囚犯試圖殺死他們的主人，並警告說有壞人會追著他而來。別再前"
+#~ "進，否則你們會死。"
 
 #~ msgid ""
 #~ "Foolish human, you have killed me but you will not catch the undead in "
 #~ "time. I have fulfilled my contract, and will be reanimated soon to become "
 #~ "a lord of their armies."
 #~ msgstr ""
-#~ "你們這些愚蠢的人類，你們殺得死我但追不上亡靈。我已完成我的儀式，將會很快地"
-#~ "重生成為不死大軍的主宰。"
-
-#~ msgid "$first_password_1|!"
-#~ msgstr "$first_password_1|!"
-
-#~ msgid "$first_password_2|!"
-#~ msgstr "$first_password_2|!"
-
-#~ msgid "$first_password_3|!"
-#~ msgstr "$first_password_3|!"
-
-#~ msgid "$first_password_4|!"
-#~ msgstr "$first_password_4|!"
-
-#~ msgid "$second_password_1|!"
-#~ msgstr "$second_password_1|!"
-
-#~ msgid "$second_password_2|!"
-#~ msgstr "$second_password_2|!"
-
-#~ msgid "$second_password_3|!"
-#~ msgstr "$second_password_3|!"
-
-#~ msgid "$second_password_4|!"
-#~ msgstr "$second_password_4|!"
-
-#~ msgid "Everything is lost now that I am dead..."
-#~ msgstr "生命在消逝....我要死了..."
-
-#~ msgid "Irongate"
-#~ msgstr "鐵門"
-
-#~ msgid "Arne"
-#~ msgstr "亞努"
-
-#~ msgid "Bjarn"
-#~ msgstr "比昂"
-
-#~ msgid "Fargus"
-#~ msgstr "法格斯"
-
-#~ msgid "Erik"
-#~ msgstr "艾瑞克"
-
-#~ msgid "Heine"
-#~ msgstr "海恩"
-
-#~ msgid "Magnus"
-#~ msgstr "馬格納斯"
-
-#~ msgid "Councillor Hoban"
-#~ msgstr "康瑟若 荷邦"
-
-#, fuzzy
-#~ msgid "Greetings, my brother! How may my men and I be of aid?"
-#~ msgstr "比昂你們好啊，出了什麼大事？"
-
-#, fuzzy
-#~ msgid ""
-#~ "Heedless of those rumors, Arne followed them. His only worry was that his "
-#~ "horsemen would be at disadvantage if attacked in the forest."
-#~ msgstr ""
-#~ "綁匪往北方逃逸穿越森林，亞努己經跟蹤上他們了雖然他的騎兵會處在不利的情勢。"
-
-#~ msgid "Sounds of a scuffle were heard from the forest."
-#~ msgstr "聽到從森林裡傳來了混戰的聲響。"
-
-#, fuzzy
-#~ msgid ""
-#~ "Arne’s men arrived at the castle and were immediately challenged by some "
-#~ "guards."
-#~ msgstr "亞努到達了城堡並立刻遇上了一些守衛。"
-
-#~ msgid "Nooo! This is the end..."
-#~ msgstr "不～～！這是條死路..."
-
-#, fuzzy
-#~ msgid ""
-#~ "Good to see you, Arne. Now can you get me out of this dungeon, please?"
-#~ msgstr "亞努，看到你真好。請幫我離開這間監牢。"
-
-#, fuzzy
-#~ msgid "Finally the warlord is killed. Now you can go back to Maghre."
-#~ msgstr "終於殺死半獸人。現在你可以回到你的村莊了。"
-
-#~ msgid "Turns run out"
-#~ msgstr "回合結束"
-
-#~ msgid ""
-#~ "Hurry, we have to track them down. Maybe we can still get them. They have "
-#~ "to be in the north!"
-#~ msgstr "快點，他們就在北邊！我們必須跟蹤下去。我們還是可以抓到他們的。"
-
-#~ msgid "Hurry to the north and stop the kidnappers"
-#~ msgstr "快速前往北方阻止綁匪"
-
-#~ msgid "Come on men. A bracing walk in the woods never hurt anyone, did it?"
-#~ msgstr "大家來吧，在樹林中散步傷不了人的不是嗎？"
-
-#, fuzzy
-#~ msgid ""
-#~ "Those men had some great arguments persuading me to stop you and let them "
-#~ "pass my forest. Any further, and you will die."
-#~ msgstr "這些人正吵著要說服我不讓你進入這座森林。你在前進一步就死定了。"
-
-#, fuzzy
-#~ msgid "Curses! I hope the reinforcements get here to aid our escape."
-#~ msgstr "詛咒他們！希望增援部隊快來讓我快點離開。"
-
-#~ msgid ""
-#~ "Hah! You got me alright, but what does that help? No harm telling you "
-#~ "now, I suppose. Your precious mage is safely locked away in our dungeons. "
-#~ "I was set up to be a decoy."
-#~ msgstr ""
-#~ "哈！你抓到了我沒錯，但這樣有用嗎？不怕告訴你，我猜想。你的法師正痛苦地鎖在"
-#~ "我們遙遠的地牢裡。我不過是個誘餌。"
-
-#~ msgid ""
-#~ "Nooo! Tricked again. Tell us where he is and we shall spare your "
-#~ "miserable life."
-#~ msgstr "不～！又被騙了。告訴我們他在哪，我們也許可以考慮饒你不死。"
-
-#, fuzzy
-#~ msgid "Thank you. Leave him, men, we ride east."
-#~ msgstr "太好了。放了他，我們向東行！"
-
-#~ msgid ""
-#~ "Greetings, I am Brena. I saw you fighting the foul undead. I like nothing "
-#~ "better than smashing those foul skeletons and their ilk. Though I came "
-#~ "too late to help in this fight, I would like to aid you in your "
-#~ "forthcoming endeavors."
-#~ msgstr ""
-#~ "你們好，我是布雷那，我看到了你們和腐敗地不死生物作戰。我最喜歡粉碎這些噁心"
-#~ "的骨頭和他們的同類。雖然這場戰鬥我來得太晚，但我希望可以在你們的下一場戰鬥"
-#~ "上幫上一點小忙！"
-
-#~ msgid "I think your village is protected well, though."
-#~ msgstr "可是我覺得村莊被保護的很好啊。"
-
-#~ msgid "So am I. But what is happening to our village?"
-#~ msgstr "我也是。但我們的村莊發生了什麼事？"
-
-#~ msgid ""
-#~ "In the time you have been away a looting band of orcs took over this "
-#~ "region. There was noone here to stop them."
-#~ msgstr "在你離開的時候有一群半獸人劫掠了這個地區。沒有人能夠阻止他們。"
-
-#~ msgid ""
-#~ "I have to leave you now. My men and I are needed by others, too. But "
-#~ "should you ever face another grim foe, send me a messenger. I'll come as "
-#~ "fast as I can, little brother."
-#~ msgstr ""
-#~ "我必須走了。我的手下和我都還要去幫忙別人。但要是那些邪惡的敵人再來，派人通"
-#~ "知我。我會以最快速趕來，我的弟弟。"
-
-#~ msgid ""
-#~ "In a remote part of Wesnoth, people lived their lives working hard and "
-#~ "caring for each other, but not knowing much about the world outside. But "
-#~ "there came a day when their peaceful world was shattered, as an evil mage "
-#~ "came to the region, spreading havoc and despair."
-#~ msgstr ""
-#~ "在韋諾的一個偏遠地區，人們辛勤的並平靜地過著生活，幾乎與世隔絕。但有一天，"
-#~ "平靜地生活卻被打破了，一位邪惡的法師來到這裡，帶來了破壞和絕望。"
-
-#~ msgid ""
-#~ "Bjarn, the local mage of the village, was the man who saw best how to "
-#~ "deal with this threat. He asked the help of his brother Arne, leader of a "
-#~ "mercenary band of horsemen, and outfitted several of the villagers with "
-#~ "gear from the armory."
-#~ msgstr ""
-#~ "比昂是居住在當地的法師，想到了解決危機的最好辦法。就是向他的兄長亞努-騎士"
-#~ "傭兵團的團長尋求協助。而村民們則提供了補給和裝備。"
-
-#~ msgid ""
-#~ "Mordak, an evil mage, threatens our lives and livelihoods. He is "
-#~ "terrorizing our countryside. I've already called the village to arms and "
-#~ "now it's up to you to lead them. You'll find him about two days' ride "
-#~ "north of here."
-#~ msgstr ""
-#~ "有個叫莫達克的邪惡法師，襲擊了我們的家園與生活。他為禍鄉里。我己經召集村民"
-#~ "們武裝起來，現在便交給你來領導。你向北方大約騎行兩日便能找到他。"
-
-#~ msgid ""
-#~ "Very well. We will go there and slay this source of evil. Charge, men!"
-#~ msgstr "很好，我們將會消滅這邪惡的根源。弟兄們，前進！"
-
-#~ msgid ""
-#~ "I will attempt to sneak through the forest. If I can slay the evil one "
-#~ "while he is off his guard, the battle will be over in one stroke!"
-#~ msgstr "我打算悄悄的穿越森林，若我們能在他放鬆警戒時襲擊他便能一舉成功！"
-
-#~ msgid ""
-#~ "This is worrying. What's happened to Bjarn? I suppose we must slay the "
-#~ "dark sorcerer ourselves."
-#~ msgstr "真擔心，比昂到底怎麼了？我想我們得自己來消滅這暗黑法師了。"
-
-#~ msgid "Good work, men. Now, where is Bjarn?"
-#~ msgstr "幹得好。比昂人在哪？"
-
-#~ msgid "Nothing more to be had from him."
-#~ msgstr "他不會再有什麼事了。"
-
-#~ msgid ""
-#~ "Sir, he's been kidnapped! I just saw some men running off with him. They "
-#~ "looked like friends of this one."
-#~ msgstr ""
-#~ "陛下，他被綁架了！我剛看到一些人正在追逐他，他們看起來是和這傢伙一夥的。"
-
-#~ msgid "Damn! I suppose we have to go after him, then."
-#~ msgstr "該死！我想我們得要跟著他閃人了."
-
-#~ msgid ""
-#~ "Ha, so you thought to send a mage around and stab me in the back? Well, I "
-#~ "have news for you. We've kidnapped him!"
-#~ msgstr ""
-#~ "哈，你以為叫出一名巫師在背後刺殺我能成功？告訴你個壞消息，我們抓到他啦！"
-
-#~ msgid ""
-#~ "What? Bjarn kidnapped? And the evil mage still ravages the land? Noooo!"
-#~ msgstr "什麼？比昂被抓了？！邪惡法師仍然在殘害鄉民？不～～～～"
-
-#~ msgid "A glorious combat at last, against mounted enemies!"
-#~ msgstr "為了榮耀，奮勇抗敵！"
+#~ "愚蠢的人類，你們雖然已經殺死我，但無法及時追上我的亡靈。我已完成我的儀式，"
+#~ "將會很快地重生成為不死大軍的主宰。"

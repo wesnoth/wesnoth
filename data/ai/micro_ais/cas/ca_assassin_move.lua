@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 
@@ -24,8 +23,8 @@ local function custom_cost(x, y, unit, enemy_rating_map, prefer_map)
     --    non-preferred hexes rather than a bonus for preferred hexes as the cost function
     --    must return values >=1 for the a* search to work.
 
-    local terrain = wesnoth.get_terrain(x, y)
-    local move_cost = unit:movement(terrain)
+    local terrain = wesnoth.current.map[{x, y}]
+    local move_cost = unit:movement_on(terrain)
 
     move_cost = move_cost + (enemy_rating_map:get(x, y) or 0)
 
@@ -64,13 +63,14 @@ function ca_assassin_move:execution(cfg)
     local enemy_damage_map = LS.create()
     for _,enemy in ipairs(enemies) do
         if (not enemy.status.petrified) then
+            wesnoth.interface.handle_user_interact()
             -- Need to "move" enemy next to unit for attack calculation
             -- Do this with a unit copy, so that no actual unit has to be moved
             local enemy_copy = enemy:clone()
 
             -- First get the reach of the enemy with full moves though
             enemy_copy.moves = enemy_copy.max_moves
-            local reach = wesnoth.find_reach(enemy_copy, { ignore_units = true })
+            local reach = wesnoth.paths.find_reach(enemy_copy, { ignore_units = true })
 
             enemy_copy.x = unit.x
             enemy_copy.y = unit.y + 1 -- this even works at map border
@@ -81,7 +81,7 @@ function ca_assassin_move:execution(cfg)
             local unit_damage_map = LS.create()
             for _,loc in ipairs(reach) do
                 unit_damage_map:insert(loc[1], loc[2], max_damage)
-                for xa,ya in H.adjacent_tiles(loc[1], loc[2]) do
+                for xa,ya in wesnoth.current.map:iter_adjacent(loc) do
                     unit_damage_map:insert(xa, ya, max_damage)
                 end
             end
@@ -95,7 +95,7 @@ function ca_assassin_move:execution(cfg)
     -- Penalties for damage by enemies
     local enemy_rating_map = LS.create()
     enemy_damage_map:iter(function(x, y, enemy_damage)
-        local hit_chance = (100 - unit:defense_on(wesnoth.get_terrain(x, y))) / 100.
+        local hit_chance = (100 - unit:defense_on(wesnoth.current.map[{x, y}])) / 100.
 
         local rating = hit_chance * enemy_damage
         rating = rating / unit.max_hitpoints
@@ -119,7 +119,7 @@ function ca_assassin_move:execution(cfg)
         end
 
         if zoc_active then
-            for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
                 enemy_rating_map:insert(xa, ya, (enemy_rating_map:get(xa, ya) or 0) + unit.max_moves)
             end
         end
@@ -131,14 +131,14 @@ function ca_assassin_move:execution(cfg)
     local prefer_slf = wml.get_child(cfg, "prefer")
     local prefer_map -- want this to be nil, not empty LS if [prefer] tag not given
     if prefer_slf then
-        local preferred_hexes = wesnoth.get_locations(prefer_slf)
+        local preferred_hexes = wesnoth.map.find(prefer_slf)
         prefer_map = LS.create()
         for _,hex in ipairs(preferred_hexes) do
             prefer_map:insert(hex[1], hex[2], true)
         end
     end
 
-    local path, cost = wesnoth.find_path(unit, target.x, target.y, {
+    local path, cost = wesnoth.paths.find_path(unit, target.x, target.y, {
         calculate = function(x, y, current_cost)
             return custom_cost(x, y, unit, enemy_rating_map, prefer_map)
         end

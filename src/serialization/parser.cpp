@@ -1,17 +1,18 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2005 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -150,7 +151,7 @@ void parser::operator()()
 				utils::string_map i18n_symbols;
 				std::stringstream ss;
 				ss << tok_.get_start_line() << " " << tok_.get_file();
-				ERR_CF << lineno_string(i18n_symbols, ss.str(), "Skipping over a utf8 BOM at $pos") << '\n';
+				ERR_CF << lineno_string(i18n_symbols, ss.str(), "Skipping over a utf8 BOM at $pos");
 			} else {
 				error(_("Unexpected characters at line start"));
 			}
@@ -344,7 +345,7 @@ void parser::parse_variable()
 				}
 
 				if(validator_) {
-					validator_->validate_key(cfg, *curvar, buffer.value(), tok_.get_start_line(), tok_.get_file());
+					validator_->validate_key(cfg, *curvar, cfg[*curvar], tok_.get_start_line(), tok_.get_file());
 				}
 
 				buffer = t_string_base();
@@ -427,7 +428,7 @@ finish:
 	}
 
 	if(validator_) {
-		validator_->validate_key(cfg, *curvar, buffer.value(), tok_.get_start_line(), tok_.get_file());
+		validator_->validate_key(cfg, *curvar, cfg[*curvar], tok_.get_start_line(), tok_.get_file());
 	}
 
 	while(++curvar != variables.end()) {
@@ -717,16 +718,16 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 
 	for(const config::attribute& i : cfg.attribute_range()) {
 		if(!config::valid_attribute(i.first)) {
-			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...\n";
+			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...";
 			continue;
 		}
 
 		write_key_val(out, i.first, i.second, tab, textdomain);
 	}
 
-	for(const config::any_child& item : cfg.all_children_range()) {
+	for(const config::any_child item : cfg.all_children_range()) {
 		if(!config::valid_tag(item.key)) {
-			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...\n";
+			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...";
 			continue;
 		}
 
@@ -750,7 +751,7 @@ static void write_internal(const configr_of& cfg, std::ostream& out, std::string
 		assert(pair.first && pair.second);
 
 		if(!config::valid_tag(*pair.first)) {
-			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...\n";
+			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...";
 			continue;
 		}
 

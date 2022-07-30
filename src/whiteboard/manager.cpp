@@ -1,16 +1,17 @@
 /*
- Copyright (C) 2010 - 2018 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
- Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2010 - 2022
+	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
- See the COPYING file for more details.
- */
+	See the COPYING file for more details.
+*/
 
 /**
  * @file
@@ -87,12 +88,12 @@ manager::manager():
 	if(preferences::hide_whiteboard()) {
 		team_plans_hidden_.flip();
 	}
-	LOG_WB << "Manager initialized.\n";
+	LOG_WB << "Manager initialized.";
 }
 
 manager::~manager()
 {
-	LOG_WB << "Manager destroyed.\n";
+	LOG_WB << "Manager destroyed.";
 }
 
 //Used for chat-spamming debug info
@@ -174,7 +175,7 @@ void manager::set_active(bool active)
 	if(!can_activate())
 	{
 		active_ = false;
-		LOG_WB << "Whiteboard can't be activated now.\n";
+		LOG_WB << "Whiteboard can't be activated now.";
 	}
 	else if (active != active_)
 	{
@@ -191,10 +192,10 @@ void manager::set_active(bool active)
 				resources::undo_stack->clear();
 			}
 			validate_viewer_actions();
-			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
+			LOG_WB << "Whiteboard activated! " << *viewer_actions();
 			create_temp_move();
 		} else {
-			LOG_WB << "Whiteboard deactivated!\n";
+			LOG_WB << "Whiteboard deactivated!";
 		}
 	}
 }
@@ -217,13 +218,13 @@ void manager::set_invert_behavior(bool invert)
 		{
 			if (active_)
 			{
-				DBG_WB << "Whiteboard deactivated temporarily.\n";
+				DBG_WB << "Whiteboard deactivated temporarily.";
 				inverted_behavior_ = true;
 				set_active(false);
 			}
 			else if (!block_whiteboard_activation)
 			{
-				DBG_WB << "Whiteboard activated temporarily.\n";
+				DBG_WB << "Whiteboard activated temporarily.";
 				inverted_behavior_ = true;
 				set_active(true);
 			}
@@ -235,13 +236,13 @@ void manager::set_invert_behavior(bool invert)
 		{
 			if (active_)
 			{
-				DBG_WB << "Whiteboard set back to deactivated status.\n";
+				DBG_WB << "Whiteboard set back to deactivated status.";
 				inverted_behavior_ = false;
 				set_active(false);
 			}
 			else if (!block_whiteboard_activation)
 			{
-				DBG_WB << "Whiteboard set back to activated status.\n";
+				DBG_WB << "Whiteboard set back to activated status.";
 				inverted_behavior_ = false;
 				set_active(true);
 			}
@@ -283,7 +284,7 @@ bool manager::allow_leader_to_move(const unit& leader) const
 		//       It could also happen that the original leader can be moved back to that location before
 		//       the unit is recruited.
 		if(!has_planned_unit_map() && !executing_actions_) {
-			WRN_WB << "Unable to build future map to determine whether leader's allowed to move." << std::endl;
+			WRN_WB << "Unable to build future map to determine whether leader's allowed to move.";
 		}
 		if(find_backup_leader(leader))
 			return true;
@@ -315,7 +316,7 @@ void manager::on_init_side()
 
 	update_plan_hiding(); /* validates actions */
 	wait_for_side_init_ = false;
-	LOG_WB << "on_init_side()\n";
+	LOG_WB << "on_init_side()";
 
 	if (self_activate_once_ && preferences::enable_whiteboard_mode_on_start())
 	{
@@ -333,7 +334,7 @@ void manager::on_finish_side_turn(int side)
 	}
 	highlighter_.reset();
 	erase_temp_move();
-	LOG_WB << "on_finish_side_turn()\n";
+	LOG_WB << "on_finish_side_turn()";
 }
 
 void manager::pre_delete_action(action_ptr)
@@ -446,7 +447,7 @@ bool manager::current_side_has_actions()
 
 void manager::validate_viewer_actions()
 {
-	LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
+	LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.";
 	gamestate_mutated_ = false;
 	if(has_planned_unit_map()) {
 		real_map();
@@ -612,7 +613,7 @@ void manager::on_mouseover_change(const map_location& hex)
 
 void manager::on_gamestate_change()
 {
-	DBG_WB << "Manager received gamestate change notification.\n";
+	DBG_WB << "Manager received gamestate change notification.";
 	// if on_gamestate_change() is called while the future unit map is applied,
 	// it means that the future unit map scope is used where it shouldn't be.
 	assert(!planned_unit_map_active_);
@@ -642,7 +643,7 @@ void manager::send_network_data()
 		resources::controller->send_to_wesnothd(packet, "whiteboard");
 
 		std::size_t count = wb_cfg.child_count("net_cmd");
-		LOG_WB << "Side " << (team_index+1) << " sent wb data (" << count << " cmds).\n";
+		LOG_WB << "Side " << (team_index+1) << " sent wb data (" << count << " cmds).";
 	}
 }
 
@@ -651,7 +652,7 @@ void manager::process_network_data(const config& cfg)
 	if(const config& wb_cfg = cfg.child("whiteboard"))
 	{
 		std::size_t count = wb_cfg.child_count("net_cmd");
-		LOG_WB << "Received wb data (" << count << ").\n";
+		LOG_WB << "Received wb data (" << count << ").";
 
 		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
 		for(const side_actions::net_cmd& cmd : wb_cfg.child_range("net_cmd"))
@@ -813,7 +814,7 @@ void manager::save_temp_move()
 		}
 		erase_temp_move();
 
-		LOG_WB << *viewer_actions() << "\n";
+		LOG_WB << *viewer_actions();
 		print_help_once();
 	}
 }
@@ -869,7 +870,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 		display::get_singleton()->invalidate(defender_loc);
 		display::get_singleton()->invalidate(attacker_loc);
 		erase_temp_move();
-		LOG_WB << *viewer_actions() << "\n";
+		LOG_WB << *viewer_actions();
 	}
 }
 
@@ -880,7 +881,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode()) {
 		if (side_num != display::get_singleton()->viewing_side())
 		{
-			LOG_WB <<"manager::save_recruit called for a different side than viewing side.\n";
+			LOG_WB <<"manager::save_recruit called for a different side than viewing side.";
 			created_planned_recruit = false;
 		}
 		else
@@ -909,7 +910,7 @@ bool manager::save_recall(const unit& unit, int side_num, const map_location& re
 	{
 		if (side_num != display::get_singleton()->viewing_side())
 		{
-			LOG_WB <<"manager::save_recall called for a different side than viewing side.\n";
+			LOG_WB <<"manager::save_recall called for a different side than viewing side.";
 			created_planned_recall = false;
 		}
 		else
@@ -980,7 +981,7 @@ bool manager::execute_all_actions()
 {
 	if (has_planned_unit_map())
 	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied1!!!";
 	}
 	//exception-safety: finalizers set variables to false on destruction
 	//i.e. when method exits naturally or exception is thrown
@@ -1010,10 +1011,10 @@ bool manager::execute_all_actions()
 
 	if (has_planned_unit_map())
 	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!";
 	}
 
-	//LOG_WB << "Before executing all actions, " << *sa << "\n";
+	//LOG_WB << "Before executing all actions, " << *sa;
 
 	while (sa->turn_begin(0) != sa->turn_end(0))
 	{
@@ -1169,20 +1170,20 @@ void manager::options_dlg()
 void manager::set_planned_unit_map()
 {
 	if (!can_modify_game_state()) {
-		LOG_WB << "Not building planned unit map: cannot modify game state now.\n";
+		LOG_WB << "Not building planned unit map: cannot modify game state now.";
 		return;
 	}
 	//any more than one reference means a lock on unit map was requested
 	if(unit_map_lock_.use_count() != 1) {
-		LOG_WB << "Not building planned unit map: unit map locked.\n";
+		LOG_WB << "Not building planned unit map: unit map locked.";
 		return;
 	}
 	if (planned_unit_map_active_) {
-		WRN_WB << "Not building planned unit map: already set." << std::endl;
+		WRN_WB << "Not building planned unit map: already set.";
 		return;
 	}
 
-	log_scope2("whiteboard", "Building planned unit map");
+	log_scope2(log_whiteboard, "Building planned unit map");
 	mapbuilder_.reset(new mapbuilder(resources::gameboard->units()));
 	mapbuilder_->build_map();
 
@@ -1197,14 +1198,14 @@ void manager::set_real_unit_map()
 		assert(!wait_for_side_init_);
 		if(mapbuilder_)
 		{
-			log_scope2("whiteboard", "Restoring regular unit map.");
+			log_scope2(log_whiteboard, "Restoring regular unit map.");
 			mapbuilder_.reset();
 		}
 		planned_unit_map_active_ = false;
 	}
 	else
 	{
-		LOG_WB << "Not disabling planned unit map: already disabled.\n";
+		LOG_WB << "Not disabling planned unit map: already disabled.";
 	}
 }
 
@@ -1224,7 +1225,7 @@ future_map::future_map():
 		resources::whiteboard->set_planned_unit_map();
 	// check if if unit map was successfully applied
 	if (!resources::whiteboard->has_planned_unit_map()) {
-		DBG_WB << "Scoped future unit map failed to apply.\n";
+		DBG_WB << "Scoped future unit map failed to apply.";
 	}
 }
 
@@ -1250,7 +1251,7 @@ future_map_if_active::future_map_if_active():
 		resources::whiteboard->set_planned_unit_map();
 	// check if if unit map was successfully applied
 	if (!resources::whiteboard->has_planned_unit_map()) {
-		DBG_WB << "Scoped future unit map failed to apply.\n";
+		DBG_WB << "Scoped future unit map failed to apply.";
 	}
 }
 

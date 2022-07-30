@@ -17,22 +17,28 @@ function ca_messenger_move:execution(cfg)
     local messenger, x, y = messenger_next_waypoint(cfg)
 
     if (messenger.x ~= x) or (messenger.y ~= y) then
+        local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
         local wp = AH.get_closest_location(
             { x, y },
             { { "not", { { "filter", { { "not", { side = wesnoth.current.side } } } } } } },
-            messenger
+            messenger, avoid_map
         )
         x, y = wp[1], wp[2]
     end
 
-    local next_hop = AH.next_hop(messenger, x, y, { ignore_own_units = true } )
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
+
+    local path1 = AH.find_path_with_avoid(messenger, x, y, avoid_map)
+    if (not path1) then path1 = { { messenger.x, messenger.y } } end
+    local next_hop = AH.next_hop(messenger, x, y, { path1 = path1, avoid_map = avoid_map, ignore_own_units = true } )
     if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
     -- Compare this to the "ideal path"
-    local path = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
-    local optimum_hop, optimum_cost = { messenger.x, messenger.y }, 0
-    for _,step in ipairs(path) do
-        local sub_path, sub_cost = AH.find_path_with_shroud(messenger, step[1], step[2])
+    local path2 = AH.find_path_with_avoid(messenger, x, y, avoid_map, { ignore_enemies = true })
+    if (not path2) then path2 = { { messenger.x, messenger.y } } end
+    local optimum_hop = { messenger.x, messenger.y }
+    for _,step in ipairs(path2) do
+        local sub_path, sub_cost = AH.find_path_with_avoid(messenger, step[1], step[2], avoid_map)
         if sub_cost > messenger.moves then
             break
         else
@@ -47,7 +53,7 @@ function ca_messenger_move:execution(cfg)
             end
 
             if not unit_in_way then
-                optimum_hop, nh_cost = step, sub_cost
+                optimum_hop = step
             end
         end
     end
@@ -60,14 +66,14 @@ function ca_messenger_move:execution(cfg)
     if unit_in_way then unit_in_way:extract() end
 
     messenger.loc = { next_hop[1], next_hop[2] }
-    local _, cost1 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
+    local _, cost1 = AH.find_path_with_avoid(messenger, x, y, avoid_map, { ignore_enemies = true })
 
     local unit_in_way2 = wesnoth.units.get(optimum_hop[1], optimum_hop[2])
     if (unit_in_way2 == messenger) then unit_in_way2 = nil end
     if unit_in_way2 then unit_in_way2:extract() end
 
     messenger.loc = { optimum_hop[1], optimum_hop[2] }
-    local _, cost2 = AH.find_path_with_shroud(messenger, x, y, { ignore_units = 'yes' })
+    local _, cost2 = AH.find_path_with_avoid(messenger, x, y, avoid_map, { ignore_enemies = true })
 
     messenger.loc = { x_current, y_current }
     if unit_in_way then unit_in_way:to_map() end
@@ -78,7 +84,7 @@ function ca_messenger_move:execution(cfg)
     if (cost2 + messenger.max_moves/2 < cost1) then next_hop = optimum_hop end
 
     if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
-        AH.robust_move_and_attack(ai, messenger, next_hop)
+        AH.robust_move_and_attack(ai, messenger, next_hop, nil, { avoid_map = avoid_map })
     else
         AH.checked_stopunit_moves(ai, messenger)
     end
@@ -90,7 +96,7 @@ function ca_messenger_move:execution(cfg)
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = messenger.id } } }
 
-    local max_rating, best_target, best_weapon = - math.huge
+    local max_rating, best_target, best_weapon = - math.huge, nil, nil
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(messenger.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(messenger, n_weapon, target)

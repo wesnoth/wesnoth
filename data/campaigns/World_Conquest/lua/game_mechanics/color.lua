@@ -17,7 +17,7 @@ function color.help_text(str)
 	return color.color_text("#ff95ff", str)
 end
 
--- note: the default argument for the first parameter is the 
+-- note: the default argument for the first parameter is the
 --       currently active side, not the currently viewing side
 function color.tc_text(team_num, text)
 	if text == nil then
@@ -42,20 +42,33 @@ end
 -- colors in the mp setup screen, we have to remember those settings and
 -- set the teams color in later scenarios acccordingly.
 function wesnoth.wml_actions.wc2_fix_colors(cfg)
-	local player_sides = wesnoth.get_sides(wml.get_child(cfg, "player_sides"))
-	local other_sides = wesnoth.get_sides { { "not", wml.get_child(cfg, "player_sides") } }
-	local available_colors = { "red", "blue", "green", "purple", "black", "brown", "orange", "white", "teal" }
+	local player_sides = wesnoth.sides.find(wml.get_child(cfg, "player_sides"))
+	local other_sides = wesnoth.sides.find { { "not", wml.get_child(cfg, "player_sides") } }
+	local available_colors = { "red", "blue", "green", "purple", "black", "brown", "orange", "white", "teal", "gold" }
 	local taken_colors = {}
 
 	for i, side in ipairs(player_sides) do
-		if side.variables.wc2_color then
-			side.color = side.variables.wc2_color
+
+		-- Side 4 is the only side which can be played by either AI or players.
+		-- Like all player_sides, it is listed among them to handle the case
+		-- that a player chooses the same color as an AI side.
+		-- The case that a player chooses the same color as the
+		-- (potentially an AI) side 4 needs a workaround and is handled here:
+		if side.side == 4 and taken_colors[side.color] then
+			table.insert(other_sides, side)
 		else
-			side.variables.wc2_color = side.color
+
+			if side.variables.wc2_color then
+				side.color = side.variables.wc2_color
+			else
+				side.variables.wc2_color = side.color
+			end
+			taken_colors[side.color] = true
+
 		end
-		taken_colors[side.color] = true
 	end
 
+	-- Give the remaining colors to AI sides
 	local color_num = 1
 	for i, side in ipairs(other_sides) do
 		while taken_colors[available_colors[color_num]] == true do
@@ -63,6 +76,9 @@ function wesnoth.wml_actions.wc2_fix_colors(cfg)
 		end
 		side.color = available_colors[color_num]
 		taken_colors[side.color] = true
+		if side.side == 4 then
+			side.variables.wc2_color = side.color
+		end
 	end
 end
 

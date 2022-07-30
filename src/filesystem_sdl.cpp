@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <SDL2/SDL.h>
@@ -53,7 +54,7 @@ rwops_ptr make_read_RWops(const std::string &path) {
 
 	scoped_istream ifs = istream_file(path);
 	if(!ifs) {
-		ERR_FS << "make_read_RWops: istream_file returned NULL on " << path << '\n';
+		ERR_FS << "make_read_RWops: istream_file returned NULL on " << path;
 		rw.reset();
 		return rw;
 	}
@@ -76,7 +77,7 @@ rwops_ptr make_write_RWops(const std::string &path) {
 
 	scoped_ostream ofs = ostream_file(path);
 	if(!ofs) {
-		ERR_FS << "make_write_RWops: ostream_file returned NULL on " << path << '\n';
+		ERR_FS << "make_write_RWops: ostream_file returned NULL on " << path;
 		rw.reset();
 		return rw;
 	}

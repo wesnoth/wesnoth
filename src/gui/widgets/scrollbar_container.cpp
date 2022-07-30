@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -17,6 +18,7 @@
 #include "gui/widgets/scrollbar_container_private.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/auxiliary/iterator/walker_scrollbar_container.hpp"
 #include "gui/core/event/message.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/core/log.hpp"
@@ -152,7 +154,7 @@ void scrollbar_container::layout_initialize(const bool full_initialization)
 
 void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 {
-	DBG_GUI_L << LOG_HEADER << " requested height " << maximum_height << ".\n";
+	DBG_GUI_L << LOG_HEADER << " requested height " << maximum_height << ".";
 
 	/*
 	 * First ask the content to reduce it's height. This seems to work for now,
@@ -170,12 +172,12 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	// Did we manage to achieve the wanted size?
 	point size = get_best_size();
 	if(static_cast<unsigned>(size.y) <= maximum_height) {
-		DBG_GUI_L << LOG_HEADER << " child honored request, height " << size.y << ".\n";
+		DBG_GUI_L << LOG_HEADER << " child honored request, height " << size.y << ".";
 		return;
 	}
 
 	if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE) {
-		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.\n";
+		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.";
 		return;
 	}
 
@@ -191,7 +193,7 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	if(resized && scrollbar_size.y > size.y) {
 		vertical_scrollbar_grid_->set_visible(widget::visibility::invisible);
 		DBG_GUI_L << LOG_HEADER << " request failed, showing the scrollbar"
-				  << " increased the height to " << scrollbar_size.y << ".\n";
+				  << " increased the height to " << scrollbar_size.y << ".";
 		return;
 	}
 
@@ -204,10 +206,10 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	// FIXME adjust for the step size of the scrollbar
 
 	set_layout_size(size);
-	DBG_GUI_L << LOG_HEADER << " resize resulted in " << size.y << ".\n";
+	DBG_GUI_L << LOG_HEADER << " resize resulted in " << size.y << ".";
 
 	if(resized) {
-		DBG_GUI_L << LOG_HEADER << " resize modified the width, throw notification.\n";
+		DBG_GUI_L << LOG_HEADER << " resize modified the width, throw notification.";
 
 		throw layout_exception_width_modified();
 	}
@@ -215,7 +217,7 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 
 void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 {
-	DBG_GUI_L << LOG_HEADER << " requested width " << maximum_width << ".\n";
+	DBG_GUI_L << LOG_HEADER << " requested width " << maximum_width << ".";
 
 	if(static_cast<unsigned>(get_grid().get_best_size().x) > maximum_width) {
 		get_grid().request_reduce_width(maximum_width);
@@ -234,12 +236,12 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	// Did we manage to achieve the wanted size?
 	point size = get_best_size();
 	if(static_cast<unsigned>(size.x) <= maximum_width) {
-		DBG_GUI_L << LOG_HEADER << " child honored request, width " << size.x << ".\n";
+		DBG_GUI_L << LOG_HEADER << " child honored request, width " << size.x << ".";
 		return;
 	}
 
 	if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE) {
-		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.\n";
+		DBG_GUI_L << LOG_HEADER << " request failed due to scrollbar mode.";
 		return;
 	}
 
@@ -262,7 +264,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	if(horizontal_scrollbar_mode_ == AUTO_VISIBLE_FIRST_RUN && scrollbar_size.x > size.x) {
 		horizontal_scrollbar_grid_->set_visible(widget::visibility::invisible);
 		DBG_GUI_L << LOG_HEADER << " request failed, showing the scrollbar"
-				  << " increased the width to " << scrollbar_size.x << ".\n";
+				  << " increased the width to " << scrollbar_size.x << ".";
 		return;
 	}
 
@@ -277,7 +279,7 @@ void scrollbar_container::request_reduce_width(const unsigned maximum_width)
 	// FIXME adjust for the step size of the scrollbar
 
 	set_layout_size(size);
-	DBG_GUI_L << LOG_HEADER << " resize resulted in " << size.x << ".\n";
+	DBG_GUI_L << LOG_HEADER << " resize resulted in " << size.x << ".";
 }
 
 bool scrollbar_container::can_wrap() const
@@ -308,7 +310,7 @@ point scrollbar_container::calculate_best_size() const
 		horizontal_scrollbar.y + std::max(vertical_scrollbar.y, content.y));
 
 	DBG_GUI_L << LOG_HEADER << " vertical_scrollbar " << vertical_scrollbar << " horizontal_scrollbar "
-			  << horizontal_scrollbar << " content " << content << " result " << result << ".\n";
+			  << horizontal_scrollbar << " content " << content << " result " << result << ".";
 
 	return result;
 }
@@ -464,7 +466,7 @@ void scrollbar_container::set_visible_rectangle(const SDL_Rect& rectangle)
 	container_base::set_visible_rectangle(rectangle);
 
 	// Now get the visible part of the content.
-	content_visible_area_ = sdl::intersect_rects(rectangle, content_->get_rectangle());
+	content_visible_area_ = content_->get_rectangle().intersect(rectangle);
 
 	content_grid_->set_visible_rectangle(content_visible_area_);
 }
@@ -515,6 +517,11 @@ bool scrollbar_container::disable_click_dismiss() const
 	return container_base::disable_click_dismiss() || content_grid_->disable_click_dismiss();
 }
 
+iteration::walker_ptr scrollbar_container::create_walker()
+{
+	return std::make_unique<gui2::iteration::scrollbar_container>(*this);
+}
+
 bool scrollbar_container::content_resize_request(const bool force_sizing)
 {
 	/**
@@ -530,10 +537,10 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 	point best_size = content_grid_->recalculate_best_size();
 	point size = content_->get_size();
 
-	DBG_GUI_L << LOG_HEADER << " wanted size " << best_size << " available size " << size << ".\n";
+	DBG_GUI_L << LOG_HEADER << " wanted size " << best_size << " available size " << size << ".";
 
 	if(size == point()) {
-		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.\n";
+		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.";
 		return false;
 	}
 
@@ -541,21 +548,21 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 		const point content_size = content_grid_->get_size();
 
 		if(content_size.x > size.x || content_size.y > size.y) {
-			DBG_GUI_L << LOG_HEADER << " will fit, only needs a resize.\n";
+			DBG_GUI_L << LOG_HEADER << " will fit, only needs a resize.";
 			goto resize;
 		}
 
 		if(force_sizing) {
-			DBG_GUI_L << LOG_HEADER << " fits, but resize forced.\n";
+			DBG_GUI_L << LOG_HEADER << " fits, but resize forced.";
 			goto resize;
 		}
 
-		DBG_GUI_L << LOG_HEADER << " fits, nothing to do.\n";
+		DBG_GUI_L << LOG_HEADER << " fits, nothing to do.";
 		return true;
 	}
 
 	if(best_size.x > size.x) {
-		DBG_GUI_L << LOG_HEADER << " content too wide.\n";
+		DBG_GUI_L << LOG_HEADER << " content too wide.";
 
 		if(horizontal_scrollbar_mode_ == ALWAYS_INVISIBLE ||
 			(
@@ -563,7 +570,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				horizontal_scrollbar_grid_->get_visible() == widget::visibility::invisible
 			)
 		) {
-			DBG_GUI_L << LOG_HEADER << " can't use horizontal scrollbar, request placement.\n";
+			DBG_GUI_L << LOG_HEADER << " can't use horizontal scrollbar, request placement.";
 
 			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
@@ -572,7 +579,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 	}
 
 	if(best_size.y > size.y) {
-		DBG_GUI_L << LOG_HEADER << " content too high.\n";
+		DBG_GUI_L << LOG_HEADER << " content too high.";
 
 		if(vertical_scrollbar_mode_ == ALWAYS_INVISIBLE ||
 			(
@@ -580,7 +587,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 				vertical_scrollbar_grid_->get_visible() == widget::visibility::invisible
 			)
 		) {
-			DBG_GUI_L << LOG_HEADER << " can't use vertical scrollbar, request placement.\n";
+			DBG_GUI_L << LOG_HEADER << " can't use vertical scrollbar, request placement.";
 
 			event::message message;
 			fire(event::REQUEST_PLACEMENT, *this, message);
@@ -589,7 +596,7 @@ bool scrollbar_container::content_resize_request(const bool force_sizing)
 	}
 
 resize:
-	DBG_GUI_L << LOG_HEADER << " handle resizing.\n";
+	DBG_GUI_L << LOG_HEADER << " handle resizing.";
 
 	place(get_origin(), get_size());
 	return true;
@@ -601,10 +608,10 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 		const int height_modification_pos)
 {
 	DBG_GUI_L << LOG_HEADER << " wanted width modification " << width_modification << " wanted height modification "
-			  << height_modification << ".\n";
+			  << height_modification << ".";
 
 	if(get_size() == point()) {
-		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.\n";
+		DBG_GUI_L << LOG_HEADER << " initial setup not done, bailing out.";
 		return false;
 	}
 
@@ -612,7 +619,7 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 	assert(window);
 
 	if(window->get_need_layout()) {
-		DBG_GUI_L << LOG_HEADER << " window already needs a layout phase, bailing out.\n";
+		DBG_GUI_L << LOG_HEADER << " window already needs a layout phase, bailing out.";
 		return false;
 	}
 
@@ -632,7 +639,7 @@ bool scrollbar_container::content_resize_request(const int width_modification,
 		set_scrollbar_button_status();
 	}
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -650,7 +657,7 @@ bool scrollbar_container::content_resize_width(const int width_modification, con
 	}
 
 	if(static_cast<unsigned>(new_width) <= content_->get_width()) {
-		DBG_GUI_L << " width fits in container, test height.\n";
+		DBG_GUI_L << " width fits in container, test height.";
 
 		adjust_scrollbar_mode(horizontal_scrollbar_grid_, horizontal_scrollbar_, horizontal_scrollbar_mode_,
 				content_grid_->get_width(), content_grid_->get_width() + width_modification, width_modification_pos,
@@ -665,7 +672,7 @@ bool scrollbar_container::content_resize_width(const int width_modification, con
 			horizontal_scrollbar_grid_->get_visible() == widget::visibility::invisible
 		)
 	) {
-		DBG_GUI_L << " can't use horizontal scrollbar, ask window.\n";
+		DBG_GUI_L << " can't use horizontal scrollbar, ask window.";
 
 		window* window = get_window();
 		assert(window);
@@ -674,7 +681,7 @@ bool scrollbar_container::content_resize_width(const int width_modification, con
 		return false;
 	}
 
-	DBG_GUI_L << " use the horizontal scrollbar, test height.\n";
+	DBG_GUI_L << " use the horizontal scrollbar, test height.";
 	adjust_scrollbar_mode(horizontal_scrollbar_grid_, horizontal_scrollbar_, horizontal_scrollbar_mode_,
 			content_grid_->get_width(), content_grid_->get_width() + width_modification, width_modification_pos,
 			content_->get_width());
@@ -697,7 +704,7 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 	}
 
 	if(static_cast<unsigned>(new_height) <= content_->get_height()) {
-		DBG_GUI_L << " height in container, resize allowed.\n";
+		DBG_GUI_L << " height in container, resize allowed.";
 
 		adjust_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_, vertical_scrollbar_mode_,
 				content_grid_->get_height(), new_height, height_modification_pos, content_->get_height());
@@ -711,7 +718,7 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 			vertical_scrollbar_grid_->get_visible() == widget::visibility::invisible
 		)
 	) {
-		DBG_GUI_L << " can't use vertical scrollbar, ask window.\n";
+		DBG_GUI_L << " can't use vertical scrollbar, ask window.";
 
 		window* window = get_window();
 		assert(window);
@@ -720,7 +727,7 @@ bool scrollbar_container::content_resize_height(const int height_modification, c
 		return false;
 	}
 
-	DBG_GUI_L << " use the vertical scrollbar, resize allowed.\n";
+	DBG_GUI_L << " use the vertical scrollbar, resize allowed.";
 
 	adjust_scrollbar_mode(vertical_scrollbar_grid_, vertical_scrollbar_, vertical_scrollbar_mode_,
 			content_grid_->get_height(), new_height, height_modification_pos, content_->get_height());
@@ -768,10 +775,11 @@ void scrollbar_container::finalize_setup()
 	}
 
 	/***** Setup the content *****/
-	content_ = build_single_widget_instance<spacer>();
+	auto content = build_single_widget_instance<spacer>();
+	content_ = content.get();
 
 	// TODO: possibly move this unique_ptr casting functionality to a helper function.
-	content_grid_.reset(dynamic_cast<grid*>(get_grid().swap_child("_content_grid", content_, true).release()));
+	content_grid_.reset(static_cast<grid*>(get_grid().swap_child("_content_grid", std::move(content), true).release()));
 	assert(content_grid_);
 
 	content_grid_->set_parent(this);
@@ -794,14 +802,14 @@ void scrollbar_container::set_horizontal_scrollbar_mode(const scrollbar_mode scr
 	}
 }
 
-void scrollbar_container::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void scrollbar_container::impl_draw_children()
 {
 	assert(get_visible() == widget::visibility::visible && content_grid_->get_visible() == widget::visibility::visible);
 
 	// Inherited.
-	container_base::impl_draw_children(frame_buffer, x_offset, y_offset);
+	container_base::impl_draw_children();
 
-	content_grid_->draw_children(frame_buffer, x_offset, y_offset);
+	content_grid_->draw_children();
 }
 
 void scrollbar_container::layout_children()
@@ -811,16 +819,6 @@ void scrollbar_container::layout_children()
 
 	assert(content_grid_);
 	content_grid_->layout_children();
-}
-
-void scrollbar_container::child_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
-{
-	// Inherited.
-	container_base::child_populate_dirty_list(caller, call_stack);
-
-	assert(content_grid_);
-	std::vector<widget*> child_call_stack(call_stack);
-	content_grid_->populate_dirty_list(caller, child_call_stack);
 }
 
 void scrollbar_container::set_content_size(const point& origin, const point& size)
@@ -1075,7 +1073,7 @@ void scrollbar_container::scrollbar_moved()
 
 	content_grid_->set_origin(content_origin);
 	content_grid_->set_visible_rectangle(content_visible_area_);
-	content_grid_->set_is_dirty(true);
+	queue_redraw(content_visible_area_);
 
 	// Update scrollbar.
 	set_scrollbar_button_status();
@@ -1095,7 +1093,7 @@ const std::string& scrollbar_container::get_control_type() const
 void scrollbar_container::signal_handler_sdl_key_down(
 		const event::ui_event event, bool& handled, const SDL_Keycode key, SDL_Keymod modifier)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	switch(key) {
 	case SDLK_HOME:
@@ -1137,7 +1135,7 @@ void scrollbar_container::signal_handler_sdl_key_down(
 
 void scrollbar_container::signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
@@ -1150,7 +1148,7 @@ void scrollbar_container::signal_handler_sdl_wheel_up(const event::ui_event even
 
 void scrollbar_container::signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	assert(vertical_scrollbar_grid_ && vertical_scrollbar_);
 
@@ -1163,7 +1161,7 @@ void scrollbar_container::signal_handler_sdl_wheel_down(const event::ui_event ev
 
 void scrollbar_container::signal_handler_sdl_wheel_left(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
@@ -1176,7 +1174,7 @@ void scrollbar_container::signal_handler_sdl_wheel_left(const event::ui_event ev
 
 void scrollbar_container::signal_handler_sdl_wheel_right(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	assert(horizontal_scrollbar_grid_ && horizontal_scrollbar_);
 
@@ -1194,7 +1192,7 @@ scrollbar_container::signal_handler_sdl_touch_motion(const event::ui_event event
 													 const point& distance)
 {
 	(void) position;
-	DBG_GUI_E << LOG_HEADER << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	bool is_scrollbar_moved = false;
 

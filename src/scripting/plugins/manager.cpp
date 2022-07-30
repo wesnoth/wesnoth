@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/plugins/manager.hpp"
@@ -69,12 +70,12 @@ std::size_t plugins_manager::size() {
 	return plugins_.size();
 }
 
-plugins_manager::STATUS plugins_manager::get_status(std::size_t idx) {
+plugin_manager_status::type plugins_manager::get_status(std::size_t idx) {
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
-			return plugins_manager::STATUS::NONE;
+			return plugin_manager_status::type::not_created;
 		} else {
-			return plugins_[idx].thread->is_running() ? plugins_manager::STATUS::RUNNING : plugins_manager::STATUS::STOPPED;
+			return plugins_[idx].thread->is_running() ? plugin_manager_status::type::running : plugin_manager_status::type::stopped;
 		}
 	}
 	throw std::runtime_error("index out of bounds");
@@ -100,15 +101,15 @@ std::string plugins_manager::get_name(std::size_t idx) {
 
 void plugins_manager::start_plugin(std::size_t idx)
 {
-	DBG_PLG << "start_plugin[" << idx <<"]\n";
+	DBG_PLG << "start_plugin[" << idx <<"]";
 	if (idx < plugins_.size()) {
 		if (!plugins_[idx].thread) {
-			DBG_PLG << "creating thread[" << idx << "]\n";
+			DBG_PLG << "creating thread[" << idx << "]";
 			plugins_[idx].thread.reset(plugins_[idx].is_file ?
 						kernel_->load_script_from_file(plugins_[idx].source) : kernel_->load_script_from_string(plugins_[idx].source));
-			DBG_PLG << "finished [" << idx << "], status = '" << plugins_[idx].thread->status() << "'\n";
+			DBG_PLG << "finished [" << idx << "], status = '" << plugins_[idx].thread->status() << "'";
 		} else {
-			DBG_PLG << "thread already exists, skipping\n";
+			DBG_PLG << "thread already exists, skipping";
 		}
 		return ;
 	}
@@ -168,11 +169,11 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 
 	for (std::size_t idx = 0; idx < size(); ++idx)
 	{
-		DBG_PLG << "play_slice[" << idx << "] ... \n";
+		DBG_PLG << "play_slice[" << idx << "] ...";
 		if (plugins_[idx].thread && plugins_[idx].thread->is_running()) {
 			DBG_PLG << "is running...";
 			if (!*local) {			//check playing_ before each call to be sure that we should still continue
-				DBG_PLG << "aborting\n";
+				DBG_PLG << "aborting";
 				return;
 			}
 
@@ -183,7 +184,7 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 			std::vector<std::function<bool(void)>> requests =
 				plugins_[idx].thread->run_script(ctxt, input);
 
-			DBG_PLG << "thread returned " << requests.size() << " requests\n";
+			DBG_PLG << "thread returned " << requests.size() << " requests";
 
 			for (std::size_t j = 0; j < requests.size(); ++j) {
 				if (!*local) return;		//check playing_ before each call to be sure that we should still continue
@@ -193,11 +194,11 @@ void plugins_manager::play_slice(const plugins_context & ctxt)
 				}
 			}
 
-			DBG_PLG << "play_slice[" << idx << "] finished.\n";
+			DBG_PLG << "play_slice[" << idx << "] finished.";
 		} else if (!plugins_[idx].thread) {
-			DBG_PLG << "thread ["<< idx << "] not created\n";
+			DBG_PLG << "thread ["<< idx << "] not created";
 		} else {
-			DBG_PLG << "thread ["<< idx << "] not running\n";
+			DBG_PLG << "thread ["<< idx << "] not running";
 		}
 	}
 	*local = false;
@@ -207,7 +208,7 @@ bool plugins_manager::any_running()
 {
 
 	for (std::size_t i = 0; i < size(); ++i) {
-		if (STATUS::RUNNING == get_status(i)) {
+		if (plugin_manager_status::type::running == get_status(i)) {
 			return true;
 		}
 	}

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "gui/core/timer.hpp"
@@ -95,12 +96,12 @@ extern "C" {
 
 static uint32_t timer_callback(uint32_t, void* id)
 {
-	DBG_GUI_E << "Pushing timer event in queue.\n";
+	DBG_GUI_E << "Pushing timer event in queue.";
 	// iTunes still reports a couple of crashes here. Cannot see a problem yet.
 
 	Uint32 result;
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(reinterpret_cast<std::size_t>(id));
 		if(itor == get_timers().end()) {
@@ -129,11 +130,11 @@ std::size_t add_timer(const uint32_t interval,
 {
 	static_assert(sizeof(std::size_t) == sizeof(void*), "Pointer and std::size_t are not the same size");
 
-	DBG_GUI_E << "Adding timer.\n";
+	DBG_GUI_E << "Adding timer.";
 
 	timer timer;
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		do {
 			++next_timer_id;
@@ -144,7 +145,7 @@ std::size_t add_timer(const uint32_t interval,
 	}
 
 	if(timer.sdl_id == 0) {
-		WRN_GUI_E << "Failed to create an sdl timer." << std::endl;
+		WRN_GUI_E << "Failed to create an sdl timer.";
 		return 0;
 	}
 
@@ -155,24 +156,24 @@ std::size_t add_timer(const uint32_t interval,
 	timer.callback = callback;
 
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		get_timers().emplace(next_timer_id, timer);
 	}
 
-	DBG_GUI_E << "Added timer " << next_timer_id << ".\n";
+	DBG_GUI_E << "Added timer " << next_timer_id << ".";
 	return next_timer_id;
 }
 
 bool remove_timer(const std::size_t id)
 {
-	DBG_GUI_E << "Removing timer " << id << ".\n";
+	DBG_GUI_E << "Removing timer " << id << ".";
 
-	std::lock_guard lock(timers_mutex);
+	std::scoped_lock lock(timers_mutex);
 
 	auto itor = get_timers().find(id);
 	if(itor == get_timers().end()) {
-		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
+		LOG_GUI_E << "Can't remove timer since it no longer exists.";
 		return false;
 	}
 
@@ -191,7 +192,7 @@ bool remove_timer(const std::size_t id)
 		 * - Push event in queue
 		 * - Another event is processed and tries to remove the event.
 		 */
-		DBG_GUI_E << "The timer is already out of the SDL timer list.\n";
+		DBG_GUI_E << "The timer is already out of the SDL timer list.";
 	}
 	get_timers().erase(itor);
 	return true;
@@ -199,15 +200,15 @@ bool remove_timer(const std::size_t id)
 
 bool execute_timer(const std::size_t id)
 {
-	DBG_GUI_E << "Executing timer " << id << ".\n";
+	DBG_GUI_E << "Executing timer " << id << ".";
 
 	std::function<void(size_t)> callback = nullptr;
 	{
-		std::lock_guard lock(timers_mutex);
+		std::scoped_lock lock(timers_mutex);
 
 		auto itor = get_timers().find(id);
 		if(itor == get_timers().end()) {
-			LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
+			LOG_GUI_E << "Can't execute timer since it no longer exists.";
 			return false;
 		}
 

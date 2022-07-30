@@ -1,20 +1,22 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 class display;
+struct rect;
 
 #include "map/location.hpp"
 
@@ -37,7 +39,7 @@ const int NO_HALO = 0;
 class manager
 {
 public:
-	manager(display& screen);
+	manager();
 
 	/**
 	 * Add a haloing effect using 'image centered on (x,y).
@@ -57,14 +59,12 @@ public:
 	/** Remove the halo with the given handle. */
 	void remove(const handle & h);
 
-	/**
-	 * Render and unrender haloes.
-	 *
-	 * Which haloes are rendered is determined by invalidated_locations and the
-	 * internal state in the control sets (in halo.cpp).
-	 */
-	void unrender(std::set<map_location> invalidated_locations);
-	void render();
+	/** Process animations, remove deleted halos, and invalidate screen
+	  * regions now requiring redraw. */
+	void update();
+
+	/** Render halos in region. */
+	void render(const rect& r);
 
 private:
 	std::shared_ptr<halo_impl> impl_;

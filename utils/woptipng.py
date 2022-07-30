@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 #    woptipng - attempts to reduce PNGs in size using several other tools
 #    Copyright (C) 2016  Matthias Krüger
@@ -23,6 +24,7 @@
 from multiprocessing import Pool
 import multiprocessing # cpu count
 from PIL import Image as PIL # compare images
+import enum
 import subprocess # launch advdef, optipng, imagemagick
 import os # os rename, niceness
 import shutil # copy files
@@ -31,9 +33,9 @@ import sys # sys.exit
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("inpath", help="file or path (recursively) to be searched for crushable pngss", metavar='path', nargs='+', type=str)
+parser.add_argument("inpath", help="file or path (recursively) to be searched for crushable pngs", metavar='path', nargs='+', type=str)
 parser.add_argument("-d", "--debug", help="print debug information", action='store_true')
-parser.add_argument("-t", "--threshold", help="size reduction below this percentage will be discarded, default: 10%", metavar='n', nargs='?', default=10, type=float)
+parser.add_argument("-t", "--threshold", help="size reduction below this percentage will be discarded, default: 10", metavar='n', nargs='?', default=10, type=float)
 parser.add_argument("-j", "--jobs", help="max amount of jobs/threads. If unspecified, take number of cores found", metavar='n', nargs='?', default=multiprocessing.cpu_count(), type=int)
 parser.add_argument("-n", "--nice", help="niceness of all threads (must be positive)", metavar='n', nargs="?", default=19, type=int)
 
@@ -53,7 +55,6 @@ os.nice(args.nice) # set niceness
 input_files=[]
 bad_input_files=[]
 
-
 print("Collecting files... ", end="")
 for path in INPATHS: # iterate over arguments
     if (os.path.isfile(path)):   # inpath is a file
@@ -72,19 +73,12 @@ for path in INPATHS: # iterate over arguments
 bad_input_files.sort()
 input_files.sort()
 
-# get sizes
-file_list = []
-for file_ in input_files:
-    file_list.append([file_, os.path.getsize(file_), None])
-
 print(" done")
 if (bad_input_files):
     print("WARNING: can't handle following files:' ")
     print(', '.join(bad_input_files) + "\n")
 
-
-
-print("Compressing " + str(len(file_list)) + " pngs...")
+print("Compressing " + str(len(input_files)) + " pngs...")
 
 def debugprint(arg):
     if (DEBUG):
@@ -94,15 +88,18 @@ def images_identical(image1, image2):
     return PIL.open(image1).tobytes() == PIL.open(image2).tobytes()
 
 def verify_images(source_img, new_img, transform):
-    no_change = images_identical(source_img, new_img) # image pixels values remain unaltered, we want this
+    pixels_identical = images_identical(source_img, new_img) # image pixels' values remain unaltered, we want this
     image_got_smaller = os.path.getsize(source_img) > os.path.getsize(new_img)
     debugprint("size reduction: " + str(os.path.getsize(source_img) - os.path.getsize(new_img)))
 
-    if (no_change and image_got_smaller):
+    if (pixels_identical and image_got_smaller):
         os.rename(new_img, source_img) # move new image to old image // os.rename(src, dest)
     else: # we can't os.rename(image_after, image_before) because that would leave us with no source for the next transform
         shutil.copy(source_img, new_img) # override new image with old image // shutil.copy(src, dest)
-        debugprint(("TRANSFORMATION unsuccessfull: + " + transform + ", REVERTING " + source_img))
+        if not pixels_identical:
+            debugprint(("Tool " + transform + " CHANGED THE PIXELS, REVERTING " + source_img))
+        else:
+            debugprint(("Tool " + transform + " made the file bigger, reverting " + source_img))
 
 def run_imagemagick(image, tmpimage):
     shutil.copy(image, tmpimage)
@@ -154,70 +151,102 @@ def check_progs():
     if not (EXEC_ADVDEF and EXEC_IMAGEMAGICK and EXEC_OPTIPNG):
         sys.exit(1)
 
+class ProcessingStatus(enum.Enum):
+    UNCHANGED = 0
+    OPTIMIZED = 1
+    REVERTED_THRESHOLD = 2 # didn't grow, but was larger than the threshold
+    REVERTED_GREW = 3
+
+class ProcessingResult:
+    def __init__(self, name, status, size_initial, size_after):
+        self.name = name
+        self.status = status
+        self.size_initial = size_initial
+        self.size_after = size_after
 
 def optimize_image(image):
     size_initial = os.path.getsize(image)
     with open(image, 'rb') as f:
         initial_file_content = f.read()
 
+    tmpimage  = image + ".tmp"
 
-    size_initial = os.path.getsize(image)
-    it=0
-    size_after = 0
-    size_before = os.path.getsize(image)
-    while ((size_before > size_after) or (not it)):
-        it+=1
-        debugprint(("iteration " + str(it)))
-        size_before = os.path.getsize(image)
-        tmpimage  = image + ".tmp"
+    run_imagemagick(image, tmpimage)
+    verify_images(image, tmpimage, "imagemagick")
 
-        run_imagemagick(image, tmpimage)
-        verify_images(image, tmpimage, "imagemagick")
+    run_optipng(image, tmpimage)
+    verify_images(image, tmpimage, "optipng")
 
-        run_optipng(image, tmpimage)
-        verify_images(image, tmpimage, "optipng")
+    run_advdef(image, tmpimage)
+    verify_images(image, tmpimage, "advdef")
 
-        run_advdef(image, tmpimage)
-        verify_images(image, tmpimage, "advdef")
+    size_after = os.path.getsize(image)
+    size_delta = size_after - size_initial
+    perc_delta = (size_delta/size_initial) *100
 
-        size_after = os.path.getsize(image)
-        size_delta = size_after - size_initial
-        perc_delta = (size_delta/size_initial) *100
-
-    if (DEBUG and (size_initial < size_after)):
-        debugprint("WARNING: " + str(image) + "got bigger !")
     if os.path.isfile(tmpimage): # clean up
         os.remove(tmpimage)
 
-    if (os.path.getsize(image) > size_initial) or (perc_delta*-1 < THRESHOLD) : # got bigger, or exceeds threshold
-        with open(image, 'wb') as f: # write back original file
-            f.write(initial_file_content)
+    summary_string = None
+    status = None
+    if size_after == size_initial:
+        # probably already optimized with this script
+        status = ProcessingStatus.UNCHANGED
+    elif perc_delta*-1 < THRESHOLD:
+        # changed size, but exceeds the threshold
+        if size_after < size_initial:
+            summary_string = "not replacing {image}, as the reduction was less than the threshold. Changed from {size_initial} to {size_after}, {size_delta}b, {perc_delta}%"
+            status = ProcessingStatus.REVERTED_THRESHOLD
+        else:
+            # this should be unreachable, as the verify_images call above would have reverted the file
+            summary_string = "file {image} grew in size from {size_initial} to {size_after}, {size_delta}b, {perc_delta}%"
+            status = ProcessingStatus.REVERTED_GREW
     else:
-        print("optimized  {image}  from {size_initial} to {size_after}, {size_delta}b, {perc_delta}%".format(image=image, size_initial=size_initial, size_after=size_after, size_delta=size_delta, perc_delta=str(perc_delta)[0:6]))
+        summary_string = "optimized  {image}  from {size_initial} to {size_after}, {size_delta}b, {perc_delta}%"
+        status = ProcessingStatus.OPTIMIZED
+
+    # If the file didn't shrink sufficiently, write back the original version
+    if status != ProcessingStatus.OPTIMIZED:
+        with open(image, 'wb') as f:
+            f.write(initial_file_content)
+
+    if summary_string:
+        debugprint(summary_string.format(image=image, size_initial=size_initial, size_after=size_after, size_delta=size_delta, perc_delta=str(perc_delta)[0:6]))
+
+    return ProcessingResult(image, status, size_initial, size_after)
 
 check_progs() # all tools available? if not: exit
 
 # do the crushing
 p = Pool(MAX_THREADS)
-p.map(optimize_image, set(input_files))
-
-# update file_list
-for index, file_ in enumerate(file_list):
-    file_list[index][2] = os.path.getsize(file_[0]) # write new filesize into list
+result_list = p.map(optimize_image, set(input_files))
 
 # obtain stats
 size_before = 0
 size_after = 0
 files_optimized = 0
-for i in file_list:
-    if i[1] > i[2]: # file got smaller
-        size_before += i[1]
-        size_after += i[2]
+threshold_hit = False
+for i in result_list:
+    if i.status == ProcessingStatus.OPTIMIZED:
+        size_before += i.size_initial
+        size_after += i.size_after
         files_optimized += 1
+    if i.status == ProcessingStatus.REVERTED_THRESHOLD:
+        threshold_hit = True
+
 # print stats
 if (files_optimized):
-    print("{files_optimized} of {files_processed} files optimized, {size_before} bytes reduced to {size_after} bytes; {size_diff} bytes, {percentage_delta}%".format(files_optimized = files_optimized, files_processed = len(file_list), size_before = size_before, size_after=size_after, size_diff = size_after - size_before, percentage_delta = str((size_after - size_before)/(size_before)*100)[0:6]))
-
-    print("Optimization threshold was " + str(THRESHOLD) + "%")
+    print("{files_optimized} of {files_processed} files optimized, {size_before} bytes reduced to {size_after} bytes; {size_diff} bytes, {percentage_delta}%".format(files_optimized = files_optimized, files_processed = len(result_list), size_before = size_before, size_after=size_after, size_diff = size_after - size_before, percentage_delta = str((size_after - size_before)/(size_before)*100)[0:6]))
 else:
     print("Nothing optimized")
+
+if threshold_hit:
+    print("The following files could be reduced, but didn't meet the optimization threshold ({threshold}%), the --threshold option controls this".format(threshold=str(THRESHOLD)))
+    for i in result_list:
+        if i.status == ProcessingStatus.REVERTED_THRESHOLD:
+            print("{percentage_delta}% {name}, {size_initial} bytes reduced to {size_after} bytes; {size_diff} bytes".format(
+                name=i.name,
+                size_initial=i.size_initial,
+                size_after=i.size_after,
+                size_diff=i.size_after - i.size_initial,
+                percentage_delta = str((i.size_after - i.size_initial)/(i.size_initial)*100)[0:6]))

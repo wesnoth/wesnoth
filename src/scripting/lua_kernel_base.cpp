@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_kernel_base.hpp"
@@ -19,10 +20,10 @@
 #include "gui/core/gui_definition.hpp" // for remove_single_widget_definition
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
-#include "random.hpp"
 #include "seed_rng.hpp"
 #include "deprecation.hpp"
 #include "language.hpp"                 // for get_language
+#include "team.hpp" // for shroud_map
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -37,17 +38,18 @@
 #include "scripting/lua_wml.hpp"
 #include "scripting/lua_stringx.hpp"
 #include "scripting/lua_map_location_ops.hpp"
+#include "scripting/lua_mathx.hpp"
 #include "scripting/lua_rng.hpp"
 #include "scripting/lua_widget.hpp"
 #include "scripting/push_check.hpp"
 
 #include "game_version.hpp"                  // for do_version_check, etc
-#include "picture.hpp"
 
 #include <functional>
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
+#include "utils/scope_exit.hpp"
 
 #include <cstring>
 #include <exception>
@@ -55,9 +57,9 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <numeric>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 #include "lua/lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -69,29 +71,140 @@ static lg::log_domain log_user("scripting/lua/user");
 
 // Registry key for metatable
 static const char * Gen = "name generator";
+static const char * Version = "version";
 // Registry key for lua interpreter environment
 static const char * Interp = "lua interpreter";
 
 // Callback implementations
 
 /**
- * Compares 2 version strings - which is newer.
- * - Args 1,3: version strings
- * - Arg 2: comparison operator (string)
+ * Compares two versions.
+ * - Args 1,2: version strings
  * - Ret 1: comparison result
  */
-static int intf_compare_versions(lua_State* L)
+template<VERSION_COMP_OP vop>
+static int impl_version_compare(lua_State* L)
 {
-	char const *v1 = luaL_checkstring(L, 1);
-
-	const VERSION_COMP_OP vop = parse_version_op(luaL_checkstring(L, 2));
-	if(vop == OP_INVALID) return luaL_argerror(L, 2, "unknown version comparison operator - allowed are ==, !=, <, <=, > and >=");
-
-	char const *v2 = luaL_checkstring(L, 3);
-
-	const bool result = do_version_check(version_info(v1), vop, version_info(v2));
+	version_info& v1 = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	version_info& v2 = *static_cast<version_info*>(luaL_checkudata(L, 2, Version));
+	const bool result = do_version_check(v1, vop, v2);
 	lua_pushboolean(L, result);
+	return 1;
+}
 
+/**
+ * Decomposes a version into its component parts
+ */
+static int impl_version_get(lua_State* L)
+{
+	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	if(lua_isinteger(L, 2)) {
+		int n = lua_tointeger(L, 2) - 1;
+		auto& components = vers.components();
+		if(n >= 0 && size_t(n) < components.size()) {
+			lua_pushinteger(L, vers.components()[n]);
+		} else {
+			lua_pushnil(L);
+		}
+		return 1;
+	}
+	char const *m = luaL_checkstring(L, 2);
+	return_int_attrib("major", vers.major_version());
+	return_int_attrib("minor", vers.minor_version());
+	return_int_attrib("revision", vers.revision_level());
+	return_bool_attrib("is_canonical", vers.is_canonical());
+	return_string_attrib("special", vers.special_version());
+	if(char sep = vers.special_version_separator()) {
+		return_string_attrib("sep", std::string(1, sep));
+	} else if(strcmp(m, "sep") == 0) {
+		lua_pushnil(L);
+		return 1;
+	}
+	return 0;
+}
+
+static int impl_version_dir(lua_State* L)
+{
+	static const std::vector<std::string> fields{"major", "minor", "revision", "is_canonical", "special", "sep"};
+	lua_push(L, fields);
+	return 1;
+}
+
+/**
+ * Destroy a version
+ */
+static int impl_version_finalize(lua_State* L)
+{
+	version_info* vers = static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	vers->~version_info();
+	return 0;
+}
+
+/**
+ * Convert a version to string form
+ */
+static int impl_version_tostring(lua_State* L)
+{
+	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
+	lua_push(L, vers.str());
+	return 1;
+}
+
+/**
+ * Builds a version from its component parts, or parses it from a string
+ */
+static int intf_make_version(lua_State* L)
+{
+	// If passed a version, just return it unchanged
+	if(luaL_testudata(L, 1, Version)) {
+		lua_settop(L, 1);
+		return 1;
+	}
+	// If it's a string, parse it; otherwise build from components
+	// The components method only supports canonical versions
+	if(lua_type(L, 1) == LUA_TSTRING) {
+		new(L) version_info(lua_check<std::string>(L, 1));
+	} else {
+		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
+		std::string sep, special;
+		if(lua_type(L, -1) == LUA_TSTRING) {
+			special = lua_tostring(L, -1);
+			if(!special.empty() && std::isalpha(special[0])) {
+				sep.push_back('+');
+			} else {
+				sep.push_back(special[0]);
+				special = special.substr(1);
+			}
+		} else {
+			sep.push_back(0);
+		}
+		new(L) version_info(major, minor, rev, sep[0], special);
+	}
+	if(luaL_newmetatable(L, Version)) {
+		static const luaL_Reg metafuncs[] {
+			{ "__index", &impl_version_get },
+			{ "__dir", &impl_version_dir },
+			{ "__tostring", &impl_version_tostring },
+			{ "__lt", &impl_version_compare<VERSION_COMP_OP::OP_LESS> },
+			{ "__le", &impl_version_compare<VERSION_COMP_OP::OP_LESS_OR_EQUAL> },
+			{ "__eq", &impl_version_compare<VERSION_COMP_OP::OP_EQUAL> },
+			{ "__gc", &impl_version_finalize },
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, metafuncs, 0);
+		luaW_table_set<std::string>(L, -1, "__metatable", Version);
+	}
+	lua_setmetatable(L, -2);
+	return 1;
+}
+
+/**
+ * Returns the current Wesnoth version
+ */
+static int intf_current_version(lua_State* L) {
+	lua_settop(L, 0);
+	lua_push(L, game_config::wesnoth_version.str());
+	intf_make_version(L);
 	return 1;
 }
 
@@ -101,7 +214,7 @@ static int intf_compare_versions(lua_State* L)
  */
 int lua_kernel_base::intf_print(lua_State* L)
 {
-	DBG_LUA << "intf_print called:\n";
+	DBG_LUA << "intf_print called:";
 	std::size_t nargs = lua_gettop(L);
 
 	lua_getglobal(L, "tostring");
@@ -111,20 +224,20 @@ int lua_kernel_base::intf_print(lua_State* L)
 		lua_call(L, 1, 1);
 		const char * str = lua_tostring(L, -1);
 		if (!str) {
-			LOG_LUA << "'tostring' must return a value to 'print'\n";
+			LOG_LUA << "'tostring' must return a value to 'print'";
 			str = "";
 		}
 		if (i > 1) {
 			cmd_log_ << "\t"; //separate multiple args with tab character
 		}
 		cmd_log_ << str;
-		DBG_LUA << "'" << str << "'\n";
+		DBG_LUA << "'" << str << "'";
 		lua_pop(L, 1); // Pop the output of tostrring()
 	}
 	lua_pop(L, 1); // Pop 'tostring' global
 
 	cmd_log_ << "\n";
-	DBG_LUA << "\n";
+	DBG_LUA;
 
 	return 0;
 }
@@ -148,7 +261,7 @@ static void impl_warn(void* p, const char* msg, int tocont) {
 
 void lua_kernel_base::add_log_to_console(const std::string& msg) {
 	cmd_log_ << msg << "\n";
-	DBG_LUA << "'" << msg << "'\n";
+	DBG_LUA << "'" << msg << "'";
 }
 
 /**
@@ -226,7 +339,7 @@ static int intf_name_generator(lua_State *L)
 			if(lua_istable(L, 2)) {
 				input = lua_check<std::vector<std::string>>(L, 2);
 			} else {
-				input = utils::parenthetical_split(luaL_checkstring(L, 2), ',');
+				input = utils::parenthetical_split(luaW_checktstring(L, 2), ',');
 			}
 			int chain_sz = luaL_optinteger(L, 3, 2);
 			int max_len = luaL_optinteger(L, 4, 12);
@@ -242,11 +355,16 @@ static int intf_name_generator(lua_State *L)
 						return lua_error(L);
 					}
 					if(lua_isstring(L, -1)) {
-						data[lua_tostring(L,-2)] = utils::split(lua_tostring(L,-1),'|');
+						auto& productions = data[lua_tostring(L,-2)] = utils::split(luaW_checktstring(L,-1).str(), '|');
+						if(productions.size() > 1) {
+							deprecated_message("wesnoth.name_generator('cfg', {nonterminal = 'a|b'})", DEP_LEVEL::INDEFINITE, "1.17", "Non-terminals should now be assigned an array of productions instead of a single string containing productions separated by | - but a single string is fine if it's only one production");
+						}
 					} else if(lua_istable(L, -1)) {
-						data[lua_tostring(L,-2)] = lua_check<std::vector<std::string>>(L, -1);
+						const auto& split = lua_check<std::vector<t_string>>(L, -1);
+						auto& productions = data[lua_tostring(L,-2)];
+						std::transform(split.begin(), split.end(), std::back_inserter(productions), std::mem_fn(&t_string::str));
 					} else {
-						lua_pushstring(L, "CFG generator: invalid noterminal value (must be a string or list of strings)");
+						lua_pushstring(L, "CFG generator: invalid nonterminal value (must be a string or list of strings)");
 						return lua_error(L);
 					}
 				}
@@ -254,7 +372,7 @@ static int intf_name_generator(lua_State *L)
 					gen = new(L) context_free_grammar_generator(data);
 				}
 			} else {
-				gen = new(L) context_free_grammar_generator(luaL_checkstring(L, 2));
+				gen = new(L) context_free_grammar_generator(luaW_checktstring(L, 2));
 			}
 			if(gen) {
 				assert(static_cast<void*>(gen) == dynamic_cast<context_free_grammar_generator*>(gen));
@@ -274,36 +392,6 @@ static int intf_name_generator(lua_State *L)
 	lua_setmetatable(L, -2);
 
 	return 1;
-}
-
-/**
-* Returns a random numer, same interface as math.random.
-*/
-static int intf_random(lua_State *L)
-{
-	if (lua_isnoneornil(L, 1)) {
-		double r = static_cast<double>(randomness::generator->next_random());
-		double r_max = static_cast<double>(std::numeric_limits<uint32_t>::max());
-		lua_push(L, r / (r_max + 1));
-		return 1;
-	}
-	else {
-		int32_t min;
-		int32_t max;
-		if (lua_isnumber(L, 2)) {
-			min = lua_check<int32_t>(L, 1);
-			max = lua_check<int32_t>(L, 2);
-		}
-		else {
-			min = 1;
-			max = lua_check<int32_t>(L, 1);
-		}
-		if (min > max) {
-			return luaL_argerror(L, 1, "min > max");
-		}
-		lua_push(L, randomness::generator->get_random_int(min, max));
-		return 1;
-	}
 }
 
 /**
@@ -355,26 +443,64 @@ static int intf_deprecated_message(lua_State* L) {
 }
 
 /**
-* Gets the dimension of an image.
-* - Arg 1: string.
-* - Ret 1: width.
-* - Ret 2: height.
-*/
-static int intf_get_image_size(lua_State *L) {
-	char const *m = luaL_checkstring(L, 1);
-	image::locator img(m);
-	if(!img.file_exists()) return 0;
-	surface s = get_image(img);
-	lua_pushinteger(L, s->w);
-	lua_pushinteger(L, s->h);
-	return 2;
+ * Converts a Lua array to a named tuple.
+ * Arg 1: A Lua array
+ * Arg 2: An array of strings
+ * Ret: A copy of arg 1 that's now a named tuple with the names in arg 2.
+ * The copy will only include the array portion of the input array.
+ * Any non-integer keys or non-consecutive keys will be gone.
+ * Note: This exists so that wml.tag can use it but is not really intended as a public API.
+ */
+static int intf_named_tuple(lua_State* L)
+{
+	if(!lua_istable(L, 1)) {
+		return luaW_type_error(L, 1, lua_typename(L, LUA_TTABLE));
+	}
+	auto names = lua_check<std::vector<std::string>>(L, 2);
+	lua_len(L, 1);
+	int len = luaL_checkinteger(L, -1);
+	luaW_push_namedtuple(L, names);
+	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
+		lua_geti(L, 1, i);
+		lua_seti(L, -2, i);
+	}
+	return 1;
+}
+
+static int intf_parse_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	temp.read(luaL_checkstring(L, 1));
+	std::set<map_location> locs;
+	for(int x = 1; x <= temp.width(); x++) {
+		for(int y = 1; y <= temp.height(); y++) {
+			if(!temp.value(x, y)) {
+				locs.emplace(x, y, wml_loc());
+			}
+		}
+	}
+	luaW_push_locationset(L, locs);
+	return 1;
+}
+
+static int intf_make_shroud_bitmap(lua_State* L)
+{
+	shroud_map temp;
+	temp.set_enabled(true);
+	auto locs = luaW_check_locationset(L, 1);
+	for(const auto& loc : locs) {
+		temp.clear(loc.wml_x(), loc.wml_y());
+	}
+	lua_push(L, temp.write());
+	return 1;
 }
 
 /**
 * Returns the time stamp, exactly as [set_variable] time=stamp does.
 * - Ret 1: integer
 */
-static int intf_get_time_stamp(lua_State *L) {
+static int intf_ms_since_init(lua_State *L) {
 	lua_pushinteger(L, SDL_GetTicks());
 	return 1;
 }
@@ -383,6 +509,190 @@ static int intf_get_language(lua_State* L)
 {
 	lua_push(L, get_language().localename);
 	return 1;
+}
+
+static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
+{
+	switch(luaL_getmetafield(L, -1, "__dir")) {
+		case LUA_TFUNCTION:
+			lua_pushvalue(L, 1);
+			lua_push(L, keys);
+			lua_call(L, 2, 1);
+			keys = lua_check<std::vector<std::string>>(L, -1);
+			break;
+		case LUA_TTABLE:
+			auto dir_keys = lua_check<std::vector<std::string>>(L, -1);
+			std::copy(dir_keys.begin(), dir_keys.end(), std::back_inserter(keys));
+			break;
+	}
+	lua_pop(L, 1);
+}
+
+// This is a separate function so I can use a protected call on it to catch errors.
+static int impl_is_deprecated(lua_State* L)
+{
+	auto key = luaL_checkstring(L, 2);
+	auto type = lua_getfield(L, 1, key);
+	if(type == LUA_TTABLE) {
+		lua_pushliteral(L, "__deprecated");
+		if(lua_rawget(L, -2) == LUA_TBOOLEAN) {
+			auto deprecated = luaW_toboolean(L, -1);
+			lua_pushboolean(L, deprecated);
+			return 1;
+		}
+		lua_pop(L, 1);
+	}
+	lua_pushboolean(L, false);
+	return 1;
+}
+
+// This is also a separate function so I can use a protected call on it to catch errors.
+static int impl_get_dir_suffix(lua_State*L)
+{
+	auto key = luaL_checkstring(L, 2);
+	std::string suffix = " ";
+	auto type = lua_getfield(L, 1, key);
+	if(type == LUA_TTABLE) {
+		suffix = "†";
+	} else if(type == LUA_TFUNCTION) {
+		suffix = "ƒ";
+	} else if(type == LUA_TUSERDATA) {
+		lua_getglobal(L, "getmetatable");
+		lua_pushvalue(L, -2);
+		lua_call(L, 1, 1);
+		if(lua_type(L, -1) == LUA_TSTRING) {
+			auto meta = lua_check<std::string>(L, -1);
+			if(meta == "function") {
+				suffix = "ƒ";
+			}
+		}
+	}
+	suffix = " " + suffix;
+	lua_pushlstring(L, suffix.c_str(), suffix.size());
+	return 1;
+}
+
+/**
+ * This function does the actual work of grabbing all the attribute names.
+ * It's a separate function so that it can be used by tab-completion as well.
+ */
+static std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
+{
+	std::vector<std::string> keys;
+	if(lua_istable(L, idx)) {
+		// Walk the metatable chain (as long as __index is a table)...
+		// If we reach an __index that's a function, check for a __dir metafunction.
+		int save_top = lua_gettop(L);
+		lua_pushvalue(L, idx);
+		ON_SCOPE_EXIT(&) {
+			lua_settop(L, save_top);
+		};
+		do {
+			int table_idx = lua_absindex(L, -1);
+			for(lua_pushnil(L); lua_next(L, table_idx); lua_pop(L, 1)) {
+				if(lua_type(L, -2) == LUA_TSTRING) {
+					keys.push_back(lua_tostring(L,-2));
+				}
+			}
+			// Two possible exit cases:
+			// 1. getmetafield returns TNIL because there is no __index
+			// In this case, the stack is unchanged, so the while condition is still true.
+			// 2. The __index is not a table
+			// In this case, obviously the while condition fails
+			if(luaL_getmetafield(L, table_idx, "__index") == LUA_TNIL) break;
+		} while(lua_istable(L, -1));
+		if(lua_isfunction(L, -1)) {
+			lua_pop(L, 1);
+			dir_meta_helper(L, keys);
+		}
+	} else if(lua_isuserdata(L, idx) && !lua_islightuserdata(L, idx)) {
+		lua_pushvalue(L, idx);
+		dir_meta_helper(L, keys);
+		lua_pop(L, 1);
+	}
+	// Sort and remove any duplicates
+	std::sort(keys.begin(), keys.end());
+	auto new_end = std::unique(keys.begin(), keys.end());
+	new_end = std::remove_if(keys.begin(), new_end, [L, idx](const std::string& key) {
+		if(key.compare(0, 2, "__") == 0) {
+			return true;
+		}
+		int save_top = lua_gettop(L);
+		ON_SCOPE_EXIT(&) {
+			lua_settop(L, save_top);
+		};
+		// Exclude deprecated elements
+		// Some keys may be write-only, which would raise an exception here
+		// In that case we just ignore it and assume not deprecated
+		// (the __dir metamethod would be responsible for excluding deprecated write-only keys)
+		lua_pushcfunction(L, impl_is_deprecated);
+		lua_pushvalue(L, idx);
+		lua_push(L, key);
+		if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+			return luaW_toboolean(L, -1);
+		}
+		return false;
+	});
+	keys.erase(new_end, keys.end());
+	return keys;
+}
+
+/**
+ * Prints out a list of keys available in an object.
+ * A list of keys is gathered from the following sources:
+ * - For a table, all keys defined in the table
+ * - Any keys accessible through the metatable chain (if __index on the metatable is a table)
+ * - The output of the __dir metafunction
+ * - Filtering out any keys beginning with two underscores
+ * - Filtering out any keys for which object[key].__deprecated exists and is true
+ * The list is then sorted alphabetically and formatted into columns.
+ * - Arg 1: Any object
+ * - Arg 2: (optional) Function to use for output; defaults to _G.print
+ */
+static int intf_object_dir(lua_State* L)
+{
+	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
+	if(!lua_isfunction(L, 2)) {
+		luaW_getglobal(L, "print");
+	}
+	int fcn_idx = lua_gettop(L);
+	auto keys = luaW_get_attributes(L, 1);
+	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
+		return std::max(max, next.size());
+	});
+	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
+	static const size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
+	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
+	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
+	size_t n_rows = ceil(keys.size() / double(n_cols));
+	for(size_t i = 0; i < n_rows; i++) {
+		std::ostringstream line;
+		line.fill(' ');
+		line.setf(std::ios::left);
+		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
+			int save_top = lua_gettop(L);
+			ON_SCOPE_EXIT(&) {
+				lua_settop(L, save_top);
+			};
+			lua_pushcfunction(L, impl_get_dir_suffix);
+			lua_pushvalue(L, 1);
+			const auto& key = keys[j + i * n_cols];
+			lua_pushlstring(L, key.c_str(), key.size());
+			std::string suffix = " !"; // Exclamation mark to indicate an error
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+				suffix = luaL_checkstring(L, -1);
+			}
+			// This weird calculation is because width counts in bytes, not code points
+			// Since the suffix is a Unicode character, that messes up the alignment
+			line.width(col_width - SUFFIX_PADDING + suffix.size());
+			// Concatenate key and suffix beforehand so they share the same field width.
+			line << (key + suffix) << std::flush;
+		}
+		lua_pushvalue(L, fcn_idx);
+		lua_push(L, line.str());
+		lua_call(L, 1, 0);
+	}
+	return 0;
 }
 
 // End Callback implementations
@@ -426,13 +736,15 @@ lua_kernel_base::lua_kernel_base()
 		{ "utf8",	luaopen_utf8   }, // added in Lua 5.3
 		// Wesnoth libraries
 		{ "stringx",lua_stringx::luaW_open },
+		{ "mathx",  lua_mathx::luaW_open },
 		{ "wml",    lua_wml::luaW_open },
 		{ "gui",    lua_gui2::luaW_open },
+		{ "filesystem", lua_fileops::luaW_open },
 		{ nullptr, nullptr }
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
-		luaL_requiref(L, lib->name, lib->func, true);
+		luaL_requiref(L, lib->name, lib->func, strlen(lib->name));
 		lua_pop(L, 1);  /* remove lib */
 	}
 
@@ -466,11 +778,7 @@ lua_kernel_base::lua_kernel_base()
 	cmd_log_ << "Registering basic wesnoth API...\n";
 
 	static luaL_Reg const callbacks[] {
-		{ "compare_versions",         &intf_compare_versions         		},
 		{ "deprecated_message",       &intf_deprecated_message              },
-		{ "have_file",                &lua_fileops::intf_have_file          },
-		{ "read_file",                &lua_fileops::intf_read_file          },
-		{ "canonical_path",           &lua_fileops::intf_canonical_path     },
 		{ "textdomain",               &lua_common::intf_textdomain   		},
 		{ "dofile",                   &dispatch<&lua_kernel_base::intf_dofile>           },
 		{ "require",                  &dispatch<&lua_kernel_base::intf_require>          },
@@ -478,11 +786,13 @@ lua_kernel_base::lua_kernel_base()
 		{ "compile_formula",          &lua_formula_bridge::intf_compile_formula},
 		{ "eval_formula",             &lua_formula_bridge::intf_eval_formula},
 		{ "name_generator",           &intf_name_generator           },
-		{ "random",                   &intf_random                   },
+		{ "named_tuple",              &intf_named_tuple              },
 		{ "log",                      &intf_log                      },
-		{ "get_image_size",           &intf_get_image_size           },
-		{ "get_time_stamp",           &intf_get_time_stamp           },
+		{ "ms_since_init",            &intf_ms_since_init           },
 		{ "get_language",             &intf_get_language             },
+		{ "version",                  &intf_make_version       },
+		{ "current_version",          &intf_current_version    },
+		{ "print_attributes",         &intf_object_dir         },
 		{ nullptr, nullptr }
 	};
 
@@ -539,11 +849,15 @@ lua_kernel_base::lua_kernel_base()
 		{ "vector_diff",			&lua_map_location::intf_vector_diff			},
 		{ "vector_negation",		&lua_map_location::intf_vector_negation			},
 		{ "rotate_right_around_center",	&lua_map_location::intf_rotate_right_around_center	},
-		{ "tiles_adjacent",		&lua_map_location::intf_tiles_adjacent			},
-		{ "get_adjacent_tiles",		&lua_map_location::intf_get_adjacent_tiles		},
+		{ "are_hexes_adjacent",		&lua_map_location::intf_tiles_adjacent			},
+		{ "get_adjacent_hexes",		&lua_map_location::intf_get_adjacent_tiles		},
+		{ "get_hexes_in_radius",		&lua_map_location::intf_get_tiles_in_radius		},
 		{ "distance_between",		&lua_map_location::intf_distance_between		},
 		{ "get_in_basis_N_NE",		&lua_map_location::intf_get_in_basis_N_NE		},
 		{ "get_relative_dir",		&lua_map_location::intf_get_relative_dir		},
+		// Shroud bitmaps
+		{"parse_bitmap", intf_parse_shroud_bitmap},
+		{"make_bitmap", intf_make_shroud_bitmap},
 		{ nullptr, nullptr }
 	};
 
@@ -596,6 +910,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_getglobal(L, "_G");
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
+	lua_pushcfunction(L, intf_object_dir);
+	lua_setfield(L, -2, "dir");
 	lua_setfield(L, LUA_REGISTRYINDEX, Interp);
 
 	// Loading ilua:
@@ -644,7 +960,7 @@ lua_kernel_base::~lua_kernel_base()
 
 void lua_kernel_base::log_error(char const * msg, char const * context)
 {
-	ERR_LUA << context << ": " << msg << '\n';
+	ERR_LUA << context << ": " << msg;
 }
 
 void lua_kernel_base::throw_exception(char const * msg, char const * context)
@@ -705,7 +1021,7 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? name.c_str() : prog, "t");
+	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
@@ -861,12 +1177,12 @@ int lua_kernel_base::intf_require(lua_State* L)
 		// stack is now [packagename] [wesnoth] [package] [chunk]
 		return 0;
 	}
-	DBG_LUA << "require: loaded a file, now calling it\n";
+	DBG_LUA << "require: loaded a file, now calling it";
 
 	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 		return 0;
-    }
+	}
 	// stack is now [packagename] [wesnoth] [package] [results]
 
 	lua_pushvalue(L, 1);
@@ -894,7 +1210,7 @@ int lua_kernel_base::impl_game_config_get(lua_State* L)
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
 	return_int_attrib("combat_experience", game_config::combat_experience);
-	return_string_attrib("version", game_config::wesnoth_version.str());
+	return_string_attrib_deprecated("version", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.current_version() instead", game_config::wesnoth_version.str());
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("strict_lua", game_config::strict_lua);
@@ -927,7 +1243,7 @@ void lua_kernel_base::load_core()
 	lua_settop(L, 0);
 	cmd_log_ << "Loading core...\n";
 	luaW_getglobal(L, "wesnoth", "require");
-	lua_pushstring(L, "lua/core.lua");
+	lua_pushstring(L, "lua/core");
 	if(!protected_call(1, 1)) {
 		cmd_log_ << "Error: Failed to load core.\n";
 	}
@@ -974,8 +1290,8 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	int result = luaL_loadstring(L, load.c_str());
 	if(result != LUA_OK) {
 		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
-		LOG_LUA << "Error when attempting tab completion:\n";
-		LOG_LUA << luaL_checkstring(L, -1) << '\n';
+		LOG_LUA << "Error when attempting tab completion:";
+		LOG_LUA << luaL_checkstring(L, -1);
 		// Just return an empty list; no matches were found
 		lua_settop(L, save_stack);
 		return ret;

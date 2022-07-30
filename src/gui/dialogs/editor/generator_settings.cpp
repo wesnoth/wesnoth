@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2010 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -24,9 +25,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 static int max_coastal = 5;
@@ -68,15 +67,15 @@ void generator_settings::pre_show(window& window)
 	// Do this *after* assigning the 'update_*_label_` functions or the game will crash!
 	adjust_minimum_size_by_players();
 
-	gui2::bind_status_label<slider>(&window, "villages", [](slider& s)->std::string { return formatter() << s.get_value() << _("/1000 tiles"); });
+	gui2::bind_status_label<slider>(&window, "villages", [](const slider& s) { return t_string(formatter() << s.get_value() << _("/1000 tiles")); });
 	gui2::bind_status_label<slider>(&window, "castle_size");
-	gui2::bind_status_label<slider>(&window, "landform", [](slider& s)->std::string {
+	gui2::bind_status_label<slider>(&window, "landform", [](const slider& s) {
 		return s.get_value() == 0 ? _("Inland") : (s.get_value() < max_coastal ? _("Coastal") : _("Island")); });
 }
 
 void generator_settings::adjust_minimum_size_by_players()
 {
-	const int extra_size = (players_->get_widget_value(*get_window()) - 2) * extra_size_per_player;
+	const int extra_size = (players_->get_widget_value() - 2) * extra_size_per_player;
 
 	const auto update_dimension_slider = [&](field_integer* field) {
 		slider& w = dynamic_cast<slider&>(*field->get_widget());
@@ -91,4 +90,3 @@ void generator_settings::adjust_minimum_size_by_players()
 }
 
 } // namespace dialogs
-} // namespace gui2

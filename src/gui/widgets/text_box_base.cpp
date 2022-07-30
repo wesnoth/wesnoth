@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -18,6 +19,7 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
 #include "serialization/unicode.hpp"
@@ -45,6 +47,9 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, cursor_blink_rate_ms_(750)
 	, text_changed_callback_()
 {
+	auto cfg = get_control(control_type, builder.definition);
+	text_.set_family_class(cfg->text_font_family);
+
 #ifdef __unix__
 	// pastes on UNIX systems.
 	connect_signal<event::MIDDLE_BUTTON_CLICK>(std::bind(
@@ -111,7 +116,7 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 			selection_length_ = maximum_length - selection_start_;
 		}
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -124,7 +129,7 @@ void text_box_base::set_value(const std::string& text)
 		selection_start_ = text_.get_length();
 		selection_length_ = 0;
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -145,7 +150,7 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		copy_selection(true);
 #endif
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 
 	} else {
 		assert(offset <= text_.get_length());
@@ -153,7 +158,7 @@ void text_box_base::set_cursor(const std::size_t offset, const bool select)
 		selection_length_ = 0;
 
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -166,7 +171,7 @@ void text_box_base::insert_char(const std::string& unicode)
 		// Update status
 		set_cursor(selection_start_ + utf8::size(unicode), false);
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -225,7 +230,7 @@ void text_box_base::paste_selection(const bool mouse)
 	selection_start_ += text_.insert_text(selection_start_, text);
 
 	update_canvas();
-	set_is_dirty(true);
+	queue_redraw();
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
 }
 
@@ -233,7 +238,7 @@ void text_box_base::set_selection_start(const std::size_t selection_start)
 {
 	if(selection_start != selection_start_) {
 		selection_start_ = selection_start;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -241,7 +246,7 @@ void text_box_base::set_selection_length(const int selection_length)
 {
 	if(selection_length != selection_length_) {
 		selection_length_ = selection_length;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -281,7 +286,7 @@ void text_box_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -326,7 +331,7 @@ void text_box_base::cursor_timer_callback()
 		tmp.set_variable("cursor_alpha", wfl::variant(cursor_alpha_));
 	}
 
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void text_box_base::reset_cursor_state()
@@ -348,7 +353,7 @@ void text_box_base::reset_cursor_state()
 void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
@@ -360,7 +365,7 @@ void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 {
 	/** @todo implement the ctrl key. */
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
@@ -371,7 +376,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 
 void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -383,7 +388,7 @@ void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 
 void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(modifier & KMOD_CTRL) {
@@ -395,7 +400,7 @@ void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 
 void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -413,7 +418,7 @@ void text_box_base::handle_key_backspace(SDL_Keymod /*modifier*/, bool& handled)
 
 void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
 	if(selection_length_ != 0) {
@@ -431,7 +436,7 @@ void text_box_base::handle_key_delete(SDL_Keymod /*modifier*/, bool& handled)
 
 void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 {
-	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
+	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
@@ -496,14 +501,14 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 			set_cursor(std::min(maximum_length, ime_start_point_ + start + len), true);
 		}
 		update_canvas();
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
 void text_box_base::signal_handler_middle_button_click(const event::ui_event event,
 												bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	paste_selection(true);
 
@@ -516,7 +521,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 										 SDL_Keymod modifier)
 {
 
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 /*
  * For copy, cut and paste we use a different key on the MAC. Even for 'select
@@ -651,14 +656,14 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 }
 
 void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 }
@@ -666,7 +671,7 @@ void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event eve
 void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ != FOCUSED) {
 		set_state(HOVERED);
@@ -680,7 +685,7 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 void text_box_base::signal_handler_mouse_leave(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ != FOCUSED) {
 		set_state(ENABLED);

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -40,8 +41,6 @@
 #include <vector>
 #include <type_traits>
 #include <memory>
-
-class enum_tag;
 
 /**
  * Variant for storing WML attributes.
@@ -137,12 +136,8 @@ public:
 	// String assignments:
 	config_attribute_value& operator=(const char *v) { return operator=(std::string(v)); }
 	config_attribute_value& operator=(const std::string &v);
+	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);
-	template<typename T>
-	std::enable_if_t<std::is_base_of_v<enum_tag, T>, config_attribute_value&> operator=(const T &v)
-	{
-		return operator=(T::enum_to_string(v));
-	}
 
 	/** Calls @ref operator=(const std::string&) if @a v is not empty. */
 	void write_if_not_empty(const std::string& v);
@@ -157,16 +152,6 @@ public:
 	double to_double(double def = 0.) const;
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;
-	/**
-		@tparam T a type created with MAKE_ENUM macro
-		NOTE: since T::VALUE constants is not of type T but of the underlying enum type you must specify the template parameter explicitly
-		TODO: Fix this in c++11 using constexpr types.
-	*/
-	template<typename T>
-	std::enable_if_t<std::is_base_of_v<enum_tag, T>, T> to_enum(const T &v) const
-	{
-		return T::string_to_enum(this->str(), v);
-	}
 
 	// Implicit conversions:
 	operator int() const { return to_int(); }

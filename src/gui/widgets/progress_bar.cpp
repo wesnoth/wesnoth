@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -67,7 +68,7 @@ void progress_bar::set_percentage(unsigned percentage)
 			c.set_variable("percentage", wfl::variant(percentage));
 		}
 
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -81,7 +82,7 @@ bool progress_bar::disable_click_dismiss() const
 progress_bar_definition::progress_bar_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing progress bar " << id << '\n';
+	DBG_GUI_P << "Parsing progress bar " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -103,12 +104,12 @@ builder_progress_bar::builder_progress_bar(const config& cfg)
 {
 }
 
-widget* builder_progress_bar::build() const
+std::unique_ptr<widget> builder_progress_bar::build() const
 {
-	progress_bar* widget = new progress_bar(*this);
+	auto widget = std::make_unique<progress_bar>(*this);
 
 	DBG_GUI_G << "Window builder: placed progress bar '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

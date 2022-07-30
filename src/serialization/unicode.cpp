@@ -1,17 +1,18 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -78,7 +79,7 @@ std::size_t index(const std::string& str, const std::size_t index)
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
+		ERR_GENERAL << "Invalid UTF-8 string.";
 	}
 	return i;
 }
@@ -91,7 +92,7 @@ std::size_t size(const std::string& str)
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
+		ERR_GENERAL << "Invalid UTF-8 string.";
 	}
 	return chr;
 }

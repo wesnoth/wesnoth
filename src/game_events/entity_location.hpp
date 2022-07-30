@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -24,7 +25,7 @@
 
 class unit;
 class vconfig;
-
+class unit_filter;
 
 namespace game_events
 {
@@ -38,7 +39,7 @@ namespace game_events
 		const map_location& filter_loc() const { return filter_loc_;  }
 		bool matches_unit(const unit_map::const_iterator & un_it) const;
 		bool matches_unit_filter(const unit_map::const_iterator & un_it,
-		                         const vconfig & filter) const;
+		                         const unit_filter& filter) const;
 		unit_const_ptr get_unit() const;
 
 		static const entity_location null_entity;

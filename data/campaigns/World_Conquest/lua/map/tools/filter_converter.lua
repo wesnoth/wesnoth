@@ -3,7 +3,7 @@
 ---- A helper tool, that works (mostly) indpendently  ----
 ---- of the rest to convert location filter wml to    ----
 ---- the filter syntax used in this addon             ----
----- (map:get_locations)                              ----
+---- (map:find)                                       ----
 ----------------------------------------------------------
 
 
@@ -179,7 +179,7 @@ function print_set_terrain(filter, terrain, extra)
 end
 
 function convert_filter()
-	local cfg = wml.parse(wesnoth.read_file("./filterdata.cfg"))
+	local cfg = wml.parse(filesystem.read_file("./filterdata.cfg"))
 	std_print("")
 	for i, v in ipairs(cfg) do
 		local tag = v[1]
@@ -195,9 +195,9 @@ function convert_filter()
 				local terrain = change.terrain
 				local f = parse_wml_filter(wml.get_child(change, "filter"))
 				local extras = {}
-				for k, v in pairs(change) do
+				for k, val in pairs(change) do
 					if type(k) == "string" and k ~= "terrain" then
-						extras[k] = v
+						extras[k] = val
 					end
 				end
 
@@ -208,7 +208,7 @@ function convert_filter()
 			local variable = content.variable
 			local f = parse_wml_filter(content)
 
-			std_print("local " .. variable .. " = map:get_locations(" .. print_filter(f, 1) .. ")")
+			std_print("local " .. variable .. " = map:find(" .. print_filter(f, 1) .. ")")
 		end
 	end
 	--local filter = parse_wml_filter(cfg)

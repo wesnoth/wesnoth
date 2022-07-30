@@ -1,21 +1,21 @@
 function world_conquest_tek_map_noise_proxy(radius, fraction, terrain)
-	local terrain_to_change = map:get_locations(f.terrain(terrain))
-	local nop_filter = wesnoth.create_filter(f.all())
-	helper.shuffle(terrain_to_change)
+	local terrain_to_change = map:find(f.terrain(terrain))
+	local nop_filter = wesnoth.map.filter(f.all())
+	mathx.shuffle(terrain_to_change)
 	for terrain_i = 1, math.ceil(#terrain_to_change / fraction) do
 		local loc_a = terrain_to_change[terrain_i]
-		local terrain_to_swap_b = map:get_tiles_radius({loc_a}, nop_filter, radius)
-		
-		terrain_to_swap_b  = map:get_locations(f.all(
+		local terrain_to_swap_b = map:find_in_radius({loc_a}, radius, nop_filter)
+
+		terrain_to_swap_b  = map:find(f.all(
 			f.none(f.is_loc(loc_a)),
 			f.terrain(terrain)
 		), terrain_to_swap_b)
-		
+
 		if #terrain_to_swap_b > 0 then
-			local loc_b = terrain_to_swap_b[wesnoth.random(#terrain_to_swap_b)]
-			local terrain_a, terrain_b = map:get_terrain(loc_a), map:get_terrain(loc_b)
-			map:set_terrain(loc_a, terrain_b)
-			map:set_terrain(loc_b, terrain_a)
+			local loc_b = terrain_to_swap_b[mathx.random(#terrain_to_swap_b)]
+			local terrain_a, terrain_b = map[loc_a], map[loc_b]
+			map[loc_a] = terrain_b
+			map[loc_b] = terrain_a
 		end
 	end
 end
@@ -23,7 +23,7 @@ end
 function world_conquest_tek_map_noise_classic(tree)
 	-- generic utility to soft chunks of rought terrain and add extra rought on grass zones.
 	-- created for classic maps postgeneration.
-	
+
 	set_terrain_simul {
 		{ "Gs^Ft,Gs^Ft,Hh,Hh,Hh",
 			f.terrain("Gs"),
@@ -45,8 +45,8 @@ function world_conquest_tek_map_noise_classic(tree)
 			per_thousand = 222,
 			exact = false,
 		},
-		{ "Ur,Uu^Uf,Uh,Uu",
-			f.terrain("Uu,Uh,Uu^Uf"),
+		{ "Ur,Uu^Tf,Uh,Uu",
+			f.terrain("Uu,Uh,Uu^Tf"),
 			per_thousand = 420,
 			exact = false,
 		},
@@ -87,7 +87,7 @@ function world_conquest_tek_map_noise_classic(tree)
 			f.all(
 				f.terrain("Mm^Xm"),
 				f.adjacent(f.terrain("Xu")),
-				f.adjacent(f.terrain("Uu,Uh,Uu^Uf")),
+				f.adjacent(f.terrain("Uu,Uh,Uu^Tf")),
 				f.adjacent(f.none(
 					f.terrain("Uu,Uh,Uu^Uh,Xu")
 				))
@@ -126,8 +126,8 @@ function world_conquest_tek_map_noise_maritime()
 			per_thousand = 222,
 			exact = false,
 		},
-		{ "Ur,Uu^Uf,Uh,Uu",
-			f.terrain("Uu,Uh,Uu^Uf"),
+		{ "Ur,Uu^Tf,Uh,Uu",
+			f.terrain("Uu,Uh,Uu^Tf"),
 			per_thousand = 410,
 			exact = false,
 		},
@@ -160,7 +160,7 @@ function world_conquest_tek_map_noise_maritime()
 			f.all(
 				f.terrain("Mm^Xm"),
 				f.adjacent(f.terrain("Xu")),
-				f.adjacent(f.terrain("Uu,Uh,Uu^Uf")),
+				f.adjacent(f.terrain("Uu,Uh,Uu^Tf")),
 				f.adjacent(f.none(
 					f.terrain("Uu,Uh,Uu^Uh,Xu")
 				))

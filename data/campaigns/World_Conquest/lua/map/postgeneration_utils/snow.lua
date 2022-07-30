@@ -114,9 +114,9 @@ function wct_expand_snow()
 			f.adjacent(f.terrain("Aa^*,Ai,Ms*^*,Ha^*,Kha,Cha"))
 		),
 	}
-	set_terrain { "Ha^Uf",
+	set_terrain { "Ha^Tf",
 		f.all(
-			f.terrain("Hh^Uf"),
+			f.terrain("Hh^Tf"),
 			f.adjacent(f.terrain("Aa^*,Ai,Ms*^*,Ha^*,Kha,Cha"), nil, "3-6")
 		),
 	}
@@ -128,8 +128,8 @@ function wct_expand_snow()
 		),
 	}
 	-- chances of expand ice
-	if wesnoth.random(20) == 1 then
-		local r = wesnoth.random(3)
+	if mathx.random(20) == 1 then
+		local r = mathx.random(3)
 		set_terrain { "Ai",
 			f.all(
 				f.terrain("Ww,Wo"),
@@ -138,8 +138,8 @@ function wct_expand_snow()
 		}
 
 	end
-	if wesnoth.random(20) == 1 then
-		local r = wesnoth.random(4, 5)
+	if mathx.random(20) == 1 then
+		local r = mathx.random(4, 5)
 		set_terrain { "Ai",
 			f.all(
 				f.terrain("Aa"),
@@ -156,7 +156,7 @@ function wct_storm(terrain_to_change, snow)
 		return
 	end
 	for show_i = 1, snow do
-		local loc = terrain_to_change[wesnoth.random(#terrain_to_change)]
+		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		set_terrain { "Ai",
 			f.terrain("Aa"),
 			locs = { loc },

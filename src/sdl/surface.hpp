@@ -1,25 +1,25 @@
 /*
-   Copyright (C) 2003 - 2018 the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
+#include "sdl/rect.hpp"
 #include "utils/const_clone.hpp"
 
 #include <SDL2/SDL.h>
 
 #include <ostream>
-
-class CVideo;
 
 class surface
 {
@@ -60,9 +60,6 @@ public:
 		s.surface_ = nullptr;
 		return *this;
 	}
-
-	// Intended to be used when SDL has already freed the surface
-	void clear_without_free() { surface_ = nullptr; }
 
 	/**
 	 * Check that the surface is neutral bpp 32.
@@ -115,25 +112,6 @@ private:
 bool operator<(const surface& a, const surface& b);
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf);
-
-struct surface_restorer
-{
-	surface_restorer();
-	surface_restorer(class CVideo* target, const SDL_Rect& rect);
-	~surface_restorer();
-
-	void restore() const;
-	void restore(const SDL_Rect& dst) const;
-	void update();
-	void cancel();
-
-	const SDL_Rect& area() const { return rect_; }
-
-private:
-	class CVideo* target_;
-	SDL_Rect rect_;
-	surface surface_;
-};
 
 /**
  * Helper class for pinning SDL surfaces into memory.

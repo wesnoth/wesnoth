@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2006 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -322,7 +323,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 		// Add to the resulting starting position
 		for(const auto& starting_position : sp) {
 			if (starting_positions.left.find(starting_position) != starting_positions.left.end()) {
-				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
+				WRN_G << "Starting position " << starting_position << " is redefined.";
 			}
 			starting_positions.insert(starting_positions::value_type(starting_position, coordinate(x - border_offset.x, y - border_offset.y)));
 		}
@@ -342,11 +343,11 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << std::endl;
+					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x;
 					throw error("Map not a rectangle.");
 				}
 				if (y > max_map_size()) {
-					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")" << std::endl;
+					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")";
 					throw error("Map height limit exceeded.");
 				}
 			}
@@ -372,7 +373,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 			++x;
 			offset = pos_separator + 1;
 			if (x > max_map_size()) {
-				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")" << std::endl;
+				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")";
 				throw error("Map width limit exceeded.");
 			}
 		}
@@ -380,7 +381,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 	}
 
 	if(x != 0 && (x + 1) != width) {
-		ERR_G << "Map not a rectangle error occurred at the end" << std::endl;
+		ERR_G << "Map not a rectangle error occurred at the end";
 		throw error("Map not a rectangle.");
 	}
 
@@ -434,7 +435,7 @@ bool terrain_matches(const terrain_code& src, const ter_list& dest)
 	}
 
 #if 0
-	std::cerr << std::hex << "src = " << src.base << "^" << src.overlay << "\t"
+	PLAIN_LOG << std::hex << "src = " << src.base << "^" << src.overlay << "\t"
 		<< src_mask.base << "^" << src_mask.overlay << "\t"
 		<< masked_src.base << "^" << masked_src.overlay << "\t"
 		<< src_has_wildcard << "\n";
@@ -467,7 +468,7 @@ bool terrain_matches(const terrain_code& src, const ter_list& dest)
 		const terrain_code masked_dest = (*itor & dest_mask);
 		const bool dest_has_wildcard = has_wildcard(*itor);
 #if 0
-		std::cerr << std::hex << "dest= "
+		PLAIN_LOG << std::hex << "dest= "
 			<< itor->base << "^" << itor->overlay  << "\t"
 			<< dest_mask.base << "^" << dest_mask.overlay << "\t"
 			<< masked_dest.base << "^" << masked_dest.overlay << "\t"
@@ -599,8 +600,6 @@ bool has_wildcard(const ter_list& list)
 
 ter_map read_builder_map(const std::string& str)
 {
-	boost::multi_array<int, sizeof(ter_map)> a;
-
 	std::size_t offset = 0;
 	// Skip the leading newlines
 	while(offset < str.length() && utils::isnewline(str[offset])) {
@@ -710,9 +709,10 @@ static ter_layer string_to_layer_(std::string_view str)
 		return NO_LAYER;
 	}
 
-	// Validate the string
-	VALIDATE(str.size() <= 4, _("A terrain with a string with more "
-		"than 4 characters has been found, the affected terrain is:") + std::string(str));
+	if(str.size() > 4) {
+		throw error("A terrain with a string with more "
+			"than 4 characters has been found, the affected terrain is: " + std::string(str));
+	}
 
 	ter_layer result = 0;
 	// The conversion to int puts the first char

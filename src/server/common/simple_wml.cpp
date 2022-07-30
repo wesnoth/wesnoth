@@ -1,18 +1,18 @@
 /*
-   Copyright (C) 2008 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2008 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License 2
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
-#include <iostream>
 #include <sstream>
 
 #include <boost/iostreams/copy.hpp>
@@ -27,6 +27,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
+#define LOG_SWML LOG_STREAM(info, log_config)
 
 namespace simple_wml {
 
@@ -94,7 +95,7 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in uncompress_buffer() state "
 		<< state << " alloc bytes " << nalloc << " with input: '"
-		<< input << "' " << e.what() << std::endl;
+		<< input << "' " << e.what();
 		throw error("Bad allocation request in uncompress_buffer().");
 	}
 }
@@ -147,7 +148,7 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: bad_alloc caught in compress_buffer() state "
 		<< state << " alloc bytes " << nalloc << " with input: '"
-		<< input << "' " << e.what() << std::endl;
+		<< input << "' " << e.what();
 		throw error("Bad allocation request in compress_buffer().");
 	}
 }
@@ -194,7 +195,7 @@ char* string_span::duplicate() const
 error::error(const char* msg)
   : game::error(msg)
 {
-	ERR_SWML << "ERROR: '" << msg << "'" << std::endl;
+	ERR_SWML << "ERROR: '" << msg << "'";
 }
 
 std::ostream& operator<<(std::ostream& o, const string_span& s)
@@ -277,7 +278,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		default: {
 			const char* end = strchr(s, '=');
 			if(end == nullptr) {
-				ERR_SWML << "attribute: " << s << std::endl;
+				ERR_SWML << "attribute: " << s;
 				throw error("did not find '=' after attribute");
 			}
 
@@ -293,7 +294,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if (*s != '"') {
 				end = strchr(s, '\n');
 				if (!end) {
-					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))" << std::endl;
+					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))";
 					throw error("did not find end of attribute");
 				}
 				if (memchr(s, '"', end - s))
@@ -345,7 +346,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			read_attribute:
 			string_span value(s, end - s);
 			if(attr_.empty() == false && !(attr_.back().key < name)) {
-				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'" << std::endl;
+				ERR_SWML << "attributes: '" << attr_.back().key << "' < '" << name << "'";
 				throw error("attributes not in order");
 			}
 
@@ -1049,7 +1050,7 @@ const char* document::output()
 		buf = new char[buf_size];
 	} catch (const std::bad_alloc& e) {
 		ERR_SWML << "ERROR: Trying to allocate " << buf_size << " bytes. "
-		<< e.what() << std::endl;
+		<< e.what();
 		throw error("Bad allocation request in output().");
 	}
 	buffers_.push_back(buf);
@@ -1237,32 +1238,3 @@ void swap(document& lhs, document& rhs)
 }
 
 }
-
-#ifdef UNIT_TEST_SIMPLE_WML
-
-int main(int argc, char** argv)
-{
-	char* doctext = strdup(
-"[test]\n"
-"a=\"blah\"\n"
-"b=\"blah\"\n"
-"c=\"\\\\\"\n"
-"d=\"\\\"\"\n"
-"[/test]");
-	std::cerr << doctext << "\n";
-	simple_wml::document doc(doctext);
-
-	simple_wml::node& node = doc.root();
-	simple_wml::node* test_node = node.child("test");
-	assert(test_node);
-	assert((*test_node)["a"] == "blah");
-	assert((*test_node)["b"] == "blah");
-	assert((*test_node)["c"] == "\\\\");
-	assert((*test_node)["d"] == "\\\"");
-
-	node.set_attr("blah", "blah");
-	test_node->set_attr("e", "f");
-	std::cerr << doc.output();
-}
-
-#endif

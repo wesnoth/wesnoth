@@ -24,7 +24,7 @@ def reachable_enemies_next_to_swamp(unit_loc,attacks,map)
     # Returns all the attacks for enemies that the unit at 'unit_loc' #
     # can reach and that are next to a swamp hex #
     filter(
-        map( attacks.attacks, self),
+        attacks.attacks,
         (move_from = unit_loc) and (is_swamp( map, attack_from.x, attack_from.y))
     );
 

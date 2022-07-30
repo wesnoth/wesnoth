@@ -1,3 +1,33 @@
+
+local explanation_template = [[The following conditional test unexpectedly $result:
+	$literal
+	Interpolated to:
+	$interpolated
+	]]
+
+local extra_templates = {
+	variable = function(cfg, args)
+		args.varname = cfg.name
+		args.actual = tostring(wml.variables[cfg.name])
+		return 'Note: The variable $varname currently has the value $actual.'
+	end,
+	have_location = function(cfg, args)
+		if type(cfg.x) == 'number' and type(cfg.y) == 'number' and cfg.terrain then
+			args.x = cfg.x
+			args.y = cfg.y
+			args.terrain = wesnoth.current.map[{cfg.x, cfg.y}]
+			return 'Note: ($x,$y) has terrain $terrain.'
+		end
+		return ''
+	end,
+}
+
+local function stringize(tag, cfg, parse)
+	cfg = parse and wml.parsed(cfg) or wml.literal(cfg)
+	local str = wml.tostring{wml.tag[tag](cfg)}
+	return str:gsub('\n', '\n\t')
+end
+
 -- This function returns true if it managed to explain the failure
 local function explain(current_cfg, expect, logger)
 	for i,t in ipairs(current_cfg) do
@@ -14,28 +44,20 @@ local function explain(current_cfg, expect, logger)
 		elseif tag == "true" or tag == "false" then
 			-- We don't explain these ones.
 			return true
-		elseif wesnoth.eval_conditional{t} == expect then
-			local explanation = "The following conditional test %s:"
+		elseif wml.eval_conditional{t} == expect then
+			local explanation_args = {}
 			if expect then
-				explanation = explanation:format("passed")
+				explanation_args.result = "passed"
 			else
-				explanation = explanation:format("failed")
+				explanation_args.result = "failed"
 			end
-			explanation = string.format("%s\n\t[%s]", explanation, tag)
-			for k,v in pairs(this_cfg) do
-				if type(k) ~= "number" then
-					local format = "%s\n\t\t%s=%s"
-					local literal = tostring(wml.literal(this_cfg)[k])
-					if literal ~= v then
-						format = format .. "=%s"
-					end
-					explanation = string.format(format, explanation, k, literal, tostring(v))
-				end
+			explanation_args.literal = stringize(tag, this_cfg, false)
+			explanation_args.interpolated = stringize(tag, this_cfg, true)
+			local explanation = explanation_template
+			if extra_templates[tag] then
+				explanation = explanation .. extra_templates[tag](this_cfg, explanation_args)
 			end
-			explanation = string.format("%s\n\t[/%s]", explanation, tag)
-			if tag == "variable" then
-				explanation = string.format("%s\n\tNote: The variable %s currently has the value %q.", explanation, this_cfg.name, tostring(wml.variables[this_cfg.name]))
-			end
+			explanation = explanation:vformat(explanation_args)
 			wesnoth.log(logger, explanation, true)
 			return true
 		end

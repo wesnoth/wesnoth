@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "floating_textbox.hpp"
@@ -33,10 +34,11 @@ namespace gui{
 		check_(nullptr),
 		mode_(TEXTBOX_NONE),
 		label_string_(),
-		label_(0)
+		label_(0),
+		command_history_()
 	{}
 
-	void floating_textbox::close(game_display& gui)
+	void floating_textbox::close()
 	{
 		if(!active()) {
 			return;
@@ -50,7 +52,6 @@ namespace gui{
 		check_.reset(nullptr);
 		font::remove_floating_label(label_);
 		mode_ = TEXTBOX_NONE;
-		gui.invalidate_all();
 	}
 
 	void floating_textbox::update_location(game_display& gui)
@@ -87,7 +88,6 @@ namespace gui{
 		}
 
 		if(box_ != nullptr) {
-			box_->set_volatile(true);
 			const SDL_Rect rect {
 				  area.x + label_area.w + border_size * 2
 				, ypos
@@ -99,7 +99,6 @@ namespace gui{
 		}
 
 		if(check_ != nullptr) {
-			check_->set_volatile(true);
 			check_->set_location(box_->location().x,box_->location().y + box_->location().h + border_size);
 		}
 	}
@@ -107,18 +106,18 @@ namespace gui{
 	void floating_textbox::show(gui::TEXTBOX_MODE mode, const std::string& label,
 		const std::string& check_label, bool checked, game_display& gui)
 	{
-		close(gui);
+		close();
 
 		label_string_ = label;
 		mode_ = mode;
 
 		if(!check_label.empty()) {
-			check_.reset(new gui::button(gui.video(),check_label,gui::button::TYPE_CHECK));
+			check_.reset(new gui::button(check_label,gui::button::TYPE_CHECK));
 			check_->set_check(checked);
 		}
 
 
-		box_.reset(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
+		box_.reset(new gui::textbox(100,"",true,256,font::SIZE_NORMAL,0.8,0.6));
 
 		update_location(gui);
 	}
@@ -142,5 +141,19 @@ namespace gui{
 					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
 		box_->set_text(text);
+	}
+
+	void floating_textbox::memorize_command(const std::string& command)
+	{
+		if(command.empty()) {
+			return;
+		}
+
+		auto prev = std::find(command_history_.begin(), command_history_.end(), command);
+
+		if(prev != command_history_.end()) {
+			command_history_.erase(prev);
+		}
+		command_history_.emplace_back(command);
 	}
 }

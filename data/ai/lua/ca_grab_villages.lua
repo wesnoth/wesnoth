@@ -10,7 +10,7 @@ local GV_unit, GV_village
 local ca_grab_villages = {}
 
 function ca_grab_villages:evaluation(cfg, data, filter_own)
-    local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'grab_villages'
+    local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'grab_villages'
     if AH.print_eval() then AH.print_ts('     - Evaluating grab_villages CA:') end
 
     -- Check if there are units with moves left
@@ -28,7 +28,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
 
     local avoid_map = LS.of_pairs(ai.aspects.avoid)
 
-    local all_villages, villages = wesnoth.get_villages(), {}
+    local all_villages, villages = wesnoth.map.find{gives_income = true}, {}
     for _,village in ipairs(all_villages) do
         if (not avoid_map:get(village[1], village[2])) then
             table.insert(villages, village)
@@ -55,7 +55,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
     local enemy_attack_map = BC.get_attack_map(enemies).units
 
     -- Now we go through the villages and units
-    local max_rating, best_village, best_unit = - math.huge
+    local max_rating, best_village, best_unit = - math.huge, nil, nil
     local village_ratings = {}
     for j,v in ipairs(villages) do
         -- First collect all information that only depends on the village
@@ -69,7 +69,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
         end
 
         -- Unowned and enemy-owned villages get a large bonus
-        local owner = wesnoth.get_village_owner(v[1], v[2])
+        local owner = wesnoth.map.get_owner(v)
         if (not owner) then
             village_rating = village_rating + 10000
         else
@@ -95,7 +95,8 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
                 -- There is no way a unit can get to the village if the distance is greater than its moves
                 local dist = M.distance_between(u.x, u.y, v[1], v[2])
                 if (dist <= u.moves) then
-                    local path, cost = wesnoth.find_path(u, v[1], v[2])
+                    wesnoth.interface.handle_user_interact()
+                    local path, cost = wesnoth.paths.find_path(u, v[1], v[2])
                     if (cost <= u.moves) then
                         village_rating = village_rating - 1
                         reachable = true

@@ -1,21 +1,23 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/debug_clock.hpp"
 
+#include "draw_manager.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/integer_selector.hpp"
@@ -28,9 +30,7 @@
 
 #include <ctime>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(debug_clock)
@@ -61,16 +61,31 @@ void debug_clock::pre_show(window& window)
 
 	clock_ = find_widget<styled_widget>(&window, "clock", false, false);
 
-	signal_ = std::bind(&debug_clock::update_time, this, false);
-	connect_signal_on_draw(window, signal_);
+	draw_manager::register_drawable(this);
 
 	time_.set_current_time();
 	update_time(true);
 }
 
-void debug_clock::post_show(CVideo& /*video*/)
+void debug_clock::post_show()
 {
-	get_window()->disconnect_signal<event::DRAW>(signal_);
+	draw_manager::deregister_drawable(this);
+}
+
+void debug_clock::layout()
+{
+	update_time(false);
+}
+
+rect debug_clock::screen_location()
+{
+	return get_window()->get_rectangle();
+}
+
+bool debug_clock::expose(const SDL_Rect& /*region*/)
+{
+	// Drawing is handled by the window that this should be, but is not.
+	return false;
 }
 
 void debug_clock::update_time(const bool force)
@@ -110,12 +125,12 @@ void debug_clock::update_time(const bool force)
 			canvas.set_variable("minute", wfl::variant(minute_stamp));
 			canvas.set_variable("second", wfl::variant(second_stamp));
 		}
-		clock_->set_is_dirty(true);
+		clock_->queue_redraw();
 	}
 
 	const std::map<std::string, std::string> tags;
-	std::map<std::string, string_map> item_data;
-	string_map item;
+	widget_data item_data;
+	widget_item item;
 
 	item["label"] = std::to_string(second_stamp);
 	item_data.emplace("time", item);
@@ -171,4 +186,3 @@ bool debug_clock::time::step(const unsigned milliseconds)
 }
 
 } // namespace dialogs
-} // namespace gui2

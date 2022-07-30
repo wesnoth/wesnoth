@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "mt_rng.hpp"
@@ -65,7 +66,7 @@ uint32_t mt_rng::get_next_random()
 	++random_calls_;
 	DBG_RND << "pulled user random " << result
 		<< " for call " << random_calls_
-		<< " with seed " << std::hex << random_seed_ << std::endl;
+		<< " with seed " << std::hex << random_seed_;
 
 	return result;
 }
@@ -82,7 +83,7 @@ void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
 	mt_.discard(call_count);
 	random_calls_ = call_count;
 	DBG_RND << "Seeded random with " << std::hex << random_seed_ << std::dec << " with "
-		<< random_calls_ << " calls." << std::endl;
+		<< random_calls_ << " calls.";
 }
 
 void mt_rng::seed_random(const std::string & seed_str, const unsigned int call_count)
@@ -91,7 +92,7 @@ void mt_rng::seed_random(const std::string & seed_str, const unsigned int call_c
 	std::istringstream s(seed_str);
 	if (!(s >> std::hex >> new_seed)) {
 		new_seed = 42;
-		DBG_RND << "Failed to seed a random number generator using seed string '" << seed_str << "', it could not be parsed to hex. Seeding with 42.\n";
+		DBG_RND << "Failed to seed a random number generator using seed string '" << seed_str << "', it could not be parsed to hex. Seeding with 42.";
 	}
 	seed_random(new_seed, call_count);
 }

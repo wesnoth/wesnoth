@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2005 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -77,12 +78,26 @@ std::string format_conjunct_list(const t_string& empty, const std::vector<t_stri
 std::string format_disjunct_list(const t_string& empty, const std::vector<t_string>& elems);
 
 /**
- * Formats a timespan into human-readable text.
- * @param time The timespan in seconds.
- * @return A string such as "6 days, 12 hours, 4 minutes, 13 seconds". Years,
- *         months and weeks are also considered.
+ * Formats a timespan into human-readable text for player authentication functions.
+ *
+ * This is intentionally not a very thorough representation of time intervals.
+ * See <https://github.com/wesnoth/wesnoth/issues/6036> for more information.
+ *
+ * @param time     The timespan in seconds.
+ * @param detailed Whether to display more specific values such as "3 months, 2 days,
+ *                 30 minutes, and 1 second". If not specified or set to @a false, the
+ *                 return value will ONLY include most significant time unit (e.g. "3
+ *                 months").
+ * @return         A human-readable timespan description.
+ *
+ * @note The implementation is not very precise because not all months in the Gregorian
+ *       calendar have 30 days. Furthermore, it doesn't take into account leap years or
+ *       leap seconds. If you need to account for those, you are better off importing
+ *       a new library and providing it with more specific information about the start and
+ *       end times of the interval; otherwise your next best option is to hire a fortune
+ *       teller to manually service your requests every time instead of this function.
  */
-std::string format_timespan(std::time_t time);
+std::string format_timespan(std::time_t time, bool detailed = false);
 }
 
 /**
@@ -114,3 +129,19 @@ std::string vngettext_impl(const char* domain,
 
 #define VNGETTEXT(msgid, msgid_plural, count, ...) \
 	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
+
+/**
+ * Approximately calculates the distance between two strings
+ *
+ * Inspired in the Levenshtein distance, but made simpler
+ * to avoid using recursion and wasting resources.
+ *
+ * The consequence is that the function gets "lost"
+ * after two consecutive differences.
+ *
+ * @param str_1 First string to compare
+ * @param str_2 Second string to compare
+ */
+
+int edit_distance_approx(const std::string &str_1, const std::string &str_2);
+

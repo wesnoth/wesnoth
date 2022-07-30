@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -30,8 +31,8 @@ public:
 		OBSERVING
 	};
 
-	player(const std::string& n, simple_wml::node& cfg, int id, bool registered, const std::string& version, const std::string& source,
-	       const std::size_t max_messages=4, const std::size_t time_period=10,
+	player(const std::string& n, simple_wml::node& cfg, long id, bool registered, const std::string& version, const std::string& source,
+	       unsigned long long login_id, const std::size_t max_messages=4, const std::size_t time_period=10,
 	       const bool moderator=false);
 
 	void set_status(STATUS status);
@@ -54,6 +55,8 @@ public:
 	void set_moderator(bool moderator) { moderator_ = moderator; }
 	bool is_moderator() const { return moderator_; }
 
+	unsigned long long get_login_id() const { return login_id_; };
+
 private:
 	const std::string name_;
 	std::string version_;
@@ -68,6 +71,7 @@ private:
 	const std::time_t TimePeriod;
 	STATUS status_;
 	bool moderator_;
+	unsigned long long login_id_;
 };
 
 } //namespace wesnothd

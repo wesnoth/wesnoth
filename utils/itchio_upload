@@ -1,0 +1,12 @@
+#!/bin/sh -xe
+
+# Run this script from directory containing windows installer(s)
+# passing needed version as argument
+
+PATH="$PATH:$HOME/.config/itch/apps/butler"
+
+rm -rf Itchio_source
+7z x wesnoth-$1-win64.exe -oItchio_source
+rm -rf Itchio_source/'$PLUGINSDIR'
+echo itch > Itchio_source/data/dist
+butler push --userversion=$1 Itchio_source wesnoth/battle-for-wesnoth:win-beta

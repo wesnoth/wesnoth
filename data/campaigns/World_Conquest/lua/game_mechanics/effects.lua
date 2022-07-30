@@ -1,8 +1,7 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
-local helper = wesnoth.require("helper")
 local T = wml.tag
 
-local terrain_map = { fungus = "Uft", cave = "Ut", sand = "Dt", 
+local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt",
 	reef = "Wrt", hills = "Ht", swamp_water = "St", shallow_water = "Wst", castle = "Ct",
 	mountains = "Mt", deep_water = "Wdt", flat = "Gt", forest = "Ft", frozen = "At",
 	village = "Vt", impassable = "Xt", unwalkable = "Qt", rails = "Rt"
@@ -10,8 +9,8 @@ local terrain_map = { fungus = "Uft", cave = "Ut", sand = "Dt",
 
 -- for all attacks that match [filter_attack], it add a dublicate fo that attack and modifres is as describes in the [attack]  subtag which uses the apply_to=attack syntax
 function wesnoth.effects.wc2_optional_attack(u, cfg)
-	local name_suffix = cfg.name_suffix or helper.wml_error("apply_to=wc2_optional_attack missing required name_suffix= attribute.")
-	local attack_mod = wml.get_child(cfg, "attack") or helper.wml_error("apply_to=wc2_optional_attack missing required [attack] subtag")
+	local name_suffix = cfg.name_suffix or wml.error("apply_to=wc2_optional_attack missing required name_suffix= attribute.")
+	local attack_mod = wml.get_child(cfg, "attack") or wml.error("apply_to=wc2_optional_attack missing required [attack] subtag")
 	local attacks_to_add = {}
 	local names = {}
 	for i = 1, #u.attacks do
@@ -26,7 +25,7 @@ function wesnoth.effects.wc2_optional_attack(u, cfg)
 		end
 	end
 	for k,v in ipairs(attacks_to_add) do
-		wesnoth.add_modification(u, "object", { T.effect ( v)}, false)
+		wesnoth.units.add_modification(u, "object", { T.effect ( v)}, false)
 	end
 
 	if #names > 0 then
@@ -34,13 +33,13 @@ function wesnoth.effects.wc2_optional_attack(u, cfg)
 		attack_mod.apply_to = "attack"
 		attack_mod.name = table.concat(names, ",")
 
-		wesnoth.add_modification(u, "object", { T.effect (attack_mod) }, false)
+		wesnoth.units.add_modification(u, "object", { T.effect (attack_mod) }, false)
 	end
 end
 
 -- The implementation of the moves defense bonus in movement training.
 function wesnoth.effects.wc2_moves_defense(u, cfg)
-	wesnoth.add_modification(u, "object", { T.effect {
+	wesnoth.units.add_modification(u, "object", { T.effect {
 		apply_to = "defense",
 		replace = false,
 		T.defense {
@@ -71,14 +70,14 @@ function wesnoth.effects.wc2_min_resistance(u, cfg)
 	for k,v in pairs(resistance_old) do
 		if type(k) == "string" and type(v) == "number" then
 			if not unit_resistance_cfg then
-				unit_resistance_cfg = wml.parsed(wml.get_child(u.__cfg, "resistance"))
+				unit_resistance_cfg = wml.get_child(u.__cfg, "resistance")
 			end
 			if unit_resistance_cfg[k] >= v then
 				resistance_new[k] = v
 			end
 		end
 	end
-	wesnoth.add_modification(u, "object", {
+	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "resistance",
 			replace = true,
@@ -93,11 +92,11 @@ function wesnoth.effects.wc2_min_defense(u, cfg)
 	local defense_new = {}
 	local defense_old = wml.parsed(wml.get_child(cfg, "defense"))
 	for k,v in pairs(defense_old) do
-		if type(k) == "string" and type(v) == "number" and wesnoth.unit_defense(u, terrain_map[k] or "") >= v then
+		if type(k) == "string" and type(v) == "number" and wesnoth.units.chance_to_be_hit(u, terrain_map[k] or "") >= v then
 			defense_new[k] = v
 		end
 	end
-	wesnoth.add_modification(u, "object", {
+	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "defense",
 			replace = true,
@@ -108,12 +107,12 @@ end
 
 -- Sets the auro accordingly if unit might have multiple of illumination, darkness or forcefield abilities.
 function wesnoth.effects.wc2_update_aura(u, cfg)
-	local illuminates = wesnoth.match_unit(u, { ability = "illumination" } )
-	local darkens = wesnoth.match_unit(u, { ability = "darkness" } )
-	local forcefield = wesnoth.match_unit(u, { ability = "forcefield" } )
+	local illuminates = wesnoth.units.matches(u, { ability = "illumination" } )
+	local darkens = wesnoth.units.matches(u, { ability = "darkness" } )
+	local forcefield = wesnoth.units.matches(u, { ability = "forcefield" } )
 	local halo = ""
-	if illuminates and darkens then 
-		wesnoth.message("WC2", "Warning illuminates and darkens discovered on a unit")
+	if illuminates and darkens then
+		wesnoth.interface.add_chat_message("WC2", "Warning illuminates and darkens discovered on a unit")
 	end
 	if forcefield and illuminates then
 		halo = "halo/illuminates-aura.png~R(50)"
@@ -126,8 +125,8 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 	elseif illuminates then
 		halo = "halo/illuminates-aura.png"
 	end
-	
-	wesnoth.add_modification(u, "object", {
+
+	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "halo",
 			halo = halo,
@@ -138,7 +137,7 @@ end
 -- Similar to the usual apply_to=overlay effect but does not add overlays the the unit already has.
 function wesnoth.effects.wc2_overlay(u, cfg)
 	if cfg.add then
-		local to_add_old = wc2_utils.split_to_array(cfg.add)
+		local to_add_old = stringx.split(cfg.add or "")
 		local to_add_new = {}
 		local current = u.overlays
 		for i1,v1 in ipairs(to_add_old) do
@@ -156,7 +155,7 @@ function wesnoth.effects.wc2_overlay(u, cfg)
 		cfg.add = table.concat(to_add_new,",")
 	end
 	cfg.apply_to = "overlay"
-	wesnoth.add_modification(u, "object", { T.effect(cfg)} , false)
+	wesnoth.units.add_modification(u, "object", { T.effect(cfg)} , false)
 end
 
 -- Can move in same turn as when recruited/recalled

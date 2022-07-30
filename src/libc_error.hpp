@@ -1,9 +1,10 @@
 /*
-   By Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2015 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   The contents of this file are placed in the public domain.
- */
+	The contents of this file are placed in the public domain.
+*/
 
 #pragma once
 

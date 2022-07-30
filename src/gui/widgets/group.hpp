@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2008 - 2018 The Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -18,8 +19,8 @@
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/widget.hpp"
-#include <functional>
 
+#include <functional>
 #include <map>
 #include <vector>
 
@@ -44,7 +45,7 @@ public:
 		std::tie(std::ignore, success) = members_.emplace(value, w);
 
 		if(!success) {
-			ERR_GUI_G << "Group member with value " << value << "already exists." << std::endl;
+			ERR_GUI_G << "Group member with value already exists.";
 			return;
 		}
 
@@ -117,12 +118,19 @@ public:
 	/**
 	 * Sets a common callback function for all members.
 	 */
-	void set_callback_on_value_change(std::function<void(widget&)> func)
+	void set_callback_on_value_change(std::function<void(widget&, const T)> func)
 	{
 		// Ensure this callback is only called on the member being activated
-		const auto callback = [func](widget& widget)->void {
-			if(dynamic_cast<selectable_item&>(widget).get_value_bool()) {
-				func(widget);
+		const auto callback = [func, this](widget& widget) -> void {
+			if(auto& si = dynamic_cast<selectable_item&>(widget); si.get_value_bool()) {
+				for(auto& [v, w] : members_) {
+					if(&si == w) {
+						func(widget, v);
+						return;
+					}
+				}
+
+				throw std::runtime_error("Group value change callback invoked for non-member widget");
 			}
 		};
 

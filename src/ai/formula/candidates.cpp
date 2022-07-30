@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Bartosz Waresiak <dragonking@o2.pl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Bartosz Waresiak <dragonking@o2.pl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -49,7 +50,7 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 		res = 0;
 	} catch(const type_error& e) {
 		res = 0;
-		ERR_AI << "formula type error while evaluating candidate action: " << e.message << std::endl;
+		ERR_AI << "formula type error while evaluating candidate action: " << e.message;
 	}
 
 	return res;
@@ -194,7 +195,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 			return;
 	}
 	catch(const type_error& e) {
-		ERR_AI << "Error while executing filter formulas for '" + get_name() + "' Candidate Action: " << e.message << std::endl;
+		ERR_AI << "Error while executing filter formulas for '" + get_name() + "' Candidate Action: " << e.message;
 		return;
 	}
 
@@ -204,7 +205,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(variant_iterator i = filtered_my_units.begin() ; i != filtered_my_units.end() ; ++i) {
 		auto u_callable = (*i).try_convert<const unit_callable>();
 		if(!u_callable) {
-			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
+			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units";
 			return;
 		}
 		my_units_flt.emplace_back(u_callable);
@@ -213,7 +214,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 	for(variant_iterator i = filtered_enemy_units.begin() ; i != filtered_enemy_units.end() ; ++i) {
 		auto u_callable = (*i).try_convert<const unit_callable>();
 		if(!u_callable) {
-			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units" << std::endl;
+			ERR_AI << "ERROR in "<< get_name() << "Candidate Action: Filter formula returned table that does not contain units";
 			return;
 		}
 		enemy_units_flt.emplace_back(u_callable);

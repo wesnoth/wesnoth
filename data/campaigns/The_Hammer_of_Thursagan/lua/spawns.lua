@@ -1,6 +1,5 @@
 -- Used for the bandit spawns in scenario 5
 
-local helper = wesnoth.require "helper"
 local utils = wesnoth.require "wml-utils"
 local wml_actions = wesnoth.wml_actions
 local T = wml.tag
@@ -14,14 +13,14 @@ function wml_actions.spawn_units(cfg)
 
 	local done = 0
 	for i=1,count do
-		local locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
-		if #locs == 0 then locs = wesnoth.get_locations({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
+		local locs = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 1 } })
+		if #locs == 0 then locs = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } }) end
 		if #locs == 0 then break end
 
 		done = done + 1
 
-		local unit_type = helper.rand(types)
-		local loc_i = helper.rand("1.."..#locs)
+		local unit_type = mathx.random_choice(types)
+		local loc_i = mathx.random_choice("1.."..#locs)
 
 		wml_actions.move_unit_fake({x = string.format("%d,%d", x, locs[loc_i][1]) , y = string.format("%d,%d", y, locs[loc_i][2]) , type = unit_type , side = side})
 		wesnoth.units.to_map({ type = unit_type , side = side, random_traits = "yes", generate_name = "yes" , upkeep = "loyal" }, locs[loc_i][1], locs[loc_i][2])

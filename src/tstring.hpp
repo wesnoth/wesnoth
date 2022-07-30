@@ -1,21 +1,24 @@
 /*
-   Copyright (C) 2004 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2004 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 #include <memory>
 #include <string>
+#include <map>
+#include <vector>
 
 /**
  * Helper class for translatable strings.
@@ -115,6 +118,8 @@ private:
 	mutable std::string translated_value_;
 	mutable unsigned translation_timestamp_;
 	bool translatable_, last_untranslatable_;
+	static inline std::vector<std::string> id_to_textdomain;
+	static inline std::map<std::string, unsigned int> textdomain_to_id;
 };
 
 inline std::size_t hash_value(const t_string_base& str) { return str.hash_value(); }

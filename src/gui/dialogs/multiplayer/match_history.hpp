@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2021 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2021 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -38,10 +39,8 @@ public:
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(mp_match_history)
 
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
 	void request_history(int offset);

@@ -1,6 +1,6 @@
 -- << pick_advance/main.lua
 
-local on_event = wesnoth.require "on_event"
+local on_event = wesnoth.game_events.add_repeating
 local F = wesnoth.require "functional"
 local T = wml.tag
 local _ = wesnoth.textdomain "wesnoth"
@@ -125,7 +125,7 @@ function pickadvance.pick_advance(unit)
 	unit = unit or wesnoth.units.get(wml.variables.x1, wml.variables.y1)
 	initialize_unit(unit)
 	local _, orig_options_sanitized = original_advances(unit)
-	local dialog_result = wesnoth.synchronize_choice(function()
+	local dialog_result = wesnoth.sync.evaluate_single(function()
 		local local_result = pickadvance.show_dialog_unsynchronized(get_advance_info(unit), unit)
 		return local_result
 	end, function() return { is_ai = true } end)
@@ -160,7 +160,8 @@ end
 -- initialize a unit for picking an advancement
 -- make its advancements viewable
 -- force picking an advancement if it has multiple and the force option was specified
-local function initialize_unit_x1y1(ctx)
+local function initialize_unit_x1y1()
+	local ctx = wesnoth.current.event_context
 	local unit = wesnoth.units.get(ctx.x1, ctx.y1)
 	if not wesnoth.sides[unit.side].__cfg.allow_player then return end
 	initialize_unit(unit)
@@ -181,14 +182,11 @@ local function humans_can_recruit()
 end
 -- return true if any keeps exist
 local function map_has_keeps()
-	local width,height,_ = wesnoth.get_map_size()
-	for x = 1, width do
-		for y = 1, height do
-			local terr = wesnoth.get_terrain(x, y)
-			local info = wesnoth.get_terrain_info(terr)
-			if info.keep then
-				return true
-			end
+	for x, y in wesnoth.current.map:iter() do
+		local terr = wesnoth.current.map[{x, y}]
+		local info = wesnoth.terrain_types[terr]
+		if info.keep then
+			return true
 		end
 	end
 end
@@ -215,7 +213,7 @@ on_event("moveto", function()
 				pickadvance.pick_advance(unit)
 				if #unit.advances_to > 1 then
 					local len = #unit.advances_to
-					local rand = wesnoth.random(len)
+					local rand = mathx.random(len)
 					unit.advances_to = { unit.advances_to[rand] }
 				end
 			else

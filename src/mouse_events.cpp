@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "mouse_events.hpp"
@@ -42,8 +43,8 @@
 #include "units/unit.hpp"          // for unit
 #include "whiteboard/manager.hpp"  // for manager, etc
 #include "whiteboard/typedefs.hpp" // for whiteboard_lock
+#include "sdl/input.hpp" // for get_mouse_state
 
-#include <SDL2/SDL_mouse.h> // for SDL_GetMouseState
 #include <cassert>     // for assert
 #include <new>         // for bad_alloc
 #include <ostream>     // for operator<<, basic_ostream, etc
@@ -52,6 +53,9 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define ERR_WML LOG_STREAM(err, log_wml)
 
 namespace events
 {
@@ -97,7 +101,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 {
 	// Frankensteining from mouse_motion(), as it has a lot in common, but a lot of differences too.
 	// Copy-pasted from everywhere. TODO: generalize the two.
-	SDL_GetMouseState(&x,&y);
+	sdl::get_mouse_state(&x,&y);
 
 	// This is from mouse_handler_base::mouse_motion_default()
 	tooltips::process(x, y);
@@ -126,7 +130,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	int my = drag_from_y_;
 	if(is_dragging() && !dragging_started_) {
 		if(dragging_touch_) {
-			SDL_GetMouseState(&mx, &my);
+			sdl::get_mouse_state(&mx, &my);
 			const double drag_distance = std::pow(static_cast<double>(drag_from_x_- mx), 2)
 										 + std::pow(static_cast<double>(drag_from_y_- my), 2);
 			if(drag_distance > drag_threshold()*drag_threshold()) {
@@ -139,9 +143,9 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	const auto found_unit = find_unit(selected_hex_);
 	bool selected_hex_has_my_unit = found_unit.valid() && found_unit.get_shared_ptr()->side() == side_num_;
 	if((browse || !found_unit.valid()) && is_dragging() && dragging_started_) {
-		SDL_GetMouseState(&mx, &my);
+		sdl::get_mouse_state(&mx, &my);
 
-		if(sdl::point_in_rect(x, y, gui().map_area())) {
+		if(gui().map_area().contains(x, y)) {
 			int dx = drag_from_x_ - mx;
 			int dy = drag_from_y_ - my;
 
@@ -154,6 +158,9 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 
 	// now copy-pasting mouse_handler::mouse_motion()
 
+	// Note for anyone reconciling this code with the version in mouse_handler::mouse_motion:
+	// commit 27a40a82aeea removed the game_board& board from mouse_motion, but didn't update
+	// the corresponding code here in touch_motion.
 	game_board & board = pc_.gamestate().board_;
 
 	if(new_hex == map_location::null_location())
@@ -331,14 +338,21 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		else
 			un.reset();
 	} //end planned unit map scope
+}
 
+void mouse_handler::show_reach_for_unit(const unit_ptr& un)
+{
 	if( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
 		 !gui().fogged(un->get_location()))
 	{
-		if (un->side() == side_num_) {
-			//unit is on our team, show path if the unit has one
+		// If the unit has a path set and is either ours or allied then show the path.
+		//
+		// Exception: allied AI sides' moves are still hidden, on the assumption that
+		// campaign authors won't want to leak goto_x,goto_y tricks to the player.
+		if(!viewing_team().is_enemy(un->side()) && !pc_.get_teams()[un->side() - 1].is_ai()) {
+			//unit is on our team or an allied team, show path if the unit has one
 			const map_location go_to = un->get_goto();
-			if(board.map().on_board(go_to)) {
+			if(pc_.get_map().on_board(go_to)) {
 				pathfind::marked_route route;
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
@@ -365,7 +379,6 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 		unselected_paths_ = true;
 		gui().highlight_reach(current_paths_);
 	}
-
 }
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, map_location new_hex)
@@ -375,9 +388,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// to highlight all the hexes where the mouse passed.
 	// Also, sometimes it seems to have one *very* obsolete
 	// and isolated mouse motion event when using drag&drop
-	SDL_GetMouseState(&x, &y); // <-- modify x and y
+	sdl::get_mouse_state(&x, &y); // <-- modify x and y
 
 	if(mouse_handler_base::mouse_motion_default(x, y, update)) {
+		return;
+	}
+
+	// Don't process other motion events while scrolling
+	if(scroll_started_) {
 		return;
 	}
 
@@ -559,43 +577,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		}
 	} /*end planned unit map scope*/
 
-	if(!selected_hex_.valid() && un && current_paths_.destinations.empty() && !gui().fogged(un->get_location())) {
-		/*
-		 * Only process unit if toggler not preventing normal unit
-		 * processing. This can happen e.g. if, after activating 'show
-		 * [best possible] enemy movements' through the UI menu, the
-		 * mouse cursor lands on a hex with unit in it.
-		 */
-		if(!preventing_units_highlight_) {
-			if(un->side() == side_num_) {
-				// unit is on our team, show path if the unit has one
-				const map_location go_to = un->get_goto();
-				if(pc_.get_map().on_board(go_to)) {
-					pathfind::marked_route route;
-					{ // start planned unit map scope
-						wb::future_map_if_active raii;
-						route = get_route(un.get(), go_to, current_team());
-					} // end planned unit map scope
-					gui().set_route(&route);
-				}
-				over_route_ = true;
-
-				wb::future_map_if_active raii;
-				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-			} else {
-				// unit under cursor is not on our team
-				// Note: planned unit map must be activated after this is done,
-				// since the future state includes changes to units' movement.
-				unit_movement_resetter move_reset(*un);
-
-				wb::future_map_if_active raii;
-				current_paths_ = pathfind::paths(*un, false, true, viewing_team(), path_turns_);
-			}
-
-			unselected_paths_ = true;
-			gui().highlight_reach(current_paths_);
-
-		}
+	/*
+	 * Only highlight unit's reach if toggler not preventing normal unit
+	 * processing. This can happen e.g. if, after activating 'show
+	 * [best possible] enemy movements' through the UI menu, the
+	 * mouse cursor lands on a hex with unit in it.
+	 */
+	if(!preventing_units_highlight_) {
+		show_reach_for_unit(un);
 	}
 
 	if(!un && preventing_units_highlight_) {
@@ -645,7 +634,7 @@ const map_location mouse_handler::hovered_hex() const
 {
 	int x = -1;
 	int y = -1;
-	SDL_GetMouseState(&x, &y);
+	sdl::get_mouse_state(&x, &y);
 	return gui_->hex_clicked_on(x, y);
 }
 
@@ -787,7 +776,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 		return false;
 	}
 
-	return sdl::point_in_rect(x, y, gui().map_area());
+	return gui().map_area().contains(x, y);
 }
 
 void mouse_handler::select_or_action(bool browse)
@@ -1187,7 +1176,7 @@ std::size_t mouse_handler::move_unit_along_route(const std::vector<map_location>
 		}
 	}
 
-	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
+	LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back();
 	std::size_t moves = actions::move_unit_and_record(steps, &pc_.get_undo_stack(), false, true, &interrupted);
 
 	cursor::set(cursor::NORMAL);
@@ -1296,7 +1285,8 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 	try {
 		attack_enemy_(attacker_loc, defender_loc, choice);
 	} catch(const std::bad_alloc&) {
-		lg::wml_error() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+		lg::log_to_chat() << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
+		ERR_WML << "Memory exhausted a unit has either a lot hitpoints or a negative amount.";
 	}
 }
 

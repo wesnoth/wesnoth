@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2007 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -41,22 +42,22 @@ struct state_definition
 
 /**
  * Base class of a resolution, contains the common keys for a resolution.
- * 
+ *
  * Depending on the resolution a widget can look different. Resolutions are evaluated in order of appearance.
  * The window_width and window_height are the upper limit this resolution is valid for.
  * When one of the sizes gets above the limit, the next resolution is selected.
  * There's one special case where both values are 0. This resolution always matches.
  * (Resolution definitions behind that one will never be picked.)
  * This resolution can be used as upper limit or if there's only one resolution.
- * 
+ *
  * The default (and also minimum) size of a button is determined by two items, the wanted default size and the size needed for the text.
  * The size of the text differs per used widget so needs to be determined per button.
- * 
+ *
  * Container widgets like panels and windows have other rules for their sizes.
  * Their sizes are based on the size of their children (and the border they need themselves).
  * It's wise to set all sizes to 0 for these kind of widgets.
- * 
- * Key              |Type                                |Default  |Description  
+ *
+ * Key              |Type                                |Default  |Description
  * -----------------|------------------------------------|---------|-------------
  * window_width     | @ref guivartype_unsigned "unsigned"|0        |Width of the application window.
  * window_height    | @ref guivartype_unsigned "unsigned"|0        |Height of the application window.

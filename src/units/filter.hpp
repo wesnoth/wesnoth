@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -25,8 +26,8 @@
 
 #pragma once
 
+#include "units/conditional_type.hpp"
 #include "units/ptr.hpp"
-#include "utils/make_enum.hpp"
 
 #include "display_context.hpp"
 #include "filter_context.hpp"
@@ -46,11 +47,6 @@ struct map_location;
 
 namespace unit_filter_impl
 {
-	MAKE_ENUM (CONDITIONAL_TYPE,
-		(AND, "and")
-		(OR, "or")
-		(NOT, "not")
-	);
 	struct filter_error : public game::error
 	{
 		explicit filter_error(const std::string& message = "filter error")
@@ -102,7 +98,7 @@ namespace unit_filter_impl
 		bool filter_impl(const unit_filter_args& u) const;
 
 		std::vector<std::shared_ptr<unit_filter_base>> children_;
-		std::vector<std::pair<CONDITIONAL_TYPE, unit_filter_compound>> cond_children_;
+		std::vector<std::pair<conditional_type::type, unit_filter_compound>> cond_children_;
 	};
 
 }

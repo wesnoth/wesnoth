@@ -1,27 +1,28 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_map_location_ops.hpp"
 #include "scripting/lua_common.hpp"
+#include "scripting/push_check.hpp"
 
 #include "map/location.hpp"
+#include "pathutils.hpp"
 
 #include <string>
 #include <utility>
-#include <ciso646>   // for and
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 namespace lua_map_location {
@@ -87,7 +88,7 @@ int intf_vector_diff(lua_State* L)
 {
 	map_location l1, l2;
 	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
-		lua_pushstring(L, "vector_sum: requires two locations");
+		lua_pushstring(L, "vector_diff: requires two locations");
 		return lua_error(L);
 	}
 
@@ -137,7 +138,7 @@ int intf_tiles_adjacent(lua_State* L)
 {
 	map_location l1, l2;
 	if(!luaW_tolocation(L, 1, l1) || !luaW_tolocation(L, 2, l2)) {
-		lua_pushstring(L, "vector_sum: requires two locations");
+		lua_pushstring(L, "tiles_adjacent: requires two locations");
 		return lua_error(L);
 	}
 
@@ -162,6 +163,26 @@ int intf_get_adjacent_tiles(lua_State* L)
 	}
 
 	return 6;
+}
+
+/**
+ * Expose map_location get_tiles_in_radius
+ * - Arg 1: A location
+ * - Ret: The locations
+ */
+int intf_get_tiles_in_radius(lua_State* L)
+{
+	map_location l1;
+	if(!luaW_tolocation(L, 1, l1)) {
+		return luaL_argerror(L, 1, "expected a location");
+	}
+	int radius = luaL_checkinteger(L, 2);
+
+	std::vector<map_location> locs;
+	get_tiles_in_radius(l1, radius, locs);
+	lua_push(L, locs);
+
+	return 1;
 }
 
 /**

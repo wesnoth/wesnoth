@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2013 - 2018 by Maxim Biro <nurupo.contributions@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2013 - 2022
+	by Maxim Biro <nurupo.contributions@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "desktop/windows_tray_notification.hpp"
@@ -20,7 +21,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "sdl/window.hpp"
-#include "video.hpp"		// CVideo class holds the window -> SDL_Window object which contains the handle of the main window
+#include "video.hpp" // for get_window
 
 NOTIFYICONDATA* windows_tray_notification::nid = nullptr;
 bool windows_tray_notification::message_reset = false;
@@ -172,9 +173,9 @@ HWND windows_tray_notification::get_window_handle()
 {
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
-	sdl::window* window = CVideo::get_singleton().get_window();
+	SDL_Window* window = video::get_window();
 	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
-	if (!window || SDL_GetWindowWMInfo (static_cast<SDL_Window *> (*window), &wmInfo) != SDL_TRUE) {
+	if (!window || SDL_GetWindowWMInfo (window, &wmInfo) != SDL_TRUE) {
 		return nullptr;
 	}
 

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "display_chat_manager.hpp"
@@ -20,12 +21,13 @@
 #include "game_board.hpp" // <-- only needed for is_observer()
 #include "preferences/game.hpp"
 #include "log.hpp"
-#include "font/marked-up_text.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "mp_ui_alerts.hpp"
 #include "serialization/string_utils.hpp"
 #include "color.hpp"
 #include "preferences/credentials.hpp"
 #include "serialization/utf8_exception.hpp"
+#include "video.hpp" // only for faked
 
 #include <SDL2/SDL_timer.h>
 
@@ -80,13 +82,13 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	if (bell) {
 		if ((type == events::chat_handler::MESSAGE_PRIVATE && (!is_observer || whisper))
 			|| utils::word_match(message, preferences::login())) {
-			mp_ui_alerts::private_message(false, sender, message);
+			mp::ui_alerts::private_message(false, sender, message);
 		} else if (preferences::is_friend(sender)) {
-			mp_ui_alerts::friend_message(false, sender, message);
+			mp::ui_alerts::friend_message(false, sender, message);
 		} else if (sender == "server") {
-			mp_ui_alerts::server_message(false, sender, message);
+			mp::ui_alerts::server_message(false, sender, message);
 		} else {
-			mp_ui_alerts::public_message(false, sender, message);
+			mp::ui_alerts::public_message(false, sender, message);
 		}
 	}
 
@@ -104,9 +106,9 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	try {
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
-		msg = my_disp_.video().faked() ? "" : font::word_wrap_text(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
+		msg = video::headless() ? "" : font::pango_word_wrap(msg,font::SIZE_15,my_disp_.map_outside_area().w*3/4);
 	} catch (utf8::invalid_utf8_exception&) {
-		ERR_NG << "Invalid utf-8 found, chat message is ignored." << std::endl;
+		ERR_NG << "Invalid utf-8 found, chat message is ignored.";
 		return;
 	}
 

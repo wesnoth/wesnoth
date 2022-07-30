@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2009 - 2018 by Bartosz Waresiak <dragonking@o2.pl>
+	Copyright (C) 2009 - 2022
+	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

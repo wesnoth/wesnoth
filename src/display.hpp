@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -51,15 +52,18 @@ namespace wb {
 
 #include "animated.hpp"
 #include "display_context.hpp"
+#include "filesystem.hpp"
 #include "font/standard_colors.hpp"
 #include "game_config.hpp"
+#include "gui/core/top_level_drawable.hpp"
+#include "halo.hpp"
 #include "picture.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "time_of_day.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "theme.hpp"
-#include "video.hpp"
 #include "widgets/button.hpp"
 
 #include <boost/circular_buffer.hpp>
@@ -75,12 +79,15 @@ namespace wb {
 
 class gamemap;
 
-class display : public video2::draw_layering
+class display : public gui2::top_level_drawable
 {
 public:
-	display(const display_context * dc, std::weak_ptr<wb::manager> wb,
-			reports & reports_object,
-			const config& theme_cfg, const config& level, bool auto_join=true);
+	display(const display_context* dc,
+		std::weak_ptr<wb::manager> wb,
+		reports& reports_object,
+		const std::string& theme_id,
+		const config& level);
+
 	virtual ~display();
 	/**
 	 * Returns the display object if a display object exists. Otherwise it returns nullptr.
@@ -151,7 +158,7 @@ public:
 	 */
 	void add_overlay(const map_location& loc, const std::string& image,
 		const std::string& halo="", const std::string& team_name="",const std::string& item_id="",
-		bool visible_under_fog = true, float z_order = 0);
+		bool visible_under_fog = true, float submerge = 0.0f, float z_order = 0);
 
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
@@ -172,9 +179,7 @@ public:
 		return *dc_;
 	}
 
-	void reset_halo_manager();
-	void reset_halo_manager(halo::manager & hm);
-	halo::manager & get_halo_manager() { return *halo_man_; }
+	halo::manager& get_halo_manager() { return halo_man_; }
 
 	/**
 	 * Applies r,g,b coloring to the map.
@@ -192,13 +197,7 @@ public:
 	 * Used for special effects like flashes.
 	 */
 	void adjust_color_overlay(int r, int g, int b);
-
-
-	/** Gets the underlying screen object. */
-	CVideo& video() { return screen_; }
-
-	/** return the screen surface or the surface used for map_screenshot. */
-	surface& get_screen_surface() { return map_screenshot_ ? map_screenshot_surf_ : screen_.getSurface();}
+	tod_color get_color_overlay() const { return color_adjust_; }
 
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
@@ -213,31 +212,27 @@ public:
 	 * Between mapx and x is the sidebar region.
 	 */
 
-	const SDL_Rect& minimap_area() const
-		{ return theme_.mini_map_location(screen_.screen_area()); }
-	const SDL_Rect& palette_area() const
-		{ return theme_.palette_location(screen_.screen_area()); }
-	const SDL_Rect& unit_image_area() const
-		{ return theme_.unit_image_location(screen_.screen_area()); }
+	const rect& minimap_area() const;
+	const rect& palette_area() const;
+	const rect& unit_image_area() const;
 
 	/**
 	 * Returns the maximum area used for the map
 	 * regardless to resolution and view size
 	 */
-	const SDL_Rect& max_map_area() const;
+	rect max_map_area() const;
 
 	/**
 	 * Returns the area used for the map
 	 */
-	const SDL_Rect& map_area() const;
+	rect map_area() const;
 
 	/**
 	 * Returns the available area for a map, this may differ
 	 * from the above. This area will get the background area
 	 * applied to it.
 	 */
-	const SDL_Rect& map_outside_area() const { return map_screenshot_ ?
-		max_map_area() : theme_.main_map_location(screen_.screen_area()); }
+	rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
 	static bool outside_area(const SDL_Rect& area, const int x,const int y);
@@ -260,6 +255,13 @@ public:
 	static double get_zoom_factor()
 	{
 		return static_cast<double>(zoom_) / static_cast<double>(game_config::tile_size);
+	}
+
+	/** Scale the width and height of a rect by the current zoom factor */
+	static SDL_Rect scaled_to_zoom(const SDL_Rect& r)
+	{
+		const double zf = get_zoom_factor();
+		return {r.x, r.y, int(r.w*zf), int(r.h*zf)};
 	}
 
 	/**
@@ -345,12 +347,6 @@ public:
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const;
 
-	/**
-	 * Determines whether a grid should be overlayed on the game board.
-	 * (to more clearly show where hexes are)
-	 */
-	void set_grid(const bool grid) { grid_ = grid; }
-
 	/** Getter for the x,y debug overlay on tiles */
 	bool get_draw_coordinates() const { return draw_coordinates_; }
 	/** Setter for the x,y debug overlay on tiles */
@@ -369,17 +365,22 @@ public:
 	/** Capture a (map-)screenshot into a surface. */
 	surface screenshot(bool map_screenshot = false);
 
-	/** Invalidates entire screen, including all tiles and sidebar. Calls redraw observers. */
-	void redraw_everything();
+	/** Marks everything for rendering including all tiles and sidebar.
+	  * Also calls redraw observers. */
+	void queue_rerender();
 
-	/** Adds a redraw observer, a function object to be called when redraw_everything is used */
+	/** Queues repainting to the screen, but doesn't rerender. */
+	void queue_repaint();
+
+	/** Adds a redraw observer, a function object to be called when a
+	  * full rerender is queued. */
 	void add_redraw_observer(std::function<void(display&)> f);
 
 	/** Clear the redraw observers */
 	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
-	void set_theme(config theme_cfg);
+	void set_theme(const std::string& new_theme);
 
 	/**
 	 * Retrieves a pointer to a theme UI button.
@@ -394,16 +395,27 @@ public:
 	std::shared_ptr<gui::button> find_action_button(const std::string& id);
 	std::shared_ptr<gui::button> find_menu_button(const std::string& id);
 
-	static gui::button::TYPE string_to_button_type(const std::string& type);
 	void create_buttons();
 
 	void layout_buttons();
 
-	void render_buttons();
+	void draw_buttons();
 
-	void invalidate_theme() { panelsDrawn_ = false; }
-
+	/** Update the given report. Actual drawing is done in draw_report(). */
 	void refresh_report(const std::string& report_name, const config * new_cfg=nullptr);
+
+	/**
+	 * Draw the specified report.
+	 *
+	 * If test_run is true, it will simulate the draw without actually
+	 * drawing anything. This will add any overflowing information to the
+	 * report tooltip, and also registers the tooltip.
+	 */
+	void draw_report(const std::string& report_name, bool test_run = false);
+
+	/** Draw all reports in the given region.
+	  * Returns true if something was drawn, false otherwise. */
+	bool draw_reports(const rect& region);
 
 	void draw_minimap_units();
 
@@ -439,14 +451,14 @@ public:
 	void reset_standing_animations();
 
 	/**
-	 * mouseover_hex_overlay_ require a prerendered surface
+	 * mouseover_hex_overlay_ requires a prerendered texture
 	 * and is drawn underneath the mouse's location
 	 */
-	void set_mouseover_hex_overlay(const surface& image)
+	void set_mouseover_hex_overlay(const texture& image)
 		{ mouseover_hex_overlay_ = image; }
 
 	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_ = nullptr; }
+		{ mouseover_hex_overlay_.reset(); }
 
 	/** Toggle to continuously redraw the screen. */
 	static void toggle_benchmark();
@@ -460,10 +472,9 @@ public:
 
 	terrain_builder& get_builder() {return *builder_;}
 
-	void flip();
-
-	/** Copy the backbuffer to the framebuffer. */
-	void update_display();
+	void update_fps_label();
+	void clear_fps_label();
+	void update_fps_count();
 
 	/** Rebuild all dynamic terrain. */
 	void rebuild_all();
@@ -471,29 +482,9 @@ public:
 	const theme::action* action_pressed();
 	const theme::menu*   menu_pressed();
 
-	/**
-	 * Finds the menu which has a given item in it,
-	 * and enables or disables it.
-	 */
-	void enable_menu(const std::string& item, bool enable);
-
 	void set_diagnostic(const std::string& msg);
 
-	/**
-	 * Set/Get whether 'turbo' mode is on.
-	 * When turbo mode is on, everything moves much faster.
-	 */
-	void set_turbo(const bool turbo) { turbo_ = turbo; }
-
 	double turbo_speed() const;
-
-	void set_turbo_speed(const double speed) { turbo_speed_ = speed; }
-
-	/** control unit idle animations and their frequency */
-	void set_idle_anim(bool ison) { idle_anim_ = ison; }
-	bool idle_anim() const { return idle_anim_; }
-	void set_idle_anim_rate(int rate);
-	double idle_anim_rate() const { return idle_anim_rate_; }
 
 	void bounds_check_position();
 	void bounds_check_position(int& xpos, int& ypos) const;
@@ -568,19 +559,61 @@ public:
 	/** Checks if location @a loc or one of the adjacent tiles is visible on screen. */
 	bool tile_nearly_on_screen(const map_location &loc) const;
 
-	/**
-	 * Draws invalidated items.
-	 * If update is true, will also copy the display to the frame buffer.
-	 * If force is true, will not skip frames, even if running behind.
-	 * Not virtual, since it gathers common actions. Calls various protected
-	 * virtuals (further below) to allow specialized behavior in derived classes.
-	 */
-	virtual void draw();
+	/** Prevent the game display from drawing.
+	  * Used while story screen is showing to prevent flicker. */
+	void set_prevent_draw(bool pd) { prevent_draw_ = pd; }
+	bool get_prevent_draw() { return prevent_draw_; }
 
-	void draw(bool update);
+private:
+	bool prevent_draw_ = false;
 
-	void draw(bool update, bool force);
+public:
+	/** ToD mask smooth fade */
+	void fade_tod_mask(const std::string& old, const std::string& new_);
 
+	/** Screen fade */
+	void fade_to(const color_t& color, int duration);
+	void set_fade(const color_t& color);
+
+private:
+	color_t fade_color_ = {0,0,0,0};
+
+	/*-------------------------------------------------------*/
+	/* top_level_drawable interface (called by draw_manager) */
+	/*-------------------------------------------------------*/
+
+public:
+	/** Update animations and internal state */
+	virtual void update() override;
+
+	/** Finalize screen layout. */
+	virtual void layout() override;
+
+	/** Update offscreen render buffers. */
+	virtual void render() override;
+
+	/** Paint the indicated region to the screen. */
+	virtual bool expose(const SDL_Rect& region) override;
+
+	/** Return the current draw location of the display, on the screen. */
+	virtual rect screen_location() override;
+
+private:
+	/** Render textures, for intermediate rendering. */
+	texture front_ = {};
+	texture back_ = {};
+
+	/** Ensure render textures are valid and correct. */
+	void update_render_textures();
+
+	/** Draw/redraw the off-map background area.
+	  * This updates both render textures. */
+	void render_map_outside_area();
+
+	/** Perform rendering of invalidated items. */
+	void draw();
+
+public:
 	map_labels& labels();
 	const map_labels& labels() const;
 
@@ -613,13 +646,19 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = nullptr; redrawMinimap_ = true; }
+	void recalculate_minimap();
 
 	/**
 	 * Schedule the minimap to be redrawn.
 	 * Useful if units have moved about on the map.
 	 */
-	void redraw_minimap() { redrawMinimap_ = true; }
+	void redraw_minimap();
+
+private:
+	/** Actually draw the minimap. */
+	void draw_minimap();
+
+public:
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location()) const;
 
@@ -629,9 +668,6 @@ public:
 	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
-
-	virtual void handle_event(const SDL_Event& );
-	virtual void handle_window_event(const SDL_Event& event);
 
 private:
 	void read(const config& cfg);
@@ -655,7 +691,7 @@ private:
 protected:
 	//TODO sort
 	const display_context * dc_;
-	std::unique_ptr<halo::manager> halo_man_;
+	halo::manager halo_man_;
 	std::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
@@ -681,7 +717,7 @@ protected:
 	 * Get the clipping rectangle for drawing.
 	 * Virtual since the editor might use a slightly different approach.
 	 */
-	virtual const SDL_Rect& get_clip_rect();
+	virtual rect get_clip_rect() const;
 
 	/**
 	 * Only called when there's actual redrawing to do. Loops through
@@ -692,28 +728,17 @@ protected:
 	virtual void draw_invalidated();
 
 	/**
-	 * Hook for actions to take right after draw() calls drawing_buffer_commit
-	 * No action here by default.
-	 */
-	virtual void post_commit() {}
-
-	/**
 	 * Redraws a single gamemap location.
 	 */
 	virtual void draw_hex(const map_location& loc);
 
 	/**
-	 * @returns the image type to be used for the passed hex
+	 * Choose which reports, if any, to refresh.
+	 *
+	 * This function should make individual refresh_report() calls for
+	 * whichever reports need to be updated.
 	 */
-	virtual image::TYPE get_image_type(const map_location& loc);
-
-	/**
-	 * Called near the end of a draw operation, derived classes can use this
-	 * to render a specific sidebar. Very similar to post_commit.
-	 */
-	virtual void draw_sidebar() {}
-
-	void draw_minimap();
+	virtual void refresh_reports() {}
 
 	enum TERRAIN_TYPE { BACKGROUND, FOREGROUND};
 
@@ -721,9 +746,7 @@ protected:
 					const std::string& timeid,
 					TERRAIN_TYPE terrain_type);
 
-	std::vector<surface> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
-
-	void draw_image_for_report(surface& img, SDL_Rect& rect);
+	std::vector<texture> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
@@ -731,12 +754,11 @@ protected:
 
 	static const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
 
-	CVideo& screen_;
 	std::size_t currentTeam_;
 	bool dont_show_all_; //const team *viewpoint_;
 	/**
 	 * Position of the top-left corner of the viewport, in pixels.
-	 * 
+	 *
 	 * Dependent on zoom_.. For example, ypos_==72 only means we're one
 	 * hex below the top of the map when zoom_ == 72 (the default value).
 	 */
@@ -753,16 +775,11 @@ protected:
 	static unsigned int last_zoom_;
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
-	surface minimap_;
+	texture minimap_;
 	SDL_Rect minimap_location_;
-	bool redrawMinimap_;
 	bool redraw_background_;
 	bool invalidateAll_;
-	bool grid_;
 	int diagnostic_label_;
-	bool panelsDrawn_;
-	double turbo_speed_;
-	bool turbo_;
 	bool invalidateGameStatus_;
 	const std::unique_ptr<map_labels> map_labels_;
 	reports * reports_object_;
@@ -777,15 +794,18 @@ protected:
 	uint32_t last_frame_finished_ = 0u;
 
 	// Not set by the initializer:
-	std::map<std::string, SDL_Rect> reportRects_;
-	std::map<std::string, surface> reportSurfaces_;
+	std::map<std::string, rect> reportLocations_;
+	std::map<std::string, texture> reportSurfaces_;
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
 	std::set<map_location> invalidated_;
-	surface mouseover_hex_overlay_;
+	texture mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
-	surface tod_hex_mask1, tod_hex_mask2;
+	texture tod_hex_mask1 = {};
+	texture tod_hex_mask2 = {};
+	uint8_t tod_hex_alpha1 = 0;
+	uint8_t tod_hex_alpha2 = 0;
 	std::vector<std::string> fog_images_;
 	std::vector<std::string> shroud_images_;
 
@@ -801,15 +821,14 @@ protected:
 
 private:
 
-	// This surface must be freed by the caller
-	surface get_flag(const map_location& loc);
+	texture get_flag(const map_location& loc);
 
 	/** Animated flags for each team */
 	std::vector<animated<image::locator>> flags_;
 
 	// This vector is a class member to avoid repeated memory allocations in get_terrain_images(),
 	// which turned out to be a significant bottleneck while profiling.
-	std::vector<surface> terrain_image_vector_;
+	std::vector<texture> terrain_image_vector_;
 
 public:
 	/**
@@ -873,10 +892,11 @@ public:
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
 	void render_image(int x, int y, const display::drawing_layer drawing_layer,
-			const map_location& loc, surface image,
+			const map_location& loc, const image::locator& i_locator,
 			bool hreverse=false, bool greyscale=false,
-			fixed_t alpha=ftofxp(1.0), color_t blendto = {0,0,0},
-			double blend_ratio=0, double submerged=0.0,bool vreverse =false);
+			uint8_t alpha=SDL_ALPHA_OPAQUE, double highlight=0.0,
+			color_t blendto={0,0,0}, double blend_ratio=0,
+			double submerged=0.0, bool vreverse=false);
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.
@@ -911,19 +931,29 @@ protected:
 	 *       for every hex in the row
 	 *         ...
 	 *
-	 * * Surfaces are rendered per level in a map.
+	 * * textures are rendered per level in a map.
 	 * * Per level the items are rendered per location these locations are
 	 *   stored in the drawing order required for units.
-	 * * every location has a vector with surfaces, each with its own screen
+	 * * every location has a vector with textures, each with its own screen
 	 *   coordinate to render at.
-	 * * every vector element has a vector with surfaces to render.
+	 * * every vector element has a vector with textures to render.
 	 */
 	class drawing_buffer_key
 	{
 	private:
 		unsigned int key_;
 
-		static const std::array<drawing_layer, 4> layer_groups;
+		// FIXME: temporary method. Group splitting should be made
+		// public into the definition of drawing_layer
+		//
+		// The drawing is done per layer_group, the range per group is [low, high).
+		static inline const std::array layer_groups {
+			LAYER_TERRAIN_BG,
+			LAYER_UNIT_FIRST,
+			LAYER_UNIT_MOVE_DEFAULT,
+			// Make sure the movement doesn't show above fog and reachmap.
+			LAYER_REACHMAP
+		};
 
 	public:
 		drawing_buffer_key(const map_location &loc, drawing_layer layer);
@@ -936,38 +966,90 @@ protected:
 	{
 	public:
 		// We don't want to copy this.
-		// It's expensive when done frequently due to the surface vector.
+		// It's expensive when done frequently due to the texture vector.
 		blit_helper(const blit_helper&) = delete;
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
-				const int x, const int y, const surface& surf,
-				const SDL_Rect& clip)
-			: x_(x), y_(y), surf_(1, surf), clip_(clip),
-			key_(loc, layer)
+				const SDL_Rect& dest, const texture& tex)
+			: dest_(dest), tex_(1, tex), key_(loc, layer)
 		{}
 
 		blit_helper(const drawing_layer layer, const map_location& loc,
-				const int x, const int y, const std::vector<surface>& surf,
-				const SDL_Rect& clip)
-			: x_(x), y_(y), surf_(surf), clip_(clip),
-			key_(loc, layer)
+				const SDL_Rect& dest, const std::vector<texture>& tex)
+			: dest_(dest), tex_(tex), key_(loc, layer)
 		{}
 
-		int x() const { return x_; }
-		int y() const { return y_; }
-		const std::vector<surface> &surf() const { return surf_; }
-		const SDL_Rect &clip() const { return clip_; }
+		const SDL_Rect& dest() const { return dest_; }
+		const std::vector<texture> &tex() const { return tex_; }
 
 		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
 
+	public:
+		// Auxiliary parameters, can be modified directly as required.
+
+		/** Whether to mirror horizontally on draw */
+		bool hflip = false;
+		/** Whether to mirror vertically on draw */
+		bool vflip = false;
+		/** An alpha modifier to apply when drawing. 0-255. */
+		uint8_t alpha_mod = SDL_ALPHA_OPAQUE;
+		/** Colour modifiers. Multiply colour. 0 = 0.0, 255 = 1.0. */
+		uint8_t r_mod = 255;
+		uint8_t g_mod = 255;
+		uint8_t b_mod = 255;
+		/** Strength of highlight effect to apply, if any. */
+		uint8_t highlight = 0;
+
+		// Or they can be set in a chain.
+		blit_helper& set_color_and_alpha(color_t c)
+		{
+			this->r_mod = c.r; this->g_mod = c.g; this->b_mod = c.b;
+			this->alpha_mod = c.a;
+			return *this;
+		}
+		blit_helper& set_color_and_alpha(
+			uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+		{
+			this->r_mod = r; this->g_mod = g; this->b_mod = b;
+			this->alpha_mod = a;
+			return *this;
+		}
+		blit_helper& set_color(color_t c)
+		{
+			this->r_mod = c.r; this->g_mod = c.g; this->b_mod = c.b;
+			return *this;
+		}
+		blit_helper& set_color(uint8_t r, uint8_t g, uint8_t b)
+		{
+			this->r_mod = r; this->g_mod = g; this->b_mod = b;
+			return *this;
+		}
+		blit_helper& set_alpha(uint8_t alpha)
+		{
+			this->alpha_mod = alpha; return *this;
+		}
+		blit_helper& set_hflip(bool hflip)
+		{
+			this->hflip = hflip; return *this;
+		}
+		blit_helper& set_vflip(bool vflip)
+		{
+			this->vflip = vflip; return *this;
+		}
+		blit_helper& set_highlight(uint8_t highlight)
+		{
+			this->highlight = highlight; return *this;
+		}
+
 	private:
-		int x_;                      /**< x screen coordinate to render at. */
-		int y_;                      /**< y screen coordinate to render at. */
-		std::vector<surface> surf_;  /**< surface(s) to render. */
-		SDL_Rect clip_;              /**<
-									  * The clipping area of the source if
-									  * omitted the entire source is used.
-									  */
+		// Core info is set on creation.
+
+		/** The location on screen to draw to, in drawing coordinates. */
+		SDL_Rect dest_;
+		/** One or more textures to render. */
+		std::vector<texture> tex_;
+		// TODO: could also add blend mode and rotation if desirable
+		/** Allows ordering of draw calls by layer and location. */
 		drawing_buffer_key key_;
 	};
 
@@ -976,24 +1058,26 @@ protected:
 
 public:
 	/**
-	 * Add an item to the drawing buffer. You need to update screen on affected area
+	 * Add an item to the drawing buffer.
+	 *
+	 * This returns a blit_helper reference with several extra fields that can
+	 * be modified as necessary. In particular hflip, vflip and alpha_mod
+	 * have been moved to this helper. Fields that can be modified are
+	 * available as public members of blit_helper.
 	 *
 	 * @param layer              The layer to draw on.
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
-	 * @param x                  The x coordinate.
-	 * @param y                  The y coordinate.
-	 * @param surf               The surface to use.
-	 * @param clip               
+	 * @param dest               The target destination on screen,
+	 *                           in drawing coordinates.
+	 * @param tex                The texture to use.
 	 */
-	void drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, int x, int y, const surface& surf,
-			const SDL_Rect &clip = SDL_Rect());
+	blit_helper& drawing_buffer_add(const drawing_layer layer,
+			const map_location& loc, const SDL_Rect& dest, const texture& tex);
 
-	void drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, int x, int y,
-			const std::vector<surface> &surf,
-			const SDL_Rect &clip = SDL_Rect());
+	blit_helper& drawing_buffer_add(const drawing_layer layer,
+			const map_location& loc, const SDL_Rect& dest,
+			const std::vector<texture> &tex);
 
 protected:
 
@@ -1003,9 +1087,15 @@ protected:
 	/** Clears the drawing buffer. */
 	void drawing_buffer_clear();
 
-	/** redraw all panels associated with the map display */
-	void draw_all_panels();
+	/** Redraws all panels intersecting the given region.
+	  * Returns true if something was drawn, false otherwise. */
+	bool draw_all_panels(const rect& region);
 
+private:
+	void draw_panel(const theme::panel& panel);
+	void draw_label(const theme::label& label);
+
+protected:
 
 	/**
 	 * Initiate a redraw.
@@ -1048,11 +1138,6 @@ private:
 	int invalidated_hexes_;
 	int drawn_hexes_;
 
-	bool idle_anim_;
-	double idle_anim_rate_;
-
-	surface map_screenshot_surf_;
-
 	std::vector<std::function<void(display&)>> redraw_observers_;
 
 	/** Debug flag - overlay x,y coords on tiles */
@@ -1069,7 +1154,7 @@ private:
 
 	tod_color color_adjust_;
 
-	bool dirty_;
+	std::vector<std::tuple<int, int, int>> fps_history_;
 
 protected:
 	static display * singleton_;

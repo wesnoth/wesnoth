@@ -1,4 +1,4 @@
-select count(distinct player.USER_ID) as USER_COUNT
+select count(distinct player.USER_ID) as PLAYER_COUNT
 from wesnothd_game_info game, wesnothd_game_player_info player
 where YEAR(game.START_TIME) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
   and MONTH(game.START_TIME) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)

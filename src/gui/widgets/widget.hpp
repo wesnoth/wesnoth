@@ -1,34 +1,38 @@
 /*
-   Copyright (C) 2007 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2007 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
+#include "color.hpp"
 #include "gui/core/event/dispatcher.hpp"
-#include "sdl/point.hpp"
 #include "gui/widgets/event_executor.hpp"
 #include "scripting/lua_ptr.hpp"
-
-#include "color.hpp"
+#include "sdl/point.hpp"
+#include "sdl/rect.hpp"
 
 #include <string>
 
 class surface;
 
-typedef std::map<std::string, t_string> string_map;
-
 namespace gui2
 {
+/* Data format used by styled_widget::set_members to set settings for a single widget. */
+using widget_item = std::map<std::string, t_string>;
+
+/* Indexes multiple @ref widget_item maps by widget ID. */
+using widget_data = std::map<std::string, widget_item>;
 
 struct builder_widget;
 class window;
@@ -36,7 +40,7 @@ class grid;
 
 namespace iteration
 {
-class walker_base;
+using walker_ptr = std::unique_ptr<class walker_base>;
 } // namespace iteration
 
 /**
@@ -65,8 +69,7 @@ public:
 		 *   tested later).
 		 * * The widget (if active) handles events (and sends events to
 		 *   its children).
-		 * * The widget is drawn (and sends the call to
-		 *   @ref populate_dirty_list to children).
+		 * * The widget is drawn.
 		 */
 		visible,
 
@@ -76,9 +79,6 @@ public:
 		 * * @ref find_at 'sees' the widget if active is @c false.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref window::dirty_list_ when
-		 *   @ref populate_dirty_list is called (nor does it send the
-		 *   request to its children).
 		 */
 		hidden,
 
@@ -88,9 +88,6 @@ public:
 		 * * @ref find_at never 'sees' the widget.
 		 * * The widget doesn't handle events (and doesn't send events to
 		 *   its children).
-		 * * The widget doesn't add itself @ref window::dirty_list_ when
-		 *   @ref populate_dirty_list is called (nor does it send the
-		 *   request to its children).
 		 */
 		invisible
 	};
@@ -103,30 +100,39 @@ public:
 	 */
 	enum class redraw_action
 	{
+		// TODO: draw_manager/hwaccel - are these still useful?
 		/**
 		 * The widget is fully visible.
 		 *
-		 * The widget should be drawn if dirty_ is @c true. The entire
-		 * widget's rectangle should be redrawn.
+		 * The widget should be drawn. The entire widget's rectangle
+		 * should be redrawn.
 		 */
 		full,
 
 		/**
 		 * The widget is partly visible.
 		 *
-		 * The should be drawn if dirty_ is @c true. The rectangle to
-		 * redraw in determined by @ref clipping_rectangle_
+		 * The should be drawn. The rectangle to redraw in determined
+		 * by @ref clipping_rectangle_
 		 */
 		partly,
 
 		/**
 		 * The widget is not visible.
 		 *
-		 * The widget should not be drawn if dirty_ is @c true.
+		 * The widget should not be drawn.
 		 */
 		none
 	};
 
+	enum class debug_border {
+		/** No border. */
+		none,
+		/** Single-pixel outline. */
+		outline,
+		/** Flood-filled rectangle. */
+		fill,
+	};
 
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
@@ -338,10 +344,9 @@ public:
 	/**
 	 * Sets the origin of the widget.
 	 *
-	 * This function can be used to move the widget without dirtying it. The
-	 * location is an absolute position, if a relative more is required use
-	 * @ref move.
-	 *
+	 * This function can be used to move the widget without triggering a
+	 * redraw. The location is an absolute position, if a relative move is
+	 * required use @ref move.
 	 *
 	 * @param origin              The new origin.
 	 */
@@ -372,7 +377,7 @@ public:
 	/**
 	 * Moves a widget.
 	 *
-	 * This function can be used to move the widget without dirtying it.
+	 * This function can be used to move the widget without queueing a redraw.
 	 *
 	 * @todo Implement the function to all derived classes.
 	 *
@@ -426,7 +431,7 @@ public:
 	 *
 	 * @returns                   The bounding rectangle of the widget.
 	 */
-	SDL_Rect get_rectangle() const;
+	rect get_rectangle() const;
 
 	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
@@ -512,45 +517,29 @@ public:
 	/**
 	 * Calculates the blitting rectangle of the widget.
 	 *
-	 * The blitting rectangle is the entire widget rectangle, but offsetted for
-	 * drawing position.
-	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
+	 * The blitting rectangle is the entire widget rectangle.
 	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_blitting_rectangle() const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
 	 *
 	 * The clipping rectangle is used then the @ref redraw_action_ is
-	 * @ref redraw_action::partly. Since the drawing can be offsetted it also
-	 * needs offset parameters.
-	 *
-	 * @param x_offset            The offset in the x-direction when drawn.
-	 * @param y_offset            The offset in the y-direction when drawn.
+	 * @ref redraw_action::partly.
 	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle(const int x_offset,
-										  const int y_offset);
+	SDL_Rect calculate_clipping_rectangle() const;
 
 	/**
 	 * Draws the background of a widget.
 	 *
 	 * Derived should override @ref impl_draw_background instead of changing
 	 * this function.
-	 *
-	 * @param frame_buffer        The surface to draw upon.
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_background(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_background();
 
 	/**
 	 * Draws the children of a widget.
@@ -559,14 +548,8 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_children instead of changing
 	 * this function.
-	 *
-	 * @param frame_buffer        The surface to draw upon.
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_children(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_children();
 
 	/**
 	 * Draws the foreground of the widget.
@@ -576,79 +559,24 @@ public:
 	 *
 	 * Derived should override @ref impl_draw_foreground instead of changing
 	 * this function.
-	 *
-	 * @param frame_buffer        The surface to draw upon.
-	 * @param x_offset            The offset in the x-direction in the
-	 *                            @p frame_buffer to draw.
-	 * @param y_offset            The offset in the y-direction in the
-	 *                            @p frame_buffer to draw.
 	 */
-	void draw_foreground(surface& frame_buffer, int x_offset, int y_offset);
+	void draw_foreground();
 
 private:
 	/** See @ref draw_background. */
-	virtual void impl_draw_background(surface& /*frame_buffer*/)
-	{
-	}
-	virtual void impl_draw_background(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_background()
 	{
 	}
 
 	/** See @ref draw_children. */
-	virtual void impl_draw_children(surface& /*frame_buffer*/
-									,
-									int /*x_offset*/
-									,
-									int /*y_offset*/)
+	virtual void impl_draw_children()
 	{
 	}
 
 	/** See @ref draw_foreground. */
-	virtual void impl_draw_foreground(surface& /*frame_buffer*/
-									  ,
-									  int /*x_offset*/
-									  ,
-									  int /*y_offset*/)
+	virtual void impl_draw_foreground()
 	{
 	}
-
-public:
-	/**
-	 * Adds a widget to the dirty list if it is dirty.
-	 *
-	 * See @ref window::dirty_list_ for more information regarding the dirty
-	 * list.
-	 *
-	 * If the widget is not dirty and has children it should add itself to the
-	 * call_stack and call child_populate_dirty_list with the new call_stack.
-	 *
-	 * @param caller              The parent window, if dirty it should
-	 *                            register itself to this window.
-	 * @param call_stack          The call-stack of widgets traversed to reach
-	 *                            this function.
-	 */
-	void populate_dirty_list(window& caller,
-							 std::vector<widget*>& call_stack);
-
-private:
-	/**
-	 * Tries to add all children of a container to the dirty list.
-	 *
-	 * @note The function is private since everybody should call
-	 * @ref populate_dirty_list instead.
-	 *
-	 * @param caller              The parent window, if dirty it should
-	 *                            register itself to this window.
-	 * @param call_stack          The call-stack of widgets traversed to reach
-	 *                            this function.
-	 */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack);
 
 public:
 	/**
@@ -671,34 +599,36 @@ public:
 	 */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle);
 
-	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
+	/**
+	 * Indicates that this widget should be redrawn.
+	 *
+	 * This function should be called by widgets whenever their visible
+	 * state changes.
+	 */
+	void queue_redraw();
 
-	void set_is_dirty(const bool is_dirty);
-	bool get_is_dirty() const;
+	/**
+	 * Indicate that specific region of the screen should be redrawn.
+	 *
+	 * This is in absolute drawing-space coordinates, and not constrained
+	 * to the current widget.
+	 */
+	void queue_redraw(const rect& region);
+
+	/*** *** *** *** *** *** Setters and getters. *** *** *** *** *** ***/
 
 	void set_visible(const visibility visible);
 	visibility get_visible() const;
 
 	redraw_action get_drawing_action() const;
 
-	void set_debug_border_mode(const unsigned debug_border_mode);
+	void set_debug_border_mode(const debug_border debug_border_mode);
 
 	void set_debug_border_color(const color_t debug_border_color);
 
 	/*** *** *** *** *** *** *** *** Members. *** *** *** *** *** *** *** ***/
 
 private:
-	/**
-	 * Is the widget dirty?
-	 *
-	 * When a widget is dirty it needs to be redrawn at the next drawing cycle.
-	 *
-	 * The top-level window will use @ref populate_dirty_list and
-	 * @ref child_populate_dirty_list to find al dirty widgets, so the widget
-	 * doesn't need to inform its parent regarding it being marked dirty.
-	 */
-	bool is_dirty_;
-
 	/** Field for the status of the visibility. */
 	visibility visible_;
 
@@ -706,26 +636,20 @@ private:
 	redraw_action redraw_action_;
 
 	/** The clipping rectangle if a widget is partly visible. */
-	SDL_Rect clipping_rectangle_;
+	rect clipping_rectangle_;
 
 	/**
 	 * Mode for drawing the debug border.
 	 *
 	 * The debug border is a helper border to determine where a widget is
 	 * placed. It is only intended for debugging purposes.
-	 *
-	 * Possible values:
-	 * - 0 no border
-	 * - 1 single pixel border
-	 * - 2 flood-filled rectangle
 	 */
-	unsigned debug_border_mode_;
+	debug_border debug_border_mode_;
 
 	/** The color for the debug border. */
 	color_t debug_border_color_;
 
 	void draw_debug_border();
-	void draw_debug_border(int x_offset, int y_offset);
 
 	/***** ***** ***** ***** Query functions ***** ***** ***** *****/
 
@@ -822,7 +746,7 @@ public:
 	virtual bool disable_click_dismiss() const = 0;
 
 	/** Creates a new walker object on the heap. */
-	virtual iteration::walker_base* create_walker() = 0;
+	virtual iteration::walker_ptr create_walker() = 0;
 };
 
 } // namespace gui2

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -37,25 +38,25 @@ struct builder_multimenu_button;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A multimenu_button is a styled_widget to choose an element from a list of elements.
- * 
+ *
  * When a multimenu_button has a return value it sets the return value for the window.
  * Normally this closes the window and returns this value to the caller.
  * The return value can either be defined by the user or determined from the id of the multimenu_button.
  * The return value has a higher precedence as the one defined by the id.
  * (Of course it's weird to give a multimenu_button an id and then override its return value.)
- * 
+ *
  * When the multimenu_button doesn't have a standard id, but you still want to use the return value of that id, use return_value_id instead.
  * This has a higher precedence as return_value.
- * 
+ *
  * List with the multimenu_button specific variables:
- * Key            |Type                                |Default  |Description  
+ * Key            |Type                                |Default  |Description
  * ---------------|------------------------------------|---------|-----------
  * return_value_id| @ref guivartype_string "string"    |""       |The return value id.
  * return_value   | @ref guivartype_int "int"          |0        |The return value.
  * maximum_shown  | @ref guivartype_int "int"          |-1       |The maximum number of currently selected values to list on the button.
- * 
+ *
  * The following states exist:
  * * state_enabled - the multimenu_button is enabled.
  * * state_disabled - the multimenu_button is disabled.
@@ -234,7 +235,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 	unsigned max_shown_;

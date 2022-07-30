@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2017-2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <fstream>
@@ -22,12 +23,85 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 static lg::log_domain log_filesystem("filesystem");
 #define LOG_FS LOG_STREAM(info, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
 namespace filesystem
 {
+
+bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
+{
+	//
+	// IMPORTANT NOTE:
+	//
+	// If you modify this function you must be aware that it is used by the
+	// add-on server validation routines both on the client and server sides.
+	// The addition or removal of any criteria here should be carefully
+	// evaluated with this in mind.
+	//
+
+	if(name.empty() || name.back() == '.' || name.find("..") != std::string::npos || name.size() > 255) {
+		return false;
+	}
+
+	// Reserved DOS device names on Windows.
+	static const std::set<std::string> dos_device_names = {
+		// Hardware devices
+		"NUL", "CON", "AUX", "PRN",
+		"COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+		"LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
+		// Console API pseudo-devices
+		"CONIN$", "CONOUT$",
+	};
+
+	// We can't use filesystem::base_name() here, because it returns the
+	// filename up to the *last* dot. "CON.foo.bar" is still redirected to
+	// "CON" on Windows, although "foo.CON.bar" and "foo.bar.CON" are not.
+	//
+	// Do also note that we're relying on the char-by-char check further below
+	// to flag the name as illegal if it contains a colon ':', the reason
+	// being that is valid to refer to DOS device names with a trailing colon
+	// (e.g. "CON:" is synonymous with "CON").
+
+	const auto& first_name =
+		boost::algorithm::to_upper_copy(name.substr(0, name.find('.')), std::locale::classic());
+
+	if(dos_device_names.count(first_name)) {
+		return false;
+	}
+
+	const auto& name_ucs4 = unicode_cast<std::u32string>(name);
+	if(name != unicode_cast<std::string>(name_ucs4)){
+		return false; // name is an invalid UTF-8 sequence
+	}
+
+	return name_ucs4.end() == std::find_if(name_ucs4.begin(), name_ucs4.end(), [=](char32_t c)
+	{
+		switch(c) {
+			case ' ':
+				return !allow_whitespace;
+			case '"':
+			case '*':
+			case '/':
+			case ':':
+			case '<':
+			case '>':
+			case '?':
+			case '\\':
+			case '|':
+			case '~':
+			case 0x7F: // DEL
+				return true;
+			default:
+				return c < 0x20 ||                  // C0 control characters
+					   (c >= 0x80 && c < 0xA0) ||   // C1 control characters
+					   (c >= 0xD800 && c < 0xE000); // surrogate pairs
+		}
+	});
+}
 
 void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const
 {
@@ -188,7 +262,7 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "
 			   << checksum.nfiles << " files; "
-			   << checksum.sum_size << " bytes" << std::endl;
+			   << checksum.sum_size << " bytes";
 	}
 
 	return checksum;

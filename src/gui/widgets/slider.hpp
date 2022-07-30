@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -31,7 +32,7 @@ struct builder_slider;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * A slider is a control that can select a value by moving a grip on a groove.
  * Key                      |Type                                |Default  |Description
  * -------------------------|------------------------------------|---------|-----------
@@ -110,7 +111,7 @@ public:
 	void set_best_slider_length(const unsigned length)
 	{
 		best_slider_length_ = length;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - does the above change the size?
 	}
 
 	void set_value_range(int min_value, int max_value);
@@ -274,7 +275,7 @@ struct builder_slider : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 	unsigned best_slider_length_;

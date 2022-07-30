@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2006 - 2018 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "units/frame.hpp"
@@ -91,7 +92,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 		} catch(const std::invalid_argument& e) {
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG text color in unit animation: " << text_color_key.str()
-				<< "\n" << e.what() << "\n;";
+				<< "\n" << e.what();
 		}
 	}
 
@@ -116,7 +117,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 		} catch(const std::invalid_argument& e) {
 			// Might be thrown either due to an incorrect number of elements or std::stoul failure.
 			ERR_NG << "Invalid RBG blend color in unit animation: " << blend_color_key.str()
-				<< "\n" << e.what() << "\n;";
+				<< "\n" << e.what();
 		}
 	}
 }
@@ -513,9 +514,9 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		image_loc = image::locator(current_data.image, current_data.image_mod);
 	}
 
-	surface image;
+	point image_size {0, 0};
 	if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image=image::get_image(image_loc, image::SCALED_TO_ZOOM);
+		image_size = image::get_size(image_loc);
 	}
 
 	const int d2 = display::get_singleton()->hex_size() / 2;
@@ -524,7 +525,7 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 	const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
 	const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
-	if(image != nullptr) {
+	if(image_size.x && image_size.y) {
 		bool facing_west = (
 			direction == map_location::NORTH_WEST ||
 			direction == map_location::SOUTH_WEST);
@@ -537,8 +538,8 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 		if(!current_data.auto_hflip) { facing_west = false; }
 		if(!current_data.auto_vflip) { facing_north = true; }
 
-		int my_x = x + current_data.x * disp_zoom - image->w / 2;
-		int my_y = y + current_data.y * disp_zoom - image->h / 2;
+		int my_x = x + disp_zoom * (current_data.x - image_size.x / 2);
+		int my_y = y + disp_zoom * (current_data.y - image_size.y / 2);
 
 		if(facing_west) {
 			my_x -= current_data.directional_x * disp_zoom;
@@ -552,10 +553,21 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			my_y -= current_data.directional_y * disp_zoom;
 		}
 
+		// TODO: don't conflate highlights and alpha
+		double brighten;
+		uint8_t alpha;
+		if(current_data.highlight_ratio >= 1.0) {
+			brighten = current_data.highlight_ratio - 1.0;
+			alpha = 255;
+		} else {
+			brighten = 0.0;
+			alpha = float_to_color(current_data.highlight_ratio);
+		}
+
 		display::get_singleton()->render_image(my_x, my_y,
 			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
-			src, image, facing_west, false,
-			ftofxp(current_data.highlight_ratio), current_data.blend_with ? *current_data.blend_with : color_t(),
+			src, image_loc, facing_west, false, alpha, brighten,
+			current_data.blend_with ? *current_data.blend_with : color_t(),
 			current_data.blend_ratio, current_data.submerge, !facing_north);
 	}
 
@@ -677,21 +689,17 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 	} else {
 		int w = 0, h = 0;
 
-		{
-			surface image;
-			if(!image_loc.is_void() && !image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-				image = image::get_image(image_loc, image::SCALED_TO_ZOOM);
-			}
-
-			if(image != nullptr) {
-				w = image->w;
-				h = image->h;
-			}
+		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
+			const point s = image::get_size(image_loc);
+			w = s.x;
+			h = s.y;
 		}
 
 		if(w != 0 || h != 0) {
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc);
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc);
+			// TODO: unduplicate this code
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
+			const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
 			bool facing_west = (
 				direction == map_location::NORTH_WEST ||
@@ -702,27 +710,27 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 				direction == map_location::NORTH ||
 				direction == map_location::NORTH_EAST);
 
-			if(!current_data.auto_vflip) { facing_north = true; }
 			if(!current_data.auto_hflip) { facing_west = false; }
+			if(!current_data.auto_vflip) { facing_north = true; }
 
-			int my_x = x + current_data.x + d2 - w / 2;
-			int my_y = y + current_data.y + d2 - h / 2;
+			int my_x = x + disp_zoom * (current_data.x - w / 2);
+			int my_y = y + disp_zoom * (current_data.y - h / 2);
 
 			if(facing_west) {
-				my_x += current_data.directional_x;
+				my_x -= current_data.directional_x * disp_zoom;
 			} else {
-				my_x -= current_data.directional_x;
+				my_x += current_data.directional_x * disp_zoom;
 			}
 
 			if(facing_north) {
-				my_y += current_data.directional_y;
+				my_y += current_data.directional_y * disp_zoom;
 			} else {
-				my_y -= current_data.directional_y;
+				my_y -= current_data.directional_y * disp_zoom;
 			}
 
 			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
 			// invalidate our hexes and return whether or not was successful.
-			const SDL_Rect r {my_x, my_y, w, h};
+			const SDL_Rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
 			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 
 			result.insert(src);
@@ -785,7 +793,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time, const fram
 
 	/**
 	 * The engine provides a string for "petrified" and "team color" modifications.
-     * Note that image_mod is the complete modification and halo_mod is only the TC part.
+	 * Note that image_mod is the complete modification and halo_mod is only the TC part.
 	 */
 	result.image_mod = current_val.image_mod + animation_val.image_mod;
 	if(primary) {

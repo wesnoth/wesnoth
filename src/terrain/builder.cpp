@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2004 - 2018 by Philippe Plantier <ayin@anathas.org>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2004 - 2022
+	by Philippe Plantier <ayin@anathas.org>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -84,9 +85,6 @@ static map_location legacy_difference(const map_location& me, const map_location
  * This file holds the terrain_builder implementation.
  *
  */
-
-terrain_builder::building_ruleset terrain_builder::building_rules_;
-const game_config_view* terrain_builder::rules_cfg_ = nullptr;
 
 terrain_builder::rule_image::rule_image(int layer, int x, int y, bool global_image, int cx, int cy, bool is_water)
 	: layer(layer)
@@ -468,7 +466,7 @@ bool terrain_builder::load_images(building_rule& rule)
 							try {
 								time = std::stoi(items.back());
 							} catch(const std::invalid_argument&) {
-								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back() << "\n";
+								ERR_NG << "Invalid 'time' value in terrain image builder: " << items.back();
 							}
 						}
 						image::locator locator;
@@ -571,9 +569,6 @@ void terrain_builder::rotate(terrain_constraint& ret, int angle)
 
 		itor->basex = static_cast<int>(rx + tilewidth_ / 2);
 		itor->basey = static_cast<int>(ry + tilewidth_ / 2);
-
-		// std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
-		//	", " << itor->basey << "\n";
 	}
 }
 
@@ -633,7 +628,7 @@ void terrain_builder::replace_rotate_tokens(building_rule& rule, int angle, cons
 void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vector<std::string>& rot)
 {
 	if(rot.size() != 6) {
-		ERR_NG << "invalid rotations" << std::endl;
+		ERR_NG << "invalid rotations";
 		return;
 	}
 
@@ -696,7 +691,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 					basex = std::stoi(base[0]);
 					basey = std::stoi(base[1]);
 				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid 'base' value in terrain image builder: " << base[0] << ", " << base[1] << "\n";
+					ERR_NG << "Invalid 'base' value in terrain image builder: " << base[0] << ", " << base[1];
 				}
 			}
 		}
@@ -709,8 +704,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 					center_x = std::stoi(center[0]);
 					center_y = std::stoi(center[1]);
 				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid 'center' value in terrain image builder: " << center[0] << ", " << center[1]
-						   << "\n";
+					ERR_NG << "Invalid 'center' value in terrain image builder: " << center[0] << ", " << center[1];
 				}
 			}
 		}
@@ -729,7 +723,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			// If an integer is given then assign that, but if a bool is given, then assign -1 if true and 0 if false
 			int random_start = variant["random_start"].to_bool(true) ? variant["random_start"].to_int(-1) : 0;
 
-			images.back().variants.push_back(rule_image_variant(name, variations, tod, has_flag, random_start));
+			images.back().variants.emplace_back(name, variations, tod, has_flag, random_start);
 		}
 
 		// Adds the main (default) variant of the image at the end,
@@ -739,7 +733,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		int random_start = img["random_start"].to_bool(true) ? img["random_start"].to_int(-1) : 0;
 
-		images.back().variants.push_back(rule_image_variant(name, variations, random_start));
+		images.back().variants.emplace_back(name, variations, random_start);
 	}
 }
 
@@ -827,8 +821,7 @@ void terrain_builder::parse_mapstring(
 			} else if(terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {
-				ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map"
-					   << std::endl;
+				ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map";
 				assert(false);
 				return;
 			}
@@ -927,7 +920,7 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 			if(const config::attribute_value* v = tc.get("pos")) {
 				int pos = *v;
 				if(anchors.find(pos) == anchors.end()) {
-					WRN_NG << "Invalid anchor!" << std::endl;
+					WRN_NG << "Invalid anchor!";
 					continue;
 				}
 
@@ -968,28 +961,28 @@ void terrain_builder::parse_config(const game_config_view& cfg, bool local)
 
 // Debug output for the terrain rules
 #if 0
-	std::cerr << "Built terrain rules: \n";
+	PLAIN_LOG << "Built terrain rules: ";
 
 	building_ruleset::const_iterator rule;
 	for(rule = building_rules_.begin(); rule != building_rules_.end(); ++rule) {
-		std::cerr << ">> New rule: image_background = "
+		PLAIN_LOG << ">> New rule: image_background = "
 			<< "\n>> Location " << rule->second.location_constraints
 			<< "\n>> Probability " << rule->second.probability
 
 		for(constraint_set::const_iterator constraint = rule->second.constraints.begin();
 		    constraint != rule->second.constraints.end(); ++constraint) {
 
-			std::cerr << ">>>> New constraint: location = (" << constraint->second.loc
-			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'\n";
+			PLAIN_LOG << ">>>> New constraint: location = (" << constraint->second.loc
+			          << "), terrain types = '" << t_translation::write_list(constraint->second.terrain_types_match.terrain) << "'";
 
 			std::vector<std::string>::const_iterator flag;
 
 			for(flag  = constraint->second.set_flag.begin(); flag != constraint->second.set_flag.end(); ++flag) {
-				std::cerr << ">>>>>> Set_flag: " << *flag << "\n";
+				PLAIN_LOG << ">>>>>> Set_flag: " << *flag;
 			}
 
 			for(flag = constraint->second.no_flag.begin(); flag != constraint->second.no_flag.end(); ++flag) {
-				std::cerr << ">>>>>> No_flag: " << *flag << "\n";
+				PLAIN_LOG << ">>>>>> No_flag: " << *flag;
 			}
 		}
 
@@ -1092,7 +1085,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule& rule, con
 
 		if(!constraint.no_draw) {
 			for(const rule_image& img : constraint.images) {
-				btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
+				btile.images.emplace_back(&img, rand_seed);
 			}
 		}
 

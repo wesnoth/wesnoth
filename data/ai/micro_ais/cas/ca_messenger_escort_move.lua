@@ -32,10 +32,12 @@ function ca_messenger_escort_move:execution(cfg)
     local escorts = get_escorts(cfg)
     local _, _, _, messengers = messenger_next_waypoint(cfg)
 
+    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
+
     local enemies = AH.get_attackable_enemies()
 
     local base_rating_map = LS.create()
-    local max_rating, best_unit, best_hex = - math.huge
+    local max_rating, best_unit, best_hex = - math.huge, nil, nil
     for _,unit in ipairs(escorts) do
         -- Only considering hexes unoccupied by other units is good enough for this
         local reach_map = AH.get_reachable_unocc(unit)
@@ -44,40 +46,42 @@ function ca_messenger_escort_move:execution(cfg)
         local unit_rating = unit.max_moves / 100. + unit.hitpoints / 1000.
 
         reach_map:iter( function(x, y, v)
-            local base_rating = base_rating_map:get(x, y)
+            if (not avoid_map:get(x, y)) or ((x == unit.x) and (y == unit.y)) then
+                local base_rating = base_rating_map:get(x, y)
 
-            if (not base_rating) then
-                base_rating = 0
+                if (not base_rating) then
+                    base_rating = 0
 
-                -- Distance from messenger is most important; only closest messenger counts for this
-                -- Give somewhat of a bonus for the messenger that has moved the farthest through the waypoints
-                local max_messenger_rating = - math.huge
-                for _,m in ipairs(messengers) do
-                    local messenger_rating = 1. / (M.distance_between(x, y, m.x, m.y) + 2.)
-                    local wp_rating = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_rating")
-                    messenger_rating = messenger_rating * 10. * (1. + wp_rating * 2.)
+                    -- Distance from messenger is most important; only closest messenger counts for this
+                    -- Give somewhat of a bonus for the messenger that has moved the farthest through the waypoints
+                    local max_messenger_rating = - math.huge
+                    for _,m in ipairs(messengers) do
+                        local messenger_rating = 1. / (M.distance_between(x, y, m.x, m.y) + 2.)
+                        local wp_rating = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_rating")
+                        messenger_rating = messenger_rating * 10. * (1. + wp_rating * 2.)
 
-                    if (messenger_rating > max_messenger_rating) then
-                        max_messenger_rating = messenger_rating
+                        if (messenger_rating > max_messenger_rating) then
+                            max_messenger_rating = messenger_rating
+                        end
                     end
+
+                    base_rating = base_rating + max_messenger_rating
+
+                    -- Distance from (sum of) enemies is important too
+                    -- This favors placing escort units between the messenger and close enemies
+                    for _,e in ipairs(enemies) do
+                        base_rating = base_rating + 1. / (M.distance_between(x, y, e.x, e.y) + 2.)
+                    end
+
+                    base_rating_map:insert(x, y, base_rating)
                 end
 
-                base_rating = base_rating + max_messenger_rating
+                local rating = base_rating + unit_rating
 
-                -- Distance from (sum of) enemies is important too
-                -- This favors placing escort units between the messenger and close enemies
-                for _,e in ipairs(enemies) do
-                    base_rating = base_rating + 1. / (M.distance_between(x, y, e.x, e.y) + 2.)
+                if (rating > max_rating) then
+                    max_rating = rating
+                    best_unit, best_hex = unit, { x, y }
                 end
-
-                base_rating_map:insert(x, y, base_rating)
-            end
-
-            local rating = base_rating + unit_rating
-
-            if (rating > max_rating) then
-                max_rating = rating
-                best_unit, best_hex = unit, { x, y }
             end
         end)
     end

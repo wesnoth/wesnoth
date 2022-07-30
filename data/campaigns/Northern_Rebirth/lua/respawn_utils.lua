@@ -7,12 +7,12 @@ function wesnoth.wml_actions.find_respawn_point(cfg)
 	local respawn_point
 	local radius = 1
 
-	if not wesnoth.eval_conditional { T.have_unit { id = respawn_near} } then
+	if not wml.eval_conditional { T.have_unit { id = respawn_near} } then
 		respawn_near = "Tallin"
 	end
 
 	repeat
-		respawn_point = wesnoth.get_locations({
+		respawn_point = wesnoth.map.find({
 			include_borders = false,
 			T["and"] {
 				T.filter {

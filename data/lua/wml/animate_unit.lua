@@ -1,4 +1,3 @@
-local helper = wesnoth.require "helper"
 local T = wml.tag
 
 local function add_animation(anim, cfg)
@@ -18,7 +17,7 @@ local function add_animation(anim, cfg)
 		)
 	end
 
-	if unit and not wesnoth.is_fogged(wesnoth.current.side, unit.x, unit.y) then
+	if unit and not wesnoth.sides.is_fogged(wesnoth.current.side, unit.x, unit.y) then
 		local primary = wml.get_child(cfg, "primary_attack")
 		local secondary = wml.get_child(cfg, "secondary_attack")
 		-- We don't have access to the secondary unit at this point.
@@ -35,7 +34,7 @@ local function add_animation(anim, cfg)
 			-- Similarly, the secondary weapon in a victory animation is the weapon
 			-- of the attacker, who is now the primary unit.
 			if primary then
-				primary = wesnoth.create_weapon(primary)
+				primary = wesnoth.units.create_weapon(primary)
 			end
 			if secondary then
 				secondary = unit:find_attack(secondary)
@@ -45,7 +44,7 @@ local function add_animation(anim, cfg)
 				primary = unit:find_attack(primary)
 			end
 			if secondary then
-				secondary = wesnoth.create_weapon(secondary)
+				secondary = wesnoth.units.create_weapon(secondary)
 			end
 		end
 
@@ -73,7 +72,7 @@ local function add_animation(anim, cfg)
 
 		local facing = wml.get_child(cfg, "facing")
 		if facing then
-			local facing_loc = wesnoth.get_locations(facing)[1]
+			local facing_loc = wesnoth.map.find(facing)[1]
 			if facing_loc then
 				local dir = wesnoth.map.get_relative_dir(unit.x, unit.y, facing_loc[1], facing_loc[2])
 				unit.facing = dir
@@ -107,7 +106,7 @@ local function add_animation(anim, cfg)
 end
 
 function wesnoth.wml_actions.animate_unit(cfg)
-	local anim = wesnoth.create_animator()
+	local anim = wesnoth.units.create_animator()
 	add_animation(anim, cfg)
 	anim:run()
 end

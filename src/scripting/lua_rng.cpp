@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/lua_rng.hpp"
@@ -22,7 +23,6 @@
 #include <new>
 #include <string>
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 static lg::log_domain log_lua("scripting/lua");
@@ -48,8 +48,8 @@ int impl_rng_destroy(lua_State* L)
 {
 	mt_rng * d = static_cast< mt_rng *> (luaL_testudata(L, 1, Rng));
 	if (d == nullptr) {
-		ERR_LUA << "rng_destroy called on data of type: " << lua_typename( L, lua_type( L, 1 ) ) << std::endl;
-		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org" << std::endl;
+		ERR_LUA << "rng_destroy called on data of type: " << lua_typename( L, lua_type( L, 1 ) );
+		ERR_LUA << "This may indicate a memory leak, please report at bugs.wesnoth.org";
 		lua_pushstring(L, "Rng object garbage collection failure");
 		lua_error(L);
 	} else {

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Boldizsár Lipka <lipkab@zoho.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -19,16 +20,14 @@
 #include <vector>
 
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Offers a list of compatible items if a currently selected one is incompatible. Currently used for switching era or map.
- * Key               |Type          |Mandatory|Description  
+ * Key               |Type          |Mandatory|Description
  * ------------------|--------------|---------|-----------
  * message           | @ref label   |yes      |displays the details of the required changes
  * itemlist          | @ref listbox |yes      |displays the available items to choose from
@@ -59,13 +58,10 @@ public:
 	}
 
 protected:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog */
 	virtual void post_show(window& window) override;
 
 private:
@@ -76,4 +72,3 @@ private:
 	int result_;
 };
 } // namespace dialogs
-} // namespace gui2

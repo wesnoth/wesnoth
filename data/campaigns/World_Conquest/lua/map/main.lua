@@ -1,5 +1,4 @@
-_ = wesnoth.textdomain "wesnoth"
-helper = wesnoth.require("helper")
+_ = wesnoth.textdomain 'wesnoth-wc'
 utils = wesnoth.require("wml-utils")
 functional = wesnoth.require("functional")
 wc2_convert = wesnoth.dofile("./../shared_utils/wml_converter.lua")
@@ -28,18 +27,17 @@ local function get_map_generator(scenario_data)
 			globals.settings.island
 		)
 	else
-		return scenario_data.generators[wesnoth.random(#scenario_data.generators)]
+		return scenario_data.generators[mathx.random(#scenario_data.generators)]
 	end
 end
 
 
 function wc_ii_generate_scenario(nplayers, gen_args)
 	nplayers = settings.nplayers or nplayers
-	local id_suffix = gen_args.id_suffix or ""
 	local scenario_extra = wml.get_child(gen_args, "scenario")
-	local scenario_num = settings.scenario_num or wesnoth.get_variable("wc2_scenario") or 1
+	local scenario_num = settings.scenario_num or wml.variables.wc2_scenario or 1
 	--todo: does this work properly in the first scenario?
-	local enemy_stength = wesnoth.get_variable("wc2_difficulty.enemy_power") or 6
+	local enemy_stength = wml.variables["wc2_difficulty.enemy_power"] or 6
 	local scenario_data = wesnoth.dofile(string.format("./scenarios/WC_II_%dp_scenario%d.lua", nplayers, scenario_num))
 
 	local prestart_event = { name = "prestart" }
@@ -51,22 +49,16 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		lua = {},
 		load_resource = {
 			{
-				id = "wc2_era_res" .. id_suffix
+				id = "wc2_era_res"
 			},
 			{
-				id = "wc2_scenario_res" .. id_suffix
+				id = "wc2_scenario_res"
 			},
 			{
-				id = "wc2_scenario_res_extra" .. id_suffix
+				id = "wc2_scenario_res_extra"
 			},
 		},
 		options = {
-			wml.tag.checkbox {
-				id="wc2_config_enable_pya",
-				default=true,
-				name="Enable advancement mod",
-				description="enables the buildin mod to preselect what unit will advance into, disable this to be compatible with other mods that do the same thing",
-			},
 			wml.tag.checkbox {
 				id="wc2_config_enable_unitmarker",
 				default=true,
@@ -77,23 +69,15 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		variables = {
 			wc2_scenario = scenario_num,
 			wc2_player_count = nplayers,
-			wc2_host_version = "0.8.2"
+			wc2_host_version = "0.8.4"
 		},
 		side = {},
-		id = "WC_II_" .. nplayers .. "p" .. id_suffix,
-		next_scenario = "WC_II_" .. nplayers .. "p" .. id_suffix,
+		id = gen_args.id,
+		next_scenario = gen_args.id,
 		description = "WC_II_" .. nplayers .. "p_desc",
 		modify_placing = false,
-		-- does this work
 		turns = scenario_data.turns,
-		experience_modifier = 100,
-		victory_when_enemies_defeated = true,
-		carryover_percentage = 0,
-		carryover_report = false,
-		carryover_add = false,
-		force_lock_settings = true,
 	}
-	table.insert(prestart_event, wml.tag.wc2_choose_difficulty {} )
 
 	-- add [side]s to the [scenario]
 	local enemy_data = scenario_data.get_enemy_data(enemy_stength)

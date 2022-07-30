@@ -23,7 +23,7 @@ function wesnoth.wml_actions.find_path(cfg)
 	end
 
 	local allow_multiple_turns = cfg.allow_multiple_turns
-	local viewing_side
+	local ignore_visibility = not cfg.check_visibility
 
 	local nearest_by_cost = true
 	local nearest_by_distance = false
@@ -38,26 +38,26 @@ function wesnoth.wml_actions.find_path(cfg)
 		nearest_by_steps = true
 	end
 
-	if not cfg.check_visibility then viewing_side = 0 end -- if check_visiblity then shroud is taken in account
-
 	-- only the first location with the lowest distance and lowest movement cost will match.
-	local locations = wesnoth.get_locations(filter_location)
+	local locations = wesnoth.map.find(filter_location)
 
 	local max_cost = nil
 	if not allow_multiple_turns then max_cost = unit.moves end --to avoid wrong calculation on already moved units
 	local current_distance, current_cost, current_steps = math.huge, math.huge, math.huge
-	local current_location = {}
-
-	local width,heigth = wesnoth.get_map_size() -- data for test below
+	local current_location
 
 	for index, location in ipairs(locations) do
 		-- we test if location passed to pathfinder is invalid (border);
 		-- if it is, do not use it, and continue the cycle
-		if location[1] == 0 or location[1] == ( width + 1 ) or location[2] == 0 or location[2] == ( heigth + 1 ) then
-		else
-			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location[1], location[2] )
+		if not wesnoth.current.map:on_border(location) then
+			local distance = wesnoth.map.distance_between ( unit.x, unit.y, location )
 			-- if we pass an unreachable location then an empty path and high value cost will be returned
-			local path, cost = wesnoth.find_path( unit, location[1], location[2], { max_cost = max_cost, ignore_units = ignore_units, ignore_teleport = ignore_teleport, viewing_side = viewing_side } )
+			local path, cost = wesnoth.paths.find_path( unit, location, {
+				max_cost = max_cost,
+				ignore_units = ignore_units,
+				ignore_teleport = ignore_teleport,
+				ignore_visibility = ignore_visibility
+			} )
 
 			if #path == 0 or cost >= 42424241 then
 				-- it's not a reachable hex. 42424242 is the high value returned for unwalkable or busy terrains
@@ -90,21 +90,21 @@ function wesnoth.wml_actions.find_path(cfg)
 		end
 	end
 
-	if #current_location == 0 then
+	if current_location == nil then
 		-- either no matching locations, or only inaccessible matching locations (maybe enemy units are there)
 		if #locations == 0 then
-			wesnoth.message("WML warning","[find_path]'s filter didn't match any location")
+			wesnoth.interface.add_chat_message("WML warning","[find_path]'s filter didn't match any location")
 		end
 		wml.variables[tostring(variable)] = { hexes = 0 } -- set only hexes, nil all other values
 	else
-		local path, cost = wesnoth.find_path(
+		local path, cost = wesnoth.paths.find_path(
 			unit,
-			current_location[1], current_location[2],
+			current_location,
 			{
 				max_cost = max_cost,
 				ignore_units = ignore_units,
 				ignore_teleport = ignore_teleport,
-				viewing_side = viewing_side
+				ignore_visibility = ignore_visibility
 			})
 		local turns
 
@@ -134,15 +134,14 @@ function wesnoth.wml_actions.find_path(cfg)
 			}
 
 		for index, path_loc in ipairs(path) do
-			local sub_path, sub_cost = wesnoth.find_path(
+			local sub_path, sub_cost = wesnoth.paths.find_path(
 				unit,
-				path_loc[1],
-				path_loc[2],
+				path_loc,
 				{
 					max_cost = max_cost,
 					ignore_units = ignore_units,
 					ignore_teleport = ignore_teleport,
-					viewing_side = viewing_side
+					ignore_visibility = ignore_visibility
 				} )
 			local sub_turns
 
@@ -155,7 +154,7 @@ function wesnoth.wml_actions.find_path(cfg)
 			wml.variables[string.format( "%s.step[%d]", variable, index - 1 )] =
 				{  -- this structure takes less space in the inspection window
 					x = path_loc[1], y = path_loc[2],
-					terrain = wesnoth.get_terrain( path_loc[1], path_loc[2] ),
+					terrain = wesnoth.current.map[path_loc],
 					movement_cost = sub_cost,
 					required_turns = sub_turns
 				}

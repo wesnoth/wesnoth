@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2008 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -22,6 +23,7 @@
 #include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/mp_game_utils.hpp"
+#include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/core/timer.hpp"
@@ -41,9 +43,10 @@
 #include "mp_ui_alerts.hpp"
 #include "preferences/credentials.hpp"
 #include "saved_game.hpp"
+#include "side_controller.hpp"
 #include "statistics.hpp"
 #include "units/types.hpp"
-#include "utils/scope_exit.hpp"
+#include "utils/guard_value.hpp"
 #include "wesnothd_connection.hpp"
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
@@ -52,9 +55,7 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 #define WRN_MP LOG_STREAM(warn, log_mp_connect_engine)
 #define ERR_MP LOG_STREAM(err, log_mp_connect_engine)
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(mp_join_game)
@@ -88,7 +89,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		network_connection_.send_data(config("load_next_scenario"));
+		mp::send_to_server(config("load_next_scenario"));
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -134,7 +135,19 @@ bool mp_join_game::fetch_game_config()
 		state_.classification() = game_classification(level_);
 
 		// Make sure that we have the same config as host, if possible.
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+		std::string scenario_id = state_.get_scenario_id();
+		// since add-ons are now only enabled when used, the scenario ID may still not be known
+		// so check in the MP info sent from the server for the scenario ID if that's the case
+		if(scenario_id == "") {
+			for(const auto& addon : level_.child("multiplayer").child_range("addon")) {
+				for(const auto& content : addon.child_range("content")) {
+					if(content["type"] == "scenario") {
+						scenario_id = content["id"].str();
+					}
+				}
+			}
+		}
+		game_config_manager::get()->load_game_config_for_game(state_.classification(), scenario_id);
 	}
 
 	game_config::add_color_info(game_config_view::wrap(get_scenario()));
@@ -153,13 +166,13 @@ bool mp_join_game::fetch_game_config()
 	for(const config& side : get_scenario().child_range("side")) {
 		// TODO: it can happen that the scenario specifies that the controller
 		//       of a side should also gain control of another side.
-		if(side["controller"] == "reserved" && side["current_player"] == preferences::login()) {
+		if(side["controller"] == side_controller::reserved && side["current_player"] == preferences::login()) {
 			side_choice = &side;
 			side_num_choice = side_num_counter;
 			break;
 		}
 
-		if(side["controller"] == "human" && side["player_id"].empty()) {
+		if(side["controller"] == side_controller::human && side["player_id"].empty()) {
 			if(!side_choice) { // Found the first empty side
 				side_choice = &side;
 				side_num_choice = side_num_counter;
@@ -206,15 +219,15 @@ static std::string generate_user_description(const config& side)
 	const std::string reservation = side["current_player"].str();
 	const std::string owner = side["player_id"].str();
 
-	if(controller_type == "ai") {
+	if(controller_type == side_controller::ai) {
 		return _("Computer Player");
-	} else if(controller_type == "null") {
+	} else if(controller_type == side_controller::none) {
 		return _("Empty slot");
-	} else if(controller_type == "reserved") {
+	} else if(controller_type == side_controller::reserved) {
 		return VGETTEXT("Reserved for $playername", {{"playername", reservation}});
 	} else if(owner.empty()) {
 		return _("Vacant slot");
-	} else if(controller_type == "human" || controller_type == "network") {
+	} else if(controller_type == side_controller::human) {
 		return owner;
 	} else {
 		return _("empty");
@@ -242,8 +255,6 @@ void mp_join_game::pre_show(window& window)
 	// Initialize chatbox and game rooms
 	//
 	chatbox& chat = find_widget<chatbox>(&window, "chat", false);
-
-	chat.set_wesnothd_connection(network_connection_);
 
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
@@ -278,13 +289,13 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 
 		const config& era = level_.child("era");
 		if(!era) {
-			ERR_MP << "no era information\n";
+			ERR_MP << "no era information";
 			return false;
 		}
 
 		config::const_child_itors possible_sides = era.child_range("multiplayer_side");
 		if(possible_sides.empty()) {
-			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.\n";
+			WRN_MP << "no [multiplayer_side] found in era '" << era["id"] << "'.";
 			return false;
 		}
 
@@ -301,14 +312,13 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		const bool is_mp = state_.classification().is_normal_mp_game();
 		const bool lock_settings = get_scenario()["force_lock_settings"].to_bool(!is_mp);
 		const bool use_map_settings = level_.child("multiplayer")["mp_use_map_settings"].to_bool();
-		const mp_game_settings::SAVED_GAME_MODE saved_game = level_.child("multiplayer")["savegame"].to_enum<mp_game_settings::SAVED_GAME_MODE>(mp_game_settings::SAVED_GAME_MODE::NONE);
+		const saved_game_mode::type saved_game = saved_game_mode::get_enum(level_.child("multiplayer")["savegame"].str()).value_or(saved_game_mode::type::no);
 
-		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME);
+		ng::flg_manager flg(era_factions, side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
-			flg_dialog_ = &flg_dialog;
-			utils::scope_exit se([this]() { flg_dialog_ = nullptr; });
+			utils::guard_value guard(flg_dialog_, &flg_dialog);
 
 			if(!flg_dialog.show() && !first_time) {
 				return true;
@@ -325,7 +335,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
 		change["side_num"] = side_num;
 
-		network_connection_.send_data(faction);
+		mp::send_to_server(faction);
 	}
 
 	return true;
@@ -341,7 +351,7 @@ void mp_join_game::generate_side_list()
 
 	tree.clear();
 	team_tree_map_.clear();
-	const std::map<std::string, string_map> empty_map;
+	const widget_data empty_map;
 
 	int side_num = 0;
 	for(const auto& side : get_scenario().child_range("side")) {
@@ -352,10 +362,10 @@ void mp_join_game::generate_side_list()
 
 		// Check to see whether we've added a toplevel tree node for this team. If not, add one
 		if(team_tree_map_.find(side["team_name"].str()) == team_tree_map_.end()) {
-			std::map<std::string, string_map> data;
-			string_map item;
+			widget_data data;
+			widget_item item;
 
-			item["label"] = (formatter() << _("Team:") << " " << t_string::from_serialized(side["user_team_name"])).str();
+			item["label"] = t_string::from_serialized(side["user_team_name"]);
 			data.emplace("tree_view_node_label", item);
 
 			tree_view_node& team_node = tree.add_node("team_header", data);
@@ -364,8 +374,8 @@ void mp_join_game::generate_side_list()
 			team_tree_map_[side["team_name"].str()] = &team_node;
 		}
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		const std::string color = !side["color"].empty() ? side["color"] : side["side"].str();
 
@@ -537,7 +547,7 @@ void mp_join_game::network_handler()
 	}
 
 	if(data.has_child("turn")) {
-		ERR_MP << "received replay data\n" << data << "\n in mp join\n";
+		ERR_MP << "received replay data\n" << data << "\n in mp join";
 	}
 
 	// Update player list
@@ -572,13 +582,12 @@ void mp_join_game::post_show(window& window)
 
 		mp::level_to_gamestate(level_, state_);
 
-		mp_ui_alerts::game_has_begun();
+		mp::ui_alerts::game_has_begun();
 	} else if(observe_game_) {
-		network_connection_.send_data(config("observer_quit", config { "name", preferences::login() }));
+		mp::send_to_server(config("observer_quit", config { "name", preferences::login() }));
 	} else {
-		network_connection_.send_data(config("leave_game"));
+		mp::send_to_server(config("leave_game"));
 	}
 }
 
 } // namespace dialogs
-} // namespace gui2

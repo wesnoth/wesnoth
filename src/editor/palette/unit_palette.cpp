@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Fabian Mueller <fabianmueller5@gmx.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -38,10 +39,8 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 			continue;
 		item_map_.emplace(i.second.id(), i.second);
 		group_map_[i.second.race_id()].push_back(i.second.id());
-		nmax_items_ = std::max<int>(nmax_items_, group_map_[i.second.race_id()].size());
 		// Add the unit to the default group
 		group_map_["all"].push_back(i.second.id());
-		nmax_items_ = std::max<int>(nmax_items_, group_map_["all"].size());
 	}
 
 	for(const race_map::value_type &i : unit_types.races()) {
@@ -66,29 +65,29 @@ void unit_palette::setup(const game_config_view& /*cfg*/)
 	set_group(groups_[0].id);
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found." << std::endl;
+		ERR_ED << "No items found.";
 	}
 }
 
-void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstream& tooltip_text) {
-
+void unit_palette::setup_item(
+	const unit_type& u,
+	texture& base_image,
+	texture& /*overlay_image*/,
+	std::stringstream& tooltip_text)
+{
 	std::stringstream filename;
 	filename << u.image() << "~RC(" << u.flag_rgb() << '>'
 			 << team::get_side_color_id(gui_.viewing_side()) << ')';
 
-	image = image::get_image(filename.str());
-	if(image == nullptr) {
+	base_image = image::get_texture(filename.str());
+	if(!base_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for unit type: '" << filename.str() << "' not found" << std::endl;
-		image = image::get_image(game_config::images::missing);
-		if(image == nullptr) {
-			ERR_ED << "Placeholder image not found" << std::endl;
+		ERR_ED << "image for unit type: '" << filename.str() << "' not found";
+		base_image = image::get_texture(game_config::images::missing);
+		if(!base_image) {
+			ERR_ED << "Placeholder image not found";
 			return;
 		}
-	}
-
-	if(image->w != item_size_ || image->h != item_size_) {
-		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << u.type_name();

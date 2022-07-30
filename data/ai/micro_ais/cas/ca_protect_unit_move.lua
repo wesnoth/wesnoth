@@ -6,7 +6,7 @@ local F = wesnoth.require "functional"
 local function get_protected_units(cfg)
     local units = {}
     for u in wml.child_range(cfg, "unit") do
-        table.insert(units, AH.get_units_with_moves { id = u.id }[1])
+        table.insert(units, AH.get_units_with_moves { id = u.id, side = wesnoth.current.side }[1])
     end
     return units
 end
@@ -43,15 +43,14 @@ function ca_protect_unit_move:execution(cfg, data)
     end
 
     local reach_map = AH.get_reachable_unocc(unit)
-    local enemy_inverse_distance_map = AH.inverse_distance_map(enemy_units, reach_map)
 
     local terrain_defense_map = LS.create()
-    reach_map:iter(function(x, y, data)
-        terrain_defense_map:insert(x, y, unit:defense_on(wesnoth.get_terrain(x, y)))
+    reach_map:iter(function(x, y, data1)
+        terrain_defense_map:insert(x, y, unit:defense_on(wesnoth.current.map[{x, y}]))
     end)
 
     local goal_distance_map = LS.create()
-    reach_map:iter(function(x, y, data)
+    reach_map:iter(function(x, y, data1)
         goal_distance_map:insert(x, y, wesnoth.map.distance_between(x, y, goal[1], goal[2]))
     end)
 
@@ -70,7 +69,7 @@ function ca_protect_unit_move:execution(cfg, data)
         terrain_weight = 0
     end
 
-    local max_rating, best_hex = - math.huge
+    local max_rating, best_hex = - math.huge, nil
     for ind,_ in pairs(reach_map.values) do
         local rating =
             (attack_map.values[ind] or 0) * my_unit_weight

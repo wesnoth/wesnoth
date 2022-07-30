@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2016 - 2018 Jyrki Vesterinen <sandgtx@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	by Jyrki Vesterinen <sandgtx@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -72,8 +73,10 @@ void size_lock::finalize(const builder_widget& widget_builder)
 {
 	set_rows_cols(1u, 1u);
 
-	widget_ = widget_builder.build();
-	set_child(widget_, 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
+	auto widget = widget_builder.build();
+	widget_ = widget.get();
+
+	set_child(std::move(widget), 0u, 0u, grid::VERTICAL_GROW_SEND_TO_CLIENT | grid::HORIZONTAL_GROW_SEND_TO_CLIENT, 0u);
 }
 
 point size_lock::calculate_best_size() const
@@ -91,7 +94,7 @@ point size_lock::calculate_best_size() const
 size_lock_definition::size_lock_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing fixed size widget " << id << '\n';
+	DBG_GUI_P << "Parsing fixed size widget " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -122,11 +125,11 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	content_ = create_widget_builder(cfg.child("widget"));
 }
 
-widget* builder_size_lock::build() const
+std::unique_ptr<widget> builder_size_lock::build() const
 {
-	size_lock* widget = new size_lock(*this);
+	auto widget = std::make_unique<size_lock>(*this);
 
-	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed fixed size widget '" << id << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<size_lock_definition>();
 	assert(conf != nullptr);

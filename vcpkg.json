@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "wesnoth-dependencies",
+  "version": "0.0.1",
+  "dependencies": [
+    "sdl2",
+    {
+      "name": "sdl2-image",
+      "features": [ "libjpeg-turbo", "libwebp" ]
+    },
+    "libwebp",
+    {
+      "name": "sdl2-mixer",
+      "features": [ "libvorbis", "dynamic-load" ]
+    },
+    "bzip2",
+    "zlib",
+    "pango",
+    "cairo",
+    "fontconfig",
+    "libvorbis",
+    "libogg",
+    "openssl",
+    "boost-filesystem",
+    "boost-iostreams",
+    {
+      "name": "boost-locale",
+      "features": [ "icu" ]
+    },
+    "boost-random",
+    {
+      "name": "boost-regex",
+      "features": [ "icu" ]
+    },
+    "boost-asio",
+    "boost-program-options",
+    "boost-system",
+    "boost-bimap",
+    "boost-math",
+    "boost-logic",
+    "boost-format",
+    "boost-scope-exit",
+    "boost-circular-buffer",
+    "boost-ptr-container",
+    "boost-test"
+  ]
+}

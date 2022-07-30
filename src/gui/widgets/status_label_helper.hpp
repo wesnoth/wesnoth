@@ -1,21 +1,22 @@
 /*
-   Copyright (C) 2010 - 2018 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
-#include "gui/widgets/integer_selector.hpp"
+#include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/selectable_item.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
@@ -23,24 +24,25 @@
 
 namespace gui2
 {
-/**
- * Default value getter for selectable widgets (like toggle buttons)
- */
 template<typename T>
-static inline std::enable_if_t<std::is_base_of_v<selectable_item, T>, std::string>
-default_status_value_getter(T& w)
+t_string default_status_value_getter(const T& w)
 {
-	return w.get_value_bool() ? _("yes") : _("no");
-}
+	// Menu Buttons
+	if constexpr(std::is_same_v<menu_button, T>) {
+		return w.get_value_string();
+	}
 
-/**
- * Default value getter for integer-based widgets (like sliders)
- */
-template<typename T>
-static inline std::enable_if_t<std::is_base_of_v<integer_selector, T>, std::string>
-default_status_value_getter(T& w)
-{
-	return w.get_value_label();
+	// Selectable widgets (like toggle buttons)
+	if constexpr(std::is_base_of_v<selectable_item, T>) {
+		return w.get_value_bool() ? _("yes") : _("no");
+	}
+
+	// Sliders
+	if constexpr(std::is_same_v<slider, T>) {
+		return w.get_value_label();
+	}
+
+	return w.get_label();
 }
 
 /**
@@ -63,7 +65,7 @@ template<typename W>
 std::function<void()> bind_status_label(
 		widget* find_in,
 		const std::string& source_id,
-		const std::function<std::string(W&)> value_getter = default_status_value_getter<W>,
+		const std::function<t_string(const W&)> value_getter = default_status_value_getter<W>,
 		const std::string& label_id = "")
 {
 	// If no label ID is provided, use the format source ID + '_label'.
@@ -76,9 +78,7 @@ std::function<void()> bind_status_label(
 	styled_widget& label = find_widget<styled_widget>(find_in, label_id_, false);
 
 	const auto update_label = [&, value_getter]() {
-		const std::string value = value_getter(source);
-
-		label.set_label(value);
+		label.set_label(value_getter(source));
 	};
 
 	// Bind the callback.

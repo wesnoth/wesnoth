@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -25,7 +26,7 @@ namespace gui {
 class textbox : public scrollarea
 {
 public:
-	textbox(CVideo &video, int width, const std::string& text="", bool editable=true, std::size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2, const bool auto_join = true);
+	textbox(int width, const std::string& text="", bool editable=true, std::size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2, const bool auto_join = true);
 	virtual ~textbox();
 
 	const std::string text() const;
@@ -48,11 +49,15 @@ public:
 
 	void set_edit_target(textbox* target);
 
+	/** Called by draw_manager to validate layout. */
+	virtual void layout() override;
+
 protected:
-	virtual void draw_contents();
-	virtual void update_location(const SDL_Rect& rect);
-	virtual void set_inner_location(const SDL_Rect& );
-	virtual void scroll(unsigned int pos);
+	// scrollarea overrides
+	virtual void draw_contents() override;
+	virtual void update_location(const SDL_Rect& rect) override;
+	virtual void set_inner_location(const SDL_Rect& ) override;
+	virtual void scroll(unsigned int pos) override;
 
 private:
 	virtual void handle_text_changed(const std::u32string&) {}
@@ -81,7 +86,7 @@ private:
 	//the cursor should be inverted every 500 ms.
 	//this will be reset when keyboard input events occur
 	int show_cursor_at_;
-	surface text_image_;
+	texture text_image_;
 
 	bool wrap_;
 
@@ -100,19 +105,19 @@ private:
 
 	void handle_event(const SDL_Event& event, bool was_forwarded);
 
-	void handle_event(const SDL_Event& event);
+	void handle_event(const SDL_Event& event) override;
 
 	void pass_event_to_target(const SDL_Event& event);
 
 	void draw_cursor(int pos) const;
 	void update_text_cache(bool reset = false, const color_t& color =font::NORMAL_COLOR);
-	surface add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
+	texture add_text_line(const std::u32string& text, const color_t& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 
 	//make it so that only one textbox object can be receiving
 	//events at a time.
-	bool requires_event_focus(const SDL_Event *event=nullptr) const;
+	bool requires_event_focus(const SDL_Event *event=nullptr) const override;
 
 	bool show_scrollbar() const;
 	bool handle_text_input(const SDL_Event& event);

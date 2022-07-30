@@ -1,5 +1,4 @@
 local on_event = wesnoth.require("on_event")
-local helper = wesnoth.require("helper")
 
 local _ = wesnoth.textdomain 'wesnoth-wc'
 
@@ -97,8 +96,8 @@ function artifacts.give_item(unit, index, visualize)
 	if make_holder_loyal then
 		table.insert(object, wml.tag.effect { apply_to= "loyal" })
 	end
-		
-		
+
+
 	-- IDEA: i _could_ replace the follwing with a 'apply_to=wc2_artifact' effect that
 	--       basicially applies all effects in the [artifact]s definition. The obvious
 	--       advantage would be a smaller savefile size. Also this woudl change how savefiles
@@ -111,9 +110,20 @@ function artifacts.give_item(unit, index, visualize)
 	for i, effect in ipairs(aftifact_data.effect) do
 		table.insert(object, wml.tag.effect (effect) )
 	end
+	local unit_initial_hp = unit.hitpoints
 	unit:add_modification("object", object)
 	--rebuild unit, to reduce savefile size.
 	unit:transform(unit.type)
+
+	-- slot in traits if any artifacts grant any
+	for trait in wml.child_range(artifacts.list[index], "trait") do
+		if not unit:matches { wml.tag.filter_wml { wml.tag.modifications { wml.tag.trait { id = trait.id } } } } then
+			unit:add_modification("trait", trait)
+		end
+	end
+
+	-- restore unit hitpoints to before they picked up the artifact
+	unit.hitpoints = unit_initial_hp
 	-- the artifact might reduce the max xp.
 	unit:advance(true, true)
 end
@@ -121,12 +131,12 @@ end
 -- unit picking up artifacts
 on_event("wc2_drop_pickup", function(ec)
 	local item = wc2_dropping.current_item
-	local unit = wesnoth.get_unit(ec.x1, ec.y1)
+	local unit = wesnoth.units.get(ec.x1, ec.y1)
 	if not item.variables.wc2_atrifact_id then
 		return
 	end
 
-	if not unit then 
+	if not unit then
 		return
 	end
 
@@ -135,7 +145,7 @@ on_event("wc2_drop_pickup", function(ec)
 	if not wml.variables["wc2_config_experimental_pickup"] and not is_human  then
 		return
 	end
-	
+
 
 	local index = item.variables.wc2_atrifact_id
 	local filter = artifacts.get_artifact(index).filter
@@ -154,7 +164,7 @@ on_event("wc2_drop_pickup", function(ec)
 			return
 		end
 	end
-	
+
 
 	wc2_dropping.item_taken = true
 	artifacts.give_item(unit, index, true)
@@ -163,9 +173,9 @@ end)
 
 -- returns a list of artifact ids, suitable for  the give type ('enemy' for example).
 function artifacts.fresh_artifacts_list(for_type)
-	local res = {} 
+	local res = {}
 	for i,v in ipairs(artifacts.get_artifact_list()) do
-		if not for_type or not wc2_utils.split_to_set(v.not_available or "")[for_type] then
+		if not for_type or not stringx.map_split(v.not_available or "")[for_type] then
 			table.insert(res, i)
 		end
 	end
@@ -175,14 +185,14 @@ end
 
 -- drop all items a dying unit carries.
 on_event("die", function(event_context)
-	local unit = wesnoth.get_unit(event_context.x1, event_context.y1)
+	local unit = wesnoth.units.get(event_context.x1, event_context.y1)
 	if not unit then
 		return
 	end
 	if not wml.variables["wc2_config_experimental_pickup"] and wc2_scenario.is_human_side(unit.side) then
 		return
 	end
-	for object in helper.child_range(wml.get_child(unit.__cfg, "modifications") or {}, "object") do
+	for object in wml.child_range(wml.get_child(unit.__cfg, "modifications") or {}, "object") do
 		if object.wc2_atrifact_id then
 			artifacts.place_item(unit.x, unit.y, object.wc2_atrifact_id)
 			artifacts.drop_message(object.wc2_atrifact_id)
@@ -195,7 +205,7 @@ on_event("die", function(event_context)
 end)
 
 -- returns true if there is an item in the map at the given position,
--- used to determine whether to show the artifact info menu at that position. 
+-- used to determine whether to show the artifact info menu at that position.
 function artifacts.is_item_at(x,y)
 	for i,item in ipairs(wesnoth.interface.get_items(x,y)) do
 		if item.variables.wc2_atrifact_id then
@@ -205,7 +215,7 @@ function artifacts.is_item_at(x,y)
 	return false
 end
 
--- shows an information [message] about the item laying at position 
+-- shows an information [message] about the item laying at position
 -- @a cfg.x, cfg.y
 function wesnoth.wml_actions.wc2_show_item_info(cfg)
 	local x = cfg.x

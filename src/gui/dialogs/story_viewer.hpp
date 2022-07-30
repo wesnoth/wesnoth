@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2017-2018 by Charles Dang <exodia339@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	by Charles Dang <exodia339@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -20,13 +21,11 @@
 #include "storyscreen/controller.hpp"
 #include "storyscreen/part.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 /** Dialog to view the storyscreen. */
-class story_viewer : public modal_dialog
+class story_viewer : public modal_dialog, public top_level_drawable
 {
 public:
 	story_viewer(const std::string& scenario_name, const config& cfg_parsed);
@@ -43,12 +42,19 @@ public:
 		} catch(const std::out_of_range&) {}
 	}
 
+	// top_level_drawable overrides
+	// used to animate the view
+	// TODO: draw_manager - better animation step / hook
+	// TODO: draw_manager - i still am horrified that a modal_dialog is not a window
+	virtual void layout() override;
+	virtual bool expose(const SDL_Rect&) override { return false; }
+	virtual rect screen_location() override { return {0,0,0,0}; }
+
 private:
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
+	virtual void post_show(window& window) override;
 
 	void clear_image_timer();
 
@@ -72,8 +78,6 @@ private:
 	void begin_fade_draw(bool fade_in);
 	void halt_fade_draw();
 
-	void draw_callback();
-
 	void flag_stack_as_dirty();
 
 	storyscreen::controller controller_;
@@ -94,7 +98,8 @@ private:
 	};
 
 	FADE_STATE fade_state_;
+
+	bool game_was_already_hidden_;
 };
 
 } // namespace dialogs
-} // namespace gui2

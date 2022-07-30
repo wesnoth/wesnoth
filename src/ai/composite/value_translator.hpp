@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -404,10 +405,10 @@ public:
 
 	static void value_to_variant(const attacks_vector &value, wfl::variant &var)
 	{
-                std::vector<wfl::variant> vars;
-                for(attacks_vector::const_iterator i = value.begin(); i != value.end(); ++i) {
-                        vars.emplace_back(std::make_shared<attack_analysis>(*i));
-                }
+		std::vector<wfl::variant> vars;
+		for(attacks_vector::const_iterator i = value.begin(); i != value.end(); ++i) {
+			vars.emplace_back(std::make_shared<attack_analysis>(*i));
+		}
 		var = wfl::variant(vars);
 	}
 
@@ -432,7 +433,7 @@ public:
 
 	static void variant_to_value(const wfl::variant &/*var*/, terrain_filter &/*value*/)
 	{
-	        assert(false);//not implemented
+		assert(false);//not implemented
 	}
 
 	static void value_to_variant(const terrain_filter &/*value*/, wfl::variant &/*var*/)

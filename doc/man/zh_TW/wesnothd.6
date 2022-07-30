@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2018 wesnothd 韋諾之戰多人遊戲伺服器
+.TH WESNOTHD 6 2021 wesnothd 韋諾之戰多人網路伺服器
 .
 .SH 名稱
 .
-wesnothd \- 韋諾之戰 \fBWesnoth\fP 多人游戲伺服器
+wesnothd \- 韋諾之戰多人網路伺服器
 .
 .SH 摘要
 .
@@ -33,38 +33,39 @@ wesnothd \- 韋諾之戰 \fBWesnoth\fP 多人游戲伺服器
 .
 .SH 描述
 .
-管理韋諾之戰多人對戰遊戲。參閱 http://www.wesnoth.org/wiki/ServerAdministration 來查看韋諾客戶端或
-fifo 的伺服器指令。
+管理韋諾之戰的多人遊戲。參閱 http://www.wesnoth.org/wiki/ServerAdministration
+來查看透過韋諾客戶端(/query ...)或 fifo，伺服器接受什麼指令。
 .
 .SH 選項
 .
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
-指定韋諾找到的檔案配置目錄。下面的\fBSERVER CONFIG\fP通過發送SIGHUP信號給伺服器程序可以重新裝載檔案配置。
+告訴 wesnothd 要去哪裡找到設定檔來用。參閱下面的 \fBSERVER CONFIG\fP 來了解語法。你可以藉由傳送 SIGHUP
+給伺服器的行程來重新載入設定檔。
 .TP 
 \fB\-d, \-\-daemon\fP
-以安全模式執行韋諾。
+執行 wesnothd 作為一個系統服務。
 .TP 
 \fB\-h, \-\-help\fP
-顯示指令的功用。
+告訴你命令列的選項是做什麼用的。
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-設定日誌記錄的類別。\fBall\fP可以用來支援任何日誌域的類別。可選的類別有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP。預設的類別是\fBerror\fP，對\fBserver\fP域預設類別是\fBinfo\fP。
+設定日誌域的嚴重等級。\fBall\fP 可以用來匹配任何日誌域。可使用的等級有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP。預設的情況下，\fBerror\fP 等級會被使用，而 \fBserver\fP 日誌域會預設為 \fBinfo\fP 等級。
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-設定伺服器到指定的埠。如果不指定埠將使用\fB15000\fP。
+綁定伺服器到指定的連接埠。如果不指定埠號，將會使用連接埠 \fB15000\fP。
 .TP 
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-設定網路I/O的最大等待工作流程數為 n (預設值為\fB5\fP，\ 最大值為\ \fB30\fP)。
+為網路 I/O 設定工作執行緒的最大數量為 n（預設值：\fB5\fP；最大值：\fB30\fP）。
 .TP 
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-允許創造最大等待工作流程數。如果設定為 \fB0\fP 則不限制流程數（預設值：\fB0\fP）
+設定會被建立的工作執行緒的最大數量。如果設定為 \fB0\fP，則將沒有限制（預設值：\fB0\fP）。
 .TP 
 \fB\-V, \-\-version\fP
 顯示版本號碼並退出。
 .TP 
 \fB\-v, \-\-verbose\fP
-開啟偵測日誌記錄。
+開啟偵錯日誌。
 .
 .SH 伺服器設定
 .
@@ -79,166 +80,171 @@ fifo 的伺服器指令。
 .P
 [/\fItag\fP]
 .
-.SS "Global keys："
+.SS 全域鍵值：
 .
 .TP 
 \fBallow_remote_shutdown\fP
-如果設置為 \fBno\fP （預設值），shut_down（關閉）和restart（重啟）請求將被忽略，除非這些請求來自於fifo。如果設為 \fByes\fP
-則允許管理員透過 /query 遠程關閉。
+如果設置為 \fBno\fP （預設值），shut_down（關閉）和 restart（重啟）請求將被忽略，除非它們來自 fifo。設為 \fByes\fP
+可允許被一個管理員透過 /query 來遠程關閉。
 .TP 
 \fBban_save_file\fP
-一個伺服器可讀可寫的（經gzip壓縮的）檔案的完整路徑或相對路徑。封禁訊息會自動保存在這個檔案裡，並在伺服器啟動時讀取。
+伺服器可讀可寫的（經gzip壓縮的）檔案的完整路徑或相對路徑。封禁清單將會被保存到這個檔案裡，並在伺服器啟動時再次讀取。
 .TP 
 \fBcompress_stored_rooms\fP
-指定房間檔案是否應該以壓縮形式讀寫。預設值為\fByes\fP。
+指定房間檔案是否應該以壓縮形式讀寫。預設值為 \fByes\fP。
 .TP 
 \fBconnections_allowed\fP
-同一IP允許的連接數。(預設值：\fB5\fP)
+同一IP允許的連接數。（預設值：\fB5\fP）
+.TP 
+\fBdeny_unregistered_login\fP
+是否在 \fBuser_handler\fP 被使用時，防止沒有註冊的玩家進行登入。（預設值：false）
 .TP 
 \fBdisallow_names\fP
-伺服器不允許使用的使用者名稱/暱稱。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。更多資料請查看 \fBglob\fP(7)
-。預設值（如果使用者沒有指定則自動使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
+伺服器不允許使用的名稱/暱稱。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。參閱 \fBglob\fP(7)
+來了解細節。預設值（如果沒有東西被指定就會用這個值）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
 \fBfifo_path\fP
-伺服器所使用的 fifo 檔案的路徑（與在wesnoth中使用 /query
-功能相同），您可以從該檔案內呼叫伺服器命令。如果不指定，則預設為編譯時指定的路徑（預設：\fB/var/run/wesnothd/socket\fP）。
+你可以送出伺服器指令到（與透過韋諾客戶端使用「/query ...」相同）的 fifo
+檔案的路徑。如果不指定，則預設為編譯階段所設定的路徑（預設：\fB/var/run/wesnothd/socket\fP）。
 .TP 
 \fBmax_messages\fP
-\fBmessages_time_period\fP中允許存在的訊息數。 (默認值: \fB4\fP)
+\fBmessages_time_period\fP 中允許的訊息數量。（預設：\fB4\fP）
 .TP 
 \fBmessages_time_period\fP
-訊息檢測間隔(秒)。 (預設值: \fB10\fP 秒)
+訊息氾濫的檢測時間間隔（秒）。（預設：\fB10\fP 秒）
 .TP 
 \fBmotd\fP
-當日訊息。
+當天的消息。
 .TP 
 \fBnew_room_policy\fP
-指定誰能在伺服器上創建新房間。可選值為
-\fBeveryone\fP、\fBregistered\fP、\fBadmin\fP、和\fBnobody\fP，分別代表所有人、註冊用戶、管理員、或者禁止創建新房間。預設值為
-\fBeveryone\fP。
+指定誰能在伺服器上建立新房間。可使用的值為 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP,
+\fBnobody\fP，分別給所有人、有註冊的使用者、管理員使用者、沒有人，建立新房間的權限。預設值為 \fBeveryone\fP。
 .TP 
 \fBpasswd\fP
-取得管理員權限的密碼(透過 \fB/query admin \fP\fIpassword\fP 來取得權限)。
+用來取得管理員權限的密碼（透過 \fB/query admin \fP\fIpassword\fP）。
 .TP 
 \fBreplay_save_path\fP
-伺服器用於存放遊戲錄影的目錄。（不要忘了以/結尾！）預設為`'（空），意思是本遊戲啟動時的當前目錄。
+伺服器用於存放遊戲錄影的目錄。（不要忘了以「/」結尾！）預設為「`'」，意思是 wesnothd 的工作目錄。
 .TP 
 \fBrestart_command\fP
-這是伺服器通過\fBrestart\fP命令開啟新伺服器進程時使用的命令。（只能通過fifo來調用。參見\fBallow_remote_shutdown\fP設置。）
+這是伺服器用來透過 \fBrestart\fP 命令開啟新的伺服器行程的命令。（只能通過 fifo 來調用。參見
+\fBallow_remote_shutdown\fP 設定。）
 .TP 
 \fBroom_save_file\fP
-指定存放房間訊息的檔案的路徑。這個檔案在伺服器啟動時讀取，之後會寫入。如果設為空或者不設置，則房間不會被讀取或保存。
+房間資訊應該要被存到哪的檔案路徑。這個檔案在伺服器啟動時被讀取，之後會被寫入。如果留空或者不設置，房間不會被讀取，也不會被保存。
 .TP 
 \fBsave_replays\fP
 設置伺服器是否自動保存遊戲錄影。（預設值：\fBfalse\fP）
 .TP 
-\fBversions_accepted\fP
-用逗號分隔的伺服器接受版本列表。支援使用 \fB*\fP 和\fB?\fP這兩個萬用字元。（預設為相同版本）
-.br
-例如: \fBversions_accepted="*"\fP 允許所有版本連接。
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
 .TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+用逗號分隔的版本字串清單，伺服器會接受清單上面的版本。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。（預設為對應的韋諾版本）
+.br
+例如：\fBversions_accepted="*"\fP 允許任意版本字串。
 .
-.SS 全球標籤:
+.SS 全域標籤：
 .
 .P
-\fB[redirect]\fP 伺服器用來重定向特定客戶端版本的標簽。
+\fB[redirect]\fP 一個用來設定指定的客戶端版本要重新導向到哪個伺服器的標簽。如果 \fBversions_accepted\fP
+沒有設定就不會被使用。
 .RS
 .TP 
 \fBhost\fP
-重定向到的伺服器地址。
+重新導向到的伺服器地址。
 .TP 
 \fBport\fP
-連接埠口。
+連結的連接埠。
 .TP 
 \fBversion\fP
-重定向用逗號分隔列表的版本。顯示同樣的模式包括\fBversions_accepted\fP在符號模式。
+用逗號分隔的版本清單，作為重新導向的依據。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。
 .RE
 .P
-\fB[ban_time]\fP 這個標籤用於定義一些方便的關鍵字，以對應一些常用的臨時封禁時間長度。
+\fB[ban_time]\fP 一個用來替臨時性的封禁時間長度定義方便的關鍵字的標籤。
 .RS
 .TP 
 \fBname\fP
-名稱禁止引用時間。
+名稱用來參照到封禁時間。
 .TP 
 \fBtime\fP
-時間長度定義。 格式為：%d[%s[%d%s[...]]]
-其中%s是s（秒），m（分鐘），h（小時），D（天），M（月），Y（年），%d是一個數字。如果不指定時間單位，預設為分鐘（m）。例如：\fBtime=\"1D12h30m\"\fP
-代表的是1天12小時30分的封禁。
+時間長度定義。格式為：%d[%s[%d%s[...]]]。其中 %s 是s（秒）, m（分鐘）, h（小時）, D（天）, M（月）, Y（年），%d
+是一個數字。如果不指定時間單位，預設為分鐘(m)。例如：\fBtime=\"1D12h30m\"\fP 的結果是1天12小時30分的封禁。
 .RE
 .P
-\fB[proxy]\fP 這個標簽告訴伺服器扮演代理伺服器角色，把使用者連接重定向到另一台伺服器。與\fB[redirect]\fP接受一樣的參數。
+\fB[proxy]\fP 一個告訴伺服器扮演代理伺服器的角色，把連入的使用者請求導向到指定的伺服器的標籤。與 \fB[redirect]\fP 接受一樣的鍵值。
 .RE
 .P
-\fB[user_handler]\fP
-設定使用者處理程序。可設置的主鍵取決於通過\fBuser_handler\fP設置的用戶資料處理器是哪一個。如果設定檔案中沒有
-\fB[user_handler]\fP ，則伺服器在運行中將不提供任何暱稱註冊服務。在韋諾原始碼儲存庫中的 table_definitions.sql
-可以找到 \fBforum_user_handler\fP 中所運作的所有資源列表。
+\fB[user_handler]\fP 配置使用者處理程序。如果配置中沒有 \fB[user_handler]\fP
+區塊，伺服器將以不提供任何暱稱註冊服務的方式來運行。所有額外的 \fBforum_user_handler\fP
+所需要用來運行的表格可以在韋諾的原始碼倉庫中的 table_definitions.sql 中被找到。需要啟用 MySQL 支援，以 cmake
+來說要使用 \fBENABLE_MYSQL\fP；以 scons 來說要使用 \fBforum_user_handler\fP。
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+資料庫伺服器的主機名
 .TP 
 \fBdb_name\fP
-The name of the database
+資料庫的名稱
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+用來登入資料庫的使用者名稱
 .TP 
 \fBdb_password\fP
-This user's password
+這個使用者的密碼
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+phpbb 論壇中存放使用者資料的表格名稱。很可能是 <table\-prefix>_users（例如：phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+wesnothd 將在其中保存其自己的有關使用者資料的表格名稱。
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+wesnothd 將在其中保存其自己的有關遊戲資料的表格名稱。
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+wesnothd 將在其中保存其自己的有關每場遊戲中的玩家資料的表格名稱。
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+wesnothd 將在其中保存其自己的有關每場遊戲中被使用的模組的資料的表格名稱。
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+phpbb 論壇中存放使用者群組資料的表格名稱。很可能是
+<table\-prefix>_user_group（例如：phpbb3_user_group）。
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+被視為具有審核權限的論壇組的 ID。
 .RE
 .
 .SH 退出狀態碼
 .
-正常退出時狀態碼為0，此時伺服器正常關閉。狀態碼2代表命令行選項中有錯誤。
+正常退出的狀態碼為 0，此時伺服器被適當地關閉。退出狀態碼 2 表示命令列選項有錯誤。
 .
 .SH 作者
 .
-由 David White <davidnwhite@verizon.net>編寫。經 Nils Kneuper
+由 David White <davidnwhite@verizon.net> 編寫。經 Nils Kneuper
 <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> 和 Soliton
-<soliton.de@gmail.com>修改。這個說明頁最早由Cyril Bouthors
-<cyril@bouthors.org>編寫。
+<soliton.de@gmail.com> 修改。這個手冊最早由Cyril Bouthors
+<cyril@bouthors.org> 編寫。
 .br
-參閱官方網站：http://www.wesnoth.org/
+拜訪官方網站：http://www.wesnoth.org/
 .
-.SH 版權
+.SH 著作權
 .
-版權 \(co 2003\-2018 David White <davidnwhite@verizon.net>
+著作權 \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
-這是一個免費遊戲；使用由FSF發布的GPL v2協議授權。原文如下：This is Free Software; this software is
-licensed under the GPL version 2, as published by the Free Software
-Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
-or FITNESS FOR A PARTICULAR PURPOSE.
+這是一個自由軟體，這個軟體採用由自由軟體協會(FSF)所發佈的GPLv2授權協議。沒有保證，甚至對「可銷售性」和「對某一特定目的的適用性」也沒有保證。本段翻譯文字不具法律效力，如有需要請參閱原文或者是
+GPLv2 授權條款。
 .
 .SH 參見
 .

@@ -43,22 +43,15 @@ function world_conquest_tek_map_constructor_delta()
 		local d_y = math.max(0, y - y_end, y_start - y)
 		return d_x + d_y < max_dist
 	end
-	for x = 0, map.width - 1 do
-		for y = 0, map.height - 1 do
-			if is_in_octaegon(x, y) then
 
-			end
-		end
-	end
-
-	local water_tiles = map:get_locations(f.terrain("W*"))
+	local water_tiles = map:find(f.terrain("W*"))
 	for i, loc in ipairs(water_tiles) do
 		-- todo: it mighjt be nice to add suppot for a lua function filter, so that we
 		--      can pass is_in_octaegon to get_location, and use set_terrain directly.
 		-- note: the reason why i didnt add support for lua functions yet is that i
 		--       might want lua filter objects to be serializable.
 		if is_in_octaegon(loc[1], loc[2]) then
-			map:set_terrain(loc, "Wwf")
+			map[loc] = "Wwf"
 		end
 	end
 end
@@ -72,11 +65,11 @@ function wct_noise_delta()
 		f.terrain("Dd"),
 		fraction = 5,
 	}
-	set_terrain { "Ur,Uue^Uf,Uue^Dr,Uue",
-		f.terrain("U*,U*^Uf"),
+	set_terrain { "Ur,Uue^Tf,Uue^Dr,Uue",
+		f.terrain("U*,U*^Tf"),
 		fraction = 3,
 	}
-	set_terrain { "Gs,Gs,Gs,Gs,Hh,Hh,Hh,Gs^Ft,Gs^Ft,Gs^Ft,Gs^Uf",
+	set_terrain { "Gs,Gs,Gs,Gs,Hh,Hh,Hh,Gs^Ft,Gs^Ft,Gs^Ft,Gs^Tf",
 		f.terrain("Mm"),
 		fraction = 2,
 	}
@@ -84,7 +77,7 @@ function wct_noise_delta()
 		f.terrain("Hh"),
 		fraction = 2,
 	}
-	set_terrain { "Gs,Gs,Gs,Gs,Gs,Gg,Hh^Ft,Gs^Ft,Gs^Ft,Gs^Ft,Mm,Gs^Uf",
+	set_terrain { "Gs,Gs,Gs,Gs,Gs,Gg,Hh^Ft,Gs^Ft,Gs^Ft,Gs^Ft,Mm,Gs^Tf",
 		f.terrain("Hh"),
 		fraction = 5,
 	}
@@ -111,7 +104,7 @@ function world_conquest_tek_map_decoration_3c()
 			)
 		),
 	}
-	set_terrain { "Gs,Gg,Hh^Ft,Ss,Ss,Hh,Ss,Mm,Ss,Hh^Uf,Ww,Gg,Ss,Ww,Ss",
+	set_terrain { "Gs,Gg,Hh^Ft,Ss,Ss,Hh,Ss,Mm,Ss,Hh^Tf,Ww,Gg,Ss,Ww,Ss",
 		f.terrain("Wwf"),
 		fraction = 2,
 	}
@@ -119,11 +112,11 @@ function world_conquest_tek_map_decoration_3c()
 		f.terrain("Wwf"),
 		fraction = 9,
 	}
-	set_terrain { "Ss,Ss,Ss,Ds^Ftd,Ss,Mm,Ss,Ww,Ss,Hd,Ss,Gs^Uf,Ww,Gg,Ss",
+	set_terrain { "Ss,Ss,Ss,Ds^Ftd,Ss,Mm,Ss,Ww,Ss,Hd,Ss,Gs^Tf,Ww,Gg,Ss",
 		f.terrain("Wwf"),
 		fraction = 2,
 	}
-	set_terrain { "Ww,Hh^Uf",
+	set_terrain { "Ww,Hh^Tf",
 		f.terrain("Xuce"),
 		fraction = 8,
 	}
@@ -152,7 +145,7 @@ function world_conquest_tek_map_decoration_3c()
 			f.terrain("Dd,Ds,Xuce")
 		),
 	}
-	set_terrain { "Hh^Uf,Mm,Gg,Gs,Ss,Ds^Ftd,Hh,Hh^Ftp",
+	set_terrain { "Hh^Tf,Mm,Gg,Gs,Ss,Ds^Ftd,Hh,Hh^Ftp",
 		f.all(
 			f.terrain("Xuce"),
 			f.radius(3, f.terrain("K*^*"))
@@ -261,7 +254,7 @@ function world_conquest_tek_map_decoration_3c()
 	set_terrain { "Ds",
 		f.all(
 			f.adjacent(f.terrain("Wo")),
-			f.terrain("Hh^Uf,G*^Uf,Mm")
+			f.terrain("Hh^Tf,G*^Tf,Mm")
 		),
 	}
 	set_terrain { "Hh",
@@ -312,16 +305,16 @@ function world_conquest_tek_map_decoration_3c()
 			f.terrain("Dd")
 		),
 	}
-	set_terrain { "Ss^Uf",
+	set_terrain { "Ss^Tf",
 		f.all(
 			f.adjacent(f.terrain("Ss")),
-			f.terrain("Hh^Uf")
+			f.terrain("Hh^Tf")
 		),
 	}
-	set_terrain { "Sm^Uf",
+	set_terrain { "Sm^Tf",
 		f.all(
 			f.adjacent(f.terrain("D*^*,Hd*^*"), nil, 6),
-			f.terrain("Hh^Uf")
+			f.terrain("Hh^Tf")
 		),
 	}
 	set_terrain { "Uue,Uue,Uue,Uue,Ds,Ww,Uue^Dr,Sm",
@@ -378,7 +371,7 @@ function world_conquest_tek_map_decoration_3c()
 	}
 
 
-	if wesnoth.random(2) == 1 then
+	if mathx.random(2) == 1 then
 		wct_change_map_water("t")
 	end
 end
@@ -390,6 +383,7 @@ function wct_map_3c_post_bunus_decoration()
 	}
 end
 
+local _ = wesnoth.textdomain 'wesnoth-wc'
 
 return function()
 	set_map_name(_"river^Delta")

@@ -1,4 +1,3 @@
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "location_set"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
@@ -30,7 +29,7 @@ function ca_big_animals:execution(cfg)
         local enemies_to_be_avoided = AH.get_attackable_enemies(avoid_tag)
         for _,enemy in ipairs(enemies_to_be_avoided) do
             avoid_map:insert(enemy.x, enemy.y)
-            for xa,ya in H.adjacent_tiles(enemy.x, enemy.y) do
+            for xa,ya in wesnoth.current.map:iter_adjacent(enemy) do
                 avoid_map:insert(xa, ya)
             end
         end
@@ -50,21 +49,19 @@ function ca_big_animals:execution(cfg)
 
     local reach_map = AH.get_reachable_unocc(unit)
     local wander_terrain = wml.get_child(cfg, "filter_location_wander") or {}
-    reach_map:iter( function(x, y, v)
-        -- Remove tiles that do not comform to the wander terrain filter
-        if (not wesnoth.match_location(x, y, wander_terrain)) then
-            reach_map:remove(x, y)
-        end
+    -- Remove tiles that do not comform to the wander terrain filter
+    reach_map = reach_map:filter(function(x, y, v)
+        return wesnoth.map.matches(x, y, wander_terrain)
     end)
 
     -- Now find the one of these hexes that is closest to the goal
-    local max_rating, best_hex = - math.huge
+    local max_rating, best_hex = - math.huge, nil
     reach_map:iter( function(x, y, v)
         local rating = -wesnoth.map.distance_between(x, y, goal.goal_x, goal.goal_y)
 
         -- Proximity to an enemy unit is a plus
         local enemy_hp = 500
-        for xa,ya in H.adjacent_tiles(x, y) do
+        for xa,ya in wesnoth.current.map:iter_adjacent(x, y) do
             local enemy = wesnoth.units.get(xa, ya)
             if AH.is_attackable_enemy(enemy) then
                 if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
@@ -95,8 +92,8 @@ function ca_big_animals:execution(cfg)
     end
 
     -- Finally, if the unit ended up next to enemies, attack the weakest of those
-    local min_hp, target = math.huge
-    for xa,ya in H.adjacent_tiles(unit.x, unit.y) do
+    local min_hp, target = math.huge, nil
+    for xa,ya in wesnoth.current.map:iter_adjacent(unit) do
         local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
             if (enemy.hitpoints < min_hp) then

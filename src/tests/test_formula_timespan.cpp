@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2019 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2019 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include <boost/test/unit_test.hpp>
@@ -81,72 +82,65 @@ inline std::string gen_as_str(const time_detailed& params)
 	return utils::format_conjunct_list("expired", bits);
 }
 
+inline void test_format_timespan(const time_detailed& tcase, const std::string& detailed, const std::string& fuzzy="")
+{
+	BOOST_CHECK_EQUAL(detailed, utils::format_timespan(gen_as_time_t(tcase), true));
+
+	if(!fuzzy.empty()) {
+		BOOST_REQUIRE_NE(detailed, fuzzy); // ensure test case params are not borked
+		BOOST_CHECK_EQUAL(fuzzy, utils::format_timespan(gen_as_time_t(tcase)));
+		BOOST_CHECK_NE(utils::format_timespan(gen_as_time_t(tcase)), utils::format_timespan(gen_as_time_t(tcase), true));
+	}
+}
+
 }
 
 BOOST_AUTO_TEST_CASE( test_formula_timespan )
 {
-	time_detailed t;
+	test_format_timespan({ 1, 0, 0, 0, 0, 0, 0 }, "1 second");
 
-	t = time_detailed{ 1, 0, 0, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("1 second", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 2, 0, 0, 0, 0, 0, 0 }, "2 seconds");
 
-	t = time_detailed{ 2, 0, 0, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("2 seconds", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 1, 0, 0, 0, 0, 0 }, "1 minute");
 
-	t = time_detailed{ 0, 1, 0, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("1 minute", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 2, 0, 0, 0, 0, 0 }, "2 minutes");
 
-	t = time_detailed{ 0, 2, 0, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("2 minutes", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 1, 0, 0, 0, 0 }, "1 hour");
 
-	t = time_detailed{ 0, 0, 1, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("1 hour", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 2, 0, 0, 0, 0 }, "2 hours");
 
-	t = time_detailed{ 0, 0, 2, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("2 hours", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 1, 0, 0, 0 }, "1 day");
 
-	t = time_detailed{ 0, 0, 0, 1, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("1 day", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 2, 0, 0, 0 }, "2 days");
 
-	t = time_detailed{ 0, 0, 0, 2, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("2 days", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 0, 1, 0, 0 }, "1 week");
 
-	t = time_detailed{ 0, 0, 0, 0, 1, 0, 0 };
-	BOOST_CHECK_EQUAL("1 week", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 0, 2, 0, 0 }, "2 weeks");
 
-	t = time_detailed{ 0, 0, 0, 0, 2, 0, 0 };
-	BOOST_CHECK_EQUAL("2 weeks", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 0, 0, 1, 0 }, "1 month");
 
-	t = time_detailed{ 0, 0, 0, 0, 0, 1, 0 };
-	BOOST_CHECK_EQUAL("1 month", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 0, 0, 2, 0 }, "2 months");
 
-	t = time_detailed{ 0, 0, 0, 0, 0, 2, 0 };
-	BOOST_CHECK_EQUAL("2 months", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 0, 0, 0, 1 }, "1 year");
 
-	t = time_detailed{ 0, 0, 0, 0, 0, 0, 1 };
-	BOOST_CHECK_EQUAL("1 year", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 0, 0, 0, 0, 2 }, "2 years");
 
-	t = time_detailed{ 0, 0, 0, 0, 0, 0, 2 };
-	BOOST_CHECK_EQUAL("2 years", utils::format_timespan(gen_as_time_t(t)));
-
-	t = time_detailed{ 12, 1, 23, 3, 2, 5, 2 };
-	BOOST_CHECK_EQUAL(gen_as_str(t), utils::format_timespan(gen_as_time_t(t)));
+	auto t = time_detailed{ 12, 1, 23, 3, 2, 5, 2 };
+	test_format_timespan(t, gen_as_str(t), "2 years");
 
 	t = time_detailed{ 0, 0, 0, 0, 0, 0, 0 };
 	BOOST_CHECK_EQUAL(utils::format_timespan(gen_as_time_t(t)), utils::format_timespan(0));
+	BOOST_CHECK_EQUAL(utils::format_timespan(gen_as_time_t(t), true), utils::format_timespan(0));
 	BOOST_CHECK_EQUAL(utils::format_timespan(gen_as_time_t(t)), utils::format_timespan(-10000));
+	BOOST_CHECK_EQUAL(utils::format_timespan(gen_as_time_t(t), true), utils::format_timespan(-10000));
 
-	t = time_detailed{ 4, 0, 49, 0, 0, 0, 0 };
-	BOOST_CHECK_EQUAL("2 days, 1 hour, and 4 seconds", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 4, 0, 49, 0, 0, 0, 0 }, "2 days, 1 hour, and 4 seconds", "2 days");
 
-	t = time_detailed{ 0, 40, 0, 11, 1, 0, 4 };
-	BOOST_CHECK_EQUAL("4 years, 2 weeks, 4 days, and 40 minutes", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 40, 0, 11, 1, 0, 4 }, "4 years, 2 weeks, 4 days, and 40 minutes", "4 years");
 
-	t = time_detailed{ 0, 0, 1, 0, 0, 3, 4 };
-	BOOST_CHECK_EQUAL("4 years, 3 months, and 1 hour", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 0, 0, 1, 0, 0, 3, 4 }, "4 years, 3 months, and 1 hour", "4 years");
 
-	t = time_detailed{ 10, 0, 0, 0, 0, 2, 0 };
-	BOOST_CHECK_EQUAL("2 months and 10 seconds", utils::format_timespan(gen_as_time_t(t)));
+	test_format_timespan({ 10, 0, 0, 0, 0, 2, 0 }, "2 months and 10 seconds", "2 months");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

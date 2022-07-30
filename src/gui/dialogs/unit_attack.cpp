@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -36,9 +37,7 @@
 
 #include <functional>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(unit_attack)
@@ -116,18 +115,51 @@ void unit_attack::pre_show(window& window)
 			attacker_itor_->get_location(), false, attacker.weapon
 		);
 
-		std::string attw_specials = attacker_weapon.weapon_specials(true, attacker.backstab_pos);
-		std::string defw_specials = defender_weapon.weapon_specials(true);
+		const std::set<std::string> checking_tags_other = {"disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+		std::string attw_specials = attacker_weapon.weapon_specials(attacker.backstab_pos);
+		std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
+		std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
+		std::string attw_specials_cth = attacker_weapon.weapon_specials_value({"chance_to_hit"});
+		std::string attw_specials_others = attacker_weapon.weapon_specials_value(checking_tags_other);
+		bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0 && defender_weapon.num_attacks() == 0 && defender.chance_to_hit == 0);
+		std::string defw_specials = defender_attack ? defender_weapon.weapon_specials() : "";
+		std::string defw_specials_dmg = defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage"}) : "";
+		std::string defw_specials_atk = defender_attack ? defender_weapon.weapon_specials_value({"attacks", "swarm"}) : "";
+		std::string defw_specials_cth = defender_attack ? defender_weapon.weapon_specials_value({"chance_to_hit"}) : "";
+		std::string defw_specials_others = defender_attack ? defender_weapon.weapon_specials_value(checking_tags_other) : "";
 
 		if(!attw_specials.empty()) {
 			attw_specials = " " + attw_specials;
 		}
-
+		if(!attw_specials_dmg.empty()) {
+			attw_specials_dmg = " " + attw_specials_dmg;
+		}
+		if(!attw_specials_atk.empty()) {
+			attw_specials_atk = " " + attw_specials_atk;
+		}
+		if(!attw_specials_cth.empty()) {
+			attw_specials_cth = " " + attw_specials_cth;
+		}
+		if(!attw_specials_others.empty()) {
+			attw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Other aspects: ")+"</b>") + "\n" + ("<i>"+attw_specials_others+"</i>");
+		}
 		if(!defw_specials.empty()) {
 			defw_specials = " " + defw_specials;
 		}
+		if(!defw_specials_dmg.empty()) {
+			defw_specials_dmg = " " + defw_specials_dmg;
+		}
+		if(!defw_specials_atk.empty()) {
+			defw_specials_atk = " " + defw_specials_atk;
+		}
+		if(!defw_specials_cth.empty()) {
+			defw_specials_cth = " " + defw_specials_cth;
+		}
+		if(!defw_specials_others.empty()) {
+			defw_specials_others = "\n" + ("<b>"+translation::dsgettext("wesnoth", "Other aspects: ")+"</b>") + "\n" + ("<i>"+defw_specials_others+"</i>");
+		}
 
-		std::stringstream attacker_stats, defender_stats;
+		std::stringstream attacker_stats, defender_stats, attacker_tooltip, defender_tooltip;
 
 		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
@@ -135,28 +167,44 @@ void unit_attack::pre_show(window& window)
 			<< attw_specials << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
+		attacker_tooltip << translation::dsgettext("wesnoth", "Weapon: ") << "<b>" << attw_name << "</b>" << "\n"
+			<< translation::dsgettext("wesnoth", "Damage: ") << attacker.damage <<  "<i>" << attw_specials_dmg <<  "</i>" << "\n"
+			<< translation::dsgettext("wesnoth", "Attacks: ") << attacker.num_blows <<  "<i>" << attw_specials_atk <<  "</i>" << "\n"
+			<< translation::dsgettext("wesnoth", "Chance to hit: ") << font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>"<<  "<i>" << attw_specials_cth << "</i>"
+			<< attw_specials_others;
+
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
 			<< defender.damage << font::weapon_numbers_sep << defender.num_blows
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
-		std::map<std::string, string_map> data;
-		string_map item;
+		defender_tooltip << translation::dsgettext("wesnoth", "Weapon: ") << "<b>" << defw_name << "</b>" << "\n"
+			<< translation::dsgettext("wesnoth", "Damage: ") << defender.damage << "<i>" << defw_specials_dmg << "</i>" << "\n"
+			<< translation::dsgettext("wesnoth", "Attacks: ") << defender.num_blows <<  "<i>" << defw_specials_atk <<  "</i>" << "\n"
+			<< translation::dsgettext("wesnoth", "Chance to hit: ") << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"
+			<< defw_specials_others;
+
+		widget_data data;
+		widget_item item;
 
 		item["use_markup"] = "true";
 
 		item["label"] = attacker_weapon.icon();
 		data.emplace("attacker_weapon_icon", item);
 
+		item["tooltip"] = attacker_tooltip.str();
 		item["label"] = attacker_stats.str();
 		data.emplace("attacker_weapon", item);
+		item["tooltip"] = "";
 
 		item["label"] = "<span color='#a69275'>" + font::unicode_em_dash + " " + range + " " + font::unicode_em_dash + "</span>";
 		data.emplace("range", item);
 
+		item["tooltip"] = defender_attack ? defender_tooltip.str() : "";
 		item["label"] = defender_stats.str();
 		data.emplace("defender_weapon", item);
 
+		item["tooltip"] = "";
 		item["label"] = defender_weapon.icon();
 		data.emplace("defender_weapon_icon", item);
 
@@ -178,4 +226,3 @@ void unit_attack::post_show(window& window)
 }
 
 } // namespace dialogs
-} // namespace gui2

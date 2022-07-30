@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -35,7 +36,7 @@ public:
 	game_display(game_board& board,
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const config& theme_cfg,
+			const std::string& theme_id,
 			const config& level);
 
 	~game_display();
@@ -147,8 +148,6 @@ protected:
 
 	virtual void draw_invalidated() override;
 
-	virtual void post_commit() override;
-
 	virtual void draw_hex(const map_location& loc) override;
 
 	/** Inherited from display. */
@@ -218,7 +217,7 @@ private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
 
-	virtual void draw_sidebar() override;
+	virtual void refresh_reports() override;
 
 	overlay_map overlay_map_;
 

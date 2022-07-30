@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2015 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2015 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -27,15 +28,17 @@
 #include "sound.hpp"
 #include "video.hpp"
 #include "addon/manager.hpp"
+#include "sdl/point.hpp"
 
 #include <algorithm>
 #include <fstream>
 #include <iomanip>
 
+#include "lua/lua.h"
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
-#include <SDL2/SDL_ttf.h>
 
 #include <boost/algorithm/string.hpp>
 #include <boost/predef.h>
@@ -223,26 +226,19 @@ version_table_manager::version_table_manager()
 	names[LIB_SDL_MIXER] = "SDL_mixer";
 
 	//
-	// SDL_ttf
-	//
-
-	SDL_TTF_VERSION(&sdl_version);
-	compiled[LIB_SDL_TTF] = format_version(sdl_version);
-
-	sdl_rt_version = TTF_Linked_Version();
-	if(sdl_rt_version) {
-		linked[LIB_SDL_TTF] = format_version(*sdl_rt_version);
-	}
-
-	names[LIB_SDL_TTF] = "SDL_ttf";
-
-	//
 	// Boost
 	//
 
 	compiled[LIB_BOOST] = BOOST_LIB_VERSION;
 	std::replace(compiled[LIB_BOOST].begin(), compiled[LIB_BOOST].end(), '_', '.');
 	names[LIB_BOOST] = "Boost";
+
+	//
+	// Lua
+	//
+
+	compiled[LIB_LUA] = LUA_VERSION_MAJOR "." LUA_VERSION_MINOR "." LUA_VERSION_RELEASE;
+	names[LIB_LUA] = "Lua";
 
 	//
 	// OpenSSL/libcrypto
@@ -279,11 +275,6 @@ version_table_manager::version_table_manager()
 	features.back().enabled = true;
 #endif
 
-	features.emplace_back(N_("feature^Legacy bidirectional rendering"));
-#ifdef HAVE_FRIBIDI
-	features.back().enabled = true;
-#endif
-
 #ifdef _X11
 
 	features.emplace_back(N_("feature^D-Bus notifications back end"));
@@ -300,7 +291,7 @@ version_table_manager::version_table_manager()
 #endif
 
 #ifdef __APPLE__
-    // Always compiled in.
+	// Always compiled in.
 	features.emplace_back(N_("feature^Cocoa notifications back end"));
 	features.back().enabled = true;
 #endif /* __APPLE__ */
@@ -343,12 +334,21 @@ std::string build_arch()
 #endif
 }
 
-std::vector<optional_feature> optional_features_table()
+std::vector<optional_feature> optional_features_table(bool localize)
 {
 	std::vector<optional_feature> res = versions.features;
 
 	for(std::size_t k = 0; k < res.size(); ++k) {
-		res[k].name = _(res[k].name.c_str());
+		if(localize) {
+			res[k].name = _(res[k].name.c_str());
+		} else {
+			// Strip annotation carets ("blah blah^actual text here") from translatable
+			// strings.
+			const auto caret_pos = res[k].name.find('^');
+			if(caret_pos != std::string::npos) {
+				res[k].name.erase(0, caret_pos + 1);
+			}
+		}
 	}
 	return res;
 }
@@ -507,9 +507,7 @@ list_formatter optional_features_report_internal(const std::string& heading = ""
 {
 	list_formatter fmt{heading};
 
-	// Yes, it's for stdout/stderr but we still want the localized version so
-	// that the context prefixes are stripped.
-	const std::vector<optional_feature>& features = optional_features_table();
+	const std::vector<optional_feature>& features = optional_features_table(false);
 
 	for(const auto& feature : features) {
 		fmt.insert(feature.name, feature.enabled ? "yes" : "no");
@@ -518,10 +516,9 @@ list_formatter optional_features_report_internal(const std::string& heading = ""
 	return fmt;
 }
 
-template<typename T>
-inline std::string geometry_to_string(T horizontal, T vertical)
+inline std::string geometry_to_string(point p)
 {
-	return std::to_string(horizontal) + 'x' + std::to_string(vertical);
+	return std::to_string(p.x) + 'x' + std::to_string(p.y);
 }
 
 std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::string& current_driver)
@@ -547,19 +544,10 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 {
 	list_formatter fmt{heading};
 
-	if(!CVideo::setup_completed()) {
-		fmt.set_placeholder("Graphics not initialized.");
-		return fmt;
-	}
-
-	CVideo& video = CVideo::get_singleton();
-
 	std::string placeholder;
 
-	if(video.non_interactive()) {
+	if(video::headless()) {
 		placeholder = "Running in non-interactive mode.";
-	} else if(!video.has_window()) {
-		placeholder = "Running without a game window.";
 	}
 
 	if(!placeholder.empty()) {
@@ -567,25 +555,14 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		return fmt;
 	}
 
-	const auto& current_driver = CVideo::current_driver();
-	auto drivers = CVideo::enumerate_drivers();
-
-	const auto& dpi = video.get_dpi();
-	const auto& scale = video.get_dpi_scale_factor();
-	std::string dpi_report, scale_report;
-
-	if(dpi.first == 0.0f || dpi.second == 0.0f) {
-		scale_report = dpi_report = "<unknown>";
-	} else {
-		dpi_report = geometry_to_string(dpi.first, dpi.second);
-		scale_report = geometry_to_string(scale.first, scale.second);
-	}
+	const auto& current_driver = video::current_driver();
+	auto drivers = video::enumerate_drivers();
 
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
-	fmt.insert("Window size", geometry_to_string(video.get_width(), video.get_height()));
-	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
-	fmt.insert("Screen dots per inch", dpi_report);
-	fmt.insert("Screen dpi scale factor", scale_report);
+	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
+	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
+	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
+	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
 
 	return fmt;
 }

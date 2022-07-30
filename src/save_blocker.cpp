@@ -1,20 +1,22 @@
 /*
-   Copyright (C) 2009 - 2018 by Daniel Franke.
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Daniel Franke
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
+#include "log.hpp"
 #include "save_blocker.hpp"
+
 #include <exception>
-#include <iostream>
 
 play_controller* save_blocker::controller_ = nullptr;
 void (play_controller::*save_blocker::callback_)() = nullptr;
@@ -33,7 +35,7 @@ save_blocker::~save_blocker() {
 		callback_ = nullptr;
 	}
 	} catch (const std::exception & e) {
-		std::cerr << "Save blocker dtor swallowing an exception: " << e.what() << "\n";
+		PLAIN_LOG << "Save blocker dtor swallowing an exception: " << e.what();
 	}
 }
 

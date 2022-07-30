@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -149,11 +150,11 @@ namespace { // Support functions
 					src.set_wml_x(std::stoi(xvals[i]));
 					src.set_wml_y(std::stoi(yvals[i]));
 				} catch(std::invalid_argument&) {
-					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i] << '\n';
+					ERR_CF << "Invalid move_unit_fake source: " << xvals[i] << ", " << yvals[i];
 					continue;
 				}
 				if (!game_map->on_board(src)) {
-					ERR_CF << "Invalid move_unit_fake source: " << src << '\n';
+					ERR_CF << "Invalid move_unit_fake source: " << src;
 					break;
 				}
 				path.push_back(src);
@@ -168,10 +169,10 @@ namespace { // Support functions
 				dst.set_wml_x(std::stoi(xvals[i]));
 				dst.set_wml_y(std::stoi(yvals[i]));
 			} catch(std::invalid_argument&) {
-				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i] << '\n';
+				ERR_CF << "Invalid move_unit_fake destination: " << xvals[i] << ", " << yvals[i];
 			}
 			if (!game_map->on_board(dst)) {
-				ERR_CF << "Invalid move_unit_fake destination: " << dst << '\n';
+				ERR_CF << "Invalid move_unit_fake destination: " << dst;
 				break;
 			}
 
@@ -179,7 +180,7 @@ namespace { // Support functions
 				game_map->w(), game_map->h());
 
 			if (route.steps.empty()) {
-				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities" << std::endl;
+				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities";
 				pathfind::emergency_path_calculator emergency_calc(fake_unit, *game_map);
 
 				route = pathfind::a_star_search(src, dst, 10000, emergency_calc,
@@ -188,7 +189,7 @@ namespace { // Support functions
 					// This would occur when trying to do a MUF of a unit
 					// over locations which are unreachable to it (infinite movement
 					// costs). This really cannot fail.
-					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain" << std::endl;
+					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain";
 					pathfind::dummy_path_calculator dummy_calc(fake_unit, *game_map);
 					route = a_star_search(src, dst, 10000, dummy_calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
@@ -264,8 +265,8 @@ WML_HANDLER_FUNCTION(clear_global_variable,,pcfg)
 
 static void on_replay_error(const std::string& message)
 {
-	ERR_NG << "Error via [do_command]:" << std::endl;
-	ERR_NG << message << std::endl;
+	ERR_NG << "Error via [do_command]:";
+	ERR_NG << message;
 }
 
 // This tag exposes part of the code path used to handle [command]'s in replays
@@ -278,7 +279,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	// With the theme_items lua callbacks
 	if(resources::whiteboard->has_planned_unit_map())
 	{
-		ERR_NG << "[do_command] called while whiteboard is applied, ignoring" << std::endl;
+		ERR_NG << "[do_command] called while whiteboard is applied, ignoring";
 		return;
 	}
 
@@ -289,41 +290,41 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
-		ERR_NG << "[do_command] called too early, only allowed at START or later" << std::endl;
+		ERR_NG << "[do_command] called too early, only allowed at START or later";
 		return;
 	}
 	if(is_unsynced && resources::controller->is_lingering())
 	{
-		ERR_NG << "[do_command] cannot be used in linger mode" << std::endl;
+		ERR_NG << "[do_command] cannot be used in linger mode";
 		return;
 	}
 	if(is_unsynced && !resources::controller->gamestate().init_side_done())
 	{
-		ERR_NG << "[do_command] cannot be used before the turn has started" << std::endl;
+		ERR_NG << "[do_command] cannot be used before the turn has started";
 		return;
 	}
 	if(is_unsynced && is_unsynced_too_early)
 	{
-		ERR_NG << "[do_command] called too early" << std::endl;
+		ERR_NG << "[do_command] called too early";
 		return;
 	}
 	if(is_unsynced && events::commands_disabled)
 	{
-		ERR_NG << "[do_command] cannot invoke synced commands while commands are blocked" << std::endl;
+		ERR_NG << "[do_command] cannot invoke synced commands while commands are blocked";
 		return;
 	}
 	if(is_unsynced && !resources::controller->current_team().is_local())
 	{
-		ERR_NG << "[do_command] can only be used from clients that control the currently playing side" << std::endl;
+		ERR_NG << "[do_command] can only be used from clients that control the currently playing side";
 		return;
 	}
 	for(const auto& [key, child] : cfg.all_ordered())
 	{
 		if(allowed_tags.find(key) == allowed_tags.end()) {
-			ERR_NG << "unsupported tag [" << key << "] in [do_command]" << std::endl;
+			ERR_NG << "unsupported tag [" << key << "] in [do_command]";
 			std::stringstream o;
 			std::copy(allowed_tags.begin(), allowed_tags.end(), std::ostream_iterator<std::string>(o, " "));
-			ERR_NG << "allowed tags: " << o.str() << std::endl;
+			ERR_NG << "allowed tags: " << o.str();
 			continue;
 		}
 		// TODO: afaik run_in_synced_context_if_not_already thows exceptions when the executed action end the scenario or the turn.
@@ -338,6 +339,7 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 			/*show*/ true,
 			/*error_handler*/ &on_replay_error
 		);
+		ai::manager::get_singleton().raise_gamestate_changed();
 	}
 }
 
@@ -367,7 +369,7 @@ WML_HANDLER_FUNCTION(modify_turns,, cfg)
 		int new_turn_number = current.to_int(current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
-			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
+			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")";
 		} else if(new_turn_number_u != current_turn_number) {
 			tod_man.set_turn_by_wml(new_turn_number_u, resources::gamedata);
 			game_display::get_singleton()->new_turn();
@@ -406,7 +408,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;
 	events::command_disabler command_disabler;
-	LOG_NG << "Processing [move_units_fake]\n";
+	LOG_NG << "Processing [move_units_fake]";
 
 	const bool force_scroll = cfg["force_scroll"].to_bool();
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
@@ -416,7 +418,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	std::vector<std::vector<map_location>> paths;
 	paths.reserve(num_units);
 
-	LOG_NG << "Moving " << num_units << " units\n";
+	LOG_NG << "Moving " << num_units << " units";
 
 	std::size_t longest_path = 0;
 
@@ -430,22 +432,22 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		if(skip_steps > 0)
 			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
 		longest_path = std::max(longest_path, paths.back().size());
-		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
+		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size();
 
 		u->set_location(paths.back().front());
 		units.back().place_on_fake_unit_manager(resources::fake_units);
 	}
 
-	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
+	LOG_NG << "Units placed, longest path is " << longest_path << " long";
 
 	std::vector<map_location> path_step(2);
 	path_step.resize(2);
 	for(std::size_t step = 1; step < longest_path; ++step) {
-		DBG_NG << "Doing step " << step << "...\n";
+		DBG_NG << "Doing step " << step << "...";
 		for(std::size_t un = 0; un < num_units; ++un) {
 			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
 				continue;
-			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
+			DBG_NG << "Moving unit " << un << ", doing step " << step;
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
 			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::NDIRECTIONS, force_scroll);
@@ -454,7 +456,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 		}
 	}
 
-	LOG_NG << "Units moved\n";
+	LOG_NG << "Units moved";
 }
 
 /**
@@ -465,7 +467,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 WML_HANDLER_FUNCTION(recall,, cfg)
 {
 	events::command_disabler command_disabler;
-	LOG_NG << "recalling unit...\n";
+	LOG_NG << "recalling unit...";
 	config temp_config(cfg.get_config());
 	// Prevent the recall unit filter from using the location as a criterion
 
@@ -481,12 +483,12 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 	const vconfig & leader_filter = cfg.child("secondary_unit");
 
 	for(int index = 0; index < static_cast<int>(resources::gameboard->teams().size()); ++index) {
-		LOG_NG << "for side " << index + 1 << "...\n";
+		LOG_NG << "for side " << index + 1 << "...";
 		const std::string player_id = resources::gameboard->teams()[index].save_id_or_number();
 
 		if(resources::gameboard->teams()[index].recall_list().size() < 1) {
-			DBG_NG << "recall list is empty when trying to recall!\n"
-				   << "player_id: " << player_id << " side: " << index+1 << "\n";
+			DBG_NG << "recall list is empty when trying to recall!";
+			DBG_NG << "player_id: " << player_id << " side: " << index+1;
 			continue;
 		}
 
@@ -496,10 +498,10 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 		const unit_filter ufilt(unit_filter_cfg);
 		const unit_filter lfilt(leader_filter); // Note that if leader_filter is null, this correctly gives a null filter that matches all units.
 		for(std::vector<unit_ptr>::iterator u = avail.begin(); u != avail.end(); ++u) {
-			DBG_NG << "checking unit against filter...\n";
+			DBG_NG << "checking unit against filter...";
 			scoped_recall_unit auto_store("this_unit", player_id, std::distance(avail.begin(), u));
 			if (ufilt(*(*u), map_location())) {
-				DBG_NG << (*u)->id() << " matched the filter...\n";
+				DBG_NG << (*u)->id() << " matched the filter...";
 				const unit_ptr to_recruit = *u;
 				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = nullptr;
@@ -513,17 +515,17 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 				}
 
 				for (unit_map::const_unit_iterator leader : leaders) {
-					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
+					DBG_NG << "...considering " + leader->id() + " as the recalling leader...";
 					map_location loc = cfg_loc;
 					if ( lfilt(*leader)  &&
 					     unit_filter(vconfig(leader->recall_filter())).matches( *(*u),map_location() ) ) {
-						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
+						DBG_NG << "...matched the leader filter and is able to recall the unit.";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
 						if(pass_check || (resources::gameboard->units().count(loc) > 0))
 							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 						if(resources::gameboard->map().on_board(loc)) {
-							DBG_NG << "...valid location for the recall found. Recalling.\n";
+							DBG_NG << "...valid location for the recall found. Recalling.";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
 							                       map_location::parse_direction(cfg["facing"]),
@@ -539,7 +541,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
 					if (resources::gameboard->map().on_board(loc)) {
-						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
+						DBG_NG << "No usable leader found, but found usable location. Recalling.";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location();
 						actions::place_recruit(to_recruit, loc, null_location, 0, true,
@@ -612,7 +614,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 		}
 	} catch(const incorrect_map_format_error&) {
 		const std::string log_map_name = cfg["map"].empty() ? cfg["map_file"] : std::string("from inline data");
-		lg::wml_error() << "replace_map: Unable to load map " << log_map_name << std::endl;
+		lg::log_to_chat() << "replace_map: Unable to load map " << log_map_name << '\n';
+		ERR_WML << "replace_map: Unable to load map " << log_map_name;
 		return;
 	} catch(const wml_exception& e) {
 		e.show();
@@ -622,7 +625,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
 		if (!cfg["expand"].to_bool()) {
-			lg::wml_error() << "replace_map: Map dimension(s) increase but expand is not set" << std::endl;
+			lg::log_to_chat() << "replace_map: Map dimension(s) increase but expand is not set\n";
+			ERR_WML << "replace_map: Map dimension(s) increase but expand is not set";
 			return;
 		}
 	}
@@ -630,7 +634,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
 		if (!cfg["shrink"].to_bool()) {
-			lg::wml_error() << "replace_map: Map dimension(s) decrease but shrink is not set" << std::endl;
+			lg::log_to_chat() << "replace_map: Map dimension(s) decrease but shrink is not set\n";
+			ERR_WML << "replace_map: Map dimension(s) decrease but shrink is not set";
 			return;
 		}
 	}
@@ -638,7 +643,8 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 	std::optional<std::string> errmsg = resources::gameboard->replace_map(map);
 
 	if (errmsg) {
-		lg::wml_error() << *errmsg << std::endl;
+		lg::log_to_chat() << *errmsg << '\n';
+		ERR_WML << *errmsg;
 	}
 
 	display::get_singleton()->reload_map();
@@ -678,7 +684,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 		}
 		catch(const invalid_variablename_exception&)
 		{
-			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug() << std::endl;
+			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug();
 		}
 	} else {
 		typedef std::pair<std::string, vconfig> vchild;
@@ -702,7 +708,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 
 				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
 				if(separator_string.size() > 1){
-					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug() << std::endl;
+					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug();
 				}
 
 				std::vector<std::string> split_vector;
@@ -757,7 +763,7 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug();
 	}
 }
 
@@ -769,15 +775,15 @@ WML_HANDLER_FUNCTION(set_variables,, cfg)
 WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 {
 	if (!cfg.child("source")) {
-		WRN_NG << "No source in [store_relative_direction]" << std::endl;
+		WRN_NG << "No source in [store_relative_direction]";
 		return;
 	}
 	if (!cfg.child("destination")) {
-		WRN_NG << "No destination in [store_relative_direction]" << std::endl;
+		WRN_NG << "No destination in [store_relative_direction]";
 		return;
 	}
 	if (!cfg.has_attribute("variable")) {
-		WRN_NG << "No variable in [store_relative_direction]" << std::endl;
+		WRN_NG << "No variable in [store_relative_direction]";
 		return;
 	}
 
@@ -794,7 +800,7 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [store_relative_direction] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
+		ERR_NG << "Cannot do [store_relative_direction] with invalid destination variable: " << variable << " with " << cfg.get_config().debug();
 	}
 }
 
@@ -807,15 +813,15 @@ WML_HANDLER_FUNCTION(store_relative_direction,, cfg)
 WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 {
 	if (!cfg.child("source")) {
-		WRN_NG << "No source in [store_rotate_map_location]" << std::endl;
+		WRN_NG << "No source in [store_rotate_map_location]";
 		return;
 	}
 	if (!cfg.child("destination")) {
-		WRN_NG << "No destination in [store_rotate_map_location]" << std::endl;
+		WRN_NG << "No destination in [store_rotate_map_location]";
 		return;
 	}
 	if (!cfg.has_attribute("variable")) {
-		WRN_NG << "No variable in [store_rotate_map_location]" << std::endl;
+		WRN_NG << "No variable in [store_rotate_map_location]";
 		return;
 	}
 
@@ -833,35 +839,7 @@ WML_HANDLER_FUNCTION(store_rotate_map_location,, cfg)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug() << std::endl;
-	}
-}
-
-
-/**
- * Store time of day config in a WML variable. This is useful for those who
- * are too lazy to calculate the corresponding time of day for a given turn,
- * or if the turn / time-of-day sequence mutates in a scenario.
- */
-WML_HANDLER_FUNCTION(store_time_of_day,, cfg)
-{
-	const map_location loc = cfg_to_loc(cfg);
-	int turn = cfg["turn"];
-	// using 0 will use the current turn
-	const time_of_day& tod = resources::tod_manager->get_time_of_day(loc,turn);
-
-	std::string variable = cfg["variable"];
-	if(variable.empty()) {
-		variable = "time_of_day";
-	}
-	try
-	{
-		variable_access_create store = resources::gamedata->get_variable_access_write(variable);
-		tod.write(store.as_container());
-	}
-	catch(const invalid_variablename_exception&)
-	{
-		ERR_NG << "Found invalid variablename " << variable << " in [store_time_of_day] with " << cfg.get_config().debug() << "\n";
+		ERR_NG << "Cannot do [store_rotate_map_location] with invalid destination variable: " << variable << " with " << cfg.get_config().debug();
 	}
 }
 
@@ -878,7 +856,7 @@ WML_HANDLER_FUNCTION(tunnel,, cfg)
 		cfg.get_children("target").empty() ||
 		cfg.get_children("filter").empty()) {
 		ERR_WML << "[tunnel] is missing a mandatory tag:\n"
-			 << cfg.get_config().debug();
+		        << cfg.get_config().debug();
 	} else {
 		pathfind::teleport_group tunnel(delay ? cfg : vconfig(cfg.get_parsed_config()), false);
 		resources::tunnels->add(tunnel);
@@ -911,7 +889,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 		}
 		catch(const invalid_variablename_exception&)
 		{
-			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug() << std::endl;
+			ERR_NG << "Cannot do [unit] with invalid to_variable:  " << to_variable << " with " << cfg.get_config().debug();
 		}
 		return;
 
@@ -921,7 +899,7 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 
 	if ((side<1)||(side > static_cast<int>(resources::gameboard->teams().size()))) {
-		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")"<<std::endl;
+		ERR_NG << "wrong side in [unit] tag - no such side: "<<side<<" ( number of teams :"<<resources::gameboard->teams().size()<<")";
 		DBG_NG << parsed_cfg.debug();
 		return;
 	}

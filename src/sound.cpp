@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "sound.hpp"
@@ -266,7 +267,7 @@ void remove_track(unsigned int i)
 
 static bool track_ok(const std::string& id)
 {
-	LOG_AUDIO << "Considering " << id << "\n";
+	LOG_AUDIO << "Considering " << id;
 
 	if(!current_track) {
 		return true;
@@ -307,7 +308,7 @@ static bool track_ok(const std::string& id)
 
 	// If we've played this twice, must have played every other track.
 	if(num_played == 2 && played.size() != current_track_list.size() - 1) {
-		LOG_AUDIO << "Played twice with only " << played.size() << " tracks between\n";
+		LOG_AUDIO << "Played twice with only " << played.size() << " tracks between";
 		return false;
 	}
 
@@ -317,7 +318,7 @@ static bool track_ok(const std::string& id)
 		++i;
 		if(i != played_before.rend()) {
 			if(*i == id) {
-				LOG_AUDIO << "Played just before previous\n";
+				LOG_AUDIO << "Played just before previous";
 				return false;
 			}
 		}
@@ -346,7 +347,7 @@ static std::shared_ptr<sound::music_track> choose_track()
 		current_track_index = track;
 	}
 
-	DBG_AUDIO << "Next track will be " << current_track_list[current_track_index]->file_path() << "\n";
+	DBG_AUDIO << "Next track will be " << current_track_list[current_track_index]->file_path();
 	played_before.push_back(current_track_list[current_track_index]->file_path());
 	return current_track_list[current_track_index];
 }
@@ -441,7 +442,7 @@ driver_status driver_status::query()
 
 bool init_sound()
 {
-	LOG_AUDIO << "Initializing audio...\n";
+	LOG_AUDIO << "Initializing audio...";
 	if(SDL_WasInit(SDL_INIT_AUDIO) == 0) {
 		if(SDL_InitSubSystem(SDL_INIT_AUDIO) == -1) {
 			return false;
@@ -451,7 +452,7 @@ bool init_sound()
 	if(!mix_ok) {
 		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << std::endl;
+			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError();
 			return false;
 		}
 
@@ -476,14 +477,14 @@ bool init_sound()
 
 		Mix_ChannelFinished(channel_finished_hook);
 
-		LOG_AUDIO << "Audio initialized.\n";
+		LOG_AUDIO << "Audio initialized.";
 
 		DBG_AUDIO << "Channel layout: " << n_of_channels << " channels (" << n_reserved_channels << " reserved)\n"
 		          << "    " << bell_channel << " - bell\n"
 		          << "    " << timer_channel << " - timer\n"
 		          << "    " << source_channel_start << ".." << source_channel_last << " - sound sources\n"
 		          << "    " << UI_sound_channel_start << ".." << UI_sound_channel_last << " - UI\n"
-		          << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects\n";
+		          << "    " << UI_sound_channel_last + 1 << ".." << n_of_channels - 1 << " - sound effects";
 
 		play_music();
 	}
@@ -506,7 +507,7 @@ void close_sound()
 
 		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
 		if(numtimesopened == 0) {
-			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << std::endl;
+			ERR_AUDIO << "Error closing audio device: " << Mix_GetError();
 		}
 
 		while(numtimesopened) {
@@ -519,7 +520,7 @@ void close_sound()
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
 	}
 
-	LOG_AUDIO << "Audio device released.\n";
+	LOG_AUDIO << "Audio device released.";
 }
 
 void reset_sound()
@@ -532,7 +533,7 @@ void reset_sound()
 	if(music || sound || bell || UI_sound) {
 		sound::close_sound();
 		if(!sound::init_sound()) {
-			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << std::endl;
+			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError();
 		}
 
 		if(!music) {
@@ -651,29 +652,37 @@ static void play_new_music()
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
-		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache\n";
+		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache";
 
 		filesystem::rwops_ptr rwops = filesystem::make_read_RWops(filename);
 		// SDL takes ownership of rwops
 		const std::shared_ptr<Mix_Music> music(Mix_LoadMUSType_RW(rwops.release(), MUS_NONE, true), &Mix_FreeMusic);
 
 		if(music == nullptr) {
-			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Could not load music file '" << filename << "': " << Mix_GetError();
 			return;
 		}
 
 		itor = music_cache.emplace(filename, music).first;
 	}
 
-	LOG_AUDIO << "Playing track '" << filename << "'\n";
+	LOG_AUDIO << "Playing track '" << filename << "'";
 	int fading_time = current_track->ms_before();
 	if(no_fading) {
 		fading_time = 0;
 	}
 
+	// Halt any existing music.
+	// If we don't do this SDL_Mixer blocks everything until fade out is complete.
+	// Do not remove this without ensuring that it does not block.
+	// If you don't want it to halt the music, ensure that fades are completed
+	// before attempting to play new music.
+	Mix_HaltMusic();
+
+	// Fade in the new music
 	const int res = Mix_FadeInMusic(itor->second.get(), 1, fading_time);
 	if(res < 0) {
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " " << std::endl;
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " ";
 	}
 
 	want_new_music = false;
@@ -713,7 +722,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	music_track track(music_node);
 
 	if(!track.valid() && !track.id().empty()) {
-		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
+		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.";
 	}
 
 	// If they say play once, we don't alter playlist.
@@ -749,7 +758,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 			}
 		}
 	} else {
-		ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'" << std::endl;
+		ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'";
 	}
 
 	// They can tell us to start playing this list immediately.
@@ -766,6 +775,11 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process(events::pump_info& info)
 {
+	if(Mix_FadingMusic() != MIX_NO_FADING) {
+		// Do not block everything while fading.
+		return;
+	}
+
 	if(preferences::music_on()) {
 		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
 			// Pick next track, add ending time to its start time.
@@ -783,6 +797,7 @@ void music_thinker::process(events::pump_info& info)
 		if(want_new_music) {
 			if(Mix_PlayingMusic()) {
 				Mix_FadeOutMusic(fadingout_time);
+				return;
 			}
 
 			unload_music = false;
@@ -920,7 +935,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		}
 
 		if(cache_full) {
-			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.\n";
+			LOG_AUDIO << "Maximum sound cache size reached and all are busy, skipping.";
 			throw chunk_load_exception();
 		}
 
@@ -932,12 +947,12 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(localized.empty() ? filename : localized);
 			temp_chunk.set_data(Mix_LoadWAV_RW(rwops.release(), true)); // SDL takes ownership of rwops
 		} else {
-			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;
+			ERR_AUDIO << "Could not load sound file '" << file << "'.";
 			throw chunk_load_exception();
 		}
 
 		if(temp_chunk.get_data() == nullptr) {
-			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Could not load sound file '" << filename << "': " << Mix_GetError();
 			throw chunk_load_exception();
 		}
 
@@ -964,7 +979,7 @@ static void play_sound_internal(const std::string& files,
 	// find a free channel in the desired group
 	int channel = Mix_GroupAvailable(group);
 	if(channel == -1) {
-		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.\n";
+		LOG_AUDIO << "All channels dedicated to sound group(" << group << ") are busy, skipping.";
 		return;
 	}
 
@@ -1006,7 +1021,7 @@ static void play_sound_internal(const std::string& files,
 	}
 
 	if(res < 0) {
-		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << std::endl;
+		ERR_AUDIO << "error playing sound effect: " << Mix_GetError();
 		// still keep it in the sound cache, in case we want to try again later
 		return;
 	}

@@ -14,7 +14,7 @@ wml_actions["if"] = function(cfg)
 		wml.error("[if] didn't find any [then], [elseif], or [else] children.")
 	end
 
-	if wesnoth.eval_conditional(cfg) then -- evaluate [if] tag
+	if wml.eval_conditional(cfg) then -- evaluate [if] tag
 		for then_child in wml.child_range(cfg, "then") do
 			local action = utils.handle_event_commands(then_child, "conditional")
 			if action ~= "none" then break end
@@ -23,7 +23,7 @@ wml_actions["if"] = function(cfg)
 	end
 
 	for elseif_child in wml.child_range(cfg, "elseif") do
-		if wesnoth.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
+		if wml.eval_conditional(elseif_child) then -- we'll evaluate the [elseif] tags one by one
 			for then_tag in wml.child_range(elseif_child, "then") do
 				local action = utils.handle_event_commands(then_tag, "conditional")
 				if action ~= "none" then break end
@@ -46,7 +46,7 @@ wml_actions["while"] = function( cfg )
 
 	-- execute [do] up to 65536 times
 	for i = 1, 65536 do
-		if wesnoth.eval_conditional( cfg ) then
+		if wml.eval_conditional( cfg ) then
 			for do_child in wml.child_range( cfg, "do" ) do
 				local action = utils.handle_event_commands(do_child, "loop")
 				if action == "break" then

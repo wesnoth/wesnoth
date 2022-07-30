@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2017-2018 by Charles Dang <exodia339@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2017 - 2022
+	by Charles Dang <exodia339@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -27,9 +28,7 @@
 
 #include <cmath>
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(outro)
 
@@ -47,14 +46,11 @@ outro::outro(const game_classification& info)
 		text_.push_back(_("The End"));
 	}
 
-	text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
-
-	// We only show the end text and the title if credits were turned off
 	if(info.end_credits) {
-		const auto campaign_credits = about::get_campaign_credits(info.campaign);
+		text_.push_back("<span size='large'>" + info.campaign_name + "</span>");
 
-		if(campaign_credits != about::get_credits_data().end()) {
-			for(const auto& about : campaign_credits->sections) {
+		if(const auto campaign_credits = about::get_campaign_credits(info.campaign)) {
+			for(const auto& about : (*campaign_credits)->sections) {
 				if(about.names.empty()) {
 					continue;
 				}
@@ -99,7 +95,8 @@ void outro::pre_show(window& window)
 	window.set_enter_disabled(true);
 	window.get_canvas(0).set_variable("outro_text", wfl::variant(*current_text_));
 
-	connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
+	//connect_signal_on_draw(window, std::bind(&outro::draw_callback, this));
+	// TODO: draw_manager - modal_dialog should be a window, i'm not hacking any more of these
 }
 
 void outro::draw_callback()
@@ -142,9 +139,8 @@ void outro::draw_callback()
 	}
 
 	window_canvas.set_variable("fade_step", wfl::variant(fade_step_));
-	window_canvas.set_is_dirty(true);
-
-	get_window()->set_is_dirty(true);
+	window_canvas.update_size_variables();
+	get_window()->queue_redraw();
 
 	if(fading_in_) {
 		fade_step_++;
@@ -160,4 +156,3 @@ void outro::post_show(window& /*window*/)
 }
 
 } // namespace dialogs
-} // namespace gui2

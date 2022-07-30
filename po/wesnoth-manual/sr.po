@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manual\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2020-08-08 05:30-0400\n"
+"POT-Creation-Date: 2021-05-22 22:21-0400\n"
 "PO-Revision-Date: 2012-02-18 17:25+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -264,13 +264,14 @@ msgstr "Главни мени"
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:89 doc/manual/manual.en.xml:325
 #: doc/manual/manual.en.xml:390 doc/manual/manual.en.xml:401
-#: doc/manual/manual.en.xml:455 doc/manual/manual.en.xml:1253
-#: doc/manual/manual.en.xml:1362 doc/manual/manual.en.xml:1387
-#: doc/manual/manual.en.xml:1412 doc/manual/manual.en.xml:1437
-#: doc/manual/manual.en.xml:1462 doc/manual/manual.en.xml:1487
-#: doc/manual/manual.en.xml:1512 doc/manual/manual.en.xml:2296
-#: doc/manual/manual.en.xml:2312 doc/manual/manual.en.xml:2328
-#: doc/manual/manual.en.xml:2344 doc/manual/manual.en.xml:2360
+#: doc/manual/manual.en.xml:455 doc/manual/manual.en.xml:590
+#: doc/manual/manual.en.xml:699 doc/manual/manual.en.xml:724
+#: doc/manual/manual.en.xml:749 doc/manual/manual.en.xml:774
+#: doc/manual/manual.en.xml:799 doc/manual/manual.en.xml:824
+#: doc/manual/manual.en.xml:849 doc/manual/manual.en.xml:1633
+#: doc/manual/manual.en.xml:1649 doc/manual/manual.en.xml:1665
+#: doc/manual/manual.en.xml:1681 doc/manual/manual.en.xml:1697
+#: doc/manual/manual.en.xml:1713
 msgid "<placeholder type=\"inlinemediaobject\" id=\"0\"/>"
 msgstr "<placeholder type=\"inlinemediaobject\" id=\"0\"/>"
 
@@ -452,8 +453,8 @@ msgstr "<guibutton>Заслуге</guibutton>"
 #| "#wesnoth."
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
-"be able to reach them in real time at irc.freenode.org:6667 on #wesnoth or "
-"at <ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
+"be able to reach them in real time at irc.libera.chat:6667 on #wesnoth or at "
+"<ulink url=\"https://discord.gg/battleforwesnoth\">https://discord.gg/"
 "battleforwesnoth</ulink>"
 msgstr ""
 "Клик на ово дугме даје списак главних доприносилаца Веснота. С многима од "
@@ -509,8 +510,8 @@ msgid ""
 "\"."
 msgstr "Кликните овде да прочитате претходни кратки савет из „Књиге Веснота“."
 
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:265 doc/manual/manual.en.xml:1052
+#. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
+#: doc/manual/manual.en.xml:265
 msgid "i"
 msgstr "<keycap>i</keycap>"
 
@@ -1119,7 +1120,7 @@ msgstr ""
 "наставак."
 
 #. type: Content of: <book><chapter><section><title>
-#: doc/manual/manual.en.xml:548 doc/manual/manual.en.xml:1243
+#: doc/manual/manual.en.xml:548 doc/manual/manual.en.xml:580
 msgid "Gold"
 msgstr "Злато"
 
@@ -1184,693 +1185,12 @@ msgstr "Контроле"
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:577
 msgid ""
-"These are the default control keys. Key setup might differ depending on the "
-"platform used. For example you will often have to use the command key "
-"instead of the control key when you are using MacOSX. You can change most "
-"hotkeys to your taste using the Preferences menu."
+"To view and change the hotkey settings open the Preferences menu and choose "
+"the Hotkeys tab."
 msgstr ""
-"Ово су подразумевани контролни тастери. Постава тастера може да се разликује "
-"у зависности од платформе. На пример, под МекОС-ом често ћете користити "
-"тастер Cmd уместо Ctrl. Већину пречица можете изменити по жељи у менију "
-"<guimenu>Поставке</guimenu>."
-
-#. type: Content of: <book><chapter><section><table><title>
-#: doc/manual/manual.en.xml:585
-msgid "General controls and hotkeys"
-msgstr "Опште контроле и пречице"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:592
-msgid "F1"
-msgstr "<keycombo><keycap>F1</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:595
-msgid "The Battle for Wesnoth Help"
-msgstr "Помоћ „Боја за Веснот“."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:600
-msgid "Arrow keys"
-msgstr "тастери стрелица"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:603
-msgid "Scroll"
-msgstr "Клизање."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:608
-msgid "Left click"
-msgstr "леви клик"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:611
-msgid "Select unit, move unit"
-msgstr "Бирање и покретање јединице."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:616
-msgid "Right click"
-msgstr "десни клик"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:619
-msgid "Context menu, cancel action"
-msgstr "Контекстни мени, отказивање радње."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:624
-msgid "Middle click"
-msgstr "средњи клик"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:627
-msgid "Center on pointer location"
-msgstr "Центрирање на положај показивача."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:632
-msgid "Escape"
-msgstr "<keycombo><keycap>Escape</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:635
-msgid "Exit game, exit menu, cancel message"
-msgstr "Напуштање игре, напуштање менија, отказивање поруке."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:646
-msgid "Ctrl+s"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:649
-msgid "Save game"
-msgstr "Уписивање позиције."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:654
-msgid "Ctrl+o"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:657
-msgid "Load game"
-msgstr "Учитавање позиције."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:662
-msgid "Ctrl+p"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>P</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:665 doc/manual/manual.en.xml:1219
-msgid "Go to Preferences menu"
-msgstr "Одлазак у дијалог за подешавање."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:670
-msgid "Ctrl+q"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:673 doc/manual/manual.en.xml:1211
-msgid "Quit game"
-msgstr "Напуштање игре."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:678
-msgid "Ctrl+f"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:681
-msgid "Toggle full screen/windowed mode"
-msgstr "Преко целог екрана или у прозору."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:686
-msgid "Ctrl+Alt+m"
-msgstr ""
-"<keycombo><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>M</keycap></"
-"keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:689
-msgid "Toggle muting of game sounds"
-msgstr "Утишавање звука у игри."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:700
-msgid "+"
-msgstr "<keycombo><keycap>+</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:703
-msgid "Zoom in"
-msgstr "Увеличање."
-
-#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:708 doc/manual/manual.en.xml:2357
-msgid "-"
-msgstr "<keycombo><keycap>-</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:711
-msgid "Zoom out"
-msgstr "Умањење."
-
-#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:716 doc/manual/manual.en.xml:2136
-#: doc/manual/manual.en.xml:2142
-msgid "0"
-msgstr "<keycombo><keycap>0</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:719
-msgid "Reset zoom to default"
-msgstr "Подразумевано увеличање."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:724
-msgid "Ctrl+e"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>E</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:727
-msgid "Toggle ellipses"
-msgstr "Приказ елипса."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:732
-msgid "Ctrl+g"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>G</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:735
-msgid "Toggle grid"
-msgstr "Приказ мреже."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:746
-msgid "Ctrl+a"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>A</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:749
-msgid "Toggle accelerated game mode"
-msgstr "Убрзани режим игре."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:754
-msgid "Holding Shift"
-msgstr "држање Shift"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:757
-msgid ""
-"Toggle between accelerated and normal game mode while pressed (temporary!)"
-msgstr ""
-"Пребацивање између убрзаног и обичног режима игре док је притиснуто "
-"(привремено!)"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:768
-msgid "Ctrl+j"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>J</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:771
-msgid "Show scenario objectives"
-msgstr "Циљеви сценарија."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:776
-msgid "s"
-msgstr "<keycombo><keycap>S</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:779
-msgid "Show statistics"
-msgstr "Статистика."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:784
-msgid "Alt+s"
-msgstr "<keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:787
-msgid "Show status table"
-msgstr "Табела стања."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:792
-msgid "Alt+u"
-msgstr "<keycombo><keycap>Alt</keycap><keycap>U</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:795
-msgid "Show unit list"
-msgstr "Списак јединица."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:806
-msgid "l"
-msgstr "<keycombo><keycap>L</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:809
-msgid "Move to leader unit"
-msgstr "Скок на јединицу вођа."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:820
-msgid "Shift+s"
-msgstr "<keycombo><keycap>Shift</keycap><keycap>S</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:823
-msgid "Update shroud now"
-msgstr "Ручно ажурирање покрова."
-
-#. type: Content of: <book><chapter><section><table><title>
-#: doc/manual/manual.en.xml:833
-msgid "Unit and turn specific hotkeys"
-msgstr "Пречице за јединице и потез"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:840
-msgid "Ctrl+r"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>R</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:843
-msgid "Recruit unit"
-msgstr "Унајмљивање јединице."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:848
-msgid "Ctrl+Alt+r"
-msgstr ""
-"<keycombo><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>R</keycap></"
-"keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:851
-msgid "Repeat last recruit"
-msgstr "Понављање последњег унајмљивања."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:856
-msgid "Alt+r"
-msgstr "<keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:859
-msgid "Recall unit"
-msgstr "Сазивање јединице."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:870
-msgid "Ctrl+n"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>N</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:873
-msgid "Rename unit"
-msgstr "Преименовање јединице."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:878
-msgid "d"
-msgstr "<keycombo><keycap>D</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:881
-msgid "Show the description of the currently selected unit"
-msgstr "Приказ описа тренутно изабране јединице."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:892
-msgid "t"
-msgstr "<keycombo><keycap>T</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:895
-msgid "Continue interrupted unit move"
-msgstr "Наставак прекинутог покрета јединице."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:900
-msgid "u"
-msgstr "<keycombo><keycap>U</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:903
-msgid "Undo last move (only deterministic moves can be undone)"
-msgstr "Опозивање последњег покрета (могуће само за детерминистичке покрете)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:908
-msgid "r"
-msgstr "<keycombo><keycap>R</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:911
-msgid "Redo move"
-msgstr "Понављање покрета."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:916
-msgid "n"
-msgstr "<keycombo><keycap>N</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:919
-msgid "Cycle through units that have movement left"
-msgstr "Кружење кроз јединице које још могу да се покрену."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:924
-msgid "Shift+n"
-msgstr "<keycombo><keycap>Shift</keycap><keycap>N</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:927
-msgid "Cycle through units that have movement left, in reverse order"
-msgstr "Кружење кроз јединице које још могу да се покрену, обрнуто."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:938
-msgid "Ctrl+v"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:941
-msgid "Show enemy moves (where the enemy can move next turn)"
-msgstr "Могући покрети непријатеља (у следећем потезу)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:946
-msgid "Ctrl+b"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:949
-msgid "Show potential enemy moves, if your units were not on the map"
-msgstr "Могући покрети непријатеља кад ваших јединица не би било на мапи."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:954
-msgid "1-7"
-msgstr ""
-"<keycombo><keycap>1</keycap></keycombo> до <keycombo><keycap>7</keycap></"
-"keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:957
-msgid "Show how far currently selected unit can move in that many turns"
-msgstr "Колико далеко изабрана јединица може да се помери за оволико потеза."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:968
-msgid "Space"
-msgstr "<keycombo><keycap>Space</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:971
-msgid "End unit turn and cycle to next unit that has movement left"
-msgstr "Крај потеза јединице и прелаз на следећу која још може да се покрене."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:976
-msgid "Shift+Space"
-msgstr "<keycombo><keycap>Shift</keycap><keycap>Space</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:979
-msgid "Make currently selected unit hold position (end its movement)"
-msgstr "Тренутно изабрана јединица да држи положај (крај покретања)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:984
-msgid "Ctrl+Space"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>Space</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:987 doc/manual/manual.en.xml:1235
-msgid "End this player&#8217;s turn"
-msgstr "Крај играчевог потеза."
-
-#. type: Content of: <book><chapter><section><table><title>
-#: doc/manual/manual.en.xml:997
-msgid "Whiteboard specific hotkeys"
-msgstr "Пречице за блокче"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1004
-msgid "p"
-msgstr "<keycap>p</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1007
-msgid "Toggle planning mode"
-msgstr "Режим планирања."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1012
-msgid "y"
-msgstr "<keycap>y</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1015
-msgid "Execute planned action"
-msgstr "Извршавање планиране радње."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1020
-msgid "h"
-msgstr "<keycap>h</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1023
-msgid "Delete planned action"
-msgstr "Брисање планиране радње."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1028
-msgid "Page Down"
-msgstr "<keycap>PageDown</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1031
-msgid "Move action down in the queue"
-msgstr "Померање радње надоле у реду."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1036
-msgid "Page Up"
-msgstr "<keycap>PageUp</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1039
-msgid "Move action up in the queue"
-msgstr "Померање радње нагоре у реду."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1044
-msgid "Ctrl+y"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>Y</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1047
-msgid "Execute all actions"
-msgstr "Извршавање свих радњи."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1055
-msgid "Suppose dead"
-msgstr "Претпостављање мртвим."
-
-#. type: Content of: <book><chapter><section><table><title>
-#: doc/manual/manual.en.xml:1065
-msgid "Multiplayer specific hotkeys"
-msgstr "Пречице за вишеиграње"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1072
-msgid "m"
-msgstr "<keycombo><keycap>M</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1075
-msgid "Message another player (in multiplayer)"
-msgstr "Порука другом играчу (у вишеигрању)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1080
-msgid "Ctrl+m"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1083
-msgid "Message your allies (in multiplayer)"
-msgstr "Порука савезницима (у вишеигрању)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1088
-msgid "Alt+m"
-msgstr "<keycombo><keycap>Alt</keycap><keycap>M</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1091
-msgid "Message everyone in the game (in multiplayer)"
-msgstr "Порука свима у игри (у вишеигрању)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1096
-msgid "Alt+c"
-msgstr "<keycombo><keycap>Alt</keycap><keycap>C</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1099
-msgid "View chat log"
-msgstr "Дневник ћаскања."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1104
-msgid "Ctrl+x"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>X</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1107
-msgid "Clear messages"
-msgstr "Чишћење порука."
-
-#. type: Content of: <book><chapter><section><table><title>
-#: doc/manual/manual.en.xml:1117 doc/manual/manual.en.xml:1201
-msgid "Miscellaneous hotkeys"
-msgstr "Разне пречице"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1124
-msgid "Ctrl+c"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1127
-msgid "Clear onscreen labels"
-msgstr "Чишћење екранских етикета."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1132
-msgid "/"
-msgstr "<keycombo><keycap>/</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1135
-msgid "Search (find label or unit by name)"
-msgstr "Тражење (етикета или јединица по имену)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1140
-msgid "Alt+l"
-msgstr "<keycombo><keycap>Alt</keycap><keycap>L</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1143
-msgid "Attach a text label to a terrain hex"
-msgstr "Постављање текстуалне етикете на поље."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1148
-msgid "Ctrl+l"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>L</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1151
-msgid "Set team label"
-msgstr "Тимска етикета."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1162
-msgid ":"
-msgstr "<keycombo><keycap>:</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1165
-#, fuzzy
-#| msgid ""
-#| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
-#| "ulink>"
-msgid ""
-"<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
-msgstr ""
-"<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Командни режим</ulink>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1170
-msgid "F5"
-msgstr "<keycap>F5</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1173 doc/manual/manual.en.xml:1227
-msgid "Refresh Cache"
-msgstr "Освежавање кеша"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1178
-msgid "Shift+c"
-msgstr "<keycombo><keycap>Shift</keycap><keycap>C</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1181
-msgid "Create Unit (Debug!)"
-msgstr "Стварање јединице (исправљање)."
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1186
-msgid "f"
-msgstr "<keycap>f</keycap>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1189
-msgid "Run AI formula"
-msgstr "Извршавање ВИ формуле."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:1195
-msgid ""
-"Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a list "
-"of those:"
-msgstr ""
-"Неке пречице под МекОС-ом X траже више од замене Ctrl са Cmd. Следи списак "
-"таквих:"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1208
-msgid "Cmd+w"
-msgstr "<keycombo><keycap>Cmd</keycap><keycap>W</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1216
-msgid "Cmd+,"
-msgstr "<keycombo><keycap>Cmd</keycap><keycap>,</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1224
-msgid "Ctrl+F5"
-msgstr "<keycombo><keycap>Ctrl</keycap><keycap>F5</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1232
-msgid "Option+Space"
-msgstr "<keycombo><keycap>Option</keycap><keycap>Space</keycap></keycombo>"
-
-#. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:1244
+#: doc/manual/manual.en.xml:581
 msgid ""
 "Each side is given some amount of gold to begin with, and receives 2 gold "
 "pieces per turn, plus 2 more gold pieces for every village that side "
@@ -1888,12 +1208,12 @@ msgstr ""
 "поменут у циљевима сценарија."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1252
+#: doc/manual/manual.en.xml:589
 msgid "Recruiting and Recalling"
 msgstr "Унајмљивање и сазивање"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject>
-#: doc/manual/manual.en.xml:1254
+#: doc/manual/manual.en.xml:591
 #, fuzzy
 #| msgid ""
 #| "<imageobject> <imagedata fileref=\"images/recruit-1.9.4.jpg\"/> </"
@@ -1906,12 +1226,12 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><simpara><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1257
+#: doc/manual/manual.en.xml:594
 msgid "Recruit dialog"
 msgstr "Дијалог за унајмљивање"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1259
+#: doc/manual/manual.en.xml:596
 msgid ""
 "The major use for gold is to build your army by recruiting new units or "
 "recalling units from previous scenarios in a campaign. Units may be "
@@ -1923,7 +1243,7 @@ msgstr ""
 "када заповедник стоји на кули у замку који има бар једно празно поље."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:1266
+#: doc/manual/manual.en.xml:603
 msgid ""
 "Right-click in an empty castle hex and select Recruit to recruit new units "
 "from the list that is presented. The cost to Recruit depends on the unit, "
@@ -1934,7 +1254,7 @@ msgstr ""
 "унајмљивања зависи од типа јединице, а обично је између 10 и 20 златника."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:1273
+#: doc/manual/manual.en.xml:610
 msgid ""
 "Right-click in an empty castle hex and select Recall to recall units from "
 "previous scenarios. Recalling costs 20 pieces of gold per unit. See <link "
@@ -1946,12 +1266,12 @@ msgstr ""
 "јединица</link> за више детаља."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1281
+#: doc/manual/manual.en.xml:618
 msgid "Upkeep"
 msgstr "Издаци"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1282
+#: doc/manual/manual.en.xml:619
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
 "level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
@@ -1969,30 +1289,30 @@ msgstr ""
 "је једнак разлици између броја села и укупних издатака."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1290
+#: doc/manual/manual.en.xml:627
 msgid "Income"
 msgstr "Приходи"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1291
+#: doc/manual/manual.en.xml:628
 msgid "So, the formula for determining the income per turn is"
 msgstr "Формула за одређивање прихода по потезу гласи"
 
 # |, no-check-spell
 #. type: Content of: <book><chapter><section><section><literallayout>
-#: doc/manual/manual.en.xml:1292
+#: doc/manual/manual.en.xml:629
 #, no-wrap
 msgid "2 + villages − maximum(0, upkeep − villages)"
 msgstr "2 + бр_села – веће_од(0, издаци - бр_села)"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1293
+#: doc/manual/manual.en.xml:630
 msgid ""
 "where upkeep is equal to the sum of the levels of all your non-loyal units."
 msgstr "где су издаци једнаки збиру нивоа свих ваших нелојалних јединица."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1295
+#: doc/manual/manual.en.xml:632
 msgid ""
 "If the upkeep cost is greater than the number of villages+2 then the side "
 "starts losing gold, if it is equal, no income is gained or lost."
@@ -2001,12 +1321,12 @@ msgstr ""
 "злато; ако су једнаки, злато се нити добија нити одлива."
 
 #. type: Content of: <book><chapter><section><title>
-#: doc/manual/manual.en.xml:1300
+#: doc/manual/manual.en.xml:637
 msgid "Units"
 msgstr "Јединице"
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:1301
+#: doc/manual/manual.en.xml:638
 msgid ""
 "Battle for Wesnoth has hundreds of unit types which are characterized by a "
 "rich set of statistics. In addition, individual units can have specific "
@@ -2021,7 +1341,7 @@ msgstr ""
 "сценарије, како би још више проширили опције доступне играчу."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:1306
+#: doc/manual/manual.en.xml:643
 msgid ""
 "The basic statistics for a unit include its hit points (HP), the number of "
 "movement points it has, and the weapons it can use and the damage they do. "
@@ -2033,12 +1353,12 @@ msgstr ""
 "посебне могућности, о чему ће бити речи у наредном."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1311
+#: doc/manual/manual.en.xml:648
 msgid "Alignment"
 msgstr "Поредак"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1312
+#: doc/manual/manual.en.xml:649
 msgid ""
 "Every unit has an alignment: lawful, neutral, chaotic, or liminal. Alignment "
 "affects how units perform at different times of day. Neutral units are "
@@ -2053,7 +1373,7 @@ msgstr ""
 "Двојствене јединице наносе мање штете и дању и ноћу."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1317
+#: doc/manual/manual.en.xml:654
 msgid ""
 "The two \"day\" and \"night\" phases are differentiated as Morning, "
 "Afternoon and First Watch, Second Watch, by the positions of the sun and "
@@ -2064,7 +1384,7 @@ msgstr ""
 "дана."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1320
+#: doc/manual/manual.en.xml:657
 msgid ""
 "The following table shows the effects of different times of the day on the "
 "damage dealt by lawful, chaotic, and liminal units:"
@@ -2073,48 +1393,48 @@ msgstr ""
 "законите, хаотичне и двојствене јединице:"
 
 #. type: Content of: <book><chapter><section><section><table><title>
-#: doc/manual/manual.en.xml:1326
+#: doc/manual/manual.en.xml:663
 msgid "Time of the day and damage"
 msgstr "Доба дана и штета"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:1337
+#: doc/manual/manual.en.xml:674
 msgid "Turn"
 msgstr "потез"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:1340 doc/manual/manual.en.xml:2283
+#: doc/manual/manual.en.xml:677 doc/manual/manual.en.xml:1620
 msgid "Image"
 msgstr "слика"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:1343
+#: doc/manual/manual.en.xml:680
 msgid "Day-phase"
 msgstr "смена"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:1346
+#: doc/manual/manual.en.xml:683
 msgid "Lawful"
 msgstr "законите"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:1349
+#: doc/manual/manual.en.xml:686
 msgid "Chaotic"
 msgstr "хаотичне"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:1352
+#: doc/manual/manual.en.xml:689
 msgid "Liminal"
 msgstr "двојствене"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1359 doc/manual/manual.en.xml:2147
-#: doc/manual/manual.en.xml:2153
+#: doc/manual/manual.en.xml:696 doc/manual/manual.en.xml:1484
+#: doc/manual/manual.en.xml:1490
 msgid "1"
 msgstr "1"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1363
+#: doc/manual/manual.en.xml:700
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-dawn.png\"/> </"
 "imageobject>"
@@ -2123,30 +1443,30 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1366
+#: doc/manual/manual.en.xml:703
 msgid "images/schedule-dawn.png"
 msgstr "Зора"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1370
+#: doc/manual/manual.en.xml:707
 msgid "Dawn"
 msgstr "зора"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1373 doc/manual/manual.en.xml:1376
-#: doc/manual/manual.en.xml:1379 doc/manual/manual.en.xml:1448
-#: doc/manual/manual.en.xml:1451 doc/manual/manual.en.xml:1454
+#: doc/manual/manual.en.xml:710 doc/manual/manual.en.xml:713
+#: doc/manual/manual.en.xml:716 doc/manual/manual.en.xml:785
+#: doc/manual/manual.en.xml:788 doc/manual/manual.en.xml:791
 msgid "--"
 msgstr "—"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1384 doc/manual/manual.en.xml:2158
-#: doc/manual/manual.en.xml:2164
+#: doc/manual/manual.en.xml:721 doc/manual/manual.en.xml:1495
+#: doc/manual/manual.en.xml:1501
 msgid "2"
 msgstr "2"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1388
+#: doc/manual/manual.en.xml:725
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-morning.png\"/> </"
 "imageobject>"
@@ -2155,39 +1475,39 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1391
+#: doc/manual/manual.en.xml:728
 msgid "images/schedule-morning.png"
 msgstr "Јутро"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1395
+#: doc/manual/manual.en.xml:732
 msgid "Day (morning)"
 msgstr "дан (јутро)"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1398 doc/manual/manual.en.xml:1423
-#: doc/manual/manual.en.xml:1476 doc/manual/manual.en.xml:1501
-#: doc/manual/manual.en.xml:1526
+#: doc/manual/manual.en.xml:735 doc/manual/manual.en.xml:760
+#: doc/manual/manual.en.xml:813 doc/manual/manual.en.xml:838
+#: doc/manual/manual.en.xml:863
 msgid "+25%"
 msgstr "+25%"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1401 doc/manual/manual.en.xml:1404
-#: doc/manual/manual.en.xml:1426 doc/manual/manual.en.xml:1429
-#: doc/manual/manual.en.xml:1473 doc/manual/manual.en.xml:1479
-#: doc/manual/manual.en.xml:1498 doc/manual/manual.en.xml:1504
-#: doc/manual/manual.en.xml:1523 doc/manual/manual.en.xml:1529
+#: doc/manual/manual.en.xml:738 doc/manual/manual.en.xml:741
+#: doc/manual/manual.en.xml:763 doc/manual/manual.en.xml:766
+#: doc/manual/manual.en.xml:810 doc/manual/manual.en.xml:816
+#: doc/manual/manual.en.xml:835 doc/manual/manual.en.xml:841
+#: doc/manual/manual.en.xml:860 doc/manual/manual.en.xml:866
 msgid "−25%"
 msgstr "−25%"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1409 doc/manual/manual.en.xml:2169
-#: doc/manual/manual.en.xml:2175
+#: doc/manual/manual.en.xml:746 doc/manual/manual.en.xml:1506
+#: doc/manual/manual.en.xml:1512
 msgid "3"
 msgstr "3"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1413
+#: doc/manual/manual.en.xml:750
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-afternoon.png\"/> </"
 "imageobject>"
@@ -2196,23 +1516,23 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1416
+#: doc/manual/manual.en.xml:753
 msgid "images/schedule-afternoon.png"
 msgstr "Поподне"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1420
+#: doc/manual/manual.en.xml:757
 msgid "Day (afternoon)"
 msgstr "дан (поподне)"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1434 doc/manual/manual.en.xml:2139
-#: doc/manual/manual.en.xml:2180 doc/manual/manual.en.xml:2186
+#: doc/manual/manual.en.xml:771 doc/manual/manual.en.xml:1476
+#: doc/manual/manual.en.xml:1517 doc/manual/manual.en.xml:1523
 msgid "4"
 msgstr "4"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1438
+#: doc/manual/manual.en.xml:775
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-dusk.png\"/> </"
 "imageobject>"
@@ -2221,23 +1541,23 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1441
+#: doc/manual/manual.en.xml:778
 msgid "images/schedule-dusk.png"
 msgstr "Сумрак"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1445
+#: doc/manual/manual.en.xml:782
 msgid "Dusk"
 msgstr "сумрак"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1459 doc/manual/manual.en.xml:2191
-#: doc/manual/manual.en.xml:2197
+#: doc/manual/manual.en.xml:796 doc/manual/manual.en.xml:1528
+#: doc/manual/manual.en.xml:1534
 msgid "5"
 msgstr "5"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1463
+#: doc/manual/manual.en.xml:800
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-firstwatch.png\"/> </"
 "imageobject>"
@@ -2246,23 +1566,23 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1466
+#: doc/manual/manual.en.xml:803
 msgid "images/schedule-firstwatch.png"
 msgstr "Прва стража"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1470
+#: doc/manual/manual.en.xml:807
 msgid "Night (first watch)"
 msgstr "ноћ (прва стража)"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1484 doc/manual/manual.en.xml:2202
-#: doc/manual/manual.en.xml:2208
+#: doc/manual/manual.en.xml:821 doc/manual/manual.en.xml:1539
+#: doc/manual/manual.en.xml:1545
 msgid "6"
 msgstr "6"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1488
+#: doc/manual/manual.en.xml:825
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-secondwatch.png\"/> </"
 "imageobject>"
@@ -2271,22 +1591,22 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1491
+#: doc/manual/manual.en.xml:828
 msgid "images/schedule-secondwatch.png"
 msgstr "Друга стража"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1495
+#: doc/manual/manual.en.xml:832
 msgid "Night (second watch)"
 msgstr "ноћ (друга стража)"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1509
+#: doc/manual/manual.en.xml:846
 msgid "Special"
 msgstr "посебно"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:1513
+#: doc/manual/manual.en.xml:850
 msgid ""
 "<imageobject> <imagedata fileref=\"images/schedule-underground.png\"/> </"
 "imageobject>"
@@ -2295,17 +1615,17 @@ msgstr ""
 "imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:1516
+#: doc/manual/manual.en.xml:853
 msgid "images/schedule-underground.png"
 msgstr "Подземље"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:1520
+#: doc/manual/manual.en.xml:857
 msgid "Underground"
 msgstr "подземље"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1535
+#: doc/manual/manual.en.xml:872
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -2313,7 +1633,7 @@ msgstr ""
 "Имајте на уму да се неки сценарији одвијају у подземљу, где је трајна ноћ!"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1537
+#: doc/manual/manual.en.xml:874
 msgid ""
 "For example: consider a fight between a Lawful and a Chaotic unit when both "
 "have a base damage of 12. At dawn and dusk, both will do 12 points of damage "
@@ -2330,7 +1650,7 @@ msgstr ""
 "биће обрнуто, законита јединица нанеће 9 поена према 15 поена хаотичне."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1543
+#: doc/manual/manual.en.xml:880
 msgid ""
 "If an equivalent Neutral unit were fighting, it would always do 12 points of "
 "damage regardless of the hour."
@@ -2339,12 +1659,12 @@ msgstr ""
 "обзира на доба дана."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1547
+#: doc/manual/manual.en.xml:884
 msgid "Traits"
 msgstr "Особине"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1548
+#: doc/manual/manual.en.xml:885
 msgid ""
 "Units have traits which reflect aspects of their character. Traits are "
 "assigned randomly to units when they are created. Most units receive two "
@@ -2355,17 +1675,17 @@ msgstr ""
 "особине."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1551
+#: doc/manual/manual.en.xml:888
 msgid "The possible traits for most units are as follows:"
 msgstr "Могуће особине за већину јединица јесу:"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1555
+#: doc/manual/manual.en.xml:892
 msgid "Intelligent"
 msgstr "оштроумност"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1559
+#: doc/manual/manual.en.xml:896
 msgid ""
 "Intelligent units require 20% less experience than usual to advance (Trolls "
 "do not get this trait).  Intelligent units are very useful at the beginning "
@@ -2384,12 +1704,12 @@ msgstr ""
 "кориснијим особинама."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1571
+#: doc/manual/manual.en.xml:908
 msgid "Quick"
 msgstr "хитрост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1575
+#: doc/manual/manual.en.xml:912
 msgid ""
 "Quick units have 1 extra movement point, but 5% less HP than usual.  Quick "
 "is the most noticeable trait, particularly in slower moving units such as "
@@ -2407,12 +1727,12 @@ msgstr ""
 "су мање погодне за држање положајâ под сталним нападом."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1587
+#: doc/manual/manual.en.xml:924
 msgid "Resilient"
 msgstr "жилавост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1591
+#: doc/manual/manual.en.xml:928
 msgid ""
 "Resilient units have 4 HP plus 1 HP per level more than usual.  Resilient "
 "units can be useful at all stages of a campaign, and this is a useful trait "
@@ -2429,12 +1749,12 @@ msgstr ""
 "противника."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1602
+#: doc/manual/manual.en.xml:939
 msgid "Strong"
 msgstr "кршност"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1606
+#: doc/manual/manual.en.xml:943
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP.  While useful for any close-combat unit, Strong is most "
@@ -2449,7 +1769,7 @@ msgstr ""
 "зрнце више штете потребно да се оштећујући удар претвори у завршни."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1616
+#: doc/manual/manual.en.xml:953
 msgid ""
 "There are also some traits that are assigned only for certain units or only "
 "for units of a certain race. These are:"
@@ -2458,12 +1778,12 @@ msgstr ""
 "одређене расе. То су:"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1621
+#: doc/manual/manual.en.xml:958
 msgid "Dextrous"
 msgstr "спретност"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1625
+#: doc/manual/manual.en.xml:962
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged "
 "combat.  Dextrous is a trait possessed only by Elves. The Elven people are "
@@ -2479,12 +1799,12 @@ msgstr ""
 "стрелом."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1635
+#: doc/manual/manual.en.xml:972
 msgid "Fearless"
 msgstr "неустрашивост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1639
+#: doc/manual/manual.en.xml:976
 msgid ""
 "Does not suffer from a negative attack bonus during its unfavorable time of "
 "day (Heavy Infantry, Necrophage, Trolls, Walking Corpses)."
@@ -2493,24 +1813,24 @@ msgstr ""
 "(тешкоходи, некрофази, тролови, бауљаши)."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1646
+#: doc/manual/manual.en.xml:983
 msgid "Feral"
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1650
+#: doc/manual/manual.en.xml:987
 msgid ""
 "Units with the Feral trait only receive 50% defense in villages regardless "
 "of the base terrain the village is on (Bats, Falcons)."
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1657
+#: doc/manual/manual.en.xml:994
 msgid "Healthy"
 msgstr "здравље"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1661
+#: doc/manual/manual.en.xml:998
 msgid ""
 "Renowned for their vitality, some dwarves are sturdier than others and can "
 "rest heal even when traveling or fighting.  Healthy units have 1 HP plus 1 "
@@ -2523,7 +1843,7 @@ msgstr ""
 "на околности."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1669
+#: doc/manual/manual.en.xml:1006
 msgid ""
 "There are also some traits that are not assigned randomly.  These traits can "
 "either be assigned by the scenario designer or are always assigned based on "
@@ -2533,34 +1853,34 @@ msgstr ""
 "или се увек везују за тип јединице:"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1675
+#: doc/manual/manual.en.xml:1012
 msgid "Aged"
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1679
+#: doc/manual/manual.en.xml:1016
 msgid ""
 "The oldest units may have the Aged trait, receiving an 8 points HP decrease "
 "and having -1 movement and melee damage."
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1686
+#: doc/manual/manual.en.xml:1023
 msgid "Dim"
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1690
+#: doc/manual/manual.en.xml:1027
 msgid "Units with the Dim trait require 20% more experience to advance."
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1696
+#: doc/manual/manual.en.xml:1033
 msgid "Elemental"
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1700
+#: doc/manual/manual.en.xml:1037
 #, fuzzy
 #| msgid ""
 #| "Mechanical units aren&#8217;t alive and thus are immune to poison, also "
@@ -2575,12 +1895,12 @@ msgstr ""
 "немају утицаја на њих. Обично је ово једина особина механичких јединица."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1708
+#: doc/manual/manual.en.xml:1045
 msgid "Loyal"
 msgstr "оданост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1712
+#: doc/manual/manual.en.xml:1049
 msgid ""
 "Loyal units don&#8217;t incur upkeep. Most units incur an upkeep cost at the "
 "end of every turn, which is equal to their level. Loyal units do not incur "
@@ -2601,12 +1921,12 @@ msgstr ""
 "несмотрено отпуштати одане јединице, или их слати у бесмислену смрт."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1726
+#: doc/manual/manual.en.xml:1063
 msgid "Mechanical"
 msgstr "механичност"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1730
+#: doc/manual/manual.en.xml:1067
 #, fuzzy
 #| msgid ""
 #| "Mechanical units aren&#8217;t alive and thus are immune to poison, also "
@@ -2621,24 +1941,24 @@ msgstr ""
 "немају утицаја на њих. Обично је ово једина особина механичких јединица."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1738 doc/manual/manual.en.xml:1880
+#: doc/manual/manual.en.xml:1075 doc/manual/manual.en.xml:1217
 msgid "Slow"
 msgstr "успоравање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1742
+#: doc/manual/manual.en.xml:1079
 msgid ""
 "Large, unwieldy units with the Slow trait have -1 movement and 5% more "
 "hitpoints."
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1748
+#: doc/manual/manual.en.xml:1085
 msgid "Undead"
 msgstr "немртвост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1752
+#: doc/manual/manual.en.xml:1089
 msgid ""
 "Undead units are immune to poison, also drain and plague doesn&#8217;t work "
 "on them.  Undead units generally have <emphasis>Undead</emphasis> as their "
@@ -2653,34 +1973,34 @@ msgstr ""
 "нападе подржавају отровима."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1762
+#: doc/manual/manual.en.xml:1099
 msgid "Weak"
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1766
+#: doc/manual/manual.en.xml:1103
 msgid ""
 "Units may have the Weak trait, receiving a -1 increment in hitpoints and "
 "melee damage."
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1774
+#: doc/manual/manual.en.xml:1111
 msgid "Unit Specialties"
 msgstr "Специјалности јединица"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1775
+#: doc/manual/manual.en.xml:1112
 msgid "Certain units have special attacks. These are listed below:"
 msgstr "Неке јединице имају специјалне нападе, набројане испод:"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1779
+#: doc/manual/manual.en.xml:1116
 msgid "Backstab"
 msgstr "нож у леђа"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1783
+#: doc/manual/manual.en.xml:1120
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -2691,12 +2011,12 @@ msgstr ""
 "(нпр. окамењена)."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1791
+#: doc/manual/manual.en.xml:1128
 msgid "Berserk"
 msgstr "безглавост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1795
+#: doc/manual/manual.en.xml:1132
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -2705,12 +2025,12 @@ msgstr ""
 "упетљана јединица не настрада, или прође 30 рунди напада."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1803
+#: doc/manual/manual.en.xml:1140
 msgid "Charge"
 msgstr "јуриш"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1807
+#: doc/manual/manual.en.xml:1144
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target&#8217;s "
@@ -2720,12 +2040,12 @@ msgstr ""
 "доводи до двоструког оштећења уколико циљана јединица удари у противнападу."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1814
+#: doc/manual/manual.en.xml:1151
 msgid "Drain"
 msgstr "црпљење"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1818
+#: doc/manual/manual.en.xml:1155
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -2734,23 +2054,23 @@ msgstr ""
 "коју нанесе (заокружено надоле)."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1825
+#: doc/manual/manual.en.xml:1162
 msgid "Firststrike"
 msgstr "први удар"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1829
+#: doc/manual/manual.en.xml:1166
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Јединица увек удара прва у борби, чак и када се брани."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1835
+#: doc/manual/manual.en.xml:1172
 msgid "Magical"
 msgstr "магичност"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1839
+#: doc/manual/manual.en.xml:1176
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -2759,23 +2079,23 @@ msgstr ""
 "нападнуте јединице."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1846
+#: doc/manual/manual.en.xml:1183
 msgid "Marksman"
 msgstr "оштроокост"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1850
+#: doc/manual/manual.en.xml:1187
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "При нападу, увек постоји барем 60% изгледа да дође до поготка."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1856
+#: doc/manual/manual.en.xml:1193
 msgid "Plague"
 msgstr "куга"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1860
+#: doc/manual/manual.en.xml:1197
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -2785,12 +2105,12 @@ msgstr ""
 "оне која је бацила кугу. Ово не ради на немртвима или јединицама у селу."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1868 doc/manual/manual.en.xml:2513
+#: doc/manual/manual.en.xml:1205 doc/manual/manual.en.xml:1865
 msgid "Poison"
 msgstr "отров"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1872
+#: doc/manual/manual.en.xml:1209
 msgid ""
 "This attack poisons the target. Poisoned units lose 8 HP every turn until "
 "they are cured or are reduced to 1 HP. Poison can not, of itself, kill a "
@@ -2801,7 +2121,7 @@ msgstr ""
 "јединицу."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1884
+#: doc/manual/manual.en.xml:1221
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -2813,12 +2133,12 @@ msgstr ""
 "Успорена јединица носиће икону пужа у подацима са стране када се изабере."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1893
+#: doc/manual/manual.en.xml:1230
 msgid "Petrify"
 msgstr "окамењивање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1897
+#: doc/manual/manual.en.xml:1234
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -2827,12 +2147,12 @@ msgstr ""
 "нападати."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1904
+#: doc/manual/manual.en.xml:1241
 msgid "Swarm"
 msgstr "рој"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1908
+#: doc/manual/manual.en.xml:1245
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the % of HP/maximum HP the unit has. "
@@ -2844,12 +2164,12 @@ msgstr ""
 "пример, јединица са 3/4 пуних УП имаће 3/4 удара при нападу."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:1918
+#: doc/manual/manual.en.xml:1255
 msgid "Abilities"
 msgstr "Способности"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:1919
+#: doc/manual/manual.en.xml:1256
 msgid ""
 "Some units have abilities that either directly affect other units, or have "
 "an effect on how the unit interacts with other units. These abilities are "
@@ -2859,12 +2179,12 @@ msgstr ""
 "утичу на то како се друге јединице међусобно односе. Овде спадају:"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1925
+#: doc/manual/manual.en.xml:1262
 msgid "Ambush"
 msgstr "заседа"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1929
+#: doc/manual/manual.en.xml:1266
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.  Enemy "
 "units cannot see this unit while it is in forest, except if they have units "
@@ -2877,12 +2197,12 @@ msgstr ""
 "истог часа губи сву преосталу покретност у потезу."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1938
+#: doc/manual/manual.en.xml:1275
 msgid "Concealment"
 msgstr "скривање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1942
+#: doc/manual/manual.en.xml:1279
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it.  "
@@ -2897,12 +2217,12 @@ msgstr ""
 "губи сву преосталу покретност у потезу."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1952
+#: doc/manual/manual.en.xml:1289
 msgid "Cures"
 msgstr "исцељивање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1956
+#: doc/manual/manual.en.xml:1293
 msgid ""
 "A unit which can cure an ally of poison, although the ally will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -2911,24 +2231,24 @@ msgstr ""
 "бити додатно излечена у потезу у којем је прочишћена од отрова."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1963
+#: doc/manual/manual.en.xml:1300
 msgid "Feeding"
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1967
+#: doc/manual/manual.en.xml:1304
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1974
+#: doc/manual/manual.en.xml:1311
 msgid "Heals +4"
 msgstr "лечење +4"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1978
+#: doc/manual/manual.en.xml:1315
 msgid ""
 "Allows the unit to heal adjacent friendly units at the beginning of each "
 "turn.  A unit cared for by this healer may heal up to 4 HP per turn, or stop "
@@ -2943,12 +2263,12 @@ msgstr ""
 "уме да исцељује."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:1989
+#: doc/manual/manual.en.xml:1326
 msgid "Heals +8"
 msgstr "лечење +8"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:1993
+#: doc/manual/manual.en.xml:1330
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.  A unit cared for by this "
@@ -2963,12 +2283,12 @@ msgstr ""
 "селу или код јединице која уме да исцељује."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2004
+#: doc/manual/manual.en.xml:1341
 msgid "Illuminates"
 msgstr "обасјавање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2008
+#: doc/manual/manual.en.xml:1345
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.  Any units adjacent to this unit will "
@@ -2980,12 +2300,12 @@ msgstr ""
 "ноћи као да је сумрак, а у време сумрака као да је дан."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2017
+#: doc/manual/manual.en.xml:1354
 msgid "Leadership"
 msgstr "вођство"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2021
+#: doc/manual/manual.en.xml:1358
 msgid ""
 "This unit can lead friendly units that are next to it, making them fight "
 "better.  Adjacent friendly units of lower level will do more damage in "
@@ -2999,12 +2319,12 @@ msgstr ""
 "нивоу разлике међу њима."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2032
+#: doc/manual/manual.en.xml:1369
 msgid "Nightstalk"
 msgstr "вребање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2036
+#: doc/manual/manual.en.xml:1373
 msgid ""
 "The unit becomes invisible during night.  Enemy units cannot see this unit "
 "at night, except if they have units next to it. Any enemy unit that first "
@@ -3016,12 +2336,12 @@ msgstr ""
 "губи сву преосталу покретност у потезу."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2045
+#: doc/manual/manual.en.xml:1382
 msgid "Regenerates"
 msgstr "обнављање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2049
+#: doc/manual/manual.en.xml:1386
 msgid ""
 "This unit will heal itself 8HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -3030,12 +2350,12 @@ msgstr ""
 "отров уместо залечивања."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2056
+#: doc/manual/manual.en.xml:1393
 msgid "Skirmisher"
 msgstr "чаркање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2060
+#: doc/manual/manual.en.xml:1397
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -3044,12 +2364,12 @@ msgstr ""
 "надзорне појасеве."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2067
+#: doc/manual/manual.en.xml:1404
 msgid "Steadfast"
 msgstr "постојаност"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2071
+#: doc/manual/manual.en.xml:1408
 msgid ""
 "This unit&#8217;s resistances are doubled, up to a maximum of 50%, when "
 "defending. Vulnerabilities are not affected."
@@ -3058,12 +2378,12 @@ msgstr ""
 "рањивост."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2078
+#: doc/manual/manual.en.xml:1415
 msgid "Submerge"
 msgstr "зарањање"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2082
+#: doc/manual/manual.en.xml:1419
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.  "
 "Enemy units cannot see this unit while it is in deep water, except if they "
@@ -3076,12 +2396,12 @@ msgstr ""
 "открије зароњену, истог часа губи сву преосталу покретност у потезу."
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><term>
-#: doc/manual/manual.en.xml:2091
+#: doc/manual/manual.en.xml:1428
 msgid "Teleport"
 msgstr "телепортација"
 
 #. type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
-#: doc/manual/manual.en.xml:2095
+#: doc/manual/manual.en.xml:1432
 msgid ""
 "This unit may teleport between any two friendly villages using one of its "
 "moves."
@@ -3090,12 +2410,12 @@ msgstr ""
 "утрошак једног покрета."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2103 doc/manual/manual.en.xml:2708
+#: doc/manual/manual.en.xml:1440 doc/manual/manual.en.xml:2060
 msgid "Experience"
 msgstr "Искуство"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2104
+#: doc/manual/manual.en.xml:1441
 msgid ""
 "Units are awarded experience for fighting. After obtaining enough "
 "experience, they will advance a level and become more powerful. The amount "
@@ -3113,62 +2433,67 @@ msgstr ""
 "противника. Другим речима:"
 
 #. type: Content of: <book><chapter><section><section><table><title>
-#: doc/manual/manual.en.xml:2115
+#: doc/manual/manual.en.xml:1452
 msgid "Experience bonuses for killing or fighting enemies of different levels"
 msgstr "Искуствени бонуси за борбу са непријатељима различитих нивоа"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:2123
+#: doc/manual/manual.en.xml:1460
 msgid "enemy level"
 msgstr "ниво непријатеља"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:2126
+#: doc/manual/manual.en.xml:1463
 msgid "kill bonus"
 msgstr "бонус за уништење"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:2129
+#: doc/manual/manual.en.xml:1466
 msgid "fighting bonus"
 msgstr "бонус за борбу"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2150
+#: doc/manual/manual.en.xml:1473 doc/manual/manual.en.xml:1479
+msgid "0"
+msgstr "<keycombo><keycap>0</keycap></keycombo>"
+
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#: doc/manual/manual.en.xml:1487
 msgid "8"
 msgstr "8"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2161
+#: doc/manual/manual.en.xml:1498
 msgid "16"
 msgstr "16"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2172
+#: doc/manual/manual.en.xml:1509
 msgid "24"
 msgstr "24"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2183
+#: doc/manual/manual.en.xml:1520
 msgid "32"
 msgstr "32"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2194
+#: doc/manual/manual.en.xml:1531
 msgid "40"
 msgstr "40"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2205
+#: doc/manual/manual.en.xml:1542
 msgid "48"
 msgstr "48"
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2216
+#: doc/manual/manual.en.xml:1553
 msgid "Recalling units"
 msgstr "Сазивање јединица"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2217
+#: doc/manual/manual.en.xml:1554
 msgid ""
 "After you complete a scenario, all surviving units will be available to "
 "recall in the next scenario. You are not able to move or attack with a unit "
@@ -3182,12 +2507,12 @@ msgstr ""
 "искуство, (понекад) магичне предмете у поседу, и почиње с пуним ударпоенима."
 
 #. type: Content of: <book><chapter><section><title>
-#: doc/manual/manual.en.xml:2225
+#: doc/manual/manual.en.xml:1562
 msgid "Moving"
 msgstr "Покретање"
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2226
+#: doc/manual/manual.en.xml:1563
 msgid ""
 "Clicking on a unit identifies all the places it can move on its current turn "
 "by dimming unreachable hexes (pressing the number keys 2–7 will identify the "
@@ -3218,7 +2543,7 @@ msgstr ""
 "а које се још могу кретати у текућем потезу."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2239
+#: doc/manual/manual.en.xml:1576
 msgid ""
 "If you decide to move the selected unit, click on the hex you want to move "
 "to and your unit will move towards that space. If you select a destination "
@@ -3240,7 +2565,7 @@ msgstr ""
 "јединицу да укинете путовање."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2248
+#: doc/manual/manual.en.xml:1585
 msgid ""
 "Moving onto a village that is neutral or owned by an enemy will take "
 "ownership of it and end your move for that unit."
@@ -3249,7 +2574,7 @@ msgstr ""
 "се посед над селом и окончава кретање те јединице."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2250
+#: doc/manual/manual.en.xml:1587
 msgid ""
 "Most units exert a Zone of Control which affects the hexes your unit can "
 "reach and the path your unit takes. These restrictions are automatically "
@@ -3262,12 +2587,12 @@ msgstr ""
 "помери у текућем потезу."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2255
+#: doc/manual/manual.en.xml:1592
 msgid "Zone of Control"
 msgstr "Надзорни појас"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2256
+#: doc/manual/manual.en.xml:1593
 msgid ""
 "A unit&#8217;s Zone of Control extends to the six hexes immediately adjacent "
 "to the unit, and units that move into an enemy zone of control are forced to "
@@ -3284,12 +2609,12 @@ msgstr ""
 "непријатеља нултог нивоа све јединице могу слободно кретати."
 
 #. type: Content of: <book><chapter><section><section><table><title>
-#: doc/manual/manual.en.xml:2265 doc/manual/manual.en.xml:2272
+#: doc/manual/manual.en.xml:1602 doc/manual/manual.en.xml:1609
 msgid "Orbs"
 msgstr "Куглице"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2266
+#: doc/manual/manual.en.xml:1603
 msgid ""
 "On the top of the energy bar shown next to each unit of yours is an orb. "
 "This orb is:"
@@ -3297,56 +2622,56 @@ msgstr ""
 "На врху енерготраке покрај сваке пријатељске јединице стоји куглица. Она је:"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:2280
+#: doc/manual/manual.en.xml:1617
 msgid "Orb"
 msgstr "куглица"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
-#: doc/manual/manual.en.xml:2286
+#: doc/manual/manual.en.xml:1623
 msgid "Description"
 msgstr "опис"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2293
+#: doc/manual/manual.en.xml:1630
 msgid "Green"
 msgstr "зелена"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:2297
+#: doc/manual/manual.en.xml:1634
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-green.jpg\"/> </imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/orb-green.jpg\"/> </imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:2300
+#: doc/manual/manual.en.xml:1637
 msgid "Green orb"
 msgstr "Зелена куглица"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2304
+#: doc/manual/manual.en.xml:1641
 msgid "If you control the unit and it hasn&#8217;t moved this turn"
 msgstr "ако јединицом ви управљате и није се померала у овом потезу"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2309
+#: doc/manual/manual.en.xml:1646
 msgid "Yellow"
 msgstr "жута"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:2313
+#: doc/manual/manual.en.xml:1650
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-yellow.jpg\"/> </imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/orb-yellow.jpg\"/> </imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:2316
+#: doc/manual/manual.en.xml:1653
 msgid "Yellow orb"
 msgstr "Жута куглица"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2320
+#: doc/manual/manual.en.xml:1657
 msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
@@ -3355,24 +2680,24 @@ msgstr ""
 "кретати или нападати"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2325
+#: doc/manual/manual.en.xml:1662
 msgid "Red"
 msgstr "црвена"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:2329
+#: doc/manual/manual.en.xml:1666
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:2332
+#: doc/manual/manual.en.xml:1669
 msgid "Red orb"
 msgstr "Црвена куглица"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2336
+#: doc/manual/manual.en.xml:1673
 msgid ""
 "If you control the unit, but it can no longer move or attack, or the user "
 "ended the unit&#8217;s turn"
@@ -3381,65 +2706,113 @@ msgstr ""
 "јој је окончан потез"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2341
+#: doc/manual/manual.en.xml:1678
+#, fuzzy
+#| msgid "Recruit and Recall"
+msgid "Red and yellow"
+msgstr "Унајмљивање и сазивање"
+
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
+#: doc/manual/manual.en.xml:1682
+#, fuzzy
+#| msgid ""
+#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+msgid ""
+"<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
+"imageobject>"
+msgstr ""
+"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
+#: doc/manual/manual.en.xml:1685
+msgid "Two color orb"
+msgstr ""
+
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#: doc/manual/manual.en.xml:1689
+#, fuzzy
+#| msgid ""
+#| "If you control the unit and it has moved this turn, but could still move "
+#| "further or attack"
+msgid ""
+"If you control the unit and it has attacked this turn, and could still move "
+"further but could not attack again"
+msgstr ""
+"ако јединицом ви управљате и померила се у овом потезу, али се још може "
+"кретати или нападати"
+
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#: doc/manual/manual.en.xml:1694
 msgid "Blue"
 msgstr "плава"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:2345
+#: doc/manual/manual.en.xml:1698
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/> </imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/orb-blue.jpg\"/> </imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:2348
+#: doc/manual/manual.en.xml:1701
 msgid "Blue orb"
 msgstr "Плава куглица"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2352
-msgid "If the unit is an ally you do not control"
-msgstr "ако је јединица савезник којим не управљате"
+#: doc/manual/manual.en.xml:1705
+msgid ""
+"If the unit is an ally you do not control. On the ally&#8217;s own turn "
+"these will be shown with green, yellow and red orbs"
+msgstr ""
+
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#: doc/manual/manual.en.xml:1710
+msgid "-"
+msgstr "<keycombo><keycap>-</keycap></keycombo>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
-#: doc/manual/manual.en.xml:2361
+#: doc/manual/manual.en.xml:1714
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-none.jpg\"/> </imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/orb-none.jpg\"/> </imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
-#: doc/manual/manual.en.xml:2364
+#: doc/manual/manual.en.xml:1717
 msgid "No orb"
 msgstr "Без куглице"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
-#: doc/manual/manual.en.xml:2368
+#: doc/manual/manual.en.xml:1721
 #, fuzzy
 #| msgid "Enemy units have no orb on the top of their energy bar"
 msgid "Enemy units have no orb on the top of their energy bar"
 msgstr "Непријатељске јединице немају куглицу поврх енерготраке."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2376
+#: doc/manual/manual.en.xml:1729
 msgid "Ellipses, Team Colors, and Hero Icons"
 msgstr "Елипсе, тимске боје и јуначке иконе"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2377
+#: doc/manual/manual.en.xml:1730
+#, fuzzy
+#| msgid ""
+#| "Below each unit there will normally be a colored ellipses or base. The "
+#| "color identifies its team; in a campaign game, the human-player color is "
+#| "red. The team color will also show up in parts of the unit&#8217;s "
+#| "clothing, or possibly on a shield insignia."
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
-"identifies its team; in a campaign game, the human-player color is red. The "
-"team color will also show up in parts of the unit&#8217;s clothing, or "
-"possibly on a shield insignia."
+"identifies its team. The team color will also show up in parts of the "
+"unit&#8217;s clothing, or possibly on a shield insignia."
 msgstr ""
 "Испод сваке јединице обично стоји обојена елипса или подлога. Боја одређује "
 "тим; током играња похода, боја играча је црвена. Тимска боја ће се такође "
 "видети на деловима одежде јединице, или можда на белегу на штиту."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2381
+#: doc/manual/manual.en.xml:1733
 msgid ""
 "Usually the ellipse will be a solid disk. On level 0 units, you will see an "
 "ellipse that has broken lines. This indicates that the unit has no Zone of "
@@ -3449,13 +2822,27 @@ msgstr ""
 "испрекиданим линијама — ово указује да јединица нема надзорни појас."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2384
+#: doc/manual/manual.en.xml:1736
 msgid ""
-"Some campaigns use a star-shaped base to indicate leaders and heroes (units "
-"which are somehow special and for example not allowed to die in the course "
-"of the scenario); others use a silver crown icon above the energy bar to "
-"mark heroes. Still others have no specific hero indicator at all. Which (if "
-"any) is used is a stylistic choice left to campaign designers."
+"Units that can recruit will always have a star-shaped base. Other units "
+"normally have an elliptic base."
+msgstr ""
+
+#. type: Content of: <book><chapter><section><section><simpara>
+#: doc/manual/manual.en.xml:1738
+#, fuzzy
+#| msgid ""
+#| "Some campaigns use a star-shaped base to indicate leaders and heroes "
+#| "(units which are somehow special and for example not allowed to die in "
+#| "the course of the scenario); others use a silver crown icon above the "
+#| "energy bar to mark heroes. Still others have no specific hero indicator "
+#| "at all. Which (if any) is used is a stylistic choice left to campaign "
+#| "designers."
+msgid ""
+"Some campaigns use a smaller star-shaped base and a silver crown icon above "
+"the energy bar to indicate heroes (units which are somehow special and for "
+"example not allowed to die in the course of the scenario).  Whether to do "
+"this is a stylistic choice left to campaign designers."
 msgstr ""
 "Неки походи користе звездасту подлогу за указивање на вође и јунаке "
 "(јединице које су на неки начин посебне, нпр. не смеју страдати током "
@@ -3464,12 +2851,12 @@ msgstr ""
 "дизајнеру похода."
 
 #. type: Content of: <book><chapter><section><title>
-#: doc/manual/manual.en.xml:2393
+#: doc/manual/manual.en.xml:1745
 msgid "Fighting"
 msgstr "Борба"
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2394
+#: doc/manual/manual.en.xml:1746
 msgid ""
 "If you move next to an enemy unit, you may attack it. Click on your unit "
 "that is next to an enemy unit, and click on the enemy you want to attack – "
@@ -3485,7 +2872,7 @@ msgstr ""
 "оружја су за блиску борбу, а друга, као лукови, за одступну."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2400
+#: doc/manual/manual.en.xml:1752
 msgid ""
 "If you attack with a melee weapon, the enemy you attack will be able to "
 "strike back at you with a melee weapon. If you attack with a ranged weapon, "
@@ -3500,7 +2887,7 @@ msgstr ""
 "нанесе икакву штету вашој јединици."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2406
+#: doc/manual/manual.en.xml:1758
 #, fuzzy
 #| msgid ""
 #| "Different types of attacks do different amounts of damage, and a certain "
@@ -3521,7 +2908,7 @@ msgstr ""
 "Ово се записује као „5–4“, у значењу „штета пет по поготку, четири замаха“."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2411
+#: doc/manual/manual.en.xml:1763
 msgid ""
 "Every unit has a chance of being hit based on the terrain it is in. For "
 "instance, units in castles and villages have a lower chance of being hit, "
@@ -3539,7 +2926,7 @@ msgstr ""
 "као процентуална вредност у окну стања, као и изнад поља терена."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2418
+#: doc/manual/manual.en.xml:1770
 msgid ""
 "You can obtain additional information, including the chance that the "
 "attacker and defender will be killed, by clicking on the \"Damage "
@@ -3550,12 +2937,12 @@ msgstr ""
 "борбу."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2422
+#: doc/manual/manual.en.xml:1774
 msgid "Attack types"
 msgstr "Типови напада"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2426
+#: doc/manual/manual.en.xml:1778
 msgid ""
 "<emphasis role=\"strong\">Blade</emphasis>: Weapons with a cutting edge, "
 "used to chop pieces of flesh from a foe. Examples: dagger, scimitar, saber, "
@@ -3565,7 +2952,7 @@ msgstr ""
 "сецкање противника у комаде. Примери: бодеж, јатаган, сабља, змашке канџе."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2432
+#: doc/manual/manual.en.xml:1784
 msgid ""
 "<emphasis role=\"strong\">Piercing</emphasis>: Weapons with a sharp point "
 "and either a long handle or a missile, used to perforate foe&#8217;s body "
@@ -3576,7 +2963,7 @@ msgstr ""
 "унутрашњи органи. Примери: витешко или пешадијско дуго копље, стрела."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2439
+#: doc/manual/manual.en.xml:1791
 msgid ""
 "<emphasis role=\"strong\">Impact</emphasis>: Weapons having neither a sharp "
 "point nor a cutting edge, but heavy enough to break an enemy&#8217;s bones. "
@@ -3587,7 +2974,7 @@ msgstr ""
 "Примери: буздован, штап, троловска песница."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2446
+#: doc/manual/manual.en.xml:1798
 msgid ""
 "<emphasis role=\"strong\">Cold</emphasis>: Weapons based on cold or ice "
 "missiles. Example: A Dark Adepts&#8217;s chill wave."
@@ -3596,7 +2983,7 @@ msgstr ""
 "пројектили. Пример: мразни талас мрачног посвећеника."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2452
+#: doc/manual/manual.en.xml:1804
 msgid ""
 "<emphasis role=\"strong\">Fire</emphasis>: Weapons using fire to roast the "
 "foe like a chicken. Example: A drake&#8217;s fire breath."
@@ -3605,7 +2992,7 @@ msgstr ""
 "као прасе. Пример: змашки ватродах."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2458
+#: doc/manual/manual.en.xml:1810
 msgid ""
 "<emphasis role=\"strong\">Arcane</emphasis>: An attack that dispels the "
 "magic animating zombies, specters, and other undead creatures and spirits. "
@@ -3616,12 +3003,12 @@ msgstr ""
 "магични напад белог мага."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2466
+#: doc/manual/manual.en.xml:1818
 msgid "Resistance"
 msgstr "Отпорности"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2467
+#: doc/manual/manual.en.xml:1819
 msgid ""
 "Each unit is more or less vulnerable to the different attack types. 6 "
 "figures in the unit description show strength and weakness of the unit "
@@ -3636,7 +3023,7 @@ msgstr ""
 "дати напад."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2473
+#: doc/manual/manual.en.xml:1825
 msgid ""
 "Examples: Drake scales protect them from most of attack types except from "
 "piercing weapon and cold weapon. Human Cavalry units are generally well "
@@ -3650,7 +3037,7 @@ msgstr ""
 "оружја, али врло рањиви на ударне и волшебне нападе."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2478
+#: doc/manual/manual.en.xml:1830
 msgid ""
 "Using the best attack type against enemy units will substantially increase "
 "your chances of killing them."
@@ -3659,12 +3046,12 @@ msgstr ""
 "вам увећати изгледе да их збришете."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2483 doc/manual/manual.en.xml:2881
+#: doc/manual/manual.en.xml:1835 doc/manual/manual.en.xml:2233
 msgid "Healing"
 msgstr "Лечење"
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2484
+#: doc/manual/manual.en.xml:1836
 msgid ""
 "A unit may be healed a maximum of 8 hitpoints per turn. A unit that does not "
 "move or fight during a turn is <emphasis>resting</emphasis> and will recover "
@@ -3679,17 +3066,17 @@ msgstr ""
 "поврати до десет ударпоена по потезу."
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2489
+#: doc/manual/manual.en.xml:1841
 msgid "There are two basic ways for a unit to be healed:"
 msgstr "Јединица се може лечити на два основна начина:"
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2493
+#: doc/manual/manual.en.xml:1845
 msgid "Waiting in a village. The unit will heal 8 hitpoints every turn."
 msgstr "Чекајући у селу. Јединица ће се лечити осам ударпоена сваког потеза."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2498
+#: doc/manual/manual.en.xml:1850
 msgid ""
 "Being adjacent to units with the <emphasis>heals</emphasis> ability. The "
 "number of hitpoints healed is specified in the unit&#8217;s ability "
@@ -3701,12 +3088,12 @@ msgstr ""
 "као <emphasis>лечење +4</emphasis> или <emphasis>лечење +8</emphasis>."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2505
+#: doc/manual/manual.en.xml:1857
 msgid "Regeneration"
 msgstr "Обнављање"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2506
+#: doc/manual/manual.en.xml:1858
 msgid ""
 "Trolls and Woses have the ability to heal themselves naturally through "
 "regeneration. They will heal 8 points each turn if they are injured. Note "
@@ -3720,7 +3107,7 @@ msgstr ""
 "и ивери немају користи од стајања у селу или покрај видарске јединице."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2514
+#: doc/manual/manual.en.xml:1866
 msgid ""
 "Some attacks can inflict poison damage on your unit. When this happens the "
 "poisoned unit will take 8 damage each turn until it is cured. Poison can be "
@@ -3743,17 +3130,17 @@ msgstr ""
 "отрова."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2522
+#: doc/manual/manual.en.xml:1874
 msgid "Some other hints about healing:"
 msgstr "Још неки савети око лечења:"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2526
+#: doc/manual/manual.en.xml:1878
 msgid "A unit may take several turns to be fully healed."
 msgstr "Јединици може требати неколико потеза до пуног излечења."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2531
+#: doc/manual/manual.en.xml:1883
 msgid ""
 "Healers (Elvish Shaman, Elvish Druid, Elvish Shyde, White Mage, Mage of "
 "Light, Paladin) heal all wounded units around them, so you can keep units "
@@ -3764,22 +3151,22 @@ msgstr ""
 "јединице близу борбе а да их не губите."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2538
+#: doc/manual/manual.en.xml:1890
 msgid "Healers do not heal enemy units."
 msgstr "Видари не лече непријатељске јединице."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2543
+#: doc/manual/manual.en.xml:1895
 msgid "Healers cannot heal themselves, but see next point."
 msgstr "Видари не могу лечити сами себе (али в. следеће)."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2548
+#: doc/manual/manual.en.xml:1900
 msgid "Use your healers in pairs, so they can heal each other if needed."
 msgstr "Упарујте видаре, тако да се могу међусобно лечити ако затреба."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2553
+#: doc/manual/manual.en.xml:1905
 msgid ""
 "Multiple healers from different allied sides can heal the same unit and "
 "speed up healing."
@@ -3788,27 +3175,27 @@ msgstr ""
 "тако убрзати лечење."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2559
+#: doc/manual/manual.en.xml:1911
 msgid "Trolls and Woses cannot regenerate other units."
 msgstr "Тролови и ивери не могу обнављати друге јединице."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2564
+#: doc/manual/manual.en.xml:1916
 msgid "Trolls and Woses cure themselves from poison as a village does."
 msgstr "Тролови и ивери исцељују сами себе од отрова као што село чини."
 
 #. type: Content of: <book><chapter><title>
-#: doc/manual/manual.en.xml:2572
+#: doc/manual/manual.en.xml:1924
 msgid "Strategy and Tips"
 msgstr "Стратегија и савети"
 
 #. type: Content of: <book><chapter><section><title>
-#: doc/manual/manual.en.xml:2574
+#: doc/manual/manual.en.xml:1926
 msgid "Basic Strategy"
 msgstr "Основна стратегија"
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2575
+#: doc/manual/manual.en.xml:1927
 msgid ""
 "The following basic combat principles and tips are intended to help starting "
 "off your career as a Wesnothian battle veteran. The minor concrete examples "
@@ -3819,12 +3206,12 @@ msgstr ""
 "с походом „Наследник престола“."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2579
+#: doc/manual/manual.en.xml:1931
 msgid "Don&#8217;t waste units"
 msgstr "Не траћите јединице"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2580
+#: doc/manual/manual.en.xml:1932
 msgid ""
 "Do not send wounded units to a sure death. Once a unit loses more than half "
 "of its hit points (HP), you should seriously consider retreating it to "
@@ -3838,7 +3225,7 @@ msgstr ""
 "врачарке и бели магови). Видари су врло корисни!"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2585
+#: doc/manual/manual.en.xml:1937
 msgid ""
 "This is for practical reasons: a heavily wounded unit cannot hold back or "
 "kill the enemy. During attack and counterattack, it most often will perish. "
@@ -3856,12 +3243,12 @@ msgstr ""
 "најчешће ће то бити далеко од попришта битке. Зато, немојте траћити јединице."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2594
+#: doc/manual/manual.en.xml:1946
 msgid "Out of the enemy&#8217;s reach"
 msgstr "Ван домашаја непријатеља"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2595
+#: doc/manual/manual.en.xml:1947
 msgid ""
 "How do you guard wounded units? They are best guarded by being out of the "
 "adversary&#8217;s reach. No enemy can attack them if enemies cannot even "
@@ -3874,7 +3261,7 @@ msgstr ""
 "покрете непријатеља."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2599
+#: doc/manual/manual.en.xml:1951
 msgid ""
 "In the Action menu, you can select \"Show Enemy Moves\" to highlight all "
 "possible hexes your adversary can actually move to. This takes your zone of "
@@ -3888,7 +3275,7 @@ msgstr ""
 "јер непријатељ не може да ступи до ње."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2604
+#: doc/manual/manual.en.xml:1956
 msgid ""
 "When your armies meet, you may want to try to be the first to attack. So try "
 "to end your move out of striking range of the enemy army. He cannot attack "
@@ -3899,12 +3286,12 @@ msgstr ""
 "напасти, али ће се највероватније приближити у ваш ударни домет."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2609
+#: doc/manual/manual.en.xml:1961
 msgid "Shield with your zone of control (ZOC)"
 msgstr "Штитите се надзорним појасом (НАПОЈ)"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2610
+#: doc/manual/manual.en.xml:1962
 msgid ""
 "Every unit of level 1 or higher maintains a zone of control (ZOC) covering "
 "all 6 neighboring hexes. This means that once an enemy moves into one of the "
@@ -3917,7 +3304,7 @@ msgstr ""
 "способношћу чаркања."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2614
+#: doc/manual/manual.en.xml:1966
 msgid ""
 "Because of ZOC, an enemy may not slip between two units which are aligned on "
 "a north-south or diagonal line and have exactly 1 or 2 hexes between them. "
@@ -3934,12 +3321,12 @@ msgstr ""
 "до ње, чак и једна јединица може заштити малу област иза себе."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2623
+#: doc/manual/manual.en.xml:1975
 msgid "Maintain a defensive line"
 msgstr "Одржавајте одбрамбену линију"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2624
+#: doc/manual/manual.en.xml:1976
 msgid ""
 "By lining up many units directly adjacent or with at most 1 hex space "
 "between them, you can build up a powerful defensive line. Note that, because "
@@ -3952,7 +3339,7 @@ msgstr ""
 "крива. „Стварне“ линије су север-југ и дијагонале."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2629
+#: doc/manual/manual.en.xml:1981
 msgid ""
 "Coming from one side, the enemy may attack any single of your units in the "
 "line with only 2 of his units at a time. As a rule of thumb, a healthy unit "
@@ -3965,7 +3352,7 @@ msgstr ""
 "истог или нижег нивоа."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2633
+#: doc/manual/manual.en.xml:1985
 msgid ""
 "Unfortunately, your line often has to bend to form a wedge or to fit the "
 "terrain. At these corner points, 3 enemy units may attack. This also happens "
@@ -3982,7 +3369,7 @@ msgstr ""
 "најбоље упослите оне без или са мало искуствених поена."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2639
+#: doc/manual/manual.en.xml:1991
 msgid ""
 "Lining your troops up also prevents the enemy from surrounding any one of "
 "them. For ZOC reasons, a unit with one enemy behind it and one in front is "
@@ -3993,12 +3380,12 @@ msgstr ""
 "иза заробљена."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2644
+#: doc/manual/manual.en.xml:1996
 msgid "Rotate your troops"
 msgstr "Смењујте своје снаге"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2645
+#: doc/manual/manual.en.xml:1997
 msgid ""
 "When a unit in the front line is heavily damaged you can move him safely "
 "behind your defensive line. To hold up the line, you will most likely have "
@@ -4012,18 +3399,18 @@ msgstr ""
 "имате видаре, оштећене јединице у другој линији брзо ће се опоравити."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2650
+#: doc/manual/manual.en.xml:2002
 msgid "Note that your units can pass through hexes containing your own troops."
 msgstr ""
 "Приметите да јединице могу прелазити преко поља са пријатељским јединицама."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2653
+#: doc/manual/manual.en.xml:2005
 msgid "Use the terrain"
 msgstr "Користите терен"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2654
+#: doc/manual/manual.en.xml:2006
 msgid ""
 "Try to position your troops so that they are attacking from a hex with high "
 "defense against an enemy in a hex with low terrain. That way, the "
@@ -4034,7 +3421,7 @@ msgstr ""
 "непријатељски противнапади нанесу штету."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2657
+#: doc/manual/manual.en.xml:2009
 msgid ""
 "For example, you might position your elves just inside of a forest edge so "
 "that attacking orcs must stand on grassland while your elves enjoy the high "
@@ -4045,12 +3432,12 @@ msgstr ""
 "заклон."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2662
+#: doc/manual/manual.en.xml:2014
 msgid "Attacking and choosing your targets"
 msgstr "Нападање и бирање мета"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2663
+#: doc/manual/manual.en.xml:2015
 msgid ""
 "Advancing and attacking is of course the most interesting part of your way "
 "to victory. Kill or weaken enemies in your path and move your defensive line "
@@ -4062,7 +3449,7 @@ msgstr ""
 "свом потезу."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2667
+#: doc/manual/manual.en.xml:2019
 msgid ""
 "Often, you will throw several units at a single enemy unit to finish him "
 "off, but these were forming your defensive line which is now partly broken. "
@@ -4078,7 +3465,7 @@ msgstr ""
 "узвратити. Можда би неки коњаник могао да зада завршни ударац."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2673
+#: doc/manual/manual.en.xml:2025
 msgid ""
 "Striking first is an advantage because it allows you the choice of which "
 "units will face off. Take advantage of enemy weakness: e.g. direct your "
@@ -4095,7 +3482,7 @@ msgstr ""
 "у прилог."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2679
+#: doc/manual/manual.en.xml:2031
 msgid ""
 "For example, Horsemen can hold up the line against Orcish Grunts and Troll "
 "Whelps very well because they have some resistances against blade and "
@@ -4107,7 +3494,7 @@ msgstr ""
 "брзо пасти пред орко-стрелцима и гобли-копљаницима."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2683
+#: doc/manual/manual.en.xml:2035
 msgid ""
 "It usually pays off if you can definitively kill (or almost kill) the faced "
 "unit. If you are unsure of finishing off the enemy in one turn, either "
@@ -4125,7 +3512,7 @@ msgstr ""
 "онако како би се нанело највише штете непријатељу."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2690
+#: doc/manual/manual.en.xml:2042
 #, fuzzy
 #| msgid ""
 #| "In particular, use your ranged weapons if the enemy has no ranged attack. "
@@ -4142,12 +3529,12 @@ msgstr ""
 "највише штете, тако да би често водио непотребном оштећењу ваше јединице."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2695
+#: doc/manual/manual.en.xml:2047
 msgid "Time of Day"
 msgstr "Доба дана"
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2696
+#: doc/manual/manual.en.xml:2048
 msgid ""
 "Remember that Lawful units like humans fight better at daytime, Chaotic "
 "units like orcs or undead fight better at night, and Liminal units fight "
@@ -4164,7 +3551,7 @@ msgstr ""
 "полазите у напредовање."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2703
+#: doc/manual/manual.en.xml:2055
 msgid ""
 "For example, elves might hold out a forest during a nightly orcish onslaught "
 "and advance on sunrise. You may even note that the computer AI actively "
@@ -4175,7 +3562,7 @@ msgstr ""
 "оркове током дана."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2709
+#: doc/manual/manual.en.xml:2061
 msgid ""
 "Over the course of a campaign, it is critical that you build up a seasoned "
 "force. Later scenarios will assume you have level 2 and 3 units available "
@@ -4186,7 +3573,7 @@ msgstr ""
 "трећег нивоа."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2712
+#: doc/manual/manual.en.xml:2064
 msgid ""
 "Your units gain most experience points (XP) from killing an enemy unit (8XP "
 "per level of the unit killed). As such, it often makes sense to have your "
@@ -4201,7 +3588,7 @@ msgstr ""
 "„красти“ победе на овај начин да би напредовали по нивоима."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2717
+#: doc/manual/manual.en.xml:2069
 msgid ""
 "At the beginning (when you probably have no high level units), try to give "
 "most kills to a small handful of your units. This will fast-track them to "
@@ -4212,7 +3599,7 @@ msgstr ""
 "2, када могу почети да се брину за друге."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2720
+#: doc/manual/manual.en.xml:2072
 msgid ""
 "Don&#8217;t neglect to earn your leader experience. You need to keep him "
 "safe, but if you coddle him too much he will be too low level to survive "
@@ -4223,12 +3610,12 @@ msgstr ""
 "сачувати у каснијим сценаријима."
 
 #. type: Content of: <book><chapter><section><title>
-#: doc/manual/manual.en.xml:2726
+#: doc/manual/manual.en.xml:2078
 msgid "Getting the Most Fun Out of the Game"
 msgstr "За добру забаву"
 
 #. type: Content of: <book><chapter><section><simpara>
-#: doc/manual/manual.en.xml:2727
+#: doc/manual/manual.en.xml:2079
 msgid ""
 "Remember, the idea of a game is to have fun! Here are some recommendations "
 "from the development team on how to get the most fun out of the game:"
@@ -4237,7 +3624,7 @@ msgstr ""
 "развојног тима како да вам игра буде што је забавнија:"
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2732
+#: doc/manual/manual.en.xml:2084
 msgid ""
 "Consider playing the campaign on \"Medium\" difficulty level, especially if "
 "you have prior experience with strategy games. We feel you&#8217;ll find it "
@@ -4248,7 +3635,7 @@ msgstr ""
 "испуњенијим постигнутим."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2739
+#: doc/manual/manual.en.xml:2091
 msgid ""
 "Don&#8217;t sweat it too much when you lose some units. The campaign was "
 "designed to accommodate the player losing some units along the way."
@@ -4257,7 +3644,7 @@ msgstr ""
 "тако да играч може изгубити покоју јединицу успут."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2745
+#: doc/manual/manual.en.xml:2097
 msgid ""
 "Don&#8217;t abuse saved games. Long ago, Wesnoth only allowed saving the "
 "game at the end of a scenario. Mid-scenario saving was added as a "
@@ -4275,7 +3662,7 @@ msgstr ""
 "и мерите ризике! То је део стратегије."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2756
+#: doc/manual/manual.en.xml:2108
 msgid ""
 "If you must load a saved game, we recommend going back to the start of the "
 "scenario, so that you choose a new strategy that works, rather than simply "
@@ -4286,7 +3673,7 @@ msgstr ""
 "који вам иду у корист."
 
 #. type: Content of: <book><chapter><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2763
+#: doc/manual/manual.en.xml:2115
 msgid ""
 "But remember, the aim is to have fun! You may have different tastes than the "
 "developers, so do what you enjoy most! If you enjoy loading the saved game "
@@ -4299,12 +3686,12 @@ msgstr ""
 "којима никада не губите јединице, само напред!"
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2771
+#: doc/manual/manual.en.xml:2123
 msgid "At the start of a scenario"
 msgstr "На почетку сценарија"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2775
+#: doc/manual/manual.en.xml:2127
 msgid ""
 "First, read the scenario objectives. Sometimes you do not have to kill enemy "
 "leaders; instead it is enough that you survive for a certain number of "
@@ -4315,14 +3702,14 @@ msgstr ""
 "објекат."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2782
+#: doc/manual/manual.en.xml:2134
 msgid ""
 "Look at the map: the terrain, the position of your leader and the other "
 "leader(s)."
 msgstr "Проучите мапу: терен, положај вашег вођа и положаје других вођа."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2788
+#: doc/manual/manual.en.xml:2140
 msgid ""
 "Then, begin to recruit units. Cheap units are useful to soak up the first "
 "wave of an enemy&#8217;s attack; advanced units can then be brought in as "
@@ -4335,12 +3722,12 @@ msgstr ""
 "запоседање села̂."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2797
+#: doc/manual/manual.en.xml:2149
 msgid "During the scenario"
 msgstr "Током сценарија"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2801
+#: doc/manual/manual.en.xml:2153
 msgid ""
 "Try to capture and keep control of as many villages as possible to keep the "
 "gold coming in."
@@ -4349,7 +3736,7 @@ msgstr ""
 "сливало у касу."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2807
+#: doc/manual/manual.en.xml:2159
 msgid ""
 "Keep units in packs so the enemy cannot attack from as many sides, and so "
 "you can outnumber each enemy unit. Put your units in a line so that the "
@@ -4361,7 +3748,7 @@ msgstr ""
 "две стране."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2814
+#: doc/manual/manual.en.xml:2166
 msgid ""
 "Different units have different strengths and weaknesses depending on terrain "
 "and who they are attacking; right click on units and select \"Unit "
@@ -4372,7 +3759,7 @@ msgstr ""
 "јединице</guimenuitem> за више детаља."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2821
+#: doc/manual/manual.en.xml:2173
 msgid ""
 "You can use lower level units as cannon fodder, to slow down enemy. E.g. you "
 "can use them to block enemies reaching your important units."
@@ -4382,7 +3769,7 @@ msgstr ""
 "јединица."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2827
+#: doc/manual/manual.en.xml:2179
 msgid ""
 "You can cause damage to enemies with advanced units and then finish them "
 "with lower level units — to give them more experience (and finally make them "
@@ -4393,7 +3780,7 @@ msgstr ""
 "коначно дигли на наредни ниво)."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2834
+#: doc/manual/manual.en.xml:2186
 msgid ""
 "When you have a White Mage (advances from Mage) or Druid (advances from "
 "Shaman), put it in the middle of a circle of units to heal them as they move "
@@ -4404,27 +3791,27 @@ msgstr ""
 "по мапи. (И врачарке могу да лече, али не тако добро.)"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2841
+#: doc/manual/manual.en.xml:2193
 msgid "Losing units is expected, even advanced units."
 msgstr "Губљење јединица се очекује, чак и напредних."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2846
+#: doc/manual/manual.en.xml:2198
 msgid "Time of day really matters:"
 msgstr "Доба дана је заиста важно:"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2851
+#: doc/manual/manual.en.xml:2203
 msgid "lawful units do more damage at day and less damage at night"
 msgstr "законите јединице наносе више штете током дана, а мање ноћу"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2856
+#: doc/manual/manual.en.xml:2208
 msgid "chaotic units do more damage at night and less damage at day"
 msgstr "хаотичне јединице наносе више штета током ноћи, а мање дању"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2861
+#: doc/manual/manual.en.xml:2213
 msgid ""
 "remember to always check the time of day on the right side of the screen. "
 "Plan ahead — think about what it&#8217;s going to be next turn as well as "
@@ -4434,7 +3821,7 @@ msgstr ""
 "мислите на то које ће доба дана бити у следећем потезу."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2870
+#: doc/manual/manual.en.xml:2222
 msgid ""
 "Some units are resistant or vulnerable to different kind of attacks. Mounted "
 "units are weak vs pierce attacks. Fire and arcane attacks destroy undead. To "
@@ -4450,7 +3837,7 @@ msgstr ""
 "отпорности на различите типове напада."
 
 #. type: Content of: <book><chapter><section><section><simpara>
-#: doc/manual/manual.en.xml:2882
+#: doc/manual/manual.en.xml:2234
 msgid ""
 "An important part of succeeding at Battle for Wesnoth is keeping your units "
 "healthy. When your units take damage you can heal them by moving them onto "
@@ -4464,12 +3851,12 @@ msgstr ""
 "ћете срести, као што су троловске, способне су да природно лече саме себе."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2889
+#: doc/manual/manual.en.xml:2241
 msgid "Winning a scenario"
 msgstr "Добијање сценарија"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2893
+#: doc/manual/manual.en.xml:2245
 msgid ""
 "Advanced units are needed to quickly kill enemy commanders, and to avoid "
 "losing lots of units."
@@ -4478,7 +3865,7 @@ msgstr ""
 "заповедника, и да би се избегло губљење мноштва јединица."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2899
+#: doc/manual/manual.en.xml:2251
 msgid ""
 "The quicker you win a scenario, the more gold you get; you will get more "
 "gold from winning early than from all of the map&#8217;s villages for the "
@@ -4489,17 +3876,17 @@ msgstr ""
 "потезе."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2906
+#: doc/manual/manual.en.xml:2258
 msgid "Killing all enemy leaders usually gives instant victory."
 msgstr "Елиминисање свих непријатељских вођа обично значи тренутну победу."
 
 #. type: Content of: <book><chapter><section><section><title>
-#: doc/manual/manual.en.xml:2912
+#: doc/manual/manual.en.xml:2264
 msgid "More general tips"
 msgstr "Још општих савета"
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2916
+#: doc/manual/manual.en.xml:2268
 msgid ""
 "After slaughtering scenarios (where you take lots of punishment) there are "
 "usually \"breathing room\" scenarios where you can rather easily gain some "
@@ -4510,13 +3897,437 @@ msgstr ""
 "искуства (односно напредне јединице)."
 
 #. type: Content of: <book><chapter><section><section><itemizedlist><listitem><simpara>
-#: doc/manual/manual.en.xml:2923
+#: doc/manual/manual.en.xml:2275
 msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr ""
 "Напредне јединице траже веће издатке него јединице нижег нивоа (1 златник по "
 "нивоу). Изузетак су лојалне јединице."
+
+#~ msgid ""
+#~ "These are the default control keys. Key setup might differ depending on "
+#~ "the platform used. For example you will often have to use the command key "
+#~ "instead of the control key when you are using MacOSX. You can change most "
+#~ "hotkeys to your taste using the Preferences menu."
+#~ msgstr ""
+#~ "Ово су подразумевани контролни тастери. Постава тастера може да се "
+#~ "разликује у зависности од платформе. На пример, под МекОС-ом често ћете "
+#~ "користити тастер Cmd уместо Ctrl. Већину пречица можете изменити по жељи "
+#~ "у менију <guimenu>Поставке</guimenu>."
+
+#~ msgid "General controls and hotkeys"
+#~ msgstr "Опште контроле и пречице"
+
+#~ msgid "F1"
+#~ msgstr "<keycombo><keycap>F1</keycap></keycombo>"
+
+#~ msgid "The Battle for Wesnoth Help"
+#~ msgstr "Помоћ „Боја за Веснот“."
+
+#~ msgid "Arrow keys"
+#~ msgstr "тастери стрелица"
+
+#~ msgid "Scroll"
+#~ msgstr "Клизање."
+
+#~ msgid "Left click"
+#~ msgstr "леви клик"
+
+#~ msgid "Select unit, move unit"
+#~ msgstr "Бирање и покретање јединице."
+
+#~ msgid "Right click"
+#~ msgstr "десни клик"
+
+#~ msgid "Context menu, cancel action"
+#~ msgstr "Контекстни мени, отказивање радње."
+
+#~ msgid "Middle click"
+#~ msgstr "средњи клик"
+
+#~ msgid "Center on pointer location"
+#~ msgstr "Центрирање на положај показивача."
+
+#~ msgid "Escape"
+#~ msgstr "<keycombo><keycap>Escape</keycap></keycombo>"
+
+#~ msgid "Exit game, exit menu, cancel message"
+#~ msgstr "Напуштање игре, напуштање менија, отказивање поруке."
+
+#~ msgid "Ctrl+s"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo>"
+
+#~ msgid "Save game"
+#~ msgstr "Уписивање позиције."
+
+#~ msgid "Ctrl+o"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>O</keycap></keycombo>"
+
+#~ msgid "Load game"
+#~ msgstr "Учитавање позиције."
+
+#~ msgid "Ctrl+p"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>P</keycap></keycombo>"
+
+#~ msgid "Go to Preferences menu"
+#~ msgstr "Одлазак у дијалог за подешавање."
+
+#~ msgid "Ctrl+q"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo>"
+
+#~ msgid "Quit game"
+#~ msgstr "Напуштање игре."
+
+#~ msgid "Ctrl+f"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>F</keycap></keycombo>"
+
+#~ msgid "Toggle full screen/windowed mode"
+#~ msgstr "Преко целог екрана или у прозору."
+
+#~ msgid "Ctrl+Alt+m"
+#~ msgstr ""
+#~ "<keycombo><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>M</keycap></"
+#~ "keycombo>"
+
+#~ msgid "Toggle muting of game sounds"
+#~ msgstr "Утишавање звука у игри."
+
+#~ msgid "+"
+#~ msgstr "<keycombo><keycap>+</keycap></keycombo>"
+
+#~ msgid "Zoom in"
+#~ msgstr "Увеличање."
+
+#~ msgid "Zoom out"
+#~ msgstr "Умањење."
+
+#~ msgid "Reset zoom to default"
+#~ msgstr "Подразумевано увеличање."
+
+#~ msgid "Ctrl+e"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>E</keycap></keycombo>"
+
+#~ msgid "Toggle ellipses"
+#~ msgstr "Приказ елипса."
+
+#~ msgid "Ctrl+g"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>G</keycap></keycombo>"
+
+#~ msgid "Toggle grid"
+#~ msgstr "Приказ мреже."
+
+#~ msgid "Ctrl+a"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>A</keycap></keycombo>"
+
+#~ msgid "Toggle accelerated game mode"
+#~ msgstr "Убрзани режим игре."
+
+#~ msgid "Holding Shift"
+#~ msgstr "држање Shift"
+
+#~ msgid ""
+#~ "Toggle between accelerated and normal game mode while pressed (temporary!)"
+#~ msgstr ""
+#~ "Пребацивање између убрзаног и обичног режима игре док је притиснуто "
+#~ "(привремено!)"
+
+#~ msgid "Ctrl+j"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>J</keycap></keycombo>"
+
+#~ msgid "Show scenario objectives"
+#~ msgstr "Циљеви сценарија."
+
+#~ msgid "s"
+#~ msgstr "<keycombo><keycap>S</keycap></keycombo>"
+
+#~ msgid "Show statistics"
+#~ msgstr "Статистика."
+
+#~ msgid "Alt+s"
+#~ msgstr "<keycombo><keycap>Alt</keycap><keycap>S</keycap></keycombo>"
+
+#~ msgid "Show status table"
+#~ msgstr "Табела стања."
+
+#~ msgid "Alt+u"
+#~ msgstr "<keycombo><keycap>Alt</keycap><keycap>U</keycap></keycombo>"
+
+#~ msgid "Show unit list"
+#~ msgstr "Списак јединица."
+
+#~ msgid "l"
+#~ msgstr "<keycombo><keycap>L</keycap></keycombo>"
+
+#~ msgid "Move to leader unit"
+#~ msgstr "Скок на јединицу вођа."
+
+#~ msgid "Shift+s"
+#~ msgstr "<keycombo><keycap>Shift</keycap><keycap>S</keycap></keycombo>"
+
+#~ msgid "Update shroud now"
+#~ msgstr "Ручно ажурирање покрова."
+
+#~ msgid "Unit and turn specific hotkeys"
+#~ msgstr "Пречице за јединице и потез"
+
+#~ msgid "Ctrl+r"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>R</keycap></keycombo>"
+
+#~ msgid "Recruit unit"
+#~ msgstr "Унајмљивање јединице."
+
+#~ msgid "Ctrl+Alt+r"
+#~ msgstr ""
+#~ "<keycombo><keycap>Ctrl</keycap><keycap>Alt</keycap><keycap>R</keycap></"
+#~ "keycombo>"
+
+#~ msgid "Repeat last recruit"
+#~ msgstr "Понављање последњег унајмљивања."
+
+#~ msgid "Alt+r"
+#~ msgstr "<keycombo><keycap>Alt</keycap><keycap>R</keycap></keycombo>"
+
+#~ msgid "Recall unit"
+#~ msgstr "Сазивање јединице."
+
+#~ msgid "Ctrl+n"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>N</keycap></keycombo>"
+
+#~ msgid "Rename unit"
+#~ msgstr "Преименовање јединице."
+
+#~ msgid "d"
+#~ msgstr "<keycombo><keycap>D</keycap></keycombo>"
+
+#~ msgid "Show the description of the currently selected unit"
+#~ msgstr "Приказ описа тренутно изабране јединице."
+
+#~ msgid "t"
+#~ msgstr "<keycombo><keycap>T</keycap></keycombo>"
+
+#~ msgid "Continue interrupted unit move"
+#~ msgstr "Наставак прекинутог покрета јединице."
+
+#~ msgid "u"
+#~ msgstr "<keycombo><keycap>U</keycap></keycombo>"
+
+#~ msgid "Undo last move (only deterministic moves can be undone)"
+#~ msgstr ""
+#~ "Опозивање последњег покрета (могуће само за детерминистичке покрете)."
+
+#~ msgid "r"
+#~ msgstr "<keycombo><keycap>R</keycap></keycombo>"
+
+#~ msgid "Redo move"
+#~ msgstr "Понављање покрета."
+
+#~ msgid "n"
+#~ msgstr "<keycombo><keycap>N</keycap></keycombo>"
+
+#~ msgid "Cycle through units that have movement left"
+#~ msgstr "Кружење кроз јединице које још могу да се покрену."
+
+#~ msgid "Shift+n"
+#~ msgstr "<keycombo><keycap>Shift</keycap><keycap>N</keycap></keycombo>"
+
+#~ msgid "Cycle through units that have movement left, in reverse order"
+#~ msgstr "Кружење кроз јединице које још могу да се покрену, обрнуто."
+
+#~ msgid "Ctrl+v"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>V</keycap></keycombo>"
+
+#~ msgid "Show enemy moves (where the enemy can move next turn)"
+#~ msgstr "Могући покрети непријатеља (у следећем потезу)."
+
+#~ msgid "Ctrl+b"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>B</keycap></keycombo>"
+
+#~ msgid "Show potential enemy moves, if your units were not on the map"
+#~ msgstr "Могући покрети непријатеља кад ваших јединица не би било на мапи."
+
+#~ msgid "1-7"
+#~ msgstr ""
+#~ "<keycombo><keycap>1</keycap></keycombo> до <keycombo><keycap>7</keycap></"
+#~ "keycombo>"
+
+#~ msgid "Show how far currently selected unit can move in that many turns"
+#~ msgstr ""
+#~ "Колико далеко изабрана јединица може да се помери за оволико потеза."
+
+#~ msgid "Space"
+#~ msgstr "<keycombo><keycap>Space</keycap></keycombo>"
+
+#~ msgid "End unit turn and cycle to next unit that has movement left"
+#~ msgstr ""
+#~ "Крај потеза јединице и прелаз на следећу која још може да се покрене."
+
+#~ msgid "Shift+Space"
+#~ msgstr "<keycombo><keycap>Shift</keycap><keycap>Space</keycap></keycombo>"
+
+#~ msgid "Make currently selected unit hold position (end its movement)"
+#~ msgstr "Тренутно изабрана јединица да држи положај (крај покретања)."
+
+#~ msgid "Ctrl+Space"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>Space</keycap></keycombo>"
+
+#~ msgid "End this player&#8217;s turn"
+#~ msgstr "Крај играчевог потеза."
+
+#~ msgid "Whiteboard specific hotkeys"
+#~ msgstr "Пречице за блокче"
+
+#~ msgid "p"
+#~ msgstr "<keycap>p</keycap>"
+
+#~ msgid "Toggle planning mode"
+#~ msgstr "Режим планирања."
+
+#~ msgid "y"
+#~ msgstr "<keycap>y</keycap>"
+
+#~ msgid "Execute planned action"
+#~ msgstr "Извршавање планиране радње."
+
+#~ msgid "h"
+#~ msgstr "<keycap>h</keycap>"
+
+#~ msgid "Delete planned action"
+#~ msgstr "Брисање планиране радње."
+
+#~ msgid "Page Down"
+#~ msgstr "<keycap>PageDown</keycap>"
+
+#~ msgid "Move action down in the queue"
+#~ msgstr "Померање радње надоле у реду."
+
+#~ msgid "Page Up"
+#~ msgstr "<keycap>PageUp</keycap>"
+
+#~ msgid "Move action up in the queue"
+#~ msgstr "Померање радње нагоре у реду."
+
+#~ msgid "Ctrl+y"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>Y</keycap></keycombo>"
+
+#~ msgid "Execute all actions"
+#~ msgstr "Извршавање свих радњи."
+
+#~ msgid "Suppose dead"
+#~ msgstr "Претпостављање мртвим."
+
+#~ msgid "Multiplayer specific hotkeys"
+#~ msgstr "Пречице за вишеиграње"
+
+#~ msgid "m"
+#~ msgstr "<keycombo><keycap>M</keycap></keycombo>"
+
+#~ msgid "Message another player (in multiplayer)"
+#~ msgstr "Порука другом играчу (у вишеигрању)."
+
+#~ msgid "Ctrl+m"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>M</keycap></keycombo>"
+
+#~ msgid "Message your allies (in multiplayer)"
+#~ msgstr "Порука савезницима (у вишеигрању)."
+
+#~ msgid "Alt+m"
+#~ msgstr "<keycombo><keycap>Alt</keycap><keycap>M</keycap></keycombo>"
+
+#~ msgid "Message everyone in the game (in multiplayer)"
+#~ msgstr "Порука свима у игри (у вишеигрању)."
+
+#~ msgid "Alt+c"
+#~ msgstr "<keycombo><keycap>Alt</keycap><keycap>C</keycap></keycombo>"
+
+#~ msgid "View chat log"
+#~ msgstr "Дневник ћаскања."
+
+#~ msgid "Ctrl+x"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>X</keycap></keycombo>"
+
+#~ msgid "Clear messages"
+#~ msgstr "Чишћење порука."
+
+#~ msgid "Miscellaneous hotkeys"
+#~ msgstr "Разне пречице"
+
+#~ msgid "Ctrl+c"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>C</keycap></keycombo>"
+
+#~ msgid "Clear onscreen labels"
+#~ msgstr "Чишћење екранских етикета."
+
+#~ msgid "/"
+#~ msgstr "<keycombo><keycap>/</keycap></keycombo>"
+
+#~ msgid "Search (find label or unit by name)"
+#~ msgstr "Тражење (етикета или јединица по имену)."
+
+#~ msgid "Alt+l"
+#~ msgstr "<keycombo><keycap>Alt</keycap><keycap>L</keycap></keycombo>"
+
+#~ msgid "Attach a text label to a terrain hex"
+#~ msgstr "Постављање текстуалне етикете на поље."
+
+#~ msgid "Ctrl+l"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>L</keycap></keycombo>"
+
+#~ msgid "Set team label"
+#~ msgstr "Тимска етикета."
+
+#~ msgid ":"
+#~ msgstr "<keycombo><keycap>:</keycap></keycombo>"
+
+#, fuzzy
+#~| msgid ""
+#~| "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Command mode</"
+#~| "ulink>"
+#~ msgid ""
+#~ "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
+#~ msgstr ""
+#~ "<ulink url=\"http://www.wesnoth.org/wiki/CommandMode\">Командни режим</"
+#~ "ulink>"
+
+#~ msgid "F5"
+#~ msgstr "<keycap>F5</keycap>"
+
+#~ msgid "Refresh Cache"
+#~ msgstr "Освежавање кеша"
+
+#~ msgid "Shift+c"
+#~ msgstr "<keycombo><keycap>Shift</keycap><keycap>C</keycap></keycombo>"
+
+#~ msgid "Create Unit (Debug!)"
+#~ msgstr "Стварање јединице (исправљање)."
+
+#~ msgid "f"
+#~ msgstr "<keycap>f</keycap>"
+
+#~ msgid "Run AI formula"
+#~ msgstr "Извршавање ВИ формуле."
+
+#~ msgid ""
+#~ "Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a "
+#~ "list of those:"
+#~ msgstr ""
+#~ "Неке пречице под МекОС-ом X траже више од замене Ctrl са Cmd. Следи "
+#~ "списак таквих:"
+
+#~ msgid "Cmd+w"
+#~ msgstr "<keycombo><keycap>Cmd</keycap><keycap>W</keycap></keycombo>"
+
+#~ msgid "Cmd+,"
+#~ msgstr "<keycombo><keycap>Cmd</keycap><keycap>,</keycap></keycombo>"
+
+#~ msgid "Ctrl+F5"
+#~ msgstr "<keycombo><keycap>Ctrl</keycap><keycap>F5</keycap></keycombo>"
+
+#~ msgid "Option+Space"
+#~ msgstr "<keycombo><keycap>Option</keycap><keycap>Space</keycap></keycombo>"
+
+#~ msgid "If the unit is an ally you do not control"
+#~ msgstr "ако је јединица савезник којим не управљате"
 
 #~ msgid ""
 #~ "Some hotkeys were changed slightly to make better use of the controls "

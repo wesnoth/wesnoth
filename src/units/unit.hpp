@@ -1,26 +1,26 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
 
 #include "movetype.hpp"
-
+#include "units/unit_alignments.hpp"
 #include "units/id.hpp"
 #include "units/ptr.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
-#include "units/alignment.hpp"
 #include "utils/variant.hpp"
 
 #include <boost/dynamic_bitset_fwd.hpp>
@@ -449,10 +449,7 @@ public:
 	}
 
 	/** The unit's special notes. */
-	const std::vector<t_string>& unit_special_notes() const
-	{
-		return special_notes_;
-	}
+	std::vector<t_string> unit_special_notes() const;
 
 	/** The gender of this unit. */
 	unit_race::GENDER gender() const
@@ -465,13 +462,13 @@ public:
 	 *
 	 * This affects the time of day during which this unit's attacks do the most damage.
 	 */
-	UNIT_ALIGNMENT alignment() const
+	unit_alignments::type alignment() const
 	{
 		return alignment_;
 	}
 
 	/** Sets the alignment of this unit. */
-	void set_alignment(UNIT_ALIGNMENT alignment)
+	void set_alignment(unit_alignments::type alignment)
 	{
 		set_attr_changed(UA_ALIGNMENT);
 		alignment_ = alignment;
@@ -1649,6 +1646,43 @@ public:
 		return get_ability_bool(tag_name, loc_);
 	}
 
+	/** Checks whether this unit currently possesses a given ability used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 */
+	bool get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const;
+	/** Checks whether this unit currently possesses a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	/** Checks whether this unit is affected by a given ability  used like weapon
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 */
+	bool get_adj_ability_bool(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from) const;
+	/** Checks whether this unit is affected by a given ability of leadership type
+	 * @return True if the ability @a tag_name is active.
+	 * @param special the const config to one of abilities @a tag_name checked.
+	 * @param tag_name name of ability type checked.
+	 * @param loc location of the unit checked.
+	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
+	 * @param dir direction to research a unit adjacent to @a this.
+	 * @param weapon the attack used by unit checked in this function.
+	 * @param opp_weapon the attack used by opponent to unit checked.
+	 */
+	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, int dir, const map_location& loc, const unit& from, const_attack_ptr weapon=nullptr, const_attack_ptr opp_weapon = nullptr) const;
+
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
 	 * @param tag_name The type of ability to check for
@@ -1673,6 +1707,10 @@ public:
 	{
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
+
+	const config &abilities() const { return abilities_; }
+
+	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities. Location-independent variant
@@ -1723,6 +1761,8 @@ public:
 
 
 private:
+
+	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability
@@ -1825,7 +1865,7 @@ private:
 	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
-	UNIT_ALIGNMENT alignment_;
+	unit_alignments::type alignment_;
 
 	std::string flag_rgb_;
 	std::string image_mods_;

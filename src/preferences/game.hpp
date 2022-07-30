@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -74,12 +75,13 @@ private:
 	std::string notes_;
 };
 
+enum class lobby_joins { show_none, show_friends, show_all };
+
 bool parse_should_show_lobby_join(const std::string& sender, const std::string& message);
-int lobby_joins();
-void _set_lobby_joins(int show);
+lobby_joins get_lobby_joins();
+void _set_lobby_joins(lobby_joins show);
 
-enum LOBBY_JOINS { SHOW_NONE, SHOW_FRIENDS, SHOW_ALL };
-
+void load_game_prefs();
 const std::map<std::string, acquaintance>& get_acquaintances();
 const std::string get_ignored_delim();
 std::map<std::string, std::string> get_acquaintances_nice(const std::string& filter);

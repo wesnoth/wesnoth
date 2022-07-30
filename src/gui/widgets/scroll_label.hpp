@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -34,18 +35,18 @@ struct builder_scroll_label;
 
 /**
  * @ingroup GUIWidgetWML
- * 
+ *
  * Label showing a text.
  *
  * This version shows a scrollbar if the text gets too long and has some scrolling features.
  * In general this widget is slower as the normal label so the normal label should be preferred.
- * 
+ *
  * Key          |Type                        |Default  |Description
  * -------------|----------------------------|---------|-----------
  * grid         | @ref guivartype_grid "grid"|mandatory|A grid containing the widgets for main widget.
- * 
+ *
  * TODO: we need one definition for a vertical scrollbar since this is the second time we use it.
- * 
+ *
  * ID (return value)|Type                        |Default  |Description
  * -----------------|----------------------------|---------|-----------
  * _content_grid    | @ref guivartype_grid "grid"|mandatory|A grid which should only contain one label widget.
@@ -165,7 +166,7 @@ struct builder_scroll_label : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2003 - 2022
+	by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "addon/manager.hpp"
@@ -33,6 +34,7 @@
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
+#include "gui/dialogs/migrate_version_selection.hpp"
 #include "gui/dialogs/title_screen.hpp" // for title_screen, etc
 #include "gui/gui.hpp"                  // for init
 #include "picture.hpp"                    // for flush_cache, etc
@@ -52,7 +54,7 @@
 #include "statistics.hpp"              // for fresh_stats
 #include <functional>
 #include "game_version.hpp"        // for version_info
-#include "video.hpp"          // for CVideo
+#include "video.hpp"          // for video::error and video::quit
 #include "wesconfig.h"        // for PACKAGE
 #include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
@@ -87,6 +89,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <optional>
 
 #include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
@@ -95,9 +98,8 @@
 #include <cstdlib>   // for srand, exit
 #include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
-#include <fstream>   // for operator<<, basic_ostream, etc
-#include <iostream>  // for cerr, cout
 #include <vector>
+#include <iostream>
 
 //#define NO_CATCH_AT_GAME_END
 
@@ -142,7 +144,7 @@ static lg::log_domain log_preprocessor("preprocessor");
 // be replaced with this
 static void safe_exit(int res)
 {
-	LOG_GENERAL << "exiting with code " << res << "\n";
+	LOG_GENERAL << "exiting with code " << res;
 	exit(res);
 }
 
@@ -155,8 +157,8 @@ static void encode(const std::string& input_file, const std::string& output_file
 		ifile.peek(); // We need to touch the stream to set the eof bit
 
 		if(!ifile.good()) {
-			std::cerr << "Input file " << input_file
-					  << " is not good for reading. Exiting to prevent bzip2 from segfaulting\n";
+			PLAIN_LOG << "Input file " << input_file
+					  << " is not good for reading. Exiting to prevent bzip2 from segfaulting";
 			safe_exit(1);
 		}
 
@@ -171,7 +173,7 @@ static void encode(const std::string& input_file, const std::string& output_file
 
 		safe_exit(remove(input_file.c_str()));
 	} catch(const filesystem::io_exception& e) {
-		std::cerr << "IO error: " << e.what() << "\n";
+		PLAIN_LOG << "IO error: " << e.what();
 	}
 }
 
@@ -191,7 +193,7 @@ static void decode(const std::string& input_file, const std::string& output_file
 
 		safe_exit(remove(input_file.c_str()));
 	} catch(const filesystem::io_exception& e) {
-		std::cerr << "IO error: " << e.what() << "\n";
+		PLAIN_LOG << "IO error: " << e.what();
 	}
 }
 
@@ -222,11 +224,11 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_input_macros) {
 		std::string file = *cmdline_opts.preprocess_input_macros;
 		if(filesystem::file_exists(file) == false) {
-			std::cerr << "please specify an existing file. File " << file << " doesn't exist.\n";
+			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
 			return;
 		}
 
-		std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
+		PLAIN_LOG << SDL_GetTicks() << " Reading cached defines from: " << file;
 
 		config cfg;
 
@@ -234,19 +236,19 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			filesystem::scoped_istream stream = filesystem::istream_file(file);
 			read(cfg, *stream);
 		} catch(const config::error& e) {
-			std::cerr << "Caught a config error while parsing file '" << file << "':\n" << e.message << std::endl;
+			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
 
 		int read = 0;
 
 		// use static preproc_define::read_pair(config) to make a object
-		for(const config::any_child& value : cfg.all_children_range()) {
+		for(const config::any_child value : cfg.all_children_range()) {
 			const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
 			input_macros[def.first] = def.second;
 			++read;
 		}
 
-		std::cerr << SDL_GetTicks() << " Read " << read << " defines.\n";
+		PLAIN_LOG << SDL_GetTicks() << " Read " << read << " defines.";
 	}
 
 	const std::string resourceToProcess(*cmdline_opts.preprocess_path);
@@ -265,18 +267,18 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		// add the specified defines
 		for(const std::string& define : *cmdline_opts.preprocess_defines) {
 			if(define.empty()) {
-				std::cerr << "empty define supplied\n";
+				PLAIN_LOG << "empty define supplied";
 				continue;
 			}
 
-			LOG_PREPROC << "adding define: " << define << '\n';
+			LOG_PREPROC << "adding define: " << define;
 			defines_map.emplace(define, preproc_define(define));
 
 			if(define == "SKIP_CORE") {
-				std::cerr << "'SKIP_CORE' defined.\n";
+				PLAIN_LOG << "'SKIP_CORE' defined.";
 				skipCore = true;
 			} else if(define == "NO_TERRAIN_GFX") {
-				std::cerr << "'NO_TERRAIN_GFX' defined." << std::endl;
+				PLAIN_LOG << "'NO_TERRAIN_GFX' defined.";
 				skipTerrainGFX = true;
 			}
 		}
@@ -285,11 +287,11 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	// add the WESNOTH_VERSION define
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
-	std::cerr << "added " << defines_map.size() << " defines.\n";
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 
 	// preprocess core macros first if we don't skip the core
 	if(skipCore == false) {
-		std::cerr << "preprocessing common macros from 'data/core' ...\n";
+		PLAIN_LOG << "preprocessing common macros from 'data/core' ...";
 
 		// process each folder explicitly to gain speed
 		preprocess_resource(game_config::path + "/data/core/macros", &defines_map);
@@ -298,16 +300,16 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			preprocess_resource(game_config::path + "/data/core/terrain-graphics", &defines_map);
 		}
 
-		std::cerr << "acquired " << (defines_map.size() - input_macros.size()) << " 'data/core' defines.\n";
+		PLAIN_LOG << "acquired " << (defines_map.size() - input_macros.size()) << " 'data/core' defines.";
 	} else {
-		std::cerr << "skipped 'data/core'\n";
+		PLAIN_LOG << "skipped 'data/core'";
 	}
 
 	// preprocess resource
-	std::cerr << "preprocessing specified resource: " << resourceToProcess << " ...\n";
+	PLAIN_LOG << "preprocessing specified resource: " << resourceToProcess << " ...";
 
 	preprocess_resource(resourceToProcess, &defines_map, true, true, targetDir);
-	std::cerr << "acquired " << (defines_map.size() - input_macros.size()) << " total defines.\n";
+	PLAIN_LOG << "acquired " << (defines_map.size() - input_macros.size()) << " total defines.";
 
 	if(cmdline_opts.preprocess_output_macros) {
 		std::string outputFileName = "_MACROS_.cfg";
@@ -317,7 +319,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 		std::string outputPath = targetDir + "/" + outputFileName;
 
-		std::cerr << "writing '" << outputPath << "' with " << defines_map.size() << " defines.\n";
+		PLAIN_LOG << "writing '" << outputPath << "' with " << defines_map.size() << " defines.";
 
 		filesystem::scoped_ostream out = filesystem::ostream_file(outputPath);
 		if(!out->fail()) {
@@ -327,25 +329,28 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 				define_pair.second.write(writer, define_pair.first);
 			}
 		} else {
-			std::cerr << "couldn't open the file.\n";
+			PLAIN_LOG << "couldn't open the file.";
 		}
 	}
 
-	std::cerr << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.\n";
+	PLAIN_LOG << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.";
 }
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
 	preproc_map defines_map;
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map["SCHEMA_VALIDATION"] = preproc_define();
 	for(const std::string& define : defines) {
 		if(define.empty()) {
-			std::cerr << "empty define supplied\n";
+			PLAIN_LOG << "empty define supplied";
 			continue;
 		}
 
-		LOG_PREPROC << "adding define: " << define << '\n';
+		LOG_PREPROC << "adding define: " << define;
 		defines_map.emplace(define, preproc_define(define));
 	}
-	std::cout << "Validating " << file << " against schema " << validator.name_ << std::endl;
+	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(0);
 	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
 	config result;
@@ -368,7 +373,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 			const std::string log_domain = log_pair.second;
 			const int severity = log_pair.first;
 			if(!lg::set_log_domain_severity(log_domain, severity)) {
-				std::cerr << "unknown log domain: " << log_domain << '\n';
+				PLAIN_LOG << "unknown log domain: " << log_domain;
 				return 2;
 			}
 		}
@@ -379,7 +384,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userconfig_path) {
-		std::cout << filesystem::get_user_config_dir() << '\n';
+		PLAIN_LOG << filesystem::get_user_config_dir();
 		return 0;
 	}
 
@@ -388,7 +393,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userdata_path) {
-		std::cout << filesystem::get_user_data_dir() << '\n';
+		PLAIN_LOG << filesystem::get_user_data_dir();
 		return 0;
 	}
 
@@ -406,10 +411,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		std::cerr << "Overriding data directory with " << game_config::path << std::endl;
+		if(!cmdline_opts.nobanner) {
+			PLAIN_LOG << "Overriding data directory with " << game_config::path;
+		}
 
 		if(!filesystem::is_directory(game_config::path)) {
-			std::cerr << "Could not find directory '" << game_config::path << "'\n";
+			PLAIN_LOG << "Could not find directory '" << game_config::path << "'";
 			throw config::error("directory not found");
 		}
 
@@ -418,12 +425,16 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.data_path) {
-		std::cout << game_config::path << '\n';
+		PLAIN_LOG << game_config::path;
 		return 0;
 	}
 
 	if(cmdline_opts.debug_lua) {
 		game_config::debug_lua = true;
+	}
+
+	if(cmdline_opts.allow_insecure) {
+		game_config::allow_insecure = true;
 	}
 
 	if(cmdline_opts.strict_lua) {
@@ -433,7 +444,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.gunzip) {
 		const std::string input_file(*cmdline_opts.gunzip);
 		if(!filesystem::is_gzip_file(input_file)) {
-			std::cerr << "file '" << input_file << "'isn't a .gz file\n";
+			PLAIN_LOG << "file '" << input_file << "'isn't a .gz file";
 			return 2;
 		}
 
@@ -444,7 +455,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.bunzip2) {
 		const std::string input_file(*cmdline_opts.bunzip2);
 		if(!filesystem::is_bzip2_file(input_file)) {
-			std::cerr << "file '" << input_file << "'isn't a .bz2 file\n";
+			PLAIN_LOG << "file '" << input_file << "'isn't a .bz2 file";
 			return 2;
 		}
 
@@ -498,6 +509,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		return 0;
 	}
 
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+
+		return 0;
+	}
+
 	if(cmdline_opts.report) {
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
@@ -519,7 +536,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
-		config_writer out(*os, compression::format::NONE);
+		config_writer out(*os, compression::format::none);
 		out.write(right.get_diff(left));
 		if(os != &std::cout) delete os;
 		return 0;
@@ -536,7 +553,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
 		}
-		config_writer out(*os, compression::format::NONE);
+		config_writer out(*os, compression::format::none);
 		out.write(base);
 		if(os != &std::cout) delete os;
 		return 0;
@@ -565,7 +582,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	if(cmdline_opts.preprocess_defines || cmdline_opts.preprocess_input_macros || cmdline_opts.preprocess_path) {
 		// It would be good if this was supported for running tests too, possibly for other uses.
 		// For the moment show an error message instead of leaving the user wondering why it doesn't work.
-		std::cerr << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.\n";
+		PLAIN_LOG << "That --preprocess-* option is only supported when using --preprocess or --validate-wml.";
 		// Return an error status other than -1, because in our caller -1 means no error
 		return -2;
 	}
@@ -607,10 +624,10 @@ static void init_locale()
 static void warn_early_init_failure()
 {
 	// NOTE: wrap output to 80 columns.
-	std::cerr << '\n'
+	PLAIN_LOG << '\n'
 			  << "An error at this point during initialization usually indicates that the data\n"
 			  << "directory above was not correctly set or detected. Try passing the correct path\n"
-			  << "in the command line with the --data-dir switch or as the only argument.\n";
+			  << "in the command line with the --data-dir switch or as the only argument.";
 }
 
 /**
@@ -628,8 +645,8 @@ static void handle_lua_script_args(game_launcher* game, commandline_options& /*c
 	first_time = false;
 
 	if(!game->init_lua_script()) {
-		// std::cerr << "error when loading lua scripts at startup\n";
-		// std::cerr << "could not load lua script: " << *cmdline_opts.script_file << std::endl;
+		// PLAIN_LOG << "error when loading lua scripts at startup";
+		// PLAIN_LOG << "could not load lua script: " << *cmdline_opts.script_file;
 	}
 }
 
@@ -641,10 +658,9 @@ static void check_fpu()
 	if(_controlfp_s(&f_control, 0, 0) == 0) {
 		uint32_t unused;
 		uint32_t rounding_mode = f_control & _MCW_RC;
-		uint32_t precision_mode = f_control & _MCW_PC;
 
 		if(rounding_mode != _RC_NEAR) {
-			std::cerr << "Floating point rounding mode is currently '"
+			PLAIN_LOG << "Floating point rounding mode is currently '"
 				<< ((rounding_mode == _RC_CHOP)
 					? "chop"
 					: (rounding_mode == _RC_UP)
@@ -652,31 +668,32 @@ static void check_fpu()
 						: (rounding_mode == _RC_DOWN)
 							? "down"
 							: (rounding_mode == _RC_NEAR) ? "near" : "unknown")
-				<< "' setting to 'near'\n";
+				<< "' setting to 'near'";
 
 			if(_controlfp_s(&unused, _RC_NEAR, _MCW_RC)) {
-				std::cerr << "failed to set floating point rounding type to 'near'\n";
+				PLAIN_LOG << "failed to set floating point rounding type to 'near'";
 			}
 		}
 
 #ifndef _M_AMD64
+		uint32_t precision_mode = f_control & _MCW_PC;
 		if(precision_mode != _PC_53) {
-			std::cerr << "Floating point precision mode is currently '"
+			PLAIN_LOG << "Floating point precision mode is currently '"
 				<< ((precision_mode == _PC_53)
 					? "double"
 					: (precision_mode == _PC_24)
 						? "single"
 						: (precision_mode == _PC_64) ? "double extended" : "unknown")
-				<< "' setting to 'double'\n";
+				<< "' setting to 'double'";
 
 			if(_controlfp_s(&unused, _PC_53, _MCW_PC)) {
-				std::cerr << "failed to set floating point precision type to 'double'\n";
+				PLAIN_LOG << "failed to set floating point precision type to 'double'";
 			}
 		}
 #endif
 
 	} else {
-		std::cerr << "_controlfp_s failed.\n";
+		PLAIN_LOG << "_controlfp_s failed.";
 	}
 }
 #else
@@ -686,19 +703,19 @@ static void check_fpu()
 	case FE_TONEAREST:
 		break;
 	case FE_DOWNWARD:
-		std::cerr << "Floating point precision mode is currently 'downward'";
+		STREAMING_LOG << "Floating point precision mode is currently 'downward'";
 		goto reset_fpu;
 	case FE_TOWARDZERO:
-		std::cerr << "Floating point precision mode is currently 'toward-zero'";
+		STREAMING_LOG << "Floating point precision mode is currently 'toward-zero'";
 		goto reset_fpu;
 	case FE_UPWARD:
-		std::cerr << "Floating point precision mode is currently 'upward'";
+		STREAMING_LOG << "Floating point precision mode is currently 'upward'";
 		goto reset_fpu;
 	default:
-		std::cerr << "Floating point precision mode is currently 'unknown'";
+		STREAMING_LOG << "Floating point precision mode is currently 'unknown'";
 		goto reset_fpu;
 	reset_fpu:
-		std::cerr << "setting to 'nearest'";
+		STREAMING_LOG << " - setting to 'nearest'\n";
 		fesetround(FE_TONEAREST);
 		break;
 	}
@@ -740,7 +757,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 	// when the language is read from the game config.
 	res = font::load_font_config();
 	if(res == false) {
-		std::cerr << "could not initialize fonts\n";
+		PLAIN_LOG << "could not initialize fonts";
 		// The most common symptom of a bogus data dir path -- warn the user.
 		warn_early_init_failure();
 		return 1;
@@ -748,13 +765,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	res = game->init_language();
 	if(res == false) {
-		std::cerr << "could not initialize the language\n";
+		PLAIN_LOG << "could not initialize the language";
 		return 1;
 	}
 
 	res = game->init_video();
 	if(res == false) {
-		std::cerr << "could not initialize display\n";
+		PLAIN_LOG << "could not initialize display";
 		return 1;
 	}
 
@@ -771,12 +788,17 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 	game_config_manager config_manager(cmdline_opts);
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager]() {
+	if(game_config::check_migration) {
+		game_config::check_migration = false;
+		gui2::dialogs::migrate_version_selection::execute();
+	}
+
+	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
-			std::cerr << "could not initialize game config\n";
+			PLAIN_LOG << "could not initialize game config";
 			return;
 		}
 
@@ -784,20 +806,22 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		res = font::load_font_config();
 		if(res == false) {
-			std::cerr << "could not re-initialize fonts for the current language\n";
+			PLAIN_LOG << "could not re-initialize fonts for the current language";
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
+			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
 
-		refresh_addon_version_info_cache();
+			refresh_addon_version_info_cache();
+		}
 	});
 
 	if(res == false) {
 		return 1;
 	}
 
-	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms\n";
+	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms";
 
 	plugins_manager plugins_man(new application_lua_kernel);
 
@@ -897,7 +921,7 @@ static int do_gameloop(const std::vector<std::string>& args)
 
 		switch(dlg.get_retval()) {
 		case gui2::dialogs::title_screen::QUIT_GAME:
-			LOG_GENERAL << "quitting game...\n";
+			LOG_GENERAL << "quitting game...";
 			return 0;
 		case gui2::dialogs::title_screen::MP_CONNECT:
 			game_config::set_debug(game_config::mp_debug);
@@ -961,7 +985,29 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
+	// --nobanner needs to be detected before the main command-line parsing happens
+	// --log-to needs to be detected so the logging output location is set before any actual logging happens
+	bool nobanner = false;
+	for(const auto& arg : args) {
+		if(arg == "--nobanner") {
+			nobanner = true;
+			break;
+		}
+#ifndef _WIN32
+		else if(arg == "--log-to-file") {
+			lg::set_log_to_file();
+		}
+#endif
+	}
+
 #ifdef _WIN32
+	bool log_redirect = true, native_console_implied = false;
+	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
+	std::optional<bool> native_console_force;
+
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
 	// turn it into a CLI application. Also, --wconsole in particular attaches
@@ -983,7 +1029,7 @@ int main(int argc, char** argv)
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> wincon_arg_switches = {
 			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-addon", "--validate-schema",
+			 "--screenshot", "-V", "--validate", "--validate-schema",
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
@@ -993,18 +1039,30 @@ int main(int argc, char** argv)
 
 		if(wincon_switches.find(arg) != wincon_switches.end() ||
 			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			lg::enable_native_console_output();
-			break;
+			native_console_implied = true;
+		}
+
+		if(arg == "--wnoconsole") {
+			native_console_force = false;
+		} else if(arg == "--wconsole") {
+			native_console_force = true;
+		} else if(arg == "--wnoredirect") {
+			log_redirect = false;
 		}
 	}
 
-	lg::early_log_file_setup();
+	if(native_console_force.value_or(native_console_implied)) {
+		lg::enable_native_console_output();
+	}
+	lg::early_log_file_setup(!log_redirect);
 #endif
 
+	// Is there a reason not to just use SDL_INIT_EVERYTHING?
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
-		fprintf(stderr, "Couldn't initialize SDL: %s\n", SDL_GetError());
+		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
 		return (1);
 	}
+	atexit(SDL_Quit);
 
 #ifndef _WIN32
 	struct sigaction terminate_handler;
@@ -1030,9 +1088,11 @@ int main(int argc, char** argv)
 	SDL_StartTextInput();
 
 	try {
-		std::cerr << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch() << '\n';
-		const std::time_t t = std::time(nullptr);
-		std::cerr << "Started on " << ctime(&t) << "\n";
+		if(!nobanner) {
+			PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
+			const std::time_t t = std::time(nullptr);
+			PLAIN_LOG << "Started on " << ctime(&t);
+		}
 
 		const std::string& exe_dir = filesystem::get_exe_dir();
 		if(!exe_dir.empty()) {
@@ -1058,7 +1118,9 @@ int main(int argc, char** argv)
 			}
 
 			if(!auto_dir.empty()) {
-				std::cerr << "Automatically found a possible data directory at " << filesystem::sanitize_path(auto_dir) << '\n';
+				if(!nobanner) {
+					PLAIN_LOG << "Automatically found a possible data directory at " << auto_dir;
+				}
 				game_config::path = auto_dir;
 			}
 		}
@@ -1066,58 +1128,58 @@ int main(int argc, char** argv)
 		const int res = do_gameloop(args);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {
-		std::cerr << "Error in command line: " << e.what() << '\n';
+		PLAIN_LOG << "Error in command line: " << e.what();
 		error_exit(1);
-	} catch(const CVideo::error& e) {
-		std::cerr << "Could not initialize video.\n\n" << e.what() << "\n\nExiting.\n";
+	} catch(const video::error& e) {
+		PLAIN_LOG << "Video system error: " << e.what();
 		error_exit(1);
 	} catch(const font::error& e) {
-		std::cerr << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.\n";
+		PLAIN_LOG << "Could not initialize fonts.\n\n" << e.what() << "\n\nExiting.";
 		error_exit(1);
 	} catch(const config::error& e) {
-		std::cerr << e.message << "\n";
+		PLAIN_LOG << e.message;
 		error_exit(1);
 	} catch(const gui::button::error&) {
-		std::cerr << "Could not create button: Image could not be found\n";
+		PLAIN_LOG << "Could not create button: Image could not be found";
 		error_exit(1);
-	} catch(const CVideo::quit&) {
+	} catch(const video::quit&) {
 		// just means the game should quit
 	} catch(const return_to_play_side_exception&) {
-		std::cerr << "caught return_to_play_side_exception, please report this bug (quitting)\n";
+		PLAIN_LOG << "caught return_to_play_side_exception, please report this bug (quitting)";
 	} catch(const quit_game_exception&) {
-		std::cerr << "caught quit_game_exception (quitting)\n";
+		PLAIN_LOG << "caught quit_game_exception (quitting)";
 	} catch(const wml_exception& e) {
-		std::cerr << "WML exception:\nUser message: " << e.user_message << "\nDev message: " << e.dev_message << '\n';
+		PLAIN_LOG << "WML exception:\nUser message: " << e.user_message << "\nDev message: " << e.dev_message;
 		error_exit(1);
 	} catch(const wfl::formula_error& e) {
-		std::cerr << e.what() << "\n\nGame will be aborted.\n";
+		PLAIN_LOG << e.what() << "\n\nGame will be aborted.";
 		error_exit(1);
 	} catch(const sdl::exception& e) {
-		std::cerr << e.what();
+		PLAIN_LOG << e.what();
 		error_exit(1);
-	} catch(const game::error&) {
-		// A message has already been displayed.
+	} catch(const game::error& e) {
+		PLAIN_LOG << "Game error: " << e.what();
 		error_exit(1);
 	} catch(const std::bad_alloc&) {
-		std::cerr << "Ran out of memory. Aborted.\n";
+		PLAIN_LOG << "Ran out of memory. Aborted.";
 		error_exit(ENOMEM);
 #if !defined(NO_CATCH_AT_GAME_END)
 	} catch(const std::exception& e) {
 		// Try to catch unexpected exceptions.
-		std::cerr << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what() << std::endl;
+		PLAIN_LOG << "Caught general '" << typeid(e).name() << "' exception:\n" << e.what();
 		error_exit(1);
 	} catch(const std::string& e) {
-		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
+		PLAIN_LOG << "Caught a string thrown as an exception:\n" << e;
 		error_exit(1);
 	} catch(const char* e) {
-		std::cerr << "Caught a string thrown as an exception:\n" << e << std::endl;
+		PLAIN_LOG << "Caught a string thrown as an exception:\n" << e;
 		error_exit(1);
 	} catch(...) {
 		// Ensure that even when we terminate with `throw 42`, the exception
 		// is caught and all destructors are actually called. (Apparently,
 		// some compilers will simply terminate without calling destructors if
 		// the exception isn't caught.)
-		std::cerr << "Caught unspecified general exception. Terminating." << std::endl;
+		PLAIN_LOG << "Caught unspecified general exception. Terminating.";
 		error_exit(1);
 #endif
 	}
@@ -1400,8 +1462,8 @@ int main(int argc, char** argv)
  * @anchor guivartype_f_h_align f_h_align          |A horizontal alignment or a formula returning a horizontal alignment.
  * @anchor guivartype_border border                |Comma separated list of borders to use. Possible values:<ul><li>left</li><li>right</li><li>top</li><li>bottom</li><li>all alias for "left, right, top, bottom"</li></ul>
  * @anchor guivartype_scrollbar_mode scrollbar_mode|How to show the scrollbar of a widget. Possible values:<ul><li>always - The scrollbar is always shown, regardless whether it's required or not.</li><li>never - The scrollbar is never shown, even not when needed. (Note when setting this mode dialogs might not properly fit anymore).</li><li>auto - Shows the scrollbar when needed. The widget will reserve space for the scrollbar, but only show when needed.</li><li>initial_auto - Like auto, but when the scrollbar is not needed the space is not reserved.</li></ul>Use auto when the list can be changed dynamically eg the game list in the lobby. For optimization you can also use auto when you really expect a scrollbar, but don't want it to be shown when not needed eg the language list will need a scrollbar on most screens.
- * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li></ul>
- * @anchor guivartype_grow_direction grow_direction|Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li></ul>
+ * @anchor guivartype_resize_mode resize_mode      |Determines how an image is resized. Possible values:<ul><li>scale - The image is scaled smoothly.</li><li>scale_sharp - The image is scaled with sharp (nearest neighbour) interpolation. This is good for sprites.</li><li>stretch - The first row or column of pixels is copied over the entire image. (Can only be used to scale resize in one direction, else falls back to scale.)</li><li>tile - The image is placed several times until the entire surface is filled. The last images are truncated.</li><li>tile_center - like tile, except aligned so that one tile is always centered.</li><li>tile_highres - like tile, except rendered at full output resolution in high-dpi contexts. This is useful for texturing effects, but final tile size will be unpredictable.</li></ul>
+ * @anchor guivartype_grow_direction grow_direction|The direction in which newly added items will grow a container. Possible values:<ul><li>horizontal</li><li>vertical</li></ul>
  *
  * For more complex parts, there are sections. Sections contain of several lines of WML and can have sub sections. For example a grid has sub sections which contain various widgets. Here's the list of sections:
  * Variable                                        |description

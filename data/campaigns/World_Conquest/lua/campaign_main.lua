@@ -1,7 +1,7 @@
 -- the main file for the WC2 mp campaign
 
 T = wml.tag
-on_event = wesnoth.require("on_event")
+on_event = wesnoth.game_events.add_repeating
 
 
 wesnoth.dofile("./game_mechanics/_load.lua")
@@ -15,12 +15,10 @@ wesnoth.dofile("./campaign/autorecall.lua")
 wesnoth.dofile("./campaign/objectives.lua")
 wesnoth.dofile("./campaign/enemy_themed.lua")
 
-wc2_difficulty = wesnoth.require("./campaign/difficulty.lua")
-
 on_event("prestart", function(cx)
 	wesnoth.wml_actions.wc2_fix_colors {
 		wml.tag.player_sides {
-			side="1,2,3",
+			side="1,2,3,4",
 			wml.tag.has_unit {
 				canrecruit = true,
 			}

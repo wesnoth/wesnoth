@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Tomasz Sniatowski <kailoran@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Tomasz Sniatowski <kailoran@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -30,7 +31,7 @@ namespace mp
 class lobby_info
 {
 public:
-	explicit lobby_info(const std::vector<std::string>& installed_addons);
+	lobby_info();
 
 	typedef std::map<int, game_info> game_info_map;
 
@@ -47,15 +48,11 @@ public:
 	 */
 	bool process_gamelist_diff(const config& data);
 
-	bool process_gamelist_diff_impl(const config& data);
-
-	void sync_games_display_status();
-
 	/**
-	 * Generates a new vector of game pointers from the ID/game map.
-	 * The games will be referenced in ascending order by ID.
+	 * Updates the game pointer list and returns a second stage cleanup function to be
+	 * called after any actions have been done using the pointer list.
 	 */
-	void make_games_vector();
+	std::function<void()> begin_state_sync();
 
 	/** Returns the raw game list config data. */
 	const config& gamelist() const
@@ -72,16 +69,19 @@ public:
 	}
 
 	/** Clears all game filter functions. */
-	void clear_game_filter()
+	void clear_game_filters()
 	{
 		game_filters_.clear();
 	}
 
 	/** Sets whether the result of each game filter should be inverted. */
-	void set_game_filter_invert(bool value)
+	void set_game_filter_invert(std::function<bool(bool)> value)
 	{
 		game_filter_invert_ = value;
 	}
+
+	/** Returns whether the game would be visible after the game filters are applied */
+	bool is_game_visible(const game_info&);
 
 	/** Generates a new list of games that match the current filter functions and inversion setting. */
 	void apply_game_filter();
@@ -94,8 +94,6 @@ public:
 
 	/** Returns info on the user with the given name, or nullptr if they don't eixst. */
 	user_info* get_user(const std::string& name);
-
-	void update_user_statuses(int game_id, const room_info* room);
 
 	const std::vector<game_info*>& games() const
 	{
@@ -122,13 +120,18 @@ public:
 		return gamelist_initialized_;
 	}
 
-	void set_installed_addons(const std::vector<std::string>& new_list)
-	{
-		installed_addons_ = new_list;
-	}
+	void refresh_installed_addons_cache();
 
 private:
+	bool process_gamelist_diff_impl(const config& data);
+
 	void process_userlist();
+
+	/**
+	 * Generates a new vector of game pointers from the ID/game map.
+	 * The games will be referenced in ascending order by ID.
+	 */
+	void make_games_vector();
 
 	std::vector<std::string> installed_addons_;
 
@@ -144,57 +147,23 @@ private:
 
 	std::vector<game_filter_func> game_filters_;
 
-	bool game_filter_invert_;
+	std::function<bool(bool)> game_filter_invert_;
 
 	boost::dynamic_bitset<> games_visibility_;
 };
 
-class chat_info
-{
-public:
-	/** Open a new chat room with the given name. */
-	void open_room(const std::string& name);
-
-	/** Close the chat room with the given name. */
-	void close_room(const std::string& name);
-
-	/** Returns whether a room with the given name has been opened. */
-	bool has_room(const std::string& name) const;
-
-	/** Returns info on room with the given name, or nullptr if it doesn't exist. */
-	room_info* get_room(const std::string& name);
-
-	/** Const overload of @ref get_room. */
-	const room_info* get_room(const std::string& name) const;
-
-	chat_session& get_whisper_log(const std::string& name)
-	{
-		return whispers_[name];
-	}
-
-	const std::map<std::string, room_info>& rooms() const
-	{
-		return rooms_;
-	}
-
-private:
-	std::map<std::string, room_info> rooms_;
-
-	std::map<std::string, chat_session> whispers_;
-};
-
-enum notify_mode {
-	NOTIFY_NONE,
-	NOTIFY_MESSAGE,
-	NOTIFY_MESSAGE_OTHER_WINDOW,
-	NOTIFY_SERVER_MESSAGE,
-	NOTIFY_OWN_NICK,
-	NOTIFY_FRIEND_MESSAGE,
-	NOTIFY_WHISPER,
-	NOTIFY_WHISPER_OTHER_WINDOW,
-	NOTIFY_LOBBY_JOIN,
-	NOTIFY_LOBBY_QUIT,
-	NOTIFY_GAME_CREATED
+enum class notify_mode {
+	none,
+	message,
+	message_other_window,
+	server_message,
+	own_nick,
+	friend_message,
+	whisper,
+	whisper_other_window,
+	lobby_join,
+	lobby_quit,
+	game_created
 };
 
 void do_notify(notify_mode mode, const std::string& sender = "", const std::string& message = "");

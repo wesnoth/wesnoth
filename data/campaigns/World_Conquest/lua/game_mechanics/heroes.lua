@@ -1,4 +1,3 @@
-local helper = wesnoth.require("helper")
 local T = wml.tag
 local _ = wesnoth.textdomain 'wesnoth-wc'
 
@@ -10,7 +9,7 @@ wc2_heroes.dialogues = {}
 wc2_heroes.trait_heroic = nil
 wc2_heroes.trait_expert = nil
 
-if wesnoth.have_file("./unittypedata.lua") then
+if filesystem.have_file("./unittypedata.lua") then
 	local data = wesnoth.require("./unittypedata.lua")
 	for v,k in pairs(data) do
 		wc2_heroes.dialogues[v] = k
@@ -74,7 +73,7 @@ function wc2_heroes.place(t, side, x, y, is_commander)
 		modifications,
 		is_commander and wc2_heroes.commander_overlay_object() or wc2_heroes.hero_overlay_object()
 	)
-	local u = wesnoth.create_unit {
+	local u = wesnoth.units.create {
 		type = t,
 		side = side,
 		random_traits = false,
@@ -84,19 +83,19 @@ function wc2_heroes.place(t, side, x, y, is_commander)
 	if is_commander then
 		u.variables["wc2.is_commander"] = true
 	end
-	local x2,y2 = wesnoth.find_vacant_tile(x, y, u)
+	local x2,y2 = wesnoth.paths.find_vacant_hex(x, y, u)
 	u:to_map(x2,y2)
 	return u
 end
 
 function wesnoth.wml_actions.wc2_random_hero(cfg)
-	local side_num = cfg.side or helper.wml_error("missing side= attribute in [wc2_initial_hero]")
-	local x = cfg.x or helper.wml_error("missing x= attribute in [wc2_initial_hero]")
-	local y = cfg.y or helper.wml_error("missing y= attribute in [wc2_initial_hero]")
+	local side_num = cfg.side or wml.error("missing side= attribute in [wc2_initial_hero]")
+	local x = cfg.x or wml.error("missing x= attribute in [wc2_initial_hero]")
+	local y = cfg.y or wml.error("missing y= attribute in [wc2_initial_hero]")
 	local t = wc2_era.pick_deserter(side_num)
 
 	if t == nil then
-		print("No serserter available for side", side_num)
+		print("No deserter available for side", side_num)
 		return
 	end
 	wc2_heroes.place(t, side_num, x, y)

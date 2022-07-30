@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2012 - 2018 by Boldizsár Lipka <lipkab@zoho.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2012 - 2022
+	by Boldizsár Lipka <lipkab@zoho.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -22,9 +23,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gettext.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(depcheck_select_new)
@@ -64,7 +63,7 @@ void depcheck_select_new::pre_show(window& window)
 
 	for(const auto & item : items_)
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 		data["option"]["label"] = item;
 
 		items.add_row(data);
@@ -81,4 +80,3 @@ void depcheck_select_new::post_show(window& window)
 	}
 }
 } // namespace dialogs
-} // namespace gui2

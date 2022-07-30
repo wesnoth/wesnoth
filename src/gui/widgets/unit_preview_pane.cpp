@@ -1,14 +1,15 @@
 /*
-   Copyright (C) 2016 - 2018 The Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2016 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -19,6 +20,7 @@
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -72,7 +74,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 void unit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<image>(this, "type_image", false, false);
+	icon_type_              = find_widget<drawing>(this, "type_image", false, false);
 	icon_race_              = find_widget<image>(this, "type_race", false, false);
 	icon_alignment_         = find_widget<image>(this, "type_alignment", false, false);
 
@@ -107,7 +109,8 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	return child_node;
 }
 
-static inline std::string get_hp_tooltip(const utils::string_map& res, const std::function<int (const std::string&, bool)>& get)
+static inline std::string get_hp_tooltip(
+	const utils::string_map& res, const std::function<int(const std::string&, bool)>& get)
 {
 	std::ostringstream tooltip;
 
@@ -280,7 +283,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				 + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
@@ -307,7 +310,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = type.alignment().to_string();
+		const std::string& alignment_name = unit_alignments::get_string(type.alignment());
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
@@ -325,7 +328,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 		str << l_str << "\n";
 
-		str << type.alignment() << "\n";
+		str << unit_alignments::get_string(type.alignment()) << "\n";
 
 		str << "\n"; // Leave a blank line where traits would be
 
@@ -425,7 +428,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
 	}
@@ -459,7 +462,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = u.alignment().to_string();
+		const std::string& alignment_name = unit_alignments::get_string(u.alignment());
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
@@ -593,7 +596,7 @@ void unit_preview_pane::set_self_active(const bool /*active*/)
 unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
+	DBG_GUI_P << "Parsing unit preview pane " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -621,12 +624,12 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-widget* builder_unit_preview_pane::build() const
+std::unique_ptr<widget> builder_unit_preview_pane::build() const
 {
-	unit_preview_pane* widget = new unit_preview_pane(*this);
+	auto widget = std::make_unique<unit_preview_pane>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<unit_preview_pane_definition>();
 	assert(conf);

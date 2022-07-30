@@ -2,44 +2,50 @@
 Functions to support the retreat of injured units
 ]=]
 
-local H = wesnoth.require "helper"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
 
+local function print_dbg(...)
+    local show_debug_info = false -- manually set to true/false depending on whether output is desired
+    if wesnoth.game_config.debug and show_debug_info then
+        std_print('Retreat debug: ', ...)
+    end
+end
+
 local retreat_functions = {}
 
 function retreat_functions.min_hp(unit)
-    -- The minimum hp to retreat is a function of level and terrain defense
-    -- We want to stay longer on good terrain and leave early on very bad terrain
+    -- The minimum hp to retreat is a function of hitpoints and terrain defense
+    -- We want to stay longer on good terrain and leave early on bad terrain
+    -- It can be influenced by the 'retreat_factor' AI aspect
 
-    -- Take caution into account here. We want the multiplier to be:
-    --   1 for default caution (0.25)
-    --   0 for minimal caution <= 0
-    --   2 for caution = 1
-    local caution_factor = ai.aspects.caution
-    if (caution_factor < 0) then caution_factor = 0 end
-    caution_factor = math.sqrt(caution_factor) * 2
+    local retreat_factor = ai.aspects.retreat_factor
 
-    local hp_per_level = (100 - unit:defense_on(wesnoth.get_terrain(unit.x, unit.y)))/15 * caution_factor
-    local level = unit.level
+    -- Leaders are more valuable and should retreat earlier
+    if unit.canrecruit then
+        retreat_factor = retreat_factor * 1.5
+    end
 
-    -- Leaders are considered to be higher level because of their value
-    if unit.canrecruit then level = level+2 end
+    -- Higher retreat willingness on bad terrain
+    retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.current.map[unit])) / 50
 
-    local min_hp = hp_per_level*(level+2)
+    local min_hp = retreat_factor * unit.max_hitpoints
 
     -- Account for poison damage on next turn
     if unit.status.poisoned then min_hp = min_hp + wesnoth.game_config.poison_amount end
 
-    -- Make sure that units are actually injured (only relevant for low-HP units)
-    -- Want this to be roughly half the units HP at caution=0, close to full HP at caution=1
-    local hp_factor = 0.5 + 0.25 * caution_factor
-    if (hp_factor > 1) then hp_factor = 1 end
-    local max_min_hp = (unit.max_hitpoints - 4) * hp_factor
+    -- Large values of retreat_factor could cause fully healthy units to retreat.
+    -- We require a unit to be down more than 10 HP, or half its HP for units with less than 20 max_HP.
+    local max_hp = unit.max_hitpoints
+    local max_min_hp = math.max(max_hp - 10, max_hp / 2)
     if (min_hp > max_min_hp) then
         min_hp = max_min_hp
     end
+
+    local retreat_str = ''
+    if (unit.hitpoints < min_hp) then retreat_str = '  --> retreat' end
+    print_dbg(string.format('%-20s %3d/%-3d HP  threshold: %5.1f HP%s', unit.id, unit.hitpoints, unit.max_hitpoints, min_hp, retreat_str))
 
     return min_hp
 end
@@ -58,9 +64,9 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
                 local abilities = wml.get_child(u.__cfg, "abilities")
                 local regen_amount = 0
                 if abilities then
-                    for regen in wml.child_range(abilities, "regenerate") do
-                        if regen.value > regen_amount then
-                            regen_amount = regen.value
+                    for regenerates in wml.child_range(abilities, "regenerate") do
+                        if (regenerates.value or 0) > regen_amount then
+                            regen_amount = regenerates.value
                         end
                     end
                 end
@@ -99,11 +105,7 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
     end
 end
 
-function retreat_functions.get_healing_locations()
-    local possible_healers = AH.get_live_units {
-        { "filter_side", {{"allied_with", {side = wesnoth.current.side} }} }
-    }
-
+function retreat_functions.get_healing_locations(possible_healers)
     local healing_locs = LS.create()
     for i,u in ipairs(possible_healers) do
         -- Only consider healers that cannot move this turn
@@ -120,11 +122,11 @@ function retreat_functions.get_healing_locations()
                 end
             end
             if heal_amount + cure > 0 then
-                for x, y in H.adjacent_tiles(u.x, u.y) do
+                for x, y in wesnoth.current.map:iter_adjacent(u) do
                     local old_values = healing_locs:get(x, y) or {0, 0}
                     local best_heal = math.max(old_values[0] or heal_amount)
                     local best_cure = math.max(old_values[1] or cure)
-                    healing_locs:insert(u.x, u.y, {best_heal, best_cure})
+                    healing_locs:insert(x, y, {best_heal, best_cure})
                 end
             end
         end
@@ -134,23 +136,31 @@ function retreat_functions.get_healing_locations()
 end
 
 function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avoid_map)
-    -- Only retreat to safe locations
-    local enemies = AH.get_attackable_enemies()
-    local enemy_attack_map = BC.get_attack_map(enemies)
+    local retreat_enemy_weight = ai.aspects.retreat_enemy_weight
 
-    local healing_locs = retreat_functions.get_healing_locations()
+    local allies = AH.get_live_units {
+        { "filter_side", { {"allied_with", { side = wesnoth.current.side } } } }
+    }
+    local healing_locs = retreat_functions.get_healing_locations(allies)
 
-    local max_rating, best_loc, best_unit = - math.huge
+    -- These operations are somewhat expensive, don't do them if not necessary
+    local enemy_attack_map, ally_attack_map
+    if (retreat_enemy_weight ~= 0) then
+        local enemies = AH.get_attackable_enemies()
+        enemy_attack_map = BC.get_attack_map(enemies)
+        ally_attack_map = BC.get_attack_map(allies)
+    end
+
+    local max_rating, best_loc, best_unit = - math.huge, nil, nil
     for i,u in ipairs(healees) do
-        local possible_locations = wesnoth.find_reach(u)
-        -- TODO: avoid ally's villages (may be preferable to lower rating so they will
-        -- be used if unit is very injured)
+        wesnoth.interface.handle_user_interact()
+        local possible_locations = wesnoth.paths.find_reach(u)
         if (not regen_amounts[i]) then
             -- Unit cannot self heal, make the terrain do it for us if possible
             local location_subset = {}
             for j,loc in ipairs(possible_locations) do
                 if (not avoid_map) or (not avoid_map:get(loc[1], loc[2])) then
-                    local heal_amount = wesnoth.get_terrain_info(wesnoth.get_terrain(loc[1], loc[2])).healing or 0
+                    local heal_amount = wesnoth.terrain_types[wesnoth.current.map[loc]].healing or 0
                     if heal_amount == true then
                         -- handle deprecated syntax
                         -- TODO: remove this when removed from game
@@ -158,7 +168,23 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                     end
                     local curing = 0
                     if heal_amount > 0 then
-                        curing = 2
+                        -- Do not take villages from an allied side
+                        local owner = wesnoth.map.get_owner(loc)
+                        if owner
+                            and (owner ~= wesnoth.current.side)
+                            and (not wesnoth.sides.is_enemy(wesnoth.current.side, owner))
+                        then
+                            -- If allow_ally_villages is true, injured units are allowed to take ally villages.
+                            -- However, they should do so with lower priority, which we do by halving the heal and cure amounts.
+                            if ai.aspects.allow_ally_villages then
+                                heal_amount = heal_amount / 2
+                                curing = 1
+                            else
+                                heal_amount = 0
+                            end
+                        else
+                            curing = 2
+                        end
                     end
                     local healer_values = healing_locs:get(loc[1], loc[2]) or {0, 0}
                     heal_amount = math.max(heal_amount, healer_values[1])
@@ -183,12 +209,13 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
         if u.status.slowed then base_rating = base_rating + 4 end
         base_rating = base_rating * 1000
 
+        print_dbg(string.format('check retreat hexes for: %-20s  base_rating = %f8.1', u.id, base_rating))
+
         for j,loc in ipairs(possible_locations) do
             local unit_in_way = wesnoth.units.get(loc[1], loc[2])
             if (not AH.is_visible_unit(wesnoth.current.side, unit_in_way))
                 or ((unit_in_way.moves > 0) and (unit_in_way.side == wesnoth.current.side))
             then
-                local rating = base_rating
                 local heal_score = 0
                 if regen_amounts[i] then
                     heal_score = math.min(regen_amounts[i], u.max_hitpoints - u.hitpoints)
@@ -206,35 +233,58 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                     end
                 end
 
-                -- Huge penalty for each enemy that can reach location,
-                -- this is the single most important point (and non-linear)
-                local enemy_count = enemy_attack_map.units:get(loc[1], loc[2]) or 0
-                rating = rating - enemy_count * 100000
+                -- Figure out the enemy threat - this is also needed to assess whether rest healing is likely
+                local enemy_rating, enemy_count = 0, 0
+                if (retreat_enemy_weight ~= 0) then
+                    enemy_count = enemy_attack_map.units:get(loc[1], loc[2]) or 0
+                    local enemy_hp = enemy_attack_map.hitpoints:get(loc[1], loc[2]) or 0
+                    local ally_hp = ally_attack_map.hitpoints:get(loc[1], loc[2]) or 0
+                    local hp_diff = ally_hp - enemy_hp * math.abs(retreat_enemy_weight)
+                    if (hp_diff > 0) then hp_diff = 0 end
 
-                -- Penalty based on terrain defense for unit
-                rating = rating - (100 - u:defense_on(wesnoth.get_terrain(loc[1], loc[2])))/10
+                    -- The rating is mostly the HP difference, but we still want to
+                    -- avoid threatened hexes even if we have the advantage
+                    enemy_rating = hp_diff - enemy_count * math.abs(retreat_enemy_weight)
+                end
 
                 if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
                     if is_healthy or enemy_count == 0 then
                         -- Bonus if we can rest heal
                         heal_score = heal_score + wesnoth.game_config.rest_heal_amount
                     end
-                elseif unit_in_way then
-                    -- Penalty if a unit has to move out of the way
-                    -- (based on hp of moving unit)
-                    rating = rating + unit_in_way.hitpoints - unit_in_way.max_hitpoints
                 end
 
-                rating = rating + heal_score^2
+                -- Only consider healing locations, except when retreat_enemy_weight is negative
+                if (heal_score > 0) or (retreat_enemy_weight < 0) then
+                    local rating = base_rating + heal_score^2
+                    rating = rating + enemy_rating
 
-                if (rating > max_rating) then
-                    max_rating, best_loc, best_unit = rating, loc, u
+                    -- Penalty based on terrain defense for unit
+                    rating = rating - (100 - u:defense_on(wesnoth.current.map[loc]))/10
+
+                    -- Penalty if a unit has to move out of the way
+                    -- (based on hp of moving unit)
+                    if unit_in_way and ((loc[1] ~= u.x) or (loc[2] ~= u.y)) then
+                        rating = rating + unit_in_way.hitpoints - unit_in_way.max_hitpoints
+                    end
+
+                    print_dbg(string.format('  possible retreat hex: %3d,%-3d  rating = %9.1f  (heal_score = %5.1f,  enemy_rating = %9.1f)', loc[1], loc[2], rating, heal_score, enemy_rating))
+
+                    if (rating > max_rating) then
+                        max_rating, best_loc, best_unit = rating, loc, u
+                    end
                 end
             end
         end
     end
 
-    return best_unit, best_loc, enemy_attack_map.units:get(best_loc[1], best_loc[2]) or 0
+    local threat = 0
+    if best_unit then
+        threat = enemy_attack_map and enemy_attack_map.units:get(best_loc[1], best_loc[2]) or 0
+        print_dbg(string.format('found unit to retreat: %s --> %d,%d', best_unit.id, best_loc[1], best_loc[2]))
+    end
+
+    return best_unit, best_loc, threat
 end
 
 return retreat_functions

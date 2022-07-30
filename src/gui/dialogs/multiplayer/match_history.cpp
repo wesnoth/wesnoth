@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2021 by the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2021 - 2022
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -19,9 +20,7 @@
 #include "gui/widgets/window.hpp"
 #include "wesnothd_connection.hpp"
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 REGISTER_DIALOG(mp_match_history)
 
@@ -43,4 +42,3 @@ void mp_match_history::request_history(int offset)
 }
 
 } // namespace dialogs
-} // namespace gui2

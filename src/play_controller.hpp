@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2006 - 2018 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2006 - 2022
+	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+	Copyright (C) 2003 by David White <dave@whitevine.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -66,7 +67,7 @@ namespace pathfind {
 }
 
 namespace tooltips {
-	struct manager;
+	class manager;
 } // namespace tooltips
 
 namespace wb {
@@ -79,7 +80,10 @@ class game_state;
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
-	play_controller(const config& level, saved_game& state_of_game, bool skip_replay);
+	play_controller(const config& level,
+			saved_game& state_of_game,
+			bool skip_replay,
+			bool start_faded = false);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -345,6 +349,7 @@ protected:
 	bool enemies_visible() const;
 
 	void enter_textbox();
+	void textbox_move_vertically(bool up);
 	void tab();
 
 
@@ -362,7 +367,7 @@ protected:
 	saved_game& saved_game_;
 
 	//managers
-	std::unique_ptr<tooltips::manager> tooltips_manager_;
+	tooltips::manager tooltips_manager_;
 
 	//whiteboard manager
 	std::shared_ptr<wb::manager> whiteboard_manager_;
@@ -397,6 +402,9 @@ protected:
 	bool init_side_done_now_;
 	//the displayed location when we load a game.
 	map_location map_start_;
+	// Whether to start with the display faded to black
+	bool start_faded_;
+
 	const std::string& select_music(bool victory) const;
 
 	void reset_gamestate(const config& level, int replay_pos);
@@ -405,12 +413,17 @@ private:
 
 	void init(const config& level);
 
+	/**
+	 * This shows a warning dialog if either [scenario]next_scenario or any [endlevel]next_scenario would lead to an "Unknown Scenario" dialog.
+	 */
+	void check_next_scenario_is_known();
+
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_defeat_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
-	hotkey::scope_changer scope_;
+	const hotkey::scope_changer scope_;
 
 protected:
 	mutable bool ignore_replay_errors_;

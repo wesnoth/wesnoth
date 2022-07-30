@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2010 - 2018 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2010 - 2022
+	by Mark de Wever <koraq@xs4all.nl>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #pragma once
@@ -17,6 +18,7 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/core/event/dispatcher.hpp"
+#include "gui/core/top_level_drawable.hpp"
 
 namespace gui2
 {
@@ -31,11 +33,11 @@ namespace dialogs
 
 /**
  * @ingroup GUIWindowDefinitionWML
- * 
+ *
  * Clock to test the draw events.
- * 
+ *
  * This shows the dialog for keeping track of the drawing events related to the current time. (This window is used for debug purposes only.)
- * Key               |Type              |Mandatory|Description  
+ * Key               |Type              |Mandatory|Description
  * ------------------|------------------|---------|-----------
  * hour_percentage   | progress_bar     |no       |This shows the hours as a percentage, where 24 hours is 100%.
  * minute_percentage | progress_bar     |no       |This shows the minutes as a percentage, where 60 minutes is 100%.
@@ -45,7 +47,7 @@ namespace dialogs
  * second            | integer_selector |no       |This shows the seconds since the beginning of the current minute. The control should have a minimum_value of 0 and a maximum_value of 59.
  * clock             | control          |no       |A control which will have set three variables in its canvas:<ul><li>hour - the same value as the hour integer_selector.</li><li>minute - the same value as the minute integer_selector.</li><li>second - the same value as the second integer_selector.</li></ul>The control can then show the time in its own preferred format(s).
  */
-class debug_clock : public modeless_dialog
+class debug_clock : public modeless_dialog, public top_level_drawable
 {
 public:
 	debug_clock()
@@ -88,7 +90,7 @@ private:
 	styled_widget* clock_;
 
 	/** The signal patched in the drawing routine. */
-	event::signal_function signal_;
+	event::signal signal_;
 
 	/** Helper struct to keep track of the time. */
 	struct time
@@ -137,14 +139,11 @@ private:
 	 */
 	time time_;
 
-	/** Inherited from modal_dialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modal_dialog. */
 	virtual void pre_show(window& window) override;
 
-	/** Inherited from modal_dialog. */
-	virtual void post_show(CVideo& video);
+	virtual void post_show();
 
 	/**
 	 * The callback for the drawing routine.
@@ -156,6 +155,12 @@ private:
 	 *                            initially.)
 	 */
 	void update_time(const bool force);
+
+	// TODO: draw_manager - modeless dialog should be a window, fix
+	/* top_level_drawable interface */
+	virtual void layout() override;
+	virtual bool expose(const SDL_Rect& region) override;
+	virtual rect screen_location() override;
 };
 
 } // namespace dialogs

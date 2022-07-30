@@ -1,89 +1,104 @@
 /*
-   Copyright (C) 2013 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2013 - 2022
+	by Fabian Mueller <fabianmueller5@gmx.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/palette/tristate_button.hpp"
 
+#include "draw.hpp"
 #include "game_config.hpp"
 #include "picture.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "sound.hpp"
-#include "video.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 namespace gui {
 
-tristate_button::tristate_button(CVideo& video,
+tristate_button::tristate_button(
 		editor::tristate_palette* palette,
 		std::string button_image_name,
-		const bool auto_join) :
-				widget(video, auto_join),
-				baseImage_(nullptr), touchedBaseImage_(nullptr), activeBaseImage_(nullptr),
-				itemImage_(nullptr),
-				pressedDownImage_(nullptr), pressedUpImage_(nullptr), pressedBothImage_(nullptr),
-				pressedBothActiveImage_(nullptr), pressedDownActiveImage_(nullptr), pressedUpActiveImage_(nullptr),
-				touchedDownImage_(nullptr), touchedUpImage_(nullptr), touchedBothImage_(nullptr),
-				textRect_(),
-				state_(NORMAL), pressed_(false),
-				base_height_(0), base_width_(0),
-				palette_(palette), item_id_()
+		const bool auto_join)
+	: widget(auto_join)
+	, baseImage_()
+	, touchedBaseImage_()
+	, activeBaseImage_()
+	, itemBaseImage_()
+	, itemOverlayImage_()
+	, pressedDownImage_()
+	, pressedUpImage_()
+	, pressedBothImage_()
+	, pressedBothActiveImage_()
+	, pressedDownActiveImage_()
+	, pressedUpActiveImage_()
+	, touchedDownImage_()
+	, touchedUpImage_()
+	, touchedBothImage_()
+	, textRect_()
+	, state_(NORMAL)
+	, pressed_(false)
+	, base_height_(0)
+	, base_width_(0)
+	, palette_(palette)
+	, item_id_()
 {
+	// TODO: highdpi - there seem to be higher-quality 74-px versions of these available, but as that's not actually an integer multiple of 38... this is not a straight swap
 
 	if (button_image_name.empty()) {
 		button_image_name = "buttons/button_selectable/button_selectable_38_";
 	}
 
 	baseImage_ =
-			image::get_image(button_image_name + "base.png");
+		image::get_texture(button_image_name + "base.png");
 	activeBaseImage_ =
-			image::get_image(button_image_name + "base-active.png");
+		image::get_texture(button_image_name + "base-active.png");
 	touchedBaseImage_ =
-			image::get_image(button_image_name + "base-touched.png");
+		image::get_texture(button_image_name + "base-touched.png");
 
 	touchedBothImage_ =
-			image::get_image(button_image_name + "border-touched-both.png");
+		image::get_texture(button_image_name + "border-touched-both.png");
 	touchedUpImage_ =
-			image::get_image(button_image_name + "border-touched-up.png");
+		image::get_texture(button_image_name + "border-touched-up.png");
 	touchedDownImage_ =
-			image::get_image(button_image_name + "border-touched-down.png");
+		image::get_texture(button_image_name + "border-touched-down.png");
 
 	pressedUpImage_ =
-			image::get_image(button_image_name + "border-pressed-up.png");
+		image::get_texture(button_image_name + "border-pressed-up.png");
 	pressedDownImage_ =
-			image::get_image(button_image_name + "border-pressed-down.png");
+		image::get_texture(button_image_name + "border-pressed-down.png");
 	pressedBothImage_ =
-			image::get_image(button_image_name + "border-pressed-both.png");
+		image::get_texture(button_image_name + "border-pressed-both.png");
 
 	pressedUpActiveImage_ =
-			image::get_image(button_image_name + "border-active-pressed-up.png");
+		image::get_texture(button_image_name + "border-active-pressed-up.png");
 	pressedDownActiveImage_ =
-			image::get_image(button_image_name + "border-active-pressed-down.png");
+		image::get_texture(button_image_name + "border-active-pressed-down.png");
 	pressedBothActiveImage_ =
-			image::get_image(button_image_name + "border-active-pressed-both.png");
+		image::get_texture(button_image_name + "border-active-pressed-both.png");
 
 	//TODO
 //	if (button_image.null()) {
-//		ERR_DP<< "error initializing button!" << std::endl;
+//		ERR_DP<< "error initializing button!";
 //		throw error();
 //	}
 
-	base_height_ = baseImage_->h;
-	base_width_  = baseImage_->w;
+	// TODO: highdpi - set this some better way
+	base_height_ = baseImage_.h();
+	base_width_  = baseImage_.w();
 
 }
 
@@ -153,12 +168,10 @@ void tristate_button::enable(bool new_val) {
 	}
 }
 
-void tristate_button::draw_contents() {
-
-	surface image(nullptr);
-
-	surface overlay(nullptr);
-	surface base = baseImage_;
+void tristate_button::draw_contents()
+{
+	texture overlay;
+	texture base = baseImage_;
 
 	switch (state_) {
 
@@ -211,31 +224,27 @@ void tristate_button::draw_contents() {
 		break;
 	}
 
-	image = base;
-
+	// Draw the button base.
 	const SDL_Rect& loc = location();
+	draw::blit(base, loc);
 
-	surface scaled_item = scale_surface(itemImage_, 36, 36);
-
-	surface nbase = base.clone();
-
-	//TODO avoid magic numbers
-	SDL_Rect r {1, 1, 0, 0};
-	sdl_blit(scaled_item, nullptr, nbase, &r);
-
-	if (overlay) {
-		sdl_blit(overlay, nullptr, nbase, nullptr);
+	// Draw the item.
+	// TODO: don't hardcode an implicit reliance on 38 pixel buttons
+	SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
+	draw::blit(itemBaseImage_, magic);
+	if (itemOverlayImage_) {
+		draw::blit(itemOverlayImage_, magic);
 	}
 
-	bg_restore();
-
-	image = nbase;
-	video().blit_surface(loc.x, loc.y, image);
+	// Draw the button overlay, if any.
+	if (overlay) {
+		draw::blit(overlay, loc);
+	}
 }
 
 //TODO move to widget
 bool tristate_button::hit(int x, int y) const {
-	return sdl::point_in_rect(x, y, location());
+	return location().contains(x, y);
 }
 
 void tristate_button::mouse_motion(const SDL_MouseMotionEvent& event) {

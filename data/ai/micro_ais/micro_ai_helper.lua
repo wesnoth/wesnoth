@@ -1,6 +1,74 @@
 local T = wml.tag
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
+local showed_deprecation_message = {}
+
+local function show_deprecation_message(ai_type)
+    if (not showed_deprecation_message[ai_type]) then
+        wesnoth.deprecated_message('[micro_ai] tag (' .. ai_type .. '): The old syntax for required and optional parameters when creating a Micro AIs', 3, '1.19', "instead of { 'parameter' } it is now { parameter = 'parameter_type' }. See data/ai/micro_ai/mai-defs/ for examples." )
+        showed_deprecation_message[ai_type] = true
+    end
+end
+
+local function is_number(value, check_int, ai_type, name)
+    -- Allow any number for 'float' type.
+    -- Allow anything that has an integer representation for 'integer', but
+    -- issue warning if it is given in 'float' notation.
+    local number = tonumber(value)
+    if (not number) then
+        return false
+    elseif check_int then
+        if (number ~= math.floor(number)) then
+            return false
+        elseif (math.type(number) ~= 'integer') then
+            str = "[micro_ai] tag (" .. ai_type .. ") parameter '" .. name .. "' must be an integer. It has an integer representation, but is provided in floating-point format."
+            warn(str)
+            std_print(str .. ' (see Lua console for stack trace)')
+        end
+    end
+
+    return true
+end
+
+local function check_key_type(k_name, k_value, k_type, ai_type)
+    if k_value then
+        local is_wrong_type = false
+        if (k_type == 'float') then
+            is_wrong_type = not is_number(k_value, false, ai_type, k_name)
+        elseif (k_type == 'integer') then
+            is_wrong_type = not is_number(k_value, true, ai_type, k_name)
+        elseif (k_type == 'float_list') then
+            local str = tostring(k_value)
+            for _,s in ipairs(str:split()) do
+                if (not is_number(s, false, ai_type, k_name)) then
+                    is_wrong_type = true
+                    break
+                end
+            end
+        elseif (k_type == 'integer_list') then
+            local str = tostring(k_value)
+            for _,s in ipairs(str:split()) do
+                if (not is_number(s, true, ai_type, k_name)) then
+                    is_wrong_type = true
+                    break
+                end
+            end
+        elseif (k_type == 'boolean') then
+            if (type(k_value) ~= k_type) then
+                is_wrong_type = true
+            end
+        -- Anything can be a string
+        elseif (k_type ~= 'string') then
+            -- This is just here to make sure we're not forgettign something
+            wml.error("[micro_ai] tag (" .. ai_type .. ") parameter '" .. k_name .. "' unknown type " .. k_type)
+        end
+
+        if is_wrong_type then
+            wml.error("[micro_ai] tag (" .. ai_type .. ") parameter '" .. k_name .. "' must be of type " .. k_type)
+        end
+    end
+end
+
 local micro_ai_helper = {}
 
 function micro_ai_helper.add_CAs(side, ca_id_core, CA_parms, CA_cfg)
@@ -164,32 +232,125 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     local CA_cfg = {}
 
     -- Required keys
-    for _,v in pairs(required_keys) do
-        if v:match('%[[a-zA-Z0-9_]+%]')  then
-            v = v:sub(2,-2)
-            if not wml.get_child(cfg, v) then
-                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. v .. "]")
+    for k_name,k_type in pairs(required_keys) do
+        if (type(k_name) == 'number') then
+            -- Old syntax is supported for Wesnoth 1.17/1.18
+			if k_type:match('%[[a-zA-Z0-9_]+%]')  then
+				k_type = k_type:sub(2,-2)
+				if not wml.get_child(cfg, k_type) then
+					wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. k_type .. "]")
+				end
+				for child in wml.child_range(cfg, k_type) do
+					table.insert(CA_cfg, T[k_type](child))
+				end
+			else
+				if not cfg[k_type] then
+					wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. k_type .."=")
+				end
+				CA_cfg[k_type] = cfg[k_type]
+			end
+			show_deprecation_message(cfg.ai_type)
+        elseif (k_type == 'tag') then
+            -- Check that this is not a scalar parameter
+            if cfg[k_name] then
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") parameter '[" .. k_name .. "]' must be a WML tag")
             end
-            for child in wml.child_range(cfg, v) do
-                table.insert(CA_cfg, T[v](child))
+            if (not wml.get_child(cfg, k_name)) then
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. k_name .. "]")
+            end
+            for child in wml.child_range(cfg, k_name) do
+                table.insert(CA_cfg, T[k_name](child))
             end
         else
-            if not cfg[v] then
-                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v .."=")
+            check_key_type(k_name, cfg[k_name], k_type, cfg.ai_type)
+            if not cfg[k_name] then
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. k_name .."=")
             end
-            CA_cfg[v] = cfg[v]
+            CA_cfg[k_name] = cfg[k_name]
         end
     end
 
     -- Optional keys
-    for _,v in pairs(optional_keys) do
-        if v:match('%[[a-zA-Z0-9_]+%]')  then
-            v = v:sub(2,-2)
-            for child in wml.child_range(cfg, v) do
-                table.insert(CA_cfg, T[v](child))
+    for k_name,k_type in pairs(optional_keys) do
+        if (type(k_name) == 'number') then
+            -- Old syntax is supported for Wesnoth 1.17/1.18
+			if k_type:match('%[[a-zA-Z0-9_]+%]')  then
+				k_type = k_type:sub(2,-2)
+				for child in wml.child_range(cfg, k_type) do
+					table.insert(CA_cfg, T[k_type](child))
+				end
+			else
+				CA_cfg[k_type] = cfg[k_type]
+			end
+			show_deprecation_message(cfg.ai_type)
+        elseif (k_type == 'tag') then
+            -- Check that this is not a scalar parameter
+            if cfg[k_name] then
+                wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") parameter '[" .. k_name .. "]' must be a WML tag")
+            end
+            for child in wml.child_range(cfg, k_name) do
+                table.insert(CA_cfg, T[k_name](child))
             end
         else
-            CA_cfg[v] = cfg[v]
+            check_key_type(k_name, cfg[k_name], k_type, cfg.ai_type)
+            CA_cfg[k_name] = cfg[k_name]
+        end
+    end
+
+    -- Check whether there are invalid keys in the [micro_ai] tag
+    for k in pairs(cfg) do
+        if (not showed_deprecation_message[cfg.ai_type]) -- otherwise this produces false positives
+           and  (k ~= 'side') and (k ~= 'ai_type') and (k ~= 'action')
+           and (k ~= 'ca_id') and (k ~= 'ca_score') and (type(k) ~= 'number')
+        then
+            local is_invalid = true
+            for k_name in pairs(required_keys) do
+                if (k == k_name) then
+                    is_invalid = false
+                    break
+                end
+            end
+            if is_invalid then
+                for k_name in pairs(optional_keys) do
+                    if (k == k_name) then
+                        is_invalid = false
+                        break
+                    end
+                end
+            end
+            if is_invalid then
+                local str = "[micro_ai] tag (" .. cfg.ai_type .. ") contains invalid parameter: " .. k
+                warn(str)
+                std_print(str .. ' (see Lua console for stack trace)')
+            end
+        end
+    end
+
+    -- Check whether there are invalid tags in the [micro_ai] tag
+    for _,t in ipairs(cfg) do
+        -- [filter] is always added to [micro_ai] tags inside a unit's [ai] tag,
+        -- whether the specific MAI supports it or not
+        if (not showed_deprecation_message[cfg.ai_type]) and (t[1] ~= 'filter') then
+            local is_invalid = true
+            for k_name in pairs(required_keys) do
+                if (t[1] == k_name) then
+                    is_invalid = false
+                    break
+                end
+            end
+            if is_invalid then
+                for k_name in pairs(optional_keys) do
+                    if (t[1] == k_name) then
+                        is_invalid = false
+                        break
+                    end
+                end
+            end
+            if is_invalid then
+                str = "[micro_ai] tag (" .. cfg.ai_type .. ") contains invalid parameter: [" .. t[1] .. "]"
+                warn(str)
+                std_print(str .. ' (see Lua console for stack trace)')
+            end
         end
     end
 

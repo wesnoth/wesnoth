@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -188,6 +189,9 @@ static register_aspect_factory< composite_aspect< unit_advancements_aspect >>
 static register_aspect_factory< composite_aspect<double>>
 	aggression__composite_aspect_factory("aggression*composite_aspect");
 
+static register_aspect_factory< composite_aspect<bool>>
+	allow_ally_villages__composite_aspect_factory("allow_ally_villages*composite_aspect");
+
 static register_aspect_factory< composite_aspect< attacks_vector >>
 	attacks__composite_aspect_factory("attacks*composite_aspect");
 
@@ -237,6 +241,12 @@ static register_aspect_factory< composite_aspect<config>>
 	recruitment_save_gold__composite_aspect_factory("recruitment_save_gold*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double>>
+	retreat_enemy_weight__composite_aspect_factory("retreat_enemy_weight*composite_aspect");
+
+static register_aspect_factory< composite_aspect<double>>
+	retreat_factor__composite_aspect_factory("retreat_factor*composite_aspect");
+
+static register_aspect_factory< composite_aspect<double>>
 	scout_village_targeting__composite_aspect_factory("scout_village_targeting*composite_aspect");
 
 static register_aspect_factory< composite_aspect<bool>>
@@ -258,6 +268,9 @@ static register_aspect_factory< standard_aspect< unit_advancements_aspect >>
 
 static register_aspect_factory< standard_aspect<double>>
 	aggression__standard_aspect_factory("aggression*standard_aspect");
+
+static register_aspect_factory< standard_aspect<bool>>
+	allow_ally_villages__standard_aspect_factory("allow_ally_villages*standard_aspect");
 
 static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory("attacks*ai_default_rca::aspect_attacks");
@@ -308,6 +321,12 @@ static register_aspect_factory< standard_aspect<config>>
 	recruitment_save_gold__standard_aspect_factory("recruitment_save_gold*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double>>
+	retreat_enemy_weight__standard_aspect_factory("retreat_enemy_weight*standard_aspect");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_factor__standard_aspect_factory("retreat_factor*standard_aspect");
+
+static register_aspect_factory< standard_aspect<double>>
 	scout_village_targeting__standard_aspect_factory("scout_village_targeting*standard_aspect");
 
 static register_aspect_factory< standard_aspect<bool>>
@@ -333,6 +352,9 @@ static register_aspect_factory< standard_aspect< unit_advancements_aspect >>
 
 static register_aspect_factory< standard_aspect<double>>
 	aggression__standard_aspect_factory2("aggression*");
+
+static register_aspect_factory< standard_aspect<bool>>
+	allow_ally_villages__standard_aspect_factory2("allow_ally_villages*");
 
 static register_aspect_factory< ai_default_rca::aspect_attacks >
 	attacks__testing_ai_default_aspect_attacks_factory2("attacks*");
@@ -383,6 +405,12 @@ static register_aspect_factory< standard_aspect<config>>
 	recruitment_save_gold__standard_aspect_factory2("recruitment_save_gold*");
 
 static register_aspect_factory< standard_aspect<double>>
+	retreat_enemy_weight__standard_aspect_factory2("retreat_enemy_weight*");
+
+static register_aspect_factory< standard_aspect<double>>
+	retreat_factor__standard_aspect_factory2("retreat_factor*");
+
+static register_aspect_factory< standard_aspect<double>>
 	scout_village_targeting__standard_aspect_factory2("scout_village_targeting*");
 
 static register_aspect_factory< standard_aspect<bool>>
@@ -404,6 +432,9 @@ static register_lua_aspect_factory< lua_aspect< unit_advancements_aspect >>
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	aggression__lua_aspect_factory("aggression*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<bool>>
+	allow_ally_villages__lua_aspect_factory("allow_ally_villages*lua_aspect");
 
 static register_lua_aspect_factory< aspect_attacks_lua >
 	attacks__lua_aspect_factory("attacks*lua_aspect");
@@ -434,6 +465,12 @@ static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<
 
 static register_lua_aspect_factory< lua_aspect<utils::variant<bool, std::vector<std::string>>>>
 	passive_leader_shares_keep__lua_aspect_factory("passive_leader_shares_keep*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double>>
+	retreat_enemy_weight__lua_aspect_factory("retreat_enemy_weight*lua_aspect");
+
+static register_lua_aspect_factory< lua_aspect<double>>
+	retreat_factor__lua_aspect_factory("retreat_factor*lua_aspect");
 
 static register_lua_aspect_factory< lua_aspect<double>>
 	scout_village_targeting__lua_aspect_factory("scout_village_targeting*lua_aspect");

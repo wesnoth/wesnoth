@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2014 - 2018 by Chris Beck <render787@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2014 - 2022
+	by Chris Beck <render787@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "scripting/mapgen_lua_kernel.hpp"
@@ -22,13 +23,14 @@
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_terrainfilter.hpp"
 #include "scripting/lua_terrainmap.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 #include <ostream>
 #include <string>
 #include <functional>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 #include "scripting/push_check.hpp"
 #include "generators/default_map_generator_job.hpp"
 
@@ -49,7 +51,7 @@ int dispatch(lua_State *L) {
 }
 
 /**
- * Returns a random numer, same interface as math.random.
+ * Returns a random number, same interface as math.random.
  */
 static int intf_random(lua_State *L)
 {
@@ -129,12 +131,17 @@ static int intf_default_generate_height_map(lua_State *L)
 
 	config cfg = luaW_checkconfig(L, 3);
 
+	if(!cfg.has_attribute("location_set")) {
+		deprecated_message("generate_height_map(..., {location_set=false})", DEP_LEVEL::PREEMPTIVE, "1.17", "The default value of this option will be changed to true in 1.17.");
+	}
+
 	int iterations = cfg["iterations"].to_int(1);
 	int hill_size = cfg["hill_size"].to_int(1);
 	int island_size = cfg["island_size"].to_int(width/2);
 	int center_x = cfg["center_x"].to_int(width/2);
 	int center_y = cfg["center_y"].to_int(height/2);
 	bool flip_layout = cfg["flip_format"].to_bool();
+	bool as_locset = cfg["location_set"].to_bool(false);
 	uint32_t seed = cfg["seed"].to_int(0);
 
 	if(!cfg.has_attribute("seed")) {
@@ -145,46 +152,73 @@ static int intf_default_generate_height_map(lua_State *L)
 	lua_createtable (L, width * height, 0);
 	assert(int(res.size()) == width);
 	assert((width == 0 || int(res[0].size()) == height));
+	std::hash<map_location> loc_hash;
 	for(int x = 0; x != width; ++x) {
 		for(int y = 0; y != height; ++y) {
 			int h = res[x][y];
-			int i = flip_layout ? (y + x * height) : (x + y * width);
 			lua_pushinteger (L, h);
-			lua_rawseti(L, -2, i);
+			if(as_locset) {
+				map_location loc(flip_layout ? y : x, flip_layout ? x : y, wml_loc());
+				lua_rawseti(L, -2, loc_hash(loc));
+			} else {
+				int i = flip_layout ? (y + x * height) : (x + y * width);
+				lua_rawseti(L, -2, i);
+			}
 		}
 	}
 	return 1;
 }
 /**
  * Finds a path between two locations.
- * - Args 1,2: source location.
- * - Args 3,4: destination.
- * - Arg 5: cost function
- * - Args 6,7 size of map.
- * - Arg 8 include border.
+ * - Args 1: source location.
+ * - Args 2: destination.
+ * - Arg 3: cost function
+ * - Args 4,5 size of map.
+ * - Arg 6 include border.
+ * OR
+ * - Arg 3: options table containing calculate, width, height, (optional) include_borders
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
 static int intf_find_path(lua_State *L)
 {
 	int arg = 1;
-	map_location src, dst;
-	src.set_wml_x(luaL_checkinteger(L, 1));
-	src.set_wml_y(luaL_checkinteger(L, 2));
-	dst.set_wml_x(luaL_checkinteger(L, 3));
-	dst.set_wml_y(luaL_checkinteger(L, 4));
+	map_location src = luaW_checklocation(L, 1), dst = luaW_checklocation(L, 2);
 	if(lua_isfunction(L, arg)) {
-		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 5));
-		return luaL_argerror(L, 5, msg);
+		const char *msg = lua_pushfstring(L, "%s expected, got %s", lua_typename(L, LUA_TFUNCTION), luaL_typename(L, 3));
+		return luaL_argerror(L, 3, msg);
 	}
-	lua_pathfind_cost_calculator calc(L, 5);
-	int width = luaL_checkinteger(L, 6);
-	int height = luaL_checkinteger(L, 7);
+	std::optional<lua_pathfind_cost_calculator> calc;
+	int width, height;
 	bool border = false;
-	if(lua_isboolean(L, 8)) {
-		border = luaW_toboolean(L, 8);
+	if(lua_istable(L, 3)) {
+		if(luaW_tableget(L, 3, "calculate")) {
+			calc = lua_pathfind_cost_calculator(L, lua_gettop(L));
+		} else {
+			return luaL_argerror(L, 3, "missing key: calculate");
+		}
+		if(!luaW_tableget(L, 3, "width")) {
+			width = luaL_checkinteger(L, -1);
+		} else {
+			return luaL_argerror(L, 3, "missing key: width");
+		}
+		if(!luaW_tableget(L, 3, "height")) {
+			height = luaL_checkinteger(L, -1);
+		} else {
+			return luaL_argerror(L, 3, "missing key: height");
+		}
+		if(!luaW_tableget(L, 3, "include_borders")) {
+			border = luaW_toboolean(L, -1);
+		}
+	} else {
+		calc = lua_pathfind_cost_calculator(L, 3);
+		width = luaL_checkinteger(L, 4);
+		height = luaL_checkinteger(L, 5);
+		if(lua_isboolean(L, 6)) {
+			border = luaW_toboolean(L, 6);
+		}
 	}
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, calc, width, height, nullptr, border);
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, *calc, width, height, nullptr, border);
 
 	int nb = res.steps.size();
 	lua_createtable(L, nb, 0);
@@ -211,31 +245,55 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 {
 	lua_State *L = mState;
 
-	// Unset wesnoth.random. This guarantees that the mapgen_lua_kernel version
-	// of wesnoth.random overrides the lua_kernel_base version.
-	lua_getglobal(L, "wesnoth");
-	lua_pushnil(L);
+	// Overwrite mathx.random. This guarantees that the mapgen_lua_kernel version
+	// of mathx.random overrides the lua_kernel_base version.
+	lua_getglobal(L, "mathx");
+	lua_pushcfunction(L, &intf_random);
 	lua_setfield(L, -2, "random");
 
 	lua_settop(L, 0);
 
-	static luaL_Reg const callbacks[] {
-		{ "find_path",           &intf_find_path           },
-		{ "random",              &intf_random              },
-		{ "create_filter",       &intf_terainfilter_create },
-		{ "create_map",          &intf_terainmap_create    },
-		{ "default_generate_height_map", &intf_default_generate_height_map },
-		{ "generate_default_map",        &intf_default_generate            },
-		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable> },
+	static luaL_Reg const map_callbacks[] {
+		// Map methods
+		{ "find",                &intf_mg_get_locations            },
+		{ "find_in_radius",      &intf_mg_get_tiles_radius         },
+		// Static functions
+		{ "filter",              &intf_terrainfilter_create        },
+		{ "create",              &intf_terrainmap_create           },
+		{ "generate_height_map", &intf_default_generate_height_map },
+		{ "generate",            &intf_default_generate            },
 		{ nullptr, nullptr }
 	};
 
-	lua_getglobal(L, "wesnoth");
+	luaW_getglobal(L, "wesnoth", "map");
 	assert(lua_istable(L,-1));
-	luaL_setfuncs(L, callbacks, 0);
+	luaL_setfuncs(L, map_callbacks, 0);
 	lua_pop(L, 1);
 	assert(lua_gettop(L) == 0);
 
+	// Create the paths module
+	cmd_log_ << "Adding paths module...\n";
+	static luaL_Reg const path_callbacks[] {
+		{ "find_path",                 &intf_find_path                          },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, path_callbacks, 0);
+	lua_setfield(L, -2, "paths");
+	lua_pop(L, 1);
+
+	// Add functions to the WML module
+	lua_getglobal(L, "wml");
+	static luaL_Reg const wml_callbacks[] {
+		{"tovconfig", &lua_common::intf_tovconfig},
+		// These aren't actually part of the API - they're used internally by the variable metatable.
+		{ "get_variable", &dispatch<&mapgen_lua_kernel::intf_get_variable>},
+		{ "get_all_vars", &dispatch<&mapgen_lua_kernel::intf_get_all_vars>},
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, wml_callbacks, 0);
+	lua_pop(L, 1);
 
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 	cmd_log_ << lua_terrainfilter::register_metatables(L);
@@ -255,12 +313,19 @@ void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
 {
-	static const config empty_cfg;
-
 	char const *m = luaL_checkstring(L, 1);
-	variable_access_const v(m, vars_ ? *vars_ : empty_cfg);
-	return luaW_pushvariable(L, v) ? 1 : 0;
+	if(vars_) {
+		variable_access_const v(m, *vars_);
+		return luaW_pushvariable(L, v) ? 1 : 0;
+	}
+	return 0;
 }
+
+int mapgen_lua_kernel::intf_get_all_vars(lua_State *L) {
+	luaW_pushconfig(L, vars_ ? *vars_ : config());
+	return 1;
+}
+
 std::string mapgen_lua_kernel::create_map(const char * prog, const config & generator, std::optional<uint32_t> seed) // throws game::lua_error
 {
 	random_seed_ = seed;

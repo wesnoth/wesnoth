@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2008 - 2018 by Fabian Mueller <fabianmueller5@gmx.de>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2008 - 2022
+	by Fabian Mueller <fabianmueller5@gmx.de>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #include "editor/action/mouse/mouse_action_village.hpp"
@@ -39,22 +40,15 @@ std::unique_ptr<editor_action> mouse_action_village::up_right(editor_display& di
 
 void mouse_action_village::set_mouse_overlay(editor_display& disp)
 {
-	surface image60 = image::get_image("icons/action/editor-tool-village_60.png");
-
-	//TODO avoid hardcoded hex field size
-	surface image(72,72);
-
-	SDL_Rect r {6, 6, 0, 0};
-	sdl_blit(image60, nullptr, image, &r);
-
-	uint8_t alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(
+		image::get_texture(
+			// center 60px icon on blank hex template
+			image::locator(
+				"misc/blank-hex.png",
+				"~BLIT(icons/action/editor-tool-village_60.png,6,6)"
+			)
+		)
+	);
 }
 
 

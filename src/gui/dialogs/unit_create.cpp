@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Iris Morelle <shadowm2006@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Iris Morelle <shadowm2006@gmail.com>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
@@ -41,9 +42,7 @@ static std::string last_chosen_type_id = "";
 static std::string last_variation = "";
 static unit_race::GENDER last_gender = unit_race::MALE;
 
-namespace gui2
-{
-namespace dialogs
+namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(unit_create)
@@ -54,7 +53,6 @@ unit_create::unit_create()
 	, variation_(last_variation)
 	, last_words_()
 {
-	set_restore(true);
 }
 
 void unit_create::pre_show(window& window)
@@ -70,7 +68,7 @@ void unit_create::pre_show(window& window)
 	gender_toggle.set_member_states(last_gender);
 
 	gender_toggle.set_callback_on_value_change(
-		std::bind(&unit_create::gender_toggle_callback, this));
+		std::bind(&unit_create::gender_toggle_callback, this, std::placeholders::_2));
 
 	menu_button& var_box = find_widget<menu_button>(&window, "variation_box", false);
 
@@ -98,8 +96,8 @@ void unit_create::pre_show(window& window)
 
 		units_.push_back(&i.second);
 
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		column["label"] = units_.back()->race()->plural_name();
 		row_data.emplace("race", column);
@@ -127,7 +125,7 @@ void unit_create::pre_show(window& window)
 	list.register_translatable_sorting_option(1, [this](const int i) { return (*units_[i]).type_name().str(); });
 
 	// Select the first entry on sort if no previous selection was provided.
-	list.set_active_sorting_option({0, preferences::SORT_ORDER::ASCENDING}, choice_.empty());
+	list.set_active_sorting_option({0, sort_order::type::ascending}, choice_.empty());
 
 	list_item_clicked();
 }
@@ -148,7 +146,7 @@ void unit_create::post_show(window& window)
 	} else if(static_cast<std::size_t>(selected_row) >= units_.size()) {
 		// FIXME: maybe assert?
 		ERR_GUI_G << "unit create dialog has more list items than known unit "
-					 "types; not good\n";
+		             "types; not good";
 		return;
 	}
 
@@ -282,9 +280,9 @@ void unit_create::filter_text_changed(const std::string& text)
 	list.set_row_shown(show_items);
 }
 
-void unit_create::gender_toggle_callback()
+void unit_create::gender_toggle_callback(const unit_race::GENDER val)
 {
-	gender_ = gender_toggle.get_active_member_value();
+	gender_ = val;
 
 	update_displayed_type();
 }
@@ -299,4 +297,3 @@ void unit_create::variation_menu_callback()
 }
 
 } // namespace dialogs
-} // namespace gui2

@@ -1,15 +1,16 @@
 /*
-   Copyright (C) 2009 - 2018 by Yurii Chernyi <terraninfo@terraninfo.net>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org/
+	Copyright (C) 2009 - 2022
+	by Yurii Chernyi <terraninfo@terraninfo.net>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -36,10 +37,10 @@ aspect::aspect(readonly_context &context, const config &cfg, const std::string &
 	invalidate_on_gamestate_change_(cfg["invalidate_on_gamestate_change"].to_bool()),
 	engine_(cfg["engine"]), name_(cfg["name"]), id_(id)
 	{
-		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
+		DBG_AI_ASPECT << "creating new aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]";
 		init_readonly_context_proxy(context);
 		redeploy(cfg,id);
-		DBG_AI_ASPECT << "aspect has time_of_day=["<<time_of_day_<<"], turns=["<<turns_<<"]" << std::endl;
+		DBG_AI_ASPECT << "aspect has time_of_day=["<<time_of_day_<<"], turns=["<<turns_<<"]";
 	}
 
 aspect::~aspect()
@@ -89,7 +90,7 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	engine_ = cfg["engine"].str();
 	name_ = cfg["name"].str();
 	id_ = cfg["id"].str();
-	DBG_AI_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]"<< std::endl;
+	DBG_AI_ASPECT << "redeploying aspect: engine=["<<engine_<<"], name=["<<name_<<"], id=["<<id_<<"]";
 	if (invalidate_on_turn_start_) {
 		manager.add_turn_started_observer(this);
 	}
@@ -159,7 +160,7 @@ std::string lua_aspect_visitor::quote_string(const std::string& s)
 bool aspect_factory::is_duplicate(const std::string& name)
 {
 	if (get_list().find(name) != get_list().end()) {
-		ERR_AI_ASPECT << "Error: Attempt to double-register aspect " << name << std::endl;
+		ERR_AI_ASPECT << "Error: Attempt to double-register aspect " << name;
 		return true;
 	}
 	return false;

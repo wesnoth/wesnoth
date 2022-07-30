@@ -1,16 +1,17 @@
 /*
-   Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
-   Copyright (C) 2005 - 2018 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Part of the Battle for Wesnoth Project https://www.wesnoth.org
+	Copyright (C) 2004 - 2022
+	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+	Copyright (C) 2004 by Philippe Plantier <ayin@anathas.org>
+	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
-   This program is free software; you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
-   (at your option) any later version.
-   This program is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation; either version 2 of the License, or
+	(at your option) any later version.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY.
 
-   See the COPYING file for more details.
+	See the COPYING file for more details.
 */
 
 /**
@@ -42,9 +43,6 @@ const char UNTRANSLATABLE_PART = 0x02;
 const char TEXTDOMAIN_SEPARATOR = 0x03;
 const char ID_TRANSLATABLE_PART = 0x04;
 const char PLURAL_PART = 0x05;
-
-std::vector<std::string> id_to_textdomain;
-std::map<std::string, unsigned int> textdomain_to_id;
 }
 
 std::size_t t_string_base::hash_value() const
@@ -86,7 +84,7 @@ void t_string_base::walker::update()
 		std::string::size_type textdomain_end = string_.find(TEXTDOMAIN_SEPARATOR, begin_ + 1);
 
 		if(textdomain_end == std::string::npos || textdomain_end >= string_.size() - 1) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -105,7 +103,7 @@ void t_string_base::walker::update()
 	case ID_TRANSLATABLE_PART:
 		// Format: [ID_TRANSLATABLE_PART][2-byte textdomain ID]msgid[...]
 		if(begin_ + 3 >= string_.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -117,7 +115,7 @@ void t_string_base::walker::update()
 
 		id = static_cast<unsigned char>(string_[begin_ + 1]) + static_cast<unsigned char>(string_[begin_ + 2]) * 256;
 		if(id >= id_to_textdomain.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -135,7 +133,7 @@ void t_string_base::walker::update()
 		}
 
 		if(end_ <= begin_ + 1) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -152,7 +150,7 @@ void t_string_base::walker::update()
 		}
 
 		if(string_[begin_] == PLURAL_PART) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -170,14 +168,14 @@ void t_string_base::walker::update()
 	if(translatable_ && string_[end_] == PLURAL_PART) {
 		// Format: [PLURAL_PART][4-byte count]msgid_plural[...]
 		if(end_ + 5 >= string_.size()) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
 
 		std::string::size_type real_end = string_.find_first_of(mark, end_ + 6);
 		if(real_end < string_.size() && string_[real_end] == PLURAL_PART) {
-			ERR_CF << "Error: invalid string: " << string_ << std::endl;
+			ERR_CF << "Error: invalid string: " << string_;
 			begin_ = string_.size();
 			return;
 		}
@@ -645,7 +643,7 @@ t_string& t_string::operator=(const char* o)
 
 void t_string::add_textdomain(const std::string& name, const std::string& path)
 {
-	LOG_CF << "Binding textdomain " << name << " to path " << path << "\n";
+	LOG_CF << "Binding textdomain " << name << " to path " << path;
 
 	// Register and (re-)bind this textdomain
 	translation::bind_textdomain(name.c_str(), path.c_str(), "UTF-8");

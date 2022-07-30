@@ -12,24 +12,41 @@
 -- therefore need to be in WML table format. This could be extended to allow
 -- sub-tables in WML format, but there is no need for that at this time.
 
+function wesnoth.custom_synced_commands.MAI_set_unit_variable(cfg)
+	local unit = wesnoth.units.find_on_map { id = cfg.id }[1]
+	local value = wml.get_child(cfg, "value")
+	unit.variables['micro_ai_' .. cfg.ai_id] = value
+end
+
+local function MAI_set_unit_variable(unit, ai_id, value)
+    -- This is just a wrapper function for the synced command above, so that
+    -- we don't need to duplicate the code for creating the cfg WML table.
+    local cfg = {
+        id = unit.id,
+        ai_id = ai_id
+    }
+    if value then table.insert(cfg, { "value", value }) end
+    wesnoth.sync.invoke_command("MAI_set_unit_variable", cfg)
+end
+
 local micro_ai_unit_variables = {}
 
 function micro_ai_unit_variables.delete_mai_unit_variables(unit, ai_id)
-    unit.variables['micro_ai_' .. ai_id] = nil
+    MAI_set_unit_variable(unit, ai_id, nil)
 end
 
 function micro_ai_unit_variables.insert_mai_unit_variables(unit, ai_id, vars_table)
     local mai_var = unit.variables['micro_ai_' .. ai_id] or {}
     -- Restrict to top-level named fields
     for k,v in pairs(vars_table) do mai_var[k] = v end
-    unit.variables['micro_ai_' .. ai_id] = mai_var
+    MAI_set_unit_variable(unit, ai_id, mai_var)
 end
 
 function micro_ai_unit_variables.set_mai_unit_variables(unit, ai_id, vars_table)
     local mai_var = {}
     -- Restrict to top-level named fields
     for k,v in pairs(vars_table) do mai_var[k] = v end
-    unit.variables['micro_ai_' .. ai_id] = mai_var
+    MAI_set_unit_variable(unit, ai_id, mai_var)
 end
 
 function micro_ai_unit_variables.get_mai_unit_variables(unit, ai_id, key)
