@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-05-31 22:57+0800\n"
+"PO-Revision-Date: 2022-07-14 16:27+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -636,11 +636,12 @@ msgstr "邪惡祭壇"
 msgid "Altar"
 msgstr "祭壇"
 
+# 安卡就是生命之符。
 #. [item]: id=ankh-necklace
 #. [item]: id=ankh-necklace2
 #: data/core/editor/items.cfg:24 data/core/editor/items.cfg:30
 msgid "Ankh Necklace"
-msgstr "生命之符"
+msgstr "安卡項鍊"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:36
@@ -671,12 +672,12 @@ msgstr "斧"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:72
 msgid "Small Axe"
-msgstr ""
+msgstr "小斧頭"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:78
 msgid "Throwing Axe"
-msgstr ""
+msgstr "投擲斧頭"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:84
@@ -750,12 +751,12 @@ msgstr "箱子"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:198
 msgid "Branch"
-msgstr ""
+msgstr "樹枝"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:204
 msgid "Bare Branch"
-msgstr ""
+msgstr "無葉樹枝"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:210
@@ -764,10 +765,8 @@ msgstr "火盆"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:217
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "火盆"
+msgstr "點燃的火盆"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -787,28 +786,24 @@ msgstr "籠子"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:247
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
 msgstr "闔上的寶箱"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:254
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "打開的寶箱"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:260
 msgid "Closed Plain Chest"
-msgstr "闔上的寶箱"
+msgstr "闔上的樸素寶箱"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:266
 msgid "Open Plain Chest"
-msgstr "打開的寶箱"
+msgstr "打開的樸素寶箱"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:272
@@ -818,7 +813,7 @@ msgstr "綠袍"
 #. [item]: id=club
 #: data/core/editor/items.cfg:278
 msgid "Club"
-msgstr ""
+msgstr "棍棒"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:284
@@ -828,32 +823,28 @@ msgstr "闔上的棺材"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:291
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "闔上的棺材"
+msgstr "打開的棺材"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:297
 msgid "Crossbow"
-msgstr ""
+msgstr "十字弓"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:303
 msgid "Dagger"
-msgstr ""
+msgstr "匕首"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:309
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "藥水"
+msgstr "毒匕首"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:315
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "毒匕首（乾淨的）"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:321
@@ -867,10 +858,8 @@ msgstr "烈焰寶劍"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "烈焰寶劍"
+msgstr "未附魔的烈焰寶劍"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -908,10 +897,8 @@ msgstr "稻草捆"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:393
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "符文鎚"
+msgstr "戰鎚"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:399
@@ -930,12 +917,11 @@ msgstr "聖水"
 msgid "Key"
 msgstr "鑰匙"
 
+# 不確定這個是什麼。
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "深紅"
+msgstr "黑暗鑰匙"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:429
@@ -945,21 +931,17 @@ msgstr "皮革包"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:435
 msgid "Mace"
-msgstr ""
+msgstr "釘鎚"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "生命之符"
+msgstr "骨頭項鍊"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "生命之符"
+msgstr "石頭項鍊"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:453
@@ -1052,12 +1034,10 @@ msgstr "火焰權杖"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:555
 msgid "Sling"
-msgstr ""
+msgstr "投石索"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
 msgstr "長矛"
 
@@ -1065,12 +1045,12 @@ msgstr "長矛"
 #. [item]: id=spear-fancy2
 #: data/core/editor/items.cfg:567 data/core/editor/items.cfg:573
 msgid "Fancy Spear"
-msgstr "長矛"
+msgstr "別緻長矛"
 
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:579
 msgid "Javelin"
-msgstr ""
+msgstr "鏢槍"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1080,10 +1060,8 @@ msgstr "法仗"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "魔杖"
+msgstr "德魯伊法杖"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1093,17 +1071,13 @@ msgstr "魔杖"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:615
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "魔杖"
+msgstr "魔法棒"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "魔杖"
+msgstr "樸素法杖"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:627
@@ -1132,56 +1106,48 @@ msgstr "劍"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "劍"
+msgstr "聖劍"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "劍"
+msgstr "短劍"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "烈焰寶劍"
+msgstr "怨魂劍"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "安卡護符"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
 msgid "Bone Talisman"
-msgstr ""
+msgstr "骨頭護符"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "石板"
+msgstr "石頭護符"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:705
 msgid "Thunderstick"
-msgstr ""
+msgstr "雷棒"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
 msgid "Lit Torch"
-msgstr ""
+msgstr "點燃的火炬"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:717
 msgid "Unlit Torch"
-msgstr ""
+msgstr "未點燃的火炬"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:723
@@ -1373,10 +1339,8 @@ msgstr "廟宇"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "破損的帳篷"
+msgstr "破廟"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1087
@@ -5426,8 +5390,8 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
 #: src/addon/client.cpp:223
@@ -6338,19 +6302,19 @@ msgstr "無"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"與房長的<i>$addon</i>版本不相容。他使用<b>$host_ver</b>版，而你使用<b>"
-"$local_ver</b>版。"
+"與房長的<i>$addon</i>版本不相容。他使用<b>$host_ver</b>版，而你使用"
+"<b>$local_ver</b>版。"
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"與你的<i>$addon</i>版本不相容。你使用<b>$local_ver</b>版，而他們使用<b>"
-"$host_ver</b>版。"
+"與你的<i>$addon</i>版本不相容。你使用<b>$local_ver</b>版，而他們使用"
+"<b>$host_ver</b>版。"
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
@@ -7520,9 +7484,10 @@ msgstr "不安全模式已開啟！"
 msgid "Variable not found"
 msgstr "找不到變數"
 
+# 「hovered over」不照翻。
 #: src/menu_events.cpp:1988
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
-msgstr ""
+msgstr "偵錯指令「unit: $unit」失敗：沒有單位被選擇或是被滑鼠游標指到。"
 
 #: src/menu_events.cpp:2006
 msgid ""
@@ -8620,9 +8585,6 @@ msgstr "對$player|隱藏計劃"
 msgid "Whiteboard Options"
 msgstr "白板選項"
 
-#~ msgid "Chest"
-#~ msgstr "寶箱"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -8639,6 +8601,9 @@ msgstr "白板選項"
 
 #~ msgid "No Ally Mirror"
 #~ msgstr "無盟友鏡像"
+
+#~ msgid "Chest"
+#~ msgstr "寶箱"
 
 #~ msgid "Use [modify_unit_type]\n"
 #~ msgstr "使用 [modify_unit_type]\n"
