@@ -119,7 +119,7 @@ function wesnoth.wml_actions.move_unit(cfg)
 			end
 
 			if fire_event then
-				wesnoth.fire_event("moveto", x, y, x2, y2)
+				wesnoth.game_events.fire("moveto", x, y, x2, y2)
 			end
 		end
 	end
