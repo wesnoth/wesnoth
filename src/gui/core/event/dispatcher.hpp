@@ -169,6 +169,17 @@ public:
 	void connect();
 
 	/**
+	 * Disconnects the dispatcher from the event handler.
+	 */
+	void disconnect();
+
+	/** Return whether the dispatcher is currently connected. */
+	bool is_connected() const
+	{
+		return connected_;
+	}
+
+	/**
 	 * Determines whether the location is inside an active widget.
 	 *
 	 * This is used to see whether a mouse event is inside the widget.

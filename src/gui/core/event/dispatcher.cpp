@@ -44,7 +44,7 @@ dispatcher::dispatcher()
 dispatcher::~dispatcher()
 {
 	if(connected_) {
-		disconnect_dispatcher(this);
+		disconnect();
 	}
 }
 
@@ -53,6 +53,13 @@ void dispatcher::connect()
 	assert(!connected_);
 	connected_ = true;
 	connect_dispatcher(this);
+}
+
+void dispatcher::disconnect()
+{
+	assert(connected_);
+	connected_ = false;
+	disconnect_dispatcher(this);
 }
 
 bool dispatcher::has_event(const ui_event event, const event_queue_type event_type)
