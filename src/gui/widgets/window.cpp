@@ -87,6 +87,7 @@ static lg::log_domain log_gui("gui/layout");
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
 #define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace gui2
@@ -455,6 +456,12 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 	// Unhide in any case.
 	hidden_ = false;
 
+	// Connect to the event handler, if not yet connected.
+	if(!is_connected()) {
+		LOG_DP << "connecting " << id() << " on show_tooltip";
+		connect();
+	}
+
 	log_scope2(log_gui_draw, "Window: show as tooltip.");
 
 	generate_dot_file("show", SHOW);
@@ -480,6 +487,12 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 {
 	// Unhide in any case.
 	hidden_ = false;
+
+	// Connect to the event handler, if not yet connected.
+	if(!is_connected()) {
+		LOG_DP << "connecting " << id() << " on show_non_modal";
+		connect();
+	}
 
 	log_scope2(log_gui_draw, "Window: show non modal.");
 
@@ -508,6 +521,12 @@ int window::show(const unsigned auto_close_timeout)
 {
 	// Unhide in any case.
 	hidden_ = false;
+
+	// Connect to the event handler, if not yet connected.
+	if(!is_connected()) {
+		LOG_DP << "connecting " << id() << " on show";
+		connect();
+	}
 
 	/*
 	 * Removes the old tip if one shown. The show_tip doesn't remove
@@ -617,6 +636,13 @@ void window::hide()
 	if(!hidden_) {
 		queue_redraw();
 	}
+
+	// Disconnect from the event handler so we stop receiving events.
+	if(is_connected()) {
+		LOG_DP << "disconnecting " << id() << " on hide";
+		disconnect();
+	}
+
 	hidden_ = true;
 }
 
