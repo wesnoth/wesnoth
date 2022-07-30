@@ -510,6 +510,9 @@ int window::show(const unsigned auto_close_timeout)
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
 		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
+			// Process and handle all pending events.
+			events::pump();
+
 			if(!mouse_button_state_initialized) {
 				/*
 				 * The state must be initialize when showing the dialog.
@@ -525,12 +528,13 @@ int window::show(const unsigned auto_close_timeout)
 				mouse_button_state_initialized = true;
 			}
 
+			// See if we should close.
 			if(status_ == status::REQUEST_CLOSE) {
 				status_ = exit_hook_(*this) ? status::CLOSED : status::SHOWING;
 			}
 
-			// This will rate limit to vsync
-			events::pump_and_draw();
+			// Update the display. This will rate limit to vsync.
+			events::draw();
 		}
 	}
 	catch(...)
