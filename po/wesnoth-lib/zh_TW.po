@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2022-05-30 15:52+0800\n"
+"PO-Revision-Date: 2022-07-14 16:49+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -742,7 +742,7 @@ msgstr "蘑菇林"
 msgid "Non-mixed Mushroom Grove"
 msgstr "純種蘑菇林"
 
-# 看不懂，跳過。
+# 看不太懂，不照翻。
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
@@ -757,6 +757,12 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
+"覆蓋層「^Uf」和「^Ufi」被廢棄了。原因是，雖然圖形會顯示出一個有個另一個地形在"
+"下面的覆蓋層，但移動點數消耗和防禦力的數值就是單純的蘑菇地形，忽略其下的地"
+"形。建議的替代覆蓋層為「^Tf」和「^Tfi」，它們看起來跟原本的「^Uf」和「^Ufi」"
+"是一樣的，但移動點數消耗和防禦力的數值會照著它的顯示出來的圖形來設定，就不總"
+"是蘑菇地形了。對於那些就是要使用蘑菇地形的數值的格子，「Tb」是蘑菇林的基礎地"
+"形，它可以與「^Tf」一同使用，也可以不與「^Tf」一同使用。"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
