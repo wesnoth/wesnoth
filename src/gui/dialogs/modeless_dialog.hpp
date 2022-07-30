@@ -86,14 +86,6 @@ public:
 	}
 
 protected:
-	/**
-	 * Forcibly redraws the window.
-	 *
-	 * This is used to force a window draw event out of band when event
-	 * handling is otherwise not possible.
-	 */
-	void force_redraw();
-
 	/** The window, used in show. */
 	std::unique_ptr<window> window_;
 

@@ -18,7 +18,6 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/widgets/window.hpp"
-#include "sdl/userevent.hpp"
 #include "video.hpp"
 
 namespace gui2::dialogs
@@ -65,21 +64,6 @@ void modeless_dialog::hide()
 
 		window_->undraw();
 		window_.reset(nullptr);	}
-}
-
-void modeless_dialog::force_redraw()
-{
-	SDL_Event event;
-	sdl::UserEvent data(DRAW_EVENT);
-
-	event.type = DRAW_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-
-	events::pump();
-
-	SDL_Delay(10);
 }
 
 std::unique_ptr<window> modeless_dialog::build_window() const
