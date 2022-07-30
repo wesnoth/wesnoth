@@ -2415,7 +2415,7 @@ void display::fade_to(const color_t& c, int duration)
 	}
 	fade_color_ = fade_end;
 	draw_manager::invalidate_region(map_outside_area());
-	events::raise_draw_event();
+	events::draw();
 }
 
 void display::set_fade(const color_t& c)
