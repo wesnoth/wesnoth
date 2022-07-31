@@ -25,7 +25,7 @@ jobs:
             lto: false
     runs-on: ubuntu-20.04
     container:
-      image: wesnoth/wesnoth:2004-master
+      image: wesnoth/wesnoth:2204-master
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
@@ -194,7 +194,7 @@ jobs:
       - name: Translations
         run: |
           export BRANCH=master
-          export IMAGE=2004
+          export IMAGE=2204
           export NLS=only
           export TOOL=scons
           export CC=gcc
