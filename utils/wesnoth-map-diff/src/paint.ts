@@ -68,7 +68,7 @@ const paint = async (
   new Jimp(diffImageWidth, diffImageHeight, async (_err, output) => {
     output.opaque()
 
-    const fontPath = path.resolve(__dirname, '../font/DejaVuSandMono.fnt')
+    const fontPath = path.resolve(__dirname, '../font/DejaVuSansMono.fnt')
     const font = await Jimp.loadFont(fontPath)
 
     const paintAxis = (map: Tilemap, side: Side) => {
