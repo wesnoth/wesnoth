@@ -10,20 +10,20 @@ function wml_actions.modify_unit(cfg)
 
 	local replace_mode = cfg.mode == "replace"
 
-	local function handle_attributes(cfg, unit_path, toplevel)
-		for current_key, current_value in pairs(wml.shallow_parsed(cfg)) do
+	local function handle_attributes(child_cfg, unit_path, toplevel)
+		for current_key, current_value in pairs(wml.shallow_parsed(child_cfg)) do
 			if type(current_value) ~= "table" and (not toplevel or (current_key ~= "type" and current_key ~= "mode")) then
 				wml.variables[string.format("%s.%s", unit_path, current_key)] = current_value
 			end
 		end
 	end
 
-	local function handle_child(cfg, unit_path)
+	local function handle_child(child_cfg, unit_path)
 		local children_handled = {}
-		local cfg = wml.shallow_parsed(cfg)
-		handle_attributes(cfg, unit_path)
+		child_cfg = wml.shallow_parsed(child_cfg)
+		handle_attributes(child_cfg, unit_path)
 
-		for current_index, current_table in ipairs(cfg) do
+		for current_index, current_table in ipairs(child_cfg) do
 			local current_tag = current_table[1]
 			local tag_index = children_handled[current_tag] or 0
 			handle_child(current_table[2], string.format("%s.%s[%u]",
@@ -43,7 +43,7 @@ function wml_actions.modify_unit(cfg)
 		for current_index, current_table in ipairs(wml.shallow_parsed(cfg)) do
 			local current_tag = current_table[1]
 			if current_tag == "filter" then
-				-- nothing
+				goto skip
 			elseif current_tag == "object" or current_tag == "trait" or current_tag == "advancement" then
 				local mod = current_table[2]
 				if mod.delayed_variable_substitution then
@@ -85,6 +85,7 @@ function wml_actions.modify_unit(cfg)
 					unit_path, current_tag, tag_index))
 				children_handled[current_tag] = tag_index + 1
 			end
+			::skip::
 		end
 
 		if cfg.type then
