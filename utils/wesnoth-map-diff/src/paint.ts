@@ -8,6 +8,7 @@ type Side = 'left' | 'right'
 
 const tileImageSize = 72
 const axisMargin = 80
+const maxLinesOnNotes = 15
 
 const imageSize = (map: Tilemap, totalDiffs: number) => {
   const { tilemapWidth, tilemapHeight } = tilemap.size(map)
@@ -60,7 +61,7 @@ const paint = async (
 ) => {
   const diffs = tilemap.diff(oldTilemap, newTilemap)
 
-  const { height, width } = imageSize(oldTilemap, diffs.length)
+  const { height, width } = imageSize(oldTilemap, Math.min(diffs.length, maxLinesOnNotes))
 
   const diffImageWidth = width * 2 + tileImageSize
   const diffImageHeight = height
@@ -99,7 +100,11 @@ const paint = async (
         return `${player}${tile.baseCode}${miscCode}`
       }
 
-      diffs.forEach(([x, y], i) => {
+      const getLineY = (line: number) => (diffImageHeight - slicedDiffs.length * 36) + (line - 1) * 36
+
+      const slicedDiffs = diffs.slice(0, maxLinesOnNotes - 1)
+
+      slicedDiffs.forEach(([x, y], i) => {
         const previousTile = oldTilemap[y][x]
         const newTile = newTilemap[y][x]
 
@@ -107,11 +112,15 @@ const paint = async (
         const yString = `${y}`.padStart(2, '0')
         const diffLine = `[${xString}:${yString}] ${getTileCode(previousTile).padStart(8)} -> ${getTileCode(newTile)}`
 
-        output.print(font, 0, diffImageHeight - (i + 1) * 36, diffLine)
+        output.print(font, 0, getLineY(i), diffLine)
       })
+
+      if (diffs.length !== slicedDiffs.length) {
+        output.print(font, 0, getLineY(maxLinesOnNotes - 1), '... and other changes')
+      }
     }
 
-    const paintTilemap = (map: Tilemap, side: Side) => {  
+    const paintTilemap = (map: Tilemap, side: Side) => {
       const leftPadding = side === 'left'
         ? 0
         : width + tileImageSize
