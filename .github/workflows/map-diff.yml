@@ -48,12 +48,12 @@ jobs:
           pngquant --force --output "$diff_image" "$diff_image"
 
           ## Write comment body
-          curl_result=$(curl -X POST "https://api.imgur.com/3/upload" -F "image=@\"$diff_image\"")
+          curl_result=$(curl -F "image=@\"$diff_image\"" "https://api.imgur.com/3/upload")
 
           echo "Imgur result:"
           echo "$curl_result"
 
-          image_link=$($curl_result | jq -r ".data.link")
+          image_link=$(jq -r ".data.link" <<< "$curl_result")
 
           comment_body="$comment_body<h3>$map_path</h3><img src=\"$image_link\" /><br />"
         done
