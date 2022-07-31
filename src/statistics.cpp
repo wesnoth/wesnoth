@@ -801,7 +801,7 @@ void reset_current_scenario()
 	mid_scenario = false;
 }
 
-int sum_str_int_map(const stats::str_int_map& m)
+int sum_str_int_map(const std::map<std::string,int>& m)
 {
 	int res = 0;
 	for(stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
@@ -811,7 +811,7 @@ int sum_str_int_map(const stats::str_int_map& m)
 	return res;
 }
 
-int sum_cost_str_int_map(const stats::str_int_map &m)
+int sum_cost_str_int_map(const std::map<std::string,int>& m)
 {
 	int cost = 0;
 	for (stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
