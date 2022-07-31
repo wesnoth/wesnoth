@@ -43,6 +43,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 		wml.variables[variable .. ".terrain"] = wesnoth.current.map[point]
 		if distance < 0 then
 			-- optimisation: nothing to do for distance < 0
+			goto skip
 		elseif distance == 0 then
 			-- optimisation: for distance = 0 we just need to remove the element at index
 			-- optimisation: swapping elements and storing size in an extra variable is faster than table.remove(locs, j)
@@ -77,6 +78,7 @@ wesnoth.wml_actions.random_placement = function(cfg)
 				::continue::
 			end
 		end
+		::skip::
 		-- TODO: This should really be "do" but is kept as "command" for compatibility
 		for do_child in wml.child_range(cfg, "command") do
 			local action = utils.handle_event_commands(do_child, "loop")
