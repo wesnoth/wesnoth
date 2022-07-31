@@ -67,10 +67,17 @@ const produceImagesGetter = async (): Promise<ImagesGetter> => {
       }
 
       const baseImage = images[baseCode]
+      if (!baseImage) {
+        throw new Error(`Missing image for "${baseCode}"`)
+      }
 
       // todo: we should use the defaultBase correctly
       if (miscCode) {
         const miscImage = images[`^${miscCode}`]
+        if (!miscImage) {
+          throw new Error(`Missing image for "^${miscCode}"`)
+        }
+
         return baseImage.clone().composite(miscImage, 0, 0)
       }
 
