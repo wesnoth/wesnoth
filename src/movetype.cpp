@@ -726,9 +726,9 @@ void movetype::terrain_defense::merge(const config & new_data, bool overwrite)
 /**
  * Returns a map from attack types to resistances.
  */
-utils::string_map movetype::resistances::damage_table() const
+utils::string_map_res movetype::resistances::damage_table() const
 {
-	utils::string_map result;
+	utils::string_map_res result;
 
 	for (const config::attribute & attrb : cfg_.attribute_range()) {
 		result[attrb.first] = attrb.second;

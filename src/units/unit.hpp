@@ -1034,7 +1034,7 @@ public:
 	}
 
 	/** Gets resistances without any abilities applied. */
-	utils::string_map get_base_resistances() const
+	utils::string_map_res get_base_resistances() const
 	{
 		return movement_type_.damage_table();
 	}

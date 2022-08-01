@@ -110,14 +110,14 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 }
 
 static inline std::string get_hp_tooltip(
-	const utils::string_map& res, const std::function<int(const std::string&, bool)>& get)
+	const utils::string_map_res& res, const std::function<int(const std::string&, bool)>& get)
 {
 	std::ostringstream tooltip;
 
-	std::set<std::string> resistances_table;
+	std::vector<std::string> resistances_table;
 
 	bool att_def_diff = false;
-	for(const utils::string_map::value_type &resist : res) {
+	for(const utils::string_map_res::value_type &resist : res) {
 		std::ostringstream line;
 		line << translation::dgettext("wesnoth", resist.first.c_str()) << ": ";
 
@@ -133,7 +133,7 @@ static inline std::string get_hp_tooltip(
 			att_def_diff = true;
 		}
 
-		resistances_table.insert(line.str());
+		resistances_table.push_back(line.str());
 	}
 
 	tooltip << "<big>" << _("Resistances: ") << "</big>";
@@ -176,25 +176,28 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		tooltip << '\n' << font::unicode_bullet << " " << tm.name << ": ";
 
 		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = tm.moves > total_movement;
+		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
+		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
-		std::string color;
-		if(cannot_move) {
-			// cannot move in this terrain
-			color = "red";
-		} else if(tm.moves > 1) {
-			color = "yellow";
-		} else {
-			color = "white";
-		}
+		// passing false to select the more saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 
 		tooltip << "<span color='" << color << "'>";
 
 		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
 		if(cannot_move && (tm.moves > total_movement + 5)) {
 			tooltip << font::unicode_figure_dash;
+		} else if (cannot_move) {
+			tooltip << "(" << tm.moves << ")";
 		} else {
 			tooltip << tm.moves;
+		}
+		if(tm.moves != 0) {
+			const int movement_hexes_per_turn = total_movement / tm.moves;
+			tooltip << " ";
+			for(int i = 0; i < movement_hexes_per_turn; ++i) {
+				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+			}
 		}
 
 		tooltip << "</span>";
@@ -221,8 +224,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	);
 
 	for(const auto& a : attacks) {
-		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO(16,16)";
 		const bool range_png_exists = ::image::locator(range_png).file_exists();
 		const bool type_png_exists = ::image::locator(type_png).file_exists();
 

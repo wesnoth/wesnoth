@@ -144,6 +144,7 @@ namespace game_config
 			level,
 			ellipsis,
 			missing,
+			blank,
 			// notifications icon
 			app_icon;
 	} //images
@@ -202,13 +203,12 @@ namespace game_config
 
 	/**
 	 * Return a color corresponding to the value val
-	 * red for val=0 to green for val=100, passing by yellow.
+	 * red for val=0.0 to green for val=100.0, passing by yellow.
 	 * Colors are defined by [game_config] keys
 	 * red_green_scale and red_green_scale_text
 	 */
-
-	color_t red_to_green(int val, bool for_text = true);
-	color_t blue_to_white(int val, bool for_text = true);
+	color_t red_to_green(double val, bool for_text = true);
+	color_t blue_to_white(double val, bool for_text = true);
 
 	std::string get_default_title_string();
 }

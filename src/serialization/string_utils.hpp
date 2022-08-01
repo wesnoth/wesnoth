@@ -35,6 +35,23 @@ namespace utils {
 
 using string_map = std::map<std::string, t_string>;
 
+const std::vector<std::string> res_order = {"blade", "pierce", "impact", "fire", "cold", "arcane"};
+
+struct res_compare {
+	/** Returns whether a < b, considering res_order. */
+	bool operator()(const std::string& a, const std::string& b) const {
+		for(const std::string& r : res_order) {
+			if (b == r)	// this means b <= a, so a < b is false
+				return false;
+			if (a == r)
+				return true;
+		}
+		return a < b;	// fallback only reached when neither a nor b occur in res_order
+	}
+};
+
+using string_map_res = std::map<std::string, t_string, res_compare>;
+
 bool isnewline(const char c);
 bool portable_isspace(const char c);
 bool notspace(char c);

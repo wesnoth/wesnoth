@@ -468,11 +468,11 @@ static config unit_hp(reports::context& rc, const unit* u)
 	str << span_color(u->hp_color()) << u->hitpoints()
 		<< '/' << u->max_hitpoints() << naps;
 
-	std::set<std::string> resistances_table;
+	std::vector<std::string> resistances_table;
 
 	bool att_def_diff = false;
 	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
-	for (const utils::string_map::value_type &resist : u->get_base_resistances())
+	for (const utils::string_map_res::value_type &resist : u->get_base_resistances())
 	{
 		std::ostringstream line;
 		line << translation::gettext(resist.first.c_str()) << ": ";
@@ -491,7 +491,7 @@ static config unit_hp(reports::context& rc, const unit* u)
 			<< naps << '\n';
 			att_def_diff = true;
 		}
-		resistances_table.insert(line.str());
+		resistances_table.push_back(line.str());
 	}
 
 	tooltip << _("Resistances: ");
@@ -684,22 +684,28 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 	for (const terrain_movement& tm : terrain_moves) {
 		tooltip << tm.name << ": ";
 
-		std::string color;
 		//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = tm.moves > u->total_movement();
-		if (cannot_move)		// cannot move in this terrain
-			color = "red";
-		else if (tm.moves > 1)
-			color = "yellow";
-		else
-			color = "white";
+		const bool cannot_move = tm.moves > u->total_movement();		// cannot move in this terrain
+		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
+
+		// passing false to select the more saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 		tooltip << "<span foreground=\"" << color << "\">";
 		// A 5 MP margin; if the movement costs go above
 		// the unit's max moves + 5, we replace it with dashes.
 		if (cannot_move && (tm.moves > u->total_movement() + 5)) {
 			tooltip << font::unicode_figure_dash;
+		} else if (cannot_move) {
+			tooltip << "(" << tm.moves << ")";
 		} else {
 			tooltip << tm.moves;
+		}
+		if(tm.moves != 0) {
+			const int movement_hexes_per_turn = u->total_movement() / tm.moves;
+			tooltip << " ";
+			for(int i = 0; i < movement_hexes_per_turn; ++i) {
+				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+			}
 		}
 		tooltip << naps << '\n';
 	}
@@ -741,12 +747,17 @@ REPORT_GENERATOR(selected_unit_moves, rc)
 	return unit_moves(rc, u, false);
 }
 
+/**
+ * Maps resistance <= -60 (resistance value <= -60%) to intense red.
+ * Maps resistance >= 60 (resistance value >= 60%) to intense green.
+ * Intermediate values are affinely mapped to the red-to-green scale,
+ * with 0 (0%) being mapped to yellow.
+ * Compare unit_helper::resistance_color().
+ */
 static inline const color_t attack_info_percent_color(int resistance)
 {
-	// Compare unit_helper::resistance_color()
-	if (resistance < 0) return font::BAD_COLOR;
-	if (resistance > 0) return font::GOOD_COLOR;
-	return font::YELLOW_COLOR;
+	// Passing false to select the more saturated red-to-green scale.
+	return game_config::red_to_green(50.0 + resistance * 5.0 / 6.0, false);
 }
 
 static int attack_info(reports::context & rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
@@ -853,9 +864,9 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 		std::string range = string_table["range_" + at.range()];
 		std::string lang_type = string_table["type_" + at.type()];
 
-		// SCALE_INTO_SHARP() is needed in case the 72x72 images/misc/missing-image.png is substituted.
-		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		// SCALE_INTO() is needed in case the 72x72 images/misc/missing-image.png is substituted.
+		const std::string range_png = std::string("icons/profiles/") + at.range() + "_attack.png~SCALE_INTO(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + at.type() + ".png~SCALE_INTO(16,16)";
 		const bool range_png_exists = image::locator(range_png).file_exists();
 		const bool type_png_exists = image::locator(type_png).file_exists();
 
@@ -914,8 +925,8 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 		// The icons are 16x16. We add 5px padding for alignment reasons (placement of the icon in relation to ascender and descender letters).
 		const std::string spacer = "misc/blank.png~CROP(0, 0, 16, 21)"; // 21 == 16+5
-		if (range_png_exists) add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
-		if (type_png_exists) add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
+		add_image(res, spacer + "~BLIT(" + range_png + ",0,5)", damage_versus.tooltip);
+		add_image(res, spacer + "~BLIT(" + type_png + ",0,5)", damage_versus.tooltip);
 		add_text(res, damage_and_num_attacks.str, damage_and_num_attacks.tooltip);
 		add_text(res, damage_versus.str, damage_versus.tooltip); // This string is usually empty
 
