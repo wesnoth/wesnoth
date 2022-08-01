@@ -1253,7 +1253,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	unit_map::iterator defender = board.units().find(defender_loc);
 
 	if(!attacker || !defender) {
-		ERR_NG << "One fighter is missing, can't attack";
+		ERR_NG << "One fighter is missing, can't attack" << std::endl;
 		return -1; // abort, click will do nothing
 	}
 
