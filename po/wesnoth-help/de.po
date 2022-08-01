@@ -1,26 +1,27 @@
 # Translators:
-#  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
-#  Boris Stumm <wesnoth@bstumm.de>, 2005
-#  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
-#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010
-#  Marcel Miebach <marcel_miebach@gmx.de>, 2012
+#  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005.
+#  Boris Stumm <wesnoth@bstumm.de>, 2005.
+#  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006.
+#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012.
+#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010.
+#  Marcel Miebach <marcel_miebach@gmx.de>, 2012.
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018.
-#  mcpgal, 2021
+#  mcpgal, 2021.
+# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2022-02-06 12:13+0100\n"
-"Last-Translator: s1m0n#1701\n"
-"Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
+"PO-Revision-Date: 2022-08-01 18:21+0200\n"
+"Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
+"Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -668,7 +669,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:127
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Terrain Overlays"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
@@ -678,6 +679,10 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"Im Allgemeinen sehen Karten im Editor so aus wie sie auch im Spiel aussehen."
+" Es gibt ein paar Ausnahmen, bei denen im Editor andere Grafiken verwendet"
+" werden als im Spiel; alle hier beschriebenen Overlays sind in der Gruppe"
+" »Spezielles« des Malwerkzeugs zu finden."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -696,6 +701,18 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='Bewegungs Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Unpassierbar und Unbegehbar\n"
+"\n"
+"Im Editor erkennt man diese Overlays direkt; im Spiel sind sie jedoch"
+" unsichtbar – für die Grafik wird nur das zugrundeliegende Geländefeld"
+" verwendet. Durch das Overlay wird das Geländefeld zu einem kombinierten"
+" Geländefeld, bei dem die Bewegungskosten auf »Unpassierbar« bzw."
+" »Unbegehbar« geändert wird."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -718,6 +735,23 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='Burg Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Diese beiden Overlays ermöglichen es, Einheiten auf diese Geländefeldern zu"
+" rekrutieren. Der Burgfried (Im Englischen »Keep« genannt) erlaubt es einem"
+" Anführer zudem, von dort aus zu rekrutieren.\n"
+"\n"
+"Man kann diese Overlays auf ein unpassierbares Geländefeld platzieren, um"
+" visuell getrennte Burgen durch eine unpassierbare Mauer zu verbinden. Man"
+" kann auch eine Burg erstellen, welche Flachland oder Gras zwischen dem"
+" Burgfried und den Türmen hat. Die verbinden Geländefelder müssen aber durch"
+" eine Einheit blockiert werden, wenn man verhindern möchte, dass Einheiten"
+" dort hin rekrutiert werden."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -731,6 +765,13 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='Dorf Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"Damit wird das zugrundeliegende Geländefeld zu einem Dorf, welches Einkommen"
+" und Heilung bietet."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -743,13 +784,19 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='Unechter Schleier der Finsternis'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Dies sieht aus wie unerkundetes Gebiet, selbst in Szenarien, in denen der"
+" Schleier der Finsternis deaktiviert wurde und auch dann, wenn Einheiten des"
+" Spielers das Feld sehen können."
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:170
-#, fuzzy
 #| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "Zugrunde liegendes Gelände: "
+msgstr "Veraltetes Gelände"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -768,6 +815,18 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)' align=left box=yes</img>Das magentafarbene ‘D’ (steht für"
+" »Deprecated«).\n"
+"\n"
+"Das wird im Editor über veralteten Geländefeldern angezeigt. Beispiele sind:\n"
+"• das <ref>dst='terrain_fungus_grove_old' text='»^Uf« Pilzhain Overlay'</"
+"ref>,\n"
+"• die »Xol« Beleuchtete Steinmauer, welche nicht mehr verwendet wird weil die"
+" meisten Mauer-Geländefelder das Fackel-Overlay unterstützen.\n"
+"\n"
+"Die Seiten in der Hilfe beschreiben eventuell in einem zusätzlichen Text, der"
+" nur im Editor angezeigt wird, mögliche Alternativen."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:186
@@ -1181,7 +1240,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:342
-#, fuzzy
 #| msgid ""
 #| "<header>text='The files: .map and .cfg'</header>\n"
 #| "\n"
@@ -6910,7 +6968,6 @@ msgstr "Draken"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
 #| msgid ""
 #| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
 #| "true dragons. On average, an adult drake stands around three meters tall "
@@ -8606,6 +8663,8 @@ msgstr "Das Schlechtere von"
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Dörfer heilen dort stationierte Einheiten – entweder erhalten sie"
+" Lebenspunkte zurück oder sie werden von einer Vergiftung befreit."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -8617,13 +8676,19 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Dieses Geländefeld heilt Vergiftungen. Gesunde Einheiten regenerieren"
+" stattdessen 1 Lebenspunkt."
 msgstr[1] ""
+"Dieses Geländefeld heilt Einheiten um $amount Trefferpunkte oder befreit sie"
+" von ihrer Vergiftungen. So, als wäre die Einheit in einem Dorf stationiert."
 
 #: src/help/help_topic_generators.cpp:174
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Dieses Geländefeld ist Teil einer Burg – Einheiten können von einem"
+" verbundenen Burgfried aus hierhin rekrutiert werden."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:178
@@ -8631,6 +8696,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Dieses Geländefeld ist ein Burgfried – ein Anführer kann von diesem Feld aus"
+" auf verbundene Burgfelder rekrutieren."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:181
@@ -8638,6 +8705,9 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Dieser untypische Burgfried ermöglicht es einem Anführer von hier aus auf"
+" verbundene Burgfelder zu rekrutieren, aber man kann nicht von einem anderem"
+" Burgfried aus auf diesem Burgfried eine Einheit rekrutieren."
 
 #: src/help/help_topic_generators.cpp:194
 msgid "Base Terrain: "
