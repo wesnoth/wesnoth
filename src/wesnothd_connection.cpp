@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include "wesnothd_connection.hpp"
 
 #include "gettext.hpp"
+#include "gui/dialogs/loading_screen.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "tls_root_store.hpp"
@@ -45,7 +46,7 @@ struct mptest_log
 {
 	mptest_log(const char* functionname)
 	{
-		WRN_NW << "Process:" << getpid() << " Thread:" << std::this_thread::get_id() << " Function: " << functionname << " Start\n";
+		WRN_NW << "Process:" << getpid() << " Thread:" << std::this_thread::get_id() << " Function: " << functionname << " Start";
 	}
 };
 }
@@ -56,6 +57,8 @@ struct mptest_log
 
 using boost::system::error_code;
 using boost::system::system_error;
+
+using namespace std::chrono_literals; // s, ms, etc
 
 // main thread
 wesnothd_connection::wesnothd_connection(const std::string& host, const std::string& service)
@@ -107,10 +110,10 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 		} catch(...) {
 		}
 
-		LOG_NW << "wesnothd_connection::io_service::run() returned\n";
+		LOG_NW << "wesnothd_connection::io_service::run() returned";
 	});
 
-	LOG_NW << "Resolving hostname: " << host << '\n';
+	LOG_NW << "Resolving hostname: " << host;
 }
 
 wesnothd_connection::~wesnothd_connection()
@@ -135,7 +138,7 @@ void wesnothd_connection::handle_resolve(const error_code& ec, results_type resu
 {
 	MPTEST_LOG;
 	if(ec) {
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
+		LOG_NW << __func__ << " Throwing: " << ec;
 		throw system_error(ec);
 	}
 
@@ -148,10 +151,10 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 {
 	MPTEST_LOG;
 	if(ec) {
-		ERR_NW << "Tried all IPs. Giving up" << std::endl;
+		ERR_NW << "Tried all IPs. Giving up";
 		throw system_error(ec);
 	} else {
-		LOG_NW << "Connected to " << endpoint.address() << '\n';
+		LOG_NW << "Connected to " << endpoint.address();
 
 		if(endpoint.address().is_loopback()) {
 			use_tls_ = false;
@@ -173,6 +176,27 @@ void wesnothd_connection::handshake()
 		std::bind(&wesnothd_connection::handle_handshake, this, std::placeholders::_1));
 }
 
+template<typename Verifier> auto verbose_verify(Verifier&& verifier)
+{
+	return [verifier](bool preverified, boost::asio::ssl::verify_context& ctx) {
+		char subject_name[256];
+		X509* cert = X509_STORE_CTX_get_current_cert(ctx.native_handle());
+		X509_NAME_oneline(X509_get_subject_name(cert), subject_name, 256);
+		bool verified = verifier(preverified, ctx);
+		DBG_NW << "Verifying TLS certificate: " << subject_name << ": " <<
+			(verified ? "verified" : "failed");
+		BIO* bio = BIO_new(BIO_s_mem());
+		char buffer[1024];
+		X509_print(bio, cert);
+		while(BIO_read(bio, buffer, 1024) > 0)
+		{
+			DBG_NW << buffer;
+		}
+		BIO_free(bio);
+		return verified;
+	};
+}
+
 // worker thread
 void wesnothd_connection::handle_handshake(const error_code& ec)
 {
@@ -183,7 +207,7 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			fallback_to_unencrypted();
 			return;
 		}
-		LOG_NW << __func__ << " Throwing: " << ec << "\n";
+		LOG_NW << __func__ << " Throwing: " << ec;
 		throw system_error(ec);
 	}
 
@@ -208,14 +232,14 @@ void wesnothd_connection::handle_handshake(const error_code& ec)
 			);
 
 #if BOOST_VERSION >= 107300
-			socket.set_verify_callback(boost::asio::ssl::host_name_verification(host_));
+			socket.set_verify_callback(verbose_verify(boost::asio::ssl::host_name_verification(host_)));
 #else
-			socket.set_verify_callback(boost::asio::ssl::rfc2818_verification(host_));
+			socket.set_verify_callback(verbose_verify(boost::asio::ssl::rfc2818_verification(host_)));
 #endif
 
 			socket.async_handshake(boost::asio::ssl::stream_base::client, [this](const error_code& ec) {
 				if(ec) {
-					LOG_NW << __func__ << " Throwing: " << ec << "\n";
+					LOG_NW << __func__ << " Throwing: " << ec;
 					throw system_error(ec);
 				}
 
@@ -249,13 +273,22 @@ void wesnothd_connection::fallback_to_unencrypted()
 void wesnothd_connection::wait_for_handshake()
 {
 	MPTEST_LOG;
-	LOG_NW << "Waiting for handshake" << std::endl;
+	LOG_NW << "Waiting for handshake";
 
 	try {
 		// TODO: make this duration customizable. Should default to 1 minute.
-		const std::chrono::seconds timeout { 60 };
+		auto timeout = 60s;
 
-		switch(auto future = handshake_finished_.get_future(); future.wait_for(timeout)) {
+		auto future = handshake_finished_.get_future();
+		for(auto time = 0ms;
+			future.wait_for(10ms) == std::future_status::timeout
+				&& time < timeout;
+			time += 10ms)
+		{
+			gui2::dialogs::loading_screen::spin();
+		}
+
+		switch(future.wait_for(0ms)) {
 		case std::future_status::ready:
 			// This is a void future, so this just serves to re-throw any system_error exceptions
 			// stored by the worker thread. Additional handling occurs in the catch block below.
@@ -271,7 +304,7 @@ void wesnothd_connection::wait_for_handshake()
 			return;
 		}
 
-		WRN_NW << __func__ << " Rethrowing: " << err.code() << "\n";
+		WRN_NW << __func__ << " Rethrowing: " << err.code();
 		throw error(err.code());
 	} catch(const std::future_error& e) {
 		if(e.code() == std::future_errc::future_already_retrieved) {
@@ -292,7 +325,7 @@ void wesnothd_connection::send_data(const configr_of& request)
 
 	boost::asio::post(io_context_, [this, buf_ptr = std::move(buf_ptr)]() mutable {
 
-		DBG_NW << "In wesnothd_connection::send_data::lambda\n";
+		DBG_NW << "In wesnothd_connection::send_data::lambda";
 		send_queue_.push(std::move(buf_ptr));
 
 		if(send_queue_.size() == 1) {
@@ -321,7 +354,7 @@ void wesnothd_connection::cancel()
 #endif
 
 			if(ec) {
-				WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
+				WRN_NW << "Failed to cancel network operations: " << ec.message();
 			}
 		}
 	}, socket_);
@@ -345,7 +378,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return bytes_to_write_ - bytes_transferred;
@@ -359,7 +392,7 @@ std::size_t wesnothd_connection::is_write_complete(const boost::system::error_co
 void wesnothd_connection::handle_write(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	MPTEST_LOG;
-	DBG_NW << "Written " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Written " << bytes_transferred << " bytes.";
 
 	send_queue_.pop();
 
@@ -369,7 +402,7 @@ void wesnothd_connection::handle_write(const boost::system::error_code& ec, std:
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return;
@@ -391,7 +424,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return bytes_to_read_ - bytes_transferred;
@@ -423,7 +456,7 @@ std::size_t wesnothd_connection::is_read_complete(const boost::system::error_cod
 void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::size_t bytes_transferred)
 {
 	MPTEST_LOG;
-	DBG_NW << "Read " << bytes_transferred << " bytes.\n";
+	DBG_NW << "Read " << bytes_transferred << " bytes.";
 
 	bytes_to_read_ = 0;
 	if(last_error_ && ec != boost::asio::error::eof) {
@@ -432,7 +465,7 @@ void wesnothd_connection::handle_read(const boost::system::error_code& ec, std::
 			last_error_ = ec;
 		}
 
-		LOG_NW << __func__ << " Error: " << ec << "\n";
+		LOG_NW << __func__ << " Error: " << ec;
 
 		io_context_.stop();
 		return;
@@ -521,7 +554,11 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 {
 	{
 		std::unique_lock<std::mutex> lock(recv_queue_mutex_);
-		recv_queue_lock_.wait(lock, [this]() { return has_data_received(); });
+		while(!recv_queue_lock_.wait_for(
+		      lock, 10ms, [this]() { return has_data_received(); }))
+		{
+			gui2::dialogs::loading_screen::spin();
+		}
 	}
 
 	return receive_data(data);

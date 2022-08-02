@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -57,8 +57,8 @@ void unit_advance::pre_show(window& window)
 	for(std::size_t i = 0; i < previews_.size(); i++) {
 		const unit& sample = *previews_[i];
 
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		std::string image_string, name = sample.type_name();
 

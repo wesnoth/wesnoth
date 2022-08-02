@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -186,7 +186,7 @@ void menu_handler::preferences()
 {
 	gui2::dialogs::preferences_dialog::display();
 	// Needed after changing fullscreen/windowed mode or display resolution
-	gui_->redraw_everything();
+	gui_->queue_rerender();
 }
 
 void menu_handler::show_chat_log()
@@ -250,7 +250,7 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 	for(const auto& recruit : recruits) {
 		const unit_type* type = unit_types.find(recruit);
 		if(!type) {
-			ERR_NG << "could not find unit '" << recruit << "'" << std::endl;
+			ERR_NG << "could not find unit '" << recruit << "'";
 			unknown_units.emplace_back(recruit);
 			continue;
 		}
@@ -386,9 +386,9 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		empty = current_team.recall_list().empty();
 	}
 
-	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:\n";
+	DBG_WB << "menu_handler::recall: Contents of wb-modified recall list:";
 	for(const unit_const_ptr& unit : recall_list_team) {
-		DBG_WB << unit->name() << " [" << unit->id() << "]\n";
+		DBG_WB << unit->name() << " [" << unit->id() << "]";
 	}
 
 	if(empty) {
@@ -432,7 +432,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 		return;
 	}
 
-	LOG_NG << "recall index: " << res << "\n";
+	LOG_NG << "recall index: " << res;
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;
@@ -456,7 +456,7 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 				synced_context::ignore_error_function);
 
 		if(!success) {
-			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list." << std::endl;
+			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.";
 		}
 	}
 }
@@ -714,7 +714,7 @@ type_gender_variation choose_unit()
 	const std::string& ut_id = create_dlg.choice();
 	const unit_type* utp = unit_types.find(ut_id);
 	if(!utp) {
-		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'." << std::endl;
+		ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.";
 		return type_gender_variation(static_cast<const unit_type*>(nullptr), unit_race::NUM_GENDERS, "");
 	}
 	const unit_type& ut = *utp;
@@ -890,10 +890,11 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator& ui,
 	gui_->unhighlight_reach();
 
 	{
-		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back() << "\n";
+		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back();
 		actions::move_unit_and_record(route.steps, &pc_.get_undo_stack(), continue_move);
 	}
 
+	mousehandler.deselect_hex();
 	gui_->set_route(nullptr);
 	gui_->invalidate_game_status();
 }
@@ -967,7 +968,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 			gui_->set_route(&route);
 
 			{
-				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back() << "\n";
+				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back();
 				int moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
 				change = moves > 0;
 			}
@@ -1219,6 +1220,7 @@ protected:
 		chmap::get_command("remove")->flags = "";  // clear network-only flag
 
 		chmap::set_cmd_prefix(":");
+		chmap::set_cmd_flag(true);
 
 		register_command("refresh", &console_handler::do_refresh, _("Refresh gui."));
 		register_command("droid", &console_handler::do_droid, _("Switch a side to/from AI control."),
@@ -1460,7 +1462,7 @@ void console_handler::do_refresh()
 	sound::flush_cache();
 
 	menu_handler_.gui_->create_buttons();
-	menu_handler_.gui_->redraw_everything();
+	menu_handler_.gui_->queue_rerender();
 }
 
 void console_handler::do_droid()
@@ -1489,8 +1491,6 @@ void console_handler::do_droid()
 		const bool is_droid = menu_handler_.board().get_team(side).is_droid();
 		const bool is_proxy_human = menu_handler_.board().get_team(side).is_proxy_human();
 		const bool is_ai = menu_handler_.board().get_team(side).is_ai();
-		const std::string human = team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN);
-		const std::string ai = team::CONTROLLER::enum_to_string(team::CONTROLLER::AI);
 
 		if(action == "on") {
 			if(is_ai && !is_your_turn) {
@@ -1502,7 +1502,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			} else {
@@ -1518,7 +1518,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
@@ -1534,7 +1534,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_human || is_proxy_human) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", ai}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::ai}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now fully controlled by: AI.", symbols));
 			} else {
@@ -1550,7 +1550,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_proxy_human();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: human.", symbols));
 			} else {
@@ -1558,7 +1558,7 @@ void console_handler::do_droid()
 				menu_handler_.board().get_team(side).make_droid();
 				changed = true;
 				if(is_ai) {
-					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", human}});
+					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", preferences::login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side '$side' controller is now controlled by: AI.", symbols));
 			}
@@ -1572,7 +1572,7 @@ void console_handler::do_droid()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_terrain()
@@ -1629,7 +1629,7 @@ void console_handler::do_idle()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_theme()
@@ -1691,7 +1691,7 @@ void console_handler::do_control()
 	}
 
 	menu_handler_.request_control_change(side_num, player);
-	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
+	menu_handler_.textbox_info_.close();
 }
 
 void console_handler::do_controller()
@@ -1714,9 +1714,9 @@ void console_handler::do_controller()
 		return;
 	}
 
-	std::string report = menu_handler_.board().get_team(side_num).controller().to_string();
+	std::string report = side_controller::get_string(menu_handler_.board().get_team(side_num).controller());
 	if(!menu_handler_.board().get_team(side_num).is_proxy_human()) {
-		report += " (" + menu_handler_.board().get_team(side_num).proxy_controller().to_string() + ")";
+		report += " (" + side_proxy_controller::get_string(menu_handler_.board().get_team(side_num).proxy_controller()) + ")";
 	}
 
 	if(menu_handler_.board().get_team(side_num).is_network()) {
@@ -1982,6 +1982,11 @@ void console_handler::do_unit()
 
 	unit_map::iterator i = menu_handler_.current_unit();
 	if(i == menu_handler_.pc_.get_units().end()) {
+		utils::string_map symbols;
+		symbols["unit"] = get_arg(1);
+		command_failed(VGETTEXT(
+			"Debug command 'unit: $unit' failed: no unit selected or hovered over.",
+			symbols));
 		return;
 	}
 
@@ -1993,8 +1998,8 @@ void console_handler::do_unit()
 	}
 
 	if(parameters[0] == "alignment") {
-		unit_type::ALIGNMENT alignment;
-		if(!alignment.parse(parameters[1])) {
+		auto alignment = unit_alignments::get_enum(parameters[1]);
+		if(!alignment) {
 			utils::string_map symbols;
 			symbols["alignment"] = get_arg(1);
 			command_failed(VGETTEXT(

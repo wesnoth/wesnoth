@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 
 #include <optional>
 #include <string>
+#include <utility>
 #include <vector>
 
 class config;
@@ -49,7 +50,7 @@ struct credits_group
 	/** Optional group ID. Currently only used for identifying campaigns. */
 	std::string id;
 
-	/** Optional group tite. Currently only used for identifying campaigns. */
+	/** Optional group title. Currently only used for identifying campaigns. */
 	t_string header;
 };
 
@@ -61,7 +62,7 @@ const credits_data& get_credits_data();
 /** Gets credits for a given campaign. Returns a null optional if that campaign has no credits. */
 std::optional<credits_data::const_iterator> get_campaign_credits(const std::string& campaign);
 
-/** Gets credit background images for a given campaaign. */
+/** Gets credit background images for a given campaign. */
 std::vector<std::string> get_background_images(const std::string& campaign);
 
 /** Regenerates the credits data. */

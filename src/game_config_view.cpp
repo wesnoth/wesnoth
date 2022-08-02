@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2021
+	Copyright (C) 2013 - 2022
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,7 +56,7 @@ const config& game_config_view::find_child(config_key_type key, const std::strin
 			return res;
 		}
 	}
-	LOG_CONFIG << "gcv : cannot find [" << key <<  "] with " << name  << "=" << value << ", count = " << cfgs_.size() <<"\n";
+	LOG_CONFIG << "gcv : cannot find [" << key <<  "] with " << name  << "=" << value << ", count = " << cfgs_.size();
 	const config cfg;
 	return cfg.child("invalid");
 }

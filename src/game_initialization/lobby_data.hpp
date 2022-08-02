@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,89 +26,12 @@ class config;
 
 namespace mp {
 
-/** This class represents a single stored chat message */
-struct chat_message
-{
-	/** Create a chat message */
-	chat_message(const std::time_t& timestamp,
-				 const std::string& user,
-				 const std::string& message);
-
-	std::time_t timestamp;
-	std::string user;
-	std::string message;
-};
-
-/** this class memorizes a chat session. */
-class chat_session
-{
-public:
-	chat_session();
-
-	void add_message(const std::time_t& timestamp,
-					 const std::string& user,
-					 const std::string& message);
-
-	void add_message(const std::string& user, const std::string& message);
-
-	const std::deque<chat_message>& history() const
-	{
-		return history_;
-	}
-
-	void clear();
-
-private:
-	std::deque<chat_message> history_;
-};
-
-/**
- * This class represents the information a client has about a room
- */
-class room_info
-{
-public:
-	explicit room_info(const std::string& name);
-
-	const std::string& name() const
-	{
-		return name_;
-	}
-	const std::set<std::string>& members() const
-	{
-		return members_;
-	}
-	bool is_member(const std::string& user) const;
-	void add_member(const std::string& user);
-	void remove_member(const std::string& user);
-	void process_room_members(const config& data);
-
-	const chat_session& log() const
-	{
-		return log_;
-	}
-	chat_session& log()
-	{
-		return log_;
-	}
-
-private:
-	std::string name_;
-	std::set<std::string> members_;
-	chat_session log_;
-};
-
-
 /**
  * This class represents the information a client has about another player
  */
 struct user_info
 {
 	explicit user_info(const config& c);
-
-	void update_state(int selected_game_id);
-
-	void update_relation();
 
 	enum class user_relation {
 		ME,
@@ -125,11 +48,12 @@ struct user_info
 
 	bool operator<(const user_info& b) const;
 
+	user_state get_state(int selected_game_id) const;
+	user_relation get_relation() const;
+
 	std::string name;
 	int forum_id;
 	int game_id;
-	user_relation relation;
-	user_state state;
 	bool registered;
 	bool observing;
 	bool moderator;

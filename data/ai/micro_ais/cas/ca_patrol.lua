@@ -57,7 +57,7 @@ local function get_best_attack(unit, loc, last_waypoint, cfg)
         unit.moves, unit.loc = old_moves, old_loc
     end
 
-    local max_rating, best_enemy, best_dst = -math.huge
+    local max_rating, best_enemy, best_dst = -math.huge, nil, nil
     for _,attack in ipairs(attacks) do
         for _,enemy in ipairs(enemies) do
             if (attack.target.x == enemy.x) and (attack.target.y == enemy.y) then

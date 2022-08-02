@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,7 +40,6 @@
 #include <string>                       // for string, basic_string
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";
@@ -269,6 +268,17 @@ static int impl_vconfig_get(lua_State *L)
 	return 1;
 }
 
+static int impl_vconfig_dir(lua_State* L)
+{
+	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	std::vector<std::string> attributes;
+	for(const auto& [key, value] : v->get_config().attribute_range()) {
+		attributes.push_back(key);
+	}
+	lua_push(L, attributes);
+	return 1;
+}
+
 /**
  * Returns the number of a child of a vconfig object.
  */
@@ -470,6 +480,7 @@ std::string register_vconfig_metatable(lua_State *L)
 	static luaL_Reg const callbacks[] {
 		{ "__gc",           &impl_vconfig_collect},
 		{ "__index",        &impl_vconfig_get},
+		{ "__dir",          &impl_vconfig_dir},
 		{ "__len",          &impl_vconfig_size},
 		{ "__pairs",        &impl_vconfig_pairs},
 		{ "__ipairs",       &impl_vconfig_ipairs},
@@ -682,6 +693,12 @@ static int impl_namedtuple_get(lua_State* L)
 	return 0;
 }
 
+static int impl_namedtuple_dir(lua_State* L)
+{
+	luaL_getmetafield(L, 1, "__names");
+	return 1;
+}
+
 static int impl_namedtuple_tostring(lua_State* L)
 {
 	std::vector<std::string> elems;
@@ -701,6 +718,7 @@ void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 	lua_createtable(L, 0, 4);
 	static luaL_Reg callbacks[] = {
 		{ "__index", &impl_namedtuple_get },
+		{ "__dir", &impl_namedtuple_dir },
 		{ "__tostring", &impl_namedtuple_tostring },
 		{ nullptr, nullptr }
 	};
@@ -823,6 +841,7 @@ void luaW_pushconfig(lua_State *L, const config& cfg)
 
 bool luaW_toconfig(lua_State *L, int index, config &cfg)
 {
+	cfg.clear();
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return false;
 
@@ -997,7 +1016,7 @@ bool luaW_pushvariable(lua_State *L, variable_access_const& v)
 	}
 	catch (const invalid_variablename_exception&)
 	{
-		WRN_LUA << v.get_error_message() << "\n";
+		WRN_LUA << v.get_error_message();
 		return false;
 	}
 }
@@ -1026,7 +1045,6 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 		case LUA_TTABLE:
 			{
 				config &cfg = v.as_container();
-				cfg.clear();
 				if (luaW_toconfig(L, n, cfg)) {
 					return true;
 				}
@@ -1040,7 +1058,7 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n)
 	}
 	catch (const invalid_variablename_exception&)
 	{
-		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'\n";
+		WRN_LUA << v.get_error_message() << " when attempting to write a '" << lua_typename(L, variabletype) << "'";
 		return false;
 	}
 }
@@ -1140,7 +1158,7 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error)
 					e = em;
 				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 			} else {
-				ERR_LUA << m << '\n';
+				ERR_LUA << m;
 				chat_message("Lua error", m);
 			}
 		} else {

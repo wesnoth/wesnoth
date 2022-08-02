@@ -406,6 +406,7 @@ function wesnoth.wml_actions.message(cfg)
 		return
 	elseif cfg.highlight == false then
 		-- Nothing to do here
+		log("Nothing to highlight for [message]", "debug")
 	elseif speaker == "narrator" then
 		-- Narrator, so deselect units
 		wesnoth.interface.deselect_hex()

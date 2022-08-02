@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
 "PO-Revision-Date: 2011-11-10 19:43+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -24,10 +24,16 @@ msgstr "Wesmere 전설"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:46
+#, fuzzy
+#| msgid ""
+#| "The tale of Kalenz, the High Lord who rallied his people after the second "
+#| "orcish invasion of the Great Continent and became the most renowned hero "
+#| "in the recorded history of the Elves.\n"
+#| "\n"
 msgid ""
 "The tale of Kalenz, the High Lord who rallied his people after the second "
 "orcish invasion of the Great Continent and became the most renowned hero in "
-"the recorded history of the Elves.\n"
+"the recorded history of the elves.\n"
 "\n"
 msgstr ""
 "대륙에서 일어난 오크의 두번째 침공 이후 그의 민족을 재결집시키고, 엘프의 기"
@@ -343,8 +349,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:55
+#, fuzzy
+#| msgid ""
+#| "Some changes were good. The Elves, awakened as from a long dream, began "
+#| "to increase in population. But some were very bad, and the worst of those "
+#| "was the coming of the orcs, the wreckers, the tree-killers. The years of "
+#| "their long childhoods were a golden age, and the last time of untroubled "
+#| "peace."
 msgid ""
-"Some changes were good. The Elves, awakened as from a long dream, began to "
+"Some changes were good. The elves, awakened as from a long dream, began to "
 "increase in population. But some were very bad, and the worst of those was "
 "the coming of the orcs, the wreckers, the tree-killers. The years of their "
 "long childhoods were a golden age, and the last time of untroubled peace."
@@ -356,6 +369,16 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:58
+#, fuzzy
+#| msgid ""
+#| "The elves had never been a martial people, and they were not prepared for "
+#| "the inevitable war with the orcs. The friends came of age in the very "
+#| "year that Erlornas of Wesmere fought the first orcish raiders. Within the "
+#| "next decade orcish raids greatly increased, and their shadow loomed ever "
+#| "greater over the elves.\n"
+#| "\n"
+#| "This is the story of Kalenz, Landar, and of the Elves in the first days "
+#| "of the humans in Wesnoth."
 msgid ""
 "The elves had never been a martial people, and they were not prepared for "
 "the inevitable war with the orcs. The friends came of age in the very year "
@@ -363,7 +386,7 @@ msgid ""
 "decade orcish raids greatly increased, and their shadow loomed ever greater "
 "over the elves.\n"
 "\n"
-"This is the story of Kalenz, Landar, and of the Elves in the first days of "
+"This is the story of Kalenz, Landar, and of the elves in the first days of "
 "the humans in Wesnoth."
 msgstr ""
 "엘프는 전쟁과는 거리가 먼 민족이었고, 오크와의 피할 수 없는 전쟁에 아무 준비"
@@ -398,28 +421,28 @@ msgstr "T’baran"
 #. [side]: id=Wrulf, type=Orcish Warrior
 #. [side]: type=Orcish Warrior, id=Qumseh
 #. [side]: type=Orcish Warrior, id=Graur-Tan
-#. [side]
 #. [modify_side]
 #. [side]: type=Troll Hero, type=Great Troll, id=Grugl
-#. [side]: id=Hraurg, type=Saurian Ambusher
-#. [side]: type=Saurian Ambusher, id=Spahr
+#. [side]
 #. [side]: type=Saurian Ambusher, id=Shurm
 #. [side]: type=Saurian Ambusher, id=Trigr
+#. [side]: id=Hraurg, type=Saurian Ambusher
+#. [side]: type=Saurian Ambusher, id=Spahr
 #. [side]: type=Orcish Warlord, id=Urug-Tar
 #. [side]: type=Orcish Warlord, id=Graur-Tan
 #. [side]: type=Troll Warrior, id=Traur
-#. [side]: type=Orcish Warlord, id=Kior-Pur
-#. [side]: type=Orcish Warlord, id=Mbiran
-#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: type=Saurian Flanker, id=Huurgh
 #. [side]: type=Saurian Oracle, id=Shhar
 #. [side]: type=Troll Warrior, id=Tafrul
 #. [side]: type=Arch Mage, id=Aquagar
 #. [side]: type=Troll Warrior, id=Trigrul
-#. [side]: type=Elvish Marshal, id=Crintil
-#. [side]: type=Elvish Captain, id=Oblil
+#. [side]: type=Orcish Warlord, id=Kior-Pur
+#. [side]: type=Orcish Warlord, id=Mbiran
+#. [side]: type=Orcish Warlord, id=Tan-Durr
 #. [side]: type=Saurian Flanker, id=Spahr
 #. [side]: type=Saurian Flanker, id=Hgyr
+#. [side]: type=Elvish Marshal, id=Crintil
+#. [side]: type=Elvish Captain, id=Oblil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:193
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:229
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:262
@@ -483,8 +506,12 @@ msgstr "오크들이 모든 방면에서 우릴 압박하고 있다! 전투 준�
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:336
+#, fuzzy
+#| msgid ""
+#| "Hold, Kalenz. The Ka’lian council should discuss our response. Maybe we "
+#| "can reach an agreement with them!"
 msgid ""
-"Hold, Kalenz. The Ka’lian council should discuss our response. Maybe we can "
+"Hold, Kalenz. The Ka’lian Council should discuss our response. Maybe we can "
 "reach an agreement with them!"
 msgstr ""
 "멈추게, Kalenz. Ka'lian 의회에서 우리가 취할 대응에 대해 의논할걸세. 어쩌면 "
@@ -516,8 +543,12 @@ msgstr "자네를 따르지, Kalenz — 하지만 어디로 가지?"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:360
+#, fuzzy
+#| msgid ""
+#| "We must reach the elvish council in Ka’lian and enlist their help to "
+#| "recapture our home."
 msgid ""
-"We must reach the elvish council in Ka’lian and enlist their help to "
+"We must reach the Elvish Council in Ka’lian and enlist their help to "
 "recapture our home."
 msgstr ""
 "우린 엘프 의회 Ka'lian으로 가서 우리 고향을 되찾는데 도움을 청해야 하네."
@@ -892,7 +923,9 @@ msgstr "대장, 이 저주받을 나무붙이들이 우릴 압도하고 있어�
 
 #. [message]: speaker=unit
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/03_Kalian_under_Attack.cfg:331
-msgid "We die, but more come after us, Orcs will rule all!"
+#, fuzzy
+#| msgid "We die, but more come after us, Orcs will rule all!"
+msgid "We die, but more come after us, orcs will rule all!"
 msgstr ""
 "우린 죽지만, 더 많은 수가 뒤따라 올것이다, 오크들이 모든 걸 지배할 것이다!"
 
@@ -1198,8 +1231,8 @@ msgstr "Shurm"
 msgid "Trigr"
 msgstr "Trigr"
 
-#. [objectives]
 #. [objective]: condition=win
+#. [objectives]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:168
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:209
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:369
@@ -1212,8 +1245,11 @@ msgstr "모든 적 지휘관 격파"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:243
+#, fuzzy
+#| msgid ""
+#| "It seems that we are too late. The Treasury has fallen to the Saurians..."
 msgid ""
-"It seems that we are too late. The Treasury has fallen to the Saurians..."
+"It seems that we are too late. The Treasury has fallen to the saurians..."
 msgstr "우리가 너무 늦었군. 보고가 사우리언들에게 함락당했어...."
 
 #. [message]: id=Huraldur
@@ -1259,8 +1295,13 @@ msgstr "네가 그걸 즐길 일은 없을거다!"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:328
+#, fuzzy
+#| msgid ""
+#| "We are free! My lord Kalenz, from this day forward I and my men are your "
+#| "sworn followers. And there is that which you should know about the "
+#| "treasure the orcs seek..."
 msgid ""
-"We are free! My lord Kalenz, from this day forward I and my men are your "
+"We are free! My lord Kalenz, from this day forward I and my kin are your "
 "sworn followers. And there is that which you should know about the treasure "
 "the orcs seek..."
 msgstr ""
@@ -1328,8 +1369,12 @@ msgstr ""
 
 #. [message]: race=elf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:394
+#, fuzzy
+#| msgid ""
+#| "The war with the Orcs goes poorly. The Ka’lian will need that gold back "
+#| "to buy arms and food, to hire artisans, to support its armies."
 msgid ""
-"The war with the Orcs goes poorly. The Ka’lian will need that gold back to "
+"The war with the orcs goes poorly. The Ka’lian will need that gold back to "
 "buy arms and food, to hire artisans, to support its armies."
 msgstr ""
 "오크와의 전쟁이 좋지 않게 돌아가고 있습니다. Ka'lian이 무기와 식량을 사고, 군"
@@ -1370,8 +1415,12 @@ msgstr "사우리언 보고"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:41
+#, fuzzy
+#| msgid ""
+#| "Elvish scouts found the trail of the Saurian war party without "
+#| "difficulty. The way back to the saurians’ treasury was clear..."
 msgid ""
-"Elvish scouts found the trail of the Saurian war party without difficulty. "
+"Elvish scouts found the trail of the saurian war party without difficulty. "
 "The way back to the saurians’ treasury was clear..."
 msgstr ""
 "엘프 정찰꾼들은 별 어려움 없이 사우리언 부대의 흔적을 찾아냈다. 사우리언 보고"
@@ -1483,10 +1532,16 @@ msgstr ""
 #. [message]: id=Kalenz
 #. "fare" is an archaic English verb meaning to travel or move.
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:493
+#, fuzzy
+#| msgid ""
+#| "Turnabout is fair play. Now that we’ve retrieved the gold, let us fare "
+#| "swiftly back to Wesmere and bring the gold back as Cleodil wishes. The "
+#| "Saurians will likely be infesting the direct route, so we will detour to "
+#| "the north."
 msgid ""
 "Turnabout is fair play. Now that we’ve retrieved the gold, let us fare "
 "swiftly back to Wesmere and bring the gold back as Cleodil wishes. The "
-"Saurians will likely be infesting the direct route, so we will detour to the "
+"saurians will likely be infesting the direct route, so we will detour to the "
 "north."
 msgstr ""
 "우리가 이것을 탈취한 것은 정당한 일이다. 이제 금을 되찾았으니 서둘러 Wesmere"
@@ -1495,9 +1550,14 @@ msgstr ""
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/05_The_Saurian_Treasury.cfg:497
+#, fuzzy
+#| msgid ""
+#| "But Kalenz, this is a boon unlooked for! With the surplus gold we could "
+#| "take the war immediately to the Orcs. We could come down upon them like "
+#| "thunder while they believe us still reeling from their invasion!"
 msgid ""
 "But Kalenz, this is a boon unlooked for! With the surplus gold we could take "
-"the war immediately to the Orcs. We could come down upon them like thunder "
+"the war immediately to the orcs. We could come down upon them like thunder "
 "while they believe us still reeling from their invasion!"
 msgstr ""
 "하지만 Kalnez, 이건 예상 외의 이익이야! 더 많은 자금으로 우린 바로 오크와의 "
@@ -1937,7 +1997,7 @@ msgstr "그리고 우린 엘프 보고에 남아있던 것을 가져왔습니다
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:583
 #, fuzzy
 #| msgid "Perhaps the gold will our word weight with the council."
-msgid "Perhaps the gold will give our words more weight with the council."
+msgid "Perhaps the gold will give our words more weight with the Council."
 msgstr "어쩌면 이 자금이 의회에서 우리의 말에 힘을 실어줄지도 모르지."
 
 #. [message]: speaker=narrator
@@ -1954,8 +2014,8 @@ msgstr ""
 " 는 되찾은 자금을 엘프 보고에 돌려놓았습니다. 당신은 다음 시나리오를 조정된 "
 "자금량으로 시작하게 됩니다."
 
-#. [part]
 #. [message]: speaker=narrator
+#. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:589
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:41
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:51
@@ -1997,8 +2057,8 @@ msgstr ""
 msgid "Kalenz"
 msgstr "Kalenz"
 
-#. [part]
 #. [message]: speaker=narrator
+#. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/07_Elves_Last_Stand.cfg:595
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:61
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:81
@@ -2094,10 +2154,15 @@ msgstr "Dionli"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:41
+#, fuzzy
+#| msgid ""
+#| "My lords, this is Olurf. He and his dwarves have fought by our side and "
+#| "have well earned a place in this meeting. The war that comes upon us must "
+#| "be met by all in Wesnoth; Elves, Dwarves and Humans."
 msgid ""
 "My lords, this is Olurf. He and his dwarves have fought by our side and have "
 "well earned a place in this meeting. The war that comes upon us must be met "
-"by all in Wesnoth; Elves, Dwarves and Humans."
+"by all in Wesnoth; elves, dwarves and humans."
 msgstr ""
 "의원 여러분, 이쪽은 Olurf라 합니다. 그와 드워프들은 우리 편에 서서 싸웠고, "
 "이 모임의 한 자리를 가질 충분한 자격을 얻었습니다. 우리에게 닥친 전쟁에 맞서"
@@ -2119,10 +2184,10 @@ msgstr "El'Isomithir"
 #| "When he arrived on our shore he was very humble, but now his arrogance "
 #| "knows no bounds. He believes the Orcs will not dare to fight him."
 msgid ""
-"Leave the Humans out of this. King Haldric has broken the treaty we signed "
+"Leave the humans out of this. King Haldric has broken the treaty we signed "
 "with him eighteen years ago, and has sent back all our emissaries. When he "
 "arrived on our shore he was very humble, but now his arrogance knows no "
-"bounds. He believes the Orcs will not dare to fight him."
+"bounds. He believes the orcs will not dare to fight him."
 msgstr ""
 "여기서 인간은 빼도록 하게. Haldric 왕은 11년 전에 우리가 조인했던 조약을 깨뜨"
 "렸고, 우리의 외교관 전부를 돌려보냈네. 처음으로 우리의 해안에 도착했을때만 해"
@@ -2131,8 +2196,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:51
+#, fuzzy
+#| msgid ""
+#| "My lords, the Orcs have been pushed out of Wesmere, but they are far from "
+#| "defeated. We must take the fight to them, recover our lost lands and "
+#| "smash their great horde beyond possibility that it will threaten us again."
 msgid ""
-"My lords, the Orcs have been pushed out of Wesmere, but they are far from "
+"My lords, the orcs have been pushed out of Wesmere, but they are far from "
 "defeated. We must take the fight to them, recover our lost lands and smash "
 "their great horde beyond possibility that it will threaten us again."
 msgstr ""
@@ -2148,10 +2218,17 @@ msgstr "Legmir"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:56
+#, fuzzy
+#| msgid ""
+#| "Too many elves have died already. To take the war to the Orcs, we would "
+#| "have to risk all our remaining fighters on one throw. And we are not as "
+#| "skilled in fighting outside our forests. We have already shown the Orcs "
+#| "that attacking us is folly; the prudent course would be to rebuild our "
+#| "strength."
 msgid ""
-"Too many elves have died already. To take the war to the Orcs, we would have "
+"Too many elves have died already. To take the war to the orcs, we would have "
 "to risk all our remaining fighters on one throw. And we are not as skilled "
-"in fighting outside our forests. We have already shown the Orcs that "
+"in fighting outside our forests. We have already shown the orcs that "
 "attacking us is folly; the prudent course would be to rebuild our strength."
 msgstr ""
 "이미 너무나 많은 엘프들이 죽었네. 오크들과 전쟁을 벌이자면 우리에게 남은 모"
@@ -2172,9 +2249,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:66
+#, fuzzy
+#| msgid ""
+#| "Our answer is still no. Prepare our defenses as best you can, but do not "
+#| "renew offensive war. This is the council’s decision."
 msgid ""
 "Our answer is still no. Prepare our defenses as best you can, but do not "
-"renew offensive war. This is the council’s decision."
+"renew offensive war. This is the Council’s decision."
 msgstr ""
 "우리의 대답은 여전히 부정적이네. 할 수 있는만큼 우리의 방어를 보강하되, 공격"
 "적인 전쟁은 해선 안되네. 이것이 의회의 결정이네."
@@ -2186,7 +2267,9 @@ msgstr "여파"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:71
-msgid "After leaving the council, our friends talked in private..."
+#, fuzzy
+#| msgid "After leaving the council, our friends talked in private..."
+msgid "After leaving the Council, our friends talked in private..."
 msgstr "의회를 나서서, 우리의 친구들은 개인적으로 모였다..."
 
 #. [part]
@@ -2230,8 +2313,12 @@ msgstr "Cleodil"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:86
+#, fuzzy
+#| msgid ""
+#| "I too am troubled by the council’s passivity. But it was not our decision "
+#| "to make."
 msgid ""
-"I too am troubled by the council’s passivity. But it was not our decision to "
+"I too am troubled by the Council’s passivity. But it was not our decision to "
 "make."
 msgstr ""
 "저 또한 의회의 수동성에 불만을 느끼고 있습니다. 하지만 우리가 결정을 내릴 사"
@@ -2239,10 +2326,15 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:92
+#, fuzzy
+#| msgid ""
+#| "This is madness! The Orcs will but regain their strength and attack "
+#| "again, if we give them the time! We must have some other sort of help. "
+#| "Olurf, can we perhaps make a war-pact with the Dwarves?"
 msgid ""
-"This is madness! The Orcs will but regain their strength and attack again, "
+"This is madness! The orcs will but regain their strength and attack again, "
 "if we give them the time! We must have some other sort of help. Olurf, can "
-"we perhaps make a war-pact with the Dwarves?"
+"we perhaps make a war-pact with the dwarves?"
 msgstr ""
 "이건 미친 짓이야! 우리가 오크들에게 시간을 줬다간, 힘을 비축하자마자 다시 공"
 "격해 올거야! 우린 다른 종류의 도움이라도 얻어야만 해. Olurf, 혹시 우리가 드워"
@@ -2250,8 +2342,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:97
+#, fuzzy
+#| msgid ""
+#| "I dinna’ think it can be, Kalenz. My people are too suspicious of you "
+#| "Elves. But it may be there is something else we can do. I ha’ heard tale "
+#| "of a powerful mage in the mountains who helped our people before. Maybe "
+#| "he will aid us again."
 msgid ""
-"I dinna’ think it can be, Kalenz. My people are too suspicious of you Elves. "
+"I dinna’ think it can be, Kalenz. My people are too suspicious of you elves. "
 "But it may be there is something else we can do. I ha’ heard tale of a "
 "powerful mage in the mountains who helped our people before. Maybe he will "
 "aid us again."
@@ -2288,8 +2386,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:112
+#, fuzzy
+#| msgid ""
+#| "I think the Orcs will be in no position to attack us for some time. Maybe "
+#| "we should go see this mage. Olurf, can you take us there?"
 msgid ""
-"I think the Orcs will be in no position to attack us for some time. Maybe we "
+"I think the orcs will be in no position to attack us for some time. Maybe we "
 "should go see this mage. Olurf, can you take us there?"
 msgstr ""
 "한동안은 오크들이 우릴 공격할 여력이 있진 않을 것 같군. 아무래도 그 마법사를 "
@@ -2302,8 +2404,12 @@ msgstr "가능할거요. 하지만 위험한 길이 될거요!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/08_Council_of_Hard_Choices.cfg:122
+#, fuzzy
+#| msgid ""
+#| "Very well. We shall leave our best troops and gold here in case the Orcs "
+#| "attack Wesmere again."
 msgid ""
-"Very well. We shall leave our best troops and gold here in case the Orcs "
+"Very well. We shall leave our best troops and gold here in case the orcs "
 "attack Wesmere again."
 msgstr ""
 "좋소. 오크들이 Wesmere를 또 공격할 것에 대비해 정예부대와 돈은 여기 두고가야"
@@ -2409,8 +2515,12 @@ msgstr "저놈들이 무슨 소릴 하는거야?"
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:344
+#, fuzzy
+#| msgid ""
+#| "It would seem the Saurians put a bounty on our heads for having the "
+#| "effrontery to take our gold back after they stole it. Are you interested?"
 msgid ""
-"It would seem the Saurians put a bounty on our heads for having the "
+"It would seem the saurians put a bounty on our heads for having the "
 "effrontery to take our gold back after they stole it. Are you interested?"
 msgstr ""
 "사우리언들이 놈들이 훔쳐간 우리 금을 되찾아온 것 때문에 우리 목에 현상금을 "
@@ -2418,9 +2528,13 @@ msgstr ""
 
 #. [message]: id=Olurf
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:348
+#, fuzzy
+#| msgid ""
+#| "No, but my axe is interested in some saurian heads! They ha’ been too "
+#| "friendly with the Orcs for my liking!"
 msgid ""
 "No, but my axe is interested in some saurian heads! They ha’ been too "
-"friendly with the Orcs for my liking!"
+"friendly with the orcs for my liking!"
 msgstr ""
 "아니, 하지만 내 도끼는 사우리언 모가지들에 흥미가 좀 있지! 저놈들은 내 취향"
 "이 되기에는 너무 오크와 가까운 족속이야!"
@@ -2858,9 +2972,15 @@ msgstr "계시"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:22
+#, fuzzy
+#| msgid ""
+#| "So you are the ones who defeated Aquagar and his drakes. Olurf, I know "
+#| "you; you were here before when we were both much younger. But Elves never "
+#| "come to Thoria. Yet these are no ordinary times for this land. I know "
+#| "all; I have foreseen this would happen."
 msgid ""
 "So you are the ones who defeated Aquagar and his drakes. Olurf, I know you; "
-"you were here before when we were both much younger. But Elves never come to "
+"you were here before when we were both much younger. But elves never come to "
 "Thoria. Yet these are no ordinary times for this land. I know all; I have "
 "foreseen this would happen."
 msgstr ""
@@ -2943,9 +3063,14 @@ msgstr "그렇네, 바로 그 말일세."
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:72
+#, fuzzy
+#| msgid ""
+#| "It makes sense now. The Saurians were asking about a dastone, and also "
+#| "after we won in Wesmere there was an Orc mumbling something about a "
+#| "dastone..."
 msgid ""
-"It makes sense now. The Saurians were asking about a dastone, and also after "
-"we won in Wesmere there was an Orc mumbling something about a dastone..."
+"It makes sense now. The saurians were asking about a dastone, and also after "
+"we won in Wesmere there was an orc mumbling something about a dastone..."
 msgstr ""
 "그렇다면 이제 이해가 되는군요. 사우리언들은 거돌에 대한 걸 물었었고, 우리가 "
 "Wesmere에서 승리한 직후에도 오크들이 거돌에 대해 뭔가 중얼거렸어요..."
@@ -2975,8 +3100,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/12_Revelations.cfg:92
+#, fuzzy
+#| msgid ""
+#| "Hmm... You seem to love king Haldric even less than the elf-lords of the "
+#| "Ka’lian do... How do you know all this of him?"
 msgid ""
-"Hmm... You seem to love king Haldric even less than the elf-lords of the "
+"Hmm... You seem to love King Haldric even less than the elf-lords of the "
 "Ka’lian do... How do you know all this of him?"
 msgstr ""
 "흠... 당신은 Ka'lian의 엘프 군주들보다도 더 Haldric 왕을 싫어하는것 같소... "
@@ -3476,7 +3605,9 @@ msgstr "Aldar의 사망"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:292
-msgid "Tremble, orcs! The vengeance of the Elves is upon you!!"
+#, fuzzy
+#| msgid "Tremble, orcs! The vengeance of the Elves is upon you!!"
+msgid "Tremble, orcs! The vengeance of the elves is upon you!"
 msgstr "떨어라, 오크들아! 엘프의 복수가 너희 눈앞에 있다!"
 
 #. [message]: id=Aldar
@@ -3630,12 +3761,17 @@ msgstr "절대 청동으로 된 전쟁 나팔소리는 아닌 소리가 멀리�
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:608
-msgid "We have thwarted the Orcs once again!"
+#, fuzzy
+#| msgid "We have thwarted the Orcs once again!"
+msgid "We have thwarted the orcs once again!"
 msgstr "우리가 오크들을 또 한번 좌절시켰다!"
 
 #. [message]: id=Cleodil
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/14_Human_Alliance.cfg:612
-msgid "And we revived the alliance with the Humans, which is no small thing."
+#, fuzzy
+#| msgid ""
+#| "And we revived the alliance with the Humans, which is no small thing."
+msgid "And we revived the alliance with the humans, which is no small thing."
 msgstr ""
 "그리고 인간과의 연맹이 재건되었지요, 이건 결코 작은 일이라 할 수 없어요."
 
@@ -3712,9 +3848,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:32
+#, fuzzy
+#| msgid ""
+#| "What? We cannot trust these humans! Where were they when we fought the "
+#| "orcs alone? This King is bound to betray us just as his father did!"
 msgid ""
 "What? We cannot trust these humans! Where were they when we fought the orcs "
-"alone? This King is bound to betray us just as his father did!"
+"alone? This king is bound to betray us just as his father did!"
 msgstr ""
 "뭐라고? 우린 인간들을 믿을 수 없어! 우리가 오크와 홀로 싸울때 저들은 어디 있"
 "었나? 이 왕도 그 아버지가 했던 것처럼 우릴 배신할거야!"
@@ -3751,9 +3891,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/15_The_Treaty.cfg:47
+#, fuzzy
+#| msgid ""
+#| "The King speaks wisdom. We cannot undo the past. And we need each other "
+#| "to fight the orcs. I will sign the treaty on behalf of the Elves."
 msgid ""
 "The King speaks wisdom. We cannot undo the past. And we need each other to "
-"fight the orcs. I will sign the treaty on behalf of the Elves."
+"fight the orcs. I will sign the treaty on behalf of the elves."
 msgstr ""
 "왕께서 현명한 말씀을 하셨소. 우린 과거를 되돌릴 순 없소. 그리고 우린 오크와 "
 "함께 싸워야 하지. 내가 엘프들을 대표하여 조약에 서명하겠소."
@@ -4433,9 +4577,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:44
+#, fuzzy
+#| msgid ""
+#| "But Kalenz failed to persuade the dwarves. The dwarves left, and Landar "
+#| "insisted the elves must march on the empire of the Saurians..."
 msgid ""
 "But Kalenz failed to persuade the dwarves. The dwarves left, and Landar "
-"insisted the elves must march on the empire of the Saurians..."
+"insisted the elves must march on the empire of the saurians..."
 msgstr ""
 "하지만 Kalenz는 드워프들을 설득하는데 실패했다. 드워프들은 떠났고, Landar는 "
 "엘프들에게 Saurian의 왕국으로 진군해야 한다고 주장했다..."
@@ -4607,9 +4755,14 @@ msgstr "의회의 결정"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:16
+#, fuzzy
+#| msgid ""
+#| "With the once mighty Saurian empire destroyed, saurians had been reduced "
+#| "to scattered bands lurking in waste places. But the Elves still had "
+#| "problems of their own..."
 msgid ""
-"With the once mighty Saurian empire destroyed, saurians had been reduced to "
-"scattered bands lurking in waste places. But the Elves still had problems of "
+"With the once mighty saurian empire destroyed, saurians had been reduced to "
+"scattered bands lurking in waste places. But the elves still had problems of "
 "their own..."
 msgstr ""
 "한때 강력했던 사우리언 제국이 파괴되자, 사우리언들은 황무지에 숨은 흩어진 무"
@@ -4617,11 +4770,18 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:26
+#, fuzzy
+#| msgid ""
+#| "Kalenz, the council has called you here to demand that you apologize for "
+#| "your actions. You took the decision to help the humans at Tath, and hence "
+#| "risk further war with the Orcs; to strike at the orcs north; and last to "
+#| "attack the Saurians. These were decisions to be taken by the council, not "
+#| "by a field commander!"
 msgid ""
-"Kalenz, the council has called you here to demand that you apologize for "
+"Kalenz, the Council has called you here to demand that you apologize for "
 "your actions. You took the decision to help the humans at Tath, and hence "
-"risk further war with the Orcs; to strike at the orcs north; and last to "
-"attack the Saurians. These were decisions to be taken by the council, not by "
+"risk further war with the orcs; to strike at the orcs north; and last to "
+"attack the saurians. These were decisions to be taken by the Council, not by "
 "a field commander!"
 msgstr ""
 "Kalenz, 본 의회는 그대의 행동에 대해 사과할 것을 요구하기 위해 그대를 소환하"
@@ -4632,12 +4792,20 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:31
+#, fuzzy
+#| msgid ""
+#| "With all respect my lords, we were and still are in a war. We could not "
+#| "spare the time to consult with you, lest our opportunities slip from our "
+#| "grasp and make the war longer and more costly. Besides, all our actions "
+#| "have been beneficial to our cause: The Orcs are now in a civil war for "
+#| "succession, the North Elves are free and the Saurians are no longer a "
+#| "threat."
 msgid ""
 "With all respect my lords, we were and still are in a war. We could not "
 "spare the time to consult with you, lest our opportunities slip from our "
 "grasp and make the war longer and more costly. Besides, all our actions have "
-"been beneficial to our cause: The Orcs are now in a civil war for "
-"succession, the North Elves are free and the Saurians are no longer a threat."
+"been beneficial to our cause: The orcs are now in a civil war for "
+"succession, the North Elves are free and the saurians are no longer a threat."
 msgstr ""
 "매우 죄송하지만 각하, 저희는 이전에도 그렇고 지금도 여전히 전쟁중입니다. 우"
 "린 기회를 우리 손에서 놓쳐서 전쟁을 더 길고 큰 대가를 치르는 것으로 만들 수 "
@@ -4647,9 +4815,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:36
+#, fuzzy
+#| msgid ""
+#| "The council is not blind to these benefits. But, still, you cannot decide "
+#| "high matters of statecraft on behalf of the Elves. We cannot allow it."
 msgid ""
-"The council is not blind to these benefits. But, still, you cannot decide "
-"high matters of statecraft on behalf of the Elves. We cannot allow it."
+"The Council is not blind to these benefits. But, still, you cannot decide "
+"high matters of statecraft on behalf of the elves. We cannot allow it."
 msgstr ""
 "본 의회가 그런 이점들을 모르는 것은 아니오. 하지만, 그럼에도 불구하고, 그대에"
 "게 엘프들을 대표해서 국정 운영에 관한 중요한 문제를 결정할 권리는 없소. 우린 "
@@ -4686,8 +4858,12 @@ msgstr "Uradredia"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/20_Council_Ruling.cfg:51
+#, fuzzy
+#| msgid ""
+#| "Kalenz, the council has decided that you are to be stripped of all "
+#| "military authority. You may now go."
 msgid ""
-"Kalenz, the council has decided that you are to be stripped of all military "
+"Kalenz, the Council has decided that you are to be stripped of all military "
 "authority. You may now go."
 msgstr ""
 "Kalenz, 본 의회는 그대에게서 모든 군사적인 권한을 박탈할 것을 결정했소. 이제 "
@@ -4774,7 +4950,9 @@ msgstr ""
 
 #. [message]: role=betrayer
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:133
-msgid "Only Landar has the will to do what must be done to save the Elves!"
+#, fuzzy
+#| msgid "Only Landar has the will to do what must be done to save the Elves!"
+msgid "Only Landar has the will to do what must be done to save the elves!"
 msgstr "오직 Landar님만이 엘프들을 구할 일을 하실 의지를 가지고 있다!"
 
 #. [message]: role=betrayer
@@ -4789,8 +4967,12 @@ msgstr "공격을 멈춰라, $unit.name|! $second_unit.name|은 이제 우리 �
 
 #. [message]: role=betrayer
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:202
+#, fuzzy
+#| msgid ""
+#| "I will not stand by as Kalenz betrays us to the Humans and Dwarves. We "
+#| "follow Landar now!"
 msgid ""
-"I will not stand by as Kalenz betrays us to the Humans and Dwarves. We "
+"I will not stand by as Kalenz betrays us to the humans and dwarves. We "
 "follow Landar now!"
 msgstr ""
 "Kalenz가 인간과 드워프들에게 우릴 팔아먹는 것을 용납하지 않겠다. 우린 이제 "
@@ -4837,8 +5019,13 @@ msgstr "뭐라고?!"
 
 #. [message]: id=Galenor
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:419
+#, fuzzy
+#| msgid ""
+#| "Landar has seized control of the army. He has eliminated the council and "
+#| "proclaimed himself High Warlord of the Elves. What is worse, there is "
+#| "word out that he has already ordered your assassination."
 msgid ""
-"Landar has seized control of the army. He has eliminated the council and "
+"Landar has seized control of the army. He has eliminated the Council and "
 "proclaimed himself High Warlord of the Elves. What is worse, there is word "
 "out that he has already ordered your assassination."
 msgstr ""
@@ -4852,9 +5039,13 @@ msgstr "이미 늦었다! 배신자들은 전부 죽을 것이다!"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/21_Elvish_Assassins.cfg:427
+#, fuzzy
+#| msgid ""
+#| "Listen to me! We have fought and bled side by side. We must trust in each "
+#| "other and face the Orcs together!"
 msgid ""
 "Listen to me! We have fought and bled side by side. We must trust in each "
-"other and face the Orcs together!"
+"other and face the orcs together!"
 msgstr ""
 "내 말을 들어다오! 우리는 함께 싸우며 피흘려왔다. 우리는 서로를 믿고 함께 오크"
 "에 맞서야 한다!"
@@ -5104,8 +5295,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/24_Epilogue.cfg:30
+#, fuzzy
+#| msgid ""
+#| "Kalenz reorganized the Elves so they could mobilize for war more readily. "
+#| "He knew that the orcish threat was not over; that the elves, through "
+#| "hesitation, had lost a golden opportunity to end the threat and that "
+#| "trouble would someday return."
 msgid ""
-"Kalenz reorganized the Elves so they could mobilize for war more readily. He "
+"Kalenz reorganized the elves so they could mobilize for war more readily. He "
 "knew that the orcish threat was not over; that the elves, through "
 "hesitation, had lost a golden opportunity to end the threat and that trouble "
 "would someday return."
@@ -5126,12 +5323,19 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/24_Epilogue.cfg:39
+#, fuzzy
+#| msgid ""
+#| "Cleodil bore Kalenz children who were tall, and beautiful, and inherited "
+#| "in full measure both their mother’s healing gifts and their father’s "
+#| "talented and searching mind. In the fullness of time, after a long life "
+#| "full of accomplishment and love and laughter, Cleodil died after the "
+#| "manner of Elves, aging swiftly to a peaceful end."
 msgid ""
 "Cleodil bore Kalenz children who were tall, and beautiful, and inherited in "
 "full measure both their mother’s healing gifts and their father’s talented "
 "and searching mind. In the fullness of time, after a long life full of "
 "accomplishment and love and laughter, Cleodil died after the manner of "
-"Elves, aging swiftly to a peaceful end."
+"elves, aging swiftly to a peaceful end."
 msgstr ""
 "Cleodil은 Kalenz에게 키 크고 아름다우며 그 어머니의 치유의 재능과 그 아버지"
 "의 재능과 면밀한 심성을 이어받은 아이들을 안겨주었다. 세월이 흐르고, 성취와 "

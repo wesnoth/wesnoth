@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Fabian Müller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include "editor/map/map_context.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/group.hpp"
+#include "side_controller.hpp"
 #include "team.hpp"
 
 namespace gui2
@@ -48,11 +49,11 @@ private:
 	virtual void pre_show(window& window) override;
 	virtual void post_show(window& window) override;
 
-	team::CONTROLLER& controller_;
-	group<team::CONTROLLER> controller_group;
+	side_controller::type& controller_;
+	group<side_controller::type> controller_group;
 
-	team::SHARE_VISION& share_vision_;
-	group<team::SHARE_VISION> vision_group;
+	team_shared_vision::type& share_vision_;
+	group<team_shared_vision::type> vision_group;
 
 	virtual const std::string& window_id() const override;
 };

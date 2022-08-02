@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -78,7 +78,6 @@ std::vector<unsigned int> zoom_levels {36, 72, 144};
 //
 double hp_bar_scaling  = 0.666;
 double xp_bar_scaling  = 0.5;
-double hex_brightening = 1.25;
 
 //
 // Misc
@@ -228,6 +227,7 @@ std::string
 	level,
 	ellipsis,
 	missing,
+	blank,
 	// notifications icon
 	app_icon = "images/icons/icon-game.png";
 
@@ -361,11 +361,11 @@ void load_config(const config &v)
 		level      = i["level"].str();
 		ellipsis   = i["ellipsis"].str();
 		missing    = i["missing"].str();
+		blank      = i["blank"].str();
 	} // images
 
 	hp_bar_scaling  = v["hp_bar_scaling"].to_double(0.666);
 	xp_bar_scaling  = v["xp_bar_scaling"].to_double(0.5);
-	hex_brightening = v["hex_brightening"].to_double(1.25);
 
 	foot_speed_prefix   = utils::split(v["footprint_prefix"]);
 	foot_teleport_enter = v["footprint_teleport_enter"].str();
@@ -394,7 +394,7 @@ void load_config(const config &v)
 			try {
 				color_vec.push_back(color_t::from_hex_string(s));
 			} catch(const std::invalid_argument& e) {
-				ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what() << std::endl;
+				ERR_NG << "Error parsing color list '" << key << "'.\n" << e.what();
 				color_vec.push_back(fallback);
 			}
 		}
@@ -410,10 +410,10 @@ void load_config(const config &v)
 	server_list.clear();
 
 	for(const config& server : v.child_range("server")) {
-        server_info sinf;
-        sinf.name = server["name"].str();
-        sinf.address = server["address"].str();
-        server_list.push_back(sinf);
+		server_info sinf;
+		sinf.name = server["name"].str();
+		sinf.address = server["address"].str();
+		server_list.push_back(sinf);
 	}
 
 	if(const config& s = v.child("sounds")) {
@@ -477,7 +477,7 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 		team_rgb_range.emplace(id, color_range(temp));
 		team_rgb_name.emplace(id, teamC["name"].t_str());
 
-		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug() << '\n';
+		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
 		// Ggenerate palette of same name;
 		std::vector<color_t> tp = palette(team_rgb_range[id]);
@@ -497,12 +497,12 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 				try {
 					temp.push_back(color_t::from_hex_string(s));
 				} catch(const std::invalid_argument&) {
-					ERR_NG << "Invalid color in palette: " << s << std::endl;
+					ERR_NG << "Invalid color in palette: " << s;
 				}
 			}
 
 			team_rgb_colors.emplace(rgb.first, temp);
-			LOG_NG << "registered color palette: " << rgb.first << '\n';
+			LOG_NG << "registered color palette: " << rgb.first;
 		}
 	}
 }
@@ -548,7 +548,7 @@ const std::vector<color_t>& tc_info(const std::string& name)
 			temp.push_back(color_t::from_hex_string(s));
 		} catch(const std::invalid_argument&) {
 			static std::vector<color_t> stv;
-			ERR_NG << "Invalid color in palette: " << s << std::endl;
+			ERR_NG << "Invalid color in palette: " << s;
 			return stv;
 		}
 	}
@@ -557,22 +557,22 @@ const std::vector<color_t>& tc_info(const std::string& name)
 	return tc_info(name);
 }
 
-color_t red_to_green(int val, bool for_text)
+color_t red_to_green(double val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? red_green_scale_text : red_green_scale;
 
-	val = std::clamp(val, 0, 100);
-	const int lvl = (color_scale.size() - 1) * val / 100;
+	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
+	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
 
 	return color_scale[lvl];
 }
 
-color_t blue_to_white(int val, bool for_text)
+color_t blue_to_white(double val, bool for_text)
 {
 	const std::vector<color_t>& color_scale = for_text ? blue_white_scale_text : blue_white_scale;
 
-	val = std::clamp(val, 0, 100);
-	const int lvl = (color_scale.size() - 1) * val / 100;
+	const double val_scaled = std::clamp(0.01 * val, 0.0, 1.0);
+	const int lvl = std::nearbyint((color_scale.size() - 1) * val_scaled);
 
 	return color_scale[lvl];
 }

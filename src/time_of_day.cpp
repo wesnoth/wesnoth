@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,8 +17,6 @@
 
 #include "config.hpp"
 #include "gettext.hpp"
-
-#include <iostream>
 
 std::ostream& operator<<(std::ostream& s, const tod_color& c)
 {

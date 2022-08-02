@@ -15,7 +15,7 @@ local strings = {
 -- can move in same turn as when recruited/recalled
 function wesnoth.effects.wc2_unitmarker(u, cfg)
 	local number = math.min(cfg.number or 1, #img_is_special_overlays)
-	
+
 	u.variables["mods.wc2_unitmarker"] = number
 	u:add_modification("object", {
 		wml.tag.effect {
@@ -23,7 +23,7 @@ function wesnoth.effects.wc2_unitmarker(u, cfg)
 			add = img_is_special_overlays[number],
 		}
 	}, false)
-	
+
 end
 
 function wesnoth.wml_actions.wc2_toggle_overlay(cfg)

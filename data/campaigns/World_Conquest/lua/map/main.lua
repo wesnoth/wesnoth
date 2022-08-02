@@ -60,12 +60,6 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		},
 		options = {
 			wml.tag.checkbox {
-				id="wc2_config_enable_pya",
-				default=true,
-				name="Enable advancement mod",
-				description="enables the buildin mod to preselect what unit will advance into, disable this to be compatible with other mods that do the same thing",
-			},
-			wml.tag.checkbox {
 				id="wc2_config_enable_unitmarker",
 				default=true,
 				name="Enable unitmarker",
@@ -75,7 +69,7 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		variables = {
 			wc2_scenario = scenario_num,
 			wc2_player_count = nplayers,
-			wc2_host_version = "0.8.2"
+			wc2_host_version = "0.8.4"
 		},
 		side = {},
 		id = gen_args.id,

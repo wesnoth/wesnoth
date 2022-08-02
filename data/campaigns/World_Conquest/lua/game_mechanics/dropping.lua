@@ -8,7 +8,7 @@ local dropping = {}
 
 dropping.remove_current_item = function()
 	local ec = wesnoth.current.event_context
-	
+
 	wesnoth.interface.remove_item(ec.x1, ec.y1, dropping.current_item.name)
 	dropping.item_taken = true
 end
@@ -20,7 +20,7 @@ on_event("moveto", function(event_context)
 	for i, item in ipairs(items) do
 		dropping.current_item = item
 		dropping.item_taken = nil
-		wesnoth.fire_event("wc2_drop_pickup", x, y)
+		wesnoth.game_events.fire("wc2_drop_pickup", x, y)
 		if dropping.item_taken then
 			wesnoth.interface.remove_item(x,y, item.name)
 		end

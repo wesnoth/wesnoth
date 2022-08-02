@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,8 +52,6 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #pragma warning(disable:4250)
 #endif
 
-typedef std::shared_ptr< lua_object<int> > lua_int_obj;
-
 class lua_candidate_action_wrapper_base : public candidate_action {
 
 public:
@@ -67,7 +65,7 @@ public:
 
 	virtual double evaluate()
 	{
-		lua_int_obj l_obj(new lua_object<int>());
+		auto l_obj = std::make_shared<lua_object<double>>();
 
 		if (evaluation_action_handler_) {
 			evaluation_action_handler_->handle(serialized_evaluation_state_, serialized_filterown_, true, l_obj);
@@ -75,7 +73,7 @@ public:
 			return BAD_SCORE;
 		}
 
-		std::shared_ptr<int> result = l_obj->get();
+		std::shared_ptr<double> result = l_obj->get();
 
 		return result ? *result : 0.0;
 	}
@@ -204,6 +202,15 @@ public:
 	{
 		lua_candidate_action_wrapper_base::execute();
 		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
+	}
+
+	virtual config to_config() const
+	{
+		config cfg = lua_candidate_action_wrapper::to_config();
+		cfg["sticky"] = true;
+		cfg["unit_x"] = bound_unit_->get_location().wml_x();
+		cfg["unit_y"] = bound_unit_->get_location().wml_y();
+		return cfg;
 	}
 private:
 	unit_ptr bound_unit_;
@@ -347,14 +354,14 @@ void engine_lua::do_parse_aspect_from_config( const config &cfg, const std::stri
 	lua_aspect_factory::factory_map::iterator f = lua_aspect_factory::get_list().find(aspect_factory_key);
 
 	if (f == lua_aspect_factory::get_list().end()){
-		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]" << std::endl;
-		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN aspect["<<aspect_factory_key<<"]";
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	aspect_ptr new_aspect = f->second->get_new_instance(ai_,cfg,id,lua_ai_context_);
 	if (!new_aspect) {
-		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]"<< std::endl;
-		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE aspect, key=["<<aspect_factory_key<<"]";
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_aspect;
@@ -364,15 +371,15 @@ void engine_lua::do_parse_goal_from_config(const config &cfg, std::back_insert_i
 {
 	goal_factory::factory_map::iterator f = goal_factory::get_list().find(cfg["name"]);
 	if (f == goal_factory::get_list().end()){
-		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNKNOWN goal["<<cfg["name"]<<"]";
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	goal_ptr new_goal = f->second->get_new_instance(ai_,cfg);
 	new_goal->on_create(lua_ai_context_);
 	if (!new_goal || !new_goal->ok()) {
-		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]"<< std::endl;
-		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg << std::endl;
+		ERR_AI_LUA << "side "<<ai_.get_side()<< " : UNABLE TO CREATE goal["<<cfg["name"]<<"]";
+		DBG_AI_LUA << "config snippet contains: " << std::endl << cfg;
 		return;
 	}
 	*b = new_goal;
@@ -383,6 +390,11 @@ std::string engine_lua::evaluate(const std::string &/*str*/)
 	// TODO: this is not mandatory, but if we want to allow lua to evaluate
 	// something 'in context' of this ai, this will be useful
 	return "";
+}
+
+void engine_lua::apply_micro_ai(const config &cfg)
+{
+	lua_ai_context_->apply_micro_ai(cfg);
 }
 
 config engine_lua::to_config() const

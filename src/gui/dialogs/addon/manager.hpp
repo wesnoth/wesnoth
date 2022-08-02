@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/addon_list.hpp"
-#include "gui/widgets/pane.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -29,7 +28,6 @@ namespace gui2
 {
 class text_box_base;
 class text_box;
-class pane;
 class selectable_item;
 class button;
 class stacked_widget;
@@ -152,7 +150,7 @@ private:
 
 	void apply_filters();
 	void order_addons();
-	void on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order);
+	void on_order_changed(unsigned int sort_column, sort_order::type order);
 	void show_help();
 
 	boost::dynamic_bitset<> get_name_filter_visibility() const;

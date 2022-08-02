@@ -256,29 +256,10 @@ game_stringfixes = {
 
 website_stringfixes = {
 
-"1.14-announcement" : (
-("better ingrate them", "better integrate them"),
-
-# Lua version number
-("5.3.4", "5.3"),
-
-# Yes, these are really flimsy. In hindsight it was a bad idea to include
-# download sizes in the announcement. Hopefully we won't end up with
-# files that have the same size in a release/in the last two releases
-# any time soon.
-
-# Source
-("wesnoth-1.14.16/wesnoth-1.14.16.tar.bz2", "wesnoth-1.14.17/wesnoth-1.14.17.tar.bz2"),
-#("462.5", "462.5"),
-# Windows
-("wesnoth-1.14.16/wesnoth-1.14.16-win32.exe", "wesnoth-1.14.17/wesnoth-1.14.17-win32.exe"),
-#("415.8", "415.8"),
-# macOS
-("wesnoth-1.14.16/Wesnoth_1.14.16.dmg", "wesnoth-1.14.17/Wesnoth_1.14.17.dmg"),
-#("454.6", "454.6"),
-
-("&#169; 2003&#8211;2020", "&#169; 2003&#8211;2021"),
-("&#169; 2017&#8211;2020", "&#169; 2017&#8211;2021"),
+"1.16-announcement" : (
+("<code>[variable]></code>", "<code>[variable]</code>"),
+("most notably in Eastern ", "most notably in <cite>Eastern "),
+("Invasion. The novice level", "Invasion</cite>. The novice level"),
 ),
 
 }

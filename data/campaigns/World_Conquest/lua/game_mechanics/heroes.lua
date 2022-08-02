@@ -89,13 +89,13 @@ function wc2_heroes.place(t, side, x, y, is_commander)
 end
 
 function wesnoth.wml_actions.wc2_random_hero(cfg)
-	local side_num = cfg.side or helper.wml_error("missing side= attribute in [wc2_initial_hero]")
-	local x = cfg.x or helper.wml_error("missing x= attribute in [wc2_initial_hero]")
-	local y = cfg.y or helper.wml_error("missing y= attribute in [wc2_initial_hero]")
+	local side_num = cfg.side or wml.error("missing side= attribute in [wc2_initial_hero]")
+	local x = cfg.x or wml.error("missing x= attribute in [wc2_initial_hero]")
+	local y = cfg.y or wml.error("missing y= attribute in [wc2_initial_hero]")
 	local t = wc2_era.pick_deserter(side_num)
 
 	if t == nil then
-		print("No serserter available for side", side_num)
+		print("No deserter available for side", side_num)
 		return
 	end
 	wc2_heroes.place(t, side_num, x, y)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,60 +18,7 @@
 #include "sdl/window.hpp"
 #include "video.hpp"
 
-namespace sdl
-{
-bool point_in_rect(int x, int y, const SDL_Rect& rect)
-{
-	SDL_Point p {x, y};
-	return SDL_PointInRect(&p, &rect) != SDL_FALSE;
-}
-
-bool point_in_rect(const point& point, const SDL_Rect& rect)
-{
-	return point_in_rect(point.x, point.y, rect);
-}
-
-bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	return (rect1.x < rect2.x+rect2.w && rect2.x < rect1.x+rect1.w &&
-			rect1.y < rect2.y+rect2.h && rect2.y < rect1.y+rect1.h);
-}
-
-SDL_Rect intersect_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	SDL_Rect res;
-	if(!SDL_IntersectRect(&rect1, &rect2, &res)) {
-		return empty_rect;
-	}
-
-	return res;
-}
-
-SDL_Rect union_rects(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	SDL_Rect res;
-	SDL_UnionRect(&rect1, &rect2, &res);
-
-	return res;
-}
-
-void draw_rectangle(const SDL_Rect& rect, const color_t& color)
-{
-	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
-
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-	SDL_RenderDrawRect(renderer, &rect);
-}
-
-void fill_rectangle(const SDL_Rect& rect, const color_t& color)
-{
-	SDL_Renderer* renderer = *CVideo::get_singleton().get_window();
-
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-	SDL_RenderFillRect(renderer, &rect);
-}
-
-} // namespace sdl
+#include <ostream>
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
 {
@@ -83,8 +30,87 @@ bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
 	return !operator==(a,b);
 }
 
-std::ostream& operator<<(std::ostream& s, const SDL_Rect& rect)
+std::ostream& operator<<(std::ostream& s, const SDL_Rect& r)
 {
-	s << "x: " << rect.x << ", y: " << rect.y << ", w: " << rect.w << ", h: " << rect.h;
+	s << '[' << r.x << ',' << r.y << '|' << r.w << ',' << r.h << ']';
+	return s;
+}
+
+bool rect::operator==(const rect& r) const
+{
+	return SDL_RectEquals(this, &r) != SDL_FALSE;
+}
+
+bool rect::operator==(const SDL_Rect& r) const
+{
+	return SDL_RectEquals(this, &r) != SDL_FALSE;
+}
+
+bool rect::empty() const
+{
+	return SDL_RectEmpty(this);
+}
+
+bool rect::contains(int x, int y) const
+{
+	SDL_Point p{x, y};
+	return SDL_PointInRect(&p, this) != SDL_FALSE;
+}
+
+bool rect::contains(const point& point) const
+{
+	return SDL_PointInRect(&point, this) != SDL_FALSE;
+}
+
+bool rect::contains(const SDL_Rect& r) const
+{
+	if(this->x > r.x) return false;
+	if(this->y > r.y) return false;
+	if(this->x + this->w < r.x + r.w) return false;
+	if(this->y + this->h < r.y + r.h) return false;
+	return true;
+}
+
+bool rect::overlaps(const SDL_Rect& r) const
+{
+	return SDL_HasIntersection(this, &r);
+}
+
+rect rect::minimal_cover(const SDL_Rect& other) const
+{
+	rect result;
+	SDL_UnionRect(this, &other, &result);
+	return result;
+}
+
+rect& rect::expand_to_cover(const SDL_Rect& other)
+{
+	SDL_UnionRect(this, &other, this);
+	return *this;
+}
+
+rect rect::intersect(const SDL_Rect& other) const
+{
+	rect result;
+	if(!SDL_IntersectRect(this, &other, &result)) {
+		return rect();
+	}
+	return result;
+}
+
+void rect::clip(const SDL_Rect& other)
+{
+	*this = this->intersect(other);
+}
+
+void rect::shift(const point& other)
+{
+	this->x += other.x;
+	this->y += other.y;
+}
+
+std::ostream& operator<<(std::ostream& s, const rect& r)
+{
+	s << '[' << r.x << ',' << r.y << '|' << r.w << ',' << r.h << ']';
 	return s;
 }

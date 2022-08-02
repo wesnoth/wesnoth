@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,8 +51,8 @@ void simple_item_selector::pre_show(window& window)
 
 	for(const auto & it : items_)
 	{
-		std::map<std::string, string_map> data;
-		string_map column;
+		widget_data data;
+		widget_item column;
 
 		column["label"] = it;
 		data.emplace("item", column);

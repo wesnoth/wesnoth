@@ -142,7 +142,7 @@ function ca_fast_move:execution(cfg)
         if (next_goal > #goals) then next_goal = 1 end
         local goal = goals[next_goal]
 
-        local max_rating, best_unit_info = - math.huge
+        local max_rating1, best_unit_info = - math.huge, nil
         for _,unit_info in ipairs(goal) do
             if (not unit_info.cost) then
                 local _,cost =
@@ -160,8 +160,8 @@ function ca_fast_move:execution(cfg)
                 break
             elseif (unit_info.cost < 1000) then
                 local rating = - unit_info.cost
-                if (rating > max_rating) then
-                    max_rating, best_unit_info = rating, unit_info
+                if (rating > max_rating1) then
+                    max_rating1, best_unit_info = rating, unit_info
                 end
             end
         end
@@ -197,7 +197,7 @@ function ca_fast_move:execution(cfg)
             local reach = wesnoth.paths.find_reach(unit)
 
             local pre_ratings = {}
-            local max_rating, best_hex = - math.huge
+            local max_rating2, best_hex = - math.huge, nil
             for _,loc in ipairs(reach) do
                 if (not avoid_map:get(loc[1], loc[2])) then
                     local rating = -M.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
@@ -205,15 +205,15 @@ function ca_fast_move:execution(cfg)
                     rating = rating + other_rating
 
                     local unit_in_way
-                    if (rating > max_rating) then
+                    if (rating > max_rating2) then
                         unit_in_way = wesnoth.units.get(loc[1], loc[2])
                         if (unit_in_way == unit) or (not AH.is_visible_unit(wesnoth.current.side, unit_in_way)) then
                             unit_in_way = nil
                         end
 
                         if unit_in_way and (unit_in_way.side == unit.side) then
-                            local reach = AH.get_reachable_unocc(unit_in_way)
-                            if (reach:size() > 1) then
+                            local reach_unocc = AH.get_reachable_unocc(unit_in_way)
+                            if (reach_unocc:size() > 1) then
                                 unit_in_way = nil
                                 rating = rating - 0.01
                                 other_rating = other_rating - 0.01
@@ -229,8 +229,8 @@ function ca_fast_move:execution(cfg)
                                 x = loc[1], y = loc[2]
                             })
                         else
-                            if (rating > max_rating) then
-                                max_rating, best_hex = rating, { loc[1], loc[2] }
+                            if (rating > max_rating2) then
+                                max_rating2, best_hex = rating, { loc[1], loc[2] }
                             end
                         end
                     end
@@ -245,20 +245,20 @@ function ca_fast_move:execution(cfg)
                 unit:extract()
                 local old_x, old_y = unit.x, unit.y
 
-                local max_rating = - math.huge
+                local max_rating3 = - math.huge
                 for _,pre_rating in ipairs(pre_ratings) do
                     -- If pre_rating is worse than the full rating, we are done because the
                     -- move cost can never be less than the distance, so we cannot possibly do
                     -- better than the pre-rating
-                    if (pre_rating.rating <= max_rating) then break end
+                    if (pre_rating.rating <= max_rating3) then break end
 
                     unit.x, unit.y = pre_rating.x, pre_rating.y
                     local _,cost = AH.find_path_with_shroud(unit, short_goal[1], short_goal[2])
 
                     local rating = - cost + pre_rating.other_rating
 
-                    if (rating > max_rating) then
-                        max_rating, best_hex = rating, { pre_rating.x, pre_rating.y }
+                    if (rating > max_rating3) then
+                        max_rating3, best_hex = rating, { pre_rating.x, pre_rating.y }
                     end
                 end
 
@@ -292,8 +292,8 @@ function ca_fast_move:execution(cfg)
             next_goal = next_goal - 1
         end
 
-        for _,goal in ipairs(goals) do
-            if goal[1] then
+        for _,keep_moving_goal in ipairs(goals) do
+            if keep_moving_goal[1] then
                 keep_moving = true
                 break
             end

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,21 +37,21 @@ namespace gui2::dialogs
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_WINDOW(id)                                                                                            \
-	namespace                                                                                                          \
-	{                                                                                                                  \
-	namespace ns_##id                                                                                                  \
-	{                                                                                                                  \
-		struct register_helper                                                                                         \
-		{                                                                                                              \
-			register_helper()                                                                                          \
-			{                                                                                                          \
-				register_window(#id);                                                                                  \
-			}                                                                                                          \
-		};                                                                                                             \
-                                                                                                                       \
-		struct register_helper register_helper;                                                                        \
-	}                                                                                                                  \
+#define REGISTER_WINDOW(id)                                                  \
+	namespace                                                                \
+	{                                                                        \
+	namespace ns_##id                                                        \
+	{                                                                        \
+		struct register_helper                                               \
+		{                                                                    \
+			register_helper()                                                \
+			{                                                                \
+				register_window(#id);                                        \
+			}                                                                \
+		};                                                                   \
+                                                                             \
+		struct register_helper register_helper;                              \
+	}                                                                        \
 	}
 
 /**
@@ -72,11 +72,12 @@ namespace gui2::dialogs
  *                                the same window so the id doesn't need to be
  *                                unique.
  */
-#define REGISTER_DIALOG2(type, id)                                                                                     \
-	REGISTER_WINDOW(id) const std::string& type::window_id() const                                                     \
-	{                                                                                                                  \
-		static const std::string result(#id);                                                                          \
-		return result;                                                                                                 \
+#define REGISTER_DIALOG2(type, id)                                           \
+	REGISTER_WINDOW(id)                                                      \
+	const std::string& type::window_id() const                               \
+	{                                                                        \
+		static const std::string result(#id);                                \
+		return result;                                                       \
 	}
 
 /**
@@ -93,11 +94,11 @@ namespace gui2::dialogs
  *
  * See the modal_dialog documentation (below) for more info.
  */
-#define DEFINE_SIMPLE_DISPLAY_WRAPPER(dialog)                                                                          \
-	template<typename... T>                                                                                            \
-	static void display(T&&... args)                                                                                   \
-	{                                                                                                                  \
-		dialog(std::forward<T>(args)...).show();                                                                       \
+#define DEFINE_SIMPLE_DISPLAY_WRAPPER(dialog)                                \
+	template<typename... T>                                                  \
+	static void display(T&&... args)                                         \
+	{                                                                        \
+		dialog(std::forward<T>(args)...).show();                             \
 	}
 
 /**
@@ -107,11 +108,11 @@ namespace gui2::dialogs
  *
  * See the modal_dialog documentation (below) for more info.
  */
-#define DEFINE_SIMPLE_EXECUTE_WRAPPER(dialog)                                                                          \
-	template<typename... T>                                                                                            \
-	static bool execute(T&&... args)                                                                                   \
-	{                                                                                                                  \
-		return dialog(std::forward<T>(args)...).show();                                                                \
+#define DEFINE_SIMPLE_EXECUTE_WRAPPER(dialog)                                \
+	template<typename... T>                                                  \
+	static bool execute(T&&... args)                                         \
+	{                                                                        \
+		return dialog(std::forward<T>(args)...).show();                      \
 	}
 
 /**
@@ -190,11 +191,6 @@ public:
 		always_save_fields_ = always_save_fields;
 	}
 
-	void set_restore(const bool restore)
-	{
-		restore_ = restore;
-	}
-
 	void set_allow_plugin_skip(const bool allow_plugin_skip)
 	{
 		allow_plugin_skip_ = allow_plugin_skip;
@@ -206,6 +202,17 @@ public:
 	}
 
 protected:
+	/**
+	 * Creates a new field of given type with given arguments.
+	 *
+	 * The field created is owned by modal_dialog, the returned pointer can be used
+	 * in the child classes as access to a field.
+	 *
+	 * @param args                Arguments to forward to the field constructor.
+	 */
+	template<typename T, typename... Args>
+	T* register_field(Args&&... args);
+
 	/**
 	 * Creates a new boolean field.
 	 *
@@ -370,15 +377,6 @@ private:
 	std::string focus_;
 
 	/**
-	 * Restore the screen after showing?
-	 *
-	 * Most windows should restore the display after showing so this value
-	 * defaults to true. Toplevel windows (like the titlescreen don't want this
-	 * behavior so they can change it in pre_show().
-	 */
-	bool restore_;
-
-	/**
 	 * Allow plugins to skip through the dialog?
 	 * Most dialogs install a plugins context to allow plugins to accept whatever the dialog is offering
 	 * and continue. Some dialogs, especially those that install their own plugins context, may want to
@@ -447,10 +445,9 @@ private:
 	 *
 	 * Saving only happens if a callback handler is installed.
 	 *
-	 * @param window              The window which has been shown.
 	 * @param save_fields         Does the value in the fields need to be saved?
 	 */
-	virtual void finalize_fields(window& window, const bool save_fields);
+	virtual void finalize_fields(const bool save_fields);
 };
 
 } // namespace dialogs

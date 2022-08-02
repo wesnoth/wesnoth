@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -104,21 +104,17 @@ std::set<std::string>& registered_window_types();
 
 struct registered_widget_parser
 {
-    /** The widget definition WML parser function. */
+	/** The widget definition WML parser function. */
 	widget_parser_t parser;
 
-    /** The tag containing the definition WML. */
+	/** The tag containing the definition WML. */
 	const char* key;
 };
 
-using registered_widget_map = std::map<std::string, registered_widget_parser>;
-
 /** Returns the list of registered widgets and their parsers. */
-registered_widget_map& registered_widget_types();
-
-using widget_builder_map = std::map<std::string, widget_builder_func_t>;
+std::map<std::string, registered_widget_parser>& registered_widget_types();
 
 /** Returns the list of registered widget builders. */
-widget_builder_map& widget_builder_lookup();
+std::map<std::string, widget_builder_func_t>& widget_builder_lookup();
 
 } // namespace gui2

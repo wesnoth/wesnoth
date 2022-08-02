@@ -108,6 +108,10 @@ padrão é \fByes\fP.
 O número de conexões permitidas do mesmo IP. \fB0\fP para infinito. (padrão:
 \fB5\fP)
 .TP 
+\fBdeny_unregistered_login\fP
+Se quiser previnir usuários que não estão registrados com o \fBuser_handler\fP
+logando. (padrão:falso)
+.TP 
 \fBdisallow_names\fP
 Nomes/apelidos que não são aceitos pelo servidor. \fB*\fP e \fB?\fP de
 caracteres\-curinga são suportados. Veja \fBglob\fP(7)  para mais detalhes.  Os
@@ -157,22 +161,31 @@ em branco ou não definidas, rooms não são carregadas e nem salvas.
 Define se o servidor gravará automaticamente os replays dos jogos. (padrão:
 \fBfalse\fP)
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 Uma lista separada por vírgulas das versões de strings que serão aceitas
 pelo servidor. \fB*\fP e \fB?\fP de caracteres\-curinga são suportados.  (o padrão
 é a versão correspondente do wesnoth)
 .br
 Exemplo: \fBversions_accepted="*"\fP aceita qualquer versão do string.
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS "Tags Globais:"
 .
 .P
-\fB[redirect]\fP Uma tag para especificar um servidor ao qual redirecionar
-certas versões de clientes.
+\fB[redirect]\fP A tag to specify a server to redirect certain client versions
+to. Is not used if \fBversions_accepted\fP is not set.
 .RS
 .TP 
 \fBhost\fP
@@ -205,52 +218,52 @@ as requisições dos clientes conectados para  o servidor especificado.
 Aceita as mesmas chaves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configura o apelido do usuário. As chaves disponíveis
-variam dependendo qual o apelido de usuário foi definido com a
-\fBuser_handler\fP chave. Se não houver uma entrada \fB[user_handler]\fP presente
-na configuração, o servidor rodará sem nenhum serviço de registro de
-apelidos. Todas as tabelas adicionais que são necessárias para que o
-\fBforum_user_handler\fP funcione podem ser encontradas na
-table_definitions.sql no repositório de código do Wesnoth.
+\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
+section is present in the configuration the server will run without any nick
+registration service. All additional tables that are needed for the
+\fBforum_user_handler\fP to function can be found in table_definitions.sql in
+the Wesnoth source repository. Requires mysql support enabled. For cmake
+this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+O hostname do servidor da database
 .TP 
 \fBdb_name\fP
-The name of the database
+O nome da database
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+O nome do usuário com o qual entrar no banco de dados
 .TP 
 \fBdb_password\fP
-This user's password
+A senha deste usuário
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+O nome da tabela onde os seus fóruns phpbb salvam os dados do usuário. Mais
+provavelmente ele será <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+(para user_handler=forum) O nome da tabela em que wesnothd salvará a data
+sobre usuários.
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+O nome da tabela em que wesnothd salvará a data de jogos.
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+O nome da tabela em que wesnothd salvará a data sobre os jogadores num jogo.
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+O nome da tabela em que wesnothd salvará a data sobre as modificações usadas
+num jogo.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
+O nome da tabela em que os seus phpbb dos fórums salvam a dos grupos dos
+usuários. Isto mais provavelmente será <table\-prefix>_user_group
 (e.g. phpbb3_user_group).
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+O ID do grupo do fórum que será considerado como tendo privilégios de
+moderador.
 .RE
 .
 .SH "STATUS DE SAÍDA"

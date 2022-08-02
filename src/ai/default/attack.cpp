@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -288,27 +288,27 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		const double exposure_mod = uses_leader ? 2.0 : ai_obj.get_caution();
 		const double exposure = exposure_mod*resources_used*(terrain_quality - alternative_terrain_quality)*vulnerability/std::max<double>(0.01,support);
 		LOG_AI << "attack option has base value " << value << " with exposure " << exposure << ": "
-			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1)) << "\n";
+			<< vulnerability << "/" << support << " = " << (vulnerability/std::max<double>(support,0.1));
 		value -= exposure*(1.0-aggression);
 	}
 
 	// Prefer to attack already damaged targets.
 	value += ((target_starting_damage/3 + avg_damage_inflicted) - (1.0-aggression)*avg_damage_taken)/10.0;
 
-       // If the unit is surrounded and there is no support,
-	   // or if the unit is surrounded and the average damage is 0,
-	   // the unit skips its sanity check and tries to break free as good as possible.
-       if(!is_surrounded || (support != 0 && avg_damage_taken != 0))
-       {
-               // Sanity check: if we're putting ourselves at major risk,
-			   // and have no chance to kill, and we're not aiding our allies
-			   // who are also attacking, then don't do it.
-               if(vulnerability > 50.0 && vulnerability > support*2.0
-			   && chance_to_kill < 0.02 && aggression < 0.75
-			   && !attack_close(target)) {
-                       return -1.0;
-               }
-        }
+	// If the unit is surrounded and there is no support,
+	// or if the unit is surrounded and the average damage is 0,
+	// the unit skips its sanity check and tries to break free as good as possible.
+	if(!is_surrounded || (support != 0 && avg_damage_taken != 0))
+	{
+		// Sanity check: if we're putting ourselves at major risk,
+		// and have no chance to kill, and we're not aiding our allies
+		// who are also attacking, then don't do it.
+		if(vulnerability > 50.0 && vulnerability > support*2.0
+		&& chance_to_kill < 0.02 && aggression < 0.75
+		&& !attack_close(target)) {
+			return -1.0;
+		}
+	}
 
 	if(!leader_threat && vulnerability*terrain_quality > 0.0 && support != 0) {
 		value *= support/(vulnerability*terrain_quality);
@@ -327,7 +327,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
 		<< " vulnerability: " << vulnerability
 		<< " support: " << support
 		<< " quality: " << terrain_quality
-		<< " alternative quality: " << alternative_terrain_quality << "\n";
+		<< " alternative quality: " << alternative_terrain_quality;
 
 	return value;
 }
@@ -444,7 +444,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		ai::move_result_ptr result = get_ai_context(ctxt.as_callable()).execute_move_action(move_from, att_src);
 		if(!result->is_ok()) {
 			//move part failed
-			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
 			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status(), result->get_unit_location()));
 		}
 	}
@@ -453,7 +453,7 @@ wfl::variant attack_analysis::execute_self(wfl::variant ctxt) {
 		ai::attack_result_ptr result = get_ai_context(ctxt.as_callable()).execute_attack_action(movements.front().second, target, -1);
 		if(!result->is_ok()) {
 			//attack failed
-			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			LOG_AI << "ERROR #" << result->get_status() << " while executing 'attack' formula function";
 			return wfl::variant(std::make_shared<wfl::safe_call_result>(fake_ptr(), result->get_status()));
 		}
 	}

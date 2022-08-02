@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,10 +21,14 @@
 #pragma once
 
 #include "config.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "variable.hpp"
+
+#include <optional>
 
 class filter_context;
 class game_data;
+class game_lua_kernel;
 struct map_location;
 
 namespace game_events
@@ -103,10 +107,10 @@ public:
 	void fire_event(const map_location& event_hex, const game_data& data) const;
 
 	/** Removes the implicit event handler for an inlined [command]. */
-	void finish_handler() const;
+	void finish_handler();
 
 	/** Initializes the implicit event handler for an inlined [command]. */
-	void init_handler() const;
+	void init_handler(game_lua_kernel& lk);
 
 	/**
 	 * The text to put in a menu for this item.
@@ -149,6 +153,9 @@ private:
 
 	/** The id for this item's hotkey; based on the item's id. */
 	const std::string hotkey_id_;
+
+	/** Controls the lifetime of the associate hotkey's hotkey_command. */
+	std::optional<hotkey::wml_hotkey_record> hotkey_record_;
 
 	/** The image to display in the menu next to this item's description. */
 	std::string image_;

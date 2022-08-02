@@ -1,7 +1,7 @@
 local _ = wesnoth.textdomain 'wesnoth-wc'
 local T = wml.tag
 
-local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt", 
+local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt",
 	reef = "Wrt", hills = "Ht", swamp_water = "St", shallow_water = "Wst", castle = "Ct",
 	mountains = "Mt", deep_water = "Wdt", flat = "Gt", forest = "Ft", frozen = "At",
 	village = "Vt", impassable = "Xt", unwalkable = "Qt", rails = "Rt"
@@ -9,8 +9,8 @@ local terrain_map = { fungus = "Tt", cave = "Ut", sand = "Dt",
 
 -- for all attacks that match [filter_attack], it add a dublicate fo that attack and modifres is as describes in the [attack]  subtag which uses the apply_to=attack syntax
 function wesnoth.effects.wc2_optional_attack(u, cfg)
-	local name_suffix = cfg.name_suffix or helper.wml_error("apply_to=wc2_optional_attack missing required name_suffix= attribute.")
-	local attack_mod = wml.get_child(cfg, "attack") or helper.wml_error("apply_to=wc2_optional_attack missing required [attack] subtag")
+	local name_suffix = cfg.name_suffix or wml.error("apply_to=wc2_optional_attack missing required name_suffix= attribute.")
+	local attack_mod = wml.get_child(cfg, "attack") or wml.error("apply_to=wc2_optional_attack missing required [attack] subtag")
 	local attacks_to_add = {}
 	local names = {}
 	for i = 1, #u.attacks do
@@ -92,7 +92,7 @@ function wesnoth.effects.wc2_min_defense(u, cfg)
 	local defense_new = {}
 	local defense_old = wml.parsed(wml.get_child(cfg, "defense"))
 	for k,v in pairs(defense_old) do
-		if type(k) == "string" and type(v) == "number" and wesnoth.units.defense_on(u, terrain_map[k] or "") >= v then
+		if type(k) == "string" and type(v) == "number" and wesnoth.units.chance_to_be_hit(u, terrain_map[k] or "") >= v then
 			defense_new[k] = v
 		end
 	end
@@ -111,7 +111,7 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 	local darkens = wesnoth.units.matches(u, { ability = "darkness" } )
 	local forcefield = wesnoth.units.matches(u, { ability = "forcefield" } )
 	local halo = ""
-	if illuminates and darkens then 
+	if illuminates and darkens then
 		wesnoth.interface.add_chat_message("WC2", "Warning illuminates and darkens discovered on a unit")
 	end
 	if forcefield and illuminates then
@@ -125,7 +125,7 @@ function wesnoth.effects.wc2_update_aura(u, cfg)
 	elseif illuminates then
 		halo = "halo/illuminates-aura.png"
 	end
-	
+
 	wesnoth.units.add_modification(u, "object", {
 		T.effect {
 			apply_to = "halo",

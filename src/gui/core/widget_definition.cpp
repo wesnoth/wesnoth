@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -48,8 +48,7 @@ resolution_definition::resolution_definition(const config& cfg)
 	, text_font_style(decode_font_style(cfg["text_font_style"]))
 	, state()
 {
-	DBG_GUI_P << "Parsing resolution " << window_width << ", " << window_height
-			  << '\n';
+	DBG_GUI_P << "Parsing resolution " << window_width << ", " << window_height;
 
 	linked_groups = parse_linked_group_definitions(cfg);
 }

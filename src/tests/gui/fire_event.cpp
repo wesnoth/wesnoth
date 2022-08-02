@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -76,15 +76,15 @@ static void connect_signals(
 }
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, std::unique_ptr<gui2::widget> widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
-	grid.set_child(widget
+	grid.set_child(std::move(widget)
 			, row
 			, column
 			, gui2::grid::VERTICAL_GROW_SEND_TO_CLIENT
@@ -131,20 +131,24 @@ BOOST_AUTO_TEST_CASE(test_fire_event)
 	grid.set_id("root");
 	connect_signals(sstr, grid);
 
-	gui2::grid *child_grid = new gui2::grid(1, 1);
-	add_widget(grid, child_grid, "level 1", 0, 0);
-	connect_signals(sstr, *child_grid);
+	auto g1 = std::make_unique<gui2::grid>(1, 1);
+	gui2::grid* g1_ptr = g1.get();
 
-	gui2::widget *child = new gui2::grid(1, 1);
-	add_widget(*child_grid, child, "level 2", 0, 0);
-	connect_signals(sstr, *child);
+	add_widget(grid, std::move(g1), "level 1", 0, 0);
+	connect_signals(sstr, *g1_ptr);
+
+	auto g2 = std::make_unique<gui2::grid>(1, 1);
+	gui2::grid* g2_ptr = g2.get();
+
+	add_widget(*g1_ptr, std::move(g2), "level 2", 0, 0);
+	connect_signals(sstr, *g2_ptr);
 
 	/** @todo Add the rest of the events. */
 	sstr.str("");
-	grid.fire(gui2::event::DRAW, *child);
+	grid.fire(gui2::event::DRAW, *g2_ptr);
 	validate_draw(sstr);
 
 	sstr.str("");
-	grid.fire(gui2::event::RIGHT_BUTTON_DOWN, *child);
+	grid.fire(gui2::event::RIGHT_BUTTON_DOWN, *g2_ptr);
 	validate_right_button_down(sstr);
 }

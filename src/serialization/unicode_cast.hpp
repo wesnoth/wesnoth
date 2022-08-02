@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,8 +15,8 @@
 
 #pragma once
 
+#include "log.hpp"
 #include "ucs4_convert_impl.hpp"
-#include <iostream>   //for std::cerr
 #include <iterator>
 
 namespace ucs4_convert_impl
@@ -78,8 +78,7 @@ typename ucs4_convert_impl::enableif<TD, typename TS::value_type>::type unicode_
 	}
 	catch(const utf8::invalid_utf8_exception&)
 	{
-		// TODO: use a ERR_.. stream but I don't know whether I can do so in header easily.
-		std::cerr << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
+		PLAIN_LOG << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name();
 		return res;
 	}
 	return res;
@@ -107,8 +106,7 @@ TD unicode_cast(char32_t onechar)
 	}
 	catch(const utf8::invalid_utf8_exception&)
 	{
-		// TODO: use a ERR_.. stream but I don't know whether I can do so in header easily.
-		std::cerr << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name() << "\n";
+		PLAIN_LOG << "Failed to convert a string from " << impl_reader::get_name() << " to " << impl_writer::get_name();
 		return res;
 	}
 	return res;

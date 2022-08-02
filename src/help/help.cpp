@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,25 +23,25 @@
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "events.hpp"                   // for raise_draw_event, pump, etc
+#include "events.hpp"                   // for draw, pump, etc
 #include "font/constants.hpp"           // for relative_size
 #include "preferences/game.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
 #include "gui/dialogs/transient_message.hpp"
-#include "help/help_browser.hpp"             // for help_browser
-#include "help/help_impl.hpp"                // for hidden_symbol, toplevel, etc
+#include "help/help_browser.hpp"        // for help_browser
+#include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
 #include "key.hpp"                      // for CKey
 #include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "sdl/surface.hpp"                // for surface
+#include "sdl/surface.hpp"              // for surface
 #include "show_dialog.hpp"              // for dialog_frame, etc
-#include "terrain/terrain.hpp"                  // for terrain_type
-#include "units/unit.hpp"                     // for unit
-#include "units/types.hpp"               // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // for CVideo, resize_lock
+#include "terrain/terrain.hpp"          // for terrain_type
+#include "units/unit.hpp"               // for unit
+#include "units/types.hpp"              // for unit_type, unit_type_data, etc
+#include "video.hpp"                    // for game_canvas_size
 #include "widgets/button.hpp"           // for button
 
-#include <cassert>                     // for assert
+#include <cassert>                      // for assert
 #include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
@@ -130,8 +130,8 @@ help_manager::~help_manager()
 	game_cfg = nullptr;
 	default_toplevel.clear();
 	hidden_sections.clear();
-    // These last numbers must be reset so that the content is regenerated.
-    // Upon next start.
+	// These last numbers must be reset so that the content is regenerated.
+	// Upon next start.
 	last_num_encountered_units = -1;
 	last_num_encountered_terrains = -1;
 }
@@ -189,15 +189,13 @@ void show_with_toplevel(const section &toplevel_sec,
 			   const std::string& show_topic,
 			   int xloc, int yloc)
 {
-	CVideo& video = CVideo::get_singleton();
-
 	const events::event_context dialog_events_context;
 	const gui::dialog_manager manager;
 
-	SDL_Rect screen_area = video.screen_area();
+	point canvas_size = video::game_canvas_size();
 
-	const int width  = std::min<int>(font::relative_size(1200), screen_area.w - font::relative_size(20));
-	const int height = std::min<int>(font::relative_size(850), screen_area.h - font::relative_size(150));
+	const int width  = std::min<int>(font::relative_size(1200), canvas_size.x - font::relative_size(20));
+	const int height = std::min<int>(font::relative_size(850), canvas_size.y - font::relative_size(150));
 	const int left_padding = font::relative_size(10);
 	const int right_padding = font::relative_size(10);
 	const int top_padding = font::relative_size(10);
@@ -206,26 +204,27 @@ void show_with_toplevel(const section &toplevel_sec,
 	// If not both locations were supplied, put the dialog in the middle
 	// of the screen.
 	if (yloc <= -1 || xloc <= -1) {
-		xloc = screen_area.w / 2 - width / 2;
-		yloc = screen_area.h / 2 - height / 2;
+		xloc = canvas_size.x / 2 - width / 2;
+		yloc = canvas_size.y / 2 - height / 2;
 	}
 	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(video, _("Close"));
+	gui::button close_button_(_("Close"));
 	buttons_ptr.push_back(&close_button_);
 
-	gui::dialog_frame f(video, _("Help"), gui::dialog_frame::default_style,
-					 true, &buttons_ptr);
+	gui::dialog_frame f(
+		_("Help"), gui::dialog_frame::default_style, &buttons_ptr
+	);
 	f.layout(xloc, yloc, width, height);
-	f.draw();
 
-    // Find all unit_types that have not been constructed yet and fill in the information
-    // needed to create the help topics
+	// Find all unit_types that have not been constructed yet and fill in the information
+	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
-	    last_debug_state != game_config::debug ||
-		last_num_encountered_units < 0) {
+		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+		last_debug_state != game_config::debug ||
+		last_num_encountered_units < 0)
+	{
 		// More units or terrains encountered, update the contents.
 		last_num_encountered_units = preferences::encountered_units().size();
 		last_num_encountered_terrains = preferences::encountered_terrains().size();
@@ -233,7 +232,7 @@ void show_with_toplevel(const section &toplevel_sec,
 		generate_contents();
 	}
 	try {
-		help_browser hb(video, toplevel_sec);
+		help_browser hb(toplevel_sec);
 		hb.set_location(xloc + left_padding, yloc + top_padding);
 		hb.set_width(width - left_padding - right_padding);
 		hb.set_height(height - top_padding - bot_padding);
@@ -243,14 +242,12 @@ void show_with_toplevel(const section &toplevel_sec,
 		else {
 			hb.show_topic(default_show_topic);
 		}
-		hb.set_dirty(true);
-		events::raise_draw_event();
+		hb.queue_redraw();
+		events::draw();
 		CKey key;
 		for (;;) {
 			events::pump();
 			events::raise_process_event();
-			f.draw();
-			events::raise_draw_event();
 			if (key[SDLK_ESCAPE]) {
 				// Escape quits from the dialog.
 				return;
@@ -262,12 +259,12 @@ void show_with_toplevel(const section &toplevel_sec,
 					return;
 				}
 			}
-			video.flip();
-			CVideo::delay(10);
+			// This also rate limits to vsync
+			events::draw();
 		}
 	}
 	catch (const parse_error& e) {
-		ERR_HELP << _("Parse error when parsing help text:") << " " << e.message << std::endl;
+		ERR_HELP << _("Parse error when parsing help text:") << " " << e.message;
 #if 0
 		// Displaying in the UI is disabled due to issue #2587
 		std::stringstream msg;

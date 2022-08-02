@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "gui/widgets/container_base.hpp"
 
+#include "gui/auxiliary/iterator/walker_container.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -172,7 +173,7 @@ point container_base::calculate_best_size() const
 
 
 	DBG_GUI_L << LOG_HEADER << " border size " << border_size << " returning "
-			  << result << ".\n";
+			  << result << ".";
 
 	return result;
 }
@@ -195,27 +196,17 @@ void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
 	grid_.set_visible_rectangle(rectangle);
 }
 
-void container_base::impl_draw_children(surface& frame_buffer,
-									 int x_offset,
-									 int y_offset)
+void container_base::impl_draw_children()
 {
 	assert(get_visible() == widget::visibility::visible
-		   && grid_.get_visible() == widget::visibility::visible);
+	       && grid_.get_visible() == widget::visibility::visible);
 
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children();
 }
 
 void container_base::layout_children()
 {
 	grid_.layout_children();
-}
-
-void
-container_base::child_populate_dirty_list(window& caller,
-									   const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> child_call_stack = call_stack;
-	grid_.populate_dirty_list(caller, child_call_stack);
 }
 
 widget* container_base::find_at(const point& coordinate,
@@ -253,7 +244,7 @@ void container_base::set_active(const bool active)
 		return;
 	}
 
-	set_is_dirty(true);
+	queue_redraw();
 
 	set_self_active(active);
 }
@@ -263,13 +254,18 @@ bool container_base::disable_click_dismiss() const
 	return styled_widget::disable_click_dismiss() && grid_.disable_click_dismiss();
 }
 
+iteration::walker_ptr container_base::create_walker()
+{
+	return std::make_unique<gui2::iteration::container>(*this);
+}
+
 void container_base::init_grid(const builder_grid& grid_builder)
 {
 	log_scope2(log_gui_general, LOG_SCOPE_HEADER);
 
 	assert(grid_.get_rows() == 0 && grid_.get_cols() == 0);
 
-	grid_builder.build(&grid_);
+	grid_builder.build(grid_);
 }
 
 point container_base::border_space() const

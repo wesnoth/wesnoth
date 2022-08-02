@@ -36,6 +36,8 @@
 			<Add option="-fopenmp" />
 			<Add option="-Wunused" />
 			<Add option="-Wunused-parameter" />
+			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
+			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-DHAVE_PYTHON" />
 			<Add option="-DUSE_GZIP" />
 			<Add option="-D_WIN32_WINNT=0x0601" />
@@ -52,6 +54,7 @@
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
 			<Add library="shlwapi" />
+			<Add library="libbcrypt" />
 			<Add library="libboost_iostreams" />
 			<Add library="libboost_bzip2" />
 			<Add library="libboost_filesystem" />
@@ -152,6 +155,8 @@
 		<Unit filename="../../src/server/common/simple_wml.cpp" />
 		<Unit filename="../../src/server/common/simple_wml.hpp" />
 		<Unit filename="../../src/server/common/user_handler.hpp" />
+		<Unit filename="../../src/string_enums/enum_base.hpp" />
+		<Unit filename="../../src/string_enums/side_controller.hpp" />
 		<Unit filename="../../src/tstring.cpp" />
 		<Unit filename="../../src/tstring.hpp" />
 		<Unit filename="../../src/util.hpp" />

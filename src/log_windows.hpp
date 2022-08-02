@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,16 +38,6 @@
  * own shortcomings by assuming the pwd was writable by the process (or in Vista
  * and later versions, requiring UAC virtualization to be enabled).
  */
-
-namespace filesystem
-{
-
-/**
- * Returns the path to the permanent log storage directory.
- */
-std::string get_logs_dir();
-
-}
 
 namespace lg
 {

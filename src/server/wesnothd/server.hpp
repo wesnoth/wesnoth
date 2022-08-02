@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,12 +37,19 @@ class server : public server_base
 public:
 	server(int port, bool keep_alive, const std::string& config_file, std::size_t, std::size_t);
 
+	// We keep this flag for coroutines. Since they get their stack unwinding done after player_connections_
+	// is already destroyed they need to know to avoid calling remove_player() on invalid iterators.
+	bool destructed = false;
+	~server() {
+		destructed = true;
+	}
+
 private:
 	void handle_new_client(socket_ptr socket);
 	void handle_new_client(tls_socket_ptr socket);
 
 	template<class SocketPtr> void login_client(boost::asio::yield_context yield, SocketPtr socket);
-	template<class SocketPtr> bool is_login_allowed(SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
+	template<class SocketPtr> bool is_login_allowed(boost::asio::yield_context yield, SocketPtr socket, const simple_wml::node* const login, const std::string& username, bool& registered, bool& is_moderator);
 	template<class SocketPtr> bool authenticate(SocketPtr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
 	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
@@ -118,25 +125,6 @@ private:
 
 	std::mt19937 die_;
 
-	player_connections player_connections_;
-
-	std::deque<std::shared_ptr<game>> games() const
-	{
-		std::deque<std::shared_ptr<game>> result;
-
-		for(const auto& iter : player_connections_.get<game_t>()) {
-			if(result.empty() || iter.get_game() != result.back()) {
-				result.push_back(iter.get_game());
-			}
-		}
-
-		if(!result.empty() && result.front() == nullptr) {
-			result.pop_front();
-		}
-
-		return result;
-	}
-
 #ifndef _WIN32
 	/** server socket/fifo. */
 	std::string input_path_;
@@ -191,6 +179,25 @@ private:
 	simple_wml::document games_and_users_list_;
 
 	metrics metrics_;
+
+	player_connections player_connections_;
+
+	std::deque<std::shared_ptr<game>> games() const
+	{
+		std::deque<std::shared_ptr<game>> result;
+
+		for(const auto& iter : player_connections_.get<game_t>()) {
+			if(result.empty() || iter.get_game() != result.back()) {
+				result.push_back(iter.get_game());
+			}
+		}
+
+		if(!result.empty() && result.front() == nullptr) {
+			result.pop_front();
+		}
+
+		return result;
+	}
 
 	boost::asio::steady_timer dump_stats_timer_;
 	void start_dump_stats();

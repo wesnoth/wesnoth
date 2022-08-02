@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -41,6 +41,7 @@
 #include "units/udisplay.hpp"
 #include "units/helper.hpp" //number_of_possible_advances
 #include "utils/general.hpp"
+#include "video.hpp"
 #include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -62,7 +63,7 @@ namespace
 	{
 		const auto u_it = resources::gameboard->units().find(loc);
 		if(!u_it) {
-			ERR_NG << "advance_unit_dialog: unit not found\n";
+			ERR_NG << "advance_unit_dialog: unit not found";
 			return 0;
 		}
 		const unit& u = *u_it;
@@ -103,11 +104,11 @@ namespace
 
 		unit_map::iterator u = resources::gameboard->units().find(loc);
 		if (u == resources::gameboard->units().end()) {
-			LOG_DP << "animate_unit_advancement suppressed: invalid unit\n";
+			LOG_DP << "animate_unit_advancement suppressed: invalid unit";
 			return false;
 		}
 		else if (!u->advances()) {
-			LOG_DP << "animate_unit_advancement suppressed: unit does not advance\n";
+			LOG_DP << "animate_unit_advancement suppressed: unit does not advance";
 			return false;
 		}
 
@@ -116,14 +117,14 @@ namespace
 
 		assert(options.size() + mod_options.size() > 0);
 		if (choice >= options.size() + mod_options.size()) {
-			LOG_DP << "animate_unit_advancement: invalid option, using first option\n";
+			LOG_DP << "animate_unit_advancement: invalid option, using first option";
 			choice = 0;
 		}
 
 		// When the unit advances, it fades to white, and then switches
 		// to the new unit, then fades back to the normal color
 
-		if (animate && !CVideo::get_singleton().update_locked()) {
+		if (animate && !video::headless()) {
 			unit_animator animator;
 			bool with_bars = true;
 			animator.add_animation(u.get_shared_ptr(), "levelout", u->get_location(), map_location(), 0, with_bars);
@@ -144,7 +145,7 @@ namespace
 		u = resources::gameboard->units().find(loc);
 		game_display::get_singleton()->invalidate_unit();
 
-		if (animate && u != resources::gameboard->units().end() && !CVideo::get_singleton().update_locked()) {
+		if (animate && u != resources::gameboard->units().end() && !video::headless()) {
 			unit_animator animator;
 			animator.add_animation(u.get_shared_ptr(), "levelin", u->get_location(), map_location(), 0, true);
 			animator.start_animations();
@@ -204,7 +205,7 @@ namespace
 
 			//to make mp games equal we only allow selecting advancements to the current side.
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
-			if(!CVideo::get_singleton().non_interactive() && (force_dialog_ || (t.is_local_human() && !t.is_droid() && !t.is_idle() && (is_current_side || !is_mp))))
+			if(!video::headless() && (force_dialog_ || (t.is_local_human() && !t.is_droid() && !t.is_idle() && (is_current_side || !is_mp))))
 			{
 				res = advance_unit_dialog(loc_);
 			}
@@ -217,7 +218,7 @@ namespace
 				//have no effect because get_advancements returns an empty list.
 				unit_map::iterator u = resources::gameboard->units().find(loc_);
 				if(!u) {
-					ERR_NG << "unit_advancement_choice: unit not found\n";
+					ERR_NG << "unit_advancement_choice: unit not found";
 					return config{};
 				}
 
@@ -238,7 +239,7 @@ namespace
 				// because it's a mp game and it's not his turn.
 				// default to the first unit listed in the unit's advancements
 			}
-			LOG_NG << "unit at position " << loc_ << " chose advancement number " << res << "\n";
+			LOG_NG << "unit at position " << loc_ << " chose advancement number " << res;
 			config retv;
 			retv["value"] = res;
 			return retv;
@@ -282,13 +283,13 @@ void advance_unit_at(const advance_unit_params& params)
 
 		if(params.fire_events_)
 		{
-			LOG_NG << "Firing pre advance event at " << params.loc_ <<".\n";
+			LOG_NG << "Firing pre advance event at " << params.loc_ <<".";
 			resources::game_events->pump().fire("pre_advance", params.loc_);
 			//TODO: maybe use id instead of location here ?.
 			u = resources::gameboard->units().find(params.loc_);
 			if(!unit_helper::will_certainly_advance(u))
 			{
-				LOG_NG << "pre advance event aborted advancing.\n";
+				LOG_NG << "pre advance event aborted advancing.";
 				return;
 			}
 		}
@@ -299,15 +300,15 @@ void advance_unit_at(const advance_unit_params& params)
 		//calls actions::advance_unit.
 		bool result = animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 
-		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
+		DBG_NG << "animate_unit_advancement result = " << result;
 		u = resources::gameboard->units().find(params.loc_);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80)
 		{
-			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
+			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.";
 		}
 	}
-	ERR_NG << "unit at " << params.loc_ << " tried to advance more than 20 times. Advancing was aborted" << std::endl;
+	ERR_NG << "unit at " << params.loc_ << " tried to advance more than 20 times. Advancing was aborted";
 }
 
 unit_ptr get_advanced_unit(const unit &u, const std::string& advance_to)
@@ -354,13 +355,13 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	// "advance" event.
 	if(fire_event)
 	{
-		LOG_NG << "Firing advance event at " << loc <<".\n";
+		LOG_NG << "Firing advance event at " << loc <<".";
 		resources::game_events->pump().fire("advance",loc);
 
 		if (!u.valid() || u->experience() < u->max_experience() ||
 			u->type_id() != original_type)
 		{
-			LOG_NG << "WML has invalidated the advancing unit. Aborting.\n";
+			LOG_NG << "WML has invalidated the advancing unit. Aborting.";
 			return;
 		}
 		// In case WML moved the unit:
@@ -388,7 +389,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	{
 		statistics::advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
-		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.\n";
+		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}
 	u->anim_comp().clear_haloes();
 	resources::gameboard->units().erase(loc);
@@ -402,7 +403,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	// "post_advance" event.
 	if(fire_event)
 	{
-		LOG_NG << "Firing post_advance event at " << loc << ".\n";
+		LOG_NG << "Firing post_advance event at " << loc << ".";
 		resources::game_events->pump().fire("post_advance",loc);
 	}
 

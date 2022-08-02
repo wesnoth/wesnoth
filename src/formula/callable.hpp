@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,8 +17,8 @@
 
 #include "formula/callable_fwd.hpp"
 #include "formula/variant.hpp"
+#include "log.hpp"
 
-#include <iostream>
 #include <memory>
 #include <set>
 
@@ -133,14 +133,14 @@ protected:
 		return variant(tmp);
 	}
 
-	static inline void add_input(formula_input_vector& inputs, const std::string& key, FORMULA_ACCESS_TYPE access_type = FORMULA_READ_ONLY)
+	static inline void add_input(formula_input_vector& inputs, const std::string& key, formula_access access_type = formula_access::read_only)
 	{
 		inputs.emplace_back(key, access_type);
 	}
 
 	virtual void set_value(const std::string& key, const variant& /*value*/)
 	{
-		std::cerr << "ERROR: cannot set key '" << key << "' on object" << std::endl;
+		PLAIN_LOG << "ERROR: cannot set key '" << key << "' on object";
 	}
 
 	virtual int do_compare(const formula_callable* callable) const
@@ -301,7 +301,7 @@ private:
 		}
 
 		for(const auto& i : values_) {
-			add_input(inputs, i.first, FORMULA_READ_WRITE);
+			add_input(inputs, i.first, formula_access::read_write);
 		}
 	}
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include "help/help_topic_generators.hpp"
 
 #include "font/sdl_ttf_compat.hpp"
+#include "formula/string_utils.hpp"     // for VNGETTEXT
 #include "game_config.hpp"              // for debug, menu_contract, etc
 #include "preferences/game.hpp"         // for encountered_terrains, etc
 #include "gettext.hpp"                  // for _, gettext, N_
@@ -31,11 +32,10 @@
 #include "tstring.hpp"                  // for t_string, operator<<
 #include "units/helper.hpp"             // for resistance_color
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include <optional>
-#include "video.hpp"                    // fore current_resolution
+#include "video.hpp"                    // for game_canvas_size
 
-#include <iostream>                     // for operator<<, basic_ostream, etc
 #include <map>                          // for map, etc
+#include <optional>
 #include <set>
 
 static lg::log_domain log_help("help");
@@ -149,10 +149,46 @@ std::string terrain_topic_generator::operator()() const {
 	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
-		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data\n";
+		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
 		return ss.str();
 	}
 
+	// Special notes are generated from the terrain's properties - at the moment there's no way for WML authors
+	// to add their own via a [special_note] tag.
+	std::vector<std::string> special_notes;
+
+	if(type_.is_village()) {
+		special_notes.push_back(_("Villages allow any unit stationed therein to heal, or to be cured of poison."));
+	} else if(type_.gives_healing() > 0) {
+		auto symbols = utils::string_map{{"amount", std::to_string(type_.gives_healing())}};
+		// TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+		// For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
+		auto message = VNGETTEXT("This terrain allows units to be cured of poison, or to heal a single hitpoint.",
+			"This terrain allows units to heal $amount hitpoints, or to be cured of poison, as if stationed in a village.",
+			type_.gives_healing(), symbols);
+		special_notes.push_back(std::move(message));
+	}
+
+	if(type_.is_castle()) {
+		special_notes.push_back(_("This terrain is a castle — units can be recruited onto it from a connected keep."));
+	}
+	if(type_.is_keep() && type_.is_castle()) {
+		// TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
+		special_notes.push_back(_("This terrain is a keep — a leader can recruit from this hex onto connected castle hexes."));
+	} else if(type_.is_keep() && !type_.is_castle()) {
+		// TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
+		special_notes.push_back(_("This unusual keep allows a leader to recruit while standing on it, but does not allow a leader on a connected keep to recruit onto this hex."));
+	}
+
+	if(!special_notes.empty()) {
+		ss << "\n" << _("Special Notes:") << '\n';
+		for(const auto& note : special_notes) {
+			ss << font::unicode_bullet << " " << note << '\n';
+		}
+	}
+
+	// Almost all terrains will show the data in this conditional block. The ones that don't are the
+	// archetypes used in [movetype]'s subtags such as [movement_costs].
 	if (!type_.is_indivisible()) {
 		ss << "\n" << _("Base Terrain: ");
 
@@ -256,7 +292,7 @@ std::string unit_topic_generator::operator()() const {
 	const unit_type& female_type = type_.get_gender_unit_type(unit_race::FEMALE);
 	const unit_type& male_type = type_.get_gender_unit_type(unit_race::MALE);
 
-	const int screen_width = CVideo::get_singleton().get_width();
+	const int screen_width = video::game_canvas_size().x;
 
 	ss << _("Level") << " " << type_.level();
 	ss << "\n\n";
@@ -564,9 +600,12 @@ std::string unit_topic_generator::operator()() const {
 	if(const auto notes = type_.special_notes(); !notes.empty()) {
 		ss << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
-			ss << "• " << note << '\n';
+			ss << font::unicode_bullet << " " << note << '\n';
 		}
 	}
+
+	// Padding for range and damage type icons
+	const auto padding = 4; // matches the alignment of the terrain rows
 
 	// Print the different attacks a unit has, if it has any.
 	if (!type_.attacks().empty()) {
@@ -605,11 +644,8 @@ std::string unit_topic_generator::operator()() const {
 			push_tab_pair(row, attack_ss.str());
 			attack_ss.str(clear_stringstream);
 
-			// Padding for range and damage type icons
-			const auto padding = 5; // TODO amount of padding?
-
 			// Range, with icon
-			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png";
+			const std::string range_icon = "icons/profiles/" + attack.range() + "_attack.png~SCALE_INTO(16,16)";
 			if (attack.min_range() > 1 || attack.max_range() > 1) {
 				attack_ss << attack.min_range() << "-" << attack.max_range() << ' ';
 			}
@@ -618,7 +654,7 @@ std::string unit_topic_generator::operator()() const {
 			attack_ss.str(clear_stringstream);
 
 			// Damage type, with icon
-			const std::string type_icon = "icons/profiles/" + attack.type() + ".png";
+			const std::string type_icon = "icons/profiles/" + attack.type() + ".png~SCALE_INTO(16,16)";
 			push_tab_pair(row, lang_type, type_icon, padding);
 
 			// Show this attack's special, if it has any. Cross
@@ -667,7 +703,7 @@ std::string unit_topic_generator::operator()() const {
 	push_header(first_res_row, _("Attack Type"));
 	push_header(first_res_row, _("Resistance"));
 	resistance_table.push_back(first_res_row);
-	utils::string_map dam_tab = movement_type.damage_table();
+	utils::string_map_res dam_tab = movement_type.damage_table();
 	for(std::pair<std::string, std::string> dam_it : dam_tab) {
 		std::vector<item> row;
 		int resistance = 100;
@@ -680,8 +716,9 @@ std::string unit_topic_generator::operator()() const {
 			resist.replace(pos, 1, font::unicode_minus);
 		}
 		std::string color = unit_helper::resistance_color(resistance);
-		std::string lang_weapon = string_table["type_" + dam_it.first];
-		push_tab_pair(row, lang_weapon);
+		const std::string lang_type = string_table["type_" + dam_it.first];
+		const std::string type_icon = "icons/profiles/" + dam_it.first + ".png~SCALE_INTO(16,16)";
+		push_tab_pair(row, lang_type, type_icon, padding);
 		std::stringstream str;
 		str << "<format>color=\"" << color << "\" text='"<< resist << "'</format>";
 		const std::string markup = str.str();
@@ -766,107 +803,114 @@ std::string unit_topic_generator::operator()() const {
 			std::string color = game_config::red_to_green(m.defense, false).to_hex_string();
 
 			std::stringstream str;
+			std::stringstream str_unformatted;
 			str << "<format>color='" << color << "' text='"<< m.defense << "%'</format>";
-			std::string markup = str.str();
-			str.str(clear_stringstream);
-			str << m.defense << "%";
-			row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
+			str_unformatted << m.defense << "%";
+			row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
 
 			//movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			str.str(clear_stringstream);
-			bool cannot_move = m.movement_cost > type_.movement();
-			if (cannot_move) {		// cannot move in this terrain
-				color = "red";
-			} else if (m.movement_cost > 1) {
-				color = "yellow";
-			} else {
-				color = "white";
-			}
-			str << "<format>color=" << color << " text='";
+			str_unformatted.str(clear_stringstream);
+			const bool cannot_move = m.movement_cost > type_.movement();        // cannot move in this terrain
+			double movement_red_to_green = 100.0 - 25.0 * m.movement_cost;
+
+			// passing false to select the more saturated red-to-green scale
+			std::string movement_color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
+			str << "<format>color='" << movement_color << "' text='";
 			// A 5 MP margin; if the movement costs go above
 			// the unit's max moves + 5, we replace it with dashes.
 			if(cannot_move && (m.movement_cost > type_.movement() + 5)) {
-				str << font::unicode_figure_dash;
+				str_unformatted << font::unicode_figure_dash;
+			} else if(cannot_move) {
+				str_unformatted << "(" << m.movement_cost << ")";
 			} else {
-				str << m.movement_cost;
+				str_unformatted << m.movement_cost;
 			}
-			str << "'</format>";
-			markup = str.str();
-			str.str(clear_stringstream);
-			str << m.movement_cost;
-			row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
+			if(m.movement_cost != 0) {
+				const int movement_hexes_per_turn = type_.movement() / m.movement_cost;
+				str_unformatted << " ";
+				for(int i = 0; i < movement_hexes_per_turn; ++i) {
+					// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+					str_unformatted << "\u2b23\u200b";
+				}
+			}
+			str << str_unformatted.str() << "'</format>";
+			row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
 
 			//defense cap
 			if (has_terrain_defense_caps) {
 				str.str(clear_stringstream);
+				str_unformatted.str(clear_stringstream);
 				if (m.defense_cap) {
 					str << "<format>color='"<< color <<"' text='" << m.defense << "%'</format>";
+					str_unformatted << m.defense << "%";
 				} else {
 					str << "<format>color=white text='" << font::unicode_figure_dash << "'</format>";
+					str_unformatted << font::unicode_figure_dash;
 				}
-
-				markup = str.str();
-				str.str(clear_stringstream);
-				if (m.defense_cap) {
-					str << m.defense << '%';
-				} else {
-					str << font::unicode_figure_dash;
-				}
-				row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
+				row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
 			}
 
 			//vision
 			if (has_vision) {
 				str.str(clear_stringstream);
-				const bool cannot_view = m.vision_cost > type_.vision();
-				if (cannot_view) {		// cannot view in this terrain
-					color = "red";
-				} else if (m.vision_cost > m.movement_cost) {
-					color = "yellow";
-				} else if (m.vision_cost == m.movement_cost) {
-					color = "white";
-				} else {
-					color = "green";
-				}
-				str << "<format>color=" << color << " text='";
+				str_unformatted.str(clear_stringstream);
+				const bool cannot_view = m.vision_cost > type_.vision();        // cannot view in this terrain
+				double vision_red_to_green = 100.0 - 25.0 * m.vision_cost;
+
+				// passing false to select the more saturated red-to-green scale
+				std::string vision_color = game_config::red_to_green(vision_red_to_green, false).to_hex_string();
+				str << "<format>color='" << vision_color << "' text='";
 				// A 5 MP margin; if the vision costs go above
 				// the unit's vision + 5, we replace it with dashes.
 				if(cannot_view && (m.vision_cost > type_.vision() + 5)) {
-					str << font::unicode_figure_dash;
+					str_unformatted << font::unicode_figure_dash;
+				} else if(cannot_view) {
+					str_unformatted << "(" << m.vision_cost << ")";
 				} else {
-					str << m.vision_cost;
+					str_unformatted << m.vision_cost;
 				}
-				str << "'</format>";
-				markup = str.str();
-				str.str(clear_stringstream);
-				str << m.vision_cost;
-				row.emplace_back(markup, font::pango_line_width(str.str(), normal_font_size));
+				if(m.vision_cost != 0) {
+					const int vision_hexes_per_turn = type_.vision() / m.vision_cost;
+					str_unformatted << " ";
+					for(int i = 0; i < vision_hexes_per_turn; ++i) {
+						// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+						str_unformatted << "\u2b23\u200b";
+					}
+				}
+				str << str_unformatted.str() << "'</format>";
+				row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
 			}
 
 			//jamming
 			if (has_jamming) {
 				str.str(clear_stringstream);
-				const bool cannot_jam = m.jamming_cost > type_.jamming();
-				if (cannot_jam) {		// cannot jamm in this terrain
-					color = "red";
-				} else if (m.jamming_cost > m.vision_cost) {
-					color = "yellow";
-				} else if (m.jamming_cost == m.vision_cost) {
-					color = "white";
-				} else {
-					color = "green";
-				}
-				str << "<format>color=" << color << " text='";
+				str_unformatted.str(clear_stringstream);
+				const bool cannot_jam = m.jamming_cost > type_.jamming();       // cannot jam in this terrain
+				double jamming_red_to_green = 100.0 - 25.0 * m.jamming_cost;
+
+				// passing false to select the more saturated red-to-green scale
+				std::string jamming_color = game_config::red_to_green(jamming_red_to_green, false).to_hex_string();
+				str << "<format>color='" << jamming_color << "' text='";
 				// A 5 MP margin; if the jamming costs go above
 				// the unit's jamming + 5, we replace it with dashes.
 				if (cannot_jam && m.jamming_cost > type_.jamming() + 5) {
-					str << font::unicode_figure_dash;
+					str_unformatted << font::unicode_figure_dash;
+				} else if(cannot_jam) {
+					str_unformatted << "(" << m.jamming_cost << ")";
 				} else {
-					str << m.jamming_cost;
+					str_unformatted << m.jamming_cost;
 				}
-				str << "'</format>";
-
-				push_tab_pair(row, str.str());
+				if(m.jamming_cost != 0) {
+					const int jamming_hexes_per_turn = type_.jamming() / m.jamming_cost;
+					str_unformatted << " ";
+					for(int i = 0; i < jamming_hexes_per_turn; ++i) {
+						// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+						str_unformatted << "\u2b23\u200b";
+					}
+				}
+				str << str_unformatted.str() << "'</format>";
+				row.emplace_back(str.str(), font::pango_line_width(str_unformatted.str(), normal_font_size));
 			}
 
 			table.push_back(row);
@@ -874,7 +918,7 @@ std::string unit_topic_generator::operator()() const {
 
 		ss << generate_table(table);
 	} else {
-		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.\n";
+		WRN_HP << "When building unit help topics, the display object was null and we couldn't get the terrain info we need.";
 	}
 	return ss.str();
 }

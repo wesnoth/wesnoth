@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -175,6 +175,7 @@ public:
 		E_INCAPACITATED_UNIT = 2004,
 		E_AMBUSHED = 2005,
 		E_FAILED_TELEPORT = 2006,
+		E_OFF_MAP = 2007,
 		E_NO_ROUTE = 2008
 	};
 
@@ -424,7 +425,7 @@ const static std::string& get_error_name(int error_code);
 
 private:
 
-static std::map<int,std::string> error_names_;
+static const std::map<int, std::string> error_names_;
 
 };
 

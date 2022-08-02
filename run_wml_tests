@@ -237,7 +237,7 @@ class WesnothRunner:
             print("Wesnoth exited because of signal", -res.returncode)
             if options.backtrace:
                 print("Launching GDB for a backtrace...")
-                gdb_args = ["gdb", "-q", "-batch", "-ex", "start", "-ex", "continue", "-ex", "bt", "-ex", "quit", "--args"]
+                gdb_args = ["gdb", "-q", "-batch", "-ex", "set style enabled on", "-ex", "start", "-ex", "continue", "-ex", "bt", "-ex", "quit", "--args"]
                 gdb_args.extend(args)
                 subprocess.run(gdb_args, timeout=240)
             test_summary.crash_test(test_list)

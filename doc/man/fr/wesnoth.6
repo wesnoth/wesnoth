@@ -78,10 +78,10 @@ Ajoute une option affichant une horloge pour tester les affichages dépendant
 du temps.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nom\fP
-Déprécié, utilisez \fB\-\-userdata\-dir\fP.
+Obsolète, utilisez \fB\-\-userdata\-dir\fP.
 .TP 
 \fB\-\-config\-path\fP
-Déprécié, utilisez \fB\-\-userdata\-path\fP
+Obsolète, utilisez \fB\-\-userdata\-path\fP
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 Remplace le noyau chargé par celui spécifié par l'identifiant.
@@ -103,7 +103,7 @@ active certains mécanismes de débogage pour Lua.
 \fB\-\-strict\-lua\fP
 disallow deprecated Lua API calls
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\-\-diff\fP\fI\ fichier\-original\fP\fB\ \fP\fIfichier\-nouveau\fP
 diffs the two WML files; does not preprocess them first (to do that, run
 them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
 to the file indicated by \fI\-\-output\fP.
@@ -209,7 +209,7 @@ l'option \fB\-u\fP.
 \fB\-\-nosound\fP
 Lance le jeu sans son ni musique.
 .TP 
-\fB\-\-output\fP\fI\ file\fP
+\fB\-\-output\fP\fI\ fichier\fP
 output to the specified file. Applicable to diffing operations.
 .TP 
 \fB\-\-password\fP\fI\ mot de passe\fP
@@ -222,7 +222,7 @@ d'autres préférences. Dangereux.
 exécutée comme une coroutine et réveillée périodiquement avec des mises à
 jour.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+\fB\-P,\-\-patch\fP\fI\ fichier\-cible\fP\fB\ \fP\fIfichier\-patch\fP
 applies a DiffWML patch to a WML file; does not preprocess either of the
 files.  Outputs the patched WML to standard output or to the file indicated
 by \fI\-\-output\fP.
@@ -311,7 +311,7 @@ charger n'importe quel package. Ne faites cela qu'avec des scripts de
 confiance ! Cette action donne aux scripts Lua les mêmes permissions que
 l'exécutable de Wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
+\fB\-S,\-\-use\-schema\fP\fI\ chemin\fP
 sets the WML schema for use with \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ nom\fP
@@ -343,16 +343,16 @@ Affiche le nom du répertoire de données et quitte le programme.
 Utilise \fInom d'utilisateur\fP lors de la connexion à un serveur, en ignorant
 d'autres préférences.
 .TP 
-\fB\-\-validate\fP\fI\ path\fP
+\fB\-\-validate\fP\fI\ chemin\fP
 validates a file against the WML schema.
 .TP 
-\fB\-\-validate\-addon\fP\fI\ addon_id\fP
+\fB\-\-validate\-addon\fP\fI\ id_extension\fP
 validates the WML of the given addon as you play.
 .TP 
 \fB\-\-validate\-core\fP
 validates the core WML as you play.
 .TP 
-\fB\-\-validate\-schema \ path\fP
+\fB\-\-validate\-schema \ chemin\fP
 validates a file as a WML schema.
 .TP 
 \fB\-\-validcache\fP
@@ -360,6 +360,9 @@ Suppose que le cache est valide (risqué).
 .TP 
 \fB\-v, \-\-version\fP
 Affiche le numéro de version et quitte le programme.
+.TP 
+\fB\-\-simple\-version\fP
+Affiche uniquement le numéro de version et quitte le programme.
 .TP 
 \fB\-w, \-\-windowed\fP
 Lance le jeu dans une fenêtre séparée.

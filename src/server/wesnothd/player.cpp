@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,7 @@
 
 #include "server/wesnothd/player.hpp"
 
-wesnothd::player::player(const std::string& n, simple_wml::node& cfg, int id,
+wesnothd::player::player(const std::string& n, simple_wml::node& cfg, long id,
                          bool registered, const std::string& version, const std::string& source, unsigned long long login_id, const std::size_t max_messages,
                          const std::size_t time_period,
                          const bool moderator)
@@ -74,8 +74,8 @@ void wesnothd::player::mark_available(const int game_id,
 
 void wesnothd::player::mark_registered(bool registered)
 {
-    cfg_.set_attr("registered", registered ? "yes" : "no");
-    registered_ = registered;
+	cfg_.set_attr("registered", registered ? "yes" : "no");
+	registered_ = registered;
 }
 
 bool wesnothd::player::is_message_flooding()

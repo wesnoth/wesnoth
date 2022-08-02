@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,6 @@
 #include "hotkey/hotkey_command.hpp"    // for is_scope_active, etc
 #include "picture.hpp"                    // for get_image, locator
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "utils/make_enum.hpp"          // for operator<<
 #include "map/map.hpp"                  // for gamemap
 #include "font/standard_colors.hpp"     // for NORMAL_COLOR
 #include "font/sdl_ttf_compat.hpp"
@@ -50,7 +49,6 @@
 
 #include <cassert>                     // for assert
 #include <algorithm>                    // for sort, find, transform, etc
-#include <iostream>                     // for operator<<, basic_ostream, etc
 #include <iterator>                     // for back_insert_iterator, etc
 #include <map>                          // for map, etc
 #include <set>
@@ -202,8 +200,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 						   section &sec, int level)
 {
 	if (level > max_section_level) {
-		std::cerr << "Maximum section depth has been reached. Maybe circular dependency?"
-				  << std::endl;
+		PLAIN_LOG << "Maximum section depth has been reached. Maybe circular dependency?";
 	}
 	else if (section_cfg != nullptr) {
 		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
@@ -335,7 +332,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 		} else if (parts[0] == "era" && parts.size()>1) {
 			res = generate_era_topics(sort_generated, parts[1]);
 		} else {
-			WRN_HP << "Found a topic generator that I didn't recognize: " << generator << "\n";
+			WRN_HP << "Found a topic generator that I didn't recognize: " << generator;
 		}
 	}
 
@@ -349,14 +346,14 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	} else if (generator == "terrains") {
 		generate_terrain_sections(sec, level);
 	} else if (generator == "eras") {
-		DBG_HP << "Generating eras...\n";
+		DBG_HP << "Generating eras...";
 		generate_era_sections(help_cfg, sec, level);
 	} else 	{
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts.size() > 1 && parts[0] == "units") {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
 		} else if (generator.size() > 0) {
-			WRN_HP << "Found a section generator that I didn't recognize: " << generator << "\n";
+			WRN_HP << "Found a section generator that I didn't recognize: " << generator;
 		}
 	}
 }
@@ -397,7 +394,6 @@ const std::vector<std::string>& topic_text::parsed_text() const
 
 static std::string time_of_day_bonus_colored(const int time_of_day_bonus)
 {
-	// Use same red/green colouring scheme as time_of_day_at() in reports.cpp for consistency
 	return std::string("<format>color='") + (time_of_day_bonus > 0 ? "green" : (time_of_day_bonus < 0 ? "red" : "white")) + "' text='" + std::to_string(time_of_day_bonus) + "'</format>";
 }
 
@@ -423,10 +419,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 		const std::string image_liminal = "<img>src='icons/alignments/alignment_liminal_30.png'</img>";
 		std::stringstream text;
 
-		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LAWFUL, false, resources::tod_manager->get_max_liminal_bonus());
-		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::NEUTRAL, false, resources::tod_manager->get_max_liminal_bonus());
-		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::CHAOTIC, false, resources::tod_manager->get_max_liminal_bonus());
-		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_type::ALIGNMENT::LIMINAL, false, resources::tod_manager->get_max_liminal_bonus());
+		const int lawful_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::lawful, false, resources::tod_manager->get_max_liminal_bonus());
+		const int neutral_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::neutral, false, resources::tod_manager->get_max_liminal_bonus());
+		const int chaotic_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::chaotic, false, resources::tod_manager->get_max_liminal_bonus());
+		const int liminal_bonus = generic_combat_modifier(time.lawful_bonus, unit_alignments::type::liminal, false, resources::tod_manager->get_max_liminal_bonus());
 
 		toplevel << make_link(time.name.str(), id) << jump_to(160) << image << jump(30) <<
 			image_lawful << time_of_day_bonus_colored(lawful_bonus) << jump_to(390) <<
@@ -791,7 +787,7 @@ std::string make_unit_link(const std::string& type_id)
 
 	const unit_type *type = unit_types.find(type_id, unit_type::HELP_INDEXED);
 	if (!type) {
-		std::cerr << "Unknown unit type : " << type_id << "\n";
+		PLAIN_LOG << "Unknown unit type : " << type_id;
 		// don't return an hyperlink (no page)
 		// instead show the id (as hint)
 		link = type_id;
@@ -873,7 +869,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 			continue;
 		}
 
-		DBG_HP << "Adding help section: " << era["id"].str() << "\n";
+		DBG_HP << "Adding help section: " << era["id"].str();
 
 		section era_section;
 		config section_cfg;
@@ -882,7 +878,7 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 		section_cfg["generator"] = "era:" + era["id"].str();
 
-		DBG_HP << section_cfg.debug() << "\n";
+		DBG_HP << section_cfg.debug();
 
 		parse_config_internal(help_cfg, &section_cfg, era_section, level+1);
 		sec.add_section(era_section);
@@ -894,7 +890,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
 	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
 
 	if (!tdata) {
-		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.\n";
+		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.";
 		return;
 	}
 
@@ -1507,7 +1503,7 @@ void generate_contents()
 		catch (parse_error& e) {
 			std::stringstream msg;
 			msg << "Parse error when parsing help text: '" << e.message << "'";
-			std::cerr << msg.str() << std::endl;
+			PLAIN_LOG << msg.str();
 		}
 	}
 }

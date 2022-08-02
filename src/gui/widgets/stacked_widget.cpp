@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,7 +61,7 @@ struct stacked_widget_implementation
 
 stacked_widget::stacked_widget(const implementation::builder_stacked_widget& builder)
 	: container_base(builder, type())
-	, generator_(generator_base::build(false, false, generator_base::independent, false))
+	, generator_(nullptr)
 	, selected_layer_(-1)
 	, find_in_all_layers_(false)
 {
@@ -85,15 +85,17 @@ void stacked_widget::layout_children()
 	}
 }
 
-void stacked_widget::finalize(const std::vector<builder_grid>& widget_builders)
+void stacked_widget::finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders)
 {
+	// Save our *non-owning* pointer before this gets moved into the grid.
+	generator_ = generator.get();
 	assert(generator_);
-	string_map empty_data;
-	for(const auto & builder : widget_builders)
-	{
-		generator_->create_item(-1, builder, empty_data, nullptr);
+
+	widget_item empty_data;
+	for(const auto & builder : widget_builders) {
+		generator->create_item(-1, builder, empty_data, nullptr);
 	}
-	swap_grid(nullptr, &get_grid(), generator_, "_content_grid");
+	swap_grid(nullptr, &get_grid(), std::move(generator), "_content_grid");
 
 	select_layer(-1);
 }
@@ -207,7 +209,7 @@ const widget* stacked_widget::find(const std::string& id, const bool must_be_act
 stacked_widget_definition::stacked_widget_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing stacked widget " << id << '\n';
+	DBG_GUI_P << "Parsing stacked widget " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -245,19 +247,20 @@ builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	}
 }
 
-widget* builder_stacked_widget::build() const
+std::unique_ptr<widget> builder_stacked_widget::build() const
 {
-	stacked_widget* widget = new stacked_widget(*this);
+	auto widget = std::make_unique<stacked_widget>(*this);
 
 	DBG_GUI_G << "Window builder: placed stacked widget '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<stacked_widget_definition>();
 	assert(conf);
 
 	widget->init_grid(*conf->grid);
 
-	widget->finalize(stack);
+	auto generator = generator_base::build(false, false, generator_base::independent, false);
+	widget->finalize(std::move(generator), stack);
 
 	return widget;
 }

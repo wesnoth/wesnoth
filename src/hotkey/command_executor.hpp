@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,8 +18,9 @@
 #include "hotkey_command.hpp"
 #include "game_end_exceptions.hpp"
 
+#include <SDL2/SDL_events.h>
+
 class display;
-class CVideo;
 
 namespace hotkey {
 

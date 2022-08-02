@@ -38,7 +38,7 @@ function wesnoth.wml_actions.kill(cfg)
 			end
 		end
 		if can_fire then
-			wesnoth.fire_event("last breath", death_loc, killer_loc)
+			wesnoth.game_events.fire("last breath", death_loc, killer_loc)
 		end
 		if cfg.animate and unit.valid == "map" then
 			wesnoth.interface.scroll_to_hex(death_loc, true)
@@ -74,7 +74,7 @@ function wesnoth.wml_actions.kill(cfg)
 		-- wesnoth.wml_actions.redraw{}
 
 		if can_fire then
-			wesnoth.fire_event("die", death_loc, killer_loc)
+			wesnoth.game_events.fire("die", death_loc, killer_loc)
 		end
 		if cfg.fire_event then
 			if recursion <= 1 then

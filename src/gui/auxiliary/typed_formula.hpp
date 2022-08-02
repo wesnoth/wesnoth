@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -159,7 +159,7 @@ operator()(const wfl::map_formula_callable& variables, wfl::function_symbol_tabl
 	wfl::variant v = wfl::formula(*formula_, functions).evaluate(variables);
 	const T& result = execute(v);
 
-	LOG_GUI_D << "Formula: execute '" << *formula_ << "' result '" << result << "'.\n";
+	DBG_GUI_D << "Formula: execute '" << *formula_ << "' result '" << result << "'.";
 
 	return result;
 }

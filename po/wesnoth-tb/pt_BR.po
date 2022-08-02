@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-12-23 22:51-0300\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"PO-Revision-Date: 2021-11-10 10:42-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -84,7 +84,7 @@ msgstr "Artwork e Design Gráfico"
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:73
 msgid "Miscellaneous"
-msgstr "Miscelâneas"
+msgstr "Miscelânea"
 
 #. [entry]
 #: data/campaigns/Two_Brothers/_main.cfg:87
@@ -99,8 +99,15 @@ msgstr "Eliminando um Mago"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
+#, fuzzy
+#| msgid ""
+#| "The remote freehold of Maghre in the western reaches of the kingdom of "
+#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
+#| "comings and goings of the wider world. Wars and the rumor of wars touched "
+#| "them not, until the day a dark mage settled in the region and began "
+#| "seeking sacrifices for his evil summonings."
 msgid ""
-"The remote freehold of Maghre in the western reaches of the kingdom of "
+"The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
 "comings and goings of the wider world. Wars and the rumor of wars touched "
 "them not, until the day a dark mage settled in the region and began seeking "
@@ -182,7 +189,7 @@ msgid ""
 "spoken since that evil day at Toen Caric. If he will not come for me, "
 "perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
-"12 V, 363 YW\n"
+"12 V, 363 AW\n"
 "Trecho do diário de Baran de Maghre\n"
 "\n"
 "Se eu pudesse enfrentar esse 'Mordak'! Acredito que minha mágia seja mais "
@@ -214,9 +221,9 @@ msgstr ""
 msgid "Humans"
 msgstr "Humanos"
 
+#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
@@ -493,7 +500,7 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
-"16 V, 363 YW\n"
+"16 V, 363 AW\n"
 "Trecho do diário de Arne de Maghre\n"
 "Já faz três dias que estamos há procura de Baran, e até agora nada. Meu "
 "melhor palpite era seguir para o norte até a fronteira, onde os servos do "
@@ -529,7 +536,7 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
-"16 V, 363 YW\n"
+"16 V, 363 AW\n"
 "Trecho do diário de Arne de Maghre\n"
 "\n"
 "Mas eu já vi demais para ser supersticioso; já vi o suficiente no mundo para "
@@ -578,15 +585,17 @@ msgstr "Pegue os sequestradores"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-#, fuzzy
-#| msgid "Kill the Dark Adept before his reinforcements arrive"
 msgid "Kill the Dark Adept before more elves arrive"
-msgstr "Mate o Aprendiz da Escuridão antes que seus reforços cheguem"
+msgstr "Mate o Aprendiz da Escuridão antes que mais elfos cheguem"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
+#, fuzzy
+#| msgid ""
+#| "The Elvish forces are spread out. Seek to fight them one at a time with "
+#| "several of your units."
 msgid ""
-"The Elvish forces are spread out. Seek to fight them one at a time with "
+"The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
 "As forças Élficas estão dispersas. Tente enfrenta-los um a um com múltiplas "
@@ -661,16 +670,6 @@ msgstr ""
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
-#, fuzzy
-#| msgid ""
-#| "We heard the sounds of battle three days ago, but the foul reek of death "
-#| "was unmistakable as the prisoner passed us; if your brother really is the "
-#| "prisoner then he is also a necromancer. Remember your brother as we all "
-#| "hope he was, and know that the prisoner’s fate will be revenge as dire as "
-#| "you could wish.\n"
-#| "\n"
-#| "Either way, nothing will be gained by your intrusion into our woods. Now "
-#| "advance no further, or you will die."
 msgid ""
 "We heard the sounds of battle three days ago, but the foul reek of death was "
 "unmistakable as the prisoner passed us; if your brother really is the "
@@ -686,8 +685,8 @@ msgstr ""
 "for o prisoneiro então ele também é um necromante. Lembre-se do seu irmão "
 "como ele era, e saiba que ele será vingado.\n"
 "\n"
-"De qualquer forma, não há nada para vocês nessas florestas. Não avançem "
-"mais, ou vocêsmorrerão."
+"De qualquer forma, essas florestas são nossas e você não tem porquê invadí-"
+"las. Não avançem mais, ou defenderemos nossa terra."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
@@ -734,6 +733,9 @@ msgid ""
 "without arousing the elves’ suspicions. Still, no need for the disguise any "
 "more."
 msgstr ""
+"Maldição! Se eles tivessem demorado mais umas horas, eu teria conseguido "
+"cubrir nossos rastros sem chamar a atenção dos elfos. Enfim, esse disfarce "
+"não tem mais utilidade."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
@@ -757,7 +759,7 @@ msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Venham, homens, peguem esses sequestradores!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:558
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -768,7 +770,7 @@ msgstr ""
 "Ele já deve estar preso nas masmorras de nosso mestre."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:563
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:561
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -777,53 +779,53 @@ msgstr ""
 "farei jorrar esse seu maldito sangue."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "Sithrak"
 msgstr "Sithrak"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
 msgid "Eleben"
 msgstr "Eleben"
 
 # Senha
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Jarlom"
 msgstr "Jarlom"
 
 # Senha
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:569
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
 msgid "Hamik"
 msgstr "Hamik"
 
 # Senha
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "Akranbral"
 msgstr "Akranbral"
 
 # Senha
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
 msgid "Drakanal"
 msgstr "Drakanal"
 
 # Senha
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Xaskanat"
 msgstr "Xaskanat"
 
 # Senha
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:576
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
 msgid "Katklagad"
 msgstr "Katklagad"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:582
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
@@ -834,13 +836,13 @@ msgstr ""
 "$second_password|."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:590
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 "Bote uma venda nele e traga-o conosco. Se estiver mentindo, ele morrerá."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:603
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:602
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -849,7 +851,7 @@ msgstr ""
 "com Baran, não depois de Toen Caric."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:608
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:607
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
@@ -858,12 +860,12 @@ msgstr ""
 "que ele está em perigo muda as coisas. Montem, partiremos imediatamente."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:623
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
 msgid "Brena"
 msgstr "Brena"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:631
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -872,7 +874,7 @@ msgstr ""
 "contra esses mortos-vivos abomináveis. Há mais para serem destruídos?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:637
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:636
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
@@ -881,7 +883,7 @@ msgstr ""
 "irmão."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:641
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
@@ -890,32 +892,32 @@ msgstr ""
 "você permitir."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:647
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:646
 msgid "He would only slow us down!"
 msgstr "Ele só nos atrasaria!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:652
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:651
 msgid "It is my place to decide this."
 msgstr "Sou eu quem decide."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:654
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:653
 msgid "Oh, all right then. Come along with us."
 msgstr "Muito bem, venha conosco."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:658
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:657
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr "Obrigado. Eu e meus companheiros lhe ajudaremos em sua nobre missão."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:663
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:662
 msgid "I am sorry. We have not the time to spare."
 msgstr "Sinto muito. Não temos tempo a perder."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:667
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:666
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -924,26 +926,30 @@ msgstr ""
 "camaradas lhe ajudarão sempre que você precisar deles."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:682
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:681
 msgid "You receive 70 pieces of gold!"
 msgstr "Você recebeu 70 peças de ouro!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:711
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:710
 msgid ""
 "These elves have delayed us too long, the kidnappers’ trail will have faded "
 "by now."
 msgstr ""
+"Esses elfos nos atrasaram muito. Os rastros dos sequestradores já devem ter "
+"desaparecido."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:717
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
 msgid ""
 "More elves are arriving; even if they believe me, the kidnappers’ trail is "
 "sure to fade before we can follow."
 msgstr ""
+"Maiselfos estão chegando. Mesmo que eles acreditem em mim, os rastros dos "
+"sequestradores desaparecerão antes que consigamos ir atrás deles."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
 msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
@@ -952,7 +958,7 @@ msgstr ""
 "chegado tarde demais e que nossas almas descansarão em paz."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:741
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
 msgid "Follow their back trail!"
 msgstr "Sigam os rastros!"
 
@@ -983,7 +989,7 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"19 V, 363 YW\n"
+"19 V, 363 AW\n"
 "Trecho do diário de Rotharik, o sem-Clã\n"
 "\n"
 "Os últimos servos de Mordak chegaram hoje de manhã trazendo a notícia de sua "
@@ -1019,7 +1025,7 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"19 V, 363 YW\n"
+"19 V, 363 AW\n"
 "Trecho do diário de Rotharik, o sem-Clã\n"
 "\n"
 "Eu fiz o possível para fortificar este castelo em ruínas. Os orcs que vieram "
@@ -1479,7 +1485,7 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
-"27 de maio de 363dW\n"
+"27 V, 363 AW\n"
 "Trecho do diário de Baran de maghre.\n"
 "\n"
 "Quase em casa agora. Não sei ao certo como se sinto sobre essa última semana "
@@ -1517,7 +1523,7 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
-"27 V, 363 YW\n"
+"27 V, 363 AW\n"
 "Trecho do diário de Baran de maghre\n"
 "\n"
 "Embora eu esteja mais em paz agora, não consigo parar de pensar em Toen "
@@ -1751,7 +1757,7 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
-"22 IX, 365 YW\n"
+"22 IX, 365 AW\n"
 "Trecho do diário de Arne de Maghre:\n"
 "\n"
 "Maghre está muito melhor do que da última vez em que a vi. Baran fez "
@@ -1778,7 +1784,7 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-"22 IX, 365 YW\n"
+"22 IX, 365 AW\n"
 "Trecho do diário de Arvith de Maghre\n"
 "\n"
 "Esse patrono é, por mais incrível que pareça, um elfo. Eu nunca imaginei que "
@@ -1804,7 +1810,7 @@ msgid "It is over, I am vanquished."
 msgstr "Eu fui derrotado, tudo está acabado."
 
 #. [unit]: id=Baran, type=Red Mage
-#: data/campaigns/Two_Brothers/utils/characters.cfg:128
+#: data/campaigns/Two_Brothers/utils/characters.cfg:141
 msgid "Baran"
 msgstr "Baran"
 

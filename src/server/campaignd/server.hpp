@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2021
+	Copyright (C) 2015 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2018 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -269,6 +269,15 @@ private:
 	 * and message is recorded to the server log.
 	 */
 	void send_error(const std::string& msg, const std::string& extra_data, unsigned int status_code, const any_socket_ptr& sock);
+
+	/**
+	 * Check whether the provided passphrase matches the add-on and its author by checked against the forum database.
+	 *
+	 * @param addon The add-on uploaded, which contains the username to use.
+	 * @param passphrase The passphrase to use for authentication.
+	 * @return Whether the provided information matches what's in the forum database.
+	 */
+	bool authenticate_forum(const config& addon, const std::string& passphrase);
 };
 
 } // end namespace campaignd

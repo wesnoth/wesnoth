@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Karol Kozub <karol.alt@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,7 +67,7 @@ private:
 
 	/** Sets up the paths later used to load images
 	 *
-	 * This is required by all the modifications that use image::get_image
+	 * This is required by all the modifications that use image::get_surface
 	 * to load images from disk
 	 */
 	void set_up_image_paths()

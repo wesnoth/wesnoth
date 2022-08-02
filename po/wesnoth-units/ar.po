@@ -2,14 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2008-05-26 18:38+0200\n"
+"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
+"PO-Revision-Date: 2022-07-20 12:30+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -25,27 +26,29 @@ msgstr ""
 #: data/core/units/trolls/Whelp.cfg:24
 #: data/core/units/undead/Skeleton_Archer.cfg:37
 msgid "fist"
-msgstr ""
+msgstr "قبضة"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Brawler.cfg:31
 #: data/core/units/monsters/Fire_Dragon.cfg:41
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
-msgstr ""
+msgstr "ذيل"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Kraken.cfg:27
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:28
 #: data/core/units/monsters/Cuttle_Fish.cfg:29
 #: data/core/units/monsters/Tentacle.cfg:33
 msgid "tentacle"
-msgstr ""
+msgstr "اللامسة"
 
 #. [attack]: type=pierce
 #: data/campaigns/Dead_Water/units/Kraken.cfg:38
+#: data/campaigns/Winds_of_Fate/units/Kraken.cfg:39
 #: data/core/units/monsters/Cuttle_Fish.cfg:40
 msgid "ink"
-msgstr ""
+msgstr "حبر"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -63,10 +66,10 @@ msgstr ""
 #: data/core/units/dunefolk/Sunderer.cfg:32
 #: data/core/units/dunefolk/Windbolt.cfg:32
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:23
-#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:29
-#: data/core/units/nagas/Guard_Shield.cfg:27
+#: data/core/units/nagas/Guard.cfg:27 data/core/units/nagas/Guard_High.cfg:37
+#: data/core/units/nagas/Guard_Shield.cfg:35
 msgid "mace"
-msgstr ""
+msgstr "صولجان"
 
 #. [attack]: type=impact
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Commander.cfg:21
@@ -100,7 +103,7 @@ msgstr ""
 #: data/core/units/saurians/Soothsayer.cfg:25
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:48
 msgid "staff"
-msgstr ""
+msgstr "صولجان"
 
 #. [attack]: type=blade
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
@@ -114,9 +117,9 @@ msgstr ""
 #: data/core/units/dunefolk/Falconer.cfg:140
 #: data/core/units/dunefolk/Sky_Hunter.cfg:138
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
-#: data/core/units/orcs/Crossbowman.cfg:23 data/core/units/orcs/Slurbow.cfg:28
+#: data/core/units/orcs/Crossbowman.cfg:32 data/core/units/orcs/Slurbow.cfg:34
 msgid "short sword"
-msgstr ""
+msgstr "سيف قصير"
 
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:31
@@ -128,7 +131,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:57
 #: data/core/units/undead/Necromancer.cfg:38
 msgid "chill wave"
-msgstr ""
+msgstr "موجة البرد"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:43
@@ -144,7 +147,7 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:59
 #: data/core/units/undead/Necromancer.cfg:50
 msgid "shadow wave"
-msgstr ""
+msgstr "موجة الظل"
 
 #. [attack]: type=impact
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:73
@@ -159,37 +162,15 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:36
 #: data/core/units/trolls/Rocklobber.cfg:34
 msgid "sling"
-msgstr ""
-
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Bone_Knight.cfg:32
-#: data/campaigns/Eastern_Invasion/units/Skeleton_Rider.cfg:41
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:32
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:41
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/campaigns/Under_the_Burning_Suns/units/undead/Undead_Horseman.cfg:39
-#: data/core/units/dunefolk/Explorer.cfg:34
-#: data/core/units/dunefolk/Rover.cfg:31
-#: data/core/units/dunefolk/Wayfarer.cfg:43
-#: data/core/units/dwarves/Explorer.cfg:33
-#: data/core/units/dwarves/Fighter.cfg:57
-#: data/core/units/dwarves/Pathfinder.cfg:36
-#: data/core/units/dwarves/Pathfinder.cfg:44
-#: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Deathblade.cfg:53
-#: data/core/units/undead/Skele_Draug.cfg:30
-#: data/core/units/undead/Skele_Revenant.cfg:31
-#: data/core/units/undead/Skeleton.cfg:49
-msgid "axe"
-msgstr ""
+msgstr "المخذفة"
 
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
 #: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:22
+#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
 msgid "greatsword"
-msgstr ""
+msgstr "سيف عظيم"
 
 #. [attack]: type=impact
 #: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
@@ -203,7 +184,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
 #: data/core/units/humans/Mage_of_Light.cfg:50
 msgid "flail"
-msgstr ""
+msgstr "مخباط "
 
 #. [attack]: type=blade
 #. [attack]: type=arcane
@@ -216,7 +197,6 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:34
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:91
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:36
-#: data/campaigns/Liberty/units/Death_Squire.cfg:32
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
@@ -230,9 +210,9 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:32
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:459
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:516
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:460
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:574
 #: data/campaigns/tutorial/units/Fighter.cfg:24
 #: data/campaigns/tutorial/units/Fighteress.cfg:25
 #: data/campaigns/tutorial/units/Warrior.cfg:25
@@ -256,10 +236,11 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Swordsman.cfg:29
 #: data/core/units/humans/Woodsman_Ranger.cfg:44
 #: data/core/units/nagas/Fighter.cfg:30 data/core/units/nagas/Myrmidon.cfg:29
-#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:82
+#: data/core/units/nagas/Warrior.cfg:27 data/core/units/orcs/Grunt.cfg:88
 #: data/core/units/orcs/Leader.cfg:27
+#: data/core/units/undead/Skele_Death_Squire.cfg:32
 msgid "sword"
-msgstr ""
+msgstr "سيف "
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -271,9 +252,9 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:468
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:525
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:526
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:583
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
@@ -293,12 +274,12 @@ msgstr ""
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
 #: data/core/units/undead/Skeleton_Archer.cfg:46
 msgid "bow"
-msgstr ""
+msgstr "قوس"
 
 #. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Soulless_Gryphon
+#. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
@@ -317,10 +298,10 @@ msgstr ""
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:33
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:92
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
-msgstr ""
+msgstr "مخالب"
 
 #. [attack]: type=blade
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:32
@@ -330,9 +311,9 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Fencer.cfg:59
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:31
 msgid "saber"
-msgstr ""
+msgstr "سيف المبارزة"
 
-#. [unit_type]: id=Walking Corpse, race=undead
+#. [unit_type]: id=Walking Corpse Shynal, race=undead
 #. [unit_type]: id=SotA Walking Corpse_Human
 #. [unit_type]: id=SotA Walking Corpse_Dwarf
 #. [unit_type]: id=SotA Walking Corpse_Goblin
@@ -344,7 +325,7 @@ msgstr ""
 #. [unit_type]: id=SotA Walking Corpse_Wolf Rider
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Walking Corpse_Rat
-#. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:4
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:110
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:125
@@ -359,10 +340,10 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:298
 #: data/core/units/undead/Corpse_Walking.cfg:75
 msgid "Walking Corpse"
-msgstr ""
+msgstr "جثة سائرة"
 
-#. [unit_type]: id=Walking Corpse, race=undead
 #. [unit_type]: id=Walking Corpse Shynal, race=undead
+#. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
 #: data/core/units/undead/Corpse_Walking.cfg:85
@@ -392,8 +373,8 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Troll
 #. [unit_type]: id=SotA Soulless_Wose
 #. [unit_type]: id=SotA Soulless_Wolf Rider
-#. [attack]: type=cold
 #. [attack]: type=fire
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:35
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:32
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:113
@@ -423,24 +404,24 @@ msgstr ""
 #: data/core/units/undead/Necro_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:57
 msgid "touch"
-msgstr ""
+msgstr "لمسة"
 
 #. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
 #: data/core/units/humans/Outlaw_Footpad.cfg:24
 #: data/core/units/humans/Outlaw_Ruffian.cfg:29
-#: data/core/units/humans/Outlaw_Thug.cfg:23
+#: data/core/units/humans/Outlaw_Thug.cfg:22
 #: data/core/units/merfolk/Entangler.cfg:26
 #: data/core/units/merfolk/Netcaster.cfg:25 data/core/units/trolls/Troll.cfg:24
 msgid "club"
-msgstr ""
+msgstr "هراوة"
 
-#. [unit_type]: id=Ancient Lich, race=undead
 #. [unit_type]: id=SotA Ancient Lich, race=undead
+#. [unit_type]: id=Ancient Lich, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:5
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:4
 msgid "Ancient Lich"
-msgstr ""
+msgstr "جثة أبدية قديمة"
 
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:44
@@ -448,23 +429,23 @@ msgstr ""
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:41
 #: data/core/units/undead/Necro_Lich.cfg:47
 msgid "chill tempest"
-msgstr ""
+msgstr "عاصفة البرد"
 
-#. [unit_type]: id=Necromancer, race=human
 #. [unit_type]: id=Sacrifice, race=human
+#. [unit_type]: id=Necromancer, race=human
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Sacrifice.cfg:8
 #: data/core/units/undead/Necromancer.cfg:4
 msgid "Necromancer"
-msgstr ""
+msgstr "مستحضر الأرواح"
 
 #. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Necromancer.cfg:11
 #: data/core/units/undead/Necromancer.cfg:26
 msgid "plague staff"
-msgstr ""
+msgstr "صولجان الطاعون"
 
-#. [attack]: type=cold
 #. [attack]: type=pierce
+#. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
@@ -473,16 +454,16 @@ msgstr ""
 #: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:45
 #: data/core/units/saurians/Soothsayer.cfg:34
 msgid "curse"
-msgstr ""
+msgstr "لعنة"
 
-#. [attack]: type=blade
-#. [attack]: type=pierce
 #. [unit_type]: id=SotA Walking Corpse_Wolf
 #. [unit_type]: id=SotA Walking Corpse_Spider
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #. [unit_type]: id=SotA Soulless_Wolf
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Bat
+#. [attack]: type=blade
+#. [attack]: type=pierce
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:254
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:285
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:318
@@ -497,6 +478,9 @@ msgstr ""
 #: data/core/units/goblins/Pillager.cfg:32
 #: data/core/units/goblins/Wolf_Rider.cfg:46
 #: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
+#: data/core/units/monsters/Caribe.cfg:112
+#: data/core/units/monsters/Caribe_Hunter.cfg:113
+#: data/core/units/monsters/Caribe_Nibbler.cfg:125
 #: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
@@ -505,19 +489,21 @@ msgstr ""
 #: data/core/units/monsters/Wolf_Dire.cfg:33
 #: data/core/units/monsters/Wolf_Great.cfg:33
 msgid "fangs"
-msgstr ""
+msgstr "الأنياب"
 
-#. [attack]: type=blade
-#. [attack]: type=cold
-#. [attack]: type=pierce
-#. [variation]
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
+#. [attack]: type=blade
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#. [variation]
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
-#: data/core/units/monsters/Crocodile.cfg:101
+#: data/core/units/monsters/Boar.cfg:50
+#: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -530,7 +516,7 @@ msgstr ""
 #: data/core/units/undead/Corpse_Soulless.cfg:251
 #: data/core/units/undead/Corpse_Walking.cfg:250
 msgid "bite"
-msgstr ""
+msgstr "عضة"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:14
@@ -542,7 +528,6 @@ msgid ""
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
 
-#. [unit_type]: id=Soulless, race=undead
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
 #. [unit_type]: id=SotA Soulless_Goblin
@@ -557,6 +542,7 @@ msgstr ""
 #. [unit_type]: id=SotA Soulless_Spider
 #. [unit_type]: id=SotA Soulless_Rat
 #. [unit_type]: id=SotA Soulless_Bat
+#. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:88
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:102
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:116
@@ -573,10 +559,10 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:274
 #: data/core/units/undead/Corpse_Soulless.cfg:75
 msgid "Soulless"
-msgstr ""
+msgstr "عديم الروح"
 
-#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
+#. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
 #: data/core/units/dwarves/Berserker.cfg:18
 msgid ""
@@ -591,12 +577,10 @@ msgstr ""
 #: data/core/units/dwarves/Berserker.cfg:43
 #: data/core/units/dwarves/Ulfserker.cfg:30
 msgid "berserker frenzy"
-msgstr ""
+msgstr "نوبة الهيجان"
 
-#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Dragonguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:17
-#: data/core/units/dwarves/Dragonguard.cfg:19
 msgid ""
 "It is not clear why the Dragonguards are called what they are, a name given "
 "by their dwarven brethren. Some speculate that the name comes from their "
@@ -604,7 +588,7 @@ msgid ""
 "have surmised that it is because such weapons would be a threat against even "
 "a true Dragon, should such a thing be seen again in the known world. "
 "Whatever the case, it is for these weapons that the guardians of the great "
-"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
 
@@ -626,20 +610,20 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:33
 #: data/core/units/nagas/Dirkfang.cfg:29 data/core/units/orcs/Archer.cfg:24
-#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:26
+#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:35
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
-msgstr ""
+msgstr "خنجر"
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:33
 #: data/core/units/dwarves/Dragonguard.cfg:47
 msgid "dragonstaff"
-msgstr ""
+msgstr "صولجان التنين"
 
-#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Fighter, race=dwarf
+#. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:17
 #: data/core/units/dwarves/Fighter.cfg:17
 msgid ""
@@ -648,6 +632,25 @@ msgid ""
 "terrain or underground. Their power and endurance more than compensate for "
 "their relatively poor mobility."
 msgstr ""
+
+#. [attack]: type=blade
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
+#: data/core/units/dunefolk/Explorer.cfg:34
+#: data/core/units/dunefolk/Rover.cfg:31
+#: data/core/units/dunefolk/Wayfarer.cfg:43
+#: data/core/units/dwarves/Explorer.cfg:33
+#: data/core/units/dwarves/Fighter.cfg:57
+#: data/core/units/dwarves/Pathfinder.cfg:36
+#: data/core/units/dwarves/Pathfinder.cfg:44
+#: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
+#: data/core/units/undead/Skele_Bone_Knight.cfg:31
+#: data/core/units/undead/Skele_Deathblade.cfg:53
+#: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Revenant.cfg:31
+#: data/core/units/undead/Skeleton.cfg:49
+#: data/core/units/undead/Skeleton_Rider.cfg:40
+msgid "axe"
+msgstr "فأس"
 
 #. [attack]: type=impact
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:40
@@ -661,10 +664,10 @@ msgstr ""
 #: data/core/units/dwarves/Steelclad.cfg:57 data/core/units/trolls/Great.cfg:25
 #: data/core/units/trolls/Hero.cfg:25 data/core/units/trolls/Warrior.cfg:25
 msgid "hammer"
-msgstr ""
+msgstr "مطرقة"
 
-#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Guardsman, race=dwarf
+#. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:17
 msgid ""
@@ -695,7 +698,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:26
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/humans/Horseman.cfg:23
-#: data/core/units/humans/Loyalist_Javelineer.cfg:27
+#: data/core/units/humans/Loyalist_Javelineer.cfg:30
 #: data/core/units/humans/Loyalist_Spearman.cfg:80
 #: data/core/units/merfolk/Hoplite.cfg:35 data/core/units/merfolk/Hunter.cfg:24
 #: data/core/units/merfolk/Hunter.cfg:32
@@ -711,7 +714,7 @@ msgstr ""
 #: data/core/units/saurians/Skirmisher.cfg:44
 #: data/core/units/undead/Skele_Chocobone.cfg:35
 msgid "spear"
-msgstr ""
+msgstr "رمح"
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:37
@@ -726,10 +729,10 @@ msgstr ""
 #: data/core/units/dwarves/Guardsman.cfg:37
 #: data/core/units/dwarves/Sentinel.cfg:47
 #: data/core/units/dwarves/Stalwart.cfg:42
-#: data/core/units/humans/Loyalist_Javelineer.cfg:38
+#: data/core/units/humans/Loyalist_Javelineer.cfg:41
 #: data/core/units/humans/Loyalist_Spearman.cfg:92
 msgid "javelin"
-msgstr ""
+msgstr "عصا حديدية الرأس"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:28
@@ -738,13 +741,13 @@ msgstr ""
 #: data/core/units/dwarves/Steelclad.cfg:48
 #: data/core/units/undead/Skele_Death_Knight.cfg:33
 msgid "battle axe"
-msgstr ""
+msgstr "فأس القتال"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:46
 #: data/core/units/dwarves/Lord.cfg:66
 msgid "hatchet"
-msgstr ""
+msgstr "فأس صغيرة"
 
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:18
@@ -756,8 +759,8 @@ msgid ""
 "can hold a patch of earth with the single-minded tenacity of an oak."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
+#. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Stalwart.cfg:17
 #: data/core/units/dwarves/Stalwart.cfg:18
 msgid ""
@@ -767,8 +770,8 @@ msgid ""
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
+#. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:17
 #: data/core/units/dwarves/Thunderer.cfg:17
 msgid ""
@@ -785,12 +788,10 @@ msgstr ""
 #: data/core/units/dwarves/Thunderer.cfg:73
 #: data/core/units/dwarves/Thunderguard.cfg:48
 msgid "thunderstick"
-msgstr ""
+msgstr "عصا الرعد"
 
-#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Thunderguard, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:18
-#: data/core/units/dwarves/Thunderguard.cfg:18
 msgid ""
 "The Dwarven Thunderguards are famed for their curious weaponry, these "
 "strange staves of wood and iron that make a thunderous noise in their anger. "
@@ -801,11 +802,11 @@ msgid ""
 "the beast imprisoned within.\n"
 "\n"
 "Though a single shot from these ‘thundersticks’ can take several minutes to "
-"prepare, the results are seen by the Dwarves as being well worth the wait."
+"prepare, the results are seen by the dwarves as being well worth the wait."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #. [unit_type]: id=Dwarvish Masked Ulfserker, race=dwarf
+#. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Ulfserker.cfg:18
 #: data/core/units/dwarves/Ulfserker.cfg:18
 msgid ""
@@ -815,16 +816,16 @@ msgid ""
 "they receive."
 msgstr ""
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
-msgstr ""
+msgstr "قزم خبير تعويذات"
 
-#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
+#. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
 #: data/core/units/dwarves/Runemaster.cfg:24
@@ -837,12 +838,12 @@ msgid ""
 "than would be expected."
 msgstr ""
 
-#. [unit_type]: id=Elvish Shyde, race=elf
 #. [unit_type]: id=Autumn Shyde, race=elf
+#. [unit_type]: id=Elvish Shyde, race=elf
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
 #: data/core/units/elves/Shyde.cfg:4
 msgid "female^Elvish Shyde"
-msgstr ""
+msgstr "كاهنة إلفية"
 
 #. [attack]: type=pierce
 #: data/campaigns/The_South_Guard/units/Horseman_Commander.cfg:30
@@ -853,14 +854,14 @@ msgstr ""
 #: data/core/units/humans/Horse_Lancer.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:48
 msgid "lance"
-msgstr ""
+msgstr "حربة"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Infantry_Commander.cfg:40
 #: data/core/units/dunefolk/Spearguard.cfg:42
 #: data/core/units/dunefolk/Spearmaster.cfg:45
 msgid "shield bash"
-msgstr ""
+msgstr "ضربة درع"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
@@ -869,7 +870,7 @@ msgstr ""
 #: data/core/units/merfolk/Diviner.cfg:54
 #: data/core/units/merfolk/Priestess.cfg:51
 msgid "lightbeam"
-msgstr ""
+msgstr "شعاع الضوء"
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:51
@@ -877,7 +878,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:54
 #: data/core/units/elves/Druid.cfg:47 data/core/units/elves/Shyde.cfg:54
 msgid "thorns"
-msgstr ""
+msgstr "أشواك"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
@@ -886,14 +887,14 @@ msgstr ""
 #: data/core/units/drakes/Enforcer.cfg:43
 #: data/core/units/drakes/Thrasher.cfg:40
 msgid "ram"
-msgstr ""
+msgstr "نطحة"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:42
 #: data/core/units/dunefolk/Harrier.cfg:43
 #: data/core/units/dunefolk/Strider.cfg:43
 msgid "bolas"
-msgstr ""
+msgstr "الكرات"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:36
@@ -902,12 +903,12 @@ msgstr ""
 #: data/core/units/elves/High_Lord.cfg:56 data/core/units/elves/Lord.cfg:35
 #: data/core/units/elves/Sorceress.cfg:47 data/core/units/elves/Sylph.cfg:53
 msgid "faerie fire"
-msgstr ""
+msgstr "نار الجنيات"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
 msgid "Blood Bat"
-msgstr ""
+msgstr "خفاش الدم"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:19
@@ -921,7 +922,7 @@ msgstr ""
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr ""
+msgstr "خفاش رهيب"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:20
@@ -934,7 +935,7 @@ msgstr ""
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
 msgid "Vampire Bat"
-msgstr ""
+msgstr "خفاش مصاص الدماء"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
@@ -947,7 +948,7 @@ msgstr ""
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:4
 msgid "Boat"
-msgstr ""
+msgstr "قارب"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Boat.cfg:17
@@ -959,7 +960,7 @@ msgstr ""
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
 msgid "Galleon"
-msgstr ""
+msgstr "سفينة شراعية"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:19
@@ -969,7 +970,7 @@ msgstr ""
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:4
 msgid "Pirate Galleon"
-msgstr ""
+msgstr "سفينة قرصنة"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Pirate_Galleon.cfg:17
@@ -983,12 +984,12 @@ msgstr ""
 #: data/core/units/boats/Pirate_Galleon.cfg:20
 #: data/core/units/boats/Transport_Galleon.cfg:20
 msgid "ballista"
-msgstr ""
+msgstr "منجنيق"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:4
 msgid "Transport Galleon"
-msgstr ""
+msgstr "سفينة نقل"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
 #: data/core/units/boats/Transport_Galleon.cfg:16
@@ -1000,7 +1001,7 @@ msgstr ""
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:4
 msgid "Drake Arbiter"
-msgstr ""
+msgstr "درايك حكم"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:17
@@ -1022,17 +1023,17 @@ msgstr ""
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
-#: data/core/units/drakes/Arbiter.cfg:30 data/core/units/drakes/Arbiter.cfg:39
-#: data/core/units/drakes/Warden.cfg:31 data/core/units/drakes/Warden.cfg:40
+#: data/core/units/drakes/Arbiter.cfg:36 data/core/units/drakes/Arbiter.cfg:45
+#: data/core/units/drakes/Warden.cfg:37 data/core/units/drakes/Warden.cfg:46
 #: data/core/units/humans/Loyalist_Halberdier.cfg:31
 #: data/core/units/humans/Loyalist_Halberdier.cfg:43
 msgid "halberd"
-msgstr ""
+msgstr "مطرد"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:4
 msgid "Armageddon Drake"
-msgstr ""
+msgstr "هرمجدون دريك"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
 #: data/core/units/drakes/Armageddon.cfg:19
@@ -1047,7 +1048,7 @@ msgstr ""
 #: data/core/units/drakes/Armageddon.cfg:36 data/core/units/drakes/Fire.cfg:29
 #: data/core/units/drakes/Inferno.cfg:31
 msgid "battle claws"
-msgstr ""
+msgstr "مخالب قتال"
 
 #. [attack]: type=fire
 #: data/core/units/drakes/Armageddon.cfg:45
@@ -1062,12 +1063,12 @@ msgstr ""
 #: data/core/units/monsters/Fire_Guardian.cfg:37
 #: data/core/units/monsters/Fire_Wraith.cfg:59
 msgid "fire breath"
-msgstr ""
+msgstr "نفس ناري"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:4
 msgid "Drake Blademaster"
-msgstr ""
+msgstr "درايك خبير سيوف"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:19
@@ -1085,12 +1086,12 @@ msgstr ""
 #: data/core/units/drakes/Clasher.cfg:24 data/core/units/drakes/Enforcer.cfg:34
 #: data/core/units/drakes/Thrasher.cfg:22
 msgid "war talon"
-msgstr ""
+msgstr "مخلب الحرب"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
 msgid "Drake Burner"
-msgstr ""
+msgstr "درايك حارق"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:17
@@ -1104,7 +1105,7 @@ msgstr ""
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:4
 msgid "Drake Clasher"
-msgstr ""
+msgstr "درايك مصادم"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:18
@@ -1125,7 +1126,7 @@ msgstr ""
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr ""
+msgstr "درايك مراقب قوانين"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:19
@@ -1142,14 +1143,14 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/drakes/Enforcer.cfg:52
 #: data/core/units/merfolk/Fighter.cfg:22 data/core/units/merfolk/Triton.cfg:24
-#: data/core/units/merfolk/Triton.cfg:32 data/core/units/merfolk/Warrior.cfg:22
+#: data/core/units/merfolk/Triton.cfg:33 data/core/units/merfolk/Warrior.cfg:22
 msgid "trident"
-msgstr ""
+msgstr "رمح ثلاثي الشعب"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:4
 msgid "Drake Fighter"
-msgstr ""
+msgstr "درايك مقاتل"
 
 #. [unit_type]: id=Drake Fighter, race=drake
 #: data/core/units/drakes/Fighter.cfg:17
@@ -1165,12 +1166,12 @@ msgstr ""
 #: data/core/units/drakes/Flameheart.cfg:30 data/core/units/drakes/Flare.cfg:29
 #: data/core/units/drakes/Warrior.cfg:25
 msgid "war blade"
-msgstr ""
+msgstr "نصل حرب"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:4
 msgid "Fire Drake"
-msgstr ""
+msgstr "درايك ناري"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:17
@@ -1185,7 +1186,7 @@ msgstr ""
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
 msgid "Drake Flameheart"
-msgstr ""
+msgstr "درايك قلب اللهب"
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:18
@@ -1202,7 +1203,7 @@ msgstr ""
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:4
 msgid "Drake Flare"
-msgstr ""
+msgstr "درايك متوهج"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:17
@@ -1217,7 +1218,7 @@ msgstr ""
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
 msgid "Drake Glider"
-msgstr ""
+msgstr "درايك الشراع"
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:18
@@ -1239,13 +1240,14 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
+#: data/core/units/monsters/Wild_Wyvern.cfg:86
 msgid "slam"
-msgstr ""
+msgstr "ضربة الرأس"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:4
 msgid "Hurricane Drake"
-msgstr ""
+msgstr "درايك الإعصار"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:18
@@ -1262,7 +1264,7 @@ msgstr ""
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
 msgid "Inferno Drake"
-msgstr ""
+msgstr "درايك الجحيم"
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:19
@@ -1277,7 +1279,7 @@ msgstr ""
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr ""
+msgstr "درايك السماء"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:17
@@ -1292,7 +1294,7 @@ msgstr ""
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:4
 msgid "Drake Thrasher"
-msgstr ""
+msgstr "درايك النورس"
 
 #. [unit_type]: id=Drake Thrasher, race=drake
 #: data/core/units/drakes/Thrasher.cfg:18
@@ -1308,7 +1310,7 @@ msgstr ""
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:4
 msgid "Drake Warden"
-msgstr ""
+msgstr "درايك المراقب"
 
 #. [unit_type]: id=Drake Warden, race=drake
 #: data/core/units/drakes/Warden.cfg:18
@@ -1332,7 +1334,7 @@ msgstr ""
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:4
 msgid "Drake Warrior"
-msgstr ""
+msgstr "درايك المحارب"
 
 #. [unit_type]: id=Drake Warrior, race=drake
 #: data/core/units/drakes/Warrior.cfg:17
@@ -1348,7 +1350,7 @@ msgstr ""
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:8
 msgid "Dune Alchemist"
-msgstr ""
+msgstr "صحراوي خيميائي"
 
 #. [unit_type]: id=Dune Alchemist, race=dunefolk
 #: data/core/units/dunefolk/Alchemist.cfg:25
@@ -1367,12 +1369,12 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Alchemist.cfg:44
 msgid "blowgun"
-msgstr ""
+msgstr "بندقية"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:8
 msgid "Dune Apothecary"
-msgstr ""
+msgstr "صحراوي صيدلي"
 
 #. [unit_type]: id=Dune Apothecary, race=dunefolk
 #: data/core/units/dunefolk/Apothecary.cfg:25
@@ -1393,7 +1395,7 @@ msgstr ""
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:8
 msgid "Dune Blademaster"
-msgstr ""
+msgstr "صحراوي خبير مبارزة"
 
 #. [unit_type]: id=Dune Blademaster, race=dunefolk
 #: data/core/units/dunefolk/Blademaster.cfg:21
@@ -1425,12 +1427,12 @@ msgstr ""
 #: data/core/units/dunefolk/Soldier.cfg:26
 #: data/core/units/dunefolk/Warmaster.cfg:31
 msgid "scimitar"
-msgstr ""
+msgstr "سيف معقوف"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:8
 msgid "Dune Burner"
-msgstr ""
+msgstr "صحراوي موقد نيران"
 
 #. [unit_type]: id=Dune Burner, race=dunefolk
 #: data/core/units/dunefolk/Burner.cfg:21
@@ -1448,7 +1450,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Burner.cfg:41
 msgid "tar bomb"
-msgstr ""
+msgstr "قنبلة القطران"
 
 #. [female]
 #: data/core/units/dunefolk/Burner.cfg:98
@@ -1458,7 +1460,7 @@ msgstr ""
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:8
 msgid "Dune Captain"
-msgstr ""
+msgstr "صحراوي نقيب"
 
 #. [unit_type]: id=Dune Captain, race=dunefolk
 #: data/core/units/dunefolk/Captain.cfg:23
@@ -1476,7 +1478,7 @@ msgstr ""
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:8
 msgid "Dune Cataphract"
-msgstr ""
+msgstr "صحراوي فارس مدرع"
 
 #. [unit_type]: id=Dune Cataphract, race=dunefolk
 #: data/core/units/dunefolk/Cataphract.cfg:23
@@ -1503,12 +1505,12 @@ msgstr ""
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
 msgid "composite bow"
-msgstr ""
+msgstr "القوس المركب"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:8
 msgid "Dune Explorer"
-msgstr ""
+msgstr "صحراوي مستكشف"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
 #: data/core/units/dunefolk/Explorer.cfg:20
@@ -1525,7 +1527,7 @@ msgstr ""
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:15
 msgid "female^Dune Falconer"
-msgstr ""
+msgstr "صحراوية مدربة صقور"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
 #: data/core/units/dunefolk/Falconer.cfg:38
@@ -1548,12 +1550,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Falconer.cfg:152
 msgid "falcon"
-msgstr ""
+msgstr "صقر"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:8
 msgid "Dune Firetrooper"
-msgstr ""
+msgstr "صحراوي جندي نار"
 
 #. [unit_type]: id=Dune Firetrooper, race=dunefolk
 #: data/core/units/dunefolk/Firetrooper.cfg:22
@@ -1572,17 +1574,17 @@ msgstr ""
 #: data/core/units/dunefolk/Firetrooper.cfg:95
 #: data/core/units/dunefolk/Scorcher.cfg:42
 msgid "flamethrower"
-msgstr ""
+msgstr "قاذف اللهب"
 
 #. [female]
 #: data/core/units/dunefolk/Firetrooper.cfg:149
 msgid "female^Dune Firetrooper"
-msgstr ""
+msgstr "صحراوية جندية نار"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:8
 msgid "female^Dune Harrier"
-msgstr ""
+msgstr "صحراوية مدربة باز"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk
 #: data/core/units/dunefolk/Harrier.cfg:25
@@ -1602,7 +1604,7 @@ msgstr ""
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:8
 msgid "Dune Herbalist"
-msgstr ""
+msgstr "صحراوي جامع أعشاب"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:25
@@ -1624,7 +1626,7 @@ msgstr ""
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:8
 msgid "Dune Horse Archer"
-msgstr ""
+msgstr "صحراوي خيال رامي سهام"
 
 #. [unit_type]: id=Dune Horse Archer, race=dunefolk
 #: data/core/units/dunefolk/Horse_Archer.cfg:21
@@ -1641,7 +1643,7 @@ msgstr ""
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:8
 msgid "Dune Luminary"
-msgstr ""
+msgstr "صحراوي متألق"
 
 #. [unit_type]: id=Dune Luminary, race=dunefolk
 #: data/core/units/dunefolk/Luminary.cfg:25
@@ -1664,7 +1666,7 @@ msgstr ""
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:11
 msgid "Dune Marauder"
-msgstr ""
+msgstr "صحراوي شهاب"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:31
@@ -1687,12 +1689,12 @@ msgstr ""
 #: data/core/units/dunefolk/Raider.cfg:59
 #: data/core/units/goblins/Pillager.cfg:41
 msgid "torch"
-msgstr ""
+msgstr "شعلة"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
 msgid "Dune Paragon"
-msgstr ""
+msgstr "صحراوي أصيل"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:22
@@ -1723,12 +1725,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/dunefolk/Paragon.cfg:42
 msgid "pommel strike"
-msgstr ""
+msgstr "ضربة الحلق"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:11
 msgid "Dune Raider"
-msgstr ""
+msgstr "صحراوي غازٍ"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:30
@@ -1746,7 +1748,7 @@ msgstr ""
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
 msgid "Dune Rider"
-msgstr ""
+msgstr "صحراوي خيْال"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:21
@@ -1765,7 +1767,7 @@ msgstr ""
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:8
 msgid "Dune Rover"
-msgstr ""
+msgstr "صحراوي جوّال"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:20
@@ -1783,7 +1785,7 @@ msgstr ""
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:9
 msgid "Dune Scorcher"
-msgstr ""
+msgstr "صحراوي حارق"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk
 #: data/core/units/dunefolk/Scorcher.cfg:22
@@ -1800,12 +1802,12 @@ msgstr ""
 #. [female]
 #: data/core/units/dunefolk/Scorcher.cfg:95
 msgid "female^Dune Scorcher"
-msgstr ""
+msgstr "صحراوية حارقة"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:8
 msgid "female^Dune Skirmisher"
-msgstr ""
+msgstr "صحراوية مناوشة"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk
 #: data/core/units/dunefolk/Skirmisher.cfg:21
@@ -1824,7 +1826,7 @@ msgstr ""
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:14
 msgid "female^Dune Sky Hunter"
-msgstr ""
+msgstr "صحراوية صيادة جوية"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
 #: data/core/units/dunefolk/Sky_Hunter.cfg:38
@@ -1844,12 +1846,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Sky_Hunter.cfg:150
 msgid "eagle"
-msgstr ""
+msgstr "نسر"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:8
 msgid "Dune Soldier"
-msgstr ""
+msgstr "صحراوي جندي"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
@@ -1867,7 +1869,7 @@ msgstr ""
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:8
 msgid "Dune Spearguard"
-msgstr ""
+msgstr "صحراوي حارس رمح"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:20
@@ -1887,7 +1889,7 @@ msgstr ""
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:8
 msgid "Dune Spearmaster"
-msgstr ""
+msgstr "صحراوي خبير رماح"
 
 #. [unit_type]: id=Dune Spearmaster, race=dunefolk
 #: data/core/units/dunefolk/Spearmaster.cfg:21
@@ -1915,7 +1917,7 @@ msgstr ""
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:8
 msgid "female^Dune Strider"
-msgstr ""
+msgstr "صحراوية سريعة الخطى"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk
 #: data/core/units/dunefolk/Strider.cfg:21
@@ -1936,7 +1938,7 @@ msgstr ""
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:8
 msgid "Dune Sunderer"
-msgstr ""
+msgstr "صحراوي قاطع"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
@@ -1955,7 +1957,7 @@ msgstr ""
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:8
 msgid "Dune Swordsman"
-msgstr ""
+msgstr "صحراوي مبارز"
 
 #. [unit_type]: id=Dune Swordsman, race=dunefolk
 #: data/core/units/dunefolk/Swordsman.cfg:20
@@ -1976,17 +1978,17 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:26
 msgid "forceful scimitar strike"
-msgstr ""
+msgstr "ضربة السيف القوية"
 
 #. [attack]: type=blade
 #: data/core/units/dunefolk/Swordsman.cfg:35
 msgid "balanced scimitar slash"
-msgstr ""
+msgstr "ضربة السيف المتوازن"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:8
 msgid "Dune Warmaster"
-msgstr ""
+msgstr "صحراوي خبير سيوف"
 
 #. [unit_type]: id=Dune Warmaster, race=dunefolk
 #: data/core/units/dunefolk/Warmaster.cfg:24
@@ -2005,7 +2007,7 @@ msgstr ""
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:8
 msgid "Dune Wayfarer"
-msgstr ""
+msgstr "صحراوي مستكشف"
 
 #. [unit_type]: id=Dune Wayfarer, race=dunefolk
 #: data/core/units/dunefolk/Wayfarer.cfg:21
@@ -2044,7 +2046,7 @@ msgstr ""
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:8
 msgid "Dune Windbolt"
-msgstr ""
+msgstr "صحراوي صاعقة الريح"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
@@ -2064,12 +2066,12 @@ msgstr ""
 #. [unit_type]: id=Wyvern Rider, race=monster, description=
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:4
 msgid "Wyvern Rider"
-msgstr ""
+msgstr "راكب يفيرن"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
 msgid "Dwarvish Arcanister"
-msgstr ""
+msgstr "قزم ساحر"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:24
@@ -2083,17 +2085,30 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
-msgstr ""
+msgstr "قزم قلب الدب"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
 msgid "Dwarvish Dragonguard"
+msgstr "قزم حارس نار"
+
+#. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
+#: data/core/units/dwarves/Dragonguard.cfg:19
+msgid ""
+"It is not clear why the Dragonguards are called what they are, a name given "
+"by their dwarven brethren. Some speculate that the name comes from their "
+"weapon of choice, these strange staves that belch fire and death. Others "
+"have surmised that it is because such weapons would be a threat against even "
+"a true Dragon, should such a thing be seen again in the known world. "
+"Whatever the case, it is for these weapons that the guardians of the great "
+"Dwarven citadels are both renowned and feared; weapons that have broken the "
+"mightiest of warriors with a single blow."
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
-msgstr ""
+msgstr "قزم مستكشف"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:18
@@ -2109,17 +2124,17 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
 msgid "Dwarvish Fighter"
-msgstr ""
+msgstr "قزم مقاتل"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
 msgid "Dwarvish Guardsman"
-msgstr ""
+msgstr "قزم حارس"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:4
 msgid "Dwarvish Lord"
-msgstr ""
+msgstr "قزم لورد"
 
 #. [unit_type]: id=Dwarvish Lord, race=dwarf
 #: data/core/units/dwarves/Lord.cfg:18
@@ -2133,7 +2148,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
 msgid "Dwarvish Pathfinder"
-msgstr ""
+msgstr "قزم رائد"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:22
@@ -2148,7 +2163,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
 msgid "Dwarvish Runesmith"
-msgstr ""
+msgstr "قزم ناقش تعاويذ"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:23
@@ -2162,7 +2177,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
 msgid "Dwarvish Scout"
-msgstr ""
+msgstr "قزم كشاف"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:22
@@ -2180,7 +2195,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
 msgid "Dwarvish Sentinel"
-msgstr ""
+msgstr "قزم صلب"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:19
@@ -2196,12 +2211,12 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "قزم عازم"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
 msgid "Dwarvish Steelclad"
-msgstr ""
+msgstr "قزم  فولاذي"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:18
@@ -2215,22 +2230,37 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
 msgid "Dwarvish Thunderer"
-msgstr ""
+msgstr "قزم الرعد"
 
 #. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
 #: data/core/units/dwarves/Thunderguard.cfg:4
 msgid "Dwarvish Thunderguard"
+msgstr "قزم صانع الرعد"
+
+#. [unit_type]: id=Dwarvish Thunderguard, race=dwarf
+#: data/core/units/dwarves/Thunderguard.cfg:18
+msgid ""
+"The Dwarven Thunderguards are famed for their curious weaponry, these "
+"strange staves of wood and iron that make a thunderous noise in their anger. "
+"The machinations behind this weaponry are a mystery, a secret taken to the "
+"grave by the dwarves of Knalga who wield them, and are assumed to have even "
+"forged them. The most that is known are reports of dwarves pouring a strange "
+"black dust into the mouth of their weapons, which some say is a food to fuel "
+"the beast imprisoned within.\n"
+"\n"
+"Though a single shot from these ‘thundersticks’ can take several minutes to "
+"prepare, the results are seen by the Dwarves as being well worth the wait."
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "قزم قلب الذئب"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:4
 msgid "Elvish Archer"
-msgstr ""
+msgstr "إلفي رامي سهام"
 
 #. [unit_type]: id=Elvish Archer, race=elf
 #: data/core/units/elves/Archer.cfg:19
@@ -2248,12 +2278,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Archer.cfg:80
 msgid "female^Elvish Archer"
-msgstr ""
+msgstr "إلفية رامية سهام"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:4
 msgid "Elvish Avenger"
-msgstr ""
+msgstr "إلفي منتقم"
 
 #. [unit_type]: id=Elvish Avenger, race=elf
 #: data/core/units/elves/Avenger.cfg:20
@@ -2277,12 +2307,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Avenger.cfg:96
 msgid "female^Elvish Avenger"
-msgstr ""
+msgstr "إلفية منتقمة"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:4
 msgid "Elvish Captain"
-msgstr ""
+msgstr "إلفي نقيب"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:25
@@ -2300,7 +2330,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:4
 msgid "Elvish Champion"
-msgstr ""
+msgstr "إلفي مغوار"
 
 #. [unit_type]: id=Elvish Champion, race=elf
 #: data/core/units/elves/Champion.cfg:19
@@ -2320,7 +2350,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr ""
+msgstr "إلفية كاهنة"
 
 #. [unit_type]: id=Elvish Druid, race=elf
 #: data/core/units/elves/Druid.cfg:19
@@ -2342,12 +2372,12 @@ msgstr ""
 #: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
 #: data/core/units/elves/Shyde.cfg:42
 msgid "ensnare"
-msgstr ""
+msgstr "فخ الأغصان"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:4
 msgid "female^Elvish Enchantress"
-msgstr ""
+msgstr "إلفية ملقية تعاويذ"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf
 #: data/core/units/elves/Enchantress.cfg:19
@@ -2367,14 +2397,15 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Shaman.cfg:42
 #: data/core/units/elves/Sorceress.cfg:36
+#: data/core/units/monsters/Caribe_Hunter.cfg:122
 #: data/core/units/wose/Wose_Shaman.cfg:43
 msgid "entangle"
-msgstr ""
+msgstr "الأغصان المتشابكة"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:4
 msgid "Elvish Fighter"
-msgstr ""
+msgstr "إلفي مقاتل"
 
 #. [unit_type]: id=Elvish Fighter, race=elf
 #: data/core/units/elves/Fighter.cfg:18
@@ -2391,7 +2422,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:4
 msgid "Elvish Hero"
-msgstr ""
+msgstr "إلفي بطل"
 
 #. [unit_type]: id=Elvish Hero, race=elf
 #: data/core/units/elves/Hero.cfg:18
@@ -2415,7 +2446,7 @@ msgstr ""
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr ""
+msgstr "إلفي زعيم سامي"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:18
@@ -2441,7 +2472,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:4
 msgid "female^Elvish Lady"
-msgstr ""
+msgstr "سيدة إلفية"
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:20
@@ -2462,7 +2493,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
-msgstr ""
+msgstr "زعيم إلفي"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -2489,7 +2520,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr ""
+msgstr "إلفي هدّاف"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:19
@@ -2510,17 +2541,17 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Longbowman.cfg:34
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:34
 msgid "longbow"
-msgstr ""
+msgstr "قوس طويل"
 
 #. [female]
 #: data/core/units/elves/Marksman.cfg:89
 msgid "female^Elvish Marksman"
-msgstr ""
+msgstr "إلفية هدّافة"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
 msgid "Elvish Marshal"
-msgstr ""
+msgstr "إلفي مشير"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:26
@@ -2540,7 +2571,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr ""
+msgstr "إلفي فارس مرافق"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:19
@@ -2579,7 +2610,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:3
 msgid "Elvish Ranger"
-msgstr ""
+msgstr "إلفي حارس مجال"
 
 #. [unit_type]: id=Elvish Ranger, race=elf
 #: data/core/units/elves/Ranger.cfg:19
@@ -2605,12 +2636,12 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Ranger.cfg:95
 msgid "female^Elvish Ranger"
-msgstr ""
+msgstr "إلفية حارسة مجال"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:4
 msgid "Elvish Rider"
-msgstr ""
+msgstr "إلفي فارس"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:21
@@ -2633,7 +2664,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:4
 msgid "Elvish Scout"
-msgstr ""
+msgstr "إلفي كشاف"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:21
@@ -2653,7 +2684,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:4
 msgid "female^Elvish Shaman"
-msgstr ""
+msgstr "إلفية كاهنة"
 
 #. [unit_type]: id=Elvish Shaman, race=elf
 #: data/core/units/elves/Shaman.cfg:19
@@ -2671,7 +2702,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr ""
+msgstr "إلفي قناص"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:20
@@ -2690,7 +2721,7 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:81
 msgid "female^Elvish Sharpshooter"
-msgstr ""
+msgstr "إلفية قناصة"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
@@ -2708,12 +2739,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Shyde.cfg:29 data/core/units/elves/Sylph.cfg:28
 msgid "faerie touch"
-msgstr ""
+msgstr "لمسة الجنية"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:4
 msgid "female^Elvish Sorceress"
-msgstr ""
+msgstr "إلفية ساحرة"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf
 #: data/core/units/elves/Sorceress.cfg:19
@@ -2734,7 +2765,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:4
 msgid "female^Elvish Sylph"
-msgstr ""
+msgstr "إلفية أثيرية"
 
 #. [unit_type]: id=Elvish Sylph, race=elf
 #: data/core/units/elves/Sylph.cfg:21
@@ -2759,17 +2790,17 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Sylph.cfg:41
 msgid "gossamer"
-msgstr ""
+msgstr "نسيج العنكبوت"
 
 #. [unit_type]: id=Fog Clearer, race=monster
 #: data/core/units/fake/Fog_Clearer.cfg:13
 msgid "dummy_unit^Fog Clearer"
-msgstr ""
+msgstr "مزيل الضباب"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:4
 msgid "Direwolf Rider"
-msgstr ""
+msgstr "راكب ذئب رهيب"
 
 #. [unit_type]: id=Direwolf Rider, race=wolf
 #: data/core/units/goblins/Direwolf_Rider.cfg:19
@@ -2789,7 +2820,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:4
 msgid "Goblin Impaler"
-msgstr ""
+msgstr "غوبلن مخوزق"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:19
@@ -2803,7 +2834,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
-msgstr ""
+msgstr "غوبلن فارس"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:18
@@ -2823,7 +2854,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
 msgid "Goblin Pillager"
-msgstr ""
+msgstr "غوبلن ناهب"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:18
@@ -2839,12 +2870,12 @@ msgstr ""
 #: data/core/units/merfolk/Entangler.cfg:34
 #: data/core/units/merfolk/Netcaster.cfg:33
 msgid "net"
-msgstr ""
+msgstr "شبكة صيد"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:4
 msgid "Goblin Rouser"
-msgstr ""
+msgstr "غوبلن مناوش"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:19
@@ -2859,7 +2890,7 @@ msgstr ""
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:4
 msgid "Goblin Spearman"
-msgstr ""
+msgstr "غوبلن حامل رمح"
 
 #. [unit_type]: id=Goblin Spearman, race=goblin
 #: data/core/units/goblins/Spearman.cfg:17
@@ -2876,7 +2907,7 @@ msgstr ""
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:4
 msgid "Wolf Rider"
-msgstr ""
+msgstr "راكب الذئب"
 
 #. [unit_type]: id=Wolf Rider, race=wolf
 #: data/core/units/goblins/Wolf_Rider.cfg:30
@@ -2896,7 +2927,7 @@ msgstr ""
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:4
 msgid "Gryphon"
-msgstr ""
+msgstr "جريفون"
 
 #. [unit_type]: id=Gryphon, race=gryphon
 #: data/core/units/gryphons/Gryphon.cfg:18
@@ -2909,7 +2940,7 @@ msgstr ""
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
-msgstr ""
+msgstr "خبير الجريفون"
 
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:18
@@ -2922,7 +2953,7 @@ msgstr ""
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:4
 msgid "Gryphon Rider"
-msgstr ""
+msgstr "راكب الجريفون"
 
 #. [unit_type]: id=Gryphon Rider, race=gryphon
 #: data/core/units/gryphons/Gryphon_Rider.cfg:17
@@ -2935,7 +2966,7 @@ msgstr ""
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:4
 msgid "Grand Knight"
-msgstr ""
+msgstr "فارس عظيم"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
@@ -2954,12 +2985,12 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
 msgid "longsword"
-msgstr ""
+msgstr "سيف طويل"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
 msgid "Knight"
-msgstr ""
+msgstr "فارس "
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:19
@@ -2976,7 +3007,7 @@ msgstr ""
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:4
 msgid "Lancer"
-msgstr ""
+msgstr "فارس رمّاح"
 
 #. [unit_type]: id=Lancer, race=human
 #: data/core/units/humans/Horse_Lancer.cfg:19
@@ -2992,7 +3023,7 @@ msgstr ""
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:4
 msgid "Paladin"
-msgstr ""
+msgstr "فارس نصير"
 
 #. [unit_type]: id=Paladin, race=human
 #: data/core/units/humans/Horse_Paladin.cfg:20
@@ -3018,7 +3049,7 @@ msgstr ""
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr ""
+msgstr "فارس"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:18
@@ -3035,7 +3066,7 @@ msgstr ""
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:4
 msgid "Bowman"
-msgstr ""
+msgstr "محارب قوس"
 
 #. [unit_type]: id=Bowman, race=human
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
@@ -3050,7 +3081,7 @@ msgstr ""
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:4
 msgid "Cavalier"
-msgstr ""
+msgstr "فارس خيّال"
 
 #. [unit_type]: id=Cavalier, race=human
 #: data/core/units/humans/Loyalist_Cavalier.cfg:20
@@ -3071,18 +3102,18 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:36
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
 #: data/core/units/humans/Loyalist_Sergeant.cfg:36
-#: data/core/units/orcs/Crossbowman.cfg:32
-#: data/core/units/orcs/Crossbowman.cfg:41 data/core/units/orcs/Leader.cfg:36
-#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:37
-#: data/core/units/orcs/Slurbow.cfg:46 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:41
+#: data/core/units/orcs/Crossbowman.cfg:50 data/core/units/orcs/Leader.cfg:36
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:43
+#: data/core/units/orcs/Slurbow.cfg:52 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:42
 msgid "crossbow"
-msgstr ""
+msgstr "قوس مركّب"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:4
 msgid "Cavalryman"
-msgstr ""
+msgstr "جندي خيّالة"
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:19
@@ -3100,7 +3131,7 @@ msgstr ""
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
-msgstr ""
+msgstr "جندي فارس"
 
 #. [unit_type]: id=Dragoon, race=human
 #: data/core/units/humans/Loyalist_Dragoon.cfg:19
@@ -3115,7 +3146,7 @@ msgstr ""
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:4
 msgid "Duelist"
-msgstr ""
+msgstr "مبارز متحدّي"
 
 #. [unit_type]: id=Duelist, race=human
 #: data/core/units/humans/Loyalist_Duelist.cfg:17
@@ -3136,7 +3167,7 @@ msgstr ""
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:4
 msgid "Fencer"
-msgstr ""
+msgstr "مبارز "
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:17
@@ -3156,7 +3187,7 @@ msgstr ""
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:4
 msgid "General"
-msgstr ""
+msgstr "جنرال"
 
 #. [unit_type]: id=General, race=human
 #: data/core/units/humans/Loyalist_General.cfg:24
@@ -3173,7 +3204,7 @@ msgstr ""
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:4
 msgid "Grand Marshal"
-msgstr ""
+msgstr "مشير"
 
 #. [unit_type]: id=Grand Marshal, race=human
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:24
@@ -3187,7 +3218,7 @@ msgstr ""
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:4
 msgid "Halberdier"
-msgstr ""
+msgstr "جندي فأس طويلة"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:18
@@ -3217,7 +3248,7 @@ msgstr ""
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:4
 msgid "Heavy Infantryman"
-msgstr ""
+msgstr "مشاة ثقيل"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
@@ -3232,7 +3263,7 @@ msgstr ""
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:4
 msgid "Iron Mauler"
-msgstr ""
+msgstr "ضارب حديدي"
 
 #. [unit_type]: id=Iron Mauler, race=human
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:18
@@ -3252,7 +3283,7 @@ msgstr ""
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:4
 msgid "Javelineer"
-msgstr ""
+msgstr "جندي رماح قصيرة"
 
 #. [unit_type]: id=Javelineer, race=human
 #: data/core/units/humans/Loyalist_Javelineer.cfg:18
@@ -3266,10 +3297,17 @@ msgid ""
 "melee."
 msgstr ""
 
+#. [special_note]
+#: data/core/units/humans/Loyalist_Javelineer.cfg:20
+msgid ""
+"Compared to other loyalists, Javelineers have a higher resistance to "
+"‘pierce’ attacks."
+msgstr ""
+
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
 msgid "Lieutenant"
-msgstr ""
+msgstr "ملازم"
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:18
@@ -3285,7 +3323,7 @@ msgstr ""
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:4
 msgid "Longbowman"
-msgstr ""
+msgstr "جندي قوس طويلة"
 
 #. [unit_type]: id=Longbowman, race=human
 #: data/core/units/humans/Loyalist_Longbowman.cfg:19
@@ -3300,7 +3338,7 @@ msgstr ""
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
 msgid "Master Bowman"
-msgstr ""
+msgstr "خبير رمي السهام"
 
 #. [unit_type]: id=Master Bowman, race=human
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
@@ -3318,7 +3356,7 @@ msgstr ""
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
 msgid "Master at Arms"
-msgstr ""
+msgstr "خبير مبارزة"
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:18
@@ -3339,7 +3377,7 @@ msgstr ""
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:4
 msgid "Pikeman"
-msgstr ""
+msgstr "جندي حربة"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:17
@@ -3362,12 +3400,12 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Loyalist_Pikeman.cfg:34
 msgid "pike"
-msgstr ""
+msgstr "حربة"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:4
 msgid "Royal Guard"
-msgstr ""
+msgstr "حارس ملكي"
 
 #. [unit_type]: id=Royal Guard, race=human
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:18
@@ -3397,7 +3435,7 @@ msgstr ""
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:4
 msgid "Sergeant"
-msgstr ""
+msgstr "رقيب"
 
 #. [unit_type]: id=Sergeant, race=human
 #: data/core/units/humans/Loyalist_Sergeant.cfg:18
@@ -3412,7 +3450,7 @@ msgstr ""
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:4
 msgid "Shock Trooper"
-msgstr ""
+msgstr "جندي صادم"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:17
@@ -3430,7 +3468,7 @@ msgstr ""
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:4
 msgid "Spearman"
-msgstr ""
+msgstr "جندي رمّاح"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:18
@@ -3445,7 +3483,7 @@ msgstr ""
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
 msgid "Swordsman"
-msgstr ""
+msgstr "جندي سيّاف"
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:17
@@ -3468,7 +3506,7 @@ msgstr ""
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:4
 msgid "Mage"
-msgstr ""
+msgstr "ساحر"
 
 #. [unit_type]: id=Mage, race=human
 #: data/core/units/humans/Mage.cfg:19
@@ -3496,17 +3534,17 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/humans/Mage.cfg:37 data/core/units/humans/Mage_Silver.cfg:47
 msgid "missile"
-msgstr ""
+msgstr "قذيفة"
 
 #. [female]
 #: data/core/units/humans/Mage.cfg:159
 msgid "female^Mage"
-msgstr ""
+msgstr "ساحرة"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:4
 msgid "Arch Mage"
-msgstr ""
+msgstr "ساحر خارق"
 
 #. [unit_type]: id=Arch Mage, race=human
 #: data/core/units/humans/Mage_Arch.cfg:18
@@ -3537,17 +3575,17 @@ msgstr ""
 #: data/core/units/humans/Mage_Great.cfg:41
 #: data/core/units/humans/Mage_Red.cfg:40
 msgid "fireball"
-msgstr ""
+msgstr "كرة نارية"
 
 #. [female]
 #: data/core/units/humans/Mage_Arch.cfg:109
 msgid "female^Arch Mage"
-msgstr ""
+msgstr "ساحرة خارقة"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:4
 msgid "Elder Mage"
-msgstr ""
+msgstr "ساحر عتيق"
 
 #. [unit_type]: id=Elder Mage, race=human
 #: data/core/units/humans/Mage_Elder.cfg:23
@@ -3560,12 +3598,12 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/humans/Mage_Elder.cfg:35
 msgid "lightning"
-msgstr ""
+msgstr "البرق"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:4
 msgid "Great Mage"
-msgstr ""
+msgstr "ساحر عظيم"
 
 #. [unit_type]: id=Great Mage, race=human
 #: data/core/units/humans/Mage_Great.cfg:19
@@ -3593,12 +3631,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Great.cfg:90
 msgid "female^Great Mage"
-msgstr ""
+msgstr "ساحرة عظيمة"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:4
 msgid "Red Mage"
-msgstr ""
+msgstr "ساحر أحمر"
 
 #. [unit_type]: id=Red Mage, race=human
 #: data/core/units/humans/Mage_Red.cfg:18
@@ -3627,12 +3665,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_Red.cfg:98
 msgid "female^Red Mage"
-msgstr ""
+msgstr "ساحرة حمراء"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:4
 msgid "Silver Mage"
-msgstr ""
+msgstr "ساحر فضي"
 
 #. [unit_type]: id=Silver Mage, race=human
 #: data/core/units/humans/Mage_Silver.cfg:19
@@ -3659,19 +3697,19 @@ msgstr ""
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
 msgid ""
-"SPECIAL_NOTE^ Silver Magi are well-attuned to their magical natures and are "
+"SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
 msgstr ""
 
 #. [female]
 #: data/core/units/humans/Mage_Silver.cfg:163
 msgid "female^Silver Mage"
-msgstr ""
+msgstr "ساحرة فضية"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:4
 msgid "White Mage"
-msgstr ""
+msgstr "ساحر أبيض"
 
 #. [unit_type]: id=White Mage, race=human
 #: data/core/units/humans/Mage_White.cfg:18
@@ -3697,12 +3735,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_White.cfg:105
 msgid "female^White Mage"
-msgstr ""
+msgstr "ساحرة بيضاء"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:4
 msgid "Mage of Light"
-msgstr ""
+msgstr "ساحر النور"
 
 #. [unit_type]: id=Mage of Light, race=human
 #: data/core/units/humans/Mage_of_Light.cfg:20
@@ -3725,12 +3763,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Mage_of_Light.cfg:102
 msgid "female^Mage of Light"
-msgstr ""
+msgstr "ساحرة النور"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
-msgstr ""
+msgstr "خارج عن القانون"
 
 #. [unit_type]: id=Outlaw, race=human
 #: data/core/units/humans/Outlaw.cfg:18
@@ -3751,17 +3789,17 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Highwayman.cfg:24
 #: data/core/units/humans/Royal_Warrior.cfg:29
 msgid "morning star"
-msgstr ""
+msgstr "هراوة الحديد"
 
 #. [female]
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
-msgstr ""
+msgstr "خارجة عن القانون"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
-msgstr ""
+msgstr "قاتل"
 
 #. [unit_type]: id=Assassin, race=human
 #: data/core/units/humans/Outlaw_Assassin.cfg:19
@@ -3777,19 +3815,19 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:39
 #: data/core/units/humans/Outlaw_Rogue.cfg:38
 #: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Nightblade.cfg:43
-#: data/core/units/orcs/Slayer.cfg:35
+#: data/core/units/orcs/Slayer.cfg:44
 msgid "throwing knives"
-msgstr ""
+msgstr "سكاكين رمي"
 
 #. [female]
 #: data/core/units/humans/Outlaw_Assassin.cfg:101
 msgid "female^Assassin"
-msgstr ""
+msgstr "قاتلة"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
 msgid "Bandit"
-msgstr ""
+msgstr "رجل عصابات"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:17
@@ -3804,7 +3842,7 @@ msgstr ""
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:4
 msgid "Footpad"
-msgstr ""
+msgstr "قاطع الطريق"
 
 #. [unit_type]: id=Footpad, race=human
 #: data/core/units/humans/Outlaw_Footpad.cfg:19
@@ -3820,12 +3858,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Footpad.cfg:89
 msgid "female^Footpad"
-msgstr ""
+msgstr "قاطغة طريق"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr ""
+msgstr "مطلوب"
 
 #. [unit_type]: id=Fugitive, race=human
 #: data/core/units/humans/Outlaw_Fugitive.cfg:20
@@ -3838,12 +3876,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Fugitive.cfg:80
 msgid "female^Fugitive"
-msgstr ""
+msgstr "مطلوبة"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr ""
+msgstr "ناهب قوافل"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:19
@@ -3858,7 +3896,7 @@ msgstr ""
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr ""
+msgstr "محتال"
 
 #. [unit_type]: id=Rogue, race=human
 #: data/core/units/humans/Outlaw_Rogue.cfg:18
@@ -3874,12 +3912,12 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Rogue.cfg:78
 msgid "female^Rogue"
-msgstr ""
+msgstr "محتالة"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
 msgid "Ruffian"
-msgstr ""
+msgstr "خسيس"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:17
@@ -3894,7 +3932,7 @@ msgstr ""
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:4
 msgid "Thief"
-msgstr ""
+msgstr "لصّ"
 
 #. [unit_type]: id=Thief, race=human
 #: data/core/units/humans/Outlaw_Thief.cfg:18
@@ -3911,15 +3949,15 @@ msgstr ""
 #. [female]
 #: data/core/units/humans/Outlaw_Thief.cfg:147
 msgid "female^Thief"
-msgstr ""
+msgstr "لصّة"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr ""
+msgstr "سفاح"
 
 #. [unit_type]: id=Thug, race=human
-#: data/core/units/humans/Outlaw_Thug.cfg:18
+#: data/core/units/humans/Outlaw_Thug.cfg:17
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -3931,7 +3969,7 @@ msgstr ""
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:4
 msgid "Peasant"
-msgstr ""
+msgstr "فلاح"
 
 #. [unit_type]: id=Peasant, race=human
 #: data/core/units/humans/Peasant.cfg:18
@@ -3946,12 +3984,12 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/humans/Peasant.cfg:23 data/core/units/humans/Peasant.cfg:32
 msgid "pitchfork"
-msgstr ""
+msgstr "مذراة"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:8
 msgid "Royal Warrior"
-msgstr ""
+msgstr "المحارب الملكي"
 
 #. [unit_type]: id=Royal Warrior, race=human
 #: data/core/units/humans/Royal_Warrior.cfg:25
@@ -3967,7 +4005,7 @@ msgstr ""
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
-msgstr ""
+msgstr "حطاب"
 
 #. [unit_type]: id=Woodsman, race=human
 #: data/core/units/humans/Woodsman.cfg:18
@@ -3980,7 +4018,7 @@ msgstr ""
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
-msgstr ""
+msgstr "صياد"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:19
@@ -4004,7 +4042,7 @@ msgstr ""
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:4
 msgid "Poacher"
-msgstr ""
+msgstr "متربص"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:17
@@ -4021,7 +4059,7 @@ msgstr ""
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
-msgstr ""
+msgstr "جوّال"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:19
@@ -4042,7 +4080,7 @@ msgstr ""
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:4
 msgid "Trapper"
-msgstr ""
+msgstr "صيّاد فخاخ"
 
 #. [unit_type]: id=Trapper, race=human
 #: data/core/units/humans/Woodsman_Trapper.cfg:17
@@ -4059,7 +4097,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
 msgid "female^Mermaid Diviner"
-msgstr ""
+msgstr "حورية بحر عرّافة"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:23
@@ -4075,7 +4113,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:4
 msgid "female^Mermaid Enchantress"
-msgstr ""
+msgstr "حورية بحر ملقية تعاويذ"
 
 #. [unit_type]: id=Mermaid Enchantress, race=merman
 #: data/core/units/merfolk/Enchantress.cfg:18
@@ -4093,12 +4131,12 @@ msgstr ""
 #: data/core/units/merfolk/Initiate.cfg:34 data/core/units/merfolk/Siren.cfg:40
 #: data/core/units/monsters/Seahorse.cfg:43
 msgid "water spray"
-msgstr ""
+msgstr "رذاذ الماء"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:4
 msgid "Merman Entangler"
-msgstr ""
+msgstr "حوري بحر صيّاد شباك"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
@@ -4118,7 +4156,7 @@ msgstr ""
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
 msgid "Merman Fighter"
-msgstr ""
+msgstr "حوري بحر مقاتل"
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:17
@@ -4133,7 +4171,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:4
 msgid "Merman Hoplite"
-msgstr ""
+msgstr "حوري بحر مدرّع"
 
 #. [unit_type]: id=Merman Hoplite, race=merman
 #: data/core/units/merfolk/Hoplite.cfg:20
@@ -4148,7 +4186,7 @@ msgstr ""
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:4
 msgid "Merman Hunter"
-msgstr ""
+msgstr "حوري بحر صياد"
 
 #. [unit_type]: id=Merman Hunter, race=merman
 #: data/core/units/merfolk/Hunter.cfg:18
@@ -4162,7 +4200,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:4
 msgid "female^Mermaid Initiate"
-msgstr ""
+msgstr "حورية بحر مبتدئة"
 
 #. [unit_type]: id=Mermaid Initiate, race=merman
 #: data/core/units/merfolk/Initiate.cfg:18
@@ -4178,7 +4216,7 @@ msgstr ""
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:4
 msgid "Merman Javelineer"
-msgstr ""
+msgstr "حوري بحر رمّاح"
 
 #. [unit_type]: id=Merman Javelineer, race=merman
 #: data/core/units/merfolk/Javelineer.cfg:18
@@ -4192,7 +4230,7 @@ msgstr ""
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:4
 msgid "Merman Netcaster"
-msgstr ""
+msgstr "حوري بحر ملقي شباك"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:18
@@ -4213,7 +4251,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
 msgid "female^Mermaid Priestess"
-msgstr ""
+msgstr "حورية بحر كاهنة"
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:21
@@ -4228,7 +4266,7 @@ msgstr ""
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:4
 msgid "Mermaid Siren"
-msgstr ""
+msgstr "حورية بحر فاتنة"
 
 #. [unit_type]: id=Mermaid Siren, race=merman
 #: data/core/units/merfolk/Siren.cfg:19
@@ -4247,12 +4285,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/merfolk/Siren.cfg:28
 msgid "naia touch"
-msgstr ""
+msgstr "لمسة ناييا"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:4
 msgid "Merman Spearman"
-msgstr ""
+msgstr "حوري بحر حامل رماح"
 
 #. [unit_type]: id=Merman Spearman, race=merman
 #: data/core/units/merfolk/Spearman.cfg:17
@@ -4268,7 +4306,7 @@ msgstr ""
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:4
 msgid "Merman Triton"
-msgstr ""
+msgstr "حوري بحر حامل رمح ثلاثي"
 
 #. [unit_type]: id=Merman Triton, race=merman
 #: data/core/units/merfolk/Triton.cfg:19
@@ -4283,7 +4321,7 @@ msgstr ""
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:4
 msgid "Merman Warrior"
-msgstr ""
+msgstr "حوري بحر محارب"
 
 #. [unit_type]: id=Merman Warrior, race=merman
 #: data/core/units/merfolk/Warrior.cfg:17
@@ -4297,7 +4335,7 @@ msgstr ""
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:4
 msgid "Giant Ant"
-msgstr ""
+msgstr "نملة عملاقة"
 
 #. [unit_type]: id=Giant Ant, race=monster
 #: data/core/units/monsters/Ant.cfg:19
@@ -4310,7 +4348,7 @@ msgstr ""
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
-msgstr ""
+msgstr "دبّ الكهوف"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
@@ -4324,7 +4362,7 @@ msgstr ""
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:4
 msgid "Woodland Boar"
-msgstr ""
+msgstr "خنزير الغابات"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
@@ -4334,37 +4372,75 @@ msgid ""
 "boar is a challenge even to the best hunters."
 msgstr ""
 
-#. [attack]: type=blade
-#: data/core/units/monsters/Boar.cfg:50
-#: data/core/units/monsters/Boar_Piglet.cfg:49
-msgid "Bite"
-msgstr ""
-
 #. [attack]: type=pierce
+#. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-msgid "Tusk"
-msgstr ""
+#: data/core/units/undead/Corpse_Soulless.cfg:338
+#: data/core/units/undead/Corpse_Walking.cfg:337
+msgid "tusk"
+msgstr "ناب"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:4
+#. the child of a wild boar, rather than the child of a domesticated pig
+#: data/core/units/monsters/Boar_Piglet.cfg:5
 msgid "Piglet"
-msgstr ""
+msgstr "خنزير صغير"
 
 #. [unit_type]: id=Piglet, race=monster
-#: data/core/units/monsters/Boar_Piglet.cfg:34
+#: data/core/units/monsters/Boar_Piglet.cfg:35
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
 "not have a protective adult boar watching over them."
 msgstr ""
 
-#. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:9
-msgid "Swamp Lizard"
+#. [unit_type]: id=Caribe, race=monster
+#: data/core/units/monsters/Caribe.cfg:8
+msgid "Caribe"
+msgstr ""
+
+#. [unit_type]: id=Caribe, race=monster
+#: data/core/units/monsters/Caribe.cfg:28
+msgid ""
+"The giant caribe are seldom encountered in the inland rivers near Weldyn, "
+"but tales of their ferocious attacks have spread far and wide. Their angry "
+"red eyes are embedded in an armored face. While it is their teeth that are a "
+"dangerous weapon, they do posses small, bony arms and claws, which they can "
+"use to extricate themselves from situations dire to most other fish. These "
+"fish are unusually clever and should not be underestimated."
+msgstr ""
+
+#. [unit_type]: id=Hunter Caribe, race=monster
+#: data/core/units/monsters/Caribe_Hunter.cfg:8
+msgid "Hunter Caribe"
+msgstr ""
+
+#. [unit_type]: id=Hunter Caribe, race=monster
+#: data/core/units/monsters/Caribe_Hunter.cfg:29
+msgid ""
+"As they age, the giant caribe become bigger and more dangerous. They also "
+"learn to use seaweed to ensnare prey or enemies."
+msgstr ""
+
+#. [unit_type]: id=Nibbler, race=monster
+#: data/core/units/monsters/Caribe_Nibbler.cfg:8
+msgid "Nibbler"
+msgstr ""
+
+#. [unit_type]: id=Nibbler, race=monster
+#: data/core/units/monsters/Caribe_Nibbler.cfg:41
+msgid ""
+"Nibblers are juvenile predator fish, often more curious than dangerous. A "
+"single individual may not be a threat, but these fish seldom travel alone."
 msgstr ""
 
 #. [unit_type]: id=Swamp Lizard, race=monster
-#: data/core/units/monsters/Crocodile.cfg:74
+#: data/core/units/monsters/Crocodile.cfg:13
+msgid "Swamp Lizard"
+msgstr "سحلية المستنقع"
+
+#. [unit_type]: id=Swamp Lizard, race=monster
+#: data/core/units/monsters/Crocodile.cfg:122
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -4375,24 +4451,24 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/core/units/monsters/Crocodile.cfg:76
+#: data/core/units/monsters/Crocodile.cfg:124
 msgid ""
 "This unit can move unseen through swamp water, keeping most of its body "
 "submerged."
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:86
+#: data/core/units/monsters/Crocodile.cfg:144
 msgid "swamp lurk"
-msgstr ""
+msgstr "مترصد المستنقع"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:87
+#: data/core/units/monsters/Crocodile.cfg:145
 msgid "female^swamp lurk"
-msgstr ""
+msgstr "مترصدة المستنقع"
 
 #. [hides]: id=swamp_lurk
-#: data/core/units/monsters/Crocodile.cfg:88
+#: data/core/units/monsters/Crocodile.cfg:146
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -4404,7 +4480,7 @@ msgstr ""
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttlefish"
-msgstr ""
+msgstr "حبار"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:19
@@ -4417,7 +4493,7 @@ msgstr ""
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
 msgid "Elder Falcon"
-msgstr ""
+msgstr "صقر بالغ"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:18
@@ -4433,12 +4509,12 @@ msgstr ""
 #: data/core/units/monsters/Elder_Falcon.cfg:27
 #: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:29
 msgid "beak"
-msgstr ""
+msgstr "منقار"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:4
 msgid "Falcon"
-msgstr ""
+msgstr "صقر"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/monsters/Falcon.cfg:19
@@ -4452,7 +4528,7 @@ msgstr ""
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:11
 msgid "Fire Ant"
-msgstr ""
+msgstr "نملة النار"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
@@ -4466,12 +4542,12 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
 msgid "fire"
-msgstr ""
+msgstr "نار"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
 msgid "Fire Dragon"
-msgstr ""
+msgstr "تنين النار"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:23
@@ -4491,7 +4567,7 @@ msgstr ""
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:4
 msgid "Fire Guardian"
-msgstr ""
+msgstr "حارس النار"
 
 #. [unit_type]: id=Fire Guardian, race=monster
 #: data/core/units/monsters/Fire_Guardian.cfg:25
@@ -4506,12 +4582,12 @@ msgstr ""
 #: data/core/units/monsters/Fire_Guardian.cfg:28
 #: data/core/units/monsters/Fire_Wraith.cfg:50
 msgid "fire claws"
-msgstr ""
+msgstr "مخالب النار"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
 msgid "Fire Wraith"
-msgstr ""
+msgstr "شبح النار"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:47
@@ -4525,7 +4601,7 @@ msgstr ""
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:20
 msgid "Frost Stoat"
-msgstr ""
+msgstr "ابن عرس الجليد"
 
 #. [unit_type]: id=Frost Stoat, race=monster
 #: data/core/units/monsters/Frost_Stoat.cfg:35
@@ -4541,22 +4617,12 @@ msgstr ""
 #. [attack]: type=cold
 #: data/core/units/monsters/Frost_Stoat.cfg:103
 msgid "ice claw"
-msgstr ""
-
-#. [unit_type]: id=Giant Stoat
-#: data/core/units/monsters/Frost_Stoat.cfg:169
-msgid "Giant Stoat"
-msgstr ""
-
-#. [unit_type]: id=Giant Stoat
-#: data/core/units/monsters/Frost_Stoat.cfg:170
-msgid "Giant Stoats are obsolete, use Frost Stoat."
-msgstr ""
+msgstr "مخلب الجليد"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4
 msgid "Giant Mudcrawler"
-msgstr ""
+msgstr "زاحف الطين العملاق"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:19
@@ -4573,12 +4639,12 @@ msgstr ""
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:41
 #: data/core/units/monsters/Mudcrawler.cfg:42
 msgid "mud glob"
-msgstr ""
+msgstr "كرة الطين"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:4
 msgid "Giant Rat"
-msgstr ""
+msgstr "فأر عملاق"
 
 #. [unit_type]: id=Giant Rat, race=monster
 #: data/core/units/monsters/Giant_Rat.cfg:19
@@ -4592,7 +4658,7 @@ msgstr ""
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
-msgstr ""
+msgstr "عقرب عملاق"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:42
@@ -4605,25 +4671,25 @@ msgstr ""
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
 #: data/core/units/monsters/Giant_Scorpling.cfg:32
 msgid "sting"
-msgstr ""
+msgstr "لدغة"
 
 #. [attack]: type=impact
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
 #: data/core/units/monsters/Giant_Scorpling.cfg:44
-#: data/core/units/monsters/Rock_Scorpion.cfg:51
+#: data/core/units/monsters/Rock_Scorpion.cfg:53
 msgid "pincers"
-msgstr ""
+msgstr "كماشة"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:111
 msgid "scuttler"
-msgstr ""
+msgstr "عقرب"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
 msgid "Sand Scuttler"
-msgstr ""
+msgstr "عقرب رمال"
 
 #. [variation]
 #: data/core/units/monsters/Giant_Scorpion.cfg:117
@@ -4636,7 +4702,7 @@ msgstr ""
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
 msgid "Giant Scorpling"
-msgstr ""
+msgstr "عقرب سوطي عملاق"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:27
@@ -4657,7 +4723,7 @@ msgstr ""
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:4
 msgid "Giant Spider"
-msgstr ""
+msgstr "عنكبوت عملاق"
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:23
@@ -4670,12 +4736,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Giant_Spider.cfg:40
 msgid "web"
-msgstr ""
+msgstr "نسيج العنكبوت"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:5
 msgid "Bay Horse"
-msgstr ""
+msgstr "حصان الخليج"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
@@ -4691,15 +4757,13 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:170
 #: data/core/units/monsters/Horse_Black.cfg:41
 #: data/core/units/monsters/Horse_Great.cfg:33
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
-#: data/core/units/orcs/Nightblade.cfg:34
-msgid "kick"
-msgstr ""
+msgid "hooves"
+msgstr "حوافر"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:74
 msgid "White Horse"
-msgstr ""
+msgstr "حصان أبيض"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
@@ -4713,7 +4777,7 @@ msgstr ""
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:140
 msgid "Dark Horse"
-msgstr ""
+msgstr "حصان قاتم"
 
 #. [unit_type]: id=Dark Horse
 #: data/core/units/monsters/Horse.cfg:166
@@ -4727,19 +4791,19 @@ msgstr ""
 #: data/core/units/monsters/Horse.cfg:179
 #: data/core/units/monsters/Horse_Black.cfg:50
 msgid "whinny"
-msgstr ""
+msgstr "صهيل"
 
 #. [male]
 #. [female]
 #: data/core/units/monsters/Horse.cfg:214
 #: data/core/units/monsters/Horse.cfg:218
 msgid "female^Dark Horse"
-msgstr ""
+msgstr "فرس قاتم"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr ""
+msgstr "حصان أسود"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
@@ -4752,17 +4816,18 @@ msgstr ""
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:85
 msgid "Black Stallion"
-msgstr ""
+msgstr "خيل أسود"
 
 #. [female]
-#: data/core/units/monsters/Horse_Black.cfg:90
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:91
 msgid "female^Black Nightmare"
-msgstr ""
+msgstr "كابوس سوداء"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
 msgid "Great Horse"
-msgstr ""
+msgstr "حصان عظيم"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
@@ -4776,7 +4841,7 @@ msgstr ""
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
 msgid "Icemonax"
-msgstr ""
+msgstr "قندس الجليد"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
@@ -4791,7 +4856,7 @@ msgstr ""
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
 msgid "Great Icemonax"
-msgstr ""
+msgstr "قندس جليد ضخم"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
@@ -4805,7 +4870,7 @@ msgstr ""
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
 msgid "Jinn"
-msgstr ""
+msgstr "جنّ"
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:23
@@ -4821,17 +4886,17 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/monsters/Jinn.cfg:99
 msgid "desert windblast"
-msgstr ""
+msgstr "الرياح الصحراوية"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Jinn.cfg:108
 msgid "desert lightning"
-msgstr ""
+msgstr "برق الصحراء"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
-msgstr ""
+msgstr "زاحف الطين"
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:21
@@ -4846,7 +4911,7 @@ msgstr ""
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
 msgid "Roc"
-msgstr ""
+msgstr "رخّ"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:19
@@ -4867,10 +4932,10 @@ msgstr ""
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
 msgid "Rock Scorpion"
-msgstr ""
+msgstr "عقرب صخور"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
-#: data/core/units/monsters/Rock_Scorpion.cfg:45
+#: data/core/units/monsters/Rock_Scorpion.cfg:47
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -4880,14 +4945,14 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Rock_Scorpion.cfg:59
+#: data/core/units/monsters/Rock_Scorpion.cfg:61
 msgid "spray"
-msgstr ""
+msgstr "رذاذ"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr ""
+msgstr "الجعران ذو القرون"
 
 #. [special_note]
 #: data/core/units/monsters/Scarab.cfg:21
@@ -4908,12 +4973,12 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
 msgid "horn"
-msgstr ""
+msgstr "قرن"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
 msgid "Sea Serpent"
-msgstr ""
+msgstr "ثعبان البحر"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:22
@@ -4930,7 +4995,7 @@ msgstr ""
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:5
 msgid "Great Seahorse"
-msgstr ""
+msgstr "فرس البحر العظيم"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
@@ -4946,7 +5011,7 @@ msgstr ""
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
 msgid "Skeletal Dragon"
-msgstr ""
+msgstr "تنين عظمي"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:26
@@ -4961,12 +5026,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid "jaw"
-msgstr ""
+msgstr "فك"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:4
 msgid "Tentacle of the Deep"
-msgstr ""
+msgstr "ممصات الأعماق"
 
 #. [unit_type]: id=Tentacle of the Deep, race=monster
 #: data/core/units/monsters/Tentacle.cfg:26
@@ -4982,7 +5047,7 @@ msgstr ""
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:5
 msgid "Water Serpent"
-msgstr ""
+msgstr "ثعبان الماء"
 
 #. [unit_type]: id=Water Serpent, race=monster
 #: data/core/units/monsters/Water_Serpent.cfg:37
@@ -4996,7 +5061,7 @@ msgstr ""
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:8
 msgid "Wild Wyvern"
-msgstr ""
+msgstr "ويفرن بري"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
 #: data/core/units/monsters/Wild_Wyvern.cfg:44
@@ -5016,11 +5081,11 @@ msgstr ""
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:4
 msgid "Wolf"
-msgstr ""
+msgstr "ذئب"
 
-#. [unit_type]: id=Great Wolf, race=wolf
 #. [unit_type]: id=Wolf, race=wolf
 #. [unit_type]: id=Direwolf, race=wolf
+#. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
 #: data/core/units/monsters/Wolf_Dire.cfg:19
 #: data/core/units/monsters/Wolf_Great.cfg:19
@@ -5032,17 +5097,17 @@ msgstr ""
 #. [unit_type]: id=Direwolf, race=wolf
 #: data/core/units/monsters/Wolf_Dire.cfg:4
 msgid "Direwolf"
-msgstr ""
+msgstr " ذئب رهيب"
 
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
 msgid "Great Wolf"
-msgstr ""
+msgstr "ذئب كبير"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:4
 msgid "Yeti"
-msgstr ""
+msgstr "اليتي"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:19
@@ -5058,7 +5123,7 @@ msgstr ""
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:4
 msgid "Naga Dirkfang"
-msgstr ""
+msgstr "أفعوان مخالب الخنجر"
 
 #. [unit_type]: id=Naga Dirkfang, race=naga
 #: data/core/units/nagas/Dirkfang.cfg:18
@@ -5076,17 +5141,17 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/nagas/Dirkfang.cfg:38
 msgid "chakri"
-msgstr ""
+msgstr "شاكري"
 
 #. [female]
-#: data/core/units/nagas/Dirkfang.cfg:94
+#: data/core/units/nagas/Dirkfang.cfg:93
 msgid "Nagini Dirkfang"
-msgstr ""
+msgstr "ثعبان مخالب الخنجر"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:4
 msgid "Naga Fighter"
-msgstr ""
+msgstr "أفعوان مقاتل"
 
 #. [unit_type]: id=Naga Fighter, race=naga
 #: data/core/units/nagas/Fighter.cfg:18
@@ -5102,12 +5167,12 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Fighter.cfg:49
 msgid "Nagini Fighter"
-msgstr ""
+msgstr "ثعبان مقاتل"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:4
 msgid "Naga Guard"
-msgstr ""
+msgstr "أفعوان حارس"
 
 #. [unit_type]: id=Naga Guard, race=naga
 #: data/core/units/nagas/Guard.cfg:22
@@ -5122,7 +5187,7 @@ msgstr ""
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:4
 msgid "Naga High Guard"
-msgstr ""
+msgstr "أفعوان حارس سامي"
 
 #. [unit_type]: id=Naga High Guard, race=naga
 #: data/core/units/nagas/Guard_High.cfg:23
@@ -5136,15 +5201,15 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/nagas/Guard_High.cfg:37
-#: data/core/units/nagas/Guard_Shield.cfg:35
+#: data/core/units/nagas/Guard_High.cfg:45
+#: data/core/units/nagas/Guard_Shield.cfg:43
 msgid "shield"
-msgstr ""
+msgstr "درع"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:4
 msgid "Naga Shield Guard"
-msgstr ""
+msgstr "أفعوان حارس مدرّع"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:22
@@ -5158,7 +5223,7 @@ msgstr ""
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:4
 msgid "Naga Myrmidon"
-msgstr ""
+msgstr "أفعوان تابع"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga
 #: data/core/units/nagas/Myrmidon.cfg:20
@@ -5173,7 +5238,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:48
 msgid "Nagini Myrmidon"
-msgstr ""
+msgstr "ثعبان تابع"
 
 #. [female]
 #: data/core/units/nagas/Myrmidon.cfg:50
@@ -5188,7 +5253,7 @@ msgstr ""
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:4
 msgid "Naga Ophidian"
-msgstr ""
+msgstr "أفعوان حَفِثُ"
 
 #. [unit_type]: id=Naga Ophidian, race=naga
 #: data/core/units/nagas/Ophidian.cfg:18
@@ -5210,25 +5275,25 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/nagas/Ophidian.cfg:27 data/core/units/nagas/Sicarius.cfg:28
 msgid "curved blade"
-msgstr ""
+msgstr "نصل مقوس"
 
 #. [attack]: type=pierce
-#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:40
+#: data/core/units/nagas/Ophidian.cfg:36 data/core/units/nagas/Sicarius.cfg:41
 msgid "jarid"
-msgstr ""
+msgstr "رمح قصير"
 
 #. [female]
-#: data/core/units/nagas/Ophidian.cfg:87
+#: data/core/units/nagas/Ophidian.cfg:91
 msgid "Nagini Ophidian"
-msgstr ""
+msgstr "ثغبان حٍفْث"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
 #: data/core/units/nagas/Ringcaster.cfg:4
 msgid "Naga Ringcaster"
-msgstr ""
+msgstr "أفعوان رامي أقراص"
 
 #. [unit_type]: id=Naga Ringcaster, race=naga
-#: data/core/units/nagas/Ringcaster.cfg:17
+#: data/core/units/nagas/Ringcaster.cfg:18
 msgid ""
 "The chakram, a greater blade ring than the chakri, is the signature weapon "
 "of the southern Naga and their renowned Ringcasters. Well balanced chakrams "
@@ -5237,21 +5302,21 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/nagas/Ringcaster.cfg:33
-#: data/core/units/nagas/Ringcaster.cfg:42 data/core/units/nagas/Zephyr.cfg:50
-#: data/core/units/nagas/Zephyr.cfg:59
+#: data/core/units/nagas/Ringcaster.cfg:34
+#: data/core/units/nagas/Ringcaster.cfg:43 data/core/units/nagas/Zephyr.cfg:51
+#: data/core/units/nagas/Zephyr.cfg:60
 msgid "chakram"
-msgstr ""
+msgstr "شاكرام"
 
 #. [female]
-#: data/core/units/nagas/Ringcaster.cfg:93
+#: data/core/units/nagas/Ringcaster.cfg:104
 msgid "Nagini Ringcaster"
-msgstr ""
+msgstr "ثعبان رامي أقراص"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:4
 msgid "Naga Sicarius"
-msgstr ""
+msgstr "أفعوان مغتال"
 
 #. [unit_type]: id=Naga Sicarius, race=naga
 #: data/core/units/nagas/Sicarius.cfg:19
@@ -5272,14 +5337,14 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Sicarius.cfg:91
+#: data/core/units/nagas/Sicarius.cfg:95
 msgid "Nagini Sicarius"
-msgstr ""
+msgstr "ثعبان مغتال"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:4
 msgid "Naga Warrior"
-msgstr ""
+msgstr "أفعوان محارب"
 
 #. [unit_type]: id=Naga Warrior, race=naga
 #: data/core/units/nagas/Warrior.cfg:18
@@ -5295,7 +5360,7 @@ msgstr ""
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:46
 msgid "Nagini Warrior"
-msgstr ""
+msgstr "ثعبان محارب"
 
 #. [female]
 #: data/core/units/nagas/Warrior.cfg:48
@@ -5311,10 +5376,10 @@ msgstr ""
 #. [unit_type]: id=Naga Zephyr, race=naga
 #: data/core/units/nagas/Zephyr.cfg:4
 msgid "Naga Zephyr"
-msgstr ""
+msgstr "أفعوان النسيم"
 
 #. [unit_type]: id=Naga Zephyr, race=naga
-#: data/core/units/nagas/Zephyr.cfg:18
+#: data/core/units/nagas/Zephyr.cfg:19
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -5356,14 +5421,14 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/nagas/Zephyr.cfg:110
+#: data/core/units/nagas/Zephyr.cfg:111
 msgid "Nagini Zephyr"
-msgstr ""
+msgstr "ثعبان النسيم"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:4
 msgid "Ogre"
-msgstr ""
+msgstr "بعبع"
 
 #. [unit_type]: id=Ogre, race=ogre
 #: data/core/units/ogres/Ogre.cfg:21
@@ -5377,12 +5442,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
 msgid "cleaver"
-msgstr ""
+msgstr "ساطور الجزار"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:4
 msgid "Young Ogre"
-msgstr ""
+msgstr "بعبع يافع"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:20
@@ -5395,7 +5460,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:4
 msgid "Orcish Archer"
-msgstr ""
+msgstr "أورك رامي سهام"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:17
@@ -5412,7 +5477,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:4
 msgid "Orcish Assassin"
-msgstr ""
+msgstr "أورك مغتال"
 
 #. [unit_type]: id=Orcish Assassin, race=orc
 #: data/core/units/orcs/Assassin.cfg:20
@@ -5429,7 +5494,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:4
 msgid "Orcish Crossbowman"
-msgstr ""
+msgstr "أورك القوس المركب"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:17
@@ -5445,7 +5510,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:4
 msgid "Orcish Grunt"
-msgstr ""
+msgstr "أورك مناوش"
 
 #. [unit_type]: id=Orcish Grunt, race=orc
 #: data/core/units/orcs/Grunt.cfg:17
@@ -5462,7 +5527,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:4
 msgid "Orcish Leader"
-msgstr ""
+msgstr "أورك قائد"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:18
@@ -5477,7 +5542,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:4
 msgid "Orcish Nightblade"
-msgstr ""
+msgstr "أورك خنجر الظلام"
 
 #. [unit_type]: id=Orcish Nightblade, race=orc
 #: data/core/units/orcs/Nightblade.cfg:21
@@ -5496,12 +5561,17 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Nightblade.cfg:25
 msgid "blade"
-msgstr ""
+msgstr "نصل"
+
+#. [attack]: type=impact
+#: data/core/units/orcs/Nightblade.cfg:34
+msgid "kick"
+msgstr "ركلة"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:4
 msgid "Orcish Ruler"
-msgstr ""
+msgstr "أورك زعيم"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:18
@@ -5518,7 +5588,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
-msgstr ""
+msgstr "أورك سفّاك دماء"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:21
@@ -5537,7 +5607,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:4
 msgid "Orcish Slurbow"
-msgstr ""
+msgstr "أورك القوس المستعرض"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
 #: data/core/units/orcs/Slurbow.cfg:20
@@ -5556,7 +5626,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:4
 msgid "Orcish Sovereign"
-msgstr ""
+msgstr "أورك عاهل"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
@@ -5578,7 +5648,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
 msgid "Orcish Warlord"
-msgstr ""
+msgstr "أورك زعيم حرب"
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:18
@@ -5600,7 +5670,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:4
 msgid "Orcish Warrior"
-msgstr ""
+msgstr "أورك مقاتل"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:17
@@ -5617,7 +5687,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:4
 msgid "female^Saurian Ambusher"
-msgstr ""
+msgstr "سحلية كامنة"
 
 #. [unit_type]: id=Saurian Ambusher, race=lizard
 #: data/core/units/saurians/Ambusher.cfg:18
@@ -5634,7 +5704,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:4
 msgid "Saurian Augur"
-msgstr ""
+msgstr "سحلي عرّاف"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
 #: data/core/units/saurians/Augur.cfg:17
@@ -5647,7 +5717,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:4
 msgid "female^Saurian Flanker"
-msgstr ""
+msgstr "سحلية مناوشة جناح"
 
 #. [unit_type]: id=Saurian Flanker, race=lizard
 #: data/core/units/saurians/Flanker.cfg:19
@@ -5662,7 +5732,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr ""
+msgstr "سحلي متنبئ"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:18
@@ -5678,7 +5748,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:4
 msgid "female^Saurian Skirmisher"
-msgstr ""
+msgstr "سحلية مناوشة"
 
 #. [unit_type]: id=Saurian Skirmisher, race=lizard
 #: data/core/units/saurians/Skirmisher.cfg:18
@@ -5695,7 +5765,7 @@ msgstr ""
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:4
 msgid "Saurian Soothsayer"
-msgstr ""
+msgstr "سحلي متكهن"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
 #: data/core/units/saurians/Soothsayer.cfg:18
@@ -5709,7 +5779,7 @@ msgstr ""
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
 msgid "Great Troll"
-msgstr ""
+msgstr "ترول عظيم"
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:17
@@ -5724,7 +5794,7 @@ msgstr ""
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
 msgid "Troll Hero"
-msgstr ""
+msgstr "ترول بطل"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:16
@@ -5737,7 +5807,7 @@ msgstr ""
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:4
 msgid "Troll Rocklobber"
-msgstr ""
+msgstr "ترول رامي صخور"
 
 #. [unit_type]: id=Troll Rocklobber, race=troll
 #: data/core/units/trolls/Rocklobber.cfg:18
@@ -5752,7 +5822,7 @@ msgstr ""
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:4
 msgid "Troll"
-msgstr ""
+msgstr "ترول"
 
 #. [unit_type]: id=Troll, race=troll
 #: data/core/units/trolls/Troll.cfg:16
@@ -5768,7 +5838,7 @@ msgstr ""
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:4
 msgid "Troll Shaman"
-msgstr ""
+msgstr "ترول شامان"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:24
@@ -5781,12 +5851,12 @@ msgstr ""
 #. [attack]: type=fire
 #: data/core/units/trolls/Troll_Shaman.cfg:41
 msgid "flame blast"
-msgstr ""
+msgstr "انفجار اللهب"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:4
 msgid "Troll Warrior"
-msgstr ""
+msgstr "ترول محارب"
 
 #. [unit_type]: id=Troll Warrior, race=troll
 #: data/core/units/trolls/Warrior.cfg:18
@@ -5804,7 +5874,7 @@ msgstr ""
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:4
 msgid "Troll Whelp"
-msgstr ""
+msgstr "ترول يافع"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:17
@@ -5819,7 +5889,7 @@ msgstr ""
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:4
 msgid "Ghast"
-msgstr ""
+msgstr "غول مروع"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:19
@@ -5835,7 +5905,7 @@ msgstr ""
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
-msgstr ""
+msgstr "نباش قبور"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:18
@@ -5853,7 +5923,7 @@ msgstr ""
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
 msgid "Necrophage"
-msgstr ""
+msgstr "آكل الجثث"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:18
@@ -5872,121 +5942,115 @@ msgstr ""
 #: data/core/units/undead/Corpse_Soulless.cfg:117
 #: data/core/units/undead/Corpse_Walking.cfg:116
 msgid "wc_variation^Drake"
-msgstr ""
+msgstr "جثة درايك"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:132
 #: data/core/units/undead/Corpse_Walking.cfg:131
 msgid "wc_variation^Dwarf"
-msgstr ""
+msgstr "جثة قزم"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:145
 #: data/core/units/undead/Corpse_Walking.cfg:144
 msgid "wc_variation^Falcon"
-msgstr ""
+msgstr "جثة صقر"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:179
 #: data/core/units/undead/Corpse_Walking.cfg:178
 msgid "wc_variation^Goblin"
-msgstr ""
+msgstr "جثة غوبلن"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:189
 #: data/core/units/undead/Corpse_Walking.cfg:211
 msgid "wc_variation^Horse"
-msgstr ""
+msgstr "جثة حصان"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:198
 #: data/core/units/undead/Corpse_Walking.cfg:220
 msgid "wc_variation^Mounted"
-msgstr ""
+msgstr "جثة راكب"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:207
 #: data/core/units/undead/Corpse_Walking.cfg:229
 msgid "wc_variation^Beast-Rider"
-msgstr ""
+msgstr "جثة راكب وحش"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:216
 #: data/core/units/undead/Corpse_Walking.cfg:188
 msgid "wc_variation^Gryphon"
-msgstr ""
+msgstr "جثة جرايفون"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:239
 #: data/core/units/undead/Corpse_Walking.cfg:238
 msgid "wc_variation^Rat"
-msgstr ""
+msgstr "جثة فأر"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:256
 #: data/core/units/undead/Corpse_Walking.cfg:255
 msgid "wc_variation^Saurian"
-msgstr ""
+msgstr "جثة سحلي"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:266
 #: data/core/units/undead/Corpse_Walking.cfg:265
 msgid "wc_variation^Scorpion"
-msgstr ""
+msgstr "جثة عقرب"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:275
 #: data/core/units/undead/Corpse_Walking.cfg:274
 msgid "wc_variation^Spider"
-msgstr ""
+msgstr "جثة عنكبوت"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:284
 #: data/core/units/undead/Corpse_Walking.cfg:283
 msgid "wc_variation^Serpent"
-msgstr ""
+msgstr "جثة ثعبان"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:303
 #: data/core/units/undead/Corpse_Walking.cfg:302
 msgid "wc_variation^Swimmer"
-msgstr ""
+msgstr "جثة سبّاح"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:321
 #: data/core/units/undead/Corpse_Walking.cfg:320
 msgid "wc_variation^Troll"
-msgstr ""
+msgstr "جثة ترول"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:330
 #: data/core/units/undead/Corpse_Walking.cfg:329
 msgid "wc_variation^Boar"
-msgstr ""
-
-#. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:338
-#: data/core/units/undead/Corpse_Walking.cfg:337
-msgid "tusk"
-msgstr ""
+msgstr "جثة خنزير"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:343
 #: data/core/units/undead/Corpse_Walking.cfg:342
 msgid "wc_variation^Wose"
-msgstr ""
+msgstr "جثة ووز"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:355
 #: data/core/units/undead/Corpse_Walking.cfg:354
 msgid "wc_variation^Wolf"
-msgstr ""
+msgstr "جثة ذئب"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:368
 #: data/core/units/undead/Corpse_Walking.cfg:367
 msgid "wc_variation^Bat"
-msgstr ""
+msgstr "جثة خفّاش"
 
 #. [unit_type]: id=Ancient Lich, race=undead
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:18
@@ -6005,7 +6069,7 @@ msgstr ""
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:4
 msgid "Dark Adept"
-msgstr ""
+msgstr "تابع الظلام"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:22
@@ -6025,12 +6089,12 @@ msgstr ""
 #. [female]
 #: data/core/units/undead/Necro_Dark_Adept.cfg:160
 msgid "female^Dark Adept"
-msgstr ""
+msgstr "تابعة الظلام"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:4
 msgid "Dark Sorcerer"
-msgstr ""
+msgstr "ساحر الظلام"
 
 #. [unit_type]: id=Dark Sorcerer, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
@@ -6055,7 +6119,7 @@ msgstr ""
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:145
 msgid "Dark Sorceress"
-msgstr ""
+msgstr "ساحرة الظلام"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:149
@@ -6080,7 +6144,7 @@ msgstr ""
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
 msgid "Lich"
-msgstr ""
+msgstr "جثة أبدية"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:22
@@ -6112,12 +6176,12 @@ msgstr ""
 #. [female]
 #: data/core/units/undead/Necromancer.cfg:149
 msgid "female^Necromancer"
-msgstr ""
+msgstr "مستحضرة الأرواح"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:5
 msgid "Banebow"
-msgstr ""
+msgstr "قوس ملعون"
 
 #. [unit_type]: id=Banebow, race=undead
 #: data/core/units/undead/Skele_Banebow.cfg:18
@@ -6129,10 +6193,30 @@ msgid ""
 "malice born of their empty and tortured existence."
 msgstr ""
 
+#. [unit_type]: id=Bone Knight, race=undead
+#: data/core/units/undead/Skele_Bone_Knight.cfg:5
+#, fuzzy
+#| msgid "Goblin Knight"
+msgid "Bone Knight"
+msgstr "غوبلن فارس"
+
+#. [unit_type]: id=Bone Knight, race=undead
+#: data/core/units/undead/Skele_Bone_Knight.cfg:27
+msgid ""
+"Once great warriors across the plains, these mounted riders atop their "
+"skeletal horses were raised from the ground by unholy magic to spread fear "
+"and destruction."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/undead/Skele_Bone_Knight.cfg:41
+msgid "trample"
+msgstr ""
+
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
 msgid "Bone Shooter"
-msgstr ""
+msgstr "رامي سهام عظمية"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:16
@@ -6148,7 +6232,7 @@ msgstr ""
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:4
 msgid "Chocobone"
-msgstr ""
+msgstr "راكب الهيكل العظمي"
 
 #. [unit_type]: id=Chocobone, race=undead
 #: data/core/units/undead/Skele_Chocobone.cfg:30
@@ -6161,7 +6245,7 @@ msgstr ""
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:4
 msgid "Death Knight"
-msgstr ""
+msgstr "فارس الموت"
 
 #. [unit_type]: id=Death Knight, race=undead
 #: data/core/units/undead/Skele_Death_Knight.cfg:25
@@ -6172,10 +6256,25 @@ msgid ""
 "for revenge."
 msgstr ""
 
+#. [unit_type]: id=Death Squire, race=undead
+#: data/core/units/undead/Skele_Death_Squire.cfg:5
+msgid "Death Squire"
+msgstr ""
+
+#. [unit_type]: id=Death Squire, race=undead
+#: data/core/units/undead/Skele_Death_Squire.cfg:27
+msgid ""
+"Sometimes the mightiest warriors and generals, cursed with hate and angst, "
+"came back to this world as Death Knights. Death Squires serve them whilst "
+"accruing enough unholy power to become Death Knights. In the process they "
+"pick up a good deal of the Knight’s power, including the ability to command "
+"underlings."
+msgstr ""
+
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
 msgid "Deathblade"
-msgstr ""
+msgstr "سيّاف الموت"
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:18
@@ -6190,7 +6289,7 @@ msgstr ""
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:4
 msgid "Draug"
-msgstr ""
+msgstr "دراوج"
 
 #. [unit_type]: id=Draug, race=undead
 #: data/core/units/undead/Skele_Draug.cfg:18
@@ -6205,7 +6304,7 @@ msgstr ""
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:4
 msgid "Revenant"
-msgstr ""
+msgstr "عائد من الموت"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:18
@@ -6221,7 +6320,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:4
 msgid "Skeleton"
-msgstr ""
+msgstr "هيكل عظمي"
 
 #. [unit_type]: id=Skeleton, race=undead
 #: data/core/units/undead/Skeleton.cfg:17
@@ -6235,7 +6334,7 @@ msgstr ""
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4
 msgid "Skeleton Archer"
-msgstr ""
+msgstr "هيكل عظمي رامي سهام"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:16
@@ -6247,10 +6346,25 @@ msgid ""
 "is already dead."
 msgstr ""
 
+#. [unit_type]: id=Skeleton Rider, race=undead
+#: data/core/units/undead/Skeleton_Rider.cfg:5
+#, fuzzy
+#| msgid "Skeleton Archer"
+msgid "Skeleton Rider"
+msgstr "هيكل عظمي رامي سهام"
+
+#. [unit_type]: id=Skeleton Rider, race=undead
+#: data/core/units/undead/Skeleton_Rider.cfg:33
+msgid ""
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
+msgstr ""
+
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
 msgid "Ghost"
-msgstr ""
+msgstr "شبح"
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:17
@@ -6265,12 +6379,12 @@ msgstr ""
 #: data/core/units/undead/Spirit_Spectre.cfg:43
 #: data/core/units/undead/Spirit_Wraith.cfg:32
 msgid "wail"
-msgstr ""
+msgstr "عويل"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:4
 msgid "Nightgaunt"
-msgstr ""
+msgstr "أرمل الليل"
 
 #. [unit_type]: id=Nightgaunt, race=undead
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:18
@@ -6284,7 +6398,7 @@ msgstr ""
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:4
 msgid "Shadow"
-msgstr ""
+msgstr "الظل"
 
 #. [unit_type]: id=Shadow, race=undead
 #: data/core/units/undead/Spirit_Shadow.cfg:17
@@ -6299,7 +6413,7 @@ msgstr ""
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:4
 msgid "Spectre"
-msgstr ""
+msgstr "خَيَال الشبح"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
@@ -6317,12 +6431,12 @@ msgstr ""
 #: data/core/units/undead/Spirit_Spectre.cfg:32
 #: data/core/units/undead/Spirit_Wraith.cfg:21
 msgid "baneblade"
-msgstr ""
+msgstr "سيف اللعنة"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:4
 msgid "Wraith"
-msgstr ""
+msgstr "شبح منتقم"
 
 #. [unit_type]: id=Wraith, race=undead
 #: data/core/units/undead/Spirit_Wraith.cfg:17
@@ -6337,7 +6451,7 @@ msgstr ""
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:4
 msgid "Ancient Wose"
-msgstr ""
+msgstr "ووز قديم"
 
 #. [unit_type]: id=Ancient Wose, race=wose
 #: data/core/units/wose/Ancient.cfg:17
@@ -6357,12 +6471,12 @@ msgstr ""
 #: data/core/units/wose/Wose.cfg:29 data/core/units/wose/Wose_Sapling.cfg:29
 #: data/core/units/wose/Wose_Shaman.cfg:34
 msgid "crush"
-msgstr ""
+msgstr "عصر"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:4
 msgid "Elder Wose"
-msgstr ""
+msgstr "ووز شيخ"
 
 #. [unit_type]: id=Elder Wose, race=wose
 #: data/core/units/wose/Elder.cfg:17
@@ -6383,7 +6497,7 @@ msgstr ""
 #. [unit_type]: id=Wose, race=wose
 #: data/core/units/wose/Wose.cfg:4
 msgid "Wose"
-msgstr ""
+msgstr "ووز "
 
 #. [unit_type]: id=Wose, race=wose
 #. [unit_type]: id=Wose Sapling, race=wose
@@ -6404,12 +6518,12 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr ""
+msgstr "ووز شتلة"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
 msgid "Wose Shaman"
-msgstr ""
+msgstr "ووز شامان"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
@@ -6417,3 +6531,6 @@ msgid ""
 "These woses are able to command forest plants such as vines and creepers to "
 "hinder their enemies."
 msgstr ""
+
+#~ msgid "Giant Stoat"
+#~ msgstr "ابن عرس عملاق"

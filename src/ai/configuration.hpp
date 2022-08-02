@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -121,11 +121,11 @@ public:
 private:
 
 	typedef std::map<std::string, description> description_map;
-	static description_map ai_configurations_;
-	static description_map era_ai_configurations_;
-	static description_map mod_ai_configurations_;
-	static config default_config_;
-	static std::string default_ai_algorithm_;
+	static inline description_map ai_configurations_ {};
+	static inline description_map era_ai_configurations_ {};
+	static inline description_map mod_ai_configurations_ {};
+	static inline config default_config_ {};
+	static inline std::string default_ai_algorithm_ {};
 
 };
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 
 #include <algorithm>
 #include <iomanip>
-#include <iostream>
 #include <iterator>
 #include <fstream>
 #include <locale>
@@ -59,7 +58,7 @@ namespace
 		default_utf8_locale_name()
 			: name_()
 		{
-			LOG_G << "Generating default locale\n";
+			LOG_G << "Generating default locale";
 			try
 			{
 				//NOTE: the default_locale objects needs to live as least as long as the locale_info object. Otherwise the program will segfault.
@@ -74,9 +73,9 @@ namespace
 			}
 			catch(const std::exception& e)
 			{
-				ERR_G << "Failed to generate default locale string. message:" << e.what() << std::endl;
+				ERR_G << "Failed to generate default locale string. message:" << e.what();
 			}
-			LOG_G << "Finished generating default locale, default is now '" << name_ << "'\n";
+			LOG_G << "Finished generating default locale, default is now '" << name_ << "'";
 		}
 
 		std::string name_;
@@ -103,24 +102,24 @@ namespace
 				lang_name_short += '@';
 				lang_name_short += inf.variant();
 			}
-			DBG_G << "Loading po files for language " << lang_name_long << '\n';
+			DBG_G << "Loading po files for language " << lang_name_long;
 			for(auto& domain : domains) {
-				DBG_G << "Searching for po files for domain " << domain << '\n';
+				DBG_G << "Searching for po files for domain " << domain;
 				std::string path;
 				for(auto base_path : paths) {
-					DBG_G << "Searching in dir " << base_path << '\n';
+					DBG_G << "Searching in dir " << base_path;
 					if(base_path[base_path.length()-1] != '/') {
 						base_path += '/';
 					}
 					base_path += domain;
 					base_path += '/';
 					path = base_path + lang_name_long + ".po";
-					DBG_G << "  Trying path " << path << '\n';
+					DBG_G << "  Trying path " << path;
 					if(filesystem::file_exists(path)) {
 						break;
 					}
 					path = base_path + lang_name_short + ".po";
-					DBG_G << "  Trying path " << path << '\n';
+					DBG_G << "  Trying path " << path;
 					if(filesystem::file_exists(path)) {
 						break;
 					}
@@ -128,7 +127,7 @@ namespace
 				if(!filesystem::file_exists(path)) {
 					continue;
 				}
-				LOG_G << "Loading language file from " << path << '\n';
+				LOG_G << "Loading language file from " << path;
 				try {
 					filesystem::scoped_istream po_file = filesystem::istream_file(path);
 					po_file->exceptions(std::ios::badbit);
@@ -146,7 +145,7 @@ namespace
 
 		static void log_po_error(const std::string& lang, const std::string& dom, const std::string& detail) {
 			ERR_G << "Error opening language file for " << lang << ", textdomain " << dom
-				<< ":\n  " << detail << '\n' << std::flush;
+				<< ":\n  " << detail;
 		}
 
 		const char* get(int domain_id, const char* ctx, const char* msg_id) const override
@@ -220,7 +219,7 @@ namespace
 			const bl::localization_backend_manager& g_mgr = bl::localization_backend_manager::global();
 			for(const std::string& name : g_mgr.get_all_backends())
 			{
-				LOG_G << "Found boost locale backend: '" << name << "'\n";
+				LOG_G << "Found boost locale backend: '" << name << "'";
 			}
 
 			generator_.use_ansi_encoding(false);
@@ -246,7 +245,7 @@ namespace
 				// so we can't possibly support that, and odds are it's a user
 				// mistake (as in bug #23839).
 				ERR_G << "illegal textdomain name '" << domain
-					  << "', skipping textdomain\n";
+					  << "', skipping textdomain";
 				return;
 			}
 
@@ -293,11 +292,24 @@ namespace
 			is_dirty_ = true;
 		}
 
+		/* This is called three times: once during the constructor, before any .mo files' paths have
+		 * been added to the generator, once after adding the mainline .mo files, and once more
+		 * after adding all add-ons. Corrupt .mo files might make the called functions throw, and so
+		 * this might fail as soon as we've added message paths.
+		 *
+		 * Throwing exceptions from here is (in 1.15.18) going to end up in wesnoth.cpp's "Caught
+		 * general ...  exception" handler, so the effect of letting an exception escape this
+		 * function is an immediate exit. Given that, it doesn't seem useful to change the assert
+		 * to a throw, at least not within the 1.16 branch.
+		 *
+		 * Postcondition: current_locale_ is a valid boost-generated locale, supplying the bl::info
+		 * facet. If there are corrupt .mo files, the locale might have no translations loaded.
+		 */
 		void update_locale_internal()
 		{
 			try
 			{
-				LOG_G << "attempting to generate locale by name '" << current_language_ << "'\n";
+				LOG_G << "attempting to generate locale by name '" << current_language_ << "'";
 				current_locale_ = generator_.generate(current_language_);
 				current_locale_ = std::locale(current_locale_, new wesnoth_message_format(current_locale_, loaded_domains_, loaded_paths_));
 				const bl::info& info = std::use_facet<bl::info>(current_locale_);
@@ -306,7 +318,7 @@ namespace
 				      << "' country='"  << info.country()
 				      << "' language='"  << info.language()
 				      << "' encoding='"  << info.encoding()
-				      << "' variant='"  << info.variant() << "')\n";
+				      << "' variant='"  << info.variant() << "')";
 			}
 			catch(const bl::conv::conversion_error&)
 			{
@@ -318,7 +330,19 @@ namespace
 				      << "' language='" << info.language()
 				      << "' encoding='" << info.encoding()
 				      << "' variant='" << info.variant()
-				      << "'" << std::endl;
+				      << "'";
+			}
+			catch(const std::runtime_error&)
+			{
+				assert(std::has_facet<bl::info>(current_locale_));
+				const bl::info& info = std::use_facet<bl::info>(current_locale_);
+				ERR_G << "Failed to update locale due to runtime error, locale is now: "
+				      << "name='" << info.name()
+				      << "' country='" << info.country()
+				      << "' language='" << info.language()
+				      << "' encoding='" << info.encoding()
+				      << "' variant='" << info.variant()
+				      << "'";
 			}
 			is_dirty_ = false;
 		}
@@ -411,15 +435,33 @@ std::string dsgettext (const char * domainname, const char *msgid)
 	return msgval;
 }
 
+namespace {
+
+inline const char* is_unlocalized_string2(const std::string& str, const char* singular, const char* plural)
+{
+	if (str == singular) {
+		return singular;
+	}
+
+	if (str == plural) {
+		return plural;
+	}
+
+	return nullptr;
+}
+
+}
+
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	//TODO: only the next line needs to be in the lock.
 	std::scoped_lock lock(get_mutex());
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
-	if (msgval == singular) {
-		const char* firsthat = std::strchr (singular, '^');
+	auto original = is_unlocalized_string2(msgval, singular, plural);
+	if (original) {
+		const char* firsthat = std::strchr (original, '^');
 		if (firsthat == nullptr)
-			msgval = singular;
+			msgval = original;
 		else
 			msgval = firsthat + 1;
 	}
@@ -428,7 +470,7 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 
 void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
-	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'\n";
+	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'";
 	std::scoped_lock lock(get_mutex());
 	get_manager().add_messages_domain(domain);
 	get_manager().add_messages_path(directory);
@@ -437,7 +479,7 @@ void bind_textdomain(const char* domain, const char* directory, const char* /*en
 
 void set_default_textdomain(const char* domain)
 {
-	LOG_G << "set_default_textdomain: '" << domain << "'\n";
+	LOG_G << "set_default_textdomain: '" << domain << "'";
 	std::scoped_lock lock(get_mutex());
 	get_manager().set_default_messages_domain(domain);
 }
@@ -447,7 +489,7 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 {
 	// why should we need alternates? which languages we support should only be related
 	// to which languages we ship with and not which the os supports
-	LOG_G << "setting language to  '" << language << "' \n";
+	LOG_G << "setting language to  '" << language << "'";
 	std::scoped_lock lock(get_mutex());
 	get_manager().set_language(language);
 }
@@ -462,7 +504,7 @@ int compare(const std::string& s1, const std::string& s2)
 		static bool bad_cast_once = false;
 
 		if(!bad_cast_once) {
-			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()\n";
+			ERR_G << "locale set-up for compare() is broken, falling back to std::string::compare()";
 			bad_cast_once = true;
 		}
 
@@ -486,12 +528,12 @@ int icompare(const std::string& s1, const std::string& s2)
 		static bool bad_cast_once = false;
 
 		if(!bad_cast_once) {
-			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()\n";
+			ERR_G << "locale set-up for icompare() is broken, falling back to std::string::compare()";
 
 			try { //just to be safe.
-				ERR_G << get_manager().debug_description() << "\n";
+				ERR_G << get_manager().debug_description();
 			} catch (const std::exception& e) {
-				ERR_G << e.what() << "\n";
+				ERR_G << e.what();
 			}
 			bad_cast_once = true;
 		}

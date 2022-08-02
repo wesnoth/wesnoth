@@ -11,7 +11,7 @@ local function hunter_attack_weakest_adj_enemy(ai, hunter)
 
     if (hunter.attacks_left == 0) then return 'no_attack' end
 
-    local min_hp, target = math.huge
+    local min_hp, target = math.huge, nil
     for xa,ya in wesnoth.current.map:iter_adjacent(hunter) do
         local enemy = wesnoth.units.get(xa, ya)
         if AH.is_attackable_enemy(enemy) then
@@ -60,8 +60,7 @@ function ca_hunter:execution(cfg)
     -- If hunting_status is not set for the hunter -> default behavior -> random wander
     if (not hunter_vars.hunting_status) then
         -- Hunter gets a new goal if none exist or on any move with 10% random chance
-        local rand = math.random(10)
-        if (not hunter_vars.goal_x) or (rand == 1) then
+        if (not hunter_vars.goal_x) or (math.random(10) == 1) then
             -- 'locs' includes border hexes, but that does not matter here
             local locs = AH.get_passable_locations((wml.get_child(cfg, "filter_location") or {}), hunter)
             local rand = math.random(#locs)
@@ -73,7 +72,7 @@ function ca_hunter:execution(cfg)
         local reach_map = AH.get_reachable_unocc(hunter)
 
         -- Now find the one of these hexes that is closest to the goal
-        local max_rating, best_hex = - math.huge
+        local max_rating, best_hex = - math.huge, nil
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
             local rating = -M.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)

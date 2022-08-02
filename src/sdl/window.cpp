@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -13,10 +13,12 @@
 	See the COPYING file for more details.
 */
 
-#include "sdl/surface.hpp"
 #include "sdl/window.hpp"
 
 #include "sdl/exception.hpp"
+#include "sdl/input.hpp"
+#include "sdl/surface.hpp"
+#include "sdl/utils.hpp"
 
 #include <SDL2/SDL_render.h>
 
@@ -30,18 +32,19 @@ window::window(const std::string& title,
 				 const int h,
 				 const uint32_t window_flags,
 				 const uint32_t render_flags)
-	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
+	: window_(SDL_CreateWindow(
+		title.c_str(), x, y, w, h, window_flags | SDL_WINDOW_HIDDEN))
 	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
-#if SDL_VERSION_ATLEAST(2, 0, 10)
-	// Rendering in batches (for efficiency) is enabled by default from SDL 2.0.10
-	// The way Wesnoth uses SDL as of September 2019 does not work well with this rendering mode (eg story-only scenarios)
-	SDL_SetHint(SDL_HINT_RENDER_BATCHING, "0");
-#endif
+	if(sdl::runtime_at_least(2,0,10)) {
+		// Rendering in batches (for efficiency) is enabled by default from SDL 2.0.10
+		// The way Wesnoth uses SDL as of September 2019 does not work well with this rendering mode (eg story-only scenarios)
+		SDL_SetHint(SDL_HINT_RENDER_BATCHING, "0");
+	}
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
@@ -58,6 +61,10 @@ window::window(const std::string& title,
 						 false);
 	}
 
+	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
+		throw exception("Render-to-texture not supported or enabled!", false);
+	}
+
 	// Set default blend mode to blend.
 	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);
 
@@ -70,6 +77,11 @@ window::window(const std::string& title,
 	fill(0,0,0);
 
 	render();
+
+	// If we didn't explicitly ask for the window to be hidden, show it
+	if(!(window_flags & SDL_WINDOW_HIDDEN)) {
+		SDL_ShowWindow(window_);
+	}
 }
 
 window::~window()
@@ -162,6 +174,36 @@ void window::set_minimum_size(int min_w, int min_h)
 int window::get_display_index()
 {
 	return SDL_GetWindowDisplayIndex(window_);
+}
+
+void window::set_logical_size(int w, int h)
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	SDL_RenderSetLogicalSize(r, w, h);
+}
+
+void window::set_logical_size(const point& p)
+{
+	set_logical_size(p.x, p.y);
+}
+
+point window::get_logical_size() const
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	int w, h;
+	SDL_RenderGetLogicalSize(r, &w, &h);
+	return {w, h};
+}
+
+void window::get_logical_size(int& w, int& h) const
+{
+	SDL_Renderer* r = SDL_GetRenderer(window_);
+	SDL_RenderGetLogicalSize(r, &w, &h);
+}
+
+uint32_t window::pixel_format()
+{
+	return pixel_format_;
 }
 
 window::operator SDL_Window*()

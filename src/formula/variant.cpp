@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,8 +15,10 @@
 
 #include <cassert>
 #include <cmath>
-#include <iostream>
 #include <cstring>
+#include <cassert>
+#include <cmath>
+#include <memory>
 #include <stack>
 
 #include "formatter.hpp"
@@ -30,9 +32,6 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #define WRN_SF LOG_STREAM(warn, log_scripting_formula)
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
-#include <cassert>
-#include <cmath>
-#include <memory>
 
 namespace wfl
 {
@@ -40,9 +39,9 @@ namespace wfl
 // Static value to initialize null variants to ensure its value is never nullptr.
 static value_base_ptr null_value(new variant_value_base);
 
-static std::string variant_type_to_string(VARIANT_TYPE type)
+static std::string variant_type_to_string(formula_variant::type type)
 {
-	return VARIANT_TYPE::enum_to_string(type);
+	return formula_variant::get_string(type);
 }
 
 // Small helper function to get a standard type error message.
@@ -58,17 +57,17 @@ static std::string was_expecting(const std::string& message, const variant& v)
 
 type_error::type_error(const std::string& str) : game::error(str)
 {
-	std::cerr << "ERROR: " << message << "\n" << call_stack_manager::get();
+	PLAIN_LOG << "ERROR: " << message << "\n" << call_stack_manager::get();
 }
 
 variant_iterator::variant_iterator()
-	: type_(VARIANT_TYPE::TYPE_NULL)
+	: type_(formula_variant::type::null)
 	, container_(nullptr)
 	, iter_()
 {
 }
 
-variant_iterator::variant_iterator(const variant_value_base* value, const boost::any& iter)
+variant_iterator::variant_iterator(const variant_value_base* value, const utils::any& iter)
 	: type_(value->get_type())
 	, container_(value)
 	, iter_(iter)
@@ -164,7 +163,7 @@ variant::variant(double n, variant::DECIMAL_VARIANT_TYPE)
 }
 
 variant::variant(const std::vector<variant>& vec)
-    : value_((std::make_shared<variant_list>(vec)))
+	: value_((std::make_shared<variant_list>(vec)))
 {
 	assert(value_.get());
 }
@@ -187,7 +186,7 @@ variant variant::operator[](std::size_t n) const
 		return *this;
 	}
 
-	must_be(VARIANT_TYPE::TYPE_LIST);
+	must_be(formula_variant::type::list);
 
 	try {
 		return value_cast<variant_list>()->get_container().at(n);
@@ -231,7 +230,7 @@ variant variant::operator[](const variant& v) const
 
 variant variant::get_keys() const
 {
-	must_be(VARIANT_TYPE::TYPE_MAP);
+	must_be(formula_variant::type::map);
 
 	std::vector<variant> tmp;
 	for(const auto& i : value_cast<variant_map>()->get_container()) {
@@ -243,7 +242,7 @@ variant variant::get_keys() const
 
 variant variant::get_values() const
 {
-	must_be(VARIANT_TYPE::TYPE_MAP);
+	must_be(formula_variant::type::map);
 
 	std::vector<variant> tmp;
 	for(const auto& i : value_cast<variant_map>()->get_container()) {
@@ -297,7 +296,7 @@ int variant::as_int() const
 	if(is_null())    { return 0; }
 	if(is_decimal()) { return as_decimal() / 1000; }
 
-	must_be(VARIANT_TYPE::TYPE_INT);
+	must_be(formula_variant::type::integer);
 	return value_cast<variant_int>()->get_numeric_value();
 }
 
@@ -321,19 +320,19 @@ bool variant::as_bool() const
 
 const std::string& variant::as_string() const
 {
-	must_be(VARIANT_TYPE::TYPE_STRING);
+	must_be(formula_variant::type::string);
 	return value_cast<variant_string>()->get_string();
 }
 
 const std::vector<variant>& variant::as_list() const
 {
-	must_be(VARIANT_TYPE::TYPE_LIST);
+	must_be(formula_variant::type::list);
 	return value_cast<variant_list>()->get_container();
 }
 
 const std::map<variant, variant>& variant::as_map() const
 {
-	must_be(VARIANT_TYPE::TYPE_MAP);
+	must_be(formula_variant::type::map);
 	return value_cast<variant_map>()->get_container();
 }
 
@@ -539,32 +538,32 @@ bool variant::operator>(const variant& v) const
 
 variant variant::list_elements_add(const variant& v) const
 {
-	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
+	must_both_be(formula_variant::type::list, v);
 	return value_cast<variant_list>()->list_op(v.value_, std::plus<variant>());
 }
 
 variant variant::list_elements_sub(const variant& v) const
 {
-	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
+	must_both_be(formula_variant::type::list, v);
 	return value_cast<variant_list>()->list_op(v.value_, std::minus<variant>());
 }
 
 variant variant::list_elements_mul(const variant& v) const
 {
-	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
+	must_both_be(formula_variant::type::list, v);
 	return value_cast<variant_list>()->list_op(v.value_, std::multiplies<variant>());
 }
 
 variant variant::list_elements_div(const variant& v) const
 {
-	must_both_be(VARIANT_TYPE::TYPE_LIST, v);
+	must_both_be(formula_variant::type::list, v);
 	return value_cast<variant_list>()->list_op(v.value_, std::divides<variant>());
 }
 
 variant variant::concatenate(const variant& v) const
 {
 	if(is_list()) {
-		v.must_be(VARIANT_TYPE::TYPE_LIST);
+		v.must_be(formula_variant::type::list);
 
 		std::vector<variant> res;
 		res.reserve(num_elements() + v.num_elements());
@@ -579,7 +578,7 @@ variant variant::concatenate(const variant& v) const
 
 		return variant(res);
 	} else if(is_string()) {
-		v.must_be(VARIANT_TYPE::TYPE_STRING);
+		v.must_be(formula_variant::type::string);
 		std::string res = as_string() + v.as_string();
 		return variant(res);
 	}
@@ -589,7 +588,7 @@ variant variant::concatenate(const variant& v) const
 
 variant variant::build_range(const variant& v) const
 {
-	must_both_be(VARIANT_TYPE::TYPE_INT, v);
+	must_both_be(formula_variant::type::integer, v);
 
 	return value_cast<variant_int>()->build_range_variant(v.as_int());
 }
@@ -607,14 +606,14 @@ bool variant::contains(const variant& v) const
 	}
 }
 
-void variant::must_be(VARIANT_TYPE t) const
+void variant::must_be(formula_variant::type t) const
 {
 	if(type() != t) {
 		throw type_error(was_expecting(variant_type_to_string(t), *this));
 	}
 }
 
-void variant::must_both_be(VARIANT_TYPE t, const variant& second) const
+void variant::must_both_be(formula_variant::type t, const variant& second) const
 {
 	if(type() != t || second.type() != t) {
 		throw type_error(formatter() << "TYPE ERROR: expected two "
@@ -683,7 +682,7 @@ variant variant::execute_variant(const variant& var)
 				made_moves.push_back(vars.top());
 //			} else {
 				//too many calls in a row - possible infinite loop
-//				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword" << std::endl;
+//				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword";
 
 //				if(safe_call)
 //					error = variant(new game_logic::safe_call_result(nullptr, 5001));
@@ -692,7 +691,7 @@ variant variant::execute_variant(const variant& var)
 			break;
 		} else {
 			//this information is unneeded when evaluating formulas from commandline
-			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string() << std::endl;
+			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string();
 		}
 
 		vars.pop();

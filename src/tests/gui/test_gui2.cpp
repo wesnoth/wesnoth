@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -118,7 +118,6 @@
 #include "tests/utils/fake_display.hpp"
 //#include "scripting/lua_kernel_base.hpp"
 #include <functional>
-#include "video.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
@@ -550,7 +549,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	// Test size() instead of empty() to get the number of offenders
 	BOOST_CHECK_EQUAL(missing.size(), 0);
 	for(const std::string& id : missing) {
-		std::cerr << "Window '" << id << "' registered but not tested.\n";
+		PLAIN_LOG << "Window '" << id << "' registered but not tested.";
 	}
 }
 
@@ -607,9 +606,9 @@ Sed faucibus nibh sit amet ligula porta, non malesuada nibh tristique. Maecenas 
 template<>
 struct dialog_tester<addon_manager>
 {
-	CVideo& video = test_utils::get_fake_display(10, 10).video();
 	dialog_tester()
 	{
+		test_utils::get_fake_display(10, 10);
 	}
 	addon_manager* create()
 	{
@@ -870,6 +869,7 @@ class fake_chat_handler : public events::chat_handler {
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
 	void send_to_server(const config&) {}
+	void clear_messages() {}
 };
 
 template<>

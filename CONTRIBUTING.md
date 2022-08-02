@@ -118,6 +118,9 @@ private:
 };
 ```
 
+## Translations
+For specific information on how to update and submit translations, see [here](https://wiki.wesnoth.org/WesnothTranslationsHowTo).
+
 ## Bug Reports
 
 Please report any bugs here on GitHub (preferred) or on the forums.

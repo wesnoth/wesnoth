@@ -103,7 +103,7 @@ def write_percentage_wml(wml_file, percent):
 
 
 def get_wml_cfg(wml_dir, locale):
-    match = re.match(r'([a-z]+)(_([A-Z]+))?(@([a-z]+))?', locale)
+    match = re.match(r'([a-z]+)(_([A-Z0-9]+))?(@([a-z]+))?', locale)
     if not match:
         return None
 

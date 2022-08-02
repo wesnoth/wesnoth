@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,7 +34,8 @@ class player_record
 public:
 	template<class SocketPtr>
 	player_record(const SocketPtr socket, const player& player)
-		: socket_(socket)
+		: login_time(std::chrono::steady_clock::now())
+		, socket_(socket)
 		, player_(player)
 		, game_()
 		, ip_address(client_address(socket))
@@ -70,6 +71,8 @@ public:
 	void set_game(std::shared_ptr<game> new_game);
 
 	void enter_lobby();
+
+	const std::chrono::time_point<std::chrono::steady_clock> login_time;
 
 private:
 	const any_socket_ptr socket_;

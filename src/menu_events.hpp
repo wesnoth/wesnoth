@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -96,7 +96,7 @@ public:
 	void user_command();
 	void custom_command();
 	void ai_formula();
-	void clear_messages();
+	virtual void clear_messages() override;
 	std::vector<std::string> get_commands_list();
 
 	unit_map::iterator current_unit();

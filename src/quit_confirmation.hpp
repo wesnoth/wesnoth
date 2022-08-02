@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2021
+	Copyright (C) 2015 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -13,8 +13,6 @@
 */
 
 #pragma once
-
-class CVideo;
 
 #include <cassert>
 #include <vector>
@@ -39,7 +37,7 @@ public:
 	/**
 	 * Shows the quit confirmation if needed.
 	 *
-	 * @throws CVideo::quit If the user chooses to quit or no prompt was
+	 * @throws video::quit If the user chooses to quit or no prompt was
 	 *                      displayed.
 	 */
 	static bool quit();

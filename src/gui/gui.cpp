@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,7 +39,7 @@ void init()
 		return;
 	}
 
-	LOG_GUI_G << "Initializing UI subststem." << std::endl;
+	LOG_GUI_G << "Initializing UI subststem.";
 
 	// Save current screen size.
 	settings::update_screen_size_variables();
@@ -56,10 +56,10 @@ void init()
 
 		read(cfg, *stream, &validator);
 	} catch(const config::error& e) {
-		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'." << std::endl;
+		ERR_GUI_P << e.what();
+		ERR_GUI_P << "Setting: could not read file 'data/gui/_main.cfg'.";
 	} catch(const abstract_validator::error& e) {
-		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'." << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/schema/gui.cfg'.";
 		ERR_GUI_P << e.message;
 	}
 
@@ -87,7 +87,7 @@ void init()
 	if(current_theme.empty()) {
 		current_gui = default_gui;
 	} else if(current_gui == guis.end()) {
-		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'\n";
+		ERR_GUI_P << "Missing [gui] definition for '" << current_theme << "'";
 		current_gui = default_gui;
 	}
 

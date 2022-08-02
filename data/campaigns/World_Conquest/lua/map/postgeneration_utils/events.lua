@@ -1,5 +1,5 @@
 
--- The invest dialog spawns items below the keeps, so we have to 
+-- The invest dialog spawns items below the keeps, so we have to
 -- make sure the tiles below keeps are passable for all units
 function wct_fix_impassible_item_spawn()
 

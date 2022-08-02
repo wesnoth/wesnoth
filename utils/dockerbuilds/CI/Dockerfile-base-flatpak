@@ -1,8 +1,8 @@
-FROM wesnoth/wesnoth:2004-master
+FROM wesnoth/wesnoth:2204-master
 
 RUN apt update
 # install flatpak
 RUN apt install -y flatpak flatpak-builder jq
 RUN flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 # install runtime
-RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/20.08 org.freedesktop.Sdk/x86_64/20.08
+RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/21.08 org.freedesktop.Sdk/x86_64/21.08

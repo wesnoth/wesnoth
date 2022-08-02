@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
 "PO-Revision-Date: 2010-12-12 12:17+0200\n"
 "Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -169,9 +169,9 @@ msgid "Fal Khag"
 msgstr "Fal Khag"
 
 #. [side]: type=Goblin Pillager, id=Fal Khag
-#. [side]: type=Orcish Warlord, id=Vashna
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:86
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:106
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
@@ -545,14 +545,14 @@ msgid ""
 "ready our hunting troop when I get back to the village, just in case..."
 msgstr ""
 
+#. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]
 #. [side]: type=Bandit, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:44
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:83
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
@@ -573,13 +573,13 @@ msgstr "Kapinalliset"
 msgid "Tarwen"
 msgstr "Tarwen"
 
+#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
 #. [side]: type=Shock Trooper, id=Linneus
 #. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
-#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
@@ -650,7 +650,7 @@ msgstr "Vahtikaa porttia."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:225
-msgid "<i>Uncle, since when did we have a Queen?</i>"
+msgid "<i>Uncle, since when did we have a queen?</i>"
 msgstr ""
 
 #. [message]: speaker=Baldras
@@ -1876,7 +1876,7 @@ msgstr "Puuhailunne?"
 #| "because we seek to master shadow magic. Our secrecy and security are not "
 #| "cheap."
 msgid ""
-"The former King’s magic ministry kept a tight control on the training and "
+"The former king’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
 "curriculum were dealt with harshly. Many of us were forced to escape here to "
 "continue our study of our brand of magic. Our security and secrecy are not "
@@ -1909,7 +1909,7 @@ msgstr ""
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:281
 msgid ""
 "Understand this. Any weakening of the Throne of Wesnoth, whether it be "
-"occupied by King or Queen, aids us. To accomplish that, we must destabilize "
+"occupied by king or queen, aids us. To accomplish that, we must destabilize "
 "their forces in this region. The key is Halstead."
 msgstr ""
 
@@ -1932,7 +1932,7 @@ msgstr ""
 msgid ""
 "Know this, Baldras. During the past week, several patrols have again "
 "ventured across the Great River into Annuvin. A woman named Relana opposed "
-"them with a small militia and was victorious, but with heavy loses. The "
+"them with a small militia and was victorious, but with heavy losses. The "
 "Crown, however, has begun to take notice of this rebellion and is massing "
 "forces within Halstead. When its armies are raised, none of your little "
 "villages will be able to resist them. Your only choice would be to flee "
@@ -2841,47 +2841,6 @@ msgid ""
 "bones has one more adventure left in it..."
 msgstr ""
 
-#. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:5
-msgid "Bone Knight"
-msgstr "Luuritari"
-
-#. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:27
-msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
-msgstr ""
-"Nämä luisilla ratsuilla ratsastajat olivat kerran tasankojen suuria "
-"sotureita. Ne on nostatettu maaperästä epäpyhällä taikuudella levittämään "
-"pelkoa ja tuhoa."
-
-#. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:42
-msgid "trample"
-msgstr "tallominen"
-
-#. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:4
-msgid "Death Squire"
-msgstr "Kuoleman aseenkantaja"
-
-#. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:26
-msgid ""
-"Sometimes the mightiest warriors and generals, cursed with hate and angst, "
-"came back to this world as Death Knights. Death Squires serve them whilst "
-"accruing enough unholy power to become Death Knights. In the process they "
-"pick up a good deal of the Knight’s power, including the ability to command "
-"underlings."
-msgstr ""
-"Joskus mahtavimmat vihalla ja tuskalla kirotut soturit ja kenraalit tulevat "
-"takaisin maailmaan kuolonritareina. Kuoleman aseenkantajat palvelevat heitä "
-"samalla kun keräävät tarpeeksi epäpyhää voimaa tullakseen itse "
-"kuolonritareiksi. Siinä sivussa he oppivat käyttämään osaa ritarin voimista, "
-"kuten kykyä komentaa alamaisia."
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
@@ -2975,22 +2934,6 @@ msgstr ""
 "taikuutta käyttävilleen ikätovereilleen, mutta sen sijaan he käyttävät "
 "energiaansa lähitaisteluhyökkäyksiin. Huolimatta hyökkäävästä voimastaan "
 "heidän sielujensa korruptio on alkanut käydä haitaksi heidän terveydelleen."
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
-msgid "Skeleton Rider"
-msgstr "Luurankoratsastaja"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
-"Nämä luisilla ratsuilla ratsastajat olivat kerran tasankojen suuria "
-"sotureita. Ne on nostatettu haudoistaan epäpyhällä taikuudella levittämään "
-"pelkoa ja tuhoa."
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20
@@ -3176,6 +3119,49 @@ msgstr ""
 #| msgid "How can this be? We have lost."
 msgid "How can this be?"
 msgstr "Kuinka tässä nyt näin kävi? Olemme hävinneet."
+
+#~ msgid "Bone Knight"
+#~ msgstr "Luuritari"
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the ground by unholy magic to spread "
+#~ "fear and destruction."
+#~ msgstr ""
+#~ "Nämä luisilla ratsuilla ratsastajat olivat kerran tasankojen suuria "
+#~ "sotureita. Ne on nostatettu maaperästä epäpyhällä taikuudella levittämään "
+#~ "pelkoa ja tuhoa."
+
+#~ msgid "trample"
+#~ msgstr "tallominen"
+
+#~ msgid "Death Squire"
+#~ msgstr "Kuoleman aseenkantaja"
+
+#~ msgid ""
+#~ "Sometimes the mightiest warriors and generals, cursed with hate and "
+#~ "angst, came back to this world as Death Knights. Death Squires serve them "
+#~ "whilst accruing enough unholy power to become Death Knights. In the "
+#~ "process they pick up a good deal of the Knight’s power, including the "
+#~ "ability to command underlings."
+#~ msgstr ""
+#~ "Joskus mahtavimmat vihalla ja tuskalla kirotut soturit ja kenraalit "
+#~ "tulevat takaisin maailmaan kuolonritareina. Kuoleman aseenkantajat "
+#~ "palvelevat heitä samalla kun keräävät tarpeeksi epäpyhää voimaa "
+#~ "tullakseen itse kuolonritareiksi. Siinä sivussa he oppivat käyttämään "
+#~ "osaa ritarin voimista, kuten kykyä komentaa alamaisia."
+
+#~ msgid "Skeleton Rider"
+#~ msgstr "Luurankoratsastaja"
+
+#~ msgid ""
+#~ "Once great warriors thundering across the plains, these mounted riders "
+#~ "atop their skeletal horses were raised from the grave by unholy magic to "
+#~ "spread fear and destruction."
+#~ msgstr ""
+#~ "Nämä luisilla ratsuilla ratsastajat olivat kerran tasankojen suuria "
+#~ "sotureita. Ne on nostatettu haudoistaan epäpyhällä taikuudella "
+#~ "levittämään pelkoa ja tuhoa."
 
 #, fuzzy
 #~| msgid "(Difficult)"

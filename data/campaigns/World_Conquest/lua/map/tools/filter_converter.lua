@@ -195,9 +195,9 @@ function convert_filter()
 				local terrain = change.terrain
 				local f = parse_wml_filter(wml.get_child(change, "filter"))
 				local extras = {}
-				for k, v in pairs(change) do
+				for k, val in pairs(change) do
 					if type(k) == "string" and k ~= "terrain" then
-						extras[k] = v
+						extras[k] = val
 					end
 				end
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,7 @@ public:
 	 */
 	//- \param d the display object
 	//- \param pane the widget where wheel events take place
-	scrollarea(CVideo &video, bool auto_join=true);
+	scrollarea(bool auto_join=true);
 
 	virtual void hide(bool value = true);
 
@@ -40,7 +40,7 @@ protected:
 	virtual void scroll(unsigned int pos) = 0;
 	virtual void set_inner_location(const SDL_Rect& rect) = 0;
 
-	SDL_Rect inner_location() const;
+	rect inner_location() const;
 	unsigned scrollbar_width() const;
 
 	unsigned get_position() const;

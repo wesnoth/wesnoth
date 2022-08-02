@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -58,7 +58,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["level"] = level;
 		const std::string& msg =
 			VGETTEXT("Unknown debug level: '$level'.", symbols);
-		ERR_NG << msg << std::endl;
+		ERR_NG << msg;
 		add_chat_message(std::time(nullptr), _("error"), 0, msg);
 		return;
 	}
@@ -67,7 +67,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["domain"] = domain;
 		const std::string& msg =
 			VGETTEXT("Unknown debug domain: '$domain'.", symbols);
-		ERR_NG << msg << std::endl;
+		ERR_NG << msg;
 		add_chat_message(std::time(nullptr), _("error"), 0, msg);
 		return;
 	}
@@ -77,7 +77,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["domain"] = domain;
 		const std::string& msg =
 			VGETTEXT("Switched domain: '$domain' to level: '$level'.", symbols);
-		LOG_NG << msg << "\n";
+		LOG_NG << msg;
 		add_chat_message(std::time(nullptr), "log", 0, msg);
 	}
 }

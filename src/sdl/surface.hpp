@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -14,13 +14,12 @@
 
 #pragma once
 
+#include "sdl/rect.hpp"
 #include "utils/const_clone.hpp"
 
 #include <SDL2/SDL.h>
 
 #include <ostream>
-
-class CVideo;
 
 class surface
 {
@@ -113,25 +112,6 @@ private:
 bool operator<(const surface& a, const surface& b);
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf);
-
-struct surface_restorer
-{
-	surface_restorer();
-	surface_restorer(class CVideo* target, const SDL_Rect& rect);
-	~surface_restorer();
-
-	void restore() const;
-	void restore(const SDL_Rect& dst) const;
-	void update();
-	void cancel();
-
-	const SDL_Rect& area() const { return rect_; }
-
-private:
-	class CVideo* target_;
-	SDL_Rect rect_;
-	surface surface_;
-};
 
 /**
  * Helper class for pinning SDL surfaces into memory.

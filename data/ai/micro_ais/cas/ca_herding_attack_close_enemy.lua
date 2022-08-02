@@ -45,11 +45,12 @@ function ca_herding_attack_close_enemy:execution(cfg)
     local dogs = get_dogs(cfg)
 
     -- We start with enemies within attack_distance (default: 4) hexes, which will be attacked
-    local radius = cfg.attack_distance or 4
-    local enemies = get_enemies(cfg, radius)
+    local radius1 = cfg.attack_distance or 4
+    local enemies1 = get_enemies(cfg, radius1)
 
-    local max_rating, best_dog, best_enemy, best_hex = - math.huge
-    for _,enemy in ipairs(enemies) do
+    local max_rating1, best_dog1, best_enemy, best_hex1 = - math.huge, nil, nil, nil
+    for _,enemy in ipairs(enemies1) do
+        wesnoth.interface.handle_user_interact()
         for _,dog in ipairs(dogs) do
             local reach_map = AH.get_reachable_unocc(dog)
             reach_map:iter( function(x, y, v)
@@ -63,23 +64,23 @@ function ca_herding_attack_close_enemy:execution(cfg)
                 rating = rating + M.distance_between(enemy.x, enemy.y, dog.x, dog.y) / 100.
                 reach_map:insert(x, y, rating)
 
-                if (rating > max_rating) then
-                    max_rating = rating
-                    best_dog, best_enemy, best_hex = dog, enemy, { x, y }
+                if (rating > max_rating1) then
+                    max_rating1 = rating
+                    best_dog1, best_enemy, best_hex1 = dog, enemy, { x, y }
                 end
             end)
         end
     end
 
     -- If we found a move, we do it, and attack if possible
-    if best_dog then
-        AH.robust_move_and_attack(ai, best_dog, best_hex, best_enemy)
+    if best_dog1 then
+        AH.robust_move_and_attack(ai, best_dog1, best_hex1, best_enemy)
         return
     end
 
     -- If we got here, no enemies to attack where found, so we go on to block other enemies
-    local radius = cfg.attention_distance or 8
-    local enemies = get_enemies(cfg, radius)
+    local radius2 = cfg.attention_distance or 8
+    local enemies2 = get_enemies(cfg, radius2)
 
     -- We also need to remove dogs that have no moves left, since selection was done on attacks_left
     for i=#dogs,1,-1 do
@@ -90,8 +91,8 @@ function ca_herding_attack_close_enemy:execution(cfg)
     if (not dogs[1]) then return end
 
     -- Find closest sheep/enemy pair first
-    local min_dist, closest_sheep, closest_enemy = math.huge
-    for _,enemy in ipairs(enemies) do
+    local min_dist, closest_sheep, closest_enemy = math.huge, nil, nil
+    for _,enemy in ipairs(enemies2) do
         for _,single_sheep in ipairs(sheep) do
             local dist = M.distance_between(enemy.x, enemy.y, single_sheep.x, single_sheep.y)
             if dist < min_dist then
@@ -102,7 +103,7 @@ function ca_herding_attack_close_enemy:execution(cfg)
     end
 
     -- Move dogs in between enemies and sheep
-    local max_rating, best_dog, best_hex = - math.huge
+    local max_rating2, best_dog2, best_hex2 = - math.huge, nil, nil
     for _,dog in ipairs(dogs) do
         local reach_map = AH.get_reachable_unocc(dog)
         reach_map:iter( function(x, y, v)
@@ -118,13 +119,13 @@ function ca_herding_attack_close_enemy:execution(cfg)
             rating = rating + M.distance_between(closest_enemy.x, closest_enemy.y, dog.x, dog.y) / 100.
             reach_map:insert(x, y, rating)
 
-            if (rating > max_rating) then
-                max_rating, best_hex, best_dog = rating, { x, y }, dog
+            if (rating > max_rating2) then
+                max_rating2, best_hex2, best_dog2 = rating, { x, y }, dog
             end
         end)
     end
 
-    AH.movefull_stopunit(ai, best_dog, best_hex)
+    AH.movefull_stopunit(ai, best_dog2, best_hex2)
 end
 
 return ca_herding_attack_close_enemy

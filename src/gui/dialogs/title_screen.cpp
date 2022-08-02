@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,6 +38,7 @@
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "language.hpp"
 #include "log.hpp"
 #include "preferences/game.hpp"
 //#define DEBUG_TOOLTIP
@@ -51,13 +52,14 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/utils.hpp"
 #include "video.hpp"
 
 #include <algorithm>
 #include <functional>
+
+#include <boost/algorithm/string/erase.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -74,8 +76,6 @@ title_screen::title_screen(game_launcher& game)
 	: debug_clock_()
 	, game_(game)
 {
-	set_restore(false);
-
 	// Need to set this in the constructor, pre_show() / post_build() is too late
 	set_allow_plugin_skip(false);
 }
@@ -106,7 +106,7 @@ static void launch_lua_console()
 
 static void make_screenshot()
 {
-	surface screenshot = CVideo::get_singleton().getSurface().clone();
+	surface screenshot = video::read_pixels();
 	if(screenshot) {
 		std::string filename = filesystem::get_screenshot_dir() + "/" + _("Screenshot") + "_";
 		filename = filesystem::get_next_filename(filename, ".jpg");
@@ -175,13 +175,13 @@ void title_screen::pre_show(window& win)
 	// Background and logo images
 	//
 	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined" << std::endl;
+		ERR_CF << "No title image defined";
 	}
 
 	win.get_canvas(0).set_variable("title_image", wfl::variant(game_config::images::game_title));
 
 	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined" << std::endl;
+		ERR_CF << "No title background image defined";
 	}
 
 	win.get_canvas(0).set_variable("background_image", wfl::variant(game_config::images::game_title_background));
@@ -208,11 +208,11 @@ void title_screen::pre_show(window& win)
 	if(tip_pages != nullptr) {
 		std::vector<game_tip> tips = tip_of_the_day::shuffle(settings::tips);
 		if(tips.empty()) {
-			WRN_CF << "There are no tips of day available." << std::endl;
+			WRN_CF << "There are no tips of day available.";
 		}
 		for(const auto& tip : tips)	{
-			string_map widget;
-			std::map<std::string, string_map> page;
+			widget_item widget;
+			widget_data page;
 
 			widget["use_markup"] = "true";
 
@@ -256,6 +256,9 @@ void title_screen::pre_show(window& win)
 	register_button(win, "campaign", hotkey::TITLE_SCREEN__CAMPAIGN, [this, &win]() {
 		try{
 			if(game_.new_campaign()) {
+				// Suspend drawing of the title screen,
+				// so it doesn't flicker in between loading screens.
+				win.set_suspend_drawing(true);
 				win.set_retval(LAUNCH_GAME);
 			}
 		} catch (const config::error& e) {
@@ -274,6 +277,9 @@ void title_screen::pre_show(window& win)
 	//
 	register_button(win, "load", hotkey::HOTKEY_LOAD_GAME, [this, &win]() {
 		if(game_.load_game()) {
+			// Suspend drawing of the title screen,
+			// so it doesn't flicker in between loading screens.
+			win.set_suspend_drawing(true);
 			win.set_retval(LAUNCH_GAME);
 		}
 	});
@@ -310,6 +316,31 @@ void title_screen::pre_show(window& win)
 			gui2::show_error_message(e.what());
 		}
 	});
+
+	if(auto* lang_button = find_widget<button>(&win, "language", false, false); lang_button) {
+		const auto& locale = translation::get_effective_locale_info();
+		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
+		// and strip the charset from the Boost locale identifier.
+		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
+		const auto& langs = get_languages(true);
+
+		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
+			return lang.localename == boost_name;
+		});
+
+		if(lang_def != langs.end()) {
+			lang_button->set_label(lang_def->language.str());
+		} else if(boost_name == "c" || boost_name == "C") {
+			// HACK: sometimes System Default doesn't match anything on the list. If you fork
+			// Wesnoth and change the neutral language to something other than US English, you
+			// want to change this too.
+			lang_button->set_label("English (US)");
+		} else {
+			// If somehow the locale doesn't match a known translation, use the
+			// locale identifier as a last resort
+			lang_button->set_label(boost_name);
+		}
+	}
 
 	//
 	// Preferences
@@ -371,15 +402,6 @@ void title_screen::update_tip(const bool previous)
 	}
 
 	tip_pages->select_page(page);
-
-	/**
-	 * @todo Look for a proper fix.
-	 *
-	 * This dirtying is required to avoid the blurring to be rendered wrong.
-	 * Not entirely sure why, but since we plan to move to SDL2 that change
-	 * will probably fix this issue automatically.
-	 */
-	get_window()->set_is_dirty(true);
 }
 
 void title_screen::show_debug_clock_window()
@@ -407,7 +429,7 @@ void title_screen::hotkey_callback_select_tests()
 
 	std::sort(options.begin(), options.end());
 
-	gui2::dialogs::simple_item_selector dlg(_("Choose Test"), "", options);
+	gui2::dialogs::simple_item_selector dlg(_("Choose Test Scenario"), "", options);
 	dlg.show();
 
 	int choice = dlg.selected_index();

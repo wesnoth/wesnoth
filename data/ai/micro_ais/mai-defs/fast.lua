@@ -1,9 +1,9 @@
 function wesnoth.micro_ais.fast_ai(cfg)
-	local optional_keys = {
-		"attack_hidden_enemies", "[avoid]", "dungeon_mode",
-		"[filter]", "[filter_second]", "include_occupied_attack_hexes",
-		"leader_additional_threat", "leader_attack_max_units", "leader_weight", "move_cost_factor",
-		"weak_units_first", "skip_combat_ca", "skip_move_ca", "threatened_leader_fights"
+	local optional_keys = { attack_hidden_enemies = 'boolean', avoid = 'tag', dungeon_mode = 'boolean',
+		filter = 'tag', filter_second = 'tag', include_occupied_attack_hexes = 'boolean',
+		leader_additional_threat = 'float', leader_attack_max_units = 'integer', leader_weight = 'float',
+		move_cost_factor = 'float', weak_units_first = 'boolean', skip_combat_ca = 'boolean',
+		skip_move_ca = 'boolean', threatened_leader_fights = 'boolean'
 	}
 	local CA_parms = {
 		ai_id = 'mai_fast',

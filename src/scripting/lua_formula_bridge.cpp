@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,6 @@
 #include "scripting/lua_unit.hpp"
 #include "scripting/lua_common.hpp"
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "variable.hpp"
@@ -160,7 +159,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 			obj->get_inputs(inputs);
 			lua_newtable(L);
 			for(const formula_input& attr : inputs) {
-				if(attr.access == FORMULA_WRITE_ONLY) {
+				if(attr.access == formula_access::write_only) {
 					continue;
 				}
 				lua_pushstring(L, attr.name.c_str());

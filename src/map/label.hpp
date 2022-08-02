@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -208,7 +208,6 @@ public:
 
 private:
 	void clear();
-	void draw();
 	bool hidden() const;
 	bool viewable(const display& disp) const;
 

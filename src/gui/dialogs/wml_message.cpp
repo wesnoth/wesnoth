@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -58,8 +58,6 @@ void wml_message_base::set_option_list(const std::vector<wml_message_option>& op
  */
 void wml_message_base::pre_show(window& window)
 {
-	set_restore(true);
-
 	window.get_canvas(1).set_variable("portrait_image", wfl::variant(portrait_));
 	window.get_canvas(1).set_variable("portrait_mirror", wfl::variant(mirror_));
 
@@ -97,7 +95,7 @@ void wml_message_base::pre_show(window& window)
 	listbox& options = find_widget<listbox>(&window, "input_list", true);
 
 	if(!option_list_.empty()) {
-		std::map<std::string, string_map> data;
+		widget_data data;
 		for(const wml_message_option& item : option_list_) {
 			// Add the data.
 			data["icon"]["label"] = item.image();

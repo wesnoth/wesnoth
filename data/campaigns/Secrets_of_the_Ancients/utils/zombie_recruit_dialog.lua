@@ -34,7 +34,7 @@ local function preshow(dialog)
     function dialog.unit_help_button.on_button_click()
         W.open_help { topic="unit_" .. listedZombies[dialog.unit_list.selected_index] }
     end
-    
+
     for i,z in ipairs(zombies) do
         if z.allow_recruit then
             local unit_type = wesnoth.unit_types[z.type]

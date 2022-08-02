@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,6 +41,7 @@
 #include "tstring.hpp"
 #include "game_data.hpp"
 #include "game_state.hpp"
+#include "sdl/input.hpp" // get_mouse_state
 
 #include <functional>
 #include <optional>
@@ -49,8 +50,7 @@
 #include <utility>
 #include <vector>
 
-#include "lua/lauxlib.h"                // for luaL_checkinteger, etc
-#include "lua/lua.h"                    // for lua_setfield, etc
+#include "lua/lauxlib.h"                // for luaL_checkinteger, lua_setfield, etc
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
@@ -77,7 +77,7 @@ int show_message_dialog(lua_State* L)
 	input.maximum_length = txt_cfg["max_length"].to_int(256);
 	input.text_input_was_specified = has_input;
 
-	gui2::dialogs::wml_message_options options;
+	gui2::dialogs::wml_message_options options{};
 	if(!lua_isnoneornil(L, 2)) {
 		luaL_checktype(L, 2, LUA_TTABLE);
 		std::size_t n = lua_rawlen(L, 2);
@@ -185,7 +185,7 @@ int show_story(lua_State* L) {
 int show_menu(lua_State* L) {
 	std::vector<config> items = lua_check<std::vector<config>>(L, 1);
 	SDL_Rect pos {1,1,1,1};
-	SDL_GetMouseState(&pos.x, &pos.y);
+	sdl::get_mouse_state(&pos.x, &pos.y);
 
 	int initial = -1;
 	bool markup = false;

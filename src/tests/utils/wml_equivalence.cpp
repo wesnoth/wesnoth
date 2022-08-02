@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2020 - 2022
 	by CrawlCycle <73139676+CrawlCycle@users.noreply.github.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #include "wml_equivalence.hpp"
 #include "serialization/parser.hpp"
 #include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
 #include <boost/test/unit_test.hpp>
 
 namespace bfs = boost::filesystem;

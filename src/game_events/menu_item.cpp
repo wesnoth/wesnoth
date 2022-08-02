@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -70,6 +70,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	: item_id_(id)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
+	, hotkey_record_()
 	, image_(cfg["image"].str())
 	, description_(cfg["description"].t_str())
 	, needs_select_(cfg["needs_select"].to_bool(false))
@@ -92,6 +93,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	: item_id_(id)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
+	, hotkey_record_()
 	, image_()
 	, description_()
 	, needs_select_(false)
@@ -106,7 +108,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 {
 	// On the off-chance that update() doesn't do it, add the hotkey here.
 	// (Update can always modify it.)
-	hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+	hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
 	// Apply WML.
 	update(definition);
@@ -189,7 +191,7 @@ void wml_menu_item::fire_event(const map_location& event_hex, const game_data& d
 	}
 }
 
-void wml_menu_item::finish_handler() const
+void wml_menu_item::finish_handler()
 {
 	if(!command_.empty()) {
 		assert(resources::game_events);
@@ -198,21 +200,21 @@ void wml_menu_item::finish_handler() const
 
 	// Hotkey support
 	if(use_hotkey_) {
-		hotkey::remove_wml_hotkey(hotkey_id_);
+		hotkey_record_.reset();
 	}
 }
 
-void wml_menu_item::init_handler() const
+void wml_menu_item::init_handler(game_lua_kernel& lk)
 {
 	// If this menu item has a [command], add a handler for it.
 	if(!command_.empty()) {
 		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, true);
+		resources::game_events->add_event_handler_from_wml(command_, lk, true);
 	}
 
 	// Hotkey support
 	if(use_hotkey_) {
-		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 	}
 }
 
@@ -240,8 +242,8 @@ void wml_menu_item::to_config(config& cfg) const
 	}
 
 	if(!use_hotkey_ && !use_wml_menu_) {
-		ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and use_hotkey set to false is not supposed to be "
-				  "possible.";
+		ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and "
+		          "use_hotkey set to false is not supposed to be possible.";
 		cfg["use_hotkey"] = false;
 	}
 
@@ -321,31 +323,29 @@ void wml_menu_item::update(const vconfig& vcfg)
 
 	if(use_hotkey_ && !old_use_hotkey) {
 		// The hotkey needs to be enabled.
-		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
 	} else if(use_hotkey_ && hotkey_updated) {
 		// The hotkey needs to be updated.
-		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+		hotkey_record_.emplace(hotkey_id_, description_, default_hotkey_);
 
 	} else if(!use_hotkey_ && old_use_hotkey) {
 		// The hotkey needs to be disabled.
-		hotkey::remove_wml_hotkey(hotkey_id_);
+		hotkey_record_.reset();
 	}
 }
 
 void wml_menu_item::update_command(const config& new_command)
 {
 	// If there is an old command, remove it from the event handlers.
-	if(!command_.empty()) {
-		assert(resources::game_events);
+	assert(resources::game_events);
 
-		resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr) {
-			if(ptr->is_menu_item()) {
-				LOG_NG << "Removing command for " << event_name_ << ".\n";
-				man.remove_event_handler(command_["id"].str());
-			}
-		});
-	}
+	resources::game_events->execute_on_events(event_name_, [&](game_events::manager& man, handler_ptr& ptr) {
+		if(ptr->is_menu_item()) {
+			LOG_NG << "Removing command for " << event_name_ << ".";
+			man.remove_event_handler(command_["id"].str());
+		}
+	});
 
 	// Update our stored command.
 	if(new_command.empty()) {
@@ -365,7 +365,8 @@ void wml_menu_item::update_command(const config& new_command)
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
 		assert(resources::game_events);
-		resources::game_events->add_event_handler(command_, true);
+		assert(resources::lua_kernel);
+		resources::game_events->add_event_handler_from_wml(command_, *resources::lua_kernel, true);
 	}
 }
 

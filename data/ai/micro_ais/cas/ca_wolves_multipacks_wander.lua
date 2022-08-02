@@ -43,8 +43,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
         end
 
         -- Pack gets a new goal if none exist or on any move with 10% random chance
-        local rand = math.random(10)
-        if (not goal[1]) or (rand == 1) then
+        if (not goal[1]) or (math.random(10) == 1) then
             local all_locs = AH.get_locations_no_borders {}
             local locs = {}
             for _,loc in ipairs(all_locs) do
@@ -99,7 +98,7 @@ function ca_wolves_multipacks_wander:execution(cfg)
 
         -- Keep only those hexes that can be reached by all wolves in the pack
         -- and add distance from goal for those
-        local max_rating, goto_hex = - math.huge
+        local max_rating, goto_hex = - math.huge, nil
         reach_map:iter( function(x, y, v)
             local rating = reach_map:get(x, y)
             if (rating == #pack * 100) then

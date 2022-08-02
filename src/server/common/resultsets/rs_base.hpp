@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2020 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,8 @@
 
 class rs_base
 {
-    public:
-        rs_base(){}
-		virtual ~rs_base(){}
-        virtual void read(mariadb::result_set_ref rslt) =0;
+public:
+	rs_base() {}
+	virtual ~rs_base() {}
+	virtual void read(mariadb::result_set_ref rslt) = 0;
 };

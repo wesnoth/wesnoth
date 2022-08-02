@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -143,8 +143,6 @@ wml_error::wml_error(const std::string& summary,
 	, have_post_summary_(!post_summary.empty())
 	, report_()
 {
-	set_restore(true);
-
 	const std::string& file_list_text = format_file_list(files);
 
 	report_ = summary;

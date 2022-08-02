@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,67 +37,15 @@
 #include "log.hpp"
 #include "play_controller.hpp"
 #include "game_data.hpp"
-#include "game_config_manager.hpp"
 #include "resources.hpp"
 
 namespace preferences {
-
-void set_preference_display_settings()
-{
-	set_grid(grid());
-	set_turbo(turbo());
-	set_turbo_speed(turbo_speed());
-	set_color_cursors(preferences::get("color_cursors", true));
-}
-
-void set_turbo(bool ison)
-{
-	_set_turbo(ison);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_turbo(ison);
-	}
-}
-
-void set_turbo_speed(double speed)
-{
-	save_turbo_speed(speed);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_turbo_speed(speed);
-	}
-}
-
-void set_grid(bool ison)
-{
-	_set_grid(ison);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_grid(ison);
-	}
-}
 
 void set_color_cursors(bool value)
 {
 	_set_color_cursors(value);
 
 	cursor::set();
-}
-
-void set_idle_anim(bool ison) {
-	_set_idle_anim(ison);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_idle_anim(ison);
-	}
-}
-
-void set_idle_anim_rate(int rate) {
-	_set_idle_anim_rate(rate);
-
-	if(display::get_singleton()) {
-		display::get_singleton()->set_idle_anim_rate(rate);
-	}
 }
 
 bool show_standing_animations()
@@ -116,7 +64,7 @@ void set_show_standing_animations(bool value)
 
 bool show_theme_dialog()
 {
-	std::vector<theme_info> themes = theme::get_known_themes();
+	std::vector<theme_info> themes = theme::get_basic_theme_info();
 
 	if (themes.empty()) {
 		gui2::show_transient_message("",
@@ -138,8 +86,8 @@ bool show_theme_dialog()
 
 	if (action >= 0) {
 		preferences::set_theme(themes[action].id);
-		if(display::get_singleton() && resources::controller && resources::gamedata && resources::gamedata->get_theme().empty()) {
-			display::get_singleton()->set_theme(resources::controller->get_theme(game_config_manager::get()->game_config(), themes[action].id));
+		if(display::get_singleton() && resources::gamedata && resources::gamedata->get_theme().empty()) {
+			display::get_singleton()->set_theme(themes[action].id);
 		}
 
 		return true;

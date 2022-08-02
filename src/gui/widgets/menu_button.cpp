@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -93,13 +93,13 @@ void menu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
 void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -107,7 +107,7 @@ void menu_button::signal_handler_mouse_enter(const event::ui_event event, bool& 
 
 void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
@@ -115,7 +115,7 @@ void menu_button::signal_handler_mouse_leave(const event::ui_event event, bool& 
 
 void menu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
 	if(window) {
@@ -128,7 +128,7 @@ void menu_button::signal_handler_left_button_down(const event::ui_event event, b
 
 void menu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -137,7 +137,7 @@ void menu_button::signal_handler_left_button_up(const event::ui_event event, boo
 void menu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	sound::play_UI_sound(settings::sound_button_click);
 
@@ -161,7 +161,7 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 
 void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// TODO: should values wrap?
 	if(selected_ > 0) {
@@ -173,7 +173,7 @@ void menu_button::signal_handler_sdl_wheel_up(const event::ui_event event, bool&
 
 void menu_button::signal_handler_sdl_wheel_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// TODO: should values wrap?
 	if(selected_ < values_.size() - 1) {
@@ -189,7 +189,7 @@ void menu_button::set_values(const std::vector<::config>& values, unsigned selec
 	assert(selected_ < values_.size());
 
 	if(values[selected]["label"] != values_[selected_]["label"]) {
-		set_is_dirty(true);
+		queue_redraw();
 	}
 
 	values_ = values;
@@ -204,7 +204,7 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 	assert(selected_ < values_.size());
 
 	if(selected != selected_) {
-		set_is_dirty(true);
+		queue_redraw();
 	}
 
 	selected_ = selected;
@@ -220,7 +220,7 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 menu_button_definition::menu_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing menu_button " << id << '\n';
+	DBG_GUI_P << "Parsing menu_button " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -249,16 +249,16 @@ builder_menu_button::builder_menu_button(const config& cfg)
 	}
 }
 
-widget* builder_menu_button::build() const
+std::unique_ptr<widget> builder_menu_button::build() const
 {
-	menu_button* widget = new menu_button(*this);
+	auto widget = std::make_unique<menu_button>(*this);
 
 	if(!options_.empty()) {
 		widget->set_values(options_);
 	}
 
 	DBG_GUI_G << "Window builder: placed menu_button '" << id
-	          << "' with definition '" << definition << "'.\n";
+	          << "' with definition '" << definition << "'.";
 
 	return widget;
 }

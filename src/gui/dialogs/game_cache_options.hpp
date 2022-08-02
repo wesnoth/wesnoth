@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -45,10 +45,10 @@ public:
 	game_cache_options();
 
 	/**
-     * The display function.
+	 * The display function.
 	 *
 	 * See @ref modal_dialog for more information.
-     */
+	 */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(game_cache_options)
 
 private:

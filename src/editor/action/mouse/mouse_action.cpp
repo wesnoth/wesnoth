@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,10 +32,12 @@ bool mouse_action::has_context_menu() const
 
 void mouse_action::move(editor_display& disp, const map_location& hex)
 {
-	if (hex != previous_move_hex_) {
-		update_brush_highlights(disp, hex);
-		previous_move_hex_ = hex;
+	if (hex == previous_move_hex_) {
+		return;
 	}
+
+	update_brush_highlights(disp, hex);
+	previous_move_hex_ = hex;
 }
 
 void mouse_action::update_brush_highlights(editor_display& disp, const map_location& hex)
@@ -120,7 +122,7 @@ std::unique_ptr<editor_action> mouse_action::key_event(
 
 void mouse_action::set_mouse_overlay(editor_display& disp)
 {
-	disp.set_mouseover_hex_overlay(nullptr);
+	disp.clear_mouseover_hex_overlay();
 }
 
 bool mouse_action::has_alt_modifier() const
@@ -142,20 +144,20 @@ bool mouse_action::has_ctrl_modifier() const
 #endif
 }
 
-void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_translation::terrain_code & fg,
-		const t_translation::terrain_code & bg)
+void mouse_action::set_terrain_mouse_overlay(
+	editor_display& disp,
+	const t_translation::terrain_code & fg,
+	const t_translation::terrain_code & bg)
 {
-	surface image_fg(image::get_image(disp.get_map().get_terrain_info(fg).editor_image()));
-	surface image_bg(image::get_image(disp.get_map().get_terrain_info(bg).editor_image()));
+	const std::string fg_path = disp.get_map().get_terrain_info(fg).editor_image();
+	const std::string bg_path = disp.get_map().get_terrain_info(bg).editor_image();
+	const std::string blank_hex = "misc/blank-hex.png";
 
-	if (image_fg == nullptr || image_bg == nullptr) {
-		ERR_ED << "Missing terrain icon" << std::endl;
-		disp.set_mouseover_hex_overlay(nullptr);
+	if (!image::exists(fg_path) || !image::exists(bg_path)) {
+		ERR_ED << "Missing terrain icon";
+		disp.clear_mouseover_hex_overlay();
 		return;
 	}
-
-	// Create a transparent surface of the right size.
-	surface image(image_fg->w, image_fg->h);
 
 	// For efficiency the size of the tile is cached.
 	// We assume all tiles are of the same size.
@@ -163,37 +165,23 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	// NOTE: when zooming and not moving the mouse, there are glitches.
 	// Since the optimal alpha factor is unknown, it has to be calculated
 	// on the fly, and caching the surfaces makes no sense yet.
-	static const fixed_t alpha = 196;
-	static const int size = image_fg->w;
+	static const int size = image::get_size(blank_hex).x;
 	static const int half_size = size / 2;
 	static const int quarter_size = size / 4;
 	static const int offset = 2;
 	static const int new_size = half_size - 2;
 
-	// Blit left side
-	image_fg = scale_surface(image_fg, new_size, new_size);
-	SDL_Rect rcDestLeft {offset, quarter_size, 0, 0};
-	sdl_blit( image_fg, nullptr, image, &rcDestLeft );
+	// Inserting scaled FG and BG hexes via IPF.
+	std::stringstream path;
+	// "hex~BLIT(fg~SCALE(ns,ns),2,qs)~BLIT(bg~SCALE(ns,ns),hs,qs)"
+	path << blank_hex
+		<< "~BLIT(" << fg_path << "~SCALE(" << new_size << "," << new_size
+		<< ")," << offset << "," << quarter_size << ")"
+		<< "~BLIT(" << bg_path << "~SCALE(" << new_size << "," << new_size
+		<< ")," << half_size << "," << quarter_size << ")";
 
-	// Blit right side
-	image_bg = scale_surface(image_bg, new_size, new_size);
-	SDL_Rect rcDestRight {half_size, quarter_size, 0, 0};
-	sdl_blit( image_bg, nullptr, image, &rcDestRight );
-
-	//apply mask so the overlay is contained within the mouseover hex
-	image = mask_surface(image, image::get_hexmask());
-
-	// Add the alpha factor
-	adjust_surface_alpha(image, alpha);
-
-	// scale the image
-	const unsigned int zoom = disp.hex_size();
-	if (zoom != game_config::tile_size) {
-		image = scale_surface(image, zoom, zoom);
-	}
-
-	// Set as mouseover
-	disp.set_mouseover_hex_overlay(image);
+	// Set as mouseover overlay.
+	disp.set_mouseover_hex_overlay(image::get_texture(path.str()));
 }
 
 std::set<map_location> brush_drag_mouse_action::affected_hexes(
@@ -241,7 +229,7 @@ std::unique_ptr<editor_action> brush_drag_mouse_action::drag_generic(editor_disp
 	move(disp, hex);
 	if (hex != previous_drag_hex_) {
 		editor_action_extendable* last_undo_x = dynamic_cast<editor_action_extendable*>(last_undo);
-		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x << "\n";
+		LOG_ED << "Last undo is " << last_undo << " and as x " << last_undo_x;
 		partial = true;
 		auto a = (this->*perform_func)(disp, affected_hexes(disp, hex));
 		previous_drag_hex_ = hex;
@@ -338,22 +326,15 @@ std::unique_ptr<editor_action> mouse_action_paste::click_right(editor_display& /
 
 void mouse_action_paste::set_mouse_overlay(editor_display& disp)
 {
-	surface image60 = image::get_image("icons/action/editor-paste_60.png");
-
-	//TODO avoid hardcoded hex field size
-	surface image(72,72);
-
-	SDL_Rect r {6, 6, 0, 0};
-	sdl_blit(image60, nullptr, image, &r);
-
-	uint8_t alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(
+		image::get_texture(
+			// center 60px icon on blank hex template
+			image::locator(
+				"misc/blank-hex.png",
+				"~BLIT(icons/action/editor-paste_60.png,6,6)"
+			)
+		)
+	);
 }
 
 std::set<map_location> mouse_action_fill::affected_hexes(
@@ -454,22 +435,15 @@ std::unique_ptr<editor_action> mouse_action_starting_position::click_right(edito
 
 void mouse_action_starting_position::set_mouse_overlay(editor_display& disp)
 {
-	surface image60 = image::get_image("icons/action/editor-tool-starting-position_60.png");
-
-	//TODO avoid hardcoded hex field size
-	surface image(72,72);
-
-	SDL_Rect r {6, 6, 0, 0};
-	sdl_blit(image60, nullptr, image, &r);
-
-	uint8_t alpha = 196;
-	int size = image->w;
-	int zoom = static_cast<int>(size * disp.get_zoom_factor());
-
-	// Add the alpha factor and scale the image
-	adjust_surface_alpha(image, alpha);
-	image = scale_surface(image, zoom, zoom);
-	disp.set_mouseover_hex_overlay(image);
+	disp.set_mouseover_hex_overlay(
+		image::get_texture(
+			// center 60px icon on blank hex template
+			image::locator(
+				"misc/blank-hex.png",
+				"~BLIT(icons/action/editor-tool-starting-position_60.png,6,6)"
+			)
+		)
+	);
 }
 
 

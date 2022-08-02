@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,7 +52,7 @@ goal::goal(readonly_context &context, const config &cfg)
 
 void goal::on_create()
 {
-	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]" << std::endl;
+	LOG_AI_GOAL << "side " << get_side() << " : " << " created goal with name=[" << cfg_["name"] << "]";
 }
 
 void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
@@ -62,7 +62,7 @@ void goal::on_create(std::shared_ptr<ai::lua_ai_context>)
 
 void goal::unrecognized()
 {
-	ERR_AI_GOAL << "side " << get_side() << " : " << " tried to create goal with name=[" << cfg_["name"] << "], but the [" << cfg_["engine"] << "] engine did not recognize that type of goal. " << std::endl;
+	ERR_AI_GOAL << "side " << get_side() << " : " << " tried to create goal with name=[" << cfg_["name"] << "], but the [" << cfg_["engine"] << "] engine did not recognize that type of goal. ";
 	ok_ = false;
 }
 
@@ -137,8 +137,8 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	const unit_filter ufilt{ vconfig(criteria) };
 	for (const unit &u : resources::gameboard->units()) {
 		if (ufilt( u )) {
-			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
-			*target_list = target(u.get_location(), value(), target::TYPE::EXPLICIT);
+			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value();
+			*target_list = target(u.get_location(), value(), ai_target::type::xplicit);
 		}
 	}
 
@@ -179,8 +179,8 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 	filter_ptr_->get_locations(items);
 	for (const map_location &loc : items)
 	{
-		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
-		*target_list = target(loc, value(), target::TYPE::EXPLICIT);
+		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value();
+		*target_list = target(loc, value(), ai_target::type::xplicit);
 	}
 
 }
@@ -227,16 +227,16 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	}
 
 	if (!(this)->active()) {
-		LOG_AI_GOAL << "skipping " << goal_type << " goal - not active" << std::endl;
+		LOG_AI_GOAL << "skipping " << goal_type << " goal - not active";
 		return;
 	}
 
 	const config &criteria = cfg_.child("criteria");
 	if (!criteria) {
-		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given" << std::endl;
+		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given";
 		return;
 	} else {
-		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
+		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria");
 	}
 
 	unit_map &units = resources::gameboard->units();
@@ -252,14 +252,14 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 			if (ufilt(u)
 				&& (!u.invisible(u.get_location()) || u.is_visible_to_team(current_team(), false)))
 			{
-				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
+				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected";
 				items.insert(u.get_location());
 			}
 		}
 	} else {
 		filter_ptr_->get_locations(items);
 	}
-	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal" << std::endl;
+	DBG_AI_GOAL << "side " << get_side() << ": searching for threats in "+goal_type+" goal";
 	// Look for directions to protect a specific location or specific unit.
 	for (const map_location &loc : items)
 	{
@@ -269,10 +269,10 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
 			    !u.invisible(u.get_location()))
 			{
-				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
+				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc;
 				*target_list = target(u.get_location(),
 					value_ * static_cast<double>(radius_ - distance) /
-					radius_, target::TYPE::THREAT);
+					radius_, ai_target::type::threat);
 			}
 		}
 	}
@@ -298,7 +298,7 @@ lua_goal::lua_goal(readonly_context &context, const config &cfg)
 	}
 	else
 	{
-		ERR_AI_GOAL << "side " << get_side() << " : Error creating Lua goal (missing code= key)" << std::endl;
+		ERR_AI_GOAL << "side " << get_side() << " : Error creating Lua goal (missing code= key)";
 	}
 }
 
@@ -313,24 +313,20 @@ void lua_goal::add_targets(std::back_insert_iterator< std::vector< target >> tar
 	config c(cfg_.child_or_empty("args"));
 	const config empty_cfg;
 	handler_->handle(c, empty_cfg, true, l_obj);
-	try {
-		std::vector < target > targets = *(l_obj->get());
 
-		for (target tg : targets)
-		{
-			*target_list = tg;
-		}
-	} catch(const bad_enum_cast& e) {
-		ERR_AI_GOAL << "A Lua goal returned a target of an unknown type (\"" << e.value() << "\"; unfortunately, the engine cannot recover from this error. As a result, all targets returned by the goal have been lost.\n";
+	std::vector < target > targets = *(l_obj->get());
+
+	for (target tg : targets)
+	{
+		*target_list = tg;
 	}
-
 }
 
 // This is defined in the source file so that it can easily access the logger
 bool goal_factory::is_duplicate(const std::string& name)
 {
 	if (get_list().find(name) != get_list().end()) {
-		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name << std::endl;
+		ERR_AI_GOAL << "Error: Attempt to double-register goal " << name;
 		return true;
 	}
 	return false;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,15 +21,20 @@
 
 #include "animated.hpp"
 #include "display.hpp"
+#include "draw.hpp"
+#include "draw_manager.hpp"
 #include "preferences/game.hpp"
 #include "halo.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 
-#include <iostream>
-
-static lg::log_domain log_display("display");
-#define ERR_DP LOG_STREAM(err, log_display)
+static lg::log_domain log_halo("halo");
+#define ERR_HL LOG_STREAM(err, log_halo)
+#define WRN_HL LOG_STREAM(warn, log_halo)
+#define LOG_HL LOG_STREAM(info, log_halo)
+#define DBG_HL LOG_STREAM(debug, log_halo)
 
 namespace halo
 {
@@ -37,276 +42,276 @@ namespace halo
 class halo_impl
 {
 
-class effect
-{
-public:
-	effect(display * screen, int xpos, int ypos, const animated<image::locator>::anim_description& img,
-			const map_location& loc, ORIENTATION, bool infinite);
+	class effect
+	{
+	public:
+		effect(
+			int xpos, int ypos,
+			const animated<image::locator>::anim_description& img,
+			const map_location& loc, ORIENTATION, bool infinite
+		);
 
-	void set_location(int x, int y);
+		void set_location(int x, int y);
+		rect get_draw_location();
 
-	bool render();
-	void unrender();
+		/** Whether the halo is currently visible */
+		bool visible();
 
-	bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
-	bool need_update() const { return images_.need_update(); }
-	bool does_change() const { return !images_.does_not_change(); }
-	bool on_location(const std::set<map_location>& locations) const;
-	bool location_not_known() const;
+		void queue_undraw();
+		void queue_redraw();
+		void update();
+		bool render();
 
-	void add_overlay_location(std::set<map_location>& locations);
-private:
+		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
+		bool need_update() const { return images_.need_update(); }
+		bool does_change() const { return !images_.does_not_change(); }
+		bool on_location(const std::set<map_location>& locations) const;
+		bool location_not_known() const;
 
-	const image::locator& current_image() const { return images_.get_current_frame(); }
+	private:
 
-	animated<image::locator> images_;
+		const image::locator& current_image() const { return images_.get_current_frame(); }
 
-	ORIENTATION orientation_;
+		animated<image::locator> images_;
 
-	int x_, y_;
-	surface surf_, buffer_;
-	SDL_Rect rect_;
+		ORIENTATION orientation_;
 
-	/** The location of the center of the halo. */
-	map_location loc_;
+		// The mid-point of the halo in pixels relative to the absolute top-left of the map, in screen coordinates.
+		// Yes it's just as ridiculous as it sounds...
+		// TODO: make this something sane. Like a floating-point map location.
+		point abs_mid_ = {0, 0};
 
-	/** All locations over which the halo lies. */
-	std::vector<map_location> overlayed_hexes_;
+		// The current halo image frame
+		texture tex_ = {};
+		// The current location where the halo will be drawn on the screen
+		rect screen_loc_ = {};
+		// The last drawn location
+		rect last_draw_loc_ = {};
+		// The display zoom level, cached so we can compensate when it changes.
+		double cached_zoom_ = 1.0;
 
-	display * disp;
-};
+		// The map location the halo is attached to, if any
+		map_location map_loc_ = {-1, -1};
 
-display* disp;
+		display* disp = nullptr;
+	};
 
-std::map<int, effect> haloes;
-int halo_id;
+	std::map<int, effect> haloes;
+	int halo_id;
 
-/**
- * Upon unrendering, an invalidation list is send. All haloes in that area and
- * the other invalidated haloes are stored in this set. Then there'll be
- * tested which haloes overlap and they're also stored in this set.
- */
-std::set<int> invalidated_haloes;
+	/**
+	 * Upon unrendering, an invalidation list is send. All haloes in that area and
+	 * the other invalidated haloes are stored in this set. Then there'll be
+	 * tested which haloes overlap and they're also stored in this set.
+	 */
+	std::set<int> invalidated_haloes;
 
-/**
- * Upon deleting, a halo isn't deleted but added to this set, upon unrendering
- * the image is unrendered and deleted.
- */
-std::set<int> deleted_haloes;
+	/**
+	 * Upon deleting, a halo isn't deleted but added to this set, upon unrendering
+	 * the image is unrendered and deleted.
+	 */
+	std::set<int> deleted_haloes;
 
-/**
- * Haloes that have an animation or expiration time need to be checked every
- * frame and are stored in this set.
- */
-std::set<int> changing_haloes;
+	/**
+	 * Haloes that have an animation or expiration time need to be checked every
+	 * frame and are stored in this set.
+	 */
+	std::set<int> changing_haloes;
 
-public:
-/**
- * impl's of exposed functions
- */
+	public:
+	/**
+	 * impl's of exposed functions
+	 */
 
-explicit halo_impl(display & screen) :
-	disp(&screen),
-	haloes(),
-	halo_id(1),
-	invalidated_haloes(),
-	deleted_haloes(),
-	changing_haloes()
-{}
+	explicit halo_impl() :
+		haloes(),
+		halo_id(1),
+		invalidated_haloes(),
+		deleted_haloes(),
+		changing_haloes()
+	{}
 
 
-int add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation=NORMAL, bool infinite=true);
+	int add(int x, int y, const std::string& image, const map_location& loc,
+			ORIENTATION orientation=NORMAL, bool infinite=true);
 
-/** Set the position of an existing haloing effect, according to its handle. */
-void set_location(int handle, int x, int y);
+	/** Set the position of an existing haloing effect, according to its handle. */
+	void set_location(int handle, int x, int y);
 
-/** Remove the halo with the given handle. */
-void remove(int handle);
+	/** Remove the halo with the given handle. */
+	void remove(int handle);
 
-/**
- * Render and unrender haloes.
- *
- * Which haloes are rendered is determined by invalidated_locations and the
- * internal state in the control sets (in halo.cpp).
- */
-void unrender(std::set<map_location> invalidated_locations);
-void render();
+	void update();
+
+	/** Render all halos overlapping the given region */
+	void render(const rect&);
 
 }; //end halo_impl
 
-halo_impl::effect::effect(display * screen, int xpos, int ypos, const animated<image::locator>::anim_description& img,
+halo_impl::effect::effect(int xpos, int ypos,
+		const animated<image::locator>::anim_description& img,
 		const map_location& loc, ORIENTATION orientation, bool infinite) :
 	images_(img),
 	orientation_(orientation),
-	x_(0),
-	y_(0),
-	surf_(nullptr),
-	buffer_(nullptr),
-	rect_(sdl::empty_rect),
-	loc_(loc),
-	overlayed_hexes_(),
-	disp(screen)
+	map_loc_(loc),
+	disp(display::get_singleton())
 {
 	assert(disp != nullptr);
 
-	set_location(xpos,ypos);
+	cached_zoom_ = disp->get_zoom_factor();
 
-	images_.start_animation(0,infinite);
+	set_location(xpos, ypos);
 
+	images_.start_animation(0, infinite);
+
+	update();
 }
 
 void halo_impl::effect::set_location(int x, int y)
 {
 	int new_x = x - disp->get_location_x(map_location::ZERO());
 	int new_y = y - disp->get_location_y(map_location::ZERO());
-	if (new_x != x_ || new_y != y_) {
-		x_ = new_x;
-		y_ = new_y;
-		buffer_ = nullptr;
-		overlayed_hexes_.clear();
+	if (new_x != abs_mid_.x || new_y != abs_mid_.y) {
+		DBG_HL << "setting halo location " << point{new_x,new_y};
+		abs_mid_.x = new_x;
+		abs_mid_.y = new_y;
 	}
 }
 
-bool halo_impl::effect::render()
+rect halo_impl::effect::get_draw_location()
 {
-	if(disp == nullptr) {
-		return false;
-	}
+	return screen_loc_;
+}
 
-	if(loc_.x != -1 && loc_.y != -1) {
-		if(disp->shrouded(loc_)) {
-			return false;
-		} else {
-			// The location of a halo is an x,y value and not a map location.
-			// This means when a map is zoomed, the halo's won't move,
-			// This glitch is most visible on [item] haloes.
-			// This workaround always recalculates the location of the halo
-			// (item haloes have a location parameter to hide them under the shroud)
-			// and reapplies that location.
-			// It might be optimized by storing and comparing the zoom value.
-			set_location(
-				disp->get_location_x(loc_) + disp->hex_size() / 2,
-				disp->get_location_y(loc_) + disp->hex_size() / 2);
-		}
-	}
 
-	images_.update_last_draw_time();
-	surf_ = image::get_image(current_image(),image::SCALED_TO_ZOOM);
-	if(surf_ == nullptr) {
-		return false;
-	}
-	if(orientation_ == HREVERSE || orientation_ == HVREVERSE) {
-		surf_ = image::reverse_image(surf_);
-	}
-	if(orientation_ == VREVERSE || orientation_ == HVREVERSE) {
-		surf_ = flop_surface(surf_);
-	}
+/** Update the current location, animation frame, etc. */
+void halo_impl::effect::update()
+{
+	double zf = disp->get_zoom_factor();
 
-	const int screenx = disp->get_location_x(map_location::ZERO());
-	const int screeny = disp->get_location_y(map_location::ZERO());
-
-	const int xpos = x_ + screenx - surf_->w/2;
-	const int ypos = y_ + screeny - surf_->h/2;
-
-	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
-	rect_ = rect;
-	SDL_Rect clip_rect = disp->map_outside_area();
-
-	// If rendered the first time, need to determine the area affected.
-	// If a halo changes size, it is not updated.
-	if(location_not_known()) {
-		display::rect_of_hexes hexes = disp->hexes_under_rect(rect);
-		display::rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-		for (;i != end; ++i) {
-			overlayed_hexes_.push_back(*i);
-		}
-	}
-
-	if(sdl::rects_overlap(rect,clip_rect) == false) {
-		buffer_ = nullptr;
-		return false;
-	}
-
-	surface& screen = disp->get_screen_surface();
-
-	const clip_rect_setter clip_setter(screen, &clip_rect);
-	if(buffer_ == nullptr || buffer_->w != rect.w || buffer_->h != rect.h) {
-		SDL_Rect rect2 = rect_;
-		buffer_ = get_surface_portion(screen,rect2);
+	if(map_loc_.x != -1 && map_loc_.y != -1) {
+		// If the halo is attached to a particular map location,
+		// make sure it stays attached.
+		set_location(
+			disp->get_location_x(map_loc_) + disp->hex_size() / 2,
+			disp->get_location_y(map_loc_) + disp->hex_size() / 2
+		);
 	} else {
-		SDL_Rect rect2 = rect_;
-		sdl_copy_portion(screen,&rect2,buffer_,nullptr);
+		// It would be good to attach to a position within a hex,
+		// or persistently to an item or unit. That's not the case,
+		// so we use some horrible hacks to compensate for zoom changes.
+		if(cached_zoom_ != zf) {
+			abs_mid_.x *= zf / cached_zoom_;
+			abs_mid_.y *= zf / cached_zoom_;
+			cached_zoom_ = zf;
+		}
 	}
 
-	sdl_blit(surf_,nullptr,screen,&rect);
+	// Load texture for current animation frame
+	tex_ = image::get_texture(current_image());
+	if(!tex_) {
+		ERR_HL << "no texture found for current halo animation frame";
+		screen_loc_ = {};
+		return;
+	}
+
+	// Update draw location
+	int w(tex_.w() * disp->get_zoom_factor());
+	int h(tex_.h() * disp->get_zoom_factor());
+
+	const int zero_x = disp->get_location_x(map_location::ZERO());
+	const int zero_y = disp->get_location_y(map_location::ZERO());
+
+	const int xpos = zero_x + abs_mid_.x - w/2;
+	const int ypos = zero_y + abs_mid_.y - h/2;
+
+	screen_loc_ = {xpos, ypos, w, h};
+
+	// Queue display updates if position has changed
+	if(screen_loc_ != last_draw_loc_) {
+		queue_undraw();
+		queue_redraw();
+		last_draw_loc_ = screen_loc_;
+	}
+}
+
+bool halo_impl::effect::visible()
+{
+	// Source is shrouded
+	// The halo will be completely obscured here, even if it would
+	// technically be large enough to peek out of the shroud.
+	if(map_loc_.x != -1 && map_loc_.y != -1 && disp->shrouded(map_loc_)) {
+		return false;
+	}
+
+	// Halo is completely off screen
+	if(!screen_loc_.overlaps(disp->map_outside_area())) {
+		return false;
+	}
 
 	return true;
 }
 
-void halo_impl::effect::unrender()
+bool halo_impl::effect::render()
 {
-	if (!surf_ || !buffer_) {
+	// This should only be set if we actually draw something
+	last_draw_loc_ = {};
+
+	// Update animation frame, even if we didn't actually draw it
+	images_.update_last_draw_time();
+
+	if(!visible()) {
+		return false;
+	}
+
+	// Make sure we clip to the map area
+	auto clipper = draw::reduce_clip(disp->map_outside_area());
+
+	DBG_HL << "drawing halo at " << screen_loc_;
+
+	if (orientation_ == NORMAL) {
+		draw::blit(tex_, screen_loc_);
+	} else {
+		draw::flipped(tex_, screen_loc_,
+			orientation_ == HREVERSE || orientation_ == HVREVERSE,
+			orientation_ == VREVERSE || orientation_ == HVREVERSE);
+	}
+
+	last_draw_loc_ = screen_loc_;
+
+	return true;
+}
+
+void halo_impl::effect::queue_undraw()
+{
+	if(!last_draw_loc_.overlaps(disp->map_outside_area())) {
 		return;
 	}
+	DBG_HL << "queueing halo undraw at " << last_draw_loc_;
+	draw_manager::invalidate_region(last_draw_loc_);
+}
 
-	// Shrouded haloes are never rendered unless shroud has been re-placed; in
-	// that case, unrendering causes the hidden terrain (and previous halo
-	// frame, when dealing with animated halos) to glitch through shroud. We
-	// don't need to unrender them because shroud paints over the underlying
-	// area anyway.
-	if (loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_)) {
+void halo_impl::effect::queue_redraw()
+{
+	if(!visible()) {
 		return;
 	}
-
-	surface& screen = disp->get_screen_surface();
-
-	SDL_Rect clip_rect = disp->map_outside_area();
-	const clip_rect_setter clip_setter(screen, &clip_rect);
-
-	// Due to scrolling, the location of the rendered halo
-	// might have changed; recalculate
-	const int screenx = disp->get_location_x(map_location::ZERO());
-	const int screeny = disp->get_location_y(map_location::ZERO());
-
-	const int xpos = x_ + screenx - surf_->w/2;
-	const int ypos = y_ + screeny - surf_->h/2;
-
-	SDL_Rect rect {xpos, ypos, surf_->w, surf_->h};
-	sdl_blit(buffer_,nullptr,screen,&rect);
+	DBG_HL << "queueing halo redraw at " << screen_loc_;
+	draw_manager::invalidate_region(screen_loc_);
 }
 
-bool halo_impl::effect::on_location(const std::set<map_location>& locations) const
-{
-	for(std::vector<map_location>::const_iterator itor = overlayed_hexes_.begin();
-			itor != overlayed_hexes_.end(); ++itor) {
-		if(locations.find(*itor) != locations.end()) {
-			return true;
-		}
-	}
-	return false;
-}
 
-bool halo_impl::effect::location_not_known() const
-{
-	return overlayed_hexes_.empty();
-}
 
-void halo_impl::effect::add_overlay_location(std::set<map_location>& locations)
-{
-	for(std::vector<map_location>::const_iterator itor = overlayed_hexes_.begin();
-			itor != overlayed_hexes_.end(); ++itor) {
+/*************/
+/* halo_impl */
+/*************/
 
-		locations.insert(*itor);
-	}
-}
-
-// End halo_impl::effect impl's
 
 int halo_impl::add(int x, int y, const std::string& image, const map_location& loc,
 		ORIENTATION orientation, bool infinite)
 {
 	const int id = halo_id++;
+	DBG_HL << "adding halo " << id;
 	animated<image::locator>::anim_description image_vector;
 	std::vector<std::string> items = utils::square_parenthetical_split(image, ',');
 
@@ -320,13 +325,13 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 			try {
 				time = std::stoi(sub_items.back());
 			} catch(const std::invalid_argument&) {
-				ERR_DP << "Invalid time value found when constructing halo: " << sub_items.back() << "\n";
+				ERR_HL << "Invalid time value found when constructing halo: " << sub_items.back();
 			}
 		}
 		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
 
 	}
-	haloes.emplace(id, effect(disp, x, y, image_vector, loc, orientation, infinite));
+	haloes.emplace(id, effect(x, y, image_vector, loc, orientation, infinite));
 	invalidated_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);
@@ -353,101 +358,69 @@ void halo_impl::remove(int handle)
 	deleted_haloes.insert(handle);
 }
 
-void halo_impl::unrender(std::set<map_location> invalidated_locations)
+void halo_impl::update()
 {
 	if(haloes.empty()) {
 		return;
 	}
-	//assert(invalidated_haloes.empty());
 
-	// Remove expired haloes
-	std::map<int, effect>::iterator itor = haloes.begin();
-	for(; itor != haloes.end(); ++itor ) {
-		if(itor->second.expired()) {
-			deleted_haloes.insert(itor->first);
+	// Mark expired haloes for removal
+	for(auto& [id, effect] : haloes) {
+		if(effect.expired()) {
+			DBG_HL << "expiring halo " << id;
+			deleted_haloes.insert(id);
 		}
 	}
-
-	// Add the haloes marked for deletion to the invalidation set
-	std::set<int>::const_iterator set_itor = deleted_haloes.begin();
-	for(;set_itor != deleted_haloes.end(); ++set_itor) {
-		invalidated_haloes.insert(*set_itor);
-		haloes.find(*set_itor)->second.add_overlay_location(invalidated_locations);
+	// Make sure deleted halos get undrawn
+	for(int id : deleted_haloes) {
+		DBG_HL << "invalidating deleted halo " << id;
+		haloes.at(id).queue_undraw();
 	}
-
-	// Test the multi-frame haloes whether they need an update
-	for(set_itor = changing_haloes.begin();
-			set_itor != changing_haloes.end(); ++set_itor) {
-		if(haloes.find(*set_itor)->second.need_update()) {
-			invalidated_haloes.insert(*set_itor);
-			haloes.find(*set_itor)->second.add_overlay_location(invalidated_locations);
-		}
+	// Remove deleted halos
+	for(int id : deleted_haloes) {
+		DBG_HL << "deleting halo " << id;
+		changing_haloes.erase(id);
+		haloes.erase(id);
 	}
-
-	// Find all halo's in a the invalidated area
-	size_t halo_count;
-
-	// Repeat until set of haloes in the invalidated area didn't change
-	// (including none found) or all existing haloes are found.
-	do {
-		halo_count = invalidated_haloes.size();
-		for(itor = haloes.begin(); itor != haloes.end(); ++itor) {
-			// Test all haloes not yet in the set
-			// which match one of the locations
-			if(invalidated_haloes.find(itor->first) == invalidated_haloes.end() &&
-					(itor->second.location_not_known() ||
-					itor->second.on_location(invalidated_locations))) {
-
-				// If found, add all locations which the halo invalidates,
-				// and add it to the set
-				itor->second.add_overlay_location(invalidated_locations);
-				invalidated_haloes.insert(itor->first);
-			}
-		}
-	} while (halo_count != invalidated_haloes.size() && halo_count != haloes.size());
-
-	if(halo_count == 0) {
-		return;
-	}
-
-	// Render the haloes:
-	// iterate through all the haloes and invalidate if in set
-	for(std::map<int, effect>::reverse_iterator ritor = haloes.rbegin(); ritor != haloes.rend(); ++ritor) {
-		if(invalidated_haloes.find(ritor->first) != invalidated_haloes.end()) {
-			ritor->second.unrender();
-		}
-	}
-
-	// Really delete the haloes marked for deletion
-	for(set_itor = deleted_haloes.begin(); set_itor != deleted_haloes.end(); ++set_itor) {
-		changing_haloes.erase(*set_itor);
-		invalidated_haloes.erase(*set_itor);
-		haloes.erase(*set_itor);
-	}
-
 	deleted_haloes.clear();
+
+	// Update the location and animation frame of the remaining halos
+	for(auto& [id, halo] : haloes) { (void)id;
+		halo.update();
+	}
+
+	// Invalidate any animated halos which need updating
+	for(int id : changing_haloes) {
+		auto& halo = haloes.at(id);
+		if(halo.need_update() && halo.visible()) {
+			DBG_HL << "invalidating changed halo " << id;
+			halo.queue_redraw();
+		}
+	}
 }
 
-void halo_impl::render()
+void halo_impl::render(const rect& region)
 {
-	if(haloes.empty() ||
-			invalidated_haloes.empty()) {
+	if(haloes.empty()) {
 		return;
 	}
 
-	// Render the haloes: draw all invalidated haloes
-	for(int id : invalidated_haloes) {
-		haloes.at(id).render();
+	for(auto& [id, effect] : haloes) {
+		if(region.overlaps(effect.get_draw_location())) {
+			DBG_HL << "drawing intersected halo " << id;
+			effect.render();
+		}
 	}
-
-	invalidated_haloes.clear();
 }
 
-// end halo_impl implementations
 
-// begin halo::manager
 
-manager::manager(display& screen) : impl_(new halo_impl(screen))
+/*****************/
+/* halo::manager */
+/*****************/
+
+
+manager::manager() : impl_(new halo_impl())
 {}
 
 handle manager::add(int x, int y, const std::string& image, const map_location& loc,
@@ -470,20 +443,14 @@ void manager::remove(const handle & h)
 	h->id_ = NO_HALO;
 }
 
-/**
- * Render and unrender haloes.
- *
- * Which haloes are rendered is determined by invalidated_locations and the
- * internal state in the control sets (in halo.cpp).
- */
-void manager::unrender(std::set<map_location> invalidated_locations)
+void manager::update()
 {
-	impl_->unrender(invalidated_locations);
+	impl_->update();
 }
 
-void manager::render()
+void manager::render(const rect& r)
 {
-	impl_->render();
+	impl_->render(r);
 }
 
 // end halo::manager implementation

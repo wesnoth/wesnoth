@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #include "lua_audio.hpp"
 
 #include "log.hpp"
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
@@ -497,7 +496,7 @@ static int impl_audio_set(lua_State* L)
 		return 0;
 	}
 	int vol = preferences::sound_volume();
-	float rel = lua_tonumber(L, 2);
+	float rel = lua_tonumber(L, 3);
 	if(rel < 0.0f || rel > 100.0f) {
 		return luaL_argerror(L, 1, "volume must be in range 0..100");
 	}

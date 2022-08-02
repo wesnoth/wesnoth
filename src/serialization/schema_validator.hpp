@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 #include "serialization/schema/key.hpp"
 #include "serialization/validator.hpp"
 
-#include <iostream>
 #include <queue>
 #include <stack>
 #include <string>
@@ -195,7 +194,7 @@ private:
 	static bool name_matches(const std::string& pattern, const std::string& name);
 
 	void print(message_info& message) override;
-	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, DUPLICATE_KEY, NEXT_ERROR };
+	enum { WRONG_TYPE = NEXT_ERROR, WRONG_PATH, DUPLICATE_TAG, DUPLICATE_KEY, SUPER_LOOP, NEXT_ERROR };
 };
 
 } // namespace schema_validation{

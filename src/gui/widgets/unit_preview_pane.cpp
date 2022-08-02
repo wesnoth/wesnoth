@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
@@ -73,7 +74,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 void unit_preview_pane::finalize_setup()
 {
 	// Icons
-	icon_type_              = find_widget<image>(this, "type_image", false, false);
+	icon_type_              = find_widget<drawing>(this, "type_image", false, false);
 	icon_race_              = find_widget<image>(this, "type_race", false, false);
 	icon_alignment_         = find_widget<image>(this, "type_alignment", false, false);
 
@@ -108,14 +109,15 @@ static inline tree_view_node& add_name_tree_node(tree_view_node& header_node, co
 	return child_node;
 }
 
-static inline std::string get_hp_tooltip(const utils::string_map& res, const std::function<int (const std::string&, bool)>& get)
+static inline std::string get_hp_tooltip(
+	const utils::string_map_res& res, const std::function<int(const std::string&, bool)>& get)
 {
 	std::ostringstream tooltip;
 
-	std::set<std::string> resistances_table;
+	std::vector<std::string> resistances_table;
 
 	bool att_def_diff = false;
-	for(const utils::string_map::value_type &resist : res) {
+	for(const utils::string_map_res::value_type &resist : res) {
 		std::ostringstream line;
 		line << translation::dgettext("wesnoth", resist.first.c_str()) << ": ";
 
@@ -131,7 +133,7 @@ static inline std::string get_hp_tooltip(const utils::string_map& res, const std
 			att_def_diff = true;
 		}
 
-		resistances_table.insert(line.str());
+		resistances_table.push_back(line.str());
 	}
 
 	tooltip << "<big>" << _("Resistances: ") << "</big>";
@@ -174,25 +176,28 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		tooltip << '\n' << font::unicode_bullet << " " << tm.name << ": ";
 
 		// movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-		const bool cannot_move = tm.moves > total_movement;
+		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
+		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
-		std::string color;
-		if(cannot_move) {
-			// cannot move in this terrain
-			color = "red";
-		} else if(tm.moves > 1) {
-			color = "yellow";
-		} else {
-			color = "white";
-		}
+		// passing false to select the more saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
 
 		tooltip << "<span color='" << color << "'>";
 
 		// A 5 MP margin; if the movement costs go above the unit's max moves + 5, we replace it with dashes.
 		if(cannot_move && (tm.moves > total_movement + 5)) {
 			tooltip << font::unicode_figure_dash;
+		} else if (cannot_move) {
+			tooltip << "(" << tm.moves << ")";
 		} else {
 			tooltip << tm.moves;
+		}
+		if(tm.moves != 0) {
+			const int movement_hexes_per_turn = total_movement / tm.moves;
+			tooltip << " ";
+			for(int i = 0; i < movement_hexes_per_turn; ++i) {
+				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+			}
 		}
 
 		tooltip << "</span>";
@@ -219,8 +224,8 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	);
 
 	for(const auto& a : attacks) {
-		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO_SHARP(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO_SHARP(16,16)";
+		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
+		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO(16,16)";
 		const bool range_png_exists = ::image::locator(range_png).file_exists();
 		const bool type_png_exists = ::image::locator(type_png).file_exists();
 
@@ -281,7 +286,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 				 + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label((type.icon().empty() ? type.image() : type.icon()) + mods);
 	}
@@ -308,7 +313,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = type.alignment().to_string();
+		const std::string& alignment_name = unit_alignments::get_string(type.alignment());
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
@@ -326,7 +331,7 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 		std::string l_str = VGETTEXT("Lvl $lvl", {{"lvl", std::to_string(type.level())}});
 		str << l_str << "\n";
 
-		str << type.alignment() << "\n";
+		str << unit_alignments::get_string(type.alignment()) << "\n";
 
 		str << "\n"; // Leave a blank line where traits would be
 
@@ -426,7 +431,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 			mods += "~BLIT(" + overlay + ")";
 		}
 
-		mods += "~XBRZ(2)~SCALE_INTO_SHARP(144,144)" + image_mods_;
+		mods += image_mods_;
 
 		icon_type_->set_label(u.absolute_image() + mods);
 	}
@@ -460,7 +465,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 	}
 
 	if(icon_alignment_) {
-		const std::string& alignment_name = u.alignment().to_string();
+		const std::string& alignment_name = unit_alignments::get_string(u.alignment());
 
 		icon_alignment_->set_label("icons/alignments/alignment_" + alignment_name + "_30.png");
 		icon_alignment_->set_tooltip(unit_type::alignment_description(
@@ -594,7 +599,7 @@ void unit_preview_pane::set_self_active(const bool /*active*/)
 unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing unit preview pane " << id << '\n';
+	DBG_GUI_P << "Parsing unit preview pane " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -622,12 +627,12 @@ builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 {
 }
 
-widget* builder_unit_preview_pane::build() const
+std::unique_ptr<widget> builder_unit_preview_pane::build() const
 {
-	unit_preview_pane* widget = new unit_preview_pane(*this);
+	auto widget = std::make_unique<unit_preview_pane>(*this);
 
 	DBG_GUI_G << "Window builder: placed unit preview pane '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	const auto conf = widget->cast_config_to<unit_preview_pane_definition>();
 	assert(conf);

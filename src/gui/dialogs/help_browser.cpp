@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -62,8 +62,8 @@ void help_browser::pre_show(window& window)
 	unsigned id = 0;
 
 	for(const auto& topic : help_cfg_.child_range("topic")) {
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = topic["title"];
 		data.emplace("topic_name", item);

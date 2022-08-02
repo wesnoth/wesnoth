@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,6 +49,7 @@
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"           // for tod_manager
 #include "units/unit.hpp"                  // for unit
+#include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
 #include "units/ptr.hpp"                 // for unit_ptr
 #include "units/types.hpp"  // for attack_type, unit_type, etc
@@ -166,6 +167,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 	known_aspects_(),
 	advancements_(),
 	aggression_(),
+	allow_ally_villages_(),
 	aspects_(),
 	attacks_(),
 	avoid_(),
@@ -212,6 +214,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 
 	add_known_aspect("advancements", advancements_);
 	add_known_aspect("aggression",aggression_);
+	add_known_aspect("allow_ally_villages",allow_ally_villages_);
 	add_known_aspect("attacks",attacks_);
 	add_known_aspect("avoid",avoid_);
 	add_known_aspect("caution",caution_);
@@ -331,7 +334,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations,
 		bool see_all
-          ) const
+	) const
 {
 
 	for(unit_map::const_iterator un_it = units.begin(); un_it != units.end(); ++un_it) {
@@ -429,7 +432,7 @@ void readonly_context_impl::add_aspects(std::vector< aspect_ptr > &aspects )
 		if (i != known_aspects_.end()) {
 			i->second->set(a);
 		} else {
-			ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]"<<std::endl;
+			ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]";
 		}
 	}
 }
@@ -440,7 +443,7 @@ void readonly_context_impl::add_facet(const std::string &id, const config &cfg) 
 	if (i != known_aspects_.end()) {
 		i->second->add_facet(cfg);
 	} else {
-		ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]"<<std::endl;
+		ERR_AI << "when adding aspects, unknown aspect id["<<id<<"]";
 	}
 }
 
@@ -511,6 +514,14 @@ double readonly_context_impl::get_aggression() const
 		return aggression_->get();
 	}
 	return 0;
+}
+
+bool readonly_context_impl::get_allow_ally_villages() const
+{
+	if (allow_ally_villages_) {
+		return allow_ally_villages_->get();
+	}
+	return false;
 }
 
 const aspect_map& readonly_context_impl::get_aspects() const
@@ -611,16 +622,16 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	engine_factory::factory_map::iterator eng = engine_factory::get_list().find(engine_name);
 	if (eng == engine_factory::get_list().end()){
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO FIND engine["<<
-			engine_name <<"]" << std::endl;
-		DBG_AI << "config snippet contains: " << std::endl << cfg << std::endl;
+			engine_name << ']';
+		DBG_AI << "config snippet contains: " << std::endl << cfg;
 		return engine_ptr();
 	}
 
 	engine_ptr new_engine = eng->second->get_new_instance(*this,engine_name);
 	if (!new_engine) {
 		ERR_AI << "side "<<get_side()<<" : UNABLE TO CREATE engine["<<
-			engine_name <<"] " << std::endl;
-		DBG_AI << "config snippet contains: " << std::endl << cfg << std::endl;
+			engine_name << ']';
+		DBG_AI << "config snippet contains: " << std::endl << cfg;
 		return engine_ptr();
 	}
 	engines_.push_back(new_engine);
@@ -1031,11 +1042,11 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			// Considering the unit location would be too slow, we only apply the bonus granted by the global ToD
 			const int lawful_bonus = resources::tod_manager->get_time_of_day(attack_turn).lawful_bonus;
 			int tod_modifier = 0;
-			if(un.alignment() == unit_type::ALIGNMENT::LAWFUL) {
+			if(un.alignment() == unit_alignments::type::lawful) {
 				tod_modifier = lawful_bonus;
-			} else if(un.alignment() == unit_type::ALIGNMENT::CHAOTIC) {
+			} else if(un.alignment() == unit_alignments::type::chaotic) {
 				tod_modifier = -lawful_bonus;
-			} else if(un.alignment() == unit_type::ALIGNMENT::LIMINAL) {
+			} else if(un.alignment() == unit_alignments::type::liminal) {
 				tod_modifier = -(std::abs(lawful_bonus));
 			}
 
@@ -1055,7 +1066,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
 			int rating = rating_64;
 			if(static_cast<int64_t>(rating) != rating_64) {
-				WRN_AI << "overflow in ai attack calculation\n";
+				WRN_AI << "overflow in ai attack calculation";
 			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);

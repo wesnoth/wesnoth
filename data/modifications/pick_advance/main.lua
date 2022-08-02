@@ -1,6 +1,6 @@
 -- << pick_advance/main.lua
 
-local on_event = wesnoth.require "on_event"
+local on_event = wesnoth.game_events.add_repeating
 local F = wesnoth.require "functional"
 local T = wml.tag
 local _ = wesnoth.textdomain "wesnoth"
@@ -160,7 +160,8 @@ end
 -- initialize a unit for picking an advancement
 -- make its advancements viewable
 -- force picking an advancement if it has multiple and the force option was specified
-local function initialize_unit_x1y1(ctx)
+local function initialize_unit_x1y1()
+	local ctx = wesnoth.current.event_context
 	local unit = wesnoth.units.get(ctx.x1, ctx.y1)
 	if not wesnoth.sides[unit.side].__cfg.allow_player then return end
 	initialize_unit(unit)

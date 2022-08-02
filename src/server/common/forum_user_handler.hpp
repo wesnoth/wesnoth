@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -180,8 +180,9 @@ public:
 	 * @param id The id of the content.
 	 * @param source The source add-on for the content.
 	 * @param version The version of the source add-on.
+	 * @return The number of rows inserted which should always be 1.
 	 */
-	void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+	unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 	/**
 	 * Sets the OOS flag in the database if wesnothd is told by a client it has detected an OOS error.
@@ -255,6 +256,21 @@ public:
 	 * @param out Where to output the results.
 	 */
 	void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
+	/**
+	 * @param user The player's username.
+	 * @return The player's email address from the phpbb forum database.
+	 */
+	std::string get_user_email(const std::string& user);
+
+	/**
+	 * Increments the download count for this add-on for the specific version.
+	 *
+	 * @param instance_version The version of campaignd the add-on was uploaded to.
+	 * @param id The add-on's ID (aka directory name).
+	 * @param version The version of the add-on being downloaded. May not be the most recent version.
+	 */
+	void db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
 
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */

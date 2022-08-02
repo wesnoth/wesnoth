@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -189,7 +189,7 @@ public:
 	 * Constructor.
 	 *
 	 * @pre zoom >= offset   Otherwise the result will have empty pixels.
-     * @pre offset > 0       Otherwise the procedure will not return.
+	 * @pre offset > 0       Otherwise the procedure will not return.
 	 *
 	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.

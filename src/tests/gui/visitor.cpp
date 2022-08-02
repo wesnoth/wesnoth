@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,19 +22,18 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/grid.hpp"
 
-#include <iostream>
 #include <typeinfo>
 
 static void add_widget(gui2::grid& grid
-		, gui2::widget* widget
+		, std::unique_ptr<gui2::widget> widget
 		, const std::string& id
 		, const unsigned row
 		, const unsigned column)
 {
-	BOOST_REQUIRE_NE(widget, static_cast<gui2::widget*>(nullptr));
+	BOOST_REQUIRE_NE(widget.get(), static_cast<gui2::widget*>(nullptr));
 
 	widget->set_id(id);
-	grid.set_child(widget
+	grid.set_child(std::move(widget)
 			, row
 			, column
 			, gui2::grid::VERTICAL_GROW_SEND_TO_CLIENT
@@ -45,9 +44,9 @@ static void add_widget(gui2::grid& grid
 template<class T>
 static void test_control(T&& control)
 {
-	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
+	//PLAIN_LOG << __func__ << ": " << typeid(T).name() << ".";
 
-	const std::unique_ptr<gui2::iteration::walker_base> visitor(control.create_walker());
+	const auto visitor = control.create_walker();
 
 	BOOST_REQUIRE_NE(visitor.get(), static_cast<void*>(nullptr));
 
@@ -91,16 +90,16 @@ static void test_grid()
 	/* An empty grid behaves the same as a control so test here. */
 	test_control(gui2::grid());
 
-	//std::cerr << __func__ << ": Detailed test.\n";
+	//PLAIN_LOG << __func__ << ": Detailed test.";
 
 	/* Test the child part here. */
 	gui2::grid grid(2 ,2);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,1)", 0, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(1,2)", 0, 1);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,1)", 1, 0);
-	add_widget(grid, new gui2::label(gui2::implementation::builder_label(config())), "(2,2)", 1, 1);
+	add_widget(grid, std::make_unique<gui2::label>(gui2::implementation::builder_label(config())), "(1,1)", 0, 0);
+	add_widget(grid, std::make_unique<gui2::label>(gui2::implementation::builder_label(config())), "(1,2)", 0, 1);
+	add_widget(grid, std::make_unique<gui2::label>(gui2::implementation::builder_label(config())), "(2,1)", 1, 0);
+	add_widget(grid, std::make_unique<gui2::label>(gui2::implementation::builder_label(config())), "(2,2)", 1, 1);
 
-	const std::unique_ptr<gui2::iteration::walker_base> visitor(grid.create_walker());
+	const auto visitor = grid.create_walker();
 
 	/***** LABEL 1,1 *****/
 

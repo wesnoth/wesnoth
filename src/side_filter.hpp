@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,6 +40,7 @@ public:
 	bool match(const team& t) const;
 	bool match(const int side) const;
 	std::vector<int> get_teams() const;
+	const config& get_config() const {return cfg_.get_config();}
 
 private:
 	side_filter(const side_filter &other);

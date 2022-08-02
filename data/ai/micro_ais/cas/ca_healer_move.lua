@@ -2,7 +2,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local M = wesnoth.map
 
-local ca_healer_move, best_healer, best_hex = {}
+local ca_healer_move, best_healer, best_hex = {}, nil, nil
 
 function ca_healer_move:evaluation(cfg, data)
     -- Should happen with higher priority than attacks, except at beginning of turn,
@@ -74,7 +74,7 @@ function ca_healer_move:evaluation(cfg, data)
             --  - either can be attacked by an enemy (15 points per enemy)
             --  - or has non-perfect HP (1 point per missing HP)
 
-            local rating, adjacent_healer = 0
+            local rating, adjacent_healer = 0, nil
             for _,healee in ipairs(healees) do
                 if (M.distance_between(healee.x, healee.y, x, y) == 1) then
                     -- Note: These ratings have to be positive or the method doesn't work

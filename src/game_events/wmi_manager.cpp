@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,7 +56,7 @@ bool wmi_manager::erase(const std::string& id)
 	const auto iter = wml_menu_items_.find(id);
 
 	if(iter == wml_menu_items_.end()) {
-		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring." << std::endl;
+		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring.";
 		// No such item.
 		return false;
 	}
@@ -163,7 +163,7 @@ wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
 /**
  * Initializes the implicit event handlers for inlined [command]s.
  */
-void wmi_manager::init_handlers() const
+void wmi_manager::init_handlers(game_lua_kernel& lk) const
 {
 	// Applying default hotkeys here currently does not work because
 	// the hotkeys are reset by play_controler::init_managers() ->
@@ -179,7 +179,7 @@ void wmi_manager::init_handlers() const
 	// Loop through each menu item.
 	for(const auto& item : wml_menu_items_) {
 		// If this menu item has a [command], add a handler for it.
-		item.second->init_handler();
+		item.second->init_handler(lk);
 
 		// Count the menu items (for the diagnostic message).
 		++wmi_count;
@@ -187,7 +187,7 @@ void wmi_manager::init_handlers() const
 
 	// Diagnostic:
 	if(wmi_count > 0) {
-		LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+		LOG_NG << wmi_count << " WML menu items found, loaded.";
 	}
 }
 
@@ -233,7 +233,7 @@ void wmi_manager::set_menu_items(const config& cfg)
 		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, item));
 
 		if(!success) {
-			WRN_NG << "duplicate menu item (" << id << ") while loading from config" << std::endl;
+			WRN_NG << "duplicate menu item (" << id << ") while loading from config";
 		}
 	}
 }

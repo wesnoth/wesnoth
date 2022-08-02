@@ -1,10 +1,9 @@
 
 local _ = wesnoth.textdomain 'wesnoth-help'
 local T = wml.tag
-local on_event = wesnoth.require("on_event")
 
 -- The feeding event code
-on_event("die", function()
+wesnoth.game_events.add_repeating("die", function()
 	local ec = wesnoth.current.event_context
 
 	if not ec.x1 or not ec.y1 or not ec.x2 or not ec.y2 then

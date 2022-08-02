@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/password_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "preferences/credentials.hpp"
 
 namespace gui2::dialogs
 {
@@ -30,12 +31,16 @@ REGISTER_DIALOG(addon_auth)
 addon_auth::addon_auth(config& cfg)
 	: cfg_(cfg)
 {
-
+	register_bool("remember_password", false,
+		&preferences::remember_password,
+		&preferences::set_remember_password);
 }
 
 void addon_auth::pre_show(window& win)
 {
-	win.add_to_tab_order(find_widget<password_box>(&win, "password", false, true));
+	text_box* pwd = find_widget<text_box>(&win, "password", false, true);
+	win.add_to_tab_order(pwd);
+	pwd->set_value(cfg_["passphrase"].str(""));
 }
 
 void addon_auth::post_show(window& win)

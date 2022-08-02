@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,7 +30,6 @@
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
 #include <array>
-#include <iostream>                     // for operator<<, basic_ostream, etc
 
 namespace po = boost::program_options;
 
@@ -161,6 +160,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, diff_left()
 	, diff_right()
 	, version(false)
+	, simple_version(false)
 	, report(false)
 	, windowed(false)
 	, with_replay(false)
@@ -221,6 +221,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
+		("simple-version", "prints the game's version number and nothing else.")
 		("with-replay", "replays the file loaded with the --load option.")
 #ifdef _WIN32
 		("wconsole", "attaches a console window on startup (Windows only). Implied by any option that prints something and exits.")
@@ -256,6 +257,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
 		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in log output with more precision.")
+		("log-to-file", "log output is written to a file rather than to standard error.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -267,13 +269,13 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("era", po::value<std::string>(), "selects the era to be played in by its id.")
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
 		("ignore-map-settings", "do not use map settings.")
-		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
+		("label", po::value<std::string>(), "sets the label for AIs.") // TODO: is the description precise? this option was undocumented before.
 		("multiplayer-repeat",  po::value<unsigned int>(), "repeats a multiplayer game after it is finished <arg> times.")
 		("nogui", "runs the game without the GUI.")
 		("parm", po::value<std::vector<std::string>>()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
 		("side", po::value<std::vector<std::string>>()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
-                ("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
+		("turns", po::value<std::string>(), "sets the number of turns. By default no turn limit is set.")
 		;
 
 	po::options_description testing_opts("Testing options");
@@ -528,9 +530,14 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		validate_schema = vm["validate-schema"].as<std::string>();
 	// If you add a new validate-* option, remember the any_validation_option() function
 	if (vm.count("use-schema"))
-		validate_with = vm["use-schema"].as<std::string>();;
+		validate_with = vm["use-schema"].as<std::string>();
 	if (vm.count("version"))
 		version = true;
+	if (vm.count("simple-version"))
+	{
+		simple_version = true;
+		nobanner = true;
+	}
 	if (vm.count("windowed"))
 		windowed = true;
 	if (vm.count("with-replay"))
@@ -560,7 +567,7 @@ void commandline_options::parse_log_strictness (const std::string & severity ) {
 			return ;
 		}
 	}
-	std::cerr << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging." << std::endl;
+	PLAIN_LOG << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging.";
 	lg::set_strict_severity(-1);
 }
 

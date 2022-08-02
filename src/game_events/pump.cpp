@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,6 @@
  */
 
 #include "game_events/pump.hpp"
-#include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"
 
 #include "display_chat_manager.hpp"
@@ -34,10 +33,10 @@
 #include "units/map.hpp"
 #include "units/unit.hpp"
 #include "variable.hpp"
+#include "video.hpp" // only for faked
 #include "whiteboard/manager.hpp"
 
 #include <iomanip>
-#include <iostream>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -188,84 +187,6 @@ pump_manager::~pump_manager()
 }
 
 /**
- * Returns true iff the given event passes all its filters.
- */
-bool wml_event_pump::filter_event(const event_handler& handler, const queued_event& ev)
-{
-	const unit_map& units = resources::gameboard->units();
-	unit_map::const_iterator unit1 = units.find(ev.loc1);
-	unit_map::const_iterator unit2 = units.find(ev.loc2);
-	vconfig filters(handler.get_config());
-
-	for(const vconfig& condition : filters.get_children("filter_condition")) {
-		if(!conditional_passed(condition)) {
-			return false;
-		}
-	}
-
-	for(const vconfig& f : filters.get_children("filter_side")) {
-		side_filter ssf(f, &resources::controller->gamestate());
-		if(!ssf.match(resources::controller->current_side()))
-			return false;
-	}
-
-	for(const vconfig& f : filters.get_children("filter")) {
-		if(!ev.loc1.matches_unit_filter(unit1, f)) {
-			return false;
-		}
-	}
-
-	vconfig::child_list special_filters = filters.get_children("filter_attack");
-	bool special_matches = special_filters.empty();
-	if(!special_matches && unit1 != units.end()) {
-		const bool matches_unit = ev.loc1.matches_unit(unit1);
-		const config& attack = ev.data.child("first");
-		for(const vconfig& f : special_filters) {
-			if(f.empty()) {
-				special_matches = true;
-			} else if(!matches_unit) {
-				return false;
-			}
-
-			special_matches = special_matches || matches_special_filter(attack, f);
-		}
-	}
-
-	if(!special_matches) {
-		return false;
-	}
-
-	for(const vconfig& f : filters.get_children("filter_second")) {
-		if(!ev.loc2.matches_unit_filter(unit2, f)) {
-			return false;
-		}
-	}
-
-	special_filters = filters.get_children("filter_second_attack");
-	special_matches = special_filters.empty();
-	if(!special_matches && unit2 != units.end()) {
-		const bool matches_unit = ev.loc2.matches_unit(unit2);
-		const config& attack = ev.data.child("second");
-		for(const vconfig& f : special_filters) {
-			if(f.empty()) {
-				special_matches = true;
-			} else if(!matches_unit) {
-				return false;
-			}
-
-			special_matches = special_matches || matches_special_filter(attack, f);
-		}
-	}
-
-	if(!special_matches) {
-		return false;
-	}
-
-	// All filters passed.
-	return true;
-}
-
-/**
  * Processes an event through a single event handler.
  * This includes checking event filters, but not checking that the event
  * name matches.
@@ -276,7 +197,7 @@ bool wml_event_pump::filter_event(const event_handler& handler, const queued_eve
  */
 void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& ev)
 {
-	DBG_EH << "processing event " << ev.name << " with id=" << ev.id << "\n";
+	DBG_EH << "processing event " << ev.name << " with id=" << ev.id;
 
 	// We currently never pass a null pointer to this function, but to
 	// guard against future modifications:
@@ -290,7 +211,7 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 
-	if(!filter_event(*handler_p, ev)) {
+	if(!handler_p->filter_event(ev)) {
 		return;
 	}
 
@@ -397,7 +318,7 @@ void wml_event_pump::show_wml_messages()
 void wml_event_pump::put_wml_message(
 		lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
 {
-	FORCE_LOG_TO(logger, log_wml) << message << std::endl;
+	FORCE_LOG_TO(logger, log_wml) << message;
 	if(in_chat) {
 		impl_->wml_messages_stream << prefix << message << std::endl;
 	}
@@ -504,7 +425,7 @@ void wml_event_pump::raise(const std::string& event,
 	if(game_display::get_singleton() == nullptr)
 		return;
 
-	DBG_EH << "raising event name=" << event << ", id=" << id << "\n";
+	DBG_EH << "raising event name=" << event << ", id=" << id;
 
 	impl_->events_queue.emplace_back(event, id, loc1, loc2, data);
 }
@@ -518,13 +439,14 @@ pump_result_t wml_event_pump::operator()()
 
 	assert(resources::lua_kernel != nullptr);
 	if(impl_->events_queue.empty()) {
-		DBG_EH << "Processing queued events, but none found.\n";
+		DBG_EH << "Processing queued events, but none found.";
 		return pump_result_t();
 	}
 
 	if(impl_->instance_count >= game_config::max_loop) {
 		ERR_NG << "game_events pump waiting to process new events because "
-			   << "recursion level would exceed maximum: " << game_config::max_loop << '\n';
+			   << "recursion level would exceed maximum: "
+			   << game_config::max_loop;
 		return pump_result_t();
 	}
 
@@ -534,7 +456,7 @@ pump_result_t wml_event_pump::operator()()
 			ss << "name=" << ev.name << ", "
 			   << "id=" << ev.id << "; ";
 		}
-		DBG_EH << "processing queued events: " << ss.str() << "\n";
+		DBG_EH << "processing queued events: " << ss.str();
 	}
 
 	// Ensure the whiteboard doesn't attempt to build its future unit map
@@ -573,7 +495,7 @@ pump_result_t wml_event_pump::operator()()
 		if(event_id.empty()) {
 			// Handle events of this name.
 			impl_->my_manager->execute_on_events(event_name, [&](game_events::manager&, handler_ptr& ptr) {
-				DBG_EH << "processing event " << event_name << " with id=" << ptr->get_config()["id"] << "\n";
+				DBG_EH << "processing event " << event_name << " with id=" << ptr->id();
 
 				// Let this handler process our event.
 				process_event(ptr, ev);
@@ -583,7 +505,7 @@ pump_result_t wml_event_pump::operator()()
 			handler_ptr cur_handler = impl_->my_manager->get_event_handler_by_id(event_id);
 
 			if(cur_handler) {
-				DBG_EH << "processing event " << event_name << " with id=" << cur_handler->get_config()["id"] << "\n";
+				DBG_EH << "processing event " << event_name << " with id=" << cur_handler->id();
 				process_event(cur_handler, ev);
 			}
 		}
@@ -601,8 +523,8 @@ pump_result_t wml_event_pump::operator()()
 
 void wml_event_pump::flush_messages()
 {
-	// Dialogs can only be shown if the display is not locked
-	if(game_display::get_singleton() && !CVideo::get_singleton().update_locked()) {
+	// Dialogs can only be shown if the display is not fake
+	if(game_display::get_singleton() && !video::headless()) {
 		show_wml_errors();
 		show_wml_messages();
 	}

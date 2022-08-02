@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -79,6 +79,9 @@ public:
 	/** Returns the forum user id for the given username */
 	virtual long get_forum_id(const std::string& name) = 0;
 
+	/** Returns the user's email from the forum database */
+	virtual std::string get_user_email(const std::string& user) = 0;
+
 	/** Returns true if the specified user account is usable for logins. */
 	virtual bool user_is_active(const std::string& name) = 0;
 
@@ -140,7 +143,7 @@ public:
 	virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password) = 0;
 	virtual void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location) = 0;
 	virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user) = 0;
-	virtual void db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version) = 0;
+	virtual unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version) = 0;
 	virtual void db_set_oos_flag(const std::string& uuid, int game_id) = 0;
 	virtual void async_test_query(boost::asio::io_service& io_service, int limit) = 0;
 	virtual bool db_topic_id_exists(int topic_id) = 0;
@@ -149,4 +152,5 @@ public:
 	virtual void db_update_logout(unsigned long long login_id) = 0;
 	virtual void get_users_for_ip(const std::string& ip, std::ostringstream* out) = 0;
 	virtual void get_ips_for_user(const std::string& username, std::ostringstream* out) = 0;
+	virtual void db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version) = 0;
 };

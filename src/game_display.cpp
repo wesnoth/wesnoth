@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,6 +37,7 @@
 #include "font/standard_colors.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
+#include "sdl/utils.hpp"
 #include "tod_manager.hpp"
 #include "color.hpp"
 #include "synced_context.hpp"
@@ -52,7 +53,7 @@ static lg::log_domain log_display("display");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-std::map<map_location,fixed_t> game_display::debugHighlights_;
+std::map<map_location, int> game_display::debugHighlights_;
 
 /**
  * Function to return 2 half-hex footsteps images for the given location.
@@ -60,14 +61,14 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
  *
  * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
  */
-std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
+std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
 
 game_display::game_display(game_board& board,
 		std::weak_ptr<wb::manager> wb,
 		reports& reports_object,
-		const config& theme_cfg,
+		const std::string& theme_id,
 		const config& level)
-	: display(&board, wb, reports_object, theme_cfg, level, false)
+	: display(&board, wb, reports_object, theme_id, level)
 	, overlay_map_()
 	, attack_indicator_src_()
 	, attack_indicator_dst_()
@@ -78,7 +79,6 @@ game_display::game_display(game_board& board,
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
 {
-	video().clear_screen();
 }
 
 game_display::~game_display()
@@ -92,52 +92,20 @@ game_display::~game_display()
 void game_display::new_turn()
 {
 	static bool first_turn = true;
-	const time_of_day& tod = resources::tod_manager->get_time_of_day();
 
 	// We want to skip this on the first run of this function
 	if(!first_turn) {
+		const time_of_day& tod = resources::tod_manager->get_time_of_day();
 		const time_of_day& old_tod = resources::tod_manager->get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
-			surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
-			surface new_mask(image::get_image(tod.image_mask,image::SCALED_TO_HEX));
-
-			const int niterations = static_cast<int>(10/turbo_speed());
-			const int frame_time = 30;
-			const int starting_ticks = SDL_GetTicks();
-			for(int i = 0; i != niterations; ++i) {
-
-				if(old_mask != nullptr) {
-					const fixed_t proportion = ftofxp(1.0) - fxpdiv(i,niterations);
-					adjust_surface_alpha(old_mask, proportion);
-					tod_hex_mask1 = old_mask;
-				}
-
-				if(new_mask != nullptr) {
-					const fixed_t proportion = fxpdiv(i,niterations);
-					adjust_surface_alpha(new_mask, proportion);
-					tod_hex_mask2 = new_mask;
-				}
-
-				invalidate_all();
-
-				const int cur_ticks = SDL_GetTicks();
-				const int wanted_ticks = starting_ticks + i*frame_time;
-				if(cur_ticks < wanted_ticks) {
-					SDL_Delay(wanted_ticks - cur_ticks);
-				}
-			}
+			fade_tod_mask(old_tod.image_mask, tod.image_mask);
 		}
-
-		tod_hex_mask1 = nullptr;
-		tod_hex_mask2 = nullptr;
 	}
 
 	first_turn = false;
 
-	display::update_tod();
-
-	invalidate_all();
+	update_tod();
 }
 
 void game_display::select_hex(map_location hex)
@@ -205,7 +173,10 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 	}
 }
 
-void game_display::pre_draw() {
+void game_display::update()
+{
+	display::update();
+
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->pre_draw();
 	}
@@ -218,7 +189,10 @@ void game_display::pre_draw() {
 }
 
 
-void game_display::post_draw() {
+void game_display::render()
+{
+	display::render();
+
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->post_draw();
 	}
@@ -226,7 +200,6 @@ void game_display::post_draw() {
 
 void game_display::draw_invalidated()
 {
-	halo_man_->unrender(invalidated_);
 	display::draw_invalidated();
 	if (fake_unit_man_->empty()) {
 		return;
@@ -242,11 +215,6 @@ void game_display::draw_invalidated()
 	}
 }
 
-void game_display::post_commit()
-{
-	halo_man_->render();
-}
-
 void game_display::draw_hex(const map_location& loc)
 {
 	const bool on_map = get_map().on_board(loc);
@@ -254,8 +222,8 @@ void game_display::draw_hex(const map_location& loc)
 //	const bool is_fogged = fogged(loc);
 	const int xpos = get_location_x(loc);
 	const int ypos = get_location_y(loc);
-
-//	image::TYPE image_type = get_image_type(loc);
+	const int zoom = int(zoom_);
+	const SDL_Rect dest{xpos, ypos, zoom, zoom};
 
 	display::draw_hex(loc);
 
@@ -264,32 +232,32 @@ void game_display::draw_hex(const map_location& loc)
 		return;
 	}
 
-	if(on_map && loc == mouseoverHex_) {
+	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
 		drawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
 		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
 		if( u != nullptr ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
 		if(u == nullptr) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
+			drawing_buffer_add( hex_top_layer, loc, dest,
+					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::HEXED));
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
+					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>gold)", image::HEXED));
 		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
+			drawing_buffer_add( hex_top_layer, loc, dest,
+					image::get_texture("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::HEXED));
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
+					image::get_texture("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::HEXED));
 		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-bottom.png~RC(magenta>green)", image::SCALED_TO_HEX));
+			drawing_buffer_add( hex_top_layer, loc, dest,
+					image::get_texture("misc/hover-hex-top.png~RC(magenta>green)", image::HEXED));
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
+					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>green)", image::HEXED));
 		} else {
-			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-top.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
-					image::get_image("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::SCALED_TO_HEX));
+			drawing_buffer_add( hex_top_layer, loc, dest,
+					image::get_texture("misc/hover-hex-top.png~RC(magenta>lightblue)", image::HEXED));
+			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
+					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::HEXED));
 		}
 	}
 
@@ -301,8 +269,8 @@ void game_display::draw_hex(const map_location& loc)
 	if (!is_shrouded && !reach_map_.empty()
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
-		drawing_buffer_add(LAYER_REACHMAP, loc, xpos, ypos,
-				image::get_image(unreachable,image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_REACHMAP, loc, dest,
+				image::get_texture(unreachable,image::HEXED));
 	}
 
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
@@ -310,33 +278,33 @@ void game_display::draw_hex(const map_location& loc)
 
 		if (!(w->is_active() && w->has_temp_move()))
 		{
-			std::vector<surface> footstepImages = footsteps_images(loc, route_, dc_);
+			std::vector<texture> footstepImages = footsteps_images(loc, route_, dc_);
 			if (!footstepImages.empty()) {
-				drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footsteps_images(loc, route_, dc_));
+				drawing_buffer_add(LAYER_FOOTSTEPS, loc, dest, footstepImages);
 			}
 		}
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, dest,
+			image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED));
 	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
-			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, dest,
+			image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::HEXED));
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(mode_ != RUNNING) {
 		static const image::locator linger(game_config::images::linger);
-		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, xpos, ypos,
-			image::get_image(linger, image::TOD_COLORED));
+		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, dest,
+			image::get_texture(linger, image::TOD_COLORED));
 	}
 
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		static const image::locator selected(game_config::images::selected);
-		drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
-				image::get_image(selected, image::SCALED_TO_HEX));
+		drawing_buffer_add(LAYER_SELECTED_HEX, loc, dest,
+				image::get_texture(selected, image::HEXED));
 	}
 
 	// Show def% and turn to reach info
@@ -364,13 +332,15 @@ bool game_display::has_time_area() const
 	return resources::tod_manager->has_time_area();
 }
 
-void game_display::draw_sidebar()
+void game_display::layout()
 {
+	display::layout();
+
 	if ( !team_valid() )
 		return;
 
 	refresh_report("report_clock");
-    refresh_report("report_battery");
+	refresh_report("report_battery");
 	refresh_report("report_countdown");
 
 	if (invalidateGameStatus_)
@@ -422,21 +392,24 @@ void game_display::draw_movement_info(const map_location& loc)
 			int def_font = w->second.turns > 0 ? 18 : 16;
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);
 
-			int xpos = get_location_x(loc);
-			int ypos = get_location_y(loc);
+			const int xpos = get_location_x(loc);
+			const int ypos = get_location_y(loc);
+			const int zoom = int(zoom_);
+			const SDL_Rect dest{xpos, ypos, zoom, zoom};
+
 			if (w->second.invisible) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
+					image::get_texture("misc/hidden.png", image::HEXED));
 			}
 
 			if (w->second.zoc) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/zoc.png", image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
+					image::get_texture("misc/zoc.png", image::HEXED));
 			}
 
 			if (w->second.capture) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
-					image::get_image("misc/capture.png", image::SCALED_TO_HEX));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
+					image::get_texture("misc/capture.png", image::HEXED));
 			}
 
 			//we display turn info only if different from a simple last "1"
@@ -480,9 +453,9 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
-std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
+std::vector<texture> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 {
-	std::vector<surface> res;
+	std::vector<texture> res;
 
 	if (route_.steps.size() < 2) {
 		return res; // no real "route"
@@ -507,7 +480,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 	}
 	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 
-	surface teleport = nullptr;
+	texture teleport;
 
 	// We draw 2 half-hex (with possibly different directions),
 	// but skip the first for the first step.
@@ -521,7 +494,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
 			std::string teleport_image =
 			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
-			teleport = image::get_image(teleport_image, image::SCALED_TO_HEX);
+			teleport = image::get_texture(teleport_image, image::HEXED);
 			continue;
 		}
 
@@ -539,7 +512,7 @@ std::vector<surface> footsteps_images(const map_location& loc, const pathfind::m
 			+ sense + "-" + i->write_direction(dir)
 			+ ".png" + rotate;
 
-		res.push_back(image::get_image(image, image::SCALED_TO_HEX));
+		res.push_back(image::get_texture(image, image::HEXED));
 	}
 
 	// we draw teleport image (if any) in last
@@ -613,10 +586,10 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	}
 
 	font::floating_label flabel(text);
-	flabel.set_font_size(font::SIZE_FLOAT_LABEL);
+	flabel.set_font_size(int(font::SIZE_FLOAT_LABEL * get_zoom_factor()));
 	flabel.set_color(color);
 	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
-	flabel.set_move(0, -0.1 * turbo_speed());
+	flabel.set_move(0, -0.1 * turbo_speed() * get_zoom_factor());
 	flabel.set_lifetime(1000/turbo_speed());
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 

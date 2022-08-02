@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -199,6 +199,8 @@ public:
 	virtual const unit_advancements_aspect& get_advancements() const = 0;
 
 	virtual double get_aggression() const = 0;
+
+	virtual bool get_allow_ally_villages() const = 0;
 
 	virtual const aspect_map& get_aspects() const = 0;
 
@@ -551,6 +553,11 @@ public:
 	virtual double get_aggression() const override
 	{
 		return target_->get_aggression();
+	}
+
+	virtual bool get_allow_ally_villages() const override
+	{
+		return target_->get_allow_ally_villages();
 	}
 
 	virtual const aspect_map& get_aspects() const override
@@ -1137,6 +1144,8 @@ public:
 
 	virtual double get_aggression() const override;
 
+	virtual bool get_allow_ally_villages() const override;
+
 	virtual const aspect_map& get_aspects() const override;
 
 	virtual aspect_map& get_aspects() override;
@@ -1282,6 +1291,7 @@ private:
 
 	typesafe_aspect_ptr<unit_advancements_aspect> advancements_;
 	typesafe_aspect_ptr<double> aggression_;
+	typesafe_aspect_ptr<bool> allow_ally_villages_;
 	aspect_map aspects_;
 	typesafe_aspect_ptr<attacks_vector> attacks_;
 	mutable typesafe_aspect_ptr<terrain_filter> avoid_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,7 +43,6 @@ void item_palette::setup(const game_config_view& cfg)
 			if(!group["core"].to_bool(false))
 				non_core_items_.insert(item["id"]);
 		}
-		nmax_items_ = std::max<int>(nmax_items_, group_map_[group["id"]].size());
 	}
 
 	select_fg_item("anvil");
@@ -53,11 +52,15 @@ void item_palette::setup(const game_config_view& cfg)
 	set_group("items");
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found." << std::endl;
+		ERR_ED << "No items found.";
 	}
 }
 
-void item_palette::draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text)
+void item_palette::setup_item(
+	const overlay& item,
+	texture& base_image,
+	texture& /*overlay_image*/,
+	std::stringstream& tooltip_text)
 {
 	std::stringstream filename;
 	filename << item.image;
@@ -65,19 +68,15 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 		filename << item.halo;
 	}
 
-	image = image::get_image(filename.str());
-	if(image == nullptr) {
+	base_image = image::get_texture(filename.str());
+	if(!base_image) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for item type: '" << filename.str() << "' not found" << std::endl;
-		image = image::get_image(game_config::images::missing);
-		if(image == nullptr) {
-			ERR_ED << "Placeholder image not found" << std::endl;
+		ERR_ED << "image for item type: '" << filename.str() << "' not found";
+		base_image = image::get_texture(game_config::images::missing);
+		if(!base_image) {
+			ERR_ED << "Placeholder image not found";
 			return;
 		}
-	}
-
-	if(image->w != item_size_ || image->h != item_size_) {
-		image = scale_surface(image, item_size_, item_size_);
 	}
 
 	tooltip_text << item.name;

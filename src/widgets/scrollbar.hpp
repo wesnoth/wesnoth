@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -33,7 +33,7 @@ public:
 	//- @param d         the display object
 	//- @param pane      the widget where wheel events take place
 	//- @param callback  a callback interface for warning that the grip has been moved
-	scrollbar(CVideo &video);
+	scrollbar();
 
 	/**
 	 * Determine where the scrollbar is.
@@ -75,7 +75,6 @@ protected:
 
 private:
 	SDL_Rect grip_area() const;
-	surface mid_scaled_, groove_scaled_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, DRAGGED };
 	STATE state_;

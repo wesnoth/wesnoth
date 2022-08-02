@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -361,7 +361,7 @@ void wml_tag::expand(wml_tag& root)
 				super_refs_.push_back(super_tag);
 			} else {
 				// TODO: Detect super cycles too!
-				//std::cerr << "the same" << super_tag->name_ << "\n";
+				//PLAIN_LOG << "the same" << super_tag->name_;
 			}
 		}
 		// TODO: Warn if the super doesn't exist

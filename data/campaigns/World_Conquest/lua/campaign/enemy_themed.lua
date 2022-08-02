@@ -2,7 +2,7 @@ local _ = wesnoth.textdomain 'wesnoth-wc'
 local on_event = wesnoth.require("on_event")
 
 local strings = {
-	enemy_pet = _ "$name|'s pet" 
+	enemy_pet = _ "$name|'s pet"
 }
 -- in the later scenarios there is a small chance that a scenario will be themed for an enemy
 -- which means in paticular changing the castle of the enemy accorign to the unit type of that
@@ -24,7 +24,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 				}
 			}
 		}
-		
+
 	}
 	boss = boss[1]
 	if boss == nil then
@@ -87,7 +87,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 				wml.tag.effect {
 					apply_to="overlay",
 					add = "misc/hero-icon.png",
-				} 
+				}
 			}
 		}
 	}

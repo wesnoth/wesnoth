@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -57,14 +57,12 @@ log_settings::log_settings()
 
 void log_settings::pre_show(window& window)
 {
-	set_restore(true); //why is this done manually?
-
 	listbox& logger_box = find_widget<listbox>(&window, "logger_listbox", false);
 
 	for(unsigned int i = 0; i < domain_list_.size(); i++){
 		std::string this_domain = domain_list_[i];
-		std::map<std::string, string_map> data;
-		string_map item;
+		widget_data data;
+		widget_item item;
 
 		item["label"] = this_domain;
 		data["label"] = item;

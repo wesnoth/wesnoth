@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,7 +36,7 @@ public:
 	game_display(game_board& board,
 			std::weak_ptr<wb::manager> wb,
 			reports & reports_object,
-			const config& theme_cfg,
+			const std::string& theme_id,
 			const config& level);
 
 	~game_display();
@@ -135,20 +135,34 @@ public:
 
 	virtual bool has_time_area() const override;
 
+	/**
+	 * TLD update() override. Replaces old pre_draw(). Be sure to call
+	 * the base class method as well.
+	 *
+	 * game_display does specific things related e.g. to unit rendering
+	 * and calls the whiteboard pre-draw method here.
+	 */
+	virtual void update() override;
+
+	/**
+	 * TLD layout() override. Replaces old refresh_reports(). Be sure to
+	 * call the base class method as well.
+	 *
+	 * This updates some reports, like clock, that need to be refreshed
+	 * every frame.
+	 */
+	virtual void layout() override;
+
+	/**
+	 * TLD render() override. Replaces old post_draw(). Be sure to call
+	 * the base class method as well.
+	 *
+	 * This calls the whiteboard's post-draw method after rendering.
+	 */
+	virtual void render() override;
+
 protected:
-	/**
-	 * game_display pre_draw does specific things related e.g. to unit rendering
-	 * and calls the whiteboard pre-draw method.
-	 */
-	virtual void pre_draw() override;
-	/**
-	 * Calls the whiteboard's post-draw method.
-	 */
-	virtual void post_draw() override;
-
 	virtual void draw_invalidated() override;
-
-	virtual void post_commit() override;
 
 	virtual void draw_hex(const map_location& loc) override;
 
@@ -218,8 +232,6 @@ public:
 private:
 	game_display(const game_display&);
 	void operator=(const game_display&);
-
-	virtual void draw_sidebar() override;
 
 	overlay_map overlay_map_;
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,35 +44,35 @@ image::image(const implementation::builder_image& builder)
 
 point image::calculate_best_size() const
 {
-	surface image(::image::get_image(::image::locator(get_label())));
+	point image_size = ::image::get_size(::image::locator{get_label()});
 
-	if(!image) {
-		DBG_GUI_L << LOG_HEADER << " empty image return default.\n";
+	if(image_size.x == 0 || image_size.y == 0) {
+		DBG_GUI_L << LOG_HEADER << " empty image return default.";
 		return get_config_default_size();
 	}
 
 	const point minimum = get_config_default_size();
 	const point maximum = get_config_maximum_size();
 
-	point result {image->w, image->h};
+	point result {image_size.x, image_size.y};
 
 	if(minimum.x > 0 && result.x < minimum.x) {
-		DBG_GUI_L << LOG_HEADER << " increase width to minimum.\n";
+		DBG_GUI_L << LOG_HEADER << " increase width to minimum.";
 		result.x = minimum.x;
 	} else if(maximum.x > 0 && result.x > maximum.x) {
-		DBG_GUI_L << LOG_HEADER << " decrease width to maximum.\n";
+		DBG_GUI_L << LOG_HEADER << " decrease width to maximum.";
 		result.x = maximum.x;
 	}
 
 	if(minimum.y > 0 && result.y < minimum.y) {
-		DBG_GUI_L << LOG_HEADER << " increase height to minimum.\n";
+		DBG_GUI_L << LOG_HEADER << " increase height to minimum.";
 		result.y = minimum.y;
 	} else if(maximum.y > 0 && result.y > maximum.y) {
-		DBG_GUI_L << LOG_HEADER << " decrease height to maximum.\n";
+		DBG_GUI_L << LOG_HEADER << " decrease height to maximum.";
 		result.y = maximum.y;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << result << ".";
 	return result;
 }
 
@@ -101,7 +101,7 @@ bool image::disable_click_dismiss() const
 image_definition::image_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing image " << id << '\n';
+	DBG_GUI_P << "Parsing image " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -122,12 +122,12 @@ builder_image::builder_image(const config& cfg) : builder_styled_widget(cfg)
 {
 }
 
-widget* builder_image::build() const
+std::unique_ptr<widget> builder_image::build() const
 {
-	image* widget = new image(*this);
+	auto widget = std::make_unique<image>(*this);
 
 	DBG_GUI_G << "Window builder: placed image '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	return widget;
 }

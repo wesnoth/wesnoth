@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -45,7 +45,7 @@ void playmp_controller::hotkey_handler::stop_network(){
 
 bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
+	hotkey::HOTKEY_COMMAND command = cmd.command;
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_ENDTURN:

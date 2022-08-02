@@ -16,9 +16,8 @@ end
 function ca_messenger_move:execution(cfg)
     local messenger, x, y = messenger_next_waypoint(cfg)
 
-    local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
-
     if (messenger.x ~= x) or (messenger.y ~= y) then
+        local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
         local wp = AH.get_closest_location(
             { x, y },
             { { "not", { { "filter", { { "not", { side = wesnoth.current.side } } } } } } },
@@ -29,16 +28,16 @@ function ca_messenger_move:execution(cfg)
 
     local avoid_map = AH.get_avoid_map(ai, wml.get_child(cfg, "avoid"), true)
 
-    local path = AH.find_path_with_avoid(messenger, x, y, avoid_map)
-    if (not path) then path = { { messenger.x, messenger.y } } end
-    local next_hop = AH.next_hop(messenger, x, y, { path = path, avoid_map = avoid_map } )
+    local path1 = AH.find_path_with_avoid(messenger, x, y, avoid_map)
+    if (not path1) then path1 = { { messenger.x, messenger.y } } end
+    local next_hop = AH.next_hop(messenger, x, y, { path1 = path1, avoid_map = avoid_map, ignore_own_units = true } )
     if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
     -- Compare this to the "ideal path"
-    local path = AH.find_path_with_avoid(messenger, x, y, avoid_map, { ignore_enemies = true })
-    if (not path) then path = { { messenger.x, messenger.y } } end
+    local path2 = AH.find_path_with_avoid(messenger, x, y, avoid_map, { ignore_enemies = true })
+    if (not path2) then path2 = { { messenger.x, messenger.y } } end
     local optimum_hop = { messenger.x, messenger.y }
-    for _,step in ipairs(path) do
+    for _,step in ipairs(path2) do
         local sub_path, sub_cost = AH.find_path_with_avoid(messenger, step[1], step[2], avoid_map)
         if sub_cost > messenger.moves then
             break
@@ -97,7 +96,7 @@ function ca_messenger_move:execution(cfg)
 
     local targets = AH.get_attackable_enemies { { "filter_adjacent", { id = messenger.id } } }
 
-    local max_rating, best_target, best_weapon = - math.huge
+    local max_rating, best_target, best_weapon = - math.huge, nil, nil
     for _,target in ipairs(targets) do
         for n_weapon,weapon in ipairs(messenger.attacks) do
             local att_stats, def_stats = wesnoth.simulate_combat(messenger, n_weapon, target)

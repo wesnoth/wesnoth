@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@ class config;
 class terrain_type;
 class unit;
 class unit_type;
-class CVideo;
 class game_config_view;
 
 #include <memory>

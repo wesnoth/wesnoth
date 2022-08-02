@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -84,7 +84,7 @@ std::string missing_mandatory_wml_key(
 		} else {
 			WRN_NG << __func__
 					<< " parameter 'section' should contain brackets."
-					<< " Added them.\n";
+					<< " Added them.";
 			symbols["section"] = "[" + section + "]";
 		}
 	}

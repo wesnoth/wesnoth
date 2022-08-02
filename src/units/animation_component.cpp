@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,21 +19,22 @@
 #include "display.hpp"
 #include "map/map.hpp"
 #include "preferences/display.hpp"
+#include "preferences/general.hpp"
 #include "random.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 
 #include <set>
 
-const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
-		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
+const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
+		const map_location& second_loc,const int value,const strike_result::type hit,
 		const_attack_ptr attack, const_attack_ptr second_attack, int swing_num)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
 	for(const unit_animation& anim : animations_) {
-		int matching = anim.matches(disp,loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
+		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&anim);
 		} else if(matching > max_val) {
@@ -51,47 +52,41 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 
 void unit_animation_component::set_standing(bool with_bars)
 {
-	display *disp = display::get_singleton();
-	if(disp == nullptr) return;
 	if (preferences::show_standing_animations()&& !u_.incapacitated()) {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "standing"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "standing"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	} else {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_"),
 			with_bars,  "", {0,0,0}, STATE_STANDING);
 	}
 }
 
 void unit_animation_component::set_ghosted(bool with_bars)
 {
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_ghosted_"),
+	start_animation(INT_MAX, choose_animation(u_.loc_, "_ghosted_"),
 			with_bars);
 	anim_->pause_animation();
 }
 
 void unit_animation_component::set_disabled_ghosted(bool with_bars)
 {
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_ghosted_"),
+	start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_ghosted_"),
 			with_bars);
 }
 
 void unit_animation_component::set_idling()
 {
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "idling"),
+	start_animation(INT_MAX, choose_animation(u_.loc_, "idling"),
 		true, "", {0,0,0}, STATE_FORGET);
 }
 
 void unit_animation_component::set_selecting()
 {
-	const display *disp =  display::get_singleton();
 	if (preferences::show_standing_animations() && !u_.incapacitated()) {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "selected"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "selected"),
 			true, "", {0,0,0}, STATE_FORGET);
 	} else {
-		start_animation(INT_MAX, choose_animation(*disp, u_.loc_, "_disabled_selected_"),
+		start_animation(INT_MAX, choose_animation(u_.loc_, "_disabled_selected_"),
 			true, "", {0,0,0}, STATE_FORGET);
 	}
 }
@@ -99,7 +94,6 @@ void unit_animation_component::set_selecting()
 void unit_animation_component::start_animation (int start_time, const unit_animation *animation,
 	bool with_bars,  const std::string &text, color_t text_color, STATE state)
 {
-	const display * disp =  display::get_singleton();
 	if (!animation) {
 		if (state == STATE_STANDING)
 			state_ = state;
@@ -116,9 +110,9 @@ void unit_animation_component::start_animation (int start_time, const unit_anima
 	anim_->start_animation(real_start_time, u_.loc_, u_.loc_.get_direction(u_.facing_),
 		 text, text_color, accelerate);
 	frame_begin_time_ = anim_->get_begin_time() -1;
-	if (disp->idle_anim()) {
+	if (preferences::idle_anim()) {
 		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * disp->idle_anim_rate());
+			+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * preferences::idle_anim_rate());
 	} else {
 		next_idling_ = INT_MAX;
 	}
@@ -140,9 +134,9 @@ void unit_animation_component::refresh()
 	if (get_current_animation_tick() > next_idling_ + 1000)
 	{
 		// prevent all units animating at the same time
-		if (disp.idle_anim()) {
+		if (preferences::idle_anim()) {
 			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * disp.idle_anim_rate());
+				+ static_cast<int>(randomness::rng::default_instance().get_random_int(20000, 39999) * preferences::idle_anim_rate());
 		} else {
 			next_idling_ = INT_MAX;
 		}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,7 +61,7 @@ static lg::log_domain log_random("random");
 
 static void verify(const unit_map& units, const config& cfg) {
 	std::stringstream errbuf;
-	LOG_REPLAY << "verifying unit structure...\n";
+	LOG_REPLAY << "verifying unit structure...";
 
 	const std::size_t nunits = cfg["num_units"].to_size_t();
 	if(nunits != units.size()) {
@@ -106,7 +106,10 @@ static void verify(const unit_map& units, const config& cfg) {
 		u->write(u_cfg);
 
 		bool is_ok = true;
-		static const std::array<std::string, 4> fields {{"type","hitpoints","experience","side"}};
+
+		using namespace std::literals::string_literals;
+		static const std::array fields{"type"s, "hitpoints"s, "experience"s, "side"s};
+
 		for(const std::string& field : fields) {
 			if (u_cfg[field] != un[field]) {
 				errbuf << "ERROR IN FIELD '" << field << "' for unit at "
@@ -123,7 +126,7 @@ static void verify(const unit_map& units, const config& cfg) {
 		}
 	}
 
-	LOG_REPLAY << "verification passed\n";
+	LOG_REPLAY << "verification passed";
 }
 
 static std::time_t get_time(const config &speak)
@@ -154,7 +157,7 @@ chat_msg::chat_msg(const config &cfg)
 		nick_ = "*"+cfg["id"].str()+"*";
 	}
 	int side = cfg["side"].to_int(0);
-	LOG_REPLAY << "side in message: " << side << std::endl;
+	LOG_REPLAY << "side in message: " << side;
 	if (side==0) {
 		color_ = "white";//observers
 	} else {
@@ -195,7 +198,7 @@ void replay::delete_upcoming_commands()
 */
 void replay::process_error(const std::string& msg)
 {
-	ERR_REPLAY << msg << std::flush;
+	ERR_REPLAY << msg;
 
 	resources::controller->process_oos(msg); // might throw quit_game_exception()
 }
@@ -247,7 +250,7 @@ void replay::add_synced_command(const std::string& name, const config& command)
 	config& cmd = add_command();
 	cmd.add_child(name,command);
 	cmd["from_side"] = resources::controller->current_side();
-	LOG_REPLAY << "add_synced_command: \n" << cmd.debug() << "\n";
+	LOG_REPLAY << "add_synced_command: \n" << cmd.debug();
 }
 
 
@@ -445,7 +448,7 @@ config& replay::get_last_real_command()
 		}
 		return c;
 	}
-	ERR_REPLAY << "replay::get_last_real_command called with no existent command." << std::endl;
+	ERR_REPLAY << "replay::get_last_real_command called with no existent command.";
 	assert(false && "replay::get_last_real_command called with no existent command.");
 	throw "replay::get_last_real_command called with no existent command.";
 }
@@ -464,7 +467,7 @@ static bool fix_rename_command(const config& c, config& async_child)
 		try {
 			read_locations(child.value(), steps);
 		} catch(const bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug() << std::endl;
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug();
 		}
 
 		if (steps.empty()) {
@@ -516,7 +519,7 @@ void replay::undo_cut(config& dst)
 		{
 			if(c["sent"].to_bool(false))
 			{
-				ERR_REPLAY << "trying to undo a command that was already sent.\n";
+				ERR_REPLAY << "trying to undo a command that was already sent.";
 				return;
 			}
 			else
@@ -528,7 +531,7 @@ void replay::undo_cut(config& dst)
 
 	if (cmd_index < 0)
 	{
-		ERR_REPLAY << "trying to undo a command but no command was found.\n";
+		ERR_REPLAY << "trying to undo a command but no command was found.";
 		return;
 	}
 	//Fix the [command]s after the undone action. This includes dependent commands for that user actions and async user action.
@@ -559,7 +562,7 @@ void replay::undo_cut(config& dst)
 		}
 		else
 		{
-			ERR_REPLAY << "Couldn't handle command:\n" << cc << "\nwhen undoing.\n";
+			ERR_REPLAY << "Couldn't handle command:\n" << cc << "\nwhen undoing.";
 		}
 	}
 	set_to_end();
@@ -622,7 +625,7 @@ config* replay::get_next_action()
 	if (at_end())
 		return nullptr;
 
-	LOG_REPLAY << "up to replay action " << base_->get_pos() + 1 << '/' << ncommands() << '\n';
+	LOG_REPLAY << "up to replay action " << base_->get_pos() + 1 << '/' << ncommands();
 
 	config* retv = &command(base_->get_pos());
 	base_->set_pos(base_->get_pos() + 1);
@@ -689,7 +692,6 @@ REPLAY_RETURN do_replay(bool one_move)
 		display::get_singleton()->recalculate_minimap();
 	}
 
-	update_locker lock_update(CVideo::get_singleton(), resources::controller->is_skipping_replay());
 	return do_replay_handle(one_move);
 }
 /**
@@ -711,15 +713,15 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		const bool is_synced = synced_context::is_synced();
 		const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 
-		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "is_unsynced=" << is_unsynced << "\n";
+		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "is_unsynced=" << is_unsynced;
 
 		if (cfg != nullptr)
 		{
-			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
+			DBG_REPLAY << "Replay data:\n" << *cfg;
 		}
 		else
 		{
-			DBG_REPLAY << "Replay data at end\n";
+			DBG_REPLAY << "Replay data at end";
 			return REPLAY_RETURN_AT_END;
 		}
 
@@ -730,7 +732,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		{
 			//this shouldn't happen anymore because replaycontroller now moves over the [start] with get_next_action
 			//also we removed the the "add empty replay entry at scenario reload" behavior.
-			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
+			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay";
 			//do nothing
 		}
 		else if (const config &speak = cfg->child("speak"))
@@ -741,7 +743,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			//if (!preferences::parse_should_show_lobby_join(speaker_name, message)) return;
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			if(resources::recorder->add_chat_message_location()) {
-				DBG_REPLAY << "tried to add a chat message twice.\n";
+				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = speak["side"];
 					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
@@ -785,7 +787,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				// The same way it is possible that an unrenamable unit moves to a
 				// hex where previously a renamable unit was.
 				WRN_REPLAY << "attempt to rename unit at location: "
-				   << loc << (u.valid() ? ", which is unrenamable" : ", where none exists (anymore)") << "\n";
+				   << loc << (u.valid() ? ", which is unrenamable" : ", where none exists (anymore)");
 			}
 		}
 
@@ -854,7 +856,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			// the only other option for "dependent" command is checksum which is already checked.
 			assert(cfg->all_children_count() == 1);
 			std::string child_name = cfg->all_children_range().front().key;
-			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
+			DBG_REPLAY << "got an dependent action name = " << child_name;
 			resources::recorder->revert_action();
 			return REPLAY_FOUND_DEPENDENT;
 		}
@@ -875,10 +877,10 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
 
 				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
-					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side() << "\n";
+					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side();
 				}
 				else if((*cfg)["side_invalid"].to_bool(false)) {
-					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.\n";
+					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Sent from wrong client.";
 				}
 				/*
 					we need to use the undo stack during replays in order to make delayed shroud updated work.

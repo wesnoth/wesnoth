@@ -57,11 +57,11 @@ function ca_hang_out:execution(cfg)
     local default_avoid_tag = { terrain = 'C*,C*^*,*^C*' }
     local avoid_map = AH.get_avoid_map(ai, avoid_tag, true, default_avoid_tag)
 
-    local max_rating, best_hex, best_unit = - math.huge
+    local max_rating, best_hex, best_unit = - math.huge, nil, nil
     for _,unit in ipairs(units) do
         -- Only consider units that have not been marked yet
         if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "moved")) then
-            local max_rating_unit, best_hex_unit = - math.huge
+            local max_rating_unit, best_hex_unit = - math.huge, nil
 
             -- Check out all unoccupied hexes the unit can reach
             local reach_map = AH.get_reachmap(unit, { avoid_map = avoid_map, exclude_occupied = true })
@@ -75,7 +75,7 @@ function ca_hang_out:execution(cfg)
 
                     -- Minor penalty for distance from current position of unit
                     -- so that there's not too much shuffling around
-                    local rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
+                    rating = rating - M.distance_between(x, y, unit.x, unit.y) / 1000.
 
                     if (rating > max_rating_unit) then
                         max_rating_unit = rating

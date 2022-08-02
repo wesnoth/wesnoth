@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -262,7 +262,7 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "
 			   << checksum.nfiles << " files; "
-			   << checksum.sum_size << " bytes" << std::endl;
+			   << checksum.sum_size << " bytes";
 	}
 
 	return checksum;

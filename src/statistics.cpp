@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -155,7 +155,7 @@ static stats::str_int_map read_str_int_map(const config& cfg)
 				m[val] = std::stoi(i.first);
 			}
 		} catch(const std::invalid_argument&) {
-			ERR_NG << "Invalid statistics entry; skipping\n";
+			ERR_NG << "Invalid statistics entry; skipping";
 		}
 	}
 
@@ -272,7 +272,7 @@ static void merge_cth_map(stats::hitrate_map& a, const stats::hitrate_map& b)
 
 static void merge_stats(stats& a, const stats& b)
 {
-	DBG_NG << "Merging statistics\n";
+	DBG_NG << "Merging statistics";
 	merge_str_int_map(a.recruits,b.recruits);
 	merge_str_int_map(a.recalls,b.recalls);
 	merge_str_int_map(a.advanced_to,b.advanced_to);
@@ -700,7 +700,7 @@ stats calculate_stats(const std::string & save_id)
 {
 	stats res;
 
-	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size() << "\n";
+	DBG_NG << "calculate_stats, side: " << save_id << " master_stats.size: " << master_stats.size();
 	// The order of this loop matters since the turn stats are taken from the
 	// last stats merged.
 	for ( std::size_t i = 0; i != master_stats.size(); ++i ) {
@@ -817,7 +817,7 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 	for (stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		const unit_type *t = unit_types.find(i->first);
 		if (!t) {
-			ERR_NG << "Statistics refer to unknown unit type '" << i->first << "'. Discarding." << std::endl;
+			ERR_NG << "Statistics refer to unknown unit type '" << i->first << "'. Discarding.";
 		} else {
 			cost += i->second * t->cost();
 		}

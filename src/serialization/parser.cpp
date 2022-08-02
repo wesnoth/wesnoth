@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2021
+	Copyright (C) 2005 - 2022
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -151,7 +151,7 @@ void parser::operator()()
 				utils::string_map i18n_symbols;
 				std::stringstream ss;
 				ss << tok_.get_start_line() << " " << tok_.get_file();
-				ERR_CF << lineno_string(i18n_symbols, ss.str(), "Skipping over a utf8 BOM at $pos") << '\n';
+				ERR_CF << lineno_string(i18n_symbols, ss.str(), "Skipping over a utf8 BOM at $pos");
 			} else {
 				error(_("Unexpected characters at line start"));
 			}
@@ -718,7 +718,7 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 
 	for(const config::attribute& i : cfg.attribute_range()) {
 		if(!config::valid_attribute(i.first)) {
-			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...\n";
+			ERR_CF << "Config contains invalid attribute name '" << i.first << "', skipping...";
 			continue;
 		}
 
@@ -727,7 +727,7 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 
 	for(const config::any_child item : cfg.all_children_range()) {
 		if(!config::valid_tag(item.key)) {
-			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...\n";
+			ERR_CF << "Config contains invalid tag name '" << item.key << "', skipping...";
 			continue;
 		}
 
@@ -751,7 +751,7 @@ static void write_internal(const configr_of& cfg, std::ostream& out, std::string
 		assert(pair.first && pair.second);
 
 		if(!config::valid_tag(*pair.first)) {
-			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...\n";
+			ERR_CF << "Config contains invalid tag name '" << *pair.first << "', skipping...";
 			continue;
 		}
 

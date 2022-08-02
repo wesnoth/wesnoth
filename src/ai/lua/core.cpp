@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,9 +44,7 @@
 #include "ai/composite/contexts.hpp"
 #include "ai/default/aspect_attacks.hpp"
 
-#include "lua/lualib.h"
 #include "lua/lauxlib.h"
-#include "lua/llimits.h"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)
@@ -334,7 +332,7 @@ static int cfun_ai_get_targets(lua_State *L)
 		lua_createtable(L, 3, 0);
 
 		lua_pushstring(L, "type");
-		lua_pushstring(L, it->type.to_string().c_str());
+		lua_pushstring(L, ai_target::get_string(it->type).c_str());
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "loc");
@@ -815,11 +813,33 @@ static int impl_ai_aspect_get(lua_State* L)
 	return 1;
 }
 
+static int impl_ai_aspect_list(lua_State* L)
+{
+	const aspect_map& aspects = get_engine(L).get_readonly_context().get_aspects();
+	std::vector<std::string> aspect_names;
+	std::transform(aspects.begin(), aspects.end(), std::back_inserter(aspect_names), std::mem_fn(&aspect_map::value_type::first));
+	lua_push(L, aspect_names);
+	return 1;
+}
+
 static int impl_ai_aspect_set(lua_State* L)
 {
 	lua_pushstring(L, "attempted to write to the ai.aspects table, which is read-only");
 	return lua_error(L);
 }
+
+static luaL_Reg const mutating_callbacks[] = {
+	{ "attack", &cfun_ai_execute_attack },
+	{ "move", &cfun_ai_execute_move_partial },
+	{ "move_full", &cfun_ai_execute_move_full },
+	{ "recall", &cfun_ai_execute_recall },
+	{ "recruit", &cfun_ai_execute_recruit },
+	{ "stopunit_all", &cfun_ai_execute_stopunit_all },
+	{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
+	{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
+	{ "fallback_human", &cfun_ai_fallback_human},
+	{ nullptr, nullptr }
+};
 
 static int impl_ai_get(lua_State* L)
 {
@@ -840,65 +860,11 @@ static int impl_ai_get(lua_State* L)
 		lua_setfield(L, -2, "__index"); // [-1: Aspects metatable  -2: Aspects table]
 		lua_pushcfunction(L, &impl_ai_aspect_set); // [-1: Metafunction  -2: Aspects mt  -3: Aspects table]
 		lua_setfield(L, -2, "__newindex"); // [-1: Aspects metatable  -2: Aspects table]
+		lua_pushlightuserdata(L, &engine); // [-1: Engine  -2: Aspects mt  -3: Aspects table]
+		lua_pushcclosure(L, &impl_ai_aspect_list, 1); // [-1: Metafunction  -2: Aspects mt  -3: Aspects table]
+		lua_setfield(L, -2, "__dir"); // [-1: Aspects metatable  -2: Aspects table]
 		lua_setmetatable(L, -2); // [-1: Aspects table]
 		return 1;
-	}
-	static luaL_Reg const callbacks[] = {
-			// Move maps
-			{ "get_new_dst_src", &cfun_ai_get_dstsrc },
-			{ "get_new_src_dst", &cfun_ai_get_srcdst },
-			{ "get_new_enemy_dst_src", &cfun_ai_get_enemy_dstsrc },
-			{ "get_new_enemy_src_dst", &cfun_ai_get_enemy_srcdst },
-			{ "recalculate_move_maps", &cfun_ai_recalculate_move_maps },
-			{ "recalculate_enemy_move_maps", &cfun_ai_recalculate_move_maps_enemy },
-			// End of move maps
-			// Goals and targets
-			{ "get_targets", &cfun_ai_get_targets },
-			// End of G & T
-			// Aspects
-			{ "get_aggression", &cfun_ai_get_aggression },
-			{ "get_avoid", &cfun_ai_get_avoid },
-			{ "get_attacks", &cfun_ai_get_attacks },
-			{ "get_caution", &cfun_ai_get_caution },
-			{ "get_grouping", &cfun_ai_get_grouping },
-			{ "get_leader_aggression", &cfun_ai_get_leader_aggression },
-			{ "get_leader_goal", &cfun_ai_get_leader_goal },
-			{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep },
-			{ "get_leader_value", &cfun_ai_get_leader_value },
-			{ "get_passive_leader", &cfun_ai_get_passive_leader },
-			{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
-			{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
-			{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
-			{ "get_simple_targeting", &cfun_ai_get_simple_targeting },
-			{ "get_support_villages", &cfun_ai_get_support_villages },
-			{ "get_village_value", &cfun_ai_get_village_value },
-			{ "get_villages_per_scout", &cfun_ai_get_villages_per_scout },
-			// End of aspects
-			// Validation/cache functions
-			{ "is_dst_src_valid", &cfun_ai_is_dst_src_valid },
-			{ "is_enemy_dst_src_valid", &cfun_ai_is_dst_src_enemy_valid },
-			{ "is_src_dst_valid", &cfun_ai_is_src_dst_valid },
-			{ "is_enemy_src_dst_valid", &cfun_ai_is_src_dst_enemy_valid },
-			// End of validation functions
-			{ "suitable_keep", &cfun_ai_get_suitable_keep },
-			{ "check_recall", &cfun_ai_check_recall },
-			{ "check_move", &cfun_ai_check_move },
-			{ "check_stopunit", &cfun_ai_check_stopunit },
-			{ "check_attack", &cfun_ai_check_attack },
-			{ "check_recruit", &cfun_ai_check_recruit },
-			//{ "",},
-			//{ "",},
-			{ nullptr, nullptr } };
-	for (const luaL_Reg* p = callbacks; p->name; ++p) {
-		if(m == p->name) {
-			lua_pushlightuserdata(L, &engine); // [-1: engine  ...]
-			lua_pushcclosure(L, p->func, 1); // [-1: function  ...]
-			// Store the function so that __index doesn't need to be called next time
-			lua_pushstring(L, p->name); // [-1: name  -2: function  ...]
-			lua_pushvalue(L, -2); // [-1: function  -2: name  -3: function ...]
-			lua_rawset(L, 1); // [-1: function  ...]
-			return 1;
-		}
 	}
 	lua_pushstring(L, "read_only");
 	lua_rawget(L, 1);
@@ -907,17 +873,6 @@ static int impl_ai_get(lua_State* L)
 	if(read_only) {
 		return 0;
 	}
-	static luaL_Reg const mutating_callbacks[] = {
-			{ "attack", &cfun_ai_execute_attack },
-			{ "move", &cfun_ai_execute_move_partial },
-			{ "move_full", &cfun_ai_execute_move_full },
-			{ "recall", &cfun_ai_execute_recall },
-			{ "recruit", &cfun_ai_execute_recruit },
-			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
-			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
-			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
-			{ "fallback_human", &cfun_ai_fallback_human},
-			{ nullptr, nullptr } };
 	for (const luaL_Reg* p = mutating_callbacks; p->name; ++p) {
 		if(m == p->name) {
 			lua_pushlightuserdata(L, &engine);
@@ -928,13 +883,81 @@ static int impl_ai_get(lua_State* L)
 	return 0;
 }
 
+static int impl_ai_list(lua_State* L)
+{
+	auto callbacks = lua_check<std::vector<std::string>>(L, 2);
+	callbacks.push_back("side");
+	callbacks.push_back("aspects");
+	if(!luaW_table_get_def(L, 1, "read_only", false)) {
+		for(const luaL_Reg* c = mutating_callbacks; c->name; ++c) {
+			callbacks.push_back(c->name);
+		}
+	}
+	lua_push(L, callbacks);
+	return 1;
+}
+
 static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 	//push data table here
 	lua_newtable(L); // [-1: ai table]
+	static luaL_Reg const callbacks[] = {
+		// Move maps
+		{ "get_new_dst_src", &cfun_ai_get_dstsrc },
+		{ "get_new_src_dst", &cfun_ai_get_srcdst },
+		{ "get_new_enemy_dst_src", &cfun_ai_get_enemy_dstsrc },
+		{ "get_new_enemy_src_dst", &cfun_ai_get_enemy_srcdst },
+		{ "recalculate_move_maps", &cfun_ai_recalculate_move_maps },
+		{ "recalculate_enemy_move_maps", &cfun_ai_recalculate_move_maps_enemy },
+		// Validation/cache functions
+		{ "is_dst_src_valid", &cfun_ai_is_dst_src_valid },
+		{ "is_enemy_dst_src_valid", &cfun_ai_is_dst_src_enemy_valid },
+		{ "is_src_dst_valid", &cfun_ai_is_src_dst_valid },
+		{ "is_enemy_src_dst_valid", &cfun_ai_is_src_dst_enemy_valid },
+		// End of move maps
+		// Goals and targets
+		{ "get_targets", &cfun_ai_get_targets },
+		// Attack analysis
+		{ "get_attacks", &cfun_ai_get_attacks },
+		// Deprecated aspects (don't add anything new here!)
+		{ "get_aggression", &cfun_ai_get_aggression },
+		{ "get_avoid", &cfun_ai_get_avoid },
+		{ "get_caution", &cfun_ai_get_caution },
+		{ "get_grouping", &cfun_ai_get_grouping },
+		{ "get_leader_aggression", &cfun_ai_get_leader_aggression },
+		{ "get_leader_goal", &cfun_ai_get_leader_goal },
+		{ "get_leader_ignores_keep", &cfun_ai_get_leader_ignores_keep },
+		{ "get_leader_value", &cfun_ai_get_leader_value },
+		{ "get_passive_leader", &cfun_ai_get_passive_leader },
+		{ "get_passive_leader_shares_keep", &cfun_ai_get_passive_leader_shares_keep },
+		{ "get_recruitment_pattern", &cfun_ai_get_recruitment_pattern },
+		{ "get_scout_village_targeting", &cfun_ai_get_scout_village_targeting },
+		{ "get_simple_targeting", &cfun_ai_get_simple_targeting },
+		{ "get_support_villages", &cfun_ai_get_support_villages },
+		{ "get_village_value", &cfun_ai_get_village_value },
+		{ "get_villages_per_scout", &cfun_ai_get_villages_per_scout },
+		// End of aspects
+		{ "suitable_keep", &cfun_ai_get_suitable_keep },
+		{ "check_recall", &cfun_ai_check_recall },
+		{ "check_move", &cfun_ai_check_move },
+		{ "check_stopunit", &cfun_ai_check_stopunit },
+		{ "check_attack", &cfun_ai_check_attack },
+		{ "check_recruit", &cfun_ai_check_recruit },
+		{ nullptr, nullptr }
+	};
+	for (const luaL_Reg* p = callbacks; p->name; ++p) {
+		lua_pushlightuserdata(L, engine); // [-1: engine  -2: ai table]
+		lua_pushcclosure(L, p->func, 1); // [-1: function  -2: ai table]
+		lua_pushstring(L, p->name); // [-1: name  -2: function  -3: ai table]
+		lua_pushvalue(L, -2); // [-1: function  -2: name  -3: function  -4: ai table]
+		lua_rawset(L, -4); // [-1: function  -2: ai table]
+		lua_pop(L, 1); // [-1: ai table]
+	}
 	lua_newtable(L); // [-1: metatable  -2: ai table]
 	lua_pushlightuserdata(L, engine); // [-1: engine  -2: metatable  -3: ai table]
 	lua_pushcclosure(L, &impl_ai_get, 1); // [-1: metafunc  -2: metatable  -3: ai table]
 	lua_setfield(L, -2, "__index"); // [-1: metatable  -2: ai table]
+	lua_pushcfunction(L, &impl_ai_list); // [-1: metafunc  -2: metatable  -3: ai table]
+	lua_setfield(L, -2, "__dir"); // [-1: metatable  -2: ai table]
 	lua_setmetatable(L, -2); // [-1: ai table]
 }
 
@@ -952,6 +975,13 @@ static size_t generate_and_push_ai_state(lua_State* L, ai::engine_lua* engine)
 	return length_ai + 1;
 }
 
+void lua_ai_context::apply_micro_ai(const config &cfg)
+{
+	luaW_getglobal(L, "wesnoth", "wml_actions", "micro_ai");
+	luaW_pushconfig(L, cfg);
+	luaW_pcall(L, 1, 0);
+}
+
 lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engine_lua *engine)
 {
 	int res_ai = luaL_loadbufferx(L, code, strlen(code), /*name*/ code, "t"); // [-1: AI code]
@@ -959,7 +989,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	{
 
 		char const *m = lua_tostring(L, -1);
-		ERR_LUA << "error while initializing ai:  " <<m << '\n';
+		ERR_LUA << "error while initializing ai:  " <<m;
 		lua_pop(L, 2);//return with stack size 0 []
 		return nullptr;
 	}
@@ -1000,7 +1030,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);
-		ERR_LUA << "error while creating ai function:  " <<m << '\n';
+		ERR_LUA << "error while creating ai function:  " <<m;
 		lua_pop(L, 2);//return with stack size 0 []
 		return nullptr;
 	}

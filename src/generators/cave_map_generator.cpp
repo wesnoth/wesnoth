@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -107,24 +107,24 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	});
 	uint32_t seed = randomseed ? *randomseed : seed_rng::next_seed();
 	rng_.seed(seed);
-	LOG_NG << "creating random cave with seed: " << seed << '\n';
+	LOG_NG << "creating random cave with seed: " << seed;
 	flipx_ = static_cast<int>(rng_() % 100) < params.flipx_chance_;
 	flipy_ = static_cast<int>(rng_() % 100) < params.flipy_chance_;
 
-	LOG_NG << "creating scenario....\n";
+	LOG_NG << "creating scenario....";
 	generate_chambers();
 
-	LOG_NG << "placing chambers...\n";
+	LOG_NG << "placing chambers...";
 	for(std::vector<chamber>::const_iterator c = chambers_.begin(); c != chambers_.end(); ++c) {
 		place_chamber(*c);
 	}
 
-	LOG_NG << "placing passages...\n";
+	LOG_NG << "placing passages...";
 
 	for(std::vector<passage>::const_iterator p = passages_.begin(); p != passages_.end(); ++p) {
 		place_passage(*p);
 	}
-	LOG_NG << "outputting map....\n";
+	LOG_NG << "outputting map....";
 
 	res_["map_data"] = t_translation::write_game_map(map_, starting_positions_);
 }

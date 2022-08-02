@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -82,13 +82,13 @@ void team_builder::build_team_stage_two()
 
 void team_builder::log_step(const char* s) const
 {
-	LOG_NG_TC << "team " << side_ << " construction: " << s << std::endl;
+	LOG_NG_TC << "team " << side_ << " construction: " << s;
 }
 
 void team_builder::init()
 {
 	if(side_cfg_["side"].to_int(side_) != side_) {
-		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_ << std::endl;
+		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_;
 	}
 
 	log_step("init");
@@ -100,7 +100,7 @@ void team_builder::init()
 		throw game::load_game_failed("Map not found");
 	}
 
-	DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_) << std::endl;
+	DBG_NG_TC << "snapshot: " << utils::bool_string(player_exists_);
 
 	unit_configs_.clear();
 	seen_ids_.clear();
@@ -112,7 +112,7 @@ void team_builder::gold()
 
 	gold_info_ngold_ = side_cfg_["gold"];
 
-	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'\n";
+	DBG_NG_TC << "set gold to '" << gold_info_ngold_ << "'";
 }
 
 void team_builder::new_team()
@@ -143,7 +143,7 @@ void team_builder::previous_recruits()
 
 	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")) {
 		for(const std::string& rec : utils::split(*v)) {
-			DBG_NG_TC << "adding previous recruit: " << rec << '\n';
+			DBG_NG_TC << "adding previous recruit: " << rec;
 			team_.add_recruit(rec);
 		}
 	}
@@ -157,15 +157,14 @@ void team_builder::handle_unit(const config& u, const char* origin)
 		<< "id=[" << u["id"] << "] "
 		<< "placement=[" << u["placement"] << "] "
 		<< "x=[" << u["x"] << "] "
-		<< "y=[" << u["y"] << "]"
-		<< std::endl;
+		<< "y=[" << u["y"] << "]";
 
 	if(u["type"].empty()) {
 		WRN_NG_TC
 			<< "when building level, skipping a unit (id=[" << u["id"] << "]) from " << origin
 			<< " with no type information,\n"
 			<< "for side:\n"
-			<< side_cfg_.debug() << std::endl;
+			<< side_cfg_.debug();
 
 		return;
 	}
@@ -197,6 +196,9 @@ void team_builder::handle_leader(const config& leader)
 	for(const std::string& attr : team::attributes) {
 		stored.remove_attribute(attr);
 	}
+
+    // Remove [ai] tag as it is already added for the side
+	stored.remove_children("ai");
 
 	// Provide some default values, if not specified.
 	config::attribute_value& a1 = stored["canrecruit"];
@@ -260,7 +262,7 @@ void team_builder::place_units()
 		try {
 			uc.add_unit(*u);
 		} catch(const unit_type_error& e) {
-			ERR_NG_TC << e.what() << "\n";
+			ERR_NG_TC << e.what();
 		}
 	}
 }

@@ -23,10 +23,12 @@ function retreat_functions.min_hp(unit)
     local retreat_factor = ai.aspects.retreat_factor
 
     -- Leaders are more valuable and should retreat earlier
-    if unit.canrecruit then retreat_factor = retreat_factor * 1.5 end
+    if unit.canrecruit then
+        retreat_factor = retreat_factor * 1.5
+    end
 
     -- Higher retreat willingness on bad terrain
-    local retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.current.map[unit])) / 50
+    retreat_factor = retreat_factor * (100 - unit:defense_on(wesnoth.current.map[unit])) / 50
 
     local min_hp = retreat_factor * unit.max_hitpoints
 
@@ -62,9 +64,9 @@ function retreat_functions.retreat_injured_units(units, avoid_map)
                 local abilities = wml.get_child(u.__cfg, "abilities")
                 local regen_amount = 0
                 if abilities then
-                    for regen in wml.child_range(abilities, "regenerate") do
-                        if regen.value > regen_amount then
-                            regen_amount = regen.value
+                    for regenerates in wml.child_range(abilities, "regenerate") do
+                        if (regenerates.value or 0) > regen_amount then
+                            regen_amount = regenerates.value
                         end
                     end
                 end
@@ -149,11 +151,10 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
         ally_attack_map = BC.get_attack_map(allies)
     end
 
-    local max_rating, best_loc, best_unit = - math.huge
+    local max_rating, best_loc, best_unit = - math.huge, nil, nil
     for i,u in ipairs(healees) do
+        wesnoth.interface.handle_user_interact()
         local possible_locations = wesnoth.paths.find_reach(u)
-        -- TODO: avoid ally's villages (may be preferable to lower rating so they will
-        -- be used if unit is very injured)
         if (not regen_amounts[i]) then
             -- Unit cannot self heal, make the terrain do it for us if possible
             local location_subset = {}
@@ -167,7 +168,23 @@ function retreat_functions.get_retreat_injured_units(healees, regen_amounts, avo
                     end
                     local curing = 0
                     if heal_amount > 0 then
-                        curing = 2
+                        -- Do not take villages from an allied side
+                        local owner = wesnoth.map.get_owner(loc)
+                        if owner
+                            and (owner ~= wesnoth.current.side)
+                            and (not wesnoth.sides.is_enemy(wesnoth.current.side, owner))
+                        then
+                            -- If allow_ally_villages is true, injured units are allowed to take ally villages.
+                            -- However, they should do so with lower priority, which we do by halving the heal and cure amounts.
+                            if ai.aspects.allow_ally_villages then
+                                heal_amount = heal_amount / 2
+                                curing = 1
+                            else
+                                heal_amount = 0
+                            end
+                        else
+                            curing = 2
+                        end
                     end
                     local healer_values = healing_locs:get(loc[1], loc[2]) or {0, 0}
                     heal_amount = math.max(heal_amount, healer_values[1])

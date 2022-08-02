@@ -1,15 +1,14 @@
 #
 # Translators:
-# 家庭的の人 <kateitekino_hito@yahoo.co.jp>, 2018
-# RatArmy <broadbarredfirefish@gmail.com>, 2020
+# RatArmy, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2018-09-12 07:29+0000\n"
-"Last-Translator: RatArmy <broadbarredfirefish@gmail.com>, 2020\n"
+"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
+"PO-Revision-Date: 2021-06-26 08:31+0000\n"
+"Last-Translator: RatArmy, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -25,18 +24,15 @@ msgstr "4p — 新天地"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
 "\n"
 "For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
-"建築を行ったり、地形を作り替えることができる 4p サバイバルシナリオ。初期ゴー"
-"ルドは 100 を推奨。"
+"建築を行ったり、地形を作り替えることができる 4p サバイバルシナリオ。\n"
+"\n"
+"熟練したプレイヤーには、初期ゴールドを 75 以下にすることを推奨。"
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
@@ -317,9 +313,9 @@ msgstr ""
 "に選択した研究対象を進行させます。大学の魔術師を右クリックすると研究対象を変"
 "更できます。"
 
-#. [set_menu_item]: id=anl_diplomacy
 #. [message]: speaker=narrator
 #. [option]
+#. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
@@ -477,8 +473,8 @@ msgid ""
 msgstr ""
 "<span color='green'>ドワーフ族との交渉</span>\n"
 "ドワーフ族のユニットを雇用できるようにする\n"
-"交渉状況: $player_$side_number|.leader_option_1.progress|/$player_"
-"$side_number|.leader_option_1.target"
+"交渉状況: $player_$side_number|.leader_option_1.progress|/"
+"$player_$side_number|.leader_option_1.target"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:489
@@ -490,8 +486,8 @@ msgid ""
 msgstr ""
 "<span color='green'>エルフ族との交渉</span>\n"
 "エルフ族のユニットを雇用できるようにする\n"
-"交渉状況: $player_$side_number|.leader_option_2.progress|/$player_"
-"$side_number|.leader_option_2.target"
+"交渉状況: $player_$side_number|.leader_option_2.progress|/"
+"$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:557
@@ -617,16 +613,16 @@ msgstr "以前のものを継続する"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
-"Study Progress: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Study Progress: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 msgstr ""
 "<span color='green'>農業</span>\n"
 "農業収入 +1 ゴールド\n"
 "研究状況: $player_$side_number|.farming.progress|/$player_$side_number|."
 "farming.target"
 
-#. [research]
 #. [command]
+#. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:146
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:99
 msgid "agriculture"
@@ -655,8 +651,8 @@ msgstr "鉱業"
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
-"Study Progress: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Study Progress: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 msgstr ""
 "<span color='green'>戦術</span>\n"
 "新しいタイプのユニットを雇用可能にする\n"

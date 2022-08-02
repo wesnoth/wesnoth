@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,6 +33,7 @@
 #include "units/unit.hpp"
 #include "whiteboard/manager.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "side_controller.hpp"
 
 #include <functional>
 #include <SDL2/SDL_timer.h>
@@ -93,7 +94,7 @@ game_state::game_state(const config& level, play_controller& pc, game_board& boa
 	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
-	events_manager_->read_scenario(level);
+	events_manager_->read_scenario(level, *lua_kernel_);
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
 		el_data.read(endlevel_cfg);
@@ -170,30 +171,30 @@ void game_state::place_sides_in_preferred_locations(const config& level)
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
 			board_.map().set_starting_position(i->side,i->pos);
-			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
+			LOG_NG << "placing side " << i->side << " at " << i->pos;
 		}
 	}
 }
 
 void game_state::init(const config& level, play_controller & pc)
 {
-	events_manager_->read_scenario(level);
+	events_manager_->read_scenario(level, *lua_kernel_);
 	gui2::dialogs::loading_screen::progress(loading_stage::init_teams);
 	if (level["modify_placing"].to_bool()) {
-		LOG_NG << "modifying placing..." << std::endl;
+		LOG_NG << "modifying placing...";
 		place_sides_in_preferred_locations(level);
 	}
 
-	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
+	LOG_NG << "initialized time of day regions... "    << (SDL_GetTicks() - pc.ticks());
 	for (const config &t : level.child_range("time_area")) {
 		tod_manager_.add_time_area(board_.map(),t);
 	}
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks()) << std::endl;
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - pc.ticks());
 
 	board_.teams().resize(level.child_count("side"));
 	if (player_number_ > static_cast<int>(board_.teams().size())) {
-		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size() << "\n";
+		ERR_NG << "invalid player number " <<  player_number_ << " #sides=" << board_.teams().size();
 		player_number_ = 1;
 		// in case there are no teams, using player_number_ migh still cause problems later.
 	}
@@ -210,7 +211,7 @@ void game_state::init(const config& level, play_controller & pc)
 	{
 		if (first_human_team_ == -1) {
 			const std::string &controller = side["controller"];
-			if (controller == "human" && side["is_local"].to_bool(true)) {
+			if (controller == side_controller::human && side["is_local"].to_bool(true)) {
 				first_human_team_ = team_num;
 			}
 		}
@@ -459,7 +460,7 @@ void game_state::add_side_wml(config cfg)
 {
 	cfg["side"] = board_.teams().size() + 1;
 	//if we want to also allow setting the controller we must update the server code.
-	cfg["controller"] = "null";
+	cfg["controller"] = side_controller::none;
 	//TODO: is this it? are there caches which must be cleared?
 	board_.teams().emplace_back();
 	board_.teams().back().build(cfg, board_.map(), cfg["gold"].to_int());

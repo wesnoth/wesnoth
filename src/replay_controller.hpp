@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2021
+	Copyright (C) 2015 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -19,8 +19,6 @@
 #include "mouse_handler_base.hpp" //events::command_disabler
 
 #include <vector>
-
-class video;
 
 class replay_controller : public events::observer
 {

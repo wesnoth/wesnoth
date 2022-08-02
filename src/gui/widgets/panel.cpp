@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -65,20 +65,16 @@ unsigned panel::get_state() const
 	return 0;
 }
 
-void panel::impl_draw_background(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_background()
 {
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(0).blit(frame_buffer,
-				   calculate_blitting_rectangle(x_offset, y_offset));
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
+	get_canvas(0).draw();
 }
 
-void panel::impl_draw_foreground(surface& frame_buffer, int x_offset, int y_offset)
+void panel::impl_draw_foreground()
 {
-	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
-
-	get_canvas(1).blit(frame_buffer,
-				   calculate_blitting_rectangle(x_offset, y_offset));
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".";
+	get_canvas(1).draw();
 }
 
 point panel::border_space() const
@@ -99,7 +95,7 @@ void panel::set_self_active(const bool /*active*/)
 panel_definition::panel_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing panel " << id << '\n';
+	DBG_GUI_P << "Parsing panel " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -131,12 +127,12 @@ builder_panel::builder_panel(const config& cfg)
 	grid = std::make_shared<builder_grid>(c);
 }
 
-widget* builder_panel::build() const
+std::unique_ptr<widget> builder_panel::build() const
 {
-	panel* widget = new panel(*this);
+	auto widget = std::make_unique<panel>(*this);
 
 	DBG_GUI_G << "Window builder: placed panel '" << id << "' with definition '"
-			  << definition << "'.\n";
+			  << definition << "'.";
 
 	widget->init_grid(*grid);
 	return widget;

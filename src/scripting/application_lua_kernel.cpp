@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,8 +51,6 @@
 #include <SDL2/SDL.h>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/luaconf.h"
 
 struct lua_State;
 
@@ -64,7 +62,7 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 static int intf_describe_plugins(lua_State * L)
 {
-	std::cerr << "describe plugins (" << plugins_manager::get()->size() << "):\n";
+	PLAIN_LOG << "describe plugins (" << plugins_manager::get()->size() << "):";
 	lua_getglobal(L, "print");
 	for (std::size_t i = 0; i < plugins_manager::get()->size(); ++i) {
 		lua_pushvalue(L,-1); //duplicate the print
@@ -72,7 +70,7 @@ static int intf_describe_plugins(lua_State * L)
 		std::stringstream line;
 		line << i
 		     << ":\t"
-		     << plugins_manager::get()->get_status(i)
+		     << plugin_manager_status::get_string(plugins_manager::get()->get_status(i))
 		     << "\t\t"
 		     << plugins_manager::get()->get_name(i)
 		     << "\n";
@@ -169,8 +167,8 @@ application_lua_kernel::thread * application_lua_kernel::load_script_from_string
 	lua_State * T = get_new_thread(mState);
 	// now we are operating on T's stack, leaving a compiled C function on it.
 
-	DBG_LUA << "created thread: status = " << lua_status(T) << (lua_status(T) == LUA_OK ? " == OK" : " == ?") << "\n";
-	DBG_LUA << "loading script from string:\n<<\n" << prog << "\n>>\n";
+	DBG_LUA << "created thread: status = " << lua_status(T) << (lua_status(T) == LUA_OK ? " == OK" : " == ?");
+	DBG_LUA << "loading script from string:\n<<\n" << prog << "\n>>";
 
 	// note: this is unsafe for umc as it allows loading lua baytecode, but umc cannot add application lua kernel scipts.
 	int errcode = luaL_loadstring(T, prog.c_str());
@@ -308,7 +306,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 	this_context_backend->valid = false; //invalidate the context object for lua
 
 	if (lua_status(T_) != LUA_YIELD) {
-		LOG_LUA << "Thread status = '" << lua_status(T_) << "'\n";
+		LOG_LUA << "Thread status = '" << lua_status(T_) << "'";
 		if (lua_status(T_) != LUA_OK) {
 			std::stringstream ss;
 			ss << "encountered a";
@@ -327,7 +325,7 @@ application_lua_kernel::request_list application_lua_kernel::thread::run_script(
 					break;
 			}
 			ss << "error:\n" << lua_tostring(T_, -1) << "\n";
-			ERR_LUA << ss.str() << std::endl;
+			ERR_LUA << ss.str();
 		}
 	}
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2021
+	Copyright (C) 2013 - 2022
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -60,7 +60,7 @@ public:
 	// Import all sides into the level.
 	void update_level();
 	// Updates the level and sends a diff to the clients.
-	void update_and_send_diff(bool update_time_of_day = false);
+	void update_and_send_diff();
 
 	bool can_start_game() const;
 	void start_game();
@@ -138,7 +138,6 @@ private:
 	std::vector<team_data_pod> team_data_;
 
 	std::set<std::string>& connected_users_rw();
-	void send_to_server(const config& cfg) const;
 };
 
 class side_engine

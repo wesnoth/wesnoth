@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Multiplayer-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-01-26 11:47+0100\n"
-"Last-Translator: Syll <syll-dev@laposte.net>\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-04-17 21:10+0200\n"
+"Last-Translator: demario\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -109,58 +109,50 @@ msgstr ""
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
 #: data/multiplayer/eras.lua:53
-#, fuzzy
-#| msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
-msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Camp %d</span>"
+msgstr ""
+"<span strikethrough='true' foreground='$side_color'>Camp %side_number</"
+"span> : a perdu toutes ses unités"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
-#| msgid ""
-#| "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
-#| "score = %d  Gold = %d"
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Camp %d</span>:  Score de revenu = %d  "
-"Score d'unités = %d  Or = %d"
+"<span foreground='$side_color'>Camp %side_number</span> :  Score de revenu = "
+"$income  Score d'unités = $units  Or = $gold\n"
+"Total final : <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:86
-#, fuzzy
-#| msgid "<span foreground='%s'>Side %d</span> has the advantage."
+#: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>Le camp %d</span> est en tête."
+msgstr ""
+"<span foreground='$side_color'>Le camp $side_number</span> est en tête."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:91
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
+#: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Les camps %s et %d sont à égalité."
+msgstr "Les camps $side_number et $other_side_number sont à égalité."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:96
-#, fuzzy
-#| msgid "Sides %s and %d are tied."
+#: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
-msgstr "Les camps %s et %d sont à égalité."
+msgstr "Les camps $winners sont à égalité."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "Fin des tours"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -187,7 +179,7 @@ msgstr ""
 "considérablement plus petits que les dracans et d'ascendance différente. "
 "Ensemble, la faction Dracan possède une grande mobilité sur le terrain mais "
 "une faible défense, induisant des tactiques inhabituelles pour une faction "
-"de <ref>text='l'ère par défaut' dst='..era_era_default'</ref>."
+"de <ref>text='l\\'ère par défaut' dst='..era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
@@ -268,13 +260,13 @@ msgstr ""
 "orientée corps-à-corps avec un fort soutien à distance de la part des "
 "archers et des mages."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Nordiques"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
 #: data/multiplayer/factions/northerners-default.cfg:15
 msgid ""
@@ -472,13 +464,13 @@ msgid "teamname^South"
 msgstr "Sud"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
 msgid "Defeat the enemy leader"
 msgstr "Mort du chef ennemi"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
@@ -487,7 +479,7 @@ msgstr ""
 "que vous la divertissiez de vos talents guerriers."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
@@ -496,7 +488,7 @@ msgstr ""
 "pierres. Elles peuvent cependant y être recrutées et en sortir."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
@@ -506,8 +498,8 @@ msgstr ""
 "complété jusqu'au tour 6."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:331
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:348
 msgid "The Aethermaw growls."
 msgstr "L'Aethermaw gronde."
 
@@ -1314,8 +1306,8 @@ msgstr ""
 "que des fantômes anéantissent votre volonté ; vous réalisez que votre "
 "existence sur terre est terminée."
 
-#. [slider]: id=enemy_gold_factor
 #. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
@@ -1597,28 +1589,6 @@ msgstr ""
 "prospère, devenue aujourd'hui un repaire de pillards et de voleurs."
 
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Your aim is to survive the spawning waves of units and defeat the final "
-#| "archenemies.\n"
-#| "\n"
-#| "The spawning waves are randomly generated and will be different each time "
-#| "Dark Forecast is played.\n"
-#| "\n"
-#| "They appear along the north, south, and west map edges — though they are "
-#| "most likely to spawn on the west edge. The waves appear at somewhat "
-#| "regular intervals.\n"
-#| "\n"
-#| "The weather will also change randomly, affecting the layout of the map.\n"
-#| "\n"
-#| "\n"
-#| "<b>Dark Forecast was made by:</b>\n"
-#| "\n"
-#| "<span color='green'>jb:</span>\n"
-#| "• Map design, spawn groups, and scenario concept\n"
-#| "\n"
-#| "<span color='green'>Rhuvaen:</span>\n"
-#| "• WML implementation"
 msgid ""
 "Your aim is to survive spawning waves of units and defeat the final "
 "archenemies. Spawns are randomly generated and will be different each time "
@@ -1626,44 +1596,18 @@ msgid ""
 "weather will also change randomly, affecting the layout of the map."
 msgstr ""
 "Votre but est de survivre à toutes les vagues ennemies générées et de tuer "
-"les super-ennemis finaux.\n"
-"\n"
-"Les vagues d'ennemis sont générées aléatoirement et changeront à chaque "
-"partie.\n"
-"\n"
-"Elles apparaîtront sur les côtés nord, sud et ouest de la carte (le plus "
-"souvent du côté ouest), à intervalles à peu près réguliers.\n"
-"\n"
-"Le temps changera lui aussi de façon aléatoire, ce qui modifiera la "
-"configuration de la carte.\n"
-"\n"
-"\n"
-"<b>Prévisions funestes a été créé par :</b>\n"
-"\n"
-"<span color='green'>jb :</span>\n"
-"- Conception de la carte, du scénario et des vagues d'ennemis\n"
-"\n"
-"<span color='green'>Rhuvaen :</span>\n"
-"- Implémentation WML"
+"les super-ennemis finaux. Les vagues d'ennemis sont générées aléatoirement "
+"et changeront à chaque partie de L'île des Brumes. Elles apparaîtront à "
+"intervalles à peu près réguliers. Le temps changera lui aussi de façon "
+"aléatoire, ce qui modifiera la configuration de la carte."
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:9
-#, fuzzy
-#| msgid "2p — Dark Forecast (Survival)"
 msgid "2p — Isle of Mists (Survival)"
-msgstr "2j - Prévisions funestes (Survie)"
+msgstr "2j - L'île des Brumes (Survie)"
 
 #. [multiplayer]: id=multiplayer_2p_Isle_of_Mists
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Dark Forecast is a survival scenario for solitaire or two-player team-"
-#| "based play against randomly-spawned AI units. Victory is achieved by "
-#| "surviving and defeating all enemy waves. During the course of play, the "
-#| "terrain will change based on random weather effects.\n"
-#| "\n"
-#| "Note: You need to use the default map settings for the scenario to work "
-#| "right."
 msgid ""
 "Isle of Mists is a survival scenario which can be played alone or with "
 "another player against randomly spawned AI units, catered for experienced "
@@ -1672,42 +1616,35 @@ msgid ""
 "effects. Default map settings are required for the scenario to work "
 "properly. By Lord-Knightmare."
 msgstr ""
-"Prévisions funestes est un scénario de survie en solitaire ou en équipe, à "
+"L'île des Brumes est un scénario de survie en solitaire ou en équipe, à "
 "deux, contre des vagues d'unités générées aléatoirement par l'ordinateur. "
 "Pour vaincre, il faut résister à tous les assauts ennemis. Le terrain "
-"variera suivant des changements climatiques aléatoires pendant la partie.\n"
-"\n"
-"Remarque : vous devez utiliser les paramètres de la carte pour que le "
-"scénario fonctionne correctement."
+"variera suivant des changements climatiques aléatoires pendant la partie. "
+"Vous devez utiliser les paramètres de la carte pour que le scénario "
+"fonctionne correctement. Par Lord-Knightmare."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
-#, fuzzy
-#| msgid "teamname^Monsters"
 msgid "teamname^Invaders"
-msgstr "Monstres"
+msgstr "Les Envahisseurs"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
-#, fuzzy
-#| msgid "teamname^Center"
 msgid "teamname^Defenders"
-msgstr "Centre"
+msgstr "Les Défenseurs"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
 msgid "Healing Keep"
-msgstr ""
+msgstr "Donjon soignant"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
-#, fuzzy
-#| msgid "Dark Forecast — a random survival scenario"
 msgid "Isle of Mists — a random survival scenario"
-msgstr "Prévisions funestes : un scénario aléatoire de survie"
+msgstr "L'île des Brumes — un scénario aléatoire de survie"
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
@@ -1715,6 +1652,9 @@ msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
 msgstr ""
+"Vous arrivez près d'un sanctuaire mystique où des apparitions d'armées "
+"séculaires sont emprisonnées et condamnées à liquider éternellement l'île de "
+"tout intrus."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
@@ -1722,22 +1662,18 @@ msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
 msgstr ""
+"Des armées fantomatiques approchent à l'horizon. Si nous les vainquons "
+"toutes, elles pourraient être libérées de cette prison intemporelle."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
 msgid "Let us prepare ourselves for the coming battle."
-msgstr ""
+msgstr "Préparons-nous pour la bataille qui vient."
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
-#, fuzzy
-#| msgid ""
-#| "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
-#| "me..."
 msgid "How can this be? My gods have forsaken me..."
-msgstr ""
-"Arg ! Comment est-ce possible ? Défait par de simples barbares ! Mes dieux "
-"m'ont abandonné..."
+msgstr "Comment est-ce possible ? Mes dieux m'ont abandonné..."
 
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
@@ -1746,6 +1682,9 @@ msgid ""
 "separated from your body. You realize that you will soon be doomed to the "
 "same fate as the phantom guardians of the shrine."
 msgstr ""
+"Comme la poigne glacée de la mort commence à serrer, vous sentez votre âme "
+"se détacher de votre corps. Vous réalisez que vous allez bientôt être "
+"condamnés au même sort que les gardiens fantomatiques du sanctuaire."
 
 #. [message]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
@@ -1754,18 +1693,17 @@ msgid ""
 "You dimly realize that you will soon join the other ghosts as another "
 "faceless guardian of the ancient shrine."
 msgstr ""
+"Des brumes sombres se lèvent du sol, éliminant vos aptitudes et votre "
+"volonté. Vous réalisez subrepticement que vous allez rejoindre les autres "
+"fantômes comme un nouveau gardien sans visage du sanctuaire."
 
 #. [lua]: final_spawn
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:313
-#, fuzzy
-#| msgid ""
-#| "The last and most powerful of these creatures are almost upon us. I feel "
-#| "that if we can finish them off in time, we shall be victorious."
 msgid ""
 "The last and most powerful of our enemies are upon us. If we can finish them "
 "off in time, we shall be victorious."
 msgstr ""
-"Les dernières et les plus puissantes de ces créatures sont presque sur nous. "
+"Les dernières et les plus puissantes de nos ennemis sont presque sur nous. "
 "Nous aurons gagné si nous arrivons à les achever dans les temps."
 
 #. [lua]: final_spawn
@@ -1776,11 +1714,15 @@ msgid ""
 "eternal guardianship. You have finally cleansed the ancient shrine... for "
 "now."
 msgstr ""
+"Comme vous triomphez de vos derniers adversaires, les brumes lugubres qui "
+"enserraient l'île semblent se lever. Les fantômes disparaissent, enfin "
+"libérés de leur garde perpétuelle. Vous avez finalement nettoyer le "
+"sanctuaire séculaire… pour cette fois."
 
 #. [lua]: weather_map
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
 msgid "Inundation"
-msgstr ""
+msgstr "Inondations"
 
 #. [multiplayer]: id=multiplayer_Ruined_Passage
 #: data/multiplayer/scenarios/2p_Ruined_Passage.cfg:7
@@ -2170,19 +2112,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3j - Le Marais d'Alirok"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2614,8 +2556,8 @@ msgstr "Cinq armées luttent pour la suprématie sur un terrain varié."
 msgid "5p — The Wilderlands"
 msgstr "5j - Les Contrées sauvages"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."

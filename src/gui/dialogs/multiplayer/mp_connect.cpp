@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -71,7 +71,6 @@ mp_connect::mp_connect()
 	, builtin_servers_(preferences::builtin_servers_list())
 	, user_servers_(preferences::user_servers_list())
 {
-	set_restore(true);
 }
 
 std::array<mp_connect::server_list*, 2> mp_connect::server_lists()
@@ -102,9 +101,9 @@ void mp_connect::pre_show(window& win)
 
 void mp_connect::insert_into_server_listbox(listbox& listbox, const server_info& srv, int pos)
 {
-	const std::map<std::string, string_map>& entry{
-		{ "name",    string_map{{"label", srv.name}} },
-		{ "address", string_map{{"label", srv.address}} },
+	const widget_data& entry{
+		{ "name",    widget_item{{"label", srv.name}} },
+		{ "address", widget_item{{"label", srv.address}} },
 	};
 
 	listbox.add_row(entry, pos);

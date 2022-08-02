@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -28,7 +28,7 @@
  * Then stream logging info to ERR_DP, or LOG_DP, as if it were an ostream like std::cerr.
  * (In general it will actually be std::cerr at runtime when logging is enabled.)
  *
- * LOG_DP << "Found a window resize event: ...\n";
+ * LOG_DP << "Found a window resize event: ...";
  *
  * Please do not use iomanip features like std::hex directly on the logger. Because of the
  * design of the logger, this will result in all of the loggers (in fact std::cerr) being
@@ -51,7 +51,7 @@
  #endif
 #endif
 
-#include <iostream> // needed else all files including log.hpp need to do it.
+#include <iosfwd> // needed else all files including log.hpp need to do it.
 #include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
 #include <string>
 #include <utility>
@@ -60,6 +60,15 @@
 #include "formatter.hpp"
 
 namespace lg {
+
+// Prefix and extension for log files. This is used both to generate the unique
+// log file name during startup and to find old files to delete.
+const std::string log_file_prefix = "wesnoth-";
+const std::string log_file_suffix = ".log";
+
+// Maximum number of older log files to keep intact. Other files are deleted.
+// Note that this count does not include the current log file!
+const unsigned max_logs = 8;
 
 enum severity
 {
@@ -117,6 +126,11 @@ std::string list_logdomains(const std::string& filter);
 void set_strict_severity(int severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
+void set_log_to_file();
+
+bool is_not_log_file(const std::string& filename);
+void rotate_logs(const std::string& log_dir);
+std::string unique_log_filename();
 
 // A little "magic" to surround the logging operation in a mutex.
 // This works by capturing the output first to a stringstream formatter, then
@@ -130,12 +144,14 @@ class log_in_progress {
 	int indent_ = 0;
 	bool timestamp_ = false;
 	std::string prefix_;
+	bool auto_newline_ = true;
 public:
 	log_in_progress(std::ostream& stream);
 	void operator|(formatter&& message);
 	void set_indent(int level);
 	void enable_timestamp();
 	void set_prefix(const std::string& prefix);
+	void set_auto_newline(bool enabled);
 };
 
 class logger {
@@ -144,7 +160,7 @@ class logger {
 public:
 	logger(char const *name, int severity): name_(name), severity_(severity) {}
 	log_in_progress operator()(const log_domain& domain,
-		bool show_names = true, bool do_indent = false) const;
+		bool show_names = true, bool do_indent = false, bool show_timestamps = true, bool break_strict = true, bool auto_newline = true) const;
 
 	bool dont_log(const log_domain& domain) const
 	{
@@ -174,6 +190,7 @@ void timestamps(bool);
 void precise_timestamps(bool);
 std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 std::string get_timespan(const std::time_t& t);
+std::string sanitize_log(const std::string& logstr);
 
 logger &err(), &warn(), &info(), &debug();
 log_domain& general();
@@ -223,9 +240,18 @@ std::stringstream& log_to_chat();
 // Don't prefix the logdomain to messages on this stream
 #define LOG_STREAM_NAMELESS(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false) | formatter()
 
+// Like LOG_STREAM_NAMELESS except doesn't add newlines automatically
+#define LOG_STREAM_NAMELESS_STREAMING(level, domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, false, false, true, true, false) | formatter()
+
 // When using log_scope/log_scope2 it is nice to have all output indented.
 #define LOG_STREAM_INDENT(level,domain) if (lg::level().dont_log(domain)) ; else lg::level()(domain, true, true) | formatter()
 
 // If you have an explicit logger object and want to ignore the logging level, use this.
 // Meant for cases where you explicitly call dont_log to avoid an expensive operation if the logging is disabled.
 #define FORCE_LOG_TO(logger, domain) logger(domain) | formatter()
+
+// always log (since it's at the error level) to the general log stream
+// outputting the log domain and timestamp is disabled
+// meant as a replacement to using cerr/cout, but that goes through the same logging infrastructure as everything else
+#define PLAIN_LOG lg::err()(lg::general(), false, false, false, false, true) | formatter()
+#define STREAMING_LOG lg::err()(lg::general(), false, false, false, false, false) | formatter()

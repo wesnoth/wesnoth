@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@ boost::iterator_range<variant_iterator> variant_value_base::make_iterator() cons
 	return {variant_iterator(), variant_iterator()};
 }
 
-variant variant_value_base::deref_iterator(const boost::any& /*iter*/) const
+variant variant_value_base::deref_iterator(const utils::any& /*iter*/) const
 {
 	return variant();
 }
@@ -124,9 +124,9 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 			first = false;
 			ss << input.name << " ";
 
-			if(input.access == FORMULA_READ_WRITE) {
+			if(input.access == formula_access::read_write) {
 				ss << "(read-write) ";
-			} else if(input.access == FORMULA_WRITE_ONLY) {
+			} else if(input.access == formula_access::write_only) {
 				ss << "(writeonly) ";
 			}
 
@@ -166,23 +166,23 @@ boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
 	return {variant_iterator(this, inputs.cbegin()), variant_iterator(this, inputs.cend())};
 }
 
-variant variant_callable::deref_iterator(const boost::any& iter) const
+variant variant_callable::deref_iterator(const utils::any& iter) const
 {
 	if(!callable_) {
 		return variant();
 	}
 
-	return callable_->query_value(boost::any_cast<const formula_input_vector::const_iterator&>(iter)->name);
+	return callable_->query_value(utils::any_cast<const formula_input_vector::const_iterator&>(iter)->name);
 }
 
-void variant_callable::iterator_inc(boost::any& iter) const
+void variant_callable::iterator_inc(utils::any& iter) const
 {
-	++boost::any_cast<formula_input_vector::const_iterator&>(iter);
+	++utils::any_cast<formula_input_vector::const_iterator&>(iter);
 }
 
-void variant_callable::iterator_dec(boost::any& iter) const
+void variant_callable::iterator_dec(utils::any& iter) const
 {
-	--boost::any_cast<formula_input_vector::const_iterator&>(iter);
+	--utils::any_cast<formula_input_vector::const_iterator&>(iter);
 }
 
 std::string variant_string::get_serialized_string() const
@@ -270,21 +270,21 @@ boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() co
 }
 
 template<typename T>
-void variant_container<T>::iterator_inc(boost::any& iter) const
+void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++boost::any_cast<typename T::const_iterator&>(iter);
+	++utils::any_cast<typename T::const_iterator&>(iter);
 }
 
 template<typename T>
-void variant_container<T>::iterator_dec(boost::any& iter) const
+void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--boost::any_cast<typename T::const_iterator&>(iter);
+	--utils::any_cast<typename T::const_iterator&>(iter);
 }
 
 template<typename T>
-bool variant_container<T>::iterator_equals(const boost::any& first, const boost::any& second) const
+bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return boost::any_cast<typename T::const_iterator>(first) == boost::any_cast<typename T::const_iterator>(second);
+	return utils::any_cast<typename T::const_iterator>(first) == utils::any_cast<typename T::const_iterator>(second);
 }
 
 // Force compilation of the following template instantiations
@@ -341,9 +341,9 @@ bool variant_list::less_than(variant_value_base& other) const
 	return num_elements() < other.num_elements();
 }
 
-variant variant_list::deref_iterator(const boost::any& iter) const
+variant variant_list::deref_iterator(const utils::any& iter) const
 {
-	return *boost::any_cast<const variant_vector::const_iterator&>(iter);
+	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
 }
 
 std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
@@ -367,9 +367,9 @@ bool variant_map::less_than(variant_value_base& other) const
 	return get_container() < value_ref_cast<variant_map>(other).get_container();
 }
 
-variant variant_map::deref_iterator(const boost::any& iter) const
+variant variant_map::deref_iterator(const utils::any& iter) const
 {
-	const variant_map_raw::value_type& p = *boost::any_cast<const variant_map_raw::const_iterator&>(iter);
+	const variant_map_raw::value_type& p = *utils::any_cast<const variant_map_raw::const_iterator&>(iter);
 	auto the_pair = std::make_shared<key_value_pair>(p.first, p.second);
 	return variant(the_pair);
 }

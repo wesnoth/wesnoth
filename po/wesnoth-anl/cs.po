@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-02-20 21:40 UTC\n"
-"PO-Revision-Date: 2020-12-04 16:57+0100\n"
+"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
+"PO-Revision-Date: 2021-09-12 08:28+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -329,9 +329,9 @@ msgstr ""
 "objevování zvoleného výzkumného cíle. Kliknutím pravým tlačítkem na mága v "
 "univerzitě můžeš změnit výzkumný cíl."
 
-#. [set_menu_item]: id=anl_diplomacy
 #. [message]: speaker=narrator
 #. [option]
+#. [set_menu_item]: id=anl_diplomacy
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
@@ -491,8 +491,8 @@ msgid ""
 msgstr ""
 "<span color='green'>Dohoda s trpaslíky</span>\n"
 "Umožňuje verbovat trpasličí jednotky\n"
-"Vývoj dohody: $player_$side_number|.leader_option_1.progress|/$player_"
-"$side_number|.leader_option_1.target"
+"Vývoj dohody: $player_$side_number|.leader_option_1.progress|/"
+"$player_$side_number|.leader_option_1.target"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:489
@@ -504,8 +504,8 @@ msgid ""
 msgstr ""
 "<span color='green'>Dohoda s elfy</span>\n"
 "Umožňuje verbovat elfí jednotky\n"
-"Vývoj dohody: $player_$side_number|.leader_option_2.progress|/$player_"
-"$side_number|.leader_option_2.target"
+"Vývoj dohody: $player_$side_number|.leader_option_2.progress|/"
+"$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:557
@@ -595,7 +595,7 @@ msgstr "Výzkum dokončen"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:70
 msgid "Which type of unit would you like to be able to recruit?"
-msgstr "Jakou jednotku by jsi chtěl verbovat?"
+msgstr "Jakou jednotku bys chtěl verbovat?"
 
 #. [set_menu_item]: id=anl_oversee_research
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:93
@@ -633,16 +633,16 @@ msgstr "Pokračovat v činnosti"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
-"Study Progress: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Study Progress: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 msgstr ""
 "<span color='green'>Zemědělství</span>\n"
 "Farmáři produkují 1 zlato navíc\n"
-"Vývoj zkoumání: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Vývoj zkoumání: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 
-#. [research]
 #. [command]
+#. [research]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:146
 #: data/multiplayer/scenarios/ANL_utils/ANL_special_macros.cfg:99
 msgid "agriculture"
@@ -658,8 +658,8 @@ msgid ""
 msgstr ""
 "<span color='green'>Těžba</span>\n"
 "Horníci produkují 1 zlato navíc\n"
-"Vývoj zkoumání: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Vývoj zkoumání: $player_$side_number|.mining.progress|/$player_$side_number|."
+"mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
@@ -671,13 +671,13 @@ msgstr "těžba"
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
-"Study Progress: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Study Progress: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 msgstr ""
 "<span color='green'>Válečnictví</span>\n"
 "Umožňuje verbovat nový druh jednotek\n"
-"Vývoj zkoumání: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Vývoj zkoumání: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:177
@@ -690,8 +690,8 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
-"Farmy, které vlastní $player_$side_number|.name|, nyní produkují $player_"
-"$side_number|.farming.gold zlatých."
+"Farmy, které vlastní $player_$side_number|.name|, nyní produkují "
+"$player_$side_number|.farming.gold zlatých."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
@@ -699,8 +699,8 @@ msgid ""
 "$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
 "gold gold."
 msgstr ""
-"Doly, které vlastní $player_$side_number|.name|, nyní produkují $player_"
-"$side_number|.farming.gold zlatých."
+"Doly, které vlastní $player_$side_number|.name|, nyní produkují "
+"$player_$side_number|.mining.gold zlatých."
 
 # vynechána proměnná
 #. [message]: speaker=narrator

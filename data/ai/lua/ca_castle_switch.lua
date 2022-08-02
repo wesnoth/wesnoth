@@ -20,6 +20,7 @@ local function get_reachable_enemy_leaders(unit, avoid_map)
     for _,e in ipairs(potential_enemy_leaders) do
         -- Cannot use AH.find_path_with_avoid() here as there might be enemies all around the enemy leader
         if (not avoid_map:get(e.x, e.y)) then
+            wesnoth.interface.handle_user_interact()
             local path, cost = wesnoth.paths.find_path(unit, e.x, e.y, { ignore_units = true, ignore_visibility = true })
             if cost < AH.no_path then
                 table.insert(enemy_leaders, e)
@@ -59,7 +60,7 @@ end
 local ca_castle_switch = {}
 
 function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
-    -- @recruiting_leader is passed from the recuit_rushers CA for the leader_takes_village()
+    -- @recruiting_leader is passed from the recuit_rushers CA for the leader_takes_villages evaluation
     -- evaluation. If it is set, we do the castle switch evaluation only for that leader
 
     local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'castle_switch'
@@ -84,19 +85,24 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
         }, true)
     end
 
-    local leader
+    local non_passive_leader
     for _,l in pairs(leaders) do
         if (not AH.is_passive_leader(ai.aspects.passive_leader, l.id)) then
-            leader = l
+            non_passive_leader = l
             break
         end
     end
 
-    if not leader then
+    if not non_passive_leader then
         -- CA is irrelevant if no leader or the leader may have moved from another CA
         data.CS_leader, data.CS_leader_target = nil, nil
         if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
         return 0
+    end
+
+    -- Also need to check that the stored leader has not been killed
+    if data.CS_leader and not data.CS_leader.valid then
+        data.CS_leader, data.CS_leader_target = nil, nil
     end
 
     local avoid_map = AH.get_avoid_map(ai, nil, true)
@@ -124,7 +130,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
     -- Look for the best keep
     local overall_best_score = 0
     for _,leader in ipairs(leaders) do
-        local best_score, best_loc, best_turns, best_path = 0, {}, 3
+        local best_score, best_loc, best_turns, best_path = 0, {}, 3, nil
         local keeps = AH.get_locations_no_borders {
             terrain = 'K*,K*^*,*^K*', -- Keeps
             { "not", { {"filter", {}} }}, -- That have no unit
@@ -151,6 +157,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
 
         for i,loc in ipairs(keeps) do
             -- Only consider keeps within 2 turns movement
+            wesnoth.interface.handle_user_interact()
             local path, cost = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
             local score = 0
             -- Prefer closer keeps to enemy
@@ -206,6 +213,7 @@ function ca_castle_switch:evaluation(cfg, data, filter_own, recruiting_leader)
                     owner_side = 0 })
                 local cheapest_unit_cost = AH.get_cheapest_recruit_cost(leader)
                 for i,loc in ipairs(close_villages) do
+                    wesnoth.interface.handle_user_interact()
                     local path_village, cost_village = AH.find_path_with_avoid(leader, loc[1], loc[2], avoid_map)
                     if cost_village <= leader.moves then
                         local dummy_leader = leader:clone()
@@ -250,7 +258,7 @@ function ca_castle_switch:execution(cfg, data, filter_own)
     if AH.show_messages() then wesnoth.wml_actions.message { speaker = data.leader.id, message = 'Switching castles' } end
 
     AH.robust_move_and_attack(ai, data.CS_leader, data.CS_leader_target, nil, { partial_move = true })
-    data.CS_leader, data.CS_leader_target = nil
+    data.CS_leader, data.CS_leader_target = nil, nil
 end
 
 return ca_castle_switch

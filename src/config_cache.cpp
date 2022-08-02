@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -79,7 +79,7 @@ const preproc_map& config_cache::get_preproc_map() const
 
 void config_cache::clear_defines()
 {
-	LOG_CACHE << "Clearing defines map!" << std::endl;
+	LOG_CACHE << "Clearing defines map!";
 
 	defines_map_.clear();
 
@@ -164,7 +164,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		   d.first != "WESNOTH_VERSION")
 		{
 			is_valid = false;
-			ERR_CACHE << "Invalid preprocessor define: " << d.first << '\n';
+			ERR_CACHE << "Invalid preprocessor define: " << d.first;
 			break;
 		}
 
@@ -179,7 +179,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		// Use a hash for a shorter display of the defines.
 		const std::string fname = cache_path + "/" +
 								  cache_file_prefix_ +
-								  utils::sha1(defines_string.str()).hex_digest();
+								  utils::md5(defines_string.str()).hex_digest();
 		const std::string fname_checksum = fname + ".checksum" + extension;
 
 		filesystem::file_tree_checksum dir_checksum;
@@ -189,26 +189,26 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 				if(filesystem::file_exists(fname_checksum)) {
 					config checksum_cfg;
 
-					DBG_CACHE << "Reading checksum: " << fname_checksum << "\n";
+					DBG_CACHE << "Reading checksum: " << fname_checksum;
 					read_file(fname_checksum, checksum_cfg);
 
 					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 				}
 			} catch(const config::error&) {
-				ERR_CACHE << "cache checksum is corrupt" << std::endl;
+				ERR_CACHE << "cache checksum is corrupt";
 			} catch(const filesystem::io_exception&) {
-				ERR_CACHE << "error reading cache checksum" << std::endl;
+				ERR_CACHE << "error reading cache checksum";
 			} catch(const std::ios_base::failure&) {
-				ERR_CACHE << "error reading cache checksum" << std::endl;
+				ERR_CACHE << "error reading cache checksum";
 			}
 		}
 
 		if(force_valid_cache_) {
-			LOG_CACHE << "skipping cache validation (forced)\n";
+			LOG_CACHE << "skipping cache validation (forced)";
 		}
 
 		if(filesystem::file_exists(fname + extension) && (force_valid_cache_ || (dir_checksum == filesystem::data_tree_checksum()))) {
-			LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str() << "\n";
+			LOG_CACHE << "found valid cache at '" << fname << extension << "' with defines_map " << defines_string.str();
 			log_scope("read cache");
 
 			try {
@@ -221,16 +221,16 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 
 				return;
 			} catch(const config::error& e) {
-				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message << std::endl;
+				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message;
 			} catch(const filesystem::io_exception&) {
-				ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
+				ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files";
 			} catch (const boost::iostreams::gzip_error& e) {
 				//read_file -> ... -> read_gz can throw this exception.
-				ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
+				ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error();
 			}
 		}
 
-		LOG_CACHE << "no valid cache found. Writing cache to '" << fname << extension << " with defines_map "<< defines_string.str() << "'\n";
+		LOG_CACHE << "no valid cache found. Writing cache to '" << fname << extension << " with defines_map "<< defines_string.str() << "'";
 
 		// Now we need queued defines so read them to memory
 		read_defines_queue();
@@ -249,13 +249,13 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 			filesystem::data_tree_checksum().write(checksum_cfg);
 			write_file(fname_checksum, checksum_cfg);
 		} catch(const filesystem::io_exception&) {
-			ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
+			ERR_CACHE << "could not write to cache '" << fname << "'";
 		}
 
 		return;
 	}
 
-	LOG_CACHE << "Loading plain config instead of cache\n";
+	LOG_CACHE << "Loading plain config instead of cache";
 
 	preproc_map copy_map(make_copy_map());
 	read_configs(file_path, cfg, copy_map, validator);
@@ -267,7 +267,7 @@ void config_cache::read_defines_file(const std::string& file_path)
 	config cfg;
 	read_file(file_path, cfg);
 
-	DBG_CACHE << "Reading cached defines from: " << file_path << "\n";
+	DBG_CACHE << "Reading cached defines from: " << file_path;
 
 	// use static preproc_define::read_pair(config) to make a object
 	// and pass that object config_cache_transaction::insert_to_active method
@@ -322,7 +322,7 @@ void config_cache::recheck_filetree_checksum()
 
 void config_cache::add_define(const std::string& define)
 {
-	DBG_CACHE << "adding define: " << define << "\n";
+	DBG_CACHE << "adding define: " << define;
 	defines_map_[define] = preproc_define();
 
 	if(config_cache_transaction::is_active()) {
@@ -334,7 +334,7 @@ void config_cache::add_define(const std::string& define)
 
 void config_cache::remove_define(const std::string& define)
 {
-	DBG_CACHE << "removing define: " << define << "\n";
+	DBG_CACHE << "removing define: " << define;
 	defines_map_.erase(define);
 
 	if(config_cache_transaction::is_active()) {
@@ -349,7 +349,7 @@ bool config_cache::clean_cache()
 	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	LOG_CACHE << "clean_cache(): " << files.size() << " files, "
-			  << dirs.size() << " dirs to check\n";
+			  << dirs.size() << " dirs to check";
 
 	const std::string& exclude_current = cache_file_prefix_ + "*";
 
@@ -358,7 +358,7 @@ bool config_cache::clean_cache()
 	status &= delete_cache_files(files, exclude_current);
 	status &= delete_cache_files(dirs, exclude_current);
 
-	LOG_CACHE << "clean_cache(): done\n";
+	LOG_CACHE << "clean_cache(): done";
 
 	return status;
 }
@@ -369,14 +369,14 @@ bool config_cache::purge_cache()
 	filesystem::get_files_in_dir(filesystem::get_cache_dir(), &files, &dirs, filesystem::name_mode::ENTIRE_FILE_PATH);
 
 	LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
-			  << dirs.size() << " dirs\n";
+			  << dirs.size() << " dirs";
 
 	bool status = true;
 
 	status &= delete_cache_files(files);
 	status &= delete_cache_files(dirs);
 
-	LOG_CACHE << "purge_cache(): done\n";
+	LOG_CACHE << "purge_cache(): done";
 	return status;
 }
 
@@ -393,15 +393,15 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 
 			if(utils::wildcard_string_match(fn, exclude_pattern)) {
 				LOG_CACHE << "delete_cache_files(): skipping " << file_path
-						  << " excluded by '" << exclude_pattern << "'\n";
+						  << " excluded by '" << exclude_pattern << "'";
 				continue;
 			}
 		}
 
-		LOG_CACHE << "delete_cache_files(): deleting " << file_path << '\n';
+		LOG_CACHE << "delete_cache_files(): deleting " << file_path;
 		if(!filesystem::delete_directory(file_path)) {
 			ERR_CACHE << "delete_cache_files(): could not delete "
-					  << file_path << '\n';
+					  << file_path;
 			status = false;
 		}
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,16 +34,6 @@ class map_formula_callable;
 
 namespace gui2
 {
-/**
- * Creates a rectangle.
- *
- * @param origin                  The top left corner.
- * @param size                    The width (x) and height (y).
- *
- * @returns                       SDL_Rect with the proper rectangle.
- */
-SDL_Rect create_rect(const point& origin, const point& size);
-
 /**
  * Converts a color string to a color.
  *

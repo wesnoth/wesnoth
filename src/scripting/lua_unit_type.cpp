@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 #include <string>
 #include <cstring>
 
-#include "lua/lua.h"
 #include "lua/lauxlib.h"
 
 /**
@@ -48,7 +47,7 @@ static int impl_unit_type_get(lua_State *L)
 	// Find the corresponding attribute.
 	return_tstring_attrib("name", ut.type_name());
 	return_string_attrib("id", ut.id());
-	return_string_attrib("alignment", ut.alignment().to_string());
+	return_string_attrib("alignment", unit_alignments::get_string(ut.alignment()));
 	return_string_attrib("race", ut.race_id());
 	return_string_attrib("image", ut.image());
 	return_string_attrib("icon", ut.icon());

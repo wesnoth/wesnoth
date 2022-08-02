@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -58,15 +58,12 @@ private:
  * @param image               An image to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  * @param title_use_markup    Use markup for the title?
- * @param restore_background  Restore the background to the state it was before
- * 							  the message appeared
  */
 void show_transient_message(const std::string& title,
 							const std::string& message,
 							const std::string& image = std::string(),
 							const bool message_use_markup = false,
-							const bool title_use_markup = false,
-							const bool restore_background = false);
+							const bool title_use_markup = false);
 
 /**
  * Shows a transient error message to the user.

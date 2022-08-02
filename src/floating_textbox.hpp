@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -40,7 +40,7 @@ namespace gui{
 		const std::unique_ptr<gui::textbox>& box() const { return box_; }
 		const std::vector<std::string>& command_history() const { return command_history_; }
 
-		void close(game_display& gui);
+		void close();
 		void update_location(game_display& gui);
 		void show(gui::TEXTBOX_MODE mode, const std::string& label,
 			const std::string& check_label, bool checked, game_display& gui);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,7 @@ namespace editor {
 class editor_display : public display
 {
 public:
-	editor_display(editor_controller& controller, reports& reports_object, const config& theme_cfg);
+	editor_display(editor_controller& controller, reports& reports_object);
 
 	bool in_editor() const override { return true; }
 
@@ -42,20 +42,21 @@ public:
 		return controller_;
 	}
 
-protected:
-	void pre_draw() override;
 	/**
-	* The editor uses different rules for terrain highlighting (e.g. selections)
-	*/
-	image::TYPE get_image_type(const map_location& loc) override;
+	 * TLD layout() override. Replaces old refresh_reports(). Be sure to
+	 * call the base class method as well.
+	 *
+	 * This updates some reports that may need to be refreshed every frame.
+	 */
+	virtual void layout() override;
 
+protected:
 	void draw_hex(const map_location& loc) override;
 
 	/** Inherited from display. */
 	virtual overlay_map& get_overlays() override;
 
-	const SDL_Rect& get_clip_rect() override;
-	void draw_sidebar() override;
+	rect get_clip_rect() const override;
 
 	std::set<map_location> brush_locations_;
 

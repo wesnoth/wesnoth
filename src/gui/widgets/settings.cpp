@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,9 +16,7 @@
 #include "gui/widgets/settings.hpp"
 
 #include "display.hpp"
-
-#define MAGIC_DPI_MATCH_VIDEO 96
-#define MICRONS_PER_INCH 25400
+#include "video.hpp"
 
 namespace gui2
 {
@@ -28,7 +26,14 @@ namespace settings
 {
 unsigned screen_width = 0;
 unsigned screen_height = 0;
-unsigned screen_pitch_microns = MICRONS_PER_INCH / MAGIC_DPI_MATCH_VIDEO;
+/** screen_pitch_microns is deprecated. Do not use it.
+ *
+ * This value corresponds to a physical DPI of 96. But physical DPI should
+ * not be used to make rendering decisions. With the ability to set pixel
+ * scale, it can be assumed that one pixel in draw-space is neither too
+ * small nor too large.
+ */
+const unsigned screen_pitch_microns = 265;
 unsigned gamemap_x_offset = 0;
 
 unsigned gamemap_width = 0;
@@ -51,15 +56,10 @@ std::vector<game_tip> tips;
 
 void update_screen_size_variables()
 {
-	CVideo& vid = CVideo::get_singleton();
-	const SDL_Rect rect = vid.screen_area();
+	point canvas_size = video::game_canvas_size();
 
-	screen_width = rect.w;
-	screen_height = rect.h;
-
-	auto [scalew, scaleh] = vid.get_dpi_scale_factor();
-	float avgscale = (scalew + scaleh)/2;
-	screen_pitch_microns = MICRONS_PER_INCH / (avgscale * MAGIC_DPI_MATCH_VIDEO);
+	screen_width = canvas_size.x;
+	screen_height = canvas_size.y;
 
 	gamemap_width = screen_width;
 	gamemap_height = screen_height;

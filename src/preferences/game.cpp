@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,14 +27,13 @@
 #include "serialization/unicode_cast.hpp"
 #include "units/map.hpp"
 #include "units/unit.hpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 
 #include <cassert>
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err, log_config)
-
-using acquaintances_map = std::map<std::string, preferences::acquaintance>;
 
 namespace
 {
@@ -46,7 +45,7 @@ std::set<t_translation::terrain_code> encountered_terrains_set;
 
 std::map<std::string, std::vector<std::string>> history_map;
 
-acquaintances_map acquaintances;
+std::map<std::string, preferences::acquaintance> acquaintances;
 
 std::vector<std::string> mp_modifications;
 bool mp_modifications_initialized = false;
@@ -123,13 +122,6 @@ void load_game_prefs()
 {
 	set_music_volume(music_volume());
 	set_sound_volume(sound_volume());
-
-	if(!preferences::get("remember_timer_settings", false)) {
-		preferences::erase("mp_countdown_init_time");
-		preferences::erase("mp_countdown_reservoir_time");
-		preferences::erase("mp_countdown_turn_bonus");
-		preferences::erase("mp_countdown_action_bonus");
-	}
 
 	// We save the password encrypted now. Erase any saved passwords in the prefs file.
 	preferences::erase("password");
@@ -241,15 +233,10 @@ std::pair<preferences::acquaintance*, bool> add_acquaintance(
 	}
 
 	preferences::acquaintance new_entry(nick, mode, notes);
-	auto [iter, success] = acquaintances.emplace(nick, new_entry);
-
-	if(!success) {
-		iter->second = new_entry;
-	}
+	auto [iter, added_new] = acquaintances.insert_or_assign(nick, new_entry);
 
 	save_acquaintances();
-
-	return std::pair(&iter->second, success);
+	return std::pair(&iter->second, added_new);
 }
 
 bool remove_acquaintance(const std::string& nick)
@@ -330,39 +317,39 @@ bool parse_should_show_lobby_join(const std::string& sender, const std::string& 
 		}
 	}
 
-	int lj = lobby_joins();
-	if(lj == SHOW_NONE) {
+	lobby_joins lj = get_lobby_joins();
+	if(lj == lobby_joins::show_none) {
 		return false;
 	}
 
-	if(lj == SHOW_ALL) {
+	if(lj == lobby_joins::show_all) {
 		return true;
 	}
 
 	return is_friend(message.substr(0, pos));
 }
 
-int lobby_joins()
+lobby_joins get_lobby_joins()
 {
 	std::string pref = preferences::get("lobby_joins");
 	if(pref == "friends") {
-		return SHOW_FRIENDS;
+		return lobby_joins::show_friends;
 	} else if(pref == "all") {
-		return SHOW_ALL;
+		return lobby_joins::show_all;
 	} else if(pref == "none") {
-		return SHOW_NONE;
+		return lobby_joins::show_none;
 	} else {
-		return SHOW_FRIENDS;
+		return lobby_joins::show_friends;
 	}
 }
 
-void _set_lobby_joins(int show)
+void _set_lobby_joins(lobby_joins show)
 {
-	if(show == SHOW_FRIENDS) {
+	if(show == lobby_joins::show_friends) {
 		preferences::set("lobby_joins", "friends");
-	} else if(show == SHOW_ALL) {
+	} else if(show == lobby_joins::show_all) {
 		preferences::set("lobby_joins", "all");
-	} else if(show == SHOW_NONE) {
+	} else if(show == lobby_joins::show_none) {
 		preferences::set("lobby_joins", "none");
 	}
 }
@@ -814,7 +801,7 @@ void set_autosavemax(int value)
 
 std::string theme()
 {
-	if(CVideo::get_singleton().non_interactive()) {
+	if(video::headless()) {
 		static const std::string null_theme = "null";
 		return null_theme;
 	}
@@ -861,17 +848,17 @@ compression::format save_compression_format()
 	// "yes" was used in 1.11.7 and earlier; the compress_saves
 	// option used to be a toggle for gzip in those versions.
 	if(choice.empty() || choice == "gzip" || choice == "yes") {
-		return compression::GZIP;
+		return compression::format::gzip;
 	} else if(choice == "bzip2") {
-		return compression::BZIP2;
+		return compression::format::bzip2;
 	} else if(choice == "none" || choice == "no") { // see above
-		return compression::NONE;
+		return compression::format::none;
 	} /*else*/
 
 	// In case the preferences file was created by a later version
 	// supporting some algorithm we don't; although why would anyone
 	// playing a game need more algorithms, really...
-	return compression::GZIP;
+	return compression::format::gzip;
 }
 
 std::string get_chat_timestamp(const std::time_t& t)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -108,18 +108,11 @@ public:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children() override;
 
 protected:
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
 
 public:
 	/** See @ref widget::find_at. */
@@ -145,13 +138,8 @@ public:
 
 	/**
 	 * See @ref widget::create_walker.
-	 *
-	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override
-	{
-		return nullptr;
-	}
+	virtual iteration::walker_ptr create_walker() override;
 
 	/**
 	 * Initializes and builds the grid.
@@ -201,13 +189,13 @@ public:
 		grid_.set_rows_cols(rows, cols);
 	}
 
-	void set_child(widget* widget,
+	void set_child(std::unique_ptr<widget> widget,
 				   const unsigned row,
 				   const unsigned col,
 				   const unsigned flags,
 				   const unsigned border_size)
 	{
-		grid_.set_child(widget, row, col, flags, border_size);
+		grid_.set_child(std::move(widget), row, col, flags, border_size);
 	}
 
 	void set_row_grow_factor(const unsigned row, const unsigned factor)

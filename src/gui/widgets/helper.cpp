@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,16 +25,12 @@
 #include "gui/widgets/settings.hpp"
 #include "sdl/rect.hpp"
 #include "tstring.hpp"
+#include "sdl/input.hpp" // get_mouse_location
 
 #include <SDL2/SDL.h>
 
 namespace gui2
 {
-SDL_Rect create_rect(const point& origin, const point& size)
-{
-	return {origin.x, origin.y, size.x, size.y};
-}
-
 font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 {
 	static const std::map<std::string, font::pango_text::FONT_STYLE> font_style_map {
@@ -52,7 +48,7 @@ font::pango_text::FONT_STYLE decode_font_style(const std::string& style)
 		return i->second;
 	}
 
-	ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead." << std::endl;
+	ERR_GUI_G << "Unknown style '" << style << "', using 'normal' instead.";
 	return font::pango_text::STYLE_NORMAL;
 }
 
@@ -70,7 +66,7 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 	}
 
 	if(!alignment.empty() && alignment != "left") {
-		ERR_GUI_E << "Invalid text alignment '" << alignment << "', falling back to 'left'." << std::endl;
+		ERR_GUI_E << "Invalid text alignment '" << alignment << "', falling back to 'left'.";
 	}
 
 	return PANGO_ALIGN_LEFT;
@@ -117,10 +113,7 @@ wfl::map_formula_callable get_screen_size_variables()
 
 point get_mouse_position()
 {
-	int x, y;
-	SDL_GetMouseState(&x, &y);
-
-	return point(x, y);
+	return sdl::get_mouse_location();
 }
 
 std::string debug_truncate(const std::string& text)

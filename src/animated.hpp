@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Philippe Plantier <ayin@anathas.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,12 +31,13 @@ template<typename T>
 class animated
 {
 public:
-	animated(int start_time = 0);
-	virtual ~animated() {}
-
 	typedef std::pair<int, T> frame_description;
 	typedef std::vector<frame_description> anim_description;
-	animated(const std::vector<frame_description>& cfg, int start_time = 0, bool force_change = false);
+
+	animated(int start_time = 0);
+	explicit animated(const std::vector<frame_description>& cfg, int start_time = 0, bool force_change = false);
+
+	virtual ~animated() = default;
 
 	/** Adds a frame to an animation. */
 	void add_frame(int duration, const T& value, bool force_change = false);
@@ -107,9 +108,11 @@ public:
 
 protected:
 	friend class unit_animation;
-	int starting_frame_time_;
+
 	void remove_frames_until(int starting_time);
 	void set_end_time(int ending_time);
+
+	int starting_frame_time_;
 
 private:
 	struct frame

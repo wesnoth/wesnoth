@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
+"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
 "PO-Revision-Date: 2013-07-28 01:04+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -169,9 +169,9 @@ msgid "Fal Khag"
 msgstr "Φαλ Χαγκ"
 
 #. [side]: type=Goblin Pillager, id=Fal Khag
-#. [side]: type=Orcish Warlord, id=Vashna
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:86
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:106
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
@@ -540,14 +540,14 @@ msgid ""
 "ready our hunting troop when I get back to the village, just in case..."
 msgstr ""
 
+#. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]
 #. [side]: type=Bandit, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:44
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:83
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
@@ -568,13 +568,13 @@ msgstr "Επαναστάτες"
 msgid "Tarwen"
 msgstr "Τάργουεν"
 
+#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
 #. [side]: type=Shock Trooper, id=Linneus
 #. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
-#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
@@ -645,7 +645,7 @@ msgstr "Φύλαξε αυτήν την είσοδο."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:225
-msgid "<i>Uncle, since when did we have a Queen?</i>"
+msgid "<i>Uncle, since when did we have a queen?</i>"
 msgstr ""
 
 #. [message]: speaker=Baldras
@@ -1868,7 +1868,7 @@ msgstr "Ο στόχος σας;"
 #| "because we seek to master shadow magic. Our secrecy and security are not "
 #| "cheap."
 msgid ""
-"The former King’s magic ministry kept a tight control on the training and "
+"The former king’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
 "curriculum were dealt with harshly. Many of us were forced to escape here to "
 "continue our study of our brand of magic. Our security and secrecy are not "
@@ -1901,7 +1901,7 @@ msgstr ""
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:281
 msgid ""
 "Understand this. Any weakening of the Throne of Wesnoth, whether it be "
-"occupied by King or Queen, aids us. To accomplish that, we must destabilize "
+"occupied by king or queen, aids us. To accomplish that, we must destabilize "
 "their forces in this region. The key is Halstead."
 msgstr ""
 
@@ -1924,7 +1924,7 @@ msgstr ""
 msgid ""
 "Know this, Baldras. During the past week, several patrols have again "
 "ventured across the Great River into Annuvin. A woman named Relana opposed "
-"them with a small militia and was victorious, but with heavy loses. The "
+"them with a small militia and was victorious, but with heavy losses. The "
 "Crown, however, has begun to take notice of this rebellion and is massing "
 "forces within Halstead. When its armies are raised, none of your little "
 "villages will be able to resist them. Your only choice would be to flee "
@@ -2833,48 +2833,6 @@ msgid ""
 "bones has one more adventure left in it..."
 msgstr ""
 
-#. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:5
-msgid "Bone Knight"
-msgstr "Απέθαντος Ιππότης"
-
-#. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:27
-msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
-msgstr ""
-"Κάποτε ήταν μεγάλοι πολεμιστές στις πεδιάδες του Γουέσνοθ. Τώρα αυτοί και οι "
-"σκελετοί των αλόγων τους υπηρετούν ανόσιους νεκρομάντες, σκορπίζοντας φόβο "
-"και καταστροφή."
-
-#. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:42
-msgid "trample"
-msgstr "ποδοπάτημα"
-
-#. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:4
-msgid "Death Squire"
-msgstr "Απέθαντος Ακόλουθος"
-
-#. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:26
-msgid ""
-"Sometimes the mightiest warriors and generals, cursed with hate and angst, "
-"came back to this world as Death Knights. Death Squires serve them whilst "
-"accruing enough unholy power to become Death Knights. In the process they "
-"pick up a good deal of the Knight’s power, including the ability to command "
-"underlings."
-msgstr ""
-"Υπάρχουν περιπτώσεις μεγάλων πολεμιστών και στρατηγών που επιστρέφουν στον "
-"κόσμο μας μετά τον θάνατό τους, γεμάτοι μίσος και αγωνία, σαν Απέθαντοι "
-"Ιππότες. Οι ακόλουθοι τους τους υπηρετούν, ενόσω μαζεύουν αρκετή δύναμη για "
-"να γίνουν και αυτοί Ιππότες. Στην πορεία κληρονομούν ένα μεγάλο μέρος της "
-"δύναμης του Ιππότη τους, όπως και την ικανότητα να προστάζουν μικρότερα "
-"πνεύματα."
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
@@ -2973,22 +2931,6 @@ msgstr ""
 "όπλα τους, κάτι που τους κάνει ιδιαίτερα επικίνδυνους σε μάχες σώμα με σώμα. "
 "Παρόλη την δύναμή τους όμως, οι ψυχές τους έχουν φθαρεί πέρα από κάθε "
 "θεραπεία, και αυτό επηρεάζει αρνητικά την υγεία τους."
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
-msgid "Skeleton Rider"
-msgstr "Απέθαντος Ιππέας"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
-"Αυτοί οι υπηρέτες των σκοτεινών δυνάμεων ήταν κάποτε γενναίοι πολεμιστές, "
-"δυνατοί στον πόλεμο και περήφανοι στην ειρήνη. Τώρα σκορπίζουν τον τρόμο και "
-"την καταστροφή, αφότου ο αιώνιος ύπνος τους διακόπηκε απότομα."
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20
@@ -3172,6 +3114,50 @@ msgstr ""
 #| msgid "How can this be? We have lost."
 msgid "How can this be?"
 msgstr "Πώς γίνεται αυτό; Έχουμε χάσει!"
+
+#~ msgid "Bone Knight"
+#~ msgstr "Απέθαντος Ιππότης"
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the ground by unholy magic to spread "
+#~ "fear and destruction."
+#~ msgstr ""
+#~ "Κάποτε ήταν μεγάλοι πολεμιστές στις πεδιάδες του Γουέσνοθ. Τώρα αυτοί και "
+#~ "οι σκελετοί των αλόγων τους υπηρετούν ανόσιους νεκρομάντες, σκορπίζοντας "
+#~ "φόβο και καταστροφή."
+
+#~ msgid "trample"
+#~ msgstr "ποδοπάτημα"
+
+#~ msgid "Death Squire"
+#~ msgstr "Απέθαντος Ακόλουθος"
+
+#~ msgid ""
+#~ "Sometimes the mightiest warriors and generals, cursed with hate and "
+#~ "angst, came back to this world as Death Knights. Death Squires serve them "
+#~ "whilst accruing enough unholy power to become Death Knights. In the "
+#~ "process they pick up a good deal of the Knight’s power, including the "
+#~ "ability to command underlings."
+#~ msgstr ""
+#~ "Υπάρχουν περιπτώσεις μεγάλων πολεμιστών και στρατηγών που επιστρέφουν "
+#~ "στον κόσμο μας μετά τον θάνατό τους, γεμάτοι μίσος και αγωνία, σαν "
+#~ "Απέθαντοι Ιππότες. Οι ακόλουθοι τους τους υπηρετούν, ενόσω μαζεύουν "
+#~ "αρκετή δύναμη για να γίνουν και αυτοί Ιππότες. Στην πορεία κληρονομούν "
+#~ "ένα μεγάλο μέρος της δύναμης του Ιππότη τους, όπως και την ικανότητα να "
+#~ "προστάζουν μικρότερα πνεύματα."
+
+#~ msgid "Skeleton Rider"
+#~ msgstr "Απέθαντος Ιππέας"
+
+#~ msgid ""
+#~ "Once great warriors thundering across the plains, these mounted riders "
+#~ "atop their skeletal horses were raised from the grave by unholy magic to "
+#~ "spread fear and destruction."
+#~ msgstr ""
+#~ "Αυτοί οι υπηρέτες των σκοτεινών δυνάμεων ήταν κάποτε γενναίοι πολεμιστές, "
+#~ "δυνατοί στον πόλεμο και περήφανοι στην ειρήνη. Τώρα σκορπίζουν τον τρόμο "
+#~ "και την καταστροφή, αφότου ο αιώνιος ύπνος τους διακόπηκε απότομα."
 
 #, fuzzy
 #~| msgid "(Difficult)"

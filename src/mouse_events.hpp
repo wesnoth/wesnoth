@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -159,6 +159,15 @@ private:
 	team& viewing_team();
 	const team& viewing_team() const;
 	team &current_team();
+
+	// Some common code from mouse_motion and touch_motion.
+	/**
+	 * Highlight the hexes that a unit can move to.
+	 *
+	 * Based on the currently selected hex, selected unit and what's being moused-over,
+	 * conditionally draw any planned moves for the unit passed as an argument.
+	 */
+	void show_reach_for_unit(const unit_ptr& un);
 
 	game_display* gui_;
 	play_controller & pc_;

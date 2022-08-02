@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Karol Nowak <grywacz@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include <boost/test/unit_test_monitor.hpp>
 #include <boost/test/unit_test_parameters.hpp>
 #include <boost/test/results_reporter.hpp>
+#include <boost/filesystem/path.hpp>
 
 #include <fstream>
 
@@ -61,13 +62,24 @@ struct wesnoth_global_fixture {
 	wesnoth_global_fixture()
 	{
 		using namespace boost::unit_test;
-		reporter.open("boost_test_result.xml");
+		using namespace std::literals;
+		boost::filesystem::path file("boost_test_result.xml");
+		for(int i = 1; i < framework::master_test_suite().argc; i++) {
+			if(framework::master_test_suite().argv[i - 1] == "--output_file"s) {
+				file = framework::master_test_suite().argv[i];
+				break;
+			}
+		}
+
+		reporter.open(file.string());
 		assert( reporter.is_open() );
 
 		results_reporter::set_stream(reporter);
 //		lg::set_log_domain_severity("all",lg::debug());
 		game_config::path = filesystem::get_cwd();
 
+		// declare this here so that it will always be at the front of the event queue.
+		events::event_context global_context;
 
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
@@ -76,11 +88,15 @@ struct wesnoth_global_fixture {
 		gui2::init();
 		static const gui2::event::manager gui_event_manager;
 
+		// TODO: For some reason this fails on MacOS and prevents any tests from running
+		// It's not crucial to change the log levels though, so just skip over it.
+#ifndef __APPLE__
 		// Set more report as default
 		if(runtime_config::get<log_level>(runtime_config::btrt_log_level) == invalid_log_level)
 			unit_test_log.set_threshold_level(log_messages);
 		if(runtime_config::get<report_level>(runtime_config::btrt_report_level) == INV_REPORT_LEVEL)
 			results_reporter::set_level(SHORT_REPORT);
+#endif
 		unit_test_monitor.register_exception_translator<game::error>(&exception_translator_game);
 		unit_test_monitor.register_exception_translator<config::error>(&exception_translator_config);
 	}

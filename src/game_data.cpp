@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -90,7 +90,7 @@ void game_data::set_variable(const std::string& key, const t_string& value)
 	}
 	catch(const invalid_variablename_exception&)
 	{
-		ERR_NG << "variable " << key << "cannot be set to " << value << std::endl;
+		ERR_NG << "variable " << key << "cannot be set to " << value;
 	}
 }
 //throws

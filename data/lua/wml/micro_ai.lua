@@ -1,5 +1,11 @@
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
+---@class ca_info
+---@field ca_id string The base ID used for the candidate action
+---@field location string Path to the Lua file that defines the candidate action
+---@field score number The maximum score the candidate action can return
+
+---@type table<string, fun(cfg:WML):string[],string[],ca_info>
 wesnoth.micro_ais = {}
 
 -- Load all default MicroAIs
@@ -13,6 +19,14 @@ function wesnoth.wml_actions.micro_ai(cfg)
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then wml.error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then wml.error("[micro_ai] is missing required side= key") end
+    if string.find(cfg.side, ',') then
+        local sides = stringx.split(cfg.side)
+        for _,side in ipairs(sides) do
+            cfg.side = tonumber(side)
+            wesnoth.wml_actions.micro_ai(cfg)
+        end
+        return
+    end
     if (not wesnoth.sides[cfg.side]) then
         wesnoth.interface.add_chat_message("Warning", "[micro_ai] uses side=" .. cfg.side .. ": side does not exist")
         return

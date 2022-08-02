@@ -6,9 +6,9 @@ local M = wesnoth.map
 local ca_wolves_multipacks_attack = {}
 
 function ca_wolves_multipacks_attack:evaluation(cfg)
-    -- If wolves have attacks left, call this CA
-    -- It will be disabled by being black-listed, so as to avoid
-    -- having to do the full attack evaluation for every single move evaluation
+    -- If wolves have attacks left, always call the execution function in order to avoid
+    -- having to do the full attack evaluation for every loop through the CA evaluations.
+    -- If no attacks are found, attacks_left is set to zero for the wolves instead.
 
     local wolves = AH.get_units_with_attacks {
         side = wesnoth.current.side,
@@ -32,7 +32,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
 
         -- This repeats until all wolves in a pack have attacked, or none can attack any more
         while keep_attacking_this_pack do
-            local wolves, attacks = {}, {}
+            local wolves = {}
             for _,pack_wolf in ipairs(pack) do
                 -- Wolf might have moved in previous attack -> use id to identify it
                 local wolf = wesnoth.units.find_on_map { id = pack_wolf.id }[1]
@@ -85,7 +85,7 @@ function ca_wolves_multipacks_attack:execution(cfg)
                 end
 
                 -- Find which target can be attacked by the most units, from the most hexes; and rate by fewest HP if equal
-                local max_rating, best_target = - math.huge
+                local max_rating1, best_target = - math.huge, nil
                 for attack_ind,attack in pairs(attack_map_wolves) do
                     local number_wolves, number_hexes = 0, 0
                     for _,w in pairs(attack) do number_wolves = number_wolves + 1 end
@@ -111,20 +111,20 @@ function ca_wolves_multipacks_attack:execution(cfg)
                         end
                     end
 
-                    if rating > max_rating then
-                        max_rating, best_target = rating, target
+                    if rating > max_rating1 then
+                        max_rating1, best_target = rating, target
                     end
                 end
 
                 -- Now we know the best target and need to attack
                 -- This is done on a wolf-by-wolf basis, the outside while loop taking care of
                 -- the next wolf in the pack on subsequent iterations
-                local max_rating, best_attack = - math.huge
+                local max_rating2, best_attack = - math.huge, nil
                 for _,attack in ipairs(attacks) do
                     if (attack.target.x == best_target.x) and (attack.target.y == best_target.y) then
                         local rating = attack.att_stats.average_hp / 2. - attack.def_stats.average_hp
-                        if (rating > max_rating) then
-                            max_rating, best_attack = rating, attack
+                        if (rating > max_rating2) then
+                            max_rating2, best_attack = rating, attack
                         end
                     end
                 end
@@ -190,6 +190,11 @@ function ca_wolves_multipacks_attack:execution(cfg)
                         WMPF.put_label(wolf_moves.x, wolf_moves.y, pack_number)
                     end
                 end
+            end
+        else -- otherwise take attacks away from all wolves in the pack
+            for _,pack_wolf in ipairs(pack) do
+                local wolf = wesnoth.units.find_on_map { id = pack_wolf.id }[1]
+                AH.checked_stopunit_attacks(ai, wolf)
             end
         end
     end

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -68,7 +68,7 @@ struct time_of_day
 
 	bool operator==(const time_of_day& o) const {
 		return lawful_bonus == o.lawful_bonus
-            && bonus_modified == o.bonus_modified
+			&& bonus_modified == o.bonus_modified
 			&& image == o.image
 			&& name == o.name
 			&& id == o.id

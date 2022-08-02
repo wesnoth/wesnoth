@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,7 +87,7 @@ bool drawing::disable_click_dismiss() const
 drawing_definition::drawing_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing drawing " << id << '\n';
+	DBG_GUI_P << "Parsing drawing " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -118,9 +118,9 @@ builder_drawing::builder_drawing(const config& cfg)
 	assert(!draw.empty());
 }
 
-widget* builder_drawing::build() const
+std::unique_ptr<widget> builder_drawing::build() const
 {
-	drawing* widget = new drawing(*this);
+	auto widget = std::make_unique<drawing>(*this);
 
 	const wfl::map_formula_callable& size = get_screen_size_variables();
 
@@ -134,7 +134,7 @@ widget* builder_drawing::build() const
 	widget->set_drawing_data(draw);
 
 	DBG_GUI_G << "Window builder: placed drawing '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

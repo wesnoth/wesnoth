@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@ namespace gui2
 // ------------ WIDGET -----------{
 
 class button;
+class drawing;
 class image;
 class label;
 class tree_view;
@@ -77,7 +78,7 @@ protected:
 private:
 	utils::optional_reference<const unit_type> current_type_;
 
-	image* icon_type_;
+	drawing* icon_type_;
 	image* icon_race_;
 	image* icon_alignment_;
 
@@ -139,7 +140,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 	const std::string image_mods_;

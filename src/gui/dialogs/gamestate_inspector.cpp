@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,6 +34,7 @@
 
 #include "game_board.hpp"
 #include "game_data.hpp"
+#include "gettext.hpp"
 #include "recall_list_manager.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
@@ -140,7 +141,7 @@ public:
 
 	stuff_list_adder& widget(const std::string& ref, const std::string& label, bool markup = false)
 	{
-		string_map& item = data_[ref];
+		widget_item& item = data_[ref];
 		item["label"] = label;
 		item["use_markup"] = utils::bool_string(markup);
 		return *this;
@@ -149,7 +150,7 @@ public:
 private:
 	tree_view_node& stuff_list_;
 	const std::string defn_;
-	std::map<std::string, string_map> data_;
+	widget_data data_;
 };
 
 class gamestate_inspector::view
@@ -489,7 +490,7 @@ const display_context& single_mode_controller::dc() const {
 event_mode_controller::event_mode_controller(gamestate_inspector::controller& c)
 	: single_mode_controller(c)
 {
-	single_mode_controller::events().write_events(events);
+	single_mode_controller::events().write_events(events, true);
 }
 
 void variable_mode_controller::show_list(tree_view_node& node)

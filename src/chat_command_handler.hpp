@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -40,6 +40,7 @@ protected:
 	void do_remove();
 	void do_display();
 	void do_version();
+	void do_clear_messages();
 
 	/** Request information about a user from the server. */
 	void do_info();
@@ -66,6 +67,7 @@ protected:
 	void init_map()
 	{
 		set_cmd_prefix("/");
+		set_cmd_flag(false);
 		register_command("query", &chat_command_handler::do_network_send,
 			_("Send a query to the server. Without arguments the server"
 				" should tell you the available commands."));
@@ -113,6 +115,8 @@ protected:
 			_("Display version information."));
 		register_command("info", &chat_command_handler::do_info,
 			_("Request information about a nickname."), _("<nickname>"));
+		register_command("clear", &chat_command_handler::do_clear_messages,
+			_("Clear chat history."));
 	}
 private:
 	chat_handler& chat_handler_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,8 +31,6 @@ REGISTER_DIALOG(addon_uninstall_list)
 
 void addon_uninstall_list::pre_show(window& window)
 {
-	set_restore(true);
-
 	listbox& list = find_widget<listbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);
 
@@ -46,8 +44,8 @@ void addon_uninstall_list::pre_show(window& window)
 		this->ids_.push_back(id);
 		this->selections_[id] = false;
 
-		std::map<std::string, string_map> data;
-		string_map column;
+		widget_data data;
+		widget_item column;
 
 		column["label"] = title;
 		data.emplace("name", column);

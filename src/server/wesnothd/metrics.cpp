@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,7 @@
 #include "server/wesnothd/metrics.hpp"
 
 #include <algorithm>
-#include <iostream>
+#include <ostream>
 
 struct compare_samples_to_stringspan {
 	bool operator()(const simple_wml::string_span& a, const simple_wml::string_span& b) const

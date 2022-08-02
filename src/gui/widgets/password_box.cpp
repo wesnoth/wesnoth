@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>, Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -121,16 +121,16 @@ builder_password_box::builder_password_box(const config& cfg)
 {
 }
 
-widget* builder_password_box::build() const
+std::unique_ptr<widget> builder_password_box::build() const
 {
-	password_box* widget = new password_box(*this);
+	auto widget = std::make_unique<password_box>(*this);
 
 	// A password box doesn't have a label but a text.
 	// It also has no history.
 	widget->set_value(label_string);
 
 	DBG_GUI_G << "Window builder: placed password box '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

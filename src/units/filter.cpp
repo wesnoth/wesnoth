@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -250,14 +250,14 @@ bool unit_filter_compound::matches(const unit_filter_args& args) const
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for(const auto & filter : cond_children_) {
-		switch (filter.first.v) {
-		case CONDITIONAL_TYPE::AND:
+		switch (filter.first) {
+		case conditional_type::type::filter_and:
 			res = res && filter.second.matches(args);
 			break;
-		case CONDITIONAL_TYPE::OR:
+		case conditional_type::type::filter_or:
 			res = res || filter.second.matches(args);
 			break;
-		case CONDITIONAL_TYPE::NOT:
+		case conditional_type::type::filter_not:
 			res = res && !filter.second.matches(args);
 			break;
 		}
@@ -519,7 +519,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					try {
 						res.push_back(std::stoi(s));
 					} catch(std::invalid_argument&) {
-						WRN_CF << "ignored invalid side='" << s << "' in filter\n";
+						WRN_CF << "ignored invalid side='" << s << "' in filter";
 					}
 				}
 				return res;
@@ -569,7 +569,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& alignment, const unit_filter_args& args)
 			{
-				return args.u.alignment().to_string() == alignment;
+				return unit_alignments::get_string(args.u.alignment()) == alignment;
 			}
 		);
 
@@ -754,9 +754,9 @@ void unit_filter_compound::fill(vconfig cfg)
 		}
 
 		for(auto child : cfg.all_ordered()) {
-			CONDITIONAL_TYPE cond;
-			if(cond.parse(child.first)) {
-				cond_children_.emplace_back(std::piecewise_construct_t(), std::tuple(cond), std::tuple(child.second));
+			auto cond = conditional_type::get_enum(child.first);
+			if(cond) {
+				cond_children_.emplace_back(std::piecewise_construct_t(), std::tuple(*cond), std::tuple(child.second));
 			}
 			else if (child.first == "filter_wml") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
@@ -819,7 +819,7 @@ void unit_filter_compound::fill(vconfig cfg)
 			else {
 				std::stringstream errmsg;
 				errmsg << "encountered a child [" << child.first << "] of a standard unit filter, it is being ignored";
-				DBG_CF << errmsg.str() << std::endl;
+				DBG_CF << errmsg.str();
 			}
 
 		}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,7 @@
 #include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "gettext.hpp"
+#include "utils/math.hpp"
 #include "wml_exception.hpp"
 
 #include <functional>
@@ -74,7 +75,7 @@ point slider::calculate_best_size() const
 		result.x = conf->left_offset + best_slider_length_ + conf->right_offset;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_ << " result " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " best_slider_length " << best_slider_length_ << " result " << result << ".";
 	return result;
 }
 
@@ -96,7 +97,7 @@ void slider::set_value(int value)
 			<< " desired_value=" << value
 			<< " minimum_value=" << minimum_value_
 			<< " maximum_value=" << get_maximum_value()
-			<< " step_size=" << step_size_ << "\n";
+			<< " step_size=" << step_size_;
 		assert(false);
 	}
 
@@ -144,11 +145,12 @@ unsigned slider::offset_after() const
 
 bool slider::on_positioner(const point& coordinate) const
 {
-	SDL_Rect positioner_rect =
-		sdl::create_rect(get_positioner_offset(), 0, get_positioner_length(), get_height());
+	rect positioner_rect(
+		get_positioner_offset(), 0, get_positioner_length(), get_height()
+	);
 
 	// Note we assume the positioner is over the entire height of the widget.
-	return sdl::point_in_rect(coordinate, positioner_rect);
+	return positioner_rect.contains(coordinate);
 }
 
 int slider::on_bar(const point& coordinate) const
@@ -183,7 +185,7 @@ void slider::update_canvas()
 
 void slider::handle_key_decrease(bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << '\n';
+	DBG_GUI_E << LOG_HEADER;
 
 	handled = true;
 
@@ -192,7 +194,7 @@ void slider::handle_key_decrease(bool& handled)
 
 void slider::handle_key_increase(bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << '\n';
+	DBG_GUI_E << LOG_HEADER;
 
 	handled = true;
 
@@ -201,7 +203,7 @@ void slider::handle_key_increase(bool& handled)
 
 void slider::signal_handler_sdl_key_down(const event::ui_event event, bool& handled, const SDL_Keycode key)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(key == SDLK_DOWN || key == SDLK_LEFT) {
 		handle_key_decrease(handled);
@@ -215,7 +217,7 @@ void slider::signal_handler_sdl_key_down(const event::ui_event event, bool& hand
 #if 0
 void slider::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	update_current_item_mouse_position();
 
@@ -225,7 +227,7 @@ void slider::signal_handler_left_button_down(const event::ui_event event, bool& 
 
 void slider::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	get_window()->keyboard_capture(this);
 
@@ -294,7 +296,7 @@ void slider::set_step_size(int step_size)
 slider_definition::slider_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing slider " << id << '\n';
+	DBG_GUI_P << "Parsing slider " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -339,9 +341,9 @@ builder_slider::builder_slider(const config& cfg)
 	}
 }
 
-widget* builder_slider::build() const
+std::unique_ptr<widget> builder_slider::build() const
 {
-	slider* widget = new slider(*this);
+	auto widget = std::make_unique<slider>(*this);
 
 	widget->set_best_slider_length(best_slider_length_);
 	widget->set_value_range(minimum_value_, maximum_value_);
@@ -361,7 +363,7 @@ widget* builder_slider::build() const
 		widget->set_maximum_value_label(maximum_value_label_);
 	}
 
-	DBG_GUI_G << "Window builder: placed slider '" << id << "' with definition '" << definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed slider '" << id << "' with definition '" << definition << "'.";
 
 	return widget;
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2021
+	Copyright (C) 2013 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -94,7 +94,7 @@ game_version::game_version()
 
 void game_version::pre_show(window& window)
 {
-	string_map i18n_syms;
+	utils::string_map i18n_syms;
 
 	//
 	// General information.
@@ -174,7 +174,7 @@ void game_version::pre_show(window& window)
 	// Build info tab.
 	//
 
-	std::map<std::string, string_map> list_data;
+	widget_data list_data;
 
 	listbox& deps_listbox
 			= find_widget<listbox>(&window, "deps_listbox", false);

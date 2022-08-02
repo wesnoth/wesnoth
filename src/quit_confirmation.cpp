@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2021
+	Copyright (C) 2015 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 #include "quit_confirmation.hpp"
 #include "game_end_exceptions.hpp"
 #include "gettext.hpp"
-#include "video.hpp"
+#include "video.hpp" // only for video::quit
 #include "resources.hpp"
 #include "playmp_controller.hpp"
 #include "gui/dialogs/surrender_quit.hpp"
@@ -47,7 +47,7 @@ void quit_confirmation::quit_to_title()
 
 void quit_confirmation::quit_to_desktop()
 {
-	if(quit()) { throw CVideo::quit(); }
+	if(quit()) { throw video::quit(); }
 }
 
 bool quit_confirmation::show_prompt(const std::string& message)

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,6 +63,7 @@ public:
 	config to_config() const;
 
 	void modify_ai(const config& cfg);
+	void micro_ai(const config& cfg);
 
 	void append_ai(const config& cfg);
 

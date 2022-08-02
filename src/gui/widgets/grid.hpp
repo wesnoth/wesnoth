@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -88,7 +88,7 @@ public:
 	{
 		assert(row < row_grow_factor_.size());
 		row_grow_factor_[row] = factor;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - relayout?
 	}
 
 	/**
@@ -103,7 +103,7 @@ public:
 	{
 		assert(column < col_grow_factor_.size());
 		col_grow_factor_[column] = factor;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - relayout?
 	}
 
 	/***** ***** ***** ***** CHILD MANIPULATION ***** ***** ***** *****/
@@ -123,7 +123,7 @@ public:
 	 * @param border_size         The size of the border for the cell, how the
 	 *                            border is applied depends on the flags.
 	 */
-	void set_child(widget* widget,
+	void set_child(std::unique_ptr<widget> widget,
 				   const unsigned row,
 				   const unsigned col,
 				   const unsigned flags,
@@ -140,14 +140,14 @@ public:
 	 * @param recurse             Do we want to decent into the child grids.
 	 * @param new_parent          The new parent for the swapped out widget.
 	 *
-	 * returns                    The widget which got removed (the parent of
-	 *                            the widget is cleared). If no widget found
-	 *                            and thus not replace nullptr will returned.
+	 * @returns                   The widget which got removed (the parent of
+	 *                            the widget is cleared), or @ref w if no matching
+	 *                            widget was found.
 	 */
 	std::unique_ptr<widget> swap_child(const std::string& id,
-						widget* w,
-						const bool recurse,
-						widget* new_parent = nullptr);
+					std::unique_ptr<widget> w,
+					const bool recurse,
+					widget* new_parent = nullptr);
 
 	/**
 	 * Removes and frees a widget in a cell.
@@ -273,11 +273,6 @@ public:
 	/** See @ref widget::layout_children. */
 	virtual void layout_children() override;
 
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
-
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,
 							 const bool must_be_active) override;
@@ -300,7 +295,7 @@ public:
 	bool disable_click_dismiss() const override;
 
 	/** See @ref widget::create_walker. */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -399,14 +394,15 @@ private:
 			return widget_.get();
 		}
 
-		void set_widget(widget* widget)
+		/** Acquires an owning reference to the given widget. */
+		void set_widget(std::unique_ptr<widget> widget)
 		{
-			widget_.reset(widget);
+			widget_ = std::move(widget);
 		}
 
 		/**
 		 * Releases widget from ownership by this child and returns it in the
-		 * form of a new unique_ptr. widget_ will be null after this is called.
+		 * form of a new shared_ptr. widget_ will be null after this is called.
 		 */
 		std::unique_ptr<widget> free_widget()
 		{
@@ -450,14 +446,17 @@ public:
 		{
 			return iterator(++itor_);
 		}
+
 		iterator operator--()
 		{
 			return iterator(--itor_);
 		}
+
 		widget* operator->()
 		{
 			return itor_->get_widget();
 		}
+
 		widget* operator*()
 		{
 			return itor_->get_widget();
@@ -555,9 +554,7 @@ private:
 	void layout(const point& origin);
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children() override;
 };
 
 /**
@@ -569,6 +566,6 @@ private:
  * @param grid                    The grid to add the child to.
  * @param widget                  The widget to add as child to the grid.
  */
-void set_single_child(grid& grid, widget* widget);
+void set_single_child(grid& grid, std::unique_ptr<widget> widget);
 
 } // namespace gui2

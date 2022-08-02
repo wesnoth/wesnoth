@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,15 +15,16 @@
 
 #pragma once
 
+#include "gui/widgets/widget.hpp"
+
 #include <string>
 
 namespace gui2
 {
 class grid;
-class widget;
 
 /**
  * Swaps an item in a grid for another one.
  */
-void swap_grid(grid* g, grid* content_grid, widget* widget, const std::string& id);
+void swap_grid(grid* g, grid* content_grid, std::unique_ptr<widget> widget, const std::string& id);
 }

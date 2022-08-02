@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -130,14 +130,14 @@ void save_index_class::write_save_index()
 	try {
 		filesystem::scoped_ostream stream = filesystem::ostream_file(filesystem::get_save_index_file());
 
-		if(preferences::save_compression_format() != compression::NONE) {
+		if(preferences::save_compression_format() != compression::format::none) {
 			// TODO: maybe allow writing this using bz2 too?
 			write_gz(*stream, data());
 		} else {
 			write(*stream, data());
 		}
 	} catch(const filesystem::io_exception& e) {
-		ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;
+		ERR_SAVE << "error writing to save index file: '" << e.what() << "'";
 	}
 }
 
@@ -185,9 +185,9 @@ config& save_index_class::data()
 				read(data_, *stream);
 			}
 		} catch(const filesystem::io_exception& e) {
-			ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
+			ERR_SAVE << "error reading save index: '" << e.what() << "'";
 		} catch(const config::error& e) {
-			ERR_SAVE << "error parsing save index config file:\n" << e.message << std::endl;
+			ERR_SAVE << "error parsing save index config file:\n" << e.message;
 			data_.clear();
 		}
 
@@ -213,23 +213,6 @@ std::shared_ptr<save_index_class> save_index_class::default_saves_dir()
 	return instance;
 }
 
-class filename_filter
-{
-public:
-	filename_filter(const std::string& filter)
-		: filter_(filter)
-	{
-	}
-
-	bool operator()(const std::string& filename) const
-	{
-		return filename.end() == std::search(filename.begin(), filename.end(), filter_.begin(), filter_.end());
-	}
-
-private:
-	std::string filter_;
-};
-
 /** Get a list of available saves. */
 std::vector<save_info> save_index_class::get_saves_list(const std::string* filter)
 {
@@ -238,10 +221,21 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 	std::vector<std::string> filenames;
 	filesystem::get_files_in_dir(dir(), &filenames);
 
-	if(filter) {
-		filenames.erase(
-			std::remove_if(filenames.begin(), filenames.end(), filename_filter(*filter)), filenames.end());
-	}
+	const auto should_remove = [filter](const std::string& filename) {
+		// Steam documentation indicates games can ignore their auto-generated 'steam_autocloud.vdf'.
+		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
+		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
+
+		if(std::find(to_ignore.begin(), to_ignore.end(), filename) != to_ignore.end()) {
+			return true;
+		} else if(filter) {
+			return filename.end() == std::search(filename.begin(), filename.end(), filter->begin(), filter->end());
+		}
+
+		return false;
+	};
+
+	filenames.erase(std::remove_if(filenames.begin(), filenames.end(), should_remove), filenames.end());
 
 	std::vector<save_info> result;
 	std::transform(filenames.begin(), filenames.end(), std::back_inserter(result), creator);
@@ -259,8 +253,10 @@ std::string save_info::format_time_local() const
 {
 	if(std::tm* tm_l = std::localtime(&modified())) {
 		const std::string format = preferences::use_twelve_hour_clock_format()
-			? _("%a %b %d %I:%M %p %Y")
-			: _("%a %b %d %H:%M %Y");
+			// TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
+			? _("%a %b %d %Y, %I:%M %p")
+			// TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
+			: _("%a %b %d %Y, %H:%M");
 
 		return translation::strftime(format, tm_l);
 	}
@@ -311,7 +307,7 @@ static filesystem::scoped_istream find_save_file(const std::string& dir,
 		}
 	}
 
-	LOG_SAVE << "Could not open supplied filename '" << name << "'\n";
+	LOG_SAVE << "Could not open supplied filename '" << name << "'";
 	throw game::load_game_failed();
 }
 
@@ -351,7 +347,7 @@ void read_save_file(const std::string& dir, const std::string& name, config& cfg
 	}
 
 	if(cfg.empty()) {
-		LOG_SAVE << "Could not parse file data into config\n";
+		LOG_SAVE << "Could not parse file data into config";
 		throw game::load_game_failed();
 	}
 }
@@ -374,7 +370,7 @@ void save_index_class::delete_old_auto_saves(const int autosavemax, const int in
 	std::vector<save_info> games = get_saves_list(&auto_save);
 	for(std::vector<save_info>::iterator i = games.begin(); i != games.end(); ++i) {
 		if(countdown-- <= 0) {
-			LOG_SAVE << "Deleting savegame '" << i->name() << "'\n";
+			LOG_SAVE << "Deleting savegame '" << i->name() << "'";
 			delete_game(i->name());
 		}
 	}
@@ -461,7 +457,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			int gold = side["gold"];
 			int units = 0, recall_units = 0;
 
-			if(side["controller"] != team::CONTROLLER::enum_to_string(team::CONTROLLER::HUMAN)) {
+			if(side["controller"] != side_controller::human) {
 				continue;
 			}
 
@@ -522,13 +518,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 			if(!cfg_snapshot.find_child("side", "shroud", "yes") && cfg_snapshot.has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_snapshot["map_data"].str();
 			} else {
-				ERR_SAVE << "Not saving map because there is shroud" << std::endl;
+				ERR_SAVE << "Not saving map because there is shroud";
 			}
 		} else if(has_replay) {
 			if(!cfg_replay_start.find_child("side", "shroud", "yes") && cfg_replay_start.has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_replay_start["map_data"];
 			} else {
-				ERR_SAVE << "Not saving map because there is shroud" << std::endl;
+				ERR_SAVE << "Not saving map because there is shroud";
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,6 +56,8 @@ public:
 	virtual void do_parse_goal_from_config(const config &cfg, std::back_insert_iterator<std::vector< goal_ptr > > b );
 
 	virtual std::string evaluate(const std::string &str);
+
+	void apply_micro_ai(const config& cfg);
 
 	/**
 	 * Method that pushes the AI table of the lua_context on the stack

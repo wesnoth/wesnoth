@@ -1,6 +1,6 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
+local HA = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
 local function get_next_sheep(cfg)
     local sheep = AH.get_units_with_moves {
@@ -42,7 +42,7 @@ function ca_herding_sheep_move:execution(cfg)
 
     -- If this move remains within herding area or dogs have no moves left, or sheep doesn't move
     -- make it a full move, otherwise partial move
-    local herding_area = herding_area(cfg)
+    local herding_area = HA(cfg)
     local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", dogs_filter }

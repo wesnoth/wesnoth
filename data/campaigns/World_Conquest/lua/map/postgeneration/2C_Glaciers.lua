@@ -143,8 +143,8 @@ function world_conquest_tek_map_decoration_2c()
 	))
 	mathx.shuffle(terrain_to_change)
 	-- base amount in map surface
-	local r = mathx.random_choice(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
-	for i = 1, math.min(r, #terrain_to_change) do
+	local r1 = mathx.random_choice(tostring(total_tiles // 285) .. ".." .. tostring(total_tiles // 150))
+	for i = 1, math.min(r1, #terrain_to_change) do
 		map[terrain_to_change[i]] = "Ai"
 	end
 
@@ -153,9 +153,9 @@ function world_conquest_tek_map_decoration_2c()
 		f.adjacent(f.terrain("!,Wo,Ai"), nil, 0)
 	))
 	mathx.shuffle(icepack_candiates)
-	local r = mathx.random_choice(tostring(total_tiles // 250) .. ".." .. tostring(total_tiles // 150))
+	local r2 = mathx.random_choice(tostring(total_tiles // 250) .. ".." .. tostring(total_tiles // 150))
 
-	for i = 1, math.min(r, #icepack_candiates) do
+	for i = 1, math.min(r2, #icepack_candiates) do
 		local loc = icepack_candiates[i]
 		table.insert(prestart_event, wml.tag.item {
 			image = "scenery/icepack-1.png",

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,10 +77,8 @@ public:
 		return *root_node_;
 	}
 
-	tree_view_node&
-	add_node(const std::string& id,
-			 const std::map<std::string /* widget id */, string_map>& data,
-			 const int index = -1);
+	tree_view_node& add_node(
+		const std::string& id, const widget_data& data, const int index = -1);
 
 	/**
 	 * Removes the given node as a child of its parent node.
@@ -93,11 +91,6 @@ public:
 	std::pair<std::shared_ptr<tree_view_node>, int> remove_node(tree_view_node* node);
 
 	void clear();
-
-	/** See @ref widget::child_populate_dirty_list. */
-	virtual void
-	child_populate_dirty_list(window& caller,
-							  const std::vector<widget*>& call_stack) override;
 
 	/** See @ref container_base::set_self_active. */
 	virtual void set_self_active(const bool active) override;
@@ -244,7 +237,7 @@ struct builder_tree_view : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
 	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;

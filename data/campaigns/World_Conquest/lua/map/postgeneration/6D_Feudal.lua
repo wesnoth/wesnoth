@@ -118,47 +118,31 @@ local function world_conquest_tek_map_repaint_6d()
 	set_terrain { "Khs",
 		f.terrain("Chs"),
 	}
-	if false then
-		-- this one was slow.
-		set_terrain { "Chs",
-			f.all(
-				f.terrain("!,W*,Ds,Ss,C*,K*,*^V*"),
-				f.adjacent(f.terrain("C*,K*"), nil, 0),
-				f.none(
-					f.radius(8, f.terrain("Re"))
-				),
-				f.radius(6, f.terrain("Khs"))
+	local r8_Re = map:find_in_radius(
+		map:find(f.terrain("Re")),
+		8,
+		wesnoth.map.filter(f.all())
+	)
+	local r6_Khs = map:find_in_radius(
+		map:find(f.terrain("Khs")),
+		6,
+		wesnoth.map.filter(f.all())
+	)
+	set_terrain { "Chs",
+		f.all(
+			f.terrain("!,W*,Ds,Ss,C*,K*,*^V*"),
+			f.adjacent(f.terrain("C*,K*"), nil, 0),
+			f.none(
+				f.find_in("r8_Re")
 			),
-			fraction = 40,
-		}
-	else
-		-- this is faster.
-		local r8_Re = map:find_in_radius(
-			map:find(f.terrain("Re")),
-			8,
-			wesnoth.map.filter(f.all())
-		)
-		local r6_Khs = map:find_in_radius(
-			map:find(f.terrain("Khs")),
-			6,
-			wesnoth.map.filter(f.all())
-		)
-		set_terrain { "Chs",
-			f.all(
-				f.terrain("!,W*,Ds,Ss,C*,K*,*^V*"),
-				f.adjacent(f.terrain("C*,K*"), nil, 0),
-				f.none(
-					f.find_in("r8_Re")
-				),
-				f.find_in("r6_Khs")
-			),
-			filter_extra = {
-				r6_Khs = r6_Khs,
-				r8_Re = r8_Re,
-			},
-			fraction = 40,
-		}
-	end
+			f.find_in("r6_Khs")
+		),
+		filter_extra = {
+			r6_Khs = r6_Khs,
+			r8_Re = r8_Re,
+		},
+		fraction = 40,
+	}
 	roads_to_feudal_castle(5)
 	-- rebuild cave
 	wct_reduce_wall_clusters("Uu")

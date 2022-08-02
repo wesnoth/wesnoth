@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -35,10 +35,10 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 {
 	while(true) {
 		ng::create_engine create_eng(state);
-		create_eng.set_current_level_type(ng::level::TYPE::SP_CAMPAIGN);
+		create_eng.set_current_level_type(level_type::type::sp_campaign);
 
 		const std::vector<ng::create_engine::level_ptr> campaigns =
-			create_eng.get_levels_by_type_unfiltered(ng::level::TYPE::SP_CAMPAIGN);
+			create_eng.get_levels_by_type_unfiltered(level_type::type::sp_campaign);
 
 		if(campaigns.empty()) {
 			gui2::show_error_message(_("No campaigns are available."));
@@ -86,7 +86,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 
 			// Didn't find a campaign with that id
 			if(campaign == campaigns.end()) {
-				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id << "]" << std::endl;
+				ERR_NG << "No such campaign id to jump to: [" << jump_to_campaign.campaign_id << "]";
 				return false;
 			}
 
@@ -117,7 +117,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 		}
 
 		if(!state.valid()) {
-			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id() << std::endl;
+			ERR_NG << "Cannot load scenario with id=" << state.get_scenario_id();
 			return false;
 		}
 

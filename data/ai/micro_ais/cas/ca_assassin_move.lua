@@ -63,6 +63,7 @@ function ca_assassin_move:execution(cfg)
     local enemy_damage_map = LS.create()
     for _,enemy in ipairs(enemies) do
         if (not enemy.status.petrified) then
+            wesnoth.interface.handle_user_interact()
             -- Need to "move" enemy next to unit for attack calculation
             -- Do this with a unit copy, so that no actual unit has to be moved
             local enemy_copy = enemy:clone()

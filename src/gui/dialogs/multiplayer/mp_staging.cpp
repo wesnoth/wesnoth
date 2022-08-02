@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -136,7 +136,7 @@ int mp_staging::get_side_node_position(ng::side_engine_ptr side) const
 template<typename... T>
 tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&... params)
 {
-	static const std::map<std::string, string_map> empty_map;
+	static const widget_data empty_map;
 
 	// If there is no team node in the map, this will return nullptr
 	tree_view_node* team_node = team_tree_map_[side->team_name()];
@@ -145,8 +145,8 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 	if(team_node == nullptr) {
 		tree_view& tree = find_widget<tree_view>(get_window(), "side_list", false);
 
-		std::map<std::string, string_map> tree_data;
-		string_map tree_item;
+		widget_data tree_data;
+		widget_item tree_item;
 
 		tree_item["label"] = side->user_team_name();
 		tree_data.emplace("tree_view_node_label", tree_item);
@@ -163,8 +163,8 @@ tree_view_node& mp_staging::add_side_to_team_node(ng::side_engine_ptr side, T&&.
 
 void mp_staging::add_side_node(ng::side_engine_ptr side)
 {
-	std::map<std::string, string_map> data;
-	string_map item;
+	widget_data data;
+	widget_item item;
 
 	item["label"] = std::to_string(side->index() + 1);
 	data.emplace("side_number", item);
@@ -193,7 +193,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 	const bool lock_team   = side->cfg()["team_lock"].to_bool(fls);
 	const bool lock_color  = side->cfg()["color_lock"].to_bool(fls);
 
-	const bool saved_game = connect_engine_.params().saved_game == mp_game_settings::SAVED_GAME_MODE::MIDGAME;
+	const bool saved_game = connect_engine_.params().saved_game == saved_game_mode::type::midgame;
 
 	//
 	// AI Algorithm
@@ -426,11 +426,9 @@ void mp_staging::on_team_select(ng::side_engine_ptr side, menu_button& team_menu
 
 	// Last, remove the old team node if it's now empty
 	if(old_team_node->empty()) {
-		// Only sibling should be the decor line, and it should be last
-		auto decor = old_team_node->siblings().back();
-
+		// Decor node will be immediately after team node. Remove this first!
+		tree.remove_node(old_team_node->get_node_below());
 		tree.remove_node(old_team_node);
-		tree.remove_node(decor.get());
 
 		team_tree_map_[old_team] = nullptr;
 	}
@@ -564,7 +562,7 @@ void mp_staging::network_handler()
 	update_status_label_and_buttons();
 
 	if(!was_able_to_start && connect_engine_.can_start_game()) {
-		mp_ui_alerts::ready_for_start();
+		mp::ui_alerts::ready_for_start();
 	}
 
 	state_changed_ = false;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,20 +29,16 @@ class editor_palette : public tristate_palette {
 public:
 
 	editor_palette(editor_display &gui, const game_config_view& /*cfg*/
-	             , std::size_t item_size, std::size_t item_width, editor_toolkit &toolkit)
-		: tristate_palette(gui.video())
+	             , std::size_t item_size, std::size_t columns, editor_toolkit &toolkit)
+		: tristate_palette()
 		, groups_()
 		, gui_(gui)
 		, item_size_(item_size)
-		, item_width_(item_width)
 //TODO avoid magic number
 		, item_space_(item_size + 3)
-		, palette_y_(0)
-		, palette_x_(0)
+		, columns_(columns)
 		, group_map_()
 		, item_map_()
-		, nitems_(0)
-		, nmax_items_(0)
 		, items_start_(0)
 		, non_core_items_()
 		, active_group_()
@@ -50,7 +46,6 @@ public:
 		, selected_bg_item_()
 		, toolkit_(toolkit)
 		, buttons_()
-		, help_handle_(-1)
 	{
 	}
 
@@ -70,9 +65,9 @@ public:
 
 	const std::vector<item_group>& get_groups() const override { return groups_; }
 
-	virtual void draw() override {
-		widget::draw();
-	}
+	/** Called by draw_manager to validate layout before drawing. */
+	virtual void layout() override;
+	/** Called by widget::draw() */
 	virtual void draw_contents() override;
 
 	void next_group() override {
@@ -106,7 +101,13 @@ private:
 
 	std::size_t active_group_index();
 
-	virtual void draw_item(const Item& item, surface& item_image, std::stringstream& tooltip) = 0;
+	/** Setup item image and tooltip. */
+	virtual void setup_item(
+		const Item& item,
+		texture& item_base_image,
+		texture& item_overlay_image,
+		std::stringstream& tooltip
+	) = 0;
 
 	virtual const std::string& get_id(const Item& item) = 0;
 
@@ -118,21 +119,10 @@ private:
 	virtual bool is_selected_fg_item(const std::string& id);
 	virtual bool is_selected_bg_item(const std::string& id);
 
-	/** Return the number of items in the palette. */
-	int num_items() override;
+	/** Return the number of items in the currently-active group. */
+	std::size_t num_items() override;
 
-	/** Return the number of items in the palette. */
-	int num_visible_items() { return buttons_.size();  }
-
-	void hide(bool hidden) override {
-		widget::hide(hidden);
-		if (!hidden)
-			help_handle_ = gui_.video().set_help_string(get_help_string());
-		else gui_.video().clear_help_string(help_handle_);
-		for (gui::widget& w : buttons_) {
-			w.hide(hidden);
-		}
-	}
+	void hide(bool hidden) override;
 
 protected:
 	/**
@@ -158,31 +148,38 @@ protected:
 
 	editor_display &gui_;
 
+	/**
+	 * Both the width and the height of the square buttons.
+	 */
 	int item_size_;
-	int item_width_;
+	/**
+	 * item_space_ plus some padding.
+	 */
 	int item_space_;
 
-private:
-	unsigned int palette_y_;
-	unsigned int palette_x_;
+	/**
+	 * Number of items per row.
+	 */
+	std::size_t columns_;
 
 protected:
 	std::map<std::string, std::vector<std::string>> group_map_;
 
 	typedef std::map<std::string, Item> item_map;
 	item_map item_map_;
-	int nitems_, nmax_items_, items_start_;
-    std::set<std::string> non_core_items_;
+	/**
+	 * Index of the item at the top-left of the visible area, used for scrolling up and down.
+	 */
+	std::size_t items_start_;
+	std::set<std::string> non_core_items_;
 
 private:
 	std::string active_group_;
 	std::string selected_fg_item_;
 	std::string selected_bg_item_;
 
-    editor_toolkit& toolkit_;
-    std::vector<gui::tristate_button> buttons_;
-
-    int help_handle_;
+	editor_toolkit& toolkit_;
+	std::vector<gui::tristate_button> buttons_;
 };
 
 

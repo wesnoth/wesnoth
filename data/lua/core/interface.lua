@@ -5,8 +5,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 
 	wesnoth.interface.select_unit = wesnoth.units.select
 
-	--! Fakes the move of a unit satisfying the given @a filter to position @a x, @a y.
-	--! @note Usable only during WML actions.
+	---Fakes the move of a unit satisfying the given filter to position x, y.
+	---Usable only during WML actions.
+	---@param filter WML
+	---@param to_x integer
+	---@param to_y integer
 	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
 		local moving_unit = wesnoth.units.find_on_map(filter)[1]
 		local from_x, from_y = moving_unit.x, moving_unit.y
@@ -57,7 +60,45 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	wesnoth.end_turn = wesnoth.deprecate_api('wesnoth.end_turn', 'wesnoth.interface.end_turn', 1, nil, wesnoth.interface.end_turn)
 	wesnoth.get_viewing_side = wesnoth.deprecate_api('wesnoth.get_viewing_side', 'wesnoth.interface.get_viewing_side', 1, nil, wesnoth.interface.get_viewing_side)
 	wesnoth.message = wesnoth.deprecate_api('wesnoth.message', 'wesnoth.interface.add_chat_message', 1, nil, wesnoth.interface.add_chat_message)
-	-- No deprecation for these since since they're not actually public API yet
-	wesnoth.set_menu_item = wesnoth.interface.set_menu_item
+	-- wesnoth.wml_actions.print doesn't exist yet at this point, so create a helper function instead.
+	wesnoth.print = wesnoth.deprecate_api('wesnoth.print', 'wesnoth.interface.add_overlay_text', 1, nil, function(cfg)
+		wesnoth.wml_actions.print(cfg)
+	end)
+	wesnoth.set_menu_item = wesnoth.deprecate_api('wesnoth.set_menu_item', 'wesnoth.interface.set_menu_item', 1, nil, function(id, cfg)
+		-- wesnoth.set_menu_item added both the menu item and the event that it triggers
+		-- wesnoth.interface.set_menu_item only adds the menu item
+		wesnoth.interface.set_menu_item(id, cfg)
+		wesnoth.game_events.add_menu(cfg.id, wesnoth.wml_actions.command)
+	end, 'You also need to call wesnoth.game_events.add_menu')
 	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
+	-- Event handlers don't have a separate module Lua file so dump those here
+	wesnoth.add_event_handler = wesnoth.deprecate_api('wesnoth.add_event_hander', 'wesnoth.game_events.add_wml', 1, nil, function(cfg) wesnoth.wml_actions.event(cfg) end)
+	wesnoth.remove_event_handler = wesnoth.deprecate_api('wesnoth.remove_event_handler', 'wesnoth.game_events.remove', 1, nil, wesnoth.game_events.remove)
+
+	local function old_fire_event(fcn)
+		return function(...)
+			local id = select(1, ...)
+			local loc1, n1 = wesnoth.map.read_location(select(2, ...))
+			local loc2, n2 = wesnoth.map.read_location(select(2 + n1, ...))
+			local weap1, weap2 = select(2 + n1 + n2)
+			local data = {}
+			if weap1 ~= nil then
+				table.insert(data, wml.tag.first(weap1))
+			end
+			if weap2 ~= nil then
+				table.insert(data, wml.tag.second(weap2))
+			end
+			if n1 > 0 then
+				if n2 > 0 then
+					fcn(id, loc1, loc2, data)
+				else
+					fcn(id, loc1, data)
+				end
+			else
+				fcn(id, data)
+			end
+		end
+	end
+	wesnoth.fire_event = wesnoth.deprecate_api('wesnoth.fire_event', 'wesnoth.game_events.fire', 1, nil, old_fire_event(wesnoth.game_events.fire))
+	wesnoth.fire_event_by_id = wesnoth.deprecate_api('wesnoth.fire_event_by_id', 'wesnoth.game_events.fire_by_id', 1, nil, old_fire_event(wesnoth.game_events.fire_by_id))
 end

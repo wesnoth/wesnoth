@@ -1,22 +1,24 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2019 Wesnoth development team
+# Copyright (C) 2005-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
+#
+# Translators and their initial years of participation:
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 # Yifan <yyf1992@mail.ustc.edu.cn>, 2015.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.14\n"
-"POT-Creation-Date: 2021-05-22 22:21-0400\n"
-"PO-Revision-Date: 2020-08-10 20:13+0800\n"
+"Project-Id-Version: wesnoth-1.16\n"
+"POT-Creation-Date: 2022-01-16 13:30+0300\n"
+"PO-Revision-Date: 2022-04-22 16:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. type: Content of: outside any tag (error?)
 #: doc/manual/manual.en.xml:3
@@ -401,12 +403,6 @@ msgstr "制作人员"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:215
-#, fuzzy
-#| msgid ""
-#| "Click this button for a list of major Wesnoth contributors. You will "
-#| "often be able to reach them in real time at irc.freenode.org:6667 on "
-#| "#wesnoth or at <ulink url=\"https://discord.gg/battleforwesnoth\">https://"
-#| "discord.gg/battleforwesnoth</ulink>"
 msgid ""
 "Click this button for a list of major Wesnoth contributors. You will often "
 "be able to reach them in real time at irc.libera.chat:6667 on #wesnoth or at "
@@ -414,8 +410,8 @@ msgid ""
 "battleforwesnoth</ulink>"
 msgstr ""
 "点击此按钮以查看韦诺主要贡献者的名单。通常您可以在irc.freenode.org:6667的"
-"#wesnoth频道里或者<ulink url=\"https://discord.gg/battleforwesnoth\">https://"
-"discord.gg/battleforwesnoth</ulink>上与他们实时交流。"
+"#wesnoth频道里或者在<ulink url=\"https://discord.gg/battleforwesnoth"
+"\">https://discord.gg/battleforwesnoth</ulink>上与他们实时交流"
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:223
@@ -853,12 +849,13 @@ msgstr "缩小后的战场全地图"
 msgid ""
 "Current hex position (x-coordinate, y-coordinate), defense and movement of "
 "the currently selected unit on the marked hex"
-msgstr "当前格子位置（X坐标，Y坐标），当前选中的单位在所指格子上的防御和移动力"
+msgstr ""
+"当前六角格位置（X坐标，Y坐标），当前选中的单位在所指六角格上的防御和移动力"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:476
 msgid "Current hex type"
-msgstr "当前格子类型"
+msgstr "当前六角格类型"
 
 #. type: Content of: <book><chapter><section><section><orderedlist><listitem><simpara>
 #: doc/manual/manual.en.xml:481
@@ -893,11 +890,11 @@ msgid ""
 "start to build your army to conquer the enemy."
 msgstr ""
 "在场景或者战役刚开始的时候您只会拥有少量的单位。其中之一是您的指挥官（有小皇"
-"冠标记）。指挥官通常被放置在城堡中的一个特殊格子上，这个格子称为主楼。只要当"
-"您的指挥官站在主楼上（不单是您自己的主楼，也可以是您所占领的任何一个敌军城堡"
-"的主楼）并且拥有足够金币时，您就可以为您的军队征募单位。在之后的场景中您可以"
-"召回在先前的场景中存活的富有经验的单位。以此为开端，您就可以开始建立您的军队"
-"并征服敌人了。"
+"冠标记）。指挥官通常被放置在城堡中的一个特殊六角格上，此格称为主楼。只要当您"
+"的指挥官站在主楼上（不单是您自己的主楼，也可以是您所占领的任何一个敌军城堡的"
+"主楼）并且拥有足够金币时，您就可以为您的军队征募单位。在之后的场景中您可以召"
+"回在先前的场景中存活的富有经验的单位。以此为开端，您就可以开始建立您的军队并"
+"征服敌人了。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:506
@@ -1059,7 +1056,7 @@ msgstr "控制"
 msgid ""
 "To view and change the hotkey settings open the Preferences menu and choose "
 "the Hotkeys tab."
-msgstr ""
+msgstr "打开“首选项”菜单并选择“热键”页面，以查看及变更热键设置。"
 
 #. type: Content of: <book><chapter><section><simpara>
 #: doc/manual/manual.en.xml:581
@@ -2327,13 +2324,13 @@ msgid ""
 "top of a unit&#8217;s energy bar provide a quick way to see which of your "
 "units have already moved or can move further in the current turn."
 msgstr ""
-"单击一个单位将显示出它本回合可以移动到的所有位置，而不能移动到的格子将变暗"
+"单击一个单位将显示出它本回合可以移动到的所有位置，而不能移动到的六角格将变暗"
 "（按数字键2－7可以用类似的方式显示出对应回合数可以移动到的位置）。在此模式"
-"下，把光标移到一个格子上会出现您的单位移动到此格所要经过的路径，以及有关您的"
-"单位在此格上的防御加成的附加信息。此外，如果单位到达此格需要一个以上的回合"
-"时，也将显示出所需的回合数。如果您不想移动本单位，可以选择其他单位（点击新单"
-"位，或者使用<literal>n</literal>/<literal>N</literal>键），或者在地图的任意位"
-"置上右击（在Mac上是按住Command并点击）以取消此模式。单位能量条顶部的<link "
+"下，把光标移到六角格上会出现您的单位移动到此格所要经过的路径，以及有关您的单"
+"位在此格上的防御加成的附加信息。此外，如果单位到达此格需要一个以上的回合时，"
+"也将显示出所需的回合数。如果您不想移动本单位，可以选择其他单位（点击新单位，"
+"或者使用<literal>n</literal>/<literal>N</literal>键），或者在地图的任意位置上"
+"右击（在Mac上是按住Command并点击）以取消此模式。单位能量条顶部的<link "
 "linkend=\"orbs\">状态球</link>让您可以快速查看在本回合中哪些单位已经移动过"
 "了，而哪些还可以继续移动。"
 
@@ -2350,7 +2347,7 @@ msgid ""
 "by selecting that unit and choosing a new destination or clicking the unit "
 "again to cancel the <emphasis>goto</emphasis>."
 msgstr ""
-"如果您要移动选中的单位，只需单击要移动到的格子，您的单位就会向着那个位置移"
+"如果您要移动选中的单位，只需单击要移动到的六角格，您的单位就会向着那个位置移"
 "动。如果所选的目的地在本回合内无法到达，则在本回合中单位会移动到离目的地尽可"
 "能近的地方，并进入<emphasis>前往目的地模式</emphasis>。在<emphasis>前往目的地"
 "模式</emphasis>下，您的单位在接下来的几个回合中会自动移动到目的地。在您的下个"
@@ -2374,9 +2371,9 @@ msgid ""
 "reflected in both the path that is displayed for your unit and the hexes it "
 "may move to on the current turn."
 msgstr ""
-"大多数的单位都会产生“控制区域”，该区域会影响您的单位所能到达的格子以及它所选"
-"择的路径。这些限制将自动反映在移动您的单位时所显示的路径以及它在当前回合所能"
-"到达的格子上。"
+"大多数的单位都会产生“控制区域”，该区域会影响您的单位所能到达的六角格以及它所"
+"选择的路径。这些限制将自动反映在移动您的单位时所显示的路径以及它在当前回合所"
+"能到达的六角格上。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1592
@@ -2464,7 +2461,7 @@ msgstr "黄色球"
 msgid ""
 "If you control the unit and it has moved this turn, but could still move "
 "further or attack"
-msgstr "表示您控制着此单位，它在本回合已经移动过，但还可以继续移动或者进攻"
+msgstr "表示您控制着此单位，它在本回合已经移动过，但还可以继续移动或者攻击"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1662
@@ -2488,41 +2485,34 @@ msgstr "红色球"
 msgid ""
 "If you control the unit, but it can no longer move or attack, or the user "
 "ended the unit&#8217;s turn"
-msgstr "表示您控制着此单位，但它不能再移动或者进攻，或者用户结束了其回合"
+msgstr "表示您控制着此单位，但它不能再移动或者进攻击，或者用户结束了其回合"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1678
-#, fuzzy
-#| msgid "Recruit and Recall"
 msgid "Red and yellow"
-msgstr "征募和召回"
+msgstr "红与黄"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: doc/manual/manual.en.xml:1682
-#, fuzzy
-#| msgid ""
-#| "<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
 msgid ""
 "<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
 "imageobject>"
 msgstr ""
-"<imageobject> <imagedata fileref=\"images/orb-red.jpg\"/> </imageobject>"
+"<imageobject> <imagedata fileref=\"images/orb-disengaged.png\"/> </"
+"imageobject>"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: doc/manual/manual.en.xml:1685
 msgid "Two color orb"
-msgstr ""
+msgstr "双色球"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1689
-#, fuzzy
-#| msgid ""
-#| "If you control the unit and it has moved this turn, but could still move "
-#| "further or attack"
 msgid ""
 "If you control the unit and it has attacked this turn, and could still move "
 "further but could not attack again"
-msgstr "表示您控制着此单位，它在本回合已经移动过，但还可以继续移动或者进攻"
+msgstr ""
+"表示您控制着此单位，它在本回合已经攻击过，但还可以继续移动，但不能再攻击了"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1694
@@ -2547,6 +2537,8 @@ msgid ""
 "If the unit is an ally you do not control. On the ally&#8217;s own turn "
 "these will be shown with green, yellow and red orbs"
 msgstr ""
+"表示这是友方单位，您不能控制。在该友方自己的回合时，这类单位旁边将显示绿、黄"
+"以及红色球"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: doc/manual/manual.en.xml:1710
@@ -2577,20 +2569,13 @@ msgstr "椭圆，团队颜色与英雄图标"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1730
-#, fuzzy
-#| msgid ""
-#| "Below each unit there will normally be a colored ellipses or base. The "
-#| "color identifies its team; in a campaign game, the human-player color is "
-#| "red. The team color will also show up in parts of the unit&#8217;s "
-#| "clothing, or possibly on a shield insignia."
 msgid ""
 "Below each unit there will normally be a colored ellipses or base. The color "
 "identifies its team. The team color will also show up in parts of the "
 "unit&#8217;s clothing, or possibly on a shield insignia."
 msgstr ""
-"每个单位脚下都有一个彩色椭圆，或者叫基底。椭圆的颜色代表了单位所属的团队：在"
-"战役游戏中，人类玩家的颜色是红色。团队颜色也会出现在单位着装上，还可能出现在"
-"盾牌徽章上。"
+"每个单位脚下都有一个彩色椭圆，或者叫基底。椭圆的颜色代表了单位所属的团队。团"
+"队颜色也会出现在单位着装的一部分上，还可能出现在盾牌徽章上。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1733
@@ -2607,27 +2592,19 @@ msgstr ""
 msgid ""
 "Units that can recruit will always have a star-shaped base. Other units "
 "normally have an elliptic base."
-msgstr ""
+msgstr "可以发起征募的单位的基底总是星形的。其他单位的基底则通常是椭圆形的。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1738
-#, fuzzy
-#| msgid ""
-#| "Some campaigns use a star-shaped base to indicate leaders and heroes "
-#| "(units which are somehow special and for example not allowed to die in "
-#| "the course of the scenario); others use a silver crown icon above the "
-#| "energy bar to mark heroes. Still others have no specific hero indicator "
-#| "at all. Which (if any) is used is a stylistic choice left to campaign "
-#| "designers."
 msgid ""
 "Some campaigns use a smaller star-shaped base and a silver crown icon above "
 "the energy bar to indicate heroes (units which are somehow special and for "
 "example not allowed to die in the course of the scenario).  Whether to do "
 "this is a stylistic choice left to campaign designers."
 msgstr ""
-"有些战役使用星形基底来标明首领和英雄（在某些方面特殊的单位，比如说，在场景中"
-"不能死亡）；另一些则使用能量条上方的银色王冠图标作为英雄的标志。还有些战役则"
-"完全没有英雄标识。采用何种方式（如果采用的话）取决于战役设计者的风格。"
+"有些战役使用小一些的星形基底和能量条上方的银色王冠图标来标明英雄（在某些方面"
+"具有特殊性的单位，比如说，在场景中不能死亡）。要不要这样做，是留给战役设计者"
+"的风格选择。"
 
 #. type: Content of: <book><chapter><section><title>
 #: doc/manual/manual.en.xml:1745
@@ -2861,7 +2838,7 @@ msgid ""
 msgstr ""
 "巨魔和树人可以通过再生能力自然回复。他们如果负伤了，每回合将自动恢复8点生命"
 "值。注意，因为所有单位每回合最多只能通过治疗恢复8点生命值，所以巨魔和树人进入"
-"村庄里或者站在治疗师身边也得不到任何额外的好处。"
+"村庄里或者站在医者身边也得不到任何额外的好处。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1866
@@ -3017,9 +2994,9 @@ msgid ""
 "control into account. Thus you can check that your near death unit, which is "
 "behind, indeed cannot be attacked as the enemy cannot move close to it."
 msgstr ""
-"在“行动”菜单里，您可以选择“显示敌方移动范围”来高亮所有对手实际能到达的格子。"
-"这个命令考虑了您的控制区域的影响。这样您就可以检查并确保您在战线后方的濒死单"
-"位因为敌人无法接近而确实无法被攻击到。"
+"在“行动”菜单里，您可以选择“显示敌方移动范围”来高亮所有对手实际能到达的六角"
+"格。这个命令考虑了您的控制区域的影响。这样您就可以检查并确保您在战线后方的濒"
+"死单位因为敌人无法接近而确实无法被攻击到。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1956
@@ -3034,7 +3011,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:1961
 msgid "Shield with your zone of control (ZOC)"
-msgstr "通过控制区域（ZOC）进行防御"
+msgstr "通过控制区域进行防御"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1962
@@ -3044,9 +3021,9 @@ msgid ""
 "six neighboring tiles, it is forced to halt and its movement phase ends "
 "(only enemies with the rare skirmisher ability ignore this)."
 msgstr ""
-"每个1级或以上的单位都会在周围的全部6个格子中维持控制区域。这意味着当敌人移动"
-"到这6个相邻区块中的任何一个时，就会被迫停下来，并结束移动阶段（只有拥有少见的"
-"散兵能力的敌人才能忽略控制区域）。"
+"每个1级或以上的单位都会在周围的全部6个六角格中维持控制区域。这意味着当敌人移"
+"动到这6个相邻区块中的任何一个时，就会被迫停下来，并结束移动阶段（只有拥有少见"
+"的散兵能力的敌人才能忽略控制区域）。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:1966
@@ -3139,7 +3116,7 @@ msgstr ""
 #. type: Content of: <book><chapter><section><section><simpara>
 #: doc/manual/manual.en.xml:2002
 msgid "Note that your units can pass through hexes containing your own troops."
-msgstr "注意，您的单位可以穿越被您自己的部队占据的格子。"
+msgstr "注意，您的单位可以穿越被您自己的部队占据的六角格。"
 
 #. type: Content of: <book><chapter><section><section><title>
 #: doc/manual/manual.en.xml:2005
@@ -3153,7 +3130,7 @@ msgid ""
 "defense against an enemy in a hex with low terrain. That way, the "
 "enemy&#8217;s counterstrikes will be less likely to do damage."
 msgstr ""
-"尽量把您的部队布置在防御率高的格子内，而让敌人处在防御率低的地形上。这样一"
+"尽量把您的部队布置在防御率高的六角格内，而让敌人处在防御率低的地形上。这样一"
 "来，敌人的反击造成伤害的几率会变小。"
 
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -3596,408 +3573,3 @@ msgid ""
 "loyal units are an exception."
 msgstr ""
 "高等级单位比低等级单位的维护费用高（每等级高1枚金币），而忠诚单位是个例外。"
-
-#~ msgid ""
-#~ "These are the default control keys. Key setup might differ depending on "
-#~ "the platform used. For example you will often have to use the command key "
-#~ "instead of the control key when you are using MacOSX. You can change most "
-#~ "hotkeys to your taste using the Preferences menu."
-#~ msgstr ""
-#~ "这些是默认的控制键。键位设置因所使用的系统平台不同而可能有区别。例如在使用"
-#~ "MacOSX时您常常需要使用Command键而不是Control键。您可以在“首选项”菜单中按照"
-#~ "自己的喜好改变大多数的热键。"
-
-#~ msgid "General controls and hotkeys"
-#~ msgstr "通用控制和热键"
-
-#~ msgid "F1"
-#~ msgstr "F1"
-
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "韦诺之战帮助"
-
-#~ msgid "Arrow keys"
-#~ msgstr "方向键"
-
-#~ msgid "Scroll"
-#~ msgstr "滚动屏幕"
-
-#~ msgid "Left click"
-#~ msgstr "左键单击"
-
-#~ msgid "Select unit, move unit"
-#~ msgstr "选择单位，移动单位"
-
-#~ msgid "Right click"
-#~ msgstr "右键单击"
-
-#~ msgid "Context menu, cancel action"
-#~ msgstr "上下文菜单，取消行动"
-
-#~ msgid "Middle click"
-#~ msgstr "中键单击"
-
-#~ msgid "Center on pointer location"
-#~ msgstr "将所选位置居中显示"
-
-#~ msgid "Escape"
-#~ msgstr "ESC"
-
-#~ msgid "Exit game, exit menu, cancel message"
-#~ msgstr "退出游戏，退出菜单，取消聊天消息"
-
-#~ msgid "Ctrl+s"
-#~ msgstr "Ctrl+s"
-
-#~ msgid "Save game"
-#~ msgstr "保存游戏"
-
-#~ msgid "Ctrl+o"
-#~ msgstr "Ctrl+o"
-
-#~ msgid "Load game"
-#~ msgstr "读取游戏"
-
-#~ msgid "Ctrl+p"
-#~ msgstr "Ctrl+p"
-
-#~ msgid "Go to Preferences menu"
-#~ msgstr "前往“首选项”菜单"
-
-#~ msgid "Ctrl+q"
-#~ msgstr "Ctrl+q"
-
-#~ msgid "Quit game"
-#~ msgstr "退出游戏"
-
-#~ msgid "Ctrl+f"
-#~ msgstr "Ctrl+f"
-
-#~ msgid "Toggle full screen/windowed mode"
-#~ msgstr "切换全屏/窗口模式"
-
-#~ msgid "Ctrl+Alt+m"
-#~ msgstr "Ctrl+Alt+m"
-
-#~ msgid "Toggle muting of game sounds"
-#~ msgstr "禁音/取消禁音"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~ msgid "Zoom in"
-#~ msgstr "地图放大"
-
-#~ msgid "Zoom out"
-#~ msgstr "地图缩小"
-
-#~ msgid "Reset zoom to default"
-#~ msgstr "重置地图到原始大小"
-
-#~ msgid "Ctrl+e"
-#~ msgstr "Ctrl+e"
-
-#~ msgid "Toggle ellipses"
-#~ msgstr "开启/关闭椭圆显示"
-
-#~ msgid "Ctrl+g"
-#~ msgstr "Ctrl+g"
-
-#~ msgid "Toggle grid"
-#~ msgstr "开启/关闭网格显示"
-
-#~ msgid "Ctrl+a"
-#~ msgstr "Ctrl+a"
-
-#~ msgid "Toggle accelerated game mode"
-#~ msgstr "开启/关闭加速游戏模式"
-
-#~ msgid "Holding Shift"
-#~ msgstr "按住Shift"
-
-#~ msgid ""
-#~ "Toggle between accelerated and normal game mode while pressed (temporary!)"
-#~ msgstr "当按下此键时，在加速游戏模式和普通游戏模式之间切换（暂时的！）"
-
-#~ msgid "Ctrl+j"
-#~ msgstr "Ctrl+j"
-
-#~ msgid "Show scenario objectives"
-#~ msgstr "显示场景目标"
-
-#~ msgid "s"
-#~ msgstr "s"
-
-#~ msgid "Show statistics"
-#~ msgstr "显示统计"
-
-#~ msgid "Alt+s"
-#~ msgstr "Alt+s"
-
-#~ msgid "Show status table"
-#~ msgstr "显示状态表"
-
-#~ msgid "Alt+u"
-#~ msgstr "Alt+u"
-
-#~ msgid "Show unit list"
-#~ msgstr "显示单位列表"
-
-#~ msgid "l"
-#~ msgstr "l"
-
-#~ msgid "Move to leader unit"
-#~ msgstr "移动至首领单位处"
-
-#~ msgid "Shift+s"
-#~ msgstr "Shift+s"
-
-#~ msgid "Update shroud now"
-#~ msgstr "立即刷新战场黑幕"
-
-#~ msgid "Unit and turn specific hotkeys"
-#~ msgstr "单位和回合专用热键"
-
-#~ msgid "Ctrl+r"
-#~ msgstr "Ctrl+r"
-
-#~ msgid "Recruit unit"
-#~ msgstr "征募单位"
-
-#~ msgid "Ctrl+Alt+r"
-#~ msgstr "Ctrl+Alt+r"
-
-#~ msgid "Repeat last recruit"
-#~ msgstr "重复上次征募"
-
-#~ msgid "Alt+r"
-#~ msgstr "Alt+r"
-
-#~ msgid "Recall unit"
-#~ msgstr "召回单位"
-
-#~ msgid "Ctrl+n"
-#~ msgstr "Ctrl+n"
-
-#~ msgid "Rename unit"
-#~ msgstr "单位重命名"
-
-#~ msgid "d"
-#~ msgstr "d"
-
-#~ msgid "Show the description of the currently selected unit"
-#~ msgstr "显示当前选中的单位的描述"
-
-#~ msgid "t"
-#~ msgstr "t"
-
-#~ msgid "Continue interrupted unit move"
-#~ msgstr "继续被打断的单位移动"
-
-#~ msgid "u"
-#~ msgstr "u"
-
-#~ msgid "Undo last move (only deterministic moves can be undone)"
-#~ msgstr "撤销上次移动（只有确定性的移动才能撤销）"
-
-#~ msgid "r"
-#~ msgstr "r"
-
-#~ msgid "Redo move"
-#~ msgstr "重做上次移动"
-
-#~ msgid "n"
-#~ msgstr "n"
-
-#~ msgid "Cycle through units that have movement left"
-#~ msgstr "轮流选中还能移动的单位"
-
-#~ msgid "Shift+n"
-#~ msgstr "Shift+n"
-
-#~ msgid "Cycle through units that have movement left, in reverse order"
-#~ msgstr "轮流选中还能移动的单位，反向"
-
-#~ msgid "Ctrl+v"
-#~ msgstr "Ctrl+v"
-
-#~ msgid "Show enemy moves (where the enemy can move next turn)"
-#~ msgstr "显示敌方移动范围（敌方下回合可以移动到的位置）"
-
-#~ msgid "Ctrl+b"
-#~ msgstr "Ctrl+b"
-
-#~ msgid "Show potential enemy moves, if your units were not on the map"
-#~ msgstr "显示若您的单位不在地图上的话，敌方下回合可能的移动范围"
-
-#~ msgid "1-7"
-#~ msgstr "1-7"
-
-#~ msgid "Show how far currently selected unit can move in that many turns"
-#~ msgstr "显示当前选中单位在这么多回合中可以移动多远"
-
-#~ msgid "Space"
-#~ msgstr "空格"
-
-#~ msgid "End unit turn and cycle to next unit that has movement left"
-#~ msgstr "结束当前单位的回合，选中下一个还能移动的单位"
-
-#~ msgid "Shift+Space"
-#~ msgstr "Shift+空格"
-
-#~ msgid "Make currently selected unit hold position (end its movement)"
-#~ msgstr "命令当前单位保持位置（结束其移动）"
-
-#~ msgid "Ctrl+Space"
-#~ msgstr "Ctrl+空格"
-
-#~ msgid "End this player&#8217;s turn"
-#~ msgstr "结束此玩家的回合"
-
-#~ msgid "Whiteboard specific hotkeys"
-#~ msgstr "白板专用热键"
-
-#~ msgid "p"
-#~ msgstr "p"
-
-#~ msgid "Toggle planning mode"
-#~ msgstr "开启/关闭计划模式"
-
-#~ msgid "y"
-#~ msgstr "y"
-
-#~ msgid "Execute planned action"
-#~ msgstr "执行计划好的行动"
-
-#~ msgid "h"
-#~ msgstr "h"
-
-#~ msgid "Delete planned action"
-#~ msgstr "删除计划好的行动"
-
-#~ msgid "Page Down"
-#~ msgstr "Page Down"
-
-#~ msgid "Move action down in the queue"
-#~ msgstr "在队列中下移行动"
-
-#~ msgid "Page Up"
-#~ msgstr "Page Up"
-
-#~ msgid "Move action up in the queue"
-#~ msgstr "在队列中上移行动"
-
-#~ msgid "Ctrl+y"
-#~ msgstr "Ctrl+y"
-
-#~ msgid "Execute all actions"
-#~ msgstr "执行全部行动"
-
-#~ msgid "Suppose dead"
-#~ msgstr "认为已死亡"
-
-#~ msgid "Multiplayer specific hotkeys"
-#~ msgstr "多人游戏专用热键"
-
-#~ msgid "m"
-#~ msgstr "m"
-
-#~ msgid "Message another player (in multiplayer)"
-#~ msgstr "和另一个玩家聊天（多人游戏中）"
-
-#~ msgid "Ctrl+m"
-#~ msgstr "Ctrl+m"
-
-#~ msgid "Message your allies (in multiplayer)"
-#~ msgstr "和盟友聊天（多人游戏中）"
-
-#~ msgid "Alt+m"
-#~ msgstr "Alt+m"
-
-#~ msgid "Message everyone in the game (in multiplayer)"
-#~ msgstr "和所有人聊天（多人游戏中）"
-
-#~ msgid "Alt+c"
-#~ msgstr "Alt+c"
-
-#~ msgid "View chat log"
-#~ msgstr "查看聊天记录"
-
-#~ msgid "Ctrl+x"
-#~ msgstr "Ctrl+x"
-
-#~ msgid "Clear messages"
-#~ msgstr "清除消息"
-
-#~ msgid "Miscellaneous hotkeys"
-#~ msgstr "其他热键"
-
-#~ msgid "Ctrl+c"
-#~ msgstr "Ctrl+c"
-
-#~ msgid "Clear onscreen labels"
-#~ msgstr "清除屏幕上的标签"
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "Search (find label or unit by name)"
-#~ msgstr "查找（用名字查找标签或者单位）"
-
-#~ msgid "Alt+l"
-#~ msgstr "Alt+l"
-
-#~ msgid "Attach a text label to a terrain hex"
-#~ msgstr "在地形格子上附加一个文本标签"
-
-#~ msgid "Ctrl+l"
-#~ msgstr "Ctrl+l"
-
-#~ msgid "Set team label"
-#~ msgstr "设定团队标签"
-
-#~ msgid ":"
-#~ msgstr ":"
-
-#~ msgid ""
-#~ "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">Command mode</ulink>"
-#~ msgstr ""
-#~ "<ulink url=\"https://wiki.wesnoth.org/CommandMode\">命令模式</ulink>"
-
-#~ msgid "F5"
-#~ msgstr "F5"
-
-#~ msgid "Refresh Cache"
-#~ msgstr "刷新缓存"
-
-#~ msgid "Shift+c"
-#~ msgstr "Shift+c"
-
-#~ msgid "Create Unit (Debug!)"
-#~ msgstr "创建单位（调试模式！）"
-
-#~ msgid "f"
-#~ msgstr "f"
-
-#~ msgid "Run AI formula"
-#~ msgstr "执行AI方程式"
-
-#~ msgid ""
-#~ "Some keys on MacOSX require more than replacing Ctrl by Cmd. Here is a "
-#~ "list of those:"
-#~ msgstr "在MacOSX中，有时仅仅把Ctrl换成Cmd是不够的。下面是这类热键的列表："
-
-#~ msgid "Cmd+w"
-#~ msgstr "Cmd+w"
-
-#~ msgid "Cmd+,"
-#~ msgstr "Cmd+,"
-
-#~ msgid "Ctrl+F5"
-#~ msgstr "Ctrl+F5"
-
-#~ msgid "Option+Space"
-#~ msgstr "Option+空格"
-
-#~ msgid "If the unit is an ally you do not control"
-#~ msgstr "表示此单位是您所不能控制的友军"

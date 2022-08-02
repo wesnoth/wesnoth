@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,5 +25,6 @@ namespace lua_widget {
 
 int impl_widget_get(lua_State* L);
 int impl_widget_set(lua_State* L);
+int impl_widget_dir(lua_State* L);
 
 } // end namespace lua_gui2

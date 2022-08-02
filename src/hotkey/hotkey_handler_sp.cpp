@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -139,7 +139,7 @@ void playsingle_controller::hotkey_handler::whiteboard_toggle() {
 	whiteboard_manager_->set_active(!whiteboard_manager_->is_active());
 
 	if (whiteboard_manager_->is_active()) {
-		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).command);
+		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).id);
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
 
@@ -196,18 +196,18 @@ hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(hot
 
 bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.id;
+	hotkey::HOTKEY_COMMAND command = cmd.command;
 	bool res = true;
 	switch (command){
 
 		case hotkey::HOTKEY_WML:
 		{
 			int prefixlen = wml_menu_hotkey_prefix.length();
-			if(cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
+			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
 				return false;
 			}
 
-			game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(cmd.command.substr(prefixlen));
+			game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(cmd.id.substr(prefixlen));
 			if(!item) {
 				return false;
 			}

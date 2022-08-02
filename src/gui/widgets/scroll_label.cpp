@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -157,7 +157,7 @@ bool scroll_label::can_wrap() const
 
 void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	get_window()->keyboard_capture(this);
 }
@@ -167,7 +167,7 @@ void scroll_label::signal_handler_left_button_down(const event::ui_event event)
 scroll_label_definition::scroll_label_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing scroll label " << id << '\n';
+	DBG_GUI_P << "Parsing scroll label " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -200,9 +200,9 @@ builder_scroll_label::builder_scroll_label(const config& cfg)
 {
 }
 
-widget* builder_scroll_label::build() const
+std::unique_ptr<widget> builder_scroll_label::build() const
 {
-	scroll_label* widget = new scroll_label(*this);
+	auto widget = std::make_unique<scroll_label>(*this);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
@@ -214,7 +214,7 @@ widget* builder_scroll_label::build() const
 	widget->finalize_setup();
 
 	DBG_GUI_G << "Window builder: placed scroll label '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

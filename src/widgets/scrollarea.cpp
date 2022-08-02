@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2021
+	Copyright (C) 2004 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,14 +16,14 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "widgets/scrollarea.hpp"
+#include "sdl/input.hpp" // for get_mouse_state
 #include "sdl/rect.hpp"
-#include "video.hpp"
-
+#include "video.hpp" // for converting input events to game coordinates
 
 namespace gui {
 
-scrollarea::scrollarea(CVideo &video, const bool auto_join)
-	: widget(video, auto_join), scrollbar_(video),
+scrollarea::scrollarea(const bool auto_join)
+	: widget(auto_join), scrollbar_(),
 	  old_position_(0), recursive_(false), shown_scrollbar_(false),
 	  shown_size_(0), full_size_(0), swipe_dy_(0)
 {
@@ -66,8 +66,6 @@ void scrollarea::test_scrollbar()
 		return;
 	recursive_ = true;
 	if (shown_scrollbar_ != has_scrollbar()) {
-		bg_restore();
-		bg_cancel();
 		update_location(location());
 	}
 	recursive_ = false;
@@ -133,9 +131,9 @@ void scrollarea::process_event()
 	scroll(grip_position);
 }
 
-SDL_Rect scrollarea::inner_location() const
+rect scrollarea::inner_location() const
 {
-	SDL_Rect r = location();
+	rect r = location();
 	if (shown_scrollbar_)
 		r.w -= scrollbar_.width();
 	return r;
@@ -156,8 +154,8 @@ void scrollarea::handle_event(const SDL_Event& event)
 	if (event.type == SDL_MOUSEWHEEL) {
 		const SDL_MouseWheelEvent &ev = event.wheel;
 		int x, y;
-		SDL_GetMouseState(&x, &y);
-		if (sdl::point_in_rect(x, y, inner_location())) {
+		sdl::get_mouse_state(&x, &y);
+		if (inner_location().contains(x, y)) {
 			if (ev.y > 0) {
 				scrollbar_.scroll_up();
 			} else if (ev.y < 0) {
@@ -171,10 +169,13 @@ void scrollarea::handle_event(const SDL_Event& event)
 	}
 
 	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
-		SDL_Rect r = video().screen_area();
-		auto tx = static_cast<int>(event.tfinger.x * r.w);
-		auto ty = static_cast<int>(event.tfinger.y * r.h);
-		auto dy = static_cast<int>(event.tfinger.dy * r.h);
+		// These events are given as a proportion of the full game canvas.
+		// 0.0 is top/left edge, 1.0 is bottom/right edge.
+		// Thus first convert them to game pixels.
+		point canvas_size = video::game_canvas_size();
+		auto tx = static_cast<int>(event.tfinger.x * canvas_size.x);
+		auto ty = static_cast<int>(event.tfinger.y * canvas_size.y);
+		auto dy = static_cast<int>(event.tfinger.dy * canvas_size.y);
 
 		if (event.type == SDL_FINGERDOWN) {
 			swipe_dy_ = 0;
@@ -194,7 +195,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 				return;
 			}
 
-			if (sdl::point_in_rect(swipe_origin_.x, swipe_origin_.y, inner_location())
+			if (inner_location().contains(swipe_origin_.x, swipe_origin_.y)
 				&& abs(swipe_dy_) >= scrollbar_step)
 			{
 				unsigned int pos = std::max(

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Eugen Jiresch
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,8 +87,8 @@ class tod_manager
 		 * Replace the time of day schedule
 		 */
 		void replace_schedule(const config& time_cfg);
-		void replace_schedule(const std::vector<time_of_day>& schedule);
-		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index);
+		void replace_schedule(const std::vector<time_of_day>& schedule, int initial_time=0);
+		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index, int initial_time=0);
 
 		void replace_area_locations(int index, const std::set<map_location>& locs);
 
@@ -197,7 +197,7 @@ class tod_manager
 			has_cfg_liminal_bonus_ = true;
 		}
 		void reset_max_liminal_bonus() {
-			liminal_bonus_ = calculate_best_liminal_bonus(times());
+			liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times()));
 			has_cfg_liminal_bonus_ = false;
 		}
 	private:

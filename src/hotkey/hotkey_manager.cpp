@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,33 +15,20 @@
 
 #include "hotkey/hotkey_manager.hpp"
 
-#include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 
-
-namespace hotkey {
+namespace hotkey
+{
 
 manager::manager()
-{
-	init();
-}
-
-void manager::init()
 {
 	init_hotkey_commands();
 }
 
-void manager::wipe()
-{
-	clear_hotkey_commands();
-	clear_hotkeys();
-	delete_all_wml_hotkeys();
-}
-
 manager::~manager()
 {
-	wipe();
+	clear_hotkeys();
 }
 
-
-}
+} // namespace hotkey

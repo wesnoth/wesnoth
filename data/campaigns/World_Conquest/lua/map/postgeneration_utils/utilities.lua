@@ -10,7 +10,7 @@ function wct_dirt_beachs(rng_range)
 		),
 		fraction_rand = rng_range,
 	}
-	
+
 end
 
 -- pack of generic tweaks to default generator
@@ -28,7 +28,7 @@ function world_conquest_tek_map_rebuild(cave, reef)
 		exact = false,
 		percentage = reef,
 	}
-	
+
 	-- add reefs
 	set_terrain { "Wwr",
 		f.any(
@@ -68,7 +68,7 @@ function wct_fill_lava_chasms()
 		),
 		layer = "base",
 	}
-	
+
 end
 
 function world_conquest_tek_map_dirt(mushrooms)
@@ -80,7 +80,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		end
 		terrain_to_change = wct_store_possible_muddy_swamps()
 	end
-	
+
 	wct_randomize_snowed_forest()
 	wct_volcanos_dirt()
 	-- volcanos dry mountains
@@ -91,7 +91,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		),
 		layer = "base",
 	}
-	
+
 	-- lava dry mountains
 	set_terrain { "Md",
 		f.all(
@@ -100,7 +100,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		),
 		layer = "base",
 	}
-	
+
 	-- some impassible become mushrooms
 	set_terrain { mushrooms,
 		f.all(
@@ -109,7 +109,7 @@ function world_conquest_tek_map_dirt(mushrooms)
 		),
 		fraction_rand = "9..11",
 	}
-	
+
 	wct_dirt_beachs("9..11")
 end
 
@@ -124,7 +124,7 @@ function wct_change_map_water(t)
 	set_terrain { "Wo" .. t,
 		f.terrain("Wo"),
 	}
-	
+
 end
 
 function wct_map_decorative_docks()
@@ -153,7 +153,7 @@ function wct_map_decorative_docks()
 		exact = false,
 		percentage = 18,
 	}
-	
+
 	-- chance of trash near docks
 	set_terrain { "Ds,Ds,Ds,Ds,Ds,Ds^Edt",
 		f.all(
@@ -168,7 +168,7 @@ function wct_map_decorative_docks()
 			f.adjacent(f.terrain("Ds^Edt"))
 		),
 	}
-	
+
 end
 
 function wct_store_possible_flowers(terrain)
@@ -177,8 +177,8 @@ function wct_store_possible_flowers(terrain)
 		f.adjacent(f.terrain(terrain)),
 		f.adjacent(f.terrain("D*^*,S*^*,Hd"), nil, 0)
 	))
-	
-	
+
+
 end
 
 function wct_store_possible_map4_castle(value)
@@ -213,7 +213,7 @@ function wct_store_possible_roads(village)
 		)),
 		f.adjacent(f.terrain("R*,Kh*,Ch*"))
 	))
-	
+
 end
 
 function wct_road_to_village(road, village)
@@ -227,7 +227,7 @@ function wct_road_to_village(road, village)
 end
 
 -- builds roads using terrain @a terrain
--- for each step we call @get_next 
+-- for each step we call @get_next
 function wct_iterate_roads_to(get_next, radius, terrain)
 	print_time("wct_iterate_roads_to start")
 	for r = radius, 1, -1 do
@@ -283,7 +283,7 @@ function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius
 						next_locs[#next_locs + 1] = loc_ad
 					end
 					if dist_ad and map[loc_ad] == terrain_road then
-						--we merged with another path. 
+						--we merged with another path.
 						goto path_found
 					end
 				end
@@ -300,13 +300,13 @@ function wct_iterate_roads_to_2(f_validpath, f_src, f_dest, terrain_road, radius
 	end
 end
 
-function wct_iterate_roads_to_ex(t)	
+function wct_iterate_roads_to_ex(t)
 	print_time("wct_iterate_roads_to_ex start")
 	wct_iterate_roads_to_2(t.f_validpath, t.f_src, t.f_dest, t.terrain_road, t.radius)
 	print_time("wct_iterate_roads_to_ex end")
 end
 function wct_break_walls(wall, terrain)
-	
+
 	local terrain_to_change = wct_store_broken_wall_candidates(wall)
 	while #terrain_to_change > 0 do
 		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
@@ -321,7 +321,7 @@ function wct_store_broken_wall_candidates(wall)
 		f.adjacent(f.terrain("M*^Xm,X*"), nil, "2-6"),
 		f.adjacent(f.terrain("Mv"), nil, 0)
 	))
-	
+
 end
 
 function wct_store_possible_muddy_swamps()
@@ -329,7 +329,7 @@ function wct_store_possible_muddy_swamps()
 		f.terrain("Ss"),
 		f.adjacent(f.terrain("D*^*,Hd,Sm,Rd"), nil, "5-6")
 	))
-	
+
 end
 
 function wct_map_reduce_castle_expanding_recruit(castle, terrain)
@@ -341,12 +341,12 @@ function wct_map_reduce_castle_expanding_recruit(castle, terrain)
 			f.terrain(castle)
 		),
 	}
-	
+
 end
 
 function wct_map_cave_path_to(terrain)
 	set_terrain { terrain,
 		f.terrain("Ur"),
 	}
-	
+
 end

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2021
+	Copyright (C) 2006 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -67,7 +67,7 @@ namespace pathfind {
 }
 
 namespace tooltips {
-	struct manager;
+	class manager;
 } // namespace tooltips
 
 namespace wb {
@@ -80,7 +80,10 @@ class game_state;
 class play_controller : public controller_base, public events::observer, public quit_confirmation
 {
 public:
-	play_controller(const config& level, saved_game& state_of_game, bool skip_replay);
+	play_controller(const config& level,
+			saved_game& state_of_game,
+			bool skip_replay,
+			bool start_faded = false);
 	virtual ~play_controller();
 
 	//event handler, overridden from observer
@@ -364,7 +367,7 @@ protected:
 	saved_game& saved_game_;
 
 	//managers
-	std::unique_ptr<tooltips::manager> tooltips_manager_;
+	tooltips::manager tooltips_manager_;
 
 	//whiteboard manager
 	std::shared_ptr<wb::manager> whiteboard_manager_;
@@ -399,6 +402,9 @@ protected:
 	bool init_side_done_now_;
 	//the displayed location when we load a game.
 	map_location map_start_;
+	// Whether to start with the display faded to black
+	bool start_faded_;
+
 	const std::string& select_music(bool victory) const;
 
 	void reset_gamestate(const config& level, int replay_pos);
@@ -417,7 +423,7 @@ private:
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
-	hotkey::scope_changer scope_;
+	const hotkey::scope_changer scope_;
 
 protected:
 	mutable bool ignore_replay_errors_;

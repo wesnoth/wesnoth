@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,7 +47,7 @@ static const std::string sighted_str("sighted");
 
 
 void actions::create_jamming_map(std::map<map_location, int> & jamming,
-                               const team & view_team)
+                                 const team & view_team)
 {
 	// Reset the map.
 	jamming.clear();
@@ -176,7 +176,7 @@ shroud_clearer::shroud_clearer() : jamming_(), sightings_(), view_team_(nullptr)
 shroud_clearer::~shroud_clearer()
 {
 	if ( !sightings_.empty() ) {
-		ERR_NG << sightings_.size() << " sighted events were ignored." << std::endl;
+		ERR_NG << sightings_.size() << " sighted events were ignored.";
 	}
 }
 
@@ -238,11 +238,11 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 	// Clear the border as well as the board, so that the half-hexes
 	// at the edge can also be cleared of fog/shroud.
 	if ( map.on_board_with_border(loc) ) {
-		// Both functions should be executed so don't use || which
-		// uses short-cut evaluation.
-		// (This is different than the return value because shared vision does
-		// not apply here.)
-		if ( tm.clear_shroud(loc) | tm.clear_fog(loc) ) {
+		// Both functions should be executed so don't use || which uses short-cut evaluation.
+		// (This is different than the return value because shared vision does not apply here.)
+		bool clear_shroud = tm.clear_shroud(loc);
+		bool clear_fog = tm.clear_fog(loc);
+		if ( clear_shroud || clear_fog ) {
 			// If we are near a corner, the corner might also need to be cleared.
 			// This happens at the lower-left corner and at either the upper- or
 			// lower- right corner (depending on the width).
@@ -335,12 +335,8 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
                                 const map_location & real_loc,
                                 const std::set<map_location>* known_units,
                                 std::size_t * enemy_count, std::size_t * friend_count,
-                                move_unit_spectator * spectator, bool instant)
+                                move_unit_spectator * spectator, bool /*instant*/)
 {
-	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
-
 	bool cleared_something = false;
 	// Dummy variables to make some logic simpler.
 	std::size_t enemies=0, friends=0;
@@ -352,16 +348,10 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	// Make sure the jamming map is up-to-date.
 	if ( view_team_ != &view_team ) {
 		calculate_jamming(&view_team);
-		// Give animations a chance to progress; see bug #20324.
-		if ( !instant  && display::get_singleton() )
-			display::get_singleton()->draw(true);
 	}
 
 	// Determine the hexes to clear.
 	pathfind::vision_path sight(costs, slowed, sight_range, view_loc, jamming_);
-	// Give animations a chance to progress; see bug #20324.
-	if ( !instant  && display::get_singleton() )
-		display::get_singleton()->draw(true);
 
 	// Clear the fog.
 	for (const pathfind::paths::step &dest : sight.destinations) {
@@ -540,7 +530,7 @@ bool shroud_clearer::clear_dest(const map_location &dest, const unit &viewer)
 void shroud_clearer::drop_events()
 {
 	if ( !sightings_.empty() ) {
-		DBG_NG << sightings_.size() << " sighted events were dropped.\n";
+		DBG_NG << sightings_.size() << " sighted events were dropped.";
 	}
 	sightings_.clear();
 }

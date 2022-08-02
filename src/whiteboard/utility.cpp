@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -111,7 +111,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 	future_map planned_unit_map;
 	if(!resources::whiteboard->has_planned_unit_map())
 	{
-		ERR_WB << "future_visible_unit cannot find unit, future unit map failed to build." << std::endl;
+		ERR_WB << "future_visible_unit cannot find unit, future unit map failed to build.";
 		return nullptr;
 	}
 	//use global method get_visible_unit

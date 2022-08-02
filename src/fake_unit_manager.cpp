@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,7 +32,7 @@ static lg::log_domain log_engine("engine");
 void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 {
 	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
-		ERR_NG << "In fake_unit_manager::place_temporary_unit: attempt to add duplicate fake unit." << std::endl;
+		ERR_NG << "In fake_unit_manager::place_temporary_unit: attempt to add duplicate fake unit.";
 	} else {
 		fake_units_.push_back(u);
 		my_display_.invalidate(u->get_location());
@@ -56,7 +56,7 @@ int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 		u->anim_comp().clear_haloes();
 	}
 	if (removed > 1) {
-		ERR_NG << "Error: duplicate temp unit found in fake_unit_manager::remove_temporary_unit" << std::endl;
+		ERR_NG << "Error: duplicate temp unit found in fake_unit_manager::remove_temporary_unit";
 	}
 	return removed;
 }

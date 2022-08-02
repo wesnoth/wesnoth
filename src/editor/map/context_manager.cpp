@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,7 @@
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
+#include "video.hpp"
 
 #include "editor/action/action.hpp"
 #include "editor/controller/editor_controller.hpp"
@@ -91,7 +92,7 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 context_manager::~context_manager()
 {
 	// Restore default window title
-	CVideo::get_singleton().set_window_title(game_config::get_default_title_string());
+	video::set_window_title(game_config::get_default_title_string());
 
 	resources::filter_con = nullptr;
 }
@@ -609,7 +610,7 @@ void context_manager::resize_map_dialog()
 				break;
 			default:
 				y_offset = 0;
-				WRN_ED << "Unknown resize expand direction" << std::endl;
+				WRN_ED << "Unknown resize expand direction";
 				break;
 		}
 
@@ -692,7 +693,7 @@ void context_manager::init_map_generators(const game_config_view& game_config)
 			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
 		} else {
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
-					<< " has map_generation= but no [generator] tag" << std::endl;
+					<< " has map_generation= but no [generator] tag";
 		}
 	}
 }
@@ -890,7 +891,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 		return;
 	}
 
-	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
+	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
 			context_ptr mc(new map_context(game_config_, filename));
@@ -916,7 +917,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 				if(get_map_context().get_map_data_key().empty()) {
 					ERR_ED << "Internal error, map context filename changed: "
 						<< filename << " -> " << get_map_context().get_filename()
-						<< " with no apparent scenario load\n";
+						<< " with no apparent scenario load";
 				} else {
 					utils::string_map symbols;
 					symbols["old"] = filename;
@@ -943,7 +944,7 @@ void context_manager::revert_map()
 
 	std::string filename = get_map_context().get_filename();
 	if(filename.empty()) {
-		ERR_ED << "Empty filename in map revert" << std::endl;
+		ERR_ED << "Empty filename in map revert";
 		return;
 	}
 
@@ -1049,7 +1050,7 @@ void context_manager::close_current_context()
 void context_manager::switch_context(const int index, const bool force)
 {
 	if(index < 0 || static_cast<std::size_t>(index) >= map_contexts_.size()) {
-		WRN_ED << "Invalid index in switch map context: " << index << std::endl;
+		WRN_ED << "Invalid index in switch map context: " << index;
 		return;
 	}
 
@@ -1079,7 +1080,7 @@ void context_manager::set_window_title()
 	}
 
 	const std::string& wm_title_string = name + " - " + game_config::get_default_title_string();
-	CVideo::get_singleton().set_window_title(wm_title_string);
+	video::set_window_title(wm_title_string);
 }
 
 } //Namespace editor

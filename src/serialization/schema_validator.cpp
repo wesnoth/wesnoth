@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -158,6 +158,19 @@ static void duplicate_key_error(const std::string& file,
 	print_output(ss.str(), flag_exception);
 }
 
+static void inheritance_loop_error(const std::string& file,
+		int line,
+		const std::string& tag,
+		const std::string& key,
+		const std::string& value,
+		int index,
+		bool flag_exception)
+{
+	std::ostringstream ss;
+	ss << "Inheritance loop " << key << "=" << value << " found (at offset " << index << ") in tag [" << tag << "]\n" << at(file, line) << "\n";
+	print_output(ss.str(), flag_exception);
+}
+
 static void wrong_type_error(const std::string & file, int line,
 		const std::string & tag,
 		const std::string & key,
@@ -180,15 +193,15 @@ schema_validator::schema_validator(const std::string& config_file_name, bool val
 	, validate_schema_(validate_schema)
 {
 	if(!read_config_file(config_file_name)) {
-		ERR_VL << "Schema file " << config_file_name << " was not read." << std::endl;
+		ERR_VL << "Schema file " << config_file_name << " was not read.";
 		throw abstract_validator::error("Schema file " + config_file_name + " was not read.\n");
 	} else {
 		stack_.push(&root_);
 		counter_.emplace();
 		cache_.emplace();
 		root_.expand_all(root_);
-		LOG_VL << "Schema file " << config_file_name << " was read.\n"
-			   << "Validator initialized\n";
+		LOG_VL << "Schema file " << config_file_name << " was read.";
+		LOG_VL << "Validator initialized";
 	}
 }
 
@@ -204,7 +217,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
 		read(cfg, *stream, validator.get());
 	} catch(const config::error& e) {
-		ERR_VL << "Failed to read file " << filename << ":\n" << e.what() << "\n";
+		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
 		return false;
 	}
 
@@ -411,7 +424,7 @@ schema_self_validator::schema_self_validator()
 	, type_nesting_()
 	, condition_nesting_()
 {
-       defined_types_.insert("t_string");
+	defined_types_.insert("t_string");
 }
 
 
@@ -464,11 +477,14 @@ bool schema_self_validator::tag_path_exists(const config& cfg, const reference& 
 			suffix = path.back();
 			//suffix = link->second + "/" + suffix;
 		} else {
-			auto supers = derivations_.equal_range(prefix);
+			const auto supers = derivations_.equal_range(prefix);
 			if(supers.first != supers.second) {
 				reference super_ref = ref;
-				for( ; supers.first != supers.second; ++supers.first) {
-					super_ref.value_ = supers.first->second + "/" + suffix;
+				for(auto cur = supers.first ; cur != supers.second; ++cur) {
+					super_ref.value_ = cur->second + "/" + suffix;
+					if(super_ref.value_.find(ref.value_) == 0) {
+						continue;
+					}
 					if(tag_path_exists(cfg, super_ref)) {
 						return true;
 					}
@@ -588,6 +604,13 @@ void schema_self_validator::validate_key(const config& cfg, const std::string& n
 		} else if(tag_name == "tag" && name == "super") {
 			for(auto super : utils::split(cfg["super"])) {
 				referenced_tag_paths_.emplace_back(super, file, start_line, tag_name);
+				if(condition_nesting_ > 0) {
+					continue;
+				}
+				if(current_path() == super) {
+					queue_message(cfg, SUPER_LOOP, file, start_line, cfg["super"].str().find(super), tag_name, "super", super);
+					continue;
+				}
 				derivations_.emplace(current_path(), super);
 			}
 		} else if(condition_nesting_ == 0 && tag_name == "tag" && name == "name") {
@@ -642,6 +665,9 @@ void schema_self_validator::print(message_info& el)
 		break;
 	case DUPLICATE_KEY:
 		duplicate_key_error(el.file, el.line, el.tag, el.key, el.value, create_exceptions_);
+		break;
+	case SUPER_LOOP:
+			inheritance_loop_error(el.file, el.line, el.tag, el.key, el.value, el.n, create_exceptions_);
 		break;
 	}
 }

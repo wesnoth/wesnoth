@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -19,6 +19,7 @@
 #include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
@@ -38,6 +39,7 @@ static lg::log_domain log_filesystem("filesystem");
 static lg::log_domain log_addons_client("addons-client");
 
 #define ERR_CFG LOG_STREAM(err,   log_config)
+#define INFO_CFG LOG_STREAM(info, log_config)
 
 #define ERR_NET LOG_STREAM(err,   log_network)
 
@@ -79,16 +81,16 @@ bool addons_manager_ui(const std::string& remote_address)
 
 		need_wml_cache_refresh = dlg.get_need_wml_cache_refresh();
 	} catch(const config::error& e) {
-		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
+		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"";
 		gui2::show_error_message(_("Network communication error."));
 	} catch(const network_asio::error& e) {
-		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
+		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"";
 		gui2::show_error_message(_("Remote host disconnected."));
 	} catch(const filesystem::io_exception& e) {
-		ERR_FS << "filesystem::io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
+		ERR_FS << "filesystem::io_exception thrown while installing an addon; \"" << e.what() << "\"";
 		gui2::show_error_message(_("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
-		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
+		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message;
 
 		utils::string_map symbols;
 		symbols["path"] = e.path;
@@ -99,9 +101,9 @@ bool addons_manager_ui(const std::string& remote_address)
 	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
-		LOG_AC << "initial connection canceled by user\n";
+		LOG_AC << "initial connection canceled by user";
 	} catch(const addons_client::user_disconnect&) {
-		LOG_AC << "attempt to reconnect canceled by user\n";
+		LOG_AC << "attempt to reconnect canceled by user";
 	} catch(const addons_client::invalid_server_address&) {
 		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}
@@ -216,7 +218,8 @@ bool uninstall_local_addons()
 
 		gui2::show_transient_message(
 			dlg_title,
-			dlg_msg + list_lead + utils::bullet_list(succeeded_names), "", false, false, true);
+			dlg_msg + list_lead + utils::bullet_list(succeeded_names)
+		);
 
 		return true;
 	}
@@ -276,11 +279,31 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 			addons_list::const_iterator it = addons.find(addon_id);
 			if(it != addons.end()) {
 				const addon_info& addon = it->second;
-				// don't redownload in case it was already downloaded for being another add-on's dependency
-				if(!filesystem::file_exists(filesystem::get_addons_dir()+"/"+addon_id)) {
-					addons_client::install_result res = client.install_addon_with_checks(addons, addon);
-					return_value = return_value && (res.outcome == addons_client::install_outcome::success);
+				const std::string addon_dir = filesystem::get_addons_dir()+"/"+addon_id;
+				const std::string info_cfg = addon_dir+"/_info.cfg";
+
+				// no _info.cfg, so either there's a _server.pbl or there's no version information available at all, so this add-on can be skipped
+				if(filesystem::file_exists(addon_dir) && !filesystem::file_exists(info_cfg)) {
+					INFO_CFG << "No _info.cfg exists for '" << addon_id << "', skipping update.\n";
+					continue;
 				}
+
+				// if _info.cfg exists, compare the local vs remote add-on versions to determine whether a download is needed
+				if(filesystem::file_exists(info_cfg)) {
+					game_config::config_cache& cache = game_config::config_cache::instance();
+					config info;
+					cache.get_config(info_cfg, info);
+					version_info installed_addon_version(info.child_or_empty("info")["version"]);
+
+					// if the installed version is outdated, download the most recent version from the add-ons server
+					if(installed_addon_version >= addon.current_version) {
+						continue;
+					}
+				}
+
+				// if the add-on exists locally and needs to be updated, or it doesn't exist and needs to be downloaded
+				addons_client::install_result res = client.install_addon_with_checks(addons, addon);
+				return_value = return_value && (res.outcome == addons_client::install_outcome::success);
 			} else {
 				if(!return_value) {
 					os << ", ";
@@ -299,16 +322,16 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 		return return_value;
 
 	} catch(const config::error& e) {
-		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
+		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"";
 		gui2::show_error_message(_("Network communication error."));
 	} catch(const network_asio::error& e) {
-		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
+		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"";
 		gui2::show_error_message(_("Remote host disconnected."));
 	} catch(const filesystem::io_exception& e) {
-		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
+		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"";
 		gui2::show_error_message(_("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
-		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
+		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message;
 
 		utils::string_map symbols;
 		symbols["path"] = e.path;
@@ -319,7 +342,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 	} catch(const wml_exception& e) {
 		e.show();
 	} catch(const addons_client::user_exit&) {
-		LOG_AC << "initial connection canceled by user\n";
+		LOG_AC << "initial connection canceled by user";
 	} catch(const addons_client::invalid_server_address&) {
 		gui2::show_error_message(_("The add-ons server address specified is not valid."));
 	}

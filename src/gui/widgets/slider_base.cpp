@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -148,14 +148,14 @@ void slider_base::update_canvas()
 		tmp.set_variable("positioner_length", wfl::variant(positioner_length_));
 	}
 
-	set_is_dirty(true);
+	queue_redraw();
 }
 
 void slider_base::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
@@ -207,7 +207,7 @@ void slider_base::update_slider_position(slider_base::slider_position_t& pos)
 
 void slider_base::signal_handler_mouse_enter(const event::ui_event event, bool& handled, bool& halt)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	// Send the motion under our event id to make debugging easier.
 	signal_handler_mouse_motion(event, handled, halt, get_mouse_position());
@@ -216,7 +216,7 @@ void slider_base::signal_handler_mouse_enter(const event::ui_event event, bool& 
 void slider_base::signal_handler_mouse_motion(
 		const event::ui_event event, bool& handled, bool& halt, const point& coordinate)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << " at " << coordinate << ".";
 
 	point mouse = coordinate;
 	mouse.x -= get_x();
@@ -256,7 +256,7 @@ void slider_base::signal_handler_mouse_motion(
 
 void slider_base::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(state_ == FOCUSED) {
 		set_state(ENABLED);
@@ -267,7 +267,7 @@ void slider_base::signal_handler_mouse_leave(const event::ui_event event, bool& 
 
 void slider_base::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();
@@ -298,7 +298,7 @@ void slider_base::signal_handler_left_button_down(const event::ui_event event, b
 
 void slider_base::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	point mouse = get_mouse_position();
 	mouse.x -= get_x();

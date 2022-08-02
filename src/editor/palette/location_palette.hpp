@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,10 @@ namespace editor {
 
 class editor_toolkit;
 
+/**
+ * List of starting locations and location ids. Shows a single-column list, with buttons to add
+ * new items to the list and to jump to that location on the map.
+ */
 class location_palette : public common_palette {
 
 public:
@@ -51,9 +55,9 @@ public:
 	virtual void prev_group() override {}
 	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
 
-	virtual void draw() override {
-		widget::draw();
-	}
+	/** Called by draw_manager to validate layout before drawing. */
+	virtual void layout() override;
+	/** Called by widget::draw() */
 	virtual void draw_contents() override;
 
 	/**
@@ -83,7 +87,6 @@ public:
 	void hide(bool hidden) override;
 
 private:
-
 	/** Scroll the editor-palette to the top. */
 	void scroll_top();
 
@@ -93,22 +96,21 @@ private:
 	virtual bool is_selected_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
-	int num_items() override;
-	/** Return the maximum number of items shown at the same time. */
-	int num_visible_items();
+	std::size_t num_items() override;
+	/**
+	 * Return the number of GUI elements that can show items. Some of these may be hidden, if there
+	 * are more of them than items to show, or if the palette has been scrolled to the bottom.
+	 */
+	std::size_t num_visible_items();
 protected:
 
 	int item_size_;
 	// the height of a row, the size of an item including borders.
 	int item_space_;
 
-private:
-	unsigned int palette_y_;
-	unsigned int palette_x_;
-
 protected:
-	//the current scrolling position
-	int items_start_;
+	// the current scrolling position
+	std::size_t items_start_;
 
 private:
 	std::string selected_item_;
@@ -118,7 +120,6 @@ private:
 	std::unique_ptr<location_palette_button> button_add_;
 	std::unique_ptr<location_palette_button> button_delete_;
 	std::unique_ptr<location_palette_button> button_goto_;
-    int help_handle_;
 	editor_display& disp_;
 };
 

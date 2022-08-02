@@ -2,7 +2,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "location_set"
 
-local ca_simple_attack, best_attack = {}
+local ca_simple_attack, best_attack = {}, nil
 
 function ca_simple_attack:evaluation(cfg)
     local units = AH.get_units_with_attacks {

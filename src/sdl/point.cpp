@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,29 +17,10 @@
 
 #include "sdl/point.hpp"
 
-#include <iostream>
-
-point::operator SDL_Point() const
-{
-	return {x, y};
-}
-
-point& point::operator+=(const point& point)
-{
-	x += point.x;
-	y += point.y;
-	return *this;
-}
-
-point& point::operator-=(const point& point)
-{
-	x -= point.x;
-	y -= point.y;
-	return *this;
-}
+#include <ostream>
 
 std::ostream& operator<<(std::ostream& stream, const point& point)
 {
-	stream << point.x << ',' << point.y;
+	stream << '(' << point.x << ',' << point.y << ')';
 	return stream;
 }

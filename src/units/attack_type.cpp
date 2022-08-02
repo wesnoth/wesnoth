@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -444,7 +444,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> damage",
 				"<span color=\"$color\">$number_or_percent</span> damage",
 				std::stoi(increase_damage),
-				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_damage.empty()) {
@@ -462,7 +462,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> strike",
 				"<span color=\"$color\">$number_or_percent</span> strikes",
 				std::stoi(increase_attacks),
-				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_attacks.empty()) {
@@ -485,7 +485,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 				"<span color=\"$color\">$number_or_percent|%</span> accuracy",
-				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_parry.empty()) {
@@ -499,7 +499,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 			desc.emplace_back(VGETTEXT(
 				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 				"<span color=\"$color\">$number_or_percent</span> parry",
-				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		if(!set_movement.empty()) {
@@ -517,7 +517,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				"<span color=\"$color\">$number_or_percent</span> movement point",
 				"<span color=\"$color\">$number_or_percent</span> movement points",
 				std::stoi(increase_movement),
-				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "red" : "green"}}));
+				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
 		*description = utils::format_conjunct_list("", desc);

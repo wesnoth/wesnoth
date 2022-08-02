@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include "gui/dialogs/modeless_dialog.hpp"
 
 #include "gui/core/event/dispatcher.hpp"
+#include "gui/core/top_level_drawable.hpp"
 
 namespace gui2
 {
@@ -46,7 +47,7 @@ namespace dialogs
  * second            | integer_selector |no       |This shows the seconds since the beginning of the current minute. The control should have a minimum_value of 0 and a maximum_value of 59.
  * clock             | control          |no       |A control which will have set three variables in its canvas:<ul><li>hour - the same value as the hour integer_selector.</li><li>minute - the same value as the minute integer_selector.</li><li>second - the same value as the second integer_selector.</li></ul>The control can then show the time in its own preferred format(s).
  */
-class debug_clock : public modeless_dialog
+class debug_clock : public modeless_dialog, public top_level_drawable
 {
 public:
 	debug_clock()
@@ -89,7 +90,7 @@ private:
 	styled_widget* clock_;
 
 	/** The signal patched in the drawing routine. */
-	event::signal_function signal_;
+	event::signal signal_;
 
 	/** Helper struct to keep track of the time. */
 	struct time
@@ -142,7 +143,7 @@ private:
 
 	virtual void pre_show(window& window) override;
 
-	virtual void post_show(CVideo& video);
+	virtual void post_show();
 
 	/**
 	 * The callback for the drawing routine.
@@ -154,6 +155,12 @@ private:
 	 *                            initially.)
 	 */
 	void update_time(const bool force);
+
+	// TODO: draw_manager - modeless dialog should be a window, fix
+	/* top_level_drawable interface */
+	virtual void layout() override;
+	virtual bool expose(const rect& region) override;
+	virtual rect screen_location() override;
 };
 
 } // namespace dialogs

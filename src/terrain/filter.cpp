@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,12 +28,12 @@
 #include "tod_manager.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
-#include "units/alignment.hpp"
 #include "variable.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "units/unit_alignments.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
 
@@ -275,15 +275,15 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		if(!tod_type.empty()) {
 			const std::vector<std::string>& vals = utils::split(tod_type);
 			if(tod.lawful_bonus<0) {
-				if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::CHAOTIC)) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(), unit_alignments::chaotic) == vals.end()) {
 					return false;
 				}
 			} else if(tod.lawful_bonus>0) {
-				if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::LAWFUL)) == vals.end()) {
+				if(std::find(vals.begin(),vals.end(), unit_alignments::lawful) == vals.end()) {
 					return false;
 				}
-			} else if(std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::NEUTRAL)) == vals.end() &&
-				std::find(vals.begin(),vals.end(),UNIT_ALIGNMENT::enum_to_string(UNIT_ALIGNMENT::LIMINAL)) == vals.end()) {
+			} else if(std::find(vals.begin(),vals.end(), unit_alignments::neutral) == vals.end() &&
+				std::find(vals.begin(),vals.end(), unit_alignments::liminal) == vals.end()) {
 				return false;
 			}
 		}
@@ -309,7 +309,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 	const vconfig& filter_owner = cfg_.child("filter_owner");
 	if(!filter_owner.null()) {
 		if(!owner_side.empty()) {
-			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=" << std::endl;
+			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=";
 		}
 		if(!fc_->get_disp_context().map().is_village(loc))
 			return false;
@@ -391,7 +391,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 	std::size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
-		<< ", restricting\n";
+		<< ", restricting";
 		radius = max_loop_;
 	}
 	if ( radius == 0 )
@@ -435,7 +435,7 @@ bool terrain_filter::match_impl(const map_location& loc, const unit* ref_unit) c
 			std::set<map_location>::const_iterator temp = i;
 			if(++temp != hexes.end()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
-				<< ", aborting\n";
+				<< ", aborting";
 				break;
 			}
 		}
@@ -586,7 +586,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 			cache_.adjacent_matches->push_back(adj_set);
 			if(i >= max_loop_ && i+1 < adj_cfgs.size()) {
 				ERR_NG << "terrain_filter: loop count greater than " << max_loop_
-				<< ", aborting\n";
+				<< ", aborting";
 				break;
 			}
 		}
@@ -651,7 +651,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 	std::size_t radius = cfg_["radius"].to_size_t(0);
 	if(radius > max_loop_) {
 		ERR_NG << "terrain_filter: radius greater than " << max_loop_
-		<< ", restricting\n";
+		<< ", restricting";
 		radius = max_loop_;
 	}
 	if(radius > 0) {

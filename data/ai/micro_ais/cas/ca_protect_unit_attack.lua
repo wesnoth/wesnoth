@@ -1,7 +1,7 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
-local ca_protect_unit_attack, best_attack = {}
+local ca_protect_unit_attack, best_attack = {}, nil
 
 function ca_protect_unit_attack:evaluation(cfg)
     -- Find possible attacks for the units
@@ -31,6 +31,7 @@ function ca_protect_unit_attack:evaluation(cfg)
 
     local max_rating = - math.huge
     for _,attack in pairs(attacks) do
+        wesnoth.interface.handle_user_interact()
         -- Only consider attack if there is no chance to die or to be poisoned or slowed
         if (attack.att_stats.hp_chance[0] == 0)
             and (attack.att_stats.poisoned == 0)

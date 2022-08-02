@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2021 - 2021
+	Copyright (C) 2021 - 2022
 	by Iris Morelle <shadowm@wesnoth.org>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,13 +15,14 @@
 
 #include "font/sdl_ttf_compat.hpp"
 
+#include "draw.hpp"
 #include "font/standard_colors.hpp"
 #include "log.hpp"
 #include "sdl/point.hpp"
+#include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "serialization/unicode.hpp"
 #include "tooltips.hpp"
-#include "video.hpp"
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -42,7 +43,7 @@ pango_text& private_renderer()
 
 }
 
-surface pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style, bool use_markup, int max_width)
+texture pango_render_text(const std::string& text, int size, const color_t& color, font::pango_text::FONT_STYLE style, bool use_markup, int max_width)
 {
 	auto& ptext = private_renderer();
 
@@ -55,7 +56,7 @@ surface pango_render_text(const std::string& text, int size, const color_t& colo
 		 .set_maximum_width(max_width)
 		 .set_ellipse_mode(max_width > 0 ? PANGO_ELLIPSIZE_END : PANGO_ELLIPSIZE_NONE);
 
-	return ptext.render().clone();
+	return ptext.render_and_get_texture();
 }
 
 std::pair<int, int> pango_line_size(const std::string& line, int font_size, font::pango_text::FONT_STYLE font_style)
@@ -98,7 +99,7 @@ std::string pango_line_ellipsize(const std::string& text, int font_size, int max
 			current_substring = std::move(tmp);
 		}
 	} catch(const utf8::invalid_utf8_exception&) {
-		WRN_FT << "Invalid UTF-8 string: \"" << text << "\"\n";
+		WRN_FT << "Invalid UTF-8 string: \"" << text << "\"";
 		return "";
 	}
 
@@ -137,14 +138,7 @@ std::string pango_word_wrap(const std::string& unwrapped_text, int font_size, in
 	return res;
 }
 
-SDL_Rect pango_draw_text(CVideo* gui, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
-{
-	static surface null_surf{};
-
-	return pango_draw_text(gui != nullptr ? gui->getSurface() : null_surf, area, size, color, text, x, y, use_tooltips, style);
-}
-
-SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
+rect pango_draw_text(bool actually_draw, const rect& area, int size, const color_t& color, const std::string& text, int x, int y, bool use_tooltips, pango_text::FONT_STYLE style)
 {
 	auto& ptext = private_renderer();
 
@@ -153,25 +147,27 @@ SDL_Rect pango_draw_text(surface& dst, const SDL_Rect& area, int size, const col
 		 .set_font_size(size)
 		 .set_font_style(style)
 		 .set_maximum_width(-1)
-		 .set_maximum_height(area.h, true)
 		 .set_foreground_color(color)
 		 .set_ellipse_mode(PANGO_ELLIPSIZE_END);
+
+	if(!area.empty()) {
+		ptext.set_maximum_height(area.h, true);
+	}
 
 	auto extents = ptext.get_size();
 	bool ellipsized = false;
 
-	if(extents.x > area.w) {
+	if(!area.empty() && extents.x > area.w) {
 		ptext.set_maximum_width(area.w);
 		ellipsized = true;
 	}
 
-	auto s = ptext.render();
+	auto t = ptext.render_and_get_texture();
 
-	SDL_Rect res = { x, y, s->w, s->h };
+	SDL_Rect res = {x, y, t.w(), t.h()};
 
-	if(dst) {
-		SDL_Rect src = { 0, 0, s->w, s->h };
-		sdl_blit(s, &src, dst, &res);
+	if(actually_draw) {
+		draw::blit(t, res);
 	}
 
 	if(ellipsized && use_tooltips) {

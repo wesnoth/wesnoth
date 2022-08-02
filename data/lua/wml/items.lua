@@ -24,6 +24,7 @@ local function add_overlay(x, y, cfg)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			submerge = cfg.submerge,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
@@ -31,6 +32,10 @@ local function add_overlay(x, y, cfg)
 		})
 end
 
+---Remove an item from the map
+---@param x integer
+---@param y integer
+---@param name string
 function wesnoth.interface.remove_item(x, y, name)
 	local items = scenario_items:get(x, y)
 	if not items then return end
@@ -48,6 +53,24 @@ function wesnoth.interface.remove_item(x, y, name)
 	end
 end
 
+---@class item_info
+---@field x integer
+---@field y integer
+---@field image string
+---@field halo string
+---@field team_name string
+---@field filter_team WML
+---@field visible_in_fog boolean
+---@field submerge number
+---@field redraw boolean
+---@field name string
+---@field z_order integer
+---@field variables WMLTable
+
+---Get items on a given hex
+---@param x integer
+---@param y integer
+---@return item_info[]
 function wesnoth.interface.get_items(x, y)
 	local res = {}
 	local items = scenario_items:get(x, y) or {}
@@ -61,6 +84,7 @@ function wesnoth.interface.get_items(x, y)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			submerge = cfg.submerge,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
@@ -139,10 +163,18 @@ function wml_actions.store_items(cfg)
 	end
 end
 
+---Add an item image to a hex
+---@param x integer
+---@param y integer
+---@param name string
 function wesnoth.interface.add_item_image(x, y, name)
 	add_overlay(x, y, { x = x, y = y, image = name })
 end
 
+---Add an item halo to a hex
+---@param x integer
+---@param y integer
+---@param name string
 function wesnoth.interface.add_item_halo(x, y, name)
 	add_overlay(x, y, { x = x, y = y, halo = name })
 end

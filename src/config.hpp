@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,7 +51,6 @@ using config_key_type = std::string_view;
 enum class DEP_LEVEL : uint8_t;
 
 class config;
-class enum_tag;
 
 bool operator==(const config &, const config &);
 inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }
@@ -525,6 +524,12 @@ public:
 		}
 	}
 
+	/**
+	 * Copies attributes that exist in the source config.
+	 *
+	 * @param from Source config to copy attributes from.
+	 * @param keys Attribute names.
+	 */
 	template<typename... T>
 	void copy_attributes(const config& from, T... keys)
 	{
@@ -532,6 +537,27 @@ public:
 			auto* attr = from.get(key);
 			if(attr) {
 				(*this)[key] = *attr;
+			}
+		}
+	}
+
+	/**
+	 * Copies or deletes attributes to match the source config.
+	 *
+	 * Attributes that do not exist in the source are fully erased rather than
+	 * set to the unspecified/default attribute value.
+	 *
+	 * @param from Source config to copy attributes from.
+	 * @param keys Attribute names.
+	 */
+	template<typename... T>
+	void copy_or_remove_attributes(const config& from, T... keys)
+	{
+		for(const auto& key : {keys...}) {
+			if(from.has_attribute(key)) {
+				(*this)[key] = from[key];
+			} else {
+				remove_attribute(key);
 			}
 		}
 	}
@@ -569,7 +595,7 @@ public:
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
 	 */
-	void remove_children(config_key_type key, std::function<bool(const config&)> p);
+	void remove_children(config_key_type key, std::function<bool(const config&)> p = [](config){return true;});
 	void recursive_clear_value(config_key_type key);
 
 	void clear();

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,18 +22,19 @@
 
 #include <boost/algorithm/string.hpp>
 
-#include <iostream>
-
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
 static lg::log_domain log_event_handler("event_handler");
+#define ERR_EH LOG_STREAM(err, log_event_handler)
+#define LOG_EH LOG_STREAM(info, log_event_handler)
 #define DBG_EH LOG_STREAM(debug, log_event_handler)
 
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
+#define DBG_WML LOG_STREAM(debug, log_wml)
 
 namespace game_events
 {
@@ -50,11 +51,10 @@ void event_handlers::log_handlers()
 			continue;
 		}
 
-		const config& cfg = h->get_config();
-		ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
+		ss << "name=" << h->names_raw() << ", with id=" << h->id() << "; ";
 	}
 
-	DBG_EH << "active handlers are now " << ss.str() << "\n";
+	DBG_EH << "active handlers are now " << ss.str();
 }
 
 /**
@@ -93,69 +93,57 @@ handler_list& event_handlers::get(const std::string& name)
  * An event with a nonempty ID will not be added if an event with that
  * ID already exists.
  */
-void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
+pending_event_handler event_handlers::add_event_handler(const std::string& name, const std::string& id, bool repeat, bool is_menu_item)
 {
-	// Someone decided to register an empty event... bail.
-	if(cfg.empty()) {
-		return;
-	}
-
-	std::string name = cfg["name"];
-	std::string id = cfg["id"];
-
 	if(!id.empty()) {
 		// Ignore this handler if there is already one with this ID.
 		auto find_it = id_map_.find(id);
 
 		if(find_it != id_map_.end() && !find_it->second.expired()) {
-			DBG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "'\n";
-			return;
+			LOG_EH << "ignoring event handler for name='" << name << "' with id '" << id << "' because an event with that id already exists";
+			return {*this, nullptr};
 		}
 	}
 
 	if(name.empty() && id.empty()) {
-		lg::log_to_chat() << "[event] is missing name or id field\n";
-		ERR_WML << "[event] is missing name or id field";
-		return;
-	}
-
-	// Make a copy of the event cfg here in order to do some standardization on the
-	// name field. Will be moved into the handler.
-	config event_cfg = cfg;
-
-	// Split the name field...
-	std::vector<std::string> standardized_names = utils::split(name);
-
-	if(!name.empty()) {
-		// ...and standardize each one individually. This ensures they're all valid for by-name lookup.
-		for(std::string& single_name : standardized_names) {
-			if(!utils::might_contain_variables(single_name)) {
-				single_name = standardize_name(single_name);
-			}
+		static const char* msg = "[event] is missing name or id field";
+		lg::log_to_chat() << msg << "\n";
+		if(lg::info().dont_log(log_event_handler)) {
+			ERR_EH << msg << " (run with --log-info=event_handler for more info)";
+		} else {
+			ERR_EH << msg;
 		}
-
-		assert(!standardized_names.empty());
-
-		// Write the new name back to the config.
-		name = utils::join(standardized_names);
-		event_cfg["name"] = name;
+		return {*this, nullptr};
 	}
 
 	// Create a new handler.
+	auto handler = std::make_shared<event_handler>(name, id);
+	handler->set_menu_item(is_menu_item);
+	handler->set_repeatable(repeat);
+	return {*this, handler};
+}
+
+void event_handlers::finish_adding_event_handler(handler_ptr handler)
+{
+	// Someone decided to register an empty event... bail.
+	if(handler->empty()) {
+		return;
+	}
+
+	const std::string& names = handler->names_raw();
+	const std::string& id = handler->id();
+
+	// Register the new handler.
 	// Do note active_ holds the main shared_ptr, and the other three containers
 	// construct weak_ptrs from the shared one.
-	DBG_EH << "inserting event handler for name=" << name << " with id=" << id << "\n";
-	active_.emplace_back(new event_handler(std::move(event_cfg), is_menu_item, standardized_names));
-
-	//
-	//  !! event_cfg is invalid past this point! DO NOT USE!
-	//
+	DBG_EH << "inserting event handler for name=" << names << " with id=" << id;
+	active_.emplace_back(handler);
 
 	// File by name.
-	if(utils::might_contain_variables(name)) {
+	if(utils::might_contain_variables(names)) {
 		dynamic_.emplace_back(active_.back());
 	} else {
-		for(const std::string& single_name : standardized_names) {
+		for(const std::string& single_name : handler->names(nullptr)) {
 			by_name_[single_name].emplace_back(active_.back());
 		}
 	}
@@ -168,6 +156,11 @@ void event_handlers::add_event_handler(const config& cfg, bool is_menu_item)
 	log_handlers();
 }
 
+pending_event_handler::~pending_event_handler()
+{
+	if(valid()) list_.finish_adding_event_handler(handler_);
+}
+
 /**
  * Removes an event handler, identified by its ID.
  * Events with empty IDs cannot be removed.
@@ -178,7 +171,7 @@ void event_handlers::remove_event_handler(const std::string& id)
 		return;
 	}
 
-	DBG_EH << "removing event handler with id " << id << "\n";
+	DBG_EH << "removing event handler with id " << id;
 
 	// Find the existing handler with this ID.
 	auto find_it = id_map_.find(id);

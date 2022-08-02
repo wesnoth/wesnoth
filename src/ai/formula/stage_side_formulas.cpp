@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,7 +49,7 @@ bool stage_side_formulas::do_play_stage()
 		if (move_formula_) {
 			while( !fai_.make_action(move_formula_,callable).is_empty() ) { }
 		} else {
-			WRN_AI << "Side formula skipped, maybe it's empty or incorrect" << std::endl;
+			WRN_AI << "Side formula skipped, maybe it's empty or incorrect";
 		}
 	}
 	catch(wfl::formula_error& e) {

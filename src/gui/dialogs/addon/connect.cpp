@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,6 @@ addon_connect::addon_connect(std::string& host_name,
 							   const bool allow_remove)
 	: allow_remove_(allow_remove)
 {
-	set_restore(true);
 	register_text("host_name", false, host_name, true);
 }
 

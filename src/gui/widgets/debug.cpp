@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 #include "gui/widgets/debug.hpp"
 
 #include "formatter.hpp"
+#include "log.hpp"
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
@@ -29,7 +30,6 @@
 
 #include <fstream>
 #include <iomanip>
-#include <iostream>
 
 namespace gui2
 {
@@ -133,8 +133,7 @@ void debug_layout_graph::set_level(const std::string& level)
 		} else if(param == "state") {
 			level_ |= STATE_INFO;
 		} else {
-			// logging might not be up yet.
-			std::cerr << "Unknown level '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown level '" << param << "' is ignored.";
 		}
 	}
 }
@@ -161,8 +160,7 @@ void debug_layout_graph::set_domain(const std::string& domain)
 		} else if(param == "layout") {
 			domain_ |= LAYOUT;
 		} else {
-			// logging might not be up yet.
-			std::cerr << "Unknown domain '" << param << "' is ignored.\n";
+			PLAIN_LOG << "Unknown domain '" << param << "' is ignored.";
 		}
 	}
 }
@@ -233,8 +231,8 @@ void debug_layout_graph::widget_generate_info(std::ostream& out,
 				= dynamic_cast<const class scrollbar_container*>(widget);
 
 		if(scrollbar_container) {
-			widget_generate_info(
-            out, scrollbar_container->content_grid_.get(), id + "_C", true);
+			widget_generate_info(out,
+				scrollbar_container->content_grid_.get(), id + "_C", true);
 			out << "\t" << id << " -> " << id << "_C"
 				<< " [label=\"(content)\"];\n";
 		}
@@ -318,7 +316,7 @@ void debug_layout_graph::widget_generate_state_info(std::ostream& out,
 		<< "<tr><td>\n"
 		<< "active=" << control->get_active() << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
-        << "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
+		<< "visible=" << static_cast<int>(control->get_visible()) << '\n' << "</td></tr>\n"
 		<< "<tr><td>\n"
 		<< "drawing action=" << static_cast<int>(control->get_drawing_action()) << '\n'
 		<< "</td></tr>\n"
@@ -403,7 +401,7 @@ void debug_layout_graph::grid_generate_info(std::ostream& out,
 	for(unsigned row = 0; row < grid->get_rows(); ++row) {
 		for(unsigned col = 0; col < grid->get_cols(); ++col) {
 
-            const widget* widget = grid->get_widget(row, col);
+			const widget* widget = grid->get_widget(row, col);
 			assert(widget);
 
 			widget_generate_info(

@@ -36,7 +36,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "$BUILT_PRODUCTS_DIR/Wesnoth.app/Contents/Resources"
+      customWorkingDirectory = "$BUILT_PRODUCTS_DIR/The Battle for Wesnoth.app/Contents/Resources"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "NO"
       debugServiceExtension = "internal"
@@ -51,23 +51,24 @@
             ReferencedContainer = "container:The Battle for Wesnoth.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "DYLD_FALLBACK_FRAMEWORK_PATH"
-            value = "../../../TestFrameworks:../Frameworks"
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "--no_color_output"
             isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_FALLBACK_LIBRARY_PATH"
-            value = "../../../TestFrameworks:../Frameworks"
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--log_level=test_suite"
             isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
-            key = "DYLD_IMAGE_SUFFIX"
-            value = "-mt"
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--run_test=test_preproc_defines"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-- --output_file &quot;$(PROJECT_DIR)/../../boost_test_result.xml&quot;"
             isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -90,7 +91,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "SignedRelease"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

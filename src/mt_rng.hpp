@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,10 +38,10 @@ public:
 
 	/**
 	 *  Same as uint32_t version, but uses a stringstream to convert given
-         *  hex string.
-         *  @param seed         A hex string. Should not have 0x leading.
-         *  @param call_count   Value to set internal call counter to after seeding.
-         */
+	 *  hex string.
+	 *  @param seed         A hex string. Should not have 0x leading.
+	 *  @param call_count   Value to set internal call counter to after seeding.
+	 */
 	void seed_random(const std::string & seed, const unsigned int call_count = 0);
 
 	/**

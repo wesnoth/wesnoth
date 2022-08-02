@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -98,8 +98,8 @@ void unit_list::pre_show(window& window)
 	window.keyboard_capture(&list);
 
 	for(const unit_const_ptr& unit : unit_list_) {
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		column["use_markup"] = "true";
 

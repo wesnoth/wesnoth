@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -71,7 +71,7 @@ bool stage_unit_formulas::do_play_stage()
 							callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 							priority = (wfl::formula::evaluate(priority_formula, callable)).as_int();
 						} else {
-							WRN_AI << "priority formula skipped, maybe it's empty or incorrect"<< std::endl;
+							WRN_AI << "priority formula skipped, maybe it's empty or incorrect";
 						}
 					} catch(wfl::formula_error& e) {
 						if(e.filename == "formula")
@@ -81,14 +81,14 @@ bool stage_unit_formulas::do_play_stage()
 						priority = 0;
 					} catch(const wfl::type_error& e) {
 						priority = 0;
-						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << std::endl;
+						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message;
 					}
 				}
 
 				units_with_formulas.insert( wfl::unit_formula_pair( i, priority ) );
 			}
 		}
-        }
+	}
 
 	for(wfl::unit_formula_set::iterator pair_it = units_with_formulas.begin() ; pair_it != units_with_formulas.end() ; ++pair_it)
 	{
@@ -104,7 +104,7 @@ bool stage_unit_formulas::do_play_stage()
 						callable.add("me", wfl::variant(std::make_shared<wfl::unit_callable>(*i)));
 						fai_.make_action(formula, callable);
 					} else {
-						WRN_AI << "unit formula skipped, maybe it's empty or incorrect" << std::endl;
+						WRN_AI << "unit formula skipped, maybe it's empty or incorrect";
 					}
 				}
 				catch(wfl::formula_error& e) {
@@ -128,7 +128,7 @@ bool stage_unit_formulas::do_play_stage()
 						{
 						}
 					} else {
-						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect" << std::endl;
+						WRN_AI << "Loop formula skipped, maybe it's empty or incorrect";
 					}
 				} catch(wfl::formula_error& e) {
 					if (e.filename == "formula") {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -127,7 +127,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 
 	LOG_REPLAY << "recruit: team=" << current_team_num << " '" << type_id << "' at (" << loc
 		<< ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
-		<< "-> " << current_team.gold() << "\n";
+		<< "-> " << current_team.gold();
 	return true;
 }
 
@@ -179,7 +179,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	int def_weapon_num = child["defender_weapon"].to_int(-2);
 	if (def_weapon_num == -2) {
 		// Let's not gratuitously destroy backwards compatibility.
-		LOG_REPLAY << "Old data, having to guess weapon\n";
+		LOG_REPLAY << "Old data, having to guess weapon";
 		def_weapon_num = -1;
 	}
 
@@ -192,7 +192,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("attacker_type")) {
 		const std::string &att_type_id = child["attacker_type"];
 		if (u->type_id() != att_type_id) {
-			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game state gives: " << u->type_id() << ")" << std::endl;
+			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game state gives: " << u->type_id() << ")";
 		}
 	}
 
@@ -213,7 +213,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("defender_type")) {
 		const std::string &def_type_id = child["defender_type"];
 		if (tgt->type_id() != def_type_id) {
-			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game state gives: " << tgt->type_id() << ")" << std::endl;
+			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game state gives: " << tgt->type_id() << ")";
 		}
 	}
 
@@ -223,7 +223,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		return false;
 	}
 
-	DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
+	DBG_REPLAY << "Attacker XP (before attack): " << u->experience();
 
 	resources::undo_stack->clear();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
@@ -264,13 +264,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	try {
 		read_locations(child,steps);
 	} catch (const std::invalid_argument&) {
-		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
 		return false;
 	}
 
 	if(steps.empty())
 	{
-		WRN_REPLAY << "Warning: Missing path data found in [move]" << std::endl;
+		WRN_REPLAY << "Warning: Missing path data found in [move]";
 		return false;
 	}
 
@@ -278,14 +278,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	const map_location& dst = steps.back();
 
 	if (src == dst) {
-		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping..." << std::endl;
+		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...";
 		return false;
 	}
 
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = resources::gameboard->find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
-		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied." << std::endl;
+		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.";
 		// We'll still proceed with this movement, though, since
 		// an event might intervene.
 		// 'event' doesn't mean wml event but rather it means 'hidden' units form the movers point of view.
@@ -515,7 +515,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 			resources::whiteboard->on_kill_unit();
 			resources::gameboard->units().insert(new_u);
 		} catch(const unit_type::error& e) {
-			ERR_REPLAY << e.what() << std::endl; // TODO: more appropriate error message log
+			ERR_REPLAY << e.what(); // TODO: more appropriate error message log
 			return false;
 		}
 	}
@@ -650,7 +650,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn_limit, child, use_undo, /*show*/, /*e
 	debug_cmd_notification("turn_limit");
 
 	resources::tod_manager->set_number_of_turns(child["turn_limit"].to_int(-1));
-	display::get_singleton()->redraw_everything();
+	display::get_singleton()->queue_rerender();
 	return true;
 }
 
@@ -665,7 +665,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_turn, child, use_undo, /*show*/, /*error_h
 	resources::tod_manager->set_turn(child["turn"].to_int(1), resources::gamedata);
 
 	game_display::get_singleton()->new_turn();
-	display::get_singleton()->redraw_everything();
+	display::get_singleton()->queue_rerender();
 
 	return true;
 }
@@ -697,7 +697,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_gold, child, use_undo, /*show*/, /*error_h
 	debug_cmd_notification("gold");
 
 	resources::controller->current_team().spend_gold(-child["gold"].to_int(0));
-	display::get_singleton()->redraw_everything();
+	display::get_singleton()->queue_rerender();
 	return true;
 }
 
@@ -711,7 +711,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_event, child, use_undo, /*show*/, /*error_
 	debug_cmd_notification("throw");
 
 	resources::controller->pump().fire(child["eventname"]);
-	display::get_singleton()->redraw_everything();
+	display::get_singleton()->queue_rerender();
 
 	return true;
 }
@@ -730,7 +730,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_fog, /*child*/, use_undo, /*show*/, /*erro
 	actions::recalculate_fog(current_team.side());
 
 	display::get_singleton()->recalculate_minimap();
-	display::get_singleton()->redraw_everything();
+	display::get_singleton()->queue_rerender();
 
 	return true;
 }
@@ -749,7 +749,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_shroud, /*child*/, use_undo, /*show*/, /*e
 	actions::clear_shroud(current_team.side());
 
 	display::get_singleton()->recalculate_minimap();
-	display::get_singleton()->redraw_everything();
+	display::get_singleton()->queue_rerender();
 
 	return true;
 }

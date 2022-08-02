@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,52 +27,42 @@
 #include <map>
 #include <string>
 
-version_info sdl_get_version();
+namespace sdl
+{
 
-inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
+/** Returns the runtime SDL version. */
+version_info get_version();
+
+/**
+ * Returns true if the runtime SDL version is at or greater than the
+ * specified version, false otherwise.
+ */
+bool runtime_at_least(uint8_t major, uint8_t minor = 0, uint8_t patch = 0);
+
+/**
+ * Fill a rectangle on a given surface. Alias for SDL_FillRect.
+ *
+ * @param dst                     The surface to operate on.
+ * @param dst_rect                The rectangle to fill.
+ * @param color                   Color of the rectangle.
+ */
+inline void fill_surface_rect(surface& dst, SDL_Rect* dst_rect, const uint32_t color)
+{
+	SDL_FillRect(dst, dst_rect, color);
+}
+
+} // namespace sdl
+
+
+inline void sdl_blit(const surface& src, const SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
+	// Note: this is incorrect when both src and dst combine transparent pixels.
+	// The correct equation is, per-pixel:
+	//   outA = srcA + dstA * (1 - srcA)
+	//   outRGB = (srcRGB * srcA + dstRGB * dstA * (1 - srcA)) / outA
+	// When outA is 0, outRGB can of course be anything.
+	// TODO: implement proper transparent blending using the above formula
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
-
-inline void sdl_copy_portion(const surface& screen, SDL_Rect* screen_rect, surface& dst, SDL_Rect* dst_rect){
-	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_NONE);
-	SDL_SetSurfaceBlendMode(dst, SDL_BLENDMODE_NONE);
-	SDL_BlitSurface(screen, screen_rect, dst, dst_rect);
-	SDL_SetSurfaceBlendMode(screen, SDL_BLENDMODE_BLEND);
-}
-
-/**
- * Stretches a surface in the horizontal direction.
- *
- *  The stretches a surface it uses the first pixel in the horizontal
- *  direction of the original surface and copies that to the destination.
- *  This means only the first column of the original is used for the destination.
- *  @param surf              The source surface.
- *  @param w                 The width of the resulting surface.
- *
- *  @return                  A surface.
- *                           returned.
- *  @retval 0                Returned upon error.
- *  @retval surf             Returned if w == surf->w.
- */
-surface stretch_surface_horizontal(
-	const surface& surf, const unsigned w);
-
-/**
- *  Stretches a surface in the vertical direction.
- *
- *  The stretches a surface it uses the first pixel in the vertical
- *  direction of the original surface and copies that to the destination.
- *  This means only the first row of the original is used for the destination.
- *  @param surf              The source surface.
- *  @param h                 The height of the resulting surface.
- *
- *  @return                  A surface.
- *                           returned.
- *
- *  @retval surf             Returned if h == surf->h.
- */
-surface stretch_surface_vertical(
-	const surface& surf, const unsigned h);
 
 /** Scale a surface using xBRZ algorithm
  *  @param surf		     The source surface
@@ -101,7 +91,7 @@ surface scale_surface_nn(const surface & surf, int w, int h);
 surface scale_surface(const surface &surf, int w, int h);
 
 /** Scale a surface using simple bilinear filtering (discarding rgb from source
-    pixels with 0 alpha)
+ *  pixels with 0 alpha)
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.
@@ -122,17 +112,6 @@ surface scale_surface_legacy(const surface &surf, int w, int h);
  */
 surface scale_surface_sharp(const surface& surf, int w, int h);
 
-/** Tile a surface
- * @param surf               The source surface.
- * @param w                  The width of the resulting surface.
- * @param h                  The height of the resulting surface.
- * @param centered           Whether to tile from the center outwards or from the top left (origin).
- * @return                   A surface containing the tiled version of the source.
- * @retval 0                 Returned upon error
- * @retval surf              Returned if w == surf->w and h == surf->h.
- */
-surface tile_surface(const surface &surf, int w, int h, bool centered = true);
-
 surface adjust_surface_color(const surface &surf, int r, int g, int b);
 surface greyscale_image(const surface &surf);
 surface monochrome_image(const surface &surf, const int threshold);
@@ -141,7 +120,7 @@ surface negative_image(const surface &surf, const int thresholdR, const int thre
 surface alpha_to_greyscale(const surface & surf);
 surface wipe_alpha(const surface & surf);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
-surface shadow_image(const surface &surf);
+surface shadow_image(const surface &surf, int scale = 1);
 
 enum channel { RED, GREEN, BLUE, ALPHA };
 surface swap_channels_image(const surface& surf, channel r, channel g, channel b, channel a);
@@ -158,7 +137,7 @@ surface swap_channels_image(const surface& surf, channel r, channel g, channel b
  */
 surface recolor_image(surface surf, const color_range_map& map_rgb);
 
-surface brighten_image(const surface &surf, fixed_t amount);
+surface brighten_image(const surface &surf, int32_t amount);
 
 /** Get a portion of the screen.
  *  Send nullptr if the portion is outside of the screen.
@@ -170,7 +149,7 @@ surface brighten_image(const surface &surf, fixed_t amount);
  */
 surface get_surface_portion(const surface &surf, SDL_Rect &rect);
 
-void adjust_surface_alpha(surface& surf, fixed_t amount);
+void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 surface adjust_surface_alpha_add(const surface &surf, int amount);
 
 /** Applies a mask on a surface. */
@@ -178,14 +157,6 @@ surface mask_surface(const surface &surf, const surface &mask, bool* empty_resul
 
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface &surf, const surface &mask);
-
-/** Progressively reduce alpha of bottom part of the surface
- *  @param surf              The source surface.
- *  @param depth             The height of the bottom part in pixels
- *  @param alpha_base        The alpha adjustment at the interface
- *  @param alpha_delta       The alpha adjustment reduction rate by pixel depth
-*/
-surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta);
 
 /**
  * Light surf using lightmap
@@ -286,27 +257,6 @@ surface rotate_90_surface(const surface &surf, bool clockwise);
 surface flip_surface(const surface &surf);
 surface flop_surface(const surface &surf);
 
-/**
- * Replacement for sdl_blit.
- *
- * sdl_blit has problems with blitting partly transparent surfaces so
- * this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
- * flags. src and dst will have the SDL_RLEACCEL flag removed.
- * The return value of SDL_BlistSurface is normally ignored so no return value.
- * The rectangles are const and will not be modified.
- *
- * @pre @p src contains a valid canvas.
- * @pre @p dst contains a valid neutral canvas.
- * @pre The caller must make sure the @p src fits on the @p dst.
- *
- * @param src          The surface to blit.
- * @param srcrect      The region of the surface to blit
- * @param dst          The surface to blit on.
- * @param dstrect      The offset to blit the surface on, only x and y are used.
- */
-void blit_surface(const surface& src,
-	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
-
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
 /**
@@ -322,7 +272,3 @@ SDL_Rect get_non_transparent_portion(const surface &surf);
 void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, uint32_t pixel);
 uint32_t get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
 
-// blit the image on the center of the rectangle
-// and a add a colored background
-void draw_centered_on_background(surface surf, const SDL_Rect& rect,
-	const color_t& color, surface target);

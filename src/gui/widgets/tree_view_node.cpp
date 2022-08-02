@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,7 @@ namespace gui2
 tree_view_node::tree_view_node(const std::string& id,
 		tree_view_node* parent_node,
 		tree_view& parent_tree_view,
-		const std::map<std::string /* widget id */, string_map>& data)
+		const widget_data& data)
 	: widget()
 	, parent_node_(parent_node)
 	, tree_view_(&parent_tree_view)
@@ -56,7 +56,7 @@ tree_view_node::tree_view_node(const std::string& id,
 	if(const auto opt = get_tree_view().get_node_definition(id)) {
 		const auto& node_definition = **opt;
 
-		node_definition.builder->build(&grid_);
+		node_definition.builder->build(grid_);
 		init_grid(&grid_, data);
 
 		if(parent_node_ && parent_node_->toggle_) {
@@ -182,7 +182,7 @@ tree_view_node& tree_view_node::add_child_impl(std::shared_ptr<tree_view_node>&&
 	return node;
 }
 
-std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data)
+std::vector<std::shared_ptr<gui2::tree_view_node>> tree_view_node::replace_children(const std::string& id, const std::vector<widget_data>& data)
 {
 	std::vector<std::shared_ptr<gui2::tree_view_node>> nodes;
 	clear();
@@ -452,21 +452,6 @@ const widget* tree_view_node::find(const std::string& id, const bool must_be_act
 	return nullptr;
 }
 
-void tree_view_node::impl_populate_dirty_list(window& caller, const std::vector<widget*>& call_stack)
-{
-	std::vector<widget*> my_call_stack = call_stack;
-	grid_.populate_dirty_list(caller, my_call_stack);
-
-	if(is_folded()) {
-		return;
-	}
-
-	for(auto& node : children_) {
-		std::vector<widget*> child_call_stack = call_stack;
-		node->impl_populate_dirty_list(caller, child_call_stack);
-	}
-}
-
 point tree_view_node::calculate_best_size() const
 {
 	return calculate_best_size(-1, get_tree_view().indentation_step_size_);
@@ -542,7 +527,7 @@ point tree_view_node::calculate_best_size(const int indentation_level, const uns
 		best_size.x += indentation_level * indentation_step_size;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".\n";
+	DBG_GUI_L << LOG_HEADER << " own grid best size " << best_size << ".";
 
 	for(const auto& node : children_) {
 		if(node->grid_.get_visible() == widget::visibility::invisible) {
@@ -558,7 +543,7 @@ point tree_view_node::calculate_best_size(const int indentation_level, const uns
 		best_size.x = std::max(best_size.x, node_size.x);
 	}
 
-	DBG_GUI_L << LOG_HEADER << " result " << best_size << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << best_size << ".";
 	return best_size;
 }
 
@@ -582,7 +567,7 @@ void tree_view_node::place(const point& origin, const point& size)
 unsigned tree_view_node::place(const unsigned indentation_step_size, point origin, unsigned width)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".\n";
+	DBG_GUI_L << LOG_HEADER << " origin " << origin << ".";
 
 	const unsigned offset = origin.y;
 	point best_size = grid_.get_best_size();
@@ -599,11 +584,11 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	origin.y += best_size.y;
 
 	if(is_folded()) {
-		DBG_GUI_L << LOG_HEADER << " folded node done.\n";
+		DBG_GUI_L << LOG_HEADER << " folded node done.";
 		return origin.y - offset;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " set children.\n";
+	DBG_GUI_L << LOG_HEADER << " set children.";
 	for(auto& node : children_) {
 		origin.y += node->place(indentation_step_size, origin, width);
 	}
@@ -611,18 +596,18 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	// Inherited.
 	widget::set_size(point(width, origin.y - offset));
 
-	DBG_GUI_L << LOG_HEADER << " result " << (origin.y - offset) << ".\n";
+	DBG_GUI_L << LOG_HEADER << " result " << (origin.y - offset) << ".";
 	return origin.y - offset;
 }
 
 void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".\n";
+	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";
 	grid_.set_visible_rectangle(rectangle);
 
 	if(is_folded()) {
-		DBG_GUI_L << LOG_HEADER << " folded node done.\n";
+		DBG_GUI_L << LOG_HEADER << " folded node done.";
 		return;
 	}
 
@@ -631,24 +616,22 @@ void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
 	}
 }
 
-void tree_view_node::impl_draw_children(surface& frame_buffer,
-										 int x_offset,
-										 int y_offset)
+void tree_view_node::impl_draw_children()
 {
-	grid_.draw_children(frame_buffer, x_offset, y_offset);
+	grid_.draw_children();
 
 	if(is_folded()) {
 		return;
 	}
 
 	for(auto& node : children_) {
-		node->impl_draw_children(frame_buffer, x_offset, y_offset);
+		node->impl_draw_children();
 	}
 }
 
 void tree_view_node::signal_handler_left_button_click(const event::ui_event event)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	/**
 	 * @todo Rewrite this sizing code for the folding/unfolding.
@@ -669,7 +652,7 @@ void tree_view_node::signal_handler_left_button_click(const event::ui_event even
 
 void tree_view_node::signal_handler_label_left_button_click(const event::ui_event event, bool& handled, bool& halt)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	assert(label_);
 
@@ -691,7 +674,7 @@ void tree_view_node::signal_handler_label_left_button_click(const event::ui_even
 	get_tree_view().fire(event::NOTIFY_MODIFIED, get_tree_view(), nullptr);
 }
 
-void tree_view_node::init_grid(grid* g, const std::map<std::string /* widget id */, string_map>& data)
+void tree_view_node::init_grid(grid* g, const widget_data& data)
 {
 	assert(g);
 
@@ -894,9 +877,9 @@ void tree_view_node::layout_initialize(const bool full_initialization)
 	}
 }
 
-iteration::walker_base* tree_view_node::create_walker()
+iteration::walker_ptr tree_view_node::create_walker()
 {
-	return new gui2::iteration::tree_node(*this, children_);
+	return std::make_unique<gui2::iteration::tree_node>(*this, children_);
 }
 
 } // namespace gui2

@@ -155,7 +155,7 @@ function world_conquest_tek_map_decoration_2a()
 	while #terrain_to_change > 0 and mathx.random(10) ~= 1 do
 		local loc = terrain_to_change[mathx.random(#terrain_to_change)]
 		map[loc] = "^Efm"
-		local terrain_to_change = wct_store_possible_flowers("G*^Fet")
+		terrain_to_change = wct_store_possible_flowers("G*^Fet")
 	end
 	-- extra coast
 	set_terrain { "Ww,Ww,Ww,Wwr",

@@ -52,14 +52,14 @@ function ca_transport:execution()
         }
     )
 
-    local max_rating, best_unit, best_hex, best_adj_tiles = - math.huge
+    local max_rating1, best_unit1, best_hex1, best_adj_tiles = - math.huge, nil, nil, nil
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
 
         if (not u.variables.landed) and (M.distance_between(u.x, u.y, dst[1], dst[2]) <= u.moves) then
             local reach = wesnoth.paths.find_reach(u)
 
-            for i,r in ipairs(reach) do
+            for j,r in ipairs(reach) do
                 if landing_site_map:get(r[1], r[2]) and (not unit_map:get(r[1], r[2]))
                 then
                     -- Distance from destination is minor rating
@@ -92,10 +92,10 @@ function ca_transport:execution()
                         end
                     end
 
-                    if (rating > max_rating) then
-                        max_rating = rating
-                        best_unit = u
-                        best_hex = r
+                    if (rating > max_rating1) then
+                        max_rating1 = rating
+                        best_unit1 = u
+                        best_hex1 = r
                         best_adj_tiles = adj_tiles
                     end
                 end
@@ -103,13 +103,13 @@ function ca_transport:execution()
         end
     end
 
-    if best_unit then
-        ai.move_full(best_unit, best_hex[1], best_hex[2])
+    if best_unit1 then
+        ai.move_full(best_unit1, best_hex1[1], best_hex1[2])
 
         -- Also unload units
         table.sort(best_adj_tiles, function(a, b) return a[3] > b[3] end)
 
-        local command_data = { x = best_unit.x, y = best_unit.y }
+        local command_data = { x = best_unit1.x, y = best_unit1.y }
         for i = 1, math.min(#best_adj_tiles, 3) do
             table.insert(command_data, T.dst { x = best_adj_tiles[i][1], y = best_adj_tiles[i][2]} )
         end
@@ -127,13 +127,13 @@ function ca_transport:execution()
         }
     )
 
-    local max_rating, best_unit, best_hex = - math.huge
+    local max_rating2, best_unit2, best_hex2 = - math.huge, nil, nil
     for i,u in ipairs(transports) do
         local dst = { u.variables.destination_x, u.variables.destination_y }
         local reach = wesnoth.paths.find_reach(u)
 
-        local max_rating_unit, best_hex_unit = - math.huge
-        for i,r in ipairs(reach) do
+        local max_rating_unit, best_hex_unit = - math.huge, nil
+        for j,r in ipairs(reach) do
             if deep_water_map:get(r[1], r[2]) and (not blocked_hex_map:get(r[1], r[2])) then
                 local rating = -M.distance_between(r[1], r[2], dst[1], dst[2])
                 -- If possible, also move in a straight line
@@ -154,16 +154,16 @@ function ca_transport:execution()
                 max_rating_unit = -1
             end
 
-            if (max_rating_unit > max_rating) then
-                max_rating = max_rating_unit
-                best_unit = u
-                best_hex = best_hex_unit
+            if (max_rating_unit > max_rating2) then
+                max_rating2 = max_rating_unit
+                best_unit2 = u
+                best_hex2 = best_hex_unit
             end
         end
     end
 
-    if best_unit then
-        ai.move_full(best_unit, best_hex[1], best_hex[2])
+    if best_unit2 then
+        ai.move_full(best_unit2, best_hex2[1], best_hex2[2])
     else  -- still need to make sure gamestate gets changed
         ai.stopunit_moves(transports[1])
     end

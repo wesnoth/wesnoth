@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,13 +61,11 @@ void show_transient_message(const std::string& title,
 							const std::string& message,
 							const std::string& image,
 							const bool message_use_markup,
-							const bool title_use_markup,
-							const bool restore_background)
+							const bool title_use_markup)
 {
 	dialogs::transient_message dlg(
 			title, title_use_markup, message, message_use_markup, image);
 
-	dlg.set_restore(restore_background);
 	dlg.show();
 }
 
@@ -75,7 +73,7 @@ void show_transient_error_message(const std::string& message,
 								  const std::string& image,
 								  const bool message_use_markup)
 {
-	LOG_STREAM(err, lg::general()) << message << '\n';
+	LOG_STREAM(err, lg::general()) << message;
 	show_transient_message(_("Error"), message, image, message_use_markup);
 }
 

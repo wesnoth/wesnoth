@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include "font/font_options.hpp"
 #include "color.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <pango/pango.h>
@@ -75,11 +76,27 @@ namespace font {
 class pango_text
 {
 public:
-
 	pango_text();
 
-    pango_text(const pango_text &) = delete;
-    pango_text & operator = (const pango_text &) = delete;
+	pango_text(const pango_text&) = delete;
+	pango_text& operator=(const pango_text&) = delete;
+
+	/** Returns the cached texture, or creates a new one otherwise. */
+	texture render_and_get_texture();
+
+	/**
+	 * Returns the rendered text as a texture.
+	 *
+	 * texture::w() and texture::h() methods will return the expected
+	 * width and height of the texture in draw space. This may differ
+	 * from the real value returned by texture::get_info().
+	 *
+	 * In almost all cases, use w() and h() to get the size of the
+	 * rendered text for drawing.
+	 *
+	 * This function is otherwise identical to render().
+	 */
+	texture render_texture(const SDL_Rect& viewport);
 
 	/**
 	 * Returns the rendered text.
@@ -89,7 +106,7 @@ public:
 	 * width and height will be at least viewport.w and viewport.h (although
 	 * they may be larger).
 	 */
-	surface& render(const SDL_Rect& viewport);
+	surface render_surface(const SDL_Rect& viewport);
 
 	/**
 	 * Equivalent to render(viewport), where the viewport's top-left is at
@@ -99,16 +116,10 @@ public:
 	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
 	 * y rows of blank space are included in the amount of memory allocated.
 	 */
-	surface& render();
+	surface render_surface();
 
-	/** Returns the width needed for the text. */
-	int get_width() const;
-
-	/** Returns the height needed for the text. */
-	int get_height() const;
-
-	/** Returns the pixel size needed for the text. */
-	point get_size() const;
+	/** Returns the size of the text, in drawing coordinates. */
+	point get_size();
 
 	/** Has the text been truncated? This happens if it exceeds max width or height. */
 	bool is_truncated() const;
@@ -136,7 +147,7 @@ public:
 	/***** ***** ***** ***** Query details ***** ***** ***** *****/
 
 	/**
-	 * Returns the maximum glyph height of a font, in pixels.
+	 * Returns the maximum glyph height of a font, in drawing coordinates.
 	 *
 	 * @returns                       The height of the tallest possible glyph for the selected
 	 *                                font. More specifically, the result is the sum of the maximum
@@ -145,7 +156,7 @@ public:
 	int get_max_glyph_height() const;
 
 	/**
-	 * Gets the location for the cursor.
+	 * Gets the location for the cursor, in drawing coordinates.
 	 *
 	 * @param column              The column offset of the cursor.
 	 * @param line                The line offset of the cursor.
@@ -237,7 +248,7 @@ public:
 
 	pango_text& set_family_class(font::family_class fclass);
 
-	pango_text& set_font_size(const unsigned font_size);
+	pango_text& set_font_size(unsigned font_size);
 
 	pango_text& set_font_style(const FONT_STYLE font_style);
 
@@ -270,10 +281,6 @@ private:
 	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
 	mutable PangoRectangle rect_;
 
-	/** The SDL surface to render upon used as a cache. */
-	mutable surface surface_;
-
-
 	/** The text to draw (stored as UTF-8). */
 	std::string text_;
 
@@ -284,12 +291,12 @@ private:
 	bool link_aware_;
 
 	/**
-     * The color to render links in.
-     *
-     * Links are formatted using pango &lt;span> as follows:
-     *
-     * &lt;span underline="single" color=" + link_color_ + ">
-     */
+	 * The color to render links in.
+	 *
+	 * Links are formatted using pango &lt;span> as follows:
+	 *
+	 * &lt;span underline="single" color=" + link_color_ + ">
+	 */
 	color_t link_color_;
 
 	/** The font family class used. */
@@ -364,26 +371,21 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	/**
-	 * Recalculates the text layout.
-	 */
+	/** The pixel scale, used to render high-DPI text. */
+	int pixel_scale_;
+
+	/** Recalculates the text layout. */
 	void recalculate() const;
 
 	/** Calculates surface size. */
 	PangoRectangle calculate_size(PangoLayout& layout) const;
 
-	/** The dirty state of the surface. */
-	mutable bool surface_dirty_;
+	/** Allow specialization of std::hash for pango_text. */
+	friend struct std::hash<pango_text>;
 
-	/** The area that's cached in surface_, which is the area that was rendered when surface_dirty_ was last set to false. */
-	SDL_Rect rendered_viewport_;
-
-	/**
-	 * Renders the text.
-	 *
-	 * It will do a recalculation first so no need to call both.
-	 */
-	void rerender(const SDL_Rect& viewport);
+	/** Renders the text to a surface. */
+	surface create_surface();
+	surface create_surface(const SDL_Rect& viewport);
 
 	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
 
@@ -416,6 +418,24 @@ private:
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 
 	std::string format_links(std::string_view text) const;
+
+	/**
+	 * Adjust a texture's draw-width and height according to pixel scale.
+	 *
+	 * As fonts are rendered at output-scale, we need to do this just
+	 * before returning the rendered texture. These attributes are stored
+	 * as part of the returned texture object.
+	 */
+	texture with_draw_scale(const texture& t) const;
+
+	/** Scale the given render-space size to draw-space, rounding up. */
+	int to_draw_scale(int s) const;
+
+	/** Scale the given render-space point to draw-space, rounding up. */
+	point to_draw_scale(const point& p) const;
+
+	/** Update pixel scale, if necessary. */
+	void update_pixel_scale();
 };
 
 /**
@@ -441,3 +461,14 @@ pango_text& get_text_renderer();
 int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 } // namespace font
+
+// Specialize std::hash for pango_text
+namespace std
+{
+template<>
+struct hash<font::pango_text>
+{
+	std::size_t operator()(const font::pango_text&) const;
+};
+
+} // namespace std

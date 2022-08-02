@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,8 +16,8 @@
 #pragma once
 
 #include "config.hpp"
+#include "gui/sort_order.hpp"
 #include "terrain/translation.hpp"
-#include "utils/make_enum.hpp"
 
 #include <utility>
 
@@ -41,8 +41,14 @@ namespace preferences {
 	extern const int def_window_width;
 	extern const int def_window_height;
 
+	extern const int max_window_width;
+	extern const int max_window_height;
+
 	extern const int min_font_scaling;
 	extern const int max_font_scaling;
+
+	extern const int min_pixel_scale;
+	extern const int max_pixel_scale;
 
 	void write_preferences();
 
@@ -75,27 +81,36 @@ namespace preferences {
 	point resolution();
 	void _set_resolution(const point& res);
 
+	int pixel_scale();
+	void set_pixel_scale(const int scale);
+
+	bool auto_pixel_scale();
+	void set_auto_pixel_scale(bool choice);
+
 	bool maximized();
 	void _set_maximized(bool ison);
 
 	bool fullscreen();
 	void _set_fullscreen(bool ison);
 
+	bool vsync();
+	void set_vsync(bool ison);
+
 	bool turbo();
-	void _set_turbo(bool ison);
+	void set_turbo(bool ison);
 
 	double turbo_speed();
-	void save_turbo_speed(const double speed);
+	void set_turbo_speed(const double speed);
 
 	int font_scaling();
 	void set_font_scaling(int scale);
 	int font_scaled(int size);
 
 	bool idle_anim();
-	void _set_idle_anim(const bool ison);
+	void set_idle_anim(const bool ison);
 
-	int idle_anim_rate();
-	void _set_idle_anim_rate(const int rate);
+	double idle_anim_rate();
+	void set_idle_anim_rate(const int rate);
 
 	std::string language();
 	void set_language(const std::string& s);
@@ -237,7 +252,7 @@ namespace preferences {
 	void set_ellipses(bool ison);
 
 	bool grid();
-	void _set_grid(bool ison);
+	void set_grid(bool ison);
 
 	bool confirm_load_save_from_different_version();
 
@@ -253,13 +268,7 @@ namespace preferences {
 	std::string addon_manager_saved_order_name();
 	void set_addon_manager_saved_order_name(const std::string& value);
 
-	// Sorting for GUI2 listboxes
-	MAKE_ENUM(SORT_ORDER,
-		(NONE, "none")
-		(ASCENDING, "ascending")
-		(DESCENDING, "descending")
-	)
-	SORT_ORDER addon_manager_saved_order_direction();
-	void set_addon_manager_saved_order_direction(SORT_ORDER value);
+	sort_order::type addon_manager_saved_order_direction();
+	void set_addon_manager_saved_order_direction(sort_order::type value);
 
 } // end namespace preferences

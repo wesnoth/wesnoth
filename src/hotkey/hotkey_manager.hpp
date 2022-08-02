@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,18 +19,17 @@
  * configuration objects, and then detect if a keyboard event
  * refers to a hotkey command being executed.
  */
-namespace hotkey {
-
+namespace hotkey
+{
 /**
  * this class is initialized once at game start
  * put all initialization and wipe code in the methods here.
  */
-class manager {
+class manager
+{
 public:
 	manager();
-	static void init();
-	static void wipe();
 	~manager();
 };
 
-}
+} // namespace hotkey

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Bartosz Waresiak <dragonking@o2.pl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,10 +51,10 @@ variant move_map_callable::get_value(const std::string& key) const
 	if(key == "moves") {
 		std::vector<variant> vars;
 		for(move_map::const_iterator i = srcdst_.begin(); i != srcdst_.end(); ++i) {
-                        if( i->first == i->second || units_.count(i->second) == 0) {
-                            auto item = std::make_shared<move_callable>(i->first, i->second);
-                            vars.emplace_back(item);
-                        }
+			if( i->first == i->second || units_.count(i->second) == 0) {
+				auto item = std::make_shared<move_callable>(i->first, i->second);
+				vars.emplace_back(item);
+			}
 		}
 
 		return variant(vars);
@@ -92,7 +92,7 @@ variant move_callable::execute_self(variant ctxt) {
 	move_result_ptr move_result = ai.execute_move_action(src_, dst_, true);
 
 	if(!move_result->is_ok()) {
-		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n" << std::endl;
+		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 	}
 
@@ -121,7 +121,7 @@ variant move_partial_callable::execute_self(variant ctxt) {
 	move_result_ptr move_result = ai.execute_move_action(src_, dst_, false);
 
 	if(!move_result->is_ok()) {
-		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n" << std::endl;
+		LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 	}
 
@@ -159,12 +159,12 @@ void outcome_callable::get_inputs(formula_input_vector& inputs) const {
 }
 
 attack_callable::attack_callable(const map_location& move_from,
-				    const map_location& src, const map_location& dst, int weapon)
+		const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(resources::gameboard->units(), src, dst, weapon, -1, 1.0, nullptr,
 		resources::gameboard->units().find(move_from).get_shared_ptr())
 {
-      type_ = ATTACK_C;
+	type_ = ATTACK_C;
 }
 
 variant attack_callable::get_value(const std::string& key) const {
@@ -224,7 +224,7 @@ variant attack_callable::execute_self(variant ctxt) {
 
 		if(!move_result->is_ok()) {
 			//move part failed
-			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function";
 			return variant(std::make_shared<safe_call_result>(fake_ptr(), move_result->get_status(), move_result->get_unit_location()));
 		}
 	}
@@ -235,7 +235,7 @@ variant attack_callable::execute_self(variant ctxt) {
 		gamestate_changed |= attack_result->is_gamestate_changed();
 		if(!attack_result->is_ok()) {
 			//attack failed
-			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
+			LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function";
 			return variant(std::make_shared<safe_call_result>(fake_ptr(), attack_result->get_status()));
 		}
 	}
@@ -309,7 +309,7 @@ variant recall_callable::execute_self(variant ctxt) {
 	if(recall_result->is_ok()) {
 		recall_result->execute();
 	} else {
-		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function\n" << std::endl;
+		LOG_AI << "ERROR #" << recall_result->get_status() << " while executing 'recall' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), recall_result->get_status()));
 	}
 
@@ -338,7 +338,7 @@ variant recruit_callable::execute_self(variant ctxt) {
 	if(recruit_result->is_ok()) {
 		recruit_result->execute();
 	} else {
-		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function\n" << std::endl;
+		LOG_AI << "ERROR #" << recruit_result->get_status() << " while executing 'recruit' formula function";
 		return variant(std::make_shared<safe_call_result>(fake_ptr(), recruit_result->get_status()));
 	}
 
@@ -380,12 +380,12 @@ variant set_unit_var_callable::execute_self(variant ctxt) {
 	}
 
 	if(status == 0) {
-		LOG_AI << "Setting unit variable: " << key_ << " -> " << value_.to_debug_string() << "\n";
+		LOG_AI << "Setting unit variable: " << key_ << " -> " << value_.to_debug_string();
 		unit->formula_manager().add_formula_var(key_, value_);
 		return variant(true);
 	}
 
-	ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;
+	ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function";
 	return variant(std::make_shared<safe_call_result>(fake_ptr(), status));
 }
 

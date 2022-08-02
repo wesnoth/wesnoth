@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -29,6 +29,8 @@
 #include "gui/core/event/handler.hpp" // gui2::is_in_dialog
 #include "soundsource.hpp"
 #include "gui/core/timer.hpp"
+#include "sdl/input.hpp" // get_mouse_state
+#include "video.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -43,6 +45,9 @@ controller_base::controller_base()
 	, scroll_down_(false)
 	, scroll_left_(false)
 	, scroll_right_(false)
+	, last_scroll_tick_(0)
+	, scroll_carry_x_(0.0)
+	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
 	, last_mouse_is_touch_(false)
 	, long_touch_timer_(0)
@@ -62,7 +67,7 @@ void controller_base::long_touch_callback(int x, int y)
 	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
 		int x_now;
 		int y_now;
-		uint32_t mouse_state = SDL_GetMouseState(&x_now, &y_now);
+		uint32_t mouse_state = sdl::get_mouse_state(&x_now, &y_now);
 
 #ifdef MOUSE_TOUCH_EMULATION
 		if(mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
@@ -79,7 +84,7 @@ void controller_base::long_touch_callback(int x, int y)
 
 		if(!yes_actually_dragging
 		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
-		   && sdl::point_in_rect(x_now, y_now, get_display().map_area()))
+		   && get_display().map_area().contains(x_now, y_now))
 		{
 			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
 			if(m != nullptr) {
@@ -210,7 +215,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			int y = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data2));
 			if(event.user.code == static_cast<int>(SDL_TOUCH_MOUSEID)
 			   // TODO: Move to right_click_show_menu?
-			   && sdl::point_in_rect(x, y, get_display().map_area())
+			   && get_display().map_area().contains(x, y)
 			   // TODO: This chain repeats in several places, move to a method.
 			   && get_display().get_theme().context_menu() != nullptr) {
 				show_menu(get_display().get_theme().context_menu()->items(),
@@ -269,44 +274,57 @@ bool controller_base::have_keyboard_focus()
 bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 {
 	const bool mouse_in_window =
-		CVideo::get_singleton().window_has_flags(SDL_WINDOW_MOUSE_FOCUS)
+		video::window_has_mouse_focus()
 		|| preferences::get("scroll_when_mouse_outside", true);
 
 	int scroll_speed = preferences::scroll_speed();
-	int dx = 0, dy = 0;
+	double dx = 0.0, dy = 0.0;
 
 	int scroll_threshold = preferences::mouse_scroll_enabled()
 		? preferences::mouse_scroll_threshold()
 		: 0;
 
 	for(const theme::menu& m : get_display().get_theme().menus()) {
-		if(sdl::point_in_rect(mousex, mousey, m.get_location())) {
+		if(m.get_location().contains(mousex, mousey)) {
 			scroll_threshold = 0;
 		}
 	}
 
+	// Scale scroll distance according to time passed
+	uint32_t tick_now = SDL_GetTicks();
+	// If we weren't previously scrolling, start small.
+	int dt = 1;
+	if (scrolling_) {
+		dt = tick_now - last_scroll_tick_;
+	}
+	// scroll_speed is in percent. Ticks are in milliseconds.
+	// Let's assume the maximum speed (100) moves 50 hexes per second,
+	// i.e. 3600 pixels per 1000 ticks.
+	double scroll_amount = double(dt) * 0.036 * double(scroll_speed);
+	last_scroll_tick_ = tick_now;
+
 	// Apply keyboard scrolling
-	dy -= scroll_up_    * scroll_speed;
-	dy += scroll_down_  * scroll_speed;
-	dx -= scroll_left_  * scroll_speed;
-	dx += scroll_right_ * scroll_speed;
+	dy -= scroll_up_    * scroll_amount;
+	dy += scroll_down_  * scroll_amount;
+	dx -= scroll_left_  * scroll_amount;
+	dx += scroll_right_ * scroll_amount;
 
 	// Scroll if mouse is placed near the edge of the screen
 	if(mouse_in_window) {
 		if(mousey < scroll_threshold) {
-			dy -= scroll_speed;
+			dy -= scroll_amount;
 		}
 
-		if(mousey > get_display().video().get_height() - scroll_threshold) {
-			dy += scroll_speed;
+		if(mousey > video::game_canvas_size().y - scroll_threshold) {
+			dy += scroll_amount;
 		}
 
 		if(mousex < scroll_threshold) {
-			dx -= scroll_speed;
+			dx -= scroll_amount;
 		}
 
-		if(mousex > get_display().video().get_width() - scroll_threshold) {
-			dx += scroll_speed;
+		if(mousex > video::game_canvas_size().x - scroll_threshold) {
+			dx += scroll_amount;
 		}
 	}
 
@@ -317,12 +335,12 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		const SDL_Point original_loc = mh_base.get_scroll_start();
 
 		if(mh_base.scroll_started()) {
-			const SDL_Rect& rect = get_display().map_outside_area();
-
-			if(sdl::point_in_rect(mousex, mousey, rect) && mh_base.scroll_started()) {
+			if(get_display().map_outside_area().contains(mousex, mousey)
+				&& mh_base.scroll_started())
+			{
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
-				const double speed = 0.04 * std::sqrt(static_cast<double>(scroll_speed));
+				const double speed = 0.01 * scroll_amount;
 				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
@@ -340,7 +358,27 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		}
 	}
 
-	return get_display().scroll(dx, dy);
+	// If nothing is scrolling, just return.
+	if (!dx && !dy) {
+		return false;
+	}
+
+	// If we are continuing a scroll, carry over any subpixel movement.
+	if (scrolling_) {
+		dx += scroll_carry_x_;
+		dy += scroll_carry_y_;
+	}
+	int dx_int = int(dx);
+	int dy_int = int(dy);
+	scroll_carry_x_ = dx - double(dx_int);
+	scroll_carry_y_ = dy - double(dy_int);
+
+	// Scroll the display
+	get_display().scroll(dx_int, dy_int);
+
+	// Even if the integer parts are both zero, we are still scrolling.
+	// The subpixel amounts will add up.
+	return true;
 }
 
 void controller_base::play_slice(bool is_delay_enabled)
@@ -353,7 +391,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	events::pump();
 	events::raise_process_event();
-	events::raise_draw_event();
+	events::draw();
 
 	// Update sound sources before scrolling
 	if(soundsource::manager* l = get_soundsource_man()) {
@@ -362,7 +400,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
-		const SDL_Rect& menu_loc = m->location(get_display().video().screen_area());
+		const rect& menu_loc = m->location(video::game_canvas());
 		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
 
 		return;
@@ -370,7 +408,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const SDL_Rect& action_loc = a->location(get_display().video().screen_area());
+		const rect& action_loc = a->location(video::game_canvas());
 		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
 
 		return;
@@ -385,15 +423,15 @@ void controller_base::play_slice(bool is_delay_enabled)
 	bool was_scrolling = scrolling_;
 
 	int mousex, mousey;
-	uint8_t mouse_flags = SDL_GetMouseState(&mousex, &mousey);
+	uint8_t mouse_flags = sdl::get_mouse_state(&mousex, &mousey);
 
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
 
 	map_location highlighted_hex = get_display().mouseover_hex();
 
 	// be nice when window is not visible	// NOTE should be handled by display instead, to only disable drawing
-	if(is_delay_enabled && !CVideo::get_singleton().window_has_flags(SDL_WINDOW_SHOWN)) {
-		CVideo::delay(200);
+	if(is_delay_enabled && !video::window_is_visible()) {
+		SDL_Delay(200);
 	}
 
 	// Scrolling ended, update the cursor and the brightened hex
@@ -415,7 +453,7 @@ void controller_base::show_menu(
 		const std::string& id = c["id"];
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.id))) {
+		if(cmd_exec->can_execute_command(command) && (!context_menu || in_context_menu(command.command))) {
 			items.emplace_back("id", id);
 		}
 	}
@@ -452,26 +490,4 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 bool controller_base::in_context_menu(hotkey::HOTKEY_COMMAND /*command*/) const
 {
 	return true;
-}
-
-const config& controller_base::get_theme(const game_config_view& game_config, std::string theme_name)
-{
-	if(theme_name.empty()) {
-		theme_name = preferences::theme();
-	}
-
-	if(const config& c = game_config.find_child("theme", "id", theme_name)) {
-		return c;
-	}
-
-	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme." << std::endl;
-
-	if(const config& c = game_config.find_child("theme", "id", "Default")) {
-		return c;
-	}
-
-	ERR_DP << "Default theme not found." << std::endl;
-
-	static config empty;
-	return empty;
 }

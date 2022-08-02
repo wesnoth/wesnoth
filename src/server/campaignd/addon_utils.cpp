@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Copyright (C) 2013 - 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -145,7 +145,7 @@ void add_license(config& cfg)
 	// Copy over COPYING.txt
 	const std::string& contents = filesystem::read_file("COPYING.txt");
 	if (contents.empty()) {
-		LOG_CS << "Could not find COPYING.txt, path is \"" << game_config::path << "\"\n";
+		LOG_CS << "Could not find COPYING.txt, path is \"" << game_config::path << "\"";
 		return;
 	}
 

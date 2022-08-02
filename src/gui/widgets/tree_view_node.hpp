@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,7 +47,7 @@ public:
 			const std::string& id,
 			tree_view_node* parent_node,
 			tree_view& parent_tree_view,
-			const std::map<std::string /* widget id */, string_map>& data);
+			const widget_data& data);
 
 	~tree_view_node();
 
@@ -67,7 +67,7 @@ public:
 	 *                            0 == begin, -1 == end.
 	 */
 	tree_view_node& add_child(const std::string& id,
-			const std::map<std::string /* widget id */, string_map>& data,
+			const widget_data& data,
 			const int index = -1)
 	{
 		return add_child_impl(std::make_shared<tree_view_node>(id, this, get_tree_view(), data), index);
@@ -82,7 +82,7 @@ public:
 	 * @param data                A vector of the data to provide to the tree_node_view's constructor.
 	 * @return                    A vector of pointers to the newly created nodes.
 	 */
-	std::vector<std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::vector<std::map<std::string /* widget id */, string_map>>& data);
+	std::vector<std::shared_ptr<gui2::tree_view_node>> replace_children(const std::string& id, const std::vector<widget_data>& data);
 
 	/**
 	 * Adds a previously-constructed node as a child of this node at the given position.
@@ -112,7 +112,7 @@ public:
 	 */
 	tree_view_node&
 	add_sibling(const std::string& id,
-				const std::map<std::string /* widget id */, string_map>& data)
+				const widget_data& data)
 	{
 		assert(!is_root_node());
 		return parent_node().add_child(id, data);
@@ -173,7 +173,7 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iteration::walker_base* create_walker() override;
+	virtual iteration::walker_ptr create_walker() override;
 
 	node_children_vector& children()
 	{
@@ -290,14 +290,6 @@ private:
 	void fold_internal();
 	void unfold_internal();
 
-	/**
-	 * "Inherited" from widget.
-	 *
-	 * This version needs to call its children, which are it's child nodes.
-	 */
-	void impl_populate_dirty_list(window& caller,
-								  const std::vector<widget*>& call_stack);
-
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
 
@@ -324,9 +316,7 @@ private:
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
-	virtual void impl_draw_children(surface& frame_buffer,
-									int x_offset,
-									int y_offset) override;
+	virtual void impl_draw_children() override;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::ui_event event);
@@ -337,7 +327,7 @@ private:
 
 	void
 	init_grid(grid* grid,
-			  const std::map<std::string /* widget id */, string_map>& data);
+			  const widget_data& data);
 
 	/**
 	 * Returns the control_type of the @ref tree_view_node.

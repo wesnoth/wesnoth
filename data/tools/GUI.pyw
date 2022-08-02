@@ -16,6 +16,8 @@
 import sys,os,threading,subprocess,codecs
 
 import queue
+
+from wesnoth import version
 # tkinter modules
 from tkinter import *
 from tkinter.messagebox import *
@@ -26,9 +28,8 @@ import tkinter.font as font
 from tkinter.ttk import *
 
 # we need to know in what series we are
-# so set it in a constant and change it for every new series
-# it must be a string
-WESNOTH_SERIES="1.15"
+# so set it in a constant string
+WESNOTH_SERIES="{}.{}".format(version.major, version.minor)
 
 # get the location where the script is placed
 # we'll check later if this is a Wesnoth directory
@@ -623,20 +624,12 @@ class WmllintTab(Frame):
                               column=0,
                               sticky=W,
                               padx=10)
-        self.freeze_variable=BooleanVar()
-        self.freeze_check=Checkbutton(self.options_frame,
-                                      text="Ignore newlines in messages",
-                                      variable=self.freeze_variable)
-        self.freeze_check.grid(row=4,
-                               column=0,
-                               sticky=W,
-                               padx=10)
         self.skip_variable=BooleanVar()
         self.skip_core=Checkbutton(self.options_frame,
                                    text="Skip core directory",
                                    variable=self.skip_variable,
                                    command=self.skip_core_dir_callback)
-        self.skip_core.grid(row=5,
+        self.skip_core.grid(row=4,
                                column=0,
                                sticky=W,
                                padx=10)
@@ -1200,8 +1193,6 @@ Please select a directory or disable the "Skip core directory" option""")
             wmllint_command_string.append("--known")
         if self.wmllint_tab.spell_variable.get():
             wmllint_command_string.append("--nospellcheck")
-        if self.wmllint_tab.freeze_variable.get():
-            wmllint_command_string.append("--stringfreeze")
         if not self.wmllint_tab.skip_variable.get():
             wmllint_command_string.append(WESNOTH_CORE_DIR)
         if os.path.exists(umc_dir): # add-on exists
@@ -1427,9 +1418,11 @@ Error code: {1}
     def on_about(self):
         showinfo("About Maintenance tools GUI","""© Elvish_Hunter, 2014-2016
 
+Version: {}
+
 Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
-Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""")
+Icons are taken from the Tango Desktop Project (http://tango.freedesktop.org), and are released in the Public Domain""".format(version.as_string))
 
     def on_quit(self):
         # check if the text widget contains something

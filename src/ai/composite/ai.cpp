@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -55,7 +55,7 @@ ai_composite::ai_composite( default_ai_context &context, const config &cfg)
 void ai_composite::on_create()
 {
 	LOG_AI_COMPOSITE << "side "<< get_side() << " : "<<" created AI with id=["<<
-		cfg_["id"]<<"]"<<std::endl;
+		cfg_["id"]<<"]";
 
 	// init the composite ai stages
 	for (const config &cfg_element : cfg_.child_range("stage")) {

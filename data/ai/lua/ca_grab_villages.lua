@@ -55,7 +55,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
     local enemy_attack_map = BC.get_attack_map(enemies).units
 
     -- Now we go through the villages and units
-    local max_rating, best_village, best_unit = - math.huge
+    local max_rating, best_village, best_unit = - math.huge, nil, nil
     local village_ratings = {}
     for j,v in ipairs(villages) do
         -- First collect all information that only depends on the village
@@ -95,6 +95,7 @@ function ca_grab_villages:evaluation(cfg, data, filter_own)
                 -- There is no way a unit can get to the village if the distance is greater than its moves
                 local dist = M.distance_between(u.x, u.y, v[1], v[2])
                 if (dist <= u.moves) then
+                    wesnoth.interface.handle_user_interact()
                     local path, cost = wesnoth.paths.find_path(u, v[1], v[2])
                     if (cost <= u.moves) then
                         village_rating = village_rating - 1

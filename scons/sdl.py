@@ -1,151 +1,122 @@
 # vi: syntax=python:et:ts=4
 import os
+import os.path
 from SCons.Script import *
 from config_check_utils import *
 from os import environ
 from SCons.Util import PrependPath
 
-def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = None):
-    if require_version:
-        version = require_version.split(".", 2)
-        major_version = int(version[0])
-        minor_version = int(version[1])
-        try:
-            patchlevel    = int(version[2])
-        except (ValueError, IndexError):
-            patch_level = 0
-
-    if header_file:
-        sdl_header = header_file
-    else:
-        sdl_header = sdl_lib
-
+def CheckSDL2(context, require_version):
+    version = require_version.split(".", 2)
+    major_version = version[0]
+    minor_version = version[1]
+    patchlevel = version[2]
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
-
     sdldir = context.env.get("sdldir", "")
-    if sdl_lib == "SDL":
-        if require_version:
-            context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
-        else:
-            context.Message("Checking for Simple DirectMedia Layer library... ")
-        if major_version == 2:
-            sdl_config_name = "sdl2-config"
-            sdl_include_dir = "include/SDL2"
-            sdl_lib_name = "SDL2"
-            sdl_lib_name_pkgconfig = "sdl2"
-            sdlmain_name = "SDL2main"
-        else:
-            sdl_config_name = "sdl-config"
-            sdl_include_dir = "include/SDL"
-            sdl_lib_name = "SDL"
-            sdl_lib_name_pkgconfig = "sdl"
-            sdlmain_name = "SDLmain"
-        env = context.env
+    context.Message("Checking for Simple DirectMedia Layer library version >= %s.%s.%s... " % (major_version, minor_version, patchlevel))
+
+    env = context.env
+    if sdldir:
+        env["ENV"]["PATH"] = PrependPath(environ["PATH"], join(sdldir, "bin"))
+        env["ENV"]["PKG_CONFIG_PATH"] = PrependPath(environ.get("PKG_CONFIG_PATH", ""), join(sdldir, "lib/pkgconfig"))
+
+    if env["PLATFORM"] != "win32" or sys.platform == "msys":
+        for foo_config in [
+            "pkg-config --cflags --libs $PKG_CONFIG_FLAGS sdl2",
+            "sdl2-config --cflags --libs"
+            ]:
+            try:
+                env.ParseConfig(foo_config)
+            except OSError:
+                pass
+            else:
+                break
+    else:
         if sdldir:
-            env["ENV"]["PATH"] = PrependPath(environ["PATH"], join(sdldir, "bin"))
-            env["ENV"]["PKG_CONFIG_PATH"] = PrependPath(environ.get("PKG_CONFIG_PATH", ""), join(sdldir, "lib/pkgconfig"))
-        if env["PLATFORM"] != "win32" or sys.platform == "msys":
-            for foo_config in [
-                "pkg-config --cflags --libs $PKG_CONFIG_FLAGS %s" % sdl_lib_name_pkgconfig,
-                "%s --cflags --libs" % sdl_config_name
-                ]:
-                try:
-                    env.ParseConfig(foo_config)
-                except OSError:
-                    pass
-                else:
-                    break
+            env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL2")], LIBPATH = [os.path.join(sdldir, "lib")])
+        env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
+        env.AppendUnique(LIBS = Split("mingw32 SDL2main SDL2"))
+        env.AppendUnique(LINKFLAGS = ["-mwindows"])
+
+    cpp_file = File("src/conftests/sdl2.cpp").rfile().abspath
+    if not os.path.isfile(cpp_file):
+        cpp_file = "src/conftests/sdl2.cpp"
+
+    with open(cpp_file, 'r') as file:
+        test_program = file.read().replace("argv[1]", "\""+major_version+"\"").replace("argv[2]", "\""+minor_version+"\"").replace("argv[3]", "\""+patchlevel+"\"")
+
+        if context.TryLink(test_program, ".cpp"):
+            context.Result("yes")
+            return True
         else:
-            if sdldir:
-                env.AppendUnique(CPPPATH = [os.path.join(sdldir, sdl_include_dir)], LIBPATH = [os.path.join(sdldir, "lib")])
-            env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
-            env.AppendUnique(LIBS = Split("mingw32 %s %s" % (sdlmain_name, sdl_lib_name)))
-            env.AppendUnique(LINKFLAGS = ["-mwindows"])
-    else:
-        if require_version:
-            context.Message("Checking for %s library version >= %d.%d.%d... " % (sdl_lib, major_version, minor_version, patchlevel))
+            context.Result("no")
+            restore_env(context.env, backup)
+            return False
+
+def CheckSDL2Image(context):
+    backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
+    context.Message("Checking for SDL2_image library... ")
+    context.env.AppendUnique(LIBS = ["SDL2_image"])
+
+    cpp_file = File("src/conftests/sdl2_image.cpp").rfile().abspath
+    if not os.path.isfile(cpp_file):
+        cpp_file = "src/conftests/sdl2_image.cpp"
+
+    with open(cpp_file, 'r') as file:
+        test_program = file.read()
+
+        if context.TryLink(test_program, ".cpp"):
+            context.Result("yes")
+            return True
         else:
-            context.Message("Checking for %s library... " % sdl_lib)
-        context.env.AppendUnique(LIBS = [sdl_lib])
-    test_program = """
-        #include <%s.h>
-        \n""" % sdl_header
-    if require_version:
-        test_program += "#if SDL_VERSIONNUM(%s, %s, %s) < SDL_VERSIONNUM(%d, %d, %d)\n#error Library is too old!\n#endif\n" % \
-            (sdl_lib.upper() + "_MAJOR_VERSION", \
-             sdl_lib.upper() + "_MINOR_VERSION", \
-             sdl_lib.upper() + "_PATCHLEVEL", \
-             major_version, minor_version, patchlevel)
-    test_program += """
-        int main(int argc, char** argv)
-        {
-            SDL_Init(0);
-            SDL_Quit();
-        }
-        \n"""
-    if context.TryLink(test_program, ".c"):
-        context.Result("yes")
-        return True
-    else:
-        context.Result("no")
-        restore_env(context.env, backup)
-        return False
+            context.Result("no")
+            restore_env(context.env, backup)
+            return False
+
+def CheckSDL2Mixer(context):
+    backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
+    context.Message("Checking for SDL2_mixer library... ")
+    context.env.AppendUnique(LIBS = ["SDL2_mixer"])
+
+    cpp_file = File("src/conftests/sdl2_mixer.cpp").rfile().abspath
+    if not os.path.isfile(cpp_file):
+        cpp_file = "src/conftests/sdl2_mixer.cpp"
+
+    with open(cpp_file, 'r') as file:
+        test_program = file.read()
+
+        if context.TryLink(test_program, ".cpp"):
+            context.Result("yes")
+            return True
+        else:
+            context.Result("no")
+            restore_env(context.env, backup)
+            return False
 
 def CheckOgg(context):
-    test_program = '''
-#include <stdlib.h>
-#include <stdio.h>
+    context.env["ENV"]["SDL_AUDIODRIVER"] = "dummy"
 
-#include <SDL.h>
-#include <SDL_mixer.h>
+    cpp_file = File("src/conftests/sdl2_audio.cpp").rfile().get_contents().decode()
 
-int main(int argc, char ** argv)
-{
-    if (SDL_Init(SDL_INIT_AUDIO) < 0) {
-        fprintf(stdout, "Cannot initialize SDL Audio: %s\\n", SDL_GetError());
-        return (EXIT_FAILURE);
-    }
+    # file1 (absolute path) works most places
+    # file2 (relative path) is required for msys2 on windows
+    # both need to be executed since just checking for the file's existence isn't enough
+    # python in the msys2 shell will find the absolute path, but the actual windows executable doesn't understand absolute unix-style paths
+    ogg_file1 = File("data/core/music/main_menu.ogg").rfile().abspath
+    ogg_file2 = "data/core/music/main_menu.ogg"
 
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
-        fprintf(stdout, "Cannot initialize SDL Mixer: %s\\n", Mix_GetError());
-        return (EXIT_FAILURE);
-    }
-
-    if (Mix_Init(MIX_INIT_OGG) != MIX_INIT_OGG) {
-        fprintf(stdout, "Cannot initialize OGG codec: %s\\n", Mix_GetError());
-        Mix_CloseAudio();
-        return (EXIT_FAILURE);
-    }
-
-    Mix_Music* music = Mix_LoadMUS("$TESTFILE");
-    if (music == NULL) {
-        fprintf(stdout, "Cannot load music file: %s\\n", Mix_GetError());
-        Mix_CloseAudio();
-        return (EXIT_FAILURE);
-    }
-
-    fprintf(stdout, "Success\\n");
-    Mix_FreeMusic(music);
-    Mix_CloseAudio();
-    return (EXIT_SUCCESS);
-}
-\n
-'''
-    nodepath = File("data/core/music/main_menu.ogg").rfile().abspath.replace("\\", "\\\\")
-    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
-    #context.env.AppendUnique(LIBS = "SDL_mixer")
-    context.Message("Checking for Ogg Vorbis support in SDL... ")
+    context.Message("Checking for audio support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    context.env["ENV"]["SDL_AUDIODRIVER"] = "dummy"
-    (result, output) = context.TryRun(test_program1, ".c")
+
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+ogg_file1+"\""), ".cpp")
+
     if result:
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "data/core/music/main_menu.ogg").subst(test_program)
-        (result, output) = context.TryRun(test_program2, ".c")
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+ogg_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True
@@ -154,36 +125,48 @@ int main(int argc, char ** argv)
             return False
 
 def CheckPNG(context):
-    test_program = '''
-    #include <SDL_image.h>
-    #include <stdlib.h>
+    cpp_file = File("src/conftests/sdl2_png.cpp").rfile().get_contents().decode()
 
-    int main(int argc, char **argv)
-    {
-            SDL_RWops *src;
-            char *testimage = "$TESTFILE";
+    img_file1 = File("data/core/images/scons_conftest_images/end-n.png").rfile().abspath
+    img_file2 = "data/core/images/scons_conftest_images/end-n.png"
 
-            src = SDL_RWFromFile(testimage, "rb");
-            if (src == NULL) {
-                    exit(2);
-            }
-            exit(!IMG_isPNG(src));
-    }
-\n
-'''
-    nodepath = File("images/buttons/button_normal/button_H22-pressed.png").rfile().abspath.replace("\\", "\\\\")
-    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for PNG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program1, ".c")
+
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file1+"\""), ".cpp")
+
     if result:
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "images/buttons/button_normal/button_H22-pressed.png").subst(test_program)
-        (result, output) = context.TryRun(test_program2, ".c")
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file2+"\""), ".cpp")
+        if result:
+            context.Result("yes")
+            return True
+        else:
+            context.Result("no")
+            return False
+
+def CheckWebP(context):
+    cpp_file = File("src/conftests/sdl2_webp.cpp").rfile().get_contents().decode()
+
+    img_file1 = File("data/core/images/scons_conftest_images/end-n.webp").rfile().abspath
+    img_file2 = "data/core/images/scons_conftest_images/end-n.webp"
+
+    context.Message("Checking for WEBP support in SDL... ")
+    if context.env["host"]:
+        context.Result("n/a (cross-compile)")
+        return True
+
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file1+"\""), ".cpp")
+
+    if result:
+        context.Result("yes")
+        return True
+    else:
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True
@@ -192,36 +175,23 @@ def CheckPNG(context):
             return False
 
 def CheckJPG(context):
-    test_program = '''
-    #include <SDL_image.h>
-    #include <stdlib.h>
+    cpp_file = File("src/conftests/sdl2_jpg.cpp").rfile().get_contents().decode()
 
-    int main(int argc, char **argv)
-    {
-            SDL_RWops *src;
-            char *testimage = "$TESTFILE";
+    img_file1 = File("data/core/images/scons_conftest_images/end-n.jpg").rfile().abspath
+    img_file2 = "data/core/images/scons_conftest_images/end-n.jpg"
 
-            src = SDL_RWFromFile(testimage, "rb");
-            if (src == NULL) {
-                    exit(2);
-            }
-            exit(!IMG_isJPG(src));
-    }
-\n
-'''
-    nodepath = File("data/core/images/maps/background.jpg").rfile().abspath.replace("\\", "\\\\")
-    test_program1 = context.env.Clone(TESTFILE = nodepath).subst(test_program)
     context.Message("Checking for JPG support in SDL... ")
     if context.env["host"]:
         context.Result("n/a (cross-compile)")
         return True
-    (result, output) = context.TryRun(test_program1, ".c")
+
+    (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file1+"\""), ".cpp")
+
     if result:
         context.Result("yes")
         return True
     else:
-        test_program2 = context.env.Clone(TESTFILE = "data/core/images/maps/background.jpg").subst(test_program)
-        (result, output) = context.TryRun(test_program2, ".c")
+        (result, output) = context.TryRun(cpp_file.replace("argv[1]", "\""+img_file2+"\""), ".cpp")
         if result:
             context.Result("yes")
             return True
@@ -229,7 +199,10 @@ def CheckJPG(context):
             context.Result("no")
             return False
 
-config_checks = { 'CheckSDL' : CheckSDL,
+config_checks = { 'CheckSDL2Image' : CheckSDL2Image,
+                  'CheckSDL2Mixer' : CheckSDL2Mixer,
+                  'CheckSDL2': CheckSDL2,
                   'CheckOgg' : CheckOgg,
                   'CheckPNG' : CheckPNG,
-                  'CheckJPG' : CheckJPG }
+                  'CheckJPG' : CheckJPG,
+                  'CheckWebP' : CheckWebP }

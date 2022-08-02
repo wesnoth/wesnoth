@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,19 +24,29 @@ namespace tokenizer
 
 typedef std::string::const_iterator iterator;
 
-/** TOKEN_TYPE is already defined in a Winnt.h (a windows header which is included under some conditions.) */
-enum TOKEN_TYPE { TOKEN_OPERATOR, TOKEN_STRING_LITERAL,
-			TOKEN_IDENTIFIER, TOKEN_INTEGER, TOKEN_DECIMAL,
-			TOKEN_LPARENS, TOKEN_RPARENS,
-			TOKEN_LSQUARE, TOKEN_RSQUARE,
-			TOKEN_COMMA, TOKEN_SEMICOLON,
-			TOKEN_WHITESPACE, TOKEN_EOL, TOKEN_KEYWORD,
-			TOKEN_COMMENT, TOKEN_POINTER  };
+enum class token_type {
+	operator_token, // Cannot simply be named 'operator' since that's a reserved C++ keyword
+	string_literal,
+	identifier,
+	integer,
+	decimal,
+	lparens,
+	rparens,
+	lsquare,
+	rsquare,
+	comma,
+	semicolon,
+	whitespace,
+	eol,
+	keyword,
+	comment,
+	pointer
+};
 
 struct token {
 
 	token() :
-		type(TOKEN_COMMENT),
+		type(token_type::comment),
 		begin(),
 		end(),
 		line_number(1),
@@ -44,7 +54,7 @@ struct token {
 	{
 	}
 
-	token(iterator& i1, iterator i2, TOKEN_TYPE type) :
+	token(iterator& i1, iterator i2, token_type type) :
 		type(type),
 		begin(i1),
 		end(i2),
@@ -53,7 +63,7 @@ struct token {
 	{
 	}
 
-	TOKEN_TYPE type;
+	token_type type;
 	iterator begin, end;
 	int line_number;
 	const std::string* filename;

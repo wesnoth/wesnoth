@@ -37,7 +37,7 @@ function ca_messenger_escort_move:execution(cfg)
     local enemies = AH.get_attackable_enemies()
 
     local base_rating_map = LS.create()
-    local max_rating, best_unit, best_hex = - math.huge
+    local max_rating, best_unit, best_hex = - math.huge, nil, nil
     for _,unit in ipairs(escorts) do
         -- Only considering hexes unoccupied by other units is good enough for this
         local reach_map = AH.get_reachable_unocc(unit)

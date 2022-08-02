@@ -28,6 +28,7 @@ set(NORMAL_DOMAINS
 	wesnoth-units
 	wesnoth-utbs
 	wesnoth-wc
+	wesnoth-wof
 )
 
 # All available domains.
@@ -45,6 +46,10 @@ set(WMLXGETTEXT ${PROJECT_SOURCE_DIR}/data/tools/wmlxgettext)
 ############ pot update. ###########
 
 if(ENABLE_POT_UPDATE_TARGET)
+
+	# The variable pot-update-SRC accumulates a list of the dummy-targets
+	# declared in the following loops. Depending on it will cause all of the
+	# custom commands to run.
 
 	foreach(DOMAIN ${NORMAL_DOMAINS})
 
@@ -163,6 +168,7 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 	endforeach(DOMAIN ${NORMAL_DOMAINS})
 
+	# Generate the stats based on completeness of all the .po files
 	add_custom_command(
 			# Same idea with a dummy file as in pot-update: we never make it, and run the command each time.
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/po_stat.dummy
@@ -171,6 +177,9 @@ if(ENABLE_POT_UPDATE_TARGET)
 			--textdomains=wesnoth,wesnoth-editor,wesnoth-help,wesnoth-lib,wesnoth-multiplayer,wesnoth-tutorial,wesnoth-units
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			COMMENT "pot-update Updated data/languages/*.cfg files."
+			# Needs to depend on the subset of .po files matching po_stat.py's --textdomains argument,
+			# but for simplicity just depend on all the targets to update all .po files.
+			DEPENDS ${pot-update-SRC}
 	)
 
 	SET(pot-update-SRC ${pot-update-SRC} ${PROJECT_SOURCE_DIR}/po/po_stat.dummy)
@@ -183,6 +192,9 @@ if(ENABLE_POT_UPDATE_TARGET)
 
 
 	##### po update per language #####
+	# This is used to implement `make po-update-en_GB` etc. It started as a
+	# copy of code from the main pot-update, no idea why commit
+	# 93591845568158e00441094a2ede03e6bab8e285 changed only this copy.
 	foreach(LINGUA ${LINGUAS})
 		foreach(DOMAIN ${DOMAINS})
 			add_custom_command(

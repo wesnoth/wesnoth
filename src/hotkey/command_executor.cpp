@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,6 +33,8 @@
 #include "show_dialog.hpp"
 #include "../resources.hpp"
 #include "../playmp_controller.hpp"
+#include "sdl/input.hpp" // get_mouse_state
+#include "video.hpp" // toggle_fullscreen
 
 #include <functional>
 
@@ -71,7 +73,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 {
 	// hotkey release handling
 	if (release) {
-		switch(cmd.id) {
+		switch(cmd.command) {
 			// release a scroll key, un-apply scrolling in the given direction
 			case HOTKEY_SCROLL_UP:
 				scroll_up(false);
@@ -93,7 +95,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 	}
 
 	// handling of hotkeys which activate even on hold events
-	switch(cmd.id) {
+	switch(cmd.command) {
 		case HOTKEY_REPEAT_RECRUIT:
 			repeat_recruit();
 			return true;
@@ -118,7 +120,7 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 	}
 
 	// hotkey press handling
-	switch(cmd.id) {
+	switch(cmd.command) {
 		case HOTKEY_CYCLE_UNITS:
 			cycle_units();
 			break;
@@ -421,7 +423,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]["id"]);
 	if (submenu) {
 		int y,x;
-		SDL_GetMouseState(&x,&y);
+		sdl::get_mouse_state(&x,&y);
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
 		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]["id"]);
@@ -460,7 +462,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 	const std::string base_image_name = "icons/action/" + command + "_25.png";
 	const std::string pressed_image_name = "icons/action/" + command + "_25-pressed.png";
 
-	const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(command);
+	const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(command).command;
 	const hotkey::ACTION_STATE state = get_action_state(hk, index);
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
@@ -497,7 +499,7 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		config& item = items[i];
 
 		const std::string& item_id = item["id"];
-		const hotkey::HOTKEY_COMMAND hk = hotkey::get_id(item_id);
+		const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(item_id).command;
 
 		//see if this menu item has an associated image
 		std::string img(get_menu_image(disp, item_id, i));
@@ -509,7 +511,7 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		if(menu) {
 			item["label"] = menu->title();
 		} else if(hk != hotkey::HOTKEY_NULL) {
-			std::string desc = hotkey::get_description(item_id);
+			std::string desc = hotkey::get_hotkey_command(item_id).description;
 			if(hk == HOTKEY_ENDTURN) {
 				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
 				if (b) {
@@ -587,9 +589,9 @@ static void event_queue(const SDL_Event& event, command_executor* executor)
 
 void command_executor::queue_command(const SDL_Event& event, int index)
 {
-	LOG_HK << "event 0x" << std::hex << event.type << std::dec << std::endl;
+	LOG_HK << "event 0x" << std::hex << event.type << std::dec;
 	if(event.type == SDL_TEXTINPUT) {
-		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"\n";
+		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"";
 	}
 
 	const hotkey_ptr hk = get_hotkey(event);
@@ -605,7 +607,7 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 	bool release = event.type == SDL_KEYUP;
 	if(press) {
 		LOG_HK << "sending press event (keypress = " <<
-			std::boolalpha << keypress << std::noboolalpha << ")\n";
+			std::boolalpha << keypress << std::noboolalpha << ")";
 	}
 	if(keypress) {
 		press_event_sent_ = true;
@@ -623,11 +625,11 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 
 	if (!command.press) {
 		return; // none of the commands here respond to a key release
-    }
+	}
 
-	switch (command.command->id) {
+	switch(command.command->command) {
 		case HOTKEY_FULLSCREEN:
-			CVideo::get_singleton().toggle_fullscreen();
+			video::toggle_fullscreen();
 			break;
 		case HOTKEY_SCREENSHOT:
 			make_screenshot(_("Screenshot"), false);
@@ -663,7 +665,7 @@ void command_executor::execute_command_wrap(const command_executor::queued_comma
 			}
 			break;
 		default:
-			DBG_G << "command_executor: unknown command number " << command.command->id << ", ignoring.\n";
+			DBG_G << "command_executor: unknown command number " << command.command->command << ", ignoring.";
 			break;
 	}
 }
@@ -708,7 +710,7 @@ void command_executor_default::set_button_state()
 			if (!can_execute) continue;
 			enabled = true;
 
-			ACTION_STATE state = get_action_state(command_obj.id, -1);
+			ACTION_STATE state = get_action_state(command_obj.command, -1);
 			switch (state) {
 			case ACTION_SELECTED:
 			case ACTION_ON:

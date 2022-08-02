@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,16 +16,17 @@
 #include "help/help_text_area.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "game_config.hpp"              // for debug
+#include "draw.hpp"                     // for blit, fill
 #include "font/sdl_ttf_compat.hpp"
+#include "game_config.hpp"              // for debug
 #include "help/help_impl.hpp"           // for parse_error, box_width, etc
 #include "lexical_cast.hpp"
-#include "picture.hpp"                    // for get_image
 #include "log.hpp"                      // for LOG_STREAM, log_domain, etc
-#include "preferences/general.hpp"              // for font_scaled
+#include "picture.hpp"                  // for get_image
+#include "preferences/general.hpp"      // for font_scaled
 #include "sdl/rect.hpp"                 // for draw_rectangle, etc
+#include "sdl/texture.hpp"              // for texture
 #include "serialization/parser.hpp"     // for read, write
-#include "video.hpp"                    // for CVideo
 
 #include <algorithm>                    // for max, min, find_if
 #include <ostream>                      // for operator<<, stringstream, etc
@@ -41,8 +42,8 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-help_text_area::help_text_area(CVideo &video, const section &toplevel) :
-	gui::scrollarea(video),
+help_text_area::help_text_area(const section &toplevel) :
+	gui::scrollarea(),
 	items_(),
 	last_row_(),
 	toplevel_(toplevel),
@@ -56,9 +57,8 @@ help_text_area::help_text_area(CVideo &video, const section &toplevel) :
 	set_scroll_rate(40);
 }
 
-void help_text_area::set_inner_location(const SDL_Rect& rect)
+void help_text_area::set_inner_location(const SDL_Rect& /*rect*/)
 {
-	bg_register(rect);
 	if (shown_topic_)
 		set_items();
 }
@@ -67,40 +67,40 @@ void help_text_area::show_topic(const topic &t)
 {
 	shown_topic_ = &t;
 	set_items();
-	set_dirty(true);
-	DBG_HP << "Showing topic: " << t.id << ": " << t.title << std::endl;
+	queue_redraw();
+	DBG_HP << "Showing topic: " << t.id << ": " << t.title;
 }
 
 
-help_text_area::item::item(surface surface, int x, int y, const std::string& _text,
+help_text_area::item::item(const texture& _tex, int x, int y, const std::string& _text,
 						   const std::string& reference_to, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
-	rect(),
-	surf(surface),
+	rect_(),
+	tex(_tex),
 	text(_text),
 	ref_to(reference_to),
 	floating(_floating), box(_box),
 	align(alignment)
 {
-	rect.x = x;
-	rect.y = y;
-	rect.w = box ? surface->w + box_width * 2 : surface->w;
-	rect.h = box ? surface->h + box_width * 2 : surface->h;
+	rect_.x = x;
+	rect_.y = y;
+	rect_.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect_.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
-help_text_area::item::item(surface surface, int x, int y, bool _floating,
+help_text_area::item::item(const texture& _tex, int x, int y, bool _floating,
 						   bool _box, ALIGNMENT alignment) :
-	rect(),
-	surf(surface),
+	rect_(),
+	tex(_tex),
 	text(""),
 	ref_to(""),
 	floating(_floating),
 	box(_box), align(alignment)
 {
-	rect.x = x;
-	rect.y = y;
-	rect.w = box ? surface->w + box_width * 2 : surface->w;
-	rect.h = box ? surface->h + box_width * 2 : surface->h;
+	rect_.x = x;
+	rect_.y = y;
+	rect_.w = box ? tex.w() + box_width * 2 : tex.w();
+	rect_.h = box ? tex.h() + box_width * 2 : tex.h();
 }
 
 void help_text_area::set_items()
@@ -111,11 +111,12 @@ void help_text_area::set_items()
 	curr_loc_.second = 0;
 	curr_row_height_ = min_row_height_;
 	// Add the title item.
-	const std::string show_title =
-		font::pango_line_ellipsize(shown_topic_->title, title_size, inner_location().w);
-	surface surf = font::pango_render_text(show_title, title_size, font::NORMAL_COLOR, font::pango_text::STYLE_BOLD);
-	if (surf != nullptr) {
-		add_item(item(surf, 0, 0, show_title));
+	const std::string show_title = font::pango_line_ellipsize(
+		shown_topic_->title, title_size, inner_location().w);
+	texture tex(font::pango_render_text(show_title, title_size,
+		font::NORMAL_COLOR, font::pango_text::STYLE_BOLD));
+	if (tex) {
+		add_item(item(tex, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;
 		contents_height_ = title_spacing_;
 		down_one_line();
@@ -279,7 +280,7 @@ void help_text_area::handle_jump_cfg(const config &cfg)
 		jump_to = to;
 	}
 	if (jump_to != 0 && static_cast<int>(jump_to) <
-            get_max_x(curr_loc_.first, curr_row_height_)) {
+			get_max_x(curr_loc_.first, curr_row_height_)) {
 
 		curr_loc_.first = jump_to;
 	}
@@ -351,9 +352,12 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 			down_one_line();
 		}
 		else {
-			surface surf = font::pango_render_text(first_part, scaled_font_size, color, font::pango_text::FONT_STYLE(state));
-			if (surf)
-				add_item(item(surf, curr_loc_.first, curr_loc_.second, first_part, ref_dst));
+			texture tex(font::pango_render_text(first_part,
+				scaled_font_size, color, font::pango_text::FONT_STYLE(state)));
+			if (tex) {
+				add_item(item(tex, curr_loc_.first, curr_loc_.second,
+					first_part, ref_dst));
+			}
 		}
 		if (parts.size() > 1) {
 
@@ -383,15 +387,15 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 void help_text_area::add_img_item(const std::string& path, const std::string& alignment,
 								  const bool floating, const bool box)
 {
-	surface surf(image::get_image(path));
-	if (!surf)
+	texture tex(image::get_texture(path));
+	if (!tex)
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
-		WRN_DP << "Floating image with align HERE, aligning left." << std::endl;
+		WRN_DP << "Floating image with align HERE, aligning left.";
 		align = LEFT;
 	}
-	const int width = surf->w + (box ? box_width * 2 : 0);
+	const int width = tex.w() + (box ? box_width * 2 : 0);
 	int xpos;
 	int ypos = curr_loc_.second;
 	int text_width = inner_location().w;
@@ -422,7 +426,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 		else {
 			ypos = get_y_for_floating_img(width, xpos, ypos);
 		}
-		add_item(item(surf, xpos, ypos, floating, box, align));
+		add_item(item(tex, xpos, ypos, floating, box, align));
 	}
 }
 
@@ -432,9 +436,9 @@ int help_text_area::get_y_for_floating_img(const int width, const int x, const i
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if ((itm.rect.x + itm.rect.w > x && itm.rect.x < x + width)
-				|| (itm.rect.x > x && itm.rect.x < x + width)) {
-				min_y = std::max<int>(min_y, itm.rect.y + itm.rect.h);
+			if ((itm.rect_.x + itm.rect_.w > x && itm.rect_.x < x + width)
+				|| (itm.rect_.x > x && itm.rect_.x < x + width)) {
+				min_y = std::max<int>(min_y, itm.rect_.y + itm.rect_.h);
 			}
 		}
 	}
@@ -447,8 +451,8 @@ int help_text_area::get_min_x(const int y, const int height)
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y && itm.align == LEFT) {
-				min_x = std::max<int>(min_x, itm.rect.w + 5);
+			if (itm.rect_.y < y + height && itm.rect_.y + itm.rect_.h > y && itm.align == LEFT) {
+				min_x = std::max<int>(min_x, itm.rect_.w + 5);
 			}
 		}
 	}
@@ -462,11 +466,11 @@ int help_text_area::get_max_x(const int y, const int height)
 	for (std::list<item>::const_iterator it = items_.begin(); it != items_.end(); ++it) {
 		const item& itm = *it;
 		if (itm.floating) {
-			if (itm.rect.y < y + height && itm.rect.y + itm.rect.h > y) {
+			if (itm.rect_.y < y + height && itm.rect_.y + itm.rect_.h > y) {
 				if (itm.align == RIGHT) {
-					max_x = std::min<int>(max_x, text_width - itm.rect.w - 5);
+					max_x = std::min<int>(max_x, text_width - itm.rect_.w - 5);
 				} else if (itm.align == MIDDLE) {
-					max_x = std::min<int>(max_x, text_width / 2 - itm.rect.w / 2 - 5);
+					max_x = std::min<int>(max_x, text_width / 2 - itm.rect_.w / 2 - 5);
 				}
 			}
 		}
@@ -478,16 +482,16 @@ void help_text_area::add_item(const item &itm)
 {
 	items_.push_back(itm);
 	if (!itm.floating) {
-		curr_loc_.first += itm.rect.w;
-		curr_row_height_ = std::max<int>(itm.rect.h, curr_row_height_);
+		curr_loc_.first += itm.rect_.w;
+		curr_row_height_ = std::max<int>(itm.rect_.h, curr_row_height_);
 		contents_height_ = std::max<int>(contents_height_, curr_loc_.second + curr_row_height_);
 		last_row_.push_back(&items_.back());
 	}
 	else {
 		if (itm.align == LEFT) {
-			curr_loc_.first = itm.rect.w + 5;
+			curr_loc_.first = itm.rect_.w + 5;
 		}
-		contents_height_ = std::max<int>(contents_height_, itm.rect.y + itm.rect.h);
+		contents_height_ = std::max<int>(contents_height_, itm.rect_.y + itm.rect_.h);
 	}
 }
 
@@ -522,8 +526,8 @@ void help_text_area::adjust_last_row()
 {
 	for (std::list<item *>::iterator it = last_row_.begin(); it != last_row_.end(); ++it) {
 		item &itm = *(*it);
-		const int gap = curr_row_height_ - itm.rect.h;
-		itm.rect.y += gap / 2;
+		const int gap = curr_row_height_ - itm.rect_.h;
+		itm.rect_.y += gap / 2;
 	}
 }
 
@@ -536,13 +540,11 @@ int help_text_area::get_remaining_width()
 void help_text_area::draw_contents()
 {
 	const SDL_Rect& loc = inner_location();
-	bg_restore();
-	surface& screen = video().getSurface();
-	clip_rect_setter clip_rect_set(screen, &loc);
+	auto clipper = draw::reduce_clip(loc);
 	for(std::list<item>::const_iterator it = items_.begin(), end = items_.end(); it != end; ++it) {
-		SDL_Rect dst = it->rect;
+		SDL_Rect dst = it->rect_;
 		dst.y -= get_position();
-		if (dst.y < static_cast<int>(loc.h) && dst.y + it->rect.h > 0) {
+		if (dst.y < static_cast<int>(loc.h) && dst.y + it->rect_.h > 0) {
 			dst.x += loc.x;
 			dst.y += loc.y;
 			if (it->box) {
@@ -550,20 +552,15 @@ void help_text_area::draw_contents()
 					SDL_Rect draw_rect {
 						dst.x,
 						dst.y,
-						it->rect.w - i * 2,
-						it->rect.h - i * 2
+						it->rect_.w - i * 2,
+						it->rect_.h - i * 2
 					};
-
-					// SDL 2.0.10's render batching changes result in the
-					// surface's clipping rectangle being overridden even if
-					// no render clipping rectangle set operaton was queued,
-					// so let's not use the render API to draw the rectangle.
-					SDL_FillRect(screen, &draw_rect, 0);
+					draw::fill(draw_rect, 0, 0, 0, 0);
 					++dst.x;
 					++dst.y;
 				}
 			}
-			sdl_blit(it->surf, nullptr, screen, &dst);
+			draw::blit(it->tex, dst);
 		}
 	}
 }
@@ -573,11 +570,11 @@ void help_text_area::scroll(unsigned int)
 	// Nothing will be done on the actual scroll event. The scroll
 	// position is checked when drawing instead and things drawn
 	// accordingly.
-	set_dirty(true);
+	queue_redraw();
 }
 
 bool help_text_area::item_at::operator()(const item& item) const {
-	return sdl::point_in_rect(x_, y_, item.rect);
+	return item.rect_.contains(x_, y_);
 }
 
 std::string help_text_area::ref_at(const int x, const int y)

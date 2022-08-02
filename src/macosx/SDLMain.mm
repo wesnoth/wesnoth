@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2021
+	Copyright (C) 2010 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,12 @@
 #import "SDL.h"
 #import "SDLMain.h"
 #include <vector>
+
+#if MAC_OS_X_VERSION_MAX_ALLOWED < 101200
+#define NSEventTypeKeyDown NSKeyDown
+#define NSEventTypeKeyUp NSKeyUp
+#define NSEventModifierFlagCommand NSCommandKeyMask
+#endif
 
 extern "C" int wesnoth_main(int argc, char **argv);
 static std::vector<char*> gArgs;
@@ -82,7 +88,7 @@ static std::vector<char*> gArgs;
 	setenv ("SDL_ENABLEAPPEVENTS", "1", 1);
 	setenv ("SDL_VIDEO_ALLOW_SCREENSAVER", "1", 1);
 
-    /* Set config files for pango and fontconfig, so the data they need can be found */
+	/* Set config files for pango and fontconfig, so the data they need can be found */
 	setenv ("PANGO_RC_FILE", "./pangorc", 1);
 	setenv ("PANGO_SYSCONFDIR", ".", 1);
 	setenv ("PANGO_LIBDIR", ".", 1);

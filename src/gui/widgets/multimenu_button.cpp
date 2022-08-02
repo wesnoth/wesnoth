@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -89,13 +89,13 @@ void multimenu_button::set_state(const state_t state)
 {
 	if(state != state_) {
 		state_ = state;
-		set_is_dirty(true);
+		queue_redraw();
 	}
 }
 
 void multimenu_button::signal_handler_mouse_enter(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -103,7 +103,7 @@ void multimenu_button::signal_handler_mouse_enter(const event::ui_event event, b
 
 void multimenu_button::signal_handler_mouse_leave(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
@@ -111,7 +111,7 @@ void multimenu_button::signal_handler_mouse_leave(const event::ui_event event, b
 
 void multimenu_button::signal_handler_left_button_down(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	window* window = get_window();
 	if(window) {
@@ -124,7 +124,7 @@ void multimenu_button::signal_handler_left_button_down(const event::ui_event eve
 
 void multimenu_button::signal_handler_left_button_up(const event::ui_event event, bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
@@ -133,7 +133,7 @@ void multimenu_button::signal_handler_left_button_up(const event::ui_event event
 void multimenu_button::signal_handler_left_button_click(const event::ui_event event, bool& handled)
 {
 	assert(get_window());
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	sound::play_UI_sound(settings::sound_button_click);
 
@@ -174,6 +174,9 @@ void multimenu_button::update_label()
 		if(selected.size() > max_shown_) {
 			const unsigned excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
+			// TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
+			// of the text on the button when many of the boxes are selected. The text becomes
+			// "x, y and 1 other", "x, y and 2 others", etc.
 			selected.back() = VNGETTEXT("multimenu^$excess other", "$excess others", excess, {{"excess", std::to_string(excess)}});
 		}
 		set_label(utils::format_conjunct_list(_("multimenu^None Selected"), selected));
@@ -226,7 +229,7 @@ void multimenu_button::select_options(boost::dynamic_bitset<> states)
 
 void multimenu_button::set_values(const std::vector<::config>& values)
 {
-	set_is_dirty(true);
+	queue_redraw(); // TODO: draw_manager - does this need a relayout first?
 
 	values_ = values;
 	toggle_states_.resize(values_.size(), false);
@@ -240,7 +243,7 @@ void multimenu_button::set_values(const std::vector<::config>& values)
 multimenu_button_definition::multimenu_button_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing multimenu_button " << id << '\n';
+	DBG_GUI_P << "Parsing multimenu_button " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -270,9 +273,9 @@ builder_multimenu_button::builder_multimenu_button(const config& cfg)
 	}
 }
 
-widget* builder_multimenu_button::build() const
+std::unique_ptr<widget> builder_multimenu_button::build() const
 {
-	multimenu_button* widget = new multimenu_button(*this);
+	auto widget = std::make_unique<multimenu_button>(*this);
 
 	widget->set_max_shown(max_shown_);
 	if(!options_.empty()) {
@@ -280,7 +283,7 @@ widget* builder_multimenu_button::build() const
 	}
 
 	DBG_GUI_G << "Window builder: placed multimenu_button '" << id
-	          << "' with definition '" << definition << "'.\n";
+	          << "' with definition '" << definition << "'.";
 
 	return widget;
 }

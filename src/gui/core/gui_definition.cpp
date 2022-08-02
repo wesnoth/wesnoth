@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,32 +50,30 @@ gui_definition::gui_definition(const config& cfg)
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("gui", "id"));
 	VALIDATE(!description_.empty(), missing_mandatory_wml_key("gui", "description"));
 
-	DBG_GUI_P << "Parsing gui " << id_ << std::endl;
+	DBG_GUI_P << "Parsing gui " << id_;
 
 	//
 	// Widget parsing
 	//
 
 	/** Parse widget definitions of each registered type. */
-	for(auto& widget_type : registered_widget_types()) {
-		const std::string& type_id = widget_type.first;
+	for(const auto& [type_id, widget_parser] : registered_widget_types()) {
+		auto& def_map = widget_types[type_id];
 
-		gui_definition::widget_definition_map_t& def_map = widget_types[type_id];
-
-		const std::string key =	widget_type.second.key
-			? widget_type.second.key
+		const std::string key =	widget_parser.key
+			? widget_parser.key
 			: type_id + "_definition";
 
 		bool found_default_def = false;
 
 		for(const config& definition : cfg.child_range(key)) {
 			// Run the static parser to get a definition ptr.
-			styled_widget_definition_ptr def_ptr = widget_type.second.parser(definition);
+			styled_widget_definition_ptr def_ptr = widget_parser.parser(definition);
 
 			const std::string& def_id = def_ptr->id;
 
 			if(def_map.find(def_id) != def_map.end()) {
-				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'\n";
+				ERR_GUI_P << "Skipping duplicate definition '" << def_id << "' for '" << type_id << "'";
 				continue;
 			}
 
@@ -232,7 +230,7 @@ resolution_definition_ptr get_control(const std::string& control_type, const std
 		if(!found_fallback) {
 			if(definition != "default") {
 				LOG_GUI_G << "Control: type '" << control_type << "' definition '" << definition
-						  << "' not found, falling back to 'default'.\n";
+						  << "' not found, falling back to 'default'.";
 				return get_control(control_type, "default");
 			}
 

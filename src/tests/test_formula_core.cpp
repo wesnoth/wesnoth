@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include <array>
 #include <ctime>
 
 #include "formula/formula.hpp"
@@ -175,24 +176,40 @@ BOOST_AUTO_TEST_CASE(test_formula_containers) {
 
 BOOST_AUTO_TEST_CASE(test_formula_tokenizer) {
 	using namespace wfl::tokenizer;
-	std::string test = "[(abc + 4 * (5+3))^2.0, functions, '[']thing[']']";
-	std::string::const_iterator i1 = test.begin();
-	std::string::const_iterator i2 = test.end();
-	std::pair<std::string, TOKEN_TYPE> tokens[] =  {
-		{"[", TOKEN_LSQUARE}, {"(", TOKEN_LPARENS}, {"abc", TOKEN_IDENTIFIER},
-		{" ", TOKEN_WHITESPACE}, {"+", TOKEN_OPERATOR}, {" ", TOKEN_WHITESPACE},
-		{"4", TOKEN_INTEGER}, {" ", TOKEN_WHITESPACE}, {"*", TOKEN_OPERATOR},
-		{" ", TOKEN_WHITESPACE}, {"(", TOKEN_LPARENS}, {"5", TOKEN_INTEGER},
-		{"+", TOKEN_OPERATOR}, {"3", TOKEN_INTEGER}, {")", TOKEN_RPARENS},
-		{")", TOKEN_RPARENS}, {"^", TOKEN_OPERATOR}, {"2.0", TOKEN_DECIMAL},
-		{",", TOKEN_COMMA}, {" ", TOKEN_WHITESPACE}, {"functions", TOKEN_KEYWORD},
-		{",", TOKEN_COMMA}, {" ", TOKEN_WHITESPACE}, {"'[']thing[']'", TOKEN_STRING_LITERAL},
-		{"]", TOKEN_RSQUARE},
-	};
-	for(auto tok : tokens) {
-		token t = get_token(i1, i2);
-		assert(std::string(t.begin, t.end) == tok.first);
-		assert(t.type == tok.second);
+	const std::string test = "[(abc + 4 * (5+3))^2.0, functions, '[']thing[']']";
+	auto i1 = test.begin();
+	auto i2 = test.end();
+	const std::array<std::pair<std::string, token_type>, 25> tokens {{
+		{"[", token_type::lsquare},
+		{"(", token_type::lparens},
+		{"abc", token_type::identifier},
+		{" ", token_type::whitespace},
+		{"+", token_type::operator_token},
+		{" ", token_type::whitespace},
+		{"4", token_type::integer},
+		{" ", token_type::whitespace},
+		{"*", token_type::operator_token},
+		{" ", token_type::whitespace},
+		{"(", token_type::lparens},
+		{"5", token_type::integer},
+		{"+", token_type::operator_token},
+		{"3", token_type::integer},
+		{")", token_type::rparens},
+		{")", token_type::rparens},
+		{"^", token_type::operator_token},
+		{"2.0", token_type::decimal},
+		{",", token_type::comma},
+		{" ", token_type::whitespace},
+		{"functions", token_type::keyword},
+		{",", token_type::comma},
+		{" ", token_type::whitespace},
+		{"'[']thing[']'", token_type::string_literal},
+		{"]", token_type::rsquare},
+	}};
+	for(const auto& [str, type] : tokens) {
+		const token t = get_token(i1, i2);
+		assert(std::string(t.begin, t.end) == str);
+		assert(t.type == type);
 	}
 }
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,7 +43,7 @@ void language_selection::pre_show(window& window)
 	const language_def& current_language = get_language();
 	for(const auto & lang : languages)
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 
 		data["language"]["label"] = lang.language;
 

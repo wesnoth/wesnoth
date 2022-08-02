@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,9 +20,6 @@
 #include <vector>                       // for vector
 #include "widgets/menu.hpp"             // for menu
 
-class CVideo;
-struct surface_restorer;
-
 namespace help { struct section; }
 namespace help { struct topic; }
 
@@ -35,7 +32,7 @@ namespace help {
 class help_menu : public gui::menu
 {
 public:
-	help_menu(CVideo &video, const section &toplevel, int max_height=-1);
+	help_menu(const section &toplevel, int max_height=-1);
 	int process();
 
 	/**
@@ -104,7 +101,6 @@ private:
 	std::vector<visible_item> visible_items_;
 	const section &toplevel_;
 	std::set<const section*> expanded_;
-	surface_restorer restorer_;
 	topic const *chosen_topic_;
 	visible_item selected_item_;
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -405,7 +405,7 @@ config& config::child(config_key_type key, int n)
 
 	const child_map::const_iterator i = children_.find(key);
 	if(i == children_.end()) {
-		DBG_CF << "The config object has no child named »" << key << "«.\n";
+		DBG_CF << "The config object has no child named »" << key << "«.";
 
 		if(throw_when_child_not_found::do_throw()) {
 			throw error("Child not found");
@@ -422,7 +422,7 @@ config& config::child(config_key_type key, int n)
 		return *i->second.at(n);
 	} catch(const std::out_of_range&) {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
-			   << "«; request for the index »" << n << "« cannot be honored.\n";
+			   << "«; request for the index »" << n << "« cannot be honored.";
 
 		if(throw_when_child_not_found::do_throw()) {
 			throw error("Child at index not found");
@@ -735,7 +735,7 @@ void config::remove_child(config_key_type key, unsigned index)
 
 	child_map::iterator i = children_.find(key);
 	if(i == children_.end() || index >= i->second.size()) {
-		ERR_CF << "Error: attempting to delete non-existing child: " << key << "[" << index << "]\n";
+		ERR_CF << "Error: attempting to delete non-existing child: " << key << "[" << index << "]";
 		return;
 	}
 
@@ -888,7 +888,7 @@ config& config::find_child(config_key_type key, const std::string& name, const s
 
 	const child_map::iterator i = children_.find(key);
 	if(i == children_.end()) {
-		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.\n";
+		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
 		if(throw_when_child_not_found::do_throw()) {
 			throw error("Child not found");
@@ -908,7 +908,7 @@ config& config::find_child(config_key_type key, const std::string& name, const s
 		return **j;
 	}
 
-	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.\n";
+	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
 	if(throw_when_child_not_found::do_throw()) {
 		throw error("Child not found");

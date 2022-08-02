@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,7 +16,7 @@
  * @file
  * This file contains the definitions for the @ref gui2::event::message class.
  *
- * The class is used in the @ref gui2::event::signal_message_function
+ * The class is used in the @ref gui2::event::signal_message
  */
 
 #pragma once

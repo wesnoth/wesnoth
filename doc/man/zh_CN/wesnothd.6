@@ -95,6 +95,9 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 \fBconnections_allowed\fP
 同一IP允许的连接数。\fB0\fP 表示无限制。（默认值：\fB5\fP）
 .TP 
+\fBdeny_unregistered_login\fP
+是否阻止没有通过\fBuser_handler\fP进行注册的用户登录。（默认：否）
+.TP 
 \fBdisallow_names\fP
 服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多详细信息请查看\fBglob\fP(7)。默认值（如果用户没有指定则自动使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
@@ -132,19 +135,29 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 \fBsave_replays\fP
 设置服务器是否自动保存游戏录像。（默认值：\fBfalse\fP）
 .TP 
+\fBtls_enabled\fP
+Enable use of TLS. If true, requires 3 following options to be set too.
+.TP 
+\fBtls_fullchain\fP
+TLS full certificate chain in .pem format
+.TP 
+\fBtls_private_key\fP
+private key for TLS in .pem format
+.TP 
+\fBtls_dh\fP
+TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
+filename.pem 4096\fP
+.TP 
 \fBversions_accepted\fP
 服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
-.TP 
-\fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
 .
 .SS 全局标签：
 .
 .P
-\fB[redirect]\fP 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务器上。
+\fB[redirect]\fP
+这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务器上。如果没有设置\fBversions_accepted\fP，那么此标签无效。
 .RS
 .TP 
 \fBhost\fP
@@ -174,46 +187,41 @@ being used from logging in. (default: false)
 .RE
 .P
 \fB[user_handler]\fP
-配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。\fBforum_user_handler\fP正常运作所需的额外数据表可以在韦诺源代码库的table_definitions.sql中找到。
+配置用户数据处理器。如果配置中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。\fBforum_user_handler\fP正常运作所需的额外数据表可以在韦诺源代码库的table_definitions.sql中找到。需要启用mysql支持。对于cmake，请使用\fBENABLE_MYSQL\fP，而对于scons，请使用\fBforum_user_handler\fP。
 .RS
 .TP 
 \fBdb_host\fP
-The hostname of the database server
+数据库服务器的主机名称
 .TP 
 \fBdb_name\fP
-The name of the database
+数据库名称
 .TP 
 \fBdb_user\fP
-The name of the user under which to log into the database
+用于登录数据库的用户名称
 .TP 
 \fBdb_password\fP
-This user's password
+这个用户的密码
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forums saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+你的phpbb论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
-The name of the table in which wesnothd will save its own data about users.
+用于保存wesnothd自有用户数据的表名。
 .TP 
 \fBdb_game_info_table\fP
-The name of the table in which wesnothd will save its own data about games.
+用于保存wesnothd自有游戏数据的表名。
 .TP 
 \fBdb_game_player_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-players in a game.
+用于保存wesnothd自有数据的表名，其中是与单场游戏中玩家相关的数据。
 .TP 
 \fBdb_game_modification_info_table\fP
-The name of the table in which wesnothd will save its own data about the
-modifications used in a game.
+用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forums saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+你的phpbb论坛中存放用户组数据的表名。很可能是<table\-prefix>_users_group（例如phpbb3_users_group）。
 .TP 
 \fBmp_mod_group\fP
-The ID of the forum group to be considered as having moderation authority.
+论坛用户组ID，该组将被视为拥有管理员权限。
 .RE
 .
 .SH 退出状态码
@@ -232,7 +240,7 @@ The ID of the forum group to be considered as having moderation authority.
 .
 .SH 版权
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2021 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

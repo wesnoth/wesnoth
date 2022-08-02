@@ -61,8 +61,9 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, argparse, filecmp, re, codecs
+import sys, os, argparse, filecmp, re, codecs, signal
 from wesnoth import wmltools3 as wmltools
+from wesnoth import version
 
 closer_prefixes = ["{NEXT "]
 opener_prefixes = ["{FOREACH "]
@@ -102,6 +103,29 @@ class bailout(Exception):
         self.lineno = lineno
         self.msg = msg
 
+def strip_comment(line, in_string):
+    """
+    Strip a trailing comment from a line, if present.
+    Allows for unbalanced quotes, where comment characters are literal.
+    """
+    if not line:
+        return line
+    split = line.split('"')
+    result = split[0]
+    if not in_string and '#' in result:
+        return result.split('#')[0].rstrip();
+    split.pop(0)
+    for component in split:
+        in_string = not in_string
+        result += '"'
+        # If we end up outside a string and there's a comment, we're done
+        if not in_string and '#' in component:
+            result += component.split('#')[0]
+            break
+        else:
+            result += component
+    return result.rstrip()
+
 def reindent(name, infp, outfp):
     "Reindent WML."
     dostrip = True
@@ -110,7 +134,7 @@ def reindent(name, infp, outfp):
     inmacro = False
     ignoring = False
     instring = False
-    indent = ""
+    indent_level = 0
     lasttag = ""
     countlines = 0
     countblanks = 0
@@ -156,12 +180,12 @@ def reindent(name, infp, outfp):
                 print('wmlindent: "%s", line %d: Expected string, received tag.' % (name, countlines), file=sys.stderr)
         # Track whether we've seen real WML rather than just macro definitions
         elif transformed.startswith("#define"):
-            saved_indent = indent
-            indent = wmltools.baseindent
+            saved_indent = indent_level
+            indent_level = 1
             inmacro = True
         # Be sure to ignore the newlines and comments
         elif transformed.rstrip().endswith("#enddef") and transformed.find("#") == transformed.find("#enddef"):
-            indent = saved_indent
+            indent_level = saved_indent
             inmacro = False
         elif not inmacro and transformed[0] in ('[', ']'):
             seen_wml = True
@@ -169,10 +193,10 @@ def reindent(name, infp, outfp):
         # the new line so the close tag will be at the same level as the
         # one that started the block.
         if closer(transformed):
-            if indent == "":
+            if indent_level == 0:
                 print('wmlindent: "%s", line %d: close tag %s with indent already zero.' % (name, countlines, transformed.strip()), file=sys.stderr)
             else:
-                indent = indent[:-len(wmltools.baseindent)]
+                indent_level -= 1
         # Cope with blank lines outside of multiline literals
         if dostrip:
             if transformed == "\n":
@@ -187,7 +211,7 @@ def reindent(name, infp, outfp):
                     outfp.write("\n")
         # Here's where we apply the current indent
         if dostrip and transformed and not is_directive(transformed):
-            output = indent + transformed
+            output = (wmltools.baseindent * indent_level) + transformed
         else:
             output = transformed
         # Nuke trailing space and canonicalize to Unix-style end-of-line
@@ -197,20 +221,17 @@ def reindent(name, infp, outfp):
         outfp.write(output)
         # May need to indent based on the line we just saw.
         if opener(transformed):
-            indent += wmltools.baseindent
+            indent_level += 1
         if continued_string.search(transformed):
             if not instring:
-                indent += wmltools.baseindent
+                indent_level += 1
                 instring = True
         elif instring and not (transformed.startswith("#")):
-            indent = indent[:-len(wmltools.baseindent)]
+            indent_level -= 1
             instring = False
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
-        if dostrip:
-            eligible = re.split("\s#", transformed)[0]
-        else:
-            eligible = transformed
+        eligible = strip_comment(transformed, not dostrip)
         if dostrip and "<<" in eligible and not ">>" in eligible.split("<<", 1)[1]:
             dostrip = False
             in_lua = True
@@ -226,8 +247,8 @@ def reindent(name, infp, outfp):
         else:
             lasttag = ""
     # Pure macro files look like they have unbalanced indents.  That's OK
-    if indent != "" and seen_wml:
-        print('wmlindent: "%s". line %d: end of file with indent nonzero.' % (name, countlines), file=sys.stderr)
+    if indent_level != 0 and seen_wml:
+        print('wmlindent: "%s". line %d: end of file with indent nonzero (%d).' % (name, countlines, indent_level), file=sys.stderr)
 
 def allwmlfiles(directory):
     "Get names of all WML files under dir, or dir itself if not a directory."
@@ -273,6 +294,9 @@ def convertor(linefilter, arglist, exclude):
                     except bailout as e:
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
                         os.remove(filename + ".out")
+                    except UnicodeDecodeError as e:
+                        os.remove(filename + ".out")
+                        print('wmlindent: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
                     except KeyboardInterrupt:
                         os.remove(filename + ".out")
                         print("wmlindent: %s interrupted" % filename, file=sys.stderr)
@@ -299,12 +323,24 @@ def convertor(linefilter, arglist, exclude):
                 print("wmlindent: no WML file found, exiting", file=sys.stderr)
                 sys.exit(1)
 
+def sigint_handler(signal, frame):
+    """This function defines what happens when the SIGINT signal is encountered by pressing ctrl-c during runtime. 
+    When ctrl-c is pressed, a one-line message is displayed and Python exits with Status 1.
+    This overrides Python's default behavior of displaying a traceback when ctrl-c is pressed.
+    """
+    print ('Aborted by pressing ctrl-c')
+    sys.exit(1)
+
 if __name__ == '__main__':
+    signal.signal(signal.SIGINT, sigint_handler)
     parser = argparse.ArgumentParser(
-        formatter_class=argparse.RawTextHelpFormatter
+        formatter_class=argparse.RawTextHelpFormatter,
+        prog="wmlindent"
         )
     parser.add_argument("-?", action="help",
                         help="show this help message and exit") # original --help, -h and -? printed __doc__
+    parser.add_argument("--version", action="version",
+                        version="%(prog)s " + version.as_string)
     parser.add_argument("-d", "--dryrun", action="store_true",
                         help="""detects and reports files that would be changed without
 changing them.""")

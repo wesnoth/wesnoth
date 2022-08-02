@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	by Sergey Popov <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -53,7 +53,8 @@ typedef utils::variant<socket_ptr, tls_socket_ptr> any_socket_ptr;
 
 struct server_shutdown : public game::error
 {
-	server_shutdown(const std::string& msg) : game::error(msg) {}
+	boost::system::error_code ec;
+	server_shutdown(const std::string& msg, boost::system::error_code ec = {}) : game::error(msg), ec(ec) {}
 };
 
 /**
@@ -77,10 +78,12 @@ struct server_shutdown : public game::error
  */
 class server_base
 {
+	template<class SocketPtr> void send_doc_queued(SocketPtr socket, std::unique_ptr<simple_wml::document>& doc_ptr, boost::asio::yield_context yield);
+
 public:
 	server_base(unsigned short port, bool keep_alive);
 	virtual ~server_base() {}
-	void run();
+	int run();
 
 	/**
 	 * Send a WML document from within a coroutine

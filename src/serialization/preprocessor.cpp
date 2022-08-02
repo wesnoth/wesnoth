@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2021
+	Copyright (C) 2005 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -568,7 +568,7 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	error = error_type + '\n';
 	error += "at " + position;
 
-	ERR_PREPROC << error << '\n';
+	ERR_PREPROC << error;
 
 	throw preproc_config::error(error);
 }
@@ -584,7 +584,7 @@ void preprocessor_streambuf::warning(const std::string& warning_type, int l)
 	warning = warning_type + '\n';
 	warning += "at " + position;
 
-	WRN_PREPROC << warning << '\n';
+	WRN_PREPROC << warning;
 }
 
 
@@ -650,27 +650,27 @@ class preprocessor_data : public preprocessor
 	/** Description of a preprocessing chunk. */
 	struct token_desc
 	{
-		enum TOKEN_TYPE {
-			START,        // Toplevel
-			PROCESS_IF,   // Processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
-			PROCESS_ELSE, // Processing the "else" branch of a ifdef/ifndef
-			SKIP_IF,      // Skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
-			SKIP_ELSE,    // Skipping the "else" branch of a ifdef/ifndef
-			STRING,       // Processing a string
-			VERBATIM,     // Processing a verbatim string
-			MACRO_SPACE,  // Processing between chunks of a macro call (skip spaces)
-			MACRO_CHUNK,  // Processing inside a chunk of a macro call (stop on space or '(')
-			MACRO_PARENS  // Processing a parenthesized macro argument
+		enum class token_type {
+			start,        // Toplevel
+			process_if,   // Processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
+			process_else, // Processing the "else" branch of a ifdef/ifndef
+			skip_if,      // Skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
+			skip_else,    // Skipping the "else" branch of a ifdef/ifndef
+			string,       // Processing a string
+			verbatim,     // Processing a verbatim string
+			macro_space,  // Processing between chunks of a macro call (skip spaces)
+			macro_chunk,  // Processing inside a chunk of a macro call (stop on space or '(')
+			macro_parens  // Processing a parenthesized macro argument
 		};
 
-		token_desc(TOKEN_TYPE type, const int stack_pos, const int linenum)
+		token_desc(token_type type, const int stack_pos, const int linenum)
 			: type(type)
 			, stack_pos(stack_pos)
 			, linenum(linenum)
 		{
 		}
 
-		TOKEN_TYPE type;
+		token_type type;
 
 		/** Starting position in #strings_ of the delayed text for this chunk. */
 		int stack_pos;
@@ -723,7 +723,7 @@ class preprocessor_data : public preprocessor
 
 	void skip_spaces();
 	void skip_eol();
-	void push_token(token_desc::TOKEN_TYPE);
+	void push_token(token_desc::token_type);
 	void pop_token();
 	void put(char);
 	void put(const std::string& /*, int change_line = 0 */);
@@ -747,28 +747,28 @@ public:
 		return is_define_ ? PARSES_MACRO : PARSES_FILE;
 	}
 
-	friend bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char);
-	friend bool operator==(char, preprocessor_data::token_desc::TOKEN_TYPE);
-	friend bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE, char);
-	friend bool operator!=(char, preprocessor_data::token_desc::TOKEN_TYPE);
+	friend bool operator==(preprocessor_data::token_desc::token_type, char);
+	friend bool operator==(char, preprocessor_data::token_desc::token_type);
+	friend bool operator!=(preprocessor_data::token_desc::token_type, char);
+	friend bool operator!=(char, preprocessor_data::token_desc::token_type);
 };
 
-bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char)
+bool operator==(preprocessor_data::token_desc::token_type, char)
 {
 	throw std::logic_error("don't compare tokens with characters");
 }
 
-bool operator==(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs)
+bool operator==(char lhs, preprocessor_data::token_desc::token_type rhs)
 {
 	return rhs == lhs;
 }
 
-bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE rhs, char lhs)
+bool operator!=(preprocessor_data::token_desc::token_type rhs, char lhs)
 {
 	return !(lhs == rhs);
 }
 
-bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs)
+bool operator!=(char lhs, preprocessor_data::token_desc::token_type rhs)
 {
 	return rhs != lhs;
 }
@@ -819,7 +819,7 @@ void preprocessor_file::init()
 	filesystem::scoped_istream file_stream = filesystem::istream_file(name_);
 
 	if(!file_stream->good()) {
-		ERR_PREPROC << "Could not open file " << name_ << std::endl;
+		ERR_PREPROC << "Could not open file " << name_;
 	} else {
 		parent_.add_preprocessor<preprocessor_data>(std::move(file_stream), "",
 			filesystem::get_short_wml_path(name_), 1,
@@ -874,27 +874,27 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf& t,
 		t.textdomain_ = domain;
 	}
 
-	push_token(token_desc::START);
+	push_token(token_desc::token_type::start);
 }
 
-void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
+void preprocessor_data::push_token(token_desc::token_type t)
 {
 	tokens_.emplace_back(t, strings_.size(), linenum_);
 
-	if(t == token_desc::MACRO_SPACE) {
+	if(t == token_desc::token_type::macro_space) {
 		// Macro expansions do not have any associated storage at start.
 		return;
-	} else if(t == token_desc::STRING || t == token_desc::VERBATIM) {
+	} else if(t == token_desc::token_type::string || t == token_desc::token_type::verbatim) {
 		/* Quoted strings are always inlined in the parent token. So
 		 * they need neither storage nor metadata, unless the parent
 		 * token is a macro expansion.
 		 */
-		token_desc::TOKEN_TYPE& outer_type = tokens_[tokens_.size() - 2].type;
-		if(outer_type != token_desc::MACRO_SPACE) {
+		token_desc::token_type& outer_type = tokens_[tokens_.size() - 2].type;
+		if(outer_type != token_desc::token_type::macro_space) {
 			return;
 		}
 
-		outer_type = token_desc::MACRO_CHUNK;
+		outer_type = token_desc::token_type::macro_chunk;
 		tokens_.back().stack_pos = strings_.size() + 1;
 	}
 
@@ -909,39 +909,39 @@ void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 
 void preprocessor_data::pop_token()
 {
-	token_desc::TOKEN_TYPE inner_type = tokens_.back().type;
+	token_desc::token_type inner_type = tokens_.back().type;
 	unsigned stack_pos = tokens_.back().stack_pos;
 
 	tokens_.pop_back();
 
-	token_desc::TOKEN_TYPE& outer_type = tokens_.back().type;
+	token_desc::token_type& outer_type = tokens_.back().type;
 
-	if(inner_type == token_desc::MACRO_PARENS) {
+	if(inner_type == token_desc::token_type::macro_parens) {
 		// Parenthesized macro arguments are left on the stack.
-		assert(outer_type == token_desc::MACRO_SPACE);
+		assert(outer_type == token_desc::token_type::macro_space);
 		return;
 	}
 
-	if(inner_type == token_desc::STRING || inner_type == token_desc::VERBATIM) {
+	if(inner_type == token_desc::token_type::string || inner_type == token_desc::token_type::verbatim) {
 		// Quoted strings are always inlined.
 		assert(stack_pos == strings_.size());
 		return;
 	}
 
-	if(outer_type == token_desc::MACRO_SPACE) {
+	if(outer_type == token_desc::token_type::macro_space) {
 		/* A macro expansion does not have any associated storage.
 		 * Instead, storage of the inner token is not discarded
 		 * but kept as a new macro argument. But if the inner token
 		 * was a macro expansion, it is about to be appended, so
 		 * prepare for it.
 		 */
-		if(inner_type == token_desc::MACRO_SPACE || inner_type == token_desc::MACRO_CHUNK) {
+		if(inner_type == token_desc::token_type::macro_space || inner_type == token_desc::token_type::macro_chunk) {
 			strings_.erase(strings_.begin() + stack_pos, strings_.end());
 			strings_.emplace_back();
 		}
 
 		assert(stack_pos + 1 == strings_.size());
-		outer_type = token_desc::MACRO_CHUNK;
+		outer_type = token_desc::token_type::macro_chunk;
 
 		return;
 	}
@@ -986,7 +986,7 @@ std::string preprocessor_data::read_word()
 		int c = in_.peek();
 
 		if(c == preprocessor_streambuf::traits_type::eof() || utils::portable_isspace(c)) {
-			// DBG_PREPROC << "(" << res << ")\n";
+			// DBG_PREPROC << "(" << res << ")";
 			return res;
 		}
 
@@ -1083,7 +1083,7 @@ void preprocessor_data::conditional_skip(bool skip)
 		++skipping_;
 	}
 
-	push_token(skip ? token_desc::SKIP_ELSE : token_desc::PROCESS_IF);
+	push_token(skip ? token_desc::token_type::skip_else : token_desc::token_type::process_if);
 }
 
 bool preprocessor_data::get_chunk()
@@ -1097,25 +1097,25 @@ bool preprocessor_data::get_chunk()
 		char const* s;
 
 		switch(token.type) {
-		case token_desc::START:
+		case token_desc::token_type::start:
 			return false; // everything is fine
-		case token_desc::PROCESS_IF:
-		case token_desc::SKIP_IF:
-		case token_desc::PROCESS_ELSE:
-		case token_desc::SKIP_ELSE:
+		case token_desc::token_type::process_if:
+		case token_desc::token_type::skip_if:
+		case token_desc::token_type::process_else:
+		case token_desc::token_type::skip_else:
 			s = "#ifdef or #ifndef";
 			break;
-		case token_desc::STRING:
+		case token_desc::token_type::string:
 			s = "Quoted string";
 			break;
-		case token_desc::VERBATIM:
+		case token_desc::token_type::verbatim:
 			s = "Verbatim string";
 			break;
-		case token_desc::MACRO_CHUNK:
-		case token_desc::MACRO_SPACE:
+		case token_desc::token_type::macro_chunk:
+		case token_desc::token_type::macro_space:
 			s = "Macro substitution";
 			break;
-		case token_desc::MACRO_PARENS:
+		case token_desc::token_type::macro_parens:
 			s = "Macro argument";
 			break;
 		default:
@@ -1145,7 +1145,7 @@ bool preprocessor_data::get_chunk()
 		buffer += '\n';
 		// line_change = 1-1 = 0
 		put(buffer);
-	} else if(token.type == token_desc::VERBATIM) {
+	} else if(token.type == token_desc::token_type::verbatim) {
 		put(c);
 
 		if(c == '>' && in_.peek() == '>') {
@@ -1154,25 +1154,25 @@ bool preprocessor_data::get_chunk()
 		}
 	} else if(c == '<' && in_.peek() == '<') {
 		in_.get();
-		push_token(token_desc::VERBATIM);
+		push_token(token_desc::token_type::verbatim);
 		put('<');
 		put('<');
 	} else if(c == '"') {
-		if(token.type == token_desc::STRING) {
+		if(token.type == token_desc::token_type::string) {
 			parent_.quoted_ = false;
 			put(c);
 			pop_token();
 		} else if(!parent_.quoted_) {
 			parent_.quoted_ = true;
-			push_token(token_desc::STRING);
+			push_token(token_desc::token_type::string);
 			put(c);
 		} else {
 			parent_.error("Nested quoted string", linenum_);
 		}
 	} else if(c == '{') {
-		push_token(token_desc::MACRO_SPACE);
+		push_token(token_desc::token_type::macro_space);
 		++slowpath_;
-	} else if(c == ')' && token.type == token_desc::MACRO_PARENS) {
+	} else if(c == ')' && token.type == token_desc::token_type::macro_parens) {
 		pop_token();
 	} else if(c == '#' && !parent_.quoted_) {
 		std::string command = read_word();
@@ -1310,7 +1310,7 @@ bool preprocessor_data::get_chunk()
 
 					WRN_PREPROC << "Redefining macro " << symbol << " without explicit #undef at "
 								<< lineno_string(new_pos.str()) << '\n'
-								<< "previously defined at " << lineno_string(old_pos.str()) << '\n';
+								<< "previously defined at " << lineno_string(old_pos.str());
 				}
 
 				buffer.erase(buffer.end() - 7, buffer.end());
@@ -1318,22 +1318,21 @@ bool preprocessor_data::get_chunk()
 						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
 						deprecation_detail, deprecation_level, deprecation_version);
 
-				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
+				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")";
 			}
 		} else if(command == "ifdef" || command == "ifndef") {
 			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = parent_.defines_->count(symbol) != 0;
-			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined") << '\n';
+			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifhave" || command == "ifnhave") {
 			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
-			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found")
-						<< '\n';
+			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifver" || command == "ifnver") {
 			const bool negate = command[2] == 'n';
@@ -1361,7 +1360,7 @@ bool preprocessor_data::get_chunk()
 
 				const bool found = do_version_check(version1, vop, version2);
 				DBG_PREPROC << "testing version '" << version1.str() << "' against '" << version2.str() << "' ("
-							<< vopstr << "): " << (found ? "match" : "no match") << '\n';
+							<< vopstr << "): " << (found ? "match" : "no match");
 
 				conditional_skip(negate ? found : !found);
 			} else {
@@ -1371,24 +1370,24 @@ bool preprocessor_data::get_chunk()
 				parent_.error(err, linenum_);
 			}
 		} else if(command == "else") {
-			if(token.type == token_desc::SKIP_ELSE) {
+			if(token.type == token_desc::token_type::skip_else) {
 				pop_token();
 				--skipping_;
-				push_token(token_desc::PROCESS_ELSE);
-			} else if(token.type == token_desc::PROCESS_IF) {
+				push_token(token_desc::token_type::process_else);
+			} else if(token.type == token_desc::token_type::process_if) {
 				pop_token();
 				++skipping_;
-				push_token(token_desc::SKIP_IF);
+				push_token(token_desc::token_type::skip_if);
 			} else {
 				parent_.error("Unexpected #else", linenum_);
 			}
 		} else if(command == "endif") {
 			switch(token.type) {
-			case token_desc::SKIP_IF:
-			case token_desc::SKIP_ELSE:
+			case token_desc::token_type::skip_if:
+			case token_desc::token_type::skip_else:
 				--skipping_;
-			case token_desc::PROCESS_IF:
-			case token_desc::PROCESS_ELSE:
+			case token_desc::token_type::process_if:
+			case token_desc::token_type::process_else:
 				break;
 			default:
 				parent_.error("Unexpected #endif", linenum_);
@@ -1410,7 +1409,7 @@ bool preprocessor_data::get_chunk()
 			const std::string& symbol = read_word();
 			if(!skipping_) {
 				parent_.defines_->erase(symbol);
-				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")\n";
+				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")";
 			}
 		} else if(command == "error") {
 			if(!skipping_) {
@@ -1419,7 +1418,7 @@ bool preprocessor_data::get_chunk()
 				error << "#error: \"" << read_rest_of_line() << '"';
 				parent_.error(error.str(), linenum_);
 			} else
-				DBG_PREPROC << "Skipped an error\n";
+				DBG_PREPROC << "Skipped an error";
 		} else if(command == "warning") {
 			if(!skipping_) {
 				skip_spaces();
@@ -1427,7 +1426,7 @@ bool preprocessor_data::get_chunk()
 				warning << "#warning: \"" << read_rest_of_line() << '"';
 				parent_.warning(warning.str(), linenum_);
 			} else {
-				DBG_PREPROC << "Skipped a warning\n";
+				DBG_PREPROC << "Skipped a warning";
 			}
 		} else if(command == "deprecated") {
 			// The current file is deprecated, so print a message
@@ -1447,21 +1446,21 @@ bool preprocessor_data::get_chunk()
 			std::string detail = read_rest_of_line();
 			deprecated_message(get_filename(parent_.location_), level, version, detail);
 		} else {
-			comment = token.type != token_desc::MACRO_SPACE;
+			comment = token.type != token_desc::token_type::macro_space;
 		}
 
 		skip_eol();
 		if(comment) {
 			put('\n');
 		}
-	} else if(token.type == token_desc::MACRO_SPACE || token.type == token_desc::MACRO_CHUNK) {
+	} else if(token.type == token_desc::token_type::macro_space || token.type == token_desc::token_type::macro_chunk) {
 		if(c == '(') {
 			// If a macro argument was started, it is implicitly ended.
-			token.type = token_desc::MACRO_SPACE;
-			push_token(token_desc::MACRO_PARENS);
+			token.type = token_desc::token_type::macro_space;
+			push_token(token_desc::token_type::macro_parens);
 		} else if(utils::portable_isspace(c)) {
 			// If a macro argument was started, it is implicitly ended.
-			token.type = token_desc::MACRO_SPACE;
+			token.type = token_desc::token_type::macro_space;
 		} else if(c == '}') {
 			--slowpath_;
 			if(skipping_) {
@@ -1555,8 +1554,7 @@ bool preprocessor_data::get_chunk()
 
 								optional_arg_num++;
 
-								DBG_PREPROC << "Found override for " << argname << " in call to macro " << symbol
-											<< "\n";
+								DBG_PREPROC << "Found override for " << argname << " in call to macro " << symbol;
 							} else {
 								std::ostringstream warning;
 								warning << "Unrecognized optional argument passed to macro '" << symbol << "': '"
@@ -1590,7 +1588,7 @@ bool preprocessor_data::get_chunk()
 							res << in.rdbuf();
 
 							DBG_PREPROC << "Setting default for optional argument " << argument.first << " in macro "
-										<< symbol << "\n";
+										<< symbol;
 
 							(*defines)[argument.first] = res.str();
 						}
@@ -1612,12 +1610,12 @@ bool preprocessor_data::get_chunk()
 				pop_token();
 
 				if(!slowpath_) {
-					DBG_PREPROC << "substituting macro " << symbol << '\n';
+					DBG_PREPROC << "substituting macro " << symbol;
 
 					parent_.add_preprocessor<preprocessor_data>(
 						std::move(buffer), val.location, "", val.linenum, dir, val.textdomain, std::move(defines), true);
 				} else {
-					DBG_PREPROC << "substituting (slow) macro " << symbol << '\n';
+					DBG_PREPROC << "substituting (slow) macro " << symbol;
 
 					std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
@@ -1637,7 +1635,7 @@ bool preprocessor_data::get_chunk()
 					put(res.str());
 				}
 			} else if(parent_.depth() < 40) {
-				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
+				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.";
 				pop_token();
 
 				std::string nfname = filesystem::get_wml_location(symbol, directory_);
@@ -1668,13 +1666,13 @@ bool preprocessor_data::get_chunk()
 				parent_.error("Too many nested preprocessing inclusions", linenum_);
 			}
 		} else if(!skipping_) {
-			if(token.type == token_desc::MACRO_SPACE) {
+			if(token.type == token_desc::token_type::macro_space) {
 				std::ostringstream s;
 				s << OUTPUT_SEPARATOR << "line " << linenum_ << ' ' << parent_.location_ << "\n"
 				  << OUTPUT_SEPARATOR << "textdomain " << parent_.textdomain_ << '\n';
 
 				strings_.push_back(s.str());
-				token.type = token_desc::MACRO_CHUNK;
+				token.type = token_desc::token_type::macro_chunk;
 			}
 			put(c);
 		}
@@ -1761,7 +1759,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Subdirectories
 		for(const std::string& dir : dirs) {
-			LOG_PREPROC << "processing sub-dir: " << dir << '\n';
+			LOG_PREPROC << "processing sub-dir: " << dir;
 			preprocess_resource(dir, defines_map, write_cfg, write_plain_cfg, parent_directory);
 		}
 
@@ -1778,7 +1776,7 @@ void preprocess_resource(const std::string& res_name,
 		return;
 	}
 
-	LOG_PREPROC << "processing resource: " << res_name << '\n';
+	LOG_PREPROC << "processing resource: " << res_name;
 
 	// disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
@@ -1795,7 +1793,7 @@ void preprocess_resource(const std::string& res_name,
 
 	ss << (*stream).rdbuf();
 
-	LOG_PREPROC << "processing finished\n";
+	LOG_PREPROC << "processing finished";
 
 	if(write_cfg || write_plain_cfg) {
 		config cfg;
@@ -1807,7 +1805,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Write the processed cfg file
 		if(write_cfg) {
-			LOG_PREPROC << "writing cfg file: " << preproc_res_name << '\n';
+			LOG_PREPROC << "writing cfg file: " << preproc_res_name;
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
 			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
@@ -1817,7 +1815,7 @@ void preprocess_resource(const std::string& res_name,
 
 		// Write the plain cfg file
 		if(write_plain_cfg) {
-			LOG_PREPROC << "writing plain cfg file: " << (preproc_res_name + ".plain") << '\n';
+			LOG_PREPROC << "writing plain cfg file: " << (preproc_res_name + ".plain");
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
 			filesystem::write_file(preproc_res_name + ".plain", streamContent);

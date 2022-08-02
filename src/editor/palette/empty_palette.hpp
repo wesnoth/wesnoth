@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,7 +29,7 @@ class empty_palette : public common_palette {
 public:
 
 	empty_palette(display& gui) :
-		common_palette(gui.video()),
+		common_palette(),
 		gui_(gui) {}
 
 	//event handling
@@ -42,7 +42,6 @@ public:
 
 	//drawing
 	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
-	virtual void draw() override {}
 
 	void hide(bool /*hidden*/) override
 	{
@@ -69,8 +68,8 @@ public:
 		items.erase(items.begin() + i);
 	}
 
-    //item
-	virtual int num_items() override {return 0;}
+	//item
+	virtual std::size_t num_items() override {return 0;}
 	virtual std::size_t start_num() override {return 0;}
 	virtual void set_start_item(std::size_t /*index*/) override {}
 	virtual bool supports_swap() override { return false; }

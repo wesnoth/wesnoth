@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2021.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-07-06 09:46+0200\n"
+"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"PO-Revision-Date: 2022-04-29 23:27+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -125,20 +125,20 @@ msgstr ""
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
-#: data/multiplayer/eras.lua:86
+#: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
 msgstr "<span foreground='$side_color'>Strana $side_number</span> vyhrála."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
-#: data/multiplayer/eras.lua:91
+#: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
 msgstr "Strany $side_number a $other_side_number skončily nerozhodně."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
-#: data/multiplayer/eras.lua:96
+#: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
 msgstr "Strany $winners skončily nerozhodně."
 
@@ -167,11 +167,11 @@ msgid ""
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
 "<bold>text='Drakonidé'</bold> jsou frakcí drakům podobných "
-"<ref>text='Drakonidů' dst='..race_drake'</ref> a jejich spojenců "
-"<ref>text='Ještěráků' dst='..race_lizard'</ref>. Drakonidé jsou potomky "
+"<ref>text='drakonidů' dst='..race_drake'</ref> a jejich spojenců "
+"<ref>text='ještěráků' dst='..race_lizard'</ref>. Drakonidé jsou potomky "
 "draků, ale oproti nim jsou menší. Ještěráci jsou ještě o kus menší než "
-"Drakonidé a mají jiné předky. Obě rasy jsou rychlé, ale špatně se brání, což "
-"vyúsťuje k neobvyklým strategiím ve <ref>text='Standardní éře' dst='.."
+"drakonidé a mají jiné předky. Obě rasy jsou rychlé, ale špatně se brání, což "
+"vyúsťuje k neobvyklým strategiím v <ref>text='základní éře' dst='.."
 "era_era_default'</ref>."
 
 #. [multiplayer_side]: id=Dunefolk, type=random
@@ -219,8 +219,8 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
-"<bold>text='Knalgská aliance'</bold> je spojenectví <ref>text='Trpaslíků' "
-"dst='..race_dwarf'</ref> a <ref>text='Psanců' dst='..race_human'</ref>. "
+"<bold>text='Knalgská aliance'</bold> je spojenectví <ref>text='trpaslíků' "
+"dst='..race_dwarf'</ref> a <ref>text='psanců' dst='..race_human'</ref>. "
 "Trpaslíci jsou starobylá rasa, která většinu času tráví pod zemí. Jejich "
 "bojovníci jsou sice nízcí, zato houževnatí. Psanci jsou tvořeni skupinami "
 "lidí, které zavrhla jejich vlastní rasa, tak se přidali k trpaslíkům, se "
@@ -250,13 +250,13 @@ msgstr ""
 "se specializuje v mnoha různých oblastech. Tak i Věrní jsou velmi všestranní "
 "s důrazem na souboje na blízko a nezanedbatelnou podporou lučištníků a mágů."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Seveřané"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.png~BG()' align='middle'</img>
+#. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
 #: data/multiplayer/factions/northerners-default.cfg:15
 msgid ""
@@ -269,12 +269,12 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
-"<bold>text='Seveřané'</bold> jsou frakcí <ref>text='Skřetů' dst='.."
+"<bold>text='Seveřané'</bold> jsou frakcí <ref>text='skřetů' dst='.."
 "race_orc'</ref> a jejich spojenců, kteří žijí na sever od Velkého "
-"Kontinentu, proto jejich jméno. Seveřany tvoří válečnická rasa skřetů, "
+"kontinentu, proto jejich jméno. Seveřany tvoří válečnická rasa skřetů, "
 "podmanění <ref>text='goblini' dst='..race_goblin'</ref>, "
 "<ref>text='trollové' dst='..race_trolls'</ref>, které k válčení navedli "
-"skřeti, a hadovité <ref>text='nagy' dst='..race_naga'</ref>. Seveřané se "
+"skřeti, a hadovité <ref>text='nágy' dst='..race_naga'</ref>. Seveřané se "
 "v boji mohou spolehnout na velké množství levných jednotek a bojovníky "
 "s vysokým počtem životů."
 
@@ -337,7 +337,7 @@ msgstr ""
 "jednotek nemrtvých tito „temní učedníci“ právě tou silou, která způsobí "
 "nejvíce škod. Mají ale jednu velkou slabost – praktikováním zakázané, temné "
 "magie přišli o všechnu fyzickou sílu, a proto nejsou schopni útoku na "
-"blízko. Nemrtví jsou velice agresivní a ve <ref>text='Standardní éře' dst='.."
+"blízko. Nemrtví jsou velice agresivní a v <ref>text='základní éře' dst='.."
 "era_era_default'</ref> jsou během noci nejobávanější frakcí."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
@@ -446,13 +446,13 @@ msgid "teamname^South"
 msgstr "Jižané"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:288
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
 msgid "Defeat the enemy leader"
 msgstr "Poraz nepřátelského vůdce"
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:292
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
 msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
@@ -461,7 +461,7 @@ msgstr ""
 "bitevního pole a požaduje, abyste ji pobavili bitvou."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:295
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
 msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
@@ -470,7 +470,7 @@ msgstr ""
 "Mohou však na takových políčcích být verbovány a přesouvat se z nich."
 
 #. [note]
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:298
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
 msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
@@ -479,8 +479,8 @@ msgstr ""
 "bitevního pole. Tento proces bude dokončen na konci šestého kola."
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:311
-#: data/multiplayer/scenarios/2p_Aethermaw.cfg:328
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:331
+#: data/multiplayer/scenarios/2p_Aethermaw.cfg:348
 msgid "The Aethermaw growls."
 msgstr "Tlama éteru zavrčela."
 
@@ -605,7 +605,7 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
-"Tyto jeskyně byly kdysi doupětem Chak'kso Ney'ykse, legendárního obřího "
+"Tyto jeskyně byly kdysi doupětem Chak’kso Ney’ykse, legendárního obřího "
 "baziliška. Zkamenělé formy obětí tu zůstavají jako pomníky jeho vražedné "
 "síly."
 
@@ -718,11 +718,11 @@ msgstr ""
 "cestě k Ruaskkolinskému jezeru. Xikkrisx nalezl zkamenělé tělo Oxsrrska, a s "
 "ním ještě pečlivě převázaný svitek, očividně zapadlý do štěrbiny ve skále "
 "poté co byl upuštěn. I rozvinul svitek, podíval se doprostřed a četl, na co "
-"mu padl zrak: „Když byl Chak'kso spoután a vytěsněn z Vyššího světa, jeho "
+"mu padl zrak: „Když byl Chak’kso spoután a vytěsněn z Vyššího světa, jeho "
 "rozzuřený duch hledal možnost osvobození a dokázal skrz kamenné cesty "
 "vedoucí z Dolních prostor zhoubně působit na některé oblasti Vyššího světa. "
 "Tento vztek pozměnil vejce velkých ještěrů, přičemž upravil jejich těla a "
-"mysli v nástroje Chak'ksovy nenávisti.“ Jelikož mu to nic neříkalo, Xikkrisx "
+"mysli v nástroje Chak’ksovy nenávisti.“ Jelikož mu to nic neříkalo, Xikkrisx "
 "pokračoval ve svědomitém a zodpovědném plnění svého úkolu. Napadlo jej, že "
 "by snad starší mohli nějak navrátit Oxsrrska do původního stavu; popadl jej "
 "tedy v jeho současné kamenné podobě a počal vléci zpět do oblastí kmene "
@@ -760,19 +760,19 @@ msgid ""
 msgstr ""
 "Oxsrrsk byl mocný ještěrácký věštec. Při nájezdu na opoziční klan Xraxssů "
 "získal z pokladů nyní mrtvého věštce Hesx-Rzzaka naprosto neuvěřitelný "
-"svitek, nazvaný „Ney'yks žulového pohledu“, vyprávějící o tvorovi známém "
-"jako „Chak'kso Ney'yks“ - to jméno znamená ve starobylé ještěrácké řeči "
-"„Nejstarší dítko Chak'ksovo“. O Chak'ksovi se věřilo, že je to polobůh, "
+"svitek, nazvaný „Ney’yks žulového pohledu“, vyprávějící o tvorovi známém "
+"jako „Chak’kso Ney’yks“ – to jméno znamená ve starobylé ještěrácké řeči "
+"„Nejstarší dítko Chak’ksovo“. O Chak’ksovi se věřilo, že je to polobůh, "
 "přebývající v Dolních prostorách, popisovaný v elfích kronikách jako ohromný "
-"zemní démon. Podle těchto záznamů se před dávnými časy snažil Chak'kso "
-"přeměnit všechno živé na světě v kámen - taková byla jeho nenávist k živým "
+"zemní démon. Podle těchto záznamů se před dávnými časy snažil Chak’kso "
+"přeměnit všechno živé na světě v kámen – taková byla jeho nenávist k živým "
 "tvorům. Byl poražen a spoután magií nepředstavitelné síly, ale ve stoletích "
-"následujících jeho uvržení do Dolních prostor - míst daleko pod povrchem - "
+"následujících jeho uvržení do Dolních prostor – míst daleko pod povrchem – "
 "se začal objevovat nový druh tvora, schopný proměňovat živé bytosti v kámen. "
 "Po jistou dobu působili ve známých koncích světa zkázu, zkameňujíce tisíce. "
-"Jeden po druhém byli za velkých obětí poraženi - téměř všichni. Jeden, známý "
-"jako „Ney'yks“ nebo prostě v současném jazyce „nejstarší potomek“, však "
-"přečkal. Oxsrrsk byl nadšen - takový tvor by se v jeho moci stal nástrojem, "
+"Jeden po druhém byli za velkých obětí poraženi – téměř všichni. Jeden, známý "
+"jako „Ney’yks“ nebo prostě v současném jazyce „nejstarší potomek“, však "
+"přečkal. Oxsrrsk byl nadšen – takový tvor by se v jeho moci stal nástrojem, "
 "s nímž by stěží snesly srovnání jakékoliv armády. Přesvědčen bláhově, leč "
 "skálopevně, že dostat nestvůru pod kontrolu bude hračka, se vydal na cestu..."
 
@@ -1282,8 +1282,8 @@ msgstr ""
 "si, že čas tvé vlády v těchto zemích je u konce, a přízračná chapadla "
 "tmavého mračna dusí poslední zbytky tvé vůle."
 
-#. [slider]: id=enemy_gold_factor
 #. [slider]: id=enemey_gold_factor
+#. [slider]: id=enemy_gold_factor
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:265
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
@@ -1373,7 +1373,7 @@ msgid ""
 "Fight through corridors and gardens, and dominate the eastern courtyard of "
 "what used to be the glorious city of Elensefar."
 msgstr ""
-"Bojujte v nepřehledném terénu chodeb a zahrad - a ovládněte východní nádvoří "
+"Bojujte v nepřehledném terénu chodeb a zahrad – a ovládněte východní nádvoří "
 "kdysi skvělého města Elensefar!"
 
 #. [time]: id=underground_illum
@@ -1909,8 +1909,8 @@ msgstr ""
 "Země nikoho, označovaná někdy obyvateli dálného východu jako Země bez králů, "
 "se rozprostírá mezi Divočinou a královstvím Carorath. Odděluje tak země "
 "absolutní vlády a absolutního chaosu. Lidé zde žijící se potýkali s lačnými "
-"dobyvateli jejich země po staletí - na západní hranici odráželi všemožné "
-"tvory, na východní Carorathijské imperialisty."
+"dobyvateli jejich země po staletí – na západní hranici odráželi všemožné "
+"tvory, na východní carorathijské imperialisty."
 
 #. [multiplayer]: id=multiplayer_The_Walls_of_Pyrennis
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:7
@@ -2078,19 +2078,19 @@ msgstr ""
 msgid "3p — Alirok Marsh"
 msgstr "3hr – Mokřina Alirok"
 
-#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
-#. [multiplayer]: id=multiplayer_Loris_River
-#. [multiplayer]: id=multiplayer_3p_Morituri
-#. [multiplayer]: id=multiplayer_4p_Underworld
-#. [multiplayer]: id=multiplayer_4p_Morituri
 #. [multiplayer]: id=multiplayer_Alirok_Marsh
-#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_Island_of_the_Horatii
+#. [multiplayer]: id=multiplayer_3p_Morituri
 #. [multiplayer]: id=multiplayer_Blue_Water_Province
-#. [multiplayer]: id=multiplayer_8p_Morituri
-#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
-#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
+#. [multiplayer]: id=multiplayer_Clash
 #. [multiplayer]: id=multiplayer_4p_Hamlets
+#. [multiplayer]: id=multiplayer_Loris_River
+#. [multiplayer]: id=multiplayer_4p_Morituri
+#. [multiplayer]: id=multiplayer_Ruins_of_Terra-Dwelve
+#. [multiplayer]: id=multiplayer_4p_Underworld
+#. [multiplayer]: id=multiplayer_8p_Mokena_Prairie
+#. [multiplayer]: id=multiplayer_8p_Morituri
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:6
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:6
 #: data/multiplayer/scenarios/3p_Morituri.cfg:6
@@ -2518,8 +2518,8 @@ msgstr "V této různorodé krajině svede 5 armád boj o nadvládu."
 msgid "5p — The Wilderlands"
 msgstr "5hr – Divočina"
 
-#. [multiplayer]: id=multiplayer_Crusaders_Field
 #. [multiplayer]: id=multiplayer_The_Wilderlands
+#. [multiplayer]: id=multiplayer_Crusaders_Field
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."

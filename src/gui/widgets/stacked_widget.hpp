@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -130,17 +130,16 @@ private:
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
-	 * @param widget_builders     The builder to build the contents of the
-	 *                            widget.
+	 * @param generator           Generator for the list
+	 * @param widget_builders     The builder to build the contents of the widget.
 	 */
-	void finalize(const std::vector<builder_grid>& widget_builders);
+	void finalize(std::unique_ptr<generator_base> generator, const std::vector<builder_grid>& widget_builders);
 
 	/**
 	 * Contains a pointer to the generator.
 	 *
 	 * The pointer is not owned by this class, it's stored in the content_grid_
-	 * of the scrollbar_container super class and freed when its grid is
-	 * freed.
+	 * of the scrollbar_container super class and freed when its grid is freed.
 	 *
 	 * NOTE: the generator is initialized with has_minimum (first arg) as false,
 	 * which seems a little counter-intuitive at first. After all, shouldn't the
@@ -215,7 +214,7 @@ struct builder_stacked_widget : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 	/** The builders for all layers of the stack .*/
 	std::vector<builder_grid> stack;

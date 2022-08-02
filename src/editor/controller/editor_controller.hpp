@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,7 +33,7 @@
 class map_generator;
 
 namespace tooltips {
-struct manager;
+class manager;
 }
 
 namespace font {
@@ -88,7 +88,7 @@ class editor_controller : public controller_base,
 		EXIT_STATUS main_loop();
 
 		/** Takes a screenshot **/
-		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.bmp");
+		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.png");
 
 		/** Process a hotkey quit command */
 		void hotkey_quit();
@@ -218,7 +218,7 @@ class editor_controller : public controller_base,
 		void refresh_image_cache();
 
 		/**
-		 * Callback function passed to display to be called on each redraw_everything run.
+		 * Callback function passed to display to be called on queue_rerender.
 		 * Redraws toolbar, brush bar and related items.
 		 */
 		void display_redraw_callback(display&);

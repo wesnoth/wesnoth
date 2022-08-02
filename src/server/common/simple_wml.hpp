@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -103,8 +103,8 @@ public:
 	char* duplicate() const;
 
 private:
-        const char* str_;
-        unsigned int size_;
+	const char* str_;
+	unsigned int size_;
 };
 
 std::ostream& operator<<(std::ostream& o, const string_span& s);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -45,8 +45,12 @@ private:
 
 	virtual const std::string& get_id(const overlay& item);
 
-	virtual void draw_item(const overlay& item, surface& image, std::stringstream& tooltip_text);
-
+	virtual void setup_item(
+		const overlay& item,
+		texture& item_base_image,
+		texture& item_overlay_image,
+		std::stringstream& tooltip
+	);
 };
 
 }

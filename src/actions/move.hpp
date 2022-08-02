@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -104,20 +104,23 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
  * Moves a unit across the board.
  * And enters the synced context.
  */
-std::size_t move_unit_and_record(const std::vector<map_location> &steps,
-                 undo_list* undo_stack,
-                 bool continued_move = false,
-				 bool show_move = true,
-                 bool* interrupted = nullptr,
-                 move_unit_spectator* move_spectator = nullptr);
+std::size_t move_unit_and_record(
+	const std::vector<map_location> &steps,
+	undo_list* undo_stack,
+	bool continued_move = false,
+	bool show_move = true,
+	bool* interrupted = nullptr,
+	move_unit_spectator* move_spectator = nullptr);
 
 /**
  * Moves a unit across the board.
  * to be called from replay when we are already in the synced context.
  */
-std::size_t move_unit_from_replay(const std::vector<map_location> &steps,
-                 undo_list* undo_stack,
-                 bool continued_move, bool skip_ally_sighted,
-				 bool show_move = true);
+std::size_t move_unit_from_replay(
+	const std::vector<map_location> &steps,
+	undo_list* undo_stack,
+	bool continued_move,
+	bool skip_ally_sighted,
+	bool show_move = true);
 
 }//namespace actions

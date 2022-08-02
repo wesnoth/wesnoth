@@ -5,12 +5,12 @@ function world_conquest_tek_map_noise_proxy(radius, fraction, terrain)
 	for terrain_i = 1, math.ceil(#terrain_to_change / fraction) do
 		local loc_a = terrain_to_change[terrain_i]
 		local terrain_to_swap_b = map:find_in_radius({loc_a}, radius, nop_filter)
-		
+
 		terrain_to_swap_b  = map:find(f.all(
 			f.none(f.is_loc(loc_a)),
 			f.terrain(terrain)
 		), terrain_to_swap_b)
-		
+
 		if #terrain_to_swap_b > 0 then
 			local loc_b = terrain_to_swap_b[mathx.random(#terrain_to_swap_b)]
 			local terrain_a, terrain_b = map[loc_a], map[loc_b]
@@ -23,7 +23,7 @@ end
 function world_conquest_tek_map_noise_classic(tree)
 	-- generic utility to soft chunks of rought terrain and add extra rought on grass zones.
 	-- created for classic maps postgeneration.
-	
+
 	set_terrain_simul {
 		{ "Gs^Ft,Gs^Ft,Hh,Hh,Hh",
 			f.terrain("Gs"),

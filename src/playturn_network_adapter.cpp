@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2021
+	Copyright (C) 2017 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,6 @@
 #include "log.hpp"
 
 #include <functional>
-#include <iostream>
 #include <cassert>
 
 
@@ -52,7 +51,7 @@ void playturn_network_adapter::read_from_network()
 
 	if(!back.attribute_range().empty() )
 	{
-		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
+		ERR_NW << "found unexpected attribute:" <<back.debug();
 		this->data_.pop_back();
 		//ignore those here
 	}
@@ -142,7 +141,7 @@ playturn_network_adapter::~playturn_network_adapter()
 	try {
 		if(!is_at_end())
 		{
-			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
+			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data";
 		}
 	} catch (...) {}
 }

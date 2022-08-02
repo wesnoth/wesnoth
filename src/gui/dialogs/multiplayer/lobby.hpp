@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -46,13 +46,13 @@ public:
 	void update_gamelist();
 
 protected:
-	void update_gamelist_header();
+	void update_visible_games();
 
 	void update_gamelist_diff();
 
 	void update_gamelist_filter();
 
-	std::map<std::string, string_map> make_game_row_data(const mp::game_info& game);
+	widget_data make_game_row_data(const mp::game_info& game);
 
 	void adjust_game_row_contents(const mp::game_info& game, grid* grid, bool add_callbacks = true);
 
@@ -117,15 +117,9 @@ private:
 
 	void game_filter_init();
 
-	void game_filter_change_callback();
-
 	void game_filter_keypress_callback(const SDL_Keycode key);
 
-	void gamelist_change_callback();
-
-	void player_filter_callback();
-
-	void user_dialog_callback(mp::user_info* info);
+	void user_dialog_callback(const mp::user_info* info);
 
 	void skip_replay_changed_callback();
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -99,7 +99,7 @@ bool blacklist::is_in_globlist(const std::string& str, const blacklist::globlist
 		{
 			const std::string& lc_glob = utf8::lowercase(glob);
 			if (utils::wildcard_string_match(lc_str, lc_glob)) {
-				LOG_BL << "Blacklisted field found: " << str << " (" << glob << ")\n";
+				LOG_BL << "Blacklisted field found: " << str << " (" << glob << ")";
 				return true;
 			}
 		}
@@ -115,7 +115,7 @@ bool blacklist::is_in_ip_masklist(const std::string& ip, const blacklist::globli
 		for(const std::string& ip_mask : mlist)
 		{
 			if (ip_matches(ip, ip_mask)) {
-				LOG_BL << "Blacklisted IP found: " << ip << " (" << ip_mask << ")\n";
+				LOG_BL << "Blacklisted IP found: " << ip << " (" << ip_mask << ")";
 				return true;
 			}
 		}

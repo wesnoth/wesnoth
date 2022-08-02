@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,7 +38,8 @@ namespace gui2
 {
 
 grid::grid(const unsigned rows, const unsigned cols)
-	: rows_(rows)
+	: widget()
+	, rows_(rows)
 	, cols_(cols)
 	, row_height_()
 	, col_width_()
@@ -67,7 +68,7 @@ unsigned grid::add_row(const unsigned count)
 	return result;
 }
 
-void grid::set_child(widget* widget,
+void grid::set_child(std::unique_ptr<widget> widget,
 					  const unsigned row,
 					  const unsigned col,
 					  const unsigned flags,
@@ -83,38 +84,41 @@ void grid::set_child(widget* widget,
 	if(cell.get_widget()) {
 		// free a child when overwriting it
 		WRN_GUI_G << LOG_HEADER << " child '" << cell.id() << "' at cell '"
-				  << row << ',' << col << "' will be replaced.\n";
+				  << row << ',' << col << "' will be replaced.";
 	}
 
 	// copy data
 	cell.set_flags(flags);
 	cell.set_border_size(border_size);
-	cell.set_widget(widget);
-	if(cell.get_widget()) {
-		// make sure the new child is valid before deferring
-		cell.get_widget()->set_parent(this);
+	cell.set_widget(std::move(widget));
+
+	// make sure the new child is valid before deferring
+	if(gui2::widget* w = cell.get_widget()) {
+		w->set_parent(this);
 	}
 }
 
 std::unique_ptr<widget> grid::swap_child(const std::string& id,
-						   widget* w,
-						   const bool recurse,
-						   widget* new_parent)
+		std::unique_ptr<widget> w,
+		const bool recurse,
+		widget* new_parent)
 {
 	assert(w);
 
-	for(auto & child : children_)
-	{
+	for(auto& child : children_) {
 		if(child.id() != id) {
-
 			if(recurse) {
-				// decent in the nested grids.
-				grid* g = dynamic_cast<grid*>(child.get_widget());
-				if(g) {
+				if(grid* g = dynamic_cast<grid*>(child.get_widget())) {
+					// Save the current value of `w` before we recurse. If a match is found in
+					// a child grid, the old widget will be returned and won't match.
+					widget* current_w = w.get();
 
-					std::unique_ptr<widget> old = g->swap_child(id, w, true);
-					if(old) {
-						return old;
+					if(auto res = g->swap_child(id, std::move(w), true); res.get() != current_w) {
+						return res;
+					} else {
+						// Since `w` was moved "down" a level, it will be null once we return to
+						// this invocation. Re-assign it so we don't crash below.
+						w = std::move(res);
 					}
 				}
 			}
@@ -123,7 +127,7 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		}
 
 		// Free widget from cell and validate.
-		std::unique_ptr<widget> old = child.free_widget();
+		auto old = child.free_widget();
 		assert(old);
 
 		old->set_parent(new_parent);
@@ -131,11 +135,11 @@ std::unique_ptr<widget> grid::swap_child(const std::string& id,
 		w->set_parent(this);
 		w->set_visible(old->get_visible());
 
-		child.set_widget(w);
+		child.set_widget(std::move(w));
 		return old;
 	}
 
-	return nullptr;
+	return w;
 }
 
 void grid::remove_child(const unsigned row, const unsigned col)
@@ -200,11 +204,11 @@ void grid::reduce_width(const unsigned maximum_width)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " maximum width " << maximum_width << ".\n";
+	DBG_GUI_L << LOG_HEADER << " maximum width " << maximum_width << ".";
 
 	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << LOG_HEADER << " Already fits.\n";
+		DBG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
 
@@ -214,7 +218,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
-		DBG_GUI_L << LOG_HEADER << " Resize request honored.\n";
+		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
 
@@ -224,7 +228,7 @@ void grid::reduce_width(const unsigned maximum_width)
 
 	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
-	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
+	DBG_GUI_L << LOG_HEADER << " Resizing failed.";
 
 	throw layout_exception_width_resize_failed();
 }
@@ -242,7 +246,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 	for(std::size_t col = 0; col < cols_; ++col) {
 		if(too_wide - reduced >= col_width_[col]) {
 			DBG_GUI_L << LOG_HEADER << " column " << col
-					  << " is too small to be reduced.\n";
+					  << " is too small to be reduced.";
 			continue;
 		}
 
@@ -255,7 +259,7 @@ void grid::request_reduce_width(const unsigned maximum_width)
 			unsigned reduction = col_width_[col] - width;
 
 			DBG_GUI_L << LOG_HEADER << " reduced " << reduction
-					  << " pixels for column " << col << ".\n";
+					  << " pixels for column " << col << ".";
 
 			size.x -= reduction;
 			reduced += reduction;
@@ -278,11 +282,11 @@ void grid::reduce_height(const unsigned maximum_height)
 {
 	/***** ***** ***** ***** INIT ***** ***** ***** *****/
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
-	DBG_GUI_L << LOG_HEADER << " maximum height " << maximum_height << ".\n";
+	DBG_GUI_L << LOG_HEADER << " maximum height " << maximum_height << ".";
 
 	point size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
-		DBG_GUI_L << LOG_HEADER << " Already fits.\n";
+		DBG_GUI_L << LOG_HEADER << " Already fits.";
 		return;
 	}
 
@@ -292,7 +296,7 @@ void grid::reduce_height(const unsigned maximum_height)
 
 	size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {
-		DBG_GUI_L << LOG_HEADER << " Resize request honored.\n";
+		DBG_GUI_L << LOG_HEADER << " Resize request honored.";
 		return;
 	}
 
@@ -302,7 +306,7 @@ void grid::reduce_height(const unsigned maximum_height)
 
 	/***** ***** ***** ***** Acknowledge failure ***** ***** ***** *****/
 
-	DBG_GUI_L << LOG_HEADER << " Resizing failed.\n";
+	DBG_GUI_L << LOG_HEADER << " Resizing failed.";
 
 	throw layout_exception_height_resize_failed();
 }
@@ -329,7 +333,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 		if(too_high - reduced >= row_height_[row]) {
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
-					  << " is too small to be reduced fully try 1 pixel.\n";
+					  << " is too small to be reduced fully try 1 pixel.";
 
 			wanted_height = 1;
 		}
@@ -348,7 +352,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 
 			DBG_GUI_L << LOG_HEADER << " row " << row << " height "
 					  << row_height_[row] << " want to reduce " << too_high
-					  << " reduced " << reduction << " pixels.\n";
+					  << " reduced " << reduction << " pixels.";
 
 			size.y -= reduction;
 			reduced += reduction;
@@ -362,7 +366,7 @@ void grid::request_reduce_height(const unsigned maximum_height)
 	size = calculate_best_size();
 
 	DBG_GUI_L << LOG_HEADER << " Requested maximum " << maximum_height
-			  << " resulting height " << size.y << ".\n";
+			  << " resulting height " << size.y << ".";
 
 	set_layout_size(size);
 }
@@ -448,19 +452,19 @@ point grid::calculate_best_size() const
 
 	for(unsigned row = 0; row < rows_; ++row) {
 		DBG_GUI_L << LOG_HEADER << " the row_height_ for row " << row
-				  << " will be " << row_height_[row] << ".\n";
+				  << " will be " << row_height_[row] << ".";
 	}
 
 	for(unsigned col = 0; col < cols_; ++col) {
 		DBG_GUI_L << LOG_HEADER << " the col_width_ for column " << col
-				  << " will be " << col_width_[col] << ".\n";
+				  << " will be " << col_width_[col] << ".";
 	}
 
 	const point result(
 			std::accumulate(col_width_.begin(), col_width_.end(), 0),
 			std::accumulate(row_height_.begin(), row_height_.end(), 0));
 
-	DBG_GUI_L << LOG_HEADER << " returning " << result << ".\n";
+	DBG_GUI_L << LOG_HEADER << " returning " << result << ".";
 	return result;
 }
 
@@ -498,7 +502,7 @@ void grid::place(const point& origin, const point& size)
 	assert(col_grow_factor_.size() == cols_);
 
 	DBG_GUI_L << LOG_HEADER << " best size " << best_size << " available size "
-			  << size << ".\n";
+			  << size << ".";
 
 	/***** BEST_SIZE *****/
 
@@ -517,7 +521,7 @@ void grid::place(const point& origin, const point& size)
 			out << " in a '" << typeid(*pw).name() << "' with the id '" << pw->id() << "'";
 			pw = pw->parent();
 		}
-		ERR_GUI_L << LOG_HEADER << out.str() << ".\n";
+		ERR_GUI_L << LOG_HEADER << out.str() << ".";
 
 		return;
 	}
@@ -532,7 +536,7 @@ void grid::place(const point& origin, const point& size)
 
 		DBG_GUI_L << LOG_HEADER << " extra width " << w
 			<< " will be divided amount " << w_size << " units in "
-			<< cols_ << " columns.\n";
+			<< cols_ << " columns.";
 
 		if(w_size == 0) {
 			// If all sizes are 0 reset them to 1
@@ -549,7 +553,7 @@ void grid::place(const point& origin, const point& size)
 			col_width_[i] += w_normal * col_grow_factor_[i];
 			DBG_GUI_L << LOG_HEADER << " column " << i
 				<< " with grow factor " << col_grow_factor_[i]
-			<< " set width to " << col_width_[i] << ".\n";
+			<< " set width to " << col_width_[i] << ".";
 		}
 	}
 
@@ -559,7 +563,7 @@ void grid::place(const point& origin, const point& size)
 			row_grow_factor_.begin(), row_grow_factor_.end(), 0);
 		DBG_GUI_L << LOG_HEADER << " extra height " << h
 			<< " will be divided amount " << h_size << " units in "
-			<< rows_ << " rows.\n";
+			<< rows_ << " rows.";
 
 		if(h_size == 0) {
 			// If all sizes are 0 reset them to 1
@@ -576,7 +580,7 @@ void grid::place(const point& origin, const point& size)
 			row_height_[i] += h_normal * row_grow_factor_[i];
 			DBG_GUI_L << LOG_HEADER << " row " << i << " with grow factor "
 				<< row_grow_factor_[i] << " set height to "
-				<< row_height_[i] << ".\n";
+				<< row_height_[i] << ".";
 		}
 	}
 
@@ -622,21 +626,6 @@ void grid::layout_children()
 	{
 		assert(child.get_widget());
 		child.get_widget()->layout_children();
-	}
-}
-
-void grid::child_populate_dirty_list(window& caller,
-									  const std::vector<widget*>& call_stack)
-{
-	assert(!call_stack.empty() && call_stack.back() == this);
-
-	for(auto & child : children_)
-	{
-
-		assert(child.get_widget());
-
-		std::vector<widget*> child_call_stack = call_stack;
-		child.get_widget()->populate_dirty_list(caller, child_call_stack);
 	}
 }
 
@@ -697,9 +686,9 @@ bool grid::disable_click_dismiss() const
 	return false;
 }
 
-iteration::walker_base* grid::create_walker()
+iteration::walker_ptr grid::create_walker()
 {
-	return new gui2::iteration::grid(*this);
+	return std::make_unique<gui2::iteration::grid>(*this);
 }
 
 void grid::set_rows(const unsigned rows)
@@ -728,7 +717,7 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 
 	if(!children_.empty()) {
 		WRN_GUI_G << LOG_HEADER << " resizing a non-empty grid "
-				  << " may give unexpected problems.\n";
+				  << " may give unexpected problems.";
 	}
 
 	rows_ = rows;
@@ -744,14 +733,13 @@ point grid::child::get_best_size() const
 
 	if(!widget_) {
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << false
-				  << " returning " << border_space() << ".\n";
+				  << " returning " << border_space() << ".";
 		return border_space();
 	}
 
 	if(widget_->get_visible() == widget::visibility::invisible) {
 		DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
-				  << " widget visible " << false << " returning 0,0"
-				  << ".\n";
+				  << " widget visible " << false << " returning 0,0.";
 		return point();
 	}
 
@@ -759,7 +747,7 @@ point grid::child::get_best_size() const
 
 	DBG_GUI_L << LOG_CHILD_HEADER << " has widget " << true
 			  << " widget visible " << true << " returning " << best_size
-			  << ".\n";
+			  << ".";
 	return best_size;
 }
 
@@ -794,7 +782,7 @@ void grid::child::place(point origin, point size)
 	if(size <= best_size) {
 		DBG_GUI_L << LOG_CHILD_HEADER
 				  << " in best size range setting widget to " << origin << " x "
-				  << size << ".\n";
+				  << size << ".";
 
 		get_widget()->place(origin, size);
 		return;
@@ -811,7 +799,7 @@ void grid::child::place(point origin, point size)
 
 			DBG_GUI_L << LOG_CHILD_HEADER
 					  << " in maximum size range setting widget to " << origin
-					  << " x " << size << ".\n";
+					  << " x " << size << ".";
 
 			get_widget()->place(origin, size);
 			return;
@@ -830,26 +818,26 @@ void grid::child::place(point origin, point size)
 			widget_size.y = size.y;
 		}
 		DBG_GUI_L << LOG_CHILD_HEADER << " vertical growing from "
-				  << best_size.y << " to " << widget_size.y << ".\n";
+				  << best_size.y << " to " << widget_size.y << ".";
 
 	} else if(v_flag == VERTICAL_ALIGN_TOP) {
 		// Do nothing.
 
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the top.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the top.";
 
 	} else if(v_flag == VERTICAL_ALIGN_CENTER) {
 
 		widget_orig.y += (size.y - widget_size.y) / 2;
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centered.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically centered.";
 
 	} else if(v_flag == VERTICAL_ALIGN_BOTTOM) {
 
 		widget_orig.y += (size.y - widget_size.y);
-		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the bottom.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " vertically aligned at the bottom.";
 
 	} else {
 		ERR_GUI_L << LOG_CHILD_HEADER << " Invalid vertical alignment '"
-				  << v_flag << "' specified.\n";
+				  << v_flag << "' specified.";
 		assert(false);
 	}
 
@@ -862,31 +850,31 @@ void grid::child::place(point origin, point size)
 			widget_size.x = size.x;
 		}
 		DBG_GUI_L << LOG_CHILD_HEADER << " horizontal growing from "
-				  << best_size.x << " to " << widget_size.x << ".\n";
+				  << best_size.x << " to " << widget_size.x << ".";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_LEFT) {
 		// Do nothing.
-		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally aligned at the left.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally aligned at the left.";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_CENTER) {
 
 		widget_orig.x += (size.x - widget_size.x) / 2;
-		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centered.\n";
+		DBG_GUI_L << LOG_CHILD_HEADER << " horizontally centered.";
 
 	} else if(h_flag == HORIZONTAL_ALIGN_RIGHT) {
 
 		widget_orig.x += (size.x - widget_size.x);
 		DBG_GUI_L << LOG_CHILD_HEADER
-				  << " horizontally aligned at the right.\n";
+				  << " horizontally aligned at the right.";
 
 	} else {
 		ERR_GUI_L << LOG_CHILD_HEADER << " No horizontal alignment '" << h_flag
-				  << "' specified.\n";
+				  << "' specified.";
 		assert(false);
 	}
 
 	DBG_GUI_L << LOG_CHILD_HEADER << " resize widget to " << widget_orig
-			  << " x " << widget_size << ".\n";
+			  << " x " << widget_size << ".";
 
 	get_widget()->place(widget_orig, widget_size);
 }
@@ -951,12 +939,12 @@ void grid::set_child_alignment(widget* widget, unsigned set_flag, unsigned mode_
 	unsigned flags = cell->get_flags();
 
 	if((flags & mode_mask) == HORIZONTAL_GROW_SEND_TO_CLIENT) {
-		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)" << std::endl;
+		ERR_GUI_G << "Cannot set horizontal alignment (grid cell specifies dynamic growth)";
 		return;
 	}
 
 	if((flags & mode_mask) == VERTICAL_GROW_SEND_TO_CLIENT) {
-		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)" << std::endl;
+		ERR_GUI_G << "Cannot set vertical alignment (grid cell specifies dynamic growth)";
 		return;
 	}
 
@@ -978,7 +966,7 @@ void grid::layout(const point& origin)
 			const point size(col_width_[col], row_height_[row]);
 			DBG_GUI_L << LOG_HEADER << " set widget at " << row << ',' << col
 					  << " at origin " << orig << " with size " << size
-					  << ".\n";
+					  << ".";
 
 			if(get_child(row, col).get_widget()) {
 				get_child(row, col).place(orig, size);
@@ -991,8 +979,9 @@ void grid::layout(const point& origin)
 	}
 }
 
-void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
+void grid::impl_draw_children()
 {
+	// TODO: draw_manager - what is this comment talking about here? something that was removed?
 	/*
 	 * The call to SDL_PumpEvents seems a bit like black magic.
 	 * With the call the resizing doesn't seem to lose resize events.
@@ -1004,11 +993,10 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 	 */
 
 	assert(get_visible() == widget::visibility::visible);
-	set_is_dirty(false);
 
+	// TODO: draw_manager - don't draw children outside clip area. This is problematic because either clip area is not correct here or widget positions are not absolute
 	for(auto & child : children_)
 	{
-
 		widget* widget = child.get_widget();
 		assert(widget);
 
@@ -1020,10 +1008,9 @@ void grid::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 			continue;
 		}
 
-		widget->draw_background(frame_buffer, x_offset, y_offset);
-		widget->draw_children(frame_buffer, x_offset, y_offset);
-		widget->draw_foreground(frame_buffer, x_offset, y_offset);
-		widget->set_is_dirty(false);
+		widget->draw_background();
+		widget->draw_children();
+		widget->draw_foreground();
 	}
 }
 
@@ -1047,7 +1034,7 @@ unsigned grid_implementation::row_request_reduce_height(
 	}
 
 	DBG_GUI_L << LOG_IMPL_HEADER << " maximum row height " << maximum_height
-			  << " returning " << required_height << ".\n";
+			  << " returning " << required_height << ".";
 
 	return required_height;
 }
@@ -1072,7 +1059,7 @@ unsigned grid_implementation::column_request_reduce_width(
 	}
 
 	DBG_GUI_L << LOG_IMPL_HEADER << " maximum column width " << maximum_width
-			  << " returning " << required_width << ".\n";
+			  << " returning " << required_width << ".";
 
 	return required_width;
 }
@@ -1104,10 +1091,10 @@ grid_implementation::cell_request_reduce_width(grid::child& child,
 	child.widget_->request_reduce_width(maximum_width - child.border_space().x);
 }
 
-void set_single_child(grid& grid, widget* widget)
+void set_single_child(grid& grid, std::unique_ptr<widget> widget)
 {
 	grid.set_rows_cols(1, 1);
-	grid.set_child(widget,
+	grid.set_child(std::move(widget),
 				   0,
 				   0,
 				   grid::HORIZONTAL_GROW_SEND_TO_CLIENT

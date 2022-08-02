@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,7 +26,6 @@
 
 #include "help/help.hpp"
 #include "gettext.hpp"
-#include "gui/auxiliary/filter.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
@@ -40,11 +39,12 @@
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/pane.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
+#include "preferences/credentials.hpp"
+#include "preferences/game.hpp"
 #include "serialization/string_utils.hpp"
 #include "formula/string_utils.hpp"
 #include "picture.hpp"
@@ -412,8 +412,7 @@ void addon_manager::pre_show(window& window)
 	order_dropdown.set_values(order_dropdown_entries);
 	{
 		const std::string saved_order_name = preferences::addon_manager_saved_order_name();
-		const preferences::SORT_ORDER saved_order_direction =
-			static_cast<preferences::SORT_ORDER>(preferences::addon_manager_saved_order_direction());
+		const sort_order::type saved_order_direction = preferences::addon_manager_saved_order_direction();
 
 		if(!saved_order_name.empty()) {
 			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
@@ -421,7 +420,7 @@ void addon_manager::pre_show(window& window)
 			if(order_it != all_orders_.end()) {
 				int index = 2 * (std::distance(all_orders_.begin(), order_it));
 				addon_list::addon_sort_func func;
-				if(saved_order_direction == preferences::SORT_ORDER::ASCENDING) {
+				if(saved_order_direction == sort_order::type::ascending) {
 					func = order_it->sort_func_asc;
 				} else {
 					func = order_it->sort_func_desc;
@@ -493,8 +492,7 @@ void addon_manager::pre_show(window& window)
 	window.keyboard_capture(&filter);
 	list.add_list_to_keyboard_chain();
 
-	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this,
-		std::placeholders::_1, std::placeholders::_2));
+	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
 	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
@@ -688,7 +686,8 @@ void addon_manager::apply_filters()
 	// In the small-screen layout, the text_box for the filter keeps keyboard focus even when the
 	// details panel is visible, which means this can be called when the list isn't visible. That
 	// causes problems both because find_widget can throw exceptions, but also because changing the
-	// filters can trigger on_addon_select and thus affect which add-on's details are shown.
+	// filters can hide the currently-shown add-on, triggering a different one to be selected in a
+	// way that would seem random unless the user realised that they were typing into a filter box.
 	//
 	// Quick workaround is to not process the new filter if the list isn't visible.
 	auto list = find_widget<addon_list>(get_window(), "addons", false, false);
@@ -708,9 +707,9 @@ void addon_manager::order_addons()
 {
 	const menu_button& order_menu = find_widget<const menu_button>(get_window(), "order_dropdown", false);
 	const addon_order& order_struct = all_orders_.at(order_menu.get_value() / 2);
-	preferences::SORT_ORDER order = order_menu.get_value() % 2 == 0 ? preferences::SORT_ORDER::ASCENDING : preferences::SORT_ORDER::DESCENDING;
+	sort_order::type order = order_menu.get_value() % 2 == 0 ? sort_order::type::ascending : sort_order::type::descending;
 	addon_list::addon_sort_func func;
-	if(order == preferences::SORT_ORDER::ASCENDING) {
+	if(order == sort_order::type::ascending) {
 		func = order_struct.sort_func_asc;
 	} else {
 		func = order_struct.sort_func_desc;
@@ -721,13 +720,13 @@ void addon_manager::order_addons()
 	preferences::set_addon_manager_saved_order_direction(order);
 }
 
-void addon_manager::on_order_changed(unsigned int sort_column, preferences::SORT_ORDER order)
+void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type order)
 {
 	menu_button& order_menu = find_widget<menu_button>(get_window(), "order_dropdown", false);
 	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
 	int index = 2 * (std::distance(all_orders_.begin(), order_it));
-	if(order == preferences::SORT_ORDER::DESCENDING) {
+	if(order == sort_order::type::descending) {
 		++index;
 	}
 	order_menu.set_value(index);
@@ -853,10 +852,13 @@ void addon_manager::publish_addon(const addon_info& addon)
 		}
 	}
 
-	// the passphrase isn't provided, prompt for it
+	// if the passphrase isn't provided from the _server.pbl, try to pre-populate it from the preferences before prompting for it
 	if(cfg["passphrase"].empty()) {
+		cfg["passphrase"] = preferences::password(preferences::campaign_server(), cfg["author"]);
 		if(!gui2::dialogs::addon_auth::execute(cfg)) {
 			return;
+		} else {
+			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
 	}
 
@@ -955,11 +957,13 @@ static std::string format_addon_time(std::time_t time)
 	if(time) {
 		std::ostringstream ss;
 
-		const char* format = preferences::use_twelve_hour_clock_format()
-			? "%B %d %Y, %I:%M %p"
-			: "%B %d %Y, %H:%M";
+		const std::string format = preferences::use_twelve_hour_clock_format()
+			// TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
+			? _("%B %d %Y, %I:%M %p")
+			// TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
+			: _("%B %d %Y, %H:%M");
 
-		ss << std::put_time(std::localtime(&time), format);
+		ss << translation::strftime(format, std::localtime(&time));
 
 		return ss.str();
 	}
@@ -969,15 +973,17 @@ static std::string format_addon_time(std::time_t time)
 
 void addon_manager::on_addon_select()
 {
-	const addon_info* info = find_widget<addon_list>(get_window(), "addons", false).get_selected_addon();
+	widget* parent = get_window();
+	widget* parent_of_addons_list = parent;
+	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
+		parent = stk->get_layer_grid(1);
+		parent_of_addons_list = stk->get_layer_grid(0);
+	}
+
+	const addon_info* info = find_widget<addon_list>(parent_of_addons_list, "addons", false).get_selected_addon();
 
 	if(info == nullptr) {
 		return;
-	}
-
-	widget* parent = get_window();
-	if(stacked_widget* stk = find_widget<stacked_widget>(get_window(), "main_stack", false, false)) {
-		parent = stk->get_layer_grid(1);
 	}
 
 	find_widget<drawing>(parent, "image", false).set_label(info->display_icon());

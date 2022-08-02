@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -13,119 +13,89 @@
 	See the COPYING file for more details.
 */
 
-
-#include "log.hpp"
-#include "hotkey/hotkey_item.hpp"
-#include "hotkey/hotkey_command.hpp"
-#include "config.hpp"
-
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include <boost/algorithm/string/join.hpp>
-#include <boost/algorithm/string.hpp>
-#include <functional>
-#include "game_config_view.hpp"
-#include <SDL2/SDL.h>
-#include <key.hpp>
-#include <serialization/unicode.hpp>
+#include "hotkey/hotkey_item.hpp"
 
+#include "config.hpp"
+#include "game_config_view.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "key.hpp"
+#include "log.hpp"
+#include "sdl/input.hpp" // for sdl::get_mods
+#include "serialization/unicode.hpp"
+
+#include <boost/algorithm/string.hpp>
+
+#include <functional>
 
 static lg::log_domain log_config("config");
-#define ERR_G  LOG_STREAM(err,   lg::general())
-#define LOG_G  LOG_STREAM(info,  lg::general())
-#define DBG_G  LOG_STREAM(debug, lg::general())
-#define ERR_CF LOG_STREAM(err,   log_config)
+#define ERR_G LOG_STREAM(err, lg::general())
+#define LOG_G LOG_STREAM(info, lg::general())
+#define DBG_G LOG_STREAM(debug, lg::general())
+#define ERR_CF LOG_STREAM(err, log_config)
 
-namespace hotkey {
-
+namespace hotkey
+{
+namespace
+{
 hotkey_list hotkeys_;
 game_config_view default_hotkey_cfg_;
 
-namespace {
-	const int TOUCH_MOUSE_INDEX = 255;
-	const char TOUCH_MOUSE_STRING[] = "255";
-};
-
-static unsigned int sdl_get_mods()
-{
-	unsigned int mods;
-	mods = SDL_GetModState();
-
-	mods &= ~KMOD_NUM;
-	mods &= ~KMOD_CAPS;
-	mods &= ~KMOD_MODE;
-
-	// save the matching for checking right vs left keys
-	if (mods & KMOD_SHIFT)
-		mods |= KMOD_SHIFT;
-
-	if (mods & KMOD_CTRL)
-		mods |= KMOD_CTRL;
-
-	if (mods & KMOD_ALT)
-		mods |= KMOD_ALT;
-
-	if (mods & KMOD_GUI)
-	mods |= KMOD_GUI;
-
-	return mods;
-}
+const int TOUCH_MOUSE_INDEX = 255;
+}; // namespace
 
 const std::string hotkey_base::get_name() const
 {
 	std::string ret = "";
 
-	if (mod_ & KMOD_CTRL)
+	if(mod_ & KMOD_CTRL) {
 		ret += "ctrl";
+	}
 
-	ret +=
-			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
-					"+" : "");
-	if (mod_ & KMOD_ALT)
+	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
+	if(mod_ & KMOD_ALT) {
 		ret += "alt";
+	}
 
-	ret +=
-			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
-					"+" : "");
-	if (mod_ & KMOD_SHIFT)
+	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
+	if(mod_ & KMOD_SHIFT) {
 		ret += "shift";
+	}
 
-	ret +=
-			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
-					"+" : "");
-	if (mod_ & KMOD_GUI)
+	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
+	if(mod_ & KMOD_GUI) {
 #ifdef __APPLE__
 		ret += "cmd";
 #else
 		ret += "win";
 #endif
+	}
 
-	ret +=
-			(!ret.empty() && !boost::algorithm::ends_with(ret, "+") ?
-					"+" : "");
+	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
 	return ret += get_name_helper();
 }
 
 bool hotkey_base::bindings_equal(hotkey_ptr other)
 {
-	if (other == hotkey_ptr()) {
+	if(other == nullptr) {
 		return false;
 	}
 
-	hk_scopes scopematch = hotkey::get_hotkey_command(get_command()).scope
-			& hotkey::get_hotkey_command(other->get_command()).scope;
+	const hk_scopes scopematch =
+		hotkey::get_hotkey_command(get_command()).scope &
+		hotkey::get_hotkey_command(other->get_command()).scope;
 
-	if (scopematch.none()) {
+	if(scopematch.none()) {
 		return false;
 	}
 
 	return mod_ == other->mod_ && bindings_equal_helper(other);
 }
 
-bool hotkey_base::matches(const SDL_Event &event) const
+bool hotkey_base::matches(const SDL_Event& event) const
 {
-	if (!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) ||
-			!active() || is_disabled()) {
+	if(!hotkey::is_scope_active(hotkey::get_hotkey_command(get_command()).scope) || !active() || is_disabled()) {
 		return false;
 	}
 
@@ -145,15 +115,16 @@ void hotkey_base::save(config& item) const
 	save_helper(item);
 }
 
-hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
+hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 {
 	hotkey_ptr base = std::make_shared<hotkey_void>();
 	const hotkey_command& command = get_hotkey_command(id);
-	unsigned mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 
-	switch (event.type) {
+	switch(event.type) {
 	case SDL_KEYUP: {
-		if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key) || command.toggle) {
+		if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key)
+			|| command.toggle) {
 			auto keyboard = std::make_shared<hotkey_keyboard>();
 			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 			SDL_Keycode code;
@@ -161,29 +132,30 @@ hotkey_ptr create_hotkey(const std::string &id, const SDL_Event &event)
 			keyboard->set_keycode(code);
 			keyboard->set_text(SDL_GetKeyName(event.key.keysym.sym));
 		}
-	}
-		break;
+	} break;
+
 	case SDL_TEXTINPUT: {
 		if(command.toggle) {
 			return nullptr;
 		}
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
-		std::string text =  std::string(event.text.text);
+		std::string text = std::string(event.text.text);
 		keyboard->set_text(text);
 		if(text == ":" || text == "`") {
 			mods = mods & ~KMOD_SHIFT;
 		}
-	}
-		break;
+	} break;
+
 	case SDL_MOUSEBUTTONUP: {
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(event.button.button);
 		break;
 	}
+
 	default:
-		ERR_G<< "Trying to bind an unknown event type:" << event.type << "\n";
+		ERR_G << "Trying to bind an unknown event type:" << event.type;
 		break;
 	}
 
@@ -198,11 +170,11 @@ hotkey_ptr load_from_config(const config& cfg)
 {
 	hotkey_ptr base = std::make_shared<hotkey_void>();
 
-	const std::string& mouse_cfg = cfg["mouse"];
-	if (!mouse_cfg.empty()) {
+	const config::attribute_value& mouse_cfg = cfg["mouse"];
+	if(!mouse_cfg.empty()) {
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
-		if (mouse_cfg == TOUCH_MOUSE_STRING) {
+		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX) {
 			mouse->set_button(TOUCH_MOUSE_INDEX);
 		} else {
 			mouse->set_button(cfg["button"].to_int());
@@ -210,31 +182,31 @@ hotkey_ptr load_from_config(const config& cfg)
 	}
 
 	const std::string& key_cfg = cfg["key"];
-	if (!key_cfg.empty()) {
+	if(!key_cfg.empty()) {
 		auto keyboard = std::make_shared<hotkey_keyboard>();
 		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 
 		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
-		if (keycode == SDLK_UNKNOWN) {
-			ERR_G<< "Unknown key: " << key_cfg << "\n";
+		if(keycode == SDLK_UNKNOWN) {
+			ERR_G << "Unknown key: " << key_cfg;
 		}
 		keyboard->set_text(key_cfg);
 		keyboard->set_keycode(keycode);
 	}
 
-	if (base == hotkey_ptr()) {
+	if(base == hotkey_ptr()) {
 		return base;
 	}
 
 	unsigned int mods = 0;
 
-	if (cfg["shift"].to_bool())
+	if(cfg["shift"].to_bool())
 		mods |= KMOD_SHIFT;
-	if (cfg["ctrl"].to_bool())
+	if(cfg["ctrl"].to_bool())
 		mods |= KMOD_CTRL;
-	if (cfg["cmd"].to_bool())
+	if(cfg["cmd"].to_bool())
 		mods |= KMOD_GUI;
-	if (cfg["alt"].to_bool())
+	if(cfg["alt"].to_bool())
 		mods |= KMOD_ALT;
 
 	base->set_mods(mods);
@@ -245,21 +217,19 @@ hotkey_ptr load_from_config(const config& cfg)
 	return base;
 }
 
-bool hotkey_mouse::matches_helper(const SDL_Event &event) const
+bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 {
-	if (event.type != SDL_MOUSEBUTTONUP
-		&& event.type != SDL_MOUSEBUTTONDOWN
-		&& event.type != SDL_FINGERDOWN
+	if(event.type != SDL_MOUSEBUTTONUP && event.type != SDL_MOUSEBUTTONDOWN && event.type != SDL_FINGERDOWN
 		&& event.type != SDL_FINGERUP) {
 		return false;
 	}
 
-	unsigned int mods = sdl_get_mods();
-	if ((mods != mod_)) {
+	unsigned mods = sdl::get_mods();
+	if((mods != mod_)) {
 		return false;
 	}
 
-	if (event.button.which == SDL_TOUCH_MOUSEID) {
+	if(event.button.which == SDL_TOUCH_MOUSEID) {
 		return button_ == TOUCH_MOUSE_INDEX;
 	}
 
@@ -271,12 +241,18 @@ const std::string hotkey_mouse::get_name_helper() const
 	return "mouse " + std::to_string(button_);
 }
 
-void hotkey_mouse::save_helper(config &item) const
+void hotkey_mouse::save_helper(config& item) const
 {
 	item["mouse"] = 0;
-	if (button_ != 0) {
+	if(button_ != 0) {
 		item["button"] = button_;
 	}
+}
+
+void hotkey_keyboard::set_text(const std::string& text)
+{
+	text_ = text;
+	boost::algorithm::to_lower(text_);
 }
 
 const std::string hotkey_keyboard::get_name_helper() const
@@ -284,18 +260,18 @@ const std::string hotkey_keyboard::get_name_helper() const
 	return text_;
 }
 
-bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
+bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 {
-	unsigned int mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 	const hotkey_command& command = get_hotkey_command(get_command());
 
-	if ((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) &&
-			(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI ||
-			command.toggle || CKey::is_uncomposable(event.key))) {
+	if((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+		&& (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
+	) {
 		return event.key.keysym.sym == keycode_ && mods == mod_;
 	}
 
-	if (event.type == SDL_TEXTINPUT && !command.toggle) {
+	if(event.type == SDL_TEXTINPUT && !command.toggle) {
 		std::string text = std::string(event.text.text);
 		boost::algorithm::to_lower(text);
 		if(text == ":" || text == "`") {
@@ -309,16 +285,15 @@ bool hotkey_keyboard::matches_helper(const SDL_Event &event) const
 
 bool hotkey_mouse::bindings_equal_helper(hotkey_ptr other) const
 {
-	hotkey_mouse_ptr other_m = std::dynamic_pointer_cast<hotkey_mouse>(other);
-
-	if (other_m == hotkey_mouse_ptr()) {
+	auto other_m = std::dynamic_pointer_cast<hotkey_mouse>(other);
+	if(other_m == nullptr) {
 		return false;
 	}
 
 	return button_ == other_m->button_;
 }
 
-void hotkey_keyboard::save_helper(config &item) const
+void hotkey_keyboard::save_helper(config& item) const
 {
 	if(!text_.empty()) {
 		item["key"] = text_;
@@ -327,20 +302,18 @@ void hotkey_keyboard::save_helper(config &item) const
 
 bool has_hotkey_item(const std::string& command)
 {
-	for (hotkey_ptr item : hotkeys_) {
-		if (item->get_command() == command) {
+	for(const hotkey_ptr& item : hotkeys_) {
+		if(item->get_command() == command) {
 			return true;
 		}
-
 	}
 	return false;
 }
 
 bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 {
-	hotkey_keyboard_ptr other_k = std::dynamic_pointer_cast<hotkey_keyboard>(
-			other);
-	if (other_k == hotkey_keyboard_ptr()) {
+	auto other_k = std::dynamic_pointer_cast<hotkey_keyboard>(other);
+	if(other_k == nullptr) {
 		return false;
 	}
 
@@ -349,40 +322,34 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 
 void del_hotkey(hotkey_ptr item)
 {
-	if (!hotkeys_.empty()) {
+	if(!hotkeys_.empty()) {
 		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
 	}
 }
 
-void add_hotkey(const hotkey_ptr item)
+void add_hotkey(hotkey_ptr item)
 {
+	if(item) {
+		auto iter = std::find_if(hotkeys_.begin(), hotkeys_.end(),
+			[&item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); });
 
-	if (item == hotkey_ptr()) {
-		return;
+		if(iter != hotkeys_.end()) {
+			iter->swap(item);
+		} else {
+			hotkeys_.push_back(std::move(item));
+		}
 	}
-
-	scope_changer scope_ch;
-	set_active_scopes(hotkey::get_hotkey_command(item->get_command()).scope);
-
-	if (!hotkeys_.empty()) {
-		hotkeys_.erase(
-			std::remove_if(hotkeys_.begin(), hotkeys_.end(), [item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); }),
-			hotkeys_.end());
-	}
-
-	hotkeys_.push_back(item);
-
 }
 
 void clear_hotkeys(const std::string& command)
 {
-	for (hotkey::hotkey_ptr item : hotkeys_) {
-		if (item->get_command() == command)
-		{
-			if (item->is_default())
+	for(hotkey::hotkey_ptr& item : hotkeys_) {
+		if(item->get_command() == command) {
+			if(item->is_default()) {
 				item->disable();
-			else
+			} else {
 				item->clear();
+			}
 		}
 	}
 }
@@ -392,32 +359,36 @@ void clear_hotkeys()
 	hotkeys_.clear();
 }
 
-const hotkey_ptr get_hotkey(const SDL_Event &event)
+const hotkey_ptr get_hotkey(const SDL_Event& event)
 {
-	for (hotkey_ptr item : hotkeys_) {
-		if (item->matches(event)) {
+	for(const hotkey_ptr& item : hotkeys_) {
+		if(item->matches(event)) {
 			return item;
 		}
 	}
-	return hotkey_ptr(new hotkey_void());
+	return std::make_shared<hotkey_void>();
 }
 
-void load_hotkeys(const game_config_view& cfg, bool set_as_default)
+void load_default_hotkeys(const game_config_view& cfg)
 {
-	for (const config &hk : cfg.child_range("hotkey")) {
-
-		hotkey_ptr item = load_from_config(hk);
-		if (!set_as_default) {
-			item->unset_default();
-		}
-
-		if (!item->null()) {
-			add_hotkey(item);
+	hotkey_list new_hotkeys;
+	for(const config& hk : cfg.child_range("hotkey")) {
+		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+			new_hotkeys.push_back(std::move(item));
 		}
 	}
 
-	if (set_as_default) {
-		default_hotkey_cfg_ = cfg;
+	default_hotkey_cfg_ = cfg;
+	hotkeys_.swap(new_hotkeys);
+}
+
+void load_custom_hotkeys(const game_config_view& cfg)
+{
+	for(const config& hk : cfg.child_range("hotkey")) {
+		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
+			item->unset_default();
+			add_hotkey(item);
+		}
 	}
 }
 
@@ -425,10 +396,10 @@ void reset_default_hotkeys()
 {
 	hotkeys_.clear();
 
-	if (!default_hotkey_cfg_.child_range("hotkey").empty()) {
-		load_hotkeys(default_hotkey_cfg_, true);
+	if(!default_hotkey_cfg_.child_range("hotkey").empty()) {
+		load_default_hotkeys(default_hotkey_cfg_);
 	} else {
-		ERR_G<< "no default hotkeys set yet; all hotkeys are now unassigned!" << std::endl;
+		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!";
 	}
 }
 
@@ -441,9 +412,8 @@ void save_hotkeys(config& cfg)
 {
 	cfg.clear_children("hotkey");
 
-	for (hotkey_ptr item : hotkeys_) {
-		if ((!item->is_default() && item->active()) ||
-			(item->is_default() && item->is_disabled())) {
+	for(hotkey_ptr& item : hotkeys_) {
+		if((!item->is_default() && item->active()) || (item->is_default() && item->is_disabled())) {
 			item->save(cfg.add_child("hotkey"));
 		}
 	}
@@ -453,17 +423,16 @@ std::string get_names(const std::string& id)
 {
 	// Names are used in places like the hot-key preferences menu
 	std::vector<std::string> names;
-	for (const hotkey::hotkey_ptr& item : hotkeys_) {
-		if (item->get_command() == id && !item->null() && !item->is_disabled()) {
+	for(const hotkey::hotkey_ptr& item : hotkeys_) {
+		if(item->get_command() == id && !item->null() && !item->is_disabled()) {
 			names.push_back(item->get_name());
 		}
 	}
 
 	// These are hard-coded, non-rebindable hotkeys
-	if (id == "quit") {
+	if(id == "quit") {
 		names.push_back("escape");
-	}
-	else if (id == "quit-to-desktop") {
+	} else if(id == "quit-to-desktop") {
 #ifdef __APPLE__
 		names.push_back("cmd+q");
 #else
@@ -474,21 +443,19 @@ std::string get_names(const std::string& id)
 	return boost::algorithm::join(names, ", ");
 }
 
-bool is_hotkeyable_event(const SDL_Event &event) {
-
-	if (event.type == SDL_JOYBUTTONUP ||
-			event.type == SDL_JOYHATMOTION ||
-			event.type == SDL_MOUSEBUTTONUP) {
+bool is_hotkeyable_event(const SDL_Event& event)
+{
+	if(event.type == SDL_JOYBUTTONUP || event.type == SDL_JOYHATMOTION || event.type == SDL_MOUSEBUTTONUP) {
 		return true;
 	}
 
-	unsigned mods = sdl_get_mods();
+	unsigned mods = sdl::get_mods();
 
-	if (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
+	if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
 		return event.type == SDL_KEYUP;
 	} else {
-		return event.type == SDL_TEXTINPUT || event.type  == SDL_KEYUP;
+		return event.type == SDL_TEXTINPUT || event.type == SDL_KEYUP;
 	}
 }
 
-}
+} // namespace hotkey

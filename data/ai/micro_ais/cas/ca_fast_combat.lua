@@ -87,7 +87,7 @@ function ca_fast_combat:evaluation(cfg, data)
             local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes, viewing_side = viewing_side, ignore_visibility = ignore_visibility })
 
             if (#attacks > 0) then
-                local max_rating, best_target, best_dst = - math.huge
+                local max_rating, best_target, best_dst = - math.huge, nil, nil
                 for _,attack in ipairs(attacks) do
                     if enemy_map:get(attack.target.x, attack.target.y)
                         and (not avoid_map:get(attack.dst.x, attack.dst.y))

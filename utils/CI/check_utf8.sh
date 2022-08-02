@@ -7,8 +7,8 @@ command -v isutf8 >/dev/null || { echo "Install 'isutf8' from moreutils to use t
 
 exit_code=0
 
-find src/ -type f -print0 | xargs -0 isutf8 -- || exit_code=1
-for ex in png ogg jpg wav gif xcf bin; do args+=(! -name "*.$ex"); done
+find src/ -type f -not -path "src/modules/*" -print0 | xargs -0 isutf8 -- || exit_code=1
+for ex in png ogg jpg wav gif xcf bin webp; do args+=(! -name "*.$ex"); done
 find data/ -type f "${args[@]}" ! -name "test_cve_2018_1999023_2.cfg" -print0 | xargs -0 isutf8 -- || exit_code=1
 find po/ -type f -print0 | xargs -0 isutf8 -- || exit_code=1
 

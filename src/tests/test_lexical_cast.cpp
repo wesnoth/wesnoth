@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include "lexical_cast.hpp"
+#include "log.hpp"
 
 #include <boost/test/unit_test.hpp>
 
@@ -23,8 +24,6 @@
 #include <boost/mpl/copy.hpp>
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/contains.hpp>
-
-#include <iostream>
 
 namespace test_throw {
 
@@ -72,7 +71,7 @@ namespace {
 bool validate(const char* str)
 {
 	if(str != result) {
-		std::cerr << "Received " << str << '\n'
+		PLAIN_LOG << "Received " << str << '\n'
 				<< "Expected " << result << '\n';
 		return false;
 	} else {

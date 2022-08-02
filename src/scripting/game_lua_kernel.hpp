@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -58,6 +58,8 @@ class game_lua_kernel : public lua_kernel_base
 	tod_manager & tod_man();
 
 	config level_lua_;
+	int EVENT_TABLE;
+	bool has_preloaded_ = false;
 
 	std::stack<game_events::queued_event const * > queued_events_;
 
@@ -117,7 +119,9 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
 	int intf_play_sound(lua_State *L);
-	int intf_print(lua_State *L);
+	int intf_set_floating_label(lua_State* L, bool spawn);
+	int intf_remove_floating_label(lua_State* L);
+	int intf_move_floating_label(lua_State* L);
 	void put_unit_helper(const map_location& loc);
 	int intf_put_unit(lua_State *L);
 	int intf_erase_unit(lua_State *L);
@@ -147,10 +151,14 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_side(lua_State* L);
 	int intf_add_tile_overlay(lua_State *L);
 	int intf_remove_tile_overlay(lua_State *L);
+	template<bool is_menu_item>
+	int intf_add_event_simple(lua_State* L);
+	int intf_add_event_wml(lua_State* L);
 	int intf_add_event(lua_State *L);
 	int intf_remove_event(lua_State *L);
 	int intf_color_adjust(lua_State *L);
 	int intf_get_color_adjust(lua_State *L);
+	int intf_screen_fade(lua_State *L);
 	int intf_delay(lua_State *L);
 	int intf_add_label(lua_State *L);
 	int intf_remove_label(lua_State *L);
@@ -215,6 +223,42 @@ public:
 	bool run_filter(char const *name, const team& t);
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, const vconfig&);
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Uses a default function that interprets ActionWML.
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event();
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Compiles the function from the given code.
+	 * @param name The event name, used to generate a chunk name for the compiled function
+	 * @param id The event id, used to generate a chunk name for the compiled function
+	 * @param code The actual code of the function
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event(const std::string& name, const std::string& id, const std::string& code);
+	/**
+	 * Store a WML event in the Lua registry, as a function.
+	 * Uses the function at the specified Lua stack index.
+	 * @param idx The Lua stack index of the function to store
+	 * @return A unique index into the EVENT_TABLE within the Lua registry
+	 */
+	int save_wml_event(int idx);
+	/**
+	 * Clear a WML event store in the Lua registry.
+	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
+	 */
+	void clear_wml_event(int ref);
+	/**
+	 * Run a WML stored in the Lua registry.
+	 * @param ref The unique index into the EVENT_TABLE within the Lua registry
+	 * @param args Arguments to pass to the event function, as a config
+	 * @param ev The event data for the event being fired
+	 * @param out If non-null, receives the result of the called function (provided it is a boolean value)
+	 * @return Whether the function was successfully called; could be false if @a ref was invalid or if the function raised an error
+	 */
+	bool run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev, bool* out = nullptr);
 
 	virtual void log_error(char const* msg, char const* context = "Lua error") override;
 
@@ -223,4 +267,5 @@ public:
 
 	void mouse_over_hex_callback(const map_location& loc);
 	void select_hex_callback(const map_location& loc);
+	void preload_finished() {has_preloaded_ = true;}
 };

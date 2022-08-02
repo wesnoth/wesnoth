@@ -1,13 +1,14 @@
+#
 # Translators:
-# GunChleoc, 2018
+# GunChleoc, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2020-01-13 12:31+0000\n"
-"Last-Translator: GunChleoc, 2018\n"
+"POT-Creation-Date: 2022-02-20 10:48 UTC\n"
+"PO-Revision-Date: 2022-01-13 14:05+0000\n"
+"Last-Translator: GunChleoc, 2020\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
 "teams/12769/gd/)\n"
 "Language: gd\n"
@@ -44,10 +45,8 @@ msgstr "Dùbhlanach"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "Ridire"
+msgstr "Sàr-ridire"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -64,10 +63,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Ìre glas-laoich, 4 cnàmh-sgeulan.)"
+msgstr "(Ìre fhoghlamaiche, 4 cnàmh-sgeulan.)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -106,8 +103,15 @@ msgstr "A’ gabhail draoidh an greim"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
+#, fuzzy
+#| msgid ""
+#| "The remote freehold of Maghre in the western reaches of the Kingdom of "
+#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
+#| "comings and goings of the wider world. Wars and the rumor of wars touched "
+#| "them not, until the day a dark mage settled in the region and began "
+#| "seeking sacrifices for his evil summonings."
 msgid ""
-"The remote freehold of Maghre in the western reaches of the kingdom of "
+"The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
 "comings and goings of the wider world. Wars and the rumor of wars touched "
 "them not, until the day a dark mage settled in the region and began seeking "
@@ -224,9 +228,9 @@ msgstr ""
 msgid "Humans"
 msgstr "Daoine"
 
+#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #. [side]
-#. [side]: type=Dark Sorcerer, id=Mordak
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:114
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:81
@@ -491,23 +495,6 @@ msgstr "Chaidh Arbhath agus a chuideachd gu tuath a’ sireadh a bhràthar."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -534,7 +521,9 @@ msgstr ""
 "am b’ urrainn dhan luchd-leantainn aig a’ marbh-dhraoidh falach gu "
 "sàbhailte; chan eil ach achaidhean anns gach àite eile. Shaoil mi gun robh "
 "an oidhirp gun toradh an toiseach, ach thachair sinn air lorgan anmoch a’ "
-"chiad fheasgar. Chaidh cuid dhiubh a dhèanamh le casan cnàimhnich.\n"
+"chiad fheasgar. Chaidh cuid dhiubh a dhèanamh le casan cnàimhnich ged nach "
+"faca sinn ach lorgan dhaoine a’ giùlain rudeigin trom às dèid a’ chiad "
+"làraich-campachaidh.\n"
 "\n"
 "Theann sinn dlùth gu leòr a-nis ach am bitheamaid cinnteach: tha na lorgan "
 "ud a’ dol dhan Choille Ghlas. Chan eil cuimhne gun deach duine Mhachra no "
@@ -610,15 +599,17 @@ msgstr "Glac an luchd-bruid"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-#, fuzzy
-#| msgid "Kill the Dark Adept before his reinforcements arrive"
 msgid "Kill the Dark Adept before more elves arrive"
-msgstr "Marbh an Eòlach Dubh mus dig am foirlionadh aige"
+msgstr "Marbh an Eòlach Dubh mus dig barrachd sìthichean"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
+#, fuzzy
+#| msgid ""
+#| "The elvish forces are spread out. Seek to fight them one at a time with "
+#| "several of your units."
 msgid ""
-"The Elvish forces are spread out. Seek to fight them one at a time with "
+"The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
 "Tha feachd nan sìthichean sgapte. Feuch an dèan thu sabaid an aghaidh gach "
@@ -667,13 +658,18 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Ghlac na daoine ud am prìosanach aca nuair a bha e ri marbh-dhraoidheachd; "
+"air ur sgàth-ne tha mi ’n dòchas nach e ur bràthair a bh’ ann. Bithibh an "
+"dùil gur e murtair ur bràthar a tha san duine a ghlac iad agus tha sinn "
+"cinnteach gun saoraich na draoidh liatha na h-anman uile a cheangail "
+"draoidheachd olc a’ phrìosanaich aca dhan t-saoghal seo."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
 msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
-msgstr ""
+msgstr "Chuir sinn às dhan mharbh-dhraoidh air a’ bhlàr! Mharbh mi fhìn e."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -681,6 +677,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Chuir sinn às dhan mharbh-dhraoidh air a’ bhlàr! Chunnaic mi fhìn mar a "
+"thachair."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -694,19 +692,24 @@ msgid ""
 "Either way, nothing will be gained by your intrusion into our woods. Now "
 "advance no further, for we will defend our land."
 msgstr ""
+"Chuala sinn fuaimean catha trì làithean air ais ach bha droch-fhàileadh a’ "
+"bhàis do-àicheanta nuair a chaidh am prìosanach seachad oirnn; mas e ur "
+"bràthair a tha sa phrìosanach ann an da-rìribh, feumaidh gur e marbh-"
+"dhraoidh a th’ ann-san. Thoiribh ’nur cuimhne ur bràthair mar a tha sinn "
+"uile an dòchas gun robh e agus biodh fios agaibh gur e an dìoghaltas cho "
+"trom ’s a ghabhas a tha ann an dàn a’ phrìosanaich ud.\n"
+"\n"
+"Co-dhiù no co-dheth, chan fhaigh sibh buannachd à briseadh a-steach air ar "
+"coille. Nise, na dlùthaibh oirnn on a dhìonas sinn ar dùthaich."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"Seo faoinsgeulachdan dhut. Cha chuir sìthiche fon ghrèin stad orm gus Baran "
-"a shaoradh!"
+"Seo faoinsgeulachdan dhut ach bhiodh taibhse nas beachdaidh na na daoine-"
+"sìthe ud. Gidheadh, cha chuir iad stad orm a shaoradh Bharain!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -743,12 +746,15 @@ msgid ""
 "without arousing the elves’ suspicions. Still, no need for the disguise any "
 "more."
 msgstr ""
+"Mo mhallachd orra! Nan robh iad corra uair nas slaodaiche, bhiodh teans agam "
+"na lorgan againn fhalach gun amharas nan daoine-sìthe a tharraing oirnn. "
+"Nise, chan eil an t-aimh-riochd gu feum oirnn tuilleadh."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "Uill, a dhaoine-sìthe? Am faic sibh cò na marbh-dhraoidhean a-nis?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
@@ -757,6 +763,9 @@ msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"Chuala mi fuaimean catha ach cha robh mi ’n dùil gum faicinn a leithid. "
+"Bheir mi fios dhan chomhairle ach am faigh iadsan a-mach cò na marbh-"
+"dhraoidhean."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
@@ -764,7 +773,7 @@ msgid "Come on, men, let’s catch those kidnappers!"
 msgstr "Siuthadaibh, ’illean, gabhamaid greim air na sgimilearan!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:558
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
 msgid ""
 "Hah! You have captured me, but it will avail you nothing. I sent your "
 "precious brother the mage north with half my men a day since; he will be "
@@ -776,7 +785,7 @@ msgstr ""
 "ann an toll-dubh ar maighistir."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:563
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:561
 msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
@@ -785,47 +794,47 @@ msgstr ""
 "leagaidh mi d’ fhuil dhìblidh."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:564
 msgid "Sithrak"
 msgstr "Sithrig"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:565
 msgid "Eleben"
 msgstr "Eleben"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:568
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:566
 msgid "Jarlom"
 msgstr "Iarlam"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:569
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:567
 msgid "Hamik"
 msgstr "Samaig"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:571
 msgid "Akranbral"
 msgstr "Acranbral"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:572
 msgid "Drakanal"
 msgstr "Dracanal"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:575
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:573
 msgid "Xaskanat"
 msgstr "Siasganad"
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:576
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:574
 msgid "Katklagad"
 msgstr "Cachlagad"
 
 #. [message]: speaker=unit
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:582
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
 "guards are $first_password_$first_password and $second_password_"
@@ -836,14 +845,14 @@ msgstr ""
 "sna faclan-faire aig na geàird."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:590
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
 msgid "Bind him and take him with us. If he has played us false, he will die."
 msgstr ""
 "Cuibhrichibh e ’s bheir sinn còmhla rinn e. Ma dh’innis e breug, gheibh e a’ "
 "bhàs."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:603
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:602
 msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
@@ -852,7 +861,7 @@ msgstr ""
 "ri Baran tuilleadh o na thachair air Todhan Carag."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:608
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:607
 msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
@@ -862,12 +871,12 @@ msgstr ""
 "an rathad oirnn."
 
 #. [event]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:623
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
 msgid "Brena"
 msgstr "Bren"
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:632
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:631
 msgid ""
 "Greetings. I am Brena, a knight errant. I saw you pursuing and fighting the "
 "foul undead. Are there more of them to be destroyed?"
@@ -877,7 +886,7 @@ msgstr ""
 "rim milleadh ann?"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:637
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:636
 msgid ""
 "Aye. We think there’s a nest of them north-east of here. They’ve captured my "
 "brother."
@@ -886,7 +895,7 @@ msgstr ""
 "Ghlac iad mo bhràthair."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:642
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:641
 msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
@@ -895,33 +904,33 @@ msgstr ""
 "aghaidh còmhla, mas fhaod mi."
 
 #. [message]: role=Mercenary
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:647
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:646
 msgid "He would only slow us down!"
 msgstr "Cha dèan e ach maille oirnn!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:652
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:651
 msgid "It is my place to decide this."
 msgstr "Is mise am fear a nì an co-dhùnadh."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:654
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:653
 msgid "Oh, all right then. Come along with us."
 msgstr "Ceart gu leòr mar-thà. Thigibh còmhla rinn."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:658
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:657
 msgid "Thank you. My comrades and I will help you on your noble quest."
 msgstr ""
 "Mòran taing. Cuidichidh mi fhìn ’s mo cuideachd dhuibh le ur n-obair uasail."
 
 #. [option]
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:663
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:662
 msgid "I am sorry. We have not the time to spare."
 msgstr "Tha mi duilich. Chan eil ùine gu leòr againn."
 
 #. [message]: speaker=Brena
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:667
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:666
 msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
@@ -930,33 +939,39 @@ msgstr ""
 "Cuidichidh mo chuideachd sibh uair sam bith a dh’iarras sibh."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:682
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:681
 msgid "You receive 70 pieces of gold!"
 msgstr "Fhuair thu 70 bonn òir!"
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:711
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:710
 msgid ""
 "These elves have delayed us too long, the kidnappers’ trail will have faded "
 "by now."
 msgstr ""
+"Chuir na daoine-sìthe cus maille oirnn agus cha lorg sinn an luchd-bruid a-"
+"nis."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:717
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
 msgid ""
 "More elves are arriving; even if they believe me, the kidnappers’ trail is "
 "sure to fade before we can follow."
 msgstr ""
+"Tha barrachd dhaoine-sìthe a’ tighinn; fiù ’s ma chreideas iad mi, tha mi ’n "
+"dùil nach lorg sinn an luchd-bruid tuilleadh an uairsin."
 
 #. [message]: speaker=Nil-Galion
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:731
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
 msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Amadain mheallta, tha sibh a’ teasairginn marbh-dhraoidh. Tha mi ’n dòchas "
+"gum bi sibh ro anmoch agus gum faigh ar n-anman sìth."
 
 #. [message]: speaker=Arvith
-#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:741
+#: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
 msgid "Follow their back trail!"
 msgstr "Leanaibh air na lorgan aca!"
 
@@ -1816,41 +1831,10 @@ msgid "It is over, I am vanquished."
 msgstr "Sin e, chaidh cur às dhomh."
 
 #. [unit]: id=Baran, type=Red Mage
-#: data/campaigns/Two_Brothers/utils/characters.cfg:128
+#: data/campaigns/Two_Brothers/utils/characters.cfg:141
 msgid "Baran"
 msgstr "Baran"
 
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Gliocas:"
-
-#~ msgid ""
-#~ "Curses! If they had been an hour slower, our master’s reinforcements "
-#~ "would already be here to meet us."
-#~ msgstr ""
-#~ "Mìle mallachd! Nan robh iad uair a thìde na bu shlaodaiche, bhiodh "
-#~ "foirlionadh ar maighistir air a thighinn gus coinneachadh rinn."
-
-#~ msgid "My reinforcements are here!"
-#~ msgstr "Thàinig am foirlionadh agam!"
-
-#~ msgid "He escaped us..."
-#~ msgstr "Theich e uainn…"
-
-#~ msgid ""
-#~ "Those men told me their prisoner had attempted to murder their master, "
-#~ "and warned that evil men would follow him. Advance no further, or you "
-#~ "will die."
-#~ msgstr ""
-#~ "’S ann gun duirt na daoine ud rium gun do dh’fheuch am prìosanach aca am "
-#~ "maighistir a mharbhadh agus thug iad rabhadh dhomh gum biodh daoine olca "
-#~ "às an dèidh. Na digibh nas dlùithe no cuiridh sinn bàs oirbh."
-
-#~ msgid ""
-#~ "Foolish human, you have killed me but you will not catch the undead in "
-#~ "time. I have fulfilled my contract, and will be reanimated soon to become "
-#~ "a lord of their armies."
-#~ msgstr ""
-#~ "Amadain dhuine, mharbh thu mi ach chan fhaigh thu greim air na closaich "
-#~ "ri àm. Choilean mi mo dhleastanas agus thèid m’ ath-bheòthachadh a "
-#~ "dh’aithghearr ’s thèid mi ’nam thighearna san fheachd aca."

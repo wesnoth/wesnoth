@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -143,8 +143,6 @@ public:
 	void flush_messages();
 
 private:
-	bool filter_event(const event_handler& handler, const queued_event& ev);
-
 	void process_event(handler_ptr& handler_p, const queued_event& ev);
 
 	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source);

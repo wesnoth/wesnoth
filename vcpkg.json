@@ -6,8 +6,9 @@
     "sdl2",
     {
       "name": "sdl2-image",
-      "features": [ "libjpeg-turbo" ]
+      "features": [ "libjpeg-turbo", "libwebp" ]
     },
+    "libwebp",
     {
       "name": "sdl2-mixer",
       "features": [ "libvorbis", "dynamic-load" ]
@@ -19,6 +20,7 @@
     "fontconfig",
     "libvorbis",
     "libogg",
+    "openssl",
     "boost-filesystem",
     "boost-iostreams",
     {
@@ -31,12 +33,10 @@
       "features": [ "icu" ]
     },
     "boost-asio",
-    "boost-assign",
     "boost-program-options",
     "boost-system",
-    "boost-thread",
     "boost-bimap",
-    "boost-multi-array",
+    "boost-math",
     "boost-logic",
     "boost-format",
     "boost-scope-exit",

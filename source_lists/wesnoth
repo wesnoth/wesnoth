@@ -72,6 +72,8 @@ desktop/open.cpp
 desktop/paths.cpp
 desktop/version.cpp
 display_chat_manager.cpp
+draw.cpp
+draw_manager.cpp
 editor/action/action.cpp
 editor/action/action_item.cpp
 editor/action/action_label.cpp
@@ -141,7 +143,9 @@ game_initialization/singleplayer.cpp
 game_launcher.cpp
 game_state.cpp
 gui/auxiliary/iterator/iterator.cpp
+gui/auxiliary/iterator/walker_container.cpp
 gui/auxiliary/iterator/walker_grid.cpp
+gui/auxiliary/iterator/walker_scrollbar_container.cpp
 gui/auxiliary/iterator/walker_tree_node.cpp
 gui/auxiliary/iterator/walker_widget.cpp
 gui/auxiliary/tips.cpp
@@ -157,6 +161,7 @@ gui/core/placer/horizontal_list.cpp
 gui/core/placer/vertical_list.cpp
 gui/core/static_registry.cpp
 gui/core/timer.cpp
+gui/core/top_level_drawable.cpp
 gui/core/widget_definition.cpp
 gui/core/window_builder.cpp
 gui/core/window_builder/helper.cpp
@@ -342,6 +347,8 @@ scripting/mapgen_lua_kernel.cpp
 scripting/plugins/context.cpp
 scripting/plugins/manager.cpp
 sdl/point.cpp
+sdl/input.cpp
+sdl/texture.cpp
 map_settings.cpp
 side_filter.cpp
 statistics.cpp

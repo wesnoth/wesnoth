@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,6 +49,7 @@
 #include "utils/name_generator.hpp"
 #include "utils/markov_generator.hpp"
 #include "utils/context_free_grammar_generator.hpp"
+#include "utils/scope_exit.hpp"
 
 #include <cstring>
 #include <exception>
@@ -56,9 +57,9 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <numeric>
 
 #include "lua/lauxlib.h"
-#include "lua/lua.h"
 #include "lua/lualib.h"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -122,6 +123,13 @@ static int impl_version_get(lua_State* L)
 	return 0;
 }
 
+static int impl_version_dir(lua_State* L)
+{
+	static const std::vector<std::string> fields{"major", "minor", "revision", "is_canonical", "special", "sep"};
+	lua_push(L, fields);
+	return 1;
+}
+
 /**
  * Destroy a version
  */
@@ -175,6 +183,7 @@ static int intf_make_version(lua_State* L)
 	if(luaL_newmetatable(L, Version)) {
 		static const luaL_Reg metafuncs[] {
 			{ "__index", &impl_version_get },
+			{ "__dir", &impl_version_dir },
 			{ "__tostring", &impl_version_tostring },
 			{ "__lt", &impl_version_compare<VERSION_COMP_OP::OP_LESS> },
 			{ "__le", &impl_version_compare<VERSION_COMP_OP::OP_LESS_OR_EQUAL> },
@@ -205,7 +214,7 @@ static int intf_current_version(lua_State* L) {
  */
 int lua_kernel_base::intf_print(lua_State* L)
 {
-	DBG_LUA << "intf_print called:\n";
+	DBG_LUA << "intf_print called:";
 	std::size_t nargs = lua_gettop(L);
 
 	lua_getglobal(L, "tostring");
@@ -215,20 +224,20 @@ int lua_kernel_base::intf_print(lua_State* L)
 		lua_call(L, 1, 1);
 		const char * str = lua_tostring(L, -1);
 		if (!str) {
-			LOG_LUA << "'tostring' must return a value to 'print'\n";
+			LOG_LUA << "'tostring' must return a value to 'print'";
 			str = "";
 		}
 		if (i > 1) {
 			cmd_log_ << "\t"; //separate multiple args with tab character
 		}
 		cmd_log_ << str;
-		DBG_LUA << "'" << str << "'\n";
+		DBG_LUA << "'" << str << "'";
 		lua_pop(L, 1); // Pop the output of tostrring()
 	}
 	lua_pop(L, 1); // Pop 'tostring' global
 
 	cmd_log_ << "\n";
-	DBG_LUA << "\n";
+	DBG_LUA;
 
 	return 0;
 }
@@ -252,7 +261,7 @@ static void impl_warn(void* p, const char* msg, int tocont) {
 
 void lua_kernel_base::add_log_to_console(const std::string& msg) {
 	cmd_log_ << msg << "\n";
-	DBG_LUA << "'" << msg << "'\n";
+	DBG_LUA << "'" << msg << "'";
 }
 
 /**
@@ -502,6 +511,190 @@ static int intf_get_language(lua_State* L)
 	return 1;
 }
 
+static void dir_meta_helper(lua_State* L, std::vector<std::string>& keys)
+{
+	switch(luaL_getmetafield(L, -1, "__dir")) {
+		case LUA_TFUNCTION:
+			lua_pushvalue(L, 1);
+			lua_push(L, keys);
+			lua_call(L, 2, 1);
+			keys = lua_check<std::vector<std::string>>(L, -1);
+			break;
+		case LUA_TTABLE:
+			auto dir_keys = lua_check<std::vector<std::string>>(L, -1);
+			std::copy(dir_keys.begin(), dir_keys.end(), std::back_inserter(keys));
+			break;
+	}
+	lua_pop(L, 1);
+}
+
+// This is a separate function so I can use a protected call on it to catch errors.
+static int impl_is_deprecated(lua_State* L)
+{
+	auto key = luaL_checkstring(L, 2);
+	auto type = lua_getfield(L, 1, key);
+	if(type == LUA_TTABLE) {
+		lua_pushliteral(L, "__deprecated");
+		if(lua_rawget(L, -2) == LUA_TBOOLEAN) {
+			auto deprecated = luaW_toboolean(L, -1);
+			lua_pushboolean(L, deprecated);
+			return 1;
+		}
+		lua_pop(L, 1);
+	}
+	lua_pushboolean(L, false);
+	return 1;
+}
+
+// This is also a separate function so I can use a protected call on it to catch errors.
+static int impl_get_dir_suffix(lua_State*L)
+{
+	auto key = luaL_checkstring(L, 2);
+	std::string suffix = " ";
+	auto type = lua_getfield(L, 1, key);
+	if(type == LUA_TTABLE) {
+		suffix = "†";
+	} else if(type == LUA_TFUNCTION) {
+		suffix = "ƒ";
+	} else if(type == LUA_TUSERDATA) {
+		lua_getglobal(L, "getmetatable");
+		lua_pushvalue(L, -2);
+		lua_call(L, 1, 1);
+		if(lua_type(L, -1) == LUA_TSTRING) {
+			auto meta = lua_check<std::string>(L, -1);
+			if(meta == "function") {
+				suffix = "ƒ";
+			}
+		}
+	}
+	suffix = " " + suffix;
+	lua_pushlstring(L, suffix.c_str(), suffix.size());
+	return 1;
+}
+
+/**
+ * This function does the actual work of grabbing all the attribute names.
+ * It's a separate function so that it can be used by tab-completion as well.
+ */
+static std::vector<std::string> luaW_get_attributes(lua_State* L, int idx)
+{
+	std::vector<std::string> keys;
+	if(lua_istable(L, idx)) {
+		// Walk the metatable chain (as long as __index is a table)...
+		// If we reach an __index that's a function, check for a __dir metafunction.
+		int save_top = lua_gettop(L);
+		lua_pushvalue(L, idx);
+		ON_SCOPE_EXIT(&) {
+			lua_settop(L, save_top);
+		};
+		do {
+			int table_idx = lua_absindex(L, -1);
+			for(lua_pushnil(L); lua_next(L, table_idx); lua_pop(L, 1)) {
+				if(lua_type(L, -2) == LUA_TSTRING) {
+					keys.push_back(lua_tostring(L,-2));
+				}
+			}
+			// Two possible exit cases:
+			// 1. getmetafield returns TNIL because there is no __index
+			// In this case, the stack is unchanged, so the while condition is still true.
+			// 2. The __index is not a table
+			// In this case, obviously the while condition fails
+			if(luaL_getmetafield(L, table_idx, "__index") == LUA_TNIL) break;
+		} while(lua_istable(L, -1));
+		if(lua_isfunction(L, -1)) {
+			lua_pop(L, 1);
+			dir_meta_helper(L, keys);
+		}
+	} else if(lua_isuserdata(L, idx) && !lua_islightuserdata(L, idx)) {
+		lua_pushvalue(L, idx);
+		dir_meta_helper(L, keys);
+		lua_pop(L, 1);
+	}
+	// Sort and remove any duplicates
+	std::sort(keys.begin(), keys.end());
+	auto new_end = std::unique(keys.begin(), keys.end());
+	new_end = std::remove_if(keys.begin(), new_end, [L, idx](const std::string& key) {
+		if(key.compare(0, 2, "__") == 0) {
+			return true;
+		}
+		int save_top = lua_gettop(L);
+		ON_SCOPE_EXIT(&) {
+			lua_settop(L, save_top);
+		};
+		// Exclude deprecated elements
+		// Some keys may be write-only, which would raise an exception here
+		// In that case we just ignore it and assume not deprecated
+		// (the __dir metamethod would be responsible for excluding deprecated write-only keys)
+		lua_pushcfunction(L, impl_is_deprecated);
+		lua_pushvalue(L, idx);
+		lua_push(L, key);
+		if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+			return luaW_toboolean(L, -1);
+		}
+		return false;
+	});
+	keys.erase(new_end, keys.end());
+	return keys;
+}
+
+/**
+ * Prints out a list of keys available in an object.
+ * A list of keys is gathered from the following sources:
+ * - For a table, all keys defined in the table
+ * - Any keys accessible through the metatable chain (if __index on the metatable is a table)
+ * - The output of the __dir metafunction
+ * - Filtering out any keys beginning with two underscores
+ * - Filtering out any keys for which object[key].__deprecated exists and is true
+ * The list is then sorted alphabetically and formatted into columns.
+ * - Arg 1: Any object
+ * - Arg 2: (optional) Function to use for output; defaults to _G.print
+ */
+static int intf_object_dir(lua_State* L)
+{
+	if(lua_isnil(L, 1)) return luaL_argerror(L, 1, "Can't dir() nil");
+	if(!lua_isfunction(L, 2)) {
+		luaW_getglobal(L, "print");
+	}
+	int fcn_idx = lua_gettop(L);
+	auto keys = luaW_get_attributes(L, 1);
+	size_t max_len = std::accumulate(keys.begin(), keys.end(), 0, [](size_t max, const std::string& next) {
+		return std::max(max, next.size());
+	});
+	// Let's limit to about 80 characters of total width with minimum 3 characters padding between columns
+	static const size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
+	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
+	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
+	size_t n_rows = ceil(keys.size() / double(n_cols));
+	for(size_t i = 0; i < n_rows; i++) {
+		std::ostringstream line;
+		line.fill(' ');
+		line.setf(std::ios::left);
+		for(size_t j = 0; j < n_cols && j + (i * n_cols) < keys.size(); j++) {
+			int save_top = lua_gettop(L);
+			ON_SCOPE_EXIT(&) {
+				lua_settop(L, save_top);
+			};
+			lua_pushcfunction(L, impl_get_dir_suffix);
+			lua_pushvalue(L, 1);
+			const auto& key = keys[j + i * n_cols];
+			lua_pushlstring(L, key.c_str(), key.size());
+			std::string suffix = " !"; // Exclamation mark to indicate an error
+			if(lua_pcall(L, 2, 1, 0) == LUA_OK) {
+				suffix = luaL_checkstring(L, -1);
+			}
+			// This weird calculation is because width counts in bytes, not code points
+			// Since the suffix is a Unicode character, that messes up the alignment
+			line.width(col_width - SUFFIX_PADDING + suffix.size());
+			// Concatenate key and suffix beforehand so they share the same field width.
+			line << (key + suffix) << std::flush;
+		}
+		lua_pushvalue(L, fcn_idx);
+		lua_push(L, line.str());
+		lua_call(L, 1, 0);
+	}
+	return 0;
+}
+
 // End Callback implementations
 
 // Template which allows to push member functions to the lua kernel base into lua as C functions, using a shim
@@ -599,6 +792,7 @@ lua_kernel_base::lua_kernel_base()
 		{ "get_language",             &intf_get_language             },
 		{ "version",                  &intf_make_version       },
 		{ "current_version",          &intf_current_version    },
+		{ "print_attributes",         &intf_object_dir         },
 		{ nullptr, nullptr }
 	};
 
@@ -716,6 +910,8 @@ lua_kernel_base::lua_kernel_base()
 	lua_getglobal(L, "_G");
 	lua_setfield(L, -2, "__index");
 	lua_setmetatable(L, -2);
+	lua_pushcfunction(L, intf_object_dir);
+	lua_setfield(L, -2, "dir");
 	lua_setfield(L, LUA_REGISTRYINDEX, Interp);
 
 	// Loading ilua:
@@ -764,7 +960,7 @@ lua_kernel_base::~lua_kernel_base()
 
 void lua_kernel_base::log_error(char const * msg, char const * context)
 {
-	ERR_LUA << context << ": " << msg << '\n';
+	ERR_LUA << context << ": " << msg;
 }
 
 void lua_kernel_base::throw_exception(char const * msg, char const * context)
@@ -825,7 +1021,7 @@ bool lua_kernel_base::protected_call(lua_State * L, int nArgs, int nRets, error_
 bool lua_kernel_base::load_string(char const * prog, const std::string& name, error_handler e_h)
 {
 	// pass 't' to prevent loading bytecode which is unsafe and can be used to escape the sandbox.
-	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? name.c_str() : prog, "t");
+	int errcode = luaL_loadbufferx(mState, prog, strlen(prog), name.empty() ? prog : name.c_str(), "t");
 	if (errcode != LUA_OK) {
 		char const * msg = lua_tostring(mState, -1);
 		std::string message = msg ? msg : "null string";
@@ -981,12 +1177,12 @@ int lua_kernel_base::intf_require(lua_State* L)
 		// stack is now [packagename] [wesnoth] [package] [chunk]
 		return 0;
 	}
-	DBG_LUA << "require: loaded a file, now calling it\n";
+	DBG_LUA << "require: loaded a file, now calling it";
 
 	if (!this->protected_call(L, 0, 1, std::bind(&lua_kernel_base::log_error, this, std::placeholders::_1, std::placeholders::_2))) {
 		// historically if wesnoth.require fails it just yields nil and some logging messages, not a lua error
 		return 0;
-    }
+	}
 	// stack is now [packagename] [wesnoth] [package] [results]
 
 	lua_pushvalue(L, 1);
@@ -1094,8 +1290,8 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 	int result = luaL_loadstring(L, load.c_str());
 	if(result != LUA_OK) {
 		// This isn't at error level because it's a really low priority error; it just means the user tried to tab-complete something that doesn't exist.
-		LOG_LUA << "Error when attempting tab completion:\n";
-		LOG_LUA << luaL_checkstring(L, -1) << '\n';
+		LOG_LUA << "Error when attempting tab completion:";
+		LOG_LUA << luaL_checkstring(L, -1);
 		// Just return an empty list; no matches were found
 		lua_settop(L, save_stack);
 		return ret;

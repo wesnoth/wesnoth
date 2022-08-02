@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -97,11 +97,7 @@ bool spacer::disable_click_dismiss() const
 	return false;
 }
 
-void spacer::impl_draw_background(surface& /*frame_buffer*/
-								   ,
-								   int /*x_offset*/
-								   ,
-								   int /*y_offset*/)
+void spacer::impl_draw_background()
 {
 	/* DO NOTHING */
 }
@@ -111,7 +107,7 @@ void spacer::impl_draw_background(surface& /*frame_buffer*/
 spacer_definition::spacer_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing spacer " << id << '\n';
+	DBG_GUI_P << "Parsing spacer " << id;
 
 	load_resolutions<resolution>(cfg);
 }
@@ -131,12 +127,12 @@ builder_spacer::builder_spacer(const config& cfg)
 {
 }
 
-widget* builder_spacer::build() const
+std::unique_ptr<widget> builder_spacer::build() const
 {
-	spacer* widget = new spacer(*this, width_, height_);
+	auto widget = std::make_unique<spacer>(*this, width_, height_);
 
 	DBG_GUI_G << "Window builder: placed spacer '" << id
-			  << "' with definition '" << definition << "'.\n";
+			  << "' with definition '" << definition << "'.";
 
 	return widget;
 }

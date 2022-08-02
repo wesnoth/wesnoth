@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2021
+	Copyright (C) 2016 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -125,8 +125,8 @@ void unit_recruit::pre_show(window& window)
 	for(const auto& recruit : recruit_list_)
 	{
 		const t_string& error = recruit_map_[recruit];
-		std::map<std::string, string_map> row_data;
-		string_map column;
+		widget_data row_data;
+		widget_item column;
 
 		std::string	image_string = recruit->image() + "~RC(" + recruit->flag_rgb() + ">"
 			+ team_.color() + ")";

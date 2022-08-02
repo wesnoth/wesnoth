@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,7 +42,7 @@ void terrain_type_data::lazy_initialization() const
 	{
 		terrain_type terrain(terrain_data);
 		DBG_G << "create_terrain_maps: " << terrain.number() << " "
-			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group() << "\n";
+			<< terrain.id() << " " << terrain.name() << " : " << terrain.editor_group();
 
 		std::pair<std::map<t_translation::terrain_code, terrain_type>::iterator, bool> res;
 		res = tcodeToTerrain_.emplace(terrain.number(), terrain);
@@ -50,7 +50,7 @@ void terrain_type_data::lazy_initialization() const
 			terrain_type& curr = res.first->second;
 			if(terrain == curr) {
 				LOG_G << "Merging terrain " << terrain.number()
-					<< ": " << terrain.id() << " (" << terrain.name() << ")\n";
+					<< ": " << terrain.id() << " (" << terrain.name() << ")";
 				std::vector<std::string> eg1 = utils::split(curr.editor_group());
 				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
 				std::set<std::string> egs;
@@ -64,12 +64,12 @@ void terrain_type_data::lazy_initialization() const
 				std::string joined = utils::join(egs);
 
 				if(clean_merge) {
-					LOG_G << "Editor groups merged to: " << joined << "\n";
+					LOG_G << "Editor groups merged to: " << joined;
 				} else {
 					LOG_G << "Merged terrain " << terrain.number()
 					<< ": " << terrain.id() << " (" << terrain.name() << ") "
 					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
-					<< "and [" << curr.editor_group() << "]\n";
+					<< "and [" << curr.editor_group() << "]";
 				}
 				curr.set_editor_group(joined);
 			} else {
@@ -77,7 +77,7 @@ void terrain_type_data::lazy_initialization() const
 					<< "Failed to add terrain " << terrain.id() << " (" << terrain.name() << ") "
 					<< "[" << terrain.editor_group() << "]" << "\n"
 					<< "which conflicts with  " << curr.id() << " (" << curr.name() << ") "
-					<< "[" << curr.editor_group() << "]" << "\n\n";
+					<< "[" << curr.editor_group() << "]" << "\n";
 			}
 		} else {
 			terrainList_.push_back(terrain.number());
@@ -192,11 +192,11 @@ t_string terrain_type_data::get_underlying_terrain_string(const t_translation::t
 
 	if(underlying.size() > 1 || underlying[0] != terrain) {
 		str += " (";
-        t_translation::ter_list::const_iterator i = underlying.begin();
-        str += get_terrain_info(*i).name();
-        while (++i != underlying.end()) {
+		t_translation::ter_list::const_iterator i = underlying.begin();
+		str += get_terrain_info(*i).name();
+		while (++i != underlying.end()) {
 			str += ", " + get_terrain_info(*i).name();
-        }
+		}
 		str += ")";
 	}
 
@@ -211,7 +211,7 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_c
 		return i;
 	}
 	else {
-		DBG_G << "find_or_create: creating terrain " << terrain << std::endl;
+		DBG_G << "find_or_create: creating terrain " << terrain;
 		auto base_iter    = tcodeToTerrain_.find(t_translation::terrain_code(terrain.base, t_translation::NO_LAYER));
 		auto overlay_iter = tcodeToTerrain_.find(t_translation::terrain_code(t_translation::NO_LAYER, terrain.overlay));
 
@@ -220,7 +220,7 @@ terrain_type_data::tcodeToTerrain_t::const_iterator terrain_type_data::find_or_c
 			// campaigns. The code for showing movetypes for discovered terrains in the
 			// sidebar will query every terrain listed in
 			// preferences::encountered_terrains(), even those that are campaign-specific.
-			// ERR_G << "couldn't find base or overlay for " << terrain << std::endl;
+			// ERR_G << "couldn't find base or overlay for " << terrain;
 			return tcodeToTerrain_.end();
 		}
 

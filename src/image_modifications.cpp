@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -99,7 +99,7 @@ modification* decode_modification(const std::string& encoded_mod)
 	std::vector<std::string> split = utils::parenthetical_split(encoded_mod);
 
 	if(split.size() != 2) {
-		ERR_DP << "error parsing image modifications: " << encoded_mod << "\n";
+		ERR_DP << "error parsing image modifications: " << encoded_mod;
 		return nullptr;
 	}
 
@@ -107,7 +107,7 @@ modification* decode_modification(const std::string& encoded_mod)
 	std::string args = split[1];
 
 	if(mod_parsers.find(mod_type) == mod_parsers.end()) {
-		ERR_DP << "unknown image function in path: " << mod_type << '\n';
+		ERR_DP << "unknown image function in path: " << mod_type;
 		return nullptr;
 	}
 
@@ -289,7 +289,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -336,7 +336,7 @@ surface adjust_channels_modification::operator()(const surface & src) const
 	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
@@ -482,14 +482,14 @@ std::pair<int,int> scale_exact_modification::calculate_size(const surface& src) 
 
 	if(w <= 0) {
 		if(w < 0) {
-			ERR_DP << "width of " << fn_ << " is negative - resetting to original width" << std::endl;
+			ERR_DP << "width of " << fn_ << " is negative - resetting to original width";
 		}
 		w = old_w;
 	}
 
 	if(h <= 0) {
 		if(h < 0) {
-			ERR_DP << "height of " << fn_ << " is negative - resetting to original height" << std::endl;
+			ERR_DP << "height of " << fn_ << " is negative - resetting to original height";
 		}
 		h = old_h;
 	}
@@ -506,14 +506,14 @@ std::pair<int,int> scale_into_modification::calculate_size(const surface& src) c
 
 	if(w <= 0) {
 		if(w < 0) {
-			ERR_DP << "width of SCALE_INTO is negative - resetting to original width" << std::endl;
+			ERR_DP << "width of SCALE_INTO is negative - resetting to original width";
 		}
 		w = old_w;
 	}
 
 	if(h <= 0) {
 		if(h < 0) {
-			ERR_DP << "height of SCALE_INTO is negative - resetting to original height" << std::endl;
+			ERR_DP << "height of SCALE_INTO is negative - resetting to original height";
 		}
 		h = old_h;
 	}
@@ -541,11 +541,11 @@ surface o_modification::operator()(const surface& src) const
 	surface nsurf = src.clone();
 
 	if(nsurf == nullptr) {
-		std::cerr << "could not make neutral surface...\n";
+		PLAIN_LOG << "could not make neutral surface...";
 		return nullptr;
 	}
 
-	uint16_t amount = ftofxp(opacity_);
+	uint8_t alpha_mod = float_to_color(opacity_);
 
 	{
 		surface_lock lock(nsurf);
@@ -561,7 +561,7 @@ surface o_modification::operator()(const surface& src) const
 				g = (*beg) >> 8;
 				b = (*beg);
 
-				alpha = std::min<unsigned>(static_cast<unsigned>(fxpmult(alpha,amount)), 255);
+				alpha = color_multiply(alpha, alpha_mod);
 				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
 			}
 
@@ -634,14 +634,14 @@ REGISTER_MOD_PARSER(TC, args)
 	std::vector<std::string> params = utils::split(args,',');
 
 	if(params.size() < 2) {
-		ERR_DP << "too few arguments passed to the ~TC() function" << std::endl;
+		ERR_DP << "too few arguments passed to the ~TC() function";
 
 		return nullptr;
 	}
 
 	const int side_n = lexical_cast_default<int>(params[0], -1);
 	if(side_n < 1) {
-		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function\n";
+		ERR_DP << "Invalid side (" << side_n << ") passed to the ~TC() function";
 		return nullptr;
 	}
 
@@ -649,9 +649,8 @@ REGISTER_MOD_PARSER(TC, args)
 	// Pass argseters for RC functor
 	//
 	if(!game_config::tc_info(params[1]).size()){
-		ERR_DP << "could not load TC info for '" << params[1]
-		       << "' palette\n"
-		       << "bailing out from TC\n";
+		ERR_DP << "could not load TC info for '" << params[1] << "' palette";
+		ERR_DP << "bailing out from TC";
 
 		return nullptr;
 	}
@@ -663,10 +662,8 @@ REGISTER_MOD_PARSER(TC, args)
 
 		rc_map = recolor_range(new_color,old_color);
 	} catch(const config::error& e) {
-		ERR_DP << "caught config::error while processing TC: "
-		       << e.message
-		       << '\n'
-		       << "bailing out from TC\n";
+		ERR_DP << "caught config::error while processing TC: " << e.message;
+		ERR_DP << "bailing out from TC";
 
 		return nullptr;
 	}
@@ -695,10 +692,8 @@ REGISTER_MOD_PARSER(RC, args)
 	} catch (const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing color-range RC: "
-			<< e.message
-			<< '\n';
-		ERR_DP
-			<< "bailing out from RC\n";
+			<< e.message;
+		ERR_DP << "bailing out from RC";
 		rc_map.clear();
 	}
 
@@ -711,7 +706,7 @@ REGISTER_MOD_PARSER(PAL, args)
 	const std::vector<std::string> remap_params = utils::split(args,'>');
 
 	if(remap_params.size() < 2) {
-		ERR_DP << "not enough arguments passed to the ~PAL() function: " << args << "\n";
+		ERR_DP << "not enough arguments passed to the ~PAL() function: " << args;
 
 		return nullptr;
 	}
@@ -729,10 +724,9 @@ REGISTER_MOD_PARSER(PAL, args)
 	} catch(const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing PAL function: "
-			<< e.message
-			<< '\n';
+			<< e.message;
 		ERR_DP
-			<< "bailing out from PAL\n";
+			<< "bailing out from PAL";
 
 		return nullptr;
 	}
@@ -788,20 +782,20 @@ REGISTER_MOD_PARSER(BW, args)
 	const std::vector<std::string>& params = utils::split(args, ',');
 
 	if(params.size() != 1) {
-		ERR_DP << "~BW() requires  exactly one argument" << std::endl;
+		ERR_DP << "~BW() requires  exactly one argument";
 		return nullptr;
 	}
 
 	try {
 		int threshold = std::stoi(params[0]);
 		if(threshold < 0 || threshold > 255) {
-			ERR_DP << "~BW() argument out of range 0 - 255" << std::endl;
+			ERR_DP << "~BW() argument out of range 0 - 255";
 			return nullptr;
 		}  else {
 			return new bw_modification(threshold);
 		}
 	} catch (const std::invalid_argument&) {
-		ERR_DP << "unsupported argument in ~BW() function" << std::endl;
+		ERR_DP << "unsupported argument in ~BW() function";
 		return nullptr;
 	}
 }
@@ -828,13 +822,13 @@ REGISTER_MOD_PARSER(NEG, args)
 			try {
 				int threshold = std::stoi(params[0]);
 				if(threshold < -1 || threshold > 255) {
-					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+					ERR_DP << "unsupported argument value in ~NEG() function";
 					return nullptr;
 				} else {
 					return new negative_modification(threshold, threshold, threshold);
 				}
 			} catch (const std::invalid_argument&) {
-				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+				ERR_DP << "unsupported argument value in ~NEG() function";
 				return nullptr;
 			}
 			break;
@@ -844,18 +838,18 @@ REGISTER_MOD_PARSER(NEG, args)
 				int thresholdGreen = std::stoi(params[1]);
 				int thresholdBlue = std::stoi(params[2]);
 				if(thresholdRed < -1 || thresholdRed > 255 || thresholdGreen < -1 || thresholdGreen > 255 || thresholdBlue < -1 || thresholdBlue > 255) {
-					ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+					ERR_DP << "unsupported argument value in ~NEG() function";
 					return nullptr;
 				} else {
 					return new negative_modification(thresholdRed, thresholdGreen, thresholdBlue);
 				}
 			} catch (const std::invalid_argument&) {
-				ERR_DP << "unsupported argument value in ~NEG() function" << std::endl;
+				ERR_DP << "unsupported argument value in ~NEG() function";
 				return nullptr;
 			}
 			break;
 		default:
-			ERR_DP << "~NEG() requires 0, 1 or 3 arguments" << std::endl;
+			ERR_DP << "~NEG() requires 0, 1 or 3 arguments";
 			return nullptr;
 	}
 
@@ -882,7 +876,7 @@ REGISTER_MOD_PARSER(ADJUST_ALPHA, args)
 	const std::vector<std::string>& params = utils::parenthetical_split(args, ',', "([", ")]");
 
 	if(params.size() != 1) {
-		ERR_DP << "~ADJUST_ALPHA() requires exactly 1 arguments" << std::endl;
+		ERR_DP << "~ADJUST_ALPHA() requires exactly 1 arguments";
 		return nullptr;
 	}
 
@@ -897,7 +891,7 @@ REGISTER_MOD_PARSER(CHAN, args)
 	const std::vector<std::string>& params = utils::parenthetical_split(args, ',', "([", ")]");
 
 	if(params.size() < 1 || params.size() > 4) {
-		ERR_DP << "~CHAN() requires 1 to 4 arguments" << std::endl;
+		ERR_DP << "~CHAN() requires 1 to 4 arguments";
 		return nullptr;
 	}
 
@@ -911,7 +905,7 @@ REGISTER_MOD_PARSER(CS, args)
 	const std::size_t s = factors.size();
 
 	if(s == 0) {
-		ERR_DP << "no arguments passed to the ~CS() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~CS() function";
 		return nullptr;
 	}
 
@@ -935,7 +929,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 	const std::vector<std::string>& params = utils::split(args, ',');
 
 	if(params.size() != 4) {
-		ERR_DP << "~BLEND() requires exactly 4 arguments" << std::endl;
+		ERR_DP << "~BLEND() requires exactly 4 arguments";
 		return nullptr;
 	}
 
@@ -966,7 +960,7 @@ REGISTER_MOD_PARSER(CROP, args)
 	const std::size_t s = slice_params.size();
 
 	if(s == 0 || (s == 1 && slice_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~CROP() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~CROP() function";
 		return nullptr;
 	}
 
@@ -1002,12 +996,12 @@ REGISTER_MOD_PARSER(BLIT, args)
 	const std::size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
-		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~BLIT() function";
 		return nullptr;
 	}
 
 	if(s > 3){
-		ERR_DP << "too many arguments passed to the ~BLIT() function" << std::endl;
+		ERR_DP << "too many arguments passed to the ~BLIT() function";
 		return nullptr;
 	}
 
@@ -1023,7 +1017,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	message << "~BLIT():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_image(img);
+	surface surf = get_surface(img);
 
 	return new blit_modification(surf, x, y);
 }
@@ -1035,7 +1029,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	const std::size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
-		ERR_DP << "no arguments passed to the ~MASK() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~MASK() function";
 		return nullptr;
 	}
 
@@ -1047,7 +1041,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	}
 
 	if(x < 0 || y < 0) {
-		ERR_DP << "negative position arguments in ~MASK() function" << std::endl;
+		ERR_DP << "negative position arguments in ~MASK() function";
 		return nullptr;
 	}
 
@@ -1056,7 +1050,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	message << "~MASK():";
 	if(!check_image(img, message))
 		return nullptr;
-	surface surf = get_image(img);
+	surface surf = get_surface(img);
 
 	return new mask_modification(surf, x, y);
 }
@@ -1065,11 +1059,11 @@ REGISTER_MOD_PARSER(MASK, args)
 REGISTER_MOD_PARSER(L, args)
 {
 	if(args.empty()){
-		ERR_DP << "no arguments passed to the ~L() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~L() function";
 		return nullptr;
 	}
 
-	surface surf = get_image(args);
+	surface surf = get_surface(args);
 
 	return new light_modification(surf);
 }
@@ -1081,7 +1075,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~SCALE() function";
 		return nullptr;
 	}
 
@@ -1102,7 +1096,7 @@ REGISTER_MOD_PARSER(SCALE_SHARP, args)
 	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~SCALE_SHARP() function";
 		return nullptr;
 	}
 
@@ -1123,7 +1117,7 @@ REGISTER_MOD_PARSER(SCALE_INTO, args)
 	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE_INTO() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~SCALE_INTO() function";
 		return nullptr;
 	}
 
@@ -1144,7 +1138,7 @@ REGISTER_MOD_PARSER(SCALE_INTO_SHARP, args)
 	const std::size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function" << std::endl;
+		ERR_DP << "no arguments passed to the ~SCALE_INTO_SHARP() function";
 		return nullptr;
 	}
 
@@ -1263,7 +1257,7 @@ REGISTER_MOD_PARSER(SWAP, args)
 
 	// accept 3 arguments (rgb) or 4 (rgba)
 	if(params.size() != 3 && params.size() != 4) {
-		ERR_DP << "incorrect number of arguments in ~SWAP() function, they must be 3 or 4" << std::endl;
+		ERR_DP << "incorrect number of arguments in ~SWAP() function, they must be 3 or 4";
 		return nullptr;
 	}
 
@@ -1278,7 +1272,7 @@ REGISTER_MOD_PARSER(SWAP, args)
 	} else if(params[0] == "alpha") {
 		redValue = ALPHA;
 	} else {
-		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0];
 		return nullptr;
 	}
 
@@ -1292,7 +1286,7 @@ REGISTER_MOD_PARSER(SWAP, args)
 	} else if(params[1] == "alpha") {
 		greenValue = ALPHA;
 	} else {
-		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0];
 		return nullptr;
 	}
 
@@ -1305,7 +1299,7 @@ REGISTER_MOD_PARSER(SWAP, args)
 	} else if(params[2] == "alpha") {
 		blueValue = ALPHA;
 	} else {
-		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0] << std::endl;
+		ERR_DP << "unsupported argument value in ~SWAP() function: " << params[0];
 		return nullptr;
 	}
 
@@ -1323,7 +1317,7 @@ REGISTER_MOD_PARSER(SWAP, args)
 		} else if(params[3] == "alpha") {
 			alphaValue = ALPHA;
 		} else {
-			ERR_DP << "unsupported argument value in ~SWAP() function: " << params[3] << std::endl;
+			ERR_DP << "unsupported argument value in ~SWAP() function: " << params[3];
 			return nullptr;
 		}
 	}

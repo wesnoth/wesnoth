@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,13 +21,7 @@
 
 #include <cassert>
 
-namespace gui2
-{
-
-namespace iteration
-{
-
-namespace walker
+namespace gui2::iteration::walker
 {
 
 widget::widget(gui2::widget& widget) : widget_(&widget)
@@ -84,8 +78,4 @@ gui2::widget* widget::get(const level level)
 	return nullptr;
 }
 
-} //  namespace walker
-
-} // namespace iteration
-
-} // namespace gui2
+} // namespace gui2::iteration::walker

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,7 @@
 
 #include "config.hpp"
 #include "cursor.hpp"
+#include "draw.hpp"
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
@@ -57,10 +58,12 @@
 #include "preferences/display.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/texture.hpp"
 #include "formula/variant.hpp"
-#include "video.hpp"
+#include "video.hpp" // only for toggle_fullscreen
 #include "wml_exception.hpp"
 #include "sdl/userevent.hpp"
+#include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <functional>
 
@@ -81,6 +84,10 @@ static lg::log_domain log_gui("gui/layout");
 	window.get_control_type() + " [" + window.id() + "] " + __func__
 #define LOG_IMPL_HEADER LOG_IMPL_SCOPE_HEADER + ':'
 
+static lg::log_domain log_display("display");
+#define DBG_DP LOG_STREAM(debug, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
+
 namespace gui2
 {
 
@@ -99,7 +106,7 @@ public:
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override
+	virtual std::unique_ptr<widget> build() const override
 	{
 		return nullptr;
 	}
@@ -118,27 +125,6 @@ const unsigned LAYOUT = debug_layout_graph::LAYOUT;
 const unsigned SHOW = 0;
 const unsigned LAYOUT = 0;
 #endif
-
-/**
- * Pushes a single draw event to the queue. To be used before calling
- * events::pump when drawing windows.
- *
- * @todo: in the future we should simply call draw functions directly
- * from events::pump and do away with the custom drawing events, but
- * that's a 1.15 target. For now, this will have to do.
- */
-static void push_draw_event()
-{
-	//	DBG_GUI_E << "Pushing draw event in queue.\n";
-
-	SDL_Event event;
-	sdl::UserEvent data(DRAW_EVENT);
-
-	event.type = DRAW_EVENT;
-	event.user = data;
-
-	SDL_PushEvent(&event);
-}
 
 /**
  * SDL_AddTimer() callback for delay_event.
@@ -175,7 +161,7 @@ static void delay_event(const SDL_Event& event, const uint32_t delay)
  */
 static void helptip()
 {
-	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.\n";
+	DBG_GUI_E << "Pushing SHOW_HELPTIP_EVENT event in queue.";
 
 	SDL_Event event;
 	sdl::UserEvent data(SHOW_HELPTIP_EVENT);
@@ -274,7 +260,6 @@ window* manager::get_window(const unsigned id)
 
 window::window(const builder_window::window_resolution& definition)
 	: panel(implementation::builder_window(::config {"definition", definition.definition}), type())
-	, video_(CVideo::get_singleton())
 	, status_(status::NEW)
 	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
@@ -283,9 +268,6 @@ window::window(const builder_window::window_resolution& definition)
 	, variables_()
 	, invalidate_layout_blocked_(false)
 	, suspend_drawing_(true)
-	, restore_(true)
-	, is_toplevel_(!is_in_dialog())
-	, restorer_()
 	, automatic_placement_(definition.automatic_placement)
 	, horizontal_placement_(definition.horizontal_placement)
 	, vertical_placement_(definition.vertical_placement)
@@ -304,22 +286,15 @@ window::window(const builder_window::window_resolution& definition)
 	, escape_disabled_(false)
 	, linked_size_()
 	, mouse_button_state_(0) /**< Needs to be initialized in @ref show. */
-	, dirty_list_()
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, debug_layout_(new debug_layout_graph(this))
 #endif
 	, event_distributor_(new event::distributor(*this, event::dispatcher::front_child))
 	, exit_hook_([](window&)->bool { return true; })
-	, callback_next_draw_(nullptr)
 {
 	manager::instance().add(*this);
 
 	connect();
-
-	if (!video_.faked())
-	{
-		connect_signal<event::DRAW>(std::bind(&window::draw, this));
-	}
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(
 			&window::signal_handler_sdl_video_resize, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
@@ -386,7 +361,7 @@ window::window(const builder_window::window_resolution& definition)
 
 	/** @todo: should eventally become part of global hotkey handling. */
 	register_hotkey(hotkey::HOTKEY_FULLSCREEN,
-		std::bind(&CVideo::toggle_fullscreen, std::ref(video_)));
+		std::bind(&video::toggle_fullscreen));
 }
 
 window::~window()
@@ -450,7 +425,7 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == status::NEW);
 
-	set_mouse_behavior(event::dispatcher::none);
+	set_mouse_behavior(event::dispatcher::mouse_behavior::none);
 	set_want_keyboard_input(false);
 
 	show_mode_ = show_mode::tooltip;
@@ -462,6 +437,8 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 	 */
 	invalidate_layout();
 	suspend_drawing_ = false;
+	queue_redraw();
+	DBG_DP << "show tooltip queued to " << get_rectangle();
 }
 
 void window::show_non_modal(/*const unsigned auto_close_timeout*/)
@@ -472,7 +449,7 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 	assert(status_ == status::NEW);
 
-	set_mouse_behavior(event::dispatcher::hit);
+	set_mouse_behavior(event::dispatcher::mouse_behavior::hit);
 
 	show_mode_ = show_mode::modeless;
 
@@ -483,13 +460,14 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	 */
 	invalidate_layout();
 	suspend_drawing_ = false;
+	queue_redraw();
 
-	push_draw_event();
+	DBG_DP << "show non-modal queued to " << get_rectangle();
 
-	events::pump();
+	events::pump_and_draw();
 }
 
-int window::show(const bool restore, const unsigned auto_close_timeout)
+int window::show(const unsigned auto_close_timeout)
 {
 	/*
 	 * Removes the old tip if one shown. The show_tip doesn't remove
@@ -498,7 +476,6 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	dialogs::tip::remove();
 
 	show_mode_ = show_mode::modal;
-	restore_ = restore;
 
 	log_scope2(log_gui_draw, LOG_SCOPE_HEADER);
 
@@ -513,12 +490,12 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 	 */
 	invalidate_layout();
 	suspend_drawing_ = false;
+	queue_redraw();
+
+	// Make sure we display at least once in all cases.
+	events::draw();
 
 	if(auto_close_timeout) {
-		// Make sure we're drawn before we try to close ourselves, which can
-		// happen if the timeout is small.
-		draw();
-
 		SDL_Event event;
 		sdl::UserEvent data(CLOSE_WINDOW_EVENT, manager::instance().get_id(*this));
 
@@ -528,16 +505,12 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 		delay_event(event, auto_close_timeout);
 	}
 
-
 	try
 	{
 		// Start our loop drawing will happen here as well.
 		bool mouse_button_state_initialized = false;
 		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
-			push_draw_event();
-
-			// process installed callback if valid, to allow e.g. network
-			// polling
+			// Process and handle all pending events.
 			events::pump();
 
 			if(!mouse_button_state_initialized) {
@@ -551,47 +524,27 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 				 * return the proper button state. When initializing here all
 				 * works fine.
 				 */
-				mouse_button_state_ = SDL_GetMouseState(nullptr, nullptr);
+				mouse_button_state_ = sdl::get_mouse_button_mask();
 				mouse_button_state_initialized = true;
 			}
 
+			// See if we should close.
 			if(status_ == status::REQUEST_CLOSE) {
 				status_ = exit_hook_(*this) ? status::CLOSED : status::SHOWING;
 			}
 
-			// Add a delay so we don't keep spinning if there's no event.
-			if(status_ != status::CLOSED) {
-				SDL_Delay(10);
-			}
+			// Update the display. This will rate limit to vsync.
+			events::draw();
 		}
 	}
 	catch(...)
 	{
-		/**
-		 * @todo Clean up the code duplication.
-		 *
-		 * In the future the restoring shouldn't be needed so the duplication
-		 * doesn't hurt too much but keep this todo as a reminder.
-		 */
-		suspend_drawing_ = true;
-
-		// restore area
-		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-			font::undraw_floating_labels(video_.getSurface());
-		}
+		// TODO: is this even necessary? What are we catching?
+		undraw();
 		throw;
 	}
 
-	suspend_drawing_ = true;
-
-	// restore area
-	if(restore_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		font::undraw_floating_labels(video_.getSurface());
-	}
+	undraw();
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		tb->interrupt_composition();
@@ -602,185 +555,47 @@ int window::show(const bool restore, const unsigned auto_close_timeout)
 
 void window::draw()
 {
-	/***** ***** ***** ***** Init ***** ***** ***** *****/
-	// Prohibited from drawing?
+	// TODO: draw_manager - is there a better way of handling window close?
 	if(suspend_drawing_) {
+		WRN_DP << "window::draw called with drawing suspended";
 		return;
 	}
 
-	surface& frame_buffer = video_.getSurface();
+	// Draw background.
+	this->draw_background();
 
-	/***** ***** Layout and get dirty list ***** *****/
-	if(need_layout_) {
-		// Restore old surface. In the future this phase will not be needed
-		// since all will be redrawn when needed with dirty rects. Since that
-		// doesn't work yet we need to undraw the window.
-		if(restore_ && restorer_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
-		}
+	// Draw children.
+	this->draw_children();
 
-		layout();
+	// Draw foreground.
+	this->draw_foreground();
 
-		// Get new surface for restoring
-		SDL_Rect rect = get_rectangle();
-
-		// We want the labels underneath the window so draw them and use them
-		// as restore point.
-		if(is_toplevel_) {
-			font::draw_floating_labels(frame_buffer);
-		}
-
-		if(restore_) {
-			restorer_ = get_surface_portion(frame_buffer, rect);
-		}
-
-		// Need full redraw so only set ourselves dirty.
-		dirty_list_.emplace_back(1, this);
-	} else {
-
-		// Let widgets update themselves, which might dirty some things.
-		layout_children();
-
-		// Now find the widgets that are dirty.
-		std::vector<widget*> call_stack;
-		if(!new_widgets) {
-			populate_dirty_list(*this, call_stack);
-		} else {
-			/* Force to update and redraw the entire screen */
-			dirty_list_.clear();
-			dirty_list_.emplace_back(1, this);
-		}
-	}
-
-	if (dirty_list_.empty()) {
-		consecutive_changed_frames_ = 0u;
-		return;
-	}
-
-	++consecutive_changed_frames_;
-	if(consecutive_changed_frames_ >= 100u && id_ == "title_screen") {
-		/* The title screen has changed in 100 consecutive frames, i.e. every
-		frame for two seconds. It looks like the screen is constantly changing
-		or at least marking widgets as dirty.
-
-		That's a severe problem. Every time the title screen changes, all
-		other GUI windows need to be fully redrawn, with huge CPU usage cost.
-		For that reason, this situation is a hard error. */
-		throw std::logic_error("The title screen is constantly changing, "
-			"which has a huge CPU usage cost. See the code comment.");
-	}
-
-	for(auto & item : dirty_list_)
-	{
-
-		assert(!item.empty());
-
-		const SDL_Rect dirty_rect
-				= new_widgets ? video_.screen_area()
-							  : item.back()->get_dirty_rectangle();
-
-// For testing we disable the clipping rect and force the entire screen to
-// update. This way an item rendered at the wrong place is directly visible.
-#if 0
-		dirty_list_.clear();
-		dirty_list_.emplace_back(1, this);
-#else
-		clip_rect_setter clip(frame_buffer, &dirty_rect);
-#endif
-
-		/*
-		 * The actual update routine does the following:
-		 * - Restore the background.
-		 *
-		 * - draw [begin, end) the back ground of all widgets.
-		 *
-		 * - draw the children of the last item in the list, if this item is
-		 *   a container it's children get a full redraw. If it's not a
-		 *   container nothing happens.
-		 *
-		 * - draw [rbegin, rend) the fore ground of all widgets. For items
-		 *   which have two layers eg window or panel it draws the foreground
-		 *   layer. For other widgets it's a nop.
-		 *
-		 * Before drawing there needs to be determined whether a dirty widget
-		 * really needs to be redrawn. If the widget doesn't need to be
-		 * redrawing either being not visibility::visible or has status
-		 * widget::redraw_action::none. If it's not drawn it's still set not
-		 * dirty to avoid it keep getting on the dirty list.
-		 */
-
-		for(std::vector<widget*>::iterator itor = item.begin();
-			itor != item.end();
-			++itor) {
-
-			if((**itor).get_visible() != widget::visibility::visible
-			   || (**itor).get_drawing_action()
-				  == widget::redraw_action::none) {
-
-				for(std::vector<widget*>::iterator citor = itor;
-					citor != item.end();
-					++citor) {
-
-					(**citor).set_is_dirty(false);
-				}
-
-				item.erase(itor, item.end());
-				break;
-			}
-		}
-
-		// Restore.
-		if(restore_) {
-			SDL_Rect rect = get_rectangle();
-			sdl_blit(restorer_, 0, frame_buffer, &rect);
-		}
-
-		// Background.
-		for(std::vector<widget*>::iterator itor = item.begin();
-			itor != item.end();
-			++itor) {
-
-			(**itor).draw_background(frame_buffer, 0, 0);
-		}
-
-		// Children.
-		if(!item.empty()) {
-			item.back()->draw_children(frame_buffer, 0, 0);
-		}
-
-		// Foreground.
-		for(std::vector<widget*>::reverse_iterator ritor = item.rbegin();
-			ritor != item.rend();
-			++ritor) {
-
-			(**ritor).draw_foreground(frame_buffer, 0, 0);
-			(**ritor).set_is_dirty(false);
-		}
-	}
-
-	dirty_list_.clear();
-
-	redraw_windows_on_top();
-
-	std::vector<widget*> call_stack;
-	populate_dirty_list(*this, call_stack);
-	assert(dirty_list_.empty());
-
-	if(callback_next_draw_ != nullptr) {
-		callback_next_draw_();
-		callback_next_draw_ = nullptr;
-	}
+	return;
 }
 
+// TODO: draw_manager - can probably remove "undraw", or at least rename
 void window::undraw()
 {
-	if(restore_ && restorer_) {
-		SDL_Rect rect = get_rectangle();
-		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
-		// Since the old area might be bigger as the new one, invalidate
-		// it.
+	// TODO: draw_manager - is suspend_drawing_ necessary?
+	suspend_drawing_ = true;
+	queue_redraw();
+}
+
+bool window::expose(const rect& region)
+{
+	DBG_DP << "window::expose " << region;
+	rect i = get_rectangle().intersect(region);
+	i.clip(draw::get_clip());
+	if (i.empty()) {
+		return false;
 	}
+	draw();
+	return true;
+}
+
+rect window::screen_location()
+{
+	return get_rectangle();
 }
 
 window::invalidate_layout_blocker::invalidate_layout_blocker(window& window)
@@ -843,7 +658,7 @@ void window::add_linked_widget(const std::string& id, widget* wgt)
 {
 	assert(wgt);
 	if(!has_linked_size_group(id)) {
-		ERR_GUI << "Unknown linked group '" << id << "'; skipping\n";
+		ERR_GUI << "Unknown linked group '" << id << "'; skipping";
 		return;
 	}
 
@@ -875,6 +690,11 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 void window::layout()
 {
+	if(!need_layout_) {
+		return;
+	}
+	DBG_DP << "window::layout";
+
 	/***** Initialize. *****/
 
 	const auto conf = cast_config_to<window_definition>();
@@ -1129,60 +949,26 @@ bool window::click_dismiss(const int mouse_button_mask)
 	return false;
 }
 
-namespace
+void window::finalize(const builder_grid& content_grid)
 {
-
-/**
- * Swaps an item in a grid for another one.
- * This differs slightly from the standard swap_grid utility, so it's defined by itself here.
- */
-void window_swap_grid(grid* g,
-			   grid* content_grid,
-			   widget* widget,
-			   const std::string& id)
-{
-	assert(content_grid);
+	auto widget = content_grid.build();
 	assert(widget);
+
+	static const std::string id = "_window_content_grid";
 
 	// Make sure the new child has same id.
 	widget->set_id(id);
 
-	// Get the container containing the wanted widget.
-	grid* parent_grid = nullptr;
-	if(g) {
-		parent_grid = find_widget<grid>(g, id, false, false);
-	}
-	if(!parent_grid) {
-		parent_grid = find_widget<grid>(content_grid, id, true, false);
-		assert(parent_grid);
-	}
-	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
-		grandparent_grid->swap_child(id, widget, false);
-	} else if(container_base* c
-			  = dynamic_cast<container_base*>(parent_grid->parent())) {
+	auto* parent_grid = find_widget<grid>(&get_grid(), id, true, false);
+	assert(parent_grid);
 
-		c->get_grid().swap_child(id, widget, true);
+	if(grid* grandparent_grid = dynamic_cast<grid*>(parent_grid->parent())) {
+		grandparent_grid->swap_child(id, std::move(widget), false);
+	} else if(container_base* c = dynamic_cast<container_base*>(parent_grid->parent())) {
+		c->get_grid().swap_child(id, std::move(widget), true);
 	} else {
 		assert(false);
 	}
-}
-
-} // namespace
-
-void window::redraw_windows_on_top() const
-{
-	std::vector<dispatcher*>& dispatchers = event::get_all_dispatchers();
-	auto me = std::find(dispatchers.begin(), dispatchers.end(), this);
-
-	for(auto it = std::next(me); it != dispatchers.end(); ++it) {
-		// Note that setting an entire window dirty like this is expensive.
-		dynamic_cast<widget&>(**it).set_is_dirty(true);
-	}
-}
-
-void window::finalize(const builder_grid& content_grid)
-{
-	window_swap_grid(nullptr, &get_grid(), content_grid.build(), "_window_content_grid");
 }
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -1212,11 +998,11 @@ void window_implementation::layout(window& window,
 
 		DBG_GUI_L << LOG_IMPL_HEADER << " best size : " << size
 				  << " maximum size : " << maximum_width << ','
-				  << maximum_height << ".\n";
+				  << maximum_height << ".";
 		if(size.x <= static_cast<int>(maximum_width)
 		   && size.y <= static_cast<int>(maximum_height)) {
 
-			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.\n";
+			DBG_GUI_L << LOG_IMPL_HEADER << " Result: Fits, nothing to do.";
 			return;
 		}
 
@@ -1227,11 +1013,11 @@ void window_implementation::layout(window& window,
 			if(size.x > static_cast<int>(maximum_width)) {
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize width failed."
 						  << " Wanted width " << maximum_width
-						  << " resulting width " << size.x << ".\n";
+						  << " resulting width " << size.x << ".";
 				throw layout_exception_width_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
-					  << " Status: Resize width succeeded.\n";
+					  << " Status: Resize width succeeded.";
 		}
 
 		if(size.y > static_cast<int>(maximum_height)) {
@@ -1241,24 +1027,24 @@ void window_implementation::layout(window& window,
 			if(size.y > static_cast<int>(maximum_height)) {
 				DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resize height failed."
 						  << " Wanted height " << maximum_height
-						  << " resulting height " << size.y << ".\n";
+						  << " resulting height " << size.y << ".";
 				throw layout_exception_height_resize_failed();
 			}
 			DBG_GUI_L << LOG_IMPL_HEADER
-					  << " Status: Resize height succeeded.\n";
+					  << " Status: Resize height succeeded.";
 		}
 
 		assert(size.x <= static_cast<int>(maximum_width)
 			   && size.y <= static_cast<int>(maximum_height));
 
 
-		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.\n";
+		DBG_GUI_L << LOG_IMPL_HEADER << " Result: Resizing succeeded.";
 		return;
 	}
 	catch(const layout_exception_width_modified&)
 	{
 		DBG_GUI_L << LOG_IMPL_HEADER
-				  << " Status: Width has been modified, rerun.\n";
+				  << " Status: Width has been modified, rerun.";
 
 		window.layout_initialize(false);
 		window.layout_linked_widgets();
@@ -1311,7 +1097,7 @@ void window::signal_handler_sdl_video_resize(const event::ui_event event,
 											  bool& handled,
 											  const point& new_size)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	settings::gamemap_width += new_size.x - settings::screen_width;
 	settings::gamemap_height += new_size.y - settings::screen_height;
@@ -1328,7 +1114,7 @@ void window::signal_handler_click_dismiss(const event::ui_event event,
 										   const int mouse_button_mask)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << " mouse_button_mask "
-			  << static_cast<unsigned>(mouse_button_mask) << ".\n";
+			  << static_cast<unsigned>(mouse_button_mask) << ".";
 
 	handled = halt = click_dismiss(mouse_button_mask);
 }
@@ -1347,7 +1133,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 										  const SDL_Keymod mod,
 										  bool handle_tab)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		if(tb->is_composing()) {
@@ -1402,7 +1188,7 @@ void window::signal_handler_message_show_tooltip(const event::ui_event event,
 												  bool& handled,
 												  const event::message& message)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	const event::message_show_tooltip& request
 			= dynamic_cast<const event::message_show_tooltip&>(message);
@@ -1416,7 +1202,7 @@ void window::signal_handler_message_show_helptip(const event::ui_event event,
 												  bool& handled,
 												  const event::message& message)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	const event::message_show_helptip& request
 			= dynamic_cast<const event::message_show_helptip&>(message);
@@ -1429,7 +1215,7 @@ void window::signal_handler_message_show_helptip(const event::ui_event event,
 void window::signal_handler_request_placement(const event::ui_event event,
 											   bool& handled)
 {
-	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
+	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	invalidate_layout();
 
@@ -1446,7 +1232,7 @@ void window::signal_handler_close_window()
 window_definition::window_definition(const config& cfg)
 	: styled_widget_definition(cfg)
 {
-	DBG_GUI_P << "Parsing window " << id << '\n';
+	DBG_GUI_P << "Parsing window " << id;
 
 	load_resolutions<resolution>(cfg);
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,13 +17,16 @@
 
 #include "widgets/menu.hpp"
 
-#include "game_config.hpp"
+#include "draw.hpp"
+#include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
+#include "floating_label.hpp"
+#include "game_config.hpp"
 #include "language.hpp"
 #include "lexical_cast.hpp"
 #include "picture.hpp"
-#include "font/sdl_ttf_compat.hpp"
 #include "sdl/rect.hpp"
+#include "sdl/texture.hpp"
 #include "sound.hpp"
 #include "utils/general.hpp"
 #include "video.hpp"
@@ -145,14 +148,14 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 	return false;
 }
 
-menu::menu(CVideo& video, const std::vector<std::string>& items,
+menu::menu(const std::vector<std::string>& items,
 		bool click_selects, int max_height, int max_width,
 		const sorter* sorter_obj, style *menu_style, const bool auto_join)
-: scrollarea(video, auto_join), silent_(false),
+: scrollarea(auto_join), silent_(false),
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
   heading_height_(-1),
-  cur_help_(-1,-1), help_string_(-1),
+  cur_help_(-1,-1),
   selected_(0), click_selects_(click_selects), out_(false),
   previous_button_(true), show_result_(false),
   double_clicked_(false),
@@ -245,7 +248,7 @@ void menu::do_sort()
 		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
 	}
 
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::recalculate_pos()
@@ -328,11 +331,10 @@ int menu::selection() const
 	return items_[selected_].id;
 }
 
-void menu::set_inner_location(const SDL_Rect& rect)
+void menu::set_inner_location(const SDL_Rect& /*rect*/)
 {
 	itemRects_.clear();
 	update_scrollbar_grip_height();
-	bg_register(rect);
 }
 
 void menu::change_item(int pos1, int pos2,const std::string& str)
@@ -343,7 +345,7 @@ void menu::change_item(int pos1, int pos2,const std::string& str)
 	}
 
 	items_[item_pos_[pos1]].fields[pos2] = str;
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::erase_item(std::size_t index)
@@ -372,7 +374,7 @@ void menu::erase_item(std::size_t index)
 	update_scrollbar_grip_height();
 	adjust_viewport_to_selection();
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_heading(const std::vector<std::string>& heading)
@@ -383,7 +385,7 @@ void menu::set_heading(const std::vector<std::string>& heading)
 	heading_ = heading;
 	max_items_ = -1;
 
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, bool keep_viewport)
@@ -414,7 +416,7 @@ void menu::set_items(const std::vector<std::string>& items, bool strip_spaces, b
 	if(!keep_viewport) {
 		adjust_viewport_to_selection();
 	}
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_max_height(const int new_max_height)
@@ -439,7 +441,11 @@ std::size_t menu::max_items_onscreen() const
 		return std::size_t(max_items_);
 	}
 
-	const std::size_t max_height = (max_height_ == -1 ? (video().get_height()*66)/100 : max_height_) - heading_height();
+	const std::size_t max_height = (
+			max_height_ == -1
+				? (video::game_canvas_size().y * 66) / 100
+				: max_height_
+		) - heading_height();
 
 	std::vector<int> heights;
 	std::size_t n;
@@ -662,8 +668,8 @@ void menu::handle_event(const SDL_Event& event)
 			const int item = hit(event.motion.x,event.motion.y);
 			const bool out = (item == -1);
 			if (out_ != out) {
-					out_ = out;
-					invalidate_row_pos(selected_);
+				out_ = out;
+				invalidate_row_pos(selected_);
 			}
 			if (item != -1) {
 				move_selection_to(item);
@@ -708,7 +714,7 @@ void menu::set_numeric_keypress_selection(bool value)
 void menu::scroll(unsigned int)
 {
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 void menu::set_sorter(sorter *s)
@@ -740,7 +746,7 @@ void menu::sort_by(int column)
 
 	do_sort();
 	itemRects_.clear();
-	set_dirty();
+	queue_redraw();
 }
 
 SDL_Rect menu::style::item_size(const std::string& item) const {
@@ -755,16 +761,20 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		const std::string str = *it;
 		if (!str.empty() && str[0] == IMAGE_PREFIX) {
 			const std::string image_name(str.begin()+1,str.end());
-			surface const img = get_item_image(image_name);
-			if(img != nullptr) {
-				res.w += img->w;
-				res.h = std::max<int>(img->h, res.h);
+			const point image_size = image::get_size(image_name);
+			if (image_size.x && image_size.y) {
+				int w = image_size.x;
+				int h = image_size.y;
+				adjust_image_bounds(w, h);
+				res.w += w;
+				res.h = std::max<int>(h, res.h);
 			}
 		}
 		else {
 			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
-				font::pango_draw_text(nullptr,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
+				font::pango_draw_text(false, area, get_font_size(),
+					font::NORMAL_COLOR, str, 0, 0);
 			res.w += font_size.w;
 			res.h = std::max<int>(font_size.h, res.h);
 		}
@@ -772,10 +782,8 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 	return res;
 }
 
-void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
+void menu::style::draw_row_bg(menu& /*menu_ref*/, const std::size_t /*row_index*/, const SDL_Rect& rect, ROW_TYPE type)
 {
-	menu_ref.bg_restore(rect);
-
 	int rgb = 0;
 	double alpha = 0.0;
 
@@ -798,7 +806,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const std::size_t /*row_index*/, c
 	color_t c((rgb & 0xff0000) >> 16, (rgb & 0xff00) >> 8, rgb & 0xff);
 	c.a = 255 * alpha;
 
-	sdl::fill_rectangle(rect, c);
+	draw::fill(rect, c);
 }
 
 void menu::style::draw_row(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
@@ -858,39 +866,36 @@ void menu::clear_item(int item)
 	SDL_Rect rect = get_item_rect(item);
 	if (rect.w == 0)
 		return;
-	bg_restore(rect);
+	queue_redraw(rect);
 }
 
-void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
+void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE type)
 {
 	//called from style, draws one row's contents in a generic and adaptable way
 	const std::vector<std::string>& row = (type == HEADING_ROW) ? heading_ : items_[row_index].fields;
-	const SDL_Rect& area = video().screen_area();
-	const SDL_Rect& loc = inner_location();
+	rect area = video::game_canvas();
+	rect column = inner_location();
 	const std::vector<int>& widths = column_widths();
 	bool lang_rtl = current_language_rtl();
 	int dir = (lang_rtl) ? -1 : 1;
-	SDL_Rect column = loc;
 
-	int xpos = rect.x;
-	if(lang_rtl)
-		xpos += rect.w;
+	int xpos = loc.x;
+	if(lang_rtl) {
+		xpos += loc.w;
+	}
+
 	for(std::size_t i = 0; i != row.size(); ++i) {
 
-		if(lang_rtl)
+		if(lang_rtl) {
 			xpos -= widths[i];
+		}
 		if(type == HEADING_ROW) {
-			SDL_Rect draw_rect {
-				xpos,
-				rect.y,
-				widths[i],
-				rect.h
-			};
+			rect draw_rect {xpos, loc.y, widths[i], loc.h };
 
 			if(highlight_heading_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,77});
+				draw::fill(draw_rect, {255,255,255,77});
 			} else if(sortby_ == int(i)) {
-				sdl::fill_rectangle(draw_rect, {255,255,255,26});
+				draw::fill(draw_rect, {255,255,255,26});
 			}
 		}
 
@@ -903,15 +908,18 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 			str = *it;
 			if (!str.empty() && str[0] == IMAGE_PREFIX) {
 				const std::string image_name(str.begin()+1,str.end());
-				const surface img = style_->get_item_image(image_name);
+				const texture img = image::get_texture(image_name);
+				int img_w = img.w();
+				int img_h = img.h();
+				style_->adjust_image_bounds(img_w, img_h);
 				const int remaining_width = max_width_ < 0 ? area.w :
-				std::min<int>(max_width_, ((lang_rtl)? xpos - rect.x : rect.x + rect.w - xpos));
-				if(img != nullptr && img->w <= remaining_width
-				&& rect.y + img->h < area.h) {
-					const std::size_t y = rect.y + (rect.h - img->h)/2;
-					const std::size_t w = img->w + 5;
+				std::min<int>(max_width_, ((lang_rtl)? xpos - loc.x : loc.x + loc.w - xpos));
+				if(img && img_w <= remaining_width
+				&& loc.y + img_h < area.h) {
+					const std::size_t y = loc.y + (loc.h - img_h)/2;
+					const std::size_t w = img_w + 5;
 					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					video().blit_surface(x,y,img);
+					draw::blit(img, {int(x), int(y), img_w, img_h});
 					if(!lang_rtl)
 						xpos += w;
 					column.w -= w;
@@ -920,21 +928,22 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE 
 				column.x = xpos;
 
 				const auto text_size = font::pango_line_size(str, style_->get_font_size());
-				const std::size_t y = rect.y + (rect.h - text_size.second)/2;
+				const std::size_t y = loc.y + (loc.h - text_size.second)/2;
 				const std::size_t padding = 2;
-				SDL_Rect text_rect = column;
-				text_rect.w = rect.w - (xpos - rect.x) - 2 * style_->get_thickness();
-				text_rect.h = text_size.second;
-				font::pango_draw_text(&video(), text_rect, style_->get_font_size(), font::NORMAL_COLOR, str,
+				rect text_loc = column;
+				text_loc.w = loc.w - (xpos - loc.x) - 2 * style_->get_thickness();
+				text_loc.h = text_size.second;
+				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
-					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
-					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)");
-					if(sort_img != nullptr && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
-						const std::size_t sort_x = xpos + widths[i] - sort_img->w - padding;
-						const std::size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
-						video().blit_surface(sort_x,sort_y,sort_img);
+					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
+					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
+					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
+						const int sort_x = xpos + widths[i] - sort_tex.w() - padding;
+						const int sort_y = loc.y + loc.h/2 - sort_tex.h()/2;
+						SDL_Rect dest = {sort_x, sort_y, sort_tex.w(), sort_tex.h()};
+						draw::blit(sort_tex, dest);
 					}
 				}
 
@@ -958,45 +967,6 @@ void menu::draw_contents()
 		style_->draw_row(*this,item_pos_[i],get_item_rect(i),
 			 (!out_ && item_pos_[i] == selected_) ? SELECTED_ROW : NORMAL_ROW);
 	}
-}
-
-void menu::draw()
-{
-	if(hidden()) {
-		return;
-	}
-
-	if(!dirty()) {
-
-		for(std::set<int>::const_iterator i = invalid_.begin(); i != invalid_.end(); ++i) {
-			if(*i == -1) {
-				SDL_Rect heading_rect = inner_location();
-				heading_rect.h = heading_height();
-				bg_restore(heading_rect);
-				style_->draw_row(*this,0,heading_rect,HEADING_ROW);
-			} else if(*i >= 0 && *i < int(item_pos_.size())) {
-				const unsigned int pos = item_pos_[*i];
-				const SDL_Rect& rect = get_item_rect(*i);
-				bg_restore(rect);
-				style_->draw_row(*this,pos,rect,
-					(!out_ && pos == selected_) ? SELECTED_ROW : NORMAL_ROW);
-			}
-		}
-
-		invalid_.clear();
-		return;
-	}
-
-	invalid_.clear();
-
-	bg_restore();
-
-	clip_rect_setter clipping_rect =
-			clip_rect_setter(video().getSurface(), clip_rect(), clip_rect() != nullptr);
-
-	draw_contents();
-
-	set_dirty(false);
 }
 
 int menu::hit(int x, int y) const
@@ -1076,20 +1046,20 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 		y = prev.y + prev.h;
 	}
 
-	SDL_Rect res = sdl::create_rect(loc.x, y, loc.w, get_item_height(item));
+	rect res(loc.x, y, loc.w, get_item_height(item));
 
-	const SDL_Rect& screen_area = video().screen_area();
+	const point canvas_size = video::game_canvas_size();
 
-	if(res.x > screen_area.w) {
+	if(res.x > canvas_size.x) {
 		return sdl::empty_rect;
-	} else if(res.x + res.w > screen_area.w) {
-		res.w = screen_area.w - res.x;
+	} else if(res.x + res.w > canvas_size.x) {
+		res.w = canvas_size.x - res.x;
 	}
 
-	if(res.y > screen_area.h) {
+	if(res.y > canvas_size.y) {
 		return sdl::empty_rect;
-	} else if(res.y + res.h > screen_area.h) {
-		res.h = screen_area.h - res.y;
+	} else if(res.y + res.h > canvas_size.y) {
+		res.h = canvas_size.y - res.y;
 	}
 
 	//only insert into the cache if the menu's co-ordinates have
@@ -1141,20 +1111,16 @@ void menu::process_help_string(int mousex, int mousey)
 	if(loc == cur_help_) {
 		return;
 	} else if(loc.first == -1) {
-		video().clear_help_string(help_string_);
-		help_string_ = -1;
+		font::clear_help_string();
 	} else {
-		if(help_string_ != -1) {
-			video().clear_help_string(help_string_);
-			help_string_ = -1;
-		}
+		font::clear_help_string();
 		if(std::size_t(loc.first) < items_.size()) {
 			const std::vector<std::string>& row = items_[item_pos_[loc.first]].help;
 			if(std::size_t(loc.second) < row.size()) {
 				const std::string& help = row[loc.second];
 				if(help.empty() == false) {
-					//std::cerr << "setting help string from menu to '" << help << "'\n";
-					help_string_ = video().set_help_string(help);
+					//PLAIN_LOG << "setting help string from menu to '" << help << "'";
+					font::set_help_string(help);
 				}
 			}
 		}
@@ -1169,7 +1135,7 @@ void menu::invalidate_row(std::size_t id)
 		return;
 	}
 
-	invalid_.insert(int(id));
+	queue_redraw(get_item_rect(id));
 }
 
 void menu::invalidate_row_pos(std::size_t pos)
@@ -1183,7 +1149,9 @@ void menu::invalidate_row_pos(std::size_t pos)
 
 void menu::invalidate_heading()
 {
-	invalid_.insert(-1);
+	rect heading_rect = inner_location();
+	heading_rect.h = heading_height();
+	queue_redraw(heading_rect);
 }
 
 }

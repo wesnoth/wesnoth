@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
+#include "floating_label.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
@@ -75,16 +76,18 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<config>& items
 template<class Item>
 bool editor_palette<Item>::scroll_up()
 {
-	int decrement = item_width_;
-	if (items_start_ + num_visible_items() == num_items() && num_items() % item_width_ != 0) {
-		decrement = num_items() % item_width_;
+	bool scrolled = false;
+	if(can_scroll_up()) {
+		// This should only be reachable with items_start_ being a multiple of columns_, but guard against underflow anyway.
+		if(items_start_ < columns_) {
+			items_start_ = 0;
+		} else {
+			items_start_ -= columns_;
+		}
+		scrolled = true;
+		set_dirty(true);
 	}
-	if(items_start_ >= decrement) {
-		items_start_ -= decrement;
-		draw();
-		return true;
-	}
-	return false;
+	return scrolled;
 }
 
 template<class Item>
@@ -96,26 +99,18 @@ bool editor_palette<Item>::can_scroll_up()
 template<class Item>
 bool editor_palette<Item>::can_scroll_down()
 {
-	return (items_start_ + nitems_ + item_width_ <= num_items());
+	return (items_start_ + buttons_.size() < num_items());
 }
 
 template<class Item>
 bool editor_palette<Item>::scroll_down()
 {
-	bool end_reached = (!(items_start_ + nitems_ + item_width_ <= num_items()));
 	bool scrolled = false;
-
-	// move downwards
-	if(!end_reached) {
-		items_start_ += item_width_;
+	if(can_scroll_down()) {
+		items_start_ += columns_;
 		scrolled = true;
+		set_dirty(true);
 	}
-	else if (items_start_ + nitems_ + (num_items() % item_width_) <= num_items()) {
-		items_start_ += num_items() % item_width_;
-		scrolled = true;
-	}
-	set_dirty(scrolled);
-	draw();
 	return scrolled;
 }
 
@@ -141,7 +136,7 @@ void editor_palette<Item>::set_group(const std::string& id)
 	active_group_ = id;
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found in group with the id: '" << id << "'." << std::endl;
+		ERR_ED << "No items found in group with the id: '" << id << "'.";
 	}
 }
 
@@ -168,18 +163,36 @@ std::size_t editor_palette<Item>::active_group_index()
 template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
-	palette_x_ = target.x;
-	palette_y_ = target.y;
-	const int space_for_items = target.h;
-	const int items_fitting = (space_for_items / item_space_) * item_width_;
-	nitems_ = std::min(items_fitting, nmax_items_);
-	if (num_visible_items() != nitems_) {
-		buttons_.resize(nitems_, gui::tristate_button(gui_.video(), this));
+	const int items_fitting = (target.h / item_space_) * columns_;
+	// This might be called while the palette is not visible onscreen.
+	// If that happens, no items will fit and we'll have a negative number here.
+	// Just skip it in that case.
+	//
+	// New items can be added via the add_item function, so this creates as
+	// many buttons as can fit, even if there aren't yet enough items to need
+	// that many buttons.
+	if(items_fitting > 0) {
+		const auto buttons_needed = static_cast<std::size_t>(items_fitting);
+		if(buttons_.size() != buttons_needed) {
+			buttons_.resize(buttons_needed, gui::tristate_button(this));
+		}
 	}
+
+	// Update button locations and sizes. Needs to be done even if the number of buttons hasn't changed,
+	// because adjust_size() also handles moving left and right when the window's width is changed.
+	SDL_Rect dstrect;
+	dstrect.w = item_size_ + 2;
+	dstrect.h = item_size_ + 2;
+	for(std::size_t i = 0; i < buttons_.size(); ++i) {
+		dstrect.x = target.x + (i % columns_) * item_space_;
+		dstrect.y = target.y + (i / columns_) * item_space_;
+		buttons_[i].set_location(dstrect);
+	}
+
 	set_location(target);
 	set_dirty(true);
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	font::clear_help_string();
+	font::set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -189,8 +202,8 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 		selected_fg_item_ = item_id;
 		set_dirty();
 	}
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	font::clear_help_string();
+	font::set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -200,8 +213,8 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 		selected_bg_item_ = item_id;
 		set_dirty();
 	}
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	font::clear_help_string();
+	font::set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -214,10 +227,28 @@ void editor_palette<Item>::swap()
 }
 
 template<class Item>
-int editor_palette<Item>::num_items()
+std::size_t editor_palette<Item>::num_items()
 {
 	return group_map_[active_group_].size();
 }
+
+
+template<class Item>
+void editor_palette<Item>::hide(bool hidden)
+{
+	widget::hide(hidden);
+
+	if (!hidden) {
+		font::set_help_string(get_help_string());
+	} else {
+		font::clear_help_string();
+	}
+
+	for (gui::widget& w : buttons_) {
+		w.hide(hidden);
+	}
+}
+
 
 template<class Item>
 bool editor_palette<Item>::is_selected_fg_item(const std::string& id)
@@ -232,13 +263,16 @@ bool editor_palette<Item>::is_selected_bg_item(const std::string& id)
 }
 
 template<class Item>
-void editor_palette<Item>::draw_contents()
+void editor_palette<Item>::layout()
 {
+	if (!dirty()) {
+		return;
+	}
+
 	toolkit_.set_mouseover_overlay(gui_);
 
 	std::shared_ptr<gui::button> palette_menu_button = gui_.find_menu_button("menu-editor-terrain");
-	if (palette_menu_button) {
-
+	if(palette_menu_button) {
 		t_string& name = groups_[active_group_index()].name;
 		std::string& icon = groups_[active_group_index()].icon;
 
@@ -246,37 +280,33 @@ void editor_palette<Item>::draw_contents()
 		palette_menu_button->set_overlay(icon);
 	}
 
-	unsigned int y = palette_y_;
-	unsigned int x = palette_x_;
-	int starting = items_start_;
-	int ending = std::min<int>(starting + nitems_, num_items());
-
+	// The hotkey system will automatically enable and disable the buttons when it runs, but it doesn't
+	// get triggered when handling mouse-wheel scrolling. Therefore duplicate that functionality here.
 	std::shared_ptr<gui::button> upscroll_button = gui_.find_action_button("upscroll-button-editor");
-	if (upscroll_button)
-		upscroll_button->enable(starting != 0);
+	if(upscroll_button)
+		upscroll_button->enable(can_scroll_up());
 	std::shared_ptr<gui::button> downscroll_button = gui_.find_action_button("downscroll-button-editor");
-	if (downscroll_button)
-		downscroll_button->enable(ending != num_items());
+	if(downscroll_button)
+		downscroll_button->enable(can_scroll_down());
 
-
-	int counter = starting;
-	for (int i = 0, size = num_visible_items(); i < size ; ++i) {
-		//TODO check if the conditions still hold for the counter variable
-		//for (unsigned int counter = starting; counter < ending; counter++)
-
+	for(std::size_t i = 0; i < buttons_.size(); ++i) {
+		const auto item_index = items_start_ + i;
 		gui::tristate_button& tile = buttons_[i];
 
 		tile.hide(true);
 
-		if (i >= ending) continue;
+		// If we've scrolled to the end of the list, or if there aren't many items, leave the button hidden
+		if(item_index >= num_items()) {
+			continue;
+		}
 
-		const std::string item_id = active_group()[counter];
+		const std::string item_id = active_group()[item_index];
 		//typedef std::map<std::string, Item> item_map_wurscht;
 		typename item_map::iterator item = item_map_.find(item_id);
 
-		surface item_image(nullptr);
+		texture item_base, item_overlay;
 		std::stringstream tooltip_text;
-		draw_item((*item).second, item_image, tooltip_text);
+		setup_item((*item).second, item_base, item_overlay, tooltip_text);
 
 		bool is_core = non_core_items_.find(get_id((*item).second)) == non_core_items_.end();
 		if (!is_core) {
@@ -287,16 +317,8 @@ void editor_palette<Item>::draw_contents()
 			<< "</span>";
 		}
 
-		const int counter_from_zero = counter - starting;
-		SDL_Rect dstrect;
-		dstrect.x = x + (counter_from_zero % item_width_) * item_space_;
-		dstrect.y = y;
-		dstrect.w = item_size_ + 2;
-		dstrect.h = item_size_ + 2;
-
-		tile.set_location(dstrect);
 		tile.set_tooltip_string(tooltip_text.str());
-		tile.set_item_image(item_image);
+		tile.set_item_image(item_base, item_overlay);
 		tile.set_item_id(item_id);
 
 //		if (get_id((*item).second) == selected_bg_item_
@@ -323,13 +345,19 @@ void editor_palette<Item>::draw_contents()
 
 		tile.set_dirty(true);
 		tile.hide(false);
-		tile.draw();
-
-		// Adjust location
-		if (counter_from_zero % item_width_ == item_width_ - 1)
-			y += item_space_;
-		++counter;
 	}
+
+	set_dirty(false);
+}
+
+template<class Item>
+void editor_palette<Item>::draw_contents()
+{
+	// This is unnecessary as every GUI1 widget is a TLD.
+	//for(std::size_t i = 0; i < buttons_.size(); ++i) {
+	//	gui::tristate_button& tile = buttons_[i];
+	//	tile.draw();
+	//}
 }
 
 // Force compilation of the following template instantiations

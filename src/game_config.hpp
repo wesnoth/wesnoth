@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -144,6 +144,7 @@ namespace game_config
 			level,
 			ellipsis,
 			missing,
+			blank,
 			// notifications icon
 			app_icon;
 	} //images
@@ -152,8 +153,6 @@ namespace game_config
 	extern std::string shroud_prefix, fog_prefix;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
-	extern double hex_brightening;
-	extern double hex_semi_brightening;
 
 	extern std::string flag_rgb, unit_rgb;
 	extern std::vector<color_t> red_green_scale;
@@ -204,13 +203,12 @@ namespace game_config
 
 	/**
 	 * Return a color corresponding to the value val
-	 * red for val=0 to green for val=100, passing by yellow.
+	 * red for val=0.0 to green for val=100.0, passing by yellow.
 	 * Colors are defined by [game_config] keys
 	 * red_green_scale and red_green_scale_text
 	 */
-
-	color_t red_to_green(int val, bool for_text = true);
-	color_t blue_to_white(int val, bool for_text = true);
+	color_t red_to_green(double val, bool for_text = true);
+	color_t blue_to_white(double val, bool for_text = true);
 
 	std::string get_default_title_string();
 }

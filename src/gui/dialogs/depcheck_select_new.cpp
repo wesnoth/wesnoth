@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -63,7 +63,7 @@ void depcheck_select_new::pre_show(window& window)
 
 	for(const auto & item : items_)
 	{
-		std::map<std::string, string_map> data;
+		widget_data data;
 		data["option"]["label"] = item;
 
 		items.add_row(data);

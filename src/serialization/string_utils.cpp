@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2021
+	Copyright (C) 2005 - 2022
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -125,12 +125,12 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	if (i1 == val.end()) return res;
 
 	if (!separator) {
-		ERR_GENERAL << "Separator must be specified for square bracket split function." << std::endl;
+		ERR_GENERAL << "Separator must be specified for square bracket split function.";
 		return res;
 	}
 
 	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length" << std::endl;
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
 		return res;
 	}
 
@@ -175,7 +175,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						}
 						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
 							ERR_GENERAL << "Square bracket padding sizes not matching: "
-										<< s_begin << " and " << s_end <<".\n";
+										<< s_begin << " and " << s_end <<".";
 						}
 						if (padding_end > padding) padding = padding_end;
 
@@ -191,7 +191,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 				}
 				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
 					std::string tmp2(i1, i2);
-					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2 << std::endl;
+					ERR_GENERAL << "Square bracket lengths do not match up: " << tmp2;
 					return res;
 				}
 				size_square_exp = square_expansion.size();
@@ -261,7 +261,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 	}
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val;
 	}
 
 	return res;
@@ -318,7 +318,7 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 	i2=i1;
 
 	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length" << std::endl;
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
 		return res;
 	}
 
@@ -384,7 +384,7 @@ std::vector<std::string> parenthetical_split(const std::string& val,
 		res.push_back(std::move(new_val));
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<< std::endl;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val;
 	}
 
 	return res;
@@ -602,7 +602,7 @@ static bool is_username_char(char c) {
 }
 
 static bool is_wildcard_char(char c) {
-    return ((c == '?') || (c == '*'));
+	return ((c == '?') || (c == '*'));
 }
 
 bool isvalid_username(const std::string& username) {
@@ -618,13 +618,13 @@ bool isvalid_username(const std::string& username) {
 }
 
 bool isvalid_wildcard(const std::string& username) {
-    const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
 	const std::size_t valid_char =
-			std::count_if(username.begin(), username.end(), is_username_char);
-    const std::size_t wild_char =
-            std::count_if(username.begin(), username.end(), is_wildcard_char);
+		std::count_if(username.begin(), username.end(), is_username_char);
+	const std::size_t wild_char =
+		std::count_if(username.begin(), username.end(), is_wildcard_char);
 	if ((alnum + valid_char + wild_char != username.size())
-			|| valid_char == username.size() || username.empty() )
+		|| valid_char == username.size() || username.empty() )
 	{
 		return false;
 	}
@@ -839,7 +839,7 @@ std::pair<int, int> parse_range(const std::string& str)
 			res.second = res.first;
 		}
 	} catch(const std::invalid_argument&) {
-	    ERR_GENERAL << "Invalid range: "<< str << std::endl;
+	    ERR_GENERAL << "Invalid range: "<< str;
 	}
 
 	return res;

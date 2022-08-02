@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -111,7 +111,7 @@ public:
 	void set_best_slider_length(const unsigned length)
 	{
 		best_slider_length_ = length;
-		set_is_dirty(true);
+		queue_redraw(); // TODO: draw_manager - does the above change the size?
 	}
 
 	void set_value_range(int min_value, int max_value);
@@ -275,7 +275,7 @@ struct builder_slider : public builder_styled_widget
 
 	using builder_styled_widget::build;
 
-	virtual widget* build() const override;
+	virtual std::unique_ptr<widget> build() const override;
 
 private:
 	unsigned best_slider_length_;

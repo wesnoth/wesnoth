@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2021-06-23 15:42 UTC\n"
-"PO-Revision-Date: 2021-07-19 01:46+0800\n"
+"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
+"PO-Revision-Date: 2022-05-30 15:46+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
 "Language: zh_TW\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. [campaign]: id=Liberty
@@ -175,9 +175,9 @@ msgid "Fal Khag"
 msgstr "法爾‧哈格"
 
 #. [side]: type=Goblin Pillager, id=Fal Khag
-#. [side]: type=Orcish Warlord, id=Vashna
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
+#. [side]: type=Orcish Warlord, id=Vashna
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:86
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:106
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
@@ -533,14 +533,14 @@ msgstr ""
 "說到感受，我今天有股不好的感覺。我回到村莊時，最好準備好我們的狩獵隊，以防萬"
 "一……"
 
+#. [side]: type=Bandit_Peasant, id=Baldras
+#. [side]
 #. [side]: type=Bandit, id=Baldras
+#. [side]: type=Highwayman_Peasant, id=Relana
 #. [side]: type=General, id=Lord Maddock
 #. [side]: type=Rogue, id=Hans
 #. [side]: type=Highwayman, id=Baldras
 #. [side]: type=Shadow Lord, id=Helicrom
-#. [side]
-#. [side]: type=Bandit_Peasant, id=Baldras
-#. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:44
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:83
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:48
@@ -561,13 +561,13 @@ msgstr "叛軍"
 msgid "Tarwen"
 msgstr "塔文"
 
+#. [side]: type=Cavalier, id=Tarwen
 #. [side]: type=General, id=Kestrel
 #. [side]: type=Master Bowman, id=Quentin
 #. [side]
 #. [side]: type=Shock Trooper, id=Linneus
 #. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
-#. [side]: type=Cavalier, id=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
@@ -634,7 +634,7 @@ msgstr "把守大門。"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:225
-msgid "<i>Uncle, since when did we have a Queen?</i>"
+msgid "<i>Uncle, since when did we have a queen?</i>"
 msgstr "<i>舅舅，我們什麼時候有女王了？</i>"
 
 #. [message]: speaker=Baldras
@@ -1880,7 +1880,7 @@ msgstr "你們在這裡追求什麼？"
 #. [message]: speaker=Helicrom
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:265
 msgid ""
-"The former King’s magic ministry kept a tight control on the training and "
+"The former king’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
 "curriculum were dealt with harshly. Many of us were forced to escape here to "
 "continue our study of our brand of magic. Our security and secrecy are not "
@@ -1912,7 +1912,7 @@ msgstr "人力。法師不擅長戰鬥，我知道。但，為了什麼？"
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:281
 msgid ""
 "Understand this. Any weakening of the Throne of Wesnoth, whether it be "
-"occupied by King or Queen, aids us. To accomplish that, we must destabilize "
+"occupied by king or queen, aids us. To accomplish that, we must destabilize "
 "their forces in this region. The key is Halstead."
 msgstr ""
 "你要知道，任何韋諾王權的衰退，不管是國王還是女王，都對我們是有利的。為了達成"
@@ -1940,7 +1940,7 @@ msgstr ""
 msgid ""
 "Know this, Baldras. During the past week, several patrols have again "
 "ventured across the Great River into Annuvin. A woman named Relana opposed "
-"them with a small militia and was victorious, but with heavy loses. The "
+"them with a small militia and was victorious, but with heavy losses. The "
 "Crown, however, has begun to take notice of this rebellion and is massing "
 "forces within Halstead. When its armies are raised, none of your little "
 "villages will be able to resist them. Your only choice would be to flee "
@@ -2882,44 +2882,6 @@ msgstr ""
 "所以他們還活著！他們的島嶼有點遠，但我想我身上的這些老骨頭還能為他們再多進行"
 "一場冒險。"
 
-#. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:5
-msgid "Bone Knight"
-msgstr "骸骨騎士"
-
-#. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:27
-msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
-msgstr ""
-"這些騎著骷髏馬的騎士曾是橫越大草原的偉大戰士，他們被不潔的魔法從地底深處喚"
-"醒，散播著恐懼和毀滅。"
-
-#. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:42
-msgid "trample"
-msgstr "踐踏"
-
-#. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:4
-msgid "Death Squire"
-msgstr "死亡騎士扈從"
-
-#. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:26
-msgid ""
-"Sometimes the mightiest warriors and generals, cursed with hate and angst, "
-"came back to this world as Death Knights. Death Squires serve them whilst "
-"accruing enough unholy power to become Death Knights. In the process they "
-"pick up a good deal of the Knight’s power, including the ability to command "
-"underlings."
-msgstr ""
-"有時某些最強大的戰士和將軍受到仇恨和恐怖的詛咒，變成死亡騎士重返世界。死亡騎"
-"士扈從時時刻刻服侍它們以取得足夠不潔的力量而成為死亡騎士。在這個過程中，它們"
-"將學會好好地應用死亡騎士的力量，還有指揮部下的能力。"
-
 #. [unit_type]: id=Rogue Mage, race=human
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:5
 msgid "Rogue Mage"
@@ -2999,21 +2961,6 @@ msgstr ""
 "完全被權力迷惑，率領一小群的手下並被廣為知曉。在直接的魔法決鬥上他們雖然比不"
 "過同儕，但取而代之的是，他們會把能量注入武器，來進行毀滅性的近距離戰鬥。儘管"
 "攻擊性十足，他們腐敗的靈魂也開始對健康產生不良的影響。"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:5
-msgid "Skeleton Rider"
-msgstr "骷髏騎兵"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:33
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
-"這些騎著骷髏馬的騎士曾是在大草原上轟隆而過的偉大戰士，他們被不潔的魔法從地底"
-"深處喚醒，散播著恐懼和毀滅。"
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20
@@ -3179,6 +3126,45 @@ msgstr "我完成了……"
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid "How can this be?"
 msgstr "怎麼會這樣？"
+
+#~ msgid "Bone Knight"
+#~ msgstr "骸骨騎士"
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the ground by unholy magic to spread "
+#~ "fear and destruction."
+#~ msgstr ""
+#~ "這些騎著骷髏馬的騎士曾是橫越大草原的偉大戰士，他們被不潔的魔法從地底深處喚"
+#~ "醒，散播著恐懼和毀滅。"
+
+#~ msgid "trample"
+#~ msgstr "踐踏"
+
+#~ msgid "Death Squire"
+#~ msgstr "死亡騎士扈從"
+
+#~ msgid ""
+#~ "Sometimes the mightiest warriors and generals, cursed with hate and "
+#~ "angst, came back to this world as Death Knights. Death Squires serve them "
+#~ "whilst accruing enough unholy power to become Death Knights. In the "
+#~ "process they pick up a good deal of the Knight’s power, including the "
+#~ "ability to command underlings."
+#~ msgstr ""
+#~ "有時某些最強大的戰士和將軍受到仇恨和恐怖的詛咒，變成死亡騎士重返世界。死亡"
+#~ "騎士扈從時時刻刻服侍它們以取得足夠不潔的力量而成為死亡騎士。在這個過程中，"
+#~ "它們將學會好好地應用死亡騎士的力量，還有指揮部下的能力。"
+
+#~ msgid "Skeleton Rider"
+#~ msgstr "骷髏騎兵"
+
+#~ msgid ""
+#~ "Once great warriors thundering across the plains, these mounted riders "
+#~ "atop their skeletal horses were raised from the grave by unholy magic to "
+#~ "spread fear and destruction."
+#~ msgstr ""
+#~ "這些騎著骷髏馬的騎士曾是在大草原上轟隆而過的偉大戰士，他們被不潔的魔法從地"
+#~ "底深處喚醒，散播著恐懼和毀滅。"
 
 #~ msgid "Difficult"
 #~ msgstr "困難"

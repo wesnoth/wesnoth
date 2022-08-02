@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,7 +34,7 @@ modeless_dialog::~modeless_dialog()
 
 void modeless_dialog::show(const bool allow_interaction, const unsigned /*auto_close_time*/)
 {
-	if(CVideo::get_singleton().faked()) {
+	if(video::headless()) {
 		return;
 	}
 

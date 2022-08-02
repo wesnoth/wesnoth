@@ -14,11 +14,11 @@ function ca_village_hunt:evaluation(cfg, data, filter_own)
     local start_time, ca_name = wesnoth.ms_since_init() / 1000., 'village_hunt'
     if AH.print_eval() then AH.print_ts('     - Evaluating village_hunt CA:') end
 
-    local avoid_map = LS.of_pairs(ai.aspects.avoid)
+    local avoid_map1 = LS.of_pairs(ai.aspects.avoid)
 
     local all_villages, villages = wesnoth.map.find{gives_income = true}, {}
     for _,village in ipairs(all_villages) do
-        if (not avoid_map:get(village[1], village[2])) then
+        if (not avoid_map1:get(village[1], village[2])) then
             table.insert(villages, village)
         end
     end
@@ -60,16 +60,16 @@ function ca_village_hunt:evaluation(cfg, data, filter_own)
         return 0
     end
 
-    local avoid_map = AH.get_avoid_map(ai, nil, true)
+    local avoid_map2 = AH.get_avoid_map(ai, nil, true)
 
     VH_unit = nil
     for _,unit in ipairs(units) do
         local best_cost = AH.no_path
         for i,v in ipairs(villages) do
             if not wesnoth.map.matches(v, { {"filter_owner", { {"ally_of", { side = wesnoth.current.side }} }} }) then
-                local path, cost = AH.find_path_with_avoid(unit, v[1], v[2], avoid_map)
+                local path, cost = AH.find_path_with_avoid(unit, v[1], v[2], avoid_map2)
                 if (cost < best_cost) then
-                    local dst = AH.next_hop(unit, nil, nil, { path = path, avoid_map = avoid_map })
+                    local dst = AH.next_hop(unit, nil, nil, { path = path, avoid_map = avoid_map2 })
                     if (dst[1] ~= unit.x) or (dst[2] ~= unit.y) then
                         best_cost = cost
                         VH_unit = unit

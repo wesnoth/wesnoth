@@ -28,7 +28,7 @@ end
 function wc2_utils.pick_random(str, generator)
 	local s2 = wml.variables[str]
 	if s2 ~= nil or generator then
-		local array = s2 and stringx.split(s2 or "") or {}
+		local array = s2 and stringx.split(s2) or {}
 		if #array == 0 and generator then
 			array = generator()
 		end
@@ -182,7 +182,7 @@ function wc2_utils.load_wc2_data()
 		end
 
 		table.insert(data_dict, {id="era", data = wesnoth.scenario.era})
-		
+
 
 		-- make sure the result does not depend on the order in which these addons are loaded.
 		table.sort(data_dict, function(a,b) return a.id<b.id end)

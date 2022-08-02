@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,7 +67,6 @@ public:
 		, current_sorting_(RANK)
 		, currently_sorted_asc_(true)
 	{
-		set_restore(true);
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/

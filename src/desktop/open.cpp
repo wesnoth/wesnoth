@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2021
+	Copyright (C) 2013 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -46,22 +46,22 @@ namespace desktop {
 
 bool open_object([[maybe_unused]] const std::string& path_or_url)
 {
-	LOG_DU << "open_object(): requested object: " << path_or_url << '\n';
+	LOG_DU << "open_object(): requested object: " << path_or_url;
 
 #if defined(_X11) || defined(__APPLE__)
 
 #ifndef __APPLE__
-	LOG_DU << "open_object(): on X11, will use xdg-open\n";
+	LOG_DU << "open_object(): on X11, will use xdg-open";
 	const char launcher[] = "xdg-open";
 #else
-	LOG_DU << "open_object(): on OS X, will use open\n";
+	LOG_DU << "open_object(): on OS X, will use open";
 	const char launcher[] = "open";
 #endif
 
 	const pid_t child = fork();
 
 	if(child == -1) {
-		ERR_DU << "open_object(): fork() failed" << std::endl;
+		ERR_DU << "open_object(): fork() failed";
 		return false;
 	} else if(child == 0) {
 		execlp(launcher, launcher, path_or_url.c_str(), nullptr);
@@ -75,13 +75,13 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 
 #elif defined(_WIN32)
 
-	LOG_DU << "open_object(): on Win32, will use ShellExecute()\n";
+	LOG_DU << "open_object(): on Win32, will use ShellExecute()";
 
 	std::wstring u16path = unicode_cast<std::wstring>(path_or_url);
 
 	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(nullptr, L"open", u16path.c_str(), nullptr, nullptr, SW_SHOW));
 	if(res <= 32) {
-		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")" << std::endl;
+		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")";
 		return false;
 	}
 
@@ -89,7 +89,7 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 
 #else
 
-	ERR_DU << "open_object(): unsupported platform" << std::endl;
+	ERR_DU << "open_object(): unsupported platform";
 	return false;
 
 #endif

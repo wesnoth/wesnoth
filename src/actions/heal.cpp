@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -220,7 +220,7 @@ namespace {
 				healers.push_back(&*units.find(heal.loc));
 
 			if ( !healers.empty() ) {
-				DBG_NG << "Unit has " << healers.size() << " healers.\n";
+				DBG_NG << "Unit has " << healers.size() << " healers.";
 			}
 		}
 
@@ -292,7 +292,7 @@ namespace {
 // Simple algorithm: no maximum number of patients per healer.
 void calculate_healing(int side, bool update_display)
 {
-	DBG_NG << "beginning of healing calculations\n";
+	DBG_NG << "beginning of healing calculations";
 
 	std::list<heal_unit> unit_list;
 
@@ -303,7 +303,7 @@ void calculate_healing(int side, bool update_display)
 			continue;
 		}
 
-		DBG_NG << "found healable unit at (" << patient.get_location() << ")\n";
+		DBG_NG << "found healable unit at (" << patient.get_location() << ")";
 
 		POISON_STATUS curing = POISON_NORMAL;
 		int healing = 0;
@@ -341,7 +341,7 @@ void calculate_healing(int side, bool update_display)
 			continue;
 
 		if (!healers.empty()) {
-			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers.\n";
+			DBG_NG << "Just before healing animations, unit has " << healers.size() << " potential healers.";
 		}
 
 		if (!resources::controller->is_skipping_replay() && update_display)
@@ -357,5 +357,5 @@ void calculate_healing(int side, bool update_display)
 
 	animate_heals(unit_list);
 
-	DBG_NG << "end of healing calculations\n";
+	DBG_NG << "end of healing calculations";
 }

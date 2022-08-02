@@ -17,7 +17,7 @@ function connected_components(locs)
 			local todo = { loc }
 			l_set[loc_i] = color_i
 			while #todo ~= 0 do
-				for i, loc_ad in ipairs({wesnoth.map.get_adjacent_hexes(todo[1][1], todo[1][2])}) do
+				for j, loc_ad in ipairs({wesnoth.map.get_adjacent_hexes(todo[1][1], todo[1][2])}) do
 					local loc_ad_i = loc_to_index(loc_ad)
 					if l_set[loc_ad_i] then
 						if l_set[loc_ad_i] == true then

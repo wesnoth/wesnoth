@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,7 +135,8 @@ protected:
 	/**
 	 * Helper function for derived classes that need a active-terrain mouse overlay
 	 */
-	void set_terrain_mouse_overlay(editor_display& disp, const t_translation::terrain_code & fg,
+	void set_terrain_mouse_overlay(editor_display& disp,
+		const t_translation::terrain_code & fg,
 		const t_translation::terrain_code & bg);
 
 	/**

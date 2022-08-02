@@ -2,6 +2,9 @@
 --[========[GUI2 Dialog Manipulations]========]
 print("Loading GUI module...")
 
+---Show a basic alert dialog with a single button
+---@param title string Dialog title string
+---@param msg string Detail message
 function gui.alert(title, msg)
 	if not msg then
 		msg = title;
@@ -10,6 +13,10 @@ function gui.alert(title, msg)
 	gui.show_prompt(title, msg, "ok", true)
 end
 
+---Show a basic prompt dialog with two buttons
+---@param title string Dialog title string
+---@param msg string Detail message
+---@return boolean #True if OK or Yes was clicked
 function gui.confirm(title, msg)
 	if not msg then
 		msg = title;
@@ -18,13 +25,10 @@ function gui.confirm(title, msg)
 	return gui.show_prompt(title, msg, "yes_no", true)
 end
 
---! Displays a WML message box with attributes from table @attr and options
---! from table @options.
---! @return the index of the selected option.
---! @code
---! local result = gui.get_user_choice({ speaker = "narrator" },
---!     { "Choice 1", "Choice 2" })
---! @endcode
+---Displays a WML message box with attributes from attr and options from options.
+---@param attr WML The contents of a [message] tag, without any [option]s.
+---@param options string[]|gui_narration_option_info[] A list of options to show in the message box
+---@return integer #the index of the selected option.
 function gui.get_user_choice(attr, options)
 	local result = 0
 	function gui.__user_choice_helper(i)
@@ -35,10 +39,23 @@ function gui.get_user_choice(attr, options)
 		msg[k] = attr[k]
 	end
 	for k,v in ipairs(options) do
-		table.insert(msg, wml.tag.option, { message = v,
-			wml.tag.command, { wml.tag.lua, {
-				code = string.format("gui.__user_choice_helper(%d)", k)
-			}}})
+		if type(v) == "table" or (type(v) == "userdata" and getmetatable(v) ~= "translatable string") then
+			table.insert(msg, wml.tag.option { image = v.image,
+				label = v.label,
+				description = v.description or v.message,
+				default = v.default,
+				wml.tag.command { wml.tag.lua {
+					code = string.format("gui.__user_choice_helper(%d)", k)
+				}}})
+		elseif type(v) == "string" or type(v) == "number" or type(v) == "boolean" or
+			(type(v) == "userdata" and getmetatable(v) == "translatable string") then
+			table.insert(msg, wml.tag.option { description = v,
+				wml.tag.command { wml.tag.lua {
+					code = string.format("gui.__user_choice_helper(%d)", k)
+				}}})
+		else -- only function and thread, because nil stops the cycle anyway
+			error(string.format("Invalid data type in gui.get_user_choice (type: %s)", type(v)))
+		end
 	end
 	wesnoth.wml_actions.message(msg)
 	gui.__user_choice_helper = nil

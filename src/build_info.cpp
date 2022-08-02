@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2021
+	Copyright (C) 2015 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,6 +28,7 @@
 #include "sound.hpp"
 #include "video.hpp"
 #include "addon/manager.hpp"
+#include "sdl/point.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -290,7 +291,7 @@ version_table_manager::version_table_manager()
 #endif
 
 #ifdef __APPLE__
-    // Always compiled in.
+	// Always compiled in.
 	features.emplace_back(N_("feature^Cocoa notifications back end"));
 	features.back().enabled = true;
 #endif /* __APPLE__ */
@@ -515,10 +516,9 @@ list_formatter optional_features_report_internal(const std::string& heading = ""
 	return fmt;
 }
 
-template<typename T>
-inline std::string geometry_to_string(T horizontal, T vertical)
+inline std::string geometry_to_string(point p)
 {
-	return std::to_string(horizontal) + 'x' + std::to_string(vertical);
+	return std::to_string(p.x) + 'x' + std::to_string(p.y);
 }
 
 std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::string& current_driver)
@@ -544,19 +544,10 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 {
 	list_formatter fmt{heading};
 
-	if(!CVideo::setup_completed()) {
-		fmt.set_placeholder("Graphics not initialized.");
-		return fmt;
-	}
-
-	CVideo& video = CVideo::get_singleton();
-
 	std::string placeholder;
 
-	if(video.non_interactive()) {
+	if(video::headless()) {
 		placeholder = "Running in non-interactive mode.";
-	} else if(!video.has_window()) {
-		placeholder = "Running without a game window.";
 	}
 
 	if(!placeholder.empty()) {
@@ -564,25 +555,14 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		return fmt;
 	}
 
-	const auto& current_driver = CVideo::current_driver();
-	auto drivers = CVideo::enumerate_drivers();
-
-	const auto& dpi = video.get_dpi();
-	const auto& scale = video.get_dpi_scale_factor();
-	std::string dpi_report, scale_report;
-
-	if(dpi.first == 0.0f || dpi.second == 0.0f) {
-		scale_report = dpi_report = "<unknown>";
-	} else {
-		dpi_report = geometry_to_string(dpi.first, dpi.second);
-		scale_report = geometry_to_string(scale.first, scale.second);
-	}
+	const auto& current_driver = video::current_driver();
+	auto drivers = video::enumerate_drivers();
 
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
-	fmt.insert("Window size", geometry_to_string(video.get_width(), video.get_height()));
-	fmt.insert("Screen refresh rate", std::to_string(video.current_refresh_rate()));
-	fmt.insert("Screen dots per inch", dpi_report);
-	fmt.insert("Screen dpi scale factor", scale_report);
+	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
+	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
+	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
+	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
 
 	return fmt;
 }

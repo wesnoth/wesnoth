@@ -4,8 +4,8 @@ local utils = {vwriter = {}}
 function utils.split(s)
 	return coroutine.wrap(function()
 		local split = s:split()
-		for _,s in ipairs(split) do
-			coroutine.yield(s)
+		for _,sp in ipairs(split) do
+			coroutine.yield(sp)
 		end
 	end)
 end
@@ -26,12 +26,13 @@ function utils.vwriter.init(cfg, default_variable)
 	local is_explicit_index = variable[-1] == "]"
 	local mode = cfg.mode or "always_clear"
 	local index = 0
-	if is_explicit_index then
-		-- explicit indexes behave always like "replace"
-	elseif mode == "append" then
-		index = wml.variables[variable .. ".length"]
-	elseif mode ~= "replace" then
-		wml.variables[variable] = nil
+	-- explicit indexes behave always like "replace"
+	if not is_explicit_index then
+		if mode == "append" then
+			index = wml.variables[variable .. ".length"]
+		elseif mode ~= "replace" then
+			wml.variables[variable] = nil
+		end
 	end
 	return {
 		variable = variable,

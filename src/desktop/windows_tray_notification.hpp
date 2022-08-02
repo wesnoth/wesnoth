@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2021
+	Copyright (C) 2013 - 2022
 	by Maxim Biro <nurupo.contributions@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

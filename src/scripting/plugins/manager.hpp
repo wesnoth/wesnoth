@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,7 @@
 #pragma once
 
 #include "config.hpp"
-#include "utils/make_enum.hpp"
+#include "scripting/plugin_manager_status.hpp"
 
 #include <string>
 
@@ -42,15 +42,9 @@ public:
 	void play_slice(const plugins_context &);
 	void notify_event(const std::string & name, const config & data);
 
-	MAKE_ENUM( STATUS,
-		(NONE,		"not created")
-		(RUNNING,	"running")
-		(STOPPED,	"stopped")
-	);
-
 	std::size_t size();
 
-	STATUS get_status(std::size_t idx);
+	plugin_manager_status::type get_status(std::size_t idx);
 	std::string get_detailed_status(std::size_t idx);
 	std::string get_name (std::size_t idx);
 

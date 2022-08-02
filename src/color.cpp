@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -104,6 +104,10 @@ std::string color_t::to_hex_string() const
 	  << std::setw(2) << static_cast<int>(r)
 	  << std::setw(2) << static_cast<int>(g)
 	  << std::setw(2) << static_cast<int>(b);
+
+	if(a != ALPHA_OPAQUE) {
+		h << std::setw(2) << static_cast<int>(a);
+	}
 
 	return h.str();
 }

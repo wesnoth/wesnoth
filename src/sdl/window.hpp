@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2021
+	Copyright (C) 2014 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,8 @@
  * @file
  * Contains a wrapper class for the SDL_Window class.
  */
+
+#include "sdl/point.hpp"
 
 #include <SDL2/SDL_video.h>
 
@@ -168,6 +170,25 @@ public:
 	void set_minimum_size(int min_w, int min_h);
 
 	int get_display_index();
+
+	/**
+	 * Sets the desired size of the rendering surface. Input event coordinates
+	 * will be scaled as if the window were also of this size. For best
+	 * results this should be an integer fraction of the window size.
+	 *
+	 * This is a wrapper for SDL_RenderSetLogicalSize.
+	 *
+	 * @param w              Width of the window's rendering surface
+	 * @param h              Height of the window's rendering surface
+	 */
+	void set_logical_size(int w, int h);
+	void set_logical_size(const point& p);
+
+	point get_logical_size() const;
+	void get_logical_size(int& w, int& h) const;
+
+	/** The current pixel format of the renderer. */
+	uint32_t pixel_format();
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 

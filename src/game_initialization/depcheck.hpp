@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2021
+	Copyright (C) 2012 - 2022
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 #include <vector>
 #include "config.hpp"
 #include "gettext.hpp"
-#include "utils/make_enum.hpp"
 
 class game_config_view;
 
@@ -36,11 +35,6 @@ enum component_type
 	MODIFICATION
 };
 
-MAKE_ENUM(component_availability,
-	(SP, "sp")
-	(MP, "mp")
-	(HYBRID, "hybrid")
-);
 /**
  * Note to all triers:
  * It's not guaranteed that the specified component will be selected

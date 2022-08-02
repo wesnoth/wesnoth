@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2021
+	Copyright (C) 2009 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -95,7 +95,7 @@ private:
 	/** Callbacks */
 	void list_item_clicked();
 	void filter_text_changed(const std::string& text);
-	void gender_toggle_callback();
+	void gender_toggle_callback(const unit_race::GENDER val);
 	void variation_menu_callback();
 
 	void update_displayed_type() const;

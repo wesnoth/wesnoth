@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -113,7 +113,7 @@ static std::string resolve_rect(const std::string& rect_str)
 		resolved << "," << rect.y2;
 	}
 
-	// DBG_DP << "Rect " << rect_str << "\t: " << resolved.str() << "\n";
+	// DBG_DP << "Rect " << rect_str << "\t: " << resolved.str();
 
 	ref_rect = rect;
 	return resolved.str();
@@ -252,15 +252,15 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 	// override default reference rect with "ref" parameter if any
 	if(!cfg["ref"].empty()) {
 		if(resol_cfg == nullptr) {
-			ERR_DP << "Use of ref= outside a [resolution] block" << std::endl;
+			ERR_DP << "Use of ref= outside a [resolution] block";
 		} else {
-			// DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
+			// DBG_DP << ">> Looking for " << cfg["ref"];
 			const config& ref = find_ref(cfg["ref"], *resol_cfg);
 
 			if(ref["id"].empty()) {
-				ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"" << std::endl;
+				ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"";
 			} else if(ref["rect"].empty()) {
-				ERR_DP << "Reference to id \"" << cfg["ref"] << "\" which does not have a \"rect\"\n";
+				ERR_DP << "Reference to id \"" << cfg["ref"] << "\" which does not have a \"rect\"";
 			} else {
 				ref_rect = read_rect(ref);
 			}
@@ -315,7 +315,7 @@ theme::border_t::border_t(const config& cfg)
 	VALIDATE(size >= 0.0 && size <= 0.5, _("border_size should be between 0.0 and 0.5."));
 }
 
-SDL_Rect& theme::object::location(const SDL_Rect& screen) const
+rect& theme::object::location(const SDL_Rect& screen) const
 {
 	if(last_screen_ == screen && !location_modified_)
 		return relative_loc_;
@@ -520,11 +520,11 @@ theme::menu::menu(std::size_t sw, std::size_t sh, const config& cfg)
 		items_.emplace_back("id", item);
 	}
 
+	const auto& cmd = hotkey::get_hotkey_command(items_[0]["id"]);
 	if(cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]["id"]) + hotkey::get_names(items_[0]["id"]) + "\n"
-				   + hotkey::get_tooltip(items_[0]["id"]);
+		tooltip_ = cmd.description + hotkey::get_names(items_[0]["id"]) + "\n" + cmd.tooltip;
 	} else if(cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
-		tooltip_ = hotkey::get_description(items_[0]["id"]) + hotkey::get_names(items_[0]["id"]) + "\n" + tooltip_;
+		tooltip_ = cmd.description + hotkey::get_names(items_[0]["id"]) + "\n" + tooltip_;
 	}
 }
 
@@ -558,14 +558,15 @@ theme::action::action(std::size_t sw, std::size_t sh, const config& cfg)
 
 const std::string theme::action::tooltip(std::size_t index) const
 {
+	const auto& cmd = hotkey::get_hotkey_command(items_[index]);
 	std::stringstream result;
 	if(auto_tooltip_ && tooltip_.empty() && items_.size() > index) {
-		result << hotkey::get_description(items_[index]);
+		result << cmd.description;
 		if(!hotkey::get_names(items_[index]).empty())
 			result << "\n" << _("Hotkey(s): ") << hotkey::get_names(items_[index]);
-		result << "\n" << hotkey::get_tooltip(items_[index]);
+		result << "\n" << cmd.tooltip;
 	} else if(tooltip_name_prepend_ && items_.size() == 1) {
-		result << hotkey::get_description(items_[index]);
+		result << cmd.description;
 		if(!hotkey::get_names(items_[index]).empty())
 			result << "\n" << _("Hotkey(s): ") << hotkey::get_names(items_[index]);
 		result << "\n" << tooltip_;
@@ -612,9 +613,9 @@ bool theme::set_resolution(const SDL_Rect& screen)
 	for(const config& i : cfg_.child_range("resolution")) {
 		int width = i["width"];
 		int height = i["height"];
-		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height << "\n";
+		LOG_DP << "comparing resolution " << screen.w << "," << screen.h << " to " << width << "," << height;
 		if(screen.w >= width && screen.h >= height) {
-			LOG_DP << "loading theme: " << width << "," << height << "\n";
+			LOG_DP << "loading theme: " << width << "," << height;
 			current = &i;
 			result = true;
 			break;
@@ -629,7 +630,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if(!current) {
 		if(cfg_.child_count("resolution")) {
-			ERR_DP << "No valid resolution found" << std::endl;
+			ERR_DP << "No valid resolution found";
 		}
 		return false;
 	}
@@ -713,7 +714,7 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 
 	for(const config& m : cfg.child_range("menu")) {
 		menu new_menu(sw, sh, m);
-		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context") << "\n";
+		DBG_DP << "adding menu: " << (new_menu.is_context() ? "is context" : "not context");
 		if(new_menu.is_context())
 			context_ = new_menu;
 		else {
@@ -721,12 +722,12 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 			menus_.push_back(new_menu);
 		}
 
-		DBG_DP << "done adding menu...\n";
+		DBG_DP << "done adding menu...";
 	}
 
 	for(const config& a : cfg.child_range("action")) {
 		action new_action(sw, sh, a);
-		DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context") << "\n";
+		DBG_DP << "adding action: " << (new_action.is_context() ? "is context" : "not context");
 		if(new_action.is_context())
 			action_context_ = new_action;
 		else {
@@ -734,16 +735,16 @@ void theme::add_object(std::size_t sw, std::size_t sh, const config& cfg)
 			actions_.push_back(new_action);
 		}
 
-		DBG_DP << "done adding action...\n";
+		DBG_DP << "done adding action...";
 	}
 
 	for(const config& s : cfg.child_range("slider")) {
 		slider new_slider(sw, sh, s);
-		DBG_DP << "adding slider\n";
+		DBG_DP << "adding slider";
 		set_object_location(new_slider, s["rect"], s["ref"]);
 		sliders_.push_back(new_slider);
 
-		DBG_DP << "done adding slider...\n";
+		DBG_DP << "done adding slider...";
 	}
 
 	if(const config& c = cfg.child("main_map_border")) {
@@ -914,38 +915,6 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 		return nullptr;
 }
 
-typedef std::map<std::string, config> known_themes_map;
-known_themes_map theme::known_themes;
-
-void theme::set_known_themes(const game_config_view* cfg)
-{
-	known_themes.clear();
-	if(!cfg)
-		return;
-
-	for(const config& thm : cfg->child_range("theme")) {
-		std::string thm_id = thm["id"];
-
-		if(!thm["hidden"].to_bool(false)) {
-			known_themes[thm_id] = thm;
-		}
-	}
-}
-
-std::vector<theme_info> theme::get_known_themes()
-{
-	std::vector<theme_info> res;
-
-	for(known_themes_map::const_iterator i = known_themes.begin(); i != known_themes.end(); ++i) {
-		res.push_back(theme_info());
-		res.back().id = i->first;
-		res.back().name = i->second["name"].t_str();
-		res.back().description = i->second["description"].t_str();
-	}
-
-	return res;
-}
-
 const theme::menu* theme::get_menu_item(const std::string& key) const
 {
 	for(const theme::menu& m : menus_) {
@@ -1000,8 +969,57 @@ void theme::modify_label(const std::string& id, const std::string& text)
 {
 	theme::label* label = dynamic_cast<theme::label*>(&find_element(id));
 	if(!label) {
-		LOG_DP << "Theme contains no label called '" << id << "'.\n";
+		LOG_DP << "Theme contains no label called '" << id << "'.";
 		return;
 	}
 	label->set_text(text);
+}
+
+void theme::set_known_themes(const game_config_view* cfg)
+{
+	if(cfg) {
+		known_themes.clear();
+		for(const config& thm : cfg->child_range("theme")) {
+			known_themes[thm["id"]] = thm;
+		}
+	}
+}
+
+std::vector<theme_info> theme::get_basic_theme_info(bool include_hidden)
+{
+	std::vector<theme_info> res;
+
+	for(const auto& [id, cfg] : known_themes) {
+		if(!cfg["hidden"].to_bool(false) || include_hidden) {
+			auto& info = res.emplace_back();
+			info.id = id;
+			info.name = cfg["name"].t_str();
+			info.description = cfg["description"].t_str();
+		}
+	}
+
+	return res;
+}
+
+const config& theme::get_theme_config(const std::string& id)
+{
+	auto iter = known_themes.find(id);
+	if(iter != known_themes.end()) {
+		return iter->second;
+	}
+
+	if (!id.empty()) { // (treat empty id as request for default theme)
+		ERR_DP << "Theme '" << id << "' not found."
+		       << " Falling back to default theme.";
+	}
+
+	iter = known_themes.find("Default");
+	if(iter != known_themes.end()) {
+		return iter->second;
+	}
+
+	ERR_DP << "Default theme not found.";
+
+	static config empty;
+	return empty;
 }

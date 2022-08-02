@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 
 #include "exceptions.hpp"
 #include "editor/palette/common_palette.hpp"
+#include "sdl/texture.hpp"
 
 namespace gui {
 
@@ -29,14 +30,14 @@ class tristate_button : public widget
 public:
 
 	struct error : public game::error {
-        error()
-            : game::error("GUI1 tristate button error")
-            {}
-    };
+		error()
+			: game::error("GUI1 tristate button error")
+			{}
+	};
 
 	enum PRESSED_STATE { LEFT, RIGHT, BOTH, NONE };
 
-	tristate_button(CVideo& video,
+	tristate_button(
 			editor::tristate_palette* palette,
 			std::string button_image="",
 			const bool auto_join=true);
@@ -55,18 +56,14 @@ public:
 	virtual void enable(bool new_val=true) override;
 	void release();
 
-	void set_item_image(
-			const surface& image)
+	void set_item_image(const texture& base, const texture& over = texture())
 	{
-		itemImage_ = image;
+		itemBaseImage_ = base;
+		itemOverlayImage_ = over;
 	}
 
 	void set_item_id(const std::string& id) {
 		item_id_ = id;
-	}
-
-	void draw() override {
-		widget::draw();
 	}
 
 protected:
@@ -82,8 +79,8 @@ private:
 
 	void calculate_size();
 
-	surface baseImage_, touchedBaseImage_, activeBaseImage_,
-		itemImage_,
+	texture baseImage_, touchedBaseImage_, activeBaseImage_,
+		itemBaseImage_, itemOverlayImage_,
 	//	normalImage_, activeImage_,
 		pressedDownImage_, pressedUpImage_, pressedBothImage_,
 		pressedBothActiveImage_, pressedDownActiveImage_, pressedUpActiveImage_,

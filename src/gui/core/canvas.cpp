@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2021
+	Copyright (C) 2007 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,185 +23,23 @@
 #include "gui/core/canvas.hpp"
 #include "gui/core/canvas_private.hpp"
 
+#include "draw.hpp"
 #include "font/text.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
-#include "picture.hpp"
-
 #include "gui/auxiliary/typed_formula.hpp"
 #include "gui/core/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "picture.hpp"
+#include "sdl/point.hpp"
 #include "sdl/rect.hpp"
-#include "video.hpp"
+#include "sdl/texture.hpp"
+#include "sdl/utils.hpp" // blur_surface
+#include "video.hpp" // read_pixels_low_res, only used for blurring
 #include "wml_exception.hpp"
 
 namespace gui2
 {
-
-namespace
-{
-
-/***** ***** ***** ***** ***** DRAWING PRIMITIVES ***** ***** ***** ***** *****/
-
-static void set_renderer_color(SDL_Renderer* renderer, color_t color)
-{
-	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-}
-
-/**
- * Draws a line on a surface.
- *
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The color of the line to draw.
- * @param x1              The start x coordinate of the line to draw.
- * @param y1              The start y coordinate of the line to draw.
- * @param x2              The end x coordinate of the line to draw.
- * @param y2              The end y coordinate of the line to draw.
- */
-static void draw_line(surface& canvas,
-					  SDL_Renderer* renderer,
-					  color_t color,
-					  unsigned x1,
-					  unsigned y1,
-					  const unsigned x2,
-					  unsigned y2)
-{
-	unsigned w = canvas->w;
-
-	DBG_GUI_D << "Shape: draw line from " << x1 << ',' << y1 << " to " << x2
-			  << ',' << y2 << " canvas width " << w << " canvas height "
-			  << canvas->h << ".\n";
-
-	set_renderer_color(renderer, color);
-
-	if(x1 == x2 && y1 == y2) {
-		// Handle single-pixel lines properly
-		SDL_RenderDrawPoint(renderer, x1, y1);
-	} else {
-		SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
-	}
-}
-
-/**
- * Draws a circle on a surface.
- *
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The border color of the circle to draw.
- * @param x_center        The x coordinate of the center of the circle to draw.
- * @param y_center        The y coordinate of the center of the circle to draw.
- * @param radius          The radius of the circle to draw.
- * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
- */
-template<unsigned int octants = 0xff>
-static void draw_circle(surface& canvas,
-						SDL_Renderer* renderer,
-						color_t color,
-						const int x_center,
-						const int y_center,
-						const int radius)
-{
-	unsigned w = canvas->w;
-
-	DBG_GUI_D << "Shape: draw circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
-
-	set_renderer_color(renderer, color);
-
-	// Algorithm based on
-	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
-	// version of 2011.02.07.
-	int d = -static_cast<int>(radius);
-	int x = radius;
-	int y = 0;
-
-	std::vector<SDL_Point> points;
-
-	while(!(y > x)) {
-		if(octants & 0x04) points.push_back({x_center + x, y_center + y});
-		if(octants & 0x02) points.push_back({x_center + x, y_center - y});
-		if(octants & 0x20) points.push_back({x_center - x, y_center + y});
-		if(octants & 0x40) points.push_back({x_center - x, y_center - y});
-
-		if(octants & 0x08) points.push_back({x_center + y, y_center + x});
-		if(octants & 0x01) points.push_back({x_center + y, y_center - x});
-		if(octants & 0x10) points.push_back({x_center - y, y_center + x});
-		if(octants & 0x80) points.push_back({x_center - y, y_center - x});
-
-		d += 2 * y + 1;
-		++y;
-		if(d > 0) {
-			d += -2 * x + 2;
-			--x;
-		}
-	}
-
-	SDL_RenderDrawPoints(renderer, points.data(), points.size());
-}
-
-/**
- * Draws a filled circle on a surface.
- *
- * @pre                   The @p surface is locked.
- *
- * @param canvas          The canvas to draw upon, the caller should lock the
- *                        surface before calling.
- * @param color           The fill color of the circle to draw.
- * @param x_center        The x coordinate of the center of the circle to draw.
- * @param y_center        The y coordinate of the center of the circle to draw.
- * @param radius          The radius of the circle to draw.
- * @tparam octants        A bitfield indicating which octants to draw, starting at twelve o'clock and moving clockwise.
- */
-template<unsigned int octants = 0xff>
-static void fill_circle(surface& canvas,
-						SDL_Renderer* renderer,
-						color_t color,
-						const int x_center,
-						const int y_center,
-						const int radius)
-{
-	unsigned w = canvas->w;
-
-	DBG_GUI_D << "Shape: draw filled circle at " << x_center << ',' << y_center
-			  << " with radius " << radius << " canvas width " << w
-			  << " canvas height " << canvas->h << ".\n";
-
-	set_renderer_color(renderer, color);
-
-	int d = -static_cast<int>(radius);
-	int x = radius;
-	int y = 0;
-
-	while(!(y > x)) {
-		// I use the formula of Bresenham's line algorithm to determine the boundaries of a segment.
-		// The slope of the line is always 1 or -1 in this case.
-		if(octants & 0x04) SDL_RenderDrawLine(renderer, x_center + x,     y_center + y + 1, x_center + y + 1, y_center + y + 1); // x2 - 1 = y2 - (y_center + 1) + x_center
-		if(octants & 0x02) SDL_RenderDrawLine(renderer, x_center + x,     y_center - y,     x_center + y + 1, y_center - y);     // x2 - 1 = y_center - y2 + x_center
-		if(octants & 0x20) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center + y + 1, x_center - y - 2, y_center + y + 1); // x2 + 1 = (y_center + 1) - y2 + (x_center - 1)
-		if(octants & 0x40) SDL_RenderDrawLine(renderer, x_center - x - 1, y_center - y,     x_center - y - 2, y_center - y);     // x2 + 1 = y2 - y_center + (x_center - 1)
-
-		if(octants & 0x08) SDL_RenderDrawLine(renderer, x_center + y,     y_center + x + 1, x_center + y,     y_center + y + 1); // y2 = x2 - x_center + (y_center + 1)
-		if(octants & 0x01) SDL_RenderDrawLine(renderer, x_center + y,     y_center - x,     x_center + y,     y_center - y);     // y2 = x_center - x2 + y_center
-		if(octants & 0x10) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center + x + 1, x_center - y - 1, y_center + y + 1); // y2 = (x_center - 1) - x2 + (y_center + 1)
-		if(octants & 0x80) SDL_RenderDrawLine(renderer, x_center - y - 1, y_center - x,     x_center - y - 1, y_center - y);     // y2 = x2 - (x_center - 1) + y_center
-
-		d += 2 * y + 1;
-		++y;
-		if(d > 0) {
-			d += -2 * x + 2;
-			--x;
-		}
-	}
-}
-
-} // namespace
-
 
 /***** ***** ***** ***** ***** LINE ***** ***** ***** ***** *****/
 
@@ -216,14 +54,11 @@ line_shape::line_shape(const config& cfg)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Line: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Line: found debug message '" << debug << "'.";
 	}
 }
 
-void line_shape::draw(surface& canvas,
-				 SDL_Renderer* renderer,
-				 const SDL_Rect& view_bounds,
-				 wfl::map_formula_callable& variables)
+void line_shape::draw(wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit silly
@@ -231,70 +66,16 @@ void line_shape::draw(surface& canvas,
 	 * flag or do the calculation in a separate routine.
 	 */
 
-	const unsigned x1 = x1_(variables) - view_bounds.x;
-	const unsigned y1 = y1_(variables) - view_bounds.y;
-	const unsigned x2 = x2_(variables) - view_bounds.x;
-	const unsigned y2 = y2_(variables) - view_bounds.y;
+	const unsigned x1 = x1_(variables);
+	const unsigned y1 = y1_(variables);
+	const unsigned x2 = x2_(variables);
+	const unsigned y2 = y2_(variables);
 
-	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2
-			  << " within bounds {" << view_bounds.x << ", " << view_bounds.y
-			  << ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
+	DBG_GUI_D << "Line: draw from " << x1 << ',' << y1 << " to " << x2 << ',' << y2 << ".";
 
 	// @todo FIXME respect the thickness.
 
-	// lock the surface
-	surface_lock locker(canvas);
-
-	draw_line(canvas, renderer, color_(variables), x1, y1, x2, y2);
-}
-
-/***** ***** ***** Base class for rectangular shapes ***** ***** *****/
-
-rect_bounded_shape::rect_bounded_shape(const config& cfg)
-	: shape(cfg)
-	, x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
-{
-}
-
-rect_bounded_shape::calculated_rects rect_bounded_shape::calculate_rects(const SDL_Rect& view_bounds, wfl::map_formula_callable& variables) const
-{
-	// Formulas are recalculated every draw cycle, even if there hasn't been a resize.
-
-	const unsigned x = x_(variables);
-	const unsigned y = y_(variables);
-	const unsigned w = w_(variables);
-	const unsigned h = h_(variables);
-
-	const auto dst_on_widget = sdl::create_rect(x, y, w, h);
-
-	SDL_Rect clip_on_widget;
-	if(!SDL_IntersectRect(&dst_on_widget, &view_bounds, &clip_on_widget)) {
-		DBG_GUI_D << "Text: Clipping view_bounds resulted in an empty intersection, nothing to do.\n";
-		return {true, dst_on_widget, {}, {}, {}, {}};
-	}
-
-	auto unclipped_around_viewport = dst_on_widget;
-	unclipped_around_viewport.x -= view_bounds.x;
-	unclipped_around_viewport.y -= view_bounds.y;
-
-	auto clip_in_shape = clip_on_widget;
-	clip_in_shape.x -= x;
-	clip_in_shape.y -= y;
-
-	auto dst_in_viewport = clip_on_widget;
-	dst_in_viewport.x -= view_bounds.x;
-	dst_in_viewport.y -= view_bounds.y;
-
-	DBG_GUI_D << "Calculate_rects: from " << x << ',' << y << " width " << w << " height " << h << "\n"
-			  << " view_bounds {" << view_bounds.x << ", " << view_bounds.y << ", "
-			  << view_bounds.w << ", " << view_bounds.h << "}.\n"
-			  << " dst_in_viewport {" << dst_in_viewport.x << ", " << dst_in_viewport.y << ", "
-			  << dst_in_viewport.w << ", " << dst_in_viewport.h << "}.\n";
-
-	return {false, dst_on_widget, clip_on_widget, clip_in_shape, unclipped_around_viewport, dst_in_viewport};
+	draw::line(x1, y1, x2, y2, color_(variables));
 }
 
 /***** ***** ***** ***** ***** Rectangle ***** ***** ***** ***** *****/
@@ -312,46 +93,49 @@ rectangle_shape::rectangle_shape(const config& cfg)
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Rectangle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Rectangle: found debug message '" << debug << "'.";
 	}
 }
 
-void rectangle_shape::draw(surface& canvas,
-					  SDL_Renderer* renderer,
-					  const SDL_Rect& view_bounds,
-					  wfl::map_formula_callable& variables)
+void rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	const auto rects = calculate_rects(view_bounds, variables);
-	if(rects.empty) {
-		return;
-	}
-
-	surface_lock locker(canvas);
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
 	if(!fill_color.null()) {
-		set_renderer_color(renderer, fill_color);
-		auto area = rects.unclipped_around_viewport;
-		area.x += border_thickness_;
-		area.y += border_thickness_;
-		area.w -= 2 * border_thickness_;
-		area.h -= 2 * border_thickness_;
+		DBG_GUI_D << "fill " << fill_color;
+		draw::set_color(fill_color);
 
-		SDL_RenderFillRect(renderer, &area);
+		const SDL_Rect area {
+			x +  border_thickness_,
+			y +  border_thickness_,
+			w - (border_thickness_ * 2),
+			h - (border_thickness_ * 2)
+		};
+
+		draw::fill(area);
 	}
 
-	// Draw the border
-	set_renderer_color(renderer, border_color_(variables));
-	for(int i = 0; i < border_thickness_; ++i) {
-		auto dimensions = rects.unclipped_around_viewport;
-		dimensions.x += i;
-		dimensions.y += i;
-		dimensions.w -= 2 * i;
-		dimensions.h -= 2 * i;
+	const color_t border_color = border_color_(variables);
 
-		SDL_RenderDrawRect(renderer, &dimensions);
+	// Draw the border
+	draw::set_color(border_color);
+	DBG_GUI_D << "border thickness " << border_thickness_
+		<< ", colour " << border_color;
+	for(int i = 0; i < border_thickness_; ++i) {
+		const SDL_Rect dimensions {
+			x + i,
+			y + i,
+			w - (i * 2),
+			h - (i * 2)
+		};
+
+		draw::rect(dimensions);
 	}
 }
 
@@ -371,65 +155,52 @@ round_rectangle_shape::round_rectangle_shape(const config& cfg)
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Rounded Rectangle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Rounded Rectangle: found debug message '" << debug << "'.";
 	}
 }
 
-void round_rectangle_shape::draw(surface& canvas,
-	SDL_Renderer* renderer,
-	const SDL_Rect& view_bounds,
-	wfl::map_formula_callable& variables)
+void round_rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
-	const auto rects = calculate_rects(view_bounds, variables);
-	const int x = rects.unclipped_around_viewport.x;
-	const int y = rects.unclipped_around_viewport.y;
-	const int w = rects.unclipped_around_viewport.w;
-	const int h = rects.unclipped_around_viewport.h;
+	const int x = x_(variables);
+	const int y = y_(variables);
+	const int w = w_(variables);
+	const int h = h_(variables);
 	const int r = r_(variables);
 
-	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w
-		<< " height "
-		<< " within bounds {" << view_bounds.x << ", " << view_bounds.y
-		<< ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
-
-	surface_lock locker(canvas);
+	DBG_GUI_D << "Rounded Rectangle: draw from " << x << ',' << y << " width " << w << " height " << h << ".";
 
 	const color_t fill_color = fill_color_(variables);
 
 	// Fill the background, if applicable
 	if(!fill_color.null() && w && h) {
-		set_renderer_color(renderer, fill_color);
-		static const int count = 3;
-		SDL_Rect area[count] {
-			{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1},
-			{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2},
-			{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_},
-		};
+		draw::set_color(fill_color);
 
-		SDL_RenderFillRects(renderer, area, count);
+		draw::fill(rect{x + r,                 y + border_thickness_, w - r                 * 2, r - border_thickness_ + 1});
+		draw::fill(rect{x + border_thickness_, y + r + 1,             w - border_thickness_ * 2, h - r * 2});
+		draw::fill(rect{x + r,                 y - r + h + 1,         w - r                 * 2, r - border_thickness_});
 
-		fill_circle<0xc0>(canvas, renderer, fill_color, x + r,     y + r,     r);
-		fill_circle<0x03>(canvas, renderer, fill_color, x + w - r, y + r,     r);
-		fill_circle<0x30>(canvas, renderer, fill_color, x + r,     y + h - r, r);
-		fill_circle<0x0c>(canvas, renderer, fill_color, x + w - r, y + h - r, r);
+		draw::disc(x + r,     y + r,     r, 0xc0);
+		draw::disc(x + w - r, y + r,     r, 0x03);
+		draw::disc(x + r,     y + h - r, r, 0x30);
+		draw::disc(x + w - r, y + h - r, r, 0x0c);
 	}
 
 	const color_t border_color = border_color_(variables);
 
 	// Draw the border
+	draw::set_color(border_color);
+
 	for(int i = 0; i < border_thickness_; ++i) {
-		set_renderer_color(renderer, border_color);
+		draw::line(x + r, y + i,     x + w - r, y + i);
+		draw::line(x + r, y + h - i, x + w - r, y + h - i);
 
-		SDL_RenderDrawLine(renderer, x + r, y + i,     x + w - r, y + i);
-		SDL_RenderDrawLine(renderer, x + r, y + h - i, x + w - r, y + h - i);
+		draw::line(x + i,     y + r, x + i,     y + h - r);
+		draw::line(x + w - i, y + r, x + w - i, y + h - r);
 
-		SDL_RenderDrawLine(renderer, x + i,     y + r, x + i,     y + h - r);
-		SDL_RenderDrawLine(renderer, x + w - i, y + r, x + w - i, y + h - r);
-
-		draw_circle<0xc0>(canvas, renderer, border_color, x + r,     y + r,     r - i);
-		draw_circle<0x03>(canvas, renderer, border_color, x + w - r, y + r,     r - i);
-		draw_circle<0x30>(canvas, renderer, border_color, x + r,     y + h - r, r - i);
-		draw_circle<0x0c>(canvas, renderer, border_color, x + w - r, y + h - r, r - i);
+		draw::circle(x + r,     y + r,     r - i, 0xc0);
+		draw::circle(x + w - r, y + r,     r - i, 0x03);
+		draw::circle(x + r,     y + h - r, r - i, 0x30);
+		draw::circle(x + w - r, y + h - r, r - i, 0x0c);
 	}
 }
 
@@ -446,14 +217,11 @@ circle_shape::circle_shape(const config& cfg)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Circle: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Circle: found debug message '" << debug << "'.";
 	}
 }
 
-void circle_shape::draw(surface& canvas,
-				   SDL_Renderer* renderer,
-				   const SDL_Rect& view_bounds,
-				   wfl::map_formula_callable& variables)
+void circle_shape::draw(wfl::map_formula_callable& variables)
 {
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a bit
@@ -461,25 +229,20 @@ void circle_shape::draw(surface& canvas,
 	 * extra flag or do the calculation in a separate routine.
 	 */
 
-	const int x = x_(variables) - view_bounds.x;
-	const int y = y_(variables) - view_bounds.y;
+	const int x = x_(variables);
+	const int y = y_(variables);
 	const unsigned radius = radius_(variables);
 
-	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius
-		<< " within bounds {" << view_bounds.x << ", " << view_bounds.y
-		<< ", " << view_bounds.w << ", " << view_bounds.h << "}.\n";
-
-	// lock the surface
-	surface_lock locker(canvas);
+	DBG_GUI_D << "Circle: drawn at " << x << ',' << y << " radius " << radius << ".";
 
 	const color_t fill_color = fill_color_(variables);
 	if(!fill_color.null() && radius) {
-		fill_circle(canvas, renderer, fill_color, x, y, radius);
+		draw::disc(x, y, radius, fill_color);
 	}
 
 	const color_t border_color = border_color_(variables);
 	for(unsigned int i = 0; i < border_thickness_; i++) {
-		draw_circle(canvas, renderer, border_color, x, y, radius - i);
+		draw::circle(x, y, radius - i, border_color);
 	}
 }
 
@@ -491,16 +254,14 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, src_clip_()
-	, image_()
 	, image_name_(cfg["name"])
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
-	, vertical_mirror_(cfg["vertical_mirror"])
+	, mirror_(cfg.get_old_attribute("mirror", "vertical_mirror", "image"))
 	, actions_formula_(cfg["actions"], &functions)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Image: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Image: found debug message '" << debug << "'.";
 	}
 }
 
@@ -513,12 +274,9 @@ void image_shape::dimension_validation(unsigned value, const std::string& name, 
 	);
 }
 
-void image_shape::draw(surface& canvas,
-				  SDL_Renderer* /*renderer*/,
-				  const SDL_Rect& view_bounds,
-				  wfl::map_formula_callable& variables)
+void image_shape::draw(wfl::map_formula_callable& variables)
 {
-	DBG_GUI_D << "Image: draw.\n";
+	DBG_GUI_D << "Image: draw.";
 
 	/**
 	 * @todo formulas are now recalculated every draw cycle which is a  bit
@@ -528,128 +286,82 @@ void image_shape::draw(surface& canvas,
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: formula returned no value, will not be drawn.\n";
+		DBG_GUI_D << "Image: formula returned no value, will not be drawn.";
 		return;
 	}
 
-	/*
-	 * The locator might return a different surface for every call so we can't
-	 * cache the output, also not if no formula is used.
-	 */
-	surface tmp(image::get_image(image::locator(name)));
+	// Texture filtering mode must be set on texture creation,
+	// so check whether we need smooth scaling or not here.
+	image::scale_quality scale_quality = image::scale_quality::nearest;
+	if (resize_mode_ == resize_mode::stretch
+		|| resize_mode_ == resize_mode::scale)
+	{
+		scale_quality = image::scale_quality::linear;
+	}
+	texture tex = image::get_texture(image::locator(name), scale_quality);
 
-	if(!tmp) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
+	if(!tex) {
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
 		return;
 	}
-
-	image_ = tmp;
-	assert(image_);
-	src_clip_ = {0, 0, image_->w, image_->h};
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("image_original_width", wfl::variant(image_->w));
-	local_variables.add("image_original_height", wfl::variant(image_->h));
+	local_variables.add("image_original_width", wfl::variant(tex.w()));
+	local_variables.add("image_original_height", wfl::variant(tex.h()));
 
-	unsigned w = w_(local_variables);
+	int w = w_(local_variables);
 	dimension_validation(w, name, "w");
 
-	unsigned h = h_(local_variables);
+	int h = h_(local_variables);
 	dimension_validation(h, name, "h");
 
-	local_variables.add("image_width", wfl::variant(w ? w : image_->w));
-	local_variables.add("image_height", wfl::variant(h ? h : image_->h));
+	local_variables.add("image_width", wfl::variant(w ? w : tex.w()));
+	local_variables.add("image_height", wfl::variant(h ? h : tex.h()));
 
-	const unsigned clip_x = x_(local_variables);
-	const unsigned clip_y = y_(local_variables);
+	const int x = x_(local_variables);
+	const int y = y_(local_variables);
 
-	local_variables.add("clip_x", wfl::variant(clip_x));
-	local_variables.add("clip_y", wfl::variant(clip_y));
+	// used in gui/dialogs/story_viewer.cpp
+	local_variables.add("clip_x", wfl::variant(x));
+	local_variables.add("clip_y", wfl::variant(y));
 
 	// Execute the provided actions for this context.
 	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
 
-	// Copy the data to local variables to avoid overwriting the originals.
-	SDL_Rect src_clip = src_clip_;
-	surface surf;
+	// If w or h is 0, assume it means the whole image.
+	if (!w) { w = tex.w(); }
+	if (!h) { h = tex.h(); }
 
-	// Test whether we need to scale and do the scaling if needed.
-	if ((w == 0) && (h == 0)) {
-		surf = image_;
-	}
-	else { // assert((w != 0) || (h != 0))
-		if(w == 0 && resize_mode_ == resize_mode::stretch) {
-			DBG_GUI_D << "Image: vertical stretch from " << image_->w << ','
-					  << image_->h << " to a height of " << h << ".\n";
+	const SDL_Rect dst_rect { x, y, w, h };
 
-			surf = stretch_surface_vertical(image_, h);
-			w = image_->w;
+	// What to do with the image depends on whether we need to tile it or not.
+	switch(resize_mode_) {
+	case resize_mode::tile:
+		draw::tiled(tex, dst_rect, false, mirror_(variables));
+		break;
+	case resize_mode::tile_center:
+		draw::tiled(tex, dst_rect, true, mirror_(variables));
+		break;
+	case resize_mode::tile_highres:
+		draw::tiled_highres(tex, dst_rect, false, mirror_(variables));
+		break;
+	case resize_mode::stretch:
+		// Stretching is identical to scaling in terms of handling.
+		// Is this intended? That's what previous code was doing.
+	case resize_mode::scale:
+		// Filtering mode is set on texture creation above.
+		// Handling is otherwise identical to sharp scaling.
+	case resize_mode::scale_sharp:
+		if(mirror_(variables)) {
+			draw::flipped(tex, dst_rect);
+		} else {
+			draw::blit(tex, dst_rect);
 		}
-		else if(h == 0 && resize_mode_ == resize_mode::stretch) {
-			DBG_GUI_D << "Image: horizontal stretch from " << image_->w
-					  << ',' << image_->h << " to a width of " << w
-					  << ".\n";
-
-			surf = stretch_surface_horizontal(image_, w);
-			h = image_->h;
-		}
-		else {
-			if(w == 0) {
-				w = image_->w;
-			}
-			if(h == 0) {
-				h = image_->h;
-			}
-			if(resize_mode_ == resize_mode::tile) {
-				DBG_GUI_D << "Image: tiling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				surf = tile_surface(image_, w, h, false);
-			} else if(resize_mode_ == resize_mode::tile_center) {
-				DBG_GUI_D << "Image: tiling centrally from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				surf = tile_surface(image_, w, h, true);
-			} else {
-				if(resize_mode_ == resize_mode::stretch) {
-					ERR_GUI_D << "Image: failed to stretch image, "
-								 "fall back to scaling.\n";
-				}
-
-				DBG_GUI_D << "Image: scaling from " << image_->w << ','
-						  << image_->h << " to " << w << ',' << h << ".\n";
-
-				if(resize_mode_ == resize_mode::scale_sharp) {
-					surf = scale_surface_sharp(image_, w, h);
-				} else {
-					surf = scale_surface_legacy(image_, w, h);
-				}
-			}
-		}
-		src_clip.w = w;
-		src_clip.h = h;
+		break;
+	default:
+		ERR_GUI_D << "Image: unrecognized resize mode.";
+		break;
 	}
-
-	// Calculate the destination, clip it to the view_bounds, and then change both
-	// src_clip and dst_on_view_bounds to view_bounds' coordinate system.
-	const SDL_Rect dst_on_widget = sdl::create_rect(clip_x, clip_y, src_clip.w, src_clip.h);
-	SDL_Rect dst_on_view_bounds;
-	if(!SDL_IntersectRect(&dst_on_widget, &view_bounds, &dst_on_view_bounds)) {
-		DBG_GUI_D << "Image: completely outside view_bounds\n";
-		return;
-	}
-	dst_on_view_bounds.x -= view_bounds.x;
-	dst_on_view_bounds.y -= view_bounds.y;
-	src_clip.x += view_bounds.x;
-	src_clip.y += view_bounds.y;
-	src_clip.w = dst_on_view_bounds.w;
-	src_clip.h = dst_on_view_bounds.h;
-
-	if(vertical_mirror_(local_variables)) {
-		surf = flip_surface(surf);
-	}
-
-	blit_surface(surf, &src_clip, canvas, &dst_on_view_bounds);
 }
 
 image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_mode)
@@ -658,14 +370,15 @@ image_shape::resize_mode image_shape::get_resize_mode(const std::string& resize_
 		return resize_mode::tile;
 	} else if(resize_mode == "tile_center") {
 		return resize_mode::tile_center;
+	} else if(resize_mode == "tile_highres") {
+		return resize_mode::tile_highres;
 	} else if(resize_mode == "stretch") {
 		return resize_mode::stretch;
 	} else if(resize_mode == "scale_sharp") {
 		return resize_mode::scale_sharp;
 	} else {
 		if(!resize_mode.empty() && resize_mode != "scale") {
-			ERR_GUI_E << "Invalid resize mode '" << resize_mode
-					  << "' falling back to 'scale'.\n";
+			ERR_GUI_E << "Invalid resize mode '" << resize_mode << "' falling back to 'scale'.";
 		}
 		return resize_mode::scale;
 	}
@@ -694,14 +407,11 @@ text_shape::text_shape(const config& cfg)
 
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
-		DBG_GUI_P << "Text: found debug message '" << debug << "'.\n";
+		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
 	}
 }
 
-void text_shape::draw(surface& canvas,
-				 SDL_Renderer* /*renderer*/,
-				 const SDL_Rect& view_bounds,
-				 wfl::map_formula_callable& variables)
+void text_shape::draw(wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
 
@@ -711,7 +421,7 @@ void text_shape::draw(surface& canvas,
 	const t_string text = text_(variables);
 
 	if(text.empty()) {
-		DBG_GUI_D << "Text: no text to render, leave.\n";
+		DBG_GUI_D << "Text: no text to render, leave.";
 		return;
 	}
 
@@ -735,26 +445,28 @@ void text_shape::draw(surface& canvas,
 		.set_characters_per_line(characters_per_line_);
 
 	wfl::map_formula_callable local_variables(variables);
-	local_variables.add("text_width", wfl::variant(text_renderer.get_width()));
-	local_variables.add("text_height", wfl::variant(text_renderer.get_height()));
+	const auto [tw, th] = text_renderer.get_size();
 
-	const auto rects = calculate_rects(view_bounds, local_variables);
+	// Translate text width and height back to draw-space, rounding up.
+	local_variables.add("text_width", wfl::variant(tw));
+	local_variables.add("text_height", wfl::variant(th));
 
-	if(rects.empty) {
-		DBG_GUI_D << "Text: Clipping to view_bounds resulted in an empty intersection, nothing to do.\n";
+	const int x = x_(local_variables);
+	const int y = y_(local_variables);
+	const int w = w_(local_variables);
+	const int h = h_(local_variables);
+	rect dst_rect{x, y, w, h};
+
+	texture tex = text_renderer.render_and_get_texture();
+	if(!tex) {
+		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.";
 		return;
 	}
 
-	surface& surf = text_renderer.render(rects.clip_in_shape);
-	if(surf->w == 0) {
-		DBG_GUI_D << "Text: Rendering '" << text
-				  << "' resulted in an empty canvas, leave.\n";
-		return;
-	}
+	dst_rect.w = std::min(dst_rect.w, tex.w());
+	dst_rect.h = std::min(dst_rect.h, tex.h());
 
-	// Blit the clipped region - this needs a non-const copy of the rect
-	auto dst_in_viewport = rects.dst_in_viewport;
-	blit_surface(surf, nullptr, canvas, &dst_in_viewport);
+	draw::blit(tex, dst_rect);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
@@ -764,11 +476,8 @@ canvas::canvas()
 	, blur_depth_(0)
 	, w_(0)
 	, h_(0)
-	, viewport_()
-	, view_bounds_{0, 0, 0, 0}
 	, variables_()
 	, functions_()
-	, is_dirty_(true)
 {
 }
 
@@ -777,122 +486,40 @@ canvas::canvas(canvas&& c) noexcept
 	, blur_depth_(c.blur_depth_)
 	, w_(c.w_)
 	, h_(c.h_)
-	, viewport_(std::move(c.viewport_))
-	, view_bounds_(std::move(c.view_bounds_))
 	, variables_(c.variables_)
 	, functions_(c.functions_)
-	, is_dirty_(c.is_dirty_)
 {
 }
 
-void canvas::draw(const SDL_Rect& area_to_draw, bool force)
-{
-	log_scope2(log_gui_draw, "Canvas: drawing.");
-	if(!viewport_ || !SDL_RectEquals(&view_bounds_, &area_to_draw)) {
-		DBG_GUI_D << "Canvas: redrawing because the cached view_bounds no longer fits.\n";
-		invalidate_cache();
-	} else if(!is_dirty_ && !force) {
-		DBG_GUI_D << "Canvas: nothing to draw.\n";
-		return;
-	}
-
-	if(is_dirty_) {
-		get_screen_size_variables(variables_);
-		variables_.add("width", wfl::variant(w_));
-		variables_.add("height", wfl::variant(h_));
-	}
-
-	auto renderer = std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> {nullptr, &SDL_DestroyRenderer};
-
-	if(viewport_ && view_bounds_.w == area_to_draw.w && view_bounds_.h == area_to_draw.h) {
-		DBG_GUI_D << "Canvas: use cached canvas.\n";
-		renderer.reset(SDL_CreateSoftwareRenderer(viewport_));
-		SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 0);
-		SDL_RenderClear(renderer.get());
-	} else {
-		DBG_GUI_D << "Canvas: create new empty canvas.\n";
-		viewport_ = surface(area_to_draw.w, area_to_draw.h);
-		renderer.reset(SDL_CreateSoftwareRenderer(viewport_));
-	}
-	view_bounds_ = area_to_draw;
-	SDL_SetRenderDrawBlendMode(renderer.get(), SDL_BLENDMODE_BLEND);
-
-	// draw items
-	for(auto& shape : shapes_) {
-		lg::scope_logger inner_scope_logging_object__(log_gui_draw, "Canvas: draw shape.");
-
-		shape->draw(viewport_, renderer.get(), view_bounds_, variables_);
-	}
-
-	SDL_RenderPresent(renderer.get());
-
-	is_dirty_ = false;
-}
-
-void canvas::blit(surface& surf, SDL_Rect rect)
+void canvas::draw()
 {
 	// This early-return has to come before the `validate(rect.w <= w_)` check, as during the boost_unit_tests execution
 	// the debug_clock widget will have no shapes, 0x0 size, yet be given a larger rect to draw.
 	if(shapes_.empty()) {
-		DBG_GUI_D << "Canvas: empty (no shapes to draw).\n";
+		DBG_GUI_D << "Canvas: empty (no shapes to draw).";
 		return;
 	}
 
-	VALIDATE(rect.w >= 0 && rect.h >= 0, _("Area to draw has negative size"));
-	VALIDATE(static_cast<unsigned>(rect.w) <= w_ && static_cast<unsigned>(rect.h) <= h_,
-		_("Area to draw is larger than widget size"));
-
-	// If the widget is partly off-screen, this might get called with
-	// surf width=1000, height=1000
-	// rect={-1, 2, 330, 440}
-	//
-	// From those, as the first column is off-screen:
-	// rect_clipped_to_parent={0, 2, 329, 440}
-	// area_to_draw={1, 0, 329, 440}
-	SDL_Rect parent {0, 0, surf->w, surf->h};
-	SDL_Rect rect_clipped_to_parent;
-	if(!SDL_IntersectRect(&rect, &parent, &rect_clipped_to_parent)) {
-		DBG_GUI_D << "Area to draw is completely outside parent.\n";
-		return;
-	}
-	SDL_Rect area_to_draw {
-		std::max(0, -rect.x),
-		std::max(0, -rect.y),
-		rect_clipped_to_parent.w,
-		rect_clipped_to_parent.h
-	};
-
-	draw(area_to_draw);
-
-	if(blur_depth_) {
-		/*
-		 * If the surf is the video surface the blurring seems to stack, this
-		 * can be seen in the title screen. So also use the not 32 bpp method
-		 * for this situation.
-		 */
-		if(surf != CVideo::get_singleton().getSurface() && surf.is_neutral()) {
-			blur_surface(surf, rect, blur_depth_);
-		} else {
-			// Can't directly blur the surface if not 32 bpp.
-			SDL_Rect r = rect;
-			surface s = get_surface_portion(surf, r);
-			s = blur_surface(s, blur_depth_);
-			sdl_blit(s, nullptr, surf, &r);
-		}
+	// Note: this doesn't update if whatever is underneath changes.
+	if(blur_depth_ && !blur_texture_) {
+		// Cache a blurred image of whatever is underneath.
+		SDL_Rect rect = draw::get_viewport();
+		surface s = video::read_pixels_low_res(&rect);
+		s = blur_surface(s, blur_depth_);
+		blur_texture_ = texture(s);
 	}
 
-	// Currently draw(area_to_draw) will always allocate a viewport_ that exactly matches area_to_draw, which means that
-	// scrolling by a single pixel will force a complete redraw. I tested rendering a few of the off-screen lines too,
-	// however it didn't seem to be an optimisation - the dirty flag was already set on each such redraw, triggering a
-	// complete redraw.
-	//
-	// If you try to re-add this overdraw, the nullptr below will need to be replaced with
-	// {area_to_draw.x - view_bounds_.x, area_to_draw.y - view_bounds_.y, area_to_draw.w, area_to_draw.h};
-	assert(area_to_draw.x == view_bounds_.x);
-	assert(area_to_draw.y == view_bounds_.y);
-	assert(area_to_draw.w == view_bounds_.w);
-	assert(area_to_draw.h == view_bounds_.h);
-	sdl_blit(viewport_, nullptr, surf, &rect_clipped_to_parent);
+	// Draw blurred background.
+	// TODO: hwaccel - this should be able to be removed at some point with shaders
+	if(blur_depth_ && blur_texture_) {
+		draw::blit(blur_texture_);
+	}
+
+	// Draw items
+	for(auto& shape : shapes_) {
+		const lg::scope_logger inner_scope_logging_object__{log_gui_draw, "Canvas: draw shape."};
+		shape->draw(variables_);
+	}
 }
 
 void canvas::parse_cfg(const config& cfg)
@@ -904,7 +531,7 @@ void canvas::parse_cfg(const config& cfg)
 		const std::string& type = shape.key;
 		const config& data = shape.cfg;
 
-		DBG_GUI_P << "Canvas: found shape of the type " << type << ".\n";
+		DBG_GUI_P << "Canvas: found shape of the type " << type << ".";
 
 		if(type == "line") {
 			shapes_.emplace_back(std::make_unique<line_shape>(data));
@@ -928,17 +555,31 @@ void canvas::parse_cfg(const config& cfg)
 					blur_depth_ = function.cfg["depth"];
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
-							  << " of an invalid type " << type << ".\n";
+							  << " of an invalid type " << type << ".";
 				}
 			}
 
 		} else {
 			ERR_GUI_P << "Canvas: found a shape of an invalid type " << type
-					  << ".\n";
+					  << ".";
 
 			assert(false);
 		}
 	}
+}
+
+void canvas::update_size_variables()
+{
+	get_screen_size_variables(variables_);
+	variables_.add("width", wfl::variant(w_));
+	variables_.add("height", wfl::variant(h_));
+}
+
+void canvas::set_size(const point& size)
+{
+	w_ = size.x;
+	h_ = size.y;
+	update_size_variables();
 }
 
 void canvas::clear_shapes(const bool force)

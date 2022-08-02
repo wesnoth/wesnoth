@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2021
+	Copyright (C) 2003 - 2022
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,8 +56,12 @@ private:
 
 	virtual const std::string& get_id(const t_translation::terrain_code& terrain);
 
-	virtual void draw_item(const t_translation::terrain_code& terrain, surface& item_image, std::stringstream& tooltip_text);
-
+	virtual void setup_item(
+		const t_translation::terrain_code& item,
+		texture& item_base_image,
+		texture& item_overlay_image,
+		std::stringstream& tooltip
+	);
 };
 
 }

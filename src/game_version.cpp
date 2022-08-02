@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2021
+	Copyright (C) 2008 - 2022
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -172,7 +172,7 @@ bool version_info::is_canonical() const {
 }
 
 bool version_info::is_dev_version() const {
-	return is_canonical() && is_odd(minor_version());
+	return is_odd(minor_version());
 }
 
 namespace {

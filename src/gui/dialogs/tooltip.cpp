@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2021
+	Copyright (C) 2011 - 2022
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -158,7 +158,7 @@ void show(const std::string& window_id,
 	catch(const window_builder_invalid_id&)
 	{
 		ERR_CFG << "Tip with the requested id '" << window_id
-				<< "' doesn't exist, fall back to the default.\n";
+				<< "' doesn't exist, fall back to the default.";
 		t.set_window_id("tooltip_large");
 		try
 		{
@@ -166,8 +166,7 @@ void show(const std::string& window_id,
 		}
 		catch(const window_builder_invalid_id&)
 		{
-			ERR_CFG << "Default tooltip doesn't exist, no message shown."
-					<< std::endl;
+			ERR_CFG << "Default tooltip doesn't exist, no message shown.";
 		}
 	}
 }

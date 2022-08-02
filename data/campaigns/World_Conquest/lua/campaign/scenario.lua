@@ -3,7 +3,7 @@ local wc2_scenario = {}
 local on_event = wesnoth.require("on_event")
 
 function wc2_scenario.is_human_side(side_num)
-	return side_num == 1 or side_num == 2 or side_num == 3
+	return side_num <= wml.variables.wc2_player_count
 end
 
 function wc2_scenario.scenario_num()
@@ -52,14 +52,14 @@ function wesnoth.wml_actions.wc2_store_carryover(cfg)
 	for side_num, side in ipairs(human_sides) do
 		player_gold = player_gold + side.gold
 	end
-	local player_gold = math.max(player_gold / #human_sides, 0)
+	player_gold = math.max(player_gold / #human_sides, 0)
 	wml.variables.wc2_carryover = math.ceil( (nvillages*turns_left + player_gold) * 0.15)
 end
 
--- carryover handling: we use a custom carryover machnics that 
+-- carryover handling: we use a custom carryover machnics that
 -- splits the carryover gold evenly to all players
 on_event("prestart", function(cx)
-	wesnoth.fire_event("wc2_start")
+	wesnoth.game_events.fire("wc2_start")
 end)
 
 -- we need to do this also after difficulty selection.
@@ -81,7 +81,7 @@ on_event("wc2_start", function(cx)
 			}
 		end
 	end
-	
+
 	local gold = (wml.variables.wc2_carryover or 0) + (wml.variables["wc2_difficulty.extra_gold"] or 0)
 	for i = 1, wml.variables.wc2_player_count do
 		wesnoth.sides[i].gold = wesnoth.sides[i].gold + gold

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2020 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -137,7 +137,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().
 		 */
-		void insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
 
 		/**
 		 * @see forum_user_handler::db_set_oos_flag().
@@ -173,6 +173,11 @@ class dbconn
 		 * @see forum_user_handler::get_ips_for_users().
 		 */
 		void get_ips_for_user(const std::string& username, std::ostringstream* out);
+
+		/**
+		 * @see forum_user_handler::db_update_addon_download_count().
+		 */
+		void update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
 
 	private:
 		/**
@@ -282,6 +287,17 @@ class dbconn
 		 */
 		template<typename... Args>
 		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+
+		/**
+		 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a generated ID.
+		 *
+		 * @param connection The database connecion that will be used to execute the query.
+		 * @param sql The SQL text to be executed.
+		 * @param args The parameterized values to be inserted into the query.
+		 * @return The value of an AUTO_INCREMENT column on the table being modified.
+		 */
+		template<typename... Args>
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
 		/**
 		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2020 - 2021
+	Copyright (C) 2020 - 2022
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -42,7 +42,7 @@ void game_history::read(mariadb::result_set_ref rslt)
             }
             else
             {
-                ERR_SQL << "Expected player information to split into two fields, instead found the value `" << player_info << "`." << std::endl;
+                ERR_SQL << "Expected player information to split into two fields, instead found the value `" << player_info << "`.";
             }
         }
         r.modification_names = utils::split(rslt->get_string("MODIFICATION_NAMES"));

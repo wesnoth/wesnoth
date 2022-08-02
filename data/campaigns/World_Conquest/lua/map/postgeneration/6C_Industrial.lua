@@ -1,5 +1,5 @@
 -- Industrial
--- TODO: this is somwwhta slow, maybe it because it used wct_iterate_road_to ?
+-- TODO: this is somewhat slow, maybe it because it used wct_iterate_road_to ?
 local function wct_conect_factory_rails()
 	local rails_conected = map:find(f.all(
 		f.terrain("*^Br*"),
@@ -379,12 +379,12 @@ local function world_conquest_tek_map_decoration_6c()
 		),
 		layer = "base",
 	}
-	local terrain_to_change = map:find(f.all(
+	local terrain_to_change1 = map:find(f.all(
 		f.terrain("Sm^*"),
 		f.adjacent(f.terrain("Ww^*"))
 	))
 
-	for swamp_i, swamp_loc in ipairs(terrain_to_change) do
+	for swamp_i, swamp_loc in ipairs(terrain_to_change1) do
 		local r = mathx.random(3, map.width // 4)
 		set_terrain { "Sm",
 			f.all(
@@ -396,12 +396,12 @@ local function world_conquest_tek_map_decoration_6c()
 		}
 	end
 	-- dirty rivers
-	local terrain_to_change = map:find(f.all(
+	local terrain_to_change2 = map:find(f.all(
 		f.terrain("Sm^*"),
 		f.adjacent(f.terrain("Ww^*"))
 	))
 
-	for water_i, water_loc in ipairs(terrain_to_change) do
+	for water_i, water_loc in ipairs(terrain_to_change2) do
 		local r = mathx.random(4, map.width // 6)
 		set_terrain { "Wwg",
 			f.all(
