@@ -107,7 +107,7 @@ static ng::side_engine* create_side_engine(const config& defaults,
 BOOST_FIXTURE_TEST_SUITE( mp_connect, mp_connect_fixture )
 
 
-BOOST_AUTO_TEST_CASE( flg_map_settings )
+BOOST_AUTO_TEST_CASE( flg_map_settings2 )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = true;
@@ -121,6 +121,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["recruit"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"], "Elvish Archer" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings3 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Custom faction, no recruits.
 	side.clear();
@@ -128,18 +138,48 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings4 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Random faction.
 	side.clear();
 	side["faction"] = "Random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Random" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings5 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Valid faction.
 	side.clear();
 	side["faction"] = "Rebels";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Rebels" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings6 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Invalid faction.
 	side.clear();
@@ -147,18 +187,48 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() > 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Random" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings7 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Faction and recruit list.
 	side.clear();
 	side["recruit"] = "Elvish Archer";
 	side["faction"] = "Undead";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings8 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Carried over recruits.
 	side.clear();
 	side["previous_recruits"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"], "Elvish Archer" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings9 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Valid leader unit.
 	side.clear();
@@ -167,6 +237,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Shadow" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["type"], "Shadow" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings10 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Invalid leader unit.
 	side.clear();
@@ -174,6 +254,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings11 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// No leader, Custom faction.
 	side.clear();
@@ -181,6 +271,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "random" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings12 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// No leader, Random faction.
 	side.clear();
@@ -188,6 +288,28 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings13 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
+
+
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings14 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// No leader, regular faction.
 	side.clear();
@@ -195,6 +317,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "random" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings15 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Carried over leader.
 	side.clear();
@@ -206,12 +338,44 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Elvish Ranger" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings16 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
+
+
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings17 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Random leader.
 	side.clear();
 	side["type"] = "random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings18 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Leader with both genders.
 	side.clear();
@@ -219,6 +383,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 3 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings19 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Leader with only male gender.
 	side.clear();
@@ -226,6 +400,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings20 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Leader with only female gender.
 	side.clear();
@@ -233,6 +417,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings21 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Valid leader with valid gender.
 	side.clear();
@@ -240,6 +434,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["gender"] = "female";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "female" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings22 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Valid leader with invalid gender.
 	side.clear();
@@ -248,6 +452,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings23 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Leader with random gender.
 	side.clear();
@@ -255,6 +469,28 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side["gender"] = "random";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings24 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
+
+
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings25 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// No leader.
 	side.clear();
@@ -262,6 +498,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings26 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Resolve random faction.
 	side.clear();
@@ -271,6 +517,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" && side_engine->flg().current_leader() != "null");
 	BOOST_CHECK( side_engine->flg().current_gender() != "random" && side_engine->flg().current_gender() != "null");
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings27 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Resolve random faction with default leader.
 	side.clear();
@@ -281,6 +537,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Troll" );
 	BOOST_CHECK( side_engine->flg().current_gender() != "random" && side_engine->flg().current_gender() != "null" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings28 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Resolve random faction with default leader and gender.
 	side.clear();
@@ -292,6 +558,16 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "White Mage" );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_map_settings29 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Resolve random leader.
 	side.clear();
@@ -301,7 +577,11 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
 }
 
-BOOST_AUTO_TEST_CASE( flg_no_map_settings )
+
+
+
+
+BOOST_AUTO_TEST_CASE( flg_no_map_settings1 )
 {
 	// Set up side_engine and its dependencies.
 	state->mp_settings().use_map_settings = false;
@@ -315,6 +595,16 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	side["recruit"] = "Elvish Archer";
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
+}
+
+BOOST_AUTO_TEST_CASE( flg_no_map_settings2 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = false;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Custom faction, no recruits.
 	side.clear();
@@ -323,6 +613,16 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
+}
+
+BOOST_AUTO_TEST_CASE( flg_no_map_settings3 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = false;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Carried over recruits.
 	side.clear();
@@ -330,6 +630,16 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
 	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"], "Elvish Archer" );
+}
+
+BOOST_AUTO_TEST_CASE( flg_no_map_settings4 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = false;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Explicit leader for faction with multiple leaders.
 	side.clear();
@@ -337,6 +647,16 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	side_engine.reset(create_side_engine(side, connect_engine.get()));
 	side_engine->flg().set_current_faction("Rebels");
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
+}
+
+BOOST_AUTO_TEST_CASE( flg_no_map_settings5 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = false;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Duplicate leaders.
 	side.clear();
@@ -346,6 +666,16 @@ BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
 	const std::vector<std::string>& leaders = side_engine->flg().choosable_leaders();
 	BOOST_CHECK_EQUAL( std::count(leaders.begin(), leaders.end(), "Swordsman"), 1 );
+}
+
+BOOST_AUTO_TEST_CASE( flg_no_map_settings6 )
+{
+	// Set up side_engine and its dependencies.
+	state->mp_settings().use_map_settings = false;
+	state->mp_settings().saved_game = saved_game_mode::type::no;
+	const std::unique_ptr<test_connect_engine> connect_engine(create_test_connect_engine());
+	ng::side_engine_ptr side_engine;
+	config side;
 
 	// Explicit gender for unit with both genders available.
 	side.clear();
