@@ -1154,6 +1154,7 @@ struct blindfold
 	void unblind() {
 		if(blind) {
 			display_.blindfold(false);
+			display_.queue_rerender();
 			blind = false;
 		}
 	}
