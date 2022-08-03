@@ -17,6 +17,11 @@
 #include <algorithm>
 #include <cctype>
 #include <functional>
+#include <string>
+
+#if defined(__clang__) || defined(__GNUG__)
+#include <cxxabi.h>
+#endif
 
 namespace utils
 {
@@ -83,6 +88,33 @@ template<typename Container, typename Value>
 inline bool contains(const Container& container, const Value& value)
 {
 	return detail::contains_impl<Container, Value>::eval(container, value);
+}
+
+/**
+ * For the GCC/clang compilers, return the unmangled name of an unknown exception that was caught.
+ * Meaning something caught with `catch(...)`.
+ * 
+ * @return std::string 
+ */
+inline std::string get_unknown_exception_type()
+{
+#if defined(__clang__) || defined(__GNUG__)
+	std::string to_demangle = __cxxabiv1::__cxa_current_exception_type()->name();
+	int status = 0;
+	char* buff = __cxxabiv1::__cxa_demangle(to_demangle.c_str(), NULL, NULL, &status);
+	if(status == 0)
+	{
+		std::string demangled = buff;
+		std::free(buff);
+		return demangled;
+	}
+	else
+	{
+		return to_demangle;
+	}
+#else
+	return "";
+#endif
 }
 
 } // namespace utils
