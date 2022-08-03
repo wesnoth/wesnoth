@@ -96,7 +96,7 @@ jobs:
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
         if: success() || steps.build.outcome == 'success'
-        run: ./utils/CI/test_executor.sh
+        run: ./run_boost_tests
 
   steam-runtime:
     runs-on: ubuntu-20.04
@@ -241,7 +241,7 @@ jobs:
         if: matrix.cfg == 'Release'
         run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
       - name: Run unit tests
-        run: projectfiles/Xcode/build/"$CFG"/unit_tests --color_output --log_level=test_suite
+        run: ./run_boost_tests --path=projectfiles/Xcode/build/"$CFG" --executable=unit_tests
 
   windows:
     strategy:
