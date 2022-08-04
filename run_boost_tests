@@ -28,37 +28,38 @@ def run_with_rerun_for_sdl_video(executable, test_name):
         if b"Could not initialize SDL_video" in res.stdout:
             retry = True
         if not retry:
-            return res.returncode
+            return res
         sdl_retries += 1
         print("Could not initialise SDL_video error, attempt", sdl_retries)
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument("-e", "--executable", help="The name of the boost unit test executable. Default is bost_unit_tests.", default="boost_unit_tests")
-    ap.add_argument("-p", "--path", metavar="dir", help="Path to wesnoth binary. By default assume it is with this script.", default=".")
-    ap.add_argument("-l", "--list", metavar="filename", help="Loads list of tests from the given file.", default="boost_test_schedule")
+    ap.add_argument("-e", "--executable", help="The name of the boost unit test executable. Default is boost_unit_tests.", default="boost_unit_tests")
+    ap.add_argument("-p", "--path", metavar="dir", help="Path to boost unit test binary. By default assume it is with this script.", default=".")
+    ap.add_argument("-l", "--test_list", metavar="filename", help="Loads the list of tests from the given file. Default is boost_test_schedule.", default="boost_test_schedule")
 
     options = ap.parse_args()
 
-    tests = get_tests(options.list)
+    tests = get_tests(options.test_list)
     executable = options.executable
     success=0
     failure=0
 
     for test in tests:
-        returncode = 0
         try:
-            returncode = run_with_rerun_for_sdl_video(os.path.join(options.path, executable), test)
-        except subprocess.TimeoutExpired:
+            res = run_with_rerun_for_sdl_video(os.path.join(options.path, executable), test)
+        except subprocess.TimeoutExpired as t:
             failure+=1
-            print("Test "+test+" timed out")
+            output = str(t.output) or ""
+            print("Test "+test+" timed out: "+output)
         else:
-            if returncode == 0:
+            if res.returncode == 0:
                 success+=1
                 print("Test "+test+" passed")
             else:
                 failure+=1
-                print("Test "+test+" failed with return code "+str(returncode))
+                print("Test "+test+" failed with return code "+str(res.returncode)+":")
+                print(res.stdout.decode('utf-8'))
     
     print("Tests passed: "+str(success))
     print("Tests failed: "+str(failure))

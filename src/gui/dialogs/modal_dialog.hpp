@@ -150,7 +150,7 @@ class modal_dialog : public window
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_as_tested(const modal_dialog& dialog);
+	friend std::string get_modal_dialog_id(const modal_dialog& dialog);
 
 public:
 	explicit modal_dialog(const std::string& window_id);

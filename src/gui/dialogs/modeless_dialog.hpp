@@ -38,7 +38,7 @@ class modeless_dialog : public window
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog);
+	friend std::string get_modeless_dialog_id(const modeless_dialog& dialog);
 
 public:
 	explicit modeless_dialog(const std::string& window_id);
