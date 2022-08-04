@@ -114,9 +114,9 @@
 #include "replay.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
+#include "serialization/string_utils.hpp"
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
-//#include "scripting/lua_kernel_base.hpp"
 #include <functional>
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
@@ -127,28 +127,44 @@
 
 using namespace gui2::dialogs;
 
-namespace gui2 {
+struct test_gui2_fixture {
+	test_gui2_fixture()
+	{
+		/** The main config, which contains the entire WML tree. */
+		game_config_view game_config_view_ = game_config_view::wrap(main_config);
 
-static
-std::set<std::string>& unit_test_registered_window_list()
-{
-	static std::set<std::string> result = registered_window_types();
-	return result;
-}
+		game_config::config_cache& cache = game_config::config_cache::instance();
+
+		cache.clear_defines();
+		cache.add_define("EDITOR");
+		cache.add_define("MULTIPLAYER");
+		cache.get_config(game_config::path +"/data", main_config);
+
+		const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
+
+		load_language_list();
+		game_config::load_config(main_config.child("game_config"));
+	}
+	~test_gui2_fixture()
+	{
+	}
+	static config main_config;
+	static const std::string widgets_file;
+};
+config test_gui2_fixture::main_config;
+const std::string test_gui2_fixture::widgets_file = "widgets_tested.log";
+
+namespace gui2 {
 
 namespace dialogs {
 
-std::string unit_test_mark_as_tested(const modal_dialog& dialog)
+std::string get_modal_dialog_id(const modal_dialog& dialog)
 {
-	std::set<std::string>& list = unit_test_registered_window_list();
-	list.erase(dialog.window_id());
 	return dialog.window_id();
 }
 
-std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
+std::string get_modeless_dialog_id(const modeless_dialog& dialog)
 {
-	std::set<std::string>& list = unit_test_registered_window_list();
-	list.erase(dialog.window_id());
 	return dialog.window_id();
 }
 
@@ -156,10 +172,6 @@ std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog)
 } // namespace gui2
 
 namespace {
-
-	/** The main config, which contains the entire WML tree. */
-	config main_config;
-	game_config_view game_config_view_ = game_config_view::wrap(main_config);
 
 	/**
 	 * Helper class to generate a dialog.
@@ -186,7 +198,8 @@ namespace {
 			const std::unique_ptr<modal_dialog> dlg(ctor.create());
 			BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-			const std::string id = unit_test_mark_as_tested(*(dlg.get()));
+			std::string id = get_modal_dialog_id(*dlg.get());
+			filesystem::write_file(test_gui2_fixture::widgets_file, ","+id, std::ios_base::app);
 
 			std::string exception;
 			try {
@@ -229,7 +242,8 @@ namespace {
 				const std::unique_ptr<modeless_dialog> dlg(ctor.create());
 				BOOST_REQUIRE_MESSAGE(dlg.get(), "Failed to create a dialog.");
 
-				const std::string id = unit_test_mark_popup_as_tested(*(dlg.get()));
+				std::string id = get_modeless_dialog_id(*dlg.get());
+				filesystem::write_file(test_gui2_fixture::widgets_file, ","+id, std::ios_base::app);
 
 				std::string exception;
 				try {
@@ -272,8 +286,7 @@ namespace {
 		for(const auto& resolution : resolutions) {
 			test_utils::get_fake_display(resolution.first, resolution.second);
 
-			std::set<std::string>& list = gui2::unit_test_registered_window_list();
-			list.erase(id);
+			filesystem::write_file(test_gui2_fixture::widgets_file, ","+id, std::ios_base::app);
 
 			std::string exception;
 			try {
@@ -281,6 +294,7 @@ namespace {
 						, "Test message for a tooltip."
 						, point(0, 0)
 						, {0,0,0,0});
+				tip::remove();
 			} catch(const gui2::layout_exception_width_modified&) {
 				exception = "gui2::layout_exception_width_modified";
 			} catch(const gui2::layout_exception_width_resize_failed&) {
@@ -357,147 +371,236 @@ void test_tip(const std::string& id)
 	}
 }
 
-#if 0
-class dummy_display_context : public display_context
-{
-public:
-	dummy_display_context()
-		: dummy_cfg()
-		, m(std::make_shared<terrain_type_data>(dummy_cfg), "")
-		, u()
-		, t()
-		, lbls()
-	{
-	}
-
-	virtual ~dummy_display_context(){}
-
-	virtual const gamemap & map() const override { return m; }
-	virtual const unit_map & units() const override { return u; }
-	virtual const std::vector<team> & teams() const override { return t; }
-	virtual const std::vector<std::string> & hidden_label_categories() const override { return lbls; }
-
-private:
-	config dummy_cfg;
-
-	gamemap m;
-	unit_map u;
-	std::vector<team> t;
-	std::vector<std::string> lbls;
-};
-
-const display_context& get_dummy_display_context()
-{
-	static const dummy_display_context dedc = dummy_display_context();
-	return dedc;
-}
-#endif
-
 } // namespace
 
-BOOST_AUTO_TEST_CASE(test_gui2)
+BOOST_FIXTURE_TEST_SUITE( test_gui2, test_gui2_fixture )
+
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_auth)
 {
-	/**** Initialize the environment. *****/
-	game_config::config_cache& cache = game_config::config_cache::instance();
-
-	cache.clear_defines();
-	cache.add_define("EDITOR");
-	cache.add_define("MULTIPLAYER");
-	cache.get_config(game_config::path +"/data", main_config);
-
-	const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
-
-	load_language_list();
-	game_config::load_config(main_config.child("game_config"));
-
-	/**** Run the tests. *****/
-
-	/* The modal_dialog classes. */
 	test<addon_auth>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_connect)
+{
 	test<addon_connect>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_license_prompt)
+{
 	test<addon_license_prompt>();
-	//test<addon_manager>();
-	//test<attack_predictions>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_campaign_difficulty)
+{
 	test<campaign_difficulty>();
-	//test<campaign_selection>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_chat_log)
+{
 	test<chat_log>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_core_selection)
+{
 	test<core_selection>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_custom_tod)
+{
 	test<custom_tod>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_depcheck_confirm_change)
+{
 	test<depcheck_confirm_change>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_depcheck_select_new)
+{
 	test<depcheck_select_new>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_edit_label)
+{
 	test<edit_label>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_edit_text)
+{
 	test<edit_text>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_label)
+{
 	test<editor_edit_label>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_side)
+{
 	test<editor_edit_side>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_edit_scenario)
+{
 	test<editor_edit_scenario>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_generate_map)
+{
 	test<editor_generate_map>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_new_map)
+{
 	test<editor_new_map>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_resize_map)
+{
 	test<editor_resize_map>();
-	//test<end_credits>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_faction_select)
+{
 	test<faction_select>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_file_dialog)
+{
 	test<file_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_folder_create)
+{
 	test<folder_create>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_formula_debugger)
+{
 	test<formula_debugger>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_game_cache_options)
+{
 	test<game_cache_options>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_game_delete)
+{
 	test<game_delete>();
-	//test<game_load>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_game_version)
+{
 	test<game_version>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_game_save)
+{
 	test<game_save>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_game_save_message)
+{
 	test<game_save_message>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_game_save_oos)
+{
 	test<game_save_oos>();
-	// test<game_stats>();
-	// test<gamestate_inspector>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_generator_settings)
+{
 	test<generator_settings>();
-	//test<help_browser>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_hotkey_bind)
+{
 	test<hotkey_bind>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_install_dependencies)
+{
 	test<install_dependencies>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_language_selection)
+{
 	test<language_selection>();
-	// test<loading_screen>(); TODO: enable
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_lobby)
+{
 	test<mp_lobby>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_lobby_player_info)
+{
 	test<lobby_player_info>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_log_settings)
+{
 	test<log_settings>();
-	//test<lua_interpreter>(& lua_kernel_base());
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_message)
+{
 	test<message>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_alerts_options)
+{
 	test<mp_alerts_options>();
-	//test<mp_change_control>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_connect)
+{
 	test<mp_connect>();
-	//test<mp_create_game>();
-	//test<mp_join_game>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_join_game_password_prompt)
+{
 	test<mp_join_game_password_prompt>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_login)
+{
 	test<mp_login>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_method_selection)
+{
 	test<mp_method_selection>();
-	//test<mp_staging>();
-	//test<outro>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_simple_item_selector)
+{
 	test<simple_item_selector>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_screenshot_notification)
+{
 	test<screenshot_notification>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_select_orb_colors)
+{
 	test<select_orb_colors>();
-	//test<sp_options_configure>();
-	//test<statistics_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_statistics_dialog)
+{
+	test<statistics_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_surrender_quit)
+{
 	test<surrender_quit>();
-	//test<story_viewer>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_theme_list)
+{
 	test<theme_list>();
-	//test<terrain_layers>();
-	//test<title_screen>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_transient_message)
+{
 	test<transient_message>();
-	//test<unit_advance>();
-	//test<unit_attack>();
-	//test<unit_create>();
-	//test<unit_list>();
-	//test<unit_recall>();
-	//test<unit_recruit>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_unit_create)
+{
+	test<unit_create>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_error)
+{
 	test<wml_error>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_left)
+{
 	test<wml_message_left>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_right)
+{
 	test<wml_message_right>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_double)
+{
 	test<wml_message_double>();
-
-	/* The modeless_dialog classes. */
+}
+BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
+{
 	test_popup<debug_clock>();
-
-	/* The tooltip classes. */
+}
+BOOST_AUTO_TEST_CASE(tooltip_test_tooltip_large)
+{
 	test_tip("tooltip_large");
+}
+BOOST_AUTO_TEST_CASE(tooltip_test_tooltip)
+{
 	test_tip("tooltip");
+}
 
-	std::set<std::string>& list = gui2::unit_test_registered_window_list();
+// execute last - checks that there aren't any unaccounted for GUIs
+BOOST_AUTO_TEST_CASE(test_last)
+{
+	std::set<std::string> widget_list = gui2::registered_window_types();
+	std::vector<std::string> widgets_tested = utils::split(filesystem::read_file(test_gui2_fixture::widgets_file));
 	std::set<std::string> omitted {
 		/*
 		 * The unit attack unit test are disabled for now, they calling parameters
@@ -540,19 +643,26 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 		"game_stats", // segfault with LTO
 		"gamestate_inspector", // segfault with LTO
 		"server_info",
-		"statistics_dialog",// segfault with LTO
 		"sp_options_configure",// segfault with LTO
 		"campaign_selection",// segfault with LTO
-		"unit_create",// segfault with LTO
-		"game_load",// segfault after disabling the above 4 tests
+		"game_load",// segfault after disabling the above tests
 	};
+	filesystem::delete_file(test_gui2_fixture::widgets_file);
 
-	std::vector<std::string> missing;
-	std::set_difference(list.begin(), list.end(), omitted.begin(), omitted.end(), std::back_inserter(missing));
+	for(const std::string& item : widgets_tested)
+	{
+		widget_list.erase(item);
+		PLAIN_LOG << "Checking widget " << item;
+		BOOST_CHECK_EQUAL(omitted.count(item), 0);
+	}
+	for(const std::string& item : omitted)
+	{
+		widget_list.erase(item);
+	}
 
 	// Test size() instead of empty() to get the number of offenders
-	BOOST_CHECK_EQUAL(missing.size(), 0);
-	for(const std::string& id : missing) {
+	BOOST_CHECK_EQUAL(widget_list.size(), 0);
+	for(const std::string& id : widget_list) {
 		PLAIN_LOG << "Window '" << id << "' registered but not tested.";
 	}
 }
@@ -572,6 +682,8 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 	}
 	BOOST_ERROR("Didn't catch the wanted exception.");
 }
+
+BOOST_AUTO_TEST_SUITE_END()
 
 namespace {
 
@@ -816,20 +928,6 @@ struct dialog_tester<game_save_oos>
 
 };
 
-#if 0
-template<>
-struct dialog_tester<gamestate_inspector>
-{
-	config vars;
-	game_events::manager events;
-	gamestate_inspector* create()
-	{
-		return new gamestate_inspector(vars, events, get_dummy_display_context(), "Unit Test");
-	}
-
-};
-#endif
-
 template<>
 struct dialog_tester<install_dependencies>
 {
@@ -912,16 +1010,6 @@ struct dialog_tester<message>
 		return new message("Title", "Message", false, false, false);
 	}
 };
-#if 0
-template<>
-struct dialog_tester<mp_change_control>
-{
-	mp_change_control* create()
-	{
-		return new mp_change_control(nullptr);
-	}
-};
-#endif
 
 template<>
 struct dialog_tester<mp_create_game>
@@ -1018,7 +1106,7 @@ struct dialog_tester<editor_generate_map>
 	std::vector<std::unique_ptr<map_generator>> map_generators;
 	editor_generate_map* create()
 	{
-		for(const config &i : main_config.child_range("multiplayer")) {
+		for(const config &i : test_gui2_fixture::main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
 				const config &generator_cfg = i.child("generator");
 				if (generator_cfg) {
@@ -1153,18 +1241,6 @@ struct dialog_tester<faction_select>
 		return new faction_select(flg, color, 1);
 	}
 };
-
-#if 0
-template<>
-struct dialog_tester<game_stats>
-{
-	int i = 1;
-	game_stats* create()
-	{
-		return new game_stats(get_dummy_display_context(), 1, i);
-	}
-};
-#endif
 
 template<>
 struct dialog_tester<generator_settings>

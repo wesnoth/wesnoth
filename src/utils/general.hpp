@@ -89,7 +89,7 @@ inline bool contains(const Container& container, const Value& value)
 /**
  * Utility function for finding the type of thing caught with `catch(...)`.
  * Not implemented for other compilers at this time.
- * 
+ *
  * @return For the GCC/clang compilers, the unmangled name of an unknown exception that was caught.
  */
 std::string get_unknown_exception_type();
