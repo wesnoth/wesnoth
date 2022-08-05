@@ -40,14 +40,6 @@ class modeless_dialog : public window
 	 */
 	friend std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog);
 
-	/**
-	 * Special helper function for the unit test to the the window.
-	 *
-	 * This is used in the unit tests, but these implementation details
-	 * shouldn't be used in the normal code.
-	 */
-	friend window* unit_test_window(const modeless_dialog& dialog);
-
 public:
 	explicit modeless_dialog(const std::string& window_id);
 
