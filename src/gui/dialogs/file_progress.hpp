@@ -39,9 +39,6 @@ private:
 	/** Inherited from modeless_dialog. */
 	virtual const std::string& window_id() const override;
 
-	/** Inherited from modeless_dialog. */
-	virtual void pre_show(window& window) override;
-
 	std::string title_;
 	std::string message_;
 

@@ -39,21 +39,18 @@ const std::string& file_progress::window_id() const
 }
 
 file_progress::file_progress(const std::string& title, const std::string& message)
-	: title_(title)
+	: modeless_dialog(file_progress::window_id())
+	, title_(title)
 	, message_(message)
 	, update_time_()
 {
-}
+	find_widget<label>(this, "title", false).set_label(title_);
+	auto& label_widget = find_widget<label>(this, "message", false);
 
-void file_progress::pre_show(window& window)
-{
-	find_widget<label>(&window, "title", false).set_label(title_);
-	auto& message = find_widget<label>(&window, "message", false);
+	label_widget.set_use_markup(true);
+	label_widget.set_label(message_);
 
-	message.set_use_markup(true);
-	message.set_label(message_);
-
-	find_widget<button>(&window, "placeholder", false).set_active(false);
+	find_widget<button>(this, "placeholder", false).set_active(false);
 
 	update_time_ = clock::now();
 }
