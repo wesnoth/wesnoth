@@ -463,10 +463,10 @@ void mp_create_game::sync_with_depcheck()
 	DBG_MP << "sync_with_depcheck: end";
 }
 
-template<typename widget>
+template<typename T>
 void mp_create_game::on_filter_change(const std::string& id, bool do_select)
 {
-	create_engine_.apply_level_filter(find_widget<text_box>(get_window(), id, false).get_value());
+	create_engine_.apply_level_filter(find_widget<T>(get_window(), id, false).get_value());
 
 	listbox& game_list = find_widget<listbox>(get_window(), "games_list", false);
 
