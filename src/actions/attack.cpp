@@ -1380,14 +1380,14 @@ void attack::perform()
 		d_.weap_id_ = d_stats_->weapon->id();
 	}
 
+	a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
+	d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
+
 	try {
 		fire_event("pre_attack");
 	} catch(const attack_end_exception&) {
 		return;
 	}
-
-	a_.get_unit().set_facing(a_.loc_.get_relative_dir(d_.loc_));
-	d_.get_unit().set_facing(d_.loc_.get_relative_dir(a_.loc_));
 
 	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - 1);
 
