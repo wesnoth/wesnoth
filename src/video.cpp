@@ -19,6 +19,7 @@
 #include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
+#include "font/text.hpp"
 #include "log.hpp"
 #include "picture.hpp"
 #include "preferences/general.hpp"
@@ -84,6 +85,10 @@ static point draw_offset();
 
 void init(fake type)
 {
+	LOG_DP << "initializing video";
+	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+		throw error("video subsystem already initialized");
+	}
 	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
@@ -102,6 +107,28 @@ void init(fake type)
 	default:
 		throw error("unrecognized fake type passed to video::init");
 	}
+}
+
+void deinit()
+{
+	LOG_DP << "deinitializing video";
+	assert(SDL_WasInit(SDL_INIT_TIMER));
+
+	image::flush_cache();
+	font::flush_texture_cache();
+	render_texture_.reset();
+	current_render_target_.reset();
+
+	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+		LOG_DP << "quitting SDL video subsystem";
+		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+	}
+	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+		// This should not have been initialized multiple times
+		throw error("video subsystem still initialized after deinit");
+	}
+
+	window.reset();
 }
 
 bool headless()

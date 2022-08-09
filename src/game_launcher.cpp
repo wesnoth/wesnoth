@@ -84,6 +84,7 @@ static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
+#define ERR_GENERAL LOG_STREAM(err, lg::general())
 #define LOG_GENERAL LOG_STREAM(info, lg::general())
 #define WRN_GENERAL LOG_STREAM(warn, lg::general())
 #define DBG_GENERAL LOG_STREAM(debug, lg::general())
@@ -1071,6 +1072,11 @@ game_launcher::~game_launcher()
 {
 	try {
 		sound::close_sound();
+		video::deinit();
+	} catch(std::exception& e) {
+		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher: "
+			<< e.what();
 	} catch(...) {
+		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher";
 	}
 }
