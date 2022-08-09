@@ -247,7 +247,14 @@ next:
 			}
 			DBG_DM << "  to " << static_cast<void*>(tld);
 			//STREAMING_LOG << "*";
-			drawn |= tld->expose(i);
+			try {
+				drawn |= tld->expose(i);
+			} catch(...) {
+				WRN_DM << "exception thrown during expose "
+					<< static_cast<void*>(tld);
+				drawing_ = false;
+				throw;
+			}
 		}
 	}
 	drawing_ = false;
