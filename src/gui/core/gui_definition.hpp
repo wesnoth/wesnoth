@@ -106,7 +106,7 @@ extern gui_theme_map_t::iterator default_gui;
 resolution_definition_ptr get_control(const std::string& control_type, const std::string& definition);
 
 /** Helper struct to signal that get_window_builder failed. */
-struct window_builder_invalid_id
+struct window_builder_invalid_id : std::exception
 {
 };
 

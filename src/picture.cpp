@@ -240,6 +240,8 @@ void flush_cache()
 	}
 	lit_surfaces_.flush();
 	lit_textures_.flush();
+	surface_lightmaps_.clear();
+	texture_lightmaps_.clear();
 	in_hex_info_.flush();
 	is_empty_hex_.flush();
 	textures_.clear();

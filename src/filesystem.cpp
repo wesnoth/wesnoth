@@ -1066,9 +1066,9 @@ filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base:
 }
 
 // Throws io_exception if an error occurs
-void write_file(const std::string& fname, const std::string& data)
+void write_file(const std::string& fname, const std::string& data, std::ios_base::openmode mode)
 {
-	scoped_ostream os = ostream_file(fname);
+	scoped_ostream os = ostream_file(fname, mode);
 	os->exceptions(std::ios_base::goodbit);
 
 	const std::size_t block_size = 4096;

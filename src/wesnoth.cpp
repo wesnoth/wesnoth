@@ -912,14 +912,18 @@ static int do_gameloop(const std::vector<std::string>& args)
 			continue;
 		}
 
-		gui2::dialogs::title_screen dlg(*game);
+		int retval;
+		{ // scope to not keep the title screen alive all game
+			gui2::dialogs::title_screen dlg(*game);
 
-		// Allows re-layout on resize
-		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
-			dlg.show();
+			// Allows re-layout on resize
+			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
+				dlg.show();
+			}
+			retval = dlg.get_retval();
 		}
 
-		switch(dlg.get_retval()) {
+		switch(retval) {
 		case gui2::dialogs::title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;

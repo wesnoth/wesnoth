@@ -25,7 +25,7 @@ jobs:
             lto: false
     runs-on: ubuntu-20.04
     container:
-      image: wesnoth/wesnoth:2004-master
+      image: wesnoth/wesnoth:2204-master
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
@@ -73,7 +73,9 @@ jobs:
         run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
       - name: Whitespace and WML indentation check
         if: success() || failure()
-        run: ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
+        run: |
+          git config --global --add safe.directory '*'
+          ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
@@ -94,7 +96,7 @@ jobs:
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
         if: success() || steps.build.outcome == 'success'
-        run: ./utils/CI/test_executor.sh
+        run: ./run_boost_tests
 
   steam-runtime:
     runs-on: ubuntu-20.04
@@ -194,7 +196,7 @@ jobs:
       - name: Translations
         run: |
           export BRANCH=master
-          export IMAGE=2004
+          export IMAGE=2204
           export NLS=only
           export TOOL=scons
           export CC=gcc
@@ -239,7 +241,7 @@ jobs:
         if: matrix.cfg == 'Release'
         run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
       - name: Run unit tests
-        run: projectfiles/Xcode/build/"$CFG"/unit_tests --color_output --log_level=test_suite
+        run: ./run_boost_tests --path=projectfiles/Xcode/build/"$CFG" --executable=unit_tests
 
   windows:
     strategy:

@@ -1,6 +1,7 @@
 import { createLanguage, seqMap, alt, regex, string, whitespace, Result } from 'parsimmon'
 import fs from 'fs'
 
+// This WML parser isn't complete. It just needs to parse terrain.cfg successfully.
 const WmlLang = createLanguage({
   File: (r) => {
     return r
@@ -83,7 +84,7 @@ const WmlLang = createLanguage({
   AttributeValueText: () => {
     return seqMap(
       regex(/(_ )?/),
-      regex(/[^+\n]*/),
+      regex(/[^+\n#]*/),
       (translatable, value) => (
         {
           value: value.trim(),

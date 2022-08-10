@@ -25,6 +25,7 @@ namespace gui2::dialogs
 REGISTER_DIALOG(editor_new_map)
 
 editor_new_map::editor_new_map(const t_string& title, int& width, int& height)
+	: modal_dialog(window_id())
 {
 	register_label("title", true, title);
 

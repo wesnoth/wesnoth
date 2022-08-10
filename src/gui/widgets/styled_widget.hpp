@@ -297,12 +297,12 @@ public:
 	}
 
 protected:
-	resolution_definition_ptr config()
+	resolution_definition_ptr get_config()
 	{
 		return config_;
 	}
 
-	resolution_definition_const_ptr config() const
+	resolution_definition_const_ptr get_config() const
 	{
 		return config_;
 	}
@@ -323,7 +323,7 @@ protected:
 			"Given type's resolution object does not derive from resolution_definition."
 		);
 
-		return std::static_pointer_cast<const typename T::resolution>(config());
+		return std::static_pointer_cast<const typename T::resolution>(get_config());
 	}
 
 	void set_config(resolution_definition_ptr config)

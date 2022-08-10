@@ -61,7 +61,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(mp_join_game)
 
 mp_join_game::mp_join_game(saved_game& state, wesnothd_connection& connection, const bool first_scenario, const bool observe_game)
-	: level_()
+	: modal_dialog(window_id())
+	, level_()
 	, state_(state)
 	, network_connection_(connection)
 	, update_timer_(0)

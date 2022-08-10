@@ -26,7 +26,7 @@ class install_dependencies : public modal_dialog
 {
 public:
 	explicit install_dependencies(const addons_list& addons)
-		: addons_(addons)
+		: modal_dialog(window_id()), addons_(addons)
 	{}
 
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(install_dependencies)

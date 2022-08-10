@@ -49,8 +49,8 @@ private:
 
 	virtual void post_show(window& window) override;
 
-	void load_password() const;
-	void save_password() const;
+	void load_password();
+	void save_password();
 
 	const std::string host_;
 	field_text* username_;

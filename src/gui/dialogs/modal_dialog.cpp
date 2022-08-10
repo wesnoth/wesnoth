@@ -20,6 +20,7 @@
 #include "cursor.hpp"
 #include "events.hpp"
 #include "gui/auxiliary/field.hpp"
+#include "gui/core/gui_definition.hpp" // get_window_builder
 #include "gui/widgets/integer_selector.hpp"
 #include "scripting/plugins/context.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -31,8 +32,9 @@ static lg::log_domain log_display("display");
 
 namespace gui2::dialogs
 {
-modal_dialog::modal_dialog()
-	: window_(nullptr)
+
+modal_dialog::modal_dialog(const std::string& window_id)
+	: window(get_window_builder(window_id))
 	, retval_(retval::NONE)
 	, always_save_fields_(false)
 	, fields_()
@@ -40,6 +42,8 @@ modal_dialog::modal_dialog()
 	, allow_plugin_skip_(true)
 	, show_even_without_video_(false)
 {
+	window::finish_build(get_window_builder(window_id));
+	widget::set_id(window_id);
 }
 
 modal_dialog::~modal_dialog()
@@ -48,13 +52,13 @@ modal_dialog::~modal_dialog()
 
 namespace {
 	struct window_stack_handler {
-		window_stack_handler(std::unique_ptr<window>& win) : local_window(win) {
-			open_window_stack.push_back(local_window.get());
+		window_stack_handler(window* win) : local_window(win) {
+			open_window_stack.push_back(local_window);
 		}
 		~window_stack_handler() {
-			remove_from_window_stack(local_window.get());
+			remove_from_window_stack(local_window);
 		}
-		std::unique_ptr<window>& local_window;
+		window* local_window;
 	};
 }
 
@@ -78,21 +82,14 @@ bool modal_dialog::show(const unsigned auto_close_time)
 		return false;
 	}
 
-	window_ = build_window();
-	assert(window_.get());
+	init_fields();
 
-	post_build(*window_);
-
-	window_->set_owner(this);
-
-	init_fields(*window_);
-
-	pre_show(*window_);
+	pre_show(*this);
 
 	{ // Scope the window stack
 		cursor::setter cur{cursor::NORMAL};
-		window_stack_handler push_window_stack(window_);
-		retval_ = window_->show(auto_close_time);
+		window_stack_handler push_window_stack(this);
+		retval_ = window::show(auto_close_time);
 	}
 
 	/*
@@ -111,22 +108,12 @@ bool modal_dialog::show(const unsigned auto_close_time)
 
 	finalize_fields((retval_ == retval::OK || always_save_fields_));
 
-	post_show(*window_);
+	post_show(*this);
 
 	// post_show may have updated the window retval. Update it here.
-	retval_ = window_->get_retval();
-
-	// Reset window object.
-	window_.reset(nullptr);
+	retval_ = window::get_retval();
 
 	return retval_ == retval::OK;
-}
-
-void modal_dialog::set_retval(int retval)
-{
-	if(window_) {
-		window_->set_retval(retval);
-	}
 }
 
 template<typename T, typename... Args>
@@ -239,16 +226,6 @@ field_label* modal_dialog::register_label(const std::string& id,
 	return field;
 }
 
-std::unique_ptr<window> modal_dialog::build_window() const
-{
-	return build(window_id());
-}
-
-void modal_dialog::post_build(window& /*window*/)
-{
-	/* DO NOTHING */
-}
-
 void modal_dialog::pre_show(window& /*window*/)
 {
 	/* DO NOTHING */
@@ -259,17 +236,17 @@ void modal_dialog::post_show(window& /*window*/)
 	/* DO NOTHING */
 }
 
-void modal_dialog::init_fields(window& window)
+void modal_dialog::init_fields()
 {
 	for(auto& field : fields_)
 	{
-		field->attach_to_window(window);
+		field->attach_to_window(*this);
 		field->widget_init();
 	}
 
 	if(!focus_.empty()) {
-		if(widget* widget = window.find(focus_, false)) {
-			window.keyboard_capture(widget);
+		if(widget* widget = window::find(focus_, false)) {
+			window::keyboard_capture(widget);
 		}
 	}
 }

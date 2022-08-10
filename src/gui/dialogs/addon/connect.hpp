@@ -43,8 +43,7 @@ public:
 	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 */
-	addon_connect(std::string& host_name,
-				   const bool allow_remove);
+	addon_connect(std::string& host_name, bool allow_remove);
 
 private:
 	/** Enable the addon remove button? */

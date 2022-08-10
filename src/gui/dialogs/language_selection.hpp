@@ -34,6 +34,7 @@ class language_selection : public modal_dialog
 {
 public:
 	language_selection()
+		: modal_dialog(window_id())
 	{
 	}
 

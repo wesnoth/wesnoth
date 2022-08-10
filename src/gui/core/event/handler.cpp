@@ -528,7 +528,10 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
 		   == dispatchers_.end());
 
+	DBG_GUI_E << "adding dispatcher " << static_cast<void*>(dispatcher);
+
 	if(dispatchers_.empty()) {
+		LOG_GUI_E << "creating new dispatcher event context";
 		event_context = new events::event_context();
 		join();
 	}
@@ -541,6 +544,8 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	/***** Validate pre conditions. *****/
 	auto itor = std::find(dispatchers_.begin(), dispatchers_.end(), disp);
 	assert(itor != dispatchers_.end());
+
+	DBG_GUI_E << "removing dispatcher " << static_cast<void*>(disp);
 
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
@@ -560,6 +565,7 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
+		LOG_GUI_E << "deleting unused dispatcher event context";
 		leave();
 		delete event_context;
 		event_context = nullptr;

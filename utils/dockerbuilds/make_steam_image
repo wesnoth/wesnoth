@@ -1,18 +1,18 @@
 #!/bin/sh -xe
 
-VALVEFILE=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.Dockerfile
-VALVETAR=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-scout-sysroot.tar.gz
-VALVE_SNAPSHOT=0.20220119.0
+VALVEFILE=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-sniper-sysroot.Dockerfile
+VALVETAR=com.valvesoftware.SteamRuntime.Sdk-amd64,i386-sniper-sysroot.tar.gz
+VALVE_SNAPSHOT=0.20220601.1
 
-DOCKERBASEIMAGE=steamrt_scout_amd64
-DOCKERLOCALIMAGE=wesnoth/wesnoth:steamrt-master
+DOCKERBASEIMAGE=steamrt_sniper_amd64
+DOCKERLOCALIMAGE=wesnoth/wesnoth:steamrt-sniper
 DOCKERLOCALFILE=./CI/Dockerfile-base-steamrt
 
 if [ ! -f "$VALVEFILE" ]; then
-    wget http://repo.steampowered.com/steamrt-images-scout/snapshots/"$VALVE_SNAPSHOT"/"$VALVEFILE"
+    wget https://repo.steampowered.com/steamrt-images-sniper/snapshots/"$VALVE_SNAPSHOT"/"$VALVEFILE"
 fi
 if [ ! -f "$VALVETAR" ]; then
-    wget http://repo.steampowered.com/steamrt-images-scout/snapshots/"$VALVE_SNAPSHOT"/"$VALVETAR"
+    wget https://repo.steampowered.com/steamrt-images-sniper/snapshots/"$VALVE_SNAPSHOT"/"$VALVETAR"
 fi
 
 docker build -t "$DOCKERBASEIMAGE" -f "$VALVEFILE" .

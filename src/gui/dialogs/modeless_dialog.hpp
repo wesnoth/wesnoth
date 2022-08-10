@@ -15,14 +15,12 @@
 
 #pragma once
 
-#include <memory>
+#include "gui/widgets/window.hpp"
+
 #include <string>
 
 namespace gui2
 {
-
-class window;
-
 namespace dialogs
 {
 
@@ -32,7 +30,7 @@ namespace dialogs
  * At the moment these windows also don't capture the mouse and keyboard so can
  * only be used for things like tooltips. This behavior might change later.
  */
-class modeless_dialog
+class modeless_dialog : public window
 {
 	/**
 	 * Special helper function to get the id of the window.
@@ -40,18 +38,10 @@ class modeless_dialog
 	 * This is used in the unit tests, but these implementation details
 	 * shouldn't be used in the normal code.
 	 */
-	friend std::string unit_test_mark_popup_as_tested(const modeless_dialog& dialog);
-
-	/**
-	 * Special helper function for the unit test to the the window.
-	 *
-	 * This is used in the unit tests, but these implementation details
-	 * shouldn't be used in the normal code.
-	 */
-	friend window* unit_test_window(const modeless_dialog& dialog);
+	friend std::string get_modeless_dialog_id(const modeless_dialog& dialog);
 
 public:
-	modeless_dialog();
+	explicit modeless_dialog(const std::string& window_id);
 
 	virtual ~modeless_dialog();
 
@@ -70,52 +60,13 @@ public:
 	void show(const bool allow_interaction = false,
 			  const unsigned auto_close_time = 0);
 
-
-	/**
-	 * Hides the window.
-	 *
-	 * The hiding also destroys the window. It is save to call the function
-	 * when the window is not shown.
-	 */
-	void hide();
-
-	/** Returns a pointer to the dialog's window. Will be null if it hasn't been built yet. */
-	window* get_window() const
-	{
-		return window_.get();
-	}
-
-protected:
-	/** The window, used in show. */
-	std::unique_ptr<window> window_;
-
 private:
-	/** The id of the window to build. */
-	virtual const std::string& window_id() const = 0;
-
 	/**
-	 * Builds the window.
+	 * The ID of the window to build. Usually defined by REGISTER_DIALOG.
 	 *
-	 * Every dialog shows it's own kind of window, this function should return
-	 * the window to show.
-	 *
-	 * @returns                   The window to show.
+	 * Falls back to widget::id(), which is set during construction.
 	 */
-	std::unique_ptr<window> build_window() const;
-
-	/**
-	 * Actions to be taken directly after the window is build.
-	 *
-	 * @param window              The window just created.
-	 */
-	virtual void post_build(window& window);
-
-	/**
-	 * Actions to be taken before showing the window.
-	 *
-	 * @param window              The window to be shown.
-	 */
-	virtual void pre_show(window& window);
+	virtual const std::string& window_id() const { return widget::id(); }
 };
 
 } // namespace dialogs

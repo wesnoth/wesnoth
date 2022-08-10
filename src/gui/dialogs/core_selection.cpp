@@ -32,14 +32,14 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(core_selection)
 
-void core_selection::core_selected() const
+void core_selection::core_selected()
 {
 	const int selected_row
-			= find_widget<listbox>(get_window(), "core_list", false)
+			= find_widget<listbox>(this, "core_list", false)
 					  .get_selected_row();
 
 	multi_page& pages
-			= find_widget<multi_page>(get_window(), "core_details", false);
+			= find_widget<multi_page>(this, "core_details", false);
 
 	pages.select_page(selected_row);
 }

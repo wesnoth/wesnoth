@@ -213,7 +213,7 @@ std::string read_file(const std::string& fname);
 filesystem::scoped_istream istream_file(const std::string& fname, bool treat_failure_as_error = true);
 filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base::openmode mode = std::ios_base::binary, bool create_directory = true);
 /** Throws io_exception if an error occurs. */
-void write_file(const std::string& fname, const std::string& data);
+void write_file(const std::string& fname, const std::string& data, std::ios_base::openmode mode = std::ios_base::binary);
 /**
  * Read a file and then writes it back out.
  *

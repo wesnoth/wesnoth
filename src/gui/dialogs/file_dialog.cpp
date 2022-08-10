@@ -103,7 +103,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(file_dialog)
 
 file_dialog::file_dialog()
-	: title_(_("Find File"))
+	: modal_dialog(window_id())
+	, title_(_("Find File"))
 	, msg_()
 	, ok_label_()
 	, extension_()

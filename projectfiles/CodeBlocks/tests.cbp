@@ -41,7 +41,7 @@
 			<Add option="-Wunused-parameter" />
 			<Add option="-DHAVE_LIBPNG" />
 			<Add option="-D_GLIBCXX_USE_DEPRECATED=0" />
-			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />"
+			<Add option="-DBOOST_NO_CXX98_FUNCTION_BASE" />
 			<Add option="-D_WIN32_WINDOWS" />
 			<Add option="-D_WIN32_WINNT=0x0601" />
 			<Add option="-D_WIN32_IE=0x0601" />
@@ -264,8 +264,10 @@
 		<Unit filename="../../src/defeat_condition.hpp" />
 		<Unit filename="../../src/deprecation.cpp" />
 		<Unit filename="../../src/deprecation.hpp" />
+		<Unit filename="../../src/desktop/apple_battery_info.hpp" />
+		<Unit filename="../../src/desktop/apple_notification.hpp" />
+		<Unit filename="../../src/desktop/apple_version.hpp" />
 		<Unit filename="../../src/desktop/apple_video.hpp" />
-		<Unit filename="../../src/desktop/apple_video.mm" />
 		<Unit filename="../../src/desktop/battery_info.cpp" />
 		<Unit filename="../../src/desktop/battery_info.hpp" />
 		<Unit filename="../../src/desktop/clipboard.cpp" />
@@ -438,6 +440,7 @@
 		<Unit filename="../../src/game_events/conditional_wml.hpp" />
 		<Unit filename="../../src/game_events/entity_location.cpp" />
 		<Unit filename="../../src/game_events/entity_location.hpp" />
+		<Unit filename="../../src/game_events/fwd.hpp" />
 		<Unit filename="../../src/game_events/handlers.cpp" />
 		<Unit filename="../../src/game_events/handlers.hpp" />
 		<Unit filename="../../src/game_events/manager.cpp" />
@@ -616,6 +619,8 @@
 		<Unit filename="../../src/gui/dialogs/end_credits.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.cpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.hpp" />
+		<Unit filename="../../src/gui/dialogs/file_progress.cpp" />
+		<Unit filename="../../src/gui/dialogs/file_progress.hpp" />
 		<Unit filename="../../src/gui/dialogs/folder_create.cpp" />
 		<Unit filename="../../src/gui/dialogs/folder_create.hpp" />
 		<Unit filename="../../src/gui/dialogs/formula_debugger.cpp" />
@@ -891,33 +896,10 @@
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />
 		<Unit filename="../../src/log_windows.hpp" />
-		<Unit filename="../../src/lua/lapi.h" />
-		<Unit filename="../../src/lua/lauxlib.h" />
-		<Unit filename="../../src/lua/lcode.h" />
-		<Unit filename="../../src/lua/ldebug.h" />
-		<Unit filename="../../src/lua/ldo.h" />
-		<Unit filename="../../src/lua/lfunc.h" />
-		<Unit filename="../../src/lua/lgc.h" />
-		<Unit filename="../../src/lua/llex.h" />
-		<Unit filename="../../src/lua/llimits.h" />
-		<Unit filename="../../src/lua/lmem.h" />
-		<Unit filename="../../src/lua/lobject.h" />
-		<Unit filename="../../src/lua/lopcodes.h" />
-		<Unit filename="../../src/lua/lparser.h" />
-		<Unit filename="../../src/lua/lstate.h" />
-		<Unit filename="../../src/lua/lstring.h" />
-		<Unit filename="../../src/lua/ltable.h" />
-		<Unit filename="../../src/lua/ltm.h" />
-		<Unit filename="../../src/lua/lua.h" />
-		<Unit filename="../../src/lua/luaconf.h" />
-		<Unit filename="../../src/lua/lualib.h" />
-		<Unit filename="../../src/lua/lundump.h" />
-		<Unit filename="../../src/lua/lvm.h" />
-		<Unit filename="../../src/lua/lzio.h" />
 		<Unit filename="../../src/lua_jailbreak_exception.cpp" />
 		<Unit filename="../../src/lua_jailbreak_exception.hpp" />
+		<Unit filename="../../src/macosx/SDLMain.h" />
 		<Unit filename="../../src/map/exception.hpp" />
-		<Unit filename="../../src/map/hex_rect.hpp" />
 		<Unit filename="../../src/map/label.cpp" />
 		<Unit filename="../../src/map/label.hpp" />
 		<Unit filename="../../src/map/location.cpp" />
@@ -1043,8 +1025,10 @@
 		<Unit filename="../../src/scripting/lua_map_location_ops.hpp" />
 		<Unit filename="../../src/scripting/lua_mathx.cpp" />
 		<Unit filename="../../src/scripting/lua_mathx.hpp" />
+		<Unit filename="../../src/scripting/lua_pathfind_cost_calculator.hpp" />
 		<Unit filename="../../src/scripting/lua_preferences.cpp" />
 		<Unit filename="../../src/scripting/lua_preferences.hpp" />
+		<Unit filename="../../src/scripting/lua_ptr.hpp" />
 		<Unit filename="../../src/scripting/lua_race.cpp" />
 		<Unit filename="../../src/scripting/lua_race.hpp" />
 		<Unit filename="../../src/scripting/lua_rng.cpp" />
@@ -1120,10 +1104,16 @@
 		<Unit filename="../../src/serialization/string_view.hpp" />
 		<Unit filename="../../src/serialization/tokenizer.cpp" />
 		<Unit filename="../../src/serialization/tokenizer.hpp" />
+		<Unit filename="../../src/serialization/ucs4_convert_impl.hpp" />
+		<Unit filename="../../src/serialization/ucs4_iterator_base.hpp" />
 		<Unit filename="../../src/serialization/unicode.cpp" />
 		<Unit filename="../../src/serialization/unicode.hpp" />
+		<Unit filename="../../src/serialization/unicode_cast.hpp" />
+		<Unit filename="../../src/serialization/utf8_exception.hpp" />
 		<Unit filename="../../src/serialization/validator.cpp" />
 		<Unit filename="../../src/serialization/validator.hpp" />
+		<Unit filename="../../src/server/common/simple_wml.cpp" />
+		<Unit filename="../../src/server/common/simple_wml.hpp" />
 		<Unit filename="../../src/show_dialog.cpp" />
 		<Unit filename="../../src/show_dialog.hpp" />
 		<Unit filename="../../src/side_controller.hpp" />
@@ -1144,6 +1134,7 @@
 		<Unit filename="../../src/spirit_po/po_grammar.hpp" />
 		<Unit filename="../../src/spirit_po/po_message.hpp" />
 		<Unit filename="../../src/spirit_po/po_message_adapted.hpp" />
+		<Unit filename="../../src/spirit_po/spirit_po.hpp" />
 		<Unit filename="../../src/spirit_po/version.hpp" />
 		<Unit filename="../../src/statistics.cpp" />
 		<Unit filename="../../src/statistics.hpp" />
@@ -1165,13 +1156,14 @@
 		<Unit filename="../../src/syncmp_handler.hpp" />
 		<Unit filename="../../src/team.cpp" />
 		<Unit filename="../../src/team.hpp" />
+		<Unit filename="../../src/team_shared_vision.hpp" />
 		<Unit filename="../../src/teambuilder.cpp" />
 		<Unit filename="../../src/teambuilder.hpp" />
-		<Unit filename="../../src/team_shared_vision.hpp" />
 		<Unit filename="../../src/terrain/builder.cpp" />
 		<Unit filename="../../src/terrain/builder.hpp" />
 		<Unit filename="../../src/terrain/filter.cpp" />
 		<Unit filename="../../src/terrain/filter.hpp" />
+		<Unit filename="../../src/terrain/movement.hpp" />
 		<Unit filename="../../src/terrain/terrain.cpp" />
 		<Unit filename="../../src/terrain/terrain.hpp" />
 		<Unit filename="../../src/terrain/translation.cpp" />
@@ -1257,6 +1249,7 @@
 		<Unit filename="../../src/units/race.cpp" />
 		<Unit filename="../../src/units/race.hpp" />
 		<Unit filename="../../src/units/strike_result.hpp" />
+		<Unit filename="../../src/units/type_error.hpp" />
 		<Unit filename="../../src/units/types.cpp" />
 		<Unit filename="../../src/units/types.hpp" />
 		<Unit filename="../../src/units/udisplay.cpp" />
@@ -1264,10 +1257,13 @@
 		<Unit filename="../../src/units/unit.cpp" />
 		<Unit filename="../../src/units/unit.hpp" />
 		<Unit filename="../../src/units/unit_alignments.hpp" />
+		<Unit filename="../../src/utils/any.hpp" />
 		<Unit filename="../../src/utils/const_clone.hpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.cpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />
+		<Unit filename="../../src/utils/general.cpp" />
 		<Unit filename="../../src/utils/general.hpp" />
+		<Unit filename="../../src/utils/guard_value.hpp" />
 		<Unit filename="../../src/utils/irdya_datetime.cpp" />
 		<Unit filename="../../src/utils/irdya_datetime.hpp" />
 		<Unit filename="../../src/utils/iterable_pair.hpp" />
@@ -1277,12 +1273,15 @@
 		<Unit filename="../../src/utils/name_generator.hpp" />
 		<Unit filename="../../src/utils/name_generator_factory.cpp" />
 		<Unit filename="../../src/utils/name_generator_factory.hpp" />
+		<Unit filename="../../src/utils/optimer.hpp" />
+		<Unit filename="../../src/utils/optional_reference.hpp" />
 		<Unit filename="../../src/utils/parse_network_address.cpp" />
 		<Unit filename="../../src/utils/parse_network_address.hpp" />
+		<Unit filename="../../src/utils/ranges.hpp" />
 		<Unit filename="../../src/utils/reference_counter.hpp" />
-		<Unit filename="../../src/utils/scope_list.hpp" />
-		<Unit filename="../../src/utils/smart_list.hpp" />
-		<Unit filename="../../src/utils/type_trait_aliases.hpp" />
+		<Unit filename="../../src/utils/scope_exit.hpp" />
+		<Unit filename="../../src/utils/shared_reference.hpp" />
+		<Unit filename="../../src/utils/variant.hpp" />
 		<Unit filename="../../src/utils/wesnoth_epoch.hpp" />
 		<Unit filename="../../src/variable.cpp" />
 		<Unit filename="../../src/variable.hpp" />
@@ -1338,6 +1337,7 @@
 		<Unit filename="../../src/wml_exception.cpp" />
 		<Unit filename="../../src/wml_exception.hpp" />
 		<Unit filename="../../src/wml_separators.hpp" />
+		<Unit filename="../../src/xBRZ/config.hpp" />
 		<Unit filename="../../src/xBRZ/xbrz.cpp" />
 		<Unit filename="../../src/xBRZ/xbrz.hpp" />
 		<Extensions>

@@ -38,6 +38,9 @@ struct point;
 
 namespace font {
 
+/** Flush the rendered text cache. */
+void flush_texture_cache();
+
 // add background color and also font markup.
 
 /**

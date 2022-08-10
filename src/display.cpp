@@ -3084,6 +3084,13 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 				eol = true;
 				t = t.substr(0, t.size() - 1);
 			}
+			// If stripping left the text empty, skip it.
+			if (t.empty()) {
+				// Blank text has a null size when rendered.
+				// It does not, however, have a null size when the size
+				// is requested with get_size(). Hence this check.
+				continue;
+			}
 			text.set_link_aware(false)
 				.set_text(t, true);
 			text.set_family_class(font::FONT_SANS_SERIF)
@@ -3109,6 +3116,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 				//NOTE this space should be longer than minimal_text pixels
 				t = t + "    ";
 				text.set_text(t, true);
+				tsize = text.get_size();
 				// use the area of this element for next tooltips
 				used_ellipsis = true;
 				ellipsis_area.x = x;

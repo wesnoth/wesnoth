@@ -55,7 +55,8 @@ static const unsigned int LAYER_TEXT = 2;
 REGISTER_DIALOG(story_viewer)
 
 story_viewer::story_viewer(const std::string& scenario_name, const config& cfg_parsed)
-	: controller_(vconfig(cfg_parsed, true), scenario_name)
+	: modal_dialog(window_id())
+	, controller_(vconfig(cfg_parsed, true), scenario_name)
 	, part_index_(0)
 	, current_part_(nullptr)
 	, timer_id_(0)
@@ -459,8 +460,10 @@ void story_viewer::halt_fade_draw()
 	fade_state_ = NOT_FADING;
 }
 
-void story_viewer::layout()
+void story_viewer::update()
 {
+	modal_dialog::update();
+
 	if(next_draw_ && SDL_GetTicks() < next_draw_) {
 		return;
 	}

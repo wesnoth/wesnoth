@@ -42,7 +42,8 @@ namespace gui2::dialogs
 class formula_debugger : public modal_dialog
 {
 public:
-	explicit formula_debugger(wfl::formula_debugger& fdb) : fdb_(fdb)
+	explicit formula_debugger(wfl::formula_debugger& fdb)
+		: modal_dialog(window_id()) , fdb_(fdb)
 	{
 	}
 

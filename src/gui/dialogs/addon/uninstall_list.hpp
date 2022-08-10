@@ -44,7 +44,8 @@ public:
 	 */
 	explicit addon_uninstall_list(
 			const std::map<std::string, std::string>& addon_titles_map)
-		: titles_map_(addon_titles_map), ids_(), selections_()
+		: modal_dialog(window_id())
+		, titles_map_(addon_titles_map), ids_(), selections_()
 	{
 	}
 

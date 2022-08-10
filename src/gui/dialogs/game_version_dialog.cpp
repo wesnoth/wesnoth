@@ -53,7 +53,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(game_version)
 
 game_version::game_version()
-	: path_wid_stem_("path_")
+	: modal_dialog(window_id())
+	, path_wid_stem_("path_")
 	, copy_wid_stem_("copy_")
 	, browse_wid_stem_("browse_")
 	, path_map_()
