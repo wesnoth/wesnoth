@@ -13,6 +13,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Add the pre_attack event.
  ### Miscellaneous and Bug Fixes
    * Implemented logging to file for Linux and macOS, and enabled it be default for Steam Linux.
    * Fixed drake flare leadership animation over water (issue #3996)
