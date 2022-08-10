@@ -8,8 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2022-02-20 13:43+0300\n"
-"PO-Revision-Date: 2022-01-05 23:08+0100\n"
+"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"PO-Revision-Date: 2022-08-07 18:54+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2172,40 +2172,42 @@ msgstr ""
 #: doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
 msgstr ""
+"Abilita l'utilizzo di TLS. Se impostato a vero, è necessario  impostare "
+"anche le seguenti 3 opzioni"
 
 #. type: TP
 #: doc/man/wesnothd.6:170
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr "Catena completa di certificati TLS in formato .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr "Chiave privata per TLS in formato .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -2213,6 +2215,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+"parametri DH TLS, cone file .pem. Generati con B<openssl dhparam -out "
+"nomefile.pem 4096>"
 
 # type: TP
 #. type: TP
@@ -2250,10 +2254,6 @@ msgstr "Tag globali:"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:193
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
@@ -2368,14 +2368,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:238
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
-#| "section is present in the configuration the server will run without any "
-#| "nick registration service. All additional tables that are needed for the "
-#| "B<forum_user_handler> to function can be found in table_definitions.sql "
-#| "in the Wesnoth source repository. Requires mysql support enabled. For "
-#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "

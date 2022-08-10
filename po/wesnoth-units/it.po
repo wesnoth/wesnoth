@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-20 00:21 UTC\n"
-"PO-Revision-Date: 2022-01-21 13:08+0100\n"
+"PO-Revision-Date: 2022-08-07 12:32+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -4506,15 +4506,11 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Javelineer.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Compared to other loyalists, Halberdiers have a higher resistance to "
-#| "‘pierce’ attacks."
 msgid ""
 "Compared to other loyalists, Javelineers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
-"Rispetto agli altri lealisti, gli Alabardieri hanno una resistenza maggiore "
+"Rispetto agli altri lealisti, i Giavellottieri hanno una resistenza maggiore "
 "agli attacchi di tipo ‘perforazione’."
 
 #. [unit_type]: id=Lieutenant, race=human
@@ -5080,10 +5076,6 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Mage_Silver.cfg:25
-#, fuzzy
-#| msgid ""
-#| "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and "
-#| "are highly resistant to non-physical damage."
 msgid ""
 "SPECIAL_NOTE^Silver Magi are well-attuned to their magical natures and are "
 "highly resistant to non-physical damage."
@@ -6057,7 +6049,7 @@ msgstr ""
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:8
 msgid "Caribe"
-msgstr ""
+msgstr "Piranha"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
@@ -6069,11 +6061,19 @@ msgid ""
 "use to extricate themselves from situations dire to most other fish. These "
 "fish are unusually clever and should not be underestimated."
 msgstr ""
+"I piranha giganti possono essere occasionalmente incrociati nei fiumi "
+"interni vicino a Weldyn, ma le storie dei loro feroci attacchi di sono "
+"diffuse in lungo e in largo. I loro occhi furiosi, iniettati sangue, sono "
+"incastonati un muso corazzato. Sebbene siano i loro denti ad essere una "
+"pericolosa arma, possiedono anche piccole braccia ed artigli ossuti, che "
+"posso utilizzare per districarsi da situazioni pericolose per la maggior "
+"parte degli altri pesci. Questi pesci sono insolitamente scaltri e non vanno "
+"sottovalutati."
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:8
 msgid "Hunter Caribe"
-msgstr ""
+msgstr "Piranha Cacciatore"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
@@ -6081,11 +6081,13 @@ msgid ""
 "As they age, the giant caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
+"Invecchiando, i piranha giganti diventano sempre più grossi e pericolosi. "
+"Imparano anche ad utilizzare le alghe per intrappolare prede o nemici."
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:8
 msgid "Nibbler"
-msgstr ""
+msgstr "Mordente"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:41
@@ -6093,6 +6095,9 @@ msgid ""
 "Nibblers are juvenile predator fish, often more curious than dangerous. A "
 "single individual may not be a threat, but these fish seldom travel alone."
 msgstr ""
+"I mordenti sono dei giovani pesci predatori, spesso più curiosi che "
+"pericolosi. Un singolo individuo può non essere considerato una minaccia, ma "
+"questi pesci raramente viaggiano solitari."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -8519,10 +8524,8 @@ msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Goblin Knight"
 msgid "Bone Knight"
-msgstr "Cavaliere Goblin"
+msgstr "Cavaliere d’ossa"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:27
@@ -8531,11 +8534,14 @@ msgid ""
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Conosciuti un tempo come grandi guerrieri delle pianure, questi cavalieri in "
+"sella alle loro scheletriche cavalcature sono stati evocati dalle loro tombe "
+"da una empio rituale magico, al solo scopo di spargere terrore e distruzione."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Skele_Bone_Knight.cfg:41
 msgid "trample"
-msgstr ""
+msgstr "calpestamento"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -8598,7 +8604,7 @@ msgstr ""
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:5
 msgid "Death Squire"
-msgstr ""
+msgstr "Scudiero della Morte"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
@@ -8609,6 +8615,11 @@ msgid ""
 "pick up a good deal of the Knight’s power, including the ability to command "
 "underlings."
 msgstr ""
+"A volte i guerrieri e i generali più potenti, dannati dall’odio e dalla "
+"vendetta, tornano in questo mondo come Cavalieri della Morte. Gli Scudieri "
+"della Morte li servono mentre accumulano abbastanza energia sacrilega per "
+"diventare Cavalieri della Morte. Nel frattempo hanno accesso a buona parte "
+"del potere del Cavaliere, compresa l’abilità di comandare gli inferiori."
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -8715,10 +8726,8 @@ msgstr ""
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:5
-#, fuzzy
-#| msgid "Skeleton Archer"
 msgid "Skeleton Rider"
-msgstr "Scheletro Arciere"
+msgstr "Scheletro Cavaliere"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:33
@@ -8727,6 +8736,10 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"Conosciuti un tempo come grandi guerrieri che fendevano rombanti le pianure, "
+"questi cavallerizzi in sella alle loro scheletriche cavalcature sono stati "
+"evocati dalle loro tombe da una empio rituale magico, al solo scopo di "
+"spargere terrore e distruzione."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4

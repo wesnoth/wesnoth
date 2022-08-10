@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-20 00:21 UTC\n"
-"PO-Revision-Date: 2022-01-05 22:48+0100\n"
+"PO-Revision-Date: 2022-08-08 19:32+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -113,14 +113,12 @@ msgstr "L’Alleanza"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Alliance.cfg:16
 msgid "Young Ogre, Undead and Northerners"
-msgstr ""
+msgstr "Giovane Ogre, Non-morti e Gente del Nord"
 
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "L’Alleanza"
+msgstr "Gli artigiani"
 
 #. [multiplayer_side]: id=The Cult, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
@@ -130,14 +128,12 @@ msgstr "Il Culto"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:16
 msgid "Young Ogre, Drakes and Northerners"
-msgstr ""
+msgstr "Giovane Ogre, Draghi e Gente del Nord"
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "L’Alleanza"
+msgstr "La Sfida"
 
 #. [multiplayer_side]: id=The Empire, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
@@ -152,7 +148,7 @@ msgstr "La Banda"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Gang.cfg:16
 msgid "Dune Herbalist, Loyalists and Knalgan Alliance"
-msgstr ""
+msgstr "Erborista delle Dune, Lealisti e Alleanza di Knalga"
 
 #. [multiplayer_side]: id=The Guild, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:6
@@ -162,7 +158,7 @@ msgstr "La Gilda"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:16
 msgid "Dune Soldier, Loyalists and Drakes"
-msgstr ""
+msgstr "Soldato delle Dune, Lealisti e Draghi"
 
 #. [multiplayer_side]: id=The Hand, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:6
@@ -172,7 +168,7 @@ msgstr "La Mano"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
 msgid "Dune Rider, Knalgan Alliance and Drakes"
-msgstr ""
+msgstr "Razziatore delle Dune, Alleanza di Knalga e Draghi"
 
 #. [multiplayer_side]: id=The Horde, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:6
@@ -182,14 +178,12 @@ msgstr "L’Orda"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Rebels"
-msgstr ""
+msgstr "Razziatore delle Dune, Alleanza di Knalga e Ribelli"
 
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "L’Orda"
+msgstr "I Predoni"
 
 #. [multiplayer_side]: id=The Militia, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
@@ -199,7 +193,7 @@ msgstr "La Milizia"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:16
 msgid "Dune Rover, Undead and Loyalists"
-msgstr ""
+msgstr "Vagabondo delle Dune, Non-morti e Lealisti"
 
 #. [multiplayer_side]: id=The Scourge, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Scourge.cfg:7
@@ -2472,16 +2466,6 @@ msgstr "Fazioni"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-#, fuzzy
-#| msgid ""
-#| "The World Conquest II era consists of factions that are built from pairs "
-#| "of mainline factions. One faction will have a healer available (Drakes, "
-#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
-#| "recruit list is also organized in pairs so that sometimes you will have "
-#| "to recruit a different unit before you can recruit the units that you "
-#| "want. The available heroes, deserters, and random leaders also depend on "
-#| "your factions; the items you can get do not depend on the faction you "
-#| "choose."
 msgid ""
 "The World Conquest era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, "
@@ -2491,14 +2475,14 @@ msgid ""
 "The available heroes, deserters, and random leaders also depend on your "
 "factions; the items you can get do not depend on the faction you choose."
 msgstr ""
-"L’era Conquista Mondiale II consiste di fazioni che sono costruite a partire "
-"da coppie di fazioni della storia principale. Una fazione avrà a "
-"disposizione un curatore (Draghi, Ribelli e Lealisti) e una no (Orchi, Nani "
-"e Non-Morti). La lista di reclutamento è anch’essa organizzata in coppie in "
-"mono che talvolta avrai bisogno di reclutare una unità diversa prima di "
-"poter reclutare quella che vorresti. Gli eroi disponibili, i disertori e i "
-"condottieri casuali dipendono anch’essi dalle tue fazioni; gli oggetti che "
-"puoi ottenere invece non dipendono dalla scelta della fazione."
+"L’era Conquista Mondiale consiste di fazioni che sono costruite a partire da "
+"coppie di fazioni della storia principale. Una fazione avrà a disposizione "
+"un curatore (Draghi, Popolo delle Dune, Ribelli e Lealisti) e una no (Orchi, "
+"Nani e Non-Morti). La lista di reclutamento è anch’essa organizzata in "
+"coppie in modo che talvolta avrai bisogno di reclutare una unità diversa "
+"prima di poter reclutare quella che vorresti. Gli eroi disponibili, i "
+"disertori e i condottieri casuali dipendono anch’essi dalle tue fazioni; gli "
+"oggetti che puoi ottenere invece non dipendono dalla scelta della fazione."
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
@@ -2838,7 +2822,7 @@ msgstr "Armatura adamantina"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
 msgid "blade/impact/pierce: up to 10% resistances, steadfast"
-msgstr ""
+msgstr "taglio/impatto/perforazione: incremento resistenze max 10%, fermezza"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:10
@@ -2858,7 +2842,7 @@ msgstr "Anello dell’assassino"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:30
 msgid "melee: backstab"
-msgstr ""
+msgstr "mischia: attacco alle spalle"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:31
@@ -2902,7 +2886,7 @@ msgstr "Bezoar"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
 msgid "fearless, undead, healthy, tenacity"
-msgstr ""
+msgstr "impavido, non-morto, sano, tenacia"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:83
@@ -2922,7 +2906,7 @@ msgstr "Anello di sangue"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:98
 msgid "melee: drains"
-msgstr ""
+msgstr "mischia: assorbe"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:99
@@ -2940,10 +2924,8 @@ msgstr "Punta spietata"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: charge"
-msgstr "mischia: carica opzionale"
+msgstr "mischia: carica"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
@@ -2964,7 +2946,7 @@ msgstr "Simbolo di vita maledetto"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:136
 msgid "ranged: drains"
-msgstr ""
+msgstr "a distanza: assorbe"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:137
@@ -2981,10 +2963,8 @@ msgstr "Arco lungo Occhio dell’aquila"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
-msgstr "$range|: arcano e +25% danno"
+msgstr "a distanza: colpo preciso e +25% danno"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
@@ -3002,10 +2982,8 @@ msgstr "Grimorio proibito"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: plague"
-msgstr "mischia: carica opzionale"
+msgstr "mischia: contagio"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
@@ -3055,7 +3033,7 @@ msgstr "Midollo di Orrore"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:228
 msgid "feeding, +3 HP"
-msgstr ""
+msgstr "nutrimento, +3 PF"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:229
@@ -3076,7 +3054,7 @@ msgstr "Cuore di fiamma"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:252
 msgid "melee: fire and +25% damage, +30 resistance vs fire"
-msgstr ""
+msgstr "mischia: fuoco e +25% danno, +30 resistenza al fuoco"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:253
@@ -3096,7 +3074,7 @@ msgstr "Armatura araldica"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:272
 msgid "illuminates, lawful, heals +4, firststrike"
-msgstr ""
+msgstr "illumina, allineamento legale, cura +4, attacco improvviso"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:273
@@ -3117,7 +3095,7 @@ msgstr "Acqua santa"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:310
 msgid "melee: arcane and +25% damage, +30 resistance vs arcane"
-msgstr ""
+msgstr "mischia: arcano e +25% danno, +30 resistenza ad arcano"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:311
@@ -3137,7 +3115,7 @@ msgstr "Arco di ghiaccio"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:331
 msgid "19-1 ranged-cold slows"
-msgstr ""
+msgstr "19-1 a distanza , rallentamento da freddo"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
@@ -3162,7 +3140,7 @@ msgstr "Erbe medicinali"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:377
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
 msgid "heals +8, cures"
-msgstr ""
+msgstr "cura +8, cure"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
@@ -3181,12 +3159,12 @@ msgstr "Spezia"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
-#, fuzzy
-#| msgid "no undead^consumed by a living being:"
 msgid ""
 "no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
 "advance"
-msgstr "consumato da un essere vivente:"
+msgstr ""
+"consumato da un essere vivente: +1 danno, +1 movimento e -20% PE per "
+"avanzare di livello"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
@@ -3205,7 +3183,7 @@ msgstr "Unguento velenoso"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:428
 msgid "blade/pierce: poison and +20% damage"
-msgstr ""
+msgstr "taglio/perforazione: veleno e +20% danno"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
@@ -3225,7 +3203,7 @@ msgstr "Anello del congelamento"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:448
 msgid "melee: cold and slows"
-msgstr ""
+msgstr "mischia: congela e rallenta"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
@@ -3246,7 +3224,7 @@ msgstr "Anello del potere"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:468
 msgid "arcane/cold/fire: disengage"
-msgstr ""
+msgstr "arcano/freddo/fuoco: disingaggio"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
@@ -3264,16 +3242,11 @@ msgstr "Radice di wose anziano"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
-msgstr "$range|: arcano e +25% danno"
+msgstr "impatto: +1 colpo e +2 danno"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
-#, fuzzy
-#| msgid ""
-#| " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr ""
@@ -3288,7 +3261,7 @@ msgstr "Spada runica"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:502
 msgid "melee: magical"
-msgstr ""
+msgstr "mischia: magico"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
@@ -3307,7 +3280,7 @@ msgstr "Bastone splendente"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:521
 msgid "11-3 ranged-arcane magical"
-msgstr ""
+msgstr "11-3 arcano magico a distanza"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
@@ -3329,7 +3302,7 @@ msgstr "Tempestosa"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:567
 msgid "melee: fury"
-msgstr ""
+msgstr "mischia: furia"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
@@ -3365,7 +3338,7 @@ msgstr "Arco della silfide"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:592
 msgid "ranged-blade/impact/pierce: +60% strikes and +1 damage"
-msgstr ""
+msgstr "a distanza-taglio/impatto/perforazione: +60% colpire e +1 danno"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
@@ -3386,7 +3359,7 @@ msgstr "Travestimento terrificante"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
 msgid "darkness, chaotic, corruption, distract"
-msgstr ""
+msgstr "oscurità, allineamento caotico, corruzione, distrazione"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
@@ -3449,10 +3422,8 @@ msgstr "Tomo dei segreti"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
-#, fuzzy
-#| msgid "XP to advance"
 msgid "-50% XP to advance"
-msgstr "PE per avanzare"
+msgstr "-50% PE per avanzare"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3467,7 +3438,7 @@ msgstr "Tridente delle tempeste"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:693
 msgid "17-2 ranged-fire magical"
-msgstr ""
+msgstr "17-2 fuoco magico a distanza"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
@@ -3565,7 +3536,7 @@ msgstr "Fiore dell’inverno"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
 msgid "+15 HP, up to 20% resistance vs cold"
-msgstr ""
+msgstr "+15 PF, incremento fino al 20% resistenza al freddo"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
@@ -3584,7 +3555,7 @@ msgstr "Mantello di Zefiro"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:818
 msgid "skirmisher, ambush, nightstalk, +2 moves"
-msgstr ""
+msgstr "incursore, imboscata, agguato notturno, +2 movimento"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
@@ -3650,7 +3621,7 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:102
 msgid "melee: +1 strikes"
-msgstr ""
+msgstr "mischia: +1 colpi"
 
 #. [trainer]: type=Elvish Ranger
 #: data/campaigns/World_Conquest/resources/data/training.cfg:120
@@ -3707,10 +3678,8 @@ msgstr ""
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:220
-#, fuzzy
-#| msgid "disengage"
 msgid "ranged: disengage"
-msgstr "disimpegno"
+msgstr "a distanza: disimpegno"
 
 #. [dummy]: id=wc2_disengage
 #: data/campaigns/World_Conquest/resources/data/training.cfg:234
@@ -3768,7 +3737,7 @@ msgstr "Le vulnerabilità di questa unità vengono dimezzate in difesa."
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:468
 msgid "heals +4, cures"
-msgstr ""
+msgstr "guarisce +4, cure"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:544
@@ -3850,67 +3819,45 @@ msgid "World Conquest 3p"
 msgstr "Conquista Mondiale 3g"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "Conquista Mondiale 1g"
+msgstr "Conquista Mondiale 4g"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-#, fuzzy
-#| msgid ""
-#| "A randomly generated campaign for 1 player. It has 6 level of "
-#| "difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Una campagna per un giocatore generata casualmente. Presenta 6 livelli di "
+"Una campagna per 1 giocatore generata casualmente. Presenta 6 livelli di "
 "difficoltà.\n"
 "(Livello per Esperti, 5 scenari.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Una campagna cooperativa per due giocatori generata casualmente. Presenta 6 "
+"Una campagna cooperativa per 2 giocatori generata casualmente. Presenta 6 "
 "livelli di difficoltà.\n"
 "(Livello per Esperti, 5 scenari.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 3 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Una campagna cooperativa per tre giocatori generata casualmente. Presenta 6 "
+"Una campagna cooperativa per 3 giocatori generata casualmente. Presenta 6 "
 "livelli di difficoltà.\n"
 "(Livello per Esperti, 5 scenari.)"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Una campagna cooperativa per due giocatori generata casualmente. Presenta 6 "
+"Una campagna cooperativa per 4 giocatori generata casualmente. Presenta 6 "
 "livelli di difficoltà.\n"
 "(Livello per Esperti, 5 scenari.)"
 
@@ -3922,157 +3869,84 @@ msgstr "CM"
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
 msgid "Beginner"
-msgstr ""
+msgstr "Principiante"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
 msgid "Peasant"
-msgstr ""
+msgstr "Contadino"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
 msgid "Easy"
-msgstr ""
+msgstr "Facile"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
 msgid "Sergeant"
-msgstr ""
+msgstr "Sergente"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
 msgid "Lieutenant"
-msgstr ""
+msgstr "Tenente"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
 msgid "Medium"
-msgstr ""
+msgstr "Medio"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
 msgid "General"
-msgstr ""
+msgstr "Generale"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
 msgid "Hard"
-msgstr ""
+msgstr "Difficile"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
 msgid "Challenging"
-msgstr ""
+msgstr "Sfidante"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
-#, fuzzy
-#| msgid "Granary"
 msgid "Grand Marshal"
-msgstr "Granaio"
+msgstr "Gran Maresciallo"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
-#, fuzzy
-#| msgid "expert"
 msgid "Expert"
-msgstr "esperto"
+msgstr "Esperto"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
 msgid "Nightmare"
-msgstr ""
+msgstr "Incubo"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
 msgid "Campaign Design"
-msgstr ""
+msgstr "Progetto della Campagna"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Prose, Grammatical and Text Assistance"
-msgstr ""
+msgstr "Prosa, assistenza sulla grammatica e sui testi"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
 msgid "Minor Code Contributors"
-msgstr ""
+msgstr "Contributi minori alla programmazione"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:146
 msgid "Playtesting"
-msgstr ""
+msgstr "Test del gioco"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
 msgid "Campaign Maintenance"
-msgstr ""
-
-#~ msgid "Preset Advancement"
-#~ msgstr "Avanzamenti predisposti"
-
-#~ msgid ""
-#~ "Currently I’m set to advance towards: $name \n"
-#~ "\n"
-#~ "What are your new orders?"
-#~ msgstr ""
-#~ "Attualmente è previsto che io avanzi come: $name\n"
-#~ "\n"
-#~ "Quali sono i tuoi nuovi ordini?"
-
-#~ msgid "Random"
-#~ msgstr "Casuale"
-
-#~ msgid " and "
-#~ msgstr " e "
-
-#~ msgid "damage"
-#~ msgstr "danno"
-
-#~ msgid " resistance vs "
-#~ msgstr " resistenza contro "
-
-#~ msgid "moves"
-#~ msgstr "mosse"
-
-#~ msgid "strike"
-#~ msgstr "colpo"
-
-#~ msgid "flight"
-#~ msgstr "volo"
-
-#~ msgid "swim"
-#~ msgstr "nuoto"
-
-#~ msgid "optional charge"
-#~ msgstr "carica opzionale"
-
-#~ msgid "full movement"
-#~ msgstr "movimento pieno"
-
-#~ msgid "terrain^water"
-#~ msgstr "acqua"
-
-#~ msgid "improved defenses"
-#~ msgstr "difese migliorate"
-
-#~ msgid "up to"
-#~ msgstr "fino a"
-
-#~ msgid "per level"
-#~ msgstr "per livello"
-
-#~ msgid "Feedback"
-#~ msgstr "Suggerimenti"
-
-#~ msgid ""
-#~ "For feedback please either post in the World Conquest II thread in the "
-#~ "official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an "
-#~ "issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/"
-#~ "issues&gt;."
-#~ msgstr ""
-#~ "Se hai dei suggerimenti/osservazioni da riportare, puoi postare nel "
-#~ "canale dedicato a Conquista Mondiale II (World Conquest II) nel forum "
-#~ "ufficiale di Wesnoth &lt;https://r.wesnoth.org/t39651&gt; o anche "
-#~ "aggiungere una nuova richiesta su GitHub &lt;https://github.com/gfgtdf/"
-#~ "World_Conquest_II/issues&gt;."
+msgstr "Manutenzione della Campagna"

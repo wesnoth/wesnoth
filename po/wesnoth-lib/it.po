@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-01-21 13:03+0100\n"
+"PO-Revision-Date: 2022-08-03 23:58+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -161,10 +161,8 @@ msgstr "Palude"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Foresta di palme"
+msgstr "Foresta di alghe"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -265,10 +263,8 @@ msgstr "Ciottoli grigi puliti"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
-#, fuzzy
-#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "Sabbia di spiaggia"
+msgstr "Sabbia rocciosa"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -440,14 +436,12 @@ msgstr "Steccato metallico"
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:534
 msgid "Palisade"
-msgstr ""
+msgstr "Palizzata"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Ponte di legno"
+msgstr "Palizzata di legno"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -467,7 +461,7 @@ msgstr "Gigli d’acqua in fiore"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:573
 msgid "Seashells"
-msgstr ""
+msgstr "Conchiglie"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:584
@@ -1276,10 +1270,8 @@ msgstr "Villaggio dei draghi"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:1936
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Villaggio dei draghi"
+msgstr "Villaggio dei draghi innevato"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:1951
@@ -1766,10 +1758,8 @@ msgstr "Ponte semplice in pietra"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2815 data/core/terrain.cfg:2827
 #: data/core/terrain.cfg:2840
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Ponte semplice in pietra"
+msgstr "Ponte in pietra innevato"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -2027,21 +2017,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3200
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but also severely impede any passage through them. Units burdened "
-#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
-#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
-#| "piscine bodies which also render them unable to climb steep inclines. "
-#| "Nagas are an exception due to their strong arms and rugged scales. Both "
-#| "dwarves and trolls are native to mountainous terrain, and have an easy "
-#| "time traversing them.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2057,16 +2032,17 @@ msgid ""
 "Most units receive about 60% defense in mountains, whereas dwarves enjoy 70%."
 msgstr ""
 "Le <italic>text='Montagne'</italic> sono così scoscese che le unità spesso "
-"devono arrampicarsi sopra gli ostacoli per proseguire.\n"
+"devono scavalcare degli ostacoli per proseguire.\n"
 "Per loro conformazione, questi terreni forniscono dei considerevoli bonus "
 "difensivi alla maggior parte delle truppe, ma contemporaneamente "
-"rappresentano un terreno difficile da attraversare. Le unità appesantite da "
-"armature pesanti, come la cavalleria di Wesnoth e le truppe di fanteria "
-"pesante non possono neanche entrare in questi territori. Le razze acquatiche "
-"e le creature che hanno un corpo pesciforme come i nereidi sono incapaci di "
-"arrampicarsi su pendii troppo scoscesi, ad eccezione dei Naga, dotati di "
-"forti braccia e dure scaglie. Sia i nani che i troll sono a proprio agio sul "
-"natio terreno montuoso,e si muovono velocemente in questo tipo di terreno.\n"
+"rappresentano un terreno difficile da attraversare. Le unità bardate di "
+"pesanti armature, come ad esempio la cavalleria di Wesnoth e le linee di "
+"fanteria pesante, non possono neanche attraversarle. Le razze acquatiche e "
+"le creature affini ai nereidi che hanno un corpo a forma di pesce sono "
+"parimenti incapaci di scalare dirupi scoscesi. Fanno eccezione i naga, "
+"dotati di robuste braccia e scaglie ruvide. Sia i nani che i troll sono a "
+"proprio agio sul natio terreno montuoso,e si muovono velocemente in questo "
+"tipo di terreno.\n"
 "\n"
 "La maggior parte delle unità ottiene un bonus difensivo del 60%, mentre i "
 "nani ottengono un bonus del 70%."
@@ -4355,7 +4331,7 @@ msgstr "Permetti accoppiamenti a specchio quando vengono scelte fazioni a caso"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:177
 msgid "Independent"
-msgstr ""
+msgstr "Indipendente"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:178
@@ -4365,7 +4341,7 @@ msgstr "Indipendente: fazioni casuali assegnate in modo indipendente"
 #. [option]
 #: data/gui/window/mp_create_game.cfg:182
 msgid "No Mirror"
-msgstr ""
+msgstr "Nessuno Specchio"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:183
@@ -4376,7 +4352,7 @@ msgstr ""
 #. [option]
 #: data/gui/window/mp_create_game.cfg:187
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Nessun Alleato Specchio"
 
 #. [option]
 #: data/gui/window/mp_create_game.cfg:188
@@ -4633,8 +4609,6 @@ msgstr "Reclutamenti"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Leader"
 msgid "Choose Your Leader"
 msgstr "Scegli il tuo Condottiero"
 
@@ -4669,7 +4643,7 @@ msgstr "<b>Fazione:</b>"
 #. [label]
 #: data/gui/window/mp_join_game.cfg:187 data/gui/window/mp_staging.cfg:190
 msgid "<b>Gender:</b>"
-msgstr "<b>Genere:</b>"
+msgstr "<b>Sesso:</b>"
 
 #. [button]: id=cancel
 #: data/gui/window/mp_join_game.cfg:359
@@ -5016,7 +4990,7 @@ msgstr "Disponibile nell’editor"
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:793
 msgid "mainmenu_hotkeys^M"
-msgstr "M"
+msgstr "G"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -5041,7 +5015,7 @@ msgstr "Risoluzione:"
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:46
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Moltiplicatore scalatura Pixel:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:80
@@ -5054,6 +5028,8 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Imposta il moltiplicatore globale della scalatura dei pixel. Un "
+"moltiplicatore pari a 2 farà in modo che tutto sembrerà grande il doppio."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/window/preferences/03_display.cfg:109
@@ -5068,12 +5044,14 @@ msgstr "Passa da schermo intero a finestra"
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:121
 msgid "Automatic pixel scale multiplier"
-msgstr ""
+msgstr "Moltiplicatore scalatura pixel automatico"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:122
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Sceglie il moltiplicatore per la scalatura dei pixel in maniera automatica, "
+"basandosi sulla attuale risoluzione"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:144
@@ -5162,7 +5140,7 @@ msgstr "Imposta la frequenza delle animazioni delle unità inattive"
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:350
 msgid "VSync"
-msgstr ""
+msgstr "VSync"
 
 #. [toggle_button]: id=vsync
 #: data/gui/window/preferences/03_display.cfg:351
@@ -5170,6 +5148,9 @@ msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"Riduce l’effetto \"tearing\" sincronizzando il processo di generazione della "
+"grafica con la frequenza di aggiornamento dello schermo. Richiede un riavvio "
+"per avere effetto"
 
 #. [toggle_button]: id=fps_limiter
 #: data/gui/window/preferences/03_display.cfg:364
@@ -5976,67 +5957,46 @@ msgstr "scaduto"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
-#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num anno"
-msgstr[1] "$num anno"
+msgstr[1] "$num anni"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
-#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num mese"
-msgstr[1] "$num mese"
+msgstr[1] "$num mesi"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
-#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num settimana"
-msgstr[1] "$num settimana"
+msgstr[1] "$num settimane"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
-#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num giorno"
-msgstr[1] "$num giorno"
+msgstr[1] "$num giorni"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
-#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num ora"
-msgstr[1] "$num ora"
+msgstr[1] "$num ore"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
-#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num minuto"
-msgstr[1] "$num minuto"
+msgstr[1] "$num minuti"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
-#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num secondo"
-msgstr[1] "$num secondo"
+msgstr[1] "$num secondi"
 
 #: src/gui/core/canvas.cpp:272
 msgid "Image doesn't fit on canvas."
@@ -6393,17 +6353,13 @@ msgstr "Vuoi davvero disinstallare '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:962
-#, fuzzy
-#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%Y-%m-%d %I:%M %p"
+msgstr "%d %B %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:964
-#, fuzzy
-#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr "%Y-%m-%d %H:%M"
+msgstr "%d %B %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid "url^None"
@@ -6601,7 +6557,7 @@ msgstr "Wesnoth $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$active attive, $reserve di riserva"
 
 #: src/gui/dialogs/game_load.cpp:283
 msgid "The selected file is corrupt: "
@@ -6656,10 +6612,8 @@ msgid "controller^Idle"
 msgstr "Inattivo"
 
 #: src/gui/dialogs/game_stats.cpp:70
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Nessuno"
+msgstr "Riservato"
 
 #: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:77
 msgid "Unknown"
@@ -7051,8 +7005,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"La scorciatoia \"<b>$hotkey_sequence|</b>\" è attualmente utilizzata da \"<b>"
-"$old_hotkey_action|</b>\". \n"
+"La scorciatoia \"<b>$hotkey_sequence|</b>\" è attualmente utilizzata da "
+"\"<b>$old_hotkey_action|</b>\". \n"
 "Vuoi cambiare ed assegnarla a \"<b>$new_hotkey_action|</b>\"?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:873
@@ -7143,10 +7097,8 @@ msgid "Screenshot"
 msgstr "Schermata"
 
 #: src/gui/dialogs/title_screen.cpp:432 src/hotkey/hotkey_command.cpp:297
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Scegli lo scenario di partenza"
+msgstr "Scegli lo scenario di pprova"
 
 #: src/gui/dialogs/unit_create.cpp:197
 msgid "unit_variation^Default Variation"
@@ -7904,7 +7856,7 @@ msgstr "Può reclutare"
 
 #: src/hotkey/hotkey_command.cpp:207
 msgid "Toggle the recruit attribute of a unit."
-msgstr "Attiva/Disattiva reclutabilità di una unità."
+msgstr "Attiva/Disattiva recrutabilità di una unità."
 
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Can be Renamed"
@@ -8286,32 +8238,12 @@ msgstr ""
 "La chiave «$deprecated_key» è stata rinominata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
 
-#~ msgid "Area to draw has negative size"
-#~ msgstr "L'area da disegnare ha un'estensione negativa"
-
-#~ msgid "Area to draw is larger than widget size"
-#~ msgstr "L'area da disegnare è più grande della dimensione del widget"
-
-#~ msgid "Choose Test"
-#~ msgstr "Scegli il test"
-
-#~ msgid "Start Test Scenario"
-#~ msgstr "Avvia scenario di prova"
-
 #~ msgid ""
 #~ "A terrain with a string with more than 4 characters has been found, the "
 #~ "affected terrain is:"
 #~ msgstr ""
 #~ "Un terreno con una stringa di più di 4 caratteri è stato trovato, il "
 #~ "terreno incriminato è:"
-
-#, fuzzy
-#~| msgid "Desert Castle"
-#~ msgid "Desert Cobbles"
-#~ msgstr "Castello nel deserto"
-
-#~ msgid "Gold Left:"
-#~ msgstr "Oro rimanente:"
 
 #~ msgid "Active Troops:"
 #~ msgstr "Truppe attive:"
@@ -8322,88 +8254,93 @@ msgstr ""
 #~ msgid "By:"
 #~ msgstr "Da:"
 
+#~ msgid "Area to draw has negative size"
+#~ msgstr "L’area da disegnare ha un'estensione negativa"
+
 #, fuzzy
-#~| msgid "Leader"
+#~ msgid "Area to draw is larger than widget size"
+#~ msgstr "L’area da disegnare ha un'estensione negativa"
+
+#, fuzzy
+#~ msgid "Choose Test"
+#~ msgstr "Scegli il tema"
+
+#, fuzzy
+#~ msgid "Start Test Scenario"
+#~ msgstr "Scenario di prova"
+
+#, fuzzy
+#~ msgid "Desert Cobbles"
+#~ msgstr "Castello nel deserto"
+
+#, fuzzy
+#~ msgid "Gold Left:"
+#~ msgstr "Scorri a sinistra"
+
+#, fuzzy
 #~ msgid "Leader:"
 #~ msgstr "Condottiero"
 
 #, fuzzy
-#~| msgid "<b>Gender:</b>"
 #~ msgid "Gender:"
-#~ msgstr "<b>Genere:</b>"
+#~ msgstr "<b>Sesso:</b>"
 
 #, fuzzy
-#~| msgid "Recruits"
 #~ msgid "Recruits:"
 #~ msgstr "Reclutamenti"
 
 #, fuzzy
-#~| msgid "Starting Positions Tool"
 #~ msgid "Starting position:"
 #~ msgstr "Strumento per impostare la posizione iniziale"
 
 #, fuzzy
-#~| msgid "editor_hotkeys^E"
 #~ msgid "titlescreen_hotkeys^T"
 #~ msgstr "E"
 
 #, fuzzy
-#~| msgid "timespan^$num year"
-#~| msgid_plural "timespan^$num years"
 #~ msgid "timespan^$num years"
 #~ msgstr "$num anno"
 
 #, fuzzy
-#~| msgid "timespan^$num month"
-#~| msgid_plural "timespan^$num months"
 #~ msgid "timespan^$num months"
 #~ msgstr "$num mese"
 
 #, fuzzy
-#~| msgid "timespan^$num week"
-#~| msgid_plural "timespan^$num weeks"
 #~ msgid "timespan^$num weeks"
 #~ msgstr "$num settimana"
 
 #, fuzzy
-#~| msgid "timespan^$num day"
-#~| msgid_plural "timespan^$num days"
 #~ msgid "timespan^$num days"
 #~ msgstr "$num giorno"
 
 #, fuzzy
-#~| msgid "timespan^$num hour"
-#~| msgid_plural "timespan^$num hours"
 #~ msgid "timespan^$num hours"
 #~ msgstr "$num ora"
 
 #, fuzzy
-#~| msgid "timespan^$num minute"
-#~| msgid_plural "timespan^$num minutes"
 #~ msgid "timespan^$num minutes"
 #~ msgstr "$num minuto"
 
 #, fuzzy
-#~| msgid "timespan^$num second"
-#~| msgid_plural "timespan^$num seconds"
 #~ msgid "timespan^$num seconds"
 #~ msgstr "$num secondo"
 
+#, fuzzy
 #~ msgid "Selected Game"
-#~ msgstr "Partita selezionata"
-
-#~ msgid "Lobby"
-#~ msgstr "Lobby"
-
-#~ msgid "Other Games"
-#~ msgstr "Altre partite"
+#~ msgstr "Seleziona esagono"
 
 #, fuzzy
-#~| msgid "Team"
+#~ msgid "Lobby"
+#~ msgstr "lobby"
+
+#, fuzzy
+#~ msgid "Other Games"
+#~ msgstr "Partite salvate"
+
+#, fuzzy
 #~ msgid "Team:"
 #~ msgstr "Schieramento"
 
 #, fuzzy
-#~| msgid "Tutorial"
 #~ msgid "Start Tutorial"
 #~ msgstr "Esercitazione"

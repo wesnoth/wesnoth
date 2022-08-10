@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-07-12 09:32+0200\n"
+"PO-Revision-Date: 2022-08-03 23:53+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -44,7 +44,7 @@ msgstr "Formato Gzip"
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "Compressione predefinita, più veloce"
+msgstr "Compressione predefinita (più veloce)"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
@@ -54,12 +54,12 @@ msgstr "Formato Bzip2"
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "Compressione migliore, più lenta"
+msgstr "Compressione migliore (più lenta)"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "Nessuna"
+msgstr "Nessuna compressione"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
@@ -121,7 +121,7 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
-"Numero di minuti di attesa prima della rimozione dei messaggi di chat nel "
+"Numero di secondi di attesa prima della rimozione dei messaggi di chat nel "
 "corso di una partita. Digita 0 per disabilitare."
 
 #. [advanced_preference]: type=boolean
@@ -216,7 +216,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:165
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "Ridimensionamento caratteri (sperimentale)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:166
@@ -224,6 +224,9 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"Ridimensiona tutti i testi ingrandendoli o rimpicciolendoli dalla dimensione "
+"standard per la tua risoluzione. Attenzione: Ingrandire del desto può "
+"causare dei problemi della barra laterale del gioco."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -636,7 +639,7 @@ msgstr "Traduzione in vietnamita"
 #. Real Acadèmia de Cultura Valenciana
 #: data/core/about_i18n.cfg:1861
 msgid "RACV’s Translation"
-msgstr "Traduzione di RACV"
+msgstr "Traduzione RACV (Real Acadèmia de Cultura Valenciana)"
 
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:6
@@ -693,7 +696,7 @@ msgstr "Accetta"
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:78
 msgid "Throwing Axe"
-msgstr "Ascia da lancio"
+msgstr "Accetta da lancio"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:84
@@ -769,10 +772,11 @@ msgstr "Cassa"
 msgid "Branch"
 msgstr "Ramo"
 
+# Da verificare, contesto
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:204
 msgid "Bare Branch"
-msgstr "Ramo nudo"
+msgstr "Tralcio"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:210
@@ -814,12 +818,12 @@ msgstr "Forziere aperto"
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:260
 msgid "Closed Plain Chest"
-msgstr "Forziere chiuso"
+msgstr "Cassa chiusa"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:266
 msgid "Open Plain Chest"
-msgstr "Forziere aperto"
+msgstr "Cassa aperto"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:272
@@ -875,7 +879,7 @@ msgstr "Spada fiammeggiante"
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
 msgid "Unenchanted Flaming Sword"
-msgstr "Spada fiammeggiante non incantata"
+msgstr "Spada fiammeggiante non magica"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -936,7 +940,7 @@ msgstr "Chiave"
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
 msgid "Dark Key"
-msgstr "Chiave scuro"
+msgstr "Chiave scura"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:429
@@ -951,12 +955,12 @@ msgstr "Mazza"
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
 msgid "Bone Necklace"
-msgstr "Collana d’ossa"
+msgstr "Collana con ossa"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
 msgid "Stone Necklace"
-msgstr "Collana di pietre"
+msgstr "Collana con pietre"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:453
@@ -1076,7 +1080,7 @@ msgstr "Bastone"
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
 msgid "Druid Staff"
-msgstr "Bastone druidico"
+msgstr "Bastone duidico"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1122,7 +1126,7 @@ msgstr "Spada"
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
 msgid "Holy Sword"
-msgstr "Spada santa"
+msgstr "Spada benedetta"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
@@ -1132,7 +1136,7 @@ msgstr "Spada corta"
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
 msgid "Wraith Sword"
-msgstr "Spada spettrale"
+msgstr "Spada fantasma"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
@@ -1157,12 +1161,12 @@ msgstr "Bastone tonante"
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
 msgid "Lit Torch"
-msgstr "Torcia accesa"
+msgstr "Torica Accesa"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:717
 msgid "Unlit Torch"
-msgstr "Torcia spenta"
+msgstr "Torcia Spenta"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:723
@@ -3558,7 +3562,7 @@ msgstr "Il Re è morto"
 #. [music]
 #: data/core/macros/sound-utils.cfg:319
 msgid "Transience"
-msgstr "Transience"
+msgstr "Transitorietà"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:325
@@ -5363,13 +5367,14 @@ msgid ""
 "the underworld hinders the flightless, while offering illumination in "
 "darkness to those that may fly above it."
 msgstr ""
+"Le acque purificatrici di un’oasi guariranno i feriti. L’icore infuocato "
+"degli inferi ostacola chi non vola, mentre dona l’illuminazione "
+"nell’oscurità a coloro i quali possono volarci sopra."
 
 #. [tip]
 #: data/tips.cfg:258
-#, fuzzy
-#| msgid "<i>― King Konrad, 536YW</i>"
 msgid "<i>― Dominant Gorlack, 3YW</i>"
-msgstr "<i>― Re Konrad, 536AW </i>"
+msgstr "<i>― Dominante Gorlack, 3AW </i>"
 
 #. [tip]
 #: data/tips.cfg:261
@@ -5546,7 +5551,7 @@ msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
-"L’estensione <i>$addon_title</i> ha un id '$addon_id' non valido e non può "
+"L’estensione <i>$addon_title</i> ha un id ’$addon_id’ non valido e non può "
 "essere pubblicata."
 
 #: src/addon/client.cpp:184
@@ -5586,9 +5591,11 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
+"La connessione al server remoto non è sicura. L’estensione <i>$addon_title</"
+"i> non può essere caricata."
 
 #: src/addon/client.cpp:223
 msgid "Requesting file index..."
@@ -5845,7 +5852,7 @@ msgstr ""
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
-"Non è stato possibile trovare estensioni corrispondenti agli ID $addon_ids "
+"Non è stato possibile trovare estensioni corrispondenti agli id $addon_ids "
 "sul server delle estensioni."
 
 #: src/addon/validation.cpp:389
@@ -5861,6 +5868,8 @@ msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
 msgstr ""
+"É stata richiesta una autenticazione al forum per un utente che non risulta "
+"registrato."
 
 #: src/addon/validation.cpp:401
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -5989,6 +5998,8 @@ msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
 msgstr ""
+"L’attributo forum_auth dell’estensione non corrisponde a quello "
+"precedentemente caricato."
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
@@ -6010,6 +6021,7 @@ msgstr "La lista delle estensioni del server è vuota."
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
 msgstr ""
+"Questo server non supporta l’utilizzo dell’attributo forum_auth nel tuo pbl."
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
@@ -6371,10 +6383,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
-"Errore: [advancefrom] non funziona più. Unità di livello ‘$lower_level’ non "
-"saranno in grado di avanzare al livello ‘$higher_level’; si prega di "
-"chiedere all’autore dell’estensione di utilizzare [modify_unit_type] al suo "
-"posto."
+"Errore:[advancefrom] non funziona più. Le unità '$lower_level' non saranno "
+"in grado di avanzare a '$higher_level'; si prega di chiedere al creatore "
+"dell'estensione di modificarla utilizzando piuttosto [modify_unit_type]."
 
 #: src/game_config_manager.cpp:575
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6582,20 +6593,20 @@ msgstr "nessuno"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "La versione dell’estensione <i>$addon</i> non è compatibile: Loro hanno la "
 "versione <b>$host_ver</b> mentre tu la <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "La tua versione dell’estensione <i>$addon</i> è incompatibile. Tu hai la "
-"versione versione <b>$local_ver</b> mentre l’host ha la versione <b>"
-"$host_ver</b>."
+"versione versione <b>$local_ver</b> mentre l’host ha la versione "
+"<b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
@@ -6941,22 +6952,16 @@ msgid "No visible sides found."
 msgstr "Nessuna squadra visibile trovata."
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
-#, fuzzy
-#| msgid "Save Game"
 msgid "Selected Game"
-msgstr "Salva partita"
+msgstr "Seleziona partita"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
-#, fuzzy
-#| msgid "In lobby"
 msgid "Lobby"
-msgstr "Nella lobby"
+msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
-#, fuzzy
-#| msgid "Save Game"
 msgid "Other Games"
-msgstr "Salva partita"
+msgstr "Altre partite"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:31
 msgid "Match History — $player"
@@ -7206,16 +7211,12 @@ msgid "This command is currently unavailable."
 msgstr "Questo comando non è al momento disponibile."
 
 #: src/map_command_handler.hpp:225
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
 msgstr ""
-"Comando sconosciuto: «$command». Prova ad inserire $help_command per vedere "
-"un elenco dei comandi disponibili."
+"Comando sconosciuto: «$command», intendevi «$command_proposal»?. Prova ad "
+"inserire $help_command per vedere un elenco dei comandi disponibili."
 
 #: src/map_command_handler.hpp:229
 msgid ""
@@ -9015,8 +9016,9 @@ msgstr "Opzioni della lavagna"
 #~ "Alcuni tipi di terreno hanno dei bonus peculiari, quali abilità curative "
 #~ "o illuminazione."
 
+#, fuzzy
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Galun, Comandante di Stormo, 5AW</i>"
+#~ msgstr "<i>― Grande mago Delfador, 516AW </i>"
 
 #~ msgid "Independent"
 #~ msgstr "Indipendente"
@@ -9028,3 +9030,6 @@ msgstr "Opzioni della lavagna"
 # Da controllare l'utilizzo
 #~ msgid "No Ally Mirror"
 #~ msgstr "Nessuno Specchio Alleato"
+
+#~ msgid "<room>"
+#~ msgstr "<stanza>"
