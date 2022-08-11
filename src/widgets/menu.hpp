@@ -75,6 +75,7 @@ public:
 
 		virtual void init() { load_images(); }
 		bool load_images();
+		void unload_images();
 
 	protected:
 		const std::string img_base_;
