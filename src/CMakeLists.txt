@@ -251,7 +251,7 @@ if(ENABLE_GAME)
 	)
 	if(MSVC)
 		target_link_libraries(wesnoth SDL2::SDL2_image)
-		target_link_libraries(wesnoth SDL2::SDL2_mixer)
+		target_link_libraries(wesnoth SDL2_mixer::SDL2_mixer)
 	endif()
 
 	if(ENABLE_DISPLAY_REVISION)
