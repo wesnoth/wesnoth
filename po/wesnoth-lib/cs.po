@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-06-29 17:46+0200\n"
+"PO-Revision-Date: 2022-07-28 22:17+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4550,7 +4550,7 @@ msgstr "Žena"
 #: data/gui/window/mp_faction_select.cfg:217
 #: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Recruits"
-msgstr "Verbuje"
+msgstr "Rekruti"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
@@ -6933,8 +6933,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</b>"
-"\".\n"
+"\"<b>$hotkey_sequence|</b>\" je používán při \"<b>$old_hotkey_action|</"
+"b>\".\n"
 "Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:873
@@ -7025,10 +7025,8 @@ msgid "Screenshot"
 msgstr "Snímek obrazovky"
 
 #: src/gui/dialogs/title_screen.cpp:432 src/hotkey/hotkey_command.cpp:297
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Vybrat počáteční scénář"
+msgstr "Vybrat testovací scénář"
 
 #: src/gui/dialogs/unit_create.cpp:197
 msgid "unit_variation^Default Variation"
@@ -8156,23 +8154,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "Area to draw has negative size"
-#~ msgstr "Oblast na vykreslení má zápornou velikost"
-
-#~ msgid "Area to draw is larger than widget size"
-#~ msgstr "Oblast na vykreslení je větší než velikost grafického prvku"
-
-#~ msgid "Choose Test"
-#~ msgstr "Vybrat Test"
-
-#~ msgid "Start Test Scenario"
-#~ msgstr "Spustit testovací scénář"
-
-#~ msgid ""
-#~ "A terrain with a string with more than 4 characters has been found, the "
-#~ "affected terrain is:"
-#~ msgstr "Nalezen terén s řetězcem o více než čtyř znacích, postižený terén:"
-
-#~ msgid "Desert Cobbles"
-#~ msgstr "Pouštní kočičí hlavy"

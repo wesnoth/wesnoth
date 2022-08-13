@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-20 00:21 UTC\n"
-"PO-Revision-Date: 2022-05-27 23:19+0200\n"
+"PO-Revision-Date: 2022-08-11 21:47+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -2799,6 +2799,8 @@ msgstr "Adamantová zbroj"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:9
 msgid "blade/impact/pierce: up to 10% resistances, steadfast"
 msgstr ""
+"jednotka získá o 10 % vyšší odolnost vůči útokům čepelí, bodnutím a úderem a "
+"schopnost vytrvalosti"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:10
@@ -2817,7 +2819,7 @@ msgstr "Vražedný prsten"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:30
 msgid "melee: backstab"
-msgstr ""
+msgstr "útok zblízka získá speciální vlastnost zezadu"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:31
@@ -2860,7 +2862,7 @@ msgstr "Bezoár"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
 msgid "fearless, undead, healthy, tenacity"
-msgstr ""
+msgstr "jednotka získá vlastnosti nebojácný, nemrtvý, zdravý a houževnatý"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:83
@@ -2879,7 +2881,7 @@ msgstr "Krvavý prsten"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:98
 msgid "melee: drains"
-msgstr ""
+msgstr "útok zblízka získá speciální vlastnost vysátí"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:99
@@ -2897,10 +2899,8 @@ msgstr "Krutý bodec"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: charge"
-msgstr "zblízka: možnost volby výpadu"
+msgstr "útok zblízka získá speciální vlastnost výpad"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
@@ -2921,7 +2921,7 @@ msgstr "Prokletý symbol života"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:136
 msgid "ranged: drains"
-msgstr ""
+msgstr "útok na dálku získá speciální vlastnost vysátí"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:137
@@ -2938,10 +2938,9 @@ msgstr "Odstřelovačský luk"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
-msgstr "$range|: nezemský a +25 % poškození"
+msgstr ""
+"útok na dálku získá speciální vlastnost odstřelovač a o 25 % větší poškození"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
@@ -2959,10 +2958,8 @@ msgstr "Zapovězený grimoár"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: plague"
-msgstr "zblízka: možnost volby výpadu"
+msgstr "útok zblízka získá speciální vlastnost nákaza"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
@@ -3011,7 +3008,7 @@ msgstr "Příšernokoláda"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:228
 msgid "feeding, +3 HP"
-msgstr ""
+msgstr "jednotka získá schopnost krmení a 3 životy navíc"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:229
@@ -3033,6 +3030,8 @@ msgstr "Plamenné srdce"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:252
 msgid "melee: fire and +25% damage, +30 resistance vs fire"
 msgstr ""
+"útok zblízka získá typ poškození oheň a o 25 % větší poškození, odolnost "
+"jednotky vůči ohnivým útokům se posílí o 30 % "
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:253
@@ -3053,6 +3052,8 @@ msgstr "Zvěstovatelské brnění"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:272
 msgid "illuminates, lawful, heals +4, firststrike"
 msgstr ""
+"jednotka získá zákonnou příslušnost a schopnost osvětlení a léčení (+4), "
+"její útoky získají speciální vlastnost první úder"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:273
@@ -3074,6 +3075,8 @@ msgstr "Svěcená voda"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:310
 msgid "melee: arcane and +25% damage, +30 resistance vs arcane"
 msgstr ""
+"útok zblízka získá typ poškození nezemský a o 25 % větší poškození, odolnost "
+"jednotky vůči nezemským útokům se posílí o 30 %"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:311
@@ -3094,7 +3097,7 @@ msgstr "Ledový luk"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:331
 msgid "19-1 ranged-cold slows"
-msgstr ""
+msgstr "zpomalující útok chladem 19×1 na dálku"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
@@ -3119,7 +3122,7 @@ msgstr "Léčivé byliny"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:377
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
 msgid "heals +8, cures"
-msgstr ""
+msgstr "jednotka získá schopnost léčení (+8) a uzdravování"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:378
@@ -3137,12 +3140,12 @@ msgstr "Melanž"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
-#, fuzzy
-#| msgid "no undead^consumed by a living being:"
 msgid ""
 "no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
 "advance"
-msgstr "při požití živou jednotkou:"
+msgstr ""
+"při požití živou jednotkou tato získá +1 k síle svých útoků, 1 pohybový bod "
+"navíc a potřebuje o 20 % méně zkušeností k povýšení"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
@@ -3162,6 +3165,8 @@ msgstr "Jedovaté mazání"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:428
 msgid "blade/pierce: poison and +20% damage"
 msgstr ""
+"útok čepelí či bodnutím získá speciální vlastnost otrava a o 20 % větší "
+"poškození"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:429
@@ -3180,7 +3185,7 @@ msgstr "Zmrazující prsten"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:448
 msgid "melee: cold and slows"
-msgstr ""
+msgstr "útok zblízka získá typ poškození chlad a speciální vlastnost zpomalení"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:449
@@ -3202,6 +3207,7 @@ msgstr "Prsten síly"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:468
 msgid "arcane/cold/fire: disengage"
 msgstr ""
+"nezemský útok, útok chladem či ohněm získá speciální vlastnost uvolnění"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:469
@@ -3220,10 +3226,8 @@ msgstr "Kořen starého stromouse"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
-msgstr "$range|: nezemský a +25 % poškození"
+msgstr "útok úderem získá úder navíc a o 2 vyšší poškození"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
@@ -3240,7 +3244,7 @@ msgstr "Runový meč"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:502
 msgid "melee: magical"
-msgstr ""
+msgstr "útok zblízka získá speciální vlastnost magický"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:503
@@ -3259,7 +3263,7 @@ msgstr "Zářící hůl"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:521
 msgid "11-3 ranged-arcane magical"
-msgstr ""
+msgstr "magický nezemský útok 11×3 na dálku"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:522
@@ -3279,7 +3283,7 @@ msgstr "Bouřlivák"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:567
 msgid "melee: fury"
-msgstr ""
+msgstr "útok zblízka získá speciální vlastnost na život a na smrt"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:568
@@ -3314,6 +3318,8 @@ msgstr "Luk sylfy"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:592
 msgid "ranged-blade/impact/pierce: +60% strikes and +1 damage"
 msgstr ""
+"útok na dálku čepelí, bodnutím či úderem získá o 60 % úderů a o 1 poškození "
+"navíc"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:593
@@ -3335,6 +3341,8 @@ msgstr "Maska děsu"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:610
 msgid "darkness, chaotic, corruption, distract"
 msgstr ""
+"jednotka získá chaotickou příslušnost a schopnost zatemnění, zkázy a "
+"rozptylování"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:611
@@ -3396,10 +3404,8 @@ msgstr "Tajuplný spis "
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
-#, fuzzy
-#| msgid "XP to advance"
 msgid "-50% XP to advance"
-msgstr "zkušeností k povýšení"
+msgstr "jednotka potřebuje o 50 % méně zkušeností k povýšení"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3414,7 +3420,7 @@ msgstr "Trojzubec bouře"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:693
 msgid "17-2 ranged-fire magical"
-msgstr ""
+msgstr "magický útok ohněm 17×2 na dálku"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:694
@@ -3512,6 +3518,7 @@ msgstr "Zimní kvítek"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
 msgid "+15 HP, up to 20% resistance vs cold"
 msgstr ""
+"jednotka získá + 15 životů a její odolnost vůči chladu se posílí až na 20 %"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
@@ -3531,6 +3538,8 @@ msgstr "Plášť větru"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:818
 msgid "skirmisher, ambush, nightstalk, +2 moves"
 msgstr ""
+"jednotka získá schopnost průbojnost, přepadení, noční lovec a 2 pohybové "
+"body navíc"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:819
@@ -3594,7 +3603,7 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:102
 msgid "melee: +1 strikes"
-msgstr ""
+msgstr "útok zblízka získá úder navíc"
 
 #. [trainer]: type=Elvish Ranger
 #: data/campaigns/World_Conquest/resources/data/training.cfg:120
@@ -3649,10 +3658,8 @@ msgstr ""
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:220
-#, fuzzy
-#| msgid "disengage"
 msgid "ranged: disengage"
-msgstr "uvolnění"
+msgstr "útok na dálku získá speciální vlastnost uvolnění"
 
 #. [dummy]: id=wc2_disengage
 #: data/campaigns/World_Conquest/resources/data/training.cfg:234
@@ -3709,7 +3716,7 @@ msgstr "Zranitelnosti této jednotky jsou při obraně sníženy na polovinu."
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:468
 msgid "heals +4, cures"
-msgstr ""
+msgstr "léčí +4, uzdravuje"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:544
@@ -3842,76 +3849,73 @@ msgstr "DS"
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
 msgid "Beginner"
-msgstr ""
+msgstr "Začátečník"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:105
 msgid "Peasant"
-msgstr ""
+msgstr "Sedlák"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
 msgid "Easy"
-msgstr ""
+msgstr "Lehká"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:106
 msgid "Sergeant"
-msgstr ""
+msgstr "Seržant"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
 msgid "Lieutenant"
-msgstr ""
+msgstr "Poručík"
 
+# Takovou obtížnost nemáme v konvencích.
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:107
 msgid "Medium"
-msgstr ""
+msgstr "Normální"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
 msgid "General"
-msgstr ""
+msgstr "Generál"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:108
 msgid "Hard"
-msgstr ""
+msgstr "Ostřílený hráč"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
 msgid "Challenging"
-msgstr ""
+msgstr "Náročná"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
-#, fuzzy
-#| msgid "Granary"
 msgid "Grand Marshal"
-msgstr "sýpka"
+msgstr "Velký maršál"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
-#, fuzzy
-#| msgid "expert"
 msgid "Expert"
-msgstr "expert"
+msgstr "Expert"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
 msgid "Nightmare"
-msgstr ""
+msgstr "Zlý sen"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:113
 msgid "Campaign Design"
-msgstr ""
+msgstr "Návrh kampaně"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:120
 msgid "Prose, Grammatical and Text Assistance"
-msgstr ""
+msgstr "Příběh, gramatická a textová pomoc"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:136
@@ -3926,7 +3930,7 @@ msgstr ""
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:165
 msgid "Campaign Maintenance"
-msgstr ""
+msgstr "Údržba kampaně"
 
 #~ msgid "Preset Advancement"
 #~ msgstr "Přednastavení povýšení"

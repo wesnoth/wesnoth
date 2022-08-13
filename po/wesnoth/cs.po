@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-06-29 17:46+0200\n"
+"PO-Revision-Date: 2022-07-23 11:12+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -205,7 +205,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:165
 msgid "Font size scale (experimental)"
-msgstr ""
+msgstr "Stupnice velikosti písma (pokusné)"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:166
@@ -213,6 +213,9 @@ msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
 msgstr ""
+"Zvětší nebo zmenší všechen text z obvyklé velikosti pro tvé rozlišení. "
+"Upozornění: Zvětšování textu může způsobit problémy v postranním panelu ve "
+"hře."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -649,7 +652,7 @@ msgstr "Oltář"
 #. [item]: id=ankh-necklace2
 #: data/core/editor/items.cfg:24 data/core/editor/items.cfg:30
 msgid "Ankh Necklace"
-msgstr "Náhrdelník s křížkem"
+msgstr "Náhrdelník života"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:36
@@ -1129,7 +1132,7 @@ msgstr "Přízračný meč"
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
 msgid "Ankh Talisman"
-msgstr "Talisman anch"
+msgstr "Talisman života"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
@@ -5539,11 +5542,11 @@ msgstr ""
 
 #: src/addon/client.cpp:210
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
-"Spojení na vzdálený server není zabezpečené. Nelze nahrát rozšíření <i>"
-"$addon_title</i>."
+"Spojení na vzdálený server není zabezpečené. Nelze nahrát rozšíření "
+"<i>$addon_title</i>."
 
 #: src/addon/client.cpp:223
 msgid "Requesting file index..."
@@ -6510,16 +6513,16 @@ msgstr "žádný"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
-"Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je <b>"
-"$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
+"Hostitelova verze <i>$addon</i> je nekompatibilní. Hostitelova verze je "
+"<b>$host_ver</b>, zatímco vaše je <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "Vaše verze <i>$addon</i> je nekompatibilní. Máte verzi <b>$local_ver</b> a "
 "hostitel má verzi <b>$host_ver</b>."
@@ -7743,6 +7746,8 @@ msgstr "Proměnná nenalezena"
 #: src/menu_events.cpp:1988
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Ladicí příkaz „unit: $unit“ selhal: žádná jednotka nebyla vybrána ani "
+"ukázána myší."
 
 #: src/menu_events.cpp:2006
 msgid ""
@@ -8897,6 +8902,3 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
-
-#~ msgid "Chest"
-#~ msgstr "Truhla"
