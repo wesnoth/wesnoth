@@ -27,6 +27,7 @@
 
 #ifndef __APPLE__
 #include <openssl/evp.h>
+#include <openssl/err.h>
 #else
 #include <CommonCrypto/CommonCryptor.h>
 #endif
@@ -277,8 +278,20 @@ static secure_buffer rc4_crypt(const secure_buffer& text, const secure_buffer& k
 
 	// TODO: use EVP_EncryptInit_ex2 once openssl 3.0 is more widespread
 	EVP_EncryptInit_ex(ctx, EVP_rc4(), NULL, key.data(), NULL);
-	EVP_EncryptUpdate(ctx, result.data(), &outlen, text.data(), text.size());
-	EVP_EncryptFinal_ex(ctx, result.data() + outlen, &tmplen);
+	if(EVP_EncryptUpdate(ctx, result.data(), &outlen, text.data(), text.size()) == 0)
+	{
+		ERR_CFG << "EVP_EncryptUpdate failed with error:";
+		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		EVP_CIPHER_CTX_free(ctx);
+		return secure_buffer();
+	}
+	if(EVP_EncryptFinal_ex(ctx, result.data() + outlen, &tmplen) == 0)
+	{
+		ERR_CFG << "EVP_EncryptFinal failed with error:";
+		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
+		EVP_CIPHER_CTX_free(ctx);
+		return secure_buffer();
+	}
 
 	EVP_CIPHER_CTX_free(ctx);
 #else
