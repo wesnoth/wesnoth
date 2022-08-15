@@ -767,7 +767,7 @@ protected:
 	mutable events::generic_event scroll_event_;
 
 	boost::circular_buffer<unsigned> frametimes_; // in milliseconds
-	int current_frame_sample = 0;
+	int current_frame_sample_ = 0;
 	unsigned int fps_counter_;
 	std::chrono::seconds fps_start_;
 	unsigned int fps_actual_;
