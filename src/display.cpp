@@ -1345,10 +1345,10 @@ static unsigned calculate_fps(unsigned frametime)
 
 void display::update_fps_label()
 {
-	++current_frame_sample;
+	++current_frame_sample_;
 	const int sample_freq = 10;
 
-	if(current_frame_sample != sample_freq) {
+	if(current_frame_sample_ != sample_freq) {
 		return;
 	}
 
@@ -1358,7 +1358,7 @@ void display::update_fps_label()
 	const int max_fps = calculate_fps(*minmax_it.first);
 	const int min_fps = calculate_fps(*minmax_it.second);
 	fps_history_.emplace_back(min_fps, avg_fps, max_fps);
-	current_frame_sample = 0;
+	current_frame_sample_ = 0;
 
 	// flush out the stored fps values every so often
 	if(fps_history_.size() == 1000) {
