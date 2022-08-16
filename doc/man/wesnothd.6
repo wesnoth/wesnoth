@@ -267,6 +267,15 @@ The name of the table in which wesnothd will save its own data about the modific
 .B db_user_group_table
 The name of the table in which your phpbb forums saves its user group data. Most likely this will be <table-prefix>_user_group  (e.g. phpbb3_user_group).
 .TP
+.B db_connection_history_table
+The name of the table in which to store login/logout times. Also used for matching IPs to users and vice versa.
+.TP
+.B db_topics_table
+The name of the table in which your phpbb forums saves its topic (thread) information. Most likely this will be <table-prefix>_topics  (e.g. phpbb3_topics).
+.TP
+.B db_banlist_table
+The name of the table in which your phpbb forums saves its user bans data. Most likely this will be <table-prefix>_banlist  (e.g. phpbb3_banlist).
+.TP
 .B mp_mod_group
 The ID of the forum group to be considered as having moderation authority.
 .RE
