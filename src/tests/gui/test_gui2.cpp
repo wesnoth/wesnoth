@@ -84,6 +84,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
@@ -535,6 +536,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_login)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_method_selection)
 {
 	test<mp_method_selection>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_report)
+{
+	test<mp_report>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_simple_item_selector)
 {
@@ -1033,6 +1038,16 @@ struct dialog_tester<mp_join_game_password_prompt>
 	mp_join_game_password_prompt* create()
 	{
 		return new mp_join_game_password_prompt(password);
+	}
+};
+
+template<>
+struct dialog_tester<mp_report>
+{
+	std::string report_text;
+	mp_report* create()
+	{
+		return new mp_report(report_text);
 	}
 };
 
