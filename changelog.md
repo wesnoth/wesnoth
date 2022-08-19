@@ -9,7 +9,7 @@
  ### Terrain
    * Generalized "lower terrain" similar to the mid-level in lava/chasm.  Cosmetic and unwalkable versions. (PR #6927)
  ### Translations
-   * Updated translations: Arabic, British English, Bulgarian, Chinese (Traditional), Czech, Finnish, French, Italian
+   * Updated translations: Arabic, British English, Bulgarian, Chinese (Traditional), Czech, Finnish, French, Italian, Portuguese (Brazil)
  ### Units
  ### User interface
  ### WML Engine
