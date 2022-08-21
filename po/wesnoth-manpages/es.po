@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2022-01-02 21:01+0300\n"
+"POT-Creation-Date: 2022-08-20 19:37-0500\n"
 "PO-Revision-Date: 2021-06-25 13:18+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -30,8 +30,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2021"
-msgstr "2021"
+msgid "2022"
+msgstr ""
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -1039,9 +1039,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "establece el directorio de configuración del usuario como I<nombre> en $HOME "
 "o \"Mis documentos\\eMis juegos\" en Windows. También es posible especificar "
@@ -1081,10 +1081,10 @@ msgid ""
 msgstr ""
 "establece el directorio de datos del usuario como I<nombre> en $HOME o \"Mis "
 "documentos\\eMis juegos\" en Windows. También es posible especificar una "
-"ruta absoluta para los datos del usuario fuera de $HOME o \"Mis documentos"
-"\\eMis juegos\". En Windows también es posible especificar un directorio "
-"relativo al directorio donde corre el proceso usando una ruta que comience "
-"por \".\\e\" or \"..\\e\"."
+"ruta absoluta para los datos del usuario fuera de $HOME o \"Mis "
+"documentos\\eMis juegos\". En Windows también es posible especificar un "
+"directorio relativo al directorio donde corre el proceso usando una ruta que "
+"comience por \".\\e\" or \"..\\e\"."
 
 #. type: TP
 #: doc/man/wesnoth.6:393
@@ -1494,7 +1494,10 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
-msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -2324,6 +2327,10 @@ msgstr ""
 #: doc/man/wesnothd.6:284
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#, no-wrap
+#~ msgid "2021"
+#~ msgstr "2021"
 
 #~ msgid "2018"
 #~ msgstr "2018"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-05 09:17-0500\n"
+"POT-Creation-Date: 2022-08-20 19:38-0500\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -6979,58 +6979,58 @@ msgstr "%d/%m/%y"
 msgid "Invalid color in range: "
 msgstr "Cor incorrecta no intervalo:"
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr "Produciuse un erro ao validar o núcleo dos datos."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr "Atopouse un núcleo sen o atributo «id»."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr "Saltándose o núcleo."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr "Identificador do núcleo: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
 msgstr "O identificador xa está collido."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr "Ruta do núcleo: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 msgid "File not found."
 msgstr "Non se atopou o ficheiro."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr "Produciuse un erro ao cargar os datos do núcleo."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr "Produciuse un erro ao cargar o núcleo co identificador indicado."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr "Retornando ao núcleo predeterminado."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr "Non é posíbel atopar o núcleo predeterminado."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 msgid "The game will now exit."
 msgstr "O xogo pecharase."
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:365
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -7038,7 +7038,7 @@ msgstr ""
 "Produciuse un erro ao cargar os ficheiros de configuración do xogo "
 "personalizados. O xogo intentará iniciarse sen cargar complementos."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:372
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -7046,7 +7046,7 @@ msgstr ""
 "Produciuse un erro ao cargar os ficheiros de configuración do xogo. O xogo "
 "retornará aos ficheiros do núcleo predeterminado."
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:381
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -7056,24 +7056,24 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:527
+#: src/game_config_manager.cpp:532
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:563
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:614
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "O seguinte complemento ten erros e non foi posíbel cargalo:"
 msgstr[1] "Os seguintes complementos teñen erros e non foi posíbel cargalos:"
 
-#: src/game_config_manager.cpp:618
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -7264,16 +7264,16 @@ msgstr "ningún"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "A versión de <i>$addon</i> que ten o anfitrión é incompatíbel. O anfitrión "
 "ten a versión <b>$host_ver</b>, ti tes a <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "A túa versión de <i>$addon</i> é incompatíbel. Tes a versión <b>$local_ver</"
 "b>, o anfitrión ten a <b>$host_ver</b>."
@@ -7743,7 +7743,7 @@ msgstr "Líderes"
 msgid "Recruits"
 msgstr "Recrutamentos"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:770 src/units/types.cpp:489
 msgid "No description available."
 msgstr "Sen descrición."
 
@@ -8602,7 +8602,7 @@ msgstr "$name tomou o control."
 msgid "Turn changed"
 msgstr "Cambiou a quenda."
 
-#: src/pathfind/pathfind.cpp:746
+#: src/pathfind/pathfind.cpp:755
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Atopouse un terreo cun custe de movemento inferior a 1."
 
@@ -9590,19 +9590,19 @@ msgstr "Avances"
 msgid "No advancement"
 msgstr "Non pode avanzar."
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^lawful"
 msgstr "legal"
 
-#: src/units/types.cpp:844
+#: src/units/types.cpp:843
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/types.cpp:845
+#: src/units/types.cpp:844
 msgid "female^chaotic"
 msgstr "caótica"
 
-#: src/units/types.cpp:846
+#: src/units/types.cpp:845
 msgid "female^liminal"
 msgstr "crepuscular"
 

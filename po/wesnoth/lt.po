@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-05 09:17-0500\n"
+"POT-Creation-Date: 2022-08-20 19:38-0500\n"
 "PO-Revision-Date: 2019-03-28 22:12+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 2.1.1\n"
 
 #. [multiplayer_side]: id=Custom
@@ -5850,58 +5850,58 @@ msgstr "%Y %b %d"
 msgid "Invalid color in range: "
 msgstr "Netinkamas spalvos intervalas: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr "Klaida tikrinant duomenų branduolį."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr "Rastas branduolys be id atributo."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr "Praleidžiamas branduolys."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr "Šerdies ID: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
 msgstr "Šis ID jau naudojamas."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr "Šerdies kelias: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 msgid "File not found."
 msgstr "Failas nerastas."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr "Įvyko klaida, įkeliant branduolio duomenis."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr "Įvyko klaida, įkeliant branduolį su nurodytu id."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr "Grįžtama prie numatyto branduolio."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr "Nepavyksta rasti numatyto branduolio."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 msgid "The game will now exit."
 msgstr "Žaidimas dabar išsijungs."
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:365
 #, fuzzy
 msgid ""
 "Error loading custom game configuration files. The game will try without "
@@ -5910,7 +5910,7 @@ msgstr ""
 "Įvyko klaida, įkeliant žaidimo konfigūracijos failus. Žaidimas dabar "
 "išsijungs."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:372
 #, fuzzy
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
@@ -5919,7 +5919,7 @@ msgstr ""
 "Įvyko klaida, įkeliant žaidimo konfigūracijos failus. Žaidimas dabar "
 "išsijungs."
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:381
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -5929,18 +5929,18 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:527
+#: src/game_config_manager.cpp:532
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:563
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:614
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Šis priedas turėjo klaidų ir negali būti įkeltas:"
@@ -5948,7 +5948,7 @@ msgstr[1] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 msgstr[2] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 msgstr[3] "Šie priedai turėjo klaidų ir negali būti įkelti:"
 
-#: src/game_config_manager.cpp:618
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6139,14 +6139,14 @@ msgstr "nėra"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 
 #: src/game_initialization/mp_game_utils.cpp:78
@@ -6617,7 +6617,7 @@ msgstr "Vadai"
 msgid "Recruits"
 msgstr "Samdymai"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:770 src/units/types.cpp:489
 msgid "No description available."
 msgstr "Nėra jokio aprašymo."
 
@@ -7459,7 +7459,7 @@ msgstr "$name perėmė valdymą"
 msgid "Turn changed"
 msgstr "Pasikeitė ėjimas"
 
-#: src/pathfind/pathfind.cpp:746
+#: src/pathfind/pathfind.cpp:755
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Rastas reljefas su judėjimo kaina mažesne nei 1."
 
@@ -8420,19 +8420,19 @@ msgstr "Patobulėjimai:"
 msgid "No advancement"
 msgstr "Netobulėja"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^lawful"
 msgstr "šviesi"
 
-#: src/units/types.cpp:844
+#: src/units/types.cpp:843
 msgid "female^neutral"
 msgstr "neutrali"
 
-#: src/units/types.cpp:845
+#: src/units/types.cpp:844
 msgid "female^chaotic"
 msgstr "chaotiška"
 
-#: src/units/types.cpp:846
+#: src/units/types.cpp:845
 msgid "female^liminal"
 msgstr "prieblandos"
 

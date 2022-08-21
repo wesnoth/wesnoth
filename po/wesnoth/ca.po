@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-05 09:17-0500\n"
+"POT-Creation-Date: 2022-08-20 19:38-0500\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -6318,58 +6318,58 @@ msgstr "%b %d %Y"
 msgid "Invalid color in range: "
 msgstr "Color no vàlid al rang: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr "Error de validació del nucli de dades."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr "S'ha trobat un nucli sense atribut identificador."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr "S'ometrà el nucli."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr "ID del nucli: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
 msgstr "L'identificador ja està en ús."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr "Camí del nucli: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 msgid "File not found."
 msgstr "No s'ha trobat el fitxer."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr "S'ha produït un error en carregar les dades del nucli."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr "S'ha produït un error en carregar el nucli amb identificador amb nom."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr "Es tornarà al nucli per defecte."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr "No es pot trobar el nucli per defecte."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 msgid "The game will now exit."
 msgstr "El joc es tancarà ara."
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:365
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6377,7 +6377,7 @@ msgstr ""
 "S'ha produït un error en carregar els fitxers de configuració de la partida "
 "personalitzada. S'intentarà sense carregar complements."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:372
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6385,7 +6385,7 @@ msgstr ""
 "S'ha produït un error en carregar els fitxers de configuració de la partida "
 "personalitzada. Es tornarà als fitxers bàsics per defecte."
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:381
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -6395,25 +6395,25 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:527
+#: src/game_config_manager.cpp:532
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:563
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:614
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "El complement següent contenia errors i no s'ha pogut carregar:"
 msgstr[1] ""
 "Els complements següents contenien errors i no s'han pogut carregar:"
 
-#: src/game_config_manager.cpp:618
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6600,19 +6600,19 @@ msgstr "time limit^cap"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "La versió de l'amfitrió de <i>$addon</i> no és compatible. Teniu la versió "
 "<b>$local_ver</b>, mentre que l'amfitrió té la versió <b>$host_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
-"La vostra versió de <i>$addon</i> no és compatible. Teniu la versió <b>"
-"$local_ver</b>, mentre que l'amfitrió té la versió <b>$host_ver</b>."
+"La vostra versió de <i>$addon</i> no és compatible. Teniu la versió "
+"<b>$local_ver</b>, mentre que l'amfitrió té la versió <b>$host_ver</b>."
 
 #: src/game_initialization/mp_game_utils.cpp:78
 msgid "Defeat enemy leader(s)"
@@ -7063,7 +7063,7 @@ msgstr "Líders"
 msgid "Recruits"
 msgstr "Reclutaments"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:770 src/units/types.cpp:489
 msgid "No description available."
 msgstr "No hi ha disponible."
 
@@ -7893,7 +7893,7 @@ msgstr "$name ha pres el control"
 msgid "Turn changed"
 msgstr "Canvi de torn"
 
-#: src/pathfind/pathfind.cpp:746
+#: src/pathfind/pathfind.cpp:755
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "S'ha trobat un terreny amb cost de desplaçament inferior a 1."
 
@@ -8852,19 +8852,19 @@ msgstr "Avenços:"
 msgid "No advancement"
 msgstr "Cap pujada de nivell"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^lawful"
 msgstr "lleial"
 
-#: src/units/types.cpp:844
+#: src/units/types.cpp:843
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/types.cpp:845
+#: src/units/types.cpp:844
 msgid "female^chaotic"
 msgstr "caòtica"
 
-#: src/units/types.cpp:846
+#: src/units/types.cpp:845
 msgid "female^liminal"
 msgstr "female^liminal"
 

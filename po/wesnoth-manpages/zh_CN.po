@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
-"POT-Creation-Date: 2022-01-16 13:30+0300\n"
+"POT-Creation-Date: 2022-08-20 19:37-0500\n"
 "PO-Revision-Date: 2022-04-22 16:22+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -29,8 +29,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2021"
-msgstr "2021"
+msgid "2022"
+msgstr ""
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -971,9 +971,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "设置用户配置目录为$HOME或者Windows下“我的文档\\我的游戏（My Documents\\eMy "
 "Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME"
@@ -1389,7 +1389,10 @@ msgstr "版权"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
-msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "版权所有 \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
@@ -2154,3 +2157,7 @@ msgstr ""
 #: doc/man/wesnothd.6:284
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#, no-wrap
+#~ msgid "2021"
+#~ msgstr "2021"

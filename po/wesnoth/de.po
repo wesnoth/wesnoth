@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-05 09:17-0500\n"
+"POT-Creation-Date: 2022-08-20 19:38-0500\n"
 "PO-Revision-Date: 2022-08-01 16:43+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
@@ -209,6 +209,7 @@ msgstr ""
 "Zusätzlich kontrolliert der Log-Domäne über veralteten Code, wie viele "
 "Nachrichten angezeigt werden."
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
@@ -229,6 +230,7 @@ msgstr "Dreizack des Sturms"
 msgid "Gold carryover:"
 msgstr "Mitgebrachtes Gold:"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
@@ -811,7 +813,6 @@ msgstr "Feuerschale"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:217
-#| msgid "Brazier"
 msgid "Lit Brazier"
 msgstr "Feuerschale (entfacht)"
 
@@ -835,7 +836,6 @@ msgstr "Käfig"
 # Holzkiste
 #. [item]: id=chest
 #: data/core/editor/items.cfg:247
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
 msgstr "Geschlossene Kiste"
 
@@ -843,7 +843,6 @@ msgstr "Geschlossene Kiste"
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:254
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "Offene Kiste"
 
@@ -879,7 +878,6 @@ msgstr "Geschlossener Sarkophag"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:291
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
 msgstr "Offener Sarkophag"
 
@@ -895,7 +893,6 @@ msgstr "Dolch"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:309
-#| msgid "Poison"
 msgid "Poison Dagger"
 msgstr "Giftdolch"
 
@@ -916,7 +913,6 @@ msgstr "Flammenschwert"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
 msgstr "Flammenschwert (entzaubert)"
 
@@ -957,7 +953,6 @@ msgstr "Maiskolben"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:393
-#| msgid "Runic Hammer"
 msgid "Hammer"
 msgstr "Hammer"
 
@@ -980,7 +975,6 @@ msgstr "Schlüssel"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
-#| msgid "Dark Red"
 msgid "Dark Key"
 msgstr "Dunkler Schlüssel"
 
@@ -996,13 +990,11 @@ msgstr "Keule"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
 msgstr "Knochenamulett"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
 msgstr "Steinernes Amulett"
 
@@ -1101,7 +1093,6 @@ msgstr "Schleuder"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
-#| msgid "Fancy Spear"
 msgid "Spear"
 msgstr "Speer"
 
@@ -1124,7 +1115,6 @@ msgstr "Stab"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:597
-#| msgid "Magic Staff"
 msgid "Druid Staff"
 msgstr "Druidenstab"
 
@@ -1136,13 +1126,11 @@ msgstr "Magischer Stab"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:615
-#| msgid "Magic Staff"
 msgid "Magic Wand"
 msgstr "Zauberstab"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
-#| msgid "Magic Staff"
 msgid "Plain Staff"
 msgstr "Normaler Stab"
 
@@ -1173,19 +1161,16 @@ msgstr "Schwert"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
-#| msgid "Sword"
 msgid "Holy Sword"
 msgstr "Heiliges Schwert"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
-#| msgid "Sword"
 msgid "Short Sword"
 msgstr "Kurzschwert"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
 msgstr "Spektralklinge"
 
@@ -1201,7 +1186,6 @@ msgstr "Knochentalisman"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
 msgstr "Steinerner Talisman"
 
@@ -1413,7 +1397,6 @@ msgstr "Tempel"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
 msgstr "Lädierter Tempel"
 
@@ -3808,6 +3791,7 @@ msgstr "Höhle"
 msgid "Fungus"
 msgstr "Pilzhain"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:188
 msgid "Village"
@@ -3838,11 +3822,13 @@ msgstr "Unbegehbar"
 msgid "Impassable"
 msgstr "Unpassierbar"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:446
 msgid "Fog"
 msgstr "Nebel"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:449
 #: src/game_initialization/lobby_data.cpp:452
@@ -4210,6 +4196,7 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nein"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:633
@@ -4241,6 +4228,7 @@ msgstr "Oldania ADF Std"
 msgid "(Note: You should use $replacement instead in new code)"
 msgstr "(Anmerkung: Sie sollten stattdessen $replacement in Ihrem Code nutzen)"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:28 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
@@ -4251,26 +4239,31 @@ msgstr "Ungültige Deprekationsstufe $level (nur 1-4 erlaubt)"
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Ungültige Deprekationsstufe (nur 1-4 erlaubt)"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1075
 msgid "female^poisoned"
 msgstr "vergiftet"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "female^slowed"
 msgstr "verlangsamt"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1082
 msgid "slowed"
 msgstr "verlangsamt"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "female^petrified"
 msgstr "versteinert"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:129 src/actions/attack.cpp:1088
 msgid "petrified"
@@ -4286,12 +4279,14 @@ msgstr "unheilbar"
 msgid "unhealable"
 msgstr "unheilbar"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:432 src/scripting/game_lua_kernel.cpp:3019
 #: src/scripting/game_lua_kernel.cpp:3054
 msgid "input"
 msgstr "Eingabe"
 
+#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:76
 msgid "Victory:"
@@ -6334,58 +6329,58 @@ msgstr "%d %b %y"
 msgid "Invalid color in range: "
 msgstr "Ungültiger Farbbereich: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr "Fehler bei der Validierung des Datenkerns."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr "Kern ohne id-Wert gefunden."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr "Überspringe Kern."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr "Kern ID: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
 msgstr "Diese ID wird bereits verwendet."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr "Kern Pfad: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 msgid "File not found."
 msgstr "Datei nicht gefunden."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr "Fehler beim Laden von Kerndaten."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr "Fehler beim Laden des Kerns mit benannter id."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr "Greift zurück auf den Standardkern."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr "Kann Standardkern nicht finden."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 msgid "The game will now exit."
 msgstr "Das Spiel wird beendet."
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:365
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6393,7 +6388,7 @@ msgstr ""
 "Fehler beim Laden der Konfigurationsdateien. Das Spiel wird versuchen, ohne "
 "Erweiterungen zu starten."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:372
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6401,7 +6396,7 @@ msgstr ""
 "Fehler beim Laden der Konfigurationsdateien. Das Spiel wird auf Standard "
 "Kerndaten zurückgreifen."
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:381
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr "Fehler beim Laden der Konfigurationsdateien. Das Spiel wird beendet."
@@ -6409,21 +6404,21 @@ msgstr "Fehler beim Laden der Konfigurationsdateien. Das Spiel wird beendet."
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:527
+#: src/game_config_manager.cpp:532
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
-"Fehler: [advancefrom] wird nicht mehr unterstützt. «$lower_level|« Einheiten"
-" können nicht zu »$higher_level|« aufgewertet werden; Fragt den Add-on"
-" Betreuer stattdessen [modify_unit_type] zu verwenden."
+"Fehler: [advancefrom] wird nicht mehr unterstützt. «$lower_level|« Einheiten "
+"können nicht zu »$higher_level|« aufgewertet werden; Fragt den Add-on "
+"Betreuer stattdessen [modify_unit_type] zu verwenden."
 
-#: src/game_config_manager.cpp:563
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "Benutze stattdessen das Makro mit dem selben Namen im [campaign]-tag"
 
-#: src/game_config_manager.cpp:614
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
@@ -6432,7 +6427,7 @@ msgstr[1] ""
 "Die folgenden Erweiterungen weisen Fehler auf und können nicht geladen "
 "werden:"
 
-#: src/game_config_manager.cpp:618
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6627,16 +6622,16 @@ msgstr "keine"
 
 #: src/game_initialization/lobby_data.cpp:507
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 "Die Version der Erweiterung <i>$addon</i> des Hosts ist inkompatibel. Der "
 "Host hat Version <b>$host_ver</b>, Sie haben Version <b>$local_ver</b>."
 
 #: src/game_initialization/lobby_data.cpp:521
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 "Ihre version der Erweiterung <i>$addon</i> ist inkompatibel. Sie haben die "
 "Version <b>$local_ver</b>, der Host hat die Version <b>$host_ver</b>."
@@ -6687,8 +6682,8 @@ msgstr "Warnung"
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
-"Der Server hat während der Verwendung einer ungesicherten Verbindung ein"
-" Passwort angefragt."
+"Der Server hat während der Verwendung einer ungesicherten Verbindung ein "
+"Passwort angefragt."
 
 #: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
@@ -7098,7 +7093,7 @@ msgstr "Heerführer"
 msgid "Recruits"
 msgstr "Rekruten"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:770 src/units/types.cpp:489
 msgid "No description available."
 msgstr "Keine Beschreibung verfügbar."
 
@@ -7874,8 +7869,8 @@ msgstr "Variable nicht gefunden"
 #: src/menu_events.cpp:1990
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
-"Debug-Kommando »unit« ignoriert: Es ist keine Einheit ausgewählt oder unter"
-" dem Mauszeiger"
+"Debug-Kommando »unit« ignoriert: Es ist keine Einheit ausgewählt oder unter "
+"dem Mauszeiger"
 
 #: src/menu_events.cpp:2008
 msgid ""
@@ -7974,7 +7969,7 @@ msgstr "$name ist am Zug"
 msgid "Turn changed"
 msgstr "Nächster Spieler"
 
-#: src/pathfind/pathfind.cpp:746
+#: src/pathfind/pathfind.cpp:755
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Gelände mit Bewegungskosten niedriger als 1 gefunden."
 
@@ -8588,11 +8583,11 @@ msgstr ""
 "und funktioniert womöglich nicht mit dieser Version\n"
 "\n"
 "<b>Warnung:</b> Bei Spielständen aus der Mitte einer Kampagne ist die "
-"Wahrscheinlichkeit höher. Ihr solltet entweder die alte "
-"Spielversion verwenden oder die Kampagne erneut beginnen. Selbst wenn der "
-"Speicherstand erfolgreich zu laden scheint, ist es möglich, dass subtilere "
-"Aspekte der Spielbalance oder Geschichte beeinflusst werden. Die "
-"Schwierigkeit, die Herausforderung, der <i>Spaß</i> kann fehlen.\n"
+"Wahrscheinlichkeit höher. Ihr solltet entweder die alte Spielversion "
+"verwenden oder die Kampagne erneut beginnen. Selbst wenn der Speicherstand "
+"erfolgreich zu laden scheint, ist es möglich, dass subtilere Aspekte der "
+"Spielbalance oder Geschichte beeinflusst werden. Die Schwierigkeit, die "
+"Herausforderung, der <i>Spaß</i> kann fehlen.\n"
 "\n"
 "Zum Beispiel könnte eine Kampagne neu ausbalanciert worden sein, so dass die "
 "ersten Szenarien weniger Gegner enthalten, mit der Erwartung, dass Ihr in "
@@ -8980,19 +8975,19 @@ msgstr "Stufenaufstiege:"
 msgid "No advancement"
 msgstr "Keine Stufenaufstiege"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^lawful"
 msgstr "redlich"
 
-#: src/units/types.cpp:844
+#: src/units/types.cpp:843
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/types.cpp:845
+#: src/units/types.cpp:844
 msgid "female^chaotic"
 msgstr "lichtscheu"
 
-#: src/units/types.cpp:846
+#: src/units/types.cpp:845
 msgid "female^liminal"
 msgstr "zwielichtig"
 

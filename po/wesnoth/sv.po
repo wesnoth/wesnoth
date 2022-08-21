@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-05 09:17-0500\n"
+"POT-Creation-Date: 2022-08-20 19:38-0500\n"
 "PO-Revision-Date: 2022-07-08 22:49+0200\n"
 "Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -6170,58 +6170,58 @@ msgstr "%F"
 msgid "Invalid color in range: "
 msgstr "Ogiltig färg i skalan: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr "Fel vid validering av kärndata."
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr "Fann kärna utan ID-attribut."
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr "Skippar kärna."
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr "Kärn-ID: "
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
 msgstr "Detta ID används redan."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr "Kärnsökväg: "
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 msgid "File not found."
 msgstr "Kan ej hitta filen."
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr "Fel vid inläsning av kärn-data."
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr "Fel vid inläsning av kärna med angivet ID."
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr "Faller tillbaka till förvald kärna."
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr "Kan inte lokalisera förvald kärna."
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 msgid "The game will now exit."
 msgstr "Spelet kommer nu att avslutas."
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:365
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6229,7 +6229,7 @@ msgstr ""
 "Fel uppstod när anpassade spelkonfigurationsfiler skulle läsas in. Spelet "
 "kommer försöka utan att läsa in extramaterial."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:372
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6237,7 +6237,7 @@ msgstr ""
 "Fel vid inläsning av användarinställda spelkonfigurationsfiler. Spelet "
 "kommer falla tillbaka till förvalda kärnfiler."
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:381
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -6247,7 +6247,7 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:527
+#: src/game_config_manager.cpp:532
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
@@ -6257,17 +6257,17 @@ msgstr ""
 "längre befordras till ‘$higher_level’; var vänlig be skaparen av "
 "extramaterialet att använda [modify_unit_type] istället."
 
-#: src/game_config_manager.cpp:563
+#: src/game_config_manager.cpp:568
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr "använd istället makrot med samma namn i [campaign]-taggen"
 
-#: src/game_config_manager.cpp:614
+#: src/game_config_manager.cpp:619
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 msgstr[1] "Följande extramaterial innehöll fel och kunde inte öppnas:"
 
-#: src/game_config_manager.cpp:618
+#: src/game_config_manager.cpp:623
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6914,7 +6914,7 @@ msgstr "Ledare"
 msgid "Recruits"
 msgstr "Rekryter"
 
-#: src/help/help_impl.cpp:770 src/units/types.cpp:490
+#: src/help/help_impl.cpp:770 src/units/types.cpp:489
 msgid "No description available."
 msgstr "Inga beskrivning tillgänglig."
 
@@ -7741,7 +7741,7 @@ msgstr "$name har tagit över kontrollen"
 msgid "Turn changed"
 msgstr "Bytt drag"
 
-#: src/pathfind/pathfind.cpp:746
+#: src/pathfind/pathfind.cpp:755
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Stötte på terräng med en förflyttningskostnad mindre än 1."
 
@@ -8718,19 +8718,19 @@ msgstr "Befordringar:"
 msgid "No advancement"
 msgstr "Inga befordringar"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^lawful"
 msgstr "redbar"
 
-#: src/units/types.cpp:844
+#: src/units/types.cpp:843
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/types.cpp:845
+#: src/units/types.cpp:844
 msgid "female^chaotic"
 msgstr "ljusskygg"
 
-#: src/units/types.cpp:846
+#: src/units/types.cpp:845
 msgid "female^liminal"
 msgstr "perifer"
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
-"POT-Creation-Date: 2022-01-02 21:01+0300\n"
+"POT-Creation-Date: 2022-08-20 19:37-0500\n"
 "PO-Revision-Date: 2022-03-16 11:50+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
@@ -27,8 +27,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2021"
-msgstr "2021"
+msgid "2022"
+msgstr ""
 
 # type: TH
 #. type: TH
@@ -1124,9 +1124,9 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "Setzt das Konfigurationsverzeichnis des Benutzers auf I<Name> in $HOME oder "
 "»Eigene Dateien\\eMy Games« auf Windows. Es kann auch ein absoluter Pfad zum "
@@ -1634,7 +1634,10 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
-msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -1666,17 +1669,17 @@ msgid "SEE ALSO"
 msgstr "ANDERE"
 
 # type: TH
-#. This program is free software; you can redistribute it and/or modify
-#. it under the terms of the GNU General Public License as published by
-#. the Free Software Foundation; either version 2 of the License, or
-#. (at your option) any later version.
-#. This program is distributed in the hope that it will be useful,
-#. but WITHOUT ANY WARRANTY; without even the implied warranty of
-#. MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#. GNU General Public License for more details.
-#. You should have received a copy of the GNU General Public License
-#. along with this program; if not, write to the Free Software
-#. Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+#.  This program is free software; you can redistribute it and/or modify
+#.  it under the terms of the GNU General Public License as published by
+#.  the Free Software Foundation; either version 2 of the License, or
+#.  (at your option) any later version.
+#.  This program is distributed in the hope that it will be useful,
+#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#.  GNU General Public License for more details.
+#.  You should have received a copy of the GNU General Public License
+#.  along with this program; if not, write to the Free Software
+#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
 #: doc/man/wesnothd.6:15
 msgid "B<wesnothd>(6)"
@@ -2553,6 +2556,10 @@ msgstr ""
 #: doc/man/wesnothd.6:284
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#, no-wrap
+#~ msgid "2021"
+#~ msgstr "2021"
 
 #, no-wrap
 #~ msgid "2018"

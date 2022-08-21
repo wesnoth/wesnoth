@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
-"POT-Creation-Date: 2022-01-16 13:30+0300\n"
+"POT-Creation-Date: 2022-08-20 19:37-0500\n"
 "PO-Revision-Date: 2022-02-01 13:06+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
 
 # type: TH
@@ -30,8 +30,8 @@ msgstr "WESNOTH"
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
-msgid "2021"
-msgstr "2021"
+msgid "2022"
+msgstr ""
 
 # type: TH
 #. type: TH
@@ -1109,16 +1109,16 @@ msgid ""
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\". On Windows it is also possible to specify a directory relative to "
-"the process working directory by using path starting with \".\\e\" or \"..\\e"
-"\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, "
-"on other systems to the userdata path."
+"the process working directory by using path starting with \".\\e\" or \".."
+"\\e\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/"
+"wesnoth, on other systems to the userdata path."
 msgstr ""
 "установить папку с пользовательскими настройками в подпапку I<имя> каталога "
 "$HOME (или \"Мои документы\\eMy Games\" для системы Windows).  Если папка с "
-"пользовательскими настройками находится вне папки $HOME (или \"Мои документы"
-"\\eMy Games\"), задайте абсолютный путь. Помимо этого, в системе Windows "
-"возможно задать каталог относительно папки запущенного процесса, если "
-"использовать путь, начинающийся с \".\\e\" или \"..\\e\".  В X11 по "
+"пользовательскими настройками находится вне папки $HOME (или \"Мои "
+"документы\\eMy Games\"), задайте абсолютный путь. Помимо этого, в системе "
+"Windows возможно задать каталог относительно папки запущенного процесса, "
+"если использовать путь, начинающийся с \".\\e\" или \"..\\e\".  В X11 по "
 "умолчанию используется $XDG_CONFIG_HOME или $HOME/.config/wesnoth, в других "
 "системах — путь к пользовательским данным."
 
@@ -1603,7 +1603,10 @@ msgstr "АВТОРСКОЕ ПРАВО"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
-msgid "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+#, fuzzy
+#| msgid ""
+#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Авторское право \\(co Дэвид Уайт, 2003-2021 E<lt>davidnwhite@verizon.netE<gt>"
 
@@ -2506,6 +2509,10 @@ msgstr ""
 #: doc/man/wesnothd.6:284
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
+
+#, no-wrap
+#~ msgid "2021"
+#~ msgstr "2021"
 
 #, no-wrap
 #~ msgid "2018"

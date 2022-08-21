@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.7+svn\n"
-"POT-Creation-Date: 2022-07-10 10:23-0500\n"
+"POT-Creation-Date: 2022-08-20 19:38-0500\n"
 "PO-Revision-Date: 2012-12-30 22:29+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -15,6 +15,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+#. type: Content of: outside any tag (error?)
+#: doc/manual/manual.en.xml:3
+msgid "<?asciidoc-toc?> <?asciidoc-numbered?>"
+msgstr ""
 
 # type: Attribute 'lang' of: <book>
 #. type: Attribute 'lang' of: <book>
@@ -350,9 +355,10 @@ msgstr ""
 "kesulitan: mudah, sedang (normal), dan sulit. Kami menyarankan sedang pada "
 "tingkat ini adalah menantang, tapi tidak sulit. Anda tidak dapat mengubah "
 "kesulitan selama masa kampanye. Jika Anda memiliki masalah serius berjuang "
-"melalui kesulitan mudah, panduan tentang <link linkend=\"basic_strategy"
-"\">Strategi Dasar</link> pasti akan membantu anda. Setelah anda memilih "
-"kesulitan, anda akan mulai dengan skenario pertama kampanye."
+"melalui kesulitan mudah, panduan tentang <link "
+"linkend=\"basic_strategy\">Strategi Dasar</link> pasti akan membantu anda. "
+"Setelah anda memilih kesulitan, anda akan mulai dengan skenario pertama "
+"kampanye."
 
 # type: Content of: <book><chapter><section><section><section><title>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -374,8 +380,8 @@ msgstr ""
 "lawan. Anda dapat memainkan game melalui internet atau di komputer anda, "
 "melawan komputer atau lawan manusia. Bila Anda memilih tombol ini dialog "
 "akan muncul dan memungkinkan anda untuk memilih bagaimana anda ingin "
-"memainkan skenario. Untuk mempelajari lebih lanjut, lihat <link linkend="
-"\"scenarios\">scenarios</link>."
+"memainkan skenario. Untuk mempelajari lebih lanjut, lihat <link "
+"linkend=\"scenarios\">scenarios</link>."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -545,8 +551,8 @@ msgstr "Berikutnya"
 msgid ""
 "Click this button to read the next little tip from the \"Tome of Wesnoth\"."
 msgstr ""
-"Klik tombol ini untuk membaca sedikit info berikutnya dari \"Tome of Wesnoth"
-"\"."
+"Klik tombol ini untuk membaca sedikit info berikutnya dari \"Tome of "
+"Wesnoth\"."
 
 # type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
@@ -558,11 +564,11 @@ msgstr "Sebelumnya"
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><listitem><simpara>
 #: doc/manual/manual.en.xml:259
 msgid ""
-"Click this button to read the previous little tip from the \"Tome of Wesnoth"
-"\"."
+"Click this button to read the previous little tip from the \"Tome of "
+"Wesnoth\"."
 msgstr ""
-"Klik tombol ini untuk membaca sedikit info sebelumnya dari \"Tome of Wesnoth"
-"\"."
+"Klik tombol ini untuk membaca sedikit info sebelumnya dari \"Tome of "
+"Wesnoth\"."
 
 #. type: Content of: <book><chapter><section><variablelist><varlistentry><term>
 #: doc/manual/manual.en.xml:265
@@ -670,8 +676,8 @@ msgstr ""
 "menyelesaikannya. Ini adalah cara tercepat untuk bermain, namun unit anda "
 "tidak disimpan dan anda tidak dapat menggunakan unit kampanye. Anda dapat "
 "memainkan skenario melawan komputer atau melawan pemain lain baik melalui "
-"internet atau di komputer anda. Skenario diakses melalui tombol \"Multiplayer"
-"\" pada menu utama."
+"internet atau di komputer anda. Skenario diakses melalui tombol "
+"\"Multiplayer\" pada menu utama."
 
 # type: Content of: <book><chapter><section><section><simpara>
 #. type: Content of: <book><chapter><section><section><simpara>
@@ -816,12 +822,12 @@ msgstr ""
 #, fuzzy
 #| msgid ""
 #| "A complete list of official and user setup servers is listed at this "
-#| "website: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers"
-#| "\">Multiplayer servers</ulink>."
+#| "website: <ulink url=\"http://wesnoth.org/wiki/"
+#| "MultiplayerServers\">Multiplayer servers</ulink>."
 msgid ""
 "A complete list of official and user setup servers is listed at this "
-"website: <ulink url=\"https://wiki.wesnoth.org/MultiplayerServers"
-"\">Multiplayer servers</ulink>."
+"website: <ulink url=\"https://wiki.wesnoth.org/"
+"MultiplayerServers\">Multiplayer servers</ulink>."
 msgstr ""
 "Daftar lengkap resmi dan pengaturan pengguna server terdaftar di website "
 "ini: <ulink url=\"http://wesnoth.org/wiki/MultiplayerServers\">Multiplayer "
@@ -1428,21 +1434,21 @@ msgstr "Pemeliharaan"
 #: doc/manual/manual.en.xml:619
 msgid ""
 "Each unit also has an upkeep cost. The upkeep cost is generally equal to the "
-"level of the unit, unless the unit has the \"Loyal\" trait (<link linkend="
-"\"traits\">see below</link>). Units that are not initially recruited — i.e. "
-"the leader or those that join voluntarily — usually have the Loyal trait. "
-"Upkeep is only paid if the total upkeep of a side&#8217;s units is greater "
-"than the number of villages that side controls. Upkeep paid is the "
+"level of the unit, unless the unit has the \"Loyal\" trait (<link "
+"linkend=\"traits\">see below</link>). Units that are not initially recruited "
+"— i.e. the leader or those that join voluntarily — usually have the Loyal "
+"trait. Upkeep is only paid if the total upkeep of a side&#8217;s units is "
+"greater than the number of villages that side controls. Upkeep paid is the "
 "difference between the number of villages and the upkeep cost."
 msgstr ""
 "Setiap unit juga memiliki biaya pemeliharaan. Biaya pemeliharaan umumnya "
-"sama dengan tingkat unit, kecuali unit tersebut memiliki sifat \"Loyal"
-"\" (<link linkend=\"traits\">see below</link>).  Unit yang awalnya tidak "
-"direkrut — yaitu pemimpin atau orang-orang yang bergabung secara sukarela — "
-"biasanya memiliki sifat Loyal. Pemeliharaan hanya dibayarkan jika total "
-"biaya pemeliharaan unit&#8217; adalah lebih besar dari jumlah desa yang di "
-"kontrol. Pemeliharaan yang dibayarkan adalah selisih antara jumlah desa dan "
-"biaya pemeliharaan."
+"sama dengan tingkat unit, kecuali unit tersebut memiliki sifat "
+"\"Loyal\" (<link linkend=\"traits\">see below</link>).  Unit yang awalnya "
+"tidak direkrut — yaitu pemimpin atau orang-orang yang bergabung secara "
+"sukarela — biasanya memiliki sifat Loyal. Pemeliharaan hanya dibayarkan jika "
+"total biaya pemeliharaan unit&#8217; adalah lebih besar dari jumlah desa "
+"yang di kontrol. Pemeliharaan yang dibayarkan adalah selisih antara jumlah "
+"desa dan biaya pemeliharaan."
 
 # type: Content of: <book><chapter><section><section><title>
 #. type: Content of: <book><chapter><section><section><title>
