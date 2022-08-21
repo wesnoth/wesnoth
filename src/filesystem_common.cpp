@@ -132,7 +132,7 @@ std::string get_prefs_file()
 
 std::string get_credentials_file()
 {
-	return get_user_config_dir() + "/credentials";
+	return get_user_config_dir() + "/credentials-aes";
 }
 
 std::string get_default_prefs_file()
