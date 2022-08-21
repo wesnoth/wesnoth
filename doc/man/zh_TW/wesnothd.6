@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd 韋諾之戰多人網路伺服器
+.TH WESNOTHD 6 2022 wesnothd 韋諾之戰多人網路伺服器
 .
 .SH 名稱
 .
@@ -153,6 +153,11 @@ filename.pem 4096\fP
 用逗號分隔的版本字串清單，伺服器會接受清單上面的版本。支援使用 \fB*\fP 和 \fB?\fP 這兩個萬用字元。（預設為對應的韋諾版本）
 .br
 例如：\fBversions_accepted="*"\fP 允許任意版本字串。
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS 全域標籤：
 .
@@ -204,7 +209,8 @@ filename.pem 4096\fP
 這個使用者的密碼
 .TP 
 \fBdb_users_table\fP
-phpbb 論壇中存放使用者資料的表格名稱。很可能是 <table\-prefix>_users（例如：phpbb3_users）。
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 wesnothd 將在其中保存其自己的有關使用者資料的表格名稱。
@@ -219,8 +225,23 @@ wesnothd 將在其中保存其自己的有關每場遊戲中的玩家資料的�
 wesnothd 將在其中保存其自己的有關每場遊戲中被使用的模組的資料的表格名稱。
 .TP 
 \fBdb_user_group_table\fP
-phpbb 論壇中存放使用者群組資料的表格名稱。很可能是
-<table\-prefix>_user_group（例如：phpbb3_user_group）。
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 被視為具有審核權限的論壇組的 ID。
@@ -241,7 +262,7 @@ phpbb 論壇中存放使用者群組資料的表格名稱。很可能是
 .
 .SH 著作權
 .
-著作權 \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 這是一個自由軟體，這個軟體採用由自由軟體協會(FSF)所發佈的GPLv2授權協議。沒有保證，甚至對「可銷售性」和「對某一特定目的的適用性」也沒有保證。本段翻譯文字不具法律效力，如有需要請參閱原文或者是
 GPLv2 授權條款。

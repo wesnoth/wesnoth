@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
+.TH WESNOTHD 6 2022 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
 .
 .SH NÁZEV
 .
@@ -180,6 +180,11 @@ jsou zástupné znaky \fB*\fP a\ \fB?\fP. (výchozí hodnotou je příslušná v
 wesnoth)
 .br
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS "Globální značky:"
 .
@@ -240,9 +245,8 @@ Název uživatele pro přihlášení k\ databázi
 Heslo tohoto uživatele
 .TP 
 \fBdb_users_table\fP
-Název tabulky, do které tvé phpBB fórum ukládá svá data o
-uživatelích. S\ největší pravděpodobností to bude
-<table\-prefix>_users (např. phpbb3_users).
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Název tabulky, do které bude wesnothd ukládat svá vlastní data
@@ -260,9 +264,23 @@ Název tabulky, do které bude wesnothd ukládat svá vlastní data
 o\ modifikacích použitých ve hře.
 .TP 
 \fBdb_user_group_table\fP
-Název tabulky, do které tvé phpBB fórum ukládá svá data o\ skupinách
-uživatelů. S\ největší pravděpodobností to bude
-<table\-prefix>_user_group (např. phpbb3_user_group).
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 Identifikátor skupiny fóra, o\ které se předpokládá, že má oprávnění
@@ -286,7 +304,7 @@ Navštivte oficiální stránky: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a

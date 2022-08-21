@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
 "PO-Revision-Date: 2022-05-30 20:21+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -158,7 +158,7 @@ msgstr "海德瑞克二世"
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:37
 #: data/campaigns/Sceptre_of_Fire/scenarios/5_Hills_of_the_Shorbear_Clan.cfg:70
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:34
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1226
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1219
 msgid "Glildur"
 msgstr "格利爾杜爾"
 
@@ -243,7 +243,7 @@ msgstr "讓持有火焰紅寶石的阿蘭尼恩到矮人的城堡"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:170
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:529
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:629
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1100
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1093
 msgid "Death of Rugnur"
 msgstr "魯格努爾死亡"
 
@@ -1525,7 +1525,7 @@ msgstr "移動瑟薩岡至路標"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:174
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:533
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:633
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1104
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1097
 msgid "Death of Krawg"
 msgstr "克勞格死亡"
 
@@ -1537,7 +1537,7 @@ msgstr "克勞格死亡"
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:178
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:537
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:637
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1108
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1101
 msgid "Death of Thursagan"
 msgstr "瑟薩岡死亡"
 
@@ -3368,9 +3368,13 @@ msgstr ""
 
 #. [message]: speaker=Hadlin  # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:600
+#, fuzzy
+#| msgid ""
+#| "I see. Well, come on in. I doubt they would be able to capture this fort, "
+#| "even if they did want to start a war, which I doubt."
 msgid ""
-"I see. Well, come on in. I doubt they would be able to capture this fort, "
-"even if they did want to start a war, which I doubt."
+"I see. Well, come on in. They could never capture this fort, even if they "
+"did want to start a war, which I doubt."
 msgstr ""
 "我瞭解了。好，快進來。我不相信他們能夠攻佔這座堡壘，就算他們想發動一場戰爭，"
 "我也不相信他們會這麼做。"
@@ -3887,7 +3891,7 @@ msgstr "打碎！"
 
 #. [message]: speaker=narrator
 #. Krawg survives in both variants of this paragraph, but this one has an extra sentence to explain the gryhon riders’ fate. Surrounding events imply that flying units can escape, but the plot requires all dwarves to die.
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:963
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:956
 msgid ""
 "Once the magic seal capping the throat of the volcano was removed, lava and "
 "toxic gas exploded upward, killing everyone inside and sealing them in a "
@@ -3902,7 +3906,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. Krawg survives in both variants of this paragraph, this one is shown if the player didn’t have any gryphon riders. Surrounding events imply that flying units can escape, and in this variant Krawg is the only flying unit.
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:971
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:964
 msgid ""
 "Once the magic seal capping the throat of the volcano was removed, lava and "
 "toxic gas exploded upward, killing everyone inside and sealing them in a "
@@ -3914,13 +3918,13 @@ msgstr ""
 "遙遠未來的某一天。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1048
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1041
 msgid ""
 "These chests have been forced open. Whatever they once held has been removed."
 msgstr "這些箱子已經被強制撬開了。無論它們曾經裝著什麼都已被拿光了。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1074
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1067
 msgid ""
 "Ah! We aren’t wandering the bowels o’ the earth, this is crafted stone! It’s "
 "very old though..."
@@ -3929,7 +3933,7 @@ msgstr ""
 
 # 看不懂「there are drawings showing three arcs spanning what must be the volcano」。
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1086
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1079
 msgid ""
 "This is some sort of notebook... I can’t read the text, but there are "
 "drawings showing three arcs spanning what must be the volcano. There are "
@@ -3941,21 +3945,21 @@ msgstr ""
 "在無法解開它。"
 
 #. [objective]: condition=win
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1096
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1089
 msgid "Explore as much of the cave as possible"
 msgstr "儘可能地探索這個洞穴"
 
 #. [unit]: type=Troll, role=Guardian
 #. [unit]: type=Troll Shaman, role=Guardian
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1127
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1135
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1143
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1151
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1120
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1128
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1136
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1144
 msgid "Guardian"
 msgstr "守護者"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1156
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1149
 msgid ""
 "Well, we’ve put some distance between us and the elves, so we have a little "
 "time to think. What is this place?"
@@ -3964,7 +3968,7 @@ msgstr ""
 "地方？"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1161
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1154
 msgid ""
 "Remember what Khrakrahs said, about this being a volcano? Well, it seems "
 "we’re under the crater, sitting on the magma chamber... I think we should "
@@ -3974,7 +3978,7 @@ msgstr ""
 "我想我們應該嘗試造成它噴發。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1165
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1158
 msgid ""
 "Huh, makes sense. It will kill all the elves, and we might be able to find a "
 "safe place so the lava doesn’t kill us."
@@ -3983,12 +3987,12 @@ msgstr ""
 "會殺死我們。"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1169
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1162
 msgid "Yes, an interesting plan. How do you propose we do this?"
 msgstr "是的，一個有趣的計劃。你建議我們要如何做這件事？"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1173
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1166
 msgid ""
 "Look up! If this were a normal volcano, you’d see stars and sky. Instead, "
 "there’s a high ceiling, shaped like a cone. This means that something must "
@@ -4002,7 +4006,7 @@ msgstr ""
 "室的中央。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1177
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1170
 msgid ""
 "I see, yes. Quite a gamble, yet what choice do we have? Let’s explore and "
 "hope we find something like what you describe."
@@ -4011,7 +4015,7 @@ msgstr ""
 "能找到你描述的那個東西吧。"
 
 #. [message]: speaker=Krawg
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1181
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1174
 msgid ""
 "Krah!\n"
 "<i>(Looks about the cave, adopts a hostile stance, then glances back at the "
@@ -4021,14 +4025,14 @@ msgstr ""
 "<i>（環視洞窟，擺出敵對姿態，然後回頭看一眼矮人。）</i>"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1186
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1179
 msgid ""
 "Indeed, Krawg, we are not alone down here. Orcs and trolls are prowling "
 "around."
 msgstr "確實，克勞格，我們在這下面不是孤單的。半獸人和巨魔正在周圍徘徊。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1204
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1197
 msgid ""
 "Friends, brothers, this is a desperate situation, I need your help. Can we "
 "negotiate pay after we’re back to safety?"
@@ -4037,22 +4041,22 @@ msgstr ""
 "之後再來談工資嗎？"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1209
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1202
 msgid "Recall costs are reduced for the duration of the scenario."
 msgstr "在這個章節中，招回的費用變少了。"
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1246
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1239
 msgid "End of the road, little dwarves! That ruby is as good as ours..."
 msgstr "你們生命的盡頭到了，小矮人！那個紅寶石幾乎就是我們的了……"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1285
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1278
 msgid "Thursagan! The elves are right on our tail! What should we do?"
 msgstr "瑟薩岡！精靈正尾隨著我們！我們該怎麼辦？"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1289
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1282
 msgid ""
 "We should try to set off the volcano as soon as possible. Draw the elves "
 "further into the caves, so they can’t escape when it does erupt."
@@ -4061,58 +4065,58 @@ msgstr ""
 "它噴發時逃脫。"
 
 #. [message]: speaker=Glildur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1310
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1303
 msgid "Damnation! I almost had it... but now I join Landar..."
 msgstr "該死！我幾乎要得到它了……但現在我就要加入蘭德爾……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1324
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1317
 msgid ""
 "This must be the center of the volcano! The lava is blocked just as you "
 "surmised, Thursagan! It’s plugged up with this... enchanted courtyard?"
 msgstr "這肯定就是火山的中心！它被這個……附魔的庭院堵住了嗎？"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1328
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1321
 msgid ""
 "Aye, it is enchanted; I can tell by those runes. We need to break the "
 "enchantment somehow."
 msgstr "是的，我們需要以某種方式來解除附魔。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1342
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1335
 msgid ""
 "It’s very hot here, above the lava. This bridge also seems rather delicate — "
 "I’d better not loiter here."
 msgstr "這裡非常熱，在岩漿之上。這座橋也看起來相當脆弱。我最好不要在這裡遊蕩。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1362
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1355
 msgid ""
 "These trolls are not like others I’ve seen, and they seem to be guarding "
 "this chamber."
 msgstr "這些巨魔不像其他我所見過的，他們似乎正在守護著這個腔室。"
 
 #. [message]
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1374
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1367
 msgid ""
 "Yes, we tend and preserve this volcano, protecting it from those like you."
 msgstr "是的，我們照料並保護這座火山，保護它免受像你們這些人的傷害。"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1378
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1371
 msgid "Us? We’re nice, not like the elves chasing us."
 msgstr "我們？我們人很好，不像那些追著我們的精靈。"
 
 #. [message]: speaker=Baglur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1382
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1375
 msgid ""
 "Aye, but it’s no use, Rugnur. There’s no peace between dwarves and trolls, "
 "never has been."
 msgstr "是啊，但講這個沒用，魯格努爾。矮人和巨魔之間是沒有和平的，從來沒有。"
 
 #. [message]: speaker=Gathor
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1426
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1419
 msgid ""
 "Ah ha! I knew it, there are intruders! And yet our damned bridge is broken, "
 "it was built by idiots. Come, come, bring planks, we’ve got to get across!"
@@ -4121,12 +4125,12 @@ msgstr ""
 "來，帶上木板，我們必須橫跨過去！"
 
 #. [message]: speaker=Rugnur
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1430
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1423
 msgid "Huh. Well, let’s not stay here too long."
 msgstr "嗬。嗯，讓我們別待在這裡太久。"
 
 #. [message]: speaker=Thursagan
-#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1434
+#: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1427
 msgid ""
 "Right, if we can get both the orcs and the elves behind us, maybe they’ll "
 "fight each other."
