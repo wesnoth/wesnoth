@@ -1,17 +1,8 @@
-## Version 1.17.6+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
+## Version 1.17.7
  ### Terrain
    * Generalized "lower terrain" similar to the mid-level in lava/chasm.  Cosmetic and unwalkable versions. (PR #6927)
  ### Translations
    * Updated translations: Arabic, British English, Bulgarian, Chinese (Traditional), Czech, Finnish, French, Italian, Portuguese (Brazil)
- ### Units
- ### User interface
  ### WML Engine
    * Add the pre_attack event.
  ### Miscellaneous and Bug Fixes
