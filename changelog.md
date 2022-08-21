@@ -1,3 +1,18 @@
+## Version 1.17.7+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.17.7
  ### Terrain
    * Generalized "lower terrain" similar to the mid-level in lava/chasm.  Cosmetic and unwalkable versions. (PR #6927)
