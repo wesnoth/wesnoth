@@ -142,7 +142,7 @@ endif()
 
 ########### Conf Tests ###########
 
-if(NOT MSVC)
+if((ENABLE_GAME OR ENABLE_TESTS) AND NOT MSVC)
 	# test for SDL2
 	add_executable(sdl2 conftests/sdl2.cpp)
 	set_target_properties(sdl2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
