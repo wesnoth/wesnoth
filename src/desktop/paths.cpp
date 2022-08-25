@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "preferences/general.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #if !defined(_WIN32) && !defined(__APPLE__)
 #include <boost/filesystem.hpp>
@@ -118,7 +119,7 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 		catch(...) {
 			//bool is_empty(const path& p, system::error_code& ec) might throw.
 			//For example if you have no permission on that directory. Don't list the file in that case.
-			DBG_DU << "caught exception in enumerate_storage_devices";
+			DBG_DU << "caught exception " << utils::get_unknown_exception_type() << " in enumerate_storage_devices";
 		}
 	}
 

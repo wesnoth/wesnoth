@@ -117,12 +117,13 @@
 #include "serialization/string_utils.hpp"
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
-#include <functional>
+#include "utils/general.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/test/unit_test.hpp>
 
+#include <functional>
 #include <memory>
 
 using namespace gui2::dialogs;
@@ -215,7 +216,7 @@ namespace {
 			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
-				exception = "unknown";
+				exception = utils::get_unknown_exception_type();
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
 					"Test for '" << id
@@ -262,7 +263,7 @@ namespace {
 				} catch(const std::exception& e) {
 					exception = e.what();
 				} catch(...) {
-					exception = "unknown";
+					exception = utils::get_unknown_exception_type();
 				}
 				BOOST_CHECK_MESSAGE(exception.empty(),
 						"Test for '" << id
@@ -306,7 +307,7 @@ namespace {
 			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
-				exception = "unknown";
+				exception = utils::get_unknown_exception_type();
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
 					"Test for tip '" << id
@@ -676,12 +677,12 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
 	} catch(const wml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
-					"which doesn't fit on the screen."));
+		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn't fit on the screen."));
 		return;
 	} catch(...) {
+		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");
 	}
-	BOOST_ERROR("Didn't catch the wanted exception.");
+	BOOST_ERROR("Didn't catch the wanted exception, instead caught nothing.");
 }
 
 BOOST_AUTO_TEST_SUITE_END()

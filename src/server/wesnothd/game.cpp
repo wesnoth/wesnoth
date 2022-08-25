@@ -130,6 +130,7 @@ game::~game()
 	} catch(const boost::coroutines::detail::forced_unwind&) {
 		ERR_GAME << "Caught forced_unwind in game destructor!";
 	} catch(...) {
+		ERR_GAME << "Caught other exception in game destructor: " << utils::get_unknown_exception_type();
 	}
 }
 

@@ -720,7 +720,9 @@ unit::~unit()
 		}
 	} catch(const std::exception & e) {
 		ERR_UT << "Caught exception when destroying unit: " << e.what();
-	} catch(...) {}
+	} catch(...) {
+		DBG_UT << "Caught general exception when destroying unit: " << utils::get_unknown_exception_type();
+	}
 }
 
 /**
@@ -2584,7 +2586,9 @@ unit_movement_resetter::~unit_movement_resetter()
 		}
 
 		u_.set_movement(moves_);
-	} catch(...) {}
+	} catch(...) {
+		DBG_UT << "Caught exception when destroying unit_movement_resetter: " << utils::get_unknown_exception_type();
+	}
 }
 
 std::string unit::TC_image_mods() const

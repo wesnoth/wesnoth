@@ -1183,7 +1183,7 @@ int main(int argc, char** argv)
 		// is caught and all destructors are actually called. (Apparently,
 		// some compilers will simply terminate without calling destructors if
 		// the exception isn't caught.)
-		PLAIN_LOG << "Caught unspecified general exception. Terminating.";
+		PLAIN_LOG << "Caught general exception " << utils::get_unknown_exception_type() << ". Terminating.";
 		error_exit(1);
 #endif
 	}

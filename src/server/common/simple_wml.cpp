@@ -24,6 +24,7 @@
 #include "server/common/simple_wml.hpp"
 
 #include "log.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_SWML LOG_STREAM(err, log_config)
@@ -996,6 +997,7 @@ document::document(string_span compressed_buf) :
 	try {
 		root_ = new node(*this, nullptr, &cbuf);
 	} catch(...) {
+		ERR_SWML << "Caught exception creating a new simple_wml node: " << utils::get_unknown_exception_type();
 		delete [] buffers_.front();
 		buffers_.clear();
 		throw;

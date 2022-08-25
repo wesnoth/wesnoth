@@ -20,6 +20,7 @@
 #include "gui/core/top_level_drawable.hpp"
 #include "preferences/general.hpp"
 #include "sdl/rect.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 
 #include <SDL2/SDL_rect.h>
@@ -250,8 +251,8 @@ next:
 			try {
 				drawn |= tld->expose(i);
 			} catch(...) {
-				WRN_DM << "exception thrown during expose "
-					<< static_cast<void*>(tld);
+				WRN_DM << "exception " << utils::get_unknown_exception_type()
+					   << " thrown during expose " << static_cast<void*>(tld);
 				drawing_ = false;
 				throw;
 			}
