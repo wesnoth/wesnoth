@@ -2,9 +2,11 @@
 # encoding: utf-8
 # A script for adding source files to the Battle for Wesnoth project.
 
+# known issues:
+# xcode - if a file already exists in 'wesnoth' target, then it incorrectly thinks it also exists in the 'tests' target even though the tests build will fail
+
 import sys
 import inspect
-import uuid
 import pathlib
 
 try:
@@ -119,13 +121,13 @@ def add_to_xcode(filename, targets):
     # or maybe targets could be checked somehow,
     # or maybe the file could simply be completely removed and readded.
     if project.get_files_by_name(filename.name, parent=parent_group):
-        print("  '{filename}' already found in Xcode project, skipping")
+        print("  '"+filename.name+"' already found in Xcode project '"+",".join(translated_targets)+"', skipping")
         return
     
     # force is True here because otherwise a duplicate filename in
     # a different place will block addition of the new file.
     # the rest is just to match existing project file structure.
-    project.add_file(filename,
+    project.add_file(filename.name,
         force=True,
         tree="<group>",
         parent=parent_group,
@@ -145,6 +147,10 @@ def add_to_source_list(filename, source_list):
     sl_lines = open(source_list_file).readlines()
     file_line = filename.as_posix() + '\n'
     
+    # we only need source files in the source_lists, not header files
+    if filename.suffix != "cpp":
+        return
+
     # if the target already has an entry with the same filename, loudly skip
     if file_line in sl_lines:
         print(f"  '{filename}' already found in '{source_list}', skipping")
