@@ -41,6 +41,7 @@
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
 playmp_controller::playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info)
 	: playsingle_controller(level, state_of_game, mp_info && mp_info->skip_replay)
@@ -68,6 +69,7 @@ playmp_controller::~playmp_controller()
 	try {
 		turn_data_.host_transfer().detach_handler(this);
 	} catch(...) {
+		DBG_NG << "Caught exception in playmp_controller destructor: " << utils::get_unknown_exception_type();
 	}
 }
 
@@ -181,6 +183,7 @@ void playmp_controller::play_human_turn()
 				}
 			}
 		} catch(...) {
+			DBG_NG << "Caught exception while playing a side: " << utils::get_unknown_exception_type();
 			turn_data_.send_data();
 			throw;
 		}
@@ -201,6 +204,7 @@ void playmp_controller::play_idle_loop()
 			play_slice_catch();
 			SDL_Delay(1);
 		} catch(...) {
+			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
 			turn_data_.send_data();
 			throw;
 		}

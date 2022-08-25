@@ -20,6 +20,7 @@
 #include "preferences/game.hpp"
 #include "recall_list_manager.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 
 #include <set>
 #include <vector>
@@ -434,6 +435,7 @@ temporary_unit_placer::~temporary_unit_placer()
 			m_.insert(temp_);
 		}
 	} catch(...) {
+		DBG_RG << "Caught exception in temporary_unit_placer destructor: " << utils::get_unknown_exception_type();
 	}
 }
 
@@ -458,6 +460,7 @@ temporary_unit_remover::~temporary_unit_remover()
 			m_.insert(temp_);
 		}
 	} catch(...) {
+		DBG_RG << "Caught exception in temporary_unit_remover destructor: " << utils::get_unknown_exception_type();
 	}
 }
 
@@ -539,5 +542,6 @@ temporary_unit_mover::~temporary_unit_mover()
 			m_.insert(temp_);
 		}
 	} catch(...) {
+		DBG_RG << "Caught exception in temporary_unit_mover destructor: " << utils::get_unknown_exception_type();
 	}
 }

@@ -633,6 +633,7 @@ void variant::serialize_from_string(const std::string& str)
 	try {
 		*this = formula(str).evaluate();
 	} catch(...) {
+		DBG_SF << "Evaluation failed with exception: " << utils::get_unknown_exception_type();
 		*this = variant(str);
 	}
 }

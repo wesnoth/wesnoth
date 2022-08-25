@@ -108,6 +108,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 				// Handshake already complete. Do nothing.
 			}
 		} catch(...) {
+			DBG_NW << "wesnothd_connection worker thread threw general exception: " << utils::get_unknown_exception_type();
 		}
 
 		LOG_NW << "wesnothd_connection::io_service::run() returned";

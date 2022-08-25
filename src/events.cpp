@@ -22,6 +22,7 @@
 #include "quit_confirmation.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 
 #if defined _WIN32
@@ -46,6 +47,7 @@ static lg::log_domain log_display("display");
 
 static lg::log_domain log_event("event");
 #define LOG_EV LOG_STREAM(info, log_event)
+#define DBG_EV LOG_STREAM(debug, log_event)
 
 namespace
 {
@@ -71,6 +73,7 @@ struct invoked_function_data
 			// Handle this exception in the main thread.
 			throw;
 		} catch(...) {
+			DBG_EV << "Caught exception in invoked function: " << utils::get_unknown_exception_type();
 			finished.set_exception(std::current_exception());
 			return;
 		}
