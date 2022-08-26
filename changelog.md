@@ -28,6 +28,7 @@
    * Fixed inconsistent cropping of unusually-sized item images (issue #6118)
    * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
    * Stored credentials are now encrypted with AES rather than RC4. This will result in credentials needing to be re-entered the first time when logging in with this version.
+   * The cache directory is now configurable through a command-line option in the same way as data, user data and user config directories.
 
 ## Version 1.17.6
  ### Campaigns

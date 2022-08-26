@@ -210,6 +210,10 @@ public:
 	bool noreplaycheck;
 	/** True if --mp-test was given on the command line. */
 	bool mptest;
+	/** True if --usercache-path was given on the command line. Prints path to cache directory and exits. */
+	bool usercache_path;
+	/** Non-empty if --usercache-dir was given on the command line. Sets the cache dir to the specified one. */
+	std::optional<std::string> usercache_dir;
 	/** True if --userconfig-path was given on the command line. Prints path to user config directory and exits. */
 	bool userconfig_path;
 	/** Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one. */
