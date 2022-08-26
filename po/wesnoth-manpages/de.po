@@ -1,12 +1,12 @@
 # Translators:
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2006 - 2010.
 #  Rhonda D'Vine <rhonda@deb.at>, 2008 - 2011, 2018.
-# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018.
+# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "POT-Creation-Date: 2022-08-20 19:37-0500\n"
-"PO-Revision-Date: 2022-03-16 11:50+0100\n"
+"PO-Revision-Date: 2022-08-26 11:23+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Lokalize 22.08.0\n"
 "X-Poedit-Bookmarks: -1,-1,276,-1,-1,-1,-1,-1,-1,-1\n"
 
 # type: TH
@@ -28,7 +28,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 # type: TH
 #. type: TH
@@ -816,7 +816,8 @@ msgstr ""
 #: doc/man/wesnoth.6:262
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgstr "B<-p,\\ --preprocess>I<\\ Quelldatei/Verzeichnis>B<\\ >I<Zielverzeichnis>"
+msgstr ""
+"B<-p,\\ --preprocess>I<\\ Quelldatei/Verzeichnis>B<\\ >I<Zielverzeichnis>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:272
@@ -1634,12 +1635,11 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
-#, fuzzy
 #| msgid ""
 #| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1888,7 +1888,7 @@ msgstr "Die allgemeine Syntax ist:"
 #. type: Plain text
 #: doc/man/wesnothd.6:101
 msgid "[I<tag>]"
-msgstr "[I<Element>]"
+msgstr "[I<tag>]"
 
 # type: Plain text
 #. type: Plain text
@@ -1906,7 +1906,7 @@ msgstr "I<Schlüssel>=\"I<Wert>,I<Wert>,...\""
 #. type: Plain text
 #: doc/man/wesnothd.6:107
 msgid "[/I<tag>]"
-msgstr "[/I<Element>]"
+msgstr "[/I<tag>]"
 
 # type: SS
 #. type: SS
@@ -2228,7 +2228,7 @@ msgstr ""
 #: doc/man/wesnothd.6:174
 #, no-wrap
 msgid "Global tags:"
-msgstr "Globale Elemente:"
+msgstr "Globale Tags:"
 
 # type: Plain text
 #. type: Plain text
@@ -2237,7 +2237,7 @@ msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
-"B<[redirect]> Ein Element, um bestimmte Programmversionen anzugeben, die auf "
+"B<[redirect]> Ein Tag, um bestimmte Programmversionen anzugeben, die auf "
 "einen anderen Server umgeleitet werden sollen. Wird nur verwendet wenn "
 "B<versions_accepted> gesetzt ist."
 
@@ -2338,9 +2338,9 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
-"B<[proxy]> Ein Element, das benutzt wird, um dem Server mitzuteilen, wie ein "
-"Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an "
-"den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie "
+"B<[proxy]> Ein Tag, durch den der Server wie ein "
+"Proxy agiert und somit alle Anfragen der mit ihm verbundenen Rechners an "
+"den angegebenen Server weiterleitet. Es werden die gleichen Schlüssel wie "
 "bei B<[redirect]> akzeptiert."
 
 # type: Plain text
