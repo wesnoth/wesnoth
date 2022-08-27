@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-05 14:17 UTC\n"
-"PO-Revision-Date: 2022-08-09 23:10+0200\n"
+"PO-Revision-Date: 2022-08-21 13:14+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2270,11 +2270,12 @@ msgstr "Prosím, lidičky, ne teď."
 msgid "Oh, sorry."
 msgstr "Ach, pardon."
 
+# společná otázka na Morvina i Theru
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:590
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:702
 msgid "Who are you? How did you end up down here?"
-msgstr "Kdo jsi? Jak jsi skončila tady dole?"
+msgstr "Kdo jsi? Jak se ti povedlo skončit tady dole?"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:595
@@ -2334,8 +2335,8 @@ msgid ""
 "Oh, think nothing of it. Let no talk of debts come between us; rather let us "
 "join hands as allies in restoring these Northlands to sanity."
 msgstr ""
-"Ech, to přece nejde. Nemluvme tu o dluzích. Raději si podejme ruce jako "
-"spojenci a pracujme pro společný cíl – obnovu Severních zemí."
+"Ech, to přece nejde. Nemluvme tu o dluzích. Raději si podejme ruce jako "
+"spojenci a pracujme pro společný cíl – obnovu Severních zemí."
 
 #. [message]: speaker=Father Morvin
 #. [message]: speaker=Sister Thera
@@ -2792,10 +2793,11 @@ msgstr ""
 "Uvnitř truhlice dole spočívá elegantně vyřezávané žezlo. Na jeho povchu se "
 "třpytí drahokamy a vyzařuje z něj velká aura síly."
 
+# nejdřív se píše o žezle, pak je to hůl - raději rod nevyjadřovat
 #. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1348
 msgid "rod of justice^Take it"
-msgstr "Vzít si ji"
+msgstr "Uchopit"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1352
@@ -2822,9 +2824,9 @@ msgid ""
 "I don’t think there is a person alive who knows anything more solid than "
 "rumors and legends. There are very few people who even knows it exists!"
 msgstr ""
-"Nemyslím, že by žije někdo, kdo by věděl něco jistého. Možná legendy a "
-"pověsti, to snad ano. Ale i tak, je jen velmi málo těch, kteří vůbec tuší, "
-"že něco takového existuje!"
+"Nemyslím, že žije někdo, kdo by věděl něco jistého. Možná legendy a pověsti, "
+"to snad ano. Ale i tak, je jen velmi málo těch, kteří vůbec tuší, že něco "
+"takového existuje!"
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1377
@@ -2837,7 +2839,7 @@ msgid ""
 "Some of the most ancient elvish legends make some vague mention of this "
 "artifact. But beyond that..."
 msgstr ""
-"Některé nejstarší elfské legendy zmiňují takovýto artefakt. Ale nic víc."
+"Některé nejstarší elfské legendy takovýto artefakt zmiňují. Ale nic víc."
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1387
@@ -2874,12 +2876,13 @@ msgstr ""
 #. [effect]: type=fire
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1412
 msgid "rod of justice"
-msgstr "Hůl spravedlnosti"
+msgstr "hůl spravedlnosti"
 
+# nejdřív se píše o žezle, pak je to hůl - raději rod nevyjadřovat
 #. [option]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1492
 msgid "rod of justice^Leave it"
-msgstr "Nechat ji být"
+msgstr "Ponechat"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1519
@@ -2939,8 +2942,7 @@ msgstr "Zadrž! Nejsme ani trochu Maliforovi stoupenci. Přišli jsme jej zniči
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1619
 msgid "Finally! You don’t know how long we have been waiting for this day."
 msgstr ""
-"Konečně! Nedokážete si představit, jak dlouho jsme čekali na tuto "
-"příležitost."
+"Konečně! Nedokážete si představit, jak dlouho jsme čekali na tuto chvíli."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:1624
@@ -3115,7 +3117,7 @@ msgid ""
 "for dinner."
 msgstr ""
 "Aha, tyhle věci. Pozor na to, jsou to chapadla nějaké vodní potvory. Nejdřív "
-"vás utlučou, potom odvlečou někam do hlubin kde to má tlamu. A nakonec... "
+"vás utlučou, potom odvlečou někam do hlubin, kde to má tlamu. A nakonec... "
 "večeře."
 
 #. [message]: speaker=Tallin
@@ -3156,7 +3158,7 @@ msgstr "Ach! Duch!"
 #. [message]: speaker=Abhai
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2099
 msgid "Who are you that dares to venture down these tunnels?"
-msgstr "Kdo jste, že jste se opovážili do těchto tunelů?"
+msgstr "Kdo jsi, že sis troufl sestoupit do těchto tunelů?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2104
@@ -3448,8 +3450,8 @@ msgid ""
 "Fools! Don’t think it’s so easy to kill me. Your corpses shall all soon be "
 "serving me. Fall on them, my hordes!"
 msgstr ""
-"Hlupáci! Nemyslete že je tak snadné zabít mne. Brzy mi budou sloužit vaše "
-"mrtvoly. Hrr na ně, mé hordy!"
+"Hlupáci! Nemyslete si, že je tak snadné mne zabít. Brzy mi budou sloužit "
+"vaše mrtvoly. Hrr na ně, mé hordy!"
 
 #. [message]: speaker=Malifor
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2716
@@ -3560,8 +3562,8 @@ msgid ""
 "MAY THE EARTH OPEN UP AND SWALLOW YOU! MAY ALL YOUR TEETH FALL OUT! MAY YOU "
 "BECOME A WEAK SKINNY OLD MAN! MAY—"
 msgstr ""
-"VZÝVÁM ZEM, ABY SE OTEVŘELA A POHLTILA VÁS! AŤ VÁM VYPADAJÍ VŠECHNY ZUBY! AŤ "
-"SE Z VÁS STANOU SLABÍ VYCHRTLÍ STARCI! AŤ..."
+"VZÝVÁM ZEM, ABY SE OTEVŘELA A POHLTILA VÁS! AŤ VÁM VYPADAJÍ VŠECHNY ZUBY! AŤ "
+"SE Z VÁS STANOU SLABÍ, VYCHRTLÍ STARCI! AŤ..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Northern_Rebirth/scenarios/05a_01_The_Pursuit.cfg:2853
@@ -3584,7 +3586,8 @@ msgid ""
 "Now, let’s get back to the dwarves and see what progress they have made in "
 "forging us weapons."
 msgstr ""
-"Teď se vrátíme k trpaslíkům a zjistíme jak pokročili ve výrobě našich zbraní."
+"Teď se vrátíme k trpaslíkům a zjistíme, jak pokročili ve výrobě našich "
+"zbraní."
 
 #. [scenario]: id=05a_02_Dealings
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:5
@@ -3615,10 +3618,10 @@ msgid ""
 msgstr ""
 "Když se přiblížili, uvítal je potěšující pohled. Nové opevnění, "
 "připomínající starobylé legendární nepřekonatelné trpasličí valy, vyrostlo "
-"všude kolem jakoby z ničeho. Na něm postávali dobře vyzbrojení trpaslíci, "
-"kteří jim nadšeně mávali. Z dolů v pozadí vystupovala oblaka kouře, dávající "
-"tušit množství usilovně pracujících kováren. Mnoho nových zbraní a brnění "
-"pro lidi i trpaslíky již bylo naskladněno a ohlušující rachot kladiv "
+"všude kolem jakoby z ničeho. Na něm postávali dobře vyzbrojení trpaslíci, "
+"kteří jim nadšeně mávali. Z dolů v pozadí vystupovala oblaka kouře, dávající "
+"tušit množství usilovně pracujících kováren. Mnoho nových zbraní a brnění "
+"pro lidi i trpaslíky již bylo naskladněno a ohlušující rachot kladiv "
 "sliboval další přísun."
 
 #. [part]
@@ -3628,8 +3631,8 @@ msgid ""
 "warmly and arrangements were quickly made for all their food and "
 "accommodations, as well as care for the sick and wounded."
 msgstr ""
-"Hamela našli v kovárně nad novou sekerou. Vřele je přivítal a rychle byly "
-"dohodnuty podrobnosti jejich ubytování a péče o nemocné a raněné."
+"Hamela našli v kovárně nad novou sekerou. Vřele je přivítal a rychle byly "
+"dohodnuty podrobnosti jejich ubytování a péče o nemocné a raněné."
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/05a_02_Dealings.cfg:28
@@ -3783,8 +3786,8 @@ msgid ""
 "many years now. As a young dwarf I was trained in the arts of leadership and "
 "war. There are things you will need to know..."
 msgstr ""
-"A ještě něco, Talline. Vedu trpaslíky už po mnoho let. Jako mladý jsem "
-"prodělal vojenský výcvik, takže vím dost o válčení a velení. je tu několik "
+"A ještě něco, Talline. Vedu trpaslíky už po mnoho let. Jako mladý jsem "
+"prodělal vojenský výcvik, takže vím dost o válčení a velení. Je tu několik "
 "věcí, které bys měl vědět..."
 
 #. [message]: speaker=Hamel
@@ -3979,9 +3982,9 @@ msgid ""
 "Dwarven Doors, and those wolves on the way to the mines; they were both "
 "saying something about ‘The Master’."
 msgstr ""
-"Nevím Talline, jestli je to tak jednoduché. Vzpomeň si na ty skřety v "
-"Trpasličích dveřích a vlčí jezdce na cestě k dolům. Všichni mluvili o "
-"„Pánovi“."
+"Nevím, Talline, jestli je to tak jednoduché. Vzpomeň si na ty skřety "
+"v Trpasličích dveřích a vlčí jezdce na cestě k dolům. Všichni mluvili "
+"o „Pánovi“."
 
 #. [message]: id=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/06a_Old_Friend.cfg:253
@@ -8647,7 +8650,7 @@ msgstr "Vy monstra! Myslíte si, že jste tvrďáci? Tak se dívejte!"
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:499
 msgid "You incompetent fools, you think you can kill us? Good luck!"
 msgstr ""
-"Neschopní hlupáci, myslíte si že nás můžete jen tak zabít? Hodně štěstí!"
+"Neschopní hlupáci, myslíte si, že nás můžete jen tak zabít? Hodně štěstí!"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:251
@@ -8718,7 +8721,7 @@ msgstr "Thero, až to bude za námi, měla bys zkusit hrát divadlo."
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:338
 msgid "Hey, don’t you always say that life is nothing but a drama?"
-msgstr "Hele, copak zrovna ty neříkáš pořád že život je drama?"
+msgstr "Hele, copak zrovna ty pořád neříkáš, že život je jen drama?"
 
 #. [message]: speaker=Father Morvin
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:343
@@ -8755,7 +8758,7 @@ msgstr "Děkuj bohům Světla, ne mně!"
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:385
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:585
 msgid "Ouch! That hurts. Let’s try not to do that again, shall we?"
-msgstr "Au! To docela bolelo. Raději bych to už neopakovala."
+msgstr "Au! To bolí. Zkusme to už znovu nedělat, ano?"
 
 #. [message]: speaker=Sister Thera
 #: data/campaigns/Northern_Rebirth/utils/herodeaths.cfg:392
