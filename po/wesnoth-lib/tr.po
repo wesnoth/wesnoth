@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2022.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ... 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2022-01-05 22:30+0300\n"
-"Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
+"PO-Revision-Date: 2022-08-21 14:19+0300\n"
+"Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -2006,21 +2006,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3221
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but also severely impede any passage through them. Units burdened "
-#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
-#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
-#| "piscine bodies which also render them unable to climb steep inclines. "
-#| "Nagas are an exception due to their strong arms and rugged scales. Both "
-#| "dwarves and trolls are native to mountainous terrain, and have an easy "
-#| "time traversing them.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2045,7 +2030,7 @@ msgstr ""
 "Cüceler ve troller dağlık arazinin yerlileridir ve geçmek için bolca "
 "zamanları vardır.\n"
 "\n"
-"Çoğu birim dağlarda %60 savunma alırken Cüceler %70 alır."
+"Cüceler %70'in tadını çıkarırken çoğu birim dağlarda %60 savunma alır."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:3233
@@ -4577,8 +4562,6 @@ msgstr "Asker alımlar"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Leader"
 msgid "Choose Your Leader"
 msgstr "Liderinizi Seçin"
 
@@ -5907,63 +5890,42 @@ msgstr "süresi doldu"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
-#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num yıl"
 msgstr[1] "$num yıl"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
-#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num ay"
 msgstr[1] "$num ay"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
-#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num hafta"
 msgstr[1] "$num hafta"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
-#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num gün"
 msgstr[1] "$num gün"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
-#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num saat"
 msgstr[1] "$num saat"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
-#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num dakika"
 msgstr[1] "$num dakika"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
-#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num saniye"
@@ -8192,11 +8154,32 @@ msgstr ""
 "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. '$deprecated_key' "
 "için destek $removal_version sürümünde kaldırılacaktır."
 
+#~ msgid "By:"
+#~ msgstr "Yapan:"
+
+#~ msgid "Gold Left:"
+#~ msgstr "Kalan Altın:"
+
+#~ msgid "Active Troops:"
+#~ msgstr "Etkin Askerler:"
+
+#~ msgid "Reserve Troops:"
+#~ msgstr "Yedek Askerler:"
+
 #~ msgid "Area to draw has negative size"
 #~ msgstr "Çizilecek alan negatif boyuta sahip "
 
 #~ msgid "Area to draw is larger than widget size"
 #~ msgstr "Çizilecek alan, gereç boyutundan daha büyük "
+
+#~ msgid "Selected Game"
+#~ msgstr "Seçili oyun"
+
+#~ msgid "Lobby"
+#~ msgstr "Salon"
+
+#~ msgid "Other Games"
+#~ msgstr "Diğer Oyunlar"
 
 #~ msgid "Choose Test"
 #~ msgstr "Testi Seç"
@@ -8208,106 +8191,3 @@ msgstr ""
 #~ "A terrain with a string with more than 4 characters has been found, the "
 #~ "affected terrain is:"
 #~ msgstr "Dizgesi 4 karakterden daha uzun bir arazi bulundu; etkilenen arazi:"
-
-#, fuzzy
-#~| msgid "Desert Castle"
-#~ msgid "Desert Cobbles"
-#~ msgstr "Çöl Kalesi"
-
-#~ msgid "Gold Left:"
-#~ msgstr "Kalan Altın:"
-
-#~ msgid "Active Troops:"
-#~ msgstr "Etkin Askerler:"
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "Yedek Askerler:"
-
-#~ msgid "By:"
-#~ msgstr "Yapan:"
-
-#, fuzzy
-#~| msgid "Leader"
-#~ msgid "Leader:"
-#~ msgstr "Lider"
-
-#, fuzzy
-#~| msgid "<b>Gender:</b>"
-#~ msgid "Gender:"
-#~ msgstr "<b>Cinsiyet:</b>"
-
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruits:"
-#~ msgstr "Asker alımlar"
-
-#, fuzzy
-#~| msgid "Starting Positions Tool"
-#~ msgid "Starting position:"
-#~ msgstr "Başlangıç Konumları Aracı"
-
-#, fuzzy
-#~| msgid "editor_hotkeys^E"
-#~ msgid "titlescreen_hotkeys^T"
-#~ msgstr "E"
-
-#, fuzzy
-#~| msgid "timespan^$num year"
-#~| msgid_plural "timespan^$num years"
-#~ msgid "timespan^$num years"
-#~ msgstr "$num yıl"
-
-#, fuzzy
-#~| msgid "timespan^$num month"
-#~| msgid_plural "timespan^$num months"
-#~ msgid "timespan^$num months"
-#~ msgstr "$num ay"
-
-#, fuzzy
-#~| msgid "timespan^$num week"
-#~| msgid_plural "timespan^$num weeks"
-#~ msgid "timespan^$num weeks"
-#~ msgstr "$num hafta"
-
-#, fuzzy
-#~| msgid "timespan^$num day"
-#~| msgid_plural "timespan^$num days"
-#~ msgid "timespan^$num days"
-#~ msgstr "$num gün"
-
-#, fuzzy
-#~| msgid "timespan^$num hour"
-#~| msgid_plural "timespan^$num hours"
-#~ msgid "timespan^$num hours"
-#~ msgstr "$num saat"
-
-#, fuzzy
-#~| msgid "timespan^$num minute"
-#~| msgid_plural "timespan^$num minutes"
-#~ msgid "timespan^$num minutes"
-#~ msgstr "$num dakika"
-
-#, fuzzy
-#~| msgid "timespan^$num second"
-#~| msgid_plural "timespan^$num seconds"
-#~ msgid "timespan^$num seconds"
-#~ msgstr "$num saniye"
-
-#~ msgid "Selected Game"
-#~ msgstr "Seçili oyun"
-
-#~ msgid "Lobby"
-#~ msgstr "Salon"
-
-#~ msgid "Other Games"
-#~ msgstr "Diğer Oyunlar"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Team:"
-#~ msgstr "Takım"
-
-#, fuzzy
-#~| msgid "Tutorial"
-#~ msgid "Start Tutorial"
-#~ msgstr "Öğretici"
