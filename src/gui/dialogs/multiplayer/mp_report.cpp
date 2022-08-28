@@ -42,26 +42,26 @@ mp_report::mp_report(std::string& report_text)
 {
 }
 
-void mp_report::pre_show(window& window)
+void mp_report::pre_show(window& win)
 {
-	menu_button& occurrence_location = find_widget<menu_button>(&window, "occurrence_location", false);
-
 	std::vector<config> occurrence_location_entries;
 	occurrence_location_entries.emplace_back("label", _("Lobby"));
 	occurrence_location_entries.emplace_back("label", _("Whisper"));
 	occurrence_location_entries.emplace_back("label", _("Game"));
 
-	occurrence_location.set_values(occurrence_location_entries);
+	find_widget<menu_button>(&win, "occurrence_location", false).set_values(occurrence_location_entries);
 
-	button& ok = find_widget<button>(&window, "ok", false);
+	button& ok = find_widget<button>(&win, "ok", false);
 	ok.set_active(false);
-	window.set_enter_disabled(true);
+	win.set_enter_disabled(true);
 
-	text_box& reportee = find_widget<text_box>(&window, "reportee", false);
+	text_box& reportee = find_widget<text_box>(&win, "reportee", false);
 	reportee.set_text_changed_callback(std::bind(&mp_report::reportee_changed, this, std::placeholders::_2));
 
-	text_box& report_reason = find_widget<text_box>(&window, "report_reason", false);
+	text_box& report_reason = find_widget<text_box>(&win, "report_reason", false);
 	report_reason.set_text_changed_callback(std::bind(&mp_report::report_reason_changed, this, std::placeholders::_2));
+
+	win.set_exit_hook([this](window&)->bool { return !reportee_empty_ && !report_reason_empty_; });
 }
 
 void mp_report::post_show(window& window)
@@ -90,7 +90,6 @@ void mp_report::reportee_changed(const std::string& text)
 
 	button& ok = find_widget<button>(get_window(), "ok", false);
 	ok.set_active(!reportee_empty_ && !report_reason_empty_);
-	get_window()->set_enter_disabled(reportee_empty_ || report_reason_empty_);
 }
 
 void mp_report::report_reason_changed(const std::string& text)
@@ -99,7 +98,6 @@ void mp_report::report_reason_changed(const std::string& text)
 
 	button& ok = find_widget<button>(get_window(), "ok", false);
 	ok.set_active(!reportee_empty_ && !report_reason_empty_);
-	get_window()->set_enter_disabled(reportee_empty_ || report_reason_empty_);
 }
 
 } // namespace dialogs
