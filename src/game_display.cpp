@@ -43,12 +43,14 @@
 #include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "units/drawer.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 #include "overlay.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
+#define DBG_DP LOG_STREAM(debug, log_display)
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -86,6 +88,7 @@ game_display::~game_display()
 	try {
 		chat_man_->prune_chat_messages(true);
 	} catch(...) {
+		DBG_DP << "Caught exception in game_display destructor: " << utils::get_unknown_exception_type();
 	}
 }
 

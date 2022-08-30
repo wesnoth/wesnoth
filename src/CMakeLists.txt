@@ -142,7 +142,7 @@ endif()
 
 ########### Conf Tests ###########
 
-if(NOT MSVC)
+if((ENABLE_GAME OR ENABLE_TESTS) AND NOT MSVC)
 	# test for SDL2
 	add_executable(sdl2 conftests/sdl2.cpp)
 	set_target_properties(sdl2 PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/Testing)
@@ -251,7 +251,7 @@ if(ENABLE_GAME)
 	)
 	if(MSVC)
 		target_link_libraries(wesnoth SDL2::SDL2_image)
-		target_link_libraries(wesnoth SDL2::SDL2_mixer)
+		target_link_libraries(wesnoth SDL2_mixer::SDL2_mixer)
 	endif()
 
 	if(ENABLE_DISPLAY_REVISION)
@@ -298,7 +298,7 @@ if(ENABLE_TESTS)
 	)
 	if(MSVC)
 		target_link_libraries(boost_unit_tests SDL2::SDL2_image)
-		target_link_libraries(boost_unit_tests SDL2::SDL2_mixer)
+		target_link_libraries(boost_unit_tests SDL2_mixer::SDL2_mixer)
 	endif()
 
 	if(ENABLE_DISPLAY_REVISION)

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
 "PO-Revision-Date: 2021-01-16 19:31+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -64,7 +64,7 @@ msgstr "Tanca"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3210 data/core/terrain.cfg:3211
+#: data/core/terrain.cfg:3231 data/core/terrain.cfg:3232
 msgid "Deep Water"
 msgstr "Aigua profunda"
 
@@ -88,7 +88,7 @@ msgstr "Aigua profunda tropical"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:3169 data/core/terrain.cfg:3170
+#: data/core/terrain.cfg:3190 data/core/terrain.cfg:3191
 msgid "Shallow Water"
 msgstr "Aigua poc profunda"
 
@@ -134,8 +134,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:3125
-#: data/core/terrain.cfg:3126
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:3146
+#: data/core/terrain.cfg:3147
 msgid "Coastal Reef"
 msgstr "Escull costaner"
 
@@ -159,8 +159,8 @@ msgstr "Escull costaner tropical"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:134 data/core/terrain.cfg:149
-#: data/core/terrain.cfg:160 data/core/terrain.cfg:3153
-#: data/core/terrain.cfg:3154
+#: data/core/terrain.cfg:160 data/core/terrain.cfg:3174
+#: data/core/terrain.cfg:3175
 msgid "Swamp"
 msgstr "Pantà"
 
@@ -321,7 +321,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:340 data/core/terrain.cfg:3112
+#: data/core/terrain.cfg:340 data/core/terrain.cfg:3133
 msgid "Sand"
 msgstr "Sorra"
 
@@ -332,7 +332,7 @@ msgstr "Sorra de platja"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:345 data/core/terrain.cfg:3116
+#: data/core/terrain.cfg:345 data/core/terrain.cfg:3137
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -541,8 +541,8 @@ msgstr "Arbre gran mort"
 #: data/core/terrain.cfg:750 data/core/terrain.cfg:762
 #: data/core/terrain.cfg:774 data/core/terrain.cfg:786
 #: data/core/terrain.cfg:798 data/core/terrain.cfg:810
-#: data/core/terrain.cfg:822 data/core/terrain.cfg:3236
-#: data/core/terrain.cfg:3237
+#: data/core/terrain.cfg:822 data/core/terrain.cfg:3257
+#: data/core/terrain.cfg:3258
 msgid "Forest"
 msgstr "Bosc"
 
@@ -626,8 +626,8 @@ msgstr "Bosc barrejat nevat"
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:838 data/core/terrain.cfg:848
-#: data/core/terrain.cfg:868 data/core/terrain.cfg:3140
-#: data/core/terrain.cfg:3141
+#: data/core/terrain.cfg:868 data/core/terrain.cfg:3161
+#: data/core/terrain.cfg:3162
 msgid "Hills"
 msgstr "Turons"
 
@@ -662,9 +662,9 @@ msgstr "Turons nevats"
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:883 data/core/terrain.cfg:893
 #: data/core/terrain.cfg:903 data/core/terrain.cfg:914
-#: data/core/terrain.cfg:1279 data/core/terrain.cfg:1289
 #: data/core/terrain.cfg:1300 data/core/terrain.cfg:1310
-#: data/core/terrain.cfg:3196 data/core/terrain.cfg:3197
+#: data/core/terrain.cfg:1321 data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:3217 data/core/terrain.cfg:3218
 msgid "Mountains"
 msgstr "Muntanyes"
 
@@ -758,7 +758,7 @@ msgstr "Raig de llum"
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:1013 data/core/terrain.cfg:1023
-#: data/core/terrain.cfg:3097 data/core/terrain.cfg:3098
+#: data/core/terrain.cfg:3118 data/core/terrain.cfg:3119
 msgid "Cave"
 msgstr "Cova"
 
@@ -895,42 +895,54 @@ msgstr "Cova rocosa"
 msgid "Mine Rail"
 msgstr "Raïl de mina"
 
+#. [terrain_type]: id=high_canyon
+#: data/core/terrain.cfg:1204
+msgid "Gulch"
+msgstr ""
+
+#. [terrain_type]: id=high_canyon_obst
+#: data/core/terrain.cfg:1215
+#, fuzzy
+#| msgid "Unwalkable Overlay"
+msgid "Unwalkable Ravine"
+msgstr "Superposició impracticable"
+
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1204 data/core/terrain.cfg:1215
-#: data/core/terrain.cfg:1226 data/core/terrain.cfg:1237
+#: data/core/terrain.cfg:1225 data/core/terrain.cfg:1236
+#: data/core/terrain.cfg:1247 data/core/terrain.cfg:1258
 msgid "Chasm"
 msgstr "Abisme"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1205
+#: data/core/terrain.cfg:1226
 msgid "Regular Chasm"
 msgstr "Abisme normal"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1216
+#: data/core/terrain.cfg:1237
 msgid "Earthy Chasm"
 msgstr "Abisme terrós"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1227
+#: data/core/terrain.cfg:1248
 msgid "Ethereal Abyss"
 msgstr "Abisme eteri"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1238
+#: data/core/terrain.cfg:1259
 msgid "Lava Chasm"
 msgstr "Abisme de lava"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1250 data/core/terrain.cfg:1251
+#: data/core/terrain.cfg:1271 data/core/terrain.cfg:1272
 msgid "Lava"
 msgstr "Lava"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1257
+#: data/core/terrain.cfg:1278
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -950,52 +962,52 @@ msgstr ""
 "caòtiques."
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1264
+#: data/core/terrain.cfg:1285
 msgid "Volcano"
 msgstr "Volcà"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1280
+#: data/core/terrain.cfg:1301
 msgid "Regular Impassable Mountains"
 msgstr "Muntanyes infranquejables normals"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1290
+#: data/core/terrain.cfg:1311
 msgid "Dry Impassable Mountains"
 msgstr "Muntanyes infranquejables seques"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1301
+#: data/core/terrain.cfg:1322
 msgid "Snowy Impassable Mountains"
 msgstr "Muntanyes infranquejables nevades"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1332
 msgid "Desert Impassable Mountains"
 msgstr "Muntanyes infranquejables desèrtiques"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1321 data/core/terrain.cfg:1343
-#: data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1342 data/core/terrain.cfg:1364
+#: data/core/terrain.cfg:1378
 msgid "Cave Wall"
 msgstr "Paret de cova"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1322
+#: data/core/terrain.cfg:1343
 msgid "Natural Cave Wall"
 msgstr "Paret de cova natural"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1332 data/core/terrain.cfg:1333
-#: data/core/terrain.cfg:1393
+#: data/core/terrain.cfg:1353 data/core/terrain.cfg:1354
+#: data/core/terrain.cfg:1414
 msgid "Mine Wall"
 msgstr "Paret de mina"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1344
+#: data/core/terrain.cfg:1365
 msgid "Natural Earthy Cave Wall"
 msgstr "Paret de cova terrosa natural"
 
@@ -1003,66 +1015,66 @@ msgstr "Paret de cova terrosa natural"
 #. [terrain_type]: id=wall_stone_lit
 #. [terrain_type]: id=wall_stone_clean
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1370 data/core/terrain.cfg:1380
-#: data/core/terrain.cfg:1415 data/core/terrain.cfg:1426
+#: data/core/terrain.cfg:1391 data/core/terrain.cfg:1401
+#: data/core/terrain.cfg:1436 data/core/terrain.cfg:1447
 msgid "Stone Wall"
 msgstr "Paret de pedra"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1381
+#: data/core/terrain.cfg:1402
 msgid "Lit Stone Wall"
 msgstr "Paret de pedra il·luminada"
 
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1415
 msgid "Straight Mine Wall"
 msgstr "Paret de mina recta"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1425
 msgid "Interior Wall"
 msgstr "Paret interior"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1405
+#: data/core/terrain.cfg:1426
 msgid "Straight White Wall"
 msgstr "Paret blanca recta"
 
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1416
+#: data/core/terrain.cfg:1437
 msgid "Clean Stone Wall"
 msgstr "Paret de pedra neta"
 
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1427
+#: data/core/terrain.cfg:1448
 #, fuzzy
 #| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
 msgstr "Paret de pedra il·luminada"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1437
+#: data/core/terrain.cfg:1458
 #, fuzzy
 #| msgid "Cave Wall"
 msgid "Catacombs Wall"
 msgstr "Paret de cova"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1438
+#: data/core/terrain.cfg:1459
 #, fuzzy
 #| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
 msgstr "Paret de pedra neta"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1448
+#: data/core/terrain.cfg:1469
 #, fuzzy
 #| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
 msgstr "Llambordes amb vegetació"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1449
+#: data/core/terrain.cfg:1470
 #, fuzzy
 #| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
@@ -1074,17 +1086,17 @@ msgstr "Paret de pedra neta"
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1465 data/core/terrain.cfg:1478
-#: data/core/terrain.cfg:1492 data/core/terrain.cfg:1549
-#: data/core/terrain.cfg:1561 data/core/terrain.cfg:1574
+#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1499
+#: data/core/terrain.cfg:1513 data/core/terrain.cfg:1570
+#: data/core/terrain.cfg:1582 data/core/terrain.cfg:1595
 msgid "Gate"
 msgstr "Reixa"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
 #. [terrain_type]: id=portal_gate_rusty_n
-#: data/core/terrain.cfg:1466 data/core/terrain.cfg:1479
-#: data/core/terrain.cfg:1493
+#: data/core/terrain.cfg:1487 data/core/terrain.cfg:1500
+#: data/core/terrain.cfg:1514
 msgid "Rusty Gate"
 msgstr "Reixa rovellada"
 
@@ -1094,49 +1106,49 @@ msgstr "Reixa rovellada"
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1506 data/core/terrain.cfg:1519
-#: data/core/terrain.cfg:1533 data/core/terrain.cfg:1587
-#: data/core/terrain.cfg:1599 data/core/terrain.cfg:1612
+#: data/core/terrain.cfg:1527 data/core/terrain.cfg:1540
+#: data/core/terrain.cfg:1554 data/core/terrain.cfg:1608
+#: data/core/terrain.cfg:1620 data/core/terrain.cfg:1633
 msgid "Door"
 msgstr "Porta"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
-#: data/core/terrain.cfg:1507 data/core/terrain.cfg:1520
-#: data/core/terrain.cfg:1534
+#: data/core/terrain.cfg:1528 data/core/terrain.cfg:1541
+#: data/core/terrain.cfg:1555
 msgid "Wooden Door"
 msgstr "Porta de fusta"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1550 data/core/terrain.cfg:1562
-#: data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1571 data/core/terrain.cfg:1583
+#: data/core/terrain.cfg:1596
 msgid "Open Rusty Gate"
 msgstr "Reixa rovellada oberta"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1588 data/core/terrain.cfg:1600
-#: data/core/terrain.cfg:1613
+#: data/core/terrain.cfg:1609 data/core/terrain.cfg:1621
+#: data/core/terrain.cfg:1634
 msgid "Open Wooden Door"
 msgstr "Porta de fusta oberta"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1628
+#: data/core/terrain.cfg:1649
 msgid "Impassable Overlay"
 msgstr "Superposició infranquejable"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1641
+#: data/core/terrain.cfg:1662
 msgid "Unwalkable Overlay"
 msgstr "Superposició impracticable"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1653 data/core/terrain.cfg:3026
+#: data/core/terrain.cfg:1674 data/core/terrain.cfg:3047
 msgid "Void"
 msgstr "Buit"
 
@@ -1172,180 +1184,180 @@ msgstr "Buit"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1669 data/core/terrain.cfg:1682
-#: data/core/terrain.cfg:1695 data/core/terrain.cfg:1708
-#: data/core/terrain.cfg:1723 data/core/terrain.cfg:1736
-#: data/core/terrain.cfg:1751 data/core/terrain.cfg:1764
-#: data/core/terrain.cfg:1779 data/core/terrain.cfg:1792
-#: data/core/terrain.cfg:1805 data/core/terrain.cfg:1818
-#: data/core/terrain.cfg:1831 data/core/terrain.cfg:1844
-#: data/core/terrain.cfg:1857 data/core/terrain.cfg:1870
-#: data/core/terrain.cfg:1883 data/core/terrain.cfg:1896
-#: data/core/terrain.cfg:1909 data/core/terrain.cfg:1922
-#: data/core/terrain.cfg:1935 data/core/terrain.cfg:1950
-#: data/core/terrain.cfg:1963 data/core/terrain.cfg:1976
-#: data/core/terrain.cfg:1989 data/core/terrain.cfg:2002
-#: data/core/terrain.cfg:2015 data/core/terrain.cfg:2028
-#: data/core/terrain.cfg:2043 data/core/terrain.cfg:2056
-#: data/core/terrain.cfg:2074 data/core/terrain.cfg:3261
-#: data/core/terrain.cfg:3262
+#: data/core/terrain.cfg:1690 data/core/terrain.cfg:1703
+#: data/core/terrain.cfg:1716 data/core/terrain.cfg:1729
+#: data/core/terrain.cfg:1744 data/core/terrain.cfg:1757
+#: data/core/terrain.cfg:1772 data/core/terrain.cfg:1785
+#: data/core/terrain.cfg:1800 data/core/terrain.cfg:1813
+#: data/core/terrain.cfg:1826 data/core/terrain.cfg:1839
+#: data/core/terrain.cfg:1852 data/core/terrain.cfg:1865
+#: data/core/terrain.cfg:1878 data/core/terrain.cfg:1891
+#: data/core/terrain.cfg:1904 data/core/terrain.cfg:1917
+#: data/core/terrain.cfg:1930 data/core/terrain.cfg:1943
+#: data/core/terrain.cfg:1956 data/core/terrain.cfg:1971
+#: data/core/terrain.cfg:1984 data/core/terrain.cfg:1997
+#: data/core/terrain.cfg:2010 data/core/terrain.cfg:2023
+#: data/core/terrain.cfg:2036 data/core/terrain.cfg:2049
+#: data/core/terrain.cfg:2064 data/core/terrain.cfg:2077
+#: data/core/terrain.cfg:2095 data/core/terrain.cfg:3282
+#: data/core/terrain.cfg:3283
 msgid "Village"
 msgstr "Poble"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1670
+#: data/core/terrain.cfg:1691
 msgid "Adobe Village"
 msgstr "Poble de tova"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1683
+#: data/core/terrain.cfg:1704
 msgid "Ruined Adobe Village"
 msgstr "Poble de tova en ruïnes"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1696
+#: data/core/terrain.cfg:1717
 msgid "Desert Tent Village"
 msgstr "Poble de tendes del desert"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1709
+#: data/core/terrain.cfg:1730
 msgid "Tent Village"
 msgstr "Poble de tendes"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1724
+#: data/core/terrain.cfg:1745
 msgid "Orcish Village"
 msgstr "Poble orc"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1737
+#: data/core/terrain.cfg:1758
 msgid "Snowy Orcish Village"
 msgstr "Poble orc nevat"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1752
+#: data/core/terrain.cfg:1773
 msgid "Snowy Elven Village"
 msgstr "Poble elf nevat"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1765
+#: data/core/terrain.cfg:1786
 msgid "Elven Village"
 msgstr "Poble elf"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1780
+#: data/core/terrain.cfg:1801
 msgid "Cottage"
 msgstr "Cabana"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1793
+#: data/core/terrain.cfg:1814
 msgid "Snowy Cottage"
 msgstr "Cabana nevada"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1806
+#: data/core/terrain.cfg:1827
 msgid "Ruined Cottage"
 msgstr "Cabana en ruïnes"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1819
+#: data/core/terrain.cfg:1840
 msgid "Human City"
 msgstr "Ciutat humana"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1832
+#: data/core/terrain.cfg:1853
 msgid "Windmill Village"
 msgstr "Poble de molins"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1866
 msgid "Snowy Human City"
 msgstr "Ciutat humana nevada"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1858
+#: data/core/terrain.cfg:1879
 msgid "Ruined Human City"
 msgstr "Ciutat humana en ruïnes"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1871
+#: data/core/terrain.cfg:1892
 msgid "Hill Stone Village"
 msgstr "Poble de pedra de turó"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1884
+#: data/core/terrain.cfg:1905
 msgid "Snowy Hill Stone Village"
 msgstr "Poble de pedra de turó nevat"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1897
+#: data/core/terrain.cfg:1918
 msgid "Ruined Hill Stone Village"
 msgstr "Poble de pedra de turó en ruïnes"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1910
+#: data/core/terrain.cfg:1931
 msgid "Tropical Village"
 msgstr "Poble tropical"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1944
 msgid "Drake Village"
 msgstr "Poble de dracs"
 
 #. [terrain_type]: id=drake_snow_village
-#: data/core/terrain.cfg:1936
+#: data/core/terrain.cfg:1957
 #, fuzzy
 #| msgid "Drake Village"
 msgid "Snowy Drake Village"
 msgstr "Poble de dracs"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1951
+#: data/core/terrain.cfg:1972
 msgid "Cave Village"
 msgstr "Poble de cova"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1964
+#: data/core/terrain.cfg:1985
 msgid "Dwarven Village"
 msgstr "Poble de nans"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1977
+#: data/core/terrain.cfg:1998
 msgid "Hut"
 msgstr "Refugi"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1990
+#: data/core/terrain.cfg:2011
 msgid "Snowy Hut"
 msgstr "Refugi nevat"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:2003
+#: data/core/terrain.cfg:2024
 msgid "Log Cabin"
 msgstr "Cabanya de fusta"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:2016
+#: data/core/terrain.cfg:2037
 msgid "Snowy Log Cabin"
 msgstr "Cabanya de fusta nevada"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:2029
+#: data/core/terrain.cfg:2050
 msgid "Igloo"
 msgstr "Iglú"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:2044
+#: data/core/terrain.cfg:2065
 msgid "Swamp Village"
 msgstr "Poble de pantà"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2057
+#: data/core/terrain.cfg:2078
 msgid "Merfolk Village"
 msgstr "Poble sirènid"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2058
+#: data/core/terrain.cfg:2079
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1369,7 +1381,7 @@ msgstr ""
 "que les unitats terrestres solen tenir-hi una defensa baixa."
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:2075
+#: data/core/terrain.cfg:2096
 msgid "Village Overlay"
 msgstr "Superposició de poble"
 
@@ -1378,19 +1390,19 @@ msgstr "Superposició de poble"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2091 data/core/terrain.cfg:2092
-#: data/core/terrain.cfg:2103 data/core/terrain.cfg:2115
-#: data/core/terrain.cfg:2320 data/core/terrain.cfg:2332
+#: data/core/terrain.cfg:2112 data/core/terrain.cfg:2113
+#: data/core/terrain.cfg:2124 data/core/terrain.cfg:2136
+#: data/core/terrain.cfg:2341 data/core/terrain.cfg:2353
 msgid "Encampment"
 msgstr "Campament"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:2104
+#: data/core/terrain.cfg:2125
 msgid "Ruined Encampment"
 msgstr "Campament en ruïnes"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:2116
+#: data/core/terrain.cfg:2137
 msgid "Snowy Encampment"
 msgstr "Campament nevat"
 
@@ -1409,75 +1421,75 @@ msgstr "Campament nevat"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2127 data/core/terrain.cfg:2139
-#: data/core/terrain.cfg:2151 data/core/terrain.cfg:2163
-#: data/core/terrain.cfg:2174 data/core/terrain.cfg:2186
-#: data/core/terrain.cfg:2198 data/core/terrain.cfg:2210
-#: data/core/terrain.cfg:2222 data/core/terrain.cfg:2234
-#: data/core/terrain.cfg:2246 data/core/terrain.cfg:2296
-#: data/core/terrain.cfg:2345 data/core/terrain.cfg:2661
-#: data/core/terrain.cfg:3180 data/core/terrain.cfg:3181
+#: data/core/terrain.cfg:2148 data/core/terrain.cfg:2160
+#: data/core/terrain.cfg:2172 data/core/terrain.cfg:2184
+#: data/core/terrain.cfg:2195 data/core/terrain.cfg:2207
+#: data/core/terrain.cfg:2219 data/core/terrain.cfg:2231
+#: data/core/terrain.cfg:2243 data/core/terrain.cfg:2255
+#: data/core/terrain.cfg:2267 data/core/terrain.cfg:2317
+#: data/core/terrain.cfg:2366 data/core/terrain.cfg:2682
+#: data/core/terrain.cfg:3201 data/core/terrain.cfg:3202
 msgid "Castle"
 msgstr "Castell"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:2128
+#: data/core/terrain.cfg:2149
 msgid "Orcish Castle"
 msgstr "Castell orc"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:2140
+#: data/core/terrain.cfg:2161
 msgid "Snowy Orcish Castle"
 msgstr "Castell orc nevat"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:2152
+#: data/core/terrain.cfg:2173
 msgid "Human Castle"
 msgstr "Castell humà"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2164
+#: data/core/terrain.cfg:2185
 msgid "Snowy Human Castle"
 msgstr "Castell humà nevat"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2175
+#: data/core/terrain.cfg:2196
 msgid "Elven Castle"
 msgstr "Castell elf"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2187
+#: data/core/terrain.cfg:2208
 msgid "Elven Castle Ruin"
 msgstr "Castell elf en ruïnes"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2199
+#: data/core/terrain.cfg:2220
 #, fuzzy
 #| msgid "Elven Castle"
 msgid "Winter Elven Castle"
 msgstr "Castell elf"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2211
+#: data/core/terrain.cfg:2232
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
 msgstr "Castell nan"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2223
+#: data/core/terrain.cfg:2244
 msgid "Dwarven Castle"
 msgstr "Castell nan"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2235
+#: data/core/terrain.cfg:2256
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
 msgstr "Castell nan"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2247
+#: data/core/terrain.cfg:2268
 #, fuzzy
 #| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
@@ -1487,48 +1499,48 @@ msgstr "Castell nan"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2258 data/core/terrain.cfg:2270
-#: data/core/terrain.cfg:2283 data/core/terrain.cfg:2308
+#: data/core/terrain.cfg:2279 data/core/terrain.cfg:2291
+#: data/core/terrain.cfg:2304 data/core/terrain.cfg:2329
 msgid "Ruined Castle"
 msgstr "Castell en ruïnes"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2259
+#: data/core/terrain.cfg:2280
 msgid "Ruined Human Castle"
 msgstr "Castell humà en ruïnes"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2271
+#: data/core/terrain.cfg:2292
 msgid "Sunken Human Ruin"
 msgstr "Ruïnes humanes submergides"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2284
+#: data/core/terrain.cfg:2305
 msgid "Swamp Human Ruin"
 msgstr "Ruïnes humanes empantanades"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2297
+#: data/core/terrain.cfg:2318
 msgid "Desert Castle"
 msgstr "Castell desèrtic"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2309
+#: data/core/terrain.cfg:2330
 msgid "Ruined Desert Castle"
 msgstr "Castell desèrtic en ruïnes"
 
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2321
+#: data/core/terrain.cfg:2342
 msgid "Troll Encampment"
 msgstr "Campament trol"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2333
+#: data/core/terrain.cfg:2354
 msgid "Aquatic Encampment"
 msgstr "Campament aquàtic"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2346
+#: data/core/terrain.cfg:2367
 msgid "Aquatic Castle"
 msgstr "Castell aquàtic"
 
@@ -1537,24 +1549,24 @@ msgstr "Castell aquàtic"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2362 data/core/terrain.cfg:2386
-#: data/core/terrain.cfg:2399 data/core/terrain.cfg:2620
-#: data/core/terrain.cfg:2633
+#: data/core/terrain.cfg:2383 data/core/terrain.cfg:2407
+#: data/core/terrain.cfg:2420 data/core/terrain.cfg:2641
+#: data/core/terrain.cfg:2654
 msgid "Encampment Keep"
 msgstr "Torre de campament"
 
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2374
+#: data/core/terrain.cfg:2395
 msgid "Ruined Encampment Keep"
 msgstr "Torre de campament en ruïnes"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2387
+#: data/core/terrain.cfg:2408
 msgid "Tall Encampment Keep"
 msgstr "Torre de campament alta"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2400
+#: data/core/terrain.cfg:2421
 msgid "Snowy Encampment Keep"
 msgstr "Torre de campament nevada"
 
@@ -1572,74 +1584,74 @@ msgstr "Torre de campament nevada"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2412 data/core/terrain.cfg:2425
-#: data/core/terrain.cfg:2438 data/core/terrain.cfg:2451
-#: data/core/terrain.cfg:2464 data/core/terrain.cfg:2477
-#: data/core/terrain.cfg:2490 data/core/terrain.cfg:2503
-#: data/core/terrain.cfg:2516 data/core/terrain.cfg:2529
-#: data/core/terrain.cfg:2542 data/core/terrain.cfg:2594
-#: data/core/terrain.cfg:2646 data/core/terrain.cfg:2674
+#: data/core/terrain.cfg:2433 data/core/terrain.cfg:2446
+#: data/core/terrain.cfg:2459 data/core/terrain.cfg:2472
+#: data/core/terrain.cfg:2485 data/core/terrain.cfg:2498
+#: data/core/terrain.cfg:2511 data/core/terrain.cfg:2524
+#: data/core/terrain.cfg:2537 data/core/terrain.cfg:2550
+#: data/core/terrain.cfg:2563 data/core/terrain.cfg:2615
+#: data/core/terrain.cfg:2667 data/core/terrain.cfg:2695
 msgid "Keep"
 msgstr "Torre"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2413
+#: data/core/terrain.cfg:2434
 msgid "Orcish Keep"
 msgstr "Torre d'orcs"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2426
+#: data/core/terrain.cfg:2447
 msgid "Snowy Orcish Keep"
 msgstr "Torre d'orcs nevada"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2439
+#: data/core/terrain.cfg:2460
 msgid "Human Castle Keep"
 msgstr "Torre de castell humà"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2452
+#: data/core/terrain.cfg:2473
 msgid "Snowy Human Castle Keep"
 msgstr "Torre de castell humà nevat"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2465
+#: data/core/terrain.cfg:2486
 msgid "Elven Castle Keep"
 msgstr "Torre de castell elf"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2478
+#: data/core/terrain.cfg:2499
 msgid "Elven Keep Ruin"
 msgstr "Torre èlfica en ruïnes"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2491
+#: data/core/terrain.cfg:2512
 #, fuzzy
 #| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
 msgstr "Torre èlfica en ruïnes"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2504
+#: data/core/terrain.cfg:2525
 #, fuzzy
 #| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
 msgstr "Torre de castell de nans"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2517
+#: data/core/terrain.cfg:2538
 msgid "Dwarven Castle Keep"
 msgstr "Torre de castell de nans"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2530
+#: data/core/terrain.cfg:2551
 #, fuzzy
 #| msgid "Dwarven keep"
 msgid "Dwarven Ruin Keep"
 msgstr "Torrassa nan"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2543
+#: data/core/terrain.cfg:2564
 #, fuzzy
 #| msgid "Dwarven keep"
 msgid "Winter Dwarven Keep"
@@ -1649,58 +1661,58 @@ msgstr "Torrassa nan"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2555 data/core/terrain.cfg:2568
-#: data/core/terrain.cfg:2581 data/core/terrain.cfg:2607
+#: data/core/terrain.cfg:2576 data/core/terrain.cfg:2589
+#: data/core/terrain.cfg:2602 data/core/terrain.cfg:2628
 msgid "Ruined Keep"
 msgstr "Torre en ruïnes"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2556
+#: data/core/terrain.cfg:2577
 msgid "Ruined Human Castle Keep"
 msgstr "Torre de castell humà en ruïnes"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2569
+#: data/core/terrain.cfg:2590
 msgid "Sunken Human Castle Keep"
 msgstr "Torre de castell humà submergit"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2582
+#: data/core/terrain.cfg:2603
 msgid "Swamp Human Castle Keep"
 msgstr "Torre de castell humà empantanat"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2595
+#: data/core/terrain.cfg:2616
 msgid "Desert Keep"
 msgstr "Torre desèrtica"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2608
+#: data/core/terrain.cfg:2629
 msgid "Ruined Desert Keep"
 msgstr "Torre desèrtica en ruïnes"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2621
+#: data/core/terrain.cfg:2642
 msgid "Aquatic Encampment Keep"
 msgstr "Torre de campament aquàtic"
 
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2634
+#: data/core/terrain.cfg:2655
 msgid "Troll Encampment Keep"
 msgstr "Torre de campament trol"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2647
+#: data/core/terrain.cfg:2668
 msgid "Aquatic Keep"
 msgstr "Torre aquàtica"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2662
+#: data/core/terrain.cfg:2683
 msgid "Castle Overlay"
 msgstr "Superposició de castell"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2675
+#: data/core/terrain.cfg:2696
 msgid "Keep Overlay"
 msgstr "Superposició de torre"
 
@@ -1728,31 +1740,31 @@ msgstr "Superposició de torre"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2693 data/core/terrain.cfg:2708
-#: data/core/terrain.cfg:2721 data/core/terrain.cfg:2734
-#: data/core/terrain.cfg:2746 data/core/terrain.cfg:2759
-#: data/core/terrain.cfg:2774 data/core/terrain.cfg:2786
-#: data/core/terrain.cfg:2799 data/core/terrain.cfg:2814
-#: data/core/terrain.cfg:2826 data/core/terrain.cfg:2839
-#: data/core/terrain.cfg:2854 data/core/terrain.cfg:2866
-#: data/core/terrain.cfg:2880 data/core/terrain.cfg:2897
-#: data/core/terrain.cfg:2911 data/core/terrain.cfg:2925
-#: data/core/terrain.cfg:2939 data/core/terrain.cfg:2953
-#: data/core/terrain.cfg:2967 data/core/terrain.cfg:2981
-#: data/core/terrain.cfg:2995 data/core/terrain.cfg:3009
+#: data/core/terrain.cfg:2714 data/core/terrain.cfg:2729
+#: data/core/terrain.cfg:2742 data/core/terrain.cfg:2755
+#: data/core/terrain.cfg:2767 data/core/terrain.cfg:2780
+#: data/core/terrain.cfg:2795 data/core/terrain.cfg:2807
+#: data/core/terrain.cfg:2820 data/core/terrain.cfg:2835
+#: data/core/terrain.cfg:2847 data/core/terrain.cfg:2860
+#: data/core/terrain.cfg:2875 data/core/terrain.cfg:2887
+#: data/core/terrain.cfg:2901 data/core/terrain.cfg:2918
+#: data/core/terrain.cfg:2932 data/core/terrain.cfg:2946
+#: data/core/terrain.cfg:2960 data/core/terrain.cfg:2974
+#: data/core/terrain.cfg:2988 data/core/terrain.cfg:3002
+#: data/core/terrain.cfg:3016 data/core/terrain.cfg:3030
 msgid "Bridge"
 msgstr "Pont"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2694 data/core/terrain.cfg:2709
-#: data/core/terrain.cfg:2722
+#: data/core/terrain.cfg:2715 data/core/terrain.cfg:2730
+#: data/core/terrain.cfg:2743
 msgid "Wooden Bridge"
 msgstr "Pont de fusta"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2700
+#: data/core/terrain.cfg:2721
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1782,24 +1794,24 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2735 data/core/terrain.cfg:2747
-#: data/core/terrain.cfg:2760
+#: data/core/terrain.cfg:2756 data/core/terrain.cfg:2768
+#: data/core/terrain.cfg:2781
 msgid "Rotting Bridge"
 msgstr "Pont podrit"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2775 data/core/terrain.cfg:2787
-#: data/core/terrain.cfg:2800
+#: data/core/terrain.cfg:2796 data/core/terrain.cfg:2808
+#: data/core/terrain.cfg:2821
 msgid "Basic Stone Bridge"
 msgstr "Pont de pedra bàsic"
 
 #. [terrain_type]: id=snow_stone_bridge
 #. [terrain_type]: id=snow_stone_bridgediag1
 #. [terrain_type]: id=snow_stone_bridgediag2
-#: data/core/terrain.cfg:2815 data/core/terrain.cfg:2827
-#: data/core/terrain.cfg:2840
+#: data/core/terrain.cfg:2836 data/core/terrain.cfg:2848
+#: data/core/terrain.cfg:2861
 #, fuzzy
 #| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
@@ -1808,71 +1820,71 @@ msgstr "Pont de pedra bàsic"
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2855 data/core/terrain.cfg:2867
-#: data/core/terrain.cfg:2881
+#: data/core/terrain.cfg:2876 data/core/terrain.cfg:2888
+#: data/core/terrain.cfg:2902
 msgid "Cave Chasm Bridge"
 msgstr "Pont d'abisme de cova"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2898 data/core/terrain.cfg:2912
-#: data/core/terrain.cfg:2926
+#: data/core/terrain.cfg:2919 data/core/terrain.cfg:2933
+#: data/core/terrain.cfg:2947
 msgid "Hanging Bridge"
 msgstr "Pont penjant"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:2940 data/core/terrain.cfg:2954
-#: data/core/terrain.cfg:2968
+#: data/core/terrain.cfg:2961 data/core/terrain.cfg:2975
+#: data/core/terrain.cfg:2989
 msgid "Stone Chasm Bridge"
 msgstr "Pont d'abisme de pedra"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2982 data/core/terrain.cfg:2996
-#: data/core/terrain.cfg:3010
+#: data/core/terrain.cfg:3003 data/core/terrain.cfg:3017
+#: data/core/terrain.cfg:3031
 msgid "Plank Bridge"
 msgstr "Pont de taulons"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:3027
+#: data/core/terrain.cfg:3048
 msgid "Off Map"
 msgstr "Fora de mapa"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:3037
+#: data/core/terrain.cfg:3058
 msgid "Fake Map Border"
 msgstr "Vora de mapa falsa"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:3048 data/gui/window/editor_edit_side.cfg:179
+#: data/core/terrain.cfg:3069 data/gui/window/editor_edit_side.cfg:179
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:405
 msgid "Shroud"
 msgstr "Vel"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:3059
+#: data/core/terrain.cfg:3080
 msgid "Fake Shroud"
 msgstr "Vel fals"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:3070 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:3091 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "Boira"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3085 data/core/terrain.cfg:3086
+#: data/core/terrain.cfg:3106 data/core/terrain.cfg:3107
 msgid "Fungus"
 msgstr "Fong"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3089
+#: data/core/terrain.cfg:3110
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
@@ -1909,7 +1921,7 @@ msgstr ""
 "bolets, mentre que la cavalleria només en rep un 20%."
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:3100
+#: data/core/terrain.cfg:3121
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1947,12 +1959,12 @@ msgstr ""
 "que els nans en tenen un 50%."
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:3113
+#: data/core/terrain.cfg:3134
 msgid "Sands"
 msgstr "Sorra"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:3130
+#: data/core/terrain.cfg:3151
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1972,7 +1984,7 @@ msgstr ""
 "Els sirènids i nagues reben un 70% de defensa en esculls costaners."
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:3144
+#: data/core/terrain.cfg:3165
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
@@ -2008,7 +2020,7 @@ msgstr ""
 "defensa en turons."
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:3158
+#: data/core/terrain.cfg:3179
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -2032,7 +2044,7 @@ msgstr ""
 "sirènides, nagues i sauris generalment gaudeixen del 60%."
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:3171
+#: data/core/terrain.cfg:3192
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2057,7 +2069,7 @@ msgstr ""
 "profundes, mentre que nagues i sirènids gaudeixen del 60%."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:3186
+#: data/core/terrain.cfg:3207
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2080,7 +2092,7 @@ msgstr ""
 "La majoria d'unitats tenen aproximadament un 60% de defensa en un castell."
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3200
+#: data/core/terrain.cfg:3221
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Mountains'</italic> are steep enough that units often have "
@@ -2121,7 +2133,7 @@ msgstr ""
 "muntanyes, mentre que els nans gaudeixen d'un 70%."
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3212
+#: data/core/terrain.cfg:3233
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2139,12 +2151,12 @@ msgstr ""
 "moviment complet."
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3223 data/core/terrain.cfg:3224
+#: data/core/terrain.cfg:3244 data/core/terrain.cfg:3245
 msgid "Flat"
 msgstr "Plana"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3225
+#: data/core/terrain.cfg:3246
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -2164,7 +2176,7 @@ msgstr ""
 "La majoria d'unitats tenen defensa del 30 al 40% en prades."
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3238
+#: data/core/terrain.cfg:3259
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2199,12 +2211,12 @@ msgstr ""
 "reben només un 30% de defensa als boscos."
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3248 data/core/terrain.cfg:3249
+#: data/core/terrain.cfg:3269 data/core/terrain.cfg:3270
 msgid "Frozen"
 msgstr "Gelat"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3251
+#: data/core/terrain.cfg:3272
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2223,7 +2235,7 @@ msgstr ""
 "La majoria d'unitats tenen una defensa del 20 al 40% en terreny gelat."
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3264
+#: data/core/terrain.cfg:3285
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2249,12 +2261,12 @@ msgstr ""
 "que la cavalleria només rep el 40%."
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3274 data/core/terrain.cfg:3275
+#: data/core/terrain.cfg:3295 data/core/terrain.cfg:3296
 msgid "Impassable"
 msgstr "Impassable"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3277
+#: data/core/terrain.cfg:3298
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2269,12 +2281,12 @@ msgstr ""
 "ferotge pot obrir-se pas a través de parets gruixudes de pedra."
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3284 data/core/terrain.cfg:3285
+#: data/core/terrain.cfg:3305 data/core/terrain.cfg:3306
 msgid "Unwalkable"
 msgstr "Impracticable"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3287
+#: data/core/terrain.cfg:3308
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2288,12 +2300,12 @@ msgstr ""
 "travessar aquest terreny."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3294 data/core/terrain.cfg:3295
+#: data/core/terrain.cfg:3315 data/core/terrain.cfg:3316
 msgid "Rails"
 msgstr "Raïls"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3297
+#: data/core/terrain.cfg:3318
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -2403,7 +2415,7 @@ msgstr "Publica el complement"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:931
 msgid "Uninstall add-on"
 msgstr "Desinstal·la el complement"
 
@@ -2490,6 +2502,7 @@ msgstr "D'acord"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#. [button]: id=placeholder
 #: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
@@ -2504,9 +2517,9 @@ msgstr "D'acord"
 #: data/gui/window/editor_generate_map.cfg:214
 #: data/gui/window/editor_new_map.cfg:126
 #: data/gui/window/editor_resize_map.cfg:282
-#: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:651 data/gui/window/game_save.cfg:134
-#: data/gui/window/label_settings.cfg:149
+#: data/gui/window/file_dialog.cfg:450 data/gui/window/file_progress.cfg:94
+#: data/gui/window/folder_create.cfg:133 data/gui/window/game_load.cfg:651
+#: data/gui/window/game_save.cfg:134 data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:269
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_connect.cfg:314
@@ -2517,7 +2530,7 @@ msgstr "D'acord"
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_staging.cfg:442
-#: data/gui/window/network_transmission.cfg:108
+#: data/gui/window/network_transmission.cfg:111
 #: data/gui/window/select_orb_colors.cfg:151
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
@@ -2619,7 +2632,7 @@ msgstr "date^Actualitzat:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:559
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:560
 msgid "No description available."
 msgstr "No hi ha cap descripció disponible."
 
@@ -2652,7 +2665,7 @@ msgstr "Dependències:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1008
+#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1009
 msgid "addon_dependencies^None"
 msgstr "addon_dependencies^Cap"
 
@@ -2663,7 +2676,7 @@ msgstr "Traduccions:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1022
+#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1023
 msgid "translations^None"
 msgstr "translations^Cap"
 
@@ -2696,8 +2709,8 @@ msgstr "Gestor de complements"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1042 src/gui/dialogs/addon/manager.cpp:507
-#: src/gui/dialogs/addon/manager.cpp:743
+#: data/gui/window/addon_manager.cfg:1042 src/gui/dialogs/addon/manager.cpp:508
+#: src/gui/dialogs/addon/manager.cpp:744
 #, fuzzy
 #| msgid "Addon Details"
 msgid "Add-on Details"
@@ -3000,8 +3013,8 @@ msgstr "Edita l'horari"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
-#: src/gui/dialogs/unit_recall.cpp:323
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
+#: src/gui/dialogs/unit_recall.cpp:324
 msgid "Name:"
 msgstr "Nom:"
 
@@ -3058,8 +3071,8 @@ msgstr "Suprimeix el MdD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:903 src/gui/dialogs/file_dialog.cpp:302
-#: src/gui/dialogs/file_dialog.cpp:728
+#: src/gui/dialogs/addon/manager.cpp:904 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Confirma"
 
@@ -3163,7 +3176,7 @@ msgstr "Descripció:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Experience modifier:"
 msgstr "Modificador d'experiència:"
 
@@ -3225,7 +3238,7 @@ msgstr "Or:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Gold per village:"
 msgstr "Or per poble:"
 
@@ -3246,7 +3259,7 @@ msgstr "Controlador:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:70
+#: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr "controller^Humà"
 
@@ -3296,7 +3309,7 @@ msgstr "Escolliu un generador de mapes:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Settings"
 msgstr "Configuració"
 
@@ -3607,7 +3620,7 @@ msgstr "Desa la partida"
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:182
 msgid "Save"
 msgstr "Desa"
 
@@ -3644,7 +3657,7 @@ msgstr "Equip"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:435
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:436
 msgid "Gold"
 msgstr "Or"
 
@@ -3671,7 +3684,7 @@ msgstr "Manteniment"
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:442
 msgid "Income"
 msgstr "Ingressos"
 
@@ -3719,7 +3732,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:254
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
 msgid "Current Status"
 msgstr "Estat actual"
 
@@ -3730,7 +3743,7 @@ msgstr "Estadístiques de la partida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:254
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
 msgid "Scenario Settings"
 msgstr "Paràmetres de l'escenari"
 
@@ -4007,14 +4020,14 @@ msgstr "Crea una partida"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:419 data/gui/window/lobby_main.cfg:677
-#: src/gui/dialogs/multiplayer/lobby.cpp:853
+#: src/gui/dialogs/multiplayer/lobby.cpp:849
 msgid "Join"
 msgstr "Uneix-m'hi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:431 data/gui/window/lobby_main.cfg:700
-#: src/gui/dialogs/multiplayer/lobby.cpp:819
+#: src/gui/dialogs/multiplayer/lobby.cpp:815
 msgid "Observe"
 msgstr "Observa"
 
@@ -4689,7 +4702,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Map size:"
 msgstr "Mida del mapa:"
 
@@ -4714,10 +4727,8 @@ msgstr "Masculí"
 msgid "Female"
 msgstr "Femení"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:217
-#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Recruits"
 msgstr "Reclutes"
 
@@ -4776,7 +4787,7 @@ msgstr "Vestíbul de la partida"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:503
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
 msgid "Waiting for players to join..."
 msgstr "S'està esperant que s'hi uneixin jugadors..."
 
@@ -4806,7 +4817,7 @@ msgstr "Nom d'usuari:"
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:394
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Multijugador"
 
@@ -5080,7 +5091,7 @@ msgstr "Drecera"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:791
+#: src/gui/dialogs/preferences_dialog.cpp:801
 msgid "game_hotkeys^G"
 msgstr "game_hotkeys^G"
 
@@ -5093,7 +5104,7 @@ msgstr "Disponible durant una partida"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:792
+#: src/gui/dialogs/preferences_dialog.cpp:802
 msgid "editor_hotkeys^E"
 msgstr "editor_hotkeys^E"
 
@@ -5106,7 +5117,7 @@ msgstr "Disponible a l'editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:793
+#: src/gui/dialogs/preferences_dialog.cpp:803
 #, fuzzy
 #| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
@@ -5850,8 +5861,8 @@ msgstr "XP"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:378
-#: src/gui/widgets/unit_preview_pane.cpp:528
+#: src/gui/widgets/unit_preview_pane.cpp:381
+#: src/gui/widgets/unit_preview_pane.cpp:531
 msgid "Traits"
 msgstr "Trets"
 
@@ -5904,15 +5915,15 @@ msgstr "Recluta"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:209
-#: src/gui/dialogs/preferences_dialog.cpp:229
-#: src/gui/dialogs/transient_message.cpp:77
+#: src/gui/dialogs/preferences_dialog.cpp:233
+#: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Error"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:182
-#: src/gui/dialogs/multiplayer/lobby.cpp:198 src/gui/dialogs/wml_error.cpp:159
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:178
+#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Detalls:"
 
@@ -5964,27 +5975,27 @@ msgstr "filesystem_path_system^Inici"
 msgid "filesystem_path_system^Root"
 msgstr "filesystem_path_system^Arrel"
 
-#: src/desktop/version.cpp:407
+#: src/desktop/version.cpp:406
 msgid "operating_system^<unknown>"
 msgstr "operating_system^<desconegut>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:636
+#: src/filesystem.cpp:638
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:639
+#: src/filesystem.cpp:641
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:704 src/filesystem.cpp:726
+#: src/filesystem.cpp:706 src/filesystem.cpp:728
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:707 src/filesystem.cpp:729
+#: src/filesystem.cpp:709 src/filesystem.cpp:731
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6000,11 +6011,11 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1640
+#: src/filesystem.cpp:1643
 msgid "language code for localized resources^en_US"
 msgstr "ca"
 
-#: src/font/text.cpp:859
+#: src/font/text.cpp:849
 msgid "The text contains invalid Pango markup: "
 msgstr "El text conté l'etiquetatge Pango no vàlid: "
 
@@ -6128,31 +6139,27 @@ msgstr "La mida del tipus de lletra del text és 0."
 msgid "No state or draw section defined."
 msgstr "No s'ha definit cap estat ni secció de dibuix."
 
-#: src/gui/core/widget_definition.cpp:70 src/gui/core/window_builder.cpp:157
+#: src/gui/core/widget_definition.cpp:69 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
 msgstr "No hi ha cap resolució definida."
 
-#: src/gui/core/window_builder.cpp:47
-msgid "Linked '$id' group has multiple definitions."
-msgstr "El grup vinculat «$id» té múltiples definicions."
-
-#: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
+#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:713
 #: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:125
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
-#: src/gui/widgets/unit_preview_pane.cpp:611
+#: src/gui/widgets/unit_preview_pane.cpp:614
 msgid "No grid defined."
 msgstr "No s'ha definit la graella."
 
-#: src/gui/core/window_builder.cpp:245
+#: src/gui/core/window_builder.cpp:221
 #, fuzzy
 #| msgid "A row must have a column."
 msgid "Grid '$grid' row $row must have at least one column."
 msgstr "Una fila ha de tenir una columna."
 
-#: src/gui/core/window_builder.cpp:257
+#: src/gui/core/window_builder.cpp:233
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
@@ -6316,104 +6323,104 @@ msgstr ""
 msgid "addon_tag^Players can change the terrain"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Not installed"
 msgstr "addon_state^No instal·lat"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Published, not installed"
 msgstr "addon_state^Publicat, no instal·lat"
 
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Installed"
 msgstr "addon_state^Instal·lat"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Published"
 msgstr "addon_state^Publicat"
 
-#: src/gui/dialogs/addon/manager.cpp:273
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Installed, not tracking local version"
 msgstr "addon_state^Instal·lat, no rastrejant la versió local"
 
-#: src/gui/dialogs/addon/manager.cpp:276
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Published, not tracking local version"
 msgstr "addon_state^Publicat, no rastrejant la versió local"
 
-#: src/gui/dialogs/addon/manager.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "addon_state^Instal·lat ($local_version|), actualitzable"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "addon_state^Publicat ($local_version| instal·lada), actualitzable"
 
-#: src/gui/dialogs/addon/manager.cpp:287
+#: src/gui/dialogs/addon/manager.cpp:288
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "addon_state^Instal·lat ($local_version|), obsolet al servidor"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:289
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "addon_state^Publicat ($local_version| instal·lada), obsolet al servidor"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Installed, not ready to publish"
 msgstr "addon_state^Instal·lat, no a punt per a publicar-se"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Ready to publish"
 msgstr "addon_state^A punt per a publicar-se"
 
-#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Installed, broken"
 msgstr "addon_state^Instal·lat, espatllat"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Published, broken"
 msgstr "addon_state^Publicat, espatllat"
 
-#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:131
 msgid "addon_state^Unknown"
 msgstr "addon_state^Desconegut"
 
-#: src/gui/dialogs/addon/manager.cpp:400
+#: src/gui/dialogs/addon/manager.cpp:401
 msgid "ascending"
 msgstr "ascendent"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:402
+#: src/gui/dialogs/addon/manager.cpp:403
 msgid "oldest to newest"
 msgstr "de més antic a més recent"
 
-#: src/gui/dialogs/addon/manager.cpp:405
+#: src/gui/dialogs/addon/manager.cpp:406
 msgid "descending"
 msgstr "descendent"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:407
+#: src/gui/dialogs/addon/manager.cpp:408
 msgid "newest to oldest"
 msgstr "de més recent a més antic"
 
-#: src/gui/dialogs/addon/manager.cpp:504
+#: src/gui/dialogs/addon/manager.cpp:505
 msgid "addons^Back to List"
 msgstr "addons^Torna a la llista"
 
-#: src/gui/dialogs/addon/manager.cpp:516
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "S'ha produït un error en descarregar la llista de complements del servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:552
+#: src/gui/dialogs/addon/manager.cpp:553
 msgid "No Add-ons Available"
 msgstr "No hi ha cap complement disponible"
 
-#: src/gui/dialogs/addon/manager.cpp:552
+#: src/gui/dialogs/addon/manager.cpp:553
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 "No hi ha cap complement disponible per a descarregar d'aquest servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:785
+#: src/gui/dialogs/addon/manager.cpp:786
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6421,15 +6428,15 @@ msgstr ""
 "El complement següent sembla tenir informació de publicació o control de "
 "versions emmagatzemada localment, i no s'eliminarà:"
 
-#: src/gui/dialogs/addon/manager.cpp:793
+#: src/gui/dialogs/addon/manager.cpp:794
 msgid "The following add-on could not be deleted properly:"
 msgstr "No s'ha pogut suprimir correctament el complement següent:"
 
-#: src/gui/dialogs/addon/manager.cpp:846
+#: src/gui/dialogs/addon/manager.cpp:847
 msgid "Warning"
 msgstr "Avís"
 
-#: src/gui/dialogs/addon/manager.cpp:847
+#: src/gui/dialogs/addon/manager.cpp:848
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6437,26 +6444,26 @@ msgstr ""
 "La versió remota d'aquest complement és superior o igual que la versió "
 "carregada. Segur que voleu continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:866
+#: src/gui/dialogs/addon/manager.cpp:867
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "El camí de la icona no és vàlid. Assegureu-vos que el camí apunta a una "
 "imatge vàlida."
 
-#: src/gui/dialogs/addon/manager.cpp:869 src/gui/dialogs/addon/manager.cpp:911
+#: src/gui/dialogs/addon/manager.cpp:870 src/gui/dialogs/addon/manager.cpp:912
 msgid "The server responded with an error:"
 msgstr "El servidor ha respost amb un error:"
 
-#: src/gui/dialogs/addon/manager.cpp:872
+#: src/gui/dialogs/addon/manager.cpp:873
 msgid "The add-on was rejected by the server:"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:887 src/gui/dialogs/addon/manager.cpp:914
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
+#: src/gui/dialogs/addon/manager.cpp:888 src/gui/dialogs/addon/manager.cpp:915
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "Resposta"
 
-#: src/gui/dialogs/addon/manager.cpp:899
+#: src/gui/dialogs/addon/manager.cpp:900
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6464,69 +6471,69 @@ msgstr ""
 "La supressió de «$addon|» n'eliminarà definitivament els recomptes de "
 "descàrrega i càrrega al servidor de complements. Segur que voleu continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:931
+#: src/gui/dialogs/addon/manager.cpp:932
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Voleu desinstal·lar «$addon|»?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:962
+#: src/gui/dialogs/addon/manager.cpp:963
 msgid "%B %d %Y, %I:%M %p"
 msgstr ""
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:964
+#: src/gui/dialogs/addon/manager.cpp:965
 msgid "%B %d %Y, %H:%M"
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:1025
+#: src/gui/dialogs/addon/manager.cpp:1026
 msgid "url^None"
 msgstr "url^Cap"
 
-#: src/gui/dialogs/attack_predictions.cpp:115
+#: src/gui/dialogs/attack_predictions.cpp:116
 msgid "No usable weapon"
 msgstr "No hi ha cap arma utilitzable"
 
-#: src/gui/dialogs/attack_predictions.cpp:193
+#: src/gui/dialogs/attack_predictions.cpp:194
 msgid "Defender resistance vs"
 msgstr "Resistència del defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:195
+#: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender vulnerability vs"
 msgstr "Vulnerabilitat del defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:200
 msgid "Attacker resistance vs"
 msgstr "Resistència de l'atacant contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:201
+#: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilitat de l'atacant contra"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:439
+#: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "active_modifications^Cap"
 
-#: src/gui/dialogs/chat_log.cpp:404 src/gui/dialogs/game_cache_options.cpp:68
-#: src/gui/dialogs/game_version_dialog.cpp:154
+#: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
+#: src/gui/dialogs/game_version_dialog.cpp:155
 #: src/gui/dialogs/gamestate_inspector.cpp:409
 #: src/gui/dialogs/lua_interpreter.cpp:475
-#: src/gui/dialogs/screenshot_notification.cpp:69
-#: src/gui/dialogs/wml_error.cpp:191
+#: src/gui/dialogs/screenshot_notification.cpp:70
+#: src/gui/dialogs/wml_error.cpp:192
 msgid "Clipboard support not found, contact your packager"
 msgstr ""
 "No s'ha trobat cap porta-retalls compatible. Contacteu amb el vostre "
 "empaquetador"
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:39
+#: src/gui/dialogs/depcheck_confirm_change.cpp:40
 msgid "$requester requires the following modifications to be enabled:"
 msgstr "$requester requereix l'habilitació de les modificacions següents:"
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:43
+#: src/gui/dialogs/depcheck_confirm_change.cpp:44
 msgid "$requester requires the following modifications to be disabled:"
 msgstr "$requester requereix la inhabilitació de les modificacions següents:"
 
-#: src/gui/dialogs/depcheck_select_new.cpp:41
+#: src/gui/dialogs/depcheck_select_new.cpp:42
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -6534,7 +6541,7 @@ msgstr ""
 "L'escenari triat no és compatible amb la vostra configuració.\n"
 "Seleccioneu-ne un de compatible."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:46
+#: src/gui/dialogs/depcheck_select_new.cpp:47
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -6542,7 +6549,7 @@ msgstr ""
 "L'era triada no és compatible amb la vostra configuració.\n"
 "Seleccioneu-ne una de compatible."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:52
+#: src/gui/dialogs/depcheck_select_new.cpp:53
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -6550,43 +6557,43 @@ msgstr ""
 "La configuració triada no és compatible amb la vostra configuració.\n"
 "Seleccioneu-ne una de compatible."
 
-#: src/gui/dialogs/editor/generator_settings.cpp:70
+#: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
 msgstr "cada 1000 hexàgons"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Coastal"
 msgstr "Costaner"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Inland"
 msgstr "Interior"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Island"
 msgstr "Illa"
 
-#: src/gui/dialogs/file_dialog.cpp:106
+#: src/gui/dialogs/file_dialog.cpp:107
 msgid "Find File"
 msgstr "Cerca un fitxer"
 
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:182
 msgid "Open"
 msgstr "Obre"
 
-#: src/gui/dialogs/file_dialog.cpp:301
+#: src/gui/dialogs/file_dialog.cpp:302
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "El fitxer ja existeix. El voleu sobreescriure?"
 
-#: src/gui/dialogs/file_dialog.cpp:325
+#: src/gui/dialogs/file_dialog.cpp:326
 msgid "The file or folder $path cannot be created."
 msgstr "No es pot crear el fitxer o carpeta $path."
 
-#: src/gui/dialogs/file_dialog.cpp:331
+#: src/gui/dialogs/file_dialog.cpp:332
 msgid "The file or folder $path does not exist."
 msgstr "El fitxer o carpeta $path no existeix."
 
-#: src/gui/dialogs/file_dialog.cpp:706
+#: src/gui/dialogs/file_dialog.cpp:707
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -6594,19 +6601,19 @@ msgstr ""
 "No s'ha pogut crear una carpeta nova a $path|. Assegureu-vos que teniu els "
 "permisos apropiats per a escriure en aquesta ubicació."
 
-#: src/gui/dialogs/file_dialog.cpp:724
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "La carpeta següent i el seu contingut se suprimiran definitivament:"
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following file will be permanently deleted:"
 msgstr "El fitxer següent se suprimirà definitivament:"
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "Do you wish to continue?"
 msgstr "Voleu continuar?"
 
-#: src/gui/dialogs/file_dialog.cpp:738
+#: src/gui/dialogs/file_dialog.cpp:739
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6614,42 +6621,42 @@ msgstr ""
 "No s'ha pogut suprimir $path|. Assegureu-vos que teniu els permisos "
 "apropiats per a escriure en aquesta ubicació."
 
-#: src/gui/dialogs/folder_create.cpp:40
+#: src/gui/dialogs/folder_create.cpp:41
 msgid "New Bookmark"
 msgstr "Marcador nou"
 
-#: src/gui/dialogs/game_cache_options.cpp:100
+#: src/gui/dialogs/game_cache_options.cpp:101
 msgid "dir_size^Unknown"
 msgstr "dir_size^Desconeguda"
 
-#: src/gui/dialogs/game_cache_options.cpp:102
+#: src/gui/dialogs/game_cache_options.cpp:103
 #: src/gui/dialogs/network_transmission.cpp:52
 #: src/gui/dialogs/network_transmission.cpp:53
-#: src/gui/dialogs/screenshot_notification.cpp:116
+#: src/gui/dialogs/screenshot_notification.cpp:117
 msgid "unit_byte^B"
 msgstr "unit_byte^B"
 
-#: src/gui/dialogs/game_cache_options.cpp:125
+#: src/gui/dialogs/game_cache_options.cpp:126
 msgid "Cache Cleaned"
 msgstr "S'ha netejat la memòria cau"
 
-#: src/gui/dialogs/game_cache_options.cpp:126
+#: src/gui/dialogs/game_cache_options.cpp:127
 msgid "The game data cache has been cleaned."
 msgstr "S'ha netejat la memòria cau de dades del joc."
 
-#: src/gui/dialogs/game_cache_options.cpp:128
+#: src/gui/dialogs/game_cache_options.cpp:129
 msgid "The game data cache could not be completely cleaned."
 msgstr "No s'ha pogut netejar completament la memòria cau de dades del joc."
 
-#: src/gui/dialogs/game_cache_options.cpp:144
+#: src/gui/dialogs/game_cache_options.cpp:145
 msgid "Cache Purged"
 msgstr "S'ha purgat la memòria cau"
 
-#: src/gui/dialogs/game_cache_options.cpp:145
+#: src/gui/dialogs/game_cache_options.cpp:146
 msgid "The game data cache has been purged."
 msgstr "S'ha purgat la memòria cau de dades del joc."
 
-#: src/gui/dialogs/game_cache_options.cpp:147
+#: src/gui/dialogs/game_cache_options.cpp:148
 msgid "The game data cache could not be purged."
 msgstr "No s'ha pogut purgar completament la memòria cau de dades del joc."
 
@@ -6665,107 +6672,107 @@ msgstr "Partides desades"
 msgid "There are no saved games to load."
 msgstr "No hi ha modes de vídeo alternatius disponibles"
 
-#: src/gui/dialogs/game_load.cpp:144
+#: src/gui/dialogs/game_load.cpp:145
 msgid "game_version^Current Version"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:148
+#: src/gui/dialogs/game_load.cpp:149
 #, fuzzy
 #| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
 msgstr "Versió $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:235
 msgid "$active active, $reserve reserve"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:283
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "El fitxer seleccionat està malmès: "
 
-#: src/gui/dialogs/game_load.cpp:355
+#: src/gui/dialogs/game_load.cpp:356
 msgid "(Invalid)"
 msgstr "(No vàlid)"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr "Campanya: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:397
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Tutorial"
 msgstr "Tutorial"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr "Escenari de prova"
 
-#: src/gui/dialogs/game_load.cpp:410
+#: src/gui/dialogs/game_load.cpp:411
 msgid "Replay"
 msgstr "Repetició"
 
-#: src/gui/dialogs/game_load.cpp:412
+#: src/gui/dialogs/game_load.cpp:413
 msgid "Turn"
 msgstr "Torn"
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
 msgstr "Inici de l'escenari"
 
-#: src/gui/dialogs/game_load.cpp:433
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Difficulty: "
 msgstr "Dificultat: "
 
-#: src/gui/dialogs/game_load.cpp:456
+#: src/gui/dialogs/game_load.cpp:457
 msgid "Version: "
 msgstr "Versió: "
 
-#: src/gui/dialogs/game_load.cpp:461
+#: src/gui/dialogs/game_load.cpp:462
 msgid "Modifications: "
 msgstr "Modificacions: "
 
-#: src/gui/dialogs/game_stats.cpp:70
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
 msgstr "controller^IA"
 
-#: src/gui/dialogs/game_stats.cpp:70
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Idle"
 msgstr "controller^Inactiu"
 
-#: src/gui/dialogs/game_stats.cpp:70
+#: src/gui/dialogs/game_stats.cpp:71
 #, fuzzy
 #| msgid "controller^None"
 msgid "controller^Reserved"
 msgstr "controller^Cap"
 
-#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:77
+#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: src/gui/dialogs/game_stats.cpp:197 src/gui/dialogs/game_stats.cpp:200
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "no"
 msgstr "no"
 
-#: src/gui/dialogs/game_stats.cpp:197 src/gui/dialogs/game_stats.cpp:200
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "yes"
 msgstr "sí"
 
-#: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:195
+#: src/gui/dialogs/game_version_dialog.cpp:106
+#: src/gui/dialogs/title_screen.cpp:196
 msgid "Version $version"
 msgstr "Versió $version"
 
-#: src/gui/dialogs/game_version_dialog.cpp:109
+#: src/gui/dialogs/game_version_dialog.cpp:110
 msgid "Running on $os"
 msgstr "S'està executant a $os"
 
-#: src/gui/dialogs/label_settings.cpp:53
+#: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
 msgstr "Etiquetes d'equip"
 
-#: src/gui/dialogs/label_settings.cpp:83
+#: src/gui/dialogs/label_settings.cpp:84
 msgid "Side $side_number ($name)"
 msgstr "Bàndol $side_number ($name)"
 
@@ -6867,22 +6874,22 @@ msgstr ""
 msgid "lua console"
 msgstr "consola lua"
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:140
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:487
+#: src/gui/dialogs/multiplayer/faction_select.cpp:141
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
 msgid "Random"
 msgstr "Aleatori"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:69
+#: src/gui/dialogs/multiplayer/lobby.cpp:68
 msgid "Do you really want to log out?"
 msgstr "Segur que voleu tancar la sessió?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:178
+#: src/gui/dialogs/multiplayer/lobby.cpp:174
 #, fuzzy
 #| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
 msgstr "El contingut fet per l'usuari és incompatible."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:179
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6892,13 +6899,13 @@ msgstr ""
 "obsolets que són incompatibles amb la vostra versió. Potser voleu suggerir "
 "que s'actualitzin els complements de l'amfitrió."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:194
+#: src/gui/dialogs/multiplayer/lobby.cpp:190
 #, fuzzy
 #| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
 msgstr "Manca contingut fet per l'usuari."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:195
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6908,47 +6915,47 @@ msgstr ""
 "s'instal·lin o s'actualitzin per a unir-vos-hi.\n"
 "Voleu intentar instal·lar-los?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:372
+#: src/gui/dialogs/multiplayer/lobby.cpp:368
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Partides: se n'estan mostrant $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:394
+#: src/gui/dialogs/multiplayer/lobby.cpp:390
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:424
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "era_or_mod^not installed"
 msgstr "era_or_mod^no instal·lada"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:427
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "Era"
 msgstr "Era"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:434
+#: src/gui/dialogs/multiplayer/lobby.cpp:430
 msgid "Modifications"
 msgstr "Modificacions"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Reloaded:"
 msgstr "Recarregat:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Shared vision:"
 msgstr "Visió compartida:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shuffle sides:"
 msgstr "Barreja els bàndols:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Time limit:"
 msgstr "Límit de temps:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:463
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Use map settings:"
 msgstr "Utilitza els paràmetres del mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:471
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6956,24 +6963,24 @@ msgstr ""
 "Cal instal·lar un o més complements\n"
 "per a poder unir-vos a aquesta partida."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:496
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Observers allowed"
 msgstr "Observadors admesos"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:499
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers not allowed"
 msgstr "Observadors no admesos"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:630
+#: src/gui/dialogs/multiplayer/lobby.cpp:626
 msgid "lobby"
 msgstr "vestíbul"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:819
+#: src/gui/dialogs/multiplayer/lobby.cpp:815
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:832
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6982,11 +6989,11 @@ msgstr ""
 "complement que dona suport al vestíbul multijugador. Informeu-ne a https://"
 "bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:853
+#: src/gui/dialogs/multiplayer/lobby.cpp:849
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
+#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:106
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
@@ -6994,140 +7001,140 @@ msgstr ""
 "Aquesta versió de Wesnoth no inclou suport per a notificacions d'escriptori, "
 "contacteu amb el vostre gestor de paquets"
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:83
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:84
 msgid "Side $side"
 msgstr "Bàndol $side"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
 #, fuzzy
 #| msgid "Server:"
 msgid "Add Server"
 msgstr "Servidor:"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 msgid "Scenarios"
 msgstr "Escenaris"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "Multiplayer Campaigns"
 msgstr "Campanyes multijugador"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 msgid "Singleplayer Campaigns"
 msgstr "Campanyes d'un jugador"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Custom Maps"
 msgstr "Mapes personalitzats"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Custom Scenarios"
 msgstr "Escenaris personalitzats"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Random Maps"
 msgstr "Mapes aleatoris"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:169
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:170
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:171
 msgid "No games found."
 msgstr "No s'han trobat partides."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
 msgid "No eras found."
 msgstr "No s'han trobat eres."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:239
 msgid "No eras found"
 msgstr "No s'han trobat eres"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:505
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:506
 msgid "No eras available for this game."
 msgstr "No hi ha eres disponibles per a aquesta partida."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
 msgid "number of players^$min to $max"
 msgstr "number of players^de $min a $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:821
 msgid "The selected game has no sides!"
 msgstr "La partida seleccionada no té cap bàndol!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
 #, fuzzy
 #| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
 msgstr "No es pot crear la partida seleccionada."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Choose Starting Scenario"
 msgstr "Trieu l'escenari inicial"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Select at which point to begin this campaign."
 msgstr "Seleccioneu en quin punt voleu començar la campanya."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Computer Player"
 msgstr "Ordinador"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "Empty slot"
 msgstr "Plaça buida"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "Reserved for $playername"
 msgstr "Reservada per a $playername"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:229
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:230
 msgid "Vacant slot"
 msgstr "Plaça lliure"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:233
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:234
 msgid "empty"
 msgstr "buit"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:100
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:260
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
 msgid "this game"
 msgstr "aquesta partida"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
 msgid "Waiting for players to choose factions..."
 msgstr "S'està esperant que els jugadors escullin les faccions..."
 
-#: src/gui/dialogs/outro.cpp:46
+#: src/gui/dialogs/outro.cpp:47
 msgid "The End"
 msgstr "Fi"
 
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:159
 msgid "friend"
 msgstr "amic"
 
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:164
 msgid "ignored"
 msgstr "ignorat"
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:218
+#: src/gui/dialogs/preferences_dialog.cpp:275
 msgid "No username specified"
 msgstr "No s'ha especificat cap nom d'usuari"
 
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:233
 msgid "Invalid username"
 msgstr "El nom de l'usuari no és vàlid"
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:280
 msgid "Not on friends or ignore lists"
 msgstr "No és a les llistes d'amics ni d'ignorats"
 
-#: src/gui/dialogs/preferences_dialog.cpp:839
-#: src/gui/dialogs/preferences_dialog.cpp:903
+#: src/gui/dialogs/preferences_dialog.cpp:849
+#: src/gui/dialogs/preferences_dialog.cpp:913
 msgid "No hotkey selected"
 msgstr "No s'ha seleccionat cap drecera de teclat"
 
-#: src/gui/dialogs/preferences_dialog.cpp:867
+#: src/gui/dialogs/preferences_dialog.cpp:877
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7135,20 +7142,20 @@ msgstr ""
 "«<b>$hotkey_sequence|</b>» està en ús per «<b>$old_hotkey_action|</b>».\n"
 "Voleu reassignar-la a «<b>$new_hotkey_action|</b>»?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:883
 msgid "Reassign Hotkey"
 msgstr "Reassigna la drecera"
 
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "S'han restablert els valors per defecte de totes les dreceres de teclat."
 
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "Hotkeys Reset"
 msgstr "Restabliment de dreceres"
 
-#: src/gui/dialogs/screenshot_notification.cpp:98
+#: src/gui/dialogs/screenshot_notification.cpp:99
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -7158,24 +7165,24 @@ msgstr ""
 "\n"
 "Intenteu desar la captura de pantalla com a PNG."
 
-#: src/gui/dialogs/statistics_dialog.cpp:79
+#: src/gui/dialogs/statistics_dialog.cpp:80
 msgid "All Scenarios"
 msgstr "Tots els escenaris"
 
-#: src/gui/dialogs/statistics_dialog.cpp:177
-#: src/gui/dialogs/statistics_dialog.cpp:336
+#: src/gui/dialogs/statistics_dialog.cpp:178
+#: src/gui/dialogs/statistics_dialog.cpp:337
 msgid "This Turn"
 msgstr "Aquest torn"
 
-#: src/gui/dialogs/statistics_dialog.cpp:213
+#: src/gui/dialogs/statistics_dialog.cpp:214
 msgid "Actual hit rates, by chance to hit:"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:215
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "(no attacks have taken place yet)"
 msgstr ""
 
-#: src/gui/dialogs/statistics_dialog.cpp:323
+#: src/gui/dialogs/statistics_dialog.cpp:324
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -7186,50 +7193,56 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
+#, fuzzy
+#| msgid "Recruits"
+msgid "stats^Recruits"
+msgstr "Reclutes"
+
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Recalls"
 msgstr "Reincorporacions"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Advancements"
 msgstr "Pujades de nivell"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Losses"
 msgstr "Pèrdues"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:372
 msgid "Kills"
 msgstr "Morts"
 
-#: src/gui/dialogs/statistics_dialog.cpp:393
-#: src/gui/dialogs/statistics_dialog.cpp:400
+#: src/gui/dialogs/statistics_dialog.cpp:394
+#: src/gui/dialogs/statistics_dialog.cpp:401
 msgid "Inflicted"
 msgstr "Infligides"
 
-#: src/gui/dialogs/statistics_dialog.cpp:406
-#: src/gui/dialogs/statistics_dialog.cpp:413
+#: src/gui/dialogs/statistics_dialog.cpp:407
+#: src/gui/dialogs/statistics_dialog.cpp:414
 msgid "Taken"
 msgstr "Patides"
 
-#: src/gui/dialogs/statistics_dialog.cpp:454
+#: src/gui/dialogs/statistics_dialog.cpp:455
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:97
+#: src/gui/dialogs/title_screen.cpp:112 src/hotkey/hotkey_command.cpp:97
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
-#: src/gui/dialogs/title_screen.cpp:432 src/hotkey/hotkey_command.cpp:297
+#: src/gui/dialogs/title_screen.cpp:433 src/hotkey/hotkey_command.cpp:297
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
 msgstr "Trieu l'escenari inicial"
 
-#: src/gui/dialogs/unit_create.cpp:197
+#: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
 msgstr ""
 
-#: src/gui/dialogs/unit_recall.cpp:224
+#: src/gui/dialogs/unit_recall.cpp:225
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -7237,37 +7250,37 @@ msgstr ""
 "Aquesta unitat no es pot reincorporar perquè no tindreu prou or en aquest "
 "moment de la vostra planificació."
 
-#: src/gui/dialogs/unit_recall.cpp:226
+#: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Aquesta unitat no es pot reincorporar perquè no teniu prou or."
 
-#: src/gui/dialogs/unit_recall.cpp:322 src/hotkey/hotkey_command.cpp:102
+#: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:102
 msgid "Rename Unit"
 msgstr "Renomena la unitat"
 
-#: src/gui/dialogs/unit_recall.cpp:358
+#: src/gui/dialogs/unit_recall.cpp:359
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Aquesta unitat és lleial i no requereix cap manteniment."
 
-#: src/gui/dialogs/unit_recall.cpp:359 src/gui/dialogs/unit_recall.cpp:364
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
+#: src/gui/dialogs/unit_recall.cpp:370
 msgid "Do you really want to dismiss him?"
 msgstr "Segur que voleu descartar-lo?"
 
-#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
-#: src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:361 src/gui/dialogs/unit_recall.cpp:366
+#: src/gui/dialogs/unit_recall.cpp:371
 msgid "Do you really want to dismiss her?"
 msgstr "Segur que voleu descartar-la?"
 
-#: src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:364
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Aquesta és una unitat experimentada que ha pujat algun nivell."
 
-#: src/gui/dialogs/unit_recall.cpp:368
+#: src/gui/dialogs/unit_recall.cpp:369
 msgid "This unit is close to advancing a level."
 msgstr "Aquesta unitat és a prop de pujar de nivell."
 
-#: src/gui/dialogs/unit_recall.cpp:374
+#: src/gui/dialogs/unit_recall.cpp:375
 msgid "Dismiss Unit"
 msgstr "Descarta la unitat"
 
@@ -7426,52 +7439,56 @@ msgstr "(At / Def)"
 msgid "Movement Costs:"
 msgstr "Costs de moviment:"
 
-#: src/gui/widgets/unit_preview_pane.cpp:220
+#: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "Attacks"
 msgstr "Atacs"
 
-#: src/gui/widgets/unit_preview_pane.cpp:297
-#: src/gui/widgets/unit_preview_pane.cpp:328
-#: src/gui/widgets/unit_preview_pane.cpp:449
-#: src/gui/widgets/unit_preview_pane.cpp:481
+#: src/gui/widgets/unit_preview_pane.cpp:300
+#: src/gui/widgets/unit_preview_pane.cpp:331
+#: src/gui/widgets/unit_preview_pane.cpp:452
+#: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "Lvl $lvl"
 msgstr "Niv $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:335
-#: src/gui/widgets/unit_preview_pane.cpp:348
-#: src/gui/widgets/unit_preview_pane.cpp:489
-#: src/gui/widgets/unit_preview_pane.cpp:508
+#: src/gui/widgets/unit_preview_pane.cpp:338
+#: src/gui/widgets/unit_preview_pane.cpp:351
+#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:511
 msgid "HP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:353
-#: src/gui/widgets/unit_preview_pane.cpp:491
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:340
+#: src/gui/widgets/unit_preview_pane.cpp:356
+#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:516
 msgid "XP: "
 msgstr "XP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:355
-#: src/gui/widgets/unit_preview_pane.cpp:515
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "Experience Modifier: "
 msgstr "Modificador d'experiència: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:361
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "MP: "
 msgstr "MP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:396
-#: src/gui/widgets/unit_preview_pane.cpp:546
+#: src/gui/widgets/unit_preview_pane.cpp:399
+#: src/gui/widgets/unit_preview_pane.cpp:549
 msgid "Abilities"
 msgstr "Habilitats"
 
-#: src/gui/widgets/window.cpp:773
+#: src/gui/widgets/window.cpp:431
+msgid "Linked '$id' group has multiple definitions."
+msgstr "El grup vinculat «$id» té múltiples definicions."
+
+#: src/gui/widgets/window.cpp:816
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Fer clic a descarta necessita un botó «clic_dismiss» o «ok»."
 
-#: src/gui/widgets/window.cpp:798 src/gui/widgets/window.cpp:835
-#: src/tests/gui/test_gui2.cpp:565
+#: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
+#: src/tests/gui/test_gui2.cpp:679
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "No s'ha pogut mostrar un diàleg, ja que no cabia a la pantalla."
 
@@ -8330,11 +8347,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Cerca una aplicació de servidor"
 
-#: src/preferences/game.cpp:867
+#: src/preferences/game.cpp:868
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:869
+#: src/preferences/game.cpp:870
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

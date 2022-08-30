@@ -1345,10 +1345,10 @@ static unsigned calculate_fps(unsigned frametime)
 
 void display::update_fps_label()
 {
-	++current_frame_sample;
+	++current_frame_sample_;
 	const int sample_freq = 10;
 
-	if(current_frame_sample != sample_freq) {
+	if(current_frame_sample_ != sample_freq) {
 		return;
 	}
 
@@ -1358,7 +1358,7 @@ void display::update_fps_label()
 	const int max_fps = calculate_fps(*minmax_it.first);
 	const int min_fps = calculate_fps(*minmax_it.second);
 	fps_history_.emplace_back(min_fps, avg_fps, max_fps);
-	current_frame_sample = 0;
+	current_frame_sample_ = 0;
 
 	// flush out the stored fps values every so often
 	if(fps_history_.size() == 1000) {
@@ -1489,27 +1489,24 @@ void display::draw_text_in_hex(const map_location& loc,
 {
 	if (text.empty()) return;
 
-	const double zf = get_zoom_factor();
-	const int font_sz = int(font_size * zf);
+	auto& renderer = font::get_text_renderer();
+	renderer.set_text(text, false);
+	renderer.set_font_size(font_size * get_zoom_factor());
+	renderer.set_maximum_width(-1);
+	renderer.set_maximum_height(-1, false);
+	renderer.set_foreground_color(color);
+	renderer.set_add_outline(true);
 
-	// TODO: highdpi - better outline
-	texture text_surf = font::pango_render_text(text, font_sz, color);
-	const int x = get_location_x(loc) - text_surf.w()/2
-	              + static_cast<int>(x_in_hex* hex_size());
-	const int y = get_location_y(loc) - text_surf.h()/2
-	              + static_cast<int>(y_in_hex* hex_size());
-	const int w = text_surf.w();
-	const int h = text_surf.h();
-	for (int dy=-1; dy <= 1; ++dy) {
-		for (int dx=-1; dx <= 1; ++dx) {
-			if (dx!=0 || dy!=0) {
-				const SDL_Rect dest{int(x + dx*zf), int(y + dy*zf), w, h};
-				drawing_buffer_add(layer, loc, dest, text_surf)
-					.set_color_and_alpha({0, 0, 0, 128});
-			}
-		}
-	}
-	drawing_buffer_add(layer, loc, {x, y, w, h}, text_surf);
+	texture res = renderer.render_and_get_texture();
+
+	const rect dst {
+		get_location_x(loc) - (res.w() / 2) + static_cast<int>(x_in_hex * hex_size()),
+		get_location_y(loc) - (res.h() / 2) + static_cast<int>(y_in_hex * hex_size()),
+		res.w(),
+		res.h()
+	};
+
+	drawing_buffer_add(layer, loc, dst, res);
 }
 
 static void add_submerge_ipf_mod(

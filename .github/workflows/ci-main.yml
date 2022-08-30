@@ -267,7 +267,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: win-cache-0005
+          key: win-cache-0006
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -322,4 +322,3 @@ jobs:
             pusher: ${{ github.actor }}
             commit: ${{ github.event.head_commit.message }}
             commit url: ${{ github.event.head_commit.url }}
-

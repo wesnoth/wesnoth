@@ -1,4 +1,4 @@
-## Version 1.17.6+dev
+## Version 1.17.7+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -7,11 +7,18 @@
  ### Lua API
  ### Packaging
  ### Terrain
-   * Generalized "lower terrain" similar to the mid-level in lava/chasm.  Cosmetic and unwalkable versions. (PR #6927)
  ### Translations
-   * Updated translations: Arabic, British English, Bulgarian, Chinese (Traditional), Finnish, French, Italian
+   * Updated translations: Czech, French, Turkish
  ### Units
  ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.7
+ ### Terrain
+   * Generalized "lower terrain" similar to the mid-level in lava/chasm.  Cosmetic and unwalkable versions. (PR #6927)
+ ### Translations
+   * Updated translations: Arabic, British English, Bulgarian, Chinese (Traditional), Czech, Finnish, French, Italian, Portuguese (Brazil)
  ### WML Engine
    * Add the pre_attack event.
  ### Miscellaneous and Bug Fixes
@@ -20,6 +27,8 @@
    * Fixed animations not clearing properly when zoomed (issues #6589, #6891, #6892)
    * Fixed inconsistent cropping of unusually-sized item images (issue #6118)
    * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
+   * Stored credentials are now encrypted with AES rather than RC4. This will result in credentials needing to be re-entered the first time when logging in with this version.
+   * The cache directory is now configurable through a command-line option in the same way as data, user data and user config directories.
 
 ## Version 1.17.6
  ### Campaigns

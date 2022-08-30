@@ -135,6 +135,8 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 		}
 	}
 
+	info_map.clear();
+
 	for(std::size_t i = 0; i < player_lists.size(); ++i) {
 		assert(inputs[i].node_data.size() == inputs[i].user_data.size());
 
@@ -142,9 +144,15 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 		const auto new_nodes = player_lists[i].root->replace_children("player", inputs[i].node_data);
 
 		for(std::size_t k = 0; k < new_nodes.size(); ++k) {
+			auto* node = new_nodes[k].get();
+			auto* info = inputs[i].user_data[k];
+
+			// Note the user_info associated with this node
+			info_map.try_emplace(node, info);
+
 			connect_signal_mouse_left_double_click(
-				find_widget<toggle_panel>(new_nodes[k].get(), "tree_view_node_label", false),
-				std::bind(user_callback, inputs[i].user_data[k])
+				find_widget<toggle_panel>(node, "tree_view_node_label", false),
+				std::bind(user_callback, info)
 			);
 		}
 
@@ -167,4 +175,10 @@ void lobby_player_list_helper::init(window& w)
 		sub_list{tree, _("Other Games"), false}
 	};
 }
+
+const mp::user_info* lobby_player_list_helper::get_selected_info() const
+{
+	return info_map.at(tree->selected_item());
+}
+
 } // namespace gui2

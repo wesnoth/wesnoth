@@ -1074,9 +1074,8 @@ game_launcher::~game_launcher()
 		sound::close_sound();
 		video::deinit();
 	} catch(std::exception& e) {
-		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher: "
-			<< e.what();
+		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher: " << e.what();
 	} catch(...) {
-		ERR_GENERAL << "Suppressing exception thrown during ~game_launcher";
+		ERR_GENERAL << "Suppressing exception " << utils::get_unknown_exception_type() << " thrown during ~game_launcher";
 	}
 }

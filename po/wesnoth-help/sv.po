@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
 "PO-Revision-Date: 2020-03-08 19:08+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -4825,9 +4825,18 @@ msgstr "gömd"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -7683,15 +7692,15 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max HP"
 
-#: src/help/help.cpp:213
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Stäng"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Hjälp"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
@@ -7869,27 +7878,27 @@ msgstr "Sinnelag: "
 msgid "Required XP:"
 msgstr "EP för nästa nivå: "
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "Attacker"
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "Namn"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "Slag"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "Räckvidd"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "Typ"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "Specialitet"
 
@@ -7905,35 +7914,35 @@ msgstr "Attacktyp"
 msgid "Resistance"
 msgstr "Motståndskraft"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 #, fuzzy
 #| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
 msgstr "Terrängredigerare"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Terräng"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Försvar"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Förflyttningskostnad"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "Försvar"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr ""
 

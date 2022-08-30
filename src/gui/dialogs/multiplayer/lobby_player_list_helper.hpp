@@ -17,6 +17,7 @@
 
 #include <array>
 #include <functional>
+#include <map>
 #include <string>
 
 namespace mp
@@ -61,12 +62,18 @@ private:
 	/** The double click callback bound to each player's tree node. */
 	std::function<void(const mp::user_info*)> user_callback;
 
+	/** Node-to-info mappings for easy access. */
+	std::map<const tree_view_node*, const mp::user_info*> info_map;
+
 public:
 	lobby_player_list_helper(decltype(user_callback) ucb)
 		: player_lists()
 		, tree(nullptr)
 		, user_callback(ucb)
+		, info_map()
 	{
 	}
+
+	const mp::user_info* get_selected_info() const;
 };
 } // namespace gui2

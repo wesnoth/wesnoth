@@ -598,6 +598,7 @@ int window::show(const unsigned auto_close_timeout)
 	catch(...)
 	{
 		// TODO: is this even necessary? What are we catching?
+		DBG_DP << "Caught general exception in show(): " << utils::get_unknown_exception_type();
 		hide();
 		throw;
 	}

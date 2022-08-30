@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2022-08-20 19:47-0500\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -217,13 +217,13 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
 msgid "poisoned"
 msgstr "pozoindua"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:398
-#: data/core/macros/items.cfg:536
+#: data/core/macros/items.cfg:544
 msgid "storm trident"
 msgstr "ekaitz hiruhortz"
 
@@ -339,25 +339,25 @@ msgid "Campaign Design"
 msgstr "Kanpaina"
 
 #. [about]
-#: data/core/about.cfg:950
+#: data/core/about.cfg:955
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "+Jokalari anitzeko mapak"
 
 #. [about]
-#: data/core/about.cfg:999
+#: data/core/about.cfg:1004
 #, fuzzy
 msgid "Packagers"
 msgstr "+Paketelariak"
 
 #. [about]
-#: data/core/about.cfg:1106
+#: data/core/about.cfg:1111
 #, fuzzy
 msgid "Miscellaneous Contributors"
 msgstr "+Hainbat"
 
 #. [about]
-#: data/core/about.cfg:1827
+#: data/core/about.cfg:1835
 #, fuzzy
 msgid "Bots"
 msgstr "+Errobotak"
@@ -704,91 +704,91 @@ msgid "Evil Altar"
 msgstr ""
 
 #. [item]: id=altar
-#: data/core/editor/items.cfg:18
+#: data/core/editor/items.cfg:19
 msgid "Altar"
 msgstr ""
 
 #. [item]: id=ankh-necklace
 #. [item]: id=ankh-necklace2
-#: data/core/editor/items.cfg:24 data/core/editor/items.cfg:30
+#: data/core/editor/items.cfg:26 data/core/editor/items.cfg:33
 msgid "Ankh Necklace"
 msgstr ""
 
 #. [item]: id=anvil
-#: data/core/editor/items.cfg:36
+#: data/core/editor/items.cfg:40
 msgid "Anvil"
 msgstr ""
 
 #. [item]: id=archery-target
-#: data/core/editor/items.cfg:42
+#: data/core/editor/items.cfg:47
 #, fuzzy
 #| msgid "charge"
 msgid "Archery Target"
 msgstr "kargatu"
 
 #. [item]: id=armor-golden
-#: data/core/editor/items.cfg:48
+#: data/core/editor/items.cfg:54
 msgid "Golden Armor"
 msgstr ""
 
 #. [item]: id=armor
-#: data/core/editor/items.cfg:54
+#: data/core/editor/items.cfg:61
 msgid "Armor"
 msgstr ""
 
 #. [item]: id=axe
 #. [item]: id=axe2
-#: data/core/editor/items.cfg:60 data/core/editor/items.cfg:66
+#: data/core/editor/items.cfg:68 data/core/editor/items.cfg:75
 msgid "Axe"
 msgstr ""
 
 #. [item]: id=axe-small
-#: data/core/editor/items.cfg:72
+#: data/core/editor/items.cfg:82
 msgid "Small Axe"
 msgstr ""
 
 #. [item]: id=axe-throwing
-#: data/core/editor/items.cfg:78
+#: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
 msgstr ""
 
 #. [item]: id=ball-blue
-#: data/core/editor/items.cfg:84
+#: data/core/editor/items.cfg:96
 #, fuzzy
 #| msgid "Blue"
 msgid "Blue Ball"
 msgstr "Urdina"
 
 #. [item]: id=ball-green
-#: data/core/editor/items.cfg:90
+#: data/core/editor/items.cfg:103
 #, fuzzy
 #| msgid "Green"
 msgid "Green Ball"
 msgstr "Berdea"
 
 #. [item]: id=ball-magenta
-#: data/core/editor/items.cfg:96
+#: data/core/editor/items.cfg:110
 msgid "Magenta Ball"
 msgstr ""
 
 #. [item]: id=barrel
-#: data/core/editor/items.cfg:102
+#: data/core/editor/items.cfg:117
 msgid "Barrel"
 msgstr ""
 
 #. [item]: id=bomb
-#: data/core/editor/items.cfg:108
+#: data/core/editor/items.cfg:124
 msgid "Bomb"
 msgstr ""
 
 #. [item]: id=bones
-#: data/core/editor/items.cfg:114
+#: data/core/editor/items.cfg:131
 #, fuzzy
 msgid "Bones"
 msgstr "harria"
 
 #. [item]: id=bonestack
-#: data/core/editor/items.cfg:120
+#: data/core/editor/items.cfg:138
 #, fuzzy
 msgid "Bonestack"
 msgstr "harria"
@@ -798,15 +798,15 @@ msgstr "harria"
 #. [item]: id=book3
 #. [item]: id=book4
 #. [item]: id=book5
-#: data/core/editor/items.cfg:126 data/core/editor/items.cfg:132
-#: data/core/editor/items.cfg:138 data/core/editor/items.cfg:144
-#: data/core/editor/items.cfg:150
+#: data/core/editor/items.cfg:145 data/core/editor/items.cfg:152
+#: data/core/editor/items.cfg:159 data/core/editor/items.cfg:166
+#: data/core/editor/items.cfg:173
 msgid "Book"
 msgstr ""
 
 #. [item]: id=bow
 #. [item]: id=bow2
-#: data/core/editor/items.cfg:156 data/core/editor/items.cfg:162
+#: data/core/editor/items.cfg:180 data/core/editor/items.cfg:187
 #, fuzzy
 #| msgid "Brown"
 msgid "Bow"
@@ -814,138 +814,138 @@ msgstr "Marroia"
 
 #. [item]: id=bow-crystal
 #. [item]: id=bow-crystal2
-#: data/core/editor/items.cfg:168 data/core/editor/items.cfg:174
+#: data/core/editor/items.cfg:194 data/core/editor/items.cfg:201
 msgid "Crystal Bow"
 msgstr ""
 
 #. [item]: id=bow-elven
 #. [item]: id=bow-elven2
-#: data/core/editor/items.cfg:180 data/core/editor/items.cfg:186
+#: data/core/editor/items.cfg:208 data/core/editor/items.cfg:215
 #, fuzzy
 msgid "Elven Bow"
 msgstr "Nano gaztelua"
 
 #. [item]: id=box
-#: data/core/editor/items.cfg:192
+#: data/core/editor/items.cfg:222
 msgid "Box"
 msgstr ""
 
 #. [item]: id=branch
-#: data/core/editor/items.cfg:198
+#: data/core/editor/items.cfg:229
 msgid "Branch"
 msgstr ""
 
 #. [item]: id=branch-bare
-#: data/core/editor/items.cfg:204
+#: data/core/editor/items.cfg:236
 msgid "Bare Branch"
 msgstr ""
 
 #. [item]: id=brazier
-#: data/core/editor/items.cfg:210
+#: data/core/editor/items.cfg:243
 msgid "Brazier"
 msgstr ""
 
 #. [item]: id=brazier-lit1
-#: data/core/editor/items.cfg:217
+#: data/core/editor/items.cfg:251
 msgid "Lit Brazier"
 msgstr ""
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
-#: data/core/editor/items.cfg:223 data/core/editor/items.cfg:229
+#: data/core/editor/items.cfg:258 data/core/editor/items.cfg:265
 msgid "Buckler"
 msgstr ""
 
 #. [item]: id=burial
-#: data/core/editor/items.cfg:235
+#: data/core/editor/items.cfg:272
 #, fuzzy
 #| msgid "Tutorial"
 msgid "Burial"
 msgstr "Tutoriala"
 
 #. [item]: id=cage
-#: data/core/editor/items.cfg:241
+#: data/core/editor/items.cfg:279
 msgid "Cage"
 msgstr ""
 
 #. [item]: id=chest
-#: data/core/editor/items.cfg:247
+#: data/core/editor/items.cfg:286
 msgid "Closed Chest"
 msgstr ""
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
-#: data/core/editor/items.cfg:254
+#: data/core/editor/items.cfg:294
 msgid "Open Chest"
 msgstr ""
 
 #. [item]: id=chest-plain-closed
-#: data/core/editor/items.cfg:260
+#: data/core/editor/items.cfg:301
 msgid "Closed Plain Chest"
 msgstr ""
 
 #. [item]: id=chest-plain-open
-#: data/core/editor/items.cfg:266
+#: data/core/editor/items.cfg:308
 msgid "Open Plain Chest"
 msgstr ""
 
 #. [item]: id=cloak-green
-#: data/core/editor/items.cfg:272
+#: data/core/editor/items.cfg:315
 #, fuzzy
 #| msgid "Green"
 msgid "Green Cloak"
 msgstr "Berdea"
 
 #. [item]: id=club
-#: data/core/editor/items.cfg:278
+#: data/core/editor/items.cfg:322
 msgid "Club"
 msgstr ""
 
 #. [item]: id=coffin-closed
-#: data/core/editor/items.cfg:284
+#: data/core/editor/items.cfg:329
 msgid "Closed Coffin"
 msgstr ""
 
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
-#: data/core/editor/items.cfg:291
+#: data/core/editor/items.cfg:337
 msgid "Open Coffin"
 msgstr ""
 
 #. [item]: id=crossbow
-#: data/core/editor/items.cfg:297
+#: data/core/editor/items.cfg:344
 msgid "Crossbow"
 msgstr ""
 
 #. [item]: id=dagger
-#: data/core/editor/items.cfg:303
+#: data/core/editor/items.cfg:351
 msgid "Dagger"
 msgstr ""
 
 #. [item]: id=dagger-poison
-#: data/core/editor/items.cfg:309
+#: data/core/editor/items.cfg:358
 #, fuzzy
 #| msgid "Poison"
 msgid "Poison Dagger"
 msgstr "Pozoia"
 
 #. [item]: id=dagger-poison-bare
-#: data/core/editor/items.cfg:315
+#: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
 msgstr ""
 
 #. [item]: id=dragonstatue
-#: data/core/editor/items.cfg:321
+#: data/core/editor/items.cfg:372
 msgid "Dragon Statue"
 msgstr ""
 
 #. [item]: id=flame-sword
-#: data/core/editor/items.cfg:327
+#: data/core/editor/items.cfg:379
 msgid "Flaming Sword"
 msgstr ""
 
 #. [item]: id=flame-sword-bare
-#: data/core/editor/items.cfg:333
+#: data/core/editor/items.cfg:386
 msgid "Unenchanted Flaming Sword"
 msgstr ""
 
@@ -953,153 +953,153 @@ msgstr ""
 #. [item]: id=flower2
 #. [item]: id=flower3
 #. [item]: id=flower4
-#: data/core/editor/items.cfg:339 data/core/editor/items.cfg:345
-#: data/core/editor/items.cfg:351 data/core/editor/items.cfg:357
+#: data/core/editor/items.cfg:393 data/core/editor/items.cfg:400
+#: data/core/editor/items.cfg:407 data/core/editor/items.cfg:414
 #, fuzzy
 #| msgid "slowed"
 msgid "Flower"
 msgstr "mantsotua"
 
 #. [item]: id=gohere
-#: data/core/editor/items.cfg:363
+#: data/core/editor/items.cfg:421
 msgid "Go Here Overlay"
 msgstr ""
 
 #. [item]: id=gold-coins-large
-#: data/core/editor/items.cfg:369
+#: data/core/editor/items.cfg:427
 msgid "Large Pile of Gold Coins"
 msgstr ""
 
 #. [item]: id=gold-coins-medium
-#: data/core/editor/items.cfg:375
+#: data/core/editor/items.cfg:434
 msgid "Pile of Gold Coins"
 msgstr ""
 
 #. [item]: id=gold-coins-small
-#: data/core/editor/items.cfg:381
+#: data/core/editor/items.cfg:441
 msgid "Small Pile of Gold Coins"
 msgstr ""
 
 #. [item]: id=grain-sheaf
-#: data/core/editor/items.cfg:387
+#: data/core/editor/items.cfg:448
 msgid "Grain Sheaf"
 msgstr ""
 
 #. [item]: id=hammer
-#: data/core/editor/items.cfg:393
+#: data/core/editor/items.cfg:455
 msgid "Hammer"
 msgstr ""
 
 #. [item]: id=hammer-runic
-#: data/core/editor/items.cfg:399
+#: data/core/editor/items.cfg:462
 msgid "Runic Hammer"
 msgstr ""
 
 #. [item]: id=holy-water
 #. [object]
-#: data/core/editor/items.cfg:405 data/core/macros/items.cfg:283
+#: data/core/editor/items.cfg:469 data/core/macros/items.cfg:286
 msgid "Holy Water"
 msgstr "Ur Bedeinkatua"
 
 #. [item]: id=key
 #. [item]: id=key2
-#: data/core/editor/items.cfg:411 data/core/editor/items.cfg:417
+#: data/core/editor/items.cfg:476 data/core/editor/items.cfg:483
 msgid "Key"
 msgstr ""
 
 #. [item]: id=key-dark
-#: data/core/editor/items.cfg:423
+#: data/core/editor/items.cfg:490
 msgid "Dark Key"
 msgstr ""
 
 #. [item]: id=leather-pack
-#: data/core/editor/items.cfg:429
+#: data/core/editor/items.cfg:497
 msgid "Leather Pack"
 msgstr ""
 
 #. [item]: id=mace
-#: data/core/editor/items.cfg:435
+#: data/core/editor/items.cfg:504
 msgid "Mace"
 msgstr ""
 
 #. [item]: id=necklace-bone
-#: data/core/editor/items.cfg:441
+#: data/core/editor/items.cfg:511
 msgid "Bone Necklace"
 msgstr ""
 
 #. [item]: id=necklace-stone
-#: data/core/editor/items.cfg:447
+#: data/core/editor/items.cfg:518
 msgid "Stone Necklace"
 msgstr ""
 
 #. [item]: id=orcish-flag
-#: data/core/editor/items.cfg:453
+#: data/core/editor/items.cfg:525
 msgid "Orcish Flag"
 msgstr ""
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
-#: data/core/editor/items.cfg:459 data/core/editor/items.cfg:465
+#: data/core/editor/items.cfg:532 data/core/editor/items.cfg:539
 msgid "Ornate"
 msgstr ""
 
 #. [item]: id=potion-blue
-#: data/core/editor/items.cfg:471
+#: data/core/editor/items.cfg:546
 msgid "Blue Potion"
 msgstr ""
 
 #. [item]: id=potion-green
-#: data/core/editor/items.cfg:477
+#: data/core/editor/items.cfg:553
 #, fuzzy
 msgid "Green Potion"
 msgstr "Baliogabeko kolorea"
 
 #. [item]: id=potion-gray
-#: data/core/editor/items.cfg:483
+#: data/core/editor/items.cfg:560
 msgid "Gray Potion"
 msgstr ""
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
-#: data/core/editor/items.cfg:489 data/core/macros/items.cfg:246
+#: data/core/editor/items.cfg:567 data/core/macros/items.cfg:249
 msgid "Poison"
 msgstr "Pozoia"
 
 #. [item]: id=potion-red
-#: data/core/editor/items.cfg:495
+#: data/core/editor/items.cfg:574
 #, fuzzy
 msgid "Red Potion"
 msgstr "Baliogabeko kolorea"
 
 #. [item]: id=potion-yellow
-#: data/core/editor/items.cfg:501
+#: data/core/editor/items.cfg:581
 msgid "Yellow Potion"
 msgstr ""
 
 #. [item]: id=ring-brown
-#: data/core/editor/items.cfg:507
+#: data/core/editor/items.cfg:588
 #, fuzzy
 #| msgid "Brown"
 msgid "Brown Ring"
 msgstr "Marroia"
 
 #. [item]: id=ring-gold
-#: data/core/editor/items.cfg:513
+#: data/core/editor/items.cfg:595
 msgid "Golden Ring"
 msgstr ""
 
 #. [item]: id=ring-red
-#: data/core/editor/items.cfg:519
+#: data/core/editor/items.cfg:602
 msgid "Red Ring"
 msgstr ""
 
 #. [item]: id=ring-silver
-#: data/core/editor/items.cfg:525
+#: data/core/editor/items.cfg:609
 msgid "Silver Ring"
 msgstr ""
 
 #. [item]: id=ring-white
-#: data/core/editor/items.cfg:531
+#: data/core/editor/items.cfg:616
 #, fuzzy
 #| msgid "White"
 msgid "White Ring"
@@ -1110,147 +1110,147 @@ msgstr "Zuria"
 #. [item]: id=rock2
 #. [item]: id=rock3
 #. [item]: id=rock4
-#: data/core/editor/items.cfg:537 data/core/editor/items.cfg:877
-#: data/core/editor/items.cfg:883 data/core/editor/items.cfg:889
-#: data/core/editor/items.cfg:895
+#: data/core/editor/items.cfg:623 data/core/editor/items.cfg:1007
+#: data/core/editor/items.cfg:1014 data/core/editor/items.cfg:1021
+#: data/core/editor/items.cfg:1028
 msgid "Rock"
 msgstr ""
 
 #. [item]: id=scarecrow
-#: data/core/editor/items.cfg:543
+#: data/core/editor/items.cfg:630
 msgid "Scarecrow"
 msgstr ""
 
 #. [item]: id=sceptre-of-fire
-#: data/core/editor/items.cfg:549
+#: data/core/editor/items.cfg:637
 msgid "Sceptre of Fire"
 msgstr ""
 
 #. [item]: id=sling
-#: data/core/editor/items.cfg:555
+#: data/core/editor/items.cfg:644
 #, fuzzy
 #| msgid "sling"
 msgid "Sling"
 msgstr "euskarria"
 
 #. [item]: id=spear
-#: data/core/editor/items.cfg:561
+#: data/core/editor/items.cfg:651
 msgid "Spear"
 msgstr ""
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
-#: data/core/editor/items.cfg:567 data/core/editor/items.cfg:573
+#: data/core/editor/items.cfg:658 data/core/editor/items.cfg:665
 msgid "Fancy Spear"
 msgstr ""
 
 #. [item]: id=spear-javelin
-#: data/core/editor/items.cfg:579
+#: data/core/editor/items.cfg:672
 msgid "Javelin"
 msgstr ""
 
 #. [item]: id=staff
 #. [item]: id=staff2
-#: data/core/editor/items.cfg:585 data/core/editor/items.cfg:591
+#: data/core/editor/items.cfg:679 data/core/editor/items.cfg:686
 msgid "Staff"
 msgstr ""
 
 #. [item]: id=staff-druid
-#: data/core/editor/items.cfg:597
+#: data/core/editor/items.cfg:693
 msgid "Druid Staff"
 msgstr ""
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
-#: data/core/editor/items.cfg:603 data/core/editor/items.cfg:609
+#: data/core/editor/items.cfg:700 data/core/editor/items.cfg:707
 msgid "Magic Staff"
 msgstr ""
 
 #. [item]: id=staff-magic-wand
-#: data/core/editor/items.cfg:615
+#: data/core/editor/items.cfg:714
 msgid "Magic Wand"
 msgstr ""
 
 #. [item]: id=staff-plain
-#: data/core/editor/items.cfg:621
+#: data/core/editor/items.cfg:721
 msgid "Plain Staff"
 msgstr ""
 
 #. [item]: id=stone-tablet
-#: data/core/editor/items.cfg:627
+#: data/core/editor/items.cfg:728
 msgid "Stone Tablet"
 msgstr ""
 
 #. [item]: id=storm-trident
 #. [item]: id=storm-trident2
 #. [object]
-#: data/core/editor/items.cfg:633 data/core/editor/items.cfg:639
-#: data/core/macros/items.cfg:529
+#: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
+#: data/core/macros/items.cfg:537
 msgid "Storm Trident"
 msgstr "Ekaitzetako hiruhortz"
 
 #. [item]: id=straw-bale1
 #. [item]: id=straw-bale2
-#: data/core/editor/items.cfg:645 data/core/editor/items.cfg:651
+#: data/core/editor/items.cfg:749 data/core/editor/items.cfg:756
 msgid "Bale of Straw"
 msgstr ""
 
 #. [item]: id=sword
 #. [item]: id=sword2
-#: data/core/editor/items.cfg:657 data/core/editor/items.cfg:663
+#: data/core/editor/items.cfg:763 data/core/editor/items.cfg:770
 #, fuzzy
 msgid "Sword"
 msgstr "ezpata"
 
 #. [item]: id=sword-holy
-#: data/core/editor/items.cfg:669
+#: data/core/editor/items.cfg:777
 #, fuzzy
 msgid "Holy Sword"
 msgstr "ezpata"
 
 #. [item]: id=sword-short
-#: data/core/editor/items.cfg:675
+#: data/core/editor/items.cfg:784
 #, fuzzy
 msgid "Short Sword"
 msgstr "ezpata"
 
 #. [item]: id=sword-wraith
-#: data/core/editor/items.cfg:681
+#: data/core/editor/items.cfg:791
 msgid "Wraith Sword"
 msgstr ""
 
 #. [item]: id=talisman-ankh
-#: data/core/editor/items.cfg:687
+#: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
 msgstr ""
 
 #. [item]: id=talisman-bone
-#: data/core/editor/items.cfg:693
+#: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
 msgstr ""
 
 #. [item]: id=talisman-stone
-#: data/core/editor/items.cfg:699
+#: data/core/editor/items.cfg:812
 msgid "Stone Talisman"
 msgstr ""
 
 #. [item]: id=thunderstick
-#: data/core/editor/items.cfg:705
+#: data/core/editor/items.cfg:819
 msgid "Thunderstick"
 msgstr ""
 
 #. [item]: id=torch
-#: data/core/editor/items.cfg:711
+#: data/core/editor/items.cfg:826
 msgid "Lit Torch"
 msgstr ""
 
 #. [item]: id=torch-bare
-#: data/core/editor/items.cfg:717
+#: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
 msgstr ""
 
 #. [item_group]: id=scenery
-#: data/core/editor/items.cfg:723
+#: data/core/editor/items.cfg:840
 #, fuzzy
 msgid "Scenery"
 msgstr "Guda leku ezezaguna: '"
@@ -1258,71 +1258,71 @@ msgstr "Guda leku ezezaguna: '"
 #. [item]: id=castle-ruins
 #. [item]: id=castle-ruins2
 #. [item]: id=castle-ruins3
-#: data/core/editor/items.cfg:730 data/core/editor/items.cfg:736
-#: data/core/editor/items.cfg:742
+#: data/core/editor/items.cfg:847 data/core/editor/items.cfg:853
+#: data/core/editor/items.cfg:859
 #, fuzzy
 msgid "Castle Ruins"
 msgstr "Gaztelua"
 
 #. [item]: id=circle-magic
-#: data/core/editor/items.cfg:748
+#: data/core/editor/items.cfg:865
 msgid "Magic Circle"
 msgstr ""
 
 #. [item]: id=circle-magic-glow
-#: data/core/editor/items.cfg:754
+#: data/core/editor/items.cfg:871
 msgid "Glowing Magic Circle"
 msgstr ""
 
 #. [item]: id=dwarven-doors-closed
-#: data/core/editor/items.cfg:760
+#: data/core/editor/items.cfg:877
 msgid "Closed Dwarven Doors"
 msgstr ""
 
 #. [item]: id=fire
-#: data/core/editor/items.cfg:767
+#: data/core/editor/items.cfg:885
 #, fuzzy
 #| msgid "fire"
 msgid "Campfire"
 msgstr "su"
 
 #. [item]: id=flames
-#: data/core/editor/items.cfg:774
+#: data/core/editor/items.cfg:892
 msgid "Flames"
 msgstr ""
 
 #. [item]: id=gate-rusty-se
-#: data/core/editor/items.cfg:780
+#: data/core/editor/items.cfg:898
 msgid "Rusty Gate South East"
 msgstr ""
 
 #. [item]: id=gate-rusty-sw
-#: data/core/editor/items.cfg:786
+#: data/core/editor/items.cfg:905
 msgid "Rusty Gate South West"
 msgstr ""
 
 #. [item]: id=icepack1
-#: data/core/editor/items.cfg:792
+#: data/core/editor/items.cfg:912
 msgid "Ice Pack"
 msgstr ""
 
 #. [item]: id=leanto
-#: data/core/editor/items.cfg:798
+#: data/core/editor/items.cfg:918
 msgid "Lean-to"
 msgstr ""
 
 #. [item]: id=lighthouse
-#: data/core/editor/items.cfg:803
+#: data/core/editor/items.cfg:924
 msgid "Lighthouse"
 msgstr ""
 
 #. [item]: id=mausoleum
-#: data/core/editor/items.cfg:811
+#: data/core/editor/items.cfg:932
 msgid "Mausoleum"
 msgstr ""
 
 #. [item]: id=mine-abandoned
-#: data/core/editor/items.cfg:817
+#: data/core/editor/items.cfg:939
 msgid "Abandoned Mine"
 msgstr ""
 
@@ -1330,46 +1330,46 @@ msgstr ""
 #. [item]: id=monolith2
 #. [item]: id=monolith3
 #. [item]: id=monolith4
-#: data/core/editor/items.cfg:823 data/core/editor/items.cfg:829
-#: data/core/editor/items.cfg:835 data/core/editor/items.cfg:841
+#: data/core/editor/items.cfg:946 data/core/editor/items.cfg:953
+#: data/core/editor/items.cfg:960 data/core/editor/items.cfg:967
 msgid "Monolith"
 msgstr ""
 
 #. [item]: id=nest-empty
-#: data/core/editor/items.cfg:847
+#: data/core/editor/items.cfg:974
 #, fuzzy
 #| msgid "(Empty slot)"
 msgid "Empty Nest"
 msgstr "(Erreten hutsa)"
 
 #. [item]: id=nest-full
-#: data/core/editor/items.cfg:853
+#: data/core/editor/items.cfg:980
 #, fuzzy
 #| msgid "Full Heal"
 msgid "Full Nest"
 msgstr "Bizitza osoa"
 
 #. [item]: id=oak-leaning
-#: data/core/editor/items.cfg:859
+#: data/core/editor/items.cfg:986
 #, fuzzy
 msgid "Leaning Oak"
 msgstr "Goiza"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
-#: data/core/editor/items.cfg:865 data/core/editor/items.cfg:871
+#: data/core/editor/items.cfg:993 data/core/editor/items.cfg:1000
 #, fuzzy
 msgid "Pine Tree"
 msgstr "Troll handia"
 
 #. [item]: id=rock-cairn
 #. [item]: id=rock-cairn2
-#: data/core/editor/items.cfg:901 data/core/editor/items.cfg:907
+#: data/core/editor/items.cfg:1035 data/core/editor/items.cfg:1043
 msgid "Rock Cairn"
 msgstr ""
 
 #. [item]: id=rubble
-#: data/core/editor/items.cfg:913
+#: data/core/editor/items.cfg:1051
 #, fuzzy
 msgid "Rubble"
 msgstr "Bikoiztua"
@@ -1380,9 +1380,9 @@ msgstr "Bikoiztua"
 #. [item]: id=rune4
 #. [item]: id=rune5
 #. [item]: id=rune6
-#: data/core/editor/items.cfg:919 data/core/editor/items.cfg:925
-#: data/core/editor/items.cfg:931 data/core/editor/items.cfg:937
-#: data/core/editor/items.cfg:943 data/core/editor/items.cfg:949
+#: data/core/editor/items.cfg:1057 data/core/editor/items.cfg:1063
+#: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
+#: data/core/editor/items.cfg:1081 data/core/editor/items.cfg:1087
 msgid "Rune"
 msgstr ""
 
@@ -1392,9 +1392,9 @@ msgstr ""
 #. [item]: id=rune4-glow
 #. [item]: id=rune5-glow
 #. [item]: id=rune6-glow
-#: data/core/editor/items.cfg:955 data/core/editor/items.cfg:961
-#: data/core/editor/items.cfg:967 data/core/editor/items.cfg:973
-#: data/core/editor/items.cfg:979 data/core/editor/items.cfg:985
+#: data/core/editor/items.cfg:1093 data/core/editor/items.cfg:1099
+#: data/core/editor/items.cfg:1105 data/core/editor/items.cfg:1111
+#: data/core/editor/items.cfg:1117 data/core/editor/items.cfg:1123
 msgid "Glowing Rune"
 msgstr ""
 
@@ -1402,29 +1402,29 @@ msgstr ""
 #. [item]: id=wreck
 #. [item]: id=wreck2
 #. [item]: id=wreck3
-#: data/core/editor/items.cfg:991 data/core/editor/items.cfg:1166
-#: data/core/editor/items.cfg:1172 data/core/editor/items.cfg:1178
+#: data/core/editor/items.cfg:1129 data/core/editor/items.cfg:1318
+#: data/core/editor/items.cfg:1324 data/core/editor/items.cfg:1330
 msgid "Shipwreck"
 msgstr ""
 
 #. [item]: id=signpost
-#: data/core/editor/items.cfg:996
+#: data/core/editor/items.cfg:1134
 msgid "Signpost"
 msgstr ""
 
 #. [item]: id=slab1
-#: data/core/editor/items.cfg:1002
+#: data/core/editor/items.cfg:1141
 msgid "Slab"
 msgstr ""
 
 #. [item]: id=snowbits
 #. [item]: id=snowbits2
-#: data/core/editor/items.cfg:1008 data/core/editor/items.cfg:1014
+#: data/core/editor/items.cfg:1147 data/core/editor/items.cfg:1153
 msgid "Piles of Snow"
 msgstr ""
 
 #. [item]: id=summoning-center
-#: data/core/editor/items.cfg:1021
+#: data/core/editor/items.cfg:1160
 msgid "Summoning Center"
 msgstr ""
 
@@ -1434,54 +1434,54 @@ msgstr ""
 #. [item]: id=summoning-circle4
 #. [item]: id=summoning-circle5
 #. [item]: id=summoning-circle6
-#: data/core/editor/items.cfg:1027 data/core/editor/items.cfg:1033
-#: data/core/editor/items.cfg:1039 data/core/editor/items.cfg:1045
-#: data/core/editor/items.cfg:1051 data/core/editor/items.cfg:1057
+#: data/core/editor/items.cfg:1166 data/core/editor/items.cfg:1172
+#: data/core/editor/items.cfg:1178 data/core/editor/items.cfg:1184
+#: data/core/editor/items.cfg:1190 data/core/editor/items.cfg:1196
 msgid "Summoning Circle"
 msgstr ""
 
 #. [item]: id=temple1
-#: data/core/editor/items.cfg:1063
+#: data/core/editor/items.cfg:1202
 msgid "Temple"
 msgstr ""
 
 #. [item]: id=temple-cracked1
 #. [item]: id=temple-cracked2
 #. [item]: id=temple-cracked3
-#: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
-#: data/core/editor/items.cfg:1081
+#: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
+#: data/core/editor/items.cfg:1223
 msgid "Ruined Temple"
 msgstr ""
 
 #. [item]: id=tent-fancy-red
-#: data/core/editor/items.cfg:1087
+#: data/core/editor/items.cfg:1230
 msgid "Fancy Red Tent"
 msgstr ""
 
 #. [item]: id=tent-ruin-1
-#: data/core/editor/items.cfg:1093
+#: data/core/editor/items.cfg:1237
 msgid "Ruined Tent"
 msgstr ""
 
 #. [item]: id=tent-shop-weapons
-#: data/core/editor/items.cfg:1098
+#: data/core/editor/items.cfg:1243
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Weapons Shop Tent"
 msgstr "Armen berezitasunak"
 
 #. [item]: id=trapdoor-closed
-#: data/core/editor/items.cfg:1105
+#: data/core/editor/items.cfg:1251
 msgid "Closed Trapdoor"
 msgstr ""
 
 #. [item]: id=trapdoor-open
-#: data/core/editor/items.cfg:1111
+#: data/core/editor/items.cfg:1257
 msgid "Open Trapdoor"
 msgstr ""
 
 #. [item]: id=trash
-#: data/core/editor/items.cfg:1117
+#: data/core/editor/items.cfg:1263
 msgid "Trash Pile"
 msgstr ""
 
@@ -1489,24 +1489,24 @@ msgstr ""
 #. [item]: id=village-human-burned2
 #. [item]: id=village-human-burned3
 #. [item]: id=village-human-burned4
-#: data/core/editor/items.cfg:1123 data/core/editor/items.cfg:1129
-#: data/core/editor/items.cfg:1135 data/core/editor/items.cfg:1141
+#: data/core/editor/items.cfg:1270 data/core/editor/items.cfg:1277
+#: data/core/editor/items.cfg:1284 data/core/editor/items.cfg:1291
 #, fuzzy
 msgid "Burned Human Village"
 msgstr "Basamortu Herrixka"
 
 #. [item]: id=well
-#: data/core/editor/items.cfg:1146
+#: data/core/editor/items.cfg:1297
 msgid "Well"
 msgstr ""
 
 #. [item]: id=whirlpool
-#: data/core/editor/items.cfg:1152
+#: data/core/editor/items.cfg:1303
 msgid "Whirlpool"
 msgstr ""
 
 #. [item]: id=windmill
-#: data/core/editor/items.cfg:1160
+#: data/core/editor/items.cfg:1311
 msgid "Windmill"
 msgstr ""
 
@@ -1826,135 +1826,135 @@ msgid "Don’t make a wish."
 msgstr "Desiorik ez eskatu."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:207
+#: data/core/macros/items.cfg:209
 msgid "Potion of Healing"
 msgstr "Sendatzeko Edabea"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:210
+#: data/core/macros/items.cfg:212
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr ""
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:211
+#: data/core/macros/items.cfg:213
 msgid "You are not worthy of healing."
 msgstr "Ez du merezi sendatzerik."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:249
+#: data/core/macros/items.cfg:252
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Momentu hontan unitate honen zainetatik pozoia dario."
 
-#: data/core/macros/items.cfg:278
+#: data/core/macros/items.cfg:281
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 
-#: data/core/macros/items.cfg:279
+#: data/core/macros/items.cfg:282
 msgid "holy water^Take it"
 msgstr ""
 
-#: data/core/macros/items.cfg:280
+#: data/core/macros/items.cfg:283
 msgid "holy water^Leave it"
 msgstr ""
 
-#: data/core/macros/items.cfg:281
+#: data/core/macros/items.cfg:284
 #, fuzzy
 #| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "Ez dakit tramankulu hau erabiltzen! Emaiozu beste norbaiti."
 
 #. [object]
-#: data/core/macros/items.cfg:286
+#: data/core/macros/items.cfg:289
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:316
+#: data/core/macros/items.cfg:320
 msgid "Potion of Strength"
 msgstr "Indarraren Edabea"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:319
+#: data/core/macros/items.cfg:323
 msgid "Strength is given to the drinker."
 msgstr "Edaten duena indartzen du."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:360
+#: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
 msgstr "Gainbeheraren Edabea"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:363
+#: data/core/macros/items.cfg:368
 msgid "This poor unit drank something really bad."
 msgstr "Unitate gaixo honek zerbait ustela edan du"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:398
+#: data/core/macros/items.cfg:404
 msgid "Ring of Regeneration"
 msgstr "Birsortze Eraztuna"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:401
+#: data/core/macros/items.cfg:407
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Eraztunak hau daraman unitatea pixkat sendatzen du txandaro."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:438
+#: data/core/macros/items.cfg:445
 msgid "Ring of Slowness"
 msgstr "Geldopenaren Eraztuna"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:441
+#: data/core/macros/items.cfg:448
 msgid "The bearer of this ring is slowed."
 msgstr "Eraztun honen eramalea moteldua izango da."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:476
+#: data/core/macros/items.cfg:484
 msgid "Staff of Swiftness"
 msgstr "Azkartasun Makulua"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:479
+#: data/core/macros/items.cfg:487
 msgid "This staff will grant the bearer swift movement."
 msgstr "Makulu honek mugimendu azkarra emango dio eramaleari."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:480
+#: data/core/macros/items.cfg:488
 msgid "Only magical beings can wield such an object."
 msgstr "Bakarrik izaki magikoek har dezakete objetu hau"
 
-#: data/core/macros/items.cfg:524
+#: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
 msgstr ""
 
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:533
 #, fuzzy
 msgid "storm trident^Take it"
 msgstr "ekaitz hiruhortz"
 
-#: data/core/macros/items.cfg:526
+#: data/core/macros/items.cfg:534
 #, fuzzy
 msgid "storm trident^Leave it"
 msgstr "ekaitz hiruhortz"
 
-#: data/core/macros/items.cfg:527
+#: data/core/macros/items.cfg:535
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:540
 msgid ""
 "This trident gives merfolk the power to throw lightning at their enemies."
 msgstr ""
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:560
+#: data/core/macros/items.cfg:568
 msgid "sceptre of fire"
 msgstr ""
 
@@ -3515,7 +3515,7 @@ msgstr "bat ere ez"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:634
+#: src/hotkey/command_executor.cpp:635
 msgid "Screenshot"
 msgstr "Pantaila argazkia"
 
@@ -3557,52 +3557,52 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
 #, fuzzy
 msgid "female^poisoned"
 msgstr "Andretxarra"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
 #, fuzzy
 msgid "female^slowed"
 msgstr "Iheslaria"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
 msgid "slowed"
 msgstr "mantsotua"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
 #, fuzzy
 msgid "female^petrified"
 msgstr "Andretxarra"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
 msgid "petrified"
 msgstr ""
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:128
 #, fuzzy
 msgid "female^unhealable"
 msgstr "Andretxarra"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3229
-#: src/scripting/game_lua_kernel.cpp:3264
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3226
+#: src/scripting/game_lua_kernel.cpp:3261
 msgid "input"
 msgstr ""
 
@@ -4569,12 +4569,12 @@ msgstr ""
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:258
+#: src/actions/advancement.cpp:259
 #, fuzzy
 msgid "waiting for^an advancement choice"
 msgstr "Aurrerapenak"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:604 src/actions/attack.cpp:1395
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Baliogabeko garaia aukeratuta"
@@ -4696,34 +4696,34 @@ msgstr[1] "Unitate lagun bat ikustatua"
 msgid "(press $hotkey to keep moving)"
 msgstr "(sakatu $hotkey jarraitzeko)"
 
-#: src/addon/client.cpp:80
+#: src/addon/client.cpp:81
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Connecting to $server_address|..."
 msgstr "Zerbitzarira konektatzen..."
 
-#: src/addon/client.cpp:127
+#: src/addon/client.cpp:128
 #, fuzzy
 msgid "Downloading list of add-ons..."
 msgstr "Kanpaina jeisten..."
 
-#: src/addon/client.cpp:148
+#: src/addon/client.cpp:149
 msgid "Requesting distribution terms..."
 msgstr ""
 
-#: src/addon/client.cpp:172
+#: src/addon/client.cpp:173
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid id '$addon_id' and cannot be "
 "published."
 msgstr ""
 
-#: src/addon/client.cpp:184
+#: src/addon/client.cpp:185
 msgid ""
 "The add-on <i>$addon_title</i> has a file or directory containing invalid "
 "characters and cannot be published."
 msgstr ""
 
-#: src/addon/client.cpp:192
+#: src/addon/client.cpp:193
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -4733,62 +4733,72 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:203
+#: src/addon/client.cpp:204
 msgid ""
 "The add-on <i>$addon_title</i> contains files or directories with case "
 "conflicts. File or directory names may not be differently-cased versions of "
 "the same string."
 msgstr ""
 
-#: src/addon/client.cpp:210
+#: src/addon/client.cpp:211
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
-#: src/addon/client.cpp:223
+#: src/addon/client.cpp:224
 msgid "Requesting file index..."
 msgstr ""
 
-#: src/addon/client.cpp:239
+#: src/addon/client.cpp:240
 #, fuzzy
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Kanpaina jeisten..."
 
-#: src/addon/client.cpp:260
+#: src/addon/client.cpp:261
 #, fuzzy
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Kanpaina jeisten..."
 
-#: src/addon/client.cpp:306
+#: src/addon/client.cpp:307
 #, fuzzy
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Kanpaina jeisten..."
 
-#: src/addon/client.cpp:335
+#: src/addon/client.cpp:336
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Kanpaina jeisten..."
 
-#: src/addon/client.cpp:354 src/addon/client.cpp:380
+#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#, fuzzy
+msgid "Add-ons Manager"
+msgstr "Kanpaina instalatua"
+
+#: src/addon/client.cpp:348
+#, fuzzy
+msgid "Installing add-on <i>$addon_title</i>..."
+msgstr "Kanpaina jeisten..."
+
+#: src/addon/client.cpp:360 src/addon/client.cpp:386
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
 
-#: src/addon/client.cpp:359 src/addon/client.cpp:385
+#: src/addon/client.cpp:365 src/addon/client.cpp:391
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
 
-#: src/addon/client.cpp:418
+#: src/addon/client.cpp:424
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Zerbitzariak errore batekin erantzun du: \""
 
-#: src/addon/client.cpp:473
+#: src/addon/client.cpp:479
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -4798,12 +4808,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:482
+#: src/addon/client.cpp:488
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "Printzesa"
 
-#: src/addon/client.cpp:522
+#: src/addon/client.cpp:528
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -4813,38 +4823,33 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:526
+#: src/addon/client.cpp:532
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:549
+#: src/addon/client.cpp:555
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:553
+#: src/addon/client.cpp:559
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:557
+#: src/addon/client.cpp:563
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:561
+#: src/addon/client.cpp:567
 #, fuzzy
 msgid "Do you really wish to continue?"
 msgstr "Zure jokua gorde nahi duzu?"
 
-#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr ""
-
-#: src/addon/client.cpp:703
-#, fuzzy
-msgid "Add-ons Manager"
-msgstr "Kanpaina instalatua"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Campaign"
@@ -5350,12 +5355,12 @@ msgstr ""
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
-#: src/desktop/notifications.cpp:83
+#: src/desktop/notifications.cpp:78
 #, fuzzy
 msgid "Chat message"
 msgstr "Mezua:"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:582
 msgid "The Battle for Wesnoth"
 msgstr "Wesnoth-eko guda"
 
@@ -5398,67 +5403,67 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %y"
 
-#: src/game_config.cpp:528
+#: src/game_config.cpp:530
 #, fuzzy
 msgid "Invalid color in range: "
 msgstr "Baliogabeko kolorea"
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 #, fuzzy
 msgid "The ID is already in use."
 msgstr "Jokua bukatu da."
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 #, fuzzy
 msgid "File not found."
 msgstr "Ez da garairik aurkitu"
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (Jokua orain irten egingo da)"
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:364
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5466,7 +5471,7 @@ msgid ""
 "loading add-ons."
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:371
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5474,7 +5479,7 @@ msgid ""
 "default core files."
 msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:380
 #, fuzzy
 #| msgid "Error loading game configuration files: '"
 msgid ""
@@ -5484,46 +5489,46 @@ msgstr "Errorea jokuaren konfigurazio fitxategiak kargatzen: '"
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:537
+#: src/game_config_manager.cpp:541
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:575
+#: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:630
+#: src/game_config_manager.cpp:634
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Ezin izan da joku mapa kargatu: "
 msgstr[1] "Ezin izan da joku mapa kargatu: "
 
-#: src/game_config_manager.cpp:634
+#: src/game_config_manager.cpp:638
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:391 src/game_launcher.cpp:948
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:956
 #, fuzzy
 msgid "Error: "
 msgstr "Okerra"
 
-#: src/game_events/pump.cpp:393
+#: src/game_events/pump.cpp:394
 #, fuzzy
 msgid "Warning: "
 msgstr "Goiza"
 
-#: src/game_events/pump.cpp:395
+#: src/game_events/pump.cpp:396
 msgid "Debug: "
 msgstr ""
 
-#: src/game_events/pump.cpp:397
+#: src/game_events/pump.cpp:398
 msgid "Info: "
 msgstr ""
 
@@ -5535,34 +5540,34 @@ msgstr "$login-(e)n jokua"
 msgid "Team"
 msgstr "Taldea"
 
-#: src/game_initialization/connect_engine.cpp:954
+#: src/game_initialization/connect_engine.cpp:953
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "Jokalari lokal anonimoa"
 
-#: src/game_initialization/connect_engine.cpp:959
-#: src/game_initialization/connect_engine.cpp:1257
+#: src/game_initialization/connect_engine.cpp:958
+#: src/game_initialization/connect_engine.cpp:1256
 msgid "Computer Player"
 msgstr "Ordenagailuko jokalaria"
 
-#: src/game_initialization/connect_engine.cpp:1001
+#: src/game_initialization/connect_engine.cpp:1000
 msgid "$playername $side"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1253
+#: src/game_initialization/connect_engine.cpp:1252
 msgid "Network Player"
 msgstr "Sareko jokalaria"
 
-#: src/game_initialization/connect_engine.cpp:1256
+#: src/game_initialization/connect_engine.cpp:1255
 msgid "Local Player"
 msgstr "Jokalari lokala"
 
-#: src/game_initialization/connect_engine.cpp:1258
+#: src/game_initialization/connect_engine.cpp:1257
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1261
+#: src/game_initialization/connect_engine.cpp:1260
 #, fuzzy
 msgid "Reserved"
 msgstr "Zerbitzaria:"
@@ -5711,14 +5716,14 @@ msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 
 #: src/game_initialization/mp_game_utils.cpp:78
@@ -5851,72 +5856,72 @@ msgstr ""
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:76
+#: src/game_initialization/playcampaign.cpp:77
 msgid "Scenario Report"
 msgstr "Gudagunearen txostena"
 
-#: src/game_initialization/playcampaign.cpp:78
+#: src/game_initialization/playcampaign.cpp:79
 msgid "Victory"
 msgstr "Garaipena!"
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:80
 msgid "You have emerged victorious!"
 msgstr "Garaile irten zara gudatik!"
 
-#: src/game_initialization/playcampaign.cpp:81
+#: src/game_initialization/playcampaign.cpp:82
 msgid "Defeat"
 msgstr "Gainditu"
 
-#: src/game_initialization/playcampaign.cpp:82
+#: src/game_initialization/playcampaign.cpp:83
 msgid "You have been defeated!"
 msgstr "Gainditua izan zara!"
 
-#: src/game_initialization/playcampaign.cpp:118
+#: src/game_initialization/playcampaign.cpp:119
 msgid "Remaining gold: "
 msgstr "Gelditzen den urrea:"
 
-#: src/game_initialization/playcampaign.cpp:122
+#: src/game_initialization/playcampaign.cpp:123
 msgid "Turns finished early: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/game_initialization/playcampaign.cpp:123
+#: src/game_initialization/playcampaign.cpp:124
 #, fuzzy
 #| msgid "per turn"
 msgid " per turn"
 msgstr "txandako"
 
-#: src/game_initialization/playcampaign.cpp:123
+#: src/game_initialization/playcampaign.cpp:124
 #, fuzzy
 msgid "Early finish bonus: "
 msgstr "Txanda azkarregi amaitu da: "
 
-#: src/game_initialization/playcampaign.cpp:124
+#: src/game_initialization/playcampaign.cpp:125
 #, fuzzy
 msgid "Total bonus: "
 msgstr "Txandak: "
 
-#: src/game_initialization/playcampaign.cpp:127
+#: src/game_initialization/playcampaign.cpp:128
 #, fuzzy
 #| msgid "Village gold: "
 msgid "Total gold: "
 msgstr "Herrixkaren urrea: "
 
-#: src/game_initialization/playcampaign.cpp:131
+#: src/game_initialization/playcampaign.cpp:132
 msgid "Carryover percentage: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:135
+#: src/game_initialization/playcampaign.cpp:136
 #, fuzzy
 msgid "Bonus gold: "
 msgstr "Bonusa: "
 
-#: src/game_initialization/playcampaign.cpp:137
+#: src/game_initialization/playcampaign.cpp:138
 #, fuzzy
 #| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "Lortutako Urrea:"
 
-#: src/game_initialization/playcampaign.cpp:150
+#: src/game_initialization/playcampaign.cpp:151
 #, fuzzy
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
@@ -5927,7 +5932,7 @@ msgid_plural ""
 msgstr[0] "Urrearen %80a hurrengo gudagunerako gorde da"
 msgstr[1] "Urrearen %80a hurrengo gudagunerako gorde da"
 
-#: src/game_initialization/playcampaign.cpp:157
+#: src/game_initialization/playcampaign.cpp:158
 #, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
@@ -5936,7 +5941,7 @@ msgid_plural ""
 msgstr[0] "Urrearen %80a hurrengo gudagunerako gorde da"
 msgstr[1] "Urrearen %80a hurrengo gudagunerako gorde da"
 
-#: src/game_initialization/playcampaign.cpp:164
+#: src/game_initialization/playcampaign.cpp:165
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -5946,38 +5951,38 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:901
+#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Ezin izan da jokua kargatu: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:903
+#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Errorea jokuan jolasterakoan:"
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:940
+#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "Ezin izan da joku mapa kargatu: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:905
-#: src/game_launcher.cpp:1021
+#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:306
 #, fuzzy
 msgid "Error while reading the WML: "
 msgstr "Errorea jokuan jolasterakoan:"
 
-#: src/game_initialization/playcampaign.cpp:352
-#: src/playsingle_controller.cpp:330
+#: src/game_initialization/playcampaign.cpp:353
+#: src/playsingle_controller.cpp:331
 msgid "Game Over"
 msgstr "Jokua bukatu da"
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:354
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:421
+#: src/game_initialization/playcampaign.cpp:422
 #, fuzzy
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Guda leku ezezaguna: '"
@@ -5987,31 +5992,31 @@ msgstr "Guda leku ezezaguna: '"
 msgid "No campaigns are available."
 msgstr "Ez dago objetiborik eskuragarri"
 
-#: src/game_launcher.cpp:706 src/game_launcher.cpp:725
+#: src/game_launcher.cpp:714 src/game_launcher.cpp:733
 msgid "The file you have tried to load is corrupt"
 msgstr "Kargatu nahi zenuen fitxategia ondatuta dago"
 
-#: src/game_launcher.cpp:708 src/game_launcher.cpp:727
+#: src/game_launcher.cpp:716 src/game_launcher.cpp:735
 #: src/hotkey/hotkey_handler_sp.cpp:316 src/savegame.cpp:154
 #: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Kargatu nahi zenuen fitxategia ondatuta dago: '"
 
-#: src/game_launcher.cpp:717
+#: src/game_launcher.cpp:725
 msgid "File I/O Error while reading the game"
 msgstr "I/O fitxategi errorea jokua irakurtzerakoan"
 
-#: src/game_launcher.cpp:719
+#: src/game_launcher.cpp:727
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "I/O fitxategi errorea jokua irakurtzerakoan"
 
-#: src/game_launcher.cpp:899
+#: src/game_launcher.cpp:907
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Errorea jokuan jolasterakoan:"
 
-#: src/game_launcher.cpp:921
+#: src/game_launcher.cpp:929
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6064,44 +6069,44 @@ msgstr "Joku atondoa"
 msgid "Other Games"
 msgstr "Jokua behatu"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:31
+#: src/gui/dialogs/multiplayer/match_history.cpp:32
 msgid "Match History — $player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:107
 #, fuzzy
 msgid "In game:"
 msgstr "Izena:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(observing)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "(playing)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:113
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In lobby"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:142
+#: src/gui/dialogs/multiplayer/player_info.cpp:143
 msgid "On friends list"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:147
+#: src/gui/dialogs/multiplayer/player_info.cpp:148
 msgid "On ignores list"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:152
+#: src/gui/dialogs/multiplayer/player_info.cpp:153
 msgid "Neither a friend nor ignored"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:157
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "You"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:160
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "Error"
 msgstr "Okerra"
 
@@ -6120,48 +6125,48 @@ msgstr "Elurra"
 msgid "yes"
 msgstr "Jokalariak: "
 
-#: src/help/help_browser.cpp:160
+#: src/help/help_browser.cpp:158
 #, fuzzy
 msgid "Reference to unknown topic: "
 msgstr "erreferentzia urruneko fitxategiari"
 
-#: src/help/help_impl.cpp:407
+#: src/help/help_impl.cpp:406
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:408 src/help/help_impl.cpp:444
+#: src/help/help_impl.cpp:407 src/help/help_impl.cpp:443
 #, fuzzy
 msgid "Time of Day Schedule"
 msgstr "Eguneko Ordua"
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:434
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Bidezko unitateak:"
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:435
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Unitate neutralak:"
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:436
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Unitate kaotikoak:"
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:437
 #, fuzzy
 msgid "Liminal Bonus:"
 msgstr "Bidezko unitateak:"
 
-#: src/help/help_impl.cpp:439
+#: src/help/help_impl.cpp:438
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:531
+#: src/help/help_impl.cpp:530
 #, fuzzy
 msgid "<header>text='Units with this special attack'</header>"
 msgstr ""
@@ -6169,7 +6174,7 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help/help_impl.cpp:595
+#: src/help/help_impl.cpp:594
 #, fuzzy
 msgid "<header>text='Units with this ability'</header>"
 msgstr ""
@@ -6177,73 +6182,73 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help/help_impl.cpp:625
+#: src/help/help_impl.cpp:624
 msgid "Era:"
 msgstr "Garaia:"
 
-#: src/help/help_impl.cpp:633
+#: src/help/help_impl.cpp:632
 #, fuzzy
 msgid "Factions"
 msgstr "Fakzio"
 
-#: src/help/help_impl.cpp:681
+#: src/help/help_impl.cpp:680
 #, fuzzy
 msgid "Races: "
 msgstr "matrailu"
 
-#: src/help/help_impl.cpp:690 src/help/help_impl.cpp:1054
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1053
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Lerrokatzea:"
 
-#: src/help/help_impl.cpp:697
+#: src/help/help_impl.cpp:696
 #, fuzzy
 msgid "Leaders"
 msgstr "Burua: "
 
-#: src/help/help_impl.cpp:706
+#: src/help/help_impl.cpp:705
 msgid "Recruits"
 msgstr "Bilketak"
 
-#: src/help/help_impl.cpp:768 src/units/types.cpp:488
+#: src/help/help_impl.cpp:767 src/units/types.cpp:487
 #, fuzzy
 msgid "No description available."
 msgstr "Ez dago objetiborik eskuragarri"
 
-#: src/help/help_impl.cpp:772 src/help/help_impl.cpp:774
+#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
 #, fuzzy
 msgid "Availability: "
 msgstr "Trebetasunak:"
 
-#: src/help/help_impl.cpp:772
+#: src/help/help_impl.cpp:771
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:774
+#: src/help/help_impl.cpp:773
 #, fuzzy
 #| msgid "Era not available"
 msgid "Unavailable"
 msgstr "Garaia ez dao eskuragarri"
 
-#: src/help/help_impl.cpp:854 src/help/help_impl.cpp:1031
+#: src/help/help_impl.cpp:853 src/help/help_impl.cpp:1030
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "+Hainbat"
 
-#: src/help/help_impl.cpp:1054 src/reports.cpp:385
+#: src/help/help_impl.cpp:1053 src/reports.cpp:385
 msgid "Alignment: "
 msgstr "Lerrokatzea:"
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1073
+#: src/help/help_impl.cpp:1072
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1078
+#: src/help/help_impl.cpp:1077
 #, fuzzy
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr ""
@@ -6251,7 +6256,7 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help/help_impl.cpp:1080
+#: src/help/help_impl.cpp:1079
 #, fuzzy
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr ""
@@ -6259,7 +6264,7 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help/help_impl.cpp:1089
+#: src/help/help_impl.cpp:1088
 #, fuzzy
 msgid "<header>text='Units of this group'</header>"
 msgstr ""
@@ -6267,7 +6272,7 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help/help_impl.cpp:1091
+#: src/help/help_impl.cpp:1090
 #, fuzzy
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
@@ -6275,21 +6280,21 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help/help_impl.cpp:1412
+#: src/help/help_impl.cpp:1411
 msgid "corrupted original file"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:397
+#: src/hotkey/command_executor.cpp:398
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you really want to surrender the game?"
 msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
-#: src/hotkey/command_executor.cpp:397
+#: src/hotkey/command_executor.cpp:398
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:810
+#: src/hotkey/command_executor.cpp:811
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Pantaila argazkia"
@@ -7066,11 +7071,11 @@ msgstr ""
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:253
+#: src/play_controller.cpp:254
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:256
 #, fuzzy
 msgid "current local time"
 msgstr "Uneko helburua:"
@@ -7122,11 +7127,11 @@ msgstr ""
 msgid "No objectives available"
 msgstr "Ez dago objetiborik eskuragarri"
 
-#: src/playmp_controller.cpp:159
+#: src/playmp_controller.cpp:160
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:271 src/playsingle_controller.cpp:375
+#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:376
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7135,7 +7140,7 @@ msgstr ""
 "Sareko deskonexio bat gertatu da, eta jokuak ezin du jarraitu. Jokua gorde "
 "nahi duzu?"
 
-#: src/playmp_controller.cpp:275 src/playsingle_controller.cpp:379
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -7143,7 +7148,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
-#: src/playmp_controller.cpp:275 src/playsingle_controller.cpp:379
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -7151,7 +7156,7 @@ msgid ""
 "Reason: "
 msgstr "Jokua gordeta"
 
-#: src/playmp_controller.cpp:384
+#: src/playmp_controller.cpp:385
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7161,27 +7166,27 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 
-#: src/playmp_controller.cpp:428
+#: src/playmp_controller.cpp:429
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:157
+#: src/playsingle_controller.cpp:158
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Okerra"
 
-#: src/playsingle_controller.cpp:158
+#: src/playsingle_controller.cpp:159
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:331
 msgid "The game is over."
 msgstr "Jokua bukatu da."
 
@@ -7190,34 +7195,34 @@ msgstr "Jokua bukatu da."
 msgid "It is now $name|’s turn"
 msgstr "Zure txanda"
 
-#: src/playturn.cpp:279
+#: src/playturn.cpp:276
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:285
 #, fuzzy
 msgid "Give control to observer $player"
 msgstr "Lagunei soilik bidali"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:290
 msgid "Replace with AI"
 msgstr "AA-rekin ordeztu"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:291
 msgid "Replace with local player"
 msgstr "Jokalari lokalarekin ordezkatu"
 
-#: src/playturn.cpp:295
+#: src/playturn.cpp:292
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:296
+#: src/playturn.cpp:293
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Jokoa bertan behera utzi"
 
-#: src/playturn.cpp:300
+#: src/playturn.cpp:297
 #, fuzzy
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
@@ -7315,7 +7320,7 @@ msgstr "Unitate hau harkaitz bihurtu da. Ezin du mugitu edo eraso."
 msgid "Ability: "
 msgstr "Trebetasunak:"
 
-#: src/reports.cpp:434 src/reports.cpp:962
+#: src/reports.cpp:434 src/reports.cpp:973
 msgid " (inactive)"
 msgstr ""
 
@@ -7368,107 +7373,107 @@ msgstr "Goiza"
 msgid "Movement Costs:"
 msgstr "Mugimendua"
 
-#: src/reports.cpp:797 src/reports.cpp:1051 src/reports.cpp:1063
+#: src/reports.cpp:808 src/reports.cpp:1062 src/reports.cpp:1074
 #, fuzzy
 msgid "Weapon: "
 msgstr "Armen berezitasunak"
 
-#: src/reports.cpp:798 src/reports.cpp:1052
+#: src/reports.cpp:809 src/reports.cpp:1063
 #, fuzzy
 msgid "Damage: "
 msgstr "kaltea"
 
-#: src/reports.cpp:802
+#: src/reports.cpp:813
 #, fuzzy
 msgid "Base damage: "
 msgstr "guztira kalteak"
 
-#: src/reports.cpp:804 src/reports.cpp:838 src/reports.cpp:848
+#: src/reports.cpp:815 src/reports.cpp:849 src/reports.cpp:859
 #, fuzzy
 msgid "With specials: "
 msgstr "Armen berezitasunak"
 
-#: src/reports.cpp:807
+#: src/reports.cpp:818
 #, fuzzy
 msgid "Time of day: "
 msgstr "Eguneko Ordua"
 
-#: src/reports.cpp:811
+#: src/reports.cpp:822
 #, fuzzy
 msgid "Leadership: "
 msgstr "buruzagia"
 
-#: src/reports.cpp:815
+#: src/reports.cpp:826
 #, fuzzy
 msgid "Slowed: "
 msgstr "mantsotua:"
 
-#: src/reports.cpp:819
+#: src/reports.cpp:830
 #, fuzzy
 msgid "Attacks: "
 msgstr "Erasotzaile"
 
-#: src/reports.cpp:823
+#: src/reports.cpp:834
 #, fuzzy
 msgid "Max swarm bonus: "
 msgstr "Txandak: "
 
-#: src/reports.cpp:824 src/reports.cpp:843
+#: src/reports.cpp:835 src/reports.cpp:854
 msgid "Swarm: "
 msgstr ""
 
-#: src/reports.cpp:825 src/reports.cpp:836 src/reports.cpp:847
+#: src/reports.cpp:836 src/reports.cpp:847 src/reports.cpp:858
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:831
+#: src/reports.cpp:842
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Berezia"
 
-#: src/reports.cpp:841
+#: src/reports.cpp:852
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:868
+#: src/reports.cpp:879
 msgid "Weapon range: "
 msgstr ""
 
-#: src/reports.cpp:869
+#: src/reports.cpp:880
 #, fuzzy
 msgid "Damage type: "
 msgstr "kaltea"
 
-#: src/reports.cpp:870
+#: src/reports.cpp:881
 #, fuzzy
 msgid "Damage versus: "
 msgstr "kaltea"
 
-#: src/reports.cpp:929
+#: src/reports.cpp:940
 #, fuzzy
 msgid "Accuracy:"
 msgstr "guztira kalteak"
 
-#: src/reports.cpp:934
+#: src/reports.cpp:945
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:960
+#: src/reports.cpp:971
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Armen berezitasunak"
 
-#: src/reports.cpp:1035
+#: src/reports.cpp:1046
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1064
+#: src/reports.cpp:1075
 #, fuzzy
 msgid "Total damage"
 msgstr "guztira kalteak"
 
-#: src/reports.cpp:1128
+#: src/reports.cpp:1139
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -7477,82 +7482,82 @@ msgstr[0] "Erasotzaile"
 msgstr[1] "Erasotzaile"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1136
+#: src/reports.cpp:1147
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1140
+#: src/reports.cpp:1151
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Hau ez da jokalari-anitzeko gordeketa"
 
-#: src/reports.cpp:1232
+#: src/reports.cpp:1243
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "Eguneko Ordua"
 
-#: src/reports.cpp:1281
+#: src/reports.cpp:1292
 #, fuzzy
 msgid "Time of day:"
 msgstr "Eguneko Ordua"
 
-#: src/reports.cpp:1282 src/reports.cpp:1336
+#: src/reports.cpp:1293 src/reports.cpp:1347
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Bidezko unitateak:"
 
-#: src/reports.cpp:1284 src/reports.cpp:1338
+#: src/reports.cpp:1295 src/reports.cpp:1349
 msgid "Neutral units: "
 msgstr "Unitate neutralak:"
 
-#: src/reports.cpp:1285 src/reports.cpp:1339
+#: src/reports.cpp:1296 src/reports.cpp:1350
 msgid "Chaotic units: "
 msgstr "Unitate kaotikoak:"
 
-#: src/reports.cpp:1287 src/reports.cpp:1341
+#: src/reports.cpp:1298 src/reports.cpp:1352
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Bidezko unitateak:"
 
-#: src/reports.cpp:1400
+#: src/reports.cpp:1411
 #, fuzzy
 msgid "Turn Number"
 msgstr "Txanda"
 
-#: src/reports.cpp:1402
+#: src/reports.cpp:1413
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1438
 msgid "Gold"
 msgstr "Urrea"
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1438
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1446
+#: src/reports.cpp:1457
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1446
+#: src/reports.cpp:1457
 msgid "Villages"
 msgstr "Herrixkak"
 
-#: src/reports.cpp:1451
+#: src/reports.cpp:1462
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1451
+#: src/reports.cpp:1462
 msgid "Units"
 msgstr "Unitateak"
 
-#: src/reports.cpp:1461
+#: src/reports.cpp:1472
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7561,39 +7566,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1461
+#: src/reports.cpp:1472
 msgid "Upkeep"
 msgstr "Gastuak"
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1509
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Irabaziak"
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1509
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1666
+#: src/reports.cpp:1677
 msgid "Observers:"
 msgstr "Ikusleak:"
 
-#: src/reports.cpp:1708
+#: src/reports.cpp:1719
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1719
+#: src/reports.cpp:1730
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1750
+#: src/reports.cpp:1761
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1750
+#: src/reports.cpp:1761
 msgid "Turn Countdown"
 msgstr ""
 
@@ -7916,7 +7921,7 @@ msgstr ""
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1006
+#: src/team.cpp:1003
 msgid "“$color_id”"
 msgstr ""
 
@@ -8026,56 +8031,56 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "txandako"
 msgstr[1] "txandako"
 
-#: src/units/helper.cpp:60
+#: src/units/helper.cpp:59
 #, fuzzy
 msgid "Level: "
 msgstr "Maila"
 
-#: src/units/helper.cpp:63
+#: src/units/helper.cpp:62
 #, fuzzy
 #| msgid "Advancements"
 msgid "Advancements:"
 msgstr "Aurrerapenak"
 
-#: src/units/helper.cpp:76
+#: src/units/helper.cpp:75
 #, fuzzy
 msgid "No advancement"
 msgstr "Aurrerapenak"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 msgid "chaotic"
 msgstr "kaotikoa"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 #, fuzzy
 msgid "lawful"
 msgstr "Iheslaria"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 #, fuzzy
 msgid "liminal"
 msgstr "Iheslaria"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 msgid "neutral"
 msgstr "neutrala"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 #, fuzzy
 msgid "female^chaotic"
 msgstr "Lapurra"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 #, fuzzy
 msgid "female^lawful"
 msgstr "Iheslaria"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 #, fuzzy
 msgid "female^liminal"
 msgstr "Iheslaria"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 #, fuzzy
 msgid "female^neutral"
 msgstr "Andretxarra"

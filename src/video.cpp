@@ -29,6 +29,7 @@
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
+#include "widgets/menu.hpp" // for bluebg_style.unload_images
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -112,13 +113,23 @@ void init(fake type)
 void deinit()
 {
 	LOG_DP << "deinitializing video";
+
+	// SDL_INIT_TIMER is always initialized at program start.
+	// If it is not initialized here, there is a problem.
 	assert(SDL_WasInit(SDL_INIT_TIMER));
 
+	// Clear any static texture caches,
+	// lest they try to delete textures after SDL_Quit.
 	image::flush_cache();
 	font::flush_texture_cache();
 	render_texture_.reset();
 	current_render_target_.reset();
+	gui::menu::bluebg_style.unload_images();
 
+	// Destroy the window, and thus also the renderer.
+	window.reset();
+
+	// Close the video subsystem.
 	if(SDL_WasInit(SDL_INIT_VIDEO)) {
 		LOG_DP << "quitting SDL video subsystem";
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
@@ -127,8 +138,6 @@ void deinit()
 		// This should not have been initialized multiple times
 		throw error("video subsystem still initialized after deinit");
 	}
-
-	window.reset();
 }
 
 bool headless()

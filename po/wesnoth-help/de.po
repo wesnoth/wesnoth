@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
 "PO-Revision-Date: 2020-11-24 04:01+0100\n"
 "Last-Translator: Whiskeyjack\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -5102,9 +5102,18 @@ msgstr "Gassenwissen"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -8179,15 +8188,15 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max LP"
 
-#: src/help/help.cpp:213
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Schließen"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Hilfe"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
 msgstr "Fehler beim Analysieren des Hilfetextes:"
 
@@ -8370,27 +8379,27 @@ msgstr "Tag-/Nachteinfluss:"
 msgid "Required XP:"
 msgstr "Benötigte EP:"
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "Attacken"
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "Name"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "Attacken"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "Reichweite"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "Typ"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "Spezialität"
 
@@ -8406,31 +8415,31 @@ msgstr "Angriffsart"
 msgid "Resistance"
 msgstr "Resistenz"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "Geländeeinfluss"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Gelände"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Verteidigung"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Bewegungskosten"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "Verteidigungslimit"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "Weitblick-Faktor"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Tarnmöglichkeit"
 

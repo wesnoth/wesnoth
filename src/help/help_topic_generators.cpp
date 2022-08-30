@@ -233,7 +233,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << "Combined: "    << (type_.is_combined()  ? "Yes" : "No") << "\n";
 		ss << "Nonnull: "     << (type_.is_nonnull()   ? "Yes" : "No") << "\n";
 
-		ss << "Terrain string:"  << type_.number() << "\n";
+		ss << "Terrain string: " << type_.number() << "\n";
 
 		ss << "Hide in Editor: " << (type_.hide_in_editor() ? "Yes" : "No") << "\n";
 		ss << "Editor Group: "   << type_.editor_group() << "\n";
