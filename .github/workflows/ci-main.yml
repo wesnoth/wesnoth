@@ -274,9 +274,9 @@ jobs:
 
       - name: Build vcpkg
         run: |
-          "D:/a/wesnoth/vcpkg" git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
-          "D:/a/wesnoth/vcpkg" cd D:/a/wesnoth/vcpkg
-          "D:/a/wesnoth/vcpkg" D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
+          git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          cd D:/a/wesnoth/vcpkg
+          D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.9
