@@ -74,6 +74,8 @@ Wesnoth uses CMake for project configuration and vcpkg for installing dependenci
 
 NOTE 1: You will need a Windows implementation of pkg-config present in your PATH, such as [pkg-config-lite](https://sourceforge.net/projects/pkgconfiglite/).
 
+NOTE 2: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
+
 ## SCons Build
 
 Unlike CMake or the classic "autotools" build-system (configure && make),
