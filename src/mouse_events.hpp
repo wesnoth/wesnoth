@@ -179,6 +179,10 @@ private:
 	map_location selected_hex_;
 	map_location next_unit_;
 	pathfind::marked_route current_route_;
+	/**
+	 * If non-empty, current_paths_.destinations contains a cache of highlighted
+	 * hexes, likely the movement range or attack range of a unit.
+	 */
 	pathfind::paths current_paths_;
 	bool unselected_paths_;
 	bool unselected_reach_;
