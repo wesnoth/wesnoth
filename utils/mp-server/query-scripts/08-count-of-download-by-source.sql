@@ -1,4 +1,4 @@
-select CLIENT_SOURCE, count(*) as GAME_COUNT
+select CLIENT_SOURCE, count(*) as CLIENT_COUNT
 from
 (
   select distinct player.USER_ID, player.CLIENT_SOURCE
