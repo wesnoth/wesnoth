@@ -1,5 +1,5 @@
 # Russian translations for Battle for Wesnoth package
-# Copyright (C) 2006-2021 Wesnoth development team.
+# Copyright (C) 2006-2022 Wesnoth development team.
 #
 # Automatically generated, 2006.
 # ???
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2022-02-01 13:06+0300\n"
+"PO-Revision-Date: 2022-08-28 19:43+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 # type: TH
 #. type: TH
@@ -31,7 +31,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 # type: TH
 #. type: TH
@@ -1618,12 +1618,9 @@ msgstr "АВТОРСКОЕ ПРАВО"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:538 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Авторское право \\(co Дэвид Уайт, 2003-2021 E<lt>davidnwhite@verizon.netE<gt>"
+"Авторское право \\(co Дэвид Уайт, 2003-2022 E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2262,10 +2259,6 @@ msgstr "Глобальные тэги:"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:196
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to. Is not used if B<versions_accepted> is not set."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
@@ -2378,14 +2371,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:241
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
-#| "section is present in the configuration the server will run without any "
-#| "nick registration service. All additional tables that are needed for the "
-#| "B<forum_user_handler> to function can be found in table_definitions.sql "
-#| "in the Wesnoth source repository. Requires mysql support enabled. For "
-#| "cmake this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
