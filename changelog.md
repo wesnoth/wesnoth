@@ -14,6 +14,8 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed highlighted movement range when hovering over units after their owner ends turn. It now shows their max movement next turn, instead of the remaining moves from their previous turn. (issue #6716)
+   * Stopped wmllint adding `wesnoth-icon.png` to `[message]`s that don’t already have an image. (PR #6991)
 
 ## Version 1.17.7
  ### Terrain
