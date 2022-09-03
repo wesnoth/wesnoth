@@ -15,15 +15,15 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-20 19:38-0500\n"
-"PO-Revision-Date: 2022-06-21 11:51+0200\n"
-"Last-Translator: alberic89 <alberic89@gmx.com>\n"
+"PO-Revision-Date: 2022-08-27 15:24+0800\n"
+"Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -722,12 +722,12 @@ msgstr "Hache"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:72
 msgid "Small Axe"
-msgstr ""
+msgstr "Petite hache"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:78
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Hache à lancer"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:84
@@ -801,12 +801,12 @@ msgstr "Caisse"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:198
 msgid "Branch"
-msgstr ""
+msgstr "Branche"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:204
 msgid "Bare Branch"
-msgstr ""
+msgstr "Branche nue"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:210
@@ -815,10 +815,8 @@ msgstr "Brasier"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:217
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Brasier"
+msgstr "Brasier allumé"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -866,7 +864,7 @@ msgstr "Cape verte"
 #. [item]: id=club
 #: data/core/editor/items.cfg:278
 msgid "Club"
-msgstr ""
+msgstr "Bâton"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:284
@@ -882,7 +880,7 @@ msgstr "Cercueil ouvert"
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:297
 msgid "Crossbow"
-msgstr ""
+msgstr "Arbalète"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:303
@@ -896,7 +894,6 @@ msgstr "Dague empoisonnée"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:315
-#, fuzzy
 msgid "Poison Dagger (clean)"
 msgstr "Dague empoisonnée (propre)"
 
@@ -912,7 +909,6 @@ msgstr "Épée enflammée"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:333
-#, fuzzy
 msgid "Unenchanted Flaming Sword"
 msgstr "Épée enflammée non enchantée"
 
@@ -974,10 +970,8 @@ msgstr "Clef"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:423
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Rouge foncé"
+msgstr "Clé foncée"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:429
@@ -987,18 +981,16 @@ msgstr "Sac de cuir"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:435
 msgid "Mace"
-msgstr ""
+msgstr "Masse"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:441
-#, fuzzy
 msgid "Bone Necklace"
 msgstr "Collier d'os"
 
 # On peut aussi utiliser « ânkh »
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:447
-#, fuzzy
 msgid "Stone Necklace"
 msgstr "Collier de pierre"
 
@@ -1093,9 +1085,8 @@ msgstr "Sceptre de feu"
 
 #. [item]: id=sling
 #: data/core/editor/items.cfg:555
-#, fuzzy
 msgid "Sling"
-msgstr "Soins"
+msgstr "Fronde"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:561
@@ -1112,7 +1103,7 @@ msgstr "Jolie lance"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:579
 msgid "Javelin"
-msgstr ""
+msgstr "Javelot"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1133,14 +1124,11 @@ msgstr "Bâton magique"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:615
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Bâton magique"
+msgstr "Baguette magique"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:621
-#, fuzzy
 msgid "Plain Staff"
 msgstr "Bâton ordinaire"
 
@@ -1171,13 +1159,11 @@ msgstr "Épée"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:669
-#, fuzzy
 msgid "Holy Sword"
 msgstr "Épée sacrée"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:675
-#, fuzzy
 msgid "Short Sword"
 msgstr "Épée courte"
 
@@ -1190,26 +1176,23 @@ msgstr "Épée enflammée"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:687
-#, fuzzy
 msgid "Ankh Talisman"
 msgstr "Talisman ânkh"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:693
-#, fuzzy
 msgid "Bone Talisman"
 msgstr "Talisman en os"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:699
-#, fuzzy
 msgid "Stone Talisman"
 msgstr "Talisman en pierre"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:705
 msgid "Thunderstick"
-msgstr ""
+msgstr "Bâton de tonnerre"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:711
@@ -1413,7 +1396,6 @@ msgstr "Temple"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
 #: data/core/editor/items.cfg:1081
-#, fuzzy
 msgid "Ruined Temple"
 msgstr "Temple en ruine"
 
@@ -7828,6 +7810,8 @@ msgstr "Variable non trouvée"
 #: src/menu_events.cpp:1990
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"La commande de débogage 'unit: $unit' a échoué: pas d'unité sélectionnée ou "
+"pointée avec la souris."
 
 #: src/menu_events.cpp:2008
 msgid ""
