@@ -4,6 +4,7 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+   * The /report command now opens a dialog rather than simply allowing free-form text after the command.
  ### Lua API
  ### Packaging
  ### Terrain
