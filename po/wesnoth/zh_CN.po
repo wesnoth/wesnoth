@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-20 19:47-0500\n"
-"PO-Revision-Date: 2022-04-22 17:03+0800\n"
+"PO-Revision-Date: 2022-09-03 09:00+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -676,12 +676,12 @@ msgstr "斧"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "小斧"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "掷斧"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
@@ -755,12 +755,12 @@ msgstr "盒子"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "树枝"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "秃枝"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
@@ -769,10 +769,8 @@ msgstr "火盆"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "火盆"
+msgstr "点燃的火盆"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -792,18 +790,14 @@ msgstr "笼子"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
-msgstr "关着的普通箱子"
+msgstr "关着的箱子"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
-msgstr "开着的普通箱子"
+msgstr "开着的箱子"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
@@ -823,7 +817,7 @@ msgstr "绿斗篷"
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "棍棒"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
@@ -833,32 +827,28 @@ msgstr "关着的棺材"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "关着的棺材"
+msgstr "开着的棺材"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "十字弩"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "匕首"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "毒药"
+msgstr "涂毒匕首"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "涂毒匕首（干净）"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
@@ -872,10 +862,8 @@ msgstr "烈焰神剑"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "烈焰神剑"
+msgstr "未附魔的烈焰神剑"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -913,10 +901,8 @@ msgstr "一捆麦子"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "符文锤"
+msgstr "锤"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
@@ -937,10 +923,8 @@ msgstr "钥匙"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "暗红"
+msgstr "暗色钥匙"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
@@ -950,21 +934,17 @@ msgstr "皮革包"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "狼牙棒"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "圆环十字项链"
+msgstr "骨项链"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "圆环十字项链"
+msgstr "石项链"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
@@ -1057,14 +1037,12 @@ msgstr "圣火权杖"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "弹弓"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "华丽长矛"
+msgstr "长矛"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1075,7 +1053,7 @@ msgstr "华丽长矛"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "标枪"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1085,10 +1063,8 @@ msgstr "手杖"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "法杖"
+msgstr "德鲁伊杖"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1098,17 +1074,13 @@ msgstr "法杖"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "法杖"
+msgstr "法棒"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "法杖"
+msgstr "普通杖"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1137,56 +1109,48 @@ msgstr "剑"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "剑"
+msgstr "圣剑"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "剑"
+msgstr "短剑"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "烈焰神剑"
+msgstr "幽魂剑"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "生命十字护身符"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "骨护身符"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "石板"
+msgstr "石护身符"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "雷霆棒"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "点燃的火炬"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "未点燃的火炬"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
@@ -1378,10 +1342,8 @@ msgstr "神庙"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "毁坏的帐篷"
+msgstr "毁坏的神庙"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -6511,6 +6473,8 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"错误：[advancefrom]不再起作用。“$lower_level”单位将不能升级"
+"为“$higher_level”。请让附加组件作者转为使用[modify_unit_type]。"
 
 #: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -7895,6 +7859,7 @@ msgstr "未找到变量"
 #: src/menu_events.cpp:1988
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"调试指令“unit: $unit|”失败：未选定任何单位，且鼠标指针未在任何单位上方悬停。"
 
 #: src/menu_events.cpp:2006
 msgid ""
@@ -8996,9 +8961,6 @@ msgstr "隐藏$player的计划"
 msgid "Whiteboard Options"
 msgstr "白板选项"
 
-#~ msgid "Chest"
-#~ msgstr "箱子"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -9006,9 +8968,6 @@ msgstr "白板选项"
 
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<b>——群落首领戈伦，韦元5年</b>"
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "使用[modify_unit_type]\n"
 
 #~ msgid "Independent"
 #~ msgstr "独立"
