@@ -80,13 +80,13 @@ Aktiviert mehr Details in der Logausgabe, einschließlich der Stufe \fBdebug\fP.
 .SS "Die allgemeine Syntax ist:"
 .
 .P
-[\fIElement\fP]
+[\fItag\fP]
 .IP
 \fISchlüssel\fP="\fIWert\fP"
 .IP
 \fISchlüssel\fP="\fIWert\fP,\fIWert\fP,..."
 .P
-[/\fIElement\fP]
+[/\fItag\fP]
 .
 .SS "Globale Schlüssel:"
 .
@@ -175,10 +175,10 @@ Beispiel: \fBversions_accepted="*"\fP akzeptiert alle Versionen.
 Legt fest, ob sich nur Spieler einloggen dürfen, welche beim \fBuser_handler\fP
 registriert sind. (Standard: false)
 .
-.SS "Globale Elemente:"
+.SS "Globale Tags:"
 .
 .P
-\fB[redirect]\fP Ein Element, um bestimmte Programmversionen anzugeben, die auf
+\fB[redirect]\fP Ein Tag, um bestimmte Programmversionen anzugeben, die auf
 einen anderen Server umgeleitet werden sollen. Wird nur verwendet wenn
 \fBversions_accepted\fP gesetzt ist.
 .RS
@@ -210,10 +210,10 @@ werden Minuten (m) angenommen. Beispiel: \fBtime="1D12h30m"\fP steht für eine
 Ban\-Zeit von einem Tag, 12 Stunden und 30 Minuten.
 .RE
 .P
-\fB[proxy]\fP Ein Element, das benutzt wird, um dem Server mitzuteilen, wie ein
-Proxy zu agieren und somit alle Anfragen des mit ihm verbundenen Rechners an
-den angegebenen Server weiterzuleiten. Es werden die gleichen Schlüssel wie
-bei \fB[redirect]\fP akzeptiert.
+\fB[proxy]\fP Ein Tag, durch den der Server wie ein Proxy agiert und somit alle
+Anfragen der mit ihm verbundenen Rechners an den angegebenen Server
+weiterleitet. Es werden die gleichen Schlüssel wie bei \fB[redirect]\fP
+akzeptiert.
 .RE
 .P
 \fB[user_handler]\fP Dies Konfiguriert die Nutzerverwaltung. Ist kein
