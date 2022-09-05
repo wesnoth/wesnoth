@@ -32,6 +32,7 @@ public:
 protected:
 	void do_emote();
 	void do_network_send();
+	void do_network_send(const std::string& data);
 	void do_network_send_req_arg();
 	void do_whisper();
 	void do_log();
@@ -41,6 +42,7 @@ protected:
 	void do_display();
 	void do_version();
 	void do_clear_messages();
+	void do_mp_report();
 
 	/** Request information about a user from the server. */
 	void do_info();
@@ -88,7 +90,7 @@ protected:
 			_("Mute/Unmute all observers. (toggles)"), "");
 		register_command("ping", &chat_command_handler::do_network_send,
 			_("Send some data to the server. Can be used to verify the network connection and notice disconnects."));
-		register_command("report", &chat_command_handler::do_network_send_req_arg,
+		register_command("report", &chat_command_handler::do_mp_report,
 			_("Report abuse, rule violations, etc. to the server moderators. "
 				"Make sure to mention relevant nicknames, etc."), "");
 		register_alias("report", "adminmsg");  // deprecated

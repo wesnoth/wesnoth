@@ -1,5 +1,5 @@
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2007-2021 Wesnoth development team
+# Copyright (C) 2007-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Translators:
 # Automatically generated, 2004.
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-20 19:47-0500\n"
-"PO-Revision-Date: 2022-02-02 15:06+0300\n"
+"PO-Revision-Date: 2022-08-28 19:32+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [multiplayer_side]: id=Custom
@@ -682,12 +682,12 @@ msgstr "Топор"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "Топорик"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Метательный топор"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
@@ -761,12 +761,12 @@ msgstr "Ящик"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "Ветка"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "Голая ветка"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
@@ -775,10 +775,8 @@ msgstr "Жаровня"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Жаровня"
+msgstr "Жаровня с огнём"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -798,28 +796,24 @@ msgstr "Клетка"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
 msgstr "Запертый сундук"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "Открытый сундук"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
 msgid "Closed Plain Chest"
-msgstr "Запертый сундук"
+msgstr "Запертый обычный сундук"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:308
 msgid "Open Plain Chest"
-msgstr "Открытый сундук"
+msgstr "Открытый обычный сундук"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:315
@@ -829,7 +823,7 @@ msgstr "Зеленая накидка"
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "Дубина"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
@@ -839,32 +833,28 @@ msgstr "Закрытый гроб"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Закрытый гроб"
+msgstr "Открытый гроб"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "Арбалет"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "Кинжал"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Яд"
+msgstr "Отравленный кинжал"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Отравленный кинжал (чистый)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
@@ -878,10 +868,8 @@ msgstr "Пылающий меч"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Пылающий меч"
+msgstr "Пылающий меч без чар"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -919,10 +907,8 @@ msgstr "Зерновой сноп"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Рунический молот"
+msgstr "Молот"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
@@ -943,10 +929,8 @@ msgstr "Ключ"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Тёмно-красный"
+msgstr "Тёмный ключ"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
@@ -956,21 +940,17 @@ msgstr "Кожаный мешок"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "Булава"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Ожерелье с крестом"
+msgstr "Костяное ожерелье"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Ожерелье с крестом"
+msgstr "Каменное ожерелье"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
@@ -1063,14 +1043,12 @@ msgstr "Огненный Скипетр"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "Праща"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Копьё с украшением"
+msgstr "Копьё"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1081,7 +1059,7 @@ msgstr "Копьё с украшением"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "Дротик"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1091,10 +1069,8 @@ msgstr "Посох"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Волшебный посох"
+msgstr "Посох друида"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1104,17 +1080,13 @@ msgstr "Волшебный посох"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Волшебный посох"
+msgstr "Волшебная палочка"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Волшебный посох"
+msgstr "Обыкновенный посох"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1143,56 +1115,48 @@ msgstr "Меч"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Меч"
+msgstr "Святой меч"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Меч"
+msgstr "Короткий меч"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Пылающий меч"
+msgstr "Призрачный меч"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Анх"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Костяной талисман"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Каменная табличка"
+msgstr "Каменный талисман"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "Громовой посох"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "Зажжённый факел"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Потушенный факел"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
@@ -1384,10 +1348,8 @@ msgstr "Храм"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Истлевшая палатка"
+msgstr "Руины храма"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -5840,9 +5802,6 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Ошибка при скачивании списка аддонов с сервера."
 
 #: src/addon/manager_ui.cpp:319
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -6354,6 +6313,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Ошибка: [advancefrom] больше не работает. Бойцы уровня ‘$lower_level’ не "
+"смогут продвинуться до ‘$higher_level’; пожалуйста, попросите автора аддона "
+"использовать вместо этого [modify_unit_type]."
 
 #: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6577,8 +6539,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "Убейте лидера(ов) противника"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "Эра «$era» не найдена"
 
@@ -7805,6 +7765,8 @@ msgstr "Переменная не найдена"
 #: src/menu_events.cpp:1988
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Команда отладки 'unit: $unit' не сработала: нет выбранного бойца или бойца "
+"под курсором."
 
 #: src/menu_events.cpp:2006
 msgid ""
@@ -8401,10 +8363,8 @@ msgstr "Обратный отсчет"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %Y, %H:%M"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %b %d %I:%M %p %Y"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
@@ -8954,8 +8914,15 @@ msgstr "Скрыть план $player"
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
 
-#~ msgid "Chest"
-#~ msgstr "Сундук"
+#~ msgid ""
+#~ "Some types of terrain give unique bonuses, such as healing or "
+#~ "illumination."
+#~ msgstr ""
+#~ "Некоторые виды местности выделяются особенно: например, они лечат или "
+#~ "освещают."
+
+#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
+#~ msgstr "<i>— Галун, предводитель Полёта, 6 ГВ</i>"
 
 #~ msgid "Independent"
 #~ msgstr "Независимый"
@@ -8966,15 +8933,11 @@ msgstr "Настройки планировщика"
 #~ msgid "No Ally Mirror"
 #~ msgstr "Нет дружественного зеркала"
 
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr ""
-#~ "Некоторые виды местности выделяются особенно: например, они лечат или "
-#~ "освещают."
+#~ msgid "Chest"
+#~ msgstr "Сундук"
 
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>— Галун, предводитель Полёта, 6 ГВ</i>"
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "Используйте [modify_unit_type]\n"
 
 #~ msgid "<room>"
 #~ msgstr "<комната>"
@@ -9002,19 +8965,6 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Room query."
 #~ msgstr "Запрос к комнате."
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Используйте [modify_unit_type]\n"
-
-#, fuzzy
-#~| msgid "%a %b %d %Y, %I:%M %p"
-#~ msgid "%a %b %d %I:%M %p %Y"
-#~ msgstr "%a %b %d %I:%M %p %Y"
-
-#, fuzzy
-#~| msgid "%a %b %e %H:%M:%S %Y"
-#~ msgid "%a %b %d %H:%M %Y"
-#~ msgstr "%a %b %e %H:%M:%S %Y"
 
 #, fuzzy
 #~| msgid "Overall"
@@ -10487,6 +10437,9 @@ msgstr "Настройки планировщика"
 
 #~ msgid "September"
 #~ msgstr "Сентябрь"
+
+#~ msgid "%a %b %e %H:%M:%S %Y"
+#~ msgstr "%a %b %e %H:%M:%S %Y"
 
 #~ msgid "%a %d %b %Y %H:%M:%S %z"
 #~ msgstr "%a %d %b %Y %H:%M:%S %z"

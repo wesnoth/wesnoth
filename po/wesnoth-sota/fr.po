@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Secrets_of_the_Ancients-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-06-19 14:02 UTC\n"
-"PO-Revision-Date: 2022-07-04 16:10+0800\n"
+"PO-Revision-Date: 2022-08-27 15:34+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #. [campaign]: id=Secrets of the Ancients
 #. [editor_group]: id=sota
@@ -95,41 +95,35 @@ msgstr "Artwork additionnel"
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:106
 msgid "Lvl 0"
-msgstr ""
+msgstr "Niv. 0"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:128
-#, fuzzy
 msgid "Undead"
 msgstr "Mort-vivant"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:171
-#, fuzzy
 msgid "Traits"
 msgstr "Traits"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:205
-#, fuzzy
 msgid "Attacks"
 msgstr "Attaques"
 
 #. [label]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:271
-#, fuzzy
 msgid "Choose a Corpse"
 msgstr "Choisissez un zombi"
 
 #. [button]
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:337
-#, fuzzy
 msgid "Recruit"
 msgstr "Relever un corps"
 
 #. [button]: id=cancel
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:343
-#, fuzzy
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -468,8 +462,8 @@ msgid ""
 "  Temple\n"
 "of Healing"
 msgstr ""
-"  Temple\n"
-"de Soin"
+" Temple\n"
+"de soin"
 
 #. [event]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/02_Dark_Business.cfg:283
@@ -4403,7 +4397,6 @@ msgstr ""
 #. recruitment dialog. "Walking Corpse" is not used here because some swim,
 #. and some fly.
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:92
-#, fuzzy
 msgid "All Corpses"
 msgstr "Tous les zombis"
 
@@ -4416,13 +4409,11 @@ msgstr ""
 #. [unit_type]: id=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:156
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:314
-#, fuzzy
 msgid "Flying Corpse"
 msgstr "Zombi volant"
 
 #. [unit_type]: id=SotA Swimming Corpse
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:204
-#, fuzzy
 msgid "Swimming Corpse"
 msgstr "Zombi nageur"
 
@@ -4743,15 +4734,13 @@ msgstr "Demi Vide"
 #. [value]: type=SotA Flying Corpse_Bat
 #. shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:24
-#, fuzzy
 msgid "recruit^Flying Corpse (Bat)"
-msgstr "Relever un zombi volant (chauve-souris)"
+msgstr "Zombi volant (chauve-souris)"
 
 #. [value]: type=SotA Flying Corpse_Bat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:25
-#, fuzzy
 msgid "You can now raise bat corpses!"
-msgstr "Vous pouvez désormais recruter des zombis chauves-souris !"
+msgstr "Vous pouvez désormais relever des corps de chauves-souris !"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:30
@@ -4760,9 +4749,8 @@ msgstr "Relever un zombi (rat)"
 
 #. [value]: type=SotA Walking Corpse_Rat
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:31
-#, fuzzy
 msgid "You can now raise rat corpses!"
-msgstr "Vous pouvez désormais recruter des zombis-rats !"
+msgstr "Vous pouvez désormais relever des corps de rats !"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:36
@@ -4771,9 +4759,8 @@ msgstr "Relever un zombi (loup)"
 
 #. [value]: type=SotA Walking Corpse_Wolf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:37
-#, fuzzy
 msgid "You can now raise wolf corpses!"
-msgstr "Vous pouvez désormais recruter des zombis-loups !"
+msgstr "Vous pouvez désormais relever des corps de loups !"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:42
@@ -4782,60 +4769,51 @@ msgstr "Relever un zombi (humain)"
 
 #. [value]: type=SotA Walking Corpse_Human
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:43
-#, fuzzy
 msgid "You can now raise human corpses!"
-msgstr "Vous pouvez désormais recruter des zombis humains !"
+msgstr "Vous pouvez désormais relever des corps humains !"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #. the mount is an undead horse (not a wolf), this is shown instead of the unit_type name in the recruitment dialog
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:49
-#, fuzzy
 msgid "recruit^Walking Corpse (Mounted)"
-msgstr "Relever un zombi monté"
+msgstr "Zombi monté"
 
 #. [value]: type=SotA Walking Corpse_Mounted
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:50
-#, fuzzy
 msgid "You can now raise mounted corpses!"
-msgstr "Vous pouvez désormais recruter des zombis montés !"
+msgstr "Vous pouvez désormais relever des corps montés !"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:55
-#, fuzzy
 msgid "recruit^Walking Corpse (Wolf Rider)"
-msgstr "Relever un zombi monteur de loup"
+msgstr "Zombi monteur de loup"
 
 #. [value]: type=SotA Walking Corpse_Wolf Rider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:56
-#, fuzzy
 msgid "You can now raise wolf rider corpses!"
-msgstr "Vous pouvez désormais recruter des zombis monteurs de loup !"
+msgstr "Vous pouvez désormais relever des corps de monteurs de loup !"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:62
-#, fuzzy
 msgid "recruit^Swimming Corpse"
-msgstr "Relever un zombi nageur"
+msgstr "Zombi nageur"
 
 #. [value]: type=SotA Swimming Corpse
 #. this is used for both naga and merfolk zombies
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:64
-#, fuzzy
 msgid "You can now raise swimming corpses!"
-msgstr "Vous pouvez désormais recruter des zombis nageurs !"
+msgstr "Vous pouvez désormais relever des corps nageurs !"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:69
-#, fuzzy
 msgid "recruit^Walking Corpse (Saurian)"
-msgstr "Relever un zombi saurien"
+msgstr "Zombi saurien"
 
 #. [value]: type=SotA Walking Corpse_Saurian
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:70
-#, fuzzy
 msgid "You can now raise saurian corpses!"
-msgstr "Vous pouvez désormais recruter des zombis sauriens !"
+msgstr "Vous pouvez désormais relever des corps de sauriens !"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:75
@@ -4844,9 +4822,8 @@ msgstr "Relever un zombi (wose)"
 
 #. [value]: type=SotA Walking Corpse_Wose
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:76
-#, fuzzy
 msgid "You can now raise wose corpses!"
-msgstr "Vous pouvez désormais recruter des zombis-woses !"
+msgstr "Vous pouvez désormais relever des corps de woses !"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:81
@@ -4855,33 +4832,28 @@ msgstr "Relever un zombi (gobelin)"
 
 #. [value]: type=SotA Walking Corpse_Goblin
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:82
-#, fuzzy
 msgid "You can now raise goblin corpses!"
-msgstr "Vous pouvez maintenant recruter des zombis gobelins !"
+msgstr "Vous pouvez désormais relever des corps de gobelins !"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:87
-#, fuzzy
 msgid "recruit^Flying Corpse (Gryphon)"
-msgstr "Relever un zombi volant (gryphon)"
+msgstr "Zombi volant (gryphon)"
 
 #. [value]: type=SotA Flying Corpse_Gryphon
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:88
-#, fuzzy
 msgid "You can now raise gryphon corpses!"
-msgstr "Vous pouvez désormais recruter des zombis volants (gryphon) !"
+msgstr "Vous pouvez désormais relever des corps de gryphons !"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:93
-#, fuzzy
 msgid "recruit^Walking Corpse (Spider)"
-msgstr "Relever un zombi araignée"
+msgstr "Zombi araignée"
 
 #. [value]: type=SotA Walking Corpse_Spider
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:94
-#, fuzzy
 msgid "You can now raise spider corpses!"
-msgstr "Vous pouvez désormais recruter des zombis-araignées !"
+msgstr "Vous pouvez désormais relever des corps d'araignées !"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:99
@@ -4890,9 +4862,8 @@ msgstr "Relever un zombi (troll)"
 
 #. [value]: type=SotA Walking Corpse_Troll
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:100
-#, fuzzy
 msgid "You can now raise troll corpses!"
-msgstr "Vous pouvez désormais recruter des zombis trolls !"
+msgstr "Vous pouvez désormais relever des corps de trolls !"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:105
@@ -4901,9 +4872,8 @@ msgstr "Relever un zombi (nain)"
 
 #. [value]: type=SotA Walking Corpse_Dwarf
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:106
-#, fuzzy
 msgid "You can now raise dwarf corpses!"
-msgstr "Vous pouvez désormais recruter des zomibs nains !"
+msgstr "Vous pouvez désormais relever des corps de nains !"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:372
@@ -4912,19 +4882,16 @@ msgstr ""
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:23
-#, fuzzy
 msgid "HP: "
 msgstr "PV :"
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:23
-#, fuzzy
 msgid "MP: "
 msgstr "PM :"
 
 #. [lua]: select
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:23
-#, fuzzy
 msgid "XP: "
 msgstr "XP :"
 
@@ -4935,7 +4902,6 @@ msgstr ""
 
 #. [lua]: postshow
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie_recruit_dialog.lua:96
-#, fuzzy
 msgid "You do not have enough gold to recruit that unit"
 msgstr "Vous n'avez pas assez d'or pour relever cette unité"
 

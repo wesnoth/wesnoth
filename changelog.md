@@ -4,15 +4,18 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+   * The /report command now opens a dialog rather than simply allowing free-form text after the command.
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Czech, French, Turkish
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Russian, Turkish
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed highlighted movement range when hovering over units after their owner ends turn. It now shows their max movement next turn, instead of the remaining moves from their previous turn. (issue #6716)
+   * Stopped wmllint adding `wesnoth-icon.png` to `[message]`s that don’t already have an image. (PR #6991)
 
 ## Version 1.17.7
  ### Terrain
