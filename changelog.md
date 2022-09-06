@@ -3,11 +3,13 @@
  ### Add-ons server
  ### Campaigns
  ### Editor
+   * add "elevation" terrain group
  ### Multiplayer
    * The /report command now opens a dialog rather than simply allowing free-form text after the command.
  ### Lua API
  ### Packaging
  ### Terrain
+   * Expansion of cosmetic "lower terrain" to "higher terrain" and more transition graphics.
  ### Translations
    * Updated translations: British English, Chinese (Simplified), Czech, French, Russian, Turkish
  ### Units
