@@ -36,6 +36,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/stacked_widget.hpp"
 #include "gui/dialogs/server_info_dialog.hpp"
 
 #include "addon/client.hpp"
@@ -657,6 +658,9 @@ void mp_lobby::pre_show(window& window)
 		}
 	}
 
+	listbox& tab_bar = find_widget<listbox>(&window, "games_list_tab_bar", false);
+	connect_signal_notify_modified(tab_bar, std::bind(&mp_lobby::tab_switch_callback, this));
+
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
@@ -677,6 +681,12 @@ void mp_lobby::pre_show(window& window)
 	}, true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
+}
+
+void mp_lobby::tab_switch_callback()
+{
+	filter_auto_hosted_ = !filter_auto_hosted_;
+	update_gamelist_filter();
 }
 
 void mp_lobby::open_profile_url()
@@ -946,6 +956,10 @@ void mp_lobby::game_filter_init()
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
 		return filter_slots_->get_widget_value() ? info.vacant_slots > 0 : true;
+	});
+
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return info.auto_hosted == filter_auto_hosted_;
 	});
 
 	lobby_info_.set_game_filter_invert(
