@@ -115,7 +115,26 @@ void unit_attack::pre_show(window& window)
 			attacker_itor_->get_location(), false, attacker.weapon
 		);
 
-		const std::set<std::string> checking_tags_other = {"disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+		std::pair<std::string, std::string> types = attacker_weapon.damage_type();
+		std::string attw_type_bis = types.second;
+		std::string attw_type = !(types.first).empty() ? types.first : attacker_weapon.type();
+		if (!attw_type.empty()) {
+			attw_type = string_table["type_" + attw_type];
+		}
+		if (!attw_type_bis.empty()) {
+			attw_type_bis = ", " + string_table["type_" + attw_type_bis];
+		}
+		std::pair<std::string, std::string> def_types = defender_weapon.damage_type();
+		std::string defw_type_bis = def_types.second;
+		std::string defw_type = !(def_types.first).empty() ? def_types.first : defender_weapon.type();
+		if (!defw_type.empty()) {
+			defw_type = string_table["type_" + defw_type];
+		}
+		if (!defw_type_bis.empty()) {
+			defw_type_bis = ", " + string_table["type_" + defw_type_bis];
+		}
+
+		const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 		std::string attw_specials = attacker_weapon.weapon_specials();
 		std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
 		std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
@@ -163,22 +182,26 @@ void unit_attack::pre_show(window& window)
 
 		// Use attacker/defender.num_blows instead of attacker/defender_weapon.num_attacks() because the latter does not consider the swarm weapon special
 		attacker_stats << "<b>" << attw_name << "</b>" << "\n"
+			<< attw_type << attw_type_bis << "\n"
 			<< attacker.damage << font::weapon_numbers_sep << attacker.num_blows
 			<< attw_specials << "\n"
 			<< font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>";
 
 		attacker_tooltip << _("Weapon: ") << "<b>" << attw_name << "</b>" << "\n"
+			<< _("Type: ") << attw_type << attw_type_bis << "\n"
 			<< _("Damage: ") << attacker.damage <<  "<i>" << attw_specials_dmg <<  "</i>" << "\n"
 			<< _("Attacks: ") << attacker.num_blows <<  "<i>" << attw_specials_atk <<  "</i>" << "\n"
 			<< _("Chance to hit: ") << font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>"<<  "<i>" << attw_specials_cth << "</i>"
 			<< attw_specials_others;
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
+			<< defw_type << defw_type_bis << "\n"
 			<< defender.damage << font::weapon_numbers_sep << defender.num_blows
 			<< defw_specials << "\n"
 			<< font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>";
 
 		defender_tooltip << _("Weapon: ") << "<b>" << defw_name << "</b>" << "\n"
+			<< _("Type: ") << defw_type << defw_type_bis << "\n"
 			<< _("Damage: ") << defender.damage << "<i>" << defw_specials_dmg << "</i>" << "\n"
 			<< _("Attacks: ") << defender.num_blows <<  "<i>" << defw_specials_atk <<  "</i>" << "\n"
 			<< _("Chance to hit: ") << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"

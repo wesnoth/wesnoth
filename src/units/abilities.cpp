@@ -1168,6 +1168,48 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
+//Functions used for change damage_type list with damage
+static std::vector<std::string> vector_type(unit_ability_list& abil_list, const std::string& type)
+{
+	std::vector<std::string> type_list;
+	for(auto& i : abil_list) {
+		if(!(*i.ability_cfg)[type].str().empty()){
+			type_list.push_back((*i.ability_cfg)[type].str());
+		}
+	}
+	if(type_list.size() >= 2){
+		std::sort(type_list.begin(), type_list.end());
+		if(type_list.size() >= 3){
+			std::unordered_map<std::string, unsigned int> type_count;
+			for( const std::string& character : type_list ){
+				type_count[character]++;
+			}
+			std::sort( std::begin( type_list ) , std::end( type_list ) , [&]( const std::string& rhs , const std::string& lhs ){
+				return type_count[lhs] < type_count[rhs];
+			});
+		}
+	}
+	return type_list;
+}
+
+/**
+ * Returns the type of damage inflicted.
+ */
+std::pair<std::string, std::string> attack_type::damage_type() const
+{
+	unit_ability_list abil_list = get_specials_and_abilities("damage_type");
+	if(abil_list.empty()){
+		return {type(), ""};
+	}
+
+	std::vector<std::string> type_list = vector_type(abil_list, "type");
+	std::vector<std::string> added_type_list = vector_type(abil_list, "added_type");
+	std::string type_damage, sec_type_damage;
+	type_damage = !type_list.empty() ? type_list.front() : type();
+	sec_type_damage = !added_type_list.empty() ? added_type_list.front() : "";
+	return {type_damage, sec_type_damage};
+}
+
 
 /**
  * Returns the damage per attack of this weapon, considering specials.
@@ -1270,7 +1312,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon, true) )
 				return false;
 		}
 
