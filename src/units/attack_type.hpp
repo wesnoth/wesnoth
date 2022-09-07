@@ -88,6 +88,10 @@ public:
 	/** Calculates the number of attacks this weapon has, considering specials. */
 	void modified_attacks(unsigned & min_attacks,
 	                      unsigned & max_attacks) const;
+
+	/** return a modified damage type and/or add a secondary_type for hybrid use if special is active. */
+	std::pair<std::string, std::string> damage_type() const;
+
 	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage() const;
 
@@ -120,7 +124,7 @@ public:
 
 	// In unit_types.cpp:
 
-	bool matches_filter(const config& filter) const;
+	bool matches_filter(const config& filter, bool can_loop = false) const;
 	bool apply_modification(const config& cfg);
 	bool describe_modification(const config& cfg,std::string* description);
 

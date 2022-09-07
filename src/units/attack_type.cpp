@@ -101,7 +101,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, bool can_loop)
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -146,6 +146,24 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), attack.type()) == filter_type.end() )
 		return false;
+
+	if(!can_loop){
+		const std::vector<std::string> filter_replacement_type = utils::split(filter["replacement_type"]);
+		const std::vector<std::string> filter_alternative_type = utils::split(filter["alternative_type"]);
+		if(!filter_alternative_type.empty() || !filter_replacement_type.empty()){
+			std::pair<std::string, std::string> damage_type = attack.damage_type();
+			if(!filter_replacement_type.empty()){
+				if ( std::find(filter_replacement_type.begin(), filter_replacement_type.end(), damage_type.first) == filter_replacement_type.end() ){
+					return false;
+				}
+			}
+			if(!filter_alternative_type.empty()){
+				if ( std::find(filter_alternative_type.begin(), filter_alternative_type.end(), damage_type.second) == filter_alternative_type.end() ){
+					return false;
+				}
+			}
+		}
+	}
 
 	if(!filter_special.empty()) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
@@ -245,25 +263,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter) const
+bool attack_type::matches_filter(const config& filter, bool can_loop) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter);
+	bool matches = matches_simple_filter(*this, filter, can_loop);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg);
+			matches = matches && matches_filter(condition.cfg, can_loop);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg);
+			matches = matches || matches_filter(condition.cfg, can_loop);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg);
+			matches = matches && !matches_filter(condition.cfg, can_loop);
 	}
 
 	return matches;
