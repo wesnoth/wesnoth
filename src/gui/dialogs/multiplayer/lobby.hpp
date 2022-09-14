@@ -140,8 +140,6 @@ private:
 
 	void show_server_info();
 
-	void open_profile_url();
-
 	void refresh_lobby();
 
 	void game_filter_reload();

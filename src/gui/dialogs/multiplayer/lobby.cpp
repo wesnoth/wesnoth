@@ -819,7 +819,12 @@ void mp_lobby::pre_show(window& window)
 			find_widget<label>(profile_panel, "username", false).set_label(your_info->name);
 
 			auto& profile_button = find_widget<button>(profile_panel, "view_profile", false);
-			connect_signal_mouse_left_click(profile_button, std::bind(&mp_lobby::open_profile_url, this));
+			if(your_info->forum_id != 0) {
+				connect_signal_mouse_left_click(profile_button,
+					std::bind(&desktop::open_object, mp::get_profile_link(your_info->forum_id)));
+			} else {
+				profile_button.set_active(false);
+			}
 
 			// TODO: implement
 			find_widget<button>(profile_panel, "view_match_history", false).set_active(false);
@@ -847,14 +852,6 @@ void mp_lobby::pre_show(window& window)
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
 	//plugins_context_->set_accessor("game_config", [this](const config&) { return game_config_; });
-}
-
-void mp_lobby::open_profile_url()
-{
-	const mp::user_info* info = player_list_.get_selected_info();
-	if(info && info->forum_id != 0) {
-		desktop::open_object(mp::get_profile_link(info->forum_id));
-	}
 }
 
 void mp_lobby::post_show(window& /*window*/)
