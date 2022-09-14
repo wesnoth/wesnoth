@@ -351,25 +351,23 @@ static secure_buffer aes_encrypt(const secure_buffer& plaintext, const secure_bu
 
 	return result;
 #else
-	// the encrypted result gets padded to the next multiple of 16, not just the length of the input text
-	size_t length = ((plaintext.size() / 16)+1)*16;
-	secure_buffer result(length, '\0');
 	size_t outWritten = 0;
+	secure_buffer result(plaintext.size(), '\0');
 
-	CCCryptorStatus ccStatus = CCCrypt(kCCEncrypt,
-	kCCAlgorithmAES128,
-	kCCOptionPKCS7Padding,
-	key.data(),
-	key.size(),
-	nullptr,
-	plaintext.data(),
-	plaintext.size(),
-	result.data(),
-	result.size(),
-	&outWritten);
+	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,
+		kCCAlgorithmRC4,
+		kCCOptionPKCS7Padding,
+		key.data(),
+		key.size(),
+		nullptr,
+		plaintext.data(),
+		plaintext.size(),
+		result.data(),
+		result.size(),
+		&outWritten);
 
 	assert(ccStatus == kCCSuccess);
-	assert(outWritten == length);
+	assert(outWritten == plaintext.size());
 
 	return result;
 #endif
@@ -448,19 +446,19 @@ static secure_buffer aes_decrypt(const secure_buffer& encrypted, const secure_bu
 	secure_buffer result(encrypted.size(), '\0');
 
 	CCCryptorStatus ccStatus = CCCrypt(kCCDecrypt,
-	kCCAlgorithmAES128,
-	kCCOptionPKCS7Padding,
-	key.data(),
-	key.size(),
-	nullptr,
-	encrypted.data(),
-	encrypted.size(),
-	result.data(),
-	result.size(),
-	&outWritten);
+		kCCAlgorithmRC4,
+		kCCOptionPKCS7Padding,
+		key.data(),
+		key.size(),
+		nullptr,
+		encrypted.data(),
+		encrypted.size(),
+		result.data(),
+		result.size(),
+		&outWritten);
 
 	assert(ccStatus == kCCSuccess);
-	assert(outWritten == result.size());
+	assert(outWritten == encrypted.size());
 
 	// the decrypted result is likely shorter than the encrypted data, so the extra padding needs to be removed.
 	while(!result.empty() && result.back() == 0) {
