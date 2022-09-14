@@ -281,6 +281,20 @@
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
 
+## Version 1.16.6
+ ### Translations
+   * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Chinese (Traditional), Czech, French, Italian, Japanese, Portuguese (Brazil), Russian, Swedish, Turkish
+ ### Miscellaneous and Bug Fixes
+   * Fixed drake flare leadership animation over water (issue #3996)
+   * Fixed animations not clearing properly when zoomed (issue #6589)
+   * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
+   * Fixed highlighted movement range when hovering over units after their owner ends turn. It now shows their max movement next turn, instead of the remaining moves from their previous turn. (issue #6716)
+   * Fixed out of sync errors occurring when unused add-ons contain the [resistance_defaults] or [terrain_defaults] tags (issue #6650)
+
+## Version 1.16.5
+ ### Miscellaneous and Bug Fixes
+   * Fixed frequent crashes occurring in multiplayer matches (issue #6863).
+
 ## Version 1.16.4
  ### Campaigns
    * Eastern Invasion
