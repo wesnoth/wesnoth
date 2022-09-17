@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-20 19:47-0500\n"
-"PO-Revision-Date: 2021-12-06 08:46-0300\n"
+"PO-Revision-Date: 2022-09-01 14:58-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #
 # File: src/menu_events.cpp, line: 3119
@@ -1080,12 +1080,12 @@ msgstr "Machado"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "Machado Pequeno"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Machado de Arremesso"
 
 #
 # File: data/core/team-colors.cfg, line: 32
@@ -1180,12 +1180,12 @@ msgstr "Caixa"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "Ramo"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "Ramo Nu"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
@@ -1194,10 +1194,8 @@ msgstr "Brazeiro"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Brazeiro"
+msgstr "Brazeiro Aceso"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -1221,18 +1219,14 @@ msgstr "Cela"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
-msgstr "Baú Simples Fechado"
+msgstr "Baú Fechado"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
-msgstr "Baú Simples Aberto"
+msgstr "Baú Aberto"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
@@ -1259,7 +1253,7 @@ msgstr "Manto Verde"
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "Clava"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
@@ -1269,20 +1263,18 @@ msgstr "Caixão Fechado"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Caixão Fechado"
+msgstr "Caixão Aberto"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "Besta"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "Adaga"
 
 #
 # File: data/core/macros/items.cfg, line: 242
@@ -1290,15 +1282,13 @@ msgstr ""
 # File: data/core/macros/items.cfg, line: 242
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Veneno"
+msgstr "Adaga Envenenada"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Adaga Envenenada (limpa)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
@@ -1312,10 +1302,8 @@ msgstr "Espada Flamejante"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Espada Flamejante"
+msgstr "Espada Flamejante não encantada"
 
 #
 # File: data/lua/wml-tags.lua, line: 11449
@@ -1360,10 +1348,8 @@ msgstr "Feixe de Grãos"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Martelo Rúnico"
+msgstr "Martelo"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
@@ -1392,10 +1378,8 @@ msgstr "Chave"
 # File: data/core/team-colors.cfg, line: 26
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Vermelho Escuro"
+msgstr "Chave Vermelha"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
@@ -1405,21 +1389,17 @@ msgstr "Mochila de Couro"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "Maça"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Colar Ankh"
+msgstr "Colar de Osso"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Colar Ankh"
+msgstr "Colar Pedra"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
@@ -1542,14 +1522,12 @@ msgstr "Cetro de Fogo"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "Funda"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Lança Extravagante"
+msgstr "Lança"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1560,7 +1538,7 @@ msgstr "Lança Extravagante"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "Azagaia"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1570,10 +1548,8 @@ msgstr "Cajado"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Cajado Mágico"
+msgstr "Cajado Druídico"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1583,17 +1559,13 @@ msgstr "Cajado Mágico"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Cajado Mágico"
+msgstr "Varinha Mágica"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Cajado Mágico"
+msgstr "Cajado Simples"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1626,56 +1598,48 @@ msgstr "Espada"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Espada"
+msgstr "Espada Sagrada"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Espada"
+msgstr "Espada curta"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Espada Flamejante"
+msgstr "Espada Espectral"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Talismã Ankh"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Talismã de Osso"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Tabuinha de Pedra"
+msgstr "Talismã de Pedra"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "Bastão de Trovão"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "Tocha Acesa"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Tocha Apagada"
 
 #
 # File: src/statistics_dialog.cpp, line: 225
@@ -1890,10 +1854,8 @@ msgstr "Templo"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Tenda Arruinada"
+msgstr "Templo Arruinado"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -8160,12 +8122,10 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Ocorreu um erro ao baixar a lista de add-ons do servidor."
 
 #: src/addon/manager_ui.cpp:319
-#, fuzzy
-#| msgid "Could not find an add-on matching id $addon_id on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
-"Não foi possivel encontrar um add-on com o id $addon_id no servidor de add-"
+"Não foi possivel encontrar add-ons com os ids $addon_ids no servidor de add-"
 "ons."
 
 #: src/addon/validation.cpp:389
@@ -9009,6 +8969,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Erro: [advancefrom] não funciona mais. Unidades como ‘$lower_level’ não mais "
+"avançarão para ‘$higher_level’; por favor, peça que o autor do add-on use "
+"[modify_unit_type]."
 
 #: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -9450,10 +9413,8 @@ msgstr "Derrote o(s) lídere(s) inimigo(s)"
 # File: src/multiplayer_connect.cpp, line: 1816
 # File: src/multiplayer_connect.cpp, line: 1816
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era $era"
 msgid "Cannot find era '$era'"
-msgstr "Não foi possível encontrar $era"
+msgstr "Não foi possível encontrar '$era'"
 
 #: src/game_initialization/multiplayer.cpp:238
 msgid "Invalid address specified for multiplayer server"
@@ -11030,6 +10991,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Similar ao comando 'fps', mas também força tudo a recarregar ao invés de "
+"apenas coisas que mudaram."
 
 #
 # File: src/menu_events.cpp, line: 1977
@@ -11598,6 +11561,8 @@ msgstr "Variável não encontrada"
 #: src/menu_events.cpp:1988
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Comando de Debug 'unit: $unit' failed: nenhuma unidade selecionada ou com o "
+"cursor em cima."
 
 #
 # File: src/menu_events.cpp, line: 2978
@@ -12669,10 +12634,8 @@ msgstr "Contagem Regressiva do Turno"
 # File: src/savegame.cpp, line: 306
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
-msgstr "%a %b %d %I:%M %p %Y"
+msgstr "%a %d %b %Y, %I:%M %p"
 
 #
 # File: src/dialogs.cpp, line: 809
@@ -12683,10 +12646,8 @@ msgstr "%a %b %d %I:%M %p %Y"
 # File: src/savegame.cpp, line: 306
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
-msgstr "%a %b %d %H:%M %Y"
+msgstr "%a %d %b %Y, %H:%M"
 
 #
 # File: src/savegame.cpp, line: 1063
@@ -13649,18 +13610,6 @@ msgstr "Esconder planos para $player"
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
 
-#~ msgid "Chest"
-#~ msgstr "Baú"
-
-#~ msgid "Independent"
-#~ msgstr "Independente"
-
-#~ msgid "No Mirror"
-#~ msgstr "Sem facções iguais"
-
-#~ msgid "No Ally Mirror"
-#~ msgstr "Sem facções iguais entre aliados"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -13674,6 +13623,21 @@ msgstr "Opções do Quadro-Branco"
 # File: data/hardwired/tips.cfg, line: 13
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>― Galun, líder do Voo 5 AW</i>"
+
+#~ msgid "Independent"
+#~ msgstr "Independente"
+
+#~ msgid "No Mirror"
+#~ msgstr "Sem facções iguais"
+
+#~ msgid "No Ally Mirror"
+#~ msgstr "Sem facções iguais entre aliados"
+
+#~ msgid "Chest"
+#~ msgstr "Baú"
+
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "Usar [modify_unit_type]\n"
 
 #
 # File: src/menu_events.cpp, line: 1813
@@ -13743,9 +13707,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/menu_events.cpp, line: 1824
 #~ msgid "Room query."
 #~ msgstr "Comando de sala."
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Usar [modify_unit_type]\n"
 
 #~ msgid "Life Vortex"
 #~ msgstr "Vórtice de Vida"

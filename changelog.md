@@ -11,7 +11,7 @@
  ### Terrain
    * Expansion of cosmetic "lower terrain" to "higher terrain" and more transition graphics.
  ### Translations
-   * Updated translations: British English, Chinese (Simplified), Czech, French, Italian, Russian, Turkish
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Italian, Portuguese (Brazil), Russian, Turkish
  ### Units
  ### User interface
  ### WML Engine
