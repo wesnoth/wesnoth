@@ -709,7 +709,8 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 			const int movement_hexes_per_turn = u->total_movement() / tm.moves;
 			tooltip << " ";
 			for(int i = 0; i < movement_hexes_per_turn; ++i) {
-				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+				// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+				tooltip << "\u2b23\u200b";
 			}
 		}
 		tooltip << naps << '\n';
