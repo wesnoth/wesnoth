@@ -196,7 +196,8 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 			const int movement_hexes_per_turn = total_movement / tm.moves;
 			tooltip << " ";
 			for(int i = 0; i < movement_hexes_per_turn; ++i) {
-				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+				// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+				tooltip << "\u2b23\u200b";
 			}
 		}
 
