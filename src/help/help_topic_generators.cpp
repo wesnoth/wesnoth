@@ -814,8 +814,8 @@ std::string unit_topic_generator::operator()() const {
 			const bool cannot_move = m.movement_cost > type_.movement();        // cannot move in this terrain
 			double movement_red_to_green = 100.0 - 25.0 * m.movement_cost;
 
-			// passing false to select the more saturated red-to-green scale
-			std::string movement_color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
+			// passing true to select the less saturated red-to-green scale
+			std::string movement_color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
 			str << "<format>color='" << movement_color << "' text='";
 			// A 5 MP margin; if the movement costs go above
 			// the unit's max moves + 5, we replace it with dashes.
@@ -858,8 +858,8 @@ std::string unit_topic_generator::operator()() const {
 				const bool cannot_view = m.vision_cost > type_.vision();        // cannot view in this terrain
 				double vision_red_to_green = 100.0 - 25.0 * m.vision_cost;
 
-				// passing false to select the more saturated red-to-green scale
-				std::string vision_color = game_config::red_to_green(vision_red_to_green, false).to_hex_string();
+				// passing true to select the less saturated red-to-green scale
+				std::string vision_color = game_config::red_to_green(vision_red_to_green, true).to_hex_string();
 				str << "<format>color='" << vision_color << "' text='";
 				// A 5 MP margin; if the vision costs go above
 				// the unit's vision + 5, we replace it with dashes.
@@ -889,8 +889,8 @@ std::string unit_topic_generator::operator()() const {
 				const bool cannot_jam = m.jamming_cost > type_.jamming();       // cannot jam in this terrain
 				double jamming_red_to_green = 100.0 - 25.0 * m.jamming_cost;
 
-				// passing false to select the more saturated red-to-green scale
-				std::string jamming_color = game_config::red_to_green(jamming_red_to_green, false).to_hex_string();
+				// passing true to select the less saturated red-to-green scale
+				std::string jamming_color = game_config::red_to_green(jamming_red_to_green, true).to_hex_string();
 				str << "<format>color='" << jamming_color << "' text='";
 				// A 5 MP margin; if the jamming costs go above
 				// the unit's jamming + 5, we replace it with dashes.

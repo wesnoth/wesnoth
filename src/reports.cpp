@@ -693,8 +693,8 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 		const bool cannot_move = tm.moves > u->total_movement();		// cannot move in this terrain
 		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
-		// passing false to select the more saturated red-to-green scale
-		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
+		// passing true to select the less saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
 		tooltip << "<span foreground=\"" << color << "\">";
 		// A 5 MP margin; if the movement costs go above
 		// the unit's max moves + 5, we replace it with dashes.
