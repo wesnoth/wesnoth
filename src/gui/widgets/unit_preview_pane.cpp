@@ -179,8 +179,8 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
 		const bool cannot_move = tm.moves > total_movement;     // cannot move in this terrain
 		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
-		// passing false to select the more saturated red-to-green scale
-		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
+		// passing true to select the less saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
 
 		tooltip << "<span color='" << color << "'>";
 
