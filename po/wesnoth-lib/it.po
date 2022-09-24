@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2022-09-04 09:58+0200\n"
+"PO-Revision-Date: 2022-09-22 19:10+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -885,7 +885,7 @@ msgstr "Binari da miniera"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1204
 msgid "Bluff"
-msgstr ""
+msgstr "Scosceso"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1214
@@ -1811,22 +1811,22 @@ msgstr "Ponte di legno"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3056
 msgid "Marker High"
-msgstr ""
+msgstr "Marcatore Alto"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3065
 msgid "Marker High 2"
-msgstr ""
+msgstr "Marcatore Alto 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3074
 msgid "Marker Low"
-msgstr ""
+msgstr "Marcatore Basso"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3083
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Marcatore Basso 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3094
@@ -2546,7 +2546,7 @@ msgstr "Concordo"
 
 #: data/gui/window/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr "Il traffico fra la partita e il server non è sicoro"
+msgstr "Il traffico fra la partita e il server non è sicuro"
 
 #: data/gui/window/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
@@ -4779,29 +4779,27 @@ msgstr "Partita locale"
 #. [label]
 #: data/gui/window/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* Giocatore segnalato:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Motivo della segnalazione:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Luogo dell’evento:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Informazioni sulla mappa"
+msgstr "Ulteriori informazioni:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* required fields"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -7026,16 +7024,12 @@ msgid "this game"
 msgstr "questa partita"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:48
-#, fuzzy
-#| msgid "lobby"
 msgid "Lobby"
-msgstr "lobby"
+msgstr "Lobby"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
-msgstr "Partite"
+msgstr "Partita"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:505
 msgid "Waiting for players to choose factions..."
@@ -7173,7 +7167,7 @@ msgstr "Schermata"
 
 #: src/gui/dialogs/title_screen.cpp:433 src/hotkey/hotkey_command.cpp:297
 msgid "Choose Test Scenario"
-msgstr "Scegli lo scenario di pprova"
+msgstr "Scegli lo scenario di prova"
 
 #: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
