@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Under_the_Burning_Suns-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-05 14:17 UTC\n"
-"PO-Revision-Date: 2022-08-27 15:47+0800\n"
+"PO-Revision-Date: 2022-09-22 15:18+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -503,6 +503,7 @@ msgstr ""
 msgid "Ha! They’re destroyed at last."
 msgstr "Ha ! Elles sont enfin détruites !"
 
+# "Réduire en poussière" fait ici le lien avec les "earthen abominations" (de pierre)
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:631
 #, fuzzy
@@ -517,8 +518,7 @@ msgid ""
 msgstr ""
 "Merci pour le coup de main. Je suis content de voir que tant de monde a "
 "survécu à la nuit. Mais ce n'est pas le moment de discuter, nous devons "
-"sauver les autres et renvoyer ces abominations pierreuses du sol d'où elles "
-"viennent."
+"sauver les autres et réduire en poussière ces abominations."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:654
@@ -1398,9 +1398,7 @@ msgstr "Anneau du voyageur"
 #| "One unit wearing this ring is immune to any damage caused during the day "
 #| "by the heat of the desert."
 msgid "The unit wearing this ring will not become dehydrated by the desert."
-msgstr ""
-"L'unité portant cet anneau est immunisée contre les dégâts causés par la "
-"chaleur du désert pendant la journée."
+msgstr "L'unité portant cet anneau ne sera pas déshydratée dans le désert."
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:548
@@ -2240,7 +2238,7 @@ msgid ""
 "stay dead?"
 msgstr ""
 "Comme si je n'avais pas tué assez de morts-vivants récemment. Pourquoi ces "
-"types ne peuvent-ils pas juste se contenter d'être morts ?"
+"monstres ne peuvent-ils pas juste se contenter d'être morts ?"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:420
@@ -2338,8 +2336,8 @@ msgid ""
 "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
 "will end here one way or another."
 msgstr ""
-"Kaleh, j'ai fait des rêves cette nuit, lugubres et emplis de ténèbres. Mon "
-"voyage va s'arrêter ici, d'une façon ou d'une autre."
+"Kaleh, j'ai rêvé de cette nuit, lugubre et emplie de ténèbres. Mon voyage va "
+"s'arrêter ici, d'une façon ou d'une autre."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:664
@@ -5759,14 +5757,14 @@ msgstr ""
 #, fuzzy
 #| msgid "No, it’s an elf!"
 msgid "No, it’s a... human?"
-msgstr "Non, c'est un elfe !"
+msgstr "Non, c'est un ... humain !"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:749
 #, fuzzy
 #| msgid "What...?! Right... First task, boys, kill the intruder!"
 msgid "What is a human doing here? Come on, boys, kill the intruder!"
-msgstr "Quoi... ?! Bien... Pour commencer, les gars, tuez l'intrus !"
+msgstr "Qu'est-ce qu'un humain fait ici ? Allez, les gars, tuez l'intrus !"
 
 #. [message]
 #. "it" is referring to the dust devil
@@ -5774,7 +5772,7 @@ msgstr "Quoi... ?! Bien... Pour commencer, les gars, tuez l'intrus !"
 #, fuzzy
 #| msgid "No, I haven’t. What is it?"
 msgid "No, it’s a... what is that?"
-msgstr "Non. De quoi s'agit-il ?"
+msgstr "Non, c'est ... quoi, çà ?"
 
 #. [message]: speaker=Dwarf Sergeant
 #. 'earth’s guts' references the underground. What is being talked about is the dust devil.
@@ -5782,14 +5780,14 @@ msgstr "Non. De quoi s'agit-il ?"
 #, fuzzy
 #| msgid "What in Uria’s name is that?"
 msgid "What in the earth’s guts is that? Kill it!"
-msgstr "Au nom d'Uria, qu'est-ce que c'est que ça ?"
+msgstr "Des entrailles de la terre, qu'est-ce que c'est que ça ? Tuez-le !"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:774
 #, fuzzy
 #| msgid "But sir, behind you...!"
 msgid "No, look behind you!"
-msgstr "Mais chef, derrière vous... !"
+msgstr "Non, regardez derrière vous !"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:806
@@ -6488,13 +6486,13 @@ msgid ""
 "build such an artifact!"
 msgstr ""
 "J'ai beaucoup appris sur les nains durant mon séjour ici et, cependant, il "
-"reste encore tant à apprendre. Avez-vous vu leurs forges ? Ils savent "
-"vraiment travailler le feu et l'utiliser de façon extraordinaire. Ils ont "
-"des idées intéressantes pour améliorer leur art de la forge avec mon feu "
-"magique. Avez-vous vu leurs archives ? Ils ont conservé des traces de leurs "
-"actes génération après génération. Ils connaissent même le clan nain qui a "
-"permis de forger le sceptre de feu. Imaginez-vous si je pouvais trouver ceux "
-"qui ont pu construire un tel objet !"
+"me reste tant à apprendre. Avez-vous vu leurs forges ? Ils savent vraiment "
+"travailler le feu et l'utiliser de façon extraordinaire. Ils ont des idées "
+"intéressantes pour améliorer leur art de la forge avec mon feu magique. Avez-"
+"vous vu leurs archives ? Ils ont conservé des traces de leurs actes "
+"génération après génération. Ils connaissent même le clan nain qui a permis "
+"de forger le sceptre de feu. Imaginez-vous si je pouvais trouver ceux qui "
+"ont pu construire un tel objet !"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:482
@@ -7114,8 +7112,8 @@ msgid ""
 "river and you all drown with us!"
 msgstr ""
 "Elfes putrides, vous ne vous êtes pas encore échappés. Le Grand Chef sera "
-"vengé ! Nous avons détourné la rivière et vous serez tous bientôt noyés dans "
-"ses eaux noires. Venez nous rejoindre dans la mort !"
+"vengé ! Nous avons bouché la rivière et vous allez tous vous noyer avec "
+"nous !"
 
 #. [unit]: type=Dwarvish Fighter
 #. [unit]: type=Dwarvish Thunderguard
@@ -8161,8 +8159,8 @@ msgid ""
 "I think I hear the sound of rushing water down the western passage; it might "
 "already be flooding! It must connect back somehow to the other tunnels."
 msgstr ""
-"Regardez, le passage ouest est déjà inondé ! Il doit être relié d'une façon "
-"quelconque aux autres galeries."
+"J'entends le fracas de l'eau dans le passage ouest. Il est peut-être déjà "
+"inondé ! Il doit être relié d'une façon quelconque aux autres galeries."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2347
@@ -9040,8 +9038,8 @@ msgid ""
 "me, I alone can save you."
 msgstr ""
 "Tu es faible et insensé, mais je te pardonne. Tu dois te rappeler, Kaleh, "
-"que sans ma protection, ton peuple serait mort depuis des années déjà. Je "
-"suis ta déesse et tu dois obéir à chacun de mes ordres."
+"que sans ma protection, ton peuple serait mort depuis des années déjà. Crois-"
+"moi, je suis la seule à pouvoir te sauver."
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3461
@@ -9254,9 +9252,10 @@ msgid ""
 "desert sun."
 msgstr ""
 "Kaleh, je suis Eloh, porteuse du bâton d'Ishtar et bannisseuse du dieu-démon "
-"Zhangor. Fais ce que je te dis ! Rends-toi ou j'abandonne ton peuple à la "
-"souffrance et à la mort. Vos os iront joncher le sable des dunes et les "
-"vautours mangeront votre chair. Je ne suis pas une déesse clémente, Kaleh."
+"Zhangor. Rends-toi ou j'abandonne ton peuple à la souffrance et à la mort. "
+"Vos os iront joncher le sable des dunes et les vautours mangeront votre "
+"chair. Je suis une déesse juste Kaleh, mais pas plus clémente que le soleil "
+"implacable du désert."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3592
@@ -9294,10 +9293,9 @@ msgid ""
 "as you like, but know that while you may be the appointed leader of your "
 "people, I am your god, and you defy me at your peril!"
 msgstr ""
-"Tu me déçois, Kaleh. Tu es faible et n'es pas digne de mon patronage. Fais "
-"ce que tu veux, mais ce n'est pas terminé. Tu t'es peut-être désigné chef de "
-"ton peuple, mais je suis votre déesse et je ne te permettrai d'usurper mon "
-"autorité."
+"Tu me déçois, Kaleh. Tu es faible et n'es pas digne de mon patronage... Fais "
+"comme tu veux, mais sache que bien tu sois peut-être désigné comme chef de "
+"ton peuple, je suis votre déesse et tu cours un grand péril à me défier !"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3643
@@ -9923,8 +9921,8 @@ msgid ""
 msgstr ""
 "Ce n'est pas important. Ce qui est important est que je suis l'émissaire "
 "d'une personne qui désire fortement vous parler, Kaleh. Malgré le danger, "
-"notre maîtresse nous a envoyés moi et mes frères parcourir les terres sèches "
-"pour vous rechercher."
+"notre guide éclairée nous a envoyés moi et mes frères parcourir les terres "
+"arides pour vous rechercher."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4669
@@ -9958,8 +9956,8 @@ msgid ""
 "with you about concerns the fate of your people. Apparently it concerns "
 "‘Yechnagoth’ and ‘Zhangor’. She said that you would understand, Kaleh."
 msgstr ""
-"Ma maîtresse a pensé à vos soupçons. Elle a dit que je devrais vous parler "
-"du destin de votre peuple. Apparemment, cela concerne « Yechnagoth » et « "
+"Notre guide a pensé à vos soupçons. Elle a dit que je devrais vous parler du "
+"destin de votre peuple. Apparemment, cela concerne « Yechnagoth » et « "
 "Zhangor ». Elle a dit que vous comprendriez, Kaleh."
 
 #. [message]: speaker=Kaleh
@@ -9981,9 +9979,10 @@ msgid ""
 "find you and to bring you and your people to meet with our wise leader. The "
 "problem is that I don’t know where she is hiding."
 msgstr ""
-"Merci. J'ai maintenant une faveur à vous demander. Nos instructions étaient "
-"de vous trouver vous et votre peuple et de vous permettre de rencontrer "
-"notre maîtresse. Le problème est que nous ne savons pas où elle se cache."
+"Merci, Kaleh. J'ai maintenant une faveur à vous demander. Nos instructions "
+"étaient de vous trouver vous et votre peuple et de vous permettre de "
+"rencontrer notre guide éclairée. Le problème est que nous ne savons pas où "
+"elle se cache."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4699
@@ -10019,14 +10018,14 @@ msgid ""
 msgstr ""
 "C'est compliqué et je ne sais pas vraiment ce que j'ai le droit de vous "
 "dire. Mon peuple mène un combat désespéré contre... contre un ennemi très "
-"puissant. Il a essayé d'assassiner ma maîtresse plusieurs fois. Sa présence "
-"menace toute notre espèce. Elle s'est donc cachée tout de suite après nous "
-"avoir envoyés en mission. Je suis le plus jeune membre de notre groupe et on "
-"ne m'a donc pas indiqué cette cachette. Vous devez comprendre qu'il y a des "
-"espions partout. Seuls nos chefs de groupe savaient, mais ils ont été "
-"capturés par ces maudits humains. Ils sont retenus dans un camp au nord. "
-"Nous devons les délivrer d'abord pour avoir une chance de retrouver ma "
-"maîtresse. Je l'aurais fait moi-même, mais..."
+"puissant. Il a essayé d'assassiner notre guide éclairée plusieurs fois. Sa "
+"présence menace toute notre espèce. Elle s'est donc cachée tout de suite "
+"après nous avoir envoyés en mission. Je suis le plus jeune membre de notre "
+"groupe et on ne m'a donc pas indiqué cette cachette. Vous devez comprendre "
+"qu'il y a des espions partout. Seuls nos chefs de groupe savaient, mais ils "
+"ont été capturés par ces maudits humains. Ils sont retenus dans un camp au "
+"nord. Nous devons les délivrer d'abord pour avoir une chance de retrouver "
+"notre guide éclairée. Je l'aurais fait moi-même, mais..."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4709
@@ -10070,8 +10069,8 @@ msgid ""
 "Things are coming to a head, Tanstafaal and our new friends are in trouble. "
 "Time is of the essence, so let’s move out as soon as possible."
 msgstr ""
-"Les choses arrivent à terme. Je m'inquiète pour Tanstafaal et vos amis "
-"ondins. Allons-y aussi vite que possible, le temps est précieux."
+"Les choses arrivent à terme. Tanstafaal et nos nouveaux amis sont en danger. "
+"Allons-y aussi vite que possible, le temps est précieux."
 
 #. [scenario]: id=09_Blood_is_Thicker_Than_Water
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:10
@@ -10217,12 +10216,12 @@ msgid ""
 "cast. So in order to find her, we must rescue at least two of my people. "
 "Though I hope we can save all of them."
 msgstr ""
-"Ma maîtresse voulait s'assurer que si l'un de nous était capturé, nous ne "
-"pourrions pas dévoiler sa position. Elle ne nous a donc pas dit où elle "
-"était, mais nous a enseigné un sort facile pour deviner sa cachette. Mais il "
-"faut trois ondins pour le jeter. Nous devons donc libérer au moins deux des "
-"nôtres pour pouvoir la retrouver. J'espère que nous arriverons à tous les "
-"secourir."
+"Notre guide éclairée voulait s'assurer que si l'un de nous était capturé, "
+"nous ne pourrions pas dévoiler sa position. Elle ne nous a donc pas dit où "
+"elle était, mais nous a enseigné un sort facile pour deviner sa cachette. "
+"Mais il faut trois ondins pour le jeter. Nous devons donc libérer au moins "
+"deux des nôtres pour pouvoir la retrouver. J'espère que nous arriverons à "
+"tous les secourir."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:438
@@ -10251,13 +10250,13 @@ msgid ""
 "able to find our leader."
 msgstr ""
 "Nous étions beaucoup plus nombreux au départ, mais, sur la route, nous avons "
-"été pris dans l'embuscade d'une bande de nagas. La moitié d'entre nous "
-"tenait en respect les nagas pendant que les autres s'enfuyaient. Nous "
-"n'étions plus que six quand nous sommes arrivés sur le rivage. Par la grâce "
-"du dieu de la mer, j'ai réussi à me cacher quand le reste de mon groupe a "
-"été pris dans une embuscade et capturé. Je ne pense pas qu'ils aient "
-"succombé, mais je ne sais pas combien de temps ils pourront tenir. Souvenez-"
-"vous, sans trois des nôtres, vous ne pourrez pas retrouver notre maîtresse."
+"été pris en embuscade par une bande de nagas. La moitié d'entre nous tenait "
+"en respect les nagas pendant que les autres s'enfuyaient. Nous n'étions plus "
+"que six quand nous sommes arrivés sur le rivage. Par la grâce du dieu de la "
+"mer, j'ai réussi à me cacher quand le reste de mon groupe a été pris dans "
+"une embuscade et capturé. Je ne pense pas qu'ils aient succombé, mais je ne "
+"sais pas combien de temps ils pourront tenir. Souvenez-vous, sans trois des "
+"nôtres, vous ne pourrez pas retrouver notre guide."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:446
@@ -10605,7 +10604,7 @@ msgid ""
 "to find you elves. Our leader was right after all. But more of that later..."
 msgstr ""
 "Merci de m'avoir secouru. Je n'aurais jamais pensé que nous arriverions à "
-"vous trouver, les elfes. Notre maîtresse avait raison après tout. Vous aurez "
+"vous trouver, les elfes. Notre guide avait raison après tout. Vous aurez "
 "plus de précisions plus tard..."
 
 #. [unit]: type=Mermaid Priestess, id=Il-tian
@@ -10688,8 +10687,8 @@ msgid ""
 msgstr ""
 "Ne t'en fais pas, tout va être remis en état maintenant que je suis libre. "
 "Notre mission n'est pas de vaincre tous les démons de ce monde. Il est plus "
-"important de protéger les elfes. Nous devons les conduire à notre "
-"maîtresse ; le reste ne compte pas."
+"important de protéger les elfes. Nous devons les conduire à notre guide ; le "
+"reste ne compte pas."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1062
@@ -10905,7 +10904,8 @@ msgstr ""
 #| msgid "They are all dead. We were too late. Forgive me, master!"
 msgid "They are all dead. We were too late. Forgive me, wise leader!"
 msgstr ""
-"Ils sont tous morts. Nous sommes arrivés trop tard. Pardonne-moi, maîtresse !"
+"Ils sont tous morts. Nous sommes arrivés trop tard. Pardonne-moi, guide "
+"éclairée !"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1467
@@ -12093,7 +12093,7 @@ msgstr ""
 "Non, inutile de vous présenter. Je sais déjà qui vous êtes et pourquoi vous "
 "êtes venus d'aussi loin. Et je dois dire, Grog, que vos récentes actions et "
 "bien entendu votre présence en cette remarquable compagnie font honneur à "
-"votre race."
+"votre peuple."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:183
@@ -12117,7 +12117,7 @@ msgstr ""
 "Non, inutile de vous présenter. Je sais déjà qui vous êtes et pourquoi vous "
 "êtes venus d'aussi loin. Et je dois dire, Nog, que vos récentes actions et "
 "bien entendu votre présence en cette remarquable compagnie font honneur à "
-"votre race."
+"votre peuple."
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:194
@@ -12141,7 +12141,7 @@ msgstr ""
 "Non, inutile de vous présenter. Je sais déjà qui vous êtes et pourquoi vous "
 "êtes venus d'aussi loin. Et je dois dire, Rogrimir, que vos récentes actions "
 "et bien entendu votre présence en cette remarquable compagnie font honneur à "
-"votre race."
+"votre peuple."
 
 #. [message]: speaker=Rogrimir
 #. [message]: speaker=Jarl
@@ -12167,7 +12167,7 @@ msgstr ""
 "Non, inutile de vous présenter. Je sais déjà qui vous êtes et pourquoi vous "
 "êtes venus d'aussi loin. Et je dois dire, Jarl, que vos récentes actions et "
 "bien entendu votre présence en cette remarquable compagnie font honneur à "
-"votre race."
+"votre peuple."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:224
@@ -12222,9 +12222,9 @@ msgid ""
 "Make yourselves comfortable, this may take a while. I want to tell you a "
 "tale, it is a story of the fall of what you refer to as ‘The Golden Age’."
 msgstr ""
-"Peut-être devrais-je commencer par le commencement. Installez-vous "
-"confortablement, cela peut prendre un certain temps. Je veux vous raconter "
-"l'histoire du déclin de ce que vous appelez \"Âge d'or\"."
+"Peut-être devrais-je commencer par le commencement car c'est un bon début. "
+"Installez-vous confortablement, cela peut prendre un certain temps. Je veux "
+"vous raconter l'histoire du déclin de ce que vous appelez \"l'Âge d'or\"."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:258
@@ -16168,9 +16168,7 @@ msgstr ""
 "elfes avec la nature leur a permis de former une association surprenante. "
 "Non seulement les taurochs peuvent facilement tirer ou porter de lourdes "
 "charges, mais leur cuir épais et leur détermination inflexible en font des "
-"montures exceptionnelles au combat. Un tauroch guidé par un monteur habile "
-"peut tenir en respect de nombreux adversaires le temps qu'il faut aux "
-"renforts pour arriver."
+"montures exceptionnelles au combat."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:22
@@ -16298,9 +16296,9 @@ msgstr ""
 "elfes avec la nature leur a permis de former une association surprenante. "
 "Non seulement les taurochs peuvent facilement tirer ou porter de lourdes "
 "charges, mais leur cuir épais et leur détermination inflexible en font des "
-"montures exceptionnelles au combat. Un tauroch guidé par un monteur habile "
-"peut tenir en respect de nombreux adversaires le temps qu'il faut aux "
-"renforts pour arriver."
+"montures exceptionnelles au combat. Un tauroch monté par un bon meneur peut "
+"contenir plusieurs ennemis à lui seul et est un gardien puissant capable de "
+"protéger villages et caravanes elfes."
 
 #. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:5
@@ -16841,7 +16839,7 @@ msgid ""
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 "Cette unité est capable de faire diversion, ce qui permet aux unités alliées "
-"d'ignorer les Zones de Contrôle des ennemis et donc de se déplacer librement "
+"d'ignorer les zones de contrôle des ennemis et donc de se déplacer librement "
 "autour d'eux."
 
 #. [dummy]: id=support
@@ -17023,9 +17021,9 @@ msgid ""
 "profit from the hard lessons we learned."
 msgstr ""
 "Voici les chroniques du voyage des elfes de Quenoth partis de leur patrie "
-"située dans le Grand Désert du Sud. J'ai écrit cette histoire pour que nos "
-"descendants connaissent nos voyages et se rappellent des sacrifices que nous "
-"avons faits et bénéficient de l'expérience que nous avons durement acquises."
+"située dans le grand désert du Sud. J'ai écrit cette histoire pour que nos "
+"descendants connaissent nos voyages et se rappellent nos sacrifices et "
+"qu'ils bénéficient de l'expérience que nous avons durement acquise."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:12
@@ -17299,16 +17297,16 @@ msgid ""
 "lengthened and dark hours were few. Happy indeed were our people during "
 "these long years, but it was not to last forever."
 msgstr ""
-"Il y a très, très longtemps, c'était l'âge d'or pour les elfes. Notre peuple "
+"Il y a très, très longtemps, régnait l'âge d'or pour les elfes. Notre peuple "
 "vivait en harmonie avec la nature sur des terres couvertes d'arbres, des "
-"arbres aussi loin que l'œil pouvait voir. La paix régnait entre les elfes et "
-"les autres races telles que les humains et les nains, et les créatures "
-"maléfiques restaient cantonnées profondément sous la terre. Le nom infâme "
-"d'Uria n'était pas encore connu par la population, et nos pouvoirs étaient "
-"si formidables que nous élevâmes un autre soleil dans le ciel, de sorte que "
-"les jours étaient plus longs et les heures sombres moins nombreuses. Heureux "
-"bien sûr était notre peuple durant ces longues années, mais cela ne devait "
-"pas durer éternellement."
+"arbres aussi loin que le regard pouvait porter. La paix régnait entre les "
+"elfes et les autres races telles que les humains et les nains, et les "
+"créatures maléfiques restaient cantonnées profondément sous la terre. Le nom "
+"infâme d'Uria n'était pas encore connu par la population, et nos pouvoirs "
+"étaient si formidables que nous élevâmes un autre soleil dans le ciel, de "
+"sorte que les jours étaient plus longs et les heures de ténèbres moins "
+"nombreuses. Heureux bien sûr était notre peuple durant ces longues années, "
+"mais cela ne devait pas durer éternellement."
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:67
@@ -17555,7 +17553,7 @@ msgid ""
 msgstr ""
 "Chapitre 7 : nous revînmes rapidement trouver le reste de notre peuple caché "
 "en sécurité à quelques lieues en retrait des combats. Voyant Grimnir avec "
-"nous, une troupe de nains surgit sans bruit des passages secrets voisins. "
+"nous, une troupe de nains surgit sans bruit de passages secrets voisins. "
 "Après que nous eûmes assuré aux elfes qu'ils étaient des amis, Grimnir nous "
 "conduisit silencieusement et rapidement à travers un dédale de tunnels "
 "secrets vers la patrie des nains."
