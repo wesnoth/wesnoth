@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2022-01-27 13:14-0300\n"
+"PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -1369,8 +1369,8 @@ msgid ""
 "fungus are wanted, 'Tb' is a mushroom base terrain, which can be used with "
 "or without '^Tf' on top."
 msgstr ""
-"editor^As sobreposições '^Uf' e '^Ufi' estão descontinuadas porque, apesar "
-"de graficamente mostrar uma sobreposição com um terreno por baixo, as "
+"As sobreposições '^Uf' e '^Ufi' estão descontinuadas porque, apesar de "
+"graficamente mostrar uma sobreposição com um terreno por baixo, as "
 "estatísticas de defesa e movimento são puramente do terreno de fungos, "
 "ignorando o terreo que está por baixo. Recomenda-se substituí-las por '^Tf' "
 "e '^Tfi', que são visualmente idênticas e usam as estatísticas dos gráficos. "
@@ -3429,19 +3429,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3102
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -3459,13 +3446,15 @@ msgstr ""
 "<italic>text='Montanhas'</italic> são íngremes e muitas vezes a única forma "
 "de atravessar seus obstáculos é a escalada.\n"
 "Sendo assim, montanhas provêm um bônus de defesa considerável para a maioria "
-"das unidades, mas elas também são muito dificeis de atravessar. A maioria "
-"dos tipos de cavalaria nem ao menos consegue entrar nelas. Entretanto, "
-"cavalaria élfica é uma excessão a regra, como também são os góblins "
-"montadores de lobos. Tanto os anões quanto os trolls fazem suas residências "
+"das unidades, mas elas também são muito dificeis de atravessar. Unidades que "
+"usam armaduras pesadas, tal qual a cavalaria e infantaria pesada de Wesnoth, "
+"nem sequer são capazes de entrar nelas. Raças aquáticas e criaturas como os "
+"tritões possuem corpos písceos que também lhes tornam incapazes de escalar "
+"essas encostas. Nagas são uma excessão devido aos seus braços fortes e "
+"escamas resilientes. Tanto os anões quanto os trolls fazem suas residências "
 "em terrenos montanhosos e por isso mesmo se movem facilmente neste terreno.\n"
 "\n"
-"A maioria das unidades possuem 60% de defesa em montanhas enquanto que Anões "
+"A maioria das unidades possuem 60% de defesa em montanhas enquanto que anões "
 "usufruem de 70%."
 
 #. [terrain_type]: id=deep_water
@@ -6881,6 +6870,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Escolhe uma versão de Wesnoth para importar os seus dados.\n"
+"Algumas opções não terão efeito até o Wesnoth ser reiniciado."
 
 #. [button]: id=cancel
 #: data/gui/window/migrate_version_selection.cfg:127
@@ -7515,10 +7506,8 @@ msgstr "Recrutados"
 # File: src/preferences_display.cpp, line: 357
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:297
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Escolha sua facção"
+msgstr "Escolha o Seu Líder"
 
 #
 # File: data/gui/default/window/mp_host_game_prompt.cfg, line: 40
@@ -8093,10 +8082,8 @@ msgstr "Disponível no editor"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
 #: src/gui/dialogs/preferences_dialog.cpp:778
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/window/preferences/02_hotkeys.cfg:145
@@ -8783,8 +8770,7 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
-"stats dialog^Diferença entre o resultado real e o resultado esperado, em "
-"porcentagem.\n"
+"Diferença entre o resultado real e o resultado esperado, em porcentagem.\n"
 "O primeiro número em parênteses é a quantidade de dano aos pontos de vida "
 "que se espera inflingir/receber.\n"
 "A soma (ou o resultado) dos dois números em parênteses é a quantidade de "
@@ -8814,8 +8800,8 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
-"stats dialog^A probabilidade <i>a priori</i> de no máximo inflingir/receber "
-"essa quantidade de acertos, em porcentagem.\n"
+"A probabilidade <i>a priori</i> de no máximo inflingir/receber essa "
+"quantidade de acertos, em porcentagem.\n"
 "\n"
 "Intuitivamente, essa é uma forma de medir como a sorte afetou um lado.\n"
 "Valores entre 0 e 50 sugerem que o número de acertos foi menor do que o "
@@ -9444,60 +9430,46 @@ msgstr "expirou"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num ano"
-msgstr[1] "$num ano"
+msgstr[1] "$num anos"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num mês"
-msgstr[1] "$num mês"
+msgstr[1] "$num meses"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num semana"
-msgstr[1] "$num semana"
+msgstr[1] "$num semanas"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num dia"
-msgstr[1] "$num dia"
+msgstr[1] "$num dias"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num hora"
-msgstr[1] "$num hora"
+msgstr[1] "$num horas"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num minuto"
-msgstr[1] "$num minuto"
+msgstr[1] "$num minutos"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num segundo"
-msgstr[1] "$num segundo"
+msgstr[1] "$num segundos"
 
 #
 # File: src/gui/auxiliary/canvas.cpp, line: 1085
@@ -9817,8 +9789,7 @@ msgstr "RNG"
 msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
-msgstr ""
-"addon_tag^Modifica a aleatoriedade em combate ou remove-a por completo "
+msgstr "Modifica a aleatoriedade em combate ou remove-a por completo"
 
 #: src/gui/dialogs/addon/manager.cpp:237
 msgid "addon_tag^Survival"
@@ -10059,12 +10030,12 @@ msgstr "Você desinstalar '$addon|'?"
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 12-hour time, eg '2021-11-02 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:966
 msgid "%Y-%m-%d %I:%M %p"
-msgstr ""
+msgstr "%d-%m-%Y %H:%M %p"
 
 #. TRANSLATORS: Four-digit year + numeric month + day of month + 24-hour time, eg '2021-11-02 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:968
 msgid "%Y-%m-%d %H:%M"
-msgstr ""
+msgstr "%d-%m-%Y %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1033
 msgid "url^None"
@@ -10813,6 +10784,7 @@ msgstr "saguão"
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Este jogo não permite observadores. Observar usando privilégios de moderador?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:998
 msgid ""
@@ -10825,6 +10797,8 @@ msgstr ""
 #: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
+"Este jogo está protegido por uma senha. Entrar usando privilégios de "
+"moderador?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
 msgid ""
@@ -11124,8 +11098,7 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
-"stats dialog^Diferença entre o resultado real e o resultado esperado, em "
-"porcentagem.\n"
+"Diferença entre o resultado real e o resultado esperado, em porcentagem.\n"
 "O primeiro número em parênteses é a quantidade de ataques acertados que se "
 "espera inflingir/receber.\n"
 "A soma (ou o resultado) dos dois números em parênteses é a quantidade de "
