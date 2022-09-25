@@ -62,15 +62,15 @@ constexpr uint8_t color_blend(uint8_t n1, uint8_t n2, uint8_t p);
 struct color_t : SDL_Color
 {
 	/** color_t initializes to fully opaque white by default. */
-	color_t() : SDL_Color{255, 255, 255, ALPHA_OPAQUE} {}
+	constexpr color_t() : SDL_Color{255, 255, 255, ALPHA_OPAQUE} {}
 
 	/** Basic RGB or RGBA constructor. */
-	color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = ALPHA_OPAQUE)
+	constexpr color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = ALPHA_OPAQUE)
 		: SDL_Color{r_val, g_val, b_val, a_val}
 	{}
 
 	/** This is a thin wrapper. There is nothing extra to do here. */
-	color_t(const SDL_Color& c) : SDL_Color{c} {}
+	constexpr color_t(const SDL_Color& c) : SDL_Color{c} {}
 
 	/**
 	 * Creates a new color_t object from a string variable in "R,G,B,A" format.
