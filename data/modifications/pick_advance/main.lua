@@ -78,8 +78,6 @@ end
 --         the unit's currently overridden advancement or nil if not set, but set by some other mechanism from the current game
 local function get_advance_info(unit)
 	local type_advances, orig_options_sanitized = original_advances(unit)
-	local game_override_key = "pickadvance_side" .. unit.side .. "_" .. orig_options_sanitized
-	local game_override = wml.variables[game_override_key]
 	local function correct(override)
 		return override and #override > 0 and #override < #type_advances and override or nil
 	end
@@ -87,7 +85,6 @@ local function get_advance_info(unit)
 	return {
 		type_advances = type_advances,
 		unit_override = correct(unit.advances_to),
-		game_override = correct(split_comma_units(game_override)),
 	}
 end
 
@@ -114,7 +111,7 @@ local function initialize_unit(unit)
 		}
 		unit.variables["pickadvance_orig_" .. clean_type] = table.concat(unit.advances_to, ",")
 		local advance_info = get_advance_info(unit)
-		local desired = advance_info.game_override or unit.advances_to
+		local desired = unit.advances_to
 		desired = filter_overrides(unit, desired)
 		set_advances(unit, desired)
 	end
@@ -133,16 +130,8 @@ function pickadvance.pick_advance(unit)
 		return
 	end
 	dialog_result.unit_override = split_comma_units(dialog_result.unit_override)
-	dialog_result.game_override = split_comma_units(dialog_result.game_override)
 	dialog_result.unit_override = filter_overrides(unit, dialog_result.unit_override)
-	dialog_result.game_override = filter_overrides(unit, dialog_result.game_override)
-	if dialog_result.is_unit_override then
-		set_advances(unit, dialog_result.unit_override)
-	end
-	if dialog_result.is_game_override then
-		local key = "pickadvance_side" .. unit.side .. "_" .. orig_options_sanitized
-		wml.variables[key] = table.concat(dialog_result.game_override, ",")
-	end
+	set_advances(unit, dialog_result.unit_override)
 end
 
 -- make unit advancement tree viewable in the ingame help
