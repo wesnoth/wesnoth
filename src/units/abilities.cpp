@@ -1784,7 +1784,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab, const_atta
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!cfg["backstab"].blank()) {
-			deprecated_message("backstab= in weapon specials", DEP_LEVEL::FOR_REMOVAL, {1, 19, 0}, "Use [filter_opponent] with formula instead; the code can be found in data/core/macros/abilities.cfg in WEAPON_SPECIAL_BACKSTAB macro.");
+			deprecated_message("backstab= in weapon specials", DEP_LEVEL::FOR_REMOVAL, {1, 19, 0}, "Use [filter_opponent] with a formula instead ; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
 		}
 
 		if (!backstab && cfg["backstab"].to_bool())
