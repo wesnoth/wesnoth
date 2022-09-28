@@ -324,6 +324,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 		boost::system::error_code ec;
 		async_write(*socket, buffers, yield[ec]);
 		if(check_error(ec, socket)) {
+			socket->lowest_layer().close();
 			return;
 		}
 	} catch (simple_wml::error& e) {
