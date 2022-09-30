@@ -161,9 +161,13 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 }
 
 // worker thread
+// TODO: have timeout set via advanced preferences
 void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
+
+	set_keepalive(10);
+
 	static const uint32_t handshake = 0;
 	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
@@ -547,3 +551,24 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 
 	return receive_data(data);
 };
+
+void wesnothd_connection::set_keepalive(int seconds)
+{
+	boost::asio::socket_base::keep_alive option(true);
+	utils::get<raw_socket>(socket_)->set_option(option);
+
+#ifdef __linux__
+	int cnt = 10;
+	int interval = 30;
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &seconds, sizeof(seconds));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
+#elif defined(__APPLE__) && defined(__MACH__)
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &seconds, sizeof(seconds));
+#elif defined(_WIN32)
+	// these are in milliseconds for windows
+	seconds *= 1000;
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_RCVTIMEO, (const char*)&seconds, sizeof(seconds));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, (const char*)&seconds, sizeof(seconds));
+#endif
+}
