@@ -19,6 +19,7 @@
 
 #include "gettext.hpp"
 #include "log.hpp"
+#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "tls_root_store.hpp"
 
@@ -161,12 +162,12 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 }
 
 // worker thread
-// TODO: have timeout set via advanced preferences
 void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
 
-	set_keepalive(10);
+	DBG_NW << "Connecting with keepalive of: " << preferences::keepalive_timeout();
+	set_keepalive(preferences::keepalive_timeout());
 
 	static const uint32_t handshake = 0;
 	static const uint32_t tls_handshake = htonl(uint32_t(1));
