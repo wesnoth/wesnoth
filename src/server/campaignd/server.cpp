@@ -497,7 +497,10 @@ void server::serve_requests(Socket socket, boost::asio::yield_context yield)
 	while(true) {
 		boost::system::error_code ec;
 		auto doc { coro_receive_doc(socket, yield[ec]) };
-		if(check_error(ec, socket) || !doc) return;
+		if(check_error(ec, socket) || !doc) {
+			socket->lowest_layer().close();
+			return;
+		}
 
 		config data;
 		read(data, doc->output());
