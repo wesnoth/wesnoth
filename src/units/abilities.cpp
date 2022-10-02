@@ -1658,10 +1658,26 @@ bool attack_type::special_active_impl(
 			return false;
 	}
 
+	//Add wml filter if "backstab" attribute used.
+	config cfg = special;
+	if(special["backstab"].to_bool()){
+		const std::string& backstab_formula = "	enemy_of(self, flanker) and not flanker.petrified	where	flanker = unit_at(direction_from(loc, other.facing))	";
+		if(!special.child("filter_opponent")){
+			config filter;
+			filter["formula"] = backstab_formula;
+			cfg.add_child("filter_opponent", filter);
+		} else {
+			config filter_child = cfg.child("filter_opponent");
+			filter_child["formula"] = backstab_formula;
+			cfg.child("filter_opponent")= filter_child;
+			}
+	}
+	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
+
 	// Filter the units involved.
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
 		return false;
-	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent"))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent"))
 		return false;
 	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker"))
 		return false;
@@ -1775,7 +1791,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!cfg["backstab"].blank()) {
-			deprecated_message("backstab= in weapon specials", DEP_LEVEL::REMOVED, {1, 19, 0}, "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
+			deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
 		}
 
 		if (!filter_base_matches(cfg, def))
