@@ -1659,6 +1659,9 @@ bool attack_type::special_active_impl(
 	}
 
 	//Add wml filter if "backstab" attribute used.
+	if (!special["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
 	config cfg = special;
 	if(special["backstab"].to_bool()){
 		config filter;
@@ -1789,10 +1792,6 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 	for (const unit_ability & ability : list) {
 		const config& cfg = *ability.ability_cfg;
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
-
-		if (!cfg["backstab"].blank()) {
-			deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
-		}
 
 		if (!filter_base_matches(cfg, def))
 			continue;
