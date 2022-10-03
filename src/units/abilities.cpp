@@ -1661,16 +1661,16 @@ bool attack_type::special_active_impl(
 	//Add wml filter if "backstab" attribute used.
 	config cfg = special;
 	if(special["backstab"].to_bool()){
+		config filter;
 		const std::string& backstab_formula = "	enemy_of(self, flanker) and not flanker.petrified	where	flanker = unit_at(direction_from(loc, other.facing))	";
+		filter["formula"] = backstab_formula;
 		if(!special.child("filter_opponent")){
-			config filter;
-			filter["formula"] = backstab_formula;
 			cfg.add_child("filter_opponent", filter);
 		} else {
 			config filter_child = cfg.child("filter_opponent");
-			filter_child["formula"] = backstab_formula;
-			cfg.child("filter_opponent")= filter_child;
-			}
+			filter_child.add_child("and", filter);
+			cfg.child("filter_opponent") = filter_child;
+		}
 	}
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
