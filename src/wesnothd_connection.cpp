@@ -576,8 +576,8 @@ void wesnothd_connection::set_keepalive(int seconds)
 	utils::get<raw_socket>(socket_)->set_option(option);
 
 #ifdef __linux__
-	int cnt = 10;
-	int interval = 30;
+	int cnt = 5;
+	int interval = 1;
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &seconds, sizeof(seconds));
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
