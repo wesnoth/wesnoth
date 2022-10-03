@@ -506,9 +506,8 @@ template<class Socket>
 void server::serve_requests(Socket socket, boost::asio::yield_context yield)
 {
 	while(true) {
-		boost::system::error_code ec;
-		auto doc { coro_receive_doc(socket, yield[ec]) };
-		if(check_error(ec, socket) || !doc) {
+		auto doc { coro_receive_doc(socket, yield) };
+		if(!doc) {
 			socket->lowest_layer().close();
 			return;
 		}

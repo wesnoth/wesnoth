@@ -346,14 +346,17 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 	} data_size {};
 	data_size.size = htonl(filesize);
 
-	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
+	boost::system::error_code ec;
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
+	if(check_error(ec, socket)) return;
 
 	auto ifs { filesystem::istream_file(filename) };
 	ifs->seekg(0);
 	while(ifs->good()) {
 		char buf[16384];
 		ifs->read(buf, sizeof(buf));
-		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield);
+		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield[ec]);
+		if(check_error(ec, socket)) return;
 	}
 }
 
@@ -508,7 +511,9 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 		uint32_t size;
 		char buf[4];
 	} data_size {};
-	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield);
+	boost::system::error_code ec;
+	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield[ec]);
+	if(check_error(ec, socket)) return {};
 	uint32_t size = ntohl(data_size.size);
 
 	if(size == 0) {
@@ -525,7 +530,8 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	}
 
 	boost::shared_array<char> buffer{ new char[size] };
-	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield);
+	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield[ec]);
+	if(check_error(ec, socket)) return {};
 
 	try {
 		simple_wml::string_span compressed_buf(buffer.get(), size);
