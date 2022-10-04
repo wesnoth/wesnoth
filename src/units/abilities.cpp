@@ -1660,7 +1660,7 @@ bool attack_type::special_active_impl(
 
 	//Add wml filter if "backstab" attribute used.
 	if (!special["backstab"].blank()) {
-		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/abilities.cfg in the WEAPON_SPECIAL_BACKSTAB macro.");
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
 	}
 	config cfg = special;
 	if(special["backstab"].to_bool()){
