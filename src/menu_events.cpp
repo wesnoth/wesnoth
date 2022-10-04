@@ -1734,6 +1734,7 @@ void console_handler::do_clear()
 void console_handler::do_foreground()
 {
 	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_FOREGROUND);
+	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_layers()
