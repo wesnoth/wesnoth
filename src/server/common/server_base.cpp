@@ -390,37 +390,40 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	} data_size {};
 	data_size.size = htonl(filesize);
 
-	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
-	if(*(yield.ec_)) return;
+	boost::system::error_code ec;
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
+	if(check_error(ec, socket)) return;
 
 	// Put the underlying socket into non-blocking mode.
-	if(!socket->native_non_blocking())
-		socket->native_non_blocking(true, *yield.ec_);
-	if(*(yield.ec_)) return;
+	if(!socket->native_non_blocking()) {
+		socket->native_non_blocking(true, ec);
+		if(check_error(ec, socket)) return;
+	}
 
-	for (;;)
+	for(;;)
 	{
 		// Try the system call.
 		errno = 0;
 		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
-		*(yield.ec_) = boost::system::error_code(n < 0 ? errno : 0,
+		ec = boost::system::error_code(n < 0 ? errno : 0,
 									   boost::asio::error::get_system_category());
 		//total_bytes_transferred += *(yield.ec_) ? 0 : n;
 
 		// Retry operation immediately if interrupted by signal.
-		if (*(yield.ec_) == boost::asio::error::interrupted)
+		if(ec == boost::asio::error::interrupted)
 			continue;
 
 		// Check if we need to run the operation again.
-		if (*(yield.ec_) == boost::asio::error::would_block
-				|| *(yield.ec_) == boost::asio::error::try_again)
+		if (ec == boost::asio::error::would_block
+				|| ec == boost::asio::error::try_again)
 		{
 			// We have to wait for the socket to become ready again.
-			socket->async_write_some(boost::asio::null_buffers(), yield);
+			socket->async_write_some(boost::asio::null_buffers(), yield[ec]);
+			if(check_error(ec, socket)) return;
 			continue;
 		}
 
-		if (*(yield.ec_) || n == 0)
+		if (ec || n == 0)
 		{
 			// An error occurred, or we have reached the end of the file.
 			// Either way we must exit the loop.
