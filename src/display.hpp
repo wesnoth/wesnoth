@@ -68,6 +68,7 @@ namespace wb {
 
 #include <boost/circular_buffer.hpp>
 
+#include <bitset>
 #include <functional>
 #include <chrono>
 #include <cstdint>
@@ -354,21 +355,6 @@ public:
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const;
 
-	/** Getter for the x,y debug overlay on tiles */
-	bool get_draw_coordinates() const { return draw_coordinates_; }
-	/** Setter for the x,y debug overlay on tiles */
-	void set_draw_coordinates(bool value) { draw_coordinates_ = value; }
-
-	/** Getter for the terrain code debug overlay on tiles */
-	bool get_draw_terrain_codes() const { return draw_terrain_codes_; }
-	/** Setter for the terrain code debug overlay on tiles */
-	void set_draw_terrain_codes(bool value) { draw_terrain_codes_ = value; }
-
-	/** Getter for the number of bitmaps debug overlay on tiles */
-	bool get_draw_num_of_bitmaps() const { return draw_num_of_bitmaps_; }
-	/** Setter for the terrain code debug overlay on tiles */
-	void set_draw_num_of_bitmaps(bool value) { draw_num_of_bitmaps_ = value; }
-
 	/** Capture a (map-)screenshot into a surface. */
 	surface screenshot(bool map_screenshot = false);
 
@@ -466,16 +452,6 @@ public:
 
 	void clear_mouseover_hex_overlay()
 		{ mouseover_hex_overlay_.reset(); }
-
-	/** Toggle to continuously redraw the screen. */
-	static void toggle_benchmark();
-
-	/**
-	 * Toggle to debug foreground terrain.
-	 * Separate background and foreground layer
-	 * to better spot any error there.
-	 */
-	static void toggle_debug_foreground();
 
 	terrain_builder& get_builder() {return *builder_;}
 
@@ -991,12 +967,45 @@ private:
 
 	std::vector<std::function<void(display&)>> redraw_observers_;
 
-	/** Debug flag - overlay x,y coords on tiles */
-	bool draw_coordinates_;
-	/** Debug flag - overlay terrain codes on tiles */
-	bool draw_terrain_codes_;
-	/** Debug flag - overlay number of bitmaps on tiles */
-	bool draw_num_of_bitmaps_;
+public:
+	enum DEBUG_FLAG {
+		/** Overlays x,y coords on tiles */
+		DEBUG_COORDINATES,
+
+		/** Overlays terrain codes on tiles */
+		DEBUG_TERRAIN_CODES,
+
+		/** Overlays number of bitmaps on tiles */
+		DEBUG_NUM_BITMAPS,
+
+		/** Separates background and foreground terrain layers. */
+		DEBUG_FOREGROUND,
+
+		/** Toggle to continuously redraw the whole map. */
+		DEBUG_BENCHMARK,
+
+		/** Dummy entry to size the bitmask. Keep this last! */
+		__NUM_DEBUG_FLAGS
+	};
+
+	bool debug_flag_set(DEBUG_FLAG flag) const
+	{
+		return debug_flags_.test(flag);
+	}
+
+	void set_debug_flag(DEBUG_FLAG flag, bool value)
+	{
+		debug_flags_.set(flag, value);
+	}
+
+	void toggle_debug_flag(DEBUG_FLAG flag)
+	{
+		debug_flags_.flip(flag);
+	}
+
+private:
+	/** Currently set debug flags. */
+	std::bitset<__NUM_DEBUG_FLAGS> debug_flags_;
 
 	typedef std::list<arrow*> arrows_list_t;
 	typedef std::map<map_location, arrows_list_t > arrows_map_t;

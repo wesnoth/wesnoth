@@ -89,11 +89,6 @@ static lg::log_domain log_display("display");
 #define MaxZoom          (zoom_levels.back())
 
 namespace {
-	// if this is enabled with :benchmark, then everything is marked as invalid and redrawn each time
-	bool benchmark = false;
-
-	bool debug_foreground = false;
-
 	int prevLabel = 0;
 }
 
@@ -229,9 +224,7 @@ display::display(const display_context* dc,
 	, invalidated_hexes_(0)
 	, drawn_hexes_(0)
 	, redraw_observers_()
-	, draw_coordinates_(false)
-	, draw_terrain_codes_(false)
-	, draw_num_of_bitmaps_(false)
+	, debug_flags_()
 	, arrows_map_()
 	, color_adjust_()
 {
@@ -1330,16 +1323,6 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.clear();
 }
 
-void display::toggle_benchmark()
-{
-	benchmark = !benchmark;
-}
-
-void display::toggle_debug_foreground()
-{
-	debug_foreground = !debug_foreground;
-}
-
 // frametime is in milliseconds
 static unsigned calculate_fps(unsigned frametime)
 {
@@ -1391,7 +1374,7 @@ void display::update_fps_label()
 
 	font::floating_label flabel(stream.str());
 	flabel.set_font_size(12);
-	flabel.set_color(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
+	flabel.set_color(debug_flag_set(DEBUG_BENCHMARK) ? font::BAD_COLOR : font::NORMAL_COLOR);
 	flabel.set_position(10, 100);
 	flabel.set_alignment(font::LEFT_ALIGN);
 
@@ -2444,7 +2427,7 @@ void display::draw()
 		drawing_buffer_commit();
 	}
 
-	if(preferences::show_fps() || benchmark) {
+	if(preferences::show_fps() || debug_flag_set(DEBUG_BENCHMARK)) {
 		update_fps_label();
 		update_fps_count();
 	} else if(fps_handle_ != 0) {
@@ -2464,7 +2447,7 @@ void display::update()
 		builder_->rebuild_cache_all();
 	}
 
-	if(benchmark) {
+	if(debug_flag_set(DEBUG_BENCHMARK)) {
 		invalidate_all();
 	}
 }
@@ -2855,7 +2838,7 @@ void display::draw_hex(const map_location& loc)
 		});
 	}
 
-	if(debug_foreground) {
+	if(debug_flag_set(DEBUG_FOREGROUND)) {
 		drawing_buffer_add(
 			LAYER_UNIT_DEFAULT, loc, [tex = image::get_texture("terrain/foreground.png", image::TOD_COLORED)](const rect& dest) {
 				draw::blit(tex, dest);
@@ -2863,16 +2846,25 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(on_map) {
+		// This might be slight overkill. Basically, we want to check that none of the
+		// first three bits in the debug flag bitset are set so we can avoid creating
+		// a stringstream, a temp string, and attempting to trim it for every hex even
+		// when none of these flags are set. This gives us a temp object with all bits
+		// past the first three zeroed out.
+		if((std::as_const(debug_flags_) << (__NUM_DEBUG_FLAGS - DEBUG_FOREGROUND)).none()) {
+			return;
+		}
+
 		std::ostringstream ss;
-		if(draw_coordinates_) {
+		if(debug_flag_set(DEBUG_COORDINATES)) {
 			ss << loc << '\n';
 		}
 
-		if(draw_terrain_codes_ && (game_config::debug || !is_shrouded)) {
+		if(debug_flag_set(DEBUG_TERRAIN_CODES) && (game_config::debug || !is_shrouded)) {
 			ss << get_map().get_terrain(loc) << '\n';
 		}
 
-		if(draw_num_of_bitmaps_) {
+		if(debug_flag_set(DEBUG_NUM_BITMAPS)) {
 			ss << (num_images_bg + num_images_fg) << '\n';
 		}
 
