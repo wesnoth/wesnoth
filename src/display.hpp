@@ -258,10 +258,16 @@ public:
 	}
 
 	/** Scale the width and height of a rect by the current zoom factor */
-	static SDL_Rect scaled_to_zoom(const SDL_Rect& r)
+	static rect scaled_to_zoom(const SDL_Rect& r)
 	{
 		const double zf = get_zoom_factor();
-		return {r.x, r.y, int(r.w*zf), int(r.h*zf)};
+		return {r.x, r.y, int(r.w * zf), int(r.h * zf)};
+	}
+
+	static point scaled_to_zoom(const point& p)
+	{
+		const double zf = get_zoom_factor();
+		return {int(p.x * zf), int(p.y * zf)};
 	}
 
 	/**
@@ -297,6 +303,7 @@ public:
 	/** Functions to get the on-screen positions of hexes. */
 	int get_location_x(const map_location& loc) const;
 	int get_location_y(const map_location& loc) const;
+	point get_location(const map_location& loc) const;
 
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
@@ -860,23 +867,7 @@ public:
 		LAYER_BORDER,              /**< The border of the map. */
 	};
 
-	/**
-	 * Draw an image at a certain location.
-	 * x,y: pixel location on screen to draw the image
-	 * image: the image to draw
-	 * reverse: if the image should be flipped across the x axis
-	 * greyscale: used for instance to give the petrified appearance to a unit image
-	 * alpha: the merging to use with the background
-	 * blendto: blend to this color using blend_ratio
-	 * submerged: the amount of the unit out of 1.0 that is submerged
-	 *            (presumably under water) and thus shouldn't be drawn
-	 */
-	void render_image(int x, int y, const display::drawing_layer drawing_layer,
-			const map_location& loc, const image::locator& i_locator,
-			bool hreverse=false, bool greyscale=false,
-			uint8_t alpha=SDL_ALPHA_OPAQUE, double highlight=0.0,
-			color_t blendto={0,0,0}, double blend_ratio=0,
-			double submerged=0.0, bool vreverse=false);
+	static void add_submerge_ipf_mod(std::string& image_path, int image_height, double submersion_amount, int shift = 0);
 
 	/**
 	 * Draw text on a hex. (0.5, 0.5) is the center.
@@ -892,11 +883,13 @@ protected:
 	std::size_t activeTeam_;
 
 	/**
-	 * In order to render a hex properly it needs to be rendered per row. On
-	 * this row several layers need to be drawn at the same time. Mainly the
-	 * unit and the background terrain. This is needed since both can spill
-	 * in the next hex. The foreground terrain needs to be drawn before to
-	 * avoid decapitation a unit.
+	 * Helper for rendering the map by ordering draw operations.
+	 *
+	 * In order to render a hex properly, they need to be rendered per row.
+	 * In this row several layers need to be drawn at the same time, mainly
+	 * the unit and the background terrain. This is needed since both can spill
+	 * into the next hex. The foreground terrain needs to be drawn before to
+	 * avoid decapitating a unit.
 	 *
 	 * In other words:
 	 * for every layer
@@ -910,162 +903,40 @@ protected:
 	 *     for every layer in the group
 	 *       for every hex in the row
 	 *         ...
-	 *
-	 * * textures are rendered per level in a map.
-	 * * Per level the items are rendered per location these locations are
-	 *   stored in the drawing order required for units.
-	 * * every location has a vector with textures, each with its own screen
-	 *   coordinate to render at.
-	 * * every vector element has a vector with textures to render.
 	 */
-	class drawing_buffer_key
+	struct draw_helper
 	{
-	private:
-		unsigned int key_;
+		/** Controls the ordering of draw calls by layer and location. */
+		const uint32_t key;
 
-		// FIXME: temporary method. Group splitting should be made
-		// public into the definition of drawing_layer
-		//
-		// The drawing is done per layer_group, the range per group is [low, high).
-		static inline const std::array layer_groups {
-			LAYER_TERRAIN_BG,
-			LAYER_UNIT_FIRST,
-			LAYER_UNIT_MOVE_DEFAULT,
-			// Make sure the movement doesn't show above fog and reachmap.
-			LAYER_REACHMAP
-		};
+		/** Handles the actual drawing at this location. */
+		std::function<void(const rect&)> do_draw;
 
-	public:
-		drawing_buffer_key(const map_location &loc, drawing_layer layer);
+		/** The screen coordinates for the specified hex. This is passed to @ref do_draw */
+		rect dest;
 
-		bool operator<(const drawing_buffer_key &rhs) const { return key_ < rhs.key_; }
+		bool operator<(const draw_helper& rhs) const
+		{
+			return key < rhs.key;
+		}
 	};
 
-	/** Helper structure for rendering the terrains. */
-	class blit_helper
-	{
-	public:
-		// We don't want to copy this.
-		// It's expensive when done frequently due to the texture vector.
-		blit_helper(const blit_helper&) = delete;
-
-		blit_helper(const drawing_layer layer, const map_location& loc,
-				const SDL_Rect& dest, const texture& tex)
-			: dest_(dest), tex_(1, tex), key_(loc, layer)
-		{}
-
-		blit_helper(const drawing_layer layer, const map_location& loc,
-				const SDL_Rect& dest, const std::vector<texture>& tex)
-			: dest_(dest), tex_(tex), key_(loc, layer)
-		{}
-
-		const SDL_Rect& dest() const { return dest_; }
-		const std::vector<texture> &tex() const { return tex_; }
-
-		bool operator<(const blit_helper &rhs) const { return key_ < rhs.key_; }
-
-	public:
-		// Auxiliary parameters, can be modified directly as required.
-
-		/** Whether to mirror horizontally on draw */
-		bool hflip = false;
-		/** Whether to mirror vertically on draw */
-		bool vflip = false;
-		/** An alpha modifier to apply when drawing. 0-255. */
-		uint8_t alpha_mod = SDL_ALPHA_OPAQUE;
-		/** Colour modifiers. Multiply colour. 0 = 0.0, 255 = 1.0. */
-		uint8_t r_mod = 255;
-		uint8_t g_mod = 255;
-		uint8_t b_mod = 255;
-		/** Strength of highlight effect to apply, if any. */
-		uint8_t highlight = 0;
-
-		// Or they can be set in a chain.
-		blit_helper& set_color_and_alpha(color_t c)
-		{
-			this->r_mod = c.r; this->g_mod = c.g; this->b_mod = c.b;
-			this->alpha_mod = c.a;
-			return *this;
-		}
-		blit_helper& set_color_and_alpha(
-			uint8_t r, uint8_t g, uint8_t b, uint8_t a)
-		{
-			this->r_mod = r; this->g_mod = g; this->b_mod = b;
-			this->alpha_mod = a;
-			return *this;
-		}
-		blit_helper& set_color(color_t c)
-		{
-			this->r_mod = c.r; this->g_mod = c.g; this->b_mod = c.b;
-			return *this;
-		}
-		blit_helper& set_color(uint8_t r, uint8_t g, uint8_t b)
-		{
-			this->r_mod = r; this->g_mod = g; this->b_mod = b;
-			return *this;
-		}
-		blit_helper& set_alpha(uint8_t alpha)
-		{
-			this->alpha_mod = alpha; return *this;
-		}
-		blit_helper& set_hflip(bool hflip)
-		{
-			this->hflip = hflip; return *this;
-		}
-		blit_helper& set_vflip(bool vflip)
-		{
-			this->vflip = vflip; return *this;
-		}
-		blit_helper& set_highlight(uint8_t highlight)
-		{
-			this->highlight = highlight; return *this;
-		}
-
-	private:
-		// Core info is set on creation.
-
-		/** The location on screen to draw to, in drawing coordinates. */
-		SDL_Rect dest_;
-		/** One or more textures to render. */
-		std::vector<texture> tex_;
-		// TODO: could also add blend mode and rotation if desirable
-		/** Allows ordering of draw calls by layer and location. */
-		drawing_buffer_key key_;
-	};
-
-	typedef std::list<blit_helper> drawing_buffer;
-	drawing_buffer drawing_buffer_;
+	std::list<draw_helper> drawing_buffer_;
 
 public:
 	/**
 	 * Add an item to the drawing buffer.
 	 *
-	 * This returns a blit_helper reference with several extra fields that can
-	 * be modified as necessary. In particular hflip, vflip and alpha_mod
-	 * have been moved to this helper. Fields that can be modified are
-	 * available as public members of blit_helper.
-	 *
 	 * @param layer              The layer to draw on.
-	 * @param loc                The hex the image belongs to, needed for the
-	 *                           drawing order.
-	 * @param dest               The target destination on screen,
-	 *                           in drawing coordinates.
-	 * @param tex                The texture to use.
+	 * @param loc                The hex the image belongs to, needed for the drawing order.
+	 * @param draw_func          The draw operation to be run.
 	 */
-	blit_helper& drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, const SDL_Rect& dest, const texture& tex);
-
-	blit_helper& drawing_buffer_add(const drawing_layer layer,
-			const map_location& loc, const SDL_Rect& dest,
-			const std::vector<texture> &tex);
+	void drawing_buffer_add(const drawing_layer layer, const map_location& loc, decltype(draw_helper::do_draw) draw_func);
 
 protected:
 
 	/** Draws the drawing_buffer_ and clears it. */
 	void drawing_buffer_commit();
-
-	/** Clears the drawing buffer. */
-	void drawing_buffer_clear();
 
 	/** Redraws all panels intersecting the given region.
 	  * Returns true if something was drawn, false otherwise. */

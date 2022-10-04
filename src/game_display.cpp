@@ -46,6 +46,7 @@
 #include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 #include "overlay.hpp"
+#include "draw.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -218,15 +219,25 @@ void game_display::draw_invalidated()
 	}
 }
 
+namespace
+{
+const std::string mouseover_normal_top = "misc/hover-hex-top.png~RC(magenta>gold)";
+const std::string mouseover_normal_bot = "misc/hover-hex-bottom.png~RC(magenta>gold)";
+
+const std::string mouseover_enemy_top = "misc/hover-hex-enemy-top.png~RC(magenta>red)";
+const std::string mouseover_enemy_bot = "misc/hover-hex-enemy-bottom.png~RC(magenta>red)";
+
+const std::string mouseover_self_top = "misc/hover-hex-top.png~RC(magenta>green)";
+const std::string mouseover_self_bot = "misc/hover-hex-bottom.png~RC(magenta>green)";
+
+const std::string mouseover_ally_top = "misc/hover-hex-top.png~RC(magenta>lightblue)";
+const std::string mouseover_ally_bot = "misc/hover-hex-bottom.png~RC(magenta>lightblue)";
+}
+
 void game_display::draw_hex(const map_location& loc)
 {
 	const bool on_map = get_map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
-//	const bool is_fogged = fogged(loc);
-	const int xpos = get_location_x(loc);
-	const int ypos = get_location_y(loc);
-	const int zoom = int(zoom_);
-	const SDL_Rect dest{xpos, ypos, zoom, zoom};
 
 	display::draw_hex(loc);
 
@@ -237,77 +248,83 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_ && !map_screenshot_) {
 		drawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
-		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
-		if( u != nullptr ) {
+		const unit* u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()]);
+		if(u != nullptr) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
+
+		const std::string* mo_top_path;
+		const std::string* mo_bot_path;
+
 		if(u == nullptr) {
-			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>gold)", image::HEXED));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>gold)", image::HEXED));
+			mo_top_path = &mouseover_normal_top;
+			mo_bot_path = &mouseover_normal_bot;
 		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
-			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::HEXED));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::HEXED));
+			mo_top_path = &mouseover_enemy_top;
+			mo_bot_path = &mouseover_enemy_bot;
 		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
-			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>green)", image::HEXED));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>green)", image::HEXED));
+			mo_top_path = &mouseover_self_top;
+			mo_bot_path = &mouseover_self_bot;
 		} else {
-			drawing_buffer_add( hex_top_layer, loc, dest,
-					image::get_texture("misc/hover-hex-top.png~RC(magenta>lightblue)", image::HEXED));
-			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, dest,
-					image::get_texture("misc/hover-hex-bottom.png~RC(magenta>lightblue)", image::HEXED));
+			mo_top_path = &mouseover_ally_top;
+			mo_bot_path = &mouseover_ally_bot;
 		}
+
+		drawing_buffer_add(hex_top_layer, loc,
+			[tex = image::get_texture(*mo_top_path, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+
+		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc,
+			[tex = image::get_texture(*mo_bot_path, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
-
-
 
 	// Draw reach_map information.
-	// We remove the reachability mask of the unit
-	// that we want to attack.
-	if (!is_shrouded && !reach_map_.empty()
-			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
+	// We remove the reachability mask of the unit that we want to attack.
+	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
-		drawing_buffer_add(LAYER_REACHMAP, loc, dest,
-				image::get_texture(unreachable,image::HEXED));
+		drawing_buffer_add(LAYER_REACHMAP, loc,
+			[tex = image::get_texture(unreachable, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
-	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
+	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->draw_hex(loc);
 
-		if (!(w->is_active() && w->has_temp_move()))
-		{
+		if(!(w->is_active() && w->has_temp_move())) {
 			std::vector<texture> footstepImages = footsteps_images(loc, route_, dc_);
-			if (!footstepImages.empty()) {
-				drawing_buffer_add(LAYER_FOOTSTEPS, loc, dest, footstepImages);
+			if(!footstepImages.empty()) {
+				drawing_buffer_add(LAYER_FOOTSTEPS, loc, [images = std::move(footstepImages)](const rect& dest) {
+					for(const texture& t : images) {
+						draw::blit(t, dest);
+					}
+				});
 			}
 		}
 	}
+
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, dest,
-			image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED));
-	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, dest,
-			image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::HEXED));
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc,
+			[tex = image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)
+		 	{ draw::blit(tex, dest); }
+		);
+	} else if(on_map && loc == attack_indicator_dst_) {
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc,
+			[tex = image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)
+			{ draw::blit(tex, dest); }
+		);
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(mode_ != RUNNING) {
 		static const image::locator linger(game_config::images::linger);
-		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, dest,
-			image::get_texture(linger, image::TOD_COLORED));
+		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc,
+			[tex = image::get_texture(linger, image::TOD_COLORED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		static const image::locator selected(game_config::images::selected);
-		drawing_buffer_add(LAYER_SELECTED_HEX, loc, dest,
-				image::get_texture(selected, image::HEXED));
+		drawing_buffer_add(LAYER_SELECTED_HEX, loc,
+			[tex = image::get_texture(selected, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 
 	// Show def% and turn to reach info
@@ -322,7 +339,6 @@ void game_display::draw_hex(const map_location& loc)
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
 		}
 	}
-	//simulate_delay += 1;
 }
 
 const time_of_day& game_display::get_time_of_day(const map_location& loc) const
@@ -395,25 +411,20 @@ void game_display::draw_movement_info(const map_location& loc)
 			int def_font = w->second.turns > 0 ? 18 : 16;
 			draw_text_in_hex(loc, LAYER_MOVE_INFO, def_text.str(), def_font, color);
 
-			const int xpos = get_location_x(loc);
-			const int ypos = get_location_y(loc);
-			const int zoom = int(zoom_);
-			const SDL_Rect dest{xpos, ypos, zoom, zoom};
+			drawing_buffer_add(LAYER_MOVE_INFO, loc,
+				[inv = w->second.invisible, zoc = w->second.zoc, cap = w->second.capture](const rect& dest) {
+					if(inv) {
+						draw::blit(image::get_texture("misc/hidden.png", image::HEXED), dest);
+					}
 
-			if (w->second.invisible) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
-					image::get_texture("misc/hidden.png", image::HEXED));
-			}
+					if(zoc) {
+						draw::blit(image::get_texture("misc/zoc.png", image::HEXED), dest);
+					}
 
-			if (w->second.zoc) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
-					image::get_texture("misc/zoc.png", image::HEXED));
-			}
-
-			if (w->second.capture) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, dest,
-					image::get_texture("misc/capture.png", image::HEXED));
-			}
+					if(cap) {
+						draw::blit(image::get_texture("misc/capture.png", image::HEXED), dest);
+					}
+				});
 
 			//we display turn info only if different from a simple last "1"
 			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
