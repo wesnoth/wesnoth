@@ -347,7 +347,10 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 
 	boost::system::error_code ec;
 	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
-	if(check_error(ec, socket)) return;
+	if(check_error(ec, socket)) {
+		socket->lowest_layer().close();
+		return;
+	}
 
 	auto ifs { filesystem::istream_file(filename) };
 	ifs->seekg(0);
@@ -355,7 +358,10 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 		char buf[16384];
 		ifs->read(buf, sizeof(buf));
 		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield[ec]);
-		if(check_error(ec, socket)) return;
+		if(check_error(ec, socket)) {
+			socket->lowest_layer().close();
+			return;
+		}
 	}
 }
 

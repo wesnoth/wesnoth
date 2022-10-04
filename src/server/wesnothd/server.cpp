@@ -683,13 +683,10 @@ void server::handle_new_client(tls_socket_ptr socket)
 template<class SocketPtr>
 void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 {
-	boost::system::error_code ec;
+	coro_send_doc(socket, version_query_response_, yield);
 
-	coro_send_doc(socket, version_query_response_, yield[ec]);
-	if(check_error(ec, socket)) return;
-
-	auto doc { coro_receive_doc(socket, yield[ec]) };
-	if(check_error(ec, socket) || !doc) return;
+	auto doc { coro_receive_doc(socket, yield) };
+	if(!doc) return;
 
 	std::string client_version, client_source;
 	if(const simple_wml::node* const version = doc->child("version")) {
@@ -706,8 +703,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 		if(accepted_it != accepted_versions_.end()) {
 			LOG_SERVER << log_address(socket) << "\tplayer joined using accepted version " << client_version
 					   << ":\ttelling them to log in.\n";
-			coro_send_doc(socket, login_response_, yield[ec]);
-			if(check_error(ec, socket)) return;
+			coro_send_doc(socket, login_response_, yield);
 		} else {
 			simple_wml::document response;
 
@@ -748,8 +744,8 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	bool registered, is_moderator;
 
 	while(true) {
-		auto login_response { coro_receive_doc(socket, yield[ec]) };
-		if(check_error(ec, socket) || !login_response) return;
+		auto login_response { coro_receive_doc(socket, yield) };
+		if(!login_response) return;
 
 		if(const simple_wml::node* const login = login_response->child("login")) {
 			username = (*login)["username"].to_string();
@@ -765,8 +761,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	simple_wml::document join_lobby_response;
 	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
 	join_lobby_response.root().child("join_lobby")->set_attr_dup("profile_url_prefix", "https://r.wesnoth.org/u");
-	coro_send_doc(socket, join_lobby_response, yield[ec]);
-	if(check_error(ec, socket)) return;
+	coro_send_doc(socket, join_lobby_response, yield);
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
 	wesnothd::player new_player(
@@ -1100,8 +1095,8 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 
 	while(true) {
 		boost::system::error_code ec;
-		auto doc { coro_receive_doc(socket, yield[ec]) };
-		if(check_error(ec, socket) || !doc) return;
+		auto doc { coro_receive_doc(socket, yield) };
+		if(!doc) return;
 
 		// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output() << std::endl;
 		if(doc->child("refresh_lobby")) {
