@@ -1094,7 +1094,6 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 	send_to_lobby(diff, player);
 
 	while(true) {
-		boost::system::error_code ec;
 		auto doc { coro_receive_doc(socket, yield) };
 		if(!doc) return;
 
