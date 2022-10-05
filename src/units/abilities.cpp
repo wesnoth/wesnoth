@@ -1664,15 +1664,14 @@ bool attack_type::special_active_impl(
 	}
 	config cfg = special;
 	if(special["backstab"].to_bool()){
-		config filter;
 		const std::string& backstab_formula = "	enemy_of(self, flanker) and not flanker.petrified	where	flanker = unit_at(direction_from(loc, other.facing))	";
-		filter["formula"] = backstab_formula;
+		config& filter_child = cfg.child_or_add("filter_opponent");
 		if(!special.child("filter_opponent")){
-			cfg.add_child("filter_opponent", filter);
+			filter_child["formula"] = backstab_formula;
 		} else {
-			config filter_child = cfg.child("filter_opponent");
+			config filter;
+			filter["formula"] = backstab_formula;
 			filter_child.add_child("and", filter);
-			cfg.child("filter_opponent") = filter_child;
 		}
 	}
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
