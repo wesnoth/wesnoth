@@ -2978,8 +2978,6 @@ static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bc
 	lua_setfield(L, -2, "plagues");
 	lua_pushstring(L, bcustats.plague_type.c_str());
 	lua_setfield(L, -2, "plague_type");
-	lua_pushboolean(L, bcustats.backstab_pos);
-	lua_setfield(L, -2, "backstabs");
 	lua_pushnumber(L, bcustats.rounds);
 	lua_setfield(L, -2, "rounds");
 	lua_pushboolean(L, bcustats.firststrike);

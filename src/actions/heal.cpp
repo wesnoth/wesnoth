@@ -193,7 +193,7 @@ namespace {
 
 			// Regeneration?
 			unit_ability_list regen_list = patient.get_abilities("regenerate");
-			unit_abilities::effect regen_effect(regen_list, 0, false);
+			unit_abilities::effect regen_effect(regen_list, 0);
 			update_healing(healing, harming, regen_effect.get_composite_value());
 		}
 
@@ -212,7 +212,7 @@ namespace {
 		}
 
 		// Now we can get the aggregate healing amount.
-		unit_abilities::effect heal_effect(heal_list, 0, false);
+		unit_abilities::effect heal_effect(heal_list, 0);
 		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
 		{
 			// Collect the healers involved.

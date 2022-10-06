@@ -790,7 +790,7 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 	}
 
 	if(!resistance_abilities.empty()) {
-		unit_abilities::effect resist_effect(resistance_abilities, 100 - resistance, false);
+		unit_abilities::effect resist_effect(resistance_abilities, 100 - resistance);
 
 		resistance = 100 - std::min<int>(
 			resist_effect.get_composite_value(),
