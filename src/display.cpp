@@ -42,7 +42,6 @@
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "resources.hpp"
-#include "sdl/utils.hpp" // fill_surface_rect
 #include "show_dialog.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
@@ -203,7 +202,6 @@ display::display(const display_context* dc,
 	, menu_buttons_()
 	, action_buttons_()
 	, invalidated_()
-	, mouseover_hex_overlay_()
 	, tod_hex_mask1(nullptr)
 	, tod_hex_mask2(nullptr)
 	, fog_images_()
@@ -2793,18 +2791,6 @@ void display::draw_hex(const map_location& loc)
 	} else if(!tod_hex_mask.empty()) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc,
 			[tex = image::get_texture(tod_hex_mask, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
-	}
-
-	// Paint mouseover overlays
-	if(loc == mouseoverHex_
-		&& (on_map || (in_editor() && get_map().on_board_with_border(loc)))
-		&& !map_screenshot_
-		&& bool(mouseover_hex_overlay_))
-	{
-		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, [this](const rect& dest) {
-			mouseover_hex_overlay_.set_alpha_mod(196);
-			draw::blit(mouseover_hex_overlay_, dest);
-		});
 	}
 
 	// Paint arrows

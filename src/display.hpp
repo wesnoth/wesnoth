@@ -443,16 +443,6 @@ public:
 
 	void reset_standing_animations();
 
-	/**
-	 * mouseover_hex_overlay_ requires a prerendered texture
-	 * and is drawn underneath the mouse's location
-	 */
-	void set_mouseover_hex_overlay(const texture& image)
-		{ mouseover_hex_overlay_ = image; }
-
-	void clear_mouseover_hex_overlay()
-		{ mouseover_hex_overlay_.reset(); }
-
 	terrain_builder& get_builder() {return *builder_;}
 
 	void update_fps_label();
@@ -762,7 +752,6 @@ protected:
 	std::map<std::string, config> reports_;
 	std::vector<std::shared_ptr<gui::button>> menu_buttons_, action_buttons_;
 	std::set<map_location> invalidated_;
-	texture mouseover_hex_overlay_;
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
 	texture tod_hex_mask1 = {};

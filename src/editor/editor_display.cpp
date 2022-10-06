@@ -35,6 +35,7 @@ editor_display::editor_display(editor_controller& controller, reports& reports_o
 	: display(nullptr, std::shared_ptr<wb::manager>(), reports_object, "editor", config())
 	, brush_locations_()
 	, controller_(controller)
+	, mouseover_hex_overlay_()
 {
 }
 
@@ -70,20 +71,32 @@ void editor_display::rebuild_terrain(const map_location &loc) {
 void editor_display::draw_hex(const map_location& loc)
 {
 	display::draw_hex(loc);
-	if (map().on_board_with_border(loc) && !map_screenshot_) {
-		if(map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc,
-				[tex = image::get_texture("editor/selection-overlay.png", image::TOD_COLORED)](const rect& d) {
-					draw::blit(tex, scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
-				});
-		}
 
-		if(brush_locations_.find(loc) != brush_locations_.end()) {
-			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_SELECTED_HEX, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d) {
+	if(!map().on_board_with_border(loc) || map_screenshot_) {
+		return;
+	}
+
+	if(map().in_selection(loc)) {
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc,
+			[tex = image::get_texture("editor/selection-overlay.png", image::TOD_COLORED)](const rect& d) {
 				draw::blit(tex, scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
 			});
-		}
+	}
+
+	if(brush_locations_.find(loc) != brush_locations_.end()) {
+		static const image::locator brush(game_config::images::editor_brush);
+		drawing_buffer_add(LAYER_SELECTED_HEX, loc, [tex = image::get_texture(brush, image::HEXED)](const rect& d) {
+			draw::blit(tex, scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+		});
+	}
+
+	// Paint mouseover overlays
+	if(mouseover_hex_overlay_ && loc == mouseoverHex_) {
+		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, [this](const rect& dest) {
+			mouseover_hex_overlay_.set_alpha_mod(196);
+			draw::blit(mouseover_hex_overlay_, dest);
+			mouseover_hex_overlay_.set_alpha_mod(SDL_ALPHA_OPAQUE);
+		});
 	}
 }
 
