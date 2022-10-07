@@ -1301,18 +1301,34 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 {
 	bool overwrite_self = false;
 	bool overwrite_either = false;
+	bool overwrite_ultimate = false;
 
 	for(const auto& i : abil_list) {
+		if((*i.ability_cfg)["overwrite_specials"] == "all_others") {
+			overwrite_ultimate = true;
+			break;
+		}
 		if((*i.ability_cfg)["overwrite_specials"] == "both_sides") {
 			overwrite_either = true;
-			break;
 		}
 		if(overwrite_special_affects(*i.ability_cfg) && (special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student"))) {
 			overwrite_self = true;
 		}
 	}
-	if(!overwrite_either && !overwrite_self){
+	if(!overwrite_either && !overwrite_self && !overwrite_ultimate){
 		return temp_list;
+	} else if(overwrite_ultimate){
+		for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
+			bool overwrite = false;
+			if(filter_self == "filter_student"){
+				overwrite = (*i->ability_cfg)["overwrite_specials"] == "all_others";
+			}
+			if(!overwrite) {
+				i = temp_list.erase(i);
+			} else {
+				++i;
+			}
+		}
 	} else if(overwrite_either){
 		for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
 			bool overwrite = false;
