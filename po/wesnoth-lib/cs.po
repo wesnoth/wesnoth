@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 04:42+0300\n"
-"PO-Revision-Date: 2022-07-28 22:13+0200\n"
+"PO-Revision-Date: 2022-09-17 10:04+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -3246,16 +3246,15 @@ msgstr "Nová složka"
 msgid "File:"
 msgstr "Soubor:"
 
-# fujtajblé, ale lepší než "odvšivovač" nebo "odhmyzovač"; přesný překlad snad ani neexistuje; ony i ty vzorce nejsou tak úplně přesné coby překlad, spíš je to celý jazyk...
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
 msgid "Formula debugger"
-msgstr "Ladič vzorců"
+msgstr "Debugger jazyka Formula"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:59
 msgid "Welcome"
-msgstr "Vítejte"
+msgstr "Vítej"
 
 #. [label]: id=state
 #: data/gui/window/formula_debugger.cfg:71
@@ -3272,10 +3271,11 @@ msgstr "Zásobník volání"
 msgid "Actions"
 msgstr "Akce"
 
+# Krokovat operaci udělá toto jediné tlačítko větší, proto zkratka.
 #. [button]: id=step
 #: data/gui/window/formula_debugger.cfg:128
 msgid "Step operation"
-msgstr "Krokuj operaci"
+msgstr "Krokovat op."
 
 #. [button]: id=next
 #: data/gui/window/formula_debugger.cfg:139
