@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2022-08-23 17:30+0200\n"
+"PO-Revision-Date: 2022-10-06 21:19+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -872,7 +872,7 @@ msgstr "Důlní železnice"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1204
 msgid "Bluff"
-msgstr ""
+msgstr "Sráz"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1214
@@ -1795,22 +1795,22 @@ msgstr "Prkenný most"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3056
 msgid "Marker High"
-msgstr ""
+msgstr "Značka zvýšení"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3065
 msgid "Marker High 2"
-msgstr ""
+msgstr "Značka zvýšení 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3074
 msgid "Marker Low"
-msgstr ""
+msgstr "Značka snížení"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3083
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Značka snížení 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3094
@@ -3319,16 +3319,15 @@ msgstr "Nová složka"
 msgid "File:"
 msgstr "Soubor:"
 
-# fujtajblé, ale lepší než "odvšivovač" nebo "odhmyzovač"; přesný překlad snad ani neexistuje; ony i ty vzorce nejsou tak úplně přesné coby překlad, spíš je to celý jazyk...
 #. [label]
 #: data/gui/window/formula_debugger.cfg:36
 msgid "Formula debugger"
-msgstr "Ladič vzorců"
+msgstr "Debugger jazyka Formula"
 
 #. [label]
 #: data/gui/window/formula_debugger.cfg:59
 msgid "Welcome"
-msgstr "Vítejte"
+msgstr "Vítej"
 
 #. [label]: id=state
 #: data/gui/window/formula_debugger.cfg:71
@@ -3345,10 +3344,11 @@ msgstr "Zásobník volání"
 msgid "Actions"
 msgstr "Akce"
 
+# Krokovat operaci udělá toto jediné tlačítko větší, proto zkratka.
 #. [button]: id=step
 #: data/gui/window/formula_debugger.cfg:128
 msgid "Step operation"
-msgstr "Krokuj operaci"
+msgstr "Krokovat op."
 
 #. [button]: id=next
 #: data/gui/window/formula_debugger.cfg:139
@@ -4723,29 +4723,27 @@ msgstr "Místní hra"
 #. [label]
 #: data/gui/window/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* Hlášený hráč:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Důvod nahlášení:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Místo výskytu:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Informace o mapě"
+msgstr "Další informace:"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* povinná pole"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -6954,16 +6952,12 @@ msgid "this game"
 msgstr "tato hra"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:48
-#, fuzzy
-#| msgid "lobby"
 msgid "Lobby"
-msgstr "čekárna"
+msgstr "Čekárna"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
-msgstr "Hry"
+msgstr "Hra"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:505
 msgid "Waiting for players to choose factions..."
