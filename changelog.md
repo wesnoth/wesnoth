@@ -7,6 +7,7 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
  ### Translations
    * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
  ### Units
