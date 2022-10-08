@@ -559,17 +559,18 @@ void wesnothd_connection::set_keepalive(int seconds)
 	utils::get<raw_socket>(socket_)->set_option(option);
 
 #ifdef __linux__
-	int cnt = 5;
-	int interval = 1;
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &seconds, sizeof(seconds));
+	int timeout = 10;
+	int cnt = std::max((seconds - 10) / 10, 1);
+	int interval = 10;
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
 #elif defined(__APPLE__) && defined(__MACH__)
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &seconds, sizeof(seconds));
 #elif defined(_WIN32)
 	// these are in milliseconds for windows
-	seconds *= 1000;
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_RCVTIMEO, (const char*)&seconds, sizeof(seconds));
-	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, (const char*)&seconds, sizeof(seconds));
+	DWORD timeout_ms = seconds * 1000;
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
 #endif
 }
