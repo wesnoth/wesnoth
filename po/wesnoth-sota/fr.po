@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Secrets_of_the_Ancients-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-01-17 20:52 UTC\n"
-"PO-Revision-Date: 2022-09-09 09:43+0800\n"
+"PO-Revision-Date: 2022-10-05 16:12+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -897,7 +897,7 @@ msgid ""
 msgstr ""
 "22/03/23 ap. W.\n"
 "\n"
-"La recherche avance parfois à coup d'expérience, donc j'ai commencé. "
+"La recherche avance parfois à coup d'expériences, donc j'ai commencé. "
 "Initialement le bandit voulait me voler, mais parce que j'avais tué sa "
 "tendre, je savais qu'il désirait alors me faire souffrir avant de me tuer. "
 "Comme il était sous mon contrôle, il était effrayé et humble et si la haine "
@@ -905,6 +905,7 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:58
+#, fuzzy
 msgid ""
 "I passed him a wineskin, to put him at ease. He eyed me suspiciously, then "
 "took a sip, calculating my intentions. I then placed a portion of my gold "
@@ -920,6 +921,20 @@ msgid ""
 "thousand suns — I could feel it more strongly than the fear or hunger from "
 "any of my pets..."
 msgstr ""
+"Je lui passai une outre de vin pour le mettre à l'aise. Il me regarda avec "
+"méfiance et il en but une gorgée en jaugeant mes intentions. Je plaçai alors "
+"une partie de mon argent sur la table et ses yeux regard se fixèrent sur "
+"l'or.\n"
+"\n"
+"Je déposai alors sur la table l'anneau d'or de Mossa le bandit, sa "
+"partenaire dans le crime. Son regard passa de l'or à l'anneau et se porta "
+"rapidement sur moi. Il m'aurait attaquée si je ne l'avais pas attaché à sa "
+"chaise.\n"
+"\n"
+"J'entassai plus de pièces sur la pile d'or, mais il n'y prêtait plus "
+"attention et il laissait peser sur moi son regard rempli de haine. Une soif "
+"de vengeance irradiait de lui comme le feu de mille soleils. Je pouvais la "
+"sentir plus forte que la faim ou la peur chez aucune de mes créatures..."
 
 #. [part]
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/04_Becalmed.cfg:75
@@ -1440,13 +1455,13 @@ msgstr ""
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:253
 #, fuzzy
-#| msgid "If there is one bat, there are certainly more. We should be careful."
 msgid ""
 "If there is one bat, there are certainly more. We should be careful. It "
 "would be foolish to explore this cave alone."
 msgstr ""
 "S'il y a une chauve-souris, il y en a certainement d'autres. Restons "
-"prudents. Ce serait de la folie d'explorer cette grotte seuls."
+"prudents. Ce serait bête de courir un danger en explorant seuls dans cette "
+"grotte."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/06_Following_the_Shadow.cfg:275
@@ -2491,13 +2506,14 @@ msgstr ""
 
 #. [message]: speaker=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:146
+#, fuzzy
 msgid ""
 "No! You can’t make thisss place more haunted than it isss! The femalesss "
 "already won’t come here, and we are forced to rely on these ssserpents for "
 "protection."
 msgstr ""
-"Non ! Cssset endroit ne doit pas devenir plusss hanté qu'il n'est déjà ! Les "
-"femelles sss'en tiennent déjà à l'écart, et nous devons compter sssur ces "
+"Non ! Cessst endroit ne doit pas devenir plus hanté qu'il n'est déjà ! Les "
+"femelles s'en tiennent déjà à l'écart, et nous devons compter sur ces "
 "ssserpents pour notre protection."
 
 #. [message]: speaker=Ardonna
@@ -2520,11 +2536,12 @@ msgstr ""
 
 #. [message]: speaker=Krissaz
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/11_Battleground.cfg:158
+#, fuzzy
 msgid ""
 "When the mage isss dead and her dead horde put to ressst, we agree. We will "
 "have been compensssated adequately."
 msgstr ""
-"Une fois la mage morte et sssa horde apaisssée, nous ssserons d'accord. Nous "
+"Une fois la mage morte et sa horde apaisée, nous ssserons d'accord. Nous "
 "ssserons alors adéquatement compensssés."
 
 #. [message]: speaker=Ardonna
@@ -3158,8 +3175,9 @@ msgstr "Les griffons... vivent à cette altitude. Soyons prudents."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/15_Mountain_Pass.cfg:363
+#, fuzzy
 msgid "Yesss. The danger I sssensed is here."
-msgstr ""
+msgstr "C'essst qu'ici est le danger que je sssens."
 
 #. [scenario]: id=16_The_Mage
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/16_The_Mage.cfg:9
@@ -3633,10 +3651,12 @@ msgstr "Pourquoi l'empire nain abandonnerait-il un tel avant-poste ?"
 msgid "We may find out. We should proceed cautiously."
 msgstr "Nous pourrions le découvrir. Avançons avec prudence."
 
+# Je garde ici les 'sss' pour « sssens », « sssecret » et autres « ssse... ». les double 's' originaux et les consonnes+s.
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:457
+#, fuzzy
 msgid "Giant spidersss! That explainsss the cobwebsss everywhere."
-msgstr "Des araignées géantes ! Ça exssplique les toiles partout."
+msgstr "Des araignées géantes ! C'essst qui exssplique les toiles partout."
 
 #. [message]: speaker=Ardonna
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/18_Abandoned_Outpost.cfg:463
@@ -4050,15 +4070,19 @@ msgstr ""
 "Vous arrivez à point nommé, Fizztsars. Maintenant ces créatures sont "
 "certaines d'y passer."
 
+# En vue de limiter le « zozotement » des sauriens (en multipliant les 's' dans une élocution par ailleurs parfaite), je voudrais proposer un autre tic dans la manière de s'exprimer « C'essst que/qui ». Ils l'utiliseraient souvent pour leur facilité à produire des 's', 'x' et 'k'.
 #. [message]: speaker=Fizztsars
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:588
+#, fuzzy
 msgid "Except for the male of oursss with them. He will come with usss."
-msgstr ""
+msgstr "Exsseption pour le mâle avec eux. C'essst qu'il vient avec nous."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:592
+#, fuzzy
 msgid "No! I will not return yet, I still have sssecrets to learn!"
 msgstr ""
+"Non, je ne retournerai pas. C'essst que j'ai des sssecrets à découvrir !"
 
 #. [unit]: type=Dwarvish Dragonguard, id=Thrigalurd
 #: data/campaigns/Secrets_of_the_Ancients/scenarios/21_Against_the_World.cfg:619
@@ -4434,13 +4458,14 @@ msgstr ""
 msgid "All Corpses"
 msgstr "Tous les zombis"
 
+# Ici « "unit" » affiché dans la liste de recrutement n'est pas une vraie unité (mais une entrée vers un dialogue de sélection parmi les types de zombis connus).
+# J'ai tenté de rendre cela plus clair en traduisant librement « unit » par « catégorie ».
 #. [unit_type]: id=SotA Walking Corpse_Dummy, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:104
 #, fuzzy
 msgid "Choose this “unit” to get a list of available corpses."
 msgstr ""
-"Choisissez cette \"catégorie\" pour accéder à la liste des zombis "
-"disponibles."
+"Choisissez cette catégorie pour accéder à la liste des zombis disponibles."
 
 #. [unit_type]: id=SotA Flying Corpse_Gryphon
 #. [unit_type]: id=SotA Flying Corpse_Bat
@@ -4551,8 +4576,10 @@ msgstr "Tu me manqueras."
 
 #. [message]: speaker=Vendraxis
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:307
+#, fuzzy
 msgid "Now I will never learn the sssecret of exssstending my ssspan."
 msgstr ""
+"C'essst que je ne connaîtrai jamais le sssecret de l'exssistence sans fin."
 
 #. [message]: speaker=Carcyn
 #: data/campaigns/Secrets_of_the_Ancients/utils/sota-utils.cfg:323
