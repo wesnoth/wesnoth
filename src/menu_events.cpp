@@ -1733,7 +1733,8 @@ void console_handler::do_clear()
 
 void console_handler::do_foreground()
 {
-	menu_handler_.gui_->toggle_debug_foreground();
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_FOREGROUND);
+	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_layers()
@@ -1764,7 +1765,7 @@ void console_handler::do_fps()
 
 void console_handler::do_benchmark()
 {
-	menu_handler_.gui_->toggle_benchmark();
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_BENCHMARK);
 }
 
 void console_handler::do_save()
@@ -2076,18 +2077,18 @@ void console_handler::do_event()
 
 void console_handler::do_toggle_draw_coordinates()
 {
-	menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_COORDINATES);
 	menu_handler_.gui_->invalidate_all();
 }
 void console_handler::do_toggle_draw_terrain_codes()
 {
-	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
 	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_draw_num_of_bitmaps()
 {
-	menu_handler_.gui_->set_draw_num_of_bitmaps(!menu_handler_.gui_->get_draw_num_of_bitmaps());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
 	menu_handler_.gui_->invalidate_all();
 }
 

@@ -4,14 +4,14 @@
 #
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2005.
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ..., 2022.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ..., 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:47-0500\n"
-"PO-Revision-Date: 2022-01-05 17:25+0300\n"
-"Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"PO-Revision-Date: 2022-08-21 14:14+0300\n"
+"Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -124,7 +124,7 @@ msgstr "12 saatlik gösterimi kullan"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:103
 msgid "Confirm loading saves from a different version"
-msgstr " Başka bir sürümün kayıtlı oyununu yüklerken sor"
+msgstr "Başka bir sürümün kayıtlı oyununu yüklerken sor"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:110
@@ -345,7 +345,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Diğer Katkıcılar"
 
 #. [about]
-#: data/core/about.cfg:1835
+#: data/core/about.cfg:1838
 msgid "Bots"
 msgstr "Botlar"
 
@@ -675,12 +675,12 @@ msgstr "Balta"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "Küçük Balta"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Fırlatma Baltası"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
@@ -754,12 +754,12 @@ msgstr "Kutu"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "Dal"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "Çıplak Dal"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
@@ -768,10 +768,8 @@ msgstr "Mangal"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Mangal"
+msgstr "Yanan Mangal"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -791,18 +789,14 @@ msgstr "Kafes"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
-msgstr "Kapalı Sade Sandık"
+msgstr "Kapalı Sandık"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
-msgstr "Açık Sade Sandık"
+msgstr "Açık Sandık"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
@@ -822,7 +816,7 @@ msgstr "Yeşil Pelerin"
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "Sopa"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
@@ -832,32 +826,28 @@ msgstr "Kapalı Tabut"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Kapalı Tabut"
+msgstr "Açık Tabut"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "Tatar yayı"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "Kama"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Zehir"
+msgstr "Zehirli Kama"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Zehirli Kama (temiz)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
@@ -871,10 +861,8 @@ msgstr "Yanan Kılıç"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Yanan Kılıç"
+msgstr "Büyüsüz Yanan Kılıç"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -912,10 +900,8 @@ msgstr "Buğday Demeti"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Rünik Çekiç"
+msgstr "Çekiç"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
@@ -936,10 +922,8 @@ msgstr "Anahtar"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Koyu Kırmızı"
+msgstr "Koyu Anahtar"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
@@ -949,21 +933,17 @@ msgstr "Deri Yığını"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "Gürz"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Yaşam çarmıhı kolyesi"
+msgstr "Kemik Kolye"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Yaşam çarmıhı kolyesi"
+msgstr "Taş Kolye"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
@@ -1056,14 +1036,12 @@ msgstr "Ateş Asası"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "Sapan"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Süslü Mızrak"
+msgstr "Mızrak"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1074,7 +1052,7 @@ msgstr "Süslü Mızrak"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "Cirit"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1084,10 +1062,8 @@ msgstr "Asa"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Büyü Asası"
+msgstr "Rahip Asası"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1097,17 +1073,13 @@ msgstr "Büyü Asası"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Büyü Asası"
+msgstr "Büyü Değneği"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Büyü Asası"
+msgstr "Düz Asa"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1136,56 +1108,48 @@ msgstr "Kılıç"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Kılıç"
+msgstr "Kutsal Kılıç"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Kılıç"
+msgstr "Kısa Kılıç"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Yanan Kılıç"
+msgstr "Sıska Kılıç"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Nazar Boncuğu"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Kemik Nazarlık"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Taş Yazıt"
+msgstr "Taş Nazarlık"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "Gürültü Silahı"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "Yanan Meşale"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Sönük Meşale"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
@@ -1377,10 +1341,8 @@ msgstr "Tapınak"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Mahvolmuş Çadır"
+msgstr "Harap Tapınak"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -1669,7 +1631,7 @@ msgstr ""
 #. [else]
 #: data/core/macros/deprecated-utils.cfg:35
 msgid "This unit has been renamed to: "
-msgstr "Bu birimin ismi şuna değişmiştir:"
+msgstr "Bu birimin ismi şuna değişmiştir: "
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
@@ -1679,7 +1641,7 @@ msgstr "Erken bitirme ödülü var."
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
-msgstr "Erken bitirme ödülü yok. "
+msgstr "Erken bitirme ödülü yok."
 
 #. [lua]: generate_objectives
 #: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
@@ -4332,7 +4294,7 @@ msgstr "Terfileri Planla"
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr "Bu terfi aynı türdeki tüm birimler için şimdilik öntanımlıdır."
+msgstr "Bu terfi aynı türdeki tüm birimler için şimdilik öntanımlıdır"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
@@ -4372,7 +4334,7 @@ msgstr "Durdur"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
 msgid "pause after current move"
-msgstr "Hamleden sonra dur"
+msgstr "hamleden sonra duraklat"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:443
@@ -4527,7 +4489,7 @@ msgid ""
 "event or AI coding."
 msgstr ""
 "Etkinlik veya yapay zeka koduyla sonradan adreslenecek alanları tanımlamak "
-"için harita düzenleyicisindeki <i>Alanlar</i> menüsünü kullanın"
+"için harita düzenleyicisindeki <i>Alanlar</i> menüsünü kullanın."
 
 #. [tip]
 #: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
@@ -5374,9 +5336,9 @@ msgid ""
 "Select the <i>Change difficulty</i> option at the bottom of the <i>Load "
 "Game</i> screen when loading start-of-scenario save files."
 msgstr ""
-"Zorluğu sefeberlik sırasında değiştirebileceğinizi biliyor muydunuz? Ana "
-"ekranda <i>Yükle</i> düğmesiyle açılan pencerede altta bulunan <i>Zorluğu "
-"değiştir</i> seçeneği bunun içindir. "
+"Zorluğu sefeberlik sırasında değiştirebileceğinizi biliyor muydunuz? Kayıtlı "
+"senaryo dosyalarını yüklerken <i>Oyunu Yükle</i> ekranının alt kısmındaki "
+"<i>Zorluğu değiştir</i> seçeneği bunun içindir."
 
 #. [tip]
 #: data/tips.cfg:275
@@ -5648,7 +5610,7 @@ msgstr "Yayım bilgi dosyası  (.pbl)"
 
 #: src/addon/client.cpp:563
 msgid "Version control system (VCS) information"
-msgstr "Sürüm denetim sistemi (SDS) bilgisi."
+msgstr "Sürüm denetim sistemi (SDS) bilgisi"
 
 #: src/addon/client.cpp:567
 msgid "Do you really wish to continue?"
@@ -5669,7 +5631,7 @@ msgstr "Senaryo"
 
 #: src/addon/info.cpp:257
 msgid "addon_type^SP/MP Campaign"
-msgstr "ÇO/TO Seferberlik"
+msgstr "TO/ÇO Seferberlik"
 
 #: src/addon/info.cpp:259
 msgid "addon_type^MP era"
@@ -5794,9 +5756,6 @@ msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Sunucudan eklentiler listesi indirilirken bir hata oluştu."
 
 #: src/addon/manager_ui.cpp:319
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr "Eklenti sunucusunda $addon_ids ile eşleşen eklentiler bulunamadı."
@@ -5956,55 +5915,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "Belirtilmemiş doğrulama hatası. "
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Gözardı listenize eklendi: $nick"
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "ignores list"
 msgstr "gözardı listesi"
 
-#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
+#: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
 msgid "Invalid username: $nick"
 msgstr "Geçersiz kullanıcı ismi: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "Added to friends list: $nick"
 msgstr "Arkadaş listenize eklendi: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "friends list"
 msgstr "arkadaş listesi"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "Removed from list: $nick"
 msgstr "Listenizden kaldırıldı: $nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "friends and ignores list"
 msgstr "arkadaşlar ve gözardı listesi"
 
-#: src/chat_command_handler.cpp:121
+#: src/chat_command_handler.cpp:127
 msgid "version"
 msgstr "sürüm"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "nick registration"
 msgstr "Kullanıcı ismi kaydı"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "requesting information for user $nick"
 msgstr "$nick kullanıcısı için bilgi isteniyor"
 
-#: src/chat_command_handler.hpp:49
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) — yönetici komutu"
 
-#: src/chat_command_handler.hpp:56 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(sadece yönetici)"
 
-#: src/chat_command_handler.hpp:72
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -6012,7 +5971,7 @@ msgstr ""
 "Sunucuya bir sorgu gönderir. Bir argüman belirtilmezse sunucu "
 "kullanılabilecek komutları listeleyecektir."
 
-#: src/chat_command_handler.hpp:76
+#: src/chat_command_handler.hpp:78
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -6020,41 +5979,41 @@ msgstr ""
 "Bir oyuncuyu veya seyirciyi atar veya yasaklar. Kullanıcı bir oyuna dahil "
 "değilse sadece ismine yasak konur."
 
-#: src/chat_command_handler.hpp:77 src/chat_command_handler.hpp:80
-#: src/chat_command_handler.hpp:82 src/chat_command_handler.hpp:84
-#: src/chat_command_handler.hpp:86 src/chat_command_handler.hpp:107
-#: src/chat_command_handler.hpp:109 src/chat_command_handler.hpp:111
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:119
 msgid "<nickname>"
 msgstr "<takma ad>"
 
-#: src/chat_command_handler.hpp:79
+#: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Bir kullanıcının engelini kaldırır. Oyunda olması gerekmez sunucuda olsun "
 "yeter."
 
-#: src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
 msgstr "Bir oyuncuyu veya seyirciyi atar."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Bir gözlemciyi susturur. Bir değiştirge belirtilmezse sessizlik durumunu "
 "gösterir."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Bir gözlemcinin sesini açar. Bir değiştirge belirtilmezse herkesin sesini "
 "açar."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Tüm seyircileri sustur/ses aç."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:92
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
@@ -6062,7 +6021,7 @@ msgstr ""
 "Sunucuya bir miktar veri gönderir.  Ağ bağlantısını doğrulamak ve kopmaları "
 "bildirmek için kullanılabilir."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:94
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -6070,15 +6029,15 @@ msgstr ""
 "Taciz, kural ihlalleri vb. sunucu moderatörlerine ihbar edin. Alakalı takma "
 "isimler vb. den bahsetmeyi de unutmayın."
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "<message>"
 msgstr "<İleti>"
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "Send an emotion or personal action in chat."
 msgstr "Sohbette bir duygu veya kişisel eylem gönderir."
 
-#: src/chat_command_handler.hpp:99
+#: src/chat_command_handler.hpp:101
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -6086,48 +6045,48 @@ msgstr ""
 "Özel ileti gönderir. İzlediğiniz veya oynadığınız devam eden bir oyundaki "
 "oyunculara özel ileti gönderemezsiniz."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:103
 msgid "<nickname> <message>"
 msgstr "<Takma ad> <ileti>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "<level> <domain>"
 msgstr "<seviye> <alan>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
 msgstr "Bir günlük kayıt alanının günlük kayıt seviyesini değiştirir."
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:109
 msgid "Add a nickname to your ignores list."
 msgstr "Gözardı listenize bir kullanıcı adı ekler."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111
 msgid "Add a nickname to your friends list."
 msgstr "Arkadaş listenize kullanıcı adı ekler."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:113
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Arkadaşlar veya gözardı listenizden kullanıcı adı siler."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "<N>"
 msgstr "<N>"
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 "Oyun kurulum lobisinde görünen 1 ile N arasında rastgele bir sayı alınır. "
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:117
 msgid "Display version information."
 msgstr "Sürüm bilgilerini gösterir."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:119
 msgid "Request information about a nickname."
 msgstr "Bir kullanıcı hakkında bilgi iste."
 
-#: src/chat_command_handler.hpp:119 src/menu_events.cpp:1244
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1244
 msgid "Clear chat history."
 msgstr "Sohbet geçmişini temizler."
 
@@ -6220,7 +6179,7 @@ msgstr "%b %d %Y"
 
 #: src/game_config.cpp:530
 msgid "Invalid color in range: "
-msgstr "Geçersiz renk aralığı:"
+msgstr "Geçersiz renk aralığı: "
 
 #: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
 #: src/game_config_manager.cpp:266
@@ -6239,7 +6198,7 @@ msgstr "Çekirdeği atlıyor."
 #: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
 #: src/game_config_manager.cpp:290
 msgid "Core ID: "
-msgstr "Çekirdek Kimliği:"
+msgstr "Çekirdek Kimliği: "
 
 #: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
@@ -6305,6 +6264,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Hata: [terfi] artık çalışmıyor. ‘$lower_level’ birimler ‘$higher_level’ "
+"birimlere terfi edemez; lütfen eklenti yazarından bunun yerine "
+"[modify_unit_type] kullanmasını isteyin."
 
 #: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6521,8 +6483,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "Düşman lider(ler)ini öldür"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "'$era' çağı bulunamıyor"
 
@@ -6762,7 +6722,7 @@ msgid "Error while reading the WML: "
 msgstr "WML okunurken hata: "
 
 #: src/game_initialization/playcampaign.cpp:353
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Oyun Bitti"
 
@@ -6840,19 +6800,19 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "Görünür bir taraf bulunamadı."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 #, fuzzy
 #| msgid "Save Game"
 msgid "Selected Game"
 msgstr "Oyunu Kaydet"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 #, fuzzy
 #| msgid "In lobby"
 msgid "Lobby"
 msgstr "Lobide"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 #, fuzzy
 #| msgid "Save Game"
 msgid "Other Games"
@@ -7001,9 +6961,13 @@ msgstr "Yönelim: "
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1072
+#, fuzzy
+#| msgid ""
+#| "This is a group of units, all of whom are <ref>dst='$topic_id' "
+#| "text='$help_taxonomy'</ref>"
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 msgstr ""
 "Bu, tümü <ref>dst='$topic_id' text='$help_taxonomy'</ref> olan bir birim "
 "grubudur."
@@ -7720,6 +7684,8 @@ msgstr "Değişken bulunamadı"
 #: src/menu_events.cpp:1988
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Hata ayıklama komutu 'birim: $unit' başarısız: seçilen veya üzerinde "
+"gezinilen bir birim yok."
 
 #: src/menu_events.cpp:2006
 msgid ""
@@ -7744,7 +7710,7 @@ msgstr "Geçersiz yer"
 msgid "prompt^Command:"
 msgstr "Komut:"
 
-#: src/mouse_events.cpp:1174
+#: src/mouse_events.cpp:1178
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7752,7 +7718,7 @@ msgstr ""
 "Gerçekleşmemiş askere alımlar veya çağrılar varken lideri içkaleden "
 "çıkaramazsınız."
 
-#: src/mouse_events.cpp:1269
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr "Birimin kullanılabilir bir silahı yok."
 
@@ -7800,15 +7766,15 @@ msgstr "Hareket bedeli 1’den küçük arazi saptandı."
 msgid "waiting for^a global variable"
 msgstr "küresel değişken"
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "El için kalan süre"
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "geçerli yerel saat"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1078
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7816,17 +7782,17 @@ msgstr ""
 "Oyun eşzamanlanamadı. Devam etmenin pek bir anlamı yok. Oyunu kaydetmek "
 "ister misiniz?"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1079
 msgid "Error details:"
 msgstr "Hata ayrıntıları:"
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1261
 msgid "Warning: broken campaign branches"
 msgstr "Uyarı: Bozuk seferberlik dalları"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1266
+#: src/play_controller.cpp:1267
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7835,7 +7801,7 @@ msgid_plural ""
 msgstr[0] "Sonraki senaryo eksik, seferberlik bitirilemeyecek."
 msgstr[1] "Sonraki senaryolar eksik, seferberlik bitirilemeyecek."
 
-#: src/play_controller.cpp:1273
+#: src/play_controller.cpp:1274
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7849,19 +7815,19 @@ msgstr[1] ""
 "Lütfen aşağıdaki eksik senaryoları seferberlik yazarına bildirin:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1277
+#: src/play_controller.cpp:1278
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Bu düzeltilince, bu senaryoyu yeniden başlatmalısınız."
 
-#: src/play_controller.cpp:1457
+#: src/play_controller.cpp:1458
 msgid "No objectives available"
 msgstr "Hiçbir Amaç yok"
 
-#: src/playmp_controller.cpp:160
+#: src/playmp_controller.cpp:162
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Geri alınan hareketler henüz sunucuya aktarılmadı."
 
-#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:376
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:377
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7869,7 +7835,7 @@ msgstr ""
 "Bir ağ bağlantı kopması oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musunuz?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7877,7 +7843,7 @@ msgstr ""
 "\n"
 "Oyunu kaydetmek ister misiniz?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7885,7 +7851,7 @@ msgstr ""
 "Oyun bitirildi.\n"
 "Sebep: "
 
-#: src/playmp_controller.cpp:385
+#: src/playmp_controller.cpp:389
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7902,7 +7868,7 @@ msgstr ""
 "\n"
 "Oyununuz için bir hata günlüğü kaydı ister misiniz?"
 
-#: src/playmp_controller.cpp:429
+#: src/playmp_controller.cpp:433
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7911,11 +7877,11 @@ msgstr ""
 "Bu taraf boşta. Oyuna devam etmek için başka bir denetleyici atanmalıdır. :"
 "droid, :control veya :give_control kullanabilirsiniz."
 
-#: src/playsingle_controller.cpp:158
+#: src/playsingle_controller.cpp:159
 msgid "Game Error"
 msgstr "Oyun Hatası"
 
-#: src/playsingle_controller.cpp:159
+#: src/playsingle_controller.cpp:160
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7925,11 +7891,11 @@ msgstr ""
 "anlamını bilmiyorsanız, büyük olasılıkla ya birisi hile yapıyor veya birisi "
 "bozuk bir oyunu yeniden yükledi."
 
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "The game is over."
 msgstr "Oyun sona erdi."
 
-#: src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:480
 msgid "It is now $name|’s turn"
 msgstr "Sıra $name|’de"
 
@@ -8048,209 +8014,209 @@ msgstr "Bu birim taşa çevirildi. Artık hareket edemez ve saldıramaz."
 msgid "Ability: "
 msgstr "Yetenek: "
 
-#: src/reports.cpp:434 src/reports.cpp:973
+#: src/reports.cpp:434 src/reports.cpp:978
 msgid " (inactive)"
 msgstr "(etkisiz)"
 
-#: src/reports.cpp:497
+#: src/reports.cpp:502
 msgid "Resistances: "
 msgstr "Dirençler: "
 
-#: src/reports.cpp:499
+#: src/reports.cpp:504
 msgid "(Att / Def)"
 msgstr "(Sald / Sav)"
 
-#: src/reports.cpp:530
+#: src/reports.cpp:535
 msgid "Experience Modifier: "
 msgstr "Tecrübe Niteleyicisi: "
 
-#: src/reports.cpp:580
+#: src/reports.cpp:585
 msgid "Terrain: "
 msgstr "Arazi: "
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "maximum^max."
 msgstr "azami."
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "minimum^min."
 msgstr "asgari."
 
-#: src/reports.cpp:602
+#: src/reports.cpp:607
 msgid "Defense: "
 msgstr "Savunma: "
 
-#: src/reports.cpp:637 src/reports.cpp:638
+#: src/reports.cpp:642 src/reports.cpp:643
 msgid "vision:"
 msgstr "görüş: "
 
-#: src/reports.cpp:642 src/reports.cpp:643
+#: src/reports.cpp:647 src/reports.cpp:648
 msgid "jamming:"
 msgstr "sıkıştırma: "
 
-#: src/reports.cpp:672
+#: src/reports.cpp:677
 msgid "Movement Costs:"
 msgstr "Hareket Bedelleri:"
 
-#: src/reports.cpp:808 src/reports.cpp:1062 src/reports.cpp:1074
+#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
 msgid "Weapon: "
 msgstr "Silah: "
 
-#: src/reports.cpp:809 src/reports.cpp:1063
+#: src/reports.cpp:814 src/reports.cpp:1068
 msgid "Damage: "
 msgstr "Hasar: "
 
-#: src/reports.cpp:813
+#: src/reports.cpp:818
 msgid "Base damage: "
 msgstr "Temel hasar: "
 
-#: src/reports.cpp:815 src/reports.cpp:849 src/reports.cpp:859
+#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
 msgid "With specials: "
 msgstr "Özeller ile: "
 
-#: src/reports.cpp:818
+#: src/reports.cpp:823
 msgid "Time of day: "
 msgstr "Günün saati: "
 
-#: src/reports.cpp:822
+#: src/reports.cpp:827
 msgid "Leadership: "
 msgstr "Liderlik: "
 
-#: src/reports.cpp:826
+#: src/reports.cpp:831
 msgid "Slowed: "
 msgstr "Yavaşlatılmış: "
 
-#: src/reports.cpp:830
+#: src/reports.cpp:835
 msgid "Attacks: "
 msgstr "Saldırılar: "
 
-#: src/reports.cpp:834
+#: src/reports.cpp:839
 msgid "Max swarm bonus: "
 msgstr "Azami üşüşme ödülü: "
 
-#: src/reports.cpp:835 src/reports.cpp:854
+#: src/reports.cpp:840 src/reports.cpp:859
 msgid "Swarm: "
 msgstr "Üşüşme: "
 
-#: src/reports.cpp:836 src/reports.cpp:847 src/reports.cpp:858
+#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
 msgid "Base attacks: "
 msgstr "Temel saldırılar: "
 
-#: src/reports.cpp:842
+#: src/reports.cpp:847
 msgid "Specials: "
 msgstr "Özeller: "
 
-#: src/reports.cpp:852
+#: src/reports.cpp:857
 msgid "Subject to swarm: "
 msgstr "Üşüşülecek hedef: "
 
-#: src/reports.cpp:879
+#: src/reports.cpp:884
 msgid "Weapon range: "
 msgstr "Silah menzili: "
 
-#: src/reports.cpp:880
+#: src/reports.cpp:885
 msgid "Damage type: "
 msgstr "Hasar türü: "
 
-#: src/reports.cpp:881
+#: src/reports.cpp:886
 msgid "Damage versus: "
 msgstr "Aleyhinde hasar: "
 
-#: src/reports.cpp:940
+#: src/reports.cpp:945
 msgid "Accuracy:"
 msgstr "İsabetlilik:"
 
-#: src/reports.cpp:945
+#: src/reports.cpp:950
 msgid "Parry:"
 msgstr "Savuştur:"
 
-#: src/reports.cpp:971
+#: src/reports.cpp:976
 msgid "Weapon special: "
 msgstr "Silah özel: "
 
-#: src/reports.cpp:1046
+#: src/reports.cpp:1051
 msgid "weapon^None"
 msgstr "Hiç"
 
-#: src/reports.cpp:1075
+#: src/reports.cpp:1080
 msgid "Total damage"
 msgstr "Toplam hasar"
 
-#: src/reports.cpp:1139
+#: src/reports.cpp:1144
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Saldırı"
 msgstr[1] "Saldırılar"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1147
+#: src/reports.cpp:1152
 msgid "Remaining: $left/$max"
 msgstr "Kalan: $left/$max"
 
-#: src/reports.cpp:1151
+#: src/reports.cpp:1156
 msgid "This unit can attack multiple times per turn."
 msgstr "Bu birim bir elde birden fazla saldırı yapabilir."
 
-#: src/reports.cpp:1243
+#: src/reports.cpp:1248
 msgid "Time of day schedule:"
 msgstr "Günün saati zamanlaması: "
 
-#: src/reports.cpp:1292
+#: src/reports.cpp:1297
 msgid "Time of day:"
 msgstr "Günün saati: "
 
-#: src/reports.cpp:1293 src/reports.cpp:1347
+#: src/reports.cpp:1298 src/reports.cpp:1352
 msgid "Lawful units: "
 msgstr "Adil birimler: "
 
-#: src/reports.cpp:1295 src/reports.cpp:1349
+#: src/reports.cpp:1300 src/reports.cpp:1354
 msgid "Neutral units: "
 msgstr "Tarafsız birimler: "
 
-#: src/reports.cpp:1296 src/reports.cpp:1350
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Chaotic units: "
 msgstr "Kaypak birimler: "
 
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1303 src/reports.cpp:1357
 msgid "Liminal units: "
 msgstr "İntikalî birimler: "
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1416
 msgid "Turn Number"
 msgstr "El Numarası"
 
-#: src/reports.cpp:1413
+#: src/reports.cpp:1418
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "Oyun 2. sayının belirttiği tur sayısını aşınca sona erecektir."
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid "Gold"
 msgstr "Altın"
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "Askere alım ve ordunun bakımı için mevcut altın miktarı."
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "The fraction of known villages that your side has captured."
 msgstr "Tarafınızın ele geçirdiği bilinen köylerin oranı"
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "Villages"
 msgstr "Köyler"
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "The total number of units on your side."
 msgstr "Tarafınızdaki toplam birim sayısı."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "Units"
 msgstr "Birimler"
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8263,15 +8229,15 @@ msgstr ""
 "toplamdır. İkinci sayı ise köy gelirlerinin kapattıkları da dahil toplam "
 "bakım masrafı — yani köyleriniz olmasaydı eksilecek altın miktarı."
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid "Upkeep"
 msgstr "Gider"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid "Net Income"
 msgstr "Net Gelir"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8279,37 +8245,33 @@ msgstr ""
 "Elinizde bulunan köylerden her el kazandığınız net altın miktarı, ya da "
 "birim bakımı için her el kaybettiğiniz altın miktarı."
 
-#: src/reports.cpp:1677
+#: src/reports.cpp:1682
 msgid "Observers:"
 msgstr "Seyirciler:"
 
-#: src/reports.cpp:1719
+#: src/reports.cpp:1724
 msgid "Clock"
 msgstr "Saat"
 
-#: src/reports.cpp:1730
+#: src/reports.cpp:1735
 msgid "Battery"
 msgstr "Pil"
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Countdown until your turn automatically ends."
 msgstr "Elinizin kendiliğinden bitmesine geri sayım."
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Turn Countdown"
 msgstr "El geri sayımı"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %Y, %I:%M %p"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %d %b %Y, %I:%M %p"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %Y, %H:%M"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %Y, %H:%M"
 
@@ -8762,44 +8724,44 @@ msgstr "intikalî"
 msgid "female^neutral"
 msgstr "tarafsız"
 
-#: src/units/unit.cpp:1858
+#: src/units/unit.cpp:1860
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1864
+#: src/units/unit.cpp:1866
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> YP"
 
-#: src/units/unit.cpp:1874
+#: src/units/unit.cpp:1876
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> görüş"
 
-#: src/units/unit.cpp:1884
+#: src/units/unit.cpp:1886
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> sıkıştırma"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "Terfi için <span color=\"$color\">$number_or_percent</span> TP"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1895
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 
-#: src/units/unit.cpp:1900
+#: src/units/unit.cpp:1902
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> çağırma bedeli"
 
-#: src/units/unit.cpp:2341
+#: src/units/unit.cpp:2343
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 
@@ -8823,7 +8785,7 @@ msgstr "ÇÖ $year"
 msgid "$year AF"
 msgstr "ÇS $year"
 
-#: src/wesnothd_connection.cpp:543
+#: src/wesnothd_connection.cpp:544
 msgid "Disconnected from server."
 msgstr "Sunucudan kopuldu."
 
@@ -8847,8 +8809,13 @@ msgstr "Planları $player için gizle"
 msgid "Whiteboard Options"
 msgstr "Beyaztahta Ayarları"
 
-#~ msgid "Chest"
-#~ msgstr "Sandık"
+#~ msgid ""
+#~ "Some types of terrain give unique bonuses, such as healing or "
+#~ "illumination."
+#~ msgstr "Bazı arazi türlerinin iyileştirme, aydınlatma gibi etkileri vardır."
+
+#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
+#~ msgstr "<i>― Uçuş Lideri Galun, VY 5</i>"
 
 #~ msgid "Independent"
 #~ msgstr "Bağımsız"
@@ -8858,24 +8825,3 @@ msgstr "Beyaztahta Ayarları"
 
 #~ msgid "No Ally Mirror"
 #~ msgstr "Müttefik yansı yok"
-
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr "Bazı arazi türlerinin iyileştirme, aydınlatma gibi etkileri vardır."
-
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Uçuş Lideri Galun, VY 5</i>"
-
-#, fuzzy
-#~| msgid "not available."
-#~ msgid "List available rooms."
-#~ msgstr " Mevcut değil."
-
-#, fuzzy
-#~| msgid "Chat message"
-#~ msgid "Room message."
-#~ msgstr "Sohbet iletisi"
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Kullan [modify_unit_type]\n"

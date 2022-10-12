@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:47-0500\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -344,7 +344,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Atres colaboradors"
 
 #. [about]
-#: data/core/about.cfg:1835
+#: data/core/about.cfg:1838
 msgid "Bots"
 msgstr "Robots"
 
@@ -5751,128 +5751,128 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 #, fuzzy
 msgid "Added to ignore list: $nick"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 #, fuzzy
 msgid "ignores list"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
+#: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
 #, fuzzy
 msgid "Invalid username: $nick"
 msgstr "Nom d'usuari invàlit"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 #, fuzzy
 msgid "Added to friends list: $nick"
 msgstr "Afegir al llistat d'amics:"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 #, fuzzy
 msgid "friends list"
 msgstr "Afegir al llistat d'amics:"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 #, fuzzy
 msgid "Removed from list: $nick"
 msgstr "Eliminat del llistat:"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 #, fuzzy
 msgid "friends and ignores list"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/chat_command_handler.cpp:121
+#: src/chat_command_handler.cpp:127
 #, fuzzy
 msgid "version"
 msgstr "Versió"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "nick registration"
 msgstr ""
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 #, fuzzy
 msgid "requesting information for user $nick"
 msgstr "No s'ha trobat l'informació sobre les eres."
 
-#: src/chat_command_handler.hpp:49
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr ""
 
-#: src/chat_command_handler.hpp:56 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1194
 #, fuzzy
 msgid "(admin only)"
 msgstr "Només equip"
 
-#: src/chat_command_handler.hpp:72
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
 msgstr ""
 
-#: src/chat_command_handler.hpp:76
+#: src/chat_command_handler.hpp:78
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
 
-#: src/chat_command_handler.hpp:77 src/chat_command_handler.hpp:80
-#: src/chat_command_handler.hpp:82 src/chat_command_handler.hpp:84
-#: src/chat_command_handler.hpp:86 src/chat_command_handler.hpp:107
-#: src/chat_command_handler.hpp:109 src/chat_command_handler.hpp:111
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:119
 #, fuzzy
 msgid "<nickname>"
 msgstr "Us: control <bando> <renom>"
 
-#: src/chat_command_handler.hpp:79
+#: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 
-#: src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
 msgstr ""
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr ""
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:92
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:94
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
 msgstr ""
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 #, fuzzy
 msgid "<message>"
 msgstr "Mensage: "
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 #, fuzzy
 msgid "Send an emotion or personal action in chat."
 msgstr "Enviar un «emoticon» o acció personal al chat. Us: /me <mensage>"
 
-#: src/chat_command_handler.hpp:99
+#: src/chat_command_handler.hpp:101
 #, fuzzy
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
@@ -5881,55 +5881,55 @@ msgstr ""
 "Enviar un mensage privat. No pots enviar mensages a jugadors que controlen "
 "qualsevol bando del joc. Us: /whisper [renom] [mensage]"
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:103
 #, fuzzy
 msgid "<nickname> <message>"
 msgstr "Mensage: "
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "<level> <domain>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
 msgstr ""
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:109
 #, fuzzy
 msgid "Add a nickname to your ignores list."
 msgstr "Afegir un jugador al teu llistat d'ignorats. Us: /ignore add <renom>"
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111
 #, fuzzy
 msgid "Add a nickname to your friends list."
 msgstr "Afegir al llistat d'amics:"
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:113
 #, fuzzy
 msgid "Remove a nickname from your ignores or friends list."
 msgstr ""
 "Eliminar un jugador del teu llistat d'ignorats o amics. Us: /list remove "
 "<renom>"
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:117
 #, fuzzy
 msgid "Display version information."
 msgstr "No s'ha trobat l'informació sobre les eres."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:119
 #, fuzzy
 msgid "Request information about a nickname."
 msgstr "No s'ha trobat l'informació sobre les eres."
 
-#: src/chat_command_handler.hpp:119 src/menu_events.cpp:1244
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1244
 #, fuzzy
 msgid "Clear chat history."
 msgstr ""
@@ -6630,7 +6630,7 @@ msgid "Error while reading the WML: "
 msgstr "Erro mentres es llegia el WML:"
 
 #: src/game_initialization/playcampaign.cpp:353
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Partida perduda"
 
@@ -6710,18 +6710,18 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "No s'ha trobat cap bando."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 #, fuzzy
 msgid "Selected Game"
 msgstr "Selecciona una unitat:"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 #, fuzzy
 #| msgid "Game Lobby"
 msgid "Lobby"
 msgstr "Sala de joc"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other Games"
@@ -6900,7 +6900,7 @@ msgstr "Alineació: "
 #: src/help/help_impl.cpp:1072
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 msgstr ""
 
 #: src/help/help_impl.cpp:1077
@@ -7711,7 +7711,7 @@ msgstr "Color no vàlit"
 msgid "prompt^Command:"
 msgstr "Orde:"
 
-#: src/mouse_events.cpp:1174
+#: src/mouse_events.cpp:1178
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -7719,7 +7719,7 @@ msgid ""
 msgstr ""
 "El teu líder ha d'estar en una torre per a reclutar o reincorporar unitats."
 
-#: src/mouse_events.cpp:1269
+#: src/mouse_events.cpp:1273
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -7773,15 +7773,15 @@ msgstr "S'ha trobat un terreny ab un cost de moviment menor que 1."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1078
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7790,18 +7790,18 @@ msgstr ""
 "La partida no està sincronisada i haurà de finalisar. ¿Vols guardar un "
 "registre d'erros de la partida?"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1079
 #, fuzzy
 msgid "Error details:"
 msgstr "Erro"
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1261
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1266
+#: src/play_controller.cpp:1267
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7810,7 +7810,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1273
+#: src/play_controller.cpp:1274
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7820,19 +7820,19 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1277
+#: src/play_controller.cpp:1278
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1457
+#: src/play_controller.cpp:1458
 msgid "No objectives available"
 msgstr "No hi ha objectius"
 
-#: src/playmp_controller.cpp:160
+#: src/playmp_controller.cpp:162
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:376
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:377
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7841,7 +7841,7 @@ msgstr ""
 "S'ha produït una desconexió de la ret i la partida no pot continuar. ¿Vols "
 "guardar la partida?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -7849,7 +7849,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "¿Estàs segur de que vols suprimir esta partida?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -7857,7 +7857,7 @@ msgid ""
 "Reason: "
 msgstr "La partida ha segut guardada."
 
-#: src/playmp_controller.cpp:385
+#: src/playmp_controller.cpp:389
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7874,31 +7874,31 @@ msgstr ""
 "\n"
 "¿Vols guardar un registre d'erros de la teua partida?"
 
-#: src/playmp_controller.cpp:429
+#: src/playmp_controller.cpp:433
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:158
+#: src/playsingle_controller.cpp:159
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Erro"
 
-#: src/playsingle_controller.cpp:159
+#: src/playsingle_controller.cpp:160
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:480
 msgid "It is now $name|’s turn"
 msgstr "És la tanda de $name|."
 
@@ -8038,162 +8038,162 @@ msgstr "Esta unitat ha segut convertida en pedra. No es pot moure ni atacar."
 msgid "Ability: "
 msgstr "Habilitats: "
 
-#: src/reports.cpp:434 src/reports.cpp:973
+#: src/reports.cpp:434 src/reports.cpp:978
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:497
+#: src/reports.cpp:502
 msgid "Resistances: "
 msgstr "Resistències:"
 
-#: src/reports.cpp:499
+#: src/reports.cpp:504
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:530
+#: src/reports.cpp:535
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modificador d'experiència: "
 
-#: src/reports.cpp:580
+#: src/reports.cpp:585
 #, fuzzy
 msgid "Terrain: "
 msgstr "Terreny"
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:602
+#: src/reports.cpp:607
 #, fuzzy
 msgid "Defense: "
 msgstr "Defensa"
 
-#: src/reports.cpp:637 src/reports.cpp:638
+#: src/reports.cpp:642 src/reports.cpp:643
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "Versió:"
 
-#: src/reports.cpp:642 src/reports.cpp:643
+#: src/reports.cpp:647 src/reports.cpp:648
 #, fuzzy
 msgid "jamming:"
 msgstr "Matí"
 
-#: src/reports.cpp:672
+#: src/reports.cpp:677
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Cost de moviment"
 
-#: src/reports.cpp:808 src/reports.cpp:1062 src/reports.cpp:1074
+#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
 #, fuzzy
 msgid "Weapon: "
 msgstr "alcanç de l'arma: "
 
-#: src/reports.cpp:809 src/reports.cpp:1063
+#: src/reports.cpp:814 src/reports.cpp:1068
 #, fuzzy
 msgid "Damage: "
 msgstr "Dany"
 
-#: src/reports.cpp:813
+#: src/reports.cpp:818
 #, fuzzy
 msgid "Base damage: "
 msgstr "Dany total"
 
-#: src/reports.cpp:815 src/reports.cpp:849 src/reports.cpp:859
+#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
 #, fuzzy
 msgid "With specials: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:818
+#: src/reports.cpp:823
 #, fuzzy
 msgid "Time of day: "
 msgstr "Hora del dia"
 
-#: src/reports.cpp:822
+#: src/reports.cpp:827
 #, fuzzy
 msgid "Leadership: "
 msgstr "Liderage"
 
-#: src/reports.cpp:826
+#: src/reports.cpp:831
 #, fuzzy
 msgid "Slowed: "
 msgstr "retardat"
 
-#: src/reports.cpp:830
+#: src/reports.cpp:835
 #, fuzzy
 msgid "Attacks: "
 msgstr "atacs"
 
-#: src/reports.cpp:834
+#: src/reports.cpp:839
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Bonificació PV màxim +"
 
-#: src/reports.cpp:835 src/reports.cpp:854
+#: src/reports.cpp:840 src/reports.cpp:859
 #, fuzzy
 msgid "Swarm: "
 msgstr "eixam"
 
-#: src/reports.cpp:836 src/reports.cpp:847 src/reports.cpp:858
+#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
 #, fuzzy
 msgid "Base attacks: "
 msgstr "atacs"
 
-#: src/reports.cpp:842
+#: src/reports.cpp:847
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Especial"
 
-#: src/reports.cpp:852
+#: src/reports.cpp:857
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:879
+#: src/reports.cpp:884
 #, fuzzy
 msgid "Weapon range: "
 msgstr "alcanç de l'arma: "
 
-#: src/reports.cpp:880
+#: src/reports.cpp:885
 #, fuzzy
 msgid "Damage type: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:881
+#: src/reports.cpp:886
 #, fuzzy
 msgid "Damage versus: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:940
+#: src/reports.cpp:945
 msgid "Accuracy:"
 msgstr ""
 
-#: src/reports.cpp:945
+#: src/reports.cpp:950
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:971
+#: src/reports.cpp:976
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:1046
+#: src/reports.cpp:1051
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1075
+#: src/reports.cpp:1080
 msgid "Total damage"
 msgstr "Dany total"
 
-#: src/reports.cpp:1139
+#: src/reports.cpp:1144
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8202,83 +8202,83 @@ msgstr[0] "Atacant"
 msgstr[1] "Atacant"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1147
+#: src/reports.cpp:1152
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1151
+#: src/reports.cpp:1156
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Est archiu no correspon a una partida multijugador."
 
-#: src/reports.cpp:1243
+#: src/reports.cpp:1248
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "Hora del dia"
 
-#: src/reports.cpp:1292
+#: src/reports.cpp:1297
 #, fuzzy
 msgid "Time of day:"
 msgstr "Hora del dia"
 
-#: src/reports.cpp:1293 src/reports.cpp:1347
+#: src/reports.cpp:1298 src/reports.cpp:1352
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1295 src/reports.cpp:1349
+#: src/reports.cpp:1300 src/reports.cpp:1354
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:1296 src/reports.cpp:1350
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1303 src/reports.cpp:1357
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1416
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Tanda"
 
-#: src/reports.cpp:1413
+#: src/reports.cpp:1418
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid "Gold"
 msgstr "Or"
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "Villages"
 msgstr "Aldees"
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "Units"
 msgstr "Unitats"
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8287,39 +8287,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid "Upkeep"
 msgstr "Manteniment"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Beneficis"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1677
+#: src/reports.cpp:1682
 msgid "Observers:"
 msgstr "Observadors:"
 
-#: src/reports.cpp:1719
+#: src/reports.cpp:1724
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1730
+#: src/reports.cpp:1735
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8829,17 +8829,17 @@ msgstr "lleal"
 msgid "female^neutral"
 msgstr "no morta"
 
-#: src/units/unit.cpp:1858
+#: src/units/unit.cpp:1860
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1864
+#: src/units/unit.cpp:1866
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1874
+#: src/units/unit.cpp:1876
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8847,25 +8847,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1884
+#: src/units/unit.cpp:1886
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1895
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8874,13 +8874,13 @@ msgid_plural ""
 msgstr[0] "per tanda"
 msgstr[1] "per tanda"
 
-#: src/units/unit.cpp:1900
+#: src/units/unit.cpp:1902
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per tanda"
 
-#: src/units/unit.cpp:2341
+#: src/units/unit.cpp:2343
 msgid "$effect_description per level"
 msgstr "$effect_description per nivell"
 
@@ -8904,7 +8904,7 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:543
+#: src/wesnothd_connection.cpp:544
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Disconnected from server."

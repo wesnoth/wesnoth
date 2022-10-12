@@ -379,6 +379,15 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 	}
 
+	if(cmdline_opts.usercache_dir) {
+		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
+	}
+
+	if(cmdline_opts.usercache_path) {
+		PLAIN_LOG << filesystem::get_cache_dir();
+		return 0;
+	}
+
 	if(cmdline_opts.userconfig_dir) {
 		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
 	}

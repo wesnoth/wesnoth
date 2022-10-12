@@ -17,6 +17,7 @@
 #include "chat_events.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "game_version.hpp"
+#include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
 #include "map_command_handler.hpp"
 #include "preferences/display.hpp"
@@ -42,6 +43,11 @@ void chat_command_handler::do_emote()
 void chat_command_handler::do_network_send()
 {
 	chat_handler_.send_command(get_cmd(), get_data());
+}
+
+void chat_command_handler::do_network_send(const std::string& data)
+{
+	chat_handler_.send_command(get_cmd(), data);
 }
 
 void chat_command_handler::do_network_send_req_arg()
@@ -137,6 +143,15 @@ void chat_command_handler::do_info() {
 
 void chat_command_handler::do_clear_messages() {
 	chat_handler_.clear_messages();
+}
+
+void chat_command_handler::do_mp_report() {
+	std::string report_text;
+	gui2::dialogs::mp_report::execute(report_text);
+
+	if(!report_text.empty()) {
+		do_network_send(report_text);
+	}
 }
 
 }

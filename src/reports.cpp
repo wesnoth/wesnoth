@@ -444,9 +444,12 @@ static config unit_abilities(const unit* u, const map_location& loc)
 REPORT_GENERATOR(unit_abilities, rc)
 {
 	const unit *u = get_visible_unit(rc);
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
+	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
 
-	return unit_abilities(u, mouseover_hex);
+	return unit_abilities(u, hex);
 }
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
@@ -454,7 +457,9 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 
 	const map_location& mouseover_hex = rc.screen().mouseover_hex();
 	const unit *visible_unit = get_visible_unit(rc);
-	if(visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid())
+	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
+
+	if (visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex))
 		return unit_abilities(u, mouseover_hex);
 	else
 		return unit_abilities(u, u->get_location());
@@ -688,8 +693,8 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 		const bool cannot_move = tm.moves > u->total_movement();		// cannot move in this terrain
 		double movement_red_to_green = 100.0 - 25.0 * tm.moves;
 
-		// passing false to select the more saturated red-to-green scale
-		std::string color = game_config::red_to_green(movement_red_to_green, false).to_hex_string();
+		// passing true to select the less saturated red-to-green scale
+		std::string color = game_config::red_to_green(movement_red_to_green, true).to_hex_string();
 		tooltip << "<span foreground=\"" << color << "\">";
 		// A 5 MP margin; if the movement costs go above
 		// the unit's max moves + 5, we replace it with dashes.
@@ -704,7 +709,8 @@ static config unit_moves(reports::context & rc, const unit* u, bool is_visible_u
 			const int movement_hexes_per_turn = u->total_movement() / tm.moves;
 			tooltip << " ";
 			for(int i = 0; i < movement_hexes_per_turn; ++i) {
-				tooltip << "\u2b23";	// Unicode horizontal black hexagon
+				// Unicode horizontal black hexagon and Unicode zero width space (to allow a line break)
+				tooltip << "\u2b23\u200b";
 			}
 		}
 		tooltip << naps << '\n';
@@ -773,7 +779,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	{
 		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_side());
 		int base_damage = at.damage();
-		int specials_damage = at.modified_damage(false);
+		int specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
 		int tod_bonus = combat_modifier(get_visible_time_of_day_at(rc, hex), u.alignment(), u.is_fearless());
@@ -793,7 +799,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 
 		unsigned base_attacks = at.num_attacks();
 		unsigned min_attacks, max_attacks;
-		at.modified_attacks(false, min_attacks, max_attacks);
+		at.modified_attacks(min_attacks, max_attacks);
 		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
 		color_t dmg_color = font::weapon_color;

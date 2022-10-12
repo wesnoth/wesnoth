@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:47-0500\n"
-"PO-Revision-Date: 2022-08-03 23:53+0200\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"PO-Revision-Date: 2022-09-22 19:02+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -360,7 +360,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Contributi vari"
 
 #. [about]
-#: data/core/about.cfg:1835
+#: data/core/about.cfg:1838
 msgid "Bots"
 msgstr "Automazioni"
 
@@ -5623,10 +5623,8 @@ msgid "Add-ons Manager"
 msgstr "Gestore delle estensioni"
 
 #: src/addon/client.cpp:348
-#, fuzzy
-#| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
-msgstr "Invio dell’estensione <i>$addon_title</i>..."
+msgstr "Istallazione dell’estensione <i>$addon_title</i>..."
 
 #: src/addon/client.cpp:360 src/addon/client.cpp:386
 msgid ""
@@ -6033,55 +6031,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "Fallimento non specificato della validazione."
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Aggiunto all’elenco degli utenti da ignorare: $nick"
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "ignores list"
 msgstr "elenco degli utenti da ignorare"
 
-#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
+#: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
 msgid "Invalid username: $nick"
 msgstr "Nome utente non valido: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "Added to friends list: $nick"
 msgstr "Aggiunto all’elenco degli amici: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "friends list"
 msgstr "elenco degli amici"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "Removed from list: $nick"
 msgstr "Rimosso dall’elenco: $nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "friends and ignores list"
 msgstr "elenco degli amici e degli utenti da ignorare"
 
-#: src/chat_command_handler.cpp:121
+#: src/chat_command_handler.cpp:127
 msgid "version"
 msgstr "versione"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "nick registration"
 msgstr "registrazione del nickname"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "requesting information for user $nick"
 msgstr "richiesta di informazioni sull’utente $nick"
 
-#: src/chat_command_handler.hpp:49
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) – comando di amministrazione"
 
-#: src/chat_command_handler.hpp:56 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(solo amministratori)"
 
-#: src/chat_command_handler.hpp:72
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -6089,7 +6087,7 @@ msgstr ""
 "Invia un’interrogazione al server. Se privo di argomenti, il server dovrebbe "
 "elencare i comandi disponibili."
 
-#: src/chat_command_handler.hpp:76
+#: src/chat_command_handler.hpp:78
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -6097,42 +6095,42 @@ msgstr ""
 "Metti al bando ed espelli un giocatore o un osservatore. Se quell’utente non "
 "è in gioco, ma è presente solo sul server, verrà solamente messo al bando."
 
-#: src/chat_command_handler.hpp:77 src/chat_command_handler.hpp:80
-#: src/chat_command_handler.hpp:82 src/chat_command_handler.hpp:84
-#: src/chat_command_handler.hpp:86 src/chat_command_handler.hpp:107
-#: src/chat_command_handler.hpp:109 src/chat_command_handler.hpp:111
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:119
 msgid "<nickname>"
 msgstr "<nickname>"
 
-#: src/chat_command_handler.hpp:79
+#: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Rimuovi la messa al bando di un utente. Quest’ultimo non deve essere in "
 "gioco, ma presente sul server."
 
-#: src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
 msgstr "Espelli un giocatore o un osservatore."
 
 # verificare
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Togli la parola ad un osservatore. Se privo di argomenti, mostra lo stato "
 "degli utenti a cui è stata tolta la parola."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Dai la parola ad un osservatore. Se privo di argomenti, ridà la parola a "
 "tutti gli utenti."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Togli/dai la parola a tutti gli osservatori (in modo alterno)."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:92
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
@@ -6140,7 +6138,7 @@ msgstr ""
 "Invia dei dati al server. Può essere utilizzato per verificare le "
 "connessioni di rete e notificare delle disconnessioni."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:94
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -6149,16 +6147,16 @@ msgstr ""
 "Accertati di menzionare i nickname in questione e altre informazioni "
 "rilevanti."
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "<message>"
 msgstr "<messaggio>"
 
 # OK per l'emoticon, ma la "personal action" starebbe per?
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "Send an emotion or personal action in chat."
 msgstr "Invia un’emoticon o un’azione personale in chat."
 
-#: src/chat_command_handler.hpp:99
+#: src/chat_command_handler.hpp:101
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -6166,50 +6164,50 @@ msgstr ""
 "Invia un messaggio privato. Non puoi inviare messaggi privati ai giocatori "
 "impegnati in una partita che stai osservando o a cui partecipi."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:103
 msgid "<nickname> <message>"
 msgstr "<nickname> <messaggio>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "<level> <domain>"
 msgstr "<livello> <dominio>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
 msgstr "Cambia il livello di log di un dominio di log."
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:109
 msgid "Add a nickname to your ignores list."
 msgstr "Aggiungi un nickname all’elenco degli utenti da ignorare."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111
 msgid "Add a nickname to your friends list."
 msgstr "Aggiungi un nickname all’elenco degli amici."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:113
 msgid "Remove a nickname from your ignores or friends list."
 msgstr ""
 "Rimuovi un nickname dall’elenco degli amici o degli utenti da ignorare."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "<N>"
 msgstr "<N>"
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 "Scegli un numero a caso tra 1 d N tra quelli visibili nelle impostazioni di "
 "gioco della lobby."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:117
 msgid "Display version information."
 msgstr "Mostra le informazioni di versione."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:119
 msgid "Request information about a nickname."
 msgstr "Richiedi informazioni su un nickname."
 
-#: src/chat_command_handler.hpp:119 src/menu_events.cpp:1244
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1244
 msgid "Clear chat history."
 msgstr "Cancella la cronologia della chat."
 
@@ -6877,7 +6875,7 @@ msgid "Error while reading the WML: "
 msgstr "Errore durante la lettura del codice WML: "
 
 #: src/game_initialization/playcampaign.cpp:353
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Fine partita"
 
@@ -6957,15 +6955,15 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "Nessuna squadra visibile trovata."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 msgid "Selected Game"
 msgstr "Seleziona partita"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 msgid "Lobby"
 msgstr "Lobby"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 msgid "Other Games"
 msgstr "Altre partite"
 
@@ -7115,10 +7113,10 @@ msgstr "Allineamento: "
 #: src/help/help_impl.cpp:1072
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 msgstr ""
 "Questo è un gruppo di unità, tutte <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 
 #: src/help/help_impl.cpp:1077
 msgid "<header>text='Subgroups of units within this group'</header>"
@@ -7883,7 +7881,7 @@ msgstr "Posizione non valida"
 msgid "prompt^Command:"
 msgstr "Comando:"
 
-#: src/mouse_events.cpp:1174
+#: src/mouse_events.cpp:1178
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7891,7 +7889,7 @@ msgstr ""
 "Non puoi spostare il tuo condottiero fuori dalla fortezza con dei "
 "reclutamenti o dei richiami già pianificati."
 
-#: src/mouse_events.cpp:1269
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr "Quest’unità non dispone di armi utilizzabili."
 
@@ -7939,15 +7937,15 @@ msgstr "Riscontrato un terreno con costo di movimento inferiore a 1."
 msgid "waiting for^a global variable"
 msgstr "una variabile globale"
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "tempo rimasto per il turno attuale"
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "ora locale attuale"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1078
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7955,17 +7953,17 @@ msgstr ""
 "La partita è fuori sincrono: non avrebbe molto senso continuare a giocarla. "
 "Vuoi salvare la partita?"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1079
 msgid "Error details:"
 msgstr "Dettagli sull’errore:"
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1261
 msgid "Warning: broken campaign branches"
 msgstr "Attenzione: diramazioni della campagna non valide"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1266
+#: src/play_controller.cpp:1267
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7977,7 +7975,7 @@ msgstr[1] ""
 "Mancano alcuni dei prossimi scenari possibili: potresti non essere in grado "
 "di terminare questa campagna."
 
-#: src/play_controller.cpp:1273
+#: src/play_controller.cpp:1274
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7993,19 +7991,19 @@ msgstr[1] ""
 "mancano:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1277
+#: src/play_controller.cpp:1278
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Quando l’errore verrà sanato, dovrai riavviare questo scenario."
 
-#: src/play_controller.cpp:1457
+#: src/play_controller.cpp:1458
 msgid "No objectives available"
 msgstr "Nessun obiettivo disponibile"
 
-#: src/playmp_controller.cpp:160
+#: src/playmp_controller.cpp:162
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Annullamento delle mosse non ancora inviato al server."
 
-#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:376
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:377
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8013,7 +8011,7 @@ msgstr ""
 "Si è verificata una disconnessione dalla rete e la partita non potrà "
 "proseguire. Vuoi salvare la partita?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8021,7 +8019,7 @@ msgstr ""
 "\n"
 "Vuoi salvare la partita?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8029,7 +8027,7 @@ msgstr ""
 "Questa partita è stata terminata.\n"
 "Motivo: "
 
-#: src/playmp_controller.cpp:385
+#: src/playmp_controller.cpp:389
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8046,7 +8044,7 @@ msgstr ""
 "\n"
 "Vuoi conservare un resoconto dell’errore verificatosi nella tua partita?"
 
-#: src/playmp_controller.cpp:429
+#: src/playmp_controller.cpp:433
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -8056,11 +8054,11 @@ msgstr ""
 "partita, deve essere assegnata a un altro controllore. Per esempio, puoi "
 "utilizzare i comandi :droid, :control o :give_control."
 
-#: src/playsingle_controller.cpp:158
+#: src/playsingle_controller.cpp:159
 msgid "Game Error"
 msgstr "Errore di gioco"
 
-#: src/playsingle_controller.cpp:159
+#: src/playsingle_controller.cpp:160
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -8070,11 +8068,11 @@ msgstr ""
 "non comprendi il significato di questo messaggio, con tutta probabilità "
 "qualcuno sta barando oppure ha ricaricato una partita corrotta."
 
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "The game is over."
 msgstr "La partita è finita."
 
-#: src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:480
 msgid "It is now $name|’s turn"
 msgstr "È giunto il turno di $name|"
 
@@ -8196,179 +8194,179 @@ msgstr "Quest’unità è stata pietrificata: non può muoversi né attaccare."
 msgid "Ability: "
 msgstr "Abilità: "
 
-#: src/reports.cpp:434 src/reports.cpp:973
+#: src/reports.cpp:434 src/reports.cpp:978
 msgid " (inactive)"
 msgstr " (inattivo)"
 
-#: src/reports.cpp:497
+#: src/reports.cpp:502
 msgid "Resistances: "
 msgstr "Resistenze: "
 
-#: src/reports.cpp:499
+#: src/reports.cpp:504
 msgid "(Att / Def)"
 msgstr "(Att/Dif)"
 
-#: src/reports.cpp:530
+#: src/reports.cpp:535
 msgid "Experience Modifier: "
 msgstr "Modificatore dell’esperienza: "
 
-#: src/reports.cpp:580
+#: src/reports.cpp:585
 msgid "Terrain: "
 msgstr "Terreno: "
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "maximum^max."
 msgstr "max."
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:602
+#: src/reports.cpp:607
 msgid "Defense: "
 msgstr "Difesa: "
 
-#: src/reports.cpp:637 src/reports.cpp:638
+#: src/reports.cpp:642 src/reports.cpp:643
 msgid "vision:"
 msgstr "visuale:"
 
-#: src/reports.cpp:642 src/reports.cpp:643
+#: src/reports.cpp:647 src/reports.cpp:648
 msgid "jamming:"
 msgstr "disturbo:"
 
-#: src/reports.cpp:672
+#: src/reports.cpp:677
 msgid "Movement Costs:"
 msgstr "Costi di movimento:"
 
-#: src/reports.cpp:808 src/reports.cpp:1062 src/reports.cpp:1074
+#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
 msgid "Weapon: "
 msgstr "Arma: "
 
-#: src/reports.cpp:809 src/reports.cpp:1063
+#: src/reports.cpp:814 src/reports.cpp:1068
 msgid "Damage: "
 msgstr "Danno: "
 
-#: src/reports.cpp:813
+#: src/reports.cpp:818
 msgid "Base damage: "
 msgstr "Danno base: "
 
-#: src/reports.cpp:815 src/reports.cpp:849 src/reports.cpp:859
+#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
 msgid "With specials: "
 msgstr "Arma con attacchi speciali: "
 
-#: src/reports.cpp:818
+#: src/reports.cpp:823
 msgid "Time of day: "
 msgstr "Periodo della giornata: "
 
-#: src/reports.cpp:822
+#: src/reports.cpp:827
 msgid "Leadership: "
 msgstr "Comando: "
 
-#: src/reports.cpp:826
+#: src/reports.cpp:831
 msgid "Slowed: "
 msgstr "Rallentato: "
 
-#: src/reports.cpp:830
+#: src/reports.cpp:835
 msgid "Attacks: "
 msgstr "Attacchi: "
 
-#: src/reports.cpp:834
+#: src/reports.cpp:839
 msgid "Max swarm bonus: "
 msgstr "Bonus max. per lo sciame: "
 
-#: src/reports.cpp:835 src/reports.cpp:854
+#: src/reports.cpp:840 src/reports.cpp:859
 msgid "Swarm: "
 msgstr "Sciame: "
 
-#: src/reports.cpp:836 src/reports.cpp:847 src/reports.cpp:858
+#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
 msgid "Base attacks: "
 msgstr "Attacchi base: "
 
-#: src/reports.cpp:842
+#: src/reports.cpp:847
 msgid "Specials: "
 msgstr "Attacchi speciali: "
 
-#: src/reports.cpp:852
+#: src/reports.cpp:857
 msgid "Subject to swarm: "
 msgstr "Colpito dallo sciame: "
 
-#: src/reports.cpp:879
+#: src/reports.cpp:884
 msgid "Weapon range: "
 msgstr "Portata dell’arma: "
 
-#: src/reports.cpp:880
+#: src/reports.cpp:885
 msgid "Damage type: "
 msgstr "Tipo di danno: "
 
-#: src/reports.cpp:881
+#: src/reports.cpp:886
 msgid "Damage versus: "
 msgstr "Danno contro: "
 
-#: src/reports.cpp:940
+#: src/reports.cpp:945
 msgid "Accuracy:"
 msgstr "Accuratezza:"
 
 # parlerei più di "schivata", visto che le unità evitano semplicemente gli attacchi senza pararli con lo scudo [NdBonta-Kun]
-#: src/reports.cpp:945
+#: src/reports.cpp:950
 msgid "Parry:"
 msgstr "Schivata:"
 
-#: src/reports.cpp:971
+#: src/reports.cpp:976
 msgid "Weapon special: "
 msgstr "Attacchi speciali dell’arma: "
 
-#: src/reports.cpp:1046
+#: src/reports.cpp:1051
 msgid "weapon^None"
 msgstr "nessuna"
 
-#: src/reports.cpp:1075
+#: src/reports.cpp:1080
 msgid "Total damage"
 msgstr "Danno totale"
 
-#: src/reports.cpp:1139
+#: src/reports.cpp:1144
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Attacco"
 msgstr[1] "Attacchi"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1147
+#: src/reports.cpp:1152
 msgid "Remaining: $left/$max"
 msgstr "Rimanenti: $left/$max"
 
-#: src/reports.cpp:1151
+#: src/reports.cpp:1156
 msgid "This unit can attack multiple times per turn."
 msgstr "Questa unità può attaccare diverse volte ad ogni turno."
 
-#: src/reports.cpp:1243
+#: src/reports.cpp:1248
 msgid "Time of day schedule:"
 msgstr "Programma del Periodo della giornata:"
 
-#: src/reports.cpp:1292
+#: src/reports.cpp:1297
 msgid "Time of day:"
 msgstr "Periodo della giornata:"
 
-#: src/reports.cpp:1293 src/reports.cpp:1347
+#: src/reports.cpp:1298 src/reports.cpp:1352
 msgid "Lawful units: "
 msgstr "Unità legali: "
 
-#: src/reports.cpp:1295 src/reports.cpp:1349
+#: src/reports.cpp:1300 src/reports.cpp:1354
 msgid "Neutral units: "
 msgstr "Unità neutrali: "
 
-#: src/reports.cpp:1296 src/reports.cpp:1350
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Chaotic units: "
 msgstr "Unità caotiche: "
 
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1303 src/reports.cpp:1357
 msgid "Liminal units: "
 msgstr "Unità liminali: "
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1416
 msgid "Turn Number"
 msgstr "Turni"
 
-#: src/reports.cpp:1413
+#: src/reports.cpp:1418
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -8376,34 +8374,34 @@ msgstr ""
 "Il gioco finirà quando verranno giocati un numero di turni pari a quello "
 "indicato nella secondo valore."
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid "Gold"
 msgstr "Oro"
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Il quantitativo di oro attualmente disponibile per reclutare e mantenere l "
 "tua armata."
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "The fraction of known villages that your side has captured."
 msgstr "La frazione dei villaggi conosciuti che la tua squadra ha catturato."
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "Villages"
 msgstr "Villaggi"
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "The total number of units on your side."
 msgstr "Il numero totale di unità della tua squadra."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "Units"
 msgstr "Unità"
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8418,15 +8416,15 @@ msgstr ""
 "coperto dai villaggi. In altre parole, il quantitativo di oro che sarebbe "
 "dedotto se tu perdessi tutti i villaggi."
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid "Upkeep"
 msgstr "Mantenimento"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid "Net Income"
 msgstr "Entrate"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8435,23 +8433,23 @@ msgstr ""
 "degli introiti dei villaggi da te controllati e dell’oro necessario per il "
 "mantenimento delle unità."
 
-#: src/reports.cpp:1677
+#: src/reports.cpp:1682
 msgid "Observers:"
 msgstr "Osservatori:"
 
-#: src/reports.cpp:1719
+#: src/reports.cpp:1724
 msgid "Clock"
 msgstr "Orologio"
 
-#: src/reports.cpp:1730
+#: src/reports.cpp:1735
 msgid "Battery"
 msgstr "Batteria"
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Countdown until your turn automatically ends."
 msgstr "Conto alla rovescia fino alla fine automatica dei turni."
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Turn Countdown"
 msgstr "Conto alla rovescia dei turni"
 
@@ -8930,44 +8928,44 @@ msgstr "liminale"
 msgid "female^neutral"
 msgstr "neutrale"
 
-#: src/units/unit.cpp:1858
+#: src/units/unit.cpp:1860
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1864
+#: src/units/unit.cpp:1866
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PF"
 
-#: src/units/unit.cpp:1874
+#: src/units/unit.cpp:1876
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> mossa"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> mosse"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> visuale"
 
-#: src/units/unit.cpp:1884
+#: src/units/unit.cpp:1886
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> disturbo"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE per avanzare"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1895
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attacco per turno"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacchi per turno"
 
-#: src/units/unit.cpp:1900
+#: src/units/unit.cpp:1902
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> costo di richiamo"
 
-#: src/units/unit.cpp:2341
+#: src/units/unit.cpp:2343
 msgid "$effect_description per level"
 msgstr "$effect_description per livello"
 
@@ -8991,7 +8989,7 @@ msgstr "$year PC"
 msgid "$year AF"
 msgstr "$year DC"
 
-#: src/wesnothd_connection.cpp:543
+#: src/wesnothd_connection.cpp:544
 msgid "Disconnected from server."
 msgstr "Disconnesso dal server."
 
@@ -9022,10 +9020,6 @@ msgstr "Opzioni della lavagna"
 #~ "Alcuni tipi di terreno hanno dei bonus peculiari, quali abilità curative "
 #~ "o illuminazione."
 
-#, fuzzy
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Grande mago Delfador, 516AW </i>"
-
 #~ msgid "Independent"
 #~ msgstr "Indipendente"
 
@@ -9039,3 +9033,7 @@ msgstr "Opzioni della lavagna"
 
 #~ msgid "<room>"
 #~ msgstr "<stanza>"
+
+#, fuzzy
+#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
+#~ msgstr "<i>― Grande mago Delfador, 516AW </i>"

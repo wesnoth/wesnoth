@@ -11,6 +11,7 @@
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		4291489DA38012477DA3BA7C /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
+		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		460CA6D52143362800B89741 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		460D898624DC7831000B1ABC /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897824DC7830000B1ABC /* game.cpp */; };
 		460D898724DC7831000B1ABC /* ban.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897C24DC7830000B1ABC /* ban.cpp */; };
@@ -630,6 +631,7 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		903F959C1ED5489500F1BDD3 /* credentials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 903F959B1ED5489500F1BDD3 /* credentials.cpp */; };
 		903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -2032,6 +2034,7 @@
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
+		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mp_report.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
 		620A386215E9364E00A4F513 /* attack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack.cpp; sourceTree = "<group>"; };
 		620A386315E9364E00A4F513 /* attack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = attack.hpp; sourceTree = "<group>"; };
 		620A386415E9364E00A4F513 /* create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = create.cpp; sourceTree = "<group>"; };
@@ -3785,6 +3788,7 @@
 				46F92CCB2174F6A300602C1C /* plugin_executor.hpp */,
 				46F92CDD2174F6A300602C1C /* synced_choice_wait.cpp */,
 				46F92CC52174F6A300602C1C /* synced_choice_wait.hpp */,
+				58C649488B3014E6F7254B62 /* mp_report.cpp */,
 			);
 			path = multiplayer;
 			sourceTree = "<group>";
@@ -5712,6 +5716,7 @@
 				46F92E232174F6A400602C1C /* lobby.cpp in Sources */,
 				46F92E212174F6A400602C1C /* mp_change_control.cpp in Sources */,
 				36B146FAA79A55E9F43723B1 /* general.cpp in Sources */,
+				3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6373,6 +6378,7 @@
 				46F92C172174F5D700602C1C /* help_browser.cpp in Sources */,
 				915C68EC1DF1DCB000594B07 /* color.cpp in Sources */,
 				4291489DA38012477DA3BA7C /* general.cpp in Sources */,
+				87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

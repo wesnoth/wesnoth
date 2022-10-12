@@ -99,9 +99,9 @@ void editor_controller::init_gui()
 	gui_->change_display_context(&get_current_map_context());
 	gui_->add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
 	floating_label_manager_.reset(new font::floating_label_context());
-	gui().set_draw_coordinates(preferences::editor::draw_hex_coordinates());
-	gui().set_draw_terrain_codes(preferences::editor::draw_terrain_codes());
-	gui().set_draw_num_of_bitmaps(preferences::editor::draw_num_of_bitmaps());
+	gui().set_debug_flag(display::DEBUG_COORDINATES, preferences::editor::draw_hex_coordinates());
+	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, preferences::editor::draw_terrain_codes());
+	gui().set_debug_flag(display::DEBUG_NUM_BITMAPS, preferences::editor::draw_num_of_bitmaps());
 //	halo_manager_.reset(new halo::manager(*gui_));
 //	resources::halo = halo_manager_.get();
 //	^ These lines no longer necessary, the gui owns its halo manager.
@@ -510,11 +510,11 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_TOOL_ITEM:
 		return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_COORDINATES:
-		return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
+		return gui_->debug_flag_set(display::DEBUG_COORDINATES) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
-		return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
+		return gui_->debug_flag_set(display::DEBUG_TERRAIN_CODES) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
-		return gui_->get_draw_num_of_bitmaps() ? ACTION_ON : ACTION_OFF;
+		return gui_->debug_flag_set(display::DEBUG_NUM_BITMAPS) ? ACTION_ON : ACTION_OFF;
 
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
@@ -963,18 +963,18 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			return true;
 
 		case HOTKEY_EDITOR_DRAW_COORDINATES:
-			gui().set_draw_coordinates(!gui().get_draw_coordinates());
-			preferences::editor::set_draw_hex_coordinates(gui().get_draw_coordinates());
+			gui().toggle_debug_flag(display::DEBUG_COORDINATES);
+			preferences::editor::set_draw_hex_coordinates(gui().debug_flag_set(display::DEBUG_COORDINATES));
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
-			gui().set_draw_terrain_codes(!gui().get_draw_terrain_codes());
-			preferences::editor::set_draw_terrain_codes(gui().get_draw_terrain_codes());
+			gui().toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
+			preferences::editor::set_draw_terrain_codes(gui().debug_flag_set(display::DEBUG_TERRAIN_CODES));
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_DRAW_NUM_OF_BITMAPS:
-			gui().set_draw_num_of_bitmaps(!gui().get_draw_num_of_bitmaps());
-			preferences::editor::set_draw_num_of_bitmaps(gui().get_draw_num_of_bitmaps());
+			gui().toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
+			preferences::editor::set_draw_num_of_bitmaps(gui().debug_flag_set(display::DEBUG_NUM_BITMAPS));
 			gui().invalidate_all();
 			return true;
 		case HOTKEY_EDITOR_REMOVE_LOCATION: {

@@ -71,24 +71,4 @@ private:
 public:
 	/** draw a unit.  */
 	void redraw_unit(const unit & u) const;
-
-private:
-	/** draw a health/xp bar of a unit */
-	void draw_bar(int xpos, int ypos, const map_location& loc,
-		int height, double filled, const color_t& col, uint8_t alpha) const;
-
-	/**
-	 * Find where to draw the bar on an energy bar image.
-	 *
-	 * Results are cached so this can be called frequently.
-	 *
-	 * This looks for a coloured region with significant (>0x10) alpha
-	 * and blackish colour (<0x10 in RGB channels).
-	 */
-	rect calculate_energy_bar(const std::string& bar_image) const;
-
-	/** Scale a rect to the current zoom level. */
-	rect scaled_to_zoom(const rect& r) const;
-	/** Scale a point to the current zoom level. */
-	point scaled_to_zoom(const point& p) const;
 };

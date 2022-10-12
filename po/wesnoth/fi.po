@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:47-0500\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
 "PO-Revision-Date: 2022-06-22 17:53+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
@@ -349,7 +349,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Muut vaikuttajat"
 
 #. [about]
-#: data/core/about.cfg:1835
+#: data/core/about.cfg:1838
 msgid "Bots"
 msgstr "Botit"
 
@@ -5952,55 +5952,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "Määrittelemätön vahvistus virhe."
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Et enää saa viestejä, jotka lähettää $nick"
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "ignores list"
 msgstr "estettyjen lista"
 
-#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
+#: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
 msgid "Invalid username: $nick"
 msgstr "Virheellinen käyttäjänimi: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "Added to friends list: $nick"
 msgstr "Lisätty ystävälistalle: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "friends list"
 msgstr "ystävälista"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "Removed from list: $nick"
 msgstr "Poistettu listalta: $nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "friends and ignores list"
 msgstr "ystävien ja torjuttujen lista"
 
-#: src/chat_command_handler.cpp:121
+#: src/chat_command_handler.cpp:127
 msgid "version"
 msgstr "versio"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "nick registration"
 msgstr "käyttäjänimen rekisteröinti"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "requesting information for user $nick"
 msgstr "pyydetään tietoa nimimerkkiin $nick liittyen"
 
-#: src/chat_command_handler.hpp:49
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) — ylläpitokomento"
 
-#: src/chat_command_handler.hpp:56 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(vain ylläpitäjä)"
 
-#: src/chat_command_handler.hpp:72
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -6008,7 +6008,7 @@ msgstr ""
 "Lähetä pyyntö palvelimelle. Ilman parametrejä palvelimen pitäisi lähettää "
 "sinulle listan saatavilla olevista komennoista."
 
-#: src/chat_command_handler.hpp:76
+#: src/chat_command_handler.hpp:78
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -6016,38 +6016,38 @@ msgstr ""
 "Anna porttikielto pelaajalle tai katselijalle. Jos hän ei ole pelissä, mutta "
 "palvelimella, hän saa vain porttikiellon."
 
-#: src/chat_command_handler.hpp:77 src/chat_command_handler.hpp:80
-#: src/chat_command_handler.hpp:82 src/chat_command_handler.hpp:84
-#: src/chat_command_handler.hpp:86 src/chat_command_handler.hpp:107
-#: src/chat_command_handler.hpp:109 src/chat_command_handler.hpp:111
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:119
 msgid "<nickname>"
 msgstr "<nimimerkki>"
 
-#: src/chat_command_handler.hpp:79
+#: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Poista käyttäjän esto. Hänen ei tarvitse olla pelissä, mutta palvelimella."
 
-#: src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
 msgstr "Potki käyttäjä tai katselija."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Hiljennä katsoja. Ilman parametreja näyttää hiljennyksen tilan."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Vastaanota katsojan viestit. Ilman parametrejä poistaa suodatuksen kaikilta "
 "katsojilta."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Hiljennä/salli kaikki katsojat."
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:92
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
@@ -6055,7 +6055,7 @@ msgstr ""
 "Lähetä dataa palvelimelle. Voidaan käyttää varmistamaan verkkoyhteyttä ja "
 "paljastamaan yhteyden katkeamisia."
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:94
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -6063,15 +6063,15 @@ msgstr ""
 "Kaikenlaiset kiusanteot, sääntörikkomukset, jne., pitää ilmoittaa palvelimen "
 "moderaattoreille. Varmista, että asianosaisten käyttäjänimet mainitaan."
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "<message>"
 msgstr "<viesti>"
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "Send an emotion or personal action in chat."
 msgstr "Lähetä tunneilmaisu tai henkilökohtainen toimi keskustelussa."
 
-#: src/chat_command_handler.hpp:99
+#: src/chat_command_handler.hpp:101
 msgid ""
 "Send a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -6079,47 +6079,47 @@ msgstr ""
 "Lähetä yksityisviesti. Et voi lähettää viestejä pelaajille käynnissä "
 "olevassa pelissä jossa pelaat tai tarkkailet."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:103
 msgid "<nickname> <message>"
 msgstr "<nimimerkki> <viesti>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "<level> <domain>"
 msgstr "<taso> <alue>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
 msgstr "Vaihda lokipiirin lokitustasoa."
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:109
 msgid "Add a nickname to your ignores list."
 msgstr "Lisää pelaaja torjuttujen listallesi."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111
 msgid "Add a nickname to your friends list."
 msgstr "Lisää nimimerkki ystävälistallesi."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:113
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Poista nimimerkki ystävien tai torjuttujen listaltasi."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "<N>"
 msgstr "<N>"
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr "Hae näkyvästi satunnainen numero 1 ja N väliltä peliasettelun aulassa."
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:117
 msgid "Display version information."
 msgstr "Näytä versioon liittyvä tieto."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:119
 msgid "Request information about a nickname."
 msgstr "Pyydä tietoa nimimerkkiin liittyen."
 
-#: src/chat_command_handler.hpp:119 src/menu_events.cpp:1244
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1244
 msgid "Clear chat history."
 msgstr "Tyhjennä keskusteluhistoria."
 
@@ -6763,7 +6763,7 @@ msgid "Error while reading the WML: "
 msgstr "Virhe luettaessa WML:ää: "
 
 #: src/game_initialization/playcampaign.cpp:353
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Peli ohi"
 
@@ -6840,15 +6840,15 @@ msgstr[1] ""
 msgid "No visible sides found."
 msgstr "Näkyviä osapuolia ei löytynyt."
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 msgid "Selected Game"
 msgstr "Valittu peli:"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 msgid "Lobby"
 msgstr "Aula"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 msgid "Other Games"
 msgstr "Muut pelit"
 
@@ -6995,9 +6995,13 @@ msgstr "Suuntautuminen: "
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1072
+#, fuzzy
+#| msgid ""
+#| "This is a group of units, all of whom are <ref>dst='$topic_id' "
+#| "text='$help_taxonomy'</ref>"
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 msgstr ""
 "Tämä on ryhmä yksiköitä, jotka ovat kaikki <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
@@ -7751,7 +7755,7 @@ msgstr "Virheellinen sijainti"
 msgid "prompt^Command:"
 msgstr "Komento:"
 
-#: src/mouse_events.cpp:1174
+#: src/mouse_events.cpp:1178
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7759,7 +7763,7 @@ msgstr ""
 "Niin kauan kun suunniteltuja värväyksiä tai kutsumisia on jäljellä, johtajaa "
 "ei voi siirtää pois linnakkeesta."
 
-#: src/mouse_events.cpp:1269
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr "Tällä yksiköllä ei ole käyttökelpoista asetta."
 
@@ -7807,15 +7811,15 @@ msgstr "Maastoa jossa vähemmän kuin 1 liikkumiskulua kohdattu."
 msgid "waiting for^a global variable"
 msgstr "odotetaan^globaalimäärettä"
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "aikaa jäljellä nykyisellä vuorolla"
 
-#: src/play_controller.cpp:256
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "tämänhetkinen paikallinen aika"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1078
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7823,17 +7827,17 @@ msgstr ""
 "Peli on epätahdissa. On luultavasti parempi lopettaa kuin jatkaa. Haluatko "
 "tallentaa pelisi?"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1079
 msgid "Error details:"
 msgstr "Virheen kuvaus:"
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1261
 msgid "Warning: broken campaign branches"
 msgstr "Varoitus: rikkinäisiä kampanjahaaroja"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1266
+#: src/play_controller.cpp:1267
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7843,7 +7847,7 @@ msgstr[0] "Seuraava skenaario puuttuu, et voi lopettaa tätä kampanjaa."
 msgstr[1] ""
 "Jotkut mahdollisista skenaarioista puuttuvat, et voi lopettaa tätä kampanjaa."
 
-#: src/play_controller.cpp:1273
+#: src/play_controller.cpp:1274
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7859,26 +7863,26 @@ msgstr[1] ""
 "skenaarioista:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1277
+#: src/play_controller.cpp:1278
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Kun tämä on korjattu, sinun on ladattava tämä skenaario uudestaan."
 
-#: src/play_controller.cpp:1457
+#: src/play_controller.cpp:1458
 msgid "No objectives available"
 msgstr "Tavoitteita ei tarjolla"
 
-#: src/playmp_controller.cpp:160
+#: src/playmp_controller.cpp:162
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 
-#: src/playmp_controller.cpp:272 src/playsingle_controller.cpp:376
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:377
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7886,7 +7890,7 @@ msgstr ""
 "\n"
 "Haluatko tallentaa pelin?"
 
-#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:380
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7894,7 +7898,7 @@ msgstr ""
 "Tämä peli on päättynyt.\n"
 "Syy: "
 
-#: src/playmp_controller.cpp:385
+#: src/playmp_controller.cpp:389
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7911,7 +7915,7 @@ msgstr ""
 "\n"
 "Haluatko tallentaa virhelokin pelistäsi?"
 
-#: src/playmp_controller.cpp:429
+#: src/playmp_controller.cpp:433
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
@@ -7921,11 +7925,11 @@ msgstr ""
 "toiselle ohjattavaksi. Voit esimerkiksi käyttää :droid, :control tai :"
 "give_control."
 
-#: src/playsingle_controller.cpp:158
+#: src/playsingle_controller.cpp:159
 msgid "Game Error"
 msgstr "Virhe pelissä"
 
-#: src/playsingle_controller.cpp:159
+#: src/playsingle_controller.cpp:160
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -7935,11 +7939,11 @@ msgstr ""
 "viesti tarkoittaa, niin mitä todennäköisemmin joku on huijaamassa tai joku "
 "latasi uudelleen viallisen pelin."
 
-#: src/playsingle_controller.cpp:331
+#: src/playsingle_controller.cpp:332
 msgid "The game is over."
 msgstr "Peli on ohi."
 
-#: src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:480
 msgid "It is now $name|’s turn"
 msgstr "Nyt on vuorossa $name"
 
@@ -8059,213 +8063,213 @@ msgstr "Tämä yksikkö on kivetetty. Se ei voi liikkua eikä hyökätä."
 msgid "Ability: "
 msgstr "Erikoistaito: "
 
-#: src/reports.cpp:434 src/reports.cpp:973
+#: src/reports.cpp:434 src/reports.cpp:978
 msgid " (inactive)"
 msgstr " (epäaktiivinen)"
 
-#: src/reports.cpp:497
+#: src/reports.cpp:502
 msgid "Resistances: "
 msgstr "Vastustukset: "
 
-#: src/reports.cpp:499
+#: src/reports.cpp:504
 msgid "(Att / Def)"
 msgstr "(Hyök. / Puol. )"
 
-#: src/reports.cpp:530
+#: src/reports.cpp:535
 msgid "Experience Modifier: "
 msgstr "Vaadittu kokemus: "
 
-#: src/reports.cpp:580
+#: src/reports.cpp:585
 msgid "Terrain: "
 msgstr "Maasto: "
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "maximum^max."
 msgstr "maks."
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:602
+#: src/reports.cpp:607
 msgid "Defense: "
 msgstr "Puolustus: "
 
-#: src/reports.cpp:637 src/reports.cpp:638
+#: src/reports.cpp:642 src/reports.cpp:643
 msgid "vision:"
 msgstr "näkö:"
 
-#: src/reports.cpp:642 src/reports.cpp:643
+#: src/reports.cpp:647 src/reports.cpp:648
 msgid "jamming:"
 msgstr "häirintä:"
 
-#: src/reports.cpp:672
+#: src/reports.cpp:677
 msgid "Movement Costs:"
 msgstr "Liikkumiskulut:"
 
-#: src/reports.cpp:808 src/reports.cpp:1062 src/reports.cpp:1074
+#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
 msgid "Weapon: "
 msgstr "Ase: "
 
-#: src/reports.cpp:809 src/reports.cpp:1063
+#: src/reports.cpp:814 src/reports.cpp:1068
 msgid "Damage: "
 msgstr "Vahinko: "
 
-#: src/reports.cpp:813
+#: src/reports.cpp:818
 msgid "Base damage: "
 msgstr "Perusvahinko: "
 
-#: src/reports.cpp:815 src/reports.cpp:849 src/reports.cpp:859
+#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
 msgid "With specials: "
 msgstr "Aseen erikoisuus: "
 
-#: src/reports.cpp:818
+#: src/reports.cpp:823
 msgid "Time of day: "
 msgstr "Vuorokaudenaika: "
 
-#: src/reports.cpp:822
+#: src/reports.cpp:827
 msgid "Leadership: "
 msgstr "Johtamiskyky: "
 
-#: src/reports.cpp:826
+#: src/reports.cpp:831
 msgid "Slowed: "
 msgstr "Hidastettu: "
 
-#: src/reports.cpp:830
+#: src/reports.cpp:835
 msgid "Attacks: "
 msgstr "Hyökkäyksiä: "
 
-#: src/reports.cpp:834
+#: src/reports.cpp:839
 msgid "Max swarm bonus: "
 msgstr "Maks. parvibonus: "
 
-#: src/reports.cpp:835 src/reports.cpp:854
+#: src/reports.cpp:840 src/reports.cpp:859
 msgid "Swarm: "
 msgstr "Parvi: "
 
-#: src/reports.cpp:836 src/reports.cpp:847 src/reports.cpp:858
+#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
 msgid "Base attacks: "
 msgstr "Perushyökkäyksiä: "
 
-#: src/reports.cpp:842
+#: src/reports.cpp:847
 msgid "Specials: "
 msgstr "Erityiset: "
 
 # Mikä on konteksti?
-#: src/reports.cpp:852
+#: src/reports.cpp:857
 msgid "Subject to swarm: "
 msgstr "Parven kohde: "
 
-#: src/reports.cpp:879
+#: src/reports.cpp:884
 msgid "Weapon range: "
 msgstr "Aseen kantama: "
 
-#: src/reports.cpp:880
+#: src/reports.cpp:885
 msgid "Damage type: "
 msgstr "Vahinkotyyppi: "
 
-#: src/reports.cpp:881
+#: src/reports.cpp:886
 msgid "Damage versus: "
 msgstr "Vahinko vastaan: "
 
-#: src/reports.cpp:940
+#: src/reports.cpp:945
 msgid "Accuracy:"
 msgstr "Tarkkuus:"
 
-#: src/reports.cpp:945
+#: src/reports.cpp:950
 msgid "Parry:"
 msgstr "Torjunta:"
 
-#: src/reports.cpp:971
+#: src/reports.cpp:976
 msgid "Weapon special: "
 msgstr "Aseen erikoisuus: "
 
-#: src/reports.cpp:1046
+#: src/reports.cpp:1051
 msgid "weapon^None"
 msgstr "Ei ole"
 
-#: src/reports.cpp:1075
+#: src/reports.cpp:1080
 msgid "Total damage"
 msgstr "Kokonaisvahinko"
 
-#: src/reports.cpp:1139
+#: src/reports.cpp:1144
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Hyökkäys"
 msgstr[1] "Hyökkäykset"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1147
+#: src/reports.cpp:1152
 msgid "Remaining: $left/$max"
 msgstr "Jäljellä: $left/$max"
 
-#: src/reports.cpp:1151
+#: src/reports.cpp:1156
 msgid "This unit can attack multiple times per turn."
 msgstr "Tämä yksikkö voi hyökätä monta kertaa vuoron aikana."
 
-#: src/reports.cpp:1243
+#: src/reports.cpp:1248
 msgid "Time of day schedule:"
 msgstr "Vuorokausiohjelma:"
 
-#: src/reports.cpp:1292
+#: src/reports.cpp:1297
 msgid "Time of day:"
 msgstr "Vuorokaudenaika:"
 
-#: src/reports.cpp:1293 src/reports.cpp:1347
+#: src/reports.cpp:1298 src/reports.cpp:1352
 msgid "Lawful units: "
 msgstr "Lainkuuliaiset yksiköt: "
 
-#: src/reports.cpp:1295 src/reports.cpp:1349
+#: src/reports.cpp:1300 src/reports.cpp:1354
 msgid "Neutral units: "
 msgstr "Neutraalit yksiköt: "
 
-#: src/reports.cpp:1296 src/reports.cpp:1350
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Chaotic units: "
 msgstr "Kaoottiset yksiköt: "
 
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1303 src/reports.cpp:1357
 msgid "Liminal units: "
 msgstr "Hämäräyksiköt: "
 
-#: src/reports.cpp:1411
+#: src/reports.cpp:1416
 msgid "Turn Number"
 msgstr "Vuoronumero"
 
-#: src/reports.cpp:1413
+#: src/reports.cpp:1418
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 "Kun peli saavuttaa vuoromäärän, jota merkataan toisella numerolla, se loppuu."
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid "Gold"
 msgstr "Kultaa"
 
-#: src/reports.cpp:1438
+#: src/reports.cpp:1443
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Kultamäärä, joka on tällä hetkellä saatavilla yksiköiden värväämiseen ja "
 "ylläpitoon."
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "The fraction of known villages that your side has captured."
 msgstr "Osuus tunnetuista kylistä, jotka ovat sinun hallinnassasi."
 
-#: src/reports.cpp:1457
+#: src/reports.cpp:1462
 msgid "Villages"
 msgstr "Kylät"
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "The total number of units on your side."
 msgstr "Sinun puolellasi olevien yksiköiden kokonaismäärä."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1467
 msgid "Units"
 msgstr "Yksiköt"
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8279,15 +8283,15 @@ msgstr ""
 "määrä, sisältäen myös sen, jonka kylät korvaavat. Toisin sanoen se summa "
 "rahaa, joka vähennettäisiin, jos menettäisit kaikki kyläsi."
 
-#: src/reports.cpp:1472
+#: src/reports.cpp:1477
 msgid "Upkeep"
 msgstr "Ylläpito"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid "Net Income"
 msgstr "Nettotulo"
 
-#: src/reports.cpp:1509
+#: src/reports.cpp:1514
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8295,23 +8299,23 @@ msgstr ""
 "Nettosumma kultaa jonka saat tai menetät joka vuoro. Huomioon on otettu "
 "kontrolloiduista kylistä saatavat tulot ja armeijan ylläpidon kulut."
 
-#: src/reports.cpp:1677
+#: src/reports.cpp:1682
 msgid "Observers:"
 msgstr "Tarkkailijat:"
 
-#: src/reports.cpp:1719
+#: src/reports.cpp:1724
 msgid "Clock"
 msgstr "Kello"
 
-#: src/reports.cpp:1730
+#: src/reports.cpp:1735
 msgid "Battery"
 msgstr "Akku"
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Countdown until your turn automatically ends."
 msgstr "Laskuri vuorosi automaattiseen lopetukseen."
 
-#: src/reports.cpp:1761
+#: src/reports.cpp:1766
 msgid "Turn Countdown"
 msgstr "Vuorolaskuri"
 
@@ -8780,33 +8784,33 @@ msgstr "liminaali"
 msgid "female^neutral"
 msgstr "neutraali"
 
-#: src/units/unit.cpp:1858
+#: src/units/unit.cpp:1860
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1864
+#: src/units/unit.cpp:1866
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> EP"
 
-#: src/units/unit.cpp:1874
+#: src/units/unit.cpp:1876
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> liike"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> liikettä"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> näkö"
 
-#: src/units/unit.cpp:1884
+#: src/units/unit.cpp:1886
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> häirintä"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> KP ylennykseen"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1895
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8814,11 +8818,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> hyökkäys per vuoro
 msgstr[1] ""
 "<span color=\"$color\">$number_or_percent</span> hyökkäystä per vuoro"
 
-#: src/units/unit.cpp:1900
+#: src/units/unit.cpp:1902
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> maksu kutsuun"
 
-#: src/units/unit.cpp:2341
+#: src/units/unit.cpp:2343
 msgid "$effect_description per level"
 msgstr "$effect_description tasoa kohden"
 
@@ -8842,7 +8846,7 @@ msgstr "$year eTu."
 msgid "$year AF"
 msgstr "$year jTu."
 
-#: src/wesnothd_connection.cpp:543
+#: src/wesnothd_connection.cpp:544
 msgid "Disconnected from server."
 msgstr "Yhteys palvelimeen menetetty."
 

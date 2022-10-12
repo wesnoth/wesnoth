@@ -1,4 +1,4 @@
-## Version 1.17.7+dev
+## Version 1.17.8+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -7,11 +7,26 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
  ### Translations
+   * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+
+## Version 1.17.8
+ ### Editor
+   * add "elevation" terrain group
+ ### Multiplayer
+   * The /report command now opens a dialog rather than simply allowing free-form text after the command.
+ ### Terrain
+   * Expansion of cosmetic "lower terrain" to "higher terrain" and more transition graphics.
+ ### Translations
+   * Updated translations: British English, Chinese (Simplified), Czech, French, Italian, Portuguese (Brazil), Russian, Turkish
+ ### Miscellaneous and Bug Fixes
+   * Fixed highlighted movement range when hovering over units after their owner ends turn. It now shows their max movement next turn, instead of the remaining moves from their previous turn. (issue #6716)
+   * Stopped wmllint adding `wesnoth-icon.png` to `[message]`s that don’t already have an image. (PR #6991)
 
 ## Version 1.17.7
  ### Terrain
@@ -27,6 +42,7 @@
    * Fixed inconsistent cropping of unusually-sized item images (issue #6118)
    * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
    * Stored credentials are now encrypted with AES rather than RC4. This will result in credentials needing to be re-entered the first time when logging in with this version.
+   * The cache directory is now configurable through a command-line option in the same way as data, user data and user config directories.
 
 ## Version 1.17.6
  ### Campaigns
@@ -273,6 +289,20 @@
    * wmllint now automatically removes {MAGENTA_IS_THE_TEAM_COLOR}.
    * wmllint, wmlscope and wmlindent now support the command line `--version` flag, which reports the current version of Wesnoth (issue #6346).
    * wmllint is now capable of handling unit levels and types when checking recruitment patterns.
+
+## Version 1.16.6
+ ### Translations
+   * Updated translations: Arabic, British English, Bulgarian, Chinese (Simplified), Chinese (Traditional), Czech, French, Italian, Japanese, Portuguese (Brazil), Russian, Swedish, Turkish
+ ### Miscellaneous and Bug Fixes
+   * Fixed drake flare leadership animation over water (issue #3996)
+   * Fixed animations not clearing properly when zoomed (issue #6589)
+   * Fixed the `{IS_HERO}` macro to avoid losing the hero ellipse when a unit levels up
+   * Fixed highlighted movement range when hovering over units after their owner ends turn. It now shows their max movement next turn, instead of the remaining moves from their previous turn. (issue #6716)
+   * Fixed out of sync errors occurring when unused add-ons contain the [resistance_defaults] or [terrain_defaults] tags (issue #6650)
+
+## Version 1.16.5
+ ### Miscellaneous and Bug Fixes
+   * Fixed frequent crashes occurring in multiplayer matches (issue #6863).
 
 ## Version 1.16.4
  ### Campaigns

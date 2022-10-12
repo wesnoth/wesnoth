@@ -749,6 +749,7 @@ void connect_engine::send_level_data() const
 				"name", params_.name,
 				"password", params_.password,
 				"ignored", preferences::get_ignored_delim(),
+				"auto_hosted", false,
 			},
 		});
 		mp::send_to_server(level_);

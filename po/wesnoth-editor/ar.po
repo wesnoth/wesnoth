@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:47-0500\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
 "PO-Revision-Date: 2022-06-15 11:47+0100\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
@@ -118,6 +118,13 @@ msgstr "جسر مائي"
 #: data/core/editor/terrain-groups.cfg:108
 msgid "special"
 msgstr "خاص"
+
+#. [editor_group]: id=elevation
+#: data/core/editor/terrain-groups.cfg:115
+#, fuzzy
+#| msgid "Fill Selection"
+msgid "elevation"
+msgstr "ملء المنتقى"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -1210,9 +1217,6 @@ msgstr "اختار"
 
 #~ msgid "Flood Fill"
 #~ msgstr "ملء"
-
-#~ msgid "Fill Selection"
-#~ msgstr "ملء المنتقى"
 
 #~ msgid "Rotate Selection"
 #~ msgstr "إدارة المنتقى"

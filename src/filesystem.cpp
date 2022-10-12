@@ -753,6 +753,19 @@ void set_user_config_dir(const std::string& newconfigdir)
 	set_user_config_path(newconfigdir);
 }
 
+static void set_cache_path(bfs::path newcache)
+{
+	cache_dir = newcache;
+	if(!create_directory_if_missing_recursive(cache_dir)) {
+		ERR_FS << "could not open or create cache directory at " << cache_dir.string() << '\n';
+	}
+}
+
+void set_cache_dir(const std::string& newcachedir)
+{
+	set_cache_path(newcachedir);
+}
+
 static const bfs::path& get_user_data_path()
 {
 	if(user_data_dir.empty()) {

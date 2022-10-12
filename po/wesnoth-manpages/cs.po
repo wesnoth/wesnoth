@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2022-04-11 20:28+0200\n"
+"PO-Revision-Date: 2022-08-27 09:00+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -28,7 +28,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -552,10 +552,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
@@ -563,6 +562,8 @@ msgid ""
 "redirects logged output to a file. Log files are created in the logs "
 "directory under the userdata folder."
 msgstr ""
+"přesměruje výstup záznamů do souboru. Soubory se záznamy jsou vytvořeny "
+"v adresáři logs pod složkou s uživatelskými daty."
 
 # type: TP
 #. type: TP
@@ -1590,12 +1591,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:538 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -2216,7 +2214,7 @@ msgstr "Příklad: B<versions_accepted=\"*\"> přijímá jakýkoli řetězec ver
 #: doc/man/wesnothd.6:185
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
@@ -2225,6 +2223,9 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"Identifikátor serveru při použití databázových funkcí pro uložení informací "
+"o hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16 "
+"nebo 1.17."
 
 # type: SS
 #. type: SS
@@ -2425,10 +2426,6 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2510,11 +2507,6 @@ msgstr "B<db_user_group_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2527,10 +2519,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2538,54 +2529,46 @@ msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
+"Název tabulky pro ukládání časů přihlášení a odhlášení. Je také použita pro "
+"párování IP adres s uživateli a naopak."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"Název tabulky, do které tvé phpBB fórum ukládá svá data o uživatelích. "
-"S největší pravděpodobností to bude E<lt>table-prefixE<gt>_users (např. "
-"phpbb3_users)."
+"Název tabulky, do které tvé phpBB fórum ukládá své informace o tématech "
+"(vláknech). Nejpravděpodobněji to bude E<lt>table-prefixE<gt>_topics (např. "
+"phpbb3_topics)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"Název tabulky, do které tvé phpBB fórum ukládá svá data o uživatelích. "
-"S největší pravděpodobností to bude E<lt>table-prefixE<gt>_users (např. "
-"phpbb3_users)."
+"Název tabulky, do které tvé phpBB fórum ukládá svá data o zablokovaných "
+"uživatelích. Nejspíše to bude E<lt>table-prefixE<gt>_banlist (např. "
+"phpbb3_banlist)."
 
 #. type: TP
 #: doc/man/wesnothd.6:281
@@ -2632,7 +2615,3 @@ msgstr ""
 #: doc/man/wesnothd.6:308
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#, no-wrap
-#~ msgid "2021"
-#~ msgstr "2021"

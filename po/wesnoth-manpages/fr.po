@@ -9,8 +9,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2022-06-08 08:45-0500\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"PO-Revision-Date: 2022-09-09 17:58+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -29,9 +29,9 @@ msgstr "WESNOTH"
 
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 # type: TH
 #. type: TH
@@ -341,8 +341,9 @@ msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
+#, fuzzy
 msgid "disallow deprecated Lua API calls"
-msgstr ""
+msgstr "Désactive les appels à l'interface lua obsolète."
 
 #. type: TP
 #: doc/man/wesnoth.6:109
@@ -352,11 +353,16 @@ msgstr "B<-D,--diff>I<\\ fichier-original>B<\\ >I<fichier-nouveau>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
+#, fuzzy
 msgid ""
 "diffs the two WML files; does not preprocess them first (to do that, run "
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
+"Faire la différence entre deux fichiers WML. Pas de résolution des macros "
+"préalable (pour appliquer cela, utiliser d'abord B<-p>). La sortie de la "
+"différence sous format DiffWML vers la sortie par défaut ou vers le fichier "
+"spécifié par I<--output>."
 
 # type: TP
 #. type: TP
@@ -718,8 +724,9 @@ msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:235
+#, fuzzy
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "Supprime le bandeau de démarrage."
 
 # type: TP
 #. type: TP
@@ -772,8 +779,11 @@ msgstr "B<--output>I<\\ fichier>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:248
+#, fuzzy
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
+"Rediriger la sortie vers le fichier donné (pour les opérations de différence "
+"entre fichiers)."
 
 #. type: TP
 #: doc/man/wesnoth.6:248
@@ -817,11 +827,16 @@ msgstr "B<-P,--patch>I<\\ fichier-cible>B<\\ >I<fichier-patch>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:265
+#, fuzzy
 msgid ""
 "applies a DiffWML patch to a WML file; does not preprocess either of the "
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
+"Applique une différence au format DiffWML à un fichier WML. Pas de "
+"résolution des macros préalable dans les fichiers. La sortie du fichier WML "
+"modifié vers la sortie par défaut ou vers le fichier spécifié par I<--"
+"output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:265
@@ -1114,8 +1129,9 @@ msgstr "B<-S,--use-schema>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:373
+#, fuzzy
 msgid "sets the WML schema for use with B<-V,--validate>."
-msgstr ""
+msgstr "Donne le schéma WML à utiliser dans B<-V,--validate>."
 
 # type: TP
 #. type: TP
@@ -1220,8 +1236,9 @@ msgstr "B<--validate>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
+#, fuzzy
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "Valide un fichier en fonction du schéma WML."
 
 #. type: TP
 #: doc/man/wesnoth.6:407
@@ -1231,8 +1248,9 @@ msgstr "B<--validate-addon>I<\\ id_extension>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410
+#, fuzzy
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "Valide le code WML d'une extension durant le jeu."
 
 # type: TP
 #. type: TP
@@ -1243,8 +1261,9 @@ msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:413
+#, fuzzy
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "Valide le code WML d'un noyau durant le jeu."
 
 # type: TP
 #. type: TP
@@ -1255,8 +1274,9 @@ msgstr "B<--validate-schema \\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:416
+#, fuzzy
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "Valide un fichier en tant que schéma WML."
 
 # type: TP
 #. type: TP
@@ -1633,7 +1653,7 @@ msgstr "COPYRIGHT"
 #| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1981,10 +2001,13 @@ msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:129
+#, fuzzy
 msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
+"Spécifie si les joueurs non-enregistrés avec le B<user_handler> utilisé "
+"peuvent se connecter (défaut : non)."
 
 # type: TP
 #. type: TP

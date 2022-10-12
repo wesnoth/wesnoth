@@ -1956,6 +1956,9 @@ void game::send_server_message(const char* message, std::optional<player_iterato
 
 		msg.set_attr("id", "server");
 		msg.set_attr_dup("message", message);
+		std::stringstream ss;
+		ss << ::std::time(nullptr);
+		msg.set_attr_dup("time", ss.str().c_str());
 	} else {
 		simple_wml::node& msg = doc.root().add_child("message");
 

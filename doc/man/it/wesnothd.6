@@ -168,17 +168,17 @@ Definisce se il server salverà automaticamente i replay delle
 partite. (normalmente: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Abilita l'utilizzo di TLS. Se impostato a vero, è necessario  impostare
-anche le seguenti 3 opzioni
+Abilita l’utilizzo di TLS. Se impostato a vero, è necessario impostare anche
+le seguenti 3 opzioni.
 .TP 
 \fBtls_fullchain\fP
 Catena completa di certificati TLS in formato .pem
 .TP 
 \fBtls_private_key\fP
-Chiave privata per TLS in formato .pem
+chiave privata per TLS in formato .pem
 .TP 
 \fBtls_dh\fP
-parametri DH TLS, cone file .pem. Generati con \fBopenssl dhparam \-out
+Parametri DH TLS, come file .pem. Generati con \fBopenssl dhparam \-out
 nomefile.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
@@ -189,9 +189,9 @@ accettare. I caratteri jolly \fB*\fP e \fB?\fP sono ammessi (il valore predefini
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+L’ID del server quando viene usata la funzionalità database per memorizzare
+le informazioni di una partita. Generalmente è la versione maggiore.minore
+dei client accettati, tipo 1.16 o 1.17.
 .
 .SS "Tag globali:"
 .
@@ -256,8 +256,9 @@ Il nome dell’utente con cui connettersi al database
 La password di questo utente
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Il nome della tabella nella quale il vostro forum phpbb salva i dati degli
+utenti. Di solito questo valore è <table\-prefix>_users
+(i.e. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Il nome della tabella nella quale il processo wesnothd salverà i suoi dati
@@ -276,23 +277,23 @@ Il nome della tabella nella quale il processo wesnothd salverà i suoi dati
 delle modifiche utilizzate in una partita.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Il nome della tabella nella quale il vostro forum phpbb salva i dati del
+gruppo dell’utente. Di solito questo valore è
+<table\-prefix>_user_group (i.e. phpbb3_user_group).
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+Il nome della tabella nella quale memorizzare i tempi di login/logout. Viene
+anche usata per accoppiare gli IP agli utenti e viceversa.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+Il nome della tabella nella quale il vostro forum phpbb salva le sue
+informazioni sui topic (thread). Di solito questo valore è
+<table\-prefix>_topics (i.e. phpbb3_topics).
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+Il nome della tabella nella quale il vostro forum phpbb salva i dati degli
+utenti bannati. Di solito questo valore è <table\-prefix>_banlist
+(i.e. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 ID del gruppo del forum da considerare come avente i diritti di moderazione

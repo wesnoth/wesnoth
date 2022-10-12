@@ -182,9 +182,9 @@ wesnoth)
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+Identifikátor serveru při použití databázových funkcí pro uložení informací
+o\ hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16
+nebo 1.17.
 .
 .SS "Globální značky:"
 .
@@ -245,8 +245,9 @@ Název uživatele pro přihlášení k\ databázi
 Heslo tohoto uživatele
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Název tabulky, do které tvé phpBB fórum ukládá svá data o
+uživatelích. S\ největší pravděpodobností to bude
+<table\-prefix>_users (např. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Název tabulky, do které bude wesnothd ukládat svá vlastní data
@@ -264,23 +265,23 @@ Název tabulky, do které bude wesnothd ukládat svá vlastní data
 o\ modifikacích použitých ve hře.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Název tabulky, do které tvé phpBB fórum ukládá svá data o\ skupinách
+uživatelů. S\ největší pravděpodobností to bude
+<table\-prefix>_user_group (např. phpbb3_user_group).
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+Název tabulky pro ukládání časů přihlášení a\ odhlášení. Je také použita pro
+párování IP adres s\ uživateli a\ naopak.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+Název tabulky, do které tvé phpBB fórum ukládá své informace o\ tématech
+(vláknech). Nejpravděpodobněji to bude <table\-prefix>_topics
+(např. phpbb3_topics).
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+Název tabulky, do které tvé phpBB fórum ukládá svá data o\ zablokovaných
+uživatelích. Nejspíše to bude <table\-prefix>_banlist
+(např. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 Identifikátor skupiny fóra, o\ které se předpokládá, že má oprávnění

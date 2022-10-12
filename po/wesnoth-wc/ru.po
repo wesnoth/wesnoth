@@ -1,6 +1,6 @@
 # Translation of World Conquest 2 (wesnoth-wc) to Russian
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2007-2021 Wesnoth development team
+# Copyright (C) 2007-2022 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators:
@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: wesnoth-wc\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-07-20 00:21 UTC\n"
-"PO-Revision-Date: 2022-02-01 12:56+0300\n"
+"PO-Revision-Date: 2022-08-25 18:04+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -1200,7 +1200,7 @@ msgstr "Башня"
 #. [lua]: wc2_invest.invest
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest.lua:142
 msgid "WC2 Invest"
-msgstr "ПМ2 Инвестирование"
+msgstr "ПМ2 вложений"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
@@ -1249,17 +1249,17 @@ msgstr "Обучение"
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
-msgstr "$name обучается"
+msgstr "Тренировка — $name"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "After:"
-msgstr "До:"
+msgstr "После:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
 msgid "Before:"
-msgstr "После:"
+msgstr "До:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
@@ -1885,7 +1885,7 @@ msgstr "Прелестно. Помощь нам никогда не повред
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:9
 msgid "’bout time. Been forever since I had a good fight, eh?"
-msgstr "Почти что вовремя! Я-то уже соскучился по хорошенькой драке, а?"
+msgstr "Почти что вовремя! Я уже соскучился по хорошенькой драке."
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:14
 msgid "Who you? I help you smash!"
@@ -1992,13 +1992,14 @@ msgstr ""
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:104
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:113
 msgid "Of course. How could a girl say no to a man riding a horse?"
-msgstr "Конечно. Как может девушка отказать прекрасному всаднику?"
+msgstr "Конечно. Ни одна девушка не устоит перед прекрасным всадником."
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:108
 msgid ""
 "Hurrah! Now THIS is a battle too grand to be missed. Save some for me, eh?"
 msgstr ""
-"ЭТА битва слишком велика, чтобы пропустить. Придержите для меня чуточек, а?"
+"Уррра! Знаете, ЭТА битва слишком велика, чтобы её пропустить. Придержите для "
+"меня чуточек, а?"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:353
@@ -3227,9 +3228,6 @@ msgstr "$range|: мистическое и +25% урона"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
-#, fuzzy
-#| msgid ""
-#| " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr ""
@@ -3965,7 +3963,7 @@ msgstr ""
 #~ "\n"
 #~ "What are your new orders?"
 #~ msgstr ""
-#~ "Сейчас мне сказано продвигаться в бойца вида «$name» \n"
+#~ "Сейчас мне сказано продвигаться в бойца типа «$name» \n"
 #~ "\n"
 #~ "Каков Ваш новый приказ?"
 
@@ -3976,10 +3974,10 @@ msgstr ""
 #~ msgstr " и "
 
 #~ msgid "damage"
-#~ msgstr "урон"
+#~ msgstr "к урону"
 
 #~ msgid " resistance vs "
-#~ msgstr " сопротивление к "
+#~ msgstr " защиты от урона типа "
 
 #~ msgid "moves"
 #~ msgstr "ЧХ"
