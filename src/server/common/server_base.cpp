@@ -129,7 +129,6 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		return;
 	}
 
-#ifndef _WIN32
 	if(keep_alive_) {
 		int timeout = 30;
 #ifdef __linux__
@@ -138,12 +137,15 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
-#endif
-#if defined(__APPLE__) && defined(__MACH__)
+#elif defined(__APPLE__) && defined(__MACH__)
 		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
+#elif defined(_WIN32)
+		// these are in milliseconds for windows
+		DWORD timeout_ms = timeout * 1000;
+		setsockopt(socket->native_handle(), SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+		setsockopt(socket->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
 #endif
 	}
-#endif
 
 #ifdef __linux__
 	fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
