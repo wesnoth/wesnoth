@@ -768,7 +768,6 @@ boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
 	}
 }
 
-
 void addon_manager::apply_filters()
 {
 	// In the small-screen layout, the text_box for the filter keeps keyboard focus even when the
