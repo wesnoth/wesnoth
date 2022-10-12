@@ -505,6 +505,16 @@ int font_scaled(int size)
 	return (size * font_scaling()) / 100;
 }
 
+int keepalive_timeout()
+{
+	return prefs["keepalive_timeout"].to_int(10);
+}
+
+void keepalive_timeout(int seconds)
+{
+	prefs["keepalive_timeout"] = std::abs(seconds);
+}
+
 bool idle_anim()
 {
 	return  get("idle_anim", true);
