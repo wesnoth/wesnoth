@@ -56,6 +56,7 @@
 
 #include <functional>
 
+#include <algorithm>
 #include <iomanip>
 #include <sstream>
 #include <stdexcept>
@@ -181,6 +182,10 @@ const std::vector<std::pair<ADDON_TYPE, std::string>> addon_manager::type_filter
 	// FIXME: (also in WML) should this and Unknown be a single option in the UI?
 	{ADDON_OTHER,          N_("addons_of_type^Other")},
 	{ADDON_UNKNOWN,        N_("addons_of_type^Unknown")},
+};
+
+std::vector<std::pair<int, std::string>> addon_manager::language_filter_types_{
+	{0,	"en_GB"},
 };
 
 const std::vector<addon_manager::addon_order> addon_manager::all_orders_{
@@ -390,7 +395,51 @@ void addon_manager::pre_show(window& window)
 
 	connect_signal_notify_modified(type_filter,
 		std::bind(&addon_manager::apply_filters, this));
+	
+	// Language filter
+	// Clear current language filter vector, lest all entries are shown twice
+	addon_manager::language_filter_types_.clear();
+	addon_manager::language_filter_types_.push_back(std::pair<int, std::string>(0, "en_GB"));
+	
+	// Prepare shown languages, source all available languages from the addons themselves
+	std::vector<std::string> languages_available;
+	for(const auto& a : addons_) {
+		for (const auto& b : a.second.locales) {
+			if (!(b.rfind("en_GB", 0) == 0)) {
+				languages_available.push_back(b);				
+			}
+		}
+	}
+	std::sort(languages_available.begin(), languages_available.end());
+	auto last = std::unique(languages_available.begin(),languages_available.end());
+	languages_available.erase(last, languages_available.end());
+	// Erase pt value, since otherwise Portugues do Brasil will be shown twice in the language list
+	std::remove(languages_available.begin(), languages_available.end(), "pt");
+		
+	language_filter_types_[0].second = langcode_to_string(language_filter_types_[0].second) != "" ? langcode_to_string(language_filter_types_[0].second) : "English (GB)";
+	for (long unsigned int i = 0; i < languages_available.size(); i++) {
+		std::string myLangCodeString = langcode_to_string(languages_available[i]);
+		// Only show languages, which have a translation as per langcode_to_string() method
+		// Do not show tranlations with their langcode e.g. "sv_SV"
+		if (myLangCodeString != "") {
+			language_filter_types_.push_back(std::pair<int, std::string>(i, langcode_to_string(languages_available[i])));
+		}
+	}
+	// Remove "System default language entry"
+	language_filter_types_.pop_back();
+	
+	// The language filter
+	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
+	std::vector<config> language_filter_entries;
+	for(const auto& f : language_filter_types_) {
+		language_filter_entries.emplace_back("label", f.second, "checkbox", false);
+	}
+	
+	language_filter.set_values(language_filter_entries);
 
+	connect_signal_notify_modified(language_filter,
+		std::bind(&addon_manager::apply_filters, this));
+	
 	// Sorting order
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
@@ -677,10 +726,48 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 				);
 			res.push_back(toggle_states[index]);
 		}
-
 		return res;
 	}
 }
+
+boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
+{
+	const multimenu_button& lang_filter = find_widget<const multimenu_button>(get_window(), "language_filter", false);
+
+	boost::dynamic_bitset<> toggle_states = lang_filter.get_toggle_states();
+	if(toggle_states.none() || toggle_states[0] == true) {
+		// Nothing or English (GB) selected. It means that *all* add-ons are shown.
+		boost::dynamic_bitset<> res_flipped(addons_.size());
+		return ~res_flipped;
+	} else {
+		boost::dynamic_bitset<> res;
+
+		for(const auto& a : addons_) {
+			bool retval = false;
+			// If English is selected and no translations are indicated in the addon, it is shown
+			if (toggle_states[0] == true && a.second.locales.empty()) {
+				retval = true;
+			}
+			// langcode -> string conversion vector, to be able to detect either
+			// langcodes or langstring entries
+			std::vector<std::string> lang_string_vector;
+			for (long unsigned int i = 0; i < a.second.locales.size(); i++) {
+				lang_string_vector.push_back(langcode_to_string(a.second.locales[i]));
+			}
+			// Find all toggle states, where toggle = true and lang = lang
+			for (long unsigned int i = 0; i < toggle_states.size(); i++) {
+				if (toggle_states[i] == true) {
+					if ((std::find(a.second.locales.begin(), a.second.locales.end(), language_filter_types_[i].second) != a.second.locales.end() ? true : false) || (std::find(lang_string_vector.begin(), lang_string_vector.end(), language_filter_types_[i].second) != lang_string_vector.end() ? true : false)) {
+						retval = true;
+					}
+				}
+			}
+			res.push_back(retval);
+		}
+		return res;
+	}
+}
+
 
 void addon_manager::apply_filters()
 {
@@ -700,6 +787,7 @@ void addon_manager::apply_filters()
 		get_status_filter_visibility()
 		& get_tag_filter_visibility()
 		& get_type_filter_visibility()
+		& get_lang_filter_visibility()
 		& get_name_filter_visibility();
 	list->set_addon_shown(res);
 }
