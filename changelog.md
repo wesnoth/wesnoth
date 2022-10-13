@@ -14,6 +14,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
 
 ## Version 1.17.8
  ### Editor
