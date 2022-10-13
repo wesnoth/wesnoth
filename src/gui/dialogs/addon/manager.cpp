@@ -414,7 +414,7 @@ void addon_manager::pre_show(window& window)
 	auto last = std::unique(languages_available.begin(),languages_available.end());
 	languages_available.erase(last, languages_available.end());
 	// Erase pt value, since otherwise Portugues do Brasil will be shown twice in the language list
-	std::remove(languages_available.begin(), languages_available.end(), "pt");
+	(void)std::remove(languages_available.begin(), languages_available.end(), "pt");
 		
 	language_filter_types_[0].second = langcode_to_string(language_filter_types_[0].second) != "" ? langcode_to_string(language_filter_types_[0].second) : "English (GB)";
 	for (long unsigned int i = 0; i < languages_available.size(); i++) {
