@@ -1271,15 +1271,15 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	}
 
 	abil_list.append(abil_other_list);
-	if(!abil_list.empty()){
-		abil_list = overwrite_special_checking(ability, abil_list, abil_list);
-	}
 	return abil_list;
 }
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	unit_ability_list abil_list = get_weapon_ability(special);
+	if(!abil_list.empty()){
+		abil_list = overwrite_special_checking(special, abil_list, abil_list, "filter_student", false);
+	}
 	unit_ability_list spe_list = get_specials(special);
 	if(!spe_list.empty()){
 		spe_list = overwrite_special_checking(special, spe_list, abil_list, "filter_self", true);
@@ -1322,8 +1322,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 		if(!is_special && overwrite_either){
 			overwrite = overwrite_special_affects(*i.ability_cfg);
 		} else if(overwrite_self){
-			bool temp_is_ability = !is_special ? overwrite_special_affects(*i.ability_cfg) : false;
-			overwrite = temp_is_ability || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
+			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
 		}
 		if(overwrite) {
 			overwrite_list.emplace_back(i);
