@@ -60,8 +60,7 @@ floating_label::floating_label(const std::string& text, const surface& surf)
 	, text_(text)
 	, font_size_(SIZE_SMALL)
 	, color_(NORMAL_COLOR)
-	, bgcolor_()
-	, bgalpha_(0)
+	, bgcolor_(0, 0, 0, SDL_ALPHA_TRANSPARENT)
 	, xpos_(0)
 	, ypos_(0)
 	, xmove_(0)
@@ -99,6 +98,17 @@ int floating_label::xpos(std::size_t width) const
 	return xpos;
 }
 
+rect floating_label::get_bg_rect(const rect& text_rect) const
+{
+	const int zf = display::get_singleton()->get_zoom_factor();
+	return {
+		text_rect.x - (border_ * zf),
+		text_rect.y - (border_ * zf),
+		text_rect.w + (border_ * zf * 2),
+		text_rect.h + (border_ * zf * 2)
+	};
+}
+
 bool floating_label::create_texture()
 {
 	if(video::headless()) {
@@ -127,7 +137,8 @@ bool floating_label::create_texture()
 		.set_maximum_width(width_ < 0 ? clip_rect_.w : width_)
 		.set_maximum_height(height_ < 0 ? clip_rect_.h : height_, true)
 		.set_ellipse_mode(PANGO_ELLIPSIZE_END)
-		.set_characters_per_line(0);
+		.set_characters_per_line(0)
+		.set_add_outline(bgcolor_.a == 0);
 
 	// ignore last '\n'
 	if(!text_.empty() && *(text_.rbegin()) == '\n') {
@@ -136,57 +147,11 @@ bool floating_label::create_texture()
 		text.set_text(text_, use_markup_);
 	}
 
-	surface foreground = text.render_surface();
-
-	// Pixel scaling is necessary as we are manipulating the raw surface
-	const int ps = video::get_pixel_scale();
-	// For consistent results we must also enlarge according to zoom
-	const int sf = ps * display::get_singleton()->get_zoom_factor();
-
-	if(foreground == nullptr) {
+	tex_ = text.render_and_get_texture();
+	if(!tex_) {
 		ERR_FT << "could not create floating label's text";
 		return false;
 	}
-
-	// combine foreground text with its background
-	if(bgalpha_ != 0) {
-		// background is a dark tooltip box
-		surface background(foreground->w + border_ * 2 * sf, foreground->h + border_ * 2 * sf);
-
-		if(background == nullptr) {
-			ERR_FT << "could not create tooltip box";
-			tex_ = texture(foreground);
-			return tex_ != nullptr;
-		}
-
-		uint32_t color = SDL_MapRGBA(foreground->format, bgcolor_.r, bgcolor_.g, bgcolor_.b, bgalpha_);
-		sdl::fill_surface_rect(background, nullptr, color);
-
-		SDL_Rect r{border_ * sf, border_ * sf, 0, 0};
-		adjust_surface_alpha(foreground, SDL_ALPHA_OPAQUE);
-		sdl_blit(foreground, nullptr, background, &r);
-
-		tex_ = texture(background);
-	} else {
-		// background is blurred shadow of the text
-		surface background(foreground->w + 4*sf, foreground->h + 4*sf);
-		sdl::fill_surface_rect(background, nullptr, 0);
-		SDL_Rect r{2*sf, 2*sf, 0, 0};
-		sdl_blit(foreground, nullptr, background, &r);
-		background = shadow_image(background, sf);
-
-		if(background == nullptr) {
-			ERR_FT << "could not create floating label's shadow";
-			tex_ = texture(foreground);
-			return tex_ != nullptr;
-		}
-		sdl_blit(foreground, nullptr, background, &r);
-		tex_ = texture(background);
-	}
-
-	// adjust high-dpi text display scale
-	tex_.set_draw_width(tex_.w() / ps);
-	tex_.set_draw_height(tex_.h() / ps);
 
 	return true;
 }
@@ -194,7 +159,7 @@ bool floating_label::create_texture()
 void floating_label::undraw()
 {
 	DBG_FT << "undrawing floating label from " << screen_loc_;
-	draw_manager::invalidate_region(screen_loc_);
+	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
 	screen_loc_ = {};
 }
 
@@ -210,7 +175,7 @@ void floating_label::update(int time)
 	}
 
 	point new_pos = get_pos(time);
-	rect draw_loc = {new_pos.x, new_pos.y, tex_.w(), tex_.h()};
+	rect draw_loc {new_pos.x, new_pos.y, tex_.w(), tex_.h()};
 
 	uint8_t new_alpha = get_alpha(time);
 
@@ -219,11 +184,13 @@ void floating_label::update(int time)
 		return;
 	}
 
+	// Invalidate former draw loc
 	draw_manager::invalidate_region(screen_loc_);
-	draw_manager::invalidate_region(draw_loc);
 
-	DBG_FT << "updating floating label from " << screen_loc_
-		<< " to " << draw_loc;
+	// Invalidate new draw loc in preparation
+	draw_manager::invalidate_region(get_bg_rect(draw_loc));
+
+	DBG_FT << "updating floating label from " << screen_loc_ << " to " << draw_loc;
 
 	screen_loc_ = draw_loc;
 	alpha_ = new_alpha;
@@ -253,6 +220,11 @@ void floating_label::draw()
 
 	// Clip if appropriate.
 	auto clipper = draw::reduce_clip(clip_rect_);
+
+	// Draw background, if appropriate
+	if(bgcolor_.a != 0) {
+		draw::fill(get_bg_rect(screen_loc_), bgcolor_);
+	}
 
 	// Apply the label texture to the screen.
 	tex_.set_alpha_mod(alpha_);

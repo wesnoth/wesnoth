@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-06-20 21:57+0200\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
+"PO-Revision-Date: 2022-09-14 19:37+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2386,10 +2386,11 @@ msgid ""
 "encounter new elements, such as <ref>dst='..abilities_section' "
 "text='abilities'</ref>, for the first time."
 msgstr ""
-"Během hry měj na paměti, že pokud budeš ve hře pohybovat myší přes herní "
-"prvky, zobrazí se ve stavovém panelu stručné informace k danému prvku. "
-"Užitečné je to zejména v případě, kdy se poprvé setkáš s něčím novým, "
-"například novou <ref>dst='..abilities_section' text='schopností'</ref>."
+"Během hry měj na paměti, že můžeš pohybovat myší přes mnoho herních prvků, "
+"jako třeba přes informace zobrazené ve stavovém panelu, aby se ti pro každý "
+"prvek ukázal krátký vysvětlující popis. Užitečné je to zejména v případě, "
+"kdy se poprvé setkáš s něčím novým, například novou <ref>dst='.."
+"abilities_section' text='schopností'</ref>."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:189
@@ -5302,15 +5303,15 @@ msgstr "skrývání"
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Jednotka se dokáže ukrýt ve vesnicích (vyjma vodních) a zůstat nezpozorována "
-"svými nepřáteli, s výjimkou těch, kteří stojí hned vedle ní.\n"
+"Jednotka se dokáže ukrýt ve vesnicích a zůstat nezpozorována svými nepřáteli "
+"s výjimkou těch, kteří stojí hned vedle ní.\n"
 "\n"
 "Nepřátelské jednotky nemohou tuto jednotku spatřit, pokud pobývá ve vesnici, "
 "pouze jsou-li na sousedních polích. Nepřátelská jednotka, která ji nalezne "
@@ -5557,11 +5558,10 @@ msgstr ""
 "dokud se nevyléčí, nebo počet životů neklesne na 1 HP. Jed sám o sobě nemůže "
 "jednotku zabít."
 
-# Tohle myslím není vidět, takže je stejně jedno jak je to přeložené (?)
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Max HP bonus +3, Max XP +20 %"
+msgstr "Max. života +3, max. zk. +20 %"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
@@ -8076,15 +8076,15 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max. HP"
 
-#: src/help/help.cpp:213
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Zavřít"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
 msgstr "Chyba rozboru (parsing) textu nápovědy:"
 
@@ -8248,29 +8248,29 @@ msgid "Required XP:"
 msgstr "Zkušenosti:"
 
 # malé nebo velké 1. písmeno
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "Útoky"
 
 # malé nebo velké 1. písmeno
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "Jméno"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "Dosah"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "Typ"
 
 # tabulka útoků
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "Zvláštnosti"
 
@@ -8286,36 +8286,30 @@ msgstr "Druh útoku"
 msgid "Resistance"
 msgstr "Odolnost"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "Vliv terénu"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Bodů pohybu"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "Omezení obrany"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "Cena rozhledu"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Cena rušení"
-
-#~ msgid "Flat"
-#~ msgstr "Plochý"
-
-#~ msgid "Village"
-#~ msgstr "Vesnice"

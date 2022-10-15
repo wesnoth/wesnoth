@@ -16,6 +16,7 @@
 #include "units/frame.hpp"
 
 #include "color.hpp"
+#include "draw.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
 #include "sound.hpp"
@@ -473,6 +474,98 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 	return v;
 }
 
+namespace
+{
+void render_unit_image(
+	int x,
+	int y,
+	const display::drawing_layer drawing_layer,
+	const map_location& loc,
+	const image::locator& i_locator,
+	bool hreverse,
+	bool greyscale,
+	uint8_t alpha,
+	double highlight,
+	color_t blendto,
+	double blend_ratio,
+	double submerge,
+	bool vreverse)
+{
+	const point image_size = image::get_size(i_locator);
+	if(!image_size.x || !image_size.y) {
+		return;
+	}
+
+	display* disp = display::get_singleton();
+
+	rect dest = disp->scaled_to_zoom({x, y, image_size.x, image_size.y});
+	if(!dest.overlaps(disp->map_area())) {
+		return;
+	}
+
+	// For now, we add to the existing IPF modifications for the image.
+	std::string new_modifications;
+
+	if(greyscale) {
+		new_modifications += "~GS()";
+	}
+
+	display::add_submerge_ipf_mod(new_modifications, image_size.y, submerge);
+
+	texture tex;
+	if(!new_modifications.empty()) {
+		tex = image::get_texture({i_locator.get_filename(), i_locator.get_modifications() + new_modifications});
+	} else {
+		tex = image::get_texture(i_locator);
+	}
+
+	// Clamp blend ratio so nothing weird happens
+	blend_ratio = std::clamp(blend_ratio, 0.0, 1.0);
+
+	disp->drawing_buffer_add(drawing_layer, loc, [=](const rect&) mutable {
+		tex.set_alpha_mod(alpha);
+		draw::flipped(tex, dest, hreverse, vreverse);
+
+		if(uint8_t hl = float_to_color(highlight); hl > 0) {
+			tex.set_blend_mode(SDL_BLENDMODE_ADD);
+			tex.set_alpha_mod(hl);
+			draw::flipped(tex, dest, hreverse, vreverse);
+		}
+
+		tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+		tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
+	});
+
+	// SDL hax to apply an active washout tint at the correct ratio
+	if(blend_ratio > 0.0) {
+		// Get a pure-white version of the texture
+		const image::locator whiteout_locator(
+			i_locator.get_filename(),
+			i_locator.get_modifications()
+				+ new_modifications
+				+ "~CHAN(255, 255, 255, alpha)"
+		);
+
+		disp->drawing_buffer_add(drawing_layer, loc, [=, tex = image::get_texture(whiteout_locator)](const rect&) mutable {
+			tex.set_alpha_mod(alpha * blend_ratio);
+			tex.set_color_mod(blendto);
+
+			draw::flipped(tex, dest, hreverse, vreverse);
+
+			if(uint8_t hl = float_to_color(highlight); hl > 0) {
+				tex.set_blend_mode(SDL_BLENDMODE_ADD);
+				tex.set_alpha_mod(hl);
+				draw::flipped(tex, dest, hreverse, vreverse);
+			}
+
+			tex.set_color_mod(255, 255, 255);
+			tex.set_blend_mode(SDL_BLENDMODE_BLEND);
+			tex.set_alpha_mod(SDL_ALPHA_OPAQUE);
+		});
+	}
+}
+} // namespace
+
 void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_of_frame,
 		const map_location& src, const map_location& dst,
 		halo::handle& halo_id, halo::manager& halo_man,
@@ -564,11 +657,21 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 			alpha = float_to_color(current_data.highlight_ratio);
 		}
 
-		display::get_singleton()->render_image(my_x, my_y,
-			static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
-			src, image_loc, facing_west, false, alpha, brighten,
-			current_data.blend_with ? *current_data.blend_with : color_t(),
-			current_data.blend_ratio, current_data.submerge, !facing_north);
+		if(alpha != 0) {
+			render_unit_image(my_x, my_y,
+				static_cast<display::drawing_layer>(display::LAYER_UNIT_FIRST + current_data.drawing_layer),
+				src,
+				image_loc,
+				facing_west,
+				false,
+				alpha,
+				brighten,
+				current_data.blend_with ? *current_data.blend_with : color_t(),
+				current_data.blend_ratio,
+				current_data.submerge,
+				!facing_north
+			);
+		}
 	}
 
 	halo_id.reset();

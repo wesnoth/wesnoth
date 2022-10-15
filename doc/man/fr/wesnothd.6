@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Serveur multijoueur de Bataille pour Wesnoth"
+.TH WESNOTHD 6 2022 wesnothd "Serveur multijoueur de Bataille pour Wesnoth"
 .
 .SH NOM
 .
@@ -185,6 +185,11 @@ caractères génériques \fB*\fP et \fB?\fP sont acceptés (par défaut : versio
 correspondant à celle de wesnoth).
 .br
 Exemple\ : \fBversions_accepted="*"\fP autorise tout type de version.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS "Balises globales\ : "
 .
@@ -245,8 +250,8 @@ Nom d'utilisateur se connectant à la base de données
 Mot de passe de cet utilisateur
 .TP 
 \fBdb_users_table\fP
-Nom de la table des données utilisateurs de vos forums phpbb, probablement
-sous la forme <table\-prefix>_users. Par exemple\ : phpbb3_users.
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Nom de la table dans laquelle wesnothd stockera ses données à propos des
@@ -265,9 +270,23 @@ Nom de la table dans laquelle wesnothd stockera ses données à propos des
 modifications utilisées dans une partie.
 .TP 
 \fBdb_user_group_table\fP
-Nom de la table des données de groupe d'utilisateurs de vos forums phpbb,
-probablement sous la forme <table\-prefix>_user_group. Par exemple\ :
-phpbb3_user_group.
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 L'identifiant du groupe du forum ayant les pouvoirs de modération.
@@ -291,7 +310,7 @@ Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y

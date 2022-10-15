@@ -50,6 +50,17 @@ public:
 	 */
 	virtual void layout() override;
 
+	/** Sets texture to be drawn in hex under the mouse's location. */
+	void set_mouseover_hex_overlay(const texture& image)
+	{
+		mouseover_hex_overlay_ = image;
+	}
+
+	void clear_mouseover_hex_overlay()
+	{
+		mouseover_hex_overlay_.reset();
+	}
+
 protected:
 	void draw_hex(const map_location& loc) override;
 
@@ -62,6 +73,8 @@ protected:
 
 	/* The controller that owns this display. */
 	editor_controller& controller_;
+
+	texture mouseover_hex_overlay_;
 };
 
 } //end namespace editor

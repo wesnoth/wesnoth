@@ -21,6 +21,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include "server/wesnothd/ban.hpp"
 
@@ -715,6 +716,7 @@ ban_manager::~ban_manager()
 	try {
 		write();
 	} catch(...) {
+		DBG_SERVER << "Caught exception in ban_manager destructor: " << utils::get_unknown_exception_type();
 	}
 }
 

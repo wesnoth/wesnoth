@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Battle for Wesnoth multiplayer daemon de rede"
+.TH WESNOTHD 6 2022 wesnothd "Battle for Wesnoth multiplayer daemon de rede"
 .
 .SH NOME
 .
@@ -180,12 +180,18 @@ pelo servidor. \fB*\fP e \fB?\fP de caracteres\-curinga são suportados.  (o pad
 é a versão correspondente do wesnoth)
 .br
 Exemplo: \fBversions_accepted="*"\fP aceita qualquer versão do string.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS "Tags Globais:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Uma tag para especificar um servidor ao qual redirecionar
+certas versões de clientes. Não é usado se \fBversions_accepted\fP não estiver
+definido.
 .RS
 .TP 
 \fBhost\fP
@@ -218,12 +224,13 @@ as requisições dos clientes conectados para  o servidor especificado.
 Aceita as mesmas chaves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configura o apelido do usuário. Se não houver uma entrada
+\fB[user_handler]\fP presente na configuração, o servidor rodará sem nenhum
+serviço de registro de apelidos. Todas as tabelas adicionais que são
+necessárias para que o \fBforum_user_handler\fP funcione podem ser encontradas
+na table_definitions.sql no repositório de código do Wesnoth. Requer suporte
+mysql habilitado. Para cmake é \fBENABLE_MYSQL\fP e para scons é
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -239,8 +246,8 @@ O nome do usuário com o qual entrar no banco de dados
 A senha deste usuário
 .TP 
 \fBdb_users_table\fP
-O nome da tabela onde os seus fóruns phpbb salvam os dados do usuário. Mais
-provavelmente ele será <table\-prefix>_users (e.g. phpbb3_users).
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 (para user_handler=forum) O nome da tabela em que wesnothd salvará a data
@@ -257,9 +264,23 @@ O nome da tabela em que wesnothd salvará a data sobre as modificações usadas
 num jogo.
 .TP 
 \fBdb_user_group_table\fP
-O nome da tabela em que os seus phpbb dos fórums salvam a dos grupos dos
-usuários. Isto mais provavelmente será <table\-prefix>_user_group
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
 (e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 O ID do grupo do fórum que será considerado como tendo privilégios de
@@ -283,7 +304,7 @@ Visite a página oficial: http://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Este Software é Gratuito; este software é licenciado sob a versão GPL 2,
 conforme publicada pela Free Software Foundation. Não há NENHUMA garantia;

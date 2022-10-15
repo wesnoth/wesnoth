@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
+"POT-Creation-Date: 2022-09-19 04:11 UTC\n"
 "PO-Revision-Date: 2012-08-05 00:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -1425,7 +1425,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:505
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:673
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:699
 #, fuzzy
 #| msgid "Should I take this sword?"
 msgid "Should I take this ring?"
@@ -1434,7 +1434,7 @@ msgstr "Μπορώ να πάρω το σπαθί;"
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:507
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1544
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:675
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:701
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:583
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:575
 msgid "Yes, I’ll take it."
@@ -1458,7 +1458,7 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:548
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:707
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:733
 #, fuzzy
 #| msgid "No, I think someone else should wield it."
 msgid "No, I think someone else should wear it."
@@ -3243,8 +3243,17 @@ msgstr ""
 "φαίνονται ήσυχοι τώρα, αλλά κρύβονται στις αναρίθμητες σπηλιές και σήραγγες "
 "που υπάρχουν εκεί."
 
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:370
+msgid ""
+"Speaking of these lands, we may not have Garak to guide us, but all the "
+"terrain in this area perfectly matches the map we got from the orcs last "
+"night! It shows an orcish camp just up ahead! I wonder if we could sneak "
+"around without alerting them."
+msgstr ""
+
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:364
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
 msgid ""
 "I had another vision last night, Eloh told me that we had to continue north, "
 "but instead of trying to go over the mountains, she said that we had to go "
@@ -3254,12 +3263,12 @@ msgstr ""
 "βόρεια, αλλά αντί να πάμε πάνω από τα βουνά, να περάσουμε από κάτω τους."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:369
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:382
 msgid "Underneath them? But how?"
 msgstr "Από κάτω τους; Μα πώς;"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:374
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:387
 #, fuzzy
 #| msgid ""
 #| "Orcs and Goblins have been living here for hundreds of years and their "
@@ -3281,7 +3290,7 @@ msgstr ""
 "δεν έχουμε άλλη επιλογή αν θέλουμε να διασχίσουμε τα βουνά."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:379
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:392
 msgid ""
 "Other creatures besides orcs dig tunnels in the earth. Long ago dwarves "
 "mined mountains such as these, and huge trolls like to hide in the deep dark "
@@ -3298,7 +3307,7 @@ msgstr ""
 "τρομάζει και δε θα σας λείψει ούτε το φως ούτε η φωτιά."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:384
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:397
 msgid ""
 "Well if we are going to go under these mountains, we’re certainly going to "
 "have our hands full fighting all those orcs and goblins."
@@ -3307,7 +3316,7 @@ msgstr ""
 "και γκόμπλιν."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:389
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:402
 msgid ""
 "Indeed. I want to warn you again, Kaleh, this isn’t the desert. The orcs "
 "love fighting in hills and caves, and we won’t have the advantages of "
@@ -3326,72 +3335,79 @@ msgstr ""
 "από τη γη να είναι ευκολότερο να τους προστατεύσουμε."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:394
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:407
 msgid ""
 "Strike hard and fast and also be careful—right, this is going to be fun."
 msgstr ""
 "Χτυπήστε γρήγορα κι αποφασιστικά. Και προσέχτε. Ωραία, θα περάσουμε καλά."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:423
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:436
 msgid "Goblin Coward"
 msgstr "Δειλό γκόμπλιν"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:428
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:432
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:436
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:440
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:448
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:452
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:456
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:463
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:467
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:471
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:564
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:567
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:568
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:441
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:445
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:449
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:453
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:461
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:465
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:469
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:476
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:480
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:590
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:591
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:593
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:594
 msgid "Goblin Scout"
 msgstr "Γκόμπλιν ανιχνευτής"
 
 #. [message]: speaker=Goblin Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:482
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:495
 msgid "Attack!"
 msgstr "Επίθεση!"
 
 #. [message]: speaker=Goblin Coward
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:487
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:500
 msgid "Run away!"
 msgstr "Τρέχτεεε!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:492
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:505
 msgid "Goblins are so predictable."
 msgstr "Είναι τόσο προβλέψιμα τα γκόμπλιν..."
 
+#. [message]: speaker=Nym
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:516
+msgid ""
+"Merely a few steps in and all these goblins already know we’re here! I guess "
+"it’s not that easy to sneak around in someone else’s home territory."
+msgstr ""
+
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:515
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:517
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:541
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:543
 msgid "Orac"
 msgstr "Όρακ"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:523
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:525
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:549
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:551
 msgid "Scylla"
 msgstr "Σκάηλλα"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:533
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:534
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:536
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:537
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:559
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:560
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
 msgid "Lake Naga"
 msgstr "Νάγκα της Λίμνης"
 
 #. [message]: speaker=Orac
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:573
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:599
 msgid ""
 "Come forth, creatures of the lake! Fulfill the oaths you have made and help "
 "us drive these hated creatures from our lands."
@@ -3400,19 +3416,19 @@ msgstr ""
 "διώξουμε αυτά τα μισητά πλάσματα από τη γη μας."
 
 #. [message]: speaker=Scylla
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:578
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:604
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:764
 msgid "Yesss, we remember the oath... Sssslay them all!"
 msgstr ""
 
 #. [message]: speaker=Panok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:625
 msgid "These elves are stronger than we thought. Send for more reinforcements!"
 msgstr ""
 "Αυτά τα ξωτικά είναι δυνατότερα από ό,τι νομίζαμε. Στείλτε για ενισχύσεις!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:604
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:630
 msgid ""
 "How can he move that fast? He is faster than any goblin rider I have ever "
 "seen. It’s almost unnatural."
@@ -3421,12 +3437,12 @@ msgstr ""
 "γκόμπλιν ιππέα έχω δει!"
 
 #. [message]: speaker=Panok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:619
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:645
 msgid "Gaaghh!!"
 msgstr "Γκααααααχ!!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:632
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:658
 msgid ""
 "Wait a minute. He was wearing a silver ring on one of his fingers. I think "
 "the ring might be magical. Maybe that’s why he was moving so fast."
@@ -3435,17 +3451,17 @@ msgstr ""
 "ίσως αυτό του έδινε αυτή την ταχύτητα."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:640
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:666
 msgid "I think, Kaleh, that you should take the ring."
 msgstr "Κάλεχ, νομίζω ότι πρέπει να πάρεις το δαχτυλίδι."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:645
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:671
 msgid "Why me?"
 msgstr "Εγώ; Γιατί;"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:650
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:676
 msgid ""
 "Because you tend to move slowly and if we’re going into the caves you’ll "
 "need all the speed you can get. And besides, we can’t afford to lose you; "
@@ -3458,17 +3474,17 @@ msgstr ""
 "το θάνατο."
 
 #. [object]: id=SpeedyRing
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:680
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:706
 msgid "Ring of Speed"
 msgstr "Δαχτυλίδι της ταχύτητας"
 
 #. [object]: id=SpeedyRing
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:682
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:708
 msgid "This ring will increase your maximum speed by 1."
 msgstr "Αυτό το δαχτυλίδι αυξάνει τη μέγιστη ταχύτητά σου κατά 1."
 
 #. [message]: speaker=Orac
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:733
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:759
 msgid ""
 "The elves have killed Panok the goblin! The other goblins may flee to the "
 "caves, but we will not give up these hills without a fight. Come forth, "
@@ -3481,7 +3497,7 @@ msgstr ""
 "μας να διώξουμε αυτά τα μισητά πλάσματα από τη γη μας."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:766
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:792
 msgid ""
 "Ugh! These tunnels are pitch black! It’s as bad as fighting in a moonless "
 "night, and it stinks of orc filth. I can hardly think of a place I would "
@@ -3492,7 +3508,7 @@ msgstr ""
 "ήθελα να πάω."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:797
 msgid ""
 "We have no choice. We cannot cross over these mountains, so we must go "
 "beneath them. If the orcs skulk in their tunnels and block our way, we must "
@@ -3504,14 +3520,14 @@ msgstr ""
 "να'χει."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:777
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:803
 msgid ""
 "Remember, Kaleh, it’s nasty fighting underground. We will be at a "
 "disadvantage against orcs and other things that prefer the darkness."
 msgstr ""
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:782
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:808
 msgid ""
 "Also, any time you find a particularly tough orc blocking a passage, my "
 "fireballs can blast him quick enough."
@@ -3520,12 +3536,12 @@ msgstr ""
 "δρόμο, οι μπάλες φωτιάς μου θα το ξεροψήσουν γρήγορα γρήγορα."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:797
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:823
 msgid "Greebo"
 msgstr "Γκρήμπο"
 
 #. [message]: speaker=Greebo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:804
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:830
 msgid ""
 "Greebo keeps shinies safe from nasty orcses. And ’specially stinking elves."
 msgstr ""
@@ -3533,7 +3549,7 @@ msgstr ""
 "ξωτικά."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:828
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:854
 msgid ""
 "Looks like he’s been squirreling away his stolen loot in this cave. Not that "
 "he had much. Must be hard times."
@@ -3542,7 +3558,7 @@ msgstr ""
 "είχε και πολλά. Κρίση."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:856
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:882
 msgid ""
 "How odd. Someone has carved a crude fountain out of the stone at the end of "
 "the passage. The freezing water pours out into a large pool. At the bottom "
@@ -3561,12 +3577,12 @@ msgstr ""
 "αλλά τολμώ να το ρισκάρω;"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:858
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:884
 msgid "I fear no creature, I will take the blade!"
 msgstr "Δε φοβάμαι κανένα πλάσμα. Θα πάρω το σπαθί!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:862
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:888
 msgid ""
 "The blade is chill to the touch and gives off a cold glow. I wonder how it "
 "came to be here."
@@ -3575,12 +3591,12 @@ msgstr ""
 "βρέθηκε εδώ."
 
 #. [object]: id=ColdBlade
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:873
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:899
 msgid "Cold Blade"
 msgstr "Κρύα Λεπίδα"
 
 #. [object]: id=ColdBlade
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:874
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:900
 msgid ""
 "The unit who wields this blade will deal cold damage with its melee attack."
 msgstr ""
@@ -3588,32 +3604,32 @@ msgstr ""
 "κοντινή επίθεσή της."
 
 #. [command]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:883
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:909
 msgid "Purple Abomination"
 msgstr "Μωβ Βδέλυγμα"
 
 #. [message]: speaker=Purple Abomination
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:887
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:913
 msgid "I am an abomination, please kill me."
 msgstr "Είμαι ένα σίχαμα, σκοτώστε με, σας ικετεύω."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:892
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:918
 msgid "I’ve seen some ugly creatures in my day, but that thing is just wrong."
 msgstr "Κι αν έχω δει άσχημα πλάσματα, αλλά αυτό το πράμα είναι απλά λάθος."
 
 #. [message]: speaker=Purple Abomination
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:897
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:923
 msgid "The voices say I have no choice, I must attack!"
 msgstr "Οι φωνές μου λένε ότι δεν έχω άλλη επιλογή και πρέπει να επιτεθώ!"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:907
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:933
 msgid "I don’t like the sound of this. I’m out of here."
 msgstr "Δε μ'αρέσει αυτό. Την κάνω."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:933
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:959
 msgid ""
 "This is the end of the line. The water is too deep for me to continue any "
 "further. I’m freezing cold, wet, and I can’t see a thing. I’m not exactly "
@@ -3626,34 +3642,34 @@ msgstr ""
 "ξέρω γιατί να σκέφτηκα ότι θα μπορούσε να είναι καλό."
 
 #. [unit]: type=Dark Assassin Cloaked, id=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:968
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:994
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2077
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2445
 msgid "Cloaked Figure"
 msgstr "Φιγούρα με Μανδύα"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1027
 msgid "Kaleh, I am death incarnate."
 msgstr "Κάλεχ, είμαι η ενσάρκωση του θανάτου"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1007
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1033
 msgid "And I shall avenge all those you have killed!"
 msgstr "Και θα εκδικηθώ για όλους όσους σκότωσες!"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1023
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1049
 msgid "I promise we shall meet again."
 msgstr "Υπόσχομαι να ξαναβρεθούμε."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1034
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1060
 msgid "He just disappeared. That’s odd."
 msgstr "Εξαφανίστηκε. Παράξενο."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1062
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1088
 msgid ""
 "This passage seems different from the other tunnels and caves. It is wide "
 "and smooth and leads sharply downwards. I bet this was the way that Eloh was "
@@ -3664,7 +3680,7 @@ msgstr ""
 "μου έδειξε η Ελόχ."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1067
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1093
 msgid ""
 "This is no natural passage, and the walls are too well carved and smooth to "
 "be made by orcs. I wouldn’t be surprised if this was once carved out by "
@@ -3675,7 +3691,7 @@ msgstr ""
 "νάνων. Αναρωτιέμαι αν ζουν ακόμα εδώ κάτω..."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1081
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1107
 msgid ""
 "Having killed all the orc and goblin leaders in the immediate vicinity, we "
 "can take our time and should have no trouble bringing the rest of our people "
@@ -3691,7 +3707,7 @@ msgstr ""
 "καλά μας οδήγησε και στο παρελθόν."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1088
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1114
 msgid ""
 "Now that you’ve found the way we should be able to get the rest of our "
 "people past the orcs. It’s odd, I guess we’re trading the dangers we know "
@@ -3704,7 +3720,7 @@ msgstr ""
 "χέρια της Ελόχ. Είθε να μας οδηγήσει όσο καλά μας οδήγησε και στο παρελθόν."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1095
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1121
 msgid ""
 "I’ll just be happy when I can breathe fresh air again and see the suns and "
 "stars. Still, who knows what we’ll encounter deep under the earth?"
@@ -3714,12 +3730,12 @@ msgstr ""
 "γης;"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1100
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1126
 msgid "Well, there’s only one way to find out."
 msgstr "Μόνο ένας τρόπος υπάρχει για να το μάθουμε."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1111
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1137
 msgid ""
 "We’ve taken too long to get our people into the tunnels! Even more orcs are "
 "coming across the foothills from the east and west and flanking us. There’s "
@@ -4656,7 +4672,7 @@ msgstr "Δε θα περάσει έτσι αυτό..."
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2395
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:351
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1638
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1671
 msgid "Zurg"
 msgstr "Ζουργκ"
 
@@ -4900,7 +4916,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2666
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1787
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2034
 msgid ""
 "Oh no, we took too long and enemy reinforcements have arrived. We’ll surely "
 "be overwhelmed now!"
@@ -5419,7 +5435,7 @@ msgstr "Αργκ! Κατάρα! Είθε να μη ζήσεις για να ξα
 
 #. [message]: speaker=$speaking_unit.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1463
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1600
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1633
 msgid "And so, at last, it ends."
 msgstr "Κι έτσι τελειώνει, επιτέλους."
 
@@ -5671,7 +5687,7 @@ msgstr "Το ραβδί δίνει στην κοντινή επίθεση της
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1762
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1973
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2006
 msgid "On second thought, it’s better to leave the dead in peace."
 msgstr ""
 "Τώρα που το ξανασκέφτομαι, καλύτερα να αφήσουμε τους νεκρούς στην ησυχία "
@@ -5807,17 +5823,17 @@ msgstr "Μόλις είστε σε θέση σας, ο Ζουργκ θα κατ�
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:511
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:512
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:513
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1157
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1158
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1159
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1161
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1162
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1163
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1166
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1168
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1173
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1174
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1176
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1175
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1177
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1178
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1179
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1182
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1184
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1186
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1190
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1192
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:181
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:195
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:209
@@ -6008,21 +6024,21 @@ msgstr ""
 #. [message]: speaker=East Scout
 #. [message]: speaker=West Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:989
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1066
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1074
 msgid "Here they come! Blow the charges!"
 msgstr "Έρχονται! Γρήγορα, ανατινάξτε τα!"
 
 #. [message]: speaker=East Scout
 #. [message]: speaker=West Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1024
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1116
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1124
 msgid "They’re coming this way too! Blow the charges!"
 msgstr "Έρχονται και από δω! Ανατινάξτε τα!"
 
 #. [message]: speaker=East Scout
 #. [message]: speaker=West Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1036
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1128
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1044
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1144
 #, fuzzy
 #| msgid ""
 #| "What?! Nothing happened! Who in Moradin’s name rigged the darn charges "
@@ -6035,12 +6051,12 @@ msgstr ""
 "να τους κρατήσω μόνος μου."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1154
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1170
 msgid "Jorgi"
 msgstr "Γιόργκι"
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1181
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1197
 msgid ""
 "It was a mistake to depend on trickery. We will defeat you fighting face to "
 "face. A true dwarf always looks his opponent in the eye when he kills him!"
@@ -6050,7 +6066,7 @@ msgstr ""
 "σκοτώσει."
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1186
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1202
 msgid ""
 "So I challenge you, man to man. If you are not cowards, step out onto these "
 "bridges and meet your fate!"
@@ -6059,7 +6075,7 @@ msgstr ""
 "γέφυρες και δείξτε από τι είστε φτιαγμένοι!"
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1224
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1240
 msgid ""
 "I couldn’t do it. Blow the backup charges! If we can’t stop them then maybe "
 "the black lake will."
@@ -6069,7 +6085,7 @@ msgstr ""
 "λίμνη."
 
 #. [message]: speaker=Jorgi
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1249
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1282
 msgid ""
 "They’ve crossed the chasm! Blow the backup charges! If we can’t stop them "
 "then maybe the black lake will."
@@ -6078,7 +6094,7 @@ msgstr ""
 "τους σταματήσουμε εμείς, ίσως να μπορεί να το κάνει η μαύρη λίμνη."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1273
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1306
 msgid ""
 "It’s a huge underground lake. The water looks dark and deep and is cold to "
 "the touch. There also seems to be some glowing moss on the walls which "
@@ -6088,17 +6104,17 @@ msgstr ""
 "Και υπάρχουν κάποια φωσφορίζοντα βρύα στους τοίχους που μας βοηθάνε να δούμε."
 
 #. [unit]: id=Extra Hairy Bat, type=Dread Bat
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1291
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1324
 msgid "Extra Hairy Bat"
 msgstr "Υπερτριχωτή Νυχτερίδα"
 
 #. [unit]: type=Dwarvish Stalwart, id=Dwarf Hermit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1324
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1357
 msgid "Dwarf Hermit"
 msgstr "Νάνος Ερημίτης"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1357
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1390
 msgid ""
 "Incoming! Ugh, it’s big, hairy, and nasty. I hate bats, I really hate bats."
 msgstr ""
@@ -6106,17 +6122,17 @@ msgstr ""
 "νυχτερίδες. Πραγματικά."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1372
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1405
 msgid "Graaawk!"
 msgstr "Κρααααα!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1378
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1411
 msgid "Good riddance."
 msgstr "Στα τσακίδια."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1403
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1436
 msgid ""
 "The ledge just drops off here. The water might be shallow enough to wade "
 "across, but I think I vaguely see something moving underneath the surface. "
@@ -6127,17 +6143,17 @@ msgstr ""
 "Ίσως είναι απλά ψάρια, αλλά δε μ'αρέσει καθόλου."
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1466
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1499
 msgid "What are those?!"
 msgstr "Τι είν' τούτα!"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1474
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1507
 msgid "Here come more of them!"
 msgstr "Έρχονται κι άλλα!"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1507
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1540
 msgid ""
 "The movement under the water has stopped. I think we killed the last of "
 "them. Whatever ‘them’ was."
@@ -6146,21 +6162,21 @@ msgstr ""
 "αν ήταν."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1550
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1552
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1555
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1557
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1558
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1583
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1585
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1588
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1590
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1591
 msgid "Dwarf High Guard"
 msgstr "Νάνος Αρχηγικός Φρουρός"
 
 #. [message]: speaker=Dwarf Chieftain
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1609
 msgid "So you’ve come at last. Let it end, here and now!"
 msgstr "Ήρθατε επιτέλους. Ας το τελειώσουμε εδώ και τώρα!"
 
 #. [message]: speaker=Dwarf Chieftain
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1594
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1627
 msgid ""
 "Faugh! Even in death I curse you! You will never escape these tunnels alive!"
 msgstr ""
@@ -6168,12 +6184,12 @@ msgstr ""
 "σήραγγες ζωντανοί!"
 
 #. [message]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1609
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1642
 msgid "The chieftain has fallen! Flee for your lives!"
 msgstr "Ο Αρχηγός είναι νεκρός! Τρέξτε να σωθείτε!"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1646
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1679
 msgid ""
 "Little elves fight good. Zurg impressed. With dwarf chieftain dead, cowardly "
 "dwarves flee before us. Our struggle not over, still much more fighting, but "
@@ -6190,7 +6206,7 @@ msgstr ""
 "ακολουθήστε με."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1651
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1684
 msgid ""
 "With their knowledge of all these secret tunnels, you’d think they could "
 "have led us straight here instead of making us go through those ‘light "
@@ -6202,7 +6218,7 @@ msgstr ""
 "αυτές τις \"ελαφριές γραμμές άμυνας\". Θα είχαμε γλυτώσει πολλές μάχες έτσι."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1656
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1689
 msgid ""
 "Perhaps they wanted to further test our prowess in battle. And besides, "
 "every dwarf we kill is one they don’t have to. Still, I think we caused a "
@@ -6213,7 +6229,7 @@ msgstr ""
 "πάλι, μάλλον πετύχαμε μεγαλύτερο αντιπερισπασμό από όσο περίμεναν."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1661
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1694
 msgid ""
 "Shh, you two. Yes, of course, we would be honored to come and meet the Great "
 "Leader. But first, we left many of our people back up near the entrance to "
@@ -6226,7 +6242,7 @@ msgstr ""
 "δεν είναι ασφαλείς. Μπορείτε να μας βοηθήσετε να τους πάμε σε ασφαλές μέρος;"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1699
 msgid ""
 "Hmm, yes, yes we can help. We have a few big caves you little people can "
 "stay in, and I get some big trolls to help escort you there. The Great "
@@ -6239,7 +6255,7 @@ msgstr ""
 "σας και σας βοηθήσουμε τους πάτε στις σπηλιές."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1704
 msgid ""
 "I thank you. Come on people, no celebrating yet, we still have work left to "
 "do!"
@@ -6247,8 +6263,8 @@ msgstr ""
 "Σε ευχαριστώ. Εμπρός, δεν είναι ακόμα ώρα για πανηγυρισμούς, έχουμε δουλειά!"
 
 #. [message]: speaker=Dwarf Hermit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1705
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1727
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1760
 msgid ""
 "They’ve come for my precious. It’s mine, yes it is. They shan’t have it, no "
 "they shan’t. We shall kill them all, yes, yes we will."
@@ -6258,12 +6274,12 @@ msgstr ""
 "θα τους σκοτώσουμε. Όλους."
 
 #. [message]: speaker=Dwarf Hermit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1743
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1776
 msgid "Curse them! We hates them!"
 msgstr "Κατάρα! Τους μισούμε, ναι!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1749
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1782
 msgid ""
 "What’s this? His clothes were in rags, and yet he had this ancient jeweled "
 "amulet hanging around his neck. It contains a huge amethyst that seems to "
@@ -6275,7 +6291,7 @@ msgstr ""
 "το αμυδρό μωβ φως. Αναρωτιέμαι πού να το βρήκε."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1758
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1791
 msgid ""
 "Hey, wait a minute, that amulet glows the same color as this rune. Maybe if "
 "I put the amulet on and step into the rune..."
@@ -6284,7 +6300,7 @@ msgstr ""
 "το φορούσα και πατούσα στο ρούνο..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1786
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1819
 msgid ""
 "Whoa. That was pretty impressive. The amulet stopped glowing and the rune is "
 "gone, but what have they revealed?"
@@ -6293,17 +6309,17 @@ msgstr ""
 "χάθηλε. Αλλά φανερώσανε τίποτα;"
 
 #. [message]: speaker=Smaller Tentacle
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1846
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1879
 msgid "<i>Splash! Splash!</i>"
 msgstr "<i>Σπλας, σπλας!</i>"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1852
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1885
 msgid "More tentacles?! What, did that thing have a baby?"
 msgstr "Κι άλλα πλοκάμια; Τι στο καλό, είχε και παιδιά αυτό το πράμα;"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1872
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1905
 msgid ""
 "What in Eloh’s name is this? Someone has carved a glowing purple rune in the "
 "floor at the end of this passage. It must be magical. And this passage ends "
@@ -6316,7 +6332,7 @@ msgstr ""
 "τοίχος μοιάζει συμπαγής. Ποιος αλήθεια να χάραξε αυτό το ρούνο και γιατί;"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1897
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1930
 msgid ""
 "The rune is still there, glowing mysteriously. I still have no idea why it "
 "was put here, but it’s obviously powerful and magical, a combination of "
@@ -6327,7 +6343,7 @@ msgstr ""
 "είναι και τα δύο."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1928
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1961
 msgid ""
 "Based on the runes covering the walls this must be the tomb of some ancient "
 "dwarf. The tomb seems empty except for this ornate stone coffin. The "
@@ -6348,12 +6364,12 @@ msgstr ""
 "προηγούμενος ιδιοκτήτης της σίγουρα δε θα τη ζητήσει."
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1930
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1963
 msgid "I fear no ghosts, I’ll take it."
 msgstr "Δε φοβάμαι τα φαντάσματα, θα την πάρω."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1938
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1971
 msgid ""
 "The belt fits perfectly! Somehow I feel stronger and tougher. This is too "
 "easy, there seem to have been no traps set upon the coffin. Today’s my lucky "
@@ -6364,12 +6380,12 @@ msgstr ""
 "μου μέρα."
 
 #. [object]: id=DwarvenBelt
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1949
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1982
 msgid "Dwarven Belt"
 msgstr "Ζώνη των νάνων"
 
 #. [object]: id=DwarvenBelt
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1950
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1983
 msgid ""
 "The maximum hit points of the unit who wears this belt will increase by 12."
 msgstr ""
@@ -6377,18 +6393,18 @@ msgstr ""
 "κατά 12."
 
 #. [command]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1958
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1991
 msgid "Angry Ghost"
 msgstr "Θυμωμένο Φάντασμα"
 
 #. [message]: speaker=Angry Ghost
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1962
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1995
 msgid "You who disturb my rest, come and join me in death!"
 msgstr ""
 "Εσείς που ταράσσετε τον ύπνο μου, ελάτε να μου κάνετε παρέα στο θάνατο!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1967
+#: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2000
 msgid "Then again, maybe I spoke too soon."
 msgstr "Από την άλλη, μάλλον βιάστηκα να μιλήσω."
 
@@ -11691,8 +11707,8 @@ msgid ""
 msgstr ""
 "Ελόχ, ξέρεις ότι σε έχω υπηρετήσει πιστά για πολλά χρόνια. Τώρα ζητώ μια "
 "χάρη από σένα. Μη σκοτώσεις το νεαρό Κάλεχ, κάνει αυτό που του λέει η καρδιά "
-"του. Εσύ δεν είπες, <i>\"Το σφάλλειν ξωτικίσιο, αλλά το να συγχωρείς θεϊκό"
-"\"</i>;"
+"του. Εσύ δεν είπες, <i>\"Το σφάλλειν ξωτικίσιο, αλλά το να συγχωρείς "
+"θεϊκό\"</i>;"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1993
@@ -14335,23 +14351,23 @@ msgstr ""
 "απλά να με αφήσουν να ρίξω κι εγώ καμία."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1441
+#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1445
 msgid "What’s that strange screeching sound coming from the jungle?"
 msgstr "Τι είναι αυτός ο περίεργος ήχος που έρχεται από τη ζούγκλα;"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1463
-#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1470
+#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1467
+#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1474
 msgid "Nocturnal Pest"
 msgstr "Νυκτόβιο Παράσιτο"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1483
+#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1487
 msgid "That’s odd. Why did those bats suddenly fly off?"
 msgstr "Παράξενο. Γιατί το σκάσανε έτσι απότομα οι νυχτερίδες;"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1488
+#: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1492
 msgid "They must be nocturnal."
 msgstr "Πρέπει να είναι νυκτόβια."
 

@@ -193,6 +193,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	try {
 		init(level);
 	} catch(...) {
+		DBG_NG << "Caught exception initializing level: " << utils::get_unknown_exception_type();
 		clear_resources();
 		throw;
 	}

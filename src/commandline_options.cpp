@@ -145,6 +145,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, headless_unit_test(false)
 	, noreplaycheck(false)
 	, mptest(false)
+	, usercache_path(false)
+	, usercache_dir()
 	, userconfig_path(false)
 	, userconfig_dir()
 	, userdata_path(false)
@@ -214,6 +216,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("strict-validation", "makes validation errors fatal")
 		("translations-over", po::value<unsigned int>(), "Specify the standard for determining whether a translation is complete.")
 		("unsafe-scripts", "makes the \'package\' package available to Lua scripts, so that they can load arbitrary packages. Do not do this with untrusted scripts! This action gives ua the same permissions as the Wesnoth executable.")
+		("usercache-dir", po::value<std::string>(), "sets the path of the cache directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.cache/wesnoth on X11 and to the userdata-dir on other systems.")
+		("usercache-path", "prints the path of the cache directory and exits.")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
@@ -509,6 +513,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		multiplayer_turns = vm["turns"].as<std::string>();
 	if (vm.count("strict-validation"))
 		strict_validation = true;
+	if (vm.count("usercache-dir"))
+		usercache_dir = vm["usercache-dir"].as<std::string>();
+	if (vm.count("usercache-path"))
+		usercache_path = true;
 	if (vm.count("userconfig-dir"))
 		userconfig_dir = vm["userconfig-dir"].as<std::string>();
 	if (vm.count("userconfig-path"))

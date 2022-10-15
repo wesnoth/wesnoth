@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
 "PO-Revision-Date: 2019-03-17 11:00+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 2.1.1\n"
 
 #. [time]: id=underground
@@ -4440,9 +4440,18 @@ msgstr "slėpimasis"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -7040,15 +7049,15 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 maks. GT"
 
-#: src/help/help.cpp:213
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Užverti"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr ""
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 #, fuzzy
 #| msgid "Parse error when parsing help text: "
 msgid "Parse error when parsing help text:"
@@ -7212,27 +7221,27 @@ msgstr ""
 msgid "Required XP:"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Special"
@@ -7250,29 +7259,29 @@ msgstr ""
 msgid "Resistance"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 #, fuzzy
 #| msgid "Terrain Editor"
 msgid "Terrain Modifiers"
 msgstr "Reljefo redaktorius"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 #, fuzzy
 #| msgid "Terrains"
 msgid "Terrain"
 msgstr "Reljefai"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 #, fuzzy
 #| msgid "Movement"
 msgid "Movement Cost"
 msgstr "Judėjimas"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -7284,11 +7293,11 @@ msgstr ""
 "\n"
 "<header>text='Gynybos lubos'</header>"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr ""
 

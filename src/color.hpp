@@ -22,31 +22,27 @@
 #include <string>
 #include <utility>
 
-//
-// TODO: constexpr
-//
+constexpr uint32_t SDL_ALPHA_MASK = 0xFF000000;
+constexpr uint32_t SDL_RED_MASK   = 0x00FF0000;
+constexpr uint32_t SDL_GREEN_MASK = 0x0000FF00;
+constexpr uint32_t SDL_BLUE_MASK  = 0x000000FF;
 
-const uint32_t SDL_ALPHA_MASK = 0xFF000000;
-const uint32_t SDL_RED_MASK   = 0x00FF0000;
-const uint32_t SDL_GREEN_MASK = 0x0000FF00;
-const uint32_t SDL_BLUE_MASK  = 0x000000FF;
+constexpr uint32_t SDL_ALPHA_BITSHIFT = 24;
+constexpr uint32_t SDL_RED_BITSHIFT   = 16;
+constexpr uint32_t SDL_GREEN_BITSHIFT = 8;
+constexpr uint32_t SDL_BLUE_BITSHIFT  = 0;
 
-const uint32_t SDL_ALPHA_BITSHIFT = 24;
-const uint32_t SDL_RED_BITSHIFT   = 16;
-const uint32_t SDL_GREEN_BITSHIFT = 8;
-const uint32_t SDL_BLUE_BITSHIFT  = 0;
+constexpr uint32_t RGBA_ALPHA_MASK = 0x000000FF;
+constexpr uint32_t RGBA_RED_MASK   = 0xFF000000;
+constexpr uint32_t RGBA_GREEN_MASK = 0x00FF0000;
+constexpr uint32_t RGBA_BLUE_MASK  = 0x0000FF00;
 
-const uint32_t RGBA_ALPHA_MASK = 0x000000FF;
-const uint32_t RGBA_RED_MASK   = 0xFF000000;
-const uint32_t RGBA_GREEN_MASK = 0x00FF0000;
-const uint32_t RGBA_BLUE_MASK  = 0x0000FF00;
+constexpr uint32_t RGBA_ALPHA_BITSHIFT = 0;
+constexpr uint32_t RGBA_RED_BITSHIFT   = 24;
+constexpr uint32_t RGBA_GREEN_BITSHIFT = 16;
+constexpr uint32_t RGBA_BLUE_BITSHIFT  = 8;
 
-const uint32_t RGBA_ALPHA_BITSHIFT = 0;
-const uint32_t RGBA_RED_BITSHIFT   = 24;
-const uint32_t RGBA_GREEN_BITSHIFT = 16;
-const uint32_t RGBA_BLUE_BITSHIFT  = 8;
-
-const uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL2
+constexpr uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL2
 
 // Functions for manipulating RGB values.
 constexpr uint8_t float_to_color(double n);
@@ -62,15 +58,15 @@ constexpr uint8_t color_blend(uint8_t n1, uint8_t n2, uint8_t p);
 struct color_t : SDL_Color
 {
 	/** color_t initializes to fully opaque white by default. */
-	color_t() : SDL_Color{255, 255, 255, ALPHA_OPAQUE} {}
+	constexpr color_t() : SDL_Color{255, 255, 255, ALPHA_OPAQUE} {}
 
 	/** Basic RGB or RGBA constructor. */
-	color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = ALPHA_OPAQUE)
+	constexpr color_t(uint8_t r_val, uint8_t g_val, uint8_t b_val, uint8_t a_val = ALPHA_OPAQUE)
 		: SDL_Color{r_val, g_val, b_val, a_val}
 	{}
 
 	/** This is a thin wrapper. There is nothing extra to do here. */
-	color_t(const SDL_Color& c) : SDL_Color{c} {}
+	constexpr color_t(const SDL_Color& c) : SDL_Color{c} {}
 
 	/**
 	 * Creates a new color_t object from a string variable in "R,G,B,A" format.
@@ -111,7 +107,15 @@ struct color_t : SDL_Color
 	 * @param c      A uint32_t variable, in RGBA format.
 	 * @return       A new color_t object.
 	 */
-	static color_t from_rgba_bytes(uint32_t c);
+	static constexpr color_t from_rgba_bytes(uint32_t c)
+	{
+		return {
+			static_cast<uint8_t>((RGBA_RED_MASK   & c) >> RGBA_RED_BITSHIFT),
+			static_cast<uint8_t>((RGBA_GREEN_MASK & c) >> RGBA_GREEN_BITSHIFT),
+			static_cast<uint8_t>((RGBA_BLUE_MASK  & c) >> RGBA_BLUE_BITSHIFT),
+			static_cast<uint8_t>((RGBA_ALPHA_MASK & c) >> RGBA_ALPHA_BITSHIFT),
+		};
+	}
 
 	/**
 	 * Creates a new color_t object from a uint32_t variable.
@@ -119,7 +123,15 @@ struct color_t : SDL_Color
 	 * @param c      A uint32_t variable, in ARGB format.
 	 * @return       A new color_t object.
 	 */
-	static color_t from_argb_bytes(uint32_t c);
+	static constexpr color_t from_argb_bytes(uint32_t c)
+	{
+		return {
+			static_cast<uint8_t>((SDL_RED_MASK   & c) >> SDL_RED_BITSHIFT),
+			static_cast<uint8_t>((SDL_GREEN_MASK & c) >> SDL_GREEN_BITSHIFT),
+			static_cast<uint8_t>((SDL_BLUE_MASK  & c) >> SDL_BLUE_BITSHIFT),
+			static_cast<uint8_t>((SDL_ALPHA_MASK & c) >> SDL_ALPHA_BITSHIFT),
+		};
+	}
 
 	/**
 	 * Returns the stored color in rrggbb hex format.
@@ -134,7 +146,7 @@ struct color_t : SDL_Color
 	 *
 	 * @return       The new uint32_t object.
 	 */
-	uint32_t to_rgba_bytes() const
+	constexpr uint32_t to_rgba_bytes() const
 	{
 		return
 			(static_cast<uint32_t>(r) << RGBA_RED_BITSHIFT) |
@@ -148,7 +160,7 @@ struct color_t : SDL_Color
 	 *
 	 * @return       The new uint32_t object.
 	 */
-	uint32_t to_argb_bytes() const
+	constexpr uint32_t to_argb_bytes() const
 	{
 		return
 			(static_cast<uint32_t>(r) << SDL_RED_BITSHIFT) |
@@ -171,22 +183,22 @@ struct color_t : SDL_Color
 	 */
 	std::string to_rgb_string() const;
 
-	bool null() const
+	constexpr bool null() const
 	{
 		return *this == null_color();
 	}
 
-	bool operator==(const color_t& c) const
+	constexpr bool operator==(const color_t& c) const
 	{
 		return r == c.r && g == c.g && b == c.b && a == c.a;
 	}
 
-	bool operator!=(const color_t& c) const
+	constexpr bool operator!=(const color_t& c) const
 	{
 		return !(*this == c);
 	}
 
-	color_t blend_add(const color_t& c) const
+	constexpr color_t blend_add(const color_t& c) const
 	{
 		// Do some magic to detect integer overflow
 		// We want overflows to max out the component instead of wrapping.
@@ -199,7 +211,7 @@ struct color_t : SDL_Color
 		};
 	}
 
-	color_t blend_lighten(const color_t& c) const
+	constexpr color_t blend_lighten(const color_t& c) const
 	{
 		return {
 			std::max<uint8_t>(r, c.r),
@@ -209,7 +221,7 @@ struct color_t : SDL_Color
 		};
 	}
 
-	color_t inverse() const {
+	constexpr color_t inverse() const {
 		return {
 			static_cast<uint8_t>(255 - r),
 			static_cast<uint8_t>(255 - g),
@@ -225,7 +237,7 @@ struct color_t : SDL_Color
 	 * @param p     The proportion of the other color to blend. 0 will
 	 *              return the original color, 255 the blending color.
 	 */
-	color_t smooth_blend(const color_t& c, uint8_t p) const
+	constexpr color_t smooth_blend(const color_t& c, uint8_t p) const
 	{
 		return {
 			color_blend(r, c.r, p),
@@ -236,7 +248,7 @@ struct color_t : SDL_Color
 	}
 
 	/** Definition of a 'null' color - fully transparent black. */
-	static color_t null_color()
+	static constexpr color_t null_color()
 	{
 		return {0,0,0,0};
 	}

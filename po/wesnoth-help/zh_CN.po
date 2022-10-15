@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-04-22 16:11+0800\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
+"PO-Revision-Date: 2022-09-03 09:05+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -557,7 +557,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:127
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "编辑器地形遮罩图形"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
@@ -567,6 +567,9 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"通常，在编辑器中的地图，看起来与在游戏中是相似的。不过也有例外，此时编辑器中"
+"使用的图形与游戏中是不同的。此处描述的遮罩都可以在地形调色板的“特殊”组中找"
+"到。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -585,6 +588,16 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='移动遮罩'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> 不可"
+"通过地形和不可步行地形\n"
+"\n"
+"虽然在编辑器里很容易注意到，但在游戏中，这些地形是不可见的，所以，用它们创建"
+"出来的混合地形看起来和基础地形一样。它们所创建的混合地形，其上的移动消耗分别"
+"设置为“不可通过”和“不可步行”。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -607,6 +620,19 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='城堡遮罩'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"将这两种遮罩之一放置到可以通过的六角格上，就能允许在该格上征募单位。主楼也允"
+"许首领在该格上进行征募。\n"
+"\n"
+"这些遮罩也可以加到不可通过的六角格之上，这样就能将城堡格通过不可通过的墙链接"
+"到视觉上不相邻的主楼上。还可以创造出在主楼和塔楼之间似乎有草地的城堡，不过这"
+"就要求用于连接的六角格被占用或阻挡，以免有单位被征募到这些格子上。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -620,6 +646,12 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='村庄遮罩'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"这将把任何基本地形转变为村庄，可提供收入和治疗。"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -632,13 +664,17 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='伪战场黑幕'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"伪战场黑幕看上去就是一片未探索的区域，哪怕是在禁用黑幕的场景中，哪怕玩家的单"
+"位可以看到该六角格。"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "基础地形："
+msgstr "废弃地形"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -657,6 +693,16 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img> 洋红色的“D” （代表“废弃（Deprecated）”).\n"
+"\n"
+"在编辑器中，这显示在已废弃的地形代码之上。例如：\n"
+"• <ref>dst='terrain_fungus_grove_old' text='“^Uf”蘑菇地形'</ref>,\n"
+"• “Xol”被照亮的石墙，由于多种墙类地形现在已支持“^Efs”墙上灯座，因此“被照亮的"
+"石墙”被废弃了。\n"
+"\n"
+"这些地形的帮助页面上也许还有额外的只在编辑器中显示的文本，其中说明了废弃情况"
+"以及推荐的替代品。"
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:186
@@ -877,7 +923,7 @@ msgstr ""
 "韦诺的地图和场景编辑器允许用户创建和编辑地图。韦诺的所有场景都在这些地图上发"
 "生。它还提供了一套有限的功能来设置基本场景。\n"
 "\n"
-"编辑器可以从标题界面的<bold>文本='地图编辑器'</bold>选项中启动。\n"
+"编辑器可以从标题界面的<bold>text='地图编辑器'</bold>选项中启动。\n"
 "\n"
 "<header>text='编辑模式'</header>\n"
 "\n"
@@ -1017,22 +1063,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:342
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenaro mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1056,10 +1086,10 @@ msgstr ""
 "地形模式下开始编辑，然后切换到场景模式，那么旧的.map文件可能会保留下来，但场"
 "景编辑器不会更新这个文件。\n"
 "\n"
-"载入.cfg文件会产生不同的结果，这取决于.cfg文件的内容。对于由场景编辑器创建的."
-"cfg文件，则会在场景编辑器中打开该文件。然而，对于使用单独的.map文件（这类文件"
-"不能由场景编辑器创建）的.cfg文件，编辑器可能会跟随链接并在仅地形模式下打开相"
-"应的.map，就像在文件选择器中选择了.map文件一样。"
+"根据.cfg文件的内容，载入.cfg文件会产生不同的结果。对于由场景编辑器创建的.cfg"
+"文件，则会在场景编辑器中打开该文件。然而，对于使用单独的.map文件（这类文件不"
+"能由场景编辑器创建）的.cfg文件，编辑器可能会跟随链接并在仅地形模式下打开相应"
+"的.map，就像在文件选择器中选择了.map文件一样。"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:354
@@ -1491,7 +1521,7 @@ msgid ""
 "text='Northlands'</ref>. It empties to the <ref>dst='great_ocean' "
 "text='ocean'</ref> at <ref>dst='elensefar' text='Elensefar'</ref>."
 msgstr ""
-"泰河构成了<ref>dst='kingdom_wesnoth' text=韦诺王国'</ref>与"
+"泰河构成了<ref>dst='kingdom_wesnoth' text='韦诺王国'</ref>与"
 "<ref>dst='northlands' text='北陆'</ref>的边界。它在<ref>dst='elensefar' "
 "text='埃仁撒伐'</ref>流入<ref>dst='great_ocean' text='泰洋'</ref>。"
 
@@ -1647,8 +1677,10 @@ msgid ""
 "between Carcyn and Aldril and generally considered to be haunted."
 msgstr ""
 "韦诺王国位于<ref>dst='great_continent' text='泰陆'</ref>的中北部。绝大部分主"
-"线战役围绕此地展开。北面的泰河，西面的泰洋，<ref>dst='southwest_elven_lands' "
-"text='西南面'</ref>的艾森丛林，以及东南面的苦涩沼泽为它在地图上划定了疆界。\n"
+"线战役围绕此地展开。北面的<ref>dst='great_river' text='泰河'</ref>，西面的"
+"<ref>dst='great_ocean' text='泰洋'</ref>海岸，"
+"<ref>dst='southwest_elven_lands' text='西南面'</ref>的艾森丛林，以及东南面的"
+"苦涩沼泽为它在地图上划定了疆界。\n"
 "\n"
 "在艾森河之上，塔恩要塞之南，是韦诺的一块边疆领地。其南部以茂密的大森林（地图"
 "上未标注）为界，艾森丛林可以视作是这一大森林最北边的突出部分。\n"
@@ -3294,7 +3326,7 @@ msgstr ""
 "移动，但不能再攻击。\n"
 "    • 这一状态可能由于战役特定的事件或能力而出现，例如战役<bold>text='灼烧双"
 "日之下'</bold>中的<bold>text='脱战'</bold>能力。\n"
-"• <bold>文本='蓝色'</bold>表示友军单位，但在该友军自己的回合内则不使用蓝色"
+"• <bold>text='蓝色'</bold>表示友军单位，但在该友军自己的回合内则不使用蓝色"
 "球。\n"
 "    • 在友军自己的回合中，他们的单位的状态球会显示单位是否还能移动和攻击，但"
 "是他们的行动，以及状态球的对应变化会延迟显示，正如<ref>dst='shroud_and_fog' "
@@ -4935,9 +4967,18 @@ msgstr "隐蔽"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -5829,9 +5870,9 @@ msgstr ""
 "\n"
 "\n"
 "<bold>text='聪慧'</bold>单位在战役的开始阶段非常有用，因为他们能更快地升到高"
-"等级。在战役的后期聪慧单位并不是很有用，因为<bold>text='满级奖励'</"
-"bold>（AMLA）与升级相比效果并不显著。如果拥有很多达到“满级”的单位，那你也许会"
-"希望召回那些拥有更有用的特质的单位。"
+"等级。在战役的后期聪慧单位并不是很有用，因为<bold>text='满级奖励'</bold>"
+"（AMLA）与升级相比效果并不显著。如果拥有很多达到“满级”的单位，那你也许会希望"
+"召回那些拥有更有用的特质的单位。"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
@@ -5895,8 +5936,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='康健'</italic>单位拥有1点额外的生命值，并且每升一级再获得额外的"
-"1点。他们也能每回合回复2点生命值，而不论在前一回合是否参加了战斗。"
+"<bold>text='康健'</bold>单位拥有1点额外的生命值，并且每升一级再获得额外的1"
+"点。他们也能每回合回复2点生命值，而不论在前一回合是否参加了战斗。"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
@@ -6133,7 +6174,7 @@ msgstr "龙人"
 #| "Drakes are inherently magical creatures, with a mysterious internal fire "
 #| "fueling their very lives. This can easily be witnessed when one of their "
 #| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
+#| "remains into ashes. Their internal fire is also their greatest weakness; "
 #| "it makes them extremely vulnerable to cold attacks. Despite their magical "
 #| "nature, drakes are incapable of channeling magic in a controlled manner. "
 #| "While the magic imbued within a drake’s body enables it to spit fire and "
@@ -7512,15 +7553,15 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1最大生命值"
 
-#: src/help/help.cpp:213
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "关闭"
 
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "帮助"
 
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
 msgstr "分析帮助文本时出现分析错误："
 
@@ -7535,7 +7576,7 @@ msgstr "最差"
 #: src/help/help_topic_generators.cpp:161
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
-msgstr ""
+msgstr "村庄治疗任何驻扎在内的单位，或疗毒。"
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -7546,21 +7587,21 @@ msgid ""
 msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "此地形为单位疗毒，或回复1点生命值。"
+msgstr[1] "此地形让单位回复$amount|点生命值，或疗毒，就如同驻扎在村庄里一样。"
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
-msgstr ""
+msgstr "此地形是城堡地形——单位可以从相连的主楼处征募到此地形上。"
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
-msgstr ""
+msgstr "此地形是主楼地形——首领可以从此六角格征募单位到相连的城堡六角格上。"
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -7568,6 +7609,8 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"此特殊主楼允许首领在站立于此处时进行征募，但不允许相连主楼上的首领征募单位到"
+"此六角格上。"
 
 #: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
@@ -7670,27 +7713,27 @@ msgstr "立场："
 msgid "Required XP:"
 msgstr "所需经验："
 
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "攻击手段"
 
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "名称"
 
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "打击次数"
 
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "射程"
 
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "类型"
 
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "特攻"
 
@@ -7706,31 +7749,31 @@ msgstr "攻击类型"
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "地形修正"
 
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "防御"
 
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "移动消耗"
 
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "防御上限"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "视野消耗"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "干扰消耗"
 

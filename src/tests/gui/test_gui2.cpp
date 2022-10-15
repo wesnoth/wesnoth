@@ -84,6 +84,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
+#include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
@@ -117,12 +118,13 @@
 #include "serialization/string_utils.hpp"
 #include "terrain/type_data.hpp"
 #include "tests/utils/fake_display.hpp"
-#include <functional>
+#include "utils/general.hpp"
 #include "wesnothd_connection.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/test/unit_test.hpp>
 
+#include <functional>
 #include <memory>
 
 using namespace gui2::dialogs;
@@ -215,7 +217,7 @@ namespace {
 			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
-				exception = "unknown";
+				exception = utils::get_unknown_exception_type();
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
 					"Test for '" << id
@@ -262,7 +264,7 @@ namespace {
 				} catch(const std::exception& e) {
 					exception = e.what();
 				} catch(...) {
-					exception = "unknown";
+					exception = utils::get_unknown_exception_type();
 				}
 				BOOST_CHECK_MESSAGE(exception.empty(),
 						"Test for '" << id
@@ -306,7 +308,7 @@ namespace {
 			} catch(const std::exception& e) {
 				exception = e.what();
 			} catch(...) {
-				exception = "unknown";
+				exception = utils::get_unknown_exception_type();
 			}
 			BOOST_CHECK_MESSAGE(exception.empty(),
 					"Test for tip '" << id
@@ -535,6 +537,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_method_selection)
 {
 	test<mp_method_selection>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_report)
+{
+	test<mp_report>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_simple_item_selector)
 {
 	test<simple_item_selector>();
@@ -676,12 +682,12 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
 	} catch(const wml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
-					"which doesn't fit on the screen."));
+		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn't fit on the screen."));
 		return;
 	} catch(...) {
+		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");
 	}
-	BOOST_ERROR("Didn't catch the wanted exception.");
+	BOOST_ERROR("Didn't catch the wanted exception, instead caught nothing.");
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -1032,6 +1038,16 @@ struct dialog_tester<mp_join_game_password_prompt>
 	mp_join_game_password_prompt* create()
 	{
 		return new mp_join_game_password_prompt(password);
+	}
+};
+
+template<>
+struct dialog_tester<mp_report>
+{
+	std::string report_text;
+	mp_report* create()
+	{
+		return new mp_report(report_text);
 	}
 };
 

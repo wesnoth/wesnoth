@@ -1733,7 +1733,8 @@ void console_handler::do_clear()
 
 void console_handler::do_foreground()
 {
-	menu_handler_.gui_->toggle_debug_foreground();
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_FOREGROUND);
+	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_layers()
@@ -1764,7 +1765,7 @@ void console_handler::do_fps()
 
 void console_handler::do_benchmark()
 {
-	menu_handler_.gui_->toggle_benchmark();
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_BENCHMARK);
 }
 
 void console_handler::do_save()
@@ -2076,18 +2077,18 @@ void console_handler::do_event()
 
 void console_handler::do_toggle_draw_coordinates()
 {
-	menu_handler_.gui_->set_draw_coordinates(!menu_handler_.gui_->get_draw_coordinates());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_COORDINATES);
 	menu_handler_.gui_->invalidate_all();
 }
 void console_handler::do_toggle_draw_terrain_codes()
 {
-	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_TERRAIN_CODES);
 	menu_handler_.gui_->invalidate_all();
 }
 
 void console_handler::do_toggle_draw_num_of_bitmaps()
 {
-	menu_handler_.gui_->set_draw_num_of_bitmaps(!menu_handler_.gui_->get_draw_num_of_bitmaps());
+	menu_handler_.gui_->toggle_debug_flag(display::DEBUG_NUM_BITMAPS);
 	menu_handler_.gui_->invalidate_all();
 }
 
@@ -2117,7 +2118,7 @@ void menu_handler::do_ai_formula(const std::string& str, int side_num, mouse_han
 		add_chat_message(std::time(nullptr), "wfl", 0, ai::manager::get_singleton().evaluate_command(side_num, str));
 	} catch(const wfl::formula_error&) {
 	} catch(...) {
-		add_chat_message(std::time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA");
+		add_chat_message(std::time(nullptr), "wfl", 0, "UNKNOWN ERROR IN FORMULA: "+utils::get_unknown_exception_type());
 	}
 }
 

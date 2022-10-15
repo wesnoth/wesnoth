@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
+.TH WESNOTHD 6 2022 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
 .
 .SH NÁZEV
 .
@@ -180,6 +180,11 @@ jsou zástupné znaky \fB*\fP a\ \fB?\fP. (výchozí hodnotou je příslušná v
 wesnoth)
 .br
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
+.TP 
+\fBid\fP
+Identifikátor serveru při použití databázových funkcí pro uložení informací
+o\ hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16
+nebo 1.17.
 .
 .SS "Globální značky:"
 .
@@ -264,6 +269,20 @@ Název tabulky, do které tvé phpBB fórum ukládá svá data o\ skupinách
 uživatelů. S\ největší pravděpodobností to bude
 <table\-prefix>_user_group (např. phpbb3_user_group).
 .TP 
+\fBdb_connection_history_table\fP
+Název tabulky pro ukládání časů přihlášení a\ odhlášení. Je také použita pro
+párování IP adres s\ uživateli a\ naopak.
+.TP 
+\fBdb_topics_table\fP
+Název tabulky, do které tvé phpBB fórum ukládá své informace o\ tématech
+(vláknech). Nejpravděpodobněji to bude <table\-prefix>_topics
+(např. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+Název tabulky, do které tvé phpBB fórum ukládá svá data o\ zablokovaných
+uživatelích. Nejspíše to bude <table\-prefix>_banlist
+(např. phpbb3_banlist).
+.TP 
 \fBmp_mod_group\fP
 Identifikátor skupiny fóra, o\ které se předpokládá, že má oprávnění
 k\ moderování.
@@ -286,7 +305,7 @@ Navštivte oficiální stránky: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a

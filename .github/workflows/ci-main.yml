@@ -267,16 +267,16 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: win-cache-0005
+          key: win-cache-0007
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Build vcpkg
         run: |
-          if not exist "D:/a/wesnoth/vcpkg" git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
-          if not exist "D:/a/wesnoth/vcpkg" cd D:/a/wesnoth/vcpkg
-          if not exist "D:/a/wesnoth/vcpkg" D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
+          git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
+          cd D:/a/wesnoth/vcpkg
+          D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.9
@@ -286,9 +286,6 @@ jobs:
       - name: Run cmake
         run: |
           cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
-
-      - name: vcpkg_abi_info
-        run: type "D:\a\wesnoth\vcpkg\buildtrees\bzip2\x64-windows.vcpkg_abi_info.txt"
 
 # delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
 # otherwise the job was failing when trying to write a .obj file
@@ -322,4 +319,3 @@ jobs:
             pusher: ${{ github.actor }}
             commit: ${{ github.event.head_commit.message }}
             commit url: ${{ github.event.head_commit.url }}
-

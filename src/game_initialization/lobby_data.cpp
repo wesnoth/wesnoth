@@ -143,6 +143,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	, have_all_mods(true)
 	, has_friends(false)
 	, has_ignored(false)
+	, auto_hosted(game["auto_hosted"].to_bool())
 	, display_status(disp_status::NEW)
 	, required_addons()
 	, addons_outcome(addon_req::SATISFIED)

@@ -201,7 +201,7 @@ void terrain_palette::setup_item(
 	}
 
 	tooltip_text << map().get_terrain_editor_string(terrain);
-	if(gui_.get_draw_terrain_codes()) {
+	if(gui_.debug_flag_set(display::DEBUG_TERRAIN_CODES)) {
 		tooltip_text << " " + font::unicode_em_dash + " " << terrain;
 	}
 }

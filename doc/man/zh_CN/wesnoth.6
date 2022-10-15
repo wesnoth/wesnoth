@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2021 wesnoth 韦诺之战
+.TH WESNOTH 6 2022 wesnoth 韦诺之战
 .
 .SH 名称
 wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游戏
@@ -123,6 +123,10 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 列出游戏中定义的日志域（如果使用了 \fIfilter\fP 则只列出饱含该字符串的日志域）而后退出
+.TP 
+\fB\-\-log\-to\-file\fP
+redirects logged output to a file. Log files are created in the logs
+directory under the userdata folder.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 游戏每秒能显示的帧数，这个值应该在\fB1\fP和\fB1000\fP之间，默认为显示器的刷新率。
@@ -342,7 +346,7 @@ Soliton <soliton.de@gmail.com> 编辑。
 .
 .SH 版权
 .
-版权所有 \(co 2003\-2021 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

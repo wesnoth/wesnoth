@@ -60,7 +60,6 @@ public:
 	void set_color(const color_t& color) {color_ = color;}
 	void set_bg_color(const color_t& bg_color) {
 		bgcolor_ = bg_color;
-		bgalpha_ = bg_color.a;
 	}
 	void set_border_size(int border) {border_ = border;}
 	// set width for word wrapping (use -1 to disable it)
@@ -105,6 +104,7 @@ private:
 	int xpos(std::size_t width) const;
 	point get_pos(int time);
 	uint8_t get_alpha(int time);
+	rect get_bg_rect(const rect& text_rect) const;
 	texture tex_;
 	rect screen_loc_;
 	uint8_t alpha_;
@@ -113,7 +113,6 @@ private:
 	std::string text_;
 	int font_size_;
 	color_t color_, bgcolor_;
-	int bgalpha_;
 	double xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;
 	int width_, height_;

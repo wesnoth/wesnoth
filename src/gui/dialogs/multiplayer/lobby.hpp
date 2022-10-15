@@ -113,6 +113,10 @@ private:
 
 	void show_server_info();
 
+	void open_profile_url();
+
+	void tab_switch_callback();
+
 	void refresh_lobby();
 
 	void game_filter_init();
@@ -143,6 +147,7 @@ private:
 	field_bool* filter_ignored_;
 	field_bool* filter_slots_;
 	field_bool* filter_invert_;
+	bool filter_auto_hosted_;
 
 	text_box* filter_text_;
 

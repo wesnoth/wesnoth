@@ -720,7 +720,9 @@ unit::~unit()
 		}
 	} catch(const std::exception & e) {
 		ERR_UT << "Caught exception when destroying unit: " << e.what();
-	} catch(...) {}
+	} catch(...) {
+		DBG_UT << "Caught general exception when destroying unit: " << utils::get_unknown_exception_type();
+	}
 }
 
 /**
@@ -1613,7 +1615,7 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
 	unit_ability_list defense_abilities = get_abilities("defense");
 	if(!defense_abilities.empty()) {
-		unit_abilities::effect defense_effect(defense_abilities, def, false);
+		unit_abilities::effect defense_effect(defense_abilities, def);
 		def = defense_effect.get_composite_value();
 	}
 #endif
@@ -1662,7 +1664,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	}
 
 	if(!resistance_abilities.empty()) {
-		unit_abilities::effect resist_effect(resistance_abilities, 100-res, false);
+		unit_abilities::effect resist_effect(resistance_abilities, 100-res);
 
 		res = 100 - std::min<int>(
 			resist_effect.get_composite_value(),
@@ -2584,7 +2586,9 @@ unit_movement_resetter::~unit_movement_resetter()
 		}
 
 		u_.set_movement(moves_);
-	} catch(...) {}
+	} catch(...) {
+		DBG_UT << "Caught exception when destroying unit_movement_resetter: " << utils::get_unknown_exception_type();
+	}
 }
 
 std::string unit::TC_image_mods() const
