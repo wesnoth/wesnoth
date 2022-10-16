@@ -1,18 +1,8 @@
 ## Version 1.17.8+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
  ### Terrain
    * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
  ### Translations
    * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
 
