@@ -7,6 +7,7 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
  ### Translations
  ### Units
  ### User interface
