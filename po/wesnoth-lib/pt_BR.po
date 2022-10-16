@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2022-10-15 21:06-0500\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -1222,7 +1222,10 @@ msgstr "Montanhas Desérticas"
 # File: data/core/terrain.cfg, line: 901
 #. [terrain_type]: id=regular_stone_floor
 #. [terrain_type]: id=ancient_stone_floor
+#. [terrain_type]: id=regular_stone_floor_deprecated
+#. [terrain_type]: id=ancient_stone_floor_deprecated
 #: data/core/terrain.cfg:926 data/core/terrain.cfg:936
+#: data/core/terrain.cfg:3374 data/core/terrain.cfg:3385
 msgid "Stone Floor"
 msgstr "Piso de Pedra"
 
@@ -1247,8 +1250,11 @@ msgstr "Piso de Pedra Ancião"
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
 #. [terrain_type]: id=rug3_floor
+#. [terrain_type]: id=rug_floor_deprecated
+#. [terrain_type]: id=rug2_floor_deprecated
 #: data/core/terrain.cfg:946 data/core/terrain.cfg:956
-#: data/core/terrain.cfg:966
+#: data/core/terrain.cfg:966 data/core/terrain.cfg:3396
+#: data/core/terrain.cfg:3407
 msgid "Rug"
 msgstr "Tapete"
 
@@ -1301,7 +1307,9 @@ msgstr "Piso Simples de Madeira"
 # File: data/core/terrain.cfg, line: 901
 # File: data/core/terrain.cfg, line: 901
 #. [terrain_type]: id=old_wood_floor
+#. [terrain_type]: id=old_wood_floor_deprecated
 #: data/core/terrain.cfg:986 data/core/terrain.cfg:989
+#: data/core/terrain.cfg:3418
 msgid "Old Wooden Floor"
 msgstr "Piso Velho de Madeira"
 
@@ -3782,6 +3790,19 @@ msgstr ""
 "<italic>text='Trilhos'</italic> são usados para transportar minério, "
 "principalmente pelos anões."
 
+#. [terrain_type]: id=regular_stone_floor_deprecated
+#. [terrain_type]: id=ancient_stone_floor_deprecated
+#. [terrain_type]: id=rug_floor_deprecated
+#. [terrain_type]: id=rug2_floor_deprecated
+#. [terrain_type]: id=old_wood_floor_deprecated
+#: data/core/terrain.cfg:3377 data/core/terrain.cfg:3388
+#: data/core/terrain.cfg:3399 data/core/terrain.cfg:3410
+#: data/core/terrain.cfg:3421
+#, fuzzy
+#| msgid "Game created"
+msgid "Deprecated"
+msgstr "O jogo foi criado"
+
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
@@ -3996,7 +4017,7 @@ msgstr "Fechar"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:505
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr "Perfil"
@@ -5312,7 +5333,7 @@ msgstr "Descrição:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Experience modifier:"
 msgstr "Modificador de experiência:"
 
@@ -5410,7 +5431,7 @@ msgstr "Ouro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Gold per village:"
 msgstr "Ouro por aldeia:"
 
@@ -5511,7 +5532,7 @@ msgstr "Escolha um gerador de mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Settings"
 msgstr "Preferências"
 
@@ -6555,11 +6576,27 @@ msgid "Loading..."
 msgstr "Carregando..."
 
 #
+# File: src/mapgen_dialog.cpp, line: 120
+# File: src/mapgen_dialog.cpp, line: 120
+# File: src/mapgen_dialog.cpp, line: 120
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:75
+#, fuzzy
+#| msgid "Player joins"
+msgid "Player Hosted"
+msgstr "Quando Jogador entrar"
+
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:86
+msgid "Bot Hosted"
+msgstr ""
+
+#
 # File: data/gui/default/window/lobby_main.cfg, line: 109
 # File: data/gui/default/window/lobby_main.cfg, line: 109
 # File: data/gui/default/window/lobby_main.cfg, line: 109
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:27
+#: data/gui/window/lobby_main.cfg:138
 msgid "Games"
 msgstr "Jogos"
 
@@ -6568,7 +6605,7 @@ msgstr "Jogos"
 # File: data/gui/default/window/lobby_main.cfg, line: 177
 # File: data/gui/default/window/lobby_main.cfg, line: 177
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:146
+#: data/gui/window/lobby_main.cfg:257
 msgid "Requires a password to join"
 msgstr "É necessário senha para entrar"
 
@@ -6577,12 +6614,12 @@ msgstr "É necessário senha para entrar"
 # File: data/gui/default/window/lobby_main.cfg, line: 598
 # File: data/gui/default/window/lobby_main.cfg, line: 598
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:335
+#: data/gui/window/lobby_main.cfg:446
 msgid "Vacant slots"
 msgstr "Slots vagos"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:336
+#: data/gui/window/lobby_main.cfg:447
 msgid "Only show games with vacant slots"
 msgstr "Mostrar apenas jogos com slots vazios"
 
@@ -6592,13 +6629,13 @@ msgstr "Mostrar apenas jogos com slots vazios"
 # File: data/gui/default/window/lobby_main.cfg, line: 586
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:348
+#: data/gui/window/lobby_main.cfg:459
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Amigos"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:349
+#: data/gui/window/lobby_main.cfg:460
 msgid "Only show games with friends"
 msgstr "Mostrar apenas jogos com amigos"
 
@@ -6607,12 +6644,12 @@ msgstr "Mostrar apenas jogos com amigos"
 # File: data/gui/default/window/editor_set_starting_position.cfg, line: 50
 # File: data/gui/default/window/editor_set_starting_position.cfg, line: 50
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:361
+#: data/gui/window/lobby_main.cfg:472
 msgid "Blocked players"
 msgstr "Jogadores Bloqueados"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:362
+#: data/gui/window/lobby_main.cfg:473
 msgid "Show games that include players you have blocked"
 msgstr "Mostar jogos que incluím jogadores que você bloqueou"
 
@@ -6621,7 +6658,7 @@ msgstr "Mostar jogos que incluím jogadores que você bloqueou"
 # File: data/gui/default/window/lobby_main.cfg, line: 604
 # File: data/gui/default/window/lobby_main.cfg, line: 604
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:374
+#: data/gui/window/lobby_main.cfg:485
 msgid "Invert filter"
 msgstr "Inverter filtro"
 
@@ -6635,7 +6672,7 @@ msgstr "Inverter filtro"
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:399 data/gui/window/lobby_main.cfg:665
+#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -6654,8 +6691,8 @@ msgstr "Criar Jogo"
 # File: data/gui/default/window/lobby_main.cfg, line: 692
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:419 data/gui/window/lobby_main.cfg:677
-#: src/gui/dialogs/multiplayer/lobby.cpp:852
+#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: src/gui/dialogs/multiplayer/lobby.cpp:862
 msgid "Join"
 msgstr "Entrar"
 
@@ -6668,8 +6705,8 @@ msgstr "Entrar"
 # File: data/gui/default/window/lobby_main.cfg, line: 698
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:431 data/gui/window/lobby_main.cfg:700
-#: src/gui/dialogs/multiplayer/lobby.cpp:818
+#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid "Observe"
 msgstr "Observar"
 
@@ -6679,7 +6716,7 @@ msgstr "Observar"
 # File: src/game_preferences_display.cpp, line: 205
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
+#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr "Anúncios"
@@ -6701,14 +6738,14 @@ msgstr "Anúncios"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
+#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:124
 msgid "Preferences"
 msgstr "Preferências"
 
 #. [button]: id=view_match_history
-#: data/gui/window/lobby_main.cfg:516
+#: data/gui/window/lobby_main.cfg:627
 msgid "Match History"
 msgstr "Histórico de Partidas"
 
@@ -6717,7 +6754,7 @@ msgstr "Histórico de Partidas"
 # File: src/hotkeys.cpp, line: 80
 # File: src/hotkeys.cpp, line: 80
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
+#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
 msgid "Log Out"
 msgstr "Terminar Sessão"
 
@@ -6726,7 +6763,7 @@ msgstr "Terminar Sessão"
 # File: src/hotkeys.cpp, line: 91
 # File: src/hotkeys.cpp, line: 91
 #. [option]
-#: data/gui/window/lobby_main.cfg:553 data/gui/window/lobby_main.cfg:715
+#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
 msgid "Normal Replays"
 msgstr "Replays Normais"
 
@@ -6735,22 +6772,22 @@ msgstr "Replays Normais"
 # File: data/gui/default/window/lobby_main.cfg, line: 704
 # File: data/gui/default/window/lobby_main.cfg, line: 704
 #. [option]
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:719
+#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
 msgid "Quick Replays"
 msgstr "Replays Rápidos"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:558 data/gui/window/lobby_main.cfg:720
+#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
 msgid "Skip quickly to the active turn when observing"
 msgstr "Pular rapidamente para o turno atual quando estiver observando"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:562 data/gui/window/lobby_main.cfg:724
+#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
 msgid "Enter Blindfolded"
 msgstr "Entrar às cegas"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:563 data/gui/window/lobby_main.cfg:725
+#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
 msgid "Do not show the map until given control of a side"
 msgstr "Não mostar o mapa até ter controle de um dos lados"
 
@@ -6759,7 +6796,7 @@ msgstr "Não mostar o mapa até ter controle de um dos lados"
 # File: data/gui/default/window/lobby_main.cfg, line: 567
 # File: data/gui/default/window/lobby_main.cfg, line: 567
 #. [label]
-#: data/gui/window/lobby_main.cfg:615 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
 msgid "Multiplayer Lobby"
 msgstr "Saguão Multiplayer"
 
@@ -7597,7 +7634,7 @@ msgstr "Configurar senha que os jogadores que querem entrar no jogo devem usar"
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Map size:"
 msgstr "Tamanho do mapa:"
 
@@ -9379,8 +9416,8 @@ msgstr "XP"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:381
-#: src/gui/widgets/unit_preview_pane.cpp:531
+#: src/gui/widgets/unit_preview_pane.cpp:382
+#: src/gui/widgets/unit_preview_pane.cpp:532
 msgid "Traits"
 msgstr "Características"
 
@@ -9470,8 +9507,8 @@ msgstr "Erro"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:178
-#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
+#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Detalhes:"
 
@@ -9751,7 +9788,7 @@ msgstr "Nenhuma resolução definida."
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
-#: src/gui/widgets/unit_preview_pane.cpp:614
+#: src/gui/widgets/unit_preview_pane.cpp:615
 msgid "No grid defined."
 msgstr "Nenhuma grade definida."
 
@@ -10260,7 +10297,7 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:435
+#: src/gui/dialogs/multiplayer/lobby.cpp:436
 msgid "active_modifications^None"
 msgstr "Nenhum"
 
@@ -10625,7 +10662,7 @@ msgstr "Desconhecido"
 # File: src/game_preferences_display.cpp, line: 1090
 # File: src/game_preferences_display.cpp, line: 1090
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "no"
 msgstr "não"
 
@@ -10634,7 +10671,7 @@ msgstr "não"
 # File: src/game_preferences_display.cpp, line: 1088
 # File: src/game_preferences_display.cpp, line: 1088
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "yes"
 msgstr "sim"
 
@@ -10822,15 +10859,15 @@ msgstr "Aleatório"
 # File: src/hotkeys.cpp, line: 1235
 # File: src/hotkeys.cpp, line: 885
 # File: src/hotkeys.cpp, line: 1235
-#: src/gui/dialogs/multiplayer/lobby.cpp:68
+#: src/gui/dialogs/multiplayer/lobby.cpp:69
 msgid "Do you really want to log out?"
 msgstr "Você realmente deseja sair?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:174
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid "Incompatible User-made Content"
 msgstr "Conteúdo Feito por Usuários Incompatível"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -10840,11 +10877,11 @@ msgstr ""
 "que são incompatíveis com a sua versão. Talvez você queria sugerir que o "
 "host atualize os seus add-ons."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:190
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid "Missing User-made Content"
 msgstr "Conteúdo Feito por Usuários Faltando"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -10858,11 +10895,11 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
-#: src/gui/dialogs/multiplayer/lobby.cpp:368
+#: src/gui/dialogs/multiplayer/lobby.cpp:369
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Jogos: mostrando $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:390
+#: src/gui/dialogs/multiplayer/lobby.cpp:391
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
@@ -10870,7 +10907,7 @@ msgstr "$game_name (Era: $era_name)"
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/multiplayer/lobby.cpp:420
+#: src/gui/dialogs/multiplayer/lobby.cpp:421
 msgid "era_or_mod^not installed"
 msgstr "Não instalado"
 
@@ -10878,7 +10915,7 @@ msgstr "Não instalado"
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
-#: src/gui/dialogs/multiplayer/lobby.cpp:423
+#: src/gui/dialogs/multiplayer/lobby.cpp:424
 msgid "Era"
 msgstr "Era"
 
@@ -10886,7 +10923,7 @@ msgstr "Era"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/multiplayer/lobby.cpp:430
+#: src/gui/dialogs/multiplayer/lobby.cpp:431
 msgid "Modifications"
 msgstr "Modificações"
 
@@ -10894,15 +10931,15 @@ msgstr "Modificações"
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Reloaded:"
 msgstr "Recarregado:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shared vision:"
 msgstr "Visão compartilhada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shuffle sides:"
 msgstr "Times embaralhados:"
 
@@ -10910,7 +10947,7 @@ msgstr "Times embaralhados:"
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Time limit:"
 msgstr "Tempo limite:"
 
@@ -10921,11 +10958,11 @@ msgstr "Tempo limite:"
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
 # File: data/gui/default/window/lobby_main.cfg, line: 178
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Use map settings:"
 msgstr "Usar configurações do mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:468
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -10937,7 +10974,7 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
-#: src/gui/dialogs/multiplayer/lobby.cpp:492
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Observers allowed"
 msgstr "Observadores permitidos"
 
@@ -10945,7 +10982,7 @@ msgstr "Observadores permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
-#: src/gui/dialogs/multiplayer/lobby.cpp:495
+#: src/gui/dialogs/multiplayer/lobby.cpp:496
 msgid "Observers not allowed"
 msgstr "Observadores não permitidos"
 
@@ -10953,17 +10990,17 @@ msgstr "Observadores não permitidos"
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
-#: src/gui/dialogs/multiplayer/lobby.cpp:626
+#: src/gui/dialogs/multiplayer/lobby.cpp:627
 msgid "lobby"
 msgstr "saguão"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:818
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Este jogo não permite observadores. Observar usando privilégios de moderador?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:831
+#: src/gui/dialogs/multiplayer/lobby.cpp:841
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -10971,7 +11008,7 @@ msgstr ""
 "Algo está errado com a checagem da versão do add-on no saguão multiplayer. "
 "Por favor reporte este bug em http://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:852
+#: src/gui/dialogs/multiplayer/lobby.cpp:862
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Este jogo está protegido por uma senha. Entrar usando privilégios de "
@@ -11715,28 +11752,28 @@ msgstr "Custo de Movimento:"
 # File: data/gui/default/window/unit_attack.cfg, line: 197
 # File: data/gui/default/window/unit_attack.cfg, line: 197
 # File: data/gui/default/window/unit_attack.cfg, line: 197
-#: src/gui/widgets/unit_preview_pane.cpp:223
+#: src/gui/widgets/unit_preview_pane.cpp:224
 msgid "Attacks"
 msgstr "Ataques"
 
-#: src/gui/widgets/unit_preview_pane.cpp:300
-#: src/gui/widgets/unit_preview_pane.cpp:331
-#: src/gui/widgets/unit_preview_pane.cpp:452
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:301
+#: src/gui/widgets/unit_preview_pane.cpp:332
+#: src/gui/widgets/unit_preview_pane.cpp:453
+#: src/gui/widgets/unit_preview_pane.cpp:485
 msgid "Lvl $lvl"
 msgstr "Lvl $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:338
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:492
-#: src/gui/widgets/unit_preview_pane.cpp:511
+#: src/gui/widgets/unit_preview_pane.cpp:339
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:493
+#: src/gui/widgets/unit_preview_pane.cpp:512
 msgid "HP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:340
-#: src/gui/widgets/unit_preview_pane.cpp:356
-#: src/gui/widgets/unit_preview_pane.cpp:494
-#: src/gui/widgets/unit_preview_pane.cpp:516
+#: src/gui/widgets/unit_preview_pane.cpp:341
+#: src/gui/widgets/unit_preview_pane.cpp:357
+#: src/gui/widgets/unit_preview_pane.cpp:495
+#: src/gui/widgets/unit_preview_pane.cpp:517
 msgid "XP: "
 msgstr "XP: "
 
@@ -11747,18 +11784,18 @@ msgstr "XP: "
 # File: data/gui/default/window/mp_create_game.cfg, line: 420
 # File: data/gui/default/window/lobby_main.cfg, line: 184
 # File: data/gui/default/window/mp_create_game.cfg, line: 420
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:359
+#: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "Experience Modifier: "
 msgstr "Modificador de experiência: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:361
-#: src/gui/widgets/unit_preview_pane.cpp:521
+#: src/gui/widgets/unit_preview_pane.cpp:362
+#: src/gui/widgets/unit_preview_pane.cpp:522
 msgid "MP: "
 msgstr "PM: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:399
-#: src/gui/widgets/unit_preview_pane.cpp:549
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "Habilidades"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2022-10-15 21:07-0500\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -106,12 +106,12 @@ msgid ""
 msgstr "유닛의 행동이나 이동시 지도 화면을 이동시킬지 선택합니다"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "채팅 메세지 사멸"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 #, fuzzy
 #| msgid ""
 #| "Number of minutes to wait before clearing an ingame chat message. Set to "
@@ -124,24 +124,24 @@ msgstr ""
 "다."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "12시간제 사용"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 #, fuzzy
 #| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
 msgstr "다른 버전의 세이브 파일을 불러올 때 확인"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "도움말에서 모든 유닛들을 본다"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 #, fuzzy
 #| msgid ""
 #| "Show all unit types in the help (requires restart). This does not alter "
@@ -154,43 +154,43 @@ msgstr ""
 "의 목록을 바꾸지 않으므로 해제하면 원래대로 돌아옵니다"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "편집기 최근 파일 숫자"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr "편집기에서 표시하는 최근 파일의 숫자의 최대치"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "커서를 컬러 표시"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "컬러 마우스 커서를 사용"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "보석 색깔 바꾸기"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "로깅"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "몬테카를로 시뮬레이션으로 데미지 계산을 하게 한다"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -199,12 +199,12 @@ msgstr ""
 "투 시뮬레이션을 사용한다"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "부정적 메세지를 게임에서 "
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -215,22 +215,37 @@ msgstr ""
 "인은 인쇄할 메시지 수를 제어합니다."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:165
+#: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:166
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
+msgstr ""
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:167
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "접속 시간 초과"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:168
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
 msgid "poisoned"
 msgstr "중독"
 
@@ -3836,14 +3851,14 @@ msgstr "통과불능"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:385
+#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
 msgstr "안개"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:388
-#: src/game_initialization/lobby_data.cpp:391
+#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:392
 msgid "Shroud"
 msgstr "장막"
 
@@ -4274,31 +4289,31 @@ msgstr "잘못된 지원 중단 수준 (1-4이어야 함)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
 msgid "female^poisoned"
 msgstr "중독"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
 msgid "female^slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
 msgid "slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
 msgid "female^petrified"
 msgstr "석화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
 msgid "petrified"
 msgstr "석화"
 
@@ -4315,8 +4330,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3226
-#: src/scripting/game_lua_kernel.cpp:3261
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3224
+#: src/scripting/game_lua_kernel.cpp:3259
 msgid "input"
 msgstr "입력"
 
@@ -5469,7 +5484,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "승급 선택"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1395
+#: src/actions/attack.cpp:597 src/actions/attack.cpp:1388
 msgid "An invalid attacker weapon got selected."
 msgstr "공격에 적합하지 않은 무기가 선택되었습니다."
 
@@ -6447,34 +6462,34 @@ msgstr "$login|의 방"
 msgid "Team"
 msgstr "군단"
 
-#: src/game_initialization/connect_engine.cpp:953
+#: src/game_initialization/connect_engine.cpp:954
 #, fuzzy
 #| msgid "Computer player"
 msgid "Anonymous player"
 msgstr "익명 플레이어"
 
-#: src/game_initialization/connect_engine.cpp:958
-#: src/game_initialization/connect_engine.cpp:1256
+#: src/game_initialization/connect_engine.cpp:959
+#: src/game_initialization/connect_engine.cpp:1257
 msgid "Computer Player"
 msgstr "컴퓨터 상대"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1001
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1252
+#: src/game_initialization/connect_engine.cpp:1253
 msgid "Network Player"
 msgstr "네트워크 상대"
 
-#: src/game_initialization/connect_engine.cpp:1255
+#: src/game_initialization/connect_engine.cpp:1256
 msgid "Local Player"
 msgstr "로컬 플레이어"
 
-#: src/game_initialization/connect_engine.cpp:1257
+#: src/game_initialization/connect_engine.cpp:1258
 msgid "Nobody"
 msgstr "아무도 없음"
 
-#: src/game_initialization/connect_engine.cpp:1260
+#: src/game_initialization/connect_engine.cpp:1261
 msgid "Reserved"
 msgstr "예약됨"
 
@@ -6558,69 +6573,69 @@ msgstr "$faction 당파에 지휘관 타입 유닛을 찾을 수 없습니다"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Cannot obtain genders for invalid leader $leader"
 
-#: src/game_initialization/lobby_data.cpp:162
+#: src/game_initialization/lobby_data.cpp:163
 msgid "Missing addon: $name"
 msgstr "Missing addon: $name"
 
-#: src/game_initialization/lobby_data.cpp:164
+#: src/game_initialization/lobby_data.cpp:165
 msgid "Missing addon: $id"
 msgstr "Missing addon: $id"
 
-#: src/game_initialization/lobby_data.cpp:196
+#: src/game_initialization/lobby_data.cpp:197
 msgid "Unknown era"
 msgstr "알 수 없는 시대"
 
-#: src/game_initialization/lobby_data.cpp:263
-#: src/game_initialization/lobby_data.cpp:297
+#: src/game_initialization/lobby_data.cpp:264
+#: src/game_initialization/lobby_data.cpp:298
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "S"
 
-#: src/game_initialization/lobby_data.cpp:283
+#: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
 msgstr "리모트 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:304
-#: src/game_initialization/lobby_data.cpp:330
+#: src/game_initialization/lobby_data.cpp:305
+#: src/game_initialization/lobby_data.cpp:331
 msgid "campaign_abbreviation^C"
 msgstr "C"
 
-#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
 msgstr "알 수 없는 시나리오"
 
-#: src/game_initialization/lobby_data.cpp:350
+#: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
 msgstr "불러온 게임"
 
-#: src/game_initialization/lobby_data.cpp:365
+#: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "빈 슬롯 수:"
 
-#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
 msgstr "만석"
 
-#: src/game_initialization/lobby_data.cpp:378
-#: src/game_initialization/lobby_data.cpp:380 src/savegame.cpp:662
+#: src/game_initialization/lobby_data.cpp:379
+#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:662
 msgid "Turn"
 msgstr "턴 수"
 
-#: src/game_initialization/lobby_data.cpp:393
+#: src/game_initialization/lobby_data.cpp:394
 #, fuzzy
 #| msgid "Version: "
 msgid "vision^none"
 msgstr "저장 파일 버전:"
 
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:403
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "시간 제한"
 
-#: src/game_initialization/lobby_data.cpp:446
+#: src/game_initialization/lobby_data.cpp:447
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6629,7 +6644,7 @@ msgstr ""
 "다.당신의 버전은 <b>$local_ver</b> 이고, 호스트측의 버전은 <b>$host_ver</b> "
 "입니다."
 
-#: src/game_initialization/lobby_data.cpp:460
+#: src/game_initialization/lobby_data.cpp:461
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -7242,11 +7257,11 @@ msgstr "처음으로 돌아감"
 msgid "(press $hotkey to deactivate)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2099
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2100
 msgid "Planning mode activated!"
 msgstr "계획 모드 활성"
 
-#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2102
+#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2103
 msgid "Planning mode deactivated!"
 msgstr "계획 모드 비활성"
 
@@ -7881,27 +7896,27 @@ msgstr "무효한 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1834
+#: src/menu_events.cpp:1835
 msgid "Choose Scenario (Debug!)"
 msgstr "시나리오 선택 (디버그!)"
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1871
 msgid "Debug mode activated!"
 msgstr "디버그 모드가 켜졌습니다!"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1874
 msgid "Debug mode not available in network games"
 msgstr "네트워크 게임에서는 디버그 모드를 쓸 수 없습니다"
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1881
 msgid "Debug mode deactivated!"
 msgstr "디버그 모드가 꺼졌습니다!"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1901
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "경고! 안전하지 않은 Lua Mode"
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1902
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7914,19 +7929,19 @@ msgstr ""
 "\"\n"
 "지금부터 하고자 하는 것의 의미를 이해하고 있지 않으면, 속행하지 말아 주세요."
 
-#: src/menu_events.cpp:1906
+#: src/menu_events.cpp:1907
 msgid "Unsafe mode enabled!"
 msgstr "Unsafe mode enabled!"
 
-#: src/menu_events.cpp:1955
+#: src/menu_events.cpp:1956
 msgid "Variable not found"
 msgstr "변수를 찾을수 없습니다"
 
-#: src/menu_events.cpp:1988
+#: src/menu_events.cpp:1989
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:2006
+#: src/menu_events.cpp:2007
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7934,19 +7949,19 @@ msgstr ""
 "무효한 얼라인먼트: '$alignment' 는 질서, 중립, 혼돈, 박명 중 어느 것이어야 합"
 "니다."
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:2033
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "도움말에서 발견된 유닛의 정보를 삭제합니까? "
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2047
 msgid "Invalid unit type"
 msgstr "무효한 유닛 타입"
 
-#: src/menu_events.cpp:2053
+#: src/menu_events.cpp:2054
 msgid "Invalid location"
 msgstr "무효한 장소"
 
-#: src/menu_events.cpp:2126 src/menu_events.cpp:2152
+#: src/menu_events.cpp:2127 src/menu_events.cpp:2153
 msgid "prompt^Command:"
 msgstr "명령"
 
@@ -8272,7 +8287,7 @@ msgstr "이 유닛은 석화되었습니다. 움직이거나 공격할 수 없�
 msgid "Ability: "
 msgstr "능력: "
 
-#: src/reports.cpp:434 src/reports.cpp:978
+#: src/reports.cpp:434 src/reports.cpp:979
 msgid " (inactive)"
 msgstr "(행동하지 않는)"
 
@@ -8322,97 +8337,97 @@ msgstr "방해"
 msgid "Movement Costs:"
 msgstr "소모 이동력"
 
-#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
+#: src/reports.cpp:814 src/reports.cpp:1068 src/reports.cpp:1080
 msgid "Weapon: "
 msgstr "무기 이름: "
 
-#: src/reports.cpp:814 src/reports.cpp:1068
+#: src/reports.cpp:815 src/reports.cpp:1069
 msgid "Damage: "
 msgstr "무기 위력: "
 
-#: src/reports.cpp:818
+#: src/reports.cpp:819
 msgid "Base damage: "
 msgstr "기본 위력: "
 
-#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
+#: src/reports.cpp:821 src/reports.cpp:855 src/reports.cpp:865
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "무기 능력: "
 
-#: src/reports.cpp:823
+#: src/reports.cpp:824
 msgid "Time of day: "
 msgstr "시간대: "
 
-#: src/reports.cpp:827
+#: src/reports.cpp:828
 msgid "Leadership: "
 msgstr "통솔력 영향: "
 
-#: src/reports.cpp:831
+#: src/reports.cpp:832
 msgid "Slowed: "
 msgstr "둔화: "
 
-#: src/reports.cpp:835
+#: src/reports.cpp:836
 msgid "Attacks: "
 msgstr "공격 회수: "
 
-#: src/reports.cpp:839
+#: src/reports.cpp:840
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
 msgstr "최대 무리 보너스: "
 
-#: src/reports.cpp:840 src/reports.cpp:859
+#: src/reports.cpp:841 src/reports.cpp:860
 msgid "Swarm: "
 msgstr "무리:"
 
-#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
+#: src/reports.cpp:842 src/reports.cpp:853 src/reports.cpp:864
 msgid "Base attacks: "
 msgstr "기본 공격:"
 
-#: src/reports.cpp:847
+#: src/reports.cpp:848
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "특수능력"
 
-#: src/reports.cpp:857
+#: src/reports.cpp:858
 msgid "Subject to swarm: "
 msgstr "군집할 대상:"
 
-#: src/reports.cpp:884
+#: src/reports.cpp:885
 msgid "Weapon range: "
 msgstr "공격 범위: "
 
-#: src/reports.cpp:885
+#: src/reports.cpp:886
 msgid "Damage type: "
 msgstr "공격 속성: "
 
-#: src/reports.cpp:886
+#: src/reports.cpp:887
 msgid "Damage versus: "
 msgstr "대상별 피해량: "
 
-#: src/reports.cpp:945
+#: src/reports.cpp:946
 msgid "Accuracy:"
 msgstr "명중도:"
 
-#: src/reports.cpp:950
+#: src/reports.cpp:951
 msgid "Parry:"
 msgstr "방어도:"
 
-#: src/reports.cpp:976
+#: src/reports.cpp:977
 msgid "Weapon special: "
 msgstr "무기 능력: "
 
-#: src/reports.cpp:1051
+#: src/reports.cpp:1052
 msgid "weapon^None"
 msgstr "없음"
 
-#: src/reports.cpp:1080
+#: src/reports.cpp:1081
 msgid "Total damage"
 msgstr "총 데미지"
 
-#: src/reports.cpp:1144
+#: src/reports.cpp:1145
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8420,52 +8435,52 @@ msgid_plural "Attacks"
 msgstr[0] "공격"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1152
+#: src/reports.cpp:1153
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1156
+#: src/reports.cpp:1157
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "This unit can attack multiple times per turn."
 msgstr "멀티 플레이어 게임의 세이브 데이터가 아닙니다."
 
-#: src/reports.cpp:1248
+#: src/reports.cpp:1249
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "시간 스케줄: "
 
-#: src/reports.cpp:1297
+#: src/reports.cpp:1298
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "시간대: "
 
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1299 src/reports.cpp:1353
 msgid "Lawful units: "
 msgstr "주행성 유닛: "
 
-#: src/reports.cpp:1300 src/reports.cpp:1354
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Neutral units: "
 msgstr "시간대 중립: "
 
-#: src/reports.cpp:1301 src/reports.cpp:1355
+#: src/reports.cpp:1302 src/reports.cpp:1356
 msgid "Chaotic units: "
 msgstr "야행성 유닛: "
 
-#: src/reports.cpp:1303 src/reports.cpp:1357
+#: src/reports.cpp:1304 src/reports.cpp:1358
 #, fuzzy
 msgid "Liminal units: "
 msgstr "주행성 유닛:"
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1417
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "턴 수"
 
-#: src/reports.cpp:1418
+#: src/reports.cpp:1419
 #, fuzzy
 #| msgid ""
 #| "When the game reaches the number of turns indicated by the second number, "
@@ -8475,32 +8490,32 @@ msgid ""
 "will end."
 msgstr "턴 수가 2번째 숫자에 도달한 경우 게임은 종료합니다."
 
-#: src/reports.cpp:1443
+#: src/reports.cpp:1444
 msgid "Gold"
 msgstr "자금"
 
-#: src/reports.cpp:1443
+#: src/reports.cpp:1444
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "군대를 모집하고 유지하기 위해 현재 사용할 수 있는 금의 양."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1463
 msgid "The fraction of known villages that your side has captured."
 msgstr "당신 세력의 마을이 점령당했다."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1463
 msgid "Villages"
 msgstr "마을 수"
 
-#: src/reports.cpp:1467
+#: src/reports.cpp:1468
 msgid "The total number of units on your side."
 msgstr "당신 세력의 총 유닛 수입니다"
 
-#: src/reports.cpp:1467
+#: src/reports.cpp:1468
 msgid "Units"
 msgstr "유닛"
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1478
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8509,39 +8524,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1478
 msgid "Upkeep"
 msgstr "유지비"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1515
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "수입"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1515
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1682
+#: src/reports.cpp:1683
 msgid "Observers:"
 msgstr "관찰자:"
 
-#: src/reports.cpp:1724
+#: src/reports.cpp:1725
 msgid "Clock"
 msgstr "시계"
 
-#: src/reports.cpp:1735
+#: src/reports.cpp:1736
 msgid "Battery"
 msgstr "배터리"
 
-#: src/reports.cpp:1766
+#: src/reports.cpp:1767
 msgid "Countdown until your turn automatically ends."
 msgstr "당신의 차례가 자동으로 끝날 때까지 카운트다운 한다."
 
-#: src/reports.cpp:1766
+#: src/reports.cpp:1767
 msgid "Turn Countdown"
 msgstr "턴 카운트다운"
 
@@ -9089,7 +9104,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnothd_connection.cpp:544
+#: src/wesnothd_connection.cpp:549
 #, fuzzy
 #| msgid "Connect to Server"
 msgid "Disconnected from server."
@@ -9669,9 +9684,6 @@ msgstr "행동 예정 옵션"
 #~ "Requesting the older version composition for the add-on <i>$addon_title</"
 #~ "i>..."
 #~ msgstr "부가 기능 전송중: <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "접속 시간 초과"
 
 #, fuzzy
 #~| msgid "The Battle for Wesnoth"

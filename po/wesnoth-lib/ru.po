@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2022-10-15 21:06-0500\n"
 "PO-Revision-Date: 2022-02-02 14:48+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -680,7 +680,10 @@ msgstr "Засушливые горы"
 
 #. [terrain_type]: id=regular_stone_floor
 #. [terrain_type]: id=ancient_stone_floor
+#. [terrain_type]: id=regular_stone_floor_deprecated
+#. [terrain_type]: id=ancient_stone_floor_deprecated
 #: data/core/terrain.cfg:926 data/core/terrain.cfg:936
+#: data/core/terrain.cfg:3374 data/core/terrain.cfg:3385
 msgid "Stone Floor"
 msgstr "Каменный пол"
 
@@ -697,8 +700,11 @@ msgstr "Древний каменный пол"
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
 #. [terrain_type]: id=rug3_floor
+#. [terrain_type]: id=rug_floor_deprecated
+#. [terrain_type]: id=rug2_floor_deprecated
 #: data/core/terrain.cfg:946 data/core/terrain.cfg:956
-#: data/core/terrain.cfg:966
+#: data/core/terrain.cfg:966 data/core/terrain.cfg:3396
+#: data/core/terrain.cfg:3407
 msgid "Rug"
 msgstr "Ковер"
 
@@ -728,7 +734,9 @@ msgid "Basic Wooden Floor"
 msgstr "Базовый деревянный пол"
 
 #. [terrain_type]: id=old_wood_floor
+#. [terrain_type]: id=old_wood_floor_deprecated
 #: data/core/terrain.cfg:986 data/core/terrain.cfg:989
+#: data/core/terrain.cfg:3418
 msgid "Old Wooden Floor"
 msgstr "Старый деревянный пол"
 
@@ -2270,6 +2278,19 @@ msgstr ""
 "<italic>text='Рельсы'</italic> используются для перевозки руды. Гномами. В "
 "основном."
 
+#. [terrain_type]: id=regular_stone_floor_deprecated
+#. [terrain_type]: id=ancient_stone_floor_deprecated
+#. [terrain_type]: id=rug_floor_deprecated
+#. [terrain_type]: id=rug2_floor_deprecated
+#. [terrain_type]: id=old_wood_floor_deprecated
+#: data/core/terrain.cfg:3377 data/core/terrain.cfg:3388
+#: data/core/terrain.cfg:3399 data/core/terrain.cfg:3410
+#: data/core/terrain.cfg:3421
+#, fuzzy
+#| msgid "Game created"
+msgid "Deprecated"
+msgstr "Игра создана"
+
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
@@ -2406,7 +2427,7 @@ msgstr "Закрыть"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:505
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr "Профиль"
@@ -3116,7 +3137,7 @@ msgstr "Описание:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Experience modifier:"
 msgstr "Модификатор опыта:"
 
@@ -3178,7 +3199,7 @@ msgstr "Золото:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Gold per village:"
 msgstr "Золота с деревни:"
 
@@ -3249,7 +3270,7 @@ msgstr "Выберите генератор карты:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Settings"
 msgstr "Настройки"
 
@@ -3895,57 +3916,69 @@ msgstr "Какой язык предпочитаете:"
 msgid "Loading..."
 msgstr "Загрузка..."
 
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:75
+#, fuzzy
+#| msgid "Player joins"
+msgid "Player Hosted"
+msgstr "Присоединился игрок"
+
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:86
+msgid "Bot Hosted"
+msgstr ""
+
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:27
+#: data/gui/window/lobby_main.cfg:138
 msgid "Games"
 msgstr "Игры"
 
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:146
+#: data/gui/window/lobby_main.cfg:257
 msgid "Requires a password to join"
 msgstr "Присоединяться только с паролем"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:335
+#: data/gui/window/lobby_main.cfg:446
 msgid "Vacant slots"
 msgstr "Свободные места"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:336
+#: data/gui/window/lobby_main.cfg:447
 msgid "Only show games with vacant slots"
 msgstr "Показать игры только со свободными слотами"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:348
+#: data/gui/window/lobby_main.cfg:459
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Друзья"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:349
+#: data/gui/window/lobby_main.cfg:460
 msgid "Only show games with friends"
 msgstr "Показать только игры с друзьями"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:361
+#: data/gui/window/lobby_main.cfg:472
 msgid "Blocked players"
 msgstr "Заблокированные игроки"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:362
+#: data/gui/window/lobby_main.cfg:473
 msgid "Show games that include players you have blocked"
 msgstr "Показать игры, в которых участвуют заблокированные Вами игроки"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:374
+#: data/gui/window/lobby_main.cfg:485
 msgid "Invert filter"
 msgstr "Инвертировать фильтр"
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:399 data/gui/window/lobby_main.cfg:665
+#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -3957,21 +3990,21 @@ msgstr "Создать игру"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:419 data/gui/window/lobby_main.cfg:677
-#: src/gui/dialogs/multiplayer/lobby.cpp:852
+#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: src/gui/dialogs/multiplayer/lobby.cpp:862
 msgid "Join"
 msgstr "Подключиться"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:431 data/gui/window/lobby_main.cfg:700
-#: src/gui/dialogs/multiplayer/lobby.cpp:818
+#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid "Observe"
 msgstr "Наблюдать"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
+#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr "Объявления"
@@ -3980,49 +4013,49 @@ msgstr "Объявления"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
+#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:124
 msgid "Preferences"
 msgstr "Настройки"
 
 #. [button]: id=view_match_history
-#: data/gui/window/lobby_main.cfg:516
+#: data/gui/window/lobby_main.cfg:627
 msgid "Match History"
 msgstr "История игр"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
+#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
 msgid "Log Out"
 msgstr "Выйти"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:553 data/gui/window/lobby_main.cfg:715
+#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
 msgid "Normal Replays"
 msgstr "Обычные реплеи"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:719
+#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
 msgid "Quick Replays"
 msgstr "Быстрые реплеи"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:558 data/gui/window/lobby_main.cfg:720
+#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
 msgid "Skip quickly to the active turn when observing"
 msgstr "Быстро перейти к активному ходу в режиме наблюдателя"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:562 data/gui/window/lobby_main.cfg:724
+#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
 msgid "Enter Blindfolded"
 msgstr "Войти в режиме \"завязанные глаза\""
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:563 data/gui/window/lobby_main.cfg:725
+#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
 msgid "Do not show the map until given control of a side"
 msgstr "Не показывать карту пока не передан котроль над стороной"
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:615 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
 msgid "Multiplayer Lobby"
 msgstr "Лобби мультиплеера"
 
@@ -4609,7 +4642,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Map size:"
 msgstr "Размер карты:"
 
@@ -5785,8 +5818,8 @@ msgstr "ОП"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:381
-#: src/gui/widgets/unit_preview_pane.cpp:531
+#: src/gui/widgets/unit_preview_pane.cpp:382
+#: src/gui/widgets/unit_preview_pane.cpp:532
 msgid "Traits"
 msgstr "Особенности"
 
@@ -5843,8 +5876,8 @@ msgstr "Ошибка"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:178
-#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
+#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Детали:"
 
@@ -6088,7 +6121,7 @@ msgstr "Разрешение не определено."
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
-#: src/gui/widgets/unit_preview_pane.cpp:614
+#: src/gui/widgets/unit_preview_pane.cpp:615
 msgid "No grid defined."
 msgstr "Сетка не определена."
 
@@ -6448,7 +6481,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Уязвимость атакующего против"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:435
+#: src/gui/dialogs/multiplayer/lobby.cpp:436
 msgid "active_modifications^None"
 msgstr "Нет"
 
@@ -6680,12 +6713,12 @@ msgid "Unknown"
 msgstr "Неизвестно"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "no"
 msgstr "нет"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "yes"
 msgstr "да"
 
@@ -6809,15 +6842,15 @@ msgstr "Консоль Lua"
 msgid "Random"
 msgstr "Случайно"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:68
+#: src/gui/dialogs/multiplayer/lobby.cpp:69
 msgid "Do you really want to log out?"
 msgstr "Вы действительно хотите выйти?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:174
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid "Incompatible User-made Content"
 msgstr "Несовместимый пользовательский контент"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6826,11 +6859,11 @@ msgstr ""
 "К этой игре невозможно присоедиться потому что хост имеет устаревшие аддоны, "
 "которые несовместимы с вашей версией. Можно предложить хосту обновить аддоны."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:190
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid "Missing User-made Content"
 msgstr "Отсутствует пользовательский контент"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6840,47 +6873,47 @@ msgstr ""
 "установлены или обновлены для того, чтобы присоединиться.\n"
 "Вы хотите попробовать установить их?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:368
+#: src/gui/dialogs/multiplayer/lobby.cpp:369
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Игры: показано $num_shown из $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:390
+#: src/gui/dialogs/multiplayer/lobby.cpp:391
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Эра: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:420
+#: src/gui/dialogs/multiplayer/lobby.cpp:421
 msgid "era_or_mod^not installed"
 msgstr "не установлено"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:423
+#: src/gui/dialogs/multiplayer/lobby.cpp:424
 msgid "Era"
 msgstr "Эра"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:430
+#: src/gui/dialogs/multiplayer/lobby.cpp:431
 msgid "Modifications"
 msgstr "Модификации"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Reloaded:"
 msgstr "Перезагружено:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shared vision:"
 msgstr "Совместный просмотр:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shuffle sides:"
 msgstr "Перемешать стороны:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Time limit:"
 msgstr "Лимит времени:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Use map settings:"
 msgstr "Использовать настройки карты:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:468
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6888,26 +6921,26 @@ msgstr ""
 "Необходимо установить одно или несколько дополнений\n"
 "для того, чтобы присоединиться к этой игре."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:492
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Observers allowed"
 msgstr "Наблюдение разрешено"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:495
+#: src/gui/dialogs/multiplayer/lobby.cpp:496
 msgid "Observers not allowed"
 msgstr "Наблюдение запрещено"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:626
+#: src/gui/dialogs/multiplayer/lobby.cpp:627
 msgid "lobby"
 msgstr "лобби"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:818
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Игра не разрешает наблюдателей. Всё равно наблюдать за ней, используя права "
 "модератора?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:831
+#: src/gui/dialogs/multiplayer/lobby.cpp:841
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6915,7 +6948,7 @@ msgstr ""
 "Что-то не так с базой проверки аддонов, поддерживающей многопользовательское "
 "лобби. Пожалуйста, сообщите об этом на https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:852
+#: src/gui/dialogs/multiplayer/lobby.cpp:862
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Игра защищена паролем. Вступить в неё всё равно, используя права модератора?"
@@ -7369,43 +7402,43 @@ msgstr "( Атк / Защ )"
 msgid "Movement Costs:"
 msgstr "Затраты на перемещение:"
 
-#: src/gui/widgets/unit_preview_pane.cpp:223
+#: src/gui/widgets/unit_preview_pane.cpp:224
 msgid "Attacks"
 msgstr "Атаки"
 
-#: src/gui/widgets/unit_preview_pane.cpp:300
-#: src/gui/widgets/unit_preview_pane.cpp:331
-#: src/gui/widgets/unit_preview_pane.cpp:452
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:301
+#: src/gui/widgets/unit_preview_pane.cpp:332
+#: src/gui/widgets/unit_preview_pane.cpp:453
+#: src/gui/widgets/unit_preview_pane.cpp:485
 msgid "Lvl $lvl"
 msgstr "ур $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:338
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:492
-#: src/gui/widgets/unit_preview_pane.cpp:511
+#: src/gui/widgets/unit_preview_pane.cpp:339
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:493
+#: src/gui/widgets/unit_preview_pane.cpp:512
 msgid "HP: "
 msgstr "ЗД: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:340
-#: src/gui/widgets/unit_preview_pane.cpp:356
-#: src/gui/widgets/unit_preview_pane.cpp:494
-#: src/gui/widgets/unit_preview_pane.cpp:516
+#: src/gui/widgets/unit_preview_pane.cpp:341
+#: src/gui/widgets/unit_preview_pane.cpp:357
+#: src/gui/widgets/unit_preview_pane.cpp:495
+#: src/gui/widgets/unit_preview_pane.cpp:517
 msgid "XP: "
 msgstr "ОП: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:359
+#: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "Experience Modifier: "
 msgstr "Модификатор опыта: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:361
-#: src/gui/widgets/unit_preview_pane.cpp:521
+#: src/gui/widgets/unit_preview_pane.cpp:362
+#: src/gui/widgets/unit_preview_pane.cpp:522
 msgid "MP: "
 msgstr "ЧХ: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:399
-#: src/gui/widgets/unit_preview_pane.cpp:549
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "Способности"
 
