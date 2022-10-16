@@ -20,6 +20,8 @@
    * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
  ### Translations
    * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
+ ### User interface
+   * Bot hosted games are now show on a separate tab from player hosted games.
  ### Miscellaneous and Bug Fixes
    * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
 
