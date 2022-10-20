@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2022-10-15 21:06-0500\n"
 "PO-Revision-Date: 2022-06-24 15:45+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -667,7 +667,10 @@ msgstr "aavikkovuoret"
 
 #. [terrain_type]: id=regular_stone_floor
 #. [terrain_type]: id=ancient_stone_floor
+#. [terrain_type]: id=regular_stone_floor_deprecated
+#. [terrain_type]: id=ancient_stone_floor_deprecated
 #: data/core/terrain.cfg:926 data/core/terrain.cfg:936
+#: data/core/terrain.cfg:3374 data/core/terrain.cfg:3385
 msgid "Stone Floor"
 msgstr "kivilattia"
 
@@ -684,8 +687,11 @@ msgstr "muinainen kivilattia"
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
 #. [terrain_type]: id=rug3_floor
+#. [terrain_type]: id=rug_floor_deprecated
+#. [terrain_type]: id=rug2_floor_deprecated
 #: data/core/terrain.cfg:946 data/core/terrain.cfg:956
-#: data/core/terrain.cfg:966
+#: data/core/terrain.cfg:966 data/core/terrain.cfg:3396
+#: data/core/terrain.cfg:3407
 msgid "Rug"
 msgstr "matto"
 
@@ -715,7 +721,9 @@ msgid "Basic Wooden Floor"
 msgstr "tavallinen puulattia"
 
 #. [terrain_type]: id=old_wood_floor
+#. [terrain_type]: id=old_wood_floor_deprecated
 #: data/core/terrain.cfg:986 data/core/terrain.cfg:989
+#: data/core/terrain.cfg:3418
 msgid "Old Wooden Floor"
 msgstr "vanha puulattia"
 
@@ -2234,6 +2242,19 @@ msgstr ""
 "<italic>text='Raiteita'</italic> käytetään kivimalmin kuljettamiseen, "
 "enimmäkseen kääpiöiden toimesta."
 
+#. [terrain_type]: id=regular_stone_floor_deprecated
+#. [terrain_type]: id=ancient_stone_floor_deprecated
+#. [terrain_type]: id=rug_floor_deprecated
+#. [terrain_type]: id=rug2_floor_deprecated
+#. [terrain_type]: id=old_wood_floor_deprecated
+#: data/core/terrain.cfg:3377 data/core/terrain.cfg:3388
+#: data/core/terrain.cfg:3399 data/core/terrain.cfg:3410
+#: data/core/terrain.cfg:3421
+#, fuzzy
+#| msgid "Game created"
+msgid "Deprecated"
+msgstr "Peli luotu"
+
 #. [settings]
 #: data/gui/default.cfg:23
 msgid " (Press '$hotkey' for more information)"
@@ -2371,7 +2392,7 @@ msgstr "Sulje"
 #. [button]: id=view_profile
 #: data/gui/widget/unit_preview_pane.cfg:132
 #: data/gui/widget/unit_preview_pane.cfg:362
-#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:505
+#: data/gui/widget/unit_preview_pane.cfg:422 data/gui/window/lobby_main.cfg:616
 #: data/gui/window/mp_faction_select.cfg:157
 msgid "Profile"
 msgstr "Profiili"
@@ -3085,7 +3106,7 @@ msgstr "Kuvaus:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Experience modifier:"
 msgstr "Kokemusmuuttuja:"
 
@@ -3150,7 +3171,7 @@ msgstr "Kultaa:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Gold per village:"
 msgstr "Kultaa per kylä:"
 
@@ -3221,7 +3242,7 @@ msgstr "Valitse karttageneraattori:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -3866,57 +3887,69 @@ msgstr "Valitse haluamasi kieli:"
 msgid "Loading..."
 msgstr "Ladataan..."
 
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:75
+#, fuzzy
+#| msgid "Player joins"
+msgid "Player Hosted"
+msgstr "Pelaaja liittyi"
+
+#. [widget]: id=tab_label
+#: data/gui/window/lobby_main.cfg:86
+msgid "Bot Hosted"
+msgstr ""
+
 #. [label]: id=map
-#: data/gui/window/lobby_main.cfg:27
+#: data/gui/window/lobby_main.cfg:138
 msgid "Games"
 msgstr "Pelit"
 
 #. [image]: id=needs_password
-#: data/gui/window/lobby_main.cfg:146
+#: data/gui/window/lobby_main.cfg:257
 msgid "Requires a password to join"
 msgstr "Liittyminen vaatii salasanan"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:335
+#: data/gui/window/lobby_main.cfg:446
 msgid "Vacant slots"
 msgstr "Vapaita paikkoja"
 
 #. [toggle_button]: id=filter_vacant_slots
-#: data/gui/window/lobby_main.cfg:336
+#: data/gui/window/lobby_main.cfg:447
 msgid "Only show games with vacant slots"
 msgstr "Näytä vain pelit jossa vapaita paikkoja"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:348
+#: data/gui/window/lobby_main.cfg:459
 #: data/gui/window/preferences/05_multiplayer.cfg:415
 msgid "Friends"
 msgstr "Ystävät"
 
 #. [toggle_button]: id=filter_with_friends
-#: data/gui/window/lobby_main.cfg:349
+#: data/gui/window/lobby_main.cfg:460
 msgid "Only show games with friends"
 msgstr "Näytä vain pelit jossa ystäviä"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:361
+#: data/gui/window/lobby_main.cfg:472
 msgid "Blocked players"
 msgstr "Estetyt pelaajat"
 
 #. [toggle_button]: id=filter_with_ignored
-#: data/gui/window/lobby_main.cfg:362
+#: data/gui/window/lobby_main.cfg:473
 msgid "Show games that include players you have blocked"
 msgstr "Näytä pelejä joissa estettyjä pelaajia"
 
 #. [toggle_button]: id=filter_invert
-#: data/gui/window/lobby_main.cfg:374
+#: data/gui/window/lobby_main.cfg:485
 msgid "Invert filter"
 msgstr "Käännä suodatin"
 
 #. [button]: id=create
 #. [label]
 #. [button]: id=ok
-#: data/gui/window/lobby_main.cfg:399 data/gui/window/lobby_main.cfg:665
+#: data/gui/window/lobby_main.cfg:510 data/gui/window/lobby_main.cfg:782
 #: data/gui/window/mp_create_game/default_resolution.cfg:45
 #: data/gui/window/mp_create_game/default_resolution.cfg:445
 #: data/gui/window/mp_create_game/small_resolution.cfg:44
@@ -3928,21 +3961,21 @@ msgstr "Luo peli"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
-#: data/gui/window/lobby_main.cfg:419 data/gui/window/lobby_main.cfg:677
-#: src/gui/dialogs/multiplayer/lobby.cpp:852
+#: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
+#: src/gui/dialogs/multiplayer/lobby.cpp:862
 msgid "Join"
 msgstr "Sisäänkirjautuminen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
-#: data/gui/window/lobby_main.cfg:431 data/gui/window/lobby_main.cfg:700
-#: src/gui/dialogs/multiplayer/lobby.cpp:818
+#: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid "Observe"
 msgstr "Tarkkaile"
 
 #. [button]: id=server_info
 #. [widget]: id=tab_label
-#: data/gui/window/lobby_main.cfg:446 data/gui/window/lobby_main.cfg:688
+#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:805
 #: data/gui/window/server_info.cfg:168
 msgid "Announcements"
 msgstr "Ilmoitukset"
@@ -3951,49 +3984,49 @@ msgstr "Ilmoitukset"
 #. [button]: id=show_preferences
 #. [label]: id=title
 #. [grid]
-#: data/gui/window/lobby_main.cfg:458 data/gui/window/lobby_main.cfg:653
+#: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
 #: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
 #: src/hotkey/hotkey_command.cpp:124
 msgid "Preferences"
 msgstr "Asetukset"
 
 #. [button]: id=view_match_history
-#: data/gui/window/lobby_main.cfg:516
+#: data/gui/window/lobby_main.cfg:627
 msgid "Match History"
 msgstr "Otteluhistoria"
 
 #. [button]: id=quit
-#: data/gui/window/lobby_main.cfg:533 data/gui/window/lobby_main.cfg:627
+#: data/gui/window/lobby_main.cfg:644 data/gui/window/lobby_main.cfg:744
 msgid "Log Out"
 msgstr "Kirjaudu ulos"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:553 data/gui/window/lobby_main.cfg:715
+#: data/gui/window/lobby_main.cfg:664 data/gui/window/lobby_main.cfg:832
 msgid "Normal Replays"
 msgstr "Normaalit uusinnat"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:557 data/gui/window/lobby_main.cfg:719
+#: data/gui/window/lobby_main.cfg:668 data/gui/window/lobby_main.cfg:836
 msgid "Quick Replays"
 msgstr "Pikauusinnat"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:558 data/gui/window/lobby_main.cfg:720
+#: data/gui/window/lobby_main.cfg:669 data/gui/window/lobby_main.cfg:837
 msgid "Skip quickly to the active turn when observing"
 msgstr "Mene suoraan aktiiviselle vuorolle kun tarkkailet"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:562 data/gui/window/lobby_main.cfg:724
+#: data/gui/window/lobby_main.cfg:673 data/gui/window/lobby_main.cfg:841
 msgid "Enter Blindfolded"
 msgstr "Saavu silmät peitettynä"
 
 #. [option]
-#: data/gui/window/lobby_main.cfg:563 data/gui/window/lobby_main.cfg:725
+#: data/gui/window/lobby_main.cfg:674 data/gui/window/lobby_main.cfg:842
 msgid "Do not show the map until given control of a side"
 msgstr "Älä näytä karttaa kunnes annettu ohjat osapuolelle"
 
 #. [label]
-#: data/gui/window/lobby_main.cfg:615 data/gui/window/lobby_main.cfg:832
+#: data/gui/window/lobby_main.cfg:732 data/gui/window/lobby_main.cfg:955
 msgid "Multiplayer Lobby"
 msgstr "Moninpeliaula"
 
@@ -4574,7 +4607,7 @@ msgstr "Aseta salasana joka vaaditaan peliin haluavilta pelaajilta"
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Map size:"
 msgstr "Kartan koko:"
 
@@ -5757,8 +5790,8 @@ msgstr "KP"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:381
-#: src/gui/widgets/unit_preview_pane.cpp:531
+#: src/gui/widgets/unit_preview_pane.cpp:382
+#: src/gui/widgets/unit_preview_pane.cpp:532
 msgid "Traits"
 msgstr "Ominaisuudet"
 
@@ -5816,8 +5849,8 @@ msgstr "Virhe"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:178
-#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
+#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Yksityiskohdat:"
 
@@ -6035,7 +6068,7 @@ msgstr "Resoluutiota ei ole määritetty."
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
-#: src/gui/widgets/unit_preview_pane.cpp:614
+#: src/gui/widgets/unit_preview_pane.cpp:615
 msgid "No grid defined."
 msgstr "Ruudukkoa ei ole määritetty."
 
@@ -6390,7 +6423,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Hyökkääjän alttius vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:435
+#: src/gui/dialogs/multiplayer/lobby.cpp:436
 msgid "active_modifications^None"
 msgstr "Ei muunnelmia"
 
@@ -6620,12 +6653,12 @@ msgid "Unknown"
 msgstr "Tuntematon"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "no"
 msgstr "ei"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:450
 msgid "yes"
 msgstr "kyllä"
 
@@ -6749,15 +6782,15 @@ msgstr "lua-konsoli"
 msgid "Random"
 msgstr "Satunnainen"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:68
+#: src/gui/dialogs/multiplayer/lobby.cpp:69
 msgid "Do you really want to log out?"
 msgstr "Haluatko todellakin kirjautua ulos?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:174
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid "Incompatible User-made Content"
 msgstr "Epäyhteensopivaa käyttäjätehtyä sisältöä"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6767,11 +6800,11 @@ msgstr ""
 "jotka ovat epäyhteensopivia versiosi kanssa. Ehkä kannattaa ehdottaa, että "
 "isäntä päivittää lisäosansa."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:190
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid "Missing User-made Content"
 msgstr "Puuttuvaa käyttäjätehtyä sisältöä"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6781,47 +6814,47 @@ msgstr ""
 "asennettuina tai päivitettyinä.\n"
 "Haluatko yrittää asentaa niitä?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:368
+#: src/gui/dialogs/multiplayer/lobby.cpp:369
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Pelit: $num_total, joista $num_shown näkyvissä"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:390
+#: src/gui/dialogs/multiplayer/lobby.cpp:391
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Aika: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:420
+#: src/gui/dialogs/multiplayer/lobby.cpp:421
 msgid "era_or_mod^not installed"
 msgstr "ei asennettu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:423
+#: src/gui/dialogs/multiplayer/lobby.cpp:424
 msgid "Era"
 msgstr "Aikakausi"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:430
+#: src/gui/dialogs/multiplayer/lobby.cpp:431
 msgid "Modifications"
 msgstr "Muunnelmat"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Reloaded:"
 msgstr "Uudelleenladattu:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shared vision:"
 msgstr "Jaettu näkö:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shuffle sides:"
 msgstr "Sekoita osapuolia:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Time limit:"
 msgstr "Aikaraja:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Use map settings:"
 msgstr "Käytä kartan asetuksia:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:468
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6829,24 +6862,24 @@ msgstr ""
 "Yksi tai useampi lisäosa on asennettava\n"
 "liittyäksesi tähän peliin."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:492
+#: src/gui/dialogs/multiplayer/lobby.cpp:493
 msgid "Observers allowed"
 msgstr "Tarkkailijat sallittu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:495
+#: src/gui/dialogs/multiplayer/lobby.cpp:496
 msgid "Observers not allowed"
 msgstr "Tarkkailijat estetty"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:626
+#: src/gui/dialogs/multiplayer/lobby.cpp:627
 msgid "lobby"
 msgstr "aula"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:818
+#: src/gui/dialogs/multiplayer/lobby.cpp:828
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:831
+#: src/gui/dialogs/multiplayer/lobby.cpp:841
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6854,7 +6887,7 @@ msgstr ""
 "Jotain on vialla moninpeliaulan lisäosien versiontarkistustietokannan "
 "kanssa. Ole hyvä ja raportoi tästä sivulla https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:852
+#: src/gui/dialogs/multiplayer/lobby.cpp:862
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 
@@ -7309,43 +7342,43 @@ msgstr "(Hyök. / Puol.)"
 msgid "Movement Costs:"
 msgstr "Liikkumiskulut:"
 
-#: src/gui/widgets/unit_preview_pane.cpp:223
+#: src/gui/widgets/unit_preview_pane.cpp:224
 msgid "Attacks"
 msgstr "Hyökkäykset"
 
-#: src/gui/widgets/unit_preview_pane.cpp:300
-#: src/gui/widgets/unit_preview_pane.cpp:331
-#: src/gui/widgets/unit_preview_pane.cpp:452
-#: src/gui/widgets/unit_preview_pane.cpp:484
+#: src/gui/widgets/unit_preview_pane.cpp:301
+#: src/gui/widgets/unit_preview_pane.cpp:332
+#: src/gui/widgets/unit_preview_pane.cpp:453
+#: src/gui/widgets/unit_preview_pane.cpp:485
 msgid "Lvl $lvl"
 msgstr "Taso $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:338
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:492
-#: src/gui/widgets/unit_preview_pane.cpp:511
+#: src/gui/widgets/unit_preview_pane.cpp:339
+#: src/gui/widgets/unit_preview_pane.cpp:352
+#: src/gui/widgets/unit_preview_pane.cpp:493
+#: src/gui/widgets/unit_preview_pane.cpp:512
 msgid "HP: "
 msgstr "EP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:340
-#: src/gui/widgets/unit_preview_pane.cpp:356
-#: src/gui/widgets/unit_preview_pane.cpp:494
-#: src/gui/widgets/unit_preview_pane.cpp:516
+#: src/gui/widgets/unit_preview_pane.cpp:341
+#: src/gui/widgets/unit_preview_pane.cpp:357
+#: src/gui/widgets/unit_preview_pane.cpp:495
+#: src/gui/widgets/unit_preview_pane.cpp:517
 msgid "XP: "
 msgstr "KP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:359
+#: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "Experience Modifier: "
 msgstr "Kokemusmuuttuja: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:361
-#: src/gui/widgets/unit_preview_pane.cpp:521
+#: src/gui/widgets/unit_preview_pane.cpp:362
+#: src/gui/widgets/unit_preview_pane.cpp:522
 msgid "MP: "
 msgstr "MP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:399
-#: src/gui/widgets/unit_preview_pane.cpp:549
+#: src/gui/widgets/unit_preview_pane.cpp:400
+#: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "Kyvyt"
 

@@ -1,4 +1,4 @@
-## Version 1.17.8+dev
+## Version 1.17.9+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -7,12 +7,21 @@
  ### Lua API
  ### Packaging
  ### Terrain
-   * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
+   * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
  ### Translations
-   * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
+   * Updated translations: British English
  ### Units
  ### User interface
  ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.9
+ ### Terrain
+   * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
+ ### User interface
+   * Bot hosted games are now show on a separate tab from player hosted games.
  ### Miscellaneous and Bug Fixes
    * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
 
