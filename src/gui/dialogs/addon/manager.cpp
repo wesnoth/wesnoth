@@ -395,18 +395,18 @@ void addon_manager::pre_show(window& window)
 
 	connect_signal_notify_modified(type_filter,
 		std::bind(&addon_manager::apply_filters, this));
-	
+
 	// Language filter
 	// Clear current language filter vector, lest all entries are shown twice
 	addon_manager::language_filter_types_.clear();
 	addon_manager::language_filter_types_.push_back(std::pair<int, std::string>(0, "en_GB"));
-	
+
 	// Prepare shown languages, source all available languages from the addons themselves
 	std::vector<std::string> languages_available;
 	for(const auto& a : addons_) {
 		for (const auto& b : a.second.locales) {
 			if (!(b.rfind("en_GB", 0) == 0)) {
-				languages_available.push_back(b);				
+				languages_available.push_back(b);
 			}
 		}
 	}
@@ -415,7 +415,7 @@ void addon_manager::pre_show(window& window)
 	languages_available.erase(last, languages_available.end());
 	// Erase pt value, since otherwise Portugues do Brasil will be shown twice in the language list
 	(void)std::remove(languages_available.begin(), languages_available.end(), "pt");
-		
+
 	language_filter_types_[0].second = langcode_to_string(language_filter_types_[0].second) != "" ? langcode_to_string(language_filter_types_[0].second) : "English (GB)";
 	for (long unsigned int i = 0; i < languages_available.size(); i++) {
 		std::string myLangCodeString = langcode_to_string(languages_available[i]);
@@ -427,19 +427,19 @@ void addon_manager::pre_show(window& window)
 	}
 	// Remove "System default language entry"
 	language_filter_types_.pop_back();
-	
+
 	// The language filter
 	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
 	std::vector<config> language_filter_entries;
 	for(const auto& f : language_filter_types_) {
 		language_filter_entries.emplace_back("label", f.second, "checkbox", false);
 	}
-	
+
 	language_filter.set_values(language_filter_entries);
 
 	connect_signal_notify_modified(language_filter,
 		std::bind(&addon_manager::apply_filters, this));
-	
+
 	// Sorting order
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
