@@ -103,10 +103,12 @@ private:
 
 	static const std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> status_filter_types_;
 	static const std::vector<std::pair<ADDON_TYPE, std::string>> type_filter_types_;
-	static std::vector<std::pair<int, std::string>> language_filter_types_;
+	std::vector<std::pair<int, std::string>> language_filter_types_;
 	static const std::vector<addon_order> all_orders_;
 
 	bool need_wml_cache_refresh_;
+
+	int en_GB_toggle_position = 0;
 
 	template<void(addon_manager::*fptr)(const addon_info& addon)>
 	void execute_action_on_selected_addon();
