@@ -413,7 +413,7 @@ void addon_manager::pre_show(window& window)
 			language_filter_types_.emplace_back(std::pair<int, std::string>(i, langcode_to_string(languages_available[i])));
 		// Remember en_GB pos in toggle vector, so packages with Translations: None can be defaulted to English (GB) lang_string
 		if (languages_available[i] == "en_GB")
-					en_GB_toggle_position = language_filter_types_.size() - 1;
+			en_GB_toggle_position = language_filter_types_.size() - 1;
 	}
 	// Remove "System default language entry"
 	language_filter_types_.pop_back();
