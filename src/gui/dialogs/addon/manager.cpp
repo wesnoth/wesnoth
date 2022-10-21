@@ -405,13 +405,13 @@ void addon_manager::pre_show(window& window)
 	// Erase pt value, since otherwise Portugues do Brasil will be shown twice in the language list
 	(void)std::remove(languages_available.begin(), languages_available.end(), "pt");
 
-	//language_filter_types_[0].second = langcode_to_string(language_filter_types_[0].second) != "" ? langcode_to_string(language_filter_types_[0].second) : "English (GB)";
 	for (long unsigned int i = 0; i < languages_available.size(); i++) {
 		std::string myLangCodeString = langcode_to_string(languages_available[i]);
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
 		if (myLangCodeString != "")
 			language_filter_types_.emplace_back(std::pair<int, std::string>(i, langcode_to_string(languages_available[i])));
+		// Remember en_GB pos in toggle vector, so packages with Translations: None can be defaulted to English (GB) lang_string
 		if (languages_available[i] == "en_GB")
 					en_GB_toggle_position = language_filter_types_.size() - 1;
 	}
@@ -747,7 +747,9 @@ boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
 			// Find all toggle states, where toggle = true and lang = lang
 			for (long unsigned int i = 0; i < toggle_states.size(); i++) {
 				if (toggle_states[i] == true) {
+					// does lang_code match?
 					bool contains_lang_code = utils::contains(a.second.locales, language_filter_types_[i].second);
+					// does land_string match?
 					bool contains_lang_string = utils::contains(lang_string_vector, language_filter_types_[i].second);
 					if ((contains_lang_code || contains_lang_string) == true)
 						retval = true;
