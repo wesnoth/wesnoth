@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
 "POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2022-09-09 17:58+0800\n"
+"PO-Revision-Date: 2022-10-17 10:14+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -343,7 +343,7 @@ msgstr "B<--strict-lua>"
 #: doc/man/wesnoth.6:109
 #, fuzzy
 msgid "disallow deprecated Lua API calls"
-msgstr "Désactive les appels à l'interface lua obsolète."
+msgstr "Désactive les appels obsolètes à l'interface lua."
 
 #. type: TP
 #: doc/man/wesnoth.6:109
@@ -359,10 +359,10 @@ msgid ""
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
-"Faire la différence entre deux fichiers WML. Pas de résolution des macros "
-"préalable (pour appliquer cela, utiliser d'abord B<-p>). La sortie de la "
-"différence sous format DiffWML vers la sortie par défaut ou vers le fichier "
-"spécifié par I<--output>."
+"Fait la différence entre deux fichiers WML sans résolution préalable des "
+"macros (pour appliquer cela, utiliser d'abord B<-p>). La sortie de la "
+"différence sous format DiffWML se fait vers la sortie par défaut ou vers le "
+"fichier spécifié par I<--output>."
 
 # type: TP
 #. type: TP
@@ -782,7 +782,7 @@ msgstr "B<--output>I<\\ fichier>"
 #, fuzzy
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
-"Rediriger la sortie vers le fichier donné (pour les opérations de différence "
+"Redirige la sortie vers le fichier donné (pour les opérations de différence "
 "entre fichiers)."
 
 #. type: TP
@@ -833,10 +833,9 @@ msgid ""
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
-"Applique une différence au format DiffWML à un fichier WML. Pas de "
-"résolution des macros préalable dans les fichiers. La sortie du fichier WML "
-"modifié vers la sortie par défaut ou vers le fichier spécifié par I<--"
-"output>."
+"Applique une différence au format DiffWML à un fichier WML sans résolution "
+"préalable des macros dans les fichiers. La sortie du fichier WML modifié se "
+"fait vers la sortie par défaut ou vers le fichier spécifié par I<--output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:265
