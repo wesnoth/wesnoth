@@ -128,11 +128,6 @@ public:
 	~log_file_manager();
 
 	/**
-	 * Returns the path to the current log file.
-	 */
-	std::string log_file_path() const;
-
-	/**
 	 * Moves the log file to a new directory.
 	 *
 	 * This causes the associated streams to closed momentarily in order to be
@@ -174,7 +169,6 @@ public:
 
 private:
 	std::string fn_;
-	std::string cur_path_;
 	bool use_wincon_, created_wincon_;
 
 	enum STREAM_ID {
@@ -204,7 +198,7 @@ private:
 	 *
 	 * @throw libc_error     If the log file cannot be opened.
 	 *
-	 * @note This does not set cur_path_ to the new path.
+	 * @note This does not set the log file path to the new path.
 	 */
 	void do_redirect_single_stream(const std::string& file_path,
 								   STREAM_ID stream,
@@ -213,7 +207,6 @@ private:
 
 log_file_manager::log_file_manager(bool native_console)
 	: fn_(lg::unique_log_filename())
-	, cur_path_()
 	, use_wincon_(console_attached())
 	, created_wincon_(false)
 {
@@ -240,7 +233,7 @@ log_file_manager::log_file_manager(bool native_console)
 	try {
 		open_log_file(new_path, true);
 	} catch(const libc_error& e) {
-		log_init_panic(e, new_path, cur_path_);
+		log_init_panic(e, new_path, lg::get_log_file_path());
 	}
 
 	LOG_LS << "Opened log file at " << new_path;
@@ -248,7 +241,7 @@ log_file_manager::log_file_manager(bool native_console)
 
 log_file_manager::~log_file_manager()
 {
-	if(cur_path_.empty()) {
+	if(lg::get_log_file_path().empty()) {
 		// No log file, nothing to do.
 		return;
 	}
@@ -257,27 +250,20 @@ log_file_manager::~log_file_manager()
 	fclose(stderr);
 }
 
-std::string log_file_manager::log_file_path() const
-{
-	return cur_path_;
-}
-
 void log_file_manager::move_log_file(const std::string& log_dir)
 {
 	const std::string new_path = log_dir + "/" + fn_;
 
 	try {
-		if(!cur_path_.empty()) {
-			const std::string old_path = cur_path_;
+		if(!lg::get_log_file_path().empty()) {
+			const std::string old_path = lg::get_log_file_path();
 
 			// Need to close files before moving or renaming. This will replace
-			// cur_path_ with NUL, hence the backup above.
+			// the log file path with NUL, hence the backup above.
 			open_log_file("NUL", false);
 
-			const std::wstring old_path_w
-					= unicode_cast<std::wstring>(old_path);
-			const std::wstring new_path_w
-					= unicode_cast<std::wstring>(new_path);
+			const std::wstring old_path_w = unicode_cast<std::wstring>(old_path);
+			const std::wstring new_path_w = unicode_cast<std::wstring>(new_path);
 
 			if(_wrename(old_path_w.c_str(), new_path_w.c_str()) != 0) {
 				throw libc_error();
@@ -287,7 +273,7 @@ void log_file_manager::move_log_file(const std::string& log_dir)
 		// Reopen.
 		open_log_file(new_path, false);
 	} catch(const libc_error& e) {
-		log_init_panic(e, new_path, cur_path_);
+		log_init_panic(e, new_path, lg::get_log_file_path());
 	}
 
 	LOG_LS << "Moved log file to " << new_path;
@@ -298,14 +284,14 @@ void log_file_manager::open_log_file(const std::string& file_path, bool truncate
 	do_redirect_single_stream(file_path, STREAM_STDERR, truncate);
 	do_redirect_single_stream(file_path, STREAM_STDOUT, false);
 
-	cur_path_ = file_path;
+	lg::set_log_file_path(file_path);
 }
 
 void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 												 log_file_manager::STREAM_ID stream,
 												 bool truncate)
 {
-	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side A]";
+	DBG_LS << stream << ' ' << lg::get_log_file_path() << " -> " << file_path << " [side A]";
 
 	FILE* crts = stream == STREAM_STDERR ? stderr : stdout;
 	std::ostream& cxxs = stream == STREAM_STDERR ? std::cerr : std::cout;
@@ -320,9 +306,7 @@ void log_file_manager::do_redirect_single_stream(const std::string& file_path,
 		throw libc_error();
 	}
 
-	//setbuf(crts, nullptr);
-
-	DBG_LS << stream << ' ' << cur_path_ << " -> " << file_path << " [side B]";
+	DBG_LS << stream << ' ' << lg::get_log_file_path() << " -> " << file_path << " [side B]";
 }
 
 bool log_file_manager::console_enabled() const
@@ -379,7 +363,7 @@ void log_file_manager::enable_native_console_output()
 	// At this point the log file has been closed and it's no longer our
 	// responsibility to clean up anything; Windows will figure out what to do
 	// when the time comes for the process to exit.
-	cur_path_.clear();
+	lg::set_log_file_path("");
 	use_wincon_ = true;
 
 	LOG_LS << "Console streams handover complete!";
@@ -388,15 +372,6 @@ void log_file_manager::enable_native_console_output()
 std::unique_ptr<log_file_manager> lfm;
 
 } // end anonymous namespace
-
-std::string log_file_path()
-{
-	if(lfm) {
-		return lfm->log_file_path();
-	}
-
-	return "";
-}
 
 static bool disable_redirect;
 
