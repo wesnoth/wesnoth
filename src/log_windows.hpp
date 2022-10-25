@@ -43,14 +43,6 @@ namespace lg
 {
 
 /**
- * Returns the path to the current log file.
- *
- * An empty string is returned if the log file has not been set up yet or it
- * was disabled (e.g. by --wconsole).
- */
-std::string log_file_path();
-
-/**
  * Sets up the initial temporary log file.
  *
  * This has to be done on demand (preferably as early as possible) from a
