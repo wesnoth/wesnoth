@@ -1327,8 +1327,8 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 	unit_ability_list overwrite_list;
 	for(const auto& i : temp_list) {
 		bool overwrite = false;
-		if(!is_special && overwrite_either){
-			overwrite = overwrite_special_affects(*i.ability_cfg);
+		if(overwrite_either){
+			overwrite = !is_special && overwrite_special_affects(*i.ability_cfg);
 		} else if(overwrite_self){
 			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
 		} else if(overwrite_oppponent){
