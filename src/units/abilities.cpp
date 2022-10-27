@@ -1300,7 +1300,7 @@ static bool overwrite_special_affects(const config& special)
 unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, const unit_ability_list& temp_list, const unit_ability_list& abil_list, const std::string& filter_self, bool is_special) const
 {
 	bool overwrite_self = false;
-	bool overwrite_oppponent = false;
+	bool overwrite_opponent = false;
 	bool overwrite_either = false;
 
 	for(const auto& i : abil_list) {
@@ -1315,11 +1315,11 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			overwrite_oppponent = true;
 		}
 	}
-	if(!overwrite_either && !overwrite_self && !overwrite_oppponent){
+	if(!overwrite_either && !overwrite_self && !overwrite_opponent){
 		return temp_list;
 	}
 
-	if(!overwrite_either && overwrite_self && overwrite_oppponent){
+	if(!overwrite_either && overwrite_self && overwrite_opponent){
 		overwrite_either = true;
 	}
 
@@ -1331,7 +1331,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			overwrite = !is_special && overwrite_special_affects(*i.ability_cfg);
 		} else if(overwrite_self){
 			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
-		} else if(overwrite_oppponent){
+		} else if(overwrite_opponent){
 			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self);
 		}
 		if(overwrite) {
