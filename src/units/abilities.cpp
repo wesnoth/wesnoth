@@ -1271,18 +1271,18 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	}
 
 	abil_list.append(abil_other_list);
-	if(!abil_list.empty()){
-		abil_list = overwrite_special_checking(ability, abil_list, abil_list, "filter_student");
-	}
 	return abil_list;
 }
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	unit_ability_list abil_list = get_weapon_ability(special);
+	if(!abil_list.empty()){
+		abil_list = overwrite_special_checking(special, abil_list, abil_list, "filter_student", false);
+	}
 	unit_ability_list spe_list = get_specials(special);
 	if(!spe_list.empty()){
-		spe_list = overwrite_special_checking(special, spe_list, abil_list);
+		spe_list = overwrite_special_checking(special, spe_list, abil_list, "filter_self", true);
 		if(special == "plague" && !spe_list.empty()){
 			return spe_list;
 		}
@@ -1297,9 +1297,10 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list temp_list, const unit_ability_list& abil_list, const std::string& filter_self) const
+unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, const unit_ability_list& temp_list, const unit_ability_list& abil_list, const std::string& filter_self, bool is_special) const
 {
 	bool overwrite_self = false;
+	bool overwrite_opponent = false;
 	bool overwrite_either = false;
 
 	for(const auto& i : abil_list) {
@@ -1307,38 +1308,37 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			overwrite_either = true;
 			break;
 		}
-		if(overwrite_special_affects(*i.ability_cfg) && (special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student"))) {
+		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self) && !overwrite_self) {
 			overwrite_self = true;
 		}
+		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self) && !overwrite_opponent) {
+			overwrite_opponent = true;
+		}
 	}
-	if(!overwrite_either && !overwrite_self){
+	if(!overwrite_either && !overwrite_self && !overwrite_opponent){
 		return temp_list;
-	} else if(overwrite_either){
-		for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
-			bool overwrite = false;
-			if(filter_self == "filter_student"){
-				overwrite = overwrite_special_affects(*i->ability_cfg);
-			}
-			if(!overwrite && (special_active(*i->ability_cfg, AFFECT_SELF, ability, filter_self) || special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, filter_self))) {
-				i = temp_list.erase(i);
-			} else {
-				++i;
-			}
+	}
+
+	if(!overwrite_either && overwrite_self && overwrite_opponent){
+		overwrite_either = true;
+	}
+
+	// At this point we need to return a changed list, so create a non-const one to return
+	unit_ability_list overwrite_list;
+	for(const auto& i : temp_list) {
+		bool overwrite = false;
+		if(overwrite_either){
+			overwrite = !is_special && overwrite_special_affects(*i.ability_cfg);
+		} else if(overwrite_self){
+			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
+		} else if(overwrite_opponent){
+			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self);
 		}
-	} else if(overwrite_self){
-		for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
-			bool overwrite = false;
-			if(filter_self == "filter_student"){
-				overwrite = overwrite_special_affects(*i->ability_cfg);
-			}
-			if(!overwrite && special_active(*i->ability_cfg, AFFECT_SELF, ability, filter_self)) {
-				i = temp_list.erase(i);
-			} else {
-				++i;
-			}
+		if(overwrite) {
+			overwrite_list.emplace_back(i);
 		}
 	}
-	return temp_list;
+	return overwrite_list;
 }
 
 	/**
