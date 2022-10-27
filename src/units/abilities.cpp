@@ -1311,8 +1311,8 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self) && !overwrite_self) {
 			overwrite_self = true;
 		}
-		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self) && !overwrite_oppponent) {
-			overwrite_oppponent = true;
+		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self) && !overwrite_opponent) {
+			overwrite_opponent = true;
 		}
 	}
 	if(!overwrite_either && !overwrite_self && !overwrite_opponent){
