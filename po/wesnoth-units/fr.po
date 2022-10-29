@@ -8,12 +8,13 @@
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011.
 #  Mathieu Guilbaud <mathieu@guim.info>, 2019.
 # Syll <syll-dev@laposte.net>, 2019.
+# alberic89 <alberic89@gmx.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.16.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-05-08 01:42 UTC\n"
-"PO-Revision-Date: 2022-09-03 14:02+0200\n"
+"PO-Revision-Date: 2022-10-27 15:46+0200\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -21,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Lokalize 22.11.70\n"
 
 #. [attack]: type=impact
 #. [attack]: type=arcane
@@ -5959,19 +5960,28 @@ msgstr "Marcassin"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:35
+#, fuzzy
 msgid ""
 "Young piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a piglet found that does "
 "not have a protective adult boar watching over them."
 msgstr ""
+"Les jeunes marcassins sont curieux, mais aussi colériques que leurs parents, "
+"même s'ils sont moins durs à affronter. Il est cependant rare de trouver un "
+"marcassin qui n'a pas un sanglier adulte qui le surveille."
 
+# Bien que nommés « Swamp Lizard », ce ne sont pas des lézards et ils peuvent marcher sur deux pattes.
+# On laisse « Lézards » en attendant le jour où le concept est clair.
+# Autre traduction en discussion : « Salligator ».
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
 msgid "Swamp Lizard"
 msgstr "Lézard des marais"
 
+# « adopted a ‘two legs bad’ outlook » fait référence au fait qu'ils peuvent marcher en se dressant sur les pattes arrières.
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:122
+#, fuzzy
 msgid ""
 "Swamps are vibrant environments, but often not friendly to humans or orcs. "
 "Swamp Lizards are one of the more notable hazards, with their powerful jaws "
@@ -5980,6 +5990,13 @@ msgid ""
 "adopted a ‘two legs bad’ outlook and do not hesitate to avenge their "
 "ancestors."
 msgstr ""
+"Les marais sont des environnements pleins de vie, mais souvent peu "
+"accueillants pour les humains ou les orcs. Les lézards des marais sont l'un "
+"des dangers les plus notables, avec leurs mâchoires puissantes et leur peau "
+"blindée. Malgré leur apparence primitive, ces lézards ne sont pas stupides, "
+"et après avoir été chassés pour leurs peaux pendant des générations, ils ont "
+"fini par adopter le comportement des \"méchants deux pattes\"  et n'hésitent "
+"pas à venger leurs ancêtres."
 
 #. [special_note]
 #: data/core/units/monsters/Crocodile.cfg:124
@@ -6083,12 +6100,18 @@ msgstr "Fourmi de feu"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Fire_Ant.cfg:46
+#, fuzzy
 msgid ""
 "Small but deadly in large numbers, fire ants possess fierce fangs and an "
 "unusual ability to generate fire. Though these creatures typically function "
 "as scavengers, a burrow of fire ants can become aggressive when provoked and "
 "have even been known to attack small groups of threatening troops."
 msgstr ""
+"Petites, mais fatales en grand nombre, les fourmis de feu possèdent des "
+"crocs féroces et une capacité surprenante à générer du feu. Bien que ces "
+"créatures agissent généralement comme des charognards, un troupeau de "
+"fourmis de feu peut devenir agressif lorsqu'il est provoqué et on sait même "
+"qu'elles peuvent attaquer de petits groupes de soldats qui les menacent."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Ant.cfg:73
@@ -6400,12 +6423,18 @@ msgstr "Cheval blanc"
 
 #. [unit_type]: id=White Horse
 #: data/core/units/monsters/Horse.cfg:85
+#, fuzzy
 msgid ""
 "Some horses have a white color, and they are merely white horses. But there "
 "exist a special breed, found only in the wild woods, that are White Horses. "
 "As if blessed by the faerie world, they have a grace and agility not found "
 "in their more common relatives."
 msgstr ""
+"Certains chevaux ont une robe blanche, et ce sont simplement des chevaux "
+"blancs. Mais le cheval blanc est aussi une race singulière qui existe de "
+"plein droit, bien que l'on ne la trouve que dans les bois sauvages. Comme "
+"s'ils étaient bénis par le monde des fées, ils ont une grâce et une agilité "
+"qu'on ne retrouve pas chez leurs parents plus communs."
 
 # À vérifier avec la description (Ils ne laissent aucun signe)
 #. [unit_type]: id=Dark Horse
@@ -6443,27 +6472,31 @@ msgstr "Jument des ténèbres"
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:5
 msgid "Black Horse"
-msgstr "Cheval noir"
+msgstr "Cheval nocturne"
 
 #. [unit_type]: id=Black Horse, race=horse
 #: data/core/units/monsters/Horse_Black.cfg:25
+#, fuzzy
 msgid ""
 "The true nature of Black Horses is impossible to discern, but the fire in "
 "their eyes and the unnerving, unnatural sound of their calls suggest they "
 "are malevolent spirits."
 msgstr ""
+"La vraie nature des chevaux nocturnes est impossible à discerner, mais le "
+"feu dans leurs yeux et le son étrange et surnaturel de leur hennissement "
+"suggèrent qu'ils sont des esprits malveillants."
 
 #. [male]
 #: data/core/units/monsters/Horse_Black.cfg:85
 msgid "Black Stallion"
 msgstr "Étalon noir"
 
-# Nightmare en tant que féminin de Stallion? À vérifier.
 #. [female]
 #. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
 #: data/core/units/monsters/Horse_Black.cfg:91
+#, fuzzy
 msgid "female^Black Nightmare"
-msgstr ""
+msgstr "Jument nocturne"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
@@ -6491,6 +6524,7 @@ msgstr "Marmotte givrée"
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:34
+#, fuzzy
 msgid ""
 "Icemonax are a strange beast of the frozen north, best described as a large, "
 "armored ground squirrel. Their armor accumulates frost and snow, even in "
@@ -6498,6 +6532,13 @@ msgid ""
 "places they do not belong. Despite this, efforts to study and domesticate "
 "them have failed, as they die soon after capture."
 msgstr ""
+"Les marmottes givrées sont d'étranges bêtes du grand Nord gelé, que l'on "
+"peut décrire comme un grand écureuil terrestre blindé. Sur leur carapace "
+"s'accumulent le gel et la neige, même dans les climats plus tempérés. Les "
+"marmottes givrées sont d'une nature curieuse, s'aventurant souvent dans des "
+"contrées qui leur sont étrangères. Malgré cela, les efforts pour les étudier "
+"et les domestiquer ont échoué, car elles meurent rapidement après leur "
+"capture."
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:4
@@ -6506,12 +6547,18 @@ msgstr "Marmotte givrée géante"
 
 #. [unit_type]: id=Great Icemonax, race=monster
 #: data/core/units/monsters/Icemonax_Greater.cfg:35
+#, fuzzy
 msgid ""
 "Icemonax are a strange beast of the frozen north, best described as a large, "
 "armored ground squirrel. Their armor accumulates ice and snow, even when the "
 "climate is warm and dry. Some Icemonax grow to be quite large and powerful, "
 "guarding their smaller, younger kin."
 msgstr ""
+"La marmotte givrée est une étrange bête du grand Nord gelé, décrite comme un "
+"grand écureuil terrestre blindé. Leur armure est recouverte de glace et de "
+"neige, même lorsque le climat est chaud et sec. Certaines marmottes givrées "
+"deviennent très grandes et puissantes, et protègent leurs jeunes congénères, "
+"plus petites."
 
 #. [unit_type]: id=Jinn, race=monster
 #: data/core/units/monsters/Jinn.cfg:8
@@ -6608,6 +6655,7 @@ msgstr "Scorpion des roches"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
+#, fuzzy
 msgid ""
 "Rock scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They've been described as "
@@ -6615,6 +6663,12 @@ msgid ""
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
 msgstr ""
+"Les scorpions des roches ont fait l'objet de récits de bandits de grand "
+"chemin et d'ivrognes, mais il existe peu de preuves de leur existence "
+"réelle. Ils ont été décrits comme des monstres furtifs dotés d'une peau de "
+"roche solide et de griffes cristallines et acérées. Contrairement à la "
+"plupart des scorpions, ils ne libèrent pas leur poison à l'aide d'un dard "
+"pointu, mais aspergent leurs ennemis d'un jet nocif et volatil."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Rock_Scorpion.cfg:61
@@ -6637,12 +6691,18 @@ msgstr ""
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
+#, fuzzy
 msgid ""
 "Horned Scarabs are large, rugged insects that can grow to be quite large, "
 "making them a threat when they decide to be aggressive. Their primary means "
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
+"Les scarabées cornus sont de gros insectes robustes qui peuvent devenir "
+"assez grands, ce qui en fait une menace lorsqu'ils deviennent agressifs. "
+"Leur première arme est la grande corne acérée qu'ils portent sur la tête. En "
+"raison de leur grande taille, de leur carapace et de leur corne, ils ne "
+"peuvent pas voler."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Scarab.cfg:53
@@ -6681,6 +6741,7 @@ msgstr "Hippocampe géant"
 
 #. [unit_type]: id=Great Seahorse, race=monster
 #: data/core/units/monsters/Seahorse.cfg:29
+#, fuzzy
 msgid ""
 "Seahorses are a variety of fish that have a horse-like head, but they have "
 "no real connection to equines. Most seahorses are small, shy creatures that "
@@ -6689,6 +6750,14 @@ msgid ""
 "force to stun a small animal, and has thick, bony plate armor, but like all "
 "seahorses, it is a slow swimmer and cannot move over land."
 msgstr ""
+"Les hippocampes sont une variété de poissons dont la tête ressemble à celle "
+"d'un cheval, mais ils n'ont aucun lien réel avec les équidés. La plupart des "
+"hippocampes sont de petites créatures timides qui mangent des insectes et "
+"d'autres petites proies similaires, mais les hippocampes géants sont "
+"suffisamment grands pour menacer les voyageurs imprudents. Cette variété "
+"d'hippocampes peut cracher de l'eau avec assez de force pour étourdir un "
+"petit animal, et possède une armure osseuse épaisse. Mais, comme tous les "
+"hippocampes, ils nagent lentement et ne peuvent pas se déplacer sur terre."
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
 #: data/core/units/monsters/Skeletal_Dragon.cfg:4
