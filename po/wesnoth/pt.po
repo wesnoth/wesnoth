@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2022-10-15 21:07-0500\n"
 "PO-Revision-Date: 2015-11-03 13:30+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -116,13 +116,13 @@ msgstr ""
 
 #
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Envelhecimento das mensagens instantâneas"
 
 #
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 #, fuzzy
 #| msgid ""
 #| "Number of minutes to wait before clearing an ingame chat message. Set to "
@@ -136,24 +136,24 @@ msgstr ""
 
 #
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "Usa relógio de formato de 12 horas"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Confirmar ao carregar uma partida gravada de uma versão diferente"
 
 #
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Descobre todas as unidades na ajuda"
 
 #
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 #, fuzzy
 #| msgid ""
 #| "Show all unit types in the help (requires restart). This does not alter "
@@ -166,57 +166,57 @@ msgstr ""
 "unidades encontrados"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Limite de ficheiros recentes no editor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr "O máximo de ficheiros recentes a mostrar no editor de mapas"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Mostrar cursor colorido"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 #, fuzzy
 #| msgid "Show color cursors"
 msgid "Use colored mouse cursors"
 msgstr "Mostrar cursor colorido"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr ""
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr ""
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -224,15 +224,31 @@ msgid ""
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:165
+#: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:166
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
+msgstr ""
+
+#
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:167
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "Conectividade expirada"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:168
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
 msgstr ""
 
 #
@@ -240,7 +256,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -3883,15 +3899,15 @@ msgstr "Impassível"
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:385
+#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
 msgstr "Nevoeiro"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:388
-#: src/game_initialization/lobby_data.cpp:391
+#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:392
 msgid "Shroud"
 msgstr "Sombra"
 
@@ -4262,35 +4278,35 @@ msgstr ""
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
 msgid "female^poisoned"
 msgstr "envenenada"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
 msgid "female^slowed"
 msgstr "atrasada"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
 msgid "slowed"
 msgstr "atrasado"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
 msgid "female^petrified"
 msgstr "petrificada"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
 msgid "petrified"
 msgstr "petrificado"
 
@@ -4308,8 +4324,8 @@ msgstr "Incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3226
-#: src/scripting/game_lua_kernel.cpp:3261
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3224
+#: src/scripting/game_lua_kernel.cpp:3259
 msgid "input"
 msgstr ""
 
@@ -5587,7 +5603,7 @@ msgid "waiting for^an advancement choice"
 msgstr "Sem avanço"
 
 #
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1395
+#: src/actions/attack.cpp:597 src/actions/attack.cpp:1388
 msgid "An invalid attacker weapon got selected."
 msgstr "O atacante selecionou uma arma inválida."
 
@@ -6737,36 +6753,36 @@ msgid "Team"
 msgstr "Equipa"
 
 #
-#: src/game_initialization/connect_engine.cpp:953
+#: src/game_initialization/connect_engine.cpp:954
 msgid "Anonymous player"
 msgstr "Jogador local anónimo"
 
 #
-#: src/game_initialization/connect_engine.cpp:958
-#: src/game_initialization/connect_engine.cpp:1256
+#: src/game_initialization/connect_engine.cpp:959
+#: src/game_initialization/connect_engine.cpp:1257
 msgid "Computer Player"
 msgstr "Computador"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1001
 msgid "$playername $side"
 msgstr "$playername $side"
 
 #
-#: src/game_initialization/connect_engine.cpp:1252
+#: src/game_initialization/connect_engine.cpp:1253
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
 #
-#: src/game_initialization/connect_engine.cpp:1255
+#: src/game_initialization/connect_engine.cpp:1256
 msgid "Local Player"
 msgstr "Jogador Local"
 
-#: src/game_initialization/connect_engine.cpp:1257
+#: src/game_initialization/connect_engine.cpp:1258
 msgid "Nobody"
 msgstr "Ninguém"
 
 #
-#: src/game_initialization/connect_engine.cpp:1260
+#: src/game_initialization/connect_engine.cpp:1261
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -6856,92 +6872,92 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Não é possível calcular sexo de líder inválido: $leader"
 
 #
-#: src/game_initialization/lobby_data.cpp:162
+#: src/game_initialization/lobby_data.cpp:163
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $name"
 msgstr "Argumento em falta $arg_id"
 
 #
-#: src/game_initialization/lobby_data.cpp:164
+#: src/game_initialization/lobby_data.cpp:165
 #, fuzzy
 #| msgid "Missing argument $arg_id"
 msgid "Missing addon: $id"
 msgstr "Argumento em falta $arg_id"
 
 #
-#: src/game_initialization/lobby_data.cpp:196
+#: src/game_initialization/lobby_data.cpp:197
 msgid "Unknown era"
 msgstr "Era desconhecida"
 
 #
-#: src/game_initialization/lobby_data.cpp:263
-#: src/game_initialization/lobby_data.cpp:297
+#: src/game_initialization/lobby_data.cpp:264
+#: src/game_initialization/lobby_data.cpp:298
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Equipa"
 
 #
-#: src/game_initialization/lobby_data.cpp:283
+#: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
 msgstr "Cenário remoto"
 
 #
-#: src/game_initialization/lobby_data.cpp:304
-#: src/game_initialization/lobby_data.cpp:330
+#: src/game_initialization/lobby_data.cpp:305
+#: src/game_initialization/lobby_data.cpp:331
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "campaign_abbreviation^C"
 msgstr "Equipa"
 
 #
-#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
 msgstr "Cenário desconhecido"
 
 #
-#: src/game_initialization/lobby_data.cpp:350
+#: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
 msgstr "Partida recarregada"
 
 #
-#: src/game_initialization/lobby_data.cpp:365
+#: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Espaço vago:"
 msgstr[1] "Espaços vagos:"
 
-#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
 #
-#: src/game_initialization/lobby_data.cpp:378
-#: src/game_initialization/lobby_data.cpp:380 src/savegame.cpp:662
+#: src/game_initialization/lobby_data.cpp:379
+#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:662
 msgid "Turn"
 msgstr "Turno"
 
-#: src/game_initialization/lobby_data.cpp:393
+#: src/game_initialization/lobby_data.cpp:394
 #, fuzzy
 #| msgid "vision^None"
 msgid "vision^none"
 msgstr "Nenhuma"
 
 #
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:403
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Limite de tempo"
 
-#: src/game_initialization/lobby_data.cpp:446
+#: src/game_initialization/lobby_data.cpp:447
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:460
+#: src/game_initialization/lobby_data.cpp:461
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -7666,12 +7682,12 @@ msgid "(press $hotkey to deactivate)"
 msgstr "(carrega $hotkey para desativar)"
 
 #
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2099
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2100
 msgid "Planning mode activated!"
 msgstr "Modo de planificação ativado!"
 
 #
-#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2102
+#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2103
 msgid "Planning mode deactivated!"
 msgstr "Modo de planificação desativado!"
 
@@ -8412,30 +8428,30 @@ msgstr ""
 "Não foi possível verificar o controlo da equipa fora dos limites: ‘$side’."
 
 #
-#: src/menu_events.cpp:1834
+#: src/menu_events.cpp:1835
 msgid "Choose Scenario (Debug!)"
 msgstr "Escolher cenário (Modo de Depuração!)"
 
 #
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1871
 msgid "Debug mode activated!"
 msgstr "Modo de depuração ativado!"
 
 #
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1874
 msgid "Debug mode not available in network games"
 msgstr "Modo de depuração não está disponível nos jogos em rede"
 
 #
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1881
 msgid "Debug mode deactivated!"
 msgstr "Modo de depuração desativado!"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1901
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1902
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8445,21 +8461,21 @@ msgid ""
 msgstr ""
 
 #
-#: src/menu_events.cpp:1906
+#: src/menu_events.cpp:1907
 msgid "Unsafe mode enabled!"
 msgstr "Modo não-seguro ativado!"
 
 #
-#: src/menu_events.cpp:1955
+#: src/menu_events.cpp:1956
 msgid "Variable not found"
 msgstr "Variável não encontrada"
 
-#: src/menu_events.cpp:1988
+#: src/menu_events.cpp:1989
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 
 #
-#: src/menu_events.cpp:2006
+#: src/menu_events.cpp:2007
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -8468,22 +8484,22 @@ msgstr ""
 "nocturno ou liminar."
 
 #
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:2033
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Desejas limpar todas as suas unidades descobertas da ajuda?"
 
 #
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2047
 msgid "Invalid unit type"
 msgstr "tipo de unidade inválido"
 
 #
-#: src/menu_events.cpp:2053
+#: src/menu_events.cpp:2054
 msgid "Invalid location"
 msgstr "localização inválida"
 
 #
-#: src/menu_events.cpp:2126 src/menu_events.cpp:2152
+#: src/menu_events.cpp:2127 src/menu_events.cpp:2153
 msgid "prompt^Command:"
 msgstr "Comando:"
 
@@ -8843,7 +8859,7 @@ msgid "Ability: "
 msgstr "Habilidade: "
 
 #
-#: src/reports.cpp:434 src/reports.cpp:978
+#: src/reports.cpp:434 src/reports.cpp:979
 msgid " (inactive)"
 msgstr " (inativo)"
 
@@ -8901,114 +8917,114 @@ msgid "Movement Costs:"
 msgstr "Custos de Movimentos:"
 
 #
-#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
+#: src/reports.cpp:814 src/reports.cpp:1068 src/reports.cpp:1080
 msgid "Weapon: "
 msgstr "Arma: "
 
 #
-#: src/reports.cpp:814 src/reports.cpp:1068
+#: src/reports.cpp:815 src/reports.cpp:1069
 msgid "Damage: "
 msgstr "Dano: "
 
 #
-#: src/reports.cpp:818
+#: src/reports.cpp:819
 msgid "Base damage: "
 msgstr "Dano base: "
 
 #
-#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
+#: src/reports.cpp:821 src/reports.cpp:855 src/reports.cpp:865
 msgid "With specials: "
 msgstr "Com as especialidades: "
 
 #
-#: src/reports.cpp:823
+#: src/reports.cpp:824
 msgid "Time of day: "
 msgstr "Tempo do Dia: "
 
 #
-#: src/reports.cpp:827
+#: src/reports.cpp:828
 msgid "Leadership: "
 msgstr "Liderança: "
 
 #
-#: src/reports.cpp:831
+#: src/reports.cpp:832
 msgid "Slowed: "
 msgstr "Atrasado: "
 
 #
-#: src/reports.cpp:835
+#: src/reports.cpp:836
 msgid "Attacks: "
 msgstr "Ataques: "
 
 #
-#: src/reports.cpp:839
+#: src/reports.cpp:840
 msgid "Max swarm bonus: "
 msgstr "Bónus máximo do enxame: "
 
 #
-#: src/reports.cpp:840 src/reports.cpp:859
+#: src/reports.cpp:841 src/reports.cpp:860
 msgid "Swarm: "
 msgstr "Enxame: "
 
 #
-#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
+#: src/reports.cpp:842 src/reports.cpp:853 src/reports.cpp:864
 msgid "Base attacks: "
 msgstr "Ataques base: "
 
 #
-#: src/reports.cpp:847
+#: src/reports.cpp:848
 msgid "Specials: "
 msgstr "Especialidades: "
 
 #
 # where is that used?
 # 'swarm' refers to the weapon special...?
-#: src/reports.cpp:857
+#: src/reports.cpp:858
 msgid "Subject to swarm: "
 msgstr "Bónus máximo do enxame: "
 
 #
-#: src/reports.cpp:884
+#: src/reports.cpp:885
 msgid "Weapon range: "
 msgstr "Alcance da arma: "
 
 #
-#: src/reports.cpp:885
+#: src/reports.cpp:886
 msgid "Damage type: "
 msgstr "Tipo de dano: "
 
 #
-#: src/reports.cpp:886
+#: src/reports.cpp:887
 msgid "Damage versus: "
 msgstr "Dano contra: "
 
 #
-#: src/reports.cpp:945
+#: src/reports.cpp:946
 msgid "Accuracy:"
 msgstr "Precisão:"
 
 #
-#: src/reports.cpp:950
+#: src/reports.cpp:951
 msgid "Parry:"
 msgstr "Esquivar:"
 
 #
-#: src/reports.cpp:976
+#: src/reports.cpp:977
 msgid "Weapon special: "
 msgstr "Efeitos das Armas: "
 
-#: src/reports.cpp:1051
+#: src/reports.cpp:1052
 #, fuzzy
 #| msgid "vision^None"
 msgid "weapon^None"
 msgstr "Nenhuma"
 
 #
-#: src/reports.cpp:1080
+#: src/reports.cpp:1081
 msgid "Total damage"
 msgstr "Dano total"
 
-#: src/reports.cpp:1144
+#: src/reports.cpp:1145
 #, fuzzy
 #| msgid "Attack"
 msgid "Attack"
@@ -9017,89 +9033,89 @@ msgstr[0] "Ataque"
 msgstr[1] "Ataque"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1152
+#: src/reports.cpp:1153
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1156
+#: src/reports.cpp:1157
 #, fuzzy
 #| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
 msgstr "Isto não é uma partida guardada do jogo em rede"
 
-#: src/reports.cpp:1248
+#: src/reports.cpp:1249
 #, fuzzy
 #| msgid "Time of Day Schedule"
 msgid "Time of day schedule:"
 msgstr "Tempo de dia"
 
 #
-#: src/reports.cpp:1297
+#: src/reports.cpp:1298
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Tempo do Dia: "
 
 #
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1299 src/reports.cpp:1353
 msgid "Lawful units: "
 msgstr "Unidades diurnas: "
 
 #
-#: src/reports.cpp:1300 src/reports.cpp:1354
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Neutral units: "
 msgstr "Unidades neutras: "
 
 #
-#: src/reports.cpp:1301 src/reports.cpp:1355
+#: src/reports.cpp:1302 src/reports.cpp:1356
 msgid "Chaotic units: "
 msgstr "Unidades nocturnas: "
 
 #
-#: src/reports.cpp:1303 src/reports.cpp:1357
+#: src/reports.cpp:1304 src/reports.cpp:1358
 msgid "Liminal units: "
 msgstr "Unidades limiares: "
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1417
 #, fuzzy
 #| msgid "Number:"
 msgid "Turn Number"
 msgstr "Número:"
 
-#: src/reports.cpp:1418
+#: src/reports.cpp:1419
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
 #
-#: src/reports.cpp:1443
+#: src/reports.cpp:1444
 msgid "Gold"
 msgstr "Ouro"
 
-#: src/reports.cpp:1443
+#: src/reports.cpp:1444
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1463
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
 #
-#: src/reports.cpp:1462
+#: src/reports.cpp:1463
 msgid "Villages"
 msgstr "Aldeias"
 
-#: src/reports.cpp:1467
+#: src/reports.cpp:1468
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1467
+#: src/reports.cpp:1468
 msgid "Units"
 msgstr "Unidades"
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1478
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -9109,41 +9125,41 @@ msgid ""
 msgstr ""
 
 #
-#: src/reports.cpp:1477
+#: src/reports.cpp:1478
 msgid "Upkeep"
 msgstr "Manutenção"
 
 #
-#: src/reports.cpp:1514
+#: src/reports.cpp:1515
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Rendimento"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1515
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
 #
-#: src/reports.cpp:1682
+#: src/reports.cpp:1683
 msgid "Observers:"
 msgstr "Observadores:"
 
-#: src/reports.cpp:1724
+#: src/reports.cpp:1725
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1735
+#: src/reports.cpp:1736
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1766
+#: src/reports.cpp:1767
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1766
+#: src/reports.cpp:1767
 #, fuzzy
 #| msgid "End Turn button"
 msgid "Turn Countdown"
@@ -9787,7 +9803,7 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:544
+#: src/wesnothd_connection.cpp:549
 #, fuzzy
 #| msgid "Delete add-on from server"
 msgid "Disconnected from server."
@@ -10236,10 +10252,6 @@ msgstr "Opções do modo de planificação"
 #~ "Requesting the older version composition for the add-on <i>$addon_title</"
 #~ "i>..."
 #~ msgstr "A enviar o extra: <i>$addon_title|</i>..."
-
-#
-#~ msgid "Connection timed out"
-#~ msgstr "Conectividade expirada"
 
 #
 #, fuzzy

@@ -106,6 +106,9 @@ namespace preferences {
 	void set_font_scaling(int scale);
 	int font_scaled(int size);
 
+	int keepalive_timeout();
+	void keepalive_timeout(int seconds);
+
 	bool idle_anim();
 	void set_idle_anim(const bool ison);
 

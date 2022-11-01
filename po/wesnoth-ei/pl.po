@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
+"POT-Creation-Date: 2022-10-16 02:06 UTC\n"
 "PO-Revision-Date: 2020-10-31 18:02+0100\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: \n"
@@ -811,7 +811,7 @@ msgstr "Volas"
 #. [side]: type=Orcish Warrior, id=Gruga-Har
 #. [side]: type=Orcish Nightblade, id=Bagork
 #. [side]: type=Orcish Warlord, id=Prok-Bak
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
+#. [side]: type=Orcish Warlord, id=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:75
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:80
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:134
@@ -2379,27 +2379,38 @@ msgstr "Pojmani"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:18
+#, fuzzy
+#| msgid ""
+#| "After reaching what they believed was safety, Gweddry and his men had "
+#| "been captured by northern orcs."
 msgid ""
 "After reaching what they believed was safety, Gweddry and his men had been "
-"captured by northern orcs."
+"captured by trolls from the northern orcish tribes."
 msgstr ""
 "Po dotarciu do miejsca, które uważali za bezpieczne, Gweddry i jego ludzie "
 "zostali pojmani przez północnych orków."
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Gweddry, Dacyn and Owaec were promptly taken before the orcish king, Dra-"
+#| "Nak, while the rest were thrown into the orcish prisons to await their "
+#| "turn..."
 msgid ""
-"Gweddry, Dacyn and Owaec were promptly taken before the orcish king, Dra-"
-"Nak, while the rest were thrown into the orcish prisons to await their "
+"Gweddry, Dacyn and Owaec were promptly taken before the orcish chieftain, "
+"Dra-Nak, while the rest were thrown into the orcish prisons to await their "
 "turn..."
 msgstr ""
 "Gweddry, Dacyn i Owaec zostali szybko zabrani przed oblicze króla orków, Dra-"
 "Naka podczas gdy reszta została wrzucona do orkowych kazamatów by oczekiwać "
 "na swoją kolej..."
 
-#. [side]: type=Orcish Warlord, id=King Dra-Nak
+#. [side]: type=Orcish Warlord, id=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:42
-msgid "King Dra-Nak"
+#, fuzzy
+#| msgid "King Dra-Nak"
+msgid "Chief Dra-Nak"
 msgstr "Król Dra-nak"
 
 #. [side]
@@ -2560,7 +2571,7 @@ msgstr "Więc, jak wyglądam?"
 msgid "I’ll try to slip past the trolls. You wait here."
 msgstr "Spróbuję się prześliznąć obok trolli. Wy zaczekajcie tutaj."
 
-#. [message]: speaker=King Dra-Nak
+#. [message]: speaker=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:728
 msgid "Ha-ha! These humans will make excellent slaves in my mines!"
 msgstr "Ha-ha! Ci ludzie będą znakomitymi niewolnikami w moich kopalniach."
@@ -2579,12 +2590,12 @@ msgstr ""
 msgid "Eh?"
 msgstr "Ech?"
 
-#. [message]: speaker=King Dra-Nak
+#. [message]: speaker=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:833
 msgid "Hey! Who are you? Get her!"
 msgstr "Hej? Ktoś ty? Brać ją!"
 
-#. [message]: speaker=King Dra-Nak
+#. [message]: speaker=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:840
 msgid "Hey! Who are you? Get him!"
 msgstr "Hej! Ktoś ty? Brać go!"
@@ -2620,7 +2631,7 @@ msgstr "Wreszcie!"
 msgid "Now let’s get out of here!"
 msgstr "Teraz zbierajmy się stąd!"
 
-#. [message]: speaker=King Dra-Nak
+#. [message]: speaker=Chief Dra-Nak
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1044
 #, fuzzy
 #| msgid "What? Who's there? Get them!"

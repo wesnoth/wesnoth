@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "log.hpp"
+#include "preferences/general.hpp"
 #include "serialization/parser.hpp"
 #include "tls_root_store.hpp"
 
@@ -168,6 +169,10 @@ void wesnothd_connection::handle_connect(const boost::system::error_code& ec, en
 void wesnothd_connection::handshake()
 {
 	MPTEST_LOG;
+
+	DBG_NW << "Connecting with keepalive of: " << preferences::keepalive_timeout();
+	set_keepalive(preferences::keepalive_timeout());
+
 	static const uint32_t handshake = 0;
 	static const uint32_t tls_handshake = htonl(uint32_t(1));
 
@@ -564,3 +569,25 @@ bool wesnothd_connection::wait_and_receive_data(config& data)
 
 	return receive_data(data);
 };
+
+void wesnothd_connection::set_keepalive(int seconds)
+{
+	boost::asio::socket_base::keep_alive option(true);
+	utils::get<raw_socket>(socket_)->set_option(option);
+
+#ifdef __linux__
+	int timeout = 10;
+	int cnt = std::max((seconds - 10) / 10, 1);
+	int interval = 10;
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
+#elif defined(__APPLE__) && defined(__MACH__)
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &seconds, sizeof(seconds));
+#elif defined(_WIN32)
+	// these are in milliseconds for windows
+	DWORD timeout_ms = seconds * 1000;
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+#endif
+}
