@@ -2480,9 +2480,11 @@ to be called on their own".format(filename, num))
                           % (filename, i+1, key))
                     lines[i] = lines[i].replace("=_","=")
                 if markcheck and value and not value.startswith("$") and not value.startswith("{") and not has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
-                    print('"%s", line %d: %s needs translation mark' \
-                          % (filename, i+1, key))
-                    lines[i] = lines[i].replace('=', "=_ ", 1)
+                    # [image] uses label to specify the image path so do not mark for translation in those cases
+                    if not (key == 'label' and os.path.splitext(value)[1]):
+                        print('"%s", line %d: %s needs translation mark' \
+                              % (filename, i+1, key))
+                        lines[i] = lines[i].replace('=', "=_ ", 1)
                 nv = sentence_end.sub(" ", value)
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
