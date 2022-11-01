@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
+#include <charconv>
 #include <cstdlib>
 #include <cstring>
 #include <deque>
@@ -135,8 +136,9 @@ namespace
 {
 /**
  * Attempts to convert @a source to the template type.
- * This is to avoid "overzealous reinterpretations of certain WML strings as
- * numeric types" (c.f. bug #19201).
+ * This is to avoid "overzealous reinterpretations of certain WML strings as numeric types".
+ * For example: the version "2.1" and "2.10" are not the same.
+ * Another example: the string "0001" given to [message] should not be displayed to the player as just "1".
  * @returns true if the conversion was successful and the source string
  *          can be reobtained by streaming the result.
  */
@@ -185,34 +187,41 @@ config_attribute_value& config_attribute_value::operator=(const std::string& v)
 	}
 
 	// Attempt to convert to a number.
-	char* eptr;
-	double d = strtod(v.c_str(), &eptr);
-	if(*eptr == '\0') {
-		// Possibly a number. See what type it should be stored in.
-		// (All conversions will be from the string since the largest integer
-		// type could have more precision than a double.)
-		if(d > 0.0) {
-			// The largest type for positive integers is unsigned long long.
-			unsigned long long ull = 0;
-			if(from_string_verify<unsigned long long>(v, ull)) {
-				return *this = ull;
-			}
-		} else {
-			// The largest (variant) type for negative integers is int.
-			int i = 0;
-			if(from_string_verify<int>(v, i)) {
-				return *this = i;
+	// if the string has a decimal, it can't possibly be an integer type
+	if(v.find(".") != std::string::npos) {
+		long long ll = 0;
+		auto [ptr, ec] { std::from_chars(v.data(), v.data() + v.size(), ll) };
+
+		if(ec == std::errc()) {
+			// Possibly a number. See what type it should be stored in.
+			if(ll > 0) {
+				// The largest type for positive integers is unsigned long long.
+				unsigned long long ull = 0;
+				if(from_string_verify<unsigned long long>(v, ull)) {
+					return *this = ull;
+				}
+			} else {
+				// The largest (variant) type for negative integers is int.
+				int i = 0;
+				if(from_string_verify<int>(v, i)) {
+					return *this = i;
+				}
 			}
 		}
-
+	} else {
 		// This does not look like an integer, so it should be a double.
 		// However, make sure it can convert back to the same string (in
 		// case this is a string that just looks like a numeric value).
-		std::ostringstream tester;
-		tester << d;
-		if(tester.str() == v) {
-			value_ = d;
-			return *this;
+		double d;
+		auto [ptr, ec] { std::from_chars(v.data(), v.data() + v.size(), d) };
+
+		if(ec == std::errc()) {
+			std::ostringstream tester;
+			tester << d;
+			if(tester.str() == v) {
+				value_ = d;
+				return *this;
+			}
 		}
 	}
 
