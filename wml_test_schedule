@@ -172,7 +172,11 @@
 0 test_shroud_modify_wml
 0 test_shroud_modify_lua
 0 scatter_units
-0 has_ally
+0 dave_has_ally_bob
+0 dave_has_enemy_alice
+0 dave_not_has_ally_steve
+0 dave_has_enemy_sides
+0 not_dave_has_ally_charlie
 0 xp_mod_1
 0 xp_mod_2
 0 xp_mod_3
@@ -388,7 +392,7 @@
 9 unknown_scenario_1_0
 
 # Lua API tests
-0 lua_functional
+0 lua_functional_reduce
 0 lua_map_find
 0 mapgen_filter_range
 0 mapgen_filter_terrain
