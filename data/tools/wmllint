@@ -2163,7 +2163,7 @@ to be called on their own".format(filename, num))
                 pass
             elif key == 'letter': # May be led with _s for void
                 pass
-            elif key in ('name', 'male_name', 'female_name', 'value'): # FIXME: check this someday
+            elif key in ('name', 'male_name', 'female_name', 'value', 'info', 'config_name', 'deserters_names'): # FIXME: check this someday
                 pass
             elif key == "variation_name":
                 if markcheck and not has_tr_mark:
