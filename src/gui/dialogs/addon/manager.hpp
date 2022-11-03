@@ -108,8 +108,6 @@ private:
 
 	bool need_wml_cache_refresh_;
 
-	int en_GB_toggle_position = 0;
-
 	template<void(addon_manager::*fptr)(const addon_info& addon)>
 	void execute_action_on_selected_addon();
 

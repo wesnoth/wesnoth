@@ -54,9 +54,9 @@
 
 #include "config.hpp"
 
-#include <algorithm>
 #include <functional>
 #include <iomanip>
+#include <set>
 #include <sstream>
 #include <stdexcept>
 
@@ -393,31 +393,22 @@ void addon_manager::pre_show(window& window)
 
 	// Language filter
 	// Prepare shown languages, source all available languages from the addons themselves
-	std::vector<std::string> languages_available;
+	std::set<std::string> languages_available;
 	for(const auto& a : addons_) {
 		for (const auto& b : a.second.locales) {
-			languages_available.push_back(b);
+			languages_available.insert(b);
 		}
 	}
-	std::sort(languages_available.begin(), languages_available.end());
-	auto last = std::unique(languages_available.begin(),languages_available.end());
-	languages_available.erase(last, languages_available.end());
 
 	// Erase pt value, since otherwise Portugues do Brasil will be shown twice in the language list
-	languages_available.erase(std::remove(languages_available.begin(), languages_available.end(), "pt"), languages_available.end());
-
-	for (long unsigned int i = 0; i < languages_available.size(); i++) {
-		std::string myLangCodeString = langcode_to_string(languages_available[i]);
+	languages_available.erase(languages_available.find("pt"));
+	for (auto i: languages_available) {
+		std::string myLangCodeString = langcode_to_string(i);
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
 		if (myLangCodeString != "")
-			language_filter_types_.emplace_back(std::pair<int, std::string>(i, langcode_to_string(languages_available[i])));
-		// Remember en_GB pos in toggle vector, so packages with Translations: None can be defaulted to English (GB) lang_string
-		if (languages_available[i] == "en_GB")
-			en_GB_toggle_position = language_filter_types_.size() - 1;
+			language_filter_types_.emplace_back(std::pair<int, std::string>	(language_filter_types_.size(), myLangCodeString));
 	}
-	// Remove "System default language entry"
-	language_filter_types_.pop_back();
 
 	// The language filter
 	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
@@ -727,18 +718,13 @@ boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
 
 	boost::dynamic_bitset<> toggle_states = lang_filter.get_toggle_states();
 
-	if((toggle_states.none() || toggle_states[en_GB_toggle_position]) == true) {
-		// Nothing or English (GB) selected. It means that *all* add-ons are shown.
+	if(toggle_states.none()) {
 		boost::dynamic_bitset<> res_flipped(addons_.size());
 		return ~res_flipped;
 	} else {
 		boost::dynamic_bitset<> res;
 		for(const auto& a : addons_) {
 			bool retval = false;
-			// If English is selected and no translations are indicated in the addon, it is shown
-			if ((toggle_states[en_GB_toggle_position] == true) && a.second.locales.empty()) {
-				retval = true;
-			}
 			// langcode -> string conversion vector, to be able to detect either
 			// langcodes or langstring entries
 			std::vector<std::string> lang_string_vector;
