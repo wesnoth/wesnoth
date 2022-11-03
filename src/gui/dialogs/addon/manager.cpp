@@ -145,7 +145,7 @@ namespace {
 
 	std::string langcode_to_string(const std::string& lcode)
 	{
-		for(const auto & ld : get_languages())
+		for(const auto & ld : get_languages(true))
 		{
 			if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
 				return ld.language;
