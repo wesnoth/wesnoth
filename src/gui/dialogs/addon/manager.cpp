@@ -145,7 +145,7 @@ namespace {
 
 	std::string langcode_to_string(const std::string& lcode)
 	{
-		for(const auto & ld : get_languages())
+		for(const auto & ld : get_languages(true))
 		{
 			if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
 				return ld.language;
@@ -400,14 +400,12 @@ void addon_manager::pre_show(window& window)
 		}
 	}
 
-	// Erase pt value, since otherwise Portugues do Brasil will be shown twice in the language list
-	languages_available.erase(languages_available.find("pt"));
-	for (auto i: languages_available) {
-		std::string myLangCodeString = langcode_to_string(i);
+	for (const auto& i: languages_available) {
+		std::string lang_code_string = langcode_to_string(i);
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
-		if (myLangCodeString != "")
-			language_filter_types_.emplace_back(std::pair<int, std::string>	(language_filter_types_.size(), myLangCodeString));
+		if (lang_code_string != "")
+			language_filter_types_.emplace_back(std::pair<int, std::string>	(language_filter_types_.size(), lang_code_string));
 	}
 
 	// The language filter
