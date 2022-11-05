@@ -55,8 +55,8 @@
 #include "config.hpp"
 
 #include <functional>
-
 #include <iomanip>
+#include <set>
 #include <sstream>
 #include <stdexcept>
 
@@ -391,6 +391,35 @@ void addon_manager::pre_show(window& window)
 	connect_signal_notify_modified(type_filter,
 		std::bind(&addon_manager::apply_filters, this));
 
+	// Language filter
+	// Prepare shown languages, source all available languages from the addons themselves
+	std::set<std::string> languages_available;
+	for(const auto& a : addons_) {
+		for (const auto& b : a.second.locales) {
+			languages_available.insert(b);
+		}
+	}
+
+	for (const auto& i: languages_available) {
+		// Only show languages, which have a translation as per langcode_to_string() method
+		// Do not show tranlations with their langcode e.g. "sv_SV"
+		if (std::string lang_code_string = langcode_to_string(i); !lang_code_string.empty()) {
+			language_filter_types_.emplace_back(language_filter_types_.size(), std::move(lang_code_string));
+		}
+	}
+
+	// The language filter
+	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
+	std::vector<config> language_filter_entries;
+	for(const auto& f : language_filter_types_) {
+		language_filter_entries.emplace_back("label", f.second, "checkbox", false);
+	}
+
+	language_filter.set_values(language_filter_entries);
+
+	connect_signal_notify_modified(language_filter,
+		std::bind(&addon_manager::apply_filters, this));
+
 	// Sorting order
 	menu_button& order_dropdown = find_widget<menu_button>(&window, "order_dropdown", false);
 
@@ -677,7 +706,42 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 				);
 			res.push_back(toggle_states[index]);
 		}
+		return res;
+	}
+}
 
+boost::dynamic_bitset<> addon_manager::get_lang_filter_visibility() const
+{
+	const multimenu_button& lang_filter = find_widget<const multimenu_button>(get_window(), "language_filter", false);
+
+	boost::dynamic_bitset<> toggle_states = lang_filter.get_toggle_states();
+
+	if(toggle_states.none()) {
+		boost::dynamic_bitset<> res_flipped(addons_.size());
+		return ~res_flipped;
+	} else {
+		boost::dynamic_bitset<> res;
+		for(const auto& a : addons_) {
+			bool retval = false;
+			// langcode -> string conversion vector, to be able to detect either
+			// langcodes or langstring entries
+			std::vector<std::string> lang_string_vector;
+			for (long unsigned int i = 0; i < a.second.locales.size(); i++) {
+				lang_string_vector.push_back(langcode_to_string(a.second.locales[i]));
+			}
+			// Find all toggle states, where toggle = true and lang = lang
+			for (long unsigned int i = 0; i < toggle_states.size(); i++) {
+				if (toggle_states[i] == true) {
+					// does lang_code match?
+					bool contains_lang_code = utils::contains(a.second.locales, language_filter_types_[i].second);
+					// does land_string match?
+					bool contains_lang_string = utils::contains(lang_string_vector, language_filter_types_[i].second);
+					if ((contains_lang_code || contains_lang_string) == true)
+						retval = true;
+				}
+			}
+			res.push_back(retval);
+		}
 		return res;
 	}
 }
@@ -700,6 +764,7 @@ void addon_manager::apply_filters()
 		get_status_filter_visibility()
 		& get_tag_filter_visibility()
 		& get_type_filter_visibility()
+		& get_lang_filter_visibility()
 		& get_name_filter_visibility();
 	list->set_addon_shown(res);
 }
