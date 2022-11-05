@@ -401,11 +401,11 @@ void addon_manager::pre_show(window& window)
 	}
 
 	for (const auto& i: languages_available) {
-		std::string lang_code_string = langcode_to_string(i);
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
-		if (lang_code_string != "")
-			language_filter_types_.emplace_back(std::pair<int, std::string>	(language_filter_types_.size(), lang_code_string));
+		if (std::string lang_code_string = langcode_to_string(i); !lang_code_string.empty()) {
+			language_filter_types_.emplace_back(language_filter_types_.size(), std::move(lang_code_string));
+		}
 	}
 
 	// The language filter
