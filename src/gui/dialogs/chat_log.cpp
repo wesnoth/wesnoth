@@ -409,7 +409,9 @@ private:
 };
 
 
-chat_log::chat_log(const vconfig& cfg, const replay& r) : view_()
+chat_log::chat_log(const vconfig& cfg, const replay& r)
+	: modal_dialog(window_id())
+	, view_()
 {
 	LOG_CHAT_LOG << "Entering chat_log::chat_log";
 	view_ = std::make_shared<view>(cfg, r);

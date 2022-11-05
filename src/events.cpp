@@ -22,6 +22,7 @@
 #include "quit_confirmation.hpp"
 #include "sdl/userevent.hpp"
 #include "utils/ranges.hpp"
+#include "utils/general.hpp"
 #include "video.hpp"
 
 #if defined _WIN32
@@ -43,6 +44,10 @@
 
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
+
+static lg::log_domain log_event("event");
+#define LOG_EV LOG_STREAM(info, log_event)
+#define DBG_EV LOG_STREAM(debug, log_event)
 
 namespace
 {
@@ -68,6 +73,7 @@ struct invoked_function_data
 			// Handle this exception in the main thread.
 			throw;
 		} catch(...) {
+			DBG_EV << "Caught exception in invoked function: " << utils::get_unknown_exception_type();
 			finished.set_exception(std::current_exception());
 			return;
 		}
@@ -706,8 +712,24 @@ void pump()
 		}
 
 		if(event_contexts.empty() == false) {
-			for(auto handler : event_contexts.back().handlers) {
-				handler->handle_event(event);
+			// As pump() can recurse, pretty much anything can happen here
+			// including destroying handlers or the event context.
+			size_t ec_index = event_contexts.size();
+			context& c = event_contexts.back();
+			handler_list& h = c.handlers;
+			size_t h_size = h.size();
+			for(auto it = h.begin(); it != h.end(); ++it) {
+				// Pass the event on to the handler.
+				(*it)->handle_event(event);
+				// Escape if anything has changed.
+				if(event_contexts.size() != ec_index) {
+					LOG_EV << "ec size changed! bugging out";
+					break;
+				}
+				if(h_size != h.size()) {
+					LOG_EV << "h size changed! bugging out";
+					break;
+				}
 			}
 		}
 	}

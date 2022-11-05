@@ -81,7 +81,8 @@ bool game_load::execute(const game_config_view& cache_config, savegame::load_gam
 }
 
 game_load::game_load(const game_config_view& cache_config, savegame::load_game_metadata& data)
-	: filename_(data.filename)
+	: modal_dialog(window_id())
+	, filename_(data.filename)
 	, save_index_manager_(data.manager)
 	, change_difficulty_(register_bool("change_difficulty", true, data.select_difficulty))
 	, show_replay_(register_bool("show_replay", true, data.show_replay))

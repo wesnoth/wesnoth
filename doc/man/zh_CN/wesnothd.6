@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd 韦诺之战多人网络守护进程
+.TH WESNOTHD 6 2022 wesnothd 韦诺之战多人网络守护进程
 .
 .SH 名称
 .
@@ -152,6 +152,11 @@ filename.pem 4096\fP
 服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS 全局标签：
 .
@@ -203,7 +208,8 @@ filename.pem 4096\fP
 这个用户的密码
 .TP 
 \fBdb_users_table\fP
-你的phpbb论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 用于保存wesnothd自有用户数据的表名。
@@ -218,7 +224,23 @@ filename.pem 4096\fP
 用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。
 .TP 
 \fBdb_user_group_table\fP
-你的phpbb论坛中存放用户组数据的表名。很可能是<table\-prefix>_users_group（例如phpbb3_users_group）。
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 论坛用户组ID，该组将被视为拥有管理员权限。
@@ -240,7 +262,7 @@ filename.pem 4096\fP
 .
 .SH 版权
 .
-版权所有 \(co 2003\-2021 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

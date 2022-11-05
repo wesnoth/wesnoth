@@ -133,6 +133,11 @@ bool menu::imgsel_style::load_images()
 	return (!load_failed_);
 }
 
+void menu::imgsel_style::unload_images()
+{
+	img_map_.clear();
+}
+
 void menu::imgsel_style::draw_row_bg(menu& menu_ref, const std::size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 {
 	if(type == SELECTED_ROW && has_background_ && !load_failed_) {

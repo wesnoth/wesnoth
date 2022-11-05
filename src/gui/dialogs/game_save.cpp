@@ -29,6 +29,7 @@ namespace gui2::dialogs
 REGISTER_DIALOG(game_save)
 
 game_save::game_save(std::string& filename, const std::string& title)
+	: modal_dialog(window_id())
 {
 	register_text("txtFilename", false, filename, true);
 	register_label("lblTitle", true, title);
@@ -39,6 +40,7 @@ REGISTER_DIALOG(game_save_message)
 game_save_message::game_save_message(std::string& filename,
 									   const std::string& title,
 									   const std::string& message)
+	: modal_dialog(window_id())
 {
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
@@ -51,6 +53,7 @@ game_save_oos::game_save_oos(bool& ignore_all,
 							   std::string& filename,
 							   const std::string& title,
 							   const std::string& message)
+	: modal_dialog(window_id())
 {
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);

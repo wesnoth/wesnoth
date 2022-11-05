@@ -182,12 +182,17 @@ listesi. Dosya ismi kalıp karakterlerinden \fB*\fP ve \fB?\fP
 desteklenmektedir. (kurulu wesnoth sürümü öntanımlıdır.)
 .br
 Örnek: \fBversions_accepted="*"\fP her sürüm dizgesi kabul edilir.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS "Genel etiketler:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Belli istemci sürümlerinin yönlendirileceği sunucuların
+belirtildiği etiket. \fBversions_accepted\fP atanmışsa kullanılmaz.
 .RS
 .TP 
 \fBhost\fP
@@ -221,12 +226,12 @@ istemcilerin isteklerini belirtilen sunucuya yönelteceğini söyleyen
 etiket. \fB[redirect]\fP için kullanılan değişkenler kullanılır.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Kullanıcı işlemcisini yapılandırır. \fB[user_handler]\fP
+bölümü yapılandırmada yoksa sunucu herhangi bir kullanıcı kayıt hizmeti
+olmadan çalışacaktır. \fBforum_user_handler\fP'ın çalışması için gereken tüm ek
+tablolar Wesnoth kaynak deposundaki table_definitions.sql dosyasında
+bulunabilir. Etkin mysql desteği gerektirir. Bu, cmake için \fBENABLE_MYSQL\fP,
+scons için \fBforum_user_handler\fP etiketidir.
 .RS
 .TP 
 \fBdb_host\fP
@@ -242,9 +247,8 @@ Veritabanına oturum açacak kullanıcının adı
 Bu kullanıcının parolası
 .TP 
 \fBdb_users_table\fP
-phpbb forumlarınızın kullanıcı verilerini saklayacağı tablonun ismi. Bu
-tablo genellikle şöyle belirtilir: <tablo\-öneki>_users (örnek:
-phpbb3_users).
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 wesnothd uygulamasının kullanıcılar hakkındaki kendi verilerini kaydedeceği
@@ -263,9 +267,23 @@ wesnothd uygulamasının bir oyunda yapılan değişiklikler hakkında kendi
 verilerini kaydedeceği tablonun adı.
 .TP 
 \fBdb_user_group_table\fP
-phpbb forumlarınızdaki kullanıcıların grup verilerinin saklanacağı tablonun
-ismi. Bu tablo genellikle şöyle belirtilir:
-<tablo\-öneki>_users_group (örnek: phpbb3_users_group).
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 Yönetme yetkisine sahip olduğu kabul edilecek forum grubunun kimliği.
@@ -290,7 +308,7 @@ Oyunun ana sayfasını ziyaret etmeyi unutmayın: http://www.wesnoth.org/
 .
 .SH "TELİF HAKKI"
 .
-Copyright  © 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Bu bir özgür yazılımdır; GNU Genel Kamu Lisansının 2. sürümünün (GPLv2)
 koşullarına bağlı kalarak kopyalarını yeniden dağıtabilirsiniz. Yasaların

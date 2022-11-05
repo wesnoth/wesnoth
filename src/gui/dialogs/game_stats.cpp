@@ -48,7 +48,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(game_stats)
 
 game_stats::game_stats(const display_context& board, const int viewing_team, int& selected_side_number)
-	: board_(board)
+	: modal_dialog(window_id())
+	, board_(board)
 	, viewing_team_(board_.teams()[viewing_team])
 	, selected_side_number_(selected_side_number)
 {

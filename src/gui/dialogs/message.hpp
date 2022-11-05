@@ -42,7 +42,8 @@ public:
 			 const bool auto_close,
 			 const bool message_use_markup,
 			 const bool title_use_markup)
-		: title_(title)
+		: modal_dialog(window_id())
+		, title_(title)
 		, image_()
 		, message_(message)
 		, auto_close_(auto_close)

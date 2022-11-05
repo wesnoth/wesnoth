@@ -27,7 +27,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(hotkey_bind)
 
 hotkey_bind::hotkey_bind(const std::string& hotkey_id)
-	: hotkey_id_(hotkey_id)
+	: modal_dialog(window_id())
+	, hotkey_id_(hotkey_id)
 	, new_binding_()
 {
 }

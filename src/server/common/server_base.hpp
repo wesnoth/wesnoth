@@ -104,6 +104,7 @@ public:
 	 * Receive WML document from a coroutine
 	 * @param socket
 	 * @param yield The function will suspend on read operation using this yield context
+	 * @return unique_ptr with doc deceived. In case of error empty unique_ptr
 	 */
 	template<class SocketPtr> std::unique_ptr<simple_wml::document> coro_receive_doc(SocketPtr socket, boost::asio::yield_context yield);
 

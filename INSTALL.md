@@ -23,7 +23,7 @@ order to build Wesnoth:
    * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
- * Pango                       >= 1.22.0 (with Cairo backend)
+ * Pango                       >= 1.44.0 (with Cairo backend)
  * Vorbisfile aka libvorbis
  * libbz2
  * libz
@@ -73,6 +73,8 @@ See [here](https://github.com/wesnoth/wesnoth/blob/master/projectfiles/Xcode/REA
 Wesnoth uses CMake for project configuration and vcpkg for installing dependencies. See [here](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio) for information on using Visual Studio with cmake. The first time it's run, vcpkg will build all the required dependencies which may take over an hour, however it will only need to be done once.
 
 NOTE 1: You will need a Windows implementation of pkg-config present in your PATH, such as [pkg-config-lite](https://sourceforge.net/projects/pkgconfiglite/).
+
+NOTE 2: You will need to run `vcpkg integrate install` on the command line to make Visual Studio aware of vcpkg. If Visual Studio is open when this is executed, then you will need to close and re-open Visual Studio.
 
 ## SCons Build
 

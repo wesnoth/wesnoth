@@ -28,6 +28,7 @@
 #include "events.hpp"
 #include "floating_label.hpp"
 #include "formula/callable.hpp"
+#include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
@@ -86,6 +87,7 @@ static lg::log_domain log_gui("gui/layout");
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
+#define LOG_DP LOG_STREAM(info, log_display)
 #define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace gui2
@@ -267,7 +269,7 @@ window::window(const builder_window::window_resolution& definition)
 	, need_layout_(true)
 	, variables_()
 	, invalidate_layout_blocked_(false)
-	, suspend_drawing_(true)
+	, hidden_(true)
 	, automatic_placement_(definition.automatic_placement)
 	, horizontal_placement_(definition.horizontal_placement)
 	, vertical_placement_(definition.vertical_placement)
@@ -392,6 +394,11 @@ window::~window()
 
 	manager::instance().remove(*this);
 
+	// If we are currently shown, then queue an undraw.
+	if(!hidden_) {
+		queue_redraw();
+	}
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
 	delete debug_layout_;
@@ -417,8 +424,44 @@ retval window::get_retval_by_id(const std::string& id)
 	}
 }
 
+void window::finish_build(const builder_window::window_resolution& definition)
+{
+	for(const auto& lg : definition.linked_groups) {
+		if(has_linked_size_group(lg.id)) {
+			t_string msg = VGETTEXT("Linked '$id' group has multiple definitions.", {{"id", lg.id}});
+
+			FAIL(msg);
+		}
+
+		init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
+	}
+
+	set_click_dismiss(definition.click_dismiss);
+
+	const auto conf = cast_config_to<window_definition>();
+	assert(conf);
+
+	if(conf->grid) {
+		init_grid(*conf->grid);
+		finalize(*definition.grid);
+	} else {
+		init_grid(*definition.grid);
+	}
+
+	add_to_keyboard_chain(this);
+}
+
 void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 {
+	// Unhide in any case.
+	hidden_ = false;
+
+	// Connect to the event handler, if not yet connected.
+	if(!is_connected()) {
+		LOG_DP << "connecting " << id() << " on show_tooltip";
+		connect();
+	}
+
 	log_scope2(log_gui_draw, "Window: show as tooltip.");
 
 	generate_dot_file("show", SHOW);
@@ -436,13 +479,21 @@ void window::show_tooltip(/*const unsigned auto_close_timeout*/)
 	 * reinvalidate the window to avoid those glitches.
 	 */
 	invalidate_layout();
-	suspend_drawing_ = false;
 	queue_redraw();
 	DBG_DP << "show tooltip queued to " << get_rectangle();
 }
 
 void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 {
+	// Unhide in any case.
+	hidden_ = false;
+
+	// Connect to the event handler, if not yet connected.
+	if(!is_connected()) {
+		LOG_DP << "connecting " << id() << " on show_non_modal";
+		connect();
+	}
+
 	log_scope2(log_gui_draw, "Window: show non modal.");
 
 	generate_dot_file("show", SHOW);
@@ -459,7 +510,6 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 	 * reinvalidate the window to avoid those glitches.
 	 */
 	invalidate_layout();
-	suspend_drawing_ = false;
 	queue_redraw();
 
 	DBG_DP << "show non-modal queued to " << get_rectangle();
@@ -469,6 +519,15 @@ void window::show_non_modal(/*const unsigned auto_close_timeout*/)
 
 int window::show(const unsigned auto_close_timeout)
 {
+	// Unhide in any case.
+	hidden_ = false;
+
+	// Connect to the event handler, if not yet connected.
+	if(!is_connected()) {
+		LOG_DP << "connecting " << id() << " on show";
+		connect();
+	}
+
 	/*
 	 * Removes the old tip if one shown. The show_tip doesn't remove
 	 * the tip, since it's the tip.
@@ -481,7 +540,7 @@ int window::show(const unsigned auto_close_timeout)
 
 	generate_dot_file("show", SHOW);
 
-	assert(status_ == status::NEW);
+	//assert(status_ == status::NEW);
 
 	/*
 	 * Before show has been called, some functions might have done some testing
@@ -489,7 +548,6 @@ int window::show(const unsigned auto_close_timeout)
 	 * reinvalidate the window to avoid those glitches.
 	 */
 	invalidate_layout();
-	suspend_drawing_ = false;
 	queue_redraw();
 
 	// Make sure we display at least once in all cases.
@@ -540,24 +598,24 @@ int window::show(const unsigned auto_close_timeout)
 	catch(...)
 	{
 		// TODO: is this even necessary? What are we catching?
-		undraw();
+		DBG_DP << "Caught general exception in show(): " << utils::get_unknown_exception_type();
+		hide();
 		throw;
 	}
-
-	undraw();
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
 		tb->interrupt_composition();
 	}
+
+	// The window may be kept around to be re-shown later. Hide it for now.
+	hide();
 
 	return retval_;
 }
 
 void window::draw()
 {
-	// TODO: draw_manager - is there a better way of handling window close?
-	if(suspend_drawing_) {
-		WRN_DP << "window::draw called with drawing suspended";
+	if(hidden_) {
 		return;
 	}
 
@@ -573,12 +631,20 @@ void window::draw()
 	return;
 }
 
-// TODO: draw_manager - can probably remove "undraw", or at least rename
-void window::undraw()
+void window::hide()
 {
-	// TODO: draw_manager - is suspend_drawing_ necessary?
-	suspend_drawing_ = true;
-	queue_redraw();
+	// Queue a redraw of the region if we were shown.
+	if(!hidden_) {
+		queue_redraw();
+	}
+
+	// Disconnect from the event handler so we stop receiving events.
+	if(is_connected()) {
+		LOG_DP << "disconnecting " << id() << " on hide";
+		disconnect();
+	}
+
+	hidden_ = true;
 }
 
 bool window::expose(const rect& region)
@@ -595,6 +661,9 @@ bool window::expose(const rect& region)
 
 rect window::screen_location()
 {
+	if(hidden_) {
+		return {0,0,0,0};
+	}
 	return get_rectangle();
 }
 

@@ -56,7 +56,8 @@ config generate_difficulty_config(const config& source)
 }
 
 campaign_difficulty::campaign_difficulty(const config& campaign)
-	: difficulties_(generate_difficulty_config(campaign))
+	: modal_dialog(window_id())
+	, difficulties_(generate_difficulty_config(campaign))
 	, campaign_id_(campaign["id"])
 	, selected_difficulty_("CANCEL")
 {

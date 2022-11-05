@@ -29,6 +29,7 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
@@ -169,7 +170,7 @@ public:
 		try {
 			customcodecvt_do_conversion<char, wchar_t>(state, from, from_end, from_next, to, to_end, to_next);
 		} catch(...) {
-			ERR_FS << "Invalid UTF-8 string'" << std::string(from, from_end) << "' ";
+			ERR_FS << "Invalid UTF-8 string'" << std::string(from, from_end) << "' with exception: " << utils::get_unknown_exception_type();
 			return std::codecvt_base::error;
 		}
 
@@ -187,7 +188,7 @@ public:
 		try {
 			customcodecvt_do_conversion<wchar_t, char>(state, from, from_end, from_next, to, to_end, to_next);
 		} catch(...) {
-			ERR_FS << "Invalid UTF-16 string";
+			ERR_FS << "Invalid UTF-16 string with exception: " << utils::get_unknown_exception_type();
 			return std::codecvt_base::error;
 		}
 
@@ -752,6 +753,19 @@ void set_user_config_dir(const std::string& newconfigdir)
 	set_user_config_path(newconfigdir);
 }
 
+static void set_cache_path(bfs::path newcache)
+{
+	cache_dir = newcache;
+	if(!create_directory_if_missing_recursive(cache_dir)) {
+		ERR_FS << "could not open or create cache directory at " << cache_dir.string() << '\n';
+	}
+}
+
+void set_cache_dir(const std::string& newcachedir)
+{
+	set_cache_path(newcachedir);
+}
+
 static const bfs::path& get_user_data_path()
 {
 	if(user_data_dir.empty()) {
@@ -1066,9 +1080,9 @@ filesystem::scoped_ostream ostream_file(const std::string& fname, std::ios_base:
 }
 
 // Throws io_exception if an error occurs
-void write_file(const std::string& fname, const std::string& data)
+void write_file(const std::string& fname, const std::string& data, std::ios_base::openmode mode)
 {
-	scoped_ostream os = ostream_file(fname);
+	scoped_ostream os = ostream_file(fname, mode);
 	os->exceptions(std::ios_base::goodbit);
 
 	const std::size_t block_size = 4096;

@@ -57,85 +57,26 @@ REGISTER_WINDOW(tooltip_large)
 class tooltip : public modeless_dialog
 {
 public:
-	tooltip() : modeless_dialog(), window_id_(), message_(), mouse_()
+	tooltip(const std::string& window_id, const t_string& message,
+			const point& mouse, const SDL_Rect& source_rect)
+		: modeless_dialog(window_id)
 	{
-		// To make Coverity happy
-		source_rect_.x = 0;
-		source_rect_.y = 0;
-		source_rect_.w = 0;
-		source_rect_.h = 0;
+		find_widget<styled_widget>(this, "label", false).set_label(message);
+
+		set_variable("mouse_x", wfl::variant(mouse.x));
+		set_variable("mouse_y", wfl::variant(mouse.y));
+
+		set_variable("source_x", wfl::variant(source_rect.x));
+		set_variable("source_y", wfl::variant(source_rect.y));
+		set_variable("source_w", wfl::variant(source_rect.w));
+		set_variable("source_h", wfl::variant(source_rect.h));
 	}
-
-	void set_window_id(const std::string& window_id)
-	{
-		window_id_ = window_id;
-	}
-
-	void set_message(const t_string& message)
-	{
-		message_ = message;
-	}
-
-	void set_mouse(const point& mouse)
-	{
-		mouse_ = mouse;
-	}
-
-	void set_source_rect(const SDL_Rect& rect)
-	{
-		source_rect_ = rect;
-	}
-
-private:
-	/** The id of the window to use to show the tip. */
-	std::string window_id_;
-
-	/** The message to show. */
-	t_string message_;
-
-	/** The position of the mouse. */
-	point mouse_;
-
-	/** The size of the requestor. */
-	SDL_Rect source_rect_;
-
-	/** Inherited from modeless_dialog. */
-	virtual const std::string& window_id() const override;
-
-	/** Inherited from modeless_dialog. */
-	virtual void pre_show(window& window) override;
 };
-
-void tooltip::pre_show(window& window)
-{
-	find_widget<styled_widget>(&window, "label", false).set_label(message_);
-
-	window.set_variable("mouse_x", wfl::variant(mouse_.x));
-	window.set_variable("mouse_y", wfl::variant(mouse_.y));
-
-	window.set_variable("source_x", wfl::variant(source_rect_.x));
-	window.set_variable("source_y", wfl::variant(source_rect_.y));
-	window.set_variable("source_w", wfl::variant(source_rect_.w));
-	window.set_variable("source_h", wfl::variant(source_rect_.h));
-}
-
-const std::string& tooltip::window_id() const
-{
-	return window_id_;
-}
 
 namespace tip
 {
 
-static tooltip& tip()
-{
-	/*
-	 * Allocating a static tip object causes a segmentation fault when Wesnoth
-	 * terminates. So instead create an object on the heap and never free it.
-	 */
-	static tooltip* t = new tooltip();
-	return *t;
-}
+static std::unique_ptr<tooltip> tip;
 
 void show(const std::string& window_id,
 		  const t_string& message,
@@ -146,23 +87,19 @@ void show(const std::string& window_id,
 	 * For now allow invalid tip names, might turn them to invalid wml messages
 	 * later on.
 	 */
-	tooltip& t = tip();
-	t.set_window_id(window_id);
-	t.set_message(message);
-	t.set_mouse(mouse);
-	t.set_source_rect(source_rect);
+	tip.reset(new tooltip(window_id, message, mouse, source_rect));
 	try
 	{
-		t.show();
+		tip->show();
 	}
 	catch(const window_builder_invalid_id&)
 	{
 		ERR_CFG << "Tip with the requested id '" << window_id
 				<< "' doesn't exist, fall back to the default.";
-		t.set_window_id("tooltip_large");
+		tip.reset(new tooltip("tooltip_large", message, mouse, source_rect));
 		try
 		{
-			t.show();
+			tip->show();
 		}
 		catch(const window_builder_invalid_id&)
 		{
@@ -173,7 +110,7 @@ void show(const std::string& window_id,
 
 void remove()
 {
-	tip().hide();
+	tip.reset();
 }
 
 } // namespace tip

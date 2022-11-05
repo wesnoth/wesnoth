@@ -31,6 +31,7 @@ depcheck_confirm_change::depcheck_confirm_change(
 		bool action,
 		const std::vector<std::string>& mods,
 		const std::string& requester)
+	: modal_dialog(window_id())
 {
 	utils::string_map symbols;
 	symbols["requester"] = requester;

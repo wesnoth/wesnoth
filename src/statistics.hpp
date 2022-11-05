@@ -82,8 +82,8 @@ namespace statistics
 		std::string save_id;
 	};
 
-	int sum_str_int_map(const stats::str_int_map& m);
-	int sum_cost_str_int_map(const stats::str_int_map &m);
+	int sum_str_int_map(const std::map<std::string,int>& m);
+	int sum_cost_str_int_map(const std::map<std::string,int>& m);
 
 	struct scenario_context
 	{

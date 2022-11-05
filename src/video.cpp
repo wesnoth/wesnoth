@@ -19,6 +19,7 @@
 #include "draw_manager.hpp"
 #include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
+#include "font/text.hpp"
 #include "log.hpp"
 #include "picture.hpp"
 #include "preferences/general.hpp"
@@ -28,6 +29,7 @@
 #include "sdl/userevent.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
+#include "widgets/menu.hpp" // for bluebg_style.unload_images
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -84,6 +86,10 @@ static point draw_offset();
 
 void init(fake type)
 {
+	LOG_DP << "initializing video";
+	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+		throw error("video subsystem already initialized");
+	}
 	if(SDL_InitSubSystem(SDL_INIT_VIDEO) < 0) {
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
@@ -101,6 +107,36 @@ void init(fake type)
 		break;
 	default:
 		throw error("unrecognized fake type passed to video::init");
+	}
+}
+
+void deinit()
+{
+	LOG_DP << "deinitializing video";
+
+	// SDL_INIT_TIMER is always initialized at program start.
+	// If it is not initialized here, there is a problem.
+	assert(SDL_WasInit(SDL_INIT_TIMER));
+
+	// Clear any static texture caches,
+	// lest they try to delete textures after SDL_Quit.
+	image::flush_cache();
+	font::flush_texture_cache();
+	render_texture_.reset();
+	current_render_target_.reset();
+	gui::menu::bluebg_style.unload_images();
+
+	// Destroy the window, and thus also the renderer.
+	window.reset();
+
+	// Close the video subsystem.
+	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+		LOG_DP << "quitting SDL video subsystem";
+		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+	}
+	if(SDL_WasInit(SDL_INIT_VIDEO)) {
+		// This should not have been initialized multiple times
+		throw error("video subsystem still initialized after deinit");
 	}
 }
 

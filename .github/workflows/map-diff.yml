@@ -34,20 +34,26 @@ jobs:
 
         for map_path in "${map_paths[@]}"
         do
-          ## Get old map version
-          old_map=${map_path##*/}
-          git show "$SHA":"$map_path" > "$old_map"
+          echo "** Working on $map_path **"
+
+          ## Get new map version
+          new_map=${map_path##*/}
+          git show "$SHA":"$map_path" > "$new_map"
 
           ## Run map diff
-          diff_image=${old_map%.map}.png
-          node build/index.js "$old_map" "../../$map_path" "$diff_image"
+          diff_image=${new_map%.map}.png
+          node build/index.js "../../$map_path" "$new_map" "$diff_image"
 
           ## Compress image
           pngquant --force --output "$diff_image" "$diff_image"
 
           ## Write comment body
-          image_link=$(curl -X POST "https://api.imgur.com/3/upload" \
-            -F "image=@\"$diff_image\"" | jq -r ".data.link")
+          curl_result=$(curl -F "image=@\"$diff_image\"" "https://api.imgur.com/3/upload")
+
+          echo "Imgur result:"
+          echo "$curl_result"
+
+          image_link=$(jq -r ".data.link" <<< "$curl_result")
 
           comment_body="$comment_body<h3>$map_path</h3><img src=\"$image_link\" /><br />"
         done

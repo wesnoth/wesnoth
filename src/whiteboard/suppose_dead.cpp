@@ -27,6 +27,7 @@
 #include "arrow.hpp"
 #include "config.hpp"
 #include "display.hpp"
+#include "draw.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
@@ -144,12 +145,11 @@ void suppose_dead::draw_hex(const map_location& hex)
 	const display::drawing_layer layer = display::LAYER_ARROWS;
 
 	auto disp = display::get_singleton();
-	int x = disp->get_location_x(loc_);
-	int y = disp->get_location_y(loc_);
-	const texture& tex = image::get_texture(
-		"whiteboard/suppose_dead.png", image::HEXED);
-	const SDL_Rect dest = disp->scaled_to_zoom({x, y, tex.w(), tex.h()});
-	disp->drawing_buffer_add(layer, loc_, dest, tex);
+
+	disp->drawing_buffer_add(
+		layer, loc_, [=, tex = image::get_texture("whiteboard/suppose_dead.png", image::HEXED)](const rect& d) {
+			draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+		});
 }
 
 void suppose_dead::redraw()

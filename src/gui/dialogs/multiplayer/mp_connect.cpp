@@ -63,7 +63,8 @@ namespace dialogs
 REGISTER_DIALOG(mp_connect)
 
 mp_connect::mp_connect()
-	: host_name_(register_text("host_name",
+	: modal_dialog(window_id())
+	, host_name_(register_text("host_name",
 							   true,
 							   preferences::network_host,
 							   preferences::set_network_host,

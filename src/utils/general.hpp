@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <cctype>
 #include <functional>
+#include <string>
 
 namespace utils
 {
@@ -84,5 +85,13 @@ inline bool contains(const Container& container, const Value& value)
 {
 	return detail::contains_impl<Container, Value>::eval(container, value);
 }
+
+/**
+ * Utility function for finding the type of thing caught with `catch(...)`.
+ * Not implemented for other compilers at this time.
+ *
+ * @return For the GCC/clang compilers, the unmangled name of an unknown exception that was caught.
+ */
+std::string get_unknown_exception_type();
 
 } // namespace utils

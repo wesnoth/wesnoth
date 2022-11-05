@@ -66,7 +66,8 @@ namespace prefs = preferences;
 REGISTER_DIALOG(mp_create_game)
 
 mp_create_game::mp_create_game(saved_game& state, bool local_mode)
-	: create_engine_(state)
+	: modal_dialog(window_id())
+	, create_engine_(state)
 	, config_engine_()
 	, options_manager_()
 	, selected_game_index_(-1)
@@ -462,10 +463,10 @@ void mp_create_game::sync_with_depcheck()
 	DBG_MP << "sync_with_depcheck: end";
 }
 
-template<typename widget>
+template<typename T>
 void mp_create_game::on_filter_change(const std::string& id, bool do_select)
 {
-	create_engine_.apply_level_filter(find_widget<widget>(get_window(), id, false).get_value());
+	create_engine_.apply_level_filter(find_widget<T>(get_window(), id, false).get_value());
 
 	listbox& game_list = find_widget<listbox>(get_window(), "games_list", false);
 

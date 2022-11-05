@@ -379,6 +379,15 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		}
 	}
 
+	if(cmdline_opts.usercache_dir) {
+		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
+	}
+
+	if(cmdline_opts.usercache_path) {
+		PLAIN_LOG << filesystem::get_cache_dir();
+		return 0;
+	}
+
 	if(cmdline_opts.userconfig_dir) {
 		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
 	}
@@ -912,14 +921,18 @@ static int do_gameloop(const std::vector<std::string>& args)
 			continue;
 		}
 
-		gui2::dialogs::title_screen dlg(*game);
+		int retval;
+		{ // scope to not keep the title screen alive all game
+			gui2::dialogs::title_screen dlg(*game);
 
-		// Allows re-layout on resize
-		while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
-			dlg.show();
+			// Allows re-layout on resize
+			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
+				dlg.show();
+			}
+			retval = dlg.get_retval();
 		}
 
-		switch(dlg.get_retval()) {
+		switch(retval) {
 		case gui2::dialogs::title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
@@ -1179,7 +1192,7 @@ int main(int argc, char** argv)
 		// is caught and all destructors are actually called. (Apparently,
 		// some compilers will simply terminate without calling destructors if
 		// the exception isn't caught.)
-		PLAIN_LOG << "Caught unspecified general exception. Terminating.";
+		PLAIN_LOG << "Caught general exception " << utils::get_unknown_exception_type() << ". Terminating.";
 		error_exit(1);
 #endif
 	}

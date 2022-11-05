@@ -62,6 +62,7 @@ static lg::log_domain log_aitesting("ai/testing");
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define DBG_NG LOG_STREAM(debug, log_engine)
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
@@ -599,6 +600,7 @@ void playsingle_controller::play_ai_turn()
 			ai_fallback_ = true;
 		}
 	} catch(...) {
+		DBG_NG << "Caught exception playing ai turn: " << utils::get_unknown_exception_type();
 		turn_data_.sync_network();
 		throw;
 	}

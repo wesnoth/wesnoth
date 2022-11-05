@@ -24,6 +24,7 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
+#include "draw.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "play_controller.hpp"
@@ -206,26 +207,20 @@ void attack::draw_hex(const map_location& hex)
 	if (hex == get_dest_hex()) //add symbol to attacker hex
 	{
 		auto disp = display::get_singleton();
-		int x = disp->get_location_x(get_dest_hex());
-		int y = disp->get_location_y(get_dest_hex());
-		const texture t = image::get_texture(
-			"whiteboard/attack-indicator-src-" + direction_text + ".png",
-			image::HEXED);
-		const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
 
-		disp->drawing_buffer_add(layer, get_dest_hex(), dest, t);
+		disp->drawing_buffer_add(layer, get_dest_hex(),
+			[=, tex = image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)](const rect& d) {
+				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+			});
 	}
 	else if (hex == target_hex_) //add symbol to defender hex
 	{
 		auto disp = display::get_singleton();
-		int x = disp->get_location_x(target_hex_);
-		int y = disp->get_location_y(target_hex_);
-		const texture t = image::get_texture(
-			"whiteboard/attack-indicator-dst-" + direction_text + ".png",
-			image::HEXED);
-		const SDL_Rect dest = disp->scaled_to_zoom({x, y, t.w(), t.h()});
 
-		disp->drawing_buffer_add(layer, target_hex_, dest, t);
+		disp->drawing_buffer_add(layer, target_hex_,
+			[=, tex = image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED)](const rect& d) {
+				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+			});
 	}
 }
 

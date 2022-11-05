@@ -36,6 +36,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_panel.hpp"
+#include "gui/widgets/stacked_widget.hpp"
 #include "gui/dialogs/server_info_dialog.hpp"
 
 #include "addon/client.hpp"
@@ -69,7 +70,8 @@ bool mp_lobby::logout_prompt()
 }
 
 mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& joined_game)
-	: quit_confirmation(&mp_lobby::logout_prompt)
+	: modal_dialog(window_id())
+	, quit_confirmation(&mp_lobby::logout_prompt)
 	, gamelistbox_(nullptr)
 	, lobby_info_(info)
 	, chatbox_(nullptr)
@@ -107,10 +109,16 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, delay_gamelist_update_(false)
 	, joined_game_id_(joined_game)
 {
-	// Need to set this in the constructor, pre_show() is too late
 	set_show_even_without_video(true);
 	set_allow_plugin_skip(false);
 	set_always_save_fields(true);
+
+	/*** Local hotkeys. ***/
+	window::register_hotkey(hotkey::HOTKEY_HELP,
+		std::bind(&mp_lobby::show_help_callback, this));
+
+	window::register_hotkey(hotkey::HOTKEY_PREFERENCES,
+		std::bind(&mp_lobby::show_preferences_button_callback, this));
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -131,16 +139,6 @@ mp_lobby::~mp_lobby()
 	if(lobby_update_timer_) {
 		remove_timer(lobby_update_timer_);
 	}
-}
-
-void mp_lobby::post_build(window& win)
-{
-	/*** Local hotkeys. ***/
-	win.register_hotkey(hotkey::HOTKEY_HELP,
-		std::bind(&mp_lobby::show_help_callback, this));
-
-	win.register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this));
 }
 
 namespace
@@ -653,17 +651,15 @@ void mp_lobby::pre_show(window& window)
 			find_widget<label>(profile_panel, "username", false).set_label(your_info->name);
 
 			auto& profile_button = find_widget<button>(profile_panel, "view_profile", false);
-			if(your_info->forum_id != 0) {
-				connect_signal_mouse_left_click(profile_button,
-					std::bind(&desktop::open_object, mp::get_profile_link(your_info->forum_id)));
-			} else {
-				profile_button.set_active(false);
-			}
+			connect_signal_mouse_left_click(profile_button, std::bind(&mp_lobby::open_profile_url, this));
 
 			// TODO: implement
 			find_widget<button>(profile_panel, "view_match_history", false).set_active(false);
 		}
 	}
+
+	listbox& tab_bar = find_widget<listbox>(&window, "games_list_tab_bar", false);
+	connect_signal_notify_modified(tab_bar, std::bind(&mp_lobby::tab_switch_callback, this));
 
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
@@ -685,6 +681,20 @@ void mp_lobby::pre_show(window& window)
 	}, true);
 
 	plugins_context_->set_accessor("game_list",   [this](const config&) { return lobby_info_.gamelist(); });
+}
+
+void mp_lobby::tab_switch_callback()
+{
+	filter_auto_hosted_ = !filter_auto_hosted_;
+	update_gamelist_filter();
+}
+
+void mp_lobby::open_profile_url()
+{
+	const mp::user_info* info = player_list_.get_selected_info();
+	if(info && info->forum_id != 0) {
+		desktop::open_object(mp::get_profile_link(info->forum_id));
+	}
 }
 
 void mp_lobby::post_show(window& /*window*/)
@@ -946,6 +956,10 @@ void mp_lobby::game_filter_init()
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
 		return filter_slots_->get_widget_value() ? info.vacant_slots > 0 : true;
+	});
+
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return info.auto_hosted == filter_auto_hosted_;
 	});
 
 	lobby_info_.set_game_filter_invert(

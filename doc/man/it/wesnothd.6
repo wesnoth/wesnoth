@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Demone di rete per multigiocatore di Battle for Wesnoth"
+.TH WESNOTHD 6 2022 wesnothd "Demone di rete per multigiocatore di Battle for Wesnoth"
 .
 .SH NOME
 .
@@ -168,17 +168,18 @@ Definisce se il server salverà automaticamente i replay delle
 partite. (normalmente: \fBfalse\fP)
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+Abilita l’utilizzo di TLS. Se impostato a vero, è necessario impostare anche
+le seguenti 3 opzioni.
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+Catena completa di certificati TLS in formato .pem
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+chiave privata per TLS in formato .pem
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out
-filename.pem 4096\fP
+Parametri DH TLS, come file .pem. Generati con \fBopenssl dhparam \-out
+nomefile.pem 4096\fP
 .TP 
 \fBversions_accepted\fP
 Un elenco separato da virgole delle stringhe di versione che il server deve
@@ -186,12 +187,18 @@ accettare. I caratteri jolly \fB*\fP e \fB?\fP sono ammessi (il valore predefini
 è lo stesso della versione di wesnoth corrispondente).
 .br
 Esempio: \fBversions_accepted="*"\fP accetta tutte le stringhe di versione.
+.TP 
+\fBid\fP
+L’ID del server quando viene usata la funzionalità database per memorizzare
+le informazioni di una partita. Generalmente è la versione maggiore.minore
+dei client accettati, tipo 1.16 o 1.17.
 .
 .SS "Tag globali:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Un tag per specificare un server a cui redirigere determinate
+versioni di client. Non viene usato se \fBversions_accepted\fP non viene
+impostato.
 .RS
 .TP 
 \fBhost\fP
@@ -227,12 +234,13 @@ richieste dei client connessi al server specificato. Accetta le stesse
 parole chiave di \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configura lo user handler. Se non è presente una sezione
+\fB[user_handler]\fP nella configurazione il server verrà lanciato senza un
+servizio di registrazione del nick. Tutte le tabelle aggiuntive necessarie
+per il funzionamento di \fBforum_user_handler\fP possono essere reperite in
+table_definitions.sql nel repository del codice sorgente di
+Wesnoth. Necessita che sia abilitato il supporto mysql. Per cmake occore
+utilizzare il flag \fBENABLE_MYSQL\fP e per scons \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -273,6 +281,20 @@ Il nome della tabella nella quale il vostro forum phpbb salva i dati del
 gruppo dell’utente. Di solito questo valore è
 <table\-prefix>_user_group (i.e. phpbb3_user_group).
 .TP 
+\fBdb_connection_history_table\fP
+Il nome della tabella nella quale memorizzare i tempi di login/logout. Viene
+anche usata per accoppiare gli IP agli utenti e viceversa.
+.TP 
+\fBdb_topics_table\fP
+Il nome della tabella nella quale il vostro forum phpbb salva le sue
+informazioni sui topic (thread). Di solito questo valore è
+<table\-prefix>_topics (i.e. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+Il nome della tabella nella quale il vostro forum phpbb salva i dati degli
+utenti bannati. Di solito questo valore è <table\-prefix>_banlist
+(i.e. phpbb3_banlist).
+.TP 
 \fBmp_mod_group\fP
 ID del gruppo del forum da considerare come avente i diritti di moderazione
 del gruppo.
@@ -296,7 +318,7 @@ Visita la pagina home ufficiale: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2021 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
 .br
 Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software

@@ -27,7 +27,9 @@ namespace gui2::dialogs
 REGISTER_DIALOG(theme_list)
 
 theme_list::theme_list(const std::vector<theme_info>& themes, int selection)
-	: index_(selection), themes_(themes)
+	: modal_dialog(window_id())
+	, index_(selection)
+	, themes_(themes)
 {
 }
 

@@ -51,6 +51,13 @@ enum class fake { none, window, draw };
 void init(fake fake_type = fake::none);
 
 /**
+ * Deinitialize the video subsystem.
+ *
+ * This flushes all texture caches and disconnects the SDL video subsystem.
+ */
+void deinit();
+
+/**
  * Update buffers to match current resolution and pixel scale settings.
  *
  * If @p autoupdate is true and buffers are changed by this call,

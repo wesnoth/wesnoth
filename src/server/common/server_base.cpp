@@ -129,7 +129,6 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		return;
 	}
 
-#ifndef _WIN32
 	if(keep_alive_) {
 		int timeout = 30;
 #ifdef __linux__
@@ -138,12 +137,15 @@ void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPIDLE, &timeout, sizeof(timeout));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPCNT, &cnt, sizeof(cnt));
 		setsockopt(socket->native_handle(), SOL_TCP, TCP_KEEPINTVL, &interval, sizeof(interval));
-#endif
-#if defined(__APPLE__) && defined(__MACH__)
+#elif defined(__APPLE__) && defined(__MACH__)
 		setsockopt(socket->native_handle(), IPPROTO_TCP, TCP_KEEPALIVE, &timeout, sizeof(timeout));
+#elif defined(_WIN32)
+		// these are in milliseconds for windows
+		DWORD timeout_ms = timeout * 1000;
+		setsockopt(socket->native_handle(), SOL_SOCKET, SO_RCVTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
+		setsockopt(socket->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
 #endif
 	}
-#endif
 
 #ifdef __linux__
 	fcntl(socket->native_handle(), F_SETFD, FD_CLOEXEC);
@@ -325,6 +327,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 		boost::system::error_code ec;
 		async_write(*socket, buffers, yield[ec]);
 		if(check_error(ec, socket)) {
+			socket->lowest_layer().close();
 			return;
 		}
 	} catch (simple_wml::error& e) {
@@ -345,14 +348,23 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 	} data_size {};
 	data_size.size = htonl(filesize);
 
-	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
+	boost::system::error_code ec;
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
+	if(check_error(ec, socket)) {
+		socket->lowest_layer().close();
+		return;
+	}
 
 	auto ifs { filesystem::istream_file(filename) };
 	ifs->seekg(0);
 	while(ifs->good()) {
 		char buf[16384];
 		ifs->read(buf, sizeof(buf));
-		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield);
+		async_write(*socket, boost::asio::buffer(buf, ifs->gcount()), yield[ec]);
+		if(check_error(ec, socket)) {
+			socket->lowest_layer().close();
+			return;
+		}
 	}
 }
 
@@ -369,6 +381,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 {
 	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
+	ON_SCOPE_EXIT(in_file) { close(in_file); };
 	off_t offset { 0 };
 	//std::size_t total_bytes_transferred { 0 };
 
@@ -379,37 +392,40 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	} data_size {};
 	data_size.size = htonl(filesize);
 
-	async_write(*socket, boost::asio::buffer(data_size.buf), yield);
-	if(*(yield.ec_)) return;
+	boost::system::error_code ec;
+	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
+	if(check_error(ec, socket)) return;
 
 	// Put the underlying socket into non-blocking mode.
-	if(!socket->native_non_blocking())
-		socket->native_non_blocking(true, *yield.ec_);
-	if(*(yield.ec_)) return;
+	if(!socket->native_non_blocking()) {
+		socket->native_non_blocking(true, ec);
+		if(check_error(ec, socket)) return;
+	}
 
-	for (;;)
+	for(;;)
 	{
 		// Try the system call.
 		errno = 0;
 		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
-		*(yield.ec_) = boost::system::error_code(n < 0 ? errno : 0,
+		ec = boost::system::error_code(n < 0 ? errno : 0,
 									   boost::asio::error::get_system_category());
 		//total_bytes_transferred += *(yield.ec_) ? 0 : n;
 
 		// Retry operation immediately if interrupted by signal.
-		if (*(yield.ec_) == boost::asio::error::interrupted)
+		if(ec == boost::asio::error::interrupted)
 			continue;
 
 		// Check if we need to run the operation again.
-		if (*(yield.ec_) == boost::asio::error::would_block
-				|| *(yield.ec_) == boost::asio::error::try_again)
+		if (ec == boost::asio::error::would_block
+				|| ec == boost::asio::error::try_again)
 		{
 			// We have to wait for the socket to become ready again.
-			socket->async_write_some(boost::asio::null_buffers(), yield);
+			socket->async_write_some(boost::asio::null_buffers(), yield[ec]);
+			if(check_error(ec, socket)) return;
 			continue;
 		}
 
-		if (*(yield.ec_) || n == 0)
+		if (ec || n == 0)
 		{
 			// An error occurred, or we have reached the end of the file.
 			// Either way we must exit the loop.
@@ -506,7 +522,9 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 		uint32_t size;
 		char buf[4];
 	} data_size {};
-	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield);
+	boost::system::error_code ec;
+	async_read(*socket, boost::asio::buffer(data_size.buf, 4), yield[ec]);
+	if(check_error(ec, socket)) return {};
 	uint32_t size = ntohl(data_size.size);
 
 	if(size == 0) {
@@ -523,7 +541,8 @@ template<class SocketPtr> std::unique_ptr<simple_wml::document> server_base::cor
 	}
 
 	boost::shared_array<char> buffer{ new char[size] };
-	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield);
+	async_read(*socket, boost::asio::buffer(buffer.get(), size), yield[ec]);
+	if(check_error(ec, socket)) return {};
 
 	try {
 		simple_wml::string_span compressed_buf(buffer.get(), size);

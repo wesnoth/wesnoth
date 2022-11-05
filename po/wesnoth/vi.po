@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
 "PO-Revision-Date: 2014-06-05 22:13+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -221,13 +221,13 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
 msgid "poisoned"
 msgstr "bị nhiễm độc"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:398
-#: data/core/macros/items.cfg:536
+#: data/core/macros/items.cfg:544
 msgid "storm trident"
 msgstr "đinh ba giông bão"
 
@@ -336,22 +336,22 @@ msgid "Campaign Design"
 msgstr "Thiết kế chiến dịch"
 
 #. [about]
-#: data/core/about.cfg:950
+#: data/core/about.cfg:955
 msgid "Multiplayer Maps and Balancing"
 msgstr "Bản đồ và bảng cân đối nhiều người chơi"
 
 #. [about]
-#: data/core/about.cfg:999
+#: data/core/about.cfg:1004
 msgid "Packagers"
 msgstr "Đóng gói"
 
 #. [about]
-#: data/core/about.cfg:1106
+#: data/core/about.cfg:1111
 msgid "Miscellaneous Contributors"
 msgstr "Đóng góp hỗn hợp"
 
 #. [about]
-#: data/core/about.cfg:1827
+#: data/core/about.cfg:1838
 msgid "Bots"
 msgstr "Người máy"
 
@@ -646,86 +646,86 @@ msgid "Evil Altar"
 msgstr "Bệ thờ kẻ xấu"
 
 #. [item]: id=altar
-#: data/core/editor/items.cfg:18
+#: data/core/editor/items.cfg:19
 msgid "Altar"
 msgstr "Bệ thờ"
 
 #. [item]: id=ankh-necklace
 #. [item]: id=ankh-necklace2
-#: data/core/editor/items.cfg:24 data/core/editor/items.cfg:30
+#: data/core/editor/items.cfg:26 data/core/editor/items.cfg:33
 msgid "Ankh Necklace"
 msgstr "Vòng cổ sinh mệnh"
 
 #. [item]: id=anvil
-#: data/core/editor/items.cfg:36
+#: data/core/editor/items.cfg:40
 msgid "Anvil"
 msgstr "Đe"
 
 #. [item]: id=archery-target
-#: data/core/editor/items.cfg:42
+#: data/core/editor/items.cfg:47
 msgid "Archery Target"
 msgstr "Bia bắn cung"
 
 #. [item]: id=armor-golden
-#: data/core/editor/items.cfg:48
+#: data/core/editor/items.cfg:54
 msgid "Golden Armor"
 msgstr "Áo giáp vàng"
 
 #. [item]: id=armor
-#: data/core/editor/items.cfg:54
+#: data/core/editor/items.cfg:61
 msgid "Armor"
 msgstr "Áo giáp"
 
 #. [item]: id=axe
 #. [item]: id=axe2
-#: data/core/editor/items.cfg:60 data/core/editor/items.cfg:66
+#: data/core/editor/items.cfg:68 data/core/editor/items.cfg:75
 msgid "Axe"
 msgstr "Rìu"
 
 #. [item]: id=axe-small
-#: data/core/editor/items.cfg:72
+#: data/core/editor/items.cfg:82
 #, fuzzy
 #| msgid "Small ai arena"
 msgid "Small Axe"
 msgstr "Trường đấu trí tuệ nhân tạo nhỏ"
 
 #. [item]: id=axe-throwing
-#: data/core/editor/items.cfg:78
+#: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
 msgstr ""
 
 #. [item]: id=ball-blue
-#: data/core/editor/items.cfg:84
+#: data/core/editor/items.cfg:96
 msgid "Blue Ball"
 msgstr "Quả cầu xanh lam"
 
 #. [item]: id=ball-green
-#: data/core/editor/items.cfg:90
+#: data/core/editor/items.cfg:103
 msgid "Green Ball"
 msgstr "Quả cầu xanh lục"
 
 #. [item]: id=ball-magenta
-#: data/core/editor/items.cfg:96
+#: data/core/editor/items.cfg:110
 msgid "Magenta Ball"
 msgstr "Quả cầu đỏ tía"
 
 #. [item]: id=barrel
-#: data/core/editor/items.cfg:102
+#: data/core/editor/items.cfg:117
 msgid "Barrel"
 msgstr "Thùng"
 
 #. [item]: id=bomb
-#: data/core/editor/items.cfg:108
+#: data/core/editor/items.cfg:124
 msgid "Bomb"
 msgstr "Bom"
 
 #. [item]: id=bones
-#: data/core/editor/items.cfg:114
+#: data/core/editor/items.cfg:131
 msgid "Bones"
 msgstr "Xương"
 
 #. [item]: id=bonestack
-#: data/core/editor/items.cfg:120
+#: data/core/editor/items.cfg:138
 msgid "Bonestack"
 msgstr "Đống xương"
 
@@ -734,52 +734,52 @@ msgstr "Đống xương"
 #. [item]: id=book3
 #. [item]: id=book4
 #. [item]: id=book5
-#: data/core/editor/items.cfg:126 data/core/editor/items.cfg:132
-#: data/core/editor/items.cfg:138 data/core/editor/items.cfg:144
-#: data/core/editor/items.cfg:150
+#: data/core/editor/items.cfg:145 data/core/editor/items.cfg:152
+#: data/core/editor/items.cfg:159 data/core/editor/items.cfg:166
+#: data/core/editor/items.cfg:173
 msgid "Book"
 msgstr "Sách"
 
 #. [item]: id=bow
 #. [item]: id=bow2
-#: data/core/editor/items.cfg:156 data/core/editor/items.cfg:162
+#: data/core/editor/items.cfg:180 data/core/editor/items.cfg:187
 msgid "Bow"
 msgstr "Cung"
 
 #. [item]: id=bow-crystal
 #. [item]: id=bow-crystal2
-#: data/core/editor/items.cfg:168 data/core/editor/items.cfg:174
+#: data/core/editor/items.cfg:194 data/core/editor/items.cfg:201
 msgid "Crystal Bow"
 msgstr "Cung tinh thể"
 
 #. [item]: id=bow-elven
 #. [item]: id=bow-elven2
-#: data/core/editor/items.cfg:180 data/core/editor/items.cfg:186
+#: data/core/editor/items.cfg:208 data/core/editor/items.cfg:215
 msgid "Elven Bow"
 msgstr "Cung của thần tiên"
 
 #. [item]: id=box
-#: data/core/editor/items.cfg:192
+#: data/core/editor/items.cfg:222
 msgid "Box"
 msgstr "Hộp"
 
 #. [item]: id=branch
-#: data/core/editor/items.cfg:198
+#: data/core/editor/items.cfg:229
 msgid "Branch"
 msgstr ""
 
 #. [item]: id=branch-bare
-#: data/core/editor/items.cfg:204
+#: data/core/editor/items.cfg:236
 msgid "Bare Branch"
 msgstr ""
 
 #. [item]: id=brazier
-#: data/core/editor/items.cfg:210
+#: data/core/editor/items.cfg:243
 msgid "Brazier"
 msgstr "Lò"
 
 #. [item]: id=brazier-lit1
-#: data/core/editor/items.cfg:217
+#: data/core/editor/items.cfg:251
 #, fuzzy
 #| msgid "Brazier"
 msgid "Lit Brazier"
@@ -787,22 +787,22 @@ msgstr "Lò"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
-#: data/core/editor/items.cfg:223 data/core/editor/items.cfg:229
+#: data/core/editor/items.cfg:258 data/core/editor/items.cfg:265
 msgid "Buckler"
 msgstr "Khiên"
 
 #. [item]: id=burial
-#: data/core/editor/items.cfg:235
+#: data/core/editor/items.cfg:272
 msgid "Burial"
 msgstr "Chôn cất"
 
 #. [item]: id=cage
-#: data/core/editor/items.cfg:241
+#: data/core/editor/items.cfg:279
 msgid "Cage"
 msgstr "Lồng"
 
 #. [item]: id=chest
-#: data/core/editor/items.cfg:247
+#: data/core/editor/items.cfg:286
 #, fuzzy
 #| msgid "Closed Plain Chest"
 msgid "Closed Chest"
@@ -810,79 +810,79 @@ msgstr "Hòm đóng"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
-#: data/core/editor/items.cfg:254
+#: data/core/editor/items.cfg:294
 #, fuzzy
 #| msgid "Open Plain Chest"
 msgid "Open Chest"
 msgstr "Hòm mở"
 
 #. [item]: id=chest-plain-closed
-#: data/core/editor/items.cfg:260
+#: data/core/editor/items.cfg:301
 msgid "Closed Plain Chest"
 msgstr "Hòm đóng"
 
 #. [item]: id=chest-plain-open
-#: data/core/editor/items.cfg:266
+#: data/core/editor/items.cfg:308
 msgid "Open Plain Chest"
 msgstr "Hòm mở"
 
 #. [item]: id=cloak-green
-#: data/core/editor/items.cfg:272
+#: data/core/editor/items.cfg:315
 msgid "Green Cloak"
 msgstr "Áo choàng xanh lục"
 
 #. [item]: id=club
-#: data/core/editor/items.cfg:278
+#: data/core/editor/items.cfg:322
 msgid "Club"
 msgstr ""
 
 #. [item]: id=coffin-closed
-#: data/core/editor/items.cfg:284
+#: data/core/editor/items.cfg:329
 msgid "Closed Coffin"
 msgstr "Quan tài đóng"
 
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
-#: data/core/editor/items.cfg:291
+#: data/core/editor/items.cfg:337
 #, fuzzy
 #| msgid "Closed Coffin"
 msgid "Open Coffin"
 msgstr "Quan tài đóng"
 
 #. [item]: id=crossbow
-#: data/core/editor/items.cfg:297
+#: data/core/editor/items.cfg:344
 msgid "Crossbow"
 msgstr ""
 
 #. [item]: id=dagger
-#: data/core/editor/items.cfg:303
+#: data/core/editor/items.cfg:351
 msgid "Dagger"
 msgstr ""
 
 #. [item]: id=dagger-poison
-#: data/core/editor/items.cfg:309
+#: data/core/editor/items.cfg:358
 #, fuzzy
 #| msgid "Poison"
 msgid "Poison Dagger"
 msgstr "Chất độc"
 
 #. [item]: id=dagger-poison-bare
-#: data/core/editor/items.cfg:315
+#: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
 msgstr ""
 
 #. [item]: id=dragonstatue
-#: data/core/editor/items.cfg:321
+#: data/core/editor/items.cfg:372
 msgid "Dragon Statue"
 msgstr "Tượng rồng"
 
 #. [item]: id=flame-sword
-#: data/core/editor/items.cfg:327
+#: data/core/editor/items.cfg:379
 msgid "Flaming Sword"
 msgstr "Kiếm lửa"
 
 #. [item]: id=flame-sword-bare
-#: data/core/editor/items.cfg:333
+#: data/core/editor/items.cfg:386
 #, fuzzy
 #| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
@@ -892,155 +892,155 @@ msgstr "Kiếm lửa"
 #. [item]: id=flower2
 #. [item]: id=flower3
 #. [item]: id=flower4
-#: data/core/editor/items.cfg:339 data/core/editor/items.cfg:345
-#: data/core/editor/items.cfg:351 data/core/editor/items.cfg:357
+#: data/core/editor/items.cfg:393 data/core/editor/items.cfg:400
+#: data/core/editor/items.cfg:407 data/core/editor/items.cfg:414
 msgid "Flower"
 msgstr "Hoa"
 
 #. [item]: id=gohere
-#: data/core/editor/items.cfg:363
+#: data/core/editor/items.cfg:421
 msgid "Go Here Overlay"
 msgstr "Lớp phủ Đến đây"
 
 #. [item]: id=gold-coins-large
-#: data/core/editor/items.cfg:369
+#: data/core/editor/items.cfg:427
 msgid "Large Pile of Gold Coins"
 msgstr "Chồng đồng tiền vàng lớn"
 
 #. [item]: id=gold-coins-medium
-#: data/core/editor/items.cfg:375
+#: data/core/editor/items.cfg:434
 msgid "Pile of Gold Coins"
 msgstr "Chồng đồng tiền vàng"
 
 #. [item]: id=gold-coins-small
-#: data/core/editor/items.cfg:381
+#: data/core/editor/items.cfg:441
 msgid "Small Pile of Gold Coins"
 msgstr "Chồng đồng tiền vàng nhỏ"
 
 #. [item]: id=grain-sheaf
-#: data/core/editor/items.cfg:387
+#: data/core/editor/items.cfg:448
 msgid "Grain Sheaf"
 msgstr "Bó lúa"
 
 #. [item]: id=hammer
-#: data/core/editor/items.cfg:393
+#: data/core/editor/items.cfg:455
 #, fuzzy
 #| msgid "Runic Hammer"
 msgid "Hammer"
 msgstr "Búa khắc dấu thần"
 
 #. [item]: id=hammer-runic
-#: data/core/editor/items.cfg:399
+#: data/core/editor/items.cfg:462
 msgid "Runic Hammer"
 msgstr "Búa khắc dấu thần"
 
 #. [item]: id=holy-water
 #. [object]
-#: data/core/editor/items.cfg:405 data/core/macros/items.cfg:283
+#: data/core/editor/items.cfg:469 data/core/macros/items.cfg:286
 msgid "Holy Water"
 msgstr "Nước thánh"
 
 #. [item]: id=key
 #. [item]: id=key2
-#: data/core/editor/items.cfg:411 data/core/editor/items.cfg:417
+#: data/core/editor/items.cfg:476 data/core/editor/items.cfg:483
 msgid "Key"
 msgstr "Chìa khóa"
 
 #. [item]: id=key-dark
-#: data/core/editor/items.cfg:423
+#: data/core/editor/items.cfg:490
 #, fuzzy
 #| msgid "Dark Red"
 msgid "Dark Key"
 msgstr "Đỏ đậm"
 
 #. [item]: id=leather-pack
-#: data/core/editor/items.cfg:429
+#: data/core/editor/items.cfg:497
 msgid "Leather Pack"
 msgstr "Gói bằng da"
 
 #. [item]: id=mace
-#: data/core/editor/items.cfg:435
+#: data/core/editor/items.cfg:504
 msgid "Mace"
 msgstr ""
 
 #. [item]: id=necklace-bone
-#: data/core/editor/items.cfg:441
+#: data/core/editor/items.cfg:511
 #, fuzzy
 #| msgid "Ankh Necklace"
 msgid "Bone Necklace"
 msgstr "Vòng cổ sinh mệnh"
 
 #. [item]: id=necklace-stone
-#: data/core/editor/items.cfg:447
+#: data/core/editor/items.cfg:518
 #, fuzzy
 #| msgid "Ankh Necklace"
 msgid "Stone Necklace"
 msgstr "Vòng cổ sinh mệnh"
 
 #. [item]: id=orcish-flag
-#: data/core/editor/items.cfg:453
+#: data/core/editor/items.cfg:525
 msgid "Orcish Flag"
 msgstr "Cờ của người thú"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
-#: data/core/editor/items.cfg:459 data/core/editor/items.cfg:465
+#: data/core/editor/items.cfg:532 data/core/editor/items.cfg:539
 msgid "Ornate"
 msgstr "Trang trí"
 
 #. [item]: id=potion-blue
-#: data/core/editor/items.cfg:471
+#: data/core/editor/items.cfg:546
 msgid "Blue Potion"
 msgstr "Liều thuốc màu xanh lam"
 
 #. [item]: id=potion-green
-#: data/core/editor/items.cfg:477
+#: data/core/editor/items.cfg:553
 msgid "Green Potion"
 msgstr "Liều thuốc màu xanh lục"
 
 #. [item]: id=potion-gray
-#: data/core/editor/items.cfg:483
+#: data/core/editor/items.cfg:560
 msgid "Gray Potion"
 msgstr "Liều thuốc màu xám"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
-#: data/core/editor/items.cfg:489 data/core/macros/items.cfg:246
+#: data/core/editor/items.cfg:567 data/core/macros/items.cfg:249
 msgid "Poison"
 msgstr "Chất độc"
 
 #. [item]: id=potion-red
-#: data/core/editor/items.cfg:495
+#: data/core/editor/items.cfg:574
 msgid "Red Potion"
 msgstr "Liều thuốc màu đỏ"
 
 #. [item]: id=potion-yellow
-#: data/core/editor/items.cfg:501
+#: data/core/editor/items.cfg:581
 msgid "Yellow Potion"
 msgstr "Liều thuốc màu vàng"
 
 #. [item]: id=ring-brown
-#: data/core/editor/items.cfg:507
+#: data/core/editor/items.cfg:588
 msgid "Brown Ring"
 msgstr "Nhẫn nâu"
 
 #. [item]: id=ring-gold
-#: data/core/editor/items.cfg:513
+#: data/core/editor/items.cfg:595
 msgid "Golden Ring"
 msgstr "Nhẫn vàng"
 
 #. [item]: id=ring-red
-#: data/core/editor/items.cfg:519
+#: data/core/editor/items.cfg:602
 msgid "Red Ring"
 msgstr "Nhẫn đỏ"
 
 #. [item]: id=ring-silver
-#: data/core/editor/items.cfg:525
+#: data/core/editor/items.cfg:609
 msgid "Silver Ring"
 msgstr "Nhẫn bạc"
 
 #. [item]: id=ring-white
-#: data/core/editor/items.cfg:531
+#: data/core/editor/items.cfg:616
 msgid "White Ring"
 msgstr "Nhẫn trắng"
 
@@ -1049,29 +1049,29 @@ msgstr "Nhẫn trắng"
 #. [item]: id=rock2
 #. [item]: id=rock3
 #. [item]: id=rock4
-#: data/core/editor/items.cfg:537 data/core/editor/items.cfg:877
-#: data/core/editor/items.cfg:883 data/core/editor/items.cfg:889
-#: data/core/editor/items.cfg:895
+#: data/core/editor/items.cfg:623 data/core/editor/items.cfg:1007
+#: data/core/editor/items.cfg:1014 data/core/editor/items.cfg:1021
+#: data/core/editor/items.cfg:1028
 msgid "Rock"
 msgstr "Đá"
 
 #. [item]: id=scarecrow
-#: data/core/editor/items.cfg:543
+#: data/core/editor/items.cfg:630
 msgid "Scarecrow"
 msgstr "Bù nhìn"
 
 #. [item]: id=sceptre-of-fire
-#: data/core/editor/items.cfg:549
+#: data/core/editor/items.cfg:637
 msgid "Sceptre of Fire"
 msgstr "Vương trượng lửa"
 
 #. [item]: id=sling
-#: data/core/editor/items.cfg:555
+#: data/core/editor/items.cfg:644
 msgid "Sling"
 msgstr ""
 
 #. [item]: id=spear
-#: data/core/editor/items.cfg:561
+#: data/core/editor/items.cfg:651
 #, fuzzy
 #| msgid "Fancy Spear"
 msgid "Spear"
@@ -1079,23 +1079,23 @@ msgstr "Giáo sặc sỡ"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
-#: data/core/editor/items.cfg:567 data/core/editor/items.cfg:573
+#: data/core/editor/items.cfg:658 data/core/editor/items.cfg:665
 msgid "Fancy Spear"
 msgstr "Giáo sặc sỡ"
 
 #. [item]: id=spear-javelin
-#: data/core/editor/items.cfg:579
+#: data/core/editor/items.cfg:672
 msgid "Javelin"
 msgstr ""
 
 #. [item]: id=staff
 #. [item]: id=staff2
-#: data/core/editor/items.cfg:585 data/core/editor/items.cfg:591
+#: data/core/editor/items.cfg:679 data/core/editor/items.cfg:686
 msgid "Staff"
 msgstr "Gậy"
 
 #. [item]: id=staff-druid
-#: data/core/editor/items.cfg:597
+#: data/core/editor/items.cfg:693
 #, fuzzy
 #| msgid "Magic Staff"
 msgid "Druid Staff"
@@ -1103,174 +1103,174 @@ msgstr "Gậy phép thuật"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
-#: data/core/editor/items.cfg:603 data/core/editor/items.cfg:609
+#: data/core/editor/items.cfg:700 data/core/editor/items.cfg:707
 msgid "Magic Staff"
 msgstr "Gậy phép thuật"
 
 #. [item]: id=staff-magic-wand
-#: data/core/editor/items.cfg:615
+#: data/core/editor/items.cfg:714
 #, fuzzy
 #| msgid "Magic Staff"
 msgid "Magic Wand"
 msgstr "Gậy phép thuật"
 
 #. [item]: id=staff-plain
-#: data/core/editor/items.cfg:621
+#: data/core/editor/items.cfg:721
 #, fuzzy
 #| msgid "Magic Staff"
 msgid "Plain Staff"
 msgstr "Gậy phép thuật"
 
 #. [item]: id=stone-tablet
-#: data/core/editor/items.cfg:627
+#: data/core/editor/items.cfg:728
 msgid "Stone Tablet"
 msgstr "Phiến đá"
 
 #. [item]: id=storm-trident
 #. [item]: id=storm-trident2
 #. [object]
-#: data/core/editor/items.cfg:633 data/core/editor/items.cfg:639
-#: data/core/macros/items.cfg:529
+#: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
+#: data/core/macros/items.cfg:537
 msgid "Storm Trident"
 msgstr "Đinh ba giông bão"
 
 #. [item]: id=straw-bale1
 #. [item]: id=straw-bale2
-#: data/core/editor/items.cfg:645 data/core/editor/items.cfg:651
+#: data/core/editor/items.cfg:749 data/core/editor/items.cfg:756
 msgid "Bale of Straw"
 msgstr "Kiện rơm"
 
 #. [item]: id=sword
 #. [item]: id=sword2
-#: data/core/editor/items.cfg:657 data/core/editor/items.cfg:663
+#: data/core/editor/items.cfg:763 data/core/editor/items.cfg:770
 msgid "Sword"
 msgstr "Kiếm"
 
 #. [item]: id=sword-holy
-#: data/core/editor/items.cfg:669
+#: data/core/editor/items.cfg:777
 #, fuzzy
 #| msgid "Sword"
 msgid "Holy Sword"
 msgstr "Kiếm"
 
 #. [item]: id=sword-short
-#: data/core/editor/items.cfg:675
+#: data/core/editor/items.cfg:784
 #, fuzzy
 #| msgid "Sword"
 msgid "Short Sword"
 msgstr "Kiếm"
 
 #. [item]: id=sword-wraith
-#: data/core/editor/items.cfg:681
+#: data/core/editor/items.cfg:791
 #, fuzzy
 #| msgid "Flaming Sword"
 msgid "Wraith Sword"
 msgstr "Kiếm lửa"
 
 #. [item]: id=talisman-ankh
-#: data/core/editor/items.cfg:687
+#: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
 msgstr ""
 
 #. [item]: id=talisman-bone
-#: data/core/editor/items.cfg:693
+#: data/core/editor/items.cfg:805
 #, fuzzy
 #| msgid "Stationed Guardian"
 msgid "Bone Talisman"
 msgstr "Hộ vệ trạm"
 
 #. [item]: id=talisman-stone
-#: data/core/editor/items.cfg:699
+#: data/core/editor/items.cfg:812
 #, fuzzy
 #| msgid "Stone Tablet"
 msgid "Stone Talisman"
 msgstr "Phiến đá"
 
 #. [item]: id=thunderstick
-#: data/core/editor/items.cfg:705
+#: data/core/editor/items.cfg:819
 msgid "Thunderstick"
 msgstr ""
 
 #. [item]: id=torch
-#: data/core/editor/items.cfg:711
+#: data/core/editor/items.cfg:826
 msgid "Lit Torch"
 msgstr ""
 
 #. [item]: id=torch-bare
-#: data/core/editor/items.cfg:717
+#: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
 msgstr ""
 
 #. [item_group]: id=scenery
-#: data/core/editor/items.cfg:723
+#: data/core/editor/items.cfg:840
 msgid "Scenery"
 msgstr "Cảnh vật"
 
 #. [item]: id=castle-ruins
 #. [item]: id=castle-ruins2
 #. [item]: id=castle-ruins3
-#: data/core/editor/items.cfg:730 data/core/editor/items.cfg:736
-#: data/core/editor/items.cfg:742
+#: data/core/editor/items.cfg:847 data/core/editor/items.cfg:853
+#: data/core/editor/items.cfg:859
 msgid "Castle Ruins"
 msgstr "Tàn tích lâu đài"
 
 #. [item]: id=circle-magic
-#: data/core/editor/items.cfg:748
+#: data/core/editor/items.cfg:865
 msgid "Magic Circle"
 msgstr "Vòng tròn phép thuật"
 
 #. [item]: id=circle-magic-glow
-#: data/core/editor/items.cfg:754
+#: data/core/editor/items.cfg:871
 msgid "Glowing Magic Circle"
 msgstr "Vòng tròn phép thuật phát sáng"
 
 #. [item]: id=dwarven-doors-closed
-#: data/core/editor/items.cfg:760
+#: data/core/editor/items.cfg:877
 msgid "Closed Dwarven Doors"
 msgstr "Cửa Động Người Lùn đóng"
 
 #. [item]: id=fire
-#: data/core/editor/items.cfg:767
+#: data/core/editor/items.cfg:885
 msgid "Campfire"
 msgstr "Lửa trại"
 
 #. [item]: id=flames
-#: data/core/editor/items.cfg:774
+#: data/core/editor/items.cfg:892
 msgid "Flames"
 msgstr "Lửa"
 
 #. [item]: id=gate-rusty-se
-#: data/core/editor/items.cfg:780
+#: data/core/editor/items.cfg:898
 msgid "Rusty Gate South East"
 msgstr "Cổng sắt gỉ phía đông nam"
 
 #. [item]: id=gate-rusty-sw
-#: data/core/editor/items.cfg:786
+#: data/core/editor/items.cfg:905
 msgid "Rusty Gate South West"
 msgstr "Cổng sắt gỉ phía tây nam"
 
 #. [item]: id=icepack1
-#: data/core/editor/items.cfg:792
+#: data/core/editor/items.cfg:912
 msgid "Ice Pack"
 msgstr "Đống băng"
 
 #. [item]: id=leanto
-#: data/core/editor/items.cfg:798
+#: data/core/editor/items.cfg:918
 msgid "Lean-to"
 msgstr "Mái che"
 
 #. [item]: id=lighthouse
-#: data/core/editor/items.cfg:803
+#: data/core/editor/items.cfg:924
 msgid "Lighthouse"
 msgstr "Hải đăng"
 
 #. [item]: id=mausoleum
-#: data/core/editor/items.cfg:811
+#: data/core/editor/items.cfg:932
 msgid "Mausoleum"
 msgstr "Lăng"
 
 #. [item]: id=mine-abandoned
-#: data/core/editor/items.cfg:817
+#: data/core/editor/items.cfg:939
 msgid "Abandoned Mine"
 msgstr "Hầm mỏ bị bỏ hoang"
 
@@ -1278,40 +1278,40 @@ msgstr "Hầm mỏ bị bỏ hoang"
 #. [item]: id=monolith2
 #. [item]: id=monolith3
 #. [item]: id=monolith4
-#: data/core/editor/items.cfg:823 data/core/editor/items.cfg:829
-#: data/core/editor/items.cfg:835 data/core/editor/items.cfg:841
+#: data/core/editor/items.cfg:946 data/core/editor/items.cfg:953
+#: data/core/editor/items.cfg:960 data/core/editor/items.cfg:967
 msgid "Monolith"
 msgstr "Trụ đá"
 
 #. [item]: id=nest-empty
-#: data/core/editor/items.cfg:847
+#: data/core/editor/items.cfg:974
 msgid "Empty Nest"
 msgstr "Tổ rỗng"
 
 #. [item]: id=nest-full
-#: data/core/editor/items.cfg:853
+#: data/core/editor/items.cfg:980
 msgid "Full Nest"
 msgstr "Tổ đầy"
 
 #. [item]: id=oak-leaning
-#: data/core/editor/items.cfg:859
+#: data/core/editor/items.cfg:986
 msgid "Leaning Oak"
 msgstr "Cây sồi nghiêng"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
-#: data/core/editor/items.cfg:865 data/core/editor/items.cfg:871
+#: data/core/editor/items.cfg:993 data/core/editor/items.cfg:1000
 msgid "Pine Tree"
 msgstr "Cây thông"
 
 #. [item]: id=rock-cairn
 #. [item]: id=rock-cairn2
-#: data/core/editor/items.cfg:901 data/core/editor/items.cfg:907
+#: data/core/editor/items.cfg:1035 data/core/editor/items.cfg:1043
 msgid "Rock Cairn"
 msgstr "Ụ đá"
 
 #. [item]: id=rubble
-#: data/core/editor/items.cfg:913
+#: data/core/editor/items.cfg:1051
 msgid "Rubble"
 msgstr "Gạch vụn"
 
@@ -1321,9 +1321,9 @@ msgstr "Gạch vụn"
 #. [item]: id=rune4
 #. [item]: id=rune5
 #. [item]: id=rune6
-#: data/core/editor/items.cfg:919 data/core/editor/items.cfg:925
-#: data/core/editor/items.cfg:931 data/core/editor/items.cfg:937
-#: data/core/editor/items.cfg:943 data/core/editor/items.cfg:949
+#: data/core/editor/items.cfg:1057 data/core/editor/items.cfg:1063
+#: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
+#: data/core/editor/items.cfg:1081 data/core/editor/items.cfg:1087
 msgid "Rune"
 msgstr "Dấu thần"
 
@@ -1333,9 +1333,9 @@ msgstr "Dấu thần"
 #. [item]: id=rune4-glow
 #. [item]: id=rune5-glow
 #. [item]: id=rune6-glow
-#: data/core/editor/items.cfg:955 data/core/editor/items.cfg:961
-#: data/core/editor/items.cfg:967 data/core/editor/items.cfg:973
-#: data/core/editor/items.cfg:979 data/core/editor/items.cfg:985
+#: data/core/editor/items.cfg:1093 data/core/editor/items.cfg:1099
+#: data/core/editor/items.cfg:1105 data/core/editor/items.cfg:1111
+#: data/core/editor/items.cfg:1117 data/core/editor/items.cfg:1123
 msgid "Glowing Rune"
 msgstr "Dấu thần phát sáng"
 
@@ -1343,29 +1343,29 @@ msgstr "Dấu thần phát sáng"
 #. [item]: id=wreck
 #. [item]: id=wreck2
 #. [item]: id=wreck3
-#: data/core/editor/items.cfg:991 data/core/editor/items.cfg:1166
-#: data/core/editor/items.cfg:1172 data/core/editor/items.cfg:1178
+#: data/core/editor/items.cfg:1129 data/core/editor/items.cfg:1318
+#: data/core/editor/items.cfg:1324 data/core/editor/items.cfg:1330
 msgid "Shipwreck"
 msgstr "Xác tàu đắm"
 
 #. [item]: id=signpost
-#: data/core/editor/items.cfg:996
+#: data/core/editor/items.cfg:1134
 msgid "Signpost"
 msgstr "Biển chỉ đường"
 
 #. [item]: id=slab1
-#: data/core/editor/items.cfg:1002
+#: data/core/editor/items.cfg:1141
 msgid "Slab"
 msgstr "Phiến đá"
 
 #. [item]: id=snowbits
 #. [item]: id=snowbits2
-#: data/core/editor/items.cfg:1008 data/core/editor/items.cfg:1014
+#: data/core/editor/items.cfg:1147 data/core/editor/items.cfg:1153
 msgid "Piles of Snow"
 msgstr "Đống tuyết"
 
 #. [item]: id=summoning-center
-#: data/core/editor/items.cfg:1021
+#: data/core/editor/items.cfg:1160
 msgid "Summoning Center"
 msgstr "Trung tâm triệu gọi"
 
@@ -1375,54 +1375,54 @@ msgstr "Trung tâm triệu gọi"
 #. [item]: id=summoning-circle4
 #. [item]: id=summoning-circle5
 #. [item]: id=summoning-circle6
-#: data/core/editor/items.cfg:1027 data/core/editor/items.cfg:1033
-#: data/core/editor/items.cfg:1039 data/core/editor/items.cfg:1045
-#: data/core/editor/items.cfg:1051 data/core/editor/items.cfg:1057
+#: data/core/editor/items.cfg:1166 data/core/editor/items.cfg:1172
+#: data/core/editor/items.cfg:1178 data/core/editor/items.cfg:1184
+#: data/core/editor/items.cfg:1190 data/core/editor/items.cfg:1196
 msgid "Summoning Circle"
 msgstr "Vòng tròn triệu gọi"
 
 #. [item]: id=temple1
-#: data/core/editor/items.cfg:1063
+#: data/core/editor/items.cfg:1202
 msgid "Temple"
 msgstr "Đền"
 
 #. [item]: id=temple-cracked1
 #. [item]: id=temple-cracked2
 #. [item]: id=temple-cracked3
-#: data/core/editor/items.cfg:1069 data/core/editor/items.cfg:1075
-#: data/core/editor/items.cfg:1081
+#: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
+#: data/core/editor/items.cfg:1223
 #, fuzzy
 #| msgid "Ruined Tent"
 msgid "Ruined Temple"
 msgstr "Lều hỏng"
 
 #. [item]: id=tent-fancy-red
-#: data/core/editor/items.cfg:1087
+#: data/core/editor/items.cfg:1230
 msgid "Fancy Red Tent"
 msgstr "Lều đỏ sặc sỡ"
 
 #. [item]: id=tent-ruin-1
-#: data/core/editor/items.cfg:1093
+#: data/core/editor/items.cfg:1237
 msgid "Ruined Tent"
 msgstr "Lều hỏng"
 
 #. [item]: id=tent-shop-weapons
-#: data/core/editor/items.cfg:1098
+#: data/core/editor/items.cfg:1243
 msgid "Weapons Shop Tent"
 msgstr "Lều bán vũ khí"
 
 #. [item]: id=trapdoor-closed
-#: data/core/editor/items.cfg:1105
+#: data/core/editor/items.cfg:1251
 msgid "Closed Trapdoor"
 msgstr "Cửa chui đóng"
 
 #. [item]: id=trapdoor-open
-#: data/core/editor/items.cfg:1111
+#: data/core/editor/items.cfg:1257
 msgid "Open Trapdoor"
 msgstr "Cửa chui mở"
 
 #. [item]: id=trash
-#: data/core/editor/items.cfg:1117
+#: data/core/editor/items.cfg:1263
 msgid "Trash Pile"
 msgstr "Đống rác"
 
@@ -1430,23 +1430,23 @@ msgstr "Đống rác"
 #. [item]: id=village-human-burned2
 #. [item]: id=village-human-burned3
 #. [item]: id=village-human-burned4
-#: data/core/editor/items.cfg:1123 data/core/editor/items.cfg:1129
-#: data/core/editor/items.cfg:1135 data/core/editor/items.cfg:1141
+#: data/core/editor/items.cfg:1270 data/core/editor/items.cfg:1277
+#: data/core/editor/items.cfg:1284 data/core/editor/items.cfg:1291
 msgid "Burned Human Village"
 msgstr "Làng của con người bị đốt"
 
 #. [item]: id=well
-#: data/core/editor/items.cfg:1146
+#: data/core/editor/items.cfg:1297
 msgid "Well"
 msgstr "Giếng"
 
 #. [item]: id=whirlpool
-#: data/core/editor/items.cfg:1152
+#: data/core/editor/items.cfg:1303
 msgid "Whirlpool"
 msgstr "Xoáy nước"
 
 #. [item]: id=windmill
-#: data/core/editor/items.cfg:1160
+#: data/core/editor/items.cfg:1311
 msgid "Windmill"
 msgstr "Cối xay gió"
 
@@ -1774,26 +1774,26 @@ msgid "Don’t make a wish."
 msgstr "Không ra điều ước."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:207
+#: data/core/macros/items.cfg:209
 msgid "Potion of Healing"
 msgstr "Liều thuốc trị thương"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:210
+#: data/core/macros/items.cfg:212
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Một cảm giác sung sướng bao trùm người uống."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:211
+#: data/core/macros/items.cfg:213
 msgid "You are not worthy of healing."
 msgstr "Bạn không xứng đáng để được trị thương."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:249
+#: data/core/macros/items.cfg:252
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Trong khoảnh khắc, chất độc thấm qua các mạch máu của đơn vị này."
 
-#: data/core/macros/items.cfg:278
+#: data/core/macros/items.cfg:281
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
@@ -1801,22 +1801,22 @@ msgstr ""
 "Vẩy nước này lên các vũ khí cận chiến sẽ ban cho chúng kiểu thiệt hại <i>bí "
 "kíp</i> đến hết màn chơi hiện thời. $unit.name có nên sử dụng nó không?"
 
-#: data/core/macros/items.cfg:279
+#: data/core/macros/items.cfg:282
 msgid "holy water^Take it"
 msgstr "Giữ lấy"
 
-#: data/core/macros/items.cfg:280
+#: data/core/macros/items.cfg:283
 msgid "holy water^Leave it"
 msgstr "Bỏ lại"
 
-#: data/core/macros/items.cfg:281
+#: data/core/macros/items.cfg:284
 #, fuzzy
 #| msgid "I am not suited to the use of this item! Let another take it."
 msgid "$unit.name has no need for this Holy Water! Let another take it."
 msgstr "Tôi không thích hợp để sử dụng thứ này! Để người khác lấy nó."
 
 #. [object]
-#: data/core/macros/items.cfg:286
+#: data/core/macros/items.cfg:289
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
@@ -1825,81 +1825,81 @@ msgstr ""
 "hết màn chơi hiện thời."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:316
+#: data/core/macros/items.cfg:320
 msgid "Potion of Strength"
 msgstr "Liều thuốc sức mạnh"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:319
+#: data/core/macros/items.cfg:323
 msgid "Strength is given to the drinker."
 msgstr "Người uống được ban sức mạnh."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:360
+#: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
 msgstr "Liều thuốc hủy hoại"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:363
+#: data/core/macros/items.cfg:368
 msgid "This poor unit drank something really bad."
 msgstr "Đơn vị tội nghiệp này đã uống một thứ rất có hại."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:398
+#: data/core/macros/items.cfg:404
 msgid "Ring of Regeneration"
 msgstr "Nhẫn tái tạo"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:401
+#: data/core/macros/items.cfg:407
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Chiếc nhẫn này sẽ hồi cho người đeo một ít máu ở mỗi lượt."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:438
+#: data/core/macros/items.cfg:445
 msgid "Ring of Slowness"
 msgstr "Nhẫn chậm chạp"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:441
+#: data/core/macros/items.cfg:448
 msgid "The bearer of this ring is slowed."
 msgstr "Người đeo chiếc nhẫn này đã bị chậm."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:476
+#: data/core/macros/items.cfg:484
 msgid "Staff of Swiftness"
 msgstr "Gậy thần tốc"
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:479
+#: data/core/macros/items.cfg:487
 msgid "This staff will grant the bearer swift movement."
 msgstr "Cây gậy này sẽ ban cho người cầm nó tốc độ di chuyển nhanh chóng."
 
 #. [object]: id={ID}
-#: data/core/macros/items.cfg:480
+#: data/core/macros/items.cfg:488
 msgid "Only magical beings can wield such an object."
 msgstr ""
 "Chỉ những đơn vị quân phép thuật mới có thể sử dụng một vật như thế này."
 
-#: data/core/macros/items.cfg:524
+#: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
 msgstr "$unit.name có nên lấy cây đinh ba không?"
 
-#: data/core/macros/items.cfg:525
+#: data/core/macros/items.cfg:533
 msgid "storm trident^Take it"
 msgstr "Giữ lấy"
 
-#: data/core/macros/items.cfg:526
+#: data/core/macros/items.cfg:534
 msgid "storm trident^Leave it"
 msgstr "Bỏ lại"
 
-#: data/core/macros/items.cfg:527
+#: data/core/macros/items.cfg:535
 msgid ""
 "$unit.name cannot use this Storm Trident! Let one of the merfolk who can "
 "wield it have it."
 msgstr ""
 
 #. [object]
-#: data/core/macros/items.cfg:532
+#: data/core/macros/items.cfg:540
 #, fuzzy
 #| msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgid ""
@@ -1907,7 +1907,7 @@ msgid ""
 msgstr "Cây đinh ba này cho phép người cá bắn tia lửa điện vào kẻ thù!"
 
 #. [effect]: type=fire
-#: data/core/macros/items.cfg:560
+#: data/core/macros/items.cfg:568
 msgid "sceptre of fire"
 msgstr "vương trượng lửa"
 
@@ -3918,7 +3918,7 @@ msgstr "Th11"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:634
+#: src/hotkey/command_executor.cpp:635
 msgid "Screenshot"
 msgstr "Chụp màn hình"
 
@@ -3960,48 +3960,48 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:125 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
 msgid "female^poisoned"
 msgstr "bị nhiễm độc"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
 msgid "female^slowed"
 msgstr "bị chậm"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
 msgid "slowed"
 msgstr "bị chậm"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
 msgid "female^petrified"
 msgstr "bị hóa đá"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:128 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
 msgid "petrified"
 msgstr "bị hóa đá"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:128
 msgid "female^unhealable"
 msgstr "không thể hồi máu"
 
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:129
+#: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
 msgstr "không thể hồi máu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3229
-#: src/scripting/game_lua_kernel.cpp:3264
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3226
+#: src/scripting/game_lua_kernel.cpp:3261
 msgid "input"
 msgstr ""
 
@@ -5191,13 +5191,13 @@ msgstr ""
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
-#: src/actions/advancement.cpp:258
+#: src/actions/advancement.cpp:259
 #, fuzzy
 #| msgid "No advancement"
 msgid "waiting for^an advancement choice"
 msgstr "Không nâng cấp"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1376
+#: src/actions/attack.cpp:604 src/actions/attack.cpp:1395
 msgid "An invalid attacker weapon got selected."
 msgstr "Đã chọn một vũ khí tấn công không hợp lệ."
 
@@ -5291,19 +5291,19 @@ msgstr[0] "Nhìn thấy $friends đơn vị bạn"
 msgid "(press $hotkey to keep moving)"
 msgstr "(nhấn $hotkey để tiếp tục di chuyển)"
 
-#: src/addon/client.cpp:80
+#: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
 msgstr "Đang kết nối đến $server_address|..."
 
-#: src/addon/client.cpp:127
+#: src/addon/client.cpp:128
 msgid "Downloading list of add-ons..."
 msgstr "Đang tải về danh sách phần bổ sung..."
 
-#: src/addon/client.cpp:148
+#: src/addon/client.cpp:149
 msgid "Requesting distribution terms..."
 msgstr "Đang lấy điều khoản phân phối..."
 
-#: src/addon/client.cpp:172
+#: src/addon/client.cpp:173
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
@@ -5315,7 +5315,7 @@ msgstr ""
 "Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
 "lệ và không thể cài đặt được."
 
-#: src/addon/client.cpp:184
+#: src/addon/client.cpp:185
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
@@ -5327,7 +5327,7 @@ msgstr ""
 "Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
 "lệ và không thể cài đặt được."
 
-#: src/addon/client.cpp:192
+#: src/addon/client.cpp:193
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be published. File or directory names may not contain '..' or end "
@@ -5337,7 +5337,7 @@ msgid ""
 "&quot; * / : &lt; &gt; ? \\ | ~"
 msgstr ""
 
-#: src/addon/client.cpp:203
+#: src/addon/client.cpp:204
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
@@ -5350,37 +5350,47 @@ msgstr ""
 "Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
 "lệ và không thể cài đặt được."
 
-#: src/addon/client.cpp:210
+#: src/addon/client.cpp:211
 msgid ""
-"The connection to the remote server is not secure. The add-on <i>"
-"$addon_title</i> cannot be uploaded."
+"The connection to the remote server is not secure. The add-on "
+"<i>$addon_title</i> cannot be uploaded."
 msgstr ""
 
-#: src/addon/client.cpp:223
+#: src/addon/client.cpp:224
 #, fuzzy
 #| msgid "Requesting distribution terms..."
 msgid "Requesting file index..."
 msgstr "Đang lấy điều khoản phân phối..."
 
-#: src/addon/client.cpp:239
+#: src/addon/client.cpp:240
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgstr "Đang gửi phần bổ sung <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:260
+#: src/addon/client.cpp:261
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Đang gửi phần bổ sung <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:306
+#: src/addon/client.cpp:307
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Đang xóa phần bổ sung <i>$addon_title</i> khỏi máy chủ..."
 
-#: src/addon/client.cpp:335
+#: src/addon/client.cpp:336
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Đang tải về phần bổ sung <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:354 src/addon/client.cpp:380
+#: src/addon/client.cpp:348 src/addon/client.cpp:709
+msgid "Add-ons Manager"
+msgstr "Quản lý phần bổ sung"
+
+#: src/addon/client.cpp:348
+#, fuzzy
+#| msgid "Sending add-on <i>$addon_title</i>..."
+msgid "Installing add-on <i>$addon_title</i>..."
+msgstr "Đang gửi phần bổ sung <i>$addon_title</i>..."
+
+#: src/addon/client.cpp:360 src/addon/client.cpp:386
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5388,7 +5398,7 @@ msgstr ""
 "Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
 "lệ và không thể cài đặt được."
 
-#: src/addon/client.cpp:359 src/addon/client.cpp:385
+#: src/addon/client.cpp:365 src/addon/client.cpp:391
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
@@ -5400,11 +5410,11 @@ msgstr ""
 "Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
 "lệ và không thể cài đặt được."
 
-#: src/addon/client.cpp:418
+#: src/addon/client.cpp:424
 msgid "The server responded with an error:"
 msgstr "Máy chủ đã trả lời bằng lỗi:"
 
-#: src/addon/client.cpp:473
+#: src/addon/client.cpp:479
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5415,11 +5425,11 @@ msgstr[0] ""
 "Phần bổ sung được chọn có thành phần phụ thuộc sau đây, hiện chưa được cài "
 "đặt hoặc không có từ máy chủ. Bạn có muốn tiếp tục không?"
 
-#: src/addon/client.cpp:482
+#: src/addon/client.cpp:488
 msgid "Broken Dependencies"
 msgstr "Thành phần phụ thuộc bị hỏng"
 
-#: src/addon/client.cpp:522
+#: src/addon/client.cpp:528
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5429,11 +5439,11 @@ msgid_plural ""
 msgstr[0] ""
 "Thành phần phụ thuộc sau đây không thể cài đặt được. Bạn vẫn muốn tiếp tục?"
 
-#: src/addon/client.cpp:526
+#: src/addon/client.cpp:532
 msgid "Dependencies Installation Failed"
 msgstr "Cài đặt thành phần phụ thuộc thất bại"
 
-#: src/addon/client.cpp:549
+#: src/addon/client.cpp:555
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5441,26 +5451,22 @@ msgstr ""
 "Phần bổ sung '$addon|' đã được cài đặt và chứa các thông tin thêm, chúng sẽ "
 "bị mất vĩnh viễn nếu bạn tiếp tục:"
 
-#: src/addon/client.cpp:553
+#: src/addon/client.cpp:559
 msgid "Publishing information file (.pbl)"
 msgstr "Tập tin thông tin phát hành (.pbl)"
 
-#: src/addon/client.cpp:557
+#: src/addon/client.cpp:563
 msgid "Version control system (VCS) information"
 msgstr "Thông tin hệ thống kiểm soát phiên bản (VCS)"
 
-#: src/addon/client.cpp:561
+#: src/addon/client.cpp:567
 msgid "Do you really wish to continue?"
 msgstr "Bạn có thực sự muốn tiếp tục không?"
 
-#: src/addon/client.cpp:563 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Xác nhận"
-
-#: src/addon/client.cpp:703
-msgid "Add-ons Manager"
-msgstr "Quản lý phần bổ sung"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Campaign"
@@ -5761,55 +5767,55 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Đã thêm vào danh sách từ chối: $nick"
 
-#: src/chat_command_handler.cpp:76
+#: src/chat_command_handler.cpp:82
 msgid "ignores list"
 msgstr "danh sach từ chối"
 
-#: src/chat_command_handler.cpp:80 src/chat_command_handler.cpp:99
+#: src/chat_command_handler.cpp:86 src/chat_command_handler.cpp:105
 msgid "Invalid username: $nick"
 msgstr "Tên người dùng không hợp lệ: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "Added to friends list: $nick"
 msgstr "Đã thêm vào danh sách bạn bè: $nick"
 
-#: src/chat_command_handler.cpp:95
+#: src/chat_command_handler.cpp:101
 msgid "friends list"
 msgstr "danh sách bạn bè"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "Removed from list: $nick"
 msgstr "Đã xóa khỏi danh sách: $nick"
 
-#: src/chat_command_handler.cpp:111
+#: src/chat_command_handler.cpp:117
 msgid "friends and ignores list"
 msgstr "danh sách bạn bè và từ chối"
 
-#: src/chat_command_handler.cpp:121
+#: src/chat_command_handler.cpp:127
 msgid "version"
 msgstr "phiên bản"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "nick registration"
 msgstr "đăng ký biệt danh"
 
-#: src/chat_command_handler.cpp:133
+#: src/chat_command_handler.cpp:139
 msgid "requesting information for user $nick"
 msgstr "lấy thông tin về người dùng $nick"
 
-#: src/chat_command_handler.hpp:49
+#: src/chat_command_handler.hpp:51
 msgid "(A) — admin command"
 msgstr "(A) - lệnh quản trị"
 
-#: src/chat_command_handler.hpp:56 src/menu_events.cpp:1194
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1194
 msgid "(admin only)"
 msgstr "(chỉ quản trị)"
 
-#: src/chat_command_handler.hpp:72
+#: src/chat_command_handler.hpp:74
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -5817,7 +5823,7 @@ msgstr ""
 "Gửi truy vấn đến máy chủ. Không có tham số, máy chủ sẽ cho bạn biết các lệnh "
 "sẵn có."
 
-#: src/chat_command_handler.hpp:76
+#: src/chat_command_handler.hpp:78
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -5825,47 +5831,47 @@ msgstr ""
 "Cấm và đuổi một người chơi hoặc người quan sát. Nếu người đó không tham gia "
 "chơi nhưng ở trên máy chủ, người đó sẽ chỉ bị cấm."
 
-#: src/chat_command_handler.hpp:77 src/chat_command_handler.hpp:80
-#: src/chat_command_handler.hpp:82 src/chat_command_handler.hpp:84
-#: src/chat_command_handler.hpp:86 src/chat_command_handler.hpp:107
-#: src/chat_command_handler.hpp:109 src/chat_command_handler.hpp:111
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:79 src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84 src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88 src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111 src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:119
 msgid "<nickname>"
 msgstr "<biệt danh>"
 
-#: src/chat_command_handler.hpp:79
+#: src/chat_command_handler.hpp:81
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Bỏ lệnh cấm một người. Người đó không nhất thiết phải đang chơi mà có thể ở "
 "trên máy chủ."
 
-#: src/chat_command_handler.hpp:82
+#: src/chat_command_handler.hpp:84
 msgid "Kick a player or observer."
 msgstr "Đuổi một người chơi hoặc người quan sát."
 
-#: src/chat_command_handler.hpp:84
+#: src/chat_command_handler.hpp:86
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
 "Chặn tiếng một người quan sát. Không có tham số thì hiển thị trạng thái chặn "
 "tiếng."
 
-#: src/chat_command_handler.hpp:86
+#: src/chat_command_handler.hpp:88
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr ""
 "Bỏ chặn tiếng một người quan sát. Không có tham số thì bỏ chặn tiếng mọi "
 "người."
 
-#: src/chat_command_handler.hpp:88
+#: src/chat_command_handler.hpp:90
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Chặn/Bỏ chặn tiếng mọi người quan sát. (bật tắt)"
 
-#: src/chat_command_handler.hpp:90
+#: src/chat_command_handler.hpp:92
 msgid ""
 "Send some data to the server. Can be used to verify the network connection "
 "and notice disconnects."
 msgstr ""
 
-#: src/chat_command_handler.hpp:92
+#: src/chat_command_handler.hpp:94
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -5873,15 +5879,15 @@ msgstr ""
 "Báo cáo hành vi gây rối, vi phạm quy định, v.v... đến người điều hành máy "
 "chủ. Nhớ đề cập đến tên người chơi vi phạm hoặc có liên quan."
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "<message>"
 msgstr "<tin nhắn>"
 
-#: src/chat_command_handler.hpp:96
+#: src/chat_command_handler.hpp:98
 msgid "Send an emotion or personal action in chat."
 msgstr "Gửi biểu tượng cảm xúc hoặc hành động riêng tư khi tán gẫu."
 
-#: src/chat_command_handler.hpp:99
+#: src/chat_command_handler.hpp:101
 #, fuzzy
 #| msgid ""
 #| "Sends a private message. You cannot send private messages to players in a "
@@ -5893,48 +5899,48 @@ msgstr ""
 "Gửi tin nhắn riêng. Bạn không thể gửi tin nhắn riêng đến những người chơi "
 "trong một trò chơi mà bạn quan sát hoặc đang chơi."
 
-#: src/chat_command_handler.hpp:101
+#: src/chat_command_handler.hpp:103
 msgid "<nickname> <message>"
 msgstr "<biệt danh> <tin nhắn>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "<level> <domain>"
 msgstr "<cấp độ> <miền>"
 
-#: src/chat_command_handler.hpp:105
+#: src/chat_command_handler.hpp:107
 msgid "Change the log level of a log domain."
 msgstr "Thay đổi cấp độ ghi lưu của một phạm vi ghi lưu."
 
-#: src/chat_command_handler.hpp:107
+#: src/chat_command_handler.hpp:109
 msgid "Add a nickname to your ignores list."
 msgstr "Thêm một biệt danh vào danh sách từ chối của bạn."
 
-#: src/chat_command_handler.hpp:109
+#: src/chat_command_handler.hpp:111
 msgid "Add a nickname to your friends list."
 msgstr "Thêm một biệt danh vào danh sách bạn bè của bạn."
 
-#: src/chat_command_handler.hpp:111
+#: src/chat_command_handler.hpp:113
 msgid "Remove a nickname from your ignores or friends list."
 msgstr ""
 "Xóa một biệt danh khỏi danh sách từ chối hoặc danh sách bạn bè của bạn."
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "<N>"
 msgstr ""
 
-#: src/chat_command_handler.hpp:113
+#: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
 
-#: src/chat_command_handler.hpp:115
+#: src/chat_command_handler.hpp:117
 msgid "Display version information."
 msgstr "Hiển thị thông tin phiên bản."
 
-#: src/chat_command_handler.hpp:117
+#: src/chat_command_handler.hpp:119
 msgid "Request information about a nickname."
 msgstr "Lấy thông tin về một biệt danh."
 
-#: src/chat_command_handler.hpp:119 src/menu_events.cpp:1244
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1244
 msgid "Clear chat history."
 msgstr "Xóa lịch sử tán gẫu."
 
@@ -5982,11 +5988,11 @@ msgstr ""
 msgid "$elem has been deprecated and removed."
 msgstr ""
 
-#: src/desktop/notifications.cpp:83
+#: src/desktop/notifications.cpp:78
 msgid "Chat message"
 msgstr "Tin nhắn tán gẫu"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:580
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:582
 msgid "The Battle for Wesnoth"
 msgstr "Trận chiến vì Wesnoth"
 
@@ -6024,68 +6030,68 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:528
+#: src/game_config.cpp:530
 #, fuzzy
 #| msgid "Invalid color range: "
 msgid "Invalid color in range: "
 msgstr "Phạm vi màu không hợp lệ: "
 
-#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
-#: src/game_config_manager.cpp:265
+#: src/game_config_manager.cpp:244 src/game_config_manager.cpp:254
+#: src/game_config_manager.cpp:266
 msgid "Error validating data core."
 msgstr ""
 
-#: src/game_config_manager.cpp:244
+#: src/game_config_manager.cpp:245
 msgid "Found a core without id attribute."
 msgstr ""
 
-#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:269
+#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:257
+#: src/game_config_manager.cpp:270
 msgid "Skipping the core."
 msgstr ""
 
-#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
-#: src/game_config_manager.cpp:289
+#: src/game_config_manager.cpp:255 src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:290
 msgid "Core ID: "
 msgstr ""
 
-#: src/game_config_manager.cpp:255
+#: src/game_config_manager.cpp:256
 msgid "The ID is already in use."
 msgstr ""
 
-#: src/game_config_manager.cpp:267
+#: src/game_config_manager.cpp:268
 msgid "Core Path: "
 msgstr ""
 
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:269
 #, fuzzy
 #| msgid "Variable not found"
 msgid "File not found."
 msgstr "Không tìm thấy biến"
 
-#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
+#: src/game_config_manager.cpp:289 src/game_config_manager.cpp:301
 msgid "Error loading core data."
 msgstr ""
 
-#: src/game_config_manager.cpp:290
+#: src/game_config_manager.cpp:291
 msgid "Error loading the core with named id."
 msgstr ""
 
-#: src/game_config_manager.cpp:291
+#: src/game_config_manager.cpp:292
 msgid "Falling back to the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:301
+#: src/game_config_manager.cpp:302
 msgid "Can't locate the default core."
 msgstr ""
 
-#: src/game_config_manager.cpp:302
+#: src/game_config_manager.cpp:303
 #, fuzzy
 #| msgid "' (The game will now exit)"
 msgid "The game will now exit."
 msgstr "' (Trò chơi sẽ thoát ngay bây giờ)"
 
-#: src/game_config_manager.cpp:360
+#: src/game_config_manager.cpp:364
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -6093,7 +6099,7 @@ msgid ""
 "loading add-ons."
 msgstr "Lỗi khi tải các tập tin cấu hình trò chơi. Trò chơi bây giờ sẽ thoát."
 
-#: src/game_config_manager.cpp:367
+#: src/game_config_manager.cpp:371
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -6101,7 +6107,7 @@ msgid ""
 "default core files."
 msgstr "Lỗi khi tải các tập tin cấu hình trò chơi. Trò chơi bây giờ sẽ thoát."
 
-#: src/game_config_manager.cpp:376
+#: src/game_config_manager.cpp:380
 #, fuzzy
 #| msgid "Error loading game configuration files. The game will now exit."
 msgid ""
@@ -6111,23 +6117,23 @@ msgstr "Lỗi khi tải các tập tin cấu hình trò chơi. Trò chơi bây g
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:537
+#: src/game_config_manager.cpp:541
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
 
-#: src/game_config_manager.cpp:575
+#: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 
-#: src/game_config_manager.cpp:630
+#: src/game_config_manager.cpp:634
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Phần bổ sung sau có lỗi và không thể tải được:"
 
-#: src/game_config_manager.cpp:634
+#: src/game_config_manager.cpp:638
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -6135,19 +6141,19 @@ msgstr[0] ""
 "Xin báo cáo lỗi này với tác giả hoặc người bảo trì tương ứng của các phần bổ "
 "sung này."
 
-#: src/game_events/pump.cpp:391 src/game_launcher.cpp:948
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:956
 msgid "Error: "
 msgstr "Lỗi: "
 
-#: src/game_events/pump.cpp:393
+#: src/game_events/pump.cpp:394
 msgid "Warning: "
 msgstr "Cảnh báo: "
 
-#: src/game_events/pump.cpp:395
+#: src/game_events/pump.cpp:396
 msgid "Debug: "
 msgstr "Gỡ lỗi: "
 
-#: src/game_events/pump.cpp:397
+#: src/game_events/pump.cpp:398
 msgid "Info: "
 msgstr "Thông tin: "
 
@@ -6159,34 +6165,34 @@ msgstr "Trò chơi của $login"
 msgid "Team"
 msgstr "Đội"
 
-#: src/game_initialization/connect_engine.cpp:954
+#: src/game_initialization/connect_engine.cpp:953
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "NC cục bộ ẩn danh"
 
-#: src/game_initialization/connect_engine.cpp:959
-#: src/game_initialization/connect_engine.cpp:1257
+#: src/game_initialization/connect_engine.cpp:958
+#: src/game_initialization/connect_engine.cpp:1256
 msgid "Computer Player"
 msgstr "Máy tính"
 
-#: src/game_initialization/connect_engine.cpp:1001
+#: src/game_initialization/connect_engine.cpp:1000
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1253
+#: src/game_initialization/connect_engine.cpp:1252
 msgid "Network Player"
 msgstr "NC mạng"
 
-#: src/game_initialization/connect_engine.cpp:1256
+#: src/game_initialization/connect_engine.cpp:1255
 msgid "Local Player"
 msgstr "NC cục bộ"
 
-#: src/game_initialization/connect_engine.cpp:1258
+#: src/game_initialization/connect_engine.cpp:1257
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1261
+#: src/game_initialization/connect_engine.cpp:1260
 msgid "Reserved"
 msgstr "Dành riêng"
 
@@ -6328,14 +6334,14 @@ msgstr "Giới hạn thời gian"
 
 #: src/game_initialization/lobby_data.cpp:446
 msgid ""
-"The host's version of <i>$addon</i> is incompatible. They have version <b>"
-"$host_ver</b> while you have version <b>$local_ver</b>."
+"The host's version of <i>$addon</i> is incompatible. They have version "
+"<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
 #: src/game_initialization/lobby_data.cpp:460
 msgid ""
-"Your version of <i>$addon</i> is incompatible. You have version <b>"
-"$local_ver</b> while the host has version <b>$host_ver</b>."
+"Your version of <i>$addon</i> is incompatible. You have version "
+"<b>$local_ver</b> while the host has version <b>$host_ver</b>."
 msgstr ""
 
 #: src/game_initialization/mp_game_utils.cpp:78
@@ -6490,75 +6496,75 @@ msgstr "Bạn đã thử đăng nhập quá nhiều lần."
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:76
+#: src/game_initialization/playcampaign.cpp:77
 msgid "Scenario Report"
 msgstr "Báo cáo màn chơi"
 
-#: src/game_initialization/playcampaign.cpp:78
+#: src/game_initialization/playcampaign.cpp:79
 msgid "Victory"
 msgstr "Chiến thắng"
 
-#: src/game_initialization/playcampaign.cpp:79
+#: src/game_initialization/playcampaign.cpp:80
 msgid "You have emerged victorious!"
 msgstr "Bạn đã giành chiến thắng!"
 
-#: src/game_initialization/playcampaign.cpp:81
+#: src/game_initialization/playcampaign.cpp:82
 msgid "Defeat"
 msgstr "Thua cuộc"
 
-#: src/game_initialization/playcampaign.cpp:82
+#: src/game_initialization/playcampaign.cpp:83
 msgid "You have been defeated!"
 msgstr "Bạn đã bị đánh bại!"
 
-#: src/game_initialization/playcampaign.cpp:118
+#: src/game_initialization/playcampaign.cpp:119
 msgid "Remaining gold: "
 msgstr "Lượng vàng còn lại: "
 
-#: src/game_initialization/playcampaign.cpp:122
+#: src/game_initialization/playcampaign.cpp:123
 msgid "Turns finished early: "
 msgstr "Số lượt kết thúc sớm: "
 
-#: src/game_initialization/playcampaign.cpp:123
+#: src/game_initialization/playcampaign.cpp:124
 #, fuzzy
 #| msgid "per turn"
 msgid " per turn"
 msgstr "mỗi lượt"
 
-#: src/game_initialization/playcampaign.cpp:123
+#: src/game_initialization/playcampaign.cpp:124
 msgid "Early finish bonus: "
 msgstr "Thưởng kết thúc sớm: "
 
-#: src/game_initialization/playcampaign.cpp:124
+#: src/game_initialization/playcampaign.cpp:125
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Total bonus: "
 msgstr "Thời gian lượt: "
 
-#: src/game_initialization/playcampaign.cpp:127
+#: src/game_initialization/playcampaign.cpp:128
 #, fuzzy
 #| msgid "Village gold: "
 msgid "Total gold: "
 msgstr "Vàng mỗi làng: "
 
-#: src/game_initialization/playcampaign.cpp:131
+#: src/game_initialization/playcampaign.cpp:132
 #, fuzzy
 #| msgid "Carry over percentage: "
 msgid "Carryover percentage: "
 msgstr "Phần trăm mang theo: "
 
-#: src/game_initialization/playcampaign.cpp:135
+#: src/game_initialization/playcampaign.cpp:136
 #, fuzzy
 #| msgid "Bonus Gold: "
 msgid "Bonus gold: "
 msgstr "Lượng vàng thưởng: "
 
-#: src/game_initialization/playcampaign.cpp:137
+#: src/game_initialization/playcampaign.cpp:138
 #, fuzzy
 #| msgid "Retained Gold: "
 msgid "Retained gold: "
 msgstr "Lượng vàng giữ lại: "
 
-#: src/game_initialization/playcampaign.cpp:150
+#: src/game_initialization/playcampaign.cpp:151
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -6569,7 +6575,7 @@ msgstr[0] ""
 "Bạn sẽ bắt đầu màn chơi tiếp theo với $gold lượng vàng thêm vào lượng vàng "
 "tối thiểu của màn chơi."
 
-#: src/game_initialization/playcampaign.cpp:157
+#: src/game_initialization/playcampaign.cpp:158
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -6577,7 +6583,7 @@ msgid_plural ""
 msgstr[0] ""
 "Bạn sẽ bắt đầu màn chơi tiếp theo với lượng vàng tối thiểu của màn chơi."
 
-#: src/game_initialization/playcampaign.cpp:164
+#: src/game_initialization/playcampaign.cpp:165
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -6588,37 +6594,37 @@ msgstr[0] ""
 "Bạn sẽ bắt đầu màn chơi tiếp theo với $gold lượng vàng hoặc lượng vàng tối "
 "thiểu của màn chơi, tùy vào lượng vàng nào nhiều hơn."
 
-#: src/game_initialization/playcampaign.cpp:291 src/game_launcher.cpp:901
+#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Không thể tải trò chơi: "
 
-#: src/game_initialization/playcampaign.cpp:297 src/game_launcher.cpp:903
+#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Lỗi khi chơi trò chơi: "
 
-#: src/game_initialization/playcampaign.cpp:300 src/game_launcher.cpp:940
+#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "Không thể tải bản đồ trò chơi: "
 
-#: src/game_initialization/playcampaign.cpp:303 src/game_launcher.cpp:905
-#: src/game_launcher.cpp:1021
+#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:305
+#: src/game_initialization/playcampaign.cpp:306
 msgid "Error while reading the WML: "
 msgstr "Lỗi khi đọc WML: "
 
-#: src/game_initialization/playcampaign.cpp:352
-#: src/playsingle_controller.cpp:330
+#: src/game_initialization/playcampaign.cpp:353
+#: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Trò chơi kết thúc"
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:354
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Màn chơi này đã kết thúc. Bạn có muốn tiếp tục chiến dịch không?"
 
-#: src/game_initialization/playcampaign.cpp:421
+#: src/game_initialization/playcampaign.cpp:422
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Màn không xác định: '$scenario|'"
 
@@ -6628,29 +6634,29 @@ msgstr "Màn không xác định: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Không có chiến dịch nào.\n"
 
-#: src/game_launcher.cpp:706 src/game_launcher.cpp:725
+#: src/game_launcher.cpp:714 src/game_launcher.cpp:733
 msgid "The file you have tried to load is corrupt"
 msgstr "Tập tin bạn cố tải bị hỏng"
 
-#: src/game_launcher.cpp:708 src/game_launcher.cpp:727
+#: src/game_launcher.cpp:716 src/game_launcher.cpp:735
 #: src/hotkey/hotkey_handler_sp.cpp:316 src/savegame.cpp:154
 #: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tập tin bạn cố tải bị hỏng: '"
 
-#: src/game_launcher.cpp:717
+#: src/game_launcher.cpp:725
 msgid "File I/O Error while reading the game"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi"
 
-#: src/game_launcher.cpp:719
+#: src/game_launcher.cpp:727
 msgid "File I/O Error while reading the game: '"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi: '"
 
-#: src/game_launcher.cpp:899
+#: src/game_launcher.cpp:907
 msgid "Error while starting server: "
 msgstr "Lỗi khi khởi động máy chủ: "
 
-#: src/game_launcher.cpp:921
+#: src/game_launcher.cpp:929
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -6698,61 +6704,61 @@ msgstr[0] ""
 msgid "No visible sides found."
 msgstr "Không tìm thấy phe nhiều người chơi nào"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:165
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:173
 #, fuzzy
 #| msgid "Selected user: "
 msgid "Selected Game"
 msgstr "Người dùng được chọn: "
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:166
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:174
 #, fuzzy
 #| msgid "Game Lobby"
 msgid "Lobby"
 msgstr "Phòng gặp gỡ trò chơi"
 
-#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:167
+#: src/gui/dialogs/multiplayer/lobby_player_list_helper.cpp:175
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other Games"
 msgstr "Quan sát trò chơi"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:31
+#: src/gui/dialogs/multiplayer/match_history.cpp:32
 msgid "Match History — $player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:106
+#: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
 msgstr "Trong trò chơi:"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:108
+#: src/gui/dialogs/multiplayer/player_info.cpp:109
 msgid "(observing)"
 msgstr "(đang quan sát)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:110
+#: src/gui/dialogs/multiplayer/player_info.cpp:111
 msgid "(playing)"
 msgstr "(đang chơi)"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:113
+#: src/gui/dialogs/multiplayer/player_info.cpp:114
 msgid "In lobby"
 msgstr "Trong phòng gặp gỡ"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:142
+#: src/gui/dialogs/multiplayer/player_info.cpp:143
 msgid "On friends list"
 msgstr "Trong danh sách bạn bè"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:147
+#: src/gui/dialogs/multiplayer/player_info.cpp:148
 msgid "On ignores list"
 msgstr "Trong danh sách từ chối"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:152
+#: src/gui/dialogs/multiplayer/player_info.cpp:153
 msgid "Neither a friend nor ignored"
 msgstr "Không là bạn cũng không là người bị từ chối"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:157
+#: src/gui/dialogs/multiplayer/player_info.cpp:158
 msgid "You"
 msgstr "Bạn"
 
-#: src/gui/dialogs/multiplayer/player_info.cpp:160
+#: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "Error"
 msgstr "Lỗi"
 
@@ -6770,155 +6776,155 @@ msgstr "không"
 msgid "yes"
 msgstr "có"
 
-#: src/help/help_browser.cpp:160
+#: src/help/help_browser.cpp:158
 msgid "Reference to unknown topic: "
 msgstr ""
 
-#: src/help/help_impl.cpp:407
+#: src/help/help_impl.cpp:406
 msgid "Only available during a scenario."
 msgstr ""
 
-#: src/help/help_impl.cpp:408 src/help/help_impl.cpp:444
+#: src/help/help_impl.cpp:407 src/help/help_impl.cpp:443
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of Day Schedule"
 msgstr "Thời điểm trong ngày: "
 
-#: src/help/help_impl.cpp:435
+#: src/help/help_impl.cpp:434
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "Đơn vị chính thống: "
 
-#: src/help/help_impl.cpp:436
+#: src/help/help_impl.cpp:435
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "Đơn vị trung lập: "
 
-#: src/help/help_impl.cpp:437
+#: src/help/help_impl.cpp:436
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "Đơn vị hỗn độn: "
 
-#: src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:437
 #, fuzzy
 #| msgid "Liminal units: "
 msgid "Liminal Bonus:"
 msgstr "Đơn vị tính ngưỡng: "
 
-#: src/help/help_impl.cpp:439
+#: src/help/help_impl.cpp:438
 msgid "Schedule"
 msgstr ""
 
-#: src/help/help_impl.cpp:531
+#: src/help/help_impl.cpp:530
 msgid "<header>text='Units with this special attack'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:595
+#: src/help/help_impl.cpp:594
 msgid "<header>text='Units with this ability'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:625
+#: src/help/help_impl.cpp:624
 msgid "Era:"
 msgstr "Thời đại:"
 
-#: src/help/help_impl.cpp:633
+#: src/help/help_impl.cpp:632
 #, fuzzy
 #| msgid "Actions"
 msgid "Factions"
 msgstr "Hành động"
 
-#: src/help/help_impl.cpp:681
+#: src/help/help_impl.cpp:680
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "Chủng tộc: "
 
-#: src/help/help_impl.cpp:690 src/help/help_impl.cpp:1054
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1053
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "Phân loại: "
 
-#: src/help/help_impl.cpp:697
+#: src/help/help_impl.cpp:696
 #, fuzzy
 #| msgid "Leader"
 msgid "Leaders"
 msgstr "Người chỉ huy"
 
-#: src/help/help_impl.cpp:706
+#: src/help/help_impl.cpp:705
 msgid "Recruits"
 msgstr "Tuyển quân"
 
-#: src/help/help_impl.cpp:768 src/units/types.cpp:488
+#: src/help/help_impl.cpp:767 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Không có mô tả."
 
-#: src/help/help_impl.cpp:772 src/help/help_impl.cpp:774
+#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
 #, fuzzy
 #| msgid "Ability: "
 msgid "Availability: "
 msgstr "Khả năng: "
 
-#: src/help/help_impl.cpp:772
+#: src/help/help_impl.cpp:771
 msgid "Must-have"
 msgstr ""
 
-#: src/help/help_impl.cpp:774
+#: src/help/help_impl.cpp:773
 #, fuzzy
 #| msgid "not available."
 msgid "Unavailable"
 msgstr "không khả dụng."
 
-#: src/help/help_impl.cpp:854 src/help/help_impl.cpp:1031
+#: src/help/help_impl.cpp:853 src/help/help_impl.cpp:1030
 msgid "race^Miscellaneous"
 msgstr ""
 
-#: src/help/help_impl.cpp:1054 src/reports.cpp:385
+#: src/help/help_impl.cpp:1053 src/reports.cpp:385
 msgid "Alignment: "
 msgstr "Phân loại: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1073
+#: src/help/help_impl.cpp:1072
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1078
+#: src/help/help_impl.cpp:1077
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1080
+#: src/help/help_impl.cpp:1079
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1089
+#: src/help/help_impl.cpp:1088
 msgid "<header>text='Units of this group'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1091
+#: src/help/help_impl.cpp:1090
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
-#: src/help/help_impl.cpp:1412
+#: src/help/help_impl.cpp:1411
 msgid "corrupted original file"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:397
+#: src/hotkey/command_executor.cpp:398
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to surrender the game?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/hotkey/command_executor.cpp:397
+#: src/hotkey/command_executor.cpp:398
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:810
+#: src/hotkey/command_executor.cpp:811
 msgid "Map-Screenshot"
 msgstr "Chụp màn hình bản đồ"
 
@@ -7654,7 +7660,7 @@ msgstr "Vị trí không hợp lệ"
 msgid "prompt^Command:"
 msgstr "Lệnh:"
 
-#: src/mouse_events.cpp:1174
+#: src/mouse_events.cpp:1178
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7662,7 +7668,7 @@ msgstr ""
 "Bạn không thể di chuyển người chỉ huy khỏi pháo đài khi vẫn còn lệnh tuyển "
 "quân hoặc gọi lại được lập kế hoạch."
 
-#: src/mouse_events.cpp:1269
+#: src/mouse_events.cpp:1273
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
@@ -7714,15 +7720,15 @@ msgstr "Đã gặp phải địa hình với chi phí di chuyển nhỏ hơn 1."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:253
+#: src/play_controller.cpp:255
 msgid "time left for current turn"
 msgstr "thời gian còn lại cho lượt hiện tại"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:257
 msgid "current local time"
 msgstr "giờ cục bộ hiện tại"
 
-#: src/play_controller.cpp:1077
+#: src/play_controller.cpp:1078
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7730,17 +7736,17 @@ msgstr ""
 "Trò chơi bị mất đồng bộ. Tiếp tục có thể sẽ không có nhiều ý nghĩa. Bạn có "
 "muốn lưu trò chơi không?"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1079
 msgid "Error details:"
 msgstr "Chi tiết lỗi:"
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1261
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1266
+#: src/play_controller.cpp:1267
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7748,7 +7754,7 @@ msgid_plural ""
 "finish this campaign."
 msgstr[0] ""
 
-#: src/play_controller.cpp:1273
+#: src/play_controller.cpp:1274
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7757,26 +7763,26 @@ msgid_plural ""
 "$unknown_list|"
 msgstr[0] ""
 
-#: src/play_controller.cpp:1277
+#: src/play_controller.cpp:1278
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1457
+#: src/play_controller.cpp:1458
 msgid "No objectives available"
 msgstr "Không có mục tiêu"
 
-#: src/playmp_controller.cpp:159
+#: src/playmp_controller.cpp:162
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Đang đảo ngược những di chuyển chưa được truyền đến máy chủ."
 
-#: src/playmp_controller.cpp:271 src/playsingle_controller.cpp:375
+#: src/playmp_controller.cpp:276 src/playsingle_controller.cpp:377
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Mạng bị ngắt, và trò chơi không thể tiếp tục. Bạn có muốn lưu trò chơi không?"
 
-#: src/playmp_controller.cpp:275 src/playsingle_controller.cpp:379
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid ""
@@ -7784,7 +7790,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/playmp_controller.cpp:275 src/playsingle_controller.cpp:379
+#: src/playmp_controller.cpp:280 src/playsingle_controller.cpp:381
 #, fuzzy
 #| msgid "The game has been saved."
 msgid ""
@@ -7792,7 +7798,7 @@ msgid ""
 "Reason: "
 msgstr "Đã lưu trò chơi."
 
-#: src/playmp_controller.cpp:384
+#: src/playmp_controller.cpp:389
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -7808,63 +7814,63 @@ msgstr ""
 "\n"
 "Bạn có muốn lưu nhật ký lỗi trò chơi không?"
 
-#: src/playmp_controller.cpp:428
+#: src/playmp_controller.cpp:433
 msgid ""
 "This side is in an idle state. To proceed with the game, it must be assigned "
 "to another controller. You may use :droid, :control or :give_control for "
 "example."
 msgstr ""
 
-#: src/playsingle_controller.cpp:157
+#: src/playsingle_controller.cpp:159
 #, fuzzy
 #| msgid "Error"
 msgid "Game Error"
 msgstr "Lỗi"
 
-#: src/playsingle_controller.cpp:158
+#: src/playsingle_controller.cpp:160
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:330
+#: src/playsingle_controller.cpp:332
 msgid "The game is over."
 msgstr "Trò chơi kết thúc."
 
-#: src/playsingle_controller.cpp:479
+#: src/playsingle_controller.cpp:480
 msgid "It is now $name|’s turn"
 msgstr "Giờ là lượt của $name"
 
-#: src/playturn.cpp:279
+#: src/playturn.cpp:276
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Thêm vàng cho người chơi hiện thời."
 
-#: src/playturn.cpp:288
+#: src/playturn.cpp:285
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Thêm vàng cho người chơi hiện thời."
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:290
 msgid "Replace with AI"
 msgstr "Thay thế bằng máy tính"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:291
 msgid "Replace with local player"
 msgstr "Thay thế bằng NC cục bộ"
 
-#: src/playturn.cpp:295
+#: src/playturn.cpp:292
 msgid "Set side to idle"
 msgstr "Đặt phe thành rảnh rỗi"
 
-#: src/playturn.cpp:296
+#: src/playturn.cpp:293
 msgid "Save and abort game"
 msgstr "Lưu và hủy bỏ trò chơi"
 
-#: src/playturn.cpp:300
+#: src/playturn.cpp:297
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -7959,139 +7965,139 @@ msgstr "Đơn vị này đã bị hóa đá. Nó không thể di chuyển hay t�
 msgid "Ability: "
 msgstr "Khả năng: "
 
-#: src/reports.cpp:434 src/reports.cpp:962
+#: src/reports.cpp:434 src/reports.cpp:978
 msgid " (inactive)"
 msgstr " (không hoạt động)"
 
-#: src/reports.cpp:497
+#: src/reports.cpp:502
 msgid "Resistances: "
 msgstr "Sức kháng cự: "
 
-#: src/reports.cpp:499
+#: src/reports.cpp:504
 msgid "(Att / Def)"
 msgstr "(TC / PT)"
 
-#: src/reports.cpp:530
+#: src/reports.cpp:535
 msgid "Experience Modifier: "
 msgstr "Hệ số kinh nghiệm: "
 
-#: src/reports.cpp:580
+#: src/reports.cpp:585
 msgid "Terrain: "
 msgstr "Địa hình: "
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "maximum^max."
 msgstr "tối đa"
 
-#: src/reports.cpp:597
+#: src/reports.cpp:602
 msgid "minimum^min."
 msgstr "tối thiểu"
 
-#: src/reports.cpp:602
+#: src/reports.cpp:607
 msgid "Defense: "
 msgstr "Phòng thủ: "
 
-#: src/reports.cpp:637 src/reports.cpp:638
+#: src/reports.cpp:642 src/reports.cpp:643
 #, fuzzy
 #| msgid "vision: "
 msgid "vision:"
 msgstr "tầm nhìn: "
 
-#: src/reports.cpp:642 src/reports.cpp:643
+#: src/reports.cpp:647 src/reports.cpp:648
 #, fuzzy
 #| msgid "Warning: "
 msgid "jamming:"
 msgstr "Cảnh báo: "
 
-#: src/reports.cpp:672
+#: src/reports.cpp:677
 msgid "Movement Costs:"
 msgstr "Chi phí di chuyển:"
 
-#: src/reports.cpp:797 src/reports.cpp:1051 src/reports.cpp:1063
+#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
 msgid "Weapon: "
 msgstr "Vũ khí: "
 
-#: src/reports.cpp:798 src/reports.cpp:1052
+#: src/reports.cpp:814 src/reports.cpp:1068
 msgid "Damage: "
 msgstr "Lượng thiệt hại: "
 
-#: src/reports.cpp:802
+#: src/reports.cpp:818
 msgid "Base damage: "
 msgstr "Lượng thiệt hại cơ bản: "
 
-#: src/reports.cpp:804 src/reports.cpp:838 src/reports.cpp:848
+#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
 msgid "With specials: "
 msgstr "Có tính đặc biệt: "
 
-#: src/reports.cpp:807
+#: src/reports.cpp:823
 msgid "Time of day: "
 msgstr "Thời điểm trong ngày: "
 
-#: src/reports.cpp:811
+#: src/reports.cpp:827
 msgid "Leadership: "
 msgstr "Lãnh đạo: "
 
-#: src/reports.cpp:815
+#: src/reports.cpp:831
 msgid "Slowed: "
 msgstr "Bị chậm: "
 
-#: src/reports.cpp:819
+#: src/reports.cpp:835
 msgid "Attacks: "
 msgstr "Đòn tấn công: "
 
-#: src/reports.cpp:823
+#: src/reports.cpp:839
 msgid "Max swarm bonus: "
 msgstr "Thưởng liên hoàn tối đa: "
 
-#: src/reports.cpp:824 src/reports.cpp:843
+#: src/reports.cpp:840 src/reports.cpp:859
 msgid "Swarm: "
 msgstr "Liên hoàn: "
 
-#: src/reports.cpp:825 src/reports.cpp:836 src/reports.cpp:847
+#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
 msgid "Base attacks: "
 msgstr "Đòn tấn công cơ bản: "
 
-#: src/reports.cpp:831
+#: src/reports.cpp:847
 msgid "Specials: "
 msgstr "Tính đặc biệt: "
 
-#: src/reports.cpp:841
+#: src/reports.cpp:857
 msgid "Subject to swarm: "
 msgstr "Chịu liên hoàn: "
 
-#: src/reports.cpp:868
+#: src/reports.cpp:884
 msgid "Weapon range: "
 msgstr "Tầm xa của vũ khí: "
 
-#: src/reports.cpp:869
+#: src/reports.cpp:885
 msgid "Damage type: "
 msgstr "Kiểu thiệt hại: "
 
-#: src/reports.cpp:870
+#: src/reports.cpp:886
 msgid "Damage versus: "
 msgstr "Lượng thiệt hại đối với: "
 
-#: src/reports.cpp:929
+#: src/reports.cpp:945
 msgid "Accuracy:"
 msgstr "Độ chính xác:"
 
-#: src/reports.cpp:934
+#: src/reports.cpp:950
 msgid "Parry:"
 msgstr "Đỡ đòn:"
 
-#: src/reports.cpp:960
+#: src/reports.cpp:976
 msgid "Weapon special: "
 msgstr "Tính đặc biệt của vũ khí: "
 
-#: src/reports.cpp:1035
+#: src/reports.cpp:1051
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1064
+#: src/reports.cpp:1080
 msgid "Total damage"
 msgstr "Tổng thiệt hại"
 
-#: src/reports.cpp:1128
+#: src/reports.cpp:1144
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8099,84 +8105,84 @@ msgid_plural "Attacks"
 msgstr[0] "Người tấn công"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1136
+#: src/reports.cpp:1152
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1140
+#: src/reports.cpp:1156
 #, fuzzy
 #| msgid "This is not a multiplayer save."
 msgid "This unit can attack multiple times per turn."
 msgstr "Đây không phải bản lưu nhiều người chơi."
 
-#: src/reports.cpp:1232
+#: src/reports.cpp:1248
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "Thời điểm trong ngày: "
 
-#: src/reports.cpp:1281
+#: src/reports.cpp:1297
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "Thời điểm trong ngày: "
 
-#: src/reports.cpp:1282 src/reports.cpp:1336
+#: src/reports.cpp:1298 src/reports.cpp:1352
 msgid "Lawful units: "
 msgstr "Đơn vị chính thống: "
 
-#: src/reports.cpp:1284 src/reports.cpp:1338
+#: src/reports.cpp:1300 src/reports.cpp:1354
 msgid "Neutral units: "
 msgstr "Đơn vị trung lập: "
 
-#: src/reports.cpp:1285 src/reports.cpp:1339
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Chaotic units: "
 msgstr "Đơn vị hỗn độn: "
 
-#: src/reports.cpp:1287 src/reports.cpp:1341
+#: src/reports.cpp:1303 src/reports.cpp:1357
 msgid "Liminal units: "
 msgstr "Đơn vị tính ngưỡng: "
 
-#: src/reports.cpp:1400
+#: src/reports.cpp:1416
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Lượt "
 
-#: src/reports.cpp:1402
+#: src/reports.cpp:1418
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1443
 msgid "Gold"
 msgstr "Vàng"
 
-#: src/reports.cpp:1427
+#: src/reports.cpp:1443
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1446
+#: src/reports.cpp:1462
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1446
+#: src/reports.cpp:1462
 msgid "Villages"
 msgstr "Làng"
 
-#: src/reports.cpp:1451
+#: src/reports.cpp:1467
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1451
+#: src/reports.cpp:1467
 #, fuzzy
 #| msgid "units"
 msgid "Units"
 msgstr "đơn vị"
 
-#: src/reports.cpp:1461
+#: src/reports.cpp:1477
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8185,39 +8191,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1461
+#: src/reports.cpp:1477
 msgid "Upkeep"
 msgstr "Phí bảo trì"
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1514
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Thu nhập"
 
-#: src/reports.cpp:1498
+#: src/reports.cpp:1514
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1666
+#: src/reports.cpp:1682
 msgid "Observers:"
 msgstr "Người quan sát:"
 
-#: src/reports.cpp:1708
+#: src/reports.cpp:1724
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1719
+#: src/reports.cpp:1735
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1750
+#: src/reports.cpp:1766
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1750
+#: src/reports.cpp:1766
 msgid "Turn Countdown"
 msgstr ""
 
@@ -8532,7 +8538,7 @@ msgstr ""
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1006
+#: src/team.cpp:1003
 msgid "“$color_id”"
 msgstr ""
 
@@ -8641,90 +8647,90 @@ msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "mỗi lượt"
 
-#: src/units/helper.cpp:60
+#: src/units/helper.cpp:59
 msgid "Level: "
 msgstr "Cấp độ: "
 
-#: src/units/helper.cpp:63
+#: src/units/helper.cpp:62
 #, fuzzy
 #| msgid "Advancements"
 msgid "Advancements:"
 msgstr "Nâng cấp"
 
-#: src/units/helper.cpp:76
+#: src/units/helper.cpp:75
 msgid "No advancement"
 msgstr "Không nâng cấp"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 msgid "chaotic"
 msgstr "hỗn độn"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 #, fuzzy
 #| msgid "female^lawful"
 msgid "lawful"
 msgstr "chính thống"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 msgid "liminal"
 msgstr "tính ngưỡng"
 
-#: src/units/types.cpp:842
+#: src/units/types.cpp:841
 msgid "neutral"
 msgstr "trung lập"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^chaotic"
 msgstr "hỗn độn"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^lawful"
 msgstr "chính thống"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^liminal"
 msgstr "tính ngưỡng"
 
-#: src/units/types.cpp:843
+#: src/units/types.cpp:842
 msgid "female^neutral"
 msgstr "trung lập"
 
-#: src/units/unit.cpp:1858
+#: src/units/unit.cpp:1860
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1864
+#: src/units/unit.cpp:1866
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:1874
+#: src/units/unit.cpp:1876
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "mỗi lượt"
 
-#: src/units/unit.cpp:1880
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:1884
+#: src/units/unit.cpp:1886
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:1889
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:1893
+#: src/units/unit.cpp:1895
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8732,13 +8738,13 @@ msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "mỗi lượt"
 
-#: src/units/unit.cpp:1900
+#: src/units/unit.cpp:1902
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:2341
+#: src/units/unit.cpp:2343
 msgid "$effect_description per level"
 msgstr "$effect_description mỗi cấp độ"
 
@@ -8762,7 +8768,7 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnothd_connection.cpp:543
+#: src/wesnothd_connection.cpp:544
 #, fuzzy
 #| msgid "Connecting to Server..."
 msgid "Disconnected from server."

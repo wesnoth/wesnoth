@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2021 wesnothd "Демон для игры по сети Battle for Wesnoth"
+.TH WESNOTHD 6 2022 wesnothd "Демон для игры по сети Battle for Wesnoth"
 .
 .SH ИМЯ
 .
@@ -179,12 +179,18 @@ filename.pem 4096\fP
 \fB*\fP и \fB?\fP в качестве группового символа.
 .br
 Пример: \fBversions_accepted="*"\fP принимает строку с любой версией.
+.TP 
+\fBid\fP
+The ID of the server when using the database functionality to store game
+information. Generally is the major.minor version of accepted clients, such
+as 1.16 or 1.17.
 .
 .SS "Глобальные тэги:"
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP тэг, указывающий сервер, на который следует перенаправить
+определенные версии клиента. Не используется, если не выставлено
+\fBversions_accepted\fP.
 .RS
 .TP 
 \fBhost\fP
@@ -218,12 +224,13 @@ to. Is not used if \fBversions_accepted\fP is not set.
 ключи, что и \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Настройка блока работы с пользователями. Если секции
+\fB[user_handler]\fP в конфигурационном файле нет, сервер запустится без службы
+регистрации ников. Все дополнительные таблицы, необходимые для работы
+\fBforum_user_handler\fP, можно найти в файле table_definitions.sql, что
+находится в репозитории исходного кода Веснота. Требует включенную поддержку
+MySQL. В cmake она включается при помощи \fBENABLE_MYSQL\fP, а в scons \-
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -239,8 +246,8 @@ this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 Пароль пользвателя
 .TP 
 \fBdb_users_table\fP
-Название таблицы где ваш phpbb форум хранит данные о пользователях. Скорее
-всего, это <префикс\-таблицы>_users (т.е. phpbb3_users).
+The name of the table in which your phpbb forum saves its user data. Most
+likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Название таблицы, в которой wesnothd сохранит свои данные об играх.
@@ -257,9 +264,23 @@ this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
 используемых в игре.
 .TP 
 \fBdb_user_group_table\fP
-Название таблицы, где Ваш phpbb форум хранит данные о группах
-пользователей. Скорее всего это <префикс\-таблицы>_user_group
-(т.е. phpbb3_user_group).
+The name of the table in which your phpbb forum saves its user group
+data. Most likely this will be <table\-prefix>_user_group
+(e.g. phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+The name of the table in which to store login/logout times. Also used for
+matching IPs to users and vice versa.
+.TP 
+\fBdb_topics_table\fP
+The name of the table in which your phpbb forum saves its topic (thread)
+information. Most likely this will be <table\-prefix>_topics
+(e.g. phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+The name of the table in which your phpbb forum saves its user bans
+data. Most likely this will be <table\-prefix>_banlist
+(e.g. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
 Идентификатор группы пользователей форума, имеющих полномочия модератора.
@@ -283,7 +304,7 @@ Soliton <soliton.de@gmail.com> и Томасом Баумхаером
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Авторское право \(co Дэвид Уайт, 2003\-2021 <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2022 <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

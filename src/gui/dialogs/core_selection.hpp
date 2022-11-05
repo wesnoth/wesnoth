@@ -39,7 +39,8 @@ class core_selection : public modal_dialog
 {
 public:
 	explicit core_selection(const std::vector<config>& cores, int choice)
-		: cores_(cores), choice_(choice)
+		: modal_dialog(window_id())
+		, cores_(cores), choice_(choice)
 	{
 	}
 
@@ -52,7 +53,7 @@ public:
 
 private:
 	/** Called when another core is selected. */
-	void core_selected() const;
+	void core_selected();
 
 	virtual const std::string& window_id() const override;
 

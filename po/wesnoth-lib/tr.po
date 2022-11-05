@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # ihsan Haluk AKIN <ihsan_akin@yahoo.com>, 2005, 2006.
-# Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>, 2008, ... 2022.
+# Nilgün Belma Bugüner <nillguine@gmail.com>, 2008, ... 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-01-05 22:30+0300\n"
-"Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
+"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"PO-Revision-Date: 2022-08-21 14:19+0300\n"
+"Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Çit"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3210 data/core/terrain.cfg:3211
+#: data/core/terrain.cfg:3277 data/core/terrain.cfg:3278
 msgid "Deep Water"
 msgstr "Derin Su"
 
@@ -81,7 +81,7 @@ msgstr "Tropik Derin su"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:3169 data/core/terrain.cfg:3170
+#: data/core/terrain.cfg:3236 data/core/terrain.cfg:3237
 msgid "Shallow Water"
 msgstr "Sığ Su"
 
@@ -126,8 +126,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:3125
-#: data/core/terrain.cfg:3126
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:3192
+#: data/core/terrain.cfg:3193
 msgid "Coastal Reef"
 msgstr "Kayalık Sahil"
 
@@ -151,8 +151,8 @@ msgstr "Tropik Kayalık Sahil"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:134 data/core/terrain.cfg:149
-#: data/core/terrain.cfg:160 data/core/terrain.cfg:3153
-#: data/core/terrain.cfg:3154
+#: data/core/terrain.cfg:160 data/core/terrain.cfg:3220
+#: data/core/terrain.cfg:3221
 msgid "Swamp"
 msgstr "Bataklık"
 
@@ -309,7 +309,7 @@ msgstr ""
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:340 data/core/terrain.cfg:3112
+#: data/core/terrain.cfg:340 data/core/terrain.cfg:3179
 msgid "Sand"
 msgstr "Kum"
 
@@ -320,7 +320,7 @@ msgstr "Sahil Kumu"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:345 data/core/terrain.cfg:3116
+#: data/core/terrain.cfg:345 data/core/terrain.cfg:3183
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -520,8 +520,8 @@ msgstr "Ölü Ulu Meşe"
 #: data/core/terrain.cfg:750 data/core/terrain.cfg:762
 #: data/core/terrain.cfg:774 data/core/terrain.cfg:786
 #: data/core/terrain.cfg:798 data/core/terrain.cfg:810
-#: data/core/terrain.cfg:822 data/core/terrain.cfg:3236
-#: data/core/terrain.cfg:3237
+#: data/core/terrain.cfg:822 data/core/terrain.cfg:3303
+#: data/core/terrain.cfg:3304
 msgid "Forest"
 msgstr "Orman"
 
@@ -605,8 +605,8 @@ msgstr "Karışık Karlı Ormanı"
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:838 data/core/terrain.cfg:848
-#: data/core/terrain.cfg:868 data/core/terrain.cfg:3140
-#: data/core/terrain.cfg:3141
+#: data/core/terrain.cfg:868 data/core/terrain.cfg:3207
+#: data/core/terrain.cfg:3208
 msgid "Hills"
 msgstr "Tepeler"
 
@@ -641,9 +641,9 @@ msgstr "Karlı Tepeler"
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:883 data/core/terrain.cfg:893
 #: data/core/terrain.cfg:903 data/core/terrain.cfg:914
-#: data/core/terrain.cfg:1279 data/core/terrain.cfg:1289
-#: data/core/terrain.cfg:1300 data/core/terrain.cfg:1310
-#: data/core/terrain.cfg:3196 data/core/terrain.cfg:3197
+#: data/core/terrain.cfg:1310 data/core/terrain.cfg:1320
+#: data/core/terrain.cfg:1331 data/core/terrain.cfg:1341
+#: data/core/terrain.cfg:3263 data/core/terrain.cfg:3264
 msgid "Mountains"
 msgstr "Dağlar"
 
@@ -735,7 +735,7 @@ msgstr "Işık Hüzmesi"
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:1013 data/core/terrain.cfg:1023
-#: data/core/terrain.cfg:3097 data/core/terrain.cfg:3098
+#: data/core/terrain.cfg:3164 data/core/terrain.cfg:3165
 msgid "Cave"
 msgstr "Mağara"
 
@@ -877,42 +877,59 @@ msgstr "Topraklı Kayalık Mağara"
 msgid "Mine Rail"
 msgstr "Maden Rayı"
 
+#. [terrain_type]: id=high_border
+#: data/core/terrain.cfg:1204
+msgid "Bluff"
+msgstr ""
+
+#. [terrain_type]: id=high_canyon
+#: data/core/terrain.cfg:1214
+msgid "Gulch"
+msgstr ""
+
+#. [terrain_type]: id=high_canyon_obst
+#: data/core/terrain.cfg:1225
+#, fuzzy
+#| msgid "Unwalkable Overlay"
+msgid "Unwalkable Ravine"
+msgstr "Yürünmez Örtüsü"
+
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
 #. [terrain_type]: id=abyss
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1204 data/core/terrain.cfg:1215
-#: data/core/terrain.cfg:1226 data/core/terrain.cfg:1237
+#: data/core/terrain.cfg:1235 data/core/terrain.cfg:1246
+#: data/core/terrain.cfg:1257 data/core/terrain.cfg:1268
 msgid "Chasm"
 msgstr "Kanyon"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:1205
+#: data/core/terrain.cfg:1236
 msgid "Regular Chasm"
 msgstr "Sıradan Kanyon"
 
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:1216
+#: data/core/terrain.cfg:1247
 msgid "Earthy Chasm"
 msgstr "Topraklı Kanyon"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:1227
+#: data/core/terrain.cfg:1258
 msgid "Ethereal Abyss"
 msgstr "Uhrevi Boşluk"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:1238
+#: data/core/terrain.cfg:1269
 msgid "Lava Chasm"
 msgstr "Lav çukuru"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1250 data/core/terrain.cfg:1251
+#: data/core/terrain.cfg:1281 data/core/terrain.cfg:1282
 msgid "Lava"
 msgstr "Lav"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:1257
+#: data/core/terrain.cfg:1288
 msgid ""
 "The dangers inherent in trying to walk on <italic>text='lava'</italic> are "
 "fairly obvious. As far as movement is concerned, lava is equivalent to "
@@ -929,52 +946,52 @@ msgstr ""
 "birimlere güç verirken kaypak birimleri zayıflatır."
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:1264
+#: data/core/terrain.cfg:1295
 msgid "Volcano"
 msgstr "Yanardağ"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1280
+#: data/core/terrain.cfg:1311
 msgid "Regular Impassable Mountains"
 msgstr "Sıradan Aşılmaz Dağlar"
 
 #. [terrain_type]: id=cloud_dry
-#: data/core/terrain.cfg:1290
+#: data/core/terrain.cfg:1321
 msgid "Dry Impassable Mountains"
 msgstr "Kuru Aşılmaz Dağlar"
 
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:1301
+#: data/core/terrain.cfg:1332
 msgid "Snowy Impassable Mountains"
 msgstr "Karlı Aşılmaz Dağlar"
 
 #. [terrain_type]: id=cloud_desert
-#: data/core/terrain.cfg:1311
+#: data/core/terrain.cfg:1342
 msgid "Desert Impassable Mountains"
 msgstr "Çöl Aşılmaz Dağları"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:1321 data/core/terrain.cfg:1343
-#: data/core/terrain.cfg:1357
+#: data/core/terrain.cfg:1352 data/core/terrain.cfg:1374
+#: data/core/terrain.cfg:1388
 msgid "Cave Wall"
 msgstr "Mağara Duvarı"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1322
+#: data/core/terrain.cfg:1353
 msgid "Natural Cave Wall"
 msgstr "Doğal Mağara Duvarı"
 
 #. [terrain_type]: id=minewall
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1332 data/core/terrain.cfg:1333
-#: data/core/terrain.cfg:1393
+#: data/core/terrain.cfg:1363 data/core/terrain.cfg:1364
+#: data/core/terrain.cfg:1424
 msgid "Mine Wall"
 msgstr "Maden Duvarı"
 
 #. [terrain_type]: id=cavewall_earthy
-#: data/core/terrain.cfg:1344
+#: data/core/terrain.cfg:1375
 msgid "Natural Earthy Cave Wall"
 msgstr "Doğal Topraklı Mağara Duvarı"
 
@@ -982,58 +999,58 @@ msgstr "Doğal Topraklı Mağara Duvarı"
 #. [terrain_type]: id=wall_stone_lit
 #. [terrain_type]: id=wall_stone_clean
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1370 data/core/terrain.cfg:1380
-#: data/core/terrain.cfg:1415 data/core/terrain.cfg:1426
+#: data/core/terrain.cfg:1401 data/core/terrain.cfg:1411
+#: data/core/terrain.cfg:1446 data/core/terrain.cfg:1457
 msgid "Stone Wall"
 msgstr "Taş Duvar"
 
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1381
+#: data/core/terrain.cfg:1412
 msgid "Lit Stone Wall"
 msgstr "Aydınlık Taş Duvar"
 
 #. [terrain_type]: id=wall_stone_mine
-#: data/core/terrain.cfg:1394
+#: data/core/terrain.cfg:1425
 msgid "Straight Mine Wall"
 msgstr "Düz Maden Duvarı"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1404
+#: data/core/terrain.cfg:1435
 msgid "Interior Wall"
 msgstr "İç Duvarı"
 
 #. [terrain_type]: id=wall_stone_white
-#: data/core/terrain.cfg:1405
+#: data/core/terrain.cfg:1436
 msgid "Straight White Wall"
 msgstr "Düz Beyaz Duvar"
 
 #. [terrain_type]: id=wall_stone_clean
-#: data/core/terrain.cfg:1416
+#: data/core/terrain.cfg:1447
 msgid "Clean Stone Wall"
 msgstr "Temiz Taş Duvar"
 
 #. [terrain_type]: id=wall_stone_ancient
-#: data/core/terrain.cfg:1427
+#: data/core/terrain.cfg:1458
 msgid "Ancient Stone Wall"
 msgstr "Antik Taş Duvar"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1437
+#: data/core/terrain.cfg:1468
 msgid "Catacombs Wall"
 msgstr "Catacombs"
 
 #. [terrain_type]: id=wall_stone_tomb
-#: data/core/terrain.cfg:1438
+#: data/core/terrain.cfg:1469
 msgid "Catacombs Stone Wall"
 msgstr "Yeraltı Mezarları Taş Duvarı"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1448
+#: data/core/terrain.cfg:1479
 msgid "Overgrown Wall"
 msgstr "Aşırı Büyük Duvar"
 
 #. [terrain_type]: id=wall_stone_overgrown
-#: data/core/terrain.cfg:1449
+#: data/core/terrain.cfg:1480
 msgid "Overgrown Stone Wall"
 msgstr "Aşırı Büyük Taş Duvar"
 
@@ -1043,17 +1060,17 @@ msgstr "Aşırı Büyük Taş Duvar"
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1465 data/core/terrain.cfg:1478
-#: data/core/terrain.cfg:1492 data/core/terrain.cfg:1549
-#: data/core/terrain.cfg:1561 data/core/terrain.cfg:1574
+#: data/core/terrain.cfg:1496 data/core/terrain.cfg:1509
+#: data/core/terrain.cfg:1523 data/core/terrain.cfg:1580
+#: data/core/terrain.cfg:1592 data/core/terrain.cfg:1605
 msgid "Gate"
 msgstr "Demir Kapı"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
 #. [terrain_type]: id=portal_gate_rusty_n
-#: data/core/terrain.cfg:1466 data/core/terrain.cfg:1479
-#: data/core/terrain.cfg:1493
+#: data/core/terrain.cfg:1497 data/core/terrain.cfg:1510
+#: data/core/terrain.cfg:1524
 msgid "Rusty Gate"
 msgstr "Paslı Demir Kapı"
 
@@ -1063,49 +1080,49 @@ msgstr "Paslı Demir Kapı"
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1506 data/core/terrain.cfg:1519
-#: data/core/terrain.cfg:1533 data/core/terrain.cfg:1587
-#: data/core/terrain.cfg:1599 data/core/terrain.cfg:1612
+#: data/core/terrain.cfg:1537 data/core/terrain.cfg:1550
+#: data/core/terrain.cfg:1564 data/core/terrain.cfg:1618
+#: data/core/terrain.cfg:1630 data/core/terrain.cfg:1643
 msgid "Door"
 msgstr "Kapı"
 
 #. [terrain_type]: id=portal_door_wooden_sw
 #. [terrain_type]: id=portal_door_wooden_se
 #. [terrain_type]: id=portal_door_wooden_n
-#: data/core/terrain.cfg:1507 data/core/terrain.cfg:1520
-#: data/core/terrain.cfg:1534
+#: data/core/terrain.cfg:1538 data/core/terrain.cfg:1551
+#: data/core/terrain.cfg:1565
 msgid "Wooden Door"
 msgstr "Tahta Kapı"
 
 #. [terrain_type]: id=portal_gate_rusty_open_sw
 #. [terrain_type]: id=portal_gate_rusty_open_se
 #. [terrain_type]: id=portal_gate_rusty_open_n
-#: data/core/terrain.cfg:1550 data/core/terrain.cfg:1562
-#: data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1581 data/core/terrain.cfg:1593
+#: data/core/terrain.cfg:1606
 msgid "Open Rusty Gate"
 msgstr "Açık Paslı Demir Kapı"
 
 #. [terrain_type]: id=portal_door_wooden_open_sw
 #. [terrain_type]: id=portal_door_wooden_open_se
 #. [terrain_type]: id=portal_door_wooden_open_n
-#: data/core/terrain.cfg:1588 data/core/terrain.cfg:1600
-#: data/core/terrain.cfg:1613
+#: data/core/terrain.cfg:1619 data/core/terrain.cfg:1631
+#: data/core/terrain.cfg:1644
 msgid "Open Wooden Door"
 msgstr "Açık Tahta Kapı"
 
 #. [terrain_type]: id=impassable_overlay
-#: data/core/terrain.cfg:1628
+#: data/core/terrain.cfg:1659
 msgid "Impassable Overlay"
 msgstr "Geçit Vermez Örtüsü"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1641
+#: data/core/terrain.cfg:1672
 msgid "Unwalkable Overlay"
 msgstr "Yürünmez Örtüsü"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1653 data/core/terrain.cfg:3026
+#: data/core/terrain.cfg:1684 data/core/terrain.cfg:3093
 msgid "Void"
 msgstr "Boş"
 
@@ -1141,180 +1158,180 @@ msgstr "Boş"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1669 data/core/terrain.cfg:1682
-#: data/core/terrain.cfg:1695 data/core/terrain.cfg:1708
-#: data/core/terrain.cfg:1723 data/core/terrain.cfg:1736
-#: data/core/terrain.cfg:1751 data/core/terrain.cfg:1764
-#: data/core/terrain.cfg:1779 data/core/terrain.cfg:1792
-#: data/core/terrain.cfg:1805 data/core/terrain.cfg:1818
-#: data/core/terrain.cfg:1831 data/core/terrain.cfg:1844
-#: data/core/terrain.cfg:1857 data/core/terrain.cfg:1870
-#: data/core/terrain.cfg:1883 data/core/terrain.cfg:1896
-#: data/core/terrain.cfg:1909 data/core/terrain.cfg:1922
-#: data/core/terrain.cfg:1935 data/core/terrain.cfg:1950
-#: data/core/terrain.cfg:1963 data/core/terrain.cfg:1976
-#: data/core/terrain.cfg:1989 data/core/terrain.cfg:2002
-#: data/core/terrain.cfg:2015 data/core/terrain.cfg:2028
-#: data/core/terrain.cfg:2043 data/core/terrain.cfg:2056
-#: data/core/terrain.cfg:2074 data/core/terrain.cfg:3261
-#: data/core/terrain.cfg:3262
+#: data/core/terrain.cfg:1700 data/core/terrain.cfg:1713
+#: data/core/terrain.cfg:1726 data/core/terrain.cfg:1739
+#: data/core/terrain.cfg:1754 data/core/terrain.cfg:1767
+#: data/core/terrain.cfg:1782 data/core/terrain.cfg:1795
+#: data/core/terrain.cfg:1810 data/core/terrain.cfg:1823
+#: data/core/terrain.cfg:1836 data/core/terrain.cfg:1849
+#: data/core/terrain.cfg:1862 data/core/terrain.cfg:1875
+#: data/core/terrain.cfg:1888 data/core/terrain.cfg:1901
+#: data/core/terrain.cfg:1914 data/core/terrain.cfg:1927
+#: data/core/terrain.cfg:1940 data/core/terrain.cfg:1953
+#: data/core/terrain.cfg:1966 data/core/terrain.cfg:1981
+#: data/core/terrain.cfg:1994 data/core/terrain.cfg:2007
+#: data/core/terrain.cfg:2020 data/core/terrain.cfg:2033
+#: data/core/terrain.cfg:2046 data/core/terrain.cfg:2059
+#: data/core/terrain.cfg:2074 data/core/terrain.cfg:2087
+#: data/core/terrain.cfg:2105 data/core/terrain.cfg:3328
+#: data/core/terrain.cfg:3329
 msgid "Village"
 msgstr "Köy"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1670
+#: data/core/terrain.cfg:1701
 msgid "Adobe Village"
 msgstr "Kerpiç Köy"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1683
+#: data/core/terrain.cfg:1714
 msgid "Ruined Adobe Village"
 msgstr "Yıkık Kerpiç Köy"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1696
+#: data/core/terrain.cfg:1727
 msgid "Desert Tent Village"
 msgstr "Çöl Çadır Köyü"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1709
+#: data/core/terrain.cfg:1740
 msgid "Tent Village"
 msgstr "Çadır Köyü"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1724
+#: data/core/terrain.cfg:1755
 msgid "Orcish Village"
 msgstr "Ork Köyü"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1737
+#: data/core/terrain.cfg:1768
 msgid "Snowy Orcish Village"
 msgstr "Karlı Ork Köyü"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1752
+#: data/core/terrain.cfg:1783
 msgid "Snowy Elven Village"
 msgstr "Karlı Elf Köyü"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1765
+#: data/core/terrain.cfg:1796
 msgid "Elven Village"
 msgstr "Elf Köyü"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1780
+#: data/core/terrain.cfg:1811
 msgid "Cottage"
 msgstr "Konak"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1793
+#: data/core/terrain.cfg:1824
 msgid "Snowy Cottage"
 msgstr "Karlı Konak"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1806
+#: data/core/terrain.cfg:1837
 msgid "Ruined Cottage"
 msgstr "Yıkık Konak"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1819
+#: data/core/terrain.cfg:1850
 msgid "Human City"
 msgstr "İnsan Şehri"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1832
+#: data/core/terrain.cfg:1863
 msgid "Windmill Village"
 msgstr "Değirmen Köyü"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1845
+#: data/core/terrain.cfg:1876
 msgid "Snowy Human City"
 msgstr "Karlı İnsan Şehri"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1858
+#: data/core/terrain.cfg:1889
 msgid "Ruined Human City"
 msgstr "Yıkık İnsan Şehri"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1871
+#: data/core/terrain.cfg:1902
 msgid "Hill Stone Village"
 msgstr "Taş Tepe Evi"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1884
+#: data/core/terrain.cfg:1915
 msgid "Snowy Hill Stone Village"
 msgstr "Karlı Taş Tepe Evi"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:1897
+#: data/core/terrain.cfg:1928
 msgid "Ruined Hill Stone Village"
 msgstr "Yıkık Taş Tepe Evi"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:1910
+#: data/core/terrain.cfg:1941
 msgid "Tropical Village"
 msgstr "Tropik Köy"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1954
 msgid "Drake Village"
 msgstr "Ejder Köyü"
 
 #. [terrain_type]: id=drake_snow_village
-#: data/core/terrain.cfg:1936
+#: data/core/terrain.cfg:1967
 #, fuzzy
 #| msgid "Drake Village"
 msgid "Snowy Drake Village"
 msgstr "Ejder Köyü"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:1951
+#: data/core/terrain.cfg:1982
 msgid "Cave Village"
 msgstr "Mağara Köyü"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:1964
+#: data/core/terrain.cfg:1995
 msgid "Dwarven Village"
 msgstr "Cüce Köyü"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:1977
+#: data/core/terrain.cfg:2008
 msgid "Hut"
 msgstr "Baraka"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:1990
+#: data/core/terrain.cfg:2021
 msgid "Snowy Hut"
 msgstr "Karlı Baraka"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:2003
+#: data/core/terrain.cfg:2034
 msgid "Log Cabin"
 msgstr "Tahta Kulübe"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:2016
+#: data/core/terrain.cfg:2047
 msgid "Snowy Log Cabin"
 msgstr "Karlı Tahta Kulübe"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:2029
+#: data/core/terrain.cfg:2060
 msgid "Igloo"
 msgstr "İglo"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:2044
+#: data/core/terrain.cfg:2075
 msgid "Swamp Village"
 msgstr "Bataklık Köyü"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2057
+#: data/core/terrain.cfg:2088
 msgid "Merfolk Village"
 msgstr "Susal Köyü"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2058
+#: data/core/terrain.cfg:2089
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1336,7 +1353,7 @@ msgstr ""
 "birimlerinin savunması azdır."
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:2075
+#: data/core/terrain.cfg:2106
 msgid "Village Overlay"
 msgstr "Köy Örtüsü"
 
@@ -1345,19 +1362,19 @@ msgstr "Köy Örtüsü"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2091 data/core/terrain.cfg:2092
-#: data/core/terrain.cfg:2103 data/core/terrain.cfg:2115
-#: data/core/terrain.cfg:2320 data/core/terrain.cfg:2332
+#: data/core/terrain.cfg:2122 data/core/terrain.cfg:2123
+#: data/core/terrain.cfg:2134 data/core/terrain.cfg:2146
+#: data/core/terrain.cfg:2351 data/core/terrain.cfg:2363
 msgid "Encampment"
 msgstr "Ordugah"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:2104
+#: data/core/terrain.cfg:2135
 msgid "Ruined Encampment"
 msgstr "Yıkık Ordugah"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:2116
+#: data/core/terrain.cfg:2147
 msgid "Snowy Encampment"
 msgstr "Karlı Ordugah"
 
@@ -1376,69 +1393,69 @@ msgstr "Karlı Ordugah"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2127 data/core/terrain.cfg:2139
-#: data/core/terrain.cfg:2151 data/core/terrain.cfg:2163
-#: data/core/terrain.cfg:2174 data/core/terrain.cfg:2186
-#: data/core/terrain.cfg:2198 data/core/terrain.cfg:2210
-#: data/core/terrain.cfg:2222 data/core/terrain.cfg:2234
-#: data/core/terrain.cfg:2246 data/core/terrain.cfg:2296
-#: data/core/terrain.cfg:2345 data/core/terrain.cfg:2661
-#: data/core/terrain.cfg:3180 data/core/terrain.cfg:3181
+#: data/core/terrain.cfg:2158 data/core/terrain.cfg:2170
+#: data/core/terrain.cfg:2182 data/core/terrain.cfg:2194
+#: data/core/terrain.cfg:2205 data/core/terrain.cfg:2217
+#: data/core/terrain.cfg:2229 data/core/terrain.cfg:2241
+#: data/core/terrain.cfg:2253 data/core/terrain.cfg:2265
+#: data/core/terrain.cfg:2277 data/core/terrain.cfg:2327
+#: data/core/terrain.cfg:2376 data/core/terrain.cfg:2692
+#: data/core/terrain.cfg:3247 data/core/terrain.cfg:3248
 msgid "Castle"
 msgstr "Kale"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:2128
+#: data/core/terrain.cfg:2159
 msgid "Orcish Castle"
 msgstr "Ork Kalesi"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:2140
+#: data/core/terrain.cfg:2171
 msgid "Snowy Orcish Castle"
 msgstr "Karlı Ork Kalesi"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:2152
+#: data/core/terrain.cfg:2183
 msgid "Human Castle"
 msgstr "İnsan Kalesi"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2164
+#: data/core/terrain.cfg:2195
 msgid "Snowy Human Castle"
 msgstr "Karlı İnsan Kalesi"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2175
+#: data/core/terrain.cfg:2206
 msgid "Elven Castle"
 msgstr "Elf Kalesi"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2187
+#: data/core/terrain.cfg:2218
 msgid "Elven Castle Ruin"
 msgstr "Elf Kale harabesi"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2199
+#: data/core/terrain.cfg:2230
 msgid "Winter Elven Castle"
 msgstr "Elf Kış Kalesi"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2211
+#: data/core/terrain.cfg:2242
 msgid "Dwarven Underground Castle"
 msgstr "Cüce Yeraltı Kalesi"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2223
+#: data/core/terrain.cfg:2254
 msgid "Dwarven Castle"
 msgstr "Cüce Kalesi"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2235
+#: data/core/terrain.cfg:2266
 msgid "Dwarven Castle Ruins"
 msgstr "Cüce Kale Harabesi"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2247
+#: data/core/terrain.cfg:2278
 msgid "Winter Dwarven Castle"
 msgstr "Cüce Kış Kalesi"
 
@@ -1446,48 +1463,48 @@ msgstr "Cüce Kış Kalesi"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2258 data/core/terrain.cfg:2270
-#: data/core/terrain.cfg:2283 data/core/terrain.cfg:2308
+#: data/core/terrain.cfg:2289 data/core/terrain.cfg:2301
+#: data/core/terrain.cfg:2314 data/core/terrain.cfg:2339
 msgid "Ruined Castle"
 msgstr "Yıkık Kale"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2259
+#: data/core/terrain.cfg:2290
 msgid "Ruined Human Castle"
 msgstr "Yıkık İnsan Kalesi"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2271
+#: data/core/terrain.cfg:2302
 msgid "Sunken Human Ruin"
 msgstr "Batmış İnsan Harabesi"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2284
+#: data/core/terrain.cfg:2315
 msgid "Swamp Human Ruin"
 msgstr "Bataklık İnsan Harabesi"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2297
+#: data/core/terrain.cfg:2328
 msgid "Desert Castle"
 msgstr "Çöl Kalesi"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2309
+#: data/core/terrain.cfg:2340
 msgid "Ruined Desert Castle"
 msgstr "Yıkık Çöl Kalesi"
 
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2321
+#: data/core/terrain.cfg:2352
 msgid "Troll Encampment"
 msgstr "Trol Ordugahı"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2333
+#: data/core/terrain.cfg:2364
 msgid "Aquatic Encampment"
 msgstr "Susal Ordugah"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2346
+#: data/core/terrain.cfg:2377
 msgid "Aquatic Castle"
 msgstr "Susal Kale"
 
@@ -1496,24 +1513,24 @@ msgstr "Susal Kale"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2362 data/core/terrain.cfg:2386
-#: data/core/terrain.cfg:2399 data/core/terrain.cfg:2620
-#: data/core/terrain.cfg:2633
+#: data/core/terrain.cfg:2393 data/core/terrain.cfg:2417
+#: data/core/terrain.cfg:2430 data/core/terrain.cfg:2651
+#: data/core/terrain.cfg:2664
 msgid "Encampment Keep"
 msgstr "Ordugah İçkalesi"
 
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2374
+#: data/core/terrain.cfg:2405
 msgid "Ruined Encampment Keep"
 msgstr "Yıkık Ordugah İçkalesi"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2387
+#: data/core/terrain.cfg:2418
 msgid "Tall Encampment Keep"
 msgstr "Uzun Ordugah İçkalesi"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2400
+#: data/core/terrain.cfg:2431
 msgid "Snowy Encampment Keep"
 msgstr "Karlı Ordugah İçkalesi"
 
@@ -1531,68 +1548,68 @@ msgstr "Karlı Ordugah İçkalesi"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2412 data/core/terrain.cfg:2425
-#: data/core/terrain.cfg:2438 data/core/terrain.cfg:2451
-#: data/core/terrain.cfg:2464 data/core/terrain.cfg:2477
-#: data/core/terrain.cfg:2490 data/core/terrain.cfg:2503
-#: data/core/terrain.cfg:2516 data/core/terrain.cfg:2529
-#: data/core/terrain.cfg:2542 data/core/terrain.cfg:2594
-#: data/core/terrain.cfg:2646 data/core/terrain.cfg:2674
+#: data/core/terrain.cfg:2443 data/core/terrain.cfg:2456
+#: data/core/terrain.cfg:2469 data/core/terrain.cfg:2482
+#: data/core/terrain.cfg:2495 data/core/terrain.cfg:2508
+#: data/core/terrain.cfg:2521 data/core/terrain.cfg:2534
+#: data/core/terrain.cfg:2547 data/core/terrain.cfg:2560
+#: data/core/terrain.cfg:2573 data/core/terrain.cfg:2625
+#: data/core/terrain.cfg:2677 data/core/terrain.cfg:2705
 msgid "Keep"
 msgstr "İçkale"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2413
+#: data/core/terrain.cfg:2444
 msgid "Orcish Keep"
 msgstr "Ork İçkalesi"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2426
+#: data/core/terrain.cfg:2457
 msgid "Snowy Orcish Keep"
 msgstr "Karlı Ork İçkalesi"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2439
+#: data/core/terrain.cfg:2470
 msgid "Human Castle Keep"
 msgstr "İnsan Kale İçkalesi"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2452
+#: data/core/terrain.cfg:2483
 msgid "Snowy Human Castle Keep"
 msgstr "Karlı İnsan Kale İçkalesi"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2465
+#: data/core/terrain.cfg:2496
 msgid "Elven Castle Keep"
 msgstr "Elf Kale İçkalesi"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2478
+#: data/core/terrain.cfg:2509
 msgid "Elven Keep Ruin"
 msgstr "Elf İçkale harabesi"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2491
+#: data/core/terrain.cfg:2522
 msgid "Winter Elven Keep"
 msgstr "Elf Kış İçkalesi"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2504
+#: data/core/terrain.cfg:2535
 msgid "Dwarven Underground Keep"
 msgstr "Cüce Yeraltı İçkalesi"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2517
+#: data/core/terrain.cfg:2548
 msgid "Dwarven Castle Keep"
 msgstr "Cüce Kale İçkalesi"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2530
+#: data/core/terrain.cfg:2561
 msgid "Dwarven Ruin Keep"
 msgstr "Cüce Harabe İçkalesi"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2543
+#: data/core/terrain.cfg:2574
 msgid "Winter Dwarven Keep"
 msgstr "Cüce Kış İçkalesi"
 
@@ -1600,58 +1617,58 @@ msgstr "Cüce Kış İçkalesi"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2555 data/core/terrain.cfg:2568
-#: data/core/terrain.cfg:2581 data/core/terrain.cfg:2607
+#: data/core/terrain.cfg:2586 data/core/terrain.cfg:2599
+#: data/core/terrain.cfg:2612 data/core/terrain.cfg:2638
 msgid "Ruined Keep"
 msgstr "Yıkık İçkale"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2556
+#: data/core/terrain.cfg:2587
 msgid "Ruined Human Castle Keep"
 msgstr "Yıkık İnsan Kale İçkalesi"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2569
+#: data/core/terrain.cfg:2600
 msgid "Sunken Human Castle Keep"
 msgstr "Batık İnsan Kale İçkalesi"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2582
+#: data/core/terrain.cfg:2613
 msgid "Swamp Human Castle Keep"
 msgstr "Bataklık İnsan Kale İçkalesi"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2595
+#: data/core/terrain.cfg:2626
 msgid "Desert Keep"
 msgstr "Çöl İçkalesi"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2608
+#: data/core/terrain.cfg:2639
 msgid "Ruined Desert Keep"
 msgstr "Yıkık Çöl İçkalesi"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2621
+#: data/core/terrain.cfg:2652
 msgid "Aquatic Encampment Keep"
 msgstr "Susal Ordugah İçkalesi"
 
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2634
+#: data/core/terrain.cfg:2665
 msgid "Troll Encampment Keep"
 msgstr "Trol Ordugah İçkalesi"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2647
+#: data/core/terrain.cfg:2678
 msgid "Aquatic Keep"
 msgstr "Susal İçkale"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2662
+#: data/core/terrain.cfg:2693
 msgid "Castle Overlay"
 msgstr "Kale Örtüsü"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2675
+#: data/core/terrain.cfg:2706
 msgid "Keep Overlay"
 msgstr "İçkale Örtüsü"
 
@@ -1679,31 +1696,31 @@ msgstr "İçkale Örtüsü"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2693 data/core/terrain.cfg:2708
-#: data/core/terrain.cfg:2721 data/core/terrain.cfg:2734
-#: data/core/terrain.cfg:2746 data/core/terrain.cfg:2759
-#: data/core/terrain.cfg:2774 data/core/terrain.cfg:2786
-#: data/core/terrain.cfg:2799 data/core/terrain.cfg:2814
-#: data/core/terrain.cfg:2826 data/core/terrain.cfg:2839
-#: data/core/terrain.cfg:2854 data/core/terrain.cfg:2866
-#: data/core/terrain.cfg:2880 data/core/terrain.cfg:2897
-#: data/core/terrain.cfg:2911 data/core/terrain.cfg:2925
-#: data/core/terrain.cfg:2939 data/core/terrain.cfg:2953
-#: data/core/terrain.cfg:2967 data/core/terrain.cfg:2981
-#: data/core/terrain.cfg:2995 data/core/terrain.cfg:3009
+#: data/core/terrain.cfg:2724 data/core/terrain.cfg:2739
+#: data/core/terrain.cfg:2752 data/core/terrain.cfg:2765
+#: data/core/terrain.cfg:2777 data/core/terrain.cfg:2790
+#: data/core/terrain.cfg:2805 data/core/terrain.cfg:2817
+#: data/core/terrain.cfg:2830 data/core/terrain.cfg:2845
+#: data/core/terrain.cfg:2857 data/core/terrain.cfg:2870
+#: data/core/terrain.cfg:2885 data/core/terrain.cfg:2897
+#: data/core/terrain.cfg:2911 data/core/terrain.cfg:2928
+#: data/core/terrain.cfg:2942 data/core/terrain.cfg:2956
+#: data/core/terrain.cfg:2970 data/core/terrain.cfg:2984
+#: data/core/terrain.cfg:2998 data/core/terrain.cfg:3012
+#: data/core/terrain.cfg:3026 data/core/terrain.cfg:3040
 msgid "Bridge"
 msgstr "Köprü"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2694 data/core/terrain.cfg:2709
-#: data/core/terrain.cfg:2722
+#: data/core/terrain.cfg:2725 data/core/terrain.cfg:2740
+#: data/core/terrain.cfg:2753
 msgid "Wooden Bridge"
 msgstr "Tahta Köprü"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2700
+#: data/core/terrain.cfg:2731
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1731,24 +1748,24 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2735 data/core/terrain.cfg:2747
-#: data/core/terrain.cfg:2760
+#: data/core/terrain.cfg:2766 data/core/terrain.cfg:2778
+#: data/core/terrain.cfg:2791
 msgid "Rotting Bridge"
 msgstr "Çürüyen Köprü"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2775 data/core/terrain.cfg:2787
-#: data/core/terrain.cfg:2800
+#: data/core/terrain.cfg:2806 data/core/terrain.cfg:2818
+#: data/core/terrain.cfg:2831
 msgid "Basic Stone Bridge"
 msgstr "Basit Taş Köprü"
 
 #. [terrain_type]: id=snow_stone_bridge
 #. [terrain_type]: id=snow_stone_bridgediag1
 #. [terrain_type]: id=snow_stone_bridgediag2
-#: data/core/terrain.cfg:2815 data/core/terrain.cfg:2827
-#: data/core/terrain.cfg:2840
+#: data/core/terrain.cfg:2846 data/core/terrain.cfg:2858
+#: data/core/terrain.cfg:2871
 #, fuzzy
 #| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
@@ -1757,71 +1774,91 @@ msgstr "Basit Taş Köprü"
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2855 data/core/terrain.cfg:2867
-#: data/core/terrain.cfg:2881
+#: data/core/terrain.cfg:2886 data/core/terrain.cfg:2898
+#: data/core/terrain.cfg:2912
 msgid "Cave Chasm Bridge"
 msgstr "Mağara Kanyon Köprüsü"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:2898 data/core/terrain.cfg:2912
-#: data/core/terrain.cfg:2926
+#: data/core/terrain.cfg:2929 data/core/terrain.cfg:2943
+#: data/core/terrain.cfg:2957
 msgid "Hanging Bridge"
 msgstr "Asma Köprü"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:2940 data/core/terrain.cfg:2954
-#: data/core/terrain.cfg:2968
+#: data/core/terrain.cfg:2971 data/core/terrain.cfg:2985
+#: data/core/terrain.cfg:2999
 msgid "Stone Chasm Bridge"
 msgstr "Taş Kanyon Köprüsü"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2982 data/core/terrain.cfg:2996
-#: data/core/terrain.cfg:3010
+#: data/core/terrain.cfg:3013 data/core/terrain.cfg:3027
+#: data/core/terrain.cfg:3041
 msgid "Plank Bridge"
 msgstr "Tahta Köprü"
 
+#. [terrain_type]: id=mark_high
+#: data/core/terrain.cfg:3056
+msgid "Marker High"
+msgstr ""
+
+#. [terrain_type]: id=mark_high2
+#: data/core/terrain.cfg:3065
+msgid "Marker High 2"
+msgstr ""
+
+#. [terrain_type]: id=mark_low
+#: data/core/terrain.cfg:3074
+msgid "Marker Low"
+msgstr ""
+
+#. [terrain_type]: id=mark_low2
+#: data/core/terrain.cfg:3083
+msgid "Marker Low 2"
+msgstr ""
+
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:3027
+#: data/core/terrain.cfg:3094
 msgid "Off Map"
 msgstr "Harita Dışı"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:3037
+#: data/core/terrain.cfg:3104
 msgid "Fake Map Border"
 msgstr "Sahte Harita Sınırı"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:3048 data/gui/window/editor_edit_side.cfg:179
+#: data/core/terrain.cfg:3115 data/gui/window/editor_edit_side.cfg:179
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:405
 msgid "Shroud"
 msgstr "Örtü"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:3059
+#: data/core/terrain.cfg:3126
 msgid "Fake Shroud"
 msgstr "Sahte Örtü"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:3070 data/gui/window/game_stats.cfg:370
+#: data/core/terrain.cfg:3137 data/gui/window/game_stats.cfg:370
 msgid "Fog"
 msgstr "Savaş Dumanı"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3085 data/core/terrain.cfg:3086
+#: data/core/terrain.cfg:3152 data/core/terrain.cfg:3153
 msgid "Fungus"
 msgstr "Mantar"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3089
+#: data/core/terrain.cfg:3156
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1845,7 +1882,7 @@ msgstr ""
 "birimler ise %20 alır."
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:3100
+#: data/core/terrain.cfg:3167
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1880,12 +1917,12 @@ msgstr ""
 "Çoğu birim mağaralarda %20 ila %40 savunma alırken Cüceler %50 alır."
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:3113
+#: data/core/terrain.cfg:3180
 msgid "Sands"
 msgstr "Kumlar"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:3130
+#: data/core/terrain.cfg:3197
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -1904,7 +1941,7 @@ msgstr ""
 "Susallar ve Nagalar kıyı resiflerinde %70 savunma alır."
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:3144
+#: data/core/terrain.cfg:3211
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -1926,7 +1963,7 @@ msgstr ""
 "vardır. Cüceler tepelerde %60 savunma alır."
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:3158
+#: data/core/terrain.cfg:3225
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -1949,7 +1986,7 @@ msgstr ""
 "%60 savunma alır."
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:3171
+#: data/core/terrain.cfg:3238
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -1972,7 +2009,7 @@ msgstr ""
 "Çoğu birim sığ suda %20-%30 savunma alırken Nagalar ve Susallar %60 alır."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:3186
+#: data/core/terrain.cfg:3253
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -1993,22 +2030,7 @@ msgstr ""
 "Çoğu birimin kalede %60 savunması vardır."
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3200
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but also severely impede any passage through them. Units burdened "
-#| "by heavy armor, such as the Wesnoth cavalry and heavy infantry lines, "
-#| "cannot even enter them. Aquatic races and creatures like the merfolk have "
-#| "piscine bodies which also render them unable to climb steep inclines. "
-#| "Nagas are an exception due to their strong arms and rugged scales. Both "
-#| "dwarves and trolls are native to mountainous terrain, and have an easy "
-#| "time traversing them.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
+#: data/core/terrain.cfg:3267
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2033,10 +2055,10 @@ msgstr ""
 "Cüceler ve troller dağlık arazinin yerlileridir ve geçmek için bolca "
 "zamanları vardır.\n"
 "\n"
-"Çoğu birim dağlarda %60 savunma alırken Cüceler %70 alır."
+"Cüceler %70'in tadını çıkarırken çoğu birim dağlarda %60 savunma alır."
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3212
+#: data/core/terrain.cfg:3279
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2053,12 +2075,12 @@ msgstr ""
 "Susallar ve Nagalar derin suda %50 savunma ve tam hareket sahibidir."
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3223 data/core/terrain.cfg:3224
+#: data/core/terrain.cfg:3290 data/core/terrain.cfg:3291
 msgid "Flat"
 msgstr "Düz"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3225
+#: data/core/terrain.cfg:3292
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -2078,7 +2100,7 @@ msgstr ""
 "Çoğu birim çayırda %30 ila %40 savunma alır."
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3238
+#: data/core/terrain.cfg:3305
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2109,12 +2131,12 @@ msgstr ""
 "sadece %30 savunma alır."
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3248 data/core/terrain.cfg:3249
+#: data/core/terrain.cfg:3315 data/core/terrain.cfg:3316
 msgid "Frozen"
 msgstr "Donmuş"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3251
+#: data/core/terrain.cfg:3318
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2133,7 +2155,7 @@ msgstr ""
 "Çoğu birimin donmuş arazide %20 ila %40 savunması vardır."
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3264
+#: data/core/terrain.cfg:3331
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2158,12 +2180,12 @@ msgstr ""
 "vardır."
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3274 data/core/terrain.cfg:3275
+#: data/core/terrain.cfg:3341 data/core/terrain.cfg:3342
 msgid "Impassable"
 msgstr "Geçit Vermez"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3277
+#: data/core/terrain.cfg:3344
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2177,12 +2199,12 @@ msgstr ""
 "duvarları kıramaz."
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3284 data/core/terrain.cfg:3285
+#: data/core/terrain.cfg:3351 data/core/terrain.cfg:3352
 msgid "Unwalkable"
 msgstr "Yürünmez"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3287
+#: data/core/terrain.cfg:3354
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
@@ -2195,12 +2217,12 @@ msgstr ""
 "sadece uçabilen birimler bu araziden geçebilir."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3294 data/core/terrain.cfg:3295
+#: data/core/terrain.cfg:3361 data/core/terrain.cfg:3362
 msgid "Rails"
 msgstr "Raylar"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3297
+#: data/core/terrain.cfg:3364
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
 msgstr ""
@@ -2305,7 +2327,7 @@ msgstr "Eklentiyi Yayımla"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
-#: src/gui/dialogs/addon/manager.cpp:930
+#: src/gui/dialogs/addon/manager.cpp:931
 msgid "Uninstall add-on"
 msgstr "Eklentiyi Kaldır"
 
@@ -2380,7 +2402,7 @@ msgstr "Parolayı yerel olarak kaydet (şifreli)"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:140
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2392,6 +2414,7 @@ msgstr "Tamam"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
+#. [button]: id=placeholder
 #: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
@@ -2406,9 +2429,9 @@ msgstr "Tamam"
 #: data/gui/window/editor_generate_map.cfg:214
 #: data/gui/window/editor_new_map.cfg:126
 #: data/gui/window/editor_resize_map.cfg:282
-#: data/gui/window/file_dialog.cfg:450 data/gui/window/folder_create.cfg:133
-#: data/gui/window/game_load.cfg:651 data/gui/window/game_save.cfg:134
-#: data/gui/window/label_settings.cfg:149
+#: data/gui/window/file_dialog.cfg:450 data/gui/window/file_progress.cfg:94
+#: data/gui/window/folder_create.cfg:133 data/gui/window/game_load.cfg:651
+#: data/gui/window/game_save.cfg:134 data/gui/window/label_settings.cfg:149
 #: data/gui/window/language_selection.cfg:162 data/gui/window/logging.cfg:269
 #: data/gui/window/message.cfg:149 data/gui/window/mp_change_control.cfg:216
 #: data/gui/window/mp_connect.cfg:314
@@ -2418,8 +2441,8 @@ msgstr "Tamam"
 #: data/gui/window/mp_faction_select.cfg:393
 #: data/gui/window/mp_join_game_password_prompt.cfg:149
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
-#: data/gui/window/mp_staging.cfg:442
-#: data/gui/window/network_transmission.cfg:108
+#: data/gui/window/mp_report.cfg:249 data/gui/window/mp_staging.cfg:442
+#: data/gui/window/network_transmission.cfg:111
 #: data/gui/window/select_orb_colors.cfg:151
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
@@ -2521,7 +2544,7 @@ msgstr "Güncellendi:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/window/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:559
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:560
 msgid "No description available."
 msgstr "Açıklama mevcut değil."
 
@@ -2552,7 +2575,7 @@ msgstr "Gereksinimler:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1008
+#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1009
 msgid "addon_dependencies^None"
 msgstr "Yok"
 
@@ -2563,7 +2586,7 @@ msgstr "Çeviriler:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1022
+#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1023
 msgid "translations^None"
 msgstr "Yok"
 
@@ -2594,8 +2617,8 @@ msgstr "Eklenti Yöneticisi"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1042 src/gui/dialogs/addon/manager.cpp:507
-#: src/gui/dialogs/addon/manager.cpp:743
+#: data/gui/window/addon_manager.cfg:1042 src/gui/dialogs/addon/manager.cpp:508
+#: src/gui/dialogs/addon/manager.cpp:744
 msgid "Add-on Details"
 msgstr "Eklenti Ayrıntıları"
 
@@ -2887,8 +2910,8 @@ msgstr "Zaman Planını düzenle"
 #: data/gui/window/game_save_message.cfg:92
 #: data/gui/window/game_save_oos.cfg:90
 #: data/gui/window/screenshot_notification.cfg:120
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
-#: src/gui/dialogs/unit_recall.cpp:323
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
+#: src/gui/dialogs/unit_recall.cpp:324
 msgid "Name:"
 msgstr "Ad:"
 
@@ -2945,8 +2968,8 @@ msgstr "Gün Vaktini sil"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:903 src/gui/dialogs/file_dialog.cpp:302
-#: src/gui/dialogs/file_dialog.cpp:728
+#: src/gui/dialogs/addon/manager.cpp:904 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Onayla"
 
@@ -3050,7 +3073,7 @@ msgstr "Tanımı:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "Experience modifier:"
 msgstr "Tecrübe niteleyicisi:"
 
@@ -3112,7 +3135,7 @@ msgstr "Altın:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Gold per village:"
 msgstr "Köy başına altın:"
 
@@ -3133,7 +3156,7 @@ msgstr "Denetimci:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:70
+#: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr "İnsan"
 
@@ -3183,7 +3206,7 @@ msgstr "Harita üreteci seçin:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -3494,7 +3517,7 @@ msgstr "Oyunu Kaydet"
 #. [button]: id=save
 #: data/gui/window/game_save.cfg:120
 #: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:182
 msgid "Save"
 msgstr "Kaydet"
 
@@ -3531,7 +3554,7 @@ msgstr "Takım"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #: data/gui/window/game_stats.cfg:63
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:435
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:436
 msgid "Gold"
 msgstr "Altın"
 
@@ -3558,7 +3581,7 @@ msgstr "Bakım"
 #. [label]: id=side_income
 #: data/gui/window/game_stats.cfg:118 data/gui/window/mp_join_game.cfg:273
 #: data/gui/window/mp_join_game.cfg:286
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:441
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:442
 msgid "Income"
 msgstr "Gelir"
 
@@ -3606,7 +3629,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:254
+#: data/gui/window/game_stats.cfg:705 src/gui/dialogs/game_stats.cpp:255
 msgid "Current Status"
 msgstr "Şu Anki Durum"
 
@@ -3617,7 +3640,7 @@ msgstr "Oyun İstatistiği"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
-#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:254
+#: data/gui/window/game_stats.cfg:793 src/gui/dialogs/game_stats.cpp:255
 msgid "Scenario Settings"
 msgstr "Senaryo Ayarları"
 
@@ -3890,14 +3913,14 @@ msgstr "Oyun Oluştur"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:419 data/gui/window/lobby_main.cfg:677
-#: src/gui/dialogs/multiplayer/lobby.cpp:853
+#: src/gui/dialogs/multiplayer/lobby.cpp:852
 msgid "Join"
 msgstr "Katıl"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:431 data/gui/window/lobby_main.cfg:700
-#: src/gui/dialogs/multiplayer/lobby.cpp:819
+#: src/gui/dialogs/multiplayer/lobby.cpp:818
 msgid "Observe"
 msgstr "Gözlemle"
 
@@ -4165,8 +4188,10 @@ msgstr "Odadan veya oyundan bir oyuncu çıkınca"
 msgid "When a whisper is received"
 msgstr "Bir fısıltı gelince"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/window/mp_alerts_options.cfg:186
+#: src/gui/dialogs/multiplayer/mp_report.cpp:49
 msgid "Whisper"
 msgstr "Fısıltı"
 
@@ -4534,7 +4559,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Map size:"
 msgstr "Harita Boyutları:"
 
@@ -4557,17 +4582,13 @@ msgstr "Erkek"
 msgid "Female"
 msgstr "Dişi"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:217
-#: src/gui/dialogs/statistics_dialog.cpp:367
 msgid "Recruits"
 msgstr "Asker alımlar"
 
 #. [label]
 #: data/gui/window/mp_faction_select.cfg:308
-#, fuzzy
-#| msgid "Choose Your Leader"
 msgid "Choose Your Leader"
 msgstr "Liderinizi Seçin"
 
@@ -4619,7 +4640,7 @@ msgstr "Oyun Odası"
 #. [label]: id=status_label
 #: data/gui/window/mp_join_game.cfg:491 data/gui/window/mp_staging.cfg:623
 #: data/gui/window/mp_staging.cfg:815
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:503
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
 msgid "Waiting for players to join..."
 msgstr "Oyuncuların katılması bekleniyor..."
 
@@ -4649,7 +4670,7 @@ msgstr "Kullanıcı:"
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
 #: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
-#: src/gui/dialogs/game_load.cpp:394
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Çok Oyunculu"
 
@@ -4696,6 +4717,33 @@ msgstr ""
 #: data/gui/window/mp_method_selection.cfg:292
 msgid "Local Game"
 msgstr "Yerel Oyun"
+
+#. [label]
+#: data/gui/window/mp_report.cfg:50
+msgid "* Player being reported:"
+msgstr ""
+
+#. [label]
+#: data/gui/window/mp_report.cfg:82
+msgid "* Reason for report:"
+msgstr ""
+
+#. [label]
+#: data/gui/window/mp_report.cfg:114
+msgid "Location of occurrence:"
+msgstr ""
+
+#. [label]
+#: data/gui/window/mp_report.cfg:146
+#, fuzzy
+#| msgid "Map Information"
+msgid "Additional information:"
+msgstr "Harita Bilgileri"
+
+#. [label]
+#: data/gui/window/mp_report.cfg:191
+msgid "* required fields"
+msgstr ""
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
@@ -4916,7 +4964,7 @@ msgstr "Klavye kısayolu"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:791
+#: src/gui/dialogs/preferences_dialog.cpp:801
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4929,7 +4977,7 @@ msgstr "Oyunda müsait"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:792
+#: src/gui/dialogs/preferences_dialog.cpp:802
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4942,7 +4990,7 @@ msgstr "Düzenleyicide müsait"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:793
+#: src/gui/dialogs/preferences_dialog.cpp:803
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5685,8 +5733,8 @@ msgstr "TP"
 #. [toggle_button]: id=sort_6
 #. [toggle_button]: id=sort_4
 #: data/gui/window/unit_list.cfg:176 data/gui/window/unit_recall.cfg:89
-#: src/gui/widgets/unit_preview_pane.cpp:378
-#: src/gui/widgets/unit_preview_pane.cpp:528
+#: src/gui/widgets/unit_preview_pane.cpp:381
+#: src/gui/widgets/unit_preview_pane.cpp:531
 msgid "Traits"
 msgstr "Mizaçlar"
 
@@ -5736,15 +5784,15 @@ msgstr "Asker al"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:209
-#: src/gui/dialogs/preferences_dialog.cpp:229
-#: src/gui/dialogs/transient_message.cpp:77
+#: src/gui/dialogs/preferences_dialog.cpp:233
+#: src/gui/dialogs/transient_message.cpp:79
 msgid "Error"
 msgstr "Hata"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:182
-#: src/gui/dialogs/multiplayer/lobby.cpp:198 src/gui/dialogs/wml_error.cpp:159
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:178
+#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Ayrıntılar:"
 
@@ -5768,44 +5816,44 @@ msgstr "Cocoa bildirimleri geri uç"
 msgid "cpu_architecture^<unknown>"
 msgstr "<bilinmiyor>"
 
-#: src/desktop/paths.cpp:97
+#: src/desktop/paths.cpp:98
 msgid "filesystem_path_system^Volumes"
 msgstr "Düzeyler"
 
-#: src/desktop/paths.cpp:201
+#: src/desktop/paths.cpp:202
 msgid "filesystem_path_game^Game executables"
 msgstr "Oyun çalıştırıcıları"
 
-#: src/desktop/paths.cpp:205
+#: src/desktop/paths.cpp:206
 msgid "filesystem_path_game^Game data"
 msgstr "Oyun verisi"
 
-#: src/desktop/paths.cpp:209
+#: src/desktop/paths.cpp:210
 msgid "filesystem_path_game^User data"
 msgstr "Kullanıcı verisi"
 
-#: src/desktop/paths.cpp:213
+#: src/desktop/paths.cpp:214
 msgid "filesystem_path_game^User preferences"
 msgstr "Kullanıcı tercihleri"
 
-#: src/desktop/paths.cpp:226
+#: src/desktop/paths.cpp:227
 msgid "filesystem_path_system^Home"
 msgstr "Başlangıç"
 
-#: src/desktop/paths.cpp:235
+#: src/desktop/paths.cpp:236
 msgid "filesystem_path_system^Root"
 msgstr "Kök"
 
-#: src/desktop/version.cpp:407
+#: src/desktop/version.cpp:406
 msgid "operating_system^<unknown>"
 msgstr "<bilinmeyen>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:636
+#: src/filesystem.cpp:639
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<nokta ile başlamayan göreli dosya yolu>"
 
-#: src/filesystem.cpp:639
+#: src/filesystem.cpp:642
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -5813,11 +5861,11 @@ msgstr ""
 "Mutlak bir yol veya nokta ve tersbölü ile başlayan göreli bir yol kullanın"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:704 src/filesystem.cpp:726
+#: src/filesystem.cpp:707 src/filesystem.cpp:729
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<göreli dosya yolu>"
 
-#: src/filesystem.cpp:707 src/filesystem.cpp:729
+#: src/filesystem.cpp:710 src/filesystem.cpp:732
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -5835,11 +5883,11 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1640
+#: src/filesystem.cpp:1657
 msgid "language code for localized resources^en_US"
 msgstr "tr"
 
-#: src/font/text.cpp:859
+#: src/font/text.cpp:849
 msgid "The text contains invalid Pango markup: "
 msgstr "Bu metin geçersiz Pango işareti içeriyor: "
 
@@ -5896,63 +5944,42 @@ msgstr "süresi doldu"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/string_utils.cpp:309
-#, fuzzy
-#| msgid "timespan^$num year"
-#| msgid_plural "timespan^$num years"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num yıl"
 msgstr[1] "$num yıl"
 
 #: src/formula/string_utils.cpp:310
-#, fuzzy
-#| msgid "timespan^$num month"
-#| msgid_plural "timespan^$num months"
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num ay"
 msgstr[1] "$num ay"
 
 #: src/formula/string_utils.cpp:311
-#, fuzzy
-#| msgid "timespan^$num week"
-#| msgid_plural "timespan^$num weeks"
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num hafta"
 msgstr[1] "$num hafta"
 
 #: src/formula/string_utils.cpp:312
-#, fuzzy
-#| msgid "timespan^$num day"
-#| msgid_plural "timespan^$num days"
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num gün"
 msgstr[1] "$num gün"
 
 #: src/formula/string_utils.cpp:313
-#, fuzzy
-#| msgid "timespan^$num hour"
-#| msgid_plural "timespan^$num hours"
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num saat"
 msgstr[1] "$num saat"
 
 #: src/formula/string_utils.cpp:314
-#, fuzzy
-#| msgid "timespan^$num minute"
-#| msgid_plural "timespan^$num minutes"
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num dakika"
 msgstr[1] "$num dakika"
 
 #: src/formula/string_utils.cpp:315
-#, fuzzy
-#| msgid "timespan^$num second"
-#| msgid_plural "timespan^$num seconds"
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num saniye"
@@ -5962,7 +5989,7 @@ msgstr[1] "$num saniye"
 msgid "Image doesn't fit on canvas."
 msgstr "Resim tuvale sığmıyor."
 
-#: src/gui/core/canvas.cpp:405
+#: src/gui/core/canvas.cpp:413
 msgid "Text has a font size of 0."
 msgstr "Yazı tipi boyutu 0."
 
@@ -5970,30 +5997,26 @@ msgstr "Yazı tipi boyutu 0."
 msgid "No state or draw section defined."
 msgstr "Tanımlı durum veya çizim bölümü yok."
 
-#: src/gui/core/widget_definition.cpp:70 src/gui/core/window_builder.cpp:157
+#: src/gui/core/widget_definition.cpp:69 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
 msgstr "Tanımlı bir çözünürlük yok."
 
-#: src/gui/core/window_builder.cpp:47
-msgid "Linked '$id' group has multiple definitions."
-msgstr "Bağlantılı '$id' grubunun birden fazla tanımı var."
-
-#: src/gui/core/window_builder.cpp:191 src/gui/widgets/addon_list.cpp:431
+#: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
 #: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:713
 #: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:125
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
 #: src/gui/widgets/toggle_panel.cpp:321 src/gui/widgets/tree_view.cpp:272
-#: src/gui/widgets/unit_preview_pane.cpp:611
+#: src/gui/widgets/unit_preview_pane.cpp:614
 msgid "No grid defined."
 msgstr "Tanımlı bir ızgara yok."
 
-#: src/gui/core/window_builder.cpp:245
+#: src/gui/core/window_builder.cpp:221
 msgid "Grid '$grid' row $row must have at least one column."
 msgstr ""
 "'$grid' ızgarasının $row numaralı satırı an azından bir sütun içermelidir."
 
-#: src/gui/core/window_builder.cpp:257
+#: src/gui/core/window_builder.cpp:233
 msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
@@ -6157,101 +6180,101 @@ msgstr "Tarlalaştırma"
 msgid "addon_tag^Players can change the terrain"
 msgstr "Oyuncular araziyi değiştirebilir"
 
-#: src/gui/dialogs/addon/manager.cpp:263 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Not installed"
 msgstr "Kurulu değil"
 
-#: src/gui/dialogs/addon/manager.cpp:264 src/gui/widgets/addon_list.cpp:104
+#: src/gui/dialogs/addon/manager.cpp:265 src/gui/widgets/addon_list.cpp:104
 msgid "addon_state^Published, not installed"
 msgstr "Yayımlanmış, kurulmamış"
 
-#: src/gui/dialogs/addon/manager.cpp:268 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Installed"
 msgstr "Kurulu"
 
-#: src/gui/dialogs/addon/manager.cpp:269 src/gui/widgets/addon_list.cpp:112
+#: src/gui/dialogs/addon/manager.cpp:270 src/gui/widgets/addon_list.cpp:112
 msgid "addon_state^Published"
 msgstr "Yayımlanmış"
 
-#: src/gui/dialogs/addon/manager.cpp:273
+#: src/gui/dialogs/addon/manager.cpp:274
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Kurulu, yerel sürüm takip edilmiyor"
 
-#: src/gui/dialogs/addon/manager.cpp:276
+#: src/gui/dialogs/addon/manager.cpp:277
 msgid "addon_state^Published, not tracking local version"
 msgstr "Yayımlanmış, yerel sürüm takip edilmiyor"
 
-#: src/gui/dialogs/addon/manager.cpp:280
+#: src/gui/dialogs/addon/manager.cpp:281
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Kurulu ($local_version|), yükseltilebilir"
 
-#: src/gui/dialogs/addon/manager.cpp:281
+#: src/gui/dialogs/addon/manager.cpp:282
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Yayımlanmış ($local_version kurulu), yükseltilebilir"
 
-#: src/gui/dialogs/addon/manager.cpp:287
+#: src/gui/dialogs/addon/manager.cpp:288
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Kurulu ($local_version|), sunucudaki eski sürüm"
 
-#: src/gui/dialogs/addon/manager.cpp:288
+#: src/gui/dialogs/addon/manager.cpp:289
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Yayımlanmış ($local_version kurulu), sunucudaki eski sürüm"
 
-#: src/gui/dialogs/addon/manager.cpp:294 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Kurulu, yayımlamaya hazır değil"
 
-#: src/gui/dialogs/addon/manager.cpp:295 src/gui/widgets/addon_list.cpp:115
+#: src/gui/dialogs/addon/manager.cpp:296 src/gui/widgets/addon_list.cpp:115
 msgid "addon_state^Ready to publish"
 msgstr "Yayımlamaya hazır"
 
-#: src/gui/dialogs/addon/manager.cpp:299 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Installed, broken"
 msgstr "Kurulu, bozuk"
 
-#: src/gui/dialogs/addon/manager.cpp:300 src/gui/widgets/addon_list.cpp:127
+#: src/gui/dialogs/addon/manager.cpp:301 src/gui/widgets/addon_list.cpp:127
 msgid "addon_state^Published, broken"
 msgstr "Yayımlanmış, bozuk"
 
-#: src/gui/dialogs/addon/manager.cpp:303 src/gui/widgets/addon_list.cpp:131
+#: src/gui/dialogs/addon/manager.cpp:304 src/gui/widgets/addon_list.cpp:131
 msgid "addon_state^Unknown"
 msgstr "Bilinmiyor"
 
-#: src/gui/dialogs/addon/manager.cpp:400
+#: src/gui/dialogs/addon/manager.cpp:401
 msgid "ascending"
 msgstr "artan"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:402
+#: src/gui/dialogs/addon/manager.cpp:403
 msgid "oldest to newest"
 msgstr "eskiden yeniye"
 
-#: src/gui/dialogs/addon/manager.cpp:405
+#: src/gui/dialogs/addon/manager.cpp:406
 msgid "descending"
 msgstr "azalan"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:407
+#: src/gui/dialogs/addon/manager.cpp:408
 msgid "newest to oldest"
 msgstr "yeniden eskiye"
 
-#: src/gui/dialogs/addon/manager.cpp:504
+#: src/gui/dialogs/addon/manager.cpp:505
 msgid "addons^Back to List"
 msgstr "Listeye dön"
 
-#: src/gui/dialogs/addon/manager.cpp:516
+#: src/gui/dialogs/addon/manager.cpp:517
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Sunucudan eklenti listesini indirirken bir sorun çıktı"
 
-#: src/gui/dialogs/addon/manager.cpp:552
+#: src/gui/dialogs/addon/manager.cpp:553
 msgid "No Add-ons Available"
 msgstr "Eklenti yok"
 
-#: src/gui/dialogs/addon/manager.cpp:552
+#: src/gui/dialogs/addon/manager.cpp:553
 msgid "There are no add-ons available for download from this server."
 msgstr "Bu sunucudan indirmeye uygun eklenti yok"
 
-#: src/gui/dialogs/addon/manager.cpp:785
+#: src/gui/dialogs/addon/manager.cpp:786
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6259,15 +6282,15 @@ msgstr ""
 "Aşağıdaki eklentinin yayım veya sürüm denetim bilgisi yerel olarak "
 "saklandığı için kaldırılmayacaktır:"
 
-#: src/gui/dialogs/addon/manager.cpp:793
+#: src/gui/dialogs/addon/manager.cpp:794
 msgid "The following add-on could not be deleted properly:"
 msgstr "Aşağıdaki eklenti düzgün silinemedi:"
 
-#: src/gui/dialogs/addon/manager.cpp:846
+#: src/gui/dialogs/addon/manager.cpp:847
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/gui/dialogs/addon/manager.cpp:847
+#: src/gui/dialogs/addon/manager.cpp:848
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6275,25 +6298,25 @@ msgstr ""
 "Bu eklentinin uzak sürümü sunucuya yüklenen sürümden büyük veya eşit, devam "
 "etmek istediğinize emin misiniz?"
 
-#: src/gui/dialogs/addon/manager.cpp:866
+#: src/gui/dialogs/addon/manager.cpp:867
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Geçersiz simge yolu. yolun geçerli bir resme işaret ettiğine emin olun."
 
-#: src/gui/dialogs/addon/manager.cpp:869 src/gui/dialogs/addon/manager.cpp:911
+#: src/gui/dialogs/addon/manager.cpp:870 src/gui/dialogs/addon/manager.cpp:912
 msgid "The server responded with an error:"
 msgstr "Sunucu bir hata verdi:"
 
-#: src/gui/dialogs/addon/manager.cpp:872
+#: src/gui/dialogs/addon/manager.cpp:873
 msgid "The add-on was rejected by the server:"
 msgstr "Eklenti sunucu tarafından reddedildi:"
 
-#: src/gui/dialogs/addon/manager.cpp:887 src/gui/dialogs/addon/manager.cpp:914
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:510
+#: src/gui/dialogs/addon/manager.cpp:888 src/gui/dialogs/addon/manager.cpp:915
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "Yanıt"
 
-#: src/gui/dialogs/addon/manager.cpp:899
+#: src/gui/dialogs/addon/manager.cpp:900
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6301,71 +6324,71 @@ msgstr ""
 "'$addon' eklentisini silmek eklenti sunucusundaki indirme ve yükleme "
 "sayılarını kalıcı olarak siler, Devam etmek istediğinize emin misiniz?"
 
-#: src/gui/dialogs/addon/manager.cpp:931
+#: src/gui/dialogs/addon/manager.cpp:932
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "'$addon' eklentisini silmek ister misiniz?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:962
+#: src/gui/dialogs/addon/manager.cpp:963
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d-%m-%Y %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:964
+#: src/gui/dialogs/addon/manager.cpp:965
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%d-%m-%Y %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1025
+#: src/gui/dialogs/addon/manager.cpp:1026
 msgid "url^None"
 msgstr "Yok"
 
-#: src/gui/dialogs/attack_predictions.cpp:115
+#: src/gui/dialogs/attack_predictions.cpp:116
 msgid "No usable weapon"
 msgstr "Kullanılabilir silah yok"
 
-#: src/gui/dialogs/attack_predictions.cpp:193
+#: src/gui/dialogs/attack_predictions.cpp:194
 msgid "Defender resistance vs"
 msgstr "Savunanın direnci vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:195
+#: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender vulnerability vs"
 msgstr "Savunanın yaralanabilirliği vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:200
 msgid "Attacker resistance vs"
 msgstr "Saldıranın direnci vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:201
+#: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker vulnerability vs"
 msgstr "Saldıranın yaralanabilirliği vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:439
+#: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Yok"
 
-#: src/gui/dialogs/chat_log.cpp:404 src/gui/dialogs/game_cache_options.cpp:68
-#: src/gui/dialogs/game_version_dialog.cpp:154
+#: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
+#: src/gui/dialogs/game_version_dialog.cpp:155
 #: src/gui/dialogs/gamestate_inspector.cpp:409
 #: src/gui/dialogs/lua_interpreter.cpp:475
-#: src/gui/dialogs/screenshot_notification.cpp:69
-#: src/gui/dialogs/wml_error.cpp:191
+#: src/gui/dialogs/screenshot_notification.cpp:70
+#: src/gui/dialogs/wml_error.cpp:192
 msgid "Clipboard support not found, contact your packager"
 msgstr "Pano desteği bulunamadı, paketçiniz ile iletişime geçin"
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:39
+#: src/gui/dialogs/depcheck_confirm_change.cpp:40
 msgid "$requester requires the following modifications to be enabled:"
 msgstr "$requester aşağıdaki değişikliklerin etkin olmasını gerektiriyor:"
 
-#: src/gui/dialogs/depcheck_confirm_change.cpp:43
+#: src/gui/dialogs/depcheck_confirm_change.cpp:44
 msgid "$requester requires the following modifications to be disabled:"
 msgstr "$requester aşağıdaki değişikliklerin olmamasını gerektiriyor:"
 
-#: src/gui/dialogs/depcheck_select_new.cpp:41
+#: src/gui/dialogs/depcheck_select_new.cpp:42
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -6373,7 +6396,7 @@ msgstr ""
 "Seçili senaryo kurulumunuzla uyumlu eğil.\n"
 "Lütfen uyumlu bir tane seçin."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:46
+#: src/gui/dialogs/depcheck_select_new.cpp:47
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -6381,7 +6404,7 @@ msgstr ""
 "Seçili çağ kurulumunuzla uyumlu eğil.\n"
 "Lütfen uyumlu bir tane seçin."
 
-#: src/gui/dialogs/depcheck_select_new.cpp:52
+#: src/gui/dialogs/depcheck_select_new.cpp:53
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -6389,43 +6412,43 @@ msgstr ""
 "Seçili değişiklik kurulumunuzla uyumlu eğil.\n"
 "Lütfen uyumlu bir tane seçin."
 
-#: src/gui/dialogs/editor/generator_settings.cpp:70
+#: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
 msgstr "/1000 tuğla"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Coastal"
 msgstr "Sahil"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Inland"
 msgstr "Kara"
 
-#: src/gui/dialogs/editor/generator_settings.cpp:73
+#: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Island"
 msgstr "Ada"
 
-#: src/gui/dialogs/file_dialog.cpp:106
+#: src/gui/dialogs/file_dialog.cpp:107
 msgid "Find File"
 msgstr "Dosya Bul"
 
-#: src/gui/dialogs/file_dialog.cpp:181
+#: src/gui/dialogs/file_dialog.cpp:182
 msgid "Open"
 msgstr "Aç"
 
-#: src/gui/dialogs/file_dialog.cpp:301
+#: src/gui/dialogs/file_dialog.cpp:302
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Bu dosya zaten var. Üzerine yazmak ister misiniz?"
 
-#: src/gui/dialogs/file_dialog.cpp:325
+#: src/gui/dialogs/file_dialog.cpp:326
 msgid "The file or folder $path cannot be created."
 msgstr "$path dizini/dosyası oluşturulamıyor."
 
-#: src/gui/dialogs/file_dialog.cpp:331
+#: src/gui/dialogs/file_dialog.cpp:332
 msgid "The file or folder $path does not exist."
 msgstr "$path dizini/dosyası yok."
 
-#: src/gui/dialogs/file_dialog.cpp:706
+#: src/gui/dialogs/file_dialog.cpp:707
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
@@ -6433,19 +6456,19 @@ msgstr ""
 "$path üzerinde yeni dizin oluşturulamadı. Bu konuma yazmak için gerekli "
 "izinlerin olduğundan emin olun."
 
-#: src/gui/dialogs/file_dialog.cpp:724
+#: src/gui/dialogs/file_dialog.cpp:725
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr "Aşağıdaki dizin ve içerikleri kalıcı olarak silinecektir:"
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:726
 msgid "The following file will be permanently deleted:"
 msgstr "Aşağıdaki dosya kalıcı olarak silinecektir:"
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:727
 msgid "Do you wish to continue?"
 msgstr "Devam etmek ister misiniz?"
 
-#: src/gui/dialogs/file_dialog.cpp:738
+#: src/gui/dialogs/file_dialog.cpp:739
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -6453,42 +6476,42 @@ msgstr ""
 "$path silinemedi. Bu konuma yazmak için gerekli izinlerin olduğundan emin "
 "olun."
 
-#: src/gui/dialogs/folder_create.cpp:40
+#: src/gui/dialogs/folder_create.cpp:41
 msgid "New Bookmark"
 msgstr "Yeni İşaretçi"
 
-#: src/gui/dialogs/game_cache_options.cpp:100
+#: src/gui/dialogs/game_cache_options.cpp:101
 msgid "dir_size^Unknown"
 msgstr "Bilinmeyen"
 
-#: src/gui/dialogs/game_cache_options.cpp:102
+#: src/gui/dialogs/game_cache_options.cpp:103
 #: src/gui/dialogs/network_transmission.cpp:52
 #: src/gui/dialogs/network_transmission.cpp:53
-#: src/gui/dialogs/screenshot_notification.cpp:116
+#: src/gui/dialogs/screenshot_notification.cpp:117
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_cache_options.cpp:125
+#: src/gui/dialogs/game_cache_options.cpp:126
 msgid "Cache Cleaned"
 msgstr "Temizlenen Önbellek"
 
-#: src/gui/dialogs/game_cache_options.cpp:126
+#: src/gui/dialogs/game_cache_options.cpp:127
 msgid "The game data cache has been cleaned."
 msgstr "Oyun veri önbelleği temizlendi."
 
-#: src/gui/dialogs/game_cache_options.cpp:128
+#: src/gui/dialogs/game_cache_options.cpp:129
 msgid "The game data cache could not be completely cleaned."
 msgstr "Oyun veri önbelleği tamamen temizlenemedi."
 
-#: src/gui/dialogs/game_cache_options.cpp:144
+#: src/gui/dialogs/game_cache_options.cpp:145
 msgid "Cache Purged"
 msgstr "Arındırılan Önbellek"
 
-#: src/gui/dialogs/game_cache_options.cpp:145
+#: src/gui/dialogs/game_cache_options.cpp:146
 msgid "The game data cache has been purged."
 msgstr "Oyun veri önbelleği arındırıldı."
 
-#: src/gui/dialogs/game_cache_options.cpp:147
+#: src/gui/dialogs/game_cache_options.cpp:148
 msgid "The game data cache could not be purged."
 msgstr "Oyun veri önbelleği tamamen arındırılamadı."
 
@@ -6500,105 +6523,105 @@ msgstr "Kayıtlı Oyun Yok"
 msgid "There are no saved games to load."
 msgstr "Yüklenebilecek kayıtlı oyun yok."
 
-#: src/gui/dialogs/game_load.cpp:144
+#: src/gui/dialogs/game_load.cpp:145
 msgid "game_version^Current Version"
 msgstr "Geçerli Sürüm"
 
-#: src/gui/dialogs/game_load.cpp:148
+#: src/gui/dialogs/game_load.cpp:149
 msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:235
 msgid "$active active, $reserve reserve"
 msgstr ""
 
-#: src/gui/dialogs/game_load.cpp:283
+#: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
 msgstr "seçili dosya bozuk: "
 
-#: src/gui/dialogs/game_load.cpp:355
+#: src/gui/dialogs/game_load.cpp:356
 msgid "(Invalid)"
 msgstr "(Geçersiz)"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:386
 msgid "Campaign: $campaign_name"
 msgstr "Seferberlik: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:397
+#: src/gui/dialogs/game_load.cpp:398
 msgid "Tutorial"
 msgstr "Öğretici"
 
-#: src/gui/dialogs/game_load.cpp:400
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Test scenario"
 msgstr "Deneme senaryosu"
 
-#: src/gui/dialogs/game_load.cpp:410
+#: src/gui/dialogs/game_load.cpp:411
 msgid "Replay"
 msgstr "Tekrar"
 
-#: src/gui/dialogs/game_load.cpp:412
+#: src/gui/dialogs/game_load.cpp:413
 msgid "Turn"
 msgstr "El"
 
-#: src/gui/dialogs/game_load.cpp:414
+#: src/gui/dialogs/game_load.cpp:415
 msgid "Scenario start"
 msgstr "Senaryo başlangıcı"
 
-#: src/gui/dialogs/game_load.cpp:433
+#: src/gui/dialogs/game_load.cpp:434
 msgid "Difficulty: "
 msgstr "Zorluk: "
 
-#: src/gui/dialogs/game_load.cpp:456
+#: src/gui/dialogs/game_load.cpp:457
 msgid "Version: "
 msgstr "Sürüm: "
 
-#: src/gui/dialogs/game_load.cpp:461
+#: src/gui/dialogs/game_load.cpp:462
 msgid "Modifications: "
 msgstr "Değişiklikler: "
 
-#: src/gui/dialogs/game_stats.cpp:70
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^AI"
 msgstr "YZ"
 
-#: src/gui/dialogs/game_stats.cpp:70
+#: src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Idle"
 msgstr "Boşta"
 
-#: src/gui/dialogs/game_stats.cpp:70
+#: src/gui/dialogs/game_stats.cpp:71
 #, fuzzy
 #| msgid "controller^None"
 msgid "controller^Reserved"
 msgstr "Yok"
 
-#: src/gui/dialogs/game_stats.cpp:109 src/gui/dialogs/label_settings.cpp:77
+#: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
 msgstr "Bilinmeyen"
 
-#: src/gui/dialogs/game_stats.cpp:197 src/gui/dialogs/game_stats.cpp:200
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "no"
 msgstr "hayır"
 
-#: src/gui/dialogs/game_stats.cpp:197 src/gui/dialogs/game_stats.cpp:200
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
+#: src/gui/dialogs/multiplayer/lobby.cpp:449
 msgid "yes"
 msgstr "evet"
 
-#: src/gui/dialogs/game_version_dialog.cpp:105
-#: src/gui/dialogs/title_screen.cpp:195
+#: src/gui/dialogs/game_version_dialog.cpp:106
+#: src/gui/dialogs/title_screen.cpp:196
 msgid "Version $version"
 msgstr "Sürüm $version"
 
-#: src/gui/dialogs/game_version_dialog.cpp:109
+#: src/gui/dialogs/game_version_dialog.cpp:110
 msgid "Running on $os"
 msgstr "$os ile yürütülüyor"
 
-#: src/gui/dialogs/label_settings.cpp:53
+#: src/gui/dialogs/label_settings.cpp:54
 msgid "Team Labels"
 msgstr "Takım Etiketi"
 
-#: src/gui/dialogs/label_settings.cpp:83
+#: src/gui/dialogs/label_settings.cpp:84
 msgid "Side $side_number ($name)"
 msgstr "Taraf $side_number($name)"
 
@@ -6700,20 +6723,20 @@ msgstr ""
 msgid "lua console"
 msgstr "lua konsolu"
 
-#: src/gui/dialogs/multiplayer/faction_select.cpp:140
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:487
+#: src/gui/dialogs/multiplayer/faction_select.cpp:141
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:488
 msgid "Random"
 msgstr "Rastgele"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:69
+#: src/gui/dialogs/multiplayer/lobby.cpp:68
 msgid "Do you really want to log out?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:178
+#: src/gui/dialogs/multiplayer/lobby.cpp:174
 msgid "Incompatible User-made Content"
 msgstr "Uyumsuz Kullanıcı Yapımı İçerik"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:179
+#: src/gui/dialogs/multiplayer/lobby.cpp:175
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6722,11 +6745,11 @@ msgstr ""
 "Sunucunun eklenti sürümleri sizin sürümünüzle uyuşmuyor diye oyuna "
 "katılınamıyor. Sunucudan eklentilerini güncellemesini isteyebilirsiniz."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:194
+#: src/gui/dialogs/multiplayer/lobby.cpp:190
 msgid "Missing User-made Content"
 msgstr "Eksik Kullanıcı Yapımı İçerik"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:195
+#: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6736,47 +6759,47 @@ msgstr ""
 "indirilmesi veya güncellenmesi lazım.\n"
 "Yüklemeyi denemek istiyor musunuz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:372
+#: src/gui/dialogs/multiplayer/lobby.cpp:368
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Oyunlar: $num_shown / $num_total gösteriliyor"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:394
+#: src/gui/dialogs/multiplayer/lobby.cpp:390
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Çağ: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:424
+#: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "era_or_mod^not installed"
 msgstr "kurulu değil"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:427
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "Era"
 msgstr "Çağ"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:434
+#: src/gui/dialogs/multiplayer/lobby.cpp:430
 msgid "Modifications"
 msgstr "Değişiklikler"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Reloaded:"
 msgstr "Geri yüklenmiş:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Shared vision:"
 msgstr "Paylaşılan görüntü:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Shuffle sides:"
 msgstr "Tarafları karıştır:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:462
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Time limit:"
 msgstr "Zaman sınırı:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:463
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Use map settings:"
 msgstr "Harita ayarlarını kullan:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:471
+#: src/gui/dialogs/multiplayer/lobby.cpp:467
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6784,26 +6807,26 @@ msgstr ""
 "Oyuna katılmak için\n"
 "bir veya daha fazla eklentinin indirilmesi laızm."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:496
+#: src/gui/dialogs/multiplayer/lobby.cpp:492
 msgid "Observers allowed"
 msgstr "Seyirciler kabul edilir"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:499
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers not allowed"
 msgstr "Seyirciler yasak"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:630
+#: src/gui/dialogs/multiplayer/lobby.cpp:626
 msgid "lobby"
 msgstr "salon"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:819
+#: src/gui/dialogs/multiplayer/lobby.cpp:818
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Bu oyun gözlemcilere izin vermiyor. Yine de yönetici haklarını kullanmaya "
 "dikkat ediyor musunuz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:832
+#: src/gui/dialogs/multiplayer/lobby.cpp:831
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6812,13 +6835,13 @@ msgstr ""
 "destekleyen veri tabanını kontrol edin. Lütfen bunu https://bugs.wesnoth.org "
 "sitesine bildirin."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:853
+#: src/gui/dialogs/multiplayer/lobby.cpp:852
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Bu oyun parola korumalıdır. Yine de yönetici haklarını kullanarak katılacak "
 "mısınız?"
 
-#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:105
+#: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:106
 msgid ""
 "This build of wesnoth does not include support for desktop notifications, "
 "contact your package manager"
@@ -6826,136 +6849,146 @@ msgstr ""
 "Vesnot Savaşı'nın bu sürümü masaüstü bildirimlerini desteklemiyor, lütfen "
 "paket yöneticiniz ile irtibata geçin"
 
-#: src/gui/dialogs/multiplayer/mp_change_control.cpp:83
+#: src/gui/dialogs/multiplayer/mp_change_control.cpp:84
 msgid "Side $side"
 msgstr "$side tarafı"
 
-#: src/gui/dialogs/multiplayer/mp_connect.cpp:185
+#: src/gui/dialogs/multiplayer/mp_connect.cpp:186
 msgid "Add Server"
 msgstr "Sunucu Ekle"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:98
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
 msgid "Scenarios"
 msgstr "Senaryolar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:99
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
 msgid "Multiplayer Campaigns"
 msgstr "Çok oyuncu Seferberlikler"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:100
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
 msgid "Singleplayer Campaigns"
 msgstr "Tek oyunculu Seferberlikler"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:101
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
 msgid "Custom Maps"
 msgstr "Özel Haritalar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
 msgid "Custom Scenarios"
 msgstr "Özel Senaryolar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:104
 msgid "Random Maps"
 msgstr "Rastgele Haritalar"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:169
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:170
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:171
 msgid "No games found."
 msgstr "Oyun bulunamadı."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
 msgid "No eras found."
 msgstr "Hiç çağ bulunamadı."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:238
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:239
 msgid "No eras found"
 msgstr "Hiç çağ bulunamadı"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:505
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:506
 msgid "No eras available for this game."
 msgstr "Bu oyun için hiç çağ mevcut değil."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:706
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:707
 msgid "number of players^$min to $max"
 msgstr "$min - $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:820
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:821
 msgid "The selected game has no sides!"
 msgstr "Seçili oyunda hiç taraf yok!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:827
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:828
 msgid "The selected game cannot be created."
 msgstr "Seçili oyun oluşturulamadı."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Choose Starting Scenario"
 msgstr "Başlangıç Senaryosunu Seçin"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:899
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:900
 msgid "Select at which point to begin this campaign."
 msgstr "Bu seferberliğe nerden başlayacağınızı seçin."
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:223
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:224
 msgid "Computer Player"
 msgstr "Bilgisayar Oyuncu"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:225
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:226
 msgid "Empty slot"
 msgstr "boş yer"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:227
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:228
 msgid "Reserved for $playername"
 msgstr "$playername için ayrılmış"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:229
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:230
 msgid "Vacant slot"
 msgstr "Açık yer"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:233
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:234
 msgid "empty"
 msgstr "boş"
 
-#: src/gui/dialogs/multiplayer/mp_join_game.cpp:259
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:100
+#: src/gui/dialogs/multiplayer/mp_join_game.cpp:260
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:101
 msgid "this game"
 msgstr "bu oyun"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:504
+#: src/gui/dialogs/multiplayer/mp_report.cpp:48
+msgid "Lobby"
+msgstr "Salon"
+
+#: src/gui/dialogs/multiplayer/mp_report.cpp:50
+#, fuzzy
+#| msgid "Games"
+msgid "Game"
+msgstr "Oyunlar"
+
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:505
 msgid "Waiting for players to choose factions..."
 msgstr "Oyuncuların birlikleri seçmesi bekleniyor..."
 
-#: src/gui/dialogs/outro.cpp:46
+#: src/gui/dialogs/outro.cpp:47
 msgid "The End"
 msgstr "Son"
 
-#: src/gui/dialogs/preferences_dialog.cpp:155
+#: src/gui/dialogs/preferences_dialog.cpp:159
 msgid "friend"
 msgstr "arkadaş"
 
-#: src/gui/dialogs/preferences_dialog.cpp:160
+#: src/gui/dialogs/preferences_dialog.cpp:164
 msgid "ignored"
 msgstr "gözardı"
 
-#: src/gui/dialogs/preferences_dialog.cpp:214
-#: src/gui/dialogs/preferences_dialog.cpp:271
+#: src/gui/dialogs/preferences_dialog.cpp:218
+#: src/gui/dialogs/preferences_dialog.cpp:275
 msgid "No username specified"
 msgstr "kullanıcı adı belirtilmemiş"
 
-#: src/gui/dialogs/preferences_dialog.cpp:229
+#: src/gui/dialogs/preferences_dialog.cpp:233
 msgid "Invalid username"
 msgstr "Geçersiz kullanıcı adı"
 
-#: src/gui/dialogs/preferences_dialog.cpp:276
+#: src/gui/dialogs/preferences_dialog.cpp:280
 msgid "Not on friends or ignore lists"
 msgstr "Arkadaşlar veya gözardı edilenler listenizde değil"
 
-#: src/gui/dialogs/preferences_dialog.cpp:839
-#: src/gui/dialogs/preferences_dialog.cpp:903
+#: src/gui/dialogs/preferences_dialog.cpp:849
+#: src/gui/dialogs/preferences_dialog.cpp:913
 msgid "No hotkey selected"
 msgstr "Hiç kısayol seçilmedi."
 
-#: src/gui/dialogs/preferences_dialog.cpp:867
+#: src/gui/dialogs/preferences_dialog.cpp:877
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6964,19 +6997,19 @@ msgstr ""
 "kullanılıyor.\n"
 "“<b>$new_hotkey_action|</b>” ile değiştirilsin mi?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:873
+#: src/gui/dialogs/preferences_dialog.cpp:883
 msgid "Reassign Hotkey"
 msgstr "Klavye Kısayollarını tekrar ata"
 
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "All hotkeys have been reset to their default values."
 msgstr "Bütün kısayollar ilk değerlerine sıfırlandı."
 
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: src/gui/dialogs/preferences_dialog.cpp:900
 msgid "Hotkeys Reset"
 msgstr "Kısayolları Sıfırla"
 
-#: src/gui/dialogs/screenshot_notification.cpp:98
+#: src/gui/dialogs/screenshot_notification.cpp:99
 msgid ""
 "Unsupported image format.\n"
 "\n"
@@ -6986,24 +7019,24 @@ msgstr ""
 "\n"
 "Ekran görüntüsünü PNG olarak kaydetmeyi deneyin."
 
-#: src/gui/dialogs/statistics_dialog.cpp:79
+#: src/gui/dialogs/statistics_dialog.cpp:80
 msgid "All Scenarios"
 msgstr "Bütün Senaryolar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:177
-#: src/gui/dialogs/statistics_dialog.cpp:336
+#: src/gui/dialogs/statistics_dialog.cpp:178
+#: src/gui/dialogs/statistics_dialog.cpp:337
 msgid "This Turn"
 msgstr "Bu El"
 
-#: src/gui/dialogs/statistics_dialog.cpp:213
+#: src/gui/dialogs/statistics_dialog.cpp:214
 msgid "Actual hit rates, by chance to hit:"
 msgstr "İsabet şansına göre gerçek isabet oranları:"
 
-#: src/gui/dialogs/statistics_dialog.cpp:215
+#: src/gui/dialogs/statistics_dialog.cpp:216
 msgid "(no attacks have taken place yet)"
 msgstr "(henüz bir saldırı yok)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:323
+#: src/gui/dialogs/statistics_dialog.cpp:324
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -7018,87 +7051,93 @@ msgstr ""
 "isabet miktarıdır."
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
+#, fuzzy
+#| msgid "Recruits"
+msgid "stats^Recruits"
+msgstr "Asker alımlar"
+
+#: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Recalls"
 msgstr "Çağrılanlar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Advancements"
 msgstr "Terfiler"
 
-#: src/gui/dialogs/statistics_dialog.cpp:370
+#: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Losses"
 msgstr "Kayıplar"
 
-#: src/gui/dialogs/statistics_dialog.cpp:371
+#: src/gui/dialogs/statistics_dialog.cpp:372
 msgid "Kills"
 msgstr "Öldürülen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:393
-#: src/gui/dialogs/statistics_dialog.cpp:400
+#: src/gui/dialogs/statistics_dialog.cpp:394
+#: src/gui/dialogs/statistics_dialog.cpp:401
 msgid "Inflicted"
 msgstr "Verilen"
 
-#: src/gui/dialogs/statistics_dialog.cpp:406
-#: src/gui/dialogs/statistics_dialog.cpp:413
+#: src/gui/dialogs/statistics_dialog.cpp:407
+#: src/gui/dialogs/statistics_dialog.cpp:414
 msgid "Taken"
 msgstr "Alınan"
 
-#: src/gui/dialogs/statistics_dialog.cpp:454
+#: src/gui/dialogs/statistics_dialog.cpp:455
 msgid "$count|× $name"
 msgstr "$count|×$name"
 
-#: src/gui/dialogs/title_screen.cpp:111 src/hotkey/hotkey_command.cpp:97
+#: src/gui/dialogs/title_screen.cpp:112 src/hotkey/hotkey_command.cpp:97
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
-#: src/gui/dialogs/title_screen.cpp:432 src/hotkey/hotkey_command.cpp:297
+#: src/gui/dialogs/title_screen.cpp:433 src/hotkey/hotkey_command.cpp:297
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
 msgstr "Başlangıç Senaryosunu Seçin"
 
-#: src/gui/dialogs/unit_create.cpp:197
+#: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
 msgstr "Öntanımlı Çeşit"
 
-#: src/gui/dialogs/unit_recall.cpp:224
+#: src/gui/dialogs/unit_recall.cpp:225
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
 "Planınıza göre bu noktada altınınız yetmeyeceğinden bu birimi çağıramazsınız."
 
-#: src/gui/dialogs/unit_recall.cpp:226
+#: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Yeterli altınınız olmadığından bu birimi geri çağıramazsınız."
 
-#: src/gui/dialogs/unit_recall.cpp:322 src/hotkey/hotkey_command.cpp:102
+#: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:102
 msgid "Rename Unit"
 msgstr "Birim ismini değiştir"
 
-#: src/gui/dialogs/unit_recall.cpp:358
+#: src/gui/dialogs/unit_recall.cpp:359
 msgid "This unit is loyal and requires no upkeep."
 msgstr "Bu birimin sadık olduğu için bakım masrafı yok."
 
-#: src/gui/dialogs/unit_recall.cpp:359 src/gui/dialogs/unit_recall.cpp:364
-#: src/gui/dialogs/unit_recall.cpp:369
+#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
+#: src/gui/dialogs/unit_recall.cpp:370
 msgid "Do you really want to dismiss him?"
 msgstr "Gerçekten kovmak istiyor musunuz?"
 
-#: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
-#: src/gui/dialogs/unit_recall.cpp:370
+#: src/gui/dialogs/unit_recall.cpp:361 src/gui/dialogs/unit_recall.cpp:366
+#: src/gui/dialogs/unit_recall.cpp:371
 msgid "Do you really want to dismiss her?"
 msgstr "Gerçekten kovmak istiyor musunuz?"
 
-#: src/gui/dialogs/unit_recall.cpp:363
+#: src/gui/dialogs/unit_recall.cpp:364
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Bu birimin seviyesi ileride, yani deneyimli."
 
-#: src/gui/dialogs/unit_recall.cpp:368
+#: src/gui/dialogs/unit_recall.cpp:369
 msgid "This unit is close to advancing a level."
 msgstr "Bu birim seviye atlamaya yakın."
 
-#: src/gui/dialogs/unit_recall.cpp:374
+#: src/gui/dialogs/unit_recall.cpp:375
 msgid "Dismiss Unit"
 msgstr "Birimi kov"
 
@@ -7247,52 +7286,56 @@ msgstr "(Sald / Sav)"
 msgid "Movement Costs:"
 msgstr "Hareket Bedelleri:"
 
-#: src/gui/widgets/unit_preview_pane.cpp:220
+#: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "Attacks"
 msgstr "Saldırılar"
 
-#: src/gui/widgets/unit_preview_pane.cpp:297
-#: src/gui/widgets/unit_preview_pane.cpp:328
-#: src/gui/widgets/unit_preview_pane.cpp:449
-#: src/gui/widgets/unit_preview_pane.cpp:481
+#: src/gui/widgets/unit_preview_pane.cpp:300
+#: src/gui/widgets/unit_preview_pane.cpp:331
+#: src/gui/widgets/unit_preview_pane.cpp:452
+#: src/gui/widgets/unit_preview_pane.cpp:484
 msgid "Lvl $lvl"
 msgstr "Sv $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:335
-#: src/gui/widgets/unit_preview_pane.cpp:348
-#: src/gui/widgets/unit_preview_pane.cpp:489
-#: src/gui/widgets/unit_preview_pane.cpp:508
+#: src/gui/widgets/unit_preview_pane.cpp:338
+#: src/gui/widgets/unit_preview_pane.cpp:351
+#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:511
 msgid "HP: "
 msgstr "YP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:337
-#: src/gui/widgets/unit_preview_pane.cpp:353
-#: src/gui/widgets/unit_preview_pane.cpp:491
-#: src/gui/widgets/unit_preview_pane.cpp:513
+#: src/gui/widgets/unit_preview_pane.cpp:340
+#: src/gui/widgets/unit_preview_pane.cpp:356
+#: src/gui/widgets/unit_preview_pane.cpp:494
+#: src/gui/widgets/unit_preview_pane.cpp:516
 msgid "XP: "
 msgstr "TP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:355
-#: src/gui/widgets/unit_preview_pane.cpp:515
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:518
 msgid "Experience Modifier: "
 msgstr "Deneyim değiştiricisi: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:518
+#: src/gui/widgets/unit_preview_pane.cpp:361
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "MP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:396
-#: src/gui/widgets/unit_preview_pane.cpp:546
+#: src/gui/widgets/unit_preview_pane.cpp:399
+#: src/gui/widgets/unit_preview_pane.cpp:549
 msgid "Abilities"
 msgstr "Yetenekler"
 
-#: src/gui/widgets/window.cpp:773
+#: src/gui/widgets/window.cpp:431
+msgid "Linked '$id' group has multiple definitions."
+msgstr "Bağlantılı '$id' grubunun birden fazla tanımı var."
+
+#: src/gui/widgets/window.cpp:817
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Tıklayarak kapatmak için 'kapama-tıkı' veya 'tamam' tuşu lazım."
 
-#: src/gui/widgets/window.cpp:798 src/gui/widgets/window.cpp:835
-#: src/tests/gui/test_gui2.cpp:565
+#: src/gui/widgets/window.cpp:842 src/gui/widgets/window.cpp:879
+#: src/tests/gui/test_gui2.cpp:685
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Ekrana sığmadığı için diyalog gösterilemiyor."
 
@@ -8125,11 +8168,11 @@ msgstr ""
 msgid "Find Server Application"
 msgstr "Sunucu Uygulamasını Bul"
 
-#: src/preferences/game.cpp:867
+#: src/preferences/game.cpp:868
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/game.cpp:869
+#: src/preferences/game.cpp:870
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -8175,11 +8218,29 @@ msgstr ""
 "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. '$deprecated_key' "
 "için destek $removal_version sürümünde kaldırılacaktır."
 
+#~ msgid "By:"
+#~ msgstr "Yapan:"
+
+#~ msgid "Gold Left:"
+#~ msgstr "Kalan Altın:"
+
+#~ msgid "Active Troops:"
+#~ msgstr "Etkin Askerler:"
+
+#~ msgid "Reserve Troops:"
+#~ msgstr "Yedek Askerler:"
+
 #~ msgid "Area to draw has negative size"
 #~ msgstr "Çizilecek alan negatif boyuta sahip "
 
 #~ msgid "Area to draw is larger than widget size"
 #~ msgstr "Çizilecek alan, gereç boyutundan daha büyük "
+
+#~ msgid "Selected Game"
+#~ msgstr "Seçili oyun"
+
+#~ msgid "Other Games"
+#~ msgstr "Diğer Oyunlar"
 
 #~ msgid "Choose Test"
 #~ msgstr "Testi Seç"
@@ -8191,106 +8252,3 @@ msgstr ""
 #~ "A terrain with a string with more than 4 characters has been found, the "
 #~ "affected terrain is:"
 #~ msgstr "Dizgesi 4 karakterden daha uzun bir arazi bulundu; etkilenen arazi:"
-
-#, fuzzy
-#~| msgid "Desert Castle"
-#~ msgid "Desert Cobbles"
-#~ msgstr "Çöl Kalesi"
-
-#~ msgid "Gold Left:"
-#~ msgstr "Kalan Altın:"
-
-#~ msgid "Active Troops:"
-#~ msgstr "Etkin Askerler:"
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "Yedek Askerler:"
-
-#~ msgid "By:"
-#~ msgstr "Yapan:"
-
-#, fuzzy
-#~| msgid "Leader"
-#~ msgid "Leader:"
-#~ msgstr "Lider"
-
-#, fuzzy
-#~| msgid "<b>Gender:</b>"
-#~ msgid "Gender:"
-#~ msgstr "<b>Cinsiyet:</b>"
-
-#, fuzzy
-#~| msgid "Recruits"
-#~ msgid "Recruits:"
-#~ msgstr "Asker alımlar"
-
-#, fuzzy
-#~| msgid "Starting Positions Tool"
-#~ msgid "Starting position:"
-#~ msgstr "Başlangıç Konumları Aracı"
-
-#, fuzzy
-#~| msgid "editor_hotkeys^E"
-#~ msgid "titlescreen_hotkeys^T"
-#~ msgstr "E"
-
-#, fuzzy
-#~| msgid "timespan^$num year"
-#~| msgid_plural "timespan^$num years"
-#~ msgid "timespan^$num years"
-#~ msgstr "$num yıl"
-
-#, fuzzy
-#~| msgid "timespan^$num month"
-#~| msgid_plural "timespan^$num months"
-#~ msgid "timespan^$num months"
-#~ msgstr "$num ay"
-
-#, fuzzy
-#~| msgid "timespan^$num week"
-#~| msgid_plural "timespan^$num weeks"
-#~ msgid "timespan^$num weeks"
-#~ msgstr "$num hafta"
-
-#, fuzzy
-#~| msgid "timespan^$num day"
-#~| msgid_plural "timespan^$num days"
-#~ msgid "timespan^$num days"
-#~ msgstr "$num gün"
-
-#, fuzzy
-#~| msgid "timespan^$num hour"
-#~| msgid_plural "timespan^$num hours"
-#~ msgid "timespan^$num hours"
-#~ msgstr "$num saat"
-
-#, fuzzy
-#~| msgid "timespan^$num minute"
-#~| msgid_plural "timespan^$num minutes"
-#~ msgid "timespan^$num minutes"
-#~ msgstr "$num dakika"
-
-#, fuzzy
-#~| msgid "timespan^$num second"
-#~| msgid_plural "timespan^$num seconds"
-#~ msgid "timespan^$num seconds"
-#~ msgstr "$num saniye"
-
-#~ msgid "Selected Game"
-#~ msgstr "Seçili oyun"
-
-#~ msgid "Lobby"
-#~ msgstr "Salon"
-
-#~ msgid "Other Games"
-#~ msgstr "Diğer Oyunlar"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Team:"
-#~ msgstr "Takım"
-
-#, fuzzy
-#~| msgid "Tutorial"
-#~ msgid "Start Tutorial"
-#~ msgstr "Öğretici"

@@ -35,7 +35,8 @@ editor_edit_label::editor_edit_label(std::string& text,
 									   bool& visible_shroud,
 									   color_t& color,
 									   std::string& category)
-	: color_store(color)
+	: modal_dialog(window_id())
+	, color_store(color)
 {
 	register_text("label", true, text, true);
 	register_text("category", true, category, false);

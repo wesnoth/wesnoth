@@ -48,7 +48,8 @@ const unsigned int attack_predictions::graph_height = 170;
 const unsigned int attack_predictions::graph_max_rows = 10;
 
 attack_predictions::attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender)
-	: attacker_data_(attacker, bc.get_attacker_combatant(), bc.get_attacker_stats())
+	: modal_dialog(window_id())
+	, attacker_data_(attacker, bc.get_attacker_combatant(), bc.get_attacker_stats())
 	, defender_data_(defender, bc.get_defender_combatant(), bc.get_defender_stats())
 {
 }
@@ -135,7 +136,7 @@ void attack_predictions::set_data(window& window, const combatant_data& attacker
 
 	// Get damage modifiers.
 	unit_ability_list dmg_specials = weapon->get_specials_and_abilities("damage");
-	unit_abilities::effect dmg_effect(dmg_specials, weapon->damage(), attacker.stats_.backstab_pos);
+	unit_abilities::effect dmg_effect(dmg_specials, weapon->damage());
 
 	// Get the SET damage modifier, if any.
 	auto set_dmg_effect = std::find_if(dmg_effect.begin(), dmg_effect.end(),

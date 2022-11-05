@@ -1069,7 +1069,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		}
 		// TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 		// or "[Quenoth Elves are] a group of units, all of whom are Elves".
-		text << VGETTEXT("This is a group of units, all of whom are <ref>dst='$topic_id' text='$help_taxonomy'</ref>", symbols) << "\n\n";
+		text << VGETTEXT("This is a group of units, all of whom are <ref>dst='$topic_id' text='$help_taxonomy'</ref>.", symbols) << "\n\n";
 	}
 
 	if (!subgroups.empty()) {

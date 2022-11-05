@@ -100,6 +100,10 @@ class TestListParser:
     def __init__(self, options):
         self.verbose = options.verbose
         self.filename = options.list
+        if options.filter is not None:
+            self.filter = re.compile(options.filter)
+        else:
+            self.filter = None
 
     def get(self, batcher):
         status_name_re = re.compile(r"^(\d+) ([\w-]+)$")
@@ -112,6 +116,9 @@ class TestListParser:
             x = status_name_re.match(line)
             if x is None:
                 print("Could not parse test list file: ", line)
+
+            if self.filter and not self.filter.search(line):
+                continue
 
             t = TestCase(UnitTestResult(int(x.groups()[0])), x.groups()[1])
             if self.verbose >= Verbosity.SCRIPT_DEBUGGING:
@@ -309,6 +316,8 @@ if __name__ == '__main__':
         help="Disable strict mode. By default, we run wesnoth with the option --log-strict=warning to ensure errors result in a failed test.")
     ap.add_argument("-d", "--debug_bin", action="store_true",
         help="Run wesnoth-debug binary instead of wesnoth.")
+    ap.add_argument("-f", "--filter",
+        help="Run the subset of tests whose name matches the given string. Regex patterns are supported.")
     ap.add_argument("-g", "--backtrace", action="store_true",
         help="If we encounter a crash, generate a backtrace using gdb. Must have gdb installed for this option.")
     ap.add_argument("-p", "--path", metavar="dir",

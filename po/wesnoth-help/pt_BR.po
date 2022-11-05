@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-19 19:21-0500\n"
-"PO-Revision-Date: 2022-02-01 09:53-0300\n"
+"POT-Creation-Date: 2022-08-20 19:46-0500\n"
+"PO-Revision-Date: 2022-09-13 18:12-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #
 # File: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg, line: 529
@@ -875,10 +875,8 @@ msgstr ""
 # File: src/help.cpp, line: 1606
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "Terreno Base: "
+msgstr "Terreno Preterido"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -1442,8 +1440,8 @@ msgstr ""
 "• maps/map_from_01.cfg\n"
 "  ◦ este é o arquivo criado pelo editor de cenário\n"
 "• scenarios/01_Forest.cfg\n"
-"  ◦ dentro do elemento cenário [scenario], usa “map_file=\"map_from_01.cfg"
-"\"” para carregar o arquivo"
+"  ◦ dentro do elemento cenário [scenario], usa “map_file=\"map_from_01."
+"cfg\"” para carregar o arquivo"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:393
@@ -1687,10 +1685,11 @@ msgstr ""
 "de cenário WML, mas não possuem a tag de abertura [scenario] e a de "
 "encerramento [/scenario]. Para cada arquivo .cfg na subpasta editor/cenário "
 "dentro da pasta de dados do usuário, o jogo automaticamente tentará carregar "
-"um cenário da pasta para incluí-los na lista de \"Cenários Personalizados"
-"\" (arquivos que não conseguem ser carregados são ignorados). Nesta pasta "
-"cada arquivo é um item separado - arquivos que falham ao ser analisados são "
-"ignorados, e cenários não devem conter as tags [scenario][/scenario] tags.\n"
+"um cenário da pasta para incluí-los na lista de \"Cenários "
+"Personalizados\" (arquivos que não conseguem ser carregados são ignorados). "
+"Nesta pasta cada arquivo é um item separado - arquivos que falham ao ser "
+"analisados são ignorados, e cenários não devem conter as tags [scenario][/"
+"scenario] tags.\n"
 "\n"
 "Com cenários que fazem parte de uma campanha ou um add-on, o oposto é "
 "necessário. Geralmente, cada cenário possui seu arquivo .cfg próprio, embora "
@@ -3823,10 +3822,11 @@ msgstr ""
 "estratégias <italic>text='ruins'</italic> apesar de ter tido sorte "
 "<italic>text='acima da média'</italic>, ao invés de serem causadas por "
 "estratégias <italic>text='boas'</italic>, mas que tiveram sorte sorte "
-"<italic>text='abaixo da média'</italic>. Além disso, sorte \"abaixo da média"
-"\" não justifica uma perda; ter sorte abaixo da média é perfeitamente normal "
-"e cenários são feitos para serem ganhos mesmo tendo sorte abaixo da média. É "
-"apenas azar extremo, ao longo de vários turnos, a que nos referimos aqui."
+"<italic>text='abaixo da média'</italic>. Além disso, sorte \"abaixo da "
+"média\" não justifica uma perda; ter sorte abaixo da média é perfeitamente "
+"normal e cenários são feitos para serem ganhos mesmo tendo sorte abaixo da "
+"média. É apenas azar extremo, ao longo de vários turnos, a que nos referimos "
+"aqui."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:335
@@ -6495,9 +6495,18 @@ msgstr "camuflagem"
 # File: data/core/macros/abilities.cfg, line: 459
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
+#, fuzzy
+#| msgid ""
+#| "This unit can hide in villages (with the exception of water villages), "
+#| "and remain undetected by its enemies, except by those standing next to "
+#| "it.\n"
+#| "\n"
+#| "Enemy units cannot see this unit while it is in a village, except if they "
+#| "have units next to it. Any enemy unit that first discovers this unit "
+#| "immediately loses all its remaining movement."
 msgid ""
-"This unit can hide in villages (with the exception of water villages), and "
-"remain undetected by its enemies, except by those standing next to it.\n"
+"This unit can hide in villages, and remain undetected by its enemies, except "
+"by those standing next to it.\n"
 "\n"
 "Enemy units cannot see this unit while it is in a village, except if they "
 "have units next to it. Any enemy unit that first discovers this unit "
@@ -10380,7 +10389,7 @@ msgstr "HP max +1"
 # File: src/help.cpp, line: 3273
 # File: src/help.cpp, line: 3273
 # File: src/help.cpp, line: 3273
-#: src/help/help.cpp:213
+#: src/help/help.cpp:211
 msgid "Close"
 msgstr "Fechar"
 
@@ -10388,7 +10397,7 @@ msgstr "Fechar"
 # File: src/help.cpp, line: 52
 # File: src/help.cpp, line: 52
 # File: src/help.cpp, line: 52
-#: src/help/help.cpp:217
+#: src/help/help.cpp:215
 msgid "Help"
 msgstr "Ajuda"
 
@@ -10396,7 +10405,7 @@ msgstr "Ajuda"
 # File: src/help.cpp, line: 3332
 # File: src/help.cpp, line: 3332
 # File: src/help.cpp, line: 3332
-#: src/help/help.cpp:269 src/help/help.cpp:273
+#: src/help/help.cpp:267 src/help/help.cpp:271
 msgid "Parse error when parsing help text:"
 msgstr "Erro de análise ao ler o texto de ajuda:"
 
@@ -10628,7 +10637,7 @@ msgstr "XP Necessária:"
 # File: src/help.cpp, line: 1510
 # File: src/help.cpp, line: 1510
 # File: src/help.cpp, line: 1510
-#: src/help/help_topic_generators.cpp:610
+#: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
@@ -10636,7 +10645,7 @@ msgstr "Ataques"
 # File: src/help.cpp, line: 1517
 # File: src/help.cpp, line: 1517
 # File: src/help.cpp, line: 1517
-#: src/help/help_topic_generators.cpp:617
+#: src/help/help_topic_generators.cpp:620
 msgid "unit help^Name"
 msgstr "Nome"
 
@@ -10644,7 +10653,7 @@ msgstr "Nome"
 # File: src/help.cpp, line: 1519
 # File: src/help.cpp, line: 1519
 # File: src/help.cpp, line: 1519
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:621
 msgid "Strikes"
 msgstr "Golpes"
 
@@ -10652,7 +10661,7 @@ msgstr "Golpes"
 # File: src/help.cpp, line: 1520
 # File: src/help.cpp, line: 1520
 # File: src/help.cpp, line: 1520
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:622
 msgid "Range"
 msgstr "Distância"
 
@@ -10660,7 +10669,7 @@ msgstr "Distância"
 # File: src/help.cpp, line: 1518
 # File: src/help.cpp, line: 1518
 # File: src/help.cpp, line: 1518
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:623
 msgid "Type"
 msgstr "Tipo"
 
@@ -10668,7 +10677,7 @@ msgstr "Tipo"
 # File: src/help.cpp, line: 1521
 # File: src/help.cpp, line: 1521
 # File: src/help.cpp, line: 1521
-#: src/help/help_topic_generators.cpp:621
+#: src/help/help_topic_generators.cpp:624
 msgid "Special"
 msgstr "Especial"
 
@@ -10700,7 +10709,7 @@ msgstr "Resistência"
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
-#: src/help/help_topic_generators.cpp:733
+#: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
 msgstr "Modificadores de Terreno"
 
@@ -10708,7 +10717,7 @@ msgstr "Modificadores de Terreno"
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
-#: src/help/help_topic_generators.cpp:737
+#: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
 msgstr "Terreno"
 
@@ -10716,7 +10725,7 @@ msgstr "Terreno"
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
-#: src/help/help_topic_generators.cpp:738
+#: src/help/help_topic_generators.cpp:739
 msgid "Defense"
 msgstr "Defesa"
 
@@ -10724,7 +10733,7 @@ msgstr "Defesa"
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
-#: src/help/help_topic_generators.cpp:739
+#: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
 msgstr "Custo de Movimento"
 
@@ -10732,15 +10741,15 @@ msgstr "Custo de Movimento"
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
-#: src/help/help_topic_generators.cpp:743
+#: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"
 msgstr "Limite de Defesa"
 
-#: src/help/help_topic_generators.cpp:748
+#: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
 msgstr "Custo de Visão"
 
-#: src/help/help_topic_generators.cpp:752
+#: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Custo de Interferência"
 
@@ -10827,8 +10836,8 @@ msgstr "Custo de Interferência"
 #~ "it can in the current turn)."
 #~ msgstr ""
 #~ "• <bold>text='Vermelho'</bold> se ela não pode mais atacar nem se mover.\n"
-#~ "    • Vermelho também é usado após o comando \"terminar o turno da unidade"
-#~ "\", e quando a unidade está no de mover-se ao longo de turnos (foi "
+#~ "    • Vermelho também é usado após o comando \"terminar o turno da "
+#~ "unidade\", e quando a unidade está no de mover-se ao longo de turnos (foi "
 #~ "mandada mover-se mais longe do que é capaz em um só turno)."
 
 #~ msgid ""

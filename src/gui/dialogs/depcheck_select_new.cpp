@@ -31,9 +31,10 @@ REGISTER_DIALOG(depcheck_select_new)
 depcheck_select_new::depcheck_select_new(
 		ng::depcheck::component_type name,
 		const std::vector<std::string>& items)
-	: items_(items), result_(-1)
+	: modal_dialog(window_id())
+	, items_(items)
+	, result_(-1)
 {
-
 	std::string message;
 
 	switch(name) {
