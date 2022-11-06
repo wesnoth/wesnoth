@@ -103,6 +103,7 @@ private:
 
 	static const std::vector<std::pair<ADDON_STATUS_FILTER, std::string>> status_filter_types_;
 	static const std::vector<std::pair<ADDON_TYPE, std::string>> type_filter_types_;
+	std::vector<std::pair<int, std::string>> language_filter_types_;
 	static const std::vector<addon_order> all_orders_;
 
 	bool need_wml_cache_refresh_;
@@ -157,6 +158,7 @@ private:
 	boost::dynamic_bitset<> get_status_filter_visibility() const;
 	boost::dynamic_bitset<> get_tag_filter_visibility() const;
 	boost::dynamic_bitset<> get_type_filter_visibility() const;
+	boost::dynamic_bitset<> get_lang_filter_visibility() const;
 
 	void on_selected_version_change();
 	bool exit_hook(window& window);
