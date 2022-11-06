@@ -9,7 +9,7 @@
  ### Terrain
    * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
  ### Translations
-   * Updated translations: British English, French, Portuguese (Brazil)
+   * Updated translations: British English, French, Polish, Portuguese (Brazil)
  ### Units
  ### User interface
  ### WML Engine
