@@ -24,6 +24,7 @@
 #include "preferences.hpp"
 #include "sound.hpp"
 #include "util.hpp"
+#include "unit_map.hpp"
 #include "video.hpp" // non_interactive()
 #include "wassert.hpp"
 #include "wesconfig.h"

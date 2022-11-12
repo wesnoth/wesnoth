@@ -19,6 +19,7 @@ See the COPYING file for more details.
 #include "log.hpp"
 #include "pathfind.hpp"
 #include "util.hpp"
+#include "unit_map.hpp"
 #include "wassert.hpp"
 
 class gamestatus;

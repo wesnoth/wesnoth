@@ -23,6 +23,7 @@
 #include "upload_log.hpp"
 #include "wesconfig.h"
 #include "wml_separators.hpp"
+#include "unit_map.hpp"
 
 #include "SDL_net.h"
 

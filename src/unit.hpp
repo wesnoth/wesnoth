@@ -19,9 +19,9 @@
 #include "team.hpp"
 #include "unit_types.hpp"
 #include "image.hpp"
-#include "unit_map.hpp"
 
 class unit;
+class unit_map;
 class display;
 class gamestatus;
 
@@ -396,16 +396,7 @@ void sort_units(std::vector< unit > &);
 
 int team_units(const unit_map& units, unsigned int team_num);
 int team_upkeep(const unit_map& units, unsigned int team_num);
-unit_map::const_iterator team_leader(unsigned int side, const unit_map& units);
-std::string team_name(int side, const unit_map& units);
-unit_map::iterator find_visible_unit(unit_map& units,
-		const gamemap::location loc,
-		const gamemap& map,
-		const std::vector<team>& teams, const team& current_team);
-unit_map::const_iterator find_visible_unit(const unit_map& units,
-		const gamemap::location loc,
-		const gamemap& map,
-		const std::vector<team>& teams, const team& current_team);
+
 
 struct team_data
 {

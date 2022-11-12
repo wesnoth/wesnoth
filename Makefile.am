@@ -1,3 +1,4 @@
+CXXFLAGS=-std=c++03
 ISUBDIRS = icons
 SUBDIRS = po m4 src doc $(ISUBDIRS)
 pkgdatadir=$(datadir)/@DATADIR@
