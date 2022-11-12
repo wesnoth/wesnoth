@@ -12,6 +12,7 @@
 */
 
 #include "unit.hpp"
+#include "unit_map.hpp"
 #include "unit_abilities.hpp"
 
 #include "wassert.hpp"

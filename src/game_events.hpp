@@ -21,6 +21,7 @@ class display;
 #include "map.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_map.hpp"
 #include "variable.hpp"
 
 #include <vector>

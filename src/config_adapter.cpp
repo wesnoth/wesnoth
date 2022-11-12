@@ -12,6 +12,7 @@
 */
 
 #include "global.hpp"
+#include "unit_map.hpp"
 
 #include <sstream>
 #include "config_adapter.hpp"

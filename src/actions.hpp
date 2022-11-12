@@ -23,6 +23,7 @@ struct combatant;
 
 #include "map.hpp"
 #include "unit.hpp"
+#include "unit_map.hpp"
 
 #include <deque>
 
