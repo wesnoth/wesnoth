@@ -86,8 +86,9 @@ std::vector<std::string> read_argv([[maybe_unused]] int argc, [[maybe_unused]] c
 	return win32_read_argv(flat_cmdline);
 #else
 	std::vector<std::string> args;
+	args.reserve(argc);
 	for(int i = 0; i < argc; ++i) {
-		args.push_back(std::string(argv[i]));
+		args.emplace_back(argv[i]);
 	}
 	return args;
 #endif
