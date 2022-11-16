@@ -29,8 +29,6 @@
 #include <boost/program_options/value_semantic.hpp>  // for value, etc
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
-#include <array>
-
 namespace po = boost::program_options;
 
 class two_strings : public std::pair<std::string,std::string> {};
@@ -42,8 +40,8 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
 	if (values.size() != 2) {
 		throw po::validation_error(po::validation_error::invalid_option_value);
 	}
-	ret_val.first = values.at(0);
-	ret_val.second = values.at(1);
+	ret_val.first = values[0];
+	ret_val.second = values[1];
 	v = ret_val;
 }
 
@@ -558,28 +556,33 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
 {
-	const std::vector<std::string> domains = utils::split(domains_string, ',');
-	for (const std::string& domain : domains)
+	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty())
 	{
-		if (!log)
-			log = std::vector<std::pair<int, std::string>>();
-		log->emplace_back(severity, domain);
+		if(!log)
+		{
+			log.emplace();
+		}
+		for (auto&& domain : domains)
+		{
+			assert(log && "`log` must have been initialized before this loop");
+			log->emplace_back(severity, std::move(domain));
+		}
 	}
 }
 
-void commandline_options::parse_log_strictness (const std::string & severity ) {
-	static const std::array<lg::logger const*, 4> loggers {{&lg::err(), &lg::warn(), &lg::info(), &lg::debug()}};
+void commandline_options::parse_log_strictness (const std::string & severity) {
+	static const lg::logger* const loggers[4] {&lg::err(), &lg::warn(), &lg::info(), &lg::debug()};
 	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);
-			return ;
+			return;
 		}
 	}
 	PLAIN_LOG << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging.";
 	lg::set_strict_severity(-1);
 }
 
-void commandline_options::parse_resolution_ ( const std::string& resolution_string )
+void commandline_options::parse_resolution_ (const std::string& resolution_string)
 {
 	const std::vector<std::string> tokens = utils::split(resolution_string, 'x');
 	if (tokens.size() != 2) {
@@ -595,18 +598,18 @@ void commandline_options::parse_resolution_ ( const std::string& resolution_stri
 		throw bad_commandline_resolution(resolution_string);
 	}
 
-	resolution = std::pair(xres, yres);
+	resolution.emplace(xres, yres);
 }
 
 std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
 	std::vector<std::pair<unsigned int,std::string>> vec;
-	const std::string& expected_format
+	const std::string expected_format
 			= std::string() + "UINT" + separator + "STRING";
 
 	for (const std::string &s : strings)
 	{
-		const std::vector<std::string> tokens = utils::split(s, separator);
+		std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 2) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
@@ -618,7 +621,7 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		vec.emplace_back(temp, tokens[1]);
+		vec.emplace_back(temp, std::move(tokens[1]));
 	}
 	return vec;
 }
@@ -626,7 +629,7 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
 	std::vector<std::tuple<unsigned int,std::string,std::string>> vec;
-	const std::string& expected_format
+	const std::string expected_format
 			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
 
 	for (const std::string &s : strings)
