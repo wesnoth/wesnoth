@@ -1297,48 +1297,40 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, const unit_ability_list& temp_list, const unit_ability_list& abil_list, const std::string& filter_self, bool is_special) const
+unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list temp_list, unit_ability_list abil_list, const std::string& filter_self, bool is_special) const
 {
-	bool overwrite_self = false;
-	bool overwrite_opponent = false;
-	bool overwrite_either = false;
-
-	for(const auto& i : abil_list) {
-		if((*i.ability_cfg)["overwrite_specials"] == "both_sides") {
-			overwrite_either = true;
-			break;
-		}
-		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self) && !overwrite_self) {
-			overwrite_self = true;
-		}
-		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self) && !overwrite_opponent) {
-			overwrite_opponent = true;
+	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+		if(!overwrite_special_affects(*i->ability_cfg)) {
+			i = abil_list.erase(i);
+		} else {
+			++i;
 		}
 	}
-	if(!overwrite_either && !overwrite_self && !overwrite_opponent){
+	if(abil_list.empty()){
 		return temp_list;
 	}
 
-	if(!overwrite_either && overwrite_self && overwrite_opponent){
-		overwrite_either = true;
-	}
-
-	// At this point we need to return a changed list, so create a non-const one to return
-	unit_ability_list overwrite_list;
-	for(const auto& i : temp_list) {
-		bool overwrite = false;
-		if(overwrite_either){
-			overwrite = !is_special && overwrite_special_affects(*i.ability_cfg);
-		} else if(overwrite_self){
-			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
-		} else if(overwrite_opponent){
-			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self);
+	for(const auto& i : abil_list) {
+		bool affect_side = ((*i.ability_cfg)["overwrite_specials"] == "one_side");
+		for(unit_ability_list::iterator j = temp_list.begin(); j != temp_list.end();) {
+			bool temp_overwrite = (is_special || !overwrite_special_affects(*j->ability_cfg));
+			bool is_overwritable = temp_overwrite;
+			if(affect_side){
+				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self)){
+					is_overwritable = temp_overwrite && special_active_impl(shared_from_this(), other_attack_, *j->ability_cfg, AFFECT_SELF, ability, filter_self);
+				}
+				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self)){
+					is_overwritable = temp_overwrite && special_active_impl(other_attack_, shared_from_this(), *j->ability_cfg, AFFECT_OTHER, ability, filter_self);
+				}
+			}
+			if(is_overwritable) {
+				j = temp_list.erase(j);
+			} else {
+				++j;
+			}
 		}
-		if(overwrite) {
-			overwrite_list.emplace_back(i);
-		}
 	}
-	return overwrite_list;
+	return temp_list;
 }
 
 	/**

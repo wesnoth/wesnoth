@@ -134,7 +134,7 @@ private:
 	 * @param filter_self name of [filter_"self/student"] if is abilities or specials who are checked
 	 * @param is_special for determine if list is a special or a ability.
 	 */
-	unit_ability_list overwrite_special_checking(const std::string& ability, const unit_ability_list& temp_list, const unit_ability_list& abil_list, const std::string& filter_self, bool is_special) const;
+	unit_ability_list overwrite_special_checking(const std::string& ability, unit_ability_list temp_list, unit_ability_list abil_list, const std::string& filter_self, bool is_special) const;
 	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.
