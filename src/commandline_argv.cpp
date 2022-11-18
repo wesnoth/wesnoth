@@ -65,8 +65,7 @@ std::vector<std::string> win32_read_argv(const std::string& input)
 	std::vector<std::string> res;
 
 	while(win32_parse_single_arg(start, end, buffer)) {
-		res.emplace_back();
-		res.back().swap(buffer);
+		res.emplace_back().swap(buffer);
 	}
 
 	return res;
