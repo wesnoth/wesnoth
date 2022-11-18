@@ -127,7 +127,7 @@ private:
 
 	// Configured as a bit field, in case that is useful.
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
-		/**
+	/**
 	 * Filter a list of abilities or weapon specials, removing any entries that are overridden by
 	 * the overwrite_specials attributes of a second list.
 	 *
