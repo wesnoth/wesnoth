@@ -55,7 +55,11 @@ protected:
 
 	virtual void add_chat_room_message_received(const std::string& room,
 		const std::string& speaker, const std::string& message);
+	
+	virtual void pin_message(const std::string& message, const std::string& speaker, bool allies_only) = 0;
 
+	//virtual void unpin_messages(const std::string& message, bool allies_only);
+	
 	/**
 	 * Called when a processed command results in a relation (friend/ignore) change
 	 * for a user whose name is passed as the 'name' arg
@@ -65,7 +69,7 @@ protected:
 	void change_logging(const std::string& data);
 
 	virtual void clear_messages() = 0;
-
+	
 	friend class chat_command_handler;
 };
 

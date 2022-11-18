@@ -39,6 +39,8 @@
 #include "preferences/lobby.hpp"
 #include "scripting/plugins/manager.hpp"
 
+#include <iostream>
+
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
 #define LOG_LB LOG_STREAM(info, log_lobby)
@@ -92,17 +94,24 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
+	std::cout << "Loading the LOG!!" << std::endl;
 	for(const auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
 			continue;
 		}
-
+		std::cout << "Lobby name: " << l.first << std::endl;
 		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
 	}
 
 	log_ = &log;
+	if (log_->find("this game") == log_->end()) {
+		log_->emplace("this game", chatroom_log{"", false});
+	}
+//	for (const auto& i: *log_) {
+//		std::cout << "Log name: " << i.first << std::endl;
+//	}
 }
 
 void chatbox::active_window_changed()
@@ -395,6 +404,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	const bool allow_close,
 	const std::string& initial_text)
 {
+	std::cout << "Opening new chatbox with name: " << name << ", whisper: " << whisper << ", open_new: " << open_new << std::endl;
 	for(auto& t : open_windows_) {
 		if(t.name == name && t.whisper == whisper) {
 			return &t;
@@ -416,7 +426,11 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	widget_data data{{"log_text", item}};
 
 	if(log_ != nullptr) {
+		std::cout << "And adding logging!" << std::endl;
 		log_->emplace(name, chatroom_log{item["label"], whisper});
+	}
+	else {
+		//log_->insert(name, chatroom_log{item["label"], whisper});
 	}
 
 	chat_log_container_->add_page(data);
@@ -436,7 +450,6 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	data.emplace("room", item);
 
 	grid& row_grid = roomlistbox_->add_row(data);
-
 	//
 	// Set up the Close Window button.
 	//
@@ -448,7 +461,11 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 		connect_signal_mouse_left_click(close_button,
 			std::bind(&chatbox::close_window_button_callback, this, open_windows_.back().name, std::placeholders::_3, std::placeholders::_4));
 	}
-
+	if (log_ != nullptr) {
+		for (const auto& i: *log_) {
+			std::cout << "Log name: " << i.first << std::endl;
+		}
+	}
 	return &open_windows_.back();
 }
 
@@ -584,10 +601,9 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	if(preferences::is_ignored(sender)) {
 		return;
 	}
-
 	const std::string& message = data["message"];
 	//preferences::parse_admin_authentication(sender, message); TODO: replace
-
+	
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
@@ -623,6 +639,36 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	::config plugin_data = data;
 	plugin_data["whisper"] = whisper;
 	plugins_manager::get()->notify_event("chat", plugin_data);
+}
+
+void chatbox::pin_message(const std::string& message, const std::string& speaker, bool allies_only) {
+	std::string speaker_temp;
+	if(speaker == "")
+		speaker_temp = preferences::login();
+	
+	grid& grid = chat_log_container_->page_grid(active_window_);
+	allies_only = true;
+	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
+	
+	clear_messages();
+	
+	const std::string before_message = log.get_label().empty() ? "" : "\n";
+	const std::string new_text = formatter() << "<b>" << speaker_temp << ":</b> " << font::escape_text(message) << log.get_label() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << speaker_temp << message << "</span>" << before_message;
+
+	log.set_use_markup(true);
+	log.set_label(new_text);
+
+	const std::string& room_name = open_windows_[active_window_].name;
+	for (auto it = log_->begin(); it != log_->end(); ++it) {
+		if (it->first == room_name) {
+			const std::string new_text2 = formatter() << before_message << log.get_label() << it->second.log;
+			log.set_label(new_text2);
+		}
+	}
+	
+	log_->at(room_name).log = new_text;
+	
+	return;
 }
 
 void chatbox::process_network_data(const ::config& data)

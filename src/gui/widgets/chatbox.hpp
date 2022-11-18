@@ -19,6 +19,7 @@
 #include "game_initialization/lobby_data.hpp"
 #include "game_initialization/lobby_info.hpp"
 #include "gui/widgets/container_base.hpp"
+#include "gui/widgets/button.hpp"
 
 #include <map>
 #include <string>
@@ -135,7 +136,7 @@ private:
 	std::function<void(void)> active_window_changed_callback_;
 
 	std::map<std::string, chatroom_log>* log_;
-
+	
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
@@ -194,6 +195,8 @@ private:
 public:
 	/** Inherited form @ref chat_handler */
 	virtual void send_chat_message(const std::string& message, bool allies_only) override;
+	
+	void pin_message(const std::string& message, const std::string& speaker, bool allies_only) override;
 
 	virtual void clear_messages() override;
 

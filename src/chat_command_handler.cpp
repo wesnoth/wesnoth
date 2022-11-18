@@ -154,4 +154,13 @@ void chat_command_handler::do_mp_report() {
 	}
 }
 
+void chat_command_handler::do_pin_message() {
+	chat_handler_.pin_message(get_data(), "", allies_only_);
 }
+
+void chat_command_handler::do_unpin_messages() {
+	//chat_handler_.unpin_messages();
+}
+
+}
+

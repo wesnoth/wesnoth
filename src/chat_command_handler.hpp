@@ -43,7 +43,9 @@ protected:
 	void do_version();
 	void do_clear_messages();
 	void do_mp_report();
-
+	void do_pin_message();
+	void do_unpin_messages();
+	
 	/** Request information about a user from the server. */
 	void do_info();
 
@@ -119,6 +121,11 @@ protected:
 			_("Request information about a nickname."), _("<nickname>"));
 		register_command("clear", &chat_command_handler::do_clear_messages,
 			_("Clear chat history."));
+		register_command("pin", &chat_command_handler::do_pin_message,
+			_("Pin a message."), _("<message>"));
+		register_command("unpin", &chat_command_handler::do_unpin_messages,
+			_("Unpin a message."), _("<message>"));
+
 	}
 private:
 	chat_handler& chat_handler_;
