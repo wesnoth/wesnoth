@@ -230,13 +230,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
-	for(unit_ability_list::iterator i = res.begin(); i != res.end();) {
-		if((!ability_affects_weapon(*i->ability_cfg, weapon, false) || !ability_affects_weapon(*i->ability_cfg, opp_weapon, true))) {
-			i = res.erase(i);
-		} else {
-			++i;
-		}
-	}
+	utils::erase_if(res, [&](const unit_ability& i) {
+		return !ability_affects_weapon(*i.ability_cfg, weapon, false) || !ability_affects_weapon(*i.ability_cfg, opp_weapon, true);
+	});
 	return res;
 }
 
@@ -1247,30 +1243,18 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
-	unit_ability_list abil_other_list(loc);
 	if(self_) {
-		abil_list.append((*self_).get_abilities(ability, self_loc_));
-		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, "filter_student")) {
-				i = abil_list.erase(i);
-			} else {
-				++i;
-			}
-		}
+		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
+			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+		});
 	}
 
 	if(other_) {
-		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
-		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, "filter_student")) {
-				i = abil_other_list.erase(i);
-			} else {
-				++i;
-			}
-		}
+		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student");
+		});
 	}
 
-	abil_list.append(abil_other_list);
 	return abil_list;
 }
 
