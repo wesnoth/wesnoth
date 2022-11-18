@@ -1297,40 +1297,41 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list temp_list, unit_ability_list abil_list, const std::string& filter_self, bool is_special) const
+unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const
 {
-	for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
+	for(unit_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
 		if(!overwrite_special_affects(*i->ability_cfg)) {
-			i = abil_list.erase(i);
+			i = overwriters.erase(i);
 		} else {
 			++i;
 		}
 	}
-	if(abil_list.empty()){
-		return temp_list;
+	if(overwriters.empty()){
+		return input;
 	}
 
-	for(const auto& i : abil_list) {
+	for(const auto& i : overwriters) {
 		bool affect_side = ((*i.ability_cfg)["overwrite_specials"] == "one_side");
-		for(unit_ability_list::iterator j = temp_list.begin(); j != temp_list.end();) {
-			bool temp_overwrite = (is_special || !overwrite_special_affects(*j->ability_cfg));
-			bool is_overwritable = temp_overwrite;
-			if(affect_side){
+		for(unit_ability_list::iterator j = input.begin(); j != input.end();) {
+			bool is_overwritable = (is_special || !overwrite_special_affects(*j->ability_cfg));
+			bool one_side_overwritable = true;
+			if(affect_side && is_overwritable){
 				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self)){
-					is_overwritable = temp_overwrite && special_active_impl(shared_from_this(), other_attack_, *j->ability_cfg, AFFECT_SELF, ability, filter_self);
+					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, *j->ability_cfg, AFFECT_SELF, ability, filter_self);
 				}
 				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self)){
-					is_overwritable = temp_overwrite && special_active_impl(other_attack_, shared_from_this(), *j->ability_cfg, AFFECT_OTHER, ability, filter_self);
+					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j->ability_cfg, AFFECT_OTHER, ability, filter_self);
 				}
 			}
+			is_overwritable = is_overwritable && one_side_overwritable;
 			if(is_overwritable) {
-				j = temp_list.erase(j);
+				j = input.erase(j);
 			} else {
 				++j;
 			}
 		}
 	}
-	return temp_list;
+	return input;
 }
 
 	/**
