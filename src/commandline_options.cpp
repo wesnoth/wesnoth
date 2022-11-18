@@ -42,8 +42,8 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
 	if (values.size() != 2) {
 		throw po::validation_error(po::validation_error::invalid_option_value);
 	}
-	ret_val.first = values.at(0);
-	ret_val.second = values.at(1);
+	ret_val.first = values[0];
+	ret_val.second = values[1];
 	v = ret_val;
 }
 
@@ -558,14 +558,11 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 void commandline_options::parse_log_domains_(const std::string &domains_string, const int severity)
 {
-	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty())
-	{
-		if(!log)
-		{
+	if(std::vector<std::string> domains = utils::split(domains_string, ','); !domains.empty()) {
+		if(!log) {
 			log.emplace();
 		}
-		for (auto&& domain : domains)
-		{
+		for (auto&& domain : domains) {
 			log->emplace_back(severity, std::move(domain));
 		}
 	}
@@ -610,8 +607,7 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 	const std::string expected_format
 			= "UINT"s + separator + "STRING";
 
-	for (const std::string &s : strings)
-	{
+	for (const std::string &s : strings) {
 		std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 2) {
 			throw bad_commandline_tuple(s, expected_format);
@@ -637,8 +633,7 @@ std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_option
 	const std::string expected_format
 			= "UINT"s + separator + "STRING" + separator + "STRING";
 
-	for (const std::string &s : strings)
-	{
+	for (const std::string &s : strings) {
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 3) {
 			throw bad_commandline_tuple(s, expected_format);
