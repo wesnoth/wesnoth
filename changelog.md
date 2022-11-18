@@ -11,6 +11,9 @@
  ### Translations
    * Updated translations: British English, Czech, French, Polish, Portuguese (Brazil)
  ### Units
+   * Merkfolk units movement cost on forest and hills reduced from 5 to 4.
+   * Orcish Slayer can advance to the Orcish Nightblade by default.
+   * Orcish Slayer's xp required to level up reduced from 100 to 64.
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
