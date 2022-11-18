@@ -29,6 +29,8 @@
 #include <boost/program_options/value_semantic.hpp>  // for value, etc
 #include <boost/program_options/variables_map.hpp>  // for variables_map, etc
 
+#include <array>
+
 namespace po = boost::program_options;
 
 class two_strings : public std::pair<std::string,std::string> {};
@@ -40,8 +42,8 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
 	if (values.size() != 2) {
 		throw po::validation_error(po::validation_error::invalid_option_value);
 	}
-	ret_val.first = values[0];
-	ret_val.second = values[1];
+	ret_val.first = values.at(0);
+	ret_val.second = values.at(1);
 	v = ret_val;
 }
 
@@ -564,14 +566,13 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 		}
 		for (auto&& domain : domains)
 		{
-			assert(log && "`log` must have been initialized before this loop");
 			log->emplace_back(severity, std::move(domain));
 		}
 	}
 }
 
 void commandline_options::parse_log_strictness (const std::string & severity) {
-	static const lg::logger* const loggers[4] {&lg::err(), &lg::warn(), &lg::info(), &lg::debug()};
+	static const std::array<const lg::logger*, 4> loggers {{&lg::err(), &lg::warn(), &lg::info(), &lg::debug()}};
 	for (const lg::logger * l : loggers ) {
 		if (severity == l->get_name()) {
 			lg::set_strict_severity(*l);
@@ -598,14 +599,16 @@ void commandline_options::parse_resolution_ (const std::string& resolution_strin
 		throw bad_commandline_resolution(resolution_string);
 	}
 
-	resolution.emplace(xres, yres);
+	resolution = std::pair(xres, yres);
 }
 
 std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
 	std::vector<std::pair<unsigned int,std::string>> vec;
+
+	using namespace std::literals;
 	const std::string expected_format
-			= std::string() + "UINT" + separator + "STRING";
+			= "UINT"s + separator + "STRING";
 
 	for (const std::string &s : strings)
 	{
@@ -629,8 +632,10 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_options::parse_to_uint_string_string_tuples_(const std::vector<std::string> &strings, char separator)
 {
 	std::vector<std::tuple<unsigned int,std::string,std::string>> vec;
+
+	using namespace std::literals;
 	const std::string expected_format
-			= std::string() + "UINT" + separator + "STRING" + separator + "STRING";
+			= "UINT"s + separator + "STRING" + separator + "STRING";
 
 	for (const std::string &s : strings)
 	{
