@@ -133,6 +133,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, password()
 	, render_image()
 	, render_image_dst()
+	, generate_spritesheet()
 	, screenshot(false)
 	, screenshot_map_file()
 	, screenshot_output_file()
@@ -208,6 +209,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("plugin", po::value<std::string>(), "(experimental) load a script which defines a wesnoth plugin. similar to --script below, but Lua file should return a function which will be run as a coroutine and periodically woken up with updates.")
 		("render-image", po::value<two_strings>()->multitoken(), "takes two arguments: <image> <output>. Like screenshot, but instead of a map, takes a valid Wesnoth 'image path string' with image path functions, and writes it to a .png file." IMPLY_WCONSOLE)
+		("generate-spritesheet", po::value<std::string>(), "generates a spritesheet from all png images in the given path, recursively (one sheet per directory)")
 		("report,R", "initializes game directories, prints build information suitable for use in bug reports, and exits." IMPLY_WCONSOLE)
 		("rng-seed", po::value<unsigned int>(), "seeds the random number generator with number <arg>. Example: --rng-seed 0")
 		("screenshot", po::value<two_strings>()->multitoken(), "takes two arguments: <map> <output>. Saves a screenshot of <map> to <output> without initializing a screen. Editor must be compiled in for this to work." IMPLY_WCONSOLE)
@@ -475,6 +477,10 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	{
 		render_image = vm["render-image"].as<two_strings>().first;
 		render_image_dst = vm["render-image"].as<two_strings>().second;
+	}
+	if (vm.count("generate-spritesheet"))
+	{
+		generate_spritesheet = vm["generate-spritesheet"].as<std::string>();
 	}
 	if (vm.count("screenshot"))
 	{

@@ -59,6 +59,7 @@
 #include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
+#include "utils/spritesheet_generator.hpp"
 #ifdef _WIN32
 #include "log_windows.hpp"
 
@@ -565,6 +566,12 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		config_writer out(*os, compression::format::none);
 		out.write(base);
 		if(os != &std::cout) delete os;
+		return 0;
+	}
+
+	if(cmdline_opts.generate_spritesheet) {
+		PLAIN_LOG << "sheet path " << *cmdline_opts.generate_spritesheet;
+		image::build_spritesheet_from(*cmdline_opts.generate_spritesheet);
 		return 0;
 	}
 
