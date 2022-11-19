@@ -110,9 +110,8 @@ msgstr ""
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
 #, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "L'Alliance"
+msgstr "Les Artisans"
 
 #. [multiplayer_side]: id=The Cult, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
@@ -127,9 +126,8 @@ msgstr ""
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
 #, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "L'Alliance"
+msgstr "La Défiance"
 
 #. [multiplayer_side]: id=The Empire, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
@@ -180,9 +178,8 @@ msgstr ""
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
 #, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "La Horde"
+msgstr "Les Maraudeurs"
 
 #. [multiplayer_side]: id=The Militia, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
@@ -2964,9 +2961,8 @@ msgstr "Pic cruel"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
 #, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: charge"
-msgstr "corps à corps : charge facultative"
+msgstr "corps à corps : charge"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
@@ -3006,9 +3002,8 @@ msgstr "Arc œil de lynx"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
 #, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
-msgstr "$range| : arcane et +25% dégâts"
+msgstr "à distance : arcane et +25% de dégâts"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
@@ -3027,9 +3022,8 @@ msgstr "Grimoire interdit"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
 #, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: plague"
-msgstr "corps à corps : charge facultative"
+msgstr "corps à corps : peste"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
@@ -3286,10 +3280,8 @@ msgstr "Racine de wose vénérable"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
-msgstr "$range| : arcane et +25% dégâts"
+msgstr ""
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
@@ -3469,9 +3461,8 @@ msgstr "Tome des secrets"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 #, fuzzy
-#| msgid "XP to advance"
 msgid "-50% XP to advance"
-msgstr "de XP pour évoluer"
+msgstr "-50% de XP pour évoluer"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3729,9 +3720,8 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:220
 #, fuzzy
-#| msgid "disengage"
 msgid "ranged: disengage"
-msgstr "désengagement"
+msgstr "à distance : désengagement"
 
 #. [dummy]: id=wc2_disengage
 #: data/campaigns/World_Conquest/resources/data/training.cfg:234
@@ -3838,8 +3828,8 @@ msgstr "Village/Château : +5 % de défense"
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
-"$terrain| : +$def| % de défense et 1 PM, +$res| % de résistance au "
-"type $dmg_type|"
+"$terrain| : +$def| de défense et déplacement intégral, +$res|"
+" résistance contre $dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:706
@@ -3875,9 +3865,8 @@ msgstr "Conquête du monde à 3 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
 #, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "Conquête du monde à 1 joueur"
+msgstr "Conquête du monde à 4 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 #, fuzzy
@@ -3919,7 +3908,7 @@ msgid ""
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
+"Une campagne générée aléatoirement pour 3 joueurs. Comporte 6 niveaux de "
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
@@ -3991,16 +3980,14 @@ msgstr ""
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
 #, fuzzy
-#| msgid "Granary"
 msgid "Grand Marshal"
-msgstr "Grenier"
+msgstr "Maréchal"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
 #, fuzzy
-#| msgid "expert"
 msgid "Expert"
-msgstr "expert"
+msgstr "Expert"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110

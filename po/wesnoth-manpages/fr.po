@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
 "POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2022-11-08 13:25+0800\n"
+"PO-Revision-Date: 2022-11-12 08:48+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -574,7 +574,7 @@ msgstr ""
 #, fuzzy, no-wrap
 #| msgid "B<--log-strict>"
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
@@ -2575,7 +2575,7 @@ msgstr ""
 #, fuzzy, no-wrap
 #| msgid "B<connections_allowed>"
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2590,7 +2590,7 @@ msgstr ""
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -2604,8 +2604,9 @@ msgid ""
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"Nom de la table des données utilisateurs de vos forums phpbb, probablement "
-"sous la forme E<lt>table-prefixE<gt>_users. Par exemple : phpbb3_users."
+"Nom de la table des informations des sujets de vos forums phpbb, "
+"probablement sous la forme E<lt>table-prefixE<gt>_topics. Par exemple : "
+"phpbb3_topics."
 
 # type: TP
 #. type: TP
@@ -2613,7 +2614,7 @@ msgstr ""
 #, fuzzy, no-wrap
 #| msgid "B<db_users_table>"
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 # type: Plain text
 #. type: Plain text
@@ -2627,8 +2628,9 @@ msgid ""
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"Nom de la table des données utilisateurs de vos forums phpbb, probablement "
-"sous la forme E<lt>table-prefixE<gt>_users. Par exemple : phpbb3_users."
+"Nom de la table des données des bannissements d'utilisateur de vos forums "
+"phpbb, probablement sous la forme E<lt>table-prefixE<gt>_banlist. Par "
+"exemple : phpbb3_banlist."
 
 #. type: TP
 #: doc/man/wesnothd.6:281
