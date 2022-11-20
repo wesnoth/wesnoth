@@ -1307,8 +1307,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, filter_self);
 				}
 			}
-			is_overwritable = is_overwritable && one_side_overwritable;
-			return is_overwritable;
+			return (is_overwritable && one_side_overwritable);
 		});
 	}
 	return input;
