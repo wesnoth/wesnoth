@@ -1,3 +1,18 @@
+## Version 1.17.10+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.17.10
  ### Terrain
    * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
