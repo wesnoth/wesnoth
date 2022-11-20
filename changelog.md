@@ -1,11 +1,4 @@
-## Version 1.17.9+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
+## Version 1.17.10
  ### Terrain
    * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
  ### Translations
@@ -15,9 +8,6 @@
    * Orcish Slayer can advance to the Orcish Nightblade by default.
    * Orcish Slayer's xp required to level up reduced from 100 to 64.
    * Dunefolk Falconer portrait added.
- ### User interface
- ### WML Engine
- ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.9
  ### Terrain
