@@ -12,8 +12,6 @@
  ### Units
  ### User interface
  ### WML Engine
- ### Miscellaneous and Bug Fixes
-   * Fixed not being able to undo moves (bug #6898)
 
 ## Version 1.17.10
  ### Terrain
@@ -25,6 +23,8 @@
    * Orcish Slayer can advance to the Orcish Nightblade by default.
    * Orcish Slayer's xp required to level up reduced from 100 to 64.
    * Dunefolk Falconer portrait added.
+ ### Miscellaneous and Bug Fixes
+   * Fixed not being able to undo moves (bug #6898)
 
 ## Version 1.17.9
  ### Terrain
