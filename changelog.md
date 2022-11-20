@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed not being able to undo moves (bug #6898)
 
 ## Version 1.17.10
  ### Terrain
