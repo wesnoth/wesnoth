@@ -6,21 +6,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2008-05-26 18:41+0200\n"
+"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"PO-Revision-Date: 2022-11-18 13:53+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "WESNOTH"
-msgstr ""
+msgstr "ويسنوث"
 
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
@@ -33,47 +34,48 @@ msgstr ""
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
-msgstr ""
+msgstr "ويسنوث"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "ملحمة ويسنوث"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:18 doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
-msgstr ""
+msgstr "اسم"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
 msgstr ""
+"ملحمة ويسنوث، لعبة إستراتيجيا خيالية تعتمد على تناوب الأدوار بين اللاعبين"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:21 doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "الملخص"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr ""
+msgstr "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:27 doc/man/wesnothd.6:40
 #, no-wrap
 msgid "DESCRIPTION"
-msgstr ""
+msgstr "تقديم"
 
 # type: Plain text
 #. type: Plain text
@@ -94,19 +96,25 @@ msgid ""
 "Wesnoth's large community of online players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
+"اهزم جميع قادة الأعداء باستخدام مجموعة من القوات التي تختارها مع إدارة "
+"مواردك من الذهب والقرى. كل الوحدات لها نقاط قوتها وضعفها؛ للفوز، انشر قواتك "
+"لتحقيق أفضل ميزة لها بينما تحرم أعدائك من فرصة فعل الشيء نفسه. عندما تكتسب "
+"الوحدات الخبرة فإنها تكتسب قدرات جديدة وتصبح أكثر قوة. العب بلغتك واختبر "
+"مهاراتك ضد خصم كمبيوتر ذكي، أو انضم إلى مجتمع ويسنوث الكبير من اللاعبين عبر "
+"الإنترنت. أنشئ وحداتك أو أكتب سيناريوهات أو حملات خاصة وشاركها مع الآخرين."
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:43 doc/man/wesnothd.6:45
 #, no-wrap
 msgid "OPTIONS"
-msgstr ""
+msgstr "إعدادات الخيارات"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--all-translations>"
-msgstr ""
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:49
@@ -114,12 +122,14 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"اعرض جميع الترجمات في قائمة اختيار اللغة داخل اللعبة حتى لو تم اعتبارها غير "
+"مكتملة بشكل كافٍ."
 
 #. type: TP
 #: doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<--bunzip2>I<\\ infile.bz2>"
-msgstr ""
+msgstr "B<--bunzip2>I<\\ infile.bz2>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:55
@@ -127,12 +137,15 @@ msgid ""
 "decompresses a file which should be in bzip2 format and stores it without "
 "the .bz2 suffix. The I<infile.bz2> will be removed."
 msgstr ""
+"يفك ضغط ملف يجب أن يكون بتنسيق bzip2 ويخزنه بدون اللاحقة .bz2. ال  <infile."
+"bz2>\n"
+" سوف يزال."
 
 #. type: TP
 #: doc/man/wesnoth.6:55
 #, no-wrap
 msgid "B<--bzip2>I<\\ infile>"
-msgstr ""
+msgstr "B<--bzip2>I<\\ infile>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:61
@@ -166,6 +179,8 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"صعوبة الحملة المحددة (من 1 إلى الحد الأقصى). إذا لم يتم تحديد أي اختيار "
+"فستظهر نافذة إعلام محدودة لصعوبة الحملة."
 
 #. type: TP
 #: doc/man/wesnoth.6:70
@@ -178,7 +193,7 @@ msgstr ""
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
-msgstr ""
+msgstr "معرّف السيناريو من الحملة المحددة. المعتاد هو السيناريو الأول."
 
 #. type: TP
 #: doc/man/wesnoth.6:73
@@ -200,7 +215,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:81
 msgid "Adds the option to show a clock for testing the drawing timer."
-msgstr ""
+msgstr "يضيف خيار إظهار ساعة لاختبار مؤقت الرسم."
 
 #. type: TP
 #: doc/man/wesnoth.6:81
@@ -234,6 +249,8 @@ msgstr ""
 #: doc/man/wesnoth.6:92
 msgid "overrides the loaded core with the one whose id is specified."
 msgstr ""
+"يتجاوز اختيارات النواة المحملة (الاختيارات المصممة مسبقا) إلى الاختيارات "
+"الجديدة التي تم تحديد معرفها."
 
 #. type: TP
 #: doc/man/wesnoth.6:92
@@ -244,7 +261,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:95
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "يتجاوز بيانات الدليل إلى البيانات المحددة."
 
 #. type: TP
 #: doc/man/wesnoth.6:95
@@ -255,7 +272,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:98
 msgid "prints the path of the data directory and exits."
-msgstr ""
+msgstr "يطبع مسار دليل البيانات والمخرجات."
 
 # type: TP
 #. type: TP
@@ -271,6 +288,8 @@ msgid ""
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
+"يتيح خيارات وضع الأوامر الإضافية داخل اللعبة (راجع صفحة wiki على https://www."
+"wesnoth.org/wiki/CommandMode للحصول على مزيد من المعلومات حول وضع الأوامر)."
 
 #. type: TP
 #: doc/man/wesnoth.6:103
@@ -281,7 +300,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:106
 msgid "enables some Lua debugging mechanisms"
-msgstr ""
+msgstr "تمكن بعض آليات تصحيح أخطاء برمجية Lua"
 
 #. type: TP
 #: doc/man/wesnoth.6:106
@@ -335,6 +354,8 @@ msgid ""
 "a corner of the screen as well as writes these values to a file in the "
 "userdata directory."
 msgstr ""
+"يعرض عدد الإطارات في الثانية التي تعمل بها اللعبة حاليًا في أحد أركان الشاشة "
+"بالإضافة إلى طبع هذه القيم إلى ملف في دليل بيانات المستخدم."
 
 # type: TP
 #. type: TP
@@ -347,7 +368,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:130
 msgid "runs the game in full screen mode."
-msgstr ""
+msgstr "يجعل اللعبة في وضع الشاشة الكاملة."
 
 # type: TP
 #. type: TP
@@ -384,14 +405,14 @@ msgstr ""
 #: doc/man/wesnoth.6:142 doc/man/wesnothd.6:55
 #, no-wrap
 msgid "B<-h, --help>"
-msgstr ""
+msgstr "B<-h, --help>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:145
 msgid ""
 "displays a summary of command line options to standard output, and exits."
-msgstr ""
+msgstr "يعرض ملخصًا لخيارات سطر الأوامر للخيارات القياسية، ثم يغادر."
 
 # type: TP
 #. type: TP
@@ -447,7 +468,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:181
 msgid "shows the timestamps in log output with more precision."
-msgstr ""
+msgstr "يعرض الجدول الزمني في السجل بمزيد من الدقة."
 
 #. type: TP
 #: doc/man/wesnoth.6:181
@@ -507,7 +528,7 @@ msgstr ""
 #: doc/man/wesnoth.6:202
 #, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr ""
+msgstr "B<-m, --multiplayer>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:208
@@ -520,7 +541,7 @@ msgstr ""
 #: doc/man/wesnoth.6:208
 #, no-wrap
 msgid "B<--mp-test>"
-msgstr ""
+msgstr "B<--mp-test>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:211
@@ -531,7 +552,7 @@ msgstr ""
 #: doc/man/wesnoth.6:211
 #, no-wrap
 msgid "B<--new-widgets>"
-msgstr ""
+msgstr "B<--new-widgets>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:214
@@ -563,7 +584,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:221
 msgid "disables loading of user addons."
-msgstr ""
+msgstr "تعطيل تحميل الملفات المضافة من طرف المستخدم."
 
 # type: TP
 #. type: TP
@@ -576,7 +597,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:224
 msgid "disables caching of game data."
-msgstr ""
+msgstr "تعطيل التخزين المؤقت لبيانات اللعبة."
 
 # type: TP
 #. type: TP
@@ -601,7 +622,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:235
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "قمع لافتة بدء التشغيل."
 
 # type: TP
 #. type: TP
@@ -614,7 +635,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:238
 msgid "runs the game without music."
-msgstr ""
+msgstr "تشغيل اللعبة بدون موسيقى."
 
 #. type: TP
 #: doc/man/wesnoth.6:238
@@ -640,7 +661,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:245
 msgid "runs the game without sounds and music."
-msgstr ""
+msgstr "تشغيل اللعبة بدون أصوات وموسيقى."
 
 #. type: TP
 #: doc/man/wesnoth.6:245
@@ -651,7 +672,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:248
 msgid "output to the specified file. Applicable to diffing operations."
-msgstr ""
+msgstr "الإخراج إلى الملف المحدد. ينطبق على عمليات ديفينج (مقارنة الملفات)."
 
 #. type: TP
 #: doc/man/wesnoth.6:248
@@ -794,6 +815,8 @@ msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr ""
+"تهيئة أدلة اللعبة وطباعة معلومات الإنشاء المناسبة للاستخدام في تقارير "
+"الأخطاء والإنهاء."
 
 #. type: TP
 #: doc/man/wesnoth.6:311
@@ -864,7 +887,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:342
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "يتم التعامل مع أخطاء التحقق من الصحة على أنها أخطاء فادحة."
 
 #. type: TP
 #: doc/man/wesnoth.6:342
@@ -958,7 +981,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:387
 msgid "prints the path of the user configuration directory and exits."
-msgstr ""
+msgstr "طباعة مسار دليل تكوين المستخدم والخروج."
 
 #. type: TP
 #: doc/man/wesnoth.6:387
@@ -985,7 +1008,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:399
 msgid "prints the path of the userdata directory and exits."
-msgstr ""
+msgstr "طباعة مسار دليل بيانات المستخدم والخروج."
 
 #. type: TP
 #: doc/man/wesnoth.6:399
@@ -1008,7 +1031,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:407
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "التحقق من صحة ملف مقابل مخطط WML."
 
 #. type: TP
 #: doc/man/wesnoth.6:407
@@ -1019,7 +1042,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:410
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "التحقق من صحة WML للملحق المحدد أثناء اللعب."
 
 #. type: TP
 #: doc/man/wesnoth.6:410
@@ -1030,7 +1053,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:413
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "التحقق من صحة WML الأساسية أثناء اللعب."
 
 #. type: TP
 #: doc/man/wesnoth.6:413
@@ -1041,7 +1064,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:416
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "التحقق من صحة ملف كمخطط WML."
 
 # type: TP
 #. type: TP
@@ -1054,7 +1077,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:419
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "على افتراض أن ذاكرة التخزين المؤقت صالحة. (اختيار خطير)"
 
 # type: TP
 #. type: TP
@@ -1067,7 +1090,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:422
 msgid "shows the version number and exits."
-msgstr ""
+msgstr "إظهار رقم الإصدار والخروج."
 
 #. type: TP
 #: doc/man/wesnoth.6:422
@@ -1078,7 +1101,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:425
 msgid "shows the version number and nothing else, then exits."
-msgstr ""
+msgstr "إظهار رقم الإصدار ولا شيء آخر ، ثم الخروج."
 
 # type: TP
 #. type: TP
@@ -1091,7 +1114,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:428
 msgid "runs the game in windowed mode."
-msgstr ""
+msgstr "تشغيل اللعبة في وضع النوافذ."
 
 # type: TP
 #. type: TP
@@ -1133,7 +1156,7 @@ msgstr ""
 #: doc/man/wesnoth.6:444
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
-msgstr ""
+msgstr "تحديد ملف التكوين ليتم تحميله لوحدة التحكم بال AI لهذا الجانب."
 
 #. type: TP
 #: doc/man/wesnoth.6:444
@@ -1745,7 +1768,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:149
 msgid "The message of the day."
-msgstr ""
+msgstr "رسالة اليوم"
 
 # type: TP
 #. type: TP
@@ -1944,7 +1967,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:200
 msgid "The address of the server to redirect to."
-msgstr ""
+msgstr "عنوان الخادم المراد إعادة التوجيه إليه."
 
 # type: TP
 #. type: TP
@@ -1993,7 +2016,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:216
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "الاسم المستخدم للإشارة إلى وقت الحظر."
 
 # type: TP
 #. type: TP
@@ -2043,7 +2066,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:245
 msgid "The hostname of the database server"
-msgstr ""
+msgstr "اسم مضيف خادم قاعدة البيانات"
 
 # type: TP
 #. type: TP
@@ -2055,7 +2078,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:248
 msgid "The name of the database"
-msgstr ""
+msgstr "اسم قاعدة البيانات"
 
 # type: TP
 #. type: TP
@@ -2067,7 +2090,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:251
 msgid "The name of the user under which to log into the database"
-msgstr ""
+msgstr "اسم المستخدم المراد تسجيل الدخول إلى قاعدة البيانات بواسطته"
 
 # type: TP
 #. type: TP
@@ -2079,7 +2102,7 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:254
 msgid "This user's password"
-msgstr ""
+msgstr "كلمة مرور هذا المستخدم"
 
 # type: TP
 #. type: TP
@@ -2106,7 +2129,7 @@ msgstr ""
 #: doc/man/wesnothd.6:260
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr ""
+msgstr "اسم الجدول الذي سيحفظ فيه wesnothd بياناته الخاصة حول المستخدمين."
 
 #. type: TP
 #: doc/man/wesnothd.6:260
@@ -2118,7 +2141,7 @@ msgstr ""
 #: doc/man/wesnothd.6:263
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
+msgstr "اسم الجدول الذي سيحفظ فيه wesnothd بياناته الخاصة حول الألعاب."
 
 #. type: TP
 #: doc/man/wesnothd.6:263
@@ -2131,7 +2154,7 @@ msgstr ""
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr ""
+msgstr "اسم الجدول الذي سيحفظ فيه ويسنوث بياناته الخاصة عن اللاعبين في اللعبة."
 
 #. type: TP
 #: doc/man/wesnothd.6:266
@@ -2145,6 +2168,8 @@ msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "modifications used in a game."
 msgstr ""
+"اسم الجدول الذي سيحفظ فيه ويسنوث  بياناته الخاصة حول التعديلات المستخدمة في "
+"اللعبة."
 
 #. type: TP
 #: doc/man/wesnothd.6:269
@@ -2211,7 +2236,7 @@ msgstr ""
 #: doc/man/wesnothd.6:284
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr ""
+msgstr "معرّف مجموعة المنتدى التي سيتم اعتبارها ذات سلطة إشراف."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:289
@@ -2219,6 +2244,8 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"حالة الخروج العادية هي 0 عندما تم إغلاق الخادم بشكل صحيح. تشير حالة الخروج 2 "
+"إلى وجود خطأ في خيارات سطر الأوامر."
 
 # type: Plain text
 #. type: Plain text
@@ -2235,3 +2262,7 @@ msgstr ""
 #: doc/man/wesnothd.6:308
 msgid "B<wesnoth>(6)"
 msgstr ""
+
+#, no-wrap
+#~ msgid "2021"
+#~ msgstr "2021"
