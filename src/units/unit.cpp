@@ -1433,7 +1433,7 @@ void unit::write(config& cfg, bool write_all) const
 	};
 
 	if(write_all || get_attr_changed(UA_MOVEMENT_TYPE)) {
-		movement_type_.write(cfg);
+		movement_type_.write(cfg, false);
 	}
 	if(write_all || get_attr_changed(UA_SMALL_PROFILE)) {
 		cfg["small_profile"] = small_profile_;
