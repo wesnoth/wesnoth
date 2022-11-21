@@ -182,7 +182,7 @@ void handle_dir_contents(const std::filesystem::path& path)
 		} else if(entry.is_regular_file()) {
 			// TODO: should we have a better is-image check, and should we include jpgs?
 			// Right now all our sprites are pngs.
-			if(auto path = entry.path(); path.extension() == ".png") {
+			if(auto path = entry.path(); path.extension() == ".png" && path.stem() != "_sheet") {
 				files_found.push_back(std::move(path));
 			}
 		}
