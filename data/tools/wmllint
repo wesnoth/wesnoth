@@ -1595,10 +1595,10 @@ def pangoize(message, filename, line):
         if "<" in reduced or ">" in reduced:
             if message == reduced: # No pango markup
                 here = message.find('<')
-                if message[here:here+4] != "&lt;":
+                if here != -1 and message[here:here+4] != "&lt;":
                     message = message[:here] + "&lt;" + message[here+1:]
                 here = message.find('>')
-                if message[here:here+4] != "&gt;":
+                if here != -1 and message[here:here+4] != "&gt;":
                     message = message[:here] + "&gt;" + message[here+1:]
             else:
                 print('"%s", line %d: < or > in pango string requires manual fix.' % (filename, line))
