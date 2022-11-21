@@ -39,7 +39,7 @@ static void validate(boost::any& v, const std::vector<std::string>& values,
               two_strings*, int)
 {
 	two_strings ret_val;
-	if (values.size() != 2) {
+	if(values.size() != 2) {
 		throw po::validation_error(po::validation_error::invalid_option_value);
 	}
 	ret_val.first = values[0];
@@ -323,232 +323,232 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	const int parsing_style = po::command_line_style::default_style ^ po::command_line_style::allow_guessing;
 	po::store(po::command_line_parser(args_).options(all_).positional(positional).style(parsing_style).run(),vm);
 
-	if (vm.count("ai-config"))
+	if(vm.count("ai-config"))
 		multiplayer_ai_config = parse_to_uint_string_tuples_(vm["ai-config"].as<std::vector<std::string>>());
-	if (vm.count("algorithm"))
+	if(vm.count("algorithm"))
 		multiplayer_algorithm = parse_to_uint_string_tuples_(vm["algorithm"].as<std::vector<std::string>>());
-	if (vm.count("bunzip2"))
+	if(vm.count("bunzip2"))
 		bunzip2 = vm["bunzip2"].as<std::string>();
-	if (vm.count("bzip2"))
+	if(vm.count("bzip2"))
 		bzip2 = vm["bzip2"].as<std::string>();
-	if (vm.count("campaign"))
+	if(vm.count("campaign"))
 		campaign = vm["campaign"].as<std::string>();
-	if (vm.count("campaign-difficulty"))
+	if(vm.count("campaign-difficulty"))
 		campaign_difficulty = vm["campaign-difficulty"].as<int>();
-	if (vm.count("campaign-scenario"))
+	if(vm.count("campaign-scenario"))
 		campaign_scenario = vm["campaign-scenario"].as<std::string>();
-	if (vm.count("campaign-skip-story"))
+	if(vm.count("campaign-skip-story"))
 		campaign_skip_story = true;
-	if (vm.count("clock"))
+	if(vm.count("clock"))
 		clock = true;
-	if (vm.count("core"))
+	if(vm.count("core"))
 		core_id = vm["core"].as<std::string>();
-	if (vm.count("config-dir"))
+	if(vm.count("config-dir"))
 		userdata_dir = vm["config-dir"].as<std::string>(); //TODO: complain and remove
-	if (vm.count("config-path"))
+	if(vm.count("config-path"))
 		userdata_path = true; //TODO: complain and remove
-	if (vm.count("controller"))
+	if(vm.count("controller"))
 		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string>>());
-	if (vm.count("data-dir"))
+	if(vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
-	if (vm.count("data-path"))
+	if(vm.count("data-path"))
 		data_path = true;
-	if (vm.count("debug"))
+	if(vm.count("debug"))
 		debug = true;
-	if (vm.count("debug-lua"))
+	if(vm.count("debug-lua"))
 		debug_lua = true;
-	if (vm.count("strict-lua"))
+	if(vm.count("strict-lua"))
 		strict_lua = true;
-	if (vm.count("allow-insecure"))
+	if(vm.count("allow-insecure"))
 		allow_insecure = true;
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	if (vm.count("debug-dot-domain")) {
+	if(vm.count("debug-dot-domain")) {
 		debug_dot_domain = vm["debug-dot-domain"].as<std::string>();
 	}
-	if (vm.count("debug-dot-level")) {
+	if(vm.count("debug-dot-level")) {
 		debug_dot_level = vm["debug-dot-level"].as<std::string>();
 	}
 #endif
-	if (vm.count("editor"))
+	if(vm.count("editor"))
 		editor = vm["editor"].as<std::string>();
-	if (vm.count("era"))
+	if(vm.count("era"))
 		multiplayer_era = vm["era"].as<std::string>();
-	if (vm.count("exit-at-end"))
+	if(vm.count("exit-at-end"))
 		multiplayer_exit_at_end = true;
-	if (vm.count("fps"))
+	if(vm.count("fps"))
 		fps = true;
-	if (vm.count("fullscreen"))
+	if(vm.count("fullscreen"))
 		fullscreen = true;
-	if (vm.count("gunzip"))
+	if(vm.count("gunzip"))
 		gunzip = vm["gunzip"].as<std::string>();
-	if (vm.count("gzip"))
+	if(vm.count("gzip"))
 		gzip = vm["gzip"].as<std::string>();
-	if (vm.count("help"))
+	if(vm.count("help"))
 		help = true;
-	if (vm.count("ignore-map-settings"))
+	if(vm.count("ignore-map-settings"))
 		multiplayer_ignore_map_settings = true;
-	if (vm.count("label"))
+	if(vm.count("label"))
 		multiplayer_label = vm["label"].as<std::string>();
-	if (vm.count("language"))
+	if(vm.count("language"))
 		language = vm["language"].as<std::string>();
-	if (vm.count("load"))
+	if(vm.count("load"))
 		load = vm["load"].as<std::string>();
-	if (vm.count("log-error"))
+	if(vm.count("log-error"))
 		 parse_log_domains_(vm["log-error"].as<std::string>(),lg::err().get_severity());
-	if (vm.count("log-warning"))
+	if(vm.count("log-warning"))
 		 parse_log_domains_(vm["log-warning"].as<std::string>(),lg::warn().get_severity());
-	if (vm.count("log-info"))
+	if(vm.count("log-info"))
 		 parse_log_domains_(vm["log-info"].as<std::string>(),lg::info().get_severity());
-	if (vm.count("log-debug"))
+	if(vm.count("log-debug"))
 		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug().get_severity());
-	if (vm.count("log-none"))
+	if(vm.count("log-none"))
 		 parse_log_domains_(vm["log-none"].as<std::string>(),-1);
-	if (vm.count("logdomains"))
+	if(vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
-	if (vm.count("log-precise"))
+	if(vm.count("log-precise"))
 		log_precise_timestamps = true;
-	if (vm.count("log-strict"))
+	if(vm.count("log-strict"))
 		parse_log_strictness(vm["log-strict"].as<std::string>());
-	if (vm.count("max-fps"))
+	if(vm.count("max-fps"))
 		max_fps = vm["max-fps"].as<int>();
-	if (vm.count("mp-test"))
+	if(vm.count("mp-test"))
 		mptest = true;
-	if (vm.count("multiplayer"))
+	if(vm.count("multiplayer"))
 		multiplayer = true;
-	if (vm.count("multiplayer-repeat"))
+	if(vm.count("multiplayer-repeat"))
 		multiplayer_repeat = vm["multiplayer-repeat"].as<unsigned int>();
-	if (vm.count("new-widgets"))
+	if(vm.count("new-widgets"))
 		new_widgets = true;
-	if (vm.count("noaddons"))
+	if(vm.count("noaddons"))
 		noaddons = true;
-	if (vm.count("nocache"))
+	if(vm.count("nocache"))
 		nocache = true;
-	if (vm.count("nodelay"))
+	if(vm.count("nodelay"))
 		nodelay = true;
-	if (vm.count("nomusic"))
+	if(vm.count("nomusic"))
 		nomusic = true;
-	if (vm.count("noreplaycheck"))
+	if(vm.count("noreplaycheck"))
 		noreplaycheck = true;
-	if (vm.count("nosound"))
+	if(vm.count("nosound"))
 		nosound = true;
-	if (vm.count("nogui"))
+	if(vm.count("nogui"))
 		nogui = true;
-	if (vm.count("nobanner"))
+	if(vm.count("nobanner"))
 		nobanner = true;
-	if (vm.count("parm"))
+	if(vm.count("parm"))
 		multiplayer_parm = parse_to_uint_string_string_tuples_(vm["parm"].as<std::vector<std::string>>());
-	if (vm.count("preprocess"))
+	if(vm.count("preprocess"))
 	{
 		preprocess = true;
 		preprocess_path = vm["preprocess"].as<two_strings>().first;
 		preprocess_target = vm["preprocess"].as<two_strings>().second;
 	}
-	if (vm.count("diff"))
+	if(vm.count("diff"))
 	{
 		do_diff = true;
 		diff_left = vm["diff"].as<two_strings>().first;
 		diff_right = vm["diff"].as<two_strings>().second;
 	}
-	if (vm.count("patch"))
+	if(vm.count("patch"))
 	{
 		do_patch = true;
 		diff_left = vm["patch"].as<two_strings>().first;
 		diff_right = vm["patch"].as<two_strings>().second;
 	}
-	if (vm.count("output"))
+	if(vm.count("output"))
 	{
 		output_file = vm["output"].as<std::string>();
 	}
-	if (vm.count("preprocess-defines"))
+	if(vm.count("preprocess-defines"))
 		preprocess_defines = utils::split(vm["preprocess-defines"].as<std::string>(), ',');
-	if (vm.count("preprocess-input-macros"))
+	if(vm.count("preprocess-input-macros"))
 		preprocess_input_macros = vm["preprocess-input-macros"].as<std::string>();
-	if (vm.count("preprocess-output-macros"))
+	if(vm.count("preprocess-output-macros"))
 		preprocess_output_macros = vm["preprocess-output-macros"].as<std::string>();
-	if (vm.count("resolution"))
+	if(vm.count("resolution"))
 		parse_resolution_(vm["resolution"].as<std::string>());
-	if (vm.count("rng-seed"))
+	if(vm.count("rng-seed"))
 		rng_seed = vm["rng-seed"].as<unsigned int>();
-	if (vm.count("scenario"))
+	if(vm.count("scenario"))
 		multiplayer_scenario = vm["scenario"].as<std::string>();
-	if (vm.count("render-image"))
+	if(vm.count("render-image"))
 	{
 		render_image = vm["render-image"].as<two_strings>().first;
 		render_image_dst = vm["render-image"].as<two_strings>().second;
 	}
-	if (vm.count("screenshot"))
+	if(vm.count("screenshot"))
 	{
 		screenshot = true;
 		screenshot_map_file = vm["screenshot"].as<two_strings>().first;
 		screenshot_output_file = vm["screenshot"].as<two_strings>().second;
 	}
-	if (vm.count("script"))
+	if(vm.count("script"))
 		script_file = vm["script"].as<std::string>();
-	if (vm.count("unsafe-scripts"))
+	if(vm.count("unsafe-scripts"))
 		script_unsafe_mode = true;
-	if (vm.count("plugin"))
+	if(vm.count("plugin"))
 		plugin_file = vm["plugin"].as<std::string>();
-	if (vm.count("server"))
+	if(vm.count("server"))
 		server = vm["server"].as<std::string>();
-	if (vm.count("username"))
+	if(vm.count("username"))
 		username = vm["username"].as<std::string>();
-	if (vm.count("password"))
+	if(vm.count("password"))
 		password = vm["password"].as<std::string>();
-	if (vm.count("report"))
+	if(vm.count("report"))
 		report = true;
-	if (vm.count("side"))
+	if(vm.count("side"))
 		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string>>());
-	if (vm.count("test"))
+	if(vm.count("test"))
 		test = vm["test"].as<std::string>();
-	if (vm.count("unit"))
+	if(vm.count("unit"))
 	{
 		unit_test = vm["unit"].as<std::vector<std::string>>();
 		headless_unit_test = true;
 	}
-	if (vm.count("showgui"))
+	if(vm.count("showgui"))
 		headless_unit_test = false;
-	if (vm.count("noreplaycheck"))
+	if(vm.count("noreplaycheck"))
 		noreplaycheck = true;
-	if (vm.count("turns"))
+	if(vm.count("turns"))
 		multiplayer_turns = vm["turns"].as<std::string>();
-	if (vm.count("strict-validation"))
+	if(vm.count("strict-validation"))
 		strict_validation = true;
-	if (vm.count("usercache-dir"))
+	if(vm.count("usercache-dir"))
 		usercache_dir = vm["usercache-dir"].as<std::string>();
-	if (vm.count("usercache-path"))
+	if(vm.count("usercache-path"))
 		usercache_path = true;
-	if (vm.count("userconfig-dir"))
+	if(vm.count("userconfig-dir"))
 		userconfig_dir = vm["userconfig-dir"].as<std::string>();
-	if (vm.count("userconfig-path"))
+	if(vm.count("userconfig-path"))
 		userconfig_path = true;
-	if (vm.count("userdata-dir"))
+	if(vm.count("userdata-dir"))
 		userdata_dir = vm["userdata-dir"].as<std::string>();
-	if (vm.count("userdata-path"))
+	if(vm.count("userdata-path"))
 		userdata_path = true;
-	if (vm.count("validcache"))
+	if(vm.count("validcache"))
 		validcache = true;
 	// If you add a new validate-* option, remember the any_validation_option() function
-	if (vm.count("validate"))
+	if(vm.count("validate"))
 		validate_wml = vm["validate"].as<std::string>();
-	if (vm.count("validate-core"))
+	if(vm.count("validate-core"))
 		validate_core = true;
-	if (vm.count("validate-addon"))
+	if(vm.count("validate-addon"))
 		validate_addon = vm["validate-addon"].as<std::string>();
-	if (vm.count("validate-schema"))
+	if(vm.count("validate-schema"))
 		validate_schema = vm["validate-schema"].as<std::string>();
 	// If you add a new validate-* option, remember the any_validation_option() function
-	if (vm.count("use-schema"))
+	if(vm.count("use-schema"))
 		validate_with = vm["use-schema"].as<std::string>();
-	if (vm.count("version"))
+	if(vm.count("version"))
 		version = true;
-	if (vm.count("simple-version"))
+	if(vm.count("simple-version"))
 	{
 		simple_version = true;
 		nobanner = true;
 	}
-	if (vm.count("windowed"))
+	if(vm.count("windowed"))
 		windowed = true;
-	if (vm.count("with-replay"))
+	if(vm.count("with-replay"))
 		with_replay = true;
 	if(vm.count("all-translations"))
 		translation_percent = 0;
@@ -562,7 +562,7 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 		if(!log) {
 			log.emplace();
 		}
-		for (auto&& domain : domains) {
+		for(auto&& domain : domains) {
 			log->emplace_back(severity, std::move(domain));
 		}
 	}
@@ -570,8 +570,8 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 
 void commandline_options::parse_log_strictness (const std::string & severity) {
 	static const std::array<const lg::logger*, 4> loggers {{&lg::err(), &lg::warn(), &lg::info(), &lg::debug()}};
-	for (const lg::logger * l : loggers ) {
-		if (severity == l->get_name()) {
+	for(const lg::logger * l : loggers ) {
+		if(severity == l->get_name()) {
 			lg::set_strict_severity(*l);
 			return;
 		}
@@ -583,7 +583,7 @@ void commandline_options::parse_log_strictness (const std::string & severity) {
 void commandline_options::parse_resolution_ (const std::string& resolution_string)
 {
 	const std::vector<std::string> tokens = utils::split(resolution_string, 'x');
-	if (tokens.size() != 2) {
+	if(tokens.size() != 2) {
 		throw bad_commandline_resolution(resolution_string);
 	}
 
@@ -607,7 +607,7 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 	const std::string expected_format
 			= "UINT"s + separator + "STRING";
 
-	for (const std::string &s : strings) {
+	for(const std::string &s : strings) {
 		std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 2) {
 			throw bad_commandline_tuple(s, expected_format);
@@ -633,7 +633,7 @@ std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_option
 	const std::string expected_format
 			= "UINT"s + separator + "STRING" + separator + "STRING";
 
-	for (const std::string &s : strings) {
+	for(const std::string &s : strings) {
 		const std::vector<std::string> tokens = utils::split(s, separator);
 		if(tokens.size() != 3) {
 			throw bad_commandline_tuple(s, expected_format);
@@ -660,13 +660,13 @@ std::ostream& operator<<(std::ostream &os, const commandline_options& cmdline_op
 
 config commandline_options::to_config() const {
 	config ret;
-	if (server) {
+	if(server) {
 		ret["server"] = *server;
 	}
-	if (username) {
+	if(username) {
 		ret["username"] = *username;
 	}
-	if (password) {
+	if(password) {
 		ret["password"] = *password;
 	}
 	return ret;
