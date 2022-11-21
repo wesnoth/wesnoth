@@ -868,10 +868,6 @@ bool movetype::has_terrain_defense_caps(const std::set<t_translation::terrain_co
 	return false;
 }
 
-/**
- * Merges the given config over the existing data.
- * If @a overwrite is false, the new values will be added to the old.
- */
 void movetype::merge(const config & new_cfg, bool overwrite)
 {
 	for (const auto & applies_to : movetype::effects) {
@@ -916,10 +912,7 @@ void movetype::merge(const config & new_cfg, const std::string & applies_to, boo
 const std::set<std::string> movetype::effects {"movement_costs",
 	"vision_costs", "jamming_costs", "defense", "resistance"};
 
-/**
- * Writes the movement type data to the provided config.
- */
-void movetype::write(config & cfg) const
+void movetype::write(config& cfg, bool include_notes) const
 {
 	movement_.write(cfg, "movement_costs", false);
 	vision_.write(cfg, "vision_costs", false);
@@ -927,10 +920,12 @@ void movetype::write(config & cfg) const
 	defense_.write(cfg, "defense");
 	resist_.write(cfg, "resistance");
 
-	if ( flying_ )
+	if(flying_)
 		cfg["flying"] = true;
 
-	for(const auto& note : special_notes_) {
-		cfg.add_child("special_note", config{"note", note});
+	if(include_notes) {
+		for(const auto& note : special_notes_) {
+			cfg.add_child("special_note", config{"note", note});
+		}
 	}
 }
