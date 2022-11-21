@@ -59,6 +59,22 @@ struct sheet_element
 
 	/** Location on the final composed sheet. */
 	rect dst;
+
+	config to_config() const
+	{
+		return config{
+			"filename", filename,
+
+			/** Source rect of this image on the final sheet. */
+			"sheet_rect", formatter() << dst.x << ',' << dst.y << ',' << dst.w  << ',' << dst.h,
+
+			/** Offset at which to render this image, equal to the non-transparent offset from origin (0,0 top left). */
+			"draw_offset", formatter() << src.x << ',' << src.y,
+
+			/** Original image size in case we need it. */
+			"original_size", formatter() << surf->w << ',' << surf->h,
+		};
+	}
 };
 
 /** Tweak as needed. *Must* be floating-point in order to allow rounding. */
@@ -146,12 +162,12 @@ void build_sheet_from_images(const std::vector<std::filesystem::path>& file_path
 
 	// Final record of each image's location on the composed sheet.
 	auto out = filesystem::ostream_file("./_sheet.cfg");
-	config_writer mapping_data{*out, compression::format::none};
+	config_writer mapping_data{*out, compression::format::gzip};
 
 	// Assemble everything
 	for(auto& s : elements) {
 		sdl_blit(s.surf, &s.src, res, &s.dst);
-		mapping_data.write_child("image", config{ "name", s.filename, "rect", formatter() << s.dst });
+		mapping_data.write_child("image", s.to_config());
 	}
 
 	image::save_image(res, "./_sheet.png");
@@ -186,7 +202,7 @@ void handle_dir_contents(const std::filesystem::path& path)
 }
 
 } // end anon namespace
-
+#define DEBUG_SPRITESHEET_OUTPUT
 void build_spritesheet_from(const std::string& entry_point)
 {
 #ifdef DEBUG_SPRITESHEET_OUTPUT
