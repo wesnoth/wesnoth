@@ -71,8 +71,8 @@ void split_foreach_impl(std::string_view s, char sep, const F& f)
 	}
 	while(true)
 	{
-		int partend = s.find(sep);
-		if(partend == int(std::string_view::npos)) {
+		std::size_t partend = s.find(sep);
+		if(partend == std::string_view::npos) {
 			break;
 		}
 		f(s.substr(0, partend));

@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
-"PO-Revision-Date: 2022-10-07 17:53+0200\n"
+"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"PO-Revision-Date: 2022-11-09 20:51+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -220,7 +220,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "Časový limit pro odpojení od serveru"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -229,6 +229,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Doba ve vteřinách, po které je zjištěno odpojení. Pokud jsi právě přihlášen "
+"k serveru hry pro více hráčů, musíš se odhlásit a znovu přihlásit, aby se "
+"toto nastavení projevilo."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -260,7 +263,7 @@ msgid "Notes:"
 msgstr "Poznámky:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Zavřít"
 
@@ -4522,7 +4525,7 @@ msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
-"Použijte <i>Oblasti</i> v editoru map pro nastavení oblastí, které později "
+"Použij <i>Oblasti</i> v editoru map pro nastavení oblastí, které později "
 "použije nějaká událost nebo umělá inteligence."
 
 #. [tip]
@@ -4536,8 +4539,8 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Abyste mohli v editoru map použít pokročilé prvky, vyberte v menu <i>Soubor</"
-"i> možnost <i>Nový scénář</i>."
+"Abys mohl v editoru map použít pokročilé prvky, vyber v menu <i>Soubor</i> "
+"možnost <i>Nový scénář</i>."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4545,7 +4548,7 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"Scénáře uložené v editoru do výchozího umístění můžete vybrat v sekci "
+"Scénáře uložené v editoru do výchozího umístění můžeš vybrat v sekci "
 "<i>Vlastní scénáře</i> při vytváření nové hry pro více hráčů."
 
 #. [tip]
@@ -4739,8 +4742,8 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Pokud hrajete se zapnutou <b>mlhou</b> či <b>zahalením tmou</b>, není jasné, "
-"proti čemu stojíte. V takovém případě se velmi hodí průzkumné jednotky "
+"Pokud hraješ se zapnutou <b>mlhou</b> či <b>zahalením tmou</b>, není jasné, "
+"proti čemu stojíš. V takovém případě se velmi hodí průzkumné jednotky "
 "s velkou rychlostí pohybu. Oblast, kterou jednotka vidí, odpovídá tomu, kam "
 "dojde v příštím tahu, takže je vhodné uvážit i rychlost pohybu na různých "
 "terénech pro co největší rozhled."
@@ -4794,9 +4797,9 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Můžeš využívat jednotky z minulých scénářů vybráním <b>Přivolej</b> z menu "
-"<b>Akce</b>. Přivoláváním stále stejných jednotek znovu a znovu lze "
-"vybudovat silnou a zkušenou armádu."
+"Můžeš využívat jednotky z minulých scénářů vybráním <b>Povolat</b> z menu "
+"<b>Akce</b>. Povoláváním stále stejných jednotek znovu a znovu lze vybudovat "
+"silnou a zkušenou armádu."
 
 #. [tip]
 #: data/tips.cfg:84
@@ -4861,8 +4864,8 @@ msgid ""
 "are not caught out by a surprise attack."
 msgstr ""
 "Na mapách, kde je použito <i>zahalení tmou</i> či <i>mlha</i>, je pohled "
-"jednotek omezen možnostmi jejich pohybu. Pokud máte cenné, ale pomalé "
-"jednotky, zůstaňte poblíž nich s další, rychlejší jednotkou, aby nebyla "
+"jednotek omezen možnostmi jejich pohybu. Pokud máš cenné, ale pomalé "
+"jednotky, zůstaň poblíž nich s další, rychlejší jednotkou, aby nebyla "
 "zaskočena překvapivým útokem z neviděné části mapy."
 
 #. [tip]
@@ -4872,9 +4875,9 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"Většina pěších jednotek se brání lépe ve vesnicích a hradech než ve většině "
-"ostatních terénů, zatímco většina jízdních jednotek nezískává ve vesnicích "
-"a hradech žádnou obrannou výhodu."
+"Pěší jednotky se obvykle lépe brání ve vesnicích a hradech než v jiných "
+"typech terénu, zatímco většina jízdních jednotek nezískává ve vesnicích nebo "
+"hradech žádné obranné výhody."
 
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:185
@@ -5126,7 +5129,7 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Aby se vaše jednotky nízké úrovně rychleji povýšily, spárujte je se silnější "
+"Aby se tvé jednotky nízké úrovně rychleji povýšily, spáruj je se silnější "
 "jednotkou, která nejprve dostatečně poškodí společný cíl; „učedník“ pak dílo "
 "dokoná a získá zkušenosti."
 
@@ -8085,7 +8088,7 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Tato jednotka byla otrávena. Každé kolo ztratí 8 životů, dokud nebude "
+"Tato jednotka byla otrávena. Každé kolo ztratí 8 životů, dokud nebude "
 "uzdravena lékem proti otravě ve vesnici nebo od spřátelené jednotky se "
 "schopností uzdravovat.\n"
 "\n"

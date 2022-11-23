@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
-"PO-Revision-Date: 2022-08-27 15:24+0800\n"
+"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"PO-Revision-Date: 2022-10-17 10:01+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -269,7 +269,7 @@ msgid "Notes:"
 msgstr "Remarques :"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Fermer"
 
@@ -671,7 +671,6 @@ msgstr "Autel"
 #. [item]: id=ankh-necklace
 #. [item]: id=ankh-necklace2
 #: data/core/editor/items.cfg:26 data/core/editor/items.cfg:33
-#, fuzzy
 msgid "Ankh Necklace"
 msgstr "Collier ânkh"
 
@@ -1149,12 +1148,11 @@ msgstr "Épée sacrée"
 msgid "Short Sword"
 msgstr "Épée courte"
 
+# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine). 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Épée enflammée"
+msgstr "Épée de ruine"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798

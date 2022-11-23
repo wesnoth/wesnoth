@@ -171,7 +171,7 @@ void unit_attack::pre_show(window& window)
 		attacker_tooltip << translation::dsgettext("wesnoth", "Weapon: ") << "<b>" << attw_name << "</b>" << "\n"
 			<< translation::dsgettext("wesnoth", "Damage: ") << attacker.damage <<  "<i>" << attw_specials_dmg <<  "</i>" << "\n"
 			<< translation::dsgettext("wesnoth", "Attacks: ") << attacker.num_blows <<  "<i>" << attw_specials_atk <<  "</i>" << "\n"
-			<< translation::dsgettext("wesnoth", "Chance to hit: ") << font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>"<<  "<i>" << attw_specials_cth << "</i>"
+			<< translation::dsgettext("wesnoth-lib", "Chance to hit") << ": " << font::span_color(a_cth_color) << attacker.chance_to_hit << "%</span>"<<  "<i>" << attw_specials_cth << "</i>"
 			<< attw_specials_others;
 
 		defender_stats << "<b>" << defw_name << "</b>" << "\n"
@@ -182,7 +182,7 @@ void unit_attack::pre_show(window& window)
 		defender_tooltip << translation::dsgettext("wesnoth", "Weapon: ") << "<b>" << defw_name << "</b>" << "\n"
 			<< translation::dsgettext("wesnoth", "Damage: ") << defender.damage << "<i>" << defw_specials_dmg << "</i>" << "\n"
 			<< translation::dsgettext("wesnoth", "Attacks: ") << defender.num_blows <<  "<i>" << defw_specials_atk <<  "</i>" << "\n"
-			<< translation::dsgettext("wesnoth", "Chance to hit: ") << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"
+			<< translation::dsgettext("wesnoth-lib", "Chance to hit") << ": " << font::span_color(d_cth_color) << defender.chance_to_hit << "%</span>"<<  "<i>" << defw_specials_cth << "</i>"
 			<< defw_specials_others;
 
 		widget_data data;

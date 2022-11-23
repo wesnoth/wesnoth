@@ -191,6 +191,8 @@ void precise_timestamps(bool);
 std::string get_timestamp(const std::time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 std::string get_timespan(const std::time_t& t);
 std::string sanitize_log(const std::string& logstr);
+std::string& get_log_file_path();
+void set_log_file_path(const std::string& path);
 
 logger &err(), &warn(), &info(), &debug();
 log_domain& general();

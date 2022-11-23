@@ -96,16 +96,29 @@ public:
 	const unit_ability& back()  const  { return cfgs_.back();  }
 
 	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
+	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
 
 	template<typename... T>
 	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
 
 	const map_location& loc() const { return loc_; }
 
-	/** Appens the abilities from @a other to @a this, ignores other.loc() */
+	/** Appends the abilities from @a other to @a this, ignores other.loc() */
 	void append(const unit_ability_list& other)
 	{
-		std::copy( other.begin(), other.end(), std::back_inserter(cfgs_ ));
+		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
+	}
+
+	/**
+	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
+	 *
+	 * @param other where to copy the elements from
+	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
+	 */
+	template<typename Predicate>
+	void append_if(const unit_ability_list& other, const Predicate& predicate)
+	{
+		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
 	}
 
 private:
@@ -1762,7 +1775,7 @@ public:
 
 private:
 
-	const std::set<std::string> checking_tags_{"damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
+	const std::set<std::string> checking_tags_{"attacks", "damage", "chance_to_hit", "berserk", "swarm", "drains", "heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
 	/**
 	 * Check if an ability is active.
 	 * @param ability The type (tag name) of the ability

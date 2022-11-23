@@ -247,8 +247,6 @@ display::display(const display_context* dc,
 	if(zoom_ != preferences::tile_size())	// correct saved tile_size if necessary
 		preferences::set_tile_size(zoom_);
 
-	image::set_zoom(zoom_);
-
 	init_flags();
 
 	if(!menu_buttons_.empty() || !action_buttons_.empty()) {
@@ -1936,7 +1934,6 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	}
 
 	preferences::set_tile_size(zoom_);
-	image::set_zoom(zoom_);
 
 	labels().recalculate_labels();
 	redraw_background_ = true;
@@ -2211,8 +2208,6 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 void display::bounds_check_position()
 {
-	const unsigned int orig_zoom = zoom_;
-
 	if(zoom_ < MinZoom) {
 		zoom_ = MinZoom;
 	}
@@ -2222,10 +2217,6 @@ void display::bounds_check_position()
 	}
 
 	bounds_check_position(xpos_, ypos_);
-
-	if(zoom_ != orig_zoom) {
-		image::set_zoom(zoom_);
-	}
 }
 
 void display::bounds_check_position(int& xpos, int& ypos) const

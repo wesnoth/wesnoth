@@ -223,14 +223,6 @@ struct manager
 void set_color_adjustment(int r, int g, int b);
 
 /**
- * Sets the scaling factor for images.
- *
- * Changing the previous value automatically invalidates all cached scaled
- * images.
- */
-void set_zoom(unsigned int zoom);
-
-/**
  * Used to specify the rendering format of images.
  */
 enum TYPE

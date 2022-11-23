@@ -94,4 +94,16 @@ inline bool contains(const Container& container, const Value& value)
  */
 std::string get_unknown_exception_type();
 
+/**
+ * Convenience wrapper for using std::remove_if on a container.
+ *
+ * todoc++20 use C++20's std::erase_if instead. The C++20 function returns the number of elements
+ * removed; this one could do that but it seems unnecessary to add it unless something is using it.
+ */
+template<typename Container, typename Predicate>
+void erase_if(Container& container, const Predicate& predicate)
+{
+	container.erase(std::remove_if(container.begin(), container.end(), predicate), container.end());
+}
+
 } // namespace utils

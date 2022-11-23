@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-16 02:06 UTC\n"
+"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
 "PO-Revision-Date: 2022-04-25 18:22+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -110,9 +110,8 @@ msgstr ""
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
 #, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "L'Alliance"
+msgstr "Les Artisans"
 
 #. [multiplayer_side]: id=The Cult, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
@@ -127,9 +126,8 @@ msgstr ""
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
 #, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "L'Alliance"
+msgstr "La Défiance"
 
 #. [multiplayer_side]: id=The Empire, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
@@ -180,9 +178,8 @@ msgstr ""
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
 #, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "La Horde"
+msgstr "Les Maraudeurs"
 
 #. [multiplayer_side]: id=The Militia, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
@@ -213,31 +210,117 @@ msgid "WoCopedia"
 msgstr "WoCopédia"
 
 #. [label]: id=title
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:281
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:379
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
+msgid "Artifacts"
+msgstr "Artefacts"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
+msgid "Recruits"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
+#, fuzzy
+#| msgid "Deserter"
+msgid "Deserters"
+msgstr "Déserteur"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
+#, fuzzy
+#| msgid "Commander"
+msgid "Commanders"
+msgstr "Commandant"
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:501
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
+msgid "Heroes"
+msgstr "Héros"
+
+#. [label]: id=title_random_leaders
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
+#, fuzzy
+#| msgid "Random"
+msgid "Random Leaders"
+msgstr "Aléatoire"
+
+#. [label]: id=title
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:567
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:569
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "Paramètres"
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:646
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
+#, fuzzy
+#| msgid "World Conquest 1p"
+msgid "Use World Conquest Unitmarkers"
+msgstr "Conquête du monde à 1 joueur"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
+msgid "Use World Conquest experimental pickup"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
+msgid "Show pickup confirmation"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
 msgid "Difficulty"
 msgstr "Difficulté"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
+#, fuzzy
+#| msgid "World Conquest"
+msgid "World Conquest version"
+msgstr "Conquête du Monde"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
 msgid "Choose a bonus for your team"
 msgstr "Choisissez un bonus pour votre équipe"
 
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:240
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "Before:"
+msgstr "Avant :"
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:259
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "After:"
+msgstr "Après :"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
+msgid "Get This Item"
+msgstr ""
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
+msgid "OK"
+msgstr "OK"
+
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
 msgid "You got"
 msgstr "Vous avez reçu"
-
-#. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
-msgid "OK"
-msgstr "OK"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:24
@@ -273,6 +356,47 @@ msgstr " scénario : "
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
 msgstr " carte : "
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
+msgid "map size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
+msgid "village density"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
+msgid "keep size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
+#, fuzzy
+#| msgid "Factions"
+msgid "iterations"
+msgstr "Factions"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
+#, fuzzy
+#| msgid "terrain^water"
+msgid "terrain factor"
+msgstr "eau"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
+msgid "island factor"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
+#, fuzzy
+#| msgid "Tome of secrets"
+msgid "number of keeps"
+msgstr "Tome des secrets"
 
 # Décrit la relation entre un zombi et une liche
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
@@ -1199,16 +1323,6 @@ msgid "WC2 Invest"
 msgstr "Investissement WC2"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
-msgid "Artifacts"
-msgstr "Artefacts"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
-msgid "Heroes"
-msgstr "Héros"
-
-#. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
@@ -1248,16 +1362,6 @@ msgstr "Entraînement"
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
 msgstr "Entraînement en $name"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "After:"
-msgstr "Après :"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "Before:"
-msgstr "Avant :"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
@@ -2964,9 +3068,8 @@ msgstr "Pic cruel"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
 #, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: charge"
-msgstr "corps à corps : charge facultative"
+msgstr "corps à corps : charge"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
@@ -3006,9 +3109,8 @@ msgstr "Arc œil de lynx"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
 #, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
-msgstr "$range| : arcane et +25% dégâts"
+msgstr "à distance : arcane et +25% de dégâts"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
@@ -3027,9 +3129,8 @@ msgstr "Grimoire interdit"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
 #, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: plague"
-msgstr "corps à corps : charge facultative"
+msgstr "corps à corps : peste"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
@@ -3286,10 +3387,8 @@ msgstr "Racine de wose vénérable"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
-msgstr "$range| : arcane et +25% dégâts"
+msgstr ""
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
@@ -3469,9 +3568,8 @@ msgstr "Tome des secrets"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 #, fuzzy
-#| msgid "XP to advance"
 msgid "-50% XP to advance"
-msgstr "de XP pour évoluer"
+msgstr "-50% de XP pour évoluer"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3729,9 +3827,8 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:220
 #, fuzzy
-#| msgid "disengage"
 msgid "ranged: disengage"
-msgstr "désengagement"
+msgstr "à distance : désengagement"
 
 #. [dummy]: id=wc2_disengage
 #: data/campaigns/World_Conquest/resources/data/training.cfg:234
@@ -3838,8 +3935,8 @@ msgstr "Village/Château : +5 % de défense"
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
-"$terrain| : +$def| % de défense et 1 PM, +$res| % de résistance au "
-"type $dmg_type|"
+"$terrain| : +$def| de défense et déplacement intégral, +$res|"
+" résistance contre $dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:706
@@ -3875,9 +3972,8 @@ msgstr "Conquête du monde à 3 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
 #, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "Conquête du monde à 1 joueur"
+msgstr "Conquête du monde à 4 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 #, fuzzy
@@ -3919,7 +4015,7 @@ msgid ""
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
+"Une campagne générée aléatoirement pour 3 joueurs. Comporte 6 niveaux de "
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
@@ -3991,16 +4087,14 @@ msgstr ""
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
 #, fuzzy
-#| msgid "Granary"
 msgid "Grand Marshal"
-msgstr "Grenier"
+msgstr "Maréchal"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
 #, fuzzy
-#| msgid "expert"
 msgid "Expert"
-msgstr "expert"
+msgstr "Expert"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
@@ -4044,9 +4138,6 @@ msgstr ""
 #~ "\n"
 #~ "Quels sont vos nouveaux ordres ?"
 
-#~ msgid "Random"
-#~ msgstr "Aléatoire"
-
 #~ msgid " and "
 #~ msgstr " et "
 
@@ -4074,9 +4165,6 @@ msgstr ""
 # Dans le sens "ne coûte que 1 PM".
 #~ msgid "full movement"
 #~ msgstr "déplacement sans pénalité"
-
-#~ msgid "terrain^water"
-#~ msgstr "eau"
 
 #~ msgid "improved defenses"
 #~ msgstr "défenses améliorées"

@@ -633,6 +633,7 @@ std::string full_build_report()
 		{"Saves dir",       filesystem::get_saves_dir()},
 		{"Add-ons dir",     filesystem::get_addons_dir()},
 		{"Cache dir",       filesystem::get_cache_dir()},
+		{"Logs dir",        filesystem::get_logs_dir()},
 	};
 
 	// Obfuscate usernames in paths

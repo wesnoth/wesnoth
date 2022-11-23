@@ -1,4 +1,4 @@
-## Version 1.17.9+dev
+## Version 1.17.10+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -7,13 +7,24 @@
  ### Lua API
  ### Packaging
  ### Terrain
-   * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
  ### Translations
-   * Updated translations: British English
+   * Updated translations: Arabic, British English
  ### Units
  ### User interface
  ### WML Engine
+
+## Version 1.17.10
+ ### Terrain
+   * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
+ ### Translations
+   * Updated translations: British English, Czech, French, Polish, Portuguese (Brazil)
+ ### Units
+   * Merkfolk units movement cost on forest and hills reduced from 5 to 4.
+   * Orcish Slayer can advance to the Orcish Nightblade by default.
+   * Orcish Slayer's xp required to level up reduced from 100 to 64.
+   * Dunefolk Falconer portrait added.
  ### Miscellaneous and Bug Fixes
+   * Fixed not being able to undo moves (bug #6898)
 
 ## Version 1.17.9
  ### Terrain

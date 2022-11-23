@@ -135,8 +135,9 @@ namespace
 {
 /**
  * Attempts to convert @a source to the template type.
- * This is to avoid "overzealous reinterpretations of certain WML strings as
- * numeric types" (c.f. bug #19201).
+ * This is to avoid "overzealous reinterpretations of certain WML strings as numeric types".
+ * For example: the version "2.1" and "2.10" are not the same.
+ * Another example: the string "0001" given to [message] should not be displayed to the player as just "1".
  * @returns true if the conversion was successful and the source string
  *          can be reobtained by streaming the result.
  */

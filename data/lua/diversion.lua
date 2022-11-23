@@ -1,6 +1,7 @@
 
 local _ = wesnoth.textdomain 'wesnoth-help'
 local T = wml.tag
+local on_event = wesnoth.require("on_event")
 
 local u_pos_filter = function(u_id)
 
@@ -58,7 +59,7 @@ local status_anim_update = function(is_undo)
 		    changed_something = true
                     ec_unit.status.diversion = true
                     ec_unit:extract()
-                    ec_unit:to_map()
+                    ec_unit:to_map(false)
                     wesnoth.wml_actions.animate_unit {
                             flag = "launching",
                             with_bars = true,
@@ -79,7 +80,7 @@ local status_anim_update = function(is_undo)
 		    changed_something = true
                     ec_unit.status.diversion = false
                     ec_unit:extract()
-                    ec_unit:to_map()
+                    ec_unit:to_map(false)
                     wesnoth.wml_actions.animate_unit {
                             flag = "landing",
                             with_bars = true,
@@ -99,7 +100,7 @@ function wesnoth.wml_actions.on_undo_diversion(cfg)
 	status_anim_update(true)
 end
 
-wesnoth.game_events.add_repeating("moveto, die, recruit, recall", function()
+on_event("moveto, die, recruit, recall", function()
         status_anim_update()
 
 end)
