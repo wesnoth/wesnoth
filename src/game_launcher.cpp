@@ -601,7 +601,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 game_launcher::unit_test_result game_launcher::replay_test()
 {
-	auto game_res = unit_test_result::TEST_FAIL;
+	level_result::type game_res = level_result::type::fail;
 
 	if(!load_game()) {
 		PLAIN_LOG << "Failed to load the replay!";
