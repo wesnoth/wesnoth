@@ -876,6 +876,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 			return static_cast<int>(game->unit_test());
 		}
 
+		if(cmdline_opts.replay_test) {
+			return static_cast<int>(game->replay_test());
+		}
+
 		if(game->play_test() == false) {
 			return 0;
 		}

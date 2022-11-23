@@ -224,7 +224,7 @@ void playsingle_controller::play_scenario_main_loop()
 			play_scenario_init();
 
 			if(replay_controller_ == nullptr) {
-				replay_controller_ = std::make_unique<replay_controller>(*this, false, ex.level, [this]() { on_replay_end(false); });
+				replay_controller_ = std::make_unique<replay_controller>(*this, false, ex.level, [this]() { on_replay_end(/*is_unit_test=*/ false); });
 			}
 
 			if(ex.start_replay) {
@@ -725,7 +725,8 @@ void playsingle_controller::enable_replay(bool is_unit_test)
 		*this,
  		gamestate().has_human_sides(),
 		std::make_shared<config>(saved_game_.get_replay_starting_point()),
-		std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)
+		std::bind(&playsingle_controller::on_replay_end, this, is_unit_test),
+		/*no_linger=*/ is_unit_test
 	);
 
 	if(is_unit_test) {

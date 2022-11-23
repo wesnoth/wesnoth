@@ -90,6 +90,8 @@ public:
 	/** Runs unit tests specified on the command line */
 	unit_test_result unit_test();
 
+	unit_test_result replay_test();
+
 	bool has_load_data() const;
 	bool load_game();
 	void set_test(const std::string& id);
