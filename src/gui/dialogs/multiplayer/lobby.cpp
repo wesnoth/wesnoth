@@ -95,6 +95,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  preferences::fi_invert,
 		  preferences::set_fi_invert,
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
+	, filter_auto_hosted_(false)
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
