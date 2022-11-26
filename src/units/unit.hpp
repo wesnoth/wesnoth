@@ -1783,8 +1783,9 @@ public:
 	 * @param cfg the config of ability to check.
 	 * @param tag_name the tag name of ability to check.
 	 * @param filter the filter used for checking.
+	 * @param ignore_tag_name determine if tag name can be filtered or not.
 	 */
-	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter, bool ignore_tag_name = false) const;
 
 
 private:

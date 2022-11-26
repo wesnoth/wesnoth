@@ -1309,7 +1309,12 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, filter_self);
 				}
 			}
-			return (is_overwritable && one_side_overwritable);
+			auto overwrite_filter = (*i.ability_cfg).optional_child("overwrite_filter");
+			bool special_matches = true;
+			if(overwrite_filter && is_overwritable && one_side_overwritable){
+				special_matches = self_ ? (*self_).ability_matches_filter((*j.ability_cfg), ability, *overwrite_filter, true) : false;
+			}
+			return (is_overwritable && one_side_overwritable && special_matches);
 		});
 	}
 	return input;
