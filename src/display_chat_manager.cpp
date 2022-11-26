@@ -114,8 +114,8 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 
 	int ypos = chat_message_x;
 	for(std::vector<chat_message>::const_iterator m = chat_messages_.begin(); m != chat_messages_.end(); ++m) {
-		ypos += std::max(font::get_floating_label_rect(m->handle).h,
-			font::get_floating_label_rect(m->speaker_handle).h);
+		ypos += std::max(font::get_floating_label_rect(m->handle).h, font::get_floating_label_rect(m->speaker_handle).h)
+			+ (chat_message_border * 2);
 	}
 	color_t speaker_color {255,255,255,SDL_ALPHA_OPAQUE};
 	if(side >= 1) {
@@ -169,8 +169,8 @@ void display_chat_manager::add_chat_message(const std::time_t& time, const std::
 	font::floating_label msg_flabel(message_str.str());
 	msg_flabel.set_font_size(font::SIZE_15);
 	msg_flabel.set_color(message_color);
-	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
-	rect.y + ypos);
+	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w
+		+ (chat_message_border * 2), rect.y + ypos);
 	msg_flabel.set_clip_rect(rect);
 	msg_flabel.set_alignment(font::LEFT_ALIGN);
 	msg_flabel.set_bg_color(chat_message_bg);
@@ -207,7 +207,7 @@ void display_chat_manager::prune_chat_messages(bool remove_all)
 		        chat_messages_.size() > max_chat_messages))
 		{
 			const chat_message &old = chat_messages_.front();
-			movement += font::get_floating_label_rect(old.handle).h;
+			movement += font::get_floating_label_rect(old.handle).h + (chat_message_border * 2);
 			font::remove_floating_label(old.speaker_handle);
 			font::remove_floating_label(old.handle);
 			chat_messages_.erase(chat_messages_.begin());
