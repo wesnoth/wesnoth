@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
 "POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2022-11-12 08:48+0800\n"
+"PO-Revision-Date: 2022-11-24 10:27+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -571,8 +571,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
 msgstr "B<--log-to-file>"
 
@@ -2469,10 +2468,6 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2555,11 +2550,6 @@ msgstr "B<db_user_group_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2572,8 +2562,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
 msgstr "B<db_connection_history_table>"
 
@@ -2587,18 +2576,13 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
 msgstr "B<db_topics_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
@@ -2611,18 +2595,13 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
 msgstr "B<db_banlist_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
