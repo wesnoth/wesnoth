@@ -34,6 +34,13 @@ function wesnoth.map.read_location(...)
 	return nil, 0
 end
 
+function wesnoth.map.nearest_loc(to, candidates)
+    local F = wesnoth.require "functional"
+    return F.choose(candidates, function(loc)
+        return -wesnoth.map.distance_between(to, loc)
+    end)
+end
+
 if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	-- possible terrain string inputs:
 	-- A        A^       A^B      ^        ^B
