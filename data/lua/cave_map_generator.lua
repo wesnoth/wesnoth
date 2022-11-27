@@ -26,11 +26,12 @@ function callbacks.generate_map(params)
 		if map[{x,y}] == params.terrain_castle or map[{x,y}] == params.terrain_keep then
 			return
 		end
+		local tile = mathx.random_choice(terrain_clear or params.terrain_clear)
+		map[{x, y}] = wesnoth.map.replace.both(tile)
 		local r = random(1000)
 		if r <= params.village_density then
-			map[{x, y}] = mathx.random_choice(params.terrain_village)
-		else
-			map[{x, y}] = mathx.random_choice(terrain_clear or params.terrain_clear)
+			local village = mathx.random_choice(params.terrain_village)
+			map[{x, y}] = wesnoth.map.replace.if_failed(village, 'overlay')
 		end
 	end
 
@@ -50,19 +51,19 @@ function callbacks.generate_map(params)
 				end
 				local dir = wesnoth.map.get_relative_dir(from_x, from_y, to_x, to_y)
 				if dir == 'n' or dir == 's' then
-					map[{to_x, to_y}] = bridges[1]
+					map[{to_x, to_y}] = wesnoth.map.replace.if_failed(bridges[1], 'overlay')
 				elseif dir == 'sw' or dir == 'ne' then
-					map[{to_x, to_y}] = bridges[2]
+					map[{to_x, to_y}] = wesnoth.map.replace.if_failed(bridges[2], 'overlay')
 				elseif dir == 'se' or dir == 'nw' then
-					map[{to_x, to_y}] = bridges[3]
+					map[{to_x, to_y}] = wesnoth.map.replace.if_failed(bridges[3], 'overlay')
 				end
 			elseif tile_op.convert_to then
 				local tile = mathx.random_choice(tile_op.convert_to)
-				map[{to_x, to_y}] = tile
+				map[{to_x, to_y}] = wesnoth.map.replace.both(tile)
 			end
 		else
 			local tile = mathx.random_choice(terrain_clear or params.terrain_clear)
-			map[{to_x, to_y}] = tile
+			map[{to_x, to_y}] = wesnoth.map.replace.both(tile)
 		end
 	end
 
@@ -167,9 +168,9 @@ function callbacks.generate_map(params)
 			end
 
 			if item.place_castle then
-				map[{x, y}] = params.terrain_keep
+				map[{x, y}] = wesnoth.map.replace.both(params.terrain_keep)
 				for x2, y2 in map:iter_adjacent(x, y) do
-					map[{x2, y2}] = params.terrain_castle
+					map[{x2, y2}] = wesnoth.map.replace.both(params.terrain_castle)
 				end
 			end
 		end
