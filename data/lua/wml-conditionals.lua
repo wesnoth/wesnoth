@@ -10,7 +10,7 @@ end
 
 function wesnoth.wml_conditionals.lua(cfg)
 	cfg = wml.shallow_literal(cfg)
-	local bytecode, message = load(cfg.code or "")
+	local bytecode, message = load(cfg.code or "", cfg.name or nil)
 
 	if not bytecode then
 		error("~lua:" .. message, 0)
