@@ -25,6 +25,10 @@ local old_variable = wesnoth.wml_conditionals.variable
 function wesnoth.wml_conditionals.variable(cfg)
 	if cfg.formula then
 		local value = wml.variables[cfg.name]
+		if cfg.as_type == 'unit' then
+			value = wesnoth.units.create(value)
+			-- TODO: Consider supporting other types.
+		end
 		local result = wesnoth.eval_formula(cfg.formula, {value = value})
 		-- WFL considers 0 as false; Lua doesn't
 		if result == 0 then return false end
