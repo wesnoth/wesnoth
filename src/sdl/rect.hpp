@@ -47,35 +47,58 @@ struct rect : SDL_Rect
 {
 public:
 	/** Explicitly initialize rects to 0. */
-	rect() : SDL_Rect{0, 0, 0, 0} {}
+	constexpr rect() : SDL_Rect{0, 0, 0, 0} {}
 
 	/** There's nothing extra when converting an SDL_Rect. */
-	rect(const SDL_Rect& r) : SDL_Rect{r} {}
+	constexpr rect(const SDL_Rect& r) : SDL_Rect{r} {}
 
 	/** Specify via (x, y, w, h). */
-	rect(int x, int y, int w, int h) : SDL_Rect{x, y, w, h} {}
+	constexpr rect(int x, int y, int w, int h) : SDL_Rect{x, y, w, h} {}
 
 	/** Specify via top-left corner position and size. */
-	rect(const point& pos, const point& size)
+	constexpr rect(const point& pos, const point& size)
 		: SDL_Rect{pos.x, pos.y, size.x, size.y}
 	{}
 
 	// subcomponent access
-	point pos() const { return {x, y}; }
-	point size() const { return {w, h}; }
+	constexpr point pos() const { return {x, y}; }
+	constexpr point size() const { return {w, h}; }
 
 	// Comparisons
 	bool operator==(const rect& r) const;
 	bool operator==(const SDL_Rect& r) const;
 
 	// Scalar multiplication and division
-	rect operator*(int s) const { return {x*s, y*s, w*s, h*s}; }
-	rect& operator*=(int s) { x*=s; y*=s; w*=s; h*=s; return *this; }
-	rect operator/(int s) const { return {x/s, y/s, w/s, h/s}; }
-	rect& operator/=(int s) { x/=s; y/=s; w/=s; h/=s; return *this; }
+	constexpr rect operator*(int s) const
+	{
+		return {x * s, y * s, w * s, h * s};
+	}
+
+	constexpr rect& operator*=(int s)
+	{
+		x *= s;
+		y *= s;
+		w *= s;
+		h *= s;
+		return *this;
+	}
+
+	constexpr rect operator/(int s) const
+	{
+		return {x / s, y / s, w / s, h / s};
+	}
+
+	constexpr rect& operator/=(int s)
+	{
+		x /= s;
+		y /= s;
+		w /= s;
+		h /= s;
+		return *this;
+	}
 
 	/** The area of this rectangle, in square pixels. */
-	int area() const { return w * h; }
+	constexpr int area() const { return w * h; }
 
 	/** False if both w and h are > 0, true otherwise. */
 	bool empty() const;
