@@ -22,8 +22,8 @@ Discord:
 IRC:
   <https://wiki.wesnoth.org/Support#IRC>
 
-Twitter:
-  <https://twitter.com/Wesnoth>
+Mastodon:
+  <https://fosstodon.org/@wesnoth>
 
 Steam forums:
   <https://steamcommunity.com/app/599390/discussions/>
