@@ -53,11 +53,14 @@ private:
 	template<class SocketPtr> bool authenticate(SocketPtr socket, const std::string& username, const std::string& password, bool name_taken, bool& registered);
 	template<class SocketPtr> void send_password_request(SocketPtr socket, const std::string& msg, const char* error_code = "", bool force_confirmation = false);
 	bool accepting_connections() const { return !graceful_restart; }
+	std::vector<std::pair<std::string, std::string>> pin_queue;
 
 	template<class SocketPtr> void handle_player(boost::asio::yield_context yield, SocketPtr socket, const player& player);
 	void handle_player_in_lobby(player_iterator player, simple_wml::document& doc);
 	void handle_player_in_game(player_iterator player, simple_wml::document& doc);
 	void handle_whisper(player_iterator player, simple_wml::node& whisper);
+	void handle_pin(player_iterator player, simple_wml::node& pin);
+	void handle_unpin(player_iterator player);
 	void handle_query(player_iterator player, simple_wml::node& query);
 	void handle_nickserv(player_iterator player, simple_wml::node& nickserv);
 	void handle_message(player_iterator player, simple_wml::node& message);

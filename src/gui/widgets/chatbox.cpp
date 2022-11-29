@@ -39,8 +39,6 @@
 #include "preferences/lobby.hpp"
 #include "scripting/plugins/manager.hpp"
 
-#include <iostream>
-
 static lg::log_domain log_lobby("lobby");
 #define DBG_LB LOG_STREAM(debug, log_lobby)
 #define LOG_LB LOG_STREAM(info, log_lobby)
@@ -94,24 +92,20 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
-	std::cout << "Loading the LOG!!" << std::endl;
 	for(const auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
 			continue;
 		}
-		std::cout << "Lobby name: " << l.first << std::endl;
 		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
 	}
 
 	log_ = &log;
-	if (log_->find("this game") == log_->end()) {
-		log_->emplace("this game", chatroom_log{"", false});
+	// Always create log for "this game" to be able to recreate the label, when a message is pinned
+	if (log_->find(N_("this game")) == log_->end()) {
+		log_->emplace(N_("this game"), chatroom_log{"", false});
 	}
-//	for (const auto& i: *log_) {
-//		std::cout << "Log name: " << i.first << std::endl;
-//	}
 }
 
 void chatbox::active_window_changed()
@@ -404,7 +398,6 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	const bool allow_close,
 	const std::string& initial_text)
 {
-	std::cout << "Opening new chatbox with name: " << name << ", whisper: " << whisper << ", open_new: " << open_new << std::endl;
 	for(auto& t : open_windows_) {
 		if(t.name == name && t.whisper == whisper) {
 			return &t;
@@ -426,11 +419,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	widget_data data{{"log_text", item}};
 
 	if(log_ != nullptr) {
-		std::cout << "And adding logging!" << std::endl;
 		log_->emplace(name, chatroom_log{item["label"], whisper});
-	}
-	else {
-		//log_->insert(name, chatroom_log{item["label"], whisper});
 	}
 
 	chat_log_container_->add_page(data);
@@ -460,11 +449,6 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	} else {
 		connect_signal_mouse_left_click(close_button,
 			std::bind(&chatbox::close_window_button_callback, this, open_windows_.back().name, std::placeholders::_3, std::placeholders::_4));
-	}
-	if (log_ != nullptr) {
-		for (const auto& i: *log_) {
-			std::cout << "Log name: " << i.first << std::endl;
-		}
 	}
 	return &open_windows_.back();
 }
@@ -592,7 +576,7 @@ void chatbox::add_active_window_message(const std::string& sender,
 	append_to_chatbox(text, force_scroll);
 }
 
-void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
+void chatbox::process_message(const ::config& data, bool whisper /*= false*/, bool pin)
 {
 	std::string sender = data["sender"];
 	DBG_LB << "process message from " << sender << " " << (whisper ? "(w)" : "")
@@ -603,7 +587,11 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	}
 	const std::string& message = data["message"];
 	//preferences::parse_admin_authentication(sender, message); TODO: replace
-	
+	if (pin) {
+		pin_message_in_box(message, sender);
+		return;
+	}
+
 	if(whisper) {
 		add_whisper_received(sender, message);
 	} else {
@@ -641,35 +629,70 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/)
 	plugins_manager::get()->notify_event("chat", plugin_data);
 }
 
-void chatbox::pin_message(const std::string& message, const std::string& speaker, bool allies_only) {
+void chatbox::pin_message(const std::string& message, const std::string& speaker) {
 	std::string speaker_temp;
-	if(speaker == "")
+	// speaker will be empty, if sender == speaker
+	if(speaker.empty()) {
 		speaker_temp = preferences::login();
-	
+		pin_message_in_box(message, speaker_temp);
+	}
+
+	config cpin, data;
+	cpin["message"] = message;
+	if(speaker.empty())
+		cpin["sender"] = speaker_temp;
+	else
+		cpin["sender"] = speaker;
+
+	data.add_child("pin", std::move(cpin));
+	send_to_server(data);
+	return;
+}
+
+void chatbox::pin_message_in_box(const std::string& message, const std::string& speaker) {
+	std::string speaker_temp = "";
+	if(speaker.empty())
+		speaker_temp = preferences::login();
+
+	// Switch to active window, only "this game" chat, since "whisper-pins" are not allowed
+	const std::string& room_name = N_("this game");
+	lobby_chat_window* t = find_or_create_window(N_("this game"), false, false, false, "");
+
+	if(!room_window_active(room_name)) {
+		switch_to_window(t);
+	}
+	pinned_messages += 1;
 	grid& grid = chat_log_container_->page_grid(active_window_);
-	allies_only = true;
 	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
-	
+
 	clear_messages();
-	
+
 	const std::string before_message = log.get_label().empty() ? "" : "\n";
-	const std::string new_text = formatter() << "<b>" << speaker_temp << ":</b> " << font::escape_text(message) << log.get_label() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << speaker_temp << message << "</span>" << before_message;
+	const std::string new_text = formatter() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << "<b>" << speaker << speaker_temp << ":</b> " << message << "</span>" << "\n";
 
 	log.set_use_markup(true);
 	log.set_label(new_text);
+	//log_->at(room_name).log = new_text;
 
-	const std::string& room_name = open_windows_[active_window_].name;
 	for (auto it = log_->begin(); it != log_->end(); ++it) {
 		if (it->first == room_name) {
 			const std::string new_text2 = formatter() << before_message << log.get_label() << it->second.log;
 			log.set_label(new_text2);
+			log_->at(room_name).log = new_text2;
 		}
 	}
-	
-	log_->at(room_name).log = new_text;
-	
+}
+
+void chatbox::unpin_messages() {
+	// Send to server, that own pins should be unpinned
+	const std::string speaker = preferences::login();
+	config cunpin, data;
+	cunpin["sender"] = speaker;
+	data.add_child("unpin", std::move(cunpin));
+	send_to_server(data);
 	return;
 }
+
 
 void chatbox::process_network_data(const ::config& data)
 {
@@ -677,6 +700,8 @@ void chatbox::process_network_data(const ::config& data)
 		process_message(*message);
 	} else if(const auto whisper = data.optional_child("whisper")) {
 		process_message(*whisper, true);
+	} else if(const auto pin = data.optional_child("pin")) {
+		process_message(*pin, false, true);
 	}
 }
 

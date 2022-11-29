@@ -45,7 +45,7 @@ protected:
 	void do_mp_report();
 	void do_pin_message();
 	void do_unpin_messages();
-	
+
 	/** Request information about a user from the server. */
 	void do_info();
 

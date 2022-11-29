@@ -136,7 +136,7 @@ private:
 	std::function<void(void)> active_window_changed_callback_;
 
 	std::map<std::string, chatroom_log>* log_;
-	
+
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
@@ -190,13 +190,16 @@ private:
 		const std::string& message,
 		const bool force_scroll = false);
 
+	void pin_message_in_box(const std::string& message, const std::string& speaker);
+	unsigned short pinned_messages = 0;
 	void close_window(std::size_t idx);
 
 public:
 	/** Inherited form @ref chat_handler */
 	virtual void send_chat_message(const std::string& message, bool allies_only) override;
-	
-	void pin_message(const std::string& message, const std::string& speaker, bool allies_only) override;
+
+	void pin_message(const std::string& message, const std::string& speaker) override;
+	void unpin_messages();
 
 	virtual void clear_messages() override;
 
@@ -233,7 +236,7 @@ public:
 
 	void close_window_button_callback(std::string room_name, bool& handled, bool& halt);
 
-	void process_message(const ::config& data, bool whisper = false);
+	void process_message(const ::config& data, bool whisper = false, bool pin = false);
 
 	void process_network_data(const ::config& data);
 

@@ -98,7 +98,8 @@ public:
 	void ai_formula();
 	virtual void clear_messages() override;
 	std::vector<std::string> get_commands_list();
-	virtual void pin_message(const std::string& message, const std::string& speaker, bool allies_only) override {if (message == "") return; if (allies_only == true) return; if (speaker == "") return;};
+	virtual void pin_message(const std::string& message, const std::string& speaker) override {if (message == "") return; if (speaker == "") return;};
+	virtual void unpin_messages() override {return;};
 
 	unit_map::iterator current_unit();
 	unit_map::const_iterator current_unit() const

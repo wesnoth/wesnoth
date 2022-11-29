@@ -1105,6 +1105,16 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 			continue;
 		}
 
+		if(simple_wml::node* pin = doc->child("pin")) {
+			handle_pin(player, *pin);
+			continue;
+		}
+
+		if(simple_wml::node* unpin = doc->child("unpin")) {
+			handle_unpin(player);
+			continue;
+		}
+
 		if(simple_wml::node* query = doc->child("query")) {
 			handle_query(player, *query);
 			continue;
@@ -1180,6 +1190,54 @@ void server::handle_whisper(player_iterator player, simple_wml::node& whisper)
 
 	send_to_player(player_connections_.project<0>(receiver_iter), cwhisper);
 }
+
+void server::handle_pin(player_iterator player, simple_wml::node& pin)
+{
+	if(pin["message"].empty()) {
+		static simple_wml::document data(
+			"[message]\n"
+			"message=\"Invalid number of arguments\"\n"
+			"sender=\"server\"\n"
+			"[/message]\n",
+			simple_wml::INIT_COMPRESSED
+		);
+		send_to_player(player, data);
+		return;
+	}
+
+	pin.set_attr_dup("sender", player->name().c_str());
+
+	auto g = player->get_game();
+	if(g && g->started()) {
+		send_server_message(player, "You cannot pin messages in a running game you observe.", "error");
+		return;
+	}
+
+	simple_wml::document cpin;
+	simple_wml::node& trunc_pin = cpin.root().add_child("pin");
+	pin.copy_into(trunc_pin);
+	const simple_wml::string_span& msg = trunc_pin["message"];
+	chat_message::truncate_message(msg, trunc_pin);
+	for(auto players = player_connections_.begin(); players != player_connections_.end(); ++players) {
+		if(players != player) {
+			send_to_player(players, cpin);
+		}
+	}
+
+	// Then: add pin to pin vector, then, if new player joins, send it to him after the fact
+	std::string sender = player->name().c_str();
+	std::string message = msg.to_string();
+	pin_queue.push_back(std::pair<std::string, std::string>(sender, message));
+	return;
+}
+
+void server::handle_unpin(player_iterator player) {
+	// Delete all pins with pin_queue<sender> == unpin[sender]
+	const std::string name = player->name();
+	pin_queue.erase(std::remove_if(pin_queue.begin(), pin_queue.end(), [name](std::pair<std::string, std::string> i) {return (i.first == name);}), pin_queue.end());
+	return;
+}
+
 
 void server::handle_query(player_iterator iter, simple_wml::node& query)
 {
@@ -1465,6 +1523,17 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	if(diff1 || diff2) {
 		send_to_lobby(diff);
 	}
+
+	// Send pinned messages to newly joined players
+	for (unsigned int i = 0; i < pin_queue.size(); i++) {
+		simple_wml::document cpin;
+		simple_wml::node& pin = cpin.root().add_child("pin");
+		const simple_wml::string_span& sender = pin_queue[i].first.c_str();
+		const simple_wml::string_span& msg = pin_queue[i].second.c_str();
+		pin.set_attr_dup("sender", sender);
+		pin.set_attr_dup("message", msg);
+		send_to_player(player, cpin);
+	}
 }
 
 void server::handle_player_in_game(player_iterator p, simple_wml::document& data)
@@ -1738,6 +1807,9 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			if(diff1 || diff2) {
 				send_to_lobby(diff, p);
 			}
+
+			// Unpin all messages from that player
+			handle_unpin(p);
 
 			// Send the player who has quit the gamelist.
 			send_to_player(p, games_and_users_list_);
