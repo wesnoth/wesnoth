@@ -709,8 +709,6 @@ private:
 			const simple_wml::string_span& sides,
 			std::optional<player_iterator> exclude = {});
 
-	std::vector<std::pair<std::string, std::string>> pin_queue;
-
 	/**
 	 * Send a document per observer in the game.
 	 * If @a player is blank, send these documents to everyone, else send them to just the observer who joined.
