@@ -887,6 +887,34 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 	send_data(data, user);
 }
 
+void game::handle_pin(player_iterator player, simple_wml::node& pin) {
+
+	pin.set_attr_dup("sender", player->name().c_str());
+	simple_wml::document cpin;
+	simple_wml::node& trunc_pin = cpin.root().add_child("pin");
+	pin.copy_into(trunc_pin);
+	const simple_wml::string_span& msg = trunc_pin["message"];
+	chat_message::truncate_message(msg, trunc_pin);
+
+	for(auto players = player_connections_.begin(); players != player_connections_.end(); ++players) {
+		if(players != player)
+			server.send_to_player(players, cpin);
+	}
+
+	// Then: add pin to pin vector, then, if new player joins, send it to him after the fact
+	std::string sender = player->name().c_str();
+	std::string message = msg.to_string();
+	pin_queue.push_back(std::pair<std::string, std::string>(sender, message));
+	return;
+}
+
+void game::handle_unpin(player_iterator player) {
+	const std::string name = player->name();
+	pin_queue.erase(std::remove_if(pin_queue.begin(), pin_queue.end(), [name](std::pair<std::string, std::string> i) {return (i.first == name);}), pin_queue.end());
+	return;
+}
+
+
 bool game::is_legal_command(const simple_wml::node& command, player_iterator user)
 {
 	const bool is_player = this->is_player(user);
@@ -1427,6 +1455,17 @@ bool game::add_player(player_iterator player, bool observer)
 	if(became_observer) {
 		// in case someone took the last slot right before this player
 		send_server_message("You are an observer.", player);
+	}
+
+	// Lastly, send the user the pinned chat messages
+	for (unsigned int i = 0; i < pin_queue.size(); i++) {
+		simple_wml::document cpin;
+		simple_wml::node& pin = cpin.root().add_child("pin");
+		const simple_wml::string_span& sender = pin_queue[i].first.c_str();
+		const simple_wml::string_span& msg = pin_queue[i].second.c_str();
+		pin.set_attr_dup("sender", sender);
+		pin.set_attr_dup("message", msg);
+		server.send_to_player(player, cpin);
 	}
 
 	return true;

@@ -1205,36 +1205,21 @@ void server::handle_pin(player_iterator player, simple_wml::node& pin)
 		return;
 	}
 
-	pin.set_attr_dup("sender", player->name().c_str());
-
+	// Let game handle pins, since they are game-specific
 	auto g = player->get_game();
 	if(g && g->started()) {
 		send_server_message(player, "You cannot pin messages in a running game you observe.", "error");
 		return;
 	}
 
-	simple_wml::document cpin;
-	simple_wml::node& trunc_pin = cpin.root().add_child("pin");
-	pin.copy_into(trunc_pin);
-	const simple_wml::string_span& msg = trunc_pin["message"];
-	chat_message::truncate_message(msg, trunc_pin);
-	for(auto players = player_connections_.begin(); players != player_connections_.end(); ++players) {
-		if(players != player) {
-			send_to_player(players, cpin);
-		}
-	}
-
-	// Then: add pin to pin vector, then, if new player joins, send it to him after the fact
-	std::string sender = player->name().c_str();
-	std::string message = msg.to_string();
-	pin_queue.push_back(std::pair<std::string, std::string>(sender, message));
+	g->handle_pin(player, pin);
 	return;
 }
 
 void server::handle_unpin(player_iterator player) {
-	// Delete all pins with pin_queue<sender> == unpin[sender]
-	const std::string name = player->name();
-	pin_queue.erase(std::remove_if(pin_queue.begin(), pin_queue.end(), [name](std::pair<std::string, std::string> i) {return (i.first == name);}), pin_queue.end());
+	// Send game to delete all pins with pin_queue<sender> == unpin[sender]
+	auto g = player->get_game();
+	g->handle_unpin(player);
 	return;
 }
 
@@ -1523,17 +1508,6 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	if(diff1 || diff2) {
 		send_to_lobby(diff);
 	}
-
-	// Send pinned messages to newly joined players
-	for (unsigned int i = 0; i < pin_queue.size(); i++) {
-		simple_wml::document cpin;
-		simple_wml::node& pin = cpin.root().add_child("pin");
-		const simple_wml::string_span& sender = pin_queue[i].first.c_str();
-		const simple_wml::string_span& msg = pin_queue[i].second.c_str();
-		pin.set_attr_dup("sender", sender);
-		pin.set_attr_dup("message", msg);
-		send_to_player(player, cpin);
-	}
 }
 
 void server::handle_player_in_game(player_iterator p, simple_wml::document& data)
@@ -1790,7 +1764,8 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			delete_game(g.id());
 		} else {
 			auto description = g.description();
-
+			// Deleting all pinned messages by user
+			handle_unpin(p);
 			// After this line, the game object may be destroyed. Don't use `g`!
 			player_connections_.modify(p, std::bind(&player_record::enter_lobby, std::placeholders::_1));
 
@@ -1807,9 +1782,6 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			if(diff1 || diff2) {
 				send_to_lobby(diff, p);
 			}
-
-			// Unpin all messages from that player
-			handle_unpin(p);
 
 			// Send the player who has quit the gamelist.
 			send_to_player(p, games_and_users_list_);

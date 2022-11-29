@@ -190,9 +190,8 @@ private:
 		const std::string& message,
 		const bool force_scroll = false);
 
-	void pin_message_in_box(const std::string& message, const std::string& speaker);
-	unsigned short pinned_messages = 0;
 	void close_window(std::size_t idx);
+	bool pin_message_in_box(const std::string& message, const std::string& speaker);
 
 public:
 	/** Inherited form @ref chat_handler */

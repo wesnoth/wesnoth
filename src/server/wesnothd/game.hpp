@@ -588,6 +588,9 @@ public:
 		observers_.clear();
 	}
 
+	void handle_pin(player_iterator player, simple_wml::node& pin);
+	void handle_unpin(player_iterator player);
+
 private:
 	// forbidden operations
 	game(const game&) = delete;
@@ -705,6 +708,8 @@ private:
 	void send_data_sides(simple_wml::document& data,
 			const simple_wml::string_span& sides,
 			std::optional<player_iterator> exclude = {});
+
+	std::vector<std::pair<std::string, std::string>> pin_queue;
 
 	/**
 	 * Send a document per observer in the game.
@@ -898,6 +903,10 @@ private:
 	 * New requests should never have a lower value than this.
 	 */
 	int last_choice_request_id_;
+	/**
+	 * The queue of pinned messages in this game's chat.
+	 * */
+	std::vector<std::pair<std::string, std::string>> pin_queue_;
 };
 
 } // namespace wesnothd

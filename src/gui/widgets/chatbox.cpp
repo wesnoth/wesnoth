@@ -102,8 +102,14 @@ void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby
 	}
 
 	log_ = &log;
+
 	// Always create log for "this game" to be able to recreate the label, when a message is pinned
-	if (log_->find(N_("this game")) == log_->end()) {
+	// If it does not exist yet, create it
+	if (log_->find(N_("this game")) == log_->end())
+		log_->emplace(N_("this game"), chatroom_log{"", false});
+	else {
+		// If log already exists, delete it, so we do not have messages from the earlier game
+		log_->erase(N_("this game"));
 		log_->emplace(N_("this game"), chatroom_log{"", false});
 	}
 }
@@ -630,57 +636,53 @@ void chatbox::process_message(const ::config& data, bool whisper /*= false*/, bo
 }
 
 void chatbox::pin_message(const std::string& message, const std::string& speaker) {
-	std::string speaker_temp;
+	bool pin_possible = false;
+	std::string speaker_temp = "";
 	// speaker will be empty, if sender == speaker
 	if(speaker.empty()) {
 		speaker_temp = preferences::login();
-		pin_message_in_box(message, speaker_temp);
+		pin_possible = pin_message_in_box(message, speaker_temp);
 	}
+	// Pin even possible? No pinning in lobby-chat or whisper-chat
+	if (pin_possible) {
+		config cpin, data;
+		cpin["message"] = message;
+		if(speaker.empty())
+			cpin["sender"] = speaker_temp;
+		else
+			cpin["sender"] = speaker;
 
-	config cpin, data;
-	cpin["message"] = message;
-	if(speaker.empty())
-		cpin["sender"] = speaker_temp;
-	else
-		cpin["sender"] = speaker;
-
-	data.add_child("pin", std::move(cpin));
-	send_to_server(data);
+		data.add_child("pin", std::move(cpin));
+		send_to_server(data);
+	}
 	return;
 }
 
-void chatbox::pin_message_in_box(const std::string& message, const std::string& speaker) {
+bool chatbox::pin_message_in_box(const std::string& message, const std::string& speaker) {
+	bool retval = false;
 	std::string speaker_temp = "";
 	if(speaker.empty())
 		speaker_temp = preferences::login();
+	else
+		speaker_temp = speaker;
 
 	// Switch to active window, only "this game" chat, since "whisper-pins" are not allowed
 	const std::string& room_name = N_("this game");
 	lobby_chat_window* t = find_or_create_window(N_("this game"), false, false, false, "");
 
-	if(!room_window_active(room_name)) {
-		switch_to_window(t);
-	}
-	pinned_messages += 1;
-	grid& grid = chat_log_container_->page_grid(active_window_);
-	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
+	if (t != nullptr) {
+		retval = true;
 
-	clear_messages();
-
-	const std::string before_message = log.get_label().empty() ? "" : "\n";
-	const std::string new_text = formatter() << before_message << "<span color='#bcb088'>" << preferences::get_chat_timestamp(std::time(0)) << "<b>" << speaker << speaker_temp << ":</b> " << message << "</span>" << "\n";
-
-	log.set_use_markup(true);
-	log.set_label(new_text);
-	//log_->at(room_name).log = new_text;
-
-	for (auto it = log_->begin(); it != log_->end(); ++it) {
-		if (it->first == room_name) {
-			const std::string new_text2 = formatter() << before_message << log.get_label() << it->second.log;
-			log.set_label(new_text2);
-			log_->at(room_name).log = new_text2;
+		if(!room_window_active(room_name)) {
+			switch_to_window(t);
 		}
+		add_active_window_message(speaker_temp, message, true);
 	}
+	else {
+		// If it is lobby, whisper channel etc.
+		append_to_chatbox("You can not pin messages here!");
+	}
+	return retval;
 }
 
 void chatbox::unpin_messages() {
