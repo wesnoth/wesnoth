@@ -904,13 +904,13 @@ void game::handle_pin(player_iterator player, simple_wml::node& pin) {
 	// Then: add pin to pin vector, then, if new player joins, send it to him after the fact
 	std::string sender = player->name().c_str();
 	std::string message = msg.to_string();
-	pin_queue.push_back(std::pair<std::string, std::string>(sender, message));
+	pin_queue_.push_back(std::pair<std::string, std::string>(sender, message));
 	return;
 }
 
 void game::handle_unpin(player_iterator player) {
 	const std::string name = player->name();
-	pin_queue.erase(std::remove_if(pin_queue.begin(), pin_queue.end(), [name](std::pair<std::string, std::string> i) {return (i.first == name);}), pin_queue.end());
+	pin_queue_.erase(std::remove_if(pin_queue_.begin(), pin_queue_.end(), [name](std::pair<std::string, std::string> i) {return (i.first == name);}), pin_queue_.end());
 	return;
 }
 
@@ -1458,11 +1458,11 @@ bool game::add_player(player_iterator player, bool observer)
 	}
 
 	// Lastly, send the user the pinned chat messages
-	for (unsigned int i = 0; i < pin_queue.size(); i++) {
+	for (unsigned int i = 0; i < pin_queue_.size(); i++) {
 		simple_wml::document cpin;
 		simple_wml::node& pin = cpin.root().add_child("pin");
-		const simple_wml::string_span& sender = pin_queue[i].first.c_str();
-		const simple_wml::string_span& msg = pin_queue[i].second.c_str();
+		const simple_wml::string_span& sender = pin_queue_[i].first.c_str();
+		const simple_wml::string_span& msg = pin_queue_[i].second.c_str();
 		pin.set_attr_dup("sender", sender);
 		pin.set_attr_dup("message", msg);
 		server.send_to_player(player, cpin);
