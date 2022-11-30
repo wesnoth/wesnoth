@@ -42,7 +42,7 @@ jobs:
         shell: bash
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
@@ -121,7 +121,7 @@ jobs:
           ./.github/workflows/ci-scripts/ubuntu.sh
 
       - name: Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Steam-Linux
           path: |
@@ -131,7 +131,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
@@ -150,14 +150,14 @@ jobs:
           ./.github/workflows/ci-scripts/ubuntu.sh
 
       - name: Upload 1
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Source
           path: |
             ~/wesnoth-*.tar.bz2
 
       - name: Upload 2
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Windows-Installer
           path: |
@@ -167,7 +167,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
@@ -189,7 +189,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
@@ -221,7 +221,7 @@ jobs:
       CFG: ${{ matrix.cfg }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
@@ -256,13 +256,13 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
       - name: Cache object files
         id: windows-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             D:/a/wesnoth/vcpkg
@@ -270,7 +270,7 @@ jobs:
           key: win-cache-0009
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v1.1.3
 
       - name: Build vcpkg
         run: |
@@ -279,7 +279,7 @@ jobs:
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.9
+        uses: jwlawson/actions-setup-cmake@v1.13
         with:
           cmake-version: '3.20.6'
 
@@ -309,7 +309,7 @@ jobs:
     if: always()
 
     steps:
-      - uses: technote-space/workflow-conclusion-action@v2
+      - uses: technote-space/workflow-conclusion-action@v3
       - uses: rjstone/discord-webhook-notify@v1
         if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
