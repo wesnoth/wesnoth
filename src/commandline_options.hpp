@@ -204,6 +204,8 @@ public:
 	std::optional<std::string> test;
 	/** Non-empty if --unit was given on the command line. Goes directly into unit test mode, into a scenario, if specified. */
 	std::vector<std::string> unit_test;
+	/** Non-empty if --replay_test was given on the command line. */
+	std::optional<std::string> replay_test;
 	/** True if --unit is used and --showgui is not present. */
 	bool headless_unit_test;
 	/** True if --noreplaycheck was given on the command line. Dependent on --unit. */

@@ -256,6 +256,11 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(!cmdline_opts_.unit_test.empty()) {
 		test_scenarios_ = cmdline_opts_.unit_test;
 	}
+	if(cmdline_opts_.replay_test) {
+		load_data_ = savegame::load_game_metadata{
+			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.replay_test};
+		load_data_->show_replay = true;
+	}
 	if(cmdline_opts_.windowed)
 		start_in_fullscreen_ = false;
 	if(cmdline_opts_.with_replay && load_data_)
@@ -591,6 +596,13 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	load_data_ = savegame::load_game_metadata{
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
 
+	return replay_test();
+}
+
+game_launcher::unit_test_result game_launcher::replay_test()
+{
+	level_result::type game_res = level_result::type::fail;
+
 	if(!load_game()) {
 		PLAIN_LOG << "Failed to load the replay!";
 		return unit_test_result::TEST_FAIL_LOADING_REPLAY; // failed to load replay
@@ -598,7 +610,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 	try {
 		const bool was_strict_broken = lg::broke_strict();
-		campaign_controller ccontroller(state_, true);
+		campaign_controller ccontroller(state_, /*is_unit_test =*/ true);
 		ccontroller.play_replay();
 		if(!was_strict_broken && lg::broke_strict()) {
 			PLAIN_LOG << "Observed failure on replay";

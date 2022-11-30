@@ -32,7 +32,7 @@ public:
 		virtual ~replay_stop_condition(){}
 	};
 	static void nop() {}
-	replay_controller(play_controller& controller, bool control_view, const std::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop);
+	replay_controller(play_controller& controller, bool control_view, const std::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay = nop, bool no_linger = false);
 	~replay_controller();
 
 	// void reset_replay();
@@ -88,5 +88,6 @@ private:
 	std::optional<REPLAY_VISION> vision_;
 	std::shared_ptr<config> reset_state_;
 	std::function<void()> on_end_replay_;
+	bool no_linger_;
 	bool return_to_play_side_;
 };

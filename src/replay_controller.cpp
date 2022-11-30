@@ -63,13 +63,14 @@ struct replay_play_side : public replay_controller::replay_stop_condition
 };
 }
 
-replay_controller::replay_controller(play_controller& controller, bool control_view, const std::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay)
+replay_controller::replay_controller(play_controller& controller, bool control_view, const std::shared_ptr<config>& reset_state, const std::function<void()>& on_end_replay, bool no_linger)
 	: controller_(controller)
 	, stop_condition_(new replay_stop_condition())
 	, disabler_()
 	, vision_()
 	, reset_state_(reset_state)
 	, on_end_replay_(on_end_replay)
+	, no_linger_(no_linger)
 	, return_to_play_side_(false)
 {
 	if(control_view) {
@@ -190,6 +191,10 @@ REPLAY_RETURN replay_controller::play_side_impl()
 		}
 		else
 		{
+			if (resources::recorder->at_end() && no_linger_) {
+				on_end_replay_();
+				return REPLAY_RETURN_AT_END;
+			}
 			// Don't move the update_enabled_buttons() call here. This play_slice() should block
 			// until the next event occurs, but on X11/Linux update_enabled_buttons() seems to put
 			// an event in the queue, turning this into a busy loop.
