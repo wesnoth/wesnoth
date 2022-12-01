@@ -810,6 +810,18 @@ void unit::generate_traits(bool must_have_only)
 
 	// Handle must-have only at the beginning
 	for(const config& t : u_type.possible_traits()) {
+		// Skip the trait if the unit already has it.
+		const std::string& tid = t["id"];
+		bool already = false;
+		for(const config& mod : current_traits) {
+			if(mod["id"] == tid) {
+				already = true;
+				break;
+			}
+		}
+		if(already) {
+			continue;
+		}
 		// Add the trait if it is mandatory.
 		const std::string& avl = t["availability"];
 		if(avl == "musthave") {
@@ -819,7 +831,9 @@ void unit::generate_traits(bool must_have_only)
 		}
 	}
 
-	if(must_have_only) return;
+	if(must_have_only) {
+		return;
+	}
 
 	std::vector<const config*> candidate_traits;
 	std::vector<std::string> temp_require_traits;
@@ -844,9 +858,9 @@ void unit::generate_traits(bool must_have_only)
 				}
 			}
 
-			if(already)
+			if(already) {
 				continue;
-
+			}
 			// Skip trait if trait requirements are not met
 			// or trait exclusions are present
 			temp_require_traits = utils::split(t["require_traits"]);
@@ -861,9 +875,6 @@ void unit::generate_traits(bool must_have_only)
 				}
 			}
 
-			std::sort(temp_require_traits.begin(), temp_require_traits.end());
-			std::sort(temp_exclude_traits.begin(), temp_exclude_traits.end());
-
 			// First check for requirements
 			bool trait_req_met = true;
 			for(const std::string& s : temp_require_traits) {
@@ -877,8 +888,9 @@ void unit::generate_traits(bool must_have_only)
 					break;
 				}
 			}
-			if(!trait_req_met)
+			if(!trait_req_met) {
 				continue;
+			}
 
 			// Now check for exclusionary traits
 			bool trait_exc_met = true;
@@ -889,15 +901,17 @@ void unit::generate_traits(bool must_have_only)
 					if (mod["id"] == s)
 						has_exclusionary_trait = true;
 				}
-				if (tid == s)
+				if (tid == s) {
 					has_exclusionary_trait = true;
+				}
 				if(has_exclusionary_trait) {
 					trait_exc_met = false;
 					break;
 				}
 			}
-			if(!trait_exc_met)
+			if(!trait_exc_met) {
 				continue;
+			}
 
 			const std::string& avl = t["availability"];
 			// The trait is still available, mark it as a candidate for randomizing.
@@ -907,8 +921,9 @@ void unit::generate_traits(bool must_have_only)
 			}
 		}
 		// No traits available anymore? Break
-		if(candidate_traits.empty())
+		if(candidate_traits.empty()) {
 			break;
+		}
 
 		int num = randomness::generator->get_random_int(0,candidate_traits.size()-1);
 		modifications_.add_child("trait", *candidate_traits[num]);
