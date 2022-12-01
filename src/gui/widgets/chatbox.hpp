@@ -198,7 +198,7 @@ public:
 	virtual void send_chat_message(const std::string& message, bool allies_only) override;
 
 	void pin_message(const std::string& message, const std::string& speaker) override;
-	void unpin_messages();
+	void unpin_messages() override;
 
 	virtual void clear_messages() override;
 

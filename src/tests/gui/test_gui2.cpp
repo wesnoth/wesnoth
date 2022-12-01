@@ -979,6 +979,8 @@ class fake_chat_handler : public events::chat_handler {
 	void send_chat_message(const std::string&, bool) {}
 	void send_to_server(const config&) {}
 	void clear_messages() {}
+	void pin_message(const std::string&, const std::string&) {}
+	void unpin_messages() {}
 };
 
 template<>
