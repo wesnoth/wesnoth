@@ -408,7 +408,7 @@ void addon_manager::pre_show(window& window)
 			language_strings_available.insert(lang_code_string);
 		}
 	}
-	for (const auto& i: language_strings_available) {
+	for (auto& i: language_strings_available) {
 		language_filter_types_.emplace_back(language_filter_types_.size(), std::move(i));
 	}
 	// The language filter
