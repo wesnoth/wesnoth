@@ -173,8 +173,11 @@ namespace preferences {
 	std::string disengaged_color();
 	void set_disengaged_color(const std::string& color_id);
 
-	bool show_allied_orb();
-	void set_show_allied_orb(bool show_orb);
+	bool show_ally_orb();
+	void set_show_ally_orb(bool show_orb);
+
+	bool show_status_on_ally_orb();
+	void set_show_status_on_ally_orb(bool show_orb);
 
 	bool show_enemy_orb();
 	void set_show_enemy_orb(bool show_orb);
