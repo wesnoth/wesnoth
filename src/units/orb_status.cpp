@@ -28,7 +28,7 @@ bool orb_status_helper::prefs_show_orb(orb_status os)
 	case orb_status::partial:
 		return preferences::show_partial_orb();
 	case orb_status::allied:
-		return preferences::show_allied_orb();
+		return preferences::show_ally_orb();
 	case orb_status::enemy:
 		return preferences::show_enemy_orb();
 	default:
