@@ -48,7 +48,8 @@ select_orb_colors::select_orb_colors()
 	, show_partial_(preferences::show_partial_orb())
 	, show_disengaged_(preferences::show_disengaged_orb())
 	, show_moved_(preferences::show_moved_orb())
-	, show_ally_(preferences::show_allied_orb())
+	, show_ally_(preferences::show_ally_orb())
+	, two_color_ally_(preferences::show_status_on_ally_orb())
 	, show_enemy_(preferences::show_enemy_orb())
 {
 }
@@ -58,7 +59,7 @@ void select_orb_colors::pre_show(window& window)
 	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color());
 	setup_orb_group_two_color("partial", show_partial_, show_disengaged_, preferences::partial_color());
 	setup_orb_group("moved", show_moved_, preferences::moved_color());
-	setup_orb_group("ally", show_ally_, preferences::allied_color());
+	setup_orb_group_two_color("ally", show_ally_, two_color_ally_, preferences::allied_color());
 	setup_orb_group("enemy", show_enemy_, preferences::enemy_color());
 
 	connect_signal_mouse_left_click(
@@ -75,7 +76,8 @@ void select_orb_colors::post_show(window&)
 	preferences::set_show_partial_orb(show_partial_);
 	preferences::set_show_disengaged_orb(show_disengaged_);
 	preferences::set_show_moved_orb(show_moved_);
-	preferences::set_show_allied_orb(show_ally_);
+	preferences::set_show_ally_orb(show_ally_);
+	preferences::set_show_status_on_ally_orb(two_color_ally_);
 	preferences::set_show_enemy_orb(show_enemy_);
 
 	preferences::set_unmoved_color(groups_["unmoved"].get_active_member_value());
@@ -168,12 +170,13 @@ void select_orb_colors::reset_orb_callback()
 	show_disengaged_ = game_config::show_disengaged_orb;
 	show_moved_ = game_config::show_moved_orb;
 	show_ally_ = game_config::show_ally_orb;
+	two_color_ally_ = game_config::show_status_on_ally_orb;
 	show_enemy_ = game_config::show_enemy_orb;
 
 	reset_orb_group("unmoved", show_unmoved_, game_config::colors::unmoved_orb_color);
 	reset_orb_group_two_color("partial", show_partial_, show_disengaged_, game_config::colors::partial_orb_color);
 	reset_orb_group("moved", show_moved_, game_config::colors::moved_orb_color);
-	reset_orb_group("ally", show_ally_, game_config::colors::ally_orb_color);
+	reset_orb_group_two_color("ally", show_ally_, two_color_ally_, game_config::colors::ally_orb_color);
 	reset_orb_group("enemy", show_enemy_, game_config::colors::enemy_orb_color);
 }
 
