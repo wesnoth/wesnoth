@@ -259,11 +259,18 @@ void load_base_prefs() {
 }
 
 
-bool show_allied_orb() {
+bool show_ally_orb() {
 	return get("show_ally_orb", game_config::show_ally_orb);
 }
-void set_show_allied_orb(bool show_orb) {
+void set_show_ally_orb(bool show_orb) {
 	prefs["show_ally_orb"] = show_orb;
+}
+
+bool show_status_on_ally_orb() {
+	return get("show_status_on_ally_orb", game_config::show_status_on_ally_orb);
+}
+void set_show_status_on_ally_orb(bool show_orb) {
+	prefs["show_status_on_ally_orb"] = show_orb;
 }
 
 bool show_enemy_orb() {

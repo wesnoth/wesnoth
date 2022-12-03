@@ -62,6 +62,31 @@ std::unique_ptr<image::locator> get_orb_image(orb_status os)
 	return std::make_unique<image::locator>(game_config::images::orb + "~RC(magenta>" + color + ")");
 }
 
+/**
+ * Assemble a two-color orb for an ally's unit, during that ally's turn.
+ * Returns nullptr if the preferences both of these orbs and ally orbs in general are off.
+ * Returns a one-color orb (using the ally color) in several circumstances.
+ */
+std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
+{
+	if(!preferences::show_status_on_ally_orb())
+		return get_orb_image(orb_status::allied);
+
+	// This is conditional on prefs_show_orb, because a user might want to disable the standard
+	// partial orb, but keep it enabled as a reminder for units in the disengaged state.
+	if(os == orb_status::disengaged && !orb_status_helper::prefs_show_orb(orb_status::disengaged)) {
+		os = orb_status::partial;
+	}
+
+	if(!orb_status_helper::prefs_show_orb(os))
+		return get_orb_image(orb_status::allied);
+
+	auto allied_color = orb_status_helper::get_orb_color(orb_status::allied);
+	auto status_color = orb_status_helper::get_orb_color(os);
+	return std::make_unique<image::locator>(game_config::images::orb_two_color + "~RC(ellipse_red>"
+			+ allied_color + ")~RC(magenta>" + status_color + ")");
+}
+
 void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& col)
 {
 	// Magic width number
@@ -329,9 +354,12 @@ void unit_drawer::redraw_unit(const unit& u) const
 			if(static_cast<std::size_t>(side) != viewing_team + 1)
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
+		} else if(static_cast<std::size_t>(side) != viewing_team + 1) {
+			// We're looking at an ally's unit, during that ally's turn.
+			auto os = dc.unit_orb_status(u);
+			orb_img = get_playing_ally_orb_image(os);
 		} else {
-			// We're looking at either the player's own unit, or an ally's unit, during the unit's
-			// owner's turn.
+			// We're looking at the player's own unit, during the player's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_orb_image(os);
 		}

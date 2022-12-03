@@ -68,6 +68,7 @@ private:
 	bool show_disengaged_;
 	bool show_moved_;
 	bool show_ally_;
+	bool two_color_ally_;
 	bool show_enemy_;
 
 	std::map<std::string, group<std::string>> groups_;
