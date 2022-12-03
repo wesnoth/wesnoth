@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-11-24 10:30+0800\n"
+"PO-Revision-Date: 2022-12-03 18:43+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -222,16 +222,14 @@ msgstr ""
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
 #, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
-msgstr "Déserteur"
+msgstr "Déserteurs"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
 #, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
-msgstr "Commandant"
+msgstr "Commandants"
 
 #. [label]
 #. [lua]: gui.widget.add_invest_item
@@ -243,9 +241,8 @@ msgstr "Héros"
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
 #, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "Aléatoire"
+msgstr "Chefs aléatoires"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -257,9 +254,8 @@ msgstr "Paramètres"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
 #, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "Conquête du monde à 1 joueur"
+msgstr "Utiliser les marqueurs d'unité Conquête du monde"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
@@ -279,9 +275,8 @@ msgstr "Difficulté"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
 #, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "Conquête du Monde"
+msgstr "Version de Conquête du Monde"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -372,16 +367,14 @@ msgstr ""
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
 #, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "Factions"
+msgstr "nombre d'itérations"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
 #, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "eau"
+msgstr "facteur de topographie"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
@@ -391,9 +384,8 @@ msgstr ""
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
 #, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "Tome des secrets"
+msgstr "nombre de châteaux"
 
 # Décrit la relation entre un zombi et une liche
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
@@ -3287,14 +3279,15 @@ msgstr ""
 msgid "Melange"
 msgstr "Concoction"
 
+# Au féminin pour 'Concoction'
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
 #, fuzzy
-#| msgid "no undead^consumed by a living being:"
 msgid ""
 "no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
 "advance"
-msgstr "consommée par les vivants :"
+msgstr ""
+"consommée par les vivants : +1 de dégâts, +1 PM et -20 % de XP pour évoluer"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
