@@ -10,6 +10,8 @@
  ### Translations
    * Updated translations: Arabic, British English, Finnish, French
  ### Units
+   * Moved Kraken from campaigns to core, updated sprite
+   * Added some dragonfly units to "monsters"
  ### User interface
  ### WML Engine
 
