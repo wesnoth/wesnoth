@@ -220,17 +220,10 @@ struct lexical_caster<
 	{
 		DEBUG_THROW("specialized - To long long - From std::string");
 
-		// Using the C API instead of the C++ API to avoid exceptions,
-		// as this function is called frequently.
-		errno = 0;
-		char* end;
-		long long result = std::strtoll(value.c_str(), &end, 10);
-		const bool out_of_range = errno == ERANGE;
-		const bool invalid_argument = *end > 0 || end == value.c_str();
-		const bool failure = out_of_range || invalid_argument;
-
-		if(!failure) {
-			return result;
+		try {
+			return std::stoll(value);
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -282,17 +275,13 @@ struct lexical_caster<
 	{
 		DEBUG_THROW("specialized - To signed - From std::string");
 
-		// Using the C API instead of the C++ API to avoid exceptions,
-		// as this function is called frequently.
-		errno = 0;
-		char* end;
-		long result = std::strtol(value.c_str(), &end, 10);
-		const bool out_of_range = errno == ERANGE || result < static_cast<long>(std::numeric_limits<To>::min()) || result > static_cast<long>(std::numeric_limits<To>::max());
-		const bool invalid_argument = *end > 0 || end == value.c_str();
-		const bool failure = out_of_range || invalid_argument;
-
-		if(!failure) {
-			return result;
+		try {
+			long res = std::stol(value);
+			if(std::numeric_limits<To>::lowest() <= res && std::numeric_limits<To>::max() >= res) {
+				return static_cast<To>(res);
+			}
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -353,17 +342,13 @@ struct lexical_caster<
 			}
 		}
 
-		// Using the C API instead of the C++ API to avoid exceptions,
-		// as this function is called frequently.
-		errno = 0;
-		char* end;
-		long double result = std::strtold(value.c_str(), &end);
-		const bool out_of_range = errno == ERANGE || result < static_cast<long double>(std::numeric_limits<To>::lowest()) || result > static_cast<long double>(std::numeric_limits<To>::max());
-		const bool invalid_argument = *end > 0 || end == value.c_str();
-		const bool failure = out_of_range || invalid_argument;
-
-		if(!failure) {
-			return result;
+		try {
+			long double res = std::stold(value);
+			if((static_cast<long double>(std::numeric_limits<To>::lowest()) <= res) && (static_cast<long double>(std::numeric_limits<To>::max()) >= res)) {
+				return static_cast<To>(res);
+			}
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -419,17 +404,10 @@ struct lexical_caster<
 	{
 		DEBUG_THROW("specialized - To unsigned long long - From std::string");
 
-		// Using the C API instead of the C++ API to avoid exceptions,
-		// as this function is called frequently.
-		errno = 0;
-		char* end;
-		unsigned long long result = std::strtoull(value.c_str(), &end, 10);
-		const bool out_of_range = errno == ERANGE;
-		const bool invalid_argument = *end > 0 || end == value.c_str();
-		const bool failure = out_of_range || invalid_argument;
-
-		if(!failure) {
-			return result;
+		try {
+			return std::stoull(value);
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
@@ -481,17 +459,14 @@ struct lexical_caster<
 	{
 		DEBUG_THROW("specialized - To unsigned - From std::string");
 
-		// Using the C API instead of the C++ API to avoid exceptions,
-		// as this function is called frequently.
-		errno = 0;
-		char* end;
-		unsigned long result = std::strtoul(value.c_str(), &end, 10);
-		const bool out_of_range = errno == ERANGE || result < static_cast<unsigned long>(std::numeric_limits<To>::min()) || result > static_cast<unsigned long>(std::numeric_limits<To>::max());
-		const bool invalid_argument = *end > 0 || end == value.c_str();
-		const bool failure = out_of_range || invalid_argument;
-
-		if(!failure) {
-			return result;
+		try {
+			unsigned long res = std::stoul(value);
+			// No need to check the lower bound, it's zero for all unsigned types.
+			if(std::numeric_limits<To>::max() >= res) {
+				return static_cast<To>(res);
+			}
+		} catch(const std::invalid_argument&) {
+		} catch(const std::out_of_range&) {
 		}
 
 		if(fallback) {
