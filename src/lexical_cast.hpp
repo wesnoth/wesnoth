@@ -220,6 +220,14 @@ struct lexical_caster<
 	{
 		DEBUG_THROW("specialized - To long long - From std::string");
 
+		if(value.empty()) {
+			if(fallback) {
+				return *fallback;
+			} else {
+				throw bad_lexical_cast();
+			}
+		}
+
 		try {
 			return std::stoll(value);
 		} catch(const std::invalid_argument&) {
@@ -274,6 +282,14 @@ struct lexical_caster<
 	To operator()(const std::string& value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To signed - From std::string");
+
+		if(value.empty()) {
+			if(fallback) {
+				return *fallback;
+			} else {
+				throw bad_lexical_cast();
+			}
+		}
 
 		try {
 			long res = std::stol(value);
@@ -332,6 +348,14 @@ struct lexical_caster<
 	To operator()(const std::string& value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To floating point - From std::string");
+
+		if(value.empty()) {
+			if(fallback) {
+				return *fallback;
+			} else {
+				throw bad_lexical_cast();
+			}
+		}
 
 		// Explicitly reject hexadecimal values. Unit tests of the config class require that.
 		if(value.find_first_of("Xx") != std::string::npos) {
@@ -404,6 +428,14 @@ struct lexical_caster<
 	{
 		DEBUG_THROW("specialized - To unsigned long long - From std::string");
 
+		if(value.empty()) {
+			if(fallback) {
+				return *fallback;
+			} else {
+				throw bad_lexical_cast();
+			}
+		}
+
 		try {
 			return std::stoull(value);
 		} catch(const std::invalid_argument&) {
@@ -458,6 +490,14 @@ struct lexical_caster<
 	To operator()(const std::string& value, std::optional<To> fallback) const
 	{
 		DEBUG_THROW("specialized - To unsigned - From std::string");
+
+		if(value.empty()) {
+			if(fallback) {
+				return *fallback;
+			} else {
+				throw bad_lexical_cast();
+			}
+		}
 
 		try {
 			unsigned long res = std::stoul(value);
