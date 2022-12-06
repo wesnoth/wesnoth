@@ -50,19 +50,25 @@ function wesnoth.wml_actions.kill(cfg)
 			-- In other words, the attacker's weapon. The attacker is the secondary unit.
 			-- In the victory animation, this is simply swapped.
 			if primary then
+				local found_attack = nil
 				if secondary_unit then
-					primary = secondary_unit:find_attack(primary)
-				else
+					found_attack = secondary_unit:find_attack(primary)
+				end
+				if not found_attack then
 					primary = wesnoth.units.create_weapon(primary)
 				end
+				primary = found_attack
 				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
 			end
 			if secondary then
+				local found_weapon = nil
 				if primary then
-					secondary = unit:find_attack(secondary)
-				else
-					secondary = wesnoth.units.create_weapon(secondary)
+					found_weapon = unit:find_attack(secondary)
 				end
+				if not found_weapon then
+					found_weapon = wesnoth.units.create_weapon(secondary)
+				end
+				secondary = found_weapon
 				wesnoth.log('err', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
 			end
 			anim:add(unit, "death", "kill", {primary = primary, secondary = secondary})
