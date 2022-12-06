@@ -114,13 +114,21 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 		return std::map<int,config>();
 	}
 
+	for(int side : sides)
+	{
+		if(1 > side || side > max_side)
+		{
+			replay::process_error("MP synchronization with an invalid side number.\n");
+			return std::map<int,config>();
+		}
+	}
+
 	/*
 		for empty sides we want to use random choice instead.
 	*/
 	std::set<int> empty_sides;
 	for(int side : sides)
 	{
-		assert(1 <= side && side <= max_side);
 		if( resources::gameboard->get_team(side).is_empty())
 		{
 			empty_sides.insert(side);
