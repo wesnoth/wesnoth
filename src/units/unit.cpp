@@ -2684,7 +2684,7 @@ std::vector<t_string> unit::unit_special_notes() const {
 
 // Filters unimportant stats from the unit config and returns a checksum of
 // the remaining config.
-std::string get_checksum(const unit& u)
+std::string get_checksum(const unit& u, backwards_compatibility::unit_checksum_version version)
 {
 	config unit_config;
 	config wcfg;
@@ -2738,9 +2738,11 @@ std::string get_checksum(const unit& u)
 			config& child_spec = child.add_child("specials", spec);
 
 			child_spec.recursive_clear_value("description");
-			child_spec.recursive_clear_value("description_inactive");
-			child_spec.recursive_clear_value("name");
-			child_spec.recursive_clear_value("name_inactive");
+			if(version != backwards_compatibility::unit_checksum_version::version_1_16_or_older) {
+				child_spec.recursive_clear_value("description_inactive");
+				child_spec.recursive_clear_value("name");
+				child_spec.recursive_clear_value("name_inactive");
+			}
 		}
 	}
 

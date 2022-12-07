@@ -2014,6 +2014,19 @@ private:
 	int moves_;
 };
 
+namespace backwards_compatibility
+{
+/**
+ * Optional parameter for get_checksum to use the algorithm of an older version of Wesnoth,
+ * thus preventing spurious OOS warnings while watching old replays.
+ */
+enum class unit_checksum_version {
+	current,
+	version_1_16_or_older /**< Included some of the flavortext from weapon specials. */
+};
+
+} // namespace backwards_compatibility
+
 /**
  * Gets a checksum for a unit.
  *
@@ -2022,7 +2035,9 @@ private:
  * same problem.
  *
  *  @param u                    this unit
+ *  @param version              allows the checksum expected in older replays to be used
  *
  *  @returns                    the checksum for a unit
  */
-std::string get_checksum(const unit& u);
+std::string get_checksum(const unit& u,
+	backwards_compatibility::unit_checksum_version version = backwards_compatibility::unit_checksum_version::current);
