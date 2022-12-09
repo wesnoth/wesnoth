@@ -44,6 +44,7 @@
 namespace bl = boost::locale;
 namespace
 {
+	//This mutex avoids the crash reported in bug #2013:
 	std::mutex& get_mutex() { static std::mutex* m = new std::mutex(); return *m; }
 
 	class default_utf8_locale_name
@@ -465,9 +466,12 @@ inline const char* is_unlocalized_string2(const std::string& str, const char* si
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	//TODO: only the next line needs to be in the lock.
-	std::scoped_lock lock(get_mutex());
-	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+	std::string msgval;
+	//Braces so that only the line that needs to be in the lock is in it:
+	{
+		std::scoped_lock lock(get_mutex());
+		msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+	}
 	auto original = is_unlocalized_string2(msgval, singular, plural);
 	if (original) {
 		const char* firsthat = std::strchr (original, '^');
