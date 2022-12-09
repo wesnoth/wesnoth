@@ -44,7 +44,7 @@
 namespace bl = boost::locale;
 namespace
 {
-	//This mutex avoids the crash reported in bug #2013:
+	//This mutex avoids a random crash that sevu reported in bug #2013 as occurring when starting wesnoth from the commandline with --turns -1:
 	std::mutex& get_mutex() { static std::mutex* m = new std::mutex(); return *m; }
 
 	class default_utf8_locale_name
