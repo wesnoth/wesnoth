@@ -71,10 +71,12 @@ const produceImagesGetter = async (): Promise<ImagesGetter> => {
         throw new Error(`Missing image for "${baseCode}"`)
       }
 
-      // todo: we should use the defaultBase correctly
+      // TODO: we should use the defaultBase correctly
       if (miscCode) {
         const miscImage = images[`^${miscCode}`]
         if (!miscImage) {
+          // FIXME: this is reached by certain invisible overlays,
+          // such as "^Xo":
           throw new Error(`Missing image for "^${miscCode}"`)
         }
 
