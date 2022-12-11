@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
+"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
 "PO-Revision-Date: 2020-08-25 23:55 UTC\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -200,15 +200,70 @@ msgid "WoCopedia"
 msgstr ""
 
 #. [label]: id=title
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:281
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:379
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
+msgid "Artifacts"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
+msgid "Recruits"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
+msgid "Deserters"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
+msgid "Commanders"
+msgstr ""
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:501
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
+msgid "Heroes"
+msgstr ""
+
+#. [label]: id=title_random_leaders
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
+msgid "Random Leaders"
+msgstr ""
+
+#. [label]: id=title
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:567
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:569
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr ""
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:646
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
+msgid "Use World Conquest Unitmarkers"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
+msgid "Use World Conquest experimental pickup"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
+msgid "Show pickup confirmation"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
 msgid "Difficulty"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
+msgid "World Conquest version"
 msgstr ""
 
 #. [label]: id=title
@@ -216,14 +271,35 @@ msgstr ""
 msgid "Choose a bonus for your team"
 msgstr ""
 
-#. [label]: id=title
-#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
-msgid "You got"
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:240
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "Before:"
+msgstr ""
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:259
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "After:"
 msgstr ""
 
 #. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
+msgid "Get This Item"
+msgstr ""
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
 msgid "OK"
+msgstr ""
+
+#. [label]: id=title
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
+msgid "You got"
 msgstr ""
 
 #. [label]: id=title
@@ -259,6 +335,41 @@ msgstr ""
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
+msgid "map size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
+msgid "village density"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
+msgid "keep size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
+msgid "iterations"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
+msgid "terrain factor"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
+msgid "island factor"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
+msgid "number of keeps"
 msgstr ""
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
@@ -1181,16 +1292,6 @@ msgid "WC2 Invest"
 msgstr ""
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
-msgid "Artifacts"
-msgstr ""
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
-msgid "Heroes"
-msgstr ""
-
-#. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
@@ -1227,16 +1328,6 @@ msgstr ""
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
-msgstr ""
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "After:"
-msgstr ""
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "Before:"
 msgstr ""
 
 #. [lua]: gui.widget.add_invest_item
@@ -2193,39 +2284,40 @@ msgid "Yes! We will drive them into the sea!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:52
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:53
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:55
 msgid "Never fear! Your trusted friends stand beside you!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
 msgid "Victory is ours! Let us set sail in search of new lands to conquer!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:57
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
 msgid "Ahhh. Just look at these fertile lands, ripe for conquest!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
 msgid "What’s this?! Foreign invaders have set foot upon our shores!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:59
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:63
 msgid ""
 "We’ll send them back to where they came from quick enough. All troops, to me!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
 msgid "We win! Truly ours will be a glorious empire!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
 msgid ""
 "Do not get hasty! To reach the great continents of the east we must subdue "
 "the savage coast of Moragdu, notorious for its corsairs, before we can "
@@ -2233,120 +2325,120 @@ msgid ""
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
 msgid ""
 "What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:69
 msgid ""
 "The time of prophecies is upon us! The destroyers have arrived from beyond "
 "the sea!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:70
 msgid ""
 "I don’t know what the lizard is babbling about, but we’ll sort these "
 "‘destroyers’ out quickly enough."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:71
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
 msgid "Ready yourselves, men! The conquering hordes are upon us!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
 msgid ""
 "Word has come to our island of your victories. Your army is impressive, but "
 "it will avail you not."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:73
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:77
 msgid "Indeed. You come this far, and no farther!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:74
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
 msgid ""
 "Hah! We didn’t come all this way just to give up and go home. We will "
 "destroy you as we have destroyed all that have stood before us!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
 msgid "So be it. We stand squarely behind our allies."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
 msgid "You are not the only ones with allies! We’ll push on till the end!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:82
 msgid "Onwards to the ships!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:83
 msgid ""
 "We have travelled great oceans and brought low mighty empires. Should we not "
 "wait until our forces regain their strength?"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
 msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
 "before Winter arrives."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:88
 msgid ""
 "Finally we come to the shores of the last continent. Here at the edge of the "
 "world our empire shall be made complete."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
 msgid "Never! Your mad quest ends here, tyrant."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:86
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
 msgid ""
 "All the peoples of the world stand against you. Though we would be enemies "
 "otherwise, we are united in our cause. We must stop you!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:87
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
 msgid "No, not all of them. Today our full strength stands behind our allies!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:93
 msgid "That’s it, our work is done here!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:94
 msgid "The whole world is now ours to command!"
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
 msgid "It was hard, but I almost regret the fun is over."
 msgstr ""
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:99
 msgid "The End"
 msgstr ""
 

@@ -10,7 +10,7 @@ end
 
 function wesnoth.wml_conditionals.lua(cfg)
 	cfg = wml.shallow_literal(cfg)
-	local bytecode, message = load(cfg.code or "")
+	local bytecode, message = load(cfg.code or "", cfg.name or nil)
 
 	if not bytecode then
 		error("~lua:" .. message, 0)
@@ -25,6 +25,11 @@ local old_variable = wesnoth.wml_conditionals.variable
 function wesnoth.wml_conditionals.variable(cfg)
 	if cfg.formula then
 		local value = wml.variables[cfg.name]
+		if cfg.as_type == 'unit' then
+			value = wesnoth.units.create(value)
+		elseif cfg.as_type == 'weapon' then
+			value = wesnoth.units.create_weapon(value)
+		end
 		local result = wesnoth.eval_formula(cfg.formula, {value = value})
 		-- WFL considers 0 as false; Lua doesn't
 		if result == 0 then return false end

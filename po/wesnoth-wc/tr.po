@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
+"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
 "PO-Revision-Date: 2022-01-06 04:19+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: none\n"
@@ -216,31 +216,117 @@ msgid "WoCopedia"
 msgstr "Düfepedi"
 
 #. [label]: id=title
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:281
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:379
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
+msgid "Artifacts"
+msgstr "Eserler"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
+msgid "Recruits"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
+#, fuzzy
+#| msgid "Deserter"
+msgid "Deserters"
+msgstr "Firari"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
+#, fuzzy
+#| msgid "Commander"
+msgid "Commanders"
+msgstr "Komutan"
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:501
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
+msgid "Heroes"
+msgstr "Kahramanlar"
+
+#. [label]: id=title_random_leaders
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
+#, fuzzy
+#| msgid "Random"
+msgid "Random Leaders"
+msgstr "Rastgele"
+
+#. [label]: id=title
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:567
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:569
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "Ayarlar"
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:646
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
+#, fuzzy
+#| msgid "World Conquest 1p"
+msgid "Use World Conquest Unitmarkers"
+msgstr "Dünyanın Fethi 1o"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
+msgid "Use World Conquest experimental pickup"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
+msgid "Show pickup confirmation"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
 msgid "Difficulty"
 msgstr "Zorluk"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
+#, fuzzy
+#| msgid "World Conquest"
+msgid "World Conquest version"
+msgstr "Dünyanın Fethi"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
 msgid "Choose a bonus for your team"
 msgstr "Ekibiniz için bir ödül seçin"
 
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:240
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "Before:"
+msgstr "Önce:"
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:259
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "After:"
+msgstr "Sonra:"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
+msgid "Get This Item"
+msgstr ""
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
+msgid "OK"
+msgstr "Tamam"
+
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
 msgid "You got"
 msgstr "Sende var"
-
-#. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
-msgid "OK"
-msgstr "Tamam"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:24
@@ -276,6 +362,47 @@ msgstr " senaryo: "
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
 msgstr " harita: "
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
+msgid "map size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
+msgid "village density"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
+msgid "keep size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
+#, fuzzy
+#| msgid "Factions"
+msgid "iterations"
+msgstr "Birlikler"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
+#, fuzzy
+#| msgid "terrain^water"
+msgid "terrain factor"
+msgstr "su"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
+msgid "island factor"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
+#, fuzzy
+#| msgid "Tome of secrets"
+msgid "number of keeps"
+msgstr "Sırlar kitabı"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -1199,16 +1326,6 @@ msgid "WC2 Invest"
 msgstr "DF2 Kuşatması"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
-msgid "Artifacts"
-msgstr "Eserler"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
-msgid "Heroes"
-msgstr "Kahramanlar"
-
-#. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
@@ -1246,16 +1363,6 @@ msgstr "Eğitim"
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
 msgstr "$name Eğitimi"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "After:"
-msgstr "Sonra:"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "Before:"
-msgstr "Önce:"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
@@ -2609,28 +2716,29 @@ msgid "Yes! We will drive them into the sea!"
 msgstr "Evet! hepsini denize sürelim!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:52
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:53
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:55
 msgid "Never fear! Your trusted friends stand beside you!"
 msgstr "Asla korkma! Güvenilir arkadaşlarınız yanınızda!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
 msgid "Victory is ours! Let us set sail in search of new lands to conquer!"
 msgstr "Zafer bizimdir! Fethedilecek yeni topraklar aramak için yelken açalım!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:57
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
 msgid "Ahhh. Just look at these fertile lands, ripe for conquest!"
 msgstr "Ahhh. Şu fethedilesi verimli topraklara bir bakın!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
 msgid "What’s this?! Foreign invaders have set foot upon our shores!"
 msgstr "Bu da ne?! Yabancı işgalciler kıyılarımıza ayak bastı!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:59
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:63
 msgid ""
 "We’ll send them back to where they came from quick enough. All troops, to me!"
 msgstr ""
@@ -2638,12 +2746,12 @@ msgstr ""
 "gelin!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
 msgid "We win! Truly ours will be a glorious empire!"
 msgstr "Biz kazandık! Bizimki gerçekten şanlı bir imparatorluk olacak!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
 msgid ""
 "Do not get hasty! To reach the great continents of the east we must subdue "
 "the savage coast of Moragdu, notorious for its corsairs, before we can "
@@ -2653,7 +2761,7 @@ msgstr ""
 "önce, korsanlarıyla ün salmış vahşi Moragdu kıyılarına boyun eğdirmeliyiz."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
 msgid ""
 "What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
@@ -2662,14 +2770,14 @@ msgstr ""
 "sayıda!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:69
 msgid ""
 "The time of prophecies is upon us! The destroyers have arrived from beyond "
 "the sea!"
 msgstr "Kehanetlerin zamanı geldi! Denizin ötesinden muhripler geldi!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:70
 msgid ""
 "I don’t know what the lizard is babbling about, but we’ll sort these "
 "‘destroyers’ out quickly enough."
@@ -2678,12 +2786,12 @@ msgstr ""
 "edicileri\" yeterince hızlı bir şekilde halledeceğiz."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:71
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
 msgid "Ready yourselves, men! The conquering hordes are upon us!"
 msgstr "Hazır olun beyler! Fetih orduları üzerimizde!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
 msgid ""
 "Word has come to our island of your victories. Your army is impressive, but "
 "it will avail you not."
@@ -2692,12 +2800,12 @@ msgstr ""
 "olmayacak."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:73
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:77
 msgid "Indeed. You come this far, and no farther!"
 msgstr "Aslında. Buraya kadar, daha ötesi yok!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:74
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
 msgid ""
 "Hah! We didn’t come all this way just to give up and go home. We will "
 "destroy you as we have destroyed all that have stood before us!"
@@ -2706,22 +2814,22 @@ msgstr ""
 "yok ettiğimiz gibi sizi de yok edeceğiz!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
 msgid "So be it. We stand squarely behind our allies."
 msgstr "Öyle olsun. Müttefiklerimizin sonuna kadar arkasındayız."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
 msgid "You are not the only ones with allies! We’ll push on till the end!"
 msgstr "Müttefikleri olan sadece sen değilsin! Sonuna kadar zorlayacağız!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:82
 msgid "Onwards to the ships!"
 msgstr "Hedefimiz gemiler, ileri!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:83
 msgid ""
 "We have travelled great oceans and brought low mighty empires. Should we not "
 "wait until our forces regain their strength?"
@@ -2730,7 +2838,7 @@ msgstr ""
 "Kuvvetlerimiz güç kazanana kadar beklememiz gerekmez mi?"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
 msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
 "before Winter arrives."
@@ -2738,7 +2846,7 @@ msgstr ""
 "Son bir gayret! Kış gelmeden başlattığımız seferberliği bitirsek iyi olacak."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:88
 msgid ""
 "Finally we come to the shores of the last continent. Here at the edge of the "
 "world our empire shall be made complete."
@@ -2747,12 +2855,12 @@ msgstr ""
 "imparatorluğumuz tamamlanacak."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
 msgid "Never! Your mad quest ends here, tyrant."
 msgstr "Asla! Çılgın arayışın burada sona eriyor, tiran."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:86
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
 msgid ""
 "All the peoples of the world stand against you. Though we would be enemies "
 "otherwise, we are united in our cause. We must stop you!"
@@ -2761,28 +2869,28 @@ msgstr ""
 "davamızda birleştik. Sizi durdurmalıyız!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:87
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
 msgid "No, not all of them. Today our full strength stands behind our allies!"
 msgstr ""
 "Hayır, hepsi değil. Bugün tüm gücümüz müttefiklerimizin arkasında duruyor!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:93
 msgid "That’s it, our work is done here!"
 msgstr "İşte bu kadar, işimiz burada bitti!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:94
 msgid "The whole world is now ours to command!"
 msgstr "Artık tüm dünya bizim komutamızda!"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
 msgid "It was hard, but I almost regret the fun is over."
 msgstr "Zordu, ama eğlencenin bittiğine neredeyse pişman olacağım."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:99
 msgid "The End"
 msgstr "Son"
 
@@ -3967,9 +4075,6 @@ msgstr ""
 #~ "\n"
 #~ "Yeni emirler nedir?"
 
-#~ msgid "Random"
-#~ msgstr "Rastgele"
-
 #~ msgid " and "
 #~ msgstr " ve "
 
@@ -3996,9 +4101,6 @@ msgstr ""
 
 #~ msgid "full movement"
 #~ msgstr "tam hareket"
-
-#~ msgid "terrain^water"
-#~ msgstr "su"
 
 #~ msgid "improved defenses"
 #~ msgstr "arttırılmış savuma"

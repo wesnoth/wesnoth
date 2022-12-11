@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
 "PO-Revision-Date: 2022-06-04 22:10+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "<span foreground='#%02x%02x%02x'>Strona $side_number</span>:  Wynik dochodu "
 "= $income  Wynik jednostek = $units  Złoto = $gold\n"
-"\vRazem: <b>$total</b>"
+"Razem: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
@@ -1632,6 +1632,7 @@ msgstr "Najeźdźcy"
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:45
 msgid "teamname^Defenders"
 msgstr "Obrońcy"
 
@@ -2327,6 +2328,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:45
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:56
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:100
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:27
 msgid "teamname^Southwest"
 msgstr "Południowy zachód"
 
@@ -2392,6 +2394,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:34
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:78
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:89
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:63
 msgid "teamname^Southeast"
 msgstr "Południowy wschód"
 
@@ -2901,6 +2904,18 @@ msgstr ""
 "Losowa mapa w czasie przedwiośnia, głównie pokryta śniegiem. Uwaga: losowe "
 "mapy często nie są zbalansowane, ale jeśli masz czas, możesz je generować do "
 "momentu uzyskania dobrej mapy."
+
+#. [multiplayer]: id=multiplayer_test_Elevation_Demo
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
+msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_test_Elevation_Demo
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
+msgid ""
+"This map is an example of how to use the new (BfW v1.17) elevated terrain "
+"graphics. It is not a good map for real MP use."
+msgstr ""
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

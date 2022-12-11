@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Manpages-1.16\n"
 "POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2022-09-09 17:58+0800\n"
+"PO-Revision-Date: 2022-11-24 10:27+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr "WESNOTH"
 
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2022"
 msgstr "2022"
 
@@ -341,9 +341,8 @@ msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:109
-#, fuzzy
 msgid "disallow deprecated Lua API calls"
-msgstr "Désactive les appels à l'interface lua obsolète."
+msgstr "Désactive les appels obsolètes à l'interface lua."
 
 #. type: TP
 #: doc/man/wesnoth.6:109
@@ -353,16 +352,15 @@ msgstr "B<-D,--diff>I<\\ fichier-original>B<\\ >I<fichier-nouveau>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:115
-#, fuzzy
 msgid ""
 "diffs the two WML files; does not preprocess them first (to do that, run "
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
-"Faire la différence entre deux fichiers WML. Pas de résolution des macros "
-"préalable (pour appliquer cela, utiliser d'abord B<-p>). La sortie de la "
-"différence sous format DiffWML vers la sortie par défaut ou vers le fichier "
-"spécifié par I<--output>."
+"Fait la différence entre deux fichiers WML sans résolution préalable des "
+"macros (pour appliquer cela, utiliser d'abord B<-p>). La sortie de la "
+"différence sous format DiffWML se fait vers la sortie par défaut ou vers le "
+"fichier spécifié par I<--output>."
 
 # type: TP
 #. type: TP
@@ -391,10 +389,6 @@ msgstr "B<--fps>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:127
-#, fuzzy
-#| msgid ""
-#| "displays the number of frames per second the game is currently running "
-#| "at, in a corner of the screen."
 msgid ""
 "displays the number of frames per second the game is currently running at in "
 "a corner of the screen as well as writes these values to a file in the "
@@ -577,10 +571,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
@@ -724,7 +717,6 @@ msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:235
-#, fuzzy
 msgid "suppress the startup banner."
 msgstr "Supprime le bandeau de démarrage."
 
@@ -779,10 +771,9 @@ msgstr "B<--output>I<\\ fichier>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:248
-#, fuzzy
 msgid "output to the specified file. Applicable to diffing operations."
 msgstr ""
-"Rediriger la sortie vers le fichier donné (pour les opérations de différence "
+"Redirige la sortie vers le fichier donné (pour les opérations de différence "
 "entre fichiers)."
 
 #. type: TP
@@ -827,16 +818,14 @@ msgstr "B<-P,--patch>I<\\ fichier-cible>B<\\ >I<fichier-patch>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:265
-#, fuzzy
 msgid ""
 "applies a DiffWML patch to a WML file; does not preprocess either of the "
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
-"Applique une différence au format DiffWML à un fichier WML. Pas de "
-"résolution des macros préalable dans les fichiers. La sortie du fichier WML "
-"modifié vers la sortie par défaut ou vers le fichier spécifié par I<--"
-"output>."
+"Applique une différence au format DiffWML à un fichier WML sans résolution "
+"préalable des macros dans les fichiers. La sortie du fichier WML modifié se "
+"fait vers la sortie par défaut ou vers le fichier spécifié par I<--output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:265
@@ -1129,7 +1118,6 @@ msgstr "B<-S,--use-schema>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:373
-#, fuzzy
 msgid "sets the WML schema for use with B<-V,--validate>."
 msgstr "Donne le schéma WML à utiliser dans B<-V,--validate>."
 
@@ -1236,7 +1224,6 @@ msgstr "B<--validate>I<\\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:407
-#, fuzzy
 msgid "validates a file against the WML schema."
 msgstr "Valide un fichier en fonction du schéma WML."
 
@@ -1248,7 +1235,6 @@ msgstr "B<--validate-addon>I<\\ id_extension>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:410
-#, fuzzy
 msgid "validates the WML of the given addon as you play."
 msgstr "Valide le code WML d'une extension durant le jeu."
 
@@ -1261,7 +1247,6 @@ msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:413
-#, fuzzy
 msgid "validates the core WML as you play."
 msgstr "Valide le code WML d'un noyau durant le jeu."
 
@@ -1274,7 +1259,6 @@ msgstr "B<--validate-schema \\ chemin>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:416
-#, fuzzy
 msgid "validates a file as a WML schema."
 msgstr "Valide un fichier en tant que schéma WML."
 
@@ -1648,9 +1632,6 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:538 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -2001,7 +1982,6 @@ msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:129
-#, fuzzy
 msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
@@ -2299,10 +2279,6 @@ msgstr "Balises globales : "
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:196
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
@@ -2414,14 +2390,6 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:241
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
@@ -2500,10 +2468,6 @@ msgstr "B<db_users_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2586,11 +2550,6 @@ msgstr "B<db_user_group_table>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
@@ -2603,10 +2562,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2618,48 +2576,40 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"Nom de la table des données utilisateurs de vos forums phpbb, probablement "
-"sous la forme E<lt>table-prefixE<gt>_users. Par exemple : phpbb3_users."
+"Nom de la table des informations des sujets de vos forums phpbb, "
+"probablement sous la forme E<lt>table-prefixE<gt>_topics. Par exemple : "
+"phpbb3_topics."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"Nom de la table des données utilisateurs de vos forums phpbb, probablement "
-"sous la forme E<lt>table-prefixE<gt>_users. Par exemple : phpbb3_users."
+"Nom de la table des données des bannissements d'utilisateur de vos forums "
+"phpbb, probablement sous la forme E<lt>table-prefixE<gt>_banlist. Par "
+"exemple : phpbb3_banlist."
 
 #. type: TP
 #: doc/man/wesnothd.6:281
@@ -2706,7 +2656,6 @@ msgstr ""
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
 
-#, no-wrap
 #~ msgid "2021"
 #~ msgstr "2021"
 

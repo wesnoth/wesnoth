@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
+"POT-Creation-Date: 2022-11-19 23:31-0600\n"
 "PO-Revision-Date: 2022-08-28 19:32+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -109,12 +109,12 @@ msgid ""
 msgstr "Будет ли камера следовать за бойцом, когда он выполняет свой ход"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Устаревание сообщений чата"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -122,22 +122,22 @@ msgstr ""
 "Время ожидания до очистки игрового чата в минутах. 0 — отключить очистку."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "12-часовой формат времени"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Подтвердите загрузку сохранений из других версий"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Показывать в справке всех бойцов"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -146,12 +146,12 @@ msgstr ""
 "покажутся только встреченные в игре бойцы."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Лимит последних файлов в Редакторе"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
@@ -159,32 +159,32 @@ msgstr ""
 "Редакторе"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Показать цветные курсоры"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "Использовать цветные курсоры мыши"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "Выбрать цвета шара"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "Запись логов"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Расчет урона алгоритмом моделирования Монте-Карло"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -193,12 +193,12 @@ msgstr ""
 "вероятности"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "Показывать сообщения об устаревших функциях в игре"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -209,22 +209,37 @@ msgstr ""
 "контроль устаревания лога определяет, сколько сообщений печатается."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:165
+#: data/advanced_preferences.cfg:156
 msgid "Font size scale (experimental)"
 msgstr ""
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:166
+#: data/advanced_preferences.cfg:157
 msgid ""
 "Scales all text up or down from the standard size for your resolution. "
 "Warning: Scaling text up may cause issues in the in-game sidebar."
+msgstr ""
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:167
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "Превышен лимит времени подключения"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:168
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
 msgid "poisoned"
 msgstr "отравлен"
 
@@ -250,7 +265,7 @@ msgid "Notes:"
 msgstr "Заметки:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Закрыть"
 
@@ -3776,14 +3791,14 @@ msgstr "Недостижимо"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:385
+#: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
 msgstr "Туман"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:388
-#: src/game_initialization/lobby_data.cpp:391
+#: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:389
+#: src/game_initialization/lobby_data.cpp:392
 msgid "Shroud"
 msgstr "Пелена"
 
@@ -4204,31 +4219,31 @@ msgstr "Недопустимый уровень устаревания (долж
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1076
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1069
 msgid "female^poisoned"
 msgstr "отравлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
 msgid "female^slowed"
 msgstr "замедлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1083
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1076
 msgid "slowed"
 msgstr "замедлен"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
 msgid "female^petrified"
 msgstr "окаменела"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1089
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1082
 msgid "petrified"
 msgstr "окаменел"
 
@@ -4244,8 +4259,8 @@ msgstr "неизлечимо"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3226
-#: src/scripting/game_lua_kernel.cpp:3261
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3224
+#: src/scripting/game_lua_kernel.cpp:3259
 msgid "input"
 msgstr "ввод"
 
@@ -5392,7 +5407,7 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "выбор продвижения"
 
-#: src/actions/attack.cpp:604 src/actions/attack.cpp:1395
+#: src/actions/attack.cpp:597 src/actions/attack.cpp:1388
 msgid "An invalid attacker weapon got selected."
 msgstr "Выбрано неправильное оружие атакующего."
 
@@ -6365,32 +6380,32 @@ msgstr "Игра $login"
 msgid "Team"
 msgstr "Команда"
 
-#: src/game_initialization/connect_engine.cpp:953
+#: src/game_initialization/connect_engine.cpp:954
 msgid "Anonymous player"
 msgstr "Анонимный игрок"
 
-#: src/game_initialization/connect_engine.cpp:958
-#: src/game_initialization/connect_engine.cpp:1256
+#: src/game_initialization/connect_engine.cpp:959
+#: src/game_initialization/connect_engine.cpp:1257
 msgid "Computer Player"
 msgstr "Компьютер"
 
-#: src/game_initialization/connect_engine.cpp:1000
+#: src/game_initialization/connect_engine.cpp:1001
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1252
+#: src/game_initialization/connect_engine.cpp:1253
 msgid "Network Player"
 msgstr "Сетевой игрок"
 
-#: src/game_initialization/connect_engine.cpp:1255
+#: src/game_initialization/connect_engine.cpp:1256
 msgid "Local Player"
 msgstr "Локальный игрок"
 
-#: src/game_initialization/connect_engine.cpp:1257
+#: src/game_initialization/connect_engine.cpp:1258
 msgid "Nobody"
 msgstr "Пусто"
 
-#: src/game_initialization/connect_engine.cpp:1260
+#: src/game_initialization/connect_engine.cpp:1261
 msgid "Reserved"
 msgstr "Занято"
 
@@ -6460,65 +6475,65 @@ msgstr "Не могу найти тип лидера для фракции $fact
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Не могу получить пол неправильного лидера $leader"
 
-#: src/game_initialization/lobby_data.cpp:162
+#: src/game_initialization/lobby_data.cpp:163
 msgid "Missing addon: $name"
 msgstr "Отсутствует аддон: $name"
 
-#: src/game_initialization/lobby_data.cpp:164
+#: src/game_initialization/lobby_data.cpp:165
 msgid "Missing addon: $id"
 msgstr "Отсутствует аддон: $id"
 
-#: src/game_initialization/lobby_data.cpp:196
+#: src/game_initialization/lobby_data.cpp:197
 msgid "Unknown era"
 msgstr "Неизвестная эра"
 
-#: src/game_initialization/lobby_data.cpp:263
-#: src/game_initialization/lobby_data.cpp:297
+#: src/game_initialization/lobby_data.cpp:264
+#: src/game_initialization/lobby_data.cpp:298
 msgid "scenario_abbreviation^S"
 msgstr "Сценарий"
 
-#: src/game_initialization/lobby_data.cpp:283
+#: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
 msgstr "Удалённый сценарий"
 
-#: src/game_initialization/lobby_data.cpp:304
-#: src/game_initialization/lobby_data.cpp:330
+#: src/game_initialization/lobby_data.cpp:305
+#: src/game_initialization/lobby_data.cpp:331
 msgid "campaign_abbreviation^C"
 msgstr "Кампания"
 
-#: src/game_initialization/lobby_data.cpp:336
+#: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
 msgstr "Неизвестный сценарий"
 
-#: src/game_initialization/lobby_data.cpp:350
+#: src/game_initialization/lobby_data.cpp:351
 msgid "Reloaded game"
 msgstr "Игра перезагружена"
 
-#: src/game_initialization/lobby_data.cpp:365
+#: src/game_initialization/lobby_data.cpp:366
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Свободный слот:"
 msgstr[1] "Свободных слота:"
 msgstr[2] "Свободных слотов:"
 
-#: src/game_initialization/lobby_data.cpp:367
+#: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
 msgstr "Все слоты заполнены"
 
-#: src/game_initialization/lobby_data.cpp:378
-#: src/game_initialization/lobby_data.cpp:380 src/savegame.cpp:662
+#: src/game_initialization/lobby_data.cpp:379
+#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:662
 msgid "Turn"
 msgstr "Ход"
 
-#: src/game_initialization/lobby_data.cpp:393
+#: src/game_initialization/lobby_data.cpp:394
 msgid "vision^none"
 msgstr "обзор отсутствует"
 
-#: src/game_initialization/lobby_data.cpp:402
+#: src/game_initialization/lobby_data.cpp:403
 msgid "time limit^none"
 msgstr "лимит времени отсутствует"
 
-#: src/game_initialization/lobby_data.cpp:446
+#: src/game_initialization/lobby_data.cpp:447
 msgid ""
 "The host's version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
@@ -6526,7 +6541,7 @@ msgstr ""
 "Версия хоста <i>$addon</i> несовместима. У них версия <b>$host_ver</b>, в то "
 "время как у вас — <b>$local_ver</b>."
 
-#: src/game_initialization/lobby_data.cpp:460
+#: src/game_initialization/lobby_data.cpp:461
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -7098,11 +7113,11 @@ msgstr "Вернуться к началу"
 msgid "(press $hotkey to deactivate)"
 msgstr "(нажмите $hotkey, чтобы деактивировать)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2099
+#: src/hotkey/hotkey_handler_sp.cpp:146 src/menu_events.cpp:2100
 msgid "Planning mode activated!"
 msgstr "Режим планирования включён!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2102
+#: src/hotkey/hotkey_handler_sp.cpp:148 src/menu_events.cpp:2103
 msgid "Planning mode deactivated!"
 msgstr "Режим планирования отключён!"
 
@@ -7724,27 +7739,27 @@ msgstr "Не могу проверить управление неверной �
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr "Не проверить управление вышедшей из пределов стороны: '$side'."
 
-#: src/menu_events.cpp:1834
+#: src/menu_events.cpp:1835
 msgid "Choose Scenario (Debug!)"
 msgstr "Выберите сценарий (Отладка!)"
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1871
 msgid "Debug mode activated!"
 msgstr "Режим отладки включён!"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1874
 msgid "Debug mode not available in network games"
 msgstr "В сетевой игре отладочный режим недоступен"
 
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1881
 msgid "Debug mode deactivated!"
 msgstr "Режим отладки отключён!"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1901
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "ВНИМАНИЕ! Небезопасный режим Lua"
 
-#: src/menu_events.cpp:1901
+#: src/menu_events.cpp:1902
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7758,21 +7773,21 @@ msgstr ""
 "\n"
 "Не продолжайте, если вы не знаете точно, что делаете."
 
-#: src/menu_events.cpp:1906
+#: src/menu_events.cpp:1907
 msgid "Unsafe mode enabled!"
 msgstr "Включён небезопасный режим!"
 
-#: src/menu_events.cpp:1955
+#: src/menu_events.cpp:1956
 msgid "Variable not found"
 msgstr "Переменная не найдена"
 
-#: src/menu_events.cpp:1988
+#: src/menu_events.cpp:1989
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
 "Команда отладки 'unit: $unit' не сработала: нет выбранного бойца или бойца "
 "под курсором."
 
-#: src/menu_events.cpp:2006
+#: src/menu_events.cpp:2007
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7780,19 +7795,19 @@ msgstr ""
 "Неизвестный характер: «$alignment», должен быть: «порядочный», либо "
 "«хаотичный», либо «теневой»."
 
-#: src/menu_events.cpp:2032
+#: src/menu_events.cpp:2033
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Вы точно хотите убрать всю информацию об открытых бойцах из справки?"
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2047
 msgid "Invalid unit type"
 msgstr "Неправильный тип бойца"
 
-#: src/menu_events.cpp:2053
+#: src/menu_events.cpp:2054
 msgid "Invalid location"
 msgstr "Неверное место"
 
-#: src/menu_events.cpp:2126 src/menu_events.cpp:2152
+#: src/menu_events.cpp:2127 src/menu_events.cpp:2153
 msgid "prompt^Command:"
 msgstr "Команда:"
 
@@ -8107,7 +8122,7 @@ msgstr "Этот боец окаменел. Он не может двигать�
 msgid "Ability: "
 msgstr "Способность: "
 
-#: src/reports.cpp:434 src/reports.cpp:978
+#: src/reports.cpp:434 src/reports.cpp:979
 msgid " (inactive)"
 msgstr " (неактивно)"
 
@@ -8151,91 +8166,91 @@ msgstr "помехи обзора: "
 msgid "Movement Costs:"
 msgstr "Цена ходов:"
 
-#: src/reports.cpp:813 src/reports.cpp:1067 src/reports.cpp:1079
+#: src/reports.cpp:814 src/reports.cpp:1068 src/reports.cpp:1080
 msgid "Weapon: "
 msgstr "Оружие: "
 
-#: src/reports.cpp:814 src/reports.cpp:1068
+#: src/reports.cpp:815 src/reports.cpp:1069
 msgid "Damage: "
 msgstr "Урон: "
 
-#: src/reports.cpp:818
+#: src/reports.cpp:819
 msgid "Base damage: "
 msgstr "Базовый урон: "
 
-#: src/reports.cpp:820 src/reports.cpp:854 src/reports.cpp:864
+#: src/reports.cpp:821 src/reports.cpp:855 src/reports.cpp:865
 msgid "With specials: "
 msgstr "С особенностями: "
 
-#: src/reports.cpp:823
+#: src/reports.cpp:824
 msgid "Time of day: "
 msgstr "Время суток: "
 
-#: src/reports.cpp:827
+#: src/reports.cpp:828
 msgid "Leadership: "
 msgstr "Лидерство: "
 
-#: src/reports.cpp:831
+#: src/reports.cpp:832
 msgid "Slowed: "
 msgstr "Замедлен: "
 
-#: src/reports.cpp:835
+#: src/reports.cpp:836
 msgid "Attacks: "
 msgstr "Атак: "
 
-#: src/reports.cpp:839
+#: src/reports.cpp:840
 msgid "Max swarm bonus: "
 msgstr "Максимальный бонус роя: "
 
-#: src/reports.cpp:840 src/reports.cpp:859
+#: src/reports.cpp:841 src/reports.cpp:860
 msgid "Swarm: "
 msgstr "Рой: "
 
-#: src/reports.cpp:841 src/reports.cpp:852 src/reports.cpp:863
+#: src/reports.cpp:842 src/reports.cpp:853 src/reports.cpp:864
 msgid "Base attacks: "
 msgstr "Базовые атаки: "
 
-#: src/reports.cpp:847
+#: src/reports.cpp:848
 msgid "Specials: "
 msgstr "Особенности: "
 
-#: src/reports.cpp:857
+#: src/reports.cpp:858
 msgid "Subject to swarm: "
 msgstr "Действует рой: "
 
-#: src/reports.cpp:884
+#: src/reports.cpp:885
 msgid "Weapon range: "
 msgstr "Дальность оружия: "
 
-#: src/reports.cpp:885
+#: src/reports.cpp:886
 msgid "Damage type: "
 msgstr "Тип урона: "
 
-#: src/reports.cpp:886
+#: src/reports.cpp:887
 msgid "Damage versus: "
 msgstr "Урон против: "
 
-#: src/reports.cpp:945
+#: src/reports.cpp:946
 msgid "Accuracy:"
 msgstr "Точность:"
 
-#: src/reports.cpp:950
+#: src/reports.cpp:951
 msgid "Parry:"
 msgstr "Парирование:"
 
-#: src/reports.cpp:976
+#: src/reports.cpp:977
 msgid "Weapon special: "
 msgstr "Особенность оружия: "
 
-#: src/reports.cpp:1051
+#: src/reports.cpp:1052
 msgid "weapon^None"
 msgstr "Нет оружия"
 
-#: src/reports.cpp:1080
+#: src/reports.cpp:1081
 msgid "Total damage"
 msgstr "Всего повреждений"
 
-#: src/reports.cpp:1144
+#: src/reports.cpp:1145
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Атака"
@@ -8243,43 +8258,43 @@ msgstr[1] "Атаки"
 msgstr[2] "Атаки"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1152
+#: src/reports.cpp:1153
 msgid "Remaining: $left/$max"
 msgstr "Остаётся: $left/$max"
 
-#: src/reports.cpp:1156
+#: src/reports.cpp:1157
 msgid "This unit can attack multiple times per turn."
 msgstr "Этот боец может атаковать несколько раз за ход."
 
-#: src/reports.cpp:1248
+#: src/reports.cpp:1249
 msgid "Time of day schedule:"
 msgstr "Время суток: "
 
-#: src/reports.cpp:1297
+#: src/reports.cpp:1298
 msgid "Time of day:"
 msgstr "Время суток: "
 
-#: src/reports.cpp:1298 src/reports.cpp:1352
+#: src/reports.cpp:1299 src/reports.cpp:1353
 msgid "Lawful units: "
 msgstr "Порядочные бойцы: "
 
-#: src/reports.cpp:1300 src/reports.cpp:1354
+#: src/reports.cpp:1301 src/reports.cpp:1355
 msgid "Neutral units: "
 msgstr "Нейтральные бойцы: "
 
-#: src/reports.cpp:1301 src/reports.cpp:1355
+#: src/reports.cpp:1302 src/reports.cpp:1356
 msgid "Chaotic units: "
 msgstr "Хаотичные бойцы: "
 
-#: src/reports.cpp:1303 src/reports.cpp:1357
+#: src/reports.cpp:1304 src/reports.cpp:1358
 msgid "Liminal units: "
 msgstr "Теневые бойцы: "
 
-#: src/reports.cpp:1416
+#: src/reports.cpp:1417
 msgid "Turn Number"
 msgstr "Номер хода"
 
-#: src/reports.cpp:1418
+#: src/reports.cpp:1419
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -8287,34 +8302,34 @@ msgstr ""
 "Когда количество ходов превысит значение, указанное вторым числом, игра "
 "закончится."
 
-#: src/reports.cpp:1443
+#: src/reports.cpp:1444
 msgid "Gold"
 msgstr "Золото"
 
-#: src/reports.cpp:1443
+#: src/reports.cpp:1444
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Количество золота в настоящее время доступное для найма и содержания вашей "
 "армии."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1463
 msgid "The fraction of known villages that your side has captured."
 msgstr "Доля от известных деревень, захваченных вашей стороной."
 
-#: src/reports.cpp:1462
+#: src/reports.cpp:1463
 msgid "Villages"
 msgstr "Деревни"
 
-#: src/reports.cpp:1467
+#: src/reports.cpp:1468
 msgid "The total number of units on your side."
 msgstr "Общее количество бойцов на вашей стороне."
 
-#: src/reports.cpp:1467
+#: src/reports.cpp:1468
 msgid "Units"
 msgstr "Бойцы"
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1478
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8328,15 +8343,15 @@ msgstr ""
 "содержания, в том числе покрытая деревнями — иными словами, количество "
 "золота, которое будет вычтено, если вы потеряете все деревни."
 
-#: src/reports.cpp:1477
+#: src/reports.cpp:1478
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1515
 msgid "Net Income"
 msgstr "Прибыль"
 
-#: src/reports.cpp:1514
+#: src/reports.cpp:1515
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8345,23 +8360,23 @@ msgstr ""
 "принимая в расчёт доход от деревень под вашей властью и выплаты на "
 "содержание армии."
 
-#: src/reports.cpp:1682
+#: src/reports.cpp:1683
 msgid "Observers:"
 msgstr "Наблюдатели: "
 
-#: src/reports.cpp:1724
+#: src/reports.cpp:1725
 msgid "Clock"
 msgstr "Часы"
 
-#: src/reports.cpp:1735
+#: src/reports.cpp:1736
 msgid "Battery"
 msgstr "Батарея"
 
-#: src/reports.cpp:1766
+#: src/reports.cpp:1767
 msgid "Countdown until your turn automatically ends."
 msgstr "Обратный отсчет до момента пока ваш ход автоматически не закончится."
 
-#: src/reports.cpp:1766
+#: src/reports.cpp:1767
 msgid "Turn Countdown"
 msgstr "Обратный отсчет"
 
@@ -8894,7 +8909,7 @@ msgstr "$year ДП"
 msgid "$year AF"
 msgstr "$year ПП"
 
-#: src/wesnothd_connection.cpp:544
+#: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
 msgstr "Отключен от сервера."
 
@@ -9489,9 +9504,6 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "Запросить, какие данные можно менять для своего ника."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Превышен лимит времени подключения"
 
 #~ msgid "No Saved Games"
 #~ msgstr "Нет сохранённых игр"

@@ -75,6 +75,7 @@ static std::unique_ptr<std::ostream, void(*)(std::ostream*)> output_file_(nullpt
 	std::cerr.rdbuf(nullptr);
 	std::cout.rdbuf(nullptr);
 });
+static std::string output_file_path_ = "";
 
 namespace lg {
 
@@ -134,9 +135,19 @@ std::string unique_log_filename()
 void set_log_to_file()
 {
 	// get the log file stream and assign cerr+cout to it
-	output_file_.reset(filesystem::ostream_file(filesystem::get_logs_dir()+"/"+unique_log_filename()).release());
+	output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
+	output_file_.reset(filesystem::ostream_file(output_file_path_).release());
 	std::cerr.rdbuf(output_file_.get()->rdbuf());
 	std::cout.rdbuf(output_file_.get()->rdbuf());
+}
+
+std::string& get_log_file_path()
+{
+	return output_file_path_;
+}
+void set_log_file_path(const std::string& path)
+{
+	output_file_path_ = path;
 }
 
 redirect_output_setter::redirect_output_setter(std::ostream& stream)

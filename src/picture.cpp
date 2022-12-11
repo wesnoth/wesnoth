@@ -197,8 +197,6 @@ std::set<std::string> precached_dirs;
 
 int red_adjust = 0, green_adjust = 0, blue_adjust = 0;
 
-unsigned int zoom = tile_size;
-
 const std::string data_uri_prefix = "data:";
 struct parsed_data_URI{
 	explicit parsed_data_URI(std::string_view data_URI);
@@ -757,12 +755,6 @@ void set_color_adjustment(int r, int g, int b)
 		lit_textures_.flush();
 		texture_tod_colored_.clear();
 	}
-}
-
-void set_zoom(unsigned int amount)
-{
-	// This no longer has to do anything fancy.
-	zoom = amount;
 }
 
 static surface get_hexed(const locator& i_locator, bool skip_cache = false)

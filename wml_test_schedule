@@ -5,7 +5,6 @@
 1 test_return_fail
 0 test_assert
 1 test_assert_fail
-1 test_assert_fail_two
 0 test_lua_return
 1 test_lua_return_fail
 8 test_lua_return_victory
@@ -34,6 +33,7 @@
 1 test_lua_assert_errors9
 2 empty_test
 0 test_end_turn
+9 there_is_no_test_with_this_name
 #
 # The synchronisation mechanism
 #
@@ -72,6 +72,10 @@
 1 check_victory_never_fail_three
 8 check_victory_never_pass
 7 check_victory_never_ai_fail
+#
+# Preprocessor
+#
+0 test_preprocessor_ifdef_in_arg
 #
 # WML API tests
 #
@@ -150,7 +154,16 @@
 0 event_test_lua_repeat
 9 event_test_lua_break_save
 0 test_lua_name
-0 filter_vision
+0 filter_vision_all_no_side
+0 filter_vision_all_side_2
+0 filter_vision_all_side_4
+0 filter_vision_side_1_side_4
+0 filter_vision_side_2_side_4
+0 filter_vision_side_3_side_4
+0 filter_vision_side_4_side_1
+0 filter_vision_side_4_side_3
+0 filter_vision_side_4_not_side_2
+0 filter_vision_not_side_5
 0 test_shroud_init
 0 test_shroud_place_wml
 0 test_shroud_place_lua
@@ -163,7 +176,11 @@
 0 test_shroud_modify_wml
 0 test_shroud_modify_lua
 0 scatter_units
-0 has_ally
+0 dave_has_ally_bob
+0 dave_has_enemy_alice
+0 dave_not_has_ally_steve
+0 dave_has_enemy_sides
+0 not_dave_has_ally_charlie
 0 xp_mod_1
 0 xp_mod_2
 0 xp_mod_3
@@ -182,6 +199,8 @@
 0 events-test_pre_attack_change_weapon
 0 test_store_unit_defense_on
 9 test_store_unit_defense_deprecated
+0 special_note_from_movetype
+0 special_note_individual_unit
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -198,6 +217,7 @@
 0 test_terrain_mask_deprecated_border_no
 0 test_terrain_mask_deprecated_border_yes
 0 test_terrain_mask_rule_basic
+0 test_terrain_mask_file
 #
 # LUA
 #
@@ -270,8 +290,9 @@
 0 test_grunt_tod_damage
 0 test_time_area_damage
 0 test_time_area_prestart
-0 test_berzerk_firststrike
-0 feeding
+0 test_berserk_firststrike
+0 feeding_on_living
+0 feeding_on_dead
 0 firststrike_and_laststrike
 0 backstab_active_with_accomplice_behind_bob
 0 backstab_inactive_with_triangular_formation
@@ -280,19 +301,26 @@
 0 reflexive_drains
 0 reflexive_poison
 0 reflexive_slow
+0 replace_special_with_filter_in_attack_event_active
+0 replace_special_with_filter_in_attack_event_inactive
 0 swarm_disables_upgrades
-0 swarm_disables_upgrades_with_abilities
-0 swarm_disables_upgrades_with_abilities_fail
-0 swarm_disables_upgrades_with_abilities_adjacent
-0 swarm_disables_upgrades_with_abilities_adjacent_fail
-0 swarm_disables_upgrades_with_abilities_adjacent_leadership
-0 swarm_disables_upgrades_with_abilities_adjacent_leadership_fail
 0 poison_opponent
 0 test_add_in_leadership_abilities
 0 test_sub_in_leadership_abilities
 0 unslowable_status_test
 0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro
+0 swarms_filter_student_by_type
+0 swarms_effects_not_checkable
+0 filter_special_id_active
+0 filter_ability_special_id_active
+0 filter_special_id_not_exists
+0 leadership_when_other_has_special
+0 leadership_when_other_has_no_special
+0 effect_increase_attacks
+0 opponent_weapon_has_no_special
+0 opponent_weapon_has_special
+0 student_teacher_are_same
 #
 # Deterministic unit facing tests
 0 recruit_facing_enemy_one
@@ -303,7 +331,7 @@
 # Interface tests
 #
 0 test_wml_menu_items_1
-10 test_wml_menu_items_2
+0 test_wml_menu_items_2
 0 test_wml_menu_items_3
 #
 # Conditional tests
@@ -321,7 +349,9 @@
 0 check_interrupts_return
 0 check_interrupts_continue
 0 check_interrupts_break_global
-0 check_interrupts_return_nested
+0 check_interrupts_break_nested_event
+0 check_interrupts_return_nested_command
+0 check_interrupts_return_nested_event
 9 check_interrupts_continue_global
 0 check_interrupts_elseif
 0 check_interrupts_case
@@ -365,18 +395,25 @@
 # Changing the number of sides
 0 test_create_side
 # Event tests
+0 event_name_variable_substitution
 0 order_of_variable_events1
 0 order_of_variable_events2
-0 event_name_variable_substitution
+0 order_of_variable_events3
+0 premature_end_turn1
+2 premature_end_turn2
 # Game mechanics
 0 heal
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated
 9 unknown_scenario_1_0
+9 unknown_scenario_1_0_last
+9 unknown_scenario_1_1
+9 unknown_scenario_2_0
+9 unknown_scenario_1_1_last_null
 
 # Lua API tests
-0 lua_functional
+0 lua_functional_reduce
 0 lua_map_find
 0 mapgen_filter_range
 0 mapgen_filter_terrain

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-15 14:27 UTC\n"
+"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
 "PO-Revision-Date: 2019-01-21 15:19+0200\n"
 "Last-Translator: AncientGeneral <greatgeneral12@gmail.com>\n"
 "Language-Team: \n"
@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.0.6\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -1660,6 +1660,7 @@ msgstr "Центр"
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:45
 #, fuzzy
 #| msgid "teamname^Center"
 msgid "teamname^Defenders"
@@ -2349,6 +2350,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:45
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:56
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:100
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:27
 msgid "teamname^Southwest"
 msgstr "Південний захід"
 
@@ -2412,6 +2414,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:34
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:78
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:89
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:63
 msgid "teamname^Southeast"
 msgstr "Південний схід"
 
@@ -2919,6 +2922,18 @@ msgstr ""
 "Випадкова карта між осінню та зимою, переважно зі сніговим покривом. Увага: "
 "випадкові карти часто не збалансовані, але якщо у вас є час, ви можете "
 "згенерувати нові, поки не отримаєте хорошу."
+
+#. [multiplayer]: id=multiplayer_test_Elevation_Demo
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
+msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_test_Elevation_Demo
+#: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
+msgid ""
+"This map is an example of how to use the new (BfW v1.17) elevated terrain "
+"graphics. It is not a good map for real MP use."
+msgstr ""
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

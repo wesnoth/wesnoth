@@ -1,4 +1,4 @@
-## Version 1.17.8+dev
+## Version 1.17.10+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -7,12 +7,34 @@
  ### Lua API
  ### Packaging
  ### Terrain
+ ### Translations
+   * Updated translations: Arabic, British English, Finnish, French
+ ### Units
+   * Moved Kraken from campaigns to core, updated sprite
+   * Added some dragonfly units to "monsters"
+ ### User interface
+ ### WML Engine
+
+## Version 1.17.10
+ ### Terrain
+   * `^Qhhf` and `^Qhuf` terrain codes available to allow forest terrain on bluff/gulch hexes
+ ### Translations
+   * Updated translations: British English, Czech, French, Polish, Portuguese (Brazil)
+ ### Units
+   * Merkfolk units movement cost on forest and hills reduced from 5 to 4.
+   * Orcish Slayer can advance to the Orcish Nightblade by default.
+   * Orcish Slayer's xp required to level up reduced from 100 to 64.
+   * Dunefolk Falconer portrait added.
+ ### Miscellaneous and Bug Fixes
+   * Fixed not being able to undo moves (bug #6898)
+
+## Version 1.17.9
+ ### Terrain
    * Change codes "Irs, Ias, Icr, Ior, and Icn" to "Isr, Isa, Isc, Iwo, and Iwc", respectively
  ### Translations
    * Updated translations: British English, Czech, French, Italian, Portuguese (Brazil)
- ### Units
  ### User interface
- ### WML Engine
+   * Bot hosted games are now show on a separate tab from player hosted games.
  ### Miscellaneous and Bug Fixes
    * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
 

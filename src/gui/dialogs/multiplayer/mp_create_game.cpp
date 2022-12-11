@@ -137,7 +137,7 @@ void mp_create_game::pre_show(window& win)
 		std::bind(&mp_create_game::load_game_callback, this));
 
 	// Custom dialog close hook
-	win.set_exit_hook_ok_only([this](window& w)->bool { return dialog_exit_hook(w); });
+	win.set_exit_hook(window::exit_hook::on_ok, [this](window& w) { return dialog_exit_hook(w); });
 
 	//
 	// Set up the options manager. Needs to be done before selecting an initial tab

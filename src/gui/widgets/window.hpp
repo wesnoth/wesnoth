@@ -397,21 +397,30 @@ public:
 		return point(-1, -1);
 	}
 
+	enum class exit_hook {
+		/** Always run hook */
+		on_all,
+		/** Run hook *only* if result is OK. */
+		on_ok,
+	};
+
 	/**
 	 * Sets the window's exit hook.
 	 *
-	 * A window will only close if this function returns true.
-	 *
-	 * @param func A function taking a window reference and returning a boolean result.
+	 * A window will only close if the given function returns true under the specified mode.
 	 */
-	void set_exit_hook(std::function<bool(window&)> func)
+	void set_exit_hook(exit_hook mode, std::function<bool(window&)> func)
 	{
-		exit_hook_ = func;
-	}
-
-	void set_exit_hook_ok_only(std::function<bool(window&)> func)
-	{
-		exit_hook_ = [func](window& w)->bool { return w.get_retval() != OK || func(w); };
+		exit_hook_ = [mode, func](window& w) {
+			switch(mode) {
+			case exit_hook::on_all:
+				return func(w);
+			case exit_hook::on_ok:
+				return w.get_retval() != OK || func(w);
+			default:
+				return true;
+			}
+		};
 	}
 
 	enum class show_mode {

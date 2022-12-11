@@ -129,7 +129,7 @@ function wml_actions.harm_unit(cfg)
 
 			-- Extract unit and put it back to update animation if status was changed
 			unit_to_harm:extract()
-			unit_to_harm:to_map()
+			unit_to_harm:to_map(false)
 
 			if add_tab then
 				text = string.format("%s%s", "\t", text)

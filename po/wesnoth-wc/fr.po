@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
-"PO-Revision-Date: 2022-04-25 18:22+0800\n"
+"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
+"PO-Revision-Date: 2022-12-03 18:43+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -109,10 +109,8 @@ msgstr ""
 
 #. [multiplayer_side]: id=The_Artisans, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Artisans.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Artisans"
-msgstr "L'Alliance"
+msgstr "Les Artisans"
 
 #. [multiplayer_side]: id=The Cult, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:6
@@ -126,10 +124,8 @@ msgstr ""
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
-#, fuzzy
-#| msgid "The Alliance"
 msgid "The Defiance"
-msgstr "L'Alliance"
+msgstr "La Défiance"
 
 #. [multiplayer_side]: id=The Empire, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Empire.cfg:7
@@ -179,10 +175,8 @@ msgstr ""
 
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
-#, fuzzy
-#| msgid "The Horde"
 msgid "The Marauders"
-msgstr "La Horde"
+msgstr "Les Maraudeurs"
 
 #. [multiplayer_side]: id=The Militia, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:6
@@ -213,31 +207,112 @@ msgid "WoCopedia"
 msgstr "WoCopédia"
 
 #. [label]: id=title
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:281
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:379
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
+msgid "Artifacts"
+msgstr "Artefacts"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
+msgid "Recruits"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
+#, fuzzy
+msgid "Deserters"
+msgstr "Déserteurs"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
+#, fuzzy
+msgid "Commanders"
+msgstr "Commandants"
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:501
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
+msgid "Heroes"
+msgstr "Héros"
+
+#. [label]: id=title_random_leaders
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
+#, fuzzy
+msgid "Random Leaders"
+msgstr "Chefs aléatoires"
+
+#. [label]: id=title
 #. [lua]: preshow
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:567
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:569
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:45
 msgid "Settings"
 msgstr "Paramètres"
 
 #. [label]
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:646
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
+#, fuzzy
+msgid "Use World Conquest Unitmarkers"
+msgstr "Utiliser les marqueurs d'unité Conquête du monde"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
+msgid "Use World Conquest experimental pickup"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
+msgid "Show pickup confirmation"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
 msgid "Difficulty"
 msgstr "Difficulté"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
+#, fuzzy
+msgid "World Conquest version"
+msgstr "Version de Conquête du Monde"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
 msgid "Choose a bonus for your team"
 msgstr "Choisissez un bonus pour votre équipe"
 
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:240
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "Before:"
+msgstr "Avant :"
+
+#. [label]
+#. [lua]: gui.widget.add_invest_item
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:259
+#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
+msgid "After:"
+msgstr "Après :"
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
+msgid "Get This Item"
+msgstr ""
+
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
+#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
+msgid "OK"
+msgstr "OK"
+
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
 msgid "You got"
 msgstr "Vous avez reçu"
-
-#. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
-msgid "OK"
-msgstr "OK"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/pickup_confirmation.cfg:24
@@ -273,6 +348,44 @@ msgstr " scénario : "
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
 msgid " map: "
 msgstr " carte : "
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
+msgid "map size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
+msgid "village density"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
+msgid "keep size"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
+#, fuzzy
+msgid "iterations"
+msgstr "nombre d'itérations"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
+#, fuzzy
+msgid "terrain factor"
+msgstr "facteur de topographie"
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
+msgid "island factor"
+msgstr ""
+
+#. [label]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
+#, fuzzy
+msgid "number of keeps"
+msgstr "nombre de châteaux"
 
 # Décrit la relation entre un zombi et une liche
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
@@ -1199,16 +1312,6 @@ msgid "WC2 Invest"
 msgstr "Investissement WC2"
 
 #. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:55
-msgid "Artifacts"
-msgstr "Artefacts"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
-msgid "Heroes"
-msgstr "Héros"
-
-#. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:77
 msgid ""
 "Commanders will take your leader’s place when the leader dies, possible "
@@ -1248,16 +1351,6 @@ msgstr "Entraînement"
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:124
 msgid "$name Training"
 msgstr "Entraînement en $name"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "After:"
-msgstr "Après :"
-
-#. [lua]: gui.widget.add_invest_item
-#: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:134
-msgid "Before:"
-msgstr "Avant :"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:139
@@ -2487,16 +2580,6 @@ msgstr "Factions"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
-#, fuzzy
-#| msgid ""
-#| "The World Conquest II era consists of factions that are built from pairs "
-#| "of mainline factions. One faction will have a healer available (Drakes, "
-#| "Rebels and Loyalists) and one will not (Orcs, Dwarves and Undead). The "
-#| "recruit list is also organized in pairs so that sometimes you will have "
-#| "to recruit a different unit before you can recruit the units that you "
-#| "want. The available heroes, deserters, and random leaders also depend on "
-#| "your factions; the items you can get do not depend on the faction you "
-#| "choose."
 msgid ""
 "The World Conquest era consists of factions that are built from pairs of "
 "mainline factions. One faction will have a healer available (Drakes, "
@@ -2646,45 +2729,46 @@ msgid "Yes! We will drive them into the sea!"
 msgstr "Oui ! Nous allons les repousser à la mer !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:52
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:53
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:55
 msgid "Never fear! Your trusted friends stand beside you!"
 msgstr ""
 "N'ayez pas peur ! Ayez confiance dans les amis qui se dressent à vos côtés !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:54
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
 msgid "Victory is ours! Let us set sail in search of new lands to conquer!"
 msgstr ""
 "La victoire est nôtre ! Levons les voiles vers de nouvelles terres à "
 "conquérir !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:57
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
 msgid "Ahhh. Just look at these fertile lands, ripe for conquest!"
 msgstr ""
 "Aaah. Regarde donc ces terres fertiles, Offrant leurs fruits à notre "
 "conquête !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:58
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
 msgid "What’s this?! Foreign invaders have set foot upon our shores!"
 msgstr "Quoi ?! Des envahisseurs étrangers ont débarqué sur nos côtes !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:59
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:63
 msgid ""
 "We’ll send them back to where they came from quick enough. All troops, to me!"
 msgstr ""
 "Nous les renverrons bien vite là d’où ils viennent. Mes hommes, avec moi !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:61
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
 msgid "We win! Truly ours will be a glorious empire!"
 msgstr "La victoire est à nous ! Gloire à notre empire !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:62
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
 msgid ""
 "Do not get hasty! To reach the great continents of the east we must subdue "
 "the savage coast of Moragdu, notorious for its corsairs, before we can "
@@ -2695,7 +2779,7 @@ msgstr ""
 "leurs corsaires, qui nous barrent la route."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:64
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:68
 msgid ""
 "What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
@@ -2704,7 +2788,7 @@ msgstr ""
 "pied à Moragdu — et en si grand nombre en plus !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:65
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:69
 msgid ""
 "The time of prophecies is upon us! The destroyers have arrived from beyond "
 "the sea!"
@@ -2713,7 +2797,7 @@ msgstr ""
 "pour nous détruire !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:66
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:70
 msgid ""
 "I don’t know what the lizard is babbling about, but we’ll sort these "
 "‘destroyers’ out quickly enough."
@@ -2722,14 +2806,14 @@ msgstr ""
 "« destructeurs » sans attendre."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:71
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
 msgid "Ready yourselves, men! The conquering hordes are upon us!"
 msgstr ""
 "Que tous les hommes se tiennent prêts ! Les hordes conquérantes sont dans "
 "nos campagnes !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:72
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
 msgid ""
 "Word has come to our island of your victories. Your army is impressive, but "
 "it will avail you not."
@@ -2738,12 +2822,12 @@ msgstr ""
 "impressionnante mais elle vous sera inutile."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:73
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:77
 msgid "Indeed. You come this far, and no farther!"
 msgstr "C'est çà. Vous êtes arrivés jusqu'ici mais vous n'irez pas plus loin !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:74
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
 msgid ""
 "Hah! We didn’t come all this way just to give up and go home. We will "
 "destroy you as we have destroyed all that have stood before us!"
@@ -2753,23 +2837,23 @@ msgstr ""
 "face !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:75
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
 msgid "So be it. We stand squarely behind our allies."
 msgstr "Soit. Nous restons aux côtés de nos alliés."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:76
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
 msgid "You are not the only ones with allies! We’ll push on till the end!"
 msgstr ""
 "Vous n’êtes pas les seuls avec des alliés ! Nous pousserons jusqu'au bout !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:78
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:82
 msgid "Onwards to the ships!"
 msgstr "Aux bateaux !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:83
 msgid ""
 "We have travelled great oceans and brought low mighty empires. Should we not "
 "wait until our forces regain their strength?"
@@ -2778,7 +2862,7 @@ msgstr ""
 "devrions-nous pas attendre que nos troupes recouvrent leurs forces ?"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:80
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
 msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
 "before Winter arrives."
@@ -2787,7 +2871,7 @@ msgstr ""
 "l'initiative, avant l'arrivée de l'hiver."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:84
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:88
 msgid ""
 "Finally we come to the shores of the last continent. Here at the edge of the "
 "world our empire shall be made complete."
@@ -2796,12 +2880,12 @@ msgstr ""
 "étendu aux confins du monde, notre conquête sera complète."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:85
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
 msgid "Never! Your mad quest ends here, tyrant."
 msgstr "Jamais! Votre quête folle se termine ici, tyran."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:86
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
 msgid ""
 "All the peoples of the world stand against you. Though we would be enemies "
 "otherwise, we are united in our cause. We must stop you!"
@@ -2811,30 +2895,30 @@ msgstr ""
 "arrêter !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:87
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
 msgid "No, not all of them. Today our full strength stands behind our allies!"
 msgstr ""
 "Non, pas tous. Aujourd'hui nous mettons toutes nos forces au service de nos "
 "alliés !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:89
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:93
 msgid "That’s it, our work is done here!"
 msgstr "Ça y est, notre boulot est terminé !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:90
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:94
 msgid "The whole world is now ours to command!"
 msgstr "Notre pouvoir s'étend maintenant au monde entier !"
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:91
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
 msgid "It was hard, but I almost regret the fun is over."
 msgstr ""
 "C'était difficile, mais malheureusement toutes les bonnes choses ont une fin."
 
 #. [lua]: end_message
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:99
 msgid "The End"
 msgstr "Fin"
 
@@ -2962,10 +3046,8 @@ msgstr "Pic cruel"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:117
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: charge"
-msgstr "corps à corps : charge facultative"
+msgstr "corps à corps : charge"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:118
@@ -3004,10 +3086,8 @@ msgstr "Arc œil de lynx"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:155
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "ranged: marksman and +25% damage"
-msgstr "$range| : arcane et +25% dégâts"
+msgstr "à distance : arcane et +25% de dégâts"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:156
@@ -3025,10 +3105,8 @@ msgstr "Grimoire interdit"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:179
-#, fuzzy
-#| msgid "melee: optional charge"
 msgid "melee: plague"
-msgstr "corps à corps : charge facultative"
+msgstr "corps à corps : peste"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:180
@@ -3201,14 +3279,15 @@ msgstr ""
 msgid "Melange"
 msgstr "Concoction"
 
+# Au féminin pour 'Concoction'
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:398
 #, fuzzy
-#| msgid "no undead^consumed by a living being:"
 msgid ""
 "no undead^consumed by a living being: +1 damage and +1 moves and -20% XP to "
 "advance"
-msgstr "consommée par les vivants :"
+msgstr ""
+"consommée par les vivants : +1 de dégâts, +1 PM et -20 % de XP pour évoluer"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:399
@@ -3285,10 +3364,8 @@ msgstr "Racine de wose vénérable"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:485
-#, fuzzy
-#| msgid "$range|: arcane and +25% damage"
 msgid "impact: +1 strike and +2 damage"
-msgstr "$range| : arcane et +25% dégâts"
+msgstr ""
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:486
@@ -3467,10 +3544,8 @@ msgstr "Tome des secrets"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
-#, fuzzy
-#| msgid "XP to advance"
 msgid "-50% XP to advance"
-msgstr "de XP pour évoluer"
+msgstr "-50% de XP pour évoluer"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3727,10 +3802,8 @@ msgstr ""
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:220
-#, fuzzy
-#| msgid "disengage"
 msgid "ranged: disengage"
-msgstr "désengagement"
+msgstr "à distance : désengagement"
 
 #. [dummy]: id=wc2_disengage
 #: data/campaigns/World_Conquest/resources/data/training.cfg:234
@@ -3837,8 +3910,8 @@ msgstr "Village/Château : +5 % de défense"
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
-"$terrain| : +$def| % de défense et 1 PM, +$res| % de résistance au "
-"type $dmg_type|"
+"$terrain| : +$def| de défense et déplacement intégral, +$res|"
+" résistance contre $dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:706
@@ -3873,17 +3946,10 @@ msgid "World Conquest 3p"
 msgstr "Conquête du monde à 3 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:14
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "World Conquest 4p"
-msgstr "Conquête du monde à 1 joueur"
+msgstr "Conquête du monde à 4 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
-#, fuzzy
-#| msgid ""
-#| "A randomly generated campaign for 1 player. It has 6 level of "
-#| "difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated campaign for 1 player. It has 6 levels of difficulty.\n"
 "(Expert level, 5 scenarios.)"
@@ -3893,11 +3959,6 @@ msgstr ""
 "(Niveau expert, 5 scénarios)."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:21
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 2 players. It has 6 levels of "
 "difficulty.\n"
@@ -3908,32 +3969,22 @@ msgstr ""
 "(Niveau expert, 5 scénarios)."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:25
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 3 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 3 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
+"Une campagne générée aléatoirement pour 3 joueurs. Comporte 6 niveaux de "
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 level "
-#| "of difficulties.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 level of "
 "difficulties.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Une campagne générée aléatoirement pour 2 joueurs. Comporte 6 niveaux de "
+"Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 
@@ -3989,17 +4040,13 @@ msgstr ""
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:109
-#, fuzzy
-#| msgid "Granary"
 msgid "Grand Marshal"
-msgstr "Grenier"
+msgstr "Maréchal"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
-#, fuzzy
-#| msgid "expert"
 msgid "Expert"
-msgstr "expert"
+msgstr "Expert"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:110
@@ -4043,9 +4090,6 @@ msgstr ""
 #~ "\n"
 #~ "Quels sont vos nouveaux ordres ?"
 
-#~ msgid "Random"
-#~ msgstr "Aléatoire"
-
 #~ msgid " and "
 #~ msgstr " et "
 
@@ -4073,9 +4117,6 @@ msgstr ""
 # Dans le sens "ne coûte que 1 PM".
 #~ msgid "full movement"
 #~ msgstr "déplacement sans pénalité"
-
-#~ msgid "terrain^water"
-#~ msgstr "eau"
 
 #~ msgid "improved defenses"
 #~ msgstr "défenses améliorées"

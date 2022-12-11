@@ -230,13 +230,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
-	for(unit_ability_list::iterator i = res.begin(); i != res.end();) {
-		if((!ability_affects_weapon(*i->ability_cfg, weapon, false) || !ability_affects_weapon(*i->ability_cfg, opp_weapon, true))) {
-			i = res.erase(i);
-		} else {
-			++i;
-		}
-	}
+	utils::erase_if(res, [&](const unit_ability& i) {
+		return !ability_affects_weapon(*i.ability_cfg, weapon, false) || !ability_affects_weapon(*i.ability_cfg, opp_weapon, true);
+	});
 	return res;
 }
 
@@ -1247,42 +1243,30 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
-	unit_ability_list abil_other_list(loc);
 	if(self_) {
-		abil_list.append((*self_).get_abilities(ability, self_loc_));
-		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, "filter_student")) {
-				i = abil_list.erase(i);
-			} else {
-				++i;
-			}
-		}
+		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
+			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+		});
 	}
 
 	if(other_) {
-		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
-		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, "filter_student")) {
-				i = abil_other_list.erase(i);
-			} else {
-				++i;
-			}
-		}
+		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student");
+		});
 	}
 
-	abil_list.append(abil_other_list);
-	if(!abil_list.empty()){
-		abil_list = overwrite_special_checking(ability, abil_list, abil_list, "filter_student");
-	}
 	return abil_list;
 }
 
 unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	unit_ability_list abil_list = get_weapon_ability(special);
+	if(!abil_list.empty()){
+		abil_list = overwrite_special_checking(special, abil_list, abil_list, "filter_student", false);
+	}
 	unit_ability_list spe_list = get_specials(special);
 	if(!spe_list.empty()){
-		spe_list = overwrite_special_checking(special, spe_list, abil_list);
+		spe_list = overwrite_special_checking(special, spe_list, abil_list, "filter_self", true);
 		if(special == "plague" && !spe_list.empty()){
 			return spe_list;
 		}
@@ -1297,48 +1281,36 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list temp_list, const unit_ability_list& abil_list, const std::string& filter_self) const
+unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const
 {
-	bool overwrite_self = false;
-	bool overwrite_either = false;
+	for(unit_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
+		if(!overwrite_special_affects(*i->ability_cfg)) {
+			i = overwriters.erase(i);
+		} else {
+			++i;
+		}
+	}
+	if(overwriters.empty()){
+		return input;
+	}
 
-	for(const auto& i : abil_list) {
-		if((*i.ability_cfg)["overwrite_specials"] == "both_sides") {
-			overwrite_either = true;
-			break;
-		}
-		if(overwrite_special_affects(*i.ability_cfg) && (special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student"))) {
-			overwrite_self = true;
-		}
+	for(const auto& i : overwriters) {
+		bool affect_side = ((*i.ability_cfg)["overwrite_specials"] == "one_side");
+		utils::erase_if(input, [&](const unit_ability& j) {
+			bool is_overwritable = (is_special || !overwrite_special_affects(*j.ability_cfg));
+			bool one_side_overwritable = true;
+			if(affect_side && is_overwritable){
+				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self)){
+					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, *j.ability_cfg, AFFECT_SELF, ability, filter_self);
+				}
+				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self)){
+					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, filter_self);
+				}
+			}
+			return (is_overwritable && one_side_overwritable);
+		});
 	}
-	if(!overwrite_either && !overwrite_self){
-		return temp_list;
-	} else if(overwrite_either){
-		for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
-			bool overwrite = false;
-			if(filter_self == "filter_student"){
-				overwrite = overwrite_special_affects(*i->ability_cfg);
-			}
-			if(!overwrite && (special_active(*i->ability_cfg, AFFECT_SELF, ability, filter_self) || special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, filter_self))) {
-				i = temp_list.erase(i);
-			} else {
-				++i;
-			}
-		}
-	} else if(overwrite_self){
-		for(unit_ability_list::iterator i = temp_list.begin(); i != temp_list.end();) {
-			bool overwrite = false;
-			if(filter_self == "filter_student"){
-				overwrite = overwrite_special_affects(*i->ability_cfg);
-			}
-			if(!overwrite && special_active(*i->ability_cfg, AFFECT_SELF, ability, filter_self)) {
-				i = temp_list.erase(i);
-			} else {
-				++i;
-			}
-		}
-	}
-	return temp_list;
+	return input;
 }
 
 	/**
