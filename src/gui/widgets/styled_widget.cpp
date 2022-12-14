@@ -207,7 +207,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 
 		set_layout_size(size);
 
-		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_.str())
 				  << "' maximum_width " << maximum_width << " result " << size
 				  << ".";
 
@@ -221,7 +221,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 		          << " maximum_width " << maximum_width << " result " << size
 		          << ".";
 	} else {
-		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_.str())
 				  << "' failed; either no label or wrapping not allowed.";
 	}
 }
@@ -258,7 +258,7 @@ point styled_widget::calculate_best_size() const
 	 * and read it after calculation to get the proper result.
 	 */
 	point result = get_best_text_size(minimum, maximum);
-	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_.str())
 			  << "' result " << result << ".";
 	return result;
 }
@@ -433,7 +433,7 @@ int styled_widget::get_text_maximum_height() const
 
 void styled_widget::impl_draw_background()
 {
-	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
+	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_.str()) << "' size "
 			  << get_rectangle() << ".";
 
 	get_canvas(get_state()).draw();
@@ -480,7 +480,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 
 	DBG_GUI_L << LOG_HEADER << "\n"
 		<< std::boolalpha
-		<< "Label: '" << debug_truncate(label_) << "'\n\n"
+		<< "Label: '" << debug_truncate(label_.str()) << "'\n\n"
 		<< "Status:\n"
 		<< "minimum_size: " << minimum_size << "\n"
 		<< "maximum_size: " << maximum_size << "\n"
@@ -515,7 +515,7 @@ point styled_widget::get_best_text_size(point minimum_size, point maximum_size) 
 		size.y = minimum_size.y;
 	}
 
-	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_.str())
 			  << "' result " << size << ".";
 	return size;
 }

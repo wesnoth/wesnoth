@@ -87,7 +87,10 @@ public:
 	bool create_texture();
 
 	/** Return the size of the label in drawing coordinates */
-	SDL_Point get_draw_size() const { return {tex_.w(), tex_.h()}; }
+	SDL_Point get_draw_size() const
+	{
+		return get_bg_rect({0, 0, tex_.w(), tex_.h()}).size();
+	}
 
 	bool expired(int time) const { return lifetime_ >= 0 && get_time_alive(time) > lifetime_ + fadeout_; }
 
