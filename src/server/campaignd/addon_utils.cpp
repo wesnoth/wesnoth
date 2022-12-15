@@ -125,10 +125,11 @@ void find_translations(const config& base_dir, config& addon)
 
 void add_license(config& cfg)
 {
-	config& dir = cfg.find_child("dir", "name", cfg["campaign_name"]);
+	config& dir = cfg.child("dir");
 
 	// No top-level directory? Hm..
 	if(!dir) {
+		LOG_CS << "Could not find toplevel [dir] tag";
 		return;
 	}
 
