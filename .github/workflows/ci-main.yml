@@ -221,7 +221,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: W001
+          key: W002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -230,8 +230,7 @@ jobs:
         shell: cmd
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
-          cd D:/a/wesnoth/vcpkg
-          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
+          cd D:/a/wesnoth/vcpkg2
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
@@ -274,7 +273,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: W001
+          key: W002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.0.2
@@ -284,7 +283,6 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout cbc22a396c88d098247fe7f79f0913a952e1f77d
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
