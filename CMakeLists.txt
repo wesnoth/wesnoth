@@ -492,8 +492,8 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 		# for MSVC, vcpkg builds and provides SDL2-related modules for cmake to use, so use those
 		# this also fixes the issue with our previous FindSDL2* scripts incorrectly using the Release version of these libs instead of the Debug version
 		find_package(SDL2 2.0.8 CONFIG REQUIRED)
-		find_package(sdl2-image CONFIG REQUIRED)
-		find_package(sdl2-mixer CONFIG REQUIRED)
+		find_package(SDL2_image CONFIG REQUIRED)
+		find_package(SDL2_mixer CONFIG REQUIRED)
 	endif()
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.22.0)
