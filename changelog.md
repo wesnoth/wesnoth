@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Sceptre of Fire
+     * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
  ### Editor
  ### Multiplayer
  ### Lua API
