@@ -44,6 +44,12 @@ static_assert(utils::sha1::DIGEST_SIZE == CC_SHA1_DIGEST_LENGTH, "Constants mism
 
 #endif
 
+#ifdef _MSC_VER
+#pragma warning(push)
+// silence openssl deprecation warnings since vcpkg updated to openssl 3
+#pragma warning(disable:4996)
+#endif
+
 namespace {
 
 const std::string hash_prefix = "$H$";
@@ -211,3 +217,7 @@ std::string bcrypt::base64_digest() const
 }
 
 } // namespace utils
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif

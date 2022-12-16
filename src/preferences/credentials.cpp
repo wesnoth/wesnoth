@@ -40,6 +40,12 @@ static lg::log_domain log_config("config");
 #define DBG_CFG LOG_STREAM(debug , log_config)
 #define ERR_CFG LOG_STREAM(err , log_config)
 
+#ifdef _MSC_VER
+#pragma warning(push)
+// silence openssl deprecation warnings since vcpkg updated to openssl 3
+#pragma warning(disable:4996)
+#endif
+
 class secure_buffer : public std::vector<unsigned char>
 {
 public:
@@ -361,3 +367,7 @@ secure_buffer escape(const secure_buffer& text)
 	}
 	return escaped;
 }
+
+#ifdef _MSC_VER
+#pragma warning(pop)
+#endif
