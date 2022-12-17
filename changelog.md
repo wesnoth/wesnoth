@@ -16,6 +16,8 @@
    * Added some dragonfly units to "monsters"
  ### User interface
  ### WML Engine
+ ### Miscellaneous and Bug Fixes
+   * Fixed a crash when moving certain walking corpse variations north due to missing animations. (issue #7190)
 
 ## Version 1.17.10
  ### Terrain
