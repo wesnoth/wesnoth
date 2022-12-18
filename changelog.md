@@ -17,6 +17,10 @@
  ### Campaigns
    * Sceptre of Fire
      * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
+   * Heir to the Throne: 
+     * S05B: Delurin now has traits Loyal + resilient + intelligent
+   * Liberty:
+     * The non-loyal character Delurin now has traits resilient + intelligent 
  ### Translations
    * Updated translations: Arabic, British English, Finnish, French
  ### Units
@@ -24,6 +28,7 @@
    * Added some dragonfly units to "monsters"
  ### Miscellaneous and Bug Fixes
    * Fixed a crash when moving certain walking corpse variations north due to missing animations. (issue #7190)
+   * Fixed special notes being duplicated when storing units (issue #7153).
 
 ## Version 1.17.10
  ### Terrain
