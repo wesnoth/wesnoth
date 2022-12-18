@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
+"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
 "PO-Revision-Date: 2022-11-20 19:21+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -2869,14 +2869,18 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "Wesnoth Test — Elevated Terrain Example Scenario"
-msgstr "Wesnoth Test — Elevated Terrain Example Scenario"
+msgid "3p - Elevation Test"
+msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
+#, fuzzy
+#| msgid ""
+#| "This map is an example of how to use the new (BfW v1.17) elevated terrain "
+#| "graphics. It is not a good map for real MP use."
 msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
-"graphics. It is not a good map for real MP use."
+"graphics. Please be advised that it is not intended for playing."
 msgstr ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
 "graphics. It is not a good map for real MP use."
@@ -2922,6 +2926,9 @@ msgid ""
 msgstr ""
 "A wesnoth benchmark, use --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+#~ msgstr "Wesnoth Test — Elevated Terrain Example Scenario"
 
 #~ msgid "Grand total: <b>%d</b>"
 #~ msgstr "Grand total: <b>%d</b>"

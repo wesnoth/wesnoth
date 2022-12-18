@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3958,7 +3958,7 @@ msgstr "Publicar add-on"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
-#: src/gui/dialogs/addon/manager.cpp:996
+#: src/gui/dialogs/addon/manager.cpp:999
 msgid "Uninstall add-on"
 msgstr "Desinstalar add-on"
 
@@ -4524,7 +4524,7 @@ msgstr "Dependências:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1074
+#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1077
 msgid "addon_dependencies^None"
 msgstr "Nenhuma"
 
@@ -4543,7 +4543,7 @@ msgstr "Traduções:"
 # File: data/gui/default/window/addon_description.cfg, line: 320
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1088
+#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1091
 msgid "translations^None"
 msgstr "Nenhuma"
 
@@ -4601,8 +4601,8 @@ msgstr "Gerenciador de Add-ons"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:537
-#: src/gui/dialogs/addon/manager.cpp:809
+#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: src/gui/dialogs/addon/manager.cpp:812
 msgid "Add-on Details"
 msgstr "Detalhes do Add-on"
 
@@ -5125,7 +5125,7 @@ msgstr "Deletar PdD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:972 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Confirmar"
@@ -5358,7 +5358,7 @@ msgstr "Descrição:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Experience modifier:"
 msgstr "Modificador de experiência:"
 
@@ -5456,7 +5456,7 @@ msgstr "Ouro:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Gold per village:"
 msgstr "Ouro por aldeia:"
 
@@ -5557,7 +5557,7 @@ msgstr "Escolha um gerador de mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Settings"
 msgstr "Preferências"
 
@@ -6717,7 +6717,7 @@ msgstr "Criar Jogo"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "Join"
 msgstr "Entrar"
 
@@ -6731,7 +6731,7 @@ msgstr "Entrar"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid "Observe"
 msgstr "Observar"
 
@@ -7659,7 +7659,7 @@ msgstr "Configurar senha que os jogadores que querem entrar no jogo devem usar"
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Map size:"
 msgstr "Tamanho do mapa:"
 
@@ -9532,8 +9532,8 @@ msgstr "Erro"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
-#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
+#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Detalhes:"
 
@@ -10174,29 +10174,29 @@ msgstr "Desconhecido"
 # File: src/hotkey_preferences_display.cpp, line: 252
 # File: src/hotkey_preferences_display.cpp, line: 252
 # File: src/hotkey_preferences_display.cpp, line: 252
-#: src/gui/dialogs/addon/manager.cpp:430
+#: src/gui/dialogs/addon/manager.cpp:433
 msgid "ascending"
 msgstr "subindo"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:432
+#: src/gui/dialogs/addon/manager.cpp:435
 msgid "oldest to newest"
 msgstr "mais antigo para o mais novo"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:438
 msgid "descending"
 msgstr "descendo"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:437
+#: src/gui/dialogs/addon/manager.cpp:440
 msgid "newest to oldest"
 msgstr "mais recente para o mais antigo"
 
-#: src/gui/dialogs/addon/manager.cpp:534
+#: src/gui/dialogs/addon/manager.cpp:537
 msgid "addons^Back to List"
 msgstr "Voltar para a Lista"
 
-#: src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:549
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Ocorreu um erro ao baixar a lista de add-ons do servidor."
 
@@ -10204,15 +10204,15 @@ msgstr "Ocorreu um erro ao baixar a lista de add-ons do servidor."
 # File: data/gui/default/window/addon_description.cfg, line: 288
 # File: data/gui/default/window/addon_description.cfg, line: 288
 # File: data/gui/default/window/addon_description.cfg, line: 288
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "No Add-ons Available"
 msgstr "Nenhum Add-on disponível"
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "There are no add-ons available for download from this server."
 msgstr "Não há nenhum add-on disponível para download neste servidor."
 
-#: src/gui/dialogs/addon/manager.cpp:851
+#: src/gui/dialogs/addon/manager.cpp:854
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -10220,7 +10220,7 @@ msgstr ""
 "O seguinte add-on aparenta ter controle de informações de versão ou "
 "publicação armazenados localmente e, portanto, não será removido:"
 
-#: src/gui/dialogs/addon/manager.cpp:859
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid "The following add-on could not be deleted properly:"
 msgstr "O seguinte add-on não fo deletado corretamente:"
 
@@ -10228,11 +10228,11 @@ msgstr "O seguinte add-on não fo deletado corretamente:"
 # File: src/hotkey_preferences_display.cpp, line: 637
 # File: src/hotkey_preferences_display.cpp, line: 637
 # File: src/hotkey_preferences_display.cpp, line: 637
-#: src/gui/dialogs/addon/manager.cpp:912
+#: src/gui/dialogs/addon/manager.cpp:915
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/gui/dialogs/addon/manager.cpp:913
+#: src/gui/dialogs/addon/manager.cpp:916
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -10240,26 +10240,26 @@ msgstr ""
 "A versão remota deste add-on é maior ou igual a versão que está sendo "
 "enviada. Você realmente deseja continuar?"
 
-#: src/gui/dialogs/addon/manager.cpp:932
+#: src/gui/dialogs/addon/manager.cpp:935
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Caminho do ícone inválido. Certifique-se que o caminho leva para uma imagem "
 "válida."
 
-#: src/gui/dialogs/addon/manager.cpp:935 src/gui/dialogs/addon/manager.cpp:977
+#: src/gui/dialogs/addon/manager.cpp:938 src/gui/dialogs/addon/manager.cpp:980
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
-#: src/gui/dialogs/addon/manager.cpp:938
+#: src/gui/dialogs/addon/manager.cpp:941
 msgid "The add-on was rejected by the server:"
 msgstr "O add-on foi rejeitado pelo servidor:"
 
-#: src/gui/dialogs/addon/manager.cpp:953 src/gui/dialogs/addon/manager.cpp:980
+#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:983
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "Resposta"
 
-#: src/gui/dialogs/addon/manager.cpp:965
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -10271,25 +10271,25 @@ msgstr ""
 # File: data/gui/default/window/game_delete.cfg, line: 60
 # File: data/gui/default/window/game_delete.cfg, line: 60
 # File: data/gui/default/window/game_delete.cfg, line: 60
-#: src/gui/dialogs/addon/manager.cpp:997
+#: src/gui/dialogs/addon/manager.cpp:1000
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Você desinstalar '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1028
+#: src/gui/dialogs/addon/manager.cpp:1031
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d-%m-%Y %H:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1030
+#: src/gui/dialogs/addon/manager.cpp:1033
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%d-%m-%Y %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1091
+#: src/gui/dialogs/addon/manager.cpp:1094
 msgid "url^None"
 msgstr "Nenhum"
 
@@ -10322,13 +10322,13 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:436
+#: src/gui/dialogs/multiplayer/lobby.cpp:437
 msgid "active_modifications^None"
 msgstr "Nenhum"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:144
-#: src/gui/dialogs/gamestate_inspector.cpp:409
+#: src/gui/dialogs/gamestate_inspector.cpp:416
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192
@@ -10687,7 +10687,7 @@ msgstr "Desconhecido"
 # File: src/game_preferences_display.cpp, line: 1090
 # File: src/game_preferences_display.cpp, line: 1090
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "no"
 msgstr "não"
 
@@ -10696,7 +10696,7 @@ msgstr "não"
 # File: src/game_preferences_display.cpp, line: 1088
 # File: src/game_preferences_display.cpp, line: 1088
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "yes"
 msgstr "sim"
 
@@ -10888,11 +10888,11 @@ msgstr "Aleatório"
 msgid "Do you really want to log out?"
 msgstr "Você realmente deseja sair?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid "Incompatible User-made Content"
 msgstr "Conteúdo Feito por Usuários Incompatível"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -10902,11 +10902,11 @@ msgstr ""
 "que são incompatíveis com a sua versão. Talvez você queria sugerir que o "
 "host atualize os seus add-ons."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid "Missing User-made Content"
 msgstr "Conteúdo Feito por Usuários Faltando"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -10920,11 +10920,11 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
 # File: src/gui/dialogs/lobby_main.cpp, line: 662
-#: src/gui/dialogs/multiplayer/lobby.cpp:369
+#: src/gui/dialogs/multiplayer/lobby.cpp:370
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Jogos: mostrando $num_shown de $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:392
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Era: $era_name)"
 
@@ -10932,7 +10932,7 @@ msgstr "$game_name (Era: $era_name)"
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
 # File: src/gui/dialogs/addon/description.cpp, line: 47
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:422
 msgid "era_or_mod^not installed"
 msgstr "Não instalado"
 
@@ -10940,7 +10940,7 @@ msgstr "Não instalado"
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
 # File: data/gui/default/window/mp_create_game.cfg, line: 185
-#: src/gui/dialogs/multiplayer/lobby.cpp:424
+#: src/gui/dialogs/multiplayer/lobby.cpp:425
 msgid "Era"
 msgstr "Era"
 
@@ -10948,7 +10948,7 @@ msgstr "Era"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/multiplayer/lobby.cpp:431
+#: src/gui/dialogs/multiplayer/lobby.cpp:432
 msgid "Modifications"
 msgstr "Modificações"
 
@@ -10956,15 +10956,15 @@ msgstr "Modificações"
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
 # File: data/gui/default/window/lobby_main.cfg, line: 179
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Reloaded:"
 msgstr "Recarregado:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shared vision:"
 msgstr "Visão compartilhada:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shuffle sides:"
 msgstr "Times embaralhados:"
 
@@ -10972,7 +10972,7 @@ msgstr "Times embaralhados:"
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
 # File: data/gui/default/window/lobby_main.cfg, line: 186
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Time limit:"
 msgstr "Tempo limite:"
 
@@ -10983,11 +10983,11 @@ msgstr "Tempo limite:"
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
 # File: data/gui/default/window/lobby_main.cfg, line: 178
 # File: data/gui/default/window/mp_create_game.cfg, line: 321
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Use map settings:"
 msgstr "Usar configurações do mapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:468
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -10999,7 +10999,7 @@ msgstr ""
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
 # File: src/gui/dialogs/lobby_main.cpp, line: 705
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Observers allowed"
 msgstr "Observadores permitidos"
 
@@ -11007,7 +11007,7 @@ msgstr "Observadores permitidos"
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
 # File: src/gui/dialogs/lobby_main.cpp, line: 708
-#: src/gui/dialogs/multiplayer/lobby.cpp:496
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid "Observers not allowed"
 msgstr "Observadores não permitidos"
 
@@ -11015,17 +11015,17 @@ msgstr "Observadores não permitidos"
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
 # File: data/gui/default/window/lobby_main.cfg, line: 339
-#: src/gui/dialogs/multiplayer/lobby.cpp:627
+#: src/gui/dialogs/multiplayer/lobby.cpp:628
 msgid "lobby"
 msgstr "saguão"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Este jogo não permite observadores. Observar usando privilégios de moderador?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:841
+#: src/gui/dialogs/multiplayer/lobby.cpp:842
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -11033,7 +11033,7 @@ msgstr ""
 "Algo está errado com a checagem da versão do add-on no saguão multiplayer. "
 "Por favor reporte este bug em http://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Este jogo está protegido por uma senha. Entrar usando privilégios de "

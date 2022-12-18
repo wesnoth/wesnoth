@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -341,41 +341,41 @@ msgid "Artwork and Graphics"
 msgstr "Grafični oblikovalci"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Glasba"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Zvočni učinki"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 #, fuzzy
 msgid "Campaign Design"
 msgstr "Razvijalci kampanj"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 #, fuzzy
 msgid "Multiplayer Maps and Balancing"
 msgstr "Večigralske karte"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 #, fuzzy
 msgid "Packagers"
 msgstr "Paketarji"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 #, fuzzy
 msgid "Miscellaneous Contributors"
 msgstr "Razno"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 #, fuzzy
 msgid "Bots"
 msgstr "IRC roboti"
@@ -5117,12 +5117,12 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 msgid "cured"
 msgstr "razstrupljevalec"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 msgid "female^cured"
 msgstr "Princesa"
@@ -8487,7 +8487,7 @@ msgstr "Splošni ukazi"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] ""
@@ -8681,17 +8681,17 @@ msgstr "zvesta"
 msgid "female^neutral"
 msgstr "nevtralna"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "na potezo"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8701,25 +8701,25 @@ msgstr[1] "na potezo"
 msgstr[2] "na potezo"
 msgstr[3] "na potezo"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "na potezo"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "na potezo"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "na potezo"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8730,13 +8730,13 @@ msgstr[1] "na potezo"
 msgstr[2] "na potezo"
 msgstr[3] "na potezo"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "na potezo"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"
