@@ -1,21 +1,12 @@
-## Version 1.17.10+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.11
  ### Campaigns
    * Sceptre of Fire
      * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Finnish, French
  ### Units
    * Moved Kraken from campaigns to core, updated sprite
    * Added some dragonfly units to "monsters"
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed a crash when moving certain walking corpse variations north due to missing animations. (issue #7190)
 
