@@ -43,9 +43,9 @@ public:
 		: list_(list)
 		, handler_(handler)
 	{}
-	/** Check if this handler is valid. */
+	/// Check if this handler is valid.
 	bool valid() const {return handler_.get();}
-	/** Access the event handler. */
+	/// Access the event handler.
 	event_handler* operator->() {return handler_.get();}
 	event_handler& operator*() {return *handler_;}
 	pending_event_handler(pending_event_handler&&) = default;
