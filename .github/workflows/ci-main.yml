@@ -236,7 +236,7 @@ jobs:
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13
         with:
-          cmake-version: '3.20'
+          cmake-version: '3.20.6'
 
       - name: Use cmake
         run: |
@@ -288,7 +288,7 @@ jobs:
       - name: Setup cmake
         uses: jwlawson/actions-setup-cmake@v1.13
         with:
-          cmake-version: '3.20'
+          cmake-version: '3.20.6'
 
       - name: Use cmake
         run: |
