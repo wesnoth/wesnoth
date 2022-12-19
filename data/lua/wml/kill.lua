@@ -54,10 +54,10 @@ function wesnoth.wml_actions.kill(cfg)
 				if secondary_unit then
 					found_attack = secondary_unit:find_attack(primary)
 				end
-				if not found_attack then
-					primary = wesnoth.units.create_weapon(primary)
-				else
+				if found_attack then
 					primary = found_attack
+				else
+					primary = wesnoth.units.create_weapon(primary)
 				end
 				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
 			end
@@ -66,10 +66,10 @@ function wesnoth.wml_actions.kill(cfg)
 				if primary then
 					found_weapon = unit:find_attack(secondary)
 				end
-				if not found_weapon then
-					found_weapon = wesnoth.units.create_weapon(secondary)
-				else
+				if found_weapon then
 					secondary = found_weapon
+				else
+					found_weapon = wesnoth.units.create_weapon(secondary)
 				end
 				wesnoth.log('err', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
 			end
