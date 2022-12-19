@@ -69,7 +69,7 @@ function wesnoth.wml_actions.kill(cfg)
 				if found_weapon then
 					secondary = found_weapon
 				else
-					found_weapon = wesnoth.units.create_weapon(secondary)
+					secondary = wesnoth.units.create_weapon(secondary)
 				end
 				wesnoth.log('info', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
 			end
