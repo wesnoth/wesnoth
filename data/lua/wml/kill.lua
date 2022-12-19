@@ -59,7 +59,7 @@ function wesnoth.wml_actions.kill(cfg)
 				else
 					primary = wesnoth.units.create_weapon(primary)
 				end
-				wesnoth.log('err', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
+				wesnoth.log('info', "Primary weapon:\n" .. wml.tostring(primary.__cfg))
 			end
 			if secondary then
 				local found_weapon = nil
@@ -71,7 +71,7 @@ function wesnoth.wml_actions.kill(cfg)
 				else
 					found_weapon = wesnoth.units.create_weapon(secondary)
 				end
-				wesnoth.log('err', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
+				wesnoth.log('info', "Secondary weapon:\n" .. wml.tostring(secondary.__cfg))
 			end
 			anim:add(unit, "death", "kill", {primary = primary, secondary = secondary})
 			if secondary_unit then
