@@ -1294,6 +1294,8 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 		return input;
 	}
 
+	deprecated_message("overwrite_specials= in abilities used like weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [overwrite_specials] abilities instead.");
+
 	for(const auto& i : overwriters) {
 		bool affect_side = ((*i.ability_cfg)["overwrite_specials"] == "one_side");
 		utils::erase_if(input, [&](const unit_ability& j) {
@@ -1505,6 +1507,36 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 	return false;
 }
 
+bool attack_type::anti_special_or_ability(const config& special , const std::string& type, AFFECTS whom) const
+{
+	unit_ability_list abil_list = get_weapon_ability("overwrite_specials");
+	if(abil_list.empty()){
+		return false;
+	}
+
+	for(const auto& i : abil_list) {
+		bool affect_side = (*i.ability_cfg)["one_side_only"].to_bool();
+		bool one_side_overwritable = true;
+		if(affect_side){
+			if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, "overwrite_specials", "filter_student")){
+				one_side_overwritable = (whom == AFFECT_SELF);
+			}
+			else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, "overwrite_specials", "filter_student")){
+				one_side_overwritable = (whom == AFFECT_OTHER);
+			}
+		}
+		const config& overwrite_filter = (*i.ability_cfg).child("overwrite_filter");
+		bool special_matches = true;
+			if( one_side_overwritable && overwrite_filter){
+				special_matches = self_ ? (*self_).ability_matches_filter(special, type, overwrite_filter) : false;
+			}
+			if(special_matches && one_side_overwritable){
+				return true;
+			}
+	}
+	return false;
+}
+
 bool attack_type::has_special_or_ability(const std::string& special, bool special_id, bool special_tags) const
 {
 	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
@@ -1591,6 +1623,11 @@ bool attack_type::special_active_impl(
 	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(special, is_attacker)));
 	unit_const_ptr them = whom_is_self ? other : self;
 	map_location their_loc = whom_is_self ? other_loc : self_loc;
+	const_attack_ptr self_weapon = whom_is_self ? self_attack : other_attack;
+
+	if (tag_name != "overwrite_specials" && self_weapon && self_weapon->anti_special_or_ability(special, tag_name, whom)) {
+		return false;
+	}
 
 	if (tag_name == "drains" && them && them->get_state("undrainable")) {
 		return false;

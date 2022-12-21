@@ -152,6 +152,13 @@ private:
 	 * @param from unit adjacent to self_ is checked.
 	 */
 	bool check_adj_abilities(const config& cfg, const std::string& special, int dir, const unit& from) const;
+	/** anti_special_or_ability : return an boolean value if detect ability/specials to overwrite
+	 * @return True if the special @a special matches.
+	 * @param special the config to one special ability checked.
+	 * @param type The special ability type who is being checked.
+	 * @param whom If special checked applied to self or other.
+	 */
+	bool anti_special_or_ability(const config& special , const std::string& type, AFFECTS whom) const;
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    const std::string& filter_self ="filter_self") const;
 

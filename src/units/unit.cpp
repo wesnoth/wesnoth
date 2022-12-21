@@ -1554,6 +1554,9 @@ static bool type_value_if_present(const config& filter, const config& cfg)
 
 static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 {
+	if(!filter["overwrite_specials"].empty()){
+		deprecated_message("overwrite_specials= in [filter_abilities] or [overwrite_filter]", DEP_LEVEL::INDEFINITE, "", "");
+	}
 	if(!bool_matches_if_present(filter, cfg, "affect_self", true))
 		return false;
 
