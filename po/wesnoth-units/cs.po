@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-12-18 01:09 UTC\n"
-"PO-Revision-Date: 2022-11-10 19:53+0100\n"
+"PO-Revision-Date: 2022-12-21 08:35+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -804,10 +804,10 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
-"Trénink a dostatek bojových zkušeností proměňuje gardisty v mnohem cennější "
+"Trénink a dostatek bojových zkušeností proměňuje gardisty v mnohem cennější "
 "vojáky. Jednotky přezdívané „siláci“ dostávají vybavení odpovídající jejich "
-"dovednostem. Dokáží udržet pozici navzdory téměř jakýmkoliv útokům a ztratit "
-"v jejich prospěch obranný bod je nebezpečné, nelze se jich totiž jen tak "
+"dovednostem. Dokáží udržet pozici navzdory téměř jakýmkoliv útokům a ztratit "
+"v jejich prospěch obranný bod je nebezpečné, nelze se jich totiž jen tak "
 "snadno zbavit."
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
@@ -1178,10 +1178,10 @@ msgid ""
 "dispute their right to do so."
 msgstr ""
 "Černý pancíř označuje elitní řád kasty bojovníků – mistry meče. Nemnohým se "
-"podaří získat potřebný um a moc, potřebné pro postup na tuto úroveň, aniž "
-"zahynou v bojích. I když snad někteří drakonidé pomlouvají bojovnickou "
+"podaří získat um a moc potřebné pro postup na tuto nejvyšší úroveň, aniž "
+"zahynou v bojích. I když snad někteří drakonidé pomlouvají bojovnickou "
 "kastu, dávají si pozor, aby žádní nebyli nebyl poblíž; mistři meče doslova "
-"žárlivě brání čest kolegů a nikdo by si netroufl s nimi nesouhlasit."
+"žárlivě brání čest kolegů a nikdo by si netroufl s nimi nesouhlasit."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:27
@@ -5922,10 +5922,8 @@ msgstr "inkoust"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:5
-#, fuzzy
-#| msgid "Dragoon"
 msgid "Dragonfly"
-msgstr "Dragoun"
+msgstr "Vážka"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:27
@@ -5936,11 +5934,16 @@ msgid ""
 "are generally territorial, but can cooperate in small groups to confront "
 "common foes or large prey."
 msgstr ""
+"Obří vážky pozorované v některých močálech, řekách a jezerech v okolí "
+"Wesnothu mají delší životní cyklus než menší, běžnější druhy. Dospělec může "
+"žít neomezeně dlouho a pomalu roste do konečné podoby. Obvykle žijí "
+"teritoriálně, ale mohou spolupracovat v malých skupinách, aby čelily "
+"společným nepřátelům nebo velké kořisti."
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
 msgid "Dragonfly Naiad"
-msgstr ""
+msgstr "Najáda vážky"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
@@ -5950,6 +5953,10 @@ msgid ""
 "stay submerged to breath, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
+"Mladé vážky jsou vodní tvorové, většinou loví malé ryby nebo nymfy jiného "
+"hmyzu. Dokážou přelézt kameny a bahno, ale musí zůstávat pod vodou, aby "
+"dýchaly, což vysvětluje, proč se velké vážky obvykle vyskytují pouze poblíž "
+"řek, jezer a zátok."
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
@@ -6166,7 +6173,7 @@ msgstr ""
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
 msgid "Giant Scorpion"
-msgstr "Obří škorpion"
+msgstr "Obří štír"
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:42
@@ -6174,8 +6181,8 @@ msgid ""
 "A normal scorpion is dangerous enough — the deadliness of one the size of a "
 "man needs little explanation."
 msgstr ""
-"Normální škorpióni jsou dost nebezpeční – jsou-li však velcí jako člověk, "
-"není nutné nic dalšího vysvětlovat."
+"Normální štíři jsou dost nebezpeční – jsou-li však velcí jako člověk, není "
+"nutné nic dalšího vysvětlovat."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Giant_Scorpion.cfg:47
@@ -6216,7 +6223,7 @@ msgstr ""
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:4
 msgid "Giant Scorpling"
-msgstr "Obří škorpioně"
+msgstr "Obří štírek"
 
 #. [unit_type]: id=Giant Scorpling, race=monster
 #: data/core/units/monsters/Giant_Scorpling.cfg:27
@@ -6233,17 +6240,17 @@ msgid ""
 "carapace is very resistant to normal blade strikes or piercing attacks, but "
 "can be broken with heavy blows."
 msgstr ""
-"Už i nedospělí obří škorpióni disponují jedním z nejúčinnějších známých "
-"jedů. Protože je jed škorpiónů velmi ceněn vrahy i apatykáři, vydávají se "
-"tato mláďata lovit do divočiny odvážní lovci, kteří v nich vidí výhodný "
-"zdroj, kterým se dá přijít k pěkným pár mincím. I v nedospělém věku však "
-"tyto škorpióňata mohou být rychlejší než většina mužů a zasadit smrtící "
-"bodnutí. Horší však je, že se mohou sdružovat do poměrně velkých doupat. "
-"Rozhněvání zdánlivě osamělého škorpioněte proto může vést k tomu, že se jich "
-"ze země vyplazí celý roj a rychle se tak z lovce stane lovený. Jsou chráněna "
-"pevnou skořápkou, která se stárnutím vytvrzuje a stává se odolnější. Tento "
-"krunýř je velmi odolný proti běžným sekům čepelí či proti bodnutím, ale může "
-"být zničen silnými údery."
+"Už i nedospělí obří štíři disponují jedním z nejúčinnějších známých jedů. "
+"Protože je jed štírů velmi ceněn vrahy i apatykáři, vydávají se tato mláďata "
+"lovit do divočiny odvážní lovci, kteří v nich vidí výhodný zdroj, kterým se "
+"dá přijít k pěkným pár mincím. I v nedospělém věku však tito štírci mohou "
+"být rychlejší než většina lidí a zasadit smrtící bodnutí. Horší však je, že "
+"se mohou sdružovat do poměrně velkých doupat. Rozhněvání zdánlivě osamělého "
+"štírka proto může vést k tomu, že se jich ze země vyplazí celé hejno "
+"a rychle se tak z lovce stane lovený. Jsou chráněni pevnou skořápkou, která "
+"se stárnutím vytvrzuje a stává se odolnější. Tento krunýř je velmi odolný "
+"proti běžným sekům čepelí či proti bodnutím, ale může být zničen silnými "
+"údery."
 
 #. [unit_type]: id=Giant Spider, race=monster
 #: data/core/units/monsters/Giant_Spider.cfg:4
@@ -6341,14 +6348,12 @@ msgid ""
 msgstr ""
 "Šedohříváci jsou divoká zvířata. Nicméně se zdá, že je zvláště zajímají "
 "civilizované rasy. Nezanechávají po sobě stopy své přítomnosti, ale bylo "
-"pozorováno, jak během nocí pozorují tábory a základny různých ras."
+"pozorováno, jak během nocí prozkoumávají tábory a základny různých ras."
 
 #. [male]
 #: data/core/units/monsters/Horse_Dark.cfg:88
-#, fuzzy
-#| msgid "female^Dark Horse"
 msgid "male^Dark Horse"
-msgstr "Šedohřivka"
+msgstr "Šedohřívák"
 
 #. [female]
 #: data/core/units/monsters/Horse_Dark.cfg:92
@@ -6466,22 +6471,16 @@ msgstr "pouštní blesk"
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
 msgid "Kraken"
-msgstr ""
+msgstr "Kraken"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cuttlefish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Krakens are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"Sépie jsou obrovská mořská stvoření. Dokáží uchopit své protivníky silnými "
+"Krakeni jsou obrovská mořská stvoření. Dokáží uchopit své protivníky silnými "
 "chapadly nebo z dálky plivat jedovatý inkoust. Nejlepší způsob jak přežít "
 "setkání s těmito obludami je zůstat na břehu."
 
@@ -6541,7 +6540,7 @@ msgstr ""
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:4
 msgid "Rock Scorpion"
-msgstr "Obří škorpion skalní"
+msgstr "Obří štír skalní"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
@@ -6552,11 +6551,11 @@ msgid ""
 "Unlike most scorpions, they do not deliver their poison with a piercing "
 "stinger, but instead spray their enemies with a noxious, volatile stream."
 msgstr ""
-"Skalní škorpióni jsou známí z příběhů loupežníků a opilců, o jejich skutečné "
+"Skalní štíři jsou známí z příběhů loupežníků a opilců, o jejich skutečné "
 "existenci je však jen málo důkazů. Jsou popisováni jako nenápadné příšery "
 "pokryté kousky skály a s ostrými drápy z krystalů. Na rozdíl od většiny "
-"škorpiónů nevpichují svůj jed pronikavým bodcem, místo toho jej na své "
-"nepřátele stříkají v proudu jedovaté těkavé kapaliny."
+"štírů nevpichují svůj jed pronikavým bodcem, místo toho jej na své nepřátele "
+"stříkají v proudu jedovaté těkavé kapaliny."
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Rock_Scorpion.cfg:61
@@ -7638,10 +7637,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "Ještěrácká ochránkyně"
+msgstr "Ještěrácká oštěpařka"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:19
@@ -7651,6 +7648,9 @@ msgid ""
 "javelineers. With better equipment and exceptional aim, saurian javelineers "
 "are not to be underestimated."
 msgstr ""
+"Po letech cvičení v boji mohou ještěráčské válečnice, které jsou "
+"nejzdatnější v umění vrhu kopím, povýšit do hodnosti oštěpařek. Díky lepšímu "
+"vybavení a výjimečné mušce není radno ještěráčské oštěpařky podceňovat."
 
 # bylo vrhač ledu - nesedí s popisem
 #. [unit_type]: id=Saurian Oracle, race=lizard
@@ -7720,10 +7720,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
-msgstr "Ještěrácká rváčka"
+msgstr "Ještěrácká vrhačka kopí"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
@@ -7732,6 +7730,10 @@ msgid ""
 "the backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
+"Někteří ještěráci se zvlášť dobrou muškou raději pomáhají svým spojencům ze "
+"zadních linií, než aby pronikali do nepřátelských formací. Jejich smrtící "
+"dovednosti v hodu kopím jim umožňují podporovat ostatní ještěrácké válečníky "
+"z dálky."
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -8014,7 +8016,7 @@ msgstr "Ještěrák"
 #: data/core/units/undead/Corpse_Soulless.cfg:290
 #: data/core/units/undead/Corpse_Walking.cfg:289
 msgid "wc_variation^Scorpion"
-msgstr "Škorpión"
+msgstr "Štír"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:308
@@ -8452,10 +8454,10 @@ msgid ""
 "neither pain, nor death, and their mere presence will often frighten away "
 "any who would challenge their master."
 msgstr ""
-"Kostlivci jsou bojovníci, kteří byli zabiti v bitvě, a pak přivolání zpět "
+"Kostlivci jsou bojovníci, kteří byli zabiti v bitvě a pak přivoláni zpět "
 "pomocí temné magie. Takřka bez rozumu, neochvějně oddaní svému poslání, "
-"nebojí se strachu ani smrti, a pouhá jejich přítomnost často odstraší "
-"kohokoli, kdo by se chtěl utkat s jejich pánem."
+"nebojí se bolesti ani smrti a pouhá jejich přítomnost často odstraší "
+"kohokoli, kdo by se chtěl utkat s jejich pánem."
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:4

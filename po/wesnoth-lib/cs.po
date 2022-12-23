@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-12-17 19:09-0600\n"
-"PO-Revision-Date: 2022-10-23 08:34+0200\n"
+"PO-Revision-Date: 2022-12-01 20:48+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -895,12 +895,12 @@ msgstr "Neprůchodná strž"
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1240
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Lesnaté srázy"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1249
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Lesnatá roklina"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -3718,10 +3718,8 @@ msgstr "Protokoly:"
 
 #. [grid]
 #: data/gui/window/game_version.cfg:141
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Snímek obrazovky"
+msgstr "Snímky obrazovky:"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:166
@@ -3886,15 +3884,13 @@ msgstr "Načítám..."
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Obecné"
+msgstr "Obecná čekárna"
 
 #. [widget]: id=tab_label
 #: data/gui/window/lobby_main.cfg:86
 msgid "Matchmaking"
-msgstr ""
+msgstr "Dohazování"
 
 #. [label]: id=map
 #: data/gui/window/lobby_main.cfg:138
@@ -7160,7 +7156,7 @@ msgstr ""
 
 #: src/gui/dialogs/unit_recall.cpp:227
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr "Jednotka nemůže být přivolána z důvodu nedostatku zlata."
+msgstr "Tato jednotka nemůže být povolána, protože nemáš dost zlata."
 
 #: src/gui/dialogs/unit_recall.cpp:323 src/hotkey/hotkey_command.cpp:102
 msgid "Rename Unit"
@@ -7168,7 +7164,7 @@ msgstr "Přejmenovat jednotku"
 
 #: src/gui/dialogs/unit_recall.cpp:359
 msgid "This unit is loyal and requires no upkeep."
-msgstr "Tato jednotka je věrná a nevyžaduje žádný příjem."
+msgstr "Tato jednotka je věrná a nevyžaduje žádné zaopatření."
 
 #: src/gui/dialogs/unit_recall.cpp:360 src/gui/dialogs/unit_recall.cpp:365
 #: src/gui/dialogs/unit_recall.cpp:370
@@ -8276,9 +8272,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "Player Hosted"
-#~ msgstr "Hostované hráčem"
-
-#~ msgid "Bot Hosted"
-#~ msgstr "Hostované robotem"
