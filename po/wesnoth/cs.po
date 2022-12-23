@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-09-04 19:14-0500\n"
-"PO-Revision-Date: 2022-11-09 20:48+0100\n"
+"PO-Revision-Date: 2022-12-07 07:12+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4477,7 +4477,7 @@ msgstr "Výchozí motiv"
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr "Načti kolo..."
+msgstr "Načíst kolo..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:109
@@ -4850,8 +4850,8 @@ msgid ""
 msgstr ""
 "Na mapách, kde je použito <i>zahalení tmou</i> či <i>mlha</i>, je pohled "
 "jednotek omezen možnostmi jejich pohybu. Pokud máš cenné, ale pomalé "
-"jednotky, zůstaň poblíž nich s další, rychlejší jednotkou, aby nebyla "
-"zaskočena překvapivým útokem z neviděné části mapy."
+"jednotky, zůstaň poblíž nich s další, rychlejší jednotkou, aby nebyly "
+"zaskočeny překvapivým útokem z neviděné části mapy."
 
 #. [tip]
 #: data/tips.cfg:104
@@ -5131,9 +5131,9 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebujete "
-"přesouvat jednotky při zachování možnosti vracení, zapněte volbu <b>Pozdrž "
-"překreslování mlhy</b> nebo využijte plánovací režim."
+"Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebuješ "
+"přesouvat jednotky při zachování možnosti vracení, zapni volbu <b>Pozdrž "
+"překreslování mlhy</b> nebo využij plánovací režim."
 
 #. [tip]
 #: data/tips.cfg:201
@@ -8267,12 +8267,12 @@ msgstr ""
 "Výdaje na zaopatření tvého vojska vzniklé na konci každého kola. První číslo "
 "je množství zlatých, které bude odečteno. Je stejné jako počet úrovní "
 "jednotek, které nejsou podporovány vesnicemi. Druhé číslo jsou celkové "
-"náklady na údržbu zahrnující ty, které jsou kryty vesnicemi – jinými slovy "
-"množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
+"náklady na zaopatření zahrnující ty, které jsou kryty vesnicemi – jinými "
+"slovy množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
 
 #: src/reports.cpp:1460
 msgid "Upkeep"
-msgstr "Údržba"
+msgstr "Výdaje"
 
 #: src/reports.cpp:1497
 msgid "Net Income"
@@ -8284,7 +8284,7 @@ msgid ""
 "income from controlled villages and payment of upkeep."
 msgstr ""
 "Čisté množství zlatých, které každé kolo získáš nebo ztratíš s ohledem na "
-"příjem z ovládaných vesnic a platbu za údržbu."
+"příjem z ovládaných vesnic a úhradu zaopatření."
 
 #: src/reports.cpp:1665
 msgid "Observers:"
@@ -8374,7 +8374,7 @@ msgstr ""
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
-msgstr "Načti hru"
+msgstr "Načíst hru"
 
 #: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
