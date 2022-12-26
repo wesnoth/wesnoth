@@ -10,6 +10,7 @@
  ### Translations
    * Updated translations: Arabic, British English, Czech, French
  ### Units
+   * Dunefolk Rover portrait added
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
