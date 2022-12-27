@@ -130,7 +130,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	 * 2. A scenario embedding the map
 	 *    * embedded_ = true
 	 *    * pure_map_ = true
-	 *    The data/scenario-test.cfg for example.
+	 *    The scenario-test.cfg for example.
 	 *    The map is written back to the file.
 	 * 3. The map file is referenced by map_data={MACRO_ARGUEMENT}.
 	 *    * embedded_ = false

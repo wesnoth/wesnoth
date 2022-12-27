@@ -845,11 +845,44 @@ std::pair<int, int> parse_range(const std::string& str)
 	return res;
 }
 
+std::pair<double, double> parse_range_real(const std::string& str)
+{
+	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
+	const std::string a(str.begin(), dash);
+	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
+	std::pair<double,double> res {0,0};
+	try {
+		if(b == "infinity") {
+			res = std::pair(std::stod(a), std::numeric_limits<double>::infinity());
+		} else {
+			res = std::pair(std::stod(a), std::stod(b));
+		}
+
+		if(res.second < res.first) {
+			res.second = res.first;
+		}
+	} catch(const std::invalid_argument&) {
+		ERR_GENERAL << "Invalid range: "<< str;
+	}
+
+	return res;
+}
+
 std::vector<std::pair<int, int>> parse_ranges(const std::string& str)
 {
 	std::vector<std::pair<int, int>> to_return;
 	for(const std::string& r : utils::split(str)) {
 		to_return.push_back(parse_range(r));
+	}
+
+	return to_return;
+}
+
+std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
+{
+	std::vector<std::pair<double, double>> to_return;
+	for(const std::string& r : utils::split(str)) {
+		to_return.push_back(parse_range_real(r));
 	}
 
 	return to_return;

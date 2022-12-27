@@ -1,4 +1,4 @@
-## Version 1.17.10+dev
+## Version 1.17.11+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -8,12 +8,30 @@
  ### Packaging
  ### Terrain
  ### Translations
+   * Updated translations: Arabic, British English, Czech, French
+ ### Units
+   * Dunefolk Rover portrait added
+   * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.11
+ ### Campaigns
+   * Sceptre of Fire
+     * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
+   * Heir to the Throne: 
+     * S05B: Delurin now has traits Loyal + resilient + intelligent
+   * Liberty:
+     * The non-loyal character Delurin now has traits resilient + intelligent 
+ ### Translations
    * Updated translations: Arabic, British English, Finnish, French
  ### Units
    * Moved Kraken from campaigns to core, updated sprite
    * Added some dragonfly units to "monsters"
- ### User interface
- ### WML Engine
+ ### Miscellaneous and Bug Fixes
+   * Fixed a crash when moving certain walking corpse variations north due to missing animations. (issue #7190)
+   * Fixed special notes being duplicated when storing units (issue #7153).
 
 ## Version 1.17.10
  ### Terrain
