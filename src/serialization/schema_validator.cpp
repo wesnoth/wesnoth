@@ -282,12 +282,15 @@ void schema_validator::close_tag()
 {
 	stack_.pop();
 	counter_.pop();
-	// cache_ is cleared in another place.
+	// cache_ is normally cleared in another place.
+	// However, if we're closing the root tag, clear it now
+	if(stack_.empty()) {
+		print_cache();
+	}
 }
 
-void schema_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
+void schema_validator::print_cache()
 {
-	// close previous errors and print them to output.
 	for(auto& m : cache_.top()) {
 		for(auto& list : m.second) {
 			print(list);
@@ -295,6 +298,12 @@ void schema_validator::validate(const config& cfg, const std::string& name, int 
 	}
 
 	cache_.pop();
+}
+
+void schema_validator::validate(const config& cfg, const std::string& name, int start_line, const std::string& file)
+{
+	// close previous errors and print them to output.
+	print_cache();
 
 	// clear cache
 	auto cache_it = cache_.top().find(&cfg);
