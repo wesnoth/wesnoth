@@ -19,7 +19,9 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/schema_validator.hpp"
 #include "game_version.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -71,9 +73,15 @@ config get_addon_pbl_info(const std::string& addon_name)
 	const std::string& pbl_path = get_pbl_file_path(addon_name);
 	try {
 		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
-		read(cfg, *stream);
+		auto validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg"));
+		validator->set_create_exceptions(true);
+		read(cfg, *stream, validator.get());
 	} catch(const config::error& e) {
 		throw invalid_pbl_exception(pbl_path, e.message);
+	} catch(wml_exception& e) {
+		e.user_message += " in " + addon_name;
+		boost::replace_all(e.dev_message, "<unknown>", filesystem::sanitize_path(pbl_path));
+		e.show();
 	}
 
 	return cfg;
