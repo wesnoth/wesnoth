@@ -306,8 +306,6 @@
 0 replace_special_with_filter_in_attack_event_inactive
 0 swarm_disables_upgrades
 0 poison_opponent
-0 test_add_in_leadership_abilities
-0 test_sub_in_leadership_abilities
 0 unslowable_status_test
 0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro
@@ -322,6 +320,29 @@
 0 opponent_weapon_has_no_special
 0 opponent_weapon_has_special
 0 student_teacher_are_same
+# Math operations in ability or specials tags
+0 special_calculation_add
+0 special_calculation_add2_add3_cumulative
+0 special_calculation_add3_add2_cumulative
+0 special_calculation_add_multiply_combined
+0 special_calculation_add_multiply_separated
+0 special_calculation_add_sub_combined
+0 special_calculation_add_sub_cumulative
+0 special_calculation_add2_sub_minus3_cumulative
+0 special_calculation_add_sub_separated
+0 special_calculation_add_sub_with_ids
+0 special_calculation_divide
+0 special_calculation_divide_float_2dp
+0 special_calculation_divide_float_3dp
+0 special_calculation_divide_multiply_combined
+0 special_calculation_divide_multiply_separated
+0 special_calculation_multiply_float_2dp
+0 special_calculation_multiply_float_3dp
+0 special_calculation_sub
+0 special_calculation_sub2_sub3_cumulative
+0 special_calculation_sub3_sub2_cumulative
+0 test_add_in_leadership_abilities
+0 test_sub_in_leadership_abilities
 #
 # Deterministic unit facing tests
 0 recruit_facing_enemy_one
