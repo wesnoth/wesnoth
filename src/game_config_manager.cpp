@@ -61,6 +61,7 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 	, old_defines_map_()
 	, paths_manager_()
 	, cache_(game_config::config_cache::instance())
+	, achievements_()
 {
 	assert(!singleton);
 	singleton = this;

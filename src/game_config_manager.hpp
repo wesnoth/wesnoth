@@ -15,12 +15,14 @@
 
 #pragma once
 
+#include "achievements.hpp"
 #include "commandline_options.hpp"
 #include "config.hpp"
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "game_config_view.hpp"
 #include "terrain/type_data.hpp"
+
 #include <optional>
 
 class game_classification;
@@ -42,7 +44,8 @@ public:
 
 	const game_config_view& game_config() const { return game_config_view_; }
 	const preproc_map& old_defines_map() const { return old_defines_map_; }
-	const std::shared_ptr<terrain_type_data> & terrain_types() const { return tdata_; }
+	const std::shared_ptr<terrain_type_data>& terrain_types() const { return tdata_; }
+	std::vector<achievement_group>& get_achievements() { return achievements_.get_list(); }
 
 	bool init_game_config(FORCE_RELOAD_CONFIG force_reload);
 	void reload_changed_game_config();
@@ -84,4 +87,6 @@ private:
 	game_config::config_cache& cache_;
 
 	std::shared_ptr<terrain_type_data> tdata_;
+
+	achievements achievements_;
 };

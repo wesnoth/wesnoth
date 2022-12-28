@@ -274,4 +274,7 @@ namespace preferences {
 	sort_order::type addon_manager_saved_order_direction();
 	void set_addon_manager_saved_order_direction(sort_order::type value);
 
+	bool achievement(const std::string& content_for, const std::string& id);
+	void set_achievement(const std::string& content_for, const std::string& id);
+
 } // end namespace preferences
