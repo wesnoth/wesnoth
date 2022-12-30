@@ -13,6 +13,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
    * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
 
 ## Version 1.16.6
