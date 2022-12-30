@@ -18,10 +18,10 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
-#include "display.hpp"
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
 #include "game_board.hpp"
+#include "game_version.hpp" // for version_info
 #include "global.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
@@ -133,8 +133,8 @@ namespace {
 
 bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 {
-	// display::get_singleton() has already been confirmed valid by both callers.
-	const team& side_team = display::get_singleton()->get_disp_context().get_team(side);
+	assert(resources::gameboard);
+	const team& side_team = resources::gameboard->get_team(side);
 
 	if(side == other_side)
 		return cfg["affect_allies"].to_bool(true);
@@ -156,8 +156,8 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -197,8 +197,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		}
 	}
 
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -361,8 +361,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	const auto adjacent = get_adjacent_tiles(loc);
 
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
@@ -520,8 +520,8 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
 			try {
-				assert(display::get_singleton());
-				const unit_map& units = display::get_singleton()->get_units();
+				assert(resources::gameboard);
+				const unit_map& units = resources::gameboard->units();
 
 				auto u_itor = units.find(ability_info.teacher_loc);
 
@@ -881,8 +881,8 @@ std::string attack_type::weapon_specials(bool is_backstab) const
 	}
 	std::string weapon_abilities;
 	std::set<std::string> checking_name;
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 	if(self_){
 		for (const config::any_child &sp : self_->abilities().all_children_range()){
 			const bool active = check_self_abilities_impl(shared_from_this(), other_attack_, sp.cfg, self_, self_loc_, AFFECT_SELF, sp.key);
@@ -1373,8 +1373,8 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
  */
 bool attack_type::has_weapon_ability(const std::string& special, bool special_id, bool special_tags) const
 {
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 	if(self_){
 		std::vector<special_match> special_tag_matches_self;
 		std::vector<special_match> special_id_matches_self;
@@ -1531,8 +1531,8 @@ bool attack_type::special_active_impl(const_attack_ptr self_attack, const_attack
 	}
 
 	// Get the units involved.
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	unit_const_ptr self = self_attack ? self_attack->self_ : other_attack->other_;
 	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;
