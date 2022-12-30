@@ -15,6 +15,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
 
 ## Version 1.17.11
  ### Campaigns
