@@ -822,43 +822,101 @@ std::vector<std::string> make_unit_links_list(const std::vector<std::string>& ty
 	return links_list;
 }
 
-void generate_races_sections(const config *help_cfg, section &sec, int level)
+void generate_races_sections(const config* help_cfg, section& sec, int level)
 {
 	std::set<std::string, string_less> races;
 	std::set<std::string, string_less> visible_races;
 
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
-	{
-		const unit_type &type = i.second;
+	// Calculate which races have been discovered, from the list of discovered unit types.
+	for(const unit_type_data::unit_type_map::value_type& i : unit_types.types()) {
+		const unit_type& type = i.second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type == FULL_DESCRIPTION) {
+		if(desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race_id());
-			if (!type.hide_help())
+			if(!type.hide_help())
 				visible_races.insert(type.race_id());
 		}
 	}
 
-	for(std::set<std::string, string_less>::iterator it = races.begin(); it != races.end(); ++it) {
+	// Propagate visibility up the help_taxonomy tree.
+	std::set<std::string, string_less> last_sweep = visible_races;
+	while(!last_sweep.empty()) {
+		std::set<std::string, string_less> current_sweep;
+		for(const auto& race_id : last_sweep) {
+			if(const unit_race* r = unit_types.find_race(race_id)) {
+				const auto& help_taxonomy = r->help_taxonomy();
+				if(!help_taxonomy.empty() && !visible_races.count(help_taxonomy) && unit_types.find_race(help_taxonomy)) {
+					current_sweep.insert(help_taxonomy);
+					races.insert(help_taxonomy);
+					visible_races.insert(help_taxonomy);
+				}
+			}
+		}
+		last_sweep = std::move(current_sweep);
+	}
+
+	struct taxonomy_queue_type
+	{
+		std::string parent_id;
+		section content;
+	};
+	std::vector<taxonomy_queue_type> taxonomy_queue;
+
+	// Add all races without a [race]help_taxonomy= to the documentation section, and queue the others.
+	// This avoids a race condition dependency on the order that races are encountered in help_cfg.
+	for(const auto& race_id : races) {
 		section race_section;
 		config section_cfg;
 
-		bool hidden = (visible_races.count(*it) == 0);
+		bool hidden = (visible_races.count(race_id) == 0);
 
-		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + *it;
+		section_cfg["id"] = hidden_symbol(hidden) + race_prefix + race_id;
 
 		std::string title;
-		if (const unit_race *r = unit_types.find_race(*it)) {
+		std::string help_taxonomy;
+		if(const unit_race* r = unit_types.find_race(race_id)) {
 			title = r->plural_name();
+			help_taxonomy = r->help_taxonomy();
 		} else {
-			title = _ ("race^Miscellaneous");
+			title = _("race^Miscellaneous");
+			// leave help_taxonomy empty
 		}
 		section_cfg["title"] = title;
 
-		section_cfg["sections_generator"] = "units:" + *it;
-		section_cfg["generator"] = "units:" + *it;
+		section_cfg["sections_generator"] = "units:" + race_id;
+		section_cfg["generator"] = "units:" + race_id;
 
-		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
-		sec.add_section(race_section);
+		parse_config_internal(help_cfg, &section_cfg, race_section, level + 1);
+
+		if(help_taxonomy.empty()) {
+			sec.add_section(race_section);
+		} else {
+			bool parent_hidden = (visible_races.count(help_taxonomy) == 0);
+			auto parent_id = hidden_symbol(parent_hidden) + race_prefix + help_taxonomy;
+			taxonomy_queue.push_back({std::move(parent_id), std::move(race_section)});
+		}
+	}
+
+	// Each run through this loop handles one level of nesting of [race]help_taxonomy=
+	bool process_queue_again = true;
+	while(process_queue_again && !taxonomy_queue.empty()) {
+		process_queue_again = false;
+		std::vector<taxonomy_queue_type> to_process = std::move(taxonomy_queue);
+
+		for(auto& x : to_process) {
+			auto parent = find_section(sec, x.parent_id);
+			if(parent) {
+				parent->add_section(std::move(x.content));
+				process_queue_again = true;
+			} else {
+				taxonomy_queue.push_back(std::move(x));
+			}
+		}
+	}
+
+	// Fallback to adding the new race at the top level, as if it had help_taxonomy.empty().
+	for(auto& x : taxonomy_queue) {
+		sec.add_section(std::move(x.content));
 	}
 }
 
