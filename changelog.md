@@ -12,6 +12,8 @@
  ### Units
    * Dunefolk Rover portrait added
    * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight
+   * Add more ant types
+   * Fix and adjust Falcon and Elder Falcon attacks
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
