@@ -12,24 +12,22 @@ wesnoth.game_events.add_repeating("die", function()
 
 	local u_exploder = wesnoth.units.get(ec.x1, ec.y1)
 
-	if not u_exploder or not u_exploder:matches { ability = "explode" } then
+	if not u_exploder or not u_exploder:matches { ability_type = "explode" } then
 		return
 	end
 
-	local u_exploder_cfg = u_exploder.__cfg
-        local adjacent_units = wesnoth.units.find_on_map{T.filter_adjacent { id = u_exploder_cfg.id}}
+        local adjacent_units = wesnoth.units.find_on_map{T.filter_adjacent { id = u_exploder.id}}
 
-	for i,v in ipairs(wml.get_child(u_exploder_cfg, "abilities")) do
-		if v[1] == "dummy" and v[2].id == "explode" then
-			local dmg = v[2].value
-                        local dmg_type = v[2].apply_to
+	for i,v in ipairs(wml.get_child(u_exploder.__cfg, "abilities")) do
+		if v.tag == "explode" and v.contents.id == "explode" then
+			local dmg = v.contents.value
+                        local dmg_type = v.contents.apply_to
 			for i = 1, #(adjacent_units) do
 			        local affected_unit_cfg = adjacent_units[i].__cfg
 			        wml.fire("harm_unit", { 
 			            kill = "yes", 
 			            damage_type = dmg_type, 
 			            amount = dmg, 
-			            -- animate= "yes",
 			            { "filter", { id = affected_unit_cfg.id}}
 			        })
 			end
