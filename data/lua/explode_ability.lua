@@ -24,10 +24,10 @@ wesnoth.game_events.add_repeating("die", function()
                         local dmg_type = v.contents.apply_to
 			for i = 1, #(adjacent_units) do
 			        local affected_unit_cfg = adjacent_units[i].__cfg
-			        wml.fire("harm_unit", { 
-			            kill = "yes", 
-			            damage_type = dmg_type, 
-			            amount = dmg, 
+			        wml.fire("harm_unit", {
+			            kill = "yes",
+			            damage_type = dmg_type,
+			            amount = dmg,
 			            { "filter", { id = affected_unit_cfg.id}}
 			        })
 			end
