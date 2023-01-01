@@ -274,7 +274,8 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 {
 	response_message.clear();
 
-	config cfg = get_addon_pbl_info(id);
+	// No point in validating when we're deleting it.
+	config cfg = get_addon_pbl_info(id, false);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);

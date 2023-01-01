@@ -568,7 +568,8 @@ void addon_manager::load_addon_list()
 			// to match add-ons in the config list. It also fills in addon_info's id field. It's also
 			// neccessay to set local_only here so that flag can be properly set after addons_ is cleared
 			// and recreated by read_addons_list.
-			config pbl_cfg = get_addon_pbl_info(id);
+			// Since the user may be planning to upload an addon, this is the right time to validate the .pbl.
+			config pbl_cfg = get_addon_pbl_info(id, true);
 			pbl_cfg["name"] = id;
 			pbl_cfg["local_only"] = true;
 
@@ -907,7 +908,8 @@ void addon_manager::publish_addon(const addon_info& addon)
 	std::string server_msg;
 
 	const std::string addon_id = addon.id;
-	config cfg = get_addon_pbl_info(addon_id);
+	// Validate the pbl once more, just to make sure it's still good.
+	config cfg = get_addon_pbl_info(addon_id, true);
 
 	const version_info& version_to_publish = cfg["version"].str();
 
