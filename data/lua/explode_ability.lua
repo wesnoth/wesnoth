@@ -42,8 +42,8 @@ wesnoth.game_events.add_repeating("die", function()
                         if type(dmg_type) ~= 'string' then
                             wml.error('invalid apply_to data')
                         end
-			for i = 1, #(adjacent_units) do
-			        local affected_unit_cfg = adjacent_units[i].__cfg
+			for j = 1, #(adjacent_units) do
+			        local affected_unit_cfg = adjacent_units[j].__cfg
 			        wml.fire("harm_unit", {
 			            kill = "yes",
 			            damage_type = dmg_type,
