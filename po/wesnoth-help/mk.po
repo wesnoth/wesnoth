@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-08 04:42+0300\n"
+"POT-Creation-Date: 2023-01-01 18:33-0600\n"
 "PO-Revision-Date: 2008-06-03 05:13+0100\n"
 "Last-Translator: Dimitar Ilccov <mythological@t-home.mk>\n"
 "Language-Team: mk\n"
@@ -24,6 +24,31 @@ msgstr ""
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Подземје"
+
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:185
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "немртов"
+
+#. [label]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:198
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "бестрашен"
+
+#. [label]
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:248
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+msgid "plague"
+msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -172,12 +197,6 @@ msgstr ""
 msgid "drains"
 msgstr ""
 
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "бестрашен"
-
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
 #: data/core/macros/abilities.cfg:384
@@ -259,13 +278,6 @@ msgstr "Печуркина корија"
 msgid "nightstalk"
 msgstr ""
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr ""
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
 #: data/core/macros/abilities.cfg:577
@@ -327,12 +339,6 @@ msgstr "Мочуриште"
 #: data/core/macros/abilities.cfg:250
 msgid "teleport"
 msgstr ""
-
-#. [trait]: id=undead
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "немртов"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
 msgid "Village"

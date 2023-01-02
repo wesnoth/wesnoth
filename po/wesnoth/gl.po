@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-04 19:14-0500\n"
+"POT-Creation-Date: 2023-01-01 18:34-0600\n"
 "PO-Revision-Date: 2018-05-16 07:07+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -110,12 +110,12 @@ msgstr ""
 "animado."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Tempo de caducidade das mensaxes:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 #, fuzzy
 #| msgid ""
 #| "Number of minutes to wait before clearing an ingame chat message. Set to "
@@ -128,22 +128,22 @@ msgstr ""
 "Desactívase co valor «0»."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "Usar o formato de 12 horas para o reloxo:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Avisar ao cargar partidas doutras versións:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Mostrar todos os tipos de unidade na axuda:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 #, fuzzy
 #| msgid ""
 #| "Show all unit types in the help (requires restart). This does not alter "
@@ -156,12 +156,12 @@ msgstr ""
 "que se aplique o cambio. A lista de unidades descubertas non cambiará."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Límite de ficheiros recentes do editor:"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
@@ -169,32 +169,32 @@ msgstr ""
 "editor."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Usar punteiros de cores:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "Usar punteiros de rato de cores."
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "Personalizar as cores das esferas:"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "Rexistro:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Permitir o cálculo de danos con simulación de Montecarlo:"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -203,12 +203,12 @@ msgstr ""
 "cálculos de probabilidade exactos."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "Mostrar a mensaxe de caducidade na partida."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -218,6 +218,21 @@ msgstr ""
 "conversa das partidas. Estas mensaxes seguirán aparecendo no rexistro, "
 "incluso se desactiva esta opción. Ademais, o dominio de rexistro de "
 "caducidade controla o número de mensaxes que se imprimen."
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:156
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "A conexión caducou."
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:157
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -249,7 +264,7 @@ msgid "Notes:"
 msgstr "Notas:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:736
 msgid "Close"
 msgstr "Pechar"
 
@@ -9459,7 +9474,7 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Creouse unha unidade usando o modo de depuración durante a quenda de $player."
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "agardando por $desc do bando $sides"
@@ -9668,7 +9683,7 @@ msgstr "$year a.C."
 msgid "$year AF"
 msgstr "$year d.C."
 
-#: src/wesnothd_connection.cpp:531
+#: src/wesnothd_connection.cpp:536
 msgid "Disconnected from server."
 msgstr "Desconectado do servidor."
 
@@ -10395,9 +10410,6 @@ msgstr "Opcións de planificación"
 #~ "Requesting the older version composition for the add-on <i>$addon_title</"
 #~ "i>..."
 #~ msgstr "Enviando «<i>$addon_title</i>»…"
-
-#~ msgid "Connection timed out"
-#~ msgstr "A conexión caducou."
 
 #, fuzzy
 #~| msgid "The Battle for Wesnoth"

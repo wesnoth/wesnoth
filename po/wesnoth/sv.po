@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-04 19:14-0500\n"
+"POT-Creation-Date: 2023-01-01 18:34-0600\n"
 "PO-Revision-Date: 2022-07-08 22:49+0200\n"
 "Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -103,14 +103,14 @@ msgstr ""
 
 # översatt
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Åldrande av chattmeddelande"
 
 # ändrat första meningen.
 # gammal mening: Antal sekunder vi väntar på svar för ping-förfrågningar.
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -119,22 +119,22 @@ msgstr ""
 "obegränsad tid."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "Använd tolvtimmarsklocka"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Bekräfta inläsning av sparfiler från annan version"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Visa alla trupptyper i hjälp"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -143,43 +143,43 @@ msgstr ""
 "trupper som har mötts."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Gräns för senaste filer i redigeraren"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr "Största antal poster som kan visas i menyn Senaste filer i redigeraren"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Visa färgpekare"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "Använd färgpekare"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "Anpassa färg på glober"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "Loggning"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Tillåt skadeberäkning med Monte Carlo-simulering"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -188,12 +188,12 @@ msgstr ""
 "använda exakta sannolikhetsberäkningar"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "Visa meddelanden om utfasning i spelet"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -202,6 +202,21 @@ msgstr ""
 "Visa varningar om utfasad API i chatten i spelet. Dessa meddelanden kommer "
 "fortfarande att visas i loggen även om detta är avaktiverat. Dessutom "
 "kontrollerar utfasningens logg-domän hur många meddelanden som skrivs ut."
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:156
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "Anslutningstiden tog slut"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:157
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -233,7 +248,7 @@ msgid "Notes:"
 msgstr "Anmärkningar:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:736
 msgid "Close"
 msgstr "Stäng"
 
@@ -8590,7 +8605,7 @@ msgstr "Debug-kommando använt"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "En trupp skapades genom att använda debug-läget under $player|s drag"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "väntar på $desc från sidan $sides"
@@ -8797,7 +8812,7 @@ msgstr "$year fS"
 msgid "$year AF"
 msgstr "$year eS"
 
-#: src/wesnothd_connection.cpp:531
+#: src/wesnothd_connection.cpp:536
 msgid "Disconnected from server."
 msgstr "Frånkopplad från servern."
 
@@ -9418,9 +9433,6 @@ msgstr "Inställningar för whiteboard"
 #~ "Requesting the older version composition for the add-on <i>$addon_title</"
 #~ "i>..."
 #~ msgstr "Hämtar extramaterial <i>$addon_title</i>..."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Anslutningstiden tog slut"
 
 #~ msgid "Battle for Wesnoth"
 #~ msgstr "Kampen om Wesnoth"

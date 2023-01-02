@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-04 19:14-0500\n"
+"POT-Creation-Date: 2023-01-01 18:34-0600\n"
 "PO-Revision-Date: 2022-08-28 19:32+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -109,12 +109,12 @@ msgid ""
 msgstr "Будет ли камера следовать за бойцом, когда он выполняет свой ход"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Устаревание сообщений чата"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -122,22 +122,22 @@ msgstr ""
 "Время ожидания до очистки игрового чата в минутах. 0 — отключить очистку."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "12-часовой формат времени"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Подтвердите загрузку сохранений из других версий"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Показывать в справке всех бойцов"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -146,12 +146,12 @@ msgstr ""
 "покажутся только встреченные в игре бойцы."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Лимит последних файлов в Редакторе"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
@@ -159,32 +159,32 @@ msgstr ""
 "Редакторе"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Показать цветные курсоры"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "Использовать цветные курсоры мыши"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "Выбрать цвета шара"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "Запись логов"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Расчет урона алгоритмом моделирования Монте-Карло"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -193,12 +193,12 @@ msgstr ""
 "вероятности"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "Показывать сообщения об устаревших функциях в игре"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -207,6 +207,21 @@ msgstr ""
 "Показывать предупреждения об устаревшем API в игровом чате. Эти сообщения по-"
 "прежнему будут отображаться в логах, даже если они отключены. Кроме того, "
 "контроль устаревания лога определяет, сколько сообщений печатается."
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:156
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "Превышен лимит времени подключения"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:157
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -238,7 +253,7 @@ msgid "Notes:"
 msgstr "Заметки:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:736
 msgid "Close"
 msgstr "Закрыть"
 
@@ -8624,7 +8639,7 @@ msgstr "Команда отладки использована"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "Боец был создан в режиме отладки во время хода $player"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "ожидание $desc от стороны $sides"
@@ -8838,7 +8853,7 @@ msgstr "$year ДП"
 msgid "$year AF"
 msgstr "$year ПП"
 
-#: src/wesnothd_connection.cpp:531
+#: src/wesnothd_connection.cpp:536
 msgid "Disconnected from server."
 msgstr "Отключен от сервера."
 
@@ -9414,9 +9429,6 @@ msgstr "Настройки планировщика"
 
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr "Запросить, какие данные можно менять для своего ника."
-
-#~ msgid "Connection timed out"
-#~ msgstr "Превышен лимит времени подключения"
 
 #~ msgid "No Saved Games"
 #~ msgstr "Нет сохранённых игр"

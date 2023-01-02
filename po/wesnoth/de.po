@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-04 19:14-0500\n"
+"POT-Creation-Date: 2023-01-01 18:34-0600\n"
 "PO-Revision-Date: 2022-08-01 16:43+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
@@ -109,12 +109,12 @@ msgstr ""
 "animiert wird"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Frist für Chat-Nachrichten"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -123,22 +123,22 @@ msgstr ""
 "Mit 0 werden Nichtrichten nicht gelöscht Löschen deaktiviert."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "12-Stunden Uhrzeitformat verwenden"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Laden von Spielständen einer anderen Version bestätigen"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Alle Einheitentypen in der Hilfe anzeigen"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -147,44 +147,44 @@ msgstr ""
 "gewählt, sieht man nur die Einheiten, denen man bereits begegnet ist."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Editor: Anzuzeigende Anzahl zuletzt geöffneter Dateien"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
 "Höchstzahl der Einträge im Menü »Zuletzt geöffnete Dateien« des Karteneditors"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Farbige Mauszeiger verwenden"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "Farbige Mauszeiger verwenden"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "Benutzerdefinierte Sphären verwenden"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "Logging"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Erlaube Schadensberechnung mit Monte Carlo Simulation"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -193,12 +193,12 @@ msgstr ""
 "Wahrscheinlichkeitsberechnung durchzuführen"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "Zeige Nachrichten über veraltete Funktionen im Spiel"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -208,6 +208,21 @@ msgstr ""
 "werden immer ins Log geschrieben, auch wenn diese Option deaktiviert ist. "
 "Zusätzlich kontrolliert der Log-Domäne über veralteten Code, wie viele "
 "Nachrichten angezeigt werden."
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:156
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "Verbindung nach vorgegebener Wartezeit abgebrochen"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:157
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -239,7 +254,7 @@ msgid "Notes:"
 msgstr "Hinweis:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:736
 msgid "Close"
 msgstr "Schließen"
 
@@ -8843,7 +8858,7 @@ msgstr ""
 "Eine Einheit wurde mit Hilfe eines Entwicklerkommandos erstellt (Spieler: "
 "$player)"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "warte auf $desc von Partei $sides"
@@ -9055,7 +9070,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year NF"
 
-#: src/wesnothd_connection.cpp:531
+#: src/wesnothd_connection.cpp:536
 msgid "Disconnected from server."
 msgstr "Verbindung zum Server getrennt."
 
@@ -9536,9 +9551,6 @@ msgstr "Planungsmodus Optionen"
 #~ "Requesting the older version composition for the add-on <i>$addon_title</"
 #~ "i>..."
 #~ msgstr "Erweiterung <i>$addon_title</i> wird gesendet…"
-
-#~ msgid "Connection timed out"
-#~ msgstr "Verbindung nach vorgegebener Wartezeit abgebrochen"
 
 #, fuzzy
 #~ msgid "Battle for Wesnoth"

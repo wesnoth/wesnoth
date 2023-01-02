@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-08 04:42+0300\n"
+"POT-Creation-Date: 2023-01-01 18:33-0600\n"
 "PO-Revision-Date: 2014-10-23 21:33+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -25,6 +25,31 @@ msgstr ""
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Podzemie"
+
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:185
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "nemŕtvy"
+
+#. [label]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:198
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "nebojácny"
+
+#. [label]
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:248
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+msgid "plague"
+msgstr "choroba"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -213,12 +238,6 @@ msgstr "Obrana"
 msgid "drains"
 msgstr "vysaje"
 
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "nebojácny"
-
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
 #: data/core/macros/abilities.cfg:384
@@ -300,13 +319,6 @@ msgstr "Hubový porast"
 msgid "nightstalk"
 msgstr "nočné zakrádanie"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "choroba"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
 #: data/core/macros/abilities.cfg:577
@@ -366,12 +378,6 @@ msgstr "Močiar"
 #: data/core/macros/abilities.cfg:250
 msgid "teleport"
 msgstr "teleport"
-
-#. [trait]: id=undead
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "nemŕtvy"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
 msgid "Village"
@@ -6644,9 +6650,9 @@ msgstr ""
 "rasy už stihli vybojovať tri veľké a dlhé vojny, ktoré boli prerušené len "
 "pár desaťročiami mieru. Počas týchto vojen nedokázali trpaslíci vytlačiť "
 "elfov z hustých južných lesov, no podarilo sa im upevniť si pozíciu v "
-"severných kopcoch a horách, ktoré sú na kontinente známe ako \"Severná zem"
-"\". Od tých čias vystavali fantastické opevnenia a osady hlboko v kopcoch a "
-"údoliach tohto územia.\n"
+"severných kopcoch a horách, ktoré sú na kontinente známe ako \"Severná "
+"zem\". Od tých čias vystavali fantastické opevnenia a osady hlboko v kopcoch "
+"a údoliach tohto územia.\n"
 "\n"
 "Pravdepodobne kvôli svojej izolácii sú trpaslíci veľmi nedôverčiví a často i "
 "nepriateľskí voči ostatným rasám, hlavne elfom. Jedinou výnimkou je snáď iba "

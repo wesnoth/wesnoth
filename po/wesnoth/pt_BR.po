@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-04 19:14-0500\n"
+"POT-Creation-Date: 2023-01-01 18:34-0600\n"
 "PO-Revision-Date: 2022-09-01 14:58-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -151,7 +151,7 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 131
 # File: data/advanced_preferences.cfg, line: 131
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:85
+#: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
 msgstr "Tempo máximo de mensagem no chat"
 
@@ -160,7 +160,7 @@ msgstr "Tempo máximo de mensagem no chat"
 # File: data/advanced_preferences.cfg, line: 132
 # File: data/advanced_preferences.cfg, line: 132
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
@@ -173,7 +173,7 @@ msgstr ""
 # File: data/advanced_preferences.cfg, line: 142
 # File: data/advanced_preferences.cfg, line: 142
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:96
+#: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
 msgstr "Exibir tempo como um relógio de 12 horas"
 
@@ -182,7 +182,7 @@ msgstr "Exibir tempo como um relógio de 12 horas"
 # File: data/advanced_preferences.cfg, line: 149
 # File: data/advanced_preferences.cfg, line: 149
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:103
+#: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
 msgstr "Confirmar ao carregar jogos salvos de uma versão diferete"
 
@@ -192,7 +192,7 @@ msgstr "Confirmar ao carregar jogos salvos de uma versão diferete"
 # File: data/advanced_preferences.cfg, line: 156
 # File: data/advanced_preferences.cfg, line: 156
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:110
+#: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
 msgstr "Exibir todos tipos de unidades na secção de ajuda"
 
@@ -202,7 +202,7 @@ msgstr "Exibir todos tipos de unidades na secção de ajuda"
 # File: data/advanced_preferences.cfg, line: 157
 # File: data/advanced_preferences.cfg, line: 157
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:111
+#: data/advanced_preferences.cfg:102
 msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
@@ -212,12 +212,12 @@ msgstr ""
 "serão exibidas."
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:118
+#: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
 msgstr "Limite de arquivos recentes do Editor"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:119
+#: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
 msgstr ""
@@ -225,32 +225,32 @@ msgstr ""
 "editor"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:129
+#: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
 msgstr "Mostrar cursores coloridos"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:130
+#: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
 msgstr "Usar cursores de mouse coloridos"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:137
+#: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
 msgstr "Personalizar a cor das esferas"
 
 #. [advanced_preference]: type=custom
-#: data/advanced_preferences.cfg:143
+#: data/advanced_preferences.cfg:134
 msgid "Logging"
 msgstr "Logando"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:149
+#: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
 msgstr "Permite cálculo de dano pelo método de Monte Carlo"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:150
+#: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
@@ -259,12 +259,12 @@ msgstr ""
 "cálculos de probabilidade"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:157
+#: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
 msgstr "Mostrar mensagens de deprecation dentro do jogo"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:158
+#: data/advanced_preferences.cfg:149
 msgid ""
 "Show warnings about deprecated API in the in-game chat area. These messages "
 "will still be shown in the log, even if this is disabled. In addition, the "
@@ -274,6 +274,31 @@ msgstr ""
 "mensagens ainda aparecerão no log, mesmo que essa opção esteja desabilitada. "
 "Além do mais, os controles do dominio do log deprecation controlam quantas "
 "mensagens são mostradas."
+
+#
+# File: src/multiplayer.cpp, line: 235
+# File: src/multiplayer.cpp, line: 320
+# File: src/multiplayer_ui.cpp, line: 84
+# File: src/multiplayer.cpp, line: 235
+# File: src/multiplayer.cpp, line: 320
+# File: src/multiplayer_ui.cpp, line: 84
+# File: src/multiplayer.cpp, line: 235
+# File: src/multiplayer.cpp, line: 320
+# File: src/multiplayer_ui.cpp, line: 84
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:156
+#, fuzzy
+#| msgid "Connection timed out"
+msgid "Server disconnect timeout"
+msgstr "A conexão expirou"
+
+#. [advanced_preference]: type=int
+#: data/advanced_preferences.cfg:157
+msgid ""
+"The amount of time in seconds before a disconnect is detected. If currently "
+"logged into the multiplayer server, you must log out and then log back in "
+"for this to take effect."
+msgstr ""
 
 #
 # File: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg, line: 311
@@ -340,7 +365,7 @@ msgstr "Notas:"
 # File: src/menu_events.cpp, line: 166
 # File: src/statistics_dialog.cpp, line: 182
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:734
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:736
 msgid "Close"
 msgstr "Fechar"
 
@@ -13145,7 +13170,7 @@ msgstr "Comando de Debug Usado"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "Uma unidade foi criada usando o modo de debug durante $player’s turn"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "esperando por $desc do lado $sides"
@@ -13495,7 +13520,7 @@ msgstr "$year AF"
 # File: src/multiplayer.cpp, line: 194
 # File: src/multiplayer.cpp, line: 151
 # File: src/multiplayer.cpp, line: 194
-#: src/wesnothd_connection.cpp:531
+#: src/wesnothd_connection.cpp:536
 msgid "Disconnected from server."
 msgstr "Desconectado do servidor."
 
@@ -14944,19 +14969,6 @@ msgstr "Opções do Quadro-Branco"
 #~ msgid "Request a list of details you can set for your registered nickname."
 #~ msgstr ""
 #~ "Solicita a lista de detalhes que você pode definir para o seu apelido."
-
-#
-# File: src/multiplayer.cpp, line: 235
-# File: src/multiplayer.cpp, line: 320
-# File: src/multiplayer_ui.cpp, line: 84
-# File: src/multiplayer.cpp, line: 235
-# File: src/multiplayer.cpp, line: 320
-# File: src/multiplayer_ui.cpp, line: 84
-# File: src/multiplayer.cpp, line: 235
-# File: src/multiplayer.cpp, line: 320
-# File: src/multiplayer_ui.cpp, line: 84
-#~ msgid "Connection timed out"
-#~ msgstr "A conexão expirou"
 
 #
 # File: src/dialogs.cpp, line: 945

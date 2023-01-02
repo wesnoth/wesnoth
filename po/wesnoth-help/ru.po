@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-05-08 04:42+0300\n"
+"POT-Creation-Date: 2023-01-01 18:33-0600\n"
 "PO-Revision-Date: 2022-08-28 19:34+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -33,6 +33,31 @@ msgstr ""
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Подземелье"
+
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:185
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "нежить"
+
+#. [label]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:198
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "бесстрашный"
+
+#. [label]
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:248
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+msgid "plague"
+msgstr "чума"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -198,12 +223,6 @@ msgstr "Защита"
 msgid "drains"
 msgstr "высасывает"
 
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "бесстрашный"
-
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
 #: data/core/macros/abilities.cfg:384
@@ -285,13 +304,6 @@ msgstr "Грибная роща"
 msgid "nightstalk"
 msgstr "невидимка"
 
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "чума"
-
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:101
 #: data/core/macros/abilities.cfg:577
@@ -351,12 +363,6 @@ msgstr "Болото"
 #: data/core/macros/abilities.cfg:250
 msgid "teleport"
 msgstr "телепорт"
-
-#. [trait]: id=undead
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:134
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "нежить"
 
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:140
 msgid "Village"

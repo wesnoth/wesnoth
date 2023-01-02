@@ -170,14 +170,14 @@ correspondant à celle de wesnoth).
 Exemple\ : \fBversions_accepted="*"\fP autorise tout type de version.
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+Spécifie si les joueurs non\-enregistrés avec le \fBuser_handler\fP utilisé
+peuvent se connecter (défaut\ : non).
 .
 .SS "Balises globales\ : "
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Balise pour permettre au serveur de rediriger certaines
+versions du client. N'est pas utilisé si \fBversions_accepted\fP ne l'est pas.
 .RS
 .TP 
 \fBhost\fP
@@ -211,12 +211,14 @@ de rediriger les requêtes des clients vers le serveur spécifié. Fonctionne
 comme \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configure l'identifiant utilisateur. S'il n'y a aucune
+section \fB [user_handler]\fP dans la configuration, le serveur fonctionnera
+sans aucun service d'enregistrement d'alias. Toutes les tables
+complémentaires qui sont nécessaire pour que le \fBforum_user_handler\fP
+fonctionne, se trouvent dans le fichier table_definition.sql du dépôt des
+sources de Wesnoth. Nécessite l'activation du support mysql. Pour cmake,
+c'est le paramètre \fBENABLE_MYSQL\fP et pour scons c'est
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
