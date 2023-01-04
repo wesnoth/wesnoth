@@ -569,16 +569,18 @@ void addon_manager::load_addon_list()
 			// neccessay to set local_only here so that flag can be properly set after addons_ is cleared
 			// and recreated by read_addons_list.
 			// Since the user may be planning to upload an addon, this is the right time to validate the .pbl.
-			config pbl_cfg = get_addon_pbl_info(id, true);
-			pbl_cfg["name"] = id;
-			pbl_cfg["local_only"] = true;
+			try {
+				config pbl_cfg = get_addon_pbl_info(id, true);
+				pbl_cfg["name"] = id;
+				pbl_cfg["local_only"] = true;
 
-			// Add the add-on to the list.
-			addon_info addon(pbl_cfg);
-			addons_[id] = addon;
+				// Add the add-on to the list.
+				addon_info addon(pbl_cfg);
+				addons_[id] = addon;
 
-			// Add the addon to the config entry
-			cfg_.add_child("campaign", std::move(pbl_cfg));
+				// Add the addon to the config entry
+				cfg_.add_child("campaign", std::move(pbl_cfg));
+			} catch(invalid_pbl_exception&) {}
 		}
 	}
 
