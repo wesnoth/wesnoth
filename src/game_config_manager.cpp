@@ -456,7 +456,7 @@ void game_config_manager::load_addons_cfg()
 			// Publishing info needs to be read from disk.
 			try {
 				// TODO: This is probably a good place to set this to "if at titlescreen and running with --debug" but I'm not quite sure how.
-				bool should_validate_pbl = false;
+				bool should_validate_pbl = game_config::debug && cache_.get_preproc_map().count("TITLE_SCREEN") > 0;
 				metadata = get_addon_pbl_info(addon_id, should_validate_pbl);
 			} catch(const invalid_pbl_exception& e) {
 				const std::string log_msg = formatter()
