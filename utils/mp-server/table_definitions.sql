@@ -111,8 +111,8 @@ CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);
 -- TYPE: one of era/scenario/modification/campaign
 -- ID: the id of the content
 -- NAME: the content's user-visible name
--- SOURCE: the id of the add-on that the particular content came from
--- VERSION: the version of the source add-on
+-- ADDON_ID: the id of the add-on that the particular content came from
+-- ADDON_VERSION: the version of the add-on
 create table game_content_info
 (
     INSTANCE_UUID     CHAR(36) NOT NULL,
@@ -120,8 +120,8 @@ create table game_content_info
     TYPE              VARCHAR(100) NOT NULL,
     ID                VARCHAR(100) NOT NULL,
     NAME              VARCHAR(255),
-    SOURCE            VARCHAR(100) NOT NULL,
-    VERSION           VARCHAR(255) NOT NULL,
+    ADDON_ID          VARCHAR(100) NOT NULL,
+    ADDON_VERSION     VARCHAR(255) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
