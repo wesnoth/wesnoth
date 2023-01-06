@@ -117,9 +117,9 @@ create table game_content_info
 (
     INSTANCE_UUID     CHAR(36) NOT NULL,
     GAME_ID           INT UNSIGNED NOT NULL,
-    TYPE              VARCHAR(255) NOT NULL,
-    ID                VARCHAR(255) NOT NULL,
-    NAME              VARCHAR(255),
+    TYPE              VARCHAR(100) NOT NULL,
+    ID                VARCHAR(100) NOT NULL,
+    NAME              VARCHAR(100),
     SOURCE            VARCHAR(255) NOT NULL,
     VERSION           VARCHAR(255) NOT NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE)
