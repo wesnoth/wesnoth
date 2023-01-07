@@ -185,9 +185,6 @@ namespace preferences {
 	std::string moved_color();
 	void set_moved_color(const std::string& color_id);
 
-	std::string disengaged_color();
-	void set_disengaged_color(const std::string& color_id);
-
 	bool show_ally_orb();
 	void set_show_ally_orb(bool show_orb);
 

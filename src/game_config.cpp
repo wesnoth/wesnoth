@@ -170,7 +170,6 @@ std::vector<std::string> default_colors;
 namespace colors
 {
 std::string ally_orb_color;
-std::string disengaged_orb_color;
 std::string enemy_orb_color;
 std::string moved_orb_color;
 std::string partial_orb_color;
@@ -315,7 +314,6 @@ void load_config(const config &v)
 		partial_orb_color  = i["partial_orb_color"].str();
 		enemy_orb_color    = i["enemy_orb_color"].str();
 		ally_orb_color     = i["ally_orb_color"].str();
-		disengaged_orb_color = i["disengaged_orb_color"].str();
 	} // colors
 
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
