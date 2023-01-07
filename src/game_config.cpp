@@ -319,7 +319,7 @@ void load_config(const config &v)
 	show_ally_orb     = v["show_ally_orb"].to_bool(true);
 	show_enemy_orb    = v["show_enemy_orb"].to_bool(false);
 	show_moved_orb    = v["show_moved_orb"].to_bool(true);
-	show_partial_orb  = v["show_partly_orb"].to_bool(true);
+	show_partial_orb  = v["show_partial_orb"].to_bool(true);
 	show_status_on_ally_orb = v["show_status_on_ally_orb"].to_bool(true);
 	show_unmoved_orb  = v["show_unmoved_orb"].to_bool(true);
 	show_disengaged_orb = v["show_disengaged_orb"].to_bool(true);
