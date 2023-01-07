@@ -325,12 +325,12 @@ void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const
 		log_sql_exception("Failed to insert game player info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
 	}
 }
-unsigned long long dbconn::insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version)
+unsigned long long dbconn::insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version)
 {
 	try
 	{
-		return modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, SOURCE, VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
-			uuid, game_id, type, name, id, source, version);
+		return modify(connection_, "INSERT INTO `"+db_game_content_info_table_+"`(INSTANCE_UUID, GAME_ID, TYPE, NAME, ID, ADDON_ID, ADDON_VERSION) VALUES(?, ?, ?, ?, ?, ?, ?)",
+			uuid, game_id, type, name, id, addon_id, addon_version);
 	}
 	catch(const mariadb::exception::base& e)
 	{
