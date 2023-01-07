@@ -179,7 +179,7 @@ public:
 	 * @param name The name of the content.
 	 * @param id The id of the content.
 	 * @param addon_id The source add-on for the content.
-	 * @param version The version of the source add-on.
+	 * @param addon_version The version of the source add-on.
 	 * @return The number of rows inserted which should always be 1.
 	 */
 	unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version);
