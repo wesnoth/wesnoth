@@ -379,16 +379,6 @@ void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
 }
 
-std::string disengaged_color() {
-	std::string disengaged_color = get("disengaged_orb_color");
-	if (disengaged_color.empty())
-		return game_config::colors::disengaged_orb_color;
-	return fix_orb_color_name(disengaged_color);
-}
-void set_disengaged_color(const std::string& color_id) {
-	prefs["disengaged_orb_color"] = color_id;
-}
-
 bool scroll_to_action()
 {
 	return get("scroll_to_action", true);

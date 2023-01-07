@@ -90,7 +90,6 @@ namespace game_config
 
 	namespace colors {
 	extern std::string ally_orb_color;
-	extern std::string disengaged_orb_color;
 	extern std::string enemy_orb_color;
 	extern std::string moved_orb_color;
 	extern std::string partial_orb_color;

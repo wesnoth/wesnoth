@@ -82,8 +82,6 @@ void select_orb_colors::post_show(window&)
 
 	preferences::set_unmoved_color(groups_["unmoved"].get_active_member_value());
 	preferences::set_partial_color(groups_["partial"].get_active_member_value());
-	// For the minimap, show disengaged units as partially moved
-	preferences::set_disengaged_color(groups_["partial"].get_active_member_value());
 	preferences::set_moved_color(groups_["moved"].get_active_member_value());
 	preferences::set_allied_color(groups_["ally"].get_active_member_value());
 	preferences::set_enemy_color(groups_["enemy"].get_active_member_value());
