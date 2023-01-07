@@ -470,10 +470,10 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 	}
 }
 
-void fuh::db_insert_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& source, const std::string& version){
+void fuh::db_insert_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& id, const std::string& addon_id, const std::string& addon_version){
 	try {
-		prepared_statement<void>("insert into `" + db_game_content_info_table_ + "`(INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE, VERSION) values(?, ?, ?, ?, ?, ?)",
-		uuid, game_id, type, id, source, version);
+		prepared_statement<void>("insert into `" + db_game_content_info_table_ + "`(INSTANCE_UUID, GAME_ID, TYPE, ID, ADDON_ID, ADDON_VERSION) values(?, ?, ?, ?, ?, ?)",
+		uuid, game_id, type, id, addon_id, addon_version);
 	} catch (const sql_error& e) {
 		ERR_UH << "Could not insert the game's content information on table `" + db_game_content_info_table_ + "`:" << e.message << std::endl;
 	}
