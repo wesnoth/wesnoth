@@ -55,8 +55,7 @@ select_orb_colors::select_orb_colors()
 void select_orb_colors::pre_show(window& window)
 {
 	setup_orb_group("unmoved", show_unmoved_, preferences::unmoved_color());
-	setup_orb_group("partial", show_partial_, preferences::partial_color());
-	setup_orb_toggle("disengaged", show_disengaged_);
+	setup_orb_group_two_color("partial", show_partial_, show_disengaged_, preferences::partial_color());
 	setup_orb_group("moved", show_moved_, preferences::moved_color());
 	setup_orb_group("ally", show_ally_, preferences::allied_color());
 	setup_orb_group("enemy", show_enemy_, preferences::enemy_color());
@@ -119,7 +118,18 @@ void select_orb_colors::setup_orb_group(const std::string& base_id, bool& shown,
 	group.set_member_states(initial);
 }
 
-void select_orb_colors::reset_orb_toggle(const std::string& base_id, bool& shown)
+void select_orb_colors::setup_orb_group_two_color(const std::string& base_id, bool& shown, bool& two_color, const std::string& initial)
+{
+	setup_orb_group(base_id, shown, initial);
+
+	const std::string prefix = get_orb_widget_prefix(base_id);
+	toggle_button& toggle = find_widget<toggle_button>(get_window(), prefix + "two_color", false);
+	toggle.set_value_bool(two_color);
+
+	connect_signal_mouse_left_click(toggle, std::bind(&select_orb_colors::toggle_orb_callback, this, std::ref(two_color)));
+}
+
+void select_orb_colors::reset_orb_toggle(const std::string& base_id, bool shown)
 {
 	const std::string prefix = get_orb_widget_prefix(base_id);
 
@@ -127,14 +137,26 @@ void select_orb_colors::reset_orb_toggle(const std::string& base_id, bool& shown
 	toggle.set_value_bool(shown);
 }
 
-void select_orb_colors::reset_orb_group(const std::string& base_id, bool& shown, const std::string& initial)
+void select_orb_colors::reset_orb_group(const std::string& base_id, bool shown, const std::string& initial)
 {
 	reset_orb_toggle(base_id, shown);
 	groups_[base_id].set_member_states(initial);
 }
 
+void select_orb_colors::reset_orb_group_two_color(const std::string& base_id, bool shown, bool two_color, const std::string& initial)
+{
+	reset_orb_group(base_id, shown, initial);
+
+	const std::string prefix = get_orb_widget_prefix(base_id);
+
+	toggle_button& toggle = find_widget<toggle_button>(get_window(), prefix + "two_color", false);
+	toggle.set_value_bool(two_color);
+}
+
 void select_orb_colors::toggle_orb_callback(bool& storage)
 {
+	// The code for the two-color groups uses this for both the main setting and the two_color setting - if
+	// you add any extra logic here, check that it's still also applicable to the two_color setting.
 	storage = !storage;
 }
 
@@ -148,8 +170,7 @@ void select_orb_colors::reset_orb_callback()
 	show_enemy_ = game_config::show_enemy_orb;
 
 	reset_orb_group("unmoved", show_unmoved_, game_config::colors::unmoved_orb_color);
-	reset_orb_group("partial", show_partial_, game_config::colors::partial_orb_color);
-	reset_orb_toggle("disengaged", show_disengaged_);
+	reset_orb_group_two_color("partial", show_partial_, show_disengaged_, game_config::colors::partial_orb_color);
 	reset_orb_group("moved", show_moved_, game_config::colors::moved_orb_color);
 	reset_orb_group("ally", show_ally_, game_config::colors::ally_orb_color);
 	reset_orb_group("enemy", show_enemy_, game_config::colors::enemy_orb_color);
