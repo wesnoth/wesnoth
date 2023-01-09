@@ -147,10 +147,15 @@ public:
 	virtual void db_set_oos_flag(const std::string& uuid, int game_id) = 0;
 	virtual void async_test_query(boost::asio::io_service& io_service, int limit) = 0;
 	virtual bool db_topic_id_exists(int topic_id) = 0;
-	virtual void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id) = 0;
+	virtual void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader) = 0;
 	virtual unsigned long long db_insert_login(const std::string& username, const std::string& ip, const std::string& version) = 0;
 	virtual void db_update_logout(unsigned long long login_id) = 0;
 	virtual void get_users_for_ip(const std::string& ip, std::ostringstream* out) = 0;
 	virtual void get_ips_for_user(const std::string& username, std::ostringstream* out) = 0;
 	virtual void db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version) = 0;
+	virtual bool db_is_user_primary_author(const std::string& instance_version, const std::string& id, const std::string& username) = 0;
+	virtual bool db_is_user_secondary_author(const std::string& instance_version, const std::string& id, const std::string& username) = 0;
+	virtual void db_delete_addon_authors(const std::string& instance_version, const std::string& id) = 0;
+	virtual void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors) = 0;
+	virtual bool db_do_any_authors_exist(const std::string& instance_version, const std::string& id) = 0;
 };
