@@ -895,6 +895,10 @@ void server::delete_addon(const std::string& id)
 {
 	config& cfg = get_addon(id);
 
+	if(cfg["forum_auth"].to_bool()) {
+		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
+	}
+
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'";
 		return;
@@ -1324,7 +1328,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 
 			for(const std::string& secondary_author : utils::split(upload["secondary_authors"].str(), ',')) {
 				if(!user_handler_->user_exists(secondary_author)) {
-					LOG_CS << "Validation error: forum auth requested for an author who doesn't exist";
+					LOG_CS << "Validation error: forum auth requested for a secondary author who doesn't exist";
 					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 				}
 			}
@@ -1877,9 +1881,6 @@ void server::handle_delete(const server::request& req)
 		return;
 	}
 
-	if(addon["forum_auth"].to_bool()) {
-		user_handler_->db_delete_addon_authors(server_id_, addon["name"].str());
-	}
 	delete_addon(id);
 
 	send_message("Add-on deleted.", req.sock);

@@ -468,8 +468,8 @@ bool dbconn::is_user_author(const std::string& instance_version, const std::stri
 	}
 	catch(const mariadb::exception::base& e)
 	{
-		log_sql_exception("Unable to check whether `"+username+"` is the primary author of "+id+" for version "+instance_version+".", e);
-		return true;
+		log_sql_exception("Unable to check whether `"+username+"` is an author of "+id+" for version "+instance_version+".", e);
+		return false;
 	}
 }
 
