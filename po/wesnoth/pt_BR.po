@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2022-09-01 14:58-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -377,7 +377,7 @@ msgstr "Notas:"
 # File: src/menu_events.cpp, line: 166
 # File: src/statistics_dialog.cpp, line: 182
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Fechar"
 
@@ -501,7 +501,7 @@ msgstr "Artwork e Gráficos"
 # File: data/core/about.cfg, line: 642
 # File: data/core/about.cfg, line: 642
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Música"
 
@@ -510,7 +510,7 @@ msgstr "Música"
 # File: data/core/about.cfg, line: 679
 # File: data/core/about.cfg, line: 679
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Efeitos Sonoros"
 
@@ -519,7 +519,7 @@ msgstr "Efeitos Sonoros"
 # File: data/core/about.cfg, line: 695
 # File: data/core/about.cfg, line: 695
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Design da Campanha"
 
@@ -528,7 +528,7 @@ msgstr "Design da Campanha"
 # File: data/core/about.cfg, line: 766
 # File: data/core/about.cfg, line: 766
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapas Multiplayer e Balanceamento"
 
@@ -537,7 +537,7 @@ msgstr "Mapas Multiplayer e Balanceamento"
 # File: data/core/about.cfg, line: 807
 # File: data/core/about.cfg, line: 807
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Criadores de Pacotes"
 
@@ -546,7 +546,7 @@ msgstr "Criadores de Pacotes"
 # File: data/core/about.cfg, line: 882
 # File: data/core/about.cfg, line: 882
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Contribuidores Diversos"
 
@@ -555,7 +555,7 @@ msgstr "Contribuidores Diversos"
 # File: data/core/about.cfg, line: 2947
 # File: data/core/about.cfg, line: 2947
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Bots"
 
@@ -7521,7 +7521,7 @@ msgstr "Não há lugar vago no castelo para que a unidade seja recrutada."
 # File: src/actions/heal.cpp, line: 256
 # File: src/actions/heal.cpp, line: 256
 # File: src/actions/heal.cpp, line: 256
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "curado"
 
@@ -7529,7 +7529,7 @@ msgstr "curado"
 # File: src/actions/heal.cpp, line: 256
 # File: src/actions/heal.cpp, line: 256
 # File: src/actions/heal.cpp, line: 256
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "curada"
 
@@ -13229,7 +13229,7 @@ msgstr "Comando de Debug Usado"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "Uma unidade foi criada usando o modo de debug durante $player’s turn"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "esperando por $desc do lado $sides"
@@ -13495,7 +13495,7 @@ msgstr "neutra"
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
@@ -13503,7 +13503,7 @@ msgstr "$attack_list|: $effect_description"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
@@ -13511,7 +13511,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimento"
@@ -13521,7 +13521,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimentos"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> visão"
 
@@ -13529,7 +13529,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> visão"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # https://wiki.wesnoth.org/UnitTypeWML#Attacks
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> interferência"
 
@@ -13537,7 +13537,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> interferência"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP para avançar"
 
@@ -13545,7 +13545,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> XP para avançar"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -13556,7 +13556,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turnos"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> custo para convocar"
 
@@ -13564,7 +13564,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> custo para convocar"
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 

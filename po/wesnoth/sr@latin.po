@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -271,7 +271,7 @@ msgid "Notes:"
 msgstr "Beleške:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Zatvori"
 
@@ -345,37 +345,37 @@ msgid "Artwork and Graphics"
 msgstr "Grafika i crtanje"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Muzika"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Zvučni efekti"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Dizajn pohoda"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Višeigračke mape i uravnotežavanje"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Priprema paketa"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Razni doprinosi"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Botovi"
 
@@ -5259,11 +5259,11 @@ msgstr "Morate na kuli imati vođa koji može da unajmi tu jedinicu."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "U zamku nema više slobodnih polja za unajmljivanje jedinice."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr ""
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "female^slowed"
 msgid "female^cured"
@@ -8716,7 +8716,7 @@ msgstr "(ispravljačka naredba)"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] ""
@@ -8908,17 +8908,17 @@ msgstr "dvojstvena"
 msgid "female^neutral"
 msgstr "neutralna"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8928,25 +8928,25 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8957,13 +8957,13 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description po nivou"
 

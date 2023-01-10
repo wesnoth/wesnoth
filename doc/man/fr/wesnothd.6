@@ -110,8 +110,8 @@ Nombre maximum de connexions ayant la même adresse IP. \fB0\fP pour infini (par
 défaut : \fB5\fP).
 .TP 
 \fBdeny_unregistered_login\fP
-Whether to prevent users who are not registered with the \fBuser_handler\fP
-being used from logging in. (default: false)
+Spécifie si les joueurs non\-enregistrés avec le \fBuser_handler\fP utilisé
+peuvent se connecter (défaut\ : non).
 .TP 
 \fBdisallow_names\fP
 Noms/surnoms non acceptés par le serveur. Les caractères génériques \fB*\fP et
@@ -194,8 +194,8 @@ as 1.16 or 1.17.
 .SS "Balises globales\ : "
 .
 .P
-\fB[redirect]\fP A tag to specify a server to redirect certain client versions
-to. Is not used if \fBversions_accepted\fP is not set.
+\fB[redirect]\fP Balise pour permettre au serveur de rediriger certaines
+versions du client. N'est pas utilisé si \fBversions_accepted\fP ne l'est pas.
 .RS
 .TP 
 \fBhost\fP
@@ -229,12 +229,14 @@ de rediriger les requêtes des clients vers le serveur spécifié. Fonctionne
 comme \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. If no \fB[user_handler]\fP
-section is present in the configuration the server will run without any nick
-registration service. All additional tables that are needed for the
-\fBforum_user_handler\fP to function can be found in table_definitions.sql in
-the Wesnoth source repository. Requires mysql support enabled. For cmake
-this is \fBENABLE_MYSQL\fP and for scons this is \fBforum_user_handler.\fP
+\fB[user_handler]\fP Configure l'identifiant utilisateur. S'il n'y a aucune
+section \fB [user_handler]\fP dans la configuration, le serveur fonctionnera
+sans aucun service d'enregistrement d'alias. Toutes les tables
+complémentaires qui sont nécessaire pour que le \fBforum_user_handler\fP
+fonctionne, se trouvent dans le fichier table_definition.sql du dépôt des
+sources de Wesnoth. Nécessite l'activation du support mysql. Pour cmake,
+c'est le paramètre \fBENABLE_MYSQL\fP et pour scons c'est
+\fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -250,8 +252,8 @@ Nom d'utilisateur se connectant à la base de données
 Mot de passe de cet utilisateur
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+Nom de la table des données utilisateurs de vos forums phpbb, probablement
+sous la forme <table\-prefix>_users. Par exemple\ : phpbb3_users.
 .TP 
 \fBdb_extra_table\fP
 Nom de la table dans laquelle wesnothd stockera ses données à propos des
@@ -270,23 +272,23 @@ Nom de la table dans laquelle wesnothd stockera ses données à propos des
 modifications utilisées dans une partie.
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+Nom de la table des données de groupe d'utilisateurs de vos forums phpbb,
+probablement sous la forme <table\-prefix>_user_group. Par exemple\ :
+phpbb3_user_group.
 .TP 
 \fBdb_connection_history_table\fP
 The name of the table in which to store login/logout times. Also used for
 matching IPs to users and vice versa.
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+Nom de la table des informations des sujets de vos forums phpbb,
+probablement sous la forme <table\-prefix>_topics. Par exemple\ :
+phpbb3_topics.
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+Nom de la table des données des bannissements d'utilisateur de vos forums
+phpbb, probablement sous la forme <table\-prefix>_banlist. Par
+exemple\ : phpbb3_banlist.
 .TP 
 \fBmp_mod_group\fP
 L'identifiant du groupe du forum ayant les pouvoirs de modération.

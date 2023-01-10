@@ -100,12 +100,11 @@ int floating_label::xpos(std::size_t width) const
 
 rect floating_label::get_bg_rect(const rect& text_rect) const
 {
-	const int zf = display::get_singleton()->get_zoom_factor();
 	return {
-		text_rect.x - (border_ * zf),
-		text_rect.y - (border_ * zf),
-		text_rect.w + (border_ * zf * 2),
-		text_rect.h + (border_ * zf * 2)
+		text_rect.x -  border_,
+		text_rect.y -  border_,
+		text_rect.w + (border_ * 2),
+		text_rect.h + (border_ * 2)
 	};
 }
 
@@ -185,7 +184,7 @@ void floating_label::update(int time)
 	}
 
 	// Invalidate former draw loc
-	draw_manager::invalidate_region(screen_loc_);
+	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
 
 	// Invalidate new draw loc in preparation
 	draw_manager::invalidate_region(get_bg_rect(draw_loc));

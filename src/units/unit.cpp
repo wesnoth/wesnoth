@@ -1509,7 +1509,7 @@ void unit::write(config& cfg, bool write_all) const
 	};
 
 	if(write_all || get_attr_changed(UA_MOVEMENT_TYPE)) {
-		movement_type_.write(cfg);
+		movement_type_.write(cfg, false);
 	}
 	if(write_all || get_attr_changed(UA_SMALL_PROFILE)) {
 		cfg["small_profile"] = small_profile_;
@@ -1731,13 +1731,9 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	int res = movement_type_.resistance_against(damage_name);
 
 	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
-	for(unit_ability_list::iterator i = resistance_abilities.begin(); i != resistance_abilities.end();) {
-		if(!resistance_filter_matches(*i->ability_cfg, attacker, damage_name, 100-res)) {
-			i = resistance_abilities.erase(i);
-		} else {
-			++i;
-		}
-	}
+	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
+		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
+	});
 
 	if(!resistance_abilities.empty()) {
 		unit_abilities::effect resist_effect(resistance_abilities, 100-res);
@@ -2764,7 +2760,7 @@ std::vector<t_string> unit::unit_special_notes() const {
 
 // Filters unimportant stats from the unit config and returns a checksum of
 // the remaining config.
-std::string get_checksum(const unit& u)
+std::string get_checksum(const unit& u, backwards_compatibility::unit_checksum_version version)
 {
 	config unit_config;
 	config wcfg;
@@ -2818,9 +2814,11 @@ std::string get_checksum(const unit& u)
 			config& child_spec = child.add_child("specials", spec);
 
 			child_spec.recursive_clear_value("description");
-			child_spec.recursive_clear_value("description_inactive");
-			child_spec.recursive_clear_value("name");
-			child_spec.recursive_clear_value("name_inactive");
+			if(version != backwards_compatibility::unit_checksum_version::version_1_16_or_older) {
+				child_spec.recursive_clear_value("description_inactive");
+				child_spec.recursive_clear_value("name");
+				child_spec.recursive_clear_value("name_inactive");
+			}
 		}
 	}
 

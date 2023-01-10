@@ -30,6 +30,7 @@
 #include "units/abilities.hpp"
 #include "units/udisplay.hpp"
 #include "units/map.hpp"
+#include "utils/general.hpp"
 
 #include <list>
 #include <vector>
@@ -200,16 +201,12 @@ namespace {
 		// Check healing from other units.
 		unit_ability_list heal_list = patient.get_abilities("heals");
 		// Remove all healers not on this side (since they do not heal now).
-		unit_ability_list::iterator heal_it = heal_list.begin();
-		while ( heal_it != heal_list.end() ) {
-			unit_map::iterator healer = units.find(heal_it->teacher_loc);
+		utils::erase_if(heal_list, [&](const unit_ability& i) {
+			unit_map::iterator healer = units.find(i.teacher_loc);
 			assert(healer != units.end());
 
-			if ( healer->side() != side )
-				heal_it = heal_list.erase(heal_it);
-			else
-				++heal_it;
-		}
+			return healer->side() != side;
+		});
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0);

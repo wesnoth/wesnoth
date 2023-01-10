@@ -1,6 +1,7 @@
 
 local _ = wesnoth.textdomain 'wesnoth-help'
 local T = wml.tag
+local on_event = wesnoth.require("on_event")
 
 local u_pos_filter = function(u_id)
 
@@ -99,7 +100,7 @@ function wesnoth.wml_actions.on_undo_diversion(cfg)
 	status_anim_update(true)
 end
 
-wesnoth.game_events.add_repeating("moveto, die, recruit, recall", function()
+on_event("moveto, die, recruit, recall", function()
         status_anim_update()
 
 end)

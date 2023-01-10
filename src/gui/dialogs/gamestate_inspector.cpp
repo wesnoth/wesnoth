@@ -110,14 +110,21 @@ private:
 	{
 		pages.clear();
 		std::size_t start = 0;
-		while(start < data.size()) {
+		while(start + max_inspect_win_len < data.size()) {
+			// This could search into data that's already on a previous page, which is why the result
+			// is then checked for end < start.
 			std::size_t end = data.find_last_of('\n', start + max_inspect_win_len);
-			if(end == std::string::npos) {
-				end = data.size() - 1;
+			int len;
+			if(end == std::string::npos || end < start) {
+				len = max_inspect_win_len;
+			} else {
+				len = end - start + 1;
 			}
-			int len = end - start + 1;
 			pages.emplace_back(start, len);
 			start += len;
+		}
+		if(start < data.size()) {
+			pages.emplace_back(start, data.size() - start);
 		}
 	}
 	static const unsigned int max_inspect_win_len = 20000;

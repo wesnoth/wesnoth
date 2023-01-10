@@ -19,8 +19,8 @@ function wesnoth.textdomain(domain) end
 ---Logs a message to the console
 ---@param logger "'info'"|"'debug'"|"'warning'"|"'error'"|"'wml'"
 ---@param message string
----@param in_chat boolean
----@overload fun(message:string, in_chat:boolean)
+---@param in_chat? boolean
+---@overload fun(message:string, in_chat?:boolean)
 function wesnoth.log(logger, message, in_chat) end
 
 ---Simulate combat between two units

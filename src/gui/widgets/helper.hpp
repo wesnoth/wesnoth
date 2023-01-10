@@ -22,6 +22,7 @@
 
 #include <cstdint>
 #include <string>
+#include <string_view>
 
 struct SDL_Rect;
 struct point;
@@ -112,6 +113,6 @@ point get_mouse_position();
  *
  * @returns                       The truncated text.
  */
-std::string debug_truncate(const std::string& text);
+std::string_view debug_truncate(std::string_view text);
 
 } // namespace gui2

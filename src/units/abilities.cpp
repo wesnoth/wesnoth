@@ -18,10 +18,10 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
-#include "display.hpp"
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
 #include "game_board.hpp"
+#include "game_version.hpp" // for version_info
 #include "gettext.hpp"
 #include "global.hpp"
 #include "lexical_cast.hpp"
@@ -134,8 +134,8 @@ namespace {
 
 bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 {
-	// display::get_singleton() has already been confirmed valid by both callers.
-	const team& side_team = display::get_singleton()->get_disp_context().get_team(side);
+	assert(resources::gameboard);
+	const team& side_team = resources::gameboard->get_team(side);
 
 	if(side == other_side)
 		return cfg["affect_allies"].to_bool(true);
@@ -157,8 +157,8 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -198,8 +198,8 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		}
 	}
 
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -230,13 +230,9 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
-	for(unit_ability_list::iterator i = res.begin(); i != res.end();) {
-		if((!ability_affects_weapon(*i->ability_cfg, weapon, false) || !ability_affects_weapon(*i->ability_cfg, opp_weapon, true))) {
-			i = res.erase(i);
-		} else {
-			++i;
-		}
-	}
+	utils::erase_if(res, [&](const unit_ability& i) {
+		return !ability_affects_weapon(*i.ability_cfg, weapon, false) || !ability_affects_weapon(*i.ability_cfg, opp_weapon, true);
+	});
 	return res;
 }
 
@@ -362,8 +358,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	const auto adjacent = get_adjacent_tiles(loc);
 
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
@@ -521,8 +517,8 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
 			try {
-				assert(display::get_singleton());
-				const unit_map& units = display::get_singleton()->get_units();
+				assert(resources::gameboard);
+				const unit_map& units = resources::gameboard->units();
 
 				auto u_itor = units.find(ability_info.teacher_loc);
 
@@ -971,8 +967,8 @@ void attack_type::weapon_specials_impl_adj(
 	const std::string& affect_adjacents,
 	bool leader_bool)
 {
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 	if(self){
 		const auto adjacent = get_adjacent_tiles(self_loc);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -1247,30 +1243,18 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
-	unit_ability_list abil_other_list(loc);
 	if(self_) {
-		abil_list.append((*self_).get_abilities(ability, self_loc_));
-		for(unit_ability_list::iterator i = abil_list.begin(); i != abil_list.end();) {
-			if(!special_active(*i->ability_cfg, AFFECT_SELF, ability, "filter_student")) {
-				i = abil_list.erase(i);
-			} else {
-				++i;
-			}
-		}
+		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
+			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+		});
 	}
 
 	if(other_) {
-		abil_other_list.append((*other_).get_abilities(ability, other_loc_));
-		for(unit_ability_list::iterator i = abil_other_list.begin(); i != abil_other_list.end();) {
-			if(!special_active_impl(other_attack_, shared_from_this(), *i->ability_cfg, AFFECT_OTHER, ability, "filter_student")) {
-				i = abil_other_list.erase(i);
-			} else {
-				++i;
-			}
-		}
+		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student");
+		});
 	}
 
-	abil_list.append(abil_other_list);
 	return abil_list;
 }
 
@@ -1297,48 +1281,36 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, const unit_ability_list& temp_list, const unit_ability_list& abil_list, const std::string& filter_self, bool is_special) const
+unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const
 {
-	bool overwrite_self = false;
-	bool overwrite_opponent = false;
-	bool overwrite_either = false;
-
-	for(const auto& i : abil_list) {
-		if((*i.ability_cfg)["overwrite_specials"] == "both_sides") {
-			overwrite_either = true;
-			break;
-		}
-		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self) && !overwrite_self) {
-			overwrite_self = true;
-		}
-		if((*i.ability_cfg)["overwrite_specials"] == "one_side" && special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self) && !overwrite_opponent) {
-			overwrite_opponent = true;
+	for(unit_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
+		if(!overwrite_special_affects(*i->ability_cfg)) {
+			i = overwriters.erase(i);
+		} else {
+			++i;
 		}
 	}
-	if(!overwrite_either && !overwrite_self && !overwrite_opponent){
-		return temp_list;
+	if(overwriters.empty()){
+		return input;
 	}
 
-	if(!overwrite_either && overwrite_self && overwrite_opponent){
-		overwrite_either = true;
+	for(const auto& i : overwriters) {
+		bool affect_side = ((*i.ability_cfg)["overwrite_specials"] == "one_side");
+		utils::erase_if(input, [&](const unit_ability& j) {
+			bool is_overwritable = (is_special || !overwrite_special_affects(*j.ability_cfg));
+			bool one_side_overwritable = true;
+			if(affect_side && is_overwritable){
+				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self)){
+					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, *j.ability_cfg, AFFECT_SELF, ability, filter_self);
+				}
+				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self)){
+					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, filter_self);
+				}
+			}
+			return (is_overwritable && one_side_overwritable);
+		});
 	}
-
-	// At this point we need to return a changed list, so create a non-const one to return
-	unit_ability_list overwrite_list;
-	for(const auto& i : temp_list) {
-		bool overwrite = false;
-		if(overwrite_either){
-			overwrite = !is_special && overwrite_special_affects(*i.ability_cfg);
-		} else if(overwrite_self){
-			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self);
-		} else if(overwrite_opponent){
-			overwrite = (!is_special && overwrite_special_affects(*i.ability_cfg)) || special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self);
-		}
-		if(overwrite) {
-			overwrite_list.emplace_back(i);
-		}
-	}
-	return overwrite_list;
+	return input;
 }
 
 	/**
@@ -1433,8 +1405,8 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
  */
 bool attack_type::has_weapon_ability(const std::string& special, bool special_id, bool special_tags) const
 {
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 	if(self_){
 		std::vector<special_match> special_tag_matches_self;
 		std::vector<special_match> special_id_matches_self;
@@ -1589,8 +1561,8 @@ bool attack_type::special_active_impl(
 	}
 
 	// Get the units involved.
-	assert(display::get_singleton());
-	const unit_map& units = display::get_singleton()->get_units();
+	assert(resources::gameboard);
+	const unit_map& units = resources::gameboard->units();
 
 	unit_const_ptr self = self_attack ? self_attack->self_ : other_attack->other_;
 	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;

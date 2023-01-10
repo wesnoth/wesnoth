@@ -399,15 +399,18 @@ void addon_manager::pre_show(window& window)
 			languages_available.insert(b);
 		}
 	}
-
+	std::set<std::string> language_strings_available;
 	for (const auto& i: languages_available) {
 		// Only show languages, which have a translation as per langcode_to_string() method
 		// Do not show tranlations with their langcode e.g. "sv_SV"
+		// Also put them into a set, so same lang strings are not producing doublettes
 		if (std::string lang_code_string = langcode_to_string(i); !lang_code_string.empty()) {
-			language_filter_types_.emplace_back(language_filter_types_.size(), std::move(lang_code_string));
+			language_strings_available.insert(lang_code_string);
 		}
 	}
-
+	for (auto& i: language_strings_available) {
+		language_filter_types_.emplace_back(language_filter_types_.size(), std::move(i));
+	}
 	// The language filter
 	multimenu_button& language_filter = find_widget<multimenu_button>(&window, "language_filter", false);
 	std::vector<config> language_filter_entries;
@@ -525,7 +528,7 @@ void addon_manager::pre_show(window& window)
 	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));
 
 	// Use handle the special addon_list retval to allow installing addons on double click
-	window.set_exit_hook(std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
+	window.set_exit_hook(window::exit_hook::on_all, std::bind(&addon_manager::exit_hook, this, std::placeholders::_1));
 }
 
 void addon_manager::toggle_details(button& btn, stacked_widget& stk)

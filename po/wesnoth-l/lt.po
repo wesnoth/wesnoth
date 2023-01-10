@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
+"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
 "PO-Revision-Date: 2019-01-21 23:51+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Generator: Poedit 2.1.1\n"
 
 #. [campaign]: id=Liberty
@@ -261,49 +261,49 @@ msgstr ""
 msgid "Jalak"
 msgstr "Džalakas"
 
-#. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:218
+#. [unit]: type=Footpad_Peasant, id=Delurin
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:221
 msgid "Delurin"
 msgstr "Delurinas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:219
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:229
 msgid "Red"
 msgstr "Redas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:220
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:230
 msgid "Ordo"
 msgstr "Ordo"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:221
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:231
 msgid "Novus"
 msgstr "Novus"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:222
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:232
 msgid "Teneor"
 msgstr "Teneoras"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:223
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:233
 msgid "Kembe"
 msgstr "Kembe"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:224
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:234
 msgid "Treagh"
 msgstr "Treaghas"
 
 #. [unit]: type=Footpad_Peasant, id=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:231
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:241
 msgid "Harper"
 msgstr "Harperis"
 
 #. [message]: speaker=Red
 #. Other country folk also have accents
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:258
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:268
 #, fuzzy
 #| msgid ""
 #| "Look, goblin riders approach! You were right, they were going to raid "
@@ -316,7 +316,7 @@ msgstr ""
 "Dalbeną kol mūsų nebus."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:262
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:272
 msgid ""
 "We gots to stop them or they’ll burn down the whole village. Damn these "
 "goblins and damn the Crown. We always be havin’ to fight for ourselves."
@@ -325,7 +325,7 @@ msgstr ""
 #. [message]: speaker=Harper
 #. Harper has a bit of an accent, but not as much as Baldras.
 #. He's a bit of a reckless kid as Baldras alludes to, but he's much more polite
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:268
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:278
 #, fuzzy
 #| msgid ""
 #| "That goblin leader is heading full-speed straight for Dallben. But we’ll "
@@ -339,7 +339,7 @@ msgstr ""
 "juos sustabdyti, teks sugaudyti juos visus."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:272
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:282
 #, fuzzy
 #| msgid ""
 #| "Do it. Try to hold them back until us old-timers can get there and finish "
@@ -351,7 +351,7 @@ msgstr ""
 "pribaigti."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:276
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:286
 msgid ""
 "And Harper... don’t be getting reckless on me today. Your old man died like "
 "that, charging into a pack of goblins by ‘imself. I won’t lose ya the same "
@@ -359,19 +359,19 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:280
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:290
 msgid "I know, I know, no need to worry so much. All right, let’s go!"
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:294
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:304
 msgid ""
 "These orc raids keep getting harder and harder to hold off. Feels like every "
 "new day’s just another chance for us to lose everything..."
 msgstr ""
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:298
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:308
 msgid ""
 "That Garard II stopped sendin’ patrols out here a while back. Stinker "
 "probably sent his troops on some new war against them orcs. Don’t really "
@@ -380,66 +380,66 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:302
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:312
 msgid ""
 "Then why do we got to pay taxes to the King? Maybe Elensefar doesn’t help "
 "us, but at least they don’t take our gold."
 msgstr ""
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:306
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:316
 msgid ""
 "We don’t got no choice, lad. If I don’t gives them what they want, they’ll "
 "make trouble for everyone in Dallben."
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:310
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:320
 msgid ""
 "But we can’t keep doing this forever, Uncle. If we stay like this, those "
 "orcs will eventually overrun us. What should we do?"
 msgstr ""
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:314
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:324
 msgid ""
 "I don’t know, Harper. I just don’t know. Alls I can say is we’re on our own "
 "out here."
 msgstr ""
 
 #. [message]: speaker=Fal Khag
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:332
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid "Time to feast on these puny pinkskins."
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:337
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:347
 msgid "Hey! Who ya calling puny?"
 msgstr ""
 
 #. [message]: speaker=Fal Khag
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:349
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:359
 msgid "I was... too weak..?"
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:354
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:364
 msgid "Silly goblin."
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:369
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:379
 msgid ""
 "Hey, someone left their pack here. I could use it to carry some more rocks."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:402
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:412
 msgid "Spooky."
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:442
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:452
 #, fuzzy
 #| msgid ""
 #| "They’re getting closer to our village! What about the town guards, can "
@@ -449,36 +449,36 @@ msgstr ""
 "Jie artėja prie mūsų miestelio! Kaip miesto sargyba? Ar jie gali mums padėti?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:446
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:456
 msgid ""
 "There be a couple guards in the village. Might be able to slow them wolves "
 "down if they gets closer."
 msgstr ""
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:459
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:469
 msgid "Remald"
 msgstr "Remaldas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:460
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:470
 msgid "Wolmas"
 msgstr "Volmas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:465
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:475
 msgid "Jasken"
 msgstr "Džaskenas"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:472
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:482
 #, fuzzy
 #| msgid "What’s happening here? Why are you running like mad, $unit.name|?"
 msgid "What’s happening here? Why be you running like mad, $unit.name|?"
 msgstr "Kas čia darosi? Kodėl leki kaip pamišęs, $unit.name|?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:476
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:486
 #, fuzzy
 #| msgid "Look! Goblin riders are on the hunt — and heading right for Dallben!"
 msgid ""
@@ -486,19 +486,19 @@ msgid ""
 msgstr "Žiūrėkit! Raitieji goblinai medžioja — ir taikosi tiesiai į Dalbeną!"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:483
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:493
 #, fuzzy
 #| msgid "Look! Goblin riders are on the hunt — and heading right for Dallben!"
 msgid "Look! Goblin riders be on the hunt, headed right for Dallben!"
 msgstr "Žiūrėkit! Raitieji goblinai medžioja — ir taikosi tiesiai į Dalbeną!"
 
 #. [message]: speaker=Remald
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:487
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:497
 msgid "We gots to stop them!"
 msgstr ""
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:507
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:517
 #, fuzzy
 #| msgid ""
 #| "The goblins reached the village! There will surely be nothing left when "

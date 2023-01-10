@@ -968,6 +968,34 @@ static int do_gameloop(const std::vector<std::string>& args)
 	}
 }
 
+/**
+ * Try to autodetect the location of the game data dir. Note that
+ * the root of the source tree currently doubles as the data dir.
+ */
+static std::string autodetect_game_data_dir(std::string exe_dir)
+{
+	std::string auto_dir;
+
+	// scons leaves the resulting binaries at the root of the source
+	// tree by default.
+	if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
+		auto_dir = std::move(exe_dir);
+	}
+	// cmake encourages creating a subdir at the root of the source
+	// tree for the build, and the resulting binaries are found in it.
+	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/..");
+	}
+	// In Windows debug builds, the EXE is placed away from the game data dir
+	// (in projectfiles\VCx\Debug), but the working directory is set to the
+	// game data dir. Thus, check if the working dir is the game data dir.
+	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
+		auto_dir = filesystem::get_cwd();
+	}
+
+	return auto_dir;
+}
+
 #ifndef _WIN32
 static void wesnoth_terminate_handler(int)
 {
@@ -1107,34 +1135,12 @@ int main(int argc, char** argv)
 			PLAIN_LOG << "Started on " << ctime(&t);
 		}
 
-		const std::string& exe_dir = filesystem::get_exe_dir();
-		if(!exe_dir.empty()) {
-			// Try to autodetect the location of the game data dir. Note that
-			// the root of the source tree currently doubles as the data dir.
-			std::string auto_dir;
-
-			// scons leaves the resulting binaries at the root of the source
-			// tree by default.
-			if(filesystem::file_exists(exe_dir + "/data/_main.cfg")) {
-				auto_dir = exe_dir;
-			}
-			// cmake encourages creating a subdir at the root of the source
-			// tree for the build, and the resulting binaries are found in it.
-			else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
-				auto_dir = filesystem::normalize_path(exe_dir + "/..");
-			}
-			// In Windows debug builds, the EXE is placed away from the game data dir
-			// (in projectfiles\VCx\Debug), but the working directory is set to the
-			// game data dir. Thus, check if the working dir is the game data dir.
-			else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
-				auto_dir = filesystem::get_cwd();
-			}
-
-			if(!auto_dir.empty()) {
+		if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
+			if(std::string auto_dir = autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
 				if(!nobanner) {
-					PLAIN_LOG << "Automatically found a possible data directory at " << auto_dir;
+					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 				}
-				game_config::path = auto_dir;
+				game_config::path = std::move(auto_dir);
 			}
 		}
 

@@ -250,7 +250,7 @@ if(ENABLE_GAME)
 		SDL2::SDL2main
 	)
 	if(MSVC)
-		target_link_libraries(wesnoth SDL2::SDL2_image)
+		target_link_libraries(wesnoth SDL2_image::SDL2_image)
 		target_link_libraries(wesnoth SDL2_mixer::SDL2_mixer)
 	endif()
 
@@ -297,7 +297,7 @@ if(ENABLE_TESTS)
 		SDL2::SDL2main
 	)
 	if(MSVC)
-		target_link_libraries(boost_unit_tests SDL2::SDL2_image)
+		target_link_libraries(boost_unit_tests SDL2_image::SDL2_image)
 		target_link_libraries(boost_unit_tests SDL2_mixer::SDL2_mixer)
 	endif()
 

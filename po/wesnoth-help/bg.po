@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
+"POT-Creation-Date: 2022-11-19 23:31-0600\n"
 "PO-Revision-Date: 2022-03-16 17:15+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -29,6 +29,31 @@ msgstr ""
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Подземие"
+
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "немъртъв"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "безстрашен"
+
+#. [label]
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+msgid "plague"
+msgstr "чума"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -195,13 +220,6 @@ msgid "Always rest heals"
 msgstr ""
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "безстрашен"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
 #: data/core/macros/abilities.cfg:410
@@ -280,13 +298,6 @@ msgstr "Гъбен масив"
 #: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
 msgid "nightstalk"
 msgstr "нощна засада"
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "чума"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
@@ -5287,11 +5298,6 @@ msgstr ""
 "Лоялните единици не се нуждаят от издръжка. За повечето единици се дължи "
 "издръжка в края на всеки ход равна на нивото им. Това не важи за лоялните "
 "единици."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "немъртъв"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56

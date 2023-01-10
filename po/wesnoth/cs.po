@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
-"PO-Revision-Date: 2022-10-07 17:53+0200\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"PO-Revision-Date: 2022-12-07 07:21+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -220,7 +220,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "Časový limit pro odpojení od serveru"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -229,6 +229,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Doba ve vteřinách, po které je zjištěno odpojení. Pokud jsi právě přihlášen "
+"k serveru hry pro více hráčů, musíš se odhlásit a znovu přihlásit, aby se "
+"toto nastavení projevilo."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -260,7 +263,7 @@ msgid "Notes:"
 msgstr "Poznámky:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Zavřít"
 
@@ -333,37 +336,37 @@ msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Hudba"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy pro Hru více hráčů"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Tvorba balíčků"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Různé"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Boti"
 
@@ -4484,7 +4487,7 @@ msgstr "Výchozí motiv"
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr "Načti kolo..."
+msgstr "Načíst kolo..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:109
@@ -4522,7 +4525,7 @@ msgid ""
 "Use the map editor’s <i>Areas</i> menu to define regions later addressed by "
 "event or AI coding."
 msgstr ""
-"Použijte <i>Oblasti</i> v editoru map pro nastavení oblastí, které později "
+"Použij <i>Oblasti</i> v editoru map pro nastavení oblastí, které později "
 "použije nějaká událost nebo umělá inteligence."
 
 #. [tip]
@@ -4536,8 +4539,8 @@ msgid ""
 "In the map editor, select <i>New Scenario</i> in the <i>File</i> menu to "
 "make use of advanced features."
 msgstr ""
-"Abyste mohli v editoru map použít pokročilé prvky, vyberte v menu <i>Soubor</"
-"i> možnost <i>Nový scénář</i>."
+"Abys mohl v editoru map použít pokročilé prvky, vyber v menu <i>Soubor</i> "
+"možnost <i>Nový scénář</i>."
 
 #. [tip]
 #: data/tips.cfg:12
@@ -4545,7 +4548,7 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the <i>Custom Scenarios</i> section of the Multiplayer “Create Game” screen."
 msgstr ""
-"Scénáře uložené v editoru do výchozího umístění můžete vybrat v sekci "
+"Scénáře uložené v editoru do výchozího umístění můžeš vybrat v sekci "
 "<i>Vlastní scénáře</i> při vytváření nové hry pro více hráčů."
 
 #. [tip]
@@ -4739,8 +4742,8 @@ msgid ""
 "their cost. Try to choose scouts that can easily move across the surrounding "
 "terrain, because units can only see as far as they can move in one turn."
 msgstr ""
-"Pokud hrajete se zapnutou <b>mlhou</b> či <b>zahalením tmou</b>, není jasné, "
-"proti čemu stojíte. V takovém případě se velmi hodí průzkumné jednotky "
+"Pokud hraješ se zapnutou <b>mlhou</b> či <b>zahalením tmou</b>, není jasné, "
+"proti čemu stojíš. V takovém případě se velmi hodí průzkumné jednotky "
 "s velkou rychlostí pohybu. Oblast, kterou jednotka vidí, odpovídá tomu, kam "
 "dojde v příštím tahu, takže je vhodné uvážit i rychlost pohybu na různých "
 "terénech pro co největší rozhled."
@@ -4794,9 +4797,9 @@ msgid ""
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"Můžeš využívat jednotky z minulých scénářů vybráním <b>Přivolej</b> z menu "
-"<b>Akce</b>. Přivoláváním stále stejných jednotek znovu a znovu lze "
-"vybudovat silnou a zkušenou armádu."
+"Můžeš využívat jednotky z minulých scénářů vybráním <b>Povolat</b> z menu "
+"<b>Akce</b>. Povoláváním stále stejných jednotek znovu a znovu lze vybudovat "
+"silnou a zkušenou armádu."
 
 #. [tip]
 #: data/tips.cfg:84
@@ -4861,9 +4864,9 @@ msgid ""
 "are not caught out by a surprise attack."
 msgstr ""
 "Na mapách, kde je použito <i>zahalení tmou</i> či <i>mlha</i>, je pohled "
-"jednotek omezen možnostmi jejich pohybu. Pokud máte cenné, ale pomalé "
-"jednotky, zůstaňte poblíž nich s další, rychlejší jednotkou, aby nebyla "
-"zaskočena překvapivým útokem z neviděné části mapy."
+"jednotek omezen možnostmi jejich pohybu. Pokud máš cenné, ale pomalé "
+"jednotky, zůstaň poblíž nich s další, rychlejší jednotkou, aby nebyly "
+"zaskočeny překvapivým útokem z neviděné části mapy."
 
 #. [tip]
 #: data/tips.cfg:104
@@ -4872,9 +4875,9 @@ msgid ""
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"Většina pěších jednotek se brání lépe ve vesnicích a hradech než ve většině "
-"ostatních terénů, zatímco většina jízdních jednotek nezískává ve vesnicích "
-"a hradech žádnou obrannou výhodu."
+"Pěší jednotky se obvykle lépe brání ve vesnicích a hradech než v jiných "
+"typech terénu, zatímco většina jízdních jednotek nezískává ve vesnicích nebo "
+"hradech žádné obranné výhody."
 
 #. [tip]
 #: data/tips.cfg:105 data/tips.cfg:185
@@ -5126,7 +5129,7 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Aby se vaše jednotky nízké úrovně rychleji povýšily, spárujte je se silnější "
+"Aby se tvé jednotky nízké úrovně rychleji povýšily, spáruj je se silnější "
 "jednotkou, která nejprve dostatečně poškodí společný cíl; „učedník“ pak dílo "
 "dokoná a získá zkušenosti."
 
@@ -5143,9 +5146,9 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebujete "
-"přesouvat jednotky při zachování možnosti vracení, zapněte volbu <b>Pozdrž "
-"překreslování mlhy</b> nebo využijte plánovací režim."
+"Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebuješ "
+"přesouvat jednotky při zachování možnosti vracení, zapni volbu <b>Pozdrž "
+"překreslování mlhy</b> nebo využij plánovací režim."
 
 #. [tip]
 #: data/tips.cfg:201
@@ -5439,11 +5442,11 @@ msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr ""
 "Nejsou žádná volná políčka hradu, na která by se daly verbovat jednotky."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "vyléčen"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "vyléčená"
 
@@ -8085,7 +8088,7 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Tato jednotka byla otrávena. Každé kolo ztratí 8 životů, dokud nebude "
+"Tato jednotka byla otrávena. Každé kolo ztratí 8 životů, dokud nebude "
 "uzdravena lékem proti otravě ve vesnici nebo od spřátelené jednotky se "
 "schopností uzdravovat.\n"
 "\n"
@@ -8321,12 +8324,12 @@ msgstr ""
 "Výdaje na zaopatření tvého vojska vzniklé na konci každého kola. První číslo "
 "je množství zlatých, které bude odečteno. Je stejné jako počet úrovní "
 "jednotek, které nejsou podporovány vesnicemi. Druhé číslo jsou celkové "
-"náklady na údržbu zahrnující ty, které jsou kryty vesnicemi – jinými slovy "
-"množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
+"náklady na zaopatření zahrnující ty, které jsou kryty vesnicemi – jinými "
+"slovy množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
 
 #: src/reports.cpp:1478
 msgid "Upkeep"
-msgstr "Údržba"
+msgstr "Výdaje"
 
 #: src/reports.cpp:1515
 msgid "Net Income"
@@ -8338,7 +8341,7 @@ msgid ""
 "income from controlled villages and payment of upkeep."
 msgstr ""
 "Čisté množství zlatých, které každé kolo získáš nebo ztratíš s ohledem na "
-"příjem z ovládaných vesnic a platbu za údržbu."
+"příjem z ovládaných vesnic a úhradu zaopatření."
 
 #: src/reports.cpp:1683
 msgid "Observers:"
@@ -8428,7 +8431,7 @@ msgstr ""
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
-msgstr "Načti hru"
+msgstr "Načíst hru"
 
 #: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
@@ -8673,7 +8676,7 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Jednotka byla vytvořena pomocí ladícího příkazu během kola hráče $player"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "čeká se na $desc od strany $sides"
@@ -8833,35 +8836,35 @@ msgstr "šerá"
 msgid "female^neutral"
 msgstr "neutrální"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> bodů života"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> krok"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> kroky"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> kroků"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> rozhled"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> rušení"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> bodů zkušenosti k postupu"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8869,11 +8872,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cena za povolání"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 

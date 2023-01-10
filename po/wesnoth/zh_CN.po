@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2022-09-03 09:00+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -257,7 +257,7 @@ msgid "Notes:"
 msgstr "备注："
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "关闭"
 
@@ -329,37 +329,37 @@ msgid "Artwork and Graphics"
 msgstr "美工与图像"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "音乐"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "音效"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "战役设计"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "多人地图与平衡性调整"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "打包人员"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "其他贡献者"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "机器人"
 
@@ -5652,11 +5652,11 @@ msgstr "你必须让一位能够征募该单位的首领站在城堡主楼上。
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "城堡内没有空格，无法征募该单位。"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "已解毒"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "已解毒"
 
@@ -8741,7 +8741,7 @@ msgstr "使用了调试命令"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "在$player|的回合中，使用调试模式创建了一个单位"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "等待$sides|阵营的$desc"
@@ -8893,44 +8893,44 @@ msgstr "边缘"
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span>视野"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 

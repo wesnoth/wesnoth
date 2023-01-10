@@ -1592,14 +1592,9 @@ def pangoize(message, filename, line):
     # Check for unescaped < and >
     if "<" in message or ">" in message:
         reduced = pangostrip(message)
-        if "<" in reduced or ">" in reduced:
+        if ("<" in reduced or ">" in reduced) and not rgb :
             if message == reduced: # No pango markup
-                here = message.find('<')
-                if message[here:here+4] != "&lt;":
-                    message = message[:here] + "&lt;" + message[here+1:]
-                here = message.find('>')
-                if message[here:here+4] != "&gt;":
-                    message = message[:here] + "&gt;" + message[here+1:]
+                message = message.replace("<", "&lt;").replace(">", "&gt;")
             else:
                 print('"%s", line %d: < or > in pango string requires manual fix.' % (filename, line))
     return message
@@ -1692,6 +1687,20 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
             nextrefs.append((filename, nav.lineno, value))
         if key == 'id':
             scenario_to_filename[value] = filename
+    # Check for campaign rank and warn if an unconventional value is found
+    if parent == "[campaign]":
+        if key == "rank" and not ignored:
+            try:
+                campaign_rank = int(value)
+                # assume that UMCs are into the data/add-ons directory and mainline is into data/campaigns   
+                if "add-ons" in filename:
+                    if campaign_rank < 300:
+                        print(errlead + "rank for add-on campaigns should be greater than or equal to 300")
+                else:
+                    if campaign_rank >= 300 or (campaign_rank % 5) != 0:
+                        print(errlead + "rank for mainline campaigns should be a multiple of 5 between 0 and 299 (included)")  
+            except ValueError:
+                print(errlead + "rank must be a numeric value")
 
 def global_sanity_check_events(filename, lines):
     """Part of global_sanity_check which finds each [event] tag.
