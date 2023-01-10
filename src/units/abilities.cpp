@@ -1989,6 +1989,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 
 	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
 	std::map<std::string,individual_effect> values_add;
+	std::map<std::string,individual_effect> values_sub;
 	std::map<std::string,individual_effect> values_mul;
 	std::map<std::string,individual_effect> values_div;
 
@@ -2052,9 +2053,9 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 				callable.add("base_value", wfl::variant(def));
 				return formula.evaluate(callable).as_int();
 			});
-			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
-			if(sub_effect == values_add.end() || sub < sub_effect->second.value) {
-				values_add[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
+			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
+			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
+				values_sub[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
@@ -2122,7 +2123,17 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, EFF
 		effect_list_.push_back(val.second);
 	}
 
-	composite_value_ = static_cast<int>((value_set + addition) * multiplier / divisor);
+	/* Using 'substraction' independant of 'addition' for abilities with same id and 'add' and 'sub'
+	 * for what rule of calculation was base+ add_value - sub_value
+	 * instead of base + (add_value or -sub_value).
+	 */
+	int substraction = 0;
+	for(const auto& val : values_sub) {
+		substraction += val.second.value;
+		effect_list_.push_back(val.second);
+	}
+
+	composite_value_ = static_cast<int>((value_set + addition + substraction) * multiplier / divisor);
 	//clamp what if min_value < max_value or one attribute only used.
 	if(max_value && min_value && *min_value < *max_value) {
 		composite_value_ = std::clamp(*min_value, *max_value, composite_value_);
