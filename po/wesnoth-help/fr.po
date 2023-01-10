@@ -12,20 +12,21 @@
 # Rémi BERTHO <remi.bertho@gmail.com>, 2014.
 # Mathieu GUILBAUD < mathieu@guim.info>, 2018, 2019.
 # Syll <syll-dev@laposte.net>, 2019, 2021.
+# alberic89 <alberic89@gmx.com>, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2022-06-08 08:36-0500\n"
-"Last-Translator: demario\n"
+"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"PO-Revision-Date: 2022-10-28 10:10+0200\n"
+"Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -33,6 +34,31 @@ msgstr ""
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Sous terre"
+
+#. [label]
+#. [trait]: id=undead
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:183
+#: data/core/macros/traits.cfg:55
+msgid "undead"
+msgstr "mort-vivant"
+
+#. [label]
+#. [chance]
+#. [trait]: id=fearless
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:196
+#: data/campaigns/World_Conquest/resources/data/training.cfg:285
+#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
+msgid "fearless"
+msgstr "intrépide"
+
+#. [label]
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+msgid "plague"
+msgstr "peste"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -170,13 +196,6 @@ msgid "Always rest heals"
 msgstr "Récupère à chaque tour"
 
 #. [chance]
-#. [trait]: id=fearless
-#: data/campaigns/World_Conquest/resources/data/training.cfg:285
-#: data/core/macros/traits.cfg:252 data/core/macros/traits.cfg:269
-msgid "fearless"
-msgstr "intrépide"
-
-#. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
 #: data/core/macros/abilities.cfg:410
@@ -255,13 +274,6 @@ msgstr "Forêt de champignons"
 #: data/core/macros/abilities.cfg:323 data/core/macros/abilities.cfg:324
 msgid "nightstalk"
 msgstr "chasseur nocturne"
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#. [plague]: id=plague, type=Walking Corpse
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
-msgid "plague"
-msgstr "peste"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
@@ -978,7 +990,7 @@ msgstr ""
 "œuvre un scénario basique.\n"
 "\n"
 "L'éditeur peut être lancé depuis l'écran principal via le bouton "
-"<italic>text='Editeur de carte'</italic>\n"
+"<italic>text='Éditeur de carte'</italic>\n"
 "\n"
 "<header>text='Modes d\\'édition'</header>\n"
 "\n"
@@ -1098,7 +1110,7 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
-"<header>text='Vérifier que l'éditeur est en mode scénario'</header>\n"
+"<header>text='Vérifier que l\\'éditeur est en mode scénario'</header>\n"
 "\n"
 "Vous pouvez contrôler le mode actuel de l'éditeur en regardant la barre de "
 "menu.\n"
@@ -1465,7 +1477,7 @@ msgstr ""
 "d'autres mots, à l'emplacement que le préprocesseur placerait les données si "
 "l'on utilisait la méthode « include » du préprocesseur.\n"
 "\n"
-"<header>text='En utilisant le format d'encapsulation en mode terrain'</"
+"<header>text='En utilisant le format d\\'encapsulation en mode terrain'</"
 "header>\n"
 "\n"
 "Si vous éditez la carte et n'utilisez pas le mode scénario, alors il est "
@@ -1487,7 +1499,7 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
-"<header>text='Fichier créés dans l'éditeur de scénarios'</header>\n"
+"<header>text='Fichier créés dans l\\'éditeur de scénarios'</header>\n"
 "\n"
 "En mode scénario, l'éditeur sauvegarde les données dans un fichier .cfg en "
 "encapsulant les données de la carte. Au chargement d'un fichier .cfg, "
@@ -2719,8 +2731,8 @@ msgstr ""
 "obtenez par village et par tour, ainsi que le nombre de niveaux d'unité que "
 "chaque village peut entretenir est configurable. Mais lors des campagnes, "
 "ces valeurs sont presque toujours configurées comme ci-dessus. Les "
-"<italic>Paramètres du Scénario</italic> de la <italic>Table des statuts</"
-"italic> affichent les valeurs pour le scénario en cours."
+"<italic>text='Paramètres du Scénario'</italic> de la <italic>text='Table des "
+"statuts'</italic> affichent les valeurs pour le scénario en cours."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:228
@@ -3767,10 +3779,10 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
-"•Les chefs sont représentés avec une<bold>text='couronne d'or'</bold>.\n"
+"•Les chefs sont représentés avec une<bold>text='couronne d\\'or'</bold>.\n"
 "• Les héros ont une <bold>text='couronne bleu-argent'</bold>.\n"
 "• les meneurs secondaires sont représentés avec une <bold>text='couronne "
-"d'argent'</bold>.\n"
+"d\\'argent'</bold>.\n"
 "• <ref>dst='traits_loyal' text='Les unités loyales'</ref> ont "
 "l'<bold>text='icône loyale'</bold>.\n"
 "\n"
@@ -3982,7 +3994,7 @@ msgid ""
 msgstr ""
 "\n"
 "• <bold>text='Unités soignantes'</bold> : les unités avec la capacité de "
-"<ref>dst='ability_healingheals +4'' text='soins'</ref> soigneront les unités "
+"<ref>dst='ability_healingheals +4' text='soins'</ref> soigneront les unités "
 "alliées adjacentes, habituellement de <ref>dst='ability_healingheals +4' "
 "text='4 PV'</ref> ou de <ref>dst='ability_healingheals +8' text='8 PV'</ref> "
 "par tour, ou empêcheront le poison de leur faire des dégâts."
@@ -6194,11 +6206,6 @@ msgstr ""
 "italic>, qui ne nécessitent pas d'entretien."
 
 #. [trait]: id=undead
-#: data/core/macros/traits.cfg:55
-msgid "undead"
-msgstr "mort-vivant"
-
-#. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
 msgid "female^undead"
 msgstr "morte-vivante"
@@ -6626,12 +6633,12 @@ msgstr ""
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:343
 msgid "dim"
-msgstr "faible"
+msgstr "idiot"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:344
 msgid "female^dim"
-msgstr "faible"
+msgstr "idiote"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:345
@@ -7159,7 +7166,7 @@ msgstr ""
 "des trolls. Nombres de leurs monuments ne peuvent être datés avec certitude, "
 "mais sont, sans aucun doutes, présents depuis plusieurs millénaires.\n"
 "\n"
-"<header>text='Magie</header>\n"
+"<header>text='Magie'</header>\n"
 "Bien que les elfes soient des créatures bien différentes du légendaire "
 "peuple des fées, leur magie à un lien avec lui et est la source de leurs "
 "sens exceptionnellement aiguisés et de leur longévité.  La magie des elfes "
@@ -7209,17 +7216,17 @@ msgstr ""
 #. [race]: id=falcon
 #: data/core/units.cfg:137
 msgid "race^Falcon"
-msgstr "Humain"
+msgstr "Faucon"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:138
 msgid "race+female^Falcon"
-msgstr "Humaine"
+msgstr "Fauconne"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:139
 msgid "race^Falcons"
-msgstr "Humains"
+msgstr "Faucons"
 
 #. [race]: id=falcon
 #: data/core/units.cfg:140

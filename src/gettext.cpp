@@ -25,6 +25,7 @@
 #include <mutex>
 #include <boost/locale.hpp>
 #include <set>
+#include <type_traits>
 
 #if defined(__GNUC__)
 #pragma GCC diagnostic push
@@ -43,6 +44,7 @@
 namespace bl = boost::locale;
 namespace
 {
+	//This mutex avoids a random crash that sevu reported in bug #2013 as occurring when starting wesnoth from the commandline with --turns -1:
 	std::mutex& get_mutex() { static std::mutex* m = new std::mutex(); return *m; }
 
 	class default_utf8_locale_name
@@ -223,8 +225,13 @@ namespace
 			}
 
 			generator_.use_ansi_encoding(false);
+#if BOOST_VERSION < 108100
 			generator_.categories(bl::message_facet | bl::information_facet | bl::collation_facet | bl::formatting_facet | bl::convert_facet);
 			generator_.characters(bl::char_facet);
+#else
+			generator_.categories(bl::category_t::message | bl::category_t::information | bl::category_t::collation | bl::category_t::formatting | bl::category_t::convert);
+			generator_.characters(bl::char_facet_t::char_f);
+#endif
 			// We cannot have current_locale_ be a non boost-generated locale since it might not supply
 			// the bl::info facet. As soon as we add message paths, update_locale_internal might fail,
 			// for example because of invalid .mo files. So make sure we call it at least once before adding paths/domains
@@ -367,7 +374,12 @@ namespace
 			if(std::has_facet<bl::collator<char>>(current_locale_)) {
 				res << "has bl::collator<char> facet, ";
 			}
+#if BOOST_VERSION < 108100
 			res << "generator categories='" << generator_.categories() << "'";
+#else
+			res << "generator categories='" <<
+				static_cast<std::underlying_type<bl::category_t>::type>(generator_.categories()) << "'";
+#endif
 			return res.str();
 		}
 
@@ -454,9 +466,12 @@ inline const char* is_unlocalized_string2(const std::string& str, const char* si
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	//TODO: only the next line needs to be in the lock.
-	std::scoped_lock lock(get_mutex());
-	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+	std::string msgval;
+	//Braces so that only the line that needs to be in the lock is in it:
+	{
+		std::scoped_lock lock(get_mutex());
+		msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+	}
 	auto original = is_unlocalized_string2(msgval, singular, plural);
 	if (original) {
 		const char* firsthat = std::strchr (original, '^');

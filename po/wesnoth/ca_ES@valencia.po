@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -260,7 +260,7 @@ msgid "Notes:"
 msgstr ""
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Tanca"
 
@@ -334,37 +334,37 @@ msgid "Artwork and Graphics"
 msgstr "Il·lustracions i gràfics"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Música"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Efectes de so"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Disseny de campanyes"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapes i balanceig del mode multijugador"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Empaquetadors"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Altres contribucions"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Robots"
 
@@ -5100,13 +5100,13 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "El castell no disposa de més zones lliures per reclutar."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "cures"
 msgid "cured"
 msgstr "guarició"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "female^cures"
 msgid "female^cured"
@@ -8452,7 +8452,7 @@ msgstr "Ordes del mode depuració"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] ""
@@ -8636,17 +8636,17 @@ msgstr "lleial"
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8654,25 +8654,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per torn"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8681,13 +8681,13 @@ msgid_plural ""
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"

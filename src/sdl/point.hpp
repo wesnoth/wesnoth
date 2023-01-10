@@ -24,74 +24,74 @@
 struct point : SDL_Point
 {
 	/** Initialize to 0 by default. */
-	point() : SDL_Point{0, 0} {}
+	constexpr point() : SDL_Point{0, 0} {}
 
-	point(int x, int y) : SDL_Point{x, y} {}
+	constexpr point(int x, int y) : SDL_Point{x, y} {}
 
-	point(const SDL_Point& p) : SDL_Point{p} {}
+	constexpr point(const SDL_Point& p) : SDL_Point{p} {}
 
-	bool operator==(const point& point) const
+	constexpr bool operator==(const point& point) const
 	{
 		return x == point.x && y == point.y;
 	}
 
-	bool operator!=(const point& point) const
+	constexpr bool operator!=(const point& point) const
 	{
 		return !operator==(point);
 	}
 
-	bool operator<(const point& point) const
+	constexpr bool operator<(const point& point) const
 	{
 		return std::tie(x, y) < std::tie(point.x, point.y);
 	}
 
-	bool operator<=(const point& point) const
+	constexpr bool operator<=(const point& point) const
 	{
 		return x < point.x || (x == point.x && y <= point.y);
 	}
 
-	point operator+(const point& point) const
+	constexpr point operator+(const point& point) const
 	{
 		return {x + point.x, y + point.y};
 	}
 
-	point& operator+=(const point& point)
+	constexpr point& operator+=(const point& point)
 	{
 		x += point.x;
 		y += point.y;
 		return *this;
 	}
 
-	point operator-(const point& point) const
+	constexpr point operator-(const point& point) const
 	{
 		return {x - point.x, y - point.y};
 	}
 
-	point& operator-=(const point& point)
+	constexpr point& operator-=(const point& point)
 	{
 		x -= point.x;
 		y -= point.y;
 		return *this;
 	}
 
-	point operator*(int s) const
+	constexpr point operator*(int s) const
 	{
 		return {x * s, y * s};
 	}
 
-	point& operator*=(int s)
+	constexpr point& operator*=(int s)
 	{
 		x *= s;
 		y *= s;
 		return *this;
 	}
 
-	point operator/(int s) const
+	constexpr point operator/(int s) const
 	{
 		return {x / s, y / s};
 	}
 
-	point& operator/=(int s)
+	constexpr point& operator/=(int s)
 	{
 		x /= s;
 		y /= s;
@@ -100,24 +100,24 @@ struct point : SDL_Point
 
 	// Multiplication and division of points works elementwise.
 
-	point operator*(const point& p) const
+	constexpr point operator*(const point& p) const
 	{
 		return {x * p.x, y * p.y};
 	}
 
-	point& operator*=(const point& p)
+	constexpr point& operator*=(const point& p)
 	{
 		x *= p.x;
 		y *= p.y;
 		return *this;
 	}
 
-	point operator/(const point& p) const
+	constexpr point operator/(const point& p) const
 	{
 		return {x / p.x, y / p.y};
 	}
 
-	point& operator/=(const point& p)
+	constexpr point& operator/=(const point& p)
 	{
 		x /= p.x;
 		y /= p.y;

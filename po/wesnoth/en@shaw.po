@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -265,7 +265,7 @@ msgid "Notes:"
 msgstr ""
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "𐑒𐑤𐑴𐑟"
 
@@ -339,37 +339,37 @@ msgid "Artwork and Graphics"
 msgstr "𐑸𐑑𐑢𐑻𐑒 𐑯 𐑜𐑮𐑨𐑓𐑦𐑒𐑕"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "𐑥𐑿𐑟𐑦𐑒"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "𐑕𐑬𐑯𐑛 𐑦𐑓𐑧𐑒𐑑𐑕"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "𐑒𐑨𐑥𐑐𐑱𐑯 𐑛𐑩𐑟𐑲𐑯"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑥𐑨𐑐𐑕 𐑯 𐑚𐑨𐑤𐑩𐑯𐑕𐑦𐑙"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "𐑐𐑨𐑒𐑦𐑡𐑼𐑟"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕 𐑒𐑩𐑯𐑑𐑮𐑦𐑚𐑘𐑩𐑑𐑻𐑟"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "𐑚𐑭𐑑𐑕"
 
@@ -5142,13 +5142,13 @@ msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 �
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "𐑞𐑺 𐑸 𐑯𐑴 𐑝𐑱𐑒𐑩𐑯𐑑 𐑒𐑨𐑕𐑩𐑤 𐑑𐑲𐑤𐑟 𐑦𐑯 𐑢𐑦𐑗 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑 𐑩 𐑿𐑯𐑦𐑑."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "cures"
 msgid "cured"
 msgstr "𐑒𐑘𐑫𐑮𐑟"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "female^cures"
 msgid "female^cured"
@@ -8544,7 +8544,7 @@ msgstr "𐑛𐑰𐑚𐑳𐑜 𐑥𐑴𐑛 𐑒𐑩𐑥𐑭𐑯𐑛𐑟"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] ""
@@ -8728,17 +8728,17 @@ msgstr "𐑤𐑶𐑩𐑤"
 msgid "female^neutral"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8746,25 +8746,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8773,13 +8773,13 @@ msgid_plural ""
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description 𐑐𐑻 𐑤𐑧𐑝𐑩𐑤"
 

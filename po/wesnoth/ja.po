@@ -5,17 +5,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# k konami, 2022
-# RatArmy, 2022
+# k konami (Cheenami), 2022
+# RatArmy, 2023
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: RatArmy, 2022\n"
+"Last-Translator: RatArmy, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -222,7 +222,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "サーバー接続のタイムアウト"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -231,6 +231,8 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"サーバー接続時にタイムアウトで切断するまでの時間です。マルチプレイヤーサー"
+"バーにログイン中に変更した場合は、再ログインするまで適用されません。"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -262,7 +264,7 @@ msgid "Notes:"
 msgstr "メモ："
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "閉じる"
 
@@ -334,37 +336,37 @@ msgid "Artwork and Graphics"
 msgstr "アートワークとグラフィック"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "ミュージック"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "サウンドエフェクト"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "キャンペーンデザイン"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "マルチプレイヤーマップとバランス調整"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "パッケージ作成"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "その他の貢献者"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "ボット"
 
@@ -5397,11 +5399,11 @@ msgstr "ユニットを雇用するためには、リーダーが主塔にいな
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "ユニットを雇用するためには城タイルに空きが必要です。"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "治療"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "治療"
 
@@ -8565,7 +8567,7 @@ msgstr "デバッグコマンドが使用されました"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "デバッグモードにより、 $player のターンにユニットが作成されました"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "$desc のため、陣営 $sides を待機中"
@@ -8710,43 +8712,43 @@ msgstr "薄明"
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|： $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "移動力 <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "視界 <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "ジャミング <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "レベルアップに必要な XP <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "攻撃回数 <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "召喚コスト <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "レベルにつき $effect_description"
 

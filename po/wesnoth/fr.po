@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2022-10-17 10:01+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
@@ -269,7 +269,7 @@ msgid "Notes:"
 msgstr "Remarques :"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Fermer"
 
@@ -341,38 +341,38 @@ msgid "Artwork and Graphics"
 msgstr "Illustrations et graphismes"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Musique"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Effets sonores"
 
 # Benoît : c'est une chaîne propre à une campagne et non pas au niveau global
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Conception de la campagne"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Cartes multijoueurs et équilibrage"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Empaqueteurs"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Autres contributeurs"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Bots"
 
@@ -3522,8 +3522,9 @@ msgstr "Au-delà des montagnes septentrionales"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:253
+#, fuzzy
 msgid "Northerners"
-msgstr "Nordistes"
+msgstr "Nordiques"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:259
@@ -5523,11 +5524,11 @@ msgstr "Vous devez avoir un chef dans un donjon pour pouvoir recruter l'unité."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Il n'y a pas de place vacante dans le château pour recruter l'unité."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "guéri"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "guérie"
 
@@ -8801,7 +8802,7 @@ msgstr ""
 "Une unité a été créée en utilisant le mode débogage pendant le tour du "
 "joueur $player"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "En attente de $desc pour le camp $sides"
@@ -8957,44 +8958,44 @@ msgstr "liminale"
 msgid "female^neutral"
 msgstr "neutre"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list| : $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PV"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> déplacement"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> déplacements"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> vision"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> brouillage"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP pour progresser"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attaque par tour"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attaques par tour"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> coût de rappel"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description par niveau"
 

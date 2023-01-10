@@ -73,6 +73,7 @@ game_version::game_version()
 	path_map_["cache"] = filesystem::get_cache_dir();
 	// path to logs directory
 	path_map_["logs"] = filesystem::get_logs_dir();
+	path_map_["screenshots"] = filesystem::get_screenshot_dir();
 
 	for(unsigned k = 0; k < game_config::LIB_COUNT; ++k) {
 		const game_config::LIBRARY_ID lib = game_config::LIBRARY_ID(k);

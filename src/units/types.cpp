@@ -900,7 +900,7 @@ void patch_movetype(movetype& mt,
 {
 	LOG_CONFIG << "Patching " << new_key << " into movetype." << type_to_patch;
 	config mt_cfg;
-	mt.write(mt_cfg);
+	mt.write(mt_cfg, false);
 
 	if(!replace && mt_cfg.child_or_empty(type_to_patch).has_attribute(new_key)) {
 		// Don't replace if this type already exists in the config

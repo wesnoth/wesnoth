@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-16 02:06 UTC\n"
+"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
 "PO-Revision-Date: 2022-06-03 18:15+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -43,19 +43,6 @@ msgstr "pięść"
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "ogon"
-
-#. [attack]: type=impact
-#: data/campaigns/Dead_Water/units/Kraken.cfg:27
-#: data/core/units/monsters/Cuttle_Fish.cfg:29
-#: data/core/units/monsters/Tentacle.cfg:33
-msgid "tentacle"
-msgstr "macka"
-
-#. [attack]: type=pierce
-#: data/campaigns/Dead_Water/units/Kraken.cfg:38
-#: data/core/units/monsters/Cuttle_Fish.cfg:40
-msgid "ink"
-msgstr "atrament"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -121,8 +108,8 @@ msgstr "kostur"
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
 #: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-#: data/core/units/dunefolk/Falconer.cfg:140
-#: data/core/units/dunefolk/Sky_Hunter.cfg:138
+#: data/core/units/dunefolk/Falconer.cfg:141
+#: data/core/units/dunefolk/Sky_Hunter.cfg:139
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
 #: data/core/units/orcs/Crossbowman.cfg:32 data/core/units/orcs/Slurbow.cfg:34
 msgid "short sword"
@@ -305,7 +292,7 @@ msgstr "łuk"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:92
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:94
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "szpony"
@@ -345,7 +332,7 @@ msgstr "szabla"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:267
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:282
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:298
-#: data/core/units/undead/Corpse_Walking.cfg:75
+#: data/core/units/undead/Corpse_Walking.cfg:99
 msgid "Walking Corpse"
 msgstr "Chodzący trup"
 
@@ -353,7 +340,7 @@ msgstr "Chodzący trup"
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
-#: data/core/units/undead/Corpse_Walking.cfg:85
+#: data/core/units/undead/Corpse_Walking.cfg:109
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one’s "
@@ -409,8 +396,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:23
-#: data/core/units/undead/Corpse_Soulless.cfg:91
-#: data/core/units/undead/Corpse_Walking.cfg:90
+#: data/core/units/undead/Corpse_Soulless.cfg:115
+#: data/core/units/undead/Corpse_Walking.cfg:114
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:29
 #: data/core/units/undead/Necro_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:57
@@ -515,6 +502,8 @@ msgstr "kły"
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
 #: data/core/units/monsters/Crocodile.cfg:159
+#: data/core/units/monsters/Dragonfly.cfg:30
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:61
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -524,14 +513,14 @@ msgstr "kły"
 #: data/core/units/monsters/Seahorse.cfg:34
 #: data/core/units/monsters/Wild_Wyvern.cfg:95
 #: data/core/units/undead/Corpse_Ghast.cfg:27
-#: data/core/units/undead/Corpse_Soulless.cfg:251
-#: data/core/units/undead/Corpse_Walking.cfg:250
+#: data/core/units/undead/Corpse_Soulless.cfg:275
+#: data/core/units/undead/Corpse_Walking.cfg:274
 msgid "bite"
 msgstr "ugryzienie"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:14
-#: data/core/units/undead/Corpse_Soulless.cfg:86
+#: data/core/units/undead/Corpse_Soulless.cfg:110
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -573,7 +562,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:245
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:260
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:274
-#: data/core/units/undead/Corpse_Soulless.cfg:75
+#: data/core/units/undead/Corpse_Soulless.cfg:99
 msgid "Soulless"
 msgstr "Bezduszny"
 
@@ -638,7 +627,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Poacher.cfg:33
 #: data/core/units/humans/Woodsman_Trapper.cfg:33
 #: data/core/units/nagas/Dirkfang.cfg:29 data/core/units/orcs/Archer.cfg:24
-#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:35
+#: data/core/units/orcs/Assassin.cfg:26 data/core/units/orcs/Slayer.cfg:34
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
 msgid "dagger"
@@ -746,8 +735,12 @@ msgstr ""
 #: data/core/units/saurians/Ambusher.cfg:34
 #: data/core/units/saurians/Flanker.cfg:26
 #: data/core/units/saurians/Flanker.cfg:35
+#: data/core/units/saurians/Javelineer.cfg:23
+#: data/core/units/saurians/Javelineer.cfg:32
 #: data/core/units/saurians/Skirmisher.cfg:35
 #: data/core/units/saurians/Skirmisher.cfg:44
+#: data/core/units/saurians/Spearthrower.cfg:22
+#: data/core/units/saurians/Spearthrower.cfg:31
 #: data/core/units/undead/Skele_Chocobone.cfg:35
 msgid "spear"
 msgstr "włócznia"
@@ -1815,7 +1808,7 @@ msgid "female^Dune Falconer"
 msgstr "Wydmowa sokolniczka"
 
 #. [unit_type]: id=Dune Falconer, race=dunefolk
-#: data/core/units/dunefolk/Falconer.cfg:38
+#: data/core/units/dunefolk/Falconer.cfg:39
 msgid ""
 "While well respected among the dunefolk, the art of falconry is relatively "
 "rare due to the time and skill required to properly train birds of prey. "
@@ -1847,7 +1840,7 @@ msgstr ""
 "się skutecznie obronić przed zagrożeniami."
 
 #. [attack]: type=blade
-#: data/core/units/dunefolk/Falconer.cfg:152
+#: data/core/units/dunefolk/Falconer.cfg:153
 msgid "falcon"
 msgstr "sokół"
 
@@ -2270,7 +2263,7 @@ msgid "female^Dune Sky Hunter"
 msgstr "Wydmowa podniebna łowczyni"
 
 #. [unit_type]: id=Dune Sky Hunter, race=dunefolk
-#: data/core/units/dunefolk/Sky_Hunter.cfg:38
+#: data/core/units/dunefolk/Sky_Hunter.cfg:39
 msgid ""
 "Often mistaken for young Rocs, desert eagles are large, majestic birds of "
 "prey who are notoriously aggressive and nearly impossible to tame. In the "
@@ -2296,7 +2289,7 @@ msgstr ""
 "wartościowymi towarzyszami dla wielu spośród ludzi pustyni."
 
 #. [attack]: type=blade
-#: data/core/units/dunefolk/Sky_Hunter.cfg:150
+#: data/core/units/dunefolk/Sky_Hunter.cfg:151
 msgid "eagle"
 msgstr "orzeł"
 
@@ -5126,7 +5119,7 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Assassin.cfg:39
 #: data/core/units/humans/Outlaw_Rogue.cfg:38
 #: data/core/units/orcs/Assassin.cfg:35 data/core/units/orcs/Nightblade.cfg:43
-#: data/core/units/orcs/Slayer.cfg:44
+#: data/core/units/orcs/Slayer.cfg:43
 msgid "throwing knives"
 msgstr "miotane noże"
 
@@ -5894,8 +5887,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:356
-#: data/core/units/undead/Corpse_Walking.cfg:355
+#: data/core/units/undead/Corpse_Soulless.cfg:380
+#: data/core/units/undead/Corpse_Walking.cfg:379
 msgid "tusk"
 msgstr "kieł"
 
@@ -6033,6 +6026,50 @@ msgstr ""
 "Kałamarnice to gigantyczne stwory morskie. Łapią swoje ofiary potężnymi "
 "mackami albo opluwają trującym atramentem. Najlepszym sposobem na uniknięcie "
 "spotkania z kałamarnicą jest pozostanie na brzegu."
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Cuttle_Fish.cfg:29
+#: data/core/units/monsters/Kraken.cfg:26
+#: data/core/units/monsters/Tentacle.cfg:33
+msgid "tentacle"
+msgstr "macka"
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Cuttle_Fish.cfg:40
+#: data/core/units/monsters/Kraken.cfg:37
+msgid "ink"
+msgstr "atrament"
+
+#. [unit_type]: id=Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly.cfg:5
+#, fuzzy
+#| msgid "Dragoon"
+msgid "Dragonfly"
+msgstr "Dragon"
+
+#. [unit_type]: id=Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly.cfg:27
+msgid ""
+"The giant dragonflies seen in some of the swamps, rivers, and lakes around "
+"Wesnoth enjoy a longer life cycle than the smaller, more common types.  The "
+"adult form can live indefiniately, slowly growing to a final moult.  They "
+"are generally territorial, but can cooperate in small groups to confront "
+"common foes or large prey."
+msgstr ""
+
+#. [unit_type]: id=Dragonfly Naiad, race=monster
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:5
+msgid "Dragonfly Naiad"
+msgstr ""
+
+#. [unit_type]: id=Dragonfly Naiad, race=monster
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:58
+msgid ""
+"Young dragonflies live an aquatic life, mostly preying upon small fish or "
+"other insect nymphs.  They can crawl over rocks and mud, but they need to "
+"stay submerged to breath, which explains why the giant dragonflies are "
+"usually found only near rivers, lakes, and coves."
+msgstr ""
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
@@ -6372,40 +6409,54 @@ msgstr ""
 "będzie walczył przy pomocy swoich potężnych kopnięć."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Horse.cfg:32 data/core/units/monsters/Horse.cfg:98
-#: data/core/units/monsters/Horse.cfg:170
-#: data/core/units/monsters/Horse_Black.cfg:41
-#: data/core/units/monsters/Horse_Great.cfg:33
+#: data/core/units/monsters/Horse.cfg:32
+#: data/core/units/monsters/Horse_Black.cfg:50
+#: data/core/units/monsters/Horse_Dark.cfg:44
+#: data/core/units/monsters/Horse_Great.cfg:34
+#: data/core/units/monsters/Horse_White.cfg:38
 msgid "hooves"
 msgstr "kopyta"
 
-#. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse.cfg:74
-msgid "White Horse"
-msgstr "Biały koń"
+#. [unit_type]: id=Black Horse, race=horse
+#: data/core/units/monsters/Horse_Black.cfg:14
+msgid "Black Horse"
+msgstr "Czarny koń"
 
-#. [unit_type]: id=White Horse
-#: data/core/units/monsters/Horse.cfg:85
+#. [unit_type]: id=Black Horse, race=horse
+#: data/core/units/monsters/Horse_Black.cfg:34
 msgid ""
-"Some horses have a white color, and they are merely white horses. But there "
-"exist a special breed, found only in the wild woods, that are White Horses. "
-"As if blessed by the faerie world, they have a grace and agility not found "
-"in their more common relatives."
+"The true nature of Black Horses is impossible to discern, but the fire in "
+"their eyes and the unnerving, unnatural sound of their calls suggest they "
+"are malevolent spirits."
 msgstr ""
-"Niektóre konie mają białe umaszczenie i zaledwie przez to są nazywane "
-"białymi końmi. Istnieje jednak specjalny gatunek koni, który żyje tylko i "
-"wyłącznie w najodleglejszych i najdzikszych lasach na świecie. Są to "
-"najprawdziwsze białe konie. Powiadają, że stworzenia te mają związek ze "
-"światem wróżek, przez co charakteryzują się niezwykłą gracją i zwinnością "
-"znacznie przewyższającą tą spotykaną u zwykłych koni."
+"Prawdziwa natura czarnych koni jest niemożliwa do odkrycia, lecz płomień w "
+"ich oczach oraz niepokojące i nienaturalne dźwięki, które wydają, sugerują, "
+"że są to złowrogie istoty."
+
+#. [attack]: type=cold
+#: data/core/units/monsters/Horse_Black.cfg:59
+#: data/core/units/monsters/Horse_Dark.cfg:53
+msgid "whinny"
+msgstr "rżenie"
+
+#. [male]
+#: data/core/units/monsters/Horse_Black.cfg:94
+msgid "Black Stallion"
+msgstr "Czarny ogier"
+
+#. [female]
+#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
+#: data/core/units/monsters/Horse_Black.cfg:100
+msgid "female^Black Nightmare"
+msgstr "Czarna koszmarzyca"
 
 #. [unit_type]: id=Dark Horse
-#: data/core/units/monsters/Horse.cfg:140
+#: data/core/units/monsters/Horse_Dark.cfg:14
 msgid "Dark Horse"
 msgstr "Mroczny koń"
 
 #. [unit_type]: id=Dark Horse
-#: data/core/units/monsters/Horse.cfg:166
+#: data/core/units/monsters/Horse_Dark.cfg:40
 msgid ""
 "Dark Horses are wild animals, but they seem to take an odd interest in the "
 "civilized races. They leave no signs of their passage, but they have been "
@@ -6416,45 +6467,17 @@ msgstr ""
 "żadnych śladów, widziane są czasami obserwujące obozy i posterunki w trakcie "
 "nocy."
 
-#. [attack]: type=cold
-#: data/core/units/monsters/Horse.cfg:179
-#: data/core/units/monsters/Horse_Black.cfg:50
-msgid "whinny"
-msgstr "rżenie"
-
 #. [male]
-#. [female]
-#: data/core/units/monsters/Horse.cfg:214
-#: data/core/units/monsters/Horse.cfg:218
-msgid "female^Dark Horse"
+#: data/core/units/monsters/Horse_Dark.cfg:88
+#, fuzzy
+#| msgid "female^Dark Horse"
+msgid "male^Dark Horse"
 msgstr "Mroczna klacz"
 
-#. [unit_type]: id=Black Horse, race=horse
-#: data/core/units/monsters/Horse_Black.cfg:5
-msgid "Black Horse"
-msgstr "Czarny koń"
-
-#. [unit_type]: id=Black Horse, race=horse
-#: data/core/units/monsters/Horse_Black.cfg:25
-msgid ""
-"The true nature of Black Horses is impossible to discern, but the fire in "
-"their eyes and the unnerving, unnatural sound of their calls suggest they "
-"are malevolent spirits."
-msgstr ""
-"Prawdziwa natura czarnych koni jest niemożliwa do odkrycia, lecz płomień w "
-"ich oczach oraz niepokojące i nienaturalne dźwięki, które wydają, sugerują, "
-"że są to złowrogie istoty."
-
-#. [male]
-#: data/core/units/monsters/Horse_Black.cfg:85
-msgid "Black Stallion"
-msgstr "Czarny ogier"
-
 #. [female]
-#. Female variant of the Black Horse or Black Stallion; in English this is a pun on the word "Mare"
-#: data/core/units/monsters/Horse_Black.cfg:91
-msgid "female^Black Nightmare"
-msgstr "Czarna koszmarzyca"
+#: data/core/units/monsters/Horse_Dark.cfg:92
+msgid "female^Dark Horse"
+msgstr "Mroczna klacz"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:5
@@ -6473,6 +6496,26 @@ msgstr ""
 "podobnego wyglądu, są dzikimi zwierzętami. Ich zawziętość i często trudny "
 "temperament sprawia, że niemożliwością jest je oswoić. Na własnej skórze "
 "przekonało się o tym wielu aroganckich książąt i wodzów."
+
+#. [unit_type]: id=White Horse
+#: data/core/units/monsters/Horse_White.cfg:14
+msgid "White Horse"
+msgstr "Biały koń"
+
+#. [unit_type]: id=White Horse
+#: data/core/units/monsters/Horse_White.cfg:25
+msgid ""
+"Some horses have a white color, and they are merely white horses. But there "
+"exist a special breed, found only in the wild woods, that are White Horses. "
+"As if blessed by the faerie world, they have a grace and agility not found "
+"in their more common relatives."
+msgstr ""
+"Niektóre konie mają białe umaszczenie i zaledwie przez to są nazywane "
+"białymi końmi. Istnieje jednak specjalny gatunek koni, który żyje tylko i "
+"wyłącznie w najodleglejszych i najdzikszych lasach na świecie. Są to "
+"najprawdziwsze białe konie. Powiadają, że stworzenia te mają związek ze "
+"światem wróżek, przez co charakteryzują się niezwykłą gracją i zwinnością "
+"znacznie przewyższającą tą spotykaną u zwykłych koni."
 
 #. [unit_type]: id=Icemonax, race=monster
 #: data/core/units/monsters/Icemonax.cfg:4
@@ -6544,6 +6587,28 @@ msgstr "pustynny podmuch powietrza"
 #: data/core/units/monsters/Jinn.cfg:108
 msgid "desert lightning"
 msgstr "pustynna błyskawica"
+
+#. [unit_type]: id=Kraken, race=monster
+#: data/core/units/monsters/Kraken.cfg:5
+msgid "Kraken"
+msgstr ""
+
+#. [unit_type]: id=Kraken, race=monster
+#: data/core/units/monsters/Kraken.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Cuttlefish are gigantic creatures of the seas. They can grab their "
+#| "opponents with strong tentacles, or spit a poisonous black ink from a "
+#| "distance. The best way to survive an encounter with these monsters is to "
+#| "remain ashore."
+msgid ""
+"Krakens are gigantic creatures of the seas. They can grab their opponents "
+"with strong tentacles, or spit a poisonous black ink from a distance. The "
+"best way to survive an encounter with these monsters is to remain ashore."
+msgstr ""
+"Kałamarnice to gigantyczne stwory morskie. Łapią swoje ofiary potężnymi "
+"mackami albo opluwają trującym atramentem. Najlepszym sposobem na uniknięcie "
+"spotkania z kałamarnicą jest pozostanie na brzegu."
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -7506,7 +7571,7 @@ msgid "Orcish Slayer"
 msgstr "Ork siepacz"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
-#: data/core/units/orcs/Slayer.cfg:21
+#: data/core/units/orcs/Slayer.cfg:20
 msgid ""
 "Skilled orcish assassins are surprisingly nimble covert troops who achieve "
 "great agility by forgoing the heavy armor of their brethren. Their weapon of "
@@ -7714,6 +7779,22 @@ msgstr ""
 "przeciwnika, by jego rezerwy zostały przez te stworzenia błyskawicznie "
 "oskrzydlone."
 
+#. [unit_type]: id=Saurian Javelineer, race=lizard
+#: data/core/units/saurians/Javelineer.cfg:4
+#, fuzzy
+#| msgid "female^Saurian Flanker"
+msgid "female^Saurian Javelineer"
+msgstr "Jaszczurza oskrzydlaczka"
+
+#. [unit_type]: id=Saurian Javelineer, race=lizard
+#: data/core/units/saurians/Javelineer.cfg:19
+msgid ""
+"After years of combat practice, saurians warriors that are the most talented "
+"in the skill of spear throwing might advance to the ranks of the "
+"javelineers. With better equipment and exceptional aim, saurian javelineers "
+"are not to be underestimated."
+msgstr ""
+
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
@@ -7777,6 +7858,21 @@ msgstr ""
 "jakiegoś rodzaju sztuki tajemne. Wiadomo też, że niektóre z nich szczególnie "
 "dobrze opanowały sztukę leczenia, z której pomocą wspierają wojowników w "
 "walce."
+
+#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#: data/core/units/saurians/Spearthrower.cfg:4
+#, fuzzy
+#| msgid "female^Saurian Skirmisher"
+msgid "female^Saurian Spearthrower"
+msgstr "Jaszczurza harcowniczka"
+
+#. [unit_type]: id=Saurian Spearthrower, race=lizard
+#: data/core/units/saurians/Spearthrower.cfg:18
+msgid ""
+"Some saurians  with particularly good aim prefer to aid their allies from "
+"the backlines rather than to infiltrate enemy formations. Their deadly spear "
+"throwing skills allow them to support other saurian warriors from afar."
+msgstr ""
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -7999,124 +8095,124 @@ msgstr ""
 "przemiana wymaga."
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:117
-#: data/core/units/undead/Corpse_Walking.cfg:116
+#: data/core/units/undead/Corpse_Soulless.cfg:141
+#: data/core/units/undead/Corpse_Walking.cfg:140
 msgid "wc_variation^Drake"
 msgstr "Smok"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:132
-#: data/core/units/undead/Corpse_Walking.cfg:131
+#: data/core/units/undead/Corpse_Soulless.cfg:156
+#: data/core/units/undead/Corpse_Walking.cfg:155
 msgid "wc_variation^Dwarf"
 msgstr "Krasnolud"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:145
-#: data/core/units/undead/Corpse_Walking.cfg:144
+#: data/core/units/undead/Corpse_Soulless.cfg:169
+#: data/core/units/undead/Corpse_Walking.cfg:168
 msgid "wc_variation^Falcon"
 msgstr "Sokół"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:179
-#: data/core/units/undead/Corpse_Walking.cfg:178
+#: data/core/units/undead/Corpse_Soulless.cfg:203
+#: data/core/units/undead/Corpse_Walking.cfg:202
 msgid "wc_variation^Goblin"
 msgstr "Goblin"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:189
-#: data/core/units/undead/Corpse_Walking.cfg:211
+#: data/core/units/undead/Corpse_Soulless.cfg:213
+#: data/core/units/undead/Corpse_Walking.cfg:235
 msgid "wc_variation^Horse"
 msgstr "Koń"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:198
-#: data/core/units/undead/Corpse_Walking.cfg:220
+#: data/core/units/undead/Corpse_Soulless.cfg:222
+#: data/core/units/undead/Corpse_Walking.cfg:244
 msgid "wc_variation^Mounted"
 msgstr "Jeździec"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:207
-#: data/core/units/undead/Corpse_Walking.cfg:229
+#: data/core/units/undead/Corpse_Soulless.cfg:231
+#: data/core/units/undead/Corpse_Walking.cfg:253
 msgid "wc_variation^Beast-Rider"
 msgstr "Ujeżdżacz bestii"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:216
-#: data/core/units/undead/Corpse_Walking.cfg:188
+#: data/core/units/undead/Corpse_Soulless.cfg:240
+#: data/core/units/undead/Corpse_Walking.cfg:212
 msgid "wc_variation^Gryphon"
 msgstr "Gryf"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:239
-#: data/core/units/undead/Corpse_Walking.cfg:238
+#: data/core/units/undead/Corpse_Soulless.cfg:263
+#: data/core/units/undead/Corpse_Walking.cfg:262
 msgid "wc_variation^Rat"
 msgstr "Szczur"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:256
-#: data/core/units/undead/Corpse_Walking.cfg:255
+#: data/core/units/undead/Corpse_Soulless.cfg:280
+#: data/core/units/undead/Corpse_Walking.cfg:279
 msgid "wc_variation^Saurian"
 msgstr "Saurian"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:266
-#: data/core/units/undead/Corpse_Walking.cfg:265
+#: data/core/units/undead/Corpse_Soulless.cfg:290
+#: data/core/units/undead/Corpse_Walking.cfg:289
 msgid "wc_variation^Scorpion"
 msgstr "Skorpion"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:284
-#: data/core/units/undead/Corpse_Walking.cfg:283
+#: data/core/units/undead/Corpse_Soulless.cfg:308
+#: data/core/units/undead/Corpse_Walking.cfg:307
 #, fuzzy
 #| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
 msgstr "Pająk"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:293
-#: data/core/units/undead/Corpse_Walking.cfg:292
+#: data/core/units/undead/Corpse_Soulless.cfg:317
+#: data/core/units/undead/Corpse_Walking.cfg:316
 msgid "wc_variation^Spider"
 msgstr "Pająk"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:302
-#: data/core/units/undead/Corpse_Walking.cfg:301
+#: data/core/units/undead/Corpse_Soulless.cfg:326
+#: data/core/units/undead/Corpse_Walking.cfg:325
 msgid "wc_variation^Serpent"
 msgstr "Wąż"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:321
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:345
+#: data/core/units/undead/Corpse_Walking.cfg:344
 msgid "wc_variation^Swimmer"
 msgstr "Pływak"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:339
-#: data/core/units/undead/Corpse_Walking.cfg:338
+#: data/core/units/undead/Corpse_Soulless.cfg:363
+#: data/core/units/undead/Corpse_Walking.cfg:362
 msgid "wc_variation^Troll"
 msgstr "Troll"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:348
-#: data/core/units/undead/Corpse_Walking.cfg:347
+#: data/core/units/undead/Corpse_Soulless.cfg:372
+#: data/core/units/undead/Corpse_Walking.cfg:371
 msgid "wc_variation^Boar"
 msgstr "Dzik"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:361
-#: data/core/units/undead/Corpse_Walking.cfg:360
+#: data/core/units/undead/Corpse_Soulless.cfg:385
+#: data/core/units/undead/Corpse_Walking.cfg:384
 msgid "wc_variation^Wose"
 msgstr "Drzewiec"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:373
-#: data/core/units/undead/Corpse_Walking.cfg:372
+#: data/core/units/undead/Corpse_Soulless.cfg:397
+#: data/core/units/undead/Corpse_Walking.cfg:396
 msgid "wc_variation^Wolf"
 msgstr "Wilk"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:386
-#: data/core/units/undead/Corpse_Walking.cfg:385
+#: data/core/units/undead/Corpse_Soulless.cfg:410
+#: data/core/units/undead/Corpse_Walking.cfg:409
 msgid "wc_variation^Bat"
 msgstr "Nietoperz"
 

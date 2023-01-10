@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-10-15 21:07-0500\n"
+"POT-Creation-Date: 2022-12-17 19:09-0600\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -279,7 +279,7 @@ msgid "Notes:"
 msgstr "Σημειώσεις:"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:710
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
 msgstr "Κλείσιμο"
 
@@ -353,37 +353,37 @@ msgid "Artwork and Graphics"
 msgstr "Γραφικά και Εικόνες"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Μουσική"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Ηχητικά Εφέ"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Σχεδίαση Εκστρατειών"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Εξισορρόπηση και χάρτες για πολλούς παίκτες"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Δημιουργία πακέτων"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Λοιποί Συντελεστές"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Υπολογιστής"
 
@@ -4675,13 +4675,13 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Δέν υπάρχουν κενές θέσεις στό κάστρο γιά να στρατολογήσεις μονάδες"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 #| msgid "cures"
 msgid "cured"
 msgstr "θεραπεύει"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 #, fuzzy
 msgid "female^cured"
 msgstr "άφοβη"
@@ -7919,7 +7919,7 @@ msgstr "Γενικές διαταγές"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] ""
@@ -8100,17 +8100,17 @@ msgstr "νομοταγής"
 msgid "female^neutral"
 msgstr "ουδέτερη"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8118,25 +8118,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8145,13 +8145,13 @@ msgid_plural ""
 msgstr[0] "κάθε γύρο"
 msgstr[1] "κάθε γύρο"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "κάθε γύρο"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr ""
 

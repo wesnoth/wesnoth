@@ -95,6 +95,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  preferences::fi_invert,
 		  preferences::set_fi_invert,
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
+	, filter_auto_hosted_(false)
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
@@ -574,7 +575,7 @@ void mp_lobby::pre_show(window& window)
 	window.set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
+	window.set_exit_hook(window::exit_hook::on_all, std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 

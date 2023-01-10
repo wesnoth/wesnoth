@@ -51,6 +51,7 @@ public:
 	variant get_value(const std::string& key) const override;
 private:
 	const game_events::queued_event& event_info;
+	mutable std::shared_ptr<attack_type> first_weapon, second_weapon;
 };
 
 class terrain_callable : public formula_callable
