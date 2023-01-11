@@ -135,6 +135,7 @@ create table game_content_info
 -- UPLOADED_ON: when the addon was uploaded
 -- FEEDBACK_TOPIC: the forum topic ID where feedback for the addon can be posted, 0 if not set
 -- DOWNLOAD_COUNT: the number of times the add-on has been downloaded by players (does not count downloads from https://addons.wesnoth.org)
+-- UPLOADER: the author attribute or the chosen secondary_author from the _server.pbl
 create table addon_info
 (
     INSTANCE_VERSION VARCHAR(255) NOT NULL,
@@ -146,7 +147,22 @@ create table addon_info
     UPLOADED_ON      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FEEDBACK_TOPIC   INT UNSIGNED NOT NULL,
     DOWNLOAD_COUNT   INT UNSIGNED NOT NULL DEFAULT 0,
+    UPLOADER         VARCHAR(255),
     PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, VERSION)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- listing of the primary author and any secondary authors when forum_auth is used
+-- INSTANCE_VERSION: the version of the addons server instance
+-- ADDON_ID: the ID of the addon (folder name)
+-- AUTHOR: the author attribute or the chosen secondary_author from the _server.pbl
+-- IS_PRIMARY: whether this is the primary author or not
+create table addon_authors
+(
+    INSTANCE_VERSION VARCHAR(255) NOT NULL,
+    ADDON_ID         VARCHAR(255) NOT NULL,
+    AUTHOR           VARCHAR(255) NOT NULL,
+    IS_PRIMARY       BIT(1) NOT NULL,
+    PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, AUTHOR)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- history of user sessions

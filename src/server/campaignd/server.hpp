@@ -275,9 +275,10 @@ private:
 	 *
 	 * @param addon The add-on uploaded, which contains the username to use.
 	 * @param passphrase The passphrase to use for authentication.
+	 * @param is_delete Whether the authentication is being requested for an add-on upload or an add-on deletion.
 	 * @return Whether the provided information matches what's in the forum database.
 	 */
-	bool authenticate_forum(const config& addon, const std::string& passphrase);
+	bool authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete);
 };
 
 } // end namespace campaignd

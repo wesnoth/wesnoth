@@ -219,8 +219,9 @@ public:
 	 * @param version The add-on's version from the pbl.
 	 * @param forum_auth Whether the provided author and password should be matched a forum account or not.
 	 * @param topic_id The forum topic ID of the add-on's feedback thread, 0 if not present.
+	 * @param uploader The person uploading this version of the add-on.
 	 */
-	void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
+	void db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader);
 
 	/**
 	 * Inserts into the database for when a player logs in.
@@ -272,6 +273,53 @@ public:
 	 */
 	void db_update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
 
+	/**
+	 * Checks whether the provided username is the primary author of the add-on.
+	 *
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param id The ID of the add-on.
+	 * @param username The username attempting to do something with the add-on.
+	 * @return true if the user is the primary author of an addon, false otherwise.
+	 */
+	bool db_is_user_primary_author(const std::string& instance_version, const std::string& id, const std::string& username);
+
+	/**
+	 * Checks whether the provided username is a secondary author of the add-on.
+	 *
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param id The ID of the add-on.
+	 * @param username The username attempting to do something with the add-on.
+	 * @return true if the user is a secondary author of an addon, false otherwise.
+	 */
+	bool db_is_user_secondary_author(const std::string& instance_version, const std::string& id, const std::string& username);
+
+	/**
+	 * Removes the authors information from addon_author for a particular addon and version.
+	 *
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param id The ID of the add-on.
+	 */
+	void db_delete_addon_authors(const std::string& instance_version, const std::string& id);
+
+	/**
+	 * Inserts rows for the primary and secondary authors for a particular addon and version.
+	 *
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param id The ID of the add-on.
+	 * @param primary_author The primary author of the add-on.
+	 * @param secondary_authors The secondary authors of the add-on.
+	 */
+	void db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors);
+
+	/**
+	 * Checks whether any author information exists for a particular addon and version, since if there's no author information then of course no primary or secondary authors will ever be found.
+	 *
+	 * @param instance_version Which major version this is for (1.16, 1.17, etc).
+	 * @param id The ID of the add-on.
+	 * @return true if any author information exists for this addon, false otherwise.
+	 */
+	bool db_do_any_authors_exist(const std::string& instance_version, const std::string& id);
+
 private:
 	/** An instance of the class responsible for executing the queries and handling the database connection. */
 	dbconn conn_;
@@ -299,11 +347,4 @@ private:
 	 * @return The player's forum registration date.
 	 */
 	std::time_t get_registrationdate(const std::string& user);
-
-	/**
-	 * @param name The player's username.
-	 * @param group_id The forum group ID to check if the user is part of.
-	 * @return Whether the user is a member of the forum group.
-	 */
-	bool is_user_in_group(const std::string& name, int group_id);
 };
