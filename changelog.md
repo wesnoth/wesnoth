@@ -1,6 +1,7 @@
 ## Version 1.17.11+dev
  ### Add-ons client
  ### Add-ons server
+   * Added support for allowing multiple people to upload updates to an add-on (PR#7268)
  ### Campaigns
  ### Editor
  ### Multiplayer
