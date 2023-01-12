@@ -40,6 +40,7 @@ dbconn::dbconn(const config& c)
 	, db_topics_table_(c["db_topics_table"].str())
 	, db_addon_info_table_(c["db_addon_info_table"].str())
 	, db_connection_history_table_(c["db_connection_history_table"].str())
+	, db_addon_authors_table_(c["db_addon_authors_table"].str())
 {
 	try
 	{
@@ -364,12 +365,12 @@ bool dbconn::topic_id_exists(int topic_id) {
 	}
 }
 
-void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id)
+void dbconn::insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader)
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_addon_info_table_+"`(INSTANCE_VERSION, ADDON_ID, ADDON_NAME, TYPE, VERSION, FORUM_AUTH, FEEDBACK_TOPIC) VALUES(?, ?, ?, ?, ?, ?, ?)",
-			instance_version, id, name, type, version, forum_auth, topic_id);
+		modify(connection_, "INSERT INTO `"+db_addon_info_table_+"`(INSTANCE_VERSION, ADDON_ID, ADDON_NAME, TYPE, VERSION, FORUM_AUTH, FEEDBACK_TOPIC, UPLOADER) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
+			instance_version, id, name, type, version, forum_auth, topic_id, uploader);
 	}
 	catch(const mariadb::exception::base& e)
 	{
@@ -456,6 +457,56 @@ void dbconn::update_addon_download_count(const std::string& instance_version, co
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Unable to update download count for add-on "+id+" with version "+version+".", e);
+	}
+}
+
+bool dbconn::is_user_author(const std::string& instance_version, const std::string& id, const std::string& username, int is_primary) {
+	try
+	{
+		return exists(connection_, "SELECT 1 FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ? AND AUTHOR = ? AND IS_PRIMARY = ?",
+			instance_version, id, username, is_primary);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to check whether `"+username+"` is an author of "+id+" for version "+instance_version+".", e);
+		return false;
+	}
+}
+
+void dbconn::delete_addon_authors(const std::string& instance_version, const std::string& id) {
+	try
+	{
+		modify(connection_, "DELETE FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ?",
+			instance_version, id);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to delete addon authors for "+id+" and version "+instance_version+".", e);
+	}
+}
+
+void dbconn::insert_addon_author(const std::string& instance_version, const std::string& id, const std::string author, int is_primary) {
+	try
+	{
+		modify(connection_, "INSERT INTO `"+db_addon_authors_table_+"`(INSTANCE_VERSION, ADDON_ID, AUTHOR, IS_PRIMARY) VALUES(?,?,?,?)",
+			instance_version, id, author, is_primary);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to delete addon authors for "+id+" and version "+instance_version+".", e);
+	}
+}
+
+bool dbconn::do_any_authors_exist(const std::string& instance_version, const std::string& id) {
+	try
+	{
+		return exists(connection_, "SELECT 1 FROM `"+db_addon_authors_table_+"` WHERE INSTANCE_VERSION = ? AND ADDON_ID = ?",
+			instance_version, id);
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Unable to check whether authors exist for "+id+" for version "+instance_version+".", e);
+		return true;
 	}
 }
 
