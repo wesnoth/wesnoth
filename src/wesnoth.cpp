@@ -1029,17 +1029,21 @@ int main(int argc, char** argv)
 	// --nobanner needs to be detected before the main command-line parsing happens
 	// --log-to needs to be detected so the logging output location is set before any actual logging happens
 	bool nobanner = false;
+	bool log_to_file = true;
 	for(const auto& arg : args) {
 		if(arg == "--nobanner") {
 			nobanner = true;
 			break;
 		}
-#ifndef _WIN32
-		else if(arg == "--log-to-file") {
-			lg::set_log_to_file();
+		else if(arg == "--no-log-to-file") {
+			log_to_file = false;
 		}
-#endif
 	}
+#ifndef _WIN32
+	if(log_to_file) {
+		lg::set_log_to_file();
+	}
+#endif
 
 #ifdef _WIN32
 	bool log_redirect = true, native_console_implied = false;
