@@ -3,14 +3,14 @@
 # Copyright (C) Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Antonio Rosella <arosella@yahoo.com>, 2021-2022.
+# Antonio Rosella <arosella@yahoo.com>, 2021-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-02 00:33 UTC\n"
-"PO-Revision-Date: 2022-01-05 22:48+0100\n"
+"PO-Revision-Date: 2023-01-12 10:22+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
@@ -146,21 +146,17 @@ msgstr "Artefatti"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:400
 msgid "Recruits"
-msgstr ""
+msgstr "Reclutamenti"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:467
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
-msgstr "Disertore"
+msgstr "Disertori"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:486
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
-msgstr "Comandante"
+msgstr "Comandanti"
 
 #. [label]
 #. [lua]: gui.widget.add_invest_item
@@ -171,10 +167,8 @@ msgstr "Eroi"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:524
-#, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "Casuale"
+msgstr "Condottieri casuali"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -185,27 +179,23 @@ msgstr "Impostazioni"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:592
-#, fuzzy
-#| msgid "World Conquest"
 msgid "Use World Conquest PYA mod"
-msgstr "Conquista Mondiale"
+msgstr "Utilizza mod PYA di Conquista Mondiale"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:612
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "Conquista Mondiale 1g"
+msgstr "Utilizza marcatori unità di Conquista Mondiale"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:632
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "Utilizza modalità di scelta sperimentale di Conquista Mondiale"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:652
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "Mostra conferma di scelta"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:672
@@ -214,10 +204,8 @@ msgstr "Difficoltà"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:693
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "Conquista Mondiale"
+msgstr "Conquista Mondiale versione"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -241,7 +229,7 @@ msgstr "Dopo:"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "Raccogli questo oggetto"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -293,43 +281,37 @@ msgstr " mappa: "
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "dimensione mappa"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "densità villaggi"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "dimensione fortezza"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "Fazioni"
+msgstr "iterazioni"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-#, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "acqua"
+msgstr "fattore terreno"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "fattore isola"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "Tomo dei segreti"
+msgstr "numero di fortezze"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -3693,18 +3675,3 @@ msgstr ""
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:93
 msgid "WC"
 msgstr "CM"
-
-#~ msgid "Feedback"
-#~ msgstr "Suggerimenti"
-
-#~ msgid ""
-#~ "For feedback please either post in the World Conquest II thread in the "
-#~ "official Wesnoth forum &lt;https://r.wesnoth.org/t39651&gt; or file an "
-#~ "issue at GitHub &lt;https://github.com/gfgtdf/World_Conquest_II/"
-#~ "issues&gt;."
-#~ msgstr ""
-#~ "Se hai dei suggerimenti/osservazioni da riportare, puoi postare nel "
-#~ "canale dedicato a Conquista Mondiale II (World Conquest II) nel forum "
-#~ "ufficiale di Wesnoth &lt;https://r.wesnoth.org/t39651&gt; o anche "
-#~ "aggiungere una nuova richiesta su GitHub &lt;https://github.com/gfgtdf/"
-#~ "World_Conquest_II/issues&gt;."
