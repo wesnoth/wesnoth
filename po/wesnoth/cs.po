@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:34-0600\n"
-"PO-Revision-Date: 2022-12-07 07:12+0100\n"
+"PO-Revision-Date: 2023-01-11 21:18+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -205,7 +205,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "Časový limit pro odpojení od serveru"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -214,6 +214,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Doba ve vteřinách, po které je zjištěno odpojení. Pokud jsi právě přihlášen "
+"k serveru hry pro více hráčů, musíš se odhlásit a znovu přihlásit, aby se "
+"toto nastavení projevilo."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -4617,7 +4620,7 @@ msgid ""
 msgstr ""
 "Taktiku obklíčení dvěma jednotkami není radno podceňovat, zvláště proti "
 "rychlým jednotkám. Umístěním dvou jednotek na opačné strany nepřátelské "
-"jednotky ji sevřete jejich oblastmi kontroly a omezíte tak pohyb na jedno "
+"jednotky ji sevřeš jejich oblastmi kontroly a omezíš tak pohyb na jedno "
 "políčko kterýmkoliv směrem. Výjimku tvoří <i>průbojné</i> jednotky, které by "
 "bylo zapotřebí zcela obklíčit."
 
@@ -4823,8 +4826,8 @@ msgid ""
 "are guaranteed at least a 60% chance of a hit when they attack on their own "
 "turn."
 msgstr ""
-"Šance zasáhnout jednotku obvykle závisí na tom, jak dobře se dokáže bránit v "
-"terénu, v němž stojí; avšak <i>magické</i> útoky mají vždy 70% šanci "
+"Šance zasáhnout jednotku obvykle závisí na tom, jak dobře se dokáže bránit "
+"v terénu, v němž stojí; avšak <i>magické</i> útoky mají vždy 70% šanci "
 "zasáhnout. <i>Odstřelovači</i> mají také vždy alespoň 60% šanci zasáhnout, "
 "pokud útočí ve svém kole."
 
