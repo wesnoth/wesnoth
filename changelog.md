@@ -9,7 +9,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Turkish
+   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Portuguese (Brazil), Turkish
  ### Units
    * Dunefolk Rover portrait added
    * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight

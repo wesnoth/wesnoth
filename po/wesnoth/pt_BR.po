@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-12-17 19:09-0600\n"
-"PO-Revision-Date: 2022-09-01 14:58-0300\n"
+"PO-Revision-Date: 2023-01-07 11:04-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
 "Language: pt_BR\n"
@@ -299,10 +299,8 @@ msgstr ""
 # File: src/multiplayer_ui.cpp, line: 84
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "A conexão expirou"
+msgstr "Tempo limite de conexão com o servidor esgotado"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -311,6 +309,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"A quantidade de tempo em segundos antes que uma desconexão seja detectada. "
+"Se você estiver logado em um servidor multiplayer, você precisa primeiro "
+"deslogar e depois relogar para que esta opção surta efeito."
 
 #
 # File: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg, line: 311
