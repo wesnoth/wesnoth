@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Finnish
+   * Updated translations: Finnish, Spanish
  ### Units
  ### User interface
  ### WML Engine
@@ -21,7 +21,7 @@
    * Heir to the Throne
      * S03: Rewrite intro text, including a hint about training troops (PR #7214)
  ### Translations
-   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Portuguese (Brazil), Spanish, Turkish
+   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Portuguese (Brazil), Turkish
  ### Units
    * Dunefolk Rover portrait added
    * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight
