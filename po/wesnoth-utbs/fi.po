@@ -1,16 +1,18 @@
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-02 00:33 UTC\n"
-"PO-Revision-Date: 2010-12-25 09:56+0200\n"
-"Last-Translator: Jussi Rautio <kipuna@gmail.com>\n"
+"PO-Revision-Date: 2023-01-05 14:55+0200\n"
+"Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -33,56 +35,46 @@ msgid ""
 "\n"
 msgstr ""
 "Kaukaisessa tulevaisuudessa pieni haltiaheimo taistelee selvitäkseen "
-"murskaantuneiden valtakuntien raunioissa. Johda kansasi aavikolta eeppiselle "
+"murskaantuneiden valtakuntien raunioissa. Johda kansasi aavikolta suurelle "
 "matkalle etsimään uutta kotia.\n"
 "\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:22
 msgid "(Expert level, 10 scenarios.)"
-msgstr "(asiantuntijatasoa, 10 tehtävää, 52 % suomennettu)"
+msgstr "(Asiantuntijatasoa, 10 skenaariota, 49 % suomennettu)"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "(Challenging)"
 msgid "Challenging"
-msgstr "(haastava)"
+msgstr "Haastava"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:26
-#, fuzzy
-#| msgid "Desert Fighter"
 msgid "Fighter"
-msgstr "Aavikon taistelija"
+msgstr "Taistelija"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 msgid "Difficult"
-msgstr ""
+msgstr "Vaikea"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [advancement]: id=warrior_1
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:45
-#, fuzzy
-#| msgid "Arisen Warrior"
 msgid "Warrior"
-msgstr "Nostatettu soturi"
+msgstr "Soturi"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "Desert Champion"
 msgid "Champion"
-msgstr "Aavikon miekkamestari"
+msgstr "Miekkamestari"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:28
-#, fuzzy
-#| msgid "(Nightmare)"
 msgid "Nightmare"
-msgstr "(painajaismainen)"
+msgstr "Painajaismainen"
 
 #. [about]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:32
@@ -8011,8 +8003,10 @@ msgstr "Ei nyt Rogrimir, minulla on kiire."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3424
+#, fuzzy
+#| msgid "Not now Grog, I’m busy."
 msgid "Not now Jarl, I’m busy."
-msgstr "Ei nyt Jarl, minulla on kiire."
+msgstr "Ei nyt Grog, minulla on kiire."
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3430
@@ -10437,8 +10431,10 @@ msgstr ""
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:194
+#, fuzzy
+#| msgid "Grog says thank you."
 msgid "Nog says thank you."
-msgstr "Nog lähettää kiitoksensa."
+msgstr "Grog lähettää kiitoksensa."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:200
@@ -10471,7 +10467,7 @@ msgstr "Kiitoksia ystävällisyydestänne."
 #, fuzzy
 #| msgid ""
 #| "No, you don’t have to introduce yourselves. I already know who you are "
-#| "and why you have been journeying all this way. And I must say, Jarl, that "
+#| "and why you have been journeying all this way. And I must say, Grog, that "
 #| "your recent actions and indeed your presence with these fine folk is a "
 #| "credit to your race."
 msgid ""
@@ -10481,7 +10477,7 @@ msgid ""
 "your people."
 msgstr ""
 "Ei, teidän ei tarvitse esitellä itseänne. Tiedän jo ketä olette ja miksi "
-"olette matkanneet pitkän matkan. Ja minun tarvitsee myöntää, Jarl, sinun "
+"olette matkanneet pitkän matkan. Ja minun tarvitsee myöntää, Grog, sinun "
 "viimeaikaiset toimesi ja erityisesti läsnäolosi tämän hienon joukon mukana "
 "ovat kunniaksi rodullesi."
 
@@ -10894,11 +10890,15 @@ msgstr ""
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:428
+#, fuzzy
+#| msgid ""
+#| "Grog not sure if he trust fish lady. What if she just want you elves to "
+#| "fight her war for her?"
 msgid ""
 "Nog not sure if he trust fish lady. What if she just want you elves to fight "
 "her war for her?"
 msgstr ""
-"Nog ei ole varma, luottaako kalarouvaan. Entäpä jos hän haluaa vain "
+"Grog ei ole varma, luottaako kalarouvaan. Entäpä jos hän haluaa vain "
 "haltijoiden taistelevan hänen puolestaan?"
 
 #. [message]: speaker=Rogrimir
@@ -12051,8 +12051,10 @@ msgstr "Nym, Zhul ja Rogrimir, ei teidän olisi tarvinnut."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:441
+#, fuzzy
+#| msgid "Nym, Zhul, Grog, you shouldn’t have."
 msgid "Nym, Zhul, Jarl, you shouldn’t have."
-msgstr "Nym, Zhul ja Jarl, ei teidän olisi tarvinnut."
+msgstr "Nym, Zhul ja Grog, ei teidän olisi tarvinnut."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:449
@@ -14945,6 +14947,73 @@ msgstr "Kummituslinna"
 msgid "Phantom Keep"
 msgstr "Kummituslinnake"
 
+#, fuzzy
+#~| msgid "female^Desert Hunter"
+#~ msgid "female^steadfast"
+#~ msgstr "Aavikon metsästäjä"
+
+#, fuzzy
+#~| msgid ""
+#~| "Sustenance:\n"
+#~| "This unit’s resistances are increased by 20% in daylight, on defense and "
+#~| "attack. Vulnerabilities are not affected."
+#~ msgid ""
+#~ "This unit's resistances are increased by 20%, up to a maximum of 50%, "
+#~ "when defending. Vulnerabilities are not affected."
+#~ msgstr ""
+#~ "Auringon voima:\n"
+#~ "Yksikön vastustuskyvyt kasvavat 20 %:lla silloin, kun yksikkö on "
+#~ "päivänvalossa, sekä yksikön hyökätessä että puolustautuessa. Tämä ei "
+#~ "vaikuta heikkouksiin."
+
+#, fuzzy
+#~| msgid "Death of Zhul"
+#~ msgid "Death of $ally_unit.name"
+#~ msgstr "Jos Zhul kuolee"
+
+#, fuzzy
+#~| msgid "Not now Jarl, I’m busy."
+#~ msgid "Not now $ally_unit.name, I’m busy."
+#~ msgstr "Ei nyt Jarl, minulla on kiire."
+
+#, fuzzy
+#~| msgid ""
+#~| "No, you don’t have to introduce yourselves. I already know who you are "
+#~| "and why you have been journeying all this way. And I must say, Jarl, "
+#~| "that your recent actions and indeed your presence with these fine folk "
+#~| "is a credit to your race."
+#~ msgid ""
+#~ "No, you don’t have to introduce yourselves. I already know who you are "
+#~ "and why you have been journeying all this way. And I must say, $ally_unit."
+#~ "name, that your recent actions and indeed your presence with these fine "
+#~ "folk speaks well for your people."
+#~ msgstr ""
+#~ "Ei, teidän ei tarvitse esitellä itseänne. Tiedän jo ketä olette ja miksi "
+#~ "olette matkanneet pitkän matkan. Ja minun tarvitsee myöntää, Jarl, sinun "
+#~ "viimeaikaiset toimesi ja erityisesti läsnäolosi tämän hienon joukon "
+#~ "mukana ovat kunniaksi rodullesi."
+
+#, fuzzy
+#~| msgid "Nog says thank you."
+#~ msgid "$ally_unit.name says thank you."
+#~ msgstr "Nog lähettää kiitoksensa."
+
+#, fuzzy
+#~| msgid ""
+#~| "Nog not sure if he trust fish lady. What if she just want you elves to "
+#~| "fight her war for her?"
+#~ msgid ""
+#~ "$ally_unit.name not sure if he trust fish lady. What if she just want you "
+#~ "elves to fight her war for her?"
+#~ msgstr ""
+#~ "Nog ei ole varma, luottaako kalarouvaan. Entäpä jos hän haluaa vain "
+#~ "haltijoiden taistelevan hänen puolestaan?"
+
+#, fuzzy
+#~| msgid "Nym, Zhul, Jarl, you shouldn’t have."
+#~ msgid "Nym, Zhul, $ally_unit.name, you shouldn’t have."
+#~ msgstr "Nym, Zhul ja Jarl, ei teidän olisi tarvinnut."
+
 #~ msgid "At the end of each turn, this unit takes no damage from the desert."
 #~ msgstr "Vuoron lopussa aavikko ei vahingoita tätä yksikköä."
 
@@ -15225,20 +15294,6 @@ msgstr "Kummituslinnake"
 
 #~ msgid "sustenance"
 #~ msgstr "auringon voima"
-
-#, fuzzy
-#~| msgid ""
-#~| "Sustenance:\n"
-#~| "This unit’s resistances are increased by 20% in daylight, on defense and "
-#~| "attack. Vulnerabilities are not affected."
-#~ msgid ""
-#~ "This unit’s resistances are increased by 20% in daylight, on defense and "
-#~ "attack. Vulnerabilities are not affected."
-#~ msgstr ""
-#~ "Auringon voima:\n"
-#~ "Yksikön vastustuskyvyt kasvavat 20 %:lla silloin, kun yksikkö on "
-#~ "päivänvalossa, sekä yksikön hyökätessä että puolustautuessa. Tämä ei "
-#~ "vaikuta heikkouksiin."
 
 #~ msgid "gain +10% resistance to blade, pierce and impact"
 #~ msgstr ""

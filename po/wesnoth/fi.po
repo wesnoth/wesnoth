@@ -6,22 +6,22 @@
 # Samu Voutilainen <smar@smar.fi>, 2010.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
 # TheCoolPenguin <penguinsarecool1110@gmail.com>, 2020.
-# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:34-0600\n"
-"PO-Revision-Date: 2022-06-22 17:53+0300\n"
+"PO-Revision-Date: 2023-01-14 14:59+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"\"\"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"\"\"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -207,10 +207,8 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Yhteys katkaistiin odotuksen jälkeen."
+msgstr "Palvelimen yhteyden aikakatkaisu"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -219,6 +217,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Sekunttien määrä, ennen kuin yhteys katkeaa. Jos olet tällä hetkellä "
+"kirjautunut moninpelipalvelimelle, sinun on kirjauduttava ulos ja sitten "
+"takaisin sisään, jotta tämä asetus astuu voimaan."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -232,7 +233,7 @@ msgstr "myrkytetty"
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:398
 #: data/core/macros/items.cfg:536
 msgid "storm trident"
-msgstr "myrskyjen kolmikärki"
+msgstr "myrskyatrain"
 
 #. [objectives]
 #. [lua]: generate_objectives
@@ -5406,7 +5407,7 @@ msgstr ""
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:258
 msgid "waiting for^an advancement choice"
-msgstr "odotetaan^valintaa ylennyksistä"
+msgstr "valintaa ylennyksistä"
 
 #: src/actions/attack.cpp:603 src/actions/attack.cpp:1375
 msgid "An invalid attacker weapon got selected."
@@ -6505,7 +6506,7 @@ msgstr "Aikakautta '$era' ei löydy"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
-msgstr "Virheellinen osoite asetettu moninpelipalvelimelle."
+msgstr "Virheellinen osoite asetettu moninpelipalvelimelle"
 
 #: src/game_initialization/multiplayer.cpp:272
 msgid ""
@@ -6968,12 +6969,16 @@ msgstr "Suuntautuminen: "
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
 #: src/help/help_impl.cpp:1075
+#, fuzzy
+#| msgid ""
+#| "This is a group of units, all of whom are <ref>dst='$topic_id' "
+#| "text='$help_taxonomy'</ref>."
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 msgstr ""
 "Tämä on ryhmä yksiköitä, jotka ovat kaikki <ref>dst='$topic_id' "
-"text='$help_taxonomy'</ref>"
+"text='$help_taxonomy'</ref>."
 
 #: src/help/help_impl.cpp:1080
 msgid "<header>text='Subgroups of units within this group'</header>"
@@ -8835,8 +8840,14 @@ msgstr "Piilota pelaajan $player suunnitelmat"
 msgid "Whiteboard Options"
 msgstr "Valkotaulun asetukset"
 
-#~ msgid "Chest"
-#~ msgstr "Arkku"
+#~ msgid ""
+#~ "The cleansing waters of an oasis will heal the injured. The fiery ichor "
+#~ "of the underworld hinders the flightless, while offering illumination in "
+#~ "darkness to those that may fly above it."
+#~ msgstr ""
+#~ "Keitaan puhdistavat vedet parantavat loukkaantuneita. Alamaailman tulinen "
+#~ "koleerisuus estää lentokyvyttömiä ja tarjoaa samalla valaistusta "
+#~ "pimeydessä niille, jotka voivat lentää sen yläpuolella."
 
 #~ msgid "<i>― Dominant Gorlack, 3YW</i>"
 #~ msgstr "<i>― Hallitsija Gorlack, 3 WV</i>"
@@ -8847,6 +8858,9 @@ msgstr "Valkotaulun asetukset"
 #~ msgstr ""
 #~ "Yhteys etäpalvelimeen ei ole suojattu. Lisäosaa <i>$addon_title</i> ei "
 #~ "voida lähettää."
+
+#~ msgid "Installing add-on <i>$addon_title</i>..."
+#~ msgstr "Asennetaan lisäosaa <i>$addon_title</i>..."
 
 #~ msgid ""
 #~ "Forum authentication was requested for a user that is not registered on "
@@ -8869,7 +8883,7 @@ msgstr "Valkotaulun asetukset"
 #~ "tiedostossa."
 
 #~ msgid "Selected Game"
-#~ msgstr "Valittu peli:"
+#~ msgstr "Valittu peli"
 
 #~ msgid "Lobby"
 #~ msgstr "Aula"
@@ -8883,6 +8897,9 @@ msgstr "Valkotaulun asetukset"
 #~ msgstr ""
 #~ "Komentoa '$command' ei tunnistettu, käytä komentoa '$command_proposal' "
 #~ "jos haluat listan mahdollisista komennoista."
+
+#~ msgid "Chest"
+#~ msgstr "Arkku"
 
 #~ msgid "<room>"
 #~ msgstr "<huone>"

@@ -5,12 +5,13 @@
 # Automatically generated, 2004.
 # Samu Voutilainen <smar@smar.fi>, 2010.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:33-0600\n"
-"PO-Revision-Date: 2022-06-24 15:45+0300\n"
+"PO-Revision-Date: 2023-01-05 16:34+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -53,7 +54,7 @@ msgstr "Keh. tekoäly: Oletustekoäly (RCA) vaihtoeht. värväyksellä"
 #: data/campaigns/Secrets_of_the_Ancients/utils/terrain.cfg:5
 #: data/core/terrain.cfg:489 data/core/terrain.cfg:499
 msgid "Fence"
-msgstr "aita"
+msgstr "Aita"
 
 #. [row]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:196
@@ -68,17 +69,17 @@ msgstr "Satunnainen"
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
 #: data/core/terrain.cfg:3114 data/core/terrain.cfg:3115
 msgid "Deep Water"
-msgstr "syvää vettä"
+msgstr "Syvää vettä"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:24
 msgid "Gray Deep Water"
-msgstr "syvää harmaata vettä"
+msgstr "Syvää harmaata vettä"
 
 #. [terrain_type]: id=deep_water_medium
 #: data/core/terrain.cfg:35
 msgid "Medium Deep Water"
-msgstr "melko syvää vettä"
+msgstr "Melko syvää vettä"
 
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:46
@@ -7336,7 +7337,7 @@ msgstr "Loitonna"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Default Zoom"
-msgstr "Vakiotäisyys"
+msgstr "Vakioetäisyys"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Toggle Full Screen"
@@ -8107,6 +8108,11 @@ msgstr ""
 #~ msgstr "puusilta"
 
 #, fuzzy
+#~| msgid "Impassable Overlay"
+#~ msgid "Unwalkable Ravine"
+#~ msgstr "ylitsepääsemätön"
+
+#, fuzzy
 #~| msgid "Drake Village"
 #~ msgid "Snowy Drake Village"
 #~ msgstr "draakkien kylä"
@@ -8116,8 +8122,48 @@ msgstr ""
 #~ msgid "Snowy Stone Bridge"
 #~ msgstr "tavallinen kivisilta"
 
+#, fuzzy
+#~| msgid "Game created"
+#~ msgid "Deprecated"
+#~ msgstr "Peli luotu"
+
+#, fuzzy
+#~| msgid "Screenshot"
+#~ msgid "Screenshots:"
+#~ msgstr "Kuvankaappaus"
+
+#, fuzzy
+#~| msgid "General"
+#~ msgid "General Lobby"
+#~ msgstr "Yleiset"
+
+#, fuzzy
+#~| msgid "Map Information"
+#~ msgid "Additional information:"
+#~ msgstr "Karttatietoa"
+
 #~ msgid "controller^Reserved"
 #~ msgstr "Varattu"
+
+#, fuzzy
+#~| msgid "Games"
+#~ msgid "Game"
+#~ msgstr "Pelit"
+
+#, fuzzy
+#~| msgid "Recruits"
+#~ msgid "stats^Recruits"
+#~ msgstr "Värväykset"
+
+#, fuzzy
+#~| msgid "Choose Starting Scenario"
+#~ msgid "Choose Test Scenario"
+#~ msgstr "Valitse aloitusskenaario"
+
+#, fuzzy
+#~| msgid "Player joins"
+#~ msgid "Player Hosted"
+#~ msgstr "Pelaaja liittyi"
 
 #, fuzzy
 #~| msgid "Desert Castle"
