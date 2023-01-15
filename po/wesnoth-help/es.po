@@ -18,20 +18,21 @@
 # Aelonin <quianaaelonin@gmail.com>, 2011, 2012.
 # Donpepe <donpepe1963@gmail.com>, 2014.
 # Pepe <donpepe1963@gmail.com>, 2014, 2017.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-14 18:20-0600\n"
-"PO-Revision-Date: 2021-09-24 13:20-0300\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"PO-Revision-Date: 2023-01-15 10:17+0100\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Bookmarks: 125,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [time]: id=underground
@@ -618,7 +619,7 @@ msgstr ""
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:127
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Editor de terreno-Gráficos superpuestos"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
@@ -628,6 +629,10 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"Los mapas normalmente se ven similares en el editor a su apariencia en el "
+"juego. Hay algunas excepciones, donde se utilizan diferentes gráficos en el "
+"editor; todas las superposiciones descritas aquí se encuentran en el grupo "
+"\"especial\" de la paleta de terreno."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -646,6 +651,17 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='Superposiciones de movimiento'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impenetrable e intransitable\n"
+"\n"
+"Si bien se notan fácilmente en el editor, estos son invisibles en el juego, "
+"por lo que los terrenos mixtos creados por ellos se ven como el terreno "
+"base. Se crea un terreno mixto con los costos de movimiento establecidos en "
+"\"impenetrable\" o \"intransitable\", respectivamente."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -668,6 +684,23 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='Superposiciones de castillo'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Agregar cualquiera de estas superposiciones a un hexágono transitable "
+"permite reclutar unidades en un hexágono. La fortaleza también permite que "
+"un líder reclute desde allí.\n"
+"\n"
+"Estos se pueden agregar a un hexágono infranqueable para conectar un "
+"castillo a una fortaleza visualmente separada a través de una pared "
+"infranqueable. También es posible crear un castillo que parezca tener "
+"pastizales entre el torreón y las torres, sin embargo, esto requiere que los "
+"hexágonos conectados estén ocupados o bloqueados para evitar que se recluten "
+"unidades en ellos."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -681,6 +714,13 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='Superposición de aldea'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"Esto convierte cualquier terreno base en una aldea, proporcionando ingresos "
+"y curación."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -693,13 +733,18 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='Falsa Oscuridad'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Falsa oscuridad parece un área inexplorada, incluso en escenarios que tienen "
+"el sudario deshabilitado e incluso cuando las unidades del jugador pueden "
+"ver el hexágono."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Terrain Editor"
 msgid "Terrain Elevation Graphics"
-msgstr "Editor de terreno"
+msgstr "Gráficos de elevación de terreno"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
@@ -708,19 +753,15 @@ msgid ""
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
+"Un efecto de elevación cosmético que se ve un poco diferente en el editor "
+"que en el juego debido a las ayudas visuales en el editor; todas las "
+"superposiciones descritas aquí se encuentran en el grupo de \"elevación\" de "
+"la paleta de terreno."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Avanzado'</bold>"
+msgstr "<bold>text='Superposiciones directas '</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
@@ -732,24 +773,23 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"Acantilados y barrancos\n"
+"\n"
+"Los acantilados, barrancos y variaciones similares son muy parecidos a una "
+"superposición de terreno estándar y simplemente se pueden usar de esa "
+"manera. Sin embargo, para áreas más grandes del mapa, donde querrá permitir "
+"el uso de otros terrenos superpuestos, querrá combinarlos con los "
+"\"marcadores\" que se describen en la siguiente sección."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:181
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Avanzado'</bold>"
+msgstr "<bold>text='Relleno de elevación'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:183
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Marcador de elevación en el mapa"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
@@ -768,6 +808,19 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"Icono de la paleta del editor de elevaciones\n"
+"\n"
+"Para hacer que un trozo de terreno sea más alto o más bajo, y aún así poder "
+"usar otros terrenos superpuestos, como árboles, deberá usar estos "
+"marcadores. Colocar una de estas flechas en el mapa inundará el mapa con una "
+"neblina codificada por colores; ni la neblina ni la flecha serán visibles en "
+"el juego. El área opacada tendrá un saliente en el borde, lo que hará que "
+"parezca más alta o más baja que las baldosas adyacentes.\n"
+"\n"
+"Hay dos marcadores altos y dos marcadores bajos, por lo que es posible hacer "
+"terrazas de hasta cinco niveles (más bajo, más bajo, normal, más alto, más "
+"alto). Colocar una región alta junto a una región baja no da como resultado "
+"acantilados más grandes.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:191
@@ -789,6 +842,23 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"<bold>text='Cómo usar'</bold>\n"
+"\n"
+"Las flechas de marcador no son muy útiles por sí solas, pero los terrenos "
+"tipo acantilados/barrancos se pueden usar para contener el área inundada.\n"
+"\n"
+"Un ejemplo de caso de uso sería:\n"
+"1. Seleccione los Acantilados (^Qhh) de la paleta del editor y use la "
+"herramienta de pintura de un solo hexágono para delinear una gran mancha "
+"sobre un mapa vacío de césped.\n"
+"2. Coloque una flecha de Marcador alto (^_mh) en un mosaico dentro de la "
+"mancha (no en el borde del acantilado).\n"
+"3. La mancha debería estar levantada ahora, y siempre que no sobrescriba las "
+"superposiciones Marcador o Acantilado, puede agregar otras superposiciones "
+"de terreno según sea necesario.\n"
+"\n"
+"Los gráficos utilizados para representar los bordes de las cornisas están "
+"determinados por el terreno base.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:202
@@ -798,13 +868,15 @@ msgid ""
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='Nota para los autores de modificaciones: los mosaicos "
+"inundados no tienen cambiados sus códigos de terreno, ni ninguna otra "
+"propiedad afectada, por lo que filtrar una ubicación por elevación no es "
+"simple.' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:207
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "Terreno base: "
+msgstr "Terreno discontinuado"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -823,6 +895,19 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>La 'D' magenta (de \"Obsoleto\").\n"
+"\n"
+"Esto se muestra en el editor sobre códigos de terreno obsoletos. Los "
+"ejemplos son:\n"
+"• el <ref>dst='terrain_fungus_grove_old' text='“^Uf” mushroom terrain'</"
+"ref>,\n"
+"• el muro de piedra iluminada “Xol”, que está en desuso porque varios "
+"terrenos de muro ahora soportan el adorno de candelabro “^Efs”.\n"
+"\n"
+"Las páginas de ayuda para estos terrenos pueden tener texto adicional que "
+"solo se muestra en el editor, que describe la obsolescencia y los reemplazos "
+"recomendados."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:223
@@ -1222,22 +1307,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:379
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenaro mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -3741,32 +3810,6 @@ msgstr ""
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:395
-#, fuzzy
-#| msgid ""
-#| "The orbs show whether the unit can move or attack. The statuses and their "
-#| "standard colors are:\n"
-#| "• <bold>text='Green'</bold> if it has neither moved nor attacked this "
-#| "turn.\n"
-#| "• <bold>text='Yellow'</bold> if it has moved (or attacked), and can still "
-#| "attack. It might still be able to move further too.\n"
-#| "• <bold>text='Red'</bold> if it can neither move further nor attack again "
-#| "this turn.\n"
-#| "    • Red is also used after the ‘end unit turn’ command, and,\n"
-#| "    • when a unit is in the middle of a multi-turn move (has been told to "
-#| "move further than it can in the current turn).\n"
-#| "• <bold>text='Red and yellow'</bold> if it has moved (or attacked), can "
-#| "still move further, but it can no longer attack.\n"
-#| "    • This can happen due to campaign-specific events or abilities, for "
-#| "example the <italic>text='disengage'</italic> ability in the campaign "
-#| "<italic>text='Under the Burning Suns'</italic>.\n"
-#| "• <bold>text='Blue'</bold> for allied units, except during that ally’s "
-#| "own turn.\n"
-#| "    • During the ally’s own turn, their units will be shown with the "
-#| "green/yellow/red/white colors; however their moves, and the corresponding "
-#| "orb changes, are delayed as explained in <ref>dst='shroud_and_fog' "
-#| "text='Shroud and Fog of War'</ref>.\n"
-#| "• Enemy units normally don’t have orbs, however these can be enabled in "
-#| "the advanced preference “Customize orb colors”."
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -4892,6 +4935,10 @@ msgid ""
 "of only things that have changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Similar al comando 'fps', pero también obliga a que todo se vuelva a dibujar "
+"en lugar de sólo las cosas que han cambiado.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:684
@@ -5451,6 +5498,10 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"Esta unidad puede liderar otras tropas en combate.\n"
+"\n"
+"Todas las unidades adyacentes del mismo bando harán 25% más de daño por cada "
+"diferencia de nivel."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -5576,15 +5627,6 @@ msgstr "ocultarse"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:345
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in a village, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5593,9 +5635,8 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"Esta unidad puede ocultarse en aldeas (con la excepción de aldeas "
-"acuáticas), y permanecer ilocalizable para sus enemigos, salvo para aquellos "
-"adyacentes a ella.\n"
+"Esta unidad puede ocultarse en aldeas, y permanecer ilocalizable para sus "
+"enemigos, salvo para aquellos adyacentes a ella.\n"
 "\n"
 "Las unidades enemigas no pueden ver a esta unidad cuando se encuentra en una "
 "aldea, excepto si tienen unidades a su lado. La primera unidad enemiga que "
@@ -6267,6 +6308,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"Notas especiales (estilo 1.14, actualice al nuevo formato de lista para "
+"evitar duplicados):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6880,73 +6923,6 @@ msgstr "Dracos"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
-#, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over the functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — dominant who rules the society with an iron fist. Every "
-#| "drake is expected to earn their place in the strict hierarchy, to obey "
-#| "their superiors and command their inferiors. Entry to the ruling elite is "
-#| "only possible through challenging and defeating a superior in single "
-#| "combat, which is the way the hierarchy within the elite itself is "
-#| "established. The use of deception of any kind towards any fellow drake "
-#| "is, without exception, seen as cowardly and unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
-#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
-#| "armor- and weapon-smithing, but neither know nor need other science and "
-#| "culture besides this. Nonetheless, the few implements they do fashion are "
-#| "almost unrivaled in quality, only matched by those produced in the finest "
-#| "Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
-#| "Death in battle is the most preferred way for a drake to leave this "
-#| "world. Unlike the elder members of other races, drakes naturally grow "
-#| "more aggressive and reckless towards the ends of their natural lives, "
-#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -7060,11 +7036,10 @@ msgstr ""
 "calidad, sólo igualadas por las producidas por las mejores fundiciones "
 "enanas.\n"
 "\n"
-"Los dracos eclosionan de huevos y habitualmente viven de 20 a 30 años. La "
-"muerte en batalla es el modo de dejar este mundo preferido por los dracos. "
-"Al contrario que los miembros más viejos de otras razas, los dracos se "
-"vuelven más agresivos y temerarios hacia el final de sus vidas, quizá para "
-"garantizarse un lugar en las heroicas leyendas de su pueblo.\n"
+"Los dracos eclosionan de huevos y habitualmente viven décadas, aunque se "
+"sabe de algunos que han sobrevivido más. Sin embargo, la muerte en batalla "
+"es el modo de dejar este mundo preferido por los dracos. Por eso, la mayoría "
+"de los dracos no llegan a ver el final de su vida natural.\n"
 "\n"
 "<header>text='Geografía'</header>\n"
 "Los dracos son originarios de un archipiélago de islas volcánicas llamado "
@@ -7484,18 +7459,6 @@ msgstr "Caballos"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
-#, fuzzy
-#| msgid ""
-#| "Domesticated horses come in many shapes and sizes, from mighty war "
-#| "chargers, to sturdy draught horses or agile stock horses.  While they are "
-#| "more fragile than many beasts, their speed and cunning allow feral horses "
-#| "to thrive in the wild, alongside their wild brethren.\n"
-#| "\n"
-#| "Horses have been an important part of many civilizations, so it is not "
-#| "surprising that there are many myths and stories centered around them.  "
-#| "Winged horses, man-horse hybrids, and ghost horses have made their way "
-#| "into written history, though few can honestly claim to have seen such "
-#| "things."
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -8568,6 +8531,8 @@ msgstr "Lo peor de"
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Las aldeas permiten que cualquier unidad estacionada en ellas sane o se cure "
+"del veneno."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -8579,13 +8544,19 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Este terreno permite que las unidades se curen del veneno o sanen un solo "
+"punto de vida."
 msgstr[1] ""
+"Este terreno permite a las unidades sanar $amount puntos de vida o ser "
+"curadas de veneno, como si estuvieran estacionadas en una aldea."
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Este terreno es un castillo: se pueden reclutar unidades en él desde un "
+"torreón conectado."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
@@ -8593,6 +8564,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Este terreno es un torreón: un líder puede reclutar desde este hexágono a "
+"hexágonos de castillo conectados."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -8600,6 +8573,9 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Este torreón especial permite que un líder reclute mientras está parado en "
+"él, pero no permite que un líder en un torreón conectado reclute en este "
+"hexágono."
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:601
