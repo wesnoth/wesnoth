@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:33-0600\n"
+"POT-Creation-Date: 2023-01-14 18:06-0600\n"
 "PO-Revision-Date: 2019-03-17 11:00+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -41,13 +41,28 @@ msgid "fearless"
 msgstr "bebaimis"
 
 #. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:248
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "maras"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/abilities.cfg:442
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Kai karys nužudomas maro ataka, tas karys pakeičiamas vaikščiojančiu lavonu "
+"toje pačioje pusėje kaip ir karys su maro ataka. Tai neveikia su nemirėliais "
+"arba kaime esančiais kariais."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -4585,17 +4600,6 @@ msgstr ""
 "Kai karys nužudomas maro ataka, tas karys pakeičiamas kariu toje pačioje "
 "pusėje kaip ir karys su maro ataka. Tai neveikia su nemirėliais arba kaime "
 "esančiais kariais."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Kai karys nužudomas maro ataka, tas karys pakeičiamas vaikščiojančiu lavonu "
-"toje pačioje pusėje kaip ir karys su maro ataka. Tai neveikia su nemirėliais "
-"arba kaime esančiais kariais."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:454

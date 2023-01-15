@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:33-0600\n"
+"POT-Creation-Date: 2023-01-14 18:06-0600\n"
 "PO-Revision-Date: 2022-10-30 11:00-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -68,13 +68,33 @@ msgstr "destemido"
 # File: data/core/macros/abilities.cfg, line: 586
 # File: data/core/macros/abilities.cfg, line: 597
 #. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:248
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "praga"
+
+#
+# File: data/core/macros/abilities.cfg, line: 598
+# File: data/core/macros/abilities.cfg, line: 598
+# File: data/core/macros/abilities.cfg, line: 598
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/abilities.cfg:442
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Quando uma unidade é morta por um ataque com a habilidade praga, a unidade "
+"morta é substituída por um Corpo Ambulante pertencente ao lado da unidade "
+"que desferiu o golpe final. Essa habilidade não funciona contra mortos-vivos "
+"ou contra unidades em aldeias."
 
 #
 # File: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg, line: 16
@@ -6764,22 +6784,6 @@ msgstr ""
 "morta é substituída por uma unidade pertencente ao lado da unidade que "
 "desferiu o golpe final. Essa habilidade não funciona contra mortos-vivos ou "
 "contra unidades em aldeias."
-
-#
-# File: data/core/macros/abilities.cfg, line: 598
-# File: data/core/macros/abilities.cfg, line: 598
-# File: data/core/macros/abilities.cfg, line: 598
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Quando uma unidade é morta por um ataque com a habilidade praga, a unidade "
-"morta é substituída por um Corpo Ambulante pertencente ao lado da unidade "
-"que desferiu o golpe final. Essa habilidade não funciona contra mortos-vivos "
-"ou contra unidades em aldeias."
 
 #
 # File: data/core/macros/abilities.cfg, line: 609

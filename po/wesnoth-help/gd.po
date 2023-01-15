@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:33-0600\n"
+"POT-Creation-Date: 2023-01-14 18:06-0600\n"
 "PO-Revision-Date: 2022-01-13 19:14+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -48,13 +48,28 @@ msgid "fearless"
 msgstr "neo-eagalach"
 
 #. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:248
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:98
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "plàigh"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/abilities.cfg:442
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Nuair a thèid aonad a mharbhadh le ionnsaigh plàighe, thèid corp coisiche a "
+"chur na àite a shabaideas às leth an nàmhad aig an robh an ionnsaigh "
+"plàighe. Chan obraich seo an aghaidh aonadan closach no ann am baile."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -4953,17 +4968,6 @@ msgstr ""
 "Nuair a thèid aonad a mharbhadh le ionnsaigh plàighe, thèid aonad a chur na "
 "àite a shabaideas às leth an nàmhad aig an robh an ionnsaigh plàighe. Chan "
 "obraich seo an aghaidh aonadan closach no ann am baile."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Nuair a thèid aonad a mharbhadh le ionnsaigh plàighe, thèid corp coisiche a "
-"chur na àite a shabaideas às leth an nàmhad aig an robh an ionnsaigh "
-"plàighe. Chan obraich seo an aghaidh aonadan closach no ann am baile."
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:454
