@@ -3,20 +3,21 @@
 #
 # Automatically generated, 2004.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2012.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 10:43 UTC\n"
-"PO-Revision-Date: 2012-01-16 18:39+0200\n"
-"Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
+"PO-Revision-Date: 2023-01-06 12:25+0200\n"
+"Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -25,10 +26,6 @@ msgstr "4p — Uusi maa"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
@@ -36,8 +33,9 @@ msgid ""
 "For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
 "Tässä neljän pelaajan selviytymiskentässä pystyt rakentamaan ja muokkaamaan "
-"maaperää. Käytä kartan oletusasetuksia. Suositeltu aloituskultapalamäärä: "
-"100."
+"maaperää.\n"
+"\n"
+"Kokeneille pelaajilla suositeltu aloituskultapalamäärä on: 75."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
@@ -49,7 +47,7 @@ msgid ""
 msgstr ""
 "Suuren sodan jälkipuinneissa ihmiskunnan rippeet pakenivat erääseen "
 "epämääräiseen syrjäiseen notkoon. Vaikka he tiesivät, etteivät he voisi "
-"piileskellä mahtavaalta armeijalta, joka oli murskannut heidän kotimaansa, "
+"piileskellä mahtavalta armeijalta, joka oli murskannut heidän kotimaansa, "
 "vastarinnan johtajat toivoivat ainoastaan saavansa tarpeeksi aikaa "
 "varustaakseen joukkonsa uudelleen."
 
@@ -58,10 +56,8 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:72
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:93
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Settlers"
-msgstr "Joukkue 1"
+msgstr "Uudisasukkaat"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -69,44 +65,38 @@ msgstr "Joukkue 1"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:172
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:205
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:238
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Enemies"
-msgstr "Joukkue 1"
+msgstr "Viholliset"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
 msgid "Mal Sevu"
-msgstr ""
+msgstr "Mal Sevu"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:181
 msgid "Gol Goroth"
-msgstr ""
+msgstr "Gol Goroth"
 
 #. [side]: type=Orcish Sovereign
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:214
 msgid "Greg"
-msgstr ""
+msgstr "Greg"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:247
 msgid "Mal Shiki"
-msgstr ""
+msgstr "Mal Shiki"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:275
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Prisoners"
-msgstr "Joukkue 1"
+msgstr "Vangit"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:299
-#, fuzzy
-#| msgid "teamname^Team 1"
 msgid "teamname^Monsters"
-msgstr "Joukkue 1"
+msgstr "Hirviöt"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:498
@@ -149,7 +139,7 @@ msgid ""
 "him?"
 msgstr ""
 "Näin jonkun takertuneen hämähäkin verkkoon! Ehkä meidän pitäisi pelastaa "
-"hänet."
+"hänet?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:725
@@ -364,19 +354,17 @@ msgstr "Apua"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:94
 msgid "A New Land — Help"
-msgstr "Uusi maa – Apua!"
+msgstr "Uusi maa – Apua"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
-#, fuzzy
-#| msgid "Select a topic."
 msgid "Select a topic:"
-msgstr "Valitse aihe."
+msgstr "Valitse aihe:"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
 msgid "Done"
-msgstr "Tehty"
+msgstr "Valmis"
 
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:52
@@ -419,7 +407,7 @@ msgid ""
 "<span color='green'>$player_name</span>\n"
 "Share knowledge of agriculture"
 msgstr ""
-"$player_name\n"
+"<span color='green'>$player_name</span>\n"
 "Jaa tietoa maanviljelyksestä"
 
 #. [set_variable]
@@ -545,49 +533,50 @@ msgstr ""
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
 msgid "In this scenario you build up an economy"
-msgstr ""
+msgstr "Tässä skenaariossa sinun täytyy rakentaa talous."
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
 msgid "Move any unit next to captives and they will join your side"
 msgstr ""
+"Siirrä mikä tahansa yksikkö vankien viereen, niin he liittyvät puolellesi."
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
 msgid "Right-click on a leader to read about the game mechanics"
 msgstr ""
+"Näpäytä hiiren oikealla painikkeella komentajaa lukeaksesi pelin "
+"mekaniikoista."
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
 msgid "Rules:"
-msgstr ""
+msgstr "Säännöt:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:21
 msgid "Goal:"
-msgstr ""
+msgstr "Tavoite:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:25
 msgid "Hint:"
-msgstr ""
+msgstr "Vihje:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:29
 msgid "Hints:"
-msgstr ""
+msgstr "Vihjeet"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:33
 msgid "Defeat all enemy leaders"
-msgstr ""
+msgstr "Kukista kaikki vihollisten johtajat"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
-#, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
-msgstr "Sinun on selviydyttävä vuoroon 25 asti."
+msgstr "Sinun on selviydyttävä vuoroon 25 asti"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45
