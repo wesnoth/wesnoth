@@ -1,20 +1,12 @@
-## Version 1.16.6+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.16.7
  ### Translations
    * Updated translations: Arabic, British English, Czech, Finnish, French, Italian, Japanese, Polish, Portuguese (Brazil), Turkish
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
    * Add disconnect check to alert users when they lose connection to the multiplayer server (issue #1336)
+   * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
+   * Fix a crash when an out-of-bounds side number is used in Lua’s `sync.evaluate_multiple` (PR #7222)
+   * Fixed special notes being duplicated when storing units (issue #7153).
 
 ## Version 1.16.6
  ### Translations
