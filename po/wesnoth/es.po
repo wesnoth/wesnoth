@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2021-09-24 14:09+0200\n"
 "Last-Translator: Pepe <donpepe1963@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
@@ -4428,6 +4428,34 @@ msgstr "Cancelar"
 msgid "No planned advancement"
 msgstr "Promoción sin planificar"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Unit List"
+msgid "Unit Test "
+msgstr "Lista de unidades"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Bomb"
+msgid "Bob"
+msgstr "Bomba"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 msgid "replay^Play"
@@ -5689,25 +5717,25 @@ msgstr ""
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Enviando el complemento <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Borrando el complemento <i>$addon_title</i> del servidor..."
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Descargando el complemento <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Gestor de complementos"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Enviando el complemento <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5715,7 +5743,7 @@ msgstr ""
 "El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
 "no válido y no se ha podido instalar."
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5723,11 +5751,11 @@ msgstr ""
 "El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
 "con letras mayúsculas conflictivas. Esto puede ocasionar algunos problemas."
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "El servidor devolvió un error:"
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5741,11 +5769,11 @@ msgstr[1] ""
 "El complemento seleccionado depende de los siguientes archivos, los cuales "
 "no están instalados o disponibles desde el servidor. ¿Desea continuar?"
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Dependencias de archivo rotas"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5756,11 +5784,11 @@ msgstr[0] "La siguiente dependencia podría no instalarse. ¿Desea continuar?"
 msgstr[1] ""
 "Las siguientes dependencias podrían no instalarse. ¿Desea continuar?"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "Algunas dependencias de la instalación han fallado"
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5768,19 +5796,19 @@ msgstr ""
 "El complemento '$addon|' ya está instalado y contiene información adicional "
 "que se perderá permanentemente si usted continua:"
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Fichero con información de la publicación (.pbl)"
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Información del sistema de control de versión (VCS)"
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "¿Desea continuar?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Confirmar"
@@ -10749,9 +10777,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "unit list^Traits"
 #~ msgstr "Rasgos"
-
-#~ msgid "Unit List"
-#~ msgstr "Lista de unidades"
 
 #~ msgid "Scroll To"
 #~ msgstr "Desplazar a"

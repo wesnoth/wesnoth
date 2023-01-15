@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2008-03-01 19:31+0200\n"
 "Last-Translator: Luther Thompson <luther@librem.one>\n"
 "Language-Team: \n"
@@ -4056,6 +4056,34 @@ msgstr "Nuligo"
 msgid "No planned advancement"
 msgstr "Avancigitaj"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Unit List"
+msgid "Unit Test "
+msgstr "Listo de milit-unuoj"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Brown"
+msgid "Bob"
+msgstr "Bruna"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 #, fuzzy
@@ -5207,46 +5235,46 @@ msgstr "Mi enŝutas kampanjon..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 #, fuzzy
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 #, fuzzy
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 #, fuzzy
 #| msgid "Add-on Installed"
 msgid "Add-ons Manager"
 msgstr "Aldonaĵo instalita"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Mi enŝutas kampanjon..."
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr ""
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr ""
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
 msgstr "Servilo anoncis erearon: \""
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5256,12 +5284,12 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 #, fuzzy
 msgid "Broken Dependencies"
 msgstr "Princino"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5271,31 +5299,31 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr ""
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
 msgstr ""
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr ""
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr ""
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 #, fuzzy
 #| msgid "Do you want to save your game?"
 msgid "Do you really wish to continue?"
 msgstr "Ĉu vi volas savi vian ludon?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Konfirmi"
@@ -9950,9 +9978,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Level^Lvl."
 #~ msgstr "Nivelo"
-
-#~ msgid "Unit List"
-#~ msgstr "Listo de milit-unuoj"
 
 #~ msgid "Scroll To"
 #~ msgstr "ontri"

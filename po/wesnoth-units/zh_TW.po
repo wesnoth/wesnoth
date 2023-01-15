@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
 "PO-Revision-Date: 2022-05-30 16:29+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -221,7 +221,7 @@ msgstr "鏈枷"
 #: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:43
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:59
 #: data/core/units/humans/Loyalist_Dragoon.cfg:35
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
@@ -284,7 +284,7 @@ msgstr "弓箭"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
-#: data/core/units/monsters/Elder_Falcon.cfg:35
+#: data/core/units/monsters/Elder_Falcon.cfg:41
 #: data/core/units/monsters/Falcon.cfg:84
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
@@ -474,11 +474,13 @@ msgstr "詛咒"
 #: data/core/units/goblins/Knight.cfg:34
 #: data/core/units/goblins/Pillager.cfg:32
 #: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
-#: data/core/units/monsters/Caribe.cfg:112
+#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Ant_Fire.cfg:69
+#: data/core/units/monsters/Ant_Firebane.cfg:70
+#: data/core/units/monsters/Ant_Firebomb.cfg:72
+#: data/core/units/monsters/Ant_Soldier.cfg:38
+#: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:112
 #: data/core/units/monsters/Caribe_Hunter.cfg:113
 #: data/core/units/monsters/Caribe_Nibbler.cfg:125
-#: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:42
@@ -502,6 +504,7 @@ msgstr "尖牙"
 #: data/core/units/monsters/Boar_Piglet.cfg:50
 #: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Dragonfly.cfg:30
+#: data/core/units/monsters/Dragonfly_Grand.cfg:31
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:61
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
@@ -646,8 +649,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/core/units/dunefolk/Explorer.cfg:34
-#: data/core/units/dunefolk/Rover.cfg:31
+#: data/core/units/dunefolk/Explorer.cfg:35
+#: data/core/units/dunefolk/Rover.cfg:32
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:33
 #: data/core/units/dwarves/Fighter.cfg:57
@@ -713,7 +716,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/humans/Horseman.cfg:23
 #: data/core/units/humans/Loyalist_Javelineer.cfg:30
-#: data/core/units/humans/Loyalist_Spearman.cfg:80
+#: data/core/units/humans/Loyalist_Spearman.cfg:85
 #: data/core/units/merfolk/Hoplite.cfg:35 data/core/units/merfolk/Hunter.cfg:24
 #: data/core/units/merfolk/Hunter.cfg:32
 #: data/core/units/merfolk/Javelineer.cfg:23
@@ -748,7 +751,7 @@ msgstr "矛"
 #: data/core/units/dwarves/Sentinel.cfg:47
 #: data/core/units/dwarves/Stalwart.cfg:42
 #: data/core/units/humans/Loyalist_Javelineer.cfg:41
-#: data/core/units/humans/Loyalist_Spearman.cfg:92
+#: data/core/units/humans/Loyalist_Spearman.cfg:97
 msgid "javelin"
 msgstr "標槍"
 
@@ -1663,9 +1666,9 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
-#: data/core/units/dunefolk/Explorer.cfg:43
+#: data/core/units/dunefolk/Explorer.cfg:44
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:40
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:41
 #: data/core/units/dunefolk/Sunderer.cfg:41
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
@@ -1679,7 +1682,7 @@ msgstr "沙丘探險者"
 
 # 最後那句是特別「休克攻擊」進行的補充解釋，原文沒有。
 #. [unit_type]: id=Dune Explorer, race=dunefolk
-#: data/core/units/dunefolk/Explorer.cfg:20
+#: data/core/units/dunefolk/Explorer.cfg:21
 msgid ""
 "A slow-moving caravan out in the open desert is a prime target for bandits "
 "or marauders. In order to protect themselves, the Dunefolk employ special "
@@ -2013,7 +2016,7 @@ msgid "Dune Rover"
 msgstr "沙丘遊蕩者"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
-#: data/core/units/dunefolk/Rover.cfg:20
+#: data/core/units/dunefolk/Rover.cfg:21
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -3574,7 +3577,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
-#: data/core/units/humans/Loyalist_General.cfg:38
+#: data/core/units/humans/Loyalist_General.cfg:44
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
 msgid "longsword"
@@ -3724,7 +3727,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
 #: data/core/units/humans/Loyalist_Dragoon.cfg:44
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
-#: data/core/units/humans/Loyalist_General.cfg:47
+#: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:36
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
@@ -3842,7 +3845,7 @@ msgid "General"
 msgstr "將軍"
 
 #. [unit_type]: id=General, race=human
-#: data/core/units/humans/Loyalist_General.cfg:24
+#: data/core/units/humans/Loyalist_General.cfg:30
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty. "
@@ -5289,6 +5292,79 @@ msgstr ""
 "巨蟻在幾乎任何環境中──從地下深處的洞穴到高山的山頂──都很常見。雖然通常沒有敵"
 "意，但牠們還是會近距離咬人。"
 
+#. [unit_type]: id=Fire Ant, race=monster
+#: data/core/units/monsters/Ant_Fire.cfg:11
+msgid "Fire Ant"
+msgstr "火蟻"
+
+#. [unit_type]: id=Fire Ant, race=monster
+#. [unit_type]: id=Firebane Ant, race=monster
+#: data/core/units/monsters/Ant_Fire.cfg:51
+#: data/core/units/monsters/Ant_Firebane.cfg:51
+msgid ""
+"Small but deadly in large numbers, fire ants possess fierce fangs and an "
+"unusual ability to generate fire. Though these creatures typically function "
+"as scavengers, a burrow of fire ants can become aggressive when provoked and "
+"have even been known to attack small groups of threatening troops."
+msgstr ""
+"火蟻的體積小，但是在數量龐大時是致命的，牠們具有凶殘的尖牙，以及產生火焰的特"
+"殊能力。儘管這些生物通常起著清理腐肉的作用，當一洞火蟻被激怒時，牠們可以變得"
+"具有侵略性，甚至被認為會去攻擊有威脅性的小群部隊。"
+
+#. [attack]: type=fire
+#: data/core/units/monsters/Ant_Fire.cfg:78
+#: data/core/units/monsters/Ant_Firebane.cfg:79
+#: data/core/units/monsters/Ant_Firebomb.cfg:81
+msgid "fire"
+msgstr "火焰"
+
+#. [unit_type]: id=Firebane Ant, race=monster
+#: data/core/units/monsters/Ant_Firebane.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Firebane Ant"
+msgstr "火蟻"
+
+#. [unit_type]: id=Firebomb Ant, race=monster
+#: data/core/units/monsters/Ant_Firebomb.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Firebomb Ant"
+msgstr "火蟻"
+
+#. [unit_type]: id=Firebomb Ant, race=monster
+#: data/core/units/monsters/Ant_Firebomb.cfg:51
+msgid ""
+"More developed and specialized Fire Ants can take different forms. The "
+"firebomb ants can produce and carry large quantities of their flammable "
+"spray in a swollen abdomen, which can make for a fearsome attack, but it "
+"also makes them weak to physical attacks and they cannot sustain the fire as "
+"their health fails."
+msgstr ""
+
+#. [unit_type]: id=Soldier Ant, race=monster
+#: data/core/units/monsters/Ant_Soldier.cfg:4
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Soldier Ant"
+msgstr "火蟻"
+
+#. [unit_type]: id=Soldier Ant, race=monster
+#: data/core/units/monsters/Ant_Soldier.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Giant Ants are common in almost any environment, from caverns deep under "
+#| "the earth to the tops of tall mountains. Though normally not hostile, "
+#| "they can bite at close range."
+msgid ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. Most common are the nondescript workers "
+"and scouts, but in times of conflict, a more dangerous Soldier caste enters "
+"the fray."
+msgstr ""
+"巨蟻在幾乎任何環境中──從地下深處的洞穴到高山的山頂──都很常見。雖然通常沒有敵"
+"意，但牠們還是會近距離咬人。"
+
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
@@ -5477,11 +5553,30 @@ msgstr "龍騎兵"
 #: data/core/units/monsters/Dragonfly.cfg:27
 msgid ""
 "The giant dragonflies seen in some of the swamps, rivers, and lakes around "
-"Wesnoth enjoy a longer life cycle than the smaller, more common types.  The "
-"adult form can live indefiniately, slowly growing to a final moult.  They "
-"are generally territorial, but can cooperate in small groups to confront "
-"common foes or large prey."
+"Wesnoth enjoy a longer life cycle than the smaller, more common types. The "
+"adult form can live indefinitely, slowly growing to a final moult. They are "
+"generally territorial, but can cooperate in small groups to confront common "
+"foes or large prey."
 msgstr ""
+
+#. [unit_type]: id=Grand Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly_Grand.cfg:5
+#, fuzzy
+#| msgid "Dragoon"
+msgid "Grand Dragonfly"
+msgstr "龍騎兵"
+
+#. [unit_type]: id=Grand Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly_Grand.cfg:28
+msgid "Dragonflies that survive long enough grow into a final, grander form."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Dragonfly_Grand.cfg:43
+#: data/core/units/monsters/Giant_Scorpion.cfg:47
+#: data/core/units/monsters/Giant_Scorpling.cfg:32
+msgid "sting"
+msgstr "螫"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
@@ -5492,8 +5587,8 @@ msgstr ""
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
 msgid ""
 "Young dragonflies live an aquatic life, mostly preying upon small fish or "
-"other insect nymphs.  They can crawl over rocks and mud, but they need to "
-"stay submerged to breath, which explains why the giant dragonflies are "
+"other insect nymphs. They can crawl over rocks and mud, but they need to "
+"stay submerged to breathe, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
 
@@ -5515,9 +5610,9 @@ msgstr ""
 "們傷痕累累的身體就是牠們不斷戰鬥的證明。牠們比起更年輕的同族還要更壯且更快，"
 "牠們被謠傳說攻擊的力量足以摘下敵人的頭。"
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/monsters/Elder_Falcon.cfg:27
+#. [attack]: type=pierce
+#: data/core/units/monsters/Elder_Falcon.cfg:50
 #: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:29
 msgid "beak"
 msgstr "喙"
@@ -5537,28 +5632,6 @@ msgid ""
 msgstr ""
 "因被視為貴族的象微，獵鷹是珍貴的財產，一般用於運動。同樣的技術也被用於撕裂戰"
 "場上的敵人，而他們的極快的速度對於偵察地區是非常有用的。"
-
-#. [unit_type]: id=Fire Ant, race=monster
-#: data/core/units/monsters/Fire_Ant.cfg:11
-msgid "Fire Ant"
-msgstr "火蟻"
-
-#. [unit_type]: id=Fire Ant, race=monster
-#: data/core/units/monsters/Fire_Ant.cfg:46
-msgid ""
-"Small but deadly in large numbers, fire ants possess fierce fangs and an "
-"unusual ability to generate fire. Though these creatures typically function "
-"as scavengers, a burrow of fire ants can become aggressive when provoked and "
-"have even been known to attack small groups of threatening troops."
-msgstr ""
-"火蟻的體積小，但是在數量龐大時是致命的，牠們具有凶殘的尖牙，以及產生火焰的特"
-"殊能力。儘管這些生物通常起著清理腐肉的作用，當一洞火蟻被激怒時，牠們可以變得"
-"具有侵略性，甚至被認為會去攻擊有威脅性的小群部隊。"
-
-#. [attack]: type=fire
-#: data/core/units/monsters/Fire_Ant.cfg:73
-msgid "fire"
-msgstr "火焰"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -5708,12 +5781,6 @@ msgid ""
 "man needs little explanation."
 msgstr "一個普通的蠍子就夠危險了，而長得跟人一樣大的蠍子的致命性就更不用說了。"
 
-#. [attack]: type=pierce
-#: data/core/units/monsters/Giant_Scorpion.cfg:47
-#: data/core/units/monsters/Giant_Scorpling.cfg:32
-msgid "sting"
-msgstr "螫"
-
 #. [attack]: type=impact
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
@@ -5728,13 +5795,17 @@ msgid "scuttler"
 msgstr "疾馳者"
 
 #. [variation]
+#. [unit_type]: id=Sand Scuttler
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
+#: data/core/units/monsters/Sand_Scuttler.cfg:8
 msgid "Sand Scuttler"
 msgstr "沙之疾馳者"
 
 # 不是很懂「an odd mix of mundane creature and elemental beast」是什麼意思。
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:118
+#. [unit_type]: id=Sand Scuttler
+#: data/core/units/monsters/Giant_Scorpion.cfg:119
+#: data/core/units/monsters/Sand_Scuttler.cfg:13
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "

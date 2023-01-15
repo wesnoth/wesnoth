@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2023-01-07 11:04-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -5626,6 +5626,38 @@ msgid "No planned advancement"
 msgstr "Nenhum avanço planejado"
 
 #
+# File: src/dialogs.cpp, line: 428
+# File: src/dialogs.cpp, line: 428
+# File: src/dialogs.cpp, line: 428
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Unit List"
+msgid "Unit Test "
+msgstr "Lista de Unidades"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Bomb"
+msgid "Bob"
+msgstr "Bomba"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
+#
 # File: src/savegame.cpp, line: 1063
 # File: src/savegame.cpp, line: 1063
 # File: src/savegame.cpp, line: 1063
@@ -7727,7 +7759,7 @@ msgstr "Enviando add-on <i>$addon_title</i>..."
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
 # File: src/addon/client.cpp, line: 174
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Removendo add-on <i>$addon_title</i> do servidor..."
 
@@ -7735,7 +7767,7 @@ msgstr "Removendo add-on <i>$addon_title</i> do servidor..."
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
 # File: src/addon/client.cpp, line: 198
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Baixando add-on <i>$addon_title</i>..."
 
@@ -7746,7 +7778,7 @@ msgstr "Baixando add-on <i>$addon_title</i>..."
 # File: src/addon/manager_ui.cpp, line: 682
 # File: src/addon/client.cpp, line: 300
 # File: src/addon/manager_ui.cpp, line: 682
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Gerenciador de Add-ons"
 
@@ -7754,7 +7786,7 @@ msgstr "Gerenciador de Add-ons"
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
 # File: src/addon/client.cpp, line: 140
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
@@ -7764,7 +7796,7 @@ msgstr "Enviando add-on <i>$addon_title</i>..."
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -7776,7 +7808,7 @@ msgstr ""
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
 # File: src/addon/client.cpp, line: 212
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -7800,7 +7832,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 328
 # File: src/addon/manager_ui.cpp, line: 333
 # File: src/addon/manager_ui.cpp, line: 815
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
@@ -7808,7 +7840,7 @@ msgstr "O servidor respondeu com um erro:"
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
 # File: src/addon/manager_ui.cpp, line: 148
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -7826,7 +7858,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
 # File: src/addon/manager_ui.cpp, line: 157
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Dependências Quebradas"
 
@@ -7834,7 +7866,7 @@ msgstr "Dependências Quebradas"
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
 # File: src/addon/manager_ui.cpp, line: 252
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -7849,7 +7881,7 @@ msgstr[1] ""
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
 # File: src/addon/manager_ui.cpp, line: 256
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "A instalação das dependências falharam"
 
@@ -7857,7 +7889,7 @@ msgstr "A instalação das dependências falharam"
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
 # File: src/addon/manager_ui.cpp, line: 279
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -7869,7 +7901,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
 # File: src/addon/manager_ui.cpp, line: 283
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Arquivo de informação da publicação (.pbl)"
 
@@ -7877,7 +7909,7 @@ msgstr "Arquivo de informação da publicação (.pbl)"
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
 # File: src/addon/manager_ui.cpp, line: 287
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Informação de versão de controle do sistema (VCS)"
 
@@ -7885,7 +7917,7 @@ msgstr "Informação de versão de controle do sistema (VCS)"
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
 # File: src/addon/manager_ui.cpp, line: 291
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "Você realmente deseja continuar?"
 
@@ -7902,7 +7934,7 @@ msgstr "Você realmente deseja continuar?"
 # File: src/addon/manager_ui.cpp, line: 304
 # File: src/addon/manager_ui.cpp, line: 970
 # File: src/multiplayer.cpp, line: 272
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Confirmar"
@@ -17387,13 +17419,6 @@ msgstr "Opções do Quadro-Branco"
 # File: src/dialogs.cpp, line: 328
 #~ msgid "unit list^Traits"
 #~ msgstr "Características"
-
-#
-# File: src/dialogs.cpp, line: 428
-# File: src/dialogs.cpp, line: 428
-# File: src/dialogs.cpp, line: 428
-#~ msgid "Unit List"
-#~ msgstr "Lista de Unidades"
 
 #
 # File: src/dialogs.cpp, line: 434
