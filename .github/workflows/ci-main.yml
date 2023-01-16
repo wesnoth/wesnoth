@@ -221,7 +221,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: W003
+          key: win-cache-1_16-004
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
@@ -273,7 +273,7 @@ jobs:
           path: |
             D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: W003
+          key: win-cache-1_16-004
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
