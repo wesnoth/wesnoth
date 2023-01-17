@@ -7,19 +7,20 @@
 # Iris Morelle <shadowm@wesnoth.org>,, 2008, 2009, 2012.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2022-08-20 19:37-0500\n"
-"PO-Revision-Date: 2021-06-25 13:18+0200\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"POT-Creation-Date: 2023-01-14 18:06-0600\n"
+"PO-Revision-Date: 2023-01-15 12:18+0100\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -31,7 +32,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -1179,17 +1180,14 @@ msgstr "muestra el número de versión y finaliza."
 
 #. type: TP
 #: doc/man/wesnoth.6:419
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:422
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
-msgstr "muestra el número de versión y finaliza."
+msgstr "muestra el número de versión y nada más, y finaliza."
 
 #. type: TP
 #: doc/man/wesnoth.6:422
@@ -1494,9 +1492,6 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:535 doc/man/wesnothd.6:277
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -2023,16 +2018,13 @@ msgstr "Etiquetas globales:"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:181
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> Una etiqueta para especificar un servidor al que se "
-"redirigirán ciertas versiones de clientes."
+"redirigirán ciertas versiones de clientes. No es usado si "
+"B<versions_accepted> no está establecido."
 
 #. type: TP
 #: doc/man/wesnothd.6:182
@@ -2125,14 +2117,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:226
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
@@ -2141,13 +2125,13 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
-"B<[user_handler]> Configura el servicio de usuarios. Las opciones "
-"disponibles varían según cual servicio ha sido activado con la opción "
-"B<user_handler>. Si no hay ninguna sección B<[user_handler]> en la "
-"configuración, el servidor funcionará sin ningún servicio de registro de "
-"usuarios. Todas las tablas adicionales que se necesitan para que funcione "
-"B<forum_user_handler> pueden encontrarse en table_definitions.sql en el "
-"repositorio de fuentes de Wesnoth."
+"B<[user_handler]> Configura el servicio de usuarios. Si no hay ninguna "
+"sección B<[user_handler]> en la configuración, el servidor funcionará sin "
+"ningún servicio de registro de usuarios. Todas las tablas adicionales que se "
+"necesitan para que funcione B<forum_user_handler> pueden encontrarse en "
+"table_definitions.sql en el repositorio de fuentes de Wesnoth. Requiere "
+"soporte mysql activado. Para cmake es B<ENABLE_MYSQL> y por scons es "
+"B<forum_user_handler.>"
 
 #. type: TP
 #: doc/man/wesnothd.6:227
