@@ -537,8 +537,13 @@ int icompare(const std::string& s1, const std::string& s2)
 	std::scoped_lock lock(get_mutex());
 
 	try {
+#if BOOST_VERSION < 108100
 		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collator_base::secondary, s1, s2);
+#else
+		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
+			bl::collate_level::secondary, s1, s2);
+#endif
 	} catch(const std::bad_cast&) {
 		static bool bad_cast_once = false;
 
