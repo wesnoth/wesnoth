@@ -101,12 +101,18 @@ void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& 
 	const point offset = display::scaled_to_zoom(point{19, 13});
 
 	// Full bar dimensions.
-	const rect bar_rect = display::scaled_to_zoom({
+	rect bar_rect = display::scaled_to_zoom({
 		xpos + offset.x,
 		ypos + offset.y,
 		bar_width,
 		bar_height
 	});
+
+	// Bar dimensions should not overflow 80% of the scaled hex dimensions.
+	// The 80% comes from an approximation of the length of a segment drawn
+	// inside a regular hexagon that runs parallel to its outer left side.
+	bar_rect.w = std::clamp<int>(bar_rect.w, 0, display::hex_size() * 0.80 - offset.x);
+	bar_rect.h = std::clamp<int>(bar_rect.h, 0, display::hex_size() * 0.80 - offset.y);
 
 	filled = std::clamp<double>(filled, 0.0, 1.0);
 	const int unfilled = static_cast<std::size_t>(bar_rect.h * (1.0 - filled));
