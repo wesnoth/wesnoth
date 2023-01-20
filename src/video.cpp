@@ -828,4 +828,33 @@ void update_buffers(bool autoupdate)
 	}
 }
 
+std::vector<std::pair<std::string, std::string>> renderer_report()
+{
+	std::vector<std::pair<std::string, std::string>> res;
+	SDL_Renderer* rnd;
+	SDL_RendererInfo ri;
+
+	if(window && (rnd = *window) && SDL_GetRendererInfo(rnd, &ri) == 0) {
+		std::string renderer_name = ri.name ? ri.name : "<unknown>";
+
+		if(ri.flags & SDL_RENDERER_SOFTWARE) {
+			renderer_name += " (sw)";
+		}
+
+		if(ri.flags & SDL_RENDERER_ACCELERATED) {
+			renderer_name += " (hw)";
+		}
+
+		std::string renderer_max = std::to_string(ri.max_texture_width) +
+								   'x' +
+								   std::to_string(ri.max_texture_height);
+
+		res.emplace_back("Renderer", renderer_name);
+		res.emplace_back("Maximum texture size", renderer_max);
+		res.emplace_back("VSync", ri.flags & SDL_RENDERER_PRESENTVSYNC ? "on" : "off");
+	}
+
+	return res;
+}
+
 } // namespace video
