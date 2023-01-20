@@ -564,6 +564,12 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
 	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
 
+	const auto& renderer_report = video::renderer_report();
+
+	for(const auto& info : renderer_report) {
+		fmt.insert(info.first, info.second);
+	}
+
 	return fmt;
 }
 

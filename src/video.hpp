@@ -319,6 +319,21 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(quit)
 };
 
+
+/***************/
+/* Diagnostics */
+/***************/
+
+/**
+ * Provides diagnostic information about the current renderer for the @a build_info API.
+ */
+std::vector<std::pair<std::string, std::string>> renderer_report();
+
+
+/**************************/
+/* Implementation details */
+/**************************/
+
 /* This should only be used by draw.cpp for drawing, and texture.cpp for
  * texture creation. Try not to use it for anything else. */
 SDL_Renderer* get_renderer();
