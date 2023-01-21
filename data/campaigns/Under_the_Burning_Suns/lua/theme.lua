@@ -7,11 +7,12 @@ function wesnoth.interface.game_display.unit_status()
 	local u = wesnoth.interface.get_displayed_unit()
 	if not u then return {} end
 	local s = old_unit_status()
+	local dehydration_loss = wml.variables["dehydration_loss"]
 
 	if u.status.dehydrated then
 		table.insert(s, { "element", {
 			image = "misc/dehydration-status.png",
-			tooltip = _ "dehydrated: This unit is dehydrated. It will lose 4 HP and have its damage reduced by 1 each turn during the day unless prevented by healers or cured by water at an oasis.\n\nUnits cannot be killed or deal no damage as a result of dehydration."
+			tooltip = stringx.vformat(_"dehydrated: This unit is dehydrated. It will lose $dehydration HP and have its damage reduced by 1 each turn during the day unless prevented by healers or cured by water at an oasis.\n\nUnits cannot be killed or deal no damage as a result of dehydration.", {dehydration = dehydration_loss})
 		} })
 	end
 
