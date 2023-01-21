@@ -18,6 +18,7 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
+#include "display.hpp"
 #include "display_context.hpp"
 #include "font/text_formatting.hpp"
 #include "game_board.hpp"
@@ -132,10 +133,41 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 
 namespace {
 
+const unit_map& get_unit_map()
+{
+	// Used if we're in the game, including during the construction of the display_context
+	if(resources::gameboard) {
+		return resources::gameboard->units();
+	}
+
+	// If we get here, we're in the scenario editor
+	assert(display::get_singleton());
+	return display::get_singleton()->get_units();
+}
+
+const team& get_team(std::size_t side)
+{
+	// Used if we're in the game, including during the construction of the display_context
+	if(resources::gameboard) {
+		return resources::gameboard->get_team(side);
+	}
+
+	// If we get here, we're in the scenario editor
+	assert(display::get_singleton());
+	return display::get_singleton()->get_disp_context().get_team(side);
+}
+
+/**
+ * Common code for the question "some other unit has an ability, can that ability affect this
+ * unit" - it's not the full answer to that question, just a part of it.
+ *
+ * Although this is called while checking which units' "hides" abilities are active, that's only
+ * for the question "is this unit next to an ally that has a 'camoflages adjacent allies' ability";
+ * not the question "is this unit next to an enemy, therefore visible".
+ */
 bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 {
-	assert(resources::gameboard);
-	const team& side_team = resources::gameboard->get_team(side);
+	const team& side_team = get_team(side);
 
 	if(side == other_side)
 		return cfg["affect_allies"].to_bool(true);
@@ -157,8 +189,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		}
 	}
 
-	assert(resources::gameboard);
-	const unit_map& units = resources::gameboard->units();
+	const unit_map& units = get_unit_map();
 
 	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -198,8 +229,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		}
 	}
 
-	assert(resources::gameboard);
-	const unit_map& units = resources::gameboard->units();
+	const unit_map& units = get_unit_map();
 
 	const auto adjacent = get_adjacent_tiles(loc);
 	for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -358,8 +388,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	const auto adjacent = get_adjacent_tiles(loc);
 
-	assert(resources::gameboard);
-	const unit_map& units = resources::gameboard->units();
+	const unit_map& units = get_unit_map();
 
 	for (const config &i : cfg.child_range("filter_adjacent"))
 	{
@@ -517,8 +546,7 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
 			try {
-				assert(resources::gameboard);
-				const unit_map& units = resources::gameboard->units();
+				const unit_map& units = get_unit_map();
 
 				auto u_itor = units.find(ability_info.teacher_loc);
 
@@ -967,8 +995,7 @@ void attack_type::weapon_specials_impl_adj(
 	const std::string& affect_adjacents,
 	bool leader_bool)
 {
-	assert(resources::gameboard);
-	const unit_map& units = resources::gameboard->units();
+	const unit_map& units = get_unit_map();
 	if(self){
 		const auto adjacent = get_adjacent_tiles(self_loc);
 		for(unsigned i = 0; i < adjacent.size(); ++i) {
@@ -1405,8 +1432,7 @@ bool attack_type::check_adj_abilities_impl(const_attack_ptr self_attack, const_a
  */
 bool attack_type::has_weapon_ability(const std::string& special, bool special_id, bool special_tags) const
 {
-	assert(resources::gameboard);
-	const unit_map& units = resources::gameboard->units();
+	const unit_map& units = get_unit_map();
 	if(self_){
 		std::vector<special_match> special_tag_matches_self;
 		std::vector<special_match> special_id_matches_self;
@@ -1561,8 +1587,7 @@ bool attack_type::special_active_impl(
 	}
 
 	// Get the units involved.
-	assert(resources::gameboard);
-	const unit_map& units = resources::gameboard->units();
+	const unit_map& units = get_unit_map();
 
 	unit_const_ptr self = self_attack ? self_attack->self_ : other_attack->other_;
 	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;
