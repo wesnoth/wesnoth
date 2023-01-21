@@ -329,6 +329,11 @@ private:
  */
 std::vector<std::pair<std::string, std::string>> renderer_report();
 
+/**
+ * Retrieves the current game screen DPI for the @a build_info API.
+ */
+std::pair<float, float> get_dpi();
+
 
 /**************************/
 /* Implementation details */
