@@ -550,6 +550,10 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		placeholder = "Running in non-interactive mode.";
 	}
 
+	if(!video::has_window()) {
+		placeholder = "Video not initialized yet.";
+	}
+
 	if(!placeholder.empty()) {
 		fmt.set_placeholder(placeholder);
 		return fmt;

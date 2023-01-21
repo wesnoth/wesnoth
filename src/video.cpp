@@ -397,6 +397,11 @@ void init_window()
 	update_framebuffer();
 }
 
+bool has_window()
+{
+	return bool(window);
+}
+
 point output_size()
 {
 	if (testing_) {
