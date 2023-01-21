@@ -12,6 +12,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Added basic achievements functionality.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.12
