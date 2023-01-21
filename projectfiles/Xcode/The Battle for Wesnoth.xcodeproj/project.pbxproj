@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
+		000000000000000000000005 /* achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* achievements.cpp */; };
+		000000000000000000000006 /* achievements_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* achievements_dialog.cpp */; };
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
+		000000000000000000000007 /* achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* achievements.cpp */; };
+		000000000000000000000008 /* achievements_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* achievements_dialog.cpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		4291489DA38012477DA3BA7C /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
@@ -1498,6 +1502,10 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
 		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
+		000000000000000000000001 /* achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = achievements.cpp; sourceTree = "<group>"; };
+		000000000000000000000002 /* achievements.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements.hpp; sourceTree = "<group>"; };
+		000000000000000000000003 /* achievements_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = achievements_dialog.cpp; sourceTree = "<group>"; };
+		000000000000000000000004 /* achievements_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements_dialog.hpp; sourceTree = "<group>"; };
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		460D897824DC7830000B1ABC /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cpp; path = ../../src/server/wesnothd/game.cpp; sourceTree = SOURCE_ROOT; };
 		460D897924DC7830000B1ABC /* ban.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ban.hpp; path = ../../src/server/wesnothd/ban.hpp; sourceTree = SOURCE_ROOT; };
@@ -3095,6 +3103,8 @@
 			children = (
 				B5599AC60EC62181008DD061 /* about.cpp */,
 				B5599ABC0EC62181008DD061 /* about.hpp */,
+				000000000000000000000001 /* achievements.cpp */,
+				000000000000000000000002 /* achievements.hpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				B52EE9A81213640400CFBDAB /* addon */,
 				B597EBCA0FC082AB00CE81F5 /* ai */,
@@ -3637,6 +3647,8 @@
 				46F92C842174F6A300602C1C /* file_dialog.hpp */,
 				1234567890ABCDEF12345680 /* file_progress.cpp */,
 				1234567890ABCDEF12345681 /* file_progress.hpp */,
+				000000000000000000000003 /* achievements_dialog.cpp */,
+				000000000000000000000004 /* achievements_dialog.hpp */,
 				46F92C6E2174F6A300602C1C /* folder_create.cpp */,
 				46F92C8A2174F6A300602C1C /* folder_create.hpp */,
 				46F92CBB2174F6A300602C1C /* formula_debugger.cpp */,
@@ -5514,6 +5526,8 @@
 				B52EE8D7121359A600CFBDAB /* persist_manager.cpp in Sources */,
 				46F92DBB2174F6A300602C1C /* file_dialog.cpp in Sources */,
 				1234567890ABCDEF12345678 /* file_progress.cpp in Sources */,
+				000000000000000000000005 /* achievements.cpp in Sources */,
+				000000000000000000000006 /* achievements_dialog.cpp in Sources */,
 				46F92F0F2174FEC000602C1C /* standard_colors.cpp in Sources */,
 				46F92E852174F6A400602C1C /* debug.cpp in Sources */,
 				B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */,
@@ -6137,6 +6151,8 @@
 				91E3570A1CACC9B200774252 /* playcampaign.cpp in Sources */,
 				46F92DBC2174F6A300602C1C /* file_dialog.cpp in Sources */,
 				1234567890ABCDEF12345679 /* file_progress.cpp in Sources */,
+				000000000000000000000007 /* achievements.cpp in Sources */,
+				000000000000000000000008 /* achievements_dialog.cpp in Sources */,
 				91E3570B1CACC9B200774252 /* singleplayer.cpp in Sources */,
 				4649B88B20288EEF00827CFB /* surface.cpp in Sources */,
 				46F92DB02174F6A300602C1C /* campaign_selection.cpp in Sources */,

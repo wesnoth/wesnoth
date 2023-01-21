@@ -43,6 +43,7 @@
 #include "pathfind/pathfind.hpp"
 #include "persist_var.hpp"
 #include "play_controller.hpp"
+#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "random.hpp"
@@ -239,16 +240,16 @@ wml_action::wml_action(const std::string & tag, handler function)
  *
  * Generated code looks like this:
  * \code
- * void wml_func_foo(...);
+ * static void wml_func_foo(...);
  * static wml_action wml_action_foo("foo", &wml_func_foo);
- * void wml_func_foo(...)
+ * static void wml_func_foo(...)
  * {
  *    // code for foo
  * }
  * \endcode
  */
 #define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
-	static void wml_func_##pname(const queued_event &pei, const vconfig &pcfg); \
+	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg); \
 	static wml_action wml_action_##pname(#pname, &wml_func_##pname);  \
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 

@@ -67,6 +67,7 @@
 #include "pathfind/pathfind.hpp"        // for full_cost_map, plain_route, etc
 #include "pathfind/teleport.hpp"        // for get_teleport_locations, etc
 #include "play_controller.hpp"          // for play_controller
+#include "preferences/general.hpp"
 #include "recall_list_manager.hpp"      // for recall_list_manager
 #include "replay.hpp"                   // for get_user_choice, etc
 #include "reports.hpp"                  // for register_generator, etc
@@ -3065,6 +3066,102 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 }
 
 /**
+ * Sets an achievement as being completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - id.
+ */
+int game_lua_kernel::intf_set_achievement(lua_State *L)
+{
+	const char *content_for = luaL_checkstring(L, 1);
+	const char *id = luaL_checkstring(L, 2);
+
+	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(achievement& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// found the achievement - mark it as completed
+					preferences::set_achievement(content_for, id);
+					achieve.achieved_ = true;
+					return 0;
+				}
+			}
+			// achievement not found - existing achievement group but non-existing achievement id
+			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
+			return 0;
+		}
+	}
+
+	// achievement group not found
+	ERR_LUA << "Achievement group " << content_for << " not found";
+	return 0;
+}
+
+/**
+ * Returns whether an achievement has been completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - id.
+ * - Ret 1: boolean.
+ */
+int game_lua_kernel::intf_has_achievement(lua_State *L)
+{
+	const char *content_for = luaL_checkstring(L, 1);
+	const char *id = luaL_checkstring(L, 2);
+
+	if(resources::controller->is_networked_mp() && synced_context::is_synced()) {
+		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
+		lua_pushboolean(L, false);
+	} else {
+		lua_pushboolean(L, preferences::achievement(content_for, id));
+	}
+
+	return 1;
+}
+
+/**
+ * Returns information on a single achievement, or no data if the achievement is not found.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - id.
+ * - Ret 1: WML table returned by the function.
+ */
+int game_lua_kernel::intf_get_achievement(lua_State *L)
+{
+	const char *content_for = luaL_checkstring(L, 1);
+	const char *id = luaL_checkstring(L, 2);
+
+	config cfg;
+	for(const auto& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(const auto& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// found the achievement - return it as a config
+					cfg["id"] = achieve.id_;
+					cfg["name"] = achieve.name_;
+					cfg["name_completed"] = achieve.name_completed_;
+					cfg["description"] = achieve.description_;
+					cfg["description_completed"] = achieve.description_completed_;
+					cfg["icon"] = achieve.icon_;
+					cfg["icon_completed"] = achieve.icon_completed_;
+					cfg["hidden"] = achieve.hidden_;
+					cfg["hidden_name"] = achieve.hidden_name_;
+					cfg["hidden_hint"] = achieve.hidden_hint_;
+					cfg["achieved"] = achieve.achieved_;
+					luaW_pushconfig(L, cfg);
+					return 1;
+				}
+			}
+			// return empty config - existing achievement group but non-existing achievement id
+			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
+			luaW_pushconfig(L, cfg);
+			return 1;
+		}
+	}
+	// return empty config - non-existing achievement group
+	ERR_LUA << "Achievement group " << content_for << " not found";
+	luaW_pushconfig(L, cfg);
+	return 1;
+}
+
+/**
  * Scrolls to given tile.
  * - Arg 1: location.
  * - Arg 2: boolean preventing scroll to fog.
@@ -4883,6 +4980,20 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_newtable(L);
 	luaL_setfuncs(L, intf_callbacks, 0);
 	lua_setfield(L, -2, "interface");
+	lua_pop(L, 1);
+
+	// Create the achievements module
+	cmd_log_ << "Adding achievements module...\n";
+	static luaL_Reg const achievement_callbacks[] {
+		{ "set", &dispatch<&game_lua_kernel::intf_set_achievement> },
+		{ "has", &dispatch<&game_lua_kernel::intf_has_achievement> },
+		{ "get", &dispatch<&game_lua_kernel::intf_get_achievement> },
+		{ nullptr, nullptr }
+	};
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	luaL_setfuncs(L, achievement_callbacks, 0);
+	lua_setfield(L, -2, "achievements");
 	lua_pop(L, 1);
 
 	// Create the audio module

@@ -336,6 +336,7 @@ bool play_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_c
 	case hotkey::HOTKEY_SCROLL_DOWN:
 	case hotkey::HOTKEY_SCROLL_LEFT:
 	case hotkey::HOTKEY_SCROLL_RIGHT:
+	case hotkey::HOTKEY_ACHIEVEMENTS:
 		return true;
 
 	case hotkey::HOTKEY_SURRENDER: {

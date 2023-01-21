@@ -22,6 +22,7 @@
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "game_events/manager.hpp"
@@ -37,6 +38,7 @@
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/manager.hpp"
+#include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -131,9 +133,12 @@ using namespace gui2::dialogs;
 
 struct test_gui2_fixture {
 	test_gui2_fixture()
+	: config_manager()
+	, dummy_args({"wesnoth", "--noaddons"})
 	{
 		/** The main config, which contains the entire WML tree. */
 		game_config_view game_config_view_ = game_config_view::wrap(main_config);
+		config_manager.reset(new game_config_manager(dummy_args));
 
 		game_config::config_cache& cache = game_config::config_cache::instance();
 
@@ -152,6 +157,8 @@ struct test_gui2_fixture {
 	}
 	static config main_config;
 	static const std::string widgets_file;
+	std::unique_ptr<game_config_manager> config_manager;
+	std::vector<std::string> dummy_args;
 };
 config test_gui2_fixture::main_config;
 const std::string test_gui2_fixture::widgets_file = "widgets_tested.log";
@@ -588,6 +595,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_right)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_double)
 {
 	test<wml_message_double>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
+{
+	test<achievements_dialog>();
 }
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
