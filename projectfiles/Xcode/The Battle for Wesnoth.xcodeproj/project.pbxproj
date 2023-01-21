@@ -1502,8 +1502,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
 		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
-		000000000000000000000001 /* achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = achievements.cpp; path = ../../src/achievements.cpp; sourceTree = SOURCE_ROOT; };
-		000000000000000000000002 /* achievements.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = achievements.hpp; path = ../../src/achievements.hpp; sourceTree = SOURCE_ROOT;  };
+		000000000000000000000001 /* achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = achievements.cpp; sourceTree = "<group>"; };
+		000000000000000000000002 /* achievements.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements.hpp; sourceTree = "<group>"; };
 		000000000000000000000003 /* achievements_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = achievements_dialog.cpp; sourceTree = "<group>"; };
 		000000000000000000000004 /* achievements_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements_dialog.hpp; sourceTree = "<group>"; };
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -3103,6 +3103,8 @@
 			children = (
 				B5599AC60EC62181008DD061 /* about.cpp */,
 				B5599ABC0EC62181008DD061 /* about.hpp */,
+				000000000000000000000001 /* achievements.cpp */,
+				000000000000000000000002 /* achievements.hpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				B52EE9A81213640400CFBDAB /* addon */,
 				B597EBCA0FC082AB00CE81F5 /* ai */,
@@ -3645,8 +3647,6 @@
 				46F92C842174F6A300602C1C /* file_dialog.hpp */,
 				1234567890ABCDEF12345680 /* file_progress.cpp */,
 				1234567890ABCDEF12345681 /* file_progress.hpp */,
-				000000000000000000000001 /* achievements.cpp */,
-				000000000000000000000002 /* achievements.hpp */,
 				000000000000000000000003 /* achievements_dialog.cpp */,
 				000000000000000000000004 /* achievements_dialog.hpp */,
 				46F92C6E2174F6A300602C1C /* folder_create.cpp */,
