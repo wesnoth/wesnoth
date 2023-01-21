@@ -986,12 +986,19 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
 		auto_dir = filesystem::normalize_path(exe_dir + "/..");
 	}
-	// In Windows debug builds, the EXE is placed away from the game data dir
-	// (in projectfiles\VCx\Debug), but the working directory is set to the
-	// game data dir. Thus, check if the working dir is the game data dir.
+	// Allow using the current working directory as the game data dir
 	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
 		auto_dir = filesystem::get_cwd();
 	}
+#ifdef _WIN32
+	// In Windows builds made using Visual Studio and its CMake
+	// integration, the EXE is placed a few levels below the game data
+	// dir (e.g. .\out\build\x64-Debug).
+	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
+	}
+#endif
 
 	return auto_dir;
 }
