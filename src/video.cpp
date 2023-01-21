@@ -828,6 +828,26 @@ void update_buffers(bool autoupdate)
 	}
 }
 
+std::pair<float, float> get_dpi()
+{
+	float hdpi = 0.0f, vdpi = 0.0f;
+	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
+#ifdef TARGET_OS_OSX
+		// SDL 2.0.12 changes SDL_GetDisplayDPI. Function now returns DPI
+		// multiplied by screen's scale factor. This part of code reverts
+		// this multiplication.
+		//
+		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
+		if(sdl::get_version() >= version_info{2, 0, 12}) {
+			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
+			hdpi /= scale_factor;
+			vdpi /= scale_factor;
+		}
+#endif
+	}
+	return { hdpi, vdpi };
+}
+
 std::vector<std::pair<std::string, std::string>> renderer_report()
 {
 	std::vector<std::pair<std::string, std::string>> res;
