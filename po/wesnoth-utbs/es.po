@@ -9,20 +9,21 @@
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
 # Javier C.H. <javier_los_herejes@hotmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-02 00:33 UTC\n"
-"PO-Revision-Date: 2021-09-22 11:29+0200\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"PO-Revision-Date: 2023-01-19 12:49+0100\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -796,13 +797,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1123
-#, fuzzy
-#| msgid ""
-#| "I have heard of your kind, foul necromancer. You travel the sands, daring "
-#| "to bring back and enslave those who have passed on. But we will prove to "
-#| "you that death is not all-powerful. You shall not desecrate the bodies of "
-#| "my kith and kin! You shall learn to fear the wrath of Eloh and the "
-#| "Quenoth elves!"
 msgid ""
 "I have heard of your kind, foul necromancer. You travel the sands, daring to "
 "bring back and enslave those who have passed on. But we will prove to you "
@@ -1395,20 +1389,15 @@ msgstr "Anillo del viajero"
 
 #. [object]: id=Travelring
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:514
-#, fuzzy
-#| msgid ""
-#| "One unit wearing this ring is immune to any damage caused during the day "
-#| "by the heat of the desert."
 msgid "The unit wearing this ring will not become dehydrated by the desert."
 msgstr ""
-"Una unidad que lleve este anillo es inmune a cualquier daño causado durante "
-"el día por el calor del desierto."
+"La unidad que lleve este anillo no se deshidratará por el calor del desierto."
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:548
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:707
 msgid "No, I think someone else should wear it."
-msgstr "No, creo que algún otro debería llevarlo."
+msgstr "No, creo que algún otro debería ponérselo."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:573
@@ -1426,10 +1415,6 @@ msgstr "Ogro cazador"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:617
-#, fuzzy
-#| msgid ""
-#| "Shh... Ogres ahead. Behind that dune there, we have to pass them if we "
-#| "want to reach the next oasis."
 msgid ""
 "Shh... ogres ahead. Behind that dune there, we have to pass them if we want "
 "to reach the next oasis."
@@ -1936,13 +1921,9 @@ msgstr ""
 "Ahora que tenemos un momento de paz he de preguntaros, Elyssa, ¿qué hacíais "
 "realmente en medio del desierto? Es un sitio muy desolado para viajar."
 
+# Me tomo una licencia traduciendo "came" por "las enterrasen". "de que las arenas vinieran" suena poco descriptivo en español
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1653
-#, fuzzy
-#| msgid ""
-#| "I’ve been searching for secrets from the past. Did you know that this "
-#| "entire land used to be a huge empire? Apparently this used to all be "
-#| "great plains and farmland, before the sands came."
 msgid ""
 "I’ve been searching for secrets from the past. Did you know that this entire "
 "land used to be a huge empire? Apparently all this used to be great plains "
@@ -1950,7 +1931,7 @@ msgid ""
 msgstr ""
 "Estaba buscando secretos del pasado. ¿Sabíais que toda esta tierra solía ser "
 "un enorme imperio? Aparentemente estas eran grandes llanuras y tierras de "
-"cultivo, antes de que las arenas vinieran."
+"cultivo, antes de que las arenas las enterrasen."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1658
@@ -2239,16 +2220,12 @@ msgstr ""
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:416
-#, fuzzy
-#| msgid ""
-#| "Like I haven’t killed enough undead recently. Why can’t these guys just "
-#| "stay dead?"
 msgid ""
 "Like I haven’t killed enough undead recently. Why can’t these creeps just "
 "stay dead?"
 msgstr ""
-"Como si no hubiera matado suficientes no muertos recientemente. ¿Por qué "
-"estos tipos no pueden permanecer simplemente muertos?"
+"Como si no hubiera matado suficientes no muertos ya. ¿Por qué estos tipos no "
+"pueden permanecer simplemente muertos?"
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:420
@@ -2339,10 +2316,6 @@ msgstr ""
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:660
-#, fuzzy
-#| msgid ""
-#| "I had dreams this night Kaleh, full of gloom and darkness, my journey "
-#| "will end here one way or another."
 msgid ""
 "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
 "will end here one way or another."
@@ -3154,13 +3127,6 @@ msgstr "¿Bajo ellas? ¿Pero cómo?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:374
-#, fuzzy
-#| msgid ""
-#| "Orcs and Goblins have been living here for hundreds of years and their "
-#| "network of tunnels and caves is more extensive than you might think. Who "
-#| "knows how far they go underground? We are ill-prepared for trekking over "
-#| "those frozen peaks. As much as I dislike those pitch-black caves, if we "
-#| "want to cross these mountains we may have no choice."
 msgid ""
 "Orcs and goblins have been living here for hundreds of years and their "
 "network of tunnels and caves is more extensive than you might think. Who "
@@ -3168,11 +3134,11 @@ msgid ""
 "those frozen peaks. As much as I dislike those pitch-black caves, if we want "
 "to cross these mountains we may have no choice."
 msgstr ""
-"Los orcos y los goblins han estado viviendo aquí durante cientos de años y "
-"su red de túneles y cuevas es más extensa de lo que podrías imaginar. ¿Quién "
+"Los orcos y goblins han estado viviendo aquí durante cientos de años y su "
+"red de túneles y cuevas es más extensa de lo que podrías imaginar. ¿Quién "
 "sabe a dónde llegan bajo tierra? No estamos preparados en absoluto para "
 "escalar entre esos picos helados. Por mucho que me disgusten esas cuevas "
-"negras como boca de lobo, si queremos cruzar esas montañas no tenemos "
+"negras como boca de lobo, si queremos cruzar estas montañas no tenemos "
 "elección."
 
 #. [message]: speaker=Elyssa
@@ -4085,10 +4051,6 @@ msgstr "Olvidad eso, ¿quiénes sois?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1036
-#, fuzzy
-#| msgid ""
-#| "I am Kaleh, and we are the Quenoth elves. What in Eloh’s name is going on "
-#| "here?"
 msgid ""
 "I am Kaleh, and we are the Quenoth Elves. What in Eloh’s name is going on "
 "here?"
@@ -4547,10 +4509,6 @@ msgstr "Zurg"
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2413
-#, fuzzy
-#| msgid ""
-#| "Congratulations! Some of trolls didn’t think you strong enough to beat "
-#| "Dwarves."
 msgid ""
 "Congratulations! Some of trolls didn’t think you strong enough to beat "
 "dwarves."
@@ -4707,18 +4665,6 @@ msgstr "¿Sí?"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2540
-#, fuzzy
-#| msgid ""
-#| "Right before the trolls overran this area of the mines, our scouts had "
-#| "found an old tunnel south of here that leads almost straight to the main "
-#| "lair of this tribe of trolls. We believe that protected in the lair is "
-#| "one of their main leaders who is directing the battle. We were going to "
-#| "try to sneak in and lead a surprise attack, but frankly we didn’t have "
-#| "enough dwarves to spare. If by using this passage you can sneak past "
-#| "their front lines and kill him, then it will throw the trolls into "
-#| "disarray and relieve the pressure on our front lines. If you do this our "
-#| "King has promised to help you return your people to the sunlit lands. "
-#| "When you’re ready I’ll show you the way. It’s not far."
 msgid ""
 "Right before the trolls overran this area of the mines, our scouts had found "
 "an old tunnel south of here that leads almost straight to the main lair of "
@@ -4739,7 +4685,7 @@ msgstr ""
 "sorpresa, pero francamente no teníamos suficientes enanos de reserva. Si "
 "podéis colaros a través de sus líneas frontales usando este pasadizo y lo "
 "matáis, eso hará caer a los troles en el caos y aliviará la presión sobre "
-"nuestro frente. Si lo hacéis nuestro rey ha prometido ayudaros a retornar "
+"nuestro frente. Si lo hacéis, nuestro rey ha prometido ayudaros a retornar "
 "con vuestra gente a las tierras iluminadas. Cuando estéis listos os mostraré "
 "el camino. No está lejos."
 
@@ -4963,11 +4909,6 @@ msgstr "¡Encended la mecha!"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:552
-#, fuzzy
-#| msgid ""
-#| "My work here is done. I must report back to my King. I have many more "
-#| "things to do before the day is done, but I will return once you finish "
-#| "your mission. Fight well!"
 msgid ""
 "My work here is done. I must report back to my king. I have many more things "
 "to do before the day is done, but I will return once you finish your "
@@ -4975,7 +4916,7 @@ msgid ""
 msgstr ""
 "Mi trabajo está hecho. Debo dar cuenta a mi rey. Tengo muchas cosas que "
 "hacer antes de que acabe el día, pero estaré aquí cuando termines tu misión. "
-"¡Que luchéis bien!"
+"¡Luchad bien!"
 
 #. [message]: speaker=Troll Guard
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:583
@@ -5293,16 +5234,6 @@ msgstr "Gran trol está muerto. ¡Corred por vuestras vidas!"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1508
-#, fuzzy
-#| msgid ""
-#| "News travels fast. The chaos you have sown has caused the foul trolls to "
-#| "start retreating. And now the architect of our suffering is dead. This "
-#| "war is far from over, but with your help we won this battle. You have our "
-#| "gratitude. Our King has instructed us to bring you to him; he wants to "
-#| "talk with you and reward you. He waits in our most hallowed hall, a place "
-#| "that no elf has seen for generations upon generations. It is a great "
-#| "honor, but you have done great deeds this day. Elves killing a troll "
-#| "chieftain! We will tell this story for years."
 msgid ""
 "News travels fast. The chaos you have sown has caused the foul trolls to "
 "start retreating. And now the architect of our suffering is dead. This war "
@@ -5349,19 +5280,13 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1523
-#, fuzzy
-#| msgid ""
-#| "Shhhh, you two. Yes, of course, we would be honored to come and meet your "
-#| "King. But first, we left many of our people back up near the entrance to "
-#| "the great cave where you first met us and I fear that even now those "
-#| "caves aren’t safe. Can you help us escort my people to safety?"
 msgid ""
 "Shhhh, you two. Yes, of course, we would be honored to come and meet your "
 "king. But first, we left many of our people back up near the entrance to the "
 "great cave where you first met us and I fear that even now those caves "
 "aren’t safe. Can you help us escort my people to safety?"
 msgstr ""
-"Shhhh, vosotras dos. Sí, por supuesto, será todo un honor para nosotros ir y "
+"Shhhh, vosotros dos. Sí, por supuesto, será todo un honor para nosotros ir y "
 "reunirnos con vuestro rey. Pero antes de nada, dejamos a muchos de los "
 "nuestros resguardados cerca de la entrada a la gran caverna donde nos "
 "encontrasteis al principio, y me temo que incluso ahora esas cuevas no son "
@@ -5798,40 +5723,30 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:739
-#, fuzzy
-#| msgid "No, it’s an elf!"
 msgid "No, it’s a... human?"
-msgstr "No, ¡es un elfo!"
+msgstr "No, ¿es un... humano?"
 
 #. [message]: speaker=Dwarf Sergeant
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:749
-#, fuzzy
-#| msgid "What...?! Right... First task, boys, kill the intruder!"
 msgid "What is a human doing here? Come on, boys, kill the intruder!"
-msgstr "¿Qué? Bueno... Primera tarea, muchachos, ¡matad al intruso!"
+msgstr "¿Qué hace un humano aquí? ¡Vamos, muchachos, maten al intruso!"
 
 #. [message]
 #. "it" is referring to the dust devil
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:757
-#, fuzzy
-#| msgid "No, I haven’t. What is it?"
 msgid "No, it’s a... what is that?"
-msgstr "No, nunca. ¿De qué se trata?"
+msgstr "No, es un... ¿qué es eso?"
 
 #. [message]: speaker=Dwarf Sergeant
 #. 'earth’s guts' references the underground. What is being talked about is the dust devil.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:768
-#, fuzzy
-#| msgid "What in Uria’s name is that?"
 msgid "What in the earth’s guts is that? Kill it!"
-msgstr "En nombre de Uria, ¿qué es esto?"
+msgstr "¿Qué diablos es eso? ¡Mátalo!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:774
-#, fuzzy
-#| msgid "But sir, behind you...!"
 msgid "No, look behind you!"
-msgstr "Pero señor, ¡detrás suyo...!"
+msgstr "¡No, mira detrás de ti!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:806
@@ -5982,7 +5897,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1466
 msgid "What are those?!"
-msgstr "¿Qué son esas cosas?"
+msgstr "¡¿Qué son esas cosas?!"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1474
@@ -6074,11 +5989,11 @@ msgid ""
 "the great cave where you first met us and I fear that even now those caves "
 "aren’t safe. Can you help us escort my people to safety?"
 msgstr ""
-"Shhhh, vosotros dos. Sí, por supuesto, estaremos encantados de ir y "
-"reunirnos con el Gran Líder. Pero primero, hemos dejado mucha gente atrás, "
-"cerca de la entrada a la gran cueva donde nos encontrasteis por primera vez, "
-"y me temo que incluso ahora esas cuevas no sean seguras. ¿Podríais ayudarnos "
-"a escoltar a nuestra gente a un lugar seguro?"
+"Shh, vosotros dos. Sí, por supuesto, estaremos encantados de ir y reunirnos "
+"con el Gran Líder. Pero primero, hemos dejado mucha gente atrás, cerca de la "
+"entrada a la gran cueva donde nos encontrasteis por primera vez, y me temo "
+"que incluso ahora esas cuevas no sean seguras. ¿Podríais ayudarnos a "
+"escoltar a nuestra gente a un lugar seguro?"
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1666
@@ -6506,16 +6421,6 @@ msgstr "¡¿Qué?!"
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:477
-#, fuzzy
-#| msgid ""
-#| "I have learned a lot about the dwarves in my time here, and yet there’s "
-#| "so much more to learn. Have you seen their forges? They really know how "
-#| "to work fire and use it in amazing ways. They have some interesting ideas "
-#| "about how they might improve their smithing with my magical fire. And "
-#| "have you seen their records? They have kept records of their dealings "
-#| "that go back generations upon generations. They even know of the dwarven "
-#| "clan who helped craft the sceptre of fire. Imagine if I could find the "
-#| "dwarves who helped build such an artifact!"
 msgid ""
 "I have learned a lot about the dwarves in my time here, and yet there’s so "
 "much more to learn. Have you seen their forges? They really know how to work "
@@ -6682,7 +6587,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:643
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:629
 msgid "No, I think someone else should wield it."
-msgstr "No, creo que algún otro debería llevarla."
+msgstr "No, creo que algún otro debería empuñarla."
 
 #. [scenario]: id=07b_Talking_with_Trolls
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:5
@@ -6873,12 +6778,6 @@ msgstr ""
 
 #. [message]: speaker=Nog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:401
-#, fuzzy
-#| msgid ""
-#| "You did trolls big service. Nog like to wander in tunnels, and chief say "
-#| "that he knows the upper tunnels the best. Nog want to help elves so even "
-#| "though he not want to leave battle, he agrees to show elves way back to "
-#| "lighted lands."
 msgid ""
 "You did trolls big service. Nog like to wander in tunnels, and Chief say "
 "that he knows the upper tunnels the best. Nog want to help elves so even "
@@ -7560,12 +7459,6 @@ msgstr "Guardián de la puerta"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1438
-#, fuzzy
-#| msgid ""
-#| "This cave seems pretty empty, except for those two glowing runes in the "
-#| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. $unittest."
-#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7574,17 +7467,11 @@ msgid ""
 msgstr ""
 "Esta cueva parece bastante vacía, excepto por esas dos brillantes runas en "
 "el centro. Este fuerte debe de haber estado alguna vez muy activo, porque "
-"incontables pies han dejado huellas en muchas direcciones. $unittest.name , "
-"¿por qué camino debemos ir?"
+"incontables pies han dejado huellas en muchas direcciones. Grog , ¿por qué "
+"camino debemos ir?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1444
-#, fuzzy
-#| msgid ""
-#| "This cave seems pretty empty, except for those two glowing runes in the "
-#| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. $unittest."
-#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7593,17 +7480,11 @@ msgid ""
 msgstr ""
 "Esta cueva parece bastante vacía, excepto por esas dos brillantes runas en "
 "el centro. Este fuerte debe de haber estado alguna vez muy activo, porque "
-"incontables pies han dejado huellas en muchas direcciones. $unittest.name , "
-"¿por qué camino debemos ir?"
+"incontables pies han dejado huellas en muchas direcciones. Nog , ¿por qué "
+"camino debemos ir?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1450
-#, fuzzy
-#| msgid ""
-#| "This cave seems pretty empty, except for those two glowing runes in the "
-#| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. $unittest."
-#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7612,17 +7493,11 @@ msgid ""
 msgstr ""
 "Esta cueva parece bastante vacía, excepto por esas dos brillantes runas en "
 "el centro. Este fuerte debe de haber estado alguna vez muy activo, porque "
-"incontables pies han dejado huellas en muchas direcciones. $unittest.name , "
-"¿por qué camino debemos ir?"
+"incontables pies han dejado huellas en muchas direcciones. Rogrimir , ¿por "
+"qué camino debemos ir?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1456
-#, fuzzy
-#| msgid ""
-#| "This cave seems pretty empty, except for those two glowing runes in the "
-#| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. $unittest."
-#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7631,8 +7506,8 @@ msgid ""
 msgstr ""
 "Esta cueva parece bastante vacía, excepto por esas dos brillantes runas en "
 "el centro. Este fuerte debe de haber estado alguna vez muy activo, porque "
-"incontables pies han dejado huellas en muchas direcciones. $unittest.name , "
-"¿por qué camino debemos ir?"
+"incontables pies han dejado huellas en muchas direcciones. Jarl, ¿por qué "
+"camino debemos ir?"
 
 #. [message]: speaker=$ally_name
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1462
@@ -8285,11 +8160,9 @@ msgstr "¡Corred, pero no escaparéis de la muerte!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2466
-#, fuzzy
-#| msgid "In Eloh’s name, not you again. Must I fight you a third time?"
 msgid "In Eloh’s name, not you again. Must I fight you a third time?"
 msgstr ""
-"En nombre de Eloh, otra vez tú no. ¿Tenemos que luchar contigo por tercera "
+"En nombre de Eloh, no otra vez tú. ¿Tenemos que luchar contigo por tercera "
 "vez?"
 
 #. [message]: speaker=Cloaked Figure
@@ -8305,13 +8178,9 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2477
-#, fuzzy
-#| msgid ""
-#| "Even you shall not stop me. You shall taste the might of the Quenoth "
-#| "elves!"
 msgid ""
 "Even you shall not stop me. You shall taste the might of the Quenoth Elves!"
-msgstr "Ni tú me detendrás. ¡Probarás la fuerza de los elfos de Quenoth!"
+msgstr "Ni tú me detendrás. ¡Podrás probar la fuerza de los elfos de Quenoth!"
 
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2483
@@ -8991,10 +8860,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3366
-#, fuzzy
-#| msgid "$unit.name|, be quiet, I’ll explain it all later."
 msgid "$talking_unit.name, be quiet, I’ll explain it all later."
-msgstr "$unit.name|, calla, lo explicaré todo más tarde."
+msgstr "$talking_unit.name, cállate, te lo explicaré todo más tarde."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3383
@@ -9844,16 +9711,12 @@ msgstr "Jezhar"
 
 #. [message]: speaker=Dummy Unit7
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4543
-#, fuzzy
-#| msgid ""
-#| "Eastern scouts, reporting back! If you like sand and hot dust, there's "
-#| "plenty more out there! No water, or signs of others, we had to turn back."
 msgid ""
 "Eastern scouts, reporting back! If you like sand and hot dust, there’s "
 "plenty more out there! No water, or signs of others, we had to turn back."
 msgstr ""
 "¡Exploradores del este, informando! Si te gusta la arena y el polvo "
-"caliente, ¡hay mucho más por ahí! Sin agua, ni rastros de otros, tuvimos que "
+"caliente, ¡hay mucho más por allí! Sin agua, ni rastro de otros, tuvimos que "
 "darnos la vuelta."
 
 #. [message]: speaker=Kaleh
@@ -10032,9 +9895,6 @@ msgstr "Gracias, Nym. No soy muy bueno peleando en tierra seca."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4720
-#, fuzzy
-#| msgid ""
-#| "With you back, Nym, the only scouts yet to return are Tanstafaal's group."
 msgid ""
 "With you back, Nym, the only scouts yet to return are Tanstafaal’s group."
 msgstr ""
@@ -10278,10 +10138,6 @@ msgstr ""
 
 #. [message]: id=scout1
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:482
-#, fuzzy
-#| msgid ""
-#| "Ha, stupid creature. But we’re in luck, the council was looking for the "
-#| "last of these spies."
 msgid ""
 "Ha, stupid creature. But we’re in luck, the Council was looking for the last "
 "of these spies."
@@ -10417,10 +10273,6 @@ msgstr ""
 
 #. [message]: speaker=Darius
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:673
-#, fuzzy
-#| msgid ""
-#| "Curse them! The elves have freed the merfolk. We will be have our "
-#| "vengeance. Keep fighting, and execute plan C!"
 msgid ""
 "Curse them! The elves have freed the merfolk. We will have our vengeance. "
 "Keep fighting, and execute plan C!"
@@ -10529,7 +10381,8 @@ msgstr "Urruga"
 msgid ""
 "Free at last! Thanks be to the Sea God. But wait a minute, you’re elves?!"
 msgstr ""
-"Libres al fin. Loado sea el Dios del Mar. Pero espera un minuto, ¿sois elfos?"
+"Libres al fin. Loado sea el Dios del Mar. Pero espera un minuto, ¡¿sois "
+"elfos?!"
 
 #. [message]: speaker=Urruga
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:823
@@ -12168,20 +12021,6 @@ msgstr "Sí, sabemos acerca de esa época."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:268
-#, fuzzy
-#| msgid ""
-#| "This will go much faster if you don’t interrupt me. Now, as I was saying, "
-#| "the Empire of Wesnoth was very learned in the magical arts and had vast "
-#| "repositories of knowledge. Back then there was only one sun in the sky, "
-#| "the sun you call Sela. But the king decreed that he would raise a second "
-#| "sun into the heavens, to lengthen their days and shorten the darkness. "
-#| "All the mages, sorcerers and wise men came together and cast a mountain "
-#| "into the sky and made it glow as bright as the sun. They sent this second "
-#| "sun, the one you call Naia, hurtling through the sky so that only a few "
-#| "hours of darkness remained each night. Though some had called the attempt "
-#| "foolish, it was a resounding success and stood as a tribute to the power "
-#| "and might of the humans. The golden age glowed brighter than ever and the "
-#| "many believed that they had dispelled evil and darkness forever."
 msgid ""
 "This will go much faster if you don’t interrupt me. Now, as I was saying, "
 "the Empire of Wesnoth was very learned in the magical arts and had vast "
@@ -12240,19 +12079,13 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:278
-#, fuzzy
-#| msgid ""
-#| "The king and his family were all killed, and soon petty warlords tore "
-#| "apart the empire as all the known lands fell into chaos. Elves and "
-#| "Dwarves were drawn into the conflicts, Orcs and Trolls spread forth from "
-#| "the dark places, and chaos and darkness swallowed the lands."
 msgid ""
 "The king and his family were all killed, and soon petty warlords tore apart "
 "the empire as all the known lands fell into chaos. Elves and dwarves were "
 "drawn into the conflicts, orcs and trolls spread forth from the dark places, "
 "and chaos and darkness swallowed the lands."
 msgstr ""
-"El rey y toda su familia murieron, y pronto mezquinos señores de la guerra "
+"El rey y toda su familia murieron, y pronto pequeños señores de la guerra "
 "despedazaron el imperio y todas las tierras conocidas sucumbieron en el "
 "caos. Elfos y enanos fueron envueltos en los conflictos, troles y orcos "
 "resurgieron de sus lugares oscuros, y el caos y la oscuridad se tragó al "
@@ -13846,7 +13679,7 @@ msgstr "Bueno, ahora sólo nos queda esperar..."
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1353
 msgid "You aren’t actually going to let him face her alone?!"
-msgstr "¿No irás a permitir que se enfrente a ella en solitario?"
+msgstr "¡¿No irás a permitir que se enfrente a ella en solitario?!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1359
@@ -14206,7 +14039,7 @@ msgstr "Yechnagoth"
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:862
 msgid "What is that thing?!"
-msgstr "¿Qué es esa cosa?"
+msgstr "¡¿Qué es esa cosa?!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:868
@@ -15365,23 +15198,18 @@ msgstr ""
 #. [unit_type]: id=Dawarf, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:4
 msgid "Dawarf"
-msgstr "Dawarf"
+msgstr "Danano"
 
 #. [unit_type]: id=Dawarf, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Don’t ask where the Dawarf came from. You really don’t want to know. It "
-#| "is a secret well guarded by the great lore-masters of Wesnoth. And it’s "
-#| "isn’t pretty. Hint: it involves lots of sherbet."
 msgid ""
 "Don’t ask where the Dawarf came from. You really don’t want to know. It is a "
 "secret well guarded by the great lore-masters of Wesnoth. And it isn’t "
 "pretty. Hint: it involves lots of sherbet."
 msgstr ""
-"No me preguntes de dónde vinieron los dawarf. Realmente no lo quieres saber. "
-"Es un secreto bien guardado de los grandes maestros del saber de Wesnoth. Y "
-"no es agradable. Pista: requiere mucho sorbete."
+"No me preguntes de dónde vinieron los dananos. Realmente no lo quieres "
+"saber. Es un secreto bien guardado de los grandes maestros del saber de "
+"Wesnoth. Y no es agradable. Pista: implica gran cantidad de sorbete."
 
 #. [unit_type]: id=Dust Devil, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:15
@@ -15504,12 +15332,6 @@ msgstr "Cazador naga"
 
 #. [unit_type]: id=Naga Hunter, race=naga
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Naga Hunters are Naga who are skilled at hunting with a bow. Since the "
-#| "naga are naturally resistant to poison, they have no qualms about hunting "
-#| "with poisoned arrows. These two foot long shafts, tipped with a potent "
-#| "poison, have been known to slay many kinds of prey."
 msgid ""
 "Naga Hunters are naga who are skilled at hunting with a bow. Since the naga "
 "are naturally resistant to poison, they have no qualms about hunting with "
@@ -15718,16 +15540,6 @@ msgstr "Luchador Quenoth"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, Elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15949,16 +15761,6 @@ msgstr "Chamana Quenoth"
 
 #. [unit_type]: id=Quenoth Shaman, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Like the elves of old, many Quenoth elves seek to study the art of "
-#| "medicine and healing rather than hone their abilities in direct battle. "
-#| "Shamans are highly knowledgeable about the sparse plant-life scattered "
-#| "across the deserts and even possess some ability to bolster crop growth, "
-#| "an invaluable skill in a land with few resources. The capacity to foster "
-#| "flora in such an inhospitable environment is a sign of hope as well, a "
-#| "chance that nature might one day rise from its sandy grave and bloom "
-#| "again."
 msgid ""
 "Like the elves of old, many Quenoth Elves seek to study the art of medicine "
 "and healing rather than hone their abilities in direct battle. Shamans are "
@@ -15970,7 +15772,7 @@ msgid ""
 msgstr ""
 "Como los elfos de la antigüedad, muchos quenoth prefieren el estudio del "
 "arte de la medicina y de la sanación antes que pulir sus habilidades en la "
-"batalla. Las chamanes son grandes conocedoras de las escasas plantas "
+"batalla. Las chamanas son grandes conocedoras de las escasas plantas "
 "dispersas a lo ancho del desierto e incluso poseen cierta destreza para "
 "ayudar al crecimiento de los cultivos, una habilidad muy valiosa en una "
 "tierra con escasos recursos. La capacidad de cultivar plantas en un entorno "
@@ -16076,13 +15878,6 @@ msgstr "Tauro"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Taurochs are huge, hardened beasts of the desert, considered untamable by "
-#| "most surviving races. However, the elves’ affinity with nature has "
-#| "allowed them to form an unlikely bond with these unruly animals. While "
-#| "Taurochs can easily carry or pull heavy loads, their thick hides and "
-#| "unwavering resolution also make them formidable mounts in battle."
 msgid ""
 "Taurochs are huge, hardened beasts of the desert, considered untamable by "
 "most surviving races. However, the elves’ affinity with nature has allowed "
@@ -16092,10 +15887,11 @@ msgid ""
 msgstr ""
 "Los tauros son grandes y curtidas bestias del desierto, que la mayoría de "
 "las razas supervivientes no consideran domesticables. Sin embargo, la "
-"afinidad con la naturaleza de los elfos les ha permitido formar un vínculo "
-"impredecible con estos impetuosos animales. Mientras que los tauros pueden "
-"levantar y transportar grandes pesos, sus gruesas pieles e inquebrantable "
-"voluntad también hace de ellos formidables monturas en la batalla."
+"afinidad con la naturaleza de los elfos les ha permitido formar un "
+"inesperado vínculo con estos impetuosos animales. Mientras que los tauros "
+"pueden levantar y transportar grandes pesos, sus gruesas pieles e "
+"inquebrantable voluntad también hace de ellos formidables monturas en la "
+"batalla."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:22
@@ -16133,33 +15929,6 @@ msgstr "Protector Tauro"
 
 #. [unit_type]: id=Tauroch Protector, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Protector.cfg:38
-#, fuzzy
-#| msgid ""
-#| "From the journal of Syniel, the Sand Skipper:\n"
-#| "\n"
-#| "The orcs ambushed me near the oasis at twilight. I had to flee into the "
-#| "desert, but even there, the wolves were nearly fast enough to keep up "
-#| "with me. I ran and ran for hours until I could barely feel my legs and "
-#| "still, they hounded me under the bright moonlight. I thought that I was "
-#| "dead for sure, but as Eloh would have it, I came across a young Tauroch "
-#| "that had wandered away from her pack. She must have sensed my trouble, "
-#| "for she came to me swiftly and fought beside me all through the long "
-#| "night; beyond exhaustion, we somehow managed to drive off dozens of orcs "
-#| "and wolves by ourselves. By dawn, we were alone, but wounded and weary to "
-#| "our bones with nothing but sand in sight. I used what little remained of "
-#| "my supplies to tend to the Tauroch’s wounds, then I succumbed to fatigue "
-#| "and I remember little after that.\n"
-#| "\n"
-#| "-----------------------\n"
-#| "\n"
-#| "I woke up today in the village, tired, but alive. My friends told me that "
-#| "the Tauroch had carried me through the desert for many hours at no little "
-#| "cost to herself, for she was in worse condition than I by the time we had "
-#| "arrived. I can only be grateful that I managed to survive that dreadful "
-#| "night, for it is only by Eloh’s grace that I happened upon such a loyal "
-#| "companion. She is my savior, my watchful guardian, a blessing from the "
-#| "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
-#| "tongue. I am sure we will have many more adventures together."
 msgid ""
 "From the journal of Syniel, the Sand Skipper:\n"
 "\n"
@@ -16194,7 +15963,7 @@ msgstr ""
 "rápidos como para alcanzarme. Corrí y corrí durante horas hasta que apenas "
 "sentía mis piernas y aún así, me seguían acechando bajo la brillante luz de "
 "la luna. Pensé que ya podía darme por muerto, pero como si fuera cosa de "
-"Eloh, me crucé con una joven Tauro que se había separado de su manada. Debió "
+"Eloh, me crucé con una joven tauro que se había separado de su manada. Debió "
 "de sentir mi angustia, puesto que vino hacia mi raudamente y luchó a mi lado "
 "durante toda la noche; más allá del agotamiento, nos las arreglamos para "
 "deshacernos de docenas de orcos y de lobos. En el amanecer, estábamos solos, "
@@ -16220,15 +15989,6 @@ msgstr "Jinete Tauro"
 
 #. [unit_type]: id=Tauroch Rider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Rider.cfg:28
-#, fuzzy
-#| msgid ""
-#| "Taurochs are huge, hardened beasts of the desert, considered untamable by "
-#| "most surviving races. However, the elves’ affinity with nature has "
-#| "allowed them to form an unlikely bond with these unruly animals. While "
-#| "Taurochs can easily carry or pull heavy loads, their thick hides and "
-#| "unwavering resolution also make them formidable mounts in battle. A "
-#| "Tauroch guided by a skilled rider can hold off multiple enemies by itself "
-#| "and serves as a powerful warden to protect elven villages and caravans."
 msgid ""
 "Taurochs are huge, hardened beasts of the desert, considered untamable by "
 "most surviving races. However, the elves’ affinity with nature has allowed "
@@ -16240,13 +16000,13 @@ msgid ""
 msgstr ""
 "Los tauros son grandes y curtidas bestias del desierto, que la mayoría de "
 "las razas supervivientes no consideran domesticables. Sin embargo, la "
-"afinidad con la naturaleza de los elfos les ha permitido formar un vínculo "
-"impredecible con estos impetuosos animales. Mientras que los tauros pueden "
-"levantar y transportar grandes pesos, sus gruesas pieles e inquebrantable "
-"voluntad también hace de ellos formidables monturas en la batalla. Un tauro "
-"conducido por un hábil jinete puede contener a varios enemigos por si solo y "
-"sirve como un poderoso guardián que protege las aldeas y caravanas de los "
-"elfos."
+"afinidad con la naturaleza de los elfos les ha permitido formar un "
+"inesperado vínculo con estos impetuosos animales. Mientras que los tauros "
+"pueden levantar y transportar grandes pesos, sus gruesas pieles e "
+"inquebrantable voluntad también hace de ellos formidables monturas en la "
+"batalla. Un tauro conducido por un hábil jinete puede contener a varios "
+"enemigos por sí solo, y sirve como un poderoso guardián que protege las "
+"aldeas y caravanas de los elfos."
 
 #. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:5
@@ -16255,16 +16015,6 @@ msgstr "Fiel Tauro"
 
 #. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:37
-#, fuzzy
-#| msgid ""
-#| "When encountering wild Taurochs, Quenoth hunters often observe the "
-#| "curious behavior of particularly stubborn beasts, who will brace their "
-#| "rugged bodies and absolutely refuse to budge when provoked. Though "
-#| "difficult to placate, these Taurochs are sometimes selected by skilled "
-#| "riders for their exceptional resilience. Any warrior who finds their "
-#| "advance blocked by a Stalwart would undoubtedly be wise to seek another "
-#| "path, for trying to displace the beast would be akin to trying to fight a "
-#| "stone wall."
 msgid ""
 "When encountering wild taurochs, Quenoth hunters often observe the curious "
 "behavior of particularly stubborn beasts, who will brace their rugged bodies "
@@ -16281,8 +16031,7 @@ msgstr ""
 "veces son elegidos por jinetes habilidosos por su resistencia excepcional. "
 "Cualquier guerrero que vea su avance bloqueado por un fiel tauro debería sin "
 "duda ser lo bastante listo como para buscarse otra ruta, puesto que intentar "
-"apartar a la bestia sería lo más parecido a luchar contra una pared de "
-"piedra."
+"apartar a la bestia sería lo más parecido a luchar contra un muro de piedra."
 
 #. [unit_type]: id=Tauroch Vanguard, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:5
@@ -16291,16 +16040,6 @@ msgstr "Avanzada Tauro"
 
 #. [unit_type]: id=Tauroch Vanguard, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:32
-#, fuzzy
-#| msgid ""
-#| "The massive and fearless Taurochs are often employed not only to charge "
-#| "and break through enemy formations, but to rally and inspire infantry to "
-#| "hold their ground. Vanguards are hardy riders, adept at surviving in the "
-#| "thick of battle and leading their brethren from the front lines. Towering "
-#| "above the rolling dunes, the Vanguards bear great flags that fly brightly "
-#| "in the desert skies, a distinctive sight even from far away across the "
-#| "sands. The presence of these riders is a heartening one for most elves "
-#| "and a deterrent for the many pillagers that rove the deserts."
 msgid ""
 "The massive and fearless taurochs are often employed not only to charge and "
 "break through enemy formations, but to rally and inspire infantry to hold "
@@ -16314,12 +16053,12 @@ msgstr ""
 "Los enormes y temerarios tauros se emplean a menudo no solo para cargar y "
 "romper las formaciones enemigas, sino para animar e inspirar a la infantería "
 "a resistir en sus puestos. Los tauros de avanzada son jinetes endurecidos, "
-"versados en la supervivencia en el corazón de la batalla liderando a sus "
+"versados en la supervivencia en el corazón de la batalla, liderando a sus "
 "camaradas desde las filas del frente. Encumbrados a las onduladas dunas, los "
 "tauros de avanzada portan enormes banderas que ondean vistosas en los cielos "
 "del desierto, una señal visible desde muy lejos entre las dunas. La "
 "presencia de estos jinetes tiene un efecto esperanzador para la mayoría de "
-"los elfos y disuasorio para los muchos forajidos que deambulan por el "
+"los elfos, y disuasorio para los muchos forajidos que deambulan por el "
 "desierto."
 
 #. [unit_type]: id=Quenoth Warrior, race=quenoth
@@ -16346,14 +16085,6 @@ msgstr ""
 "asistir a sus compañeros más cercanos."
 
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:4
-#, fuzzy
-#| msgid ""
-#| "Kaleh is still a young Elf of the Quenoth, on the verge of adulthood. He "
-#| "trained with his father with the bow and sword, joining him in lighter "
-#| "expeditions and raids. When his father was lost, Kaleh became more "
-#| "serious and solemn than is usual for those who walk under the two suns. "
-#| "He turned inwards for answers and guidance, not knowing how much his "
-#| "people would look towards him for guidance in times to come."
 msgid ""
 "Kaleh is still a young elf of the Quenoth, on the verge of adulthood. He "
 "trained with his father with the bow and sword, joining him in lighter "
@@ -16508,14 +16239,10 @@ msgstr ""
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Shadow.cfg:26
-#, fuzzy
-#| msgid ""
-#| "SPECIAL_NOTE^ Unlike normal Shadows, Ethereal Shadows cannot hide at "
-#| "night."
 msgid ""
 "SPECIAL_NOTE^Unlike normal Shadows, Ethereal Shadows cannot hide at night."
 msgstr ""
-" A diferencia de las Sombras normales, las Sombras etéreas no pueden "
+"A diferencia de las Sombras normales, las Sombras etéreas no pueden "
 "ocultarse durante la noche."
 
 #. [unit_type]: id=ESpectre
@@ -16650,7 +16377,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:17
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:18
 msgid "Unknown"
-msgstr ""
+msgstr "Desconocido"
 
 #. [race]: id=hidden_race, description=<img>src=units/unknown-unit.png~RC(magenta>red) align=left float=yes</img>
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:20
@@ -16660,6 +16387,10 @@ msgid ""
 "The race of this unit cannot be revealed yet. You must discover it in the "
 "game to be allowed to see its description."
 msgstr ""
+"\n"
+"\n"
+"La raza de esta unidad no puede ser revelada todavía. Debes descubrirla en "
+"el juego para poder ver su descripción."
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:117
@@ -16990,12 +16721,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:9
-#, fuzzy
-#| msgid ""
-#| "This is the chronicle of the journey of the Quenoth elves from their "
-#| "homeland in the Great Southern Desert. I write this story so that our "
-#| "descendants may know of our travels, remember the sacrifices we made, and "
-#| "profit from the hard lessons we learned."
 msgid ""
 "This is the chronicle of the journey of the Quenoth Elves from their "
 "homeland in the Great Southern Desert. I write this story so that our "
@@ -17263,16 +16988,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:63
-#, fuzzy
-#| msgid ""
-#| "A long, long time ago was the golden age among elves. Our people lived in "
-#| "harmony with nature in lands filled with trees, trees as far as the eye "
-#| "could see. There was peace among Elves and the other races such as Humans "
-#| "and Dwarves, and evil creatures were driven deep within the earth. The "
-#| "foul name of Uria was not yet known among our people, and our powers were "
-#| "so great that we raised another sun into the sky, so that the days were "
-#| "lengthened and dark hours were few. Happy indeed were our people during "
-#| "these long years, but it was not to last forever."
 msgid ""
 "A long, long time ago was the golden age among elves. Our people lived in "
 "harmony with nature in lands filled with trees, trees as far as the eye "
@@ -17519,14 +17234,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:119
-#, fuzzy
-#| msgid ""
-#| "Chapter 7: We returned quickly and found the rest of our people, safely "
-#| "hidden a few miles back from the fighting. Seeing Grimnir with us, a "
-#| "troop of dwarves silently appeared out of adjoining secret passages. Once "
-#| "we had assured the rest of the elves that they were friends, Grimnir led "
-#| "us silently and quickly through a maze of secret tunnels towards the "
-#| "Dwarves’ home."
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
 "hidden a few miles back from the fighting. Seeing Grimnir with us, a troop "
@@ -17539,7 +17246,7 @@ msgstr ""
 "nuestros, que permanecían ocultos a unas pocas millas por detrás del "
 "combate. Viendo a Grimnir con nosotros, una tropa de enanos surgieron en "
 "silencio desde secretos túneles adyacentes. Una vez que aclaramos al resto "
-"de los elfos que eran amigos, Grimnir nos dirigió en silencio y con "
+"de los elfos que eran amigos, Grimnir nos condujo en silencio y con "
 "celeridad a través de un laberinto de túneles secretos hacia el hogar de los "
 "enanos."
 

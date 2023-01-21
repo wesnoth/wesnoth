@@ -1,17 +1,19 @@
+# Pepe <donpepe1963@gmail.com>, 2017.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-02 00:33 UTC\n"
-"PO-Revision-Date: 2021-10-23 20:24+0200\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"PO-Revision-Date: 2023-01-15 19:05+0100\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
@@ -138,21 +140,17 @@ msgstr "Artefactos"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:400
 msgid "Recruits"
-msgstr ""
+msgstr "Reclutamientos"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:467
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
-msgstr "Desertor"
+msgstr "Desertores"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:486
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
-msgstr "Comandante"
+msgstr "Comandantes"
 
 #. [label]
 #. [lua]: gui.widget.add_invest_item
@@ -163,10 +161,8 @@ msgstr "Héroes"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:524
-#, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "Aleatorio"
+msgstr "Líderes aleatorios"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -177,27 +173,23 @@ msgstr "Configuración"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:592
-#, fuzzy
-#| msgid "World Conquest"
 msgid "Use World Conquest PYA mod"
-msgstr "Conquista Mundial"
+msgstr "Usa mod PYA Conquista Mundial"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:612
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "Conquista mundial 1 jug"
+msgstr "Usa Conquista Mundial Marcadores"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:632
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "Usa Conquista Mundial recolección experimental"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:652
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "Mostrar confirmación de recolección"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:672
@@ -206,10 +198,8 @@ msgstr "Dificultad"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:693
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "Conquista Mundial"
+msgstr "Versión de Conquista Mundial"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -233,7 +223,7 @@ msgstr "Después:"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "Obtener este ítem"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -285,43 +275,37 @@ msgstr " mapa: "
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "tamaño del mapa"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "densidad de aldeas"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "mantener tamaño"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "Facciones"
+msgstr "iteraciones"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-#, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "agua"
+msgstr "factor de terreno"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "factor de isla"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "Tomo de los secretos"
+msgstr "número de torreones"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -3083,9 +3067,6 @@ msgid "Root of the Elder Wose"
 msgstr "Raíz de Wose anciano"
 
 #: data/campaigns/World_Conquest/resources/strings/artifacts.cfg:70
-#, fuzzy
-#| msgid ""
-#| " Dwarven forged, this blunt weapon mimics the crushing power of the Wose."
 msgid ""
 " Dwarven forged, this blunt weapon mimics the crushing power of the wose."
 msgstr ""
