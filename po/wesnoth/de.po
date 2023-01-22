@@ -7,14 +7,14 @@
 #  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010.
 #  Elias Pschernig <allefant@allefant.com>, 2012.
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018.
-#  Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018, 2022.
+#  Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018, 2022, 2023.
 #  Mathias Lang <heindal@scherbia.de>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:34-0600\n"
-"PO-Revision-Date: 2022-08-01 16:43+0200\n"
+"PO-Revision-Date: 2023-01-22 18:03+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.freenode.net/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 22.04.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -211,10 +211,9 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
-#, fuzzy
 #| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Verbindung nach vorgegebener Wartezeit abgebrochen"
+msgstr "Timeout der Serververbindung"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
@@ -223,6 +222,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Zeit in Sekunden bis von einem Verbindungsabbruch ausgegangen wird. Wenn Ihr"
+" gerade im Server eingeloggt seit, müsst ihr Euch neu einloggen, um diese"
+" Änderung zu aktivieren."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
