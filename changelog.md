@@ -3,6 +3,7 @@
  ### Add-ons server
  ### Campaigns
  ### Editor
+   * Fixed: the unit tool crashes when placing a unit (issue #7296).
  ### Multiplayer
  ### Lua API
  ### Packaging
@@ -13,6 +14,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Make the log messages about "Skipping duplicate unit variation ID" say which `[unit_type]` is causing the error.
 
 ## Version 1.16.7
  ### Translations
