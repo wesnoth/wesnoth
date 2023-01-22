@@ -1,3 +1,18 @@
+## Version 1.16.8+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.16.8
  ### Editor
    * Fixed: the unit tool crashes when placing a unit (issue #7296).
