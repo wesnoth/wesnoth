@@ -20,7 +20,7 @@ on_event("die", function(cx)
 	commander = commander[1]
 	if commander then
 		commander:extract()
-		commander.id = "wc2_leader"..u.side
+		commander.id = u.id
 		commander.canrecruit = true
 		commander:remove_modifications({ id = "wc2_commander_overlay" })
 		commander:to_map()
