@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+"""
+Flag an error if a single file uses both tabs and spaces for indenting.
+
+This does not change files, on the assumption that the mess is better
+handled with a text editor or a code reformatting tool.
+"""
+
+import  argparse, re, sys
+
+def check_indent(file):
+    has_tabs = False
+    with open(file, encoding="utf8") as lines:
+        for line in lines:
+            if re.match("\t", line):
+                has_tabs = True
+                break
+
+        if has_tabs:
+            lines.seek(0)
+            for line in lines:
+                if re.match("    ", line):
+                    print("{file} uses both tabs and spaces for indents".format(file=file))
+                    return False
+
+        # Only one type of indent appears at the start of each line, so this only needs to
+        # check one way round for mixtures on the same line.
+        if has_tabs:
+            mixed_line_re = re.compile("\t+ ")
+        else:
+            mixed_line_re = re.compile(" +\t")
+        lines.seek(0)
+        for line in lines:
+            if mixed_line_re.match(line):
+                print("{file} indents with tabs and spaces on the same line".format(file=file))
+                return False
+
+    return True
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser(usage=__doc__)
+    ap.add_argument("files", metavar="string", nargs="*", help="Read input from these files")
+    options = ap.parse_args()
+
+    all_files_ok = True
+
+    for file in options.files:
+        try:
+            if not check_indent(file):
+                all_files_ok = False
+        except UnicodeDecodeError:
+            all_files_ok = False
+            print("{file}: invalid utf-8".format(file=file))
+        except:
+            all_files_ok = False
+            print("{file}: raised exception {error}".format(file=file, error=sys.exc_info()[0]))
+
+    if not all_files_ok:
+        sys.exit(1)
+
+    sys.exit(0)
