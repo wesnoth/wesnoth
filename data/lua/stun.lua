@@ -19,8 +19,6 @@ function wesnoth.interface.game_display.unit_status()
 end
 
 local function on_hit(weapon, opponent)
-    if not weapon:matches{special_id = 'stun'} then return end
-    if not opponent.zoc then return end
     local text
     if opponent.gender == "female" then
         text = _ "stunned"
@@ -48,22 +46,41 @@ local function on_hit(weapon, opponent)
     })
 end
 
-local function attacker_hits(ctx)
-    local weapon = wesnoth.units.create_weapon(wml.get_child(ctx, 'weapon'))
-    local opponent = wesnoth.units.get(ctx.x2, ctx.y2)
-    on_hit(weapon, opponent)
-end
+local weapon_filter = {special_id = 'stun'}
+local unit_filter = {formula = 'zoc'}
 
-local function defender_hits(ctx)
-    local weapon = wesnoth.units.create_weapon(wml.get_child(ctx, 'second_weapon'))
-    local opponent = wesnoth.units.get(ctx.x1, ctx.y1)
-    on_hit(weapon, opponent)
-end
+wesnoth.game_events.add{
+    name = 'attacker_hits',
+    first_time_only = false,
+    filter = {
+        attack = weapon_filter,
+        second_unit = unit_filter
+    },
+    action = function()
+        local ctx = wesnoth.current.event_context
+        local weapon = wesnoth.units.create_weapon(wml.get_child(ctx, 'weapon'))
+        local opponent = wesnoth.units.get(ctx.x2, ctx.y2)
+        on_hit(weapon, opponent)
+    end
+}
 
-on_event("attacker_hits", attacker_hits)
-on_event("defender_hits", defender_hits)
+wesnoth.game_events.add{
+    name = 'defender_hits',
+    first_time_only = false,
+    filter = {
+        second_attack = weapon_filter,
+        unit = unit_filter
+    },
+    action = function()
+        local ctx = wesnoth.current.event_context
+        local weapon = wesnoth.units.create_weapon(wml.get_child(ctx, 'second_weapon'))
+        local opponent = wesnoth.units.get(ctx.x1, ctx.y1)
+        on_hit(weapon, opponent)
+    end
+}
 
 -- Removing a status via object doesn't work apparently?
+-- This uses on_event as a workaround for missing github#7146
 on_event("side turn end", function(ctx)
     local all_my_units = wesnoth.units.find{side = wesnoth.current.side}
     for i = 1, #all_my_units do
