@@ -456,7 +456,7 @@ void game_config_manager::load_addons_cfg()
 		if(have_addon_pbl_info(addon_id)) {
 			// Publishing info needs to be read from disk.
 			try {
-				metadata = get_addon_pbl_info(addon_id);
+				metadata = get_addon_pbl_info(addon_id, false);
 			} catch(const invalid_pbl_exception& e) {
 				const std::string log_msg = formatter()
 				<< "The provided addon has an invalid pbl file"
