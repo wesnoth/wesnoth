@@ -81,7 +81,7 @@ wesnoth.game_events.add{
 
 -- Removing a status via object doesn't work apparently?
 -- This uses on_event as a workaround for missing github#7146
-on_event("side turn end", function(ctx)
+wesnoth.game_events.add_repeating("side turn end", function(ctx)
     local all_my_units = wesnoth.units.find{side = wesnoth.current.side}
     for i = 1, #all_my_units do
         all_my_units[i].status.stunned = false
