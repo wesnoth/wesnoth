@@ -21,9 +21,9 @@ end
 local function on_hit(weapon, opponent)
     local text
     if opponent.gender == "female" then
-        text = _ "stunned"
-    else
         text = _ "female^stunned"
+    else
+        text = _ "stunned"
     end
 	local color = stringx.join(',', {'196', '196', '128'})
     if not wesnoth.interface.is_skipping_messages() then
@@ -46,7 +46,7 @@ local function on_hit(weapon, opponent)
     })
 end
 
-local weapon_filter = {special_id = 'stun'}
+local weapon_filter = {special_type_active = 'stun'}
 local unit_filter = {formula = 'zoc'}
 
 wesnoth.game_events.add{
