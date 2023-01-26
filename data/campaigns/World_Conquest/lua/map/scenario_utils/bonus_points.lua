@@ -1,4 +1,3 @@
-
 ----------------------------------------------------------
 ---- Chooses the location for the bonus points,       ----
 ---- the correct sceneries and creates events to      ----
@@ -60,7 +59,6 @@ function random_placement(locs, orig_num_items, min_distance, command)
 			end
 		end
 	end
-
 end
 
 function get_f_wct_bonus_location_filter(map)
@@ -386,7 +384,7 @@ end
 function world_conquest_tek_bonus_points(theme)
 	local res = {}
 	local scenario_num = wml.variables.wc2_scenario or 1
-    -- wc2_player_count is not available for the first scenario, place bonus points for 3 players
+	-- wc2_player_count is not available for the first scenario, place bonus points for 3 players
 	local player_num =  wml.variables.wc2_player_count or 3
 	oceanic = get_oceanic()
 	f_wct_bonus_location_filter = wesnoth.map.filter(get_f_wct_bonus_location_filter(map), { oceanic = oceanic })
