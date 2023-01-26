@@ -8,9 +8,10 @@ function wesnoth.interface.game_display.unit_status()
     local s = old_unit_status()
 
     if u.status.stunned then
-        table.insert(s, { "element",  { image = "misc/stunned-status-icon.png",
-                                        tooltip = _"stunned: This unit is stunned. It cannot enforce its Zone of Control."
-        } } )
+        table.insert(s, wml.tag.element{
+            image = "misc/stunned-status-icon.png",
+            tooltip = _"stunned: This unit is stunned. It cannot enforce its Zone of Control."
+        })
     end
 
     return s
