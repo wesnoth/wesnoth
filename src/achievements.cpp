@@ -107,8 +107,11 @@ achievement_group::achievement_group(const config& cfg)
 
 		if(id.empty()) {
 			ERR_CONFIG << content_for_ + " achievement missing id attribute:\n" << ach.debug();
+		} else if(id.find(',') != std::string::npos) {
+			ERR_CONFIG << content_for_ + " achievement missing id " << id << " contains a comma, skipping.";
+			continue;
 		} else {
-			achievements_.emplace_back(ach, preferences::achievement(content_for_, id));
+			achievements_.emplace_back(ach, preferences::achievement(content_for_, id), preferences::progress_achievement(content_for_, id));
 		}
 	}
 }

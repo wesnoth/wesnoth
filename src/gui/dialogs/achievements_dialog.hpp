@@ -46,6 +46,8 @@ private:
 	achievements achieve_;
 	listbox* achievements_box_;
 	menu_button* content_names_;
+	/** variable of the most recently selected achievements, static to persist between closing and re-opening the dialog */
+	static unsigned int selected_index_;
 
 	void set_achievements_content();
 
