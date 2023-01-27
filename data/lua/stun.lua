@@ -25,7 +25,7 @@ local function on_hit(weapon, opponent)
     else
         text = _ "stunned"
     end
-	local color = stringx.join(',', {'196', '196', '128'})
+    local color = stringx.join(',', {'196', '196', '128'})
     if not wesnoth.interface.is_skipping_messages() then
         wesnoth.interface.float_label(opponent.x, opponent.y, text, color)
     end
