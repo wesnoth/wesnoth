@@ -20,6 +20,9 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
@@ -27,6 +30,8 @@ namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(achievements_dialog)
+
+unsigned int achievements_dialog::selected_index_ = 0;
 
 achievements_dialog::achievements_dialog()
 	: modal_dialog(window_id())
@@ -44,17 +49,24 @@ void achievements_dialog::pre_show(window& win)
 
 	achievements_box_ = find_widget<listbox>(&win, "achievements_list", false, true);
 
-auto* a = game_config_manager::get();
-auto b = a->get_achievements();
-	for(const auto& list : b) {
-		// populate all possibilities into the dropdown
-		content_list.emplace_back("label", list.display_name_);
+	std::vector<achievement_group> groups = game_config_manager::get()->get_achievements();
+	// reset the selected achievement group in case add-ons with achievements are uninstalled between closing and re-opening the dialog
+	if(selected_index_ > groups.size()) {
+		selected_index_ = 0;
+	}
 
+	for(const auto& list : groups) {
 		// only display the achievements for the first dropdown option on first showing the dialog
-		if(content_list.size() == 1) {
+		if(content_list.size() == selected_index_) {
+			int achieved_count = 0;
+
 			for(const auto& ach : list.achievements_) {
 				widget_data row;
 				widget_item item;
+
+				if(ach.achieved_) {
+					achieved_count++;
+				}
 
 				item["label"] = !ach.achieved_ ? ach.icon_ : ach.icon_completed_;
 				row.emplace("icon", item);
@@ -62,7 +74,11 @@ auto b = a->get_achievements();
 				if(ach.hidden_ && !ach.achieved_) {
 					item["label"] = ach.hidden_name_;
 				} else if(!ach.achieved_) {
-					item["label"] = ach.name_;
+					std::string name = ach.name_;
+					if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
+						name += " ("+std::to_string(ach.current_progress_)+"/"+std::to_string(ach.max_progress_)+")";
+					}
+					item["label"] = name;
 				} else {
 					item["label"] = "<span color='green'>"+ach.name_completed_+"</span>";
 				}
@@ -77,12 +93,25 @@ auto b = a->get_achievements();
 				}
 				row.emplace("description", item);
 
-				achievements_box_->add_row(row);
+				grid& newrow = achievements_box_->add_row(row);
+				progress_bar* achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
+				if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
+					achievement_progress->set_percentage((ach.current_progress_/double(ach.max_progress_))*100);
+				} else {
+					achievement_progress->set_visible(gui2::widget::visibility::invisible);
+				}
 			}
+
+			label* achieved_label = find_widget<label>(&win, "achievement_count", false, true);
+			achieved_label->set_label(_("Completed")+" "+std::to_string(achieved_count)+"/"+std::to_string(list.achievements_.size()));
 		}
+
+		// populate all possibilities into the dropdown
+		content_list.emplace_back("label", list.display_name_);
 	}
 	if(content_list.size() > 0) {
 		content_names_->set_values(content_list);
+		content_names_->set_selected(selected_index_, false);
 	}
 }
 
@@ -93,9 +122,17 @@ void achievements_dialog::post_show(window&)
 void achievements_dialog::set_achievements_content()
 {
 	achievements_box_->clear();
-	for(const auto& ach : game_config_manager::get()->get_achievements().at(content_names_->get_value()).achievements_) {
+	int achieved_count = 0;
+	selected_index_ = content_names_->get_value();
+
+	achievement_group list = game_config_manager::get()->get_achievements().at(selected_index_);
+	for(const auto& ach : list.achievements_) {
 		widget_data row;
 		widget_item item;
+
+		if(ach.achieved_) {
+			achieved_count++;
+		}
 
 		item["label"] = !ach.achieved_ ? ach.icon_ : ach.icon_completed_;
 		row.emplace("icon", item);
@@ -118,8 +155,17 @@ void achievements_dialog::set_achievements_content()
 		}
 		row.emplace("description", item);
 
-		achievements_box_->add_row(row);
+		grid& newrow = achievements_box_->add_row(row);
+		progress_bar* achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
+		if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
+			achievement_progress->set_percentage((ach.current_progress_/double(ach.max_progress_))*100);
+		} else {
+			achievement_progress->set_visible(gui2::widget::visibility::invisible);
+		}
 	}
+
+	label* achieved_label = find_widget<label>(get_window(), "achievement_count", false, true);
+	achieved_label->set_label(_("Completed")+" "+std::to_string(achieved_count)+"/"+std::to_string(list.achievements_.size()));
 }
 
 } // namespace gui2::dialogs
