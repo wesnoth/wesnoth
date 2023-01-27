@@ -16,6 +16,7 @@
 #include "hotkey/command_executor.hpp"
 #include "hotkey/hotkey_item.hpp"
 
+#include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
@@ -387,6 +388,12 @@ bool command_executor::do_execute_command(const hotkey_command&  cmd, int /*inde
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 			preferences::toggle_minimap_draw_villages();
 			recalculate_minimap();
+			break;
+		case HOTKEY_ACHIEVEMENTS:
+			{
+				gui2::dialogs::achievements_dialog ach;
+				ach.show();
+			}
 			break;
 		default:
 			return false;

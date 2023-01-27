@@ -1011,3 +1011,12 @@ function wml_actions.remove_trait(cfg)
 		unit:remove_modifications({id = obj_id}, "trait")
 	end
 end
+
+function wml_actions.set_achievement(cfg)
+	local achievement = wesnoth.achievements.get(cfg.content_for, cfg.id)
+	-- don't show the achievement popup for an achievement they already have
+	if not achievement.achieved then
+		wesnoth.achievements.set(cfg.content_for, cfg.id)
+		gui.show_popup(achievement.name_completed, achievement.description_completed, achievement.icon_completed)
+	end
+end
