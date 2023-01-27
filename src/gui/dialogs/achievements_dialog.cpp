@@ -20,6 +20,9 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/grid.hpp"
+#include "gui/widgets/label.hpp"
+#include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
 
@@ -44,9 +47,7 @@ void achievements_dialog::pre_show(window& win)
 
 	achievements_box_ = find_widget<listbox>(&win, "achievements_list", false, true);
 
-auto* a = game_config_manager::get();
-auto b = a->get_achievements();
-	for(const auto& list : b) {
+	for(const auto& list : game_config_manager::get()->get_achievements()) {
 		// populate all possibilities into the dropdown
 		content_list.emplace_back("label", list.display_name_);
 
@@ -77,7 +78,16 @@ auto b = a->get_achievements();
 				}
 				row.emplace("description", item);
 
-				achievements_box_->add_row(row);
+				grid& newrow = achievements_box_->add_row(row);
+				label* progress_label = static_cast<label*>(newrow.find("progress_label", false));
+				progress_bar* achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
+				if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
+					progress_label->set_label(std::to_string(ach.current_progress_)+"/"+std::to_string(ach.max_progress_));
+					achievement_progress->set_percentage((ach.current_progress_/double(ach.max_progress_))*100);
+				} else {
+					progress_label->set_visible(gui2::widget::visibility::invisible);
+					achievement_progress->set_visible(gui2::widget::visibility::invisible);
+				}
 			}
 		}
 	}

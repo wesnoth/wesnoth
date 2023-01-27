@@ -49,8 +49,12 @@ struct achievement
 	t_string hidden_hint_;
 	/** Whether the achievement has been completed. */
 	bool achieved_;
+	/** When the achievement's current progress matches or equals this value, then it should be marked as completed */
+	int max_progress_;
+	/** The current progress value of the achievement */
+	int current_progress_;
 
-	achievement(const config& cfg, bool achieved)
+	achievement(const config& cfg, bool achieved, int progress)
 		: id_(cfg["id"].str())
 		, name_(cfg["name"].t_str())
 		, name_completed_(cfg["name_completed"].t_str())
@@ -62,6 +66,8 @@ struct achievement
 		, hidden_name_(cfg["hidden_name"].t_str())
 		, hidden_hint_(cfg["hidden_hint"].t_str())
 		, achieved_(achieved)
+		, max_progress_(cfg["max_progress"].to_int(0))
+		, current_progress_(progress)
 	{
 		if(name_completed_.empty()) {
 			name_completed_ = name_;
@@ -70,7 +76,8 @@ struct achievement
 			description_completed_ = description_;
 		}
 		if(icon_completed_.empty()) {
-			icon_completed_ = icon_;
+			// avoid the ~GS() appended to icon_
+			icon_completed_ = cfg["icon"].str();
 		}
 	}
 };
