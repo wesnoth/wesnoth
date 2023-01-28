@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:33-0600\n"
-"PO-Revision-Date: 2022-09-03 09:06+0800\n"
+"PO-Revision-Date: 2023-01-27 15:20+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -5658,17 +5658,17 @@ msgstr "$first|及$second"
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:264
 msgid "conjunct start^$first, $second"
-msgstr "$first，$second"
+msgstr "$first|、$second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:268
 msgid "conjunct mid^$prefix, $next"
-msgstr "$prefix|，$next"
+msgstr "$prefix|、$next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:271
 msgid "conjunct end^$prefix, and $last"
-msgstr "$prefix|，及$last"
+msgstr "$prefix|及$last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:279
@@ -5678,17 +5678,17 @@ msgstr "$first|或$second"
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:282
 msgid "disjunct start^$first, $second"
-msgstr "$first，$second"
+msgstr "$first|、$second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:286
 msgid "disjunct mid^$prefix, $next"
-msgstr "$prefix|，$next"
+msgstr "$prefix|、$next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:289
 msgid "disjunct end^$prefix, or $last"
-msgstr "$prefix|，或$next"
+msgstr "$prefix|或$last"
 
 #: src/formula/string_utils.cpp:295 src/formula/string_utils.cpp:335
 msgid "timespan^expired"
@@ -7935,7 +7935,7 @@ msgid ""
 "mandatory key '$key|' isn't set."
 msgstr ""
 "在‘$primary_key| = $primary_value|’的小节‘[$section|]’中，必须设定的主"
-"键‘key|’没有设定值。"
+"键‘$key|’没有设定值。"
 
 #: src/wml_exception.cpp:101
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."

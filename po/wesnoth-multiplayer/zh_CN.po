@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2021-11-09 00:45 UTC\n"
-"PO-Revision-Date: 2022-09-03 09:07+0800\n"
+"PO-Revision-Date: 2023-01-27 15:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -108,8 +108,8 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='$side_number'>阵营$side_number</"
-"span>：失去了所有单位"
+"<span strikethrough='true' foreground='$side_color'>阵营$side_number</span>："
+"失去了所有单位"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
@@ -119,7 +119,7 @@ msgid ""
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='$side_number'>阵营$side_number</span>：收入得分 = $income  "
+"<span foreground='$side_color'>阵营$side_number</span>：收入得分 = $income  "
 "单位得分 = $units  金币 = $gold\n"
 "合计：<b>$total</b>"
 
