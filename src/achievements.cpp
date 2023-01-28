@@ -25,6 +25,12 @@
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 
+achievements::achievements()
+	: achievement_list_()
+{
+	reload();
+}
+
 /**
  * Reads the mainline achievements.cfg and then all the achievements of each installed add-on.
  *
@@ -34,9 +40,9 @@ static lg::log_domain log_config("config");
  *
  * NOTE: These are *not* in any way related to Steam achievements!
  */
-achievements::achievements()
-	: achievement_list_()
+void achievements::reload()
 {
+	achievement_list_.clear();
 	// mainline
 	try {
 		config cfg = read_achievements_file(game_config::path + "/data/achievements.cfg");

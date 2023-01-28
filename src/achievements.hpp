@@ -97,6 +97,7 @@ class achievements
 {
 public:
 	achievements();
+	void reload();
 	std::vector<achievement_group>& get_list()
 	{
 		return achievement_list_;

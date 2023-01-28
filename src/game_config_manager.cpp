@@ -209,10 +209,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 			// Start transaction so macros are shared.
 			game_config::config_cache_transaction main_transaction;
-			
-			// Reload achievements
-			achievements_.~achievements();
-			new(&achievements_) achievements();
+			achievements_.reload();
 
 			// Load mainline cores definition file.
 			config cores_cfg;
