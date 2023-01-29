@@ -93,10 +93,11 @@ def main():
         for aid in unit.advances_to:
             unit.children.append(all_units[aid])
             all_units[aid].parents.append(unit)
-        for af in unit.get_all(tag = "advancefrom"):
-            afid = af.get_text_val("unit")
-            all_units[afid].children.append(unit)
-            unit.parents.append(all_units[afid])
+        # [advancefrom] was removed
+        # for af in unit.get_all(tag = "advancefrom"):
+        #    afid = af.get_text_val("unit")
+        #    all_units[afid].children.append(unit)
+        #    unit.parents.append(all_units[afid])
 
     def race_key(unit):
         if unit.campaign == "mainline": return 0, unit.race
