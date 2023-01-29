@@ -1141,8 +1141,8 @@ ELEMENT is an element to find a match for."
 	(progn
 	  (goto-char target)
 	  (back-to-indentation))
-      (when (interactive-p)
-	(message "%s" "Tag does not appear to be matched")))))
+      (when (called-interactively-p 'interactive)
+		(message "%s" "Tag does not appear to be matched")))))
 
 ;;; Indentation
 (defun wesnoth-wml-start-pos ()
@@ -1345,9 +1345,9 @@ enabled when the attempt to match initially fails."
                              (nth position (gethash parent
                                                     wesnoth-tag-hash-table))))
       (mapc
-       '(lambda (x)
+       #'(lambda (x)
           (let ((value (nth position (cdr x))))
-            (and value (mapc '(lambda (y)
+            (and value (mapc #'(lambda (y)
                                 (setq result (cons y result)))
                              value))))
        (or wesnoth-tmp-tag-data (wesnoth-refresh-wml-data))))
@@ -1753,7 +1753,7 @@ maintained through successive calls."
         (setq wesnoth-define-blocks nil
               wesnoth-tmp-tag-data nil)
         (set-buffer outbuf)
-        (toggle-read-only t)
+        (read-only-mode 1)
         (let ((buffer (buffer-name))
               (buffer-read-only nil))
           (display-buffer outbuf t)
