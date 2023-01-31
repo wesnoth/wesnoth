@@ -1043,32 +1043,29 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
+#ifdef _WIN32
+	bool log_redirect = true;
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+#endif
+
+	// terminal_implied means a switch that implies an interactive terminal has been used.
+	// This suggests we want the output right on standard out.
+	// terminal_force means output has been explicitly requested on standard out.
+	// file_force means the opposite, that logging to a file was explicitly requested.
+	bool terminal_implied = false, file_force = false;
+	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
+	std::optional<bool> terminal_force;
+
 	// --nobanner needs to be detected before the main command-line parsing happens
 	// --log-to needs to be detected so the logging output location is set before any actual logging happens
 	bool nobanner = false;
-	bool log_to_file = true;
 	for(const auto& arg : args) {
 		if(arg == "--nobanner") {
 			nobanner = true;
 			break;
 		}
-		else if(arg == "--no-log-to-file") {
-			log_to_file = false;
-		}
 	}
-#ifndef _WIN32
-	if(log_to_file) {
-		lg::set_log_to_file();
-	}
-#endif
-
-#ifdef _WIN32
-	bool log_redirect = true, native_console_implied = false;
-	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
-	std::optional<bool> native_console_force;
-
-	_putenv("PANGOCAIRO_BACKEND=fontconfig");
-	_putenv("FONTCONFIG_PATH=fonts");
 
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
@@ -1081,15 +1078,15 @@ int main(int argc, char** argv)
 	// console before proceeding any further.
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
-		static const std::set<std::string> wincon_switches = {
-			"--wconsole", "-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
+		static const std::set<std::string> terminal_switches = {
+			"-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
 			"--data-path", "--userdata-path", "--userconfig-path",
 		};
 
 		// Switches that take arguments, the switch may have the argument past
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
-		static const std::set<std::string> wincon_arg_switches = {
+		static const std::set<std::string> terminal_arg_switches = {
 			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
 			 "--screenshot", "-V", "--validate", "--validate-schema",
 		};
@@ -1099,24 +1096,37 @@ int main(int argc, char** argv)
 			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
 		};
 
-		if(wincon_switches.find(arg) != wincon_switches.end() ||
-			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			native_console_implied = true;
+		if(terminal_switches.find(arg) != terminal_switches.end() ||
+			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
+			terminal_implied = true;
 		}
 
+#ifdef _WIN32
 		if(arg == "--wnoconsole") {
-			native_console_force = false;
+			terminal_force = false;
 		} else if(arg == "--wconsole") {
-			native_console_force = true;
+			terminal_force = true;
 		} else if(arg == "--wnoredirect") {
 			log_redirect = false;
 		}
+#endif
+		if(arg == "--no-log-to-file") {
+			terminal_force = true;
+		} else if(arg == "--log-to-file") {
+			file_force = true;
+		}
 	}
 
-	if(native_console_force.value_or(native_console_implied)) {
+	const bool log_to_terminal = terminal_force.value_or(terminal_implied);
+#ifdef _WIN32
+	if(log_to_terminal) {
 		lg::enable_native_console_output();
 	}
 	lg::early_log_file_setup(!log_redirect);
+#else
+	if(!log_to_terminal || file_force) {
+		lg::set_log_to_file();
+	}
 #endif
 
 	// Is there a reason not to just use SDL_INIT_EVERYTHING?
