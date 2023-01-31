@@ -21,7 +21,6 @@
 
 #pragma once
 
-#include "config.hpp"
 #include "lua_jailbreak_exception.hpp"
 
 #include <string>
@@ -143,57 +142,3 @@ std::string missing_mandatory_wml_key(
 		, const std::string& key
 		, const std::string& primary_key = ""
 		, const std::string& primary_value = "");
-
-// TODO: In 1.15 we could rework these two to provide standard detail messages
-// for the deprecated_message() function.
-
-/**
- * Returns a standard warning message for using a deprecated wml key.
- *
- * @param key                     The deprecated key.
- * @param removal_version         The version in which the key will be removed.
- *
- * @returns                       The warning message.
- */
-std::string deprecate_wml_key_warning(
-		  const std::string& key
-		, const std::string& removal_version);
-
-/**
- * Returns a standard warning message for using a deprecated renamed wml key.
- *
- * @param deprecated_key          The deprecated key.
- * @param key                     The new key to be used.
- * @param removal_version         The version in which the key will be removed.
- *
- * @returns                       The warning message.
- */
-std::string deprecated_renamed_wml_key_warning(
-		  const std::string& deprecated_key
-		, const std::string& key
-		, const std::string& removal_version);
-
-/**
- * Returns a config attribute, using either the old name or the new one.
- *
- * The function first tries the find the attribute using @p key and if that
- * doesn't find the attribute it tries @p deprecated_key. If that test finds
- * an attribute it will issue a warning and return the result. Else returns
- * an empty attribute.
- *
- * @note This function is not a member of @ref config, since that would add
- * additional dependencies to the core library.
- *
- * @param cfg                     The config to get the attribute from.
- * @param deprecated_key          The deprecated key.
- * @param key                     The new key to be used.
- * @param removal_version         The version in which the key will be
- *                                removed key.
- *
- * @returns                       The attribute found as described above.
- */
-const config::attribute_value& get_renamed_config_attribute(
-		  const config& cfg
-		, const std::string& deprecated_key
-		, const std::string& key
-		, const std::string& removal_version);
