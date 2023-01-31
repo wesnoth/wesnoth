@@ -111,7 +111,6 @@
 #include "variable_info.hpp"
 #include "video.hpp"                    // only for faked
 #include "whiteboard/manager.hpp"       // for whiteboard
-#include "wml_exception.hpp"
 #include "deprecation.hpp"
 
 #include <functional>               // for bind_t, bind
