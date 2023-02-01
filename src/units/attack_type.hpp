@@ -90,6 +90,12 @@ public:
 	                      unsigned & max_attacks) const;
 	/** Returns the damage per attack of this weapon, considering specials. */
 	int modified_damage() const;
+
+	/** Return the special weapon value, considering specials.
+	 * @param abil_list The list of special checked.
+	 * @param base_value The value modified or not by function.
+	 */
+	int composite_value(const unit_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
 	/** Returns list who contains get_weapon_ability and get_specials list for each ability type */
