@@ -10,6 +10,7 @@
 ---@field range integer
 ---@field number integer
 ---@field movement_used integer
+---@field attacks_used integer
 ---@field attack_weight number
 ---@field defense_weight number
 ---@field accuracy integer
