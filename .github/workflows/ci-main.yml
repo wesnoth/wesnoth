@@ -287,6 +287,15 @@ jobs:
         run: |
           cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
 
+# Trying to find the cause of the intermittent build failures. This assumes that the failure was during building glib,
+# but that seems regular enough that I'll check manually to see if it was.
+      - name: Store glib build log
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: glib-log
+          path: D:/a/wesnoth/vcpkg/buildtrees/glib/package-x64-windows-*-out.log
+
 # delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
 # otherwise the job was failing when trying to write a .obj file
 # building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
