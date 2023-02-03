@@ -262,7 +262,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in log output with more precision.")
 		("no-log-to-file", "log output is written to standard error rather than to a file.")
-		("log-to-file", "log output is written to a file even if it would normally go to standard input. Cancels the effect of --no-log-to-file whether implicit or explicit.")
+		("log-to-file", "log output is written to a file even if it would normally go to standard output/error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
