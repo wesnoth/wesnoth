@@ -123,6 +123,8 @@ public:
 
 	int movement_used() const { return movement_used_; }
 	void set_movement_used(int value) { movement_used_ = value; }
+	int attacks_used() const { return attacks_used_; }
+	void set_attacks_used(int value) { attacks_used_ = value; }
 
 	void write(config& cfg) const;
 	inline config to_config() const { config c; write(c); return c; }
@@ -324,6 +326,7 @@ private:
 
 	int accuracy_;
 	int movement_used_;
+	int attacks_used_;
 	int parry_;
 	config specials_;
 	bool changed_;

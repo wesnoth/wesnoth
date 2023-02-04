@@ -107,6 +107,8 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_->parry());
 	} else if(key == "movement_used") {
 		return variant(att_->movement_used());
+	} else if(key == "attacks_used") {
+		return variant(att_->attacks_used());
 	} else if(key == "specials" || key == "special") {
 		std::vector<variant> res;
 
@@ -133,6 +135,7 @@ void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "accuracy");
 	add_input(inputs, "parry");
 	add_input(inputs, "movement_used");
+	add_input(inputs, "attacks_used");
 	add_input(inputs, "attack_weight");
 	add_input(inputs, "defense_weight");
 	add_input(inputs, "specials");

@@ -1369,11 +1369,10 @@ void attack::perform()
 		return;
 	}
 
-	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - 1);
-
 	VALIDATE(a_.weapon_ < static_cast<int>(a_.get_unit().attacks().size()),
 			_("An invalid attacker weapon got selected."));
 
+	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - a_.get_unit().attacks()[a_.weapon_].attacks_used());
 	a_.get_unit().set_movement(a_.get_unit().movement_left() - a_.get_unit().attacks()[a_.weapon_].movement_used(), true);
 	a_.get_unit().set_state(unit::STATE_NOT_MOVED, false);
 	a_.get_unit().set_resting(false);
