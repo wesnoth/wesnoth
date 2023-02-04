@@ -3142,8 +3142,6 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
 					cfg["icon"] = achieve.icon_;
 					cfg["icon_completed"] = achieve.icon_completed_;
 					cfg["hidden"] = achieve.hidden_;
-					cfg["hidden_name"] = achieve.hidden_name_;
-					cfg["hidden_hint"] = achieve.hidden_hint_;
 					cfg["achieved"] = achieve.achieved_;
 					cfg["max_progress"] = achieve.max_progress_;
 					cfg["current_progress"] = achieve.current_progress_;

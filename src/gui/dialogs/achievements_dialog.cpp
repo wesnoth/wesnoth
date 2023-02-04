@@ -61,19 +61,19 @@ void achievements_dialog::pre_show(window& win)
 			int achieved_count = 0;
 
 			for(const auto& ach : list.achievements_) {
-				widget_data row;
-				widget_item item;
-
 				if(ach.achieved_) {
 					achieved_count++;
+				} else if(ach.hidden_ && !ach.achieved_) {
+					continue;
 				}
+
+				widget_data row;
+				widget_item item;
 
 				item["label"] = !ach.achieved_ ? ach.icon_ : ach.icon_completed_;
 				row.emplace("icon", item);
 
-				if(ach.hidden_ && !ach.achieved_) {
-					item["label"] = ach.hidden_name_;
-				} else if(!ach.achieved_) {
+				if(!ach.achieved_) {
 					std::string name = ach.name_;
 					if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
 						name += " ("+std::to_string(ach.current_progress_)+"/"+std::to_string(ach.max_progress_)+")";
@@ -84,9 +84,7 @@ void achievements_dialog::pre_show(window& win)
 				}
 				row.emplace("name", item);
 
-				if(ach.hidden_ && !ach.achieved_) {
-					item["label"] = ach.hidden_hint_;
-				} else if(!ach.achieved_) {
+				if(!ach.achieved_) {
 					item["label"] = ach.description_;
 				} else {
 					item["label"] = "<span color='green'>"+ach.description_completed_+"</span>";
@@ -127,28 +125,26 @@ void achievements_dialog::set_achievements_content()
 
 	achievement_group list = game_config_manager::get()->get_achievements().at(selected_index_);
 	for(const auto& ach : list.achievements_) {
-		widget_data row;
-		widget_item item;
-
 		if(ach.achieved_) {
 			achieved_count++;
+		} else if(ach.hidden_ && !ach.achieved_) {
+			continue;
 		}
+
+		widget_data row;
+		widget_item item;
 
 		item["label"] = !ach.achieved_ ? ach.icon_ : ach.icon_completed_;
 		row.emplace("icon", item);
 
-		if(ach.hidden_ && !ach.achieved_) {
-			item["label"] = ach.hidden_name_;
-		} else if(!ach.achieved_) {
+		if(!ach.achieved_) {
 			item["label"] = ach.name_;
 		} else {
 			item["label"] = "<span color='green'>"+ach.name_completed_+"</span>";
 		}
 		row.emplace("name", item);
 
-		if(ach.hidden_ && !ach.achieved_) {
-			item["label"] = ach.hidden_hint_;
-		} else if(!ach.achieved_) {
+		if(!ach.achieved_) {
 			item["label"] = ach.description_;
 		} else {
 			item["label"] = "<span color='green'>"+ach.description_completed_+"</span>";

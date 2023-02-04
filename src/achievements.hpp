@@ -43,10 +43,6 @@ struct achievement
 	std::string icon_completed_;
 	/** Whether to show the achievement's actual name and description on the UI before it's been completed. */
 	bool hidden_;
-	/** The hint to display in place of the description if the achievement is hidden and uncompleted */
-	t_string hidden_name_;
-	/** The hint to display in place of the description if the achievement is hidden and uncompleted */
-	t_string hidden_hint_;
 	/** Whether the achievement has been completed. */
 	bool achieved_;
 	/** When the achievement's current progress matches or equals this value, then it should be marked as completed */
@@ -63,8 +59,6 @@ struct achievement
 		, icon_(cfg["icon"].str()+"~GS()")
 		, icon_completed_(cfg["icon_completed"].str())
 		, hidden_(cfg["hidden"].to_bool())
-		, hidden_name_(cfg["hidden_name"].t_str())
-		, hidden_hint_(cfg["hidden_hint"].t_str())
 		, achieved_(achieved)
 		, max_progress_(cfg["max_progress"].to_int(0))
 		, current_progress_(progress)
