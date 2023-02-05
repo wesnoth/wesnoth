@@ -1016,6 +1016,16 @@ void set_addon_manager_saved_order_direction(sort_order::type value)
 	set("addon_manager_saved_order_direction", sort_order::get_string(value));
 }
 
+std::string selected_achievement_group()
+{
+	return get("selected_achievement_group");
+}
+
+void set_selected_achievement_group(const std::string& content_for)
+{
+	set("selected_achievement_group", content_for);
+}
+
 bool achievement(const std::string& content_for, const std::string& id)
 {
 	for(config& ach : prefs.child_range("achievements"))
