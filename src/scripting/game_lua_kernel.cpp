@@ -3086,6 +3086,9 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 					if(achieve.max_progress_ != 0) {
 						achieve.current_progress_ = -1;
 					}
+					if(achieve.sound_path_ != "") {
+						sound::play_sound(achieve.sound_path_, sound::SOUND_FX);
+					}
 					return 0;
 				}
 			}
