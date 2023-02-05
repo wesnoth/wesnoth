@@ -274,6 +274,9 @@ namespace preferences {
 	sort_order::type addon_manager_saved_order_direction();
 	void set_addon_manager_saved_order_direction(sort_order::type value);
 
+	std::string selected_achievement_group();
+	void set_selected_achievement_group(const std::string& content_for);
+
 	/**
 	 * @param content_for The achievement group the achievement is part of.
 	 * @param id The ID of the achievement within the achievement group.

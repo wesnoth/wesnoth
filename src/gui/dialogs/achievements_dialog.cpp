@@ -25,17 +25,17 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
+#include "preferences/general.hpp"
 
 namespace gui2::dialogs
 {
 
 REGISTER_DIALOG(achievements_dialog)
 
-unsigned int achievements_dialog::selected_index_ = 0;
-
 achievements_dialog::achievements_dialog()
 	: modal_dialog(window_id())
 	, achieve_()
+	, last_selected_(preferences::selected_achievement_group())
 	, achievements_box_(nullptr)
 	, content_names_(nullptr)
 {
@@ -50,14 +50,13 @@ void achievements_dialog::pre_show(window& win)
 	achievements_box_ = find_widget<listbox>(&win, "achievements_list", false, true);
 
 	std::vector<achievement_group> groups = game_config_manager::get()->get_achievements();
-	// reset the selected achievement group in case add-ons with achievements are uninstalled between closing and re-opening the dialog
-	if(selected_index_ > groups.size()) {
-		selected_index_ = 0;
-	}
+	int selected = 0;
 
 	for(const auto& list : groups) {
 		// only display the achievements for the first dropdown option on first showing the dialog
-		if(content_list.size() == selected_index_) {
+		if(list.content_for_ == last_selected_ || last_selected_ == "") {
+			selected = content_list.size();
+			last_selected_ = list.content_for_;
 			int achieved_count = 0;
 
 			for(const auto& ach : list.achievements_) {
@@ -109,21 +108,23 @@ void achievements_dialog::pre_show(window& win)
 	}
 	if(content_list.size() > 0) {
 		content_names_->set_values(content_list);
-		content_names_->set_selected(selected_index_, false);
+		content_names_->set_selected(selected, false);
 	}
 }
 
 void achievements_dialog::post_show(window&)
 {
+	preferences::set_selected_achievement_group(last_selected_);
 }
 
 void achievements_dialog::set_achievements_content()
 {
 	achievements_box_->clear();
 	int achieved_count = 0;
-	selected_index_ = content_names_->get_value();
 
-	achievement_group list = game_config_manager::get()->get_achievements().at(selected_index_);
+	achievement_group list = game_config_manager::get()->get_achievements().at(content_names_->get_value());
+	last_selected_ = list.content_for_;
+
 	for(const auto& ach : list.achievements_) {
 		if(ach.achieved_) {
 			achieved_count++;
