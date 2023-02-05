@@ -3082,6 +3082,10 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 					// found the achievement - mark it as completed
 					preferences::set_achievement(content_for, id);
 					achieve.achieved_ = true;
+					// progressable achievements can also check for current progress equals -1
+					if(achieve.max_progress_ != 0) {
+						achieve.current_progress_ = -1;
+					}
 					return 0;
 				}
 			}
