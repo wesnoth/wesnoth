@@ -1098,7 +1098,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 void editor_controller::preferences()
 {
-	font::clear_help_string();
+	gui_->clear_help_string();
 	gui2::dialogs::preferences_dialog::display();
 
 	gui_->queue_rerender();

@@ -17,7 +17,6 @@
 
 #include "display.hpp"
 #include "draw_manager.hpp"
-#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
