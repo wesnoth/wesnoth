@@ -1022,7 +1022,12 @@ function wml_actions.set_achievement(cfg)
 end
 
 function wml_actions.progress_achievement(cfg)
-	local pcfg = wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, cfg.limit or 999999999)
+	if not tonumber(cfg.amount) then
+		wml.error("[progress_achievement] amount attribute not a number for content '"..cfg.content_for.."' and achievement '"..cfg.id.."'")
+		return
+	end
+
+	local pcfg = wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, tonumber(cfg.limit) or 999999999)
 	-- if this update completes the achievement, mark it as complete and show the popup
 	if pcfg.progress ~= -1 and pcfg.max_progress > 0 and pcfg.progress >= pcfg.max_progress then
 		wml_actions.set_achievement(cfg)
