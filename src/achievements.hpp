@@ -49,6 +49,8 @@ struct achievement
 	int max_progress_;
 	/** The current progress value of the achievement */
 	int current_progress_;
+	/** The path to a sound to play when an achievement is completed */
+	std::string sound_path_;
 
 	achievement(const config& cfg, bool achieved, int progress)
 		: id_(cfg["id"].str())
@@ -62,6 +64,7 @@ struct achievement
 		, achieved_(achieved)
 		, max_progress_(cfg["max_progress"].to_int(0))
 		, current_progress_(progress)
+		, sound_path_(cfg["sound"].str())
 	{
 		if(name_completed_.empty()) {
 			name_completed_ = name_;
