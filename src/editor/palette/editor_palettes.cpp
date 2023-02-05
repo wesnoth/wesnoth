@@ -19,7 +19,6 @@
 
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
-#include "floating_label.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
@@ -191,8 +190,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 
 	set_location(target);
 	set_dirty(true);
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -202,8 +200,7 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 		selected_fg_item_ = item_id;
 		set_dirty();
 	}
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -213,8 +210,7 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 		selected_bg_item_ = item_id;
 		set_dirty();
 	}
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -239,9 +235,9 @@ void editor_palette<Item>::hide(bool hidden)
 	widget::hide(hidden);
 
 	if (!hidden) {
-		font::set_help_string(get_help_string());
+		gui_.set_help_string(get_help_string());
 	} else {
-		font::clear_help_string();
+		gui_.clear_help_string();
 	}
 
 	for (gui::widget& w : buttons_) {

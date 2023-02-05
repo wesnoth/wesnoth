@@ -20,7 +20,6 @@
 #include "draw.hpp"
 #include "editor/editor_common.hpp"
 #include "editor/toolkit/editor_toolkit.hpp"
-#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
@@ -197,7 +196,7 @@ void location_palette::hide(bool hidden)
 {
 	widget::hide(hidden);
 
-	font::clear_help_string();
+	disp_.clear_help_string();
 
 	std::shared_ptr<gui::button> palette_menu_button = disp_.find_menu_button("menu-editor-terrain");
 	palette_menu_button->set_overlay("");
@@ -308,8 +307,7 @@ void location_palette::adjust_size(const SDL_Rect& target)
 
 	set_location(target);
 	set_dirty(true);
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	disp_.set_help_string(get_help_string());
 }
 
 void location_palette::select_item(const std::string& item_id)
@@ -318,8 +316,7 @@ void location_palette::select_item(const std::string& item_id)
 		selected_item_ = item_id;
 		set_dirty();
 	}
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	disp_.set_help_string(get_help_string());
 }
 
 std::size_t location_palette::num_items()

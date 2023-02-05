@@ -61,6 +61,17 @@ public:
 		mouseover_hex_overlay_.reset();
 	}
 
+	/**
+	 * Displays a help string with the given text. A 'help string' is like a tooltip,
+	 * but appears at the bottom of the screen so as to not be intrusive.
+	 *
+	 * @param str                 The text to display.
+	 */
+	void set_help_string(const std::string& str);
+
+	/** Removes the help string. */
+	void clear_help_string();
+
 protected:
 	void draw_hex(const map_location& loc) override;
 
@@ -75,6 +86,10 @@ protected:
 	editor_controller& controller_;
 
 	texture mouseover_hex_overlay_;
+
+private:
+	/** ID of the floating label that's controlled by set_help_string() / clear_help_string(). */
+	int help_handle_ = 0;
 };
 
 } //end namespace editor
