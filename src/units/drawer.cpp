@@ -62,6 +62,31 @@ std::unique_ptr<image::locator> get_orb_image(orb_status os)
 	return std::make_unique<image::locator>(game_config::images::orb + "~RC(magenta>" + color + ")");
 }
 
+/**
+ * Assemble a two-color orb for an ally's unit, during that ally's turn.
+ * Returns nullptr if the preferences both of these orbs and ally orbs in general are off.
+ * Returns a one-color orb (using the ally color) in several circumstances.
+ */
+std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
+{
+	if(!preferences::show_status_on_ally_orb())
+		return get_orb_image(orb_status::allied);
+
+	// This is conditional on prefs_show_orb, because a user might want to disable the standard
+	// partial orb, but keep it enabled as a reminder for units in the disengaged state.
+	if(os == orb_status::disengaged && !orb_status_helper::prefs_show_orb(orb_status::disengaged)) {
+		os = orb_status::partial;
+	}
+
+	if(!orb_status_helper::prefs_show_orb(os))
+		return get_orb_image(orb_status::allied);
+
+	auto allied_color = orb_status_helper::get_orb_color(orb_status::allied);
+	auto status_color = orb_status_helper::get_orb_color(os);
+	return std::make_unique<image::locator>(game_config::images::orb_two_color + "~RC(ellipse_red>"
+			+ allied_color + ")~RC(magenta>" + status_color + ")");
+}
+
 void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& col)
 {
 	// Magic width number
@@ -76,12 +101,18 @@ void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& 
 	const point offset = display::scaled_to_zoom(point{19, 13});
 
 	// Full bar dimensions.
-	const rect bar_rect = display::scaled_to_zoom({
+	rect bar_rect = display::scaled_to_zoom({
 		xpos + offset.x,
 		ypos + offset.y,
 		bar_width,
 		bar_height
 	});
+
+	// Bar dimensions should not overflow 80% of the scaled hex dimensions.
+	// The 80% comes from an approximation of the length of a segment drawn
+	// inside a regular hexagon that runs parallel to its outer left side.
+	bar_rect.w = std::clamp<int>(bar_rect.w, 0, display::hex_size() * 0.80 - offset.x);
+	bar_rect.h = std::clamp<int>(bar_rect.h, 0, display::hex_size() * 0.80 - offset.y);
 
 	filled = std::clamp<double>(filled, 0.0, 1.0);
 	const int unfilled = static_cast<std::size_t>(bar_rect.h * (1.0 - filled));
@@ -329,9 +360,12 @@ void unit_drawer::redraw_unit(const unit& u) const
 			if(static_cast<std::size_t>(side) != viewing_team + 1)
 				os = orb_status::allied;
 			orb_img = get_orb_image(os);
+		} else if(static_cast<std::size_t>(side) != viewing_team + 1) {
+			// We're looking at an ally's unit, during that ally's turn.
+			auto os = dc.unit_orb_status(u);
+			orb_img = get_playing_ally_orb_image(os);
 		} else {
-			// We're looking at either the player's own unit, or an ally's unit, during the unit's
-			// owner's turn.
+			// We're looking at the player's own unit, during the player's turn.
 			auto os = dc.unit_orb_status(u);
 			orb_img = get_orb_image(os);
 		}

@@ -7,19 +7,20 @@
 # Iris Morelle <shadowm@wesnoth.org>,, 2008, 2009, 2012.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
-"PO-Revision-Date: 2021-06-25 13:18+0200\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"PO-Revision-Date: 2023-01-15 10:17+0100\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -31,7 +32,7 @@ msgstr "WESNOTH"
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -523,17 +524,18 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
-msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+#, no-wrap
+msgid "B<--no-log-to-file>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
 msgid ""
-"redirects logged output to a file. Log files are created in the logs "
-"directory under the userdata folder."
+"prevents redirecting logged output to a file. Log files are created in the "
+"logs directory under the userdata folder."
 msgstr ""
+"evita redirigir la salida registrada a un archivo. Los archivos de registro "
+"se crean en el directorio de registros en la carpeta de datos de usuario."
 
 #. type: TP
 #: doc/man/wesnoth.6:195
@@ -1193,17 +1195,14 @@ msgstr "muestra el número de versión y finaliza."
 
 #. type: TP
 #: doc/man/wesnoth.6:422
-#, fuzzy, no-wrap
-#| msgid "B<-v, --version>"
+#, no-wrap
 msgid "B<--simple-version>"
-msgstr "B<-v, --version>"
+msgstr "B<--simple-version>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:425
-#, fuzzy
-#| msgid "shows the version number and exits."
 msgid "shows the version number and nothing else, then exits."
-msgstr "muestra el número de versión y finaliza."
+msgstr "muestra el número de versión y nada más, y finaliza."
 
 #. type: TP
 #: doc/man/wesnoth.6:425
@@ -1508,9 +1507,6 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:538 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
 "Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
@@ -2010,40 +2006,42 @@ msgstr ""
 #: doc/man/wesnothd.6:167
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:170
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
 msgstr ""
+"Habilite el uso de TLS. Si es verdadero, también requiere que se configuren "
+"las siguientes 3 opciones."
 
 #. type: TP
 #: doc/man/wesnothd.6:170
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:173
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr "Cadena de certificados TLS completa en formato .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr "clave privada para TLS en formato .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:179
@@ -2051,6 +2049,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+"Parámetros TLS DH como archivo .pem. Generar con B<openssl dhparam -out "
+"filename.pem 4096>"
 
 #. type: TP
 #: doc/man/wesnothd.6:179
@@ -2079,7 +2079,7 @@ msgstr ""
 #: doc/man/wesnothd.6:185
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:188
@@ -2088,6 +2088,9 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"El ID del servidor cuando se usa la funcionalidad de la base de datos para "
+"almacenar información del juego. Generalmente es la versión mayor.menor de "
+"los clientes aceptados, como 1.16 o 1.17."
 
 #. type: SS
 #: doc/man/wesnothd.6:189
@@ -2097,16 +2100,13 @@ msgstr "Etiquetas globales:"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:196
-#, fuzzy
-#| msgid ""
-#| "B<[redirect]> A tag to specify a server to redirect certain client "
-#| "versions to."
 msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
 "B<[redirect]> Una etiqueta para especificar un servidor al que se "
-"redirigirán ciertas versiones de clientes."
+"redirigirán ciertas versiones de clientes. No es usado si "
+"B<versions_accepted> no está establecido."
 
 #. type: TP
 #: doc/man/wesnothd.6:197
@@ -2199,14 +2199,6 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:241
-#, fuzzy
-#| msgid ""
-#| "B<[user_handler]> Configures the user handler. Available keys vary "
-#| "depending on which user handler is set with the B<user_handler> key. If "
-#| "no B<[user_handler]> section is present in the configuration the server "
-#| "will run without any nick registration service. All additional tables "
-#| "that are needed for the B<forum_user_handler> to function can be found in "
-#| "table_definitions.sql in the Wesnoth source repository."
 msgid ""
 "B<[user_handler]> Configures the user handler. If no B<[user_handler]> "
 "section is present in the configuration the server will run without any nick "
@@ -2215,13 +2207,13 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
-"B<[user_handler]> Configura el servicio de usuarios. Las opciones "
-"disponibles varían según cual servicio ha sido activado con la opción "
-"B<user_handler>. Si no hay ninguna sección B<[user_handler]> en la "
-"configuración, el servidor funcionará sin ningún servicio de registro de "
-"usuarios. Todas las tablas adicionales que se necesitan para que funcione "
-"B<forum_user_handler> pueden encontrarse en table_definitions.sql en el "
-"repositorio de fuentes de Wesnoth."
+"B<[user_handler]> Configura el servicio de usuarios. Si no hay ninguna "
+"sección B<[user_handler]> en la configuración, el servidor funcionará sin "
+"ningún servicio de registro de usuarios. Todas las tablas adicionales que se "
+"necesitan para que funcione B<forum_user_handler> pueden encontrarse en "
+"table_definitions.sql en el repositorio de fuentes de Wesnoth. Requiere "
+"soporte mysql activado. Para cmake es B<ENABLE_MYSQL> y por scons es "
+"B<forum_user_handler.>"
 
 #. type: TP
 #: doc/man/wesnothd.6:242
@@ -2275,10 +2267,6 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
@@ -2353,26 +2341,20 @@ msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:272
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"El nombre de la tabla en la que sus foros phpbb almacenan los datos de sus "
+"El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus "
 "grupos de usuarios. Generalmente éste será E<lt>table-prefixE<gt>_user_group "
 "(por ej.: phpbb3_user_group)."
 
 #. type: TP
 #: doc/man/wesnothd.6:272
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:275
@@ -2380,50 +2362,43 @@ msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
+"El nombre de la tabla en la que almacenar los tiempos de inicio/cierre de "
+"sesión. También se utiliza para hacer coincidir las direcciones IP con los "
+"usuarios y viceversa."
 
 #. type: TP
 #: doc/man/wesnothd.6:275
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:278
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus "
-"usuarios. Generalmente éste será E<lt>table-prefixE<gt>_users (por ej.: "
-"phpbb3_users)."
+"El nombre de la tabla en la que sus foros phpBB almacenan la información de "
+"sus conversaciones (hilos). Generalmente éste será E<lt>table-"
+"prefixE<gt>_topics (por ej.: phpbb3_topics)."
 
 #. type: TP
 #: doc/man/wesnothd.6:278
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:281
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
 "El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus "
-"usuarios. Generalmente éste será E<lt>table-prefixE<gt>_users (por ej.: "
-"phpbb3_users)."
+"usuarios baneados. Generalmente éste será E<lt>table-prefixE<gt>_banlist "
+"(por ej.: phpbb3_banlist)."
 
 #. type: TP
 #: doc/man/wesnothd.6:281

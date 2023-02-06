@@ -65,6 +65,7 @@ attack_type::attack_type(const config& cfg) :
 	defense_weight_(cfg["defense_weight"].to_double(1.0)),
 	accuracy_(cfg["accuracy"]),
 	movement_used_(cfg["movement_used"].to_int(100000)),
+	attacks_used_(cfg["attacks_used"].to_int(1)),
 	parry_(cfg["parry"]),
 	specials_(cfg.child_or_empty("specials")),
 	changed_(true)
@@ -108,6 +109,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::string& filter_accuracy = filter["accuracy"];
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
+	const std::string& filter_attacks_used = filter["attacks_used"];
 	const std::vector<std::string> filter_name = utils::split(filter["name"]);
 	const std::vector<std::string> filter_type = utils::split(filter["type"]);
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
@@ -134,6 +136,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if (!filter_movement.empty() && !in_ranges(attack.movement_used(), utils::parse_ranges(filter_movement)))
+		return false;
+
+	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges(filter_attacks_used)))
 		return false;
 
 	if ( !filter_name.empty() && std::find(filter_name.begin(), filter_name.end(), attack.id()) == filter_name.end() )
@@ -295,6 +300,8 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_parry = cfg["set_parry"];
 	const std::string& increase_movement = cfg["increase_movement_used"];
 	const std::string& set_movement = cfg["set_movement_used"];
+	const std::string& increase_attacks_used = cfg["increase_attacks_used"];
+	const std::string& set_attacks_used = cfg["set_attacks_used"];
 	// NB: If you add something here that requires a description,
 	// it needs to be added to describe_modification as well.
 
@@ -396,6 +403,14 @@ bool attack_type::apply_modification(const config& cfg)
 		movement_used_ = utils::apply_modifier(movement_used_, increase_movement, 1);
 	}
 
+	if(set_attacks_used.empty() == false) {
+		attacks_used_ = std::stoi(set_attacks_used);
+	}
+
+	if(increase_attacks_used.empty() == false) {
+		attacks_used_ = utils::apply_modifier(attacks_used_, increase_attacks_used, 1);
+	}
+
 	if(set_attack_weight.empty() == false) {
 		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
 	}
@@ -435,6 +450,8 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		const std::string& set_parry = cfg["set_parry"];
 		const std::string& increase_movement = cfg["increase_movement_used"];
 		const std::string& set_movement = cfg["set_movement_used"];
+		const std::string& increase_attacks_used = cfg["increase_attacks_used"];
+		const std::string& set_attacks_used = cfg["set_attacks_used"];
 
 		std::vector<t_string> desc;
 
@@ -520,6 +537,24 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
+		if(!set_attacks_used.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
+				"$number attack used",
+				"$number attacks used",
+				std::stoi(set_attacks_used),
+				{{"number", set_attacks_used}}));
+		}
+
+		if(!increase_attacks_used.empty()) {
+			desc.emplace_back(VNGETTEXT(
+				// TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
+				"<span color=\"$color\">$number_or_percent</span> attack used",
+				"<span color=\"$color\">$number_or_percent</span> attacks used",
+				std::stoi(increase_attacks_used),
+				{{"number_or_percent", utils::print_modifier(increase_attacks_used)}, {"color", increase_attacks_used[0] == '-' ? "#f00" : "#0f0"}}));
+		}
+
 		*description = utils::format_conjunct_list("", desc);
 	}
 
@@ -541,6 +576,7 @@ void attack_type::write(config& cfg) const
 	cfg["defense_weight"] = defense_weight_;
 	cfg["accuracy"] = accuracy_;
 	cfg["movement_used"] = movement_used_;
+	cfg["attacks_used"] = attacks_used_;
 	cfg["parry"] = parry_;
 	cfg.add_child("specials", specials_);
 }

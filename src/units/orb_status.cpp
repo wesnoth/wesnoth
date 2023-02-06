@@ -28,7 +28,7 @@ bool orb_status_helper::prefs_show_orb(orb_status os)
 	case orb_status::partial:
 		return preferences::show_partial_orb();
 	case orb_status::allied:
-		return preferences::show_allied_orb();
+		return preferences::show_ally_orb();
 	case orb_status::enemy:
 		return preferences::show_enemy_orb();
 	default:
@@ -45,7 +45,7 @@ std::string orb_status_helper::get_orb_color(orb_status os)
 	case orb_status::moved:
 		return preferences::moved_color();
 	case orb_status::disengaged:
-		return preferences::disengaged_color();
+		[[fallthrough]]; // use partial_color() for any context that wants a single color
 	case orb_status::partial:
 		return preferences::partial_color();
 	case orb_status::allied:

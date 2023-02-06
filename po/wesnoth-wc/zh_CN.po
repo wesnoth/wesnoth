@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-09-03 10:08+0800\n"
+"PO-Revision-Date: 2023-01-27 15:15+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -226,19 +226,15 @@ msgstr "神器"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
 msgid "Recruits"
-msgstr ""
+msgstr "新兵"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
 msgstr "逃兵"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
 msgstr "指挥官"
 
@@ -251,10 +247,8 @@ msgstr "英雄"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
-#, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "随机"
+msgstr "随机首领"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -265,20 +259,18 @@ msgstr "设置"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "世界征服 1p"
+msgstr "使用世界征服的单位标记"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "使用<b>世界征服</b>的试验性物品捡取机制"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "显示捡取确认框"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
@@ -287,10 +279,8 @@ msgstr "难度"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "世界征服"
+msgstr "世界征服版本"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -314,7 +304,7 @@ msgstr "之后："
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "获取此物品"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -366,43 +356,37 @@ msgstr "地图："
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "地图尺寸"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "村庄密度"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "主楼尺寸"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "派系"
+msgstr "迭代次数"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-#, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "水"
+msgstr "地形因子"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "岛屿因子"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "秘密典籍"
+msgstr "主楼数量"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -3949,6 +3933,9 @@ msgstr ""
 msgid "Campaign Maintenance"
 msgstr ""
 
+#~ msgid "Use World Conquest PYA mod"
+#~ msgstr "使用世界征服的PYA模组"
+
 #~ msgid "Preset Advancement"
 #~ msgstr "预设升级"
 
@@ -3960,6 +3947,9 @@ msgstr ""
 #~ "目前，指定给我的升级目标是：$name\n"
 #~ "\n"
 #~ "你的新命令是什么？"
+
+#~ msgid "Random"
+#~ msgstr "随机"
 
 #~ msgid " and "
 #~ msgstr " 和 "
@@ -3987,6 +3977,9 @@ msgstr ""
 
 #~ msgid "full movement"
 #~ msgstr "全速移动"
+
+#~ msgid "terrain^water"
+#~ msgstr "水"
 
 #~ msgid "improved defenses"
 #~ msgstr "防御力改善"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2015-11-03 13:30+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -4435,6 +4435,35 @@ msgstr "Cancelar"
 msgid "No planned advancement"
 msgstr "Sem avanço"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Units"
+msgid "Unit Test "
+msgstr "Unidades"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Bomb"
+msgid "Bob"
+msgstr "Bomba"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
 #
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
@@ -5811,29 +5840,29 @@ msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "A enviar o extra: <i>$addon_title|</i>..."
 
 #
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "A remover o extra: <i>$addon_title|</i> do servidor..."
 
 #
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "A carregar o extra: <i>$addon_title|</i>..."
 
 #
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Gestor de extras"
 
 #
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "A enviar o extra: <i>$addon_title|</i>..."
 
 #
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5842,7 +5871,7 @@ msgstr ""
 "pode ser instalado."
 
 #
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 #, fuzzy
 #| msgid ""
 #| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
@@ -5855,12 +5884,12 @@ msgstr ""
 "pode ser instalado."
 
 #
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
 #
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5875,12 +5904,12 @@ msgstr[1] ""
 "foram publicados ou disponíveis do servidor. Queres mesmo assim instalar-os?"
 
 #
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Dependências que não funcionam"
 
 #
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5894,12 +5923,12 @@ msgstr[1] ""
 "continuar?"
 
 #
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "Instalação falhada das dependências"
 
 #
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5908,22 +5937,22 @@ msgstr ""
 "ser perdidos para sempre se continuares:"
 
 #
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Ficheiro de informações de publicação (.pbl)"
 
 #
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Informação do sistema de controlo de versão (VCS)"
 
 #
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "Queres mesmo continuar?"
 
 #
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Confirmar"

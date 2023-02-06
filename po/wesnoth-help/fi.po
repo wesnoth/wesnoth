@@ -5,13 +5,13 @@
 # Santtu Pajukanta <santtu@pajukanta.fi>, 2007.
 # Samu Voutilainen <smar@smar.fi>, 2010, 2011.
 # Jarkko Patteri <jarkkopatteri@gmail.com>, 2011, 2012.
-# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022.
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
-"PO-Revision-Date: 2022-07-22 19:18+0300\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"PO-Revision-Date: 2023-01-10 01:21+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -45,13 +45,28 @@ msgid "fearless"
 msgstr "peloton"
 
 #. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
 #: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
 msgid "plague"
 msgstr "rutto"
+
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/abilities.cfg:442
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
+"yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
+"tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -67,16 +82,6 @@ msgstr "hoivaa +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Heals +4:\n"
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -85,7 +90,6 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hoivaa +4:\n"
 "Yksikkö voi hoivata viereisiä ystävällisiä yksiköitä oman vuoronsa alussa.\n"
 "\n"
 "Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 4 EP per vuoro, tai "
@@ -98,10 +102,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " Tämä yksikkö kykenee perustason hoivaamiseen."
+msgstr ""
+"Tämä yksikkö kykenee perustason hoivaamiseen ja hidastamaan nestehukan "
+"vaikutusta."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
@@ -117,16 +121,6 @@ msgstr "hoivaa +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -136,11 +130,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hoivaa +8:\n"
 "Tämä yksikkö yhdistää taikuutta ja luontaislääkkeitä hoivaten yksiköitä "
 "nopeammin kuin taistelurintamalla on normaalisti mahdollista.\n"
 "\n"
-"Hoivattu yksikkö saa enintään 8 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
+"Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 8 EP per vuoro, tai "
+"yksikön ollessa myrkytetty, kumoaa myrkyn vaikutuksen.\n"
+"\n"
 "Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
 "lääkitsijältä tai kylässä."
 
@@ -156,16 +151,6 @@ msgstr "hoivaa +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "Heals +8:\n"
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -175,26 +160,22 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Hoivaa +8:\n"
-"Tämä yksikkö yhdistää taikuutta ja luontaislääkkeitä hoivaten yksiköitä "
-"nopeammin kuin taistelurintamalla on normaalisti mahdollista.\n"
+"Tämä yksikkö yhdistää yrttilääkkeet ja taikuuteen hoivatakseen yksiköitä "
+"nopeammin kuin normaalisti on mahdollista taistelukentällä.\n"
 "\n"
-"Hoivattu yksikkö saa enintään 8 EP per vuoro, tai estää myrkyn vaikutuksen.\n"
+"Tämän hoivaajan toimesta hoivattu yksikkö saa enintään 12 EP per vuoro, tai "
+"yksikön ollessa myrkytetty, kumoaa myrkyn vaikutuksen.\n"
 "Hoivaaja ei voi parantaa yksikköä myrkytyksestä, sillä se onnistuu vain "
 "lääkitsijältä tai kylässä."
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-" Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä ja parantamaan "
-"myrkytykset."
+"Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä, hidastamaan "
+"nestehukan vaikutusta ja parantamaan myrkytykset."
 
 #. [artifact]
 #. [chance]
@@ -338,19 +319,15 @@ msgstr "Kartta ja skenaario editori"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
-#, fuzzy
-#| msgid "Terrain Modifiers"
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:349
 msgid "Terrain Editor"
-msgstr "Maaston vaikutus"
+msgstr "Maastoeditori"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
-#, fuzzy
-#| msgid "Terrain Modifiers"
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:361
 msgid "Scenario Editor"
-msgstr "Maaston vaikutus"
+msgstr "Skenaarioeditori"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -619,8 +596,97 @@ msgid ""
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
 
-#. [topic]: id=editor_deprecated_overlay
+#. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Terrain Editor"
+msgid "Terrain Elevation Graphics"
+msgstr "Maastoeditori"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:174
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:176
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:181
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:183
+msgid "Raised elevation on-map marker"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:191
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:202
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:207
 #, fuzzy
 #| msgid "Terrain"
 msgid "Deprecated Terrain"
@@ -629,7 +695,7 @@ msgstr "maasto"
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:210
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -645,12 +711,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:223
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:224
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -664,12 +730,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:239
 msgid "Item Tool (Scenery Tool)"
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:240
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -684,12 +750,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:253
 msgid "Village Ownership Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:254
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -704,12 +770,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:268
 msgid "Unit Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:269
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -724,12 +790,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:284
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:285
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -756,12 +822,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:306
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:307
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -771,12 +837,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:317
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:318
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -808,7 +874,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:330
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -834,7 +900,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:350
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -849,7 +915,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:362
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -858,7 +924,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:364
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -869,7 +935,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:371
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -884,7 +950,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:379
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -903,12 +969,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:391
 msgid "Using a separate file for WML events"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:392
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -961,12 +1027,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:430
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:431
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -974,14 +1040,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:439
 #, fuzzy
 #| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
 msgstr "Vuorokaudenaika"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:440
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -994,13 +1060,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:451
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:453
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1016,32 +1082,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:458
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:459
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:460
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:472
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:473
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:475
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1072,7 +1138,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:488
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1092,7 +1158,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1105,7 +1171,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
+#: data/core/editor/help.cfg:500
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -1146,12 +1212,12 @@ msgstr "Tietosanakirja"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Maantietoa'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Kalenteri'</ref>\n"
+"<ref>dst='..geography' text='Maantietoa'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
@@ -1179,6 +1245,21 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Wesnothin kalenteri koostuu 12 kuukaudesta. Järjestyksessä ne ovat:\n"
+"\n"
+"Valkotuli\n"
+"Itkevä kuu\n"
+"Siemenkylvö\n"
+"Syväjuuri\n"
+"Näkijän kukka\n"
+"Okatar\n"
+"Tähden huippu\n"
+"Tulensytytys\n"
+"Hiljansiemen\n"
+"Sadonkorjuun kuu\n"
+"Huurrekukka\n"
+"Mustatuli\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1203,10 +1284,8 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:32
-#, fuzzy
-#| msgid "Great Ocean"
 msgid "Great River"
-msgstr "Suuri valtameri"
+msgstr "Suurijoki"
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:33
@@ -1748,7 +1827,7 @@ msgstr ""
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:160
 msgid "Far North"
-msgstr "Pohjoisen maa"
+msgstr ""
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:161
@@ -1853,10 +1932,8 @@ msgstr ""
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
-#, fuzzy
-#| msgid "Time of Day"
 msgid "Time of Day Schedule"
-msgstr "Vuorokaudenaika"
+msgstr "Vuorokausiohjelma"
 
 #. [section]: id=introduction
 #. [topic]: id=..introduction
@@ -1923,16 +2000,6 @@ msgstr "Komennot"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:96
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Battle for Wesnoth'</italic> is a turn-based fantasy "
-#| "strategy game somewhat unusual among modern strategy games. While other "
-#| "games strive for complexity, <italic>text='Battle for Wesnoth'</italic> "
-#| "strives for simplicity of both rules and gameplay. This does not make the "
-#| "game simple, however — from these simple rules arise a wealth of "
-#| "strategy, making the game easy to learn but a challenge to master."
 msgid ""
 "\n"
 "\n"
@@ -1957,7 +2024,12 @@ msgstr ""
 "Wesnothista'</italic> pyrkii sääntöjen ja pelattavuuden yksinkertaisuuteen. "
 "Tämä ei kuitenkaan tarkoita, että peli olisi yksinkertainen. Näistä "
 "yksinkertaisista säännöistä voi luoda monenlaisia strategioita, joten "
-"pelaamista on helppo oppia, mutta vaikea hallita."
+"pelaamista on helppo oppia, mutta vaikea hallita.\n"
+"\n"
+"Seuraavilla sivuilla kerrotaan kaikki, mitä sinun tulee tietää pelataksesi "
+"Wesnothia. Samalla kun pelaat ja kohtaat pelin uusia puolia, uutta tietoa "
+"lisätään eri luokkiin, Tarkempia tietoja erikoistilanteista ja poikkeuksista "
+"löydät mukana olevista linkeistä."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:106
@@ -1986,6 +2058,24 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
+"Peliä pelataan heksa-pohjaisella pelikentällä, jossa yksiköitäsi vastaan "
+"taistelee, tietokoneohjattu vihollinen, ystävät, jotka kukin vuorottelevat "
+"samalla tietokoneella (paikallinen peli), muut samassa verkossa olevat "
+"pelaajat tai pelaajat ympäri maailmaa moninpelitilassa.\n"
+"\n"
+"Jokaista näistä taisteluista kutsutaan <italic>text='skenaarioksi'</italic>, "
+"joista voidaan yhdistelemällä luoda kokonainen <italic>text='kampanja'</"
+"italic>. Pelin mukana toimitettavien kampanjoiden lisäksi Wesnoth tukee "
+"käyttäjien luomaa sisältöä, ja lisäosapalvelin tarjoaa satoja mukautettuja "
+"karttoja, kampanjoita, aikakausia, liittoumia ja resursseja.\n"
+"\n"
+"Peli käyttää myös ihmisten luettavissa olevaa Wesnoth Markup Language (WML), "
+"jonka avulla käyttäjät voivat helposti luoda omaa sisältöään, sekä täysin "
+"varusteltu kartta- ja skenaarioeditori omien taistelukenttien suunnittelua "
+"varten.\n"
+"\n"
+"<italic>text='Taistelu Wesnothista'</italic>-projekti aloitettiin vuonna "
+"2003, ja sen parissa on työskennellyt monet vapaaehtoiset siitä lähtien."
 
 #. [topic]: id=..units
 #: data/core/help.cfg:119
@@ -1997,6 +2087,12 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"Tässä osiossa luetellaan kaikki yksiköt, jotka löydät tutkiessasi Wesnothin "
+"maailmaa. Kun kohtaat uuden yksikön kampanjan tai moninpelin aikana, se "
+"lisätään rotunsa alaosioon. Voit tarkastella sen sivua milloin tahansa. "
+"Yksikön sivulla on yleinen kuvaus, sen tilastot, hyökkäykset, vastustukset "
+"sekä liike- ja puolustusarvot.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:128
@@ -4939,17 +5035,6 @@ msgstr ""
 "yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
 "tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
 
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
-"yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
-"tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
-
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:454
 msgid ""
@@ -5312,7 +5397,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 msgid ""
 "Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -5320,7 +5405,7 @@ msgstr ""
 "Henkiolennot kestävät vahinkoa epätavallisen paljon, ja pystyvät myös "
 "liikkumaan hitaahkosti veden päällä."
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -5328,22 +5413,22 @@ msgstr ""
 "Tämän yksikön salatiedehyökkäys tekee valtavaa vahinkoa maagisille "
 "olennoille, ja jopa joillekin maallisille olennoille."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "Tämä yksikkö kykenee perustason hoivaamiseen."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 msgid "This unit is capable of rapid healing."
 msgstr "Tämä yksikkö kykenee nopeaan hoivaamiseen."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 "Tämä yksikkö pystyy hoivaamaan ympärillään olevia yksiköitä ja parantamaan "
 "myrkytykset."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
@@ -5351,7 +5436,7 @@ msgstr ""
 "Tämä yksikkö pystyy neutralisoimaan myrkyn vaikutukset yksiköistä hänen "
 "ympäriltään."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -5359,7 +5444,7 @@ msgstr ""
 "Tämä yksikkö uusiutuu, jolloin se paranee missä tahansa kuten kylässä oleva "
 "normaali yksikkö."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5367,7 +5452,7 @@ msgstr ""
 "Tämä yksikkö on sisukas. Kun se puolustautuu, se ottaa vähemmän vauriota "
 "joistain hyökkäyksistä."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5376,7 +5461,7 @@ msgstr ""
 "tekemään enemmän vahinkoa taistelussa, joskin tämä pätee vain "
 "alempitasoisiin yksiköihin."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5384,13 +5469,13 @@ msgstr ""
 "Tämä yksikkö on tottunut kahakoimaan, ja pystyy siksi liikkumaan normaalisti "
 "myös vihollisten läheisyydessä."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr ""
 "Tämä yksikkö hohtaa valoa. Se muuttaa läheisten alueiden valaistustason "
 "astetta kirkkaammaksi."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5398,7 +5483,7 @@ msgstr ""
 "Tämä yksikkö voi käyttää yhden liikepisteen kaukosiirtyäkseen minkä tahansa "
 "tyhjän sekä oman puolensa kylän välillä."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5407,11 +5492,11 @@ msgstr ""
 "sitä, paitsi jos nämä ovat sen vieressä, tai jos yksikkö on itse paljastanut "
 "olinpaikkansa hyökkäämällä."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "Tämä yksikkö pystyy piiloutumaan yöllä jäljettömiin."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5419,14 +5504,14 @@ msgstr ""
 "Tämä yksikkö voi piileskellä kylissä (poikkeuksena vesikylät), ja pysyä "
 "piilossa vastustajilta, paitsi niiltä, jotka seisovat tämän yksikön vieressä."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "Tämä yksikkö voi liikkua veden alla näkymättömänä, koska sen ei tarvitse "
 "nousta pintaan hengittämään."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -5434,7 +5519,7 @@ msgstr ""
 "Tämä yksikkö saa yhden elämäpisteen maksimimääräänsä aina tappaessaan elävän "
 "yksikön."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5443,7 +5528,7 @@ msgstr ""
 "hyökätessään. Käyttäessään tällaista hyökkäystä, yksikkö jatkaa taistelua, "
 "kunnes vihollinen tai se itse on tuhottu."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5452,7 +5537,7 @@ msgstr ""
 "Jos kohteen vastakkaisella puolella on kohteelle vihamielinen yksikkö, tämä "
 "yksikkö voi puukottaa aiheuttaen kaksinkertaisen vahingon."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5460,7 +5545,7 @@ msgstr ""
 "Jos vihollinen kuolee tämän yksikön levittämään ruttoon, se herää henkiin "
 "epäkuolleena, ellei yksikkö ole kylässä."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5468,14 +5553,14 @@ msgstr ""
 "Tämä yksikkö pystyy hidastamaan vihollisiaan. Hidastus puolittaa "
 "liikkumisnopeuden ja hyökkäysvahingon oman puolen vuoron loppuun saakka."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 "Tämä yksikkö on erityisen vaarallinen, koska se pystyy kivettämään elävät "
 "yksiköt."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5483,7 +5568,7 @@ msgstr ""
 "Tämä yksikkö on kokenut tarkk’ampuja. Se osuu hyökätessään melko varmasti "
 "viholliseen maastosta riippumatta."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5491,7 +5576,7 @@ msgstr ""
 "Tällä yksiköllä on maagisia hyökkäyksiä, joilla on aina suuri mahdollisuus "
 "osua vastustajaan."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -5499,7 +5584,7 @@ msgstr ""
 "Tämä yksikkö on parvi. Jos se kärsii vauriota, sen yksilöt kuolevat ja "
 "hyökkäykset heikkenevät vastaavasti."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -5507,12 +5592,12 @@ msgstr ""
 "Tämä yksikkö tekee rynnäköidessään kaksinkertaiset vauriot, mutta myös "
 "kärsii kaksinkertaisesti. Puolustaessaan yksikkö tekee vauriota normaalisti."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr "Tämä yksikkö imee uhriensa elinvoiman itselleen."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5520,7 +5605,7 @@ msgstr ""
 "Tällä yksiköllä on pitkä keihäs tai hilpari, joten se saa lyödä taistelussa "
 "ensimmäisenä myös puolustautuessaan."
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5528,17 +5613,18 @@ msgstr ""
 "Tämä yksikkö myrkyttää. Sen uhrit kärsivät jatkuvasti vahinkoa, kunnes ne "
 "pääsevät parannettaviksi joko kaupungissa tai lääkitsevän yksikön vieressä."
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-msgid "Special Notes:"
-msgstr "Erityistiedot:"
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#: data/core/macros/special-notes.cfg:119
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
+msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6350,55 +6436,6 @@ msgstr "Kääpiöt"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:90
-#, fuzzy
-#| msgid ""
-#| "The dwarves are a race famed for their miners, blacksmiths, merchants and "
-#| "warriors. Considered as the third oldest race on the great continent "
-#| "after the elves and trolls, their early history is shrouded in mystery. "
-#| "Legends tell of a time long forgotten when their people began emerging "
-#| "from their underground world through caves. Nothing is known about their "
-#| "life prior to their arrival, or their reasons for entering the surface "
-#| "world, but they have been an integral part of the history of the "
-#| "continent since. Soon after their emergence from the underground, the "
-#| "dwarves entered into conflict with the original inhabitants of the land, "
-#| "the elves. The original reason for their dispute has been lost to "
-#| "history, but the two races have since fought three long wars, interrupted "
-#| "by a few decades of peace. During these wars the dwarves could not "
-#| "dislodge the elves from the deep forests in the south, but managed to "
-#| "consolidate their position in hills and the mountains in the north of the "
-#| "continent, known now as the Northlands. Since then they have constructed "
-#| "fantastic fortifications and settlements deep within the mountains and "
-#| "crags of their territory.\n"
-#| "\n"
-#| "Possibly due to their isolation, the dwarves are generally distrustful or "
-#| "hostile towards most other races, particularly the elves. The single "
-#| "exception to this temperament is towards humans. This could be traced "
-#| "back to the era of Haldric I and the arrival of humans and orcs to the "
-#| "continent. At this point the dwarves began allowing some humans, mostly "
-#| "dissidents and outlaws from the Kingdom of Wesnoth, to settle in certain "
-#| "areas of the Northlands. Their motivation was unsurprising. The plight of "
-#| "these individuals reminded the dwarves of their early history of "
-#| "persecution, eliciting a sense of solidarity. The dwarves also had much "
-#| "to gain in forming a bond with these outcasts. They would settle in areas "
-#| "where dwarves disliked living themselves; plains, forests, and swamps, "
-#| "freeing them from defending these areas.\n"
-#| "\n"
-#| "Dwarves are of small stature by human measure, but they are by no means "
-#| "fragile. Their warriors, tough and powerful are both feared and respected "
-#| "throughout the continent for their prowess in battle. In addition, "
-#| "dwarves are known for their calculating intellects and superb "
-#| "craftsmanship. Dwarven smiths are renowned for their deadly weapons and "
-#| "heavy armor. These accouterments are unrivaled in quality, possibly only "
-#| "matched by those produced by drake armorers. Their intelligence and "
-#| "natural inquisitiveness has also made them the most technically advanced "
-#| "race on the continent. One of their most famous, and feared, discoveries "
-#| "was a mysterious powder that produces an immense explosion when exposed "
-#| "to fire or sparks. Certain dwarf warriors use this powder to hurl small "
-#| "objects at tremendous speeds. Given their technological inclinations, "
-#| "many dwarves tend to distrust magic users. However some practice a form "
-#| "of magic based on the engraving of runes. Called runesmiths, they use "
-#| "these carvings to enchant items in order to augment certain aspects of "
-#| "their natures."
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -6447,23 +6484,22 @@ msgid ""
 "augment certain aspects of their natures."
 msgstr ""
 "Kääpiöiden rotu on kuuluisa kaivosmiehistään, sepistään, kauppiaistaan ja "
-"sotureistaan. Heitä pidetään Suuren mantereen kolmanneksi vanhimpana rotuna, "
+"sotureistaan. Heitä pidetään Suurmantereen kolmanneksi vanhimpana rotuna, "
 "heti haltioiden ja peikkojen jälkeen, ja heidän varhaishistoriansa on "
 "mysteerien peittämä. Legendat kertovat, nykyään jo unohdetusta ajasta, "
 "jolloin he alkoivat ilmestymään heidän maanalaisesta maailmastaan luolien "
 "lävitse. Heidän silloisesta elämästä ennen heidän saapumisestaan, tai "
 "syistään maanpäälliselle maailmalle ilmestymisestään, ei tiedetä, mutta "
-"siitä lähtien he ovat olleet olennainen osa mantereen historiaa. Pian, "
-"heidän ilmestymisensä jälkeen, kääpiöt päätyivät konfliktiin "
-"alkuperäisasukkaiden, haltioiden, kanssa. Kiistan alkuperäinen syy on "
-"kadonnut historian hämäriin, mutta sittemmin nämä kaksi rotua ovat "
-"taistelleet kolme pitkää sotaa, joiden välissä oli vain muutaman "
-"vuosikymmenen rauhan aikakausia. Näiden sotien aikana kääpiöt eivät "
-"onnistuneet irroittamaan haltioita syvistä metsistään etelässä, mutta "
-"onnistuivat lujittamaan paikkaansa kukkuloilla ja vuorilla mantereen "
-"pohjoispuolella, jotka tunnetaan nykyään Pohjanmaana. Siitä lähtien he ovat "
-"rakentaneet fantastisia linnoituksia ja siirtokuntia syvälle vuoristoihin ja "
-"louhikkoihin alueellaan.\n"
+"siitä lähtien he ovat olleet olennainen osa mantereen historiaa. Pian heidän "
+"ilmestymisensä jälkeen, kääpiöt päätyivät konfliktiin alkuperäisasukkaiden, "
+"haltioiden kanssa. Kiistan alkuperäinen syy on kadonnut historian hämäriin, "
+"mutta sittemmin nämä kaksi rotua ovat taistelleet kolme pitkää sotaa, joiden "
+"välissä oli vain muutaman vuosikymmenen rauhan aikakausia. Näiden sotien "
+"aikana kääpiöt eivät onnistuneet karkoittamaan haltioita syvistä metsistään "
+"etelässä, mutta onnistuivat lujittamaan paikkaansa kukkuloilla ja vuorilla "
+"mantereen pohjoispuolella, jotka tunnetaan nykyään Pohjoisen maina. Siitä "
+"lähtien he ovat rakentaneet suurenmoisia linnoituksia ja siirtokuntia "
+"syvälle vuoristoihin ja louhikkoihin alueellaan.\n"
 "\n"
 "Ehkäpä johtuen heidän eristyneisyydestään, kääpiöt ovat yleisesti ottaen "
 "epäluottavaisia tai vihamielisiä useimpia rotuja, erityisesti haltioita, "
@@ -6477,25 +6513,24 @@ msgstr ""
 "tunnetta. Kääpiöillä oli myös paljon saatavana siteestä näiden hylkiöiden "
 "kanssa. He asuttaisivat alueet, joilla kääpiöt eivät itse halunneet asua: "
 "tasangot, metsät ja suot, vapauttaen heidät puolustamasta näitä alueita. "
-"Myöhemmin, kun heitä örkit uhkasivat heitä, kääpiöt ja heidän "
-"ihmisliittolaiset muodostivat Knalgan liittouman puolustaakseen heidän "
-"valtakuntaansa.\n"
+"Myöhemmin, kun örkit uhkasivat heitä, kääpiöt ja heidän ihmisliittolaiset "
+"muodostivat Knalgan liittokunta puolustaakseen heidän valtakuntaansa.\n"
 "\n"
-"Kääpiöt ovat pieni kansa ihmisten mittakaavalla, mutta he eivät ole missään "
-"mielessä hauraita. Heidän soturinsa ovat karskeja ja voimakkaita, sekä "
-"pelättyjä, että kunnioitettuja koko mantereella kyvykkyydestään taistelussa. "
-"Lisäksi, kääpiöt ovat tunnettuja laskelmoivasta älykkyydestään ja "
-"erinomaisesta käsityöstään. Kääpiösepät ovat maineikkaita kuolettavista "
+"Kääpiöt ovat pienikokoisia ihmisten mittakaavalla, mutta he eivät ole "
+"missään mielessä hauraita. Heidän soturinsa ovat karskeja ja voimakkaita, "
+"sekä pelättyjä, että kunnioitettuja koko mantereella kyvykkyydestään "
+"taistelussa. Lisäksi, kääpiöt ovat tunnettuja laskelmoivasta älykkyydestään "
+"ja erinomaisesta käsityöstään. Kääpiösepät ovat maineikkaita kuolettavista "
 "aseistaan ja painavista panssareistaan. Nämä varustukset ovat lyömättömiä "
-"laadussaan, kenties vain mahtavimmat draakkisepät kykenevät vvastaamaan "
-"haasteeseen. Heidän älykkyytensä ja luonnollisen uteliaisuutensa on myös "
-"tehnyt heidät teknisesti kehittyneimmäksi roduksi mantereella. Heidän eniten "
-"kuuluisin, ja pelätyin, löytö on mysteerinen jauhe, joka aiheuttaa "
+"laadussaan, kenties vain mahtavimmat draakkisepät kykenevät vastaamaan "
+"siihen haasteeseen. Heidän älykkyytensä ja luonnollisen uteliaisuutensa on "
+"myös tehnyt heidät teknisesti kehittyneimmäksi roduksi mantereella. Heidän "
+"eniten kuuluisin, ja pelätyin, löytö on mysteerinen jauhe, joka aiheuttaa "
 "välittömän räjähdyksen joutuessaan kosketuksiin kipinöiden tai tulen kanssa. "
 "Tietyt kääpiösoturit käyttävät tätä jauhetta paiskatakseen pieniä esineitä "
-"uskomattomalla nopeudella. Teknologiaviettymystensä takia kääpiöt tuppaavat "
-"vieroksumaan taikuuden käyttäjiä. Kuitenkin, kääpiöillä on riimuseppiä, "
-"jotka ehostavat heidän omia, luonnollisia kykyjään."
+"uskomattomalla nopeudella. Teknologian kiinnostuksensa takia kääpiöt "
+"tuppaavat vieroksumaan taikuuden käyttäjiä. Kuitenkin, kääpiöillä on "
+"riimuseppiä, jotka ehostavat heidän omia, luonnollisia kykyjään."
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
@@ -7185,22 +7220,6 @@ msgstr "Jätit"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:322
-#, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -7221,16 +7240,16 @@ msgstr ""
 "mantereen erämaissa. Ruumiiltaan ne muistuttavat ihmisiä tai örkkejä mutta "
 "ovat vahvempia. Niiden pennut pystyvät päihittämään tavallisen miehen ennen "
 "kuin ovat täysikasvuisia. Jätit eivät ole tervetulleita alueille joissa "
-"ihmisiä asuu, yleensä ne pysyvät ihmisten alueelta kaukana tai ajetaan "
-"sieltä pois väkisin. Sen sijasta ne lymyilevät sivistyksen rajamailla "
-"olevissa vuoristoissa. Siellä nälkäiset jättirosvot uhkaavat jatkuvasti "
-"matkalaisia ja kauppiaita. Vaikka jätit eivät ole erityisen älykkäitä tai "
-"nopeita, kovuutensa ja vahvuutensa takia ne ovat arvokas lisä muiden rotujen "
-"armeijoihin. Niitä arvostavat erityisesti sellaiset häikäilemättömät "
-"komentajat joita ei jättien raakuus häiritse. Jättien elämästä tai "
-"yhteisöstä tiedetään vähän. Ei voida olla edes varmoja onko niillä yhteisöä, "
-"mutta niiden on havaittu hyökkäilevän yhdessä susien ja muiden petojen "
-"kanssa. Jättien suhteesta eläimiin ei tiedetä enempää."
+"ihmisiä asuu, ja yleensä ne pysyvätkin ihmisten alueelta kaukana tai ne "
+"ajetaan sieltä pois väkisin. Sen sijasta ne lymyilevät sivistyksen "
+"rajamailla olevissa vuoristoissa. Siellä nälkäiset jättirosvot uhkaavat "
+"jatkuvasti matkalaisia ja kauppiaita. Vaikka jätit eivät ole erityisen "
+"älykkäitä tai nopeita, kovuutensa ja vahvuutensa takia ne ovat arvokas lisä "
+"muiden rotujen armeijoihin. Niitä arvostavat erityisesti sellaiset "
+"häikäilemättömät komentajat joita ei jättien raakuus häiritse. Jättien "
+"elämästä tai yhteisöstä tiedetään vähän. Ei voida olla edes varmoja onko "
+"niillä yhteisöä, mutta niiden on havaittu hyökkäilevän yhdessä susien ja "
+"muiden petojen kanssa. Jättien suhteesta eläimiin ei tiedetä enempää."
 
 #. [race]: id=orc
 #: data/core/units.cfg:330
@@ -7249,66 +7268,6 @@ msgstr "Örkit"
 
 #. [race]: id=orc
 #: data/core/units.cfg:333
-#, fuzzy
-#| msgid ""
-#| "In appearance, orcs are half men and half beasts. They are taller, "
-#| "sturdier and stronger than humans. They are warlike, savage, and cruel by "
-#| "nature. Their blood is darker and thicker than that of normal humans and "
-#| "they have little care for personal hygiene or their personal appearance. "
-#| "Although Orcs are violent even among themselves creatures, they are pack-"
-#| "oriented; an orc never travels long or lives alone in groups smaller than "
-#| "half a dozen.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Almost every orc are a member of a tribe or a clan. Relations between "
-#| "neighboring tribes are usually violent, except in cases of a mutual enemy "
-#| "threatens their existence or prospects of great plunder override mutual "
-#| "animosity. Occasionally, a single strong chieftain may emerge to lead "
-#| "multiple tribes from time to time, usually through intimidation of "
-#| "followers. An orc tribe in times of peace tends to focus almost solely on "
-#| "strengthening itself in preparation for the next armed conflict. Orcs are "
-#| "known to possess a crude system of writing — usually in blood — although "
-#| "it’s most commonly used to trade insults or threats among tribal "
-#| "leaders.\n"
-#| "\n"
-#| "Orc societies are based on little else but strength; might makes right, "
-#| "and a leader leads and survives only as long as no one manages to wrest "
-#| "the title from him. A constant struggle for power simmers among potential "
-#| "tribal chiefs. An orcish leader rarely lives more than a handful of years "
-#| "to enjoy his absolute authority before being killed for his position — "
-#| "although history knows some notable exceptions. Orcs hold no particular "
-#| "honor code and while indisputable raw strength is usually the preferred "
-#| "method of displaying power, assassination, poisoning and backstabbing are "
-#| "completely viable means to further one’s own goals.\n"
-#| "\n"
-#| "Orcs mostly live in rural areas, often in foothills or mountainous "
-#| "regions, sometimes in caves. They grow no crops nor keep livestock, but "
-#| "are competent hunters as a result of their physical stature and "
-#| "brutality. Due to their large numbers they are capable of hunting an area "
-#| "virtually clean of anything larger than rodents in relatively short "
-#| "period of time. Due to this and their unstable leadership, orcish tribes "
-#| "tend to lead a semi-nomadic lifestyle, never settling in one region for "
-#| "too long. The larger tribes may establish themselves firmly in an area "
-#| "for years or even decades and build large encampments almost resembling "
-#| "cities, but even these are easily dismantled and abandoned if there is a "
-#| "need to relocate the horde.\n"
-#| "\n"
-#| "The oldest known orcs have been around 50 to 60 years of age, but very "
-#| "few individuals ever live to see over two or three decades before meeting "
-#| "their end either in war or by the hand of one of their kin. The oldest "
-#| "orcs are often shamans, which are perhaps the only ones most of their "
-#| "kind sees as being trustworthy and neutral. The origins of this custom "
-#| "are unknown, as the shamans do not directly contribute much to orcish "
-#| "societies but only act as advisors — not something orcs tend to otherwise "
-#| "tolerate. Shamans are in many ways the opposite of most other orcs: they "
-#| "are often physically withered and frail in comparison and lack skill in "
-#| "battle. Despite their reliance on raw strength, not nearly all orcs are "
-#| "destined to grow to possess any. Many orcs are born smaller and weaker "
-#| "than the rest, and already almost as newborns are put in their place by "
-#| "their stronger siblings. The stronger ones will routinely grab most of "
-#| "the food and thus grow stronger still, while their weaker siblings do "
-#| "not. Many of these individuals tend to specialize in other skills, like "
-#| "archery or assassination."
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7413,14 +7372,9 @@ msgstr ""
 "örkkiyhteiskuntaa paljoakaan toimien ainoastaan neuvonantajina – mitä noin "
 "yleensä örkit eivät juuri siedä. Shamaanit ovat monella tavalla useimpien "
 "muiden örkkien vastakohtia: he ovat yleensä ruumiiltaan riutuneita ja "
-"heikkoja verrattuna muihin, ja heiltä puuttuu taistelutaitoja. Huolimatta "
-"örkkien luottamuksesta raakaan voimaan, ei sellaista suinkaan kehity heille "
-"kaikille. Moni örkki syntyy muita pienempänä ja heikompana, ja jo liki "
-"vastasyntyneinä vahvemmat sisarukset näyttävät heille heidän paikkansa. "
-"Vahvemmat yksilöt riistävät rutiininomaisesti suurimman osaan ruoasta ja "
-"kasvavat näin yhä vahvemmiksi, toisin kuin heikommat sisaruksensa. Monet "
-"näistä yksilöistä tapaavat erikoistua muihin taitoihin, kuten jousiammuntaan "
-"tai salamurhaamiseen."
+"heikkoja verrattuna muihin, ja heiltä puuttuu taistelutaitoja.\n"
+"\n"
+"\n"
 
 #. [race]: id=orc
 #: data/core/units.cfg:344
@@ -7430,6 +7384,10 @@ msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
+"\n"
+"\n"
+"Örkit, jotka eivät ole poikueensa vahvimpia, tapaavat erikoistua muihin "
+"taitoihin, kuten jousiammuntaan tai salamurhaamiseen."
 
 #. [race]: id=troll
 #: data/core/units.cfg:353
@@ -7448,43 +7406,6 @@ msgstr "Peikot"
 
 #. [race]: id=troll
 #: data/core/units.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes can even tell "
-#| "them apart, it is usually easy for an orcish band to convince a group of "
-#| "trolls that by joining them they get to exact revenge on those that have "
-#| "before hunted them. These new recruits are then directed to attack "
-#| "whoever the orcs themselves are currently in conflict with, whether "
-#| "previously a foe of the trolls or not, accumulating even more enemies for "
-#| "the misled trolls. The most common enemy of trolls are dwarves, and the "
-#| "animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -7531,17 +7452,16 @@ msgstr ""
 "eikä heillä ole tarvetta hyökätä muiden rotujen edustajien kimppuun, "
 "elleivät he uhkaa peikkoja. Toisin sanoen peikkojen ei yleensä tarvitse "
 "huolehtia yhtään mistään, niinpä voivat kuluttaa aikansa nukkuen tai "
-"mietiskellen.\n"
-"\n"
-"Peikot tuntevat eriskummallista hengenheimolaisuutta luonnon kanssa. He "
-"eivät ole, haltioiden tavoin, vuorovaikutuksessa elävien asioiden kanssa, "
-"vaan sen sijaan he samaistuvat kiviin ja maahan. He ovat myös jokseenkin "
-"omalaatuisia ympäristössään, ja useat nuoret pennut jopa nauttivat "
-"matkaamisesta ja maailman näkemisestä. Samalla kun peikko kasvaa "
-"vanhemmaksi, hän tapaa muuttua koko ajan passiivisemmaksi, asteittain  "
-"menettäen kiinnostuksensa ympäristöönsä ja kuluttaen enemmän aikaasa nukkuen "
-"hiljaisessa ja tutussa nurkassa kotiluolassaan. Tämä jatkuu, kunnes peikko "
-"viimein kuolee ruumiinsa muuttuessa hitaasti elottomaksi kivipatsaaksi.\n"
+"mietiskellen. Peikot tuntevat eriskummallista hengenheimolaisuutta luonnon "
+"kanssa. He eivät ole, haltioiden tavoin, vuorovaikutuksessa elävien asioiden "
+"kanssa, vaan sen sijaan he samaistuvat kiviin ja maahan. He ovat myös "
+"jokseenkin omalaatuisia ympäristössään, ja useat nuoret pennut jopa "
+"nauttivat matkaamisesta ja maailman näkemisestä. Samalla kun peikko kasvaa "
+"vanhemmaksi, hän tapaa muuttua koko ajan passiivisemmaksi, asteittain "
+"menettäen kiinnostuksensa ympäristöönsä ja kuluttaen enemmän aikaansa "
+"nukkuen hiljaisessa ja tutussa nurkassa kotiluolassaan. Tämä jatkuu, kunnes "
+"peikko viimein kuolee ruumiinsa muuttuessa hitaasti elottomaksi "
+"kivipatsaaksi.\n"
 "\n"
 "Monet näkevät peikot vain hieman raakalaislajien yläpuolella. Tämä yleinen "
 "väärinkäsitys johtuu lähinnä siitä, että örkit suostuttelevat peikkoja "
@@ -7579,31 +7499,6 @@ msgstr "Epäkuolleet"
 #. [race]: id=undead
 #: data/core/units.cfg:379
 #, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of it’s master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and mermen tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -7805,6 +7700,11 @@ msgid ""
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
 
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
+msgid "Special Notes:"
+msgstr "Erityistiedot:"
+
 #: src/help/help_topic_generators.cpp:193
 #, fuzzy
 #| msgid "Terrain"
@@ -7884,7 +7784,7 @@ msgstr "Liikepisteitä:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:573
 msgid "Vision:"
-msgstr ""
+msgstr "Näkyvyys:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -7976,7 +7876,7 @@ msgstr "Puolustus"
 
 #: src/help/help_topic_generators.cpp:749
 msgid "Vision Cost"
-msgstr ""
+msgstr "Näkyvyyskustannus"
 
 #: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"

@@ -227,8 +227,8 @@ void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const
 	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
 }
 
-unsigned long long fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version){
-	return conn_.insert_game_content_info(uuid, game_id, type, name, id, source, version);
+unsigned long long fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version){
+	return conn_.insert_game_content_info(uuid, game_id, type, name, id, addon_id, addon_version);
 }
 
 void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
@@ -247,8 +247,8 @@ bool fuh::db_topic_id_exists(int topic_id) {
 	return conn_.topic_id_exists(topic_id);
 }
 
-void fuh::db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id) {
-	conn_.insert_addon_info(instance_version, id, name, type, version, forum_auth, topic_id);
+void fuh::db_insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader) {
+	conn_.insert_addon_info(instance_version, id, name, type, version, forum_auth, topic_id, uploader);
 }
 
 unsigned long long fuh::db_insert_login(const std::string& username, const std::string& ip, const std::string& version) {
@@ -265,6 +265,37 @@ void fuh::get_users_for_ip(const std::string& ip, std::ostringstream* out) {
 
 void fuh::get_ips_for_user(const std::string& username, std::ostringstream* out) {
 	conn_.get_ips_for_user(username, out);
+}
+
+bool fuh::db_is_user_primary_author(const std::string& instance_version, const std::string& id, const std::string& username) {
+	return conn_.is_user_author(instance_version, id, username, 1);
+}
+
+bool fuh::db_is_user_secondary_author(const std::string& instance_version, const std::string& id, const std::string& username) {
+	return conn_.is_user_author(instance_version, id, username, 0);
+}
+
+void fuh::db_delete_addon_authors(const std::string& instance_version, const std::string& id) {
+	conn_.delete_addon_authors(instance_version, id);
+}
+
+void fuh::db_insert_addon_authors(const std::string& instance_version, const std::string& id, const std::string& primary_author, const std::vector<std::string>& secondary_authors) {
+	conn_.insert_addon_author(instance_version, id, primary_author, 1);
+
+	// ignore any duplicate authors
+	std::set<std::string> inserted_authors;
+	inserted_authors.emplace(primary_author);
+
+	for(const std::string& secondary_author : secondary_authors) {
+		if(inserted_authors.count(secondary_author) == 0) {
+			inserted_authors.emplace(secondary_author);
+			conn_.insert_addon_author(instance_version, id, secondary_author, 0);
+		}
+	}
+}
+
+bool fuh::db_do_any_authors_exist(const std::string& instance_version, const std::string& id) {
+	return conn_.do_any_authors_exist(instance_version, id);
 }
 
 #endif //HAVE_MYSQLPP

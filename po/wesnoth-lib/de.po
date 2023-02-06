@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2020-11-24 04:17+0100\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -2384,7 +2384,7 @@ msgstr ""
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/mp_create_game.cfg:474
 #: data/gui/window/preferences/02_hotkeys.cfg:282
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:168
 msgid "Defaults"
 msgstr "Standard"
 
@@ -2505,21 +2505,28 @@ msgid "Authenticate"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1036
+#: data/gui/window/addon_auth.cfg:67
+#, fuzzy
+#| msgid "Rename"
+msgid "Username:"
+msgstr "Umbenennen"
+
+#. [label]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "Passwort:"
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
 msgid "Save password locally (encrypted)"
 msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2532,7 +2539,7 @@ msgstr "Speichert das Passwort in der Konfigurationsdatei (verschlüsselt)"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:179
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2545,7 +2552,7 @@ msgstr "Okay"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #. [button]: id=placeholder
-#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:181 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2573,7 +2580,7 @@ msgstr "Okay"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_report.cfg:249 data/gui/window/mp_staging.cfg:442
 #: data/gui/window/network_transmission.cfg:111
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:190
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -5606,46 +5613,48 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr "Bildschirmfotoverzeichnis im Dateimanager öffnen"
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr "Wähle Sphäre/Minimap Farben"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
 msgstr "Zeige unbewegte Sphäre"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
-msgid "Show partial moved orb"
+#: data/gui/window/select_orb_colors.cfg:147
+#, fuzzy
+#| msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "Zeige teilweise bewegte Sphäre"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
 msgstr "Zeige bewegte Sphäre"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:152
 msgid "Show ally orb"
 msgstr "Zeige Sphären Verbündeter"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:154
 msgid "Show enemy orb"
 msgstr "Zeige Sphären der Gegner"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-#, fuzzy
-#| msgid "Show enemy orb"
-msgid "Show disengaged orb"
-msgstr "Zeige Sphären der Gegner"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr ""
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -8516,6 +8525,11 @@ msgid ""
 msgstr ""
 "Der Schlüssel »$deprecated_key« wurde in »$key« umbenannt. Unterstützung für "
 "»$deprecated_key« wird in Version $removal_version entfernt."
+
+#, fuzzy
+#~| msgid "Show enemy orb"
+#~ msgid "Show disengaged orb"
+#~ msgstr "Zeige Sphären der Gegner"
 
 #, fuzzy
 #~| msgid "Player joins:"

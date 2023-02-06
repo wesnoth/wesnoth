@@ -118,6 +118,7 @@ protected:
 
 	virtual void print(message_info&);
 private:
+	void print_cache();
 
 	typedef std::deque<message_info> message_list;
 	typedef std::map<const config*, message_list> message_map;

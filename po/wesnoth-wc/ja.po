@@ -1,7 +1,7 @@
 #
 # Translators:
 # tamanegi, 2021
-# RatArmy, 2022
+# RatArmy, 2023
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-11-20 05:31 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:34+0000\n"
-"Last-Translator: RatArmy, 2022\n"
+"Last-Translator: RatArmy, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -226,19 +226,15 @@ msgstr "アーティファクト"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
 msgid "Recruits"
-msgstr ""
+msgstr "雇用"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
 msgstr "脱走兵"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
 msgstr "指揮官"
 
@@ -251,10 +247,8 @@ msgstr "ヒーロー"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
-#, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "ランダム"
+msgstr "ランダムリーダー"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -265,20 +259,18 @@ msgstr "設定"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "世界征服 1p"
+msgstr "世界征服のユニットマーカーを使用"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "世界征服の試験的なアイテム拾いを使用"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "拾うときに確認を表示"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
@@ -287,10 +279,8 @@ msgstr "難易度"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "世界征服"
+msgstr "世界征服のバージョン"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -314,7 +304,7 @@ msgstr "適用後："
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "このアイテムを入手"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -366,43 +356,37 @@ msgstr " マップ： "
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "マップサイズ"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "村の密度"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "主塔のサイズ"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "陣営"
+msgstr "反復回数"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-#, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "水域"
+msgstr "地形の係数"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "島の係数"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "秘密の書"
+msgstr "主塔の数"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -4037,6 +4021,9 @@ msgstr ""
 msgid "Campaign Maintenance"
 msgstr ""
 
+#~ msgid "Use World Conquest PYA mod"
+#~ msgstr "世界征服の PYA Mod を使用"
+
 #~ msgid "Preset Advancement"
 #~ msgstr "レベルアップ先の事前設定"
 
@@ -4048,6 +4035,9 @@ msgstr ""
 #~ "現在指定されているレベルアップ先は $name です。\n"
 #~ "\n"
 #~ "どれに変更しますか？"
+
+#~ msgid "Random"
+#~ msgstr "ランダム"
 
 #~ msgid " and "
 #~ msgstr " と "
@@ -4075,6 +4065,9 @@ msgstr ""
 
 #~ msgid "full movement"
 #~ msgstr "移動コスト 1"
+
+#~ msgid "terrain^water"
+#~ msgstr "水域"
 
 #~ msgid "improved defenses"
 #~ msgstr "回避率アップ"

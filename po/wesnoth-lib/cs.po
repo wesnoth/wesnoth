@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022.
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
-"PO-Revision-Date: 2022-12-01 20:48+0100\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"PO-Revision-Date: 2023-01-04 18:14+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2273,7 +2273,7 @@ msgstr "Pro vybranou éru, hru nebo modifikaci neexistují vlastní možnosti."
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/mp_create_game.cfg:474
 #: data/gui/window/preferences/02_hotkeys.cfg:282
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:168
 msgid "Defaults"
 msgstr "Výchozí"
 
@@ -2394,21 +2394,28 @@ msgid "Authenticate"
 msgstr "Prokaž se"
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1036
+#: data/gui/window/addon_auth.cfg:67
+#, fuzzy
+#| msgid "Rename"
+msgid "Username:"
+msgstr "Přejmenovat"
+
+#. [label]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "Heslo:"
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
 msgid "Save password locally (encrypted)"
 msgstr "Uložit heslo (zašifrované)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2421,7 +2428,7 @@ msgstr "Uložit heslo (zašifrované)"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:179
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2434,7 +2441,7 @@ msgstr "OK"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #. [button]: id=placeholder
-#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:181 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2462,7 +2469,7 @@ msgstr "OK"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_report.cfg:249 data/gui/window/mp_staging.cfg:442
 #: data/gui/window/network_transmission.cfg:111
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:190
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -5427,44 +5434,48 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr "Procházet screenshoty ve správci souborů"
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr "Vybrat barvy koulí a do minimapy"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
 msgstr "Zobrazit kouli neposunutých"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
-msgid "Show partial moved orb"
+#: data/gui/window/select_orb_colors.cfg:147
+#, fuzzy
+#| msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "Zobrazit kouli částečně posunutých"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
 msgstr "Zobrazit kouli posunutých"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:152
 msgid "Show ally orb"
 msgstr "Zobrazit kouli spojenců"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:154
 msgid "Show enemy orb"
 msgstr "Zobrazit kouli nepřátel"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "Show disengaged orb"
-msgstr "Zobrazit kouli uvolněných"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr "Tohle používá barvy pro částečně a úplně posunuté."
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -6450,24 +6461,24 @@ msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"Vybraný scénář není slučitelný s vaším nastavením.\n"
-"Prosím vyberte nějaké slučitelné."
+"Vybraný scénář není slučitelný s tvým nastavením.\n"
+"Prosím vyber nějaký slučitelný."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:47
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"Vybraný věk není slučitelný s vaším nastavením.\n"
-"Prosím vyberte nějaké slučitelné."
+"Vybraný věk není slučitelný s tvým nastavením.\n"
+"Prosím vyber nějaký slučitelný."
 
 #: src/gui/dialogs/depcheck_select_new.cpp:53
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
-"Vybraná modifikace není slučitelný s vaším nastavením.\n"
-"Prosím vyberte nějaké slučitelné."
+"Vybraná modifikace není slučitelná s tvým nastavením.\n"
+"Prosím vyber nějakou slučitelnou."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -8272,3 +8283,9 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
+
+#~ msgid "Show disengaged orb"
+#~ msgstr "Zobrazit kouli uvolněných"
+
+#~ msgid "This uses the colors for partial and moved orbs."
+#~ msgstr "Tohle používá barvy pro částečně a úplně posunuté."

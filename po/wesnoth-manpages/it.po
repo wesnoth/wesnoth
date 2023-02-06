@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
-"POT-Creation-Date: 2022-08-20 19:46-0500\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2022-09-04 10:02+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -571,15 +571,20 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:192
-#, no-wrap
-msgid "B<--log-to-file>"
+#, fuzzy, no-wrap
+#| msgid "B<--log-to-file>"
+msgid "B<--no-log-to-file>"
 msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:195
+#, fuzzy
+#| msgid ""
+#| "redirects logged output to a file. Log files are created in the logs "
+#| "directory under the userdata folder."
 msgid ""
-"redirects logged output to a file. Log files are created in the logs "
-"directory under the userdata folder."
+"prevents redirecting logged output to a file. Log files are created in the "
+"logs directory under the userdata folder."
 msgstr ""
 "dirotta l’output loggato in un file. I log file vengono creati nella "
 "directory dei log nella cartella dati utente."

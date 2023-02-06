@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
-"PO-Revision-Date: 2022-08-07 15:08-0300\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
+"PO-Revision-Date: 2023-01-06 17:50-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #
 # File: data/core/units/monsters/Giant_Mudcrawler.cfg, line: 44
@@ -401,7 +401,7 @@ msgstr "mangual"
 #: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:43
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:59
 #: data/core/units/humans/Loyalist_Dragoon.cfg:35
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
@@ -532,7 +532,7 @@ msgstr "arco"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
-#: data/core/units/monsters/Elder_Falcon.cfg:35
+#: data/core/units/monsters/Elder_Falcon.cfg:41
 #: data/core/units/monsters/Falcon.cfg:84
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
@@ -810,11 +810,13 @@ msgstr "maldição"
 #: data/core/units/goblins/Knight.cfg:34
 #: data/core/units/goblins/Pillager.cfg:32
 #: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
-#: data/core/units/monsters/Caribe.cfg:112
+#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Ant_Fire.cfg:69
+#: data/core/units/monsters/Ant_Firebane.cfg:70
+#: data/core/units/monsters/Ant_Firebomb.cfg:72
+#: data/core/units/monsters/Ant_Soldier.cfg:38
+#: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:112
 #: data/core/units/monsters/Caribe_Hunter.cfg:113
 #: data/core/units/monsters/Caribe_Nibbler.cfg:125
-#: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:42
@@ -845,6 +847,7 @@ msgstr "presas"
 #: data/core/units/monsters/Boar_Piglet.cfg:50
 #: data/core/units/monsters/Crocodile.cfg:159
 #: data/core/units/monsters/Dragonfly.cfg:30
+#: data/core/units/monsters/Dragonfly_Grand.cfg:31
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:61
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
@@ -1087,8 +1090,8 @@ msgstr ""
 # File: data/core/units/undead/Skeleton.cfg, line: 63
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/core/units/dunefolk/Explorer.cfg:34
-#: data/core/units/dunefolk/Rover.cfg:31
+#: data/core/units/dunefolk/Explorer.cfg:35
+#: data/core/units/dunefolk/Rover.cfg:32
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:33
 #: data/core/units/dwarves/Fighter.cfg:57
@@ -1252,7 +1255,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/humans/Horseman.cfg:23
 #: data/core/units/humans/Loyalist_Javelineer.cfg:30
-#: data/core/units/humans/Loyalist_Spearman.cfg:80
+#: data/core/units/humans/Loyalist_Spearman.cfg:85
 #: data/core/units/merfolk/Hoplite.cfg:35 data/core/units/merfolk/Hunter.cfg:24
 #: data/core/units/merfolk/Hunter.cfg:32
 #: data/core/units/merfolk/Javelineer.cfg:23
@@ -1304,7 +1307,7 @@ msgstr "lança"
 #: data/core/units/dwarves/Sentinel.cfg:47
 #: data/core/units/dwarves/Stalwart.cfg:42
 #: data/core/units/humans/Loyalist_Javelineer.cfg:41
-#: data/core/units/humans/Loyalist_Spearman.cfg:92
+#: data/core/units/humans/Loyalist_Spearman.cfg:97
 msgid "javelin"
 msgstr "azagaia"
 
@@ -2670,9 +2673,9 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
-#: data/core/units/dunefolk/Explorer.cfg:43
+#: data/core/units/dunefolk/Explorer.cfg:44
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:40
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:41
 #: data/core/units/dunefolk/Sunderer.cfg:41
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
@@ -2688,7 +2691,7 @@ msgid "Dune Explorer"
 msgstr "Dunês Explorador"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
-#: data/core/units/dunefolk/Explorer.cfg:20
+#: data/core/units/dunefolk/Explorer.cfg:21
 msgid ""
 "A slow-moving caravan out in the open desert is a prime target for bandits "
 "or marauders. In order to protect themselves, the Dunefolk employ special "
@@ -3089,7 +3092,7 @@ msgid "Dune Rover"
 msgstr "Dunês Andarilho"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
-#: data/core/units/dunefolk/Rover.cfg:20
+#: data/core/units/dunefolk/Rover.cfg:21
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -5151,7 +5154,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
-#: data/core/units/humans/Loyalist_General.cfg:38
+#: data/core/units/humans/Loyalist_General.cfg:44
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
 msgid "longsword"
@@ -5387,7 +5390,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
 #: data/core/units/humans/Loyalist_Dragoon.cfg:44
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
-#: data/core/units/humans/Loyalist_General.cfg:47
+#: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:36
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
@@ -5547,7 +5550,7 @@ msgid "General"
 msgstr "General"
 
 #. [unit_type]: id=General, race=human
-#: data/core/units/humans/Loyalist_General.cfg:24
+#: data/core/units/humans/Loyalist_General.cfg:30
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty. "
@@ -7564,6 +7567,100 @@ msgstr ""
 "cavernas dentro da terra até o topo das mais altas montanhas. Embora elas "
 "normalmente não sejam hostis, elas mordem caso alguém se aproxime."
 
+#
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+#. [unit_type]: id=Fire Ant, race=monster
+#: data/core/units/monsters/Ant_Fire.cfg:11
+msgid "Fire Ant"
+msgstr "Formiga de Fogo"
+
+#. [unit_type]: id=Fire Ant, race=monster
+#. [unit_type]: id=Firebane Ant, race=monster
+#: data/core/units/monsters/Ant_Fire.cfg:51
+#: data/core/units/monsters/Ant_Firebane.cfg:51
+msgid ""
+"Small but deadly in large numbers, fire ants possess fierce fangs and an "
+"unusual ability to generate fire. Though these creatures typically function "
+"as scavengers, a burrow of fire ants can become aggressive when provoked and "
+"have even been known to attack small groups of threatening troops."
+msgstr ""
+"Pequenas mas mortíferas em grandes números, formigas de fogo possuem presas "
+"ferozes e a rara habilidade de gerar fogo. Embora essas criaturas não sejam "
+"agressivas por natureza, colônias de formigas de fogo tornam-se agressivas "
+"quando provocadas, podendo até mesmo atacar pequenos grupos desoldados ."
+
+#
+# File: data/core/units/humans/Mage_Arch.cfg, line: 57
+# File: data/core/units/humans/Mage_Great.cfg, line: 51
+# File: data/core/units/humans/Mage_Red.cfg, line: 50
+# File: data/core/units/humans/Mage_Arch.cfg, line: 57
+# File: data/core/units/humans/Mage_Great.cfg, line: 51
+# File: data/core/units/humans/Mage_Red.cfg, line: 50
+#. [attack]: type=fire
+#: data/core/units/monsters/Ant_Fire.cfg:78
+#: data/core/units/monsters/Ant_Firebane.cfg:79
+#: data/core/units/monsters/Ant_Firebomb.cfg:81
+msgid "fire"
+msgstr "fog"
+
+#
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+#. [unit_type]: id=Firebane Ant, race=monster
+#: data/core/units/monsters/Ant_Firebane.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Firebane Ant"
+msgstr "Formiga de Fogo"
+
+#
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+#. [unit_type]: id=Firebomb Ant, race=monster
+#: data/core/units/monsters/Ant_Firebomb.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Firebomb Ant"
+msgstr "Formiga de Fogo"
+
+#. [unit_type]: id=Firebomb Ant, race=monster
+#: data/core/units/monsters/Ant_Firebomb.cfg:51
+msgid ""
+"More developed and specialized Fire Ants can take different forms. The "
+"firebomb ants can produce and carry large quantities of their flammable "
+"spray in a swollen abdomen, which can make for a fearsome attack, but it "
+"also makes them weak to physical attacks and they cannot sustain the fire as "
+"their health fails."
+msgstr ""
+
+#
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
+#. [unit_type]: id=Soldier Ant, race=monster
+#: data/core/units/monsters/Ant_Soldier.cfg:4
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Soldier Ant"
+msgstr "Formiga de Fogo"
+
+#. [unit_type]: id=Soldier Ant, race=monster
+#: data/core/units/monsters/Ant_Soldier.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Giant Ants are common in almost any environment, from caverns deep under "
+#| "the earth to the tops of tall mountains. Though normally not hostile, "
+#| "they can bite at close range."
+msgid ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. Most common are the nondescript workers "
+"and scouts, but in times of conflict, a more dangerous Soldier caste enters "
+"the fray."
+msgstr ""
+"Formigas Gigantes são comuns em qualquer lugar, desde as mais profundas "
+"cavernas dentro da terra até o topo das mais altas montanhas. Embora elas "
+"normalmente não sejam hostis, elas mordem caso alguém se aproxime."
+
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
@@ -7780,11 +7877,36 @@ msgstr "Dragão"
 #: data/core/units/monsters/Dragonfly.cfg:27
 msgid ""
 "The giant dragonflies seen in some of the swamps, rivers, and lakes around "
-"Wesnoth enjoy a longer life cycle than the smaller, more common types.  The "
-"adult form can live indefiniately, slowly growing to a final moult.  They "
-"are generally territorial, but can cooperate in small groups to confront "
-"common foes or large prey."
+"Wesnoth enjoy a longer life cycle than the smaller, more common types. The "
+"adult form can live indefinitely, slowly growing to a final moult. They are "
+"generally territorial, but can cooperate in small groups to confront common "
+"foes or large prey."
 msgstr ""
+
+#
+# File: data/core/units/humans/Loyalist_Dragoon.cfg, line: 4
+# File: data/core/units/humans/Loyalist_Dragoon.cfg, line: 4
+#. [unit_type]: id=Grand Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly_Grand.cfg:5
+#, fuzzy
+#| msgid "Dragoon"
+msgid "Grand Dragonfly"
+msgstr "Dragão"
+
+#. [unit_type]: id=Grand Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly_Grand.cfg:28
+msgid "Dragonflies that survive long enough grow into a final, grander form."
+msgstr ""
+
+#
+# File: data/core/units/monsters/Giant_Scorpion.cfg, line: 24
+# File: data/core/units/monsters/Giant_Scorpion.cfg, line: 24
+#. [attack]: type=pierce
+#: data/core/units/monsters/Dragonfly_Grand.cfg:43
+#: data/core/units/monsters/Giant_Scorpion.cfg:47
+#: data/core/units/monsters/Giant_Scorpling.cfg:32
+msgid "sting"
+msgstr "ferroada"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
@@ -7795,8 +7917,8 @@ msgstr ""
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
 msgid ""
 "Young dragonflies live an aquatic life, mostly preying upon small fish or "
-"other insect nymphs.  They can crawl over rocks and mud, but they need to "
-"stay submerged to breath, which explains why the giant dragonflies are "
+"other insect nymphs. They can crawl over rocks and mud, but they need to "
+"stay submerged to breathe, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
 
@@ -7822,9 +7944,9 @@ msgstr ""
 "eles atacam com força o suficiente para arrancar fora a cabeça de seus "
 "oponentes."
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/monsters/Elder_Falcon.cfg:27
+#. [attack]: type=pierce
+#: data/core/units/monsters/Elder_Falcon.cfg:50
 #: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:29
 msgid "beak"
 msgstr "bico"
@@ -7846,39 +7968,6 @@ msgstr ""
 "normalmente usadas para esporte. As mesmas técnicas são usadas para "
 "dilacerar oponentes nos campos de batalha, e a sua velocidade é uma benção "
 "para explorar a terra."
-
-#
-# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
-# File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
-#. [unit_type]: id=Fire Ant, race=monster
-#: data/core/units/monsters/Fire_Ant.cfg:11
-msgid "Fire Ant"
-msgstr "Formiga de Fogo"
-
-#. [unit_type]: id=Fire Ant, race=monster
-#: data/core/units/monsters/Fire_Ant.cfg:46
-msgid ""
-"Small but deadly in large numbers, fire ants possess fierce fangs and an "
-"unusual ability to generate fire. Though these creatures typically function "
-"as scavengers, a burrow of fire ants can become aggressive when provoked and "
-"have even been known to attack small groups of threatening troops."
-msgstr ""
-"Pequenas mas mortíferas em grandes números, formigas de fogo possuem presas "
-"ferozes e a rara habilidade de gerar fogo. Embora essas criaturas não sejam "
-"agressivas por natureza, colônias de formigas de fogo tornam-se agressivas "
-"quando provocadas, podendo até mesmo atacar pequenos grupos desoldados ."
-
-#
-# File: data/core/units/humans/Mage_Arch.cfg, line: 57
-# File: data/core/units/humans/Mage_Great.cfg, line: 51
-# File: data/core/units/humans/Mage_Red.cfg, line: 50
-# File: data/core/units/humans/Mage_Arch.cfg, line: 57
-# File: data/core/units/humans/Mage_Great.cfg, line: 51
-# File: data/core/units/humans/Mage_Red.cfg, line: 50
-#. [attack]: type=fire
-#: data/core/units/monsters/Fire_Ant.cfg:73
-msgid "fire"
-msgstr "fog"
 
 #
 # File: data/core/units/monsters/Fire_Dragon.cfg, line: 4
@@ -8111,15 +8200,6 @@ msgstr ""
 "de um escorpião do tamanho de um homem nem se diz."
 
 #
-# File: data/core/units/monsters/Giant_Scorpion.cfg, line: 24
-# File: data/core/units/monsters/Giant_Scorpion.cfg, line: 24
-#. [attack]: type=pierce
-#: data/core/units/monsters/Giant_Scorpion.cfg:47
-#: data/core/units/monsters/Giant_Scorpling.cfg:32
-msgid "sting"
-msgstr "ferroada"
-
-#
 # File: data/core/units/monsters/Giant_Scorpion.cfg, line: 36
 # File: data/core/units/monsters/Giant_Scorpion.cfg, line: 36
 #. [attack]: type=impact
@@ -8136,12 +8216,16 @@ msgid "scuttler"
 msgstr "aronguejo"
 
 #. [variation]
+#. [unit_type]: id=Sand Scuttler
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
+#: data/core/units/monsters/Sand_Scuttler.cfg:8
 msgid "Sand Scuttler"
 msgstr "Aronguejo Arenoso"
 
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:118
+#. [unit_type]: id=Sand Scuttler
+#: data/core/units/monsters/Giant_Scorpion.cfg:119
+#: data/core/units/monsters/Sand_Scuttler.cfg:13
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
@@ -8307,10 +8391,8 @@ msgstr ""
 # File: data/core/units/undead/Necro_Dark_Adept.cfg, line: 132
 #. [male]
 #: data/core/units/monsters/Horse_Dark.cfg:88
-#, fuzzy
-#| msgid "female^Dark Horse"
 msgid "male^Dark Horse"
-msgstr "Égua Preta"
+msgstr "Cavalo Preto"
 
 #
 # File: data/core/units/undead/Necro_Dark_Adept.cfg, line: 132

@@ -176,9 +176,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	cth = std::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_specials_and_abilities("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, cth, weapon);
-	cth = cth_effects.get_composite_value();
+	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
 
 
 	if(opp.get_state("invulnerable")) {
@@ -216,16 +214,12 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_specials_and_abilities("drains");
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, weapon);
-		drain_percent = drain_percent_effects.get_composite_value();
+		drain_percent = weapon->composite_value(weapon->get_specials_and_abilities("drains"), 50);
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_specials_and_abilities("heal_on_hit");
-	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, weapon);
-	drain_constant += heal_on_hit_effects.get_composite_value();
+	drain_constant += weapon->composite_value(weapon->get_specials_and_abilities("heal_on_hit"), 0);
 
 	drains = drain_constant || drain_percent;
 
@@ -321,9 +315,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
 	cth = std::clamp(cth, 0, 100);
 
-	unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
-	unit_abilities::effect cth_effects(cth_specials, cth, weapon);
-	cth = cth_effects.get_composite_value();
+	cth = weapon->composite_value(weapon->get_specials("chance_to_hit"), cth);
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
@@ -337,17 +329,12 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
 
 	if(drains) {
-		unit_ability_list drain_specials = weapon->get_specials("drains");
-
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		unit_abilities::effect drain_percent_effects(drain_specials, 50, weapon);
-		drain_percent = drain_percent_effects.get_composite_value();
+		drain_percent = weapon->composite_value(weapon->get_specials("drains"), 50);
 	}
 
 	// Add heal_on_hit (the drain constant)
-	unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
-	unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, weapon);
-	drain_constant += heal_on_hit_effects.get_composite_value();
+	drain_constant += weapon->composite_value(weapon->get_specials("heal_on_hit"), 0);
 
 	drains = drain_constant || drain_percent;
 
@@ -1382,11 +1369,10 @@ void attack::perform()
 		return;
 	}
 
-	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - 1);
-
 	VALIDATE(a_.weapon_ < static_cast<int>(a_.get_unit().attacks().size()),
 			_("An invalid attacker weapon got selected."));
 
+	a_.get_unit().set_attacks(a_.get_unit().attacks_left() - a_.get_unit().attacks()[a_.weapon_].attacks_used());
 	a_.get_unit().set_movement(a_.get_unit().movement_left() - a_.get_unit().attacks()[a_.weapon_].movement_used(), true);
 	a_.get_unit().set_state(unit::STATE_NOT_MOVED, false);
 	a_.get_unit().set_resting(false);

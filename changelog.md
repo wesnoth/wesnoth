@@ -1,4 +1,4 @@
-## Version 1.17.11+dev
+## Version 1.17.12+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -8,13 +8,32 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Czech, French
+   * Updated translations: British English, Chinese (Simplified), Finnish, French, Polish, Portuguese (Brazil), Spanish
+ ### Units
+   * Add Merman Brawler and Citizen to core
+ ### User interface
+ ### WML Engine
+   * Added basic achievements functionality.
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.12
+ ### Add-ons server
+   * Added support for allowing multiple people to upload updates to an add-on (PR#7268)
+ ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7214)
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Portuguese (Brazil), Turkish
  ### Units
    * Dunefolk Rover portrait added
    * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight
+   * Add more ant types
+   * Fix and adjust Falcon and Elder Falcon attacks
  ### User interface
- ### WML Engine
+   * Improved the layout of the orb colors dialog, and added tooltips.
  ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
+   * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
 
 ## Version 1.17.11
  ### Campaigns

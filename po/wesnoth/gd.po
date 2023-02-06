@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-17 19:09-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -4524,6 +4524,34 @@ msgstr "Sguir dheth"
 msgid "No planned advancement"
 msgstr "Gun planaigeadh an àrdachaidh"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Units"
+msgid "Unit Test "
+msgstr "Aonadan"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Bomb"
+msgid "Bob"
+msgstr "Boma"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 msgid "replay^Play"
@@ -5792,26 +5820,26 @@ msgstr "A’ cur pacaid ùrachaidh airson an tuilleadain <i>$addon_title</i>…"
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "A’ cur a-null an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr ""
 "A’ toirt air falbh an tuilleadain <i>$addon_title</i> on fhrithealaiche…"
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "A’ luchdadh a-nuas an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Manaidsear nan tuilleadan"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "A’ cur a-null an tuilleadain <i>$addon_title</i>…"
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5819,7 +5847,7 @@ msgstr ""
 "Tha ainm faidhle no pasgain mì-dhligheach aig an tuilleadan <i>$addon_title</"
 "i> is cha ghabh e stàladh."
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5828,11 +5856,11 @@ msgstr ""
 "nach eil diofar seach litrichean mòra is beaga. Dh’fhaoidte gun adhbharaich "
 "seo trioblaid."
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5856,11 +5884,11 @@ msgstr[3] ""
 "stàlaichte agad ’s nach eil ri fhaighinn air an fhrithealaiche. A bheil thu "
 "airson leantainn air adhart?"
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Eisimeileachdan briste"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5880,11 +5908,11 @@ msgstr[3] ""
 "Cha b’ urrainn dhuinn na h-eisimeileachdan a leanas a stàladh. A bheil thu "
 "airson leantainn air adhart co-dhiù?"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "Dh’fhàillig le stàladh nan eisimeileachdan"
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5892,19 +5920,19 @@ msgstr ""
 "Tha an tuilleadan “$addon|” stàlaichte agad mar-thà agus tha fiosrachadh a "
 "bharrachd ’na bhroinn a chailleas tu ma leanas tu air adhart:"
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Faidhle fiosrachadh an fhoillseachaidh (.pbl)"
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Fiosrachadh siostam smachd nan tionndaidhean (VCS)"
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "A bheil thu airson leantainn air adhart?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Dearbhaich"
