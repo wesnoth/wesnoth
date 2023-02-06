@@ -46,7 +46,6 @@ public:
 		, selected_bg_item_()
 		, toolkit_(toolkit)
 		, buttons_()
-		, help_handle_(-1)
 	{
 	}
 
@@ -119,9 +118,11 @@ private:
 
 	void hide(bool hidden) override {
 		widget::hide(hidden);
-		if (!hidden)
-			help_handle_ = gui_.video().set_help_string(get_help_string());
-		else gui_.video().clear_help_string(help_handle_);
+		if (!hidden) {
+			gui_.set_help_string(get_help_string());
+		} else {
+			gui_.clear_help_string();
+		}
 		for (gui::widget& w : buttons_) {
 			w.hide(hidden);
 		}
@@ -183,8 +184,6 @@ private:
 
     editor_toolkit& toolkit_;
     std::vector<gui::tristate_button> buttons_;
-
-    int help_handle_;
 };
 
 

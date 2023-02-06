@@ -192,8 +192,7 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 
 	set_location(target);
 	set_dirty(true);
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -203,8 +202,7 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 		selected_fg_item_ = item_id;
 		set_dirty();
 	}
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -214,8 +212,7 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 		selected_bg_item_ = item_id;
 		set_dirty();
 	}
-	gui_.video().clear_help_string(help_handle_);
-	help_handle_ = gui_.video().set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
