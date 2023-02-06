@@ -71,6 +71,22 @@ void editor_display::rebuild_terrain(const map_location &loc) {
 
 void editor_display::pre_draw()
 {
+	// If we're showing hexes near the north of the map, put the help string at the bottom of the screen.
+	// Otherwise, put it at the top.
+	if(help_handle_ != 0) {
+		const bool place_at_top = get_visible_hexes().top[0] > 2;
+
+		if(place_at_top != help_string_at_top_) {
+			const auto& r = font::get_floating_label_rect(help_handle_);
+			double delta = map_outside_area().h - r.h;
+			if(place_at_top) {
+				font::move_floating_label(help_handle_, 0.0, -delta);
+			} else {
+				font::move_floating_label(help_handle_, 0.0, delta);
+			}
+			help_string_at_top_ = place_at_top;
+		}
+	}
 }
 
 image::TYPE editor_display::get_image_type(const map_location& loc)
@@ -152,7 +168,7 @@ void editor_display::set_help_string(const std::string& str)
 	int size = font::SIZE_LARGE;
 
 	while(size > 0) {
-		if(font::pango_line_width(str, size) > video().get_width()) {
+		if(font::pango_line_width(str, size) * 2 > video().get_width()) {
 			size--;
 		} else {
 			break;
@@ -169,6 +185,9 @@ void editor_display::set_help_string(const std::string& str)
 
 	help_handle_ = font::add_floating_label(flabel);
 
+	// Put the label near the bottom of the screen. In pre_draw it'll be moved to the top if the
+	// user is editing hexes at the south edge of the map.
+	help_string_at_top_ = false;
 	const auto& r = font::get_floating_label_rect(help_handle_);
 	font::move_floating_label(help_handle_, 0.0, -double(r.h));
 }
