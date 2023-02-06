@@ -632,7 +632,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("invulnerable")) {
-		set_state("invulnerable", v->to_bool());
+		set_state(STATE_INVULNERABLE, v->to_bool());
 	}
 
 	goto_.set_wml_x(cfg["goto_x"].to_int());
@@ -1428,13 +1428,14 @@ unit::state_t unit::get_known_boolean_state_id(const std::string& state)
 }
 
 std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
-	{"slowed",     STATE_SLOWED},
-	{"poisoned",   STATE_POISONED},
-	{"petrified",  STATE_PETRIFIED},
-	{"uncovered",  STATE_UNCOVERED},
-	{"not_moved",  STATE_NOT_MOVED},
-	{"unhealable", STATE_UNHEALABLE},
-	{"guardian",   STATE_GUARDIAN},
+	{"slowed",       STATE_SLOWED},
+	{"poisoned",     STATE_POISONED},
+	{"petrified",    STATE_PETRIFIED},
+	{"uncovered",    STATE_UNCOVERED},
+	{"not_moved",    STATE_NOT_MOVED},
+	{"unhealable",   STATE_UNHEALABLE},
+	{"guardian",     STATE_GUARDIAN},
+	{"invulnerable", STATE_INVULNERABLE},
 };
 
 void unit::set_state(const std::string& state, bool value)
