@@ -62,8 +62,7 @@ public:
 	}
 
 	/**
-	 * Displays a help string with the given text. A 'help string' is like a tooltip,
-	 * but appears at the bottom of the screen so as to not be intrusive.
+	 * Sets and shows the tooltip-like text at the top or bottom of the map area.
 	 *
 	 * @param str                 The text to display.
 	 */
@@ -90,6 +89,12 @@ protected:
 private:
 	/** ID of the floating label that's controlled by set_help_string() / clear_help_string(). */
 	int help_handle_ = 0;
+
+	/**
+	 * Ignored when help_handle_ == 0. Othewise, true if the help label obscures the
+	 * northern hexes in the map area, false if it's over the southern hexes instead.
+	 */
+	bool help_string_at_top_ = false;
 };
 
 } //end namespace editor
