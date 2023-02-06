@@ -120,7 +120,6 @@ private:
 	std::unique_ptr<location_palette_button> button_add_;
 	std::unique_ptr<location_palette_button> button_delete_;
 	std::unique_ptr<location_palette_button> button_goto_;
-    int help_handle_;
 	editor_display& disp_;
 };
 
