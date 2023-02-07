@@ -15,8 +15,13 @@ end
 ---@alias location_set_resolver fun(x:integer, y:integer, old:any, new:any):any
 
 ---A set of locations, with an optional associated value for each one.
----@class location_set
+---@class location_set : { [location]: any }
 ---@field values table<integer, any>
+---@operator bnot:location_set
+---@operator band:location_set
+---@operator bor:location_set
+---@operator bxor:location_set
+---@operator sub:location_set
 local methods = {}
 local locset_meta = {}
 
