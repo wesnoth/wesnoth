@@ -3184,7 +3184,7 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
  * - Arg 2: string - id.
  * - Arg 3: int - the amount to progress the achievement.
  * - Arg 4: int - the limit the achievement can progress by
- * - Ret 1: int - the achievement's current progress after adding amount, -1 if completed, or 0 if not found
+ * - Ret 1: int - the achievement's current progress after adding amount, -1 if completed, or -2 if not found or not a progressable achievement
  */
 int game_lua_kernel::intf_progress_achievement(lua_State *L)
 {

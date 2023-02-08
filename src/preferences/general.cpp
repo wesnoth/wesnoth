@@ -1085,7 +1085,13 @@ int progress_achievement(const std::string& content_for, const std::string& id, 
 			{
 				if(in_progress["id"].str() == id)
 				{
-					in_progress["progress_at"] = std::clamp(in_progress["progress_at"].to_int() + amount, 0, std::min(limit, max_progress));
+					// don't let using 'limit' decrease the achievement's current progress
+					int starting_progress = in_progress["progress_at"].to_int();
+					if(starting_progress >= limit) {
+						return starting_progress;
+					}
+
+					in_progress["progress_at"] = std::clamp(starting_progress + amount, 0, std::min(limit, max_progress));
 					return in_progress["progress_at"].to_int();
 				}
 			}
