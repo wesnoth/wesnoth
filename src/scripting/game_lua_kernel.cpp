@@ -3079,6 +3079,10 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 		if(group.content_for_ == content_for) {
 			for(achievement& achieve : group.achievements_) {
 				if(achieve.id_ == id) {
+					// already achieved
+					if(achieve.achieved_) {
+						return 0;
+					}
 					// found the achievement - mark it as completed
 					preferences::set_achievement(content_for, id);
 					achieve.achieved_ = true;
@@ -3089,6 +3093,12 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 					if(achieve.sound_path_ != "") {
 						sound::play_sound(achieve.sound_path_, sound::SOUND_FX);
 					}
+					// show the achievement popup
+					luaW_getglobal(L, "gui", "show_popup");
+					luaW_pushtstring(L, achieve.name_completed_);
+					luaW_pushtstring(L, achieve.description_completed_);
+					lua_pushstring(L, achieve.icon_completed_.c_str());
+					luaW_pcall(L, 3, 0, 0);
 					return 0;
 				}
 			}
@@ -3174,7 +3184,7 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
  * - Arg 2: string - id.
  * - Arg 3: int - the amount to progress the achievement.
  * - Arg 4: int - the limit the achievement can progress by
- * - Ret 1: WML table returned by the function.
+ * - Ret 1: int - the achievement's current progress after adding amount, -1 if completed, or 0 if not found
  */
 int game_lua_kernel::intf_progress_achievement(lua_State *L)
 {
@@ -3183,37 +3193,42 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 	int amount = luaL_checkinteger(L, 3);
 	int limit = luaL_checkinteger(L, 4);
 
-	config cfg;
-	cfg["progress"] = 0;
-	cfg["max_progress"] = 0;
-
 	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
 		if(group.content_for_ == content_for) {
 			for(achievement& achieve : group.achievements_) {
 				if(achieve.id_ == id) {
-					// found the achievement
+					// check that this is a progressable achievement
+					if(achieve.max_progress_ == 0) {
+						ERR_LUA << "Attempted to progress achievement " << id << " for achievement group " << content_for << ", which does not have max_progress set.";
+						lua_pushinteger(L, -2);
+						return 1;
+					}
+
 					if(!achieve.achieved_) {
 						int progress = preferences::progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
-						cfg["progress"] = progress;
+						if(progress >= achieve.max_progress_) {
+							progress = -1;
+							intf_set_achievement(L);
+						}
+
+						lua_pushinteger(L, progress);
 						achieve.current_progress_ = progress;
 					} else {
-						cfg["progress"] = -1;
+						lua_pushinteger(L, -1);
 					}
-					cfg["max_progress"] = achieve.max_progress_;
-					luaW_pushconfig(L, cfg);
 					return 1;
 				}
 			}
 			// achievement not found - existing achievement group but non-existing achievement id
 			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
-			luaW_pushconfig(L, cfg);
+			lua_pushinteger(L, -2);
 			return 1;
 		}
 	}
 
 	// achievement group not found
 	ERR_LUA << "Achievement group " << content_for << " not found";
-	luaW_pushconfig(L, cfg);
+	lua_pushinteger(L, -2);
 	return 1;
 }
 
