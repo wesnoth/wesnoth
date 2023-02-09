@@ -579,6 +579,16 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::string schema_path;
 		if(cmdline_opts.validate_with) {
 			schema_path = *cmdline_opts.validate_with;
+			if(!filesystem::file_exists(schema_path)) {
+				auto check = filesystem::get_wml_location(schema_path);
+				if(!filesystem::file_exists(check)) {
+					PLAIN_LOG << "Could not find schema file: " << schema_path;
+				} else {
+					schema_path = check;
+				}
+			} else {
+				schema_path = filesystem::normalize_path(schema_path);
+			}
 		} else {
 			schema_path = filesystem::get_wml_location("schema/game_config.cfg");
 		}
@@ -986,12 +996,19 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
 		auto_dir = filesystem::normalize_path(exe_dir + "/..");
 	}
-	// In Windows debug builds, the EXE is placed away from the game data dir
-	// (in projectfiles\VCx\Debug), but the working directory is set to the
-	// game data dir. Thus, check if the working dir is the game data dir.
+	// Allow using the current working directory as the game data dir
 	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
 		auto_dir = filesystem::get_cwd();
 	}
+#ifdef _WIN32
+	// In Windows builds made using Visual Studio and its CMake
+	// integration, the EXE is placed a few levels below the game data
+	// dir (e.g. .\out\build\x64-Debug).
+	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
+	}
+#endif
 
 	return auto_dir;
 }

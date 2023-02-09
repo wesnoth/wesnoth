@@ -60,7 +60,9 @@ attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location&
 	target_hex_(target_hex),
 	weapon_choice_(weapon_choice),
 	attack_movement_cost_(u.attacks()[weapon_choice_].movement_used()),
-	temp_movement_subtracted_(0)
+	temp_movement_subtracted_(0),
+	attack_count_(u.attacks()[weapon_choice_].attacks_used()),
+	temp_attacks_subtracted_(0)
 {
 	this->init();
 }
@@ -71,6 +73,8 @@ attack::attack(const config& cfg, bool hidden)
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
+	, attack_count_()
+	, temp_attacks_subtracted_(0)
 {
 	// Validate target_hex
 	if(!tiles_adjacent(target_hex_,get_dest_hex()))
@@ -83,6 +87,7 @@ attack::attack(const config& cfg, bool hidden)
 	// Construct attack_movement_cost_
 	assert(get_unit());
 	attack_movement_cost_ = get_unit()->attacks()[weapon_choice_].movement_used();
+	attack_count_ = get_unit()->attacks()[weapon_choice_].attacks_used();
 
 	this->init();
 }
@@ -155,16 +160,17 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	assert(get_unit());
 	unit& unit = *get_unit();
 	DBG_WB << unit.name() << " [" << unit.id()
-					<< "] has " << unit.attacks_left() << " attacks, decreasing by one";
-	assert(unit.attacks_left() > 0);
-	unit.set_attacks(unit.attacks_left() - 1);
+					<< "] has " << unit.attacks_left() << " attacks, decreasing by " << attack_count_;
+	assert(unit.attacks_left() > attack_count_);
 
 	//Calculate movement to subtract
 	temp_movement_subtracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
+	temp_attacks_subtracted_ = unit.attacks_left() >= attack_count_ ? attack_count_ : 0 ;
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() - temp_movement_subtracted_ << ".";
 	unit.set_movement(unit.movement_left() - temp_movement_subtracted_, true);
+	unit.set_attacks(unit.attacks_left() - temp_attacks_subtracted_);
 
 	//Update status of fake unit (not undone by remove_temp_modifiers)
 	//@todo this contradicts the name "temp_modifiers"

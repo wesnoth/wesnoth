@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-14 18:20-0600\n"
-"PO-Revision-Date: 2022-09-03 09:00+0800\n"
+"PO-Revision-Date: 2023-01-27 15:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -217,7 +217,7 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 msgid "Server disconnect timeout"
-msgstr ""
+msgstr "服务器断连超时秒数"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -226,6 +226,8 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"在判定断连前经过的秒数。如果当前已登入多人游戏服务器，则必须首先登出再重新登"
+"入，之后这一秒数才会起效。"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -7315,13 +7317,13 @@ msgstr "此命令当前不可用。"
 msgid ""
 "Unknown command '$command', did you mean '$command_proposal'? try "
 "$help_command for a list of available commands."
-msgstr "未知命令‘$command’，请尝试用‘$help_commmand’命令获取可用命令的列表。"
+msgstr "未知命令‘$command’，请尝试用‘$help_command’命令获取可用命令的列表。"
 
 #: src/map_command_handler.hpp:229
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
-msgstr "未知命令‘$command’，请尝试用‘$help_commmand’命令获取可用命令的列表。"
+msgstr "未知命令‘$command’，请尝试用‘$help_command’命令获取可用命令的列表。"
 
 #: src/map_command_handler.hpp:246
 msgid "Error:"

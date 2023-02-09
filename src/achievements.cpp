@@ -25,6 +25,12 @@
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 
+achievements::achievements()
+	: achievement_list_()
+{
+	reload();
+}
+
 /**
  * Reads the mainline achievements.cfg and then all the achievements of each installed add-on.
  *
@@ -34,9 +40,9 @@ static lg::log_domain log_config("config");
  *
  * NOTE: These are *not* in any way related to Steam achievements!
  */
-achievements::achievements()
-	: achievement_list_()
+void achievements::reload()
 {
+	achievement_list_.clear();
 	// mainline
 	try {
 		config cfg = read_achievements_file(game_config::path + "/data/achievements.cfg");
@@ -101,8 +107,11 @@ achievement_group::achievement_group(const config& cfg)
 
 		if(id.empty()) {
 			ERR_CONFIG << content_for_ + " achievement missing id attribute:\n" << ach.debug();
+		} else if(id.find(',') != std::string::npos) {
+			ERR_CONFIG << content_for_ + " achievement missing id " << id << " contains a comma, skipping.";
+			continue;
 		} else {
-			achievements_.emplace_back(ach, preferences::achievement(content_for_, id));
+			achievements_.emplace_back(ach, preferences::achievement(content_for_, id), preferences::progress_achievement(content_for_, id));
 		}
 	}
 }
