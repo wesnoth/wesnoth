@@ -79,7 +79,7 @@ void achievements_dialog::pre_show(window& win)
 					}
 					item["label"] = name;
 				} else {
-					item["label"] = "<span color='green'>"+ach.name_completed_+"</span>";
+					item["label"] = "<span color='gold'>"+ach.name_completed_+"</span>";
 				}
 				row.emplace("name", item);
 
