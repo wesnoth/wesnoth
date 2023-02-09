@@ -3184,14 +3184,15 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
  * - Arg 2: string - id.
  * - Arg 3: int - the amount to progress the achievement.
  * - Arg 4: int - the limit the achievement can progress by
- * - Ret 1: int - the achievement's current progress after adding amount, -1 if completed, or -2 if not found or not a progressable achievement
+ * - Ret 1: int - the achievement's current progress after adding amount, -2 if not found, -1 not a progressable achievement (including if it's already achieved)
+ * - Ret 2: int - the achievement's max progress, -2 if not found, or -1 not a progressable achievement
  */
 int game_lua_kernel::intf_progress_achievement(lua_State *L)
 {
 	const char *content_for = luaL_checkstring(L, 1);
 	const char *id = luaL_checkstring(L, 2);
 	int amount = luaL_checkinteger(L, 3);
-	int limit = luaL_checkinteger(L, 4);
+	int limit = luaL_optinteger(L, 4, 999999999);
 
 	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
 		if(group.content_for_ == content_for) {
@@ -3200,36 +3201,39 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 					// check that this is a progressable achievement
 					if(achieve.max_progress_ == 0) {
 						ERR_LUA << "Attempted to progress achievement " << id << " for achievement group " << content_for << ", which does not have max_progress set.";
-						lua_pushinteger(L, -2);
-						return 1;
+						lua_pushinteger(L, -1);
+						lua_pushinteger(L, -1);
+						return 2;
 					}
 
 					if(!achieve.achieved_) {
 						int progress = preferences::progress_achievement(content_for, id, limit, achieve.max_progress_, amount);
 						if(progress >= achieve.max_progress_) {
-							progress = -1;
 							intf_set_achievement(L);
+							achieve.current_progress_ = -1;
 						}
-
 						lua_pushinteger(L, progress);
-						achieve.current_progress_ = progress;
 					} else {
 						lua_pushinteger(L, -1);
 					}
-					return 1;
+					lua_pushinteger(L, achieve.max_progress_);
+
+					return 2;
 				}
 			}
 			// achievement not found - existing achievement group but non-existing achievement id
 			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
 			lua_pushinteger(L, -2);
-			return 1;
+			lua_pushinteger(L, -2);
+			return 2;
 		}
 	}
 
 	// achievement group not found
 	ERR_LUA << "Achievement group " << content_for << " not found";
 	lua_pushinteger(L, -2);
-	return 1;
+	lua_pushinteger(L, -2);
+	return 2;
 }
 
 /**
