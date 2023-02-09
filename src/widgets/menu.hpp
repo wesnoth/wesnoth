@@ -97,15 +97,14 @@ public:
 
 	struct item
 	{
-		item() : fields(), help(), id(0)
+		item() : fields(), id(0)
 		{}
 
 		item(const std::vector<std::string>& fields, std::size_t id)
-			: fields(fields), help(), id(id)
+			: fields(fields), id(id)
 		{}
 
 		std::vector<std::string> fields;
-		std::vector<std::string> help;
 		std::size_t id;
 	};
 
@@ -211,7 +210,6 @@ protected:
 
 	int hit(int x, int y) const;
 
-	std::pair<int,int> hit_cell(int x, int y) const;
 	int hit_column(int x) const;
 
 	int hit_heading(int x, int y) const;
@@ -236,11 +234,6 @@ private:
 
 	std::vector<std::string> heading_;
 	mutable int heading_height_;
-
-	void create_help_strings();
-	void process_help_string(int mousex, int mousey) override;
-
-	std::pair<int,int> cur_help_;
 
 	mutable std::vector<int> column_widths_;
 

@@ -203,6 +203,8 @@
 0 special_note_from_movetype
 0 special_note_individual_unit
 0 has_achievement
+0 test_movement_used
+0 test_attacks_used
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -399,6 +401,7 @@
 0 for_end2_step2
 0 for_end-2
 0 for_end-2_step-2
+0 foreach_mutate_nested
 # AI Config Parsing tests
 0 test_basic_simplified_aspect
 0 test_basic_abbreviated_aspect
@@ -430,6 +433,8 @@
 0 kill_fires_events
 # Game mechanics
 0 heal
+0 zero_experience
+0 unit_no_advancements
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated

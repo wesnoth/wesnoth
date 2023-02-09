@@ -274,7 +274,35 @@ namespace preferences {
 	sort_order::type addon_manager_saved_order_direction();
 	void set_addon_manager_saved_order_direction(sort_order::type value);
 
+	std::string selected_achievement_group();
+	void set_selected_achievement_group(const std::string& content_for);
+
+	/**
+	 * @param content_for The achievement group the achievement is part of.
+	 * @param id The ID of the achievement within the achievement group.
+	 * @return True if the achievement exists and is completed, false otherwise.
+	 */
 	bool achievement(const std::string& content_for, const std::string& id);
+	/**
+	 * Marks the specified achievement as completed.
+	 *
+	 * @param content_for The achievement group the achievement is part of.
+	 * @param id The ID of the achievement within the achievement group.
+	 */
 	void set_achievement(const std::string& content_for, const std::string& id);
+
+	/**
+	 * Increments the achievement's current progress by @a amount if it hasn't already been completed.
+	 * If you only want to check the achievement's current progress, then omit the last three arguments.
+	 * @a amount defaults to 0, which will result in the current progress value being returned without being changed (x + 0 == x).
+	 *
+	 * @param content_for The id of the achievement group this achievement is in.
+	 * @param id The id for the specific achievement in the achievement group.
+	 * @param limit The maximum value that a specific call to this function can increase the achievement progress value.
+	 * @param max_progress The value when the achievement is considered completed.
+	 * @param amount The amount to progress the achievement.
+	 * @return The achievement's current progress, or -1 if it has already been completed.
+	 */
+	int progress_achievement(const std::string& content_for, const std::string& id, int limit = 999999, int max_progress = 999999, int amount = 0);
 
 } // end namespace preferences

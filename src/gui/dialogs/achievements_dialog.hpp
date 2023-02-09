@@ -44,6 +44,7 @@ public:
 
 private:
 	achievements achieve_;
+	std::string last_selected_;
 	listbox* achievements_box_;
 	menu_button* content_names_;
 

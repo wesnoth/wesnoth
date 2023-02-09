@@ -1123,9 +1123,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
                                    unsigned & max_attacks) const
 {
 	// Apply [attacks].
-	unit_abilities::effect attacks_effect(get_specials_and_abilities("attacks"),
-	                                      num_attacks(), shared_from_this());
-	int attacks_value = attacks_effect.get_composite_value();
+	int attacks_value = composite_value(get_specials_and_abilities("attacks"), num_attacks());
 
 	if ( attacks_value < 0 ) {
 		attacks_value = num_attacks();
@@ -1148,8 +1146,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
  */
 int attack_type::modified_damage() const
 {
-	unit_abilities::effect dmg_effect(get_specials_and_abilities("damage"), damage(), shared_from_this());
-	int damage_value = dmg_effect.get_composite_value();
+	int damage_value = composite_value(get_specials_and_abilities("damage"), damage());
 	return damage_value;
 }
 
@@ -1300,6 +1297,11 @@ unit_ability_list attack_type::get_specials_and_abilities(const std::string& spe
 		abil_list.append(spe_list);
 	}
 	return abil_list;
+}
+
+int attack_type::composite_value(const unit_ability_list& abil_list, int base_value) const
+{
+	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
 }
 
 static bool overwrite_special_affects(const config& special)

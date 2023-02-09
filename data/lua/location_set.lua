@@ -352,15 +352,15 @@ end
 ---The third element of each location is used as the value.
 ---@param t location_triple[]
 function methods:of_triples(t)
-    -- Create a location set from a table of 3-element tables
-    -- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
-    for k,v in pairs(t) do
+	-- Create a location set from a table of 3-element tables
+	-- Elements 1 and 2 are x,y coordinates, #3 is value to be inserted
+	for k,v in pairs(t) do
 		if #v == 0 then
 			self:insert(v.x, v.y, v.value)
 		else
 			self:insert(v[1], v[2], v[3])
 		end
-    end
+	end
 end
 
 --- Add values from a table of location->element mappings
@@ -434,11 +434,11 @@ end
 ---Convert the set to an array of triples - locations with an extra element for the value.
 ---@return location_triple[]
 function methods:to_triples()
-    local res = {}
-    self:iter(function(x, y, v)
+	local res = {}
+	self:iter(function(x, y, v)
 		table.insert(res, wesnoth.named_tuple({ x, y, v }, {"x", "y", "value"}))
 	end)
-    return res
+	return res
 end
 
 ---Convert the set to a map of location -> value
@@ -513,9 +513,9 @@ end
 ---@param t location_triple[]
 ---@return location_set
 function location_set.of_triples(t)
-    local s = location_set.create()
-    s:of_triples(t)
-    return s
+	local s = location_set.create()
+	s:of_triples(t)
+	return s
 end
 
 --- Create a set from a table of location->element mappings

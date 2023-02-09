@@ -28,7 +28,6 @@
 #include "units/map.hpp"
 #include "units/unit.hpp"
 #include "video.hpp"
-#include "wml_exception.hpp"
 
 #include <cassert>
 

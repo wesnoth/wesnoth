@@ -25,7 +25,7 @@ function wesnoth.micro_ais.recruit_rushers(cfg)
 	}
 
 	handle_default_recruitment(cfg)
-    return {}, optional_keys, CA_parms
+	return {}, optional_keys, CA_parms
 end
 
 function wesnoth.micro_ais.recruit_random(cfg)
@@ -36,5 +36,5 @@ function wesnoth.micro_ais.recruit_random(cfg)
 	}
 
 	handle_default_recruitment(cfg)
-    return {}, optional_keys, CA_parms
+	return {}, optional_keys, CA_parms
 end

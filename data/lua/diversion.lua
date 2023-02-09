@@ -40,10 +40,10 @@ end
 
 local status_anim_update = function(is_undo)
 
-	local ec = wesnoth.current.event_context
-	local changed_something  = false
+        local ec = wesnoth.current.event_context
+        local changed_something  = false
 
-	if not ec.x1 or not ec.y1 then
+        if not ec.x1 or not ec.y1 then
                 return
         end
 
@@ -56,7 +56,7 @@ local status_anim_update = function(is_undo)
         for index, ec_unit in ipairs(div_candidates) do
                 local filter_result = u_pos_filter(ec_unit.id)
                 if filter_result then
-		    changed_something = true
+                    changed_something = true
                     ec_unit.status.diversion = true
                     ec_unit:extract()
                     ec_unit:to_map(false)
@@ -77,7 +77,7 @@ local status_anim_update = function(is_undo)
         for index, ec_unit in ipairs(stop_candidates) do
                 local filter_result = u_pos_filter(ec_unit.id)
                 if not filter_result then
-		    changed_something = true
+                    changed_something = true
                     ec_unit.status.diversion = false
                     ec_unit:extract()
                     ec_unit:to_map(false)
@@ -88,16 +88,16 @@ local status_anim_update = function(is_undo)
                     }
                 end
         end
-	if changed_something and not is_undo then
-		wesnoth.wml_actions.on_undo {
-			wml.tag.on_undo_diversion {
-			}
-		}
-	end
+        if changed_something and not is_undo then
+                wesnoth.wml_actions.on_undo {
+                        wml.tag.on_undo_diversion {
+                        }
+                }
+        end
 end
 
 function wesnoth.wml_actions.on_undo_diversion(cfg)
-	status_anim_update(true)
+        status_anim_update(true)
 end
 
 on_event("moveto, die, recruit, recall", function()
