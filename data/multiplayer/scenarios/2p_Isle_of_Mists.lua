@@ -344,7 +344,6 @@ on_event("die", function()
 		image ="wesnoth-icon.png",
 	}
 	wesnoth.achievements.set("wesnoth_MP_survivals","Wesnoth_MP_Isle_of_Mists")
-
 	wesnoth.wml_actions.endlevel {
 		result = "victory",
 	}

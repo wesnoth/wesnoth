@@ -331,7 +331,6 @@ on_event("die", function()
 		image ="wesnoth-icon.png",
 	}
 	wesnoth.achievements.set("wesnoth_MP_survivals","Wesnoth_MP_Dark_Forecast")
-	
 	wesnoth.wml_actions.endlevel {
 		result = "victory",
 	}
