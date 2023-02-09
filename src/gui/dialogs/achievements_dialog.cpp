@@ -141,7 +141,7 @@ void achievements_dialog::set_achievements_content()
 		if(!ach.achieved_) {
 			item["label"] = ach.name_;
 		} else {
-			item["label"] = "<span color='green'>"+ach.name_completed_+"</span>";
+			item["label"] = "<span color='khaki'>"+ach.name_completed_+"</span>";
 		}
 		row.emplace("name", item);
 
