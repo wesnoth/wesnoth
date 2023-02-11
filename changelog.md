@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Chinese (Simplified), Finnish, French, Polish, Portuguese (Brazil), Spanish
+   * Updated translations: British English, Chinese (Simplified), Czech, Finnish, French, Polish, Portuguese (Brazil), Spanish
  ### Units
    * Add Merman Brawler and Citizen to core
  ### User interface

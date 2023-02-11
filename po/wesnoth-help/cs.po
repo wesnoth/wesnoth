@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-14 18:20-0600\n"
-"PO-Revision-Date: 2022-11-17 19:33+0100\n"
+"PO-Revision-Date: 2023-02-10 21:56+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -714,40 +714,24 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "Překryvné obrázky pro terén v editoru"
+msgstr "Grafika pro vyvýšený terén"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"Mapy obvykle vypadají v editoru podobně jako ve hře. Je několik výjimek, "
-"u kterých jsou v editoru použity jiné obrázky. Všechny zde popsané překryvy "
-"se nacházejí v paletě terénů ve skupině „zvláštnosti“."
+"Kosmetický účinek vyvýšení, který v editoru vypadá poněkud jinak než ve hře "
+"díky názorným pomůckám v editoru. Všechny zde popsané překryvy se nacházejí "
+"v paletě terénů pod skupinou „vyvýšení“."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Pokročilé'</bold>"
+msgstr "<bold>text='Přímé překryvy'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
@@ -759,24 +743,22 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"Srázy a rokliny\n"
+"\n"
+"Srázy, rokliny a jejich obměny se podobají standardním překryvům terénu "
+"a tímto způsobem je lze jednoduše použít. Nicméně pro větší oblasti mapy, "
+"kde budeš chtít umožnit použití jiných překryvů terénu, bude třeba tyto jiné "
+"překryvy spojovat se „značkami“ popsanými v následujícím oddílu."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:181
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Pokročilé'</bold>"
+msgstr "<bold>text='Vyplňování vyvýšením'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:183
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Značka zvýšení na mapě"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
@@ -795,6 +777,18 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"Ikona zvýšení v paletě editoru\n"
+"\n"
+"Chceš-li zvýšit nebo snížit plochu terénu a zároveň mít možnost použít jiné "
+"překryvy terénu, jako třeba stromy, budeš muset použít tyto značky. "
+"Umístěním jedné z těchto šipek do mapy dojde k vyplnění mapy barevně "
+"odlišeným zamlžením. Zamlžení ani šipka nebudou ve hře vidět. Zamlžená "
+"oblast bude mít na okraji hranu, takže bude vypadat vyšší nebo nižší než "
+"sousední políčka.\n"
+"\n"
+"Existují dvě značky zvýšení a dvě snížení, takže je možné vytvořit terasy až "
+"do pěti úrovní (nejnižší, nižší, normální, vyšší, nejvyšší). Umístění "
+"zvýšené oblasti vedle snížené nevede ke vzniku větších srázů.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:191
@@ -816,6 +810,20 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"<bold>text='Jak na to'</bold>\n"
+"\n"
+"Značky se šipkami nejsou samy o sobě moc užitečné, ale terény typu sráz/"
+"roklina lze použít k omezení vyplňované oblasti.\n"
+"\n"
+"Ukázkový příklad:\n"
+"1.  Vyber z palety editoru Sráz (^Qhh) a použij nástroj malování pro jedinou "
+"dlaždici, abys na prázdné travnaté mapě načrtl uzavřenou plochu.\n"
+"2.  Umísti šipku Značky zvýšení (^_mh) na políčko uvnitř plochy (ne na "
+"hranici tvořenou Srázy).\n"
+"3.  Celá plocha by teď měla být zvýšená, a pokud nepřekreslíš překryvy "
+"Značky nebo Srázů, můžeš podle potřeby přidávat další překryvy.\n"
+"\n"
+"Grafika použitá na okrajové hrany je určena základním terénem.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:202
@@ -825,6 +833,9 @@ msgid ""
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='Poznámka pro autory rozšíření: Vyplněná políčka nemají změněné "
+"kódy terénu ani žádné jiné vlastnosti, takže filtrovat umístění podle "
+"vyvýšení není jednoduché.' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:207
@@ -2296,8 +2307,8 @@ msgstr ""
 "možné vystavět nespočet strategií, takže je lehké naučit se ji hrát, avšak "
 "obtížné si ji podrobit.\n"
 "\n"
-"Následující strany pojednávají o všem, co byste o Wesnothu měli vědět. Jak "
-"budete postupovat hrou, v příslušných kategoriích budou přibývat další "
+"Následující strany pojednávají o všem, co bys o Wesnothu měl vědět. Jak "
+"budeš postupovat hrou, v příslušných kategoriích budou přibývat další "
 "informace o aspektech hry. Podrobnější informace o zvláštních případech "
 "a výjimkách se nachází za odkazy v textu."
 
@@ -2328,10 +2339,10 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
-"Hra se odehrává na šestiúhelníkových herních polích, kde vaše jednotky "
-"bojují proti jednotkám, které ovládá počítač, kamarádům, se kterými se "
-"střídáte na jednom počítači (horké křeslo), ostatním hráčům na síti nebo "
-"hráčům kdekoliv na světě připojeným přes internet.\n"
+"Hra se odehrává na šestiúhelníkových herních polích, kde tvé jednotky bojují "
+"proti jednotkám, které ovládá počítač, kamarádům, se kterými se střídáš na "
+"jednom počítači (horké křeslo), ostatním hráčům na síti nebo hráčům kdekoliv "
+"na světě připojeným přes internet.\n"
 "\n"
 "Každá taková bitva se nazývá <italic>text='scénář'</italic>. Více scénářů je "
 "možné zřetězit do <italic>text='tažení'</italic>. Kromě tažení, která se "
@@ -2339,8 +2350,8 @@ msgstr ""
 "s doplňky obsahuje stovky map, tažení, ér, frakcí a dalších zdrojů.\n"
 "\n"
 "Hra z velké části staví na textovém jazyku Wesnoth Markup Language (WML), "
-"který umožňuje uživatelům vytvářet jejich vlastní nový obsah, plně vybavený "
-"Editor map a scénářů, které umožňují kompletní návrh vlastního bojiště.\n"
+"který uživatelům umožňuje snadno vytvářet svůj vlastní obsah a má také plně "
+"vybavený editor map a scénářů pro návrh vlastních bojišť.\n"
 "\n"
 "Projekt <italic>text='Bitva o Wesnoth'</italic> započal v roce 2003 a od té "
 "doby se na něm podílelo nepřeberné množství dobrovolníků."
@@ -2474,23 +2485,22 @@ msgid ""
 "on."
 msgstr ""
 "Bitva o Wesnoth obsahuje nespočet úrovní složených z mnoha bitev zvaných "
-"<italic>text='scénáře'</italic>, ve kterých jsou vaši vojáci postaveni proti "
+"<italic>text='scénáře'</italic>, ve kterých jsou tví vojáci postaveni proti "
 "vojákům jednoho nebo více nepřátel. Mnoho scénářů na sebe navazuje, vypráví "
 "příběh, a tak vytváří <italic>text='tažení'</italic>. V taženích je výhodné "
-"hrát opatrněji, protože jednotky, které vám zůstanou, můžete povolat "
+"hrát opatrněji, protože jednotky, které ti zůstanou, můžeš povolat "
 "v pozdějších scénářích.\n"
 "\n"
-"Interaktivní <bold>text='tutoriál'</bold> vás naučí základy hraní Wesnothu "
-"za pomoci scénáře. Většina problematiky, kterou tutoriál pokrývá, se "
-"podrobněji rozebírá na těchto stránkách, takže když něco zapomenete, můžete "
-"se sem vždycky vrátit.\n"
+"Interaktivní <bold>text='tutoriál'</bold> tě naučí základy hraní Wesnothu za "
+"pomoci scénáře. Většina problematiky, kterou tutoriál pokrývá, se podrobněji "
+"rozebírá na těchto stránkách, takže když něco zapomeneš, můžeš se sem "
+"vždycky vrátit.\n"
 "\n"
-"Poté, co zvládnete základy, zkuste některé ze začátečnických tažení, "
-"například <italic>text='Dědic trůnu'</italic> nebo <italic>text='Jižní "
-"hlídka'</italic>. Seznam všech dostupných tažení můžete najít v hlavním menu "
-"v sekci <bold>text='Tažení'</bold>. Wesnoth může být docela náročný, takže "
-"byste měli začít na jednodušších obtížnostech a propracovat se "
-"k obtížnějším.\n"
+"Poté, co zvládneš základy, zkus některé ze začátečnických tažení, například "
+"<italic>text='Dědic trůnu'</italic> nebo <italic>text='Jižní hlídka'</"
+"italic>. Seznam všech dostupných tažení můžeš najít v hlavním menu v sekci "
+"<bold>text='Tažení'</bold>. Wesnoth může být docela náročný, takže bys měl "
+"začít na jednodušších obtížnostech a propracovat se k obtížnějším.\n"
 "\n"
 "Tažení jsou seskupena podle <italic>text='úrovně'</italic> "
 "a <italic>text='obtížnosti'</italic>. Například <italic>text='Dědic trůnu'</"
@@ -6107,6 +6117,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"Zvláštní rysy (ve stylu verze 1.14, aktualizuj prosím na nový formát "
+"seznamu, aby ses vyhnul duplicitám):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
