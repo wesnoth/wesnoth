@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-02-20 10:43 UTC\n"
-"PO-Revision-Date: 2021-10-28 17:18+0200\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"POT-Creation-Date: 2021-11-09 00:44 UTC\n"
+"PO-Revision-Date: 2023-02-09 16:28+0100\n"
+"Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -57,7 +57,7 @@ msgstr ""
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:93
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:114
 msgid "teamname^Settlers"
-msgstr "teamname^Kolonisten"
+msgstr "Kolonisten"
 
 #. [side]: type=Death Knight
 #. [side]: type=Orcish Sovereign
@@ -66,7 +66,7 @@ msgstr "teamname^Kolonisten"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:205
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:238
 msgid "teamname^Enemies"
-msgstr "teamname^Vijanden"
+msgstr "Vijanden"
 
 #. [side]: type=Death Knight
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:148
@@ -91,12 +91,12 @@ msgstr "Mal Shiki"
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:275
 msgid "teamname^Prisoners"
-msgstr "teamname^Gevangenen"
+msgstr "Gevangenen"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:299
 msgid "teamname^Monsters"
-msgstr "teamname^Monsters"
+msgstr "Monsters"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:498
@@ -641,13 +641,13 @@ msgstr "Ga verder zoals voorheen"
 msgid ""
 "<span color='green'>Agriculture</span>\n"
 "Farmers produce +1 gold\n"
-"Study Progress: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Study Progress: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 msgstr ""
 "<span color='green'>Landbouw</span>\n"
 "Boeren produceren +1 goud\n"
-"Onderzoeksproces: $player_$side_number|.farming.progress|/$player_"
-"$side_number|.farming.target"
+"Onderzoeksproces: $player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 
 #. [command]
 #. [research]
@@ -666,8 +666,8 @@ msgid ""
 msgstr ""
 "<span color='green'>Mijnbouw</span>\n"
 "Mijnarbeiders produceren +1 goud\n"
-"Onderzoeksproces: $player_$side_number|.mining.progress|/$player_"
-"$side_number|.mining.target"
+"Onderzoeksproces: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
@@ -679,13 +679,13 @@ msgstr "mijnbouw"
 msgid ""
 "<span color='green'>Warfare</span>\n"
 "Allows you to recruit a new type of unit\n"
-"Study Progress: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Study Progress: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 msgstr ""
 "<span color='green'>Oorlogsvoering</span>\n"
 "Stelt je in staat om een nieuw type eenheid te rekruteren\n"
-"Onderzoeksproces: $player_$side_number|.warfare.progress|/$player_"
-"$side_number|.warfare.target"
+"Onderzoeksproces: $player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:177
@@ -698,8 +698,8 @@ msgid ""
 "$player_$side_number|.name|’s farms now produce $player_$side_number|."
 "farming.gold gold."
 msgstr ""
-"$player_$side_number|.name|'s boerderijen produceren nu $player_"
-"$side_number|.farming.gold goud."
+"$player_$side_number|.name|'s boerderijen produceren nu "
+"$player_$side_number|.farming.gold goud."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
