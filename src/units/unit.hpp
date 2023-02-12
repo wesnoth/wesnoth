@@ -867,7 +867,7 @@ public:
 		STATE_NOT_MOVED,    /** The unit has not moved @todo Explain better */
 		STATE_UNHEALABLE,   /** The unit cannot be healed */
 		STATE_GUARDIAN,     /** The unit is a guardian - it won't move unless a target is sighted */
-		STATE_INVULNERABLE, /** The unit is invulnerable */
+		STATE_INVULNERABLE, /** The unit is invulnerable - it cannot be hit by any attack */
 		STATE_UNKNOWN = -1  /** A status effect not known to the engine */
 	};
 
