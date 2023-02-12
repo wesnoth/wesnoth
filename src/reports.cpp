@@ -357,10 +357,6 @@ static config unit_status(reports::context & rc, const unit* u)
 		add_status(res, "misc/unhealable.png", N_("unhealable: "),
 			N_("This unit is unhealable. It cannot be healed by healers or villages and doesn't benefit from resting."));
 	}
-	if (u->get_state(unit::STATE_GUARDIAN)) {
-		add_status(res, "misc/guardian.png", N_("guardian: "),
-			N_("The unit is a guardian. It won't move unless a target is sighted."));
-	}
 	if (u->get_state(unit::STATE_INVULNERABLE)) {
 		add_status(res, "misc/invulnerable.png", N_("invulnerable: "),
 			N_("This unit is invulnerable. It cannot be harmed by any attack."));
