@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-14 18:20-0600\n"
-"PO-Revision-Date: 2023-01-04 18:14+0100\n"
+"PO-Revision-Date: 2023-01-18 20:12+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2395,10 +2395,8 @@ msgstr "Prokaž se"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Přejmenovat"
+msgstr "Uživatelské jméno:"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
@@ -5445,22 +5443,23 @@ msgstr "Zobrazit kouli neposunutých"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "Zobrazit kouli částečně posunutých"
 
+# úmyslně zkráceno, aby se text vešel do dvouřádkového obdélníku s nápovědou
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Pokud se jednotka může hnout, ale ne útočit, zobrazit dvoubarevnou kouli "
+"s barvami pro částečně a úplně posunuté."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Pro uvolněné jednotky použít dvoubarevnou kouli"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -8283,9 +8282,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "Zobrazit kouli uvolněných"
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "Tohle používá barvy pro částečně a úplně posunuté."

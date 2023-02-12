@@ -355,6 +355,12 @@ void title_screen::init_callbacks()
 	});
 
 	//
+	// Achievements
+	//
+	register_button(*this, "achievements", hotkey::HOTKEY_ACHIEVEMENTS,
+		std::bind(&title_screen::show_achievements, this));
+
+	//
 	// Credits
 	//
 	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
