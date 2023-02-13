@@ -12,6 +12,7 @@
  ### Units
    * Add Merman Brawler and Citizen to core
  ### User interface
+   * Added icons for invulnerable and unhealable states (PR #7363)
  ### WML Engine
    * Added basic achievements functionality.
  ### Miscellaneous and Bug Fixes
