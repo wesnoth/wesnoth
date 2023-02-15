@@ -20,7 +20,6 @@
 #include "log_windows.hpp"
 
 #include "filesystem.hpp"
-#include "libc_error.hpp"
 #include "log.hpp"
 #include "serialization/unicode.hpp"
 
@@ -49,72 +48,6 @@ namespace lg
 
 namespace
 {
-
-/**
- * Returns the path to a system-defined temporary files dir.
- */
-std::string temp_dir()
-{
-	wchar_t tmpdir[MAX_PATH + 1];
-
-	if(GetTempPath(MAX_PATH + 1, tmpdir) == 0) {
-		return ".";
-	}
-
-	return unicode_cast<std::string>(std::wstring(tmpdir));
-}
-
-/**
- * Display an alert box to warn about log initialization errors, and exit.
- */
-void log_init_panic(const std::string& msg)
-{
-	ERR_LS << "Log initialization panic call: " << msg;
-
-	const std::string full_msg = msg + "\n\n" + "This may indicate an issue with your Wesnoth launch configuration. If the problem persists, contact the development team for technical support, including the full contents of this message (copy with CTRL+C).";
-
-	// It may not be useful to write to stderr at this point, so warn the user
-	// in a failsafe fashion via Windows UI API.
-	MessageBox(nullptr,
-			   unicode_cast<std::wstring>(full_msg).c_str(),
-			   L"Battle for Wesnoth",
-			   MB_ICONEXCLAMATION | MB_OK);
-
-	// It may seem excessive to quit over something like this, but it's a good
-	// indicator of possible configuration issues with the user data dir that
-	// may cause much weirder symptoms later (see https://r.wesnoth.org/t42970
-	// for an example).
-	exit(1);
-}
-
-/**
- * Display an alert box to warn about log initialization errors, and exit.
- */
-void log_init_panic(const libc_error& e,
-					const std::string& new_log_path,
-					const std::string& old_log_path = std::string())
-{
-	std::ostringstream msg;
-
-	if(old_log_path.empty()) {
-		msg << "Early log initialization failed.";
-	} else {
-		msg << "Log relocation failed.";
-	}
-
-	msg << "\n\n"
-		<< "Runtime error: " << e.desc() << " (" << e.num() << ")\n";
-
-	if(old_log_path.empty()) {
-		msg << "Log file path: " << new_log_path << '\n';
-	} else {
-		msg << "New log file path: " << new_log_path << '\n'
-			<< "Old log file path: " << old_log_path;
-	}
-
-	log_init_panic(msg.str());
-}
-
 /**
  * Singleton class that deals with the intricacies of log file redirection.
  */
@@ -124,21 +57,15 @@ public:
 	log_file_manager(const log_file_manager&) = delete;
 	log_file_manager& operator=(const log_file_manager&) = delete;
 
-	log_file_manager(bool native_console = false);
-	~log_file_manager();
+	log_file_manager(bool native_console);
 
 	/**
-	 * Moves the log file to a new directory.
-	 *
-	 * This causes the associated streams to closed momentarily in order to be
-	 * able to move the log file, because Windows does not allow move/rename
-	 * operations on currently-open files.
-	 *
-	 * @param log_dir        Log directory path.
-	 *
-	 * @throw libc_error     If the log file cannot be opened or relocated.
+	 * Returns whether we own the console we are attached to, if any.
 	 */
-	void move_log_file(const std::string& log_dir);
+	bool owns_console() const;
+
+private:
+	bool created_wincon_;
 
 	/**
 	 * Switches to using a native console instead of log file redirection.
@@ -147,176 +74,23 @@ public:
 	 * someone deems it useful.
 	 */
 	void enable_native_console_output();
-
-	/**
-	 * Returns whether we are using a native console instead of a log file.
-	 */
-	bool console_enabled() const;
-
-	/**
-	 * Returns whether we are attached to a native console right now.
-	 *
-	 * Note that being attached to a console does not necessarily mean that the
-	 * standard streams are pointing to it. Use console_enabled to check that
-	 * instead.
-	 */
-	bool console_attached() const;
-
-	/**
-	 * Returns whether we own the console we are attached to, if any.
-	 */
-	bool owns_console() const;
-
-private:
-	std::string fn_;
-	bool use_wincon_, created_wincon_;
-
-	enum STREAM_ID {
-		STREAM_STDOUT = 1,
-		STREAM_STDERR = 2
-	};
-
-	/**
-	 * Opens the log file for the current session in the specified directory.
-	 *
-	 * @param file_path      Log file path.
-	 * @param truncate       Whether to truncate an existing log file or append
-	 *                       to it instead.
-	 *
-	 * @throw libc_error     If the log file cannot be opened.
-	 */
-	void open_log_file(const std::string& file_path,
-					   bool truncate);
-
-	/**
-	 * Takes care of any tasks required for redirecting a log stream.
-	 *
-	 * @param file_path      Log file path.
-	 * @param stream         Stream identifier.
-	 * @param truncate       Whether to truncate an existing log file or append
-	 *                       to it instead.
-	 *
-	 * @throw libc_error     If the log file cannot be opened.
-	 *
-	 * @note This does not set the log file path to the new path.
-	 */
-	void do_redirect_single_stream(const std::string& file_path,
-								   STREAM_ID stream,
-								   bool truncate);
 };
 
 log_file_manager::log_file_manager(bool native_console)
-	: fn_(lg::unique_log_filename())
-	, use_wincon_(console_attached())
-	, created_wincon_(false)
+	: created_wincon_(false)
 {
 	DBG_LS << "Early init message";
 
-	if(use_wincon_) {
+	if(GetConsoleWindow() != nullptr) {
 		// Someone already attached a console to us. Assume we were compiled
 		// with the console subsystem flag and that the standard streams are
 		// already pointing to the console.
-		LOG_LS << "Console already attached at startup, log file disabled.";
-		return;
-	}
-
-	if(native_console) {
+		LOG_LS << "Console already attached at startup (built with console subsystem flag?), log file disabled.";
+	} else if(native_console) {
 		enable_native_console_output();
-		return;
 	}
 
-	//
-	// We use the Windows temp dir on startup,
-	//
-	const std::string new_path = temp_dir() + "/" + fn_;
-
-	try {
-		open_log_file(new_path, true);
-	} catch(const libc_error& e) {
-		log_init_panic(e, new_path, lg::get_log_file_path());
-	}
-
-	LOG_LS << "Opened log file at " << new_path;
-}
-
-log_file_manager::~log_file_manager()
-{
-	if(lg::get_log_file_path().empty()) {
-		// No log file, nothing to do.
-		return;
-	}
-
-	fclose(stdout);
-	fclose(stderr);
-}
-
-void log_file_manager::move_log_file(const std::string& log_dir)
-{
-	const std::string new_path = log_dir + "/" + fn_;
-
-	try {
-		if(!lg::get_log_file_path().empty()) {
-			const std::string old_path = lg::get_log_file_path();
-
-			// Need to close files before moving or renaming. This will replace
-			// the log file path with NUL, hence the backup above.
-			open_log_file("NUL", false);
-
-			const std::wstring old_path_w = unicode_cast<std::wstring>(old_path);
-			const std::wstring new_path_w = unicode_cast<std::wstring>(new_path);
-
-			if(_wrename(old_path_w.c_str(), new_path_w.c_str()) != 0) {
-				throw libc_error();
-			}
-		}
-
-		// Reopen.
-		open_log_file(new_path, false);
-	} catch(const libc_error& e) {
-		log_init_panic(e, new_path, lg::get_log_file_path());
-	}
-
-	LOG_LS << "Moved log file to " << new_path;
-}
-
-void log_file_manager::open_log_file(const std::string& file_path, bool truncate)
-{
-	do_redirect_single_stream(file_path, STREAM_STDERR, truncate);
-	do_redirect_single_stream(file_path, STREAM_STDOUT, false);
-
-	lg::set_log_file_path(file_path);
-}
-
-void log_file_manager::do_redirect_single_stream(const std::string& file_path,
-												 log_file_manager::STREAM_ID stream,
-												 bool truncate)
-{
-	DBG_LS << stream << ' ' << lg::get_log_file_path() << " -> " << file_path << " [side A]";
-
-	FILE* crts = stream == STREAM_STDERR ? stderr : stdout;
-	std::ostream& cxxs = stream == STREAM_STDERR ? std::cerr : std::cout;
-
-	fflush(crts);
-	cxxs.flush();
-
-	const std::wstring file_path_w = unicode_cast<std::wstring>(file_path);
-
-	if(!_wfreopen(file_path_w.c_str(), (truncate ? L"w" : L"a"), crts))
-	{
-		throw libc_error();
-	}
-
-	DBG_LS << stream << ' ' << lg::get_log_file_path() << " -> " << file_path << " [side B]";
-}
-
-bool log_file_manager::console_enabled() const
-{
-	return use_wincon_;
-}
-
-bool log_file_manager::console_attached() const
-{
-	return GetConsoleWindow() != nullptr;
+	DBG_LS << "Windows console init complete!";
 }
 
 bool log_file_manager::owns_console() const
@@ -326,15 +100,8 @@ bool log_file_manager::owns_console() const
 
 void log_file_manager::enable_native_console_output()
 {
-	if(use_wincon_) {
-		// We either went over this already or the console was set up by
-		// Windows itself (console subsystem flag in executable).
-		return;
-	}
-
 	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
 		LOG_LS << "Attached parent process console.";
-		created_wincon_ = false;
 	} else if(AllocConsole()) {
 		LOG_LS << "Allocated own console.";
 		created_wincon_ = true;
@@ -364,7 +131,6 @@ void log_file_manager::enable_native_console_output()
 	// responsibility to clean up anything; Windows will figure out what to do
 	// when the time comes for the process to exit.
 	lg::set_log_file_path("");
-	use_wincon_ = true;
 
 	LOG_LS << "Console streams handover complete!";
 }
@@ -373,66 +139,16 @@ std::unique_ptr<log_file_manager> lfm;
 
 } // end anonymous namespace
 
-static bool disable_redirect;
-
-void early_log_file_setup(bool disable)
+void do_console_redirect(bool native_console)
 {
-	if(lfm) {
-		return;
+	if(!lfm) {
+		lfm.reset(new log_file_manager(native_console));
 	}
-
-	if(disable) {
-		disable_redirect = true;
-		return;
-	}
-
-	lfm.reset(new log_file_manager());
-}
-
-void enable_native_console_output()
-{
-	if(lfm) {
-		lfm->enable_native_console_output();
-		return;
-	}
-
-	lfm.reset(new log_file_manager(true));
 }
 
 bool using_own_console()
 {
 	return lfm && lfm->owns_console();
-}
-
-void finish_log_file_setup()
-{
-	if(disable_redirect) return;
-	// Make sure the LFM is actually set up just in case.
-	early_log_file_setup(false);
-
-	if(lfm->console_enabled()) {
-		// Nothing to do if running in console mode.
-		return;
-	}
-
-	static bool setup_complete = false;
-
-	if(setup_complete) {
-		ERR_LS << "finish_log_file_setup() called more than once!";
-		return;
-	}
-
-	const std::string log_dir = filesystem::get_logs_dir();
-	if(!filesystem::file_exists(log_dir) && !filesystem::make_directory(log_dir)) {
-		log_init_panic(std::string("Could not create logs directory at ") +
-					   log_dir + ".");
-	} else {
-		lg::rotate_logs(log_dir);
-	}
-
-	lfm->move_log_file(log_dir);
-
-	setup_complete = true;
 }
 
 } // end namespace lg
