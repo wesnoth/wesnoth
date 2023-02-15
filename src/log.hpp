@@ -127,6 +127,8 @@ void set_strict_severity(int severity);
 void set_strict_severity(const logger &lg);
 bool broke_strict();
 void set_log_to_file();
+void check_log_dir_writable();
+bool log_dir_writable();
 
 bool is_not_log_file(const std::string& filename);
 void rotate_logs(const std::string& log_dir);

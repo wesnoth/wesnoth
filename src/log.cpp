@@ -57,6 +57,7 @@ static bool timestamp = true;
 static bool precise_timestamp = false;
 static std::mutex log_mutex;
 
+static bool is_log_dir_writable_ = true;
 static std::ostream *output_stream_ = nullptr;
 
 static std::ostream& output()
@@ -91,6 +92,11 @@ bool is_not_log_file(const std::string& fn)
  */
 void rotate_logs(const std::string& log_dir)
 {
+	// if logging to file is disabled, don't rotate the logs
+	if(output_file_path_.empty()) {
+		return;
+	}
+
 	std::vector<std::string> files;
 	filesystem::get_files_in_dir(log_dir, &files);
 
@@ -132,13 +138,53 @@ std::string unique_log_filename()
 	return o.str();
 }
 
+void check_log_dir_writable()
+{
+	std::string dummy_log = filesystem::get_logs_dir()+"/dummy.log";
+
+	// log directory doesn't exist and can't be created
+	if(!filesystem::file_exists(filesystem::get_logs_dir()) && !filesystem::make_directory(filesystem::get_logs_dir())) {
+		is_log_dir_writable_ = false;
+		return;
+	}
+
+	// can't create and write new log files
+	try {
+		filesystem::write_file(dummy_log, " ");
+	} catch(const filesystem::io_exception&) {
+		is_log_dir_writable_ = false;
+		return;
+	}
+
+	// confirm that file exists and was written to
+	if(filesystem::file_size(dummy_log) != 1) {
+		is_log_dir_writable_ = false;
+	}
+
+	// can't delete files - prevents log rotation
+	if(filesystem::file_exists(dummy_log) && !filesystem::delete_file(dummy_log)) {
+		is_log_dir_writable_ = false;
+		return;
+	}
+
+	is_log_dir_writable_ = true;
+}
+
 void set_log_to_file()
 {
+	check_log_dir_writable();
 	// get the log file stream and assign cerr+cout to it
-	output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
-	output_file_.reset(filesystem::ostream_file(output_file_path_).release());
-	std::cerr.rdbuf(output_file_.get()->rdbuf());
-	std::cout.rdbuf(output_file_.get()->rdbuf());
+	if(is_log_dir_writable_) {
+		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
+		output_file_.reset(filesystem::ostream_file(output_file_path_).release());
+		std::cerr.rdbuf(output_file_.get()->rdbuf());
+		std::cout.rdbuf(output_file_.get()->rdbuf());
+	}
+}
+
+bool log_dir_writable()
+{
+	return is_log_dir_writable_;
 }
 
 std::string& get_log_file_path()
