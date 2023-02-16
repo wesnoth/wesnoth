@@ -85,7 +85,9 @@ class dbconn
 		bool extra_row_exists(const std::string& name);
 
 		/**
-		 * @see forum_user_handler::is_user_in_group().
+		 * @param name The player's username.
+		 * @param group_id The forum group ID to check if the user is part of.
+		 * @return Whether the user is a member of the forum group.
 		 */
 		bool is_user_in_group(const std::string& name, int group_id);
 
@@ -137,7 +139,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().
 		 */
-		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& source, const std::string& version);
+		unsigned long long insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version);
 
 		/**
 		 * @see forum_user_handler::db_set_oos_flag().
@@ -152,7 +154,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_addon_info().
 		 */
-		void insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id);
+		void insert_addon_info(const std::string& instance_version, const std::string& id, const std::string& name, const std::string& type, const std::string& version, bool forum_auth, int topic_id, const std::string uploader);
 
 		/**
 		 * @see forum_user_handler::db_insert_login().
@@ -178,6 +180,27 @@ class dbconn
 		 * @see forum_user_handler::db_update_addon_download_count().
 		 */
 		void update_addon_download_count(const std::string& instance_version, const std::string& id, const std::string& version);
+
+		/**
+		 * @see forum_user_handler::is_user_primary_author().
+		 * @see forum_user_handler::is_user_secondary_author().
+		 */
+		bool is_user_author(const std::string& instance_version, const std::string& id, const std::string& username, int is_primary);
+
+		/**
+		 * @see forum_user_handler::db_delete_addon_authors().
+		 */
+		void delete_addon_authors(const std::string& instance_version, const std::string& id);
+
+		/**
+		 * @see forum_user_handler::db_insert_addon_authors().
+		 */
+		void insert_addon_author(const std::string& instance_version, const std::string& id, const std::string author, int is_primary);
+
+		/**
+		 * @see forum_user_handler::do_any_authors_exist().
+		 */
+		bool do_any_authors_exist(const std::string& instance_version, const std::string& id);
 
 	private:
 		/**
@@ -211,6 +234,8 @@ class dbconn
 		std::string db_addon_info_table_;
 		/** The name of the table that contains user connection history. */
 		std::string db_connection_history_table_;
+		/** The name of the table that contains the add-on authors information */
+		std::string db_addon_authors_table_;
 
 		/**
 		 * This is used to write out error text when an SQL-related exception occurs.

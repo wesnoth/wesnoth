@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-06-04 22:10+0200\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
+"PO-Revision-Date: 2023-02-07 18:30+0100\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [generic_multiplayer]: id=user_map
@@ -59,7 +59,7 @@ msgid ""
 msgstr ""
 "Era z jednostkami wyższego poziomu: liderzy mają trzeci poziom, a rekrutować "
 "można jednostki pierwszego i drugiego poziomu. Zawiera sześć frakcji. Nie "
-"uważana za zbalansowaną."
+"jest uważana za zbalansowaną."
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
@@ -112,20 +112,19 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='#%02x%02x%02x'>Strona $side_numer</"
+"<span strikethrough='true' foreground='$side_color'>Strona $side_number</"
 "span>:  Straciła wszystkie jednostki"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Strona $side_number</span>:  Wynik dochodu "
-"= $income  Wynik jednostek = $units  Złoto = $gold\n"
+"<span foreground='$side_color'>Strona $side_number</span>:  Wynik dochodu = "
+"$income  Wynik jednostek = $units  Złoto = $gold\n"
 "Razem: <b>$total</b>"
 
 #. [lua]: f
@@ -133,19 +132,20 @@ msgstr ""
 #: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>Strona $side_number</span> ma przewagę."
+msgstr ""
+"<span foreground='$side_color'>Strona $side_number</span> zyskał przewagę."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Strony $side_numer i $other_side są związane."
+msgstr "Strony $side_number i $other_side_number są na równi zwycięzcami."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
-msgstr "Strony $winners są związane."
+msgstr "Strony $winners są na równi zwycięzcami."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
@@ -1503,8 +1503,8 @@ msgstr "Wilhelm Wiskitynnyri"
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:649
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:660
 msgid "Clockwork Boy"
 msgstr "Mechaniczny chłopiec"
 
@@ -1529,47 +1529,47 @@ msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, Wybraniec Śmierci"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:509
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:580
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:617
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:686
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:734
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:858
 msgid "Big Baby Dro"
 msgstr "Duży Dzieciak Dro"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:521
 msgid "Gawffus the Dim"
 msgstr "Gawffus Tępawy"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:569
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:592
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:708
 msgid "Neki the Brute"
 msgstr "Neki Zbir"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:804
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn Nieustraszony"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:842
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Wybraniec Śmierci"
 
@@ -2907,57 +2907,45 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+msgid "3p - Elevation Test"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
 msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
-"graphics. It is not a good map for real MP use."
+"graphics. Please be advised that it is not intended for playing."
 msgstr ""
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:9
-msgid "Wesnoth Benchmark: AI"
-msgstr "Test wydajności Wesnoth: AI"
+#~ msgid "Wesnoth Benchmark: AI"
+#~ msgstr "Test wydajności Wesnoth: AI"
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:10
-msgid ""
-"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
-msgstr ""
-"Test wydajności Wesnoth, użyj --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
+#~ msgstr ""
+#~ "Test wydajności Wesnoth, użyj --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
-msgid "Wesnoth Benchmark: Scrolling"
-msgstr "Test wydajności Wesnoth: Przewijanie"
+#~ msgid "Wesnoth Benchmark: Scrolling"
+#~ msgstr "Test wydajności Wesnoth: Przewijanie"
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
-"--exit-at-end."
-msgstr ""
-"Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
-"scenario=wesbench_scroll --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
+#~ msgstr ""
+#~ "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
-msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "Test wydajności Wesnoth: Marsz przez całun"
+#~ msgid "Wesnoth Benchmark: Walking through Shroud"
+#~ msgstr "Test wydajności Wesnoth: Marsz przez całun"
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
-msgstr ""
-"Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgstr ""
+#~ "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
 
 #~ msgid "Grand total: <b>%d</b>"
 #~ msgstr "Łącznie: <b>%d</b>"

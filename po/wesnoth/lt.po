@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2019-03-28 22:12+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -324,37 +324,37 @@ msgid "Artwork and Graphics"
 msgstr "Grafika"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Muzika"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Garso efektai"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Kampanijų kūrimas"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Daugelio žaidėjų žemėlapiai ir balansavimas"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Pakuotojai"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Įvairūs talkininkai"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Botai"
 
@@ -4092,6 +4092,34 @@ msgstr "Atšaukti"
 msgid "No planned advancement"
 msgstr "Netobulėja"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Units"
+msgid "Unit Test "
+msgstr "Kariai"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Bomb"
+msgid "Bob"
+msgstr "Sprogmuo"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 #, fuzzy
@@ -5121,11 +5149,11 @@ msgstr "Jūsų vadas turi būti bokšte, kad galėtumėte samdyti karį."
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nėra laisvų pilies laukelių, kuriuose galima samdyti karį."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "pagydytas"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "pagydyta"
 
@@ -5251,43 +5279,43 @@ msgstr "Siunčiamas priedas: <i>$addon_title</i>..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Siunčiamas priedas: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Priedas <i>$addon_title</i> šalinamas iš serverio..."
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Atsiunčiamas priedas <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Priedas tvarkyklė"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Siunčiamas priedas: <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 #, fuzzy
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
 msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 #, fuzzy
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
 msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "Serveris atsakė su klaida:"
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 #, fuzzy
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
@@ -5300,11 +5328,11 @@ msgstr[1] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti
 msgstr[2] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 msgstr[3] "Pažymėtas priedas turi šias priklausomybes. Ar norite jas įdiegti?"
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Sugadintos priklausomybės"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5316,11 +5344,11 @@ msgstr[1] "Šios priklausomybės negali būti įdiegtos. Ar norite tęsti?"
 msgstr[2] "Šios priklausomybės negali būti įdiegtos. Ar norite tęsti?"
 msgstr[3] "Šios priklausomybės negali būti įdiegtos. Ar norite tęsti?"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "Priklausomybių diegimas nepavyko"
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5328,19 +5356,19 @@ msgstr ""
 "Priedas „$addon|“ jau įdiegtas ir turi papildomos informacijos, kuri bus "
 "negrįžtamai prarasta, jeigu tęsite:"
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Viešinamos informacijos failas (.pbl)"
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Versijų kontrolės sistemos (VCS) informacija"
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "Tikrai norite tęsti?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Patvirtinti"
@@ -8335,7 +8363,7 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Per žaidėjo $player ėjimą buvo sukurtas karys naudojant derinimo režimą"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "laukiama $desc iš žaidėjo $sides"
@@ -8503,15 +8531,15 @@ msgstr "prieblandos"
 msgid "female^neutral"
 msgstr "neutrali"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> GT"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
@@ -8520,22 +8548,22 @@ msgstr[1] "per ėjimą"
 msgstr[2] "per ėjimą"
 msgstr[3] "per ėjimą"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8544,12 +8572,12 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> atakos per ėjimą"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> atakų per ėjimą"
 msgstr[3] "<span color=\"$color\">$number_or_percent</span> ataka per ėjimą"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description lygiui"
 

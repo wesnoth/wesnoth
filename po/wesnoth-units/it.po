@@ -8,13 +8,13 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2022.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-09-04 10:58+0200\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
+"PO-Revision-Date: 2023-01-01 17:37+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -47,19 +47,6 @@ msgstr "pugno"
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "coda"
-
-#. [attack]: type=impact
-#: data/campaigns/Dead_Water/units/Kraken.cfg:27
-#: data/core/units/monsters/Cuttle_Fish.cfg:29
-#: data/core/units/monsters/Tentacle.cfg:33
-msgid "tentacle"
-msgstr "tentacolo"
-
-#. [attack]: type=pierce
-#: data/campaigns/Dead_Water/units/Kraken.cfg:38
-#: data/core/units/monsters/Cuttle_Fish.cfg:40
-msgid "ink"
-msgstr "inchiostro"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -238,7 +225,7 @@ msgstr "mazzafrusto"
 #: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:43
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:59
 #: data/core/units/humans/Loyalist_Dragoon.cfg:35
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
@@ -301,7 +288,7 @@ msgstr "arco"
 #: data/core/units/gryphons/Gryphon_Master.cfg:28
 #: data/core/units/gryphons/Gryphon_Rider.cfg:27
 #: data/core/units/monsters/Bear.cfg:51
-#: data/core/units/monsters/Elder_Falcon.cfg:35
+#: data/core/units/monsters/Elder_Falcon.cfg:41
 #: data/core/units/monsters/Falcon.cfg:84
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
@@ -309,7 +296,7 @@ msgstr "arco"
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
-#: data/core/units/undead/Spirit_Nightgaunt.cfg:92
+#: data/core/units/undead/Spirit_Nightgaunt.cfg:94
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "artigli"
@@ -349,7 +336,7 @@ msgstr "sciabola"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:267
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:282
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:298
-#: data/core/units/undead/Corpse_Walking.cfg:97
+#: data/core/units/undead/Corpse_Walking.cfg:99
 msgid "Walking Corpse"
 msgstr "Morto Vivente"
 
@@ -357,7 +344,7 @@ msgstr "Morto Vivente"
 #. [unit_type]: id=Walking Corpse, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/Corpse_Shynal.cfg:17
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:11
-#: data/core/units/undead/Corpse_Walking.cfg:107
+#: data/core/units/undead/Corpse_Walking.cfg:109
 msgid ""
 "Walking Corpses are the bodies of the dead, re-animated by dark magic. "
 "Though not especially dangerous to a trained soldier, the sight of one’s "
@@ -412,8 +399,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:23
-#: data/core/units/undead/Corpse_Soulless.cfg:113
-#: data/core/units/undead/Corpse_Walking.cfg:112
+#: data/core/units/undead/Corpse_Soulless.cfg:115
+#: data/core/units/undead/Corpse_Walking.cfg:114
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:29
 #: data/core/units/undead/Necro_Lich.cfg:35
 #: data/core/units/undead/Spirit_Ghost.cfg:57
@@ -491,11 +478,13 @@ msgstr "maledizione"
 #: data/core/units/goblins/Knight.cfg:34
 #: data/core/units/goblins/Pillager.cfg:32
 #: data/core/units/goblins/Wolf_Rider.cfg:46
-#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Bear.cfg:42
-#: data/core/units/monsters/Caribe.cfg:112
+#: data/core/units/monsters/Ant.cfg:33 data/core/units/monsters/Ant_Fire.cfg:69
+#: data/core/units/monsters/Ant_Firebane.cfg:70
+#: data/core/units/monsters/Ant_Firebomb.cfg:72
+#: data/core/units/monsters/Ant_Soldier.cfg:38
+#: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:112
 #: data/core/units/monsters/Caribe_Hunter.cfg:113
 #: data/core/units/monsters/Caribe_Nibbler.cfg:125
-#: data/core/units/monsters/Fire_Ant.cfg:64
 #: data/core/units/monsters/Giant_Spider.cfg:28
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:42
@@ -518,6 +507,9 @@ msgstr "zanne"
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
 #: data/core/units/monsters/Crocodile.cfg:159
+#: data/core/units/monsters/Dragonfly.cfg:30
+#: data/core/units/monsters/Dragonfly_Grand.cfg:31
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:61
 #: data/core/units/monsters/Fire_Dragon.cfg:32
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
@@ -527,14 +519,14 @@ msgstr "zanne"
 #: data/core/units/monsters/Seahorse.cfg:34
 #: data/core/units/monsters/Wild_Wyvern.cfg:95
 #: data/core/units/undead/Corpse_Ghast.cfg:27
-#: data/core/units/undead/Corpse_Soulless.cfg:273
-#: data/core/units/undead/Corpse_Walking.cfg:272
+#: data/core/units/undead/Corpse_Soulless.cfg:275
+#: data/core/units/undead/Corpse_Walking.cfg:274
 msgid "bite"
 msgstr "morso"
 
 #. [unit_type]: id=Soulless, race=undead
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:14
-#: data/core/units/undead/Corpse_Soulless.cfg:108
+#: data/core/units/undead/Corpse_Soulless.cfg:110
 msgid ""
 "The technique of animating a dead body is unfortunately well-known in the "
 "dark arts; practitioners often use it to raise servants and soldiers from "
@@ -576,7 +568,7 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:245
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:260
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:274
-#: data/core/units/undead/Corpse_Soulless.cfg:97
+#: data/core/units/undead/Corpse_Soulless.cfg:99
 msgid "Soulless"
 msgstr "Senz’anima"
 
@@ -671,8 +663,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/core/units/dunefolk/Explorer.cfg:34
-#: data/core/units/dunefolk/Rover.cfg:31
+#: data/core/units/dunefolk/Explorer.cfg:35
+#: data/core/units/dunefolk/Rover.cfg:32
 #: data/core/units/dunefolk/Wayfarer.cfg:43
 #: data/core/units/dwarves/Explorer.cfg:33
 #: data/core/units/dwarves/Fighter.cfg:57
@@ -742,7 +734,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:36
 #: data/core/units/humans/Horseman.cfg:23
 #: data/core/units/humans/Loyalist_Javelineer.cfg:30
-#: data/core/units/humans/Loyalist_Spearman.cfg:80
+#: data/core/units/humans/Loyalist_Spearman.cfg:85
 #: data/core/units/merfolk/Hoplite.cfg:35 data/core/units/merfolk/Hunter.cfg:24
 #: data/core/units/merfolk/Hunter.cfg:32
 #: data/core/units/merfolk/Javelineer.cfg:23
@@ -777,7 +769,7 @@ msgstr "lancia"
 #: data/core/units/dwarves/Sentinel.cfg:47
 #: data/core/units/dwarves/Stalwart.cfg:42
 #: data/core/units/humans/Loyalist_Javelineer.cfg:41
-#: data/core/units/humans/Loyalist_Spearman.cfg:92
+#: data/core/units/humans/Loyalist_Spearman.cfg:97
 msgid "javelin"
 msgstr "giavellotto"
 
@@ -1814,9 +1806,9 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
-#: data/core/units/dunefolk/Explorer.cfg:43
+#: data/core/units/dunefolk/Explorer.cfg:44
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:40
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:41
 #: data/core/units/dunefolk/Sunderer.cfg:41
 #: data/core/units/dunefolk/Wayfarer.cfg:52
 #: data/core/units/dunefolk/Windbolt.cfg:41
@@ -1829,7 +1821,7 @@ msgid "Dune Explorer"
 msgstr "Esploratore delle Dune"
 
 #. [unit_type]: id=Dune Explorer, race=dunefolk
-#: data/core/units/dunefolk/Explorer.cfg:20
+#: data/core/units/dunefolk/Explorer.cfg:21
 msgid ""
 "A slow-moving caravan out in the open desert is a prime target for bandits "
 "or marauders. In order to protect themselves, the Dunefolk employ special "
@@ -2227,7 +2219,7 @@ msgid "Dune Rover"
 msgstr "Vagabondo delle Dune"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
-#: data/core/units/dunefolk/Rover.cfg:20
+#: data/core/units/dunefolk/Rover.cfg:21
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -4044,7 +4036,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
-#: data/core/units/humans/Loyalist_General.cfg:38
+#: data/core/units/humans/Loyalist_General.cfg:44
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:38
 #: data/core/units/humans/Loyalist_Royal_Guard.cfg:33
 msgid "longsword"
@@ -4212,7 +4204,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
 #: data/core/units/humans/Loyalist_Dragoon.cfg:44
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
-#: data/core/units/humans/Loyalist_General.cfg:47
+#: data/core/units/humans/Loyalist_General.cfg:53
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:47
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:36
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:40
@@ -4345,7 +4337,7 @@ msgid "General"
 msgstr "Generale"
 
 #. [unit_type]: id=General, race=human
-#: data/core/units/humans/Loyalist_General.cfg:24
+#: data/core/units/humans/Loyalist_General.cfg:30
 msgid ""
 "As the leaders of their armies, Generals are responsible for the protection "
 "of large or important areas in the kingdoms to which they have sworn fealty. "
@@ -5986,6 +5978,83 @@ msgstr ""
 "viscere più profonde della terra, alle cime delle montagne più alte. Sebbene "
 "solitamente non siano ostili, possono mordere se avvicinate."
 
+#. [unit_type]: id=Fire Ant, race=monster
+#: data/core/units/monsters/Ant_Fire.cfg:11
+msgid "Fire Ant"
+msgstr "Formica del Fuoco"
+
+#. [unit_type]: id=Fire Ant, race=monster
+#. [unit_type]: id=Firebane Ant, race=monster
+#: data/core/units/monsters/Ant_Fire.cfg:51
+#: data/core/units/monsters/Ant_Firebane.cfg:51
+msgid ""
+"Small but deadly in large numbers, fire ants possess fierce fangs and an "
+"unusual ability to generate fire. Though these creatures typically function "
+"as scavengers, a burrow of fire ants can become aggressive when provoked and "
+"have even been known to attack small groups of threatening troops."
+msgstr ""
+"Piccole ma mortali se in gran numero, le formiche del fuoco hanno possenti "
+"zanne e l’insolita capacità di generare fuoco. Sebbene queste creature "
+"assolvano tipicamente la funzione di spazzini, un loro formicaio può "
+"diventare aggressivo se provocato. Si hanno anche notizie di attacchi a "
+"piccoli gruppi di soldati ritenuti minacciosi."
+
+# Attacco della formica del fuoco, da definire quando avremo la descrizione...
+#. [attack]: type=fire
+#: data/core/units/monsters/Ant_Fire.cfg:78
+#: data/core/units/monsters/Ant_Firebane.cfg:79
+#: data/core/units/monsters/Ant_Firebomb.cfg:81
+msgid "fire"
+msgstr "fuoco"
+
+#. [unit_type]: id=Firebane Ant, race=monster
+#: data/core/units/monsters/Ant_Firebane.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Firebane Ant"
+msgstr "Formica del Fuoco"
+
+#. [unit_type]: id=Firebomb Ant, race=monster
+#: data/core/units/monsters/Ant_Firebomb.cfg:11
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Firebomb Ant"
+msgstr "Formica del Fuoco"
+
+#. [unit_type]: id=Firebomb Ant, race=monster
+#: data/core/units/monsters/Ant_Firebomb.cfg:51
+msgid ""
+"More developed and specialized Fire Ants can take different forms. The "
+"firebomb ants can produce and carry large quantities of their flammable "
+"spray in a swollen abdomen, which can make for a fearsome attack, but it "
+"also makes them weak to physical attacks and they cannot sustain the fire as "
+"their health fails."
+msgstr ""
+
+#. [unit_type]: id=Soldier Ant, race=monster
+#: data/core/units/monsters/Ant_Soldier.cfg:4
+#, fuzzy
+#| msgid "Fire Ant"
+msgid "Soldier Ant"
+msgstr "Formica del Fuoco"
+
+#. [unit_type]: id=Soldier Ant, race=monster
+#: data/core/units/monsters/Ant_Soldier.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Giant Ants are common in almost any environment, from caverns deep under "
+#| "the earth to the tops of tall mountains. Though normally not hostile, "
+#| "they can bite at close range."
+msgid ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. Most common are the nondescript workers "
+"and scouts, but in times of conflict, a more dangerous Soldier caste enters "
+"the fray."
+msgstr ""
+"Le formiche giganti sono diffuse in qualsiasi ambiente, dalle caverne nelle "
+"viscere più profonde della terra, alle cime delle montagne più alte. Sebbene "
+"solitamente non siano ostili, possono mordere se avvicinate."
+
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
 msgid "Cave Bear"
@@ -6025,8 +6094,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:378
-#: data/core/units/undead/Corpse_Walking.cfg:377
+#: data/core/units/undead/Corpse_Soulless.cfg:380
+#: data/core/units/undead/Corpse_Walking.cfg:379
 msgid "tusk"
 msgstr "zanna"
 
@@ -6176,6 +6245,91 @@ msgstr ""
 "inchiostro nero. Il modo migliore per riuscire a sopravvivere ad un incontro "
 "con questi mostri è rimanere sulla spiaggia."
 
+#. [attack]: type=impact
+#: data/core/units/monsters/Cuttle_Fish.cfg:29
+#: data/core/units/monsters/Kraken.cfg:26
+#: data/core/units/monsters/Tentacle.cfg:33
+msgid "tentacle"
+msgstr "tentacolo"
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Cuttle_Fish.cfg:40
+#: data/core/units/monsters/Kraken.cfg:37
+msgid "ink"
+msgstr "inchiostro"
+
+#. [unit_type]: id=Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly.cfg:5
+msgid "Dragonfly"
+msgstr "Libellula"
+
+#. [unit_type]: id=Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly.cfg:27
+#, fuzzy
+#| msgid ""
+#| "The giant dragonflies seen in some of the swamps, rivers, and lakes "
+#| "around Wesnoth enjoy a longer life cycle than the smaller, more common "
+#| "types.  The adult form can live indefiniately, slowly growing to a final "
+#| "moult.  They are generally territorial, but can cooperate in small groups "
+#| "to confront common foes or large prey."
+msgid ""
+"The giant dragonflies seen in some of the swamps, rivers, and lakes around "
+"Wesnoth enjoy a longer life cycle than the smaller, more common types. The "
+"adult form can live indefinitely, slowly growing to a final moult. They are "
+"generally territorial, but can cooperate in small groups to confront common "
+"foes or large prey."
+msgstr ""
+"Le libellule giganti avvistate in alcune paludi, fiumi e laghi nei dintorni "
+"di Wesnoth beneficiano di un ciclo vitale più lungo dei quello lelle loro "
+"affini più piccole e comuni. La loro forma adulta può vivere "
+"indefinitamente, crescendo lentamente fino ad una ultima muta. Sono "
+"generalmente territoriali, ma possono cooperare e riunirsi in piccoli "
+"branchi per affrontare un nemico comune o una grossa preda."
+
+#. [unit_type]: id=Grand Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly_Grand.cfg:5
+#, fuzzy
+#| msgid "Dragonfly"
+msgid "Grand Dragonfly"
+msgstr "Libellula"
+
+#. [unit_type]: id=Grand Dragonfly, race=monster
+#: data/core/units/monsters/Dragonfly_Grand.cfg:28
+msgid "Dragonflies that survive long enough grow into a final, grander form."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/monsters/Dragonfly_Grand.cfg:43
+#: data/core/units/monsters/Giant_Scorpion.cfg:47
+#: data/core/units/monsters/Giant_Scorpling.cfg:32
+msgid "sting"
+msgstr "aculeo"
+
+#. [unit_type]: id=Dragonfly Naiad, race=monster
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:5
+msgid "Dragonfly Naiad"
+msgstr "Larva di libellula"
+
+#. [unit_type]: id=Dragonfly Naiad, race=monster
+#: data/core/units/monsters/Dragonfly_Naiad.cfg:58
+#, fuzzy
+#| msgid ""
+#| "Young dragonflies live an aquatic life, mostly preying upon small fish or "
+#| "other insect nymphs.  They can crawl over rocks and mud, but they need to "
+#| "stay submerged to breath, which explains why the giant dragonflies are "
+#| "usually found only near rivers, lakes, and coves."
+msgid ""
+"Young dragonflies live an aquatic life, mostly preying upon small fish or "
+"other insect nymphs. They can crawl over rocks and mud, but they need to "
+"stay submerged to breathe, which explains why the giant dragonflies are "
+"usually found only near rivers, lakes, and coves."
+msgstr ""
+"Le giovani libellule vivono una vita prettamente acquatica, predando "
+"principalmente piccoli pesci o altre larve di insetto. Possono strisciare "
+"sopra le rocce e il fango, ma hanno bisogno di rimanere sott'acqua per "
+"respirare, motivo per cui le libellule giganti vengo solitamente trovate "
+"soltanto in prossimità di fiumi, laghi e calette."
+
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
 msgid "Elder Falcon"
@@ -6195,9 +6349,9 @@ msgstr ""
 "giovani individui della loro specie, si narra che riescano a colpire con "
 "forza tale da poter staccare la testa di un nemico."
 
-#. [attack]: type=pierce
 #. [attack]: type=blade
-#: data/core/units/monsters/Elder_Falcon.cfg:27
+#. [attack]: type=pierce
+#: data/core/units/monsters/Elder_Falcon.cfg:50
 #: data/core/units/monsters/Falcon.cfg:93 data/core/units/monsters/Roc.cfg:29
 msgid "beak"
 msgstr "beccata"
@@ -6220,31 +6374,6 @@ msgstr ""
 "sfruttate per rompere le fila dei nemici e poi dilaniarli; la loro "
 "incredibile velocità si rivela inoltre fondamentale per esplorare il "
 "territorio."
-
-#. [unit_type]: id=Fire Ant, race=monster
-#: data/core/units/monsters/Fire_Ant.cfg:11
-msgid "Fire Ant"
-msgstr "Formica del Fuoco"
-
-#. [unit_type]: id=Fire Ant, race=monster
-#: data/core/units/monsters/Fire_Ant.cfg:46
-msgid ""
-"Small but deadly in large numbers, fire ants possess fierce fangs and an "
-"unusual ability to generate fire. Though these creatures typically function "
-"as scavengers, a burrow of fire ants can become aggressive when provoked and "
-"have even been known to attack small groups of threatening troops."
-msgstr ""
-"Piccole ma mortali se in gran numero, le formiche del fuoco hanno possenti "
-"zanne e l’insolita capacità di generare fuoco. Sebbene queste creature "
-"assolvano tipicamente la funzione di spazzini, un loro formicaio può "
-"diventare aggressivo se provocato. Si hanno anche notizie di attacchi a "
-"piccoli gruppi di soldati ritenuti minacciosi."
-
-# Attacco della formica del fuoco, da definire quando avremo la descrizione...
-#. [attack]: type=fire
-#: data/core/units/monsters/Fire_Ant.cfg:73
-msgid "fire"
-msgstr "fuoco"
 
 #. [unit_type]: id=Fire Dragon, race=monster
 #: data/core/units/monsters/Fire_Dragon.cfg:4
@@ -6413,12 +6542,6 @@ msgstr ""
 "Già un normale scorpione è assai pericoloso – non c’è bisogno di spiegare "
 "quanto possa essere letale uno della taglia di un uomo."
 
-#. [attack]: type=pierce
-#: data/core/units/monsters/Giant_Scorpion.cfg:47
-#: data/core/units/monsters/Giant_Scorpling.cfg:32
-msgid "sting"
-msgstr "aculeo"
-
 #. [attack]: type=impact
 #. [attack]: type=blade
 #: data/core/units/monsters/Giant_Scorpion.cfg:59
@@ -6433,12 +6556,16 @@ msgid "scuttler"
 msgstr "orrido"
 
 #. [variation]
+#. [unit_type]: id=Sand Scuttler
 #: data/core/units/monsters/Giant_Scorpion.cfg:112
+#: data/core/units/monsters/Sand_Scuttler.cfg:8
 msgid "Sand Scuttler"
 msgstr "Orrido delle Sabbie"
 
 #. [variation]
-#: data/core/units/monsters/Giant_Scorpion.cfg:118
+#. [unit_type]: id=Sand Scuttler
+#: data/core/units/monsters/Giant_Scorpion.cfg:119
+#: data/core/units/monsters/Sand_Scuttler.cfg:13
 msgid ""
 "Making their homes in sandy dunes, these critters are an odd mix of mundane "
 "creature and elemental beast. Though usually timid, Sand Scuttlers sometimes "
@@ -6583,10 +6710,8 @@ msgstr ""
 
 #. [male]
 #: data/core/units/monsters/Horse_Dark.cfg:88
-#, fuzzy
-#| msgid "female^Dark Horse"
 msgid "male^Dark Horse"
-msgstr "Giumenta Scura"
+msgstr "Cavallo Scuro"
 
 #. [female]
 #: data/core/units/monsters/Horse_Dark.cfg:92
@@ -6705,6 +6830,24 @@ msgstr "folata del deserto"
 #: data/core/units/monsters/Jinn.cfg:108
 msgid "desert lightning"
 msgstr "saetta del deserto"
+
+#. [unit_type]: id=Kraken, race=monster
+#: data/core/units/monsters/Kraken.cfg:5
+msgid "Kraken"
+msgstr ""
+
+#. [unit_type]: id=Kraken, race=monster
+#: data/core/units/monsters/Kraken.cfg:21
+#, fuzzy
+msgid ""
+"Krakens are gigantic creatures of the seas. They can grab their opponents "
+"with strong tentacles, or spit a poisonous black ink from a distance. The "
+"best way to survive an encounter with these monsters is to remain ashore."
+msgstr ""
+"I calamari giganti sono enormi creature marine che possono afferrare i loro "
+"avversari con potenti tentacoli, oppure spruzzare a distanza un velenoso "
+"inchiostro nero. Il modo migliore per riuscire a sopravvivere ad un incontro "
+"con questi mostri è rimanere sulla spiaggia."
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -7857,10 +8000,10 @@ msgid ""
 msgstr ""
 "I sauri hanno un passo leggero e sono in grado di percorrere terreni che "
 "spesso sconcertano i loro nemici. Quando questa loro naturale mobilità si "
-"combina con l’esperienza, la forza e un equipaggiamento adeguato, i loro "
-"guerrieri possono diventare particolarmente pericolosi in battaglia – anche "
+"combina con l’esperienza, la forza e un equipaggiamento adeguato, le loro "
+"guerriere possono diventare particolarmente pericolose in battaglia – anche "
 "solo per il fatto che è molto più difficile limitarne i movimenti rispetto "
-"agli altri nemici. Anche con l’armatura, i guerrieri dei sauri riescono a "
+"agli altri nemici. Anche con l’armatura, le guerriere dei sauri riescono a "
 "sfruttare il più piccolo spazio fra le linee nemiche e hanno la capacità di "
 "far pentire il nemico per ogni suo errore tattico."
 
@@ -7895,19 +8038,17 @@ msgid ""
 "very dangerous in combat, as a careless enemy can soon find their support "
 "troops flanked by these creatures."
 msgstr ""
-"I guerrieri dei sauri sono in genere più deboli di costituzione rispetto "
+"Le guerriere dei sauri sono in genere più deboli di costituzione rispetto "
 "alle loro controparti elfiche o umane. Ovviamente la cosa vale in termini "
-"relativi: essi sono comunque in grado di crescere notevolmente in potenza "
-"senza perdere nulla della loro naturale mobilità. Ciò è molto pericoloso in "
-"battaglia, poiché un nemico imprudente può trovare ben presto le proprie "
-"truppe di supporto circondate da queste creature."
+"relativi: sono comunque in grado di crescere notevolmente in potenza senza "
+"perdere nulla della loro naturale mobilità. Ciò è molto pericoloso in "
+"battaglia, poiché un nemico imprudente può trovarsi ben presto con le "
+"proprie truppe di supporto circondate da queste creature."
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "Saura Affiancatrice"
+msgstr "Saura Giavellottiere"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:19
@@ -7917,6 +8058,10 @@ msgid ""
 "javelineers. With better equipment and exceptional aim, saurian javelineers "
 "are not to be underestimated."
 msgstr ""
+"Con anni di addestramento militare, le saure guerriere più talentuose nello "
+"scagliare le lance possono aspirare al rango di giavellottiere. Grazie ad un "
+"migliore equipaggiamento e ad una mira eccezionale, le saure giavellottiere "
+"non vanno sottostimate."
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
@@ -7957,7 +8102,7 @@ msgid ""
 "spear with enough force to do considerable damage, either in hand or thrown."
 msgstr ""
 "I sauri sono di costituzione molto minuta, ma, sebbene siano per questo "
-"assai gracili, sono anche molto, molto agili. In combattimento, le loro "
+"assai gracili, sono anche molto, molto agili. In combattimento, le ridotte "
 "dimensioni permettono loro di infiltrarsi al di là di difese che potrebbero "
 "tenere a distanza qualsiasi essere umano: ciò li rende avversari difficili "
 "da affrontare.\n"
@@ -7987,10 +8132,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
-msgstr "Saura Assaltatrice"
+msgstr "Saura Lanciera"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
@@ -7999,6 +8142,10 @@ msgid ""
 "the backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
+"Alcune saure dotate di un mira particolarmente accurata, preferiscono "
+"aiutare i loro alleati dalle retrovie piuttosto che infiltrandosi tra le "
+"formazioni nemiche. La loro mortale abilità nello scagliare una lancia "
+"permette loro di offrire supporto alle altre guerriere saure dalla distanza."
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -8229,124 +8376,122 @@ msgstr ""
 "processo in larga parte ignoto, ma che non può essere altro che un incubo."
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:139
-#: data/core/units/undead/Corpse_Walking.cfg:138
+#: data/core/units/undead/Corpse_Soulless.cfg:141
+#: data/core/units/undead/Corpse_Walking.cfg:140
 msgid "wc_variation^Drake"
 msgstr "Drago"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:154
-#: data/core/units/undead/Corpse_Walking.cfg:153
+#: data/core/units/undead/Corpse_Soulless.cfg:156
+#: data/core/units/undead/Corpse_Walking.cfg:155
 msgid "wc_variation^Dwarf"
 msgstr "Nano"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:167
-#: data/core/units/undead/Corpse_Walking.cfg:166
+#: data/core/units/undead/Corpse_Soulless.cfg:169
+#: data/core/units/undead/Corpse_Walking.cfg:168
 msgid "wc_variation^Falcon"
 msgstr "Falcone"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:201
-#: data/core/units/undead/Corpse_Walking.cfg:200
+#: data/core/units/undead/Corpse_Soulless.cfg:203
+#: data/core/units/undead/Corpse_Walking.cfg:202
 msgid "wc_variation^Goblin"
 msgstr "Goblin"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:211
-#: data/core/units/undead/Corpse_Walking.cfg:233
+#: data/core/units/undead/Corpse_Soulless.cfg:213
+#: data/core/units/undead/Corpse_Walking.cfg:235
 msgid "wc_variation^Horse"
 msgstr "Cavallo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:220
-#: data/core/units/undead/Corpse_Walking.cfg:242
+#: data/core/units/undead/Corpse_Soulless.cfg:222
+#: data/core/units/undead/Corpse_Walking.cfg:244
 msgid "wc_variation^Mounted"
 msgstr "a Cavallo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:229
-#: data/core/units/undead/Corpse_Walking.cfg:251
+#: data/core/units/undead/Corpse_Soulless.cfg:231
+#: data/core/units/undead/Corpse_Walking.cfg:253
 msgid "wc_variation^Beast-Rider"
-msgstr "Cavalcatore di Bestie"
+msgstr "Cavalcabestie"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:238
-#: data/core/units/undead/Corpse_Walking.cfg:210
+#: data/core/units/undead/Corpse_Soulless.cfg:240
+#: data/core/units/undead/Corpse_Walking.cfg:212
 msgid "wc_variation^Gryphon"
 msgstr "Grifone"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:261
-#: data/core/units/undead/Corpse_Walking.cfg:260
+#: data/core/units/undead/Corpse_Soulless.cfg:263
+#: data/core/units/undead/Corpse_Walking.cfg:262
 msgid "wc_variation^Rat"
 msgstr "Ratto"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:278
-#: data/core/units/undead/Corpse_Walking.cfg:277
+#: data/core/units/undead/Corpse_Soulless.cfg:280
+#: data/core/units/undead/Corpse_Walking.cfg:279
 msgid "wc_variation^Saurian"
 msgstr "Sauro"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:288
-#: data/core/units/undead/Corpse_Walking.cfg:287
+#: data/core/units/undead/Corpse_Soulless.cfg:290
+#: data/core/units/undead/Corpse_Walking.cfg:289
 msgid "wc_variation^Scorpion"
 msgstr "Scorpione"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:306
-#: data/core/units/undead/Corpse_Walking.cfg:305
-#, fuzzy
-#| msgid "wc_variation^Spider"
+#: data/core/units/undead/Corpse_Soulless.cfg:308
+#: data/core/units/undead/Corpse_Walking.cfg:307
 msgid "wc_variation^Scuttler"
-msgstr "Aracnide"
+msgstr "Orrido"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:315
-#: data/core/units/undead/Corpse_Walking.cfg:314
+#: data/core/units/undead/Corpse_Soulless.cfg:317
+#: data/core/units/undead/Corpse_Walking.cfg:316
 msgid "wc_variation^Spider"
 msgstr "Aracnide"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:324
-#: data/core/units/undead/Corpse_Walking.cfg:323
+#: data/core/units/undead/Corpse_Soulless.cfg:326
+#: data/core/units/undead/Corpse_Walking.cfg:325
 msgid "wc_variation^Serpent"
 msgstr "Serpente"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:343
-#: data/core/units/undead/Corpse_Walking.cfg:342
+#: data/core/units/undead/Corpse_Soulless.cfg:345
+#: data/core/units/undead/Corpse_Walking.cfg:344
 msgid "wc_variation^Swimmer"
 msgstr "Acquatico"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:361
-#: data/core/units/undead/Corpse_Walking.cfg:360
+#: data/core/units/undead/Corpse_Soulless.cfg:363
+#: data/core/units/undead/Corpse_Walking.cfg:362
 msgid "wc_variation^Troll"
 msgstr "Troll"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:370
-#: data/core/units/undead/Corpse_Walking.cfg:369
+#: data/core/units/undead/Corpse_Soulless.cfg:372
+#: data/core/units/undead/Corpse_Walking.cfg:371
 msgid "wc_variation^Boar"
 msgstr "Cinghiale"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:383
-#: data/core/units/undead/Corpse_Walking.cfg:382
+#: data/core/units/undead/Corpse_Soulless.cfg:385
+#: data/core/units/undead/Corpse_Walking.cfg:384
 msgid "wc_variation^Wose"
 msgstr "Wose"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:395
-#: data/core/units/undead/Corpse_Walking.cfg:394
+#: data/core/units/undead/Corpse_Soulless.cfg:397
+#: data/core/units/undead/Corpse_Walking.cfg:396
 msgid "wc_variation^Wolf"
 msgstr "Lupo"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:408
-#: data/core/units/undead/Corpse_Walking.cfg:407
+#: data/core/units/undead/Corpse_Soulless.cfg:410
+#: data/core/units/undead/Corpse_Walking.cfg:409
 msgid "wc_variation^Bat"
 msgstr "Pipistrello"
 

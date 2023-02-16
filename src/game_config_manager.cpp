@@ -61,6 +61,7 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 	, old_defines_map_()
 	, paths_manager_()
 	, cache_(game_config::config_cache::instance())
+	, achievements_()
 {
 	assert(!singleton);
 	singleton = this;
@@ -208,6 +209,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 			// Start transaction so macros are shared.
 			game_config::config_cache_transaction main_transaction;
+			achievements_.reload();
 
 			// Load mainline cores definition file.
 			config cores_cfg;
@@ -455,7 +457,7 @@ void game_config_manager::load_addons_cfg()
 		if(have_addon_pbl_info(addon_id)) {
 			// Publishing info needs to be read from disk.
 			try {
-				metadata = get_addon_pbl_info(addon_id);
+				metadata = get_addon_pbl_info(addon_id, false);
 			} catch(const invalid_pbl_exception& e) {
 				const std::string log_msg = formatter()
 				<< "The provided addon has an invalid pbl file"

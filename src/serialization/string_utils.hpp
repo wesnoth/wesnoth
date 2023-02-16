@@ -286,6 +286,10 @@ std::pair<int, int> parse_range(const std::string& str);
 
 std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
 
+std::pair<double, double> parse_range_real(const std::string& str);
+
+std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);
+
 int apply_modifier(const int number, const std::string &amount, const int minimum = 0);
 
 /** Add a "+" or replace the "-" par Unicode minus */

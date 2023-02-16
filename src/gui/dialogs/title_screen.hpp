@@ -108,6 +108,8 @@ private:
 
 	void hotkey_callback_select_tests();
 
+	void show_achievements();
+
 	void button_callback_multiplayer();
 
 	void button_callback_cores();

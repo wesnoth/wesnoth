@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2021-10-29 15:44+0200\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
+"PO-Revision-Date: 2023-02-09 16:47+0100\n"
+"Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -147,7 +147,7 @@ msgstr "Zijdes $winners zijn verbonden."
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr "dialog^Beurten Voorbij"
+msgstr "Beurten Voorbij"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -281,7 +281,7 @@ msgstr ""
 "<ref>text='Trollen' dst='..race_troll'</ref> die zijn misleid om te vechten "
 "voor de Orks, en de kronkelende <ref>text='Naga's' dst='..race_naga'</ref>. "
 "De Noorderlingen zijn er goed in om veel goedkope eenheden te hebben met "
-"veel HP."
+"veel LP."
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
@@ -419,7 +419,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:67
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:111
 msgid "teamname^North"
-msgstr "teamname^Noord"
+msgstr "Noord"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
@@ -453,7 +453,7 @@ msgstr "teamname^Noord"
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
 msgid "teamname^South"
-msgstr "teamname^Zuid"
+msgstr "Zuid"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
@@ -572,7 +572,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
 msgid "teamname^East"
-msgstr "teamname^Oost"
+msgstr "Oost"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
@@ -605,7 +605,7 @@ msgstr "teamname^Oost"
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
 msgid "teamname^West"
-msgstr "teamname^West"
+msgstr "West"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:37
@@ -628,7 +628,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
 msgid "teamname^Statues"
-msgstr "teamname^Standbeelden"
+msgstr "Standbeelden"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -1141,13 +1141,13 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
 msgid "teamname^Revolt"
-msgstr "teamname^Opstand"
+msgstr "Opstand"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:76
 msgid "teamname^Human"
-msgstr "teamname^Mensen"
+msgstr "Mensen"
 
 #. [then]
 #. [objective]: condition=lose
@@ -1494,8 +1494,8 @@ msgstr "Vilhelm Viskitynnyri"
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:649
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:660
 msgid "Clockwork Boy"
 msgstr "Uurwerk Jongen"
 
@@ -1520,47 +1520,47 @@ msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, Uitverkoren van de Dood"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:509
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:580
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:617
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:686
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:734
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:858
 msgid "Big Baby Dro"
 msgstr "Grote Baby Dro"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:521
 msgid "Gawffus the Dim"
 msgstr "Gawfuss de Domme"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:569
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:592
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:708
 msgid "Neki the Brute"
 msgstr "Naki de Woeste"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:804
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn de Onverschrokkene"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:842
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Uitverkoren van de Dood"
 
@@ -1617,7 +1617,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
 msgid "teamname^Invaders"
-msgstr "teamname^Indringers"
+msgstr "Indringers"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
@@ -1625,7 +1625,7 @@ msgstr "teamname^Indringers"
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:45
 msgid "teamname^Defenders"
-msgstr "teamname^Verdedigers"
+msgstr "Verdedigers"
 
 #. [label]
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
@@ -1787,7 +1787,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:38
 msgid "teamname^Shapeshifter"
-msgstr "teamname^Gedaanteverwisselaar"
+msgstr "Gedaanteverwisselaar"
 
 #. [unit]: type=Tentacle of the Deep
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:52
@@ -2223,7 +2223,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Morituri.cfg:73
 #: data/multiplayer/scenarios/8p_Morituri.cfg:84
 msgid "teamname^Team 1"
-msgstr "teamname^Team 1"
+msgstr "Team 1"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
@@ -2237,7 +2237,7 @@ msgstr "teamname^Team 1"
 #: data/multiplayer/scenarios/8p_Morituri.cfg:51
 #: data/multiplayer/scenarios/8p_Morituri.cfg:95
 msgid "teamname^Team 2"
-msgstr "teamname^Team 2"
+msgstr "Team 2"
 
 #. [multiplayer]: id=multiplayer_Castle_Hopping_Isle
 #: data/multiplayer/scenarios/4p_Castle_Hopping_Isle.cfg:5
@@ -2329,7 +2329,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:100
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:27
 msgid "teamname^Southwest"
-msgstr "teamname^Zuidwest"
+msgstr "Zuidwest"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:32
@@ -2343,7 +2343,7 @@ msgstr "teamname^Zuidwest"
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:51
 #: data/multiplayer/scenarios/6p_Hexcake.cfg:62
 msgid "teamname^Northeast"
-msgstr "teamname^Noordoost"
+msgstr "Noordoost"
 
 #. [checkbox]: id=simple_background
 #: data/multiplayer/scenarios/4p_Isars_Cross.cfg:67
@@ -2396,7 +2396,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:89
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:63
 msgid "teamname^Southeast"
-msgstr "teamname^Zuidoost"
+msgstr "Zuidoost"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
@@ -2406,7 +2406,7 @@ msgstr "teamname^Zuidoost"
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
-msgstr "teamname^Noordwest"
+msgstr "Noordwest"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7
@@ -2530,7 +2530,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:70
 msgid "teamname^Center"
-msgstr "teamname^Midden"
+msgstr "Midden"
 
 #. [multiplayer]: id=multiplayer_Forest_of_Fear
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:5
@@ -2566,17 +2566,17 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:95
 msgid "teamname^Team 3"
-msgstr "teamname^Team 3"
+msgstr "Team 3"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:106
 msgid "teamname^Team 4"
-msgstr "teamname^Team 4"
+msgstr "Team 4"
 
 #. [side]
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:128
 msgid "teamname^Monsters"
-msgstr "teamname^Monsters"
+msgstr "Monsters"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:245
@@ -2902,57 +2902,45 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+msgid "3p - Elevation Test"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
 msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
-"graphics. It is not a good map for real MP use."
+"graphics. Please be advised that it is not intended for playing."
 msgstr ""
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:9
-msgid "Wesnoth Benchmark: AI"
-msgstr "Wesnoth Benchmark: Computerspeler"
+#~ msgid "Wesnoth Benchmark: AI"
+#~ msgstr "Wesnoth Benchmark: Computerspeler"
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:10
-msgid ""
-"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
-msgstr ""
-"Een wesnoth benchmark, gebruik --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
+#~ msgstr ""
+#~ "Een wesnoth benchmark, gebruik --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
-msgid "Wesnoth Benchmark: Scrolling"
-msgstr "Wesnoth Benchmark: Scrollen"
+#~ msgid "Wesnoth Benchmark: Scrolling"
+#~ msgstr "Wesnoth Benchmark: Scrollen"
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
-"--exit-at-end."
-msgstr ""
-"Een wesnoth benchmark, gebruik --no-delay --multiplayer --"
-"scenario=wesbench_scroll --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
+#~ msgstr ""
+#~ "Een wesnoth benchmark, gebruik --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
-msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "Wesnoth Benchmark: Verplaatsen door Sluier"
+#~ msgid "Wesnoth Benchmark: Walking through Shroud"
+#~ msgstr "Wesnoth Benchmark: Verplaatsen door Sluier"
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
-msgstr ""
-"Een wesnoth benchmark, gebruik --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgstr ""
+#~ "Een wesnoth benchmark, gebruik --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
 
 #~ msgid "Grand total: <b>%d</b>"
 #~ msgstr "Totaal: <b>%d</b>"

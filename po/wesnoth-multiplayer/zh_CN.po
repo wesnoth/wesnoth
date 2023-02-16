@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-09-03 09:07+0800\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
+"PO-Revision-Date: 2023-01-27 15:23+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -108,8 +108,8 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='$side_number'>阵营$side_number</"
-"span>：失去了所有单位"
+"<span strikethrough='true' foreground='$side_color'>阵营$side_number</span>："
+"失去了所有单位"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
@@ -119,7 +119,7 @@ msgid ""
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='$side_number'>阵营$side_number</span>：收入得分 = $income  "
+"<span foreground='$side_color'>阵营$side_number</span>：收入得分 = $income  "
 "单位得分 = $units  金币 = $gold\n"
 "合计：<b>$total</b>"
 
@@ -1391,8 +1391,8 @@ msgstr "维尔赫姆·维斯基提尼利"
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:649
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:660
 msgid "Clockwork Boy"
 msgstr "发条小子"
 
@@ -1417,47 +1417,47 @@ msgid "Sorrek, Chosen of Death"
 msgstr "索里克，死之神选"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:509
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:580
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:617
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:686
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:734
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:858
 msgid "Big Baby Dro"
 msgstr "大小子啊多"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:521
 msgid "Gawffus the Dim"
 msgstr "愚笨者高法斯"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:569
 msgid "Rublok"
 msgstr "拉布洛克"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:592
 msgid "Ulysses Mantyjuuri"
 msgstr "尤利西斯·马提朱里"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:708
 msgid "Neki the Brute"
 msgstr "野蛮人尼基"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Claiomh Dubh"
 msgstr "克莱欧·达博"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:804
 msgid "Tyxrrn the Dauntless"
 msgstr "无畏者提克萨恩"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:842
 msgid "Rukhos, Chosen of Death"
 msgstr "拉克欧斯，死之神选"
 
@@ -2716,54 +2716,42 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+msgid "3p - Elevation Test"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
 msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
-"graphics. It is not a good map for real MP use."
+"graphics. Please be advised that it is not intended for playing."
 msgstr ""
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:9
-msgid "Wesnoth Benchmark: AI"
-msgstr "韦诺基准测试图：人工智能"
+#~ msgid "Wesnoth Benchmark: AI"
+#~ msgstr "韦诺基准测试图：人工智能"
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:10
-msgid ""
-"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
-msgstr ""
-"一幅韦诺基准测试图，命令行参数为：--nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end。"
+#~ msgid ""
+#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
+#~ msgstr ""
+#~ "一幅韦诺基准测试图，命令行参数为：--nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end。"
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
-msgid "Wesnoth Benchmark: Scrolling"
-msgstr "韦诺基准测试图：屏幕滚动"
+#~ msgid "Wesnoth Benchmark: Scrolling"
+#~ msgstr "韦诺基准测试图：屏幕滚动"
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
-"--exit-at-end."
-msgstr ""
-"一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
-"scenario=wesbench_scroll --exit-at-end。"
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
+#~ msgstr ""
+#~ "一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end。"
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
-msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "韦诺基准测试图：走过黑幕"
+#~ msgid "Wesnoth Benchmark: Walking through Shroud"
+#~ msgstr "韦诺基准测试图：走过黑幕"
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
-msgstr ""
-"一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end。"
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgstr ""
+#~ "一幅韦诺基准测试图，命令行参数为：--no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end。"

@@ -644,7 +644,7 @@ void pump()
 		case SDL_MOUSEMOTION: {
 			// Always make sure a cursor is displayed if the mouse moves or if the user clicks
 			cursor::set_focus(true);
-			raise_help_string_event(event.motion.x, event.motion.y);
+			process_tooltip_strings(event.motion.x, event.motion.y);
 			break;
 		}
 
@@ -769,11 +769,10 @@ void raise_resize_event()
 	raise_window_event(event);
 }
 
-void raise_help_string_event(int mousex, int mousey)
+void process_tooltip_strings(int mousex, int mousey)
 {
 	if(event_contexts.empty() == false) {
 		for(auto handler : event_contexts.back().handlers) {
-			handler->process_help_string(mousex, mousey);
 			handler->process_tooltip_string(mousex, mousey);
 		}
 	}

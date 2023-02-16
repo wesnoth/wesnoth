@@ -20,7 +20,6 @@
 #include "draw.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
-#include "floating_label.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
 #include "lexical_cast.hpp"
@@ -155,7 +154,6 @@ menu::menu(const std::vector<std::string>& items,
   max_height_(max_height), max_width_(max_width),
   max_items_(-1), item_height_(-1),
   heading_height_(-1),
-  cur_help_(-1,-1),
   selected_(0), click_selects_(click_selects), out_(false),
   previous_button_(true), show_result_(false),
   double_clicked_(false),
@@ -201,8 +199,6 @@ void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 			first_item.erase(first_item.begin());
 		}
 	}
-
-	create_help_strings();
 
 	if(sortby_ >= 0) {
 		do_sort();
@@ -266,26 +262,6 @@ void menu::assert_pos()
 	assert(item_pos_.size() == sz);
 	for(std::size_t n = 0; n != sz; ++n) {
 		assert(item_pos_[n] < sz && n == items_[item_pos_[n]].id);
-	}
-}
-
-void menu::create_help_strings()
-{
-	for(std::vector<item>::iterator i = items_.begin(); i != items_.end(); ++i) {
-		i->help.clear();
-		for(std::vector<std::string>::iterator j = i->fields.begin(); j != i->fields.end(); ++j) {
-			if(std::find(j->begin(),j->end(),static_cast<char>(HELP_STRING_SEPARATOR)) == j->end()) {
-				i->help.emplace_back();
-			} else {
-				const std::vector<std::string>& items = utils::split(*j, HELP_STRING_SEPARATOR, 0);
-				if(items.size() >= 2) {
-					*j = items.front();
-					i->help.push_back(items.back());
-				} else {
-					i->help.emplace_back();
-				}
-			}
-		}
 	}
 }
 
@@ -995,21 +971,6 @@ int menu::hit_column(int x) const
 	return j;
 }
 
-std::pair<int,int> menu::hit_cell(int x, int y) const
-{
-	const int row = hit(x, y);
-	if(row < 0) {
-		return std::pair<int,int>(-1, -1);
-	}
-
-	const int col = hit_column(x);
-	if(col < 0) {
-		return std::pair<int,int>(-1, -1);
-	}
-
-	return std::pair<int,int>(x,y);
-}
-
 int menu::hit_heading(int x, int y) const
 {
 	const std::size_t height = heading_height();
@@ -1101,32 +1062,6 @@ std::size_t menu::get_item_height(int) const
 	}
 
 	return item_height_ = max_height;
-}
-
-void menu::process_help_string(int mousex, int mousey)
-{
-	if (hidden()) return;
-
-	const std::pair<int,int> loc(hit(mousex,mousey), hit_column(mousex));
-	if(loc == cur_help_) {
-		return;
-	} else if(loc.first == -1) {
-		font::clear_help_string();
-	} else {
-		font::clear_help_string();
-		if(std::size_t(loc.first) < items_.size()) {
-			const std::vector<std::string>& row = items_[item_pos_[loc.first]].help;
-			if(std::size_t(loc.second) < row.size()) {
-				const std::string& help = row[loc.second];
-				if(help.empty() == false) {
-					//PLAIN_LOG << "setting help string from menu to '" << help << "'";
-					font::set_help_string(help);
-				}
-			}
-		}
-	}
-
-	cur_help_ = loc;
 }
 
 void menu::invalidate_row(std::size_t id)

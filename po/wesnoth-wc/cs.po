@@ -1,13 +1,13 @@
 # Martin Hrubý <hrubymar10@gmail.com>, 2020.
 # Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2022.
-# Michal Žejdl <lachim@emer.cz>, 2020 - 2022.
+# Michal Žejdl <lachim@emer.cz>, 2020 - 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-09-06 19:27+0200\n"
+"PO-Revision-Date: 2022-12-24 08:52+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -221,21 +221,17 @@ msgstr "Artefakty"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
 msgid "Recruits"
-msgstr ""
+msgstr "Rekruti"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
-msgstr "Zběh"
+msgstr "Zběhové"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
-msgstr "Velitel"
+msgstr "Velitelé"
 
 #. [label]
 #. [lua]: gui.widget.add_invest_item
@@ -247,7 +243,7 @@ msgstr "Hrdinové"
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
 msgid "Random Leaders"
-msgstr ""
+msgstr "Náhodní vůdci"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -258,20 +254,18 @@ msgstr "Nastavení"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "Dobytí světa 1hr"
+msgstr "Použít označení jednotek z Dobytí světa"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "Použít pokusné sbírání z Dobytí světa"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "Při sbírání ukázat potvrzení"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
@@ -280,10 +274,8 @@ msgstr "Obtížnost"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "Dobytí světa"
+msgstr "Verze Dobytí světa"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -307,7 +299,7 @@ msgstr "Po:"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "Získat tuto položku"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -359,41 +351,37 @@ msgstr " mapa: "
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "velikost mapy"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "hustota vesnic"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "velikost tvrze"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "Frakce"
+msgstr "opakování"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
 msgid "terrain factor"
-msgstr ""
+msgstr "činitel pro terén"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "činitel pro ostrovy"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "Tajuplný spis "
+msgstr "počet tvrzí"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -2414,7 +2402,7 @@ msgstr ""
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:29
 msgid "<b>Autorecall</b>\n"
-msgstr "<b>Automatické přivolání</b>\n"
+msgstr "<b>Automatické povolání</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:30
@@ -2423,14 +2411,14 @@ msgid ""
 "scenario with no cost (up to castle size).\n"
 "\n"
 msgstr ""
-"Jednotky s vlastností <b>hrdinný</b> jsou automaticky zdarma přivolány na "
+"Jednotky s vlastností <b>hrdinný</b> jsou automaticky zdarma povolány na "
 "začátku každého scénáře (do limitu velikosti hradu).\n"
 "\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:31
 msgid "<b>Recall Cost</b>\n"
-msgstr "<b>Náklady na přivolání</b>\n"
+msgstr "<b>Náklady na povolání</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:32
@@ -2438,7 +2426,7 @@ msgid ""
 "Units costing less than 17 gold are cheaper to recall.\n"
 "\n"
 msgstr ""
-"Jednotky, které stojí méně než 17 zlatých, mají menší náklady na přivolání.\n"
+"Jednotky, které stojí méně než 17 zlatých, mají menší náklady na povolání.\n"
 "\n"
 
 #. [lua]: preshow
@@ -2464,7 +2452,7 @@ msgstr ""
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:35
 msgid "<b>Upkeep</b>\n"
-msgstr "<b>Údržba</b>\n"
+msgstr "<b>Zaopatření</b>\n"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:36
@@ -2474,7 +2462,7 @@ msgid ""
 "\n"
 msgstr ""
 "Jednotky s vlastností <b>hrdinný</b> nebo držící nějaký magický <b>předmět</"
-"b> nevyžadují peníze na údržbu.\n"
+"b> nevyžadují peníze na zaopatření.\n"
 "\n"
 
 #. [lua]: preshow
@@ -2562,14 +2550,14 @@ msgid ""
 "The available heroes, deserters, and random leaders also depend on your "
 "factions; the items you can get do not depend on the faction you choose."
 msgstr ""
-"Dobytí světa II pracuje s věkem, který sestává z frakcí, jež jsou vytvořeny "
-"z dvojic frakcí Základního věku. Jednou z frakcí je ta, která disponuje "
-"léčitelskou jednotkou (Drakonidé, Odbojní či Věrní), a druhou z frakcí je "
-"ta, která jí nedisponuje (Seveřané, Knalganská aliance či Nemrtví). "
-"Verbovací seznam je také uspořádán v párech, takže někdy budeš muset "
-"naverbovat jinou jednotku, než budeš moci naverbovat tu svou kýženou. Tvá "
-"frakce také určuje, jací hrdinové, zběhové a náhodní vůdci budou dostupní. "
-"Výběr tvé frakce však neovlivní předměty, které budeš moci získat."
+"Dobytí světa pracuje s věkem, který sestává z frakcí, jež jsou vytvořeny "
+"z dvojic frakcí Základního věku. Jednou z frakcí je ta, která disponuje "
+"léčitelskou jednotkou (Drakonidé, Pouštní lid, Odbojní či Věrní), a druhou "
+"z frakcí je ta, která jí nedisponuje (Seveřané, Knalganská aliance či "
+"Nemrtví). Verbovací seznam je také uspořádán v párech, takže někdy budeš "
+"muset naverbovat jinou jednotku, než budeš moci naverbovat tu svou kýženou. "
+"Tvá frakce také určuje, jací hrdinové, zběhové a náhodní vůdci budou "
+"dostupní. Výběr tvé frakce však neovlivní předměty, které budeš moci získat."
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
@@ -2692,8 +2680,8 @@ msgid ""
 "Foolish upstarts. You will never defeat us! Come, my allies. Let us crush "
 "them!"
 msgstr ""
-"Hloupí nafoukanci. Nikdy nás nepřemůžete! Pojďte, moji spojenci. Pojďme je "
-"rozdrtit!"
+"Hloupí nafoukanci. Nikdy nás nepřemůžete! Pojďte, moji spojenci. Rozdrtíme "
+"je!"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:51
@@ -3781,7 +3769,7 @@ msgstr ""
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:246
 msgid "Full movement on turn recruited or recalled"
-msgstr "volný pohyb hned po verbování nebo přivolání"
+msgstr "volný pohyb hned po naverbování nebo povolání"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:312
@@ -3854,7 +3842,7 @@ msgstr "$value| zkušeností k povýšení"
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:635
 msgid "free upkeep"
-msgstr "nulové náklady na údržbu"
+msgstr "nulové náklady na zaopatření"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:645

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2022-07-14 16:49+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -2239,7 +2239,7 @@ msgstr "此時代、遊戲內容或模組不支援自訂功能。"
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/mp_create_game.cfg:474
 #: data/gui/window/preferences/02_hotkeys.cfg:282
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:168
 msgid "Defaults"
 msgstr "預設"
 
@@ -2312,7 +2312,7 @@ msgstr "發佈模組"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
-#: src/gui/dialogs/addon/manager.cpp:996
+#: src/gui/dialogs/addon/manager.cpp:999
 msgid "Uninstall add-on"
 msgstr "移除模組"
 
@@ -2360,21 +2360,28 @@ msgid "Authenticate"
 msgstr "驗證"
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1036
+#: data/gui/window/addon_auth.cfg:67
+#, fuzzy
+#| msgid "Rename"
+msgid "Username:"
+msgstr "重新命名"
+
+#. [label]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "密碼："
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
 msgid "Save password locally (encrypted)"
 msgstr "在本機儲存密碼（加密）"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2387,7 +2394,7 @@ msgstr "在本機儲存密碼（加密）"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:179
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2400,7 +2407,7 @@ msgstr "確定"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #. [button]: id=placeholder
-#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:181 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2428,7 +2435,7 @@ msgstr "確定"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_report.cfg:249 data/gui/window/mp_staging.cfg:442
 #: data/gui/window/network_transmission.cfg:111
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:190
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -2560,7 +2567,7 @@ msgstr "相依模組："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1074
+#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1077
 msgid "addon_dependencies^None"
 msgstr "無"
 
@@ -2571,7 +2578,7 @@ msgstr "翻譯："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1088
+#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1091
 msgid "translations^None"
 msgstr "無"
 
@@ -2611,8 +2618,8 @@ msgstr "模組管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:537
-#: src/gui/dialogs/addon/manager.cpp:809
+#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: src/gui/dialogs/addon/manager.cpp:812
 msgid "Add-on Details"
 msgstr "模組詳細資訊"
 
@@ -2960,7 +2967,7 @@ msgstr "刪除 ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:972 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "確認"
@@ -3065,7 +3072,7 @@ msgstr "描述："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Experience modifier:"
 msgstr "經驗值修正："
 
@@ -3127,7 +3134,7 @@ msgstr "金幣："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Gold per village:"
 msgstr "每個村莊的產出金幣："
 
@@ -3198,7 +3205,7 @@ msgstr "選擇地圖產生器："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Settings"
 msgstr "設定"
 
@@ -3915,14 +3922,14 @@ msgstr "建立遊戲"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "Join"
 msgstr "加入"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid "Observe"
 msgstr "旁觀者"
 
@@ -4562,7 +4569,7 @@ msgstr "設定密碼讓玩家輸入密碼才可加入遊戲"
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Map size:"
 msgstr "地圖尺寸："
 
@@ -5366,44 +5373,48 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr "使用檔案管理員瀏覽螢幕截圖目錄"
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr "選擇狀態球及小地圖顏色"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
 msgstr "顯示未移動狀態球"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
-msgid "Show partial moved orb"
+#: data/gui/window/select_orb_colors.cfg:147
+#, fuzzy
+#| msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "顯示還可移動狀態球"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
 msgstr "顯示已移動狀態球"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:152
 msgid "Show ally orb"
 msgstr "顯示盟友狀態球"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:154
 msgid "Show enemy orb"
 msgstr "顯示敵方狀態球"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "Show disengaged orb"
-msgstr "顯示脫離狀態球"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr "使用還可移動狀態球和已移動狀態球的顏色。"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -5775,8 +5786,8 @@ msgstr "錯誤"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
-#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
+#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "詳細："
 
@@ -6220,103 +6231,103 @@ msgstr "已發佈，但損毀"
 msgid "addon_state^Unknown"
 msgstr "未知"
 
-#: src/gui/dialogs/addon/manager.cpp:430
+#: src/gui/dialogs/addon/manager.cpp:433
 msgid "ascending"
 msgstr "遞增"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:432
+#: src/gui/dialogs/addon/manager.cpp:435
 msgid "oldest to newest"
 msgstr "從最舊到最新"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:438
 msgid "descending"
 msgstr "遞減"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:437
+#: src/gui/dialogs/addon/manager.cpp:440
 msgid "newest to oldest"
 msgstr "從最新到最舊"
 
-#: src/gui/dialogs/addon/manager.cpp:534
+#: src/gui/dialogs/addon/manager.cpp:537
 msgid "addons^Back to List"
 msgstr "回到清單"
 
-#: src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:549
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "從伺服器下載模組清單時發生錯誤。"
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "No Add-ons Available"
 msgstr "沒有可用的模組"
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "There are no add-ons available for download from this server."
 msgstr "此伺服器沒有可供下載的模組。"
 
-#: src/gui/dialogs/addon/manager.cpp:851
+#: src/gui/dialogs/addon/manager.cpp:854
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
 msgstr "下列模組似乎有發佈中或版本控制訊息儲存在本機，所以將不會被刪除："
 
-#: src/gui/dialogs/addon/manager.cpp:859
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid "The following add-on could not be deleted properly:"
 msgstr "下列模組無法正常被刪除："
 
-#: src/gui/dialogs/addon/manager.cpp:912
+#: src/gui/dialogs/addon/manager.cpp:915
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:913
+#: src/gui/dialogs/addon/manager.cpp:916
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
 msgstr "此模組的遠端版本與正在上傳的版本相同或更新。你真的希望繼續嗎？"
 
-#: src/gui/dialogs/addon/manager.cpp:932
+#: src/gui/dialogs/addon/manager.cpp:935
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "無效的圖示路徑。請確認路徑指向有效的圖示。"
 
-#: src/gui/dialogs/addon/manager.cpp:935 src/gui/dialogs/addon/manager.cpp:977
+#: src/gui/dialogs/addon/manager.cpp:938 src/gui/dialogs/addon/manager.cpp:980
 msgid "The server responded with an error:"
 msgstr "伺服器回傳了一個錯誤："
 
-#: src/gui/dialogs/addon/manager.cpp:938
+#: src/gui/dialogs/addon/manager.cpp:941
 msgid "The add-on was rejected by the server:"
 msgstr "這個模組被伺服器拒絕了："
 
-#: src/gui/dialogs/addon/manager.cpp:953 src/gui/dialogs/addon/manager.cpp:980
+#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:983
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "回應"
 
-#: src/gui/dialogs/addon/manager.cpp:965
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
 msgstr ""
 "刪除「$addon|」將會從模組伺服器上永久移除上傳及下載數。你真的希望繼續嗎？"
 
-#: src/gui/dialogs/addon/manager.cpp:997
+#: src/gui/dialogs/addon/manager.cpp:1000
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "你真的想要移除「$addon|」？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1028
+#: src/gui/dialogs/addon/manager.cpp:1031
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1030
+#: src/gui/dialogs/addon/manager.cpp:1033
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1091
+#: src/gui/dialogs/addon/manager.cpp:1094
 msgid "url^None"
 msgstr "無"
 
@@ -6341,13 +6352,13 @@ msgid "Attacker vulnerability vs"
 msgstr "攻擊方弱點"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:436
+#: src/gui/dialogs/multiplayer/lobby.cpp:437
 msgid "active_modifications^None"
 msgstr "無"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:144
-#: src/gui/dialogs/gamestate_inspector.cpp:409
+#: src/gui/dialogs/gamestate_inspector.cpp:416
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192
@@ -6569,12 +6580,12 @@ msgid "Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "no"
 msgstr "否"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "yes"
 msgstr "是"
 
@@ -6700,11 +6711,11 @@ msgstr "隨機"
 msgid "Do you really want to log out?"
 msgstr "你真的想要登出嗎？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid "Incompatible User-made Content"
 msgstr "不相容的模組"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6713,11 +6724,11 @@ msgstr ""
 "無法加入遊戲，因為房主有使用與你不相容的舊版模組。你也許要去建議房主更新模組"
 "版本。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid "Missing User-made Content"
 msgstr "未找到模組"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6726,47 +6737,47 @@ msgstr ""
 "需要安裝或更新一個或更多的模組才能加入此遊戲。\n"
 "你想要嘗試安裝嗎？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:369
+#: src/gui/dialogs/multiplayer/lobby.cpp:370
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "遊戲：$num_shown|個已顯示，共$num_total|個"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:392
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代：$era_name|）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:422
 msgid "era_or_mod^not installed"
 msgstr "未安裝"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:424
+#: src/gui/dialogs/multiplayer/lobby.cpp:425
 msgid "Era"
 msgstr "時代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:431
+#: src/gui/dialogs/multiplayer/lobby.cpp:432
 msgid "Modifications"
 msgstr "模組"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Reloaded:"
 msgstr "重新載入："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shared vision:"
 msgstr "共享視野："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shuffle sides:"
 msgstr "隨機陣營："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Time limit:"
 msgstr "時間限制："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Use map settings:"
 msgstr "使用地圖設定："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:468
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6774,24 +6785,24 @@ msgstr ""
 "需要安裝一個或更多的模組\n"
 "才能加入這個遊戲。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Observers allowed"
 msgstr "允許觀察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:496
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid "Observers not allowed"
 msgstr "不允許觀察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:627
+#: src/gui/dialogs/multiplayer/lobby.cpp:628
 msgid "lobby"
 msgstr "大廳"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr "這個遊戲被密碼保護。仍然要用管理員權限觀察嗎？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:841
+#: src/gui/dialogs/multiplayer/lobby.cpp:842
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6799,7 +6810,7 @@ msgstr ""
 "多人連線大廳的模組檢測資料庫出現了問題，請在 https://bugs.wesnoth.org 回報此"
 "問題。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr "這個遊戲被密碼保護。仍然要用管理員權限加入嗎？"
 
@@ -8168,6 +8179,12 @@ msgid ""
 msgstr ""
 "按鍵「$deprecated_key|」已經被更名為「$key|」。「$deprecated_key|」將在"
 "$removal_version|版本中被移除。"
+
+#~ msgid "Show disengaged orb"
+#~ msgstr "顯示脫離狀態球"
+
+#~ msgid "This uses the colors for partial and moved orbs."
+#~ msgstr "使用還可移動狀態球和已移動狀態球的顏色。"
 
 #, fuzzy
 #~| msgid "Player joins"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -2335,7 +2335,7 @@ msgstr ""
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/mp_create_game.cfg:474
 #: data/gui/window/preferences/02_hotkeys.cfg:282
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:168
 msgid "Defaults"
 msgstr "Bun-roghainnean"
 
@@ -2408,7 +2408,7 @@ msgstr "Foillsich an tuilleadan"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
-#: src/gui/dialogs/addon/manager.cpp:996
+#: src/gui/dialogs/addon/manager.cpp:999
 msgid "Uninstall add-on"
 msgstr "Dì-stàlaich an tuilleadan"
 
@@ -2456,21 +2456,28 @@ msgid "Authenticate"
 msgstr "Dearbh"
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1036
+#: data/gui/window/addon_auth.cfg:67
+#, fuzzy
+#| msgid "Rename"
+msgid "Username:"
+msgstr "Thoir ainm ùr air"
+
+#. [label]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "Facal-faire:"
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
 msgid "Save password locally (encrypted)"
 msgstr "Sàbhail am facal-faire gu h-ionadail (crioptaichte)"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2483,7 +2490,7 @@ msgstr "Sàbhail am facal-faire gu h-ionadail (crioptaichte)"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:179
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2496,7 +2503,7 @@ msgstr "Ceart ma-thà"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #. [button]: id=placeholder
-#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:181 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2524,7 +2531,7 @@ msgstr "Ceart ma-thà"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_report.cfg:249 data/gui/window/mp_staging.cfg:442
 #: data/gui/window/network_transmission.cfg:111
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:190
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -2658,7 +2665,7 @@ msgstr "Eisimeileachdan:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1074
+#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1077
 msgid "addon_dependencies^None"
 msgstr "Gun eisimeileachd"
 
@@ -2669,7 +2676,7 @@ msgstr "Eadar-theangachaidhean:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1088
+#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1091
 msgid "translations^None"
 msgstr "Gin"
 
@@ -2708,8 +2715,8 @@ msgstr "Manaidsear nan tuilleadan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:537
-#: src/gui/dialogs/addon/manager.cpp:809
+#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: src/gui/dialogs/addon/manager.cpp:812
 msgid "Add-on Details"
 msgstr "Mion-fhiosrachadh an tuilleadain"
 
@@ -3060,7 +3067,7 @@ msgstr "Sguab às àm an latha"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:972 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Dearbhaich"
@@ -3165,7 +3172,7 @@ msgstr "Tuairisgeul:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Experience modifier:"
 msgstr "Atharraichear eòlais:"
 
@@ -3227,7 +3234,7 @@ msgstr "Òr:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Gold per village:"
 msgstr "Òr gach baile:"
 
@@ -3298,7 +3305,7 @@ msgstr "Tagh gineadair mapa:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Settings"
 msgstr "Roghainnean"
 
@@ -4025,14 +4032,14 @@ msgstr "Cruthaich geama"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "Join"
 msgstr "Gabh ann"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid "Observe"
 msgstr "Amhairc"
 
@@ -4679,7 +4686,7 @@ msgstr ""
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Map size:"
 msgstr "Meud a’ mhapa:"
 
@@ -5519,44 +5526,48 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr "Rùraich pasgan nan glacaidhean-sgrìn le manaidsear fhaidhlichean"
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr "Tagh dathan nan cruinnichean ’s a’ mheanbh-mhapa"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
 msgstr "Seall cruinne gun ghluasad"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
-msgid "Show partial moved orb"
+#: data/gui/window/select_orb_colors.cfg:147
+#, fuzzy
+#| msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "Seall cruinne a’ ghluasaid phàirtich"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
 msgstr "Seall cruinne a’ ghluasaid"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:152
 msgid "Show ally orb"
 msgstr "Seall cruinne nan caidreabhach"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:154
 msgid "Show enemy orb"
 msgstr "Seall cruinne an nàmhad"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "Show disengaged orb"
-msgstr "Seall cruinne gun chòmhrag"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr "Cleachdaidh seo dathan nan cruinnean pàirteach is a’ ghluasaid."
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -5942,8 +5953,8 @@ msgstr "Mearachd"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
-#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
+#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Fiosrachadh: "
 
@@ -6431,42 +6442,42 @@ msgstr "Foillsichte, briste"
 msgid "addon_state^Unknown"
 msgstr "Chan eil fhios"
 
-#: src/gui/dialogs/addon/manager.cpp:430
+#: src/gui/dialogs/addon/manager.cpp:433
 msgid "ascending"
 msgstr "a’ dìreadh"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:432
+#: src/gui/dialogs/addon/manager.cpp:435
 msgid "oldest to newest"
 msgstr "sean gu ùr"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:438
 msgid "descending"
 msgstr "a’ teàrnadh"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:437
+#: src/gui/dialogs/addon/manager.cpp:440
 msgid "newest to oldest"
 msgstr "ùr gu sean"
 
-#: src/gui/dialogs/addon/manager.cpp:534
+#: src/gui/dialogs/addon/manager.cpp:537
 msgid "addons^Back to List"
 msgstr "Air ais dhan liosta"
 
-#: src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:549
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Thachair mearachd rè luchdadh a-nuas liosta nan tuilleadan an fhrithealaiche."
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "No Add-ons Available"
 msgstr "Chan eil tuilleadan ri fhaighinn"
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "There are no add-ons available for download from this server."
 msgstr "Chan eil tuilleadan ri luchdadh a-nuas air an fhrithealaiche seo."
 
-#: src/gui/dialogs/addon/manager.cpp:851
+#: src/gui/dialogs/addon/manager.cpp:854
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6474,15 +6485,15 @@ msgstr ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
 "tuilleadan seo air stòradh gu h-ionadail is cha dèid a thoirt air falbh:"
 
-#: src/gui/dialogs/addon/manager.cpp:859
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid "The following add-on could not be deleted properly:"
 msgstr "Cha b’ urrainn dhuinn an tuilleadan seo a sguabadh às mar bu chòir:"
 
-#: src/gui/dialogs/addon/manager.cpp:912
+#: src/gui/dialogs/addon/manager.cpp:915
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/gui/dialogs/addon/manager.cpp:913
+#: src/gui/dialogs/addon/manager.cpp:916
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6491,26 +6502,26 @@ msgstr ""
 "tionndadh a tha thu airson luchdadh suas. A bheil thu cinnteach gu bheil thu "
 "airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:932
+#: src/gui/dialogs/addon/manager.cpp:935
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Chan eil slighe na h-ìomhaigheige dligheach. Dèan cinnteach gun tomh an t-"
 "slighe ri dealbh dligheach."
 
-#: src/gui/dialogs/addon/manager.cpp:935 src/gui/dialogs/addon/manager.cpp:977
+#: src/gui/dialogs/addon/manager.cpp:938 src/gui/dialogs/addon/manager.cpp:980
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
-#: src/gui/dialogs/addon/manager.cpp:938
+#: src/gui/dialogs/addon/manager.cpp:941
 msgid "The add-on was rejected by the server:"
 msgstr "Chaidh an tuilleadan a dhiùltadh leis an fhrithealaiche:"
 
-#: src/gui/dialogs/addon/manager.cpp:953 src/gui/dialogs/addon/manager.cpp:980
+#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:983
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "Freagairt"
 
-#: src/gui/dialogs/addon/manager.cpp:965
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6519,25 +6530,25 @@ msgstr ""
 "luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
 "cinnteach gu bheil thu airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:997
+#: src/gui/dialogs/addon/manager.cpp:1000
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "A bheil thu airson “$addon|” a dhì-stàladh?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1028
+#: src/gui/dialogs/addon/manager.cpp:1031
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M%p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1030
+#: src/gui/dialogs/addon/manager.cpp:1033
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1091
+#: src/gui/dialogs/addon/manager.cpp:1094
 msgid "url^None"
 msgstr "Gun làrach-lìn"
 
@@ -6562,13 +6573,13 @@ msgid "Attacker vulnerability vs"
 msgstr "Ionnsaighear so-leònta a thaobh"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:436
+#: src/gui/dialogs/multiplayer/lobby.cpp:437
 msgid "active_modifications^None"
 msgstr "Chan eil gin"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:144
-#: src/gui/dialogs/gamestate_inspector.cpp:409
+#: src/gui/dialogs/gamestate_inspector.cpp:416
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192
@@ -6799,12 +6810,12 @@ msgid "Unknown"
 msgstr "Chan eil fhios"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "no"
 msgstr "dheth"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "yes"
 msgstr "air"
 
@@ -6932,11 +6943,11 @@ msgstr "Air thuaiream"
 msgid "Do you really want to log out?"
 msgstr "A bheil thu cinnteach gu bheil thu airson clàradh a-mach?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid "Incompatible User-made Content"
 msgstr "Tuilleadan neo-chòrdail"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6946,11 +6957,11 @@ msgstr ""
 "shean aig an òstair nach eil co-chòrdail ris an tionndadh a th’ agadsa. Nach "
 "mol thu dhan òstair gun ùraich iad na tuilleadain aca?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid "Missing User-made Content"
 msgstr "Tha tuilleadan a dhìth"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6961,47 +6972,47 @@ msgstr ""
 "\n"
 "A bheil thu airson an stàladh?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:369
+#: src/gui/dialogs/multiplayer/lobby.cpp:370
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Geamannan: a’ sealltainn $num_shown a-mach à $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:392
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Linn: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:422
 msgid "era_or_mod^not installed"
 msgstr "gun stàladh"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:424
+#: src/gui/dialogs/multiplayer/lobby.cpp:425
 msgid "Era"
 msgstr "Linn"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:431
+#: src/gui/dialogs/multiplayer/lobby.cpp:432
 msgid "Modifications"
 msgstr "Atharraichean"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Reloaded:"
 msgstr "Air ath-luchdadh:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shared vision:"
 msgstr "Lèirsinn cho-roinnte:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shuffle sides:"
 msgstr "Measgaich na taobhan:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Time limit:"
 msgstr "Cuingeachadh ùine:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Use map settings:"
 msgstr "Cleachd roghainnean a’ mhapa:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:468
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -7009,26 +7020,26 @@ msgstr ""
 "Feumaidh tu tuilleadan no dhà a stàladh\n"
 "mus gabh thu pàirt sa gheama seo."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Observers allowed"
 msgstr "Amhairc cheadaichte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:496
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid "Observers not allowed"
 msgstr "Chan eil amhairc ceadaichte"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:627
+#: src/gui/dialogs/multiplayer/lobby.cpp:628
 msgid "lobby"
 msgstr "lobaidh"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Chan eil an geama seo a’ ceadachadh amhairc. A bheil thu airson amharc le "
 "còraichean maoir co-dhiù?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:841
+#: src/gui/dialogs/multiplayer/lobby.cpp:842
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -7037,7 +7048,7 @@ msgstr ""
 "chur ris an lobaidh ioma-chluicheadair. Dèan aithris air a’ bhuga seo air "
 "https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Tha an geama seo fo dhìon facail-fhaire. A bheil thu airson tighinn a-steach "
@@ -8443,6 +8454,12 @@ msgstr ""
 "Chaidh an iuchair “$deprecated_key” ath-ainmeachadh gu “$key|.” Thèid gach "
 "taic ri “$deprecated_key” a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Show disengaged orb"
+#~ msgstr "Seall cruinne gun chòmhrag"
+
+#~ msgid "This uses the colors for partial and moved orbs."
+#~ msgstr "Cleachdaidh seo dathan nan cruinnean pàirteach is a’ ghluasaid."
 
 #, fuzzy
 #~| msgid "Player joins"

@@ -521,6 +521,13 @@ inline std::string geometry_to_string(point p)
 	return std::to_string(p.x) + 'x' + std::to_string(p.y);
 }
 
+template<typename coordinateType>
+inline std::string geometry_to_string(coordinateType horizontal, coordinateType vertical)
+{
+	// Use a stream in order to control significant digits in non-integers
+	return formatter() << std::fixed << std::setprecision(2) << horizontal << 'x' << vertical;
+}
+
 std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::string& current_driver)
 {
 	bool found_current_driver = false;
@@ -550,6 +557,10 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		placeholder = "Running in non-interactive mode.";
 	}
 
+	if(!video::has_window()) {
+		placeholder = "Video not initialized yet.";
+	}
+
 	if(!placeholder.empty()) {
 		fmt.set_placeholder(placeholder);
 		return fmt;
@@ -558,11 +569,25 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	const auto& current_driver = video::current_driver();
 	auto drivers = video::enumerate_drivers();
 
+	const auto& dpi = video::get_dpi();
+	std::string dpi_report;
+
+	dpi_report = dpi.first == 0.0f || dpi.second == 0.0f ?
+				 "<unknown>" :
+				 geometry_to_string(dpi.first, dpi.second);
+
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
 	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
 	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
+	fmt.insert("Screen dpi", dpi_report);
+
+	const auto& renderer_report = video::renderer_report();
+
+	for(const auto& info : renderer_report) {
+		fmt.insert(info.first, info.second);
+	}
 
 	return fmt;
 }

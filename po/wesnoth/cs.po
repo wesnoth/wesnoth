@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
-"PO-Revision-Date: 2022-11-09 20:51+0100\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"PO-Revision-Date: 2023-02-05 08:15+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -336,37 +336,37 @@ msgid "Artwork and Graphics"
 msgstr "Kresby a grafika"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Hudba"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Zvukové efekty"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Návrh tažení"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mapy pro Hru více hráčů"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Tvorba balíčků"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Různé"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Boti"
 
@@ -4353,6 +4353,30 @@ msgstr "Zrušit"
 msgid "No planned advancement"
 msgstr "Žádné plánované povýšení"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+msgid "Unit Test "
+msgstr "Test součásti "
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr "Alice"
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+msgid "Bob"
+msgstr "Bob"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr "Test součásti test_relative_dir"
+
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 msgid "replay^Play"
@@ -4487,7 +4511,7 @@ msgstr "Výchozí motiv"
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr "Načti kolo..."
+msgstr "Načíst kolo..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:109
@@ -4619,7 +4643,7 @@ msgid ""
 msgstr ""
 "Taktiku obklíčení dvěma jednotkami není radno podceňovat, zvláště proti "
 "rychlým jednotkám. Umístěním dvou jednotek na opačné strany nepřátelské "
-"jednotky ji sevřete jejich oblastmi kontroly a omezíte tak pohyb na jedno "
+"jednotky ji sevřeš jejich oblastmi kontroly a omezíš tak pohyb na jedno "
 "políčko kterýmkoliv směrem. Výjimku tvoří <i>průbojné</i> jednotky, které by "
 "bylo zapotřebí zcela obklíčit."
 
@@ -4649,8 +4673,8 @@ msgid ""
 "you are doing in comparison."
 msgstr ""
 "Z hlavního menu lze otevřít několik užitečných souhrnů: například <b>Stavová "
-"tabulka</b> přehledně ukazuje, jak si vedete ve srovnání s nepřítelem "
-"ohledně financí a velikosti armády."
+"tabulka</b> přehledně ukazuje, jak si vedeš ve srovnání s nepřítelem ohledně "
+"financí a velikosti armády."
 
 #. [tip]
 #: data/tips.cfg:40
@@ -4825,8 +4849,8 @@ msgid ""
 "are guaranteed at least a 60% chance of a hit when they attack on their own "
 "turn."
 msgstr ""
-"Šance zasáhnout jednotku obvykle závisí na tom, jak dobře se dokáže bránit v "
-"terénu, v němž stojí; avšak <i>magické</i> útoky mají vždy 70% šanci "
+"Šance zasáhnout jednotku obvykle závisí na tom, jak dobře se dokáže bránit "
+"v terénu, v němž stojí; avšak <i>magické</i> útoky mají vždy 70% šanci "
 "zasáhnout. <i>Odstřelovači</i> mají také vždy alespoň 60% šanci zasáhnout, "
 "pokud útočí ve svém kole."
 
@@ -4865,8 +4889,8 @@ msgid ""
 msgstr ""
 "Na mapách, kde je použito <i>zahalení tmou</i> či <i>mlha</i>, je pohled "
 "jednotek omezen možnostmi jejich pohybu. Pokud máš cenné, ale pomalé "
-"jednotky, zůstaň poblíž nich s další, rychlejší jednotkou, aby nebyla "
-"zaskočena překvapivým útokem z neviděné části mapy."
+"jednotky, zůstaň poblíž nich s další, rychlejší jednotkou, aby nebyly "
+"zaskočeny překvapivým útokem z neviděné části mapy."
 
 #. [tip]
 #: data/tips.cfg:104
@@ -5146,9 +5170,9 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
-"Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebujete "
-"přesouvat jednotky při zachování možnosti vracení, zapněte volbu <b>Pozdrž "
-"překreslování mlhy</b> nebo využijte plánovací režim."
+"Pohyb odstraňující mlhu nebo zahalení tmou nelze vrátit. Pokud potřebuješ "
+"přesouvat jednotky při zachování možnosti vracení, zapni volbu <b>Pozdrž "
+"překreslování mlhy</b> nebo využij plánovací režim."
 
 #. [tip]
 #: data/tips.cfg:201
@@ -5442,11 +5466,11 @@ msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr ""
 "Nejsou žádná volná políčka hradu, na která by se daly verbovat jednotky."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "vyléčen"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "vyléčená"
 
@@ -5576,23 +5600,23 @@ msgstr "Posílání aktualizačního balíčku pro rozšíření <i>$addon_title
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Odstraňuji rozšíření: <i>$addon_title|</i> ze serveru..."
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Stahuji rozšíření: <i>$addon_title|</i>..."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Správce rozšíření"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Instaluji rozšíření <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5600,7 +5624,7 @@ msgstr ""
 "Rozšíření <i>$addon_title</i> obsahuje neplatný název souboru nebo složky a "
 "nebude instalováno."
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5608,11 +5632,11 @@ msgstr ""
 "Rozšíření <i>$addon_title</i> má názvy souborů nebo adresářů s kolizí malých "
 "a velkých písmen. To může způsobit problémy."
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "Server odpověděl chybou:"
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5629,11 +5653,11 @@ msgstr[2] ""
 "Vybraná rozšíření závisí na dalším rozšíření, které není momentálně "
 "nainstalováno nebo není dostupné na serveru. Přejete si pokračovat?"
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Porušení závislostí"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5646,11 +5670,11 @@ msgstr[1] ""
 msgstr[2] ""
 "Následující závislosti nebylo možné nainstalovat. Chcete pokračovat?"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "Instalace závislostí selhala"
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5658,19 +5682,19 @@ msgstr ""
 "Rozšíření '$addon|' už je nainstalované a obsahuje dodatečné informace, "
 "které budou navždy ztraceny, jestli budete pokračovat:"
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Soubor pro publikace (.pbl)"
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Informace o verzovacím systému (VCS)"
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "Opravdu si přeješ pokračovat?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Potvrdit"
@@ -8324,12 +8348,12 @@ msgstr ""
 "Výdaje na zaopatření tvého vojska vzniklé na konci každého kola. První číslo "
 "je množství zlatých, které bude odečteno. Je stejné jako počet úrovní "
 "jednotek, které nejsou podporovány vesnicemi. Druhé číslo jsou celkové "
-"náklady na údržbu zahrnující ty, které jsou kryty vesnicemi – jinými slovy "
-"množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
+"náklady na zaopatření zahrnující ty, které jsou kryty vesnicemi – jinými "
+"slovy množství zlatých, které bude odečteno, pokud ztratíš všechny vesnice."
 
 #: src/reports.cpp:1478
 msgid "Upkeep"
-msgstr "Údržba"
+msgstr "Výdaje"
 
 #: src/reports.cpp:1515
 msgid "Net Income"
@@ -8341,7 +8365,7 @@ msgid ""
 "income from controlled villages and payment of upkeep."
 msgstr ""
 "Čisté množství zlatých, které každé kolo získáš nebo ztratíš s ohledem na "
-"příjem z ovládaných vesnic a platbu za údržbu."
+"příjem z ovládaných vesnic a úhradu zaopatření."
 
 #: src/reports.cpp:1683
 msgid "Observers:"
@@ -8431,7 +8455,7 @@ msgstr ""
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
-msgstr "Načti hru"
+msgstr "Načíst hru"
 
 #: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
@@ -8676,7 +8700,7 @@ msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Jednotka byla vytvořena pomocí ladícího příkazu během kola hráče $player"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "čeká se na $desc od strany $sides"
@@ -8836,35 +8860,35 @@ msgstr "šerá"
 msgid "female^neutral"
 msgstr "neutrální"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> bodů života"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> krok"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> kroky"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> kroků"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> rozhled"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> rušení"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> bodů zkušenosti k postupu"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8872,11 +8896,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cena za povolání"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description na úroveň"
 

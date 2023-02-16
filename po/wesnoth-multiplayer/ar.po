@@ -2,29 +2,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2008-04-24 21:05+0200\n"
+"POT-Creation-Date: 2023-01-15 00:20 UTC\n"
+"PO-Revision-Date: 2022-12-23 11:36+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
-msgstr ""
+msgstr "خريطة المستخدم"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:6
 msgid "Random"
-msgstr ""
+msgstr "عشوائي"
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:53
 msgid "Default"
-msgstr ""
+msgstr "قياسي "
 
 #. [era]: id=era_default, type=hybrid
 #: data/multiplayer/eras.cfg:54
@@ -32,11 +33,12 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"العصر القياسي للعبة ويسنوث الجماعية. يتكون من ستة فصائل وهي متوازنة بشكل عام."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:75
 msgid "Age of Heroes"
-msgstr ""
+msgstr "عمر الابطال"
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:76
@@ -45,11 +47,13 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"عصر مع وحدات ذات مستوى أعلى: قادة من المستوى الثالث ، مع وجود وحدات من "
+"المستوى الأول والثاني متاحين للتجنيد. يتكون من ستة فصائل. لا تعتبر متوازنة."
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
 msgid "Default + Dunefolk"
-msgstr ""
+msgstr "قياسي + قوم الواحات"
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:84
@@ -61,11 +65,17 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"عصر يضم فصيلًا إضافيًا إلى جانب الفصائل الستة من العصر القياسي. تعتمد وحدات "
+"قوم الواحات على الاستخدام الدقيق للتضاريس والضربات المنسقة في الغسق أو "
+"الفجر.\n"
+"\n"
+"لا يزال هذا العصر قيد التطوير ، لذا يرجى التأكد من الإبلاغ عن أي مشاكل قد "
+"تظهر."
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:94
 msgid "Age of Heroes + Dunefolk"
-msgstr ""
+msgstr "قياسي + قوم الواحات"
 
 #. [era]: id=era_dunefolk_heroes
 #: data/multiplayer/eras.cfg:95
@@ -77,6 +87,12 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"عصر يضم فصيلًا إضافيًا إلى جانب الفصائل الستة من عصر عصر الأبطال. تعتمد وحدات "
+"قوم الواحات على الاستخدام الدقيق للتضاريس والضربات المنسقة في الغسق أو "
+"الفجر.\n"
+"\n"
+"لا يزال هذا العصر قيد التطوير ، لذا يرجى التأكد من الإبلاغ عن أي مشاكل قد "
+"تظهر."
 
 #. [lua]: f
 #. In the end-of-match summary, a side which has no units left and therefore lost. In English the loss is shown by displaying it with the text struck through.
@@ -85,6 +101,8 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
+"<span strikethrough='true' foreground='$side_color'>Side $side_number</"
+"span>:  فقد جميع الوحدات"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
@@ -94,37 +112,40 @@ msgid ""
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
+"<span foreground='$side_color'>Side $side_number</span>:  نقاط الدخل = "
+"$income  حصيلة الوحدة= $units  الذهب= $gold\n"
+"الحصيلة الجملية: <b>$total</b>"
 
 #. [lua]: f
 #. In the end-of-match summary, there's a single side that's won.
 #: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr ""
+msgstr "<span foreground='$side_color'>Side $side_number</span> لديه الأفضلية."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr ""
+msgstr "كلا الجانبان $side_number و $other_side_number مترابطان."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
-msgstr ""
+msgstr "الأطراف $winners مترابطون."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
 #: data/multiplayer/eras.lua:100
 msgid "dialog^Turns Over"
-msgstr ""
+msgstr "إنتهى الدور"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
-msgstr ""
+msgstr "درايك"
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:14
@@ -138,12 +159,18 @@ msgid ""
 "mobility but low defense, leading to unusual tactics for a "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgstr ""
+"The <bold>text='درايك'</bold> هي فصيل يشبه التنين <ref>text='درايك' dst='.."
+"race_drake'</ref> ويرافقهم <ref>text='قوم السحالي' dst='..race_lizard'</ref> "
+"كحلفاء. الدرايك من نسل التنانين ، لكنهم أصغر في الحجم.  وقوم السحالي أصغر "
+"بكثير من الدرايك وهما من أصول مختلفة.  يتمتع فصيل درايك بحركة عالية ولكن "
+"دفاع منخفض ، مما يؤدي إلى تكتيكات غير عادية في <ref>text='العصر القياسي' "
+"dst='..era_era_default'</ref> كفصيلة."
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
-msgstr ""
+msgstr "قوم الواحات"
 
 #. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:14
@@ -157,12 +184,18 @@ msgid ""
 "of the Loyalist faction, they make up for this with high mobility — "
 "especially on hilly terrains."
 msgstr ""
+"<bold>text='قوم الواحات'</bold> هي فصيل من البشر من الصحاري والتلال في "
+"الأراضي الجنوبية. يتخصص قوم الواحات في استخدام ميزات التضاريس لتنسيق الهجمات "
+"عند الفجر أو الغسق. تتباهى رتبهم بوحدات سريعة، ومعالجين، ومقاتلي تلاحم عاليو "
+"الدقة، ورماة مخيفين على الخيول. في حين أن وحدات قوم الصحراء تميل إلى أن تكون "
+"أكثر تكلفة من تلك الخاصة بالفصيل الموالي، إلا أنها تعوض عن ذلك بحركة عالية - "
+"خاصة على التضاريس الجبلية."
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
-msgstr ""
+msgstr "تحالف كنالجان"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:13
@@ -177,12 +210,19 @@ msgid ""
 "dwarves who are only good on certain terrain and humans who can cover ground "
 "that dwarves are not good at fighting in."
 msgstr ""
+"<bold>text='تحالف كنالغا'</bold> هو فصيل من <ref>text='شعب الأقزام' dst='.. "
+"rac_dwarf'</ref> وخارجين عن القانون <ref>text='البشر' dst=متحالفين\".."
+"race_human\"</ref>. الأقزام هم من الأعراق القديمة الذين يعيشون تحت الأرض "
+"ولديهم محاربون أقوياء لكن قصيرون. الخارجون عن القانون هم بشر غير مقبولين من "
+"الآخرين من عرقهم لكنهم أصبحوا حلفاء للأقزام بسبب أعداء مشتركين. يؤدي هذا إلى "
+"مزيج من الأقزام الدفاعيين الذين لا يجيدون سوى تضاريس معينة والبشر الذين "
+"يمكنهم تغطية الأرض التي لا يجيد الأقزام القتال فيها."
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
-msgstr ""
+msgstr "الموالون"
 
 #. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:14
@@ -194,12 +234,16 @@ msgid ""
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
+"<bold>text=\"الموالون\"</ bold> هم فصيل من <ref>text='Humans' dst='.. "
+"rac_human'</ref> الموالين لعرش ويسنوث. البشر هم عرق متعدد المواهب ويتخصصون "
+"في العديد من المجالات المختلفة. وبالنتيجة فإن فصيل الموالين هو فصيل شديد "
+"التنوع موجه نحو الاشتباك مع دعم متنوع مهم من رماة السهام والسحرة."
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
-msgstr ""
+msgstr "الشماليون"
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:16
@@ -214,12 +258,19 @@ msgid ""
 "Northerners play best by taking advantage of having many low-cost and high "
 "HP soldiers."
 msgstr ""
+"<bold>text=\"الشماليون\"</ bold> هم فصيل من <ref>text='الأورك' dst='.. "
+"rac_orc'</ref> وحلفاؤهم الذين يعيشون في شمال القارة العظمى. يتكون الشماليون "
+"من جنس العفاريت المحارب ، المستعبدون <ref>text='الغوبلن' dst='.. "
+"rac_goblin'</ref>، <ref>text= 'الترول' dst='.. rac_troll'</ref> الذين يتم "
+"عادة خداعهم للقتال من قبل الأورك، وشعب أشباه السحالي <ref>text='الأفعوانيون' "
+"dst='.. rac_naga'</ref>. يلعب الشماليون بشكل أفضل من خلال الاستفادة من "
+"القدرة على تجنيد العديد من الجنود ذوي التكلفة المنخفضة والعالية."
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
-msgstr ""
+msgstr "المتمردون"
 
 #. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:14
@@ -237,12 +288,21 @@ msgid ""
 "advantage of their high forest defense, mastery of ranged attacks, and the "
 "elves’ neutral alignment."
 msgstr ""
+"<bold>text='المتمردون'</bold> هي فصيل من <ref>text='الإلف' dst='.. "
+"Race_elf'</ref> وحلفائهم المتعددين الذين يعيشون في الغابة. حصلوا على اسمهم، "
+"المتمردون، منذ عهد وريث العرش ، عندما بدأوا التمرد ضد الملكة الشريرة أشفيير. "
+"الإلف هو عرق ذو أصل سحري يتقن القوس وقادر على العيش لسنوات عديدة أطول من "
+"البشر. في انسجام مع طبيعتهم، تجد الإلف حلفاء من <ref>text='البشر' dst='.. "
+"rac_human'</ref> السحرة، بعض <ref>text= 'البرمائيون' dst='.. rac_merman'</"
+"ref> ، والمخلوقات النباتية المسماة <ref>text='الووز' dst ='.. rac_wose'</"
+"ref>. من الأفضل لعب المتمردين للاستفادة من دفاعهم العالي عن الغابات، "
+"وإتقانهم للهجمات بعيدة المدى، وإنحياز الألف المحايد."
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
-msgstr ""
+msgstr "الموتى الأحياء"
 
 #. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:14
@@ -257,11 +317,19 @@ msgid ""
 "Undead are a very aggressive faction and the most powerful "
 "<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
+"<bold>text='الموتى الأحياء'</bold> هي فصيل من <ref>text='undead' dst='.. "
+"rac_undead'</ref> مخلوقات الموت ومن <ref>text='البشر' dst='race_human'</ref> "
+"ممارسي الفنون المظلمة التي تصاحبهم عادةً. في كثير من الأحيان \"تابعوالظلام\" "
+"هؤلاء هم الوحدات التي تسبب أكبر قدر من الضرر في الفصيل، لكن لديهم نقطة ضعف "
+"كبيرة فممارستهم لهذا السحر الشرير المحظور قد استهلك كل طاقتهم الجسدية "
+"وبالتالي ليس لديهم هجوم اشتباك قوي على الإطلاق. الموتى الأحياء فصيل شديد "
+"العدوانية وأقوى فصيل <ref>text='العصر القياسي' dst='.. period_era_default'</"
+"ref> في القتال في الليل."
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:4
 msgid "2p — Aethermaw"
-msgstr ""
+msgstr "2 لاعبان - أثيرماو"
 
 #. [multiplayer]: id=multiplayer_Aethermaw
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:6
@@ -279,6 +347,16 @@ msgid ""
 "herself by arranging battles between the mortal beings unlucky enough to be "
 "drawn into its depths. Designed by Doc Paterson."
 msgstr ""
+"منذ فترة طويلة ، تم سجن الساحرة العظيمة سوولا في آيثرماو، وهي مجال من الطاقة "
+"الغامضة تمكنت طبيعتها الفوضوية من منع هروبها. ومع ذلك، على مر القرون، عملت "
+"سولا تدريجياً على تكييف قواها مع دوامة الفوضى التي تمثل الأثيرماو وبدأت الآن "
+"في إبراز تأثيرها في البعد المادي وهي تأإثير يمتد على مناطق تشمل مئات العوالم "
+"والأزمنة والأبعاد. قامت سوولا بالتأثير في هذه القطع المتباينة من الكون "
+"والتلاعب بها ودمجها وإرسالها ذهابًا وإيابًا بين الأثيرماو ومكانها الأصلي. من "
+"المرجح أنه، مع نمو سيطرتها على الأثيرماو، ستتحرر سولا يومًا ما من سجنها. حتى "
+"يحين ذلك الوقت، ستستمر في تسلية نفسها من خلال ترتيب المعارك بين الكائنات "
+"البشرية غير المحظوظة بما يكفي لتنجذب إلى أعماق جحيمها. صمم الحملة Doc "
+"Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:22
@@ -318,7 +396,7 @@ msgstr ""
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:67
 #: data/multiplayer/scenarios/9p_Merkwuerdigliebe.cfg:111
 msgid "teamname^North"
-msgstr ""
+msgstr "شمالا"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:34
@@ -352,13 +430,13 @@ msgstr ""
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:56
 #: data/multiplayer/scenarios/6p_Waterloo_Sunset.cfg:68
 msgid "teamname^South"
-msgstr ""
+msgstr "جنوبا"
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:308
 #: data/multiplayer/scenarios/2p_Tombs_of_Kesorak.cfg:154
 msgid "Defeat the enemy leader"
-msgstr ""
+msgstr "هزيمة قائد العدو"
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:312
@@ -366,6 +444,8 @@ msgid ""
 "The Great Mage Sulla has transported your armies to this bizarre nexus, and "
 "demands that you amuse her by doing battle."
 msgstr ""
+"قامت الساحرة العظيمة سوولا بنقل جيوشك إلى هذا البعد الغريب، وتطلب منك أن "
+"تمتعها بخوض المعركة."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:315
@@ -373,6 +453,8 @@ msgid ""
 "Units may not move into a hex with a rock cairn. They may, however, be "
 "recruited to, and move from, such hexes."
 msgstr ""
+"قد لا تتحرك الوحدات إلى سداسي فيه حجر صخري. ومع ذلك، يمكن تجنيدهم والانتقال "
+"من مثل هذه السداسيات."
 
 #. [note]
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:318
@@ -380,17 +462,19 @@ msgid ""
 "Beginning on turn 4, the Great Mage Sulla will begin to unite the two halves "
 "of the battlefield. The process will be complete by the end of turn 6."
 msgstr ""
+"بدءًا من الدور 4، ستبدأ سوولا في توحيد نصفي ساحة المعركة. ستكتمل العملية "
+"بنهاية الدور 6."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:331
 #: data/multiplayer/scenarios/2p_Aethermaw.cfg:348
 msgid "The Aethermaw growls."
-msgstr ""
+msgstr "هدير الأثيرماو."
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:6
 msgid "2p — Arcanclave Citadel"
-msgstr ""
+msgstr "2 لاعبان - قلعة العصا السحرية"
 
 #. [multiplayer]: id=multiplayer_Arcanclave_Citadel
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:7
@@ -414,6 +498,20 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
+"منذ زمن بعيد، قبل زمن هالدريك بقرون لا حصر لها، وبعيدًا عن الروافد الشرقية "
+"لغابة لينتانير، اندلعت حروب كبيرة ورهيبة. تحكي السجلات عن ساحر معركة قوي "
+"وتكتيكي لامع وممارس للفنون الغامضة منحه أتباعه لقب الباسل. في معركة قلعة "
+"العصا السحرية، خاض الباسل وجيوشه معركة مع عرق وحشي من الشياطين السحرة "
+"المعروفين باسم كاه رووك. محاطًا بعشرات الآلاف من الكاه رووك، استخدم الباسل "
+"سحره لاستدعاء عنصر أرض قوي (الذي، لأسباب غير معروفة، كان يدين لـلباسل بدين "
+"كبير). قام العنصر بإثارة أحجار كبيرة من أعماق الأرض وحولها في لحظات قليلة "
+"إلى جدران وأسوار حصن ضخم. قتل الآلاف من الكاه رووك  في محاولتهم لاجتياح قلعة "
+"العصا السحرية وانتصر الباسل ورجاله في ذلك اليوم. بعد أكثر من ألف عام، طردت "
+"الملكة المحاربة سينسون الأولى عشيرة من مستحضري الأرواح إلى أنقاض قلعة العصا "
+"السحرية و، في السنوات التي تلت ذلك، أحاطت المنطقة بقواعد عسكرية. يشاع أن "
+"العديد من القطع الأثرية القوية، من بقايا عهد الساحر العظيم الباسل، قد تكون "
+"مخفية في مكان ما داخل جدران الجرانيت والسيج في قلعة العصا السحرية . صمم "
+"الحملة  Doc Paterson."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
@@ -445,7 +543,7 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:63
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:96
 msgid "teamname^East"
-msgstr ""
+msgstr "شمالا"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
@@ -478,12 +576,12 @@ msgstr ""
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:74
 #: data/multiplayer/scenarios/8p_Mokena_Prairie.cfg:85
 msgid "teamname^West"
-msgstr ""
+msgstr "جنوبا"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:37
 msgid "2p — Caves of the Basilisk"
-msgstr ""
+msgstr "2 لاعبان - كهوف البازيليسك"
 
 #. [multiplayer]: id=multiplayer_Basilisk
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:39
@@ -492,13 +590,16 @@ msgid ""
 "Basilisk. The petrified forms of his victims remain as monuments to his "
 "savage power."
 msgstr ""
+"كانت هذه الكهوف في يوم من الأيام مخبأ شآاكسو نايكس، الباسيليسك الأسطوري "
+"الهرم. تظل التماثيل المتحجرة المتبقية لضحاياه بمثابة تحذير لمن يتحدى قوته "
+"الوحشية."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
 msgid "teamname^Statues"
-msgstr ""
+msgstr "التماثيل"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:94
@@ -524,11 +625,31 @@ msgid ""
 "His home to steal the Basilisk’s gold.\n"
 "(inscribed by Flametrooper)"
 msgstr ""
+"هبت رياح السماء المظلمة شديدة البرودة ،\n"
+"كان القمر عاليا والليل كان طويلا،\n"
+"من غير الدرايك الشجاع يجرأ على هجر\n"
+"موطنه الدافئ لسرقة ذهب البازيليسك.\n"
+"\n"
+"في تلك الليلة المظلمة، كانت السماء مضطربة للغاية،\n"
+"تجاهل الباسل ما تعلمه،\n"
+"أحمق لكن جسور، تسلل إلى كهف الباسيليسك،\n"
+"حلق واشتعلت النار بداخله.\n"
+"\n"
+"الآن، لم تعد تلك النار مشتعلة،\n"
+"ذلك أن البازيليسك، بزئير واحد عظيم،\n"
+"برد عظمه، وتحول إلى حجر،\n"
+"وهكذا سيبقى إلى الأبد.\n"
+"\n"
+"رياح السماء تهب باردة جدا\n"
+"تمر السنين، الأيام تتالى،\n"
+"هنا يقف هذا الدرايك الذي تجرأ على هجر\n"
+"موطنه الدافئ لسرقة ذهب البازيليسك.\n"
+"(نقشت بواسطة Flametrooper وأعاد صياغتها بالعربية hermestrimesti)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:116
 msgid "Xikkrisx"
-msgstr ""
+msgstr "إكسكريسكس"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:122
@@ -553,11 +674,27 @@ msgid ""
 "traveled far from the lake, Xikkrisx set the statue down inside of a small "
 "cave, and lay down to rest. He was awoken by a bone-chilling roar."
 msgstr ""
+"كان إكسكيريكس من سيزرككك محاربًا من شعب السحالي قويًا ، أرسله حكماء عشيرة "
+"رسريلوسوزك (ترجمة: \"عشيرة المطاردين في الأنهار المغلية\") إلى هذه المنطقة . "
+"كان الحكماء يستعدون لشن حرب على موقع بشري ، وكانوا في حاجة ماسة إلى السحرة "
+"القوية لـ اوكسسيرسك ، وهو ساحر باطني من شعب السحالي شوهد آخر مرة وهو يتجه في "
+"اتجاه بحيرة إكسكيريكس . وجد إكسكيريكس جثة اوكسسيرسك المتحجرة ، جنبًا إلى جنب "
+"مع لفيفة مقيدة بعناية تم إسقاطها على ما يبدو في شق صغير في أرضية الكهف. فتح "
+"اللفافة وقرأ مقطعًا موجزًا من منتصف النص: \"بعد أن تم ربطه وإلقاءه من العالم "
+"المادي، سعت روح تشاكسو الغاضبة إلى إطلاق سراحها ، وتمكنت من ممارسة تأثير "
+"مفسد على مناطق معينة من الجزء المادي. العالم ، يتم توجيهه من خلال \"مسارات "
+"الحجر\" التي تمتد من السطح إلى أعماق ما دون الامتدادات. غيّر هذا الغضب بيض "
+"السحالي العظيمة ، وشكل أجسادهم وأرواحهم كأدوات لكراهية تشاكسو \". مرتبكًا ، "
+"ركز إكسكيريكس انتباهه على المهمة التي يقوم بها. معتقدًا أنه ربما يتمكن "
+"الحكماء من إيجاد طريقة ما لاستعادة اوكسسيرسك ، بدأ المهمة الطويلة والشاقة "
+"المتمثلة في سحب التمثال مرة أخرى إلى منطقة  رسريلوسوزك . مرهقًا ، لم يستطع  "
+"أن يسافر بعيدًا عن البحيرة، وفي النهاية،  وضع إكسكيريكس التمثال داخل كهف "
+"صغير ، واستلقى للراحة. بعد فترة، استيقظ على صوت هدير تقشعر له الأبدان."
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:125
 msgid "Oxsrrsk"
-msgstr ""
+msgstr "أوكسرسك"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:128
@@ -582,6 +719,22 @@ msgid ""
 "ability to locate and bind this powerful creature into his service, Oxsrrsk "
 "set out on his journey..."
 msgstr ""
+"كان أوكسررسك متنبئا معروفا من شعب السحالي القوية التي حازت، في غارة ضد "
+"منافسه قبيلة خراكسس (من أحفاد متنبئي هيسك-رازاك التي اندثرت الآن)، المخطوط "
+"الأكثر روعة. كانت المخطوطة بعنوان \"نايكككس صاحب نظرة الجرانيت\" ، وتروي قصة "
+"مخلوق يُعرف باسم \"شاكسو نايككس \" ، وهو الاسم الذي يعني ، بلغة السحالي "
+"القديمة ، \"الطفل الأكبر لشاكسو \". \" يُعتقد أن شاكسو كان أحد أنصاف الآلهة "
+"القوية لـ ما بعد الأرض ، وُصِف بأنه \"شيطان الأرض العظيم\" في تاريخ الإلفيين. "
+"وفقًا لهذه التواريخ ، سعى شاكسو  ذات مرة إلى تحويل كل أشكال الحياة على هذا "
+"الكوكب إلى حجر. كانت كراهيته لمخلوقات المادة عظيمة ولكن تم هزيمته في النهاية "
+"وربط بسحر قوي ، ولكن في القرون التي أعقبت إبعاده (إلى عالم بعيد عن سطح "
+"الأرض) بدأ ظهور سلالة جديدة من المخلوقات في التاريخ ، سلالة لديها القدرة على "
+"تحويل أي كائن حي إلى حجر. كانت هناك فترة عاث فيها هؤلاء البازيليكس (كما "
+"أصبحوا معروفين) الخراب في عالم الأحياء ، محولين الآلاف إلى حجر. واحدًا تلو "
+"الآخر ، وبثمن  باهظ، هُزم الباسيليكس. جميعهم هزموا ما عدا واحد؛ البازيليسك "
+"المعروف باسم \"النايككس\" أو \"الإبن الأقدم\" في اللغة الحديثة. مقتنعًا "
+"بقدرته على تحديد مكان هذا المخلوق القوي والسيطرة عليه لخدمته ، انطلق "
+"أوكسررسك في رحلته ..."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:134
@@ -595,11 +748,19 @@ msgid ""
 "— Seven Stones — and the Elven\n"
 "(inscribed by Gauteamus)"
 msgstr ""
+"القامة رفيعة والأيادي بارعة\n"
+" سبعة أحجار و أحد عشر\n"
+"ترك خصومه فرصة ضئيلة للغاية\n"
+" سبعة أحجار و أحد عشر\n"
+"الهداف المعروف باسم نبل التنين\n"
+"في الغالب تم قتل التماثيل هنا\n"
+"- السبعة أحجار - والإلفي\n"
+"(نقش من قبل Gauteamus وإقتبسه Mejri Ziad)"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:145
 msgid "Blum Duk"
-msgstr ""
+msgstr "بلوم دوك"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:147
@@ -625,7 +786,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:156
 msgid "Rah Ihn Mar"
-msgstr ""
+msgstr "راه إين مار"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:158
@@ -644,7 +805,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:162
 msgid "Turin's Monster of the Lake"
-msgstr ""
+msgstr "وحش بحيرة تورين"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:165
@@ -661,7 +822,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:170
 msgid "The Spider"
-msgstr ""
+msgstr "العنكبوت"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:173
@@ -692,7 +853,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:194
 msgid "Bramwythl"
-msgstr ""
+msgstr "برامويثل"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:196
@@ -719,7 +880,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:205
 msgid "Talael Ryndoc"
-msgstr ""
+msgstr "تاليل ريندوك"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:208
@@ -731,7 +892,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:211
 msgid "Aethec Corryn"
-msgstr ""
+msgstr "ايثك كوريين"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:214
@@ -747,7 +908,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:220
 msgid "Rilhon"
-msgstr ""
+msgstr "ريلهون"
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:222
@@ -1117,8 +1278,8 @@ msgstr ""
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:649
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:660
 msgid "Clockwork Boy"
 msgstr ""
 
@@ -1143,47 +1304,47 @@ msgid "Sorrek, Chosen of Death"
 msgstr ""
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:509
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:580
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:617
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:686
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:734
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:858
 msgid "Big Baby Dro"
 msgstr ""
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:521
 msgid "Gawffus the Dim"
 msgstr ""
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:569
 msgid "Rublok"
 msgstr ""
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:592
 msgid "Ulysses Mantyjuuri"
 msgstr ""
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:708
 msgid "Neki the Brute"
 msgstr ""
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Claiomh Dubh"
 msgstr ""
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:804
 msgid "Tyxrrn the Dauntless"
 msgstr ""
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:842
 msgid "Rukhos, Chosen of Death"
 msgstr ""
 
@@ -2336,48 +2497,12 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:5
-msgid "Wesnoth Test — Elevated Terrain Example Scenario"
+msgid "3p - Elevation Test"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_test_Elevation_Demo
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:6
 msgid ""
 "This map is an example of how to use the new (BfW v1.17) elevated terrain "
-"graphics. It is not a good map for real MP use."
-msgstr ""
-
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:9
-msgid "Wesnoth Benchmark: AI"
-msgstr ""
-
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:10
-msgid ""
-"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
-msgstr ""
-
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
-msgid "Wesnoth Benchmark: Scrolling"
-msgstr ""
-
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
-"--exit-at-end."
-msgstr ""
-
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
-msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr ""
-
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
+"graphics. Please be advised that it is not intended for playing."
 msgstr ""

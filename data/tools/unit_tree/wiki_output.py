@@ -18,7 +18,8 @@ def main():
 
     defines = "NORMAL,ENABLE_ARMAGEDDON_DRAKE,ENABLE_DWARVISH_ARCANISTER," +\
         "ENABLE_DWARVISH_RUNESMITH,ENABLE_ANCIENT_LICH,ENABLE_DEATH_KNIGHT," +\
-        "ENABLE_TROLL_SHAMAN,ENABLE_WOLF_ADVANCEMENT"
+        "ENABLE_TROLL_SHAMAN,ENABLE_WOLF_ADVANCEMENT,ENABLE_WOSE_SHAMAN," +\
+        "ENABLE_PARAGON,ENABLE_SAURIAN_SPEARTHROWER,DISABLE_GRAND_MARSHAL"
 
     sys.stderr.write("Parsing core units...\n")
     wesnoth.parser.parse_text("{core/units.cfg}", defines)
@@ -92,10 +93,11 @@ def main():
         for aid in unit.advances_to:
             unit.children.append(all_units[aid])
             all_units[aid].parents.append(unit)
-        for af in unit.get_all(tag = "advancefrom"):
-            afid = af.get_text_val("unit")
-            all_units[afid].children.append(unit)
-            unit.parents.append(all_units[afid])
+        # [advancefrom] was removed
+        # for af in unit.get_all(tag = "advancefrom"):
+        #    afid = af.get_text_val("unit")
+        #    all_units[afid].children.append(unit)
+        #    unit.parents.append(all_units[afid])
 
     def race_key(unit):
         if unit.campaign == "mainline": return 0, unit.race

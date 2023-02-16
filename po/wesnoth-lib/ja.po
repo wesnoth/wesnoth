@@ -5,16 +5,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2022
+# RatArmy, 2023
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
-"Last-Translator: RatArmy, 2022\n"
+"Last-Translator: RatArmy, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -2264,7 +2264,7 @@ msgstr "選択した時代、ゲーム、MODにはカスタムオプションは
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/mp_create_game.cfg:474
 #: data/gui/window/preferences/02_hotkeys.cfg:282
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:168
 msgid "Defaults"
 msgstr "デフォルト"
 
@@ -2337,7 +2337,7 @@ msgstr "アドオンの公開"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
-#: src/gui/dialogs/addon/manager.cpp:996
+#: src/gui/dialogs/addon/manager.cpp:999
 msgid "Uninstall add-on"
 msgstr "アドオンのアンインストール"
 
@@ -2385,21 +2385,28 @@ msgid "Authenticate"
 msgstr "認証"
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:71 data/gui/window/mp_create_game.cfg:1036
+#: data/gui/window/addon_auth.cfg:67
+#, fuzzy
+#| msgid "Rename"
+msgid "Username:"
+msgstr "名前を変更する"
+
+#. [label]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
 msgstr "パスワード："
 
 #. [toggle_button]: id=remember_password
-#: data/gui/window/addon_auth.cfg:111 data/gui/window/mp_login.cfg:199
+#: data/gui/window/addon_auth.cfg:139 data/gui/window/mp_login.cfg:199
 #: data/gui/window/preferences/05_multiplayer.cfg:68
 msgid "Save password locally (encrypted)"
 msgstr "パスワードを暗号化して保存する"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/window/addon_auth.cfg:139 data/gui/window/custom_tod.cfg:431
+#: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
 #: data/gui/window/editor_edit_label.cfg:301
@@ -2412,7 +2419,7 @@ msgstr "パスワードを暗号化して保存する"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:179
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2425,7 +2432,7 @@ msgstr "OK"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #. [button]: id=placeholder
-#: data/gui/window/addon_auth.cfg:153 data/gui/window/addon_connect.cfg:211
+#: data/gui/window/addon_auth.cfg:181 data/gui/window/addon_connect.cfg:211
 #: data/gui/window/addon_license_prompt.cfg:114
 #: data/gui/window/addon_uninstall_list.cfg:174
 #: data/gui/window/campaign_dialog.cfg:493
@@ -2453,7 +2460,7 @@ msgstr "OK"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_report.cfg:249 data/gui/window/mp_staging.cfg:442
 #: data/gui/window/network_transmission.cfg:111
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:190
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -2585,7 +2592,7 @@ msgstr "必要なもの："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1074
+#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1077
 msgid "addon_dependencies^None"
 msgstr "なし"
 
@@ -2596,7 +2603,7 @@ msgstr "翻訳："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1088
+#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1091
 msgid "translations^None"
 msgstr "なし"
 
@@ -2635,8 +2642,8 @@ msgstr "アドオンマネージャー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:537
-#: src/gui/dialogs/addon/manager.cpp:809
+#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: src/gui/dialogs/addon/manager.cpp:812
 msgid "Add-on Details"
 msgstr "アドオンの詳細"
 
@@ -2764,7 +2771,7 @@ msgstr "予測可能な RNG"
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:322
 msgid "Combat outcomes remain constant when reloading"
-msgstr "再開しても戦闘結果は変化ません。"
+msgstr "再開しても戦闘結果は変化しません。"
 
 #. [option]
 #: data/gui/window/campaign_dialog.cfg:325
@@ -2986,7 +2993,7 @@ msgstr "時刻の削除"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:969 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:972 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "確認"
@@ -3091,7 +3098,7 @@ msgstr "解説："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Experience modifier:"
 msgstr "必要経験値の変更（％）："
 
@@ -3153,7 +3160,7 @@ msgstr "ゴールド："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Gold per village:"
 msgstr "村あたりのゴールド："
 
@@ -3224,7 +3231,7 @@ msgstr "マップジェネレーターの選択："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Settings"
 msgstr "設定"
 
@@ -3942,14 +3949,14 @@ msgstr "ゲームを作成"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "Join"
 msgstr "参加"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid "Observe"
 msgstr "観戦"
 
@@ -4591,7 +4598,7 @@ msgstr "ゲームにプレイヤーとして参加する際に要求するパス
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Map size:"
 msgstr "マップサイズ："
 
@@ -5411,44 +5418,48 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr "ファイルマネージャでスクリーンショットフォルダをブラウズします"
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr "宝珠とミニマップの色を変更"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
 msgstr "移動前のユニットに宝珠を表示"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
-msgid "Show partial moved orb"
+#: data/gui/window/select_orb_colors.cfg:147
+#, fuzzy
+#| msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "移動途中のユニットに宝珠を表示"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
 msgstr "移動済みユニットに宝珠を表示"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:152
 msgid "Show ally orb"
 msgstr "同盟軍のユニットに宝珠を表示"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:154
 msgid "Show enemy orb"
 msgstr "敵ユニットに宝珠を表示"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "Show disengaged orb"
-msgstr "離脱中のユニットに宝珠を表示"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr "移動前および移動途中の宝珠と同じ色が使用されます。"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -5822,8 +5833,8 @@ msgstr "エラー"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:179
-#: src/gui/dialogs/multiplayer/lobby.cpp:195 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
+#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "情報："
 
@@ -6268,42 +6279,42 @@ msgstr "公開済み、破損"
 msgid "addon_state^Unknown"
 msgstr "不明"
 
-#: src/gui/dialogs/addon/manager.cpp:430
+#: src/gui/dialogs/addon/manager.cpp:433
 msgid "ascending"
 msgstr "昇順"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
-#: src/gui/dialogs/addon/manager.cpp:432
+#: src/gui/dialogs/addon/manager.cpp:435
 msgid "oldest to newest"
 msgstr "古い順"
 
-#: src/gui/dialogs/addon/manager.cpp:435
+#: src/gui/dialogs/addon/manager.cpp:438
 msgid "descending"
 msgstr "降順"
 
 #. TRANSLATORS: Sorting order of dates, newest first
-#: src/gui/dialogs/addon/manager.cpp:437
+#: src/gui/dialogs/addon/manager.cpp:440
 msgid "newest to oldest"
 msgstr "新しい順"
 
-#: src/gui/dialogs/addon/manager.cpp:534
+#: src/gui/dialogs/addon/manager.cpp:537
 msgid "addons^Back to List"
 msgstr "リストに"
 
-#: src/gui/dialogs/addon/manager.cpp:546
+#: src/gui/dialogs/addon/manager.cpp:549
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "サーバーからアドオン一覧をダウンロードしている間にエラーが発生しました。"
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "No Add-ons Available"
 msgstr "アドオンはありません"
 
-#: src/gui/dialogs/addon/manager.cpp:582
+#: src/gui/dialogs/addon/manager.cpp:585
 msgid "There are no add-ons available for download from this server."
 msgstr "このサーバーからダウンロード可能なアドオンはありません。"
 
-#: src/gui/dialogs/addon/manager.cpp:851
+#: src/gui/dialogs/addon/manager.cpp:854
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -6311,15 +6322,15 @@ msgstr ""
 "以下のアドオンは、アドオンの公開情報やバージョン情報をローカルに保存していま"
 "す。これらのアドオンはアンインストールされません。"
 
-#: src/gui/dialogs/addon/manager.cpp:859
+#: src/gui/dialogs/addon/manager.cpp:862
 msgid "The following add-on could not be deleted properly:"
 msgstr "以下のアドオンを正常に削除できませんでした。"
 
-#: src/gui/dialogs/addon/manager.cpp:912
+#: src/gui/dialogs/addon/manager.cpp:915
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/dialogs/addon/manager.cpp:913
+#: src/gui/dialogs/addon/manager.cpp:916
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -6327,25 +6338,25 @@ msgstr ""
 "アップロードされるアドオンのバージョンは、リモートにあるアドオンのバージョン"
 "以下の値となっています。 それでも続けますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:932
+#: src/gui/dialogs/addon/manager.cpp:935
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "アイコンのパスが無効です。 有効な画像が存在するパスを指定してください。"
 
-#: src/gui/dialogs/addon/manager.cpp:935 src/gui/dialogs/addon/manager.cpp:977
+#: src/gui/dialogs/addon/manager.cpp:938 src/gui/dialogs/addon/manager.cpp:980
 msgid "The server responded with an error:"
 msgstr "サーバーが返したエラー："
 
-#: src/gui/dialogs/addon/manager.cpp:938
+#: src/gui/dialogs/addon/manager.cpp:941
 msgid "The add-on was rejected by the server:"
 msgstr "アドオンはサーバーから拒否されました："
 
-#: src/gui/dialogs/addon/manager.cpp:953 src/gui/dialogs/addon/manager.cpp:980
+#: src/gui/dialogs/addon/manager.cpp:956 src/gui/dialogs/addon/manager.cpp:983
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "応答"
 
-#: src/gui/dialogs/addon/manager.cpp:965
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6353,25 +6364,25 @@ msgstr ""
 "「$addon|」 を削除するとアドオンサーバー上のダウンロード・アップロード回数も"
 "完全に消去されます。 続行しますか？"
 
-#: src/gui/dialogs/addon/manager.cpp:997
+#: src/gui/dialogs/addon/manager.cpp:1000
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "「$addon|」をアンインストールしますか？"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1028
+#: src/gui/dialogs/addon/manager.cpp:1031
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%Y-%m-%d %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1030
+#: src/gui/dialogs/addon/manager.cpp:1033
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1091
+#: src/gui/dialogs/addon/manager.cpp:1094
 msgid "url^None"
 msgstr "なし"
 
@@ -6396,13 +6407,13 @@ msgid "Attacker vulnerability vs"
 msgstr "攻撃側の弱点："
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:436
+#: src/gui/dialogs/multiplayer/lobby.cpp:437
 msgid "active_modifications^None"
 msgstr "なし"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:144
-#: src/gui/dialogs/gamestate_inspector.cpp:409
+#: src/gui/dialogs/gamestate_inspector.cpp:416
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192
@@ -6630,12 +6641,12 @@ msgid "Unknown"
 msgstr "不明"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "no"
 msgstr "いいえ"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:450
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "yes"
 msgstr "はい"
 
@@ -6763,11 +6774,11 @@ msgstr "ランダム"
 msgid "Do you really want to log out?"
 msgstr "ログアウトしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid "Incompatible User-made Content"
 msgstr "互換性の無いユーザーメイドコンテンツ"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6777,11 +6788,11 @@ msgstr ""
 "することはできません。ホストにアドオンをアップデートするよう促した方が良いか"
 "もしれません。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid "Missing User-made Content"
 msgstr "ユーザーメイドコンテンツの不足"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6790,47 +6801,47 @@ msgstr ""
 "このゲームをプレイするには、いくつかのアドオンをインストールまたはアップデー"
 "トする必要があります。それらのアドオンをインストールしますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:369
+#: src/gui/dialogs/multiplayer/lobby.cpp:370
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "ゲーム： $num_total 中の $num_shown を表示"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:391
+#: src/gui/dialogs/multiplayer/lobby.cpp:392
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代： $era_name）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:421
+#: src/gui/dialogs/multiplayer/lobby.cpp:422
 msgid "era_or_mod^not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:424
+#: src/gui/dialogs/multiplayer/lobby.cpp:425
 msgid "Era"
 msgstr "時代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:431
+#: src/gui/dialogs/multiplayer/lobby.cpp:432
 msgid "Modifications"
 msgstr "Mod"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Reloaded:"
 msgstr "再開："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shared vision:"
 msgstr "共有された視界："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shuffle sides:"
 msgstr "陣営をシャッフル："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Time limit:"
 msgstr "制限時間："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Use map settings:"
 msgstr "マップ設定を使用："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:468
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6838,25 +6849,25 @@ msgstr ""
 "このゲームに参加するには、１つあるいは複数のアドオンをインストールする必要が"
 "あります。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:493
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Observers allowed"
 msgstr "観戦可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:496
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid "Observers not allowed"
 msgstr "観戦不可"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:627
+#: src/gui/dialogs/multiplayer/lobby.cpp:628
 msgid "lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:828
+#: src/gui/dialogs/multiplayer/lobby.cpp:829
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "このゲームでは観戦が許可されていません。管理者権限を使用して観戦しますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:841
+#: src/gui/dialogs/multiplayer/lobby.cpp:842
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6864,7 +6875,7 @@ msgstr ""
 "マルチプレイヤーロビーのアドオンバージョンチェックデータベースに何らかの不具"
 "合があったようです。bugs.wesnoth.orgにバグ報告をお願いします。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:862
+#: src/gui/dialogs/multiplayer/lobby.cpp:863
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "このゲームはパスワードで保護されています。管理者権限を使用して参加しますか？"
@@ -8254,27 +8265,11 @@ msgstr ""
 "キー「$deprecated_key」は「$key」に名前が変更されました。「$deprecated_key」"
 "のサポートはバージョン$removal_versionで削除されます。"
 
-#, fuzzy
-#~| msgid "Player joins"
-#~ msgid "Player Hosted"
-#~ msgstr "プレイヤーの参加"
+#~ msgid "Show disengaged orb"
+#~ msgstr "離脱中のユニットに宝珠を表示"
 
-#~ msgid "Area to draw has negative size"
-#~ msgstr "負のサイズを持つ描画エリア"
-
-#~ msgid "Area to draw is larger than widget size"
-#~ msgstr "ウィジェットサイズよりも大きな描画エリア"
-
-#~ msgid "Choose Test"
-#~ msgstr "テストの選択"
-
-#~ msgid "Start Test Scenario"
-#~ msgstr "テストシナリオの開始"
-
-#~ msgid ""
-#~ "A terrain with a string with more than 4 characters has been found, the "
-#~ "affected terrain is:"
-#~ msgstr "4 文字以上の文字列を持つ地形が見つかりました。影響する地形："
+#~ msgid "This uses the colors for partial and moved orbs."
+#~ msgstr "移動前および移動途中の宝珠と同じ色が使用されます。"
 
 #~ msgid "By:"
 #~ msgstr "作者："
@@ -8288,8 +8283,25 @@ msgstr ""
 #~ msgid "Reserve Troops:"
 #~ msgstr "召還可能ユニット："
 
+#~ msgid "Area to draw has negative size"
+#~ msgstr "負のサイズを持つ描画エリア"
+
+#~ msgid "Area to draw is larger than widget size"
+#~ msgstr "ウィジェットサイズよりも大きな描画エリア"
+
 #~ msgid "Selected Game"
 #~ msgstr "選択中のゲーム"
 
 #~ msgid "Other Games"
 #~ msgstr "他のゲーム"
+
+#~ msgid "Choose Test"
+#~ msgstr "テストの選択"
+
+#~ msgid "Start Test Scenario"
+#~ msgstr "テストシナリオの開始"
+
+#~ msgid ""
+#~ "A terrain with a string with more than 4 characters has been found, the "
+#~ "affected terrain is:"
+#~ msgstr "4 文字以上の文字列を持つ地形が見つかりました。影響する地形："

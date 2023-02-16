@@ -1,11 +1,11 @@
 # Samu Voutilainen <smar@smar.fi>, 2010.
-# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2022
+# Jaakko Saarikko <jaakko.saarikko@protonmail.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-07-20 00:21 UTC\n"
-"PO-Revision-Date: 2022-11-27 01:08+0200\n"
+"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"PO-Revision-Date: 2023-01-06 01:04+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
@@ -70,7 +70,7 @@ msgstr ""
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Keskitasoa, 7 tehtävää)"
+msgstr "(Keskitasoa, 7 skenaariota)"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:30
@@ -117,7 +117,7 @@ msgid ""
 "orcs just for personal glory and more land for them grubby nobles to lord "
 "over."
 msgstr ""
-"Baldrasin päiväkirjasta, 21. Siemenkylvön aikaan, 501 WV\n"
+"Baldrasin päiväkirjasta, 21. päivä Siemenkylvön aikaan, 501 WV\n"
 "\n"
 "Kuukausia... seitsemän kuukautta on kulunut siitä kun kruunu lähetti yhden "
 "vartijan tänne avuksemme. Tämä Garard II on mahtipontinen kukkoilija, jopa "
@@ -271,49 +271,49 @@ msgstr ""
 msgid "Jalak"
 msgstr "Jalak"
 
-#. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:218
+#. [unit]: type=Footpad_Peasant, id=Delurin
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:221
 msgid "Delurin"
 msgstr "Delurin"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:219
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:229
 msgid "Red"
 msgstr "Red"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:220
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:230
 msgid "Ordo"
 msgstr "Ordo"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:221
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:231
 msgid "Novus"
 msgstr "Novus"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:222
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:232
 msgid "Teneor"
 msgstr "Teneor"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:223
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:233
 msgid "Kembe"
 msgstr "Kembe"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:224
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:234
 msgid "Treagh"
 msgstr "Treagh"
 
 #. [unit]: type=Footpad_Peasant, id=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:231
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:241
 msgid "Harper"
 msgstr "Harper"
 
 #. [message]: speaker=Red
 #. Other country folk also have accents
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:258
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:268
 msgid ""
 "Look, goblin riders approach! You was right, they was going to raid Dallben "
 "while we was gone."
@@ -322,7 +322,7 @@ msgstr ""
 "Dallbenin kun olemme poissa."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:262
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:272
 msgid ""
 "We gots to stop them or they’ll burn down the whole village. Damn these "
 "goblins and damn the Crown. We always be havin’ to fight for ourselves."
@@ -333,7 +333,7 @@ msgstr ""
 #. [message]: speaker=Harper
 #. Harper has a bit of an accent, but not as much as Baldras.
 #. He's a bit of a reckless kid as Baldras alludes to, but he's much more polite
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:268
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:278
 msgid ""
 "Uncle, we got no time to talk! Them riders are heading full speed straight "
 "for Dallben. We’ll need to chase them down through those woods, and fast, or "
@@ -344,7 +344,7 @@ msgstr ""
 "kuin on liian myöhäistä."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:272
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:282
 msgid ""
 "Do it. Hold them beasts back till us old-timers get there to finish ‘em off."
 msgstr ""
@@ -352,7 +352,7 @@ msgstr ""
 "viimeistelemään jutun."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:276
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:286
 msgid ""
 "And Harper... don’t be getting reckless on me today. Your old man died like "
 "that, charging into a pack of goblins by ‘imself. I won’t lose ya the same "
@@ -362,13 +362,13 @@ msgstr ""
 "yksinänsä hiisilaumaa vastaan. En menetä sinua samalla tavalla."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:280
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:290
 msgid "I know, I know, no need to worry so much. All right, let’s go!"
 msgstr ""
 "Tiedetään, tiedetään, sinun ei tarvitse olla huolissasi. Selvä on, matkaan!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:294
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:304
 msgid ""
 "These orc raids keep getting harder and harder to hold off. Feels like every "
 "new day’s just another chance for us to lose everything..."
@@ -377,7 +377,7 @@ msgstr ""
 "jokainen uusi päivä on vain uusi mahdollisuus menettää kaikki..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:298
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:308
 msgid ""
 "That Garard II stopped sendin’ patrols out here a while back. Stinker "
 "probably sent his troops on some new war against them orcs. Don’t really "
@@ -390,7 +390,7 @@ msgstr ""
 "myöskään näe heidän tulevan auttamaan meitä."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:302
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:312
 msgid ""
 "Then why do we got to pay taxes to the King? Maybe Elensefar doesn’t help "
 "us, but at least they don’t take our gold."
@@ -399,7 +399,7 @@ msgstr ""
 "meitä, mutta he eivät ainakaan ota kultaamme."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:306
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:316
 msgid ""
 "We don’t got no choice, lad. If I don’t gives them what they want, they’ll "
 "make trouble for everyone in Dallben."
@@ -408,7 +408,7 @@ msgstr ""
 "aiheuttavat ongelmia kaikille Dallbenissä."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:310
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:320
 msgid ""
 "But we can’t keep doing this forever, Uncle. If we stay like this, those "
 "orcs will eventually overrun us. What should we do?"
@@ -417,7 +417,7 @@ msgstr ""
 "lyövät meidät lopulta. Mitä meidän pitäisi tehdä?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:314
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:324
 msgid ""
 "I don’t know, Harper. I just don’t know. Alls I can say is we’re on our own "
 "out here."
@@ -426,27 +426,27 @@ msgstr ""
 "olemme omillamme täällä."
 
 #. [message]: speaker=Fal Khag
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:332
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid "Time to feast on these puny pinkskins."
 msgstr "On aika viimeistellä nämä heikot vaaleanahkaiset."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:337
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:347
 msgid "Hey! Who ya calling puny?"
 msgstr "Hei! Ketä sinä kutsut heikoksi?"
 
 #. [message]: speaker=Fal Khag
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:349
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:359
 msgid "I was... too weak..?"
 msgstr "Olin... liian heikko?"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:354
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:364
 msgid "Silly goblin."
 msgstr "Tyhmä hiisi."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:369
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:379
 msgid ""
 "Hey, someone left their pack here. I could use it to carry some more rocks."
 msgstr ""
@@ -454,18 +454,18 @@ msgstr ""
 "kiviä."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:402
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:412
 #, fuzzy
 msgid "Spooky."
 msgstr "Pelottavaa."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:442
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:452
 msgid "They’re getting close to Dallben! What should we do?"
 msgstr "He lähestyvät Dalbenia! Mitä voimme tehdä?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:446
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:456
 msgid ""
 "There be a couple guards in the village. Might be able to slow them wolves "
 "down if they gets closer."
@@ -474,27 +474,27 @@ msgstr ""
 "jos pääsevät lähelle."
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:459
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:469
 msgid "Remald"
 msgstr "Remald"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:460
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:470
 msgid "Wolmas"
 msgstr "Wolmas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:465
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:475
 msgid "Jasken"
 msgstr "Jasken"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:472
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:482
 msgid "What’s happening here? Why be you running like mad, $unit.name|?"
 msgstr "Mitäs täällä tapahtuu? Miksi juokset kuin hullu, $unit.name|?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:476
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:486
 msgid ""
 "Goblin riders be on the hunt, headed right for Dallben. We gots to stop them!"
 msgstr ""
@@ -502,18 +502,18 @@ msgstr ""
 "Meitin täytyy pysäyttää ne!"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:483
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:493
 msgid "Look! Goblin riders be on the hunt, headed right for Dallben!"
 msgstr ""
 "Katso! Hiisiratsastajat ovat ajojahdissa ja ne suuntaavat suoraan Dallbeniin!"
 
 #. [message]: speaker=Remald
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:487
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:497
 msgid "We gots to stop them!"
 msgstr "Meitin täytyy pysäyttää ne!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:507
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:517
 msgid ""
 "The goblins reached the village! Now there’ll be nothing left after they "
 "raid our homes..."
@@ -542,7 +542,7 @@ msgid ""
 "much of his ma often times, real bright and brassy, even if he don’t got her "
 "sense or wits. I’m just hoping he be learning more with time."
 msgstr ""
-"Baldrasin päiväkirja, 6. Syväjuuren aikaan, 501 VW\n"
+"Baldrasin päiväkirja, 6. päivä Syväjuuren aikaan, 501 VW\n"
 "\n"
 "Minä ja Harper vierailimme Erwenin haudalla tänään. Auttelin poikaa "
 "poimimaan hänelle kukkia. Löysimme jopa joitain hänen suosikkejaan, siniset "
@@ -553,13 +553,12 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:27
-#, fuzzy
 msgid ""
 "Speaking of sense, I gots me a bad feeling in my gut about today. I’d better "
 "ready our hunting troop when I get back to the village, just in case..."
 msgstr ""
-"Järkevyydestä puhuen, minulla on huono tunne vatsassani tästä päivästä. "
-"Minun on parempi valmistaa metsästysjoukkomme, kun palaan kylään, varmuuden "
+"Järkevyydestä puhuen, minulla on huono tunne sisälläni tästä päivästä. Minun "
+"on parempi valmistaa metsästysjoukkomme, kun palaan kylään, varmuuden "
 "vuoksi..."
 
 #. [side]: type=Bandit_Peasant, id=Baldras
@@ -605,7 +604,7 @@ msgstr "Tarwen"
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:140
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:88
 msgid "Weldyn"
-msgstr ""
+msgstr "Weldyn"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:92
@@ -624,10 +623,6 @@ msgstr "Pidä pintasi, veljenpoika."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:162
-#, fuzzy
-#| msgid ""
-#| "By order of the Queen, the magistrate of this town is ordered to travel "
-#| "with us to Elensefar for vetting."
 msgid ""
 "By order of the Queen, the magistrate of this town is to travel with us to "
 "Elensefar for vetting."
@@ -642,6 +637,9 @@ msgid ""
 "countin’ the gold from our taxes to be sending aid against them orcs. Nobody "
 "here be leaving to nowhere."
 msgstr ""
+"Kruunu hylkäsi kylämme kauan sitten. Te wesnothilaiset olette liian "
+"kiireisiä laskemalla kultaa veroistamme lähettääksenne apua örkkejä vastaan. "
+"Täältä ei kukaan lähde mihinkään."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:170
@@ -649,11 +647,13 @@ msgid ""
 "Insolent peasant. Try not my patience, else I shall be forced to drag thy "
 "deceased corpse back with me to the city."
 msgstr ""
+"Hävytön talonpoika. Älä koettele kärsivällisyyttäni, muuten joudun "
+"raahaamaan kuolleen ruumiisi mukanani takaisin kaupunkiin."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:174
 msgid "Try it then, stinker."
-msgstr ""
+msgstr "No yritäpä sitten ääliö."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:178
@@ -668,7 +668,7 @@ msgstr "Vahtikaa porttia."
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:225
 msgid "<i>Uncle, since when did we have a queen?</i>"
-msgstr ""
+msgstr "<i>Setä, mistä lähtien meillä on ollut kuningatar?</i>"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:229
@@ -676,6 +676,8 @@ msgid ""
 "<i>Since a few years back, I thinks, but weren’t never her giving out no "
 "orders...</i>"
 msgstr ""
+"<i>Luulen, että muutama vuosi sitten, mutta eikö hän koskaan antanut mitään "
+"käskyjä...</i>"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:233
@@ -683,58 +685,58 @@ msgid ""
 "<i>It don’t really matter right now. Harper, get yerself out o’ here. This "
 "be no kind of battle for you.</i>"
 msgstr ""
+"<i>Sillä ei juuri nyt ole väliä. Harper, häippäse sinä täältä. Tämä ei ole "
+"taistelu sinulle.</i>"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:237
 msgid "I can fight!"
-msgstr ""
+msgstr "Minä pystyn taistelemaan!"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:241
 msgid "<i>Harper, do what I says to ya.</i>"
-msgstr ""
+msgstr "<i>Harper, tee kuten mä sanon.</i>"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:245
 msgid "We’re in this together. Death to the Wesnothians!"
-msgstr ""
+msgstr "Me ollaan tässä yhdessä. Kuolema wesnothilaisille!"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:249
 msgid "Impulsive lad..."
-msgstr ""
+msgstr "Äkkipikainen sälli..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:262
 msgid "Help, help! I’m being repressed!"
-msgstr ""
+msgstr "Apua, apua! Meitä sorretaan!"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:274
 msgid "They just killed an innocent man! Murderers!"
-msgstr ""
+msgstr "Ne tappoivat viattoman miehen! Murhaajat!"
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:279
 msgid "Cry thine eyes out for me, peasant."
-msgstr ""
+msgstr "Siinähän vingut talonpoika."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:292
 msgid "I oughta bring out the good mace to fight off these thugs."
-msgstr ""
+msgstr "Täytyy ottaa vanha kunnon nuija käyttöön näitä kelmejä vastaan."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:338
-#, fuzzy
-#| msgid "Get back, you cur!"
 msgid "Back, back ye curs!"
-msgstr "Mene takaisin, lurjus!"
+msgstr "Takaisin! Takaisin te kurjat!"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:350
 msgid "Take that, you bullies!"
-msgstr ""
+msgstr "Siitä saat, senkin kiusanhenki!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:364
@@ -746,6 +748,8 @@ msgstr "Hankkiudu ulos kylästäni!"
 msgid ""
 "We beat their leader, but a couple of them riders escaped. What should we do?"
 msgstr ""
+"Voitimme heidän johtajansa, mutta muutama ratsastaja pakeni. Mitä meidän "
+"pitäisi tehdä?"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:390
@@ -754,15 +758,18 @@ msgid ""
 "but his men never would’ve attacked us. The Queen must’ve did something to "
 "him."
 msgstr ""
+"Tässä on jotain pahasti vialla. Tuo Garard ei koskaan ollut sankari tai "
+"mikään, mutta hänen miehensä eivät koskaan olisi hyökänneet kimppuumme. "
+"Kuningattaren on täytynyt tehdä hänelle jotain."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:396
-#, fuzzy
-#| msgid "We must tell the people of Delwyn about this."
 msgid ""
 "We’ve got to tell the people of Delwyn about this. Ol’ magistrate Relana "
 "will have some ideas."
-msgstr "Meidän on kerrottava tästä Delwynin asukkaille."
+msgstr ""
+"Meidän on kerrottava tästä Delwynin asukkaille. Tuomari Relanalla on "
+"varmasti ideoita."
 
 #. [message]: role=Advisor
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:401
@@ -770,6 +777,7 @@ msgid ""
 "That’s true. Whenever there’s been troubles, we’ve always looked to her for "
 "help."
 msgstr ""
+"Se on totta. Aina kun on ollut hankaluuksia, olemme hakeneet häneltä apuja."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:406
@@ -777,11 +785,14 @@ msgid ""
 "Fine. We’ll go to Delwyn, see what Relana gots to say. With them riders so "
 "eagerly attackin’ us today, I’m thinking Delwyn will be under threat too."
 msgstr ""
+"Selvä. Lähdemme Delwyniin kuulemaa mitä Relenalla on sanottavaa. Kun ne "
+"ratsastajat hyökkäsivät niin innokkaasti meitä vastaan tänään, luulen, että "
+"myös Delwyn on uhattuna."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:411
 msgid "So we’ll have to fight them Wesnothians again?"
-msgstr ""
+msgstr "Joten meidän täytyy taistella taas wesnothilaisia vastaan?"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:416
@@ -789,26 +800,28 @@ msgid ""
 "Alls I can say for certain is we’ve made ourselves enemies of the Crown. "
 "They’ll be hunting us now."
 msgstr ""
+"Voin vain sanoa varmaksi, että olemme tehneet itsestämme kruunun vihollisia. "
+"Nyt he metsästävät meitä."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:421
 msgid "Then we’re outlaws."
-msgstr ""
+msgstr "Sitten olemme lainsuojattomia."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:426
 msgid "Aye, outlaws."
-msgstr ""
+msgstr "Niin, lainsuojattomia."
 
 #. [message]: speaker=Reinforcement Knight
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:519
 msgid "At your order, Captain."
-msgstr ""
+msgstr "Käskystänne kapteeni."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:523
 msgid "Slay them all."
-msgstr ""
+msgstr "Surmatkaa heidät kaikki."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:527
@@ -816,6 +829,8 @@ msgid ""
 "Curses! Their reinforcements has arrived. We gots no chance to fight ‘em off "
 "now..."
 msgstr ""
+"Kirottua! Heidän vahvistuksensa ovat saapuneet. Meillä ei ole enään "
+"mahdollisuuksia voittaa heitä..."
 
 #. [scenario]: id=03_A_Strategy_of_Hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
@@ -833,6 +848,14 @@ msgid ""
 "me. It be a three day journey there for me, but I sended Harper ahead for "
 "Relana first. Said we’d meet her in the usual hiding spot in the swamp."
 msgstr ""
+"Baldrasin päiväkirja, 10. päivä Syväjuuren aikaan, 501 VW\n"
+"\n"
+"Outoja päiviä olleet nämä viimeiset. Piti lähteä Dallbenistä hyvin nopeasti. "
+"Yhden päivän aikana, otimme kaiken mitä vain pystyimme, ruokaa, vaatteita, "
+"siskon onnenkorun... ja lähdimme Delwyniä kohti niin nopeasti kuin nämä "
+"vanhat luut vain sallivat. Se on minulta kolmen päivän matka sinne, mutta "
+"lähetin Harperin edeltä Relanan luo. Kerroin että tapaamme hänet "
+"tavallisessa piilopaikassa suolla."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:23
@@ -842,6 +865,10 @@ msgid ""
 "Crown. Don’t matter whoever’s the one giving out them orders, those stinkers "
 "in Weldyn always be making trouble for us countryfolk."
 msgstr ""
+"Tämä koko sotku on suurta typeryyttä. Kaikista maailman asioista, jotka "
+"ajoivat meidät pois kotoamme, kuinka sen pitikin olla nuo kirotut "
+"wesnothilaiset? Kirottu olkoon kruunu. Ei väliä kuka heitä käskee, ne "
+"Weldynin haisevat ihmiset aiheuttavat aina ongelmia meille maalla asuville."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:27
@@ -851,6 +878,11 @@ msgid ""
 "don’t really got no choice either. Harper’s still too young to be leading "
 "anyone, and it don’t seem like anyone else in the village be suitable."
 msgstr ""
+"Olen liian vanha tähän kaikkeen. Ne örkkien hyökkäykset aiheuttavat "
+"tarpeeksi vaivaa minulle. En halua taistella sotaa Wesnothin kanssa. "
+"Mutta... Luulen, ettei minullakaan ole oikeastaan vaihtoehtoa. Harper on "
+"vielä liian nuori johtamaan ketään, eikä kukaan muu kylässä näytä sopivan "
+"siihen pestiin."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:31
@@ -862,6 +894,13 @@ msgid ""
 "them people to safety.” Cheeky kid, that one. But, she’d be right, I has me "
 "a responsibility to our people. Got a lot of trouble ahead of us..."
 msgstr ""
+"Tällaisina aikoina... Toivon että Erwen olisi täällä kanssamme. Pikkusisko "
+"oli aina parempi meistä kahdesta. Hän tiesi aina, kuinka pitää malttinsa ja "
+"järkensä vaikeinakin hetkinä. Mitä hän sanoisi minulle nyt? Todennäköisesti "
+"jotain tällaista: \"Lopeta uikuttaminen senkin vanha koira ja keskity "
+"siihen, mitä olet tekemässä. Meidän on saatava ihmiset turvaan.\" Röyhkeä "
+"lapsi. Mutta hän olisi oikeassa, minulla on vastuu ihmisistämme. Edessämme "
+"on paljon vaikeuksia..."
 
 #. [side]: type=Highwayman_Peasant, id=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:57
@@ -892,6 +931,7 @@ msgstr "Relanan kuolema"
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:203
 msgid "Baldras! Ya made it! Lil Harper here told me all about what happened."
 msgstr ""
+"Baldras! Sinä saavuit! Pikku Harper kertoi minulle kaiken tapahtuneesta."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:207
@@ -900,11 +940,14 @@ msgid ""
 "Turns out they was itchin’ to attack us soon as I wasn’t willing to leave "
 "with ‘em."
 msgstr ""
+"Kyllä maar, Relana. Se oli yksi kuningattaren partioista, niin oudolta kuin "
+"se kuulostaakin. Kävi ilmi, että he halusivat hyökätä kimppuumme pian, koska "
+"en ollut halukas lähtemään heidän matkaansa."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:211
 msgid "But we fought those ugly scoundrels off!"
-msgstr ""
+msgstr "Mutta me löimme ne rumat rutjakkeet pois!"
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:215
@@ -913,6 +956,9 @@ msgid ""
 "ago, demanding our allegiance to some ‘Asheviere’. Weren’t that Garard’s "
 "young bride or something? Why’s she the one in charge now?"
 msgstr ""
+"Kuningattaren partio vai? He lähettivät sanansaattajan meille pari päivää "
+"sitten vaatimaan uskollisuuttamme jollekin \"Ashevierelle\". Eikö se ollut "
+"Garardin nuori morsian tai jotain? Miksi hän on nyt vastuussa?"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:219
@@ -920,13 +966,14 @@ msgid ""
 "I don’t know, but some of them riders escaped us. Bet they’ll report back to "
 "their local garrison, tell them we’re a bunch o’ traitors."
 msgstr ""
+"En tiedä, mutta jotkut ratsastajat pakenivat meiltä. Lyön vetoa, että he "
+"raportoivat paikalliselle varuskunnalleen ja kertovat heille, että olemme "
+"joukko pettureita."
 
 #. [message]: role=Advisor
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:223
-#, fuzzy
-#| msgid "Then they’ll be back in force."
 msgid "Then they’ll be comin’ back in force."
-msgstr "Sitten he turvautuvat taas väkivaltaan."
+msgstr "Sitten he palaavat taas voimalla."
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:227
@@ -934,13 +981,13 @@ msgid ""
 "We needs more information. We should consult ourselves with Elensefar. Lord "
 "Maddock surely gots to know more than us."
 msgstr ""
+"Me tarttetaan lisätietoja. Meidän pitäisi neuvotella Elensefarin kanssa. "
+"Lordi Maddock tietää varmasti enemmän kuin me."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:231
-#, fuzzy
-#| msgid "Elensefar"
 msgid "Elensefar? Why him?"
-msgstr "Elensefar"
+msgstr "Elensefar? Miksi hän?"
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:235
@@ -948,6 +995,9 @@ msgid ""
 "Well all Annuvin be ruled by Elensefar, right? We don’t gots to heed "
 "anything Wesnoth says. Lord Maddock’s technically the one we answer to."
 msgstr ""
+"No, Elensefar hallitsee koko Annuvinia, eikö niin? Meidän ei tarvitse ottaa "
+"huomioon mitään, mitä Wesnothin sanoo. Lord Maddock on teknisesti se, jolle "
+"me vastaamme."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:239
@@ -955,6 +1005,8 @@ msgid ""
 "It don’t matter. Weldyn be doing whatever it likes while Maddock says "
 "nothing. He knows, but he don’t care."
 msgstr ""
+"Sillä ei ole väliä. Weldyn tekee niin kuin lystää, kun taas Maddock ei sano "
+"mitään. Hän tietää kyllä, mutta ei vain välitä."
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:243
@@ -963,22 +1015,26 @@ msgid ""
 "great plan without no information. We both knows that if Weldyn brings one "
 "o’ their armies here, there be no way we can fight them off."
 msgstr ""
+"Mutta me tarvitsemme silti sitä tietoa, Baldras. Emme voi tehdä mitään "
+"hienoa suunnitelmaa ilman tietoa. Tiedämme molemmat, että jos Weldyn tuo "
+"armeijansa tänne, emme voi voittaa heitä taistelussa."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:247
 msgid ""
 "Perhaps, but — hold there. Did ya hear that? Sounded like some wolf howl."
 msgstr ""
+"Ehkäpä, mutta... hetkinen. Kuulitteko tuon? Kuulosti aivan suden ulvonnalta."
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:251
 msgid "Somethin’ smells like lizard too. We’re not alone here."
-msgstr ""
+msgstr "Haisee myös liskolta. Me emme ole yksin täällä."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:255
 msgid "Finally, some action!"
-msgstr ""
+msgstr "Vihdoinkin toimintaa!"
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:263
@@ -987,6 +1043,9 @@ msgid ""
 "scout that puny village, not fight it by himself. Then those damned humans "
 "rejected our help and look where that got them."
 msgstr ""
+"Kirotut ihmiset ja kirottu Fal Khag! Typerän hiiden oli tarkoitus vain "
+"tiedustella sitä pikku kylää, eikä taistella sitä vastaan yksinänsä. Sitten "
+"ne kirotut ihmiset hylkäsivät apumme ja katsokaa mitä heille tapahtui."
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:267
@@ -994,15 +1053,14 @@ msgid ""
 "“Don’t know why the Queen hired some stinkin’ orcs, we don’t need you here.” "
 "Yeah, well now they’re dead like a bunch of beasts."
 msgstr ""
+"\"En tiedä miksi kuningatar palkkasi haisevia örkkejä, emme tarvitse teitä "
+"tänne.\" Joo, nyt he ovat kuolleita kuin suuri petolauma."
 
 #. [message]: speaker=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:273
-#, fuzzy
-#| msgid ""
-#| "Fal Khag is nothing to usss, orc. You promissed uss gold. Bright gold."
 msgid "Your ordersss mean nothing to usss, orc. You promissed uss gold."
 msgstr ""
-"Fal Khag ei merkitssse meille mitään, örkki. Lupasssitte kultaa. Kirkasssta "
+"Kässsskysi ei merkitse meille mitään, örkki. Lupasssitte kultaa. Kirkasssta "
 "kultaa."
 
 #. [message]: speaker=Urk Delek
@@ -1010,76 +1068,76 @@ msgstr ""
 msgid ""
 "Shut your trap, lizard. You’ll get your gold as soon as my wolves get their "
 "meat."
-msgstr ""
+msgstr "Tuki turpasi lisko. Te saatte kultanne heti kun suteni saavat lihansa."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:286
 msgid ""
 "We gots to be headin’ for Elensefar soon before them Wesnothians come back."
 msgstr ""
+"Meidän täytyy lähteä Elesefariin pian, ennen kuin ne wesnothilaiset tulevat "
+"takaisin."
 
 #. [message]: speaker=unit
 #. fishperson is the same as merfolk
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:300
 msgid "Looks like some fishperson used to live here."
-msgstr ""
+msgstr "Näyttää siltä että täällä on joskus asunut kalaihmisiä."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:318
 msgid "Looks like they still do. Ick."
-msgstr ""
+msgstr "Näyttää siltä että asuu edelleen."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:330
 msgid "Ewww, I think it be smelling even worse now. Least it’s stopped moving."
 msgstr ""
+"Yöh, en uskonut että se voisi haista yhtään pahemmalta. Ainakin se lopetti "
+"liikkumisen."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:358
 msgid "I don’t likes me the look of that water."
-msgstr ""
+msgstr "En pidä tuosta vedestä, siinä on jotain outoa."
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:391
 msgid "Ahh! Help, it’s a tentacle monster!"
-msgstr ""
+msgstr "Ahh! Apua, se on lonkerohirviö!"
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:404
 msgid "That’s some fresh tasty water. Mmm!"
-msgstr ""
+msgstr "Siinäpä oikein raikasta ja makeaa vettä!"
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:435
 msgid "Blasted pinkskins..."
-msgstr ""
+msgstr "Kirotut punanahat..."
 
 #. [message]: speaker=Thhsthss
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:448
 msgid "Thissss was not part of the deal..."
-msgstr ""
+msgstr "Tämä ei ollut osa sopimusssta...."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:457
-#, fuzzy
-#| msgid ""
-#| "Something is very wrong here. Those orcs were carrying weapons with Army "
-#| "forge-markings."
 msgid ""
 "Something be very wrong here. These orcs has weapons with Army forge-"
 "markings."
 msgstr ""
-"Jokin täällä on nyt vialla. Nuo örkit kantoivat aseita, jotka oli merkitty "
+"Jokin täällä on nyt vialla. Näillä örkeillä on aseita, jotka oli merkitty "
 "Wesnothin armeijan tunnuksin."
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:461
-#, fuzzy
-#| msgid "Aye. And the gold in their pouches looked new from the mint."
 msgid ""
 "Aye, and the gold in their pouches looks new from mint. Could just be "
 "plunder, but..."
-msgstr "Jep. Ja kulta heidän kukkarossaan näytti painotuoreelta."
+msgstr ""
+"Aivan. Ja kulta heidän kukkarossaan näytti painotuoreelta. Voihan syy olla "
+"ryöstelykin, mutta..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:465
@@ -1087,22 +1145,17 @@ msgid ""
 "Don’t seem like it. I be thinking these orcs were hired to scout us. But for "
 "what? Of all the alliances to be making, why would Weldyn be hiring orcs?"
 msgstr ""
+"Ei vaikuta siltä. Mää luulen että nää örkit oli palkattu tiedustelemaan "
+"meitä. Mutta miksi? Kaikista liittolaisista, miksi Weldyn palkkaisi örkkejä?"
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:469
-#, fuzzy
-#| msgid ""
-#| "I think your mission to Lord Maddock just became more urgent than we "
-#| "knew, Baldras. I must remain here to see to the defense of Delwyn and "
-#| "Dallben, but you should fly to Elensefar with all speed."
 msgid ""
 "I thinks your mission to Lord Maddock just became even more urgent. We needs "
 "to know the Queen’s motives."
 msgstr ""
-"Luulen, että lordi Maddock -tehtäväsi tuli juuri kiireellisemmäksi kuin "
-"tiesimmekään, Baldras. Minun on pysyttävä täällä ja katsottava Delwynin ja "
-"Dallbenin puolustusten perään, mutta sinun täytyy kiitää Elensefariin "
-"täydellä nopeudella."
+"Luulen, että lordi Maddock -tehtäväsi tuli juuri kiireellisemmäksi. Meidän "
+"täytyy saada tietää kuningattaren motiivit."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:473
@@ -1110,6 +1163,8 @@ msgid ""
 "I don’t like leaving our people here alone, but I sees your point. If we "
 "wait, more will be coming."
 msgstr ""
+"En pidä ihmisten jättämisestä yksin tänne, mutta ymmärrän pointtisi. Jos "
+"odotamme, heitä tulee lisää."
 
 #. [message]: speaker=Relana
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:477
@@ -1118,11 +1173,16 @@ msgid ""
 "us directly, but I don’t thinks it will work forever. To survive this, we "
 "needs to act quick, Baldras."
 msgstr ""
+"Toistaiseksi, minä voin jäädä tänne ja ehkä yrittää puhua wesnothialaisia "
+"ympäri hyökkäämästä suoraan kimppuumme, mutta en usko, että se toimii "
+"ikuisesti. Selviytyäksemme tästä meidän on toimittava nopeasti Baldras."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:481
 msgid "Then we’ll go to Elensefar as fast as we can. Luck be with ya, Relana."
 msgstr ""
+"Sitten me lähdemme Elesefariin niin pian kuin mahdollista. Onnea teitille "
+"Relena."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:499
@@ -1131,15 +1191,12 @@ msgid ""
 "them Wesnothians probably already be mobilizing against us. We’ve got to "
 "head back to Dallben!"
 msgstr ""
+"Meitillä ei ole enempää aikaa tuhlattavaksi täällä tai matkustaa "
+"Elensefariin... ne wesnothilaiset varmaan varustautuvat meitä vastaan jo. "
+"Meitin täytyy palata takaisin Dalbeniin!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Baldras and Relana returned to their villages to find them destroyed, "
-#| "with those who fought left dead and the few survivors born away to "
-#| "unguessable fates. It was a bitter doom, and as Wesnoth descended into "
-#| "darkness they would live to see worse."
 msgid ""
 "Baldras and Relana returned to their villages to find them destroyed, with "
 "any survivors borne away to unknown fates. It was a bitter doom, and as "
@@ -1147,8 +1204,8 @@ msgid ""
 msgstr ""
 "Baldras ja Relana palasivat kyliinsä vain huomatakseen ne tuhotuiksi, "
 "vastarintaan nousseet kuolleina ja muutamat henkiinjääneet hyljättyinä "
-"arvaamattoman kohtalon kitaan. Se oli karvas loppu, ja Wesnoth laskeutui "
-"pimeyteen, jossa he eläisivät nähdäkseen kaameampaa. "
+"arvaamattoman kohtalon kitaan. Se oli karvas loppu, ja kun Wesnoth laskeutui "
+"kaaokseen, he eläisivät vain nähdäkseen vieläkin enemmän kurjuutta."
 
 #. [scenario]: id=04_Unlawful_Orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
@@ -1193,7 +1250,7 @@ msgstr "Rothel"
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:194
 msgid "Maddock, I be coming to report—"
-msgstr ""
+msgstr "Maddock, tulen raportoimaan..."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:198
@@ -1201,6 +1258,8 @@ msgid ""
 "I am already aware of your altercation in Dallben, Baldras. Your dissent was "
 "not wise."
 msgstr ""
+"Olen jo tietoinen jupakastasi Dallbenissa, Baldras. Erimielisyytesi ei ollut "
+"viisasta."
 
 #. [message]: speaker=Baldras
 #. pigdirt is slang for bullshit or hogwash
@@ -1209,6 +1268,9 @@ msgid ""
 "Dissent? Maddock, I’m not trusting no strange riders who show up out of "
 "nowhere claimin’ to be from the Queen. Seems like a bunch of pigdirt to me."
 msgstr ""
+"Erimielisyyteni? Maddock, mä en luota outoihin ratsastajiin, jotka "
+"ilmestyvät tyhjästä väittäen olevansa kuningattaren lähettämiä. Suoranaista "
+"hevonsontaa sanon mä."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:207
@@ -1218,6 +1280,10 @@ msgid ""
 "Abez, Queen Asheviere’s men allied themselves with the northern orcs and "
 "betrayed King Garard II."
 msgstr ""
+"Se oli osittain minun syytäni, koska en pystynyt lähettää sinulle "
+"sanansaattajaa ajoissa. Minun on nyt kerrottava sinulle. Viisi viikkoa "
+"sitten Abezin kahlaamolla kuningatar Ashevieren miehet liittoutuivat "
+"pohjoisten örkkien kanssa ja pettivät kuningas Garard II:n."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:211
@@ -1227,11 +1293,17 @@ msgid ""
 "the local villages here, forcing them to swear allegiance to her. That was "
 "the purpose of that patrol."
 msgstr ""
+"Siitä lähtien kun prinssi Eldred kuoli taistelussa, kuningatar nousi "
+"valtaistuimelle ja on lujittanut valtaansa. Osa sitä on ollut paikallisten "
+"kylien vanhinten tuominen tänne, ja heidän on pakottaminen vannomaan "
+"uskollisuutta hänelle. Se oli sen partion tarkoitus."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:215
 msgid "Annuvin province be ruled by Elensefar! We has no duty to Weldyn."
 msgstr ""
+"Annuvinin maakuntaa hallitsee Elensefar! Meitillä ei oo mitään "
+"velvollisuuksia Weldynin suuntaan."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:219
@@ -1239,6 +1311,8 @@ msgid ""
 "You do now. I do not really need to tell you what will happen should you "
 "refuse Her Majesty’s offer."
 msgstr ""
+"Nyt sinulla on. Minun ei tarvitse kertoa mitä tapahtuu, jos kieltäydyt hänen "
+"majesteettinsa tarjouksesta."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:223
@@ -1246,6 +1320,9 @@ msgid ""
 "Grow a spine, Maddock. If they come to ya and make you swear fealty to this "
 "Asheviere, would ya really give up that easy?"
 msgstr ""
+"Maddock, kasvattaisit selkärangan. Jos he tulisivat luoksesi ja pyytäisivät "
+"vannomaan uskollisuutta tälle Ashevierelle, antaisitko todella periksi niin "
+"helposti?"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:227
@@ -1257,11 +1334,16 @@ msgid ""
 "of Abez, but unless we are attacked within the next few days, I shall be "
 "able to hold the city."
 msgstr ""
+"No, he eivät tule kaupunkini muurien sisälle. Halsteadin suuren linnoituksen "
+"eteläpuolella on suuri varuskunta, mutta vaikka he mobilisoisivat kaikki "
+"joukkonsa, epäilen, etteivät he pysty valtaamaan Elensefaria. On totta, että "
+"suurin osa joukoistani on vielä palaamassa Abezin taistelusta, mutta ellei "
+"meidän kimppuun hyökätä lähipäivinä, pystyn pitämään kaupungin."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:231
 msgid "And what abouts us? Throw us like dogs to those Wesnothians?"
-msgstr ""
+msgstr "Mutta entäpä me? Heitätkö meitit kuin koirat niille wesnothilaisille?"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:235
@@ -1271,6 +1353,10 @@ msgid ""
 "same time, I have some concessions that I shall have to make. I cannot "
 "afford a war with Weldyn, as you can surely understand."
 msgstr ""
+"Meillä on levoton rauha ylläpidettävänä. Elensefarin ja Wesnothin välinen "
+"sopimus on ikivanha, enkä usko, että hänen majesteettinsa aikoo rikkoa sitä. "
+"Samalla minulla on joitakin myönnytyksiä, jotka minun on tehtävä. Minulla ei "
+"ole varaa käydä sotaa Weldynin kanssa, kuten varmasti ymmärrät."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:239
@@ -1278,6 +1364,8 @@ msgid ""
 "But we can’t do nothing! The Queen even be sending them beast orcs against "
 "us, that’s how evil she is! Surely you can’t stand for this..."
 msgstr ""
+"Mutta me ei voida tehdä mitään! Kuningatar on niin paha, että lähettää jopa "
+"örkki petojaan meitä vastaan! Kuinka voit sietää tällaista..."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:243
@@ -1288,13 +1376,20 @@ msgid ""
 "Even if they may want your head, Baldras, you still have the chance to "
 "preserve your village. Think of the bigger picture."
 msgstr ""
+"Kyllä, olen tietoinen kuningatar Ashevieren taipumuksesta palkata örkkejä "
+"täydentämään joukkojaan. Se ei tarkoita kuitenkaan, että voisin tehdä "
+"asialle mitään, vaikka olisinkin halukas sitä tekemään. Paras neuvo, jonka "
+"voin teille antaa, on pyytää anteeksi. Vaikka he haluaisivatkin päätäsi, "
+"Baldras, sinulla on silti mahdollisuus säilyttää kyläsi. Ajattele suurempaa "
+"kuvaa."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:247
+#, fuzzy
 msgid ""
 "The bigger picture of you idly sittin’ here waiting till them Wesnothians "
 "come to take the city right from your hands."
-msgstr ""
+msgstr "Sinun suurempi"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:251

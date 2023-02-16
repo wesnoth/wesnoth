@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
-"PO-Revision-Date: 2021-10-29 14:25+0200\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"PO-Revision-Date: 2023-02-09 16:49+0100\n"
+"Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -30,32 +30,32 @@ msgstr "Comprimeer opgeslagen bestanden"
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
-msgstr "save_compression^Gzip"
+msgstr "Gzip"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr "save_compression_desc^Standaard compressie, sneller"
+msgstr "Standaard compressie, sneller"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
-msgstr "save_compression^Bzip2"
+msgstr "Bzip2"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr "save_compression_desc^Beste compressie, langzamer"
+msgstr "Beste compressie, langzamer"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr "save_compression^Nee"
+msgstr "Nee"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr "save_compression_desc^Grote bestanden (met veel tekst)"
+msgstr "Grote bestanden (met veel tekst)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
@@ -220,10 +220,8 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
-#, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Verbinding time-out"
+msgstr "Verbinding verbroken met server time-out"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
@@ -232,6 +230,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"De hoeveelheid tijd in seconden voordat een verbroken verbinding wordt "
+"gedetecteerd. Als je momenteel ingelogd bent in de Meer Speler server, moet "
+"je deze opnieuw opstarten om deze instelling effect te laten hebben."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -335,37 +336,37 @@ msgid "Artwork and Graphics"
 msgstr "Illustraties en Afbeeldingen"
 
 #. [about]
-#: data/core/about.cfg:803
+#: data/core/about.cfg:807
 msgid "Music"
 msgstr "Muziek"
 
 #. [about]
-#: data/core/about.cfg:840
+#: data/core/about.cfg:844
 msgid "Sound Effects"
 msgstr "Geluidseffecten"
 
 #. [about]
-#: data/core/about.cfg:864
+#: data/core/about.cfg:868
 msgid "Campaign Design"
 msgstr "Veldtochtontwerp"
 
 #. [about]
-#: data/core/about.cfg:955
+#: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
 msgstr "Multiplayer Kaarten en Afwegingen"
 
 #. [about]
-#: data/core/about.cfg:1004
+#: data/core/about.cfg:1008
 msgid "Packagers"
 msgstr "Bundelaars"
 
 #. [about]
-#: data/core/about.cfg:1111
+#: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
 msgstr "Diverse Taken"
 
 #. [about]
-#: data/core/about.cfg:1838
+#: data/core/about.cfg:1842
 msgid "Bots"
 msgstr "Bots"
 
@@ -695,12 +696,12 @@ msgstr "Bijl"
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "Kleine Bijl"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "Werp Bijl"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
@@ -774,12 +775,12 @@ msgstr "Doos"
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
 msgid "Branch"
-msgstr ""
+msgstr "Tak"
 
 #. [item]: id=branch-bare
 #: data/core/editor/items.cfg:236
 msgid "Bare Branch"
-msgstr ""
+msgstr "Kale Tak"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:243
@@ -788,10 +789,8 @@ msgstr "Koperen Bak"
 
 #. [item]: id=brazier-lit1
 #: data/core/editor/items.cfg:251
-#, fuzzy
-#| msgid "Brazier"
 msgid "Lit Brazier"
-msgstr "Koperen Bak"
+msgstr "Verlichte Vuurkorf"
 
 #. [item]: id=buckler
 #. [item]: id=buckler2
@@ -811,18 +810,14 @@ msgstr "Kooi"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
-#, fuzzy
-#| msgid "Closed Plain Chest"
 msgid "Closed Chest"
-msgstr "Gesloten Normale Kist"
+msgstr "Gesloten Kist"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
-#, fuzzy
-#| msgid "Open Plain Chest"
 msgid "Open Chest"
-msgstr "Open Normale Kist"
+msgstr "Open Kist"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
@@ -842,7 +837,7 @@ msgstr "Groene Mantel"
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "Knuppel"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
@@ -852,32 +847,28 @@ msgstr "Gesloten Kist"
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
-#, fuzzy
-#| msgid "Closed Coffin"
 msgid "Open Coffin"
-msgstr "Gesloten Kist"
+msgstr "Open Doodskist"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "Kruisboog"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "Dolk"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
-#, fuzzy
-#| msgid "Poison"
 msgid "Poison Dagger"
-msgstr "Vergif"
+msgstr "Vergiftigde Dolk"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "Vergiftigde Dolk (schoon)"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
@@ -891,10 +882,8 @@ msgstr "Brandend Zwaard"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Unenchanted Flaming Sword"
-msgstr "Brandend Zwaard"
+msgstr "Onbetoverd Brandend Zwaard"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -932,10 +921,8 @@ msgstr "Graanbundel"
 
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
-#, fuzzy
-#| msgid "Runic Hammer"
 msgid "Hammer"
-msgstr "Runen Hamer"
+msgstr "Hamer"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
@@ -956,10 +943,8 @@ msgstr "Sleutel"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
-#, fuzzy
-#| msgid "Dark Red"
 msgid "Dark Key"
-msgstr "Donker Rood"
+msgstr "Donkere Sleutel"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
@@ -969,21 +954,17 @@ msgstr "Leren Tas"
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "Knots"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Bone Necklace"
-msgstr "Ankh Ketting"
+msgstr "Bottenketting"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
-#, fuzzy
-#| msgid "Ankh Necklace"
 msgid "Stone Necklace"
-msgstr "Ankh Ketting"
+msgstr "Stenen Ketting"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
@@ -1076,14 +1057,12 @@ msgstr "Scepter des Vuur"
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "Katapult"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
-#, fuzzy
-#| msgid "Fancy Spear"
 msgid "Spear"
-msgstr "Mooie Speer"
+msgstr "Speer"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1094,7 +1073,7 @@ msgstr "Mooie Speer"
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "Werpspeer"
 
 #. [item]: id=staff
 #. [item]: id=staff2
@@ -1104,10 +1083,8 @@ msgstr "Staf"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Druid Staff"
-msgstr "Magische Staf"
+msgstr "Druïde Staf"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
@@ -1117,17 +1094,13 @@ msgstr "Magische Staf"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Magic Wand"
-msgstr "Magische Staf"
+msgstr "Magische Toverstaf"
 
 #. [item]: id=staff-plain
 #: data/core/editor/items.cfg:721
-#, fuzzy
-#| msgid "Magic Staff"
 msgid "Plain Staff"
-msgstr "Magische Staf"
+msgstr "Normale Toverstaf"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
@@ -1156,56 +1129,48 @@ msgstr "Zwaard"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
-#, fuzzy
-#| msgid "Sword"
 msgid "Holy Sword"
-msgstr "Zwaard"
+msgstr "Heilig Zwaard"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
-#, fuzzy
-#| msgid "Sword"
 msgid "Short Sword"
-msgstr "Zwaard"
+msgstr "Kort Zwaard"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
-#, fuzzy
-#| msgid "Flaming Sword"
 msgid "Wraith Sword"
-msgstr "Brandend Zwaard"
+msgstr "Geestenzwaard"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "Ankh Amulet"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "Botten Amulet"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
-#, fuzzy
-#| msgid "Stone Tablet"
 msgid "Stone Talisman"
-msgstr "Steen"
+msgstr "Stenen Amulet"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "Donderstok"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "Verlichte Fakkel"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "Onverlichte Fakkel"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
@@ -1397,10 +1362,8 @@ msgstr "Tempel"
 #. [item]: id=temple-cracked3
 #: data/core/editor/items.cfg:1209 data/core/editor/items.cfg:1216
 #: data/core/editor/items.cfg:1223
-#, fuzzy
-#| msgid "Ruined Tent"
 msgid "Ruined Temple"
-msgstr "Vernielde Tent"
+msgstr "Vernielde Tempel"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:1230
@@ -1809,11 +1772,11 @@ msgstr ""
 
 #: data/core/macros/items.cfg:282
 msgid "holy water^Take it"
-msgstr "holy water^Pak het"
+msgstr "Pak het"
 
 #: data/core/macros/items.cfg:283
 msgid "holy water^Leave it"
-msgstr "holy water^Laat het liggen"
+msgstr "Laat het liggen"
 
 #: data/core/macros/items.cfg:284
 msgid "$unit.name has no need for this Holy Water! Let another take it."
@@ -1889,11 +1852,11 @@ msgstr "Moet $unit.name de drietand oppakken?"
 
 #: data/core/macros/items.cfg:533
 msgid "storm trident^Take it"
-msgstr "storm trident^Pak het"
+msgstr "Pak het"
 
 #: data/core/macros/items.cfg:534
 msgid "storm trident^Leave it"
-msgstr "storm trident^Laat het liggen"
+msgstr "Laat het liggen"
 
 #: data/core/macros/items.cfg:535
 msgid ""
@@ -3705,7 +3668,7 @@ msgstr "Blauw-groen"
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr "color^Goud"
+msgstr "Goud"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
@@ -4372,10 +4335,38 @@ msgstr "Annuleren"
 msgid "No planned advancement"
 msgstr "Geen geplande promotie"
 
+#. [test]: id={ID}
+#: data/test/macros/shroud.cfg:12
+#, fuzzy
+#| msgid "Unit List"
+msgid "Unit Test "
+msgstr "Troepenlijst"
+
+#. [side]: type=Elvish Archer, id=alice
+#. [leader]: type=Elvish Archer, id=alice
+#: data/test/macros/shroud.cfg:24
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:41
+msgid "Alice"
+msgstr ""
+
+#. [side]: type=Orcish Grunt, id=bob
+#. [leader]: type=Orcish Grunt, id=bob
+#: data/test/macros/shroud.cfg:35
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:52
+#, fuzzy
+#| msgid "Bomb"
+msgid "Bob"
+msgstr "Bom"
+
+#. [test]: id=test_relative_dir
+#: data/test/scenarios/manual_tests/test_relative_dir.cfg:27
+msgid "Unit Test test_relative_dir"
+msgstr ""
+
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 msgid "replay^Play"
-msgstr "replay^Speel"
+msgstr "Speel"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413 data/themes/_initial.cfg:573
@@ -4385,7 +4376,7 @@ msgstr "doorlopende herhaling"
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:427
 msgid "replay^Stop"
-msgstr "replay^Stop"
+msgstr "Stop"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
@@ -4395,7 +4386,7 @@ msgstr "pauzeer na huidige zet"
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:443
 msgid "replay^Reset"
-msgstr "replay^Herstart"
+msgstr "Herstart"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444 data/themes/_initial.cfg:601
@@ -4495,7 +4486,7 @@ msgstr "Beëindig Scenario"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr "theme^Standaard"
+msgstr "Standaard"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
@@ -4535,7 +4526,7 @@ msgstr "ver"
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:400
 msgid "statuspanel^lvl"
-msgstr "statuspanel^rang"
+msgstr "rang"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4595,9 +4586,9 @@ msgid ""
 msgstr ""
 "In het <b>Acties</b> menu kun je <b>Toon vijandige bewegingen</b> selecteren "
 "om alle mogelijk vakken die je tegenstander kan bereiken (er van uitgaande "
-"dat jouw eenheden op hun plaats blijven) kan bereiken. Maak hiervan gebruik "
-"om ervoor te zorgen dat de vijand je zwakke of gewonde eenheden de volgende "
-"beurt niet kan bereiken."
+"dat jouw eenheden op hun plaats blijven). Maak hiervan gebruik om ervoor te "
+"zorgen dat de vijand jouw zwakke of gewonde eenheden de volgende beurt niet "
+"kan bereiken."
 
 #. [tip]
 #: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
@@ -4680,8 +4671,8 @@ msgid ""
 msgstr ""
 "Eenheden met het kenmerk <i>Snel</i> kunnen een vak per beurt meer bewegen. "
 "Dit kan erg belangrijk zijn wanneer je door een lastig terrein beweegt, "
-"zoals water of grotten. Het kan het verschil tussen één of twee vakken "
-"verplaatsen maken."
+"zoals water of grotten. Het kan het verschil maken tussen een verplaatsing "
+"van één of twee vakken."
 
 #. [tip]
 #: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:218 data/tips.cfg:230
@@ -4733,8 +4724,8 @@ msgid ""
 msgstr ""
 "<i>Gezagsgetrouwe</i> eenheden vechten overdag beter en <i>wetteloze</i> "
 "eenheden vechten 's nachts beter. <i>Neutrale</i> eenheden worden niet door "
-"de tijd van de dag beïnvloed. De zeldzame <i>Mysterieuze</i>eenheden vechten "
-"het best tijdens de schemering."
+"de tijd van de dag beïnvloed. De zeldzame <i>Mysterieuze</i> eenheden "
+"vechten het best tijdens de schemering."
 
 #. [tip]
 #: data/tips.cfg:57
@@ -4795,7 +4786,7 @@ msgid ""
 "in the currently selected terrain is displayed in the top right corner of "
 "the screen."
 msgstr ""
-"Het terrein waarop je eenheden zich bevinden bepaalt de kans dat ze geraakt "
+"Het terrein waarop je eenheden zich bevinden, bepaalt de kans dat ze geraakt "
 "worden door een vijand. Het verdedigingspercentage dat de geselecteerde "
 "eenheid op het geselecteerde terrein heeft, wordt rechts bovenaan het scherm "
 "weergegeven."
@@ -4869,8 +4860,8 @@ msgid ""
 "Units stationed in villages will either heal eight hitpoints at the "
 "beginning of their turn, or will recover from poisoning."
 msgstr ""
-"Troepen die in een dorp gestationeerd zijn genezen acht HP aan het begin van "
-"hun beurt of herstellen van een vergiftiging."
+"Troepen die in een dorp gestationeerd zijn genezen acht LP aan het begin van "
+"hun beurt, of herstellen van een vergiftiging."
 
 #. [tip]
 #: data/tips.cfg:96
@@ -4880,7 +4871,7 @@ msgid ""
 "its next turn."
 msgstr ""
 "Beweeg gewonde eenheden niet als dat niet nodig is ― laat hen rusten. "
-"Eenheden die niet bewegen of aanvallen tijdens hun beurt genezen door de "
+"Eenheden die niet bewegen of aanvallen tijdens hun beurt, genezen door hun "
 "rust twee hitpoints aan het begin van hun volgende beurt."
 
 #. [tip]
@@ -4919,9 +4910,9 @@ msgid ""
 "weapons, but are vulnerable to attacks with piercing weapons, including bows "
 "and spears."
 msgstr ""
-"Ruiters hebben in het algemeen weerstand tegen wapens die scherpe of stompe "
-"schade aanrichten, maar ze zijn kwetsbaar voor puntige wapens zoals pijlen "
-"en speren."
+"Ruiters hebben in het algemeen een weerstand tegen wapens die scherpe of "
+"stompe schade aanrichten, maar ze zijn kwetsbaar voor puntige wapens zoals "
+"pijlen en speren."
 
 #. [tip]
 #: data/tips.cfg:109
@@ -4937,8 +4928,8 @@ msgid ""
 "level opponent."
 msgstr ""
 "De genadeslag toebrengen is de beste manier om ervaringspunten te verdienen. "
-"Eenheden die een vijand doden ontvangen acht XP per rang van de gedode "
-"vijand of vier XP voor een nul-rang tegenstander."
+"Eenheden die een vijand doden ontvangen acht EP per rang van de gedode "
+"vijand of vier EP voor een nul-rang tegenstander."
 
 #. [tip]
 #: data/tips.cfg:116
@@ -5003,11 +4994,10 @@ msgid ""
 "make room for you on their keep so you can recruit from there, and you can "
 "even capture an enemy’s keep and use that."
 msgstr ""
-"<i>Leiders</i> kunnen rekruteren of oproepen vanop gelijk welke donjon in "
-"een kasteel, niet alleen maar op de donjon waarvan wordt gestart. Soms "
-"zullen je bondgenoten je hun donjon willen afstaan zodat je daarvandaan kunt "
-"rekruteren, en je kunt zelfs de donjon van een vijand veroveren en die "
-"gebruiken."
+"<i>Leiders</i> kunnen rekruteren of oproepen vanuit elke donjon, niet alleen "
+"maar vanuit de donjon waarvan wordt gestart. Soms zullen je bondgenoten je "
+"hun donjon willen afstaan zodat je daarvandaan kunt rekruteren, en je kunt "
+"zelfs de donjon van een vijand veroveren om die te gebruiken."
 
 #. [tip]
 #: data/tips.cfg:140
@@ -5015,8 +5005,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Skeletten hebben een hoge weerstand tegen puntige, scherpe en kou aanvallen, "
-"maar zijn kwetsbaar voor stompe, vuur-, en mysterieuze aanvallen."
+"Skeletten hebben een hoge weerstand tegen puntige, scherpe en koud "
+"aanvallen, maar zijn kwetsbaar voor stompe, vuur, en mysterieuze aanvallen."
 
 #. [tip]
 #: data/tips.cfg:144
@@ -5027,8 +5017,8 @@ msgid ""
 msgstr ""
 "Eenheden met de vaardigheid <i>Leiderschap</i> zorgen ervoor dat omringende "
 "eenheden van een lagere rang en van dezelfde zijde beter vechten. Je kunt "
-"deze eenheden langzaam verplaatsen over je slaglinies en grote aantallen "
-"troepen van een lagere rang bonussen geven."
+"deze eenheden langzaam verplaatsen over je slaglinies om grote aantallen "
+"troepen van een lagere rang bonussen te geven."
 
 #. [tip]
 #: data/tips.cfg:148
@@ -5078,7 +5068,7 @@ msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
-"Als je een eenheid verplaatst, maar je valt er niet mee aan en bekomt ook "
+"Als je een eenheid verplaatst, maar je valt er niet mee aan en vindt ook "
 "geen extra informatie, dan kun je je zet ongedaan maken door op <b>u</b> te "
 "drukken."
 
@@ -5165,9 +5155,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Om laag niveau eenheden snel te promoveren, groepeer ze samen met een "
-"veteraan en gebruik de veteraan om een gezamenlijk doel genoeg te verzwakken "
-"zodat de pupil het werk kan afmaken."
+"Om eenheden van een laag niveau snel te promoveren: groepeer ze samen met "
+"een veteraan en gebruik de veteraan om een gezamenlijke tegenstander genoeg "
+"te verzwakken zodat de pupil het werk kan afmaken."
 
 #. [tip]
 #: data/tips.cfg:193
@@ -5217,7 +5207,7 @@ msgid ""
 "to escape; slow enemies are almost immobilized, and your own units suffer "
 "less retaliation damage, so it’s quicker to heal them."
 msgstr ""
-"De vaardigheid <i>Vertragen</i> is erg sterk omdat het een zeer breed effect "
+"De vaardigheid <i>Vertraagt</i> is erg sterk omdat het een zeer breed effect "
 "heeft. Vijandelijke Ondoden beschikken slechts over de helft van hun normale "
 "voordeel van hun vaardigheid <i>Aftappen</i>, de schadebonus van een "
 "<i>Stormloop</i> of <i>Ruggensteek</i> wordt uitgeschakeld en de "
@@ -5248,7 +5238,7 @@ msgid ""
 "two of damage makes a one-hit kill possible."
 msgstr ""
 "Eenheden met drie of meer aanvallen — in het bijzonder magische aanvallen — "
-"zijn ideaal om vijanden met slechts een paar hitpoints over de genadeslag "
+"zijn ideaal om vijanden met slechts een paar levenspunten over de genadeslag "
 "toe te brengen. Maak zeker gebruik van leiderschap — of een sterke of "
 "behendige eenheid — wanneer de extra twee punten schade een dood in één slag "
 "mogelijk maken."
@@ -5260,7 +5250,7 @@ msgid ""
 "little experience it has. Sometimes it’s worth paying a premium to know "
 "exactly what traits a new arrival will have."
 msgstr ""
-"Denk twee keer na alvorens een eenheid van je lijst met op te roepen "
+"Denk twee keer na voordat je een eenheid van je lijst met op te roepen "
 "eenheden verwijdert, ook al heeft de eenheid slechts weinig ervaring. Soms "
 "is iets extra betalen de moeite om precies te weten welke eigenschappen een "
 "nieuwe eenheid zal hebben."
@@ -5272,10 +5262,10 @@ msgid ""
 "turns’ movement away from the fighting. Then it can recover in peace (at 10 "
 "hitpoints per turn) without tying up front-line villages."
 msgstr ""
-"Wanneer een taaie eenheid hevig gewond is, zend je hem het best naar een "
-"dorp enkele beurten verplaatsing van het gevecht verwijderd om er te "
-"genezen. Op die manier kan hij zich in vrede herstellen (aan 10 levenspunten "
-"per beurt) zonder dorpen aan de frontlinie te bezetten."
+"Wanneer een taaie eenheid hevig gewond is, kan je de eenheid voor een paar "
+"beurten uit het gevecht halen en naar een dorp sturen. Op die manier kan hij "
+"zich in vrede herstellen (met 10 levenspunten per beurt) zonder dorpen aan "
+"de frontlinie te bezetten."
 
 #. [tip]
 #: data/tips.cfg:226 data/tips.cfg:238
@@ -5318,9 +5308,9 @@ msgid ""
 "land does favor you."
 msgstr ""
 "Als je troepen overal op de kaart een zwakke verdediging hebben, doe je er "
-"goed aan om de gebieden waar de vijanden je enkel kunnen aanvallen als ze de "
-"zelfde nadelen hebben als jou troepen te bezetten. Vermijd plaatsen waar je "
-"verdedigingen zwak zijn en die van je vijanden gemiddeld. Voorzie zware "
+"goed aan om de gebieden waar de vijanden je enkel kunnen aanvallen als ze "
+"dezelfde nadelen hebben als jou troepen te bezetten. Vermijd plaatsen waar "
+"je verdedigingen zwak zijn en die van je vijanden gemiddeld. Voorzie zware "
 "verliezen en bezet standvastig de locaties waar het land je voordeel biedt."
 
 #. [tip]
@@ -5414,7 +5404,7 @@ msgstr ""
 "Door <b>shift</b> in te drukken zullen de animaties voor het vechten en "
 "verplaatsen zich sneller afspelen. De <i>versnellende factor</i> kan worden "
 "ingesteld, of standaard 'aan' worden gezet in het <i>Algemeen</i> tabblad "
-"van het <i>Voorkeuren</i> menu."
+"van het <i>Instellingen</i> menu."
 
 #. [tip]
 #. Translate "Change difficulty" and "Load Game" as in wesnoth-lib textdomain
@@ -5446,7 +5436,7 @@ msgstr ""
 #. other players. It will be embedded within a message.
 #: src/actions/advancement.cpp:259
 msgid "waiting for^an advancement choice"
-msgstr "waiting for^het kiezen van een promotie"
+msgstr "het kiezen van een promotie"
 
 #: src/actions/attack.cpp:597 src/actions/attack.cpp:1388
 msgid "An invalid attacker weapon got selected."
@@ -5490,11 +5480,11 @@ msgstr ""
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Er zijn geen lege kasteelvakken waarop je de eenheid kan rekruteren."
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "cured"
 msgstr "genezen"
 
-#: src/actions/heal.cpp:276
+#: src/actions/heal.cpp:273
 msgid "female^cured"
 msgstr "genezen"
 
@@ -5619,25 +5609,25 @@ msgstr "Verzenden van een updatepakket voor add-on <i>$addon_title</i>..."
 msgid "Sending add-on <i>$addon_title</i>..."
 msgstr "Verzenden van add-on <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:307
+#: src/addon/client.cpp:309
 msgid "Removing add-on <i>$addon_title</i> from the server..."
 msgstr "Verwijderen van add-on <i>$addon_title</i> van de server..."
 
-#: src/addon/client.cpp:336
+#: src/addon/client.cpp:337
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Downloaden van add-on <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:348 src/addon/client.cpp:709
+#: src/addon/client.cpp:349 src/addon/client.cpp:710
 msgid "Add-ons Manager"
 msgstr "Add-ons Beheerder"
 
-#: src/addon/client.cpp:348
+#: src/addon/client.cpp:349
 #, fuzzy
 #| msgid "Sending add-on <i>$addon_title</i>..."
 msgid "Installing add-on <i>$addon_title</i>..."
 msgstr "Verzenden van add-on <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:360 src/addon/client.cpp:386
+#: src/addon/client.cpp:361 src/addon/client.cpp:387
 msgid ""
 "The add-on <i>$addon_title</i> has an invalid file or directory name and "
 "cannot be installed."
@@ -5645,7 +5635,7 @@ msgstr ""
 "De add-on <i>$addon_title</i> heeft een ongeldige bestands- of mapnaam en "
 "kan niet worden geïnstalleerd."
 
-#: src/addon/client.cpp:365 src/addon/client.cpp:391
+#: src/addon/client.cpp:366 src/addon/client.cpp:392
 msgid ""
 "The add-on <i>$addon_title</i> has file or directory names with case "
 "conflicts. This may cause problems."
@@ -5653,11 +5643,11 @@ msgstr ""
 "De add-on <i>$addon_title</i> heeft een bestands- of mapnaam met "
 "bestemmingsconflicten. Dit kan voor problemen zorgen."
 
-#: src/addon/client.cpp:424
+#: src/addon/client.cpp:425
 msgid "The server responded with an error:"
 msgstr "De server antwoordde met een fout:"
 
-#: src/addon/client.cpp:479
+#: src/addon/client.cpp:480
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -5672,11 +5662,11 @@ msgstr[1] ""
 "niet geïnstalleerd zijn of beschikbaar zijn op de server. Wilt u toch "
 "doorgaan?"
 
-#: src/addon/client.cpp:488
+#: src/addon/client.cpp:489
 msgid "Broken Dependencies"
 msgstr "Gebroken Afhankelijkheden"
 
-#: src/addon/client.cpp:528
+#: src/addon/client.cpp:529
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -5690,11 +5680,11 @@ msgstr[1] ""
 "De volgende afhankelijkheden konden niet worden geïnstalleerd. Wil je nog "
 "steeds doorgaan?"
 
-#: src/addon/client.cpp:532
+#: src/addon/client.cpp:533
 msgid "Dependencies Installation Failed"
 msgstr "Installatie van Afhankelijkheden Mislukt"
 
-#: src/addon/client.cpp:555
+#: src/addon/client.cpp:556
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -5702,78 +5692,78 @@ msgstr ""
 "De add-on '$addon|' is al geïnstalleerd en bevat extra informatie die "
 "verloren gaat als je doorgaat:"
 
-#: src/addon/client.cpp:559
+#: src/addon/client.cpp:560
 msgid "Publishing information file (.pbl)"
 msgstr "Publiceer informatie bestand (.pbl)"
 
-#: src/addon/client.cpp:563
+#: src/addon/client.cpp:564
 msgid "Version control system (VCS) information"
 msgstr "Versie controle systeem (VCS) informatie"
 
-#: src/addon/client.cpp:567
+#: src/addon/client.cpp:568
 msgid "Do you really wish to continue?"
 msgstr "Weet je zeker dat je wilt verdergaan?"
 
-#: src/addon/client.cpp:569 src/addon/manager_ui.cpp:175
+#: src/addon/client.cpp:570 src/addon/manager_ui.cpp:175
 #: src/game_initialization/multiplayer.cpp:363
 msgid "Confirm"
 msgstr "Bevestigen"
 
 #: src/addon/info.cpp:253
 msgid "addon_type^Campaign"
-msgstr "addon_type^Veldtocht"
+msgstr "Veldtocht"
 
 #: src/addon/info.cpp:255
 msgid "addon_type^Scenario"
-msgstr "addon_type^Scenario"
+msgstr "Scenario"
 
 #: src/addon/info.cpp:257
 msgid "addon_type^SP/MP Campaign"
-msgstr "addon_type^SP/MP Veldtocht"
+msgstr "SP/MP Veldtocht"
 
 #: src/addon/info.cpp:259
 msgid "addon_type^MP era"
-msgstr "addon_type^MP tijdperk"
+msgstr "MP tijdperk"
 
 #: src/addon/info.cpp:261
 msgid "addon_type^MP faction"
-msgstr "addon_type^MP factie"
+msgstr "MP factie"
 
 #: src/addon/info.cpp:263
 msgid "addon_type^MP map-pack"
-msgstr "addon_type^MP kaartencollectie"
+msgstr "MP kaartencollectie"
 
 #: src/addon/info.cpp:265
 msgid "addon_type^MP scenario"
-msgstr "addon_type^MP scenario"
+msgstr "MP scenario"
 
 #: src/addon/info.cpp:267
 msgid "addon_type^MP campaign"
-msgstr "addon_type^MP veldtocht"
+msgstr "MP veldtocht"
 
 #: src/addon/info.cpp:269
 msgid "addon_type^Modification"
-msgstr "addon_type^MP aanpassing"
+msgstr "MP aanpassing"
 
 #: src/addon/info.cpp:271
 msgid "addon_type^Core"
-msgstr "addon_type^Bron"
+msgstr "Bron"
 
 #: src/addon/info.cpp:273
 msgid "addon_type^Resources"
-msgstr "addon_type^Middelen"
+msgstr "Middelen"
 
 #: src/addon/info.cpp:275
 msgid "addon_type^Other"
-msgstr "addon_type^Anders"
+msgstr "Anders"
 
 #: src/addon/info.cpp:277
 msgid "addon_type^(unknown)"
-msgstr "addon_type^(onbekend)"
+msgstr "(onbekend)"
 
 #: src/addon/info.cpp:314
 msgid "unit_byte^B"
-msgstr "unit_byte^B"
+msgstr "B"
 
 #: src/addon/manager_ui.cpp:85 src/addon/manager_ui.cpp:326
 msgid "Network communication error."
@@ -5856,9 +5846,6 @@ msgstr ""
 "server."
 
 #: src/addon/manager_ui.cpp:319
-#, fuzzy
-#| msgid ""
-#| "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr "Kon geen add-ons vinden met de ids $addon_ids op de add-on server."
@@ -6368,6 +6355,9 @@ msgid ""
 "to advance to ‘$higher_level’; please ask the add-on author to use "
 "[modify_unit_type] instead."
 msgstr ""
+"Foutmelding: [advancefrom] werkt niet meer. ‘$lower_level’ eenheden kunnen "
+"niet promoveren naar '$higher_level’; vraag de add-on auteur om "
+"[modify_unit_type] aan te passen."
 
 #: src/game_config_manager.cpp:579
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -6526,7 +6516,7 @@ msgstr "Onbekend tijdperk"
 #: src/game_initialization/lobby_data.cpp:264
 #: src/game_initialization/lobby_data.cpp:298
 msgid "scenario_abbreviation^S"
-msgstr "scenario_abbreviation^S"
+msgstr "S"
 
 #: src/game_initialization/lobby_data.cpp:284
 msgid "Remote scenario"
@@ -6535,7 +6525,7 @@ msgstr "Op zichzelf staand scenario"
 #: src/game_initialization/lobby_data.cpp:305
 #: src/game_initialization/lobby_data.cpp:331
 msgid "campaign_abbreviation^C"
-msgstr "campaign_abbreviation^C"
+msgstr "C"
 
 #: src/game_initialization/lobby_data.cpp:337
 msgid "Unknown scenario"
@@ -6553,7 +6543,7 @@ msgstr[1] "Vrije plaatsen:"
 
 #: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
-msgstr "mp_game_available_slots^Vol"
+msgstr "Vol"
 
 #: src/game_initialization/lobby_data.cpp:379
 #: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:662
@@ -6589,8 +6579,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "Dood de vijandelijke leider(s)"
 
 #: src/game_initialization/mp_game_utils.cpp:103
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era '$era'"
 msgstr "Kan tijdperk '$era' niet vinden"
 
@@ -7071,7 +7059,7 @@ msgstr "Niet beschikbaar"
 
 #: src/help/help_impl.cpp:853 src/help/help_impl.cpp:1030
 msgid "race^Miscellaneous"
-msgstr "race^Overig"
+msgstr "Overig"
 
 #: src/help/help_impl.cpp:1053 src/reports.cpp:385
 msgid "Alignment: "
@@ -7266,7 +7254,7 @@ msgstr "Gebruik:"
 #: src/map_command_handler.hpp:394
 msgid "command^Alias:"
 msgid_plural "Aliases:"
-msgstr[0] "command^Alias:"
+msgstr[0] "Alias:"
 msgstr[1] "Aliassen:"
 
 #: src/menu_events.cpp:165
@@ -7496,6 +7484,8 @@ msgid ""
 "Similar to the 'fps' command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
+"Vergelijkbaar met het 'fps'-commando, maar zorgt ervoor dat alles opnieuw "
+"gegenereerd wordt, in plaats van enkel de dingen die veranderd zijn."
 
 #: src/menu_events.cpp:1250
 msgid "Save game."
@@ -7811,6 +7801,8 @@ msgstr "Variabele niet gevonden"
 #: src/menu_events.cpp:1989
 msgid "Debug command 'unit: $unit' failed: no unit selected or hovered over."
 msgstr ""
+"Debus commando 'unit: $unit' niet gelukt: geen eenheid geselecteerd of "
+"aangeraakt met de muiscursor."
 
 #: src/menu_events.cpp:2007
 msgid ""
@@ -7834,7 +7826,7 @@ msgstr "Ongeldige locatie"
 
 #: src/menu_events.cpp:2127 src/menu_events.cpp:2153
 msgid "prompt^Command:"
-msgstr "prompt^Commando:"
+msgstr "Commando:"
 
 #: src/mouse_events.cpp:1178
 msgid ""
@@ -8130,11 +8122,11 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Deze eenheid is vergiftigd. Hij zal elke beurt 8 HP verliezen, totdat hij "
+"Deze eenheid is vergiftigd. Hij zal elke beurt 8 LP verliezen, totdat hij "
 "genezing vindt in een dorp of bij een bevriende eenheid met de vaardigheid "
 "'geneest gif'.\n"
 "\n"
-"Eenheden kunnen niet gedood worden door gif alleen. Het gif zal 1 HP over "
+"Eenheden kunnen niet gedood worden door gif alleen. Het gif zal 1 LP over "
 "laten."
 
 #: src/reports.cpp:353
@@ -8271,7 +8263,7 @@ msgstr "Wapenspecialiteit: "
 
 #: src/reports.cpp:1052
 msgid "weapon^None"
-msgstr "weapon^Geen"
+msgstr "Geen"
 
 #: src/reports.cpp:1081
 msgid "Total damage"
@@ -8408,15 +8400,11 @@ msgstr "Tijd voor Beurt"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
-#, fuzzy
-#| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %d %b %I:%M %p %Y"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #: src/save_index.cpp:259
-#, fuzzy
-#| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %H:%M %Y"
 
@@ -8618,77 +8606,77 @@ msgstr "Waarde: '$value' Vorige: '$previous_value'"
 
 #: src/serialization/string_utils.cpp:551
 msgid "prefix_milli^m"
-msgstr "prefix_milli^m"
+msgstr "m"
 
 #: src/serialization/string_utils.cpp:552
 msgid "prefix_micro^µ"
-msgstr "prefix_micro^µ"
+msgstr "µ"
 
 #: src/serialization/string_utils.cpp:553
 msgid "prefix_nano^n"
-msgstr "prefix_nano^n"
+msgstr "n"
 
 #: src/serialization/string_utils.cpp:554
 msgid "prefix_pico^p"
-msgstr "prefix_pico^p"
+msgstr "p"
 
 #: src/serialization/string_utils.cpp:555
 msgid "prefix_femto^f"
-msgstr "prefix_femto^f"
+msgstr "f"
 
 #: src/serialization/string_utils.cpp:556
 msgid "prefix_atto^a"
-msgstr "prefix_atto^a"
+msgstr "a"
 
 #: src/serialization/string_utils.cpp:557
 msgid "prefix_zepto^z"
-msgstr "prefix_zepto^z"
+msgstr "z"
 
 #: src/serialization/string_utils.cpp:558
 msgid "prefix_yocto^y"
-msgstr "prefix_yocto^y"
+msgstr "y"
 
 #. TRANSLATORS: Translate the K in KiB only
 #: src/serialization/string_utils.cpp:571
 msgid "prefix_kibi^K"
-msgstr "prefix_kibi^K"
+msgstr "K"
 
 #: src/serialization/string_utils.cpp:572
 msgid "prefix_kilo^k"
-msgstr "prefix_kilo^k"
+msgstr "k"
 
 #: src/serialization/string_utils.cpp:574
 msgid "prefix_mega^M"
-msgstr "prefix_mega^M"
+msgstr "M"
 
 #: src/serialization/string_utils.cpp:575
 msgid "prefix_giga^G"
-msgstr "prefix_giga^G"
+msgstr "G"
 
 #: src/serialization/string_utils.cpp:576
 msgid "prefix_tera^T"
-msgstr "prefix_tera^T"
+msgstr "T"
 
 #: src/serialization/string_utils.cpp:577
 msgid "prefix_peta^P"
-msgstr "prefix_peta^P"
+msgstr "P"
 
 #: src/serialization/string_utils.cpp:578
 msgid "prefix_exa^E"
-msgstr "prefix_exa^E"
+msgstr "E"
 
 #: src/serialization/string_utils.cpp:579
 msgid "prefix_zetta^Z"
-msgstr "prefix_zetta^Z"
+msgstr "Z"
 
 #: src/serialization/string_utils.cpp:580
 msgid "prefix_yotta^Y"
-msgstr "prefix_yotta^Y"
+msgstr "Y"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
 #: src/serialization/string_utils.cpp:595
 msgid "infix_binary^i"
-msgstr "infix_binary^i"
+msgstr "i"
 
 #: src/synced_commands.cpp:411
 msgid "(unknown player)"
@@ -8724,7 +8712,7 @@ msgstr ""
 "Een eenheid is gecreëerd met behulp van een debug commando tijdens $players "
 "beurt"
 
-#: src/synced_user_choice.cpp:331
+#: src/synced_user_choice.cpp:339
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "wachten op $desc van $sides kant"
@@ -8862,47 +8850,47 @@ msgstr "neutraal"
 
 #: src/units/types.cpp:842
 msgid "female^chaotic"
-msgstr "female^wetteloos"
+msgstr "wetteloos"
 
 #: src/units/types.cpp:842
 msgid "female^lawful"
-msgstr "female^gezagsgetrouw"
+msgstr "gezagsgetrouw"
 
 #: src/units/types.cpp:842
 msgid "female^liminal"
-msgstr "female^mysterieus"
+msgstr "mysterieus"
 
 #: src/units/types.cpp:842
 msgid "female^neutral"
-msgstr "female^neutraal"
+msgstr "neutraal"
 
-#: src/units/unit.cpp:1860
+#: src/units/unit.cpp:1856
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1866
+#: src/units/unit.cpp:1862
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
-msgstr "<span color=\"$color\">$number_or_percent</span> HP"
+msgstr "<span color=\"$color\">$number_or_percent</span> LP"
 
-#: src/units/unit.cpp:1876
+#: src/units/unit.cpp:1872
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> zet"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> zetten"
 
-#: src/units/unit.cpp:1882
+#: src/units/unit.cpp:1878
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> zicht"
 
-#: src/units/unit.cpp:1886
+#: src/units/unit.cpp:1882
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> waarschuwingszicht"
 
-#: src/units/unit.cpp:1891
+#: src/units/unit.cpp:1887
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
-msgstr "<span color=\"$color\">$number_or_percent</span> XP om te promoveren"
+msgstr "<span color=\"$color\">$number_or_percent</span> EP om te promoveren"
 
-#: src/units/unit.cpp:1895
+#: src/units/unit.cpp:1891
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -8910,12 +8898,12 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> aanval per beurt"
 msgstr[1] ""
 "<span color=\"$color\">$number_or_percent</span> aanvallen per beurt"
 
-#: src/units/unit.cpp:1902
+#: src/units/unit.cpp:1898
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> kosten om op te roepen"
 
-#: src/units/unit.cpp:2343
+#: src/units/unit.cpp:2339
 msgid "$effect_description per level"
 msgstr "$effect_description per rang"
 
@@ -8963,8 +8951,15 @@ msgstr "Verberg plannen voor $player"
 msgid "Whiteboard Options"
 msgstr "Whiteboard Opties"
 
-#~ msgid "Chest"
-#~ msgstr "Kist"
+#~ msgid ""
+#~ "Some types of terrain give unique bonuses, such as healing or "
+#~ "illumination."
+#~ msgstr ""
+#~ "Sommige terreintypes geven een unieke bonus, zoals genezing of "
+#~ "verlichting."
+
+#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
+#~ msgstr "<i>― Galun, Drakenvlucht Leider, 6NW</i>"
 
 #~ msgid "Independent"
 #~ msgstr "Onafhankelijk"
@@ -8975,15 +8970,11 @@ msgstr "Whiteboard Opties"
 #~ msgid "No Ally Mirror"
 #~ msgstr "Geen bevriende spiegel"
 
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr ""
-#~ "Sommige terreintypes geven een unieke bonus, zoals genezing of "
-#~ "verlichting."
+#~ msgid "Chest"
+#~ msgstr "Kist"
 
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Galun, Drakenvlucht Leider, 6NW</i>"
+#~ msgid "Use [modify_unit_type]\n"
+#~ msgstr "Gebruik [modify_unit_type]\n"
 
 #~ msgid "<room>"
 #~ msgstr "<kamer>"
@@ -9011,9 +9002,6 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "Room query."
 #~ msgstr "Kamerzoekopdracht."
-
-#~ msgid "Use [modify_unit_type]\n"
-#~ msgstr "Gebruik [modify_unit_type]\n"
 
 #~ msgid "drains 20%"
 #~ msgstr "bloedzuiger"
@@ -10702,9 +10690,6 @@ msgstr "Whiteboard Opties"
 
 #~ msgid "unit list^Traits"
 #~ msgstr "Karaktertrekken"
-
-#~ msgid "Unit List"
-#~ msgstr "Troepenlijst"
 
 #~ msgid "Scroll To"
 #~ msgstr "Ga naar"

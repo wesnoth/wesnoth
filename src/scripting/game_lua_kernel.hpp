@@ -119,6 +119,10 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_heal_unit(lua_State *L);
 	int intf_message(lua_State *L);
 	int intf_play_sound(lua_State *L);
+	int intf_set_achievement(lua_State *L);
+	int intf_has_achievement(lua_State *L);
+	int intf_get_achievement(lua_State *L);
+	int intf_progress_achievement(lua_State *L);
 	int intf_set_floating_label(lua_State* L, bool spawn);
 	int intf_remove_floating_label(lua_State* L);
 	int intf_move_floating_label(lua_State* L);
