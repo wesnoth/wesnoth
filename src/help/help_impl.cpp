@@ -769,8 +769,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		text << "\n\n";
 		if (trait["availability"] == "musthave") {
 			text << _("Availability: ") << _("Must-have") << "\n";
-		} else if (trait["availability"] == "none") {
-			text << _("Availability: ") << _("Unavailable") << "\n";
+		} else if (trait["availability"] == "any") {
+			text << _("Availability: ") << _("Available also for leaders") << "\n";
 		}
 		topics.emplace_back(name, id, text.str());
 	}
