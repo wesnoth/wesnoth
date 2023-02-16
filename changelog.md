@@ -35,6 +35,7 @@
  ### Miscellaneous and Bug Fixes
    * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
    * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
+   * wmlxgettext now outputs Unix-like paths in .pot file comments even on Windows (issue #7380)
 
 ## Version 1.17.11
  ### Campaigns
