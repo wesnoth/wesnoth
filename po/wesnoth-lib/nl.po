@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:33-0600\n"
-"PO-Revision-Date: 2023-02-10 15:40+0100\n"
+"PO-Revision-Date: 2023-02-14 17:45+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
@@ -3626,13 +3626,12 @@ msgstr "Logboeken:"
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:164
 msgid "Open Log File"
-msgstr "Open Geschiedenis Bestand"
+msgstr "Open Logboek"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:165
 msgid "Opens the log file, which may contain useful debug information"
-msgstr ""
-"Opent het geschiedenis bestand, dit kan nuttige debug informatie bevatten"
+msgstr "Opent het logboek, dit kan nuttige debug informatie bevatten"
 
 #. [label]
 #: data/gui/window/game_version.cfg:199
@@ -4677,7 +4676,7 @@ msgstr "Geavanceerd"
 #. [button]: id=about
 #: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:465
 msgid "Display the game version and build information"
-msgstr "Laat spelversie en bouwinformatie zien"
+msgstr "Toon spelversie en bouwinformatie"
 
 #. [label]
 #: data/gui/window/preferences/01_general.cfg:20
@@ -4687,7 +4686,7 @@ msgstr "Schuifsnelheid:"
 #. [slider]: id=scroll_speed
 #: data/gui/window/preferences/01_general.cfg:36
 msgid "Change the speed of scrolling around the map"
-msgstr "Verander de snelheid waarmee de kaart verschuift"
+msgstr "Veranderd de snelheid waarmee de kaart verschuift"
 
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/window/preferences/01_general.cfg:54
@@ -4746,12 +4745,12 @@ msgstr "Toon een melding aan het begin van je beurt"
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:128
 msgid "Enable planning mode on start"
-msgstr "Schakel planningsmodus in aan het begin"
+msgstr "Sta Planning Modus toe bij het opstarten"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:129
 msgid "Activates Planning Mode on game start"
-msgstr "Schakelt Planningsmodus in wanneer het spel wordt gestart"
+msgstr "Schakelt Planning Modus in wanneer het spel wordt gestart"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/window/preferences/01_general.cfg:142
@@ -4784,8 +4783,8 @@ msgstr "Sla herhalingen op aan het eind van scenario's"
 #: data/gui/window/preferences/01_general.cfg:173
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Sla herhalingen van spellen op bij een overwinning in alle modi en verlies "
-"in multiplayer"
+"Sla herhalingen van spellen op bij een overwinning (en in multiplayer ook "
+"bij verlies)"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/window/preferences/01_general.cfg:186
@@ -4798,8 +4797,8 @@ msgstr ""
 msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
-"Verwijder vorige automatisch opgeslagen spellen bij een overwinning in alle "
-"modi en verlies in multiplayer"
+"Verwijder vorige automatisch opgeslagen spellen bij een overwinning (en in "
+"multiplayer ook bij verlies)"
 
 #. [column]
 #: data/gui/window/preferences/01_general.cfg:197
@@ -4936,7 +4935,7 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Toont een gekleurde cirkel onder een eenheid om te laten zien tot welke kant "
+"Toon een gekleurde cirkel onder een eenheid om te laten zien tot welke kant "
 "het behoort"
 
 #. [toggle_button]: id=show_grid
@@ -5106,7 +5105,7 @@ msgstr "Chatregels:"
 #. [slider]: id=chat_lines
 #: data/gui/window/preferences/05_multiplayer.cfg:36
 msgid "Set the number of chat lines shown"
-msgstr "Het aantal chatregels dat te zien is instellen"
+msgstr "Het aantal chatregels dat te zien is"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/window/preferences/05_multiplayer.cfg:52
@@ -5207,7 +5206,7 @@ msgstr "Verwijder deze gebruikersnaam van je lijst"
 #. [label]: id=no_friends_notice
 #: data/gui/window/preferences/05_multiplayer.cfg:311
 msgid "You have not befriended or blocked any other players."
-msgstr "Je hebt geen bevriende en geblokkeerde spelers."
+msgstr "Je hebt geen bevriende of geblokkeerde spelers."
 
 #. [button]: id=open
 #: data/gui/window/screenshot_notification.cfg:49
@@ -5513,7 +5512,7 @@ msgstr "Bekijk de aftiteling"
 #. [grid]
 #: data/gui/window/title_screen.cfg:258
 msgid "Quit the game"
-msgstr "Spel verlaten"
+msgstr "Verlaat het spel"
 
 #. [button]: id=language
 #: data/gui/window/title_screen.cfg:487
@@ -7373,7 +7372,7 @@ msgstr "Herhaal Rekrutering"
 
 #: src/hotkey/hotkey_command.cpp:107
 msgid "Show/Hide Labels"
-msgstr "Toon/Verberg Labeld"
+msgstr "Toon/Verberg Labels"
 
 #: src/hotkey/hotkey_command.cpp:108
 msgid "End Turn"
@@ -7952,7 +7951,7 @@ msgstr "Tip: het laden van opgeslagen spellen is onnodig"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Enter Command"
-msgstr "Typ Opdracht"
+msgstr "Typ Commando"
 
 #: src/hotkey/hotkey_command.cpp:278
 msgid "Custom Command"
