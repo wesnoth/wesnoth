@@ -1,21 +1,67 @@
 ## Version 1.17.12+dev
  ### Add-ons client
+   * Added automatic schema-validation of `_server.pbl` files when uploading an add-on. (PR #7239)
  ### Add-ons server
  ### Campaigns
+   * Legend of Wesmere
+     * Adjusted gold and carryover between S11, S14 and S17. (issue #7230)
+     * S03: Fixed an event trigger when Urudin retreats. (PR #7221)
+     * S16: Updated screen flash to use new macros.
+   * Secrets of the Ancients
+     * S17: Use the new `screen_fade` visual effect.
+   * Son of the Black Eye
+     * S14: Fixed Grüü’s dialogue not appearing during the intro. (issue #7280)
+   * The South Guard
+     * S04: Updated safeguard against AI leader stupidity to match map changes.
+   * Under the Burning Suns
+     * Quenoth Rework, including the major changes listed below. (PR #7349)
+     * Redesign of the Quenoth Fighter line, with multiple attacks instead of the formation ability.
+     * Redesign of the Quenoth Shaman line, with songs and the tailwind ability.
+     * Redesign of the Tauroch Rider line, giving both Tauroch and Rider one attack each.
+     * Hide XP bars for some enemies that are never expected to advance a level.
+   * World Conquest
+     * Fix mechanic when a commander replaces a dead leader. (issue #7284)
  ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn’t always obscure the southmost hexes of the map. (issue #6422)
  ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs. (issue #7108)
+     * By default, they are now two-color during the ally’s turn.
+     * Added an advanced setting to always show them as single-color (the ally color).
+   * Add waterfall animations to Isar’s Cross. (PR #7348)
  ### Lua API
  ### Packaging
  ### Terrain
+   * Added Art Placeholder overlay (terrain code `^Xxxx`), used for Isar’s Cross’ new waterfalls. (PR #7348)
  ### Translations
    * Updated translations: British English, Chinese (Simplified), Czech, Dutch, Finnish, French, Polish, Portuguese (Brazil), Spanish
+   * wmlxgettext always uses Unix-style file paths in .pot files, to reduce changes when working on different platforms. (issue #7380)
  ### Units
-   * Add Merman Brawler and Citizen to core
+   * Add Merman Brawler and Citizen to core.
+   * Add Dwarvish Miner to core.
+   * Add Sand Scamperer unit.
+   * Giant Ant now advances to Soldier Ant, requiring 26 XP.
+   * Soldier Ant now costs 16 gold, has 35 HP and needs 50 XP to advance.
  ### User interface
-   * Added icons for invulnerable and unhealable states (PR #7363)
+   * Added icons for invulnerable and unhealable states. (PR #7363)
+   * The help browser shows groups (`[race]help_taxonomy=`) in subfolders. For example Humans/Dunefolk and Elves/Quenoth. (PR #7228)
+ ### WML API
+   * New `attacks_used` key in `[attack]` causes the attack to deduct more than 1 from `attacks_left`. (PR #7351)
+   * Fixed `[foreach]` when nested loops used the same variable name for the inner and outer loop. (issue #6305)
+   * New `[trait]require_traits=` and `[trait]exclude_traits=` to control random trait generation. (PR #7109)
  ### WML Engine
    * Added basic achievements functionality.
  ### Miscellaneous and Bug Fixes
+   * Fixed a regression in 1.17.x resulting in overlarge unit HP and XP bars in some cases. (issue #7171)
+   * Fixed the editor’s unit tool crashing when placing a unit. (issue #7296)
+   * Many command-line options that log to stdout/stderr now automatically imply `--no-log-to-file`. (issue #7310)
+   * General consolidation of code paths for logging between Windows and non-Windows platforms.
+   * Fixed crash and missing output in `--report`.
+   * Schema validation accepts variables in `[harm_unit]alignment`.
+   * Schema validation no longer accepts the unused `[unit]hp_bar_scaling` and `[unit]xp_bar_scaling`.
+   * Fix an issue with schema validator not reporting errors at top level.
+   * The `unit_tree` tool which generates https://units.wesnoth.org/ now ignores the `[advancefrom]` tag.
+   * Fix the search for the game data directory when doing a local Visual Studio build.
+   * Fixed warnings when compiling with Boost 1.81.
 
 ## Version 1.17.12
  ### Add-ons server
@@ -35,7 +81,6 @@
  ### Miscellaneous and Bug Fixes
    * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
    * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
-   * wmlxgettext now outputs Unix-like paths in .pot file comments even on Windows (issue #7380)
 
 ## Version 1.17.11
  ### Campaigns
