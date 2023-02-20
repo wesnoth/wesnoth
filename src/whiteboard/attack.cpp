@@ -161,7 +161,7 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	unit& unit = *get_unit();
 	DBG_WB << unit.name() << " [" << unit.id()
 					<< "] has " << unit.attacks_left() << " attacks, decreasing by " << attack_count_;
-	assert(unit.attacks_left() > attack_count_);
+	assert(unit.attacks_left() >= attack_count_);
 
 	//Calculate movement to subtract
 	temp_movement_subtracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
