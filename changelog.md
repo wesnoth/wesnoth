@@ -1,7 +1,6 @@
-## Version 1.17.12+dev
+## Version 1.17.13
  ### Add-ons client
    * Added automatic schema-validation of `_server.pbl` files when uploading an add-on. (PR #7239)
- ### Add-ons server
  ### Campaigns
    * Legend of Wesmere
      * Adjusted gold and carryover between S11, S14 and S17. (issue #7230)
@@ -28,8 +27,6 @@
      * By default, they are now two-color during the ally’s turn.
      * Added an advanced setting to always show them as single-color (the ally color).
    * Add waterfall animations to Isar’s Cross. (PR #7348)
- ### Lua API
- ### Packaging
  ### Terrain
    * Added Art Placeholder overlay (terrain code `^Xxxx`), used for Isar’s Cross’ new waterfalls. (PR #7348)
  ### Translations
