@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"POT-Creation-Date: 2023-02-19 22:03-0600\n"
 "PO-Revision-Date: 2023-01-10 01:21+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -51,14 +51,15 @@ msgstr "peloton"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
 msgid "plague"
 msgstr "rutto"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/weapon_specials.cfg:53
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -68,20 +69,104 @@ msgstr ""
 "yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
 "tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
 
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
+msgid "This attack can only be used as the first verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
+msgid "This attack can only be used as the second verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+msgid "This attack can only be used as the third verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
+#, fuzzy
+#| msgid "first strike"
+msgid "first verse"
+msgstr "ensi-isku"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
+#, fuzzy
+#| msgid "Second Watch"
+msgid "second verse"
+msgstr "Aamuyö"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:419
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:422
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:426
+msgid "tailwind +"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:444
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "hoivaa +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "hoivaa +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -99,28 +184,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Tämä yksikkö kykenee perustason hoivaamiseen ja hidastamaan nestehukan "
 "vaikutusta."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:468
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "hoivaa +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:469
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "hoivaa +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:470
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -140,17 +225,17 @@ msgstr ""
 "lääkitsijältä tai kylässä."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:498
 msgid "heals +12"
 msgstr "hoivaa 12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:499
 msgid "female^heals +12"
 msgstr "hoivaa +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:500
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -169,7 +254,7 @@ msgstr ""
 "lääkitsijältä tai kylässä."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:525
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -204,7 +289,7 @@ msgstr "Aina lepämisestä johtuvat paranemiset"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "selkäänpuukotus"
 
@@ -244,7 +329,7 @@ msgstr "piiloutuminen"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "imee elämää"
 
@@ -266,7 +351,7 @@ msgstr "Mäki"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "tarkk’ampuja"
 
@@ -282,7 +367,7 @@ msgstr "yöväijyntä"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "myrkky"
 
@@ -298,7 +383,7 @@ msgstr "kahakointi"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "hidastaa"
 
@@ -4999,192 +5084,6 @@ msgstr ""
 " Tämä yksikkö saa yhden elämäpisteen maksimimääräänsä aina tappaessaan "
 "elävän yksikön."
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "hurmos"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Sekä puolustaessaan että hyökätessään hurmayksiköt jatkavat, kunnes "
-"jompikumpi osapuoli kuolee tai taistelu on jatkunut 30 kierrosta."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Yksikön hyökätessä tämä hyökkäys tekee kaksinkertaisen vahingon, jos kohteen "
-"vastakkaisella puolella on kohteelle vihamielinen ja taistelukykyinen "
-"yksikkö (yksikköä ei ole esimerkiksi muutettu kiveksi)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
-"yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
-"tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Tämä hyökkäys hidastaa kohteen vuoron loppuun saakka. Hidastus puolittaa "
-"aiheutetun vahingon määrän ja hidastetun yksikön liikkumiskustannukset "
-"tuplaantuvat. Yksikkö, joka on hidastettu, saa käärmeikonin sivupalkkiin "
-"kertomaan hidastuksesta (ja antamaan lisätietoa)."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "kivettää"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Tämä hyökkäys muuttaa kohteen kiveksi. Kivetetyt yksiköt eivät voi liikkua "
-"eivätkä hyökätä."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr "Hyökättäessä tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Puolustaessa tämä hyökkäys vähentää vastustajan mahdollisuutta osua 10%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "maaginen"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Tällä hyökkäyksellä on aina 70% mahdollisuus osua riippumatta puolustavan "
-"yksikön puolustuskyvystä."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "parvi"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Kun yksikkö haavoittuu, sen iskujen lukumäärä määrä vähenee. Iskujen "
-"väheneminen on suoraan verrannollista elämäpisteiden vähenemiseen. "
-"Esimerkiksi, jos yksiköllä on jäljellä 3/4 elämäpisteistä, sillä on iskuja "
-"vain 3/4 alkuperäisestä."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "rynnäkkö"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta aiheuttaa myös "
-"kaksinkertaisen vahingon yksikölle vastahyökkäyksessä."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
-"vahingosta, jonka tekee (pyöristetään alas)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "ensi-isku"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Yksikkö iskee taistelussa aina ensin tällä hyökkäyksellä, myös "
-"puolustautuessaan."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Tämä hyökkäys myrkyttää elävät kohteet. Myrkytetyt yksiköt menettävät "
-"kahdeksan elämäpistettä jokaisella vuorolle, kunnes ne ovat parannettu tai "
-"elämäpisteitä on jäljellä vain yksi."
-
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
@@ -6166,6 +6065,216 @@ msgid ""
 msgstr ""
 "Ikääntyneet yksiköt, saavat 8 EP:tä vähemmän ja liikkuminen, sekä vahinko "
 "lähitaistelussa vähenee yhdellä."
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "hurmos"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Sekä puolustaessaan että hyökätessään hurmayksiköt jatkavat, kunnes "
+"jompikumpi osapuoli kuolee tai taistelu on jatkunut 30 kierrosta."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Yksikön hyökätessä tämä hyökkäys tekee kaksinkertaisen vahingon, jos kohteen "
+"vastakkaisella puolella on kohteelle vihamielinen ja taistelukykyinen "
+"yksikkö (yksikköä ei ole esimerkiksi muutettu kiveksi)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Kun yksikkö tapetaan ruttohyökkäyksellä, kyseinen yksikkö korvataan "
+"yksiköllä kävelevällä ruumiilla ja samalla on puolella kuin ruttohyökkäyksen "
+"tehnyt yksikkö (Tämä ei toimi epäkuolleisiin eikä yksiköihin kylissä)."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Tämä hyökkäys hidastaa kohteen vuoron loppuun saakka. Hidastus puolittaa "
+"aiheutetun vahingon määrän ja hidastetun yksikön liikkumiskustannukset "
+"tuplaantuvat. Yksikkö, joka on hidastettu, saa käärmeikonin sivupalkkiin "
+"kertomaan hidastuksesta (ja antamaan lisätietoa)."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "kivettää"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Tämä hyökkäys muuttaa kohteen kiveksi. Kivetetyt yksiköt eivät voi liikkua "
+"eivätkä hyökätä."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr "Hyökättäessä tällä hyökkäyksellä on vähintään 60% mahdollisuus osua."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Puolustaessa tämä hyökkäys vähentää vastustajan mahdollisuutta osua 10%."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "maaginen"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Tällä hyökkäyksellä on aina 70% mahdollisuus osua riippumatta puolustavan "
+"yksikön puolustuskyvystä."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "parvi"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Kun yksikkö haavoittuu, sen iskujen lukumäärä määrä vähenee. Iskujen "
+"väheneminen on suoraan verrannollista elämäpisteiden vähenemiseen. "
+"Esimerkiksi, jos yksiköllä on jäljellä 3/4 elämäpisteistä, sillä on iskuja "
+"vain 3/4 alkuperäisestä."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "rynnäkkö"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Tämä hyökkäys tekee kaksinkertaisen vahingon kohteelle, mutta aiheuttaa myös "
+"kaksinkertaisen vahingon yksikölle vastahyökkäyksessä."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Tämä yksikkö imee elämää vihollisistaan, parantaen itseään puolella siitä "
+"vahingosta, jonka tekee (pyöristetään alas)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "ensi-isku"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Yksikkö iskee taistelussa aina ensin tällä hyökkäyksellä, myös "
+"puolustautuessaan."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Tämä hyökkäys myrkyttää elävät kohteet. Myrkytetyt yksiköt menettävät "
+"kahdeksan elämäpistettä jokaisella vuorolle, kunnes ne ovat parannettu tai "
+"elämäpisteitä on jäljellä vain yksi."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| "This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Tämä yksikkö pystyy hidastamaan vihollisiaan. Hidastus puolittaa "
+"liikkumisnopeuden ja hyökkäysvahingon oman puolen vuoron loppuun saakka."
 
 #: data/core/units.cfg:4
 msgid ""

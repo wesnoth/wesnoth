@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2022-09-08 09:25-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -26,7 +26,9 @@ msgstr "Treinamento de Batalha"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
+#. [achievement_group]
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
+#: data/campaigns/tutorial/achievements.cfg:3
 msgid "Tutorial"
 msgstr "Tutorial"
 
@@ -43,6 +45,16 @@ msgstr ""
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
 msgstr "Iniciante"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:7
+msgid "Completed the Tutorial"
+msgstr ""
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:8
+msgid "Completed all scenarios of the Tutorial campaign."
+msgstr ""
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19

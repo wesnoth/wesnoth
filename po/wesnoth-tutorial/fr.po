@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Tutorial-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2022-04-25 08:54-0500\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -24,7 +24,9 @@ msgstr "Entraînement au combat"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
+#. [achievement_group]
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
+#: data/campaigns/tutorial/achievements.cfg:3
 msgid "Tutorial"
 msgstr "Didacticiel"
 
@@ -41,6 +43,16 @@ msgstr ""
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
 msgstr "Débutant"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:7
+msgid "Completed the Tutorial"
+msgstr ""
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:8
+msgid "Completed all scenarios of the Tutorial campaign."
+msgstr ""
 
 # À l'infinitif comme le titre de la boîte de dialogue de confirmation quand on veut quitter la partie ("Quitter"). Sauf si quelqu'un a une autre référence.
 #. [label]
