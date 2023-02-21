@@ -720,38 +720,61 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 
 std::vector<topic> generate_trait_topics(const bool sort_generated)
 {
-	std::vector<topic> topics;
+	// All traits that could be assigned to at least one discovered or HIDDEN_BUT_SHOW_MACROS unit.
+	// This is collected from the [units][trait], [race][traits], and [unit_type][traits] tags. If
+	// there are duplicates with the same id, it takes the first one encountered.
 	std::map<t_string, const config> trait_list;
 
+	// The global traits that are direct children of a [units] tag
 	for (const config & trait : unit_types.traits()) {
-		const std::string trait_id = trait["id"];
-		trait_list.emplace(trait_id, trait);
+		trait_list.emplace(trait["id"], trait);
 	}
 
+	// Search for discovered unit types
+	std::set<std::string> races;
+	for(const auto& i : unit_types.types()) {
+		const unit_type& type = i.second;
+		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
-	{
-		const unit_type &type = i.second;
-		const auto desc_type = description_type(type);
+		// Remember which races have been discovered.
+		//
+		// For unit types, unit_type::possible_traits() usually includes racial traits; however it's
+		// possible that all discovered units of a race have ignore_race_traits=yes, and so we still
+		// need to loop over the [race] tags looking for more traits.
+		if(desc_type == FULL_DESCRIPTION) {
+			races.insert(type.race_id());
+		}
+
+		// Handle [unit_type][trait]s.
+		//
+		// It would be better if we only looked at the traits that are specific to the unit_type,
+		// but that unmerged unit_type_data.traits() isn't available. We're forced to use
+		// possible_traits() instead which returns all of the traits, including the ones that units
+		// with ignore_race_traits=no have inherited from their [race] tag.
 		if (desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
-			if (config::const_child_itors traits = type.possible_traits()) {
-				for (const config & trait : traits) {
-					const std::string trait_id = trait["id"];
-					trait_list.emplace(trait_id, trait);
-				}
-			}
-			if (const unit_race *r = unit_types.find_race(type.race_id())) {
-				for (const config & trait : r->additional_traits()) {
-					const std::string trait_id = trait["id"];
-					trait_list.emplace(trait_id, trait);
-				}
+			for (const config& trait : type.possible_traits()) {
+				trait_list.emplace(trait["id"], trait);
 			}
 		}
 	}
 
-	for (std::map<t_string, const config>::iterator a = trait_list.begin(); a != trait_list.end(); ++a) {
-		std::string id = "traits_" + a->first;
-		const config trait = a->second;
+	// Race traits, even those that duplicate a global trait (which will be dropped by emplace()).
+	//
+	// For traits, assume we don't discover additional races via the [race]help_taxonomy= links. The
+	// traits themselves don't propagate down those links, so if the trait is interesting w.r.t. the
+	// discovered units then their own race will already include it.
+	for(const auto& race_id : races) {
+		if(const unit_race *r = unit_types.find_race(race_id)) {
+			for(const config & trait : r->additional_traits()) {
+				trait_list.emplace(trait["id"], trait);
+			}
+		}
+	}
+
+	std::vector<topic> topics;
+	for(auto& a : trait_list) {
+		std::string id = "traits_" + a.first;
+		const config& trait = a.second;
 
 		std::string name = trait["male_name"].str();
 		if (name.empty()) name = trait["female_name"].str();
@@ -767,11 +790,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			text << _("No description available.");
 		}
 		text << "\n\n";
-		if (trait["availability"] == "musthave") {
-			text << _("Availability: ") << _("Must-have") << "\n";
-		} else if (trait["availability"] == "none") {
-			text << _("Availability: ") << _("Unavailable") << "\n";
-		}
+
 		topics.emplace_back(name, id, text.str());
 	}
 
@@ -828,7 +847,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 	std::set<std::string, string_less> visible_races;
 
 	// Calculate which races have been discovered, from the list of discovered unit types.
-	for(const unit_type_data::unit_type_map::value_type& i : unit_types.types()) {
+	for(const auto& i : unit_types.types()) {
 		const unit_type& type = i.second;
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if(desc_type == FULL_DESCRIPTION) {
