@@ -2,13 +2,13 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.micro_ais.big_animals(cfg)
-    local required_keys = { filter = 'tag' }
-    local optional_keys = { avoid_unit = 'tag', filter_location = 'tag', filter_location_wander = 'tag' }
-    local CA_parms = {
-        ai_id = 'mai_big_animals',
-        { ca_id = "move", location = 'ca_big_animals.lua', score = cfg.ca_score or 300000 }
-    }
-    return required_keys, optional_keys, CA_parms
+	local required_keys = { filter = 'tag' }
+	local optional_keys = { avoid_unit = 'tag', filter_location = 'tag', filter_location_wander = 'tag' }
+	local CA_parms = {
+		ai_id = 'mai_big_animals',
+		{ ca_id = "move", location = 'ca_big_animals.lua', score = cfg.ca_score or 300000 }
+	}
+	return required_keys, optional_keys, CA_parms
 end
 
 function wesnoth.micro_ais.wolves(cfg)
@@ -62,7 +62,7 @@ function wesnoth.micro_ais.wolves(cfg)
 			MAIH.add_aspects(cfg.side, wolves_aspects)
 		end
 	end
-    return required_keys, optional_keys, CA_parms
+	return required_keys, optional_keys, CA_parms
 end
 
 function wesnoth.micro_ais.herding(cfg)
@@ -71,7 +71,7 @@ function wesnoth.micro_ais.herding(cfg)
 	end
 	local required_keys = { filter_location = 'tag', filter = 'tag', filter_second = 'tag' }
 	local optional_keys = { attention_distance = 'integer', attack_distance = 'integer',
-	    herd_loc = 'string', herd_x = 'integer', herd_y = 'integer'
+		herd_loc = 'string', herd_x = 'integer', herd_y = 'integer'
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -84,7 +84,7 @@ function wesnoth.micro_ais.herding(cfg)
 		{ ca_id = "dog_move", location = 'ca_herding_dog_move.lua', score = score - 5 },
 		{ ca_id = "dog_stopmove", location = 'ca_herding_dog_stopmove.lua', score = score - 6 }
 	}
-    return required_keys, optional_keys, CA_parms
+	return required_keys, optional_keys, CA_parms
 end
 
 local rabbit_registry_counter = 0;
@@ -115,8 +115,8 @@ end
 
 function wesnoth.micro_ais.forest_animals(cfg)
 	local optional_keys = { rabbit_type = 'string', rabbit_number = 'integer',
-	    rabbit_enemy_distance = 'integer', rabbit_hole_img = 'string', tusker_type = 'string',
-	    tusklet_type = 'string', deer_type = 'string', filter_location = 'tag'
+		rabbit_enemy_distance = 'integer', rabbit_hole_img = 'string', tusker_type = 'string',
+		tusklet_type = 'string', deer_type = 'string', filter_location = 'tag'
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -145,12 +145,12 @@ function wesnoth.micro_ais.forest_animals(cfg)
 		register_rabbit_commands()
 	end
 
-    return {}, optional_keys, CA_parms
+	return {}, optional_keys, CA_parms
 end
 
 function wesnoth.micro_ais.swarm(cfg)
 	local optional_keys = { avoid = 'tag', filter = 'tag', scatter_distance = 'integer',
-	    vision_distance = 'integer', enemy_distance = 'integer'
+		vision_distance = 'integer', enemy_distance = 'integer'
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -158,7 +158,7 @@ function wesnoth.micro_ais.swarm(cfg)
 		{ ca_id = "scatter", location = 'ca_swarm_scatter.lua', score = score },
 		{ ca_id = "move", location = 'ca_swarm_move.lua', score = score - 1 }
 	}
-    return {}, optional_keys, CA_parms
+	return {}, optional_keys, CA_parms
 end
 
 function wesnoth.micro_ais.wolves_multipacks(cfg)
@@ -169,23 +169,23 @@ function wesnoth.micro_ais.wolves_multipacks(cfg)
 		{ ca_id = "attack", location = 'ca_wolves_multipacks_attack.lua', score = score },
 		{ ca_id = "wander", location = 'ca_wolves_multipacks_wander.lua', score = score - 1 }
 	}
-    return {}, optional_keys, CA_parms
+	return {}, optional_keys, CA_parms
 end
 
 function wesnoth.micro_ais.hunter(cfg)
 	if (cfg.action ~= 'delete') then
-	    if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
+		if (not cfg.id) and (not wml.get_child(cfg, "filter")) then
 			wml.error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
 		end
 		AH.get_named_loc_xy('home', cfg, 'Hunter [micro_ai] tag')
 	end
 	local required_keys = {}
 	local optional_keys = { id = 'string', filter = 'tag', filter_location = 'tag', home_loc = 'string',
-	    home_x = 'integer', home_y = 'integer', rest_turns = 'integer', show_messages = 'boolean'
+		home_x = 'integer', home_y = 'integer', rest_turns = 'integer', show_messages = 'boolean'
 	}
 	local CA_parms = {
 		ai_id = 'mai_hunter',
 		{ ca_id = "move", location = 'ca_hunter.lua', score = cfg.ca_score or 300000 }
 	}
-    return required_keys, optional_keys, CA_parms
+	return required_keys, optional_keys, CA_parms
 end

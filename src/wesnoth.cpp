@@ -52,6 +52,7 @@
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
+#include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
@@ -579,6 +580,16 @@ static int process_command_args(const commandline_options& cmdline_opts)
 		std::string schema_path;
 		if(cmdline_opts.validate_with) {
 			schema_path = *cmdline_opts.validate_with;
+			if(!filesystem::file_exists(schema_path)) {
+				auto check = filesystem::get_wml_location(schema_path);
+				if(!filesystem::file_exists(check)) {
+					PLAIN_LOG << "Could not find schema file: " << schema_path;
+				} else {
+					schema_path = check;
+				}
+			} else {
+				schema_path = filesystem::normalize_path(schema_path);
+			}
 		} else {
 			schema_path = filesystem::get_wml_location("schema/game_config.cfg");
 		}
@@ -795,6 +806,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
+	if(!lg::log_dir_writable()) {
+		utils::string_map symbols;
+		symbols["logdir"] = filesystem::get_logs_dir();
+		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
+		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+	}
+
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
@@ -986,12 +1004,19 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 	else if(filesystem::file_exists(exe_dir + "/../data/_main.cfg")) {
 		auto_dir = filesystem::normalize_path(exe_dir + "/..");
 	}
-	// In Windows debug builds, the EXE is placed away from the game data dir
-	// (in projectfiles\VCx\Debug), but the working directory is set to the
-	// game data dir. Thus, check if the working dir is the game data dir.
+	// Allow using the current working directory as the game data dir
 	else if(filesystem::file_exists(filesystem::get_cwd() + "/data/_main.cfg")) {
 		auto_dir = filesystem::get_cwd();
 	}
+#ifdef _WIN32
+	// In Windows builds made using Visual Studio and its CMake
+	// integration, the EXE is placed a few levels below the game data
+	// dir (e.g. .\out\build\x64-Debug).
+	else if(filesystem::file_exists(exe_dir + "/../../build") && filesystem::file_exists(exe_dir + "/../../../out")
+		&& filesystem::file_exists(exe_dir + "/../../../data/_main.cfg")) {
+		auto_dir = filesystem::normalize_path(exe_dir + "/../../..");
+	}
+#endif
 
 	return auto_dir;
 }
@@ -1026,6 +1051,18 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
+#ifdef _WIN32
+	bool log_redirect = true;
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+#endif
+
+	// terminal_force means output has been explicitly (via command line argument)
+	// or implicitly (by a command line argument that implies an interactive terminal has been used) requested on standard out.
+	// write_to_log_file means that writing to the log file will be done. terminal_force takes priority, but writing to a log file is the default.
+	bool terminal_force = false;
+	bool write_to_log_file = true;
+
 	// --nobanner needs to be detected before the main command-line parsing happens
 	// --log-to needs to be detected so the logging output location is set before any actual logging happens
 	bool nobanner = false;
@@ -1034,20 +1071,7 @@ int main(int argc, char** argv)
 			nobanner = true;
 			break;
 		}
-#ifndef _WIN32
-		else if(arg == "--log-to-file") {
-			lg::set_log_to_file();
-		}
-#endif
 	}
-
-#ifdef _WIN32
-	bool log_redirect = true, native_console_implied = false;
-	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
-	std::optional<bool> native_console_force;
-
-	_putenv("PANGOCAIRO_BACKEND=fontconfig");
-	_putenv("FONTCONFIG_PATH=fonts");
 
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
@@ -1060,15 +1084,15 @@ int main(int argc, char** argv)
 	// console before proceeding any further.
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
-		static const std::set<std::string> wincon_switches = {
-			"--wconsole", "-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
+		static const std::set<std::string> terminal_switches = {
+			"-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
 			"--data-path", "--userdata-path", "--userconfig-path",
 		};
 
 		// Switches that take arguments, the switch may have the argument past
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
-		static const std::set<std::string> wincon_arg_switches = {
+		static const std::set<std::string> terminal_arg_switches = {
 			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
 			 "--screenshot", "-V", "--validate", "--validate-schema",
 		};
@@ -1078,25 +1102,37 @@ int main(int argc, char** argv)
 			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
 		};
 
-		if(wincon_switches.find(arg) != wincon_switches.end() ||
-			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			native_console_implied = true;
+		if(terminal_switches.find(arg) != terminal_switches.end() ||
+			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
+			terminal_force = true;
 		}
 
+#ifdef _WIN32
 		if(arg == "--wnoconsole") {
-			native_console_force = false;
+			terminal_force = false;
 		} else if(arg == "--wconsole") {
-			native_console_force = true;
+			terminal_force = true;
 		} else if(arg == "--wnoredirect") {
-			log_redirect = false;
+			write_to_log_file = false;
+		}
+#endif
+
+		if(arg == "--no-log-to-file") {
+			terminal_force = true;
+		} else if(arg == "--log-to-file") {
+			write_to_log_file = true;
 		}
 	}
 
-	if(native_console_force.value_or(native_console_implied)) {
-		lg::enable_native_console_output();
-	}
-	lg::early_log_file_setup(!log_redirect);
+	// setup logging to file
+	// else handle redirecting the output and/or attaching a console
+	if(write_to_log_file && !terminal_force) {
+		lg::set_log_to_file();
+	} else {
+#ifdef _WIN32
+		lg::do_console_redirect(terminal_force);
 #endif
+	}
 
 	// Is there a reason not to just use SDL_INIT_EVERYTHING?
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {

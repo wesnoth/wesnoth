@@ -38,3 +38,7 @@ function wesnoth.wml_conditionals.variable(cfg)
 		return old_variable(cfg)
 	end
 end
+
+function wesnoth.wml_conditionals.has_achievement(cfg)
+	return wesnoth.achievements.has(cfg.content_for, cfg.id);
+end

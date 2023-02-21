@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
-"PO-Revision-Date: 2022-06-04 22:10+0200\n"
+"POT-Creation-Date: 2023-02-20 04:02 UTC\n"
+"PO-Revision-Date: 2023-02-07 18:30+0100\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: z.banach@wsisiz.edu.pl\n"
 "Language: pl_PL\n"
@@ -18,13 +18,113 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
 msgid "User Map"
 msgstr "Mapa użytkownika"
+
+#. [achievement_group]
+#: data/multiplayer/achievements.cfg:3
+msgid "Wesnoth Multiplayer (Survivals)"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Dark_Forecast
+#: data/multiplayer/achievements.cfg:9 data/multiplayer/achievements.cfg:10
+msgid "Foresight of Triumph"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Dark_Forecast
+#: data/multiplayer/achievements.cfg:11
+msgid "Complete the survival scenario <i>2p - Dark Forecast</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Dark_Forecast
+#: data/multiplayer/achievements.cfg:12
+msgid "Completed the survival scenario <i>2p - Dark Forecast</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Isle_of_Mists
+#: data/multiplayer/achievements.cfg:20
+msgid "Banish the Mists"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Isle_of_Mists
+#: data/multiplayer/achievements.cfg:21
+msgid "Banished the Mists"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Isle_of_Mists
+#: data/multiplayer/achievements.cfg:22
+msgid "Complete the survival scenario <i>2p - Isle of Mists</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Isle_of_Mists
+#: data/multiplayer/achievements.cfg:23
+msgid "Completed the survival scenario <i>2p - Isle of Mists</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Team_Survival
+#: data/multiplayer/achievements.cfg:31 data/multiplayer/achievements.cfg:32
+msgid "Flawless Teamwork"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Team_Survival
+#: data/multiplayer/achievements.cfg:33
+msgid "Complete the survival scenario <i>6p - Team Survival</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_Team_Survival
+#: data/multiplayer/achievements.cfg:34
+msgid "Completed the survival scenario <i>6p - Team Survival</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL
+#: data/multiplayer/achievements.cfg:42 data/multiplayer/achievements.cfg:43
+msgid "Return to Glory"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL
+#: data/multiplayer/achievements.cfg:44
+msgid "Complete the survival scenario <i>4p - A New Land</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL
+#: data/multiplayer/achievements.cfg:45
+msgid "Completed the survival scenario <i>4p - A New Land</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL_mines
+#: data/multiplayer/achievements.cfg:52 data/multiplayer/achievements.cfg:53
+msgid "Economic Recession"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL_mines
+#: data/multiplayer/achievements.cfg:54
+msgid "Destroy all enemy mushroom mines in <i>4p - A New Land</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL_mines
+#: data/multiplayer/achievements.cfg:55
+msgid "Destroyed all enemy mushroom mines in <i>4p - A New Land</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
+#: data/multiplayer/achievements.cfg:63 data/multiplayer/achievements.cfg:64
+msgid "Rescue!"
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
+#: data/multiplayer/achievements.cfg:65
+msgid "Rescue the trapped units in <i>4p - A New Land</i>."
+msgstr ""
+
+#. [achievement]: id=Wesnoth_MP_ANL_rescue_allies
+#: data/multiplayer/achievements.cfg:66
+msgid "Rescued the trapped units in <i>4p - A New Land</i>."
+msgstr ""
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:6
@@ -59,7 +159,7 @@ msgid ""
 msgstr ""
 "Era z jednostkami wyższego poziomu: liderzy mają trzeci poziom, a rekrutować "
 "można jednostki pierwszego i drugiego poziomu. Zawiera sześć frakcji. Nie "
-"uważana za zbalansowaną."
+"jest uważana za zbalansowaną."
 
 #. [era]: id=era_dunefolk
 #: data/multiplayer/eras.cfg:83
@@ -112,20 +212,19 @@ msgid ""
 "<span strikethrough='true' foreground='$side_color'>Side $side_number</"
 "span>:  Has lost all units"
 msgstr ""
-"<span strikethrough='true' foreground='#%02x%02x%02x'>Strona $side_numer</"
+"<span strikethrough='true' foreground='$side_color'>Strona $side_number</"
 "span>:  Straciła wszystkie jednostki"
 
 #. [lua]: f
 #. In the end-of-match summary, any side that still has units left
 #: data/multiplayer/eras.lua:69
-#, fuzzy
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span>:  Income score = "
 "$income  Unit score = $units  Gold = $gold\n"
 "Grand total: <b>$total</b>"
 msgstr ""
-"<span foreground='#%02x%02x%02x'>Strona $side_number</span>:  Wynik dochodu "
-"= $income  Wynik jednostek = $units  Złoto = $gold\n"
+"<span foreground='$side_color'>Strona $side_number</span>:  Wynik dochodu = "
+"$income  Wynik jednostek = $units  Złoto = $gold\n"
 "Razem: <b>$total</b>"
 
 #. [lua]: f
@@ -133,19 +232,20 @@ msgstr ""
 #: data/multiplayer/eras.lua:84
 msgid ""
 "<span foreground='$side_color'>Side $side_number</span> has the advantage."
-msgstr "<span foreground='%s'>Strona $side_number</span> ma przewagę."
+msgstr ""
+"<span foreground='$side_color'>Strona $side_number</span> zyskał przewagę."
 
 #. [lua]: f
 #. In the end-of-match summary, there's a two-way tie (this is only used for exactly two winning teams)
 #: data/multiplayer/eras.lua:89
 msgid "Sides $side_number and $other_side_number are tied."
-msgstr "Strony $side_numer i $other_side są związane."
+msgstr "Strony $side_number i $other_side_number są na równi zwycięzcami."
 
 #. [lua]: f
 #. In the end-of-match summary, three or more teams have all tied for the best score. $winners contains the result of formatting the conjunct list.
 #: data/multiplayer/eras.lua:94
 msgid "Sides $winners are tied."
-msgstr "Strony $winners są związane."
+msgstr "Strony $winners są na równi zwycięzcami."
 
 #. [lua]: f
 #. "Turns Over", meaning "turn limit reached" is the title of the end-of-match summary dialog
@@ -396,7 +496,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:23
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:22
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:37
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:67
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:75
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:20
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:20
@@ -436,7 +536,7 @@ msgstr "Północ"
 #: data/multiplayer/scenarios/2p_Swamp_of_Dread.cfg:34
 #: data/multiplayer/scenarios/2p_The_Freelands.cfg:33
 #: data/multiplayer/scenarios/2p_The_Walls_of_Pyrennis.cfg:25
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:55
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:63
 #: data/multiplayer/scenarios/2p_Weldyn_Channel.cfg:32
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:20
 #: data/multiplayer/scenarios/4p_Geothermal.cfg:42
@@ -620,7 +720,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:89
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:95
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:91
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:101
 msgid "teamname^Statues"
 msgstr "Statuy"
 
@@ -1336,32 +1436,32 @@ msgstr ""
 "ugruntowane."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:457
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:486
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:458
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:487
 msgid "Clear Weather"
 msgstr "Dobra pogoda"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:463
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:492
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:464
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:493
 msgid "Drought"
 msgstr "Susza"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:475
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:504
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:476
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:505
 msgid "Heavy Rains"
 msgstr "Ulewy"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:481
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:524
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:482
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:525
 msgid "Snowfall"
 msgstr "Śnieg"
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:487
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:530
+#: data/multiplayer/scenarios/2p_Dark_Forecast.lua:488
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:531
 msgid "Heavy Snowfall"
 msgstr "Śnieżyce"
 
@@ -1503,8 +1603,8 @@ msgstr "Wilhelm Wiskitynnyri"
 #. [unit]: type=Woodsman
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:231
 #: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:242
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:661
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:649
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:660
 msgid "Clockwork Boy"
 msgstr "Mechaniczny chłopiec"
 
@@ -1529,47 +1629,47 @@ msgid "Sorrek, Chosen of Death"
 msgstr "Sorrek, Wybraniec Śmierci"
 
 #. [unit]: type=Young Ogre
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:510
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:581
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:618
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:687
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:735
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:859
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:509
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:580
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:617
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:686
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:734
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:858
 msgid "Big Baby Dro"
 msgstr "Duży Dzieciak Dro"
 
 #. [unit]: type=Drake Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:522
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:521
 msgid "Gawffus the Dim"
 msgstr "Gawffus Tępawy"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:569
 msgid "Rublok"
 msgstr "Rublok"
 
 #. [unit]: type=Dwarvish Scout
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:593
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:592
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulysses Mantyjuuri"
 
 #. [unit]: type=Orcish Leader
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:709
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:708
 msgid "Neki the Brute"
 msgstr "Neki Zbir"
 
 #. [unit]: type=Elvish Fighter
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:747
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:746
 msgid "Claiomh Dubh"
 msgstr "Claiomh Dubh"
 
 #. [unit]: type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:805
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:804
 msgid "Tyxrrn the Dauntless"
 msgstr "Tyxrrn Nieustraszony"
 
 #. [unit]: type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:843
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:842
 msgid "Rukhos, Chosen of Death"
 msgstr "Rukhos, Wybraniec Śmierci"
 
@@ -1719,7 +1819,7 @@ msgstr ""
 "Udało ci się oczyścić starożytną kapliczkę... przynajmniej na razie."
 
 #. [lua]: weather_map
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:517
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.lua:518
 msgid "Inundation"
 msgstr "Powódź"
 
@@ -1970,26 +2070,16 @@ msgstr ""
 "cytadeli, które zostały faktycznie ukończone."
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:37
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:45
 msgid "2p — Thousand Stings Garrison"
 msgstr "2g — Garnizon Tysiąca Żądeł"
 
 #. [multiplayer]: id=multiplayer_thousand_stings_garrison
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:39
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:47
 msgid "A strange place. Designed by Doc Paterson."
 msgstr "Dziwne miejsce. Projekt: Doc Paterson."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:93
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:94
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:95
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:96
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:97
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:98
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:99
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:100
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:101
-#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:102
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:103
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:104
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:105
@@ -2046,6 +2136,16 @@ msgstr "Dziwne miejsce. Projekt: Doc Paterson."
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:156
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:157
 #: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:158
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:159
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:160
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:161
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:162
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:163
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:164
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:165
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:166
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:167
+#: data/multiplayer/scenarios/2p_Thousand_Stings_Garrison.cfg:168
 msgid "Statue"
 msgstr "Statua"
 
@@ -2722,12 +2822,12 @@ msgstr ""
 "ukończenia!"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:559
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:564
 msgid "Death"
 msgstr "Śmierć"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:561
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:566
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
@@ -2917,47 +3017,35 @@ msgid ""
 "graphics. Please be advised that it is not intended for playing."
 msgstr ""
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:9
-msgid "Wesnoth Benchmark: AI"
-msgstr "Test wydajności Wesnoth: AI"
+#~ msgid "Wesnoth Benchmark: AI"
+#~ msgstr "Test wydajności Wesnoth: AI"
 
-#. [multiplayer]: id=wesbench_ai
-#: data/multiplayer/scenarios/Wesbench_AI.cfg:10
-msgid ""
-"A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
-msgstr ""
-"Test wydajności Wesnoth, użyj --nogui --no-delay --multiplayer --"
-"scenario=wesbench_ai --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
+#~ msgstr ""
+#~ "Test wydajności Wesnoth, użyj --nogui --no-delay --multiplayer --"
+#~ "scenario=wesbench_ai --exit-at-end."
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:9
-msgid "Wesnoth Benchmark: Scrolling"
-msgstr "Test wydajności Wesnoth: Przewijanie"
+#~ msgid "Wesnoth Benchmark: Scrolling"
+#~ msgstr "Test wydajności Wesnoth: Przewijanie"
 
-#. [multiplayer]: id=wesbench_scroll
-#: data/multiplayer/scenarios/Wesbench_Scroll.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --scenario=wesbench_scroll "
-"--exit-at-end."
-msgstr ""
-"Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
-"scenario=wesbench_scroll --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
+#~ msgstr ""
+#~ "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
+#~ "scenario=wesbench_scroll --exit-at-end."
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
-msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "Test wydajności Wesnoth: Marsz przez całun"
+#~ msgid "Wesnoth Benchmark: Walking through Shroud"
+#~ msgstr "Test wydajności Wesnoth: Marsz przez całun"
 
-#. [multiplayer]: id=wesbench_shroud_walk
-#: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10
-msgid ""
-"A wesnoth benchmark, use --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
-msgstr ""
-"Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
-"scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgid ""
+#~ "A wesnoth benchmark, use --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
+#~ msgstr ""
+#~ "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
+#~ "scenario=wesbench_shroud_walk --exit-at-end."
 
 #~ msgid "Grand total: <b>%d</b>"
 #~ msgstr "Łącznie: <b>%d</b>"

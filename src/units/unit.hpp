@@ -860,14 +860,15 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
-		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
-		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
-		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
-		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
-		STATE_UNHEALABLE, /** The unit cannot be healed */
-		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
-		STATE_UNKNOWN = -1/** A status effect not known to the engine */
+		STATE_SLOWED = 0,   /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,     /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,    /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,    /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,    /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE,   /** The unit cannot be healed */
+		STATE_GUARDIAN,     /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_INVULNERABLE, /** The unit is invulnerable - it cannot be hit by any attack */
+		STATE_UNKNOWN = -1  /** A status effect not known to the engine */
 	};
 
 	/**
@@ -2014,6 +2015,19 @@ private:
 	int moves_;
 };
 
+namespace backwards_compatibility
+{
+/**
+ * Optional parameter for get_checksum to use the algorithm of an older version of Wesnoth,
+ * thus preventing spurious OOS warnings while watching old replays.
+ */
+enum class unit_checksum_version {
+	current,
+	version_1_16_or_older /**< Included some of the flavortext from weapon specials. */
+};
+
+} // namespace backwards_compatibility
+
 /**
  * Gets a checksum for a unit.
  *
@@ -2022,7 +2036,9 @@ private:
  * same problem.
  *
  *  @param u                    this unit
+ *  @param version              allows the checksum expected in older replays to be used
  *
  *  @returns                    the checksum for a unit
  */
-std::string get_checksum(const unit& u);
+std::string get_checksum(const unit& u,
+	backwards_compatibility::unit_checksum_version version = backwards_compatibility::unit_checksum_version::current);

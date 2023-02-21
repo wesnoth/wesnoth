@@ -8,24 +8,27 @@
 # Iris Morelle <shadowm@wesnoth.org>, 2007, 2008, 2009.
 # Aelonin <quianaaelonin@gmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
+# Toranks <toranksmervat@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2021-09-21 14:00+0200\n"
-"Last-Translator: Pepe <donpepe1963@gmail.com>\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
+"PO-Revision-Date: 2023-01-19 09:35+0100\n"
+"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [campaign]: id=Descent_into_Darkness
+#. [achievement_group]
 #. [scenario]: id=09_Descent_into_Darkness
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:13
+#: data/campaigns/Descent_Into_Darkness/achievements.cfg:3
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:9
 msgid "Descent into Darkness"
 msgstr "Descenso a la oscuridad"
@@ -104,6 +107,18 @@ msgstr "Diseño de arte y gráficos"
 #: data/campaigns/Descent_Into_Darkness/_main.cfg:58
 msgid "Miscellaneous"
 msgstr "Temas varios"
+
+#. [achievement]: id=did_rat_eater
+#: data/campaigns/Descent_Into_Darkness/achievements.cfg:7
+msgid "Rat Eater"
+msgstr ""
+
+#. [achievement]: id=did_rat_eater
+#: data/campaigns/Descent_Into_Darkness/achievements.cfg:8
+msgid ""
+"Have a Ghoul eat way too many rats during Descent into Darkness's A Haunting "
+"in Winter."
+msgstr ""
 
 #. [scenario]: id=01_Saving_Parthyn
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:5
@@ -336,7 +351,7 @@ msgstr "Los orcos alcanzan las afueras de Parthyn"
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:124
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:176
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:800
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1974
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1979
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:142
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Schism.cfg:207
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:209
@@ -777,9 +792,9 @@ msgstr ""
 #. [unit]: id=Malin Keshar, type=Dark Mage
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:38
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:46
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1711
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1747
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1796
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1716
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1752
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1801
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:38
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Schism.cfg:50
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:43
@@ -914,7 +929,7 @@ msgstr ""
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:223
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:281
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1601
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1606
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:405
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:780
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:758
@@ -1421,12 +1436,12 @@ msgstr ""
 "a este montón de carne podrida..."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1215
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1220
 msgid "Has this boy been smoking again?"
-msgstr ""
+msgstr "¿Este chico ha vuelto a fumar?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1223
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1228
 msgid ""
 "Day 1337:\n"
 "\n"
@@ -1436,27 +1451,37 @@ msgid ""
 "constant squealing of rats and the ever growing mountain of flesh that "
 "feasts before me."
 msgstr ""
+"Día 1337:\n"
+"\n"
+"Todo sentido del tiempo y del ser está sepultado en la oscuridad. ¿Cuánto "
+"tiempo ha pasado desde que vine aquí? Mis sentidos están borrosos. Mi vida "
+"pasada, mis objetivos anteriores, mi propio yo es todo menos un recuerdo "
+"lejano. Todo lo que conozco ahora es el chillido constante de las ratas y la "
+"cada vez más grande montaña de carne que se deleita ante mí."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1234
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1239
 msgid ""
 "You. You there behind the screen. You are the one controlling me. Why are "
 "you doing this? What did I do to deserve this torment? Please, I beg of you. "
 "End me now. Release me from my misery!"
 msgstr ""
+"Tú. Tú ahí detrás de la pantalla. Tú eres el que me controla. ¿Por qué estás "
+"haciendo esto? ¿Qué hice para merecer este tormento? Por favor, te lo ruego. "
+"Acaba conmigo ahora. ¡Líbrame de mi miseria!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1309
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1314
 msgid "What a fat rat. I wonder where it came from?"
-msgstr "Menuda rata más gorda. Me pregunto de donde ha salido."
+msgstr "Menuda rata más gorda. Me pregunto de dónde ha salido."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1324
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1329
 msgid "This scorpion seems unusually large... and poisonous."
 msgstr "Este escorpión parece anormalmente grande... y venenoso."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1338
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1343
 msgid ""
 "A tattered, red flag. Some orcs used to live here, but it seems like they "
 "were slain in a fierce battle."
@@ -1465,12 +1490,12 @@ msgstr ""
 "por lo visto fueron masacrados en una feroz batalla."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1352
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1357
 msgid "This banner is different than the other ones. It looks familiar."
 msgstr "Este estandarte es diferente a los demás. Me resulta familiar."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1373
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1378
 msgid ""
 "A pack of wolves, the same that the goblins use as mounts. They were "
 "abandoned here for some reason."
@@ -1479,12 +1504,12 @@ msgstr ""
 "abandonados aquí por algún motivo."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1403
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1408
 msgid "An empty vial. I wonder if this could be useful."
 msgstr "Un vial vacío. Me pregunto si podría serme útil."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1439
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1444
 msgid ""
 "This scorpion’s poison gland is still intact. I bet I can make a potion out "
 "of it."
@@ -1493,17 +1518,17 @@ msgstr ""
 "puedo hacer una poción con ella."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1477
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1482
 msgid "I think I can pour in the poison from here."
 msgstr "Creo que puedo verter el veneno desde aquí."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1501
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1506
 msgid "These rats will no longer bother us."
 msgstr "Esas ratas ya no nos molestarán."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1529
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1534
 msgid ""
 "It appears as if there are some rats living here, but the hole in the wall "
 "is too small to reach them."
@@ -1512,17 +1537,17 @@ msgstr ""
 "demasiado pequeño para alcanzarlas."
 
 #. [option]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1549
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1554
 msgid "I’m ready to learn about controlling spirits."
 msgstr "Estoy listo para aprender cómo controlar espíritus."
 
 #. [option]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1557
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1562
 msgid "I’m not ready yet."
 msgstr "Aún no estoy listo."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1567
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1572
 msgid ""
 "You have done well so far to master the reanimation of skeletons. Now, I "
 "shall teach you to control spirits. Are you ready?"
@@ -1531,7 +1556,7 @@ msgstr ""
 "esqueletos. Ahora te enseñaré a controlar a los espíritus. ¿Estás listo?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1576
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1581
 msgid ""
 "Mastery over ghosts, especially the more powerful ones, is something even "
 "experienced necromancers may struggle with. While other undead are nothing "
@@ -1549,12 +1574,12 @@ msgstr ""
 "inquebrantable."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1581
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1586
 msgid "I doubt I shall be overcome by the soul of an orc."
 msgstr "Dudo que pueda ser superado por el alma de un orco."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1586
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1591
 msgid ""
 "Perhaps, but that is not what I meant. Before you can begin to control other "
 "souls, you must first master your own."
@@ -1563,7 +1588,7 @@ msgstr ""
 "controlar otras almas, primero has de dominar la tuya."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1591
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1596
 msgid ""
 "What do you mean? I am proud. I am strong. If it is a matter of conviction—"
 msgstr ""
@@ -1571,7 +1596,7 @@ msgstr ""
 "de convicción..."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1596
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1601
 msgid ""
 "It is not I that you must convince, but yourself. Hold thy tongue and "
 "listen. After a great slaughter, even after the corpses are all rotted to "
@@ -1588,29 +1613,29 @@ msgstr ""
 "silencio y abraza la oscuridad."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1606
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1611
 msgid "Concentrate."
 msgstr "Concéntrate."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1705
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1710
 msgid "What sorcery is this? Darken Volk, what’s going... on..?"
 msgstr ""
 "¿Qué clase de brujería es esta? Darken Volk, ¿qué es lo que está... "
 "ocurriendo...?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1727
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1732
 msgid "Where is everything? Who are you?"
 msgstr "¿Donde se ha ido todo? ¿Quién eres tu?"
 
 #. [message]: speaker=Fake Malin
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1732
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1737
 msgid "I am Malin Keshar."
 msgstr "Soy Malin Keshar."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1737
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1742
 msgid ""
 "No, <i>I</i> am Malin Keshar. Tell me who you are, and this time, make it "
 "believable."
@@ -1619,14 +1644,14 @@ msgstr ""
 "creíble."
 
 #. [message]: speaker=Fake Malin
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1760
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1765
 msgid "I am Malin Keshar, but no longer the naive, uncertain boy I once was."
 msgstr ""
 "Soy Malin Keshar, pero ya no soy el chico ingenuo e inseguro que alguna vez "
 "fui."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1765
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1770
 msgid ""
 "I am no boy, nor am I uncertain. And I certainly won’t be questioned by a "
 "mere reflection like you."
@@ -1635,7 +1660,7 @@ msgstr ""
 "puesto en duda por un mero reflejo como tú."
 
 #. [message]: speaker=Fake Malin
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1770
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1775
 msgid ""
 "The distorted reflection you see mirrors the reality within. An ever "
 "morphing perspective, warped by a profusion of uncertain ambitions."
@@ -1645,7 +1670,7 @@ msgstr ""
 "inciertas."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1776
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1781
 msgid ""
 "Nonsense. My convictions are strong and my mind is set. I have but one goal. "
 "I will gain power. I will master death, and I will use it to protect my home "
@@ -1658,7 +1683,7 @@ msgstr ""
 "acepten de vuelta."
 
 #. [message]: speaker=Fake Malin
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1781
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1786
 msgid ""
 "When you are drawn in many directions at once, which one will you choose? If "
 "you try for them all, you shall be torn apart."
@@ -1667,7 +1692,7 @@ msgstr ""
 "intentas seguirlas todas, te verás destrozado."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1786
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1791
 msgid ""
 "Protecting my home and slaying the orcs are the same thing. If you mean "
 "choosing between my family and gaining more power... they will come around "
@@ -1678,7 +1703,7 @@ msgstr ""
 "aseguraré de ello."
 
 #. [message]: speaker=Fake Malin
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1809
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1814
 msgid ""
 "When you do not have the wisdom to see through the veil of lies you have "
 "told yourself, you must not seek the advice of one who only spins the web of "
@@ -1689,7 +1714,7 @@ msgstr ""
 "más la red del engaño."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1814
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1819
 msgid ""
 "Enough with this. No proverbs are going to help me achieve my goals. This is "
 "just like back on Alduin. My teachers never understood what I needed. I "
@@ -1704,7 +1729,7 @@ msgstr ""
 "nigromancia. Eso es todo."
 
 #. [message]: speaker=Fake Malin
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1819
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1824
 msgid ""
 "When you are sad and alone, even all the power in the world will not help "
 "you. In the barren void of endless night, will rage and hatred alone be "
@@ -1715,7 +1740,7 @@ msgstr ""
 "para sostenerte?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1824
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1829
 msgid ""
 "... well, my choice is already made. Rethinking it now is pointless. I have "
 "never been one for regrets."
@@ -1724,7 +1749,7 @@ msgstr ""
 "Nunca he sido de los que se arrepienten."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1856
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1861
 msgid ""
 "... Damn it all. As if I would pay any heed to a twisted doppelganger of "
 "myself. Anyway..."
@@ -1733,7 +1758,7 @@ msgstr ""
 "mí mismo. De todas formas..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1861
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1866
 msgid ""
 "What did Darken Volk say about it again? “After a great slaughter, even "
 "after the corpses are all rotted to nothing but bones, the bridge between "
@@ -1745,7 +1770,7 @@ msgstr ""
 "debilita\". Si uso ese conocimiento..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1878
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1883
 msgid ""
 "... I should be able to sense the soul past the barrier of life and death..."
 msgstr ""
@@ -1753,17 +1778,17 @@ msgstr ""
 "la muerte..."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1927
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1932
 msgid "I did it! I—"
-msgstr "¡Lo tengo!"
+msgstr "¡Lo tengo! Yo—"
 
 #. [message]: speaker=S3_Rebel_Soul
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1958
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1963
 msgid "Freedom! Your sorceries cannot shackle me, Malin the Damned!"
 msgstr "¡Libre! ¡Tus hechicerías no me pueden encadenar, Malin el Maldito!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1963
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1968
 msgid ""
 "I failed? No... it must have been because the spell was too tricky to master "
 "on the first attempt. No matter, no matter. It’s only a single, weak spirit. "
@@ -1775,22 +1800,22 @@ msgstr ""
 "él."
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1970
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1975
 msgid "Defeat the rebel ghost"
 msgstr "Derrote al fantasma rebelde"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1990
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1995
 msgid "I’ve got you!"
 msgstr "¡Te tengo!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2112
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2117
 msgid "I’ve done it! I’ve learned to summon the souls of the dead!"
 msgstr "¡Lo he hecho! ¡He aprendido a invocar a las almas de los difuntos!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2117
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2122
 msgid ""
 "So you have, and you even managed to regain control of it when it slipped "
 "out of your grasp. Well done. Now pay heed. A necromancer’s first ghost is "
@@ -1803,12 +1828,12 @@ msgstr ""
 "útil. Deja que se vuelva a escapar de tu control y lo perderás para siempre."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2122
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2127
 msgid "I see. I won’t make the same mistake twice."
 msgstr "Ya veo. No volveré a cometer el mismo error."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2127
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:2132
 msgid ""
 "We shall see. You have done well enough so far, but I still have much more "
 "to teach you. Come, we have work to do."
@@ -2084,13 +2109,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Schism.cfg:36
-#, fuzzy
-#| msgid ""
-#| "As Malin and Darken Volk continue their raids on the orcs, they "
-#| "eventually force the usually fractious Whitefang chieftains to unite in "
-#| "opposition. The orcs pursue the two necromancers east toward the mouth of "
-#| "the river Men call the Longlier and Elves call the Arkan-thoria, where "
-#| "they manage to surround the humans and force a fight."
 msgid ""
 "As Malin and Darken Volk continue their raids on the orcs, they eventually "
 "force the usually fractious Whitefang chieftains to unite in opposition. The "
@@ -2530,7 +2548,7 @@ msgid ""
 "Necromancer, you followed us all the way here?!"
 msgstr ""
 "¡Guerreros! ¡Preparad el campamento! Atacaremos la ciudad esta noche... "
-"esperad. ¡Tú! Nigromante. ¿Nos has seguido hasta aquí?"
+"esperad. ¡Tú! Nigromante. ¡¿Nos has seguido hasta aquí?!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:455
@@ -3742,7 +3760,7 @@ msgstr ""
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:328
 msgid "Why don’t you say anything?! Don’t you care at all?!"
-msgstr "¿Por qué no decís nada? ¿No os importa en absoluto?"
+msgstr "¿Por qué no decís nada? ¡¿No os importa en absoluto?!"
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:336
@@ -3838,7 +3856,7 @@ msgid ""
 "The very same to you! I helped you retrieve that book! If you will not help "
 "me with my mission, I will at least keep the fruits of my labor."
 msgstr ""
-" ¡Lo mismo va por tí! ¡Te ayudé a recuperar ese libro! Si no me ayudas en mi "
+"¡Lo mismo va por tí! ¡Te ayudé a recuperar ese libro! Si no me ayudas en mi "
 "misión, tendré al menos que quedarme con el fruto de mi trabajo."
 
 #. [message]: speaker=Darken Volk
@@ -4066,10 +4084,6 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1085
-#, fuzzy
-#| msgid ""
-#| "The terrain is hazardous in these mountains. Neither the paladins nor "
-#| "Dela will be able to pursue me."
 msgid ""
 "The terrain is hazardous in these mountains. No one will be able to pursue "
 "me."
@@ -4128,15 +4142,6 @@ msgstr "<i>«Para convertirse en un liche, uno antes debe morir.»</i>"
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:37
-#, fuzzy
-#| msgid ""
-#| "So reads the book that Malin has reclaimed. <i>“The spells of necromancy "
-#| "can free the spirit from the limitations of the flesh, but only once the "
-#| "soul has been unbound from the body. The necromancer must make the "
-#| "necessary incantations with his dying breaths, then conquer his own "
-#| "spirit much the same way he binds the spirits of others. Because he "
-#| "retains his own will, however, the lich can call upon the awesome powers "
-#| "of the spirit world.”</i>"
 msgid ""
 "So reads the book that Malin has reclaimed. <i>“The spells of necromancy can "
 "free the spirit from the limitations of the flesh, but only once the soul "
@@ -4146,7 +4151,7 @@ msgid ""
 "however, the lich can call upon the awesome powers of the spirit world.”</i>"
 msgstr ""
 "Así dice el libro que Malin ha recuperado. <i>«Los hechizos de nigromancia "
-"pueden liberar al espíritu de las limitaciones de la carne, pero solo cuando "
+"pueden liberar al espíritu de las limitaciones de la carne, pero sólo cuando "
 "el alma se ha desvinculado del cuerpo. El nigromante debe realizar los "
 "encantamientos necesarios con su último aliento, después debe conquistar a "
 "su propio espíritu del mismo modo que ata el de otros. Sin embargo, al "
@@ -5097,11 +5102,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:29
-#, fuzzy
-#| msgid ""
-#| "The lich sometimes wonders if his endeavors are naught but a fruitless "
-#| "crusade, but then again, so what? Life, unlife, death... nothing has ever "
-#| "given his existence meaning. And yet, he still persists on? For what?"
 msgid ""
 "The lich sometimes wonders if his endeavors are naught but a fruitless "
 "crusade, but then again, so what? Life, unlife, death... nothing has ever "
@@ -6811,8 +6811,6 @@ msgstr "Mejora el drenaje del filo de perdición"
 
 #. [advancement]: id=eidolon_sorrow1
 #: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:605
-#, fuzzy
-#| msgid "Reduces nearby enemy units' damage"
 msgid "Reduces nearby enemy units’ damage"
 msgstr "Reduce el daño de las unidades enemigas cercanas"
 

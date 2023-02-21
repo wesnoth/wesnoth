@@ -274,7 +274,8 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 {
 	response_message.clear();
 
-	config cfg = get_addon_pbl_info(id);
+	// No point in validating when we're deleting it.
+	config cfg = get_addon_pbl_info(id, false);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["addon_title"] = font::escape_text(cfg["title"]);
@@ -300,12 +301,13 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 
 	request_body["name"] = id;
 	request_body["passphrase"] = cfg["passphrase"];
+	// needed in case of forum_auth authentication since the author stored on disk on the server is not necessarily the current primary author
+	request_body["uploader"] = cfg["uploader"];
 
 	LOG_ADDONS << "requesting server to delete " << id;
 
 	send_request(request_buf, response_buf);
-	wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols
-	));
+	wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols));
 
 	if(const config& message_cfg = response_buf.child("message")) {
 		response_message = message_cfg["message"].str();

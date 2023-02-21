@@ -17,7 +17,6 @@
 
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "floating_label.hpp"
 #include "widgets/widget.hpp"
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"
@@ -34,7 +33,7 @@ bool widget::mouse_lock_ = false;
 widget::widget(const bool auto_join)
 	: events::sdl_handler(auto_join), focus_(true), rect_(EmptyRect),
 	  state_(UNINIT), enabled_(true), clip_(false),
-	  clip_rect_(EmptyRect), has_help_(false), mouse_lock_local_(false)
+	  clip_rect_(EmptyRect), mouse_lock_local_(false)
 {
 }
 
@@ -244,28 +243,9 @@ void widget::draw()
 	set_dirty(false);
 }
 
-void widget::set_help_string(const std::string& str)
-{
-	help_text_ = str;
-}
-
 void widget::set_tooltip_string(const std::string& str)
 {
 	tooltip_text_ = str;
-}
-
-void widget::process_help_string(int mousex, int mousey)
-{
-	if (!hidden() && rect_.contains(mousex, mousey)) {
-		if(!has_help_ && !help_text_.empty()) {
-			//PLAIN_LOG << "setting help string to '" << help_text_ << "'";
-			font::set_help_string(help_text_);
-			has_help_ = true;
-		}
-	} else if(has_help_) {
-		font::clear_help_string();
-		has_help_ = false;
-	}
 }
 
 void widget::process_tooltip_string(int mousex, int mousey)

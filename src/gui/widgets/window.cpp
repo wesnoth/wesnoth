@@ -26,7 +26,6 @@
 #include "cursor.hpp"
 #include "draw.hpp"
 #include "events.hpp"
-#include "floating_label.hpp"
 #include "formula/callable.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"

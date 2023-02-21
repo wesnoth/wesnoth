@@ -1,4 +1,4 @@
-select count(*) as OOS_COUNT, eras.ID as ERA, eras.SOURCE as ERA_ADDON, eras.VERSION as ERA_VERSION, scenarios.ID as MAP, scenarios.SOURCE as MAP_ADDON, scenarios.VERSION as MAP_VERSION, IFNULL(GROUP_CONCAT(distinct concat(mods.ID,'(',mods.SOURCE,':',mods.VERSION,')') SEPARATOR '|'), 'No Modifications') AS MODIFICATIONS
+select count(*) as OOS_COUNT, eras.ID as ERA, eras.ADDON_ID as ERA_ADDON, eras.ADDON_VERSION as ERA_VERSION, scenarios.ID as MAP, scenarios.ADDON_ID as MAP_ADDON, scenarios.ADDON_VERSION as MAP_VERSION, IFNULL(GROUP_CONCAT(distinct concat(mods.ID,'(',mods.ADDON_ID,':',mods.ADDON_VERSION,')') SEPARATOR '|'), 'No Modifications') AS MODIFICATIONS
 from wesnothd_game_info game
 inner join wesnothd_game_content_info scenarios
    on game.INSTANCE_UUID = scenarios.INSTANCE_UUID
@@ -17,5 +17,5 @@ where game.OOS = 1
   and MONTH(game.START_TIME) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
   and game.END_TIME is not NULL
   and TIMESTAMPDIFF(MINUTE, game.START_TIME, game.END_TIME) > 5
-group by eras.ID, eras.SOURCE, eras.VERSION, scenarios.ID, scenarios.SOURCE, scenarios.VERSION
+group by eras.ID, eras.ADDON_ID, eras.ADDON_VERSION, scenarios.ID, scenarios.ADDON_ID, scenarios.ADDON_VERSION
 order by count(*) desc, eras.ID, scenarios.ID, mods.ID

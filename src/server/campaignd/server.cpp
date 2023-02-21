@@ -895,6 +895,10 @@ void server::delete_addon(const std::string& id)
 {
 	config& cfg = get_addon(id);
 
+	if(cfg["forum_auth"].to_bool()) {
+		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
+	}
+
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'";
 		return;
@@ -1317,12 +1321,19 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 			LOG_CS << "Validation error: client requested forum authentication but server does not support it";
 			return ADDON_CHECK_STATUS::SERVER_FORUM_AUTH_DISABLED;
 		} else {
-			if(!user_handler_->user_exists(upload["author"].str())) {
+			if(!user_handler_->user_exists(upload["uploader"].str())) {
 				LOG_CS << "Validation error: forum auth requested for an author who doesn't exist";
 				return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 			}
 
-			if(!authenticate_forum(upload, upload["passphrase"].str())) {
+			for(const std::string& secondary_author : utils::split(upload["secondary_authors"].str(), ',')) {
+				if(!user_handler_->user_exists(secondary_author)) {
+					LOG_CS << "Validation error: forum auth requested for a secondary author who doesn't exist";
+					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
+				}
+			}
+
+			if(!authenticate_forum(upload, upload["passphrase"].str(), false)) {
 				LOG_CS << "Validation error: forum passphrase does not match";
 				return ADDON_CHECK_STATUS::UNAUTHORIZED;
 			}
@@ -1499,7 +1510,7 @@ void server::handle_upload(const server::request& req)
 	// Write general metadata attributes
 
 	addon.copy_or_remove_attributes(upload,
-		"title", "name", "author", "description", "version", "icon",
+		"title", "name", "uploader", "author", "secondary_authors", "description", "version", "icon",
 		"translate", "dependencies", "core", "type", "tags", "email", "forum_auth"
 	);
 
@@ -1528,9 +1539,23 @@ void server::handle_upload(const server::request& req)
 
 	if(user_handler_) {
 		if(addon["forum_auth"].to_bool()) {
-			addon["email"] = user_handler_->get_user_email(upload["author"].str());
+			addon["email"] = user_handler_->get_user_email(upload["uploader"].str());
+
+			// if no author information exists, insert data since that of course means no primary author can be found
+			// or if the author is the primary uploader, replace the author information
+			bool do_authors_exist = user_handler_->db_do_any_authors_exist(server_id_, name);
+			bool is_primary = user_handler_->db_is_user_primary_author(server_id_, name, upload["uploader"].str());
+			if(!do_authors_exist || is_primary) {
+				user_handler_->db_delete_addon_authors(server_id_, name);
+				// author instead of uploader here is intentional, since this allows changing the primary author
+				// if p1 is primary, p2 is secondary, and p1 uploads, then uploader and author are p1 while p2 is a secondary author
+				// if p1 is primary, p2 is secondary, and p2 uploads, then this is skipped because the uploader is not the primary author
+				// if next time p2 is primary, p1 is secondary, and p1 uploads, then p1 is both uploader and secondary author
+				//   therefore p2's author information would not be reinserted if the uploader attribute were used instead
+				user_handler_->db_insert_addon_authors(server_id_, name, addon["author"].str(), utils::split(addon["secondary_authors"].str(), ','));
+			}
 		}
-		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), addon["forum_auth"].to_bool(), topic_id);
+		user_handler_->db_insert_addon_info(server_id_, name, addon["title"].str(), addon["type"].str(), addon["version"].str(), addon["forum_auth"].to_bool(), topic_id, upload["uploader"].str());
 	}
 
 	// Copy in any metadata translations provided directly in the .pbl.
@@ -1824,6 +1849,7 @@ void server::handle_delete(const server::request& req)
 	LOG_CS << req << "Deleting add-on '" << id << "'";
 
 	config& addon = get_addon(id);
+	PLAIN_LOG << erase.debug() << "\n\n" << addon.debug();
 
 	if(!addon) {
 		send_error("The add-on does not exist.", req.sock);
@@ -1843,7 +1869,7 @@ void server::handle_delete(const server::request& req)
 			return;
 		}
 	} else {
-		if(!authenticate_forum(addon, pass)) {
+		if(!authenticate_forum(erase, pass, true)) {
 			send_error("The passphrase is incorrect.", req.sock);
 			return;
 		}
@@ -1891,14 +1917,28 @@ void server::handle_change_passphrase(const server::request& req)
 	}
 }
 
-bool server::authenticate_forum(const config& addon, const std::string& passphrase) {
+bool server::authenticate_forum(const config& addon, const std::string& passphrase, bool is_delete) {
 	if(!user_handler_) {
 		return false;
 	}
 
-	std::string author = addon["author"].str();
+	std::string uploader = addon["uploader"].str();
+	std::string id = addon["name"].str();
+	bool do_authors_exist = user_handler_->db_do_any_authors_exist(server_id_, id);
+	bool is_primary = user_handler_->db_is_user_primary_author(server_id_, id, uploader);
+	bool is_secondary = user_handler_->db_is_user_secondary_author(server_id_, id, uploader);
+
+	// allow if there is no author information - this is a new upload
+	// don't allow other people to upload if author information does exist
+	// don't allow secondary authors to remove the add-on from the server
+	if((do_authors_exist && !is_primary && !is_secondary) || (is_secondary && is_delete)) {
+		return false;
+	}
+
+	std::string author = addon["uploader"].str();
 	std::string salt = user_handler_->extract_salt(author);
 	std::string hashed_password = hash_password(passphrase, salt, author);
+
 	return user_handler_->login(author, hashed_password);
 }
 

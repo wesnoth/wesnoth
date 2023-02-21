@@ -94,6 +94,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ HOTKEY_ZOOM_OUT, "zoomout", N_("Zoom Out"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ZOOM_DEFAULT, "zoomdefault", N_("Default Zoom"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_FULLSCREEN, "fullscreen", N_("Toggle Full Screen"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
+	{ HOTKEY_ACHIEVEMENTS, "achievements", N_("Achievements"), false, scope_game | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, scope_game | scope_editor | scope_main, HKCAT_GENERAL, "" },
 	{ HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, scope_game | scope_editor, HKCAT_GENERAL, "" },
 	{ HOTKEY_ACCELERATED, "accelerated", N_("Toggle Accelerated Speed"), false, scope_game, HKCAT_GENERAL, "" },

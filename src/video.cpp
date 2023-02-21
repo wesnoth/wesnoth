@@ -17,7 +17,6 @@
 
 #include "display.hpp"
 #include "draw_manager.hpp"
-#include "floating_label.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "log.hpp"
@@ -395,6 +394,11 @@ void init_window()
 	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
 
 	update_framebuffer();
+}
+
+bool has_window()
+{
+	return bool(window);
 }
 
 point output_size()
@@ -821,6 +825,55 @@ void update_buffers(bool autoupdate)
 	if(update_framebuffer() && autoupdate) {
 		draw_manager::invalidate_all();
 	}
+}
+
+std::pair<float, float> get_dpi()
+{
+	float hdpi = 0.0f, vdpi = 0.0f;
+	if(window && SDL_GetDisplayDPI(window->get_display_index(), nullptr, &hdpi, &vdpi) == 0) {
+#ifdef TARGET_OS_OSX
+		// SDL 2.0.12 changes SDL_GetDisplayDPI. Function now returns DPI
+		// multiplied by screen's scale factor. This part of code reverts
+		// this multiplication.
+		//
+		// For more info see issue: https://github.com/wesnoth/wesnoth/issues/5019
+		if(sdl::get_version() >= version_info{2, 0, 12}) {
+			float scale_factor = desktop::apple::get_scale_factor(window->get_display_index());
+			hdpi /= scale_factor;
+			vdpi /= scale_factor;
+		}
+#endif
+	}
+	return { hdpi, vdpi };
+}
+
+std::vector<std::pair<std::string, std::string>> renderer_report()
+{
+	std::vector<std::pair<std::string, std::string>> res;
+	SDL_Renderer* rnd;
+	SDL_RendererInfo ri;
+
+	if(window && (rnd = *window) && SDL_GetRendererInfo(rnd, &ri) == 0) {
+		std::string renderer_name = ri.name ? ri.name : "<unknown>";
+
+		if(ri.flags & SDL_RENDERER_SOFTWARE) {
+			renderer_name += " (sw)";
+		}
+
+		if(ri.flags & SDL_RENDERER_ACCELERATED) {
+			renderer_name += " (hw)";
+		}
+
+		std::string renderer_max = std::to_string(ri.max_texture_width) +
+								   'x' +
+								   std::to_string(ri.max_texture_height);
+
+		res.emplace_back("Renderer", renderer_name);
+		res.emplace_back("Maximum texture size", renderer_max);
+		res.emplace_back("VSync", ri.flags & SDL_RENDERER_PRESENTVSYNC ? "on" : "off");
+	}
+
+	return res;
 }
 
 } // namespace video

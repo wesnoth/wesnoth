@@ -61,6 +61,16 @@ public:
 		mouseover_hex_overlay_.reset();
 	}
 
+	/**
+	 * Sets and shows the tooltip-like text at the top or bottom of the map area.
+	 *
+	 * @param str                 The text to display.
+	 */
+	void set_help_string(const std::string& str);
+
+	/** Removes the help string. */
+	void clear_help_string();
+
 protected:
 	void draw_hex(const map_location& loc) override;
 
@@ -75,6 +85,16 @@ protected:
 	editor_controller& controller_;
 
 	texture mouseover_hex_overlay_;
+
+private:
+	/** ID of the floating label that's controlled by set_help_string() / clear_help_string(). */
+	int help_handle_ = 0;
+
+	/**
+	 * Ignored when help_handle_ == 0. Othewise, true if the help label obscures the
+	 * northern hexes in the map area, false if it's over the southern hexes instead.
+	 */
+	bool help_string_at_top_ = false;
 };
 
 } //end namespace editor

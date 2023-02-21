@@ -632,7 +632,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("invulnerable")) {
-		set_state("invulnerable", v->to_bool());
+		set_state(STATE_INVULNERABLE, v->to_bool());
 	}
 
 	goto_.set_wml_x(cfg["goto_x"].to_int());
@@ -806,10 +806,9 @@ void unit::generate_traits(bool must_have_only)
 	LOG_UT << "Generating a trait for unit type " << type().log_id() << " with must_have_only " << must_have_only;
 	const unit_type& u_type = type();
 
-	// Calculate the unit's traits
 	config::const_child_itors current_traits = modifications_.child_range("trait");
-	std::vector<const config*> candidate_traits;
 
+	// Handle must-have only at the beginning
 	for(const config& t : u_type.possible_traits()) {
 		// Skip the trait if the unit already has it.
 		const std::string& tid = t["id"];
@@ -820,11 +819,9 @@ void unit::generate_traits(bool must_have_only)
 				break;
 			}
 		}
-
 		if(already) {
 			continue;
 		}
-
 		// Add the trait if it is mandatory.
 		const std::string& avl = t["availability"];
 		if(avl == "musthave") {
@@ -832,27 +829,106 @@ void unit::generate_traits(bool must_have_only)
 			current_traits = modifications_.child_range("trait");
 			continue;
 		}
-
-		// The trait is still available, mark it as a candidate for randomizing.
-		// For leaders, only traits with availability "any" are considered.
-		if(!must_have_only && (!can_recruit() || avl == "any")) {
-			candidate_traits.push_back(&t);
-		}
 	}
 
-	if(must_have_only) return;
+	if(must_have_only) {
+		return;
+	}
+
+	std::vector<const config*> candidate_traits;
+	std::vector<std::string> temp_require_traits;
+	std::vector<std::string> temp_exclude_traits;
 
 	// Now randomly fill out to the number of traits required or until
 	// there aren't any more traits.
 	int nb_traits = current_traits.size();
 	int max_traits = u_type.num_traits();
-	for(; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
+	for(; nb_traits < max_traits; ++nb_traits)
 	{
+		current_traits = modifications_.child_range("trait");
+		candidate_traits.clear();
+		for(const config& t : u_type.possible_traits()) {
+			// Skip the trait if the unit already has it.
+			const std::string& tid = t["id"];
+			bool already = false;
+			for(const config& mod : current_traits) {
+				if(mod["id"] == tid) {
+					already = true;
+					break;
+				}
+			}
+
+			if(already) {
+				continue;
+			}
+			// Skip trait if trait requirements are not met
+			// or trait exclusions are present
+			temp_require_traits = utils::split(t["require_traits"]);
+			temp_exclude_traits = utils::split(t["exclude_traits"]);
+
+			// See if the unit already has a trait that excludes the current one
+			for(const config& mod : current_traits) {
+				if (mod["exclude_traits"] != "") {
+					for (const auto& c: utils::split(mod["exclude_traits"])) {
+						temp_exclude_traits.push_back(c);
+					}
+				}
+			}
+
+			// First check for requirements
+			bool trait_req_met = true;
+			for(const std::string& s : temp_require_traits) {
+				bool has_trait = false;
+				for(const config& mod : current_traits) {
+					if (mod["id"] == s)
+						has_trait = true;
+				}
+				if(!has_trait) {
+					trait_req_met = false;
+					break;
+				}
+			}
+			if(!trait_req_met) {
+				continue;
+			}
+
+			// Now check for exclusionary traits
+			bool trait_exc_met = true;
+
+			for(const std::string& s : temp_exclude_traits) {
+				bool has_exclusionary_trait = false;
+				for(const config& mod : current_traits) {
+					if (mod["id"] == s)
+						has_exclusionary_trait = true;
+				}
+				if (tid == s) {
+					has_exclusionary_trait = true;
+				}
+				if(has_exclusionary_trait) {
+					trait_exc_met = false;
+					break;
+				}
+			}
+			if(!trait_exc_met) {
+				continue;
+			}
+
+			const std::string& avl = t["availability"];
+			// The trait is still available, mark it as a candidate for randomizing.
+			// For leaders, only traits with availability "any" are considered.
+			if(!must_have_only && (!can_recruit() || avl == "any")) {
+				candidate_traits.push_back(&t);
+			}
+		}
+		// No traits available anymore? Break
+		if(candidate_traits.empty()) {
+			break;
+		}
+
 		int num = randomness::generator->get_random_int(0,candidate_traits.size()-1);
 		modifications_.add_child("trait", *candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}
-
 	// Once random traits are added, don't do it again.
 	// Such as when restoring a saved character.
 	random_traits_ = false;
@@ -1352,13 +1428,14 @@ unit::state_t unit::get_known_boolean_state_id(const std::string& state)
 }
 
 std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
-	{"slowed",     STATE_SLOWED},
-	{"poisoned",   STATE_POISONED},
-	{"petrified",  STATE_PETRIFIED},
-	{"uncovered",  STATE_UNCOVERED},
-	{"not_moved",  STATE_NOT_MOVED},
-	{"unhealable", STATE_UNHEALABLE},
-	{"guardian",   STATE_GUARDIAN},
+	{"slowed",       STATE_SLOWED},
+	{"poisoned",     STATE_POISONED},
+	{"petrified",    STATE_PETRIFIED},
+	{"uncovered",    STATE_UNCOVERED},
+	{"not_moved",    STATE_NOT_MOVED},
+	{"unhealable",   STATE_UNHEALABLE},
+	{"guardian",     STATE_GUARDIAN},
+	{"invulnerable", STATE_INVULNERABLE},
 };
 
 void unit::set_state(const std::string& state, bool value)
@@ -2684,7 +2761,7 @@ std::vector<t_string> unit::unit_special_notes() const {
 
 // Filters unimportant stats from the unit config and returns a checksum of
 // the remaining config.
-std::string get_checksum(const unit& u)
+std::string get_checksum(const unit& u, backwards_compatibility::unit_checksum_version version)
 {
 	config unit_config;
 	config wcfg;
@@ -2738,9 +2815,11 @@ std::string get_checksum(const unit& u)
 			config& child_spec = child.add_child("specials", spec);
 
 			child_spec.recursive_clear_value("description");
-			child_spec.recursive_clear_value("description_inactive");
-			child_spec.recursive_clear_value("name");
-			child_spec.recursive_clear_value("name_inactive");
+			if(version != backwards_compatibility::unit_checksum_version::version_1_16_or_older) {
+				child_spec.recursive_clear_value("description_inactive");
+				child_spec.recursive_clear_value("name");
+				child_spec.recursive_clear_value("name_inactive");
+			}
 		}
 	}
 

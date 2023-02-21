@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Winds_of_Fate-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-12-18 01:10 UTC\n"
-"PO-Revision-Date: 2022-10-17 11:41+0800\n"
+"PO-Revision-Date: 2023-01-25 23:31+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -31,10 +31,11 @@ msgid ""
 "The story of how the drakes first arrived on the Great Continent.\n"
 "\n"
 msgstr ""
+"Le récit relatant l'arrivée des dracans sur le Grand Continent.\n"
+"\n"
 
 #. [campaign]: id=Winds_of_Fate
 #: data/campaigns/Winds_of_Fate/_main.cfg:22
-#, fuzzy
 msgid "(Hard level, 11 scenarios.)"
 msgstr "(Niveau difficile, 11 scénarios.)"
 
@@ -77,13 +78,11 @@ msgstr ""
 
 #. [campaign]: id=Winds_of_Fate
 #: data/campaigns/Winds_of_Fate/_main.cfg:27
-#, fuzzy
 msgid "Nightmare"
 msgstr "Cauchemar"
 
 #. [about]
 #: data/campaigns/Winds_of_Fate/about.cfg:4
-#, fuzzy
 msgid "Authors"
 msgstr "Auteurs"
 
@@ -104,7 +103,6 @@ msgstr ""
 
 #. [scenario]: id=01_The_Hunt
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:5
-#, fuzzy
 msgid "The Hunt"
 msgstr "La chasse"
 
@@ -165,7 +163,7 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:49
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:132
 msgid "Gorlack’s Wing"
-msgstr ""
+msgstr "Escadron Gorlack"
 
 #. [side]
 #. [part]
@@ -214,7 +212,6 @@ msgstr "Gorlack"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:65
-#, fuzzy
 msgid "Prey"
 msgstr "Proie"
 
@@ -225,33 +222,29 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:83
-#, fuzzy
 msgid "Leopards"
-msgstr "Leopards"
+msgstr "Léopards"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:92
-#, fuzzy
 msgid "Crocodiles"
 msgstr "Crocodiles"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:101
-#, fuzzy
 msgid "Cuttle Fish"
 msgstr "Calamar"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:110
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:90
-#, fuzzy
 msgid "Serpents"
 msgstr "Serpents"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:165
 msgid "Kill 20 creatures    ($kill_total killed so far)"
-msgstr ""
+msgstr "Tuer 20 créatures ($kill_total tuées jusqu'ici)"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:169
@@ -266,7 +259,6 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:558
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:307
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:184
-#, fuzzy
 msgid "Death of Gorlack"
 msgstr "Mort de Gorlack"
 
@@ -280,14 +272,13 @@ msgstr "Mort de Gorlack"
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:242
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:222
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:188
-#, fuzzy
 msgid "Death of Reshan"
 msgstr "Mort de Reshan"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:180
 msgid "Oases heal and cure"
-msgstr ""
+msgstr "Les oasis soignent et guérissent"
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:215
@@ -332,8 +323,9 @@ msgstr ""
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:246
+#, fuzzy
 msgid "By your will— Hunters! Descend!"
-msgstr ""
+msgstr "À tes ordres. Chasseurs : haro !"
 
 #. [message]: speaker=Reshan
 #. Drakes refer to aloe as “tailleaf” and use it medicinally the same way humans use yarrow.
@@ -348,6 +340,8 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:345
 msgid "Any of us injured during the hunt should seek an oasis for healing."
 msgstr ""
+"Que ceux d'entre-nous blessés pendant la chasse cherchent une oasis pour se "
+"soigner."
 
 #. [message]: type=Drake Fighter
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:362
@@ -356,6 +350,9 @@ msgid ""
 "In my fire for the hunt, I strayed from Karron’s pack.\n"
 "Then a bite from venomous prey drove my retreat here."
 msgstr ""
+"Ah, c'est toi Gorlack.\n"
+"Dans le feu de l'action, j'ai perdu la meute de Karron.\n"
+"Et la piqûre d'une proie venimeuse m'a forcé à me réfugier ici."
 
 #. [message]: type=Drake Fighter
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:370
@@ -377,17 +374,18 @@ msgstr ""
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:397
 msgid "So it is, that timid Gorlack attempts the Trial of Gaall."
-msgstr ""
+msgstr "Tiens, tiens, Gorlack-le-timide qui tente l'épreuve de Gaall."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:403
 msgid "So it is, that brave Karron cowers within the Cenotaph of Morogor."
 msgstr ""
+"Tiens, tiens, Karron-le-brave qui s'abrite dans le cénotaphe de Morogor."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:409
 msgid "Karron, you are without companions."
-msgstr ""
+msgstr "Karron, tu es sans compagnon."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:413
@@ -395,11 +393,13 @@ msgid ""
 "One was slain.\n"
 "The other went astray."
 msgstr ""
+"Un est mort.\n"
+"L'autre s'est égaré."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:420
 msgid "To attempt this trial with only two allies was unwise."
-msgstr ""
+msgstr "C'était mal avisé de tenter cette épreuve avec deux alliés seulement."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:424
@@ -407,22 +407,23 @@ msgid ""
 "Yet so have I already succeeded, <i>little glider</i>.\n"
 "All my prey-tokens are gathered; my hunt is ended."
 msgstr ""
+"Et pourtant je l'ai déjà remportée, <i>petite tempête</i>.\n"
+"Tous les trophées de ma chasse sont rassemblés, elle est terminée. "
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:431
 msgid "Then take your leave."
-msgstr ""
+msgstr "Alors tu peux partir."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:435
-#, fuzzy
 msgid "As you wish."
-msgstr "Comme tu veux."
+msgstr "Comme tu voudras."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:441
 msgid "...... Karron, hold."
-msgstr ""
+msgstr "...... Karron, attends."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:447
@@ -431,6 +432,9 @@ msgid ""
 "\n"
 "For your own sake, join us."
 msgstr ""
+"... C'est dangereux de quitter cet endroit seul.\n"
+"\n"
+"Pour ta propre sécurité, reste avec nous."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:453
@@ -450,7 +454,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:480
-#, fuzzy
 msgid "Magnificent."
 msgstr "Magnifique."
 
@@ -508,14 +511,13 @@ msgstr ""
 
 #. [print]
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:559
-#, fuzzy
 msgid "$kill_total of 20 prey harvested"
-msgstr "$kill_total proies sur 20 prey récoltées"
+msgstr "$kill_total proies récoltées sur 20"
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:580
 msgid "Victory is yours, <b>Aspirant</b> Gorlack."
-msgstr ""
+msgstr "Vous remportez la victoire, <b>aspirant</b> Gorlack."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:584
@@ -557,7 +559,7 @@ msgstr ""
 #. [scenario]: id=02_Reclamation
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:5
 msgid "Reclamation"
-msgstr ""
+msgstr "Réappropriation"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:18
@@ -634,7 +636,7 @@ msgstr ""
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:41
 msgid "Aspirant Karron, offer your ploy of attack."
-msgstr ""
+msgstr "Aspirant Karron, formulez votre plan d'attaque."
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:46
@@ -655,6 +657,9 @@ msgid ""
 "\n"
 "Now offer yours, Aspirant Gorlack."
 msgstr ""
+"Un plan rusé, aspirant Karron.\n"
+"\n"
+"Quel est le vôtre, aspirant Gorlack ?"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:63
@@ -735,7 +740,7 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:194
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:210
 msgid "Infesters"
-msgstr ""
+msgstr "Infesteurs"
 
 #. [leader]: id=Viragar, type=Orcish Warrior
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:165
@@ -760,12 +765,12 @@ msgstr "Grag"
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:228
 msgid "Karron’s Wing"
-msgstr ""
+msgstr "Escadron Karron"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:249
 msgid "Flight Omakon"
-msgstr ""
+msgstr "Vol Omakon"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:265
@@ -778,11 +783,10 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:271
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:616
 msgid "Destroy any remaining orcish ships"
-msgstr ""
+msgstr "Détruire tous les navires orcs restants"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:275
-#, fuzzy
 msgid "Death of Viragar"
 msgstr "Mort de Viragar"
 
@@ -945,7 +949,7 @@ msgstr ""
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:516
 msgid "Lo! Karron reinforces us."
-msgstr ""
+msgstr "Là, c'est Karron ! Il amène des renforts."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:522
@@ -955,6 +959,10 @@ msgid ""
 "Wing, descend upon the interlopers.\n"
 "Leave no survivors!"
 msgstr ""
+"Je vois que Gorlack tient toujours…\n"
+"\n"
+"Escadron, fondez sur les intrus.\n"
+"Ne laissez aucun survivant."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:529
@@ -962,16 +970,19 @@ msgid ""
 "Karron, their leader is to remain alive.\n"
 "I want no repeat of last time."
 msgstr ""
+"Karron, leur chef doit être capturé vivant.\n"
+"Je ne veux pas une répétition de la dernière fois."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:536
 msgid "You do not command me, Gorlack."
-msgstr ""
+msgstr "Tu n'as pas d'ordre à me donner, Gorlack."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:540
 msgid "I remind you it is by Vladnir’s order this creature remain whole."
 msgstr ""
+"Rappelle-toi l'ordre de Vladnir de garder cette créature saine et sauve."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:546
@@ -981,6 +992,10 @@ msgid ""
 "\n"
 "Mostly."
 msgstr ""
+"Qu'il en soit ainsi.\n"
+"Mon escadre gardera ton trophée intact.\n"
+"\n"
+"Ou presque."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:562
@@ -988,6 +1003,8 @@ msgid ""
 "I must withdraw.\n"
 "Another triumph falls to Gorlack alone."
 msgstr ""
+"Je dois battre en retraite.\n"
+"Un nouveau triomphe personnel pour Gorlack."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:592
@@ -996,6 +1013,9 @@ msgid ""
 "Your kind fares beyond these isles.\n"
 "You will tell us of your destinations."
 msgstr ""
+"Parle, petit gibier.\n"
+"Toi et les tiens naviguiez au-delà de ces îles.\n"
+"Dis-nous quelle était la destination finale."
 
 #. [message]: speaker=Viragar
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:600
@@ -1003,12 +1023,15 @@ msgid ""
 "Release me now and maybe I let some of you live... for future sport of my "
 "archers! Hahahaha!"
 msgstr ""
+"Relâchez-moi sur le champ et je laisserai peut-être la vie sauve à certains "
+"d'entre-vous… comme futures cibles pour mes archers ! Ha, ha, ha, ha !"
 
 #. [message]: speaker=Gorlack
 #. ‘Spit’ as in a device on which to roast meat.
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:605
+#, fuzzy
 msgid "Put him on the <i>Spit of Telling</i>."
-msgstr ""
+msgstr "Jetez-le au <i>trou qui fait causer</i>."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:679
@@ -1017,6 +1040,9 @@ msgid ""
 "\n"
 "It was to be taken alive!"
 msgstr ""
+"Non !\n"
+"\n"
+"Il devait être pris vivant !"
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:698
@@ -1025,6 +1051,9 @@ msgid ""
 "You, with your wing of halfwits, have stayed our reascension for an age "
 "longer!"
 msgstr ""
+"Karron ! Mon prisonnier est mort !\n"
+"Toi et ton escadre de demi-tarés avez retardé notre renaissance d'une "
+"éternité !"
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:705
@@ -1032,6 +1061,8 @@ msgid ""
 "Your pet was cut down by mistake.\n"
 "Try to calm yourself, Gorlack."
 msgstr ""
+"Ton toutou a trépassé par erreur.\n"
+"Reprends le contrôle de tes nerfs, Gorlack."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:719
@@ -1039,6 +1070,8 @@ msgid ""
 "Their sea skimmers are perished.\n"
 "Their hope of escape is no more."
 msgstr ""
+"Leurs écumoires des mers ont sombré.\n"
+"Leurs espoirs de fuite ont pris l'eau avec elles."
 
 #. [event]
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:722
@@ -1052,22 +1085,24 @@ msgid ""
 "\n"
 "Now, see to—"
 msgstr ""
+"Nos chasseurs termineront la récolte.\n"
+"\n"
+"Pour l'instant, veillez sur—"
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:738
 msgid "Lo! An unknown wing approaches from northwest!"
-msgstr ""
+msgstr "Là ! Une escadre inconnue s'approche au nord-ouest!"
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:752
-#, fuzzy
 msgid "Announce yourselves!"
 msgstr "Qui va là ?"
 
 #. [message]: speaker=Koli
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:756
 msgid "I am Second Intendant Koli of Flight Omakon."
-msgstr ""
+msgstr "Je suis le second intendant Koli du vol Omakron."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:762
@@ -1076,29 +1111,36 @@ msgid ""
 "\n"
 "They are strangely far out..."
 msgstr ""
+"Le domaine voyou d'Omakron est à six douzaines de lieues d'ici.\n"
+"\n"
+"Ils sont étrangement éloignés..."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:770
 msgid "They are rogue."
-msgstr ""
+msgstr "Ce sont des renégats."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:776
 msgid "State your purpose here!"
-msgstr ""
+msgstr "Quel est le but de votre présence ici ?"
 
 #. [message]: speaker=Koli
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:780
 msgid "My dominant has sent me to observe the status of this isle."
-msgstr ""
+msgstr "Mon dominant m'a envoyé établir le statut de cette île."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:786
+#, fuzzy
 msgid ""
 "So your dominant has you probing for soft scales...\n"
 "\n"
 "Probe just a little closer, rogue!"
 msgstr ""
+"Ton dominant te fait donc sonder pour des écailles molles...\n"
+"\n"
+"Viens sonder d'un peu plus près, renégat !"
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:794
@@ -1121,8 +1163,9 @@ msgstr ""
 
 #. [message]: speaker=Koli
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:806
+#, fuzzy
 msgid "For now, I go."
-msgstr ""
+msgstr "Pour l'instant, je m'en vais."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:812
@@ -1136,7 +1179,7 @@ msgstr ""
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:841
 msgid "The rogue flights grow bolder."
-msgstr ""
+msgstr "Les vols renégats grandissent en hardiesse."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/02_Reclamation.cfg:845
@@ -1145,11 +1188,14 @@ msgid ""
 "\n"
 "Go ensure that our captive is attended to, Reshan."
 msgstr ""
+"Bientôt ils ne seront plus.\n"
+"\n"
+"Reshan, vas vérifier que l'on veille sur le prisonnier."
 
 #. [scenario]: id=02x_Victory_Feast
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:5
 msgid "Victory Feast"
-msgstr ""
+msgstr "Banquet de la victoire"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:14
@@ -1209,11 +1255,13 @@ msgid ""
 "Excellent, Reshan!\n"
 "Speak of it."
 msgstr ""
+"Excellent, Reshan !\n"
+"Révèle-les maintenant."
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:46
 msgid "‘Orc’ the creatures call themselves."
-msgstr ""
+msgstr "« Orc » est le nom que ces créatures se donnent entre elles."
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:51
@@ -1246,6 +1294,8 @@ msgid ""
 "It may very well be, Reshan.\n"
 "Now speak of our prey’s destination in the east."
 msgstr ""
+"Cela se pourrait bien, Reshan.\n"
+"Parle-nous de leur destination au levant."
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:78
@@ -1260,7 +1310,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:86
-#, fuzzy
 msgid "Go on."
 msgstr "Continue."
 
@@ -1318,15 +1367,19 @@ msgstr ""
 #. [scenario]: id=03_The_Contention
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:27
 msgid "The Contention"
-msgstr ""
+msgstr "La sélection"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:40
+#, fuzzy
 msgid ""
 "So the day of the contention came. Each caste elected an aspirant from their "
 "ranks to become the new dominant. Each aspirant chose carefully three "
 "intendants to aid them."
 msgstr ""
+"Ainsi le jour de la compétition arriva. Chaque caste désigna dans ses rangs "
+"un aspirant pour devenir le nouveau dominant. Chaque aspirant sélectionna "
+"avec soin trois intendants pour l'aider."
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:43
@@ -1336,41 +1389,43 @@ msgid ""
 "the two aspirants of Vladnir remained to face one another in the Arena of "
 "Dominance, in the very heart of Morogor..."
 msgstr ""
+"Toutes les compétences à diriger un vol furent testées. Chaque aspirant "
+"passa des épreuves d'endurance, des épreuves de combat, des épreuves de "
+"chasse. Finalement, seuls les deux aspirants de Vladnir restèrent pour le "
+"face-à-face final dans l'arène de dominance, au cœur de Morogor... "
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:57
 msgid "Contender Gorlack"
-msgstr ""
+msgstr "Prétendant Gorlack"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:96
 msgid "Contender Karron"
-msgstr ""
+msgstr "Prétendant Karron"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:145
 msgid "Spectators"
-msgstr ""
+msgstr "Spectateurs"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:206
 msgid "Hold the advantage by turn 24"
-msgstr ""
+msgstr "Prendre l'avantage au tour 24"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:211
-#, fuzzy
 msgid "Defeat Karron"
-msgstr "Battez Karron"
+msgstr "Battre Karron"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:215
 msgid "Not hold the advantage by turn 24"
-msgstr ""
+msgstr "Concéder l'avantage au tour 24"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:219
-#, fuzzy
 msgid "Defeat of Gorlack"
 msgstr "Défaite de Gorlack"
 
@@ -1380,16 +1435,19 @@ msgid ""
 "Advantage is determined by the sum of gold, income and the value of all "
 "drakes on the field"
 msgstr ""
+"L'avantage est déterminé par la somme de l'or, du revenu et de la valeur des "
+"dracans dans l'arène"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:229
 msgid "You must recruit one drake from each caste before recruiting any more"
 msgstr ""
+"Vous devez recruter un dracan de chaque caste avant d'en recruter d'autres"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:232
 msgid "No recalls are permitted"
-msgstr ""
+msgstr "Aucun rappel d'unité n'est permis"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:235
@@ -1397,6 +1455,8 @@ msgid ""
 "Any drake you lose in combat will not be killed and may be recalled in "
 "future scenarios"
 msgstr ""
+"Les dracans perdus au combat seront épargnés et pourront être rappelés dans "
+"les scénarios futurs"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:238
@@ -1405,6 +1465,9 @@ msgid ""
 "castes; if one dies, the next recalled drake of the same caste will replace "
 "it, if that drake is level 2 or higher"
 msgstr ""
+"Dorénavant Gorlack aura deux intendants loyaux tirés des castes de "
+"combattants et de cogneurs. Si ils meurent, le prochain dracan rappelé de la "
+"même caste prendra sa place si il est de niveau 2 ou plus"
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:249
@@ -1413,10 +1476,11 @@ msgid ""
 "You shall learn a pivotal lesson in humility!"
 msgstr ""
 
+# Recentre la comparaison sur les griffes car les dents ne font pas partie des armes reconnues des dracans.
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:254
 msgid "If just sharp as your tongue were your teeth."
-msgstr ""
+msgstr "Ah, si tes griffes étaient aussi acérées que tes critiques."
 
 #. [message]: speaker=Vladnir
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:378
@@ -1445,7 +1509,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:405
 #: data/campaigns/Winds_of_Fate/scenarios/03x_Final_Departure.cfg:81
-#, fuzzy
 msgid "........."
 msgstr "........."
 
@@ -1479,7 +1542,7 @@ msgstr ""
 #. [message]: speaker=Vladnir
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:432
 msgid "So it begins..."
-msgstr ""
+msgstr "Que la lutte commence..."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:436
@@ -1501,11 +1564,13 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:452
 msgid "For winning by defeating the rival leader, you receive war claws!"
 msgstr ""
+"Pour votre victoire contre le chef rival, vous recevez des griffes de "
+"guerre !"
 
 #. [object]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:459
 msgid "War Claws"
-msgstr ""
+msgstr "Griffes de guerre"
 
 #. [object]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:460
@@ -1516,14 +1581,13 @@ msgstr ""
 
 #. [effect]
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:464
-#, fuzzy
 msgid "war claws"
-msgstr "griffes"
+msgstr "griffes de guerre"
 
 #. [scenario]: id=03x_Final_Departure
 #: data/campaigns/Winds_of_Fate/scenarios/03x_Final_Departure.cfg:5
 msgid "Final Departure"
-msgstr ""
+msgstr "Départ final"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/03x_Final_Departure.cfg:16
@@ -1646,7 +1710,6 @@ msgstr ""
 
 #. [scenario]: id=04_Journey
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:5
-#, fuzzy
 msgid "Journey"
 msgstr "Périple"
 
@@ -1714,12 +1777,11 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:42
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:41
 msgid "Flight Gorlack"
-msgstr ""
+msgstr "Vol Gorlack"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:73
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:111
-#, fuzzy
 msgid "Merfolk"
 msgstr "Ondin"
 
@@ -1743,12 +1805,12 @@ msgstr "Poseira"
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:149
 msgid "Hold all villages by the end of turn 18"
-msgstr ""
+msgstr "Posséder tous les villages au tour 18"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:153
 msgid "Not hold all villages by the end of turn 18"
-msgstr ""
+msgstr "Ne pas posséder tous les villages au tour 18"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:168
@@ -1756,16 +1818,18 @@ msgid ""
 "You can make the naga allies by moving Reshan next to their leader (if you "
 "have not killed any of them)"
 msgstr ""
+"Si vous n'en avez tué aucun, vous pouvez faire des sauriens des alliés en "
+"amenant Reshan à côté de leur chef"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:171
 msgid "Clashers cannot be recruited or recalled"
-msgstr ""
+msgstr "Recruter et rappeler des cogneurs dracans est impossible."
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:174
 msgid "It is summer, daytime is longer"
-msgstr ""
+msgstr "C'est l'été, les journées sont plus longues"
 
 #. [message]: speaker=Shussek
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:185
@@ -1864,12 +1928,12 @@ msgstr ""
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:278
+#, fuzzy
 msgid "We might also forge a truce with the serpents."
-msgstr ""
+msgstr "Nous pouvons aussi faire une trêve avec les serpents."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:282
-#, fuzzy
 msgid "A truce with prey..."
 msgstr "Une trêve avec des proies..."
 
@@ -1888,17 +1952,18 @@ msgstr ""
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:297
 msgid "I shall consider this."
-msgstr ""
+msgstr "Je vais y réfléchir."
 
 #. [message]: speaker=Nemas
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:307
 msgid "My liege, permission to engage the drakes?"
-msgstr ""
+msgstr "Je vous demande la permission d'engager le combat avec les dracans."
 
 #. [message]: speaker=Poseira
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:311
 msgid "Permission denied. Stay on your keep and let your forces engage them."
 msgstr ""
+"Permission refusée. Reste dans ton château et laisse le combat à tes troupes."
 
 #. [message]: speaker=Nemas
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:317
@@ -1906,6 +1971,8 @@ msgid ""
 "With all due respect, sir, I am no coward. My father always led from the "
 "front and his fighters respected him for it."
 msgstr ""
+"Je vous demande de reconsidérer, je ne suis pas un lâche. Mon père a gardé "
+"le respect de ses troupes en les commandant toujours au front."
 
 #. [message]: speaker=Poseira
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:321
@@ -1914,6 +1981,9 @@ msgid ""
 "\n"
 "I have something special planned to turn the tides in our favor."
 msgstr ""
+"Reste à ton poste, c'est un ordre Nemas !\n"
+"\n"
+"J'ai un plan spécial qui nous mènera à contre-courant vers la victoire."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:328
@@ -1921,11 +1991,13 @@ msgid ""
 "Strange waves circle the northernmost shoals.\n"
 "I fear the northern mermish plan to unleash monsters from the deep."
 msgstr ""
+"Il y a de curieuses vagues autours des bancs de sable.\n"
+"Je crains que les ondins du nord n'engagent quelque monstre des profondeurs."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:333
 msgid "Slaying their leader will halt their doing so."
-msgstr ""
+msgstr "La mort de leur chef mettra un terme à ces agissements."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:337
@@ -1933,16 +2005,20 @@ msgid ""
 "That might spread us too thin.\n"
 "I must advise against it."
 msgstr ""
+"Nous pourrions finir trop dispersés.\n"
+"Je déconseille un tel plan."
 
 #. [message]: speaker=Nemas
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:351
 msgid "Advance!"
-msgstr ""
+msgstr "À la charge !"
 
 #. [message]: speaker=Poseira
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:355
 msgid "Nemas, you are violating a direct order! Return to your keep at once!"
 msgstr ""
+"Nemas, tu désobéis à un ordre formel ! Retourne sur-le-champ dans ton "
+"château !"
 
 #. [message]: speaker=Poseira
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:363
@@ -2047,7 +2123,6 @@ msgstr ""
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:517
 #: data/campaigns/Winds_of_Fate/scenarios/04_Journey.cfg:555
-#, fuzzy
 msgid "... Yes."
 msgstr "... Oui."
 
@@ -2204,17 +2279,15 @@ msgstr ""
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:200
 msgid "Southbay"
-msgstr ""
+msgstr "Baie-du-Sud"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:213
-#, fuzzy
 msgid "Hatchlings"
 msgstr "Nouveaux-nés"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:232
-#, fuzzy
 msgid "Jungle"
 msgstr "Jungle"
 
@@ -2253,9 +2326,8 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:340
-#, fuzzy
 msgid "I hear..."
-msgstr "J'écoute..."
+msgstr "J'entends..."
 
 #. [event]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:342
@@ -2280,7 +2352,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:348
 msgid "Vermin!"
-msgstr ""
+msgstr "Vermine !"
 
 #. [message]: speaker=Tidbit
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:352
@@ -2289,19 +2361,18 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:356
-#, fuzzy
 msgid "I shall..."
 msgstr "Je vais..."
 
 #. [option]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:361
 msgid "eat them."
-msgstr ""
+msgstr "les manger."
 
 #. [option]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:384
 msgid "pet them."
-msgstr ""
+msgstr "les caresser."
 
 #. [message]: speaker=Tidbit
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:388
@@ -2319,13 +2390,12 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:484
 msgid "Kill Rhynnin"
-msgstr ""
+msgstr "Tuer Rhynnin"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:493
-#, fuzzy
 msgid "Capture all villages"
-msgstr "Capturez tous les villages"
+msgstr "Capturer tous les villages"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:505
@@ -2335,7 +2405,6 @@ msgstr "Capturez tous les villages"
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:182
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:562
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:311
-#, fuzzy
 msgid "Death of Arinexis"
 msgstr "Mort d'Arinexis"
 
@@ -2348,13 +2417,11 @@ msgstr "Mort d'Arinexis"
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:566
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:315
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:192
-#, fuzzy
 msgid "Death of Zedrix"
 msgstr "Mort de Zedrix"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:528
-#, fuzzy
 msgid "Recruiting and recalling are not possible"
 msgstr "Recruter et rappeler est impossible."
 
@@ -2643,9 +2710,8 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:955
-#, fuzzy
 msgid "Elaborate."
-msgstr "Continue."
+msgstr "Que veux-tu dire ?"
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/05_Threshold.cfg:959
@@ -2732,7 +2798,6 @@ msgstr ""
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/05x_Early_Arrival.cfg:37
 #: data/campaigns/Winds_of_Fate/scenarios/05x_Early_Arrival.cfg:63
-#, fuzzy
 msgid "Drakes"
 msgstr "Dracans"
 
@@ -2812,7 +2877,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/05x_Early_Arrival.cfg:207
-#, fuzzy
 msgid "Enough."
 msgstr "Assez."
 
@@ -2826,9 +2890,8 @@ msgstr ""
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/05x_Early_Arrival.cfg:221
-#, fuzzy
 msgid "By your will."
-msgstr "Comme tu voudras."
+msgstr "À tes ordres."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/05x_Early_Arrival.cfg:232
@@ -2960,7 +3023,7 @@ msgstr ""
 #. [scenario]: id=06_Landfall
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:5
 msgid "Landfall"
-msgstr ""
+msgstr "Atterrissage"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:18
@@ -2973,7 +3036,7 @@ msgstr ""
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:64
 msgid "Fort Elense"
-msgstr ""
+msgstr "Fort Elense"
 
 #. [leader]: id=Vorlyan, type=General
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:68
@@ -2988,12 +3051,12 @@ msgstr "Iryn"
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:87
 msgid "King Haldric"
-msgstr ""
+msgstr "Roi Haldric"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:88
 msgid "Queen Jessene"
-msgstr ""
+msgstr "Reine Jessene"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:89
@@ -3004,18 +3067,16 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:104
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:105
 msgid "Reinforcements"
-msgstr ""
+msgstr "Renforts"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:126
-#, fuzzy
 msgid "Kill all the humans"
-msgstr "Tuez tous les humains"
+msgstr "Tuer tous les humains"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:146
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:180
-#, fuzzy
 msgid "Death of Karron"
 msgstr "Mort de Karron"
 
@@ -3030,12 +3091,12 @@ msgstr ""
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:160
 msgid "Clashers can be recruited and recalled again"
-msgstr ""
+msgstr "Vous pouvez à nouveau recruter et rappeler des cogneurs dracans"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:163
 msgid "Saurians can be recruited and recalled now"
-msgstr ""
+msgstr "Vous pouvez maintenant recruter et rappeler des sauriens"
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:186
@@ -3075,21 +3136,20 @@ msgstr ""
 #. [message]: speaker=Iryn
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:236
 msgid "General Vorlyan! We have a problem."
-msgstr ""
+msgstr "Général Vorlyan ! Nous avons un problème."
 
 #. [message]: speaker=Vorlyan
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:240
 msgid "How many orcs? Have they made landfall yet?"
-msgstr ""
+msgstr "Combien d'orcs ? Ont-ils déjà débarqué ?"
 
 #. [message]: speaker=Iryn
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:246
 msgid "Not orcs, sir, dragons."
-msgstr ""
+msgstr "Pas des orcs, monsieur, des dragons."
 
 #. [message]: speaker=Vorlyan
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:250
-#, fuzzy
 msgid "Dragons?!"
 msgstr "Des dragons ?!"
 
@@ -3102,7 +3162,7 @@ msgstr ""
 #. [message]: speaker=Vorlyan
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:260
 msgid "They do move in hordes..."
-msgstr ""
+msgstr "Ils se déplacent en hordes..."
 
 #. [message]: speaker=Vorlyan
 #. Here “wesfolk traveller” is used in the same way as “Irish traveller”, which is a real life culture the wesfolk are likely based on. There is lingering animosity between the islefolk and wesfolk, so he means it in a mildly negative sense.
@@ -3135,7 +3195,7 @@ msgstr ""
 #. [message]: speaker=Iryn
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:290
 msgid "Sir!"
-msgstr ""
+msgstr "Bien, monsieur !"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:313
@@ -3159,9 +3219,8 @@ msgstr ""
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:415
-#, fuzzy
 msgid "Alas! Karron is slain!"
-msgstr "Hélas, Karron est tombé !"
+msgstr "Hélas ! Karron est tombé."
 
 #. [message]: speaker=Arinexis
 #: data/campaigns/Winds_of_Fate/scenarios/06_Landfall.cfg:426
@@ -3477,7 +3536,6 @@ msgstr ""
 
 #. [scenario]: id=07_Harvest
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:5
-#, fuzzy
 msgid "Harvest"
 msgstr "Récolte"
 
@@ -3561,13 +3619,12 @@ msgstr "Vonel"
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:204
 msgid "Nomeon"
-msgstr ""
+msgstr "Nomeon"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:234
-#, fuzzy
 msgid "Kill all prey"
-msgstr "Tuez toutes les proies"
+msgstr "Tuer toutes les proies"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:258
@@ -3727,7 +3784,6 @@ msgstr ""
 
 #. [message]: speaker=Salennea
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:395
-#, fuzzy
 msgid "But of course."
 msgstr "Mais bien sûr."
 
@@ -3927,7 +3983,6 @@ msgstr ""
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:591
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:710
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:374
-#, fuzzy
 msgid "..."
 msgstr "..."
 
@@ -4008,19 +4063,16 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:105
-#, fuzzy
 msgid "Elves"
 msgstr "Elfes"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:133
-#, fuzzy
 msgid "Woses"
 msgstr "Woses"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:149
-#, fuzzy
 msgid "Gates"
 msgstr "Portes"
 
@@ -4096,7 +4148,7 @@ msgstr ""
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:293
 msgid "You <b>will</b> be silent."
-msgstr ""
+msgstr "Je ne <b>veux plus</b> t'entendre."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:311
@@ -4112,7 +4164,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:320
-#, fuzzy
 msgid "Impossible..."
 msgstr "Impossible..."
 
@@ -4162,7 +4213,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:379
-#, fuzzy
 msgid "... a <b>cave</b>."
 msgstr "... une <b>grotte</b>."
 
@@ -4246,7 +4296,6 @@ msgstr ""
 
 #. [message]: speaker=Avatar of Nova
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:559
-#, fuzzy
 msgid "As you say."
 msgstr "Comme tu dis."
 
@@ -4442,7 +4491,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:823
-#, fuzzy
 msgid "Reshan..."
 msgstr "Reshan..."
 
@@ -4453,7 +4501,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:22
-#, fuzzy
 msgid "My friend..."
 msgstr "Mon ami..."
 
@@ -4474,25 +4521,21 @@ msgstr ""
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:89
-#, fuzzy
 msgid "Bats"
 msgstr "Chauves-souris"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:105
-#, fuzzy
 msgid "Gryphons"
 msgstr "Griffons"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:121
-#, fuzzy
 msgid "Wolves"
 msgstr "Loups"
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:137
-#, fuzzy
 msgid "Bears"
 msgstr "Ours"
 
@@ -4539,7 +4582,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:278
-#, fuzzy
 msgid ".................."
 msgstr ".................."
 
@@ -4606,9 +4648,8 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:523
-#, fuzzy
 msgid "It is magnificent."
-msgstr "C'est magniifique."
+msgstr "C'est magnifique."
 
 #. [message]
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:527
@@ -4663,13 +4704,11 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:605
-#, fuzzy
 msgid "! ! !"
 msgstr "! ! !"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:619
-#, fuzzy
 msgid "I will return."
 msgstr "Je reviendrai."
 
@@ -4680,7 +4719,6 @@ msgstr ""
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:658
-#, fuzzy
 msgid "Khrakrahs, he is here..."
 msgstr "Khrakrahs, il est ici..."
 
@@ -4758,7 +4796,6 @@ msgstr ""
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:750
-#, fuzzy
 msgid "I go."
 msgstr "Je pars."
 
@@ -4819,7 +4856,6 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:303
-#, fuzzy
 msgid "Survive for 18 turns"
 msgstr "Survivre dix-huit tours"
 
@@ -4846,7 +4882,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:351
-#, fuzzy
 msgid "As have I..."
 msgstr "Comme j'ai..."
 
@@ -4969,7 +5004,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:446
-#, fuzzy
 msgid "............"
 msgstr "............"
 
@@ -5161,7 +5195,7 @@ msgstr ""
 #. [scenario]: id=11_Crosswind
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:9
 msgid "Crosswind"
-msgstr ""
+msgstr "Vents de travers"
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:22
@@ -5174,23 +5208,22 @@ msgstr ""
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:26
 msgid "A flight was spotted inbound. Once more, it was the Flight of Karron."
-msgstr ""
+msgstr "L'arrivée d'un vol est signalée. C'est à nouveau le vol Karron."
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:71
 msgid "Flight Karron"
-msgstr ""
+msgstr "Vol Karron"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:176
-#, fuzzy
 msgid "Capture Karron by surrounding him on all six sides"
-msgstr "Capturez Karron en l'entourant des six côtés."
+msgstr "Capturer Karron en l'entourant des six côtés"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:199
 msgid "Karron may employ surprise attacks"
-msgstr ""
+msgstr "Karron peut utiliser des attaques surprises"
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:210
@@ -5209,6 +5242,9 @@ msgid ""
 "\n"
 "If only Vladnir had shared our fortune."
 msgstr ""
+"Karron, nous de même !\n"
+"\n"
+"Si seulement Vladnir avait eu notre chance."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:226
@@ -5236,14 +5272,20 @@ msgid ""
 "Karron, not even the whole of Morogor could subdue this land.\n"
 "Not in the way we strove to."
 msgstr ""
+"Karron, même tout Morogor ne serait pas suffisant pour soumettre ce pays.\n"
+"Pas de la façon d'où nous nous y sommes pris."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:251
+#, fuzzy
 msgid ""
 "Gor— ... ... never before have you spoken as this...\n"
 "\n"
 "Gorlack, by your own measure, you speak cowardice!"
 msgstr ""
+"Gor— ... tu n'avais jamais parlé ainsi...\n"
+"\n"
+"Gorlack, selon tes propres principes, tes propos sont ceux d'un lâche !"
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:259
@@ -5266,6 +5308,10 @@ msgid ""
 "exiled."
 msgstr ""
 
+# "Dracan tempête" est la traduction du "Drake Glider". Peut-être: « Assez de cette folie tempétueuse ! »
+# Second problème "eyrie" (américain : "aerie"). C'est le nid haut perché de l'aigle et peut-être par extension le domaine de chasse autour du nid. C'est aussi génériquement un lieu haut placé comme un bureau dans un gratte-ciel.
+# Ça semble être aussi pris dans ces chaînes comme le repère, la place fortifiée, la base...
+# Candidats: "piton", "aiguille" (comme celle d'Étretat).
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:275
 msgid ""
@@ -5293,6 +5339,11 @@ msgid ""
 "\n"
 "Gorlack, the hunt is not ended!"
 msgstr ""
+"Tu avais promis d'aider ceux qui feraient le voyage vers tes Grandes-"
+"Terres !\n"
+"C'est toi qui avais lancé la chasse...\n"
+"\n"
+"Et la chasse n'est pas finie, Gorlack !"
 
 #. [message]: speaker=Arinexis
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:300
@@ -5307,6 +5358,10 @@ msgid ""
 "\n"
 "There is nothing more I can do for our folk now—"
 msgstr ""
+"Mon appel n'était pas encore parti et l'arrivée des vols était prématurée.\n"
+"Ma chasse est vraiment finie et je suis bredouille.\n"
+"\n"
+"Il n'y a plus rien que je puisse faire pour notre peuple maintenant..."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:313
@@ -5328,6 +5383,9 @@ msgid ""
 "\n"
 "Here its Ways do not apply."
 msgstr ""
+"Nous sommes bien loin de Morogor.\n"
+"\n"
+"Son code ne s'applique plus en ces lieux."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:332
@@ -5337,11 +5395,17 @@ msgid ""
 "Damn you for this, Gorlack.\n"
 "You have left me only the coldest choice."
 msgstr ""
+"Alors il n'y a plus qu'une solution... une épreuve à mort.\n"
+"\n"
+"Que tu sois maudit, Gorlack.\n"
+"Tu ne me laisses que le pire des choix."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:341
 msgid "Gorlack, recall how we took captive the orc creature back in Morogor..."
 msgstr ""
+"Gorlack, rappelle-toi comment nous avons capturé la créature orque là-bas à "
+"Morogor..."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:347
@@ -5351,6 +5415,10 @@ msgid ""
 "\n"
 "Karron is to be taken alive."
 msgstr ""
+"C'est vrai.\n"
+"On doit faire pareil.\n"
+"\n"
+"Karron doit être pris vivant."
 
 #. [message]: speaker=Reshan
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:356
@@ -5367,7 +5435,7 @@ msgstr ""
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:368
 msgid "Whatever the case, Karron must not be underestimated."
-msgstr ""
+msgstr "Quoiqu'il importe. Karron ne doit pas être sous-estimé."
 
 #. [message]: speaker=Arinexis
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:399
@@ -5384,6 +5452,10 @@ msgid ""
 "\n"
 "Very well, <i>little fledgling</i>, you have earned my respect."
 msgstr ""
+"Penser qu'une créature si petite est mue par un feu plus grand que mes "
+"propres congénères...\n"
+"\n"
+"Très bien ! Mon <i>juvénile compagnon</i>, tu as gagné mon respect."
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:411
@@ -5568,7 +5640,7 @@ msgstr ""
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:617
 msgid "Gliders, engage!"
-msgstr ""
+msgstr "Tempêtes ! Engagez le combat !"
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:643
@@ -5577,6 +5649,9 @@ msgid ""
 "\n"
 "Now!"
 msgstr ""
+"Enflammés...\n"
+"\n"
+"Maintenant !"
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:745
@@ -5588,23 +5663,22 @@ msgstr ""
 
 #. [message]: speaker=Arinexis
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:761
+#, fuzzy
 msgid "You win, I go... I run."
-msgstr ""
+msgstr "Tu gagnes, je pars... je cours."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:789
 msgid "You have one last victory over me... finish it."
-msgstr ""
+msgstr "Voici ta dernière victoire contre moi... achève-la."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:795
-#, fuzzy
 msgid "Nay."
-msgstr "Négatif."
+msgstr "Non."
 
 #. [message]: speaker=Karron
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:799
-#, fuzzy
 msgid "......"
 msgstr "......"
 
@@ -5779,7 +5853,6 @@ msgstr ""
 
 #. [unit_type]: id=Caravel, race=mechanical
 #: data/campaigns/Winds_of_Fate/units/Caravel.cfg:5
-#, fuzzy
 msgid "Caravel"
 msgstr "Caravelle"
 
@@ -5812,7 +5885,6 @@ msgstr ""
 
 #. [unit_type]: id=Dolphin, race=monster
 #: data/campaigns/Winds_of_Fate/units/Dolphin.cfg:5
-#, fuzzy
 msgid "Dolphin"
 msgstr "Dauphin"
 
@@ -5844,9 +5916,8 @@ msgstr ""
 
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:5
-#, fuzzy
 msgid "Leopard"
-msgstr "Leopard"
+msgstr "Léopard"
 
 #. [unit_type]: id=Leopard, race=monster
 #: data/campaigns/Winds_of_Fate/units/Leopard.cfg:8
@@ -5947,7 +6018,6 @@ msgstr ""
 #. [damage]: id=blast
 #: data/campaigns/Winds_of_Fate/utils/abilities.cfg:9
 #: data/campaigns/Winds_of_Fate/utils/abilities.cfg:10
-#, fuzzy
 msgid "blast"
 msgstr "rafale"
 
@@ -5971,7 +6041,6 @@ msgstr ""
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/utils/deaths.cfg:27
-#, fuzzy
 msgid "Reshan!"
 msgstr "Reshan !"
 
@@ -5988,27 +6057,26 @@ msgstr ""
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:70
 msgid "+{AMOUNT} experience"
-msgstr ""
+msgstr "+{AMOUNT} d'expérience"
 
 #. [object]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:77
 msgid "Sapphire of Ice"
-msgstr ""
+msgstr "Saphir de glace"
 
 #. [object]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:79
 msgid "This sapphire grants the bearer a ranged cold attack!"
-msgstr ""
+msgstr "Ce saphir donne à son possesseur une attaque à distance en froid."
 
 #. [effect]: type=cold
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:83
 msgid "sapphire of ice"
-msgstr ""
+msgstr "saphir de glace"
 
 #~ msgid "Kraken"
 #~ msgstr "Kraken"
 
-#, fuzzy
 #~ msgid ""
 #~ "Krakens are gigantic creatures of the seas. They can grab their opponents "
 #~ "with strong tentacles, or spit a poisonous black ink from a distance. The "

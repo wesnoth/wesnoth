@@ -133,5 +133,5 @@ function wesnoth.micro_ais.fast_ai(cfg)
 			end
 		end
 	end
-    return {}, optional_keys, CA_parms
+	return {}, optional_keys, CA_parms
 end

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-19 23:31-0600\n"
+"POT-Creation-Date: 2023-02-19 22:03-0600\n"
 "PO-Revision-Date: 2012-12-31 00:00+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -43,28 +43,135 @@ msgid "fearless"
 msgstr "pemberani"
 
 #. [label]
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
 msgid "plague"
 msgstr "mewabah"
 
+#. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
+#. [plague]: id=plague, type=Walking Corpse
+#: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
+#: data/core/macros/weapon_specials.cfg:53
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a "
+"Walking Corpse on the same side as the unit with the Plague attack. This "
+"doesn’t work on Undead or units in villages."
+msgstr ""
+"Mewabah:\n"
+"Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan dengan "
+"seorang Mayat Berjalan pada sisi sama dengan unit memiliki serangan Mewabah. "
+"Ini tidak mengefek Mayat Hidup atau unit-unit di dalam desa-desa."
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
+msgid "This attack can only be used as the first verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
+msgid "This attack can only be used as the second verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+msgid "This attack can only be used as the third verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
+#, fuzzy
+#| msgid "firststrike"
+msgid "first verse"
+msgstr "serangan pertama"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
+#, fuzzy
+#| msgid "Second Watch"
+msgid "second verse"
+msgstr "Jam Jaga Kedua"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:419
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:422
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:426
+msgid "tailwind +"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:444
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "mengobati +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "mengobati +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 #, fuzzy
 #| msgid ""
 #| "Heals +4:\n"
@@ -94,28 +201,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr " Unit ini menguasai pengobatan dasar."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:468
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "Mengobati +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:469
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "mengobati +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:470
 #, fuzzy
 #| msgid ""
 #| "Heals +8:\n"
@@ -145,21 +252,21 @@ msgstr ""
 "perawatan di desa atau dari unit yang bisa menyembuhkan."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:498
 #, fuzzy
 #| msgid "heals +4"
 msgid "heals +12"
 msgstr "mengobati +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:499
 #, fuzzy
 #| msgid "female^heals +4"
 msgid "female^heals +12"
 msgstr "mengobati +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:500
 #, fuzzy
 #| msgid ""
 #| "Heals +8:\n"
@@ -189,7 +296,7 @@ msgstr ""
 "perawatan di desa atau dari unit yang bisa menyembuhkan."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:525
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -228,7 +335,7 @@ msgstr "Selalu menyembuhkan saat beristirahat"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "membokong"
 
@@ -268,7 +375,7 @@ msgstr "sembunyi"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "menghisap"
 
@@ -292,7 +399,7 @@ msgstr "Bukit"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "penembak jitu"
 
@@ -308,7 +415,7 @@ msgstr "menguntit"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "meracuni"
 
@@ -324,7 +431,7 @@ msgstr "menyelinap"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "memperlambat"
 
@@ -345,7 +452,7 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:312
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:349
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
@@ -353,7 +460,7 @@ msgstr "Pemodifikasi Daerah"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:324
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:361
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -626,8 +733,97 @@ msgid ""
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
 
-#. [topic]: id=editor_deprecated_overlay
+#. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
+#, fuzzy
+#| msgid "Terrain Modifiers"
+msgid "Terrain Elevation Graphics"
+msgstr "Pemodifikasi Daerah"
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:171
+msgid ""
+"A cosmetic elevation effect that looks a little different in the editor than "
+"in the game due to visual aids in the editor; all the overlays described "
+"here are found in the terrain palette’s “elevation” group."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:174
+msgid "editor^<bold>text='Direct Overlays'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:176
+msgid ""
+"Bluffs and Gulch\n"
+"\n"
+"The bluffs, gulches, and similar variations are much like a standard terrain "
+"overlay, and can simply be used that way. However, for larger areas of the "
+"map, where you will want to allow the use of other overlay terrains, you "
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:181
+msgid "editor^<bold>text='Elevation Floodfill'</bold>"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:183
+msgid "Raised elevation on-map marker"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid ""
+"Raised elevation editor palette icon\n"
+"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles.\n"
+"\n"
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger "
+"cliffs.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:191
+msgid ""
+"editor^<bold>text='How to Use'</bold>\n"
+"\n"
+"The marker arrows are not very useful by themselves, but the bluffs/gulch-"
+"type terrains can be used to contain the floodfilled area.\n"
+"\n"
+"An example use case would be:\n"
+"1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
+"paint tool to outline a big blob over an empty, all-grass map.\n"
+"2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
+"Bluffs border).\n"
+"3.  The blob should all be raised now, and as long as you don't overwrite "
+"the Marker or Bluffs overlays, you can add other terrain overlays as "
+"needed.\n"
+"\n"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain.\n"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:202
+msgid ""
+"editor^<format>text='Note for UMC authors: The flood-filled tiles do not "
+"have their terrain codes changed, or any other properties affected, so "
+"filtering a location by elevation is not simple.' italic='yes' font_size=10 "
+"</format>"
+msgstr ""
+
+#. [topic]: id=editor_deprecated_overlay
+#: data/core/editor/help.cfg:207
 #, fuzzy
 #| msgid "Terrain"
 msgid "Deprecated Terrain"
@@ -636,7 +832,7 @@ msgstr "Daerah"
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:173
+#: data/core/editor/help.cfg:210
 msgid ""
 "editor^<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)' align=left box=yes</img>The magenta ‘D’ (for “Deprecated”).\n"
@@ -652,12 +848,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:186
+#: data/core/editor/help.cfg:223
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:187
+#: data/core/editor/help.cfg:224
 msgid ""
 "Put text labels on the map.\n"
 "\n"
@@ -671,12 +867,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:202
+#: data/core/editor/help.cfg:239
 msgid "Item Tool (Scenery Tool)"
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:203
+#: data/core/editor/help.cfg:240
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -691,12 +887,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:216
+#: data/core/editor/help.cfg:253
 msgid "Village Ownership Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:217
+#: data/core/editor/help.cfg:254
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario. The "
 "villages must first be placed on the terrain with the "
@@ -711,12 +907,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:231
+#: data/core/editor/help.cfg:268
 msgid "Unit Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:232
+#: data/core/editor/help.cfg:269
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "\n"
@@ -731,12 +927,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:247
+#: data/core/editor/help.cfg:284
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:248
+#: data/core/editor/help.cfg:285
 msgid ""
 "This tool create sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -763,12 +959,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:269
+#: data/core/editor/help.cfg:306
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:270
+#: data/core/editor/help.cfg:307
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -778,12 +974,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:280
+#: data/core/editor/help.cfg:317
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:281
+#: data/core/editor/help.cfg:318
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -815,7 +1011,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:293
+#: data/core/editor/help.cfg:330
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -841,7 +1037,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:313
+#: data/core/editor/help.cfg:350
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -856,7 +1052,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:325
+#: data/core/editor/help.cfg:362
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -865,7 +1061,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:327
+#: data/core/editor/help.cfg:364
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -876,7 +1072,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:334
+#: data/core/editor/help.cfg:371
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -891,7 +1087,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:342
+#: data/core/editor/help.cfg:379
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -910,12 +1106,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:354
+#: data/core/editor/help.cfg:391
 msgid "Using a separate file for WML events"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:392
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -968,12 +1164,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:430
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:394
+#: data/core/editor/help.cfg:431
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -981,14 +1177,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:402
+#: data/core/editor/help.cfg:439
 #, fuzzy
 #| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
 msgstr "Jam"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:403
+#: data/core/editor/help.cfg:440
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1001,13 +1197,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:414
+#: data/core/editor/help.cfg:451
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:453
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1023,32 +1219,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:421
+#: data/core/editor/help.cfg:458
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:422
+#: data/core/editor/help.cfg:459
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:423
+#: data/core/editor/help.cfg:460
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:435
+#: data/core/editor/help.cfg:472
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:436
+#: data/core/editor/help.cfg:473
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:438
+#: data/core/editor/help.cfg:475
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1079,7 +1275,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:451
+#: data/core/editor/help.cfg:488
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1099,7 +1295,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1112,7 +1308,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:463
+#: data/core/editor/help.cfg:500
 msgid ""
 "<header>text='Which scenario files use the [scenario] tag'</header>\n"
 "\n"
@@ -5112,304 +5308,6 @@ msgstr ""
 " Unit ini memperoleh 1 darah ditambahkan ke darah maksimumnya ketika ia "
 "membunuh sebuah unit hidup."
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "mengamuk"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Mengamuk:\n"
-"Ketika dipakai dengan ofensif atau dengan bertahan,serangan ini meneruskan "
-"perkelahian sampai salah satu petarung terbunuh, atau 30 ronde serangan "
-"sudah terjadi."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-#, fuzzy
-#| msgid ""
-#| "Backstab:\n"
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Membokong:\n"
-"Ketika dipakai dengan ofensif, serangan ini melukai dua kali lipat jika ada "
-"musuh sasaran di balik sasaran, dan unit tersebut tidak cacat (diubah "
-"menjadi batu atau dilumpuhkan)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Mewabah:\n"
-"Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan dengan "
-"seorang Mayat Berjalan pada sisi sama dengan unit memiliki serangan Mewabah. "
-"Ini tidak mengefek Mayat Hidup atau unit-unit di dalam desa-desa."
-
-#. [plague]: id=plague, type=Walking Corpse
-#: data/core/macros/abilities.cfg:442
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a "
-"Walking Corpse on the same side as the unit with the Plague attack. This "
-"doesn’t work on Undead or units in villages."
-msgstr ""
-"Mewabah:\n"
-"Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan dengan "
-"seorang Mayat Berjalan pada sisi sama dengan unit memiliki serangan Mewabah. "
-"Ini tidak mengefek Mayat Hidup atau unit-unit di dalam desa-desa."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Memperlambat:\n"
-"Serangan ini memperlambatkan sasaran sampai unit tersebut mengakhirkan "
-"gilirannya. Memperlambat membagi dua luka yang disebabkan oleh serangan dan "
-"harga bergerak untuk unit diperlambat di dua kali lipatkan. Sebuah unit yang "
-"diperlambat akan menunjukkan sebuah simbol siput di papan informasinya "
-"ketika ia dipilih."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "membatu"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Petrify:\n"
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Membatu:\n"
-"Serangan ini merubah sasaran menjadi batu. Unit yang sudah diubah menjadi "
-"batu tidak bisa bergerak atau menyerang."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Penembak jitu:\n"
-"Ketika dipakai dengan ofensif, serangan ini selalu memiliki paling sedikit "
-"60% kemungkinan mengenai sasaran."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Penembak jitu:\n"
-"Ketika dipakai dengan ofensif, serangan ini selalu memiliki paling sedikit "
-"60% kemungkinan mengenai sasaran."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "Ilmu Sihir"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Magis:\n"
-"Serangan ini selalu memiliki 70% kemungkinan mengenai tanpa peduli kemampuan "
-"bertahan unit yang diserang."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "merubung"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-#, fuzzy
-#| msgid ""
-#| "Swarm:\n"
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Merubung:\n"
-"Nomor pukulan serangan ini berkurang ketika unit ini terluka. Nomor pukulan "
-"unit ini proporsional ke persentase darah maksimum yang ia miliki. Misalnya, "
-"sebuah unit dengan 3/4 darah maksimumnya akan mendapat 3/4 nomor pukulan."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "menyerbu"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Menyerbu:\n"
-"Ketika dipakai dengan ofensif, serangan ini melukai sasaran dua kali lipat. "
-"Ini juga menyebabkan unit ini dilukai dua kali lipat dari serangan balasan "
-"sasaran."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Menghisap:\n"
-"Unit ini menghisap kesehatan dari unit hidup, mengobati dirinya sendiri "
-"untuk setengah jumlah luka yang ia lakukan (dibulatkan ke bawah)"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "serangan pertama"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Serangan Pertama;\n"
-"Unit ini selalu menyerang pertama dengan serangan ini, bahkan ketika ia "
-"melindungi."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Meracuni:\n"
-"Serangan ini meracuni sasaran yang hidup. Unit yang diracuni kehilangan 8 "
-"darah setiap giliran sampai ia disembuhkan atau hanya memiliki 1 darah. "
-"Racun tidak bisa, dengan sendiri, membunuh sebuah unit."
-
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
@@ -5622,7 +5520,7 @@ msgstr ""
 msgid "The Long Dark (4)"
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:10
+#: data/core/macros/special-notes.cfg:9
 #, fuzzy
 #| msgid ""
 #| " Spirits have very unusual resistances to damage, and move quite slowly "
@@ -5634,7 +5532,7 @@ msgstr ""
 " Roh-roh memiliki daya tahan yang sangat aneh, dan bergerak lumayan lambat "
 "di atas perairan."
 
-#: data/core/macros/special-notes.cfg:13
+#: data/core/macros/special-notes.cfg:12
 #, fuzzy
 #| msgid ""
 #| " This unit’s arcane attack deals tremendous damage to magical creatures, "
@@ -5646,19 +5544,19 @@ msgstr ""
 " Serangan misterius unit ini melukai makhluk-makhluk magis dengan luar "
 "biasa, dan bahkan lumayan ke makhluk-makhluk biasa."
 
-#: data/core/macros/special-notes.cfg:20
+#: data/core/macros/special-notes.cfg:19
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing."
 msgstr " Unit ini menguasai pengobatan dasar."
 
-#: data/core/macros/special-notes.cfg:23
+#: data/core/macros/special-notes.cfg:22
 #, fuzzy
 #| msgid " This unit is capable of rapid healing."
 msgid "This unit is capable of rapid healing."
 msgstr " Unit ini menguasai pengobatan cepat."
 
-#: data/core/macros/special-notes.cfg:26
+#: data/core/macros/special-notes.cfg:25
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -5669,7 +5567,7 @@ msgstr ""
 " Unit ini sanggup mengobati semua orang di sekelilingnya, dan menyembuhkan "
 "mereka dari racun."
 
-#: data/core/macros/special-notes.cfg:29
+#: data/core/macros/special-notes.cfg:28
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of neutralizing the effects of poison in units "
@@ -5680,7 +5578,7 @@ msgid ""
 msgstr ""
 " Unit ini sanggup menetralkan efek racun di dalam unit di sekelilingnya."
 
-#: data/core/macros/special-notes.cfg:32
+#: data/core/macros/special-notes.cfg:31
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -5692,7 +5590,7 @@ msgstr ""
 " Unit ini memulihkan diri sendiri, menyanggupkannya mengobati diri sendiri "
 "seperti ia selalu di dalam sebuah desa."
 
-#: data/core/macros/special-notes.cfg:35
+#: data/core/macros/special-notes.cfg:34
 #, fuzzy
 #| msgid ""
 #| " The steadiness of this unit reduces damage from some attacks, but only "
@@ -5704,7 +5602,7 @@ msgstr ""
 " Kekukuhan unit ini mengurangi luka dari beberapa serangan, tetapi jika "
 "melindungi diri sendiri."
 
-#: data/core/macros/special-notes.cfg:38
+#: data/core/macros/special-notes.cfg:37
 #, fuzzy
 #| msgid ""
 #| " The leadership of this unit enables adjacent units of the same side to "
@@ -5718,7 +5616,7 @@ msgstr ""
 "melukai lebih banyak darah di peperangan, meskipun ini hanya berlaku untuk "
 "unit berlevel lebih rendah."
 
-#: data/core/macros/special-notes.cfg:41
+#: data/core/macros/special-notes.cfg:40
 #, fuzzy
 #| msgid ""
 #| " This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
@@ -5730,13 +5628,13 @@ msgstr ""
 " Kemampuan unit ini menyelinap membolehkannya mengabaikan zona kekuasaan "
 "musuh dan dengan demikian, bisa bergerak melewat mereka tanpa dihalangi."
 
-#: data/core/macros/special-notes.cfg:44
+#: data/core/macros/special-notes.cfg:43
 #, fuzzy
 #| msgid " Illumination increases the lighting level in adjacent areas."
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr " Penerangan menambahkan level cahaya di daerah sekitar."
 
-#: data/core/macros/special-notes.cfg:47
+#: data/core/macros/special-notes.cfg:46
 #, fuzzy
 #| msgid ""
 #| " This unit can use one move to teleport between any two empty villages "
@@ -5748,7 +5646,7 @@ msgstr ""
 " Unit ini bisa menggunakan satu angka pergerakan untuk teleportasi di antara "
 "dua desa kosong yang dikontrol oleh sisinya."
 
-#: data/core/macros/special-notes.cfg:50
+#: data/core/macros/special-notes.cfg:49
 #, fuzzy
 #| msgid ""
 #| " In woodlands, this unit’s ambush skill renders it invisible to enemies "
@@ -5761,7 +5659,7 @@ msgstr ""
 "dilihat oleh musuh kecuali jika ia di sebelah unit musuh, atau sudah "
 "menunjukkan diri sendiri dengan menyerang."
 
-#: data/core/macros/special-notes.cfg:53
+#: data/core/macros/special-notes.cfg:52
 #, fuzzy
 #| msgid ""
 #| " This unit is able to hide at night, leaving no trace of its presence."
@@ -5769,7 +5667,7 @@ msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 " Unit ini bisa bersembunyi pada malam hari, tidak meninggalkan jejak apapun."
 
-#: data/core/macros/special-notes.cfg:56
+#: data/core/macros/special-notes.cfg:55
 #, fuzzy
 #| msgid ""
 #| " This unit can hide in villages (with the exception of water villages), "
@@ -5781,7 +5679,7 @@ msgstr ""
 " Unit ini bisa bersembunyi di desa (kecuali desa air), dan tidak dideteksi "
 "oleh musuhnya, kecuali mereka yang berdiri di sebelahnya."
 
-#: data/core/macros/special-notes.cfg:59
+#: data/core/macros/special-notes.cfg:58
 #, fuzzy
 #| msgid ""
 #| " This unit can move unseen in deep water, requiring no air from the "
@@ -5792,7 +5690,7 @@ msgstr ""
 " Unit ini bisa bergerak tanpa terlihat di perairan dalam, tidak memerlukan "
 "udara dari permukaan."
 
-#: data/core/macros/special-notes.cfg:62
+#: data/core/macros/special-notes.cfg:61
 #, fuzzy
 #| msgid ""
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -5804,7 +5702,7 @@ msgstr ""
 " Unit ini memperoleh 1 darah ditambahkan ke darah maksimumnya ketika ia "
 "membunuh sebuah unit hidup."
 
-#: data/core/macros/special-notes.cfg:65
+#: data/core/macros/special-notes.cfg:64
 #, fuzzy
 #| msgid ""
 #| " Whenever its berserk attack is used, this unit continues to push the "
@@ -5816,7 +5714,7 @@ msgstr ""
 " Ketika serangan mengamuknya digunakan, unit ini meneruskan serangannya "
 "sampai ia atau musuhnya terbunuh."
 
-#: data/core/macros/special-notes.cfg:68
+#: data/core/macros/special-notes.cfg:67
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -5831,7 +5729,7 @@ msgstr ""
 "bisa membokong, melukai dua kali lipat dengan merangkak ke belakang musuh "
 "itu."
 
-#: data/core/macros/special-notes.cfg:71
+#: data/core/macros/special-notes.cfg:70
 #, fuzzy
 #| msgid ""
 #| " Foes who lose their life to the plague will rise again in unlife, unless "
@@ -5843,7 +5741,7 @@ msgstr ""
 " Musuh yang kehilangan nyawanya karena wabah akan bangkit lagi setelah "
 "kematian, kecuali jika mereka berdiri di sebuah desa."
 
-#: data/core/macros/special-notes.cfg:74
+#: data/core/macros/special-notes.cfg:73
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -5855,7 +5753,7 @@ msgstr ""
 " Unit ini bisa melambatkan musuhnya, membagi dua kecepatan bergerak dan luka "
 "serangannya sampai ia mengakhirkan gilirannya."
 
-#: data/core/macros/special-notes.cfg:77
+#: data/core/macros/special-notes.cfg:76
 #, fuzzy
 #| msgid ""
 #| " The ability to turn the living to stone makes this unit extremely "
@@ -5866,7 +5764,7 @@ msgstr ""
 " Kemampuan merubah makhluk hidup menjadi batu membuat unit ini sangat "
 "berbahaya."
 
-#: data/core/macros/special-notes.cfg:80
+#: data/core/macros/special-notes.cfg:79
 #, fuzzy
 #| msgid ""
 #| " This unit’s marksmanship gives it a high chance of hitting targeted "
@@ -5878,7 +5776,7 @@ msgstr ""
 " Kejituan unit ini memberikannya kemungkinan tinggi mengenai sasaran, tetapi "
 "hanya ketika ia menyerang."
 
-#: data/core/macros/special-notes.cfg:83
+#: data/core/macros/special-notes.cfg:82
 #, fuzzy
 #| msgid ""
 #| " This unit has magical attacks, which always have a high chance of "
@@ -5890,7 +5788,7 @@ msgstr ""
 " Unit ini memiliki serangan magis, yang selalu memiliki kemungkinan tinggi "
 "mengenai musuh."
 
-#: data/core/macros/special-notes.cfg:86
+#: data/core/macros/special-notes.cfg:85
 #, fuzzy
 #| msgid ""
 #| " The swarming attacks of this unit become less deadly whenever its "
@@ -5902,7 +5800,7 @@ msgstr ""
 " Serangan menyerubung unit ini menjadi kurang berbahaya ketika bagian "
 "badannya terluka."
 
-#: data/core/macros/special-notes.cfg:89
+#: data/core/macros/special-notes.cfg:88
 #, fuzzy
 #| msgid ""
 #| " Using a charging attack doubles both damage dealt and received; this "
@@ -5914,7 +5812,7 @@ msgstr ""
 " Menggunakan serangan menyerbu menggandakan luka yang diberi dan diterima; "
 "ini tidak mempengaruhi balasan bertahan."
 
-#: data/core/macros/special-notes.cfg:92
+#: data/core/macros/special-notes.cfg:91
 #, fuzzy
 #| msgid ""
 #| " During battle, this unit can drain life from victims to renew its own "
@@ -5925,7 +5823,7 @@ msgstr ""
 " Ketika bertempur, unit ini bisa menghisap kehidupan dari korban untuk "
 "memperpanjang hidupnya sendiri."
 
-#: data/core/macros/special-notes.cfg:95
+#: data/core/macros/special-notes.cfg:94
 #, fuzzy
 #| msgid ""
 #| " The length of this unit’s weapon allows it to strike first in melee, "
@@ -5937,7 +5835,7 @@ msgstr ""
 " Panjang senjata unit ini membolehkannya menyerang pertama di pertarungan "
 "jarak dekat, bahkan ketika berlindung."
 
-#: data/core/macros/special-notes.cfg:98
+#: data/core/macros/special-notes.cfg:97
 #, fuzzy
 #| msgid ""
 #| " The victims of this unit’s poison will continually take damage until "
@@ -5949,25 +5847,18 @@ msgstr ""
 " Korban-korban dari racun unit ini akan terus dilukai sampai ia bisa "
 "disembuhkan di desa atau oleh sebuah unit yang bisa menyembuhkan."
 
-#: data/core/macros/special-notes.cfg:101
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
 msgstr ""
 
-#: data/core/macros/special-notes.cfg:116
-#: src/help/help_topic_generators.cpp:184
-#: src/help/help_topic_generators.cpp:601
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Special Notes:"
-msgid "Special Notes:"
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#: data/core/macros/special-notes.cfg:119
+msgid ""
+"Special Notes (1.14-style, please update to the new list format to avoid "
+"duplicates):"
 msgstr ""
-"\n"
-"\n"
-"Catatan Khusus:"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6521,6 +6412,310 @@ msgid ""
 msgstr ""
 "Unit-unit dengan sifat <italic>text='jompo'</italic> mendapatkan −8 tambahan "
 "darah dan −1 tambahan pergerakan dan luka jarak dekat."
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "mengamuk"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Mengamuk:\n"
+"Ketika dipakai dengan ofensif atau dengan bertahan,serangan ini meneruskan "
+"perkelahian sampai salah satu petarung terbunuh, atau 30 ronde serangan "
+"sudah terjadi."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+#, fuzzy
+#| msgid ""
+#| "Backstab:\n"
+#| "When used offensively, this attack deals double damage if there is an "
+#| "enemy of the target on the opposite side of the target, and that unit is "
+#| "not incapacitated (turned to stone or otherwise paralyzed)."
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Membokong:\n"
+"Ketika dipakai dengan ofensif, serangan ini melukai dua kali lipat jika ada "
+"musuh sasaran di balik sasaran, dan unit tersebut tidak cacat (diubah "
+"menjadi batu atau dilumpuhkan)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Mewabah:\n"
+"Ketika sebuah unit dibunuh oleh serangan Mewabah, unit itu digantikan dengan "
+"seorang Mayat Berjalan pada sisi sama dengan unit memiliki serangan Mewabah. "
+"Ini tidak mengefek Mayat Hidup atau unit-unit di dalam desa-desa."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+#, fuzzy
+#| msgid ""
+#| "Slow:\n"
+#| "This attack slows the target until it ends a turn. Slow halves the damage "
+#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
+#| "unit that is slowed will feature a snail icon in its sidebar information "
+#| "when it is selected."
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Memperlambat:\n"
+"Serangan ini memperlambatkan sasaran sampai unit tersebut mengakhirkan "
+"gilirannya. Memperlambat membagi dua luka yang disebabkan oleh serangan dan "
+"harga bergerak untuk unit diperlambat di dua kali lipatkan. Sebuah unit yang "
+"diperlambat akan menunjukkan sebuah simbol siput di papan informasinya "
+"ketika ia dipilih."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "membatu"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+#, fuzzy
+#| msgid ""
+#| "Petrify:\n"
+#| "This attack petrifies the target, turning it to stone. Units that have "
+#| "been petrified may not move or attack."
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Membatu:\n"
+"Serangan ini merubah sasaran menjadi batu. Unit yang sudah diubah menjadi "
+"batu tidak bisa bergerak atau menyerang."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+#, fuzzy
+#| msgid ""
+#| "Marksman:\n"
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Penembak jitu:\n"
+"Ketika dipakai dengan ofensif, serangan ini selalu memiliki paling sedikit "
+"60% kemungkinan mengenai sasaran."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "Marksman:\n"
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Penembak jitu:\n"
+"Ketika dipakai dengan ofensif, serangan ini selalu memiliki paling sedikit "
+"60% kemungkinan mengenai sasaran."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "Ilmu Sihir"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Magis:\n"
+"Serangan ini selalu memiliki 70% kemungkinan mengenai tanpa peduli kemampuan "
+"bertahan unit yang diserang."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "merubung"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+#, fuzzy
+#| msgid ""
+#| "Swarm:\n"
+#| "The number of strikes of this attack decreases when the unit is wounded. "
+#| "The number of strikes is proportional to the percentage of its of maximum "
+#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
+#| "3/4 of the number of strikes."
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Merubung:\n"
+"Nomor pukulan serangan ini berkurang ketika unit ini terluka. Nomor pukulan "
+"unit ini proporsional ke persentase darah maksimum yang ia miliki. Misalnya, "
+"sebuah unit dengan 3/4 darah maksimumnya akan mendapat 3/4 nomor pukulan."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "menyerbu"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+#, fuzzy
+#| msgid ""
+#| "Charge:\n"
+#| "When used offensively, this attack deals double damage to the target. It "
+#| "also causes this unit to take double damage from the target’s "
+#| "counterattack."
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Menyerbu:\n"
+"Ketika dipakai dengan ofensif, serangan ini melukai sasaran dua kali lipat. "
+"Ini juga menyebabkan unit ini dilukai dua kali lipat dari serangan balasan "
+"sasaran."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+#, fuzzy
+#| msgid ""
+#| "Drain:\n"
+#| "This unit drains health from living units, healing itself for half the "
+#| "amount of damage it deals (rounded down)."
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Menghisap:\n"
+"Unit ini menghisap kesehatan dari unit hidup, mengobati dirinya sendiri "
+"untuk setengah jumlah luka yang ia lakukan (dibulatkan ke bawah)"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
+msgstr "serangan pertama"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Serangan Pertama;\n"
+"Unit ini selalu menyerang pertama dengan serangan ini, bahkan ketika ia "
+"melindungi."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+#, fuzzy
+#| msgid ""
+#| "Poison:\n"
+#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
+#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
+#| "kill a unit."
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Meracuni:\n"
+"Serangan ini meracuni sasaran yang hidup. Unit yang diracuni kehilangan 8 "
+"darah setiap giliran sampai ia disembuhkan atau hanya memiliki 1 darah. "
+"Racun tidak bisa, dengan sendiri, membunuh sebuah unit."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| " This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+" Unit ini bisa melambatkan musuhnya, membagi dua kecepatan bergerak dan luka "
+"serangannya sampai ia mengakhirkan gilirannya."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -8286,6 +8481,19 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+
+#: src/help/help_topic_generators.cpp:184
+#: src/help/help_topic_generators.cpp:601
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Special Notes:"
+msgid "Special Notes:"
+msgstr ""
+"\n"
+"\n"
+"Catatan Khusus:"
 
 #: src/help/help_topic_generators.cpp:193
 #, fuzzy

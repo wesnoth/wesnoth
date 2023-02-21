@@ -202,6 +202,9 @@
 9 test_store_unit_defense_deprecated
 0 special_note_from_movetype
 0 special_note_individual_unit
+0 has_achievement
+0 test_movement_used
+0 test_attacks_used
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -228,7 +231,8 @@
 0 test_wml_actions
 0 test_wml_conditionals
 0 lua_wml_tagnames
-0 test_scoped_vars
+0 test_scoped_array
+0 test_scoped_scalar
 0 as_text
 0 test_lua_version_api
 #
@@ -309,6 +313,8 @@
 0 unslowable_status_test
 0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro
+0 trait_exclusion_test
+0 trait_requirement_test
 0 swarms_filter_student_by_type
 0 swarms_effects_not_checkable
 0 filter_special_id_active
@@ -395,6 +401,7 @@
 0 for_end2_step2
 0 for_end-2
 0 for_end-2_step-2
+0 foreach_mutate_nested
 # AI Config Parsing tests
 0 test_basic_simplified_aspect
 0 test_basic_abbreviated_aspect
@@ -423,8 +430,11 @@
 0 order_of_variable_events3
 0 premature_end_turn1
 2 premature_end_turn2
+0 kill_fires_events
 # Game mechanics
 0 heal
+0 zero_experience
+0 unit_no_advancements
 # Warnings about WML
 0 unknown_scenario_false_positives
 0 unknown_scenario_interpolated
