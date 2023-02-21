@@ -122,7 +122,7 @@ create table game_content_info
     NAME              VARCHAR(255),
     ADDON_ID          VARCHAR(100) NOT NULL,
     ADDON_VERSION     VARCHAR(255) NOT NULL,
-    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE)
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, ADDON_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about an uploaded addon
