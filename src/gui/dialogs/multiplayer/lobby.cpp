@@ -38,6 +38,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/dialogs/server_info_dialog.hpp"
+#include "gui/dialogs/multiplayer/match_history.hpp"
 
 #include "addon/client.hpp"
 #include "addon/manager_ui.hpp"
@@ -654,8 +655,8 @@ void mp_lobby::pre_show(window& window)
 			auto& profile_button = find_widget<button>(profile_panel, "view_profile", false);
 			connect_signal_mouse_left_click(profile_button, std::bind(&mp_lobby::open_profile_url, this));
 
-			// TODO: implement
-			find_widget<button>(profile_panel, "view_match_history", false).set_active(false);
+			auto& history_button = find_widget<button>(profile_panel, "view_match_history", false);
+			connect_signal_mouse_left_click(history_button, std::bind(&mp_lobby::open_match_history, this));
 		}
 	}
 
@@ -703,6 +704,14 @@ void mp_lobby::post_show(window& /*window*/)
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
 	plugins_context_.reset();
+}
+
+void mp_lobby::open_match_history()
+{
+	const mp::user_info* info = player_list_.get_selected_info();
+	if(info) {
+		mp_match_history::display(info->name, network_connection_);
+	}
 }
 
 void mp_lobby::network_handler()

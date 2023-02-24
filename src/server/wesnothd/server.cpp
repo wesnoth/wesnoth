@@ -1139,6 +1139,34 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 		handle_join_game(player, *join);
 		return;
 	}
+
+ 	if(simple_wml::node* request = data.child("game_history_request")) {
+		if(user_handler_) {
+			int offset = request->attr("offset").to_int();
+			int player_id = 0;
+
+			// if no search_for attribute -> get the requestor's forum id
+			// if search_for attribute for offline player -> query the forum database for the forum id
+			// if search_for attribute for online player -> get the forum id from wesnothd's player info
+			if(!request->has_attr("search_for")) {
+				player_id = player->info().config_address()->attr("forum_id").to_int();
+			} else {
+				std::string player_name = request->attr("search_for").to_string();
+				auto player_ptr = player_connections_.get<name_t>().find(player_name);
+				if(player_ptr == player_connections_.get<name_t>().end()) {
+					player_id = user_handler_->get_forum_id(player_name);
+				} else {
+					player_id = player_ptr->info().config_address()->attr("forum_id").to_int();
+				}
+			}
+
+			if(player_id != 0) {
+				LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`.";
+				user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset);
+			}
+		}
+		return;
+	}
 }
 
 void server::handle_whisper(player_iterator player, simple_wml::node& whisper)
@@ -1866,32 +1894,6 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 	} else if(data.child("stop_updates")) {
 		g.send_data(data, p);
-		return;
-	} else if(simple_wml::node* request = data.child("game_history_request")) {
-		if(user_handler_) {
-			int offset = request->attr("offset").to_int();
-			int player_id = 0;
-
-			// if no search_for attribute -> get the requestor's forum id
-			// if search_for attribute for offline player -> query the forum database for the forum id
-			// if search_for attribute for online player -> get the forum id from wesnothd's player info
-			if(!request->has_attr("search_for")) {
-				player_id = player.config_address()->attr("forum_id").to_int();
-			} else {
-				std::string player_name = request->attr("search_for").to_string();
-				auto player_ptr = player_connections_.get<name_t>().find(player_name);
-				if(player_ptr == player_connections_.get<name_t>().end()) {
-					player_id = user_handler_->get_forum_id(player_name);
-				} else {
-					player_id = player_ptr->info().config_address()->attr("forum_id").to_int();
-				}
-			}
-
-			if(player_id != 0) {
-				LOG_SERVER << "Querying game history requested by player `" << player.name() << "` for player id `" << player_id << "`.";
-				user_handler_->async_get_and_send_game_history(io_service_, *this, p, player_id, offset);
-			}
-		}
 		return;
 	// Data to ignore.
 	} else if(

@@ -27,12 +27,9 @@ void game_history::read(mariadb::result_set_ref rslt)
     {
         result r;
         r.game_name = rslt->get_string("GAME_NAME");
-        r.reload = rslt->get_boolean("RELOAD");
         r.game_start = rslt->get_date_time("START_TIME").str();
         r.scenario_name = rslt->get_string("SCENARIO_NAME");
-        r.scenario_id = rslt->get_string("SCENARIO_ID");
         r.era_name = rslt->get_string("ERA_NAME");
-        r.era_id = rslt->get_string("ERA_ID");
         for(const auto& player_info : utils::split(rslt->get_string("PLAYERS")))
         {
             std::vector<std::string> info = utils::split(player_info, ':');
@@ -46,8 +43,8 @@ void game_history::read(mariadb::result_set_ref rslt)
             }
         }
         r.modification_names = utils::split(rslt->get_string("MODIFICATION_NAMES"));
-        r.modification_ids = utils::split(rslt->get_string("MODIFICATION_IDS"));
         r.replay_url = rslt->get_string("REPLAY_URL");
+        r.version = rslt->get_string("VERSION");
         results.push_back(std::move(r));
     }
 }
@@ -59,12 +56,11 @@ std::unique_ptr<simple_wml::document> game_history::to_doc()
     {
         simple_wml::node& ghr = doc->root().add_child("game_history_result");
         ghr.set_attr_dup("game_name", result.game_name.c_str());
-        ghr.set_attr_int("reload", result.reload);
         ghr.set_attr_dup("game_start", result.game_start.c_str());
         ghr.set_attr_dup("scenario_name", result.scenario_name.c_str());
-        ghr.set_attr_dup("scenario_id", result.scenario_id.c_str());
         ghr.set_attr_dup("era_name", result.era_name.c_str());
-        ghr.set_attr_dup("era_id", result.era_id.c_str());
+        ghr.set_attr_dup("replay_url", result.replay_url.c_str());
+        ghr.set_attr_dup("version", result.version.c_str());
         for(const auto& player : result.players)
         {
             simple_wml::node& p = ghr.add_child("player");
@@ -75,11 +71,6 @@ std::unique_ptr<simple_wml::document> game_history::to_doc()
         {
             simple_wml::node& m = ghr.add_child("modification");
             m.set_attr_dup("name", mod.c_str());
-        }
-        for(const auto& mod : result.modification_ids)
-        {
-            simple_wml::node& m = ghr.add_child("modification");
-            m.set_attr_dup("id", mod.c_str());
         }
     }
     return doc;
