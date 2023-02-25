@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-20 04:03 UTC\n"
-"PO-Revision-Date: 2022-09-22 06:19+1000\n"
+"PO-Revision-Date: 2023-02-23 09:12+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -110,13 +110,6 @@ msgstr "And special thanks to everyone else who I forgot to mention."
 # TODO: fix the clause that talks about damage reduction
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -124,9 +117,9 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"dehydrated: This unit is dehydrated. It will lose 4 HP and have its damage "
-"reduced by 1 each turn during the day unless prevented by healers or cured "
-"by water at an oasis.\n"
+"dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
+"its damage reduced by 1 each turn during the day unless prevented by healers "
+"or cured by water at an oasis.\n"
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 
@@ -15227,10 +15220,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
-msgstr "sand storm"
+msgstr "sandstorm"
 
 #. [unit_type]: id=Quenoth Dustbok, race=monster
 #. Made-up animal name derived from 'dust' (sand) and 'bok' as in real-world steenbok or springbok antelope
@@ -15264,16 +15255,6 @@ msgstr "Quenoth Fighter"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15288,11 +15269,12 @@ msgstr ""
 "Long ago, during more prosperous times, elven warriors favoured the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
 "However, in recent times, the dearth of supplies for smithing has reduced "
-"the availability of blade-crafting, necessitating the fashioning of cheaper, "
-"more easily repaired weaponry. Quenoth Fighters are remarkably skilled in "
-"coordinated groups, where they can counteract the lack of more sophisticated "
-"weaponry by forming robust spear ranks capable of repelling nearly any "
-"frontal assault."
+"the availability of blade-crafting, ma the fashioning of cheaper, more "
+"easily repaired weaponry. To compensate for this diminishing in armament "
+"quality, the Quenoth have adopted a greater flexibility in their use. In the "
+"open sands, a fighter is trained to develop the acumen to split his "
+"attention between multiple enemies, be they brigand, wild creature, or "
+"undead."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15574,13 +15556,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 msgid "sun invocation"
-msgstr ""
+msgstr "sun invocation"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "sun ray"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15613,7 +15595,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:71
 msgid "sun incarnate"
-msgstr ""
+msgstr "sun incarnate"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5

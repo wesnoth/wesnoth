@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-01-15 18:26+1100\n"
+"PO-Revision-Date: 2023-02-23 09:04+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -8029,29 +8029,24 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "This unit has been petrified. It may not move or attack."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "unhealable"
+msgstr "unhealable: "
 
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn't benefit from resting."
 msgstr ""
+"This unit cannot be healed by healers or villages and doesn’t benefit from "
+"resting."
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "invisible: "
+msgstr "invulnerable: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr "This unit is invisible. It cannot be seen or attacked by enemy units."
+msgstr "This unit is invulnerable. It cannot be harmed by any attack."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -8728,24 +8723,17 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movement points"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:543
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number damage"
-msgstr[1] "$number damage"
+msgstr[0] "$number attack used"
+msgstr[1] "$number attacks used"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:552
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> attack per turn"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacks per turn"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> attack used"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacks used"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -8858,12 +8846,13 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"Cannot create log files in directory $logdir. This is often caused by "
+"incorrect directory permissions, anti-virus software restricting directory "
+"access, or using OneDrive to manage your My Documents folder."
 
 #: src/wesnoth.cpp:813
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Logging"
+msgstr "Logging Failure"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
