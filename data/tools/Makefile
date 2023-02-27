@@ -70,6 +70,9 @@ unchecked:
 	@./wmlscope --unchecked $(MAINLINE) $(UMC)
 
 # Reindent the mainline content
+#
+# The schema and GUI directories are currently mainly indented with tabs.
+# Although the schema isn't reindented here, it's at least checked for consistency.
 reindent:
 	@./wmlindent \
 		--exclude=../../data/languages \
@@ -79,6 +82,7 @@ reindent:
 		--exclude=../../data/test/scenarios/wml_tests/TerrainWML \
 		--exclude=../../data/schema \
 		$(DATA)
+	@find ../../data/schema -name \*.cfg -print0 | xargs -0 ./check_mixed_indent
 
 # Extract a table of editor keybindings from the editor theme definition
 editor_bindings:
