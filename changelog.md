@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Under the Burning Suns
+     * S05 Fixed the main cavern event not taking scouting into account. (issue #7394)
  ### Editor
  ### Multiplayer
  ### Lua API
