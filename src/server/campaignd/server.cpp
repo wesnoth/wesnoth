@@ -2051,8 +2051,8 @@ int main(int argc, char** argv)
 	} catch(const boost::program_options::error& e) {
 		PLAIN_LOG << "Error in command line: " << e.what();
 		return 10;
-	} catch(const config::error& /*e*/) {
-		PLAIN_LOG << "Could not parse config file";
+	} catch(const config::error& e) {
+		PLAIN_LOG << "Could not parse config file: " << e.message;
 		return 1;
 	} catch(const filesystem::io_exception& e) {
 		PLAIN_LOG << "File I/O error: " << e.what();
