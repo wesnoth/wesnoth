@@ -347,12 +347,12 @@ void server::load_config()
 	// One month probably will be fine (#TODO: testing needed)
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
-	if(const auto& svinfo_cfg = server_info()) {
-		server_id_ = svinfo_cfg["id"].str();
-		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
-		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
-		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
-	}
+	const auto& svinfo_cfg = server_info();
+
+	server_id_ = svinfo_cfg["id"].str();
+	feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+	web_url_ = svinfo_cfg["web_url"].str(default_web_url);
+	license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
 	load_blacklist();
