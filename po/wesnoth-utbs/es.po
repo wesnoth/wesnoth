@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-20 04:03 UTC\n"
-"PO-Revision-Date: 2023-01-22 03:16+0100\n"
+"PO-Revision-Date: 2023-03-05 08:42+0100\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -114,13 +114,6 @@ msgstr "Y especiales agradecimientos a todos los que he olvidado de mencionar."
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -128,9 +121,9 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"deshidratada: Esta unidad está deshidratada. Perderá 4 PV y tiene reducido "
-"el daño en 1 por cada turno durante el día a no ser que lo impida un sanador "
-"adyacente o se cure con agua en un oasis. \n"
+"deshidratada: Esta unidad está deshidratada. Perderá $dehydration PV y tiene "
+"reducido el daño en 1 por cada turno durante el día a no ser que lo impida "
+"un sanador adyacente o se cure con agua en un oasis. \n"
 "\n"
 "Las unidades no pueden morir o dejar de hacer daño como resultado de la "
 "deshidratación."
@@ -15554,8 +15547,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "tormenta de arena"
 
@@ -15593,16 +15584,6 @@ msgstr "Luchador Quenoth"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15618,10 +15599,11 @@ msgstr ""
 "uso de la espada como un arma más elegante y versátil comparada con otras "
 "armas cuerpo a cuerpo. Sin embargo, en tiempos más recientes, la escasez de "
 "suministros para la forja ha reducido las posibilidades de fabricar espadas, "
-"obligando a la creación de armas más baratas y fáciles de reparar. Los "
-"luchadores quenoth son muy habilidosos en grupos coordinados, donde pueden "
-"contrarrestar la falta de armamento más sofisticado formando sólidas filas "
-"de lanceros capaces de rechazar casi cualquier asalto frontal."
+"obligando a la creación de armas más baratas y fáciles de reparar. Para "
+"compensar la calidad menguante del armamento, los quenoth han adoptado una "
+"mayor flexibilidad en su uso. En las arenas abiertas, un luchador es "
+"entrenado para desarrollar la perspicacia en dividir su atención entre "
+"múltiples enemigos, ya sean bandidos, criaturas salvajes o muertos vivientes."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15915,13 +15897,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 msgid "sun invocation"
-msgstr ""
+msgstr "invocación solar"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "rayo de sol"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15955,7 +15937,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:71
 msgid "sun incarnate"
-msgstr ""
+msgstr "sol encarnado"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
