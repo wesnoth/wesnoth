@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-01-17 17:41+0100\n"
+"PO-Revision-Date: 2023-03-05 07:45+0100\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -8208,31 +8208,24 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Esta unidad ha sido petrificada. No se puede mover ni atacar."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "incurable"
+msgstr "incurable: "
 
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn't benefit from resting."
 msgstr ""
+"Esta unidad es incurable. No puede ser sanada por sanadores o aldeas y no se "
+"puede beneficiar del descanso."
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "invisible: "
+msgstr "invulnerable: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr ""
-"Esta unidad es invisible. No puede ser vista ni atacada por unidades "
-"enemigas."
+msgstr "Esta unidad es invulnerable. No puede ser dañada por ningún ataque."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -8930,24 +8923,17 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimientos"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:543
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number daño"
-msgstr[1] "$number daños"
+msgstr[0] "$number ataque usado"
+msgstr[1] "$number ataques usados"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:552
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por turno"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turno"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque usado"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques usados"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -9061,12 +9047,14 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"No se pudieron crear ficheros de registro en el directorio $logdir. "
+"Usualmente es causado por permisos incorrectos en el directorio, "
+"restricciones por programas anti-virus, o por usar OneDrive para gestionar "
+"tu carpeta Mis Documentos."
 
 #: src/wesnoth.cpp:813
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Registro de eventos"
+msgstr "Fallo de inicio de sesión"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."

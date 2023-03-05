@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-19 22:02-0600\n"
-"PO-Revision-Date: 2023-01-15 20:20+0100\n"
+"PO-Revision-Date: 2023-03-05 07:50+0100\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -1867,7 +1867,7 @@ msgstr "Borde aparente del mapa"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3147
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Marcador de arte"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -2455,10 +2455,8 @@ msgstr "Perfil"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:49
 #: data/gui/window/title_screen.cfg:257 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Promociones"
+msgstr "Logros"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -5564,7 +5562,7 @@ msgstr "Mostrar orbes de los aliados"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "Usa un orbe de dos colores para los aliados durante su turno"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5573,6 +5571,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Durante los turnos de tus aliados, sus unidades tienen un orbe de dos "
+"colores. Una mitad es el color del orbe aliado y la otra mitad muestra si la "
+"unidad no se ha movido, movido parcialmente o movido por completo."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -5818,10 +5819,8 @@ msgstr "Configurar los ajustes del juego"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "Vista: Cada equipo"
+msgstr "Ver logros"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:258
@@ -6203,7 +6202,7 @@ msgstr ""
 #: src/gui/dialogs/achievements_dialog.cpp:103
 #: src/gui/dialogs/achievements_dialog.cpp:165
 msgid "Completed"
-msgstr ""
+msgstr "Completado"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^All Add-ons"
@@ -6905,7 +6904,7 @@ msgstr ""
 
 #: src/gui/dialogs/lua_interpreter.cpp:675
 msgid "lua console"
-msgstr "Consola de Lua"
+msgstr "consola lua"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:141
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:488
@@ -6954,7 +6953,7 @@ msgstr "$game_name (Era: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:422
 msgid "era_or_mod^not installed"
-msgstr "Sin instalar"
+msgstr "sin instalar"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:425
 msgid "Era"
@@ -7483,7 +7482,7 @@ msgstr "Ataques"
 #: src/gui/widgets/unit_preview_pane.cpp:453
 #: src/gui/widgets/unit_preview_pane.cpp:485
 msgid "Lvl $lvl"
-msgstr "nv $lvl"
+msgstr "Nv $lvl"
 
 #: src/gui/widgets/unit_preview_pane.cpp:339
 #: src/gui/widgets/unit_preview_pane.cpp:352
