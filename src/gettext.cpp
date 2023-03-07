@@ -462,7 +462,7 @@ inline const char* is_unlocalized_string2(const std::string& str, const char* si
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
-	
+
 	auto original = is_unlocalized_string2(msgval, singular, plural);
 	if (original) {
 		const char* firsthat = std::strchr (original, '^');
