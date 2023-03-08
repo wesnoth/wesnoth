@@ -18,11 +18,14 @@
 #include "formula/string_utils.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
+#include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
+#include "network_download_file.hpp"
+#include "serialization/string_utils.hpp"
 #include "wesnothd_connection.hpp"
 
 using namespace std::chrono_literals;
@@ -30,8 +33,6 @@ using namespace std::chrono_literals;
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
-
-// TODO: put close button outside of scrollbar area
 
 namespace gui2::dialogs
 {
@@ -104,7 +105,10 @@ bool mp_match_history::update_display()
 		button* replay_download = dynamic_cast<button*>(history_grid.find("replay_download", false));
 		std::string replay_url = game["replay_url"].str();
 		if(!replay_url.empty()) {
-			connect_signal_mouse_left_click(*replay_download, std::bind(&desktop::open_object, game["replay_url"].str()));
+			std::string filename = utils::split(replay_url, '/').back();
+			std::string local_save = filesystem::get_saves_dir()+"/"+filename;
+
+			connect_signal_mouse_left_click(*replay_download, std::bind(&network::download, replay_url, local_save));
 		} else {
 			replay_download->set_active(false);
 		}
