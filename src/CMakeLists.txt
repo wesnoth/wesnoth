@@ -248,6 +248,7 @@ if(ENABLE_GAME)
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
+		CURL::libcurl
 	)
 	if(MSVC)
 		target_link_libraries(wesnoth SDL2_image::SDL2_image)
@@ -295,6 +296,7 @@ if(ENABLE_TESTS)
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
+		CURL::libcurl
 	)
 	if(MSVC)
 		target_link_libraries(boost_unit_tests SDL2_image::SDL2_image)

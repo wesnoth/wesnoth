@@ -43,6 +43,10 @@
     "boost-scope-exit",
     "boost-circular-buffer",
     "boost-ptr-container",
-    "boost-test"
+    "boost-test",
+    {
+      "name": "curl",
+      "features": [ "openssl" ]
+    }
   ]
 }
