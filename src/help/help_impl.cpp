@@ -34,6 +34,7 @@
 #include "units/race.hpp"               // for unit_race, etc
 #include "resources.hpp"                // for tod_manager, config_manager
 #include "sdl/surface.hpp"                // for surface
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 #include "serialization/utf8_exception.hpp"  // for char_t, etc
@@ -255,8 +256,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		  throw parse_error(ss.str());
 		}
 
-		std::vector<topic> generated_topics =
-		generate_topics(sort_generated,(*section_cfg)["generator"]);
+		std::vector<topic> generated_topics = generate_topics(sort_generated,(*section_cfg)["generator"]);
 
 		const std::vector<std::string> topics_id = utils::quoted_split((*section_cfg)["topics"]);
 		std::vector<topic> topics;
@@ -266,7 +266,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			if (const config &topic_cfg = help_cfg->find_child("topic", "id", *it))
 			{
 				std::string text = topic_cfg["text"];
-				text += generate_topic_text(topic_cfg["generator"], help_cfg, sec, generated_topics);
+				text += generate_topic_text(topic_cfg["generator"], help_cfg, sec);
 				topic child_topic(topic_cfg["title"], topic_cfg["id"], text);
 				if (!is_valid_id(child_topic.id)) {
 					std::stringstream ss;
@@ -358,7 +358,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	}
 }
 
-std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec, const std::vector<topic>& generated_topics)
+std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec)
 {
 	std::string empty_string = "";
 	if (generator.empty()) {
@@ -367,7 +367,7 @@ std::string generate_topic_text(const std::string &generator, const config *help
 		std::vector<std::string> parts = utils::split(generator, ':');
 		if (parts.size() > 1 && parts[0] == "contents") {
 			if (parts[1] == "generated") {
-				return generate_contents_links(sec, generated_topics);
+				return generate_contents_links(sec);
 			} else {
 				return generate_contents_links(parts[1], help_cfg);
 			}
@@ -382,7 +382,7 @@ topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
 	return *this;
 }
 
-const std::vector<std::string>& topic_text::parsed_text() const
+const config& topic_text::parsed_text() const
 {
 	if (generator_) {
 		parsed_text_ = parse_text((*generator_)());
@@ -1236,7 +1236,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		return res.str();
 }
 
-std::string generate_contents_links(const section &sec, const std::vector<topic>& topics)
+std::string generate_contents_links(const section &sec)
 {
 		std::stringstream res;
 
@@ -1247,7 +1247,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 			}
 		}
 
-		for (auto &t : topics) {
+		for(const topic& t : sec.topics) {
 			if (is_visible_id(t.id)) {
 				std::string link = make_link(t.title, t.id);
 				res << font::unicode_bullet << " " << link << "\n";
@@ -1324,9 +1324,9 @@ section *find_section(section &sec, const std::string &id)
 	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
 }
 
-std::vector<std::string> parse_text(const std::string &text)
+config parse_text(const std::string &text)
 {
-	std::vector<std::string> res;
+	config res;
 	bool last_char_escape = false;
 	const char escape_char = '\\';
 	std::stringstream ss;
@@ -1344,7 +1344,7 @@ std::vector<std::string> parse_text(const std::string &text)
 						ss << c;
 					}
 					else {
-						res.push_back(ss.str());
+						res.add_child("text", config("text", ss.str()));
 						ss.str("");
 						state = ELEMENT_NAME;
 					}
@@ -1371,10 +1371,18 @@ std::vector<std::string> parse_text(const std::string &text)
 						msg << "Unterminated element: " << element_name;
 						throw parse_error(msg.str());
 					}
-					s.str("");
 					const std::string contents = text.substr(pos + 1, end_pos - pos - 1);
-					const std::string element = convert_to_wml(element_name, contents);
-					res.push_back(element);
+					s.str(convert_to_wml(element_name, contents));
+					s.seekg(0);
+					try {
+						config cfg;
+						read(cfg, s);
+						res.append_children(cfg);
+					} catch(config::error& e) {
+						std::stringstream msg;
+						msg << "Error when parsing help markup as WML: '" << e.message << "'";
+						throw parse_error(msg.str());
+					}
 					pos = end_pos + end_element_name.size() - 1;
 					state = OTHER;
 				}
@@ -1392,7 +1400,7 @@ std::vector<std::string> parse_text(const std::string &text)
 	}
 	if (!ss.str().empty()) {
 		// Add the last string.
-		res.push_back(ss.str());
+		res.add_child("text", config("text", ss.str()));
 	}
 	return res;
 }

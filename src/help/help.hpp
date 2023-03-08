@@ -15,14 +15,14 @@
 
 #pragma once
 
+#include <string>
+#include <memory>
+
 class config;
 class terrain_type;
 class unit;
 class unit_type;
 class game_config_view;
-
-#include <memory>
-#include <string>
 
 namespace help {
 
@@ -56,6 +56,18 @@ struct help_manager {
  *@pre game_config_manager has been initialised
  */
 std::unique_ptr<help_manager> ensure_cache_lifecycle();
+	
+struct section;
+
+void init_help();
+
+/**
+ * Open a help dialog using a toplevel other than the default.
+ *
+ * This allows for complete customization of the contents, although not in a
+ * very easy way.
+ */
+void show_help(const section& toplevel, const std::string& show_topic = "");
 
 /**
  * Open the help browser. The help browser will have the topic with id
@@ -65,22 +77,29 @@ std::unique_ptr<help_manager> ensure_cache_lifecycle();
  *@pre game_config_manager has been initialised, or the instance of help_manager
  * has been created with an alternative config.
  */
-void show_help(const std::string& show_topic="", int xloc=-1, int yloc=-1);
+void show_help(const std::string& show_topic="");
 
-/** wrapper to add unit prefix and hiding symbol */
-void show_unit_help(const std::string& unit_id, bool has_variations=false,
-				bool hidden = false, int xloc=-1, int yloc=-1);
+/**
+ * Open the help browser, show unit with id unit_id.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
+void show_unit_help(const std::string& unit_id, bool has_variations = false, bool hidden = false);
 
-/** wrapper to add variation prefix and hiding symbol */
-void show_variation_help(const std::string &unit_id, const std::string &variation,
-				bool hidden = false, int xloc=-1, int yloc=-1);
+/**
+ * Open the help browser, show the variation of the unit matching.
+ */
+void show_variation_help(const std::string& unit_id, const std::string& variation, bool hidden = false);
 
-/** wrapper to add terrain prefix and hiding symbol */
-void show_terrain_help(const std::string& unit_id, bool hidden = false,
-				int xloc = -1, int yloc = -1);
+/**
+ * Open the help browser, show terrain with id terrain_id.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
+void show_terrain_help(const std::string& unit_id, bool hidden = false);
 
-void show_unit_description(const unit_type &t);
-void show_unit_description(const unit &u);
+void show_unit_description(const unit_type& t);
+void show_unit_description(const unit& u);
 void show_terrain_description(const terrain_type& t);
 
 } // End namespace help.

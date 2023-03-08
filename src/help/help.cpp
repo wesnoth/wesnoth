@@ -23,41 +23,22 @@
 #include "help/help.hpp"
 
 #include "config.hpp"                   // for config, etc
-#include "events.hpp"                   // for draw, pump, etc
-#include "font/constants.hpp"           // for relative_size
-#include "preferences/game.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"                  // for _
-#include "gui/dialogs/transient_message.hpp"
-#include "help/help_browser.hpp"        // for help_browser
+#include "gui/dialogs/help_browser.hpp"
 #include "help/help_impl.hpp"           // for hidden_symbol, toplevel, etc
-#include "key.hpp"                      // for CKey
-#include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "sdl/surface.hpp"              // for surface
-#include "show_dialog.hpp"              // for dialog_frame, etc
+#include "preferences/game.hpp"
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "units/unit.hpp"               // for unit
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
-#include "video.hpp"                    // for game_canvas_size
-#include "widgets/button.hpp"           // for button
 
 #include <cassert>                      // for assert
-#include <algorithm>                    // for min
 #include <ostream>                      // for basic_ostream, operator<<, etc
 #include <vector>                       // for vector, vector<>::iterator
-#include <SDL2/SDL.h>
-
-
-static lg::log_domain log_display("display");
-#define WRN_DP LOG_STREAM(warn, log_display)
-
-static lg::log_domain log_help("help");
-#define ERR_HELP LOG_STREAM(err, log_help)
 
 namespace help {
 /**
  * Open a help dialog using a specified toplevel.
- *
  * This would allow for complete customization of the contents, although not in a
  * very easy way. It's used as the internal implementation of the other help*
  * functions.
@@ -69,43 +50,47 @@ namespace help {
  * doesn't already exist, that would likely destroy the referenced object at
  * the point that this function exited.
  */
-void show_with_toplevel(const section &toplevel, const std::string& show_topic="", int xloc=-1, int yloc=-1);
+void show_with_toplevel(const section &toplevel, const std::string& show_topic="");
 
-
-void show_unit_description(const unit &u)
+void show_unit_description(const unit& u)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
 	help::show_unit_description(u.type());
 }
 
-void show_terrain_description(const terrain_type &t)
+void show_terrain_description(const terrain_type& t)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
 	help::show_terrain_help(t.id(), t.hide_help());
 }
 
-void show_unit_description(const unit_type &t)
+void show_unit_description(const unit_type& t)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
 	std::string var_id = t.get_cfg()["variation_id"].str();
-	if (var_id.empty())
+	if(var_id.empty()) {
 		var_id = t.get_cfg()["variation_name"].str();
+	}
+
 	bool hide_help = t.hide_help();
 	bool use_variation = false;
-	if (!var_id.empty()) {
-		const unit_type *parent = unit_types.find(t.id());
+
+	if(!var_id.empty()) {
+		const unit_type* parent = unit_types.find(t.id());
 		assert(parent);
-		if (hide_help) {
+
+		if(hide_help) {
 			hide_help = parent->hide_help();
 		} else {
 			use_variation = true;
 		}
 	}
 
-	if (use_variation)
+	if(use_variation) {
 		help::show_variation_help(t.id(), var_id, hide_help);
-	else
+	} else {
 		help::show_unit_help(t.id(), t.show_variations_in_help(), hide_help);
+	}
 }
 
 help_manager::help_manager(const game_config_view *cfg)
@@ -136,47 +121,48 @@ help_manager::~help_manager()
 	last_num_encountered_terrains = -1;
 }
 
-/**
- * Open the help browser, show topic with id show_topic.
- *
- * If show_topic is the empty string, the default topic will be shown.
- */
-void show_help(const std::string& show_topic, int xloc, int yloc)
+void show_help(const std::string& show_topic)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
-	show_with_toplevel(default_toplevel, show_topic, xloc, yloc);
+	show_with_toplevel(default_toplevel, show_topic);
 }
 
-/**
- * Open the help browser, show unit with id unit_id.
- *
- * If show_topic is the empty string, the default topic will be shown.
- */
-void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
+void show_unit_help(const std::string& show_topic, bool has_variations, bool hidden)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
 	show_with_toplevel(default_toplevel,
-			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
+			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic);
 }
 
-/**
- * Open the help browser, show terrain with id terrain_id.
- *
- * If show_topic is the empty string, the default topic will be shown.
- */
-void show_terrain_help(const std::string& show_topic, bool hidden, int xloc, int yloc)
+void show_terrain_help(const std::string& show_topic, bool hidden)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
-	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic);
 }
 
-/**
- * Open the help browser, show the variation of the unit matching.
- */
-void show_variation_help(const std::string& unit, const std::string &variation, bool hidden, int xloc, int yloc)
+void show_variation_help(const std::string& unit, const std::string& variation, bool hidden)
 {
 	auto cache_lifecycle = ensure_cache_lifecycle();
-	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation, xloc, yloc);
+	show_with_toplevel(default_toplevel, hidden_symbol(hidden) + variation_prefix + unit + "_" + variation);
+}
+
+void init_help()
+{
+	// Find all unit_types that have not been constructed yet and fill in the information
+	// needed to create the help topics
+	unit_types.build_all(unit_type::HELP_INDEXED);
+
+	if(preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
+		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+		last_debug_state != game_config::debug ||
+		last_num_encountered_units < 0) {
+		// More units or terrains encountered, update the contents.
+		last_num_encountered_units = preferences::encountered_units().size();
+		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		last_debug_state = game_config::debug;
+
+		generate_contents();
+	}
 }
 
 /**
@@ -185,93 +171,9 @@ void show_variation_help(const std::string& unit, const std::string &variation, 
  * This allows for complete customization of the contents, although not in a
  * very easy way.
  */
-void show_with_toplevel(const section &toplevel_sec,
-			   const std::string& show_topic,
-			   int xloc, int yloc)
+void show_with_toplevel(const section &toplevel_sec, const std::string& show_topic)
 {
-	const events::event_context dialog_events_context;
-	const gui::dialog_manager manager;
-
-	point canvas_size = video::game_canvas_size();
-
-	const int width  = std::min<int>(font::relative_size(1200), canvas_size.x - font::relative_size(20));
-	const int height = std::min<int>(font::relative_size(850), canvas_size.y - font::relative_size(150));
-	const int left_padding = font::relative_size(10);
-	const int right_padding = font::relative_size(10);
-	const int top_padding = font::relative_size(10);
-	const int bot_padding = font::relative_size(10);
-
-	// If not both locations were supplied, put the dialog in the middle
-	// of the screen.
-	if (yloc <= -1 || xloc <= -1) {
-		xloc = canvas_size.x / 2 - width / 2;
-		yloc = canvas_size.y / 2 - height / 2;
-	}
-	std::vector<gui::button*> buttons_ptr;
-	gui::button close_button_(_("Close"));
-	buttons_ptr.push_back(&close_button_);
-
-	gui::dialog_frame f(
-		_("Help"), gui::dialog_frame::default_style, &buttons_ptr
-	);
-	f.layout(xloc, yloc, width, height);
-
-	// Find all unit_types that have not been constructed yet and fill in the information
-	// needed to create the help topics
-	unit_types.build_all(unit_type::HELP_INDEXED);
-
-	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
-		last_debug_state != game_config::debug ||
-		last_num_encountered_units < 0)
-	{
-		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
-		last_debug_state = game_config::debug;
-		generate_contents();
-	}
-	try {
-		help_browser hb(toplevel_sec);
-		hb.set_location(xloc + left_padding, yloc + top_padding);
-		hb.set_width(width - left_padding - right_padding);
-		hb.set_height(height - top_padding - bot_padding);
-		if (!show_topic.empty()) {
-			hb.show_topic(show_topic);
-		}
-		else {
-			hb.show_topic(default_show_topic);
-		}
-		hb.queue_redraw();
-		events::draw();
-		CKey key;
-		for (;;) {
-			events::pump();
-			events::raise_process_event();
-			if (key[SDLK_ESCAPE]) {
-				// Escape quits from the dialog.
-				return;
-			}
-			for (std::vector<gui::button*>::iterator button_it = buttons_ptr.begin();
-				 button_it != buttons_ptr.end(); ++button_it) {
-				if ((*button_it)->pressed()) {
-					// There is only one button, close.
-					return;
-				}
-			}
-			// This also rate limits to vsync
-			events::draw();
-		}
-	}
-	catch (const parse_error& e) {
-		ERR_HELP << _("Parse error when parsing help text:") << " " << e.message;
-#if 0
-		// Displaying in the UI is disabled due to issue #2587
-		std::stringstream msg;
-		msg << _("Parse error when parsing help text:") << " '" << e.message << "'";
-		gui2::show_transient_message("", msg.str());
-#endif
-	}
+	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
 }
 
 } // End namespace help.
