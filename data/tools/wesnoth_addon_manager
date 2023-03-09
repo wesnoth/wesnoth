@@ -103,8 +103,13 @@ if __name__ == "__main__":
                 port = portnum
                 break
         else:
-            sys.stderr.write("Unknown BfW version %s\n" % args.port)
-            sys.exit(1)
+            for (portnum, version) in CampaignClient.deactivated:
+                if args.port == version:
+                    sys.stderr.write("Server for BfW version %s is deactivated\n" % version)
+                    sys.exit(1)
+            else:
+                sys.stderr.write("Unknown BfW version %s\n" % args.port)
+                sys.exit(1)
 
     address = args.address
     if not ":" in address:
