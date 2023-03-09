@@ -362,7 +362,7 @@ if __name__ == "__main__":
         mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, pbl)
 
         pcounter = 0
-        while not mythread.event.isSet():
+        while not mythread.event.is_set():
             mythread.event.wait(1)
             if cs.counter != pcounter:
                 print("%d/%d" % (cs.counter, cs.length))
