@@ -116,7 +116,7 @@ if __name__ == "__main__":
         mythread = cs.get_campaign_raw_async(name)
 
         pcounter = 0
-        while not mythread.event.isSet():
+        while not mythread.event.is_set():
             mythread.event.wait(1)
             if pcounter != cs.counter:
                 print("%s: %d/%d" % (name, cs.counter, cs.length))
