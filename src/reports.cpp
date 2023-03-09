@@ -353,6 +353,14 @@ static config unit_status(reports::context & rc, const unit* u)
 		add_status(res, "misc/petrified.png", N_("petrified: "),
 			N_("This unit has been petrified. It may not move or attack."));
 	}
+	if (u->get_state(unit::STATE_UNHEALABLE)) {
+		add_status(res, "misc/unhealable.png", N_("unhealable: "),
+			N_("This unit is unhealable. It cannot be healed by healers or villages and doesn’t benefit from resting."));
+	}
+	if (u->get_state(unit::STATE_INVULNERABLE)) {
+		add_status(res, "misc/invulnerable.png", N_("invulnerable: "),
+			N_("This unit is invulnerable. It cannot be harmed by any attack."));
+	}
 	return res;
 }
 REPORT_GENERATOR(unit_status,rc)

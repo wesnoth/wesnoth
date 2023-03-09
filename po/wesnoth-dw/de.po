@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2020-02-01 10:57+0100\n"
 "Last-Translator: German translation team <irc://irc.freenode.net/#wesnoth-"
 "de>\n"
@@ -105,12 +105,6 @@ msgstr "Feinschliff und Anpassungen für den Hauptzweig"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Künstlerische Gestaltung"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"Diese Einheit ist gelähmt. Sie kann keine Kontrollzone aufrechterhalten."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3336,32 +3330,6 @@ msgstr ""
 "Tinti lebte am Königshof und tollte in den Kelpzuchten Jothas herum bis er "
 "im Alter zu dick und faul dazu wurde."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Seezänker"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Gerade die großen und starken Meermenschen schlagen sich lieber mit Faust "
-"und Schwanz als mit irgendwelchen Waffen."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "gelähmt"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "gelähmt"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3383,20 +3351,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "Zepter"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Seebürger"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Meermenschen sind meist friedlich, doch kämpfen sie um ihre Heimat. Dann "
-"sind Meermenschen auch unbewaffnet ein gefährlicher Gegner."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3586,31 +3540,58 @@ msgstr ""
 "Dieser Menschenzauberer trug einen Ring. Der ist bestimmt magisch, sollte "
 "ihn nicht jemand ausprobieren?"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "Lähmung"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "Diese Einheit ist gelähmt. Sie kann keine Kontrollzone aufrechterhalten."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Dieser Angriff betäubt das Opfer, so dass keine Kontrollzone "
-"aufrechterhalten wird. Dieser Effekt wirkt nur bis zur nächsten Runde des "
-"Opfers."
+#~ msgid "Merman Brawler"
+#~ msgstr "Seezänker"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Gerade die großen und starken Meermenschen schlagen sich lieber mit Faust "
+#~ "und Schwanz als mit irgendwelchen Waffen."
+
+#~ msgid "stunned"
+#~ msgstr "gelähmt"
+
+#~ msgid "female^stunned"
+#~ msgstr "gelähmt"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Seebürger"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Meermenschen sind meist friedlich, doch kämpfen sie um ihre Heimat. Dann "
+#~ "sind Meermenschen auch unbewaffnet ein gefährlicher Gegner."
+
+#~ msgid "stun"
+#~ msgstr "Lähmung"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Dieser Angriff betäubt das Opfer, so dass keine Kontrollzone "
+#~ "aufrechterhalten wird. Dieser Effekt wirkt nur bis zur nächsten Runde des "
+#~ "Opfers."
+
 #, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-" Diese Einheit kann Gegner lähmen und setzt so deren Kontrollzone außer "
-"Kraft."
+#~| msgid ""
+#~| " This unit is able to stun its enemies, disrupting their zones of "
+#~| "control."
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ " Diese Einheit kann Gegner lähmen und setzt so deren Kontrollzone außer "
+#~ "Kraft."
 
 #~ msgid "Kraken"
 #~ msgstr "Riesenkrake"

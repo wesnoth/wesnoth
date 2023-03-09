@@ -56,7 +56,7 @@ For any questions, the best place to start is to simply join Wesnoth's forums, D
 Donations
 ---------
 
-Donations can be sent via [Liberapay](https://liberapay.com/Wesnoth) as well as when downloading through itch.io. All money donated is used to pay for project expenses such as server rent and art commissions, and is very much appreciated.
+Donations can be sent via [Software in the Public Interest](https://www.spi-inc.org/projects/wesnoth/), [Liberapay](https://liberapay.com/Wesnoth), as well as when downloading through itch.io. All money donated is used to pay for project expenses such as server rent and art commissions, and is very much appreciated.
 
 
 License

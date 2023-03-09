@@ -17,7 +17,6 @@
 
 #include "draw.hpp"
 #include "draw_manager.hpp"
-#include "floating_label.hpp"
 #include "widgets/widget.hpp"
 #include "sdl/rect.hpp"
 #include "tooltips.hpp"

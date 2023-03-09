@@ -163,14 +163,14 @@ for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 #---wesnoth---
-# for wesnoth_res and wesnothd_res, see packaging/windows/SConscript
+# for packaging/windows/wesnoth?.o, see packaging/windows/SConscript
 # used to set the executable icon for wesnoth and wesnothd
 libwesnoth_objects = libwesnoth_client + liblua + libwesnoth_core + libwesnoth_game + libwesnoth_sdl + libwesnoth_client
 if env["PLATFORM"] == 'darwin':
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["macosx/SDLMain.mm"], have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,-force_load', libwesnoth_widgets])
 elif env["PLATFORM"] == 'win32':
-    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + env["wesnoth_res"], have_client_prereqs)
+    wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["#/packaging/windows/wesnoth.o"], have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
 else:
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
@@ -181,7 +181,7 @@ if have_client_prereqs:
 #---wesnothd---
 wesnothd_sources = GetSources("wesnothd")
 if env["PLATFORM"] == 'win32':
-    env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core + env["wesnothd_res"], have_server_prereqs)
+    env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core + ["#/packaging/windows/wesnothd.o"], have_server_prereqs)
 elif env["forum_user_handler"]:
     env.WesnothProgram("wesnothd", wesnothd_sources + libwesnoth_core + libmariadbpp, have_server_prereqs)
 else:

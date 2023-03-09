@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
-"PO-Revision-Date: 2022-06-20 09:03+1000\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
+"PO-Revision-Date: 2023-02-23 09:10+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -27,7 +27,9 @@ msgstr "Battle Training"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
+#. [achievement_group]
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
+#: data/campaigns/tutorial/achievements.cfg:3
 msgid "Tutorial"
 msgstr "Tutorial"
 
@@ -44,6 +46,16 @@ msgstr ""
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
 msgstr "Beginner"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:7
+msgid "Completed the Tutorial"
+msgstr "Completed the Tutorial"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:8
+msgid "Completed all scenarios of the Tutorial campaign."
+msgstr "Completed all scenarios of the Tutorial campaign."
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
