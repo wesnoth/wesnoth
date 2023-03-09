@@ -64,10 +64,8 @@ if __name__ == "__main__":
         "This option only makes sense with --upload.")
     argumentparser.add_argument("-u", "--upload",
         help="Upload an add-on. " +
-        "UPLOAD should be either the name of an add-on subdirectory," +
-        "(in which case the client looks for _server.pbl beneath it) " +
-        "or a path to the .pbl file (in which case the name of the " +
-        "add-on subdirectory is the name of the path with .pbl removed)", type=valid_file_path)
+        "UPLOAD is the name of an add-on subdirectory, which must " +
+        "contain a _server.pbl file", type=valid_file_path)
     argumentparser.add_argument("-s", "--status",
         help="Display the status of addons installed in the given " +
         "directory.")
@@ -300,20 +298,13 @@ if __name__ == "__main__":
             # else basename returns an empty string
             args.upload = args.upload.rstrip("/")
 
-            # New style with _server.pbl
+            # Only the new style with _server.pbl is supported
             pbl_file_name = os.path.join(args.upload, "_server.pbl")
             name = os.path.basename(os.path.realpath(args.upload))
             wmldir = args.upload
-            cfgfile = None # _main.cfg will be uploaded with the rest
             ignfile = os.path.join(args.upload, "_server.ign")
         else:
-            # Old style with external .pbl file
-            pbl_file_name = args.upload
-            name = os.path.basename(args.upload)
-            name = os.path.splitext(name)[0]
-            wmldir = os.path.join(os.path.dirname(args.upload), name)
-            cfgfile = args.upload.replace(".pbl", ".cfg")
-            ignfile = args.upload.replace(".pbl", ".ign")
+            raise RuntimeError("the -u/--upload path must be a directory")
 
         if args.pbl:
             pbl_file_name = args.pbl
@@ -359,7 +350,7 @@ if __name__ == "__main__":
                 "*.project",
                 "__MACOSX/"]
 
-        mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, pbl)
+        mythread = cs.put_campaign_async(name, wmldir, ign, pbl)
 
         pcounter = 0
         while not mythread.event.is_set():

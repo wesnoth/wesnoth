@@ -287,11 +287,9 @@ class CampaignClient:
 
         return None
 
-    def put_campaign(self, name, cfgfile, directory, ign, pbl):
+    def put_campaign(self, name, directory, ign, pbl):
         """
         Uploads a campaign to the server.
-
-        The cfgfile is the name of the main .cfg file of the campaign.
 
         The directory is the name of the campaign's directory.
         """
@@ -335,11 +333,6 @@ class CampaignClient:
                 if sub:
                     dataNode.append(sub)
             return dataNode
-
-        # Only used if it's an old-style campaign directory
-        # with an external config.
-        if cfgfile:
-            data.insert(put_file(name + ".cfg", file(cfgfile)))
 
         if not self.quiet:
             sys.stderr.write("Adding directory %s as %s.\n" % (directory, name))
