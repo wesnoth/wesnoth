@@ -149,9 +149,10 @@ def comma_split(csstring, list=None, strip="r"):
 
 def parse_attribute(line):
     "Parse a WML key-value pair from a line."
-    if '=' not in line or line.find("#") > -1 and line.find("#") < line.find("="):
-        return None
     where = line.find("=")
+    # Ignore lines with a # or " before the first =. They're likely line continuations that won't be parsed correctly.
+    if '=' not in line or -1 < line.find("#") < where or -1 < line.find("\"") < where:
+        return None
     leader = line[:where]
     after = line[where+1:]
     if re.search("\s#", after):
