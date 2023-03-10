@@ -20,11 +20,7 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "gui/auxiliary/find_widget.hpp"
-#include "gui/widgets/grid.hpp"
-#include "gui/widgets/repeating_button.hpp"
-#include "gui/widgets/scrollbar.hpp"
-#include "gui/widgets/scroll_label.hpp"
-#include "gui/widgets/settings.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
 #include "gettext.hpp"
 
@@ -41,7 +37,6 @@ end_credits::end_credits(const std::string& campaign)
 	: modal_dialog(window_id())
 	, focus_on_(campaign)
 	, backgrounds_()
-	, text_widget_(nullptr)
 	, scroll_speed_(100)
 	, last_scroll_(std::numeric_limits<uint32_t>::max())
 {
@@ -54,29 +49,60 @@ void end_credits::pre_show(window& window)
 
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
 
-	std::stringstream ss;
-	std::stringstream focus_ss;
+	listbox& list = find_widget<listbox>(&window, "listbox", false);
+	window.keyboard_capture(&list);
 
-	for(const about::credits_group& group : about::get_credits_data()) {
-		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
-		group_stream << "\n";
-
+	for(const auto& group : about::get_credits_data()) {
 		if(!group.header.empty()) {
-			group_stream << "<span size='xx-large'>" << group.header << "</span>" << "\n";
+			std::map<std::string, utils::string_map> data;
+			utils::string_map item;
+
+			item["label"] = group.header;
+			data.emplace("group_header", item);
+
+			item["label"] = "";
+			data.emplace("section_title", item);
+
+			item["label"] = "";
+			data.emplace("contributor_name", item);
+
+			list.add_row(data);
 		}
+		for(const auto& section : group.sections) {
+			std::map<std::string, utils::string_map> data;
+			utils::string_map item;
 
-		for(const about::credits_group::about_group& about : group.sections) {
-			group_stream << "\n" << "<span size='x-large'>" << about.title << "</span>" << "\n";
+			item["label"] = "";
+			data.emplace("group_header", item);
 
-			for(const auto& entry : about.names) {
-				group_stream << entry.first << "\n";
+			if(!section.title.empty()) {
+				item["label"] = section.title;
+			} else {
+				item["label"] = "";
 			}
+			data.emplace("section_title", item);
+
+			std::stringstream ss;
+			for(const auto& name : section.names) {
+				ss << name.first << "\n";
+			}
+
+			item["label"] = ss.str();
+			data.emplace("contributor_name", item);
+
+			// TODO: should there be calls to set_use_markup(true) and set_link_aware(false)?
+
+			list.add_row(data);
 		}
+
+		// TODO: should focus_on_ be implemented? It should check for matching groups here,
+		// however since commit c3e578ba80c the "outro" dialog has been used instead of
+		// "end_credits" for end-of-campaign credits.
 	}
 
-	// If a section is focused, move it to the top
-	if(!focus_ss.str().empty()) {
-		focus_ss << ss.rdbuf();
+	for(unsigned i = 0; i < list.get_item_count(); ++i) {
+		list.select_row(i, false);
+		list.set_row_active(i, false);
 	}
 
 	// Get the appropriate background images
@@ -88,23 +114,6 @@ void end_credits::pre_show(window& window)
 
 	// TODO: implement showing all available images as the credits scroll
 	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
-
-	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
-
-	text_widget_->set_use_markup(true);
-	text_widget_->set_link_aware(false);
-	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
-
-	// HACK: always hide the scrollbar, even if it's needed.
-	// This should probably be implemented as a scrollbar mode.
-	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
-	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
-
-		// TODO: enable again if e24336afeb7 is reverted.
-		//find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
-		//find_widget<repeating_button>(v_grid, "_half_page_down", false).set_visible(widget::visibility::hidden);
-	}
 }
 
 void end_credits::update()
@@ -116,13 +125,14 @@ void end_credits::update()
 
 	uint32_t missed_time = now - last_scroll_;
 
-	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
+	auto scroll_widget = find_widget<scrollbar_container>(get_window(), "listbox", false, true);
+	unsigned int cur_pos = scroll_widget->get_vertical_scrollbar_item_position();
 
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
 
-	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
+	scroll_widget->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 
 	last_scroll_ = now;
 }
