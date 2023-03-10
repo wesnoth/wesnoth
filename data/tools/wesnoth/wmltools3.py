@@ -119,10 +119,6 @@ def string_strip(value):
         value = value[1:]
         if value.endswith('"'):
             value = value[:-1]
-    if value.startswith("'"):
-        value = value[1:]
-        if value.endswith("'"):
-            value = value[:-1]
     return value
 
 def attr_strip(value):
