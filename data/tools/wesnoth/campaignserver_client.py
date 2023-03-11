@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import gzip, zlib, io
-import socket, struct, glob, sys, shutil, threading, os, fnmatch
+import socket, ssl, struct, glob, sys, shutil, threading, os, fnmatch
 import wesnoth.wmlparser3 as wmlparser
 
 # See the following files (among others):
@@ -46,7 +46,7 @@ class CampaignClient:
         ("15005", "1.4.x"),
         )
 
-    def __init__(self, address = None, quiet=False):
+    def __init__(self, address = None, quiet=False, secure=False):
         """
         Return a new connection to the campaign server at the given address.
         """
@@ -63,9 +63,18 @@ class CampaignClient:
         self.cs = None
         self.verbose = False
         self.quiet = quiet
+        self.secure = secure
+
+        if self.secure:
+            print("Attempting to connect to the server using SSL/TLS",
+                  file=sys.stderr)
+            self.context = ssl.create_default_context()
+        else:
+            self.context = None
 
         if address is not None:
             self.canceled = False
+            self.ssl_unsupported = False
             self.error = False
             s = address.split(":")
             if len(s) == 2:
@@ -86,15 +95,55 @@ class CampaignClient:
                     sys.stderr.write("\n")
             self.sock = socket.socket(addr[0], addr[1], addr[2])
             self.sock.connect(addr[4])
-            self.sock.send(struct.pack("!I", 0))
+            # the first part of the connection is unencrypted
+            # the client must send a packet of 4 bytes
+            # with a value of 1 if requesting an encrypted connection
+            # and with a value of 0 otherwise
+            if self.secure:
+                self.sock.send(struct.pack("!I", 1))
+            else:
+                self.sock.send(struct.pack("!I", 0))
+                
             try:
-                connection_num = self.sock.recv(4)
+                if self.secure:
+                    result = self.sock.recv(4)
+                    # the server then replies with one of these two values
+                    # 0x00000000 if it supports encrypted connections
+                    # 0xFFFFFFFF if it doesn't support them
+                    # in this last case we exit the script
+                    if result == b'\x00\x00\x00\x00':
+                        # now we can encrypt the socket
+                        self.ssl_sock = self.context.wrap_socket(self.sock,
+                                                                 server_hostname=self.host)
+                        sys.stderr.write("Connected with SSL/TLS\n")
+                    elif result == b'\xff\xff\xff\xff':
+                        self.ssl_unsupported = True
+                    else:
+                        # just in case, but the server should never return anything else
+                        sys.stderr.write("Handshake returned unsupported value\n")
+                        self.error = True
+                else:
+                    # for unencrypted connections, the server returns an arbitrary
+                    # 32-bit number without any specific meaning
+                    # but at the moment this value is always 42
+                    result = self.sock.recv(4)
             except socket.error:
-                connection_num = struct.pack("!I", -1)
+                result = struct.pack("!I", -1)
+                self.error = True
+            except ssl.SSLError:
+                sys.stderr.write("Failed to connect with SSL/TLS\n")
                 self.error = True
             if not self.quiet:
-                sys.stderr.write("Connected as %d.\n" % struct.unpack(
-                    "!I", connection_num))
+                result_num = struct.unpack("!I", result)[0]
+                # here we have an arcane incantation of Python's formatting mini-language
+                # 0: refers to the only argument of the format method
+                # # means alternate formatting, which adds the "0x" prefix to hex numbers
+                # 0 is the padding character
+                # 10 is the width of the field (instead of the usual 8 for 32-bit numbers,
+                # because this includes the prefix)
+                # x requires formatting as a hex number
+                sys.stderr.write("Server returned value {0:d} \
+(hex: {0:#010x}).\n".format(result_num))
 
     def async_cancel(self):
         """
@@ -106,12 +155,17 @@ class CampaignClient:
         if not self.quiet:
             if self.canceled:
                 sys.stderr.write("Canceled socket.\n")
+            elif self.ssl_unsupported:
+                sys.stderr.write("Server does not support SSL/TLS.\n")
             elif self.error:
                 sys.stderr.write("Unexpected disconnection.\n")
             else:
                 sys.stderr.write("Closing socket.\n")
         try:
-            self.sock.shutdown(2)
+            if self.secure:
+                self.ssl_sock.shutdown(2)
+            else:
+                self.sock.shutdown(2)
         except socket.error:
             pass # Well, what can we do?
         except AttributeError:
@@ -135,6 +189,9 @@ class CampaignClient:
         """
         Send binary data to the server.
         """
+        if self.error or self.ssl_unsupported:
+            return None
+
         # Compress the packet before we send it
         fio = io.BytesIO()
         z = gzip.GzipFile(mode = "wb", fileobj = fio)
@@ -143,15 +200,24 @@ class CampaignClient:
         zdata = fio.getvalue()
 
         zpacket = struct.pack("!I", len(zdata)) + zdata
-        self.sock.sendall(zpacket)
+        if self.secure:
+            self.ssl_sock.sendall(zpacket)
+        else:
+            self.sock.sendall(zpacket)
 
     def read_packet(self):
         """
         Read binary data from the server.
         """
+        if self.error or self.ssl_unsupported:
+            return None
+
         packet = b""
         while len(packet) < 4 and not self.canceled:
-            r = self.sock.recv(4 - len(packet))
+            if self.secure:
+                r = self.ssl_sock.recv(4 - len(packet))
+            else:
+                r = self.sock.recv(4 - len(packet))
             if not r:
                 return None
             packet += r
@@ -165,7 +231,10 @@ class CampaignClient:
 
         packet = b""
         while len(packet) < l and not self.canceled:
-            r = self.sock.recv(l - len(packet))
+            if self.secure:
+                r = self.ssl_sock.recv(l - len(packet))
+            else:
+                r = self.sock.recv(l - len(packet))
             if not r:
                 return None
             packet += r
@@ -234,7 +303,7 @@ class CampaignClient:
         """
         Returns a WML object containing all available info from the server.
         """
-        if self.error:
+        if self.error or self.ssl_unsupported:
             return None
         request = append_tag(None, "request_campaign_list")
         if addon:

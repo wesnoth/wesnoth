@@ -15,6 +15,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
 
 ## Version 1.17.13
  ### Add-ons client
