@@ -45,7 +45,7 @@ class CampaignClient:
         ("15005", "1.4.x"),
         )
 
-    def __init__(self, address = None, quiet=False, secure=False):
+    def __init__(self, address = None, quiet=False, secure=False, ipv6=False):
         """
         Return a new connection to the campaign server at the given address.
         """
@@ -63,6 +63,7 @@ class CampaignClient:
         self.verbose = False
         self.quiet = quiet
         self.secure = secure
+        self.ipv6 = ipv6
 
         if self.secure:
             print("Attempting to connect to the server using SSL/TLS",
@@ -71,9 +72,14 @@ class CampaignClient:
         else:
             self.context = None
 
+        if self.ipv6:
+            print("Attempting to connect to the server using IPv6",
+                  file=sys.stderr)
+
         if address is not None:
             self.canceled = False
             self.ssl_unsupported = False
+            self.ipv6_unsupported = False
             self.error = False
             s = address.split(":")
             if len(s) == 2:
@@ -82,8 +88,10 @@ class CampaignClient:
                 self.host = s[0]
                 self.port = self.portmap[0][0]
             self.port = int(self.port)
-            addr = socket.getaddrinfo(self.host, self.port, socket.AF_INET,
-                socket.SOCK_STREAM, socket.IPPROTO_TCP)[0]
+
+            addr = socket.getaddrinfo(self.host, self.port,
+                    socket.AF_INET6 if self.ipv6 else socket.AF_INET,
+                    socket.SOCK_STREAM, socket.IPPROTO_TCP)[0]
             if not self.quiet:
                 sys.stderr.write("Opening socket to %s" % address)
             bfwv = dict(self.portmap).get(str(self.port))
@@ -92,8 +100,18 @@ class CampaignClient:
                     sys.stderr.write(" for " + bfwv + "\n")
                 else:
                     sys.stderr.write("\n")
+                sys.stderr.write("IP address resolves to {}\n".format(addr[4][0]))
             self.sock = socket.socket(addr[0], addr[1], addr[2])
-            self.sock.connect(addr[4])
+
+            try:
+                self.sock.connect(addr[4])
+            except OSError:
+                if self.ipv6:
+                    self.ipv6_unsupported = True
+                else:
+                    self.error = True
+                return
+
             # the first part of the connection is unencrypted
             # the client must send a packet of 4 bytes
             # with a value of 1 if requesting an encrypted connection
@@ -156,6 +174,8 @@ class CampaignClient:
                 sys.stderr.write("Canceled socket.\n")
             elif self.ssl_unsupported:
                 sys.stderr.write("Server does not support SSL/TLS.\n")
+            elif self.ipv6_unsupported:
+                sys.stderr.write("Internet connection may not support IPv6 yet.\n")
             elif self.error:
                 sys.stderr.write("Unexpected disconnection.\n")
             else:
@@ -188,7 +208,7 @@ class CampaignClient:
         """
         Send binary data to the server.
         """
-        if self.error or self.ssl_unsupported:
+        if self.error or self.ssl_unsupported or self.ipv6_unsupported:
             return None
 
         # Compress the packet before we send it
@@ -208,7 +228,7 @@ class CampaignClient:
         """
         Read binary data from the server.
         """
-        if self.error or self.ssl_unsupported:
+        if self.error or self.ssl_unsupported or self.ipv6_unsupported:
             return None
 
         packet = b""
@@ -302,7 +322,7 @@ class CampaignClient:
         """
         Returns a WML object containing all available info from the server.
         """
-        if self.error or self.ssl_unsupported:
+        if self.error or self.ssl_unsupported or self.ipv6_unsupported:
             return None
         request = append_tag(None, "request_campaign_list")
         if addon:

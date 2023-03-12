@@ -97,6 +97,9 @@ if __name__ == "__main__":
     argumentparser.add_argument("-S", "--secure",
         action="store_true",
         help="Connect to the add-ons server using SSL/TLS encryption.")
+    argumentparser.add_argument("-6", "--ipv6",
+        action="store_true",
+        help="Connect to the add-ons server using IPv6 connectivity.")
     args = argumentparser.parse_args()
 
     port = args.port
@@ -217,7 +220,7 @@ if __name__ == "__main__":
     campaign_list = None
 
     if args.list:
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         campaign_list = data = cs.list_campaigns()
         if data:
             campaigns = data.get_all(tag = "campaigns")[0]
@@ -248,7 +251,7 @@ if __name__ == "__main__":
             sys.stderr.write("Could not connect.\n")
 
     elif args.download:
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         fetchlist = []
         campaign_list = data = cs.list_campaigns()
         if data:
@@ -284,24 +287,24 @@ if __name__ == "__main__":
                         "because it is already up-to-date.")
 
     elif args.unpack:
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         with open(args.unpack, "rb") as f:
             data = f.read()
         decoded = cs.decode(data)
         print("Unpacking %s..." % args.unpack)
         cs.unpackdir(decoded, args.campaigns_dir,  verbose=True)
     elif args.remove:
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         data = cs.delete_campaign(*args.remove)
         print_messages(data)
 
     elif args.change_passphrase:
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         data = cs.change_passphrase(*args.change_passphrase)
         print_messages(data)
 
     elif args.upload:
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         if os.path.isdir(args.upload):
             # else basename returns an empty string
             args.upload = args.upload.rstrip("/")
@@ -376,7 +379,7 @@ if __name__ == "__main__":
             cdir = args.update
         dirs = glob.glob(os.path.join(cdir, "*"))
         dirs = [x for x in dirs if os.path.isdir(x)]
-        cs = CampaignClient(address, secure=args.secure)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         campaign_list = data = cs.list_campaigns()
         if not data:
             sys.stderr.write("Could not connect to the add-on server.\n")
@@ -430,7 +433,7 @@ if __name__ == "__main__":
 
     if args.html:
         if not campaign_list:
-            cs = CampaignClient(address, secure=args.secure)
+            cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
             campaign_list = cs.list_campaigns()
             del cs
         if campaign_list:
