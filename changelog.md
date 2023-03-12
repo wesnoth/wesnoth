@@ -16,6 +16,7 @@
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
+   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
 
 ## Version 1.17.13
  ### Add-ons client
