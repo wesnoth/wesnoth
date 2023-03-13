@@ -59,8 +59,6 @@ game_state::game_state(const config& level, play_controller& pc)
 	, player_number_(level["playing_team"].to_int() + 1)
 	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
 	, do_healing_(level["do_healing"].to_bool(false))
-	, init_side_done_(level["init_side_done"].to_bool(false))
-	, start_event_fired_(!level["playing_team"].empty())
 	, server_request_number_(level["server_request_number"].to_int())
 	, first_human_team_(-1)
 {
@@ -226,8 +224,9 @@ void game_state::set_game_display(game_display * gd)
 
 void game_state::write(config& cfg) const
 {
-	cfg["init_side_done"] = init_side_done_;
-	if(gamedata_.phase() == game_data::PLAY) {
+	// dont write this before we fired the (pre)start events
+	// This is the case for the 'replay_start' part of the savegame.
+	if(!in_phase(game_data::INITIAL, game_data::PRELOAD)) {
 		cfg["playing_team"] = player_number_ - 1;
 		cfg["next_player_number"] = next_player_number_;
 	}

@@ -294,7 +294,8 @@ void advance_unit_at(const advance_unit_params& params)
 			}
 		}
 		//we don't want to let side 1 decide it during start/prestart.
-		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
+		//The "0" parameter here is the default and gets resolves to "current player"
+		int side_for = resources::gamedata->has_current_player() ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
