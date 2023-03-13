@@ -75,34 +75,6 @@ game_state::game_state(const config& level, play_controller& pc)
 	}
 }
 
-game_state::game_state(const config& level, play_controller& pc, game_board& board)
-	: gamedata_(level)
-	, board_(board)
-	, tod_manager_(level)
-	, pathfind_manager_(new pathfind::manager(level))
-	, reports_(new reports())
-	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
-	, ai_manager_()
-	, events_manager_(new game_events::manager())
-	, player_number_(level["playing_team"].to_int() + 1)
-	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
-	, do_healing_(level["do_healing"].to_bool(false))
-	, end_level_data_()
-	, init_side_done_(level["init_side_done"].to_bool(false))
-	, start_event_fired_(!level["playing_team"].empty())
-	, server_request_number_(level["server_request_number"].to_int())
-	, first_human_team_(-1)
-{
-	lua_kernel_->load_core();
-	events_manager_->read_scenario(level, *lua_kernel_);
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
-		end_level_data el_data;
-		el_data.read(endlevel_cfg);
-		el_data.transient.carryover_report = false;
-		end_level_data_ = el_data;
-	}
-}
-
 game_state::~game_state() {}
 
 static int placing_score(const config& side, const gamemap& map, const map_location& pos)
