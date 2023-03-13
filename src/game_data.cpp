@@ -126,6 +126,7 @@ void game_data::clear_variable(const std::string& varname)
 
 void game_data::write_snapshot(config& cfg) const
 {
+	write_phase(cfg, phase_);
 	cfg["next_scenario"] = next_scenario_;
 	cfg["id"] = id_;
 	cfg["theme"] = theme_;
@@ -168,4 +169,39 @@ void game_data::activate_scope_variable(std::string var_name) const
 			break;
 		}
 	}
+}
+
+game_data::PHASE game_data::read_phase(const config& cfg)
+{
+	if(cfg["playing_team"].empty()) {
+		return game_data::PRELOAD;
+	}
+	if(!cfg["init_side_done"]) {
+		return game_data::TURN_STARTING_WAITING;
+	}
+	if(cfg.has_child("end_level_data")) {
+		return game_data::GAME_ENDED;
+	}
+	return game_data::TURN_PLAYING;
+}
+
+
+bool game_data::has_current_player() const
+{
+	return phase() == TURN_STARTING || phase() == TURN_PLAYING || phase() == TURN_ENDED;
+}
+
+bool game_data::is_before_screen() const
+{
+	return phase() == INITIAL || phase() == PRELOAD || phase() == PRESTART;
+}
+
+bool game_data::is_after_start() const
+{
+	return !(phase() == INITIAL || phase() == PRELOAD || phase() == PRESTART || phase() == START);
+}
+
+void game_data::write_phase(config& cfg, game_data::PHASE phase)
+{
+	cfg["init_side_done"] = !(phase == INITIAL || phase == PRELOAD || phase == PRESTART || phase == TURN_STARTING_WAITING);
 }

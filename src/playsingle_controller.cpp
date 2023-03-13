@@ -74,7 +74,7 @@ playsingle_controller::playsingle_controller(const config& level, saved_game& st
 	, replay_sender_(*resources::recorder)
 	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
 	, turn_data_(replay_sender_, network_reader_)
-	, end_turn_(END_TURN_NONE)
+	, end_turn_requested_(false)
 	, skip_next_turn_(false)
 	, ai_fallback_(false)
 	, replay_controller_()
@@ -82,8 +82,6 @@ playsingle_controller::playsingle_controller(const config& level, saved_game& st
 	// upgrade hotkey handler to the sp (whiteboard enabled) version
 	hotkey_handler_ = std::make_unique<hotkey_handler>(*this, saved_game_);
 
-	// game may need to start in linger mode
-	linger_ = is_regular_game_end();
 
 	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
 	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
@@ -143,12 +141,15 @@ void playsingle_controller::init_gui()
 	get_hotkey_command_executor()->set_button_state();
 }
 
-void playsingle_controller::play_scenario_init()
+void playsingle_controller::play_scenario_init(const config& level)
 {
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()) {
 		saved_game_.replay_start() = to_config();
 	}
+
+	fire_preload();
+	gamestate().gamedata_.set_phase(game_data::read_phase(level));
 
 	start_game();
 
@@ -221,7 +222,7 @@ void playsingle_controller::play_scenario_main_loop()
 				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 
-			play_scenario_init();
+			play_scenario_init(*ex.level);
 
 			if(replay_controller_ == nullptr) {
 				replay_controller_ = std::make_unique<replay_controller>(*this, false, ex.level, [this]() { on_replay_end(false); });
@@ -276,11 +277,11 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks());
 
 	try {
-		play_scenario_init();
+		play_scenario_init(level);
 		// clears level config;
 		saved_game_.remove_snapshot();
 
-		if(!is_regular_game_end() && !linger_) {
+		if(!is_regular_game_end() && !is_linger_mode()) {
 			play_scenario_main_loop();
 		}
 
@@ -288,10 +289,6 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 			exit(0);
 		}
 		const bool is_victory = get_end_level_data().is_victory;
-
-		//if(gamestate().gamedata_.phase() <= game_data::PRESTART) {
-		//	video::clear_screen();
-		//}
 
 		ai_testing::log_game_end();
 
@@ -303,7 +300,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 			return level_result::type::victory;
 		}
 
-		if(linger_) {
+		if(is_linger_mode()) {
 			LOG_NG << "resuming from loaded linger state...";
 			if(!is_observer()) {
 				persist_.end_transaction();
@@ -312,6 +309,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 			return level_result::type::victory;
 		}
 
+		gamestate().gamedata_.set_phase(game_data::GAME_ENDING);
 		pump().fire(is_victory ? "local_victory" : "local_defeat");
 
 		{ // Block for set_scontext_synced_base
@@ -397,15 +395,14 @@ void playsingle_controller::play_idle_loop()
 void playsingle_controller::play_side_impl()
 {
 	if(!skip_next_turn_) {
-		end_turn_ = END_TURN_NONE;
+		end_turn_requested_ = false;
 	}
-
 	if(replay_controller_.get() != nullptr) {
 		init_side_done_now_ = false;
 
 		REPLAY_RETURN res = replay_controller_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
-			end_turn_ = END_TURN_SYNCED;
+			gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
 		}
 
 		if(player_type_changed_) {
@@ -416,12 +413,12 @@ void playsingle_controller::play_side_impl()
 		// If a side is dead end the turn, but play at least side=1's
 		// turn in case all sides are dead
 		if(gamestate().board_.side_units(current_side()) == 0 && !(get_units().empty() && current_side() == 1)) {
-			end_turn_ = END_TURN_REQUIRED;
+			require_end_turn();
 		}
 
 		before_human_turn();
 
-		if(end_turn_ == END_TURN_NONE) {
+		if(!end_turn_requested_) {
 			play_human_turn();
 		}
 
@@ -439,7 +436,7 @@ void playsingle_controller::play_side_impl()
 		do_idle_notification();
 		before_human_turn();
 
-		if(end_turn_ == END_TURN_NONE) {
+		if( gamestate().in_phase(game_data::TURN_PLAYING, game_data::TURN_STARTING_WAITING)) {
 			play_idle_loop();
 		}
 	} else {
@@ -452,8 +449,8 @@ void playsingle_controller::play_side_impl()
 void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
-	assert(!linger_);
-	if(end_turn_ != END_TURN_NONE || is_regular_game_end()) {
+	assert(!is_linger_mode());
+	if(!gamestate().in_phase(game_data::TURN_PLAYING) || is_regular_game_end()) {
 		return;
 	}
 
@@ -503,7 +500,7 @@ void playsingle_controller::play_human_turn()
 
 	end_turn_enable(true);
 
-	while(!should_return_to_play_side()) {
+	while(!should_return_to_play_side() && !end_turn_requested_) {
 		check_objectives();
 		play_slice_catch();
 	}
@@ -512,7 +509,7 @@ void playsingle_controller::play_human_turn()
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
-	linger_ = true;
+	gamestate().gamedata_.set_phase(game_data::GAME_ENDED);
 
 	// If we need to set the status depending on the completion state
 	// the key to it is here.
@@ -529,8 +526,8 @@ void playsingle_controller::linger()
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.
 		end_turn_enable(true);
-		end_turn_ = END_TURN_NONE;
-		while(end_turn_ == END_TURN_NONE) {
+		end_turn_requested_ = false;
+		while(!end_turn_requested_) {
 			play_slice();
 		}
 	} catch(const savegame::load_game_exception&) {
@@ -602,7 +599,7 @@ void playsingle_controller::play_ai_turn()
 	}
 
 	if(!should_return_to_play_side()) {
-		end_turn_ = END_TURN_REQUIRED;
+		require_end_turn();
 	}
 
 	turn_data_.sync_network();
@@ -640,17 +637,22 @@ void playsingle_controller::handle_generic_event(const std::string& name)
 
 void playsingle_controller::end_turn()
 {
-	if(linger_) {
-		end_turn_ = END_TURN_REQUIRED;
+	if(is_linger_mode()) {
+		end_turn_requested_ = true;
 	} else if(!is_browsing() && menu_handler_.end_turn(current_side())) {
-		end_turn_ = END_TURN_REQUIRED;
+		require_end_turn();
 	}
 }
 
 void playsingle_controller::force_end_turn()
 {
 	skip_next_turn_ = true;
-	end_turn_ = END_TURN_REQUIRED;
+	end_turn_requested_ = true;
+}
+
+void playsingle_controller::require_end_turn()
+{
+	end_turn_requested_ = true;
 }
 
 void playsingle_controller::check_objectives()
@@ -678,13 +680,18 @@ void playsingle_controller::sync_end_turn()
 	// We cannot add [end_turn] to the recorder while executing another action.
 	assert(synced_context::synced_state() == synced_context::UNSYNCED);
 
-	if(end_turn_ == END_TURN_REQUIRED && current_team().is_local()) {
+	if(!gamestate().in_phase(game_data::TURN_ENDED)) {
+		assert(end_turn_requested_);
+		assert(current_team().is_local());
+		assert(gamestate().in_phase(game_data::TURN_PLAYING));
 		// TODO: we should also send this immediately.
 		resources::recorder->end_turn(gamestate_->next_player_number_);
-		end_turn_ = END_TURN_SYNCED;
+		gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
+
 	}
 
-	assert(end_turn_ == END_TURN_SYNCED);
+
+	assert(gamestate().in_phase(game_data::TURN_ENDED));
 	skip_next_turn_ = false;
 
 	if(ai_fallback_) {
@@ -733,10 +740,11 @@ bool playsingle_controller::should_return_to_play_side() const
 {
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;
-	} else if(end_turn_ == END_TURN_NONE || replay_controller_.get() != 0 || current_team().is_network()) {
-		return false;
-	} else {
+	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == 0 && current_team().is_local()) {
+		// When we are a locally controlled side and havent done init_side yet also return to play_side
 		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -756,3 +764,4 @@ void playsingle_controller::on_replay_end(bool is_unit_test)
 		}
 	}
 }
+

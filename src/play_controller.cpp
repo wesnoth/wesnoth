@@ -163,7 +163,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
 	, skip_story_(state_of_game.skip_story())
-	, linger_(false)
 	, init_side_done_now_(false)
 	, map_start_()
 	, start_faded_(start_faded)
@@ -345,6 +344,7 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 	gui_->reset_reports(*gamestate().reports_);
 	gui_->change_display_context(&gamestate().board_);
 	saved_game_.get_replay().set_pos(replay_pos);
+
 	gamestate().gamedata_.set_phase(game_data::PRELOAD);
 	gamestate().lua_kernel_->load_game(level);
 }
@@ -410,8 +410,7 @@ void play_controller::fire_start()
 		tm.set_start_gold(tm.gold());
 	}
 
-	gamestate_->init_side_done() = false;
-	gamestate().gamedata_.set_phase(game_data::PLAY);
+	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
 }
 
 void play_controller::init_gui()
@@ -441,7 +440,7 @@ void play_controller::maybe_do_init_side()
 	// For all other sides it is recorded in replay and replay handler has to handle
 	// calling do_init_side() functions.
 	//
-	if(gamestate_->init_side_done()) {
+	if(is_during_turn()) {
 		// We already executed do_init_side this can for example happe if we reload a game,
 		// but also if we changed control of a side during it's turn
 		return;
@@ -476,7 +475,7 @@ void play_controller::do_init_side()
 	log_scope("player turn");
 	// In case we might end up calling sync:network during the side turn events,
 	// and we don't want do_init_side to be called when a player drops.
-	gamestate_->init_side_done() = true;
+	gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
 	init_side_done_now_ = true;
 
 	const std::string turn_num = std::to_string(turn());
@@ -561,6 +560,7 @@ void play_controller::init_side_end()
 	}
 
 	map_start_ = map_location();
+	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	whiteboard_manager_->on_init_side();
 }
 
@@ -606,9 +606,8 @@ void play_controller::finish_side_turn()
 		check_victory();
 		sync.do_final_checkup();
 	}
-
 	mouse_handler_.deselect_hex();
-	gamestate_->init_side_done() = false;
+	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
 }
 
 void play_controller::finish_turn()
@@ -982,12 +981,12 @@ void play_controller::redo()
 
 bool play_controller::can_undo() const
 {
-	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_undo();
+	return is_during_turn() && !is_browsing() && !events::commands_disabled && undo_stack().can_undo();
 }
 
 bool play_controller::can_redo() const
 {
-	return !linger_ && !is_browsing() && !events::commands_disabled && undo_stack().can_redo();
+	return is_during_turn() && !is_browsing() && !events::commands_disabled && undo_stack().can_redo();
 }
 
 const std::string& play_controller::select_music(bool victory) const
@@ -1011,7 +1010,7 @@ const std::string& play_controller::select_music(bool victory) const
 
 void play_controller::check_victory()
 {
-	if(linger_) {
+	if(is_linger_mode()) {
 		return;
 	}
 
@@ -1149,7 +1148,7 @@ hotkey::command_executor* play_controller::get_hotkey_command_executor()
 
 bool play_controller::is_browsing() const
 {
-	if(linger_ || !gamestate_->init_side_done() || gamestate().gamedata_.phase() != game_data::PLAY) {
+	if(!gamestate().in_phase(game_data::TURN_PLAYING)) {
 		return true;
 	}
 
@@ -1172,10 +1171,7 @@ void play_controller::play_slice_catch()
 
 void play_controller::start_game()
 {
-	fire_preload();
-
-	if(!gamestate().start_event_fired_) {
-		gamestate().start_event_fired_ = true;
+	if(gamestate().in_phase(game_data::PRELOAD)) {
 		map_start_ = map_location();
 		resources::recorder->add_start_if_not_there_yet();
 		resources::recorder->get_next_action();
@@ -1210,7 +1206,6 @@ void play_controller::start_game()
 		}
 	} else {
 		init_gui();
-		gamestate().gamedata_.set_phase(game_data::PLAY);
 		gui_->recalculate_minimap();
 	}
 
@@ -1304,7 +1299,7 @@ bool play_controller::can_use_synced_wml_menu() const
 {
 	const team& viewing_team = get_teams()[gui_->viewing_team()];
 	return gui_->viewing_team() == gui_->playing_team() && !events::commands_disabled && viewing_team.is_local_human()
-		&& !is_lingering() && !is_browsing();
+		&& !is_browsing();
 }
 
 std::set<std::string> play_controller::all_players() const
@@ -1372,8 +1367,8 @@ void play_controller::play_turn()
 		// If a side is empty skip over it.
 		if(!current_team().is_empty()) {
 			init_side_begin();
-			if(gamestate_->init_side_done()) {
-				// This is the case in a reloaded game where the side was initialized before saving the game.
+			if(is_during_turn()) {
+				// This is the case in a reloaded game where the side was initialized before saving the game (the default case for reloading games).
 				init_side_end();
 			}
 
@@ -1479,5 +1474,22 @@ void play_controller::toggle_skipping_replay()
 	const std::shared_ptr<gui::button> skip_animation_button = get_display().find_action_button("skip-animation");
 	if(skip_animation_button) {
 		skip_animation_button->set_check(skip_replay_);
+	}
+}
+
+bool play_controller::is_during_turn() const
+{
+	return gamestate().in_phase(game_data::TURN_PLAYING);
+}
+
+bool play_controller::is_linger_mode() const
+{
+	return gamestate().in_phase(game_data::GAME_ENDED);
+}
+
+void play_controller::maybe_throw_return_to_play_side() const
+{
+	if(should_return_to_play_side() && is_during_turn()) {
+		throw return_to_play_side_exception();
 	}
 }

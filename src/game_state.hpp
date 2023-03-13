@@ -63,11 +63,8 @@ public:
 	bool do_healing_;
 
 	std::optional<end_level_data> end_level_data_;
-	bool init_side_done_;
-	bool start_event_fired_;
 	// used to sync with the mpserver
 	int server_request_number_;
-	bool& init_side_done() { return init_side_done_; }
 
 
 	game_events::wmi_manager& get_wml_menu_items();
@@ -109,6 +106,18 @@ public:
 	virtual game_lua_kernel* get_lua_kernel() const override
 	{
 		return lua_kernel_.get();
+	}
+
+
+	bool in_phase(game_data::PHASE phase) const
+	{
+		return gamedata_.phase() == phase;
+	}
+
+	template< typename... Arguments >
+	bool in_phase(game_data::PHASE phase, Arguments ... args) const
+	{
+		return in_phase(phase) || in_phase(args...);
 	}
 
 	/** Checks to see if a leader at @a leader_loc could recruit somewhere. */

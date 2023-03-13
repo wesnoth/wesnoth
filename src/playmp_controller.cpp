@@ -105,7 +105,7 @@ void playmp_controller::play_linger_turn()
 		end_turn_enable(true);
 	}
 
-	while(end_turn_ == END_TURN_NONE) {
+	while( gamestate().in_phase(game_data::GAME_ENDED) && !end_turn_requested_) {
 		config cfg;
 		if(network_reader_.read(cfg)) {
 			if(turn_data_.process_network_data(cfg) == turn_info::PROCESS_END_LINGER) {
@@ -120,9 +120,7 @@ void playmp_controller::play_linger_turn()
 void playmp_controller::play_human_turn()
 {
 	LOG_NG << "playmp::play_human_turn...";
-	assert(!linger_);
-	assert(gamestate_->init_side_done());
-	assert(gamestate().gamedata_.phase() == game_data::PLAY);
+	assert(gamestate().in_phase(game_data::TURN_PLAYING));
 
 	mp::ui_alerts::turn_changed(current_team().current_player());
 
@@ -179,7 +177,7 @@ void playmp_controller::play_human_turn()
 			if(timer) {
 				bool time_left = timer->update();
 				if(!time_left) {
-					end_turn_ = END_TURN_REQUIRED;
+					end_turn_requested_ = true;
 				}
 			}
 		} catch(...) {
@@ -236,7 +234,7 @@ void playmp_controller::reset_end_scenario_button()
 void playmp_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
-	linger_ = true;
+	gamestate().gamedata_.set_phase(game_data::GAME_ENDED);
 
 	// If we need to set the status depending on the completion state
 	// we're needed here.
@@ -260,7 +258,6 @@ void playmp_controller::linger()
 		try {
 			// reimplement parts of play_side()
 			turn_data_.send_data();
-			end_turn_ = END_TURN_NONE;
 			play_linger_turn();
 			after_human_turn();
 			LOG_NG << "finished human turn";
@@ -358,7 +355,7 @@ void playmp_controller::play_network_turn()
 	end_turn_enable(false);
 	turn_data_.send_data();
 
-	while(end_turn_ != END_TURN_SYNCED && !is_regular_game_end() && !player_type_changed_) {
+	while(!gamestate().in_phase(game_data::TURN_ENDED) && !is_regular_game_end() && !player_type_changed_) {
 		if(!network_processing_stopped_) {
 			process_network_data();
 			if(!mp_info_ || mp_info_->current_turn == turn()) {
@@ -417,7 +414,7 @@ void playmp_controller::handle_generic_event(const std::string& name)
 	} else if(name == "host_transfer") {
 		assert(mp_info_);
 		mp_info_->is_host = true;
-		if(linger_) {
+		if(is_linger_mode()) {
 			end_turn_enable(true);
 		}
 	}
@@ -482,7 +479,7 @@ void playmp_controller::send_user_choice()
 
 void playmp_controller::play_slice(bool is_delay_enabled)
 {
-	if(!linger_ && !is_replay()) {
+	if(!is_linger_mode() && !is_replay()) {
 		// receive chat during animations and delay
 		process_network_data(true);
 		// cannot use turn_data_.send_data() here.
@@ -494,7 +491,7 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 
 void playmp_controller::process_network_data(bool chat_only)
 {
-	if(end_turn_ == END_TURN_SYNCED || is_regular_game_end() || player_type_changed_) {
+	if(gamestate().in_phase(game_data::TURN_ENDED)  || is_regular_game_end() || player_type_changed_) {
 		return;
 	}
 
@@ -512,7 +509,7 @@ void playmp_controller::process_network_data(bool chat_only)
 	} else if(res == turn_info::PROCESS_RESTART_TURN) {
 		player_type_changed_ = true;
 	} else if(res == turn_info::PROCESS_END_TURN) {
-		end_turn_ = END_TURN_SYNCED;
+		gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
 	} else if(res == turn_info::PROCESS_END_LEVEL) {
 	} else if(res == turn_info::PROCESS_END_LINGER) {
 		replay::process_error("Received unexpected next_scenario during the game");

@@ -229,7 +229,6 @@ public:
 
 	bool is_skipping_replay() const { return skip_replay_; }
 	void toggle_skipping_replay();
-	bool is_linger_mode() const { return linger_; }
 	void do_autosave();
 
 	bool is_skipping_story() const { return skip_story_; }
@@ -256,8 +255,7 @@ public:
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const override;
-	bool is_lingering() const { return linger_; }
-
+#
 	class hotkey_handler;
 
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
@@ -288,12 +286,7 @@ public:
 		return is_regular_game_end();
 	}
 
-	void maybe_throw_return_to_play_side() const
-	{
-		if(should_return_to_play_side() && !linger_ ) {
-			throw return_to_play_side_exception();
-		}
-	}
+	void maybe_throw_return_to_play_side() const;
 
 	virtual void play_side_impl() {}
 
@@ -328,6 +321,9 @@ public:
 	};
 
 	saved_game& get_saved_game() { return saved_game_; }
+
+	bool is_during_turn() const;
+	bool is_linger_mode() const;
 
 protected:
 	friend struct scoped_savegame_snapshot;
@@ -394,7 +390,6 @@ protected:
 
 	bool skip_replay_;
 	bool skip_story_;
-	bool linger_;
 	/**
 	 * Whether we did init sides in this session
 	 * (false = we did init sides before we reloaded the game).
