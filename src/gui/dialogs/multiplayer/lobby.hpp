@@ -115,6 +115,8 @@ private:
 
 	void open_profile_url();
 
+	void open_match_history();
+
 	void tab_switch_callback();
 
 	void refresh_lobby();

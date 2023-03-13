@@ -860,14 +860,16 @@ public:
 	 * Built-in status effects known to the engine
 	 */
 	enum state_t {
-		STATE_SLOWED = 0, /** The unit is slowed - it moves slower and does less damage */
-		STATE_POISONED,   /** The unit is poisoned - it loses health each turn */
-		STATE_PETRIFIED,  /** The unit is petrified - it cannot move or be attacked */
-		STATE_UNCOVERED,  /** The unit is uncovered - it was hiding but has been spotted */
-		STATE_NOT_MOVED,  /** The unit has not moved @todo Explain better */
-		STATE_UNHEALABLE, /** The unit cannot be healed */
-		STATE_GUARDIAN,   /** The unit is a guardian - it won't move unless a target is sighted */
-		STATE_UNKNOWN = -1/** A status effect not known to the engine */
+		STATE_SLOWED = 0,   /** The unit is slowed - it moves slower and does less damage */
+		STATE_POISONED,     /** The unit is poisoned - it loses health each turn */
+		STATE_PETRIFIED,    /** The unit is petrified - it cannot move or be attacked */
+		STATE_UNCOVERED,    /** The unit is uncovered - it was hiding but has been spotted */
+		STATE_NOT_MOVED,    /** The unit has not moved @todo Explain better */
+		STATE_UNHEALABLE,   /** The unit cannot be healed */
+		STATE_GUARDIAN,     /** The unit is a guardian - it won't move unless a target is sighted */
+		STATE_INVULNERABLE, /** The unit is invulnerable - it cannot be hit by any attack */
+		NUMBER_OF_STATES,   /** To set the size of known_boolean_states_ */
+		STATE_UNKNOWN = -1  /** A status effect not known to the engine */
 	};
 
 	/**
@@ -1907,7 +1909,7 @@ private:
 
 	std::set<std::string> states_;
 
-	static const std::size_t num_bool_states = 7;
+	static const std::size_t num_bool_states = state_t::NUMBER_OF_STATES;
 
 	std::bitset<num_bool_states> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2018-09-15 00:12+0200\n"
 "Last-Translator: Széll András <szell.andris@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -106,13 +106,6 @@ msgstr "A szövegek gondozása és Wesnoth történelmébe való integrálása"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Művészeti munkák"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"összezavarva: Ez az egység össze van zavarodva. Nem képes védelmi zónáját "
-"fenntartani."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3339,32 +3332,6 @@ msgstr ""
 "Tintás az udvarban élt Krellisszel, Jotha moszatágyaiban bolondozgatott, "
 "mígnem öregkorára meghízott és ellustult."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Duhaj sellő"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"A kivételesen nagy és erős sellők néha szívesebben hagyatkoznak puszta "
-"öklükre és farkukra, mint egyéb fegyverekre."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "összezavarva"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "összezavarva"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3392,20 +3359,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "jogar"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Sellő polgár"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"A sellők általában békések, de otthonaikért pikkelyszakadtáig harcolnak. "
-"Ilyen esetben a képzetlen vagy fegyvertelen sellők is veszélyesek lehetnek."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3601,31 +3554,60 @@ msgstr ""
 "A varázsló kezén volt egy gyűrű! Lehet, hogy varázsereje van? Valaki "
 "kipróbálhatná, hogy lássuk, van-e valami hatása."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "összezavarás"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "összezavarva: Ez az egység össze van zavarodva. Nem képes védelmi zónáját "
+#~ "fenntartani."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Ez a támadás egy nagy ütéssel az ellenséget úgy összezavarja, hogy az nem "
-"lesz képes a védelmi zónáját ellenőrizni. A hatás elmúlik, amikor az "
-"ellenfél legközelebb sorra kerül."
+#~ msgid "Merman Brawler"
+#~ msgstr "Duhaj sellő"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "A kivételesen nagy és erős sellők néha szívesebben hagyatkoznak puszta "
+#~ "öklükre és farkukra, mint egyéb fegyverekre."
+
+#~ msgid "stunned"
+#~ msgstr "összezavarva"
+
+#~ msgid "female^stunned"
+#~ msgstr "összezavarva"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Sellő polgár"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "A sellők általában békések, de otthonaikért pikkelyszakadtáig harcolnak. "
+#~ "Ilyen esetben a képzetlen vagy fegyvertelen sellők is veszélyesek "
+#~ "lehetnek."
+
+#~ msgid "stun"
+#~ msgstr "összezavarás"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Ez a támadás egy nagy ütéssel az ellenséget úgy összezavarja, hogy az nem "
+#~ "lesz képes a védelmi zónáját ellenőrizni. A hatás elmúlik, amikor az "
+#~ "ellenfél legközelebb sorra kerül."
+
 #, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Ez az egység képes összezavarni az ellenfelét, így az elveszti a kontrollt a "
-"védelmi zónája felett."
+#~| msgid ""
+#~| " This unit is able to stun its enemies, disrupting their zones of "
+#~| "control."
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Ez az egység képes összezavarni az ellenfelét, így az elveszti a "
+#~ "kontrollt a védelmi zónája felett."
 
 #~ msgid "Kraken"
 #~ msgstr "Kalmárhal"

@@ -24,7 +24,6 @@
 
 #include "actions/undo.hpp"
 #include "display_chat_manager.hpp"
-#include "floating_label.hpp"
 #include "game_display.hpp"
 #include "preferences/game.hpp"
 #include "game_data.hpp"

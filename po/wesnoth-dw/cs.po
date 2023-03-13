@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2022-12-19 07:57+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -107,13 +107,6 @@ msgstr "Úpravy a čistění kódu pro oficiální vydání"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Art"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"omráčení: Tato jednotka je omráčená. Nemůže nadále chránit svou zonu "
-"kontroly."
 
 # raději bez vykřičníku
 #. [scenario]: id=01_Invasion
@@ -3171,32 +3164,6 @@ msgstr ""
 "Inky žil u Krellisova dvora a dováděl v chaluhových záhonech Joty, dokud "
 "nezestárl, neztloustl a nezlenivěl."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Mořský rváč"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Výjimečně velcí a silní mořští jedinci se někdy víc spoléhají na své pěsti "
-"a ocasy než na jiné zbraně."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "v omráčení"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "omráčená"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3218,20 +3185,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "žezlo"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Mořský obyvatel"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Mořští lidé jsou většinou mírumilovní, své domovy ale budou bránit. V takové "
-"situaci může být i neozbrojený a netrénovaný mořský člověk nebezpečný."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3412,25 +3365,53 @@ msgstr ""
 "Ten lidský čaroděj nosil prsten! Možná magický. Někdo by si ho měl "
 "vyzkoušet, aby se vidělo, co dělá."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "omráčení"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "omráčení: Tato jednotka je omráčená. Nemůže nadále chránit svou zonu "
+#~ "kontroly."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Tento útok je tak drtivý, že je zasažená jednotka omráčena a není schopna "
-"dále zajištovat svou zónu kontroly. Tento efekt pomine na začátku dalšího "
-"kola zasažené jednotky."
+#~ msgid "Merman Brawler"
+#~ msgstr "Mořský rváč"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Tato jednotka je schopna omračovat své nepřátele a rušit tak jejich zóny "
-"kontroly."
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Výjimečně velcí a silní mořští jedinci se někdy víc spoléhají na své "
+#~ "pěsti a ocasy než na jiné zbraně."
+
+#~ msgid "stunned"
+#~ msgstr "v omráčení"
+
+#~ msgid "female^stunned"
+#~ msgstr "omráčená"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Mořský obyvatel"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Mořští lidé jsou většinou mírumilovní, své domovy ale budou bránit. V "
+#~ "takové situaci může být i neozbrojený a netrénovaný mořský člověk "
+#~ "nebezpečný."
+
+#~ msgid "stun"
+#~ msgstr "omráčení"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Tento útok je tak drtivý, že je zasažená jednotka omráčena a není schopna "
+#~ "dále zajištovat svou zónu kontroly. Tento efekt pomine na začátku dalšího "
+#~ "kola zasažené jednotky."
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Tato jednotka je schopna omračovat své nepřátele a rušit tak jejich zóny "
+#~ "kontroly."

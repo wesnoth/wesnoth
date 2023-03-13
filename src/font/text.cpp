@@ -140,13 +140,6 @@ surface pango_text::render_surface(const SDL_Rect& viewport)
 	return create_surface(viewport);
 }
 
-surface pango_text::render_surface()
-{
-	update_pixel_scale(); // TODO: this should be in recalculate()
-	recalculate();
-	return create_surface();
-}
-
 texture pango_text::with_draw_scale(const texture& t) const
 {
 	texture res(t);

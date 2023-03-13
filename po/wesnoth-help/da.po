@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"POT-Creation-Date: 2023-02-19 22:03-0600\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -48,14 +48,15 @@ msgstr "frygløs"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
 msgid "plague"
 msgstr "pest"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/weapon_specials.cfg:53
 #, fuzzy
 #| msgid ""
 #| "Plague:\n"
@@ -72,21 +73,105 @@ msgstr ""
 "gående lig på den samme side som enheden, der har pestangrebet. Dette gælder "
 "ikke for udøde eller enheder i landsbyer."
 
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
+msgid "This attack can only be used as the first verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
+msgid "This attack can only be used as the second verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+msgid "This attack can only be used as the third verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
+#, fuzzy
+#| msgid "firststrike"
+msgid "first verse"
+msgstr "initiativ"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
+#, fuzzy
+#| msgid "Second Watch"
+msgid "second verse"
+msgstr "Anden vagt"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:419
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:422
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:426
+msgid "tailwind +"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:444
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "helbreder +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 #: data/core/macros/abilities.cfg:10
 #, fuzzy
 msgid "female^heals +4"
 msgstr "sund"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 #, fuzzy
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -106,29 +191,29 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr " Denne enhed kan udføre grundlæggende helbredelse."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:468
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "helbreder +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:469
 #: data/core/macros/abilities.cfg:36
 #, fuzzy
 msgid "female^heals +8"
 msgstr "sund"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:470
 #, fuzzy
 #| msgid ""
 #| "Heals +8:\n"
@@ -158,20 +243,20 @@ msgstr ""
 "søge behandling i en landsby eller fra en enhed som har denne evne."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:498
 #, fuzzy
 #| msgid "heals +4"
 msgid "heals +12"
 msgstr "helbreder +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:499
 #, fuzzy
 msgid "female^heals +12"
 msgstr "sund"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:500
 #, fuzzy
 #| msgid ""
 #| "Heals +8:\n"
@@ -201,7 +286,7 @@ msgstr ""
 "søge behandling i en landsby eller fra en enhed som har denne evne."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:525
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -240,7 +325,7 @@ msgstr ""
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "snigangreb"
 
@@ -280,7 +365,7 @@ msgstr "skjul"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "dræn"
 
@@ -302,7 +387,7 @@ msgstr "Bakker"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "skarpskytte"
 
@@ -320,7 +405,7 @@ msgstr "natsløring"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "gift"
 
@@ -336,7 +421,7 @@ msgstr "stifinder"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "langsom"
 
@@ -4637,268 +4722,6 @@ msgstr ""
 " Denne enhed modtager 1 liv til sit maksimum, hver kan den dræber en levende "
 "enhed."
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "bersærk"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-#, fuzzy
-#| msgid ""
-#| "Berserk:\n"
-#| "Whether used offensively or defensively, this attack presses the "
-#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
-#| "have occurred."
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Bersærk:\n"
-"Uanset om det bruges offensivt eller defensivt, så fortsættes en kamp til en "
-"af parterne dør, eller 30 runder af angreb er foretaget."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-#, fuzzy
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Snigangreb:\n"
-"Dette angreb yder dobbelt skade, hvis der er en fjende på den modsatte side "
-"af enheden, der bliver angrebet med denne evne, og denne enhed ikke er "
-"paralyseret (det vil sige gjort til sten)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-#, fuzzy
-#| msgid ""
-#| "Plague:\n"
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Pest:\n"
-"Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af et "
-"gående lig på den samme side som enheden, der har pestangrebet. Dette gælder "
-"ikke for udøde eller enheder i landsbyer."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-#, fuzzy
-#| msgid ""
-#| "Slow:\n"
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Langsom:\n"
-"Dette angreb gør ofret langsomt indtil det afslutter en runde. Langsom "
-"halverer den skade der medfølger af et angreb og et offers "
-"bevægelsesomkostningfordobles. En enhed, som er gjort langsom, vil have en "
-"lille ikon på dens informationssidepanel, når den vælges."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-#, fuzzy
-msgid "petrifies"
-msgstr "Slag"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-#, fuzzy
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Sten:\n"
-"Dette angreb gør målet til sten. Enheder, der er gjort til sten, kan ikke "
-"bevæge sig eller angribe."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Skarpskytte:\n"
-"Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "Marksman:\n"
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Skarpskytte:\n"
-"Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "magisk"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-#, fuzzy
-#| msgid ""
-#| "Magical:\n"
-#| "This attack always has a 70% chance to hit regardless of the defensive "
-#| "ability of the unit being attacked."
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Magisk:\n"
-"Dette angreb har altid en træfsikkerhed på 70 % uanset forsvarsevnen hos den "
-"enhed som bliver angrebet."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "sværm"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-#, fuzzy
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Antallet af denne slags angreb falder når enheden er såret. Antallet af "
-"angreb er proportionalt med % af liv/maksimal liv enheden har. For eksempel "
-"vil en enhed, der har 3/4 af sit maksimale liv have 3/4 af sine normale "
-"angreb."
-
-# kan også være angrib
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "storm"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-#, fuzzy
-#| msgid ""
-#| "Charge:\n"
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Storm:\n"
-"Når anvendt offensivt giver dette angreb dobbelt skade til modstanderen. Det "
-"gør også, at enheden selv modtager dobbelt skade fra modstanderens modangreb."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-#, fuzzy
-#| msgid ""
-#| "Drain:\n"
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Dræn:\n"
-"Denne enhed dræner livsenergi fra levende enheder - den helbreder sig selv "
-"med halvdelen af det drænede (nedrundet)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-#, fuzzy
-#| msgid "firststrike"
-msgid "first strike"
-msgstr "initiativ"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-#, fuzzy
-#| msgid ""
-#| "First Strike:\n"
-#| "This unit always strikes first with this attack, even if they are "
-#| "defending."
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Initiativ:\n"
-"Denne enhed angriber først - har initiativet - med dette angreb, også selv "
-"om den forsvarer sig."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-#, fuzzy
-#| msgid ""
-#| "Poison:\n"
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Gift:\n"
-"Dette angreb forgifter ofret. Forgiftede enheder taber 8 liv per runde, "
-"indtil de bliver kureret eller når ned på 1 liv. Gift kan ikke, af sig selv, "
-"dræbe en enhed."
-
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
@@ -5982,6 +5805,292 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "bersærk"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+#, fuzzy
+#| msgid ""
+#| "Berserk:\n"
+#| "Whether used offensively or defensively, this attack presses the "
+#| "engagement until one of the combatants is slain, or 30 rounds of attacks "
+#| "have occurred."
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Bersærk:\n"
+"Uanset om det bruges offensivt eller defensivt, så fortsættes en kamp til en "
+"af parterne dør, eller 30 runder af angreb er foretaget."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+#, fuzzy
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Snigangreb:\n"
+"Dette angreb yder dobbelt skade, hvis der er en fjende på den modsatte side "
+"af enheden, der bliver angrebet med denne evne, og denne enhed ikke er "
+"paralyseret (det vil sige gjort til sten)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+#, fuzzy
+#| msgid ""
+#| "Plague:\n"
+#| "When a unit is killed by a Plague attack, that unit is replaced with a "
+#| "Walking Corpse on the same side as the unit with the Plague attack. This "
+#| "doesn’t work on Undead or units in villages."
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Pest:\n"
+"Når en enhed dræbes med med et pestangreb bliver denne enhed erstattet af et "
+"gående lig på den samme side som enheden, der har pestangrebet. Dette gælder "
+"ikke for udøde eller enheder i landsbyer."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+#, fuzzy
+#| msgid ""
+#| "Slow:\n"
+#| "This attack slows the target until it ends a turn. Slow halves the damage "
+#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
+#| "unit that is slowed will feature a snail icon in its sidebar information "
+#| "when it is selected."
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Langsom:\n"
+"Dette angreb gør ofret langsomt indtil det afslutter en runde. Langsom "
+"halverer den skade der medfølger af et angreb og et offers "
+"bevægelsesomkostningfordobles. En enhed, som er gjort langsom, vil have en "
+"lille ikon på dens informationssidepanel, når den vælges."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+#, fuzzy
+msgid "petrifies"
+msgstr "Slag"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+#, fuzzy
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Sten:\n"
+"Dette angreb gør målet til sten. Enheder, der er gjort til sten, kan ikke "
+"bevæge sig eller angribe."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+#, fuzzy
+#| msgid ""
+#| "Marksman:\n"
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Skarpskytte:\n"
+"Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "Marksman:\n"
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Skarpskytte:\n"
+"Hvis anvendt offensivt, har dette angreb en træfsikkerhed på mindst 60 %."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "magisk"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+#, fuzzy
+#| msgid ""
+#| "Magical:\n"
+#| "This attack always has a 70% chance to hit regardless of the defensive "
+#| "ability of the unit being attacked."
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Magisk:\n"
+"Dette angreb har altid en træfsikkerhed på 70 % uanset forsvarsevnen hos den "
+"enhed som bliver angrebet."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "sværm"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+#, fuzzy
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Antallet af denne slags angreb falder når enheden er såret. Antallet af "
+"angreb er proportionalt med % af liv/maksimal liv enheden har. For eksempel "
+"vil en enhed, der har 3/4 af sit maksimale liv have 3/4 af sine normale "
+"angreb."
+
+# kan også være angrib
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "storm"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+#, fuzzy
+#| msgid ""
+#| "Charge:\n"
+#| "When used offensively, this attack deals double damage to the target. It "
+#| "also causes this unit to take double damage from the target’s "
+#| "counterattack."
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Storm:\n"
+"Når anvendt offensivt giver dette angreb dobbelt skade til modstanderen. Det "
+"gør også, at enheden selv modtager dobbelt skade fra modstanderens modangreb."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+#, fuzzy
+#| msgid ""
+#| "Drain:\n"
+#| "This unit drains health from living units, healing itself for half the "
+#| "amount of damage it deals (rounded down)."
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Dræn:\n"
+"Denne enhed dræner livsenergi fra levende enheder - den helbreder sig selv "
+"med halvdelen af det drænede (nedrundet)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+#, fuzzy
+#| msgid "firststrike"
+msgid "first strike"
+msgstr "initiativ"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+#, fuzzy
+#| msgid ""
+#| "First Strike:\n"
+#| "This unit always strikes first with this attack, even if they are "
+#| "defending."
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Initiativ:\n"
+"Denne enhed angriber først - har initiativet - med dette angreb, også selv "
+"om den forsvarer sig."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+#, fuzzy
+#| msgid ""
+#| "Poison:\n"
+#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
+#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
+#| "kill a unit."
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Gift:\n"
+"Dette angreb forgifter ofret. Forgiftede enheder taber 8 liv per runde, "
+"indtil de bliver kureret eller når ned på 1 liv. Gift kan ikke, af sig selv, "
+"dræbe en enhed."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| " This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+" Denne enhed kan gøre sine modstandere langsomme, bevægelsen bliver halveret "
+"og det samme gør angrebsskaden indtil de afslutter en runde."
 
 #: data/core/units.cfg:4
 msgid ""

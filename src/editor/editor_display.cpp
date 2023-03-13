@@ -18,12 +18,15 @@
 #include "draw.hpp"
 #include "editor/controller/editor_controller.hpp"
 #include "editor/editor_display.hpp"
+#include "floating_label.hpp"
+#include "font/sdl_ttf_compat.hpp" // for pango_line_width
 #include "lexical_cast.hpp"
 #include "overlay.hpp"
 #include "reports.hpp"
 #include "team.hpp"
 #include "terrain/builder.hpp"
 #include "units/map.hpp"
+#include "video.hpp"
 
 namespace wb {
 	class manager;
@@ -127,6 +130,23 @@ void editor_display::layout()
 		refresh_report("villages");
 		refresh_report("num_units");
 	}
+
+	// If we're showing hexes near the north of the map, put the help string at the bottom of the screen.
+	// Otherwise, put it at the top.
+	if(help_handle_ != 0) {
+		const bool place_at_top = get_visible_hexes().top[0] > 2;
+
+		if(place_at_top != help_string_at_top_) {
+			const auto& r = font::get_floating_label_rect(help_handle_);
+			double delta = map_outside_area().h - r.h;
+			if(place_at_top) {
+				font::move_floating_label(help_handle_, 0.0, -delta);
+			} else {
+				font::move_floating_label(help_handle_, 0.0, delta);
+			}
+			help_string_at_top_ = place_at_top;
+		}
+	}
 }
 
 const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) const
@@ -137,6 +157,46 @@ const time_of_day& editor_display::get_time_of_day(const map_location& /*loc*/) 
 display::overlay_map& editor_display::get_overlays()
 {
 	return controller_.get_current_map_context().get_overlays();
+}
+
+void editor_display::clear_help_string()
+{
+	font::remove_floating_label(help_handle_);
+	help_handle_ = 0;
+}
+
+void editor_display::set_help_string(const std::string& str)
+{
+	clear_help_string();
+
+	const color_t color{0, 0, 0, 0xbb};
+
+	int size = font::SIZE_LARGE;
+	point canvas_size = video::game_canvas_size();
+
+	while(size > 0) {
+		if(font::pango_line_width(str, size) * 2 > canvas_size.x) {
+			size--;
+		} else {
+			break;
+		}
+	}
+
+	const int border = 5;
+
+	font::floating_label flabel(str);
+	flabel.set_font_size(size);
+	flabel.set_position(canvas_size.x / 2, canvas_size.y);
+	flabel.set_bg_color(color);
+	flabel.set_border_size(border);
+
+	help_handle_ = font::add_floating_label(flabel);
+
+	// Put the label near the bottom of the screen. In layout() it'll be moved to the top if the
+	// user is editing hexes at the south edge of the map.
+	help_string_at_top_ = false;
+	const auto& r = font::get_floating_label_rect(help_handle_);
+	font::move_floating_label(help_handle_, 0.0, -double(r.h));
 }
 
 } //end namespace editor

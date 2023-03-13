@@ -5,16 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-14 18:20-0600\n"
-"PO-Revision-Date: 2021-10-27 11:26+0200\n"
-"Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
+"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"PO-Revision-Date: 2023-02-14 17:31+0100\n"
+"Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -46,14 +46,15 @@ msgstr "dapper"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
 msgid "plague"
 msgstr "ziekte"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/weapon_specials.cfg:53
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -63,20 +64,104 @@ msgstr ""
 "door een Wandelend Lijk van dezelfde partij als de aanvaller. Dit geldt niet "
 "bij Ondoden en eenheden in dorpen."
 
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
+msgid "This attack can only be used as the first verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
+msgid "This attack can only be used as the second verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+msgid "This attack can only be used as the third verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
+#, fuzzy
+#| msgid "first strike"
+msgid "first verse"
+msgstr "snelle slag"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
+#, fuzzy
+#| msgid "Second Dusk"
+msgid "second verse"
+msgstr "Tweede Zonsondergang"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:419
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:422
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:426
+msgid "tailwind +"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:444
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "geneest +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "geneest +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -88,35 +173,33 @@ msgstr ""
 "Een eenheid met dit vermogen geneest omringende bevriende eenheden aan het "
 "begin van elke beurt.\n"
 "\n"
-"De eenheid die genezen wordt kan ofwel 4 HP per beurt genezen, ofwel behoed "
+"De eenheid die genezen wordt kan ofwel 4 LP per beurt genezen, ofwel behoed "
 "worden voor de effecten van een vergiftiging. \n"
 "Om echter van een vergiftiging af te komen moet de eenheid een dorp of een "
 "gifgenezer opzoeken."
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
-#, fuzzy
-#| msgid " This unit is capable of basic healing."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr " Deze eenheid kan standaard genezing toepassen."
+msgstr "Deze eenheid kan standaard genezing toepassen en uitdroging vertragen."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:468
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "geneest +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:469
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "geneest +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:470
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -130,35 +213,22 @@ msgstr ""
 "wat leidt tot snellere genezing dan normaal gesproken mogelijk is in de "
 "strijd.\n"
 "\n"
-"De eenheid die genezen wordt kan 8 HP per beurt genezen, of behoed worden "
+"De eenheid die genezen wordt kan 8 LP per beurt genezen, of behoed worden "
 "voor de effecten van een vergiftiging. Om echter van een vergiftiging af te "
 "komen moet de eenheid een dorp of een gifgenezer opzoeken."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
-#, fuzzy
-#| msgid "heals +4"
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:498
 msgid "heals +12"
-msgstr "geneest +4"
+msgstr "geneest +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
-#, fuzzy
-#| msgid "female^heals +4"
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:499
 msgid "female^heals +12"
-msgstr "geneest +4"
+msgstr "geneest +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:500
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -172,20 +242,19 @@ msgstr ""
 "wat leidt tot snellere genezing dan normaal gesproken mogelijk is in de "
 "strijd.\n"
 "\n"
-"De eenheid die genezen wordt kan 8 HP per beurt genezen, of behoed worden "
-"voor de effecten van een vergiftiging. Om echter van een vergiftiging af te "
-"komen moet de eenheid een dorp of een gifgenezer opzoeken."
+"De eenheid die genezen wordt kan 12 LP per beurt genezen, of behoed worden "
+"voor de effecten van een vergiftiging.\n"
+"Om echter van een vergiftiging af te komen moet de vergiftigde eenheid een "
+"dorp of een gifgenezer opzoeken."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
-#, fuzzy
-#| msgid ""
-#| " This unit is capable of healing those around it, and curing them of "
-#| "poison."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:525
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
-msgstr " Deze eenheid kan degenen die hem omringen genezen, ook van vergif."
+msgstr ""
+" Deze eenheid kan degenen die hem omringen genezen, ook van vergif. "
+"Daarnaast kan deze eenheid ook uitdroging vertragen."
 
 #. [artifact]
 #. [chance]
@@ -202,7 +271,7 @@ msgstr "teleporteren"
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
 #: data/core/macros/abilities.cfg:94
 msgid "regenerates"
-msgstr "herstellend"
+msgstr "hersteld"
 
 #. [chance]
 #. [trait]: id=healthy
@@ -214,7 +283,7 @@ msgstr "Rust en geneest altijd"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "ruggensteek"
 
@@ -254,7 +323,7 @@ msgstr "verbergen"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "aftappen"
 
@@ -276,7 +345,7 @@ msgstr "Heuvels"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "precisieschutter"
 
@@ -292,7 +361,7 @@ msgstr "nachtzicht"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "vergif"
 
@@ -308,7 +377,7 @@ msgstr "warzaaier"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "vertraagt"
 
@@ -336,10 +405,8 @@ msgstr "Terrein Editor"
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:361
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Kaart/Scenario Editor"
+msgstr "Scenario Editor"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
@@ -369,22 +436,22 @@ msgstr ""
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Verf losse vakken."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Verf zeven vakken in een keer."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Verf negentien vakken in een keer."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Verf drie vakken in een lijn."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
@@ -432,27 +499,27 @@ msgstr ""
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Selecteer enkele vakken"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Selecteer zeven vakken in een keer."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Selecteer negentien vakken in een keer."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Selecteer drie vakken in een lijn."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Kopieer en Plak Gereedschap"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -473,29 +540,27 @@ msgstr ""
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Draai 60° met de klok mee."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Draai 60° tegen de klok in."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Draai horizontaal om"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Draai verticaal om"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Start Posities Hoe"
+msgstr ""
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
@@ -718,7 +783,7 @@ msgstr ""
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:207
 msgid "Deprecated Terrain"
-msgstr ""
+msgstr "Verouderd Terrein"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -760,7 +825,7 @@ msgstr ""
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:239
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Item Gereedschap (Omgeving Gereedschap)"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:240
@@ -1071,8 +1136,6 @@ msgstr ""
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:439
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
 msgstr "Tijdschema Editor"
 
@@ -1114,17 +1177,17 @@ msgstr ""
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:458
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Toon alle soorten terreinen"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:459
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Toon alleen water terreinen"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:460
 msgid "Show only villages"
-msgstr ""
+msgstr "Toon alleen dorpen"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:472
@@ -1242,18 +1305,18 @@ msgstr "Encyclopedie"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Geografie'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Kalender'</ref>\n"
+"<ref>dst='..geography' text='Geografie'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
@@ -1275,6 +1338,22 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Ieder jaar in de kalender van Wesnoth bestaat uit 12 maanden. Dit zijn, "
+"opeenvolgend:\n"
+"\n"
+"Witvuur\n"
+"Bloedmaan\n"
+"Strooizaad\n"
+"Diepwortel\n"
+"Waarzeggers Bloem\n"
+"Doornster\n"
+"Hoogster\n"
+"Brandvuur\n"
+"Doodzaad\n"
+"Oogstmaan\n"
+"IJsbloem\n"
+"Zwartvuur\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1422,59 +1501,6 @@ msgstr "Koninkrijk van Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "<ref>dst='great_river' text='Great River'</ref> to the north, the shore "
-#| "of the <ref>dst='great_ocean' text='ocean'</ref> to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast.\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -1615,7 +1641,7 @@ msgstr ""
 "\n"
 "<header>text='Belangrijke steden:'</header>\n"
 "    • Elensefar: De hoofdstad, gelegen op een eiland in de "
-"<ref>dst='great_river' text=Grote Rivier'</ref>-delta.\n"
+"<ref>dst='great_river' text='Grote Rivier'</ref>-delta.\n"
 "    • Carcyn: Stad op de grens tussen Wesnoth en Elensefar, het eigendom van "
 "deze stad is omstreden.\n"
 "\n"
@@ -1930,7 +1956,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<italic>text='Strijd om Wesnoth'</italic>is een op beurten gebaseerd "
+"<italic>text='De Strijd om Wesnoth'</italic> is een op beurten gebaseerd "
 "fantasie strategiespel en enigszins ongewoon onder de moderne "
 "strategiespellen. Terwijl andere spellen streven naar complexiteit, streeft "
 "<italic>text='Strijd om Wesnoth'</italic> voor eenvoud van zowel de regels "
@@ -2124,12 +2150,12 @@ msgid ""
 "enemy may have higher incomes, higher-level units, more castle hexes, and so "
 "on."
 msgstr ""
-"Wesnoth bestaat uit een aantal gevechten, genaamd <italic>text='scenario's'</"
-"italic>, waarin je troepen tegenover één of meerdere tegenstanders geplaatst "
-"worden. Meerdere opeenvolgende scenario's, die een verhaal vertellen, vormen "
-"een <italic>text='veldtocht'</italic>. In een veldtocht moet je vaak "
-"voorzichtig spelen, je beste eenheden kun je nodig hebben in latere "
-"scenario's.\n"
+"Wesnoth bestaat uit een aantal gevechten, genaamd "
+"<italic>text='scenario\\'s'</italic>, waarin je troepen tegenover één of "
+"meerdere tegenstanders geplaatst worden. Meerdere opeenvolgende scenario's, "
+"die een verhaal vertellen, vormen een <italic>text='veldtocht'</italic>. In "
+"een veldtocht moet je vaak voorzichtig spelen, je beste eenheden kun je "
+"nodig hebben in latere scenario's.\n"
 "\n"
 "Nadat je de basis onder de knie hebt, kun je een beginnersveldtocht proberen "
 "zoals <italic>text='De Kroonprins'</italic> of <italic>text='De Zuidelijke "
@@ -2439,10 +2465,10 @@ msgid ""
 "recruited unit starts with no experience points, and gains experience by "
 "fighting enemies."
 msgstr ""
-"Elke eenheid heeft een bepaald aantal <italic>text='levenspunten</italic> "
-"(HP). Als het aantal levenspunten onder de 1 komt, dan sterft de eenheid. "
+"Elke eenheid heeft een bepaald aantal <italic>text='levenspunten'</italic> "
+"(LP). Als het aantal levenspunten onder de 1 komt, dan sterft de eenheid. "
 "Daarnaast heeft elke eenheid een bepaald aantal "
-"<italic>text='ervaringspunten'</italic> (XP). Een pas gerekruteerde eenheid "
+"<italic>text='ervaringspunten'</italic> (EP). Een pas gerekruteerde eenheid "
 "begint zonder ervaringspunten, maar kan die verkrijgen door tegen vijanden "
 "te vechten."
 
@@ -2531,7 +2557,7 @@ msgstr ""
 "Level Advancement) krijgen. De AMLA beïnvloed de eenheid elke keer dat hij "
 "bereikt wordt maar de rang van de eenheid blijft gelijk. Het standaardeffect "
 "is dat het maximale aantal levenspunten met 3 verhoogd wordt. De eerste AMLA "
-"wordt normaal gesproken bereikt bij een extra 150 XP (120 XP voor "
+"wordt normaal gesproken bereikt bij een extra 150 EP (120 EP voor "
 "intelligente eenheden). Het krijgen wordt echter steeds moeilijker, zodat "
 "het vaak verstandiger is eenheden van lagere rang te doen promoveren."
 
@@ -2564,7 +2590,7 @@ msgstr ""
 "benodigde aantal zetten hangt ook af van het soort eenheid. In het bos "
 "bijvoorbeeld, hebben Elfen slechts 1 zet nodig, waar de meeste Mensen en "
 "Orks er 2 nodig hebben en Ruiters zelfs 3. Klik rechts op een eenheid, kies "
-"<bold>Eenheid Beschrijving</bold> en kijk onder "
+"<bold>text='Eenheid Beschrijving'</bold> en kijk onder "
 "<bold>text='Terreinspecificaties'</bold> om te zien hoeveel zetten de "
 "eenheid nodig heeft voor elk van de terreinsoorten."
 
@@ -2688,16 +2714,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Multiplayer Tijdperken en Facties'</header>"
+msgstr "<header>text='Multiplayer en ongedaan maken'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2727,15 +2745,6 @@ msgstr ""
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2743,8 +2752,6 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
-"\n"
 "Een van de uitdagingen in het spel is uitzoeken hoe je je helden beschermt. "
 "Kleine risico's stapelen zich snel op: als je vijf belangrijke eenheden "
 "hebt, die allemaal 1% kans hebben om te sneuvelen, kun je "
@@ -3460,6 +3467,7 @@ msgstr "Genezing"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:497
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -3469,7 +3477,7 @@ msgstr ""
 "\n"
 "\n"
 "Rust: Een eenheid die niet beweegt, niet aanvalt en niet aangevallen wordt "
-"zal 2 HP genezen in de volgende beurt."
+"zal 2 LP genezen in de volgende beurt."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:497
@@ -3491,8 +3499,6 @@ msgid ""
 "<ref>dst='terrain_oasis' text='oasis'</ref> will heal 8HP. If the unit is "
 "poisoned, the poison will be cured instead."
 msgstr ""
-"\n"
-"Dorpen: Een eenheid die een beurt begint in een dorp geneest 8HP."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:500
@@ -3504,7 +3510,7 @@ msgid ""
 msgstr ""
 "\n"
 "• <ref>dst='ability_regeneratesregenerates' text='Herstellend'</ref>: "
-"Sommige eenheden (zoals Trollen) zullen automatisch 8HP per beurt genezen. "
+"Sommige eenheden (zoals Trollen) zullen automatisch 8LP per beurt genezen. "
 "Wanneer de eenheid vergiftigd is, zal in plaats daarvan de vergiftiging "
 "genezen worden."
 
@@ -3539,7 +3545,7 @@ msgstr ""
 "• <bold>text='Gisgenezende eenheden'</bold>: Eenheden met de vaardigheid "
 "<ref>dst='ability_curingcures' text='Geneest Gif'</ref> zullen Vergif in "
 "alle aangrenzende bevriende eenheden genezen (dit heeft de voorkeur boven "
-"het genezen van HP, als het deze vaardigheid ook heeft)."
+"het genezen van LP, als het deze vaardigheid ook heeft)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:503
@@ -4710,7 +4716,7 @@ msgstr ""
 "De eenheid kan aangrenzende bevriende eenheden genezen aan het begin van de "
 "beurt.\n"
 "\n"
-"Een eenheid die genezen wordt door deze genezer kan 4 HP per beurt genezen, "
+"Een eenheid die genezen wordt door deze genezer kan 4 LP per beurt genezen, "
 "of ervoor zorgen dat het gif zijn werk niet kan doen voor deze beurt.\n"
 "Deze vaardigheid geneest de vergiftiging niet maar stelt enkel het effect "
 "ervan uit."
@@ -4729,7 +4735,7 @@ msgstr ""
 "Deze eenheid combineert geneeskrachtige kruiden met magie om eenheden "
 "sneller te genezen dan normaal voor mogelijk word gehouden.\n"
 "\n"
-"Een eenheid die genezen wordt door deze genezer kan 8 HP per beurt genezen, "
+"Een eenheid die genezen wordt door deze genezer kan 8 LP per beurt genezen, "
 "of ervoor zorgen dat het gif zijn werk niet kan doen voor deze beurt.\n"
 "Deze vaardigheid geneest de vergiftiging niet maar stelt enkel het effect "
 "ervan uit."
@@ -4751,7 +4757,7 @@ msgstr ""
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:95
 msgid "female^regenerates"
-msgstr "herstellend"
+msgstr "hersteld"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:96
@@ -4759,34 +4765,26 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"De eenheid zal zichzelf iedere beurt met 8 HP genezen. Wanneer de eenheid "
+"De eenheid zal zichzelf iedere beurt met 8 LP genezen. Wanneer de eenheid "
 "vergiftigd is, zal het in plaats van genezen de vergiftiging weghalen."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:108
-#, fuzzy
-#| msgid "regenerates"
 msgid "regenerates +4"
-msgstr "herstellend"
+msgstr "hersteld +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:109
-#, fuzzy
-#| msgid "female^regenerates"
 msgid "female^regenerates +4"
-msgstr "herstellend"
+msgstr "hersteld +4"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:110
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"De eenheid zal zichzelf iedere beurt met 8 HP genezen. Wanneer de eenheid "
+"De eenheid zal zichzelf iedere beurt met 8 LP genezen. Wanneer de eenheid "
 "vergiftigd is, zal het in plaats van genezen de vergiftiging weghalen."
 
 #. [regenerate]: id=regenerates
@@ -4828,10 +4826,8 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:146
-#, fuzzy
-#| msgid "female^leadership"
 msgid "female^diversion"
-msgstr "leiderschap"
+msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:147
@@ -4960,10 +4956,8 @@ msgstr ""
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "langzaam"
+msgstr ""
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
@@ -5076,209 +5070,14 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
 msgstr ""
-"Het maximaal aantal levenspunten (HP) wordt verhoogd met 1 wanneer deze "
+"Het maximaal aantal levenspunten (LP) wordt verhoogd met 1 wanneer deze "
 "eenheid een eenheid doodt, met uitzondering van eenheden die immuun zijn "
 "voor ziekte."
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "razernij"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Zowel bij offensief als bij defensief gebruik van deze aanval gaat het "
-"gevecht door totdat een van de strijders gevallen is (met een maximum van 30 "
-"gevechtsrondes)."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Wanneer aanvallend gebruikt, brengt deze aanval tweemaal zo veel "
-"verwondingen toe als een bevriende eenheid, die niet om een of andere reden "
-"is uitgeschakeld (omdat hij versteend is bijvoorbeeld), zich aan de andere "
-"kant van het slachtoffer bevindt."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Als een eenheid wordt gedood door een ziekteaanval, dan wordt hij vervangen "
-"door eenzelfde eenheid van dezelfde partij als de aanvaller. Dit geldt niet "
-"bij Ondoden en eenheden in dorpen."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Deze aanval vertraagt het slachtoffer tot het einde van zijn beurt. Een "
-"vertraagde eenheid beweegt met halve snelheid en zijn aanvallen brengen "
-"slechts half zoveel verwondingen toe. Een vertraagde eenheid heeft een "
-"slakicoon in de zijbalk informatie staan wanneer de eenheid is geselecteerd."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "versteent"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Deze aanval versteent het slachtoffer. Eenheden die versteend zijn kunnen "
-"niet bewegen of aanvallen."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten minste "
-"60%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten minste "
-"60%."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "magisch"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Deze aanval heeft altijd 70% kans om te raken ongeacht de verdediging van de "
-"aangevallen eenheid."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "zwerm"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Het aantal slagen van deze aanval neemt af wanneer de eenheid gewond raakt. "
-"Het aantal slagen is evenredig met de verhouding tussen HP en het maximale "
-"aantal HP. Als een eenheid bijvoorbeeld 3/4 van zijn maximale HP heeft "
-"krijgt het 3/4 van zijn aantal aanvallen."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "stormloop"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Bij aanvallend gebruik brengt deze aanval twee keer zo veel schade toe. Het "
-"zorgt er ook voor dat de eenheid twee keer zo veel schade ontvangt van de "
-"tegenaanval."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Deze eenheid zuigt energie uit levende eenheden en geneest zichzelf met de "
-"helft van de schade die hij toebrengt (naar beneden afgerond)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "snelle slag"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Deze eenheid deelt altijd de eerste klap uit, ook wanneer hij verdedigt."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Deze aanval vergiftigt levende vijanden. Vergiftigde eenheden verliezen elke "
-"beurt 8 HP totdat ze worden genezen of totdat ze nog slechts 1HP hebben. Gif "
-"zelf kan geen eenheid doden."
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Max HP bonus +3, Max XP +20%"
+msgstr "Max LP bonus +3, Max EP +20%"
 
 #. [time]: id=midday
 #. [time]: id=midday_hour
@@ -5509,8 +5308,8 @@ msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
-"Deze eenheid is herstellend. Hierdoor geneest de eenheid alsof die altijd in "
-"een dorp staat."
+"Deze eenheid hersteld. Hierdoor geneest de eenheid alsof die altijd in een "
+"dorp staat."
 
 #: data/core/macros/special-notes.cfg:34
 msgid ""
@@ -5586,7 +5385,7 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Het maximaal aantal HP wordt verhoogt met 1 wanneer deze eenheid een levende "
+"Het maximaal aantal LP wordt verhoogt met 1 wanneer deze eenheid een levende "
 "eenheid doodt."
 
 #: data/core/macros/special-notes.cfg:64
@@ -6038,7 +5837,7 @@ msgid ""
 "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
 "gain 1 more per level."
 msgstr ""
-"<italic>text='Robuuste'</italic> eenheden hebben 4 HP plus 1 HP per level "
+"<italic>text='Robuuste'</italic> eenheden hebben 4 LP plus 1 LP per level "
 "meer dan normaal."
 
 #. [trait]: id=healthy
@@ -6063,7 +5862,7 @@ msgstr ""
 "\n"
 "\n"
 "<italic>text='Gezonde'</italic> eenheden hebben 1 extra levenspunt en "
-"krijgen er een extra bij per rang. Ze genezen ook 2 HP iedere beurt, "
+"krijgen er een extra bij per rang. Ze genezen ook 2 LP iedere beurt, "
 "ongeacht of ze in een gevecht zijn beland de vorige beurt."
 
 #. [trait]: id=healthy
@@ -6222,6 +6021,225 @@ msgid ""
 msgstr ""
 "Eenheden met het kenmerk <italic>text='oud'</italic> krijgen 1 levenspunt "
 "minder en doen op korte afstand 1 minder schade per aanval."
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "razernij"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Zowel bij offensief als bij defensief gebruik van deze aanval gaat het "
+"gevecht door totdat een van de strijders gevallen is (met een maximum van 30 "
+"gevechtsrondes)."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Wanneer aanvallend gebruikt, brengt deze aanval tweemaal zo veel "
+"verwondingen toe als een bevriende eenheid, die niet om een of andere reden "
+"is uitgeschakeld (omdat hij versteend is bijvoorbeeld), zich aan de andere "
+"kant van het slachtoffer bevindt."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Als een eenheid wordt gedood door een ziekteaanval, dan wordt hij vervangen "
+"door eenzelfde eenheid van dezelfde partij als de aanvaller. Dit geldt niet "
+"bij Ondoden en eenheden in dorpen."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Deze aanval vertraagt het slachtoffer tot het einde van zijn beurt. Een "
+"vertraagde eenheid beweegt met halve snelheid en zijn aanvallen brengen "
+"slechts half zoveel verwondingen toe. Een vertraagde eenheid heeft een "
+"slakicoon in de zijbalk informatie staan wanneer de eenheid is geselecteerd."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "versteent"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Deze aanval versteent het slachtoffer. Eenheden die versteend zijn kunnen "
+"niet bewegen of aanvallen."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten minste "
+"60%."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+#| msgid ""
+#| "When used offensively, this attack always has at least a 60% chance to "
+#| "hit."
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Bij aanvallend gebruik, heeft deze aanval altijd een raakkans van ten minste "
+"60%."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "magisch"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Deze aanval heeft altijd 70% kans om te raken ongeacht de verdediging van de "
+"aangevallen eenheid."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "zwerm"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Het aantal slagen van deze aanval neemt af wanneer de eenheid gewond raakt. "
+"Het aantal slagen is evenredig met de verhouding tussen LP en het maximale "
+"aantal LP. Als een eenheid bijvoorbeeld 3/4 van zijn maximale LP heeft "
+"krijgt het 3/4 van zijn aantal aanvallen."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "stormloop"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Bij aanvallend gebruik brengt deze aanval twee keer zo veel schade toe. Het "
+"zorgt er ook voor dat de eenheid twee keer zo veel schade ontvangt van de "
+"tegenaanval."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Deze eenheid zuigt energie uit levende eenheden en geneest zichzelf met de "
+"helft van de schade die hij toebrengt (naar beneden afgerond)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "snelle slag"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Deze eenheid deelt altijd de eerste klap uit, ook wanneer hij verdedigt."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Deze aanval vergiftigt levende vijanden. Vergiftigde eenheden verliezen elke "
+"beurt 8 LP totdat ze worden genezen of totdat ze nog slechts 1LP hebben. Gif "
+"zelf kan geen eenheid doden."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| "This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Deze eenheid kan zijn vijanden vertragen, waardoor hun snelheid en de "
+"effectiviteit van hun aanvallen gehalveerd worden."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -6815,24 +6833,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Ent"
+msgstr "Paard"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Boevrouw"
+msgstr "Paard"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Enten"
+msgstr "Paarden"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -7965,7 +7977,7 @@ msgstr ""
 
 #: data/lua/feeding.lua:30 data/lua/feeding.lua:43
 msgid "+1 max HP"
-msgstr "+1 max HP"
+msgstr "+1 max LP"
 
 #: src/help/help.cpp:211
 msgid "Close"
@@ -7981,11 +7993,11 @@ msgstr "Fout bij het verwerken van de helptekst:"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Best of"
-msgstr ""
+msgstr "Beste van"
 
 #: src/help/help_topic_generators.cpp:64
 msgid "Worst of"
-msgstr ""
+msgstr "Slechtste van"
 
 #: src/help/help_topic_generators.cpp:161
 msgid ""
@@ -8031,7 +8043,7 @@ msgstr "Bijzonderheden:"
 
 #: src/help/help_topic_generators.cpp:193
 msgid "Base Terrain: "
-msgstr ""
+msgstr "Basis Terrein: "
 
 #: src/help/help_topic_generators.cpp:213
 msgid "Movement properties: "
@@ -8055,15 +8067,15 @@ msgstr "Promoveert naar: "
 
 #: src/help/help_topic_generators.cpp:389
 msgid "Base unit: "
-msgstr ""
+msgstr "Basis eenheid: "
 
 #: src/help/help_topic_generators.cpp:394
 msgid "Base units: "
-msgstr ""
+msgstr "Basis eenheden: "
 
 #: src/help/help_topic_generators.cpp:412
 msgid "Variations: "
-msgstr ""
+msgstr "Variaties: "
 
 #: src/help/help_topic_generators.cpp:436
 msgid "race^Miscellaneous"
@@ -8086,7 +8098,7 @@ msgstr "Vermogens verbeteringen: "
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:564
 msgid "HP:"
-msgstr "HP:"
+msgstr "LP:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
@@ -8121,14 +8133,14 @@ msgstr "Prijs:"
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:588
 msgid "Alignment:"
-msgstr ""
+msgstr "Alliantie:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256).  In the
 #. translation use non-breaking spaces as appropriate for the target language.
 #: src/help/help_topic_generators.cpp:595
 msgid "Required XP:"
-msgstr "Benodigde XP:"
+msgstr "Benodigde EP:"
 
 #: src/help/help_topic_generators.cpp:613
 msgid "unit help^Attacks"
@@ -8164,11 +8176,11 @@ msgstr "Aanvalstype"
 
 #: src/help/help_topic_generators.cpp:704
 msgid "Resistance"
-msgstr "Weerstand"
+msgstr "Weerstanden"
 
 #: src/help/help_topic_generators.cpp:734
 msgid "Terrain Modifiers"
-msgstr ""
+msgstr "Terrein Informatie"
 
 #: src/help/help_topic_generators.cpp:738
 msgid "Terrain"
@@ -8180,7 +8192,7 @@ msgstr "Verdediging"
 
 #: src/help/help_topic_generators.cpp:740
 msgid "Movement Cost"
-msgstr "Zetten"
+msgstr "Bewegingskosten"
 
 #: src/help/help_topic_generators.cpp:744
 msgid "Defense Cap"

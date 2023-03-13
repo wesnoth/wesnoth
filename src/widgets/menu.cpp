@@ -20,7 +20,6 @@
 #include "draw.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/standard_colors.hpp"
-#include "floating_label.hpp"
 #include "game_config.hpp"
 #include "language.hpp"
 #include "lexical_cast.hpp"

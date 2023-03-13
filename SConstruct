@@ -57,7 +57,8 @@ opts.AddVariables(
     ('arch', 'What -march option to use for build=release, will default to pentiumpro on Windows', ""),
     ('opt', 'override for the build\'s optimization level', ""),
     BoolVariable('harden', 'Whether to enable options to harden the executables', True),
-    BoolVariable('glibcxx_debug', 'Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug', False),
+    BoolVariable('glibcxx_assertions', 'Whether to define _GLIBCXX_ASSERTIONS for build=debug', False),
+    BoolVariable('glibcxx_debug', "Whether to define _GLIBCXX_DEBUG and _GLIBCXX_DEBUG_PEDANTIC for build=debug. Requires a version of Boost's program_options that's compiled with __GLIBCXX_DEBUG too.", False),
     EnumVariable('profiler', 'profiler to be used', "", ["", "gprof", "gcov", "gperftools", "perf"]),
     EnumVariable('pgo_data', 'whether to generate profiling data for PGO, or use existing profiling data', "", ["", "generate", "use"]),
     BoolVariable('use_srcdir', 'Whether to place object files in src/ or not', False),
@@ -552,10 +553,11 @@ for env in [test_env, client_env, env]:
             debug_flags = Split(debug_flags)
             debug_flags.append("${ '-O3' if TARGET.name == 'gettext.o' else '' }") # workaround for "File too big" errors
 
+        glibcxx_debug_flags = ""
+        if env["glibcxx_assertions"] == True:
+            glibcxx_debug_flags = " ".join([glibcxx_debug_flags, "_GLIBCXX_ASSERTIONS"])
         if env["glibcxx_debug"] == True:
-            glibcxx_debug_flags = "_GLIBCXX_DEBUG _GLIBCXX_DEBUG_PEDANTIC"
-        else:
-            glibcxx_debug_flags = ""
+            glibcxx_debug_flags = " ".join([glibcxx_debug_flags, "_GLIBCXX_DEBUG", "_GLIBCXX_DEBUG_PEDANTIC"])
 
 # #
 # End determining options for debug build

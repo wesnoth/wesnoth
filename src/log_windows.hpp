@@ -50,27 +50,7 @@ namespace lg
  * horribly wrong as soon as we try to use the logging facilities internally
  * for debug messages.
  */
-void early_log_file_setup(bool disable);
-
-/**
- * Relocates the stdout+stderr log file to the user data directory.
- *
- * This function exits the process if something goes wrong (including calling
- * it when the user data directory isn't known yet).
- */
-void finish_log_file_setup();
-
-/**
- * Switches to using a native console instead of log file redirection.
- *
- * In this mode, the log file is closed (if it was created in the first place)
- * and output is sent directly to an attached or allocated console instead.
- * This is used to implement the --wconsole command line option.
- *
- * Using a native console instead of a file has the benefit of allowing to see
- * output in real time or redirecting it to a user-specified file.
- */
-void enable_native_console_output();
+void do_console_redirect(bool native_console);
 
 /**
  * Returns true if a console was allocated by the Wesnoth process.

@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-14 18:20-0600\n"
-"PO-Revision-Date: 2022-11-17 19:33+0100\n"
+"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"PO-Revision-Date: 2023-02-10 21:56+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -49,14 +49,15 @@ msgstr "nebojácný"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
 msgid "plague"
 msgstr "nákaza"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/weapon_specials.cfg:53
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -66,20 +67,104 @@ msgstr ""
 "patřící však na stranu jednotky, která ji zabila. Toto nefunguje u nemrtvých "
 "či jednotek umístěných ve vesnicích."
 
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
+msgid "This attack can only be used as the first verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
+msgid "This attack can only be used as the second verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+msgid "This attack can only be used as the third verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
+#, fuzzy
+#| msgid "first strike"
+msgid "first verse"
+msgstr "první úder"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
+#, fuzzy
+#| msgid "Second Dusk"
+msgid "second verse"
+msgstr "Druhý soumrak"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:419
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:422
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:426
+msgid "tailwind +"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:444
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "léčí +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "léčí +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -98,27 +183,27 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Tato jednotka dokáže poskytnout základní léčení a zpomalit dehydrataci."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:468
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "léčí +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:469
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "léčí +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:470
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -137,17 +222,17 @@ msgstr ""
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:498
 msgid "heals +12"
 msgstr "léčí +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:499
 msgid "female^heals +12"
 msgstr "léčí +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:500
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -166,7 +251,7 @@ msgstr ""
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:525
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -201,7 +286,7 @@ msgstr "Vždy odpočívá a léčí se"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 msgid "backstab"
 msgstr "zezadu"
 
@@ -241,7 +326,7 @@ msgstr "skrývání"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 msgid "drains"
 msgstr "vysátí"
 
@@ -263,7 +348,7 @@ msgstr "Kopce"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 msgid "marksman"
 msgstr "odstřelovač"
 
@@ -279,7 +364,7 @@ msgstr "noční lovec"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "otrava"
 
@@ -295,7 +380,7 @@ msgstr "průbojnost"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 msgid "slows"
 msgstr "zpomalení"
 
@@ -714,40 +799,24 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "Překryvné obrázky pro terén v editoru"
+msgstr "Grafika pro vyvýšený terén"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"Mapy obvykle vypadají v editoru podobně jako ve hře. Je několik výjimek, "
-"u kterých jsou v editoru použity jiné obrázky. Všechny zde popsané překryvy "
-"se nacházejí v paletě terénů ve skupině „zvláštnosti“."
+"Kosmetický účinek vyvýšení, který v editoru vypadá poněkud jinak než ve hře "
+"díky názorným pomůckám v editoru. Všechny zde popsané překryvy se nacházejí "
+"v paletě terénů pod skupinou „vyvýšení“."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Pokročilé'</bold>"
+msgstr "<bold>text='Přímé překryvy'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
@@ -759,24 +828,22 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"Srázy a rokliny\n"
+"\n"
+"Srázy, rokliny a jejich obměny se podobají standardním překryvům terénu "
+"a tímto způsobem je lze jednoduše použít. Nicméně pro větší oblasti mapy, "
+"kde budeš chtít umožnit použití jiných překryvů terénu, bude třeba tyto jiné "
+"překryvy spojovat se „značkami“ popsanými v následujícím oddílu."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:181
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='Pokročilé'</bold>"
+msgstr "<bold>text='Vyplňování vyvýšením'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:183
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "Značka zvýšení na mapě"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
@@ -795,6 +862,18 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"Ikona zvýšení v paletě editoru\n"
+"\n"
+"Chceš-li zvýšit nebo snížit plochu terénu a zároveň mít možnost použít jiné "
+"překryvy terénu, jako třeba stromy, budeš muset použít tyto značky. "
+"Umístěním jedné z těchto šipek do mapy dojde k vyplnění mapy barevně "
+"odlišeným zamlžením. Zamlžení ani šipka nebudou ve hře vidět. Zamlžená "
+"oblast bude mít na okraji hranu, takže bude vypadat vyšší nebo nižší než "
+"sousední políčka.\n"
+"\n"
+"Existují dvě značky zvýšení a dvě snížení, takže je možné vytvořit terasy až "
+"do pěti úrovní (nejnižší, nižší, normální, vyšší, nejvyšší). Umístění "
+"zvýšené oblasti vedle snížené nevede ke vzniku větších srázů.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:191
@@ -816,6 +895,20 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"<bold>text='Jak na to'</bold>\n"
+"\n"
+"Značky se šipkami nejsou samy o sobě moc užitečné, ale terény typu sráz/"
+"roklina lze použít k omezení vyplňované oblasti.\n"
+"\n"
+"Ukázkový příklad:\n"
+"1.  Vyber z palety editoru Sráz (^Qhh) a použij nástroj malování pro jedinou "
+"dlaždici, abys na prázdné travnaté mapě načrtl uzavřenou plochu.\n"
+"2.  Umísti šipku Značky zvýšení (^_mh) na políčko uvnitř plochy (ne na "
+"hranici tvořenou Srázy).\n"
+"3.  Celá plocha by teď měla být zvýšená, a pokud nepřekreslíš překryvy "
+"Značky nebo Srázů, můžeš podle potřeby přidávat další překryvy.\n"
+"\n"
+"Grafika použitá na okrajové hrany je určena základním terénem.\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:202
@@ -825,6 +918,9 @@ msgid ""
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='Poznámka pro autory rozšíření: Vyplněná políčka nemají změněné "
+"kódy terénu ani žádné jiné vlastnosti, takže filtrovat umístění podle "
+"vyvýšení není jednoduché.' italic='yes' font_size=10 </format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:207
@@ -2296,8 +2392,8 @@ msgstr ""
 "možné vystavět nespočet strategií, takže je lehké naučit se ji hrát, avšak "
 "obtížné si ji podrobit.\n"
 "\n"
-"Následující strany pojednávají o všem, co byste o Wesnothu měli vědět. Jak "
-"budete postupovat hrou, v příslušných kategoriích budou přibývat další "
+"Následující strany pojednávají o všem, co bys o Wesnothu měl vědět. Jak "
+"budeš postupovat hrou, v příslušných kategoriích budou přibývat další "
 "informace o aspektech hry. Podrobnější informace o zvláštních případech "
 "a výjimkách se nachází za odkazy v textu."
 
@@ -2328,10 +2424,10 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
-"Hra se odehrává na šestiúhelníkových herních polích, kde vaše jednotky "
-"bojují proti jednotkám, které ovládá počítač, kamarádům, se kterými se "
-"střídáte na jednom počítači (horké křeslo), ostatním hráčům na síti nebo "
-"hráčům kdekoliv na světě připojeným přes internet.\n"
+"Hra se odehrává na šestiúhelníkových herních polích, kde tvé jednotky bojují "
+"proti jednotkám, které ovládá počítač, kamarádům, se kterými se střídáš na "
+"jednom počítači (horké křeslo), ostatním hráčům na síti nebo hráčům kdekoliv "
+"na světě připojeným přes internet.\n"
 "\n"
 "Každá taková bitva se nazývá <italic>text='scénář'</italic>. Více scénářů je "
 "možné zřetězit do <italic>text='tažení'</italic>. Kromě tažení, která se "
@@ -2339,8 +2435,8 @@ msgstr ""
 "s doplňky obsahuje stovky map, tažení, ér, frakcí a dalších zdrojů.\n"
 "\n"
 "Hra z velké části staví na textovém jazyku Wesnoth Markup Language (WML), "
-"který umožňuje uživatelům vytvářet jejich vlastní nový obsah, plně vybavený "
-"Editor map a scénářů, které umožňují kompletní návrh vlastního bojiště.\n"
+"který uživatelům umožňuje snadno vytvářet svůj vlastní obsah a má také plně "
+"vybavený editor map a scénářů pro návrh vlastních bojišť.\n"
 "\n"
 "Projekt <italic>text='Bitva o Wesnoth'</italic> započal v roce 2003 a od té "
 "doby se na něm podílelo nepřeberné množství dobrovolníků."
@@ -2474,23 +2570,22 @@ msgid ""
 "on."
 msgstr ""
 "Bitva o Wesnoth obsahuje nespočet úrovní složených z mnoha bitev zvaných "
-"<italic>text='scénáře'</italic>, ve kterých jsou vaši vojáci postaveni proti "
+"<italic>text='scénáře'</italic>, ve kterých jsou tví vojáci postaveni proti "
 "vojákům jednoho nebo více nepřátel. Mnoho scénářů na sebe navazuje, vypráví "
 "příběh, a tak vytváří <italic>text='tažení'</italic>. V taženích je výhodné "
-"hrát opatrněji, protože jednotky, které vám zůstanou, můžete povolat "
+"hrát opatrněji, protože jednotky, které ti zůstanou, můžeš povolat "
 "v pozdějších scénářích.\n"
 "\n"
-"Interaktivní <bold>text='tutoriál'</bold> vás naučí základy hraní Wesnothu "
-"za pomoci scénáře. Většina problematiky, kterou tutoriál pokrývá, se "
-"podrobněji rozebírá na těchto stránkách, takže když něco zapomenete, můžete "
-"se sem vždycky vrátit.\n"
+"Interaktivní <bold>text='tutoriál'</bold> tě naučí základy hraní Wesnothu za "
+"pomoci scénáře. Většina problematiky, kterou tutoriál pokrývá, se podrobněji "
+"rozebírá na těchto stránkách, takže když něco zapomeneš, můžeš se sem "
+"vždycky vrátit.\n"
 "\n"
-"Poté, co zvládnete základy, zkuste některé ze začátečnických tažení, "
-"například <italic>text='Dědic trůnu'</italic> nebo <italic>text='Jižní "
-"hlídka'</italic>. Seznam všech dostupných tažení můžete najít v hlavním menu "
-"v sekci <bold>text='Tažení'</bold>. Wesnoth může být docela náročný, takže "
-"byste měli začít na jednodušších obtížnostech a propracovat se "
-"k obtížnějším.\n"
+"Poté, co zvládneš základy, zkus některé ze začátečnických tažení, například "
+"<italic>text='Dědic trůnu'</italic> nebo <italic>text='Jižní hlídka'</"
+"italic>. Seznam všech dostupných tažení můžeš najít v hlavním menu v sekci "
+"<bold>text='Tažení'</bold>. Wesnoth může být docela náročný, takže bys měl "
+"začít na jednodušších obtížnostech a propracovat se k obtížnějším.\n"
 "\n"
 "Tažení jsou seskupena podle <italic>text='úrovně'</italic> "
 "a <italic>text='obtížnosti'</italic>. Například <italic>text='Dědic trůnu'</"
@@ -5497,196 +5592,6 @@ msgstr ""
 "Vždy, když zabije nepřítele, zvyšuje tato jednotka maximum svých životů o 1, "
 "s výjimkou nepřátel odolných proti nákaze."
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-msgid "berserk"
-msgstr "na život a na smrt"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Ať už se použije ofenzivně nebo defenzivně, boj trvá tak dlouho, dokud jeden "
-"z protivníků nezemře, nebo do počtu 30 útoků."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Tento útok působí dvojnásobné poranění, když se na opačné straně cíle útoku "
-"nachází bojeschopná jednotka (nebyla kupříkladu proměněna v kámen) k ní "
-"nepřátelská. Platí to však pouze pro útok."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Když je jednotka zabita morovou ranou, je nahrazena jednotkou na stejné "
-"straně, jako je jednotka s morovou ranou. Toto nefunguje u nemrtvých či "
-"jednotek umístěných ve vesnicích."
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Tento útok zpomalí cílovou jednotku do konce kola. Zpomalení sníží na "
-"polovinu zranění způsobené jednotkou a zdvojnásobí pro ni cenu pohybu po "
-"všech terénech. Zpomalení je indikováno ikonkou šneka v boční liště vybrané "
-"jednotky."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-msgid "petrifies"
-msgstr "zkamenění"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Tento útok promění protivníka v kámen. Jednotky proměněné v kámen se nemohou "
-"hýbat ani útočit."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr "odražení"
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Pokud je tento útok použit defenzivně, snižuje o 10 % šanci protivníka na "
-"zásah."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-"Obranné techniky této jednotky snižují šanci na úspěšný útok nepřítele."
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-msgid "magical"
-msgstr "magický"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Tento útok je magický a má vždy 70% šanci zásahu bez ohledu na obranné "
-"možnosti cílové jednotky."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-msgid "swarm"
-msgstr "hejno"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Počet úderů tohoto útoku klesá, když je jednotka zraněná. Počet úderů "
-"procentuálně odpovídá životům jednotky; například jednotka s 3/4 svých "
-"maximálních životů bude moci využít pouze 3/4 úderů."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-msgid "charge"
-msgstr "výpad"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Tento útok působí dvojnásobné poranění protivníka. Také ale znamená "
-"dvojnásobné poranění útočníka při protivníkově odvetném útoku. Platí to však "
-"pouze pro ofenzivní použití."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr "zmírnění"
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-"Tento útok staví jednotku do dobrého obranného postavení a tlumí část "
-"poškození utrženého při úderu nepřítele."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-"Tato jednotka může blokovat údery nepřátel, takže při zásahu utrpí menší "
-"poškození."
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Tato jednotka vysává životní sílu z živých jednotek, čímž se sama léčí o "
-"polovinu poranění, jež útokem způsobila (zaokrouhleno dolů)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-msgid "first strike"
-msgstr "první úder"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr "Tato jednotka v souboji vždy udeří první, i když se brání."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Tento útok otráví živé cíle. Otrávené jednotky ztrácejí 8 životů za kolo, "
-"dokud se nevyléčí, nebo počet životů neklesne na 1 HP. Jed sám o sobě nemůže "
-"jednotku zabít."
-
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
@@ -6107,6 +6012,8 @@ msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
 msgstr ""
+"Zvláštní rysy (ve stylu verze 1.14, aktualizuj prosím na nový formát "
+"seznamu, aby ses vyhnul duplicitám):"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6628,6 +6535,220 @@ msgstr ""
 "Jednotky s vlastností <italic>text='starý nebo stará'</italic> mají o 8 bodů "
 "života méně a trpí omezením pohybu a snížením poškození útoku na blízko o 1 "
 "bod."
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+msgid "berserk"
+msgstr "na život a na smrt"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Ať už se použije ofenzivně nebo defenzivně, boj trvá tak dlouho, dokud jeden "
+"z protivníků nezemře, nebo do počtu 30 útoků."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Tento útok působí dvojnásobné poranění, když se na opačné straně cíle útoku "
+"nachází bojeschopná jednotka (nebyla kupříkladu proměněna v kámen) k ní "
+"nepřátelská. Platí to však pouze pro útok."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Když je jednotka zabita morovou ranou, je nahrazena jednotkou na stejné "
+"straně, jako je jednotka s morovou ranou. Toto nefunguje u nemrtvých či "
+"jednotek umístěných ve vesnicích."
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Tento útok zpomalí cílovou jednotku do konce kola. Zpomalení sníží na "
+"polovinu zranění způsobené jednotkou a zdvojnásobí pro ni cenu pohybu po "
+"všech terénech. Zpomalení je indikováno ikonkou šneka v boční liště vybrané "
+"jednotky."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+msgid "petrifies"
+msgstr "zkamenění"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Tento útok promění protivníka v kámen. Jednotky proměněné v kámen se nemohou "
+"hýbat ani útočit."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr "Tento útok má vždy alespoň 60% šanci zásahu, je-li užit ofensivně."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr "odražení"
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Pokud je tento útok použit defenzivně, snižuje o 10 % šanci protivníka na "
+"zásah."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+"Obranné techniky této jednotky snižují šanci na úspěšný útok nepřítele."
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+msgid "magical"
+msgstr "magický"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Tento útok je magický a má vždy 70% šanci zásahu bez ohledu na obranné "
+"možnosti cílové jednotky."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+msgid "swarm"
+msgstr "hejno"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Počet úderů tohoto útoku klesá, když je jednotka zraněná. Počet úderů "
+"procentuálně odpovídá životům jednotky; například jednotka s 3/4 svých "
+"maximálních životů bude moci využít pouze 3/4 úderů."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+msgid "charge"
+msgstr "výpad"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Tento útok působí dvojnásobné poranění protivníka. Také ale znamená "
+"dvojnásobné poranění útočníka při protivníkově odvetném útoku. Platí to však "
+"pouze pro ofenzivní použití."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr "zmírnění"
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+"Tento útok staví jednotku do dobrého obranného postavení a tlumí část "
+"poškození utrženého při úderu nepřítele."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+"Tato jednotka může blokovat údery nepřátel, takže při zásahu utrpí menší "
+"poškození."
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Tato jednotka vysává životní sílu z živých jednotek, čímž se sama léčí o "
+"polovinu poranění, jež útokem způsobila (zaokrouhleno dolů)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+msgid "first strike"
+msgstr "první úder"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr "Tato jednotka v souboji vždy udeří první, i když se brání."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Tento útok otráví živé cíle. Otrávené jednotky ztrácejí 8 životů za kolo, "
+"dokud se nevyléčí, nebo počet životů neklesne na 1 HP. Jed sám o sobě nemůže "
+"jednotku zabít."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+#| msgid ""
+#| "This unit is able to slow its enemies, halving their movement speed and "
+#| "attack damage until they end a turn."
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Tato jednotka dokáže zpomalit své nepřátele, čímž do konce kola zmenší "
+"jejich pohyb a jimi způsobená poškození na polovinu."
 
 #: data/core/units.cfg:4
 msgid ""
