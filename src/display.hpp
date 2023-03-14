@@ -110,7 +110,7 @@ public:
 
 	/** The viewing team is the team currently viewing the game. */
 	std::size_t viewing_team() const { return currentTeam_; }
-	int viewing_side() const { return currentTeam_ + 1; }
+	int viewing_side() const { return static_cast<int>(currentTeam_) + 1; }
 
 	/**
 	 * Sets the team controlled by the player using the computer.
