@@ -112,7 +112,7 @@ private:
 	std::vector<std::string>* history_;
 
 	/** The current position in the history. */
-	unsigned pos_;
+	std::size_t pos_;
 
 	/** Is the history enabled. */
 	bool enabled_;
