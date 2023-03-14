@@ -107,7 +107,7 @@ public:
 
 	void new_area(const std::set<map_location>& area) {
 		tod_manager_->add_time_area("", area, config());
-		active_area_ = tod_manager_->get_area_ids().size() -1;
+		active_area_ = static_cast<int>(tod_manager_->get_area_ids().size()) - 1;
 		++actions_since_save_;
 	}
 
