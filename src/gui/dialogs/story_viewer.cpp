@@ -407,7 +407,7 @@ void story_viewer::nav_button_callback(NAV_DIRECTION direction)
 	part_index_ = (direction == DIR_FORWARD ? part_index_ + 1 : part_index_ -1);
 
 	// If we've viewed all the parts, close the dialog.
-	if(part_index_ >= controller_.max_parts()) {
+	if(part_index_ >= static_cast<int>(controller_.max_parts())) {
 		get_window()->close();
 		return;
 	}

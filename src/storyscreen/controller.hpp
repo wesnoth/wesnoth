@@ -43,7 +43,7 @@ public:
 		return parts_.at(index);
 	}
 
-	int max_parts() const
+	std::size_t max_parts() const
 	{
 		return parts_.size();
 	}
