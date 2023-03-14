@@ -298,8 +298,6 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		const end_level_data& end_level = get_end_level_data();
 
 		if(get_teams().empty()) {
-			// store persistent teams
-			saved_game_.set_snapshot(config());
 
 			// this is probably only a story scenario, i.e. has its endlevel in the prestart event
 			return level_result::type::victory;
@@ -307,8 +305,6 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 
 		if(linger_) {
 			LOG_NG << "resuming from loaded linger state...";
-			// as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
-			saved_game_.set_snapshot(config());
 			if(!is_observer()) {
 				persist_.end_transaction();
 			}
