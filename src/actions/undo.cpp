@@ -124,11 +124,9 @@ undo_action_base * undo_list::create_action(const config & cfg)
  * Constructor.
  * The config is allowed to be invalid.
  */
-undo_list::undo_list(const config & cfg) :
+undo_list::undo_list() :
 	undos_(), redos_(), side_(1), committed_actions_(false)
 {
-	if ( cfg )
-		read(cfg);
 }
 
 /**
