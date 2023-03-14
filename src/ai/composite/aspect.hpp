@@ -312,7 +312,7 @@ public:
 	}
 
 	using typesafe_aspect<T>::add_facet;
-	virtual bool add_facet(int pos, const config &cfg)
+	virtual bool add_facet(long pos, const config &cfg)
 	{
 		if (pos<0) {
 			pos = facets_.size();
