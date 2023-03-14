@@ -123,7 +123,7 @@ void listbox::clear()
 	update_content_size();
 }
 
-unsigned listbox::get_item_count() const
+std::size_t listbox::get_item_count() const
 {
 	assert(generator_);
 	return generator_->get_item_count();

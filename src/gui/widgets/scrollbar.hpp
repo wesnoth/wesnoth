@@ -132,7 +132,7 @@ public:
 		item_count_ = item_count;
 		recalculate();
 	}
-	unsigned get_item_count() const
+	std::size_t get_item_count() const
 	{
 		return item_count_;
 	}

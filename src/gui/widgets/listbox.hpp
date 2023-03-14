@@ -109,7 +109,7 @@ public:
 	void clear();
 
 	/** Returns the number of items in the listbox. */
-	unsigned get_item_count() const;
+	std::size_t get_item_count() const;
 
 	/**
 	 * Makes a row active or inactive.

@@ -653,7 +653,7 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	unsigned get_item_count() const override
+	std::size_t get_item_count() const override
 	{
 		return items_.size();
 	}
@@ -676,7 +676,7 @@ public:
 		} else {
 			for(std::size_t i = 0; i < items_.size(); ++i) {
 				if((*items_[i]).selected) {
-					return i;
+					return static_cast<int>(i);
 				}
 			}
 
@@ -740,7 +740,7 @@ public:
 
 		init(&item->child_grid, item_data, callback);
 
-		const unsigned item_index = index == -1 ? items_.size() : index;
+		const int item_index = index == -1 ? static_cast<int>(items_.size()) : index;
 
 		items_.emplace(items_.begin() + item_index, item);
 
@@ -979,14 +979,14 @@ private:
 		this->queue_redraw();
 	}
 
-	virtual unsigned get_ordered_index(unsigned index) const override
+	virtual std::size_t get_ordered_index(unsigned index) const override
 	{
 		assert(index < items_.size());
 		calculate_order();
 		return items_[index]->ordered_index;
 	}
 
-	virtual unsigned get_item_at_ordered(unsigned index_ordered) const override
+	virtual std::size_t get_item_at_ordered(unsigned index_ordered) const override
 	{
 		assert(index_ordered < items_.size());
 		calculate_order();

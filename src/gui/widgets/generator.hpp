@@ -129,7 +129,7 @@ public:
 	}
 
 	/** Returns the number of items. */
-	virtual unsigned get_item_count() const = 0;
+	virtual std::size_t get_item_count() const = 0;
 
 	/** Returns the number of selected items. */
 	virtual unsigned get_selected_item_count() const = 0;
@@ -368,13 +368,13 @@ public:
 	 * If a sort-order is being applied, maps from unsorted to sorted indicies.
 	 * This does not take account of whether each object is shown or not.
 	 */
-	virtual unsigned get_ordered_index(unsigned index) const = 0;
+	virtual std::size_t get_ordered_index(unsigned index) const = 0;
 
 	/**
 	 * If a sort-order is being applied, maps from sorted to unsorted indicies.
 	 * This does not take account of whether each object is shown or not.
 	 */
-	virtual unsigned get_item_at_ordered(unsigned index_ordered) const = 0;
+	virtual std::size_t get_item_at_ordered(unsigned index_ordered) const = 0;
 
 };
 
