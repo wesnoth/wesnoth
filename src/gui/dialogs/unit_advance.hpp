@@ -41,7 +41,8 @@ private:
 
 	const std::vector<unit_const_ptr>& previews_;
 
-	std::size_t selected_index_, last_real_advancement_;
+	int selected_index_;
+	std::size_t last_real_advancement_;
 };
 
 } // namespace dialogs
