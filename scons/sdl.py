@@ -60,7 +60,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = Non
                 env.AppendUnique(CPPPATH = [os.path.join(sdldir, sdl_include_dir)], LIBPATH = [os.path.join(sdldir, "lib")])
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
             env.AppendUnique(LIBS = Split("mingw32 %s %s" % (sdlmain_name, sdl_lib_name)))
-            env.AppendUnique(LINKFLAGS = ["-mwindows"])
+            env.AppendUnique(LINKFLAGS = ["-mwindows", "-fstack-protector"])
     else:
         if require_version:
             context.Message("Checking for %s library version >= %d.%d.%d... " % (sdl_lib, major_version, minor_version, patchlevel))
