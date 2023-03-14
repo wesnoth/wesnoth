@@ -79,7 +79,7 @@ public:
 	}
 
 	/** Inherited from selectable_item */
-	virtual unsigned num_states() const override;
+	virtual std::size_t num_states() const override;
 
 	/** Inherited from selectable_item */
 	virtual void set_value(unsigned selected, bool fire_event = false) override;

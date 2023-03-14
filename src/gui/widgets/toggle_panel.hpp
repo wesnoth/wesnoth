@@ -126,7 +126,7 @@ public:
 	virtual void set_value(unsigned selected, bool fire_event = false) override;
 
 	/** Inherited from selectable_item */
-	virtual unsigned num_states() const override;
+	virtual std::size_t num_states() const override;
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 

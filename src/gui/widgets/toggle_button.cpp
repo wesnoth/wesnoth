@@ -57,7 +57,7 @@ toggle_button::toggle_button(const implementation::builder_toggle_button& builde
 			std::placeholders::_3));
 }
 
-unsigned toggle_button::num_states() const
+std::size_t toggle_button::num_states() const
 {
 	std::div_t res = std::div(this->get_config()->state.size(), COUNT);
 	assert(res.rem == 0);

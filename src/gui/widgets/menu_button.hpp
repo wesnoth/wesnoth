@@ -87,7 +87,7 @@ public:
 	virtual void set_value(unsigned value, bool fire_event = false) override { set_selected(value, fire_event); }
 
 	/** Inherited from selectable_item */
-	virtual unsigned num_states() const override { return values_.size(); }
+	virtual std::size_t num_states() const override { return values_.size(); }
 
 	/** Returns the value of the selected row */
 	std::string get_value_string() const
