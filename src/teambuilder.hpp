@@ -41,11 +41,13 @@ public:
 	team_builder(const team_builder&) = delete;
 	team_builder(team_builder&&) = default;
 
-	/** Handles the first stage of team initialization (everything except unit placement). */
+	/** Handles the first stage of team initialization (everything except unit construction). */
 	void build_team_stage_one();
 
-	/** Handles the second stage of team initialization (unit placement). */
+	/** Handles the second stage of team initialization ((some) unit construction). */
 	void build_team_stage_two();
+	/** Handles the third stage of team initialization (unit placement). */
+	void build_team_stage_three();
 
 private:
 	int gold_info_ngold_;
