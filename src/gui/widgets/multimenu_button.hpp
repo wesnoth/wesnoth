@@ -107,7 +107,7 @@ public:
 	 *
 	 * @returns        The number of options in the menu
 	 */
-	unsigned num_options()
+	std::size_t num_options()
 	{
 		return values_.size();
 	}
