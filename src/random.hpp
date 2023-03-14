@@ -127,6 +127,6 @@ namespace randomness
 				break;
 			}
 		}
-		return std::distance(first, it);
+		return static_cast<unsigned int>(std::distance(first, it));
 	}
 }
