@@ -22,6 +22,9 @@ const getDictTerrainType2ImagesPath = async () => {
       }
 
       acc[terrainType.string.value] = terrainType.symbol_image.value
+      if (!acc[terrainType.string.value]) {
+        acc[terrainType.string.value] = terrainType.string.value
+      }
       return acc
   }, {} as { [terrainType: string]: string })
 
@@ -36,7 +39,10 @@ const readTerrainImages = async () => {
   const promises = Object
     .entries(dictTerrainType2ImagesPath)
     .map(async ([terrainType, imageName]) => {
-      const image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
+      image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
+      if (!image) {
+        image = await Jimp.read(`../../../images/${imageName}.png`)
+      }
       return [terrainType, image]
     })
 
