@@ -232,7 +232,7 @@ namespace lua_check_impl
 	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, T>
 	lua_check(lua_State *L, int n)
 	{
-		return luaL_checkinteger(L, n);
+		return static_cast<T>(luaL_checkinteger(L, n));
 	}
 	template<typename T>
 	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, T>
@@ -243,7 +243,7 @@ namespace lua_check_impl
 		if (!isnum) {
 			return def;
 		}
-		return res;
+		return static_cast<T>(res);
 	}
 
 	template<typename T>
@@ -288,7 +288,7 @@ namespace lua_check_impl
 		if (lua_istable(L, n))
 		{
 			T res;
-			for (int i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
+			for (lua_Unsigned i = 1, i_end = lua_rawlen(L, n); i <= i_end; ++i)
 			{
 				lua_rawgeti(L, n, i);
 				res.push_back(lua_check_impl::lua_check<std::decay_t<typename T::reference>>(L, -1));
@@ -313,7 +313,7 @@ namespace lua_check_impl
 	{
 		// NOTE: T might be some boost::iterator_range type where size might be < 0. (unfortunately in this case size() does not return T::size_type)
 		assert(list.size() >= 0);
-		lua_createtable(L, list.size(), 0);
+		lua_createtable(L, static_cast<int>(list.size()), 0);
 		int i = 1;
 		for(typename T::const_iterator iter = list.begin(); iter != list.end(); ++iter) {
 			lua_check_impl::lua_push<std::decay_t<typename T::reference>>(L, *iter);
