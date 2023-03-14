@@ -198,7 +198,7 @@ public:
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	/** The playing team is the team whose turn it is. */
-	virtual int playing_side() const override { return activeTeam_ + 1; }
+	virtual int playing_side() const override { return static_cast<int>(activeTeam_) + 1; }
 
 	std::string current_team_name() const;
 
