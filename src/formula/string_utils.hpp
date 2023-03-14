@@ -128,7 +128,7 @@ std::string vngettext_impl(const char* domain,
 	vgettext_impl(GETTEXT_DOMAIN, msgid, __VA_ARGS__)
 
 #define VNGETTEXT(msgid, msgid_plural, count, ...) \
-	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, count, __VA_ARGS__)
+	vngettext_impl(GETTEXT_DOMAIN, msgid, msgid_plural, static_cast<int>(count), __VA_ARGS__)
 
 /**
  * Approximately calculates the distance between two strings
