@@ -66,6 +66,10 @@ void team_builder::build_team_stage_one()
 	// If the game state specifies additional units that can be recruited by the player, add them.
 	previous_recruits();
 
+}
+
+void team_builder::build_team_stage_two()
+{
 	// place leader
 	leader();
 
@@ -73,7 +77,7 @@ void team_builder::build_team_stage_one()
 	prepare_units();
 }
 
-void team_builder::build_team_stage_two()
+void team_builder::build_team_stage_three()
 {
 	// place units
 	// this is separate stage because we need to place units only after every other team is constructed
