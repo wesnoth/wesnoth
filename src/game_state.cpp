@@ -205,6 +205,9 @@ void game_state::init(const config& level, play_controller & pc)
 		for(team_builder& tb : team_builders) {
 			tb.build_team_stage_two();
 		}
+		for(team_builder& tb : team_builders) {
+			tb.build_team_stage_three();
+		}
 
 		for(std::size_t i = 0; i < board_.teams().size(); i++) {
 			// Labels from players in your ignore list default to hidden
