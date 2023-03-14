@@ -81,8 +81,6 @@ const produceImagesGetter = async (): Promise<ImagesGetter> => {
       if (miscCode) {
         const miscImage = images[`^${miscCode}`]
         if (!miscImage) {
-          // FIXME: this is reached by certain invisible overlays,
-          // such as "^Xo":
           throw new Error(`Missing image for "^${miscCode}"`)
         }
 
