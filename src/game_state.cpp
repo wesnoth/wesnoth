@@ -55,9 +55,7 @@ game_state::game_state(const config& level, play_controller& pc)
 	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
 	, ai_manager_()
 	, events_manager_(new game_events::manager())
-	// TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
-	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
-	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
+	, undo_stack_(new actions::undo_list())
 	, player_number_(level["playing_team"].to_int() + 1)
 	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
 	, do_healing_(level["do_healing"].to_bool(false))
@@ -201,6 +199,8 @@ void game_state::init(const config& level, play_controller & pc)
 		randomness::set_random_determinstic deterministic(gamedata_.rng());
 
 		tod_manager_.resolve_random(*randomness::generator);
+
+		undo_stack_->read(level.child_or_empty("undo_stack"));
 
 		for(team_builder& tb : team_builders) {
 			tb.build_team_stage_two();
