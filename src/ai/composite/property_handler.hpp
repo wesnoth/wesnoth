@@ -109,7 +109,7 @@ public:
 			handle_delete(with_same_id);
 		}
 
-			typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
+		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		return do_add(i-values_.begin(),cfg);
 	}
 
@@ -144,7 +144,7 @@ protected:
 		factory_(vec, cfg);
 	}
 private:
-	bool do_add(int pos, const config &cfg)
+	bool do_add(long pos, const config &cfg)
 	{
 		if (pos<0) {
 			pos = values_.size();
