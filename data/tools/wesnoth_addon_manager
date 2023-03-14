@@ -64,10 +64,8 @@ if __name__ == "__main__":
         "This option only makes sense with --upload.")
     argumentparser.add_argument("-u", "--upload",
         help="Upload an add-on. " +
-        "UPLOAD should be either the name of an add-on subdirectory," +
-        "(in which case the client looks for _server.pbl beneath it) " +
-        "or a path to the .pbl file (in which case the name of the " +
-        "add-on subdirectory is the name of the path with .pbl removed)", type=valid_file_path)
+        "UPLOAD is the name of an add-on subdirectory, which must " +
+        "contain a _server.pbl file", type=valid_file_path)
     argumentparser.add_argument("-s", "--status",
         help="Display the status of addons installed in the given " +
         "directory.")
@@ -96,6 +94,12 @@ if __name__ == "__main__":
     argumentparser.add_argument("--change-passphrase", nargs=3,
         metavar=("ADD-ON","OLD","NEW"),
         help="Change the passphrase for ADD-ON from OLD to NEW")
+    argumentparser.add_argument("-S", "--secure",
+        action="store_true",
+        help="Connect to the add-ons server using SSL/TLS encryption.")
+    argumentparser.add_argument("-6", "--ipv6",
+        action="store_true",
+        help="Connect to the add-ons server using IPv6 connectivity.")
     args = argumentparser.parse_args()
 
     port = args.port
@@ -105,8 +109,13 @@ if __name__ == "__main__":
                 port = portnum
                 break
         else:
-            sys.stderr.write("Unknown BfW version %s\n" % args.port)
-            sys.exit(1)
+            for (portnum, version) in CampaignClient.deactivated:
+                if args.port == version:
+                    sys.stderr.write("Server for BfW version %s is deactivated\n" % version)
+                    sys.exit(1)
+            else:
+                sys.stderr.write("Unknown BfW version %s\n" % args.port)
+                sys.exit(1)
 
     address = args.address
     if not ":" in address:
@@ -116,7 +125,7 @@ if __name__ == "__main__":
         mythread = cs.get_campaign_raw_async(name)
 
         pcounter = 0
-        while not mythread.event.isSet():
+        while not mythread.event.is_set():
             mythread.event.wait(1)
             if pcounter != cs.counter:
                 print("%s: %d/%d" % (name, cs.counter, cs.length))
@@ -211,7 +220,7 @@ if __name__ == "__main__":
     campaign_list = None
 
     if args.list:
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         campaign_list = data = cs.list_campaigns()
         if data:
             campaigns = data.get_all(tag = "campaigns")[0]
@@ -242,7 +251,7 @@ if __name__ == "__main__":
             sys.stderr.write("Could not connect.\n")
 
     elif args.download:
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         fetchlist = []
         campaign_list = data = cs.list_campaigns()
         if data:
@@ -278,42 +287,35 @@ if __name__ == "__main__":
                         "because it is already up-to-date.")
 
     elif args.unpack:
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         with open(args.unpack, "rb") as f:
             data = f.read()
         decoded = cs.decode(data)
         print("Unpacking %s..." % args.unpack)
         cs.unpackdir(decoded, args.campaigns_dir,  verbose=True)
     elif args.remove:
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         data = cs.delete_campaign(*args.remove)
         print_messages(data)
 
     elif args.change_passphrase:
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         data = cs.change_passphrase(*args.change_passphrase)
         print_messages(data)
 
     elif args.upload:
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         if os.path.isdir(args.upload):
             # else basename returns an empty string
             args.upload = args.upload.rstrip("/")
 
-            # New style with _server.pbl
+            # Only the new style with _server.pbl is supported
             pbl_file_name = os.path.join(args.upload, "_server.pbl")
             name = os.path.basename(os.path.realpath(args.upload))
             wmldir = args.upload
-            cfgfile = None # _main.cfg will be uploaded with the rest
             ignfile = os.path.join(args.upload, "_server.ign")
         else:
-            # Old style with external .pbl file
-            pbl_file_name = args.upload
-            name = os.path.basename(args.upload)
-            name = os.path.splitext(name)[0]
-            wmldir = os.path.join(os.path.dirname(args.upload), name)
-            cfgfile = args.upload.replace(".pbl", ".cfg")
-            ignfile = args.upload.replace(".pbl", ".ign")
+            raise RuntimeError("the -u/--upload path must be a directory")
 
         if args.pbl:
             pbl_file_name = args.pbl
@@ -359,10 +361,10 @@ if __name__ == "__main__":
                 "*.project",
                 "__MACOSX/"]
 
-        mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, pbl)
+        mythread = cs.put_campaign_async(name, wmldir, ign, pbl)
 
         pcounter = 0
-        while not mythread.event.isSet():
+        while not mythread.event.is_set():
             mythread.event.wait(1)
             if cs.counter != pcounter:
                 print("%d/%d" % (cs.counter, cs.length))
@@ -377,7 +379,7 @@ if __name__ == "__main__":
             cdir = args.update
         dirs = glob.glob(os.path.join(cdir, "*"))
         dirs = [x for x in dirs if os.path.isdir(x)]
-        cs = CampaignClient(address)
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         campaign_list = data = cs.list_campaigns()
         if not data:
             sys.stderr.write("Could not connect to the add-on server.\n")
@@ -431,7 +433,7 @@ if __name__ == "__main__":
 
     if args.html:
         if not campaign_list:
-            cs = CampaignClient(address)
+            cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
             campaign_list = cs.list_campaigns()
             del cs
         if campaign_list:

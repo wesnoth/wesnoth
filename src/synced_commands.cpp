@@ -478,7 +478,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_unit, child,  use_undo, /*show*/, /*error_
 		return false;
 	}
 	if (name == "advances" ) {
-		int int_value = std::stoi(value);
+		int int_value = 0;
+		try {
+			int_value = std::stoi(value);
+		} catch (const std::invalid_argument&) {
+			WRN_REPLAY << "Warning: Invalid unit advancement argument: " << value;
+			return false;
+		}
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
 

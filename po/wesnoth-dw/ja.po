@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
 "Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -104,11 +104,6 @@ msgstr "公式化のためのスクリプト検査と仕上げ"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "アートワーク"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "スタン: このユニットはスタンされています。ZOC は無効です。"
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3150,32 +3145,6 @@ msgstr ""
 "Inky は Krellis と共に王宮で過ごし、Jotha の海藻の群生した場所ではしゃいでい"
 "ました。そして高齢になると太って怠惰になってしまいました "
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "マーマンの喧嘩屋"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"例外的に大きく強いマーマンは、しばしば、武器よりも自身の拳と尻尾の方が強力で"
-"す。"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "スタン"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "スタン"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3196,21 +3165,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "笏"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "マーマンの一般市民"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"ほとんどのマーフォークは平和主義者ですが、住処を守るためには戦います。このよ"
-"うな状況下では、武器も持たず訓練も積んでいないマーフォークでさえ脅威となり得"
-"ます。"
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3391,25 +3345,51 @@ msgstr ""
 "人間の魔術師が指輪をはめていました！ おそらくは魔法の指輪です。それがどのよう"
 "な効果を持つのかを確認するために誰かが試してみるべきです。"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "スタン"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr "スタン: このユニットはスタンされています。ZOC は無効です。"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"この攻撃は厳しい打撃を与えるので、敵は混乱してZOCを維持することができなくなっ"
-"てしまいます。この効果は敵の次のターンでなくなります。"
+#~ msgid "Merman Brawler"
+#~ msgstr "マーマンの喧嘩屋"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr " このユニットは敵を気絶させ、支配領域 (ZOC) を妨害します。"
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "例外的に大きく強いマーマンは、しばしば、武器よりも自身の拳と尻尾の方が強力"
+#~ "です。"
+
+#~ msgid "stunned"
+#~ msgstr "スタン"
+
+#~ msgid "female^stunned"
+#~ msgstr "スタン"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "マーマンの一般市民"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "ほとんどのマーフォークは平和主義者ですが、住処を守るためには戦います。この"
+#~ "ような状況下では、武器も持たず訓練も積んでいないマーフォークでさえ脅威とな"
+#~ "り得ます。"
+
+#~ msgid "stun"
+#~ msgstr "スタン"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "この攻撃は厳しい打撃を与えるので、敵は混乱してZOCを維持することができなく"
+#~ "なってしまいます。この効果は敵の次のターンでなくなります。"
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr " このユニットは敵を気絶させ、支配領域 (ZOC) を妨害します。"
 
 #~ msgid "Kraken"
 #~ msgstr "クラーケン"

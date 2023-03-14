@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-14 18:20-0600\n"
+"POT-Creation-Date: 2023-02-19 22:03-0600\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -52,7 +52,8 @@ msgstr "neustrašen"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/abilities.cfg:430 data/core/macros/abilities.cfg:441
+#: data/core/macros/weapon_specials.cfg:41
+#: data/core/macros/weapon_specials.cfg:52
 #, fuzzy
 msgid "plague"
 msgstr "kuga"
@@ -60,7 +61,7 @@ msgstr "kuga"
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/abilities.cfg:442
+#: data/core/macros/weapon_specials.cfg:53
 #, fuzzy
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -72,22 +73,105 @@ msgstr ""
 "isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
 "v vaseh.)"
 
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
+msgid "This attack can only be used as the first verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
+msgid "This attack can only be used as the second verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
+msgid "This attack can only be used as the third verse of the song."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
+#, fuzzy
+msgid "first verse"
+msgstr "prvi napad"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
+#, fuzzy
+#| msgid "Second Watch"
+msgid "second verse"
+msgstr "Druga straža"
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:419
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:422
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:426
+msgid "tailwind +"
+msgstr ""
+
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:444
 #: data/core/macros/abilities.cfg:9
 #, fuzzy
 msgid "heals +4"
 msgstr "ranocelnik +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:445
 #: data/core/macros/abilities.cfg:10
 #, fuzzy
 msgid "female^heals +4"
 msgstr "Tatica"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:446
 #, fuzzy
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -107,29 +191,29 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:61
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:450
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:489
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
 #, fuzzy
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr " Ta enota je sposobna osnovnega zdravljenja."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:468
 #: data/core/macros/abilities.cfg:35
 #, fuzzy
 msgid "heals +8"
 msgstr "ranocelnik +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:41
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:469
 #: data/core/macros/abilities.cfg:36
 #, fuzzy
 msgid "female^heals +8"
 msgstr "Tatica"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:470
 #, fuzzy
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -150,19 +234,19 @@ msgstr ""
 "ali pri razstrupljevalecu."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:70
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:498
 #, fuzzy
 msgid "heals +12"
 msgstr "ranocelnik +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:499
 #, fuzzy
 msgid "female^heals +12"
 msgstr "Tatica"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:72
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:500
 #, fuzzy
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -183,7 +267,7 @@ msgstr ""
 "ali pri razstrupljevalecu."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:97
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:525
 #, fuzzy
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
@@ -221,7 +305,7 @@ msgstr ""
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:438
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/weapon_specials.cfg:21
 #, fuzzy
 msgid "backstab"
 msgstr "vbod v hrbet"
@@ -265,7 +349,7 @@ msgstr "Tabor"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/abilities.cfg:555
+#: data/core/macros/weapon_specials.cfg:166
 #, fuzzy
 msgid "drains"
 msgstr "črpa"
@@ -289,7 +373,7 @@ msgstr "Griči"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/abilities.cfg:475
+#: data/core/macros/weapon_specials.cfg:86
 #, fuzzy
 msgid "marksman"
 msgstr "ostrostrelec"
@@ -308,7 +392,7 @@ msgstr "nočni zalezovalec"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/abilities.cfg:577
+#: data/core/macros/weapon_specials.cfg:188
 msgid "poison"
 msgstr "strup"
 
@@ -325,7 +409,7 @@ msgstr "izogibalec"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/abilities.cfg:453
+#: data/core/macros/weapon_specials.cfg:64
 #, fuzzy
 msgid "slows"
 msgstr "upočasni"
@@ -4429,219 +4513,6 @@ msgid ""
 "except units that are immune to plague."
 msgstr ""
 
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:398
-#, fuzzy
-msgid "berserk"
-msgstr "berzerk"
-
-#. [berserk]: id=berserk
-#: data/core/macros/abilities.cfg:399
-#, fuzzy
-msgid ""
-"Whether used offensively or defensively, this attack presses the engagement "
-"until one of the combatants is slain, or 30 rounds of attacks have occurred."
-msgstr ""
-"Berzerk:\n"
-"Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
-"ne umre ali mine 30 rund."
-
-#. [damage]: id=backstab
-#: data/core/macros/abilities.cfg:411
-#, fuzzy
-msgid ""
-"When used offensively, this attack deals double damage if there is an enemy "
-"of the target on the opposite side of the target, and that unit is not "
-"incapacitated (turned to stone or otherwise paralyzed)."
-msgstr ""
-"Vbod v hrbet:\n"
-"Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani njej "
-"sovražna enota, ki ni onesposobljena (npr. okamenela)."
-
-#. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/abilities.cfg:431
-#, fuzzy
-msgid ""
-"When a unit is killed by a Plague attack, that unit is replaced with a unit "
-"on the same side as the unit with the Plague attack. This doesn’t work on "
-"Undead or units in villages."
-msgstr ""
-"Kuga:\n"
-"Ko je enota ubita s kužnim napadom, vstane od mrtvih kot enaka enota in na "
-"isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
-"v vaseh.)"
-
-#. [slow]: id=slow
-#: data/core/macros/abilities.cfg:454
-#, fuzzy
-msgid ""
-"This attack slows the target until it ends a turn. Slow halves the damage "
-"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
-"that is slowed will feature a snail icon in its sidebar information when it "
-"is selected."
-msgstr ""
-"Upočasni:\n"
-"Ta napad upočasni tarčo do konca njene poteze. Upočasnjene enote se "
-"premikajo pri polovični hitrosti (zaokroženo navzgor) in povzročajo "
-"polovično škodo."
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:464
-#, fuzzy
-msgid "petrifies"
-msgstr "Udarci"
-
-#. [petrifies]: id=petrifies
-#: data/core/macros/abilities.cfg:465
-#, fuzzy
-msgid ""
-"This attack petrifies the target, turning it to stone. Units that have been "
-"petrified may not move or attack."
-msgstr ""
-"Okamèni:\n"
-"Ta napad spremeni tarčo v kamen. Okamenele enote se ne morejo premikati in "
-"napadati."
-
-#. [chance_to_hit]: id=marksman
-#: data/core/macros/abilities.cfg:476
-#, fuzzy
-msgid ""
-"When used offensively, this attack always has at least a 60% chance to hit."
-msgstr ""
-"Marksman:\n"
-"V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:489
-msgid "deflect"
-msgstr ""
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:490
-#, fuzzy
-msgid ""
-"When used defensively, this attack reduces the opponent's chance to hit by "
-"10%."
-msgstr ""
-"Marksman:\n"
-"V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
-
-#. [chance_to_hit]: id=deflect
-#: data/core/macros/abilities.cfg:491
-msgid ""
-"This unit’s defensive techniques reduce the chance of a successful enemy "
-"attack."
-msgstr ""
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:504
-#, fuzzy
-msgid "magical"
-msgstr "čaroben"
-
-#. [chance_to_hit]: id=magical
-#: data/core/macros/abilities.cfg:505
-#, fuzzy
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Čaroben:\n"
-"Ta napad ima vedno 70% možnosti da zadane."
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:517
-#, fuzzy
-msgid "swarm"
-msgstr "mrgolenje"
-
-#. [swarm]: id=swarm
-#: data/core/macros/abilities.cfg:518
-#, fuzzy
-msgid ""
-"The number of strikes of this attack decreases when the unit is wounded. The "
-"number of strikes is proportional to the percentage of its of maximum HP the "
-"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
-"number of strikes."
-msgstr ""
-"Mrgolenje:\n"
-"Število napadov se zmanjša, ko je enota ranjena. Sorazmerno je razmerju med "
-"trenutnim in maximalnim HP. Na primer enota na 3/4 zdravja bo imela 3/4 "
-"maximalnega števila napadov."
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:528
-#, fuzzy
-msgid "charge"
-msgstr "naskok"
-
-#. [damage]: id=charge
-#: data/core/macros/abilities.cfg:529
-#, fuzzy
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Naskok:\n"
-"Ta napad naredi dvojno škodo. Povzroči pa, da tudi napadalec ob protinapadu "
-"prejme dvojno škodo."
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:542
-msgid "absorb"
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:543
-msgid ""
-"This attack puts the unit in good defensive position, and it absorbs some of "
-"the damage dealt by an enemy strike."
-msgstr ""
-
-#. [damage]: id=absorb
-#: data/core/macros/abilities.cfg:544
-msgid ""
-"This unit can block enemy strikes, so that it takes reduced damage when hit."
-msgstr ""
-
-#. [drains]: id=drains
-#: data/core/macros/abilities.cfg:556
-#, fuzzy
-msgid ""
-"This unit drains health from living units, healing itself for half the "
-"amount of damage it deals (rounded down)."
-msgstr ""
-"Črpa:\n"
-"Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
-"storjene škode (zaokroženo navzdol)."
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:566
-#, fuzzy
-msgid "first strike"
-msgstr "prvi napad"
-
-#. [firststrike]: id=firststrike
-#: data/core/macros/abilities.cfg:567
-#, fuzzy
-msgid ""
-"This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Prvi napad:\n"
-"Ta enota vedno napade prva, tudi če se brani."
-
-#. [poison]: id=poison
-#: data/core/macros/abilities.cfg:578
-#, fuzzy
-msgid ""
-"This attack poisons living targets. Poisoned units lose 8 HP every turn "
-"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
-"a unit."
-msgstr ""
-"Strup:\n"
-"Ta napad zastrupi tarčo. Zastrupljene enote vsako potezo izgubijo 8 HP, "
-"razen če so vmes ozdravljene ali poškodovane do 1 HP."
-
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 #, fuzzy
@@ -5569,6 +5440,241 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:9
+#, fuzzy
+msgid "berserk"
+msgstr "berzerk"
+
+#. [berserk]: id=berserk
+#: data/core/macros/weapon_specials.cfg:10
+#, fuzzy
+msgid ""
+"Whether used offensively or defensively, this attack presses the engagement "
+"until one of the combatants is slain, or 30 rounds of attacks have occurred."
+msgstr ""
+"Berzerk:\n"
+"Ob napadu ali pri obrambi se bo boj nadaljeval, dokler eden od udeležencev "
+"ne umre ali mine 30 rund."
+
+#. [damage]: id=backstab
+#: data/core/macros/weapon_specials.cfg:22
+#, fuzzy
+msgid ""
+"When used offensively, this attack deals double damage if there is an enemy "
+"of the target on the opposite side of the target, and that unit is not "
+"incapacitated (turned to stone or otherwise paralyzed)."
+msgstr ""
+"Vbod v hrbet:\n"
+"Ta napad naredi dvojno škodo, če je na tarčini nasprotni strani njej "
+"sovražna enota, ki ni onesposobljena (npr. okamenela)."
+
+#. [plague]: id=plague({TYPE}), type={TYPE}
+#: data/core/macros/weapon_specials.cfg:42
+#, fuzzy
+msgid ""
+"When a unit is killed by a Plague attack, that unit is replaced with a unit "
+"on the same side as the unit with the Plague attack. This doesn’t work on "
+"Undead or units in villages."
+msgstr ""
+"Kuga:\n"
+"Ko je enota ubita s kužnim napadom, vstane od mrtvih kot enaka enota in na "
+"isti strani, kot enota, ki jo je ubila. (To ne deluje na nemrtvih in enotah "
+"v vaseh.)"
+
+#. [slow]: id=slow
+#: data/core/macros/weapon_specials.cfg:65
+#, fuzzy
+msgid ""
+"This attack slows the target until it ends a turn. Slow halves the damage "
+"caused by attacks and the movement cost for a slowed unit is doubled. A unit "
+"that is slowed will feature a snail icon in its sidebar information when it "
+"is selected."
+msgstr ""
+"Upočasni:\n"
+"Ta napad upočasni tarčo do konca njene poteze. Upočasnjene enote se "
+"premikajo pri polovični hitrosti (zaokroženo navzgor) in povzročajo "
+"polovično škodo."
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:75
+#, fuzzy
+msgid "petrifies"
+msgstr "Udarci"
+
+#. [petrifies]: id=petrifies
+#: data/core/macros/weapon_specials.cfg:76
+#, fuzzy
+msgid ""
+"This attack petrifies the target, turning it to stone. Units that have been "
+"petrified may not move or attack."
+msgstr ""
+"Okamèni:\n"
+"Ta napad spremeni tarčo v kamen. Okamenele enote se ne morejo premikati in "
+"napadati."
+
+#. [chance_to_hit]: id=marksman
+#: data/core/macros/weapon_specials.cfg:87
+#, fuzzy
+msgid ""
+"When used offensively, this attack always has at least a 60% chance to hit."
+msgstr ""
+"Marksman:\n"
+"V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:100
+msgid "deflect"
+msgstr ""
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:101
+#, fuzzy
+msgid ""
+"When used defensively, this attack reduces the opponent's chance to hit by "
+"10%."
+msgstr ""
+"Marksman:\n"
+"V napadu (ne v obrambi) ima enota vedno vsaj 60% možnosti da zadane."
+
+#. [chance_to_hit]: id=deflect
+#: data/core/macros/weapon_specials.cfg:102
+msgid ""
+"This unit’s defensive techniques reduce the chance of a successful enemy "
+"attack."
+msgstr ""
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:115
+#, fuzzy
+msgid "magical"
+msgstr "čaroben"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:116
+#, fuzzy
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr ""
+"Čaroben:\n"
+"Ta napad ima vedno 70% možnosti da zadane."
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:128
+#, fuzzy
+msgid "swarm"
+msgstr "mrgolenje"
+
+#. [swarm]: id=swarm
+#: data/core/macros/weapon_specials.cfg:129
+#, fuzzy
+msgid ""
+"The number of strikes of this attack decreases when the unit is wounded. The "
+"number of strikes is proportional to the percentage of its of maximum HP the "
+"unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
+"number of strikes."
+msgstr ""
+"Mrgolenje:\n"
+"Število napadov se zmanjša, ko je enota ranjena. Sorazmerno je razmerju med "
+"trenutnim in maximalnim HP. Na primer enota na 3/4 zdravja bo imela 3/4 "
+"maximalnega števila napadov."
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:139
+#, fuzzy
+msgid "charge"
+msgstr "naskok"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:140
+#, fuzzy
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Naskok:\n"
+"Ta napad naredi dvojno škodo. Povzroči pa, da tudi napadalec ob protinapadu "
+"prejme dvojno škodo."
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:153
+msgid "absorb"
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:154
+msgid ""
+"This attack puts the unit in good defensive position, and it absorbs some of "
+"the damage dealt by an enemy strike."
+msgstr ""
+
+#. [damage]: id=absorb
+#: data/core/macros/weapon_specials.cfg:155
+msgid ""
+"This unit can block enemy strikes, so that it takes reduced damage when hit."
+msgstr ""
+
+#. [drains]: id=drains
+#: data/core/macros/weapon_specials.cfg:167
+#, fuzzy
+msgid ""
+"This unit drains health from living units, healing itself for half the "
+"amount of damage it deals (rounded down)."
+msgstr ""
+"Črpa:\n"
+"Ta enota črpa energijo živim nasprotnikom in se pri tem pozdravi za polovico "
+"storjene škode (zaokroženo navzdol)."
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:177
+#, fuzzy
+msgid "first strike"
+msgstr "prvi napad"
+
+#. [firststrike]: id=firststrike
+#: data/core/macros/weapon_specials.cfg:178
+#, fuzzy
+msgid ""
+"This unit always strikes first with this attack, even if they are defending."
+msgstr ""
+"Prvi napad:\n"
+"Ta enota vedno napade prva, tudi če se brani."
+
+#. [poison]: id=poison
+#: data/core/macros/weapon_specials.cfg:189
+#, fuzzy
+msgid ""
+"This attack poisons living targets. Poisoned units lose 8 HP every turn "
+"until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
+"a unit."
+msgstr ""
+"Strup:\n"
+"Ta napad zastrupi tarčo. Zastrupljene enote vsako potezo izgubijo 8 HP, "
+"razen če so vmes ozdravljene ali poškodovane do 1 HP."
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:199
+msgid "stun"
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:200
+msgid ""
+"This attack hits so hard that the opponent is dazed and can no longer "
+"enforce a zone of control. The effect wears off on the opponent’s next turn."
+msgstr ""
+
+#. [stun]: id=stun
+#: data/core/macros/weapon_specials.cfg:201
+#, fuzzy
+msgid ""
+"This unit is able to stun its enemies, disrupting their zones of control."
+msgstr ""
+"Izogibalec:\n"
+"Ta enota se je sposobna hitro premikati mimo sovražnih enot in ignorira "
+"sovražnikova območja nadzora."
 
 #: data/core/units.cfg:4
 msgid ""

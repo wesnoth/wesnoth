@@ -52,6 +52,7 @@
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
 #include "statistics.hpp"              // for fresh_stats
+#include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
@@ -805,6 +806,13 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
+	if(!lg::log_dir_writable()) {
+		utils::string_map symbols;
+		symbols["logdir"] = filesystem::get_logs_dir();
+		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
+		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+	}
+
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
@@ -1049,13 +1057,11 @@ int main(int argc, char** argv)
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif
 
-	// terminal_implied means a switch that implies an interactive terminal has been used.
-	// This suggests we want the output right on standard out.
-	// terminal_force means output has been explicitly requested on standard out.
-	// file_force means the opposite, that logging to a file was explicitly requested.
-	bool terminal_implied = false, file_force = false;
-	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
-	std::optional<bool> terminal_force;
+	// terminal_force means output has been explicitly (via command line argument)
+	// or implicitly (by a command line argument that implies an interactive terminal has been used) requested on standard out.
+	// write_to_log_file means that writing to the log file will be done. terminal_force takes priority, but writing to a log file is the default.
+	bool terminal_force = false;
+	bool write_to_log_file = true;
 
 	// --nobanner needs to be detected before the main command-line parsing happens
 	// --log-to needs to be detected so the logging output location is set before any actual logging happens
@@ -1098,7 +1104,7 @@ int main(int argc, char** argv)
 
 		if(terminal_switches.find(arg) != terminal_switches.end() ||
 			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
-			terminal_implied = true;
+			terminal_force = true;
 		}
 
 #ifdef _WIN32
@@ -1107,27 +1113,26 @@ int main(int argc, char** argv)
 		} else if(arg == "--wconsole") {
 			terminal_force = true;
 		} else if(arg == "--wnoredirect") {
-			log_redirect = false;
+			write_to_log_file = false;
 		}
 #endif
+
 		if(arg == "--no-log-to-file") {
 			terminal_force = true;
 		} else if(arg == "--log-to-file") {
-			file_force = true;
+			write_to_log_file = true;
 		}
 	}
 
-	const bool log_to_terminal = terminal_force.value_or(terminal_implied);
-#ifdef _WIN32
-	if(log_to_terminal) {
-		lg::enable_native_console_output();
-	}
-	lg::early_log_file_setup(!log_redirect);
-#else
-	if(!log_to_terminal || file_force) {
+	// setup logging to file
+	// else handle redirecting the output and/or attaching a console
+	if(write_to_log_file && !terminal_force) {
 		lg::set_log_to_file();
-	}
+	} else {
+#ifdef _WIN32
+		lg::do_console_redirect(terminal_force);
 #endif
+	}
 
 	// Is there a reason not to just use SDL_INIT_EVERYTHING?
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {

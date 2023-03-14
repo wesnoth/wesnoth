@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2021-12-13 19:25+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: none\n"
@@ -99,13 +99,6 @@ msgstr "Сценарий и редакция за основната линия"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Изкусто"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"зашеметение: тази единица е зашеметена. Не е способна да прилага зоната си "
-"на контрол."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3201,32 +3194,6 @@ msgstr ""
 "Мастилчо живееше в двора на Крелис и лудуваше из водораслите на Джота, "
 "докато остаря и стана дебел и мързелив."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Океанидски борец"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Особено едрите и силни океаниди понякога предпочитат юмруците и опашките си "
-"пред други оръжия."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "зашеметен"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "female^зашеметена"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3248,20 +3215,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "скиптър"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Океанидски гражданин"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Океанидите са миролюбиви, но ще се борят, за да защитят домовете си. В тази "
-"ситуация дори океанид без оръжия или обучение, може да бъде опасен."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3446,27 +3399,54 @@ msgstr ""
 "Човешкият магьосник носеше пръстен! Може да е магически. Нека някой да го "
 "опита, за да видим какво прави."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "зашеметяване"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "зашеметение: тази единица е зашеметена. Не е способна да прилага зоната "
+#~ "си на контрол."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Тази атака е толкова могъща, че зашеметява врага, който загубва зоната си на "
-"контрол. Този ефект приключва на следващия му ход."
+#~ msgid "Merman Brawler"
+#~ msgstr "Океанидски борец"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Тази единица може да зашеметява враговете си, с което изключва зоната им на "
-"контрол."
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Особено едрите и силни океаниди понякога предпочитат юмруците и опашките "
+#~ "си пред други оръжия."
+
+#~ msgid "stunned"
+#~ msgstr "зашеметен"
+
+#~ msgid "female^stunned"
+#~ msgstr "female^зашеметена"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Океанидски гражданин"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Океанидите са миролюбиви, но ще се борят, за да защитят домовете си. В "
+#~ "тази ситуация дори океанид без оръжия или обучение, може да бъде опасен."
+
+#~ msgid "stun"
+#~ msgstr "зашеметяване"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Тази атака е толкова могъща, че зашеметява врага, който загубва зоната си "
+#~ "на контрол. Този ефект приключва на следващия му ход."
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Тази единица може да зашеметява враговете си, с което изключва зоната им "
+#~ "на контрол."
 
 #~ msgid "Kraken"
 #~ msgstr "Кракен"

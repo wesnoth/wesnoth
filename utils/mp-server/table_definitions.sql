@@ -57,14 +57,11 @@ create table extra
 -- GAME_NAME: the game's displayed title in the lobby
 -- START_TIME: when the players enter the game and begin playing
 -- END_TIME: when the game ends, for any particular reason
--- MAP_NAME: the mp_scenario attribute value
--- MAP_SOURCE_ADDON: the add-on the map comes from
--- MAP_VERSION: the version of the add-on the map comes from
--- ERA_NAME: the mp_era attribute value
--- ERA_SOURCE_ADDON: the add-on the era comes from
--- ERA_VERSION: the version of the add-on the era comes from
 -- REPLAY_NAME: the file name of the replay create when the game is ended
 -- OOS: Y/N flag of whether the game encountered an OOS error
+-- RELOAD: Y/N flag for whether the game allows observers
+-- PASSWORD: Y/N flag for whether the game had a password set
+-- PUBLIC: Y/N flag for whether the game will have a publicly accesible replay created for it
 create table game_info
 (
     INSTANCE_UUID    CHAR(36) NOT NULL,
@@ -122,7 +119,7 @@ create table game_content_info
     NAME              VARCHAR(255),
     ADDON_ID          VARCHAR(100) NOT NULL,
     ADDON_VERSION     VARCHAR(255) NOT NULL,
-    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE)
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, ADDON_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about an uploaded addon

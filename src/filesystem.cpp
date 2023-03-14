@@ -586,11 +586,7 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "persist");
 	create_directory_if_missing(filesystem::get_logs_dir());
 
-#ifdef _WIN32
-	lg::finish_log_file_setup();
-#else
 	lg::rotate_logs(filesystem::get_logs_dir());
-#endif
 }
 
 #ifdef _WIN32

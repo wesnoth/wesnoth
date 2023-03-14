@@ -17,6 +17,8 @@ def autoscan(pathdir):
                     value = re.sub(r'^\/', '', value)
                 else:
                     value = re.sub(r'^(?:[A-Za-z]\:)?\\', '', value)
+                    # use Unix path separators even on Windows
+                    value = value.replace("\\", "/")
                 filelist.append(value)
                 # end if m
             # end for name

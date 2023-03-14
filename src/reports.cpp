@@ -355,7 +355,7 @@ static config unit_status(reports::context & rc, const unit* u)
 	}
 	if (u->get_state(unit::STATE_UNHEALABLE)) {
 		add_status(res, "misc/unhealable.png", N_("unhealable: "),
-			N_("This unit is unhealable. It cannot be healed by healers or villages and doesn't benefit from resting."));
+			N_("This unit is unhealable. It cannot be healed by healers or villages and doesn’t benefit from resting."));
 	}
 	if (u->get_state(unit::STATE_INVULNERABLE)) {
 		add_status(res, "misc/invulnerable.png", N_("invulnerable: "),

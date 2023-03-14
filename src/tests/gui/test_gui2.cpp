@@ -85,6 +85,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/match_history.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
@@ -600,6 +601,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
+{
+	test<mp_match_history>();
+}
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
 	test_popup<debug_clock>();
@@ -980,6 +985,19 @@ struct dialog_tester<mp_lobby>
 	mp_lobby* create()
 	{
 		return new mp_lobby(li, connection, selected_game);
+	}
+};
+
+template<>
+struct dialog_tester<mp_match_history>
+{
+	wesnothd_connection connection;
+	dialog_tester() : connection("", "")
+	{
+	}
+	mp_match_history* create()
+	{
+		return new mp_match_history("", connection, false);
 	}
 };
 
