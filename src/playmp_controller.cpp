@@ -101,6 +101,12 @@ void playmp_controller::remove_blindfold()
 
 void playmp_controller::play_linger_turn()
 {
+	if(replay_controller_.get() != nullptr) {
+		// We have probably been using the mp "back to turn" feature
+		// We continue play since we have reached the end of the replay.
+		replay_controller_.reset();
+	}
+
 	while( gamestate().in_phase(game_data::GAME_ENDED) && !end_turn_requested_) {
 		config cfg;
 		if(network_reader_.read(cfg)) {
