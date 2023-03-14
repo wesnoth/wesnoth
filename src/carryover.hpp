@@ -36,7 +36,6 @@ public:
 	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover(const config& side);
-	carryover(const team& t, const int gold, const bool add);
 	~carryover(){}
 
 	const std::string& get_save_id() const{ return save_id_; }
