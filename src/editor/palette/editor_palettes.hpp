@@ -151,11 +151,11 @@ protected:
 	/**
 	 * Both the width and the height of the square buttons.
 	 */
-	int item_size_;
+	std::size_t item_size_;
 	/**
 	 * item_space_ plus some padding.
 	 */
-	int item_space_;
+	std::size_t item_space_;
 
 	/**
 	 * Number of items per row.
