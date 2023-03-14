@@ -182,7 +182,7 @@ public:
 	 * @param select              Select or deselect the row.
 	 * @returns                   True if the operation succeeded.
 	 */
-	bool select_row(const unsigned row, const bool select = true);
+	bool select_row(const std::size_t row, const bool select = true);
 
 	/**
 	 * Does exactly as advertised: selects the list's last row.

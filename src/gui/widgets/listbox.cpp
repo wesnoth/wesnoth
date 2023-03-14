@@ -242,7 +242,7 @@ grid* listbox::get_row_grid(const unsigned row)
 	return &generator_->item(row);
 }
 
-bool listbox::select_row(const unsigned row, const bool select)
+bool listbox::select_row(const std::size_t row, const bool select)
 {
 	if(row >= get_item_count()) {
 		throw std::invalid_argument("invalid listbox index");
