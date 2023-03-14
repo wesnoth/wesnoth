@@ -86,7 +86,11 @@ private:
 		SHOW_ALL,
 	};
 	std::optional<REPLAY_VISION> vision_;
+	/// When the "Reset" button is pressed reset the gamestate to this
+	/// serialized gamestaten, the initial gamestate.
 	std::shared_ptr<config> reset_state_;
+	/// Called when there are no more moves in the [replay] to process
 	std::function<void()> on_end_replay_;
+	/// Used by unit tests.
 	bool return_to_play_side_;
 };

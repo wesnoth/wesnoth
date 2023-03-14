@@ -79,8 +79,12 @@ protected:
 	const cursor::setter cursor_setter_;
 	gui::floating_textbox textbox_info_;
 
+	/// Helper to send our actions to the server
+	/// Used by turn_data_
 	replay_network_sender replay_sender_;
+	/// Used by turn_data_
 	playturn_network_adapter network_reader_;
+	/// Helper to read and execute (in particular replay data/ user actions ) messsages from the server
 	turn_info turn_data_;
 	enum END_TURN_STATE
 	{
@@ -91,8 +95,13 @@ protected:
 		/** An [end_turn] was added to the replay. */
 		END_TURN_SYNCED,
 	};
+
 	END_TURN_STATE end_turn_;
-	bool skip_next_turn_, ai_fallback_;
+	bool skip_next_turn_;
+	/// true when the current side is actually an ai side but was taken over by a human (usually for debugging purposes),
+	/// we need this variable to remember to give the ai control back next turn.
+	bool ai_fallback_;
+	/// non-null when replay mode in active, is used in singleplayer and for the "back to turn" feature in multiplayer.
 	std::unique_ptr<replay_controller> replay_controller_;
 	void linger();
 	void sync_end_turn() override;

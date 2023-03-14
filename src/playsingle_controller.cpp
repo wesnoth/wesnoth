@@ -747,6 +747,8 @@ bool playsingle_controller::should_return_to_play_side() const
 void playsingle_controller::on_replay_end(bool is_unit_test)
 {
 	if(is_networked_mp()) {
+		// we are using the "Back to turn (replay)" feature
+		// And have reached the current gamestate: end the replay and continue normally.
 		set_player_type_changed();
 	} else if(is_unit_test) {
 		replay_controller_->return_to_play_side();
