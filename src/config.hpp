@@ -120,10 +120,10 @@ public:
 	{
 		typedef config value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef config *pointer;
 		typedef config &reference;
 		typedef child_list::iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef child_iterator this_type;
 		explicit child_iterator(const Itor &i): i_(i) {}
 
@@ -162,10 +162,10 @@ public:
 	{
 		typedef const config value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef const config *pointer;
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef const_child_iterator this_type;
 		explicit const_child_iterator(const Itor &i): i_(i) {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
@@ -225,10 +225,10 @@ public:
 	{
 		typedef attribute value_type;
 		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef attribute *pointer;
 		typedef attribute &reference;
 		typedef attribute_map::iterator Itor;
+		typedef Itor::difference_type difference_type;
 		explicit attribute_iterator(const Itor &i): i_(i) {}
 
 		attribute_iterator &operator++() { ++i_; return *this; }
@@ -253,10 +253,10 @@ public:
 	{
 		typedef const attribute value_type;
 		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef const attribute *pointer;
 		typedef const attribute &reference;
 		typedef attribute_map::const_iterator Itor;
+		typedef Itor::difference_type difference_type;
 		explicit const_attribute_iterator(const Itor &i): i_(i) {}
 		const_attribute_iterator(attribute_iterator& i): i_(i.i_) {}
 
@@ -640,10 +640,10 @@ public:
 
 		typedef any_child value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef arrow_helper pointer;
 		typedef any_child reference;
 		typedef std::vector<child_pos>::iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef all_children_iterator this_type;
 		explicit all_children_iterator(const Itor &i): i_(i) {}
 
@@ -692,10 +692,10 @@ public:
 
 		typedef const any_child value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef const arrow_helper pointer;
 		typedef const any_child reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef const_all_children_iterator this_type;
 		explicit const_all_children_iterator(const Itor &i): i_(i) {}
 		const_all_children_iterator(const all_children_iterator& i): i_(i.i_) {}
