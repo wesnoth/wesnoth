@@ -616,6 +616,12 @@ void playsingle_controller::linger()
 	update_gui_linger();
 
 	try {
+		if(replay_controller_.get() != nullptr) {
+			replay_controller_->play_side_impl();
+			if(player_type_changed_) {
+				replay_controller_.reset();
+			}
+		}
 		while(!end_turn_requested_) {
 			play_slice();
 		}
