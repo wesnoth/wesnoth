@@ -159,7 +159,7 @@ public:
       // must be able to parse first message
       qi::parse(it, end, grammar.skipped_block); // first parse any comments
       if (!qi::parse(it, end, grammar, msg)) {   // now parse the main grammar target
-        int err_line = it.position();
+        std::size_t err_line = it.position();
         SPIRIT_PO_CATALOG_FAIL("Failed to parse po header, stopped at line " + std::to_string(err_line) + ": " + iterator_context(it, end));
       }
 
@@ -216,14 +216,14 @@ public:
         line_no = it.position();
         // actually parse a message
         if (!qi::parse(it, end, grammar, msg)) {
-          int err_line = it.position();
+          std::size_t err_line = it.position();
           SPIRIT_PO_CATALOG_FAIL(("Failed to parse po file, "
                                   "started at " + std::to_string(line_no) + ": , stopped at " + std::to_string(err_line) + ":\n"
                                   + iterator_context(it, end)));
         }
         // cannot overwrite header
         if (!msg.id.size()) {
-          int err_line = it.position();
+          std::size_t err_line = it.position();
           SPIRIT_PO_CATALOG_FAIL(("Malformed po file: Cannot overwrite the header entry later in the po file."
                                   "Started at " + std::to_string(line_no) + ": , stopped at " + std::to_string(err_line) + ":\n"
                                   + iterator_context(it, end)));
