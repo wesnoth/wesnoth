@@ -84,7 +84,7 @@ public:
 		const int split_flag = utils::REMOVE_EMPTY; // useless to strip spaces
 
 		const std::vector<std::string> comma_split = utils::split(input, ',', split_flag);
-		const int time_chunk = std::max<int>(1, duration / std::max<int>(comma_split.size(), 1));
+		const int time_chunk = std::max<int>(1, duration / std::max<int>(static_cast<int>(comma_split.size()), 1));
 
 		for(const auto& entry : comma_split) {
 			std::vector<std::string> colon_split = utils::split(entry, ':', split_flag);
