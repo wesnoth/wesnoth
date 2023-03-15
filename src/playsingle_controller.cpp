@@ -429,7 +429,8 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 
 	try {
 		play_scenario_init(level);
-		// clears level config;
+		// clears level config (the intention was probably just to save some ram),
+		// Note: this might clear 'level', so don't use level after this.
 		saved_game_.remove_snapshot();
 
 		play_scenario_main_loop();
