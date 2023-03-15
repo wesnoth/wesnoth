@@ -13,6 +13,7 @@
    * Updated translations: British English, Spanish
  ### Units
  ### User interface
+   * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
