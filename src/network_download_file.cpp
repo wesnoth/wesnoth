@@ -15,6 +15,8 @@
 #include "network_download_file.hpp"
 
 #include "filesystem.hpp"
+#include "gettext.hpp"
+#include "gui/dialogs/message.hpp"
 #include "log.hpp"
 
 #include <curl/curl.h>
@@ -61,7 +63,14 @@ namespace network
                     << "Long error: " << std::string(error);
             } else {
                 try {
-                    filesystem::write_file(local_path, buffer);
+                    if(filesystem::file_exists(local_path)) {
+                        const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
+                        if(res == gui2::retval::OK) {
+                            filesystem::write_file(local_path, buffer);
+                        }
+                    } else {
+                        filesystem::write_file(local_path, buffer);
+                    }
                     DBG_NW << "Wrote downloaded file to: " << local_path;
                 } catch(const filesystem::io_exception& e) {
                     ERR_NW << "io_exception writing downloaded data to file at: " << local_path
