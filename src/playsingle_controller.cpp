@@ -327,6 +327,8 @@ void playsingle_controller::play_scenario_main_loop()
 				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 
+			// TODO: we currently don't set the music to the initial playlist, should we?
+
 			play_scenario_init(*ex.level);
 
 			if(replay_controller_ == nullptr) {
