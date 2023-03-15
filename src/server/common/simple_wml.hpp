@@ -74,8 +74,8 @@ public:
 		return !operator==(o);
 	}
 	bool operator<(const string_span& o) const {
-		const int len = size_ < o.size_ ? size_ : o.size_;
-		for(int n = 0; n < len; ++n) {
+		const std::size_t len = size_ < o.size_ ? size_ : o.size_;
+		for(std::size_t n = 0; n < len; ++n) {
 			if(str_[n] != o.str_[n]) {
 				if(str_[n] < o.str_[n]) {
 					return true;
@@ -91,7 +91,7 @@ public:
 	const char* begin() const { return str_; }
 	const char* end() const { return str_ + size_; }
 
-	int size() const { return size_; }
+	std::size_t size() const { return size_; }
 	bool empty() const { return size_ == 0; }
 	bool is_null() const { return str_ == nullptr; }
 
@@ -104,7 +104,7 @@ public:
 
 private:
 	const char* str_;
-	unsigned int size_;
+	std::size_t size_;
 };
 
 std::ostream& operator<<(std::ostream& o, const string_span& s);
