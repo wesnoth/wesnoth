@@ -84,7 +84,6 @@ protected:
 	virtual void init_gui() override;
 
 	const cursor::setter cursor_setter_;
-	gui::floating_textbox textbox_info_;
 
 	/// Helper to send our actions to the server
 	/// Used by turn_data_
