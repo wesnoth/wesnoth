@@ -72,6 +72,7 @@
 #include "preferences/credentials.hpp"
 #include "preferences/display.hpp"
 #include "replay.hpp"
+#include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "save_index.hpp"

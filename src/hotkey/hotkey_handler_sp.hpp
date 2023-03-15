@@ -24,7 +24,7 @@
 #include "playsingle_controller.hpp"
 
 #include "hotkey/hotkey_handler.hpp"
-
+#include "replay_controller.hpp"
 class playsingle_controller::hotkey_handler : public play_controller::hotkey_handler {
 
 protected:
