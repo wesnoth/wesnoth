@@ -41,8 +41,10 @@
 #include "playturn.hpp"
 #include "preferences/game.hpp"
 #include "random_deterministic.hpp"
+#include "replay_controller.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
+#include "saved_game.hpp"
 #include "savegame.hpp"
 #include "scripting/plugins/context.hpp"
 #include "sound.hpp"
@@ -87,6 +89,10 @@ playsingle_controller::playsingle_controller(const config& level, saved_game& st
 	plugins_context_->set_accessor_string("level_result", std::bind(&playsingle_controller::describe_result, this));
 	plugins_context_->set_accessor_int("turn", std::bind(&play_controller::turn, this));
 }
+
+///Defined here to reduce file includes.
+playsingle_controller::~playsingle_controller() = default;
+
 
 std::string playsingle_controller::describe_result() const
 {

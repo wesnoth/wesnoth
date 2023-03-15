@@ -22,10 +22,11 @@
 #include "playturn_network_adapter.hpp"
 #include "playturn.hpp"
 #include "replay.hpp"
-#include "saved_game.hpp"
-#include "replay_controller.hpp"
 
 #include <exception>
+
+class replay_controller;
+class saved_game;
 
 struct reset_gamestate_exception : public std::exception
 {
@@ -40,6 +41,7 @@ class playsingle_controller : public play_controller
 public:
 	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 
+	~playsingle_controller();
 	level_result::type play_scenario(const config& level);
 	void play_scenario_init(const config& level);
 	void skip_empty_sides(int& side_num);
