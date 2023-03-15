@@ -38,8 +38,19 @@ const readTerrainImages = async () => {
     .entries(dictTerrainType2ImagesPath)
     .map(async ([terrainType, imageName]) => {
       let image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
+      // Try a number of other places, as well:
       if (!image) {
         image = await Jimp.read(`../../../images/${imageName}.png`)
+      }
+      if (!image) {
+        image = await Jimp.read(`./images/${imageName}.png`)
+      }
+      if (!image) {
+        image = await Jimp.read(`../../../attic/${imageName}.png`)
+      }
+      if (!image) {
+        // If nothing worked, provide a sensible default as a fallback:
+        image = await Jimp.read(`../../../data/core/images/misc/blank-hex.png`)
       }
       return [terrainType, image]
     })
