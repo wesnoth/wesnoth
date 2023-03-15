@@ -70,6 +70,8 @@ namespace network
             }
 
             curl_easy_cleanup(curl);
+        } else {
+            ERR_NW << "curl_easy_init failed initialization, unable to download file.";
         }
     }
 }
