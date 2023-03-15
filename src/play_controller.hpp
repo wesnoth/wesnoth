@@ -394,7 +394,8 @@ protected:
 	 * Whether we did init sides in this session
 	 * (false = we did init sides before we reloaded the game).
 	 */
-	bool init_side_done_now_;
+	bool did_autosave_this_turn_;
+	bool did_tod_sound_this_turn_;
 	//the displayed location when we load a game.
 	map_location map_start_;
 	// Whether to start with the display faded to black

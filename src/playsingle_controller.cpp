@@ -398,8 +398,6 @@ void playsingle_controller::play_side_impl()
 		end_turn_requested_ = false;
 	}
 	if(replay_controller_.get() != nullptr) {
-		init_side_done_now_ = false;
-
 		REPLAY_RETURN res = replay_controller_->play_side_impl();
 		if(res == REPLAY_FOUND_END_TURN) {
 			gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
@@ -454,7 +452,8 @@ void playsingle_controller::before_human_turn()
 		return;
 	}
 
-	if(init_side_done_now_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
+	if(!did_autosave_this_turn_ && !game_config::disable_autosave && preferences::autosavemax() > 0) {
+		did_autosave_this_turn_ = true;
 		scoped_savegame_snapshot snapshot(*this);
 		savegame::autosave_savegame save(saved_game_, preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
