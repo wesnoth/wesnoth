@@ -163,7 +163,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
 	, skip_story_(state_of_game.skip_story())
-	, init_side_done_now_(false)
+	, did_autosave_this_turn_(true)
+	, did_tod_sound_this_turn_(false)
 	, map_start_()
 	, start_faded_(start_faded)
 	, victory_when_enemies_defeated_(level["victory_when_enemies_defeated"].to_bool(true))
@@ -476,7 +477,6 @@ void play_controller::do_init_side()
 	// In case we might end up calling sync:network during the side turn events,
 	// and we don't want do_init_side to be called when a player drops.
 	gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
-	init_side_done_now_ = true;
 
 	const std::string turn_num = std::to_string(turn());
 	const std::string side_num = std::to_string(current_side());
@@ -538,16 +538,18 @@ void play_controller::do_init_side()
 	// Make sure vision is accurate.
 	actions::clear_shroud(current_side(), true);
 
-	init_side_end();
 	check_victory();
 	sync.do_final_checkup();
+
+	init_side_end();
 }
 
 void play_controller::init_side_end()
 {
-	const time_of_day& tod = gamestate().tod_manager_.get_time_of_day();
 
-	if(current_side() == 1 || !init_side_done_now_) {
+	if(	did_tod_sound_this_turn_) {
+		did_tod_sound_this_turn_ = true;
+		const time_of_day& tod = gamestate().tod_manager_.get_time_of_day();
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 	}
 
@@ -608,6 +610,7 @@ void play_controller::finish_side_turn()
 	}
 	mouse_handler_.deselect_hex();
 	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
+	did_autosave_this_turn_ = false;
 }
 
 void play_controller::finish_turn()
@@ -617,6 +620,7 @@ void play_controller::finish_turn()
 	pump().fire("turn_end");
 	pump().fire("turn_" + turn_num + "_end");
 	sync.do_final_checkup();
+	did_tod_sound_this_turn_ = false;
 }
 
 bool play_controller::enemies_visible() const
