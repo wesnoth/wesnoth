@@ -17,12 +17,10 @@ const getDictTerrainType2ImagesPath = async () => {
   const dictTerrainType2ImagesPath = rootByTagName(terrain)
     .terrain_type
     .reduce((acc, terrainType) => {
-      if (terrainType.symbol_image === undefined) {
-        return acc
+      if (terrainType.symbol_image) {
+        acc[terrainType.string.value] = terrainType.symbol_image.value
       }
-
-      acc[terrainType.string.value] = terrainType.symbol_image.value
-      if (!acc[terrainType.string.value]) {
+      if (!acc[terrainType.string.value] && terrainType.string.value) {
         acc[terrainType.string.value] = terrainType.string.value
       }
       return acc
