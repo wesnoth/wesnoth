@@ -320,7 +320,7 @@ do { \
 do { \
 	if (strcmp(m, (name)) == 0) { \
 		const std::vector<std::string>& vector = (accessor); \
-		lua_createtable(L, vector.size(), 0); \
+		lua_createtable(L, static_cast<int>(vector.size()), 0); \
 		int i = 1; \
 		for (const std::string& s : vector) { \
 			lua_pushlstring(L, s.c_str(), s.length()); \
@@ -429,7 +429,7 @@ do { \
 		std::vector<std::string> value; \
 		char const* message = "table with unnamed indices holding strings expected"; \
 		if (!lua_istable(L, 3)) return luaL_argerror(L, 3, message); \
-		unsigned length = lua_rawlen(L, 3); \
+		lua_Unsigned length = lua_rawlen(L, 3); \
 		for (unsigned i = 1; i <= length; ++i) { \
 			lua_rawgeti(L, 3, i); \
 			char const* string = lua_tostring(L, 4); \
