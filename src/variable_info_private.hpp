@@ -57,13 +57,13 @@ int parse_index(const char* index_str);
 int parse_index(const char* index_str)
 {
 	char* endptr;
-	int res = strtol(index_str, &endptr, 10);
+	long res = strtol(index_str, &endptr, 10);
 
-	if(*endptr != ']' || res > static_cast<int>(game_config::max_loop) || endptr == index_str) {
+	if(*endptr != ']' || res > static_cast<long>(game_config::max_loop) || endptr == index_str) {
 		throw invalid_variablename_exception();
 	}
 
-	return res;
+	return static_cast<int>(res);
 }
 
 // ==================================================================
@@ -407,7 +407,7 @@ public:
 			vi_policy_create::get_child_at(child, key, endindex - 1);
 		}
 
-		int size_diff = datasource_.size() - (endindex - startindex);
+		int size_diff = static_cast<int>(datasource_.size()) - (endindex - startindex);
 
 		// remove configs first
 		while(size_diff < 0) {
@@ -415,16 +415,16 @@ public:
 			++size_diff;
 		}
 
-		std::size_t index = 0;
-		for(index = 0; index < static_cast<std::size_t>(size_diff); ++index) {
+		int index = 0;
+		for(index = 0; index < size_diff; ++index) {
 			child.add_child_at(key, config(), startindex + index).swap(datasource_[index]);
 		}
 
-		for(; index < datasource_.size(); ++index) {
+		for(; index < static_cast<int>(datasource_.size()); ++index) {
 			child.child(key, startindex + index).swap(datasource_[index]);
 		}
 
-		return get_child_range(child, key, startindex, datasource_.size());
+		return get_child_range(child, key, startindex, static_cast<int>(datasource_.size()));
 	}
 
 private:
