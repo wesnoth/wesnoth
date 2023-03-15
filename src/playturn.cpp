@@ -219,6 +219,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
+		// Only the host receives this message when a player leaves/disconnects.
 		const int  side_drop = side_drop_c["side_num"].to_int(0);
 		std::size_t index = side_drop -1;
 
