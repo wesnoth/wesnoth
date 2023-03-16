@@ -1316,9 +1316,6 @@ std::set<std::string> play_controller::all_players() const
 
 void play_controller::play_side()
 {
-	// check for team-specific items in the scenario
-	gui_->parse_team_overlays();
-
 	do {
 		update_viewing_player();
 		{
