@@ -456,7 +456,7 @@ void playmp_controller::send_user_choice()
 
 void playmp_controller::play_slice(bool is_delay_enabled)
 {
-	if(!is_linger_mode() && !is_replay()) {
+	if(!is_linger_mode() && !is_replay() && !network_processing_stopped_) {
 		// receive chat during animations and delay
 		process_network_data(true);
 		// cannot use turn_data_.send_data() here.
