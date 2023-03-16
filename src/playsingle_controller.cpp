@@ -107,6 +107,8 @@ std::string playsingle_controller::describe_result() const
 void playsingle_controller::init_gui()
 {
 	LOG_NG << "Initializing GUI... " << (SDL_GetTicks() - ticks());
+	// If we are retarting replay from linger mode.
+	update_gui_linger();
 	play_controller::init_gui();
 
 	// Scroll to the starting position of the first team. If there is a
@@ -587,25 +589,33 @@ void playsingle_controller::play_human_turn()
 	}
 }
 
+void playsingle_controller::update_gui_linger()
+{
+	if(is_linger_mode()) {
+		// If we need to set the status depending on the completion state
+		// the key to it is here.
+		gui_->set_game_mode(game_display::LINGER);
+		// change the end-turn button text from "End Turn" to "End Scenario"
+		gui_->get_theme().refresh_title2("button-endturn", "title2");
+	} else {
+		gui_->set_game_mode(game_display::RUNNING);
+		// change the end-turn button text from "End Scenario" to "End Turn"
+		gui_->get_theme().refresh_title2("button-endturn", "title");
+	}
+	// Also checcks whether the button can be pressed.
+	gui_->queue_rerender();
+}
+
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
 
-	// If we need to set the status depending on the completion state
-	// the key to it is here.
-	gui_->set_game_mode(game_display::LINGER);
-
 	// Make all of the able-to-move units' orbs consistently red
 	gamestate().board_.set_all_units_user_end_turn();
 
-	// change the end-turn button text to its alternate label
-	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->queue_rerender();
+	update_gui_linger();
 
 	try {
-		// Same logic as single-player human turn, but
-		// *not* the same as multiplayer human turn.
-		end_turn_enable(true);
 		while(!end_turn_requested_) {
 			play_slice();
 		}
@@ -614,11 +624,6 @@ void playsingle_controller::linger()
 		saved_game_.clear();
 		throw;
 	}
-
-	// revert the end-turn button text to its normal label
-	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->queue_rerender();
-	gui_->set_game_mode(game_display::RUNNING);
 
 	LOG_NG << "ending end-of-scenario linger";
 }

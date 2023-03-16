@@ -61,13 +61,11 @@ protected:
 	mutable bool network_processing_stopped_;
 
 	virtual void on_not_observer() override;
-	bool is_host() const;
+	virtual bool is_host() const override;
 	void remove_blindfold();
 
 	blindfold blindfold_;
 private:
-	void set_end_scenario_button();
-	void reset_end_scenario_button();
 	void process_network_data(bool chat_only = false);
 	mp_game_metadata* mp_info_;
 };

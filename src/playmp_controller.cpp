@@ -101,10 +101,6 @@ void playmp_controller::remove_blindfold()
 
 void playmp_controller::play_linger_turn()
 {
-	if(is_host()) {
-		end_turn_enable(true);
-	}
-
 	while( gamestate().in_phase(game_data::GAME_ENDED) && !end_turn_requested_) {
 		config cfg;
 		if(network_reader_.read(cfg)) {
@@ -211,38 +207,15 @@ void playmp_controller::play_idle_loop()
 	}
 }
 
-void playmp_controller::set_end_scenario_button()
-{
-	// Modify the end-turn button
-	if(!is_host()) {
-		std::shared_ptr<gui::button> btn_end = gui_->find_action_button("button-endturn");
-		btn_end->enable(false);
-	}
-
-	gui_->get_theme().refresh_title2("button-endturn", "title2");
-	gui_->queue_rerender();
-}
-
-void playmp_controller::reset_end_scenario_button()
-{
-	// revert the end-turn button text to its normal label
-	gui_->get_theme().refresh_title2("button-endturn", "title");
-	gui_->queue_rerender();
-	gui_->set_game_mode(game_display::RUNNING);
-}
-
 void playmp_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
 
-	// If we need to set the status depending on the completion state
-	// we're needed here.
-	gui_->set_game_mode(game_display::LINGER);
-
 	// End all unit moves
 	gamestate().board_.set_all_units_user_end_turn();
 
-	set_end_scenario_button();
+	update_gui_linger();
+
 	assert(is_regular_game_end());
 
 	if(get_end_level_data().transient.reveal_map) {
@@ -282,8 +255,6 @@ void playmp_controller::linger()
 			quit = false;
 		}
 	} while(!quit);
-
-	reset_end_scenario_button();
 
 	LOG_NG << "ending end-of-scenario linger";
 }
