@@ -116,25 +116,6 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 	return std::distance(zoom_levels.begin(), iter);
 }
 
-void display::parse_team_overlays()
-{
-	const team& curr_team = dc_->teams()[playing_team()];
-	const team& prev_team = playing_team() == 0
-		? dc_->teams().back()
-		: dc_->get_team(playing_team());
-	for (const auto& i : get_overlays()) {
-		for(const overlay& ov : i.second) {
-			if(!ov.team_name.empty() &&
-				((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
-				((ov.team_name.find(prev_team.team_name()) + 1) != 0))
-			{
-				invalidate(i.first);
-			}
-		}
-	}
-}
-
-
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float submerge, float z_order)
 {
 	halo::handle halo_handle;
