@@ -482,10 +482,7 @@ void playsingle_controller::play_side_impl()
 		end_turn_requested_ = false;
 	}
 	if(replay_controller_.get() != nullptr) {
-		REPLAY_RETURN res = replay_controller_->play_side_impl();
-		if(res == REPLAY_FOUND_END_TURN) {
-			gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
-		}
+		replay_controller_->play_side_impl();
 
 		if(player_type_changed_) {
 			replay_controller_.reset();

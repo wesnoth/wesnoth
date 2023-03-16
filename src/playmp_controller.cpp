@@ -486,7 +486,6 @@ void playmp_controller::process_network_data(bool chat_only)
 	} else if(res == turn_info::PROCESS_RESTART_TURN) {
 		player_type_changed_ = true;
 	} else if(res == turn_info::PROCESS_END_TURN) {
-		gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
 	} else if(res == turn_info::PROCESS_END_LEVEL) {
 	} else if(res == turn_info::PROCESS_END_LINGER) {
 		replay::process_error("Received unexpected next_scenario during the game");

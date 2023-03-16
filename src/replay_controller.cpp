@@ -154,7 +154,7 @@ bool replay_controller::recorder_at_end() const
 	return resources::recorder->at_end();
 }
 
-REPLAY_RETURN replay_controller::play_side_impl()
+void replay_controller::play_side_impl()
 {
 	update_enabled_buttons();
 	while(!return_to_play_side_ && !static_cast<playsingle_controller&>(controller_).get_player_type_changed())
@@ -171,10 +171,10 @@ REPLAY_RETURN replay_controller::play_side_impl()
 					stop_condition_->move_done();
 				}
 				if(controller_.is_regular_game_end()) {
-					return REPLAY_FOUND_END_LEVEL;
+					return;
 				}
 				if(res == REPLAY_FOUND_END_TURN) {
-					return res;
+					return;
 				}
 				// TODO: how can this be the case when we just checked for "resources::recorder->at_end()" above?
 				if(res == REPLAY_RETURN_AT_END) {
@@ -200,7 +200,7 @@ REPLAY_RETURN replay_controller::play_side_impl()
 			controller_.play_slice(true);
 		}
 	}
-	return REPLAY_FOUND_END_MOVE;
+	return;
 }
 bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int) const
 {
