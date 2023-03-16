@@ -823,6 +823,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 					verify(resources::gameboard->units(), cfg_verify);
 				}
 				resources::controller->gamestate().next_player_number_ = end_turn["next_player_number"];
+				resources::controller->gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
 				return REPLAY_FOUND_END_TURN;
 			}
 		}
