@@ -1318,12 +1318,10 @@ void play_controller::play_side()
 {
 	do {
 		update_viewing_player();
-		{
-			save_blocker blocker;
-			maybe_do_init_side();
-			if(is_regular_game_end()) {
-				return;
-			}
+
+		maybe_do_init_side();
+		if(is_regular_game_end()) {
+			return;
 		}
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
