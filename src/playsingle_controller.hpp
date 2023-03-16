@@ -54,6 +54,7 @@ public:
 
 	virtual void check_objectives() override;
 	virtual void on_not_observer() override {}
+	virtual bool is_host() const { return true; }
 	virtual void maybe_linger();
 
 	void end_turn();
@@ -102,6 +103,7 @@ protected:
 	/// non-null when replay mode in active, is used in singleplayer and for the "back to turn" feature in multiplayer.
 	std::unique_ptr<replay_controller> replay_controller_;
 	void linger();
+	void update_gui_linger();
 	void sync_end_turn() override;
 	void update_viewing_player() override;
 	void reset_replay();
