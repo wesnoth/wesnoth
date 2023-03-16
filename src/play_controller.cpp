@@ -52,7 +52,6 @@
 #include "replay.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
-#include "save_blocker.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
 #include "savegame.hpp"
@@ -906,59 +905,37 @@ replay& play_controller::get_replay()
 
 void play_controller::save_game()
 {
-	if(save_blocker::try_block()) {
-		// Saving while an event is running isn't supported
-		// because it may lead to expired event handlers being saved.
-		assert(!gamestate().events_manager_->is_event_running());
+	// Saving while an event is running isn't supported
+	// because it may lead to expired event handlers being saved.
+	assert(!gamestate().events_manager_->is_event_running());
 
-		save_blocker::save_unblocker unblocker;
-		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
-	} else {
-		save_blocker::on_unblock(this, &play_controller::save_game);
-	}
+	scoped_savegame_snapshot snapshot(*this);
+	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_game_auto(const std::string& filename)
 {
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-
-		scoped_savegame_snapshot snapshot(*this);
-		savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_automatic(false, filename);
-	}
+	scoped_savegame_snapshot snapshot(*this);
+	savegame::ingame_savegame save(saved_game_, preferences::save_compression_format());
+	save.save_game_automatic(false, filename);
 }
 
 void play_controller::save_replay()
 {
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_interactive("", savegame::savegame::OK_CANCEL);
-	} else {
-		save_blocker::on_unblock(this, &play_controller::save_replay);
-	}
+	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	save.save_game_interactive("", savegame::savegame::OK_CANCEL);
 }
 
 void play_controller::save_replay_auto(const std::string& filename)
 {
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
-		save.save_game_automatic(false, filename);
-	}
+	savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
+	save.save_game_automatic(false, filename);
 }
 
 void play_controller::save_map()
 {
-	if(save_blocker::try_block()) {
-		save_blocker::save_unblocker unblocker;
-		menu_handler_.save_map();
-	} else {
-		save_blocker::on_unblock(this, &play_controller::save_map);
-	}
+	menu_handler_.save_map();
 }
 
 void play_controller::load_game()
