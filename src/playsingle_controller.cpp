@@ -176,6 +176,10 @@ void playsingle_controller::play_scenario_init(const config& level)
 
 	start_game();
 
+	if(gamestate().in_phase(game_data::TURN_PLAYING)) {
+		init_side_end();
+	}
+
 	if(!saved_game_.classification().random_mode.empty() && is_networked_mp()) {
 		// This won't cause errors later but we should notify the user about it in case he didn't knew it.
 		gui2::show_transient_message(
@@ -202,10 +206,6 @@ void playsingle_controller::play_some()
 	assert(is_regular_game_end() || gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING, game_data::TURN_ENDED, game_data::GAME_ENDED));
 
 	if (!is_regular_game_end() && gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING)) {
-		if(gamestate().in_phase(game_data::TURN_PLAYING)) {
-			// If we are here we have probably reloaded a savegame
-			init_side_end();
-		}
 		play_side();
 		assert(is_regular_game_end() || gamestate().in_phase(game_data::TURN_ENDED));
 	}
