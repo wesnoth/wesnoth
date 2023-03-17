@@ -535,4 +535,9 @@ class CampaignClient:
                 sys.stderr.write(i * " " + name + "\n")
             self.unpackdir(dir, os.path.join(path, name), i + 2, verbose)
 
+    def get_terms(self):
+        request = append_tag(None, "request_terms")
+        self.send_packet(self.make_packet(request))
+        return self.decode(self.read_packet())
+
 # vim: tabstop=4: shiftwidth=4: expandtab: softtabstop=4: autoindent:
