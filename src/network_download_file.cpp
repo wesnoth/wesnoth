@@ -61,6 +61,7 @@ namespace network
                 ERR_NW << "Error downloading file from url `" << url << "`.\n"
                     << "Short error: " << curl_easy_strerror(res) << "\n"
                     << "Long error: " << std::string(error);
+                gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
             } else {
                 try {
                     if(filesystem::file_exists(local_path)) {
@@ -75,12 +76,15 @@ namespace network
                 } catch(const filesystem::io_exception& e) {
                     ERR_NW << "io_exception writing downloaded data to file at: " << local_path
                         << "\n" << e.what() << " : " << e.message;
+                    gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
                 }
+                gui2::show_message(_("Download complete"), _("The file has been downloaded."), gui2::dialogs::message::button_style::auto_close);
             }
 
             curl_easy_cleanup(curl);
         } else {
             ERR_NW << "curl_easy_init failed initialization, unable to download file.";
+            gui2::show_message(_("Download error"), _("An error occurred when downloading the file. Check the game logs for more information."), gui2::dialogs::message::button_style::auto_close);
         }
     }
 }
