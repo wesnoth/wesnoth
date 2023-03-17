@@ -23,8 +23,8 @@ const getDictTerrainType2ImagesPath = async () => {
       if (!acc[terrainType.string.value] && terrainType.editor_image) {
         acc[terrainType.string.value] = terrainType.editor_image.value 
       }
-      if (!acc[terrainType.string.value] && terrainType.string) {
-        acc[terrainType.string.value] = terrainType.string.value
+      if (!acc[terrainType.string.value]) {
+        acc[terrainType.string.value] = 'grid'
       }
       return acc
   }, {} as { [terrainType: string]: string })
