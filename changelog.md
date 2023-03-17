@@ -16,6 +16,7 @@
    * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
    * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
    * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
+   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
 
 ## Version 1.16.8
  ### Editor
