@@ -94,6 +94,10 @@ if __name__ == "__main__":
     argumentparser.add_argument("--change-passphrase", nargs=3,
         metavar=("ADD-ON","OLD","NEW"),
         help="Change the passphrase for ADD-ON from OLD to NEW")
+    argumentparser.add_argument("--terms", # no short option here
+        action="store_true",
+        help="Retrieves and prints the upload terms from the server "+
+        "(without formatting).")
     argumentparser.add_argument("-S", "--secure",
         action="store_true",
         help="Connect to the add-ons server using SSL/TLS encryption.")
@@ -426,6 +430,14 @@ if __name__ == "__main__":
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
+    elif args.terms:
+        cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
+        data = cs.get_terms()
+        text = data.get_all(tag = "message")[0].get_text_val("message", "")
+        # remove Pango markup
+        text = re.sub(r"<.*?>", "", text)
+        sys.stdout.write(text + "\n")
+        
     elif args.html:
         pass
     else:
