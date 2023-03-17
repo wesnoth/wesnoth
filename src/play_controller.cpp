@@ -539,29 +539,22 @@ void play_controller::do_init_side()
 
 	check_victory();
 	sync.do_final_checkup();
+	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 
 	init_side_end();
+
+	if(!is_skipping_replay() && current_team().get_scroll_to_leader()) {
+		gui_->scroll_to_leader(current_side(), game_display::ONSCREEN, false);
+	}
 }
 
 void play_controller::init_side_end()
 {
-
 	if(	did_tod_sound_this_turn_) {
 		did_tod_sound_this_turn_ = true;
 		const time_of_day& tod = gamestate().tod_manager_.get_time_of_day();
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 	}
-
-	if(!is_skipping_replay()) {
-		gui_->invalidate_all();
-	}
-
-	if(!is_skipping_replay() && current_team().get_scroll_to_leader() && !map_start_.valid()) {
-		gui_->scroll_to_leader(current_side(), game_display::ONSCREEN, false);
-	}
-
-	map_start_ = map_location();
-	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	whiteboard_manager_->on_init_side();
 }
 
