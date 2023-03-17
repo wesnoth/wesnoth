@@ -13,6 +13,7 @@ import sys, os.path, re, time, glob, shutil
 from subprocess import Popen
 import wesnoth.wmlparser3 as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
+from wesnoth import version
 
 # This is the validation code for the -u arguments. It checks if the input path is valid
 def valid_file_path(path):
@@ -26,7 +27,9 @@ def valid_file_path(path):
 if __name__ == "__main__":
     import argparse
 
-    argumentparser = argparse.ArgumentParser()
+    argumentparser = argparse.ArgumentParser(prog="wesnoth_addon_manager")
+    argumentparser.add_argument("--version", action="version",
+                        version="%(prog)s " + version.as_string)
     argumentparser.add_argument("-a", "--address", help="specify server address",
         default="add-ons.wesnoth.org")
     argumentparser.add_argument("--html",
