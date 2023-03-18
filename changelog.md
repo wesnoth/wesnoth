@@ -10,7 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, French, Italian, Spanish
+   * Updated translations: British English, Czech, French, Italian, Spanish
  ### Units
  ### User interface
    * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
