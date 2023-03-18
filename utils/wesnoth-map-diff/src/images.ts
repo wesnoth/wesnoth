@@ -17,11 +17,15 @@ const getDictTerrainType2ImagesPath = async () => {
   const dictTerrainType2ImagesPath = rootByTagName(terrain)
     .terrain_type
     .reduce((acc, terrainType) => {
-      if (terrainType.symbol_image === undefined) {
-        return acc
+      if (terrainType.symbol_image) {
+        acc[terrainType.string.value] = terrainType.symbol_image.value
       }
-
-      acc[terrainType.string.value] = terrainType.symbol_image.value
+      if (!acc[terrainType.string.value] && terrainType.editor_image) {
+        acc[terrainType.string.value] = terrainType.editor_image.value 
+      }
+      if (!acc[terrainType.string.value]) {
+        acc[terrainType.string.value] = 'grid'
+      }
       return acc
   }, {} as { [terrainType: string]: string })
 
@@ -36,7 +40,21 @@ const readTerrainImages = async () => {
   const promises = Object
     .entries(dictTerrainType2ImagesPath)
     .map(async ([terrainType, imageName]) => {
-      const image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
+      let image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
+      // Try a number of other places, as well:
+      if (!image) {
+        image = await Jimp.read(`../../../images/${imageName}.png`)
+      }
+      if (!image) {
+        image = await Jimp.read(`./images/${imageName}.png`)
+      }
+      if (!image) {
+        image = await Jimp.read(`../../../attic/${imageName}.png`)
+      }
+      if (!image) {
+        // If nothing worked, provide a sensible default as a fallback:
+        image = await Jimp.read(`../../../data/core/images/misc/blank-hex.png`)
+      }
       return [terrainType, image]
     })
 
@@ -71,7 +89,7 @@ const produceImagesGetter = async (): Promise<ImagesGetter> => {
         throw new Error(`Missing image for "${baseCode}"`)
       }
 
-      // todo: we should use the defaultBase correctly
+      // TODO: we should use the defaultBase correctly
       if (miscCode) {
         const miscImage = images[`^${miscCode}`]
         if (!miscImage) {

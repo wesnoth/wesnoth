@@ -895,13 +895,13 @@ void server::delete_addon(const std::string& id)
 {
 	config& cfg = get_addon(id);
 
-	if(cfg["forum_auth"].to_bool()) {
-		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
-	}
-
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'";
 		return;
+	}
+
+	if(cfg["forum_auth"].to_bool()) {
+		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
 	}
 
 	std::string fn = cfg["filename"].str();
