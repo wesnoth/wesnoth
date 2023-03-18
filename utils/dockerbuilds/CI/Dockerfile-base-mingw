@@ -7,7 +7,8 @@ RUN pacman-cross -S --noconfirm \
     mingw-w64-x86_64-SDL2 \
     mingw-w64-x86_64-SDL2_image \
     mingw-w64-x86_64-SDL2_mixer \
-    mingw-w64-x86_64-pango
+    mingw-w64-x86_64-pango \
+    mingw-w64-x86_64-curl-winssl
 
 #symlink for compatibility with previous Dockerfiles
 RUN ln -s /msys64 /windows

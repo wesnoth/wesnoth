@@ -28,6 +28,7 @@ order to build Wesnoth:
  * libbz2
  * libz
  * libcrypto (from OpenSSL)
+ * libcurl4 (OpenSSL version)
 
 The following libraries are optional dependencies that enable additional
 features:

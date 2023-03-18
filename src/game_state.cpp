@@ -55,9 +55,7 @@ game_state::game_state(const config& level, play_controller& pc)
 	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
 	, ai_manager_()
 	, events_manager_(new game_events::manager())
-	// TODO: this construct units (in dimiss undo action) but resrouces:: are not available yet,
-	//      so we might want to move the innitialisation of undo_stack_ to game_state::init
-	, undo_stack_(new actions::undo_list(level.child("undo_stack")))
+	, undo_stack_(new actions::undo_list())
 	, player_number_(level["playing_team"].to_int() + 1)
 	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
 	, do_healing_(level["do_healing"].to_bool(false))
@@ -67,34 +65,6 @@ game_state::game_state(const config& level, play_controller& pc)
 	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
-		end_level_data el_data;
-		el_data.read(endlevel_cfg);
-		el_data.transient.carryover_report = false;
-		end_level_data_ = el_data;
-	}
-}
-
-game_state::game_state(const config& level, play_controller& pc, game_board& board)
-	: gamedata_(level)
-	, board_(board)
-	, tod_manager_(level)
-	, pathfind_manager_(new pathfind::manager(level))
-	, reports_(new reports())
-	, lua_kernel_(new game_lua_kernel(*this, pc, *reports_))
-	, ai_manager_()
-	, events_manager_(new game_events::manager())
-	, player_number_(level["playing_team"].to_int() + 1)
-	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
-	, do_healing_(level["do_healing"].to_bool(false))
-	, end_level_data_()
-	, init_side_done_(level["init_side_done"].to_bool(false))
-	, start_event_fired_(!level["playing_team"].empty())
-	, server_request_number_(level["server_request_number"].to_int())
-	, first_human_team_(-1)
-{
-	lua_kernel_->load_core();
-	events_manager_->read_scenario(level, *lua_kernel_);
 	if(const config& endlevel_cfg = level.child("end_level_data")) {
 		end_level_data el_data;
 		el_data.read(endlevel_cfg);
@@ -230,8 +200,13 @@ void game_state::init(const config& level, play_controller & pc)
 
 		tod_manager_.resolve_random(*randomness::generator);
 
+		undo_stack_->read(level.child_or_empty("undo_stack"));
+
 		for(team_builder& tb : team_builders) {
 			tb.build_team_stage_two();
+		}
+		for(team_builder& tb : team_builders) {
+			tb.build_team_stage_three();
 		}
 
 		for(std::size_t i = 0; i < board_.teams().size(); i++) {

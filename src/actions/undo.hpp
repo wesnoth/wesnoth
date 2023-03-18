@@ -41,7 +41,7 @@ public:
 	undo_list(const undo_list&) = delete;
 	undo_list& operator=(const undo_list&) = delete;
 
-	explicit undo_list(const config & cfg);
+	undo_list();
 	~undo_list();
 
 	/**

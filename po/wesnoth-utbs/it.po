@@ -2,13 +2,13 @@
 # Luciano Montanaro <mikelima@cirulla.net>, 2005, 2006, 2007, 2011.
 # Silvia Montanaro, 2006.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2022.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-20 04:03 UTC\n"
-"PO-Revision-Date: 2022-09-22 19:26+0200\n"
+"PO-Revision-Date: 2023-03-13 22:20+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -108,13 +108,6 @@ msgstr ""
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -122,9 +115,10 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"disidratata: questa unità è disidratata. Per ogni turno del giorno perderà 4 "
-"punti ferita ed avrà il coefficiente di danno ridotto di un punto a meno che "
-"non sia protetta dai guaritori o curata con l’acqua in un’oasi.\n"
+"disidratata: questa unità è disidratata. Per ogni turno del giorno perderà "
+"$dehydration punti ferita ed avrà il coefficiente di danno ridotto di un "
+"punto a meno che non sia protetta dai guaritori o curata con l’acqua in "
+"un’oasi.\n"
 "\n"
 "Le unità non possono essere uccise né può essere azzerato il danno inflitto "
 "a causa della disidratazione."
@@ -148,7 +142,7 @@ msgstr ""
 #. [scenario]: id=01_The_Morning_After
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:5
 msgid "The Morning After"
-msgstr "La mattina dopo"
+msgstr "La mattina seguente"
 
 #. [side]
 #. [side]: id=Kaleh, type=Quenoth Youth
@@ -10339,7 +10333,7 @@ msgid ""
 "he bravely led us here. Though he has fallen in combat, we have come to "
 "rescue the rest of your kind."
 msgstr ""
-"Saluti. Esanoo ci ha detto che ci stavi cercandolo e ci ha coraggiosamente "
+"Saluti. Esanoo ci ha detto che ci stavi cercando e ci ha coraggiosamente "
 "condotti fino qui. Benché lui sia perito nel combattimento, siamo venuti per "
 "salvare il resto della vostra razza."
 
@@ -15058,7 +15052,7 @@ msgid ""
 "any of that wine left from last year?"
 msgstr ""
 "Immagino che non ce la dobbiamo perdere. Mi chiedo se avranno ancora quel "
-"vino dell’anno passato..."
+"vino dell’anno scorso..."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:488
@@ -15492,8 +15486,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "tempesta di sabbia"
 
@@ -15531,16 +15523,6 @@ msgstr "Combattente Quenoth"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15556,11 +15538,12 @@ msgstr ""
 "usare spade come armi più eleganti e versatili rispetto ad altri armamenti "
 "da mischia. Tuttavia, negli ultimi tempi, la scarsità di rifornimenti per i "
 "fabbri ha ridotto la disponibilità per la forgiatura delle lame, rendendo "
-"necessari la costruzione di armi più economiche e più facili da riparare. I "
-"combattenti Quenoth sono straordinariamente abili quando raggruppati in "
-"gruppi coordinati, dove possono sopperire alla mancanza di armi sofisticate "
-"formando con le loro lance robusti ranghi in grado di respingere quasi ogni "
-"attacco frontale."
+"necessari la costruzione di armi più economiche e più facili da riparare. "
+"Per compensare questo calo di qualità degli armamenti, I Combattenti Quenoth "
+"hanno optato per una maggiore flessibilità nel loro uso. In aperto deserto, "
+"un combattente viene addestrato a sviluppare l’abilità di concentrare la sua "
+"attenzione su diversi nemici contemporaneamente, siano essi briganti, "
+"creature selvagge o non-morti."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15856,13 +15839,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 msgid "sun invocation"
-msgstr ""
+msgstr "evocazione solare"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "raggio di sole"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15896,7 +15879,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:71
 msgid "sun incarnate"
-msgstr ""
+msgstr "incarnazione solare"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5

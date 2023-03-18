@@ -496,6 +496,7 @@ endif()
 #
 
 if(ENABLE_GAME OR ENABLE_TESTS)
+	find_package(CURL REQUIRED)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
