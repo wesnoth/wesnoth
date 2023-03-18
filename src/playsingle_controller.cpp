@@ -77,7 +77,6 @@ playsingle_controller::playsingle_controller(const config& level, saved_game& st
 	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
 	, turn_data_(replay_sender_, network_reader_)
 	, end_turn_requested_(false)
-	, skip_next_turn_(false)
 	, ai_fallback_(false)
 	, replay_controller_()
 {
@@ -273,6 +272,7 @@ void playsingle_controller::finish_side_turn()
 	}
 	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
 	did_autosave_this_turn_ = false;
+	end_turn_requested_ = false;
 	init_side_begin();
 }
 
@@ -478,9 +478,6 @@ void playsingle_controller::play_idle_loop()
 
 void playsingle_controller::play_side_impl()
 {
-	if(!skip_next_turn_) {
-		end_turn_requested_ = false;
-	}
 	if(replay_controller_.get() != nullptr) {
 		replay_controller_->play_side_impl();
 
@@ -733,7 +730,6 @@ void playsingle_controller::end_turn()
 
 void playsingle_controller::force_end_turn()
 {
-	skip_next_turn_ = true;
 	end_turn_requested_ = true;
 }
 
@@ -778,7 +774,6 @@ void playsingle_controller::sync_end_turn()
 
 
 	assert(gamestate().in_phase(game_data::TURN_ENDED));
-	skip_next_turn_ = false;
 
 	if(ai_fallback_) {
 		current_team().make_ai();

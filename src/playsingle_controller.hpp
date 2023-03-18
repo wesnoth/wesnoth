@@ -96,7 +96,6 @@ protected:
 	/// true iff the user has pressed the end turn button this turn.
 	/// (or wants to end linger mode, which is implemented via the same button)
 	bool end_turn_requested_;
-	bool skip_next_turn_;
 	/// true when the current side is actually an ai side but was taken over by a human (usually for debugging purposes),
 	/// we need this variable to remember to give the ai control back next turn.
 	bool ai_fallback_;
