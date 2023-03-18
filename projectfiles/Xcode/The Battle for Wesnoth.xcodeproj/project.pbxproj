@@ -642,6 +642,7 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
 		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		900000000000000000000009 /* match_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A5F925B4501E006FD3A1 /* match_history.cpp */; };
@@ -1088,6 +1089,7 @@
 		95EB8A55287A02EC00B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
 		95EB8A58287B138700B09F95 /* draw_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A50287A02B800B09F95 /* draw_manager.cpp */; };
 		95EB8A59287B139800B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
+		97714C7A9FF444E29DCEF0BA /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
 		B508D193100146E300B12852 /* engine_fai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D191100146E300B12852 /* engine_fai.cpp */; };
 		B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; };
 		B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
@@ -1513,6 +1515,7 @@
 		000000000000000000000004 /* achievements_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements_dialog.hpp; sourceTree = "<group>"; };
 		000000000000000000000009 /* network_download_file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = network_download_file.cpp; sourceTree = "<group>"; };
 		000000000000000000000010 /* network_download_file.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = network_download_file.hpp; sourceTree = "<group>"; };
+		09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = carryover_show_gold.cpp; path = carryover_show_gold.cpp; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
 		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
@@ -3396,6 +3399,7 @@
 				B55999420EC62181008DD061 /* wml_exception.hpp */,
 				9197972726199F54001E8133 /* wml_separators.hpp */,
 				91B621AC1B76B05700B00E0F /* xBRZ */,
+				09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */,
 			);
 			name = src;
 			path = ../../src;
@@ -5749,6 +5753,7 @@
 				46F92E212174F6A400602C1C /* mp_change_control.cpp in Sources */,
 				36B146FAA79A55E9F43723B1 /* general.cpp in Sources */,
 				3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */,
+				97714C7A9FF444E29DCEF0BA /* carryover_show_gold.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6417,6 +6422,7 @@
 				915C68EC1DF1DCB000594B07 /* color.cpp in Sources */,
 				4291489DA38012477DA3BA7C /* general.cpp in Sources */,
 				87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */,
+				867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

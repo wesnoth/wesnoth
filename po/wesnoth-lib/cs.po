@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-19 22:02-0600\n"
-"PO-Revision-Date: 2023-01-18 20:12+0100\n"
+"PO-Revision-Date: 2023-03-17 21:41+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1843,7 +1843,7 @@ msgstr "Falešný okraj mapy"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3147
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Zástupný obrázek"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -2399,10 +2399,8 @@ msgstr "Profil"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:49
 #: data/gui/window/title_screen.cfg:257 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Povýšeno"
+msgstr "Úspěchy"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -5490,7 +5488,7 @@ msgstr "Zobrazit kouli spojenců"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "Během kola spojence použít dvoubarevnou kouli pro zobrazení pohybu"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5499,6 +5497,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Během kol tvých spojenců mají jejich jednotky dvoubarevnou kouli. Jedna "
+"polovina má barvu koule spojence a druhá ukazuje, zda se jednotka posunula "
+"úplně, částečně nebo vůbec."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -5740,10 +5741,8 @@ msgstr "Upravit nastavení hry"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "Pohled: Každý tým"
+msgstr "Prohlédnout si úspěchy"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #. [grid]
@@ -6134,7 +6133,7 @@ msgstr ""
 #: src/gui/dialogs/achievements_dialog.cpp:103
 #: src/gui/dialogs/achievements_dialog.cpp:165
 msgid "Completed"
-msgstr ""
+msgstr "Dokončeno"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^All Add-ons"

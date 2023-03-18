@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-02-05 08:15+0100\n"
+"PO-Revision-Date: 2023-03-10 23:05+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4636,10 +4636,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Příkazy pro <b>verbování</b> a <b>povolávání</b> je možno aktivovat i z menu "
-"po kliknutí pravým tlačítkem na políčko hradu. To vám umožní přesně určit, "
+"Příkazy pro <b>verbování</b> a <b>povolávání</b> je možno aktivovat i z menu "
+"po kliknutí pravým tlačítkem na políčko hradu. To ti umožní přesně určit, "
 "kam umístit novou jednotku, což někdy může pomoci – například získat vesnici "
-"o tah dříve."
+"o tah dříve."
 
 #. [tip]
 #: data/tips.cfg:36
@@ -8055,7 +8055,7 @@ msgstr "Vlastnost: "
 
 #: src/reports.cpp:341
 msgid "invisible: "
-msgstr "neviditelný: "
+msgstr "neviditelnost: "
 
 #: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8065,7 +8065,7 @@ msgstr ""
 
 #: src/reports.cpp:345
 msgid "slowed: "
-msgstr "zpomalený: "
+msgstr "zpomalení: "
 
 #: src/reports.cpp:346
 msgid ""
@@ -8077,7 +8077,7 @@ msgstr ""
 
 #: src/reports.cpp:349
 msgid "poisoned: "
-msgstr "otrávený: "
+msgstr "otrava: "
 
 #: src/reports.cpp:350
 msgid ""
@@ -8104,31 +8104,24 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tato jednotka byla proměněna v kámen. Nemůže se ani hýbat, ani útočit."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "neléčitelný"
+msgstr "neléčitelnost: "
 
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn't benefit from resting."
 msgstr ""
+"Tato jednotka není léčitelná. Nemůže být léčena léčiteli ani ve vesnicích "
+"a z odpočinku nemá žádný prospěch."
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "neviditelný: "
+msgstr "nezranitelnost: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr ""
-"Tato jednotka je neviditelná. Nemůže být spatřena a nepřítel na ni nemůže "
-"zaútočit."
+msgstr "Tato jednotka je nezranitelná. Žádný útok jí nemůže ublížit."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -8820,26 +8813,19 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> bodů pohybu"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:543
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number poškození"
-msgstr[1] "$number poškození"
-msgstr[2] "$number poškození"
+msgstr[0] "$number užitý útok"
+msgstr[1] "$number užité útoky"
+msgstr[2] "$number užitých útoků"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:552
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> užitý útok"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> užité útoky"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> užitých útoků"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -8956,12 +8942,13 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"V adresáři $logdir nelze vytvořit soubory se záznamy. Často je to způsobeno "
+"chybným oprávněním na složce, antivirovým programem, který omezuje ke složce "
+"přístup, nebo použitím OneDrive pro správu tvé složky Dokumenty."
 
 #: src/wesnoth.cpp:813
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Zaznamenávání"
+msgstr "Selhání zaznamenávání"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."

@@ -53,11 +53,11 @@ if not rootdir.joinpath("projectfiles").exists():
 
 # the names of the targets in the Xcode project
 xcode_target_translations = {
-    "wesnoth": "The Battle for Wesnoth",
-    "wesnothd": "wesnothd",
-    "campaignd": "campaignd",
-    "lua": "liblua",
-    "tests": "unit_tests",
+    "wesnoth": ["The Battle for Wesnoth", "unit_tests"],
+    "wesnothd": ["wesnothd"],
+    "campaignd": ["campaignd"],
+    "lua": ["liblua"],
+    "tests": ["unit_tests"],
 }
 
 # the names of the targets in source_lists
@@ -94,7 +94,8 @@ def add_to_xcode(filename, targets):
     
     project = pbxproj.XcodeProject.load(projectfile)
     
-    translated_targets = [xcode_target_translations[t] for t in targets]
+    translated_targets = [item for t in targets for item in xcode_target_translations[t]]
+    translated_targets = list(set(translated_targets))
     print(" xcode targets:", translated_targets)
     
     for tname in translated_targets:
@@ -148,7 +149,7 @@ def add_to_source_list(filename, source_list):
     file_line = filename.as_posix() + '\n'
     
     # we only need source files in the source_lists, not header files
-    if filename.suffix != "cpp":
+    if filename.suffix != ".cpp":
         return
 
     # if the target already has an entry with the same filename, loudly skip

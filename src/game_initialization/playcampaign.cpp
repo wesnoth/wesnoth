@@ -22,6 +22,7 @@
 #include "game_initialization/playcampaign.hpp"
 
 #include "carryover.hpp"
+#include "carryover_show_gold.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -57,129 +58,6 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-void campaign_controller::show_carryover_message(
-	playsingle_controller& playcontroller, const end_level_data& end_level, const level_result::type res)
-{
-	// We need to write the carryover amount to the team that's why we need non const
-	std::vector<team>& teams = playcontroller.get_teams();
-
-	// maybe this can be the case for scenario that only contain a story and end during the prestart event ?
-	if(teams.size() < 1) {
-		return;
-	}
-
-	std::ostringstream report;
-	std::string title;
-
-	bool obs = playcontroller.is_observer();
-
-	if(obs) {
-		title = _("Scenario Report");
-	} else if(res == level_result::type::victory) {
-		title = _("Victory");
-		report << "<b>" << _("You have emerged victorious!") << "</b>";
-	} else {
-		title = _("Defeat");
-		report << _("You have been defeated!");
-	}
-
-	const std::string& next_scenario = playcontroller.gamestate().get_game_data()->next_scenario();
-	const bool has_next_scenario = !next_scenario.empty() && next_scenario != "null";
-
-	int persistent_teams = 0;
-	for(const team& t : teams) {
-		if(t.persistent()) {
-			++persistent_teams;
-		}
-	}
-
-	if(persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level) || state_.classification().is_test())) {
-		const gamemap& map = playcontroller.get_map();
-		const tod_manager& tod = playcontroller.get_tod_manager();
-
-		const int turns_left = std::max<int>(0, tod.number_of_turns() - tod.turn());
-		for(team& t : teams) {
-			if(!t.persistent() || t.lost()) {
-				continue;
-			}
-
-			const int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
-			const int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
-
-			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));
-
-			if(!t.is_local_human()) {
-				continue;
-			}
-
-			if(persistent_teams > 1) {
-				report << "\n\n<b>" << t.side_name() << "</b>";
-			}
-
-			report << "<small>\n" << _("Remaining gold: ") << utils::half_signed_value(t.gold()) << "</small>";
-
-			if(t.carryover_bonus() != 0) {
-				if(turns_left > -1) {
-					report << "\n\n<b>" << _("Turns finished early: ") << turns_left << "</b>\n"
-						<< "<small>" << _("Early finish bonus: ") << finishing_bonus_per_turn << _(" per turn") << "</small>\n"
-						<< "<small>" << _("Total bonus: ") << finishing_bonus << "</small>\n";
-				}
-
-				report << "<small>" << _("Total gold: ") << utils::half_signed_value(t.gold() + finishing_bonus) << "</small>";
-			}
-
-			if(t.gold() > 0) {
-				report << "\n<small>" << _("Carryover percentage: ") << t.carryover_percentage() << "</small>";
-			}
-
-			if(t.carryover_add()) {
-				report << "\n\n<big><b>" << _("Bonus gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-			} else {
-				report << "\n\n<big><b>" << _("Retained gold: ") << utils::half_signed_value(t.carryover_gold()) << "</b></big>";
-			}
-
-			std::string goldmsg;
-			utils::string_map symbols;
-
-			symbols["gold"] = lexical_cast_default<std::string>(t.carryover_gold());
-
-			// Note that both strings are the same in English, but some languages will
-			// want to translate them differently.
-			if(t.carryover_add()) {
-				if(t.carryover_gold() > 0) {
-					goldmsg = VNGETTEXT(
-						"You will start the next scenario with $gold on top of the defined minimum starting gold.",
-						"You will start the next scenario with $gold on top of the defined minimum starting gold.",
-						t.carryover_gold(), symbols
-					);
-
-				} else {
-					goldmsg = VNGETTEXT(
-						"You will start the next scenario with the defined minimum starting gold.",
-						"You will start the next scenario with the defined minimum starting gold.",
-						t.carryover_gold(), symbols
-					);
-				}
-			} else {
-				goldmsg = VNGETTEXT(
-					"You will start the next scenario with $gold or its defined minimum starting gold, "
-					"whichever is higher.",
-					"You will start the next scenario with $gold or its defined minimum starting gold, "
-					"whichever is higher.",
-					t.carryover_gold(), symbols
-				);
-			}
-
-			// xgettext:no-c-format
-			report << "\n" << goldmsg;
-		}
-	}
-
-	if(end_level.transient.carryover_report) {
-		gui2::show_transient_message(title, report.str(), "", true);
-	}
-}
-
 level_result::type campaign_controller::playsingle_scenario(end_level_data &end_level)
 {
 	const config& starting_point = is_replay_
@@ -207,7 +85,7 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 	}
 
 	end_level = playcontroller.get_end_level_data();
-	show_carryover_message(playcontroller, end_level, res);
+	carryover_show_gold(playcontroller.gamestate(), playcontroller.is_observer(), is_unit_test_);
 
 	if(!video::headless()) {
 		playcontroller.maybe_linger();
@@ -232,7 +110,7 @@ level_result::type campaign_controller::playmp_scenario(end_level_data &end_leve
 	if(res != level_result::type::observer_end) {
 		// We need to call this before linger because it prints the defeated/victory message.
 		//(we want to see that message before entering the linger mode)
-		show_carryover_message(playcontroller, end_level, res);
+		carryover_show_gold(playcontroller.gamestate(), playcontroller.is_observer(), is_unit_test_);
 	}
 
 	playcontroller.maybe_linger();
