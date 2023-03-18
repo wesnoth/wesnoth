@@ -402,7 +402,7 @@ void playsingle_controller::do_end_level()
 	}
 
 	persist_.end_transaction();
-	carryover_show_gold(gamestate(), is_observer(), saved_game_.classification().is_test());
+	carryover_show_gold(gamestate(), is_observer() || is_replay(), is_observer(), saved_game_.classification().is_test());
 
 }
 
