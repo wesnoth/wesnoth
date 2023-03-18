@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-20 04:03 UTC\n"
-"PO-Revision-Date: 2023-01-01 17:37+0100\n"
+"PO-Revision-Date: 2023-03-13 20:40+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -2783,10 +2783,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:4
-#, fuzzy
-#| msgid "Dwarvish Fighter"
 msgid "Dwarvish Miner"
-msgstr "Nano Combattente"
+msgstr "Nano Minatore"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:17
@@ -2796,11 +2794,15 @@ msgid ""
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
+"I nani minatori sono la bassa manovalanza della società nanica. Estraggono i "
+"preziosi minerali dal suolo, ma non prendono parte nella manifattura delle "
+"armi o degli artefatti. Non hanno alcun addestramento militare, ma possono "
+"comunque causare dei danni attaccando con i loro picconi."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:22
 msgid "pick"
-msgstr ""
+msgstr "piccone"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
@@ -6031,17 +6033,13 @@ msgstr "fuoco"
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebane Ant"
-msgstr "Formica del Fuoco"
+msgstr "Formica Tempesta di Fuoco"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebomb Ant"
-msgstr "Formica del Fuoco"
+msgstr "Formica Incendiaria"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:51
@@ -6052,30 +6050,29 @@ msgid ""
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
 msgstr ""
+"Le Formiche del Fuoco possono evolvere e specializzarsi in diversi modi. Le "
+"Incendiarie possono produrre e trasportare grosse quantità del loro spray "
+"infiammabile in un addome rigonfio, che può essere utilizzato per un "
+"terribile attacco, ma che le rende anche vulnerabili agli attacchi fisici e "
+"non permette loro di sostenere il fuoco mentre la loro salute peggiora."
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Soldier Ant"
-msgstr "Formica del Fuoco"
+msgstr "Formica Soldato"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. Though normally not hostile, "
-#| "they can bite at close range."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Most common are the nondescript workers "
 "and scouts, but in times of conflict, a more dangerous Soldier caste enters "
 "the fray."
 msgstr ""
-"Le formiche giganti sono diffuse in qualsiasi ambiente, dalle caverne nelle "
-"viscere più profonde della terra, alle cime delle montagne più alte. Sebbene "
-"solitamente non siano ostili, possono mordere se avvicinate."
+"Le formiche giganti sono piuttosto diffuse in qualsiasi ambiente, dalle "
+"caverne nelle viscere più profonde della terra, alle cime delle montagne più "
+"alte. Le più comuni sono anonime lavoratrici ed esploratrici, ma in tempi di "
+"battaglia, entrano nella mischia un casta di Soldati molto più pericolosi."
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
@@ -6287,13 +6284,6 @@ msgstr "Libellula"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:27
-#, fuzzy
-#| msgid ""
-#| "The giant dragonflies seen in some of the swamps, rivers, and lakes "
-#| "around Wesnoth enjoy a longer life cycle than the smaller, more common "
-#| "types.  The adult form can live indefiniately, slowly growing to a final "
-#| "moult.  They are generally territorial, but can cooperate in small groups "
-#| "to confront common foes or large prey."
 msgid ""
 "The giant dragonflies seen in some of the swamps, rivers, and lakes around "
 "Wesnoth enjoy a longer life cycle than the smaller, more common types. The "
@@ -6302,7 +6292,7 @@ msgid ""
 "foes or large prey."
 msgstr ""
 "Le libellule giganti avvistate in alcune paludi, fiumi e laghi nei dintorni "
-"di Wesnoth beneficiano di un ciclo vitale più lungo dei quello lelle loro "
+"di Wesnoth beneficiano di un ciclo vitale più lungo di quello delle loro "
 "affini più piccole e comuni. La loro forma adulta può vivere "
 "indefinitamente, crescendo lentamente fino ad una ultima muta. Sono "
 "generalmente territoriali, ma possono cooperare e riunirsi in piccoli "
@@ -6310,15 +6300,15 @@ msgstr ""
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:5
-#, fuzzy
-#| msgid "Dragonfly"
 msgid "Grand Dragonfly"
-msgstr "Libellula"
+msgstr "Libellula Gigante"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:28
 msgid "Dragonflies that survive long enough grow into a final, grander form."
 msgstr ""
+"Libellule che sopravvivono abbastanza a lungo da mutare in una forma finale "
+"gigante."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Dragonfly_Grand.cfg:43
@@ -6334,12 +6324,6 @@ msgstr "Larva di libellula"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
-#, fuzzy
-#| msgid ""
-#| "Young dragonflies live an aquatic life, mostly preying upon small fish or "
-#| "other insect nymphs.  They can crawl over rocks and mud, but they need to "
-#| "stay submerged to breath, which explains why the giant dragonflies are "
-#| "usually found only near rivers, lakes, and coves."
 msgid ""
 "Young dragonflies live an aquatic life, mostly preying upon small fish or "
 "other insect nymphs. They can crawl over rocks and mud, but they need to "
@@ -6348,7 +6332,7 @@ msgid ""
 msgstr ""
 "Le giovani libellule vivono una vita prettamente acquatica, predando "
 "principalmente piccoli pesci o altre larve di insetto. Possono strisciare "
-"sopra le rocce e il fango, ma hanno bisogno di rimanere sott'acqua per "
+"sopra le rocce e il fango, ma hanno bisogno di rimanere sott’acqua per "
 "respirare, motivo per cui le libellule giganti vengo solitamente trovate "
 "soltanto in prossimità di fiumi, laghi e calette."
 
@@ -6856,20 +6840,19 @@ msgstr "saetta del deserto"
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
 msgid "Kraken"
-msgstr ""
+msgstr "Kraken"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
-#, fuzzy
 msgid ""
 "Krakens are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"I calamari giganti sono enormi creature marine che possono afferrare i loro "
-"avversari con potenti tentacoli, oppure spruzzare a distanza un velenoso "
-"inchiostro nero. Il modo migliore per riuscire a sopravvivere ad un incontro "
-"con questi mostri è rimanere sulla spiaggia."
+"I kraken sono enormi creature marine che possono afferrare i loro avversari "
+"con potenti tentacoli, oppure spruzzare a distanza un velenoso inchiostro "
+"nero. Il modo migliore per riuscire a sopravvivere ad un incontro con questi "
+"mostri è rimanere sulla spiaggia."
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -6954,10 +6937,8 @@ msgstr "spruzzo"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:11
-#, fuzzy
-#| msgid "Sand Scuttler"
 msgid "Sand Scamperer"
-msgstr "Orrido delle Sabbie"
+msgstr "Scorrazzatore delle Sabbie"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:16
@@ -6968,6 +6949,11 @@ msgid ""
 "energy, making fire and magic-based attacks the most effective way to take "
 "this venomous critter down."
 msgstr ""
+"Questa impressionante creatura si muove agilmente tra le sabbie roventi del "
+"deserto. Il suo corpo è ricoperto da uno spesso esoscheletro color sabbia "
+"che assorbe qualsiasi danno da impatto. Comunque, è anche altamente "
+"infiammabile e vulnerabile all’energia arcana, rendendo gli attacchi basati "
+"sul fuoco e sulla magia i più efficaci per abbattere questa letale creatura."
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4

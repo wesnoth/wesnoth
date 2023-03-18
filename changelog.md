@@ -10,11 +10,16 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Spanish
+   * Updated translations: British English, Italian, Spanish
  ### Units
  ### User interface
+   * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
+   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
+   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
 
 ## Version 1.17.13
  ### Add-ons client

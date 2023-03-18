@@ -32,16 +32,13 @@ class game_history : public rs_base
     struct result
     {
         std::string game_name;
-        int reload;
         std::string game_start;
         std::string scenario_name;
-        std::string scenario_id;
         std::string era_name;
-        std::string era_id;
         std::vector<player> players;
         std::vector<std::string> modification_names;
-        std::vector<std::string> modification_ids;
         std::string replay_url;
+        std::string version;
     };
 
     public:

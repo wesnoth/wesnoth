@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-01-01 17:37+0100\n"
+"PO-Revision-Date: 2023-03-13 22:50+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -77,45 +77,49 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:179
 msgid "This attack can only be used as the first verse of the song."
 msgstr ""
+"Questo attacco può essere usato soltanto durante la prima strofa della "
+"canzone"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:182
 msgid "This attack can only be used as the second verse of the song."
 msgstr ""
+"Questo attacco può essere usato soltanto durante la seconda strofa della "
+"canzone"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:185
 msgid "This attack can only be used as the third verse of the song."
 msgstr ""
+"Questo attacco può essere usato soltanto durante la terza strofa della "
+"canzone"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:188
-#, fuzzy
-#| msgid "first strike"
 msgid "first verse"
-msgstr "attacco improvviso"
+msgstr "prima strofa"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:191
-#, fuzzy
-#| msgid "Second Dusk"
 msgid "second verse"
-msgstr "Secondo crepuscolo"
+msgstr "seconda strofa"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:194
 msgid "third verse"
-msgstr ""
+msgstr "terza strofa"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:206
 msgid "once per turn"
-msgstr ""
+msgstr "una volta per turno"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:207
 msgid "This attack can be used offensively only once per turn"
 msgstr ""
+"Questo attacco può essere utilizzato in offesa soltanto una volta per ogni "
+"turno"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:257
 msgid "nova"
-msgstr ""
+msgstr "Supernova"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
@@ -123,6 +127,8 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
+"Quando viene usata in attacco, questa arma causa un danno a tutte le unità "
+"adiacenti al lanciatore quando colpisce."
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:259
@@ -132,7 +138,7 @@ msgstr ""
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:294
 msgid "ray"
-msgstr ""
+msgstr "raggio"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:295
@@ -822,28 +828,20 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "Editor Grafica per Sovrapposizioni di Terreno"
+msgstr "Grafica per Terreno Sopraelevato"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:171
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"Le mappe vengono genericamente visualizza in maniera simile al loro aspetto "
-"in gioco. Ci sono alcune eccezioni, nelle quali l’editor utilizza effetti "
-"grafici diversi. Tutte le sovrapposizioni qui descritte si trovano nel "
-"gruppo “speciall” della tavolozza dei terreni."
+"Un effetto cosmetico di elevazione che nell'editor risulta leggermente "
+"diverso da quello in gioco, dovuto agli aiuti visuali dell'editor stesso. "
+"Tutte le sovrapposizioni descritte possono essere trovate nel gruppo "
+"\"elevazioni\" della tavolozza dei terreni."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
@@ -6964,7 +6962,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "stordimento"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6975,15 +6973,11 @@ msgstr ""
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-"Quest’unità è in grado di rallentare i suoi nemici, dimezzando il loro "
-"movimento e i danni causati dai loro attacchi fino alla fine del loro turno."
+"Quest’unità è in grado di stordire i suoi nemici, annullando la loro zona di "
+"controllo."
 
 #: data/core/units.cfg:4
 msgid ""

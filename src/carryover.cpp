@@ -17,8 +17,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
-#include "team.hpp"
-#include "units/unit.hpp"
+#include "serialization/string_utils.hpp"
 #include <cassert>
 
 static lg::log_domain log_engine("engine");
@@ -39,21 +38,6 @@ carryover::carryover(const config& side)
 		recall_list_.push_back(u);
 		config& u_back = recall_list_.back();
 		u_back.remove_attributes("side", "goto_x", "goto_y", "x", "y", "hidden");
-	}
-}
-
-carryover::carryover(const team& t, const int gold, const bool add)
-		: add_ (add)
-		, current_player_(t.current_player())
-		, gold_(gold)
-		, previous_recruits_(t.recruits())
-		, recall_list_()
-		, save_id_(t.save_id())
-		, variables_(t.variables())
-{
-	for(const unit_const_ptr u : t.recall_list()) {
-		recall_list_.emplace_back();
-		u->write(recall_list_.back());
 	}
 }
 

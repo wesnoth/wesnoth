@@ -84,11 +84,8 @@ public:
 	pango_text(const pango_text&) = delete;
 	pango_text& operator=(const pango_text&) = delete;
 
-	/** Returns the cached texture, or creates a new one otherwise. */
-	texture render_and_get_texture();
-
 	/**
-	 * Returns the rendered text as a texture.
+	 * Returns the cached texture, or creates a new one otherwise.
 	 *
 	 * texture::w() and texture::h() methods will return the expected
 	 * width and height of the texture in draw space. This may differ
@@ -96,13 +93,26 @@ public:
 	 *
 	 * In almost all cases, use w() and h() to get the size of the
 	 * rendered text for drawing.
+	 */
+	texture render_and_get_texture();
+
+private:
+	/**
+	 * Wrapper around render_surface which sets texture::w() and texture::h()
+	 * in the same way that render_and_get_texture does.
 	 *
-	 * This function is otherwise identical to render().
+	 * The viewport rect is interpreted at the scale of render-space, not
+	 * drawing-space. This function has only been made private to preserve
+	 * the drawing-space encapsulation.
 	 */
 	texture render_texture(const SDL_Rect& viewport);
 
 	/**
 	 * Returns the rendered text.
+	 *
+	 * The viewport rect is interpreted at the scale of render-space, not
+	 * drawing-space. This function has only been made private to preserve
+	 * the drawing-space encapsulation.
 	 *
 	 * @param viewport Only this area needs to be drawn - the returned
 	 * surface's origin will correspond to viewport.x and viewport.y, the
@@ -111,16 +121,7 @@ public:
 	 */
 	surface render_surface(const SDL_Rect& viewport);
 
-	/**
-	 * Equivalent to render(viewport), where the viewport's top-left is at
-	 * (0,0) and the area is large enough to contain the full text.
-	 *
-	 * The top-left of the viewport will be at (0,0), regardless of the values
-	 * of x and y.  If the x or y co-ordinates are non-zero, then x columns and
-	 * y rows of blank space are included in the amount of memory allocated.
-	 */
-	surface render_surface();
-
+public:
 	/** Returns the size of the text, in drawing coordinates. */
 	point get_size();
 
@@ -386,10 +387,34 @@ private:
 	/** Allow specialization of std::hash for pango_text. */
 	friend struct std::hash<pango_text>;
 
-	/** Renders the text to a surface. */
+	/**
+	 * Equivalent to create_surface(viewport), where the viewport's top-left is
+	 * at (0,0) and the area is large enough to contain the full text.
+	 *
+	 * The top-left of the viewport will be at (0,0), regardless of the values
+	 * of x and y in the rect_ member variable. If the x or y co-ordinates are
+	 * non-zero, then x columns and y rows of blank space are included in the
+	 * amount of memory allocated.
+	 */
 	surface create_surface();
+
+	/**
+	 * Renders the text to a surface that uses surface_buffer_ as its data store,
+	 * the buffer will be allocated or reallocated as necessary.
+	 *
+	 * The surface's origin will correspond to viewport.x and viewport.y, the
+	 * width and height will be at least viewport.w and viewport.h (although
+	 * they may be larger).
+	 *
+	 * @param viewport The area to draw, which can be a subset of the text. This
+	 * rectangle's coordinates use render-space's scale.
+	 */
 	surface create_surface(const SDL_Rect& viewport);
 
+	/**
+	 * This is part of create_surface(viewport). The separation is a legacy
+	 * from workarounds to the size limits of cairo_surface_t.
+	 */
 	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
 
 	/**
