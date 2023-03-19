@@ -531,7 +531,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			return "AI MANAGER: History is empty";
 		}
 
-		int n = std::min<int>( MAX_HISTORY_VISIBLE, history_.size() );
+		int n = std::min<int>( MAX_HISTORY_VISIBLE, static_cast<int>(history_.size()) );
 		std::stringstream strstream;
 		strstream << "AI MANAGER: History - last "<< n <<" commands:\n";
 		std::deque< command_history_item >::reverse_iterator j = history_.rbegin();

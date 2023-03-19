@@ -261,10 +261,10 @@ class scoped_recall_unit : public scoped_wml_variable
 {
 public:
 	scoped_recall_unit(const std::string& var_name, const std::string& player,
-		unsigned int recall_index) : scoped_wml_variable(var_name), player_(player),
+		std::size_t recall_index) : scoped_wml_variable(var_name), player_(player),
 		recall_index_(recall_index) {}
 	void activate();
 private:
 	const std::string player_;
-	unsigned int recall_index_;
+	std::size_t recall_index_;
 };

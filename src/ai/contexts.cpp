@@ -402,7 +402,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			if(!enemy && resources::gameboard->map().is_village(dst)) {
 				for(std::size_t n = 0; n != resources::gameboard->teams().size(); ++n) {
 					if(resources::gameboard->teams()[n].owns_village(dst)) {
-						int side = n + 1;
+						int side = static_cast<int>(n) + 1;
 						if (get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
 						}
@@ -971,7 +971,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 		if (avoided_locations.find(*i)!=avoided_locations.end()) {
 			continue;
 		}
-		const int distance = distance_between(*i,loc);
+		const int distance = static_cast<int>(distance_between(*i,loc));
 		if(res == nullptr || distance < closest) {
 			closest = distance;
 			res = &*i;
@@ -1063,16 +1063,15 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
 			int64_t defense = 100 - un.defense_modifier(terrain);
-			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
-			int rating = rating_64;
-			if(static_cast<int64_t>(rating) != rating_64) {
+			int64_t rating = hp * defense * most_damage * village_bonus / 200;
+			if(rating > INT32_MAX) {
 				WRN_AI << "overflow in ai attack calculation";
 			}
 			if(rating > best_rating) {
 				map_location *pos = std::find(beg_used, end_used, it->second);
 				// Check if the spot is the same or better than an older one.
 				if (pos == end_used || rating >= ratings[pos - beg_used]) {
-					best_rating = rating;
+					best_rating = static_cast<int>(rating);
 					best_unit = it->second;
 				}
 			}
@@ -1080,7 +1079,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 		if (!best_unit.valid()) continue;
 		map_location *pos = std::find(beg_used, end_used, best_unit);
-		int index = pos - beg_used;
+		auto index = pos - beg_used;
 		if (index == num_used_locs)
 			++num_used_locs;
 		else if (best_rating == ratings[index])

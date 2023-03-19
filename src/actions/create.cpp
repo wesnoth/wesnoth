@@ -597,7 +597,7 @@ namespace { // Helpers for place_recruit()
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if (resources::gameboard->get_team(unit_itor->side()).is_enemy(new_unit.side()) &&
 				unit_itor->is_visible_to_team(resources::gameboard->get_team(new_unit.side()), false)) {
-				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
+				int dist = static_cast<int>(distance_between(unit_itor->get_location(),recruit_loc)) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;
 					min_loc = unit_itor->get_location();

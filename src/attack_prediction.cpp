@@ -107,7 +107,7 @@ struct combat_slice
 {
 	// The hit point range this slice covers.
 	unsigned begin_hp; // included in the range.
-	unsigned end_hp;   // excluded from the range.
+	std::size_t end_hp;   // excluded from the range.
 
 	// The probability of this slice.
 	double prob;
@@ -115,8 +115,7 @@ struct combat_slice
 	// The number of strikes applicable with this slice.
 	unsigned strikes;
 
-	combat_slice(
-			const summary_t& src_summary, unsigned begin, unsigned end, unsigned num_strikes);
+	combat_slice(const summary_t& src_summary, unsigned begin, std::size_t end, unsigned num_strikes);
 	combat_slice(const summary_t& src_summary, unsigned num_strikes);
 };
 
@@ -124,7 +123,7 @@ struct combat_slice
 * Creates a slice from a summary, and associates a number of strikes.
 */
 combat_slice::combat_slice(
-		const summary_t& src_summary, unsigned begin, unsigned end, unsigned num_strikes)
+		const summary_t& src_summary, unsigned begin, std::size_t end, unsigned num_strikes)
 	: begin_hp(begin)
 	, end_hp(end)
 	, prob(0.0)
@@ -464,7 +463,7 @@ void prob_matrix::initialize_plane(unsigned plane,
 		const std::vector<double>& b_initial)
 {
 	if(!a_initial.empty()) {
-		unsigned row_count = std::min<unsigned>(a_initial.size(), rows_);
+		std::size_t row_count = std::min<std::size_t>(a_initial.size(), rows_);
 		// The probabilities for each row are contained in a_initial.
 		for(unsigned row = 0; row < row_count; ++row) {
 			if(a_initial[row] != 0.0) {
@@ -492,7 +491,7 @@ void prob_matrix::initialize_row(
 		unsigned plane, unsigned row, double row_prob, unsigned b_cur, const std::vector<double>& b_initial)
 {
 	if(!b_initial.empty()) {
-		unsigned col_count = std::min<unsigned>(b_initial.size(), cols_);
+		std::size_t col_count = std::min<std::size_t>(b_initial.size(), cols_);
 		// The probabilities for each column are contained in b_initial.
 		for(unsigned col = 0; col < col_count; ++col) {
 			if(b_initial[col] != 0.0) {
@@ -681,7 +680,7 @@ void prob_matrix::shift_cols(
 	// so we write behind us (for when src == dst).
 	if(drainmax > 0) {
 		// rows[0] is excluded since that should be 0, representing already dead.
-		for(unsigned row_x = rows.size() - 1; row_x != 0; --row_x) {
+		for(std::size_t row_x = rows.size() - 1; row_x != 0; --row_x) {
 			shift_cols_in_row(dst, src, rows[row_x], cols, damage, prob, drainmax, drain_constant, drain_percent);
 		}
 	} else {
@@ -754,7 +753,7 @@ void prob_matrix::shift_rows(
 	// so we write behind us (for when src == dst).
 	if(drainmax > 0) {
 		// cols[0] is excluded since that should be 0, representing already dead.
-		for(unsigned col_x = cols.size() - 1; col_x != 0; --col_x)
+		for(std::size_t col_x = cols.size() - 1; col_x != 0; --col_x)
 			shift_rows_in_col(dst, src, cols[col_x], rows, damage, prob, drainmax, drain_constant, drain_percent);
 	} else {
 		// cols[0] is excluded since that should be 0, representing already dead.
@@ -1834,7 +1833,7 @@ void round_prob_if_close_to_sure(double& prob)
  */
 unsigned min_hp(const std::vector<double>& hp_dist, unsigned def)
 {
-	const unsigned size = hp_dist.size();
+	const std::size_t size = hp_dist.size();
 
 	// Look for a nonzero entry.
 	for(unsigned i = 0; i != size; ++i) {
@@ -1855,8 +1854,8 @@ unsigned min_hp(const std::vector<double>& hp_dist, unsigned def)
  * Ignores the numbers of rounds and strikes because these slow down
  * both calculation modes.
  */
-unsigned int fight_complexity(unsigned int num_slices,
-		unsigned int opp_num_slices,
+std::size_t fight_complexity(std::size_t num_slices,
+		std::size_t opp_num_slices,
 		const battle_context_unit_stats& stats,
 		const battle_context_unit_stats& opp_stats)
 {
@@ -2247,14 +2246,14 @@ void do_fight(const battle_context_unit_stats& stats,
  * is kept, and all values get scaled by prob.
  */
 void init_slice_summary(
-		std::vector<double>& dst, const std::vector<double>& src, unsigned begin_hp, unsigned end_hp, double prob)
+		std::vector<double>& dst, const std::vector<double>& src, std::size_t begin_hp, std::size_t end_hp, double prob)
 {
 	if(src.empty()) {
 		// Nothing to do.
 		return;
 	}
 
-	const unsigned size = src.size();
+	const std::size_t size = src.size();
 	// Avoid going over the end of the vector.
 	if(end_hp > size) {
 		end_hp = size;
@@ -2262,7 +2261,7 @@ void init_slice_summary(
 
 	// Initialize the destination.
 	dst.resize(size, 0.0);
-	for(unsigned i = begin_hp; i < end_hp; ++i) {
+	for(std::size_t i = begin_hp; i < end_hp; ++i) {
 		dst[i] = src[i] / prob;
 	}
 }
@@ -2273,7 +2272,7 @@ void init_slice_summary(
  */
 void merge_slice_summary(std::vector<double>& dst, const std::vector<double>& src, double prob)
 {
-	const unsigned size = src.size();
+	const std::size_t size = src.size();
 
 	// Make sure we have enough space.
 	if(dst.size() < size) {
@@ -2414,7 +2413,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	if(summary[1].empty()) {
 		hp_dist = summary[0];
 	} else {
-		const unsigned size = summary[0].size();
+		const std::size_t size = summary[0].size();
 		hp_dist.resize(size);
 		for(unsigned int i = 0; i < size; ++i)
 			hp_dist[i] = summary[0][i] + summary[1][i];
@@ -2423,7 +2422,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	if(opponent.summary[1].empty()) {
 		opponent.hp_dist = opponent.summary[0];
 	} else {
-		const unsigned size = opponent.summary[0].size();
+		const std::size_t size = opponent.summary[0].size();
 		opponent.hp_dist.resize(size);
 		for(unsigned int i = 0; i < size; ++i)
 			opponent.hp_dist[i] = opponent.summary[0][i] + opponent.summary[1][i];

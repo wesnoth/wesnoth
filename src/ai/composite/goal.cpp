@@ -265,7 +265,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target >>
 	{
 		for (const unit &u : units)
 		{
-			int distance = distance_between(u.get_location(), loc);
+			int distance = static_cast<int>(distance_between(u.get_location(), loc));
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
 			    !u.invisible(u.get_location()))
 			{

@@ -1280,7 +1280,7 @@ const std::string recruitment::get_random_pattern_type_if_exists(const data& lea
 
 		if (!job_types.empty()) {
 			// Choose a random job_type.
-			choosen_type = job_types[randomness::generator->get_random_int(0, job_types.size()-1)];
+			choosen_type = job_types[randomness::generator->get_random_int(0, static_cast<int>(job_types.size())-1)];
 		}
 	}
 	return choosen_type;

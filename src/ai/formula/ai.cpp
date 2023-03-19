@@ -627,8 +627,8 @@ variant formula_ai::get_keeps() const
 {
 	if(keeps_cache_.is_null()) {
 		std::vector<variant> vars;
-		for(std::size_t x = 0; x != std::size_t(resources::gameboard->map().w()); ++x) {
-			for(std::size_t y = 0; y != std::size_t(resources::gameboard->map().h()); ++y) {
+		for(int x = 0; x != resources::gameboard->map().w(); ++x) {
+			for(int y = 0; y != resources::gameboard->map().h(); ++y) {
 				const map_location loc(x,y);
 				if(resources::gameboard->map().is_keep(loc)) {
 					for(const map_location& adj : get_adjacent_tiles(loc)) {

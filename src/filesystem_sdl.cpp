@@ -196,7 +196,7 @@ static std::size_t SDLCALL ofs_write(struct SDL_RWops *context, const void *ptr,
 	ofs->write(static_cast<const char*>(ptr), num * size);
 	const std::streampos after = ofs->tellp();
 	const std::streamoff bytes_written = after - before;
-	const int num_written = bytes_written / size;
+	const std::size_t num_written = bytes_written / size;
 
 	return num_written;
 }

@@ -459,7 +459,7 @@ public:
 	variant get_value(const std::string& key) const
 	{
 		if(key == "size") {
-			return variant(string_.as_string().length());
+			return variant(static_cast<int>(string_.as_string().length()));
 		} else if(key == "empty") {
 			return variant(string_.as_string().empty());
 		} else if(key == "char" || key == "chars") {
@@ -515,7 +515,7 @@ public:
 	variant get_value(const std::string& key) const
 	{
 		if(key == "size") {
-			return variant(list_.num_elements());
+			return variant(static_cast<int>(list_.num_elements()));
 		} else if(key == "empty") {
 			return variant(list_.num_elements() == 0);
 		} else if(key == "first") {
@@ -578,7 +578,7 @@ public:
 		if(map_.as_map().find(key_variant) != map_.as_map().end()) {
 			return map_[key_variant];
 		} else if(key == "size") {
-			return variant(map_.num_elements());
+			return variant(static_cast<int>(map_.num_elements()));
 		} else if(key == "empty") {
 			return variant(map_.num_elements() == 0);
 		}
@@ -969,7 +969,7 @@ public:
 			}
 
 			const std::string formula_str(i+1, j);
-			const int pos = std::distance(str.begin(), i);
+			const int pos = static_cast<int>(std::distance(str.begin(), i));
 			if(j - i == 2 && (i[1] == '(' || i[1] == '\'' || i[1] == ')')) {
 				// Bracket contained nothing but a quote or parenthesis.
 				// This means it was intended as a literal quote or square bracket.
@@ -1006,7 +1006,7 @@ public:
 	std::string str() const
 	{
 		std::string res = str_.as_string();
-		int j = res.size() - 1;
+		int j = static_cast<int>(res.size()) - 1;
 
 		for(const auto& sub : subs_) {
 			for(; j >= sub.pos && j >= 0; j--) {
@@ -1045,7 +1045,7 @@ private:
 
 		std::string res = str_.as_string();
 		for(std::size_t i = 0; i < subs_.size(); ++i) {
-			const int j = subs_.size() - i - 1;
+			const int j = static_cast<int>(subs_.size() - i) - 1;
 			const substitution& sub = subs_[i];
 			add_debug_info(fdb, j, "[string subst]");
 			const std::string str = sub.calculation->evaluate(variables,fdb).string_cast();

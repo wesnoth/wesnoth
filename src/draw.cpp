@@ -187,7 +187,7 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 void draw::points(const std::vector<SDL_Point>& points)
 {
 	DBG_D << points.size() << " points";
-	SDL_RenderDrawPoints(renderer(), points.data(), points.size());
+	SDL_RenderDrawPoints(renderer(), points.data(), static_cast<int>(points.size()));
 }
 
 void draw::point(int x, int y)

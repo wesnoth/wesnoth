@@ -162,7 +162,7 @@ std::size_t editor_palette<Item>::active_group_index()
 template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
-	const int items_fitting = (target.h / item_space_) * columns_;
+	const int items_fitting = static_cast<int>((target.h / item_space_) * columns_);
 	// This might be called while the palette is not visible onscreen.
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
@@ -180,11 +180,11 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 	// Update button locations and sizes. Needs to be done even if the number of buttons hasn't changed,
 	// because adjust_size() also handles moving left and right when the window's width is changed.
 	SDL_Rect dstrect;
-	dstrect.w = item_size_ + 2;
-	dstrect.h = item_size_ + 2;
+	dstrect.w = static_cast<int>(item_size_) + 2;
+	dstrect.h = static_cast<int>(item_size_) + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {
-		dstrect.x = target.x + (i % columns_) * item_space_;
-		dstrect.y = target.y + (i / columns_) * item_space_;
+		dstrect.x = static_cast<int>(target.x + (i % columns_) * item_space_);
+		dstrect.y = static_cast<int>(target.y + (i / columns_) * item_space_);
 		buttons_[i].set_location(dstrect);
 	}
 

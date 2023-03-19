@@ -211,7 +211,7 @@ static int ai_attack(lua_State *L, bool exec)
 	double aggression = context.get_aggression();//use the aggression from the context
 
 	if (!lua_isnoneornil(L, 3)) {
-		attacker_weapon = lua_tointeger(L, 3);
+		attacker_weapon = static_cast<int>(lua_tointeger(L, 3));
 		if (attacker_weapon != -1) {
 			attacker_weapon--;	// Done for consistency of the Lua style
 		}
@@ -362,7 +362,7 @@ static int cfun_ai_get_attacks(lua_State *L)
 	// Unlike the other aspect fetchers, this one is not deprecated!
 	// This is because ai.aspects.attacks returns the viable units but this returns a full attack analysis
 	const ai::attacks_vector& attacks = get_readonly_context(L).get_attacks();
-	lua_createtable(L, attacks.size(), 0);
+	lua_createtable(L, static_cast<int>(attacks.size()), 0);
 	int table_index = lua_gettop(L);
 
 	ai::attacks_vector::const_iterator it = attacks.begin();
@@ -423,7 +423,7 @@ void visit_helper(lua_State* L, const utils::variant<bool, std::vector<std::stri
 			if constexpr(utils::decayed_is_same<bool, decltype(v)>) {
 				lua_pushboolean(L, v);
 			} else {
-				lua_createtable(L, v.size(), 0);
+				lua_createtable(L, static_cast<int>(v.size()), 0);
 				for(const std::string& str : v) {
 					lua_pushlstring(L, str.c_str(), str.size());
 					lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
@@ -462,7 +462,7 @@ static int cfun_ai_get_passive_leader_shares_keep(lua_State *L)
 static int cfun_ai_get_recruitment_pattern(lua_State *L)
 {
 	std::vector<std::string> recruiting = get_readonly_context(L).get_recruitment_pattern();
-	int size = recruiting.size();
+	int size = static_cast<int>(recruiting.size());
 	lua_createtable(L, size, 0); // create an empty table with predefined size
 	for (int i = 0; i < size; ++i)
 	{
@@ -531,7 +531,7 @@ static int cfun_attack_rating(lua_State *L)
 
 static void push_movements(lua_State *L, const std::vector< std::pair < map_location, map_location > > & moves)
 {
-	lua_createtable(L, moves.size(), 0);
+	lua_createtable(L, static_cast<int>(moves.size()), 0);
 
 	int table_index = lua_gettop(L);
 
@@ -782,13 +782,13 @@ static int impl_ai_aspect_get(lua_State* L)
 			}
 		}
 		lua_createtable(L, 0, 2);
-		lua_createtable(L, attackers.size(), 0);
+		lua_createtable(L, static_cast<int>(attackers.size()), 0);
 		for(size_t i = 0; i < attackers.size(); i++) {
 			luaW_pushunit(L, attackers[i]->underlying_id());
 			lua_rawseti(L, -2, i + 1);
 		}
 		lua_setfield(L, -2, "own");
-		lua_createtable(L, enemies.size(), 0);
+		lua_createtable(L, static_cast<int>(enemies.size()), 0);
 		for(size_t i = 0; i < enemies.size(); i++) {
 			luaW_pushunit(L, enemies[i]->underlying_id());
 			lua_rawseti(L, -2, i + 1);
@@ -994,7 +994,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 		return nullptr;
 	}
 	//push data table here
-	size_t idx = generate_and_push_ai_state(L, engine); // [-1: AI state  -2: AI code]
+	int idx = static_cast<int>(generate_and_push_ai_state(L, engine)); // [-1: AI state  -2: AI code]
 	lua_pushvalue(L, -2); // [-1: AI code  -2: AI state  -3: AI code]
 	lua_setfield(L, -2, "update_self"); // [-1: AI state  -2: AI code]
 	lua_pushlightuserdata(L, engine);
@@ -1044,7 +1044,7 @@ lua_ai_action_handler* lua_ai_action_handler::create(lua_State *L, char const *c
 	lua_remove(L, -1);//stack size is now 1 [-1: f]
 	lua_remove(L, -1);//stack size is now 0 []
 	// Create the proxy C++ action handler.
-	return new lua_ai_action_handler(L, context, length + 1);
+	return new lua_ai_action_handler(L, context, static_cast<int>(length) + 1);
 }
 
 int lua_ai_load::refcount = 0;

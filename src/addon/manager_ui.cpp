@@ -169,7 +169,7 @@ bool uninstall_local_addons()
 		const std::string confirm_message = _n(
 			"Are you sure you want to remove the following installed add-on?",
 			"Are you sure you want to remove the following installed add-ons?",
-			remove_ids.size()) + list_lead + utils::bullet_list(remove_names);
+			static_cast<int>(remove_ids.size())) + list_lead + utils::bullet_list(remove_names);
 
 		res = gui2::show_message(
 				_("Confirm")
@@ -195,7 +195,7 @@ bool uninstall_local_addons()
 		const std::string dlg_msg = _n(
 			"The following add-on appears to have publishing or version control information stored locally, and will not be removed:",
 			"The following add-ons appear to have publishing or version control information stored locally, and will not be removed:",
-			skipped_names.size());
+			static_cast<int>(skipped_names.size()));
 
 		gui2::show_error_message(
 			dlg_msg + list_lead + utils::bullet_list(skipped_names));
@@ -205,16 +205,16 @@ bool uninstall_local_addons()
 		gui2::show_error_message(_n(
 			"The following add-on could not be deleted properly:",
 			"The following add-ons could not be deleted properly:",
-			failed_names.size()) + list_lead + utils::bullet_list(failed_names));
+			static_cast<int>(failed_names.size())) + list_lead + utils::bullet_list(failed_names));
 	}
 
 	if(!succeeded_names.empty()) {
 		const std::string dlg_title =
-			_n("Add-on Deleted", "Add-ons Deleted", succeeded_names.size());
+			_n("Add-on Deleted", "Add-ons Deleted", static_cast<int>(succeeded_names.size()));
 		const std::string dlg_msg = _n(
 			"The following add-on was successfully deleted:",
 			"The following add-ons were successfully deleted:",
-			succeeded_names.size());
+			static_cast<int>(succeeded_names.size()));
 
 		gui2::show_transient_message(
 			dlg_title,

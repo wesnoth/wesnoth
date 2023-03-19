@@ -236,7 +236,7 @@ private:
 
 	static battle_context choose_defender_weapon(nonempty_unit_const_ptr attacker,
 			nonempty_unit_const_ptr defender,
-			unsigned attacker_weapon,
+			std::size_t attacker_weapon,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			const combatant* prev_def);

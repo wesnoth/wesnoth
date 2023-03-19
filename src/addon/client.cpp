@@ -480,7 +480,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 		broken_deps_report = _n(
 			"The selected add-on has the following dependency, which is not currently installed or available from the server. Do you wish to continue?",
 			"The selected add-on has the following dependencies, which are not currently installed or available from the server. Do you wish to continue?",
-			broken_deps.size());
+			static_cast<int>(broken_deps.size()));
 		broken_deps_report += "\n";
 
 		for(const std::string& broken_dep_id : broken_deps) {
@@ -529,7 +529,7 @@ addons_client::install_result addons_client::do_resolve_addon_dependencies(const
 		const std::string& failed_deps_report = _n(
 			"The following dependency could not be installed. Do you still wish to continue?",
 			"The following dependencies could not be installed. Do you still wish to continue?",
-			failed_titles.size()) + std::string("\n\n") + utils::bullet_list(failed_titles);
+			static_cast<int>(failed_titles.size())) + std::string("\n\n") + utils::bullet_list(failed_titles);
 
 		result.outcome = gui2::show_message(_("Dependencies Installation Failed"), failed_deps_report, gui2::dialogs::message::yes_no_buttons) == gui2::retval::OK ? install_outcome::success : install_outcome::abort; // If the user cancels, return abort. Otherwise, return success, since the user chose to ignore the failure.
 		return result;

@@ -454,7 +454,7 @@ void move_result::do_execute()
 	if(resources::simulation_){
 		bool gamestate_changed = false;
 		if(from_ != to_){
-			int step = route_->steps.size();
+			int step = static_cast<int>(route_->steps.size());
 			gamestate_changed = simulated_move(get_side(), from_, to_, step, unit_location_);
 		} else {
 			assert(remove_movement_);

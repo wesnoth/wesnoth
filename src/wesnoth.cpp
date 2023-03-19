@@ -748,7 +748,7 @@ static void check_fpu()
  */
 static int do_gameloop(const std::vector<std::string>& args)
 {
-	srand(std::time(nullptr));
+	srand(static_cast<int>(std::time(nullptr)));
 
 	commandline_options cmdline_opts = commandline_options(args);
 	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);

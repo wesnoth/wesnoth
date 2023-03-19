@@ -108,7 +108,7 @@ double goto_phase::evaluate()
 				if(i->second != ui->get_location()) {
 						continue;
 				}
-				int distance = distance_between(i->first,ui->get_goto());
+				int distance = static_cast<int>(distance_between(i->first,ui->get_goto()));
 				if(closest_distance == -1 || distance < closest_distance) {
 					closest_distance = distance;
 					closest_move = *i;
@@ -187,7 +187,7 @@ double combat_phase::evaluate()
 	LOG_AI_TESTING_AI_DEFAULT << "simulations: " << num_sims;
 
 	const int max_positions = 30000;
-	const int skip_num = analysis.size()/max_positions;
+	const std::size_t skip_num = analysis.size()/max_positions;
 
 	std::vector<attack_analysis>::const_iterator choice_it = analysis.end();
 	for(std::vector<attack_analysis>::const_iterator it = analysis.begin();

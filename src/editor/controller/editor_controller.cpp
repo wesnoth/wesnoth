@@ -933,7 +933,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			get_current_map_context().remove_side();
 			return true;
 		case HOTKEY_EDITOR_SIDE_EDIT:
-			context_manager_->edit_side_dialog(gui_->viewing_team());
+			context_manager_->edit_side_dialog(static_cast<int>(gui_->viewing_team()));
 			return true;
 
 		// Transitions

@@ -119,7 +119,7 @@ DEFINE_FAI_FUNCTION(distance_to_nearest_unowned_village, 1, 1)
 	const std::vector<map_location>& villages = resources::gameboard->map().villages();
 	const std::set<map_location>& my_villages = ai_.current_team().villages();
 	for(std::vector<map_location>::const_iterator i = villages.begin(); i != villages.end(); ++i) {
-		int distance = distance_between(loc, *i);
+		int distance = static_cast<int>(distance_between(loc, *i));
 		if(distance < best) {
 			if(my_villages.count(*i) == 0) {
 				best = distance;
@@ -208,7 +208,7 @@ namespace {
 			n.in = search_counter;
 
 			get_adjacent_tiles(n.loc_, locs.data());
-			for (int i = teleports.count(n.loc_) ? locs.size() : 6; i-- > 0;) {
+			for (int i = static_cast<int>(teleports.count(n.loc_) ? locs.size() : 6); i-- > 0;) {
 				if (!locs[i].valid(map.w(), map.h())) continue;
 
 				node& next = nodes[index(locs[i])];
@@ -327,10 +327,10 @@ DEFINE_FAI_FUNCTION(calculate_map_ownership, 2, 5)
 
 		if( ai_.current_team().is_enemy(side+1) ) {
 			if( !leaders_input[side].is_empty() )
-				enemies.push_back(side);
+				enemies.push_back(static_cast<int>(side));
 		} else {
 			if( !leaders_input[side].is_empty() )
-				allies.push_back(side);
+				allies.push_back(static_cast<int>(side));
 		}
 	}
 
@@ -382,10 +382,10 @@ DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
 	int best = 1000000;
 	int best_i = -1;
 
-	for(std::size_t i = 0; i < items.num_elements(); ++i) {
+	for(int i = 0; i < static_cast<int>(items.num_elements()); ++i) {
 
 		const map_location move_loc = items[i].convert_to<location_callable>()->loc();
-		int distance = distance_between(loc, move_loc);
+		int distance = static_cast<int>(distance_between(loc, move_loc));
 
 		if(distance < best) {
 				best = distance;
@@ -509,10 +509,10 @@ DEFINE_FAI_FUNCTION(nearest_keep, 1, 1)
 	int best_i = -1;
 
 	ai_.get_keeps();
-	int size = ai_.get_keeps_cache().num_elements();
+	int size = static_cast<int>(ai_.get_keeps_cache().num_elements());
 
 	for( int i = 0 ; i < size; ++i) {
-		int distance = distance_between(loc, ai_.get_keeps_cache()[i].convert_to<location_callable>()->loc() );
+		int distance = static_cast<int>(distance_between(loc, ai_.get_keeps_cache()[i].convert_to<location_callable>()->loc() ));
 		if(distance < best)
 		{
 				best = distance;

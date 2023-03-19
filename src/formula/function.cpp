@@ -470,7 +470,7 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 
 DEFINE_WFL_FUNCTION(length, 1, 1)
 {
-	return variant(args()[0]->evaluate(variables, fdb).as_string().length());
+	return variant(static_cast<int>(args()[0]->evaluate(variables, fdb).as_string().length()));
 }
 
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
@@ -643,7 +643,7 @@ DEFINE_WFL_FUNCTION(index_of, 2, 2)
 
 	for(std::size_t i = 0; i < list.num_elements(); ++i) {
 		if(list[i] == value) {
-			return variant(i);
+			return variant(static_cast<int>(i));
 		}
 	}
 
@@ -1090,7 +1090,8 @@ DEFINE_WFL_FUNCTION(head, 1, 2)
 		return *it;
 	}
 
-	const int n = items.num_elements(), req = args()[1]->evaluate(variables, fdb).as_int();
+	const int n = static_cast<int>(items.num_elements());
+	const int req = args()[1]->evaluate(variables, fdb).as_int();
 	const int count = req < 0 ? n - std::min(-req, n) : std::min(req, n);
 
 	variant_iterator end = it;
@@ -1113,7 +1114,8 @@ DEFINE_WFL_FUNCTION(tail, 1, 2)
 		return *--it;
 	}
 
-	const int n = items.num_elements(), req = args()[1]->evaluate(variables, fdb).as_int();
+	const int n = static_cast<int>(items.num_elements());
+	const int req = args()[1]->evaluate(variables, fdb).as_int();
 	const int count = req < 0 ? n - std::min(-req, n) : std::min(req, n);
 
 	std::advance(it, -count);
@@ -1251,7 +1253,7 @@ DEFINE_WFL_FUNCTION(distance_between, 2, 2)
 		.convert_to<location_callable>()
 		->loc();
 
-	return variant(distance_between(loc1, loc2));
+	return variant(static_cast<int>(distance_between(loc1, loc2)));
 }
 
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
@@ -1422,7 +1424,7 @@ formula_function_expression::formula_function_expression(const std::string& name
 		const_formula_ptr formula,
 		const_formula_ptr precondition,
 		const std::vector<std::string>& arg_names)
-	: function_expression(name, args, arg_names.size(), arg_names.size())
+	: function_expression(name, args, static_cast<int>(arg_names.size()), static_cast<int>(arg_names.size()))
 	, formula_(formula)
 	, precondition_(precondition)
 	, arg_names_(arg_names)
@@ -1431,7 +1433,7 @@ formula_function_expression::formula_function_expression(const std::string& name
 	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
 		if(arg_names_[n].empty() == false && arg_names_[n].back() == '*') {
 			arg_names_[n].resize(arg_names_[n].size() - 1);
-			star_arg_ = n;
+			star_arg_ = static_cast<int>(n);
 			break;
 		}
 	}

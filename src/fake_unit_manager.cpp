@@ -48,7 +48,7 @@ int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 	std::deque<internal_ptr_type>::iterator it =
 			std::remove(fake_units_.begin(), fake_units_.end(), u);
 	if (it != fake_units_.end()) {
-		removed = std::distance(it, fake_units_.end());
+		removed = static_cast<int>(std::distance(it, fake_units_.end()));
 		//std::remove doesn't remove anything without using erase afterwards.
 		fake_units_.erase(it, fake_units_.end());
 		my_display_.invalidate(u->get_location());

@@ -398,7 +398,7 @@ int unit_callable::do_compare(const formula_callable* callable) const
 		return formula_callable::do_compare(callable);
 	}
 
-	return u_.underlying_id() - u_callable->u_.underlying_id();
+	return static_cast<int>(u_.underlying_id() - u_callable->u_.underlying_id());
 }
 
 variant unit_type_callable::get_value(const std::string& key) const
@@ -492,7 +492,7 @@ struct fai_variant_visitor
 {
 	variant operator()(bool b) const               { return variant(b ? 1 : 0); }
 	variant operator()(int i) const                { return variant(i); }
-	variant operator()(unsigned long long i) const { return variant(i); }
+	variant operator()(unsigned long long i) const { return variant(static_cast<int>(i)); }
 	variant operator()(double i) const             { return variant(i * 1000, variant::DECIMAL_VARIANT); }
 	// TODO: Should comma-separated lists of stuff be returned as a list?
 	// The challenge is to distinguish them from ordinary strings that happen to contain a comma

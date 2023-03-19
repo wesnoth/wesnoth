@@ -166,7 +166,7 @@ namespace
 		{
 			auto pick_iter = std::find(type_options.begin(), type_options.end(), id);
 			if(pick_iter != type_options.end()) {
-				return std::distance(type_options.begin(), pick_iter);
+				return static_cast<int>(std::distance(type_options.begin(), pick_iter));
 			}
 		}
 		{
@@ -175,7 +175,7 @@ namespace
 				return adv["id"].str() == id;
 			});
 			if(pick_iter != amla_options.end()) {
-				return type_options.size() + std::distance(amla_options.begin(), pick_iter);
+				return static_cast<int>(type_options.size() + std::distance(amla_options.begin(), pick_iter));
 			}
 		}
 		return -1;
@@ -207,7 +207,7 @@ namespace
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
 			if(!video::headless() && (force_dialog_ || (t.is_local_human() && !t.is_droid() && !t.is_idle() && (is_current_side || !is_mp))))
 			{
-				res = advance_unit_dialog(loc_);
+				res = static_cast<int>(advance_unit_dialog(loc_));
 			}
 			else if(is_current_side && (t.is_local_ai() || t.is_network_ai() || t.is_empty()))
 			{

@@ -455,8 +455,8 @@ void list_formatter::stream_put(std::ostream& os) const
 		};
 
 		const auto longest_entry_label = std::max_element(contents_.begin(), contents_.end(), label_length_comparator);
-		const std::size_t min_length = longest_entry_label != contents_.end()
-				? utf8::size(label_delimiter) + utf8::size(longest_entry_label->first)
+		const int min_length = longest_entry_label != contents_.end()
+				? static_cast<int>(utf8::size(label_delimiter) + utf8::size(longest_entry_label->first))
 				: 0;
 
 		// Save stream attributes for resetting them later after completing the loop

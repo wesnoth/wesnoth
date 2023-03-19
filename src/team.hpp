@@ -228,13 +228,13 @@ public:
 	const t_string& objectives() const { return info_.objectives; }
 	bool objectives_changed() const { return info_.objectives_changed; }
 
-	bool is_enemy(int n) const {
-		const std::size_t index = std::size_t(n-1);
-		if(index >= enemies_.size()) {
-			calculate_enemies(index);
+	bool is_enemy(std::size_t n) const {
+		n--;
+		if(n >= enemies_.size()) {
+			calculate_enemies(n);
 		}
-		if(index < enemies_.size()) {
-			return enemies_[index];
+		if(n < enemies_.size()) {
+			return enemies_[n];
 		} else {
 			return false;
 		}

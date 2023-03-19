@@ -390,7 +390,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 
 		const bool changed =
 			mci == static_cast<std::size_t>(get_map_context().get_active_area())
-			&& tod->get_area_by_index(mci) != get_map_context().map().selection();
+			&& tod->get_area_by_index(static_cast<int>(mci)) != get_map_context().map().selection();
 
 		const std::string label = ss.str();
 		const std::string details = get_menu_marker(changed);
@@ -752,7 +752,7 @@ void context_manager::save_all_maps(bool auto_save_windows)
 	int current = current_context_index_;
 	saved_windows_.clear();
 	for(std::size_t i = 0; i < map_contexts_.size(); ++i) {
-		switch_context(i);
+		switch_context(static_cast<int>(i));
 		std::string name = get_map_context().get_filename();
 		if(auto_save_windows) {
 			if(name.empty() || filesystem::is_directory(name)) {
@@ -878,7 +878,7 @@ bool context_manager::check_switch_open_map(const std::string& fn)
 	std::size_t i = check_open_map(fn);
 	if(i < map_contexts_.size()) {
 		gui2::show_transient_message(_("This map is already open."), fn);
-		switch_context(i);
+		switch_context(static_cast<int>(i));
 		return true;
 	}
 
@@ -991,13 +991,13 @@ template<typename... T>
 int context_manager::add_map_context(const T&... args)
 {
 	map_contexts_.emplace_back(new map_context(args...));
-	return map_contexts_.size() - 1;
+	return static_cast<int>(map_contexts_.size()) - 1;
 }
 
 int context_manager::add_map_context_of(context_ptr&& mc)
 {
 	map_contexts_.emplace_back(std::move(mc));
-	return map_contexts_.size() - 1;
+	return static_cast<int>(map_contexts_.size()) - 1;
 }
 
 template<typename... T>

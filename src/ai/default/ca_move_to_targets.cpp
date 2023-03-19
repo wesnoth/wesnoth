@@ -529,7 +529,7 @@ std::pair<map_location,map_location> move_to_targets_phase::choose_move(std::vec
 
 			const std::pair<move_map::const_iterator,move_map::const_iterator> itors = srcdst.equal_range(loc);
 			for(move_map::const_iterator i = itors.first; i != itors.second; ++i) {
-				const int distance = distance_between(target_loc,i->second);
+				const int distance = static_cast<int>(distance_between(target_loc,i->second));
 				const int defense = un.defense_modifier(map_.get_terrain(i->second));
 				//FIXME: suokko multiplied by 10 * get_caution(). ?
 				const double threat = (power_projection(i->second,enemy_dstsrc)*defense)/100;

@@ -152,7 +152,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	firststrike = weapon->has_special_or_ability("firststrike");
 
 	{
-		const int distance = distance_between(u_loc, opp_loc);
+		const int distance = static_cast<int>(distance_between(u_loc, opp_loc));
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
 		disable = weapon->has_special("disable") || out_of_range;
 	}
@@ -575,7 +575,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 /** @todo FIXME: Hand previous defender unit in here. */
 battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr attacker,
 		nonempty_unit_const_ptr defender,
-		unsigned attacker_weapon,
+		std::size_t attacker_weapon,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		const combatant* prev_def)

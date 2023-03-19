@@ -360,7 +360,7 @@ void undo_list::undo()
 	undos_.pop_back();
 	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
 	{
-		int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
+		int last_unit_id = static_cast<int>(resources::gameboard->unit_id_manager().get_save_id());
 		if ( !undoable_action->undo(side_) ) {
 			return;
 		}

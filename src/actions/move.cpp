@@ -153,7 +153,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	// We strip the village off all other sides, unless it is held by an ally
 	// and our side is already defeated (and thus we can't occupy it)
 	for(std::vector<team>::iterator i = teams.begin(); i != teams.end(); ++i) {
-		int i_side = std::distance(teams.begin(), i) + 1;
+		int i_side = static_cast<int>(std::distance(teams.begin(), i)) + 1;
 		if (!t || not_defeated || t->is_enemy(i_side)) {
 			if(i->owns_village(loc)) {
 				old_owner_side = i_side;

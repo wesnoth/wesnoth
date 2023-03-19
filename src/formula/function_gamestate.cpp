@@ -369,7 +369,7 @@ DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
 		other = other_v.as_int();
 	}
 
-	int num_teams = resources::gameboard->teams().size();
+	int num_teams = static_cast<int>(resources::gameboard->teams().size());
 	if(self < 1 || self > num_teams || other < 1 || other > num_teams) {
 		return variant(0);
 	}
@@ -399,7 +399,7 @@ DEFINE_WFL_FUNCTION(resistance_on, 3, 4)
 DEFINE_WFL_FUNCTION(tod_bonus, 0, 2)
 {
 	map_location loc;
-	int turn = resources::controller->turn();
+	int turn = static_cast<int>(resources::controller->turn());
 	if(args().size() > 0) {
 		variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
 		if(auto p = loc_arg.try_convert<location_callable>()) {
@@ -422,7 +422,7 @@ DEFINE_WFL_FUNCTION(tod_bonus, 0, 2)
 DEFINE_WFL_FUNCTION(base_tod_bonus, 0, 2)
 {
 	map_location loc;
-	int turn = resources::controller->turn();
+	int turn = static_cast<int>(resources::controller->turn());
 	if(args().size() > 0) {
 		variant loc_arg = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "tod_bonus:loc"));
 		if(auto p = loc_arg.try_convert<location_callable>()) {

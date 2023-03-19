@@ -257,7 +257,7 @@ namespace {
 			for ( std::list<heal_unit>::iterator check_it = unit_list.begin();
 			      check_it != unit_list.end(); ++check_it )
 			{
-				int distance = distance_between(last_loc, check_it->healed.get_location());
+				int distance = static_cast<int>(distance_between(last_loc, check_it->healed.get_location()));
 				if ( distance < min_dist ) {
 					min_dist = distance;
 					nearest = check_it;

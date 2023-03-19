@@ -524,7 +524,7 @@ config map_context::to_config()
 	}
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		int side_num = t - teams_.begin() + 1;
+		int side_num = static_cast<int>(t - teams_.begin() + 1);
 
 		config& side = scenario.add_child("side");
 
@@ -693,7 +693,7 @@ void map_context::perform_action(const editor_action& action)
 	if(actions_since_save_ < 0) {
 		// set to a value that will make it impossible to get to zero, as at this point
 		// it is no longer possible to get back the original map state using undo/redo
-		actions_since_save_ = 1 + undo_stack_.size();
+		actions_since_save_ = 1 + static_cast<int>(undo_stack_.size());
 	}
 
 	++actions_since_save_;
