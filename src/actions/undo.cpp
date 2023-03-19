@@ -22,6 +22,7 @@
 
 #include "game_board.hpp"               // for game_board
 #include "game_display.hpp"          // for game_display
+#include "gui/dialogs/transient_message.hpp"
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "map/map.hpp"                      // for gamemap
 #include "map/location.hpp"  // for map_location, operator<<, etc
@@ -420,12 +421,17 @@ void undo_list::redo()
 
 	resources::recorder->redo(const_cast<const config&>(*action));
 
+	auto error_handler =  [](const std::string&  msg) {
+		ERR_NG << "Out of sync when redoing: " << msg;
+		gui2::show_transient_message(_("Redo Error"),
+					_("The redo stack is out of sync, can is most likeley caused by a corrupt savefile or by a faulty wml code in the scenario or era, details:") + msg);
 
+	};
 	// synced_context::run readds the undo command with the normal undo_lis::add function which clears the
 	// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
 	redos_list temp;
 	temp.swap(redos_);
-	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true);
+	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true, error_handler);
 	temp.swap(redos_);
 
 	// Screen updates.
