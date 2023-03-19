@@ -234,7 +234,6 @@ void playmp_controller::reset_end_scenario_button()
 void playmp_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
-	gamestate().gamedata_.set_phase(game_data::GAME_ENDED);
 
 	// If we need to set the status depending on the completion state
 	// we're needed here.
@@ -448,6 +447,7 @@ void playmp_controller::maybe_linger()
 	} else {
 		linger();
 	}
+	end_turn_requested_ = true;
 }
 
 void playmp_controller::surrender(int side_number)

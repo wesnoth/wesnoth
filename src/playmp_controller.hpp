@@ -26,7 +26,6 @@ class playmp_controller : public playsingle_controller, public syncmp_handler
 public:
 	playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info);
 	virtual ~playmp_controller();
-
 	void maybe_linger() override;
 	void process_oos(const std::string& err_msg) const override;
 

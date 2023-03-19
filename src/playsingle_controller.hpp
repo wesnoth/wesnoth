@@ -42,6 +42,10 @@ public:
 
 	level_result::type play_scenario(const config& level);
 	void play_scenario_init(const config& level);
+	void skip_empty_sides(int& side_num);
+	void play_some();
+	void finish_side_turn();
+	void do_end_level();
 	void play_scenario_main_loop();
 
 	virtual void handle_generic_event(const std::string& name) override;

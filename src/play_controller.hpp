@@ -146,6 +146,8 @@ public:
 		return gamestate().end_level_data_.has_value();
 	}
 
+	bool check_regular_game_end();
+
 	const end_level_data& get_end_level_data() const
 	{
 		return *gamestate().end_level_data_;
@@ -340,7 +342,7 @@ protected:
 	void fire_start();
 	void start_game();
 	virtual void init_gui();
-	void finish_side_turn();
+	void finish_side_turn_events();
 	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 
@@ -433,5 +435,4 @@ protected:
 	virtual void sync_end_turn() {}
 	virtual void check_time_over();
 	virtual void update_viewing_player() = 0;
-	void play_turn();
 };

@@ -584,9 +584,8 @@ config play_controller::to_config() const
 	return cfg;
 }
 
-void play_controller::finish_side_turn()
+void play_controller::finish_side_turn_events()
 {
-	whiteboard_manager_->on_finish_side_turn(current_side());
 
 	{ // Block for set_scontext_synced
 		set_scontext_synced sync(1);
@@ -609,8 +608,6 @@ void play_controller::finish_side_turn()
 		sync.do_final_checkup();
 	}
 	mouse_handler_.deselect_hex();
-	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
-	did_autosave_this_turn_ = false;
 }
 
 void play_controller::finish_turn()
@@ -620,7 +617,6 @@ void play_controller::finish_turn()
 	pump().fire("turn_end");
 	pump().fire("turn_" + turn_num + "_end");
 	sync.do_final_checkup();
-	did_tod_sound_this_turn_ = false;
 }
 
 bool play_controller::enemies_visible() const
@@ -1346,78 +1342,6 @@ void play_controller::play_side()
 
 	// Keep looping if the type of a team (human/ai/networked) has changed mid-turn
 	sync_end_turn();
-}
-
-void play_controller::play_turn()
-{
-	whiteboard_manager_->on_gamestate_change();
-	gui_->new_turn();
-	gui_->invalidate_game_status();
-
-	LOG_NG << "turn: " << turn();
-
-	if(video::headless()) {
-		LOG_AIT << "Turn " << turn() << ":";
-	}
-
-	int last_player_number = gamestate_->player_number_;
-	int next_player_number = gamestate_->next_player_number_;
-
-	while(gamestate_->player_number_ <= static_cast<int>(get_teams().size())) {
-		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
-		next_player_number = gamestate_->next_player_number_;
-		last_player_number = gamestate_->player_number_;
-
-		// If a side is empty skip over it.
-		if(!current_team().is_empty()) {
-			init_side_begin();
-			if(is_during_turn()) {
-				// This is the case in a reloaded game where the side was initialized before saving the game (the default case for reloading games).
-				init_side_end();
-			}
-
-			ai_testing::log_turn_start(current_side());
-			play_side();
-
-			// ignore any changes to next_player_number_ that happen after the [end_turn] is sended to the server,
-			// otherwise we will get OOS.
-			next_player_number = gamestate_->next_player_number_;
-			assert(next_player_number <= 2 * static_cast<int>(get_teams().size()));
-
-			if(is_regular_game_end()) {
-				return;
-			}
-
-			// note: play_side() send the [end_turn] to the sever and finish_side_turn() callsie the side turn end
-			// events.
-			//      this means that during the side turn end events the clients think it is still the last sides turn
-			//      while the server thinks that it is already the next plyers turn. i don'T think this is a problem
-			//      though.
-			finish_side_turn();
-			if(is_regular_game_end()) {
-				return;
-			}
-
-			if(video::headless()) {
-				LOG_AIT << " Player " << current_side() << ": " << current_team().villages().size() << " Villages";
-				ai_testing::log_turn_end(current_side());
-			}
-		}
-
-		gamestate_->player_number_ = next_player_number;
-	}
-
-	// If the loop exits due to the last team having been processed.
-	gamestate_->player_number_ = last_player_number;
-
-	finish_turn();
-
-	// Time has run out
-	check_time_over();
-
-	if(!is_regular_game_end()) {
-		gamestate_->player_number_ = modulo(next_player_number, get_teams().size(), 1);
-	}
 }
 
 void play_controller::check_time_over()
