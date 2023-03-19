@@ -18,6 +18,7 @@
 #include "filesystem.hpp" // for get_saves_dir()
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
+#include "gui/dialogs/message.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "map/label.hpp"
@@ -28,7 +29,7 @@
 #include "game_events/wmi_manager.hpp"
 #include "map/map.hpp"
 #include "save_index.hpp"
-#include "gui/dialogs/message.hpp"
+#include "saved_game.hpp"
 #include "resources.hpp"
 #include "replay.hpp"
 
@@ -318,6 +319,12 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + error_log);
 			return;
 		}
+
+		if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))) {
+			gui2::show_error_message(_("The file you have tried to load is not from the current session"));
+			return;
+		}
+
 		std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
 		std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
 		throw reset_gamestate_exception(res, stats, true);
