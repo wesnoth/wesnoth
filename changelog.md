@@ -8,6 +8,7 @@
  ### Multiplayer
  ### Lua API
  ### Packaging
+   * Curl is now a required dependency
  ### Terrain
  ### Translations
    * Updated translations: British English, Czech, French, Italian, Spanish
@@ -20,6 +21,7 @@
    * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
    * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
    * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
+   * Linux SCons and CMake scripts now support enabling `_GLIBCXX_ASSERTIONS`.
 
 ## Version 1.17.13
  ### Add-ons client
