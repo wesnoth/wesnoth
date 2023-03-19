@@ -142,7 +142,7 @@ void undo_action::write(config & cfg) const
 void undo_action::read_event_vector(event_vector& vec, const config& cfg, const std::string& tag)
 {
 	for(auto c : cfg.child_range(tag)) {
-		vec.emplace_back(c.child("filter"), c.child("filter_second"), c.child("filter_weapons"), c.child("commands"));
+		vec.emplace_back(c.child_or_empty("filter"), c.child_or_empty("filter_second"), c.child_or_empty("filter_weapons"), c.child_or_empty("command"));
 	}
 }
 
