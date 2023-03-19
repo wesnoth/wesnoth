@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
+"POT-Creation-Date: 2023-03-19 02:33 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:34+0000\n"
 "Last-Translator: RatArmy, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -3430,7 +3430,7 @@ msgstr ""
 
 #. [unit]: type=Dark Assassin Cloaked, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:994
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2045
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2114
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2381
 msgid "Cloaked Figure"
 msgstr "覆面の人影"
@@ -3539,7 +3539,7 @@ msgstr "地中の闘争"
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:96
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1112
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1181
 msgid "team_name^Trolls"
 msgstr "トロル"
 
@@ -3547,7 +3547,7 @@ msgstr "トロル"
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:146
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:195
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1159
 msgid "team_name^Dwarves"
 msgstr "ドワーフ"
 
@@ -3911,22 +3911,30 @@ msgid "Troll Leader"
 msgstr "トロルのリーダー"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:935
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:942
 msgid "Whoa."
 msgstr "うわ。"
 
+#. [message]: speaker=$explorer.id
+#. "this" refers to the trolls and dwarves fighting
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
+#, fuzzy
+#| msgid "Kaleh, I think you should come up and see this."
+msgid "Whoa. Kaleh, you have to come see this."
+msgstr "Kaleh、こっちへ来て、これを見てくれ。"
+
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:986
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
 msgid "I think I preferred the spider and the ants..."
 msgstr "クモとかアリのほうが良かったかも……"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:991
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1060
 msgid "Stand firm, boys, here they come!"
 msgstr "ふんばれ野郎ども！奴らが来るぞ！"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:996
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1065
 msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
 "you pay!"
@@ -3935,7 +3943,7 @@ msgstr ""
 "お前たちに償いをさせる！"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1070
 msgid ""
 "Tenacious savages, aren’t they? But these tunnels are rich in ore, and we "
 "won’t let a couple of trolls keep them from us."
@@ -3944,37 +3952,37 @@ msgstr ""
 "もの好きにはしてられねえ。"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1006
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1075
 msgid "Wait... What... Who are you?"
 msgstr "ン…… 何だ…… お前ら誰だ？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1011
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1080
 msgid "Uh..."
 msgstr "ええと……"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1016
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1085
 msgid "What by the names of my forefathers are they?"
 msgstr "こんちくしょう！あいつら一体何なんだ？"
 
 #. [message]: speaker=first_dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1021
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgstr "待てよ…… 虚ろな目、とがった耳 ── こいつらエルフだ。"
 
 #. [message]: speaker=second_dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1026
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1095
 msgid "Elves?! What in the nine hells are elves doing down here?"
 msgstr "エルフだと？！一体全体エルフがこんな地下深くで何してやがるんだ？"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1031
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1100
 msgid "Never mind that, who are you?"
 msgstr "んなこたあどうでもいい、お前ら何者だ？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1036
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1105
 msgid ""
 "I am Kaleh, and we are the Quenoth Elves. What in Eloh’s name is going on "
 "here?"
@@ -3983,7 +3991,7 @@ msgstr ""
 "か？"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1041
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1110
 msgid ""
 "They invade our land and kill our young. Dwarves always want more, always "
 "greedy for glittery rocks."
@@ -3992,7 +4000,7 @@ msgstr ""
 "る、いつでも光る石に欲張り。"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1046
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1115
 msgid ""
 "Those monsters killed me boys. Kaleh, if you be of stout heart, help us "
 "drive these lummoxes from our tunnels."
@@ -4001,14 +4009,14 @@ msgstr ""
 "ら、俺達の坑道からこのノロマどもを追い出すのを手伝ってくれねえか。"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1051
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1120
 msgid "No, this is our home. Help us, little ones, and we will help you."
 msgstr ""
 "ちがう、ここは俺達の家。我々を助けろ、小さい者。そうしたら我々もお前達を助け"
 "る。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1056
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1125
 msgid ""
 "There’s too many of them for us to try to take them both on, and besides "
 "with all these branching tunnels we’ll have no idea which way to go. I think "
@@ -4021,7 +4029,7 @@ msgstr ""
 "る道を見つけるのを手伝ってもらえるでしょう。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1061
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1130
 msgid ""
 "But even if we do, what about all of our people? How can we safely escort "
 "them through this war zone?"
@@ -4030,7 +4038,7 @@ msgstr ""
 "通過させるの？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1067
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1136
 msgid ""
 "We won’t. If we keep the majority of our people hidden back up the passage "
 "we should be able to protect them, at least for a little while. In the "
@@ -4044,17 +4052,17 @@ msgstr ""
 "出道を教えてもらうように交渉できるかもしれない。"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1076
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1145
 msgid "But they both look evenly matched. Who should we ally with?"
 msgstr "見たところ戦力は拮抗しているけど、どっちと組む？"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1079
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1148
 msgid "Let’s aid the dwarves."
 msgstr "ドワーフと組もう。"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1095
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1164
 msgid ""
 "Bah! Your kind all the same. Everyone turns on trolls. But you’ll see, "
 "Griknagh will smash you all."
@@ -4063,12 +4071,12 @@ msgstr ""
 "Griknagh がお前らみんなを打ち砕く。"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1170
 msgid "Let’s aid the trolls."
 msgstr "トロルと組もう。"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1117
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1186
 msgid ""
 "I knew elves couldn’t be trusted. Foolish boy, you will regret your "
 "betrayal. Taste dwarven steel!"
@@ -4077,7 +4085,7 @@ msgstr ""
 "てやる。俺達の鋼をとことん味わえ！"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1132
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1201
 msgid ""
 "There seems to be an abandoned dwarvish fortress right in front of us. If we "
 "can fight our way to the keep, we should be able to start rallying our "
@@ -4088,69 +4096,69 @@ msgstr ""
 
 #. [then]
 #. [modify_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1149
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1151
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1152
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1154
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1218
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1220
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1221
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1223
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1287
 msgid "Troll Skirmisher"
 msgstr "トロルの散兵"
 
 #. [else]
 #. [modify_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1162
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1164
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1166
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1172
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1273
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1231
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1233
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1235
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1241
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1342
 msgid "Dwarf Skirmisher"
 msgstr "ドワーフの散兵"
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1169
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1238
 msgid "Dwarf Thunderer"
 msgstr "ドワーフの雷撃兵"
 
 #. [unit]: type=Dwarvish Explorer, id=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1282
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1351
 msgid "Fundin"
 msgstr "Fundin"
 
 #. [unit]: type=Dwarvish Explorer, id=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1295
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1364
 msgid "Nori"
 msgstr "Nori"
 
 #. [unit]: type=Troll Warrior, id=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1310
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1379
 msgid "Thungar"
 msgstr "Thungar"
 
 #. [unit]: type=Troll Warrior, id=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1323
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1392
 msgid "Gnarl"
 msgstr "Gnarl"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1450
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1461
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1473
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1519
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1530
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1542
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1553
 msgid "Troll Flamecaster"
 msgstr "トロルの炎使い"
 
 #. [message]: speaker=Troll Flamecaster
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1489
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1558
 msgid "Burn, burn and die!"
 msgstr "燃えろ、焼け死んでしまえ！"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1500
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1569
 msgid "Dive for cover!"
 msgstr "身を隠せ！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1505
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1574
 msgid ""
 "Those new troll shamans are decimating the dwarves with blasts of fire! This "
 "doesn’t look good."
@@ -4158,28 +4166,28 @@ msgstr ""
 "トロルの呪術師が炎の爆風でドワーフ達に大打撃を加えている！これはまずいぞ。"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1613
 msgid "Aauughh!"
 msgstr "うぉぉおおお！"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1553
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1622
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1798
 msgid "No...!"
 msgstr "ダメか……！"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1631
 msgid "Help me!!"
 msgstr "助けてくれ！！"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1591
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1660
 msgid "More accursed troll magic. Fall back!"
 msgstr "また忌まわしいトロルの呪術か。退却だ！"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1597
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1666
 msgid ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
 "need your men to cover for us. Do your best, boy, and may your ancestors "
@@ -4190,16 +4198,16 @@ msgstr ""
 "も、武運を祈っているぞ。"
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1617
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1626
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1637
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1649
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1686
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1695
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1706
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1718
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1729
 msgid "Dwarf Grenadier"
 msgstr "ドワーフの擲弾兵"
 
 #. [message]: speaker=Dwarf Grenadier
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1734
 msgid ""
 "Let’s blast those monsters back to the pits they spawned from! Fire in the "
 "hole!"
@@ -4207,12 +4215,12 @@ msgstr ""
 "怪物どもを吹っ飛ばして奴らの出てきた穴ぐらに引っ込めてやる！ぶっ放すぞ！"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1676
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1745
 msgid "More dwarven trickery! Fall back!"
 msgstr "ドワーフがまたずるい手使った！退却！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1750
 msgid ""
 "Those new dwarves are lobbing explosives at the trolls with devastating "
 "effect! I don’t think the trolls can take this much longer."
@@ -4221,17 +4229,17 @@ msgstr ""
 "ロルたちはあまり長く持ちそうにないぞ。"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1720
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1789
 msgid "Aaughh!"
 msgstr "ウァガァァー！"
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1807
 msgid "Gaaghh!"
 msgstr "グァァァ!!!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1836
 msgid ""
 "I must go back and find more trolls to fight. You must hold them back, "
 "Kaleh. Be strong like rock. Griknagh will be with you."
@@ -4240,32 +4248,32 @@ msgstr ""
 "のように強くあれ。Griknagh がお前たち祝福してくれる。"
 
 #. [unit]: type=Troll Shaman, id=Thu'lok, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1800
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1869
 msgid "Thu’lok"
 msgstr "Thu’lok"
 
 #. [unit]: type=Troll Whelp, id=Harpo, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1815
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1884
 msgid "Harpo"
 msgstr "Harpo"
 
 #. [unit]: type=Troll Whelp, id=Groucho, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1830
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1899
 msgid "Groucho"
 msgstr "Groucho"
 
 #. [unit]: type=Troll Whelp, id=Chico, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1845
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1914
 msgid "Chico"
 msgstr "Chico"
 
 #. [unit]: type=Troll Rocklobber, id=Groo, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1861
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1930
 msgid "Groo"
 msgstr "Groo"
 
 #. [message]: speaker=Thu'lok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1876
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1945
 msgid ""
 "Our leader sent us to help you. We fight for you until all the dwarves are "
 "dead. We will avenge the deaths of our people!"
@@ -4274,7 +4282,7 @@ msgstr ""
 "ぬまで戦う。俺達、仲間たちの死の報いをする！"
 
 #. [message]: role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1890
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1959
 msgid ""
 "The dwarves use stone cairns to mark their territory. What a waste of good "
 "throwing stones."
@@ -4283,32 +4291,32 @@ msgstr ""
 "いない。"
 
 #. [unit]: type=Dwarvish Fighter, id=Dwalim, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1910
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1979
 msgid "Dwalim"
 msgstr "Dwalim"
 
 #. [unit]: type=Dwarvish Pathfinder, id=Moin, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1927
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1996
 msgid "Moin"
 msgstr "Moin"
 
 #. [unit]: type=Dwarvish Thunderer, id=Nordi, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1944
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2013
 msgid "Nordi"
 msgstr "Nordi"
 
 #. [unit]: type=Dwarvish Berserker, id=Byorn, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1961
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2030
 msgid "Byorn"
 msgstr "Byorn"
 
 #. [unit]: type=Dwarvish Fighter, id=Runin, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1980
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2049
 msgid "Runin"
 msgstr "Runin"
 
 #. [message]: speaker=Dwalim
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1997
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2066
 msgid ""
 "Looks like we came just in time. Our chief told us we’re to fight with you "
 "until all the trolls are dead. Tell us where to go — I want to kill me some "
@@ -4319,14 +4327,14 @@ msgstr ""
 "うずうずしてんだ！"
 
 #. [message]: role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2012
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2081
 msgid ""
 "The trolls display the skulls of their enemies as a way of marking their "
 "territory. How barbaric."
 msgstr "トロルが自分の領地を示すのに敵の頭蓋骨を飾っている。なんて野蛮な。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2077
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2146
 msgid ""
 "Did you think you had escaped me, Kaleh? I am your shadow, I will always be "
 "there until you pay for what you have done."
@@ -4335,7 +4343,7 @@ msgstr ""
 "前の元に現れようぞ。"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2083
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2152
 msgid ""
 "You want to flee, don’t you? But you cannot. They couldn’t escape her "
 "either. Even death could not save them. She will devour us all. But first I "
@@ -4347,19 +4355,19 @@ msgstr ""
 "に死の舞踏を踊ってもらおうか！さぁ、踊れ！ 踊るのだ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2224
 msgid "Nasty dwarves and stinkin’ elves, we will smash you all!"
 msgstr "薄汚いドワーフにうっとうしいエルフ、全部まとめてぶっ飛ばす！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2163
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2232
 msgid ""
 "Kill the elves! We must stop them here. This is our land, crush the "
 "intruders!"
 msgstr "エルフを殺せ！ここで食い止める。ここは俺達の土地、侵入者は潰せ！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2169
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2238
 msgid ""
 "What are you doing back here? The trolls hide in the southern tunnels, not "
 "this way."
@@ -4367,7 +4375,7 @@ msgstr ""
 "こんな後方で何してんだ？トロルが隠れてんのは南の坑道だ、こっちじゃねえ。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2185
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2254
 msgid ""
 "Treacherous elves, how can you fight with such horrid creatures as trolls? I "
 "will cleave all in two with my axe!"
@@ -4376,7 +4384,7 @@ msgstr ""
 "ら、この斧でみんなまとめて真っ二つに切り裂いてやる！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2193
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2262
 msgid ""
 "If you think you can take these caves from us, then you are fools. We are "
 "masters of fighting underground and we will die to defend our home. Fight "
@@ -4386,7 +4394,7 @@ msgstr ""
 "いの達人だし、住処を守るためなら死んでもかまわねえ。やっちまえ野郎ども！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2199
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2268
 msgid ""
 "What you doing back here? Nasty dwarves are to the north, no dwarves this "
 "way. Go back and fight bravely."
@@ -4395,34 +4403,34 @@ msgstr ""
 "敢に戦え。"
 
 #. [message]: speaker=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2230
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2299
 msgid "The rest is silence..."
 msgstr "静寂な眠りを……"
 
 #. [message]: speaker=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2243
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2312
 msgid "I go to my ancestors..."
 msgstr "俺は祖先たちの元へ逝く……"
 
 #. [message]: speaker=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2256
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2325
 msgid "Arrghh!!"
 msgstr "アァァーーッ!!"
 
 #. [message]: speaker=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2269
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2338
 msgid "I will be avenged..."
 msgstr "仇を取ってくれ……"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2363
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2432
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:351
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1655
 msgid "Zurg"
 msgstr "Zurg"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2381
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2450
 msgid ""
 "Congratulations! Some of trolls didn’t think you strong enough to beat "
 "dwarves."
@@ -4431,13 +4439,13 @@ msgstr ""
 "に。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2386
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2483
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2455
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2552
 msgid "Where did you come from?"
 msgstr "貴方はどこから来たのですか？"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2460
 msgid ""
 "There many secret tunnels that you sun dwellers not know of. Only troll "
 "know. We smarter than you think. Zurg would have killed dwarves himself, but "
@@ -4448,14 +4456,14 @@ msgstr ""
 "るところからさっき戻ったばかり。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2396
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2465
 msgid "The real fighting? I thought that was what we were waist-deep in?"
 msgstr ""
 "本当の戦いとは？私たちが腰までどっぷりと浸かっていたものがそうかと思っていま"
 "したが。"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2471
 msgid ""
 "While you fighting, another clan of dwarves sneak around and flank us. They "
 "tricksy like that. We must leave you and run back to defend women and little "
@@ -4470,12 +4478,12 @@ msgstr ""
 "やトロル思ってたより強い。お前たち、トロルの秘密兵器。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2476
 msgid "How do you mean?"
 msgstr "どういうこと？"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2412
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2481
 msgid ""
 "Right before battle, we find secret passage just to the north leading "
 "straight to big dwarf stronghold. Hiding in stronghold is big important "
@@ -4495,8 +4503,8 @@ msgstr ""
 "Zurg と一緒に来る、Zurg 秘密の道教える。"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2417
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2513
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2486
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2582
 msgid ""
 "Their knowledge of these tunnels is uncanny. I could have sworn a minute ago "
 "that that wall was solid rock."
@@ -4505,7 +4513,7 @@ msgstr ""
 "しか見えなかったのに。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2428
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2497
 msgid ""
 "Wait a moment, Zurg, we must deal with this mysterious cloaked figure before "
 "we can follow you."
@@ -4514,7 +4522,7 @@ msgstr ""
 "ないといけない。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2438
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2507
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Zurg."
@@ -4524,14 +4532,14 @@ msgstr ""
 
 #. [event]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2464
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2533
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:263
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1465
 msgid "Grimnir"
 msgstr "Grimnir"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2478
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2547
 msgid ""
 "Congratulations, some of me boys didn’t think you could beat the trolls."
 msgstr ""
@@ -4539,7 +4547,7 @@ msgstr ""
 "思ってたような奴もいたんだぜ。"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2488
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2557
 msgid ""
 "Don’t think you know all the tunnels and passages that twist through these "
 "caves, elf. I would have killed him myself, but I was just sent back from "
@@ -4550,12 +4558,12 @@ msgstr ""
 "と最前線からさっき戻ったばかりでな。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2493
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2562
 msgid "The front? I thought this was the front."
 msgstr "前線？ここが前線と思っていましたが。"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2498
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2567
 msgid ""
 "While you were fighting, a separate clan of trolls sneaked around our "
 "sentries and flanked us, attacking our supply depots. There are more of "
@@ -4571,12 +4579,12 @@ msgstr ""
 "ここでお前たちが勝ったことで、思わぬ好機が生まれたのよ。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2503
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2572
 msgid "It has?"
 msgstr "好機とは？"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2508
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2577
 msgid ""
 "Right before the trolls overran this area of the mines, our scouts had found "
 "an old tunnel south of here that leads almost straight to the main lair of "
@@ -4599,7 +4607,7 @@ msgstr ""
 "さぁ、準備ができたら道を教えてやるからよ。そんなに遠くはねえから。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2524
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2593
 msgid ""
 "Wait a moment, Grimnir, we must deal with this mysterious cloaked figure "
 "before we can follow you."
@@ -4608,7 +4616,7 @@ msgstr ""
 "けないといけない。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2534
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2603
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
 "together, we must follow Grimnir."
@@ -4617,7 +4625,7 @@ msgstr ""
 "頼む、Grimnir の後を追うぞ。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2571
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2640
 msgid ""
 "Where did he go? How does he disappear like that? And what in Uria’s name "
 "was he ranting about? Whoever that is is starting to make me get edgy."
@@ -4626,7 +4634,7 @@ msgstr ""
 "一体何のことだ？何者であれ、これでは気が休まりそうもないな。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2586
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2655
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together; we must follow Zurg."
@@ -4635,7 +4643,7 @@ msgstr ""
 "Zurg の後を追おう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2608
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2677
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
 "yourselves together; we must follow Grimnir."
@@ -4644,7 +4652,7 @@ msgstr ""
 "Grimnir の後を追おう。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2634
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2703
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1761
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2010
 msgid ""
@@ -15011,14 +15019,14 @@ msgstr ""
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:65
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:56
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:70
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:28
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:51
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:69
 msgid "glaive"
 msgstr "グレイブ"
 
@@ -15187,7 +15195,7 @@ msgstr ""
 "刺す前に敵を弱らせる上で毒は効率的な手段です。"
 
 #. [attack]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:47
 msgid "blowgun"
 msgstr "吹き矢"
@@ -15955,22 +15963,22 @@ msgstr ""
 "ことで、ユニットの詳細を確認できるようになります。"
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:545
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:646
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr "このユニットは、硬い石の壁を通り抜けることができます。"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:554
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
 msgid "teaching"
 msgstr "指導"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:555
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:656
 msgid "female^teaching"
 msgstr "指導"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:556
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:657
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -15980,12 +15988,12 @@ msgstr ""
 "ります。該当するユニットがいない場合、XP は単に 0 になります。"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:565
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:666
 msgid "shock"
 msgstr "衝撃"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:566
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:667
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
@@ -15994,24 +16002,24 @@ msgstr ""
 "も 1 回は反撃されます。"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:567
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr "このユニットの近接攻撃は敵の防御を圧倒し、反撃を妨害します。"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:598
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 msgid "formation"
 msgstr "隊列"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 msgid "female^formation"
 msgstr "隊列"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:600
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:701
 msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
@@ -16021,23 +16029,23 @@ msgstr ""
 "スが与えられます。ただし、70% を超えることはありません。"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:601
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:702
 msgid "Groups of units of this type are able to shield each other in combat."
 msgstr ""
 "このタイプのユニットは、集まることで戦闘時にお互いを守りあうことができます。"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:624
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:725
 msgid "disengage"
 msgstr "離脱"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:625
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:726
 msgid "female^disengage"
 msgstr "離脱"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:626
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
@@ -16045,17 +16053,17 @@ msgstr ""
 "このユニットが攻撃前に移動しなかった場合、攻撃後に移動力が復元されます。"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:627
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 msgid "This unit can move either before or after attacking."
 msgstr "このユニットは攻撃前か攻撃後のどちらかに移動できます。"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:634
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:735
 msgid "daze"
 msgstr "目潰し"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:635
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:736
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -16073,7 +16081,7 @@ msgstr ""
 "す。"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:639
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:740
 msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
@@ -16082,17 +16090,17 @@ msgstr ""
 "げることができます。"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:646
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:747
 msgid "distract"
 msgstr "撹乱"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:748
 msgid "female^distract"
 msgstr "撹乱"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
@@ -16101,7 +16109,7 @@ msgstr ""
 "うにします。ただし、この ZOC 無効の効果はこのユニットにだけは適用されません。"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:750
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -16110,27 +16118,27 @@ msgstr ""
 "侵入を可能にさせ、敵の周囲への移動が妨げられなくなります。"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:660
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:761
 msgid "support"
 msgstr "支援"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:762
 msgid "female^support"
 msgstr "支援"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:763
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr "隣接する味方ユニットの維持費を 1 減少させます。"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:711
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:812
 msgid "dazed"
 msgstr "目潰し！"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:813
 msgid "female^dazed"
 msgstr "目潰し！"
 
@@ -16256,14 +16264,24 @@ msgid "+$amount XP"
 msgstr "+$amount XP"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
+#, fuzzy
+#| msgid ""
+#| "Note: This campaign is probably not appropriate for beginners. It changes "
+#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
+#| "cycle. This campaign emphasizes role-playing elements and tends to have "
+#| "longer scenarios with objectives that change in the middle. For these "
+#| "reasons, we strongly suggest that you occasionally save your game mid-"
+#| "scenario, so you won’t lose all your progress if you get stuck and have "
+#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
-"certain Wesnoth standards, such as the elves’ stats and the day/night cycle. "
-"This campaign emphasizes role-playing elements and tends to have longer "
-"scenarios with objectives that change in the middle. For these reasons, we "
-"strongly suggest that you occasionally save your game mid-scenario, so you "
-"won’t lose all your progress if you get stuck and have to start over."
+"certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
+"recall costs and general approach to the difficulty levels. This campaign "
+"emphasizes role-playing elements and tends to have longer scenarios with "
+"objectives that change in the middle. For these reasons, we strongly suggest "
+"that you occasionally save your game mid-scenario, so you won’t lose all "
+"your progress if you get stuck and have to start over."
 msgstr ""
 "メモ：このキャンペーンはおそらく初心者がプレイするのには適していないでしょ"
 "う。なぜなら、エルフのユニット構成や昼夜のサイクルのような、Wesnoth の標準設"
@@ -16274,7 +16292,7 @@ msgstr ""
 "に、全てを無駄にせずに済むでしょう。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:9
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
 msgid ""
 "This is the chronicle of the journey of the Quenoth Elves from their "
 "homeland in the Great Southern Desert. I write this story so that our "
@@ -16285,7 +16303,7 @@ msgstr ""
 "の子孫にこの旅を伝え、我々の払った犠牲を忘れぬよう、この物語を記す。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:12
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:13
 msgid ""
 "Chapter 1: I, Kaleh, grew up amid the shifting sands, under our two suns "
 "Sela and Naia. It was a land of hot dry days and cold nights, of roaming "
@@ -16311,7 +16329,7 @@ msgstr ""
 "あの夜に……"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:15
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:16
 msgid ""
 "I remember that night as if it were yesterday. I was not prone to dreaming, "
 "but as I slept I had a strange vision. I didn’t have long to ponder it "
@@ -16339,7 +16357,7 @@ msgstr ""
 "の光が地平線から覗いた。まるで Naia が荒廃を見て衝撃を受けたかのように。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:24
 msgid ""
 "Chapter 2: When I was fifteen I went on my first raid, against an orcish "
 "incursion to the west. A large band of orcs under some new banner had come "
@@ -16351,7 +16369,7 @@ msgstr ""
 "暴れ回り、目につくもの全てをその薄汚れた手にかけていた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:27
 msgid ""
 "Sneaking amongst the dunes we crept up to their camp and ambushed them at "
 "dawn. To a young boy the fighting was overwhelming: crashing blades, blood, "
@@ -16373,7 +16391,7 @@ msgstr ""
 "が砂地に死んで横たわっていることにはなかなか気づかなかった。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:29
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:30
 msgid ""
 "I was giddy on the journey back home, my heart pumping with elation and "
 "pride. I had fought my first battle; now I was a man like my father. Then "
@@ -16394,7 +16412,7 @@ msgstr ""
 "は砂で濁り、全ては暗くかすんでいった……"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:33
 msgid ""
 "The next thing I remember, someone was bending over me shaking me awake. I "
 "was half buried in sand, and I felt weak but alive. Our equipment was "
@@ -16419,7 +16437,7 @@ msgstr ""
 "な一面と、死とは思ったよりもずっと身近な存在であることを知ったのだ。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:36
 msgid ""
 "Now I journeyed out again across the sands, but this time it was not just "
 "myself, but my entire people that I had to protect. They were depending on "
@@ -16435,7 +16453,7 @@ msgstr ""
 "た。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:44
 msgid ""
 "Chapter 3: As we continued north through the desert, the looming hills and "
 "mountains promised blessed relief from the seemingly never-ending sand. Soon "
@@ -16453,7 +16471,7 @@ msgstr ""
 "られ、何か嫌な予感がしたのだ。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:48
 msgid ""
 "I worried if I was doing the right thing, leading my people to strange "
 "lands. Despite Eloh’s promises, I was not as confident as Zhul was that it "
@@ -16470,7 +16488,7 @@ msgstr ""
 "あるどころか、神に疑問を抱いているというのに？"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:52
 msgid ""
 "That night, as I slept, I dreamt again, for the first time since that first "
 "fateful night. Eloh came to me again, and this time she appeared in a vision "
@@ -16502,7 +16520,7 @@ msgstr ""
 "じように、私は闇夜を切り裂く叫び声で目を覚ました。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:59
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:60
 msgid ""
 "Chapter 4: We found the crumbling obsidian tower that Eloh had described, "
 "and we camped at the edge of the foothills before the mountains. I was still "
@@ -16520,7 +16538,7 @@ msgstr ""
 "を思い起こしていた……"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:63
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:64
 msgid ""
 "A long, long time ago was the golden age among elves. Our people lived in "
 "harmony with nature in lands filled with trees, trees as far as the eye "
@@ -16540,7 +16558,7 @@ msgstr ""
 "が、それは永遠に続くものではなかった。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:67
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:68
 msgid ""
 "Eventually peace and prosperity fostered corruption and decadence. Through "
 "her powers of deception and guile, Uria cultivated secret groups of "
@@ -16576,7 +16594,7 @@ msgstr ""
 "全てが混沌に飲み込まれようとしていた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:72
 msgid ""
 "In this time of troubles Eloh first appeared to a select number of us, those "
 "few that still doggedly fought to preserve our homeland and our heritage. "
@@ -16605,7 +16623,7 @@ msgstr ""
 "ことを胸に刻み、次の世代のためにより良い世界を創ることを目指しながら。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:75
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:76
 msgid ""
 "Had the golden age been just a story? What kind of world could I be able to "
 "create for future generations of our people? All I knew of the past were the "
@@ -16624,7 +16642,7 @@ msgstr ""
 "だろうか？私は仲間たちをそこに連れていけるのだろうか？"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:83
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:84
 msgid ""
 "Chapter 5: We plunged into the darkness, shepherding long lines of our "
 "people along the cramped passageway deeper and deeper beneath the roots of "
@@ -16642,7 +16660,7 @@ msgstr ""
 "が通路のそこかしこにこだましていた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:87
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:88
 msgid ""
 "This seemed as alien an environment as we could ever imagine. We were a "
 "people of the open sands, and even during the long dark we could look up and "
@@ -16662,7 +16680,7 @@ msgstr ""
 "前進するより他はなかった。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:92
 msgid ""
 "Looking back, I think the bravest thing that my people ever did was to "
 "follow me into the darkness solely on the promises of Eloh and their faith "
@@ -16686,7 +16704,7 @@ msgstr ""
 "に。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:95
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:96
 msgid ""
 "What lurked in the darkness? Who were the unbelievers that Eloh had so "
 "cryptically referred to? My heart beat loudly in my chest, everything seemed "
@@ -16703,7 +16721,7 @@ msgstr ""
 "やるぞ、Uria め、そう思いながら。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:103
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:104
 msgid ""
 "Chapter 6: The dwarf Grimnir led us through a maze of twisting passages "
 "speaking scarcely a word. Finally, after what seemed like hours of marching, "
@@ -16725,7 +16743,7 @@ msgstr ""
 "を誓った。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:111
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:112
 msgid ""
 "Chapter 6: The troll Zurg led us through a maze of twisting passages "
 "speaking scarcely a word. Finally after what seemed like hours of marching "
@@ -16747,7 +16765,7 @@ msgstr ""
 "誓った。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:119
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:120
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
 "hidden a few miles back from the fighting. Seeing Grimnir with us, a troop "
@@ -16763,7 +16781,7 @@ msgstr ""
 "やかに。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:123
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:124
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
 "seemed to flow differently down there, deep under the earth. But when we "
@@ -16783,7 +16801,7 @@ msgstr ""
 "すべき石細工が行われていた。ここはこれまで見てきたどの村よりも大きかった。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:127
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:128
 msgid ""
 "The dwarves led us through to the far side of the city, where they let us "
 "stay in several auxiliary caverns, which normally served as store rooms. The "
@@ -16795,7 +16813,7 @@ msgstr ""
 "めて本当に安全だと感じられた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:131
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:132
 msgid ""
 "The dwarf king was away cleaning up after the recent battle, and would not "
 "be back for several days. I happily spent what little time I had learning as "
@@ -16817,7 +16835,7 @@ msgstr ""
 "ワーフの王に謁見する日が訪れた……"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:139
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:140
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
 "hidden a few miles back from the fighting. Once we had assured the rest of "
@@ -16830,7 +16848,7 @@ msgstr ""
 "に。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:143
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:144
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
 "seemed to flow differently down there, deep under the earth. But finally we "
@@ -16855,7 +16873,7 @@ msgstr ""
 "残していった多くの食料もあった。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:147
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:148
 msgid ""
 "Zurg told us that they had just captured this city from the dwarves, and "
 "that the Great Leader had moved here to set up his base of operations. They "
@@ -16878,7 +16896,7 @@ msgstr ""
 "になっていたからだ。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:151
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:152
 msgid ""
 "I wish I could have spent more time learning about these misunderstood "
 "creatures, but we could not tarry long. Even protected by the trolls, caught "
@@ -16892,7 +16910,7 @@ msgstr ""
 "偉大なリーダーとの対面する機会をもらうことができた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:159
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:160
 msgid ""
 "Chapter 9: Nym and Esanoo led us north, across the sands and through the "
 "dunes, towards the human encampment where the merfolk were being held. I "
@@ -16905,7 +16923,7 @@ msgstr ""
 "らない、とだけ返した。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:162
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:163
 msgid ""
 "Just then we crested over the last dune and I indeed saw what she meant. "
 "Sparkling blue covered the entire horizon. I fell to my knees in awe, I had "
@@ -16927,7 +16945,7 @@ msgstr ""
 "とって異質なものはなかった。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:165
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -16955,7 +16973,7 @@ msgstr ""
 "んな神にでも祈りを捧げても良い、そう思っていた……"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:173
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:174
 msgid ""
 "Chapter 8: I set out with a lightened heart and quickened step; we were "
 "going back up and I was sure that soon this underground gauntlet would be "
@@ -16972,7 +16990,7 @@ msgstr ""
 "中、私はもっと大きなことに考えを巡らせた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:177
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:178
 msgid ""
 "What kind of home had Eloh prepared for us on the other side of the "
 "mountains? Was there anywhere in the world that hadn’t been plagued with war "
@@ -16991,7 +17009,7 @@ msgstr ""
 "て、わずかに生き残った者を喰いものにしていた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:181
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:182
 msgid ""
 "At first I thought that if we could just leave the desert, we could find a "
 "peaceful place away from all the bloodshed and death. But even underground "
@@ -17012,7 +17030,7 @@ msgstr ""
 "ろうか？"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:185
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:186
 msgid ""
 "And yet, here in the dark, Eloh says she is powerless. Here she cannot help "
 "us, we must fend for ourselves. Though she is our god, I cannot just lie "
@@ -17034,7 +17052,7 @@ msgstr ""
 "の旅路において民を守るため、私は自らの力と知恵を尽くす義務があるのだ。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:189
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:190
 msgid ""
 "And so, bolstered with a new resolve, I continued the march up out of the "
 "darkness and towards a new land."
@@ -17043,7 +17061,7 @@ msgstr ""
 "て新天地へと向かう行進を続けた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:197
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:198
 msgid ""
 "Chapter 10: The merfolk helped us pilot our ships far into the ocean. Some "
 "of the younger elves were actually quite adept at climbing the rigging and "
@@ -17060,7 +17078,7 @@ msgstr ""
 "ただろう。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:201
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
 "ritual to determine the location of their master. Apparently it was a "
@@ -17071,7 +17089,7 @@ msgstr ""
 "たのだと思う。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:205
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:206
 msgid ""
 "The next morning we reached our destination. It wasn’t even an island, just "
 "a sandbar sticking out above the water. We lowered down a longboat and the "
@@ -17082,7 +17100,7 @@ msgstr ""
 "らって岸へと向かった。我々の誰もがオールの扱いに習熟してはいなかったのだ。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:209
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:210
 msgid ""
 "In the water around the sand bar were a large number of merfolk guards. "
 "Standing alone on top of the sand was one of the oldest merfolk I have ever "
@@ -17093,7 +17111,7 @@ msgstr ""
 "したので、我々は彼女に近づいて行った……"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:218
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:219
 msgid ""
 "Chapter 11: Our boats slipped softly through the water, shrouded in the pre-"
 "dawn darkness. At this moment the merfolk would be launching their "
@@ -17107,7 +17125,7 @@ msgstr ""
 "が我々の前にぼんやりと姿を浮かべていた。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:222
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:223
 msgid ""
 "In the end, almost all of my people decided to join in this final battle. I "
 "was surprised. They had gone through so much, and yet they still had faith "
@@ -17128,7 +17146,7 @@ msgstr ""
 "と、自分以上に責任の重い者はいないのだ。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:226
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:227
 msgid ""
 "But Zhul is right, if we had come all this way just for a chance to help the "
 "merfolk defeat Yechnagoth then our journey was not in vain. We were "
@@ -17151,7 +17169,7 @@ msgstr ""
 "路で失われた命、彼らの仇だけはとってやらねばならない。"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:230
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:231
 msgid ""
 "This conflict is greater than just us. These lands were once places of "
 "beauty and hope. The great empires may be gone, but still people struggle to "
@@ -17170,7 +17188,7 @@ msgstr ""
 "終わること無きように…… "
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:238
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:239
 msgid ""
 "Chapter 12: True strength is not measured in might or knowledge, but in what "
 "you can do for those you love."

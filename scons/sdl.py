@@ -36,7 +36,7 @@ def CheckSDL2(context, require_version):
             env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL2")], LIBPATH = [os.path.join(sdldir, "lib")])
         env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
         env.AppendUnique(LIBS = Split("mingw32 SDL2main SDL2"))
-        env.AppendUnique(LINKFLAGS = ["-mwindows"])
+        env.AppendUnique(LINKFLAGS = ["-mwindows", "-fstack-protector"])
 
     cpp_file = File("src/conftests/sdl2.cpp").rfile().abspath
     if not os.path.isfile(cpp_file):

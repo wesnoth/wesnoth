@@ -347,12 +347,12 @@ void server::load_config()
 	// One month probably will be fine (#TODO: testing needed)
 	update_pack_lifespan_ = cfg_["update_pack_lifespan"].to_time_t(30 * 24 * 60 * 60);
 
-	if(const auto& svinfo_cfg = server_info()) {
-		server_id_ = svinfo_cfg["id"].str();
-		feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
-		web_url_ = svinfo_cfg["web_url"].str(default_web_url);
-		license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
-	}
+	const auto& svinfo_cfg = server_info();
+
+	server_id_ = svinfo_cfg["id"].str();
+	feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+	web_url_ = svinfo_cfg["web_url"].str(default_web_url);
+	license_notice_ = svinfo_cfg["license_notice"].str(default_license_notice);
 
 	blacklist_file_ = cfg_["blacklist_file"].str();
 	load_blacklist();
@@ -895,13 +895,13 @@ void server::delete_addon(const std::string& id)
 {
 	config& cfg = get_addon(id);
 
-	if(cfg["forum_auth"].to_bool()) {
-		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
-	}
-
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'";
 		return;
+	}
+
+	if(cfg["forum_auth"].to_bool()) {
+		user_handler_->db_delete_addon_authors(server_id_, cfg["name"].str());
 	}
 
 	std::string fn = cfg["filename"].str();
@@ -2051,8 +2051,8 @@ int main(int argc, char** argv)
 	} catch(const boost::program_options::error& e) {
 		PLAIN_LOG << "Error in command line: " << e.what();
 		return 10;
-	} catch(const config::error& /*e*/) {
-		PLAIN_LOG << "Could not parse config file";
+	} catch(const config::error& e) {
+		PLAIN_LOG << "Could not parse config file: " << e.message;
 		return 1;
 	} catch(const filesystem::io_exception& e) {
 		PLAIN_LOG << "File I/O error: " << e.what();

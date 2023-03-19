@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		000000000000000000000005 /* achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* achievements.cpp */; };
 		000000000000000000000006 /* achievements_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* achievements_dialog.cpp */; };
-		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		000000000000000000000007 /* achievements.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000001 /* achievements.cpp */; };
 		000000000000000000000008 /* achievements_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000003 /* achievements_dialog.cpp */; };
+		000000000000000000000011 /* network_download_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000009 /* network_download_file.cpp */; };
+		000000000000000000000012 /* network_download_file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000000009 /* network_download_file.cpp */; };
+		1234567890ABCDEF12345678 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
+		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
-		4291489DA38012477DA3BA7C /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
+		4291489DA38012477DA3BA7C /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		460CA6D52143362800B89741 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		460D898624DC7831000B1ABC /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897824DC7830000B1ABC /* game.cpp */; };
 		460D898724DC7831000B1ABC /* ban.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897C24DC7830000B1ABC /* ban.cpp */; };
@@ -219,6 +221,11 @@
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BFFC79258256C700643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
 		46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
+		46CAC4CC29BD07E3004763BE /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CAC4CB29BD07C0004763BE /* libcurl.tbd */; };
+		46CAC4CD29BF235C004763BE /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CAC4CB29BD07C0004763BE /* libcurl.tbd */; };
+		46CAC4CE29BF23CC004763BE /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
+		46CAC4CF29BF23DF004763BE /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
+		46CAC4D029BF2411004763BE /* libboost_random-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B92258CD3B4004A80EF /* libboost_random-mt.dylib */; };
 		46CD12BB2777A64000A59D05 /* libboost_context-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46CD12BC2777A64000A59D05 /* libboost_coroutine-mt.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B8D258CD3B4004A80EF /* libboost_coroutine-mt.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46D6014E255AFA6000E072F0 /* auth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D6014C255AFA6000E072F0 /* auth.cpp */; };
@@ -635,8 +642,10 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
 		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		900000000000000000000009 /* match_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A5F925B4501E006FD3A1 /* match_history.cpp */; };
 		903F959C1ED5489500F1BDD3 /* credentials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 903F959B1ED5489500F1BDD3 /* credentials.cpp */; };
 		903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
 		90606A2B1D5599BA00719B40 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 90606A2A1D5599BA00719B40 /* libpcre.1.dylib */; };
@@ -1080,6 +1089,7 @@
 		95EB8A55287A02EC00B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
 		95EB8A58287B138700B09F95 /* draw_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A50287A02B800B09F95 /* draw_manager.cpp */; };
 		95EB8A59287B139800B09F95 /* top_level_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */; };
+		97714C7A9FF444E29DCEF0BA /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
 		B508D193100146E300B12852 /* engine_fai.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D191100146E300B12852 /* engine_fai.cpp */; };
 		B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; };
 		B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
@@ -1499,13 +1509,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
-		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
 		000000000000000000000001 /* achievements.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = achievements.cpp; sourceTree = "<group>"; };
 		000000000000000000000002 /* achievements.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements.hpp; sourceTree = "<group>"; };
 		000000000000000000000003 /* achievements_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = achievements_dialog.cpp; sourceTree = "<group>"; };
 		000000000000000000000004 /* achievements_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = achievements_dialog.hpp; sourceTree = "<group>"; };
+		000000000000000000000009 /* network_download_file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = network_download_file.cpp; sourceTree = "<group>"; };
+		000000000000000000000010 /* network_download_file.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = network_download_file.hpp; sourceTree = "<group>"; };
+		09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = carryover_show_gold.cpp; path = carryover_show_gold.cpp; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
+		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		460D897824DC7830000B1ABC /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cpp; path = ../../src/server/wesnothd/game.cpp; sourceTree = SOURCE_ROOT; };
 		460D897924DC7830000B1ABC /* ban.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ban.hpp; path = ../../src/server/wesnothd/ban.hpp; sourceTree = SOURCE_ROOT; };
@@ -1643,6 +1656,7 @@
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46BFFC77258256C700643800 /* license_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = license_prompt.cpp; sourceTree = "<group>"; };
 		46BFFC78258256C700643800 /* license_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = license_prompt.hpp; sourceTree = "<group>"; };
+		46CAC4CB29BD07C0004763BE /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		46D6014A255AFA5F00E072F0 /* auth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auth.hpp; sourceTree = "<group>"; };
 		46D6014B255AFA5F00E072F0 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
 		46D6014C255AFA6000E072F0 /* auth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = auth.cpp; sourceTree = "<group>"; };
@@ -2042,7 +2056,7 @@
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
-		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = mp_report.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
+		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
 		620A386215E9364E00A4F513 /* attack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack.cpp; sourceTree = "<group>"; };
 		620A386315E9364E00A4F513 /* attack.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = attack.hpp; sourceTree = "<group>"; };
 		620A386415E9364E00A4F513 /* create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = create.cpp; sourceTree = "<group>"; };
@@ -2124,7 +2138,7 @@
 		62D24F311519987400350848 /* context_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = context_manager.cpp; sourceTree = "<group>"; };
 		62D24F331519994300350848 /* palette_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = palette_manager.hpp; sourceTree = "<group>"; };
 		62D24F341519995200350848 /* palette_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = palette_manager.cpp; sourceTree = "<group>"; };
-		84234C54BB84519421FD4136 /* general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = general.cpp; path = general.cpp; sourceTree = "<group>"; };
+		84234C54BB84519421FD4136 /* general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = general.cpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* The Battle for Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Battle for Wesnoth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		903F959B1ED5489500F1BDD3 /* credentials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = credentials.cpp; path = preferences/credentials.cpp; sourceTree = "<group>"; };
@@ -2940,6 +2954,7 @@
 				EC5C244818EF07B4001FA499 /* libpangocairo-1.0.0.dylib in Frameworks */,
 				90606A2B1D5599BA00719B40 /* libpcre.1.dylib in Frameworks */,
 				468A5BCB258CDBE4004A80EF /* libboost_chrono-mt.dylib in Frameworks */,
+				46CAC4CC29BD07E3004763BE /* libcurl.tbd in Frameworks */,
 				464C036A228361B7007D2741 /* libSDL2_image-2.0.0.dylib in Frameworks */,
 				EC5C244918EF07B4001FA499 /* libpangoft2-1.0.0.dylib in Frameworks */,
 				464C0371228361B7007D2741 /* libvorbisfile.dylib in Frameworks */,
@@ -2969,6 +2984,7 @@
 				91C548C31D8866ED00FE6A7B /* CoreFoundation.framework in Frameworks */,
 				468A5BB1258CD402004A80EF /* libboost_system-mt.dylib in Frameworks */,
 				46EA7A4C258FDC8000043333 /* libboost_context-mt.dylib in Frameworks */,
+				46CAC4D029BF2411004763BE /* libboost_random-mt.dylib in Frameworks */,
 				46EA7A4D258FDC8300043333 /* libboost_coroutine-mt.dylib in Frameworks */,
 				468A5BA1258CD3C2004A80EF /* libboost_filesystem-mt.dylib in Frameworks */,
 				468A5BAC258CD3EB004A80EF /* libboost_program_options-mt.dylib in Frameworks */,
@@ -2984,6 +3000,7 @@
 				468A5BA0258CD3B5004A80EF /* libboost_random-mt.dylib in Frameworks */,
 				B597C6F30FACDE1100CE81F5 /* Cocoa.framework in Frameworks */,
 				B597C51D0FACD56200CE81F5 /* libcairo.2.dylib in Frameworks */,
+				46CAC4CD29BF235C004763BE /* libcurl.tbd in Frameworks */,
 				468A5B9A258CD3B5004A80EF /* libboost_filesystem-mt.dylib in Frameworks */,
 				464C037722836961007D2741 /* libSDL2_image-2.0.0.dylib in Frameworks */,
 				468A5B97258CD3B5004A80EF /* libboost_iostreams-mt.dylib in Frameworks */,
@@ -3105,6 +3122,8 @@
 				B5599ABC0EC62181008DD061 /* about.hpp */,
 				000000000000000000000001 /* achievements.cpp */,
 				000000000000000000000002 /* achievements.hpp */,
+				000000000000000000000009 /* network_download_file.cpp */,
+				000000000000000000000010 /* network_download_file.hpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				B52EE9A81213640400CFBDAB /* addon */,
 				B597EBCA0FC082AB00CE81F5 /* ai */,
@@ -3380,6 +3399,7 @@
 				B55999420EC62181008DD061 /* wml_exception.hpp */,
 				9197972726199F54001E8133 /* wml_separators.hpp */,
 				91B621AC1B76B05700B00E0F /* xBRZ */,
+				09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */,
 			);
 			name = src;
 			path = ../../src;
@@ -3404,6 +3424,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				46CAC4CB29BD07C0004763BE /* libcurl.tbd */,
 				4690FBC42884726900986A47 /* libboost_atomic-mt.dylib */,
 				468A5B85258CD3B4004A80EF /* libboost_chrono-mt.dylib */,
 				468A5B86258CD3B4004A80EF /* libboost_context-mt.dylib */,
@@ -5528,6 +5549,7 @@
 				1234567890ABCDEF12345678 /* file_progress.cpp in Sources */,
 				000000000000000000000005 /* achievements.cpp in Sources */,
 				000000000000000000000006 /* achievements_dialog.cpp in Sources */,
+				000000000000000000000011 /* network_download_file.cpp in Sources */,
 				46F92F0F2174FEC000602C1C /* standard_colors.cpp in Sources */,
 				46F92E852174F6A400602C1C /* debug.cpp in Sources */,
 				B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */,
@@ -5731,6 +5753,7 @@
 				46F92E212174F6A400602C1C /* mp_change_control.cpp in Sources */,
 				36B146FAA79A55E9F43723B1 /* general.cpp in Sources */,
 				3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */,
+				97714C7A9FF444E29DCEF0BA /* carryover_show_gold.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5802,6 +5825,7 @@
 				91C548DF1D886E2100FE6A7B /* log.cpp in Sources */,
 				46685CA9219D63FE0009CFFE /* binary_or_text.cpp in Sources */,
 				464F7FDA25937D74006AB37B /* server_base.cpp in Sources */,
+				46CAC4CE29BF23CC004763BE /* mt_rng.cpp in Sources */,
 				91C548E01D886E2C00FE6A7B /* tstring.cpp in Sources */,
 				460D89C524DC95DD000B1ABC /* tournaments.cpp in Sources */,
 				460D89B624DC7863000B1ABC /* addon_utils.cpp in Sources */,
@@ -5814,6 +5838,7 @@
 				915C68F21DF1F5C600594B07 /* color.cpp in Sources */,
 				46F92F272175036700602C1C /* constants.cpp in Sources */,
 				46685CAB219D640E0009CFFE /* string_utils.cpp in Sources */,
+				46CAC4CF29BF23DF004763BE /* seed_rng.cpp in Sources */,
 				508C40A885166B2E3F4245F4 /* general.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6153,6 +6178,8 @@
 				1234567890ABCDEF12345679 /* file_progress.cpp in Sources */,
 				000000000000000000000007 /* achievements.cpp in Sources */,
 				000000000000000000000008 /* achievements_dialog.cpp in Sources */,
+				900000000000000000000009 /* match_history.cpp in Sources */,
+				000000000000000000000012 /* network_download_file.cpp in Sources */,
 				91E3570B1CACC9B200774252 /* singleplayer.cpp in Sources */,
 				4649B88B20288EEF00827CFB /* surface.cpp in Sources */,
 				46F92DB02174F6A300602C1C /* campaign_selection.cpp in Sources */,
@@ -6395,6 +6422,7 @@
 				915C68EC1DF1DCB000594B07 /* color.cpp in Sources */,
 				4291489DA38012477DA3BA7C /* general.cpp in Sources */,
 				87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */,
+				867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

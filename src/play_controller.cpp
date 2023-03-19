@@ -207,6 +207,18 @@ play_controller::~play_controller()
 
 void play_controller::init(const config& level)
 {
+	/*
+	 * Initilisation currently happens on the following order:
+	 * 1) This code, which is executed with the loadingscreen
+	 *    From inside the constructor.
+	 * 2) The Music is changed.
+	 * 3) The Storyscreen is shown.
+	 * 4) The Labels are added
+	 * 5) The preload event is fired
+	 * 6) The prestart event is fired
+	 * 7) The gui is activated
+	 * 8) The start event is fired
+	 */
 	gui2::dialogs::loading_screen::display([this, &level]() {
 		gui2::dialogs::loading_screen::progress(loading_stage::load_level);
 

@@ -207,10 +207,7 @@ private:
 									  std::string& error_data);
 
 	/** Retrieves the contents of the [server_info] WML node. */
-	const config& server_info() const { return cfg_.child("server_info"); }
-
-	/** Retrieves the contents of the [server_info] WML node. */
-	config& server_info() { return cfg_.child("server_info"); }
+	const config& server_info() const { return cfg_.child_or_empty("server_info"); }
 
 	/** Checks if the specified address should never bump download counts. */
 	bool ignore_address_stats(const std::string& addr) const;

@@ -427,6 +427,12 @@ private:
 
 protected:
 	mutable bool ignore_replay_errors_;
+	/// true when the controller of the currently playing side has changed.
+	/// this can mean for example:
+	/// - The currently active side was reassigned from/to another player in a mp game
+	/// - The replay controller was disabled ('continue play' button)
+	/// - The currently active side was droided / undroided.
+	/// - A side was set to idle.
 	bool player_type_changed_;
 	virtual void sync_end_turn() {}
 	virtual void check_time_over();

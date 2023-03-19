@@ -1,20 +1,34 @@
-## Version 1.17.13+dev
+## Version 1.17.14+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
-   * Under the Burning Suns
-     * S05 Fixed the main cavern event not taking scouting into account. (issue #7394)
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Spanish
  ### Units
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+
+## Version 1.17.14
+ ### Campaigns
+   * Under the Burning Suns
+     * S05 Fixed the main cavern event not taking scouting into account. (issue #7394)
+ ### Packaging
+   * Curl is now a required dependency
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian, Spanish
+ ### User interface
+   * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
+ ### Miscellaneous and Bug Fixes
+   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
+   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
+   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
+   * Linux SCons and CMake scripts now support enabling `_GLIBCXX_ASSERTIONS`.
 
 ## Version 1.17.13
  ### Add-ons client

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-02-05 08:15+0100\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
+"PO-Revision-Date: 2023-03-10 23:05+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4636,10 +4636,10 @@ msgid ""
 "a unit in. Placing units wisely can sometimes let you reach a village a turn "
 "earlier."
 msgstr ""
-"Příkazy pro <b>verbování</b> a <b>povolávání</b> je možno aktivovat i z menu "
-"po kliknutí pravým tlačítkem na políčko hradu. To vám umožní přesně určit, "
+"Příkazy pro <b>verbování</b> a <b>povolávání</b> je možno aktivovat i z menu "
+"po kliknutí pravým tlačítkem na políčko hradu. To ti umožní přesně určit, "
 "kam umístit novou jednotku, což někdy může pomoci – například získat vesnici "
-"o tah dříve."
+"o tah dříve."
 
 #. [tip]
 #: data/tips.cfg:36
@@ -5981,6 +5981,101 @@ msgstr "Tento server nepodporuje použití atributu forum_auth ve tvém pbl."
 msgid "Unspecified validation failure."
 msgstr "Blíže neurčené selhání ověření."
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Shrnutí scénáře"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Vítězství"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "Zvítězil jsi!"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Porážka"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "Byl jsi poražen!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Zbývající zlato: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Zbývajících kol: "
+
+#: src/carryover_show_gold.cpp:102
+msgid " per turn"
+msgstr " za kolo"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Bonus za rychlý konec: "
+
+#: src/carryover_show_gold.cpp:103
+msgid "Total bonus: "
+msgstr "Celkový bonus: "
+
+#: src/carryover_show_gold.cpp:106
+msgid "Total gold: "
+msgstr "Zlata dohromady: "
+
+#: src/carryover_show_gold.cpp:110
+msgid "Carryover percentage: "
+msgstr "Procento přeneseného zlata: "
+
+#: src/carryover_show_gold.cpp:114
+msgid "Bonus gold: "
+msgstr "Bonusové zlato: "
+
+#: src/carryover_show_gold.cpp:116
+msgid "Retained gold: "
+msgstr "Zlatých uchováno: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatým."
+msgstr[1] ""
+"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
+msgstr[2] ""
+"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
+
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem zlata."
+msgstr[1] "Příští scénář zahájíš s jeho definovaným minimem zlata."
+msgstr[2] "Příští scénář zahájíš s jeho definovaným minimem zlata."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Příští scénář zahájíš buď s jedním zlatým nebo jeho definovaným minimem; "
+"použita je vyšší částka."
+msgstr[1] ""
+"Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
+"použita je vyšší částka."
+msgstr[2] ""
+"Příští scénář zahájíš buď s $gold zlatými nebo jeho definovaným minimem; "
+"použita je vyšší částka."
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Přidán/a do seznamu otrapů: $nick"
@@ -6681,132 +6776,37 @@ msgstr "Bylo provedeno příliš mnoho pokusů o přihášení."
 msgid "Password hashing failed."
 msgstr "Hašování hesla se nepodařilo."
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Shrnutí scénáře"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Vítězství"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "Zvítězil jsi!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Porážka"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "Byl jsi poražen!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Zbývající zlato: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Zbývajících kol: "
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid " per turn"
-msgstr " za kolo"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Bonus za rychlý konec: "
-
-#: src/game_initialization/playcampaign.cpp:125
-msgid "Total bonus: "
-msgstr "Celkový bonus: "
-
-#: src/game_initialization/playcampaign.cpp:128
-msgid "Total gold: "
-msgstr "Zlata dohromady: "
-
-#: src/game_initialization/playcampaign.cpp:132
-msgid "Carryover percentage: "
-msgstr "Procento přeneseného zlata: "
-
-#: src/game_initialization/playcampaign.cpp:136
-msgid "Bonus gold: "
-msgstr "Bonusové zlato: "
-
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Retained gold: "
-msgstr "Zlatých uchováno: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatým."
-msgstr[1] ""
-"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
-msgstr[2] ""
-"Příští scénář zahájíš s jeho definovaným minimem plus $gold zlatými."
-
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "Příští scénář zahájíš s jeho definovaným minimem zlata."
-msgstr[1] "Příští scénář zahájíš s jeho definovaným minimem zlata."
-msgstr[2] "Příští scénář zahájíš s jeho definovaným minimem zlata."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Příští scénář zahájíš buď s jedním zlatým nebo jeho definovaným minimem; "
-"použita je vyšší částka."
-msgstr[1] ""
-"Příští scénář zahájíš buď se $gold zlatými nebo jeho definovaným minimem; "
-"použita je vyšší částka."
-msgstr[2] ""
-"Příští scénář zahájíš buď s $gold zlatými nebo jeho definovaným minimem; "
-"použita je vyšší částka."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Hru se nepodařilo nahrát: "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Během hraní hry se vyskytla chyba: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "Nepodařilo se nahrát herní mapu: "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr "Chyba v generátoru map: "
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Chyba při načítání WML: "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Konec hry"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Tento scénář skončil. Přejete si pokračovat v tažení?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Neznámý scénář: „$scenario|“"
 
@@ -6893,9 +6893,19 @@ msgstr "Čekárna"
 msgid "Other Games"
 msgstr "Další hry"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
 msgstr "Historie zápasů – $player"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Éra:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -6997,7 +7007,7 @@ msgstr "Frakce"
 msgid "Races: "
 msgstr "Rasy: "
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
 msgstr "Příslušnost: "
 
@@ -7010,33 +7020,21 @@ msgid "Recruits"
 msgstr "Rekruti"
 
 # v nápovědě podrobnosti jednotky když k ní není žádný text
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Žádné informace nejsou k dispozici."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-msgid "Availability: "
-msgstr "Dostupnost: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr "Musí mít"
-
-#: src/help/help_impl.cpp:773
-msgid "Unavailable"
-msgstr "Není k dispozici"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Náhodná"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Příslušnost: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
@@ -7044,23 +7042,23 @@ msgstr ""
 "Toto je skupina jednotek, z nichž jsou všichni <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Podskupiny jednotek v této skupině'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Skupiny jednotek v této rase'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Jednotky této skupiny'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Jednotky této rasy'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "původní soubor je poškozený"
 
@@ -7840,6 +7838,39 @@ msgstr "$name převzal/a kontrolu"
 msgid "Turn changed"
 msgstr "Změna tahu"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid ""
+#| "An error occurred while downloading the add-ons list from the server."
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid "Download error"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+msgid "Download complete"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved."
+msgid "The file has been downloaded."
+msgstr "Hra byla uložena."
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Nalezen terén s cenou pohybu menší než 1."
@@ -7851,32 +7882,32 @@ msgstr "Nalezen terén s cenou pohybu menší než 1."
 msgid "waiting for^a global variable"
 msgstr "globální proměnnou"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "zbývající čas do konce tohoto tahu"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "skutečný čas (hodiny)"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 "Je porušen souběh her a pokračování ve hře nemá smysl. Chcete hru uložit?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "Podrobnosti chyby:"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr "Varování: rozbité větve tažení"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7890,7 +7921,7 @@ msgstr[2] ""
 "Některé z dalších možných scénářů chybí, asi nebudeš moci dokončit toto "
 "tažení."
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7907,11 +7938,11 @@ msgstr[2] ""
 "Prosím nahlas autorovi tažení tyto chybějící scénáře:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Jakmile to bude opraveno, budeš muset tento scénář restartovat."
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "K dispozici nejsou žádné úkoly"
 
@@ -7989,31 +8020,31 @@ msgstr "Hra skončila."
 msgid "It is now $name|’s turn"
 msgstr "Na tahu je $name"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "Přidělit kontrolu nad spoluhráčem hráči $player"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "Přidělí kontrolu pozorujícímu hráči $player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Nahraď umělou inteligencí"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Nahraď místním hráčem"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "Nastavit stranu jako nečinnou"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "Ulož a ukonči hru"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8055,7 +8086,7 @@ msgstr "Vlastnost: "
 
 #: src/reports.cpp:341
 msgid "invisible: "
-msgstr "neviditelný: "
+msgstr "neviditelnost: "
 
 #: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -8065,7 +8096,7 @@ msgstr ""
 
 #: src/reports.cpp:345
 msgid "slowed: "
-msgstr "zpomalený: "
+msgstr "zpomalení: "
 
 #: src/reports.cpp:346
 msgid ""
@@ -8077,7 +8108,7 @@ msgstr ""
 
 #: src/reports.cpp:349
 msgid "poisoned: "
-msgstr "otrávený: "
+msgstr "otrava: "
 
 #: src/reports.cpp:350
 msgid ""
@@ -8104,31 +8135,28 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Tato jednotka byla proměněna v kámen. Nemůže se ani hýbat, ani útočit."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "neléčitelný"
+msgstr "neléčitelnost: "
 
 #: src/reports.cpp:358
-msgid ""
-"This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
-msgstr ""
-
-#: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
-msgid "invulnerable: "
-msgstr "neviditelný: "
-
-#: src/reports.cpp:362
 #, fuzzy
 #| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgid "This unit is invulnerable. It cannot be harmed by any attack."
+#| "This unit is unhealable. It cannot be healed by healers or villages and "
+#| "doesn't benefit from resting."
+msgid ""
+"This unit is unhealable. It cannot be healed by healers or villages and "
+"doesn’t benefit from resting."
 msgstr ""
-"Tato jednotka je neviditelná. Nemůže být spatřena a nepřítel na ni nemůže "
-"zaútočit."
+"Tato jednotka není léčitelná. Nemůže být léčena léčiteli ani ve vesnicích "
+"a z odpočinku nemá žádný prospěch."
+
+#: src/reports.cpp:361
+msgid "invulnerable: "
+msgstr "nezranitelnost: "
+
+#: src/reports.cpp:362
+msgid "This unit is invulnerable. It cannot be harmed by any attack."
+msgstr "Tato jednotka je nezranitelná. Žádný útok jí nemůže ublížit."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -8698,7 +8726,7 @@ msgstr "Chcete před pokračováním hru uložit?"
 msgid "Debug Command Used"
 msgstr "Ladící příkaz použit"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Jednotka byla vytvořena pomocí ladícího příkazu během kola hráče $player"
@@ -8820,26 +8848,19 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> bodů pohybu"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:543
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number poškození"
-msgstr[1] "$number poškození"
-msgstr[2] "$number poškození"
+msgstr[0] "$number užitý útok"
+msgstr[1] "$number užité útoky"
+msgstr[2] "$number užitých útoků"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:552
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> útok za kolo"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
-msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoků za kolo"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> užitý útok"
+msgstr[1] "<span color=\"$color\">$number_or_percent</span> užité útoky"
+msgstr[2] "<span color=\"$color\">$number_or_percent</span> užitých útoků"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -8956,12 +8977,13 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"V adresáři $logdir nelze vytvořit soubory se záznamy. Často je to způsobeno "
+"chybným oprávněním na složce, antivirovým programem, který omezuje ke složce "
+"přístup, nebo použitím OneDrive pro správu tvé složky Dokumenty."
 
 #: src/wesnoth.cpp:813
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Zaznamenávání"
+msgstr "Selhání zaznamenávání"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
@@ -8986,6 +9008,15 @@ msgstr "Skryj plány pro hráče $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Nastavení plánovacího módu"
+
+#~ msgid "Availability: "
+#~ msgstr "Dostupnost: "
+
+#~ msgid "Must-have"
+#~ msgstr "Musí mít"
+
+#~ msgid "Unavailable"
+#~ msgstr "Není k dispozici"
 
 #~ msgid "Unit Test "
 #~ msgstr "Test součásti "

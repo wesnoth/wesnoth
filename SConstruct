@@ -398,6 +398,7 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.44.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
     have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+    have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
 
     if not File("#/src/modules/lua/.git").rfile().exists():
         have_client_prereqs = False
