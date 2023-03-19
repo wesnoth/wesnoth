@@ -85,12 +85,6 @@ level_result::type campaign_controller::playsingle_scenario(end_level_data &end_
 	}
 
 	end_level = playcontroller.get_end_level_data();
-	carryover_show_gold(playcontroller.gamestate(), playcontroller.is_observer(), is_unit_test_);
-
-	if(!video::headless()) {
-		playcontroller.maybe_linger();
-	}
-
 	state_.set_snapshot(playcontroller.to_config());
 	return res;
 }
@@ -107,13 +101,6 @@ level_result::type campaign_controller::playmp_scenario(end_level_data &end_leve
 
 	end_level = playcontroller.get_end_level_data();
 
-	if(res != level_result::type::observer_end) {
-		// We need to call this before linger because it prints the defeated/victory message.
-		//(we want to see that message before entering the linger mode)
-		carryover_show_gold(playcontroller.gamestate(), playcontroller.is_observer(), is_unit_test_);
-	}
-
-	playcontroller.maybe_linger();
 	playcontroller.update_savegame_snapshot();
 
 	if(mp_info_) {
@@ -162,6 +149,7 @@ level_result::type campaign_controller::play_game()
 #endif
 			{
 				res = playmp_scenario(end_level);
+				//todo: i removed the code that could return observer_end
 			}
 		} catch(const leavegame_wesnothd_error&) {
 			LOG_NG << "The game was remotely ended";

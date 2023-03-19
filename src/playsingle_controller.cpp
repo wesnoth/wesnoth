@@ -25,6 +25,7 @@
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "display_chat_manager.hpp"
+#include "carryover_show_gold.hpp"
 #include "events.hpp"
 #include "formula/string_utils.hpp"
 #include "game_end_exceptions.hpp"
@@ -143,6 +144,21 @@ void playsingle_controller::init_gui()
 
 void playsingle_controller::play_scenario_init(const config& level)
 {
+	gui_->labels().read(level);
+
+	// Read sound sources
+	assert(soundsources_manager_ != nullptr);
+	for(const config& s : level.child_range("sound_source")) {
+		try {
+			soundsource::sourcespec spec(s);
+			soundsources_manager_->add(spec);
+		} catch(const bad_lexical_cast&) {
+			ERR_NG << "Error when parsing sound_source config: bad lexical cast.";
+			ERR_NG << "sound_source config was: " << s.debug();
+			ERR_NG << "Skipping this sound source...";
+		}
+	}
+
 	// At the beginning of the scenario, save a snapshot as replay_start
 	if(saved_game_.replay_start().empty()) {
 		saved_game_.replay_start() = to_config();
@@ -161,8 +177,96 @@ void playsingle_controller::play_scenario_init(const config& level)
 			_("This multiplayer game uses an alternative random mode, if you don't know what this message means, then "
 			  "most likely someone is cheating or someone reloaded a corrupt game."));
 	}
+}
 
-	return;
+void playsingle_controller::skip_empty_sides(int& side_num)
+{
+	const int max = side_num + static_cast<int>(get_teams().size());
+	while (gamestate().board_.get_team(modulo(side_num, get_teams().size(), 1)).is_empty()) {
+		if(side_num == max) {
+			throw game::game_error("No teams found");
+		}
+		++side_num;
+	}
+}
+
+void playsingle_controller::play_some()
+{
+	assert(is_regular_game_end() || gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING, game_data::TURN_ENDED, game_data::GAME_ENDED));
+
+	if (!is_regular_game_end() && gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING)) {
+		if(gamestate().in_phase(game_data::TURN_PLAYING)) {
+			// If we are here we have probably reloaded a savegame
+			init_side_end();
+		}
+		play_side();
+		assert(is_regular_game_end() || gamestate().in_phase(game_data::TURN_ENDED));
+	}
+
+	if (!is_regular_game_end() && gamestate().in_phase(game_data::TURN_ENDED)) {
+		finish_side_turn();
+	}
+
+	if (is_regular_game_end() && !gamestate().in_phase(game_data::GAME_ENDED)) {
+		gamestate().gamedata_.set_phase(game_data::GAME_ENDING);
+		do_end_level();
+		gamestate().gamedata_.set_phase(game_data::GAME_ENDED);
+	}
+
+	if (gamestate().in_phase(game_data::GAME_ENDED)) {
+		if(!get_end_level_data().transient.linger_mode || get_teams().empty() || video::headless()) {
+			end_turn_requested_ = true;
+		}
+		maybe_linger();
+	}
+}
+
+void playsingle_controller::finish_side_turn()
+{
+	if(is_regular_game_end()) {
+		return;
+	}
+
+	/// Make a copy, since the [end_turn] was already sent to to server any changes to
+	//  next_player_number by wml would cause OOS otherwise.
+	int next_player_number = gamestate_->next_player_number_;
+	whiteboard_manager_->on_finish_side_turn(current_side());
+
+	finish_side_turn_events();
+	if(is_regular_game_end()) {
+		return;
+	}
+
+	skip_empty_sides(next_player_number);
+	bool new_turn = next_player_number > static_cast<int>(get_teams().size());
+	next_player_number = modulo(next_player_number, get_teams().size(), 1);
+
+	if(new_turn) {
+		finish_turn();
+		if(is_regular_game_end()) {
+			return;
+		}
+		// Time has run out
+		check_time_over();
+		if(is_regular_game_end()) {
+			return;
+		}
+		did_tod_sound_this_turn_ = false;
+	}
+	// the turn end event might have deleted sides, so do this again.
+	skip_empty_sides(next_player_number);
+
+	gamestate_->player_number_ = modulo(next_player_number, get_teams().size(), 1);
+	gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
+
+	if(new_turn) {
+		whiteboard_manager_->on_gamestate_change();
+		gui_->new_turn();
+		gui_->invalidate_game_status();
+	}
+	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
+	did_autosave_this_turn_ = false;
+	init_side_begin();
 }
 
 void playsingle_controller::play_scenario_main_loop()
@@ -174,13 +278,9 @@ void playsingle_controller::play_scenario_main_loop()
 		ERR_NG << "Playing game with 0 teams.";
 	}
 
-	while(true) {
+	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
 		try {
-			play_turn();
-			if(is_regular_game_end()) {
-				turn_data_.send_data();
-				return;
-			}
+			play_some();
 		} catch(const reset_gamestate_exception& ex) {
 			//
 			// TODO:
@@ -235,6 +335,71 @@ void playsingle_controller::play_scenario_main_loop()
 	} // end for loop
 }
 
+void playsingle_controller::do_end_level()
+{
+	if(game_config::exit_at_end) {
+		exit(0);
+	}
+	const bool is_victory = get_end_level_data().is_victory;
+
+	ai_testing::log_game_end();
+
+	const end_level_data& end_level = get_end_level_data();
+
+	if(get_teams().empty()) {
+		// this is probably only a story scenario, i.e. has its endlevel in the prestart event
+		return;
+	}
+
+
+	pump().fire(is_victory ? "local_victory" : "local_defeat");
+
+	{ // Block for set_scontext_synced_base
+		set_scontext_synced_base sync;
+		pump().fire(end_level.proceed_to_next_level ? level_result::victory : level_result::defeat);
+		pump().fire("scenario_end");
+	}
+
+	if(end_level.proceed_to_next_level) {
+		gamestate().board_.heal_all_survivors();
+	}
+
+	if(is_observer()) {
+		gui2::show_transient_message(_("Game Over"), _("The game is over."));
+	}
+
+	// If we're a player, and the result is victory/defeat, then send
+	// a message to notify the server of the reason for the game ending.
+	send_to_wesnothd(config {
+		"info", config {
+			"type", "termination",
+			"condition", "game over",
+			"result", is_victory ? level_result::victory : level_result::defeat,
+		},
+	});
+
+	// Play victory music once all victory events
+	// are finished, if we aren't observers and the
+	// carryover dialog isn't disabled.
+	//
+	// Some scenario authors may use 'continue'
+	// result for something that is not story-wise
+	// a victory, so let them use [music] tags
+	// instead should they want special music.
+	const std::string& end_music = select_music(is_victory);
+	if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
+		sound::empty_playlist();
+		sound::play_music_once(end_music);
+	}
+
+	persist_.end_transaction();
+	if(!is_observer()) {
+		//TODO: passing is_observer() when is_observer() is false seems wrong.
+		carryover_show_gold(gamestate(), is_observer(), saved_game_.classification().is_test());
+	}
+
+}
+
 level_result::type playsingle_controller::play_scenario(const config& level)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...";
@@ -259,101 +424,18 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 		}
 	}
 
-	gui_->labels().read(level);
-
-	// Read sound sources
-	assert(soundsources_manager_ != nullptr);
-	for(const config& s : level.child_range("sound_source")) {
-		try {
-			soundsource::sourcespec spec(s);
-			soundsources_manager_->add(spec);
-		} catch(const bad_lexical_cast&) {
-			ERR_NG << "Error when parsing sound_source config: bad lexical cast.";
-			ERR_NG << "sound_source config was: " << s.debug();
-			ERR_NG << "Skipping this sound source...";
-		}
-	}
-
-	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks());
 
 	try {
 		play_scenario_init(level);
 		// clears level config;
 		saved_game_.remove_snapshot();
 
-		if(!is_regular_game_end() && !is_linger_mode()) {
-			play_scenario_main_loop();
-		}
-
-		if(game_config::exit_at_end) {
-			exit(0);
-		}
-		const bool is_victory = get_end_level_data().is_victory;
-
-		ai_testing::log_game_end();
-
-		const end_level_data& end_level = get_end_level_data();
-
-		if(get_teams().empty()) {
-
-			// this is probably only a story scenario, i.e. has its endlevel in the prestart event
-			return level_result::type::victory;
-		}
-
-		if(is_linger_mode()) {
-			LOG_NG << "resuming from loaded linger state...";
-			if(!is_observer()) {
-				persist_.end_transaction();
-			}
-
-			return level_result::type::victory;
-		}
-
-		gamestate().gamedata_.set_phase(game_data::GAME_ENDING);
-		pump().fire(is_victory ? "local_victory" : "local_defeat");
-
-		{ // Block for set_scontext_synced_base
-			set_scontext_synced_base sync;
-			pump().fire(end_level.proceed_to_next_level ? level_result::victory : level_result::defeat);
-			pump().fire("scenario_end");
-		}
-
-		if(end_level.proceed_to_next_level) {
-			gamestate().board_.heal_all_survivors();
-		}
+		play_scenario_main_loop();
 
 		if(is_observer()) {
-			gui2::show_transient_message(_("Game Over"), _("The game is over."));
 			return level_result::type::observer_end;
 		}
-
-		// If we're a player, and the result is victory/defeat, then send
-		// a message to notify the server of the reason for the game ending.
-		send_to_wesnothd(config {
-			"info", config {
-				"type", "termination",
-				"condition", "game over",
-				"result", is_victory ? level_result::victory : level_result::defeat,
-			},
-		});
-
-		// Play victory music once all victory events
-		// are finished, if we aren't observers and the
-		// carryover dialog isn't disabled.
-		//
-		// Some scenario authors may use 'continue'
-		// result for something that is not story-wise
-		// a victory, so let them use [music] tags
-		// instead should they want special music.
-		const std::string& end_music = select_music(is_victory);
-		if((!is_victory || end_level.transient.carryover_report) && !end_music.empty()) {
-			sound::empty_playlist();
-			sound::play_music_once(end_music);
-		}
-
-		persist_.end_transaction();
-
-		return level_result::get_enum(end_level.test_result).value_or(is_victory ? level_result::type::victory : level_result::type::defeat);
+		return level_result::get_enum(get_end_level_data().test_result).value_or(get_end_level_data().is_victory ? level_result::type::victory : level_result::type::defeat);
 	} catch(const savegame::load_game_exception&) {
 		// Loading a new game is effectively a quit.
 		saved_game_.clear();
@@ -503,7 +585,6 @@ void playsingle_controller::play_human_turn()
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
-	gamestate().gamedata_.set_phase(game_data::GAME_ENDED);
 
 	// If we need to set the status depending on the completion state
 	// the key to it is here.
@@ -520,7 +601,6 @@ void playsingle_controller::linger()
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.
 		end_turn_enable(true);
-		end_turn_requested_ = false;
 		while(!end_turn_requested_) {
 			play_slice();
 		}
@@ -664,9 +744,8 @@ void playsingle_controller::maybe_linger()
 {
 	// mouse_handler expects at least one team for linger mode to work.
 	assert(is_regular_game_end());
-	if(get_end_level_data().transient.linger_mode && !get_teams().empty()) {
-		linger();
-	}
+	linger();
+	end_turn_requested_ = true;
 }
 
 void playsingle_controller::sync_end_turn()
