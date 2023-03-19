@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
 "PO-Revision-Date: 2023-01-27 15:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -6158,6 +6158,94 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "验证失败，详情不明。"
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "场景报告"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "胜利"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "你赢得了胜利！"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "失败"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "你被击败了！"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "所剩金币："
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "提前结束回合数："
+
+#: src/carryover_show_gold.cpp:102
+msgid " per turn"
+msgstr " /回合"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "提前过关奖励："
+
+#: src/carryover_show_gold.cpp:103
+msgid "Total bonus: "
+msgstr "总奖励："
+
+#: src/carryover_show_gold.cpp:106
+msgid "Total gold: "
+msgstr "总金币："
+
+#: src/carryover_show_gold.cpp:110
+msgid "Carryover percentage: "
+msgstr "金币转移比例："
+
+#: src/carryover_show_gold.cpp:114
+msgid "Bonus gold: "
+msgstr "奖励金币："
+
+#: src/carryover_show_gold.cpp:116
+msgid "Retained gold: "
+msgstr "保有金币："
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一幕场景。"
+msgstr[1] ""
+"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一幕场景。"
+
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] "你将以指定的最小起始金币数来开始下一幕场景。"
+msgstr[1] "你将以指定的最小起始金币数来开始下一幕场景。"
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一幕场景。"
+msgstr[1] ""
+"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一幕场景。"
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "已加入忽略列表：$nick"
@@ -6829,125 +6917,37 @@ msgstr "你尝试登录的次数太多了。"
 msgid "Password hashing failed."
 msgstr "密码哈希操作失败。"
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "场景报告"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "胜利"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "你赢得了胜利！"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "失败"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "你被击败了！"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "所剩金币："
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "提前结束回合数："
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid " per turn"
-msgstr " /回合"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "提前过关奖励："
-
-#: src/game_initialization/playcampaign.cpp:125
-msgid "Total bonus: "
-msgstr "总奖励："
-
-#: src/game_initialization/playcampaign.cpp:128
-msgid "Total gold: "
-msgstr "总金币："
-
-#: src/game_initialization/playcampaign.cpp:132
-msgid "Carryover percentage: "
-msgstr "金币转移比例："
-
-#: src/game_initialization/playcampaign.cpp:136
-msgid "Bonus gold: "
-msgstr "奖励金币："
-
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Retained gold: "
-msgstr "保有金币："
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一幕场景。"
-msgstr[1] ""
-"除了指定的最小起始金币数以外，你将以$gold|枚额外金币来开始下一幕场景。"
-
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "你将以指定的最小起始金币数来开始下一幕场景。"
-msgstr[1] "你将以指定的最小起始金币数来开始下一幕场景。"
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一幕场景。"
-msgstr[1] ""
-"你将以$gold|枚金币或者场景指定的最小起始金币数中较高者来开始下一幕场景。"
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "无法载入游戏： "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "进行游戏时发生错误："
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "无法载入游戏地图： "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr "地图生成器错误："
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "读取WML文件时出错： "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "游戏结束"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "此场景结束了。你要继续这个战役吗？"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "未知场景：“$scenario|”"
 
@@ -7033,9 +7033,19 @@ msgstr "在大厅中"
 msgid "Other Games"
 msgstr "保存游戏"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
 msgstr "匹配历史 — $player"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "时代："
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7137,7 +7147,7 @@ msgstr "派系"
 msgid "Races: "
 msgstr "种族："
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
 msgstr "立场："
 
@@ -7149,33 +7159,21 @@ msgstr "首领"
 msgid "Recruits"
 msgstr "新兵"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "无可用描述。"
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-msgid "Availability: "
-msgstr "可用性："
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr "必备"
-
-#: src/help/help_impl.cpp:773
-msgid "Unavailable"
-msgstr "不可用"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "杂项"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "立场："
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7185,23 +7183,23 @@ msgid ""
 "text='$help_taxonomy'</ref>."
 msgstr "这是一组单位，他们都是<ref>dst='$topic_id' text='$help_taxonomy'</ref>"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='这组单位中的子组'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='此种族的单位组'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='此组的单位'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='此种族的单位'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "损坏的原始文件"
 
@@ -7947,6 +7945,39 @@ msgstr "$name|接管了控制权"
 msgid "Turn changed"
 msgstr "回合改变了"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid ""
+#| "An error occurred while downloading the add-ons list from the server."
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr "从服务器上下载附加组件列表时发生错误。"
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid "Download error"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+msgid "Download complete"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved."
+msgid "The file has been downloaded."
+msgstr "游戏已保存。"
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到了移动消耗小于1的地形。"
@@ -7958,31 +7989,31 @@ msgstr "遇到了移动消耗小于1的地形。"
 msgid "waiting for^a global variable"
 msgstr "全局变量"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "本回合剩余时间"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "当前本地时间"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "游戏失去了同步。继续游戏似乎没有多少意义了。你要保存你的游戏吗？"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "错误细节："
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr "警告：战役分支损坏"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7991,7 +8022,7 @@ msgid_plural ""
 msgstr[0] "下个场景缺失，你将不能完成此战役。"
 msgstr[1] "部分可能会成为下个场景的场景缺失，你也许将不能完成此战役。"
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8005,11 +8036,11 @@ msgstr[1] ""
 "请将以下缺失场景报告给战役作者：\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "这一问题修正后，你需要重启本场景。"
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "没有可用的任务目标"
 
@@ -8084,31 +8115,31 @@ msgstr "游戏结束了。"
 msgid "It is now $name|’s turn"
 msgstr "现在是$name|的回合"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "将控制权交给其友方$player"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "将控制权交给观察者$player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "让AI替换上阵"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "让本地玩家替换上阵"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "将阵营设为空闲"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "保存并中止游戏"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8199,7 +8230,7 @@ msgstr "不可治疗"
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 
 #: src/reports.cpp:361
@@ -8764,7 +8795,7 @@ msgstr "想要在继续之前保存游戏吗？"
 msgid "Debug Command Used"
 msgstr "使用了调试命令"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "在$player|的回合中，使用调试模式创建了一个单位"
 
@@ -9038,6 +9069,15 @@ msgstr "隐藏$player的计划"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "白板选项"
+
+#~ msgid "Availability: "
+#~ msgstr "可用性："
+
+#~ msgid "Must-have"
+#~ msgstr "必备"
+
+#~ msgid "Unavailable"
+#~ msgstr "不可用"
 
 #, fuzzy
 #~| msgid "Units"

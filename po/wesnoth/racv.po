@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -5766,6 +5766,115 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Informe de l'escenari"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Victòria"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "¡Has segut el vencedor!"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Derrota"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "¡Has segut derrotat!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Or restant: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Tandes acabades pronte: "
+
+#: src/carryover_show_gold.cpp:102
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "per tanda"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Bonificació per rapidea: "
+
+#: src/carryover_show_gold.cpp:103
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "Tandes bonificades: "
+
+#: src/carryover_show_gold.cpp:106
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Or per aldea: "
+
+#: src/carryover_show_gold.cpp:110
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "Percentage pospost:"
+
+#: src/carryover_show_gold.cpp:114
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Bonificació d'or: "
+
+#: src/carryover_show_gold.cpp:116
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Or conservat: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+msgstr[1] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+
+#: src/carryover_show_gold.cpp:136
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+msgstr[1] ""
+"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
+"inicial."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
+"definit, lo que siga més alt."
+msgstr[1] ""
+"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
+"definit, lo que siga més alt."
+
 #: src/chat_command_handler.cpp:82
 #, fuzzy
 msgid "Added to ignore list: $nick"
@@ -6514,146 +6623,37 @@ msgstr ""
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Informe de l'escenari"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Victòria"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "¡Has segut el vencedor!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Derrota"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "¡Has segut derrotat!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Or restant: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Tandes acabades pronte: "
-
-#: src/game_initialization/playcampaign.cpp:124
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "per tanda"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Bonificació per rapidea: "
-
-#: src/game_initialization/playcampaign.cpp:125
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "Tandes bonificades: "
-
-#: src/game_initialization/playcampaign.cpp:128
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Or per aldea: "
-
-#: src/game_initialization/playcampaign.cpp:132
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "Percentage pospost:"
-
-#: src/game_initialization/playcampaign.cpp:136
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Bonificació d'or: "
-
-#: src/game_initialization/playcampaign.cpp:138
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Or conservat: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-msgstr[1] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-
-#: src/game_initialization/playcampaign.cpp:158
-#, fuzzy
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-msgstr[1] ""
-"Començarà el següent escenari ab $gold sumat a l'or definit com el mínim "
-"inicial."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
-"definit, lo que siga més alt."
-msgstr[1] ""
-"Començarà el següent escenari ab $gold o ab l'or mínim inicial que tinga "
-"definit, lo que siga més alt."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "No ha segut possible carregar la partida:"
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Erro mentres es llegia el WML:"
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Partida perduda"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Est escenari ha acabat. ¿Voleu continuar la campanya?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenari desconegut: '$scenario|'"
 
@@ -6742,8 +6742,18 @@ msgstr "Sala de joc"
 msgid "Other Games"
 msgstr "Observar joc"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Era:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
@@ -6867,7 +6877,7 @@ msgstr "Facció"
 msgid "Races: "
 msgstr "Raça:"
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
@@ -6882,65 +6892,50 @@ msgstr "Líder: "
 msgid "Recruits"
 msgstr "Reclutes"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 #, fuzzy
 msgid "No description available."
 msgstr "No hi ha objectius"
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-#, fuzzy
-msgid "Availability: "
-msgstr "Habilitats: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr ""
-
-#: src/help/help_impl.cpp:773
-#, fuzzy
-#| msgid "Era not available"
-msgid "Unavailable"
-msgstr "Era no disponible"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Miscelànea"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Alineació: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Unitats ab esta habilitat'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unitats d'esta raça'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "archiu original corromput"
 
@@ -7777,6 +7772,39 @@ msgstr ""
 msgid "Turn changed"
 msgstr "distància"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr "Erro de comunicació ab el servidor."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+msgid "Download error"
+msgstr "Descàrregues "
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+msgid "Download complete"
+msgstr "Descàrregues "
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved"
+msgid "The file has been downloaded."
+msgstr "La partida ha segut guardada."
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "S'ha trobat un terreny ab un cost de moviment menor que 1."
@@ -7788,15 +7816,15 @@ msgstr "S'ha trobat un terreny ab un cost de moviment menor que 1."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 #, fuzzy
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
@@ -7805,18 +7833,18 @@ msgstr ""
 "La partida no està sincronisada i haurà de finalisar. ¿Vols guardar un "
 "registre d'erros de la partida?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 #, fuzzy
 msgid "Error details:"
 msgstr "Erro"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7825,7 +7853,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7835,11 +7863,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "No hi ha objectius"
 
@@ -7917,35 +7945,35 @@ msgstr "La partida ha acabat."
 msgid "It is now $name|’s turn"
 msgstr "És la tanda de $name|."
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr ""
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 #, fuzzy
 #| msgid "Send to observers only"
 msgid "Give control to observer $player"
 msgstr "Enviar només als observadors"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Reemplaçar ab IA"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Reemplaçar ab jugador local"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Acabar la partida"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -8057,7 +8085,7 @@ msgstr "Era no disponible"
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 
 #: src/reports.cpp:361
@@ -8678,7 +8706,7 @@ msgstr "¿Vols guardar la repetició d'est escenari?"
 msgid "Debug Command Used"
 msgstr "Órdens del modo de depuració"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
@@ -9006,6 +9034,15 @@ msgstr "Reemplaçar ab $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Availability: "
+#~ msgstr "Habilitats: "
+
+#, fuzzy
+#~| msgid "Era not available"
+#~ msgid "Unavailable"
+#~ msgstr "Era no disponible"
 
 #, fuzzy
 #~| msgid "Unit List"
@@ -11627,10 +11664,6 @@ msgstr ""
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Multijugador"
-
-#, fuzzy
-#~ msgid "Download"
-#~ msgstr "Descàrregues "
 
 #~ msgid "No time of day has been defined."
 #~ msgstr "No s'ha definit l'hora del dia."

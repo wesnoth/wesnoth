@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -5717,6 +5717,115 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Skýrsla leikjar"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Sigur"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "Þú sigraðir! Jey."
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Tap"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "Þú hefur verið sigraður!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Afgangs gull: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Lotur kláraðar fyrr: "
+
+#: src/carryover_show_gold.cpp:102
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "hverja lotu"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Bónus fyrir að klára snemma: "
+
+#: src/carryover_show_gold.cpp:103
+#, fuzzy
+#| msgid "Early finish bonus: "
+msgid "Total bonus: "
+msgstr "Bónus fyrir að klára snemma: "
+
+#: src/carryover_show_gold.cpp:106
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Tekjur þorps: "
+
+#: src/carryover_show_gold.cpp:110
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "Prósentan sem færist yfir: "
+
+#: src/carryover_show_gold.cpp:114
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Bónus gull: "
+
+#: src/carryover_show_gold.cpp:116
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Fengið gull: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
+"þá atburðarás."
+msgstr[1] ""
+"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
+"þá atburðarás."
+
+#: src/carryover_show_gold.cpp:136
+#, fuzzy
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
+"þá atburðarás."
+msgstr[1] ""
+"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
+"þá atburðarás."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
+"atburðarás, hvort sem er hærra."
+msgstr[1] ""
+"­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
+"atburðarás, hvort sem er hærra."
+
 #: src/chat_command_handler.cpp:82
 #, fuzzy
 msgid "Added to ignore list: $nick"
@@ -6494,146 +6603,37 @@ msgstr ""
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Skýrsla leikjar"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Sigur"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "Þú sigraðir! Jey."
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Tap"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "Þú hefur verið sigraður!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Afgangs gull: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Lotur kláraðar fyrr: "
-
-#: src/game_initialization/playcampaign.cpp:124
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "hverja lotu"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Bónus fyrir að klára snemma: "
-
-#: src/game_initialization/playcampaign.cpp:125
-#, fuzzy
-#| msgid "Early finish bonus: "
-msgid "Total bonus: "
-msgstr "Bónus fyrir að klára snemma: "
-
-#: src/game_initialization/playcampaign.cpp:128
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Tekjur þorps: "
-
-#: src/game_initialization/playcampaign.cpp:132
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "Prósentan sem færist yfir: "
-
-#: src/game_initialization/playcampaign.cpp:136
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Bónus gull: "
-
-#: src/game_initialization/playcampaign.cpp:138
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Fengið gull: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
-"þá atburðarás."
-msgstr[1] ""
-"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
-"þá atburðarás."
-
-#: src/game_initialization/playcampaign.cpp:158
-#, fuzzy
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
-"þá atburðarás."
-msgstr[1] ""
-"Þú munt byrja næstu atburðarás með $gold ofan á lágmarks stillt gull fyrir "
-"þá atburðarás."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
-"atburðarás, hvort sem er hærra."
-msgstr[1] ""
-"­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
-"atburðarás, hvort sem er hærra."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Leikurinn gat ekki hlaðst: "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Villa við spilun leiks: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "Kortið gat ekki hlaðst: "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Villa við lesningu WML: "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Leik lokið"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Þessi atburðarás hefur lokið. Viltu halda áfram við herferðina?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Óþekkt atburðarás: '$scenario|'"
 
@@ -6722,8 +6722,18 @@ msgstr "Leikherbergi"
 msgid "Other Games"
 msgstr "Athuga leik"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Tímabil:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
@@ -6842,7 +6852,7 @@ msgstr "Klíka"
 msgid "Races: "
 msgstr "Ætt: "
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
@@ -6857,42 +6867,27 @@ msgstr "Leiðtogi: "
 msgid "Recruits"
 msgstr "Nýliðar"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Engin lýsing til staðar."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-#, fuzzy
-msgid "Availability: "
-msgstr "Hæfileikar: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr ""
-
-#: src/help/help_impl.cpp:773
-#, fuzzy
-#| msgid " No help available."
-msgid "Unavailable"
-msgstr " Engin hjálp til staðar."
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Annað"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Stilling: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6904,7 +6899,7 @@ msgstr ""
 "\n"
 "<header>text=Meiðsl</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6916,7 +6911,7 @@ msgstr ""
 "\n"
 "<header>text=Meiðsl</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6928,7 +6923,7 @@ msgstr ""
 "\n"
 "<header>text=Meiðsl</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6940,7 +6935,7 @@ msgstr ""
 "\n"
 "<header>text=Meiðsl</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "skemmd upprunaleg skrá"
 
@@ -7735,6 +7730,40 @@ msgstr ""
 msgid "Turn changed"
 msgstr "langdræg"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid "An error occurred while communicating with the server."
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr "Villa átti sér stað við samskipti við miðlara."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+msgid "Download error"
+msgstr "Niðurhöl"
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+msgid "Download complete"
+msgstr "Niðurhöl"
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved"
+msgid "The file has been downloaded."
+msgstr "Leikurinn hefur verið vistaður"
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Fann jörð með kostnað hreyfingar minni en 1."
@@ -7746,32 +7775,32 @@ msgstr "Fann jörð með kostnað hreyfingar minni en 1."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 #, fuzzy
 msgid "Error details:"
 msgstr "Villa: "
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7780,7 +7809,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7790,11 +7819,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "Engin markmið til staðar"
 
@@ -7865,37 +7894,37 @@ msgstr "Leik lokið."
 msgid "It is now $name|’s turn"
 msgstr "Nú er lota $name|"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Gefa gull til núverandi spilara."
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Gefa gull til núverandi spilara."
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Skipta út fyrir gervigreind"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Skipta út fyrir staðarspilara"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Hætta við leik"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -8008,7 +8037,7 @@ msgstr "Ógengilegt"
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 
 #: src/reports.cpp:361
@@ -8622,7 +8651,7 @@ msgstr ""
 msgid "Debug Command Used"
 msgstr "Aflúsunarhamsskipanir"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
@@ -8948,6 +8977,15 @@ msgstr "Skipta út fyrir $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Availability: "
+#~ msgstr "Hæfileikar: "
+
+#, fuzzy
+#~| msgid " No help available."
+#~ msgid "Unavailable"
+#~ msgstr " Engin hjálp til staðar."
 
 #, fuzzy
 #~| msgid "Unit List"
@@ -11307,10 +11345,6 @@ msgstr ""
 #~| msgid "Multiplayer"
 #~ msgid "Multiplayer define"
 #~ msgstr "Fjölspilun"
-
-#, fuzzy
-#~ msgid "Download"
-#~ msgstr "Niðurhöl"
 
 #~ msgid "No time of day has been defined."
 #~ msgstr "Enginn tími dags hefur verið stilltur."
