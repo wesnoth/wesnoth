@@ -28,7 +28,7 @@ end_level_data::end_level_data()
 	, replay_save(true)
 	, proceed_to_next_level(false)
 	, is_victory(true)
-	, test_result(level_result::result_not_set)
+	, test_result("")
 	, transient()
 {
 }
