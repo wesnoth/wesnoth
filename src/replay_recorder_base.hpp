@@ -54,6 +54,10 @@ public:
 	void write(config& out) const;
 
 	void delete_upcoming_commands();
+
+	/// checks whether the parameter is an earlier state in the
+	/// same "savegame gamestate branch"
+	bool is_ancestor(const config& other_replay) const;
 protected:
 	config upload_log_;
 	boost::ptr_vector<config> commands_;

@@ -144,6 +144,20 @@ void replay_recorder_base::delete_upcoming_commands()
 	commands_.resize(pos_);
 }
 
+bool replay_recorder_base::is_ancestor(const config& other_replay) const
+{
+	auto other_commands = other_replay.child_range("command");
+	if(other_commands.size() > commands_.size()) {
+		return false;
+	}
+	for(size_t index = 0; index < other_commands.size(); ++index) {
+		if(commands_[index] != other_commands[index]) {
+			return false;
+		}
+	}
+	return true;
+}
+
 void swap(replay_recorder_base& lhs, replay_recorder_base& rhs)
 {
 	lhs.swap(rhs);
