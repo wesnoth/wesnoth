@@ -19,6 +19,7 @@
 #include "play_controller.hpp"
 
 #include "cursor.hpp"
+#include "lua_jailbreak_exception.hpp"
 #include "playturn_network_adapter.hpp"
 #include "playturn.hpp"
 #include "replay.hpp"
@@ -28,12 +29,16 @@
 class replay_controller;
 class saved_game;
 
-struct reset_gamestate_exception : public std::exception
+struct reset_gamestate_exception : public lua_jailbreak_exception, public std::exception
 {
 	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
 	std::shared_ptr<config> level;
 	std::shared_ptr<config> stats_;
 	bool start_replay;
+	const char * what() const noexcept { return "reset_gamestate_exception"; }
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(reset_gamestate_exception)
 };
 
 class playsingle_controller : public play_controller
