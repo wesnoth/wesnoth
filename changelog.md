@@ -4,6 +4,8 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+   * The game no longer crashes when using "Back To Turn" after the game has
+     ended in multiplayer #4236
  ### Lua API
  ### Packaging
  ### Terrain
@@ -12,6 +14,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * The replay viewer now also replays victory/defeat events properly #4667, #6180
 
 ## Version 1.17.14
  ### Campaigns
