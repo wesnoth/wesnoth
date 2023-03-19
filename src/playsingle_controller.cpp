@@ -353,12 +353,7 @@ level_result::type playsingle_controller::play_scenario(const config& level)
 
 		persist_.end_transaction();
 
-		level_result::type res = level_result::get_enum(end_level.test_result).value_or(level_result::type::test_invalid);
-		if(res == level_result::type::result_not_set) {
-			return is_victory ? level_result::type::victory : level_result::type::defeat;
-		} else {
-			return res;
-		}
+		return level_result::get_enum(end_level.test_result).value_or(is_victory ? level_result::type::victory : level_result::type::defeat);
 	} catch(const savegame::load_game_exception&) {
 		// Loading a new game is effectively a quit.
 		saved_game_.clear();
