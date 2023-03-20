@@ -12,8 +12,8 @@
  ### Translations
  ### Units
  ### User interface
-   * The "Back To Turn" menu now replays the turn in singelplayer too. however
-     the Continue button can be used to 'load' the game from any given position.
+   * The "Back To Turn" menu now replays the turn in singelplayer too. However,
+     the Continue button can be used to resume the game from any given position.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * The replay viewer now also replays victory/defeat events properly #4667, #6180
