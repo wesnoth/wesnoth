@@ -365,10 +365,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		if(chat_only) {
 			return PROCESS_CANNOT_HANDLE;
 		}
-		std::shared_ptr<gui::button> btn_end = display::get_singleton()->find_action_button("button-endturn");
-		if(btn_end) {
-			btn_end->enable(true);
-		}
 		return PROCESS_END_LINGER;
 	}
 

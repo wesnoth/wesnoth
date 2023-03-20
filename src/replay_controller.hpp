@@ -41,7 +41,7 @@ public:
 	void replay_next_turn();
 	void replay_next_side();
 	void replay_next_move();
-	REPLAY_RETURN play_side_impl();
+	void play_side_impl();
 
 	bool recorder_at_end() const;
 	bool should_stop() const { return stop_condition_->should_stop(); }

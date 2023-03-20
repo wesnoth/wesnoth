@@ -33,7 +33,7 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 
-void carryover_show_gold(game_state& state, bool is_observer, bool is_test)
+void carryover_show_gold(game_state& state, bool hidden, bool is_observer, bool is_test)
 {
 	assert(state.end_level_data_);
 	game_board& board = state.board_;
@@ -153,7 +153,7 @@ void carryover_show_gold(game_state& state, bool is_observer, bool is_test)
 		}
 	}
 
-	if(end_level.transient.carryover_report) {
+	if(end_level.transient.carryover_report && !hidden) {
 		gui2::show_transient_message(title, report.str(), "", true);
 	}
 }

@@ -4,14 +4,20 @@
  ### Campaigns
  ### Editor
  ### Multiplayer
+   * The game no longer crashes when using "Back To Turn" after the game has
+     ended in multiplayer #4236
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
  ### Units
  ### User interface
+   * The "Back To Turn" menu now replays the turn in singelplayer too. However,
+     the Continue button can be used to resume the game from any given position.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * The replay viewer now also replays victory/defeat events properly #4667, #6180
+   * Fixes undo stack getting corrupted by reloading #7253
 
 ## Version 1.17.14
  ### Campaigns
