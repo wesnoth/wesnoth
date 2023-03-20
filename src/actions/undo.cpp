@@ -424,7 +424,7 @@ void undo_list::redo()
 	auto error_handler =  [](const std::string&  msg) {
 		ERR_NG << "Out of sync when redoing: " << msg;
 		gui2::show_transient_message(_("Redo Error"),
-					_("The redo stack is out of sync, can is most likeley caused by a corrupt savefile or by a faulty wml code in the scenario or era, details:") + msg);
+					_("The redo stack is out of sync. This is most commonly caused by a corrupt save file or by faulty WML code in the scenario or era. Details:") + msg);
 
 	};
 	// synced_context::run readds the undo command with the normal undo_lis::add function which clears the
