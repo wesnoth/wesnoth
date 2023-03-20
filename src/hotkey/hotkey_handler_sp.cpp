@@ -18,6 +18,7 @@
 #include "filesystem.hpp" // for get_saves_dir()
 #include "font/standard_colors.hpp"
 #include "formula/string_utils.hpp"
+#include "gui/dialogs/message.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "map/label.hpp"
@@ -28,7 +29,7 @@
 #include "game_events/wmi_manager.hpp"
 #include "map/map.hpp"
 #include "save_index.hpp"
-#include "gui/dialogs/message.hpp"
+#include "saved_game.hpp"
 #include "resources.hpp"
 #include "replay.hpp"
 
@@ -224,7 +225,9 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_RECALL:
 			return (!browse() || whiteboard_manager_->is_active()) && !linger() && !events::commands_disabled;
 		case hotkey::HOTKEY_ENDTURN:
-			return (!browse() || linger()) && !events::commands_disabled;
+			//TODO: Its unclear to me under which cirumstances the other clients can remain in linger mode
+			//      when the host pressed scenario, some codes suggest that tha can be the case some don't.
+			return (!browse() || (linger() && playsingle_controller_.is_host())) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
 			return !linger()
@@ -306,24 +309,34 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 
 void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
 {
-	if(playsingle_controller_.is_networked_mp())
-	{
-		config savegame;
-		std::string error_log;
-		savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
 
-		if(!error_log.empty() || savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
-			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + error_log);
-			return;
+	auto invalid_save_file = [this, filename](std::string msg){
+		if(playsingle_controller_.is_networked_mp()) {
+			gui2::show_error_message(msg);
+		} else {
+			const int res = gui2::show_message("", msg + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
+			if(res == gui2::retval::CANCEL) {
+				play_controller::hotkey_handler::load_autosave(filename);
+			}
 		}
-		std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
-		std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
-		throw reset_gamestate_exception(res, stats, true);
+	};
+
+	config savegame;
+	std::string error_log;
+	savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
+
+	if(!error_log.empty() || savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
+		invalid_save_file(_("The file you have tried to load is corrupt: '") + error_log);
+		return;
 	}
-	else
-	{
-		play_controller::hotkey_handler::load_autosave(filename);
+	if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))) {
+		invalid_save_file(_("The file you have tried to load is not from the current session"));
+		return;
 	}
+
+	std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
+	std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
+	throw reset_gamestate_exception(res, stats, true);
 }
 
 void playsingle_controller::hotkey_handler::replay_exit()

@@ -219,6 +219,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
+		// Only the host receives this message when a player leaves/disconnects.
 		const int  side_drop = side_drop_c["side_num"].to_int(0);
 		std::size_t index = side_drop -1;
 
@@ -363,10 +364,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	else if (cfg.child("notify_next_scenario")) {
 		if(chat_only) {
 			return PROCESS_CANNOT_HANDLE;
-		}
-		std::shared_ptr<gui::button> btn_end = display::get_singleton()->find_action_button("button-endturn");
-		if(btn_end) {
-			btn_end->enable(true);
 		}
 		return PROCESS_END_LINGER;
 	}

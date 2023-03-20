@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
+"POT-Creation-Date: 2023-03-19 02:33 UTC\n"
 "PO-Revision-Date: 2021-10-27 09:46+0200\n"
 "Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <ai0867@gmail.com>\n"
@@ -3893,7 +3893,7 @@ msgstr ""
 
 #. [unit]: type=Dark Assassin Cloaked, id=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:994
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2045
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2114
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2381
 #, fuzzy
 msgid "Cloaked Figure"
@@ -4017,7 +4017,7 @@ msgstr "Een ondergronds gevecht"
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:48
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:96
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1112
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1181
 msgid "team_name^Trolls"
 msgstr ""
 
@@ -4025,7 +4025,7 @@ msgstr ""
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:146
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:195
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1159
 msgid "team_name^Dwarves"
 msgstr ""
 
@@ -4438,25 +4438,32 @@ msgid "Troll Leader"
 msgstr "Trollenleider"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:935
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:942
 #, fuzzy
 msgid "Whoa."
 msgstr "Woaah."
 
+#. [message]: speaker=$explorer.id
+#. "this" refers to the trolls and dwarves fighting
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
+#, fuzzy
+msgid "Whoa. Kaleh, you have to come see this."
+msgstr "Kaleh, ik denk dat je naar boven moet komen om dit te zien."
+
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:986
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
 #, fuzzy
 msgid "I think I preferred the spider and the ants..."
 msgstr "Ik denk dat ik liever de spin en de mieren heb..."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:991
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1060
 #, fuzzy
 msgid "Stand firm, boys, here they come!"
 msgstr "Blijf stevig staan, hier komen ze!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:996
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1065
 #, fuzzy
 msgid ""
 "You invade our tunnels, you slaughter our people, by Griknagh we will make "
@@ -4466,7 +4473,7 @@ msgstr ""
 "kinderen, bij Griknagh, jullie zullen hiervoor boeten!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1001
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1070
 #, fuzzy
 msgid ""
 "Tenacious savages, aren’t they? But these tunnels are rich in ore, and we "
@@ -4476,42 +4483,42 @@ msgstr ""
 "ons niet tegenhouden door een troepje trollen."
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1006
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1075
 #, fuzzy
 msgid "Wait... What... Who are you?"
 msgstr "Wacht...Wat...Wie ben je?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1011
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1080
 #, fuzzy
 msgid "Uh..."
 msgstr "Euh..."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1016
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1085
 msgid "What by the names of my forefathers are they?"
 msgstr ""
 
 #. [message]: speaker=first_dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1021
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1090
 #, fuzzy
 msgid "Wait a minute... Vacuous eyes, pointy ears — they must be elves."
 msgstr "Wacht even...blond haar, puntige oren, het moeten elven zijn."
 
 #. [message]: speaker=second_dwarf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1026
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1095
 #, fuzzy
 msgid "Elves?! What in the nine hells are elves doing down here?"
 msgstr "Elven!?! Wat doen de elven hier?"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1031
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1100
 #, fuzzy
 msgid "Never mind that, who are you?"
 msgstr "Maakt niet uit, wie ben je?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1036
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1105
 #, fuzzy
 msgid ""
 "I am Kaleh, and we are the Quenoth Elves. What in Eloh’s name is going on "
@@ -4520,7 +4527,7 @@ msgstr ""
 "Ik ben Kaleh, en we zijn de Quenoth elven. Wat in Eloh’s naam gebeurt hier?"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1041
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1110
 #, fuzzy
 msgid ""
 "They invade our land and kill our young. Dwarves always want more, always "
@@ -4530,7 +4537,7 @@ msgstr ""
 "altijd meer, altijd begerig naar fonkelende rotsen."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1046
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1115
 #, fuzzy
 msgid ""
 "Those monsters killed me boys. Kaleh, if you be of stout heart, help us "
@@ -4540,13 +4547,13 @@ msgstr ""
 "hebt, help ons deze sukkels uit onze tunnels te verdrijven."
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1051
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1120
 #, fuzzy
 msgid "No, this is our home. Help us, little ones, and we will help you."
 msgstr "Nee, dit is ons huis. Help ons, kleintjes, en wij helpen jullie."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1056
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1125
 #, fuzzy
 msgid ""
 "There’s too many of them for us to try to take them both on, and besides "
@@ -4561,7 +4568,7 @@ msgstr ""
 "vinden."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1061
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1130
 #, fuzzy
 msgid ""
 "But even if we do, what about all of our people? How can we safely escort "
@@ -4571,7 +4578,7 @@ msgstr ""
 "deze oorlogszone krijgen?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1067
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1136
 #, fuzzy
 msgid ""
 "We won’t. If we keep the majority of our people hidden back up the passage "
@@ -4587,20 +4594,20 @@ msgstr ""
 "onderhandelen een veilige doorgang krijgen."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1076
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1145
 #, fuzzy
 msgid "But they both look evenly matched. Who should we ally with?"
 msgstr ""
 "Maar ze lijken beiden ongeveer even sterk. Met wie zullen we vrede sluiten?"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1079
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1148
 #, fuzzy
 msgid "Let’s aid the dwarves."
 msgstr "Laten we de dwergen helpen."
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1095
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1164
 #, fuzzy
 msgid ""
 "Bah! Your kind all the same. Everyone turns on trolls. But you’ll see, "
@@ -4610,13 +4617,13 @@ msgstr ""
 "je zal zien, Griknagh zal jullie allemaal verpletteren."
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1101
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1170
 #, fuzzy
 msgid "Let’s aid the trolls."
 msgstr "Laten we de trollen helpen."
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1117
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1186
 #, fuzzy
 msgid ""
 "I knew elves couldn’t be trusted. Foolish boy, you will regret your "
@@ -4626,7 +4633,7 @@ msgstr ""
 "je verraad betreuren. Smaak dwergenstaal!"
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1132
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1201
 #, fuzzy
 msgid ""
 "There seems to be an abandoned dwarvish fortress right in front of us. If we "
@@ -4639,79 +4646,79 @@ msgstr ""
 
 #. [then]
 #. [modify_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1149
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1151
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1152
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1154
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1218
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1220
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1221
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1223
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1287
 #, fuzzy
 msgid "Troll Skirmisher"
 msgstr "Trolse warzaaier"
 
 #. [else]
 #. [modify_unit]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1162
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1164
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1166
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1172
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1273
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1231
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1233
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1235
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1241
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1342
 #, fuzzy
 msgid "Dwarf Skirmisher"
 msgstr "Dwergenwarzaaier"
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1169
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1238
 #, fuzzy
 msgid "Dwarf Thunderer"
 msgstr "Dwerg donderaar"
 
 #. [unit]: type=Dwarvish Explorer, id=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1282
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1351
 #, fuzzy
 msgid "Fundin"
 msgstr "Fundin"
 
 #. [unit]: type=Dwarvish Explorer, id=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1295
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1364
 #, fuzzy
 msgid "Nori"
 msgstr "Nori"
 
 #. [unit]: type=Troll Warrior, id=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1310
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1379
 #, fuzzy
 msgid "Thungar"
 msgstr "Thungar"
 
 #. [unit]: type=Troll Warrior, id=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1323
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1392
 #, fuzzy
 msgid "Gnarl"
 msgstr "Gnarl"
 
 #. [then]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1450
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1461
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1473
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1484
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1519
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1530
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1542
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1553
 #, fuzzy
 msgid "Troll Flamecaster"
 msgstr "Trollenvuurtovenaar"
 
 #. [message]: speaker=Troll Flamecaster
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1489
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1558
 #, fuzzy
 msgid "Burn, burn and die!"
 msgstr "Brand, Brand en sterf!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1500
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1569
 #, fuzzy
 msgid "Dive for cover!"
 msgstr "Duik om je te beschermen!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1505
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1574
 #, fuzzy
 msgid ""
 "Those new troll shamans are decimating the dwarves with blasts of fire! This "
@@ -4721,30 +4728,30 @@ msgstr ""
 "goed uit."
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1613
 msgid "Aauughh!"
 msgstr ""
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1553
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1729
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1622
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1798
 msgid "No...!"
 msgstr ""
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1631
 #, fuzzy
 msgid "Help me!!"
 msgstr "Help me!!!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1591
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1660
 #, fuzzy
 msgid "More accursed troll magic. Fall back!"
 msgstr "Meer verduivelde trollenmagie. Trek terug!"
 
 #. [message]: speaker=Dwarf Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1597
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1666
 #, fuzzy
 msgid ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
@@ -4756,17 +4763,17 @@ msgstr ""
 "over je waken."
 
 #. [else]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1617
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1626
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1637
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1649
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1660
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1686
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1695
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1706
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1718
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1729
 #, fuzzy
 msgid "Dwarf Grenadier"
 msgstr "Dwergengrenadier"
 
 #. [message]: speaker=Dwarf Grenadier
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1665
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1734
 #, fuzzy
 msgid ""
 "Let’s blast those monsters back to the pits they spawned from! Fire in the "
@@ -4776,13 +4783,13 @@ msgstr ""
 "Vuur in het hol!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1676
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1745
 #, fuzzy
 msgid "More dwarven trickery! Fall back!"
 msgstr "Meer dwergentruken! Trek terug!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1681
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1750
 #, fuzzy
 msgid ""
 "Those new dwarves are lobbing explosives at the trolls with devastating "
@@ -4792,18 +4799,18 @@ msgstr ""
 "vernietigend effect! Ik denk niet dat de trollen dit veel langer aankunnen."
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1720
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1789
 msgid "Aaughh!"
 msgstr ""
 
 #. [message]: id=$casualty
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1807
 #, fuzzy
 msgid "Gaaghh!"
 msgstr "Gaagghhh!!!"
 
 #. [message]: speaker=Troll Leader
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1767
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1836
 #, fuzzy
 msgid ""
 "I must go back and find more trolls to fight. You must hold them back, "
@@ -4813,37 +4820,37 @@ msgstr ""
 "tegenhouden, Kaleh. Wees zo sterk als rots, Griknagh zal met je zijn."
 
 #. [unit]: type=Troll Shaman, id=Thu'lok, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1800
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1869
 #, fuzzy
 msgid "Thu’lok"
 msgstr "Thu’lok"
 
 #. [unit]: type=Troll Whelp, id=Harpo, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1815
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1884
 #, fuzzy
 msgid "Harpo"
 msgstr "Harpo"
 
 #. [unit]: type=Troll Whelp, id=Groucho, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1830
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1899
 #, fuzzy
 msgid "Groucho"
 msgstr "Groucho"
 
 #. [unit]: type=Troll Whelp, id=Chico, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1845
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1914
 #, fuzzy
 msgid "Chico"
 msgstr "Chico"
 
 #. [unit]: type=Troll Rocklobber, id=Groo, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1861
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1930
 #, fuzzy
 msgid "Groo"
 msgstr "Groo"
 
 #. [message]: speaker=Thu'lok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1876
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1945
 #, fuzzy
 msgid ""
 "Our leader sent us to help you. We fight for you until all the dwarves are "
@@ -4853,7 +4860,7 @@ msgstr ""
 "dwergen dood zijn. We zullen de dood van onze mensen wreken!"
 
 #. [message]: role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1890
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1959
 #, fuzzy
 msgid ""
 "The dwarves use stone cairns to mark their territory. What a waste of good "
@@ -4863,37 +4870,37 @@ msgstr ""
 "verspilling van goede werpstenen."
 
 #. [unit]: type=Dwarvish Fighter, id=Dwalim, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1910
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1979
 #, fuzzy
 msgid "Dwalim"
 msgstr "Dwalim"
 
 #. [unit]: type=Dwarvish Pathfinder, id=Moin, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1927
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1996
 #, fuzzy
 msgid "Moin"
 msgstr "Moin"
 
 #. [unit]: type=Dwarvish Thunderer, id=Nordi, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1944
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2013
 #, fuzzy
 msgid "Nordi"
 msgstr "Nordi"
 
 #. [unit]: type=Dwarvish Berserker, id=Byorn, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1961
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2030
 #, fuzzy
 msgid "Byorn"
 msgstr "Byorn"
 
 #. [unit]: type=Dwarvish Fighter, id=Runin, role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1980
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2049
 #, fuzzy
 msgid "Runin"
 msgstr "Runin"
 
 #. [message]: speaker=Dwalim
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1997
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2066
 #, fuzzy
 msgid ""
 "Looks like we came just in time. Our chief told us we’re to fight with you "
@@ -4905,7 +4912,7 @@ msgstr ""
 "moeten, ik wil trollen doden!"
 
 #. [message]: role=ally
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2012
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2081
 #, fuzzy
 msgid ""
 "The trolls display the skulls of their enemies as a way of marking their "
@@ -4915,7 +4922,7 @@ msgstr ""
 "barbaars."
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2077
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2146
 #, fuzzy
 msgid ""
 "Did you think you had escaped me, Kaleh? I am your shadow, I will always be "
@@ -4925,7 +4932,7 @@ msgstr ""
 "er zijn totdat ik me gewroken heb voor wat je gedaan hebt."
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2083
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2152
 #, fuzzy
 msgid ""
 "You want to flee, don’t you? But you cannot. They couldn’t escape her "
@@ -4938,14 +4945,14 @@ msgstr ""
 "Dans! Dans!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2224
 #, fuzzy
 msgid "Nasty dwarves and stinkin’ elves, we will smash you all!"
 msgstr ""
 "Gemene dwergen en stinkende elven, we zullen jullie allemaal platslaan."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2163
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2232
 #, fuzzy
 msgid ""
 "Kill the elves! We must stop them here. This is our land, crush the "
@@ -4955,7 +4962,7 @@ msgstr ""
 "indringers!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2169
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2238
 #, fuzzy
 msgid ""
 "What are you doing back here? The trolls hide in the southern tunnels, not "
@@ -4965,7 +4972,7 @@ msgstr ""
 "tunnels, niet deze kant op."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2185
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2254
 #, fuzzy
 msgid ""
 "Treacherous elves, how can you fight with such horrid creatures as trolls? I "
@@ -4975,7 +4982,7 @@ msgstr ""
 "trollen. Ik zal jullie allemaal in twee klieven met mijn bijl!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2193
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2262
 #, fuzzy
 msgid ""
 "If you think you can take these caves from us, then you are fools. We are "
@@ -4987,7 +4994,7 @@ msgstr ""
 "verdedigen tot de dood. Vecht verder, broeders!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2199
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2268
 #, fuzzy
 msgid ""
 "What you doing back here? Nasty dwarves are to the north, no dwarves this "
@@ -4997,31 +5004,31 @@ msgstr ""
 "geen dwergen. Ga terug en strijd moedig."
 
 #. [message]: speaker=Fundin
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2230
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2299
 #, fuzzy
 msgid "The rest is silence..."
 msgstr "Er rest alleen stilte..."
 
 #. [message]: speaker=Nori
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2243
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2312
 #, fuzzy
 msgid "I go to my ancestors..."
 msgstr "Ik ga naar mijn voorouders..."
 
 #. [message]: speaker=Thungar
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2256
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2325
 #, fuzzy
 msgid "Arrghh!!"
 msgstr "Arrggg!!!!"
 
 #. [message]: speaker=Gnarl
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2269
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2338
 #, fuzzy
 msgid "I will be avenged..."
 msgstr "Ik zal gewroken worden..."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2363
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2432
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:351
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1655
 #, fuzzy
@@ -5029,7 +5036,7 @@ msgid "Zurg"
 msgstr "Zurg"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2381
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2450
 #, fuzzy
 msgid ""
 "Congratulations! Some of trolls didn’t think you strong enough to beat "
@@ -5039,14 +5046,14 @@ msgstr ""
 "zijn om dwergen te verslaan."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2386
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2483
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2455
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2552
 #, fuzzy
 msgid "Where did you come from?"
 msgstr "Waar kom je ook weer vandaan?"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2391
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2460
 #, fuzzy
 msgid ""
 "There many secret tunnels that you sun dwellers not know of. Only troll "
@@ -5058,13 +5065,13 @@ msgstr ""
 "gedood hebben, maar hij was weggezonden van waar het echte gevecht is."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2396
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2465
 #, fuzzy
 msgid "The real fighting? I thought that was what we were waist-deep in?"
 msgstr "Het echte gevecht? Ik dacht dat we daar al aanbeland waren."
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2402
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2471
 #, fuzzy
 msgid ""
 "While you fighting, another clan of dwarves sneak around and flank us. They "
@@ -5080,13 +5087,13 @@ msgstr ""
 "sterker dan dwerg of trol dacht. Jij geheime wapen van de trollen."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2407
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2476
 #, fuzzy
 msgid "How do you mean?"
 msgstr "Wat bedoel je?"
 
 #. [message]: speaker=Zurg
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2412
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2481
 #, fuzzy
 msgid ""
 "Right before battle, we find secret passage just to the north leading "
@@ -5109,8 +5116,8 @@ msgstr ""
 "met Zurg, hij toont je de weg naar geheime doorgang."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2417
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2513
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2486
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2582
 #, fuzzy
 msgid ""
 "Their knowledge of these tunnels is uncanny. I could have sworn a minute ago "
@@ -5120,7 +5127,7 @@ msgstr ""
 "hebben kunnen zweren dat die muur stevige rots was."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2428
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2497
 #, fuzzy
 msgid ""
 "Wait a moment, Zurg, we must deal with this mysterious cloaked figure before "
@@ -5130,7 +5137,7 @@ msgstr ""
 "man voordat we je kunnen volgen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2438
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2507
 #, fuzzy
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
@@ -5141,7 +5148,7 @@ msgstr ""
 
 #. [event]
 #. [unit]: type=Dwarvish Pathfinder, id=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2464
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2533
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:263
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1465
 #, fuzzy
@@ -5149,7 +5156,7 @@ msgid "Grimnir"
 msgstr "Grimnir"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2478
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2547
 #, fuzzy
 msgid ""
 "Congratulations, some of me boys didn’t think you could beat the trolls."
@@ -5158,7 +5165,7 @@ msgstr ""
 "kunnen verslaan."
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2488
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2557
 #, fuzzy
 msgid ""
 "Don’t think you know all the tunnels and passages that twist through these "
@@ -5170,13 +5177,13 @@ msgstr ""
 "het hoofdfront van de slag."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2493
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2562
 #, fuzzy
 msgid "The front? I thought this was the front."
 msgstr "Het front? Ik dacht dat dit het front was."
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2498
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2567
 #, fuzzy
 msgid ""
 "While you were fighting, a separate clan of trolls sneaked around our "
@@ -5194,13 +5201,13 @@ msgstr ""
 "overwinning hier heeft een onverwacht voordeel opgeleverd."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2503
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2572
 #, fuzzy
 msgid "It has?"
 msgstr "Echt?"
 
 #. [message]: speaker=Grimnir
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2508
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2577
 #, fuzzy
 msgid ""
 "Right before the trolls overran this area of the mines, our scouts had found "
@@ -5227,7 +5234,7 @@ msgstr ""
 "is niet ver."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2524
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2593
 #, fuzzy
 msgid ""
 "Wait a moment, Grimnir, we must deal with this mysterious cloaked figure "
@@ -5237,7 +5244,7 @@ msgstr ""
 "afrekenen voordat we je kunnen volgen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2534
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2603
 #, fuzzy
 msgid ""
 "It sounds like our work is not yet done. Very well, gather yourselves "
@@ -5247,7 +5254,7 @@ msgstr ""
 "we moeten Grendel volgen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2571
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2640
 #, fuzzy
 msgid ""
 "Where did he go? How does he disappear like that? And what in Uria’s name "
@@ -5257,7 +5264,7 @@ msgstr ""
 "was hij aan het zeggen? Wat het ook is, het irriteert mij."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2586
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2655
 #, fuzzy
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
@@ -5267,7 +5274,7 @@ msgstr ""
 "we moeten Zurg volgen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2608
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2677
 #, fuzzy
 msgid ""
 "The cloaked figure is gone. Still, our work is not yet done. Gather "
@@ -5277,7 +5284,7 @@ msgstr ""
 "we moeten Grendel volgen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2634
+#: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2703
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1761
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:2010
 #, fuzzy
@@ -17017,14 +17024,14 @@ msgstr ""
 #. [attack]: type=pierce
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:29
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:42
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:52
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:65
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:56
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:70
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:28
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:51
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:42
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:69
 msgid "glaive"
 msgstr ""
 
@@ -17170,7 +17177,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:47
 msgid "blowgun"
 msgstr ""
@@ -17880,24 +17887,24 @@ msgid ""
 msgstr ""
 
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:545
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:646
 #, fuzzy
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr " Deze eenheid is in staat door massieve stenen muren te gaan."
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:554
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:655
 msgid "teaching"
 msgstr ""
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:555
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:656
 #, fuzzy
 msgid "female^teaching"
 msgstr "Woestijndoolster"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:556
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:657
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -17905,37 +17912,37 @@ msgid ""
 msgstr ""
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:565
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:666
 msgid "shock"
 msgstr ""
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:566
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:667
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
 msgstr ""
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:567
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:598
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:699
 msgid "formation"
 msgstr ""
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
 #, fuzzy
 msgid "female^formation"
 msgstr "Goddelijke Incarnatie"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:600
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:701
 msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
@@ -17943,40 +17950,40 @@ msgid ""
 msgstr ""
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:601
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:702
 msgid "Groups of units of this type are able to shield each other in combat."
 msgstr ""
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:624
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:725
 msgid "disengage"
 msgstr ""
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:625
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:726
 #, fuzzy
 msgid "female^disengage"
 msgstr "Woestijnjaagster"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:626
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
 msgstr ""
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:627
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
 msgid "This unit can move either before or after attacking."
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:634
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:735
 msgid "daze"
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:635
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:736
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -17987,60 +17994,60 @@ msgid ""
 msgstr ""
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:639
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:740
 msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
 msgstr ""
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:646
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:747
 msgid "distract"
 msgstr ""
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:748
 #, fuzzy
 msgid "female^distract"
 msgstr "Woestijnjaagster"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:750
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:660
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:761
 msgid "support"
 msgstr ""
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:661
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:762
 #, fuzzy
 msgid "female^support"
 msgstr "Woestijnjaagster"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:662
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:763
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr ""
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:711
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:812
 msgid "dazed"
 msgstr ""
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:813
 #, fuzzy
 msgid "female^dazed"
 msgstr "Woestijnjaagster"
@@ -18191,15 +18198,16 @@ msgid "+$amount XP"
 msgstr ""
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:6
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
 #, fuzzy
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
-"certain Wesnoth standards, such as the elves’ stats and the day/night cycle. "
-"This campaign emphasizes role-playing elements and tends to have longer "
-"scenarios with objectives that change in the middle. For these reasons, we "
-"strongly suggest that you occasionally save your game mid-scenario, so you "
-"won’t lose all your progress if you get stuck and have to start over."
+"certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
+"recall costs and general approach to the difficulty levels. This campaign "
+"emphasizes role-playing elements and tends to have longer scenarios with "
+"objectives that change in the middle. For these reasons, we strongly suggest "
+"that you occasionally save your game mid-scenario, so you won’t lose all "
+"your progress if you get stuck and have to start over."
 msgstr ""
 "Waarschuwing: Deze veldtocht is niet geschikt voor beginners. Op bepaalde "
 "punten wijkt hij af van de Wesnothstandaarden, bijvoorbeeld wat betreft het "
@@ -18209,7 +18217,7 @@ msgstr ""
 "slaan, zodat je niet helemaal opnieuw hoeft te beginnen als je vastloopt."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:9
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:10
 #, fuzzy
 msgid ""
 "This is the chronicle of the journey of the Quenoth Elves from their "
@@ -18223,7 +18231,7 @@ msgstr ""
 "gebracht."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:12
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:13
 #, fuzzy
 msgid ""
 "Chapter 1: I, Kaleh, grew up amid the shifting sands, under our two suns "
@@ -18251,7 +18259,7 @@ msgstr ""
 "toen er vuur regende uit de hemel..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:15
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:16
 #, fuzzy
 msgid ""
 "I remember that night as if it were yesterday. I was not prone to dreaming, "
@@ -18283,7 +18291,7 @@ msgstr ""
 "zelf geschokt was door de verwoesting die ze aantrof."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:24
 #, fuzzy
 msgid ""
 "Chapter 2: When I was fifteen I went on my first raid, against an orcish "
@@ -18297,7 +18305,7 @@ msgstr ""
 "het woestijngebied, alles dodend wat ze tegenkwamen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:27
 #, fuzzy
 msgid ""
 "Sneaking amongst the dunes we crept up to their camp and ambushed them at "
@@ -18321,7 +18329,7 @@ msgstr ""
 "elvenbroeders, die doodlagen in het zand, lette ik nauwelijks."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:29
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:30
 #, fuzzy
 msgid ""
 "I was giddy on the journey back home, my heart pumping with elation and "
@@ -18344,7 +18352,7 @@ msgstr ""
 "werd vaag en donker."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:32
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:33
 #, fuzzy
 msgid ""
 "The next thing I remember, someone was bending over me shaking me awake. I "
@@ -18371,7 +18379,7 @@ msgstr ""
 "altijd op de loer ligt."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:36
 #, fuzzy
 msgid ""
 "Now I journeyed out again across the sands, but this time it was not just "
@@ -18388,7 +18396,7 @@ msgstr ""
 "anders heen dan naar het noorden."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:43
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:44
 #, fuzzy
 msgid ""
 "Chapter 3: As we continued north through the desert, the looming hills and "
@@ -18407,7 +18415,7 @@ msgstr ""
 "bergtoppen waren onbekend en onheilspellend."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:47
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:48
 #, fuzzy
 msgid ""
 "I worried if I was doing the right thing, leading my people to strange "
@@ -18425,7 +18433,7 @@ msgstr ""
 "was ik om aan een god te twijfelen?"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:51
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:52
 #, fuzzy
 msgid ""
 "That night, as I slept, I dreamt again, for the first time since that first "
@@ -18460,7 +18468,7 @@ msgstr ""
 "een kreet in de nacht."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:59
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:60
 #, fuzzy
 msgid ""
 "Chapter 4: We found the crumbling obsidian tower that Eloh had described, "
@@ -18481,7 +18489,7 @@ msgstr ""
 "vaak is verteld:"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:63
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:64
 #, fuzzy
 msgid ""
 "A long, long time ago was the golden age among elves. Our people lived in "
@@ -18503,7 +18511,7 @@ msgstr ""
 "einde komen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:67
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:68
 #, fuzzy
 msgid ""
 "Eventually peace and prosperity fostered corruption and decadence. Through "
@@ -18544,7 +18552,7 @@ msgstr ""
 "allemaal te overweldigen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:71
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:72
 #, fuzzy
 msgid ""
 "In this time of troubles Eloh first appeared to a select number of us, those "
@@ -18576,7 +18584,7 @@ msgstr ""
 "een betere wereld te voor onze kinderen te maken."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:75
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:76
 #, fuzzy
 msgid ""
 "Had the golden age been just a story? What kind of world could I be able to "
@@ -18595,7 +18603,7 @@ msgstr ""
 "geworden. Was er ergens nog een plaats waar het beter was dan ons vaderland?"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:83
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:84
 #, fuzzy
 msgid ""
 "Chapter 5: We plunged into the darkness, shepherding long lines of our "
@@ -18615,7 +18623,7 @@ msgstr ""
 "onze voetstappen weergalmde in de gangen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:87
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:88
 #, fuzzy
 msgid ""
 "This seemed as alien an environment as we could ever imagine. We were a "
@@ -18637,7 +18645,7 @@ msgstr ""
 "keuze buiten verder te gaan."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:91
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:92
 #, fuzzy
 msgid ""
 "Looking back, I think the bravest thing that my people ever did was to "
@@ -18662,7 +18670,7 @@ msgstr ""
 "was."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:95
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:96
 #, fuzzy
 msgid ""
 "What lurked in the darkness? Who were the unbelievers that Eloh had so "
@@ -18680,7 +18688,7 @@ msgstr ""
 "verdoemd worden als ik te nu te bang zou worden."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:103
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:104
 #, fuzzy
 msgid ""
 "Chapter 6: The dwarf Grimnir led us through a maze of twisting passages "
@@ -18703,7 +18711,7 @@ msgstr ""
 "vastberadenheid en beloofde deze missie te volbrengen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:111
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:112
 #, fuzzy
 msgid ""
 "Chapter 6: The troll Zurg led us through a maze of twisting passages "
@@ -18726,7 +18734,7 @@ msgstr ""
 "deze missie te volbrengen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:119
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:120
 #, fuzzy
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
@@ -18744,7 +18752,7 @@ msgstr ""
 "dwergen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:123
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:124
 #, fuzzy
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
@@ -18766,7 +18774,7 @@ msgstr ""
 "dwergen was. Het was groter dan elk dorp ik al had gezien."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:127
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:128
 #, fuzzy
 msgid ""
 "The dwarves led us through to the far side of the city, where they let us "
@@ -18780,7 +18788,7 @@ msgstr ""
 "grond gekropen waren voelde ik me veilig."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:131
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:132
 #, fuzzy
 msgid ""
 "The dwarf king was away cleaning up after the recent battle, and would not "
@@ -18803,7 +18811,7 @@ msgstr ""
 "de dwergenkoning mochten ontmoeten..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:139
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:140
 #, fuzzy
 msgid ""
 "Chapter 7: We returned quickly and found the rest of our people, safely "
@@ -18817,7 +18825,7 @@ msgstr ""
 "stil en snel weg van het front door een doolhof van geheime tunnels."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:143
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:144
 #, fuzzy
 msgid ""
 "I do not know how long we tramped through those tiny dark passages; time "
@@ -18845,7 +18853,7 @@ msgstr ""
 "achtergelaten."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:147
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:148
 #, fuzzy
 msgid ""
 "Zurg told us that they had just captured this city from the dwarves, and "
@@ -18869,7 +18877,7 @@ msgstr ""
 "werd gekozen en geadviseerd door een raad van shamaans."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:151
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:152
 #, fuzzy
 msgid ""
 "I wish I could have spent more time learning about these misunderstood "
@@ -18885,7 +18893,7 @@ msgstr ""
 "gesprek met de Grote Leider te hebben."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:159
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:160
 #, fuzzy
 msgid ""
 "Chapter 9: Nym and Esanoo led us north, across the sands and through the "
@@ -18899,7 +18907,7 @@ msgstr ""
 "antwoorden, ze zei dat ik het zelf moest zien."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:162
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:163
 #, fuzzy
 msgid ""
 "Just then we crested over the last dune and I indeed saw what she meant. "
@@ -18921,7 +18929,7 @@ msgstr ""
 "onder tonnen rotsen, maar deze waterwereld was de vreemdste van allemaal."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:165
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
 #, fuzzy
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
@@ -18949,7 +18957,7 @@ msgstr ""
 "volk niet in een val aan het leiden ben..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:173
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:174
 #, fuzzy
 msgid ""
 "Chapter 8: I set out with a lightened heart and quickened step; we were "
@@ -18968,7 +18976,7 @@ msgstr ""
 "grotere zaken."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:177
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:178
 #, fuzzy
 msgid ""
 "What kind of home had Eloh prepared for us on the other side of the "
@@ -18989,7 +18997,7 @@ msgstr ""
 "te verkrijgen, terend op de weinige overlevenden."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:181
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:182
 #, fuzzy
 msgid ""
 "At first I thought that if we could just leave the desert, we could find a "
@@ -19011,7 +19019,7 @@ msgstr ""
 "vernietigen, wie zal er dan nog overblijven?"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:185
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:186
 #, fuzzy
 msgid ""
 "And yet, here in the dark, Eloh says she is powerless. Here she cannot help "
@@ -19034,7 +19042,7 @@ msgstr ""
 "volk te beschermen gedurende onze reis."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:189
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:190
 #, fuzzy
 msgid ""
 "And so, bolstered with a new resolve, I continued the march up out of the "
@@ -19044,7 +19052,7 @@ msgstr ""
 "duisternis wandelen naar een nieuw land."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:197
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:198
 #, fuzzy
 msgid ""
 "Chapter 10: The merfolk helped us pilot our ships far into the ocean. Some "
@@ -19062,7 +19070,7 @@ msgstr ""
 "van de Meermensen zouden we hopeloos verdwaald zijn geraak"
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:201
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
 #, fuzzy
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
@@ -19074,7 +19082,7 @@ msgstr ""
 "succes, aangezien ze ons rechtstreeks naar de ondergaande zon leidden."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:205
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:206
 #, fuzzy
 msgid ""
 "The next morning we reached our destination. It wasn’t even an island, just "
@@ -19087,7 +19095,7 @@ msgstr ""
 "roeiriemen "
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:209
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:210
 #, fuzzy
 msgid ""
 "In the water around the sand bar were a large number of merfolk guards. "
@@ -19099,7 +19107,7 @@ msgstr ""
 "Ze wenkte ons en wij kwamen."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:218
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:219
 #, fuzzy
 msgid ""
 "Chapter 11: Our boats slipped softly through the water, shrouded in the pre-"
@@ -19115,7 +19123,7 @@ msgstr ""
 "grote eiland op, donker en dreigend."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:222
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:223
 #, fuzzy
 msgid ""
 "In the end, almost all of my people decided to join in this final battle. I "
@@ -19137,7 +19145,7 @@ msgstr ""
 "kan niemand verwijten behalve mezelf."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:226
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:227
 #, fuzzy
 msgid ""
 "But Zhul is right, if we had come all this way just for a chance to help the "
@@ -19162,7 +19170,7 @@ msgstr ""
 "gekleurd hebben, ze zullen allemaal gewroken worden."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:230
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:231
 #, fuzzy
 msgid ""
 "This conflict is greater than just us. These lands were once places of "
@@ -19183,7 +19191,7 @@ msgstr ""
 "niet voor niets geweest zijn..."
 
 #. [part]
-#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:238
+#: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:239
 #, fuzzy
 msgid ""
 "Chapter 12: True strength is not measured in might or knowledge, but in what "

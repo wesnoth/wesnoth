@@ -146,12 +146,6 @@ public:
 	std::string remove_exclusive_draw(const map_location& loc);
 
 	/**
-	 * Check the overlay_map for proper team-specific overlays to be
-	 * displayed/hidden
-	 */
-	void parse_team_overlays();
-
-	/**
 	 * Functions to add and remove overlays from locations.
 	 *
 	 * An overlay is an image that is displayed on top of the tile.

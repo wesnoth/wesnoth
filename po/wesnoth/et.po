@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
 "PO-Revision-Date: 2013-03-09 13:27+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -5785,6 +5785,110 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr ""
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Stsenaariumi raport"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Võit"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "Sa oled võitnud!"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Kaotus"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "Oled kaotanud!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Allesjäänud kuld: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Etteantust varem lõpetatud käikude arv:"
+
+#: src/carryover_show_gold.cpp:102
+#, fuzzy
+#| msgid "per turn"
+msgid " per turn"
+msgstr "käigu kohta"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Varase lõpetamise preemia: "
+
+#: src/carryover_show_gold.cpp:103
+#, fuzzy
+#| msgid "Turn bonus: "
+msgid "Total bonus: "
+msgstr "Käigupreemia:"
+
+#: src/carryover_show_gold.cpp:106
+#, fuzzy
+#| msgid "Village gold: "
+msgid "Total gold: "
+msgstr "Külade kuld:"
+
+#: src/carryover_show_gold.cpp:110
+#, fuzzy
+#| msgid "Carry over percentage: "
+msgid "Carryover percentage: "
+msgstr "Ülekandumisprotsent:"
+
+#: src/carryover_show_gold.cpp:114
+#, fuzzy
+#| msgid "Bonus Gold: "
+msgid "Bonus gold: "
+msgstr "Preemia: "
+
+#: src/carryover_show_gold.cpp:116
+#, fuzzy
+#| msgid "Retained Gold: "
+msgid "Retained gold: "
+msgstr "Säilitatud kuld: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
+msgstr[1] ""
+"Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
+
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Sa alustad järgmist stsenaariumi sealse kindlaksmääratud algsummaga."
+msgstr[1] ""
+"Sa alustad järgmist stsenaariumi sealse kindlaksmääratud algsummaga."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Sa alustad järgmist stsenaariumi $gold kuldrahaga või sealse miinimumsummaga "
+"vastavalt sellele, kumb on suurem."
+msgstr[1] ""
+"Sa alustad järgmist stsenaariumi $gold kuldrahaga või sealse miinimumsummaga "
+"vastavalt sellele, kumb on suurem."
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Lisatud eiratavate nimekirja: $nick"
@@ -6520,141 +6624,37 @@ msgstr "Oled proovinud liiga mitu korda sisse logida."
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Stsenaariumi raport"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Võit"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "Sa oled võitnud!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Kaotus"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "Oled kaotanud!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Allesjäänud kuld: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Etteantust varem lõpetatud käikude arv:"
-
-#: src/game_initialization/playcampaign.cpp:124
-#, fuzzy
-#| msgid "per turn"
-msgid " per turn"
-msgstr "käigu kohta"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Varase lõpetamise preemia: "
-
-#: src/game_initialization/playcampaign.cpp:125
-#, fuzzy
-#| msgid "Turn bonus: "
-msgid "Total bonus: "
-msgstr "Käigupreemia:"
-
-#: src/game_initialization/playcampaign.cpp:128
-#, fuzzy
-#| msgid "Village gold: "
-msgid "Total gold: "
-msgstr "Külade kuld:"
-
-#: src/game_initialization/playcampaign.cpp:132
-#, fuzzy
-#| msgid "Carry over percentage: "
-msgid "Carryover percentage: "
-msgstr "Ülekandumisprotsent:"
-
-#: src/game_initialization/playcampaign.cpp:136
-#, fuzzy
-#| msgid "Bonus Gold: "
-msgid "Bonus gold: "
-msgstr "Preemia: "
-
-#: src/game_initialization/playcampaign.cpp:138
-#, fuzzy
-#| msgid "Retained Gold: "
-msgid "Retained gold: "
-msgstr "Säilitatud kuld: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
-msgstr[1] ""
-"Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
-
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Sa alustad järgmist stsenaariumi sealse kindlaksmääratud algsummaga."
-msgstr[1] ""
-"Sa alustad järgmist stsenaariumi sealse kindlaksmääratud algsummaga."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Sa alustad järgmist stsenaariumi $gold kuldrahaga või sealse miinimumsummaga "
-"vastavalt sellele, kumb on suurem."
-msgstr[1] ""
-"Sa alustad järgmist stsenaariumi $gold kuldrahaga või sealse miinimumsummaga "
-"vastavalt sellele, kumb on suurem."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Mängu laadimine ebaõnnestus."
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Mängimise ajal tekkis viga: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "Mängu kaarti ei õnnestunud laadida:"
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Viga XML lugemisel: "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Mäng on läbi"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Stsenaarium on lõppenud. Kas soovid sõjakäiku jätkata?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Tundmatu stsenaarium: '$scenario|'"
 
@@ -6753,8 +6753,18 @@ msgstr "Mängu ooteruum"
 msgid "Other Games"
 msgstr "Vaatle mängu"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
+msgstr ""
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Ajastu:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
@@ -6875,7 +6885,7 @@ msgstr "Rühmitused"
 msgid "Races: "
 msgstr "Rass:"
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
@@ -6891,65 +6901,49 @@ msgstr "Pealikud:"
 msgid "Recruits"
 msgstr "Värbamisi"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Kirjeldus puudub."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-#, fuzzy
-#| msgid "Ability: "
-msgid "Availability: "
-msgstr "Võime:"
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr ""
-
-#: src/help/help_impl.cpp:773
-#, fuzzy
-#| msgid "Era not available"
-msgid "Unavailable"
-msgstr "Ajastu pole saadaval."
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Teised"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Hoiak:"
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Selle võimega üksused'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Selle rassi üksused'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Selle rassi üksused'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Selle rassi üksused'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "algne fail on vigane"
 
@@ -7764,6 +7758,42 @@ msgstr "$name võttis juhtimise üle"
 msgid "Turn changed"
 msgstr "Käik vahetus"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid "An error occurred while communicating with the server."
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr "Viga serveriga suhtlemisel."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid "Download"
+msgid "Download error"
+msgstr "Allalaetavad failid"
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "Download"
+msgid "Download complete"
+msgstr "Allalaetavad failid"
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved"
+msgid "The file has been downloaded."
+msgstr "Mäng on salvestatud"
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Leiti maastik, mille liikumiskulu oli alla 1."
@@ -7775,15 +7805,15 @@ msgstr "Leiti maastik, mille liikumiskulu oli alla 1."
 msgid "waiting for^a global variable"
 msgstr ""
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "käesolevaks käiguks jäänud aeg"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "kohalik aeg"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7791,17 +7821,17 @@ msgstr ""
 "Mäng ei ole enam sünkroonis ja tuleb ilmselt lõpetada.  Kas sa soovid oma "
 "mängu salvestada?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "Veakirjeldus:"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7810,7 +7840,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7820,11 +7850,11 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "Eesmärke pole"
 
@@ -7898,37 +7928,37 @@ msgstr "Mäng on läbi."
 msgid "It is now $name|’s turn"
 msgstr "Praegu käib mängija $name"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to their ally $player"
 msgstr "Anna mängijale kulda."
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 #, fuzzy
 #| msgid "Give gold to the current player."
 msgid "Give control to observer $player"
 msgstr "Anna mängijale kulda."
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Asenda arvutiga"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Asenda kohaliku mängijaga"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr ""
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 #, fuzzy
 #| msgid "Abort game"
 msgid "Save and abort game"
 msgstr "Katkesta mäng"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 #, fuzzy
 #| msgid "$player has left the game. What do you want to do?"
 msgid ""
@@ -8033,7 +8063,7 @@ msgstr "ravimatu"
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 
 #: src/reports.cpp:361
@@ -8633,7 +8663,7 @@ msgstr ""
 msgid "Debug Command Used"
 msgstr "Silumiskäsud"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
@@ -8949,6 +8979,16 @@ msgstr "Peida plaanid mängija $player eest"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Tahvli sätted"
+
+#, fuzzy
+#~| msgid "Ability: "
+#~ msgid "Availability: "
+#~ msgstr "Võime:"
+
+#, fuzzy
+#~| msgid "Era not available"
+#~ msgid "Unavailable"
+#~ msgstr "Ajastu pole saadaval."
 
 #, fuzzy
 #~| msgid "Unit List"
@@ -11869,9 +11909,6 @@ msgstr "Tahvli sätted"
 
 #~ msgid "Multiplayer define"
 #~ msgstr "Mitmekesi mäng"
-
-#~ msgid "Download"
-#~ msgstr "Allalaetavad failid"
 
 #~ msgid "No time of day has been defined."
 #~ msgstr "Päevaaeg pole määratud."

@@ -286,27 +286,17 @@ WML_HANDLER_FUNCTION(do_command,, cfg)
 
 	static const std::set<std::string> allowed_tags {"attack", "move", "recruit", "recall", "disband", "fire_event", "custom_command"};
 
-	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
-	const bool is_unsynced_too_early = resources::gamedata->phase() != game_data::PLAY;
+	const bool is_too_early = resources::gamedata->phase() == game_data::INITIAL || resources::gamedata->phase() == game_data::PRELOAD;
+	const bool is_during_turn = resources::gamedata->phase() == game_data::TURN_PLAYING;
 	const bool is_unsynced = synced_context::get_synced_state() == synced_context::UNSYNCED;
 	if(is_too_early)
 	{
 		ERR_NG << "[do_command] called too early, only allowed at START or later";
 		return;
 	}
-	if(is_unsynced && resources::controller->is_lingering())
+	if(is_unsynced && !is_during_turn)
 	{
-		ERR_NG << "[do_command] cannot be used in linger mode";
-		return;
-	}
-	if(is_unsynced && !resources::controller->gamestate().init_side_done())
-	{
-		ERR_NG << "[do_command] cannot be used before the turn has started";
-		return;
-	}
-	if(is_unsynced && is_unsynced_too_early)
-	{
-		ERR_NG << "[do_command] called too early";
+		ERR_NG << "[do_command] can only be used during a turn when a user woudl also be able to invoke commands";
 		return;
 	}
 	if(is_unsynced && events::commands_disabled)

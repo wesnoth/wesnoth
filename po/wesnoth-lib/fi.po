@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:02-0600\n"
+"POT-Creation-Date: 2023-03-18 21:33-0500\n"
 "PO-Revision-Date: 2023-01-05 16:34+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
@@ -2349,20 +2349,20 @@ msgstr "Tyyppi"
 
 #. [button]: id=single_install
 #. [button]: id=install
-#: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:546
+#: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:578
 msgid "Install add-on"
 msgstr "Asenna lisäosa"
 
 #. [button]: id=single_update
 #. [button]: id=update
-#: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:568
+#: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:600
 msgid "Update add-on"
 msgstr "Päivitä lisäosa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
-#: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:613
+#: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:645
 #: src/gui/widgets/addon_list.cpp:265
 msgid "Publish add-on"
 msgstr "Julkaise lisäosa"
@@ -2370,7 +2370,7 @@ msgstr "Julkaise lisäosa"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
-#: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
+#: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
 #: src/gui/dialogs/addon/manager.cpp:1002
 msgid "Uninstall add-on"
 msgstr "Poista lisäosa"
@@ -2397,7 +2397,7 @@ msgstr "Viestitys"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:111 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:480 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2572,7 +2572,7 @@ msgid "Traffic between the game and server is encrypted"
 msgstr "Liikenne pelin ja palvelimen välillä on salattu"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:785
+#: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:817
 msgid "Type:"
 msgstr "Tyyppi;"
 
@@ -2625,69 +2625,76 @@ msgstr "Valitse lisäosan versio"
 msgid "Website:"
 msgstr "Sivusto:"
 
+#. [label]
+#: data/gui/window/addon_manager.cfg:521
+#, fuzzy
+#| msgid "ID:"
+msgid "Id:"
+msgstr "ID:"
+
 #. [button]: id=delete
-#: data/gui/window/addon_manager.cfg:627
+#: data/gui/window/addon_manager.cfg:659
 msgid "Delete add-on"
 msgstr "Poista lisäosa"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:666
+#: data/gui/window/addon_manager.cfg:698
 msgid "Dependencies:"
 msgstr "Riippuvuudet:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1080
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1080
 msgid "addon_dependencies^None"
 msgstr "Ei riippuvuuksia"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:701
+#: data/gui/window/addon_manager.cfg:733
 msgid "Translations:"
 msgstr "Käännökset:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1094
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1094
 msgid "translations^None"
 msgstr "Ei käännöksiä"
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:738
+#: data/gui/window/addon_manager.cfg:770
 msgid "Filters on addon description, version, type or author"
 msgstr "Suodatusta lisäosan kuvauksen, version, tyypin tai tekijän mukaan"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:759
+#: data/gui/window/addon_manager.cfg:791
 msgid "State:"
 msgstr "Tila;"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:812
+#: data/gui/window/addon_manager.cfg:844
 msgid "Tags:"
 msgstr "Tagit:"
 
 #. [label]
 #. [button]: id=language
-#: data/gui/window/addon_manager.cfg:838
+#: data/gui/window/addon_manager.cfg:870
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:487
 msgid "Language"
 msgstr "Kieli"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:863
+#: data/gui/window/addon_manager.cfg:895
 msgid "Order:"
 msgstr "Käsky:"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:957 data/gui/window/addon_manager.cfg:1154
+#: data/gui/window/addon_manager.cfg:989 data/gui/window/addon_manager.cfg:1186
 msgid "Add-ons Manager"
 msgstr "Lisäosamanageri"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
 #, fuzzy
 #| msgid "Addon Details"
@@ -2695,14 +2702,14 @@ msgid "Add-on Details"
 msgstr "Lisäosan tiedot"
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:1088
-#: data/gui/window/addon_manager.cfg:1272
+#: data/gui/window/addon_manager.cfg:1120
+#: data/gui/window/addon_manager.cfg:1304
 msgid "Update All"
 msgstr "Päivitä kaikki"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:1102
-#: data/gui/window/addon_manager.cfg:1286
+#: data/gui/window/addon_manager.cfg:1134
+#: data/gui/window/addon_manager.cfg:1318
 msgid "Exit"
 msgstr "Poistu"
 
@@ -2872,7 +2879,7 @@ msgstr "Pelaa"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
 msgid "Difficulty"
 msgstr "Vaikeusaste:"
@@ -3148,7 +3155,7 @@ msgstr "Kuvaus:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Experience modifier:"
 msgstr "Kokemusmuuttuja:"
 
@@ -3213,7 +3220,7 @@ msgstr "Kultaa:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Gold per village:"
 msgstr "Kultaa per kylä:"
 
@@ -3284,7 +3291,7 @@ msgstr "Valitse karttageneraattori:"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -4004,14 +4011,14 @@ msgstr "Luo peli"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:863
+#: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "Join"
 msgstr "Sisäänkirjautuminen"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:829
+#: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr "Tarkkaile"
 
@@ -4033,7 +4040,8 @@ msgid "Preferences"
 msgstr "Asetukset"
 
 #. [button]: id=view_match_history
-#: data/gui/window/lobby_main.cfg:627
+#. [label]: id=title
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
 msgid "Match History"
 msgstr "Otteluhistoria"
 
@@ -4649,7 +4657,7 @@ msgstr "Aseta salasana joka vaaditaan peliin haluavilta pelaajilta"
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Map size:"
 msgstr "Kartan koko:"
 
@@ -4753,6 +4761,41 @@ msgstr "Sisäänkirjautuminen"
 #: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:76
 msgid "Login:"
 msgstr "Käyttäjänimi:"
+
+#. [button]: id=replay_download
+#: data/gui/window/mp_match_history.cfg:144
+#, fuzzy
+#| msgid "Downloads"
+msgid "Download"
+msgstr "Latauksia"
+
+#. [label]: id=players
+#. [label]: id=modifications
+#: data/gui/window/mp_match_history.cfg:161
+#: data/gui/window/mp_match_history.cfg:178
+#, fuzzy
+#| msgid "None"
+msgid "None"
+msgstr "tyhjää"
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:377
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:390
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "Pelaajia:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:403
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "Muunnelmat"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5915,8 +5958,8 @@ msgstr "Virhe"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
-#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:181
+#: src/gui/dialogs/multiplayer/lobby.cpp:197 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "Yksityiskohdat:"
 
@@ -6012,7 +6055,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "fi"
 
-#: src/font/text.cpp:849
+#: src/font/text.cpp:842
 #, fuzzy
 #| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
@@ -6494,7 +6537,7 @@ msgid "Attacker vulnerability vs"
 msgstr "Hyökkääjän alttius vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:437
+#: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "Ei muunnelmia"
 
@@ -6724,12 +6767,12 @@ msgid "Unknown"
 msgstr "Tuntematon"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "no"
 msgstr "ei"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "yes"
 msgstr "kyllä"
 
@@ -6853,15 +6896,15 @@ msgstr "lua-konsoli"
 msgid "Random"
 msgstr "Satunnainen"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:69
+#: src/gui/dialogs/multiplayer/lobby.cpp:70
 msgid "Do you really want to log out?"
 msgstr "Haluatko todellakin kirjautua ulos?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid "Incompatible User-made Content"
 msgstr "Epäyhteensopivaa käyttäjätehtyä sisältöä"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:177
+#: src/gui/dialogs/multiplayer/lobby.cpp:178
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6871,11 +6914,11 @@ msgstr ""
 "jotka ovat epäyhteensopivia versiosi kanssa. Ehkä kannattaa ehdottaa, että "
 "isäntä päivittää lisäosansa."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid "Missing User-made Content"
 msgstr "Puuttuvaa käyttäjätehtyä sisältöä"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:193
+#: src/gui/dialogs/multiplayer/lobby.cpp:194
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6885,47 +6928,43 @@ msgstr ""
 "asennettuina tai päivitettyinä.\n"
 "Haluatko yrittää asentaa niitä?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:370
+#: src/gui/dialogs/multiplayer/lobby.cpp:371
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Pelit: $num_total, joista $num_shown näkyvissä"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:392
+#: src/gui/dialogs/multiplayer/lobby.cpp:393
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Aika: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:422
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "era_or_mod^not installed"
 msgstr "ei asennettu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:425
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "Era"
 msgstr "Aikakausi"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:432
-msgid "Modifications"
-msgstr "Muunnelmat"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Reloaded:"
 msgstr "Uudelleenladattu:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shared vision:"
 msgstr "Jaettu näkö:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Shuffle sides:"
 msgstr "Sekoita osapuolia:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Time limit:"
 msgstr "Aikaraja:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:462
 msgid "Use map settings:"
 msgstr "Käytä kartan asetuksia:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:469
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6933,24 +6972,24 @@ msgstr ""
 "Yksi tai useampi lisäosa on asennettava\n"
 "liittyäksesi tähän peliin."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers allowed"
 msgstr "Tarkkailijat sallittu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:497
+#: src/gui/dialogs/multiplayer/lobby.cpp:498
 msgid "Observers not allowed"
 msgstr "Tarkkailijat estetty"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:628
+#: src/gui/dialogs/multiplayer/lobby.cpp:629
 msgid "lobby"
 msgstr "aula"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:829
+#: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:842
+#: src/gui/dialogs/multiplayer/lobby.cpp:851
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6958,7 +6997,7 @@ msgstr ""
 "Jotain on vialla moninpeliaulan lisäosien versiontarkistustietokannan "
 "kanssa. Ole hyvä ja raportoi tästä sivulla https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:863
+#: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 
@@ -7462,7 +7501,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Hylkäys klikkaamalla tarvitsee 'click_dismiss' tai 'ok' -painikkeen."
 
 #: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
-#: src/tests/gui/test_gui2.cpp:696
+#: src/tests/gui/test_gui2.cpp:701
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Valintaikkunan näyttäminen epäonnistui, koska se ei mahtunut ruudulle."
 
@@ -8651,11 +8690,6 @@ msgstr "Alueella ’[$section]’ pakollinen avain $key| ei ole asetettu."
 #~| msgid "Campaign"
 #~ msgid "Campaign"
 #~ msgstr "Kampanjat"
-
-#, fuzzy
-#~| msgid "None"
-#~ msgid "None"
-#~ msgstr "tyhjää"
 
 #, fuzzy
 #~| msgid "Settings"

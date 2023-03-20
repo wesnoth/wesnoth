@@ -1651,7 +1651,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
 		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
 		data.is_victory = cfg["result"] == level_result::victory;
-		data.test_result = cfg["test_result"].str(level_result::result_not_set);
+		data.test_result = cfg["test_result"].str();
 		play_controller_.set_end_level_data(data);
 
 		return 1;
@@ -1697,7 +1697,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 	return_int_attrib("side", play_controller_.current_side());
 	return_int_attrib("turn", play_controller_.turn());
 	return_string_attrib("synced_state", synced_state());
-	return_bool_attrib("user_can_invoke_commands", !play_controller_.is_lingering() && play_controller_.gamestate().init_side_done() && !events::commands_disabled && gamedata().phase() == game_data::PLAY);
+	return_bool_attrib("user_can_invoke_commands", !events::commands_disabled && gamedata().phase() == game_data::TURN_PLAYING);
 
 	if(strcmp(m, "map") == 0) {
 		return intf_terrainmap_get(L);

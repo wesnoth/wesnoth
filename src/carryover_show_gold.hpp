@@ -16,4 +16,4 @@
 class game_state;
 /// calculates the amount of gold carried over for each team,
 /// stores the data in the team object and shows the carryover message
-void carryover_show_gold(game_state& state, bool is_observer, bool is_test);
+void carryover_show_gold(game_state& state, bool hidden, bool is_observer, bool is_test);

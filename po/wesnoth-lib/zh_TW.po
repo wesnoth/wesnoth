@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:02-0600\n"
+"POT-Creation-Date: 2023-03-18 21:33-0500\n"
 "PO-Revision-Date: 2022-07-14 16:49+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -2295,20 +2295,20 @@ msgstr "類型"
 
 #. [button]: id=single_install
 #. [button]: id=install
-#: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:546
+#: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:578
 msgid "Install add-on"
 msgstr "安裝模組"
 
 #. [button]: id=single_update
 #. [button]: id=update
-#: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:568
+#: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:600
 msgid "Update add-on"
 msgstr "更新模組"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
-#: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:613
+#: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:645
 #: src/gui/widgets/addon_list.cpp:265
 msgid "Publish add-on"
 msgstr "發佈模組"
@@ -2316,7 +2316,7 @@ msgstr "發佈模組"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
-#: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
+#: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
 #: src/gui/dialogs/addon/manager.cpp:1002
 msgid "Uninstall add-on"
 msgstr "移除模組"
@@ -2343,7 +2343,7 @@ msgstr "訊息等待中"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:111 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:480 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2517,7 +2517,7 @@ msgid "Traffic between the game and server is encrypted"
 msgstr "這個遊戲和伺服器之間的資料傳輸被加密了"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:785
+#: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:817
 msgid "Type:"
 msgstr "類型："
 
@@ -2571,83 +2571,90 @@ msgstr "選擇這個模組版本"
 msgid "Website:"
 msgstr "網站："
 
+#. [label]
+#: data/gui/window/addon_manager.cfg:521
+#, fuzzy
+#| msgid "ID:"
+msgid "Id:"
+msgstr "ID："
+
 #. [button]: id=delete
-#: data/gui/window/addon_manager.cfg:627
+#: data/gui/window/addon_manager.cfg:659
 msgid "Delete add-on"
 msgstr "移除模組"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:666
+#: data/gui/window/addon_manager.cfg:698
 msgid "Dependencies:"
 msgstr "相依模組："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1080
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1080
 msgid "addon_dependencies^None"
 msgstr "無"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:701
+#: data/gui/window/addon_manager.cfg:733
 msgid "Translations:"
 msgstr "翻譯："
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1094
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1094
 msgid "translations^None"
 msgstr "無"
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:738
+#: data/gui/window/addon_manager.cfg:770
 msgid "Filters on addon description, version, type or author"
 msgstr "透過模組描述、版本、類型或作者來篩選"
 
 # 本質狀態
 #. [label]
-#: data/gui/window/addon_manager.cfg:759
+#: data/gui/window/addon_manager.cfg:791
 msgid "State:"
 msgstr "狀態："
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:812
+#: data/gui/window/addon_manager.cfg:844
 msgid "Tags:"
 msgstr "標籤："
 
 #. [label]
 #. [button]: id=language
-#: data/gui/window/addon_manager.cfg:838
+#: data/gui/window/addon_manager.cfg:870
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:487
 msgid "Language"
 msgstr "語言"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:863
+#: data/gui/window/addon_manager.cfg:895
 msgid "Order:"
 msgstr "順序："
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:957 data/gui/window/addon_manager.cfg:1154
+#: data/gui/window/addon_manager.cfg:989 data/gui/window/addon_manager.cfg:1186
 msgid "Add-ons Manager"
 msgstr "模組管理器"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
 msgid "Add-on Details"
 msgstr "模組詳細資訊"
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:1088
-#: data/gui/window/addon_manager.cfg:1272
+#: data/gui/window/addon_manager.cfg:1120
+#: data/gui/window/addon_manager.cfg:1304
 msgid "Update All"
 msgstr "全部更新"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:1102
-#: data/gui/window/addon_manager.cfg:1286
+#: data/gui/window/addon_manager.cfg:1134
+#: data/gui/window/addon_manager.cfg:1318
 msgid "Exit"
 msgstr "退出"
 
@@ -2812,7 +2819,7 @@ msgstr "開始"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
 msgid "Difficulty"
 msgstr "難度"
@@ -3088,7 +3095,7 @@ msgstr "描述："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Experience modifier:"
 msgstr "經驗值修正："
 
@@ -3150,7 +3157,7 @@ msgstr "金幣："
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Gold per village:"
 msgstr "每個村莊的產出金幣："
 
@@ -3221,7 +3228,7 @@ msgstr "選擇地圖產生器："
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Settings"
 msgstr "設定"
 
@@ -3938,14 +3945,14 @@ msgstr "建立遊戲"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:863
+#: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "Join"
 msgstr "加入"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:829
+#: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr "旁觀者"
 
@@ -3967,7 +3974,8 @@ msgid "Preferences"
 msgstr "偏好設定"
 
 #. [button]: id=view_match_history
-#: data/gui/window/lobby_main.cfg:627
+#. [label]: id=title
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
 msgid "Match History"
 msgstr "對戰歷史"
 
@@ -4585,7 +4593,7 @@ msgstr "設定密碼讓玩家輸入密碼才可加入遊戲"
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Map size:"
 msgstr "地圖尺寸："
 
@@ -4688,6 +4696,41 @@ msgstr "登入"
 #: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:76
 msgid "Login:"
 msgstr "帳號："
+
+#. [button]: id=replay_download
+#: data/gui/window/mp_match_history.cfg:144
+#, fuzzy
+#| msgid "Downloads"
+msgid "Download"
+msgstr "下載"
+
+#. [label]: id=players
+#. [label]: id=modifications
+#: data/gui/window/mp_match_history.cfg:161
+#: data/gui/window/mp_match_history.cfg:178
+#, fuzzy
+#| msgid "url^None"
+msgid "None"
+msgstr "無"
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:377
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:390
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "玩家："
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:403
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+msgid "Modifications"
+msgstr "模組"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5822,8 +5865,8 @@ msgstr "錯誤"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
-#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:181
+#: src/gui/dialogs/multiplayer/lobby.cpp:197 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr "詳細："
 
@@ -5915,7 +5958,7 @@ msgstr "使用絕對路徑。相對路徑的用法已經被廢棄了，因為它
 msgid "language code for localized resources^en_US"
 msgstr "zh_TW"
 
-#: src/font/text.cpp:849
+#: src/font/text.cpp:842
 msgid "The text contains invalid Pango markup: "
 msgstr "此文件有無效的Pango標記："
 
@@ -6393,7 +6436,7 @@ msgid "Attacker vulnerability vs"
 msgstr "攻擊方弱點"
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:437
+#: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "無"
 
@@ -6621,12 +6664,12 @@ msgid "Unknown"
 msgstr "未知"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "no"
 msgstr "否"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "yes"
 msgstr "是"
 
@@ -6748,15 +6791,15 @@ msgstr "Lua 主控台"
 msgid "Random"
 msgstr "隨機"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:69
+#: src/gui/dialogs/multiplayer/lobby.cpp:70
 msgid "Do you really want to log out?"
 msgstr "你真的想要登出嗎？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid "Incompatible User-made Content"
 msgstr "不相容的模組"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:177
+#: src/gui/dialogs/multiplayer/lobby.cpp:178
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
@@ -6765,11 +6808,11 @@ msgstr ""
 "無法加入遊戲，因為房主有使用與你不相容的舊版模組。你也許要去建議房主更新模組"
 "版本。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid "Missing User-made Content"
 msgstr "未找到模組"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:193
+#: src/gui/dialogs/multiplayer/lobby.cpp:194
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -6778,47 +6821,43 @@ msgstr ""
 "需要安裝或更新一個或更多的模組才能加入此遊戲。\n"
 "你想要嘗試安裝嗎？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:370
+#: src/gui/dialogs/multiplayer/lobby.cpp:371
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "遊戲：$num_shown|個已顯示，共$num_total|個"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:392
+#: src/gui/dialogs/multiplayer/lobby.cpp:393
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name（時代：$era_name|）"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:422
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "era_or_mod^not installed"
 msgstr "未安裝"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:425
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "Era"
 msgstr "時代"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:432
-msgid "Modifications"
-msgstr "模組"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Reloaded:"
 msgstr "重新載入："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shared vision:"
 msgstr "共享視野："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Shuffle sides:"
 msgstr "隨機陣營："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Time limit:"
 msgstr "時間限制："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:462
 msgid "Use map settings:"
 msgstr "使用地圖設定："
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:469
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -6826,24 +6865,24 @@ msgstr ""
 "需要安裝一個或更多的模組\n"
 "才能加入這個遊戲。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers allowed"
 msgstr "允許觀察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:497
+#: src/gui/dialogs/multiplayer/lobby.cpp:498
 msgid "Observers not allowed"
 msgstr "不允許觀察"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:628
+#: src/gui/dialogs/multiplayer/lobby.cpp:629
 msgid "lobby"
 msgstr "大廳"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:829
+#: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr "這個遊戲被密碼保護。仍然要用管理員權限觀察嗎？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:842
+#: src/gui/dialogs/multiplayer/lobby.cpp:851
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -6851,7 +6890,7 @@ msgstr ""
 "多人連線大廳的模組檢測資料庫出現了問題，請在 https://bugs.wesnoth.org 回報此"
 "問題。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:863
+#: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr "這個遊戲被密碼保護。仍然要用管理員權限加入嗎？"
 
@@ -7347,7 +7386,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "點選解雇需要一個「click_dismiss」或「ok」按鈕。"
 
 #: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
-#: src/tests/gui/test_gui2.cpp:696
+#: src/tests/gui/test_gui2.cpp:701
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "無法顯示對話框，畫面尺寸不符。"
 

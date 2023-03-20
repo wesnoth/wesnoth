@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -6251,6 +6251,116 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "Fàilligeadh coitcheann leis an dearbhadh."
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Aithisg an cnàmh-sgeòil"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Buaidh"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "Bhuannaich thu!"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Ruaig"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "Chaill thu!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Òr air fhàgail: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Cuairtean air crìochnachadh tràth: "
+
+#: src/carryover_show_gold.cpp:102
+msgid " per turn"
+msgstr " sa chuairt"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Duais crìochnachaidh thràith: "
+
+#: src/carryover_show_gold.cpp:103
+msgid "Total bonus: "
+msgstr "Duais iomlan: "
+
+#: src/carryover_show_gold.cpp:106
+msgid "Total gold: "
+msgstr "Òr iomlan: "
+
+#: src/carryover_show_gold.cpp:110
+msgid "Carryover percentage: "
+msgstr "A’ cheudad a bheir thu leat: "
+
+#: src/carryover_show_gold.cpp:114
+msgid "Bonus gold: "
+msgstr "Òr duaise: "
+
+#: src/carryover_show_gold.cpp:116
+msgid "Retained gold: "
+msgstr "Òr air fhàgail: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bhonn òir a bharrachd air an òr "
+"tòiseachaidh as lugha."
+msgstr[1] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bhonn òir a bharrachd air an òr "
+"tòiseachaidh as lugha."
+msgstr[2] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold buinn òir a bharrachd air an òr "
+"tòiseachaidh as lugha."
+msgstr[3] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bonn òir a bharrachd air an òr "
+"tòiseachaidh as lugha."
+
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
+msgstr[1] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
+msgstr[2] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
+msgstr[3] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b’ e dè a tha nas àirde."
+msgstr[1] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b’ e dè a tha nas àirde."
+msgstr[2] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b’ e dè a tha nas àirde."
+msgstr[3] ""
+"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
+"ge b’ e dè a tha nas àirde."
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Air a chur ri liosta neo-shuime: $nick"
@@ -6983,149 +7093,39 @@ msgstr "Dh’fheuch thu ri logadh a-steach ro thric."
 msgid "Password hashing failed."
 msgstr "Dh’fhàillig hais an fhacail-fhaire."
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Aithisg an cnàmh-sgeòil"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Buaidh"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "Bhuannaich thu!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Ruaig"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "Chaill thu!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Òr air fhàgail: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Cuairtean air crìochnachadh tràth: "
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid " per turn"
-msgstr " sa chuairt"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Duais crìochnachaidh thràith: "
-
-#: src/game_initialization/playcampaign.cpp:125
-msgid "Total bonus: "
-msgstr "Duais iomlan: "
-
-#: src/game_initialization/playcampaign.cpp:128
-msgid "Total gold: "
-msgstr "Òr iomlan: "
-
-#: src/game_initialization/playcampaign.cpp:132
-msgid "Carryover percentage: "
-msgstr "A’ cheudad a bheir thu leat: "
-
-#: src/game_initialization/playcampaign.cpp:136
-msgid "Bonus gold: "
-msgstr "Òr duaise: "
-
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Retained gold: "
-msgstr "Òr air fhàgail: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bhonn òir a bharrachd air an òr "
-"tòiseachaidh as lugha."
-msgstr[1] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bhonn òir a bharrachd air an òr "
-"tòiseachaidh as lugha."
-msgstr[2] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold buinn òir a bharrachd air an òr "
-"tòiseachaidh as lugha."
-msgstr[3] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold bonn òir a bharrachd air an òr "
-"tòiseachaidh as lugha."
-
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
-msgstr[1] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
-msgstr[2] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
-msgstr[3] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul leis an òr tòiseachaidh as lugha."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
-"ge b’ e dè a tha nas àirde."
-msgstr[1] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
-"ge b’ e dè a tha nas àirde."
-msgstr[2] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
-"ge b’ e dè a tha nas àirde."
-msgstr[3] ""
-"Tòisichidh tu an t-ath chnàmh-sgeul le $gold no an òr tòiseachaidh as lugha, "
-"ge b’ e dè a tha nas àirde."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Cha b’ urrainn dhuinn an geama luchdadh: "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Mearachd ann an cluiche a’ gheama: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "Cha b’ urrainn dhuinn mapa a’ gheama luchdadh: "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr "Mearachd le gineadair nam mapa: "
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Mearachd le leughadh an WML: "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Crìoch a’ Gheama"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 "Tha an cnàmh-sgeul seo deiseil. A bheil thu airson leantainn air adhart leis "
 "an iomairt?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Cnàmh-sgeul nach aithne dhuinn: “$scenario|”"
 
@@ -7224,9 +7224,19 @@ msgstr "Sa lobaidh"
 msgid "Other Games"
 msgstr "Sàbhail an geama"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
 msgstr "Eachdraidh nam maids – $player"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Linn:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7329,7 +7339,7 @@ msgstr "Buidhnean"
 msgid "Races: "
 msgstr "Cinnidhean: "
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
 msgstr "Co-thaobhaidhean: "
 
@@ -7341,33 +7351,21 @@ msgstr "Ceannardan"
 msgid "Recruits"
 msgstr "Luchd air trusadh"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-msgid "Availability: "
-msgstr "Faotainneachd: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr "Glè chudromach"
-
-#: src/help/help_impl.cpp:773
-msgid "Unavailable"
-msgstr "Chan eil seo ri fhaighinn"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Measgaichte"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Co-thaobhadh: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7379,23 +7377,23 @@ msgstr ""
 "Seo buidhean de dh’aonadan agus ’s e <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref> a th’ annta uile"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Fo-bhuidhnean de dh’aonadan sa bhuidheann seo'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Buidhnean de dh’aonadan sa chinneadh seo'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Aonadan sa bhuidheann seo'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Aonadan aig a’ chinneadh seo'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "faile tùsach coirbte"
 
@@ -8210,6 +8208,40 @@ msgstr "Ghabh $name smachd"
 msgid "Turn changed"
 msgstr "Cuairt air atharrachadh"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid ""
+#| "An error occurred while downloading the add-ons list from the server."
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr ""
+"Thachair mearachd rè luchdadh a-nuas liosta nan tuilleadan an fhrithealaiche."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid "Download error"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+msgid "Download complete"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved."
+msgid "The file has been downloaded."
+msgstr "Chaidh an geama a shàbhaladh."
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Thachradh air cruth-tìre le cosgais ghluasaid nas lugha na 1."
@@ -8221,15 +8253,15 @@ msgstr "Thachradh air cruth-tìre le cosgais ghluasaid nas lugha na 1."
 msgid "waiting for^a global variable"
 msgstr "air caochladair uile-choitcheann"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "àm air fhàgail airson na cuairte làithrich"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "àm ionadail an-dràsta"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8237,17 +8269,17 @@ msgstr ""
 "Chan eil an geama sioncronaichte gu ceart. ’S dòcha nach eil mòran cèill dhà "
 "leantainn air. A bheil thu airson an geama agad a shàbhaladh?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "Mion-fhiosrachaidh mearachd:"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr "Rabhadh: meuran iomairt briste"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8266,7 +8298,7 @@ msgstr[3] ""
 "Tha cuid dhe na h-ath cnàmh-sgeulan a dhìth ma dh’fhaoidte agus is dòcha "
 "nach urrainn dhut an iomairt seo a chrìochnachadh."
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8286,13 +8318,13 @@ msgstr[3] ""
 "Cuir fios gu ùghdar na h-iomairte mu na cnàmh-sgeulan seo a tha a dhìth:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 "Nuair a bhios seo air a chàradh, feumaidh tu an cnàmh-sgeul seo a "
 "thòiseachadh as ùr."
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "Chan eil amasan ri fhaighinn"
 
@@ -8376,31 +8408,31 @@ msgstr "Tha an geama deiseil."
 msgid "It is now $name|’s turn"
 msgstr "’S e an cuairt aig $name an-dràsta."
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "Thoir an smachd dhan chaidreabhach $player aca"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "Thoir an smachd dhan amharc $player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Cuir IF ’na àite"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Cuir cluicheadair ionadail ’na àite"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "Cuir an taobh ’na thàmh"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "Sàbhail is sgur dhen gheama"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8500,7 +8532,7 @@ msgstr "do-slànaichte"
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 
 #: src/reports.cpp:361
@@ -9099,7 +9131,7 @@ msgstr "A bheil thu airson an geama a shàbhaladh mus lean thu air adhart?"
 msgid "Debug Command Used"
 msgstr "Chaidh àithne dì-bhugachaidh a chleachdadh"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Chaidh aonad a chruthachadh leis a’ mhodh dì-bugachaidh rè cuairt a’ "
@@ -9405,6 +9437,15 @@ msgstr "Falaich na planaichean aig $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
+
+#~ msgid "Availability: "
+#~ msgstr "Faotainneachd: "
+
+#~ msgid "Must-have"
+#~ msgstr "Glè chudromach"
+
+#~ msgid "Unavailable"
+#~ msgstr "Chan eil seo ri fhaighinn"
 
 #, fuzzy
 #~| msgid "Units"
