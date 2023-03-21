@@ -258,6 +258,7 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_co
 		if(i < savenames_.size() && !savenames_[i].empty()) {
 			// Load the game by throwing load_game_exception
 			load_autosave(savenames_[i]);
+			return true;
 
 		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
 			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(), gamestate().gamedata_);
