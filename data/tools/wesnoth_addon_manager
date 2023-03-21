@@ -303,7 +303,10 @@ if __name__ == "__main__":
     elif args.remove:
         cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
         data = cs.delete_campaign(*args.remove)
-        print_messages(data)
+        if data is None:
+            print("Failed to remove add-on '{}'.".format(args.remove[0]), file=sys.stderr)
+        else:
+            print_messages(data)
 
     elif args.change_passphrase:
         cs = CampaignClient(address, secure=args.secure, ipv6=args.ipv6)
