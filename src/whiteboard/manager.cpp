@@ -948,17 +948,20 @@ void manager::contextual_execute()
 		//For exception-safety, this struct sets executing_actions_ to false on destruction.
 		variable_finalizer<bool> finally(executing_actions_, false);
 
-		action_ptr action;
 		side_actions::iterator it = viewer_actions()->end();
 		unit const* selected_unit = future_visible_unit(resources::controller->get_mouse_handler_base().get_selected_hex(), viewer_side());
-		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
+
+		auto check_action = [&](side_actions::iterator i) {
+			it = i;
+			return it != viewer_actions()->end() && it < viewer_actions()->turn_end(0);
+		};
+
+		if (selected_unit && check_action(viewer_actions()->find_first_action_of(*selected_unit)))
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
 		}
-		else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
-				 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
+		else if (highlighter_ && check_action(viewer_actions()->get_position_of(highlighter_->get_execute_target())))
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
