@@ -308,6 +308,10 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 {
 	if(playsingle_controller_.is_networked_mp())
 	{
+		if(linger() ) {
+			//This doesn't work in linger mode.
+			return;
+		}
 		config savegame;
 		std::string error_log;
 		savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
