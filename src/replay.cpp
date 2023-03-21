@@ -818,7 +818,9 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				if (const config &cfg_verify = cfg->child("verify")) {
 					verify(resources::gameboard->units(), cfg_verify);
 				}
-				resources::controller->gamestate().next_player_number_ = end_turn["next_player_number"];
+				if(int npn = end_turn["next_player_number"].to_int(0); npn > 0) {
+					resources::controller->gamestate().next_player_number_ = npn;
+				}
 				return REPLAY_FOUND_END_TURN;
 			}
 		}
