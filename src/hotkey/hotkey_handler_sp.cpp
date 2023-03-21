@@ -272,7 +272,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			return !is_observer();
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
 		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
-			return whiteboard_manager_->can_enable_execution_hotkeys();
+			return whiteboard_manager_->can_enable_execution_hotkeys() && !events::commands_disabled && !browse();
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
 			return whiteboard_manager_->can_enable_modifier_hotkeys();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
