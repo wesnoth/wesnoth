@@ -1432,6 +1432,9 @@ bool unit_animator::would_end() const
 
 void unit_animator::wait_until(int animation_time) const
 {
+	if(animated_units_.empty()) {
+		return;
+	}
 	// important to set a max animation time so that the time does not go past this value for movements.
 	// fix for bug #1565
 	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(animation_time);
@@ -1474,11 +1477,17 @@ void unit_animator::wait_for_end() const
 
 int unit_animator::get_animation_time() const
 {
+	if(animated_units_.empty()) {
+		return 0;
+	}
 	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time() ;
 }
 
 int unit_animator::get_animation_time_potential() const
 {
+	if(animated_units_.empty()) {
+		return 0;
+	}
 	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time_potential() ;
 }
 
