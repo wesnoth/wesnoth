@@ -68,6 +68,7 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
+			<Add library="libcurl" />
 			<Add library="libpng" />
 			<Add library="libjpeg" />
 			<Add library="libwebp" />
@@ -232,6 +233,8 @@
 		<Unit filename="../../src/campaign_type.hpp" />
 		<Unit filename="../../src/carryover.cpp" />
 		<Unit filename="../../src/carryover.hpp" />
+		<Unit filename="../../src/carryover_show_gold.cpp" />
+		<Unit filename="../../src/carryover_show_gold.hpp" />
 		<Unit filename="../../src/chat_command_handler.cpp" />
 		<Unit filename="../../src/chat_command_handler.hpp" />
 		<Unit filename="../../src/chat_events.cpp" />
@@ -933,6 +936,8 @@
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
+		<Unit filename="../../src/network_download_file.cpp" />
+		<Unit filename="../../src/network_download_file.hpp" />
 		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />
