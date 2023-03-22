@@ -60,7 +60,7 @@ public:
 	 * @param[in]  definition  The WML defining this menu item.
 	 * @param[in]  original    The previous version of the menu item with this id.
 	 */
-	wml_menu_item(const std::string& id, const vconfig& definition, const wml_menu_item& original);
+	wml_menu_item(const std::string& id, const vconfig& definition, wml_menu_item& original);
 
 	/** The id of this item. */
 	const std::string& id() const
