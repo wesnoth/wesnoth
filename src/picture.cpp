@@ -884,11 +884,6 @@ surface get_surface(
 	return res;
 }
 
-surface get_image(const image::locator& i_locator, TYPE type)
-{
-	return get_surface(i_locator, type);
-}
-
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls)
 {
 	surface res;
