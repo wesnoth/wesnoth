@@ -405,14 +405,14 @@ void game_config_manager::load_addons_cfg()
 
 	// Warn player about addons using the no-longer-supported single-file format.
 	for(const std::string& file : user_files) {
-		const int size_minus_extension = file.size() - 4;
+		const std::size_t size_minus_extension = file.size() - 4;
 
 		if(file.substr(size_minus_extension, file.size()) == ".cfg") {
 			ERR_CONFIG << "error reading usermade add-on '" << file << "'";
 
 			error_addons.push_back(file);
 
-			const int userdata_loc = file.find("data/add-ons") + 5;
+			const std::size_t userdata_loc = file.find("data/add-ons") + 5;
 			const std::string log_msg = formatter()
 				<< "The format '~"
 				<< file.substr(userdata_loc)
@@ -635,11 +635,11 @@ void game_config_manager::load_addons_cfg()
 		const std::string& msg1 =
 			_n("The following add-on had errors and could not be loaded:",
 			   "The following add-ons had errors and could not be loaded:",
-			   n);
+			   static_cast<int>(n));
 		const std::string& msg2 =
 			_n("Please report this to the author or maintainer of this add-on.",
 			   "Please report this to the respective authors or maintainers of these add-ons.",
-			   n);
+			   static_cast<int>(n));
 
 		const std::string& report = utils::join(error_log, "\n\n");
 		events::call_in_main_thread([&]() {

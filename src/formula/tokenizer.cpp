@@ -53,7 +53,7 @@ token get_token(iterator& i1, const iterator i2) {
 			while(i1 != i2 && (std::isalpha(*i1, std::locale::classic()) || *i1 == '_'))
 				++i1;
 
-			int diff = i1 - it;
+			int diff = static_cast<int>(i1 - it);
 			token_type t = token_type::identifier;
 
 			//check if this string matches any keyword or an operator

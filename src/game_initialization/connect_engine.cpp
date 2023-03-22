@@ -433,7 +433,7 @@ void connect_engine::start_game()
 		}
 
 		// Fisher-Yates shuffle.
-		for(int i = playable_sides.size(); i > 1; i--) {
+		for(int i = static_cast<int>(playable_sides.size()); i > 1; i--) {
 			const int j_side = playable_sides[rng.get_next_random() % i];
 			const int i_side = playable_sides[i - 1];
 
@@ -724,7 +724,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
-	std::size_t i = 0;
+	int i = 0;
 	for(side_engine_ptr side : side_engines_) {
 		if(side->player_id() == id) {
 			break;
@@ -733,7 +733,7 @@ int connect_engine::find_user_side_index_by_id(const std::string& id) const
 		i++;
 	}
 
-	if(i >= side_engines_.size()) {
+	if(i >= static_cast<int>(side_engines_.size())) {
 		return -1;
 	}
 
@@ -934,10 +934,10 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 		const auto iter = std::find(color_options_.begin(), color_options_.end(), color_id_);
 
 		if(iter != color_options_.end()) {
-			color_ = std::distance(color_options_.begin(), iter);
+			color_ = static_cast<int>(std::distance(color_options_.begin(), iter));
 		} else {
 			color_options_.push_back(color_id_);
-			color_ = color_options_.size() - 1;
+			color_ = static_cast<int>(color_options_.size()) - 1;
 		}
 	}
 

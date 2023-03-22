@@ -206,7 +206,7 @@ void loading_screen::layout()
 		animation_start_ = now;
 	}
 
-	animation_->get_drawing_canvas().set_variable("time", wfl::variant(duration_cast<milliseconds>(now - *animation_start_).count()));
+	animation_->get_drawing_canvas().set_variable("time", wfl::variant(static_cast<int>(duration_cast<milliseconds>(now - *animation_start_).count())));
 	animation_->queue_redraw();
 }
 

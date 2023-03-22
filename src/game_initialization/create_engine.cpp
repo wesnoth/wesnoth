@@ -545,7 +545,7 @@ void create_engine::set_current_era_index(const std::size_t index, bool force)
 {
 	current_era_index_ = index;
 
-	dependency_manager_->try_era_by_index(index, force);
+	dependency_manager_->try_era_by_index(static_cast<int>(index), force);
 }
 
 bool create_engine::toggle_mod(int index, bool force)
@@ -629,7 +629,7 @@ std::vector<create_engine::extras_metadata_ptr> create_engine::active_mods_data(
 
 const config& create_engine::curent_era_cfg() const
 {
-	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	std::size_t era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	return *eras_[era_index]->cfg;
 }
 
@@ -637,7 +637,7 @@ const mp_game_settings& create_engine::get_parameters()
 {
 	DBG_MP << "getting parameter values";
 
-	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	std::size_t era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
 	state_.classification().era_id = eras_[era_index]->id;
 	state_.mp_settings().mp_era_name = eras_[era_index]->name;
 
@@ -681,7 +681,7 @@ void create_engine::init_all_levels()
 				config depinfo;
 				depinfo["id"] = user_map_names_[i];
 				depinfo["name"] = user_map_names_[i];
-				dependency_manager_->insert_element(depcheck::SCENARIO, depinfo, i - dep_index_offset);
+				dependency_manager_->insert_element(depcheck::SCENARIO, depinfo, static_cast<int>(i) - dep_index_offset);
 			}
 		}
 
@@ -707,7 +707,7 @@ void create_engine::init_all_levels()
 			config depinfo;
 			depinfo["id"] = data["id"];
 			depinfo["name"] = data["name"];
-			dependency_manager_->insert_element(depcheck::SCENARIO, depinfo, i - dep_index_offset++);
+			dependency_manager_->insert_element(depcheck::SCENARIO, depinfo, static_cast<int>(i) - dep_index_offset++);
 		}
 	}
 

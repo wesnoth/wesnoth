@@ -56,7 +56,7 @@ void campaign_selection::campaign_selected()
 	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 
-		const int choice = std::distance(page_ids_.begin(), iter);
+		const int choice = static_cast<int>(std::distance(page_ids_.begin(), iter));
 		if(iter == page_ids_.end()) {
 			return;
 		}
@@ -435,7 +435,7 @@ void campaign_selection::post_show(window& window)
 	if(!tree.selected_item()->id().empty()) {
 		auto iter = std::find(page_ids_.begin(), page_ids_.end(), tree.selected_item()->id());
 		if(iter != page_ids_.end()) {
-			choice_ = std::distance(page_ids_.begin(), iter);
+			choice_ = static_cast<int>(std::distance(page_ids_.begin(), iter));
 		}
 	}
 

@@ -57,7 +57,7 @@ void addon_uninstall_list::pre_show(window& window)
 void addon_uninstall_list::post_show(window& window)
 {
 	const listbox& list = find_widget<listbox>(&window, "addons_list", false);
-	const unsigned rows = list.get_item_count();
+	const std::size_t rows = list.get_item_count();
 
 	assert(rows == this->ids_.size() && rows == this->titles_map_.size());
 

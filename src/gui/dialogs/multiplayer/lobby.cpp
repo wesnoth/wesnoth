@@ -292,7 +292,7 @@ void mp_lobby::update_gamelist_diff()
 				gamelistbox_->add_row(make_game_row_data(game));
 			}
 
-			grid* grid = gamelistbox_->get_row_grid(gamelistbox_->get_item_count() - 1);
+			grid* grid = gamelistbox_->get_row_grid(static_cast<unsigned>(gamelistbox_->get_item_count()) - 1);
 			adjust_game_row_contents(game, grid);
 
 			list_i++;
@@ -352,7 +352,7 @@ void mp_lobby::update_gamelist_diff()
 	if(select_row >= static_cast<int>(gamelistbox_->get_item_count())) {
 		ERR_LB << "Would select a row beyond the listbox" << select_row << " "
 			   << gamelistbox_->get_item_count();
-		select_row = gamelistbox_->get_item_count() - 1;
+		select_row = static_cast<int>(gamelistbox_->get_item_count()) - 1;
 	}
 
 	if(select_row >= 0 && select_row != gamelistbox_->get_selected_row()) {

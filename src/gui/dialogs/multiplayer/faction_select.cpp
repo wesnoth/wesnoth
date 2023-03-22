@@ -148,7 +148,7 @@ void faction_select::on_faction_select()
 
 	menu_button& leader_dropdown = find_widget<menu_button>(get_window(), "leader_menu", false);
 
-	leader_dropdown.set_values(leaders, std::min<int>(leaders.size() - 1, previous_leader_selection));
+	leader_dropdown.set_values(leaders, std::min<int>(static_cast<int>(leaders.size()) - 1, previous_leader_selection));
 	leader_dropdown.set_active(leaders.size() > 1 && !flg_manager_.is_saved_game());
 
 	on_leader_select();

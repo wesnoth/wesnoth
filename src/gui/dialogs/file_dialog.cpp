@@ -214,7 +214,7 @@ void file_dialog::pre_show(window& window)
 	const std::vector<desktop::bookmark_info>& user_bookmarks = desktop::user_bookmarks();
 
 	if(!user_bookmarks.empty()) {
-		user_bookmarks_begin_ = bookmark_paths_.size();
+		user_bookmarks_begin_ = static_cast<int>(bookmark_paths_.size());
 	}
 
 	for(const auto& bookmark : user_bookmarks) {
@@ -459,7 +459,7 @@ void file_dialog::set_input_text(text_box& t, const std::string& value)
 	if(save_mode_ && extlen && vallen > extlen) {
 		// Highlight everything but the extension if it matches
 		if(value.substr(vallen - extlen) == extension_) {
-			t.set_selection(0, vallen - extlen);
+			t.set_selection(0, static_cast<int>(vallen - extlen));
 		}
 	}
 }
@@ -663,10 +663,10 @@ void file_dialog::on_bookmark_add_cmd()
 
 	desktop::add_user_bookmark(label, current_dir_);
 	bookmark_paths_.push_back(current_dir_);
-	const unsigned top_bookmark = bookmark_paths_.size() - 1;
+	const std::size_t top_bookmark = bookmark_paths_.size() - 1;
 
 	if(user_bookmarks_begin_ == -1) {
-		user_bookmarks_begin_ = top_bookmark;
+		user_bookmarks_begin_ = static_cast<int>(top_bookmark);
 	}
 
 	widget_data data;

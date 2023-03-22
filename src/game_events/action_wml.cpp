@@ -110,7 +110,7 @@ namespace { // Support functions
 		std::string variation = cfg["variation"];
 		std::string img_mods = cfg["image_mods"];
 
-		std::size_t side_num = cfg["side"].to_int(1);
+		int side_num = cfg["side"].to_int(1);
 		if (!resources::gameboard->has_team(side_num)) {
 			side_num = 1;
 		}

@@ -219,7 +219,7 @@ void game_version::pre_show(window& window)
 
 	window.keyboard_capture(&tab_bar);
 
-	const unsigned tab_count = tab_bar.get_item_count();
+	const std::size_t tab_count = tab_bar.get_item_count();
 	VALIDATE(tab_count == pager.get_layer_count(), "Tab bar and container size mismatch");
 
 	connect_signal_notify_modified(tab_bar,

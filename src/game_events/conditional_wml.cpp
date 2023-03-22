@@ -93,7 +93,7 @@ namespace builtin_conditions {
 
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
 		? utils::parse_ranges(cfg["count"]) : default_counts;
-		return in_ranges<int>(res.size(), counts);
+		return in_ranges<int>(static_cast<int>(res.size()), counts);
 	}
 
 	bool variable_matches(const vconfig& values)

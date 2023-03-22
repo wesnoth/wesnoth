@@ -498,7 +498,7 @@ void game_load::delete_button_callback()
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);
 
-		list.remove_row(index);
+		list.remove_row(static_cast<unsigned>(index));
 
 		display_savegame();
 	}

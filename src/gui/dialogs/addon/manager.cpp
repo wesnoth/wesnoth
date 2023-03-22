@@ -451,7 +451,7 @@ void addon_manager::pre_show(window& window)
 			auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 				[&saved_order_name](const addon_order& order) {return order.as_preference == saved_order_name;});
 			if(order_it != all_orders_.end()) {
-				int index = 2 * (std::distance(all_orders_.begin(), order_it));
+				int index = 2 * (static_cast<int>(std::distance(all_orders_.begin(), order_it)));
 				addon_list::addon_sort_func func;
 				if(saved_order_direction == sort_order::type::ascending) {
 					func = order_it->sort_func_asc;
@@ -703,7 +703,7 @@ boost::dynamic_bitset<> addon_manager::get_type_filter_visibility() const
 		boost::dynamic_bitset<> res;
 
 		for(const auto& a : addons_) {
-			int index = std::distance(type_filter_types_.begin(),
+			std::size_t index = std::distance(type_filter_types_.begin(),
 				std::find_if(type_filter_types_.begin(), type_filter_types_.end(),
 					[&a](const std::pair<ADDON_TYPE, std::string>& entry) {
 						return entry.first == a.second.type;
@@ -796,7 +796,7 @@ void addon_manager::on_order_changed(unsigned int sort_column, sort_order::type 
 	menu_button& order_menu = find_widget<menu_button>(get_window(), "order_dropdown", false);
 	auto order_it = std::find_if(all_orders_.begin(), all_orders_.end(),
 		[sort_column](const addon_order& order) {return order.column_index == static_cast<int>(sort_column);});
-	int index = 2 * (std::distance(all_orders_.begin(), order_it));
+	int index = 2 * (static_cast<int>(std::distance(all_orders_.begin(), order_it)));
 	if(order == sort_order::type::descending) {
 		++index;
 	}

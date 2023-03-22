@@ -488,7 +488,7 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	if(u != dc_->units().end()) {
 		move_cost = u->movement_cost(dc_->map().get_terrain(loc));
 	}
-	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
+	int image_number = std::min<int>(move_cost, static_cast<int>(game_config::foot_speed_prefix.size()));
 	if (image_number < 1) {
 		return res; // Invalid movement cost or no images
 	}

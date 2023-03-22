@@ -584,7 +584,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
 
 	const attack_type& att = attacker->attacks()[attacker_weapon];
-	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
+	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, static_cast<int>(attacker_weapon), defender, defender_loc, -1); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
@@ -594,7 +594,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 			//no need to calculate the battle_context here.
 			continue;
 		}
-		battle_context bc(attacker, attacker_loc, attacker_weapon, defender, defender_loc, i);
+		battle_context bc(attacker, attacker_loc, static_cast<int>(attacker_weapon), defender, defender_loc, static_cast<int>(i));
 
 		if(bc.defender_stats_->disable) {
 			continue;

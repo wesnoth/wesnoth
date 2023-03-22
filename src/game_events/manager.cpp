@@ -205,7 +205,7 @@ void manager::execute_on_events(const std::string& event_id, manager::event_func
 
 	// Save the end outside the loop so the end point remains constant,
 	// even if new events are added to the queue.
-	const unsigned saved_end = active_handlers.size();
+	const std::size_t saved_end = active_handlers.size();
 
 
 	{

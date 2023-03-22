@@ -79,7 +79,7 @@ void log_settings::pre_show(window& window)
 				group.add_member(button, this_id);
 			}
 		}
-		int current_sev, max_sev = widget_id_.size();
+		int current_sev, max_sev = static_cast<int>(widget_id_.size());
 		if (lg::get_log_domain_severity(this_domain, current_sev)) {
 			if (current_sev <= max_sev) {
 				group.set_member_states(widget_id_[current_sev + 1]);

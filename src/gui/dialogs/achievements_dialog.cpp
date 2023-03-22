@@ -55,7 +55,7 @@ void achievements_dialog::pre_show(window& win)
 	for(const auto& list : groups) {
 		// only display the achievements for the first dropdown option on first showing the dialog
 		if(list.content_for_ == last_selected_ || last_selected_ == "") {
-			selected = content_list.size();
+			selected = static_cast<int>(content_list.size());
 			last_selected_ = list.content_for_;
 			int achieved_count = 0;
 

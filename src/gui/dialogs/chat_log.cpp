@@ -90,7 +90,7 @@ public:
 
 	int count_of_pages() const
 	{
-		int size = chat_log_history.size();
+		int size = static_cast<int>(chat_log_history.size());
 		return (size % COUNT_PER_PAGE == 0) ? (size / COUNT_PER_PAGE)
 											: (size / COUNT_PER_PAGE) + 1;
 	}
@@ -255,7 +255,7 @@ public:
 
 	std::pair<int, int> calculate_log_line_range()
 	{
-		const int log_size = model_.chat_log_history.size();
+		const int log_size = static_cast<int>(model_.chat_log_history.size());
 		const int page_size = model_.COUNT_PER_PAGE;
 
 		const int page = model_.page;
@@ -278,8 +278,7 @@ public:
 		LOG_CHAT_LOG
 			<< "Entering chat_log::controller::update_view_from_model";
 		model_.msg_label->set_use_markup(true);
-		int size = model_.chat_log_history.size();
-		LOG_CHAT_LOG << "Number of chat messages: " << size;
+		LOG_CHAT_LOG << "Number of chat messages: " << model_.chat_log_history.size();
 		// determine count of pages
 		const int count_of_pages = std::max(1, model_.count_of_pages());
 		if(select_last_page) {

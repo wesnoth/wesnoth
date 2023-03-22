@@ -102,7 +102,7 @@ public:
 
 	int count_pages()
 	{
-		return std::max<int>(pages.size(), 1);
+		return std::max<int>(static_cast<int>(pages.size()), 1);
 	}
 
 private:
@@ -118,7 +118,7 @@ private:
 			if(end == std::string::npos || end < start) {
 				len = max_inspect_win_len;
 			} else {
-				len = end - start + 1;
+				len = static_cast<int>(end - start) + 1;
 			}
 			pages.emplace_back(start, len);
 			start += len;
@@ -443,7 +443,7 @@ public:
 				.widget("name", "units")
 				.add(),
 			&unit_mode_controller::show_list);
-		int sides = dc_.teams().size();
+		int sides = static_cast<int>(dc_.teams().size());
 		for(int side = 1; side <= sides; side++) {
 			std::ostringstream label;
 			label << "team " << side;

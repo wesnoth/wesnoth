@@ -180,7 +180,7 @@ void mp_create_game::pre_show(window& win)
 		});
 
 		if(index != level_types_.end()) {
-			return std::distance(level_types_.begin(), index);
+			return static_cast<int>(std::distance(level_types_.begin(), index));
 		}
 
 		return 0;
@@ -210,7 +210,7 @@ void mp_create_game::pre_show(window& win)
 
 		toggle_button& mog_toggle = find_widget<toggle_button>(row_grid, "mod_active_state", false);
 
-		const int i = mod_list_->get_item_count() - 1;
+		const int i = static_cast<int>(mod_list_->get_item_count()) - 1;
 		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
@@ -435,7 +435,7 @@ void mp_create_game::sync_with_depcheck()
 			selected_game_index_ = new_level_index.second;
 
 			auto& game_types_list = find_widget<menu_button>(get_window(), "game_types", false);
-			game_types_list.set_value(std::distance(level_types_.begin(), std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; })));
+			game_types_list.set_value(static_cast<int>(std::distance(level_types_.begin(), std::find_if(level_types_.begin(), level_types_.begin(), [&](const level_type_info& info){ return info.first == new_level_index.first; }))));
 
 			if(different_type) {
 				display_games_of_type(new_level_index.first, create_engine_.current_level().id());
@@ -630,7 +630,7 @@ void mp_create_game::regenerate_random_map()
 int mp_create_game::convert_to_game_filtered_index(const unsigned int initial_index)
 {
 	const std::vector<std::size_t>& filtered_indices = create_engine_.get_filtered_level_indices(create_engine_.current_level_type());
-	return std::distance(filtered_indices.begin(), std::find(filtered_indices.begin(), filtered_indices.end(), initial_index));
+	return static_cast<int>(std::distance(filtered_indices.begin(), std::find(filtered_indices.begin(), filtered_indices.end(), initial_index)));
 }
 
 void mp_create_game::update_details()

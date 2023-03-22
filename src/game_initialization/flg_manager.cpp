@@ -436,7 +436,7 @@ void flg_manager::select_default_faction()
 		});
 
 	if(default_faction_it != choosable_factions_.end()) {
-		set_current_faction(std::distance(choosable_factions_.begin(), default_faction_it));
+		set_current_faction(static_cast<unsigned>(std::distance(choosable_factions_.begin(), default_faction_it)));
 	} else {
 		set_current_faction(0u);
 	}
@@ -507,21 +507,21 @@ int flg_manager::faction_index(const config& faction) const
 	const auto it = std::find(choosable_factions_.begin(), choosable_factions_.end(), &faction);
 
 	assert(it != choosable_factions_.end());
-	return std::distance(choosable_factions_.begin(), it);
+	return static_cast<int>(std::distance(choosable_factions_.begin(), it));
 }
 
 int flg_manager::leader_index(const std::string& leader) const
 {
 	const auto it = std::find(choosable_leaders_.begin(), choosable_leaders_.end(), leader);
 
-	return it != choosable_leaders_.end() ? std::distance(choosable_leaders_.begin(), it) : -1;
+	return it != choosable_leaders_.end() ? static_cast<int>(std::distance(choosable_leaders_.begin(), it)) : -1;
 }
 
 int flg_manager::gender_index(const std::string& gender) const
 {
 	const auto it = std::find(choosable_genders_.begin(), choosable_genders_.end(), gender);
 
-	return it != choosable_genders_.end() ? std::distance(choosable_genders_.begin(), it) : -1;
+	return it != choosable_genders_.end() ? static_cast<int>(std::distance(choosable_genders_.begin(), it)) : -1;
 }
 
 void flg_manager::set_current_leader(const std::string& leader)

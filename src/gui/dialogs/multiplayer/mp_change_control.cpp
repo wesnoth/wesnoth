@@ -69,7 +69,7 @@ void mp_change_control::pre_show(window& window)
 	//
 	// Initialize sides list
 	//
-	const unsigned int num_sides = menu_handler_.board().teams().size();
+	const std::size_t num_sides = menu_handler_.board().teams().size();
 
 	for(unsigned int side = 1; side <= num_sides; ++side) {
 		if(menu_handler_.board().get_team(side).hidden()) {

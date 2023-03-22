@@ -363,7 +363,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		vacant_slots = s["vacant"].to_unsigned();
 
 		if(vacant_slots > 0) {
-			status = formatter() << _n("Vacant Slot:", "Vacant Slots:", vacant_slots) << " " << vacant_slots << "/" << s["max"];
+			status = formatter() << _n("Vacant Slot:", "Vacant Slots:", static_cast<int>(vacant_slots)) << " " << vacant_slots << "/" << s["max"];
 		} else {
 			status = _("mp_game_available_slots^Full");
 		}

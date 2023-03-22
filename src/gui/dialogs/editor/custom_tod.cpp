@@ -183,7 +183,7 @@ void custom_tod::do_next_tod()
 
 void custom_tod::do_prev_tod()
 {
-	current_tod_ = (current_tod_ ? current_tod_ : times_.size()) - 1;
+	current_tod_ = (current_tod_ ? current_tod_ : static_cast<int>(times_.size())) - 1;
 	update_selected_tod_info();
 }
 
@@ -203,7 +203,7 @@ void custom_tod::do_delete_tod()
 		times_.erase(times_.begin() + current_tod_);
 
 		if(times_.begin() + current_tod_ >= times_.end()) {
-			current_tod_ = times_.size() - 1;
+			current_tod_ = static_cast<int>(times_.size()) - 1;
 		}
 	}
 
