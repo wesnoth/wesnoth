@@ -1052,7 +1052,6 @@ int main(int argc, char** argv)
 	assert(!args.empty());
 
 #ifdef _WIN32
-	bool log_redirect = true;
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif

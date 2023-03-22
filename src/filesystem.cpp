@@ -39,8 +39,6 @@
 #include "game_config_view.hpp"
 
 #ifdef _WIN32
-#include "log_windows.hpp"
-
 #include <boost/locale.hpp>
 
 #include <windows.h>
