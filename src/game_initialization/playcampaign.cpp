@@ -149,7 +149,6 @@ level_result::type campaign_controller::play_game()
 #endif
 			{
 				res = playmp_scenario(end_level);
-				//todo: i removed the code that could return observer_end
 			}
 		} catch(const leavegame_wesnothd_error&) {
 			LOG_NG << "The game was remotely ended";
