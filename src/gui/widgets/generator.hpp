@@ -76,7 +76,7 @@ public:
 	/**
 	 * Deletes an item.
 	 */
-	virtual void delete_item(const unsigned index) = 0;
+	virtual void delete_item(const std::size_t index) = 0;
 
 	/** Deletes all items. */
 	virtual void clear() = 0;
@@ -87,20 +87,20 @@ public:
 	 * @param index               The item to (de)select.
 	 * @param select              If true selects, if false deselects.
 	 */
-	virtual void select_item(const unsigned index, const bool select) = 0;
+	virtual void select_item(const std::size_t index, const bool select) = 0;
 
 	/**
 	 * Toggles the selection state of an item.
 	 *
 	 * @param index               The item to toggle.
 	 */
-	void toggle_item(const unsigned index)
+	void toggle_item(const std::size_t index)
 	{
 		select_item(index, !is_selected(index));
 	}
 
 	/** Returns whether the item is selected. */
-	virtual bool is_selected(const unsigned index) const = 0;
+	virtual bool is_selected(const std::size_t index) const = 0;
 
 	/**
 	 * Shows or hides an item.
@@ -112,16 +112,16 @@ public:
 	 * @param index               The item to show or hide.
 	 * @param show                If true shows the item, else hides it.
 	 */
-	virtual void set_item_shown(const unsigned index, const bool show) = 0;
+	virtual void set_item_shown(const std::size_t index, const bool show) = 0;
 
 	/** Returns whether the item is shown. */
-	virtual bool get_item_shown(const unsigned index) const = 0;
+	virtual bool get_item_shown(const std::size_t index) const = 0;
 
 	/** Returns the visibility of all the items as a bit set. */
 	boost::dynamic_bitset<> get_items_shown() const
 	{
 		boost::dynamic_bitset<> items_shown(get_item_count());
-		for (unsigned int i = 0u; i < get_item_count(); ++i)
+		for (std::size_t i = 0; i < get_item_count(); ++i)
 		{
 			items_shown[i] = get_item_shown(i);
 		}
@@ -132,7 +132,7 @@ public:
 	virtual std::size_t get_item_count() const = 0;
 
 	/** Returns the number of selected items. */
-	virtual unsigned get_selected_item_count() const = 0;
+	virtual std::size_t get_selected_item_count() const = 0;
 
 	/**
 	 * Returns the selected item.
@@ -151,10 +151,10 @@ public:
 	virtual int get_selected_item() const = 0;
 
 	/** Gets the grid of an item. */
-	virtual grid& item(const unsigned index) = 0;
+	virtual grid& item(const std::size_t index) = 0;
 
 	/** Gets the grid of an item. */
-	virtual const grid& item(const unsigned index) const = 0;
+	virtual const grid& item(const std::size_t index) const = 0;
 
 	/***** ***** ***** ***** Create items ***** ***** ***** *****/
 
@@ -246,7 +246,7 @@ public:
 			const std::vector<widget_data>& data,
 			const std::function<void(widget&)>& callback) = 0;
 
-	typedef std::function<bool (unsigned, unsigned)> order_func;
+	typedef std::function<bool (std::size_t, std::size_t)> order_func;
 	virtual void set_order(const order_func& order) = 0;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
@@ -260,11 +260,11 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override = 0;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override
+	virtual void request_reduce_width(const std::size_t maximum_width) override
 			= 0;
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) override
+	virtual void request_reduce_height(const std::size_t maximum_height) override
 			= 0;
 
 	/** See @ref widget::calculate_best_size. */
@@ -348,33 +348,33 @@ protected:
 	 *
 	 * @param index               The index of a not selected item.
 	 */
-	virtual void do_select_item(const unsigned index) = 0;
+	virtual void do_select_item(const std::size_t index) = 0;
 
 	/**
 	 * Deselects a selected item.
 	 *
 	 * @param index               The index of a selected item.
 	 */
-	virtual void do_deselect_item(const unsigned index) = 0;
+	virtual void do_deselect_item(const std::size_t index) = 0;
 
 	/** Gets the grid of an item. */
-	virtual grid& item_ordered(const unsigned index) = 0;
+	virtual grid& item_ordered(const std::size_t index) = 0;
 
 	/** Gets the grid of an item. */
-	virtual const grid& item_ordered(const unsigned index) const = 0;
+	virtual const grid& item_ordered(const std::size_t index) const = 0;
 
 public:
 	/**
 	 * If a sort-order is being applied, maps from unsorted to sorted indicies.
 	 * This does not take account of whether each object is shown or not.
 	 */
-	virtual std::size_t get_ordered_index(unsigned index) const = 0;
+	virtual std::size_t get_ordered_index(std::size_t index) const = 0;
 
 	/**
 	 * If a sort-order is being applied, maps from sorted to unsorted indicies.
 	 * This does not take account of whether each object is shown or not.
 	 */
-	virtual std::size_t get_item_at_ordered(unsigned index_ordered) const = 0;
+	virtual std::size_t get_item_at_ordered(std::size_t index_ordered) const = 0;
 
 };
 

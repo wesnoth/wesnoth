@@ -62,7 +62,7 @@ public:
 	virtual void impl_draw_children() override;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override;
+	virtual void request_reduce_width(const std::size_t maximum_width) override;
 
 	/** See @ref widget::find_at. */
 	virtual widget* find_at(const point& coordinate,

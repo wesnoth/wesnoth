@@ -116,7 +116,7 @@ void viewport::impl_draw_children()
 	}
 }
 
-void viewport::request_reduce_width(const unsigned /*maximum_width*/)
+void viewport::request_reduce_width(const std::size_t /*maximum_width*/)
 {
 }
 

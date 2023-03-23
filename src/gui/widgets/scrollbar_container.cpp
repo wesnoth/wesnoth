@@ -152,7 +152,7 @@ void scrollbar_container::layout_initialize(const bool full_initialization)
 	content_grid_->layout_initialize(full_initialization);
 }
 
-void scrollbar_container::request_reduce_height(const unsigned maximum_height)
+void scrollbar_container::request_reduce_height(const std::size_t maximum_height)
 {
 	DBG_GUI_L << LOG_HEADER << " requested height " << maximum_height << ".";
 
@@ -215,7 +215,7 @@ void scrollbar_container::request_reduce_height(const unsigned maximum_height)
 	}
 }
 
-void scrollbar_container::request_reduce_width(const unsigned maximum_width)
+void scrollbar_container::request_reduce_width(const std::size_t maximum_width)
 {
 	DBG_GUI_L << LOG_HEADER << " requested width " << maximum_width << ".";
 

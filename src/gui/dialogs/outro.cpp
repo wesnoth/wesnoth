@@ -59,7 +59,7 @@ outro::outro(const game_classification& info)
 				// Split the names into chunks of 5. Use float for proper ceil function!
 				static const float chunk_size = 5.0;
 
-				const unsigned num_names = about.names.size();
+				const unsigned num_names = static_cast<unsigned>(about.names.size());
 				const unsigned num_chunks = std::ceil(num_names / chunk_size);
 
 				for(std::size_t i = 0; i < num_chunks; ++i) {

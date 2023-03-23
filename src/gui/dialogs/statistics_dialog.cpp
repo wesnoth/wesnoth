@@ -85,7 +85,7 @@ void statistics_dialog::pre_show(window& window)
 
 	menu_button& scenario_menu = find_widget<menu_button>(&window, "scenario_menu", false);
 
-	scenario_menu.set_values(menu_items, selection_index_);
+	scenario_menu.set_values(menu_items, static_cast<unsigned>(selection_index_));
 
 	connect_signal_notify_modified(scenario_menu,
 		std::bind(&statistics_dialog::on_scenario_select, this));

@@ -281,7 +281,7 @@ const tree_view_node& tree_view_node::parent_node() const
 	return *parent_node_;
 }
 
-void tree_view_node::request_reduce_width(const unsigned /*maximum_width*/)
+void tree_view_node::request_reduce_width(const std::size_t /*maximum_width*/)
 {
 	/* DO NOTHING */
 }

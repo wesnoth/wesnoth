@@ -118,7 +118,7 @@ void matrix::layout_children()
 	content_.layout_children();
 }
 
-void matrix::request_reduce_width(const unsigned /*maximum_width*/)
+void matrix::request_reduce_width(const std::size_t /*maximum_width*/)
 {
 }
 

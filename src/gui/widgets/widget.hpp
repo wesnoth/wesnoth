@@ -259,7 +259,7 @@ public:
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
-	virtual void request_reduce_width(const unsigned maximum_width) = 0;
+	virtual void request_reduce_width(const std::size_t maximum_width) = 0;
 
 	/**
 	 * Tries to reduce the width of a widget.
@@ -286,7 +286,7 @@ public:
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
-	virtual void request_reduce_height(const unsigned maximum_height);
+	virtual void request_reduce_height(const std::size_t maximum_height);
 
 	/**
 	 * Tries to reduce the height of a widget.

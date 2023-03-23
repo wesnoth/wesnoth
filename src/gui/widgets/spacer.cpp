@@ -41,7 +41,7 @@ bool spacer::fills_available_space()
 	return (!width_.has_formula() && width_() == 0) && (!height_.has_formula() && height_() == 0);
 }
 
-void spacer::request_reduce_width(const unsigned maximum_width)
+void spacer::request_reduce_width(const std::size_t maximum_width)
 {
 	// Do nothing unless this widget fills all available space (has non-size size).
 	if(fills_available_space()) {
@@ -49,7 +49,7 @@ void spacer::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-void spacer::request_reduce_height(const unsigned maximum_height)
+void spacer::request_reduce_height(const std::size_t maximum_height)
 {
 	// Do nothing unless this widget fills all available space (has non-size size).
 	if(fills_available_space()) {

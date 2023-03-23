@@ -233,7 +233,7 @@ void grid::reduce_width(const unsigned maximum_width)
 	throw layout_exception_width_resize_failed();
 }
 
-void grid::request_reduce_width(const unsigned maximum_width)
+void grid::request_reduce_width(const std::size_t maximum_width)
 {
 	point size = get_best_size();
 	if(size.x <= static_cast<int>(maximum_width)) {
@@ -311,7 +311,7 @@ void grid::reduce_height(const unsigned maximum_height)
 	throw layout_exception_height_resize_failed();
 }
 
-void grid::request_reduce_height(const unsigned maximum_height)
+void grid::request_reduce_height(const std::size_t maximum_height)
 {
 	point size = get_best_size();
 	if(size.y <= static_cast<int>(maximum_height)) {

@@ -196,7 +196,7 @@ void pane::filter(const filter_functor_t& filter_functor)
 	set_origin_children();
 }
 
-void pane::request_reduce_width(const unsigned /*maximum_width*/)
+void pane::request_reduce_width(const std::size_t /*maximum_width*/)
 {
 }
 

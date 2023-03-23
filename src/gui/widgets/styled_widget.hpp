@@ -187,10 +187,10 @@ public:
 	virtual void layout_initialize(const bool full_initialization) override;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override;
+	virtual void request_reduce_width(const std::size_t maximum_width) override;
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) override;
+	virtual void request_reduce_height(const std::size_t maximum_height) override;
 
 protected:
 	/** See @ref widget::calculate_best_size. */

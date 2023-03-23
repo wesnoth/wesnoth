@@ -194,7 +194,7 @@ void mp_connect::on_server_add()
 	user_servers_.insert(user_servers_.begin() + mem_pos, info);
 	preferences::set_user_servers_list(user_servers_);
 
-	insert_into_server_listbox(server_list, info, ui_pos);
+	insert_into_server_listbox(server_list, info, static_cast<int>(ui_pos));
 	select_first_match();
 }
 

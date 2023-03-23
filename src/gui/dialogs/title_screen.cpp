@@ -505,7 +505,7 @@ void title_screen::button_callback_cores()
 		cores.push_back(core);
 
 		if(core["id"] == preferences::core_id()) {
-			current = cores.size() - 1;
+			current = static_cast<int>(cores.size()) - 1;
 		}
 	}
 

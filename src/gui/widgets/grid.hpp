@@ -205,7 +205,7 @@ public:
 	void reduce_width(const unsigned maximum_width);
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override;
+	virtual void request_reduce_width(const std::size_t maximum_width) override;
 
 	/** See @ref widget::demand_reduce_width. */
 	virtual void demand_reduce_width(const unsigned maximum_width) override;
@@ -220,7 +220,7 @@ public:
 	void reduce_height(const unsigned maximum_height);
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) override;
+	virtual void request_reduce_height(const std::size_t maximum_height) override;
 
 	/** See @ref widget::demand_reduce_height. */
 	virtual void demand_reduce_height(const unsigned maximum_height) override;

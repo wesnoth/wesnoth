@@ -48,14 +48,14 @@ struct one_item : public virtual generator_base
 	 * @param index               The item to show or hide.
 	 * @param show                If true shows the item, else hides it.
 	 */
-	void set_item_shown(const unsigned index, const bool show);
+	void set_item_shown(const std::size_t index, const bool show);
 
 	/**
 	 * Called when an item is created.
 	 *
 	 * @param index               The index of the new item.
 	 */
-	void create_item(const unsigned index);
+	void create_item(const std::size_t index);
 
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
@@ -75,7 +75,7 @@ struct one_item : public virtual generator_base
 	 *                            false the caller should make sure the
 	 *                            select state is restored.
 	 */
-	bool deselect_item(const unsigned index);
+	bool deselect_item(const std::size_t index);
 
 	/**
 	 * Called just before an item is deleted.
@@ -85,17 +85,17 @@ struct one_item : public virtual generator_base
 	 *
 	 * @param index              The index of the item to be deleted.
 	 */
-	void delete_item(const unsigned index);
+	void delete_item(const std::size_t index);
 };
 
 /** No minimum selection. */
 struct no_item : public virtual generator_base
 {
 	/** See @ref minimum_selection::one_item::set_item_shown(). */
-	void set_item_shown(const unsigned index, const bool show);
+	void set_item_shown(const std::size_t index, const bool show);
 
 	/** See @ref minimum_selection::one_item::create_item() */
-	void create_item(const unsigned /*index*/)
+	void create_item(const std::size_t /*index*/)
 	{
 	}
 
@@ -103,14 +103,14 @@ struct no_item : public virtual generator_base
 	using generator_base::create_item;
 
 	/** See @ref minimum_selection::one_item::deselect_item() */
-	bool deselect_item(const unsigned index)
+	bool deselect_item(const std::size_t index)
 	{
 		do_deselect_item(index);
 		return true;
 	}
 
 	/** See @ref minimum_selection::one_item::delete_item() */
-	void delete_item(const unsigned index)
+	void delete_item(const std::size_t index)
 	{
 		if(is_selected(index)) {
 			do_deselect_item(index);
@@ -143,7 +143,7 @@ struct one_item : public virtual generator_base
 	 * @param index               The item to select.
 	 * @param select              Should always be true.
 	 */
-	void select_item(const unsigned index, const bool select) override
+	void select_item(const std::size_t index, const bool select) override
 	{
 		assert(select);
 
@@ -161,7 +161,7 @@ struct one_item : public virtual generator_base
 struct many_items : public virtual generator_base
 {
 	/** See one_item::select_item(). */
-	void select_item(const unsigned index, const bool select) override
+	void select_item(const std::size_t index, const bool select) override
 	{
 		assert(select);
 
@@ -188,19 +188,19 @@ struct horizontal_list : public virtual generator_base
 	 *
 	 * @param index                  The index of the new item.
 	 */
-	void create_item(const unsigned index);
+	void create_item(const std::size_t index);
 
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
+	virtual void request_reduce_width(const std::size_t /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
+	virtual void request_reduce_height(const std::size_t /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
@@ -264,19 +264,19 @@ struct vertical_list : public virtual generator_base
 	vertical_list();
 
 	/** See horizontal_list::create_item(). */
-	void create_item(const unsigned index);
+	void create_item(const std::size_t index);
 
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
+	virtual void request_reduce_width(const std::size_t /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
+	virtual void request_reduce_height(const std::size_t /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
@@ -348,19 +348,19 @@ struct table : public virtual generator_base
 	table();
 
 	/** See horizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/);
+	void create_item(const std::size_t /*index*/);
 
 	/* Also make the overload from the generator_ visible. */
 	using generator_base::create_item;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned /*maximum_width*/) override
+	virtual void request_reduce_width(const std::size_t /*maximum_width*/) override
 	{
 		/* DO NOTHING */
 	}
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned /*maximum_height*/) override
+	virtual void request_reduce_height(const std::size_t /*maximum_height*/) override
 	{
 		/* DO NOTHING */
 	}
@@ -422,7 +422,7 @@ private:
 struct independent : public virtual generator_base
 {
 	/** See horizontal_list::create_item(). */
-	void create_item(const unsigned /*index*/)
+	void create_item(const std::size_t /*index*/)
 	{
 		/* DO NOTHING */
 	}
@@ -431,10 +431,10 @@ struct independent : public virtual generator_base
 	using generator_base::create_item;
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override;
+	virtual void request_reduce_width(const std::size_t maximum_width) override;
 
 	/** See horizontal_list::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) override;
+	virtual void request_reduce_height(const std::size_t maximum_height) override;
 
 	/** See @ref widget::calculate_best_size. */
 	virtual point calculate_best_size() const override;
@@ -582,7 +582,7 @@ public:
 	/***** ***** ***** inherited ***** ****** *****/
 
 	/** Inherited from generator_base. */
-	void delete_item(const unsigned index) override
+	void delete_item(const std::size_t index) override
 	{
 		assert(index < items_.size());
 
@@ -608,13 +608,13 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	void select_item(const unsigned index, const bool select = true) override
+	void select_item(const std::size_t index, const bool select = true) override
 	{
 		assert(index < items_.size());
 
 		if(select && !is_selected(index)) {
 			maximum_selection::select_item(index, true);
-			last_selected_item_ = index;
+			last_selected_item_ = static_cast<int>(index);
 		} else if(is_selected(index)) {
 			if(!minimum_selection::deselect_item(index)) {
 				// Some items might have deselected themselves so
@@ -625,14 +625,14 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	bool is_selected(const unsigned index) const override
+	bool is_selected(const std::size_t index) const override
 	{
 		assert(index < items_.size());
 		return (*items_[index]).selected;
 	}
 
 	/** Inherited from generator_base. */
-	void set_item_shown(const unsigned index, const bool show) override
+	void set_item_shown(const std::size_t index, const bool show) override
 	{
 		assert(index < items_.size());
 		if(items_[index]->shown != show) {
@@ -646,7 +646,7 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	virtual bool get_item_shown(const unsigned index) const override
+	virtual bool get_item_shown(const std::size_t index) const override
 	{
 		assert(index < items_.size());
 		return items_[index]->shown && items_[index]->child_grid.get_visible() != widget::visibility::invisible;
@@ -659,7 +659,7 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	unsigned get_selected_item_count() const override
+	std::size_t get_selected_item_count() const override
 	{
 		return selected_item_count_;
 	}
@@ -686,21 +686,21 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	grid& item(const unsigned index) override
+	grid& item(const std::size_t index) override
 	{
 		assert(index < items_.size());
 		return items_[index]->child_grid;
 	}
 
 	/** Inherited from generator_base. */
-	const grid& item(const unsigned index) const override
+	const grid& item(const std::size_t index) const override
 	{
 		assert(index < items_.size());
 		return items_[index]->child_grid;
 	}
 
 	/** Inherited from generator_base. */
-	grid& item_ordered(const unsigned index) override
+	grid& item_ordered(const std::size_t index) override
 	{
 		calculate_order();
 		assert(index < items_.size());
@@ -708,7 +708,7 @@ public:
 	}
 
 	/** Inherited from generator_base. */
-	const grid& item_ordered(const unsigned index) const override
+	const grid& item_ordered(const std::size_t index) const override
 	{
 		calculate_order();
 		assert(index < items_.size());
@@ -733,7 +733,7 @@ public:
 			const widget_data& item_data,
 			const std::function<void(widget&)>& callback) override
 	{
-		assert(index == -1 || static_cast<unsigned>(index) <= items_.size());
+		assert(index == -1 || static_cast<std::size_t>(index) <= items_.size());
 
 		child* item = new child;
 		list_builder.build(item->child_grid);
@@ -786,13 +786,13 @@ public:
 	}
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override
+	virtual void request_reduce_width(const std::size_t maximum_width) override
 	{
 		my_placement::request_reduce_width(maximum_width);
 	}
 
 	/** See @ref widget::request_reduce_height. */
-	virtual void request_reduce_height(const unsigned maximum_height) override
+	virtual void request_reduce_height(const std::size_t maximum_height) override
 	{
 		my_placement::request_reduce_height(maximum_height);
 	}
@@ -905,7 +905,7 @@ public:
 
 protected:
 	/** Inherited from generator_base. */
-	void do_select_item(const unsigned index) override
+	void do_select_item(const std::size_t index) override
 	{
 		assert(index < items_.size());
 
@@ -914,7 +914,7 @@ protected:
 	}
 
 	/** Inherited from generator_base. */
-	void do_deselect_item(const unsigned index) override
+	void do_deselect_item(const std::size_t index) override
 	{
 		assert(index < items_.size());
 
@@ -955,7 +955,7 @@ private:
 	};
 
 	/** The number of selected items. */
-	unsigned selected_item_count_;
+	std::size_t selected_item_count_;
 
 	/** The last item selected. */
 	int last_selected_item_;
@@ -969,7 +969,7 @@ private:
 	/** whether need to recalculate order_dirty_ */
 	mutable bool order_dirty_;
 
-	typedef std::function<bool(unsigned, unsigned)> order_func;
+	typedef std::function<bool(std::size_t, std::size_t)> order_func;
 	order_func order_func_;
 
 	virtual void set_order(const order_func& order) override
@@ -979,14 +979,14 @@ private:
 		this->queue_redraw();
 	}
 
-	virtual std::size_t get_ordered_index(unsigned index) const override
+	virtual std::size_t get_ordered_index(std::size_t index) const override
 	{
 		assert(index < items_.size());
 		calculate_order();
 		return items_[index]->ordered_index;
 	}
 
-	virtual std::size_t get_item_at_ordered(unsigned index_ordered) const override
+	virtual std::size_t get_item_at_ordered(std::size_t index_ordered) const override
 	{
 		assert(index_ordered < items_.size());
 		calculate_order();
@@ -1023,7 +1023,7 @@ private:
 	 * @param index               The item to modify.
 	 * @param selected            Select or deselect.
 	 */
-	void set_item_selected(const unsigned index, const bool selected)
+	void set_item_selected(const std::size_t index, const bool selected)
 	{
 		assert(index < items_.size());
 

@@ -181,7 +181,7 @@ void widget::demand_reduce_width(const unsigned /*maximum_width*/)
 	/* DO NOTHING */
 }
 
-void widget::request_reduce_height(const unsigned /*maximum_height*/)
+void widget::request_reduce_height(const std::size_t /*maximum_height*/)
 {
 	/* DO NOTHING */
 }

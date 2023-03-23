@@ -258,7 +258,7 @@ private:
 	int calculate_ypos();
 
 	/** See @ref widget::request_reduce_width. */
-	virtual void request_reduce_width(const unsigned maximum_width) override;
+	virtual void request_reduce_width(const std::size_t maximum_width) override;
 
 	/**
 	 * Our parent node.

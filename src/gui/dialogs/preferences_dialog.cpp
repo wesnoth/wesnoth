@@ -144,8 +144,8 @@ void preferences_dialog::set_resolution_list(menu_button& res_list)
 		options.push_back(std::move(option));
 	}
 
-	const unsigned current_res = std::distance(resolutions_.begin(), std::find(
-		resolutions_.begin(), resolutions_.end(), video::current_resolution()));
+	const unsigned current_res = static_cast<unsigned>(std::distance(resolutions_.begin(), std::find(
+		resolutions_.begin(), resolutions_.end(), video::current_resolution())));
 
 	res_list.set_values(options, current_res);
 }
@@ -184,7 +184,7 @@ widget_data preferences_dialog::get_friends_list_row_data(const acquaintance& en
 
 void preferences_dialog::on_friends_list_select(listbox& list, text_box& textbox)
 {
-	const int num_friends = get_acquaintances().size();
+	const int num_friends = static_cast<int>(get_acquaintances().size());
 	const int sel = list.get_selected_row();
 
 	if(sel < 0 || sel >= num_friends) {
@@ -354,7 +354,7 @@ void preferences_dialog::initialize_callbacks()
 	register_bool("turbo_toggle", true, turbo, set_turbo);
 
 	const auto accl_load = [this]()->int {
-		return std::distance(accl_speeds_.begin(), std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed()));
+		return static_cast<int>(std::distance(accl_speeds_.begin(), std::find(accl_speeds_.begin(), accl_speeds_.end(), turbo_speed())));
 	};
 
 	const auto accl_save = [this](int i) {
@@ -682,9 +682,9 @@ void preferences_dialog::initialize_callbacks()
 				}
 
 				// Attempt to find an initial selection
-				int selected = std::distance(option_ids.begin(), std::find(option_ids.begin(), option_ids.end(),
+				int selected = static_cast<int>(std::distance(option_ids.begin(), std::find(option_ids.begin(), option_ids.end(),
 					get(pref_name, option.cfg["default"].str())
-				));
+				)));
 
 				// If the saved option value was invalid, reset selection to 0.
 				if(selected < 0 || selected >= static_cast<int>(option_ids.size())) {
@@ -891,7 +891,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	// We need to recalculate all hotkey names in because we might have removed a hotkey from another command.
 	for(std::size_t i = 0; i < hotkeys.get_item_count(); ++i) {
 		const hotkey::hotkey_command& hotkey_item_row = *visible_hotkeys_[i];
-		find_widget<label>(hotkeys.get_row_grid(i), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.id));
+		find_widget<label>(hotkeys.get_row_grid(static_cast<unsigned>(i)), "lbl_hotkey", false).set_label(hotkey::get_names(hotkey_item_row.id));
 	}
 }
 

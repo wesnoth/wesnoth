@@ -31,7 +31,7 @@ namespace policy
 
 namespace minimum_selection
 {
-void one_item::set_item_shown(const unsigned index, const bool show)
+void one_item::set_item_shown(const std::size_t index, const bool show)
 {
 	if(show && get_selected_item_count() == 0) {
 		do_select_item(index);
@@ -39,11 +39,11 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 		do_deselect_item(index);
 		if(get_selected_item_count() == 0) {
 			bool found_new_item = false;
-			const unsigned item_count = get_item_count();
-			const unsigned ordered_index = get_ordered_index(index);
+			const std::size_t item_count = get_item_count();
+			const std::size_t ordered_index = get_ordered_index(index);
 			// find the next shown item
-			for(unsigned i = ordered_index + 1; i < item_count; ++i) {
-				unsigned new_index = get_item_at_ordered(i);
+			for(std::size_t i = ordered_index + 1; i < item_count; ++i) {
+				std::size_t new_index = get_item_at_ordered(i);
 				if(get_item_shown(new_index)) {
 					do_select_item(new_index);
 					found_new_item = true;
@@ -52,8 +52,8 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 			}
 			// fall back to finding the previous shown item
 			if(!found_new_item) {
-				for(signed i = static_cast<signed>(ordered_index) - 1; i >= 0; --i) {
-					unsigned new_index = get_item_at_ordered(static_cast<unsigned>(i));
+				for(int i = static_cast<int>(ordered_index) - 1; i >= 0; --i) {
+					std::size_t new_index = get_item_at_ordered(static_cast<std::size_t>(i));
 					if(get_item_shown(new_index)) {
 						do_select_item(new_index);
 						break;
@@ -65,14 +65,14 @@ void one_item::set_item_shown(const unsigned index, const bool show)
 	}
 }
 
-void one_item::create_item(const unsigned index)
+void one_item::create_item(const std::size_t index)
 {
 	if(get_selected_item_count() == 0) {
 		do_select_item(index);
 	}
 }
 
-bool one_item::deselect_item(const unsigned index)
+bool one_item::deselect_item(const std::size_t index)
 {
 	if(get_selected_item_count() > 1) {
 		do_deselect_item(index);
@@ -82,13 +82,13 @@ bool one_item::deselect_item(const unsigned index)
 	return false;
 }
 
-void one_item::delete_item(const unsigned index)
+void one_item::delete_item(const std::size_t index)
 {
 	// this needs the same logic for ensuring that at least one item is selected
 	one_item::set_item_shown(index, false);
 }
 
-void no_item::set_item_shown(const unsigned index, const bool show)
+void no_item::set_item_shown(const std::size_t index, const bool show)
 {
 	if(!show && is_selected(index)) {
 		do_deselect_item(index);
@@ -106,7 +106,7 @@ horizontal_list::horizontal_list()
 {
 }
 
-void horizontal_list::create_item(const unsigned /*index*/)
+void horizontal_list::create_item(const std::size_t /*index*/)
 {
 	if(!placed_) {
 		return;
@@ -248,7 +248,7 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+		for(int i = static_cast<int>(get_ordered_index(get_item_count() - 1)); i >= 0; i--) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -263,7 +263,7 @@ void horizontal_list::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handl
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
+	for(int i = static_cast<int>(get_ordered_index(get_selected_item())) - 1; i >= 0; --i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -319,7 +319,7 @@ vertical_list::vertical_list()
 {
 }
 
-void vertical_list::create_item(const unsigned /*index*/)
+void vertical_list::create_item(const std::size_t /*index*/)
 {
 	if(!placed_) {
 		return;
@@ -457,7 +457,7 @@ void vertical_list::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+		for(int i = static_cast<int>(get_ordered_index(get_item_count() - 1)); i >= 0; i--) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -471,7 +471,7 @@ void vertical_list::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
+	for(int i = static_cast<int>(get_ordered_index(get_selected_item())) - 1; i >= 0; --i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -527,7 +527,7 @@ table::table()
 {
 }
 
-void table::create_item(const unsigned /*index*/)
+void table::create_item(const std::size_t /*index*/)
 {
 	if(!placed_) {
 		return;
@@ -750,7 +750,7 @@ void table::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+		for(int i = static_cast<int>(get_ordered_index(get_item_count() - 1)); i >= 0; i--) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -765,7 +765,7 @@ void table::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
+	for(int i = static_cast<int>(get_ordered_index(get_selected_item())) - 1; i >= 0; --i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -824,7 +824,7 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 
 	if(get_selected_item_count() == 0) {
-		for(int i = get_ordered_index(get_item_count() - 1); i >= 0; i--) {
+		for(int i = static_cast<int>(get_ordered_index(get_item_count() - 1)); i >= 0; i--) {
 			if(get_item_shown(get_item_at_ordered(i))) {
 				// TODO: Check if active?
 				handled = true;
@@ -839,7 +839,7 @@ void table::handle_key_left_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	// NOTE maybe this should only work if we can select only one item...
 	handled = true;
 
-	for(int i = get_ordered_index(get_selected_item()) - 1; i >= 0; --i) {
+	for(int i = static_cast<int>(get_ordered_index(get_selected_item())) - 1; i >= 0; --i) {
 		if(!get_item_shown(get_item_at_ordered(i))) {
 			continue;
 		}
@@ -891,7 +891,7 @@ void table::handle_key_right_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 }
 
-void independent::request_reduce_width(const unsigned maximum_width)
+void independent::request_reduce_width(const std::size_t maximum_width)
 {
 	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);
@@ -899,7 +899,7 @@ void independent::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-void independent::request_reduce_height(const unsigned maximum_height)
+void independent::request_reduce_height(const std::size_t maximum_height)
 {
 	for(std::size_t i = 0; i < get_item_count(); ++i) {
 		grid& grid = item(i);

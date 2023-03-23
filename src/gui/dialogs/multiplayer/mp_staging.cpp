@@ -281,7 +281,7 @@ void mp_staging::add_side_node(ng::side_engine_ptr side)
 		// an index into the team_data vector, get an initial selection index for the menu
 		// adjusted for the displayed named.
 		if(side->team() == i) {
-			initial_team_selection = team_names.size() - 1;
+			initial_team_selection = static_cast<unsigned>(team_names.size()) - 1;
 		}
 	}
 

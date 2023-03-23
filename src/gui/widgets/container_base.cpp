@@ -71,7 +71,7 @@ void container_base::reduce_width(const unsigned maximum_width)
 	set_layout_size(size);
 }
 
-void container_base::request_reduce_width(const unsigned maximum_width)
+void container_base::request_reduce_width(const std::size_t maximum_width)
 {
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();
@@ -107,7 +107,7 @@ void container_base::reduce_height(const unsigned maximum_height)
 	set_layout_size(size);
 }
 
-void container_base::request_reduce_height(const unsigned maximum_height)
+void container_base::request_reduce_height(const std::size_t maximum_height)
 {
 	point size = get_best_size();
 	point grid_size = grid_.get_best_size();

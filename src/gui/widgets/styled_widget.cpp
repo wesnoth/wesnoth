@@ -193,7 +193,7 @@ void styled_widget::layout_initialize(const bool full_initialization)
 	}
 }
 
-void styled_widget::request_reduce_width(const unsigned maximum_width)
+void styled_widget::request_reduce_width(const std::size_t maximum_width)
 {
 	assert(config_);
 
@@ -226,7 +226,7 @@ void styled_widget::request_reduce_width(const unsigned maximum_width)
 	}
 }
 
-void styled_widget::request_reduce_height(const unsigned maximum_height)
+void styled_widget::request_reduce_height(const std::size_t maximum_height)
 {
 	if(!label_.empty()) {
 		// Do nothing
