@@ -151,7 +151,8 @@ bool manager::can_modify_game_state() const
 					|| resources::gameboard == nullptr
 					|| executing_actions_
 					|| resources::gameboard->is_observer()
-					|| resources::controller->is_linger_mode())
+					|| resources::controller->is_linger_mode()
+					|| !synced_context::is_unsynced())
 	{
 		return false;
 	}
