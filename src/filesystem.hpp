@@ -39,7 +39,13 @@ namespace filesystem {
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
 
-typedef std::unique_ptr<SDL_RWops, void(*)(SDL_RWops*)> rwops_ptr;
+struct sdl_rwops_deleter
+{
+	void operator()(SDL_RWops*) const noexcept;
+};
+
+using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
+static_assert(sizeof(rwops_ptr) == 8);
 
 rwops_ptr make_read_RWops(const std::string &path);
 rwops_ptr make_write_RWops(const std::string &path);
