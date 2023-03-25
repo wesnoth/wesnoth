@@ -123,6 +123,9 @@ end
 -- let the player select the unit's advancement via dialog
 function pickadvance.pick_advance(unit)
 	unit = unit or wesnoth.units.get(wml.variables.x1, wml.variables.y1)
+	if not unit then
+		return
+	end
 	initialize_unit(unit)
 	local _, orig_options_sanitized = original_advances(unit)
 	local dialog_result = wesnoth.sync.evaluate_single(function()
@@ -162,6 +165,9 @@ end
 -- force picking an advancement if it has multiple and the force option was specified
 local function initialize_unit_x1y1(ctx)
 	local unit = wesnoth.units.get(ctx.x1, ctx.y1)
+	if not unit then
+		return
+	end
 	if not wesnoth.sides[unit.side].__cfg.allow_player then return end
 	initialize_unit(unit)
 	make_unit_known(unit)
