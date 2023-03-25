@@ -1264,11 +1264,39 @@ unit_ability_list attack_type::get_specials_and_abilities(const std::string& spe
 	unit_ability_list spe_list = get_specials(special);
 	if(!spe_list.empty()){
 		spe_list = overwrite_special_checking(special, spe_list, abil_list, "filter_self", true);
-		if(special == "plague" && !spe_list.empty()){
-			return spe_list;
-		}
 		abil_list.append(spe_list);
 	}
+	return abil_list;
+}
+
+unit_ability_list attack_type::get_specials_and_abilities_with_priority(const std::string& special) const
+{
+	//If `get_specials_and_abilities(special)` would return an empty list, returns `std::nullopt`.
+	//Otherwise, returns the highest priority item in the list.
+	//If two or more items are tied for highest priority, returns the one that was closer to the start of the list.
+	unit_ability_list abil_list = get_specials_and_abilities(special);
+	unit_ability_list temp_list;
+	if(abil_list.empty()){
+		return abil_list;
+	}
+
+	std::vector<double> priorityvec;
+	for(const auto& i : abil_list) {
+		priorityvec.push_back((*i.ability_cfg)["priority"].to_double(0));
+	}
+
+	if(!priorityvec.empty()){
+		double priority = *(std::max_element(priorityvec.begin(), priorityvec.end()));
+		for(const auto& i : abil_list) {
+			if((*i.ability_cfg)["priority"].to_double(0) == priority) {
+				temp_list.emplace_back(i);
+			}
+		}
+	}
+	if(!temp_list.empty()){
+		return temp_list;
+	}
+
 	return abil_list;
 }
 

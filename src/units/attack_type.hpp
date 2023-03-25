@@ -96,6 +96,8 @@ public:
 	 * @param base_value The value modified or not by function.
 	 */
 	int composite_value(const unit_ability_list& abil_list, int base_value) const;
+	/** Returns list who contains get_specials_and_abilities with highest priority specified by value of attribute 'priority'(highest value) for each ability plague. */
+	unit_ability_list get_specials_and_abilities_with_priority(const std::string& special) const;
 	/** Returns list for weapon like abilities for each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
 	/** Returns list who contains get_weapon_ability and get_specials list for each ability type */

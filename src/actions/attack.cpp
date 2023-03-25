@@ -158,7 +158,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Handle plague.
-	unit_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
+	unit_ability_list plague_specials = weapon->get_specials_and_abilities_with_priority("plague");
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
