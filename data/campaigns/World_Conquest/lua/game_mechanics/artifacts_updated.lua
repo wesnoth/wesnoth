@@ -21,6 +21,18 @@ end
 
 function artifacts.init_data()
 	local cfg = wc2_utils.get_wc2_data("artifact")
+	for artifact in wml.child_range(cfg, "artifact") do
+		for effect in wml.child_range(artifact, "effect") do
+			for abilities in wml.child_range(effect, "abilities") do
+				for leadership in wml.child_range(abilities, "leadership") do
+					if leadership.cumulative then
+						leadership.add = leadership.value
+						leadership.value = nil
+					end
+				end
+			end				
+		end
+	end
 	for i, a in ipairs(wc2_convert.wml_to_lon(cfg, "wct_artifact_list").artifact or {}) do
 		artifacts.add_artifact_data(a)
 	end
