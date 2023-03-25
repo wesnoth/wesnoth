@@ -174,6 +174,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 	gamestate().gamedata_.set_phase(game_data::read_phase(level));
 
 	start_game();
+	skip_empty_sides(gamestate_->player_number_);
 
 	if(gamestate().in_phase(game_data::TURN_PLAYING)) {
 		init_side_end();
