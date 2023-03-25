@@ -107,5 +107,5 @@ function set_terrain(a)
 end
 
 function set_map_name(str)
-	scenario_data.map_name = str
+	scenario_data.scenario.name = str
 end

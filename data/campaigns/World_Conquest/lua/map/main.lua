@@ -126,13 +126,13 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 
 	-- set the correct scenario name.
 	if scenario_num == 1 then --first map
-		scenario.name = "WC_II_" .. nplayers .. " - " .. _"Start"
+		scenario.name = (gen_args.config_name or "World Conquest") .. " - " .. _"Start"
 	else
-		local scenario_desc = _ "Scenario" .. scenario_num
+		local scenario_desc = _ "Scenario" .. " ".. scenario_num
 		if scenario_num == 5 then
 			scenario_desc = _"Final Battle"
 		end
-		scenario.name = "WC_II_" .. nplayers .. " " .. scenario_desc .. " - "--.. scenario.map_name
+		scenario.name = (gen_args.config_name or "World Conquest") .. " - " .. scenario_desc .. " - " .. (scenario.name or "")
 	end
 
 	local res = wc2_convert.lon_to_wml(scenario, "scenario")
