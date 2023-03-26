@@ -793,7 +793,7 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 int play_controller::find_last_visible_team() const
 {
 	assert(current_side() <= static_cast<int>(get_teams().size()));
-	const int num_teams = get_teams().size();
+	const int num_teams = static_cast<int>(get_teams().size());
 	const bool observer = is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
@@ -975,7 +975,7 @@ const std::string& play_controller::select_music(bool victory) const
 		return empty_str;
 	}
 
-	return music_list[randomness::rng::default_instance().get_random_int(0, music_list.size() - 1)];
+	return music_list[randomness::rng::default_instance().get_random_int(0, static_cast<int>(music_list.size()) - 1)];
 }
 
 void play_controller::check_victory()
@@ -1245,12 +1245,12 @@ void play_controller::check_next_scenario_is_known() {
 		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 		// said "okay" to a "loading saves from an old version might not work" dialog.
 		"Some of the possible next scenarios are missing, you might not be able to finish this campaign.",
-		unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0));
+		static_cast<int>(unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0)));
 	message << "\n\n";
 	message << _n(
 		"Please report the following missing scenario to the campaign’s author:\n$unknown_list|",
 		"Please report the following missing scenarios to the campaign’s author:\n$unknown_list|",
-		unknown.size());
+		static_cast<int>(unknown.size()));
 	message << "\n";
 	message << _("Once this is fixed, you will need to restart this scenario.");
 

@@ -764,15 +764,15 @@ void validate_side(int side)
 
 int shroud_map::width() const
 {
-	return data_.size();
+	return static_cast<int>(data_.size());
 }
 
 int shroud_map::height() const
 {
 	if(data_.size() == 0) return 0;
-	return std::max_element(data_.begin(), data_.end(), [](const auto& a, const auto& b) {
+	return static_cast<int>(std::max_element(data_.begin(), data_.end(), [](const auto& a, const auto& b) {
 		return a.size() < b.size();
-	})->size();
+	})->size());
 }
 
 bool shroud_map::clear(int x, int y)
@@ -933,7 +933,7 @@ bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 		for(std::size_t x = 0; x != v.size(); ++x) {
 			for(std::size_t y = 0; y != v[x].size(); ++y) {
 				if(v[x][y]) {
-					cleared |= clear(x, y);
+					cleared |= clear(static_cast<int>(x), static_cast<int>(y));
 				}
 			}
 		}

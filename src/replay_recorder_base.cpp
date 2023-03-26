@@ -43,7 +43,7 @@ int replay_recorder_base::get_pos() const
 
 int replay_recorder_base::size() const
 {
-	return commands_.size();
+	return static_cast<int>(commands_.size());
 }
 
 config& replay_recorder_base::get_command_at(int pos)

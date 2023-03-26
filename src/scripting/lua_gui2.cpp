@@ -95,14 +95,14 @@ int show_message_dialog(lua_State* L)
 			}
 			gui2::dialogs::wml_message_option option(opt["label"], opt["description"], opt["image"]);
 			if(opt["default"].to_bool(false)) {
-				options.chosen_option = i - 1;
+				options.chosen_option = static_cast<int>(i) - 1;
 			}
 			options.option_list.push_back(option);
 			lua_pop(L, 1);
 		}
 		lua_getfield(L, 2, "default");
 		if(lua_isnumber(L, -1)) {
-			int i = lua_tointeger(L, -1);
+			int i = static_cast<int>(lua_tointeger(L, -1));
 			if(i < 1 || std::size_t(i) > n) {
 				std::ostringstream error;
 				error << "default= key in options list is not a valid option index (1-" << n << ")";
@@ -190,10 +190,10 @@ int show_menu(lua_State* L) {
 	int initial = -1;
 	bool markup = false;
 	if(lua_isnumber(L, 2)) {
-		initial = lua_tointeger(L, 2) - 1;
+		initial = static_cast<int>(lua_tointeger(L, 2)) - 1;
 		markup = luaW_toboolean(L, 3);
 	} else if(lua_isnumber(L, 3)) {
-		initial = lua_tointeger(L, 3) - 1;
+		initial = static_cast<int>(lua_tointeger(L, 3)) - 1;
 		markup = luaW_toboolean(L, 2);
 	} else if(lua_isboolean(L, 2)) {
 		markup = luaW_toboolean(L, 2);

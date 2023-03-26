@@ -40,15 +40,15 @@ namespace
 {
 std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const_buffers_type source_buffer)
 {
-	const unsigned int chunk_size = 4096;
+	const std::size_t chunk_size = 4096;
 
 	std::deque<boost::asio::const_buffer> buffers;
-	unsigned int remaining_size = boost::asio::buffer_size(source_buffer);
+	std::size_t remaining_size = boost::asio::buffer_size(source_buffer);
 
 	const uint8_t* data = static_cast<const uint8_t*>(source_buffer.data());
 
-	while(remaining_size > 0u) {
-		unsigned int size = std::min(remaining_size, chunk_size);
+	while(remaining_size > 0) {
+		std::size_t size = std::min(remaining_size, chunk_size);
 		buffers.emplace_back(data, size);
 		data += size;
 		remaining_size -= size;
@@ -243,7 +243,7 @@ void connection::transfer(const config& request, config& response)
 
 	bytes_to_write_ = write_buf_->size() + 4;
 	bytes_written_ = 0;
-	payload_size_ = htonl(bytes_to_write_ - 4);
+	payload_size_ = htonl(static_cast<uint32_t>(bytes_to_write_) - 4);
 
 	auto bufs = split_buffer(write_buf_->data());
 	bufs.push_front(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4));

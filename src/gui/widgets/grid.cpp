@@ -241,7 +241,7 @@ void grid::request_reduce_width(const std::size_t maximum_width)
 		return;
 	}
 
-	const unsigned too_wide = size.x - maximum_width;
+	const unsigned too_wide = size.x - static_cast<int>(maximum_width);
 	unsigned reduced = 0;
 	for(std::size_t col = 0; col < cols_; ++col) {
 		if(too_wide - reduced >= col_width_[col]) {
@@ -253,7 +253,7 @@ void grid::request_reduce_width(const std::size_t maximum_width)
 		const unsigned wanted_width = col_width_[col] - (too_wide - reduced);
 		const unsigned width
 				= grid_implementation::column_request_reduce_width(
-						*this, col, wanted_width);
+						*this, static_cast<unsigned>(col), wanted_width);
 
 		if(width < col_width_[col]) {
 			unsigned reduction = col_width_[col] - width;
@@ -319,7 +319,7 @@ void grid::request_reduce_height(const std::size_t maximum_height)
 		return;
 	}
 
-	const unsigned too_high = size.y - maximum_height;
+	const unsigned too_high = size.y - static_cast<int>(maximum_height);
 	unsigned reduced = 0;
 	for(std::size_t row = 0; row < rows_; ++row) {
 		unsigned wanted_height = row_height_[row] - (too_high - reduced);
@@ -345,7 +345,7 @@ void grid::request_reduce_height(const std::size_t maximum_height)
 		call later calls get_best_size() for child widgets as if size reduction
 		had never happened. */
 		const unsigned height = grid_implementation::row_request_reduce_height(
-				*this, row, wanted_height);
+				*this, static_cast<unsigned>(row), wanted_height);
 
 		if(height < row_height_[row]) {
 			unsigned reduction = row_height_[row] - height;
@@ -1020,7 +1020,7 @@ unsigned grid_implementation::row_request_reduce_height(
 	// The minimum height required.
 	unsigned required_height = 0;
 
-	for(std::size_t x = 0; x < grid.cols_; ++x) {
+	for(unsigned x = 0; x < grid.cols_; ++x) {
 		grid::child& cell = grid.get_child(row, x);
 		cell_request_reduce_height(cell, maximum_height);
 
@@ -1045,7 +1045,7 @@ unsigned grid_implementation::column_request_reduce_width(
 	// The minimum width required.
 	unsigned required_width = 0;
 
-	for(std::size_t y = 0; y < grid.rows_; ++y) {
+	for(unsigned y = 0; y < grid.rows_; ++y) {
 		grid::child& cell = grid.get_child(y, column);
 		cell_request_reduce_width(cell, maximum_width);
 

@@ -151,7 +151,7 @@ void menu_handler::status_table()
 {
 	int selected_side;
 
-	if(gui2::dialogs::game_stats::execute(board(), gui_->viewing_team(), selected_side)) {
+	if(gui2::dialogs::game_stats::execute(board(), static_cast<int>(gui_->viewing_team()), selected_side)) {
 		gui_->scroll_to_leader(selected_side);
 	}
 }
@@ -829,7 +829,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = team::get_side_color(gui_->viewing_side());
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, label, gui_->viewing_team(), team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, static_cast<int>(gui_->viewing_team()), team_name, color);
 		if(res) {
 			resources::recorder->add_label(res);
 		}
@@ -970,7 +970,7 @@ void menu_handler::execute_gotos(mouse_handler& mousehandler, int side)
 
 			{
 				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back();
-				int moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
+				std::size_t moves = actions::move_unit_and_record(route.steps, &pc_.get_undo_stack());
 				change = moves > 0;
 			}
 
@@ -1831,7 +1831,7 @@ void console_handler::do_choose_level()
 		}
 	}
 	std::sort(options.begin(), options.end());
-	int choice = std::distance(options.begin(), std::lower_bound(options.begin(), options.end(), next));
+	int choice = static_cast<int>(std::distance(options.begin(), std::lower_bound(options.begin(), options.end(), next)));
 	{
 		gui2::dialogs::simple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
 		dlg.set_selected_index(choice);

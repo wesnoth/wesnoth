@@ -370,8 +370,8 @@ void unit_mover::proceed_to(unit_ptr u, std::size_t path_index, bool update, boo
 			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
 				wait_until_ =
 					move_unit_between(path_[current_], path_[current_+1],
-					                  temp_unit_ptr_.get_unit_ptr(), current_,
-					                  path_.size() - (current_+2), animator_,
+					                  temp_unit_ptr_.get_unit_ptr(), static_cast<unsigned>(current_),
+					                  static_cast<unsigned>(path_.size() - (current_+2)), animator_,
 					                  *disp_);
 			else if ( path_[current_] != path_[current_+1] )
 				teleport_unit_between(path_[current_], path_[current_+1],

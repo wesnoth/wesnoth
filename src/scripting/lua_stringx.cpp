@@ -73,8 +73,8 @@ static int impl_str_index(lua_State* L)
 		return 1;
 	} else if(lua_type(L, 2) == LUA_TNUMBER) {
 		// get the string length and the index
-		int len = lua_rawlen(L, 1);
-		int i = luaL_checkinteger(L, 2);
+		int len = static_cast<int>(lua_rawlen(L, 1));
+		int i = static_cast<int>(luaL_checkinteger(L, 2));
 		// In order to not break ipairs, an out-of-bounds access needs to return nil
 		if(i == 0 || abs(i) > len) {
 			lua_pushnil(L);

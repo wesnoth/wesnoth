@@ -293,14 +293,14 @@ void side_actions::get_numbers(const map_location& hex, numbers_t& result)
 	for(const_iterator it = begin(); it != end(); ++it) {
 		if((*it)->is_numbering_hex(hex)) {
 			//store number corresponding to iterator's position + 1
-			std::size_t number = (it - begin()) + 1;
+			int number = static_cast<int>(it - begin()) + 1;
 			std::size_t index = numbers_to_draw.size();
 			numbers_to_draw.push_back(number);
 			team_numbers.push_back(team_index());
 
 			if(hlighter) {
 				if(hlighter->get_main_highlight().lock() == *it) {
-					main_number = index;
+					main_number = static_cast<int>(index);
 				}
 
 				for(weak_action_ptr action : hlighter->get_secondary_highlights()) {
@@ -523,9 +523,9 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 
 	LOG_WB << "Before bumping earlier, " << *this;
 
-	int turn_number = get_turn(position);
-	int action_number = actions_.position_in_turn(position);
-	int last_position = turn_size(turn_number) - 1;
+	std::size_t turn_number = get_turn(position);
+	std::size_t action_number = actions_.position_in_turn(position);
+	std::size_t last_position = turn_size(turn_number) - 1;
 	LOG_WB << "In turn #" << turn_number
 			<< ", bumping action #" << action_number << "/" << last_position
 			<< " to position #" << action_number - 1  << "/" << last_position
@@ -567,7 +567,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	LOG_WB << "Erasing action at turn #" << get_turn(position) << " position #" << actions_.position_in_turn(position);
 
 
-	if(resources::gameboard->get_team(team_index_ + 1).is_local()) {
+	if(resources::gameboard->get_team(static_cast<int>(team_index_) + 1).is_local()) {
 		position = synced_erase(position);
 	}
 	else {

@@ -67,11 +67,11 @@ void playsingle_controller::hotkey_handler::recall(){
 }
 
 void playsingle_controller::hotkey_handler::toggle_shroud_updates(){
-	menu_handler_.toggle_shroud_updates(gui()->viewing_team()+1);
+	menu_handler_.toggle_shroud_updates(static_cast<int>(gui()->viewing_team())+1);
 }
 
 void playsingle_controller::hotkey_handler::update_shroud_now(){
-	menu_handler_.update_shroud_now(gui()->viewing_team()+1);
+	menu_handler_.update_shroud_now(static_cast<int>(gui()->viewing_team())+1);
 }
 
 void playsingle_controller::hotkey_handler::end_turn(){
@@ -203,7 +203,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 
 		case hotkey::HOTKEY_WML:
 		{
-			int prefixlen = wml_menu_hotkey_prefix.length();
+			std::size_t prefixlen = wml_menu_hotkey_prefix.length();
 			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
 				return false;
 			}

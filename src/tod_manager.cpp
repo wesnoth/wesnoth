@@ -63,7 +63,7 @@ tod_manager::tod_manager(const config& scenario_cfg)
 	}
 
 	// We need to call parse_times before fix_time_index because otherwise the first parameter will always be 0.
-	currentTime_ = fix_time_index(times_.size(), scenario_cfg["current_time"].to_int(0));
+	currentTime_ = fix_time_index(static_cast<int>(times_.size()), scenario_cfg["current_time"].to_int(0));
 }
 
 void tod_manager::resolve_random(randomness::rng& r)
@@ -86,10 +86,10 @@ void tod_manager::resolve_random(randomness::rng& r)
 
 	if(!output.empty()) {
 		int chosen = output[r.next_random() % output.size()];
-		currentTime_ = fix_time_index(times_.size(), chosen);
+		currentTime_ = fix_time_index(static_cast<int>(times_.size()), chosen);
 		r.next_random();
 	} else if(random_tod_.to_bool(false)) {
-		currentTime_ = fix_time_index(times_.size(), r.next_random());
+		currentTime_ = fix_time_index(static_cast<int>(times_.size()), r.next_random());
 	}
 
 	random_tod_ = false;
@@ -438,7 +438,7 @@ const time_of_day& tod_manager::get_time_of_day_turn(
 		return dummytime();
 	}
 
-	const int time = calculate_time_index_at_turn(times.size(), nturn, current_time);
+	const int time = calculate_time_index_at_turn(static_cast<int>(times.size()), nturn, current_time);
 	return times[time];
 }
 
@@ -508,10 +508,10 @@ void tod_manager::set_turn_by_wml(const int num, game_data* vars, const bool inc
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)
 {
-	set_current_time(calculate_time_index_at_turn(times_.size(), new_current_turn_number, currentTime_));
+	set_current_time(calculate_time_index_at_turn(static_cast<int>(times_.size()), new_current_turn_number, currentTime_));
 
 	for(area_time_of_day& area : areas_) {
-		set_current_time(calculate_time_index_at_turn(area.times.size(), new_current_turn_number, area.currentTime), area);
+		set_current_time(calculate_time_index_at_turn(static_cast<int>(area.times.size()), new_current_turn_number, area.currentTime), area);
 	}
 }
 
@@ -535,7 +535,7 @@ int tod_manager::calculate_time_index_at_turn(int number_of_times, int for_turn_
 
 void tod_manager::set_current_time(int time)
 {
-	time = fix_time_index(times_.size(), time);
+	time = fix_time_index(static_cast<int>(times_.size()), time);
 	if(!times_.empty() && times_[time].lawful_bonus != times_[currentTime_].lawful_bonus) {
 		has_tod_bonus_changed_ = true;
 	}
@@ -560,7 +560,7 @@ void tod_manager::set_current_time(int time, const std::string& area_id)
 
 void tod_manager::set_current_time(int time, area_time_of_day& area)
 {
-	time = fix_time_index(area.times.size(), time);
+	time = fix_time_index(static_cast<int>(area.times.size()), time);
 	if(area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus) {
 		has_tod_bonus_changed_ = true;
 	}

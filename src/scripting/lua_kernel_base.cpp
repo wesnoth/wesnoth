@@ -99,7 +99,7 @@ static int impl_version_get(lua_State* L)
 {
 	version_info& vers = *static_cast<version_info*>(luaL_checkudata(L, 1, Version));
 	if(lua_isinteger(L, 2)) {
-		int n = lua_tointeger(L, 2) - 1;
+		int n = static_cast<int>(lua_tointeger(L, 2)) - 1;
 		auto& components = vers.components();
 		if(n >= 0 && size_t(n) < components.size()) {
 			lua_pushinteger(L, vers.components()[n]);
@@ -165,7 +165,7 @@ static int intf_make_version(lua_State* L)
 	if(lua_type(L, 1) == LUA_TSTRING) {
 		new(L) version_info(lua_check<std::string>(L, 1));
 	} else {
-		int major = luaL_checkinteger(L, 1), minor = luaL_optinteger(L, 2, 0), rev = luaL_optinteger(L, 3, 0);
+		int major = static_cast<int>(luaL_checkinteger(L, 1)), minor = static_cast<int>(luaL_optinteger(L, 2, 0)), rev = static_cast<int>(luaL_optinteger(L, 3, 0));
 		std::string sep, special;
 		if(lua_type(L, -1) == LUA_TSTRING) {
 			special = lua_tostring(L, -1);
@@ -220,7 +220,7 @@ int lua_kernel_base::intf_print(lua_State* L)
 	lua_getglobal(L, "tostring");
 	for (std::size_t i = 1; i <= nargs; ++i) {
 		lua_pushvalue(L, -1); // function to call: "tostring"
-		lua_pushvalue(L, i); // value to pass through tostring() before printing
+		lua_pushvalue(L, static_cast<int>(i)); // value to pass through tostring() before printing
 		lua_call(L, 1, 1);
 		const char * str = lua_tostring(L, -1);
 		if (!str) {
@@ -341,8 +341,8 @@ static int intf_name_generator(lua_State *L)
 			} else {
 				input = utils::parenthetical_split(luaW_checktstring(L, 2), ',');
 			}
-			int chain_sz = luaL_optinteger(L, 3, 2);
-			int max_len = luaL_optinteger(L, 4, 12);
+			int chain_sz = static_cast<int>(luaL_optinteger(L, 3, 2));
+			int max_len = static_cast<int>(luaL_optinteger(L, 4, 12));
 			gen = new(L) markov_generator(input, chain_sz, max_len);
 			// Ensure the pointer didn't change when cast
 			assert(static_cast<void*>(gen) == dynamic_cast<markov_generator*>(gen));
@@ -458,9 +458,9 @@ static int intf_named_tuple(lua_State* L)
 	}
 	auto names = lua_check<std::vector<std::string>>(L, 2);
 	lua_len(L, 1);
-	int len = luaL_checkinteger(L, -1);
+	int len = static_cast<int>(luaL_checkinteger(L, -1));
 	luaW_push_namedtuple(L, names);
-	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
+	for(int i = 1; i <= std::max<int>(len, static_cast<int>(names.size())); i++) {
 		lua_geti(L, 1, i);
 		lua_seti(L, -2, i);
 	}
@@ -744,7 +744,7 @@ lua_kernel_base::lua_kernel_base()
 	};
 	for (luaL_Reg const *lib = safe_libs; lib->func; ++lib)
 	{
-		luaL_requiref(L, lib->name, lib->func, strlen(lib->name));
+		luaL_requiref(L, lib->name, lib->func, static_cast<int>(strlen(lib->name)));
 		lua_pop(L, 1);  /* remove lib */
 	}
 

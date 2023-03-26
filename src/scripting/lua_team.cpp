@@ -97,7 +97,7 @@ static int impl_side_get(lua_State *L)
 
 	if (strcmp(m, "recruit") == 0) {
 		const std::set<std::string>& recruits = t.recruits();
-		lua_createtable(L, recruits.size(), 0);
+		lua_createtable(L, static_cast<int>(recruits.size()), 0);
 		int i = 1;
 		for (const std::string& r : t.recruits()) {
 			lua_pushstring(L, r.c_str());
@@ -353,7 +353,7 @@ team& luaW_checkteam(lua_State* L, int idx)
 team& luaW_checkteam(lua_State* L, int idx, game_board& board)
 {
 	if(lua_isinteger(L, idx)) {
-		int side = lua_tointeger(L, idx);
+		int side = static_cast<int>(lua_tointeger(L, idx));
 		if(!board.has_team(side)) {
 			std::string error = "side " + std::to_string(side) + " does not exist";
 			luaL_argerror(L, 1, error.c_str());

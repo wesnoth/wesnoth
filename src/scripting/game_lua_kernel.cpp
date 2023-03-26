@@ -304,13 +304,13 @@ static int impl_add_animation(lua_State* L)
 
 		lua_getfield(L, 5, "value");
 		if(lua_isnumber(L, -1)) {
-			v1 = lua_tointeger(L, -1);
+			v1 = static_cast<int>(lua_tointeger(L, -1));
 		} else if(lua_istable(L, -1)) {
 			lua_rawgeti(L, -1, 1);
-			v1 = lua_tointeger(L, -1);
+			v1 = static_cast<int>(lua_tointeger(L, -1));
 			lua_pop(L, 1);
 			lua_rawgeti(L, -1, 2);
-			v2 = lua_tointeger(L, -1);
+			v2 = static_cast<int>(lua_tointeger(L, -1));
 			lua_pop(L, 1);
 		} else if(!lua_isnoneornil(L, -1)) {
 			return luaW_type_error(L, 5, "value", "number or array of two numbers");
@@ -823,12 +823,12 @@ int game_lua_kernel::intf_is_enemy(lua_State *L)
 	if(team* t = luaW_toteam(L, 1)) {
 		side_1 = t->side();
 	} else {
-		side_1 = luaL_checkinteger(L, 1);
+		side_1 = static_cast<unsigned>(luaL_checkinteger(L, 1));
 	}
 	if(team* t = luaW_toteam(L, 2)) {
 		side_2 = t->side();
 	} else {
-		side_2 = luaL_checkinteger(L, 2);
+		side_2 = static_cast<unsigned>(luaL_checkinteger(L, 2));
 	}
 	if (side_1 > teams().size() || side_2 > teams().size()) return 0;
 	lua_pushboolean(L, board().get_team(side_1).is_enemy(side_2));
@@ -912,7 +912,7 @@ static int luaW_check_schedule(lua_State* L, int idx)
 	int save_top = lua_gettop(L);
 	luaL_checkudata(L, idx, "schedule");
 	lua_getiuservalue(L, idx, 1);
-	int i = luaL_checkinteger(L, -1);
+	int i = static_cast<int>(luaL_checkinteger(L, -1));
 	lua_settop(L, save_top);
 	return i;
 }
@@ -922,7 +922,7 @@ int game_lua_kernel::impl_schedule_get(lua_State *L)
 	int area_index = luaW_check_schedule(L, 1);
 	if(lua_isnumber(L, 2)) {
 		const auto& times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
-		int i = lua_tointeger(L, 2) - 1;
+		int i = static_cast<int>(lua_tointeger(L, 2)) - 1;
 		if(i < 0 || i >= static_cast<int>(times.size())) {
 			return luaL_argerror(L, 2, "invalid time of day index");
 		}
@@ -963,7 +963,7 @@ int game_lua_kernel::impl_schedule_set(lua_State *L)
 	int area_index = luaW_check_schedule(L, 1);
 	if(lua_isnumber(L, 2)) {
 		std::vector<time_of_day> times = area_index < 0 ? tod_man().times() : tod_man().times(area_index);
-		int i = lua_tointeger(L, 2) - 1;
+		int i = static_cast<int>(lua_tointeger(L, 2)) - 1;
 		if(i < 0 || i >= static_cast<int>(times.size())) {
 			return luaL_argerror(L, 2, "invalid time of day index");
 		}
@@ -1003,7 +1003,7 @@ int game_lua_kernel::impl_schedule_set(lua_State *L)
 				lua_push(L, err.str());
 				return lua_error(L);
 			}
-			int n = std::distance(times.begin(), iter);
+			int n = static_cast<int>(std::distance(times.begin(), iter));
 			if(area_index < 0) {
 				tod_man().set_current_time(n);
 			} else {
@@ -1101,7 +1101,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	}
 
 	if(lua_isnumber(L, 2)) {
-		for_turn = luaL_checkinteger(L, 2);
+		for_turn = static_cast<int>(luaL_checkinteger(L, 2));
 		int number_of_turns = tod_man().number_of_turns();
 		if(for_turn < 1 || (number_of_turns != -1 && for_turn > number_of_turns)) {
 			return luaL_argerror(L, 2, "turn number out of range");
@@ -1147,7 +1147,7 @@ int game_lua_kernel::intf_set_village_owner(lua_State *L)
 	}
 
 	const int old_side_num = board().village_owner(loc);
-	const int new_side_num = lua_isnoneornil(L, 2) ? 0 : luaL_checkinteger(L, 2);
+	const int new_side_num = lua_isnoneornil(L, 2) ? 0 : static_cast<int>(luaL_checkinteger(L, 2));
 
 	team* old_side = nullptr;
 	team* new_side = nullptr;
@@ -1501,7 +1501,7 @@ static int impl_mp_settings_get(lua_State* L)
 					lua_call(L, 1, 1);
 					lua_setfield(L, -2, "version");
 				}
-				lua_createtable(L, addon.content.size(), 0);
+				lua_createtable(L, static_cast<int>(addon.content.size()), 0);
 				for(const auto& content : addon.content) {
 					lua_createtable(L, 0, 3);
 					lua_push(L, content.id);
@@ -1796,8 +1796,8 @@ int game_lua_kernel::intf_end_turn(lua_State* L)
 	//note that next_player_number = 1, next_player_number = nteams+1 both set the next team to be the first team
 	//but the later will make the turn counter change aswell fire turn end events accoringly etc.
 	if (!lua_isnoneornil(L, 1)) {
-		int max = 2 * teams().size();
-		int npn = luaL_checkinteger(L, 1);
+		int max = 2 * static_cast<int>(teams().size());
+		int npn = static_cast<int>(luaL_checkinteger(L, 1));
 		if (npn <= 0 || npn > max) {
 			return luaL_argerror(L, 1, "side number out of range");
 		}
@@ -1880,7 +1880,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
-			int i = luaL_checkinteger(L, -1);
+			int i = static_cast<int>(luaL_checkinteger(L, -1));
 			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
 			else {
 				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
@@ -1927,7 +1927,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map.w(), map.h(),
 		&teleport_locations);
 
-	int nb = res.steps.size();
+	int nb = static_cast<int>(res.steps.size());
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
@@ -1979,7 +1979,7 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
-			int i = luaL_checkinteger(L, -1);
+			int i = static_cast<int>(luaL_checkinteger(L, -1));
 			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
 			else {
 				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
@@ -1996,7 +1996,7 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	pathfind::paths res(*u, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
 
-	int nb = res.destinations.size();
+	int nb = static_cast<int>(res.destinations.size());
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
@@ -2049,7 +2049,7 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
 	pathfind::vision_path res(*u, u->get_location(), jamming_map);
 
-	lua_createtable(L, res.destinations.size() + res.edges.size(), 0);
+	lua_createtable(L, static_cast<int>(res.destinations.size() + res.edges.size()), 0);
 	for(const auto& d : res.destinations) {
 		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
 		lua_pushinteger(L, d.curr.wml_x());
@@ -2076,7 +2076,7 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 template<typename T> // This is only a template so I can avoid typing out the long typename. >_>
 static int load_fake_units(lua_State* L, int arg, T& fake_units)
 {
-	for (int i = 1, i_end = lua_rawlen(L, arg); i <= i_end; ++i)
+	for (int i = 1, i_end = static_cast<int>(lua_rawlen(L, arg)); i <= i_end; ++i)
 	{
 		map_location src;
 		lua_rawgeti(L, arg, i);
@@ -2096,7 +2096,7 @@ static int load_fake_units(lua_State* L, int arg, T& fake_units)
 				goto error;
 			}
 		}
-		int side = lua_tointeger(L, -1);
+		int side = static_cast<int>(lua_tointeger(L, -1));
 
 		lua_rawgeti(L, entry, 4);
 		if (!lua_isstring(L, -1)) {
@@ -2195,7 +2195,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1))
 		{
-			int i = luaL_checkinteger(L, -1);
+			int i = static_cast<int>(luaL_checkinteger(L, -1));
 			if (i >= 1 && i <= static_cast<int>(teams().size()))
 			{
 				viewing_side = i;
@@ -2268,7 +2268,7 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 
 	// create return value
-	lua_createtable(L, location_set.size(), 0);
+	lua_createtable(L, static_cast<int>(location_set.size()), 0);
 	int counter = 1;
 	for (const map_location& loc : location_set)
 	{
@@ -2309,7 +2309,7 @@ static int impl_floating_label_getmethod(lua_State* L)
 int game_lua_kernel::intf_remove_floating_label(lua_State* L)
 {
 	int* handle = luaW_check_floating_label(L, 1);
-	int fade = luaL_optinteger(L, 2, -1);
+	int fade = static_cast<int>(luaL_optinteger(L, 2, -1));
 	if(*handle != 0) {
 		// Passing -1 as the second argument means it uses the fade time that was set when the label was created
 		font::remove_floating_label(*handle, fade);
@@ -2357,11 +2357,11 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	map_location loc{0, 0, wml_loc()};
 	if(lua_istable(L, 2)) {
 		if(luaW_tableget(L, 2, "size")) {
-			size = luaL_checkinteger(L, -1);
+			size = static_cast<int>(luaL_checkinteger(L, -1));
 		}
 		if(luaW_tableget(L, 2, "max_width")) {
 			int found_number;
-			width = lua_tointegerx(L, -1, &found_number);
+			width = static_cast<int>(lua_tointegerx(L, -1, &found_number));
 			if(!found_number) {
 				auto value = luaW_tostring(L, -1);
 				try {
@@ -2407,7 +2407,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 		}
 		if(luaW_tableget(L, 2, "duration")) {
 			int found_number;
-			lifetime = lua_tointegerx(L, -1, &found_number);
+			lifetime = static_cast<int>(lua_tointegerx(L, -1, &found_number));
 			if(!found_number) {
 				auto value = luaW_tostring(L, -1);
 				if(value == "unlimited") {
@@ -2418,7 +2418,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			}
 		}
 		if(luaW_tableget(L, 2, "fade_time")) {
-			fadeout = lua_tointeger(L, -1);
+			fadeout = static_cast<int>(lua_tointeger(L, -1));
 		}
 		if(luaW_tableget(L, 2, "location")) {
 			loc = luaW_checklocation(L, -1);
@@ -2638,7 +2638,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 	}
 	lua_unit *lu = nullptr;
 	unit_ptr u = unit_ptr();
-	int side = lua_tointeger(L, 2);
+	int side = static_cast<int>(lua_tointeger(L, 2));
 	if (static_cast<unsigned>(side) > teams().size()) side = 0;
 
 	if(luaW_isunit(L, 1)) {
@@ -2936,7 +2936,7 @@ static int intf_transform_unit(lua_State *L)
  */
 static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
 {
-	int n = cmb.hp_dist.size();
+	int n = static_cast<int>(cmb.hp_dist.size());
 	lua_createtable(L, 0, 4);
 	lua_pushnumber(L, cmb.poisoned);
 	lua_setfield(L, -2, "poisoned");
@@ -3025,7 +3025,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 	unit_const_ptr att = luaW_checkunit(L, arg_num).shared_from_this();
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
-		att_w = lua_tointeger(L, arg_num) - 1;
+		att_w = static_cast<int>(lua_tointeger(L, arg_num)) - 1;
 		if (att_w < 0 || att_w >= static_cast<int>(att->attacks().size()))
 			return luaL_argerror(L, arg_num, "weapon index out of bounds");
 		++arg_num;
@@ -3034,7 +3034,7 @@ int game_lua_kernel::intf_simulate_combat(lua_State *L)
 	unit_const_ptr def = luaW_checkunit(L, arg_num).shared_from_this();
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
-		def_w = lua_tointeger(L, arg_num) - 1;
+		def_w = static_cast<int>(lua_tointeger(L, arg_num)) - 1;
 		if (def_w < 0 || def_w >= static_cast<int>(def->attacks().size()))
 			return luaL_argerror(L, arg_num, "weapon index out of bounds");
 		++arg_num;
@@ -3059,7 +3059,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 {
 	if (play_controller_.is_skipping_replay()) return 0;
 	char const *m = luaL_checkstring(L, 1);
-	int repeats = luaL_optinteger(L, 2, 0);
+	int repeats = static_cast<int>(luaL_optinteger(L, 2, 0));
 	sound::play_sound(m, sound::SOUND_FX, repeats);
 	return 0;
 }
@@ -3190,8 +3190,8 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 {
 	const char *content_for = luaL_checkstring(L, 1);
 	const char *id = luaL_checkstring(L, 2);
-	int amount = luaL_checkinteger(L, 3);
-	int limit = luaL_optinteger(L, 4, 999999999);
+	int amount = static_cast<int>(luaL_checkinteger(L, 3));
+	int limit = static_cast<int>(luaL_optinteger(L, 4, 999999999));
 
 	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
 		if(group.content_for_ == content_for) {
@@ -3410,7 +3410,7 @@ static int intf_synchronize_choice(lua_State *L)
 	if(lua_isfunction(L, nextarg)) {
 		ai_func = nextarg++;
 	}
-	side_for = lua_tointeger(L, nextarg);
+	side_for = static_cast<int>(lua_tointeger(L, nextarg));
 
 	config cfg = mp_sync::get_user_choice(tagname, lua_synchronize(L, desc, human_func, 0, ai_func), side_for);
 	luaW_pushconfig(L, cfg);
@@ -3538,7 +3538,7 @@ int game_lua_kernel::intf_match_side(lua_State *L)
 	if(team* t = luaW_toteam(L, 1)) {
 		lua_pushboolean(L, s_filter.match(*t));
 	} else {
-		unsigned side = luaL_checkinteger(L, 1) - 1;
+		unsigned side = static_cast<unsigned>(luaL_checkinteger(L, 1)) - 1;
 		if (side >= teams().size()) return 0;
 		lua_pushboolean(L, s_filter.match(side + 1));
 	}
@@ -3551,7 +3551,7 @@ int game_lua_kernel::intf_set_side_id(lua_State *L)
 	if(team* t = luaW_toteam(L, 1)) {
 		team_i = t->side();
 	} else {
-		team_i = luaL_checkinteger(L, 1);
+		team_i = static_cast<int>(luaL_checkinteger(L, 1));
 	}
 	std::string flag = luaL_optlstring(L, 2, "", nullptr);
 	std::string color = luaL_optlstring(L, 3, "", nullptr);
@@ -3581,7 +3581,7 @@ static int intf_modify_ai(lua_State *L, const char* action)
 	if(team* t = luaW_toteam(L, 1)) {
 		side_num = t->side();
 	} else {
-		side_num = luaL_checkinteger(L, 1);
+		side_num = static_cast<int>(luaL_checkinteger(L, 1));
 	}
 	std::string path = luaL_checkstring(L, 2);
 	config cfg {
@@ -3609,7 +3609,7 @@ static int intf_switch_ai(lua_State *L)
 	if(team* t = luaW_toteam(L, 1)) {
 		side_num = t->side();
 	} else {
-		side_num = luaL_checkinteger(L, 1);
+		side_num = static_cast<int>(luaL_checkinteger(L, 1));
 	}
 	if(lua_isstring(L, 2)) {
 		std::string file = luaL_checkstring(L, 2);
@@ -3630,7 +3630,7 @@ static int intf_append_ai(lua_State *L)
 	if(team* t = luaW_toteam(L, 1)) {
 		side_num = t->side();
 	} else {
-		side_num = luaL_checkinteger(L, 1);
+		side_num = static_cast<int>(luaL_checkinteger(L, 1));
 	}
 	config cfg = luaW_checkconfig(L, 2);
 	if(!cfg.has_child("ai")) {
@@ -3655,7 +3655,7 @@ static int intf_append_ai(lua_State *L)
 
 int game_lua_kernel::intf_get_side(lua_State* L)
 {
-	unsigned i = luaL_checkinteger(L, 1);
+	unsigned i = static_cast<unsigned>(luaL_checkinteger(L, 1));
 	if(i < 1 || i > teams().size()) return 0;
 	luaW_pushteam(L, board().get_team(i));
 	return 1;
@@ -3683,7 +3683,7 @@ int game_lua_kernel::intf_get_sides(lua_State* L)
 	}
 
 	lua_settop(L, 0);
-	lua_createtable(L, sides.size(), 0);
+	lua_createtable(L, static_cast<int>(sides.size()), 0);
 	unsigned index = 1;
 	for(int side : sides) {
 		luaW_pushteam(L, board().get_team(side));
@@ -4030,7 +4030,7 @@ int game_lua_kernel::intf_remove_event(lua_State *L)
 int game_lua_kernel::intf_color_adjust(lua_State *L)
 {
 	if (game_display_) {
-		game_display_->adjust_color_overlay(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2), luaL_checkinteger(L, 3));
+		game_display_->adjust_color_overlay(static_cast<int>(luaL_checkinteger(L, 1)), static_cast<int>(luaL_checkinteger(L, 2)), static_cast<int>(luaL_checkinteger(L, 3)));
 		game_display_->invalidate_all();
 	}
 	return 0;
@@ -4056,7 +4056,7 @@ int game_lua_kernel::intf_screen_fade(lua_State *L)
 			return luaW_type_error(L, 1, "array of 4 integers");
 		}
 		color_t fade{vec[0], vec[1], vec[2], vec[3]};
-		game_display_->fade_to(fade, luaL_checkinteger(L, 2));
+		game_display_->fade_to(fade, static_cast<int>(luaL_checkinteger(L, 2)));
 	}
 	return 0;
 }
@@ -4081,7 +4081,7 @@ int game_lua_kernel::intf_delay(lua_State *L)
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
 		delay /= game_display_->turbo_speed();
 	}
-	const unsigned final = SDL_GetTicks() + delay;
+	const unsigned final = SDL_GetTicks() + static_cast<int>(delay);
 	do {
 		play_controller_.play_slice(false);
 		SDL_Delay(10);
@@ -4314,7 +4314,7 @@ static int intf_debug_ai(lua_State *L)
 	if(team* t = luaW_toteam(L, 1)) {
 		side = t->side();
 	} else {
-		side = luaL_checkinteger(L, 1);
+		side = static_cast<int>(luaL_checkinteger(L, 1));
 	}
 	lua_pop(L, 1);
 
@@ -4469,7 +4469,7 @@ int game_lua_kernel::intf_get_time_area(lua_State* L)
 			lua_pushnil(L);
 			return 1;
 		} else {
-			luaW_push_schedule(L, std::distance(area_ids.begin(), iter));
+			luaW_push_schedule(L, static_cast<int>(std::distance(area_ids.begin(), iter)));
 			return 1;
 		}
 	}
@@ -4503,7 +4503,8 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	int x = luaL_checkinteger(L, 1), y = luaL_checkinteger(L, 2);
+	int x = static_cast<int>(luaL_checkinteger(L, 1));
+	int y = static_cast<int>(luaL_checkinteger(L, 2));
 
 	if (game_display_) {
 		game_display_->scroll(x, y, true);
@@ -4691,7 +4692,7 @@ int game_lua_kernel::intf_toggle_fog(lua_State *L, const bool clear)
 	if(team* t = luaW_toteam(L, 1)) {
 		sides.insert(t->side());
 	} else if(lua_isnumber(L, 1)) {
-		sides.insert(lua_tointeger(L, 1));
+		sides.insert(static_cast<int>(lua_tointeger(L, 1)));
 	} else if(lua_istable(L, 1) && lua_istable(L, 2)) {
 		const auto& v = lua_check<std::vector<int>>(L, 1);
 		sides.insert(v.begin(), v.end());

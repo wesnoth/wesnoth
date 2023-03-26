@@ -187,7 +187,7 @@ void luaW_pushfaivariant(lua_State* L, variant val) {
 variant luaW_tofaivariant(lua_State* L, int i) {
 	switch(lua_type(L, i)) {
 		case LUA_TBOOLEAN:
-			return variant(lua_tointeger(L, i));
+			return variant(static_cast<int>(lua_tointeger(L, i)));
 		case LUA_TNUMBER:
 			return variant(lua_tonumber(L, i), variant::DECIMAL_VARIANT);
 		case LUA_TSTRING:

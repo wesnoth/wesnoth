@@ -186,7 +186,7 @@ void mapbuilder::post_visit_team(std::size_t turn)
 			move->set_turn_number(0);
 			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit().get()) == 0) {
 				seen.insert(move->get_unit().get());
-				move->set_turn_number(turn + 1);
+				move->set_turn_number(static_cast<int>(turn) + 1);
 			}
 		}
 	}

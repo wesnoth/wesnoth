@@ -64,7 +64,7 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 {
 	assert(i > 0);
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(&w)) {
-		int n = list->get_item_count();
+		int n = static_cast<int>(list->get_item_count());
 		if(i > n) {
 			for(; n < i; ++n) {
 				list->add_row(gui2::widget_item{});
@@ -81,13 +81,13 @@ static gui2::widget* find_child_by_index(gui2::widget& w, int i)
 		return &multi_page->page_grid(i - 1);
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
 		gui2::tree_view_node& tvn = tree_view->get_root_node();
-		int n = tvn.count_children();
+		int n = static_cast<int>(tvn.count_children());
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
 		return &tvn.get_child_at(i - 1);
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {
-		int n = tree_view_node->count_children();
+		int n = static_cast<int>(tree_view_node->count_children());
 		if(i > n) {
 			throw std::invalid_argument("out of range");
 		}
@@ -347,7 +347,7 @@ WIDGET_GETTER("item_count", int, gui2::multi_page)
 
 WIDGET_GETTER("item_count", int, gui2::listbox)
 {
-	return w.get_item_count();
+	return static_cast<int>(w.get_item_count());
 }
 
 WIDGET_SETTER("use_markup", bool, gui2::styled_widget)
@@ -525,7 +525,7 @@ int impl_widget_get(lua_State* L)
 	gui2::widget& w = luaW_checkwidget(L, 1);
 	if(lua_isinteger(L, 2)) {
 
-		if(auto pwidget = find_child_by_index(w, luaL_checkinteger(L, 2))) {
+		if(auto pwidget = find_child_by_index(w, static_cast<int>(luaL_checkinteger(L, 2)))) {
 			luaW_pushwidget(L, *pwidget);
 			return 1;
 		}

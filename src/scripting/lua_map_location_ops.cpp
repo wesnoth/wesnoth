@@ -47,7 +47,7 @@ int intf_get_direction(lua_State* L)
 
 	int n = 1;
 	if (nargs == 3) {
-		n = luaL_checkinteger(L, -1);
+		n = static_cast<int>(luaL_checkinteger(L, -1));
 		lua_pop(L,1);
 	}
 
@@ -117,7 +117,7 @@ int intf_vector_negation(lua_State* L)
  */
 int intf_rotate_right_around_center(lua_State* L)
 {
-	int k = luaL_checkinteger(L, -1);
+	int k = static_cast<int>(luaL_checkinteger(L, -1));
 	lua_pop(L,1);
 	map_location center, loc;
 	if(!luaW_tolocation(L, 1, loc) || !luaW_tolocation(L, 2, center)) {
@@ -176,7 +176,7 @@ int intf_get_tiles_in_radius(lua_State* L)
 	if(!luaW_tolocation(L, 1, l1)) {
 		return luaL_argerror(L, 1, "expected a location");
 	}
-	int radius = luaL_checkinteger(L, 2);
+	int radius = static_cast<int>(luaL_checkinteger(L, 2));
 
 	std::vector<map_location> locs;
 	get_tiles_in_radius(l1, radius, locs);

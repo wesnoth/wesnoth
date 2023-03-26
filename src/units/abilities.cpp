@@ -149,12 +149,12 @@ const team& get_team(std::size_t side)
 {
 	// Used if we're in the game, including during the construction of the display_context
 	if(resources::gameboard) {
-		return resources::gameboard->get_team(side);
+		return resources::gameboard->get_team(static_cast<int>(side));
 	}
 
 	// If we get here, we're in the scenario editor
 	assert(display::get_singleton());
-	return display::get_singleton()->get_disp_context().get_team(side);
+	return display::get_singleton()->get_disp_context().get_team(static_cast<int>(side));
 }
 
 /**
@@ -416,7 +416,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(static_cast<int>(count), utils::parse_ranges(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -441,7 +441,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(static_cast<int>(count), utils::parse_ranges(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -1711,7 +1711,7 @@ bool attack_type::special_active_impl(
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(static_cast<int>(count), utils::parse_ranges(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -1734,7 +1734,7 @@ bool attack_type::special_active_impl(
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(static_cast<int>(count), utils::parse_ranges(i["count"].str()))) {
 			return false;
 		}
 	}

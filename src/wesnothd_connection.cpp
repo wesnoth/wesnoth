@@ -500,7 +500,7 @@ void wesnothd_connection::send()
 	std::size_t buf_size = buf.size();
 	bytes_to_write_ = buf_size + 4;
 	bytes_written_ = 0;
-	payload_size_ = htonl(buf_size);
+	payload_size_ = htonl(static_cast<uint32_t>(buf_size));
 
 	std::deque<boost::asio::const_buffer> bufs {
 		boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), 4),

@@ -240,7 +240,7 @@ std::vector<path_info> system_paths(unsigned path_types)
 	return res;
 }
 
-unsigned add_user_bookmark(const std::string& label, const std::string& path)
+std::size_t add_user_bookmark(const std::string& label, const std::string& path)
 {
 	config cfg = get_bookmarks_config();
 
@@ -256,7 +256,7 @@ unsigned add_user_bookmark(const std::string& label, const std::string& path)
 void remove_user_bookmark(unsigned index)
 {
 	config cfg = get_bookmarks_config();
-	const unsigned prev_size = cfg.child_count("bookmark");
+	const std::size_t prev_size = cfg.child_count("bookmark");
 
 	if(index < prev_size) {
 		cfg.remove_child("bookmark", index);

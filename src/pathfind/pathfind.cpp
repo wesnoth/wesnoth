@@ -357,7 +357,7 @@ static void find_routes(
 			auto allowed_teleports = teleports.get_adjacents(cur_hex);
 			adj_locs.insert(adj_locs.end(), allowed_teleports.begin(), allowed_teleports.end());
 		}
-		for ( int i = adj_locs.size()-1; i >= 0; --i ) {
+		for ( int i = static_cast<int>(adj_locs.size())-1; i >= 0; --i ) {
 			// Get the node associated with this location.
 			const map_location & next_hex = adj_locs[i];
 			const unsigned next_index = index(next_hex);

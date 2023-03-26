@@ -1335,10 +1335,10 @@ void unit_type_data::read_hide_help(const config& cfg)
 bool unit_type_data::hide_help(const std::string& type, const std::string& race) const
 {
 	bool res = hide_help_all_;
-	int lvl = hide_help_all_ ? 1 : 0; // first level is covered by 'all=yes'
+	std::size_t lvl = hide_help_all_ ? 1 : 0; // first level is covered by 'all=yes'
 
 	// supposed to be equal but let's be cautious
-	int lvl_nb = std::min(hide_help_race_.size(), hide_help_type_.size());
+	std::size_t lvl_nb = std::min(hide_help_race_.size(), hide_help_type_.size());
 
 	for(; lvl < lvl_nb; ++lvl) {
 		if(hide_help_race_[lvl].count(race) || hide_help_type_[lvl].count(type)) {

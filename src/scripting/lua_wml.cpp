@@ -58,7 +58,7 @@ static int intf_load_wml(lua_State* L)
 		preprocess = luaW_toboolean(L, 2);
 	} else if(lua_type(L, 2) == LUA_TTABLE || lua_type(L, 2) == LUA_TUSERDATA) {
 		lua_len(L, 2);
-		int n = lua_tointeger(L, -1);
+		int n = static_cast<int>(lua_tointeger(L, -1));
 		lua_pop(L, 1);
 		for(int i = 0; i < n; i++) {
 			lua_geti(L, 2, i);

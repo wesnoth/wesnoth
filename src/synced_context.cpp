@@ -212,7 +212,7 @@ int synced_context::get_unit_id_diff()
 {
 	// this method only works in a synced context.
 	assert(is_synced());
-	return resources::gameboard->unit_id_manager().get_save_id() - last_unit_id_;
+	return static_cast<int>(resources::gameboard->unit_id_manager().get_save_id()) - last_unit_id_;
 }
 
 void synced_context::pull_remote_user_input()
@@ -345,7 +345,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneous();
-	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
+	synced_context::set_last_unit_id(static_cast<int>(resources::gameboard->unit_id_manager().get_save_id()));
 	synced_context::reset_undo_commands();
 
 	old_rng_ = randomness::generator;

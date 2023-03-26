@@ -201,8 +201,8 @@ gamemap_base& luaW_checkterrainmap(lua_State *L, int index)
 int intf_terrainmap_create(lua_State *L)
 {
 	if(lua_isnumber(L, 1) && lua_isnumber(L, 2)) {
-		int w = lua_tointeger(L, 1);
-		int h = lua_tointeger(L, 2);
+		int w = static_cast<int>(lua_tointeger(L, 1));
+		int h = static_cast<int>(lua_tointeger(L, 2));
 		auto terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
 		new(L) lua_map_ref(w, h, terrain);
 	} else {
@@ -428,7 +428,7 @@ int intf_on_border(lua_State* L)
 static std::vector<gamemap::overlay_rule> read_rules_vector(lua_State *L, int index)
 {
 	std::vector<gamemap::overlay_rule> rules;
-	for (int i = 1, i_end = lua_rawlen(L, index); i <= i_end; ++i)
+	for (int i = 1, i_end = static_cast<int>(lua_rawlen(L, index)); i <= i_end; ++i)
 	{
 		lua_rawgeti(L, index, i);
 		if(!lua_istable(L, -1)) {
@@ -565,7 +565,7 @@ static int impl_replace_if_failed_tostring(lua_State* L)
 	lua_getiuservalue(L, 1, replace_if_failed_idx::CODE);
 	string_view t_str = luaL_checkstring(L, -1);
 	lua_getiuservalue(L, 1, replace_if_failed_idx::MODE);
-	int mode = luaL_checkinteger(L, -1);
+	int mode = static_cast<int>(luaL_checkinteger(L, -1));
 	lua_pushfstring(L, "replace_if_failed('%s', '%s')", t_str.data(), mode_strs[mode]);
 	return 1;
 }

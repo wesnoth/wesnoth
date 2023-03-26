@@ -329,9 +329,9 @@ static void unarchive_dir(const std::string& path, const config& cfg, std::funct
 	}
 }
 
-static unsigned count_pack_files(const config& cfg)
+static std::size_t count_pack_files(const config& cfg)
 {
-	unsigned count = 0;
+	std::size_t count = 0;
 
 	for(const config& d : cfg.child_range("dir")) {
 		count += count_pack_files(d);

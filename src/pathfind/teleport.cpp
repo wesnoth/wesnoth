@@ -274,7 +274,7 @@ const teleport_map get_teleport_locations(const unit &u,
 	std::vector<teleport_group> groups;
 
 	for (const unit_ability & teleport : u.get_abilities("teleport")) {
-		const int tunnel_count = (teleport.ability_cfg)->child_count("tunnel");
+		const int tunnel_count = static_cast<int>((teleport.ability_cfg)->child_count("tunnel"));
 		for(int i = 0; i < tunnel_count; ++i) {
 			config teleport_group_cfg = (teleport.ability_cfg)->child("tunnel", i);
 			groups.emplace_back(vconfig(teleport_group_cfg, true), false);
@@ -288,7 +288,7 @@ const teleport_map get_teleport_locations(const unit &u,
 }
 
 manager::manager(const config &cfg) : tunnels_(), id_(cfg["next_teleport_group_id"].to_int(0)) {
-	const int tunnel_count = cfg.child_count("tunnel");
+	const int tunnel_count = static_cast<int>(cfg.child_count("tunnel"));
 	for(int i = 0; i < tunnel_count; ++i) {
 		const config& t = cfg.child("tunnel", i);
 		if(!t["saved"].to_bool()) {

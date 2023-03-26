@@ -68,14 +68,14 @@ namespace {
 		}
 
 		char** end = 0;
-		int res = strtol(&s[0], end, 10);
+		int res = static_cast<int>(strtol(&s[0], end, 10));
 		return res;
 	}
 
 	std::pair<int, int> parse_single_range(string_view s)
 	{
-		int dash_pos = s.find('-');
-		if(dash_pos == int(string_view::npos)) {
+		std::size_t dash_pos = s.find('-');
+		if(dash_pos == string_view::npos) {
 			int res = atoi(s);
 			return {res, res};
 		}
@@ -510,7 +510,7 @@ public:
 			lua_pop(L, 1);
 		}
 		lua_geti(L, -1, 2);
-		radius_ = lua_tointeger(L, -1);
+		radius_ = static_cast<int>(lua_tointeger(L, -1));
 		lua_pop(L, 1);
 		lua_geti(L, -1, 3);
 		filter_ = build_filter(L, res_index, ks);
@@ -722,7 +722,7 @@ int intf_mg_get_tiles_radius(lua_State* L)
 {
 	gamemap_base& m = luaW_checkterrainmap(L, 1);
 	location_set s = luaW_to_locationset(L, 2);
-	int r = luaL_checkinteger(L, 3);
+	int r = static_cast<int>(luaL_checkinteger(L, 3));
 	lua_mapgen::filter& f = luaW_check_mgfilter(L, 4);
 	location_set res;
 	get_tiles_radius(std::move(s), r, res,

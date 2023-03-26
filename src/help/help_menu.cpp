@@ -171,7 +171,7 @@ int help_menu::process()
 
 			const std::string icon_img = expanded(*sec) ? open_section_img : closed_section_img;
 			// the "thickness" is the width of the left border
-			int text_start = style_->item_size(indent_list(icon_img, selected_item_.level)).w - style_->get_thickness();
+			int text_start = style_->item_size(indent_list(icon_img, selected_item_.level)).w - static_cast<int>(style_->get_thickness());
 
 			// NOTE: if you want to forbid click to the left of the icon
 			// also check x >= text_start-image_width(icon_img)

@@ -71,7 +71,7 @@ static int impl_gettext(lua_State *L)
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
 	if(lua_isstring(L, 3)) {
 		const char* pl = luaL_checkstring(L, 3);
-		int count = luaL_checkinteger(L, 4);
+		int count = static_cast<int>(luaL_checkinteger(L, 4));
 		luaW_pushtstring(L, t_string(m, pl, count, d));
 	} else {
 		luaW_pushtstring(L, t_string(m, d));
@@ -212,7 +212,7 @@ static int impl_vconfig_get(lua_State *L)
 	{
 		vconfig::all_children_iterator i = v->ordered_begin();
 		unsigned len = std::distance(i, v->ordered_end());
-		unsigned pos = lua_tointeger(L, 2) - 1;
+		unsigned pos = static_cast<unsigned>(lua_tointeger(L, 2)) - 1;
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 
@@ -364,7 +364,7 @@ typedef std::pair<vconfig::all_children_iterator, vconfig::all_children_iterator
 static int impl_vconfig_ipairs_iter(lua_State *L)
 {
 	luaW_checkvconfig(L, 1);
-	int i = luaL_checkinteger(L, 2);
+	int i = static_cast<int>(luaL_checkinteger(L, 2));
 	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey);
 	vconfig_child_range& range = *static_cast<vconfig_child_range*>(p);
 	if (range.first == range.second) {
@@ -529,7 +529,7 @@ bool luaW_getmetafield(lua_State *L, int idx, const char* key)
 	if(key == nullptr) {
 		return false;
 	}
-	int n = strlen(key);
+	std::size_t n = strlen(key);
 	if(n == 0) {
 		return false;
 	}
@@ -685,7 +685,7 @@ static int impl_namedtuple_get(lua_State* L)
 		auto names = lua_check<std::vector<std::string>>(L, -1);
 		auto iter = std::find(names.begin(), names.end(), k);
 		if(iter != names.end()) {
-			int i = std::distance(names.begin(), iter) + 1;
+			int i = static_cast<int>(std::distance(names.begin(), iter)) + 1;
 			lua_rawgeti(L, 1, i);
 			return 1;
 		}
@@ -714,7 +714,7 @@ static int impl_namedtuple_tostring(lua_State* L)
 
 void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
 {
-	lua_createtable(L, names.size(), 0);
+	lua_createtable(L, static_cast<int>(names.size()), 0);
 	lua_createtable(L, 0, 4);
 	static luaL_Reg callbacks[] = {
 		{ "__index", &impl_namedtuple_get },
@@ -758,9 +758,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		map_location result;
 		int x_was_num = 0, y_was_num = 0;
 		lua_getfield(L, index, "x");
-		result.set_wml_x(lua_tointegerx(L, -1, &x_was_num));
+		result.set_wml_x(static_cast<int>(lua_tointegerx(L, -1, &x_was_num)));
 		lua_getfield(L, index, "y");
-		result.set_wml_y(lua_tointegerx(L, -1, &y_was_num));
+		result.set_wml_y(static_cast<int>(lua_tointegerx(L, -1, &y_was_num)));
 		lua_pop(L, 2);
 		if (!x_was_num || !y_was_num) {
 			// If we get here and it was userdata, checking numeric indices won't help
@@ -769,9 +769,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 				return false;
 			}
 			lua_rawgeti(L, index, 1);
-			result.set_wml_x(lua_tointegerx(L, -1, &x_was_num));
+			result.set_wml_x(static_cast<int>(lua_tointegerx(L, -1, &x_was_num)));
 			lua_rawgeti(L, index, 2);
-			result.set_wml_y(lua_tointegerx(L, -1, &y_was_num));
+			result.set_wml_y(static_cast<int>(lua_tointegerx(L, -1, &y_was_num)));
 			lua_pop(L, 2);
 		}
 		if (x_was_num && y_was_num) {
@@ -782,9 +782,9 @@ bool luaW_tolocation(lua_State *L, int index, map_location& loc) {
 		// If it's a number, then we consume two elements on the stack
 		// Since we have no way of notifying the caller that we have
 		// done this, we remove the first number from the stack.
-		loc.set_wml_x(lua_tointeger(L, index));
+		loc.set_wml_x(static_cast<int>(lua_tointeger(L, index)));
 		lua_remove(L, index);
-		loc.set_wml_y(lua_tointeger(L, index));
+		loc.set_wml_y(static_cast<int>(lua_tointeger(L, index)));
 		return true;
 	}
 	return false;
@@ -800,7 +800,7 @@ map_location luaW_checklocation(lua_State *L, int index)
 
 int luaW_push_locationset(lua_State* L, const std::set<map_location>& locs)
 {
-	lua_createtable(L, locs.size(), 0);
+	lua_createtable(L, static_cast<int>(locs.size()), 0);
 	int i = 1;
 	for(const map_location& loc : locs) {
 		luaW_pushlocation(L, loc);
@@ -817,7 +817,7 @@ std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
 		luaW_type_error(L, idx, "array of locations");
 	}
 	lua_len(L, idx);
-	int len = luaL_checkinteger(L, -1);
+	int len = static_cast<int>(luaL_checkinteger(L, -1));
 	for(int i = 1; i <= len; i++) {
 		lua_geti(L, idx, i);
 		locs.insert(luaW_checklocation(L, -1));
@@ -870,7 +870,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 	}
 
 	// First convert the children (integer indices).
-	for (int i = 1, i_end = lua_rawlen(L, index); i <= i_end; ++i)
+	for (int i = 1, i_end = static_cast<int>(lua_rawlen(L, index)); i <= i_end; ++i)
 	{
 		lua_rawgeti(L, index, i);
 		if (!lua_istable(L, -1)) return_misformed();
@@ -895,7 +895,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg)
 		if (lua_istable(L, -1)) {
 			int subindex = lua_absindex(L, -1);
 			std::ostringstream str;
-			for (int i = 1, i_end = lua_rawlen(L, subindex); i <= i_end; ++i, lua_pop(L, 1)) {
+			for (int i = 1, i_end = static_cast<int>(lua_rawlen(L, subindex)); i <= i_end; ++i, lua_pop(L, 1)) {
 				lua_rawgeti(L, -1, i);
 				config::attribute_value item;
 				if (!luaW_toscalar(L, -1, item)) return_misformed();

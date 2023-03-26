@@ -101,7 +101,7 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 	// originally generated name.
 	std::u32string originalRes = res;
 	while(!res.empty()) {
-		const int prefixLen = chain_size < res.size() ? chain_size : res.size();
+		const std::size_t prefixLen = chain_size < res.size() ? chain_size : res.size();
 		prefix = std::u32string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);

@@ -96,7 +96,7 @@ struct bookmark_info
 	std::string path;
 };
 
-unsigned add_user_bookmark(const std::string& label, const std::string& path);
+std::size_t add_user_bookmark(const std::string& label, const std::string& path);
 
 void remove_user_bookmark(unsigned index);
 

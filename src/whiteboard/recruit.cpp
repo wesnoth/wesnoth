@@ -113,7 +113,7 @@ void recruit::execute(bool& success, bool& complete)
 	temporary_unit_hider const raii(*fake_unit_);
 	const std::size_t old_id = fake_unit_->underlying_id();
 	map_location loc = recruit_hex_;
-	const int side_num = team_index() + 1;
+	const int side_num = static_cast<int>(team_index()) + 1;
 	//Give back the spent gold so we don't get "not enough gold" message
 	resources::gameboard->teams().at(team_index()).get_side_actions()->change_gold_spent_by(-cost_);
 	bool const result = resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, loc);
@@ -192,7 +192,7 @@ unit_ptr recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
-	int side_num = team_index() + 1;
+	int side_num = static_cast<int>(team_index()) + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
 	unit_ptr result = unit::create(*type, side_num, real_unit);
@@ -210,7 +210,7 @@ action::error recruit::check_validity() const
 	//Check that unit to recruit is still in side's recruit list
 	const std::set<std::string>& recruits = resources::gameboard->teams()[team_index()].recruits();
 	if(recruits.find(unit_name_) == recruits.end()) {
-		bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader) {
+		bool in_extra_recruit = any_recruiter(static_cast<int>(team_index()) + 1, get_recruit_hex(), [&](unit& leader) {
 			return std::find(leader.recruits().begin(), leader.recruits().end(), unit_name_) != leader.recruits().end();
 		});
 		if (!in_extra_recruit) {

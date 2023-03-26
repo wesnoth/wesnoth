@@ -88,8 +88,8 @@ static int intf_default_generate(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 
-	int width = luaL_checkinteger(L, 1);
-	int height = luaL_checkinteger(L, 2);
+	int width = static_cast<int>(luaL_checkinteger(L, 1));
+	int height = static_cast<int>(luaL_checkinteger(L, 2));
 
 	config cfg = luaW_checkconfig(L, 3);
 
@@ -109,7 +109,7 @@ static int intf_default_generate(lua_State *L)
 
 	uint32_t seed = cfg["seed"].to_int(0);
 	if(!cfg.has_attribute("seed")) {
-		seed = rng();
+		seed = static_cast<uint32_t>(rng());
 	}
 
 	default_map_generator_job job(seed);
@@ -126,8 +126,8 @@ static int intf_default_generate_height_map(lua_State *L)
 {
 	std::mt19937& rng = lua_kernel_base::get_lua_kernel<mapgen_lua_kernel>(L).get_default_rng();
 
-	int width = luaL_checkinteger(L, 1);
-	int height = luaL_checkinteger(L, 2);
+	int width = static_cast<int>(luaL_checkinteger(L, 1));
+	int height = static_cast<int>(luaL_checkinteger(L, 2));
 
 	config cfg = luaW_checkconfig(L, 3);
 
@@ -145,7 +145,7 @@ static int intf_default_generate_height_map(lua_State *L)
 	uint32_t seed = cfg["seed"].to_int(0);
 
 	if(!cfg.has_attribute("seed")) {
-		seed = rng();
+		seed = static_cast<uint32_t>(rng());
 	}
 	default_map_generator_job job(seed);
 	default_map_generator_job::height_map res = job.generate_height_map(width, height, iterations, hill_size, island_size, center_x, center_y);
@@ -198,12 +198,12 @@ static int intf_find_path(lua_State *L)
 			return luaL_argerror(L, 3, "missing key: calculate");
 		}
 		if(!luaW_tableget(L, 3, "width")) {
-			width = luaL_checkinteger(L, -1);
+			width = static_cast<int>(luaL_checkinteger(L, -1));
 		} else {
 			return luaL_argerror(L, 3, "missing key: width");
 		}
 		if(!luaW_tableget(L, 3, "height")) {
-			height = luaL_checkinteger(L, -1);
+			height = static_cast<int>(luaL_checkinteger(L, -1));
 		} else {
 			return luaL_argerror(L, 3, "missing key: height");
 		}
@@ -212,15 +212,15 @@ static int intf_find_path(lua_State *L)
 		}
 	} else {
 		calc = lua_pathfind_cost_calculator(L, 3);
-		width = luaL_checkinteger(L, 4);
-		height = luaL_checkinteger(L, 5);
+		width = static_cast<int>(luaL_checkinteger(L, 4));
+		height = static_cast<int>(luaL_checkinteger(L, 5));
 		if(lua_isboolean(L, 6)) {
 			border = luaW_toboolean(L, 6);
 		}
 	}
 	pathfind::plain_route res = pathfind::a_star_search(src, dst, 10000, *calc, width, height, nullptr, border);
 
-	int nb = res.steps.size();
+	int nb = static_cast<int>(res.steps.size());
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{

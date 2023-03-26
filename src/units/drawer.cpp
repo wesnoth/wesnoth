@@ -115,7 +115,7 @@ void draw_bar(int xpos, int ypos, int bar_height, double filled, const color_t& 
 	bar_rect.h = std::clamp<int>(bar_rect.h, 0, display::hex_size() * 0.80 - offset.y);
 
 	filled = std::clamp<double>(filled, 0.0, 1.0);
-	const int unfilled = static_cast<std::size_t>(bar_rect.h * (1.0 - filled));
+	const int unfilled = static_cast<int>(bar_rect.h * (1.0 - filled));
 
 	// Filled area dimensions.
 	const rect fill_rect {

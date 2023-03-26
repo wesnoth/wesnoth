@@ -198,7 +198,7 @@ void scrollbar_container::request_reduce_height(const std::size_t maximum_height
 	}
 
 	if(maximum_height > static_cast<unsigned>(scrollbar_size.y)) {
-		size.y = maximum_height;
+		size.y = static_cast<int>(maximum_height);
 	} else {
 		size.y = scrollbar_size.y;
 	}
@@ -269,7 +269,7 @@ void scrollbar_container::request_reduce_width(const std::size_t maximum_width)
 	}
 
 	if(maximum_width > static_cast<unsigned>(scrollbar_size.x)) {
-		size.x = maximum_width;
+		size.x = static_cast<int>(maximum_width);
 	} else {
 		size.x = scrollbar_size.x;
 	}

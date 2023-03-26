@@ -761,7 +761,7 @@ void manager::create_temp_move()
 		}
 	}
 	//in case path shortens on next step and one ghosted unit has to be removed
-	int ind = fake_units_.size() - 1;
+	std::size_t ind = fake_units_.size() - 1;
 	fake_units_[ind]->anim_comp().invalidate(*game_display::get_singleton());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);

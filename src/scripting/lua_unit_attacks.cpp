@@ -222,8 +222,8 @@ static int impl_unit_attacks_len(lua_State *L)
 static int impl_unit_attacks_next(lua_State *L)
 {
 	lua_len(L, 1);
-	int n = luaL_checkinteger(L, 2) + 1;
-	int max_n = luaL_checkinteger(L, -1);
+	int n = static_cast<int>(luaL_checkinteger(L, 2)) + 1;
+	int max_n = static_cast<int>(luaL_checkinteger(L, -1));
 	if(n > max_n) {
 		return 0;
 	}

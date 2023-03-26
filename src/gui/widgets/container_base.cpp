@@ -81,7 +81,7 @@ void container_base::request_reduce_width(const std::size_t maximum_width)
 		size.x = grid_size.x + border_space().x;
 		size.y = std::max(size.y, grid_size.y + border_space().y);
 	} else {
-		size.x = maximum_width;
+		size.x = static_cast<int>(maximum_width);
 	}
 
 	set_layout_size(size);
@@ -116,7 +116,7 @@ void container_base::request_reduce_height(const std::size_t maximum_height)
 		grid_size = grid_.get_best_size();
 		size.y = grid_size.y + border_space().y;
 	} else {
-		size.y = maximum_height;
+		size.y = static_cast<int>(maximum_height);
 	}
 
 	set_layout_size(size);

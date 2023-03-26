@@ -129,7 +129,7 @@ void luaW_pushrace(lua_State *L, const unit_race & race)
 void luaW_pushracetable(lua_State *L)
 {
 	const race_map& races = unit_types.races();
-	lua_createtable(L, 0, races.size());
+	lua_createtable(L, 0, static_cast<int>(races.size()));
 
 	for (const race_map::value_type &race : races)
 	{

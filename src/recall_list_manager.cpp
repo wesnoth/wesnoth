@@ -88,7 +88,7 @@ unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id, 
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
 		if(pos) {
-			*pos = it - recall_list_.begin();
+			*pos = static_cast<int>(it - recall_list_.begin());
 		}
 		recall_list_.erase(it);
 		return ret;

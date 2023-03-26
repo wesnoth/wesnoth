@@ -81,7 +81,7 @@ void carryover_show_gold(game_state& state, bool hidden, bool is_observer, bool 
 				continue;
 			}
 
-			const int finishing_bonus_per_turn = map.villages().size() * t.village_gold() + t.base_income();
+			const int finishing_bonus_per_turn = static_cast<int>(map.villages().size()) * t.village_gold() + t.base_income();
 			const int finishing_bonus = t.carryover_bonus() * finishing_bonus_per_turn * turns_left;
 
 			t.set_carryover_gold(div100rounded((t.gold() + finishing_bonus) * t.carryover_percentage()));

@@ -113,7 +113,7 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 			selection_start_ = maximum_length;
 			selection_length_ = 0;
 		} else if(selection_start_ + selection_length_ > maximum_length) {
-			selection_length_ = maximum_length - selection_start_;
+			selection_length_ = static_cast<int>(maximum_length - selection_start_);
 		}
 		update_canvas();
 		queue_redraw();
@@ -166,7 +166,7 @@ void text_box_base::insert_char(const std::string& unicode)
 {
 	delete_selection();
 
-	if(text_.insert_text(selection_start_, unicode)) {
+	if(text_.insert_text(static_cast<unsigned>(selection_start_), unicode)) {
 
 		// Update status
 		set_cursor(selection_start_ + utf8::size(unicode), false);
@@ -204,7 +204,7 @@ void text_box_base::copy_selection(const bool mouse)
 		return;
 	}
 
-	unsigned end, start = selection_start_;
+	std::size_t end, start = selection_start_;
 	const std::string txt = text_.text();
 
 	if(selection_length_ > 0) {
@@ -227,7 +227,7 @@ void text_box_base::paste_selection(const bool mouse)
 
 	delete_selection();
 
-	selection_start_ += text_.insert_text(selection_start_, text);
+	selection_start_ += text_.insert_text(static_cast<unsigned>(selection_start_), text);
 
 	update_canvas();
 	queue_redraw();
@@ -265,8 +265,8 @@ void text_box_base::set_selection(std::size_t start, int length)
 
 	// The text pos/size type differs in both signedness and size with the
 	// selection length. Such is life.
-	const int sel_start = std::min<std::size_t>(start, std::numeric_limits<int>::max());
-	const int sel_max_length = std::min<std::size_t>(text_size - start, std::numeric_limits<int>::max());
+	const int sel_start = static_cast<int>(std::min<std::size_t>(start, std::numeric_limits<int>::max()));
+	const int sel_max_length = static_cast<int>(std::min<std::size_t>(text_size - start, std::numeric_limits<int>::max()));
 
 	const bool backwards = length < 0;
 
@@ -357,7 +357,7 @@ void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	const int offset = selection_start_ - 1 + selection_length_;
+	const int offset = static_cast<int>(selection_start_) - 1 + selection_length_;
 	if(offset >= 0) {
 		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
 	}
@@ -442,7 +442,7 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 	if(unicode.size() > 1 || unicode[0] != 0) {
 		handled = true;
 		if(is_composing()) {
-			set_selection(ime_start_point_, get_composition_length());
+			set_selection(ime_start_point_, static_cast<int>(get_composition_length()));
 			ime_composing_ = false;
 		}
 		insert_char(unicode);
@@ -465,14 +465,14 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 		if(!is_composing()) {
 			ime_composing_ = true;
 			delete_selection();
-			ime_start_point_ = selection_start_;
+			ime_start_point_ = static_cast<int>(selection_start_);
 			text_cached_ = text_.text();
 			SDL_Rect rect = get_rectangle();
 			if(new_len > 0) {
 				rect.x += get_cursor_position(ime_start_point_).x;
-				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;
+				rect.w = get_cursor_position(ime_start_point_ + static_cast<int>(new_len)).x - rect.x;
 			} else {
-				rect.x += get_cursor_position(ime_start_point_ + new_len).x;
+				rect.x += get_cursor_position(ime_start_point_ + static_cast<int>(new_len)).x;
 				rect.w = get_cursor_position(ime_start_point_).x - rect.x;
 			}
 			SDL_SetTextInputRect(&rect);
@@ -494,7 +494,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 		text_.set_text(new_text, false);
 
 #endif
-		int maximum_length = text_.get_length();
+		int maximum_length = static_cast<int>(text_.get_length());
 
 		// Update status
 		set_cursor(std::min(maximum_length, ime_start_point_ + start), false);

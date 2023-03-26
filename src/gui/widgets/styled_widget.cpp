@@ -200,7 +200,7 @@ void styled_widget::request_reduce_width(const std::size_t maximum_width)
 	if(!label_.empty() && can_wrap()) {
 
 		point size = get_best_text_size(
-				point(), point(maximum_width - config_->text_extra_width, 0));
+				point(), point(static_cast<int>(maximum_width - config_->text_extra_width), 0));
 
 		size.x += config_->text_extra_width;
 		size.y += config_->text_extra_height;
@@ -214,7 +214,7 @@ void styled_widget::request_reduce_width(const std::size_t maximum_width)
 	} else if(label_.empty() || text_can_shrink()) {
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
-		size.x = std::min(size.x, std::max<int>(maximum_width, min_size.x));
+		size.x = std::min(size.x, std::max<int>(static_cast<int>(maximum_width), min_size.x));
 		set_layout_size(size);
 
 		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()
@@ -233,7 +233,7 @@ void styled_widget::request_reduce_height(const std::size_t maximum_height)
 	} else {
 		point size = get_best_size();
 		point min_size = get_config_minimum_size();
-		size.y = std::min(size.y, std::max<int>(maximum_height, min_size.y));
+		size.y = std::min(size.y, std::max<int>(static_cast<int>(maximum_height), min_size.y));
 		set_layout_size(size);
 
 		DBG_GUI_L << LOG_HEADER << " styled_widget " << id()

@@ -47,7 +47,7 @@ const unit_animation* unit_animation_component::choose_animation(const map_locat
 	if(max_val == unit_animation::MATCH_FAIL) {
 		return nullptr;
 	}
-	return options[randomness::rng::default_instance().get_random_int(0, options.size()-1)];
+	return options[randomness::rng::default_instance().get_random_int(0, static_cast<int>(options.size())-1)];
 }
 
 void unit_animation_component::set_standing(bool with_bars)

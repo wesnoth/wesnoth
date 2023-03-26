@@ -1244,7 +1244,7 @@ int mouse_handler::fill_weapon_choices(
 
 			if(!bc_vector.empty() && bc.better_attack(bc_vector[best], 0.5)) {
 				// as some weapons can be hidden, i is not a valid index into the resulting vector
-				best = bc_vector.size();
+				best = static_cast<int>(bc_vector.size());
 			}
 
 			bc_vector.emplace_back(std::move(bc));

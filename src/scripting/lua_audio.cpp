@@ -112,7 +112,7 @@ static int impl_track_collect(lua_State* L)
 
 static int impl_music_get(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
-		push_track(L, lua_tointeger(L, 2) - 1);
+		push_track(L, static_cast<int>(lua_tointeger(L, 2)) - 1);
 		return 1;
 	}
 	const char* m = luaL_checkstring(L, 2);
@@ -152,7 +152,7 @@ static int impl_music_get(lua_State* L) {
 
 static int impl_music_set(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
-		unsigned int i = lua_tointeger(L, 2) - 1;
+		unsigned int i = static_cast<unsigned>(lua_tointeger(L, 2)) - 1;
 		config cfg;
 		if(lua_isnil(L, 3)) {
 			if(i < sound::get_num_tracks()) {
@@ -201,7 +201,7 @@ static int intf_music_play(lua_State* L) {
 }
 
 static int intf_music_next(lua_State*) {
-	std::size_t n = sound::get_num_tracks();
+	unsigned n = sound::get_num_tracks();
 	if(n > 0) {
 		sound::play_track(n);
 	}
@@ -211,7 +211,7 @@ static int intf_music_next(lua_State*) {
 static int intf_music_add(lua_State* L) {
 	int index = -1;
 	if(lua_isinteger(L, 1)) {
-		index = lua_tointeger(L, 1);
+		index = static_cast<int>(lua_tointeger(L, 1));
 		lua_remove(L, 1);
 	}
 	config cfg = config {
@@ -253,7 +253,7 @@ static int intf_music_remove(lua_State* L) {
 	// Use a non-standard comparator to ensure iteration in descending order
 	std::set<int, std::greater<int>> to_remove;
 	for(int i = 1; i <= lua_gettop(L); i++) {
-		to_remove.insert(luaL_checkinteger(L, i));
+		to_remove.insert(static_cast<int>(luaL_checkinteger(L, i)));
 	}
 	for(int i : to_remove) {
 		sound::remove_track(i);
@@ -399,7 +399,7 @@ static int impl_source_get(lua_State* L) {
 
 	if(strcmp(m, "locations") == 0) {
 		const auto& locs = src->get_locations();
-		lua_createtable(L, locs.size(), 0);
+		lua_createtable(L, static_cast<int>(locs.size()), 0);
 		for(const auto& loc : locs) {
 			luaW_pushlocation(L, loc);
 			lua_rawseti(L, -1, lua_rawlen(L, -2) + 1);

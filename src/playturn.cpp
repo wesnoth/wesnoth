@@ -204,7 +204,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		};
 
 		if (resources::gameboard->is_observer() || (resources::gameboard->teams())[display::get_singleton()->playing_team()].is_local_human()) {
-			disp_set_team(display::get_singleton()->playing_team());
+			disp_set_team(static_cast<int>(display::get_singleton()->playing_team()));
 		} else if (tm.is_local_human()) {
 			disp_set_team(side - 1);
 		}
@@ -278,7 +278,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				control_change_options++;
 			}
 
-			first_observer_option_idx = options.size();
+			first_observer_option_idx = static_cast<int>(options.size());
 
 			//get all observers in as options to transfer control
 			for (const std::string &screen_observers : game_display::get_singleton()->observers()) {

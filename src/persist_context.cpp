@@ -80,7 +80,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 				{
 					const std::string::const_iterator index_end = std::find(global.begin(),global.end(),']');
 					const std::string index_str(index_start+1,index_end);
-					std::size_t index = static_cast<std::size_t>(lexical_cast_default<int>(index_str));
+					unsigned index = static_cast<unsigned>(lexical_cast_default<int>(index_str));
 					cfg.remove_child(global,index);
 					if (immediate) bactive.remove_child(global,index);
 				} else {
@@ -167,7 +167,7 @@ config persist_file_context::get_var(const std::string &global) const
 		std::size_t arrsize = cfg.child_count(global);
 		if (arrsize > 0) {
 			for (std::size_t i = 0; i < arrsize; i++)
-				ret.add_child(global,cfg.child(global,i));
+				ret.add_child(global,cfg.child(global,static_cast<int>(i)));
 		} else {
 			ret = pack_scalar(global,cfg[global]);
 		}

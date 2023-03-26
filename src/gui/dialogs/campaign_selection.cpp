@@ -79,7 +79,7 @@ void campaign_selection::campaign_selected()
 
 		if(!diff_config.empty()) {
 			std::vector<config> entry_list;
-			unsigned n = 0, selection = 0, max_n = diff_config.child_count("difficulty");
+			std::size_t n = 0, selection = 0, max_n = diff_config.child_count("difficulty");
 
 			for(const auto& cfg : diff_config.child_range("difficulty")) {
 				config entry;

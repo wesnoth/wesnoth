@@ -1651,7 +1651,7 @@ std::string generate_table(const table_spec &tab, const unsigned int spacing)
 	unsigned int num_cols = 0;
 	for (row_it = tab.begin(); row_it != tab.end(); ++row_it) {
 		if (row_it->size() > num_cols) {
-			num_cols = row_it->size();
+			num_cols = static_cast<unsigned>(row_it->size());
 		}
 	}
 	std::vector<unsigned int> col_widths(num_cols, 0);

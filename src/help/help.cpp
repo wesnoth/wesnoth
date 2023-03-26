@@ -226,8 +226,8 @@ void show_with_toplevel(const section &toplevel_sec,
 		last_num_encountered_units < 0)
 	{
 		// More units or terrains encountered, update the contents.
-		last_num_encountered_units = preferences::encountered_units().size();
-		last_num_encountered_terrains = preferences::encountered_terrains().size();
+		last_num_encountered_units = static_cast<int>(preferences::encountered_units().size());
+		last_num_encountered_terrains = static_cast<int>(preferences::encountered_terrains().size());
 		last_debug_state = game_config::debug;
 		generate_contents();
 	}

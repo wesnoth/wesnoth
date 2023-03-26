@@ -97,11 +97,11 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 	{
 		if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
 		{
-			int v = lua_tointeger(L, i);
+			int v = static_cast<int>(lua_tointeger(L, i));
 			if(v < 1) {
 				throw std::invalid_argument("negative index");
 			}
-			int n = list->get_item_count();
+			int n = static_cast<int>(list->get_item_count());
 			if(v > n) {
 				if(readonly) {
 					throw std::invalid_argument("index out of range");
@@ -113,7 +113,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			}
 			w = list->get_row_grid(v - 1);
 		} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(w)) {
-			int v = lua_tointeger(L, i);
+			int v = static_cast<int>(lua_tointeger(L, i));
 			if(v < 1) {
 				throw std::invalid_argument("negative index");
 			}
@@ -131,11 +131,11 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 		} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(w)) {
 			gui2::tree_view_node& tvn = tree_view->get_root_node();
 			if(lua_isnumber(L, i)) {
-				int v = lua_tointeger(L, i);
+				int v = static_cast<int>(lua_tointeger(L, i));
 				if(v < 1) {
 					throw std::invalid_argument("negative index");
 				}
-				int n = tvn.count_children();
+				int n = static_cast<int>(tvn.count_children());
 				if(v > n) {
 					throw std::invalid_argument("index out of range");
 				}
@@ -147,11 +147,11 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			}
 		} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(w)) {
 			if(lua_isnumber(L, i)) {
-				int v = lua_tointeger(L, i);
+				int v = static_cast<int>(lua_tointeger(L, i));
 				if(v < 1) {
 					throw std::invalid_argument("negative index");
 				}
-				int n = tree_view_node->count_children();
+				int n = static_cast<int>(tree_view_node->count_children());
 				if(v > n) {
 					throw std::invalid_argument("index out of range");
 				}
@@ -163,7 +163,7 @@ static gui2::widget* find_widget_impl(lua_State* L, gui2::widget* w, int i, bool
 			}
 		} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(w)) {
 			if(lua_isnumber(L, i)) {
-				int v = lua_tointeger(L, i);
+				int v = static_cast<int>(lua_tointeger(L, i));
 				if(v < 1) {
 					throw std::invalid_argument("negative index");
 				}
@@ -213,10 +213,10 @@ namespace
 			return;
 		}
 		if(number <= 0 || number + pos > node.count_children()) {
-			number = node.count_children() - pos;
+			number = static_cast<int>(node.count_children() - pos);
 		}
 		for(int i = 0; i < number; ++i) {
-			tv.remove_node(&node.get_child_at(pos));
+			tv.remove_node(&node.get_child_at(static_cast<int>(pos)));
 		}
 	}
 }
@@ -230,8 +230,8 @@ namespace
 static int intf_remove_dialog_item(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
-	int pos = luaL_checkinteger(L, 2) - 1;
-	int number = luaL_checkinteger(L, 3);
+	int pos = static_cast<int>(luaL_checkinteger(L, 2)) - 1;
+	int number = static_cast<int>(luaL_checkinteger(L, 3));
 
 	if(gui2::listbox* list = dynamic_cast<gui2::listbox*>(w))
 	{
@@ -317,7 +317,7 @@ static int intf_set_dialog_callback(lua_State* L)
 static int intf_set_dialog_canvas(lua_State* L)
 {
 	gui2::widget* w = &luaW_checkwidget(L, 1);
-	int i = luaL_checkinteger(L, 2);
+	int i = static_cast<int>(luaL_checkinteger(L, 2));
 	gui2::styled_widget* c = dynamic_cast<gui2::styled_widget*>(w);
 	if(!c) {
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -361,7 +361,7 @@ static int intf_add_item_of_type(lua_State* L)
 	const std::string node_type = luaL_checkstring(L, 2);
 	int insert_pos = -1;
 	if(lua_isnumber(L, 3)) {
-		insert_pos = luaL_checkinteger(L, 3);
+		insert_pos = static_cast<int>(luaL_checkinteger(L, 3));
 	}
 	static const gui2::widget_data data;
 

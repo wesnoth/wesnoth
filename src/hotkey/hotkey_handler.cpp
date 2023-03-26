@@ -73,7 +73,7 @@ void play_controller::hotkey_handler::objectives(){
 }
 
 void play_controller::hotkey_handler::show_statistics(){
-	menu_handler_.show_statistics(gui()->viewing_team()+1);
+	menu_handler_.show_statistics(static_cast<int>(gui()->viewing_team())+1);
 }
 
 void play_controller::hotkey_handler::unit_list(){
@@ -264,7 +264,7 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::hotkey_co
 			return true;
 		}
 	}
-	int prefixlen = wml_menu_hotkey_prefix.length();
+	std::size_t prefixlen = wml_menu_hotkey_prefix.length();
 	if(command == hotkey::HOTKEY_WML && cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
 		std::string name = cmd.id.substr(prefixlen);
@@ -419,7 +419,7 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 
 	const std::string start_name = scenariostart_save.create_filename();
 
-	for(unsigned int turn = play_controller_.turn(); turn != 0; turn--) {
+	for(unsigned int turn = static_cast<unsigned>(play_controller_.turn()); turn != 0; turn--) {
 		const std::string name = autosave.create_filename(turn);
 
 		if(savegame::save_game_exists(name, comp_format)) {
@@ -478,7 +478,7 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 	savenames_.clear();
 	wml_commands_.clear();
 
-	for(int i = items.size() - 1; i >= 0; i--) {
+	for(int i = static_cast<int>(items.size()) - 1; i >= 0; i--) {
 		if(items[i]["id"] == "AUTOSAVES") {
 			expand_autosaves(items, i);
 		} else if(items[i]["id"] == "wml") {

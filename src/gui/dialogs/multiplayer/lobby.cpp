@@ -792,8 +792,8 @@ void mp_lobby::process_gamelist_diff(const config& data)
 		ERR_LB << "process_gamelist_diff failed!";
 		refresh_lobby();
 	}
-	const int joined = data.child_count("insert_child");
-	const int left = data.child_count("remove_child");
+	const std::size_t joined = data.child_count("insert_child");
+	const std::size_t left = data.child_count("remove_child");
 	if(joined > 0 || left > 0) {
 		if(left > joined) {
 			do_notify(mp::notify_mode::lobby_quit);

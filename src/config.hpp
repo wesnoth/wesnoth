@@ -283,10 +283,10 @@ public:
 
 	child_itors child_range(config_key_type key);
 	const_child_itors child_range(config_key_type key) const;
-	unsigned child_count(config_key_type key) const;
-	unsigned all_children_count() const;
+	std::size_t child_count(config_key_type key) const;
+	std::size_t all_children_count() const;
 	/** Count the number of non-blank attributes */
-	unsigned attribute_count() const;
+	std::size_t attribute_count() const;
 
 	/**
 	 * Determine whether a config has a child or not.

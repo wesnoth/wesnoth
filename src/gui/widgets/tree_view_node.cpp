@@ -728,7 +728,7 @@ std::vector<int> tree_view_node::describe_path()
 	std::vector<int> res = parent_node_->describe_path();
 	for(std::size_t i = 0; i < parent_node_->count_children(); ++i) {
 		if(parent_node_->children_[i].get() == this) {
-			res.push_back(i);
+			res.push_back(static_cast<int>(i));
 			return res;
 		}
 	}
@@ -782,7 +782,7 @@ tree_view_node* tree_view_node::get_node_above()
 	}
 
 	while(cur && !cur->is_folded() && cur->count_children() > 0) {
-		cur = &cur->get_child_at(cur->count_children() - 1);
+		cur = &cur->get_child_at(static_cast<int>(cur->count_children()) - 1);
 	}
 
 	if(!cur) {

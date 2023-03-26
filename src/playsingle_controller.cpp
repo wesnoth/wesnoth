@@ -192,7 +192,7 @@ void playsingle_controller::play_scenario_init(const config& level)
 void playsingle_controller::skip_empty_sides(int& side_num)
 {
 	const int max = side_num + static_cast<int>(get_teams().size());
-	while (gamestate().board_.get_team(modulo(side_num, get_teams().size(), 1)).is_empty()) {
+	while (gamestate().board_.get_team(modulo(side_num, static_cast<int>(get_teams().size()), 1)).is_empty()) {
 		if(side_num == max) {
 			throw game::game_error("No teams found");
 		}
@@ -245,7 +245,7 @@ void playsingle_controller::finish_side_turn()
 
 	skip_empty_sides(next_player_number);
 	bool new_turn = next_player_number > static_cast<int>(get_teams().size());
-	next_player_number = modulo(next_player_number, get_teams().size(), 1);
+	next_player_number = modulo(next_player_number, static_cast<int>(get_teams().size()), 1);
 
 	if(new_turn) {
 		finish_turn();
@@ -262,7 +262,7 @@ void playsingle_controller::finish_side_turn()
 	// the turn end event might have deleted sides, so do this again.
 	skip_empty_sides(next_player_number);
 
-	gamestate_->player_number_ = modulo(next_player_number, get_teams().size(), 1);
+	gamestate_->player_number_ = modulo(next_player_number, static_cast<int>(get_teams().size()), 1);
 	gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 
 	if(new_turn) {

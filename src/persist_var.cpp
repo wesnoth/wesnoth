@@ -78,7 +78,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 			} else {
 				resources::gamedata->clear_variable(local);
 				for (std::size_t i = 0; i < arrsize; i++)
-					resources::gamedata->add_variable_cfg(local,cfg.child(global,i));
+					resources::gamedata->add_variable_cfg(local,cfg.child(global,static_cast<int>(i)));
 			}
 		} else {
 			resources::gamedata->set_variable(local,"");
@@ -117,7 +117,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 			}
 		} else {
 			for (std::size_t i = 0; i < arraylen; i++)
-				val.add_child(global,vars.child(local,i));
+				val.add_child(global,vars.child(local,static_cast<int>(i)));
 		}
 		ctx.set_var(global, val, pcfg["immediate"].to_bool());
 	}
