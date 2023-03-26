@@ -20,10 +20,11 @@
 #include "exceptions.hpp"
 #include "filesystem.hpp"
 #include "game_version.hpp"
-#include <optional>
 
 #include <iosfwd>
 #include <map>
+#include <string>
+#include <optional>
 #include <vector>
 
 class config_writer;
