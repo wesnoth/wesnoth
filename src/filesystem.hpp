@@ -94,39 +94,7 @@ private:
 	std::vector<std::string> directory_patterns_;
 };
 
-static const blacklist_pattern_list default_blacklist{
-	{
-		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
-		".+",
-		"#*#",
-		"*~",
-		"*-bak",
-		"*.swp",
-		"*.pbl",
-		"*.ign",
-		"_info.cfg",
-		"*.exe",
-		"*.bat",
-		"*.cmd",
-		"*.com",
-		"*.scr",
-		"*.sh",
-		"*.js",
-		"*.vbs",
-		"*.o",
-		"*.ini",
-		/* Remove junk created by certain file manager ;) */
-		"Thumbs.db",
-		/* Eclipse plugin */
-		"*.wesnoth",
-		"*.project",
-	},
-	{
-		".+",
-		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
-		"__MACOSX",
-	}
-};
+extern const blacklist_pattern_list default_blacklist;
 
 /**
  * Get a list of all files and/or directories in a given directory.
