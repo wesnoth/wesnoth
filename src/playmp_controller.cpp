@@ -267,35 +267,26 @@ void playmp_controller::linger()
 
 void playmp_controller::wait_for_upload()
 {
+	//TODO: check that this really sends all that data and doesn't dor example wrongly assume we can und undo the last action.
+	turn_data_.send_data();
 	// If the host is here we'll never leave since we wait for the host to
 	// upload the next scenario.
 	assert(!is_host());
+	// TODO: should we handle the case that we become the ho0st because the host disconnectes here?a
 
-	config cfg;
-	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
-
-	while(true) {
-		try {
-			bool res = false;
-			gui2::dialogs::loading_screen::display([&]() {
-				gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
-
-				res = mp_info_->connection.wait_and_receive_data(cfg);
-			});
-
-			if(res && turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
-				break;
-			} else {
-				throw_quit_game_exception();
+	gui2::dialogs::loading_screen::display([&]() {
+		gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
+		while(true) {
+			auto res = turn_data_.process_network_data_from_reader();
+			if(res == turn_info::PROCESS_END_LINGER) {
+				return;
+			} else if (res != turn_info::PROCESS_CONTINUE) {
+				throw quit_game_exception();
 			}
-		} catch(const quit_game_exception&) {
-			network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg); });
-			turn_data_.send_data();
-			throw;
+			SDL_Delay(10);
+			gui2::dialogs::loading_screen::spin();
 		}
-	}
-
-	network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg); });
+	});
 }
 
 void playmp_controller::after_human_turn()
