@@ -371,7 +371,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	// because the undo.cpp code assumes exactly 1 entry in the undo stack per entry in the replay.
 	// And doing so would create a second entry in the undo stack for this 'auto_shroud' entry.
 	current_team.set_auto_shroud_updates(active);
-	resources::undo_stack->add_auto_shroud(active);
+	if(resources::undo_stack->can_undo()) {
+		resources::undo_stack->add_auto_shroud(active);
+	}
 	return true;
 }
 
@@ -390,8 +392,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, e
 	if(current_team.auto_shroud_updates()) {
 		error_handler("Team has DSU disabled but we found an explicit shroud update");
 	}
-	resources::undo_stack->commit_vision();
+	bool res = resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
+	if(res) {
+		resources::undo_stack->clear();
+	}
 	return true;
 }
 

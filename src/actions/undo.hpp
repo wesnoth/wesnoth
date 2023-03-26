@@ -76,8 +76,11 @@ private:
 public:
 	/** Clears the stack of undoable (and redoable) actions. */
 	void clear();
-	/** Updates fog/shroud based on the undo stack, then updates stack as needed. */
-	void commit_vision();
+	/**
+	 * Updates fog/shroud based on the undo stack, then updates stack as needed.
+	 * Returns true if somethign was cleared.
+	 */
+	bool commit_vision();
 	/**
 	 * Performs some initializations and error checks when starting a new
 	 * side-turn.
