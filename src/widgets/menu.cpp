@@ -267,17 +267,17 @@ void menu::assert_pos()
 
 void menu::update_scrollbar_grip_height()
 {
-	set_full_size(items_.size());
-	set_shown_size(max_items_onscreen());
+	set_full_size(static_cast<unsigned>(items_.size()));
+	set_shown_size(static_cast<unsigned>(max_items_onscreen()));
 }
 
 void menu::update_size()
 {
-	int h = heading_height();
+	int h = static_cast<int>(heading_height());
 	for(std::size_t i = get_position(),
 	    i_end = std::min(items_.size(), i + max_items_onscreen());
 	    i < i_end; ++i)
-		h += get_item_rect(i).h;
+		h += get_item_rect(static_cast<unsigned>(i)).h;
 	h = std::max(h, height());
 	if (max_height_ > 0 && h > (max_height_)) {
 		h = max_height_;
@@ -304,7 +304,7 @@ int menu::selection() const
 		return -1;
 	}
 
-	return items_[selected_].id;
+	return static_cast<int>(items_[selected_].id);
 }
 
 void menu::set_inner_location(const SDL_Rect& /*rect*/)
@@ -331,7 +331,7 @@ void menu::erase_item(std::size_t index)
 		return;
 	--nb_items;
 
-	clear_item(nb_items);
+	clear_item(static_cast<int>(nb_items));
 
 	// fix ordered positions of items
 	std::size_t pos = item_pos_[index];
@@ -423,10 +423,10 @@ std::size_t menu::max_items_onscreen() const
 				: max_height_
 		) - heading_height();
 
-	std::vector<int> heights;
+	std::vector<std::size_t> heights;
 	std::size_t n;
 	for(n = 0; n != items_.size(); ++n) {
-		heights.push_back(get_item_height(n));
+		heights.push_back(get_item_height(static_cast<int>(n)));
 	}
 
 	std::sort(heights.begin(),heights.end(),std::greater<int>());
@@ -438,14 +438,15 @@ std::size_t menu::max_items_onscreen() const
 	if(sum > max_height && n > 1)
 		--n;
 
-	return max_items_ = n;
+	max_items_ = static_cast<int>(n);
+	return max_items_;
 }
 
 void menu::adjust_viewport_to_selection()
 {
 	if(click_selects_)
 		return;
-	adjust_position(selected_);
+	adjust_position(static_cast<int>(selected_));
 }
 
 void menu::set_selection_pos(std::size_t new_selected, bool silent, SELECTION_MOVE_VIEWPORT move_viewport)
@@ -596,8 +597,8 @@ void menu::handle_event(const SDL_Event& event)
 			x = event.button.x;
 			y = event.button.y;
 		} else {
-			x = reinterpret_cast<std::size_t>(event.user.data1);
-			y = reinterpret_cast<std::size_t>(event.user.data2);
+			x = static_cast<int>(reinterpret_cast<std::size_t>(event.user.data1));
+			y = static_cast<int>(reinterpret_cast<std::size_t>(event.user.data2));
 		}
 
 		const int item = hit(x,y);
@@ -664,7 +665,7 @@ int menu::process()
 {
 	if(show_result_) {
 		show_result_ = false;
-		return selected_;
+		return static_cast<int>(selected_);
 	} else {
 		return -1;
 	}
@@ -749,7 +750,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		else {
 			const SDL_Rect area {0,0,10000,10000};
 			const SDL_Rect font_size =
-				font::pango_draw_text(false, area, get_font_size(),
+				font::pango_draw_text(false, area, static_cast<int>(get_font_size()),
 					font::NORMAL_COLOR, str, 0, 0);
 			res.w += font_size.w;
 			res.h = std::max<int>(font_size.h, res.h);
@@ -811,9 +812,9 @@ void menu::column_widths_item(const std::vector<std::string>& row, std::vector<i
 		std::size_t text_trailing_space = (item_ends_with_image(row[col])) ? 0 : style_->get_cell_padding();
 
 		if(col == widths.size()) {
-			widths.push_back(res.w + text_trailing_space);
+			widths.push_back(res.w + static_cast<int>(text_trailing_space));
 		} else if(static_cast<std::size_t>(res.w) > widths[col] - text_trailing_space) {
-			widths[col] = res.w + text_trailing_space;
+			widths[col] = res.w + static_cast<int>(text_trailing_space);
 		}
 	}
 }
@@ -903,13 +904,13 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 			} else {
 				column.x = xpos;
 
-				const auto text_size = font::pango_line_size(str, style_->get_font_size());
-				const std::size_t y = loc.y + (loc.h - text_size.second)/2;
-				const std::size_t padding = 2;
+				const auto text_size = font::pango_line_size(str, static_cast<int>(style_->get_font_size()));
+				const int y = loc.y + (loc.h - text_size.second)/2;
+				const int padding = 2;
 				rect text_loc = column;
-				text_loc.w = loc.w - (xpos - loc.x) - 2 * style_->get_thickness();
+				text_loc.w = loc.w - (xpos - loc.x) - 2 * static_cast<int>(style_->get_thickness());
 				text_loc.h = text_size.second;
-				font::pango_draw_text(true, text_loc, style_->get_font_size(), font::NORMAL_COLOR, str,
+				font::pango_draw_text(true, text_loc, static_cast<int>(style_->get_font_size()), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
@@ -936,11 +937,11 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 void menu::draw_contents()
 {
 	SDL_Rect heading_rect = inner_location();
-	heading_rect.h = heading_height();
+	heading_rect.h = static_cast<int>(heading_height());
 	style_->draw_row(*this,0,heading_rect,HEADING_ROW);
 
 	for(std::size_t i = 0; i != item_pos_.size(); ++i) {
-		style_->draw_row(*this,item_pos_[i],get_item_rect(i),
+		style_->draw_row(*this,item_pos_[i],get_item_rect(static_cast<int>(i)),
 			 (!out_ && item_pos_[i] == selected_) ? SELECTED_ROW : NORMAL_ROW);
 	}
 }
@@ -950,9 +951,9 @@ int menu::hit(int x, int y) const
 	const SDL_Rect& loc = inner_location();
 	if (x >= loc.x  && x < loc.x + loc.w && y >= loc.y && y < loc.y + loc.h) {
 		for(std::size_t i = 0; i != items_.size(); ++i) {
-			const SDL_Rect& rect = get_item_rect(i);
+			const SDL_Rect& rect = get_item_rect(static_cast<int>(i));
 			if (y >= rect.y && y < rect.y + rect.h)
-				return i;
+				return static_cast<int>(i);
 		}
 	}
 
@@ -962,7 +963,7 @@ int menu::hit(int x, int y) const
 int menu::hit_column(int x) const
 {
 	const std::vector<int>& widths = column_widths();
-	int j = -1, j_end = widths.size();
+	int j = -1, j_end = static_cast<int>(widths.size());
 	for(x -= location().x; x >= 0; x -= widths[j]) {
 		if(++j == j_end) {
 			return -1;
@@ -995,19 +996,19 @@ SDL_Rect menu::get_item_rect_internal(std::size_t item) const
 		return sdl::empty_rect;
 	}
 
-	const std::map<int,SDL_Rect>::const_iterator i = itemRects_.find(item);
+	const std::map<int,SDL_Rect>::const_iterator i = itemRects_.find(static_cast<int>(item));
 	if(i != itemRects_.end())
 		return i->second;
 
 	const SDL_Rect& loc = inner_location();
 
-	int y = loc.y + heading_height();
+	int y = loc.y + static_cast<int>(heading_height());
 	if (item != first_item_on_screen) {
 		const SDL_Rect& prev = get_item_rect_internal(item-1);
 		y = prev.y + prev.h;
 	}
 
-	rect res(loc.x, y, loc.w, get_item_height(item));
+	rect res(loc.x, y, loc.w, static_cast<int>(get_item_height(static_cast<int>(item))));
 
 	const point canvas_size = video::game_canvas_size();
 
@@ -1036,7 +1037,7 @@ std::size_t menu::get_item_height_internal(const std::vector<std::string>& item)
 	std::size_t res = 0;
 	for(std::vector<std::string>::const_iterator i = item.begin(); i != item.end(); ++i) {
 		SDL_Rect rect = style_->item_size(*i);
-		res = std::max<int>(rect.h,res);
+		res = std::max<int>(rect.h, static_cast<int>(res));
 	}
 
 	return res;
@@ -1058,10 +1059,11 @@ std::size_t menu::get_item_height(int) const
 
 	std::size_t max_height = 0;
 	for(std::size_t n = 0; n != items_.size(); ++n) {
-		max_height = std::max<int>(max_height,get_item_height_internal(items_[n].fields));
+		max_height = std::max(max_height,get_item_height_internal(items_[n].fields));
 	}
 
-	return item_height_ = max_height;
+	item_height_ = static_cast<int>(max_height);
+	return item_height_;
 }
 
 void menu::invalidate_row(std::size_t id)
@@ -1070,7 +1072,7 @@ void menu::invalidate_row(std::size_t id)
 		return;
 	}
 
-	queue_redraw(get_item_rect(id));
+	queue_redraw(get_item_rect(static_cast<int>(id)));
 }
 
 void menu::invalidate_row_pos(std::size_t pos)
@@ -1085,7 +1087,7 @@ void menu::invalidate_row_pos(std::size_t pos)
 void menu::invalidate_heading()
 {
 	rect heading_rect = inner_location();
-	heading_rect.h = heading_height();
+	heading_rect.h = static_cast<int>(heading_height());
 	queue_redraw(heading_rect);
 }
 

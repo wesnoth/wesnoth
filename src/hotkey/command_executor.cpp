@@ -405,7 +405,7 @@ void command_executor::surrender_game() {
 	if(gui2::show_message(_("Surrender"), _("Do you really want to surrender the game?"), gui2::dialogs::message::yes_no_buttons) != gui2::retval::CANCEL) {
 		playmp_controller* pmc = dynamic_cast<playmp_controller*>(resources::controller);
 		if(pmc && !pmc->is_linger_mode() && !pmc->is_observer()) {
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(static_cast<int>(display::get_singleton()->viewing_team()));
 		}
 	}
 }
@@ -509,7 +509,7 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 		const hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(item_id).command;
 
 		//see if this menu item has an associated image
-		std::string img(get_menu_image(disp, item_id, i));
+		std::string img(get_menu_image(disp, item_id, static_cast<int>(i)));
 		if (img.empty() == false) {
 			item["icon"] = img;
 		}

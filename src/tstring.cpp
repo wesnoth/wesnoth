@@ -266,7 +266,7 @@ t_string_base::t_string_base(const std::string& string, const std::string& textd
 	unsigned int id;
 
 	if(idi == textdomain_to_id.end()) {
-		id = id_to_textdomain.size();
+		id = static_cast<unsigned>(id_to_textdomain.size());
 		textdomain_to_id[textdomain] = id;
 		id_to_textdomain.push_back(textdomain);
 	} else {
@@ -295,7 +295,7 @@ t_string_base::t_string_base(const std::string& sing, const std::string& pl, int
 	unsigned int id;
 
 	if(idi == textdomain_to_id.end()) {
-		id = id_to_textdomain.size();
+		id = static_cast<unsigned>(id_to_textdomain.size());
 		textdomain_to_id[textdomain] = id;
 		id_to_textdomain.push_back(textdomain);
 	} else {

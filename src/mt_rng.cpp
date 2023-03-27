@@ -62,7 +62,7 @@ bool mt_rng::operator== (const mt_rng & other) const {
 
 uint32_t mt_rng::get_next_random()
 {
-	uint32_t result = mt_();
+	uint32_t result = static_cast<uint32_t>(mt_());
 	++random_calls_;
 	DBG_RND << "pulled user random " << result
 		<< " for call " << random_calls_
@@ -73,7 +73,7 @@ uint32_t mt_rng::get_next_random()
 
 void mt_rng::rotate_random()
 {
-	seed_random(mt_(),0);
+	seed_random(static_cast<uint32_t>(mt_()), 0);
 }
 
 void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)

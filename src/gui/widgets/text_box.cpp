@@ -61,7 +61,7 @@ std::string text_history::up(const std::string& text)
 	if(!enabled_) {
 		return "";
 	} else if(pos_ == history_->size()) {
-		unsigned curr = pos_;
+		std::size_t curr = pos_;
 		push(text);
 		pos_ = curr;
 	}
@@ -142,12 +142,12 @@ void text_box::update_canvas()
 	/***** Gather the info *****/
 
 	// Set the cursor info.
-	const unsigned start = get_selection_start();
-	const int length = get_selection_length();
+	const unsigned start = static_cast<unsigned>(get_selection_start());
+	const unsigned length = static_cast<unsigned>(get_selection_length());
 
 	// Set the cursor info.
-	const unsigned edit_start = get_composition_start();
-	const int edit_length = get_composition_length();
+	const unsigned edit_start = static_cast<unsigned>(get_composition_start());
+	const unsigned edit_length = static_cast<unsigned>(get_composition_length());
 
 	set_maximum_length(max_input_length_);
 
@@ -164,27 +164,17 @@ void text_box::update_canvas()
 	// Set the selection info
 	unsigned start_offset = 0;
 	unsigned end_offset = 0;
-	if(length == 0) {
-		// No nothing.
-	} else if(length > 0) {
+	if(length > 0) {
 		start_offset = get_cursor_position(start).x;
 		end_offset = get_cursor_position(start + length).x;
-	} else {
-		start_offset = get_cursor_position(start + length).x;
-		end_offset = get_cursor_position(start).x;
 	}
 
 	// Set the composition info
 	unsigned comp_start_offset = 0;
 	unsigned comp_end_offset = 0;
-	if(edit_length == 0) {
-		// No nothing.
-	} else if(edit_length > 0) {
+	if(edit_length > 0) {
 		comp_start_offset = get_cursor_position(edit_start).x;
 		comp_end_offset = get_cursor_position(edit_start + edit_length).x;
-	} else {
-		comp_start_offset = get_cursor_position(edit_start + edit_length).x;
-		comp_end_offset = get_cursor_position(edit_start).x;
 	}
 
 	/***** Set in all canvases *****/
@@ -233,14 +223,8 @@ void text_box::delete_selection()
 		return;
 	}
 
-	// If we have a negative range change it to a positive range.
-	// This makes the rest of the algorithms easier.
-	int len = get_selection_length();
-	unsigned start = get_selection_start();
-	if(len < 0) {
-		len = -len;
-		start -= len;
-	}
+	std::size_t len = get_selection_length();
+	std::size_t start = get_selection_start();
 
 	std::string tmp = get_value();
 	set_value(utf8::erase(tmp, start, len));

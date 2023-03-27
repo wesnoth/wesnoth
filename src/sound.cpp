@@ -178,7 +178,7 @@ std::vector<std::string> played_before;
 //
 std::vector<std::shared_ptr<sound::music_track>> current_track_list;
 std::shared_ptr<sound::music_track> current_track;
-unsigned int current_track_index = 0;
+std::size_t current_track_index = 0;
 std::shared_ptr<sound::music_track> previous_track;
 
 std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(const sound::music_track& track)
@@ -218,7 +218,7 @@ void set_previous_track(std::shared_ptr<music_track> track)
 	previous_track = track;
 }
 
-unsigned int get_num_tracks()
+std::size_t get_num_tracks()
 {
 	return current_track_list.size();
 }
@@ -340,7 +340,7 @@ static std::shared_ptr<sound::music_track> choose_track()
 
 		if(current_track_list.size() > 1) {
 			do {
-				track = randomness::rng::default_instance().get_random_int(0, current_track_list.size()-1);
+				track = randomness::rng::default_instance().get_random_int(0, static_cast<int>(current_track_list.size())-1);
 			} while(!track_ok(current_track_list[track]->file_path()));
 		}
 
@@ -369,14 +369,14 @@ static std::string pick_one(const std::string& files)
 	unsigned int choice;
 
 	if(prev_choices.find(files) != prev_choices.end()) {
-		choice = randomness::rng::default_instance().get_random_int(0, ids.size()-1 - 1);
+		choice = randomness::rng::default_instance().get_random_int(0, static_cast<int>(ids.size())-1 - 1);
 		if(choice >= prev_choices[files]) {
 			++choice;
 		}
 
 		prev_choices[files] = choice;
 	} else {
-		choice = randomness::rng::default_instance().get_random_int(0, ids.size()-1);
+		choice = randomness::rng::default_instance().get_random_int(0, static_cast<int>(ids.size())-1);
 		prev_choices.emplace(files, choice);
 	}
 
@@ -434,7 +434,7 @@ driver_status driver_status::query()
 
 	if(mix_ok) {
 		Mix_QuerySpec(&res.frequency, &res.format, &res.channels);
-		res.chunk_size = preferences::sound_buffer_size();
+		res.chunk_size = static_cast<int>(preferences::sound_buffer_size());
 	}
 
 	return res;
@@ -450,7 +450,7 @@ bool init_sound()
 	}
 
 	if(!mix_ok) {
-		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
+		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, static_cast<int>(preferences::sound_buffer_size())) == -1) {
 			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError();
 			return false;

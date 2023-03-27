@@ -134,7 +134,7 @@ void campaign_selection::campaign_selected()
 			}
 
 			diff_menu.set_values(entry_list);
-			diff_menu.set_selected(selection);
+			diff_menu.set_selected(static_cast<unsigned>(selection));
 		}
 	}
 }

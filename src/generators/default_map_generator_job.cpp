@@ -307,8 +307,8 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 		// Is this a negative hill? (i.e. a valley)
 		bool is_valley = false;
 
-		int x1 = island_size > 0 ? center_x - island_size + (rng_()%(island_size*2)) : static_cast<int>(rng_()%width);
-		int y1 = island_size > 0 ? center_y - island_size + (rng_()%(island_size*2)) : static_cast<int>(rng_()%height);
+		int x1 = static_cast<int>(island_size > 0 ? center_x - island_size + (rng_()%(island_size*2)) : rng_()%width);
+		int y1 = static_cast<int>(island_size > 0 ? center_y - island_size + (rng_()%(island_size*2)) : rng_()%height);
 
 		// We have to check whether this is actually a valley
 		if(island_size != 0) {
@@ -318,13 +318,13 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 			is_valley = dist > island_size;
 		}
 
-		const int radius = rng_()%hill_size + 1;
+		const int radius = static_cast<int>(rng_()%hill_size) + 1;
 		DBG_NG << "placing hill at " << x1 << "," << y1 << " radius=" << radius << " is_valley=" << is_valley;
 
 		const int min_x = x1 - radius > 0 ? x1 - radius : 0;
-		const int max_x = x1 + radius < static_cast<long>(res.size()) ? x1 + radius : res.size();
+		const int max_x = static_cast<int>(x1 + radius < static_cast<int>(res.size()) ? x1 + radius : res.size());
 		const int min_y = y1 - radius > 0 ? y1 - radius : 0;
-		const int max_y = y1 + radius < static_cast<long>(res.front().size()) ? y1 + radius : res.front().size();
+		const int max_y = static_cast<int>(y1 + radius < static_cast<int>(res.front().size()) ? y1 + radius : res.front().size());
 
 		for(int x2 = min_x; x2 < max_x; ++x2) {
 			for(int y2 = min_y; y2 < max_y; ++y2) {
@@ -508,12 +508,12 @@ map_location default_map_generator_job::random_point_at_side(std::size_t width, 
 {
 	const int side = rng_()%4;
 	if(side < 2) {
-		const int x = rng_()%width;
-		const int y = side == 0 ? 0 : height-1;
+		const int x = static_cast<int>(rng_()%width);
+		const int y = static_cast<int>(side == 0 ? 0 : height-1);
 		return map_location(x,y);
 	} else {
-		const int y = rng_()%height;
-		const int x = side == 2 ? 0 : width-1;
+		const int y = static_cast<int>(rng_()%height);
+		const int x = static_cast<int>(side == 2 ? 0 : width-1);
 		return map_location(x,y);
 	}
 }
@@ -526,14 +526,14 @@ static std::string output_map(const terrain_map& terrain,
 	// All other segments of the map are there only to give
 	// the important middle part some context.
 	// We also have a border so also adjust for that.
-	const std::size_t begin_x = terrain.w / 3 - gamemap::default_border ;
-	const std::size_t end_x = terrain.w * 2 / 3 + gamemap::default_border;
-	const std::size_t begin_y = terrain.h / 3 - gamemap::default_border;
-	const std::size_t end_y = terrain.h * 2 / 3 + gamemap::default_border;
+	const int begin_x = terrain.w / 3 - gamemap::default_border ;
+	const int end_x = terrain.w * 2 / 3 + gamemap::default_border;
+	const int begin_y = terrain.h / 3 - gamemap::default_border;
+	const int end_y = terrain.h * 2 / 3 + gamemap::default_border;
 
-	terrain_map map(end_x - begin_x, end_y - begin_y);
-	for(std::size_t y = begin_y; y != end_y; ++y) {
-		for(std::size_t x = begin_x; x != end_x; ++x) {
+	terrain_map map(static_cast<int>(end_x - begin_x), static_cast<int>(end_y - begin_y));
+	for(int y = begin_y; y != end_y; ++y) {
+		for(int x = begin_x; x != end_x; ++x) {
 			map[x - begin_x][y - begin_y] = terrain[x][y];
 		}
 	}
@@ -584,9 +584,9 @@ static int rank_castle_location(int x, int y, const is_valid_terrain& valid_terr
 	const int x_from_border = std::min<int>(x - min_x,max_x - x);
 	const int y_from_border = std::min<int>(y - min_y,max_y - y);
 
-	const int border_ranking = min_distance - std::min<int>(x_from_border,y_from_border) + min_distance - x_from_border - y_from_border;
+	const int border_ranking = static_cast<int>(min_distance - std::min<int>(x_from_border,y_from_border) + min_distance - x_from_border - y_from_border);
 
-	int current_ranking = border_ranking*2 + avg_distance*10 + lowest_distance*10;
+	int current_ranking = static_cast<int>(border_ranking*2 + avg_distance*10 + lowest_distance*10);
 	static const int num_nearby_locations = 11*11;
 
 	const int max_possible_ranking = current_ranking + num_nearby_locations;
@@ -614,7 +614,7 @@ static map_location place_village(const t_translation::ter_map& map,
 	const std::size_t x, const std::size_t y, const std::size_t radius, const config& cfg,
 	tcode_list_cache &adj_liked_cache)
 {
-	const map_location loc(x,y);
+	const map_location loc(static_cast<int>(x),static_cast<int>(y));
 	std::set<map_location> locs;
 	get_tiles_radius(loc,radius,locs);
 	map_location best_loc;
@@ -773,7 +773,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		for(std::size_t y = 0; y != heights[x].size(); ++y) {
 			for(auto i : height_conversion) {
 				if(i.convert_terrain(heights[x][y])) {
-					terrain[x][y] = i.convert_to();
+					terrain[static_cast<int>(x)][y] = i.convert_to();
 					break;
 				}
 			}
@@ -993,7 +993,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 	std::set<map_location> bridges;
 
-	road_path_calculator calc(terrain, cfg, rng_());
+	road_path_calculator calc(terrain, cfg, static_cast<int>(rng_()));
 	for(int road = 0; road != nroads; ++road) {
 		lg::scope_logger another_inner_scope_logging_object__(lg::general(), "creating road");
 
@@ -1143,7 +1143,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 		const int x = c->x;
 		const int y = c->y;
-		const int player = c - castles.begin() + 1;
+		const int player = static_cast<int>(c - castles.begin() + 1);
 		const t_translation::coordinate coord(x, y);
 		starting_positions.insert(t_translation::starting_positions::value_type(std::to_string(player), coord));
 		terrain[x][y] = t_translation::HUMAN_KEEP;
@@ -1267,7 +1267,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 		for(int vx = 0; vx < data.width; vx += village_x) {
 			LOG_NG << "village at " << vx;
 
-			for(int vy = rng_()%village_y; vy < data.height; vy += village_y) {
+			for(int vy = static_cast<int>(rng_()%village_y); vy < data.height; vy += village_y) {
 				const std::size_t add = rng_()%3;
 				const std::size_t x = (vx + add) - 1;
 				const std::size_t y = (vy + add) - 1;

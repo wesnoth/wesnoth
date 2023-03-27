@@ -203,7 +203,7 @@ int gamemap::read_header(const std::string& data)
 	config header;
 	::read(header, header_str);
 
-	return header_offset + 2;
+	return static_cast<int>(header_offset) + 2;
 }
 
 

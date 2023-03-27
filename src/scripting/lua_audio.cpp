@@ -201,7 +201,7 @@ static int intf_music_play(lua_State* L) {
 }
 
 static int intf_music_next(lua_State*) {
-	unsigned n = sound::get_num_tracks();
+	unsigned n = static_cast<unsigned>(sound::get_num_tracks());
 	if(n > 0) {
 		sound::play_track(n);
 	}

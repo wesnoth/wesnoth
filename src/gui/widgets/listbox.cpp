@@ -87,7 +87,7 @@ void listbox::remove_row(const unsigned row, unsigned count)
 	}
 
 	if(!count || count + row > get_item_count()) {
-		count = get_item_count() - row;
+		count = static_cast<unsigned>(get_item_count()) - row;
 	}
 
 	int height_reduced = 0;
@@ -249,7 +249,7 @@ bool listbox::select_row(const std::size_t row, const bool select)
 	}
 	assert(generator_);
 
-	unsigned int before = generator_->get_selected_item_count();
+	std::size_t before = generator_->get_selected_item_count();
 	generator_->select_item(row, select);
 
 	return before != generator_->get_selected_item_count();

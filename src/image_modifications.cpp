@@ -306,7 +306,7 @@ surface adjust_alpha_modification::operator()(const surface & src) const
 			pixel.g = (*cur) >> 8;
 			pixel.b = (*cur);
 
-			int i = cur - beg;
+			int i = static_cast<int>(cur - beg);
 			SDL_Point p;
 			p.y = i / nsurf->w;
 			p.x = i % nsurf->w;
@@ -353,7 +353,7 @@ surface adjust_channels_modification::operator()(const surface & src) const
 			pixel.g = (*cur) >> 8;
 			pixel.b = (*cur);
 
-			int i = cur - beg;
+			int i = static_cast<int>(cur - beg);
 			SDL_Point p;
 			p.y = i / nsurf->w;
 			p.x = i % nsurf->w;
@@ -1243,7 +1243,7 @@ REGISTER_MOD_PARSER(BG, args)
 	int c[4] { 0, 0, 0, SDL_ALPHA_OPAQUE };
 	std::vector<std::string> factors = utils::split(args, ',');
 
-	for(int i = 0; i < std::min<int>(factors.size(), 4); ++i) {
+	for(int i = 0; i < std::min<int>(static_cast<int>(factors.size()), 4); ++i) {
 		c[i] = lexical_cast_default<int>(factors[i]);
 	}
 

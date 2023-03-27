@@ -54,15 +54,11 @@ void password_box::set_value(const std::string& text)
 
 void password_box::delete_selection()
 {
-	int len = get_selection_length();
+	std::size_t len = get_selection_length();
 	if(len == 0) {
 		return;
 	}
-	unsigned start = get_selection_start();
-	if(len < 0) {
-		len = -len;
-		start -= len;
-	}
+	std::size_t start = get_selection_start();
 
 	utf8::erase(real_value_, start, len);
 	set_value(real_value_);
@@ -71,12 +67,7 @@ void password_box::delete_selection()
 
 void password_box::insert_char(const std::string& unicode)
 {
-	int len = get_selection_length();
-	unsigned sel = get_selection_start();
-	if(len < 0) {
-		len = -len;
-		sel -= len;
-	}
+	std::size_t sel = get_selection_start();
 
 	std::size_t sz = utf8::size(unicode);
 	if(sz == 1) {

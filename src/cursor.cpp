@@ -130,7 +130,7 @@ SDL_Cursor* create_cursor(surface surf)
 		}
 	}
 
-	return SDL_CreateCursor(&data[0], &mask[0], cursor_width, surf->h, 0, 0);
+	return SDL_CreateCursor(&data[0], &mask[0], static_cast<int>(cursor_width), surf->h, 0, 0);
 }
 
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)

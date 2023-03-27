@@ -74,7 +74,7 @@ std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view
 	auto old_node = std::move(*node_itor);
 	old_node->parent_node_ = nullptr;
 
-	const int position = std::distance(siblings.begin(), node_itor);
+	const int position = static_cast<int>(std::distance(siblings.begin(), node_itor));
 
 	siblings.erase(node_itor);
 

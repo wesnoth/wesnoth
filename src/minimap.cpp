@@ -68,7 +68,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 		return surface(map_width * ratio, map_height * ratio);
 	}
 
-	surface minimap(map_width, map_height);
+	surface minimap(static_cast<int>(map_width), static_cast<int>(map_height));
 	if(minimap == nullptr)
 		return surface(nullptr);
 
@@ -351,7 +351,7 @@ void render_minimap(unsigned dst_w,
 
 	// Create a temp texture a bit larger than we want. This allows us to compose the minimap and then
 	// scale the whole result down the desired destination texture size.
-	texture minimap(map_width, map_height, SDL_TEXTUREACCESS_TARGET);
+	texture minimap(static_cast<int>(map_width), static_cast<int>(map_height), SDL_TEXTUREACCESS_TARGET);
 	if(!minimap) {
 		return;
 	}

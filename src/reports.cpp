@@ -309,8 +309,8 @@ static config unit_traits(const unit* u)
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
 	const std::vector<std::string> &trait_ids = u->get_traits_list();
-	unsigned nb = traits.size();
-	for (unsigned i = 0; i < nb; ++i)
+	std::size_t nb = traits.size();
+	for (std::size_t i = 0; i < nb; ++i)
 	{
 		std::ostringstream str, tooltip;
 		str << traits[i];
@@ -1093,11 +1093,10 @@ static config unit_weapons(reports::context & rc, unit_const_ptr attacker, const
 
 		// First, we sort the probabilities in ascending order.
 		std::vector<std::pair<double, int>> prob_hp_vector;
-		int i;
 
 		combatant* c = show_attacker ? &attacker_combatant : &defender_combatant;
 
-		for(i = 0; i < static_cast<int>(c->hp_dist.size()); i++) {
+		for(std::size_t i = 0; i < c->hp_dist.size(); i++) {
 			double prob = c->hp_dist[i];
 
 			// We keep only values above 0.1%.
@@ -1111,11 +1110,9 @@ static config unit_weapons(reports::context & rc, unit_const_ptr attacker, const
 		int max_hp_distrib_rows_ = 10;
 
 		// We store a few of the highest probability hitpoint values.
-		int nb_elem = std::min<int>(max_hp_distrib_rows_, prob_hp_vector.size());
+		int nb_elem = std::min<int>(max_hp_distrib_rows_, static_cast<int>(prob_hp_vector.size()));
 
-		for(i = prob_hp_vector.size() - nb_elem;
-				i < static_cast<int>(prob_hp_vector.size()); i++) {
-
+		for(std::size_t i = prob_hp_vector.size() - nb_elem; i < prob_hp_vector.size(); i++) {
 			hp_prob_vector.emplace_back(prob_hp_vector[i].second, prob_hp_vector[i].first);
 		}
 
@@ -1124,8 +1121,7 @@ static config unit_weapons(reports::context & rc, unit_const_ptr attacker, const
 		// And reverse the order. Might be doable in a better manor.
 		std::reverse(hp_prob_vector.begin(), hp_prob_vector.end());
 
-		for(i = 0; i < static_cast<int>(hp_prob_vector.size()); i++) {
-
+		for(std::size_t i = 0; i < hp_prob_vector.size(); i++) {
 			int hp = hp_prob_vector[i].first;
 			double prob = hp_prob_vector[i].second;
 			color_t prob_color = game_config::blue_to_white(prob * 100.0, true);
@@ -1150,7 +1146,7 @@ static config unit_weapons(reports::context & rc, const unit *u, const map_locat
 {
 	config res = config();
 	if ((u != nullptr) && (!u->attacks().empty())) {
-		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
+		const std::string attack_headline = _n("Attack", "Attacks", static_cast<int>(u->attacks().size()));
 
 		add_text(res,  span_color(font::weapon_details_color)
 				+ attack_headline + "</span>" + '\n', "");
@@ -1264,7 +1260,7 @@ static config tod_stats_at(reports::context & rc, const map_location& hex)
 		i++;
 	}
 
-	int times = schedule.size();
+	std::size_t times = schedule.size();
 	text << current + 1 << "/" << times;
 
 	return text_report(text.str(), tooltip.str(), "..schedule");

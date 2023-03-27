@@ -68,7 +68,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 	std::string res = str;
 	// This needs to be able to store negative numbers to check for the while's condition
 	// (which is only false when the previous '$' was at index 0)
-	int rfind_dollars_sign_from = res.size();
+	int rfind_dollars_sign_from = static_cast<int>(res.size());
 	while(rfind_dollars_sign_from >= 0) {
 		// Going in a backwards order allows nested variable-retrieval, e.g. in arrays.
 		// For example, "I am $creatures[$i].user_description!"
@@ -320,7 +320,7 @@ std::string format_timespan(std::time_t time, bool detailed)
 
 	for(const auto& factor : TIME_FACTORS) {
 		const auto [ secs, fmt_singular, fmt_plural ] = factor;
-		const int amount = time / secs;
+		const long amount = time / secs;
 
 		if(amount) {
 			time -= secs * amount;
@@ -361,14 +361,14 @@ int edit_distance_approx(const std::string &str_1, const std::string &str_2)
 {
 	int edit_distance = 0;
 	if(str_1.length() == 0) {
-		return str_2.length();
+		return static_cast<int>(str_2.length());
 	}
 	else if(str_2.length() == 0) {
-		return str_1.length();
+		return static_cast<int>(str_1.length());
 	}
 	else {
 		int j = 0;
-		int len_max = std::max(str_1.length(), str_2.length());
+		int len_max = static_cast<int>(std::max(str_1.length(), str_2.length()));
 		for(int i = 0; i < len_max; i++) {
 			if(str_1[i] != str_2[j]) {
 				//SWAP

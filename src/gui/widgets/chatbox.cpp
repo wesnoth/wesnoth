@@ -110,7 +110,7 @@ void chatbox::active_window_changed()
 	lobby_chat_window& t = open_windows_[active_window_];
 
 	// Clear pending messages notification in room listbox
-	grid* grid = roomlistbox_->get_row_grid(active_window_);
+	grid* grid = roomlistbox_->get_row_grid(static_cast<unsigned>(active_window_));
 	find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::hidden);
 
 	t.pending_messages = 0;
@@ -130,7 +130,7 @@ void chatbox::switch_to_window(std::size_t id)
 	active_window_ = id;
 	assert(active_window_ < open_windows_.size());
 
-	chat_log_container_->select_page(active_window_);
+	chat_log_container_->select_page(static_cast<unsigned>(active_window_));
 	roomlistbox_->select_row(active_window_);
 
 	// Grab input focus
@@ -216,7 +216,7 @@ void chatbox::append_to_chatbox(const std::string& text, const bool force_scroll
 
 void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const bool force_scroll)
 {
-	grid& grid = chat_log_container_->page_grid(id);
+	grid& grid = chat_log_container_->page_grid(static_cast<unsigned>(id));
 
 	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
 	const bool chatbox_at_end = log.vertical_scrollbar_at_end();
@@ -255,7 +255,7 @@ void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/
 void chatbox::clear_messages()
 {
 	const auto id = active_window_;
-	grid& grid = chat_log_container_->page_grid(id);
+	grid& grid = chat_log_container_->page_grid(static_cast<unsigned>(id));
 	scroll_label& log = find_widget<scroll_label>(&grid, "log_text", false);
 	log.set_label("");
 }
@@ -454,7 +454,7 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 
 void chatbox::close_window_button_callback(std::string room_name, bool& handled, bool& halt)
 {
-	const int index = std::distance(open_windows_.begin(), std::find_if(open_windows_.begin(), open_windows_.end(),
+	const long index = std::distance(open_windows_.begin(), std::find_if(open_windows_.begin(), open_windows_.end(),
 		[&room_name](const lobby_chat_window& room) { return room.name == room_name; }
 	));
 
@@ -476,7 +476,7 @@ void chatbox::increment_waiting_whispers(const std::string& name)
 		if(t->pending_messages == 1) {
 			DBG_LB << "do whisper pending mark row " << (t - &open_windows_[0]) << " with " << t->name;
 
-			grid* grid = roomlistbox_->get_row_grid(t - &open_windows_[0]);
+			grid* grid = roomlistbox_->get_row_grid(static_cast<unsigned>(t - &open_windows_[0]));
 			find_widget<image>(grid, "pending_messages", false).set_visible(widget::visibility::visible);
 		}
 	}
@@ -488,7 +488,7 @@ void chatbox::increment_waiting_messages(const std::string& room)
 		++t->pending_messages;
 
 		if(t->pending_messages == 1) {
-			int idx = t - &open_windows_[0];
+			int idx = static_cast<int>(t - &open_windows_[0]);
 
 			DBG_LB << "do room pending mark row " << idx << " with " << t->name;
 
@@ -542,11 +542,11 @@ void chatbox::close_window(std::size_t idx)
 
 	open_windows_.erase(open_windows_.begin() + idx);
 
-	roomlistbox_->remove_row(idx);
+	roomlistbox_->remove_row(static_cast<unsigned>(idx));
 	roomlistbox_->select_row(active_window_);
 
-	chat_log_container_->remove_page(idx);
-	chat_log_container_->select_page(active_window_);
+	chat_log_container_->remove_page(static_cast<unsigned>(idx));
+	chat_log_container_->select_page(static_cast<unsigned>(active_window_));
 
 	if(active_changed) {
 		active_window_changed();

@@ -179,7 +179,7 @@ void stacked_widget::select_layers(const boost::dynamic_bitset<>& mask)
 
 unsigned int stacked_widget::get_layer_count() const
 {
-	return generator_->get_item_count();
+	return static_cast<unsigned>(generator_->get_item_count());
 }
 
 grid* stacked_widget::get_layer_grid(unsigned int i)

@@ -42,7 +42,7 @@ void debug_delete(node* n) {
 
 char* uncompress_buffer(const string_span& input, string_span* span)
 {
-	int nalloc = input.size();
+	std::size_t nalloc = input.size();
 	int state = 0;
 	try {
 		std::istringstream stream(std::string(input.begin(), input.end()));
@@ -90,7 +90,7 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 
 		small_out[pos] = 0;
 
-		*span = string_span(small_out, pos);
+		*span = string_span(small_out, static_cast<int>(pos));
 		state = 8;
 		return small_out;
 	} catch (const std::bad_alloc& e) {
@@ -103,7 +103,7 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 
 char* compress_buffer(const char* input, string_span* span, bool bzip2)
 {
-	int nalloc = strlen(input);
+	std::size_t nalloc = strlen(input);
 	int state = 0;
 	try {
 		std::string in(input);
@@ -456,7 +456,7 @@ node& node::add_child_at(const char* name, std::size_t index)
 
 	check_ordered_children();
 	list.insert(list.begin() + index, new node(*doc_, this));
-	insert_ordered_child(list_index, index);
+	insert_ordered_child(list_index, static_cast<int>(index));
 
 	check_ordered_children();
 	return *list[index];
@@ -491,13 +491,13 @@ void node::remove_child(const string_span& name, std::size_t index)
 		return;
 	}
 
-	remove_ordered_child(std::distance(children_.begin(), itor), index);
+	remove_ordered_child(static_cast<int>(std::distance(children_.begin(), itor)), static_cast<int>(index));
 
 	debug_delete(list[index]);
 	list.erase(list.begin() + index);
 
 	if(list.empty()) {
-		remove_ordered_child_list(std::distance(children_.begin(), itor));
+		remove_ordered_child_list(static_cast<int>(std::distance(children_.begin(), itor)));
 		children_.erase(itor);
 	}
 }
@@ -653,12 +653,12 @@ int node::get_children(const string_span& name)
 {
 	for(child_map::iterator i = children_.begin(); i != children_.end(); ++i) {
 		if(i->first == name) {
-			return std::distance(children_.begin(), i);
+			return static_cast<int>(std::distance(children_.begin(), i));
 		}
 	}
 
 	children_.emplace_back(string_span(name), child_list());
-	return children_.size() - 1;
+	return static_cast<int>(children_.size()) - 1;
 }
 
 node::child_map::const_iterator node::find_in_map(const child_map& m, const string_span& attr)
@@ -699,7 +699,7 @@ int node::output_size() const
 {
 	check_ordered_children();
 	if(output_cache_.empty() == false) {
-		return output_cache_.size();
+		return static_cast<int>(output_cache_.size());
 	}
 
 	int res = 0;
@@ -919,7 +919,7 @@ int node::nchildren() const
 
 int node::nattributes_recursive() const
 {
-	int res = attr_.capacity();
+	int res = static_cast<int>(attr_.capacity());
 	for(child_map::const_iterator i = children_.begin(); i != children_.end(); ++i) {
 		for(child_list::const_iterator j = i->second.begin(); j != i->second.end(); ++j) {
 			res += (*j)->nattributes_recursive();
@@ -1020,7 +1020,7 @@ document::~document()
 
 const char* document::dup_string(const char* str)
 {
-	const int len = strlen(str);
+	const std::size_t len = strlen(str);
 	char* res = new char[len+1];
 	memcpy(res, str, len + 1);
 	buffers_.push_back(res);

@@ -83,10 +83,10 @@ static SDL_Rect read_sdl_rect(const config& cfg)
 {
 	SDL_Rect sdlrect;
 	const _rect rect = read_rect(cfg);
-	sdlrect.x = rect.x1;
-	sdlrect.y = rect.y1;
-	sdlrect.w = (rect.x2 > rect.x1) ? (rect.x2 - rect.x1) : 0;
-	sdlrect.h = (rect.y2 > rect.y1) ? (rect.y2 - rect.y1) : 0;
+	sdlrect.x = static_cast<int>(rect.x1);
+	sdlrect.y = static_cast<int>(rect.y1);
+	sdlrect.w = static_cast<int>((rect.x2 > rect.x1) ? (rect.x2 - rect.x1) : 0);
+	sdlrect.h = static_cast<int>((rect.y2 > rect.y1) ? (rect.y2 - rect.y1) : 0);
 
 	return sdlrect;
 }
@@ -329,10 +329,10 @@ rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.x = loc_.x;
-			relative_loc_.w = loc_.w + screen.w - std::min<std::size_t>(spec_width_, loc_.w + screen.w);
+			relative_loc_.w = static_cast<int>(loc_.w + screen.w - std::min<std::size_t>(spec_width_, loc_.w + screen.w));
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.x = loc_.x + screen.w - std::min<std::size_t>(spec_width_, loc_.x + screen.w);
+			relative_loc_.x = static_cast<int>(loc_.x + screen.w - std::min<std::size_t>(spec_width_, loc_.x + screen.w));
 			relative_loc_.w = loc_.w;
 			break;
 		case PROPORTIONAL:
@@ -350,10 +350,10 @@ rect& theme::object::location(const SDL_Rect& screen) const
 			break;
 		case TOP_ANCHORED:
 			relative_loc_.y = loc_.y;
-			relative_loc_.h = loc_.h + screen.h - std::min<std::size_t>(spec_height_, loc_.h + screen.h);
+			relative_loc_.h = static_cast<int>(loc_.h + screen.h - std::min<std::size_t>(spec_height_, loc_.h + screen.h));
 			break;
 		case BOTTOM_ANCHORED:
-			relative_loc_.y = loc_.y + screen.h - std::min<std::size_t>(spec_height_, loc_.y + screen.h);
+			relative_loc_.y = static_cast<int>(loc_.y + screen.h - std::min<std::size_t>(spec_height_, loc_.y + screen.h));
 			relative_loc_.h = loc_.h;
 			break;
 		case PROPORTIONAL:
@@ -395,10 +395,10 @@ theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 
 void theme::object::modify_location(const _rect& rect)
 {
-	loc_.x = rect.x1;
-	loc_.y = rect.y1;
-	loc_.w = rect.x2 - rect.x1;
-	loc_.h = rect.y2 - rect.y1;
+	loc_.x = static_cast<int>(rect.x1);
+	loc_.y = static_cast<int>(rect.y1);
+	loc_.w = static_cast<int>(rect.x2 - rect.x1);
+	loc_.h = static_cast<int>(rect.y2 - rect.y1);
 	location_modified_ = true;
 }
 

@@ -1290,7 +1290,7 @@ void unit::expire_modifications(const std::string& duration)
 	for(const auto& mod_name : ModificationTypes) {
 		// Loop through all modifications of this type.
 		// Looping in reverse since we may delete the current modification.
-		for(int j = modifications_.child_count(mod_name)-1; j >= 0; --j)
+		for(int j = static_cast<int>(modifications_.child_count(mod_name))-1; j >= 0; --j)
 		{
 			const config& mod = modifications_.child(mod_name, j);
 

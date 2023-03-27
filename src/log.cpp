@@ -339,7 +339,7 @@ static void print_precise_timestamp(std::ostream& out) noexcept
 	try {
 		int64_t micros = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		std::time_t seconds = micros/1'000'000;
-		int fractional = micros-(seconds*1'000'000);
+		int64_t fractional = micros-(seconds*1'000'000);
 		char c = out.fill('0');
 		out << std::put_time(std::localtime(&seconds), "%Y%m%d %H:%M:%S") << "." << std::setw(6) << fractional << ' ';
 		out.fill(c);

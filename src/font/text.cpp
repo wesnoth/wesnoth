@@ -182,7 +182,7 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	// do we really need that assert? utf8::insert will just append in this case, which seems fine
 	assert(offset <= length_);
 
-	unsigned len = utf8::size(text);
+	std::size_t len = utf8::size(text);
 	if (length_ + len > maximum_length_) {
 		len = maximum_length_ - length_;
 	}
@@ -190,7 +190,7 @@ unsigned pango_text::insert_text(const unsigned offset, const std::string& text)
 	std::string tmp = text_;
 	this->set_text(utf8::insert(tmp, offset, insert), false);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
-	return len;
+	return static_cast<unsigned>(len);
 }
 
 point pango_text::get_cursor_position(const unsigned column, const unsigned line) const
@@ -314,11 +314,11 @@ point pango_text::get_column_line(const point& position) const
 	 * text is available. Haven't found what the best thing to do would be.
 	 * Until that time leave it as is.
 	 */
-	for(std::size_t i = 0; ; ++i) {
+	for(int i = 0; ; ++i) {
 		const int pos = this->get_cursor_position(i, line).x;
 
 		if(pos == offset) {
-			return  point(i, line);
+			return point(i, line);
 		}
 	}
 }
@@ -348,7 +348,7 @@ bool pango_text::set_text(const std::string& text, const bool markedup)
 			 * clear it unconditionally.
 			 */
 			pango_layout_set_attributes(layout_.get(), nullptr);
-			pango_layout_set_text(layout_.get(), narrow.c_str(), narrow.size());
+			pango_layout_set_text(layout_.get(), narrow.c_str(), static_cast<int>(narrow.size()));
 		}
 		text_ = narrow;
 		length_ = wide.size();
@@ -831,9 +831,9 @@ bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 	if(valid) {
 		if(link_aware_) {
 			std::string formatted_text = format_links(text);
-			pango_layout_set_markup(&layout, formatted_text.c_str(), formatted_text.size());
+			pango_layout_set_markup(&layout, formatted_text.c_str(), static_cast<int>(formatted_text.size()));
 		} else {
-			pango_layout_set_markup(&layout, text.data(), text.size());
+			pango_layout_set_markup(&layout, text.data(), static_cast<int>(text.size()));
 		}
 	} else {
 		ERR_GUI_L << "pango_text::" << __func__
@@ -889,7 +889,7 @@ std::string pango_text::format_links(std::string_view text) const
 
 bool pango_text::validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const
 {
-	if(pango_parse_markup(text.data(), text.size(),
+	if(pango_parse_markup(text.data(), static_cast<int>(text.size()),
 		0, nullptr, raw_text, nullptr, nullptr)) {
 		return true;
 	}
@@ -910,7 +910,7 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	 * markup wasn't (only) broken by ampersands in the first place.
 	 */
 	if(text.size() == semi_escaped.size()
-			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
+			|| !pango_parse_markup(semi_escaped.c_str(), static_cast<int>(semi_escaped.size())
 				, 0, nullptr, raw_text, nullptr, nullptr)) {
 
 		/* Fixing the ampersands didn't work. */

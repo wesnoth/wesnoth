@@ -75,7 +75,7 @@ bool quit_confirmation::default_prompt()
 		int retval = sq.get_retval();
 		if(retval == 1)
 		{
-			pmc->surrender(display::get_singleton()->viewing_team());
+			pmc->surrender(static_cast<int>(display::get_singleton()->viewing_team()));
 			return true;
 		}
 		else if(retval == 2)

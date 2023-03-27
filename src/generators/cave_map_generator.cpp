@@ -183,8 +183,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 				}
 			}
 		}
-		const std::size_t x = translate_x(min_xpos + (rng_()%(max_xpos-min_xpos)));
-		const std::size_t y = translate_y(min_ypos + (rng_()%(max_ypos-min_ypos)));
+		const int x = static_cast<int>(translate_x(min_xpos + (rng_()%(max_xpos-min_xpos))));
+		const int y = static_cast<int>(translate_y(min_ypos + (rng_()%(max_ypos-min_ypos))));
 
 		int chamber_size = ch["size"].to_int(3);
 		int jagged_edges = ch["jagged"];

@@ -868,7 +868,7 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 			}
 
 			building_rule rule = tpl;
-			rotate_rule(rule, angle, rot);
+			rotate_rule(rule, static_cast<int>(angle), rot);
 			add_rule(rules, rule);
 		}
 	}

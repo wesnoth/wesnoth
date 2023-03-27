@@ -48,7 +48,7 @@ namespace {
 	protected:
 		virtual uint32_t next_random_impl()
 		{
-			return gen_();
+			return static_cast<uint32_t>(gen_());
 		}
 	private:
 		std::mt19937 gen_;

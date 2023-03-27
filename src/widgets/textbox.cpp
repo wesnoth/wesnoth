@@ -34,7 +34,7 @@ namespace gui {
 
 textbox::textbox(int width, const std::string& text, bool editable, std::size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
 	   : scrollarea(auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<std::u32string>(text)),
-	     cursor_(text_.size()), selstart_(-1), selend_(-1),
+	     cursor_(static_cast<int>(text_.size())), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(nullptr),
 	     wrap_(false), line_height_(0), yscroll_(0), alpha_(alpha),
@@ -80,7 +80,7 @@ const std::string textbox::text() const
 void textbox::set_text(const std::string& text, const color_t& color)
 {
 	text_ = unicode_cast<std::u32string>(text);
-	cursor_ = text_.size();
+	cursor_ = static_cast<int>(text_.size());
 	text_pos_ = 0;
 	selstart_ = -1;
 	selend_ = -1;
@@ -191,9 +191,9 @@ void textbox::draw_contents()
 	rect src;
 
 	if(text_image_ != nullptr) {
-		src.y = yscroll_;
-		src.w = std::min<std::size_t>(loc.w,text_image_.w());
-		src.h = std::min<std::size_t>(loc.h,text_image_.h());
+		src.y = static_cast<int>(yscroll_);
+		src.w = std::min(loc.w,text_image_.w());
+		src.h = std::min(loc.h,text_image_.h());
 		src.x = text_pos_;
 		SDL_Rect dest{loc.x, loc.y, src.w, src.h};
 
@@ -216,8 +216,8 @@ void textbox::draw_contents()
 
 				rect r(loc.x + startx
 						, loc.y + starty - src.y
-						, right - startx
-						, line_height_);
+						, static_cast<int>(right - startx)
+						, static_cast<int>(line_height_));
 
 				draw::fill(r, 0, 0, 160, 140);
 
@@ -295,7 +295,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 	if(char_y_.empty()) {
 		char_y_.push_back(0);
 	} else {
-		char_y_.push_back(char_y_.back() + line_height_);
+		char_y_.push_back(char_y_.back() + static_cast<int>(line_height_));
 	}
 
 	char_x_.push_back(0);
@@ -326,7 +326,7 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {
-				int backup = itor - backup_itor;
+				int backup = static_cast<int>(itor - backup_itor);
 				itor = backup_itor + 1;
 				if(backup > 0) {
 					char_x_.erase(char_x_.end()-backup, char_x_.end());
@@ -341,12 +341,12 @@ texture textbox::add_text_line(const std::u32string& text, const color_t& color)
 			backup_itor = text.end();
 			wrapped_text.push_back(char32_t('\n'));
 			char_x_.push_back(0);
-			char_y_.push_back(char_y_.back() + line_height_);
+			char_y_.push_back(char_y_.back() + static_cast<int>(line_height_));
 			visible_string = "";
 		} else {
 			wrapped_text.push_back(*itor);
 			char_x_.push_back(w);
-			char_y_.push_back(char_y_.back() + (char(*itor) == '\n' ? line_height_ : 0));
+			char_y_.push_back(char_y_.back() + (char(*itor) == '\n' ? static_cast<int>(line_height_) : 0));
 			++itor;
 		}
 	}
@@ -485,7 +485,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 		// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
 		if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
-			cursor_ = text_.size();
+			cursor_ = static_cast<int>(text_.size());
 
 		if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
 			cursor_ = 0;
@@ -602,7 +602,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			}
 			case SDLK_a: // selectall
 			{
-				set_selection(0, text_.size());
+				set_selection(0, static_cast<int>(text_.size()));
 				break;
 			}
 			}//end switch

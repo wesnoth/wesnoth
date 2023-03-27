@@ -113,7 +113,7 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 		}
 	}
 
-	return std::distance(zoom_levels.begin(), iter);
+	return static_cast<int>(std::distance(zoom_levels.begin(), iter));
 }
 
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float submerge, float z_order)
@@ -1414,7 +1414,7 @@ void display::draw_label(const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::pango_draw_text(true, loc, label.font_size(),
+		font::pango_draw_text(true, loc, static_cast<int>(label.font_size()),
 			text_color, text, loc.x, loc.y
 		);
 	}
@@ -2658,8 +2658,8 @@ void display::draw_hex(const map_location& loc)
 	const bool on_map = get_map().on_board(loc);
 	const time_of_day& tod = get_time_of_day(loc);
 
-	int num_images_fg = 0;
-	int num_images_bg = 0;
+	std::size_t num_images_fg = 0;
+	std::size_t num_images_bg = 0;
 
 	const bool is_shrouded = shrouded(loc);
 
@@ -2988,7 +2988,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 			text.set_link_aware(false)
 				.set_text(t, true);
 			text.set_family_class(font::FONT_SANS_SERIF)
-				.set_font_size(item->font_size())
+				.set_font_size(static_cast<int>(item->font_size()))
 				.set_font_style(font::pango_text::STYLE_NORMAL)
 				.set_alignment(PANGO_ALIGN_LEFT)
 				.set_foreground_color(item->font_rgb_set() ? item->font_rgb() : font::NORMAL_COLOR)

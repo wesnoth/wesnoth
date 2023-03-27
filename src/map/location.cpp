@@ -560,5 +560,5 @@ std::size_t distance_between(const map_location& a, const map_location& b)
 	// = maximum(hdistance, vdistance+hdistance-hdistance/2-hdistance%2)
 	// = maximum(hdistance,std::abs(a.y-b.y)+vpenalty+hdistance/2)
 
-	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
+	return std::max(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
 }

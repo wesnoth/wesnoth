@@ -52,9 +52,12 @@ char itoa(unsigned value, const std::string& map)
 
 std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<int>& atoi_map)
 {
-	const int last_char = in.find_last_not_of("=");
-	const int num_chars = last_char + 1;
-	const int length = num_chars * 6 / 8;
+	const std::size_t last_char = in.find_last_not_of("=");
+	if(last_char == std::string::npos) {
+		return {};
+	}
+	const std::size_t num_chars = last_char + 1;
+	const std::size_t length = num_chars * 6 / 8;
 
 	std::vector<uint8_t> out;
 	out.reserve(length);
@@ -77,7 +80,7 @@ std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<in
 			val &= 0xFFFF; // Prevent shifting bits off the left end, which is UB
 		}
 	}
-	if(static_cast<int>(out.size()) != length) {
+	if(out.size() != length) {
 		return {};
 	}
 
@@ -86,13 +89,16 @@ std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<in
 
 std::vector<uint8_t> generic_decode_le(std::string_view in, const std::vector<int>& atoi_map)
 {
-	const int last_char = in.find_last_not_of("=");
-	const int length = last_char * 6 / 8;
+	const std::size_t last_char = in.find_last_not_of("=");
+	if(last_char == std::string::npos) {
+		return {};
+	}
+	const std::size_t length = last_char * 6 / 8;
 
 	std::vector<uint8_t> out;
 	out.reserve(length);
 
-	for(int i = 0; i <= last_char; i += 4) {
+	for(std::size_t i = 0; i <= last_char; i += 4) {
 		//add first char (always)
 		unsigned value = atoi_map[in[i]];
 
@@ -132,13 +138,13 @@ std::vector<uint8_t> generic_decode_le(std::string_view in, const std::vector<in
 
 std::string generic_encode_be(utils::byte_string_view in, const std::string& itoa_map, bool pad)
 {
-	const int in_len = in.length();
-	const int groups = (in_len + 2) / 3;
-	const int out_len = groups * 4;
+	const std::size_t in_len = in.length();
+	const std::size_t groups = (in_len + 2) / 3;
+	const std::size_t out_len = groups * 4;
 
 	std::string out;
 
-	int i = 0;
+	std::size_t i = 0;
 	out.reserve(out_len);
 	unsigned value = 0;
 	unsigned bits = 0;
@@ -165,13 +171,13 @@ std::string generic_encode_be(utils::byte_string_view in, const std::string& ito
 }
 std::string generic_encode_le(utils::byte_string_view in, const std::string& itoa_map, bool pad)
 {
-	const int in_len = in.length();
-	const int groups = (in_len + 2) / 3;
-	const int out_len = groups * 4;
+	const std::size_t in_len = in.length();
+	const std::size_t groups = (in_len + 2) / 3;
+	const std::size_t out_len = groups * 4;
 
 	std::string out;
 
-	int i = 0;
+	std::size_t i = 0;
 	out.reserve(out_len);
 	while(i < in_len) {
 		//add first byte (always)
@@ -234,7 +240,7 @@ std::string encode(utils::byte_string_view bytes)
 int decode(char encoded_char)
 {
 	std::size_t pos = crypt64_itoa_map.find(encoded_char);
-	return pos == std::string::npos ? -1 : pos;
+	return pos == std::string::npos ? -1 : static_cast<int>(pos);
 }
 char encode(int value)
 {

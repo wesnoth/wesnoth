@@ -319,7 +319,7 @@ static secure_buffer aes_encrypt(const secure_buffer& plaintext, const secure_bu
 		return secure_buffer();
 	}
 
-	if(EVP_EncryptUpdate(ctx, encrypted_buffer, &update_length, plaintext.data(), plaintext.size()) != 1)
+	if(EVP_EncryptUpdate(ctx, encrypted_buffer, &update_length, plaintext.data(), static_cast<int>(plaintext.size())) != 1)
 	{
 		ERR_CFG << "AES EVP_EncryptUpdate failed with error:";
 		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
@@ -410,7 +410,7 @@ static secure_buffer aes_decrypt(const secure_buffer& encrypted, const secure_bu
 		return secure_buffer();
 	}
 
-	if(EVP_DecryptUpdate(ctx, plaintext_buffer, &update_length, encrypted.data(), encrypted.size()) != 1)
+	if(EVP_DecryptUpdate(ctx, plaintext_buffer, &update_length, encrypted.data(), static_cast<int>(encrypted.size())) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptUpdate failed with error:";
 		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);

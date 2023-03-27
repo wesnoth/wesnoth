@@ -183,7 +183,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 			} while( area.y < rect.y + rect.h );
 
 			image = img_map_["border-right"];
-			area.x = rect.x + rect.w - thickness_;
+			area.x = rect.x + rect.w - static_cast<int>(thickness_);
 			area.y = rect.y;
 			area.w = image.w();
 			area.h = image.h();
@@ -194,7 +194,7 @@ void menu::imgsel_style::draw_row(menu& menu_ref, const std::size_t row_index, c
 
 			image = img_map_["border-bottom"];
 			area.x = rect.x;
-			area.y = rect.y + rect.h - thickness_;
+			area.y = rect.y + rect.h - static_cast<int>(thickness_);
 			area.w = image.w();
 			area.h = image.h();
 			do {

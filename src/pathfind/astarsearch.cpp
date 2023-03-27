@@ -142,8 +142,8 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
                           const std::size_t width, const std::size_t height,
                           const teleport_map *teleports, bool border) {
 	//----------------- PRE_CONDITIONS ------------------
-	assert(src.valid(width, height, border));
-	assert(dst.valid(width, height, border));
+	assert(src.valid(static_cast<int>(width), static_cast<int>(height), border));
+	assert(dst.valid(static_cast<int>(width), static_cast<int>(height), border));
 	assert(stop_at <= calc.getNoPathValue());
 	//---------------------------------------------------
 
@@ -171,7 +171,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	nodes[index(src)] = node(0, src, map_location::null_location(), dst, true, teleports);
 
 	std::vector<int> pq;
-	pq.push_back(index(src));
+	pq.push_back(static_cast<int>(index(src)));
 
 	while (!pq.empty()) {
 		node& n = nodes[pq.front()];
@@ -194,7 +194,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		for(auto i = locs.rbegin(); i != locs.rend(); ++i) {
 			const map_location& loc = *i;
 
-			if (!loc.valid(width, height, border)) continue;
+			if (!loc.valid(static_cast<int>(width), static_cast<int>(height), border)) continue;
 			if (loc == n.curr) continue;
 			node& next = nodes[index(loc)];
 
@@ -211,7 +211,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 			if (in_list) {
 				std::push_heap(pq.begin(), std::find(pq.begin(), pq.end(), static_cast<int>(index(loc))) + 1, node_comp);
 			} else {
-				pq.push_back(index(loc));
+				pq.push_back(static_cast<int>(index(loc)));
 				std::push_heap(pq.begin(), pq.end(), node_comp);
 			}
 		}

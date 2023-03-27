@@ -73,7 +73,7 @@ std::size_t index(const std::string& str, const std::size_t index)
 {
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
-	unsigned int i = 0, len = str.size();
+	std::size_t i = 0, len = str.size();
 	try {
 		for (unsigned int chr=0; chr<index && i<len; ++chr) {
 			i += byte_size_from_utf8_first(str[i]);
@@ -86,7 +86,7 @@ std::size_t index(const std::string& str, const std::size_t index)
 
 std::size_t size(const std::string& str)
 {
-	unsigned int chr, i = 0, len = str.size();
+	std::size_t chr, i = 0, len = str.size();
 	try {
 		for (chr=0; i<len; ++chr) {
 			i += byte_size_from_utf8_first(str[i]);
@@ -105,7 +105,7 @@ std::string& insert(std::string& str, const std::size_t pos, const std::string& 
 std::string& erase(std::string& str, const std::size_t start, const std::size_t len)
 {
 	if (start > size(str)) return str;
-	unsigned pos = index(str, start);
+	std::size_t pos = index(str, start);
 
 	if (len == std::string::npos) {
 		// without second argument, std::string::erase truncates

@@ -99,7 +99,7 @@ void multi_page::clear()
 unsigned multi_page::get_page_count() const
 {
 	assert(generator_);
-	return generator_->get_item_count();
+	return static_cast<unsigned>(generator_->get_item_count());
 }
 
 void multi_page::select_page(const unsigned page, const bool select)

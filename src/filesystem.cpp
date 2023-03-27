@@ -1149,7 +1149,7 @@ int file_size(const std::string& fname)
 	} else if(size > INT_MAX) {
 		return INT_MAX;
 	} else {
-		return size;
+		return static_cast<int>(size);
 	}
 }
 
@@ -1170,7 +1170,7 @@ int dir_size(const std::string& pname)
 	} else if(size_sum > INT_MAX) {
 		return INT_MAX;
 	} else {
-		return size_sum;
+		return static_cast<int>(size_sum);
 	}
 }
 

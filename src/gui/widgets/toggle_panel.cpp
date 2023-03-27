@@ -80,7 +80,7 @@ toggle_panel::toggle_panel(const implementation::builder_toggle_panel& builder)
 
 std::size_t toggle_panel::num_states() const
 {
-	std::div_t res = std::div(this->get_config()->state.size(), COUNT);
+	std::div_t res = std::div(static_cast<int>(this->get_config()->state.size()), COUNT);
 	assert(res.rem == 0);
 	assert(res.quot > 0);
 	return res.quot;

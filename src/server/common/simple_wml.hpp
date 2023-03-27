@@ -37,7 +37,7 @@ class string_span
 public:
 	string_span() : str_(nullptr), size_(0)
 	{}
-	string_span(const char* str, int size) : str_(str), size_(size)
+	string_span(const char* str, std::size_t size) : str_(str), size_(size)
 	{}
 	string_span(const char* str) : str_(str), size_(strlen(str))
 	{}

@@ -343,7 +343,8 @@ static std::size_t count_pack_files(const config& cfg)
 void unarchive_addon(const config& cfg, std::function<void(unsigned)> progress_callback)
 {
 	const std::string parentd = filesystem::get_addons_dir();
-	unsigned file_count = progress_callback ? count_pack_files(cfg) : 0, done = 0;
+	unsigned file_count = progress_callback ? static_cast<unsigned>(count_pack_files(cfg)) : 0;
+	unsigned done = 0;
 	auto file_callback = progress_callback
 		? [&]() { progress_callback(++done * 100.0 / file_count); }
 		: std::function<void()>{};

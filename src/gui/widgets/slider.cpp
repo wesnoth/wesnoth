@@ -155,8 +155,8 @@ bool slider::on_positioner(const point& coordinate) const
 
 int slider::on_bar(const point& coordinate) const
 {
-	const unsigned x = static_cast<std::size_t>(coordinate.x);
-	const unsigned y = static_cast<std::size_t>(coordinate.y);
+	const unsigned x = static_cast<unsigned>(coordinate.x);
+	const unsigned y = static_cast<unsigned>(coordinate.y);
 
 	// Not on the widget, leave.
 	if(x > get_width() || y > get_height()) {

@@ -722,7 +722,7 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 			continue;
 		}
 
-		write_key_val(out, i.first, i.second, tab, textdomain);
+		write_key_val(out, i.first, i.second, static_cast<unsigned>(tab), textdomain);
 	}
 
 	for(const config::any_child item : cfg.all_children_range()) {
@@ -731,9 +731,9 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 			continue;
 		}
 
-		write_open_child(out, item.key, tab);
+		write_open_child(out, item.key, static_cast<unsigned>(tab));
 		write_internal(item.cfg, out, textdomain, tab + 1);
-		write_close_child(out, item.key, tab);
+		write_close_child(out, item.key, static_cast<unsigned>(tab));
 	}
 }
 
@@ -755,9 +755,9 @@ static void write_internal(const configr_of& cfg, std::ostream& out, std::string
 			continue;
 		}
 
-		write_open_child(out, *pair.first, tab);
+		write_open_child(out, *pair.first, static_cast<unsigned>(tab));
 		write_internal(*pair.second, out, textdomain, tab + 1);
-		write_close_child(out, *pair.first, tab);
+		write_close_child(out, *pair.first, static_cast<unsigned>(tab));
 	}
 }
 

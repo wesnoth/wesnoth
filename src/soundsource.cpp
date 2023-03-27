@@ -198,7 +198,7 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 
 	SDL_Rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
-	int distance = distance_between(loc, center);
+	int distance = static_cast<int>(distance_between(loc, center));
 
 	if(distance <= range_) {
 		return 0;

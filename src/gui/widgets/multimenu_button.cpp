@@ -172,7 +172,7 @@ void multimenu_button::update_label()
 		set_label(_("multimenu^All Selected"));
 	} else {
 		if(selected.size() > max_shown_) {
-			const unsigned excess = selected.size() - max_shown_;
+			std::size_t excess = selected.size() - max_shown_;
 			selected.resize(max_shown_ + 1);
 			// TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
 			// of the text on the button when many of the boxes are selected. The text becomes

@@ -67,7 +67,7 @@ surface scale_surface_xbrz(const surface & surf, std::size_t z)
 		return temp;
 	}
 
-	surface dst(surf->w *z, surf->h * z);
+	surface dst(static_cast<int>(surf->w * z), static_cast<int>(surf->h * z));
 
 	if (z == 0) {
 		PLAIN_LOG << "Create an empty image";
@@ -1419,7 +1419,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		p = lock.pixels() + y*res->w;
 		for(x = 0; x < res->w; ++x, ++p) {
 			// Write the current average
-			const uint32_t num = queue.size();
+			const uint32_t num = static_cast<uint32_t>(queue.size());
 			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
@@ -1458,7 +1458,7 @@ surface blur_alpha_surface(const surface &surf, int depth)
 		p = lock.pixels() + x;
 		for(y = 0; y < res->h; ++y, p += res->w) {
 			// Write the current average
-			const uint32_t num = queue.size();
+			const uint32_t num = static_cast<uint32_t>(queue.size());
 			*p = avg(num);
 
 			// Unload earlier pixels that are now too far away
