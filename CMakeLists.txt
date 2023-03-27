@@ -462,6 +462,19 @@ else()
 	RemoveFlag(CMAKE_C_FLAGS_MINSIZEREL CACHE "/DNDEBUG" "Default C flags for MinSizeRel")
 endif()
 
+if(ENABLE_MYSQL)
+	execute_process(COMMAND mysql_config --cflags OUTPUT_VARIABLE MYSQL_CFLAGS OUTPUT_STRIP_TRAILING_WHITESPACE)
+	string(REGEX REPLACE "-I" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
+	string(REGEX REPLACE "-DNDEBUG" "" MYSQL_CFLAGS "${MYSQL_CFLAGS}")
+	execute_process(COMMAND mysql_config --libs OUTPUT_VARIABLE MYSQL_LIBS OUTPUT_STRIP_TRAILING_WHITESPACE)
+	add_subdirectory("src/modules/mariadbpp/")
+endif()
+
+# ignore this warning for mariadbpp submodule by adding it after adding the mariadbpp subdirectory
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+	add_compile_options(-Wshorten-64-to-32)
+endif()
+
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
 if(IS_ABSOLUTE "${LOCALEDIR}")
