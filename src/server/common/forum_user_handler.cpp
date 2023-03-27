@@ -238,7 +238,7 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 void fuh::async_test_query(boost::asio::io_service& io_service, int limit) {
 	boost::asio::post([this, limit, &io_service] {
 		ERR_UH << "async test query starts!";
-		int i = conn_.async_test_query(limit);
+		long i = conn_.async_test_query(limit);
 		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i; });
 	 });
 }

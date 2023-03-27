@@ -317,7 +317,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 			uint32_t size;
 			char buf[4];
 		} data_size {};
-		data_size.size = htonl(s.size());
+		data_size.size = htonl(static_cast<uint32_t>(s.size()));
 
 		std::vector<boost::asio::const_buffer> buffers {
 			{ data_size.buf, 4 },
@@ -346,7 +346,7 @@ template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const 
 		uint32_t size;
 		char buf[4];
 	} data_size {};
-	data_size.size = htonl(filesize);
+	data_size.size = htonl(static_cast<uint32_t>(filesize));
 
 	boost::system::error_code ec;
 	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
@@ -390,7 +390,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 		uint32_t size;
 		char buf[4];
 	} data_size {};
-	data_size.size = htonl(filesize);
+	data_size.size = htonl(static_cast<uint32_t>(filesize));
 
 	boost::system::error_code ec;
 	async_write(*socket, boost::asio::buffer(data_size.buf), yield[ec]);
@@ -406,7 +406,7 @@ void server_base::coro_send_file(socket_ptr socket, const std::string& filename,
 	{
 		// Try the system call.
 		errno = 0;
-		int n = ::sendfile(socket->native_handle(), in_file, &offset, 65536);
+		int n = static_cast<int>(::sendfile(socket->native_handle(), in_file, &offset, 65536));
 		ec = boost::system::error_code(n < 0 ? errno : 0,
 									   boost::asio::error::get_system_category());
 		//total_bytes_transferred += *(yield.ec_) ? 0 : n;

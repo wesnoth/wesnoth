@@ -35,7 +35,7 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg, long id,
 	cfg_.set_attr_dup("name", n.c_str());
 	cfg_.set_attr("registered", registered ? "yes" : "no");
 	cfg_.set_attr("moderator", moderator ? "yes" : "no");
-	cfg_.set_attr_int("forum_id", id);
+	cfg_.set_attr_int("forum_id", static_cast<int>(id));
 	mark_available();
 }
 

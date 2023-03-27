@@ -71,7 +71,7 @@ mariadb::connection_ref dbconn::create_connection()
 //
 // queries
 //
-int dbconn::async_test_query(int limit)
+long dbconn::async_test_query(int limit)
 {
 	std::string sql = "with recursive TEST(T) as "
 	                  "( "
@@ -80,7 +80,7 @@ int dbconn::async_test_query(int limit)
 					  "select T+1 from TEST where T < ? "
 					  ") "
 					  "select count(*) from TEST";
-	int t = get_single_long(create_connection(), sql, limit);
+	long t = get_single_long(create_connection(), sql, limit);
 	return t;
 }
 

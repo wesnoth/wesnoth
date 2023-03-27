@@ -345,22 +345,22 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 			} else {
 				switch(*i) {
 				case 'Y':
-					loc->tm_year = number;
+					loc->tm_year = static_cast<int>(number);
 					break;
 				case 'M':
-					loc->tm_mon = number;
+					loc->tm_mon = static_cast<int>(number);
 					break;
 				case 'D':
-					loc->tm_mday = number;
+					loc->tm_mday = static_cast<int>(number);
 					break;
 				case 'h':
-					loc->tm_hour = number;
+					loc->tm_hour = static_cast<int>(number);
 					break;
 				case 'm':
-					loc->tm_min = number;
+					loc->tm_min = static_cast<int>(number);
 					break;
 				case 's':
-					loc->tm_sec = number;
+					loc->tm_sec = static_cast<int>(number);
 					break;
 				default:
 					LOG_SERVER << "Invalid time modifier given: '" << *i << "'.";
@@ -394,7 +394,7 @@ bool ban_manager::parse_time(const std::string& duration, std::time_t* time) con
 			if (is_digit(*i))
 			{
 				if (number == -1) number = 0;
-				number = number * 10 + to_digit(*i);
+				number = static_cast<int>(number * 10 + to_digit(*i));
 			} else {
 				if (number == -1) number = 1;
 				switch(*i)

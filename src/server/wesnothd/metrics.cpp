@@ -82,7 +82,7 @@ void metrics::record_sample(const simple_wml::string_span& name, clock_t parsing
 		if(samples_.size() > 30) {
 			return;
 		}
-		int index = std::distance(samples_.begin(), isample);
+		int index = static_cast<int>(std::distance(samples_.begin(), isample));
 		simple_wml::string_span dup_name(name.duplicate());
 		sample new_sample;
 		new_sample.name = dup_name;
@@ -151,7 +151,7 @@ std::ostream& operator<<(std::ostream& out, metrics& met)
 	const int seconds = time_up%60;
 	const int minutes = (time_up/60)%60;
 	const int hours = (time_up/(60*60))%24;
-	const int days = time_up/(60*60*24);
+	const long days = time_up/(60*60*24);
 	const int requests_immediate = met.nrequests_ - met.nrequests_waited_;
 	const int percent_immediate = (requests_immediate*100)/(met.nrequests_ > 0 ? met.nrequests_ : 1);
 	out << "METRICS\nUp " << days << " days, " << hours << " hours, "

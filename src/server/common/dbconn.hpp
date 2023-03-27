@@ -47,7 +47,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::async_test_query().
 		 */
-		int async_test_query(int limit);
+		long async_test_query(int limit);
 
 		/**
 		 * @see forum_user_handler::get_uuid().

@@ -32,7 +32,7 @@ void ban_check::read(mariadb::result_set_ref rslt)
     if(rslt->next())
     {
         ban_type = rslt->get_signed32("ban_type");
-        ban_duration = rslt->get_signed32("ban_end") != 0 ? rslt->get_signed32("ban_end") - std::time(nullptr) : 0;
+        ban_duration = rslt->get_signed32("ban_end") != 0 ? rslt->get_signed32("ban_end") - static_cast<int>(std::time(nullptr)) : 0;
         user_id = rslt->get_signed32("ban_userid");
         email = rslt->get_string("ban_email");
     }
