@@ -175,7 +175,7 @@ BOOST_AUTO_TEST_CASE(test_formula_function_trig)
 	map_formula_callable variables;
 
 	for(std::size_t x = 0; x <= 360; ++x) {
-		variables.add("x", variant(x));
+		variables.add("x", variant(static_cast<int>(x)));
 
 		BOOST_CHECK_EQUAL(
 			  formula("sin(x)")

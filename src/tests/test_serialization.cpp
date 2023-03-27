@@ -487,7 +487,7 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	std::string unicode = "ünicod€ check";
 	BOOST_CHECK( utf8::size(unicode) == 13 );
 
-	int euro = utf8::index(unicode,6);
+	int euro = static_cast<int>(utf8::index(unicode,6));
 	BOOST_CHECK( unicode.substr(euro,utf8::index(unicode,7)-euro) == "€" );
 
 	BOOST_CHECK( utf8::truncate(unicode,3) == "üni");

@@ -91,7 +91,7 @@ static void characterization_distance_direction (const std::vector<map_location>
 			std::cout << "(std::make_pair(" << distance_between(a,b) << ",\t\""
 				<< map_location::write_direction( a.get_relative_dir(b,mode)) << "\"))" << std::endl;
 #else
-			int expected_dist = *(int_it++);
+			int expected_dist = static_cast<int>(*(int_it++));
 			map_location::DIRECTION expected_dir = *(dir_it++);
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(a,b) );
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(b,a) );
