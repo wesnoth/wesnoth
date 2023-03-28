@@ -194,7 +194,7 @@ inline int rounded_division(int a, int b)
  */
 constexpr int32_t floating_to_fixed_point(double n)
 {
-	return int32_t(n * (1 << 8));
+	return static_cast<int32_t>(n * (1 << 8));
 }
 
 /**
