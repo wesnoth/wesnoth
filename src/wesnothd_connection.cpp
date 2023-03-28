@@ -174,7 +174,7 @@ void wesnothd_connection::handshake()
 	set_keepalive(preferences::keepalive_timeout());
 
 	static const uint32_t handshake = 0;
-	static const uint32_t tls_handshake = htonl(uint32_t(1));
+	static const uint32_t tls_handshake = htonl(static_cast<uint32_t>(1));
 
 	boost::asio::async_write(*utils::get<raw_socket>(socket_), boost::asio::buffer(use_tls_ ? reinterpret_cast<const char*>(&tls_handshake) : reinterpret_cast<const char*>(&handshake), 4),
 		[](const error_code& ec, std::size_t) { if(ec) { throw system_error(ec); } });

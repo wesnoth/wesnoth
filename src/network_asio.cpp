@@ -132,7 +132,7 @@ void connection::handle_connect(const boost::system::error_code& ec, endpoint en
 void connection::handshake()
 {
 	static const uint32_t handshake = 0;
-	static const uint32_t tls_handshake = htonl(uint32_t(1));
+	static const uint32_t tls_handshake = htonl(static_cast<uint32_t>(1));
 
 	boost::asio::async_write(
 		*utils::get<raw_socket>(socket_),
