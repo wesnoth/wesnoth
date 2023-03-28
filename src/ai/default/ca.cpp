@@ -1059,7 +1059,7 @@ void get_villages_phase::dispatch_complex(
 
 	// Test the special case, everybody can reach all villages
 	const bool reach_all = ((village_count == unit_count)
-		&& (std::accumulate(villages_per_unit.begin(), villages_per_unit.end(), std::size_t())
+		&& (std::accumulate(villages_per_unit.begin(), villages_per_unit.end(), 0UL)
 		== (village_count * unit_count)));
 
 	if(reach_all) {

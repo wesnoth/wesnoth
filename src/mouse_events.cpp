@@ -1323,7 +1323,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc, const map_locatio
 		defender = &*defender_it;
 	}
 
-	if(std::size_t(choice) >= bc_vector.size()) {
+	if(static_cast<std::size_t>(choice) >= bc_vector.size()) {
 		return;
 	}
 

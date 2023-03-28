@@ -103,7 +103,7 @@ int show_message_dialog(lua_State* L)
 		lua_getfield(L, 2, "default");
 		if(lua_isnumber(L, -1)) {
 			int i = static_cast<int>(lua_tointeger(L, -1));
-			if(i < 1 || std::size_t(i) > n) {
+			if(i < 1 || static_cast<std::size_t>(i) > n) {
 				std::ostringstream error;
 				error << "default= key in options list is not a valid option index (1-" << n << ")";
 				return luaL_argerror(L, 2, error.str().c_str());

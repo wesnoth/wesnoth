@@ -1666,7 +1666,7 @@ bool backstab_check(const map_location& attacker_loc,
 	}
 
 	// If sides aren't valid teams, then they are enemies.
-	if(std::size_t(defender->side() - 1) >= teams.size() || std::size_t(opp->side() - 1) >= teams.size()) {
+	if(static_cast<std::size_t>(defender->side() - 1) >= teams.size() || static_cast<std::size_t>(opp->side() - 1) >= teams.size()) {
 		return true;
 	}
 

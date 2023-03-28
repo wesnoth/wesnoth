@@ -101,7 +101,7 @@ static int impl_version_get(lua_State* L)
 	if(lua_isinteger(L, 2)) {
 		int n = static_cast<int>(lua_tointeger(L, 2)) - 1;
 		auto& components = vers.components();
-		if(n >= 0 && size_t(n) < components.size()) {
+		if(n >= 0 && static_cast<size_t>(n) < components.size()) {
 			lua_pushinteger(L, vers.components()[n]);
 		} else {
 			lua_pushnil(L);

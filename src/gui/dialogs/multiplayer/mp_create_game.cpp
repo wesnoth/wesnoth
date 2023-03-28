@@ -597,7 +597,7 @@ void mp_create_game::display_games_of_type(level_type::type type, const std::str
 		on_filter_change<text_box>("game_filter", false);
 
 		int level_index = create_engine_.find_level_by_id(level).second;
-		if(level_index >= 0 && std::size_t(level_index) < list.get_item_count()) {
+		if(level_index >= 0 && static_cast<std::size_t>(level_index) < list.get_item_count()) {
 			list.select_row(level_index);
 		}
 	}

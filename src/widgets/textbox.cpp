@@ -131,8 +131,8 @@ void textbox::set_selection(const int selstart, const int selend)
 	if (!editable_) {
 		return;
 	}
-	if (selstart < 0 || selend < 0 || std::size_t(selstart) > text_.size() ||
-		std::size_t(selend) > text_.size()) {
+	if (selstart < 0 || selend < 0 || static_cast<std::size_t>(selstart) > text_.size() ||
+		static_cast<std::size_t>(selend) > text_.size()) {
 		WRN_DP << "out-of-boundary selection";
 		return;
 	}
@@ -146,7 +146,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 	if (!editable_) {
 		return;
 	}
-	if (cursor_pos < 0 || std::size_t(cursor_pos) > text_.size()) {
+	if (cursor_pos < 0 || static_cast<std::size_t>(cursor_pos) > text_.size()) {
 		WRN_DP << "out-of-boundary selection";
 		return;
 	}
@@ -210,7 +210,7 @@ void textbox::draw_contents()
 
 			while(starty <= endy) {
 				const std::size_t right = starty == endy ? endx : text_image_.w();
-				if(right <= std::size_t(startx)) {
+				if(right <= static_cast<std::size_t>(startx)) {
 					break;
 				}
 
@@ -576,8 +576,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			{
 				if(is_selection())
 				{
-					const std::size_t beg = std::min<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
-					const std::size_t end = std::max<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
+					const std::size_t beg = std::min<std::size_t>(static_cast<std::size_t>(selstart_),static_cast<std::size_t>(selend_));
+					const std::size_t end = std::max<std::size_t>(static_cast<std::size_t>(selstart_),static_cast<std::size_t>(selend_));
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
@@ -590,8 +590,8 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			{
 				if(is_selection())
 				{
-					const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
-					const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
+					const size_t beg = std::min<size_t>(static_cast<std::size_t>(selstart_),static_cast<std::size_t>(selend_));
+					const size_t end = std::max<size_t>(static_cast<std::size_t>(selstart_),static_cast<std::size_t>(selend_));
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
@@ -631,7 +631,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
-	if(is_selection() && !(std::size_t(selstart_) <= text_.size() && std::size_t(selend_) <= text_.size())) {
+	if(is_selection() && !(static_cast<std::size_t>(selstart_) <= text_.size() && static_cast<std::size_t>(selend_) <= text_.size())) {
 		WRN_DP << "out-of-boundary selection";
 		selstart_ = selend_ = -1;
 	}

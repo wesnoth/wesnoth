@@ -1843,7 +1843,7 @@ void console_handler::do_choose_level()
 		return;
 	}
 
-	if(std::size_t(choice) < options.size()) {
+	if(static_cast<std::size_t>(choice) < options.size()) {
 		synced_context::run_and_throw("debug_next_level", config {"next_level", options[choice]});
 	}
 }

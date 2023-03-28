@@ -414,7 +414,7 @@ void menu::set_max_width(const int new_max_width)
 std::size_t menu::max_items_onscreen() const
 {
 	if(max_items_ != -1) {
-		return std::size_t(max_items_);
+		return static_cast<std::size_t>(max_items_);
 	}
 
 	const std::size_t max_height = (
@@ -1055,7 +1055,7 @@ std::size_t menu::heading_height() const
 std::size_t menu::get_item_height(int) const
 {
 	if(item_height_ != -1)
-		return std::size_t(item_height_);
+		return static_cast<std::size_t>(item_height_);
 
 	std::size_t max_height = 0;
 	for(std::size_t n = 0; n != items_.size(); ++n) {

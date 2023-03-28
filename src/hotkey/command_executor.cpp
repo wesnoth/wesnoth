@@ -425,7 +425,7 @@ void command_executor::show_menu(const std::vector<config>& items_arg, int xloc,
 			res = mmenu.selected_item();
 		}
 	} // This will kill the dialog.
-	if (res < 0 || std::size_t(res) >= items.size()) return;
+	if (res < 0 || static_cast<std::size_t>(res) >= items.size()) return;
 
 	const theme::menu* submenu = gui.get_theme().get_menu_item(items[res]["id"]);
 	if (submenu) {

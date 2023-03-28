@@ -83,7 +83,7 @@ public:
 
 	std::string get_data_paged(int which_page)
 	{
-		if(std::size_t(which_page) >= pages.size()) {
+		if(static_cast<std::size_t>(which_page) >= pages.size()) {
 			return "";
 		}
 		return data.substr(pages[which_page].first, pages[which_page].second);

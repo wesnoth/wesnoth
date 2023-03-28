@@ -321,7 +321,7 @@ template<class SocketPtr> void server_base::coro_send_doc(SocketPtr socket, simp
 
 		std::vector<boost::asio::const_buffer> buffers {
 			{ data_size.buf, 4 },
-			{ s.begin(), std::size_t(s.size()) }
+			{ s.begin(), static_cast<std::size_t>(s.size()) }
 		};
 
 		boost::system::error_code ec;
@@ -340,7 +340,7 @@ template void server_base::coro_send_doc<tls_socket_ptr>(tls_socket_ptr socket, 
 
 template<class SocketPtr> void coro_send_file_userspace(SocketPtr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	std::size_t filesize { static_cast<std::size_t>(filesystem::file_size(filename)) };
 	union DataSize
 	{
 		uint32_t size;
@@ -379,7 +379,7 @@ void server_base::coro_send_file(tls_socket_ptr socket, const std::string& filen
 
 void server_base::coro_send_file(socket_ptr socket, const std::string& filename, boost::asio::yield_context yield)
 {
-	std::size_t filesize { std::size_t(filesystem::file_size(filename)) };
+	std::size_t filesize { static_cast<std::size_t>(filesystem::file_size(filename)) };
 	int in_file { open(filename.c_str(), O_RDONLY) };
 	ON_SCOPE_EXIT(in_file) { close(in_file); };
 	off_t offset { 0 };

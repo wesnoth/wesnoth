@@ -314,7 +314,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 		if(island_size != 0) {
 			const std::size_t diffx = std::abs(x1 - static_cast<int>(center_x));
 			const std::size_t diffy = std::abs(y1 - static_cast<int>(center_y));
-			const std::size_t dist = std::size_t(std::sqrt(static_cast<double>(diffx*diffx + diffy*diffy)));
+			const std::size_t dist = static_cast<std::size_t>(std::sqrt(static_cast<double>(diffx*diffx + diffy*diffy)));
 			is_valley = dist > island_size;
 		}
 
@@ -350,8 +350,8 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 
 	// Find the highest and lowest points on the map for normalization:
 	int highest = 0, lowest = 100000, x;
-	for(x = 0; std::size_t(x) != res.size(); ++x) {
-		for(int y = 0; std::size_t(y) != res[x].size(); ++y) {
+	for(x = 0; static_cast<std::size_t>(x) != res.size(); ++x) {
+		for(int y = 0; static_cast<std::size_t>(y) != res[x].size(); ++y) {
 			if(res[x][y] > highest) {
 				highest = res[x][y];
 			}
@@ -367,8 +367,8 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 		<< " highest =" << highest;
 	// Normalize the heights to the range 0-1000:
 	highest -= lowest;
-	for(x = 0; std::size_t(x) != res.size(); ++x) {
-		for(int y = 0; std::size_t(y) != res[x].size(); ++y) {
+	for(x = 0; static_cast<std::size_t>(x) != res.size(); ++x) {
+		for(int y = 0; static_cast<std::size_t>(y) != res[x].size(); ++y) {
 			res[x][y] -= lowest;
 			res[x][y] *= 1000;
 			if(highest != 0) {
@@ -1106,7 +1106,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 				if(direction != -1) {
 					const std::vector<std::string> items = utils::split(convert_to_bridge);
-					if(std::size_t(direction) < items.size() && !items[direction].empty()) {
+					if(static_cast<std::size_t>(direction) < items.size() && !items[direction].empty()) {
 						terrain[x][y] = t_translation::read_terrain_code(items[direction]);
 					}
 

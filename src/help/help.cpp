@@ -220,8 +220,8 @@ void show_with_toplevel(const section &toplevel_sec,
 	// needed to create the help topics
 	unit_types.build_all(unit_type::HELP_INDEXED);
 
-	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
-		preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||
+	if (preferences::encountered_units().size() != static_cast<size_t>(last_num_encountered_units) ||
+		preferences::encountered_terrains().size() != static_cast<size_t>(last_num_encountered_terrains) ||
 		last_debug_state != game_config::debug ||
 		last_num_encountered_units < 0)
 	{
