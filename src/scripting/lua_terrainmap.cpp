@@ -551,7 +551,7 @@ int intf_replace_if_failed(lua_State* L)
 	}
 
 	lua_newuserdatauv(L, 0, 2);
-	lua_pushinteger(L, int(mode));
+	lua_pushinteger(L, static_cast<int>(mode));
 	lua_setiuservalue(L, -2, replace_if_failed_idx::MODE);
 	lua_pushvalue(L, 1);
 	lua_setiuservalue(L, -2, replace_if_failed_idx::CODE);

@@ -185,14 +185,14 @@ private:
 
 	void set_attr_changed(UNIT_ATTRIBUTE attr)
 	{
-		changed_attributes_[int(attr)] = true;
+		changed_attributes_[static_cast<int>(attr)] = true;
 	}
 
 	bool get_attacks_changed() const;
 
 	bool get_attr_changed(UNIT_ATTRIBUTE attr) const
 	{
-		return changed_attributes_[int(attr)];
+		return changed_attributes_[static_cast<int>(attr)];
 	}
 
 	void clear_changed_attributes();

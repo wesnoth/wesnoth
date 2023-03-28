@@ -1261,8 +1261,8 @@ void display::drawing_buffer_add(const drawing_layer layer, const map_location& 
 	const rect dest {
 		get_location_x(loc),
 		get_location_y(loc),
-		int(zoom_),
-		int(zoom_)
+		static_cast<int>(zoom_),
+		static_cast<int>(zoom_)
 	};
 
 	// C++20 needed for in-place aggregate initilization
@@ -1740,10 +1740,10 @@ void display::draw_minimap_units()
 		double u_h = yscaling;
 
 		SDL_Rect r {
-				  minimap_location_.x + int(std::round(u_x))
-				, minimap_location_.y + int(std::round(u_y))
-				, int(std::round(u_w))
-				, int(std::round(u_h))
+				  minimap_location_.x + static_cast<int>(std::round(u_x))
+				, minimap_location_.y + static_cast<int>(std::round(u_y))
+				, static_cast<int>(std::round(u_w))
+				, static_cast<int>(std::round(u_h))
 		};
 
 		draw::fill(r, col.r, col.g, col.b, col.a);

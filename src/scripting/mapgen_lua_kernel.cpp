@@ -150,8 +150,8 @@ static int intf_default_generate_height_map(lua_State *L)
 	default_map_generator_job job(seed);
 	default_map_generator_job::height_map res = job.generate_height_map(width, height, iterations, hill_size, island_size, center_x, center_y);
 	lua_createtable (L, width * height, 0);
-	assert(int(res.size()) == width);
-	assert((width == 0 || int(res[0].size()) == height));
+	assert(static_cast<int>(res.size()) == width);
+	assert((width == 0 || static_cast<int>(res[0].size()) == height));
 	std::hash<map_location> loc_hash;
 	for(int x = 0; x != width; ++x) {
 		for(int y = 0; y != height; ++y) {

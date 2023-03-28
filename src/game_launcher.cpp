@@ -550,7 +550,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 			break;
 		}
 
-		PLAIN_LOG << describe_result << " (" << int(ret) << "): " << scenario;
+		PLAIN_LOG << describe_result << " (" << static_cast<int>(ret) << "): " << scenario;
 		if(ret != unit_test_result::TEST_PASS) {
 			break;
 		}

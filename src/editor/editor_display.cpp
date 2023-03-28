@@ -124,7 +124,7 @@ void editor_display::layout()
 	}
 
 	if (dc_->teams().empty()) {
-		text = int(get_map().villages().size());
+		text = static_cast<int>(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {
 		refresh_report("villages");

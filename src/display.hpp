@@ -256,13 +256,13 @@ public:
 	static rect scaled_to_zoom(const SDL_Rect& r)
 	{
 		const double zf = get_zoom_factor();
-		return {r.x, r.y, int(r.w * zf), int(r.h * zf)};
+		return {r.x, r.y, static_cast<int>(r.w * zf), static_cast<int>(r.h * zf)};
 	}
 
 	static point scaled_to_zoom(const point& p)
 	{
 		const double zf = get_zoom_factor();
-		return {int(p.x * zf), int(p.y * zf)};
+		return {static_cast<int>(p.x * zf), static_cast<int>(p.y * zf)};
 	}
 
 	/**

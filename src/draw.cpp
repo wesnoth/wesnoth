@@ -205,7 +205,7 @@ void draw::circle(int cx, int cy, int r, const color_t& c, uint8_t octants)
 void draw::circle(int cx, int cy, int r, uint8_t octants)
 {
 	DBG_D << "circle (" << cx << ',' << cy
-	      << ") -> " << r << ", oct " << int(octants);
+	      << ") -> " << r << ", oct " << static_cast<int>(octants);
 
 	// Algorithm based on
 	// http://de.wikipedia.org/wiki/Rasterung_von_Kreisen#Methode_von_Horn
@@ -247,7 +247,7 @@ void draw::disc(int cx, int cy, int r, const color_t& c, uint8_t octants)
 void draw::disc(int cx, int cy, int r, uint8_t octants)
 {
 	DBG_D << "disc (" << cx << ',' << cy
-	      << ") -> " << r << ", oct " << int(octants);
+	      << ") -> " << r << ", oct " << static_cast<int>(octants);
 
 	int d = -r;
 	int x = r;

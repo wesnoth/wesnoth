@@ -221,7 +221,7 @@ void textbox::draw_contents()
 
 				draw::fill(r, 0, 0, 160, 140);
 
-				starty += int(line_height_);
+				starty += static_cast<int>(line_height_);
 				startx = 0;
 			}
 		}

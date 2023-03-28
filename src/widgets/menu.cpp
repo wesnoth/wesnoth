@@ -100,11 +100,11 @@ bool menu::basic_sorter::less(int column, const item& row1, const item& row2) co
 		return row1.id < row2.id;
 	}
 
-	if(column < 0 || column >= int(row2.fields.size())) {
+	if(column < 0 || column >= static_cast<int>(row2.fields.size())) {
 		return false;
 	}
 
-	if(column >= int(row1.fields.size())) {
+	if(column >= static_cast<int>(row1.fields.size())) {
 		return true;
 	}
 
@@ -240,7 +240,7 @@ void menu::do_sort()
 
 	recalculate_pos();
 
-	if(selectid >= 0 && selectid < int(item_pos_.size())) {
+	if(selectid >= 0 && selectid < static_cast<int>(item_pos_.size())) {
 		move_selection_to(selectid, true, NO_MOVE_VIEWPORT);
 	}
 
@@ -315,8 +315,8 @@ void menu::set_inner_location(const SDL_Rect& /*rect*/)
 
 void menu::change_item(int pos1, int pos2,const std::string& str)
 {
-	if(pos1 < 0 || pos1 >= int(item_pos_.size()) ||
-		pos2 < 0 || pos2 >= int(items_[item_pos_[pos1]].fields.size())) {
+	if(pos1 < 0 || pos1 >= static_cast<int>(item_pos_.size()) ||
+		pos2 < 0 || pos2 >= static_cast<int>(items_[item_pos_[pos1]].fields.size())) {
 		return;
 	}
 
@@ -869,9 +869,9 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 		if(type == HEADING_ROW) {
 			rect draw_rect {xpos, loc.y, widths[i], loc.h };
 
-			if(highlight_heading_ == int(i)) {
+			if(highlight_heading_ == static_cast<int>(i)) {
 				draw::fill(draw_rect, {255,255,255,77});
-			} else if(sortby_ == int(i)) {
+			} else if(sortby_ == static_cast<int>(i)) {
 				draw::fill(draw_rect, {255,255,255,26});
 			}
 		}
@@ -896,7 +896,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 					const std::size_t y = loc.y + (loc.h - img_h)/2;
 					const std::size_t w = img_w + 5;
 					const std::size_t x = xpos + ((lang_rtl) ? widths[i] - w : 0);
-					draw::blit(img, {int(x), int(y), img_w, img_h});
+					draw::blit(img, {static_cast<int>(x), static_cast<int>(y), img_w, img_h});
 					if(!lang_rtl)
 						xpos += w;
 					column.w -= w;
@@ -913,7 +913,7 @@ void menu::draw_row(const std::size_t row_index, const SDL_Rect& loc, ROW_TYPE t
 				font::pango_draw_text(true, text_loc, static_cast<int>(style_->get_font_size()), font::NORMAL_COLOR, str,
 					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
-				if(type == HEADING_ROW && sortby_ == int(i)) {
+				if(type == HEADING_ROW && sortby_ == static_cast<int>(i)) {
 					const texture sort_tex(image::get_texture(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
 					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)"));
 					if(sort_tex && sort_tex.w() <= widths[i] && sort_tex.h() <= loc.h) {
@@ -1046,7 +1046,7 @@ std::size_t menu::get_item_height_internal(const std::vector<std::string>& item)
 std::size_t menu::heading_height() const
 {
 	if(heading_height_ == -1) {
-		heading_height_ = int(get_item_height_internal(heading_));
+		heading_height_ = static_cast<int>(get_item_height_internal(heading_));
 	}
 
 	return std::min<unsigned int>(heading_height_,max_height_);

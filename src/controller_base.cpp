@@ -368,8 +368,8 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 		dx += scroll_carry_x_;
 		dy += scroll_carry_y_;
 	}
-	int dx_int = int(dx);
-	int dy_int = int(dy);
+	int dx_int = static_cast<int>(dx);
+	int dy_int = static_cast<int>(dy);
 	scroll_carry_x_ = dx - double(dx_int);
 	scroll_carry_y_ = dy - double(dy_int);
 

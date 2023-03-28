@@ -185,7 +185,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 
 	if(is_deprecated()) {
 		writer.open_child("deprecated");
-		writer.write_key_val("level", int(*deprecation_level));
+		writer.write_key_val("level", static_cast<int>(*deprecation_level));
 		writer.write_key_val("version", deprecation_version.str());
 		writer.write_key_val("message", deprecation_message);
 		writer.close_child("deprecated");

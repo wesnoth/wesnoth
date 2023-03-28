@@ -237,7 +237,7 @@ WIDGET_GETTER("selected_index", int, gui2::selectable_item)
 
 WIDGET_SETTER("selected_index", int, gui2::selectable_item)
 {
-	if(value > int(w.num_states())) {
+	if(value > static_cast<int>(w.num_states())) {
 		throw std::invalid_argument("invalid index");
 	}
 	w.set_value(value - 1);

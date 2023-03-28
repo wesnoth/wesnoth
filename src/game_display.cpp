@@ -600,7 +600,7 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	}
 
 	font::floating_label flabel(text);
-	flabel.set_font_size(int(font::SIZE_FLOAT_LABEL * get_zoom_factor()));
+	flabel.set_font_size(static_cast<int>(font::SIZE_FLOAT_LABEL * get_zoom_factor()));
 	flabel.set_color(color);
 	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
 	flabel.set_move(0, -0.1 * turbo_speed() * get_zoom_factor());

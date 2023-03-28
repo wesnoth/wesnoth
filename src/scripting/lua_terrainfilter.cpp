@@ -92,7 +92,7 @@ namespace {
 		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](string_view part){
 			auto pair = parse_single_range(part);
 			int m = std::max(pair.first, pair.second);
-			if(m >= int(res.size())) {
+			if(m >= static_cast<int>(res.size())) {
 				res.resize(m + 1);
 				for(int i = pair.first; i <= pair.second; ++i) {
 					res[i] = true;
@@ -314,7 +314,7 @@ public:
 		int cache_size = 2 * m.total_width() * m.total_height();
 		int loc_index = 2 * (l.wml_x() + l.wml_y() * m.total_width());
 
-		if(int(cache_.size()) != cache_size) {
+		if(static_cast<int>(cache_.size()) != cache_size) {
 			cache_ = dynamic_bitset(cache_size);
 		}
 		if(cache_[loc_index]) {
@@ -347,7 +347,7 @@ public:
 	{
 		LOG_MATCHES(x);
 		const auto value = l.wml_x();
-		return value >= 0 && value < int(filter_.size()) && filter_[value];
+		return value >= 0 && value < static_cast<int>(filter_.size()) && filter_[value];
 	}
 	dynamic_bitset filter_;
 };
@@ -368,7 +368,7 @@ public:
 	{
 		LOG_MATCHES(y);
 		const auto value = l.wml_y();
-		return value >= 0 && value < int(filter_.size()) && filter_[value];
+		return value >= 0 && value < static_cast<int>(filter_.size()) && filter_[value];
 	}
 
 	dynamic_bitset filter_;
@@ -454,7 +454,7 @@ public:
 				++count;
 			}
 		}
-		return int(accepted_counts_.size()) > count && accepted_counts_[count];
+		return static_cast<int>(accepted_counts_.size()) > count && accepted_counts_[count];
 	}
 	offset_list_t even_offsets_;
 	offset_list_t odd_offsets_;

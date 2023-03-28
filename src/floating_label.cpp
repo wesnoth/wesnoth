@@ -85,7 +85,7 @@ void floating_label::move(double xmove, double ymove)
 
 int floating_label::xpos(std::size_t width) const
 {
-	int xpos = int(xpos_);
+	int xpos = static_cast<int>(xpos_);
 	if(align_ == font::CENTER_ALIGN) {
 		xpos -= width / 2;
 	} else if(align_ == font::RIGHT_ALIGN) {
