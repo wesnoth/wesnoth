@@ -830,11 +830,9 @@ listbox& preferences_dialog::setup_hotkey_list()
 	// Filter options
 	//
 
-	const auto& cat_names = hotkey::get_category_names();
 	std::vector<config> filter_ops;
-
 	for(const hotkey::HOTKEY_CATEGORY& cat : visible_categories_) {
-		filter_ops.emplace_back("label", t_string{cat_names.at(cat), "wesnoth-lib"}, "checkbox", false);
+		filter_ops.emplace_back("label", hotkey::get_translatable_category_name(cat), "checkbox", false);
 	}
 
 	find_widget<multimenu_button>(this, "hotkey_category_menu", false).set_values(filter_ops);

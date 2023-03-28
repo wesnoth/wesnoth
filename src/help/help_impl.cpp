@@ -1623,7 +1623,7 @@ bool is_valid_id(const std::string &id) {
 unsigned image_width(const std::string &filename)
 {
 	image::locator loc(filename);
-	surface surf(image::get_image(loc));
+	surface surf(image::get_surface(loc));
 	if (surf != nullptr) {
 		return surf->w;
 	}

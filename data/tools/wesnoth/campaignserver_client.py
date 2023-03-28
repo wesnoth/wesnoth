@@ -303,6 +303,8 @@ class CampaignClient:
         return data2
 
     def decode_WML(self, data):
+        if data is None:
+            return None
         p = wmlparser.Parser()
         p.parse_binary(data)
         return p.root
@@ -341,6 +343,8 @@ class CampaignClient:
             passphrase = passphrase)
 
         self.send_packet(self.make_packet(request))
+
+        # if a missing add-on is specified read_packet returns None
         return self.decode(self.read_packet())
 
     def change_passphrase(self, name, old, new):

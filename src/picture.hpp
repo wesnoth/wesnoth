@@ -239,16 +239,6 @@ enum TYPE
 enum class scale_quality { nearest, linear };
 
 /**
- * [DEPRECATED] Caches and returns an image.
- *
- * This function is deprecated. Use get_texture or get_surface in stead.
- *
- * @param i_locator            Image path.
- * @param type                 Rendering format.
- */
-surface get_image(const locator& i_locator, TYPE type = UNSCALED);
-
-/**
  * Returns an image surface suitable for software manipulation.
  *
  * The equivalent get_texture() function should generally be preferred.

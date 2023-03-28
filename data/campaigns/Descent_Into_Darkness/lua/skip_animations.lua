@@ -6,7 +6,8 @@
 local skippable_actions = {
 	"animate_unit",
 	"sound",
-	"delay"
+	"delay",
+	"screen_fade"
 }
 
 local skip_actions = {}

@@ -18,14 +18,14 @@
  * Routines to set up the display, scroll and zoom the map.
  */
 
+#include "display.hpp"
+
 #include "arrow.hpp"
 #include "color.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
-#include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"

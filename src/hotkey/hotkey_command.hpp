@@ -217,13 +217,8 @@ enum HOTKEY_CATEGORY {
 	HKCAT_PLACEHOLDER // Keep this one last
 };
 
-/**
- * Returns the map of hotkey categories and their display names.
- *
- * These aren't translated and need be converted to a t_string before
- * being displayed to the player.
- */
-const std::map<HOTKEY_CATEGORY, std::string>& get_category_names();
+/** Gets the display name for a given hotkey category. */
+t_string get_translatable_category_name(HOTKEY_CATEGORY category);
 
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 
@@ -325,6 +320,10 @@ public:
 	/** Don't allow copying so objects don't get erased early. */
 	wml_hotkey_record(const wml_hotkey_record&) = delete;
 	const wml_hotkey_record& operator=(const wml_hotkey_record&) = delete;
+
+	/** But we *do* want move semantics. */
+	wml_hotkey_record(wml_hotkey_record&&) = default;
+	wml_hotkey_record& operator=(wml_hotkey_record&&) = default;
 
 	/** Registers a hotkey_command for a WML hotkey with the given ID if one does not already exist. */
 	wml_hotkey_record(const std::string& id, const t_string& description, const config& default_hotkey);

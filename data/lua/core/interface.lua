@@ -72,7 +72,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	end, 'You also need to call wesnoth.game_events.add_menu')
 	wesnoth.clear_menu_item = wesnoth.interface.clear_menu_item
 	-- Event handlers don't have a separate module Lua file so dump those here
-	wesnoth.add_event_handler = wesnoth.deprecate_api('wesnoth.add_event_hander', 'wesnoth.game_events.add_wml', 1, nil, function(cfg) wesnoth.wml_actions.event(cfg) end)
+	wesnoth.add_event_handler = wesnoth.deprecate_api('wesnoth.add_event_handler', 'wesnoth.game_events.add_wml', 1, nil, function(cfg) wesnoth.wml_actions.event(cfg) end)
 	wesnoth.remove_event_handler = wesnoth.deprecate_api('wesnoth.remove_event_handler', 'wesnoth.game_events.remove', 1, nil, wesnoth.game_events.remove)
 
 	local function old_fire_event(fcn)

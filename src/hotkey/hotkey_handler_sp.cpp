@@ -275,7 +275,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 			return !is_observer();
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
 		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
-			return whiteboard_manager_->can_enable_execution_hotkeys();
+			return whiteboard_manager_->can_enable_execution_hotkeys() && !events::commands_disabled && !browse();
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
 			return whiteboard_manager_->can_enable_modifier_hotkeys();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
@@ -315,7 +315,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 			gui2::show_error_message(msg);
 		} else {
 			const int res = gui2::show_message("", msg + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
-			if(res == gui2::retval::CANCEL) {
+			if(res != gui2::retval::CANCEL) {
 				play_controller::hotkey_handler::load_autosave(filename);
 			}
 		}
@@ -325,18 +325,22 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	std::string error_log;
 	savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
 
-	if(!error_log.empty() || savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
+	if(!error_log.empty()) {
 		invalid_save_file(_("The file you have tried to load is corrupt: '") + error_log);
 		return;
 	}
+	if(savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
+		invalid_save_file(_("The file you have tried to load has no replay information. "));
+		return;
+	}
 	if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))) {
-		invalid_save_file(_("The file you have tried to load is not from the current session"));
+		invalid_save_file(_("The file you have tried to load is not from the current session."));
 		return;
 	}
 
 	std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
 	std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
-	throw reset_gamestate_exception(res, stats, true);
+	throw reset_gamestate_exception(res, stats, false);
 }
 
 void playsingle_controller::hotkey_handler::replay_exit()

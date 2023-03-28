@@ -8,13 +8,13 @@
 # Guillaume Pascal <guillaume.pascal43@laposte.net>, 2011.
 #  Mathieu Guilbaud <mathieu@guim.info>, 2019.
 # Syll <syll-dev@laposte.net>, 2019.
-# alberic89 <alberic89@gmx.com>, 2022.
+# alberic89 <alberic89@gmx.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.16.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-19 02:33 UTC\n"
-"PO-Revision-Date: 2022-11-20 16:28+0100\n"
+"PO-Revision-Date: 2023-03-20 13:45+0100\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -2764,21 +2764,27 @@ msgstr ""
 #, fuzzy
 #| msgid "Dwarvish Fighter"
 msgid "Dwarvish Miner"
-msgstr "Combattant nain"
+msgstr "Mineur nain"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:17
+#, fuzzy
 msgid ""
 "Dwarvish miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
+"Les mineurs nains sont les petites mains de la société naine. Ils arrachent "
+"à la terre le précieux minerai sans jamais prendre part à la fabrication des "
+"armes ou des artefacts. Ils n'ont pas d'entrainement militaire, mais peuvent "
+"causer quelques dommages avec leur pic."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:22
+#, fuzzy
 msgid "pick"
-msgstr ""
+msgstr "pic"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
@@ -4483,16 +4489,12 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Javelineer.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Compared to other loyalists, Halberdiers have a higher resistance to "
-#| "‘pierce’ attacks."
 msgid ""
 "Compared to other loyalists, Javelineers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
-"Comparativement aux autres loyalistes, les hallebardiers possèdent une "
-"meilleure résistance aux attaques perçantes."
+"Comparés aux autres loyalistes, les javelinistes possèdent une meilleure "
+"résistance aux attaques perçantes."
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -5971,17 +5973,18 @@ msgstr "feu"
 #, fuzzy
 #| msgid "Fire Ant"
 msgid "Firebane Ant"
-msgstr "Fourmi de feu"
+msgstr "Fourmi balle-de-feu"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
 #, fuzzy
 #| msgid "Fire Ant"
 msgid "Firebomb Ant"
-msgstr "Fourmi de feu"
+msgstr "Fourmi bombe-de-feu"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:51
+#, fuzzy
 msgid ""
 "More developed and specialized Fire Ants can take different forms. The "
 "firebomb ants can produce and carry large quantities of their flammable "
@@ -5989,21 +5992,23 @@ msgid ""
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
 msgstr ""
+"Les fourmis peuvent se spécialiser et évoluer sous différentes formes. Les "
+"fourmis bombes-de-feu peuvent produire et transporter de grandes quantités "
+"de fluide inflammable dans leur abdomen gonflé, ce qui rend leur attaque "
+"très dangereuse ; mais elles sont vulnérables aux attaques au corps-à-corps "
+"et ne peuvent pas contenir le feu lorsque leur carapace est endommagée."
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
 #, fuzzy
 #| msgid "Fire Ant"
 msgid "Soldier Ant"
-msgstr "Fourmi de feu"
+msgstr "Fourmi soldat"
 
+# À compléter
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
 #, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. Though normally not hostile, "
-#| "they can bite at close range."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Most common are the nondescript workers "
@@ -6011,9 +6016,7 @@ msgid ""
 "the fray."
 msgstr ""
 "Les fourmis géantes sont présentes un peu partout, dans les grottes des "
-"profondeurs de la terre comme au sommet des grandes montagnes. Bien qu'elles "
-"ne soient normalement pas hostiles, elles peuvent mordre un homme qui "
-"s'approche trop près."
+"profondeurs de la terre comme au sommet des grandes montagnes. [...]"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
@@ -6081,10 +6084,11 @@ msgstr ""
 #, fuzzy
 #| msgid "Muharib"
 msgid "Caribe"
-msgstr "Muharib"
+msgstr "Caribe"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
+#, fuzzy
 msgid ""
 "The giant caribe are seldom encountered in the inland rivers near Weldyn, "
 "but tales of their ferocious attacks have spread far and wide. Their angry "
@@ -6093,30 +6097,47 @@ msgid ""
 "use to extricate themselves from situations dire to most other fish. These "
 "fish are unusually clever and should not be underestimated."
 msgstr ""
+"Les caribes géants sont rarement rencontrés dans les rivières intérieures "
+"près de Weldyn, mais les récits de leurs attaques féroces se sont répandus "
+"loin à la ronde. Leurs yeux rouges de colère sont incrustés dans leur visage "
+"cuirassé. Bien que leurs dents soient une arme dangereuse, ils possèdent de "
+"petits membres osseux et des griffes, qu'ils peuvent utiliser pour se sortir "
+"de situations périlleuses pour la plupart des autres poissons. Ces poissons "
+"sont exceptionnellement intelligents et ne doivent pas être sous-estimés."
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:8
+#, fuzzy
 msgid "Hunter Caribe"
-msgstr ""
+msgstr "Caribe chasseur"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
+#, fuzzy
 msgid ""
 "As they age, the giant caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
+"En vieillissant, les caribes géants deviennent plus gros et plus dangereux. "
+"Ils apprennent également à utiliser des algues pour piéger leurs proies ou "
+"leurs ennemis."
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:8
+#, fuzzy
 msgid "Nibbler"
-msgstr ""
+msgstr "Piraya"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:41
+#, fuzzy
 msgid ""
 "Nibblers are juvenile predator fish, often more curious than dangerous. A "
 "single individual may not be a threat, but these fish seldom travel alone."
 msgstr ""
+"Les pirayas sont de jeunes poissons prédateurs, souvent plus curieux que "
+"dangereux. Un seul animal ne constitue pas nécessairement une menace, mais "
+"ces poissons voyagent rarement seuls."
 
 # Bien que nommés « Swamp Lizard », ce ne sont pas des lézards et ils peuvent marcher sur deux pattes.
 # On laisse « Lézards » en attendant le jour où le concept est clair.
@@ -6213,12 +6234,13 @@ msgstr "encre"
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:5
 #, fuzzy
-#| msgid "Dragoon"
 msgid "Dragonfly"
-msgstr "Dragon"
+msgstr "Vol-de-dragon"
 
+# 'giant dragonfly' = vol-de-dragon, donc on n'a pas besoin du 'géant'
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:27
+#, fuzzy
 msgid ""
 "The giant dragonflies seen in some of the swamps, rivers, and lakes around "
 "Wesnoth enjoy a longer life cycle than the smaller, more common types. The "
@@ -6226,18 +6248,26 @@ msgid ""
 "generally territorial, but can cooperate in small groups to confront common "
 "foes or large prey."
 msgstr ""
+"Les vols-de-dragon que l'on trouve dans certains marais, rivières et lacs de "
+"Wesnoth ont un cycle de vie plus long que les libellules courantes, plus "
+"petites. Sous leur forme adulte, ils peuvent vivre indéfiniment, grandissant "
+"lentement jusqu'à la mue finale. Ils sont généralement territoriaux, mais "
+"peuvent se rassembler en petits groupes pour affronter des ennemis communs "
+"ou de grosses proies."
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:5
 #, fuzzy
-#| msgid "Dragoon"
 msgid "Grand Dragonfly"
-msgstr "Dragon"
+msgstr "Grand vol-de-dragon"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:28
+#, fuzzy
 msgid "Dragonflies that survive long enough grow into a final, grander form."
 msgstr ""
+"Les vols-de-dragon qui survivent suffisamment longtemps se développent pour "
+"atteindre une forme finale plus grandiose."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Dragonfly_Grand.cfg:43
@@ -6248,17 +6278,25 @@ msgstr "dard"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
+#, fuzzy
 msgid "Dragonfly Naiad"
-msgstr ""
+msgstr "Naïade vol-de-dragon"
 
+# 'giant dragonfly' = vol-de-dragon, donc on n'a pas besoin du 'géant'
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
+#, fuzzy
 msgid ""
 "Young dragonflies live an aquatic life, mostly preying upon small fish or "
 "other insect nymphs. They can crawl over rocks and mud, but they need to "
 "stay submerged to breathe, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
+"Les jeunes naïades vols-de-dragon mènent une vie aquatique, s'attaquant "
+"principalement à de petits poissons ou à d'autres nymphes d'insectes. Elles "
+"peuvent ramper sur les rochers et la boue, mais elles ont besoin de rester "
+"immergées pour respirer, ce qui explique pourquoi les vols-de-dragon ne se "
+"trouvent généralement qu'à proximité des rivières, des lacs et des criques."
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
@@ -6767,8 +6805,9 @@ msgstr "foudre du désert"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
+#, fuzzy
 msgid "Kraken"
-msgstr ""
+msgstr "Kraken"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
@@ -6783,10 +6822,10 @@ msgid ""
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"Les calamars sont de gigantesques créatures des mers qui peuvent saisir "
-"leurs adversaires avec leurs puissants tentacules ou cracher à distance une "
-"encre noire toxique. La meilleure manière de survivre à une rencontre avec "
-"ces monstres est de rester sur terre."
+"Les krakens sont de gigantesques créatures des mers qui peuvent saisir leurs "
+"adversaires avec leurs puissants tentacules ou cracher à distance une encre "
+"noire toxique. La meilleure manière de survivre à une rencontre avec ces "
+"monstres est de rester sur la terre ferme."
 
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
@@ -6875,10 +6914,11 @@ msgstr "giclée"
 #, fuzzy
 #| msgid "Sand Scuttler"
 msgid "Sand Scamperer"
-msgstr "Scorpion des dunes"
+msgstr "Fouineur des dunes"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:16
+#, fuzzy
 msgid ""
 "This impressive creature swiftly moves through the scorching desert sand. "
 "Its body is covered in a thick, sand-colored exoskeleton absorbing any "
@@ -6886,6 +6926,12 @@ msgid ""
 "energy, making fire and magic-based attacks the most effective way to take "
 "this venomous critter down."
 msgstr ""
+"Cette créature impressionnante se déplace rapidement dans le sable brûlant "
+"du désert. Son corps est recouvert d'un épais exosquelette couleur sable qui "
+"absorbe tous les chocs. Cependant, il est également hautement inflammable et "
+"vulnérable à l'énergie des arcanes, si bien que les attaques basées sur le "
+"feu et la magie constituent le moyen le plus efficace d'abattre cette "
+"créature venimeuse."
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -7989,7 +8035,7 @@ msgstr ""
 #, fuzzy
 #| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "Flanqueuse saurienne"
+msgstr "Javeliniste saurienne"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:19
@@ -8070,7 +8116,7 @@ msgstr ""
 #, fuzzy
 #| msgid "female^Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
-msgstr "Tirailleuse saurienne"
+msgstr "Porte-lance saurienne"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
@@ -8375,7 +8421,7 @@ msgstr "Scorpion"
 #, fuzzy
 #| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
-msgstr "Araignée"
+msgstr "Scorpion des dunes"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:321
@@ -8638,7 +8684,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Goblin Knight"
 msgid "Bone Knight"
-msgstr "Chevalier gobelin"
+msgstr "Saqued'os"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:27
@@ -8650,8 +8696,9 @@ msgstr ""
 
 #. [attack]: type=impact
 #: data/core/units/undead/Skele_Bone_Knight.cfg:41
+#, fuzzy
 msgid "trample"
-msgstr ""
+msgstr "piétinement"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -8712,8 +8759,9 @@ msgstr ""
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:5
+#, fuzzy
 msgid "Death Squire"
-msgstr ""
+msgstr "Écuyer de la mort"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
@@ -8832,7 +8880,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Skeleton Archer"
 msgid "Skeleton Rider"
-msgstr "Archer squelette"
+msgstr "Squelette monté"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:33
