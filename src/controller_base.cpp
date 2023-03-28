@@ -300,7 +300,7 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	// scroll_speed is in percent. Ticks are in milliseconds.
 	// Let's assume the maximum speed (100) moves 50 hexes per second,
 	// i.e. 3600 pixels per 1000 ticks.
-	double scroll_amount = double(dt) * 0.036 * double(scroll_speed);
+	double scroll_amount = static_cast<double>(dt) * 0.036 * static_cast<double>(scroll_speed);
 	last_scroll_tick_ = tick_now;
 
 	// Apply keyboard scrolling
@@ -370,8 +370,8 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 	}
 	int dx_int = static_cast<int>(dx);
 	int dy_int = static_cast<int>(dy);
-	scroll_carry_x_ = dx - double(dx_int);
-	scroll_carry_y_ = dy - double(dy_int);
+	scroll_carry_x_ = dx - static_cast<double>(dx_int);
+	scroll_carry_y_ = dy - static_cast<double>(dy_int);
 
 	// Scroll the display
 	get_display().scroll(dx_int, dy_int);

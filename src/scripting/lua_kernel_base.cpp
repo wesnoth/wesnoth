@@ -664,7 +664,7 @@ static int intf_object_dir(lua_State* L)
 	static const size_t MAX_WIDTH = 80, COL_PADDING = 3, SUFFIX_PADDING = 2;
 	size_t col_width = max_len + COL_PADDING + SUFFIX_PADDING;
 	size_t n_cols = (MAX_WIDTH + COL_PADDING) / col_width;
-	size_t n_rows = ceil(keys.size() / double(n_cols));
+	size_t n_rows = ceil(keys.size() / static_cast<double>(n_cols));
 	for(size_t i = 0; i < n_rows; i++) {
 		std::ostringstream line;
 		line.fill(' ');

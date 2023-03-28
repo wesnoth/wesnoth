@@ -196,7 +196,7 @@ void editor_display::set_help_string(const std::string& str)
 	// user is editing hexes at the south edge of the map.
 	help_string_at_top_ = false;
 	const auto& r = font::get_floating_label_rect(help_handle_);
-	font::move_floating_label(help_handle_, 0.0, -double(r.h));
+	font::move_floating_label(help_handle_, 0.0, -static_cast<double>(r.h));
 }
 
 } //end namespace editor

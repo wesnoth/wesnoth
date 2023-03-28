@@ -93,7 +93,7 @@ void achievements_dialog::pre_show(window& win)
 				grid& newrow = achievements_box_->add_row(row);
 				progress_bar* achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
 				if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
-					achievement_progress->set_percentage((ach.current_progress_/double(ach.max_progress_))*100);
+					achievement_progress->set_percentage((ach.current_progress_/static_cast<double>(ach.max_progress_))*100);
 				} else {
 					achievement_progress->set_visible(gui2::widget::visibility::invisible);
 				}
@@ -155,7 +155,7 @@ void achievements_dialog::set_achievements_content()
 		grid& newrow = achievements_box_->add_row(row);
 		progress_bar* achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
 		if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
-			achievement_progress->set_percentage((ach.current_progress_/double(ach.max_progress_))*100);
+			achievement_progress->set_percentage((ach.current_progress_/static_cast<double>(ach.max_progress_))*100);
 		} else {
 			achievement_progress->set_visible(gui2::widget::visibility::invisible);
 		}
