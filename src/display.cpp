@@ -2250,7 +2250,7 @@ void display::fade_tod_mask(
 	int duration = 300 / turbo_speed();
 	int start = SDL_GetTicks();
 	for(int now = start; now < start + duration; now = SDL_GetTicks()) {
-		float prop_f = float(now - start) / float(duration);
+		float prop_f = static_cast<float>(now - start) / static_cast<float>(duration);
 		uint8_t p = float_to_color(prop_f);
 		tod_hex_alpha2 = p;
 		tod_hex_alpha1 = ~p;
@@ -2284,7 +2284,7 @@ void display::fade_to(const color_t& c, int duration)
 
 	// Smoothly blend and display
 	for(uint32_t now = start; now < start + duration; now = SDL_GetTicks()) {
-		float prop_f = float(now - start) / float(duration);
+		float prop_f = static_cast<float>(now - start) / static_cast<float>(duration);
 		uint8_t p = float_to_color(prop_f);
 		fade_color_ = fade_start.smooth_blend(fade_end, p);
 		draw_manager::invalidate_region(map_outside_area());

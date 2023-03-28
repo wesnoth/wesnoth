@@ -398,8 +398,8 @@ void draw::tiled_highres(const texture& tex, const SDL_Rect& dst,
 	auto clipper = draw::reduce_clip(dst);
 
 	const ::point size = tex.get_raw_size();
-	const float w = float(size.x) / float(pixel_scale);
-	const float h = float(size.y) / float(pixel_scale);
+	const float w = static_cast<float>(size.x) / static_cast<float>(pixel_scale);
+	const float h = static_cast<float>(size.y) / static_cast<float>(pixel_scale);
 	const float xoff = centered ? (dst.w - w) / 2 : 0.0f;
 	const float yoff = centered ? (dst.h - h) / 2 : 0.0f;
 
