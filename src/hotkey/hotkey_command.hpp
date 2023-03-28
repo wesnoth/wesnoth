@@ -217,13 +217,8 @@ enum HOTKEY_CATEGORY {
 	HKCAT_PLACEHOLDER // Keep this one last
 };
 
-/**
- * Returns the map of hotkey categories and their display names.
- *
- * These aren't translated and need be converted to a t_string before
- * being displayed to the player.
- */
-const std::map<HOTKEY_CATEGORY, std::string>& get_category_names();
+/** Gets the display name for a given hotkey category. */
+t_string get_translatable_category_name(HOTKEY_CATEGORY category);
 
 typedef std::bitset<SCOPE_COUNT> hk_scopes;
 

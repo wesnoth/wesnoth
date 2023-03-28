@@ -487,9 +487,9 @@ void init_hotkey_commands()
 	}
 }
 
-const std::map<HOTKEY_CATEGORY, std::string>& get_category_names()
+t_string get_translatable_category_name(HOTKEY_CATEGORY category)
 {
-	return category_names;
+	return {category_names.at(category), "wesnoth-lib"};
 }
 
 } // namespace hotkey
