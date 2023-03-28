@@ -94,7 +94,7 @@ std::ostream& operator<<(std::ostream& stream, const surface& surf)
 		stream << "<invalid surface>";
 	} else {
 		stream << "{ " << surf->w << 'x' << surf->h << '@'
-			   << unsigned(surf->format->BitsPerPixel) << "bpp"
+			   << static_cast<unsigned>(surf->format->BitsPerPixel) << "bpp"
 			   << (surf->format->palette ? " indexed" : "")
 			   << " clip_rect=[" << surf->clip_rect
 			   << "] refcount=" << surf->refcount

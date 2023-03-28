@@ -259,7 +259,7 @@ mp_connect::server_info& mp_connect::selection::get()
 unsigned mp_connect::selection::row() const
 {
 	must_be_valid();
-	return unsigned(row_);
+	return static_cast<unsigned>(row_);
 }
 
 std::size_t mp_connect::selection::relative_index() const

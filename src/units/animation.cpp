@@ -1439,7 +1439,7 @@ void unit_animator::wait_until(int animation_time) const
 	resources::controller->play_slice(false);
 
 	int end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
-	while(SDL_GetTicks() < unsigned(end_tick - std::min(static_cast<int>(20 / speed), 20))) {
+	while(SDL_GetTicks() < static_cast<unsigned>(end_tick - std::min(static_cast<int>(20 / speed), 20))) {
 		if(!game_config::no_delay) {
 			SDL_Delay(std::clamp(static_cast<int>((animation_time - get_animation_time()) * speed), 0, 10));
 		}
