@@ -336,7 +336,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 
 	std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
 	std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
-	throw reset_gamestate_exception(res, stats, true);
+	throw reset_gamestate_exception(res, stats, false);
 }
 
 void playsingle_controller::hotkey_handler::replay_exit()
