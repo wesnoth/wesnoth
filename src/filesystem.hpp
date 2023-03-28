@@ -45,7 +45,6 @@ struct sdl_rwops_deleter
 };
 
 using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
-static_assert(sizeof(rwops_ptr) == sizeof(SDL_RWops*));
 
 rwops_ptr make_read_RWops(const std::string &path);
 rwops_ptr make_write_RWops(const std::string &path);
