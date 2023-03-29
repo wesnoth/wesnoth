@@ -203,6 +203,12 @@ void playsingle_controller::skip_empty_sides(int& side_num)
 
 void playsingle_controller::play_some()
 {
+	//TODO: Its still unclear to me when end_turn_requested_ should be reset, i guess the idea is
+	//      in particular that in rare cases when the player looses control at the same time
+	//      as he presses "end turn" and then regains control back, the "end turn" should be discarded?
+	//One of the main reasonsy why this is here is probably also that play_controller has no access to it.
+	end_turn_requested_ = gamestate().gamedata_.end_turn_forced();
+
 	assert(is_regular_game_end() || gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING, game_data::TURN_ENDED, game_data::GAME_ENDED));
 
 	if (!is_regular_game_end() && gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING)) {
@@ -272,6 +278,7 @@ void playsingle_controller::finish_side_turn()
 		gui_->invalidate_game_status();
 	}
 	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
+	gamestate().gamedata_.set_end_turn_forced(false);
 	did_autosave_this_turn_ = false;
 	end_turn_requested_ = false;
 	init_side_begin();
@@ -712,6 +719,7 @@ void playsingle_controller::end_turn()
 
 void playsingle_controller::force_end_turn()
 {
+	gamestate().gamedata_.set_end_turn_forced(true);
 	end_turn_requested_ = true;
 }
 
