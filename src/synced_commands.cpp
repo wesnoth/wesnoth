@@ -338,7 +338,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 
 	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
 	if(use_undo) {
-		if(!undoable || !synced_context::can_undo()) {
+		if(!undoable || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();
@@ -352,7 +352,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child,  use_undo, /*show*/, /*er
 	assert(resources::lua_kernel);
 	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
 	if(use_undo) {
-		if(!synced_context::can_undo()) {
+		if(synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();

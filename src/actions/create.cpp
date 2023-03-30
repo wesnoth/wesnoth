@@ -731,7 +731,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
 		// Check for information uncovered or randomness used.
 
-		if ( std::get<0>(res) || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -774,7 +774,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
-		if ( std::get<0>(res) || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		}
 	}
