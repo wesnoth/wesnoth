@@ -382,8 +382,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 {
 	bool illuminates = ability == "illuminates";
 
-	if (const config &afilter = cfg.child("filter"))
-		if ( !unit_filter(vconfig(afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
+	if (auto afilter = cfg.optional_child("filter"))
+		if ( !unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
 			return false;
 
 	const auto adjacent = get_adjacent_tiles(loc);
@@ -463,9 +463,9 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 				continue;
 			}
 		}
-		const config &filter = i.child("filter");
+		auto filter = i.optional_child("filter");
 		if (!filter || //filter tag given
-			unit_filter(vconfig(filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
+			unit_filter(vconfig(*filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
 			return true;
 		}
 	}
@@ -474,10 +474,10 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 
 bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
 {
-	const config &filter = cfg.child("filter_self");
+	auto filter = cfg.optional_child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
-	return unit_filter(vconfig(filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
+	return unit_filter(vconfig(*filter)).set_use_flat_tod(ability == "illuminates").matches(*this, loc);
 }
 
 bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bool is_opp) const
@@ -486,7 +486,7 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 	if(!cfg.has_child(filter_tag_name)) {
 		return true;
 	}
-	const config& filter = cfg.child(filter_tag_name);
+	const config& filter = cfg.mandatory_child(filter_tag_name);
 	if(!weapon) {
 		return false;
 	}
@@ -1225,7 +1225,7 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
-		const config & filter_child = filter.child(child_tag);
+		auto filter_child = filter.optional_child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.
 			return true;
@@ -1235,14 +1235,14 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
-		unit_filter ufilt{vconfig(filter_child)};
+		unit_filter ufilt{vconfig(*filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
 
 
 		// Check for a weapon match.
-		if ( const config & filter_weapon = filter_child.child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(filter_weapon) )
+		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
+			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
 				return false;
 		}
 
@@ -1757,7 +1757,7 @@ void individual_effect::set(value_modifier t, int val, const config *abil, const
 
 bool filter_base_matches(const config& cfg, int def)
 {
-	if (const config &apply_filter = cfg.child("filter_base_value")) {
+	if (auto apply_filter = cfg.optional_child("filter_base_value")) {
 		config::attribute_value cond_eq = apply_filter["equals"];
 		config::attribute_value cond_ne = apply_filter["not_equals"];
 		config::attribute_value cond_lt = apply_filter["less_than"];

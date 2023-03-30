@@ -74,7 +74,7 @@ recall::recall(std::size_t team_index, bool hidden, const unit& u, const map_loc
 recall::recall(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, temp_unit_()
-	, recall_hex_(cfg.child("recall_hex_")["x"],cfg.child("recall_hex_")["y"], wml_loc())
+	, recall_hex_(cfg.mandatory_child("recall_hex_")["x"],cfg.mandatory_child("recall_hex_")["y"], wml_loc())
 	, fake_unit_()
 	, original_mp_(0)
 	, original_ap_(0)

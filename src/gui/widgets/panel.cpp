@@ -108,8 +108,8 @@ panel_definition::resolution::resolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(cfg.optional_child("background"));
+	state.emplace_back(cfg.optional_child("foreground"));
 }
 
 // }---------- BUILDER -----------{
@@ -120,11 +120,11 @@ namespace implementation
 builder_panel::builder_panel(const config& cfg)
 	: builder_styled_widget(cfg), grid(nullptr)
 {
-	const config& c = cfg.child("grid");
+	auto c = cfg.optional_child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(c);
+	grid = std::make_shared<builder_grid>(*c);
 }
 
 std::unique_ptr<widget> builder_panel::build() const

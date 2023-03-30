@@ -356,7 +356,6 @@ void replay::speak(const config& cfg)
 
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg>> &i) const
 {
-	if (!cfg) return;
 
 	if (!preferences::parse_should_show_lobby_join(cfg["id"], cfg["message"])) return;
 	if (preferences::is_ignored(cfg["id"])) return;
@@ -387,8 +386,7 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 	{
 		last_location = *loc_it;
 
-		const config &speak = command(last_location).child("speak");
-		assert(speak);
+		const config &speak = command(last_location).mandatory_child("speak");
 		add_chat_log_entry(speak, chat_log_appender);
 
 	}
@@ -576,7 +574,6 @@ void replay::undo()
 config &replay::command(int n) const
 {
 	config & retv = base_->get_command_at(n);
-	assert(retv);
 	return retv;
 }
 
@@ -734,7 +731,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay";
 			//do nothing
 		}
-		else if (const config &speak = cfg->child("speak"))
+		else if (auto speak = cfg->optional_child("speak"))
 		{
 			const std::string &team_name = speak["to_sides"];
 			const std::string &speaker_name = speak["id"];
@@ -745,20 +742,20 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 				DBG_REPLAY << "tried to add a chat message twice.";
 				if (!resources::controller->is_skipping_replay() || is_whisper) {
 					int side = speak["side"];
-					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(speak), speaker_name, side, message,
+					game_display::get_singleton()->get_chat_manager().add_chat_message(get_time(*speak), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
 						preferences::message_bell());
 				}
 			}
 		}
-		else if (cfg->child("surrender"))
+		else if (cfg->has_child("surrender"))
 		{
 			//prevent sending of a synced command for surrender
 		}
-		else if (const config &label_config = cfg->child("label"))
+		else if (auto label_config = cfg->optional_child("label"))
 		{
-			terrain_label label(display::get_singleton()->labels(), label_config);
+			terrain_label label(display::get_singleton()->labels(), *label_config);
 
 			display::get_singleton()->labels().set_label(label.location(),
 						label.text(),
@@ -766,13 +763,13 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 						label.team_name(),
 						label.color());
 		}
-		else if (const config &clear_labels = cfg->child("clear_labels"))
+		else if (auto clear_labels = cfg->optional_child("clear_labels"))
 		{
 			display::get_singleton()->labels().clear(std::string(clear_labels["team_name"]), clear_labels["force"].to_bool());
 		}
-		else if (const config &rename = cfg->child("rename"))
+		else if (auto rename = cfg->optional_child("rename"))
 		{
-			const map_location loc(rename);
+			const map_location loc(*rename);
 			const std::string &name = rename["name"];
 
 			unit_map::iterator u = resources::gameboard->units().find(loc);
@@ -790,7 +787,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 		}
 
-		else if (cfg->child("init_side"))
+		else if (cfg->has_child("init_side"))
 		{
 
 			if(!is_unsynced)
@@ -809,7 +806,7 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 		}
 
 		//if there is an end turn directive
-		else if (const config& end_turn = cfg->child("end_turn"))
+		else if (auto end_turn = cfg->optional_child("end_turn"))
 		{
 			if(!is_unsynced)
 			{
@@ -819,15 +816,15 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 			else
 			{
-				if (const config &cfg_verify = cfg->child("verify")) {
-					verify(resources::gameboard->units(), cfg_verify);
+				if (auto cfg_verify = cfg->optional_child("verify")) {
+					verify(resources::gameboard->units(), *cfg_verify);
 				}
 				resources::controller->gamestate().next_player_number_ = end_turn["next_player_number"];
 				resources::controller->gamestate().gamedata_.set_phase(game_data::TURN_ENDED);
 				return REPLAY_FOUND_END_TURN;
 			}
 		}
-		else if (const config &countdown_update = cfg->child("countdown_update"))
+		else if (auto countdown_update = cfg->optional_child("countdown_update"))
 		{
 			int val = countdown_update["value"];
 			int tval = countdown_update["team"];
@@ -895,8 +892,8 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			}
 		}
 
-		if (const config &child = cfg->child("verify")) {
-			verify(resources::gameboard->units(), child);
+		if (auto child = cfg->optional_child("verify")) {
+			verify(resources::gameboard->units(), *child);
 		}
 	}
 }

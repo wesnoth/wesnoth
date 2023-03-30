@@ -141,36 +141,36 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				message.value()["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
-	else if (const config &whisper = cfg.child("whisper") /*&& is_observer()*/)
+	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
 	{
 		game_display::get_singleton()->get_chat_manager().add_chat_message(std::time(nullptr), "whisper: " + whisper["sender"].str(), 0,
 				whisper["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
-	else if (const config &observer = cfg.child("observer") )
+	else if (auto observer = cfg.optional_child("observer") )
 	{
 		game_display::get_singleton()->get_chat_manager().add_observer(observer["name"]);
 	}
-	else if (const config &observer_quit = cfg.child("observer_quit"))
+	else if (auto observer_quit = cfg.optional_child("observer_quit"))
 	{
 		game_display::get_singleton()->get_chat_manager().remove_observer(observer_quit["name"]);
 	}
-	else if (cfg.child("leave_game")) {
-		const bool has_reason = cfg.child("leave_game").has_attribute("reason");
-		throw leavegame_wesnothd_error(has_reason ? cfg.child("leave_game")["reason"].str() : "");
+	else if (cfg.has_child("leave_game")) {
+		const bool has_reason = cfg.mandatory_child("leave_game").has_attribute("reason");
+		throw leavegame_wesnothd_error(has_reason ? cfg.mandatory_child("leave_game")["reason"].str() : "");
 	}
-	else if (const config &turn = cfg.child("turn"))
+	else if (auto turn = cfg.optional_child("turn"))
 	{
-		return handle_turn(turn, chat_only);
+		return handle_turn(*turn, chat_only);
 	}
 	else if (cfg.has_child("whiteboard"))
 	{
 		set_scontext_unsynced scontext;
 		resources::whiteboard->process_network_data(cfg);
 	}
-	else if (const config &change = cfg.child("change_controller"))
+	else if (auto change = cfg.optional_child("change_controller"))
 	{
-		if(change.empty()) {
+		if(change->empty()) {
 			ERR_NW << "Bad [change_controller] signal from server, [change_controller] tag was empty.";
 			return PROCESS_CONTINUE;
 		}
@@ -181,7 +181,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const std::string controller_type = change["controller"];
 		const std::size_t index = side - 1;
 		if(index >= resources::gameboard->teams().size()) {
-			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug();
+			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change->debug();
 			return PROCESS_CONTINUE;
 		}
 
@@ -217,7 +217,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 	}
 
-	else if (const config &side_drop_c = cfg.child("side_drop"))
+	else if (auto side_drop_c = cfg.optional_child("side_drop"))
 	{
 		// Only the host receives this message when a player leaves/disconnects.
 		const int  side_drop = side_drop_c["side_num"].to_int(0);
@@ -361,7 +361,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
-	else if (cfg.child("notify_next_scenario")) {
+	else if (cfg.has_child("notify_next_scenario")) {
 		if(chat_only) {
 			return PROCESS_CANNOT_HANDLE;
 		}
@@ -369,7 +369,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it
-	else if (cfg.child("host_transfer")){
+	else if (cfg.has_child("host_transfer")){
 		host_transfer_.notify_observers();
 	}
 	else

@@ -648,13 +648,13 @@ void manager::send_network_data()
 
 void manager::process_network_data(const config& cfg)
 {
-	if(const config& wb_cfg = cfg.child("whiteboard"))
+	if(auto wb_cfg = cfg.optional_child("whiteboard"))
 	{
-		std::size_t count = wb_cfg.child_count("net_cmd");
+		std::size_t count = wb_cfg->child_count("net_cmd");
 		LOG_WB << "Received wb data (" << count << ").";
 
 		team& team_from = resources::gameboard->get_team(wb_cfg["side"]);
-		for(const side_actions::net_cmd& cmd : wb_cfg.child_range("net_cmd"))
+		for(const side_actions::net_cmd& cmd : wb_cfg->child_range("net_cmd"))
 			team_from.get_side_actions()->execute_net_cmd(cmd);
 	}
 }

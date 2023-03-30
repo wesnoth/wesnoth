@@ -67,7 +67,7 @@ std::string default_map_generator::name() const { return "default"; }
 
 std::string default_map_generator::config_name() const
 {
-	if (const config &c = cfg_.child("scenario"))
+	if (auto c = cfg_.optional_child("scenario"))
 		return c["name"];
 
 	return std::string();

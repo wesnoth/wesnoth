@@ -56,7 +56,7 @@ void move_action::write(config & cfg) const
 	shroud_clearing_action::write(cfg);
 	cfg["starting_direction"] = map_location::write_direction(starting_dir);
 	cfg["starting_moves"] = starting_moves;
-	config & child = cfg.child("unit");
+	config & child = cfg.mandatory_child("unit");
 	child["goto_x"] = goto_hex.wml_x();
 	child["goto_y"] = goto_hex.wml_y();
 }

@@ -2924,13 +2924,13 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	if (!str.empty()) {
 		config &e = report.add_child_at("element", config(), 0);
 		e["text"] = str;
-		e["tooltip"] = report.child("element")["tooltip"];
+		e["tooltip"] = report.mandatory_child("element")["tooltip"];
 	}
 	str = item->postfix();
 	if (!str.empty()) {
 		config &e = report.add_child("element");
 		e["text"] = str;
-		e["tooltip"] = report.child("element", -1)["tooltip"];
+		e["tooltip"] = report.mandatory_child("element", -1)["tooltip"];
 	}
 
 	// Do a fake run of drawing the report, so tooltips can be determined.

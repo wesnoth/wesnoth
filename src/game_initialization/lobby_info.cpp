@@ -126,13 +126,13 @@ void lobby_info::process_gamelist(const config& data)
 
 	games_by_id_.clear();
 
-	for(const auto& c : gamelist_.child("gamelist").child_range("game")) {
+	for(const auto& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		game_info game(c, installed_addons_);
 		games_by_id_.emplace(game.id, std::move(game));
 	}
 
 	DBG_LB << dump_games_map(games_by_id_);
-	DBG_LB << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << dump_games_config(gamelist_.mandatory_child("gamelist"));
 
 	process_userlist();
 }
@@ -155,7 +155,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 		return false;
 	}
 
-	DBG_LB << "prediff " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << "prediff " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 
 	try {
 		gamelist_.apply_diff(data, true);
@@ -164,10 +164,10 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 		return false;
 	}
 
-	DBG_LB << "postdiff " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << "postdiff " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 	DBG_LB << dump_games_map(games_by_id_);
 
-	for(config& c : gamelist_.child("gamelist").child_range("game")) {
+	for(config& c : gamelist_.mandatory_child("gamelist").child_range("game")) {
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")";
 
 		const int game_id = c["id"];
@@ -219,7 +219,7 @@ bool lobby_info::process_gamelist_diff_impl(const config& data)
 		return false;
 	}
 
-	DBG_LB << "postclean " << dump_games_config(gamelist_.child("gamelist"));
+	DBG_LB << "postclean " << dump_games_config(gamelist_.mandatory_child("gamelist"));
 
 	process_userlist();
 	return true;

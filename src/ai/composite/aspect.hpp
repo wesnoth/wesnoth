@@ -250,8 +250,9 @@ public:
 			add_facet(-1,cfg_element);
 		}
 
-		config _default = this->cfg_.child("default");
-		if (_default) {
+		config _default = this->cfg_.mandatory_child("default");
+		// TODO: this was a faulty invalid config test.
+		if ((true)) {
 			_default["id"] = "default_facet";
 			std::vector< aspect_ptr > default_aspects;
 			engine::parse_aspect_from_config(*this,_default,parent_id_,std::back_inserter(default_aspects));

@@ -277,9 +277,10 @@ move_leader_to_goals_phase::~move_leader_to_goals_phase()
 double move_leader_to_goals_phase::evaluate()
 {
 
-	const config &goal = get_leader_goal();
+	config goal = get_leader_goal();
 	//passive leader can reach a goal
-	if (!goal) {
+	// TODO: this was a faulty invalid config test.
+	if ((false)) {
 		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found";
 		return BAD_SCORE;
 	}

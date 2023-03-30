@@ -63,9 +63,9 @@ game_state::game_state(const config& level, play_controller& pc)
 	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
+	if(auto endlevel_cfg = level.optional_child("end_level_data")) {
 		end_level_data el_data;
-		el_data.read(endlevel_cfg);
+		el_data.read(*endlevel_cfg);
 		el_data.transient.carryover_report = false;
 		end_level_data_ = el_data;
 	}

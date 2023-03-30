@@ -339,7 +339,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
 
-			return action->child(sch.name());
+			return action->mandatory_child(sch.name());
 		}
 	}
 }

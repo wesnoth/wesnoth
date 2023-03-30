@@ -752,13 +752,13 @@ void mp_lobby::network_handler()
 
 void mp_lobby::process_network_data(const config& data)
 {
-	if(const config& error = data.child("error")) {
+	if(auto error = data.optional_child("error")) {
 		throw wesnothd_error(error["message"]);
-	} else if(data.child("gamelist")) {
+	} else if(data.has_child("gamelist")) {
 		process_gamelist(data);
-	} else if(const config& gamelist_diff = data.child("gamelist_diff")) {
-		process_gamelist_diff(gamelist_diff);
-	} else if(const config& info = data.child("message")) {
+	} else if(auto gamelist_diff = data.optional_child("gamelist_diff")) {
+		process_gamelist_diff(*gamelist_diff);
+	} else if(auto info = data.optional_child("message")) {
 		if(info["type"] == "server_info") {
 			server_information_ = info["message"].str();
 			return;

@@ -30,6 +30,7 @@
 
 #include "config_attribute_value.hpp"
 #include "exceptions.hpp"
+#include "utils/const_clone.hpp"
 #include "utils/optional_reference.hpp"
 
 #include <climits>
@@ -52,6 +53,105 @@ enum class DEP_LEVEL : uint8_t;
 
 class config;
 
+template<class T>
+class optional_config_impl
+{
+public:
+	optional_config_impl() = default;
+
+	optional_config_impl(T& ref)
+		: opt_(&ref)
+	{
+	}
+
+	optional_config_impl(std::nullopt_t)
+		: opt_()
+	{
+	}
+
+	T& value() const
+	{
+		if(opt_) {
+			return *opt_;
+		} else {
+			// We're going to drop this codepath once we can use optional::value anyway, but just
+			// noting we want this function to ultimately throw std::bad_optional_access.
+			throw std::runtime_error("Optional reference has no value");
+		}
+	}
+
+	optional_config_impl<T>& operator=(T& new_ref)
+	{
+		opt_ = &new_ref;
+		return *this;
+	}
+
+	bool has_value() const
+	{
+#ifdef DEBUG_CONFIG
+		tested_ = true;
+#endif
+		return opt_ != nullptr;
+
+	}
+
+	explicit operator bool() const
+	{
+		return has_value();
+	}
+
+	operator optional_config_impl<const T>() const
+	{
+		return opt_ ? optional_config_impl<const T>(*opt_) : optional_config_impl<const T>();
+	}
+
+	/** Returns a pointer to the referenced object or nullptr if no reference is held. */
+	T* ptr() const
+	{
+		if(opt_) {
+			return &value();
+		} else {
+			return nullptr;
+		}
+	}
+
+	T* operator->() const
+	{
+		assert(tested());
+		return &value();
+	}
+
+	T& operator*() const
+	{
+		assert(tested());
+		return value();
+	}
+
+	utils::const_clone_t<config_attribute_value, T>& operator[](config_key_type key)
+	{
+		assert(tested());
+		return value()[key];
+	}
+
+	operator utils::optional_reference<T>() const
+	{
+		return has_value() ? utils::optional_reference<T>(value()) : utils::optional_reference<T>();
+	}
+	bool tested() const
+	{
+#ifdef DEBUG_CONFIG
+		return tested_;
+#else
+		return true;
+#endif
+	}
+private:
+	T* opt_;
+#ifdef DEBUG_CONFIG
+	mutable bool tested_;
+#endif
+};
+
 bool operator==(const config &, const config &);
 inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }
 std::ostream &operator << (std::ostream &, const config &);
@@ -60,20 +160,6 @@ std::ostream &operator << (std::ostream &, const config &);
 class config
 {
 	friend bool operator==(const config& a, const config& b);
-	friend struct config_implementation;
-
-	static config invalid;
-
-	/**
-	 * Raises an exception if @a this is not valid.
-	 */
-	void check_valid() const;
-
-	/**
-	 * Raises an exception if @a this or @a cfg is not valid.
-	 */
-	void check_valid(const config &cfg) const;
-
 public:
 	// Create an empty node.
 	config();
@@ -104,12 +190,6 @@ public:
 
 	// Verifies that the string can be used as an attribute name
 	static bool valid_attribute(config_key_type name);
-
-	explicit operator bool() const
-	{ return this != &invalid; }
-
-	static config& get_invalid()
-	{ return invalid; }
 
 	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list, std::less<>> child_map;
@@ -303,59 +383,26 @@ public:
 	const config & child_or_empty(config_key_type key) const;
 
 	/**
-	 * An object of this type will cause the following functions to throw a config::error instead
-	 * of returning a reference to the invalid config for the duration of its lfetime. If multiple
-	 * instances exist simultaneously, this behavior will persist until all objects are destroyed.
-	 *
-	 * - @c child
-	 * - @c find_child
-	 */
-	class throw_when_child_not_found
-	{
-	public:
-		friend class config;
-
-		throw_when_child_not_found()
-		{
-			instances++;
-		}
-
-		~throw_when_child_not_found()
-		{
-			instances--;
-		}
-
-		static bool do_throw()
-		{
-			return instances > 0;
-		}
-
-	private:
-		static inline unsigned instances = 0;
-	};
-
-	/**
 	 * Returns the nth child with the given @a key, or
-	 * a reference to an invalid config if there is none.
+	 * throws an error if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	config& child(config_key_type key, int n = 0);
 
+	config& mandatory_child(config_key_type key, int n = 0);
 	/**
 	 * Returns the nth child with the given @a key, or
-	 * a reference to an invalid config if there is none.
+	 * throws an error if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	const config& child(config_key_type key, int n = 0) const
-	{ return const_cast<config*>(this)->child(key, n); }
+	const config& mandatory_child(config_key_type key, int n = 0) const;
 
-	/** Euivalent to @ref child, but returns an empty optional if the nth child was not found. */
-	utils::optional_reference<config> optional_child(config_key_type key, int n = 0);
+	/** Euivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
+	optional_config_impl<config> optional_child(config_key_type key, int n = 0);
 
-	/** Euivalent to @ref child, but returns an empty optional if the nth child was not found. */
-	utils::optional_reference<const config> optional_child(config_key_type key, int n = 0) const;
+	/** Euivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
+	optional_config_impl<const config> optional_child(config_key_type key, int n = 0) const;
 
 	/**
 	 * Returns a mandatory child node.
@@ -371,7 +418,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	config& child(config_key_type key, const std::string& parent);
+	config& mandatory_child(config_key_type key, const std::string& parent);
 
 	/**
 	 * Returns a mandatory child node.
@@ -387,7 +434,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	const config& child(config_key_type key, const std::string& parent) const;
+	const config& mandatory_child(config_key_type key, const std::string& parent) const;
 
 	/**
 	 * Get a deprecated child and log a deprecation message
@@ -397,7 +444,7 @@ public:
 	 * @param message An explanation of the deprecation, possibly mentioning an alternative
 	 * @note The deprecation message will be a level 3 deprecation.
 	 */
-	utils::optional_reference<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
+	optional_config_impl<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	/**
 	 * Get a deprecated child rangw and log a deprecation message
@@ -569,10 +616,10 @@ public:
 	 * Returns the first child of tag @a key with a @a name attribute
 	 * containing @a value.
 	 */
-	config& find_child(config_key_type key, const std::string &name,
+	optional_config_impl<config> find_child(config_key_type key, const std::string &name,
 		const std::string &value);
 
-	const config& find_child(config_key_type key, const std::string &name,
+	optional_config_impl<const config> find_child(config_key_type key, const std::string &name,
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
@@ -870,6 +917,9 @@ private:
 	std::vector<child_pos> ordered_children;
 };
 
+
+using optional_config = optional_config_impl<config>;
+using optional_const_config = optional_config_impl<const config>;
 /** Implement non-member swap function for std::swap (calls @ref config::swap). */
 void swap(config& lhs, config& rhs);
 

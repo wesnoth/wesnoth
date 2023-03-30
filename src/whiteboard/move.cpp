@@ -112,14 +112,14 @@ move::move(const config& cfg, bool hidden)
 	unit_underlying_id_ = unit_itor->underlying_id();
 
 	// Construct and validate route_
-	const config& route_cfg = cfg.child("route_");
+	auto route_cfg = cfg.optional_child("route_");
 	if(!route_cfg)
 		throw action::ctor_err("move: Invalid route_");
 	route_->move_cost = route_cfg["move_cost"];
-	for(const config& loc_cfg : route_cfg.child_range("step")) {
+	for(const config& loc_cfg : route_cfg->child_range("step")) {
 		route_->steps.emplace_back(loc_cfg["x"],loc_cfg["y"], wml_loc());
 	}
-	for(const config& mark_cfg : route_cfg.child_range("mark")) {
+	for(const config& mark_cfg : route_cfg->child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"], wml_loc())]
 			= pathfind::marked_route::mark(mark_cfg["turns"],
 				mark_cfg["zoc"].to_bool(),
