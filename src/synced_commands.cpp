@@ -241,7 +241,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 
 	// Find the unit in the recall list.
 	unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);
-	assert(dismissed_unit);
+	if (!dismissed_unit) {
+		error_handler("illegal disband\n");
+		return false;
+	}
 	//add dismissal to the undo stack
 	resources::undo_stack->add_dismissal(dismissed_unit);
 
