@@ -370,8 +370,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			case campaign_type::type::scenario: {
 				const config* campaign = nullptr;
 				if(!campaign_id.empty()) {
-					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-						campaign = &c;
+					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+						campaign = c.ptr();
 					}
 				}
 
@@ -421,8 +421,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		case campaign_type::type::multiplayer: {
 			const config* campaign = nullptr;
 			if (!campaign_id.empty()) {
-				if (const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-					campaign = &c;
+				if (auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+					campaign = c.ptr();
 				}
 			}
 
@@ -433,7 +433,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			if (campaign != nullptr) {
 				str << "\n" << _("Difficulty: ");
 				try {
-					const config& difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+					auto difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
 					std::ostringstream ss;
 					ss << difficulty["label"] << " (" << difficulty["description"] << ")";
 					str << ss.str();

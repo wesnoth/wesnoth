@@ -114,7 +114,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	load_game_config_with_loadscreen(force_reload, nullptr, "");
 
-	game_config::load_config(game_config().child("game_config"));
+	game_config::load_config(game_config().mandatory_child("game_config"));
 
 	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
 	// can cause a crash by accessing the list of hotkeys while it's being modified.
@@ -250,7 +250,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 					continue;
 				}
 
-				if(*&valid_cores.find_child("core", "id", id)) {
+				if(valid_cores.find_child("core", "id", id)) {
 					events::call_in_main_thread([&]() {
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),

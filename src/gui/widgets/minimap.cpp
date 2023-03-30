@@ -112,7 +112,7 @@ minimap_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in minimap.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
+	state.emplace_back(cfg.optional_child("state_enabled"));
 }
 
 // }---------- BUILDER -----------{

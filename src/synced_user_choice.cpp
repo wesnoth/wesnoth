@@ -298,7 +298,7 @@ void user_choice_manager::search_in_replay()
 		{
 			replay::process_error("MP synchronization: we got already our answer from side " + std::to_string(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
 		}
-		res_[from_side] = action->child(tagname_);
+		res_[from_side] = action->mandatory_child(tagname_);
 		changed_event_.notify_observers();
 	}
 }

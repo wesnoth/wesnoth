@@ -21,14 +21,14 @@
 
 #pragma once
 
-class  config;
 class vconfig;
 
+#include "config.hpp"
 
 namespace game_events
 {
 	bool conditional_passed(const vconfig& cond);
-	bool matches_special_filter(const config &cfg, const vconfig& filter);
+	bool matches_special_filter(optional_const_config cfg, const vconfig& filter);
 
 	namespace builtin_conditions {
 		bool have_unit(const vconfig& cfg);

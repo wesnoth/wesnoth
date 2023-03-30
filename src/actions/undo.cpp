@@ -86,7 +86,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 
 	else if ( str == "recruit" ) {
 		// Validate the unit type.
-		const config & child = cfg.child("unit");
+		const config & child = cfg.mandatory_child("unit");
 		const unit_type * u_type = unit_types.find(child["type"]);
 
 		if ( !u_type ) {
@@ -102,7 +102,7 @@ undo_action_base * undo_list::create_action(const config & cfg)
 		res =  new undo::recall_action(cfg, map_location(cfg.child_or_empty("leader"), nullptr));
 
 	else if ( str == "dismiss" )
-		res =  new undo::dismiss_action(cfg, cfg.child("unit"));
+		res =  new undo::dismiss_action(cfg, cfg.mandatory_child("unit"));
 
 	else if ( str == "auto_shroud" )
 		res =  new undo::auto_shroud_action(cfg["active"].to_bool());
@@ -403,8 +403,7 @@ void undo_list::redo()
 	auto action = std::move(redos_.back());
 	redos_.pop_back();
 
-
-	auto [commandname, data] = action->child("command").all_children_range().front();
+	auto [commandname, data] = action->mandatory_child("command").all_children_range().front();
 
 	// Note that this might add more than one [command]
 	resources::recorder->redo(*action);

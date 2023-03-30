@@ -67,7 +67,7 @@ bool synced_checkup::local_checkup(const config& expected_data, config& real_dat
 	if(buffer_.child_count("result") > pos_)
 	{
 		//copying objects :o
-		real_data = buffer_.child("result",pos_);
+		real_data = buffer_.mandatory_child("result",pos_);
 		pos_ ++;
 		return real_data == expected_data;
 	}

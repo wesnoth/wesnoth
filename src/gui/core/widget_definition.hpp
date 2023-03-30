@@ -35,7 +35,7 @@ namespace gui2
  */
 struct state_definition
 {
-	explicit state_definition(const config& cfg);
+	explicit state_definition(optional_const_config cfg);
 
 	config canvas_cfg_;
 };

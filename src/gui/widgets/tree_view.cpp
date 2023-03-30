@@ -265,13 +265,13 @@ tree_view_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.optional_child("state_enabled"));
+	state.emplace_back(cfg.optional_child("state_disabled"));
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -326,11 +326,11 @@ tree_node::tree_node(const config& cfg)
 	// TODO: interpolate this value into the error message
 	VALIDATE(id != tree_view::root_node_id, _("[node]id 'root' is reserved for the implementation."));
 
-	const config& node_definition = cfg.child("node_definition");
+	auto node_definition = cfg.optional_child("node_definition");
 
 	VALIDATE(node_definition, _("No node defined."));
 
-	builder = std::make_shared<builder_grid>(node_definition);
+	builder = std::make_shared<builder_grid>(*node_definition);
 }
 
 } // namespace implementation

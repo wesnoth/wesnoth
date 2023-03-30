@@ -150,7 +150,7 @@ static bool is_cjk_char(const char32_t ch)
 
 bool section_is_referenced(const std::string &section_id, const config &cfg)
 {
-	if (const config &toplevel = cfg.child("toplevel"))
+	if (auto toplevel = cfg.optional_child("toplevel"))
 	{
 		const std::vector<std::string> toplevel_refs
 			= utils::quoted_split(toplevel["sections"]);
@@ -174,7 +174,7 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 
 bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 {
-	if (const config &toplevel = cfg.child("toplevel"))
+	if (auto toplevel = cfg.optional_child("toplevel"))
 	{
 		const std::vector<std::string> toplevel_refs
 			= utils::quoted_split(toplevel["topics"]);
@@ -218,10 +218,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 		std::vector<std::string>::const_iterator it;
 		// Find all child sections.
 		for (it = sections.begin(); it != sections.end(); ++it) {
-			if (const config &child_cfg = help_cfg->find_child("section", "id", *it))
+			if (auto child_cfg = help_cfg->find_child("section", "id", *it))
 			{
 				section child_section;
-				parse_config_internal(help_cfg, &child_cfg, child_section, level + 1);
+				parse_config_internal(help_cfg, child_cfg.ptr(), child_section, level + 1);
 				sec.add_section(child_section);
 			}
 			else {
@@ -263,7 +263,7 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 
 		// Find all topics in this section.
 		for (it = topics_id.begin(); it != topics_id.end(); ++it) {
-			if (const config &topic_cfg = help_cfg->find_child("topic", "id", *it))
+			if (auto topic_cfg = help_cfg->find_child("topic", "id", *it))
 			{
 				std::string text = topic_cfg["text"];
 				text += generate_topic_text(topic_cfg["generator"], help_cfg, sec, generated_topics);
@@ -304,8 +304,8 @@ section parse_config(const config *cfg)
 {
 	section sec;
 	if (cfg != nullptr) {
-		const config& toplevel_cfg = cfg->child("toplevel");
-		parse_config_internal(cfg, toplevel_cfg ? &toplevel_cfg : nullptr, sec);
+		auto toplevel_cfg = cfg->optional_child("toplevel");
+		parse_config_internal(cfg, toplevel_cfg.ptr(), sec);
 	}
 	return sec;
 }
@@ -483,7 +483,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(config adv : type.modification_advancements()) {
 			for(config effect : adv.child_range("effect")) {
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
-					for(config::any_child spec : effect.child("specials").all_children_range()) {
+					for(config::any_child spec : effect.mandatory_child("specials").all_children_range()) {
 						if(!spec.cfg["name"].empty()) {
 							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
 							if(!type.hide_help()) {
@@ -500,7 +500,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 						}
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
-					for(config::any_child spec : effect.child("set_specials").all_children_range()) {
+					for(config::any_child spec : effect.mandatory_child("set_specials").all_children_range()) {
 						if(!spec.cfg["name"].empty()) {
 							special_description.emplace(spec.cfg["name"].t_str(), spec.cfg["description"].t_str());
 							if(!type.hide_help()) {
@@ -611,9 +611,9 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 {
 	std::vector<topic> topics;
 
-	const config & era = game_cfg->find_child("era","id", era_id);
+	auto era = game_cfg->find_child("era","id", era_id);
 	if(era && !era["hide_help"].to_bool()) {
-		topics = generate_faction_topics(era, sort_generated);
+		topics = generate_faction_topics(*era, sort_generated);
 
 		std::vector<std::string> faction_links;
 		for (const topic & t : topics) {
@@ -1200,7 +1200,7 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 
 std::string generate_contents_links(const std::string& section_name, config const *help_cfg)
 {
-	const config& section_cfg = help_cfg->find_child("section", "id", section_name);
+	auto section_cfg = help_cfg->find_child("section", "id", section_name);
 	if (!section_cfg) {
 		return std::string();
 	}
@@ -1216,7 +1216,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 		std::vector<std::string>::iterator t;
 		// Find all topics in this section.
 		for (t = topics.begin(); t != topics.end(); ++t) {
-			if (const config& topic_cfg = help_cfg->find_child("topic", "id", *t)) {
+			if (auto topic_cfg = help_cfg->find_child("topic", "id", *t)) {
 				std::string id = topic_cfg["id"];
 				if (is_visible_id(id))
 					topics_links.emplace_back(topic_cfg["title"], id);

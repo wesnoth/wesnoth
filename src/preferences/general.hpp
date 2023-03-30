@@ -59,7 +59,7 @@ namespace preferences {
 	void set(const std::string& key, const config::attribute_value& value);
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
-	const config &get_child(const std::string &key);
+	optional_const_config get_child(const std::string &key);
 	std::string get(const std::string& key);
 	std::string get(const std::string& key, const std::string& def);
 	bool get(const std::string& key, bool def);
@@ -167,7 +167,7 @@ namespace preferences {
 	void clear_hotkeys();
 
 	void add_alias(const std::string& alias, const std::string& command);
-	const config &get_alias();
+	optional_const_config get_alias();
 
 
 	std::string allied_color();

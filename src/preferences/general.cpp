@@ -197,9 +197,9 @@ void set_child(const std::string& key, const config& val) {
 	prefs.add_child(key, val);
 }
 
-const config &get_child(const std::string& key)
+optional_const_config get_child(const std::string& key)
 {
-	return prefs.child(key);
+	return prefs.optional_child(key);
 }
 
 void erase(const std::string& key) {
@@ -945,7 +945,7 @@ void add_alias(const std::string &alias, const std::string &command)
 }
 
 
-const config &get_alias()
+optional_const_config get_alias()
 {
 	return get_child("alias");
 }

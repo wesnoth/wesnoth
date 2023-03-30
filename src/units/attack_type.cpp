@@ -287,7 +287,7 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_range = cfg["set_range"];
 	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
-	const config &set_specials = cfg.child("set_specials");
+	auto set_specials = cfg.optional_child("set_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -348,7 +348,7 @@ bool attack_type::apply_modification(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
-		for(const config::any_child value : set_specials.all_children_range()) {
+		for(const config::any_child value : set_specials->all_children_range()) {
 			specials_.add_child(value.key, value.cfg);
 		}
 	}

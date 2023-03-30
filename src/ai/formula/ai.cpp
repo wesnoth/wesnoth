@@ -755,10 +755,6 @@ bool formula_ai::gamestate_change_observer::continue_check() {
 
 config formula_ai::to_config() const
 {
-	if (!cfg_)
-	{
-		return config();
-	}
 	DBG_AI << "formula_ai::to_config(): "<< cfg_;
 	config cfg = cfg_;
 

@@ -175,13 +175,13 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	}
 
 	if(!game["mp_era"].empty()) {
-		const config& era_cfg = game_config.find_child("era", "id", game["mp_era"]);
+		auto era_cfg = game_config.find_child("era", "id", game["mp_era"]);
 		const bool require = game["require_era"].to_bool(true);
 		if(era_cfg) {
 			era = era_cfg["name"].str();
 
 			if(require) {
-				addon_req result = check_addon_version_compatibility(era_cfg, game);
+				addon_req result = check_addon_version_compatibility(*era_cfg, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			}
 		} else {
@@ -206,8 +206,8 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 		info_stream << ' ' << mod_info.back().first;
 
 		if(cfg["require_modification"].to_bool(false)) {
-			if(const config& mod = game_config.find_child("modification", "id", cfg["id"])) {
-				addon_req result = check_addon_version_compatibility(mod, game);
+			if(auto mod = game_config.find_child("modification", "id", cfg["id"])) {
+				addon_req result = check_addon_version_compatibility(*mod, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			} else {
 				have_all_mods = false;
@@ -252,15 +252,15 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	//
 	if(!game["mp_scenario"].empty() && game["mp_campaign"].empty()) {
 		// Check if it's a multiplayer scenario
-		const config* level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
+		const config* level_cfg = game_config.find_child("multiplayer", "id", game["mp_scenario"]).ptr();
 		const bool require = game["require_scenario"].to_bool(false);
 
 		// Check if it's a user map
-		if(!*level_cfg) {
-			level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
+		if(level_cfg) {
+			level_cfg = game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]).ptr();
 		}
 
-		if(*level_cfg) {
+		if(level_cfg) {
 			type_marker = make_game_type_marker(_("scenario_abbreviation^S"), false);
 			scenario = (*level_cfg)["name"].str();
 			info_stream << scenario;
@@ -268,10 +268,10 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			// Reloaded games do not match the original scenario hash, so it makes no sense
 			// to test them, since they always would appear as remote scenarios
 			if(!reloaded) {
-				if(const config& hashes = game_config.child("multiplayer_hashes")) {
+				if(auto hashes = game_config.optional_child("multiplayer_hashes")) {
 					std::string hash = game["hash"];
 					bool hash_found = false;
-					for(const auto & i : hashes.attribute_range()) {
+					for(const auto & i : hashes->attribute_range()) {
 						if(i.first == game["mp_scenario"] && i.second == hash) {
 							hash_found = true;
 							break;
@@ -301,7 +301,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			verified = false;
 		}
 	} else if(!game["mp_campaign"].empty()) {
-		if(const config& campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
+		if(auto campaign_cfg = game_config.find_child("campaign", "id", game["mp_campaign"])) {
 			type_marker = make_game_type_marker(_("campaign_abbreviation^C"), false);
 
 			std::stringstream campaign_text;
@@ -310,7 +310,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 				<< game["mp_scenario_name"];
 
 			// Difficulty
-			config difficulties = gui2::dialogs::generate_difficulty_config(campaign_cfg);
+			config difficulties = gui2::dialogs::generate_difficulty_config(*campaign_cfg);
 			for(const config& difficulty : difficulties.child_range("difficulty")) {
 				if(difficulty["define"] == game["difficulty_define"]) {
 					campaign_text << spaced_em_dash() << difficulty["description"];
@@ -324,7 +324,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 
 			// TODO: should we have this?
 			//if(game["require_scenario"].to_bool(false)) {
-				addon_req result = check_addon_version_compatibility(campaign_cfg, game);
+				addon_req result = check_addon_version_compatibility(*campaign_cfg, game);
 				addons_outcome = std::max(addons_outcome, result); // Elevate to most severe error level encountered so far
 			//}
 		} else {
@@ -412,7 +412,7 @@ game_info::addon_req game_info::check_addon_version_compatibility(const config& 
 		return addon_req::SATISFIED;
 	}
 
-	if(const config& game_req = game.find_child("addon", "id", local_item["addon_id"])) {
+	if(auto game_req = game.find_child("addon", "id", local_item["addon_id"])) {
 		if(!game_req["require"].to_bool(false)) {
 			return addon_req::SATISFIED;
 		}
@@ -429,7 +429,7 @@ game_info::addon_req game_info::check_addon_version_compatibility(const config& 
 
 		// Remote version
 		const version_info remote_ver(game_req["version"].str());
-		version_info remote_min_ver(game_req.has_attribute("min_version") ? game_req["min_version"] : game_req["version"]);
+		version_info remote_min_ver(game_req->has_attribute("min_version") ? game_req["min_version"] : game_req["version"]);
 
 		remote_min_ver = std::min(remote_min_ver, remote_ver);
 

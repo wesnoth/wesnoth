@@ -550,7 +550,7 @@ void variable_mode_controller::show_array(tree_view_node& node)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(vars().child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(vars().mandatory_child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -585,7 +585,7 @@ void event_mode_controller::show_list(tree_view_node& node, bool is_wmi)
 void event_mode_controller::show_event(tree_view_node& node, bool is_wmi)
 {
 	int n = node.describe_path().back();
-	model().set_data(config_to_string(events.child(is_wmi ? "menu_item" : "event", n)));
+	model().set_data(config_to_string(events.mandatory_child(is_wmi ? "menu_item" : "event", n)));
 }
 
 static stuff_list_adder add_unit_entry(stuff_list_adder& progress, const unit& u, const display_context& dc)
@@ -705,7 +705,7 @@ void unit_mode_controller::show_array(tree_view_node& node)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(u->variables().child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(u->variables().mandatory_child(var.substr(1, n_start - 3), n)));
 	}
 }
 
@@ -907,7 +907,7 @@ void team_mode_controller::show_array(tree_view_node& node, int side)
 		std::size_t n_start = var.find_last_of('[') + 1;
 		std::size_t n_len = var.size() - n_start - 1;
 		int n = std::stoi(var.substr(n_start, n_len));
-		model().set_data(config_to_string(t.variables().child(var.substr(1, n_start - 3), n)));
+		model().set_data(config_to_string(t.variables().mandatory_child(var.substr(1, n_start - 3), n)));
 	}
 }
 

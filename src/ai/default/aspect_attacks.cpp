@@ -53,14 +53,14 @@ aspect_attacks::aspect_attacks(readonly_context& context, const config& cfg, con
 	, filter_own_()
 	, filter_enemy_()
 {
-	if(const config& filter_own = cfg.child("filter_own")) {
-		vconfig vcfg(filter_own);
+	if(auto filter_own = cfg.optional_child("filter_own")) {
+		vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
 	}
 
-	if(const config& filter_enemy = cfg.child("filter_enemy")) {
-		vconfig vcfg(filter_enemy);
+	if(auto filter_enemy = cfg.optional_child("filter_enemy")) {
+		vconfig vcfg(*filter_enemy);
 		vcfg.make_safe();
 		filter_enemy_.reset(new unit_filter(vcfg));
 	}

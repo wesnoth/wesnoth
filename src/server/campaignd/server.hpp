@@ -178,7 +178,7 @@ private:
 	void fire(const std::string& hook, const std::string& addon);
 
 	/** Retrieves an addon by id if found, or a null config otherwise. */
-	config& get_addon(const std::string& id);
+	optional_config get_addon(const std::string& id);
 
 	void delete_addon(const std::string& id);
 

@@ -212,7 +212,7 @@ bool conditional_passed(const vconfig& cond)
 	return matches;
 }
 
-bool matches_special_filter(const config &cfg, const vconfig& filter)
+bool matches_special_filter(optional_const_config cfg, const vconfig& filter)
 {
 	if (!cfg) {
 		WRN_NG << "attempt to filter attack for an event with no attack data.";
@@ -221,7 +221,7 @@ bool matches_special_filter(const config &cfg, const vconfig& filter)
 	}
 	// Though it may seem wasteful to put this on the heap, it's necessary.
 	// matches_filter() could potentially call a WFL formula, which would call shared_from_this().
-	auto attack = std::make_shared<const attack_type>(cfg);
+	auto attack = std::make_shared<const attack_type>(*cfg);
 	return attack->matches_filter(filter.get_parsed_config());
 }
 

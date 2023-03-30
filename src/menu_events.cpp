@@ -1316,8 +1316,8 @@ protected:
 				"whiteboard_options", &console_handler::do_whiteboard_options, _("Access whiteboard options dialog."));
 		register_alias("whiteboard_options", "wbo");
 
-		if(const config& alias_list = preferences::get_alias()) {
-			for(const config::attribute& a : alias_list.attribute_range()) {
+		if(auto alias_list = preferences::get_alias()) {
+			for(const config::attribute& a : alias_list->attribute_range()) {
 				register_alias(a.second, a.first);
 			}
 		}
@@ -1817,7 +1817,7 @@ void console_handler::do_choose_level()
 		// find scenarios of multiplayer campaigns
 		// (assumes that scenarios are ordered properly in the game_config)
 		std::string scenario_id = menu_handler_.pc_.get_mp_settings().mp_scenario;
-		if(const config& this_scenario = menu_handler_.game_config_.find_child(tag, "id", scenario_id)) {
+		if(auto this_scenario = menu_handler_.game_config_.find_child(tag, "id", scenario_id)) {
 			std::string addon_id = this_scenario["addon_id"].str();
 			for(const config& sc : menu_handler_.game_config_.child_range(tag)) {
 				if(sc["addon_id"] == addon_id) {

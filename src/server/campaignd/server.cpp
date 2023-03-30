@@ -415,7 +415,7 @@ void server::load_config()
 
 	// Convert all legacy addons to the new format on load
 	if(cfg_.has_child("campaigns")) {
-		config& campaigns = cfg_.child("campaigns");
+		config& campaigns = cfg_.mandatory_child("campaigns");
 		WRN_CS << "Old format addons have been detected in the config! They will be converted to the new file format! "
 		       << campaigns.child_count("campaign") << " entries to be processed.";
 		for(config& campaign : campaigns.child_range("campaign")) {
@@ -433,7 +433,8 @@ void server::load_config()
 			config data;
 			in = filesystem::istream_file(filesystem::normalize_path(addon_file));
 			read_gz(data, *in);
-			if(!data) {
+			// TODO: this was a faulty invalid config test.
+			if ((false)) {
 				throw filesystem::io_exception("Couldn't read the content file for the legacy addon '" + addon_id + "'!\n");
 			}
 
@@ -469,12 +470,12 @@ void server::load_config()
 	LOG_CS << "Loaded addons metadata. " << addons_.size() << " addons found.";
 
 #ifdef HAVE_MYSQLPP
-	if(const config& user_handler = cfg_.child("user_handler")) {
+	if(auto user_handler = cfg_.optional_child("user_handler")) {
 		if(server_id_ == "") {
 			ERR_CS << "The server id must be set when database support is used.";
 			exit(1);
 		}
-		user_handler_.reset(new fuh(user_handler));
+		user_handler_.reset(new fuh(*user_handler));
 		LOG_CS << "User handler initialized.";
 	}
 #endif
@@ -593,12 +594,12 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			ERR_CS << "Incorrect number of arguments for '" << ctl.cmd() << "'";
 		} else {
 			const std::string& addon_id = ctl[1];
-			config& addon = get_addon(addon_id);
+			auto addon = get_addon(addon_id);
 
 			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot " << ctl.cmd();
 			} else {
-				addon["hidden"] = ctl.cmd() == "hide";
+				addon["hidden"] = (ctl.cmd() == "hide");
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "Add-on '" << addon_id << "' is now " << (ctl.cmd() == "hide" ? "hidden" : "unhidden");
@@ -610,7 +611,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 		} else {
 			const std::string& addon_id = ctl[1];
 			const std::string& newpass = ctl[2];
-			config& addon = get_addon(addon_id);
+			auto addon = get_addon(addon_id);
 
 			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set passphrase";
@@ -620,7 +621,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 			} else if(addon["forum_auth"].to_bool()) {
 				ERR_CS << "Can't set passphrase for add-on using forum_auth.";
 			} else {
-				set_passphrase(addon, newpass);
+				set_passphrase(*addon, newpass);
 				mark_dirty(addon_id);
 				write_config();
 				LOG_CS << "New passphrase set for '" << addon_id << "'";
@@ -640,7 +641,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				value += ctl[i];
 			}
 
-			config& addon = get_addon(addon_id);
+			auto addon = get_addon(addon_id);
 
 			if(!addon) {
 				ERR_CS << "Add-on '" << addon_id << "' not found, cannot set attribute";
@@ -648,7 +649,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 				ERR_CS << "setattr cannot be used to rename add-ons or change their version";
 			} else if(key == "passhash"|| key == "passsalt") {
 				ERR_CS << "setattr cannot be used to set auth data -- use setpass instead";
-			} else if(!addon.has_attribute(key)) {
+			} else if(!addon->has_attribute(key)) {
 				// NOTE: This is a very naive approach for validating setattr's
 				//       input, but it should generally work since add-on
 				//       uploads explicitly set all recognized attributes to
@@ -776,10 +777,10 @@ void server::write_config()
 	out.commit();
 
 	for(const std::string& name : dirty_addons_) {
-		const config& addon = get_addon(name);
+		auto addon = get_addon(name);
 		if(addon && !addon["filename"].empty()) {
 			filesystem::atomic_commit addon_out(filesystem::normalize_path(addon["filename"].str() + "/addon.cfg"));
-			write(*addon_out.ostream(), addon);
+			write(*addon_out.ostream(), *addon);
 			addon_out.commit();
 		}
 	}
@@ -881,19 +882,19 @@ void server::send_error(const std::string& msg, const std::string& extra_data, u
 	utils::visit([this, &doc](auto&& sock) { async_send_doc_queued(sock, doc); }, sock);
 }
 
-config& server::get_addon(const std::string& id)
+optional_config server::get_addon(const std::string& id)
 {
 	auto addon = addons_.find(id);
 	if(addon != addons_.end()) {
 		return addon->second;
 	} else {
-		return config::get_invalid();
+		return optional_config();
 	}
 }
 
 void server::delete_addon(const std::string& id)
 {
-	config& cfg = get_addon(id);
+	optional_const_config cfg = get_addon(id);
 
 	if(!cfg) {
 		ERR_CS << "Cannot delete unrecognized add-on '" << id << "'";
@@ -1062,7 +1063,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 void server::handle_request_campaign(const server::request& req)
 {
-	config& addon = get_addon(req.cfg["name"]);
+	auto addon = get_addon(req.cfg["name"]);
 
 	if(!addon || addon["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -1070,7 +1071,7 @@ void server::handle_request_campaign(const server::request& req)
 	}
 
 	const auto& name = req.cfg["name"].str();
-	auto version_map = get_version_map(addon);
+	auto version_map = get_version_map(*addon);
 
 	if(version_map.empty()) {
 		send_error("No versions of the add-on '" + name + "' are available on the server.", req.sock);
@@ -1125,7 +1126,7 @@ void server::handle_request_campaign(const server::request& req)
 			const auto& prev_version_cfg = iter->second;
 			const auto& next_version_cfg = (++iter)->second;
 
-			for(const config& pack : addon.child_range("update_pack")) {
+			for(const config& pack : addon->child_range("update_pack")) {
 				if(pack["from"].str() != prev_version_cfg["version"].str() ||
 				   pack["to"].str() != next_version_cfg["version"].str()) {
 					continue;
@@ -1206,7 +1207,7 @@ void server::handle_request_campaign(const server::request& req)
 
 void server::handle_request_campaign_hash(const server::request& req)
 {
-	config& addon = get_addon(req.cfg["name"]);
+	auto addon = get_addon(req.cfg["name"]);
 
 	if(!addon || addon["hidden"].to_bool()) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
@@ -1215,7 +1216,7 @@ void server::handle_request_campaign_hash(const server::request& req)
 
 	std::string path = addon["filename"].str() + '/';
 
-	auto version_map = get_version_map(addon);
+	auto version_map = get_version_map(*addon);
 
 	if(version_map.empty()) {
 		send_error("No versions of the add-on '" + req.cfg["name"].str() + "' are available on the server.", req.sock);
@@ -1449,7 +1450,7 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 		return ADDON_CHECK_STATUS::UNEXPECTED_DELTA;
 	}
 
-	if(const config& url_params = upload.child("feedback")) {
+	if(auto url_params = upload.optional_child("feedback")) {
 		try {
 			int topic_id = std::stoi(url_params["topic_id"].str("0"));
 			if(user_handler_ && topic_id != 0) {
@@ -1531,8 +1532,8 @@ void server::handle_upload(const server::request& req)
 
 	addon.clear_children("feedback");
 	int topic_id = 0;
-	if(const config& url_params = upload.child("feedback")) {
-		addon.add_child("feedback", url_params);
+	if(auto url_params = upload.optional_child("feedback")) {
+		addon.add_child("feedback", *url_params);
 		// already validated that this can be converted to an int in validate_addon()
 		topic_id = url_params["topic_id"].to_int();
 	}
@@ -1848,8 +1849,8 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << req << "Deleting add-on '" << id << "'";
 
-	config& addon = get_addon(id);
-	PLAIN_LOG << erase.debug() << "\n\n" << addon.debug();
+	auto addon = get_addon(id);
+	PLAIN_LOG << erase.debug() << "\n\n" << addon->debug();
 
 	if(!addon) {
 		send_error("The add-on does not exist.", req.sock);
@@ -1864,7 +1865,7 @@ void server::handle_delete(const server::request& req)
 	}
 
 	if(!addon["forum_auth"].to_bool()) {
-		if(!authenticate(addon, pass)) {
+		if(!authenticate(*addon, pass)) {
 			send_error("The passphrase is incorrect.", req.sock);
 			return;
 		}
@@ -1896,13 +1897,13 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config& addon = get_addon(cpass["name"]);
+	auto addon = get_addon(cpass["name"]);
 
 	if(!addon) {
 		send_error("No add-on with that name exists.", req.sock);
 	} else if(addon["forum_auth"].to_bool()) {
 		send_error("Changing the password for add-ons using forum_auth is not supported.", req.sock);
-	} else if(!authenticate(addon, cpass["passphrase"])) {
+	} else if(!authenticate(*addon, cpass["passphrase"])) {
 		send_error("Your old passphrase was incorrect.", req.sock);
 	} else if(addon["hidden"].to_bool()) {
 		LOG_CS << "Passphrase change denied - hidden add-on.";
@@ -1910,7 +1911,7 @@ void server::handle_change_passphrase(const server::request& req)
 	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
-		set_passphrase(addon, cpass["new_passphrase"]);
+		set_passphrase(*addon, cpass["new_passphrase"]);
 		dirty_addons_.emplace(addon["name"]);
 		write_config();
 		send_message("Passphrase changed.", req.sock);

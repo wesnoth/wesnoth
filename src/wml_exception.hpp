@@ -44,6 +44,12 @@
 		}                                                                 \
 	} while(false)
 
+#define VALIDATE_WML_CHILD(cfg, key, message)                                             \
+    ([](auto c, auto k) {                                                             \
+        if(auto child = c.optional_child(k)) { return *child; }                       \
+        throw_wml_exception( "Missing [" key "]", __FILE__, __LINE__, __func__, message); \
+    })(cfg, key)                                                                          \
+
 #define VALIDATE_WITH_DEV_MESSAGE(cond, message, dev_message)             \
 	do {                                                                  \
 		if(!(cond)) {                                                     \

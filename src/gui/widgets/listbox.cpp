@@ -706,11 +706,10 @@ listbox_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.optional_child("state_enabled"));
+	state.emplace_back(cfg.optional_child("state_disabled"));
 
-	const config& child = cfg.child("grid");
-	VALIDATE(child, _("No grid defined."));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined."));
 
 	grid = std::make_shared<builder_grid>(child);
 }
@@ -759,25 +758,25 @@ builder_listbox::builder_listbox(const config& cfg)
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
-	if(const config& h = cfg.child("header")) {
-		header = std::make_shared<builder_grid>(h);
+	if(auto h = cfg.optional_child("header")) {
+		header = std::make_shared<builder_grid>(*h);
 	}
 
-	if(const config& f = cfg.child("footer")) {
-		footer = std::make_shared<builder_grid>(f);
+	if(auto f = cfg.optional_child("footer")) {
+		footer = std::make_shared<builder_grid>(*f);
 	}
 
-	const config& l = cfg.child("list_definition");
+	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
 
@@ -810,17 +809,17 @@ builder_horizontal_listbox::builder_horizontal_listbox(const config& cfg)
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
-	const config& l = cfg.child("list_definition");
+	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
 
@@ -853,17 +852,17 @@ builder_grid_listbox::builder_grid_listbox(const config& cfg)
 	, has_minimum_(cfg["has_minimum"].to_bool(true))
 	, has_maximum_(cfg["has_maximum"].to_bool(true))
 {
-	const config& l = cfg.child("list_definition");
+	auto l = cfg.optional_child("list_definition");
 
 	VALIDATE(l, _("No list defined."));
 
-	list_builder = std::make_shared<builder_grid>(l);
+	list_builder = std::make_shared<builder_grid>(*l);
 	assert(list_builder);
 
 	VALIDATE(list_builder->rows == 1, _("A 'list_definition' should contain one row."));
 
 	if(cfg.has_child("list_data")) {
-		list_data = parse_list_data(cfg.child("list_data"), list_builder->cols);
+		list_data = parse_list_data(cfg.mandatory_child("list_data"), list_builder->cols);
 	}
 }
 

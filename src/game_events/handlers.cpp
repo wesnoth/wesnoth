@@ -243,7 +243,7 @@ struct filter_attack : public event_filter {
 		const auto& loc = first_ ? event_info.loc1 : event_info.loc2;
 		auto unit = units.find(loc);
 		if(unit != units.end() && loc.matches_unit(unit)) {
-			const config& attack = event_info.data.child(first_ ? "first" : "second");
+			auto attack = event_info.data.optional_child(first_ ? "first" : "second");
 			return swf_.empty() || matches_special_filter(attack, swf_);
 		}
 		return false;

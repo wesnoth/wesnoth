@@ -868,9 +868,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 		statistics::fresh_stats();
 
 		if(!game->has_load_data()) {
-			const config& cfg = config_manager.game_config().child("titlescreen_music");
+			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
 			if(cfg) {
-				for(const config& i : cfg.child_range("music")) {
+				for(const config& i : cfg->child_range("music")) {
 					sound::play_music_config(i);
 				}
 
