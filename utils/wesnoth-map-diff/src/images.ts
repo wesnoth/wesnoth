@@ -21,9 +21,11 @@ const getDictTerrainType2ImagesPath = async () => {
         acc[terrainType.string.value] = terrainType.symbol_image.value
       }
       if (!acc[terrainType.string.value] && terrainType.editor_image) {
+        console.log(`No symbol_image defined for the tile "${terrainType.string.value}"; trying editor_image next`)
         acc[terrainType.string.value] = terrainType.editor_image.value 
       }
       if (!acc[terrainType.string.value]) {
+        console.log(`No image defined for the tile "${terrainType.string.value}"; falling back to default`)
         acc[terrainType.string.value] = 'grid'
       }
       return acc
@@ -43,16 +45,19 @@ const readTerrainImages = async () => {
       let image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
       // Try a number of other places, as well:
       if (!image) {
+        console.log(`"${imageName}" not found in "${imageBasepath}"; trying ../../../images next`)
         image = await Jimp.read(`../../../images/${imageName}.png`)
       }
       if (!image) {
+        console.log(`"${imageName}" not found in ../../../images; trying ./images next`)
         image = await Jimp.read(`./images/${imageName}.png`)
       }
       if (!image) {
+        console.log(`"${imageName}" not found in ./images; trying ../../../attic next`)
         image = await Jimp.read(`../../../attic/${imageName}.png`)
       }
       if (!image) {
-        // If nothing worked, provide a sensible default as a fallback:
+        console.log(`"${imageName}" not found anywhere; falling back to a sensible default`)
         image = await Jimp.read(`../../../data/core/images/misc/blank-hex.png`)
       }
       return [terrainType, image]
