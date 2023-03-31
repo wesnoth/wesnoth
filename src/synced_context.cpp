@@ -204,6 +204,11 @@ void synced_context::set_is_simultaneous()
 	is_simultaneous_ = true;
 }
 
+void synced_context::block_undo(bool do_block)
+{
+	is_undo_blocked_ |= do_block;
+}
+
 bool synced_context::undo_blocked()
 {
 	// this method should only works in a synced context.
@@ -213,6 +218,7 @@ bool synced_context::undo_blocked()
 	// if the game has ended, undoing is blocked.
 	// if the turn has ended undoing is blocked.
 	return is_simultaneous_
+	    || is_undo_blocked_
 	    || (randomness::generator->get_random_calls() != 0)
 	    || resources::controller->is_regular_game_end()
 	    || resources::gamedata->end_turn_forced();
@@ -382,6 +388,7 @@ set_scontext_synced_base::set_scontext_synced_base()
 
 	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneous();
+	synced_context::reset_block_undo();
 	synced_context::set_last_unit_id(resources::gameboard->unit_id_manager().get_save_id());
 	synced_context::reset_undo_commands();
 
