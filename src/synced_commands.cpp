@@ -370,9 +370,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
-	// We cannot update shroud here like 'if(active) resources::undo_stack->commit_vision();'.
-	// because the undo.cpp code assumes exactly 1 entry in the undo stack per entry in the replay.
-	// And doing so would create a second entry in the undo stack for this 'auto_shroud' entry.
+	if(active && !current_team.auto_shroud_updates()) {
+		resources::undo_stack->commit_vision();
+	}
 	current_team.set_auto_shroud_updates(active);
 	if(resources::undo_stack->can_undo()) {
 		resources::undo_stack->add_auto_shroud(active);
@@ -380,16 +380,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	return true;
 }
 
-/** from resources::undo_stack->commit_vision(bool is_replay):
- * Updates fog/shroud based on the undo stack, then updates stack as needed.
- * Call this when "updating shroud now".
- * This may fire events and change the game state.
- *
- * This means it is a synced command like any other.
- */
-
 SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, error_handler)
 {
+	// When "updating shroud now" is used.
+	// Updates fog/shroud based on the undo stack, then updates stack as needed.
+	// This may fire events and change the game state.
+
 	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
