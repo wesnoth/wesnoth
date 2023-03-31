@@ -11,16 +11,19 @@ def setup_cross_compile(env):
         env.Tool("default")
 
     if env["host"]:
-        tools = [
-            "CXX",
-            "CC",
-            "AR",
-            "RANLIB",
-            "RC"
+        if env["host"].startswith("android-"):
+            env.Tool("android-ndk")
+        else:
+            tools = [
+                "CXX",
+                "CC",
+                "AR",
+                "RANLIB",
+                "RC"
             ]
-        for tool in tools:
-            if tool in env:
-                env[tool] = env["host"] + "-" + env[tool]
+            for tool in tools:
+                if tool in env:
+                    env[tool] = env["host"] + "-" + env[tool]
 
         env.PrependUnique(CPPPATH="$prefix/include", LIBPATH="$prefix/lib")
         if not env["sdldir"] and env["PLATFORM"] == "win32":
