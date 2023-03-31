@@ -369,7 +369,7 @@ config::const_child_itors config::child_range(config_key_type key) const
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-unsigned config::child_count(config_key_type key) const
+std::size_t config::child_count(config_key_type key) const
 {
 	check_valid();
 
@@ -381,12 +381,12 @@ unsigned config::child_count(config_key_type key) const
 	return 0;
 }
 
-unsigned config::all_children_count() const
+std::size_t config::all_children_count() const
 {
 	return ordered_children.size();
 }
 
-unsigned config::attribute_count() const
+std::size_t config::attribute_count() const
 {
 	return std::count_if(values_.begin(), values_.end(), [](const attribute& v) { return !v.second.blank(); });
 }
@@ -415,7 +415,7 @@ config& config::child(config_key_type key, int n)
 	}
 
 	if(n < 0) {
-		n = i->second.size() + n;
+		n = static_cast<int>(i->second.size()) + n;
 	}
 
 	try {
@@ -543,7 +543,7 @@ config& config::add_child(config_key_type key, config&& val)
 	return *v.back();
 }
 
-config& config::add_child_at(config_key_type key, const config& val, unsigned index)
+config& config::add_child_at(config_key_type key, const config& val, std::size_t index)
 {
 	check_valid(val);
 
@@ -591,7 +591,7 @@ size_t config::find_total_first_of(config_key_type key, size_t start)
 	return static_cast<size_t>(pos - ordered_begin());
 }
 
-config& config::add_child_at_total(config_key_type key, const config &val, size_t pos)
+config& config::add_child_at_total(config_key_type key, const config &val, std::size_t pos)
 {
 	assert(pos <= ordered_children.size());
 	if(pos == ordered_children.size()) {
@@ -612,7 +612,7 @@ config& config::add_child_at_total(config_key_type key, const config &val, size_
 
 	auto pl = next->pos;
 	child_list& l = pl->second;
-	unsigned int index = next->index;
+	const auto index = next->index;
 	config& res = **(l.emplace(l.begin() + index, new config(val)));
 
 	for(auto ord = next; ord != end; ++ord) {
@@ -677,12 +677,12 @@ void config::splice_children(config& src, const std::string& key)
 	child_list& dst = map_get(children_, key);
 	child_map::iterator i_dst = children_.find(key);
 
-	unsigned before = dst.size();
+	const auto before = dst.size();
 	dst.insert(dst.end(), std::make_move_iterator(i_src->second.begin()), std::make_move_iterator(i_src->second.end()));
 	src.children_.erase(i_src);
 	// key might be a reference to i_src->first, so it is no longer usable.
 
-	for(unsigned j = before; j < dst.size(); ++j) {
+	for(std::size_t j = before; j < dst.size(); ++j) {
 		ordered_children.emplace_back(i_dst, j);
 	}
 }
@@ -700,11 +700,11 @@ void config::recursive_clear_value(config_key_type key)
 	}
 }
 
-std::vector<config::child_pos>::iterator config::remove_child(const child_map::iterator& pos, unsigned index)
+std::vector<config::child_pos>::iterator config::remove_child(const child_map::iterator& pos, std::size_t index)
 {
 	/* Find the position with the correct index and decrement all the
 	   indices in the ordering that are above this index. */
-	unsigned found = 0;
+	std::size_t found = 0;
 	for(child_pos& p : ordered_children) {
 		if(p.pos != pos) {
 			continue;
@@ -729,7 +729,7 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 	return all_children_iterator(remove_child(i.i_->pos, i.i_->index));
 }
 
-void config::remove_child(config_key_type key, unsigned index)
+void config::remove_child(config_key_type key, std::size_t index)
 {
 	check_valid();
 
@@ -758,7 +758,7 @@ void config::remove_children(config_key_type key, std::function<bool(const confi
 
 	auto child_it = std::find_if(pos->second.begin(), pos->second.end(), predicate);
 	while(child_it != pos->second.end()) {
-		unsigned index = std::distance(pos->second.begin(), child_it);
+		const auto index = std::distance(pos->second.begin(), child_it);
 		remove_child(pos, index);
 		child_it = std::find_if(pos->second.begin() + index, pos->second.end(), predicate);
 	}
@@ -1159,7 +1159,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("insert_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const auto index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child item : i.all_children_range()) {
 			config& inserted = add_child_at(item.key, item.cfg, index);
 			if(track) {
@@ -1169,7 +1169,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("delete_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const auto index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child item : i.all_children_range()) {
 			if(!track) {
 				remove_child(item.key, index);
@@ -1189,7 +1189,7 @@ void config::clear_diff_track(const config& diff)
 {
 	remove_attribute(diff_track_attribute);
 	for(const config& i : diff.child_range("delete_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const auto index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child item : i.all_children_range()) {
 			remove_child(item.key, index);
 		}
@@ -1263,10 +1263,10 @@ void config::merge_with(const config& c)
 	}
 
 	// Remove those marked so
-	std::map<std::string, unsigned> removals;
+	std::map<std::string, std::size_t> removals;
 	for(const child_pos& pos : to_remove) {
 		const std::string& tag = pos.pos->first;
-		unsigned& removes = removals[tag];
+		auto& removes = removals[tag];
 		remove_child(tag, pos.index - removes++);
 	}
 }

@@ -120,10 +120,10 @@ public:
 	{
 		typedef config value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef config *pointer;
 		typedef config &reference;
 		typedef child_list::iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef child_iterator this_type;
 		explicit child_iterator(const Itor &i): i_(i) {}
 
@@ -162,10 +162,10 @@ public:
 	{
 		typedef const config value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef const config *pointer;
 		typedef const config &reference;
 		typedef child_list::const_iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef const_child_iterator this_type;
 		explicit const_child_iterator(const Itor &i): i_(i) {}
 		const_child_iterator(const child_iterator &i): i_(i.i_) {}
@@ -225,10 +225,10 @@ public:
 	{
 		typedef attribute value_type;
 		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef attribute *pointer;
 		typedef attribute &reference;
 		typedef attribute_map::iterator Itor;
+		typedef Itor::difference_type difference_type;
 		explicit attribute_iterator(const Itor &i): i_(i) {}
 
 		attribute_iterator &operator++() { ++i_; return *this; }
@@ -253,10 +253,10 @@ public:
 	{
 		typedef const attribute value_type;
 		typedef std::bidirectional_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef const attribute *pointer;
 		typedef const attribute &reference;
 		typedef attribute_map::const_iterator Itor;
+		typedef Itor::difference_type difference_type;
 		explicit const_attribute_iterator(const Itor &i): i_(i) {}
 		const_attribute_iterator(attribute_iterator& i): i_(i.i_) {}
 
@@ -283,10 +283,10 @@ public:
 
 	child_itors child_range(config_key_type key);
 	const_child_itors child_range(config_key_type key) const;
-	unsigned child_count(config_key_type key) const;
-	unsigned all_children_count() const;
+	std::size_t child_count(config_key_type key) const;
+	std::size_t all_children_count() const;
 	/** Count the number of non-blank attributes */
-	unsigned attribute_count() const;
+	std::size_t attribute_count() const;
 
 	/**
 	 * Determine whether a config has a child or not.
@@ -416,7 +416,7 @@ public:
 	 * @param val the contents of the tag
 	 * @param index is the index of the new child within all children of type key.
 	 */
-	config& add_child_at(config_key_type key, const config &val, unsigned index);
+	config& add_child_at(config_key_type key, const config &val, std::size_t index);
 
 	config &add_child(config_key_type key, config &&val);
 
@@ -591,7 +591,7 @@ public:
 	 */
 	void splice_children(config &src, const std::string &key);
 
-	void remove_child(config_key_type key, unsigned index);
+	void remove_child(config_key_type key, std::size_t index);
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
 	 */
@@ -612,9 +612,9 @@ public:
 
 	struct child_pos
 	{
-		child_pos(child_map::iterator p, unsigned i) : pos(p), index(i) {}
+		child_pos(child_map::iterator p, std::size_t i) : pos(p), index(i) {}
 		child_map::iterator pos;
-		unsigned index;
+		std::size_t index;
 
 		bool operator==(const child_pos& o) const { return pos == o.pos && index == o.index; }
 		bool operator!=(const child_pos& o) const { return !operator==(o); }
@@ -640,10 +640,10 @@ public:
 
 		typedef any_child value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef arrow_helper pointer;
 		typedef any_child reference;
 		typedef std::vector<child_pos>::iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef all_children_iterator this_type;
 		explicit all_children_iterator(const Itor &i): i_(i) {}
 
@@ -692,10 +692,10 @@ public:
 
 		typedef const any_child value_type;
 		typedef std::random_access_iterator_tag iterator_category;
-		typedef int difference_type;
 		typedef const arrow_helper pointer;
 		typedef const any_child reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
+		typedef Itor::difference_type difference_type;
 		typedef const_all_children_iterator this_type;
 		explicit const_all_children_iterator(const Itor &i): i_(i) {}
 		const_all_children_iterator(const all_children_iterator& i): i_(i.i_) {}
@@ -738,8 +738,8 @@ public:
 	 * @param val the contents of the tag
 	 * @param pos is the index of the new child in _all_ children.
 	 */
-	config& add_child_at_total(config_key_type key, const config &val, size_t pos);
-	size_t find_total_first_of(config_key_type key, size_t start = 0);
+	config& add_child_at_total(config_key_type key, const config &val, std::size_t pos);
+	std::size_t find_total_first_of(config_key_type key, std::size_t start = 0);
 
 	typedef boost::iterator_range<all_children_iterator> all_children_itors;
 	typedef boost::iterator_range<const_all_children_iterator> const_all_children_itors;
@@ -859,7 +859,7 @@ private:
 	/**
 	 * Removes the child at position @a pos of @a l.
 	 */
-	std::vector<child_pos>::iterator remove_child(const child_map::iterator &l, unsigned pos);
+	std::vector<child_pos>::iterator remove_child(const child_map::iterator &l, std::size_t pos);
 
 	/** All the attributes of this node. */
 	attribute_map values_;
