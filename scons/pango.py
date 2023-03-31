@@ -7,7 +7,7 @@ from SCons.Util import AppendPath
 def CheckPango(context, backend, require_version = None):
     context.Message("Checking for Pango with " + backend + " backend... ")
     env = context.env
-    gtkdir = env.get("gtkdir", os.environ.get("GTK_BASEPATH"))
+    gtkdir = env.get("gtkdir") or os.environ.get("GTK_BASEPATH") or env.get("prefix")
     if gtkdir:
         environ["PATH"] = AppendPath(environ["PATH"], join(gtkdir, "bin"))
         environ["PKG_CONFIG_PATH"] = AppendPath(environ.get("PKG_CONFIG_PATH", ""), join(gtkdir, "lib/pkgconfig"))
