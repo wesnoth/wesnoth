@@ -79,7 +79,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 
 void turn_info::send_data()
 {
-	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::is_simultaneous();
+	const bool send_everything = synced_context::is_unsynced() ? !resources::undo_stack->can_undo() : synced_context::undo_blocked();
 	if ( !send_everything ) {
 		replay_sender_.sync_non_undoable();
 	} else {

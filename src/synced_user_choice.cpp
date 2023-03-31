@@ -370,7 +370,7 @@ void user_choice_manager::ask_local_choice()
 	//send data to others.
 	//but if there wasn't any data sent during this turn, we don't want to begin with that now.
 	//TODO: we should send user choices during nonundoable actions immediately.
-	if(synced_context::is_simultaneous() || current_side_ != local_choice_)
+	if(synced_context::undo_blocked() || current_side_ != local_choice_)
 	{
 		synced_context::send_user_choice();
 	}
