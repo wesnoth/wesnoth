@@ -31,3 +31,4 @@ def setup_cross_compile(env):
 
         os.environ["PKG_CONFIG_LIBDIR"] = ''
         env["ENV"]["PKG_CONFIG_LIBDIR"] = ''
+        env["ENV"]["PKG_CONFIG_PATH"] = env.subst("$prefix/lib/pkgconfig")
