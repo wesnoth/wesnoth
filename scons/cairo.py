@@ -7,7 +7,7 @@ def CheckCairo(context, min_version):
     context.Message("Checking for Cairo... ")
     env = context.env
 
-    gtkdir = env.get("gtkdir", environ.get("GTK_BASEPATH"))
+    gtkdir = env.get("gtkdir") or environ.get("GTK_BASEPATH") or env.get("prefix")
     if gtkdir:
         environ["PATH"] = AppendPath(environ["PATH"], join(gtkdir, "bin"))
         environ["PKG_CONFIG_PATH"] = AppendPath(environ.get("PKG_CONFIG_PATH", ""), join(gtkdir, "lib/pkgconfig"))
