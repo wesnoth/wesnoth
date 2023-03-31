@@ -36,7 +36,6 @@ const getDictTerrainType2ImagesPath = async () => {
 
 const readTerrainImages = async () => {
   const imageBasepath = path.resolve(__dirname, '../../../data/core/images/terrain')
-  const localImageBasepath = path.resolve(__dirname, './images')
 
   const dictTerrainType2ImagesPath = await getDictTerrainType2ImagesPath()
 
@@ -44,13 +43,8 @@ const readTerrainImages = async () => {
     .entries(dictTerrainType2ImagesPath)
     .map(async ([terrainType, imageName]) => {
       let image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
-      // Try one more place:
       if (!image) {
-        console.log(`"${imageName}" not found in "${imageBasepath}"; trying "${localImageBasepath}" next`)
-        image = await Jimp.read(`${localImageBasepath}/${imageName}.png`)
-      }
-      if (!image) {
-        console.log(`"${imageName}" not found anywhere; falling back to a sensible default`)
+        console.log(`"${imageName}" not found in "${imageBasepath}"; falling back to a sensible default`)
         image = await Jimp.read(`../../../data/core/images/misc/blank-hex.png`)
       }
       return [terrainType, image]
