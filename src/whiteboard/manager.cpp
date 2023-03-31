@@ -186,7 +186,6 @@ void manager::set_active(bool active)
 		{
 			if(should_clear_undo()) {
 				if(!resources::controller->current_team().auto_shroud_updates()) {
-					synced_context::run_and_throw("update_shroud", replay_helper::get_update_shroud());
 					synced_context::run_and_throw("auto_shroud", replay_helper::get_auto_shroud(true));
 				}
 				resources::undo_stack->clear();
