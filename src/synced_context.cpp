@@ -79,7 +79,7 @@ bool synced_context::run(const std::string& commandname,
 	if(undo_blocked()) {
 		// This in particular helps the networking code to make sure this command is sent.
 		resources::undo_stack->clear();
-		// TODO: would it be a good idea to immidiately send the data to the server here?
+		send_user_choice();
 	}
 
 	sync.do_final_checkup();
@@ -211,7 +211,7 @@ void synced_context::set_is_simultaneous()
 bool synced_context::undo_blocked()
 {
 	// this method should only works in a synced context.
-	assert(is_synced());
+	assert(!is_unsynced());
 	// if we sent data of this action over the network already, undoing is blocked.
 	// if we called the rng, undoing is blocked.
 	// if the game has ended, undoing is blocked.
@@ -234,9 +234,10 @@ void synced_context::pull_remote_user_input()
 	syncmp_registry::pull_remote_choice();
 }
 
+// TODO: this is now also used for normal actions, maybe it should be renamed.
 void synced_context::send_user_choice()
 {
-	assert(is_simultaneous_);
+	assert(undo_blocked());
 	syncmp_registry::send_user_choice();
 }
 

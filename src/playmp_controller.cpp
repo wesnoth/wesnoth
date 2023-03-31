@@ -101,6 +101,7 @@ void playmp_controller::remove_blindfold()
 
 void playmp_controller::play_linger_turn()
 {
+	turn_data_.send_data();
 	if(replay_controller_.get() != nullptr) {
 		// We have probably been using the mp "back to turn" feature
 		// We continue play since we have reached the end of the replay.
@@ -184,7 +185,6 @@ void playmp_controller::play_human_turn()
 			}
 		} catch(...) {
 			DBG_NG << "Caught exception while playing a side: " << utils::get_unknown_exception_type();
-			turn_data_.send_data();
 			throw;
 		}
 
@@ -205,7 +205,6 @@ void playmp_controller::play_idle_loop()
 			SDL_Delay(1);
 		} catch(...) {
 			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
-			turn_data_.send_data();
 			throw;
 		}
 
@@ -267,7 +266,6 @@ void playmp_controller::linger()
 
 void playmp_controller::wait_for_upload()
 {
-	//TODO: check that this really sends all that data and doesn't dor example wrongly assume we can und undo the last action.
 	turn_data_.send_data();
 	// If the host is here we'll never leave since we wait for the host to
 	// upload the next scenario.
@@ -371,8 +369,6 @@ void playmp_controller::process_oos(const std::string& err_msg) const
 
 void playmp_controller::handle_generic_event(const std::string& name)
 {
-	turn_data_.send_data();
-
 	if(name == "ai_user_interact") {
 		playsingle_controller::handle_generic_event(name);
 		turn_data_.send_data();
@@ -451,6 +447,7 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 		// receive chat during animations and delay
 		process_network_data(true);
 		// cannot use turn_data_.send_data() here.
+		// todo: why? The checks in turn_data_.send_data() should be safe enouth.
 		replay_sender_.sync_non_undoable();
 	}
 

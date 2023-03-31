@@ -143,7 +143,7 @@ public:
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 
-	/** @return whether we already sent data about the current action to other clients. which means we cannot undo it. */
+	/** @return whether we needed data from other clients about the action, in this case we need to send data about the current action to other clients. which means we cannot undo it. */
 	static bool is_simultaneous()
 	{
 		return is_simultaneous_;
