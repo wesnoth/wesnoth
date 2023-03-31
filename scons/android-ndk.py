@@ -6,9 +6,9 @@ from SCons.Builder import Builder
 #Intended usage:
 #- env["ndkdir"] set to ndk home
 #- env["android_api"] set to target api
-#- host needs to be set to android-$ABI where $ABI is one of keys in 
+#- host needs to be set to android-$ABI where $ABI is one of keys in
 #    ndkdir/meta/abis.json
-#- prefix needs to be set to sysroot containing cross-compiled 
+#- prefix needs to be set to sysroot containing cross-compiled
 #    dependencies for matching android abi
 
 def exists(env):
