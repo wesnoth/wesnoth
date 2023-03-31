@@ -87,7 +87,7 @@ namespace actions {
 		 * the difference in the unit ids
 		 * TODO: does it really make sense to allow undoing if the unit id counter has changed?
 		 */
-		int unit_id_diff;
+		std::size_t unit_id_diff;
 		/** actions wml (specified by wml) that should be executed when undoing this command. */
 		typedef std::vector<undo_event> event_vector;
 		event_vector umc_commands_undo;

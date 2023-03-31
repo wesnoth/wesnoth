@@ -77,7 +77,7 @@ undo_action::undo_action()
 
 undo_action::undo_action(const config& cfg)
 	: undo_action_base()
-	, unit_id_diff(cfg["unit_id_diff"])
+	, unit_id_diff(cfg["unit_id_diff"].to_size_t())
 {
 	read_event_vector(umc_commands_undo, cfg, "undo_actions");
 }

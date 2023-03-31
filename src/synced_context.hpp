@@ -166,7 +166,7 @@ public:
 		last_unit_id_ = id;
 	}
 
-	static int get_unit_id_diff();
+	static std::size_t get_unit_id_diff();
 
 	class server_choice
 	{

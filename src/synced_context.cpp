@@ -208,11 +208,11 @@ bool synced_context::can_undo()
 	return (!is_simultaneous_) && (randomness::generator->get_random_calls() == 0);
 }
 
-int synced_context::get_unit_id_diff()
+std::size_t synced_context::get_unit_id_diff()
 {
 	// this method only works in a synced context.
 	assert(is_synced());
-	return static_cast<int>(resources::gameboard->unit_id_manager().get_save_id()) - last_unit_id_;
+	return resources::gameboard->unit_id_manager().get_save_id() - last_unit_id_;
 }
 
 void synced_context::pull_remote_user_input()

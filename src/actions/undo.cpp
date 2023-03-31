@@ -360,11 +360,11 @@ void undo_list::undo()
 	undos_.pop_back();
 	if (undo_action* undoable_action = dynamic_cast<undo_action*>(action.get()))
 	{
-		int last_unit_id = static_cast<int>(resources::gameboard->unit_id_manager().get_save_id());
+		std::size_t last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
 		if ( !undoable_action->undo(side_) ) {
 			return;
 		}
-		if(last_unit_id - undoable_action->unit_id_diff < 0) {
+		if(undoable_action->unit_id_diff > last_unit_id) {
 			ERR_NG << "Next unit id is below 0 after undoing";
 		}
 		resources::gameboard->unit_id_manager().set_save_id(last_unit_id - undoable_action->unit_id_diff);
