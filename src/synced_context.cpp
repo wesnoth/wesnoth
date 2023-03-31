@@ -73,6 +73,8 @@ bool synced_context::run(const std::string& commandname,
 
 	resources::controller->check_victory();
 
+	sync.do_final_checkup();
+
 	// TODO: It would be nice if this could automaticially detect that
 	//       no entry was pushed to the undo stack for this action
 	//       and always clear the undo stack in that case.
@@ -81,8 +83,6 @@ bool synced_context::run(const std::string& commandname,
 		resources::undo_stack->clear();
 		send_user_choice();
 	}
-
-	sync.do_final_checkup();
 
 	DBG_REPLAY << "run_in_synced_context end";
 	return true;
