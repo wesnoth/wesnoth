@@ -404,23 +404,18 @@ void undo_list::undo()
  */
 void undo_list::redo()
 {
-	if ( redos_.empty() )
+	if (redos_.empty()) {
 		return;
-
-	const events::command_disabler disable_commands;
-
-	game_display & gui = *game_display::get_singleton();
-
-	// Get the action to redo. (This will be placed on the undo stack, but
-	// only if the redo is successful.)
+	}
+	// Get the action to redo.
 	auto action = std::move(redos_.back());
 	redos_.pop_back();
 
-	const config& command_wml = action->child("command");
-	std::string commandname = command_wml.all_children_range().front().key;
-	const config& data = command_wml.all_children_range().front().cfg;
 
-	resources::recorder->redo(const_cast<const config&>(*action));
+	auto [commandname, data] = action->child("command").all_children_range().front();
+
+	// Note that this might add more than one [command]
+	resources::recorder->redo(*action);
 
 	auto error_handler =  [](const std::string&  msg) {
 		ERR_NG << "Out of sync when redoing: " << msg;
@@ -428,14 +423,17 @@ void undo_list::redo()
 					_("The redo stack is out of sync. This is most commonly caused by a corrupt save file or by faulty WML code in the scenario or era. Details:") + msg);
 
 	};
-	// synced_context::run readds the undo command with the normal undo_lis::add function which clears the
-	// redo stack which makes redoign of more than one move impossible. to work around that we save redo stack here and set it later.
+	// synced_context::run readds the undo command with the normal
+	// undo_list::add function which clears the redo stack which would
+	// make redoing of more than one move impossible. To work around
+	// that we save redo stack here and set it later.
 	redos_list temp;
 	temp.swap(redos_);
 	synced_context::run(commandname, data, /*use_undo*/ true, /*show*/ true, error_handler);
 	temp.swap(redos_);
 
 	// Screen updates.
+	game_display & gui = *game_display::get_singleton();
 	gui.invalidate_unit();
 	gui.invalidate_game_status();
 	gui.redraw_minimap();
