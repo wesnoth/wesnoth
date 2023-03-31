@@ -97,6 +97,9 @@ namespace translation
 [[maybe_unused]] inline static std::string _n(const char* str1, const char* str2, int n)
 { return translation::dsngettext(GETTEXT_DOMAIN, str1, str2, n); }
 
+[[maybe_unused]] inline static std::string _n(const char* str1, const char* str2, std::size_t n)
+{ return translation::dsngettext(GETTEXT_DOMAIN, str1, str2, static_cast<int>(n)); }
+
 #define gettext_noop(String) String
 #define N_(String) gettext_noop (String)
 #define N_n(String1, String2) String1, String2

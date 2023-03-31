@@ -389,7 +389,7 @@ protected:
 			if (!l.empty()) {
 				// TRANSLATORS: alternative names for command-line commands, only shown if
 				// there is at least one of them.
-				ss << _n("command^Alias:", "Aliases:", static_cast<int>(l.size())) << " " << utils::join(l, " ") << "\n";
+				ss << _n("command^Alias:", "Aliases:", l.size()) << " " << utils::join(l, " ") << "\n";
 			}
 			print(_("help"), ss.str());
 		}

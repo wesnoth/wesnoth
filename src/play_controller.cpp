@@ -1245,12 +1245,12 @@ void play_controller::check_next_scenario_is_known() {
 		// TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 		// said "okay" to a "loading saves from an old version might not work" dialog.
 		"Some of the possible next scenarios are missing, you might not be able to finish this campaign.",
-		static_cast<int>(unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0)));
+		unknown.size() + known.size() + (possible_this_is_the_last_scenario ? 1 : 0));
 	message << "\n\n";
 	message << _n(
 		"Please report the following missing scenario to the campaign’s author:\n$unknown_list|",
 		"Please report the following missing scenarios to the campaign’s author:\n$unknown_list|",
-		static_cast<int>(unknown.size()));
+		unknown.size());
 	message << "\n";
 	message << _("Once this is fixed, you will need to restart this scenario.");
 

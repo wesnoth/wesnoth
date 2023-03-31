@@ -635,11 +635,11 @@ void game_config_manager::load_addons_cfg()
 		const std::string& msg1 =
 			_n("The following add-on had errors and could not be loaded:",
 			   "The following add-ons had errors and could not be loaded:",
-			   static_cast<int>(n));
+			   n);
 		const std::string& msg2 =
 			_n("Please report this to the author or maintainer of this add-on.",
 			   "Please report this to the respective authors or maintainers of these add-ons.",
-			   static_cast<int>(n));
+			   n);
 
 		const std::string& report = utils::join(error_log, "\n\n");
 		events::call_in_main_thread([&]() {

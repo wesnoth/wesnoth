@@ -36,7 +36,7 @@ void install_dependencies::pre_show(window& window)
 		_n(
 			"The selected add-on has the following dependency, which is outdated or not currently installed. Do you wish to install it before continuing?",
 			"The selected add-on has the following dependencies, which are outdated or not currently installed. Do you wish to install them before continuing?",
-			static_cast<int>(addons_.size()))
+			addons_.size())
 	));
 
 	find_widget<addon_list>(&window, "dependencies", false).set_addons(addons_);
