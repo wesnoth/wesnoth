@@ -10,7 +10,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Bulgarian, French
+   * Updated translations: British English, Bulgarian, French, Spanish
  ### Units
  ### User interface
    * The "Back To Turn" menu now replays the turn in singelplayer too. However,
