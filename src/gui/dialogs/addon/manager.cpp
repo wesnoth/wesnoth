@@ -932,6 +932,10 @@ void addon_manager::publish_addon(const addon_info& addon)
 		} else {
 			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
+	} else if(cfg["forum_auth"].to_bool()) {
+		// if the uploader's forum password is present in the _server.pbl
+		gui2::show_error_message(_("The passphrase attribute cannot be present when forum_auth is used."));
+		return;
 	}
 
 	if(!::image::exists(cfg["icon"].str())) {
