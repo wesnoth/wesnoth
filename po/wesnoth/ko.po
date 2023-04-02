@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:34-0600\n"
+"POT-Creation-Date: 2023-04-02 09:56-0500\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -6270,7 +6270,7 @@ msgstr "$elem has been deprecated and removed."
 msgid "Chat message"
 msgstr "채팅 메세지 "
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:582
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:584
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6308,7 +6308,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
-#: src/game_config.cpp:530
+#: src/game_config.cpp:532
 msgid "Invalid color in range: "
 msgstr "범위 밖의 무효한 색상: "
 
@@ -6916,7 +6916,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "로드하려는 파일이 손상되었습니다"
 
 #: src/game_launcher.cpp:706 src/game_launcher.cpp:725
-#: src/hotkey/hotkey_handler_sp.cpp:316 src/savegame.cpp:154
+#: src/hotkey/hotkey_handler_sp.cpp:320 src/savegame.cpp:154
 #: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "로드하려는 파일이 손상되었습니다: '"
@@ -7201,11 +7201,11 @@ msgstr "속도 가속 활성화!"
 msgid "Accelerated speed disabled!"
 msgstr "속도 가속 비활성화!"
 
-#: src/hotkey/hotkey_handler.cpp:426
+#: src/hotkey/hotkey_handler.cpp:427
 msgid "Back to Turn "
 msgstr "되돌리기 - 턴 "
 
-#: src/hotkey/hotkey_handler.cpp:432
+#: src/hotkey/hotkey_handler.cpp:433
 msgid "Back to Start"
 msgstr "처음으로 돌아감"
 
@@ -8820,7 +8820,7 @@ msgstr "계속하기 전에 저장하길 원하십니까?"
 msgid "Debug Command Used"
 msgstr "디버깅 커맨드가 사용되었습니다."
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "디버깅 모드에 의해 $player 턴에 유닛이 작성되었습니다."
 
@@ -9058,27 +9058,27 @@ msgstr "$year AF"
 msgid "Disconnected from server."
 msgstr "서버 접속"
 
-#: src/whiteboard/manager.cpp:1118
+#: src/whiteboard/manager.cpp:1122
 msgid "SHOW ALL allies’ plans"
 msgstr "모든 동맹군 계획 표시"
 
-#: src/whiteboard/manager.cpp:1119
+#: src/whiteboard/manager.cpp:1123
 msgid "HIDE ALL allies’ plans"
 msgstr "모든 동맹군 계획 숨기기"
 
-#: src/whiteboard/manager.cpp:1133
+#: src/whiteboard/manager.cpp:1137
 #, fuzzy
 #| msgid "Show replay"
 msgid "Show plans for $player"
 msgstr "$player 의 계획을 표시."
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1139
 #, fuzzy
 #| msgid "Replace with $player"
 msgid "Hide plans for $player"
 msgstr "$player 의 계획을 숨기기."
 
-#: src/whiteboard/manager.cpp:1138
+#: src/whiteboard/manager.cpp:1142
 msgid "Whiteboard Options"
 msgstr "행동 예정 옵션"
 

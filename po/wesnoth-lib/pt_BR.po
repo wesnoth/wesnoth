@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:33-0600\n"
+"POT-Creation-Date: 2023-04-02 09:55-0500\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -3688,7 +3688,7 @@ msgstr ""
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:170
 msgid "Defaults"
 msgstr "Resetar"
 
@@ -4014,7 +4014,7 @@ msgstr "Salvar senha localmente (encriptado)"
 #: data/gui/window/mp_faction_select.cfg:370
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/select_orb_colors.cfg:181
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -4160,7 +4160,7 @@ msgstr "OK"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:108
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:192
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -8653,7 +8653,7 @@ msgstr ""
 "Navegar pelo folder de captura de telas usando um gerenciador de arquivos"
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr "Escolher a cor da Esfera/Minimapa"
 
@@ -8662,7 +8662,7 @@ msgstr "Escolher a cor da Esfera/Minimapa"
 # File: src/hotkeys.cpp, line: 117
 # File: src/hotkeys.cpp, line: 117
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
 msgstr "Mostrar esfera ainda não movida"
 
@@ -8671,16 +8671,30 @@ msgstr "Mostrar esfera ainda não movida"
 # File: src/game_preferences_display.cpp, line: 195
 # File: src/game_preferences_display.cpp, line: 195
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
-msgid "Show partial moved orb"
+#: data/gui/window/select_orb_colors.cfg:147
+#, fuzzy
+#| msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "Mostrar esfera parcialmente movida"
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
 
 #
 # File: src/game_preferences_display.cpp, line: 195
 # File: src/game_preferences_display.cpp, line: 195
 # File: src/game_preferences_display.cpp, line: 195
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
 msgstr "Mostrar esfera após movimento"
 
@@ -8689,32 +8703,31 @@ msgstr "Mostrar esfera após movimento"
 # File: src/game_preferences_display.cpp, line: 180
 # File: src/game_preferences_display.cpp, line: 180
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:153
 msgid "Show ally orb"
 msgstr "Mostrar esfera aliada"
 
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:154
+msgid "During ally’s turn, use a two-color orb to show movement"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:154
+msgid ""
+"During your allies’ turns, their units have a two-color orb. One half is the "
+"ally orb color, and the other half shows whether the unit is unmoved, "
+"partially moved or fully moved."
+msgstr ""
+
 #
 # File: src/hotkeys.cpp, line: 117
 # File: src/hotkeys.cpp, line: 117
 # File: src/hotkeys.cpp, line: 117
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:156
 msgid "Show enemy orb"
 msgstr "Mostrar esfera inimiga"
-
-#
-# File: src/hotkeys.cpp, line: 117
-# File: src/hotkeys.cpp, line: 117
-# File: src/hotkeys.cpp, line: 117
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "Show disengaged orb"
-msgstr "Mostrar esfera de desengajar"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr "Usa as cores para esferas parciais e movidas."
 
 #
 # File: src/hotkeys.cpp, line: 157
@@ -13295,6 +13308,16 @@ msgid ""
 msgstr ""
 "A chave '$deprecated_key' foi renomeada para '$key'. Suporte para "
 "'$deprecated_key' será removido na versão $removal_version."
+
+#
+# File: src/hotkeys.cpp, line: 117
+# File: src/hotkeys.cpp, line: 117
+# File: src/hotkeys.cpp, line: 117
+#~ msgid "Show disengaged orb"
+#~ msgstr "Mostrar esfera de desengajar"
+
+#~ msgid "This uses the colors for partial and moved orbs."
+#~ msgstr "Usa as cores para esferas parciais e movidas."
 
 #
 # File: src/hotkeys.cpp, line: 76

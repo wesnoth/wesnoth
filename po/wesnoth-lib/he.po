@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:33-0600\n"
+"POT-Creation-Date: 2023-04-02 09:55-0500\n"
 "PO-Revision-Date: 2011-08-29 14:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -2108,7 +2108,7 @@ msgstr ""
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/window/mp_alerts_options.cfg:227
 #: data/gui/window/preferences/02_hotkeys.cfg:279
-#: data/gui/window/select_orb_colors.cfg:129
+#: data/gui/window/select_orb_colors.cfg:170
 #, fuzzy
 #| msgid "Default"
 msgid "Defaults"
@@ -2270,7 +2270,7 @@ msgstr "שמור סיסמא להעדפות (כטקסט לא מוצפן)"
 #: data/gui/window/mp_faction_select.cfg:370
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/select_orb_colors.cfg:140
+#: data/gui/window/select_orb_colors.cfg:181
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2310,7 +2310,7 @@ msgstr "אישור"
 #: data/gui/window/mp_login.cfg:257 data/gui/window/mp_method_selection.cfg:341
 #: data/gui/window/mp_staging.cfg:433
 #: data/gui/window/network_transmission.cfg:108
-#: data/gui/window/select_orb_colors.cfg:151
+#: data/gui/window/select_orb_colors.cfg:192
 #: data/gui/window/simple_item_selector.cfg:158
 #: data/gui/window/sp_options_configure.cfg:117
 #: data/gui/window/surrender_quit.cfg:114 data/gui/window/theme_list.cfg:155
@@ -5471,56 +5471,69 @@ msgid "Browse the screenshots folder using a file manager"
 msgstr ""
 
 #. [label]
-#: data/gui/window/select_orb_colors.cfg:106
+#: data/gui/window/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
 msgstr ""
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:110
+#: data/gui/window/select_orb_colors.cfg:144
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show unmoved orb"
 msgstr "הראה מהלכי אויב"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:111
+#: data/gui/window/select_orb_colors.cfg:147
 #, fuzzy
 #| msgid "Show team colors"
-msgid "Show partial moved orb"
+msgid "Show partially moved orb"
 msgstr "הצג צבעי צוותים"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:112
+#: data/gui/window/select_orb_colors.cfg:148
+msgid ""
+"If a unit can move but can’t attack, show a two-color orb with the colors "
+"for partially and fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:148
+msgid "Use a two-color orb for disengaged units"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:150
 #, fuzzy
 #| msgid "Show team colors"
 msgid "Show moved orb"
 msgstr "הצג צבעי צוותים"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:113
+#: data/gui/window/select_orb_colors.cfg:153
 #, fuzzy
 #| msgid "Show all lobby joins"
 msgid "Show ally orb"
 msgstr "הראה את כל ההצטרפות ללובי"
 
 #. [grid]
-#: data/gui/window/select_orb_colors.cfg:114
+#: data/gui/window/select_orb_colors.cfg:154
+msgid "During ally’s turn, use a two-color orb to show movement"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:154
+msgid ""
+"During your allies’ turns, their units have a two-color orb. One half is the "
+"ally orb color, and the other half shows whether the unit is unmoved, "
+"partially moved or fully moved."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/select_orb_colors.cfg:156
 #, fuzzy
 #| msgid "Show Enemy Moves"
 msgid "Show enemy orb"
 msgstr "הראה מהלכי אויב"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-#, fuzzy
-#| msgid "Show Enemy Moves"
-msgid "Show disengaged orb"
-msgstr "הראה מהלכי אויב"
-
-#. [grid]
-#: data/gui/window/select_orb_colors.cfg:115
-msgid "This uses the colors for partial and moved orbs."
-msgstr ""
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -8596,6 +8609,11 @@ msgid ""
 msgstr ""
 "השם '$deprecated_key' שונה ל-'$key'. התמיכה ב-'$deprecated_key' תוסר בגרסא "
 "$removal_version ."
+
+#, fuzzy
+#~| msgid "Show Enemy Moves"
+#~ msgid "Show disengaged orb"
+#~ msgstr "הראה מהלכי אויב"
 
 #, fuzzy
 #~| msgid "Recruit"

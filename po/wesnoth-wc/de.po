@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-02 00:33 UTC\n"
+"POT-Creation-Date: 2023-04-02 14:55 UTC\n"
 "PO-Revision-Date: 2023-01-22 16:29+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -143,13 +143,11 @@ msgstr "Rekruten"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:467
-#| msgid "Deserter"
 msgid "Deserters"
 msgstr "Deserteure"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:486
-#| msgid "Commander"
 msgid "Commanders"
 msgstr "Kommandanten"
 
@@ -162,7 +160,6 @@ msgstr "Helden"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:524
-#| msgid "Random"
 msgid "Random Leaders"
 msgstr "Zufällige Anführer"
 
@@ -175,13 +172,11 @@ msgstr "Einstellungen"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:592
-#| msgid "World Conquest"
 msgid "Use World Conquest PYA mod"
 msgstr "Verwendung der WC PYA mod"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:612
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
 msgstr "Verwendung der WC Einheitenmarkierung"
 
@@ -202,7 +197,6 @@ msgstr "Schwierigkeitsgrad"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:693
-#| msgid "World Conquest"
 msgid "World Conquest version"
 msgstr "WC Version"
 
@@ -294,13 +288,11 @@ msgstr "Burggröße"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#| msgid "Factions"
 msgid "iterations"
 msgstr "Durchläufe"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-#| msgid "terrain^water"
 msgid "terrain factor"
 msgstr "Geländefaktor"
 
@@ -311,7 +303,6 @@ msgstr "Inselfaktor"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#| msgid "Tome of secrets"
 msgid "number of keeps"
 msgstr "Anzahl Burgfriede"
 
@@ -353,11 +344,13 @@ msgstr "Ihr verwendet keine WC2 Fraktion."
 
 #. [lua]: artifacts.give_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:149
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts_updated.lua:169
 msgid "I cannot pick up that item."
 msgstr "Ich kann diesen Gegenstand nicht aufnehmen."
 
 #. [lua]: wesnoth.wml_actions.wc2_show_item_info
 #: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:231
+#: data/campaigns/World_Conquest/lua/game_mechanics/artifacts_updated.lua:251
 msgid "Remind me what this item does"
 msgstr "Was macht dieser Gegenstand?"
 
@@ -2269,8 +2262,8 @@ msgid ""
 "scenario with no cost (up to castle size).\n"
 "\n"
 msgstr ""
-"<b>Heldenhafte</b> Einheiten werden zu Beginn eines Szenarios kostenfrei"
-" einberufen (sofern noch Platz in der Burg ist).\n"
+"<b>Heldenhafte</b> Einheiten werden zu Beginn eines Szenarios kostenfrei "
+"einberufen (sofern noch Platz in der Burg ist).\n"
 "\n"
 
 #. [lua]: preshow
@@ -2284,8 +2277,8 @@ msgid ""
 "Units costing less than 17 gold are cheaper to recall.\n"
 "\n"
 msgstr ""
-"Einheiten, deren Ausbildungspreis unter 17 Goldstücken liegt, können billiger"
-" einberufen werden.\n"
+"Einheiten, deren Ausbildungspreis unter 17 Goldstücken liegt, können "
+"billiger einberufen werden.\n"
 "\n"
 
 #. [lua]: preshow
@@ -2315,8 +2308,8 @@ msgid ""
 "free upkeep.\n"
 "\n"
 msgstr ""
-"Einheiten die <b>heldenhaft</b> sind oder ein magischen <b>Gegenstand</b>"
-" tragen erfordern keine Unterhaltskosten.\n"
+"Einheiten die <b>heldenhaft</b> sind oder ein magischen <b>Gegenstand</b> "
+"tragen erfordern keine Unterhaltskosten.\n"
 "\n"
 
 #. [lua]: preshow
@@ -2332,9 +2325,9 @@ msgid ""
 "units and either contain artifacts, loyal units, or training.\n"
 "\n"
 msgstr ""
-"In jedem Szenario werden so viele Bonusfelder generiert wie es Spieler gibt."
-" Die Bonusfelder können eingesammelt werden und geben entweder ein Artefakt,"
-" eine loyale Einheit oder Trainingsboni.\n"
+"In jedem Szenario werden so viele Bonusfelder generiert wie es Spieler gibt. "
+"Die Bonusfelder können eingesammelt werden und geben entweder ein Artefakt, "
+"eine loyale Einheit oder Trainingsboni.\n"
 "\n"
 
 #. [lua]: preshow

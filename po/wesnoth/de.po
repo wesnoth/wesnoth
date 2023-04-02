@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-01 18:34-0600\n"
+"POT-Creation-Date: 2023-04-02 09:56-0500\n"
 "PO-Revision-Date: 2023-01-22 18:03+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -211,7 +211,6 @@ msgstr ""
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
 msgstr "Timeout der Serververbindung"
 
@@ -222,9 +221,9 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
-"Zeit in Sekunden bis von einem Verbindungsabbruch ausgegangen wird. Wenn Ihr"
-" gerade im Server eingeloggt seit, müsst ihr Euch neu einloggen, um diese"
-" Änderung zu aktivieren."
+"Zeit in Sekunden bis von einem Verbindungsabbruch ausgegangen wird. Wenn Ihr "
+"gerade im Server eingeloggt seit, müsst ihr Euch neu einloggen, um diese "
+"Änderung zu aktivieren."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -6302,7 +6301,7 @@ msgstr "$elem ist veraltet und wurde entfernt."
 msgid "Chat message"
 msgstr "Chat-Nachricht"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:582
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:584
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6342,7 +6341,7 @@ msgstr "%d %b"
 msgid "%b %d %Y"
 msgstr "%d %b %y"
 
-#: src/game_config.cpp:530
+#: src/game_config.cpp:532
 msgid "Invalid color in range: "
 msgstr "Ungültiger Farbbereich: "
 
@@ -6937,7 +6936,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Die Datei, die Ihr zu laden versucht, ist beschädigt"
 
 #: src/game_launcher.cpp:706 src/game_launcher.cpp:725
-#: src/hotkey/hotkey_handler_sp.cpp:316 src/savegame.cpp:154
+#: src/hotkey/hotkey_handler_sp.cpp:320 src/savegame.cpp:154
 #: src/savegame.cpp:315
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Die Datei, die Ihr zu laden versucht, ist beschädigt: '"
@@ -7189,11 +7188,11 @@ msgstr "Erhöhte Geschwindigkeit aktiviert!"
 msgid "Accelerated speed disabled!"
 msgstr "Erhöhte Geschwindigkeit deaktiviert!"
 
-#: src/hotkey/hotkey_handler.cpp:426
+#: src/hotkey/hotkey_handler.cpp:427
 msgid "Back to Turn "
 msgstr "Zurück zu Runde "
 
-#: src/hotkey/hotkey_handler.cpp:432
+#: src/hotkey/hotkey_handler.cpp:433
 msgid "Back to Start"
 msgstr "Zurück zum Anfang"
 
@@ -8854,7 +8853,7 @@ msgstr "Möchten Sie das Spiel speichern bevor sie fortfahren?"
 msgid "Debug Command Used"
 msgstr "Entwicklerkommando verwendet"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Eine Einheit wurde mit Hilfe eines Entwicklerkommandos erstellt (Spieler: "
@@ -9076,23 +9075,23 @@ msgstr "$year NF"
 msgid "Disconnected from server."
 msgstr "Verbindung zum Server getrennt."
 
-#: src/whiteboard/manager.cpp:1118
+#: src/whiteboard/manager.cpp:1122
 msgid "SHOW ALL allies’ plans"
 msgstr "ZEIGE ALLE Pläne der Verbündeten"
 
-#: src/whiteboard/manager.cpp:1119
+#: src/whiteboard/manager.cpp:1123
 msgid "HIDE ALL allies’ plans"
 msgstr "VERBERGE ALLE Pläne der Verbündeten"
 
-#: src/whiteboard/manager.cpp:1133
+#: src/whiteboard/manager.cpp:1137
 msgid "Show plans for $player"
 msgstr "Pläne für Spieler $player anzeigen"
 
-#: src/whiteboard/manager.cpp:1135
+#: src/whiteboard/manager.cpp:1139
 msgid "Hide plans for $player"
 msgstr "Pläne für Spieler $player verbergen"
 
-#: src/whiteboard/manager.cpp:1138
+#: src/whiteboard/manager.cpp:1142
 msgid "Whiteboard Options"
 msgstr "Planungsmodus Optionen"
 
