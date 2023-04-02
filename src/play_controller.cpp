@@ -1174,6 +1174,7 @@ void play_controller::start_game()
 				t.set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
 			}
 		}
+		did_autosave_this_turn_ = false;
 	} else {
 		init_gui();
 		gui_->recalculate_minimap();
