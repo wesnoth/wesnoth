@@ -20,6 +20,7 @@
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
@@ -185,7 +186,12 @@ const config mp_match_history::request_history(int offset)
 			if(response.child_count("game_history_result") == 0) {
 				DBG_NW << "Received non-history data: " << response.debug();
 				if(!response["error"].str().empty()) {
-					DBG_NW << "Received error from server: " << response["error"].str();
+					ERR_NW << "Received error from server: " << response["error"].str();
+					gui2::show_error_message(_("The server responded with an error:")+response["error"].str());
+					return {};
+				} else if(!response["no_data"].str().empty()) {
+					DBG_NW << "Player has no game history data.";
+					gui2::show_error_message(_("No game history found."));
 					return {};
 				}
 			} else {
@@ -198,6 +204,9 @@ const config mp_match_history::request_history(int offset)
 
 		if(times_waited > 20 || !wait_for_response_) {
 			ERR_NW << "Timed out waiting for history data, returning nothing";
+			if(wait_for_response_) {
+				gui2::show_error_message(_("Request timed out."));
+			}
 			return {};
 		}
 
@@ -206,6 +215,7 @@ const config mp_match_history::request_history(int offset)
 	}
 
 	DBG_NW << "Something else happened while waiting for history data, returning nothing";
+	gui2::show_error_message(_("Request encountered an unexpected error, please check the logs."));
 	return {};
 }
 
@@ -215,7 +225,7 @@ void mp_match_history::tab_switch_callback()
 	listbox* tab_bar = find_widget<listbox>(get_window(), "tab_bar", false, true);
 	int tab = tab_bar->get_selected_row();
 
-	for(int i = 0; i < 10; i++) {
+	for(unsigned i = 0; i <= history_box->get_rows(); i++) {
 		grid* history_grid = history_box->get_row_grid(i);
 		if(tab == 0) {
 			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::visible);

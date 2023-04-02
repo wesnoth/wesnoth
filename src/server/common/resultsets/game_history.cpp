@@ -52,6 +52,13 @@ void game_history::read(mariadb::result_set_ref rslt)
 std::unique_ptr<simple_wml::document> game_history::to_doc()
 {
     auto doc = std::make_unique<simple_wml::document>();
+
+    if(results.size() == 0)
+    {
+        doc->set_attr_dup("no_data", "yes");
+        return doc;
+    }
+
     for(const auto& result : results)
     {
         simple_wml::node& ghr = doc->root().add_child("game_history_result");
