@@ -24,10 +24,6 @@ const getDictTerrainType2ImagesPath = async () => {
         console.log(`No symbol_image defined for the tile "${terrainType.string.value}"; trying editor_image next`)
         acc[terrainType.string.value] = terrainType.editor_image.value 
       }
-      if (!acc[terrainType.string.value]) {
-        console.log(`No image defined for the tile "${terrainType.string.value}"; falling back to default`)
-        acc[terrainType.string.value] = 'grid'
-      }
       return acc
   }, {} as { [terrainType: string]: string })
 
