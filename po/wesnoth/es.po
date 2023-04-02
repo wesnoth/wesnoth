@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:34-0500\n"
-"PO-Revision-Date: 2023-04-01 08:18+0200\n"
+"PO-Revision-Date: 2023-04-01 14:51+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -6997,14 +6997,12 @@ msgid "Match History — $player"
 msgstr "Historial de la partida — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:101
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
-msgstr "Era:"
+msgstr "Era: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:102
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7945,41 +7943,33 @@ msgstr "Turno cambiado"
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
 msgstr ""
-"Ocurrió un error al descargar la lista de complementos desde el servidor."
+"Ocurrió un error al descargar el fichero. Comprueba los registros del juego "
+"para más información."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download error"
-msgstr "Descargas"
+msgstr "Error en descarga"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Confirmar sobreescribir"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "¿Sobreescribir fichero existente?"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download complete"
-msgstr "Descargas"
+msgstr "Descarga completa"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "Se ha guardado la partida."
+msgstr "El fichero se ha descargado."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8248,10 +8238,6 @@ msgid "unhealable: "
 msgstr "incurable: "
 
 #: src/reports.cpp:358
-#, fuzzy
-#| msgid ""
-#| "This unit is unhealable. It cannot be healed by healers or villages and "
-#| "doesn't benefit from resting."
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
