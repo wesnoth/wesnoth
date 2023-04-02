@@ -21,7 +21,6 @@ const getDictTerrainType2ImagesPath = async () => {
         acc[terrainType.string.value] = terrainType.symbol_image.value
       }
       if (!acc[terrainType.string.value] && terrainType.editor_image) {
-        console.log(`No symbol_image defined for the tile "${terrainType.string.value}"; trying editor_image next`)
         acc[terrainType.string.value] = terrainType.editor_image.value 
       }
       return acc
@@ -38,11 +37,7 @@ const readTerrainImages = async () => {
   const promises = Object
     .entries(dictTerrainType2ImagesPath)
     .map(async ([terrainType, imageName]) => {
-      let image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
-      if (!image) {
-        console.log(`"${imageName}" not found in "${imageBasepath}"; falling back to a sensible default`)
-        image = await Jimp.read(`../../../data/core/images/misc/blank-hex.png`)
-      }
+      const image = await Jimp.read(`${imageBasepath}/${imageName}.png`)
       return [terrainType, image]
     })
 
@@ -54,11 +49,15 @@ const readTerrainImages = async () => {
 const produceImagesGetter = async (): Promise<ImagesGetter> => {
   const focusPath = path.resolve(__dirname, '../../../images/editor/brush.png')
   const flagPath = path.resolve(__dirname, '../../../data/core/images/flags/flag-1.png')
+  const tileFallbackPath = path.resolve(__dirname, '../../../data/core/images/misc/blank-hex.png')
+  const miscFallbackPath = path.resolve(__dirname, '../../../data/core/images/misc/red-x.png')
 
-  const [images, focus, flag] = await Promise.all([
+  const [images, focus, flag, tileFallback, miscFallback] = await Promise.all([
     readTerrainImages(),
     Jimp.read(focusPath),
     Jimp.read(flagPath),
+    Jimp.read(tileFallbackPath),
+    Jimp.read(miscFallbackPath),
   ])
 
   focus.color([
@@ -72,16 +71,18 @@ const produceImagesGetter = async (): Promise<ImagesGetter> => {
         return compoundImage
       }
 
-      const baseImage = images[baseCode]
+      let baseImage = images[baseCode]
       if (!baseImage) {
-        throw new Error(`Missing image for "${baseCode}"`)
+        console.warn(`Missing image for "${baseCode}". Using a fallback`)
+        baseImage = tileFallback
       }
 
       // TODO: we should use the defaultBase correctly
       if (miscCode) {
-        const miscImage = images[`^${miscCode}`]
+        let miscImage = images[`^${miscCode}`]
         if (!miscImage) {
-          throw new Error(`Missing image for "^${miscCode}"`)
+          console.warn(`Missing image for "^${miscCode}". Using a fallback`)
+          miscImage = miscFallback
         }
 
         return baseImage.clone().composite(miscImage, 0, 0)
