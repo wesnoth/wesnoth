@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-02 00:33 UTC\n"
-"PO-Revision-Date: 2022-04-25 18:22+0800\n"
+"PO-Revision-Date: 2023-04-02 07:13+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -139,22 +139,21 @@ msgstr "Artefacts"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:400
+#, fuzzy
 msgid "Recruits"
-msgstr ""
+msgstr "Recrues"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:467
 #, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
-msgstr "Déserteur"
+msgstr "Déserteurs"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:486
 #, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
-msgstr "Commandant"
+msgstr "Commandants"
 
 #. [label]
 #. [lua]: gui.widget.add_invest_item
@@ -166,9 +165,8 @@ msgstr "Héros"
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:524
 #, fuzzy
-#| msgid "Random"
 msgid "Random Leaders"
-msgstr "Aléatoire"
+msgstr "Chefs aléatoires"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -177,29 +175,30 @@ msgstr "Aléatoire"
 msgid "Settings"
 msgstr "Paramètres"
 
+# PYA : pick your advancement
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:592
 #, fuzzy
-#| msgid "World Conquest"
 msgid "Use World Conquest PYA mod"
-msgstr "Conquête du Monde"
+msgstr "Utiliser la présélection PYA Conquête du Monde"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:612
 #, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "Conquête du monde à 1 joueur"
+msgstr "Utiliser les marqueurs d'unité Conquête du monde"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:632
+#, fuzzy
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "Utiliser la présélection expérimentale Conquête du Monde"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:652
+#, fuzzy
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "Afficher une confirmation de la présélection"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:672
@@ -209,9 +208,8 @@ msgstr "Difficulté"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:693
 #, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "Conquête du Monde"
+msgstr "Version de Conquête du Monde"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -234,8 +232,9 @@ msgstr "Après :"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
+#, fuzzy
 msgid "Get This Item"
-msgstr ""
+msgstr "Prendre cet objet"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -286,44 +285,45 @@ msgstr " carte : "
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
+#, fuzzy
 msgid "map size"
-msgstr ""
+msgstr "taille de la carte"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
+#, fuzzy
 msgid "village density"
-msgstr ""
+msgstr "densité en villages"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
+#, fuzzy
 msgid "keep size"
-msgstr ""
+msgstr "taille du château"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
 #, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "Factions"
+msgstr "nombre d'itérations"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
 #, fuzzy
-#| msgid "terrain^water"
 msgid "terrain factor"
-msgstr "eau"
+msgstr "facteur de topographie"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
+#, fuzzy
 msgid "island factor"
-msgstr ""
+msgstr "facteur d'insularité"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
 #, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "Tome des secrets"
+msgstr "nombre de châteaux"
 
 # Décrit la relation entre un zombi et une liche
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
@@ -2964,8 +2964,8 @@ msgstr "Village/Château : +5 % de défense"
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
-"$terrain| : +$def| % de défense et 1 PM, +$res| % de résistance au "
-"type $dmg_type|"
+"$terrain| : +$def| de défense et déplacement intégral, +$res|"
+" résistance contre $dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:684

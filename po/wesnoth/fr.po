@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-01-01 18:34-0600\n"
-"PO-Revision-Date: 2022-10-17 10:01+0800\n"
+"PO-Revision-Date: 2023-04-02 07:02+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -215,17 +215,20 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:156
 #, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Délai de connexion dépassé"
+msgstr "Délai de déconnexion au server"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:157
+#, fuzzy
 msgid ""
 "The amount of time in seconds before a disconnect is detected. If currently "
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Le temps en secondes pour conclure à une déconnexion. Si vous êtes dans le "
+"vestibule du serveur multi-joueur, vous devez quitter et vous reconnecter "
+"pour que le delai soit activé."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -1182,7 +1185,7 @@ msgstr "Épée sacrée"
 msgid "Short Sword"
 msgstr "Épée courte"
 
-# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine). 
+# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine).
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:681
 msgid "Wraith Sword"
