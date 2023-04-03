@@ -71,18 +71,13 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side).mandatory_child("variables");
 	try
 	{
-		// TODO: this was a faulty invalid config test.
-		if ((true)) {
-			std::size_t arrsize = cfg.child_count(global);
-			if (arrsize == 0) {
-				resources::gamedata->set_variable(local,cfg[global]);
-			} else {
-				resources::gamedata->clear_variable(local);
-				for (std::size_t i = 0; i < arrsize; i++)
-					resources::gamedata->add_variable_cfg(local, cfg.mandatory_child(global,i));
-			}
+		std::size_t arrsize = cfg.child_count(global);
+		if (arrsize == 0) {
+			resources::gamedata->set_variable(local,cfg[global]);
 		} else {
-			resources::gamedata->set_variable(local,"");
+			resources::gamedata->clear_variable(local);
+			for (std::size_t i = 0; i < arrsize; i++)
+				resources::gamedata->add_variable_cfg(local, cfg.mandatory_child(global,i));
 		}
 	}
 	catch(const invalid_variablename_exception&)
