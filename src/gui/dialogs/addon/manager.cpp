@@ -544,9 +544,8 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 
 void addon_manager::fetch_addons_list()
 {
-	client_.request_addons_list(cfg_);
-	// TODO: this was a faulty invalid config test.
-	if((false)) {
+	bool success = client_.request_addons_list(cfg_);
+	if(!success) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		get_window()->close();
 	}

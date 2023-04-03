@@ -279,14 +279,9 @@ double move_leader_to_goals_phase::evaluate()
 
 	config goal = get_leader_goal();
 	//passive leader can reach a goal
-	// TODO: this was a faulty invalid config test.
-	if ((false)) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "No goal found";
-		return BAD_SCORE;
-	}
 
 	if (goal.empty()) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty goal found";
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "Empty or Nonexistent goal found";
 		return BAD_SCORE;
 	}
 

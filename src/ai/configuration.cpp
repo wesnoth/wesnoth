@@ -49,9 +49,9 @@ void configuration::init(const game_config_view &game_config)
 	mod_ai_configurations_.clear();
 
 	const config &ais = game_config.mandatory_child("ais");
-	default_config_ = ais.mandatory_child("default_config");
-	// TODO: this was a faulty invalid config test.
-	if ((false)) {
+	if (auto default_config = ais.optional_child("default_config")) {
+		default_config_ = *default_config;
+	} else {
 		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty.";
 		default_config_.clear();
 	}
@@ -218,8 +218,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg;
 
 	//insert default config at the beginning
-	// TODO: this was a faulty invalid config test.
-	if ((true)) {
+	if (!default_config_.empty()) {
 		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration";
 		cfg.add_child_at("ai",default_config_,0);
 	} else {

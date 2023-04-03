@@ -433,11 +433,9 @@ void server::load_config()
 			config data;
 			in = filesystem::istream_file(filesystem::normalize_path(addon_file));
 			read_gz(data, *in);
-			// TODO: this was a faulty invalid config test.
-			if ((false)) {
+			if (data.empty()) {
 				throw filesystem::io_exception("Couldn't read the content file for the legacy addon '" + addon_id + "'!\n");
 			}
-
 			config version_cfg = config("version", campaign["version"].str());
 			version_cfg["filename"] = make_full_pack_filename(campaign["version"]);
 			campaign.add_child("version", version_cfg);
