@@ -1907,7 +1907,7 @@ std::size_t unit::modification_count(const std::string& mod_type, const std::str
 
 const std::set<std::string> unit::builtin_effects {
 	"alignment", "attack", "defense", "ellipse", "experience", "fearless",
-	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs",
+	"halo", "healthy", "hitpoints", "image_mod", "jamming", "jamming_costs", "level",
 	"loyal", "max_attacks", "max_experience", "movement", "movement_costs",
 	"new_ability", "new_advancement", "new_animation", "new_attack", "overlay", "profile",
 	"recall_cost", "remove_ability", "remove_advancement", "remove_attacks", "resistance",
@@ -2338,6 +2338,21 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 		} else {
 			WRN_UT << "unknown type '" << new_type_id << "' (name=) in [effect]apply_to=type, ignoring";
 		}
+	} else if(effect["apply_to"] == "level") {
+		const std::string& increase = effect["increase"];
+		const std::string& set = effect["set"];
+
+		set_attr_changed(UA_LEVEL);
+
+		// no support for percentages, since levels are usually small numbers
+
+		if(!set.empty()) {
+			level_ = lexical_cast_default<int>(set);
+		}
+
+		if(!increase.empty()) {
+			level_ += lexical_cast_default<int>(increase);
+		}
 	}
 }
 
@@ -2365,7 +2380,13 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		t_string description;
 
 		if(effect["times"] == "per level") {
-			times = level_;
+			if(effect["apply_to"] == "level") {
+				WRN_UT << "[effect] times=per level is not allowed with apply_to=level, using default value of 1";
+				times = 1;
+			}
+			else {
+				times = level_;
+			}
 		}
 
 		if(times) {
