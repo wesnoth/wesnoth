@@ -163,7 +163,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
 	if(plagues) {
-		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
+		plague_type = plague_specials.front().ability_cfg()["type"].str();
 
 		if(plague_type.empty()) {
 			plague_type = u.type().parent_id();
@@ -306,7 +306,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		opp_type->undead_variation() != "null";
 
 	if(plagues) {
-		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
+		plague_type = plague_specials.front().ability_cfg()["type"].str();
 		if(plague_type.empty()) {
 			plague_type = u_type->parent_id();
 		}

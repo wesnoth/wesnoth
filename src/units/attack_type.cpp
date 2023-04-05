@@ -67,9 +67,11 @@ attack_type::attack_type(const config& cfg) :
 	movement_used_(cfg["movement_used"].to_int(100000)),
 	attacks_used_(cfg["attacks_used"].to_int(1)),
 	parry_(cfg["parry"]),
-	specials_(cfg.child_or_empty("specials")),
+	specials_(),
 	changed_(true)
 {
+	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_);
+
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 
@@ -327,12 +329,12 @@ bool attack_type::apply_modification(const config& cfg)
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		config new_specials;
-		for (const config::any_child vp : specials_.all_children_range()) {
+		ability_vector new_specials;
+		for (const auto& p_ability : specials_) {
 			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
+				std::find(dsl.begin(), dsl.end(), p_ability->cfg()["id"].str());
 			if (found_id == dsl.end()) {
-				new_specials.add_child(vp.key, vp.cfg);
+				new_specials.push_back(p_ability);
 			}
 		}
 		specials_ = new_specials;
@@ -349,7 +351,7 @@ bool attack_type::apply_modification(const config& cfg)
 			specials_.clear();
 		}
 		for(const config::any_child value : set_specials->all_children_range()) {
-			specials_.add_child(value.key, value.cfg);
+			specials_.push_back(std::make_shared<unit_ability_t>(value.key, value.cfg));
 		}
 	}
 
@@ -578,5 +580,5 @@ void attack_type::write(config& cfg) const
 	cfg["movement_used"] = movement_used_;
 	cfg["attacks_used"] = attacks_used_;
 	cfg["parry"] = parry_;
-	cfg.add_child("specials", specials_);
+	cfg.add_child("specials", specials_cfg());
 }

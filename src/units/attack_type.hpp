@@ -18,6 +18,7 @@
 #include "map/location.hpp"
 #include "tstring.hpp"
 #include "config.hpp"
+#include "units/ability.hpp"
 #include <string>
 #include <vector>
 #include <cassert>
@@ -54,7 +55,27 @@ public:
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
-	const config &specials() const { return specials_; }
+	const ability_vector &specials() const { return specials_; }
+
+	/**
+	 * Returns a vector of all specials of the given type, unlike get_specials it
+	 * doesn't check whether  the specials are active.
+	 */
+	ability_vector specials(std::string_view tag) const
+	{
+		ability_vector res;
+		for(const ability_ptr& ab : specials_) {
+			if(ab->tag() == tag) {
+				res.push_back(ab);
+			}
+		}
+		return res;
+	}
+
+	config specials_cfg() const
+	{
+		return unit_ability_t::vector_to_cfg(specials_);
+	}
 
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
@@ -67,7 +88,11 @@ public:
 	void set_num_attacks(int value) { num_attacks_ = value; set_changed(true); }
 	void set_attack_weight(double value) { attack_weight_ = value; set_changed(true); }
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
-	void set_specials(config value) { specials_ = value; set_changed(true); }
+	void set_specials(ability_vector value) { specials_ = value; set_changed(true); }
+	void set_specials_cfg(const config& value)
+	{
+		specials_ = unit_ability_t::cfg_to_vector(value);
+	}
 
 
 	// In unit_abilities.cpp:
@@ -328,7 +353,7 @@ private:
 	int movement_used_;
 	int attacks_used_;
 	int parry_;
-	config specials_;
+	ability_vector specials_;
 	bool changed_;
 };
 

@@ -516,9 +516,9 @@ std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, 
 		}
 	}
 	for(const auto& attack : attacks) {
-		for(const config::any_child ability : attack.specials().all_children_range()) {
-			if(ability.cfg.has_attribute("special_note")) {
-				append_special_note(notes, ability.cfg["special_note"].t_str());
+		for(ability_ptr ability : attack.specials()) {
+			if(ability->cfg().has_attribute("special_note")) {
+				append_special_note(notes, ability->cfg()["special_note"].t_str());
 			}
 		}
 		if(auto attack_type_note = string_table.find("special_note_damage_type_" + attack.type()); attack_type_note != string_table.end()) {
@@ -785,7 +785,7 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 				continue;
 			}
 
-			resistance_abilities.emplace_back(&cfg, map_location::null_location(), map_location::null_location());
+			resistance_abilities.emplace_back(std::make_shared<unit_ability_t>("resistance", cfg), map_location::null_location(), map_location::null_location());
 		}
 	}
 

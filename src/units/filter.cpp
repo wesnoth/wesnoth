@@ -296,19 +296,12 @@ void unit_filter_compound::create_attribute(const config::attribute_value v, C c
 
 namespace {
 
-	struct ability_match
-	{
-		std::string tag_name;
-		const config* cfg;
-	};
-
-	void get_ability_children_id(std::vector<ability_match>& id_result,
-	                           const config& parent, const std::string& id) {
-		for (const config::any_child sp : parent.all_children_range())
+	void get_ability_children_id(ability_vector& id_result,
+	                           const ability_vector& parent, const std::string& id) {
+		for (const ability_ptr& sp : parent)
 		{
-			if(sp.cfg["id"] == id) {
-				ability_match special = { sp.key, &sp.cfg };
-				id_result.push_back(special);
+			if(sp->cfg()["id"] == id) {
+				id_result.push_back(sp);
 			}
 		}
 	}
@@ -419,10 +412,10 @@ void unit_filter_compound::fill(vconfig cfg)
 				assert(display::get_singleton());
 				const unit_map& units = display::get_singleton()->get_units();
 				for(const std::string& ability : abilities) {
-					std::vector<ability_match> ability_id_matches_self;
+					ability_vector ability_id_matches_self;
 					get_ability_children_id(ability_id_matches_self, args.u.abilities(), ability);
-					for(const ability_match& entry : ability_id_matches_self) {
-						if (args.u.get_self_ability_bool(*entry.cfg, entry.tag_name, args.loc)) {
+					for(const ability_ptr& entry : ability_id_matches_self) {
+						if (args.u.get_self_ability_bool(entry->cfg(), entry->tag(), args.loc)) {
 							return true;
 						}
 					}
@@ -435,10 +428,10 @@ void unit_filter_compound::fill(vconfig cfg)
 						if (&*it == (args.u.shared_from_this()).get())
 							continue;
 
-						std::vector<ability_match> ability_id_matches_adj;
+						ability_vector ability_id_matches_adj;
 						get_ability_children_id(ability_id_matches_adj, it->abilities(), ability);
-						for(const ability_match& entry : ability_id_matches_adj) {
-							if (args.u.get_adj_ability_bool(*entry.cfg, entry.tag_name,i, args.loc, *it)) {
+						for(const ability_ptr& entry : ability_id_matches_adj) {
+							if (args.u.get_adj_ability_bool(entry->cfg(), entry->tag(), i, args.loc, *it)) {
 								return true;
 							}
 						}

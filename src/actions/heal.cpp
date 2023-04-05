@@ -99,7 +99,7 @@ namespace {
 			// Regeneration?
 			for (const unit_ability & regen : patient.get_abilities("regenerate"))
 			{
-				curing = std::max(curing, poison_status((*regen.ability_cfg)["poison"]));
+				curing = std::max(curing, poison_status(regen.ability_cfg()["poison"]));
 				if ( curing == POISON_CURE )
 					// This is as good as it gets.
 					return POISON_CURE;
@@ -111,7 +111,7 @@ namespace {
 		// Assumed: curing is not POISON_CURE at the start of any iteration.
 		for (const unit_ability & heal : patient.get_abilities("heals"))
 		{
-			POISON_STATUS this_cure = poison_status((*heal.ability_cfg)["poison"]);
+			POISON_STATUS this_cure = poison_status(heal.ability_cfg()["poison"]);
 			if ( this_cure <= curing )
 				// We already recorded this level of curing.
 				continue;

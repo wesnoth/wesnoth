@@ -301,6 +301,9 @@ unit::unit(const unit& o)
 	for(auto& a : attacks_) {
 		a.reset(new attack_type(*a));
 	}
+	for(auto& a : abilities_) {
+		a.reset(new unit_ability_t(*a));
+	}
 }
 
 unit::unit(unit_ctor_t)
@@ -595,7 +598,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
-			abilities_.append(abilities);
+			unit_ability_t::parse_vector(abilities, abilities_);
 		}
 	}
 
@@ -922,7 +925,12 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	}
 
 	generate_name_ &= new_type.generate_name();
-	abilities_ = new_type.abilities_cfg();
+
+	abilities_.clear();
+	for(config::any_child ac : new_type.abilities_cfg().all_children_range()) {
+		abilities_.push_back(std::make_shared<unit_ability_t>(ac.key, ac.cfg));
+	}
+
 	advancements_.clear();
 
 	for(const config& advancement : new_type.advancements()) {
@@ -1398,8 +1406,8 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const config::any_child ab : abilities_.all_children_range()) {
-		if(ab.cfg["id"] == ability) {
+	for(const ability_ptr& ab : abilities_) {
+		if(ab->cfg()["id"] == ability) {
 			return true;
 		}
 	}
@@ -1410,9 +1418,9 @@ bool unit::has_ability_by_id(const std::string& ability) const
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
-	config::all_children_iterator i = abilities_.ordered_begin();
-	while (i != abilities_.ordered_end()) {
-		if(i->cfg["id"] == ability) {
+	auto i = abilities_.begin();
+	while (i != abilities_.end()) {
+		if((**i).cfg()["id"] == ability) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
@@ -1582,7 +1590,7 @@ void unit::write(config& cfg, bool write_all) const
 
 	write_subtag("modifications", modifications_);
 	if(write_all || get_attr_changed(UA_ABILITIES)) {
-		write_subtag("abilities", abilities_);
+		write_subtag("abilities", unit_ability_t::vector_to_cfg(abilities_));
 	}
 	if(write_all || get_attr_changed(UA_ADVANCEMENTS)) {
 		cfg.clear_children("advancement");
@@ -1668,7 +1676,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 
 	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
 	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
-		return !resistance_filter_matches(*i.ability_cfg, attacker, damage_name, 100-res);
+		return !resistance_filter_matches(i.ability_cfg(), attacker, damage_name, 100-res);
 	});
 
 	if(!resistance_abilities.empty()) {
@@ -2117,13 +2125,15 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "new_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
 			set_attr_changed(UA_ABILITIES);
-			config to_append;
+			ability_vector to_append;
 			for(const config::any_child ab : ab_effect->all_children_range()) {
 				if(!has_ability_by_id(ab.cfg["id"])) {
-					to_append.add_child(ab.key, ab.cfg);
+					to_append.push_back(std::make_shared<unit_ability_t>(ab.key, ab.cfg));
 				}
 			}
-			abilities_.append(to_append);
+			for(auto& ab : to_append) {
+				abilities_.push_back(std::move(ab));
+			}
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
@@ -2713,7 +2723,8 @@ void unit::clear_changed_attributes()
 }
 
 std::vector<t_string> unit::unit_special_notes() const {
-	return combine_special_notes(special_notes_, abilities(), attacks(), movement_type());
+	//FIXME: use abilities() directky
+	return combine_special_notes(special_notes_, unit_ability_t::vector_to_cfg(abilities_), attacks(), movement_type());
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

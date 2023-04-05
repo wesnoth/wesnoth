@@ -19,6 +19,7 @@
 #include "units/unit_alignments.hpp"
 #include "units/id.hpp"
 #include "units/ptr.hpp"
+#include "units/ability.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "utils/variant.hpp"
@@ -38,10 +39,10 @@ struct color_t;
 /** Data typedef for unit_ability_list. */
 struct unit_ability
 {
-	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
+	unit_ability(ability_ptr ability, map_location student_loc, map_location teacher_loc)
 		: student_loc(student_loc)
 		, teacher_loc(teacher_loc)
-		, ability_cfg(ability_cfg)
+		, ability(std::move(ability))
 	{
 	}
 
@@ -58,7 +59,12 @@ struct unit_ability
 	 */
 	map_location teacher_loc;
 	/** The contents of the ability tag, never nullptr. */
-	const config* ability_cfg;
+	ability_ptr ability;
+
+	const config& ability_cfg() const
+	{
+		return ability->cfg();
+	}
 };
 
 class unit_ability_list
@@ -1721,7 +1727,24 @@ public:
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
 
-	const config &abilities() const { return abilities_; }
+	ability_vector abilities() const { return abilities_; }
+	const ability_vector& abilities_ref() const { return abilities_; }
+
+	/**
+	 * @returns a vector of abilitites with tag @a tag
+	 *  this is used over for( : abilities_ ..) since it making a copy
+	 *  of the vector makes it mroe robust against insertions into that vector by lua code.
+	 */
+	ability_vector abilities(std::string_view tag) const
+	{
+		ability_vector res;
+		for(const ability_ptr& ab : abilities_) {
+			if(ab->tag() == tag) {
+				res.push_back(ab);
+			}
+		}
+		return res;
+	}
 
 	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 
@@ -1948,7 +1971,7 @@ private:
 	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
-	config abilities_;
+	ability_vector abilities_;
 
 	std::vector<config> advancements_;
 

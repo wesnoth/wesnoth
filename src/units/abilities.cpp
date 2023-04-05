@@ -181,9 +181,9 @@ bool affects_side(const config& cfg, std::size_t side, std::size_t other_side)
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
-	for (const config &i : this->abilities_.child_range(tag_name)) {
-		if (ability_active(tag_name, i, loc) &&
-			ability_affects_self(tag_name, i, loc))
+	for (const ability_ptr& ab : abilities(tag_name)) {
+		if (ability_active(tag_name, ab->cfg(), loc) &&
+			ability_affects_self(tag_name, ab->cfg(), loc))
 		{
 			return true;
 		}
@@ -203,10 +203,10 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 		// ourself.
 		if ( &*it == this )
 			continue;
-		for (const config &j : it->abilities_.child_range(tag_name)) {
-			if (affects_side(j, side(), it->side()) &&
-			    it->ability_active(tag_name, j, adjacent[i]) &&
-			    ability_affects_adjacent(tag_name,  j, i, loc, *it))
+		for ( ability_ptr& ab : it->abilities(tag_name)) {
+			if (affects_side(ab->cfg(), side(), it->side()) &&
+			    it->ability_active(tag_name, ab->cfg(), adjacent[i]) &&
+			    ability_affects_adjacent(tag_name,  ab->cfg(), i, loc, *it))
 			{
 				return true;
 			}
@@ -221,11 +221,12 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 {
 	unit_ability_list res(loc_);
 
-	for(const config& i : this->abilities_.child_range(tag_name)) {
-		if(ability_active(tag_name, i, loc)
-			&& ability_affects_self(tag_name, i, loc))
+
+	for (ability_ptr& ab : abilities(tag_name)) {
+		if(ability_active(tag_name, ab->cfg(), loc)
+			&& ability_affects_self(tag_name, ab->cfg(), loc))
 			{
-			res.emplace_back(&i, loc, loc);
+			res.emplace_back(ab, loc, loc);
 		}
 	}
 
@@ -243,12 +244,12 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 		// ourself.
 		if ( &*it == this )
 			continue;
-		for(const config& j : it->abilities_.child_range(tag_name)) {
-			if(affects_side(j, side(), it->side())
-				&& it->ability_active(tag_name, j, adjacent[i])
-				&& ability_affects_adjacent(tag_name, j, i, loc, *it))
+		for (const ability_ptr& ab : it->abilities(tag_name)) {
+			if(affects_side(ab->cfg(), side(), it->side())
+				&& it->ability_active(tag_name, ab->cfg(), adjacent[i])
+				&& ability_affects_adjacent(tag_name, ab->cfg(), i, loc, *it))
 				{
-				res.emplace_back(&j, loc, adjacent[i]);
+				res.emplace_back(ab, loc, adjacent[i]);
 			}
 		}
 	}
@@ -261,7 +262,7 @@ unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
 	utils::erase_if(res, [&](const unit_ability& i) {
-		return !ability_affects_weapon(*i.ability_cfg, weapon, false) || !ability_affects_weapon(*i.ability_cfg, opp_weapon, true);
+		return !ability_affects_weapon(i.ability_cfg(), weapon, false) || !ability_affects_weapon(i.ability_cfg(), opp_weapon, true);
 	});
 	return res;
 }
@@ -270,8 +271,8 @@ std::vector<std::string> unit::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	for (const config::any_child ab : this->abilities_.all_children_range()) {
-		std::string id = ab.cfg["id"];
+	for (const ability_ptr ab : this->abilities()) {
+		std::string id = ab->cfg()["id"];
 		if (!id.empty())
 			res.push_back(std::move(id));
 	}
@@ -286,17 +287,17 @@ namespace {
 	 *
 	 * @returns Whether name was resolved and quadruple added.
 	 */
-	bool add_ability_tooltip(const config::any_child &ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
+	bool add_ability_tooltip(const unit_ability_t &ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
 	{
 		if (active) {
-			const t_string& name = gender_value(ab.cfg, gender, "name", "female_name", "name").t_str();
+			const t_string& name = gender_value(ab.cfg(), gender, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
 				res.emplace_back(
-						ab.cfg["id"],
-						ab.cfg["name"].t_str(),
+						ab.cfg()["id"],
+						ab.cfg()["name"].t_str(),
 						name,
-						ab.cfg["description"].t_str() );
+						ab.cfg()["description"].t_str() );
 				return true;
 			}
 		}
@@ -304,17 +305,17 @@ namespace {
 		{
 			// See if an inactive name was specified.
 			const config::attribute_value& inactive_value =
-				gender_value(ab.cfg, gender, "name_inactive",
+				gender_value(ab.cfg(), gender, "name_inactive",
 						"female_name_inactive", "name_inactive");
 			const t_string& name = !inactive_value.blank() ? inactive_value.t_str() :
-				gender_value(ab.cfg, gender, "name", "female_name", "name").t_str();
+				gender_value(ab.cfg(), gender, "name", "female_name", "name").t_str();
 
 			if (!name.empty()) {
 				res.emplace_back(
-						ab.cfg["id"],
-						ab.cfg.get_or("name_inactive", "name").t_str(),
+						ab.cfg()["id"],
+						ab.cfg().get_or("name_inactive", "name").t_str(),
 						name,
-						ab.cfg.get_or("description_inactive", "description").t_str() );
+						ab.cfg().get_or("description_inactive", "description").t_str() );
 				return true;
 			}
 		}
@@ -327,9 +328,9 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 {
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 
-	for (const config::any_child ab : this->abilities_.all_children_range())
+	for (const ability_ptr ab : this->abilities())
 	{
-		add_ability_tooltip(ab, gender_, res, true);
+		add_ability_tooltip(*ab, gender_, res, true);
 	}
 
 	return res;
@@ -340,10 +341,10 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
 	active_list.clear();
 
-	for (const config::any_child ab : this->abilities_.all_children_range())
+	for (const ability_ptr ab : this->abilities())
 	{
-		bool active = ability_active(ab.key, ab.cfg, loc);
-		if (add_ability_tooltip(ab, gender_, res, active))
+		bool active = ability_active(ab->tag(), ab->cfg(), loc);
+		if (add_ability_tooltip(*ab, gender_, res, active))
 		{
 			active_list.push_back(active);
 		}
@@ -468,7 +469,7 @@ bool unit::ability_affects_weapon(const config& cfg, const_attack_ptr weapon, bo
 
 bool unit::has_ability_type(const std::string& ability) const
 {
-	return !abilities_.child_range(ability).empty();
+	return std::find_if(abilities().begin(), abilities().end(), [ability](const auto& ab) { return ab->tag() == ability; }) != abilities().end();
 }
 
 void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
@@ -561,11 +562,11 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
 	{
-		int value = get_single_ability_value((*p.ability_cfg)[key], def, p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		int value = get_single_ability_value(p.ability_cfg()[key], def, p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return formula.evaluate(callable).as_int();
 		});
 
-		if ((*p.ability_cfg)["cumulative"].to_bool()) {
+		if (p.ability_cfg()["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && !comp(value, abs_max)) {
@@ -632,57 +633,53 @@ namespace {
 	 * @returns  true if @a just_peeking is true and a match was found;
 	 *           false otherwise.
 	 */
-	bool get_special_children(std::vector<special_match>& tag_result,
-	                           std::vector<special_match>& id_result,
-	                           const config& parent, const std::string& id,
+	bool get_special_children(ability_vector& tag_result,
+	                           ability_vector& id_result,
+	                           const ability_vector& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for (const config::any_child sp : parent.all_children_range())
+		for (const ability_ptr& sp : parent)
 		{
-			if (just_peeking && (sp.key == id || sp.cfg["id"] == id)) {
+			if (just_peeking && (sp->tag() == id || sp->cfg()["id"] == id)) {
 				return true; // peek succeeded; done
 			}
 
-			if(sp.key == id) {
-				special_match special = { sp.key, &sp.cfg };
-				tag_result.push_back(special);
+			if(sp->tag() == id) {
+				tag_result.push_back(sp);
 			}
-			if(sp.cfg["id"] == id) {
-				special_match special = { sp.key, &sp.cfg };
-				id_result.push_back(special);
+			if(sp->cfg()["id"] == id) {
+				id_result.push_back(sp);
 			}
 		}
 		return false;
 	}
 
-	bool get_special_children_id(std::vector<special_match>& id_result,
-	                           const config& parent, const std::string& id,
+	bool get_special_children_id(ability_vector& id_result,
+	                           const ability_vector& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for (const config::any_child sp : parent.all_children_range())
+		for (const ability_ptr& sp : parent)
 		{
-			if (just_peeking && (sp.cfg["id"] == id)) {
+			if (just_peeking && (sp->cfg()["id"] == id)) {
 				return true; // peek succeeded; done
 			}
 
-			if(sp.cfg["id"] == id) {
-				special_match special = { sp.key, &sp.cfg };
-				id_result.push_back(special);
+			if(sp->cfg()["id"] == id) {
+				id_result.push_back(sp);
 			}
 		}
 		return false;
 	}
 
-	bool get_special_children_tags(std::vector<special_match>& tag_result,
-	                           const config& parent, const std::string& id,
+	bool get_special_children_tags(ability_vector& tag_result,
+	                           const ability_vector& parent, const std::string& id,
 	                           bool just_peeking=false) {
-		for (const config::any_child sp : parent.all_children_range())
+		for (const ability_ptr& sp : parent)
 		{
-			if (just_peeking && (sp.key == id)) {
+			if (just_peeking && (sp->tag() == id)) {
 				return true; // peek succeeded; done
 			}
 
-			if(sp.key == id) {
-				special_match special = { sp.key, &sp.cfg };
-				tag_result.push_back(special);
+			if(sp->tag() == id) {
+				tag_result.push_back(sp);
 			}
 		}
 		return false;
@@ -699,8 +696,8 @@ namespace {
 bool attack_type::has_special(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
 {
 	{
-		std::vector<special_match> special_tag_matches;
-		std::vector<special_match> special_id_matches;
+		ability_vector special_tag_matches;
+		ability_vector special_id_matches;
 		if(special_id && special_tags){
 			if ( get_special_children(special_tag_matches, special_id_matches, specials_, special, simple_check) ) {
 				return true;
@@ -718,15 +715,15 @@ bool attack_type::has_special(const std::string& special, bool simple_check, boo
 		// So if the list is not empty, then this is not a simple check and
 		// we need to check each special in the list to see if any are active.
 		if(special_tags){
-			for(const special_match& entry : special_tag_matches) {
-				if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
+			for(const ability_ptr& entry : special_tag_matches) {
+				if ( special_active(entry->cfg(), AFFECT_SELF, entry->tag()) ) {
 					return true;
 				}
 			}
 		}
 		if(special_id){
-			for(const special_match& entry : special_id_matches) {
-				if ( special_active(*entry.cfg, AFFECT_SELF, entry.tag_name) ) {
+			for(const ability_ptr& entry : special_id_matches) {
+				if ( special_active(entry->cfg(), AFFECT_SELF, entry->tag()) ) {
 					return true;
 				}
 			}
@@ -738,8 +735,8 @@ bool attack_type::has_special(const std::string& special, bool simple_check, boo
 		return false;
 	}
 
-	std::vector<special_match> special_tag_matches;
-	std::vector<special_match> special_id_matches;
+	ability_vector special_tag_matches;
+	ability_vector special_id_matches;
 	if(special_id && special_tags){
 		get_special_children(special_tag_matches, special_id_matches, other_attack_->specials_, special);
 	} else if(special_id && !special_tags){
@@ -748,15 +745,15 @@ bool attack_type::has_special(const std::string& special, bool simple_check, boo
 		get_special_children_tags(special_tag_matches, other_attack_->specials_, special);
 	}
 	if(special_tags){
-		for(const special_match& entry : special_tag_matches) {
-			if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
+		for(const ability_ptr& entry : special_tag_matches) {
+			if ( other_attack_->special_active(entry->cfg(), AFFECT_OTHER, entry->tag()) ) {
 				return true;
 			}
 		}
 	}
 	if(special_id){
-		for(const special_match& entry : special_id_matches) {
-			if ( other_attack_->special_active(*entry.cfg, AFFECT_OTHER, entry.tag_name) ) {
+		for(const ability_ptr& entry : special_id_matches) {
+			if ( other_attack_->special_active(entry->cfg(), AFFECT_OTHER, entry->tag()) ) {
 				return true;
 			}
 		}
@@ -774,9 +771,9 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
-	for(const config& i : specials_.child_range(special)) {
-		if(special_active(i, AFFECT_SELF, special)) {
-			res.emplace_back(&i, loc, loc);
+	for (ability_ptr& sp : specials(special)) {
+		if(special_active(sp->cfg(), AFFECT_SELF, special)) {
+			res.emplace_back(std::move(sp), loc, loc);
 		}
 	}
 
@@ -784,9 +781,9 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 		return res;
 	}
 
-	for(const config& i : other_attack_->specials_.child_range(special)) {
-		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
-			res.emplace_back(&i, other_loc_, other_loc_);
+	for(ability_ptr& sp : specials(special)) {
+		if(other_attack_->special_active(sp->cfg(), AFFECT_OTHER, special)) {
+			res.emplace_back(std::move(sp), other_loc_, other_loc_);
 		}
 	}
 	return res;
@@ -809,19 +806,19 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	if ( active_list )
 		active_list->clear();
 
-	for (const config::any_child sp : specials_.all_children_range())
+	for (ability_ptr sp : specials_)
 	{
-		if ( !active_list || special_active(sp.cfg, AFFECT_EITHER, sp.key) ) {
-			const t_string &name = sp.cfg["name"];
+		if ( !active_list || special_active(sp->cfg(), AFFECT_EITHER, sp->tag()) ) {
+			const t_string &name = sp->cfg()["name"];
 			if (!name.empty()) {
-				res.emplace_back(name, sp.cfg["description"].t_str() );
+				res.emplace_back(name, sp->cfg()["description"].t_str() );
 				if ( active_list )
 					active_list->push_back(true);
 			}
 		} else {
-			const t_string& name = sp.cfg.get_or("name_inactive", "name").t_str();
+			const t_string& name = sp->cfg().get_or("name_inactive", "name").t_str();
 			if (!name.empty()) {
-				res.emplace_back(name, sp.cfg.get_or("description_inactive", "description").t_str() );
+				res.emplace_back(name, sp->cfg().get_or("description_inactive", "description").t_str() );
 				active_list->push_back(false);
 			}
 		}
@@ -859,14 +856,14 @@ std::string attack_type::weapon_specials() const
 {
 	//log_scope("weapon_specials");
 	std::string res;
-	for (const config::any_child sp : specials_.all_children_range())
+	for (const ability_ptr& sp : specials_)
 	{
-		const bool active = special_active(sp.cfg, AFFECT_EITHER, sp.key);
+		const bool active = special_active(sp->cfg(), AFFECT_EITHER, sp->tag());
 
 		const std::string& name =
 			active
-			? sp.cfg["name"].str()
-			: sp.cfg.get_or("name_inactive", "name").str();
+			? sp->cfg()["name"].str()
+			: sp->cfg().get_or("name_inactive", "name").str();
 		if (!name.empty()) {
 			if (!res.empty()) res += ", ";
 			if (!active) res += font::span_color(font::inactive_details_color);
@@ -903,10 +900,10 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 	//log_scope("weapon_specials_value");
 	std::string temp_string, weapon_abilities;
 	std::set<std::string> checking_name;
-	for (const config::any_child sp : specials_.all_children_range()) {
-		if((checking_tags.count(sp.key) != 0)){
-			const bool active = special_active(sp.cfg, AFFECT_SELF, sp.key);
-			add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+	for (const ability_ptr& sp : specials_) {
+		if((checking_tags.count(sp->tag()) != 0)){
+			const bool active = special_active(sp->cfg(), AFFECT_SELF, sp->tag());
+			add_name(temp_string, active, sp->cfg()["name"].str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
@@ -922,10 +919,10 @@ std::string attack_type::weapon_specials_value(const std::set<std::string> check
 
 
 	if(other_attack_) {
-		for (const config::any_child sp : other_attack_->specials_.all_children_range()) {
-			if((checking_tags.count(sp.key) != 0)){
-				const bool active = other_attack_->special_active(sp.cfg, AFFECT_OTHER, sp.key);
-				add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+		for (const ability_ptr& sp : specials_) {
+			if((checking_tags.count(sp->tag()) != 0)){
+				const bool active = other_attack_->special_active(sp->cfg(), AFFECT_OTHER, sp->tag());
+				add_name(temp_string, active, sp->cfg()["name"].str(), checking_name);
 			}
 		}
 	}
@@ -948,10 +945,10 @@ void attack_type::weapon_specials_impl_self(
 	bool leader_bool)
 {
 	if(self){
-		for (const config::any_child sp : self->abilities().all_children_range()){
-			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp.key) != 0) : true;
-			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, sp.cfg, self, self_loc, whom, sp.key, leader_bool);
-			add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+		for (const ability_ptr sp : self->abilities()){
+			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp->tag()) != 0) : true;
+			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, sp->cfg(), self, self_loc, whom, sp->tag(), leader_bool);
+			add_name(temp_string, active, sp->cfg()["name"].str(), checking_name);
 		}
 	}
 }
@@ -977,12 +974,16 @@ void attack_type::weapon_specials_impl_adj(
 				continue;
 			if(&*it == self.get())
 				continue;
-			for (const config::any_child sp : it->abilities().all_children_range()){
-				bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp.key) != 0) : true;
+			// sp is no a reference here, to be more robust against that case that the filter
+			// changes the unit. (not that we support that but we also don't want to crash)
+			// TODO: this is nto enough, we need to make a copy of the abilities vector, to
+			// be safe against manipulation.
+			for (ability_ptr& sp : it->abilities()){
+				bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(sp->tag()) != 0) : true;
 				bool default_bool = (affect_adjacents == "affect_allies") ? true : false;
-				bool affect_allies = (!affect_adjacents.empty()) ? sp.cfg[affect_adjacents].to_bool(default_bool) : true;
-				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, sp.cfg, self, *it, i, self_loc, whom, sp.key, leader_bool) && affect_allies;
-				add_name(temp_string, active, sp.cfg["name"].str(), checking_name);
+				bool affect_allies = (!affect_adjacents.empty()) ? sp->cfg()[affect_adjacents].to_bool(default_bool) : true;
+				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, sp->cfg(), self, *it, i, self_loc, whom, sp->tag(), leader_bool) && affect_allies;
+				add_name(temp_string, active, sp->cfg()["name"].str(), checking_name);
 			}
 		}
 	}
@@ -1242,13 +1243,13 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, AFFECT_SELF, ability, "filter_student");
+			return special_active(i.ability_cfg(), AFFECT_SELF, ability, "filter_student");
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student");
+			return special_active_impl(other_attack_, shared_from_this(), i.ability_cfg(), AFFECT_OTHER, ability, "filter_student");
 		});
 	}
 
@@ -1286,7 +1287,7 @@ static bool overwrite_special_affects(const config& special)
 unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const
 {
 	for(unit_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
-		if(!overwrite_special_affects(*i->ability_cfg)) {
+		if(!overwrite_special_affects(i->ability_cfg())) {
 			i = overwriters.erase(i);
 		} else {
 			++i;
@@ -1297,16 +1298,16 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 	}
 
 	for(const auto& i : overwriters) {
-		bool affect_side = ((*i.ability_cfg)["overwrite_specials"] == "one_side");
+		bool affect_side = (i.ability_cfg()["overwrite_specials"] == "one_side");
 		utils::erase_if(input, [&](const unit_ability& j) {
-			bool is_overwritable = (is_special || !overwrite_special_affects(*j.ability_cfg));
+			bool is_overwritable = (is_special || !overwrite_special_affects(j.ability_cfg()));
 			bool one_side_overwritable = true;
 			if(affect_side && is_overwritable){
-				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self)){
-					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, *j.ability_cfg, AFFECT_SELF, ability, filter_self);
+				if(special_active_impl(shared_from_this(), other_attack_, i.ability_cfg(), AFFECT_SELF, ability, filter_self)){
+					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, j.ability_cfg(), AFFECT_SELF, ability, filter_self);
 				}
-				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self)){
-					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, filter_self);
+				else if(special_active_impl(other_attack_, shared_from_this(), i.ability_cfg(), AFFECT_OTHER, ability, filter_self)){
+					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), j.ability_cfg(), AFFECT_OTHER, ability, filter_self);
 				}
 			}
 			return (is_overwritable && one_side_overwritable);
@@ -1326,9 +1327,9 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 	 * @param special_id if true, children check by id
 	 * @param special_tags if true, children check by tags
 	 */
-static void get_ability_children(std::vector<special_match>& tag_result,
-	                           std::vector<special_match>& id_result,
-	                           const config& parent, const std::string& id,
+static void get_ability_children(ability_vector& tag_result,
+	                           ability_vector& id_result,
+	                           const ability_vector& parent, const std::string& id,
 	                           bool special_id=true, bool special_tags=true) {
 	if(special_id && special_tags){
 		get_special_children(tag_result, id_result, parent, id);
@@ -1409,19 +1410,19 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 {
 	const unit_map& units = get_unit_map();
 	if(self_){
-		std::vector<special_match> special_tag_matches_self;
-		std::vector<special_match> special_id_matches_self;
-		get_ability_children(special_tag_matches_self, special_id_matches_self, (*self_).abilities(), special, special_id , special_tags);
+		ability_vector special_tag_matches_self;
+		ability_vector special_id_matches_self;
+		get_ability_children(special_tag_matches_self, special_id_matches_self, self_->abilities(), special, special_id , special_tags);
 		if(special_tags){
-			for(const special_match& entry : special_tag_matches_self) {
-				if(check_self_abilities(*entry.cfg, entry.tag_name)){
+			for(const ability_ptr& entry : special_tag_matches_self) {
+				if(check_self_abilities(entry->cfg(), entry->tag())){
 					return true;
 				}
 			}
 		}
 		if(special_id){
-			for(const special_match& entry : special_id_matches_self) {
-				if(check_self_abilities(*entry.cfg, entry.tag_name)){
+			for(const ability_ptr& entry : special_id_matches_self) {
+				if(check_self_abilities(entry->cfg(), entry->tag())){
 					return true;
 				}
 			}
@@ -1435,19 +1436,19 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if ( &*it == self_.get() )
 				continue;
 
-			std::vector<special_match> special_tag_matches_adj;
-			std::vector<special_match> special_id_matches_adj;
+			ability_vector special_tag_matches_adj;
+			ability_vector special_id_matches_adj;
 			get_ability_children(special_tag_matches_adj, special_id_matches_adj, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
-				for(const special_match& entry : special_tag_matches_adj) {
-					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it)){
+				for(const ability_ptr& entry : special_tag_matches_adj) {
+					if(check_adj_abilities(entry->cfg(), entry->tag(), i , *it)){
 						return true;
 					}
 				}
 			}
 			if(special_id){
-				for(const special_match& entry : special_id_matches_adj) {
-					if(check_adj_abilities(*entry.cfg, entry.tag_name, i , *it)){
+				for(const ability_ptr& entry : special_id_matches_adj) {
+					if(check_adj_abilities(entry->cfg(), entry->tag(), i , *it)){
 						return true;
 					}
 				}
@@ -1456,20 +1457,20 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 	}
 
 	if(other_){
-		std::vector<special_match> special_tag_matches_other;
-		std::vector<special_match> special_id_matches_other;
-		get_ability_children(special_tag_matches_other, special_id_matches_other, (*other_).abilities(), special, special_id , special_tags);
+		ability_vector special_tag_matches_other;
+		ability_vector special_id_matches_other;
+		get_ability_children(special_tag_matches_other, special_id_matches_other, other_->abilities(), special, special_id , special_tags);
 		if(special_tags){
-			for(const special_match& entry : special_tag_matches_other) {
-				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name)){
+			for(const ability_ptr& entry : special_tag_matches_other) {
+				if(check_self_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, other_loc_, AFFECT_OTHER, entry->tag())){
 					return true;
 				}
 			}
 		}
 
 		if(special_id){
-			for(const special_match& entry : special_id_matches_other) {
-				if(check_self_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, other_loc_, AFFECT_OTHER, entry.tag_name)){
+			for(const ability_ptr& entry : special_id_matches_other) {
+				if(check_self_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, other_loc_, AFFECT_OTHER, entry->tag())){
 					return true;
 				}
 			}
@@ -1483,20 +1484,20 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if ( &*it == other_.get() )
 				continue;
 
-			std::vector<special_match> special_tag_matches_oadj;
-			std::vector<special_match> special_id_matches_oadj;
+			ability_vector special_tag_matches_oadj;
+			ability_vector special_id_matches_oadj;
 			get_ability_children(special_tag_matches_oadj, special_id_matches_oadj, it->abilities(), special, special_id , special_tags);
 			if(special_tags){
-				for(const special_match& entry : special_tag_matches_oadj) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name)){
+				for(const ability_ptr& entry : special_tag_matches_oadj) {
+					if(check_adj_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, *it, i, other_loc_, AFFECT_OTHER, entry->tag())){
 						return true;
 					}
 				}
 			}
 
 			if(special_id){
-				for(const special_match& entry : special_id_matches_oadj) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), *entry.cfg, other_, *it, i, other_loc_, AFFECT_OTHER, entry.tag_name)){
+				for(const ability_ptr& entry : special_id_matches_oadj) {
+					if(check_adj_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, *it, i, other_loc_, AFFECT_OTHER, entry->tag())){
 						return true;
 					}
 				}
@@ -1767,7 +1768,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 	individual_effect set_effect_min;
 
 	for (const unit_ability & ability : list) {
-		const config& cfg = *ability.ability_cfg;
+		const config& cfg = ability.ability_cfg();
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!filter_base_matches(cfg, def))
@@ -1783,15 +1784,15 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
-					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
-					set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					set_effect_min.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
+					set_effect_max.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
 				}
 				else {
 					if(value_cum > set_effect_max.value) {
-						set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+						set_effect_max.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
 					}
 					if(value_cum < set_effect_min.value) {
-						set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+						set_effect_min.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
 					}
 				}
 			}
@@ -1804,7 +1805,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 			});
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
-				values_add[effect_id].set(ADD, add, ability.ability_cfg, ability.teacher_loc);
+				values_add[effect_id].set(ADD, add, &ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
@@ -1814,7 +1815,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 			});
 			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
 			if(sub_effect == values_add.end() || sub < sub_effect->second.value) {
-				values_add[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
+				values_add[effect_id].set(ADD, sub, &ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
@@ -1824,7 +1825,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 			}) * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg, ability.teacher_loc);
+				values_mul[effect_id].set(MUL, multiply, &ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
@@ -1839,7 +1840,7 @@ effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, boo
 			else {
 				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
 				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV, divide, ability.ability_cfg, ability.teacher_loc);
+					values_div[effect_id].set(DIV, divide, &ability.ability_cfg(), ability.teacher_loc);
 				}
 			}
 		}
