@@ -16,6 +16,7 @@
    * The "Back To Turn" menu now replays the turn in singelplayer too. However,
      the Continue button can be used to resume the game from any given position.
  ### WML Engine
+   * Added support for `[effect] apply_to=level` (PR #7512)
  ### Miscellaneous and Bug Fixes
    * The replay viewer now also replays victory/defeat events properly #4667, #6180
    * Fixes undo stack getting corrupted by reloading #7253
