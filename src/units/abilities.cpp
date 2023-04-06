@@ -32,7 +32,7 @@
 #include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
-#include "units/abilities.hpp"
+#include "units/active_ability_list.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "filter_context.hpp"
@@ -217,9 +217,9 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	return false;
 }
 
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
+active_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	unit_ability_list res(loc_);
+	active_ability_list res(loc_);
 
 
 	for (ability_ptr& ab : abilities(tag_name)) {
@@ -258,10 +258,10 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	return res;
 }
 
-unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+active_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	unit_ability_list res = get_abilities(tag_name, loc);
-	utils::erase_if(res, [&](const unit_ability& i) {
+	active_ability_list res = get_abilities(tag_name, loc);
+	utils::erase_if(res, [&](const active_ability& i) {
 		return !ability_affects_weapon(i.ability_cfg(), weapon, false) || !ability_affects_weapon(i.ability_cfg(), opp_weapon, true);
 	});
 	return res;
@@ -482,109 +482,6 @@ void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 	}
 }
 
-namespace {
-
-
-template<typename T, typename TFuncFormula>
-class get_ability_value_visitor
-#ifdef USING_BOOST_VARIANT
-	: public boost::static_visitor<T>
-#endif
-{
-public:
-	// Constructor stores the default value.
-	get_ability_value_visitor(T def, const TFuncFormula& formula_handler) : def_(def), formula_handler_(formula_handler) {}
-
-	T operator()(const utils::monostate&) const { return def_; }
-	T operator()(bool)                 const { return def_; }
-	T operator()(int i)                const { return static_cast<T>(i); }
-	T operator()(unsigned long long u) const { return static_cast<T>(u); }
-	T operator()(double d)             const { return static_cast<T>(d); }
-	T operator()(const t_string&)     const { return def_; }
-	T operator()(const std::string& s) const
-	{
-		if(s.size() >= 2 && s[0] == '(') {
-			return formula_handler_(s);
-		}
-		return lexical_cast_default<T>(s, def_);
-	}
-
-private:
-	const T def_;
-	const TFuncFormula& formula_handler_;
-};
-
-template<typename T, typename TFuncFormula>
-T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const_attack_ptr att, const TFuncFormula& formula_handler)
-{
-	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
-
-			try {
-				const unit_map& units = get_unit_map();
-
-				auto u_itor = units.find(ability_info.teacher_loc);
-
-				if(u_itor == units.end()) {
-					return def;
-				}
-				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
-				if(att) {
-					att->add_formula_context(callable);
-				}
-				if (auto uptr = units.find_unit_ptr(ability_info.student_loc)) {
-					callable.add("student", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
-				}
-				if (auto uptr = units.find_unit_ptr(receiver_loc)) {
-					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
-				}
-				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table), callable);
-			} catch(const wfl::formula_error& e) {
-				lg::log_to_chat() << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
-				ERR_WML << "Formula error in ability or weapon special: " << e.type << " at " << e.filename << ':' << e.line << ")";
-				return def;
-			}
-	}));
-}
-}
-
-template<typename TComp>
-std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
-{
-	if ( cfgs_.empty() ) {
-		return std::pair(def, map_location());
-	}
-	// The returned location is the best non-cumulative one, if any,
-	// the best absolute cumulative one otherwise.
-	map_location best_loc;
-	bool only_cumulative = true;
-	int abs_max = 0;
-	int flat = 0;
-	int stack = 0;
-	for (const unit_ability& p : cfgs_)
-	{
-		int value = get_single_ability_value(p.ability_cfg()[key], def, p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-			return formula.evaluate(callable).as_int();
-		});
-
-		if (p.ability_cfg()["cumulative"].to_bool()) {
-			stack += value;
-			if (value < 0) value = -value;
-			if (only_cumulative && !comp(value, abs_max)) {
-				abs_max = value;
-				best_loc = p.teacher_loc;
-			}
-		} else if (only_cumulative || comp(flat, value)) {
-			only_cumulative = false;
-			flat = value;
-			best_loc = p.teacher_loc;
-		}
-	}
-	return std::pair(flat + stack, best_loc);
-}
-
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
-
 /*
  *
  * [special]
@@ -614,12 +511,6 @@ template std::pair<int, map_location> unit_ability_list::get_extremum<std::great
  */
 
 namespace {
-
-	struct special_match
-	{
-		std::string tag_name;
-		const config* cfg;
-	};
 
 	/**
 	 * Gets the children of @parent (which should be the specials for an
@@ -765,11 +656,11 @@ bool attack_type::has_special(const std::string& special, bool simple_check, boo
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
  */
-unit_ability_list attack_type::get_specials(const std::string& special) const
+active_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	unit_ability_list res(loc);
+	active_ability_list res(loc);
 
 	for (ability_ptr& sp : specials(special)) {
 		if(special_active(sp->cfg(), AFFECT_SELF, special)) {
@@ -1105,7 +996,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 
 	// Apply [swarm].
-	unit_ability_list swarm_specials = get_specials_and_abilities("swarm");
+	active_ability_list swarm_specials = get_specials_and_abilities("swarm");
 	if ( !swarm_specials.empty() ) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
@@ -1237,18 +1128,18 @@ namespace { // Helpers for attack_type::special_active()
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
 
-unit_ability_list attack_type::get_weapon_ability(const std::string& ability) const
+active_ability_list attack_type::get_weapon_ability(const std::string& ability) const
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	unit_ability_list abil_list(loc);
+	active_ability_list abil_list(loc);
 	if(self_) {
-		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
+		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const active_ability& i) {
 			return special_active(i.ability_cfg(), AFFECT_SELF, ability, "filter_student");
 		});
 	}
 
 	if(other_) {
-		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
+		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const active_ability& i) {
 			return special_active_impl(other_attack_, shared_from_this(), i.ability_cfg(), AFFECT_OTHER, ability, "filter_student");
 		});
 	}
@@ -1256,13 +1147,13 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	return abil_list;
 }
 
-unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
+active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
-	unit_ability_list abil_list = get_weapon_ability(special);
+	active_ability_list abil_list = get_weapon_ability(special);
 	if(!abil_list.empty()){
 		abil_list = overwrite_special_checking(special, abil_list, abil_list, "filter_student", false);
 	}
-	unit_ability_list spe_list = get_specials(special);
+	active_ability_list spe_list = get_specials(special);
 	if(!spe_list.empty()){
 		spe_list = overwrite_special_checking(special, spe_list, abil_list, "filter_self", true);
 		if(special == "plague" && !spe_list.empty()){
@@ -1273,7 +1164,7 @@ unit_ability_list attack_type::get_specials_and_abilities(const std::string& spe
 	return abil_list;
 }
 
-int attack_type::composite_value(const unit_ability_list& abil_list, int base_value) const
+int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
 {
 	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
 }
@@ -1284,9 +1175,9 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const
+active_ability_list attack_type::overwrite_special_checking(const std::string& ability, active_ability_list input, active_ability_list overwriters, const std::string& filter_self, bool is_special) const
 {
-	for(unit_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
+	for(active_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
 		if(!overwrite_special_affects(i->ability_cfg())) {
 			i = overwriters.erase(i);
 		} else {
@@ -1299,7 +1190,7 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 
 	for(const auto& i : overwriters) {
 		bool affect_side = (i.ability_cfg()["overwrite_specials"] == "one_side");
-		utils::erase_if(input, [&](const unit_ability& j) {
+		utils::erase_if(input, [&](const active_ability& j) {
 			bool is_overwritable = (is_special || !overwrite_special_affects(j.ability_cfg()));
 			bool one_side_overwritable = true;
 			if(affect_side && is_overwritable){
@@ -1722,168 +1613,3 @@ bool attack_type::special_active_impl(
 	return true;
 }
 
-
-
-namespace unit_abilities
-{
-
-void individual_effect::set(value_modifier t, int val, const config *abil, const map_location &l)
-{
-	type=t;
-	value=val;
-	ability=abil;
-	loc=l;
-}
-
-bool filter_base_matches(const config& cfg, int def)
-{
-	if (auto apply_filter = cfg.optional_child("filter_base_value")) {
-		config::attribute_value cond_eq = apply_filter["equals"];
-		config::attribute_value cond_ne = apply_filter["not_equals"];
-		config::attribute_value cond_lt = apply_filter["less_than"];
-		config::attribute_value cond_gt = apply_filter["greater_than"];
-		config::attribute_value cond_ge = apply_filter["greater_than_equal_to"];
-		config::attribute_value cond_le = apply_filter["less_than_equal_to"];
-		return  (cond_eq.empty() || def == cond_eq.to_int()) &&
-			(cond_ne.empty() || def != cond_ne.to_int()) &&
-			(cond_lt.empty() || def <  cond_lt.to_int()) &&
-			(cond_gt.empty() || def >  cond_gt.to_int()) &&
-			(cond_ge.empty() || def >= cond_ge.to_int()) &&
-			(cond_le.empty() || def <= cond_le.to_int());
-	}
-	return true;
-}
-
-effect::effect(const unit_ability_list& list, int def, const_attack_ptr att, bool is_cumulable) :
-	effect_list_(),
-	composite_value_(0)
-{
-
-	int value_set = is_cumulable ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
-	std::map<std::string,individual_effect> values_add;
-	std::map<std::string,individual_effect> values_mul;
-	std::map<std::string,individual_effect> values_div;
-
-	individual_effect set_effect_max;
-	individual_effect set_effect_min;
-
-	for (const unit_ability & ability : list) {
-		const config& cfg = ability.ability_cfg();
-		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
-
-		if (!filter_base_matches(cfg, def))
-			continue;
-
-		if(!is_cumulable){
-			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-					callable.add("base_value", wfl::variant(def));
-					return formula.evaluate(callable).as_int();
-				});
-
-				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
-				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
-				if(set_effect_min.type == NOT_USED) {
-					set_effect_min.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
-					set_effect_max.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
-				}
-				else {
-					if(value_cum > set_effect_max.value) {
-						set_effect_max.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
-					}
-					if(value_cum < set_effect_min.value) {
-						set_effect_min.set(SET, value_cum, &ability.ability_cfg(), ability.teacher_loc);
-					}
-				}
-			}
-		}
-
-		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_int();
-			});
-			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
-			if(add_effect == values_add.end() || add > add_effect->second.value) {
-				values_add[effect_id].set(ADD, add, &ability.ability_cfg(), ability.teacher_loc);
-			}
-		}
-		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - get_single_ability_value(*v, def, ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_int();
-			});
-			std::map<std::string,individual_effect>::iterator sub_effect = values_add.find(effect_id);
-			if(sub_effect == values_add.end() || sub < sub_effect->second.value) {
-				values_add[effect_id].set(ADD, sub, &ability.ability_cfg(), ability.teacher_loc);
-			}
-		}
-		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_decimal() / 1000.0 ;
-			}) * 100);
-			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
-			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-				values_mul[effect_id].set(MUL, multiply, &ability.ability_cfg(), ability.teacher_loc);
-			}
-		}
-		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = static_cast<int>(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_decimal() / 1000.0 ;
-			}) * 100);
-
-			if (divide == 0) {
-				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id;
-			}
-			else {
-				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
-				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV, divide, &ability.ability_cfg(), ability.teacher_loc);
-				}
-			}
-		}
-	}
-
-	if(!is_cumulable && set_effect_max.type != NOT_USED) {
-		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
-		if(set_effect_max.value > def) {
-			effect_list_.push_back(set_effect_max);
-		}
-		if(set_effect_min.value < def) {
-			effect_list_.push_back(set_effect_min);
-		}
-	}
-
-	/* Do multiplication with floating point values rather than integers
-	 * We want two places of precision for each multiplier
-	 * Using integers multiplied by 100 to keep precision causes overflow
-	 *   after 3-4 abilities for 32-bit values and ~8 for 64-bit
-	 * Avoiding the overflow by dividing after each step introduces rounding errors
-	 *   that may vary depending on the order effects are applied
-	 * As the final values are likely <1000 (always true for mainline), loss of less significant digits is not an issue
-	 */
-	double multiplier = 1.0;
-	double divisor = 1.0;
-
-	for(const auto& val : values_mul) {
-		multiplier *= val.second.value/100.0;
-		effect_list_.push_back(val.second);
-	}
-
-	for(const auto& val : values_div) {
-		divisor *= val.second.value/100.0;
-		effect_list_.push_back(val.second);
-	}
-
-	int addition = 0;
-	for(const auto& val : values_add) {
-		addition += val.second.value;
-		effect_list_.push_back(val.second);
-	}
-
-	composite_value_ = static_cast<int>((value_set + addition) * multiplier / divisor);
-}
-
-} // end namespace unit_abilities

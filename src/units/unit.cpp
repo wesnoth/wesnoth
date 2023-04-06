@@ -1633,7 +1633,7 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 #if 0
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
-	unit_ability_list defense_abilities = get_abilities("defense");
+	active_ability_list defense_abilities = get_abilities("defense");
 	if(!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, def);
 		def = defense_effect.get_composite_value();
@@ -1674,8 +1674,8 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 {
 	int res = movement_type_.resistance_against(damage_name);
 
-	unit_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
-	utils::erase_if(resistance_abilities, [&](const unit_ability& i) {
+	active_ability_list resistance_abilities = get_abilities_weapons("resistance",loc, weapon, opp_weapon);
+	utils::erase_if(resistance_abilities, [&](const active_ability& i) {
 		return !resistance_filter_matches(i.ability_cfg(), attacker, damage_name, 100-res);
 	});
 

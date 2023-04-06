@@ -273,7 +273,7 @@ const teleport_map get_teleport_locations(const unit &u,
 {
 	std::vector<teleport_group> groups;
 
-	for (const unit_ability & teleport : u.get_abilities("teleport")) {
+	for (const active_ability & teleport : u.get_abilities("teleport")) {
 		const int tunnel_count = teleport.ability_cfg().child_count("tunnel");
 		for(int i = 0; i < tunnel_count; ++i) {
 			config teleport_group_cfg = teleport.ability_cfg().mandatory_child("tunnel", i);

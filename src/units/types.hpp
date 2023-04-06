@@ -31,7 +31,7 @@
 #include <string>
 #include <vector>
 
-class unit_ability_list;
+class active_ability_list;
 class unit_animation;
 class game_config_view;
 

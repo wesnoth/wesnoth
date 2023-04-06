@@ -29,7 +29,7 @@
 
 #include "units/ptr.hpp" // for attack_ptr
 
-class unit_ability_list;
+class active_ability_list;
 class unit_type;
 namespace wfl {
 	class map_formula_callable;
@@ -105,7 +105,7 @@ public:
 	 * @param special_tags If true, match @a special against the tag name of special tags.
 	 */
 	bool has_special(const std::string& special, bool simple_check=false, bool special_id=true, bool special_tags=true) const;
-	unit_ability_list get_specials(const std::string& special) const;
+	active_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string> checking_tags) const;
@@ -120,11 +120,11 @@ public:
 	 * @param abil_list The list of special checked.
 	 * @param base_value The value modified or not by function.
 	 */
-	int composite_value(const unit_ability_list& abil_list, int base_value) const;
+	int composite_value(const active_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
-	unit_ability_list get_weapon_ability(const std::string& ability) const;
+	active_ability_list get_weapon_ability(const std::string& ability) const;
 	/** Returns list who contains get_weapon_ability and get_specials list for each ability type */
-	unit_ability_list get_specials_and_abilities(const std::string& special) const;
+	active_ability_list get_specials_and_abilities(const std::string& special) const;
 	/** used for abilities used like weapon
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
@@ -170,7 +170,7 @@ private:
 	 * @param filter_self name of [filter_"self/student"] if is abilities or specials who are checked.
 	 * @param is_special if true, input contains weapon specials; if false, it contains abilities.
 	 */
-	unit_ability_list overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const;
+	active_ability_list overwrite_special_checking(const std::string& ability, active_ability_list input, active_ability_list overwriters, const std::string& filter_self, bool is_special) const;
 	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.

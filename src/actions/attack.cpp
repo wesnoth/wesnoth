@@ -158,7 +158,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Handle plague.
-	unit_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
+	active_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
@@ -301,7 +301,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	firststrike = weapon->has_special("firststrike");
 	disable = weapon->has_special("disable");
 
-	unit_ability_list plague_specials = weapon->get_specials("plague");
+	active_ability_list plague_specials = weapon->get_specials("plague");
 	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
 		opp_type->undead_variation() != "null";
 
@@ -1578,7 +1578,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
+	active_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
 	unit_abilities::effect leader_effect(abil, 0, nullptr, true);
 	return leader_effect.get_composite_value();
 }

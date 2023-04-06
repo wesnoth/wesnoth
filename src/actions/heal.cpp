@@ -27,7 +27,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
-#include "units/abilities.hpp"
+#include "units/active_ability_list.hpp"
 #include "units/udisplay.hpp"
 #include "units/map.hpp"
 #include "utils/general.hpp"
@@ -97,7 +97,7 @@ namespace {
 				return POISON_CURE;
 
 			// Regeneration?
-			for (const unit_ability & regen : patient.get_abilities("regenerate"))
+			for (const active_ability & regen : patient.get_abilities("regenerate"))
 			{
 				curing = std::max(curing, poison_status(regen.ability_cfg()["poison"]));
 				if ( curing == POISON_CURE )
@@ -109,7 +109,7 @@ namespace {
 		// Look through the healers to find a curer.
 		unit_map::iterator curer = units.end();
 		// Assumed: curing is not POISON_CURE at the start of any iteration.
-		for (const unit_ability & heal : patient.get_abilities("heals"))
+		for (const active_ability & heal : patient.get_abilities("heals"))
 		{
 			POISON_STATUS this_cure = poison_status(heal.ability_cfg()["poison"]);
 			if ( this_cure <= curing )
@@ -193,15 +193,15 @@ namespace {
 			               resources::gameboard->map().gives_healing(patient.get_location()));
 
 			// Regeneration?
-			unit_ability_list regen_list = patient.get_abilities("regenerate");
+			active_ability_list regen_list = patient.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen_list, 0);
 			update_healing(healing, harming, regen_effect.get_composite_value());
 		}
 
 		// Check healing from other units.
-		unit_ability_list heal_list = patient.get_abilities("heals");
+		active_ability_list heal_list = patient.get_abilities("heals");
 		// Remove all healers not on this side (since they do not heal now).
-		utils::erase_if(heal_list, [&](const unit_ability& i) {
+		utils::erase_if(heal_list, [&](const active_ability& i) {
 			unit_map::iterator healer = units.find(i.teacher_loc);
 			assert(healer != units.end());
 

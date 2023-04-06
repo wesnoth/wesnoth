@@ -773,7 +773,7 @@ bool unit_type::show_variations_in_help() const
 int unit_type::resistance_against(const std::string& damage_name, bool attacker) const
 {
 	int resistance = movement_type_.resistance_against(damage_name);
-	unit_ability_list resistance_abilities;
+	active_ability_list resistance_abilities;
 
 	if(auto abilities = get_cfg().optional_child("abilities")) {
 		for(const config& cfg : abilities->child_range("resistance")) {
