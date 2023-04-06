@@ -13,13 +13,6 @@
 	See the COPYING file for more details.
 */
 
-/**
- *
- * This class is an abstract base class designed to simplify the use
- * of the display object.
- *
- **/
-
 #pragma once
 
 #include "units/orb_status.hpp"
@@ -34,6 +27,10 @@ class unit_map;
 class unit;
 struct map_location;
 
+/**
+ * Abstract class for exposing game data that doesn't depend on the GUI, however which for historical
+ * reasons is generally accessed via the GUI method display::get_singleton().
+ */
 class display_context
 {
 public:
@@ -42,6 +39,8 @@ public:
 	virtual const unit_map & units() const = 0;
 	virtual const std::vector<std::string> & hidden_label_categories() const = 0;
 	virtual std::vector<std::string> & hidden_label_categories() = 0;
+
+	/** This getter takes a 1-based side number, not a 0-based team number. */
 	const team& get_team(int side) const;
 
 	// this one is only a template function to prevent compilation erros when class team is an incomplete type.
