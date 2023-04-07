@@ -128,6 +128,14 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  * ...
  * [/abilities]
  *
+ * In this file use the following terminology: during an evaulation of an ability there are at most 3 unit involved:
+ * 1)   The Teacher (the unit that own the ability)
+ * 2)   The Student (the unit that is affected by the ability,
+ *      usually the same as the teacher), but might also be a different
+ *      unit via [affect_adjacent]
+ * 2.5) The Opponent of a unit in a fight.
+ * 3)   The Recipient, the unit whose stats are modified by the ability,
+ *      this can either be the student or the opponenet, depending on apply_to=self/opponent
  */
 
 
