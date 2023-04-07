@@ -60,6 +60,15 @@ optional_const_config game_config_view::find_child(config_key_type key, const st
 	return optional_const_config();
 }
 
+const config& game_config_view::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
+{
+	auto res = find_child(key, name, value);
+	if(res) {
+		return *res;
+	}
+	throw config::error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
+}
+
 const config& game_config_view::mandatory_child(config_key_type key) const
 {
 	for(const config& cfg : cfgs_) {

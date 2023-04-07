@@ -953,14 +953,14 @@ void context_manager::revert_map()
 
 void context_manager::new_map(int width, int height, const t_translation::terrain_code& fill, bool new_context)
 {
-	auto default_schedule = game_config_.find_child("editor_times", "id", "empty");
+	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, true, *default_schedule);
+		int new_id = add_map_context(m, true, default_schedule);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, true, *default_schedule);
+		replace_map_context(m, true, default_schedule);
 	}
 }
 
@@ -1019,8 +1019,8 @@ void context_manager::create_default_context()
 		t_translation::terrain_code default_terrain =
 			t_translation::read_terrain_code(game_config::default_terrain);
 
-		auto default_schedule = game_config_.find_child("editor_times", "id", "empty");
-		add_map_context(editor_map(44, 33, default_terrain), true, *default_schedule);
+		const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
+		add_map_context(editor_map(44, 33, default_terrain), true, default_schedule);
 	} else {
 		for(const std::string& filename : saved_windows_) {
 			add_map_context(game_config_, filename);

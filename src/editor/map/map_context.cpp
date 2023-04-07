@@ -112,7 +112,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(*game_config.find_child("editor_times", "id", "empty")))
+	, tod_manager_(new tod_manager(game_config.find_mandatory_child("editor_times", "id", "empty")))
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()

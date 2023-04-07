@@ -65,7 +65,7 @@ struct mp_connect_fixture {
 		state->mp_settings().use_map_settings = true;
 		state->mp_settings().saved_game = saved_game_mode::type::no;
 
-		state->set_scenario(*config_manager->game_config().find_child("multiplayer", "id", state->mp_settings().name));
+		state->set_scenario(config_manager->game_config().find_mandatory_child("multiplayer", "id", state->mp_settings().name));
 
 		state->mp_settings().num_turns = state->get_starting_point()["turns"];
 

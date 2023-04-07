@@ -111,8 +111,8 @@ config initial_level_config(saved_game& state)
 
 		// Initialize the list of sides available for the current era.
 		// We also need this so not to get a segfault in mp_staging for ai configuration.
-		auto custom_side = game_config.find_child("multiplayer_side", "id", "Custom");
-		level.mandatory_child("era").add_child_at("multiplayer_side", *custom_side, 0);
+		const config& custom_side = game_config.find_mandatory_child("multiplayer_side", "id", "Custom");
+		level.mandatory_child("era").add_child_at("multiplayer_side", custom_side, 0);
 	}
 
 	// Add modifications, needed for ai algorithms which are applied in mp_staging.

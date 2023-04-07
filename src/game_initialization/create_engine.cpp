@@ -375,9 +375,9 @@ void create_engine::prepare_for_new_level()
 void create_engine::prepare_for_era_and_mods()
 {
 	get_parameters();
-	state_.classification().era_define = game_config_.find_child("era", "id", state_.classification().era_id)["define"].str();
+	state_.classification().era_define = game_config_.find_mandatory_child("era", "id", state_.classification().era_id)["define"].str();
 	for(const std::string& mod_id : state_.classification().active_mods) {
-		state_.classification().mod_defines.push_back(game_config_.find_child("modification", "id", mod_id)["define"].str());
+		state_.classification().mod_defines.push_back(game_config_.find_mandatory_child("modification", "id", mod_id)["define"].str());
 	}
 }
 

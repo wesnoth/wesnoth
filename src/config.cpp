@@ -808,6 +808,24 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 	return std::nullopt;
 }
 
+config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value)
+{
+	auto res = find_child(key, name, value);
+	if(res) {
+		return *res;
+	}
+	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
+}
+const config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
+{
+	auto res = find_child(key, name, value);
+	if(res) {
+		return *res;
+	}
+	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
+}
+
+
 void config::clear()
 {
 	// No validity check for this function.

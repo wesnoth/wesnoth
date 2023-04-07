@@ -623,6 +623,13 @@ public:
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
+	config& find_mandatory_child(config_key_type key, const std::string &name,
+		const std::string &value);
+
+	const config& find_mandatory_child(config_key_type key, const std::string &name,
+		const std::string &value) const;
+
+
 private:
 	void clear_children_impl(config_key_type key);
 public:

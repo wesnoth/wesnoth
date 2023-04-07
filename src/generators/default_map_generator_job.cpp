@@ -1283,7 +1283,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 
 				const std::string str = t_translation::write_terrain_code(terrain[res.x][res.y]);
 
-				const std::string& convert_to = cfg.find_child("village", "terrain", str)["convert_to"].str();
+				const std::string& convert_to = cfg.find_mandatory_child("village", "terrain", str)["convert_to"].str();
 				if(convert_to.empty()) {
 					continue;
 				}

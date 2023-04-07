@@ -1311,7 +1311,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	if(classification.type==campaign_type::type::multiplayer) {
 		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
 		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
-			*game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
+			game_config_manager::get()->game_config().find_mandatory_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 	}
 
@@ -1353,7 +1353,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 namespace {
 	static config find_addon(const std::string& type, const std::string& id)
 	{
-		return *game_config_manager::get()->game_config().find_child(type, "id", id);
+		return game_config_manager::get()->game_config().find_mandatory_child(type, "id", id);
 	}
 }
 
