@@ -17,6 +17,7 @@
    * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
    * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
    * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
+   * Removed unused `--color` switch from wesnoth_addon_manager
 
 ## Version 1.16.8
  ### Editor

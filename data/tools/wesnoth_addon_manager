@@ -43,9 +43,6 @@ if __name__ == "__main__":
     argumentparser.add_argument("-w", "--wml",
         help="when listing add-ons, list the raw wml",
         action="store_true",)
-    argumentparser.add_argument("-C", "--color",
-        help="use colored WML output",
-        action="store_true",)
     argumentparser.add_argument("-c", "--campaigns-dir",
         help="directory where add-ons are stored",
         default=".")
