@@ -3216,6 +3216,8 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 						if(progress >= achieve.max_progress_) {
 							intf_set_achievement(L);
 							achieve.current_progress_ = -1;
+						} else {
+							achieve.current_progress_ = progress;
 						}
 						lua_pushinteger(L, progress);
 					} else {
