@@ -20,6 +20,7 @@
  ### Miscellaneous and Bug Fixes
    * The replay viewer now also replays victory/defeat events properly #4667, #6180
    * Fixes undo stack getting corrupted by reloading #7253
+   * Removed unused `--color` switch from wesnoth_addon_manager
 
 ## Version 1.17.14
  ### Campaigns
