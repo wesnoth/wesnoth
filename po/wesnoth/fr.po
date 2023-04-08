@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:34-0500\n"
-"PO-Revision-Date: 2022-10-17 10:01+0800\n"
+"PO-Revision-Date: 2023-04-06 11:16+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -227,17 +227,20 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 #, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Délai de connexion dépassé"
+msgstr "Délai de déconnexion au server"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
+#, fuzzy
 msgid ""
 "The amount of time in seconds before a disconnect is detected. If currently "
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Le temps en secondes pour diagnostiquer une déconnexion. Si vous êtes dans "
+"le vestibule du serveur multi-joueur, vous devez quitter et vous reconnecter "
+"pour que le delai soit activé."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -1148,7 +1151,7 @@ msgstr "Épée sacrée"
 msgid "Short Sword"
 msgstr "Épée courte"
 
-# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine). 
+# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine).
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
 msgid "Wraith Sword"
@@ -3522,9 +3525,8 @@ msgstr "Au-delà des montagnes septentrionales"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:253
-#, fuzzy
 msgid "Northerners"
-msgstr "Nordiques"
+msgstr "Nordistes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:259
@@ -9146,25 +9148,6 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options du tableau blanc"
 
-#~ msgid "Availability: "
-#~ msgstr "Disponibilité : "
-
-#~ msgid "Must-have"
-#~ msgstr "Incontournable"
-
-#~ msgid "Unavailable"
-#~ msgstr "Indisponible"
-
-#, fuzzy
-#~| msgid "Unit List"
-#~ msgid "Unit Test "
-#~ msgstr "Liste des unités"
-
-#, fuzzy
-#~| msgid "Bomb"
-#~ msgid "Bob"
-#~ msgstr "Bombe"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -9174,6 +9157,15 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>- Galun, Chef de la Nuée, 5 ap. W.</i>"
+
+#~ msgid "Availability: "
+#~ msgstr "Disponibilité : "
+
+#~ msgid "Must-have"
+#~ msgstr "Incontournable"
+
+#~ msgid "Unavailable"
+#~ msgstr "Indisponible"
 
 #~ msgid "Independent"
 #~ msgstr "Indépendant"
@@ -11183,6 +11175,9 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "unit list^Traits"
 #~ msgstr "Traits"
+
+#~ msgid "Unit List"
+#~ msgstr "Liste des unités"
 
 #~ msgid "Scroll To"
 #~ msgstr "Aller à"

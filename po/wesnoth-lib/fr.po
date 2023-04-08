@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:33-0500\n"
-"PO-Revision-Date: 2022-11-24 10:25+0800\n"
+"PO-Revision-Date: 2023-04-06 11:42+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -161,8 +161,10 @@ msgstr "Marais"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
+#, fuzzy
+#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Forêt de varech"
+msgstr "Forêt de palmier"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -263,8 +265,10 @@ msgstr "Pavés gris entretenus"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
+#, fuzzy
+#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "Sables pierreux"
+msgstr "Sables de plage"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -438,8 +442,10 @@ msgstr ""
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
+#, fuzzy
+#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Palissade de bois"
+msgstr "Pont de bois"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -897,10 +903,14 @@ msgstr ""
 msgid "Gulch"
 msgstr ""
 
+# Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
+# Laurent
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1227
+#, fuzzy
+#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Ravin impraticable"
+msgstr "Surcouche impraticable"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1240
@@ -1309,8 +1319,10 @@ msgstr "Village dracan"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:1996
+#, fuzzy
+#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Village dracan enneigé"
+msgstr "Village dracan"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2011
@@ -1810,8 +1822,10 @@ msgstr "Pont de pierre ordinaire"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2875 data/core/terrain.cfg:2887
 #: data/core/terrain.cfg:2900
+#, fuzzy
+#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Pont de pierre enneigé"
+msgstr "Pont de pierre ordinaire"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -2295,8 +2309,10 @@ msgstr ""
 #: data/core/terrain.cfg:3421 data/core/terrain.cfg:3432
 #: data/core/terrain.cfg:3443 data/core/terrain.cfg:3454
 #: data/core/terrain.cfg:3465
+#, fuzzy
+#| msgid "Game created"
 msgid "Deprecated"
-msgstr "Obsolète"
+msgstr "Partie créée"
 
 #. [settings]
 #: data/gui/default.cfg:23
@@ -4909,8 +4925,10 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
+#, fuzzy
+#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Information additionnelle :"
+msgstr "Information de la carte"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
@@ -5568,15 +5586,19 @@ msgstr "Afficher les orbes pour les unités partiellement déplacées"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
+#, fuzzy
 msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Si une unité peut bouger sans attaque possible, affiche une orbe bicolore "
+"pour montrer le statut de déplacement."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
+#, fuzzy
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Utiliser une orbe bicolore pour les unités avec repli"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5590,16 +5612,23 @@ msgstr "Afficher les orbes pour les unités alliées"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
+#, fuzzy
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Pendant le tour de vos alliés, utiliser une orbe bicolore pour montrer leur "
+"mouvement"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
+#, fuzzy
 msgid ""
 "During your allies’ turns, their units have a two-color orb. One half is the "
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Pendant le tour de vos alliés, leurs unités ont une orbe bicolore. La "
+"première couleur montre leur alliance, et la seconde si l'unité est non-"
+"déplacée, partiellement ou complément à l'arrêt."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -6548,13 +6577,17 @@ msgstr "Voulez-vous désinstaller « $addon| » ?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1034
+#, fuzzy
+#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%d-%B-%Y %I:%M %p"
+msgstr "%d-%m-%Y %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1036
+#, fuzzy
+#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr "%d-%B-%Y %H:%M"
+msgstr "%d-%m-%Y %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1097
 msgid "url^None"
@@ -6810,8 +6843,10 @@ msgid "controller^Idle"
 msgstr "Inactif"
 
 #: src/gui/dialogs/game_stats.cpp:71
+#, fuzzy
+#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Réservé"
+msgstr "Aucun"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -7164,8 +7199,10 @@ msgid "Lobby"
 msgstr "Vestibule"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
+#, fuzzy
+#| msgid "Games"
 msgid "Game"
-msgstr "Partie"
+msgstr "Parties"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:505
 msgid "Waiting for players to choose factions..."
@@ -7266,6 +7303,8 @@ msgstr ""
 "réel des attaques infligées/subites."
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
+#, fuzzy
+#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "Recrues"
 
@@ -7304,8 +7343,10 @@ msgid "Screenshot"
 msgstr "Capture d'écran"
 
 #: src/gui/dialogs/title_screen.cpp:443 src/hotkey/hotkey_command.cpp:298
+#, fuzzy
+#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Choisissez le scénario de test"
+msgstr "Choisissez le scénario de départ"
 
 #: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
@@ -8430,6 +8471,43 @@ msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
 
+#~ msgid "By:"
+#~ msgstr "Par :"
+
+#~ msgid "Gold Left:"
+#~ msgstr "Or restant :"
+
+#~ msgid "Active Troops:"
+#~ msgstr "Troupes actives :"
+
+#~ msgid "Reserve Troops:"
+#~ msgstr "Troupe en réserve :"
+
+#~ msgid "Area to draw has negative size"
+#~ msgstr "L'aire à dessiner a une taille négative"
+
+#~ msgid "Area to draw is larger than widget size"
+#~ msgstr "L'aire à dessiner est plus grande que le widget"
+
+#~ msgid "Selected Game"
+#~ msgstr "Partie sélectionnée"
+
+#~ msgid "Other Games"
+#~ msgstr "Autres parties"
+
+#~ msgid "Choose Test"
+#~ msgstr "Choix du test"
+
+#~ msgid "Start Test Scenario"
+#~ msgstr "Débuter le scénario de test"
+
+#~ msgid ""
+#~ "A terrain with a string with more than 4 characters has been found, the "
+#~ "affected terrain is:"
+#~ msgstr ""
+#~ "Un terrain représenté par une chaîne de plus de 4 caractères a été "
+#~ "trouvé, il s'agit de :"
+
 #~ msgid ""
 #~ "The key '$key' is deprecated and support will be removed in version "
 #~ "$removal_version."
@@ -8451,48 +8529,6 @@ msgstr ""
 #~ msgid "This uses the colors for partial and moved orbs."
 #~ msgstr ""
 #~ "Ceci utilise les couleurs des orbes de déplacement partiel et complet."
-
-#~ msgid "Area to draw has negative size"
-#~ msgstr "L'aire à dessiner a une taille négative"
-
-#~ msgid "Area to draw is larger than widget size"
-#~ msgstr "L'aire à dessiner est plus grande que le widget"
-
-#~ msgid "Choose Test"
-#~ msgstr "Choix du test"
-
-#~ msgid "Start Test Scenario"
-#~ msgstr "Débuter le scénario de test"
-
-#~ msgid ""
-#~ "A terrain with a string with more than 4 characters has been found, the "
-#~ "affected terrain is:"
-#~ msgstr ""
-#~ "Un terrain représenté par une chaîne de plus de 4 caractères a été "
-#~ "trouvé, il s'agit de :"
-
-#, fuzzy
-#~| msgid "Desert Castle"
-#~ msgid "Desert Cobbles"
-#~ msgstr "Château du désert"
-
-#~ msgid "By:"
-#~ msgstr "Par :"
-
-#~ msgid "Gold Left:"
-#~ msgstr "Or restant :"
-
-#~ msgid "Active Troops:"
-#~ msgstr "Troupes actives :"
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "Troupe en réserve :"
-
-#~ msgid "Selected Game"
-#~ msgstr "Partie sélectionnée"
-
-#~ msgid "Other Games"
-#~ msgstr "Autres parties"
 
 #~ msgid "Recruits:"
 #~ msgstr "Recrues :"
