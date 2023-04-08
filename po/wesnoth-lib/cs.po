@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-02 09:55-0500\n"
-"PO-Revision-Date: 2023-01-04 18:08+0100\n"
+"PO-Revision-Date: 2023-04-03 21:36+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4969,12 +4969,12 @@ msgstr "Zobrazit animace vody (může být pomalé)"
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:142
 msgid "Show unit standing animations"
-msgstr "Zobrazit náhodné animace jednotek"
+msgstr "Zobrazit animace pro stojící jednotky"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:143
 msgid "Continuously animate standing units on the battlefield"
-msgstr "Neustálá animace jednotek na bitevním poli"
+msgstr "Neustále animovat stojící jednotky na bitevním poli"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:161
@@ -5236,22 +5236,23 @@ msgstr "Zobrazit kouli neposunutých"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "Zobrazit kouli částečně posunutých"
 
+# úmyslně zkráceno, aby se text vešel do dvouřádkového obdélníku s nápovědou
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Pokud se jednotka může hnout, ale ne útočit, zobrazit dvoubarevnou kouli "
+"s barvami pro částečně a úplně posunuté."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Pro uvolněné jednotky použít dvoubarevnou kouli"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5266,7 +5267,7 @@ msgstr "Zobrazit kouli spojenců"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "Během kola spojence použít dvoubarevnou kouli pro zobrazení pohybu"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5275,6 +5276,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Během kol tvých spojenců mají jejich jednotky dvoubarevnou kouli. Jedna "
+"polovina má barvu koule spojence a druhá ukazuje, zda se jednotka posunula "
+"úplně, částečně nebo vůbec."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -8108,9 +8112,3 @@ msgid ""
 msgstr ""
 "Klíč '$deprecated_key' byl přejmenován na '$key' a ve verzi $removal_version "
 "bude odstraněna podpora původního tvaru."
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "Zobrazit kouli uvolněných"
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "Tohle používá barvy pro částečně a úplně posunuté."
