@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:33-0500\n"
-"PO-Revision-Date: 2022-08-21 14:19+0300\n"
+"PO-Revision-Date: 2023-04-06 18:11+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr\n"
@@ -5503,8 +5503,6 @@ msgstr "'Hareket etmemiş' küresini göster"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "'yarı hareket etmiş' küresini göster"
 
@@ -5514,11 +5512,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Birim hareket edebiliyor ama saldıramıyorsa kısmen ve tam hareket renkleri "
+"için iki renkli küre kullanılır."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Boştaki birimler için iki renkli küre kullan"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5534,6 +5534,7 @@ msgstr "'müttefik' küresini göster"
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Müttefikler saldırırken hareketleri göstermek için iki renkli küre kullanılır"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5542,6 +5543,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Müttefikler saldırırken birimlerin iki renkli bir küresi olur. Bir yarısı "
+"dost küre rengidir ve diğer yarısı birimin hareketsiz mi, kısmen mi yoksa "
+"tamamen mi hareket ettiğini gösterir."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -8344,31 +8348,6 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
 
-#~ msgid ""
-#~ "The key '$key' is deprecated and support will be removed in version "
-#~ "$removal_version."
-#~ msgstr ""
-#~ "'$key' anahtarı kullanımdan çıkarılmış ve $removal_version sürümünde "
-#~ "kaldırılacaktır."
-
-#~ msgid ""
-#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
-#~ "'$deprecated_key' will be removed in version $removal_version."
-#~ msgstr ""
-#~ "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. "
-#~ "'$deprecated_key' için destek $removal_version sürümünde kaldırılacaktır."
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "Vurup kaçtı küresini göster "
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "Bu, kısmi ve hareket ettirilmiş kürelerin renklerini kullanır. "
-
-#, fuzzy
-#~| msgid "Player joins"
-#~ msgid "Player Hosted"
-#~ msgstr "Oyuncu katılıyor"
-
 #~ msgid "By:"
 #~ msgstr "Yapan:"
 
@@ -8403,3 +8382,23 @@ msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmem
 #~ "A terrain with a string with more than 4 characters has been found, the "
 #~ "affected terrain is:"
 #~ msgstr "Dizgesi 4 karakterden daha uzun bir arazi bulundu; etkilenen arazi:"
+
+#~ msgid ""
+#~ "The key '$key' is deprecated and support will be removed in version "
+#~ "$removal_version."
+#~ msgstr ""
+#~ "'$key' anahtarı kullanımdan çıkarılmış ve $removal_version sürümünde "
+#~ "kaldırılacaktır."
+
+#~ msgid ""
+#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
+#~ "'$deprecated_key' will be removed in version $removal_version."
+#~ msgstr ""
+#~ "'$deprecated_key' ismi '$key' diye yeniden adlandırıldı. "
+#~ "'$deprecated_key' için destek $removal_version sürümünde kaldırılacaktır."
+
+#~ msgid "Show disengaged orb"
+#~ msgstr "Vurup kaçtı küresini göster "
+
+#~ msgid "This uses the colors for partial and moved orbs."
+#~ msgstr "Bu, kısmi ve hareket ettirilmiş kürelerin renklerini kullanır. "
