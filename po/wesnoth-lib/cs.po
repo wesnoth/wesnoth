@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:33-0500\n"
-"PO-Revision-Date: 2023-03-17 21:41+0100\n"
+"PO-Revision-Date: 2023-03-24 20:43+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2603,10 +2603,8 @@ msgstr "Webové stránky:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -4738,31 +4736,25 @@ msgstr "Přihlášení:"
 
 #. [button]: id=replay_download
 #: data/gui/window/mp_match_history.cfg:144
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Staženo"
+msgstr "Nahrát"
 
 #. [label]: id=players
 #. [label]: id=modifications
 #: data/gui/window/mp_match_history.cfg:161
 #: data/gui/window/mp_match_history.cfg:178
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
-msgstr "Žádná"
+msgstr "Nikdo/nic"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:377
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:390
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Počet hráčů:"
+msgstr "Hráči"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5219,12 +5211,12 @@ msgstr "Zobrazit animace vody (může být pomalé)"
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:218
 msgid "Show unit standing animations"
-msgstr "Zobrazit náhodné animace jednotek"
+msgstr "Zobrazit animace pro stojící jednotky"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:219
 msgid "Continuously animate standing units on the battlefield"
-msgstr "Neustálá animace jednotek na bitevním poli"
+msgstr "Neustále animovat stojící jednotky na bitevním poli"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:237

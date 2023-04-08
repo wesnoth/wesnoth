@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:34-0500\n"
-"PO-Revision-Date: 2023-03-10 23:05+0100\n"
+"PO-Revision-Date: 2023-04-04 21:25+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4908,9 +4908,9 @@ msgid ""
 "level opponent."
 msgstr ""
 "Zasadit smrtelnou ránu nepřátelské jednotce je nejlepší způsob, jak získat "
-"zkušenost. Jednotka, která zabila nepřítele, získá 8 zkušenostních bodů za "
-"každou úroveň jednotky, kterou zabila, nebo 4 v případě že byla úroveň oběti "
-"pouze nula."
+"zkušenost. Jednotka, která zabila nepřítele, získá 8 zkušenostních bodů za "
+"každou úroveň jednotky, kterou zabila, nebo 4 v případě, že byla úroveň "
+"oběti pouze nula."
 
 #. [tip]
 #: data/tips.cfg:116
@@ -6898,14 +6898,12 @@ msgid "Match History — $player"
 msgstr "Historie zápasů – $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:101
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
-msgstr "Éra:"
+msgstr "Éra: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:102
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7840,36 +7838,32 @@ msgstr "Změna tahu"
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
-msgstr "Při stahování seznamu rozšíření ze serveru došlo k chybě."
+msgstr ""
+"Při stahování souboru došlo k chybě. Další informace najdeš v záznamech hry."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
 msgid "Download error"
-msgstr ""
+msgstr "Chyba při stahování"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Potvrdit přepsání"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "Přepsat existující soubor?"
 
 #: src/network_download_file.cpp:81
 msgid "Download complete"
-msgstr ""
+msgstr "Stahování dokončeno"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "Hra byla uložena."
+msgstr "Soubor byl stažen."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8139,10 +8133,6 @@ msgid "unhealable: "
 msgstr "neléčitelnost: "
 
 #: src/reports.cpp:358
-#, fuzzy
-#| msgid ""
-#| "This unit is unhealable. It cannot be healed by healers or villages and "
-#| "doesn't benefit from resting."
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
