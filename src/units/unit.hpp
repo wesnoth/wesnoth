@@ -226,8 +226,6 @@ public:
 
 	virtual ~unit();
 
-	void swap(unit&);
-
 	unit& operator=(const unit&) = delete;
 
 	/**
@@ -1993,9 +1991,6 @@ private:
 		invisibility_cache_.clear();
 	}
 };
-
-/** Implement non-member swap function for std::swap (calls @ref unit::swap). */
-void swap(unit& lhs, unit& rhs);
 
 /**
  * Object which temporarily resets a unit's movement.
