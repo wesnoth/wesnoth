@@ -15,6 +15,28 @@
 
 #include "units/ability.hpp"
 
+#include "game_version.hpp" // for version_info in deprecated_message
+#include "deprecation.hpp"
+
+unit_ability_t::unit_ability_t(std::string tag, config cfg)
+		: tag_(std::move(tag))
+		, cfg_(std::move(cfg))
+{
+	//Add wml filter if "backstab" attribute used.
+	if (!cfg_["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
+	if(cfg_["backstab"].to_bool()){
+		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+		config& filter_opponent = cfg.child_or_add("filter_opponent");
+		if(!filter_opponent.empty()) {
+			filter_opponent = filter_opponent.add_child("and");
+		}
+		filter_opponent["formula"] = backstab_formula;
+	}
+	cfg_.remove_attribute("backstab");
+}
+
 void unit_ability_t::parse_vector(const config& abilities_cfg, std::vector<ability_ptr>& res)
 {
 	for(auto item : abilities_cfg.all_children_range()) {

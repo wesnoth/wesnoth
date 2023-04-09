@@ -27,10 +27,7 @@ using ability_vector = std::vector<ability_ptr>;
 class unit_ability_t
 {
 public:
-	unit_ability_t(std::string tag, config cfg)
-		: tag_(std::move(tag))
-		, cfg_(std::move(cfg))
-	{}
+	unit_ability_t(std::string tag, config cfg);
 
 	const std::string& tag() const { return tag_; };
 	const config& cfg() const { return cfg_; };
