@@ -521,142 +521,93 @@ void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 namespace {
 
 	/**
-	 * Gets the children of @parent (which should be the specials for an
+	 * call @a fres, for each element that matches the id (tag matches or id matched dpending on @a special_id @a special_tags)
+	 * stops the loop when fres returns true. (used for early exit when we just want to know ehther such an element exists)
+	 */
+	template<typename F>
+	void forerach_ability_children(F fres,
+	                           const ability_vector& parent, const std::string& id,
+	                           bool special_id=true, bool special_tags=true)
+	{
+		for (const ability_ptr& sp : parent) {
+			bool matches = (special_id  && sp->cfg()["id"] == id) || (special_tags && sp->tag() == id);
+			if(matches && fres(sp)) {
+				return;
+			}
+		}
+	}
+
+	/**
+	 * Gets the children of parent (which should be the abilities for an
 	 * attack_type) and places the ones whose tag or id= matches @a id into
 	 * @a tag_result and @a id_result.
-	 *
-	 * If @a just_peeking is set to true, then @a tag_result and @a id_result
-	 * are not touched; instead the return value is used to indicate if any
-	 * matching children were found.
-	 *
-	 * @returns  true if @a just_peeking is true and a match was found;
-	 *           false otherwise.
+	 * @param tag_result receive the children whose tag or id matches @a id
+	 * @param parent the tags whose contain children (abilities here)
+	 * @param id tag or id of child tested
+	 * @param special_id if true, children check by id
+	 * @param special_tags if true, children check by tags
 	 */
-	bool get_special_children(ability_vector& tag_result,
-	                           ability_vector& id_result,
+	void get_ability_children(ability_vector& res,
 	                           const ability_vector& parent, const std::string& id,
-	                           bool just_peeking=false) {
-		for (const ability_ptr& sp : parent)
-		{
-			if (just_peeking && (sp->tag() == id || sp->cfg()["id"] == id)) {
-				return true; // peek succeeded; done
-			}
+	                           bool special_id=true, bool special_tags=true)
+	{
+		forerach_ability_children([&res](const ability_ptr& sp) {res.push_back(sp); return false; },
+	                           parent, id, special_id, special_tags);
+	}
+	/**
+	 * Implementation of attack_type::has_special_simple 
+	 * @param parent the tags whose contain children (abilities here)
+	 * @param id tag or id of child tested
+	 * @param special_id if true, children check by id
+	 * @param special_tags if true, children check by tags
+	 */
+	bool has_ability_children(const ability_vector& parent, const std::string& id,
+	                           bool special_id=true, bool special_tags=true)
+	{
+		bool res;
+		forerach_ability_children([&res](const ability_ptr& sp) {res = true; return true; },
+	                           parent, id, special_id, special_tags);
+		return res;
 
-			if(sp->tag() == id) {
-				tag_result.push_back(sp);
-			}
-			if(sp->cfg()["id"] == id) {
-				id_result.push_back(sp);
-			}
-		}
-		return false;
 	}
 
-	bool get_special_children_id(ability_vector& id_result,
-	                           const ability_vector& parent, const std::string& id,
-	                           bool just_peeking=false) {
-		for (const ability_ptr& sp : parent)
-		{
-			if (just_peeking && (sp->cfg()["id"] == id)) {
-				return true; // peek succeeded; done
-			}
-
-			if(sp->cfg()["id"] == id) {
-				id_result.push_back(sp);
-			}
-		}
-		return false;
-	}
-
-	bool get_special_children_tags(ability_vector& tag_result,
-	                           const ability_vector& parent, const std::string& id,
-	                           bool just_peeking=false) {
-		for (const ability_ptr& sp : parent)
-		{
-			if (just_peeking && (sp->tag() == id)) {
-				return true; // peek succeeded; done
-			}
-
-			if(sp->tag() == id) {
-				tag_result.push_back(sp);
-			}
-		}
-		return false;
-	}
 }
 
 /**
  * Returns whether or not @a *this has a special with a tag or id equal to
- * @a special. If @a simple_check is set to true, then the check is merely
- * for being present. Otherwise (the default), the check is for a special
+ * @a special. The check is merely for being present.
+ */
+bool attack_type::has_special_simple(const std::string& special, bool check_id, bool check_tags) const
+{
+	return has_ability_children(specials_, special, check_id, check_tags);
+}
+
+/**
+ * Returns whether or not @a *this has a special with a tag or id equal to
+ * @a special. The check is for a special
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::has_special(const std::string& special, bool simple_check, bool special_id, bool special_tags) const
+bool attack_type::has_special(const std::string& special, bool special_id, bool special_tags) const
 {
-	{
-		ability_vector special_tag_matches;
-		ability_vector special_id_matches;
-		if(special_id && special_tags){
-			if ( get_special_children(special_tag_matches, special_id_matches, specials_, special, simple_check) ) {
-				return true;
-			}
-		} else if(special_id && !special_tags){
-			if ( get_special_children_id(special_id_matches, specials_, special, simple_check) ) {
-				return true;
-			}
-		} else if(!special_id && special_tags){
-			if ( get_special_children_tags(special_tag_matches, specials_, special, simple_check) ) {
-				return true;
-			}
+	ability_vector special_matches;
+	get_ability_children(special_matches, specials_, special, special_id, special_tags);
+	for(const ability_ptr& entry : special_matches) {
+		if ( special_active(entry->cfg(), AFFECT_SELF, entry->tag()) ) {
+			return true;
 		}
-		// If we make it to here, then either list.empty() or !simple_check.
-		// So if the list is not empty, then this is not a simple check and
-		// we need to check each special in the list to see if any are active.
-		if(special_tags){
-			for(const ability_ptr& entry : special_tag_matches) {
-				if ( special_active(entry->cfg(), AFFECT_SELF, entry->tag()) ) {
-					return true;
-				}
-			}
-		}
-		if(special_id){
-			for(const ability_ptr& entry : special_id_matches) {
-				if ( special_active(entry->cfg(), AFFECT_SELF, entry->tag()) ) {
-					return true;
-				}
+	}
+
+	if (other_attack_ ) {
+		ability_vector special_matches_opponent;
+		get_ability_children(special_matches_opponent, other_attack_->specials_, special, special_id, special_tags);
+		for(const ability_ptr& entry : special_matches_opponent) {
+			if ( special_active(entry->cfg(), AFFECT_OTHER, entry->tag()) ) {
+				return true;
 			}
 		}
 	}
 
-	// Skip checking the opponent's attack?
-	if ( simple_check || !other_attack_ ) {
-		return false;
-	}
-
-	ability_vector special_tag_matches;
-	ability_vector special_id_matches;
-	if(special_id && special_tags){
-		get_special_children(special_tag_matches, special_id_matches, other_attack_->specials_, special);
-	} else if(special_id && !special_tags){
-		get_special_children_id(special_id_matches, other_attack_->specials_, special);
-	} else if(!special_id && special_tags){
-		get_special_children_tags(special_tag_matches, other_attack_->specials_, special);
-	}
-	if(special_tags){
-		for(const ability_ptr& entry : special_tag_matches) {
-			if ( other_attack_->special_active(entry->cfg(), AFFECT_OTHER, entry->tag()) ) {
-				return true;
-			}
-		}
-	}
-	if(special_id){
-		for(const ability_ptr& entry : special_id_matches) {
-			if ( other_attack_->special_active(entry->cfg(), AFFECT_OTHER, entry->tag()) ) {
-				return true;
-			}
-		}
-	}
 	return false;
 }
 
@@ -1215,29 +1166,7 @@ active_ability_list attack_type::overwrite_special_checking(const std::string& a
 	return input;
 }
 
-	/**
-	 * Gets the children of parent (which should be the abilities for an
-	 * attack_type) and places the ones whose tag or id= matches @a id into
-	 * @a tag_result and @a id_result.
-	 * @param tag_result receive the children whose tag matches @a id
-	 * @param id_result receive the children whose id matches @a id
-	 * @param parent the tags whose contain children (abilities here)
-	 * @param id tag or id of child tested
-	 * @param special_id if true, children check by id
-	 * @param special_tags if true, children check by tags
-	 */
-static void get_ability_children(ability_vector& tag_result,
-	                           ability_vector& id_result,
-	                           const ability_vector& parent, const std::string& id,
-	                           bool special_id=true, bool special_tags=true) {
-	if(special_id && special_tags){
-		get_special_children(tag_result, id_result, parent, id);
-	} else if(special_id && !special_tags){
-		get_special_children_id(id_result, parent, id);
-	} else if(!special_id && special_tags){
-		get_special_children_tags(tag_result, parent, id);
-	}
-}
+
 
 bool unit::get_self_ability_bool(const config& special, const std::string& tag_name, const map_location& loc) const
 {
@@ -1309,21 +1238,11 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 {
 	const unit_map& units = get_unit_map();
 	if(self_){
-		ability_vector special_tag_matches_self;
-		ability_vector special_id_matches_self;
-		get_ability_children(special_tag_matches_self, special_id_matches_self, self_->abilities(), special, special_id , special_tags);
-		if(special_tags){
-			for(const ability_ptr& entry : special_tag_matches_self) {
-				if(check_self_abilities(entry->cfg(), entry->tag())){
-					return true;
-				}
-			}
-		}
-		if(special_id){
-			for(const ability_ptr& entry : special_id_matches_self) {
-				if(check_self_abilities(entry->cfg(), entry->tag())){
-					return true;
-				}
+		ability_vector special_matches_self;
+		get_ability_children(special_matches_self, self_->abilities(), special, special_id , special_tags);
+		for(const ability_ptr& entry : special_matches_self) {
+			if(check_self_abilities(entry->cfg(), entry->tag())){
+				return true;
 			}
 		}
 
@@ -1335,43 +1254,22 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if ( &*it == self_.get() )
 				continue;
 
-			ability_vector special_tag_matches_adj;
-			ability_vector special_id_matches_adj;
-			get_ability_children(special_tag_matches_adj, special_id_matches_adj, it->abilities(), special, special_id , special_tags);
-			if(special_tags){
-				for(const ability_ptr& entry : special_tag_matches_adj) {
-					if(check_adj_abilities(entry->cfg(), entry->tag(), i , *it)){
-						return true;
-					}
-				}
-			}
-			if(special_id){
-				for(const ability_ptr& entry : special_id_matches_adj) {
-					if(check_adj_abilities(entry->cfg(), entry->tag(), i , *it)){
-						return true;
-					}
+			ability_vector special_matches_adj;
+			get_ability_children(special_matches_adj, it->abilities(), special, special_id , special_tags);
+			for(const ability_ptr& entry : special_matches_adj) {
+				if(check_adj_abilities(entry->cfg(), entry->tag(), i , *it)){
+					return true;
 				}
 			}
 		}
 	}
 
 	if(other_){
-		ability_vector special_tag_matches_other;
-		ability_vector special_id_matches_other;
-		get_ability_children(special_tag_matches_other, special_id_matches_other, other_->abilities(), special, special_id , special_tags);
-		if(special_tags){
-			for(const ability_ptr& entry : special_tag_matches_other) {
-				if(check_self_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, other_loc_, AFFECT_OTHER, entry->tag())){
-					return true;
-				}
-			}
-		}
-
-		if(special_id){
-			for(const ability_ptr& entry : special_id_matches_other) {
-				if(check_self_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, other_loc_, AFFECT_OTHER, entry->tag())){
-					return true;
-				}
+		ability_vector special_matches_other;
+		get_ability_children(special_matches_other, other_->abilities(), special, special_id , special_tags);
+		for(const ability_ptr& entry : special_matches_other) {
+			if(check_self_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, other_loc_, AFFECT_OTHER, entry->tag())){
+				return true;
 			}
 		}
 
@@ -1383,22 +1281,11 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 			if ( &*it == other_.get() )
 				continue;
 
-			ability_vector special_tag_matches_oadj;
-			ability_vector special_id_matches_oadj;
-			get_ability_children(special_tag_matches_oadj, special_id_matches_oadj, it->abilities(), special, special_id , special_tags);
-			if(special_tags){
-				for(const ability_ptr& entry : special_tag_matches_oadj) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, *it, i, other_loc_, AFFECT_OTHER, entry->tag())){
-						return true;
-					}
-				}
-			}
-
-			if(special_id){
-				for(const ability_ptr& entry : special_id_matches_oadj) {
-					if(check_adj_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, *it, i, other_loc_, AFFECT_OTHER, entry->tag())){
-						return true;
-					}
+			ability_vector special_matches_oadj;
+			get_ability_children(special_matches_oadj, it->abilities(), special, special_id , special_tags);
+			for(const ability_ptr& entry : special_matches_oadj) {
+				if(check_adj_abilities_impl(other_attack_, shared_from_this(), entry->cfg(), other_, *it, i, other_loc_, AFFECT_OTHER, entry->tag())){
+					return true;
 				}
 			}
 		}
@@ -1414,7 +1301,7 @@ bool attack_type::has_special_or_ability(const std::string& special, bool specia
 	if(range().empty()){
 		return false;
 	}
-	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
+	return (has_special(special, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
 
