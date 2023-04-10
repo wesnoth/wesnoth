@@ -4527,10 +4527,10 @@ namespace {
 		std::string name;
 		lua_report_generator(lua_State *L, const std::string &n)
 			: mState(L), name(n) {}
-		virtual config generate(reports::context & rc);
+		virtual config generate(const reports::context & rc);
 	};
 
-	config lua_report_generator::generate(reports::context & /*rc*/)
+	config lua_report_generator::generate(const reports::context & /*rc*/)
 	{
 		lua_State *L = mState;
 		config cfg;
