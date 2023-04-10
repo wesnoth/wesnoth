@@ -243,78 +243,13 @@ jobs:
       - name: Run unit tests
         run: ./run_boost_tests --path=projectfiles/Xcode/build/"$CFG" --executable=unit_tests
 
-  windows:
-    strategy:
-      fail-fast: false
-      matrix:
-        cfg: [Debug, Release]
-    env:
-      CFG: ${{ matrix.cfg }}
-    defaults:
-      run:
-        shell: cmd
-    runs-on: windows-2019
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
-
-      - name: Cache object files
-        id: windows-cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            D:/a/wesnoth/vcpkg
-            D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: win-cache-master-${{ matrix.cfg }}-0012
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1.3
-
-      - name: Build vcpkg
-        run: |
-          git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
-          cd D:/a/wesnoth/vcpkg
-          D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
-
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.13
-        with:
-          cmake-version: '3.20.6'
-
-      - name: Run cmake
-        run: |
-          cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=D:/a/wesnoth/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
-
-# Trying to find the cause of the intermittent build failures. This assumes that the failure was during building glib,
-# but that seems regular enough that I'll check manually to see if it was.
-      - name: Store glib build log
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: glib-log
-          path: D:/a/wesnoth/vcpkg/buildtrees/glib/package-x64-windows-*-out.log
-
-# delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
-# otherwise the job was failing when trying to write a .obj file
-# building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
-      - name: Build wesnoth, wesnothd, campaignd and unit tests
-        run: |
-          rmdir /s /q D:\a\wesnoth\vcpkg\buildtrees
-          MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
-
-      - name: Run WML unit tests
-        if: matrix.cfg == 'Release'
-        run: python run_wml_tests -v -g -c -t 20 -p D:/a/wesnoth/wesnoth/%CFG%/wesnoth.exe
-
 # run after all other jobs have completed to check overall build status
   discord-notification:
     runs-on: ubuntu-20.04
 
     name: Discord Notification
 
-    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
+    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel]
     if: always()
 
     steps:
