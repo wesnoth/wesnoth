@@ -257,7 +257,7 @@ public:
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const override;
-#
+
 	class hotkey_handler;
 
 	virtual replay_controller * get_replay_controller() const { return nullptr; }
