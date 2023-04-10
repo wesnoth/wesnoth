@@ -906,16 +906,6 @@ private:
 	void draw_label(const theme::label& label);
 
 protected:
-
-	/**
-	 * Initiate a redraw.
-	 *
-	 * Invalidate controls and panels when changed after they have been drawn
-	 * initially. Useful for dynamic theme modification.
-	 */
-	void draw_init();
-	void draw_wrap(bool update,bool force);
-
 	/** Used to indicate to drawing functions that we are doing a map screenshot */
 	bool map_screenshot_;
 
