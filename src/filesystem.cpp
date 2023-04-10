@@ -617,8 +617,6 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
 	create_directory_if_missing(filesystem::get_logs_dir());
-
-	lg::rotate_logs(filesystem::get_logs_dir());
 }
 
 #ifdef _WIN32

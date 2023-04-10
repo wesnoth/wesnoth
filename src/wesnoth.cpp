@@ -806,7 +806,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
-	if(!lg::log_dir_writable()) {
+	// if the log directory is not writable, then this is the error condition so show the error message.
+	// if the log directory is writable, then there's no issue.
+	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
+	if(!lg::log_dir_writable().value_or(true)) {
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
