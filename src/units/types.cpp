@@ -81,8 +81,8 @@ unit_type::unit_type(const unit_type& o)
 	, default_variation_(o.default_variation_)
 	, variation_name_(o.variation_name_)
 	, race_(o.race_)
-	, abilities_(o.abilities_)
-	, adv_abilities_(o.adv_abilities_)
+	, abilities_metadata_(o.abilities_metadata_)
+	, adv_abilities_metadata_(o.adv_abilities_metadata_)
 	, zoc_(o.zoc_)
 	, hide_help_(o.hide_help_)
 	, do_not_list_(o.do_not_list_)
@@ -132,8 +132,8 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, default_variation_()
 	, variation_name_()
 	, race_(&unit_race::null_race)
-	, abilities_()
-	, adv_abilities_()
+	, abilities_metadata_()
+	, adv_abilities_metadata_()
 	, zoc_(false)
 	, hide_help_(false)
 	, do_not_list_()
@@ -302,7 +302,7 @@ void unit_type::build_help_index(
 
 	if(auto abil_cfg = cfg.optional_child("abilities")) {
 		for(const config::any_child ab : abil_cfg->all_children_range()) {
-			abilities_.emplace_back(ab.cfg);
+			abilities_metadata_.emplace_back(ab.cfg);
 		}
 	}
 
@@ -315,7 +315,7 @@ void unit_type::build_help_index(
 			}
 
 			for(const config::any_child ab : abil_cfg->all_children_range()) {
-				adv_abilities_.emplace_back(ab.cfg);
+				adv_abilities_metadata_.emplace_back(ab.cfg);
 			}
 		}
 	}

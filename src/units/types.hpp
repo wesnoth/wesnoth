@@ -216,10 +216,10 @@ public:
 		bool cumulative;
 	};
 
-	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_; }
+	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_metadata_; }
 
 	/** Some extra abilities that may be gained through AMLA advancements. */
-	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_; }
+	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_metadata_; }
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
@@ -361,7 +361,7 @@ private:
 	/** Never nullptr, but may point to the null race. */
 	const unit_race* race_;
 
-	std::vector<ability_metadata> abilities_, adv_abilities_;
+	std::vector<ability_metadata> abilities_metadata_, adv_abilities_metadata_;
 
 	bool zoc_, hide_help_, do_not_list_;
 
