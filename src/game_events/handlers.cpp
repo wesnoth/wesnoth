@@ -246,18 +246,18 @@ struct filter_attack : public event_filter {
 		auto unit_a = units.find(loc);
 		auto unit_d = units.find(loc_d);
 		if(unit_a != units.end() && loc.matches_unit(unit_a)) {
-			const unit& u = *unit_a;
+			const auto u = unit_a->shared_from_this();
 			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
 			const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
 			if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
-				const unit& opp = *unit_d;
+				const auto opp = unit_d->shared_from_this();
 				auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
 				const_attack_ptr second_attack = std::make_shared<const attack_type>(*temp_other_weapon);
-				auto ctx = attack->specials_context(u.shared_from_this(), opp.shared_from_this(), loc, loc_d, first_, second_attack);
-				auto opp_ctx = second_attack->specials_context(opp.shared_from_this(), u.shared_from_this(), loc_d, loc, !first_, attack);
+				auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
+				auto opp_ctx = second_attack->specials_context(opp, u, loc_d, loc, !first_, attack);
 				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
 			} else {
-				auto ctx = attack->specials_context(u.shared_from_this(), loc, first_);
+				auto ctx = attack->specials_context(u, loc, first_);
 				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
 			}
 		}
