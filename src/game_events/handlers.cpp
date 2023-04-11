@@ -36,6 +36,7 @@
 #include "side_filter.hpp"
 #include "sound.hpp"
 #include "units/filter.hpp"
+#include "units/unit.hpp"
 #include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -254,10 +255,10 @@ struct filter_attack : public event_filter {
 				const_attack_ptr second_attack = std::make_shared<const attack_type>(*temp_other_weapon);
 				auto ctx = attack->specials_context(u.shared_from_this(), opp.shared_from_this(), loc, loc_d, first_, second_attack);
 				auto opp_ctx = second_attack->specials_context(opp.shared_from_this(), u.shared_from_this(), loc_d, loc, !first_, attack);
-				return swf_.empty() || matches_special_filter(attack, swf_);
+				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
 			} else {
 				auto ctx = attack->specials_context(u.shared_from_this(), loc, first_);
-				return swf_.empty() || matches_special_filter(attack, swf_);
+				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
 			}
 		}
 		return false;
