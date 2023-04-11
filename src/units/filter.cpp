@@ -141,6 +141,10 @@ struct unit_filter_adjacent : public unit_filter_base
 		}
 		for (map_location::DIRECTION dir : dirs) {
 			unit_map::const_iterator unit_itor = units.find(adjacent[dir]);
+			if(adjacent[dir] == args.u.get_location()) {
+				//If we are testing ina  different location, we don't wnt to count as adjacent against ourselfes.
+				continue;
+			}
 			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}

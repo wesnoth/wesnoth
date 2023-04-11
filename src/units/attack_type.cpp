@@ -70,7 +70,7 @@ attack_type::attack_type(const config& cfg) :
 	specials_(),
 	changed_(true)
 {
-	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_);
+	specials_ = unit_ability_t::cfg_to_vector(cfg.child_or_empty("specials"), true);
 
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());

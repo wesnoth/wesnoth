@@ -368,65 +368,6 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if ( !unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc) )
 			return false;
 
-	const auto adjacent = get_adjacent_tiles(loc);
-
-	const unit_map& units = get_unit_map();
-
-	for (const config &i : cfg.child_range("filter_adjacent"))
-	{
-		std::size_t count = 0;
-		unit_filter ufilt{ vconfig(i) };
-		ufilt.set_use_flat_tod(illuminates);
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		for (const map_location::DIRECTION index : dirs)
-		{
-			if (index == map_location::NDIRECTIONS)
-				continue;
-			unit_map::const_iterator unit = units.find(adjacent[index]);
-			if (unit == units.end())
-				return false;
-			if (!ufilt(*unit, *this))
-				return false;
-			if (i.has_attribute("is_enemy")) {
-				const display_context& dc = resources::filter_con->get_disp_context();
-				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(side_)) {
-					continue;
-				}
-			}
-			count++;
-		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
-			return false;
-		}
-	}
-
-	for (const config &i : cfg.child_range("filter_adjacent_location"))
-	{
-		std::size_t count = 0;
-		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
-		adj_filter.flatten(illuminates);
-
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		for (const map_location::DIRECTION index : dirs)
-		{
-			if (index == map_location::NDIRECTIONS) {
-				continue;
-			}
-			if(!adj_filter.match(adjacent[index])) {
-				return false;
-			}
-			count++;
-		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
-			return false;
-		}
-	}
 	return true;
 }
 
@@ -1432,60 +1373,6 @@ bool attack_type::special_active_impl(
 		return false;
 	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
 		return false;
-
-	const auto adjacent = get_adjacent_tiles(self_loc);
-
-	// Filter the adjacent units.
-	for (const config &i : special.child_range("filter_adjacent"))
-	{
-		std::size_t count = 0;
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		unit_filter filter{ vconfig(i) };
-		for (const map_location::DIRECTION index : dirs)
-		{
-			if (index == map_location::NDIRECTIONS)
-				continue;
-			unit_map::const_iterator unit = units.find(adjacent[index]);
-			if (unit == units.end() || !filter.matches(*unit, adjacent[index], *self))
-				return false;
-			if (i.has_attribute("is_enemy")) {
-				const display_context& dc = resources::filter_con->get_disp_context();
-				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(self->side())) {
-					continue;
-				}
-			}
-			count++;
-		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
-			return false;
-		}
-	}
-
-	// Filter the adjacent locations.
-	for (const config &i : special.child_range("filter_adjacent_location"))
-	{
-		std::size_t count = 0;
-		std::vector<map_location::DIRECTION> dirs = map_location::parse_directions(i["adjacent"]);
-		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
-		for (const map_location::DIRECTION index : dirs)
-		{
-			if (index == map_location::NDIRECTIONS)
-				continue;
-			if(!adj_filter.match(adjacent[index])) {
-				return false;
-			}
-			count++;
-		}
-		if (i["count"].empty() && count != dirs.size()) {
-			return false;
-		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
-			return false;
-		}
-	}
 
 	return true;
 }

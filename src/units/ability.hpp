@@ -27,16 +27,16 @@ using ability_vector = std::vector<ability_ptr>;
 class unit_ability_t
 {
 public:
-	unit_ability_t(std::string tag, config cfg);
+	unit_ability_t(std::string tag, config cfg, bool is_attack_ability = false);
 
 	const std::string& tag() const { return tag_; };
 	const config& cfg() const { return cfg_; };
 	void write(config& abilities_cfg);
 
 
-	static void parse_vector(const config& abilities_cfg, ability_vector& res);
+	static void parse_vector(const config& abilities_cfg, ability_vector& res, bool is_attack_ability = false);
 	static config vector_to_cfg(const ability_vector& abilities);
-	static ability_vector cfg_to_vector(const config& abilities_cfg);
+	static ability_vector cfg_to_vector(const config& abilities_cfg, bool is_attack_ability = false);
 
 private:
 	std::string tag_;
