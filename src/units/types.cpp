@@ -53,6 +53,8 @@ static lg::log_domain log_unit("unit");
 
 unit_type::unit_type(const unit_type& o)
 	: cfg_(o.cfg_)
+	, attacks_cache_()
+	, abilities_()
 	, id_(o.id_)
 	, debug_id_(o.debug_id_)
 	, parent_id_(o.parent_id_)
@@ -103,6 +105,8 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	: cfg_(nullptr)
 	, built_cfg_()
 	, has_cfg_build_()
+	, attacks_cache_()
+	, abilities_()
 	, id_(cfg.has_attribute("id") ? cfg["id"].str() : parent_id)
 	, debug_id_()
 	, parent_id_(!parent_id.empty() ? parent_id : id_)
@@ -490,8 +494,9 @@ t_string unit_type::unit_description() const
 	}
 }
 
-std::vector<t_string> unit_type::special_notes() const {
-	return combine_special_notes(special_notes_, abilities_cfg(), attacks(), movement_type());
+std::vector<t_string> unit_type::special_notes() const
+{
+	return combine_special_notes(special_notes_, abilities(), attacks(), movement_type());
 }
 
 static void append_special_note(std::vector<t_string>& notes, const t_string& new_note) {
@@ -504,15 +509,15 @@ static void append_special_note(std::vector<t_string>& notes, const t_string& ne
 	notes.push_back(new_note);
 }
 
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const ability_vector& abilities, const_attack_itors attacks, const movetype& mt)
 {
 	std::vector<t_string> notes;
 	for(const auto& note : direct) {
 		append_special_note(notes, note);
 	}
-	for(const config::any_child ability : abilities.all_children_range()) {
-		if(ability.cfg.has_attribute("special_note")) {
-			append_special_note(notes, ability.cfg["special_note"].t_str());
+	for(const ability_ptr& ability : abilities) {
+		if(ability->cfg().has_attribute("special_note")) {
+			append_special_note(notes, ability->cfg()["special_note"].t_str());
 		}
 	}
 	for(const auto& attack : attacks) {
@@ -590,11 +595,9 @@ int unit_type::experience_needed(bool with_acceleration) const
 
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
-	if(auto abil = get_cfg().optional_child("abilities")) {
-		for(const config::any_child ab : abil->all_children_range()) {
-			if(ab.cfg["id"] == ability) {
-				return true;
-			}
+	for(const ability_ptr& ab: abilities()) {
+		if(ab->cfg()["id"] == ability) {
+			return true;
 		}
 	}
 
@@ -619,6 +622,14 @@ std::vector<std::string> unit_type::get_ability_list() const
 	}
 
 	return res;
+}
+
+const ability_vector& unit_type::abilities() const
+{
+	if(!abilities_) {
+		abilities_ = unit_ability_t::cfg_to_vector(abilities_cfg());
+	}
+	return *abilities_;
 }
 
 bool unit_type::hide_help() const
@@ -775,18 +786,17 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 	int resistance = movement_type_.resistance_against(damage_name);
 	active_ability_list resistance_abilities;
 
-	if(auto abilities = get_cfg().optional_child("abilities")) {
-		for(const config& cfg : abilities->child_range("resistance")) {
-			if(!cfg["affect_self"].to_bool(true)) {
-				continue;
-			}
-
-			if(!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
-				continue;
-			}
-
-			resistance_abilities.emplace_back(std::make_shared<unit_ability_t>("resistance", cfg), map_location::null_location(), map_location::null_location());
+	for(const ability_ptr& ab: abilities("resistance")) {
+		auto& cfg = ab->cfg();
+		if(!cfg["affect_self"].to_bool(true)) {
+			continue;
 		}
+
+		if(!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
+			continue;
+		}
+
+		resistance_abilities.emplace_back(ab, map_location::null_location(), map_location::null_location());
 	}
 
 	if(!resistance_abilities.empty()) {

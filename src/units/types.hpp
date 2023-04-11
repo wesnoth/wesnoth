@@ -236,6 +236,22 @@ public:
 	const config& abilities_cfg() const
 	{ return get_cfg().child_or_empty("abilities"); }
 
+	const ability_vector& abilities() const;
+
+	/**
+	 * @returns a vector of abilitites with tag @a tag
+	 */
+	ability_vector abilities(std::string_view tag) const
+	{
+		ability_vector res;
+		for(const ability_ptr& ab : abilities()) {
+			if(ab->tag() == tag) {
+				res.push_back(ab);
+			}
+		}
+		return res;
+	}
+
 	config::const_child_itors advancements() const
 	{ return get_cfg().child_range("advancement"); }
 
@@ -320,6 +336,7 @@ private:
 	mutable std::unique_ptr<config> built_cfg_;
 	mutable bool has_cfg_build_;
 	mutable attack_list attacks_cache_;
+	mutable std::optional<ability_vector> abilities_;
 
 	std::string id_;
 	/** A suffix for id_, used when logging messages. */
@@ -454,4 +471,4 @@ private:
  *
  * @return the special notes for a unit or unit_type.
  */
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt);
+std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const ability_vector& abilities, const_attack_itors attacks, const movetype& mt);

@@ -2722,9 +2722,9 @@ void unit::clear_changed_attributes()
 	}
 }
 
-std::vector<t_string> unit::unit_special_notes() const {
-	//FIXME: use abilities() directky
-	return combine_special_notes(special_notes_, unit_ability_t::vector_to_cfg(abilities_), attacks(), movement_type());
+std::vector<t_string> unit::unit_special_notes() const
+{
+	return combine_special_notes(special_notes_, abilities_, attacks(), movement_type());
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of
