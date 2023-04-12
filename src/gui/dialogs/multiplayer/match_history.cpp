@@ -225,7 +225,7 @@ void mp_match_history::tab_switch_callback()
 	listbox* tab_bar = find_widget<listbox>(get_window(), "tab_bar", false, true);
 	int tab = tab_bar->get_selected_row();
 
-	for(unsigned i = 0; i <= history_box->get_rows(); i++) {
+	for(unsigned i = 0; i < history_box->get_item_count(); i++) {
 		grid* history_grid = history_box->get_row_grid(i);
 		if(tab == 0) {
 			dynamic_cast<label*>(history_grid->find("scenario_name", false))->set_visible(gui2::widget::visibility::visible);
