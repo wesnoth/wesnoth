@@ -89,6 +89,7 @@ CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
 -- USER_NAME: the username logged in with
+-- LEADERS: the leader(s) set or chosen during MP staging. if multiple leaders are found, then they are comma delimited.
 create table game_player_info
 (
     INSTANCE_UUID  CHAR(36) NOT NULL,
@@ -100,6 +101,7 @@ create table game_player_info
     CLIENT_VERSION VARCHAR(255) NOT NULL DEFAULT '',
     CLIENT_SOURCE  VARCHAR(255) NOT NULL DEFAULT '',
     USER_NAME      VARCHAR(255) NOT NULL DEFAULT '',
+    LEADERS        VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);

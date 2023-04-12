@@ -1742,7 +1742,22 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 						source = "Default";
 					}
 				}
-				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
+
+				// add leader data
+				std::vector<std::string> leaders;
+				if(side.attr("type") != "") {
+					leaders.emplace_back(side.attr("type").to_string());
+				}
+				for(const auto unit : side.children("unit")) {
+					if(unit->attr("canrecruit") == "yes") {
+						leaders.emplace_back(unit->attr("type").to_string());
+					}
+				}
+				for(const auto leader : side.children("leader")) {
+					leaders.emplace_back(leader->attr("type").to_string());
+				}
+
+				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string(), utils::join(leaders));
 			}
 		}
 
