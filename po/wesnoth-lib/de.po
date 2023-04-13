@@ -1,18 +1,18 @@
 # Translators:
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
-#  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005 - 2010
-#  HaJo Gurt <gurt@gmx.de>, 2007
-#  Rhonda D'Vine <rhonda@deb.at>, 2010
-#  Oliver 'Crommy' Lange <oli-lange@web.de>, 2010 - 2012
-#  Aaron Winter <winter.aaron93@gmail.com>, 2018
-#  Mathias Lang <heindal@scherbia.de>, 2021
-#
+# Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012.
+# Nils Kneuper <crazy-ivanovic@gmx.net>, 2005 - 2010.
+# HaJo Gurt <gurt@gmx.de>, 2007.
+# Rhonda D'Vine <rhonda@deb.at>, 2010.
+# Oliver 'Crommy' Lange <oli-lange@web.de>, 2010 - 2012.
+# Aaron Winter <winter.aaron93@gmail.com>, 2018.
+# Mathias Lang <heindal@scherbia.de>, 2021.
+# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-02 09:55-0500\n"
-"PO-Revision-Date: 2022-03-15 16:42+0100\n"
+"PO-Revision-Date: 2023-04-13 02:51+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -5271,14 +5271,13 @@ msgstr "Wähle Sphäre/Minimap Farben"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
-msgstr "Zeige unbewegte Sphäre"
+msgstr "Sphäre bei unbewegten Einheiten"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
 #| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
-msgstr "Zeige teilweise bewegte Sphäre"
+msgstr "Sphäre bei teilweise bewegten Einheiten"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -5286,26 +5285,29 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Wenn sich eine Einheit bewegen, aber nicht angreifen kann, wird eine"
+" zweifarbige Sphäre verwendet, welche sich aus den Farben für vollständig und"
+" teilweise bewegte Einheiten zusammensetzt."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Zweifarbige Sphäre ermöglichen"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
-msgstr "Zeige bewegte Sphäre"
+msgstr "Sphäre bei bewegten Einheiten"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:153
 msgid "Show ally orb"
-msgstr "Zeige Sphären für Verbündete"
+msgstr "Sphäre bei Verbündeten"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "Zweifarbige Sphäre während des Zuges Verbündeter"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5314,11 +5316,14 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Während des Zuges Verbündeter wird die Sphäre zweifarbig angezeigt. Neben der"
+" Farbe für Verbündete zeigt die zweite Farbe an, ob eine Einheit noch nicht"
+" bewegt, teilweise bewegt oder vollständig bewegt wurde."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
 msgid "Show enemy orb"
-msgstr "Zeige Sphären für Gegner"
+msgstr "Sphären bei Gegnern"
 
 #. [label]: id=asdf
 #: data/gui/window/server_info.cfg:79
@@ -7553,15 +7558,15 @@ msgstr "Nächster Zug"
 
 #: src/hotkey/hotkey_command.cpp:139
 msgid "View: Full Map"
-msgstr "Sicht: Komplette Karte"
+msgstr "Sicht kompletter Karte"
 
 #: src/hotkey/hotkey_command.cpp:140
 msgid "View: Each Team"
-msgstr "Sicht: Jede Allianz"
+msgstr "Sicht jeder Partei"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "View: Human Team"
-msgstr "Sicht: Spieler"
+msgstr "Sicht des Spielers"
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Skip Animation"
