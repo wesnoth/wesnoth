@@ -162,7 +162,10 @@ std::size_t editor_palette<Item>::active_group_index()
 template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
-	const int items_fitting = (target.h / item_space_) * columns_;
+	// The number of columns is passed to the constructor, and isn't changed afterwards. It's likely to be
+	// exactly 4, but will always be a small number which makes the next cast reasonable.
+	const int items_fitting = static_cast<int>((target.h / item_space_) * columns_);
+
 	// This might be called while the palette is not visible onscreen.
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
@@ -183,8 +186,8 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 	dstrect.w = item_size_ + 2;
 	dstrect.h = item_size_ + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {
-		dstrect.x = target.x + (i % columns_) * item_space_;
-		dstrect.y = target.y + (i / columns_) * item_space_;
+		dstrect.x = target.x + static_cast<int>(i % columns_) * item_space_;
+		dstrect.y = target.y + static_cast<int>(i / columns_) * item_space_;
 		buttons_[i].set_location(dstrect);
 	}
 

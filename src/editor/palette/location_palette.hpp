@@ -90,9 +90,6 @@ private:
 	/** Scroll the editor-palette to the top. */
 	void scroll_top();
 
-	/** Scroll the editor-palette to the bottom. */
-	void scroll_bottom();
-
 	virtual bool is_selected_item(const std::string& id);
 
 	/** Return the number of items in the palette. */

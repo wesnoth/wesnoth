@@ -69,7 +69,7 @@ attack::attack(std::size_t team_index, bool hidden, unit& u, const map_location&
 
 attack::attack(const config& cfg, bool hidden)
 	: move(cfg,hidden)
-	, target_hex_(cfg.child("target_hex_")["x"],cfg.child("target_hex_")["y"], wml_loc())
+	, target_hex_(cfg.mandatory_child("target_hex_")["x"], cfg.mandatory_child("target_hex_")["y"], wml_loc())
 	, weapon_choice_(cfg["weapon_choice_"].to_int(-1)) //default value: -1
 	, attack_movement_cost_()
 	, temp_movement_subtracted_(0)
@@ -161,7 +161,7 @@ void attack::apply_temp_modifier(unit_map& unit_map)
 	unit& unit = *get_unit();
 	DBG_WB << unit.name() << " [" << unit.id()
 					<< "] has " << unit.attacks_left() << " attacks, decreasing by " << attack_count_;
-	assert(unit.attacks_left() >= attack_count_);
+	assert(unit.attacks_left() > 0);
 
 	//Calculate movement to subtract
 	temp_movement_subtracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
@@ -186,12 +186,13 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 	unit& unit = *get_unit();
 	DBG_WB << unit.name() << " [" << unit.id()
 					<< "] has " << unit.attacks_left() << " attacks, increasing by one";
-	unit.set_attacks(unit.attacks_left() + 1);
+	unit.set_attacks(unit.attacks_left() + temp_attacks_subtracted_);
 	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
 				<< "] from " << unit.movement_left() << " to "
 				<< unit.movement_left() + temp_movement_subtracted_ << ".";
 	unit.set_movement(unit.movement_left() + temp_movement_subtracted_, true);
 	temp_movement_subtracted_ = 0;
+	temp_attacks_subtracted_ = 0;
 	move::remove_temp_modifier(unit_map);
 }
 

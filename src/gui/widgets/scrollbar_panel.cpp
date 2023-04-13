@@ -67,13 +67,13 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(cfg.optional_child("background"));
+	state.emplace_back(cfg.optional_child("foreground"));
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -89,10 +89,10 @@ builder_scrollbar_panel::builder_scrollbar_panel(const config& cfg)
 			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, grid_(nullptr)
 {
-	const config& grid_definition = cfg.child("definition");
+	auto grid_definition = cfg.optional_child("definition");
 
 	VALIDATE(grid_definition, _("No list defined."));
-	grid_ = std::make_shared<builder_grid>(grid_definition);
+	grid_ = std::make_shared<builder_grid>(*grid_definition);
 	assert(grid_);
 }
 

@@ -39,8 +39,6 @@
 #include "game_config_view.hpp"
 
 #ifdef _WIN32
-#include "log_windows.hpp"
-
 #include <boost/locale.hpp>
 
 #include <windows.h>
@@ -233,6 +231,40 @@ bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostrea
 
 namespace filesystem
 {
+
+const blacklist_pattern_list default_blacklist{
+	{
+		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
+		".+",
+		"#*#",
+		"*~",
+		"*-bak",
+		"*.swp",
+		"*.pbl",
+		"*.ign",
+		"_info.cfg",
+		"*.exe",
+		"*.bat",
+		"*.cmd",
+		"*.com",
+		"*.scr",
+		"*.sh",
+		"*.js",
+		"*.vbs",
+		"*.o",
+		"*.ini",
+		/* Remove junk created by certain file manager ;) */
+		"Thumbs.db",
+		/* Eclipse plugin */
+		"*.wesnoth",
+		"*.project",
+	},
+	{
+		".+",
+		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
+		"__MACOSX",
+	}
+};
 
 static void push_if_exists(std::vector<std::string>* vec, const bfs::path& file, bool full)
 {
@@ -585,8 +617,6 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
 	create_directory_if_missing(filesystem::get_logs_dir());
-
-	lg::rotate_logs(filesystem::get_logs_dir());
 }
 
 #ifdef _WIN32

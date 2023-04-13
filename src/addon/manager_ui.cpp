@@ -57,10 +57,6 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	config cfg;
 	client.request_addons_list(cfg);
 
-	if(!cfg) {
-		return false;
-	}
-
 	read_addons_list(cfg, list);
 
 	return true;

@@ -88,7 +88,7 @@ namespace test_utils {
 
 			unit_types.set_config(game_config_view_.merged_children_view("units"));
 
-			game_config::load_config(cfg_.child("game_config"));
+			game_config::load_config(cfg_.mandatory_child("game_config"));
 			const hotkey::scope_changer hk_scope{hotkey::scope_game, false};
 
 			hotkey::load_default_hotkeys(game_config_view_);

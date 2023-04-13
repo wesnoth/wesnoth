@@ -36,6 +36,7 @@
 #include "side_filter.hpp"
 #include "sound.hpp"
 #include "units/filter.hpp"
+#include "units/unit.hpp"
 #include "variable.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -241,10 +242,24 @@ struct filter_attack : public event_filter {
 	{
 		const unit_map& units = resources::gameboard->units();
 		const auto& loc = first_ ? event_info.loc1 : event_info.loc2;
-		auto unit = units.find(loc);
-		if(unit != units.end() && loc.matches_unit(unit)) {
-			const config& attack = event_info.data.child(first_ ? "first" : "second");
-			return swf_.empty() || matches_special_filter(attack, swf_);
+		const auto& loc_d = first_ ? event_info.loc2 : event_info.loc1;
+		auto unit_a = units.find(loc);
+		auto unit_d = units.find(loc_d);
+		if(unit_a != units.end() && loc.matches_unit(unit_a)) {
+			const auto u = unit_a->shared_from_this();
+			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
+			const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
+			if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
+				const auto opp = unit_d->shared_from_this();
+				auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
+				const_attack_ptr second_attack = std::make_shared<const attack_type>(*temp_other_weapon);
+				auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
+				auto opp_ctx = second_attack->specials_context(opp, u, loc_d, loc, !first_, attack);
+				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+			} else {
+				auto ctx = attack->specials_context(u, loc, first_);
+				return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+			}
 		}
 		return false;
 	}

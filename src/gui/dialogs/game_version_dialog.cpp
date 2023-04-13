@@ -33,9 +33,6 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
-#ifdef _WIN32
-#include "log_windows.hpp"
-#endif
 
 #include <functional>
 

@@ -82,10 +82,10 @@ public:
 	const config& level() const { return level_; }
 	config& scenario()
 	{
-		if(config& scenario = level_.child("scenario"))
-			return scenario;
-		else if(config& snapshot = level_.child("snapshot"))
-			return snapshot;
+		if(auto scenario = level_.optional_child("scenario"))
+			return *scenario;
+		else if(auto snapshot = level_.optional_child("snapshot"))
+			return *snapshot;
 		else
 			throw "No scenariodata found";
 	}

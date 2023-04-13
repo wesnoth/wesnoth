@@ -146,6 +146,8 @@ public:
 		return gamestate().end_level_data_.has_value();
 	}
 
+	bool check_regular_game_end();
+
 	const end_level_data& get_end_level_data() const
 	{
 		return *gamestate().end_level_data_;
@@ -229,7 +231,6 @@ public:
 
 	bool is_skipping_replay() const { return skip_replay_; }
 	void toggle_skipping_replay();
-	bool is_linger_mode() const { return linger_; }
 	void do_autosave();
 
 	bool is_skipping_story() const { return skip_story_; }
@@ -256,7 +257,6 @@ public:
 	actions::undo_list& get_undo_stack() { return undo_stack(); }
 
 	bool is_browsing() const override;
-	bool is_lingering() const { return linger_; }
 
 	class hotkey_handler;
 
@@ -288,12 +288,7 @@ public:
 		return is_regular_game_end();
 	}
 
-	void maybe_throw_return_to_play_side() const
-	{
-		if(should_return_to_play_side() && !linger_ ) {
-			throw return_to_play_side_exception();
-		}
-	}
+	void maybe_throw_return_to_play_side() const;
 
 	virtual void play_side_impl() {}
 
@@ -329,6 +324,9 @@ public:
 
 	saved_game& get_saved_game() { return saved_game_; }
 
+	bool is_during_turn() const;
+	bool is_linger_mode() const;
+
 protected:
 	friend struct scoped_savegame_snapshot;
 	void play_slice_catch();
@@ -344,7 +342,7 @@ protected:
 	void fire_start();
 	void start_game();
 	virtual void init_gui();
-	void finish_side_turn();
+	void finish_side_turn_events();
 	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 
@@ -394,12 +392,12 @@ protected:
 
 	bool skip_replay_;
 	bool skip_story_;
-	bool linger_;
 	/**
 	 * Whether we did init sides in this session
 	 * (false = we did init sides before we reloaded the game).
 	 */
-	bool init_side_done_now_;
+	bool did_autosave_this_turn_;
+	bool did_tod_sound_this_turn_;
 	//the displayed location when we load a game.
 	map_location map_start_;
 	// Whether to start with the display faded to black
@@ -427,9 +425,14 @@ private:
 
 protected:
 	mutable bool ignore_replay_errors_;
+	/// true when the controller of the currently playing side has changed.
+	/// this can mean for example:
+	/// - The currently active side was reassigned from/to another player in a mp game
+	/// - The replay controller was disabled ('continue play' button)
+	/// - The currently active side was droided / undroided.
+	/// - A side was set to idle.
 	bool player_type_changed_;
 	virtual void sync_end_turn() {}
 	virtual void check_time_over();
 	virtual void update_viewing_player() = 0;
-	void play_turn();
 };

@@ -190,14 +190,6 @@ inline int rounded_division(int a, int b)
 }
 
 /**
- * Converts a double to a fixed point.
- */
-constexpr int32_t floating_to_fixed_point(double n)
-{
-	return int32_t(n * (1 << 8));
-}
-
-/**
  * @param n1 The first number to multiply.
  * @param n2 The second number to multiply.
  * @return The unsigned result of n1 * n2, then bitshifting the result to the right.

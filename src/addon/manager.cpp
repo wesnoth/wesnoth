@@ -113,8 +113,8 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 		cfg.clear();
 		config envelope;
 		read(envelope, *stream);
-		if(config& info = envelope.child("info")) {
-			cfg = std::move(info);
+		if(auto info = envelope.optional_child("info")) {
+			cfg = std::move(*info);
 		}
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"

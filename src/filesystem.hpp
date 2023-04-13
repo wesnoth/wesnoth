@@ -39,7 +39,12 @@ namespace filesystem {
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
 
-typedef std::unique_ptr<SDL_RWops, void(*)(SDL_RWops*)> rwops_ptr;
+struct sdl_rwops_deleter
+{
+	void operator()(SDL_RWops*) const noexcept;
+};
+
+using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
 
 rwops_ptr make_read_RWops(const std::string &path);
 rwops_ptr make_write_RWops(const std::string &path);
@@ -88,39 +93,7 @@ private:
 	std::vector<std::string> directory_patterns_;
 };
 
-static const blacklist_pattern_list default_blacklist{
-	{
-		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
-		".+",
-		"#*#",
-		"*~",
-		"*-bak",
-		"*.swp",
-		"*.pbl",
-		"*.ign",
-		"_info.cfg",
-		"*.exe",
-		"*.bat",
-		"*.cmd",
-		"*.com",
-		"*.scr",
-		"*.sh",
-		"*.js",
-		"*.vbs",
-		"*.o",
-		"*.ini",
-		/* Remove junk created by certain file manager ;) */
-		"Thumbs.db",
-		/* Eclipse plugin */
-		"*.wesnoth",
-		"*.project",
-	},
-	{
-		".+",
-		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
-		"__MACOSX",
-	}
-};
+extern const blacklist_pattern_list default_blacklist;
 
 /**
  * Get a list of all files and/or directories in a given directory.

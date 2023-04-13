@@ -139,8 +139,8 @@ void load_game_prefs()
 		completed_campaigns[c]; // create the elements
 	}
 
-	if(const config& ccc = preferences::get_child("completed_campaigns")) {
-		for(const config& cc : ccc.child_range("campaign")) {
+	if(auto ccc = preferences::get_child("completed_campaigns")) {
+		for(const config& cc : ccc->child_range("campaign")) {
 			std::set<std::string>& d = completed_campaigns[cc["name"]];
 			std::vector<std::string> nd = utils::split(cc["difficulty_levels"]);
 			std::copy(nd.begin(), nd.end(), std::inserter(d, d.begin()));
@@ -152,7 +152,7 @@ void load_game_prefs()
 	const t_translation::ter_list terrain(t_translation::read_list(preferences::get("encountered_terrain_list")));
 	encountered_terrains_set.insert(terrain.begin(), terrain.end());
 
-	if(const config& history = preferences::get_child("history")) {
+	if(auto history = preferences::get_child("history")) {
 		/* Structure of the history
 			[history]
 				[history_id]
@@ -160,7 +160,7 @@ void load_game_prefs()
 						message = foobar
 					[/line]
 		*/
-		for(const config::any_child h : history.all_children_range()) {
+		for(const config::any_child h : history->all_children_range()) {
 			for(const config& l : h.cfg.child_range("line")) {
 				history_map[h.key].push_back(l["message"]);
 			}
@@ -564,7 +564,7 @@ const config& options()
 		// config
 		option_values.clear();
 	} else {
-		option_values = preferences::get_child("options");
+		option_values = *preferences::get_child("options");
 	}
 
 	options_initialized = true;

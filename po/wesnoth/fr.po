@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2022-10-17 10:01+0800\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
+"PO-Revision-Date: 2023-04-06 11:16+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
 "Language: fr\n"
@@ -227,17 +227,20 @@ msgstr ""
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:167
 #, fuzzy
-#| msgid "Connection timed out"
 msgid "Server disconnect timeout"
-msgstr "Délai de connexion dépassé"
+msgstr "Délai de déconnexion au server"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:168
+#, fuzzy
 msgid ""
 "The amount of time in seconds before a disconnect is detected. If currently "
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"Le temps en secondes pour diagnostiquer une déconnexion. Si vous êtes dans "
+"le vestibule du serveur multi-joueur, vous devez quitter et vous reconnecter "
+"pour que le delai soit activé."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -1148,7 +1151,7 @@ msgstr "Épée sacrée"
 msgid "Short Sword"
 msgstr "Épée courte"
 
-# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine). 
+# Comme "Wraith" (Apparition) ne mène à rien, je me repose sur l'attaque corps-à-corps du « Wraith » : « baneblade » (lame de ruine).
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
 msgid "Wraith Sword"
@@ -3522,9 +3525,8 @@ msgstr "Au-delà des montagnes septentrionales"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:253
-#, fuzzy
 msgid "Northerners"
-msgstr "Nordiques"
+msgstr "Nordistes"
 
 #. [music]
 #: data/core/macros/sound-utils.cfg:259
@@ -6059,6 +6061,103 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "Échec non spécifié de la validation."
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Résultats du scénario"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Victoire"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "Vous êtes victorieux !"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Défaite"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "Vous avez été battu !"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Or restant : "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Tours finis de façon anticipée : "
+
+#: src/carryover_show_gold.cpp:102
+msgid " per turn"
+msgstr " par tour"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Bonus de fin anticipée : "
+
+#: src/carryover_show_gold.cpp:103
+msgid "Total bonus: "
+msgstr "Bonus total : "
+
+#: src/carryover_show_gold.cpp:106
+msgid "Total gold: "
+msgstr "Or total : "
+
+#: src/carryover_show_gold.cpp:110
+msgid "Carryover percentage: "
+msgstr "Pourcentage conservé : "
+
+#: src/carryover_show_gold.cpp:114
+msgid "Bonus gold: "
+msgstr "Bonus d'or : "
+
+#: src/carryover_show_gold.cpp:116
+msgid "Retained gold: "
+msgstr "Or conservé : "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Vous commencerez le prochain scénario avec $gold pièce d'or de plus que le "
+"minimum de départ du scénario."
+msgstr[1] ""
+"Vous commencerez le prochain scénario avec $gold pièces d'or de plus que le "
+"minimum de départ du scénario."
+
+# Je ne vois pas la différence entre ces deux traductions (singulier/pluriel) : dans le code, l'élément déterminant si on est censés être au singulier ou au pluriel semble être l'or conservé, qui est <= 0 dans ce cas.
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Vous commencerez le prochain scénario avec le minimum de pièces d'or de "
+"départ du scénario."
+msgstr[1] ""
+"Vous commencerez le prochain scénario avec le minimum de pièces d'or de "
+"départ du scénario."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Vous commencerez le prochain scénario avec la plus grande valeur entre $gold "
+"pièce d'or et le minimum de départ du scénario."
+msgstr[1] ""
+"Vous commencerez le prochain scénario avec la plus grande valeur entre $gold "
+"pièces d'or et le minimum de départ du scénario."
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Ajouté à la liste des ignorés : $nick"
@@ -6778,134 +6877,37 @@ msgstr "Vous avez réalisé trop de tentatives d'authentification."
 msgid "Password hashing failed."
 msgstr "Le hachage du mot de passe à échoué."
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Résultats du scénario"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Victoire"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "Vous êtes victorieux !"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Défaite"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "Vous avez été battu !"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Or restant : "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Tours finis de façon anticipée : "
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid " per turn"
-msgstr " par tour"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Bonus de fin anticipée : "
-
-#: src/game_initialization/playcampaign.cpp:125
-msgid "Total bonus: "
-msgstr "Bonus total : "
-
-#: src/game_initialization/playcampaign.cpp:128
-msgid "Total gold: "
-msgstr "Or total : "
-
-#: src/game_initialization/playcampaign.cpp:132
-msgid "Carryover percentage: "
-msgstr "Pourcentage conservé : "
-
-#: src/game_initialization/playcampaign.cpp:136
-msgid "Bonus gold: "
-msgstr "Bonus d'or : "
-
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Retained gold: "
-msgstr "Or conservé : "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Vous commencerez le prochain scénario avec $gold pièce d'or de plus que le "
-"minimum de départ du scénario."
-msgstr[1] ""
-"Vous commencerez le prochain scénario avec $gold pièces d'or de plus que le "
-"minimum de départ du scénario."
-
-# Je ne vois pas la différence entre ces deux traductions (singulier/pluriel) : dans le code, l'élément déterminant si on est censés être au singulier ou au pluriel semble être l'or conservé, qui est <= 0 dans ce cas.
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Vous commencerez le prochain scénario avec le minimum de pièces d'or de "
-"départ du scénario."
-msgstr[1] ""
-"Vous commencerez le prochain scénario avec le minimum de pièces d'or de "
-"départ du scénario."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Vous commencerez le prochain scénario avec la plus grande valeur entre $gold "
-"pièce d'or et le minimum de départ du scénario."
-msgstr[1] ""
-"Vous commencerez le prochain scénario avec la plus grande valeur entre $gold "
-"pièces d'or et le minimum de départ du scénario."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "Le jeu n'a pas pu être chargé : "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Erreur lors du déroulement de la partie : "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "La carte n'a pas pu être chargée : "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr "Erreur du générateur de carte : "
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Erreur lors de la lecture du code WML : "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Fin de la partie"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Ce scénario est terminé. Voulez-vous continuer la campagne ?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Scénario inconnu : « $scenario| »"
 
@@ -6994,9 +6996,19 @@ msgstr "Vestibule"
 msgid "Other Games"
 msgstr "Observer la partie"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
 msgstr "Historique de match — $player"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+#, fuzzy
+#| msgid "Era:"
+msgid "Era: "
+msgstr "Ère :"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
+msgstr ""
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7098,7 +7110,7 @@ msgstr "Factions"
 msgid "Races: "
 msgstr "Races : "
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
 msgstr "Alignements : "
 
@@ -7110,33 +7122,21 @@ msgstr "Chefs :"
 msgid "Recruits"
 msgstr "Recrues"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "Aucune description n'est disponible."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-msgid "Availability: "
-msgstr "Disponibilité : "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr "Incontournable"
-
-#: src/help/help_impl.cpp:773
-msgid "Unavailable"
-msgstr "Indisponible"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Divers"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Alignement : "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7148,23 +7148,23 @@ msgstr ""
 "Ceci est un groupe d'unités, faisant toutes partie des <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Sous-groupes d'unités au sein de ce groupe'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Groupes d'unités de cette race'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unités de ce groupe'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unités de cette race'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "fichier original corrompu"
 
@@ -7957,6 +7957,45 @@ msgstr "$name commence à jouer"
 msgid "Turn changed"
 msgstr "Changement"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid ""
+#| "An error occurred while downloading the add-ons list from the server."
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr ""
+"Une erreur s'est produite lors du téléchargement de la liste des extensions "
+"depuis le serveur."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+#, fuzzy
+#| msgid "Download"
+msgid "Download error"
+msgstr "Télécharger"
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr ""
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr ""
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "Download"
+msgid "Download complete"
+msgstr "Télécharger"
+
+#: src/network_download_file.cpp:81
+#, fuzzy
+#| msgid "The game has been saved."
+msgid "The file has been downloaded."
+msgstr "La partie a été sauvegardée."
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Un terrain avec un coût de mouvement inférieur à 1 a été détecté."
@@ -7968,15 +8007,15 @@ msgstr "Un terrain avec un coût de mouvement inférieur à 1 a été détecté.
 msgid "waiting for^a global variable"
 msgstr "une variable globale"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "temps restant pour ce tour"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "heure locale"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7984,17 +8023,17 @@ msgstr ""
 "Le jeu est désynchronisé. Continuer n'aurait aucun sens. Voulez-vous "
 "sauvegarder votre partie ?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "Détails de l'erreur :"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr "Avertissement : branches de campagnes cassées "
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8006,7 +8045,7 @@ msgstr[1] ""
 "Certains des scénarios possible suivant manquent, il est possible que vous "
 "ne puissiez finir cette campagne."
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8020,11 +8059,11 @@ msgstr[1] ""
 "Merci de signaler les scénarios manquant à l'auteur de la campagne :\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Une fois le problème résolu, vous devrez redémarrer ce scénario."
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "Aucun objectif disponible"
 
@@ -8106,31 +8145,31 @@ msgstr "La partie est terminée."
 msgid "It is now $name|’s turn"
 msgstr "C'est maintenant à $name| de jouer"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "Donner le contrôle à l'allié $player"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "Donner le contrôle à l'observateur $player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Remplacer par l'ordinateur"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Remplacer par un joueur local"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "Mettre ce camp en pause"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "Sauvegarder puis arrêter la partie"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8230,7 +8269,7 @@ msgstr "insoignable"
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 
 #: src/reports.cpp:361
@@ -8823,7 +8862,7 @@ msgstr "Voulez-vous sauvegarder la partie avant de continuer ?"
 msgid "Debug Command Used"
 msgstr "Commandes de débogage utilisées"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Une unité a été créée en utilisant le mode débogage pendant le tour du "
@@ -9109,16 +9148,6 @@ msgstr "Masquer les planifications de $player"
 msgid "Whiteboard Options"
 msgstr "Options du tableau blanc"
 
-#, fuzzy
-#~| msgid "Unit List"
-#~ msgid "Unit Test "
-#~ msgstr "Liste des unités"
-
-#, fuzzy
-#~| msgid "Bomb"
-#~ msgid "Bob"
-#~ msgstr "Bombe"
-
 #~ msgid ""
 #~ "Some types of terrain give unique bonuses, such as healing or "
 #~ "illumination."
@@ -9128,6 +9157,15 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>- Galun, Chef de la Nuée, 5 ap. W.</i>"
+
+#~ msgid "Availability: "
+#~ msgstr "Disponibilité : "
+
+#~ msgid "Must-have"
+#~ msgstr "Incontournable"
+
+#~ msgid "Unavailable"
+#~ msgstr "Indisponible"
 
 #~ msgid "Independent"
 #~ msgstr "Indépendant"
@@ -11138,6 +11176,9 @@ msgstr "Options du tableau blanc"
 #~ msgid "unit list^Traits"
 #~ msgstr "Traits"
 
+#~ msgid "Unit List"
+#~ msgstr "Liste des unités"
+
 #~ msgid "Scroll To"
 #~ msgstr "Aller à"
 
@@ -12257,9 +12298,6 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "Multiplayer define"
 #~ msgstr "Multijoueur défini"
-
-#~ msgid "Download"
-#~ msgstr "Télécharger"
 
 #~ msgid "No time of day has been defined."
 #~ msgstr "Aucun moment de la journée n'a été défini."

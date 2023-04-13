@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:02-0600\n"
+"POT-Creation-Date: 2023-03-18 21:33-0500\n"
 "PO-Revision-Date: 2011-08-29 14:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -2292,13 +2292,13 @@ msgstr "סוג"
 
 #. [button]: id=single_install
 #. [button]: id=install
-#: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:546
+#: data/gui/widget/addon_list.cfg:366 data/gui/window/addon_manager.cfg:578
 msgid "Install add-on"
 msgstr ""
 
 #. [button]: id=single_update
 #. [button]: id=update
-#: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:568
+#: data/gui/widget/addon_list.cfg:389 data/gui/window/addon_manager.cfg:600
 #, fuzzy
 #| msgid "Update Add-ons"
 msgid "Update add-on"
@@ -2307,7 +2307,7 @@ msgstr "עדכן חבילות"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_publish
 #. [button]: id=publish
-#: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:613
+#: data/gui/widget/addon_list.cfg:412 data/gui/window/addon_manager.cfg:645
 #: src/gui/widgets/addon_list.cpp:265
 msgid "Publish add-on"
 msgstr ""
@@ -2315,7 +2315,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
-#: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:590
+#: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
 #: src/gui/dialogs/addon/manager.cpp:1002
 #, fuzzy
 #| msgid "Update Add-ons"
@@ -2344,7 +2344,7 @@ msgstr "הודעות מחקות"
 #: data/gui/window/lobby_player_info.cfg:292
 #: data/gui/window/lua_interpreter.cfg:130 data/gui/window/message.cfg:135
 #: data/gui/window/mp_alerts_options.cfg:242
-#: data/gui/window/mp_match_history.cfg:111 data/gui/window/preferences.cfg:430
+#: data/gui/window/mp_match_history.cfg:480 data/gui/window/preferences.cfg:430
 #: data/gui/window/screenshot_notification.cfg:214
 #: data/gui/window/server_info.cfg:253
 #: data/gui/window/statistics_dialog.cfg:623
@@ -2519,7 +2519,7 @@ msgid "Traffic between the game and server is encrypted"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:785
+#: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:817
 #, fuzzy
 #| msgid "Type"
 msgid "Type:"
@@ -2578,69 +2578,74 @@ msgstr "מחק"
 msgid "Website:"
 msgstr ""
 
+#. [label]
+#: data/gui/window/addon_manager.cfg:521
+msgid "Id:"
+msgstr ""
+
 #. [button]: id=delete
-#: data/gui/window/addon_manager.cfg:627
+#: data/gui/window/addon_manager.cfg:659
 #, fuzzy
 #| msgid "Delete"
 msgid "Delete add-on"
 msgstr "מחק"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:666
+#: data/gui/window/addon_manager.cfg:698
 msgid "Dependencies:"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:681 src/gui/dialogs/addon/manager.cpp:1080
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1080
 msgid "addon_dependencies^None"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:701
+#: data/gui/window/addon_manager.cfg:733
 msgid "Translations:"
 msgstr "תרגומים:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:716 src/gui/dialogs/addon/manager.cpp:1094
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1094
 msgid "translations^None"
 msgstr "לא נמצאו"
 
 #. [text_box]: id=filter
-#: data/gui/window/addon_manager.cfg:738
+#: data/gui/window/addon_manager.cfg:770
 msgid "Filters on addon description, version, type or author"
 msgstr ""
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:759
+#: data/gui/window/addon_manager.cfg:791
 #, fuzzy
 #| msgid "Status"
 msgid "State:"
 msgstr "מצב"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:812
+#: data/gui/window/addon_manager.cfg:844
 msgid "Tags:"
 msgstr ""
 
 #. [label]
 #. [button]: id=language
-#: data/gui/window/addon_manager.cfg:838
+#: data/gui/window/addon_manager.cfg:870
 #: data/gui/window/language_selection.cfg:41
 #: data/gui/window/title_screen.cfg:487
 msgid "Language"
 msgstr "שפה"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:863
+#: data/gui/window/addon_manager.cfg:895
 #, fuzzy
 #| msgid "Leader"
 msgid "Order:"
 msgstr "מנהיג"
 
 #. [label]
-#: data/gui/window/addon_manager.cfg:957 data/gui/window/addon_manager.cfg:1154
+#: data/gui/window/addon_manager.cfg:989 data/gui/window/addon_manager.cfg:1186
 #, fuzzy
 #| msgid "Add-ons"
 msgid "Add-ons Manager"
@@ -2648,7 +2653,7 @@ msgstr "חבילות"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
-#: data/gui/window/addon_manager.cfg:1067 src/gui/dialogs/addon/manager.cpp:540
+#: data/gui/window/addon_manager.cfg:1099 src/gui/dialogs/addon/manager.cpp:540
 #: src/gui/dialogs/addon/manager.cpp:814
 #, fuzzy
 #| msgid "Add-ons"
@@ -2656,16 +2661,16 @@ msgid "Add-on Details"
 msgstr "חבילות"
 
 #. [button]: id=update_all
-#: data/gui/window/addon_manager.cfg:1088
-#: data/gui/window/addon_manager.cfg:1272
+#: data/gui/window/addon_manager.cfg:1120
+#: data/gui/window/addon_manager.cfg:1304
 #, fuzzy
 #| msgid "Update Add-ons"
 msgid "Update All"
 msgstr "עדכן חבילות"
 
 #. [button]: id=cancel
-#: data/gui/window/addon_manager.cfg:1102
-#: data/gui/window/addon_manager.cfg:1286
+#: data/gui/window/addon_manager.cfg:1134
+#: data/gui/window/addon_manager.cfg:1318
 msgid "Exit"
 msgstr ""
 
@@ -2854,7 +2859,7 @@ msgstr "הרץ"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:263
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
 msgid "Difficulty"
 msgstr "דרגת קושי"
@@ -3158,7 +3163,7 @@ msgstr "תיאור:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
@@ -3236,7 +3241,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:276
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 #, fuzzy
 #| msgid "Gold per village"
 msgid "Gold per village:"
@@ -3317,7 +3322,7 @@ msgstr "יצירת מפה"
 #. [button]: id=random_map_settings
 #: data/gui/window/editor_generate_map.cfg:128
 #: data/gui/window/mp_create_game.cfg:923
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Settings"
 msgstr "הגדרות"
 
@@ -4094,14 +4099,14 @@ msgstr "צור משחק"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/window/lobby_main.cfg:530 data/gui/window/lobby_main.cfg:794
-#: src/gui/dialogs/multiplayer/lobby.cpp:863
+#: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "Join"
 msgstr "הצטרף"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/window/lobby_main.cfg:542 data/gui/window/lobby_main.cfg:817
-#: src/gui/dialogs/multiplayer/lobby.cpp:829
+#: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid "Observe"
 msgstr "צפה"
 
@@ -4125,7 +4130,8 @@ msgid "Preferences"
 msgstr "העדפות"
 
 #. [button]: id=view_match_history
-#: data/gui/window/lobby_main.cfg:627
+#. [label]: id=title
+#: data/gui/window/lobby_main.cfg:627 data/gui/window/mp_match_history.cfg:301
 msgid "Match History"
 msgstr ""
 
@@ -4839,7 +4845,7 @@ msgstr "בחר את הסיסמא שאלו הרוצים להצטרף למשחקך
 #: data/gui/window/mp_create_game/default_resolution.cfg:176
 #: data/gui/window/mp_create_game/small_resolution.cfg:181
 #: data/gui/window/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -4950,6 +4956,39 @@ msgstr "הכנס"
 #: data/gui/window/mp_login.cfg:91 data/gui/window/mp_method_selection.cfg:76
 msgid "Login:"
 msgstr "שם:"
+
+#. [button]: id=replay_download
+#: data/gui/window/mp_match_history.cfg:144
+msgid "Download"
+msgstr ""
+
+#. [label]: id=players
+#. [label]: id=modifications
+#: data/gui/window/mp_match_history.cfg:161
+#: data/gui/window/mp_match_history.cfg:178
+msgid "None"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:377
+msgid "Info"
+msgstr ""
+
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:390
+#, fuzzy
+#| msgid "Players:"
+msgid "Players"
+msgstr "שחקנים:"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [widget]: id=tab_label
+#: data/gui/window/mp_match_history.cfg:403
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
+#, fuzzy
+#| msgid "Choose Resolution"
+msgid "Modifications"
+msgstr "בחירת רזולוציה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6172,8 +6211,8 @@ msgstr "שגיאה"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:180
-#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:160
+#: data/gui/window/wml_error.cfg:112 src/gui/dialogs/multiplayer/lobby.cpp:181
+#: src/gui/dialogs/multiplayer/lobby.cpp:197 src/gui/dialogs/wml_error.cpp:160
 msgid "Details:"
 msgstr ""
 
@@ -6265,7 +6304,7 @@ msgstr ""
 msgid "language code for localized resources^en_US"
 msgstr "he,he_IL"
 
-#: src/font/text.cpp:849
+#: src/font/text.cpp:842
 #, fuzzy
 #| msgid "The text contains invalid markup: "
 msgid "The text contains invalid Pango markup: "
@@ -6756,7 +6795,7 @@ msgid "Attacker vulnerability vs"
 msgstr ""
 
 #: src/gui/dialogs/campaign_selection.cpp:365
-#: src/gui/dialogs/multiplayer/lobby.cpp:437
+#: src/gui/dialogs/multiplayer/lobby.cpp:438
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -6998,12 +7037,12 @@ msgid "Unknown"
 msgstr "עידן לא ידוע"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "no"
 msgstr "לא"
 
 #: src/gui/dialogs/game_stats.cpp:198 src/gui/dialogs/game_stats.cpp:201
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "yes"
 msgstr "כן"
 
@@ -7147,116 +7186,110 @@ msgstr "שביל אבנים חלקות"
 msgid "Random"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:69
+#: src/gui/dialogs/multiplayer/lobby.cpp:70
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "האם באמת ברצונך לצאת?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid "Incompatible User-made Content"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:177
+#: src/gui/dialogs/multiplayer/lobby.cpp:178
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host's "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid "Missing User-made Content"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:193
+#: src/gui/dialogs/multiplayer/lobby.cpp:194
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:370
+#: src/gui/dialogs/multiplayer/lobby.cpp:371
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "משחקים: מציג $num_shown מתוך $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:392
+#: src/gui/dialogs/multiplayer/lobby.cpp:393
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:422
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:425
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
 msgstr "עידן:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:432
-#, fuzzy
-#| msgid "Choose Resolution"
-msgid "Modifications"
-msgstr "בחירת רזולוציה"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "משחק טעון מחדש"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "גבול זמן"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:462
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "השתמש בהגדרות המפה"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:469
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers allowed"
 msgstr "צופים אופשרו"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:497
+#: src/gui/dialogs/multiplayer/lobby.cpp:498
 msgid "Observers not allowed"
 msgstr "צופים לא אופשרו"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:628
+#: src/gui/dialogs/multiplayer/lobby.cpp:629
 #, fuzzy
 #| msgid "Lobby"
 msgid "lobby"
 msgstr "לובי"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:829
+#: src/gui/dialogs/multiplayer/lobby.cpp:838
 msgid ""
 "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:842
+#: src/gui/dialogs/multiplayer/lobby.cpp:851
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:863
+#: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 
@@ -7797,7 +7830,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "יציאה בלחיצה דורשת כפתור 'click_dismiss' או 'ok'"
 
 #: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
-#: src/tests/gui/test_gui2.cpp:696
+#: src/tests/gui/test_gui2.cpp:701
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "לא ניתן להציג את התיבה מכיוון שאינה מתאימה למסך."
 

@@ -243,7 +243,7 @@ static stats::hitrate_map read_by_cth_map(const config& cfg)
 {
 	stats::hitrate_map m;
 	for(const config &i : cfg.child_range("hitrate_map_entry")) {
-		m.emplace(i["cth"], statistics::stats::hitrate_t(i.child("stats")));
+		m.emplace(i["cth"], statistics::stats::hitrate_t(i.mandatory_child("stats")));
 	}
 	return m;
 }

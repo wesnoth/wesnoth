@@ -806,7 +806,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
-	if(!lg::log_dir_writable()) {
+	// if the log directory is not writable, then this is the error condition so show the error message.
+	// if the log directory is writable, then there's no issue.
+	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
+	if(!lg::log_dir_writable().value_or(true)) {
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
@@ -868,9 +871,9 @@ static int do_gameloop(const std::vector<std::string>& args)
 		statistics::fresh_stats();
 
 		if(!game->has_load_data()) {
-			const config& cfg = config_manager.game_config().child("titlescreen_music");
+			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
 			if(cfg) {
-				for(const config& i : cfg.child_range("music")) {
+				for(const config& i : cfg->child_range("music")) {
 					sound::play_music_config(i);
 				}
 
@@ -1052,7 +1055,6 @@ int main(int argc, char** argv)
 	assert(!args.empty());
 
 #ifdef _WIN32
-	bool log_redirect = true;
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
 #endif

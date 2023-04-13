@@ -48,9 +48,10 @@ void configuration::init(const game_config_view &game_config)
 	era_ai_configurations_.clear();
 	mod_ai_configurations_.clear();
 
-	const config &ais = game_config.child("ais");
-	default_config_ = ais.child("default_config");
-	if (!default_config_) {
+	const config &ais = game_config.mandatory_child("ais");
+	if (auto default_config = ais.optional_child("default_config")) {
+		default_config_ = *default_config;
+	} else {
 		ERR_AI_CONFIGURATION << "Missing AI [default_config]. Therefore, default_config_ set to empty.";
 		default_config_.clear();
 	}
@@ -217,7 +218,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg;
 
 	//insert default config at the beginning
-	if (default_config_) {
+	if (!default_config_.empty()) {
 		DBG_AI_CONFIGURATION << "side "<< side <<": applying default configuration";
 		cfg.add_child_at("ai",default_config_,0);
 	} else {
@@ -246,12 +247,12 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 			// No point in warning about Lua or standard aspects lacking [default]
 			continue;
 		}
-		if (!aspect_cfg.child("default")) {
+		if (!aspect_cfg.has_child("default")) {
 			WRN_AI_CONFIGURATION << "side "<< side <<": aspect with id=["<<aspect_cfg["id"]<<"] lacks default config facet!";
 			continue;
 		}
 		aspect_cfg.merge_children("default");
-		config& dflt = aspect_cfg.child("default");
+		config& dflt = aspect_cfg.mandatory_child("default");
 		if (dflt.has_child("value")) {
 			while (dflt.child_count("value") > 1) {
 				dflt.remove_child("value", 0);

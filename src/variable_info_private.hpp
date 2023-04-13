@@ -421,7 +421,7 @@ public:
 		}
 
 		for(; index < datasource_.size(); ++index) {
-			child.child(key, startindex + index).swap(datasource_[index]);
+			child.mandatory_child(key, startindex + index).swap(datasource_[index]);
 		}
 
 		return get_child_range(child, key, startindex, datasource_.size());

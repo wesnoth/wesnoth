@@ -60,7 +60,7 @@ void recruit_action::write(config & cfg) const
 	shroud_clearing_action::write(cfg);
 
 	recruit_from.write(cfg.add_child("leader"));
-	config & child = cfg.child("unit");
+	config & child = cfg.mandatory_child("unit");
 	child["type"] = u_type.parent_id();
 }
 

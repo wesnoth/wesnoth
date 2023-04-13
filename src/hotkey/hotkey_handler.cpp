@@ -63,7 +63,7 @@ const game_state & play_controller::hotkey_handler::gamestate() const {
 }
 
 bool play_controller::hotkey_handler::browse() const { return play_controller_.is_browsing(); }
-bool play_controller::hotkey_handler::linger() const { return play_controller_.is_lingering(); }
+bool play_controller::hotkey_handler::linger() const { return play_controller_.is_linger_mode(); }
 
 const team & play_controller::hotkey_handler::viewing_team() const { return play_controller_.get_teams()[gui()->viewing_team()]; }
 bool play_controller::hotkey_handler::viewing_team_is_playing() const { return gui()->viewing_team() == gui()->playing_team(); }

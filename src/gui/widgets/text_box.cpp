@@ -273,8 +273,6 @@ void text_box::handle_mouse_selection(point mouse, const bool start_selection)
 
 void text_box::update_offsets()
 {
-	assert(config());
-
 	const auto conf = cast_config_to<text_box_definition>();
 	assert(conf);
 
@@ -408,10 +406,10 @@ text_box_definition::resolution::resolution(const config& cfg)
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in text_box.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_focused"));
-	state.emplace_back(cfg.child("state_hovered"));
+	state.emplace_back(cfg.optional_child("state_enabled"));
+	state.emplace_back(cfg.optional_child("state_disabled"));
+	state.emplace_back(cfg.optional_child("state_focused"));
+	state.emplace_back(cfg.optional_child("state_hovered"));
 }
 
 // }---------- BUILDER -----------{

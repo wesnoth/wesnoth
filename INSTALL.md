@@ -17,6 +17,7 @@ order to build Wesnoth:
    * Regex
    * Program Options
    * System
+   * Coroutine
  * SDL2 libraries:
    * SDL2                      >= 2.0.10 (macOS: 2.0.22 due to needing https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30)
    * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)
@@ -27,6 +28,7 @@ order to build Wesnoth:
  * Vorbisfile aka libvorbis
  * libbz2
  * libz
+ * libssl
  * libcrypto (from OpenSSL)
  * libcurl4 (OpenSSL version)
 

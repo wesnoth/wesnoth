@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-03-05 07:45+0100\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
+"PO-Revision-Date: 2023-04-01 14:51+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -1467,7 +1467,7 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:134
 #: data/core/macros/ai_controller.cfg:141
 msgid "Instruct ally"
-msgstr "Dar instrucciones a un aliado"
+msgstr "Dar instrucciones a aliado"
 
 #. [overview_message_has_instructions]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:135
@@ -6064,6 +6064,100 @@ msgstr "Este servidor no admite el uso del atributo forum_auth en su pbl."
 msgid "Unspecified validation failure."
 msgstr "Fallo de validación sin especificar."
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Informe del escenario"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Victoria"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "¡Ha vencido!"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Derrota"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "¡Le han derrotado!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Oro restante: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Turnos finalizados pronto: "
+
+#: src/carryover_show_gold.cpp:102
+msgid " per turn"
+msgstr " por turno"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Bonificación por finalizar pronto: "
+
+#: src/carryover_show_gold.cpp:103
+msgid "Total bonus: "
+msgstr "Añadido total: "
+
+#: src/carryover_show_gold.cpp:106
+msgid "Total gold: "
+msgstr "Oro total: "
+
+#: src/carryover_show_gold.cpp:110
+msgid "Carryover percentage: "
+msgstr "Porcentaje aplazado: "
+
+#: src/carryover_show_gold.cpp:114
+msgid "Bonus gold: "
+msgstr "Bonificación de Oro: "
+
+#: src/carryover_show_gold.cpp:116
+msgid "Retained gold: "
+msgstr "Oro retenido: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"Comenzará el siguiente escenario con $gold sumado al oro definido como el "
+"mínimo inicial."
+msgstr[1] ""
+"Comenzará el siguiente escenario con $gold sumado al oro definido como el "
+"mínimo inicial."
+
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"Usted comenzará el siguiente escenario con el oro mínimo establecido."
+msgstr[1] ""
+"Ustedes comenzarán el siguiente escenario con el oro mínimo establecido."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"Comenzará el siguiente escenario con $gold o con el oro mínimo inicial que "
+"tenga definido, lo que sea más alto."
+msgstr[1] ""
+"Comenzará el siguiente escenario con $gold o con el oro mínimo inicial que "
+"tenga definido, lo que sea más alto."
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Añadido a la lista de jugadores ignorados: $nick"
@@ -6783,131 +6877,37 @@ msgstr "Ha realizado demasiados intentos de acceso."
 msgid "Password hashing failed."
 msgstr "Error de hash de contraseña."
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Informe del escenario"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Victoria"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "¡Ha vencido!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Derrota"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "¡Le han derrotado!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Oro restante: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Turnos finalizados pronto: "
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid " per turn"
-msgstr " por turno"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Bonificación por finalizar pronto: "
-
-#: src/game_initialization/playcampaign.cpp:125
-msgid "Total bonus: "
-msgstr "Añadido total: "
-
-#: src/game_initialization/playcampaign.cpp:128
-msgid "Total gold: "
-msgstr "Oro total: "
-
-#: src/game_initialization/playcampaign.cpp:132
-msgid "Carryover percentage: "
-msgstr "Porcentaje aplazado: "
-
-#: src/game_initialization/playcampaign.cpp:136
-msgid "Bonus gold: "
-msgstr "Bonificación de Oro: "
-
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Retained gold: "
-msgstr "Oro retenido: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"Comenzará el siguiente escenario con $gold sumado al oro definido como el "
-"mínimo inicial."
-msgstr[1] ""
-"Comenzará el siguiente escenario con $gold sumado al oro definido como el "
-"mínimo inicial."
-
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Usted comenzará el siguiente escenario con el oro mínimo establecido."
-msgstr[1] ""
-"Ustedes comenzarán el siguiente escenario con el oro mínimo establecido."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"Comenzará el siguiente escenario con $gold o con el oro mínimo inicial que "
-"tenga definido, lo que sea más alto."
-msgstr[1] ""
-"Comenzará el siguiente escenario con $gold o con el oro mínimo inicial que "
-"tenga definido, lo que sea más alto."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "La partida no se ha podido cargar: "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Error durante el juego: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "El mapa del juego no se ha podido cargar: "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr "Error en el generador del mapa: "
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Error leyendo el WML: "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Fin del juego"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "El escenario ha finalizado. ¿Quiere continuar con la campaña?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Escenario desconocido: «$scenario|»"
 
@@ -6992,9 +6992,17 @@ msgstr "Sala de entrada"
 msgid "Other Games"
 msgstr "Otros juegos"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
 msgstr "Historial de la partida — $player"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+msgid "Era: "
+msgstr "Era: "
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7096,7 +7104,7 @@ msgstr "Facciones"
 msgid "Races: "
 msgstr "Razas: "
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
 msgstr "Alineamientos: "
 
@@ -7108,33 +7116,21 @@ msgstr "Líderes"
 msgid "Recruits"
 msgstr "Reclutas"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "No hay una descripción disponible."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-msgid "Availability: "
-msgstr "Disponibilidad: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr "Hay que tenerlo"
-
-#: src/help/help_impl.cpp:773
-msgid "Unavailable"
-msgstr "No disponible"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Diversas"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Alineamiento: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
@@ -7142,23 +7138,23 @@ msgstr ""
 "Este es un grupo de unidades, que son todas <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Subgrupos de unidades en este grupo'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Grupos de unidades de esta raza'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Unidades de este grupo'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unidades con esta raza'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "archivo original deteriorado"
 
@@ -7945,6 +7941,36 @@ msgstr "$name ha tomado el control"
 msgid "Turn changed"
 msgstr "Turno cambiado"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr ""
+"Ocurrió un error al descargar el fichero. Comprueba los registros del juego "
+"para más información."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid "Download error"
+msgstr "Error en descarga"
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr "Confirmar sobreescribir"
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr "¿Sobreescribir fichero existente?"
+
+#: src/network_download_file.cpp:81
+msgid "Download complete"
+msgstr "Descarga completa"
+
+#: src/network_download_file.cpp:81
+msgid "The file has been downloaded."
+msgstr "El fichero se ha descargado."
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Se ha encontrado un terreno con un coste de movimiento menor que 1."
@@ -7956,15 +7982,15 @@ msgstr "Se ha encontrado un terreno con un coste de movimiento menor que 1."
 msgid "waiting for^a global variable"
 msgstr "una variable global"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "tiempo restante para el turno actual"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "hora local"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7972,17 +7998,17 @@ msgstr ""
 "La partida no está siendo sincronizada correctamente. No tiene sentido "
 "continuar con la misma. ¿Desea guardar la partida?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "Detalles del error:"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr "Advertencia: desvíos de campaña dañados"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7993,7 +8019,7 @@ msgstr[1] ""
 "Faltan algunos de los siguientes escenarios posibles, es posible que no "
 "pueda terminar esta campaña."
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8007,11 +8033,11 @@ msgstr[1] ""
 "Informe los siguientes escenarios que faltan al autor de la campaña:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Una vez que esto se solucione, deberá reiniciar este escenario."
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "No hay objetivos disponibles"
 
@@ -8093,31 +8119,31 @@ msgstr "El juego se ha acabado."
 msgid "It is now $name|’s turn"
 msgstr "Es el turno de $name"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "Entrega el control a su aliado $player"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "Entrega el control al observador $player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Reemplazar por la IA"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Reemplazar con jugador local"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "Marcar bando como inactivo"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "Guardar y abortar la partida"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8214,7 +8240,7 @@ msgstr "incurable: "
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 "Esta unidad es incurable. No puede ser sanada por sanadores o aldeas y no se "
 "puede beneficiar del descanso."
@@ -8806,7 +8832,7 @@ msgstr "¿Desea guardar la partida antes de continuar?"
 msgid "Debug Command Used"
 msgstr "Comando de depuración utilizado"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 "Una unidad fue creada usando el modo de depuración durante el turno de "
@@ -9079,6 +9105,15 @@ msgstr "Ocultar planes de $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Opciones del modo pizarra"
+
+#~ msgid "Availability: "
+#~ msgstr "Disponibilidad: "
+
+#~ msgid "Must-have"
+#~ msgstr "Hay que tenerlo"
+
+#~ msgid "Unavailable"
+#~ msgstr "No disponible"
 
 #~ msgid "Unit Test "
 #~ msgstr "Prueba de unidad"
@@ -10076,9 +10111,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Old Version"
 #~ msgstr "Versión antigua"
-
-#~ msgid "Downloads"
-#~ msgstr "Descargas"
 
 #~ msgid "Publish: $addon_title"
 #~ msgstr "Publicar: $addon_title"

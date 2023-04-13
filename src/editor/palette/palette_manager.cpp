@@ -94,16 +94,6 @@ common_palette& palette_manager::active_palette()
 	return toolkit_.get_palette();
 }
 
-void palette_manager::scroll_bottom()
-{
-	unsigned int old_start   = active_palette().num_items();
-	unsigned int items_start = active_palette().start_num();
-	while (old_start != items_start) {
-		old_start = items_start;
-		scroll_down();
-	}
-}
-
 void palette_manager::layout()
 {
 	if (!dirty()) {

@@ -139,11 +139,6 @@ void team_builder::objectives()
 void team_builder::previous_recruits()
 {
 	log_step("previous recruits");
-	// If the game state specifies units that
-	// can be recruited for the player, add them.
-	if(!side_cfg_) {
-		return;
-	}
 
 	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")) {
 		for(const std::string& rec : utils::split(*v)) {

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2023-02-23 09:04+1100\n"
+"POT-Creation-Date: 2023-03-18 21:34-0500\n"
+"PO-Revision-Date: 2023-03-20 14:48+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -5939,6 +5939,100 @@ msgstr ""
 msgid "Unspecified validation failure."
 msgstr "Unspecified validation failure."
 
+#: src/carryover_show_gold.cpp:55
+msgid "Scenario Report"
+msgstr "Scenario Report"
+
+#: src/carryover_show_gold.cpp:57
+msgid "Victory"
+msgstr "Victory"
+
+#: src/carryover_show_gold.cpp:58
+msgid "You have emerged victorious!"
+msgstr "You have emerged victorious!"
+
+#: src/carryover_show_gold.cpp:60
+msgid "Defeat"
+msgstr "Defeat"
+
+#: src/carryover_show_gold.cpp:61
+msgid "You have been defeated!"
+msgstr "You have been defeated!"
+
+#: src/carryover_show_gold.cpp:97
+msgid "Remaining gold: "
+msgstr "Remaining gold: "
+
+#: src/carryover_show_gold.cpp:101
+msgid "Turns finished early: "
+msgstr "Turns finished early: "
+
+#: src/carryover_show_gold.cpp:102
+msgid " per turn"
+msgstr " per turn"
+
+#: src/carryover_show_gold.cpp:102
+msgid "Early finish bonus: "
+msgstr "Early finish bonus: "
+
+#: src/carryover_show_gold.cpp:103
+msgid "Total bonus: "
+msgstr "Total bonus: "
+
+#: src/carryover_show_gold.cpp:106
+msgid "Total gold: "
+msgstr "Total gold: "
+
+#: src/carryover_show_gold.cpp:110
+msgid "Carryover percentage: "
+msgstr "Carry-over percentage: "
+
+#: src/carryover_show_gold.cpp:114
+msgid "Bonus gold: "
+msgstr "Bonus gold: "
+
+#: src/carryover_show_gold.cpp:116
+msgid "Retained gold: "
+msgstr "Retained gold: "
+
+#: src/carryover_show_gold.cpp:129
+msgid ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgid_plural ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[0] ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+msgstr[1] ""
+"You will start the next scenario with $gold on top of the defined minimum "
+"starting gold."
+
+#: src/carryover_show_gold.cpp:136
+msgid ""
+"You will start the next scenario with the defined minimum starting gold."
+msgid_plural ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[0] ""
+"You will start the next scenario with the defined minimum starting gold."
+msgstr[1] ""
+"You will start the next scenario with the defined minimum starting gold."
+
+#: src/carryover_show_gold.cpp:143
+msgid ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgid_plural ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[0] ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+msgstr[1] ""
+"You will start the next scenario with $gold or its defined minimum starting "
+"gold, whichever is higher."
+
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
 msgstr "Added to ignore list: $nick"
@@ -6631,131 +6725,37 @@ msgstr "You have made too many login attempts."
 msgid "Password hashing failed."
 msgstr "Password hashing failed."
 
-#: src/game_initialization/playcampaign.cpp:77
-msgid "Scenario Report"
-msgstr "Scenario Report"
-
-#: src/game_initialization/playcampaign.cpp:79
-msgid "Victory"
-msgstr "Victory"
-
-#: src/game_initialization/playcampaign.cpp:80
-msgid "You have emerged victorious!"
-msgstr "You have emerged victorious!"
-
-#: src/game_initialization/playcampaign.cpp:82
-msgid "Defeat"
-msgstr "Defeat"
-
-#: src/game_initialization/playcampaign.cpp:83
-msgid "You have been defeated!"
-msgstr "You have been defeated!"
-
-#: src/game_initialization/playcampaign.cpp:119
-msgid "Remaining gold: "
-msgstr "Remaining gold: "
-
-#: src/game_initialization/playcampaign.cpp:123
-msgid "Turns finished early: "
-msgstr "Turns finished early: "
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid " per turn"
-msgstr " per turn"
-
-#: src/game_initialization/playcampaign.cpp:124
-msgid "Early finish bonus: "
-msgstr "Early finish bonus: "
-
-#: src/game_initialization/playcampaign.cpp:125
-msgid "Total bonus: "
-msgstr "Total bonus: "
-
-#: src/game_initialization/playcampaign.cpp:128
-msgid "Total gold: "
-msgstr "Total gold: "
-
-#: src/game_initialization/playcampaign.cpp:132
-msgid "Carryover percentage: "
-msgstr "Carry-over percentage: "
-
-#: src/game_initialization/playcampaign.cpp:136
-msgid "Bonus gold: "
-msgstr "Bonus gold: "
-
-#: src/game_initialization/playcampaign.cpp:138
-msgid "Retained gold: "
-msgstr "Retained gold: "
-
-#: src/game_initialization/playcampaign.cpp:151
-msgid ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgid_plural ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[0] ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-msgstr[1] ""
-"You will start the next scenario with $gold on top of the defined minimum "
-"starting gold."
-
-#: src/game_initialization/playcampaign.cpp:158
-msgid ""
-"You will start the next scenario with the defined minimum starting gold."
-msgid_plural ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"You will start the next scenario with the defined minimum starting gold."
-msgstr[1] ""
-"You will start the next scenario with the defined minimum starting gold."
-
-#: src/game_initialization/playcampaign.cpp:165
-msgid ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgid_plural ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[0] ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-msgstr[1] ""
-"You will start the next scenario with $gold or its defined minimum starting "
-"gold, whichever is higher."
-
-#: src/game_initialization/playcampaign.cpp:292 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:170 src/game_launcher.cpp:909
 msgid "The game could not be loaded: "
 msgstr "The game could not be loaded: "
 
-#: src/game_initialization/playcampaign.cpp:298 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:176 src/game_launcher.cpp:911
 msgid "Error while playing the game: "
 msgstr "Error while playing the game: "
 
-#: src/game_initialization/playcampaign.cpp:301 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:179 src/game_launcher.cpp:948
 msgid "The game map could not be loaded: "
 msgstr "The game map could not be loaded: "
 
-#: src/game_initialization/playcampaign.cpp:304 src/game_launcher.cpp:913
+#: src/game_initialization/playcampaign.cpp:182 src/game_launcher.cpp:913
 #: src/game_launcher.cpp:1029
 msgid "Map generator error: "
 msgstr "Map generator error: "
 
-#: src/game_initialization/playcampaign.cpp:306
+#: src/game_initialization/playcampaign.cpp:184
 msgid "Error while reading the WML: "
 msgstr "Error while reading the WML: "
 
-#: src/game_initialization/playcampaign.cpp:353
+#: src/game_initialization/playcampaign.cpp:231
 #: src/playsingle_controller.cpp:332
 msgid "Game Over"
 msgstr "Game Over"
 
-#: src/game_initialization/playcampaign.cpp:354
+#: src/game_initialization/playcampaign.cpp:232
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "This scenario has ended. Do you want to continue the campaign?"
 
-#: src/game_initialization/playcampaign.cpp:422
+#: src/game_initialization/playcampaign.cpp:300
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Unknown scenario: '$scenario|'"
 
@@ -6835,9 +6835,17 @@ msgstr "Lobby"
 msgid "Other Games"
 msgstr "Other Games"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:32
+#: src/gui/dialogs/multiplayer/match_history.cpp:48
 msgid "Match History — $player"
 msgstr "Match History — $player"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:101
+msgid "Era: "
+msgstr "Era: "
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:102
+msgid " UTC+0"
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -6939,7 +6947,7 @@ msgstr "Factions"
 msgid "Races: "
 msgstr "Races: "
 
-#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1111
+#: src/help/help_impl.cpp:689 src/help/help_impl.cpp:1130
 msgid "Alignments: "
 msgstr "Alignments: "
 
@@ -6951,33 +6959,21 @@ msgstr "Leaders"
 msgid "Recruits"
 msgstr "Recruits"
 
-#: src/help/help_impl.cpp:767 src/units/types.cpp:487
+#: src/help/help_impl.cpp:790 src/units/types.cpp:487
 msgid "No description available."
 msgstr "No description available."
 
-#: src/help/help_impl.cpp:771 src/help/help_impl.cpp:773
-msgid "Availability: "
-msgstr "Availability: "
-
-#: src/help/help_impl.cpp:771
-msgid "Must-have"
-msgstr "Must-have"
-
-#: src/help/help_impl.cpp:773
-msgid "Unavailable"
-msgstr "Unavailable"
-
-#: src/help/help_impl.cpp:881 src/help/help_impl.cpp:1088
+#: src/help/help_impl.cpp:900 src/help/help_impl.cpp:1107
 msgid "race^Miscellaneous"
 msgstr "Miscellaneous"
 
-#: src/help/help_impl.cpp:1111 src/reports.cpp:393
+#: src/help/help_impl.cpp:1130 src/reports.cpp:393
 msgid "Alignment: "
 msgstr "Alignment: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1130
+#: src/help/help_impl.cpp:1149
 msgid ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
@@ -6985,23 +6981,23 @@ msgstr ""
 "This is a group of units, all of whom are <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1154
 msgid "<header>text='Subgroups of units within this group'</header>"
 msgstr "<header>text='Sub-groups of units within this group'</header>"
 
-#: src/help/help_impl.cpp:1137
+#: src/help/help_impl.cpp:1156
 msgid "<header>text='Groups of units within this race'</header>"
 msgstr "<header>text='Groups of units within this race'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1165
 msgid "<header>text='Units of this group'</header>"
 msgstr "<header>text='Units of this group'</header>"
 
-#: src/help/help_impl.cpp:1148
+#: src/help/help_impl.cpp:1167
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Units of this race'</header>"
 
-#: src/help/help_impl.cpp:1469
+#: src/help/help_impl.cpp:1488
 msgid "corrupted original file"
 msgstr "corrupted original file"
 
@@ -7769,6 +7765,36 @@ msgstr "$name has taken control"
 msgid "Turn changed"
 msgstr "Turn changed"
 
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+msgstr ""
+"An error occurred when downloading the file. Check the game logs for more "
+"information."
+
+#: src/network_download_file.cpp:64 src/network_download_file.cpp:79
+#: src/network_download_file.cpp:87
+msgid "Download error"
+msgstr "Download error"
+
+#: src/network_download_file.cpp:68
+msgid "Confirm overwrite"
+msgstr "Confirm overwrite"
+
+#: src/network_download_file.cpp:68
+msgid "Overwrite existing file?"
+msgstr "Overwrite existing file?"
+
+#: src/network_download_file.cpp:81
+msgid "Download complete"
+msgstr "Download complete"
+
+#: src/network_download_file.cpp:81
+msgid "The file has been downloaded."
+msgstr "The file has been downloaded."
+
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Terrain with a movement cost less than 1 encountered."
@@ -7780,15 +7806,15 @@ msgstr "Terrain with a movement cost less than 1 encountered."
 msgid "waiting for^a global variable"
 msgstr "a global variable"
 
-#: src/play_controller.cpp:255
+#: src/play_controller.cpp:267
 msgid "time left for current turn"
 msgstr "time left for current turn"
 
-#: src/play_controller.cpp:257
+#: src/play_controller.cpp:269
 msgid "current local time"
 msgstr "current local time"
 
-#: src/play_controller.cpp:1078
+#: src/play_controller.cpp:1090
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7796,17 +7822,17 @@ msgstr ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 
-#: src/play_controller.cpp:1079
+#: src/play_controller.cpp:1091
 msgid "Error details:"
 msgstr "Error details:"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1273
 msgid "Warning: broken campaign branches"
 msgstr "Warning: broken campaign branches"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1267
+#: src/play_controller.cpp:1279
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7818,7 +7844,7 @@ msgstr[1] ""
 "Some of the possible next scenarios are missing, you might not be able to "
 "finish this campaign."
 
-#: src/play_controller.cpp:1274
+#: src/play_controller.cpp:1286
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7832,11 +7858,11 @@ msgstr[1] ""
 "Please report the following missing scenarios to the campaign’s author:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1278
+#: src/play_controller.cpp:1290
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Once this is fixed, you will need to restart this scenario."
 
-#: src/play_controller.cpp:1458
+#: src/play_controller.cpp:1470
 msgid "No objectives available"
 msgstr "No objectives available"
 
@@ -7916,31 +7942,31 @@ msgstr "The game is over."
 msgid "It is now $name|’s turn"
 msgstr "It is now $name|’s turn"
 
-#: src/playturn.cpp:276
+#: src/playturn.cpp:277
 msgid "Give control to their ally $player"
 msgstr "Give control to their ally $player"
 
-#: src/playturn.cpp:285
+#: src/playturn.cpp:286
 msgid "Give control to observer $player"
 msgstr "Give control to observer $player"
 
-#: src/playturn.cpp:290
+#: src/playturn.cpp:291
 msgid "Replace with AI"
 msgstr "Replace with AI"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with local player"
 msgstr "Replace with local player"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Set side to idle"
 msgstr "Set side to idle"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Save and abort game"
 msgstr "Save and abort game"
 
-#: src/playturn.cpp:297
+#: src/playturn.cpp:298
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8035,7 +8061,7 @@ msgstr "unhealable: "
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
-"doesn't benefit from resting."
+"doesn’t benefit from resting."
 msgstr ""
 "This unit cannot be healed by healers or villages and doesn’t benefit from "
 "resting."
@@ -8609,7 +8635,7 @@ msgstr "Do you wish to save the game before continuing?"
 msgid "Debug Command Used"
 msgstr "Debug Command Used"
 
-#: src/synced_commands.cpp:537
+#: src/synced_commands.cpp:543
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "A unit was created using debug mode during $player’s turn"
 
@@ -8877,6 +8903,15 @@ msgstr "Hide plans for $player"
 #: src/whiteboard/manager.cpp:1138
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
+
+#~ msgid "Availability: "
+#~ msgstr "Availability: "
+
+#~ msgid "Must-have"
+#~ msgstr "Must-have"
+
+#~ msgid "Unavailable"
+#~ msgstr "Unavailable"
 
 #~ msgid "Unit Test "
 #~ msgstr "Unit Test "
@@ -10138,9 +10173,6 @@ msgstr "Whiteboard Options"
 
 #~ msgid "Old Version"
 #~ msgstr "Old Version"
-
-#~ msgid "Downloads"
-#~ msgstr "Downloads"
 
 #~ msgid "Publish: $addon_title"
 #~ msgstr "Publish: $addon_title"

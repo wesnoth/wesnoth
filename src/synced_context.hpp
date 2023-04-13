@@ -143,7 +143,7 @@ public:
 	/** @return A rng_deterministic if in determinsic mode otherwise a rng_synced. */
 	static std::shared_ptr<randomness::rng> get_rng_for_action();
 
-	/** @return whether we already sent data about the current action to other clients. which means we cannot undo it. */
+	/** @return whether we needed data from other clients about the action, in this case we need to send data about the current action to other clients. which means we cannot undo it. */
 	static bool is_simultaneous()
 	{
 		return is_simultaneous_;
@@ -158,8 +158,8 @@ public:
 	/** Sets is_simultaneous_ = true, called using a user choice that is not the currently playing side. */
 	static void set_is_simultaneous();
 
-	/** @return Whether there were recently no methods called that prevent undoing. */
-	static bool can_undo();
+	/** @return Whether we tracked something that can never be undone. */
+	static bool undo_blocked();
 
 	static void set_last_unit_id(int id)
 	{

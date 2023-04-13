@@ -19,20 +19,26 @@
 #include "play_controller.hpp"
 
 #include "cursor.hpp"
+#include "lua_jailbreak_exception.hpp"
 #include "playturn_network_adapter.hpp"
 #include "playturn.hpp"
 #include "replay.hpp"
-#include "saved_game.hpp"
-#include "replay_controller.hpp"
 
 #include <exception>
 
-struct reset_gamestate_exception : public std::exception
+class replay_controller;
+class saved_game;
+
+struct reset_gamestate_exception : public lua_jailbreak_exception, public std::exception
 {
 	reset_gamestate_exception(std::shared_ptr<config> l, std::shared_ptr<config> stats, bool s = true) : level(l), stats_(stats), start_replay(s) {}
 	std::shared_ptr<config> level;
 	std::shared_ptr<config> stats_;
 	bool start_replay;
+	const char * what() const noexcept { return "reset_gamestate_exception"; }
+private:
+
+	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(reset_gamestate_exception)
 };
 
 class playsingle_controller : public play_controller
@@ -40,18 +46,25 @@ class playsingle_controller : public play_controller
 public:
 	playsingle_controller(const config& level, saved_game& state_of_game, bool skip_replay);
 
+	~playsingle_controller();
 	level_result::type play_scenario(const config& level);
-	void play_scenario_init();
+	void play_scenario_init(const config& level);
+	void skip_empty_sides(int& side_num);
+	void play_some();
+	void finish_side_turn();
+	void do_end_level();
 	void play_scenario_main_loop();
 
 	virtual void handle_generic_event(const std::string& name) override;
 
 	virtual void check_objectives() override;
 	virtual void on_not_observer() override {}
+	virtual bool is_host() const { return true; }
 	virtual void maybe_linger();
 
 	void end_turn();
 	void force_end_turn() override;
+	void require_end_turn();
 
 	class hotkey_handler;
 	std::string describe_result() const;
@@ -77,24 +90,24 @@ protected:
 	virtual void init_gui() override;
 
 	const cursor::setter cursor_setter_;
-	gui::floating_textbox textbox_info_;
 
+	/// Helper to send our actions to the server
+	/// Used by turn_data_
 	replay_network_sender replay_sender_;
+	/// Used by turn_data_
 	playturn_network_adapter network_reader_;
+	/// Helper to read and execute (in particular replay data/ user actions ) messsages from the server
 	turn_info turn_data_;
-	enum END_TURN_STATE
-	{
-		/** The turn was not ended yet */
-		END_TURN_NONE,
-		/** And endturn was required eigher by the player, by the ai or by [end_turn] */
-		END_TURN_REQUIRED,
-		/** An [end_turn] was added to the replay. */
-		END_TURN_SYNCED,
-	};
-	END_TURN_STATE end_turn_;
-	bool skip_next_turn_, ai_fallback_;
+	/// true iff the user has pressed the end turn button this turn.
+	/// (or wants to end linger mode, which is implemented via the same button)
+	bool end_turn_requested_;
+	/// true when the current side is actually an ai side but was taken over by a human (usually for debugging purposes),
+	/// we need this variable to remember to give the ai control back next turn.
+	bool ai_fallback_;
+	/// non-null when replay mode in active, is used in singleplayer and for the "back to turn" feature in multiplayer.
 	std::unique_ptr<replay_controller> replay_controller_;
 	void linger();
+	void update_gui_linger();
 	void sync_end_turn() override;
 	void update_viewing_player() override;
 	void reset_replay();

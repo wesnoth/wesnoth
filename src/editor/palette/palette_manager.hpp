@@ -50,10 +50,6 @@ public:
 	bool can_scroll_down();
 
 	void scroll_top();
-	void scroll_bottom();
-
-//TODO
-//	void swap();
 
 	void adjust_size();
 

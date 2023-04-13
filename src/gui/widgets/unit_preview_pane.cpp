@@ -608,13 +608,13 @@ unit_preview_pane_definition::unit_preview_pane_definition(const config& cfg)
 unit_preview_pane_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
-	state.emplace_back(cfg.child("background"));
-	state.emplace_back(cfg.child("foreground"));
+	state.emplace_back(cfg.optional_child("background"));
+	state.emplace_back(cfg.optional_child("foreground"));
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{

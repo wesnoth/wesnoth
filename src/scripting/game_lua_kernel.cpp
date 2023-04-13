@@ -179,7 +179,7 @@ void game_lua_kernel::extract_preload_scripts(const game_config_view& game_confi
 	for (const config& cfg : game_config.child_range("lua")) {
 		game_lua_kernel::preload_scripts.push_back(cfg);
 	}
-	game_lua_kernel::preload_config = game_config.child("game_config");
+	game_lua_kernel::preload_config = game_config.mandatory_child("game_config");
 }
 
 void game_lua_kernel::log_error(char const * msg, char const * context)
@@ -633,11 +633,11 @@ int game_lua_kernel::intf_fire_event(lua_State *L, const bool by_id)
 
 	// Support WML names for some common data
 	if(data.has_child("primary_attack")) {
-		data.add_child("first", data.child("primary_attack"));
+		data.add_child("first", data.mandatory_child("primary_attack"));
 		data.remove_children("primary_attack");
 	}
 	if(data.has_child("secondary_attack")) {
-		data.add_child("second", data.child("secondary_attack"));
+		data.add_child("second", data.mandatory_child("secondary_attack"));
 		data.remove_children("secondary_attack");
 	}
 
@@ -1238,8 +1238,8 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 static int intf_get_resource(lua_State *L)
 {
 	std::string m = luaL_checkstring(L, 1);
-	if(const config& res = game_config_manager::get()->game_config().find_child("resource","id",m)) {
-		luaW_pushconfig(L, res);
+	if(auto res = game_config_manager::get()->game_config().find_child("resource","id",m)) {
+		luaW_pushconfig(L, *res);
 		return 1;
 	}
 	else {
@@ -1255,8 +1255,14 @@ static int intf_get_resource(lua_State *L)
  */
 static int intf_get_era(lua_State *L)
 {
-	char const *m = luaL_checkstring(L, 1);
-	luaW_pushconfig(L, game_config_manager::get()->game_config().find_child("era","id",m));
+	std::string m = luaL_checkstring(L, 1);
+	if(auto res = game_config_manager::get()->game_config().find_child("era","id",m)) {
+		luaW_pushconfig(L, *res);
+		return 1;
+	}
+	else {
+		return luaL_argerror(L, 1, ("Cannot find era with id '" + m + "'").c_str());
+	}
 	return 1;
 }
 
@@ -1305,7 +1311,7 @@ int game_lua_kernel::impl_game_config_get(lua_State *L)
 	if(classification.type==campaign_type::type::multiplayer) {
 		return_cfgref_attrib_deprecated("mp_settings", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.mp_settings instead", mp_settings.to_config());
 		return_cfgref_attrib_deprecated("era", "wesnoth.game_config", INDEFINITE, "1.17", "Use wesnoth.scenario.era instead",
-			game_config_manager::get()->game_config().find_child("era","id",classification.era_id));
+			game_config_manager::get()->game_config().find_mandatory_child("era","id",classification.era_id));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
 	}
 
@@ -1347,7 +1353,7 @@ int game_lua_kernel::impl_game_config_set(lua_State *L)
 namespace {
 	static config find_addon(const std::string& type, const std::string& id)
 	{
-		return game_config_manager::get()->game_config().find_child(type, "id", id);
+		return game_config_manager::get()->game_config().find_mandatory_child(type, "id", id);
 	}
 }
 
@@ -1651,7 +1657,7 @@ int game_lua_kernel::impl_scenario_set(lua_State *L)
 		data.transient.linger_mode = cfg["linger_mode"].to_bool(true) && !teams().empty();
 		data.transient.reveal_map = cfg["reveal_map"].to_bool(true);
 		data.is_victory = cfg["result"] == level_result::victory;
-		data.test_result = cfg["test_result"].str(level_result::result_not_set);
+		data.test_result = cfg["test_result"].str();
 		play_controller_.set_end_level_data(data);
 
 		return 1;
@@ -1697,7 +1703,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 	return_int_attrib("side", play_controller_.current_side());
 	return_int_attrib("turn", play_controller_.turn());
 	return_string_attrib("synced_state", synced_state());
-	return_bool_attrib("user_can_invoke_commands", !play_controller_.is_lingering() && play_controller_.gamestate().init_side_done() && !events::commands_disabled && gamedata().phase() == game_data::PLAY);
+	return_bool_attrib("user_can_invoke_commands", !events::commands_disabled && gamedata().phase() == game_data::TURN_PLAYING);
 
 	if(strcmp(m, "map") == 0) {
 		return intf_terrainmap_get(L);
@@ -1714,11 +1720,11 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 		cfg["name"] = ev.name;
 		cfg["id"]   = ev.id;
 		cfg.add_child("data", ev.data);
-		if (const config &weapon = ev.data.child("first")) {
-			cfg.add_child("weapon", weapon);
+		if (auto weapon = ev.data.optional_child("first")) {
+			cfg.add_child("weapon", *weapon);
 		}
-		if (const config &weapon = ev.data.child("second")) {
-			cfg.add_child("second_weapon", weapon);
+		if (auto weapon = ev.data.optional_child("second")) {
+			cfg.add_child("second_weapon", *weapon);
 		}
 
 		const config::attribute_value di = ev.data["damage_inflicted"];
@@ -3210,6 +3216,8 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 						if(progress >= achieve.max_progress_) {
 							intf_set_achievement(L);
 							achieve.current_progress_ = -1;
+						} else {
+							achieve.current_progress_ = progress;
 						}
 						lua_pushinteger(L, progress);
 					} else {
@@ -3637,9 +3645,9 @@ static int intf_append_ai(lua_State *L)
 		cfg = config {"ai", cfg};
 	}
 	bool added_dummy_stage = false;
-	if(!cfg.child("ai").has_child("stage")) {
+	if(!cfg.mandatory_child("ai").has_child("stage")) {
 		added_dummy_stage = true;
-		cfg.child("ai").add_child("stage", config {"name", "empty"});
+		cfg.mandatory_child("ai").add_child("stage", config {"name", "empty"});
 	}
 	ai::configuration::expand_simplified_aspects(side_num, cfg);
 	if(added_dummy_stage) {
@@ -3649,7 +3657,7 @@ static int intf_append_ai(lua_State *L)
 			}
 		}
 	}
-	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.child("ai"));
+	ai::manager::get_singleton().append_active_ai_for_side(side_num, cfg.mandatory_child("ai"));
 	return 0;
 }
 
@@ -4519,10 +4527,10 @@ namespace {
 		std::string name;
 		lua_report_generator(lua_State *L, const std::string &n)
 			: mState(L), name(n) {}
-		virtual config generate(reports::context & rc);
+		virtual config generate(const reports::context & rc);
 	};
 
-	config lua_report_generator::generate(reports::context & /*rc*/)
+	config lua_report_generator::generate(const reports::context & /*rc*/)
 	{
 		lua_State *L = mState;
 		config cfg;

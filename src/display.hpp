@@ -80,6 +80,9 @@ namespace wb {
 
 class gamemap;
 
+/**
+ * Sort-of-Singleton that many classes, both GUI and non-GUI, use to access the game data.
+ */
 class display : public gui2::top_level_drawable
 {
 public:
@@ -108,9 +111,23 @@ public:
 
 	bool team_valid() const;
 
-	/** The viewing team is the team currently viewing the game. */
+	/**
+	 * The viewing team is the team currently viewing the game. It's the team whose gold and income
+	 * is shown in the top bar of the default theme.
+	 *
+	 * For players, it will be their side (or one of them, if they control multiple sides).
+	 *
+	 * The value returned is a 0-based index into the vector returned by get_teams().
+	 */
 	std::size_t viewing_team() const { return currentTeam_; }
-	int viewing_side() const { return currentTeam_ + 1; }
+	/**
+	 * The 1-based equivalent of the 0-based viewing_team() function. This is the side-number that
+	 * WML uses.
+	 *
+	 * TODO: provide a better interface in a better place (consistent base numbers, and not in a GUI
+	 * class).
+	 */
+	int viewing_side() const { return static_cast<int>(currentTeam_ + 1); }
 
 	/**
 	 * Sets the team controlled by the player using the computer.
@@ -144,12 +161,6 @@ public:
 	 *         the empty string if there was no exclusive draw request for this location.
 	 */
 	std::string remove_exclusive_draw(const map_location& loc);
-
-	/**
-	 * Check the overlay_map for proper team-specific overlays to be
-	 * displayed/hidden
-	 */
-	void parse_team_overlays();
 
 	/**
 	 * Functions to add and remove overlays from locations.
@@ -912,16 +923,6 @@ private:
 	void draw_label(const theme::label& label);
 
 protected:
-
-	/**
-	 * Initiate a redraw.
-	 *
-	 * Invalidate controls and panels when changed after they have been drawn
-	 * initially. Useful for dynamic theme modification.
-	 */
-	void draw_init();
-	void draw_wrap(bool update,bool force);
-
 	/** Used to indicate to drawing functions that we are doing a map screenshot */
 	bool map_screenshot_;
 

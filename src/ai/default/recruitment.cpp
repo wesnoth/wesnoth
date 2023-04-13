@@ -1817,7 +1817,7 @@ void recruitment::recruit_situation_change_observer::reset_gamestate_changed() {
 recruitment_aspect::recruitment_aspect(readonly_context &context, const config &cfg, const std::string &id)
 	: standard_aspect<config>(context, cfg, id)
 {
-	config parsed_cfg(cfg.has_child("value") ? cfg.child("value") : cfg);
+	config parsed_cfg(cfg.has_child("value") ? cfg.mandatory_child("value") : cfg);
 	// First, transform simplified tags into [recruit] tags.
 	for (config pattern : parsed_cfg.child_range("pattern")) {
 		parsed_cfg["pattern"] = true;

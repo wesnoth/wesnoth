@@ -49,27 +49,44 @@ config_array_view game_config_view::child_range(config_key_type key) const
 	return res;
 }
 
-const config& game_config_view::find_child(config_key_type key, const std::string &name, const std::string &value) const
+optional_const_config game_config_view::find_child(config_key_type key, const std::string &name, const std::string &value) const
 {
 	for(const config& cfg : cfgs_) {
-		if(const config& res = cfg.find_child(key, name, value)) {
+		if(optional_const_config res = cfg.find_child(key, name, value)) {
 			return res;
 		}
 	}
 	LOG_CONFIG << "gcv : cannot find [" << key <<  "] with " << name  << "=" << value << ", count = " << cfgs_.size();
-	const config cfg;
-	return cfg.child("invalid");
+	return optional_const_config();
 }
 
-const config& game_config_view::child(config_key_type key) const
+const config& game_config_view::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
+{
+	auto res = find_child(key, name, value);
+	if(res) {
+		return *res;
+	}
+	throw config::error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
+}
+
+const config& game_config_view::mandatory_child(config_key_type key) const
 {
 	for(const config& cfg : cfgs_) {
 		if(const auto res = cfg.optional_child(key)) {
 			return res.value();
 		}
 	}
-	const config cfg;
-	return cfg.child("invalid");
+	throw config::error("missing WML tag [" + std::string(key) + "]");
+}
+
+optional_const_config game_config_view::optional_child(config_key_type key) const
+{
+	for(const config& cfg : cfgs_) {
+		if(const auto res = cfg.optional_child(key)) {
+			return res.value();
+		}
+	}
+	return optional_const_config();
 }
 
 

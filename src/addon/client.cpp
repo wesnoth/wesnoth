@@ -88,7 +88,7 @@ void addons_client::connect()
 	wait_for_transfer_done(msg);
 
 	if(!update_last_error(response_buf)) {
-		if(const auto& info = response_buf.child("server_id")) {
+		if(auto info = response_buf.optional_child("server_id")) {
 			server_id_ = info["id"].str();
 			server_version_ = info["version"].str();
 
@@ -127,7 +127,7 @@ bool addons_client::request_addons_list(config& cfg)
 	send_simple_request("request_campaign_list", response_buf);
 	wait_for_transfer_done(_("Downloading list of add-ons..."));
 
-	std::swap(cfg, response_buf.child("campaigns"));
+	std::swap(cfg, response_buf.mandatory_child("campaigns"));
 
 	return !update_last_error(response_buf);
 }
@@ -148,7 +148,7 @@ bool addons_client::request_distribution_terms(std::string& terms)
 	send_simple_request("request_terms", response_buf);
 	wait_for_transfer_done(_("Requesting distribution terms..."));
 
-	if(const config& msg_cfg = response_buf.child("message")) {
+	if(auto msg_cfg = response_buf.optional_child("message")) {
 		terms = msg_cfg["message"].str();
 	}
 
@@ -224,7 +224,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 		wait_for_transfer_done(_("Requesting file index..."));
 
 		// A silent error check
-		if(!hashlist.child("error")) {
+		if(!hashlist.has_child("error")) {
 			if(!contains_hashlist(addon_data, hashlist) || !contains_hashlist(hashlist, addon_data)) {
 				LOG_ADDONS << "making an update pack for the add-on " << id;
 				config updatepack;
@@ -240,7 +240,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 				wait_for_transfer_done(VGETTEXT("Sending an update pack for the add-on <i>$addon_title</i>...", i18n_symbols
 				), transfer_mode::upload);
 
-				if(const config& message_cfg = response_buf.child("message")) {
+				if(auto message_cfg = response_buf.optional_child("message")) {
 					response_message = message_cfg["message"].str();
 					LOG_ADDONS << "server response: " << response_message;
 				}
@@ -261,7 +261,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	wait_for_transfer_done(VGETTEXT("Sending add-on <i>$addon_title</i>...", i18n_symbols
 	), transfer_mode::upload);
 
-	if(const config& message_cfg = response_buf.child("message")) {
+	if(auto message_cfg = response_buf.optional_child("message")) {
 		response_message = message_cfg["message"].str();
 		LOG_ADDONS << "server response: " << response_message;
 	}
@@ -309,7 +309,7 @@ bool addons_client::delete_remote_addon(const std::string& id, std::string& resp
 	send_request(request_buf, response_buf);
 	wait_for_transfer_done(VGETTEXT("Removing add-on <i>$addon_title</i> from the server...", i18n_symbols));
 
-	if(const config& message_cfg = response_buf.child("message")) {
+	if(auto message_cfg = response_buf.optional_child("message")) {
 		response_message = message_cfg["message"].str();
 		LOG_ADDONS << "server response: " << response_message;
 	}
@@ -599,15 +599,15 @@ addons_client::install_result addons_client::install_addon_with_checks(const add
 
 bool addons_client::update_last_error(config& response_cfg)
 {
-	if(const config& error = response_cfg.child("error")) {
-		if(error.has_attribute("status_code")) {
+	if(auto error = response_cfg.optional_child("error")) {
+		if(error->has_attribute("status_code")) {
 			const auto& status_msg = translated_addon_check_status(error["status_code"].to_unsigned());
 			last_error_ = font::escape_text(status_msg);
 		} else {
 			last_error_ = font::escape_text(error["message"].str());
 		}
 		last_error_data_ = font::escape_text(error["extra_data"].str());
-		ERR_ADDONS << "server error: " << error;
+		ERR_ADDONS << "server error: " << *error;
 		return true;
 	} else {
 		last_error_.clear();

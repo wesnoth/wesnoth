@@ -18,14 +18,14 @@
  * Routines to set up the display, scroll and zoom the map.
  */
 
+#include "display.hpp"
+
 #include "arrow.hpp"
 #include "color.hpp"
 #include "cursor.hpp"
-#include "display.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "fake_unit_manager.hpp"
-#include "filesystem.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "font/text.hpp"
 #include "preferences/game.hpp"
@@ -115,25 +115,6 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 
 	return std::distance(zoom_levels.begin(), iter);
 }
-
-void display::parse_team_overlays()
-{
-	const team& curr_team = dc_->teams()[playing_team()];
-	const team& prev_team = playing_team() == 0
-		? dc_->teams().back()
-		: dc_->get_team(playing_team());
-	for (const auto& i : get_overlays()) {
-		for(const overlay& ov : i.second) {
-			if(!ov.team_name.empty() &&
-				((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
-				((ov.team_name.find(prev_team.team_name()) + 1) != 0))
-			{
-				invalidate(i.first);
-			}
-		}
-	}
-}
-
 
 void display::add_overlay(const map_location& loc, const std::string& img, const std::string& halo, const std::string& team_name, const std::string& item_id, bool visible_under_fog, float submerge, float z_order)
 {
@@ -2943,13 +2924,13 @@ void display::refresh_report(const std::string& report_name, const config * new_
 	if (!str.empty()) {
 		config &e = report.add_child_at("element", config(), 0);
 		e["text"] = str;
-		e["tooltip"] = report.child("element")["tooltip"];
+		e["tooltip"] = report.mandatory_child("element")["tooltip"];
 	}
 	str = item->postfix();
 	if (!str.empty()) {
 		config &e = report.add_child("element");
 		e["text"] = str;
-		e["tooltip"] = report.child("element", -1)["tooltip"];
+		e["tooltip"] = report.mandatory_child("element", -1)["tooltip"];
 	}
 
 	// Do a fake run of drawing the report, so tooltips can be determined.

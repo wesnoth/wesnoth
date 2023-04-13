@@ -115,10 +115,11 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 }
 
 // Constructor for items modified by an event.
-wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, const wml_menu_item& original)
+wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, wml_menu_item& original)
 	: item_id_(id)
 	, event_name_(make_item_name(id))
 	, hotkey_id_(make_item_hotkey(id))
+	, hotkey_record_(std::move(original.hotkey_record_)) // Make sure we have full lifetime control of the old record
 	, image_(original.image_)
 	, description_(original.description_)
 	, needs_select_(original.needs_select_)

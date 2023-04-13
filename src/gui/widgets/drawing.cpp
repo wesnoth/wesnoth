@@ -23,6 +23,9 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 
+#include "gettext.hpp"
+#include "wml_exception.hpp"
+
 #include <functional>
 
 namespace gui2
@@ -113,7 +116,7 @@ builder_drawing::builder_drawing(const config& cfg)
 	: builder_styled_widget(cfg)
 	, width(cfg["width"])
 	, height(cfg["height"])
-	, draw(cfg.child("draw"))
+	, draw(VALIDATE_WML_CHILD(cfg, "draw", _("Missing [draw] in drawing")))
 {
 	assert(!draw.empty());
 }

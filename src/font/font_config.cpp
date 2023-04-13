@@ -103,7 +103,7 @@ bool load_font_config()
 		return false;
 	}
 
-	const config &fonts_config = cfg.child("fonts");
+	auto fonts_config = cfg.optional_child("fonts");
 	if (!fonts_config)
 		return false;
 

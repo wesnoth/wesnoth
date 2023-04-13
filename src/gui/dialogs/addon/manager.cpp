@@ -544,8 +544,8 @@ void addon_manager::toggle_details(button& btn, stacked_widget& stk)
 
 void addon_manager::fetch_addons_list()
 {
-	client_.request_addons_list(cfg_);
-	if(!cfg_) {
+	bool success = client_.request_addons_list(cfg_);
+	if(!success) {
 		gui2::show_error_message(_("An error occurred while downloading the add-ons list from the server."));
 		get_window()->close();
 	}
@@ -932,6 +932,10 @@ void addon_manager::publish_addon(const addon_info& addon)
 		} else {
 			preferences::set_password(preferences::campaign_server(), cfg["author"], cfg["passphrase"]);
 		}
+	} else if(cfg["forum_auth"].to_bool()) {
+		// if the uploader's forum password is present in the _server.pbl
+		gui2::show_error_message(_("The passphrase attribute cannot be present when forum_auth is used."));
+		return;
 	}
 
 	if(!::image::exists(cfg["icon"].str())) {

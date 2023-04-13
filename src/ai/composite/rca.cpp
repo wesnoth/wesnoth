@@ -40,8 +40,8 @@ candidate_action::candidate_action(rca_context &context, const config &cfg):
 	max_score_(cfg["max_score"].to_double(HIGH_SCORE)),
 	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"]), to_be_removed_(false)
 {
-	if (const config &filter_own = cfg.child("filter_own")) {
-		vconfig vcfg(filter_own);
+	if (auto filter_own = cfg.optional_child("filter_own")) {
+		vconfig vcfg(*filter_own);
 		vcfg.make_safe();
 		filter_own_.reset(new unit_filter(vcfg));
 	}

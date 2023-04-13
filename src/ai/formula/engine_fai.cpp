@@ -91,9 +91,7 @@ void engine_fai::do_parse_candidate_action_from_config( rca_context &context, co
 
 void engine_fai::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr >> b )
 {
-	if (!cfg) {
-		return;
-	}
+	// This checekd for !cfg but oter implementation of do_parse_stage_from_config didn't.
 	const std::string &name = cfg["name"];
 	stage_ptr st_ptr;
 

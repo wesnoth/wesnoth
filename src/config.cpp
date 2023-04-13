@@ -71,61 +71,9 @@ int map_erase_key(Map& map, Key&& key)
 
 }
 
-struct config_implementation
-{
-	/**
-	 * Implementation for the wrappers for
-	 * [const] config& child(const std::string& key, const std::string& parent);
-	 *
-	 * @tparam T                  A pointer to the config.
-	 */
-	template<class T>
-	static utils::const_clone_ref<config, T> child(T config, config_key_type key, const std::string& parent)
-	{
-		config->check_valid();
-
-		assert(!parent.empty());
-		assert(parent.front() == '[');
-		assert(parent.back() == ']');
-
-		if(config->has_child(key)) {
-			return *(config->children_.find(key)->second.front());
-		}
-
-		/**
-		 * @todo Implement a proper wml_exception here.
-		 *
-		 * at the moment there seem to be dependency issues, which i don't want
-		 * to fix right now.
-		 */
-		// FAIL(missing_mandatory_wml_section(parent, key));
-
-		std::stringstream sstr;
-		sstr << "Mandatory WML child »[" << key << "]« missing in »" << parent << "«. Please report this bug.";
-
-		throw config::error(sstr.str());
-	}
-};
-
 /* ** config implementation ** */
 
-config config::invalid;
-
 const char* config::diff_track_attribute = "__diff_track";
-
-void config::check_valid() const
-{
-	if(!*this) {
-		throw error("Mandatory WML child missing yet untested for. Please report.");
-	}
-}
-
-void config::check_valid(const config& cfg) const
-{
-	if(!*this || !cfg) {
-		throw error("Mandatory WML child missing yet untested for. Please report.");
-	}
-}
 
 config::config()
 	: values_()
@@ -210,20 +158,16 @@ bool config::valid_attribute(config_key_type name)
 
 bool config::has_attribute(config_key_type key) const
 {
-	check_valid();
 	return values_.find(key) != values_.end();
 }
 
 void config::remove_attribute(config_key_type key)
 {
-	check_valid();
 	map_erase_key(values_, key);
 }
 
 void config::append_children(const config& cfg)
 {
-	check_valid(cfg);
-
 	for(const any_child value : cfg.all_children_range()) {
 		add_child(value.key, value.cfg);
 	}
@@ -231,8 +175,6 @@ void config::append_children(const config& cfg)
 
 void config::append_children(config&& cfg)
 {
-	check_valid(cfg);
-
 #if 0
 	//For some unknown reason this doesn't compile.
 	if(children_.empty()) {
@@ -251,7 +193,6 @@ void config::append_children(config&& cfg)
 
 void config::append_attributes(const config& cfg)
 {
-	check_valid(cfg);
 	for(const attribute& v : cfg.values_) {
 		values_[v.first] = v.second;
 	}
@@ -259,8 +200,6 @@ void config::append_attributes(const config& cfg)
 
 void config::append_children(const config& cfg, const std::string& key)
 {
-	check_valid(cfg);
-
 	for(const config& value : cfg.child_range(key)) {
 		add_child(key, value);
 	}
@@ -293,8 +232,6 @@ void config::append(config&& cfg)
 
 void config::append_children_by_move(config& cfg, const std::string& key)
 {
-	check_valid(cfg);
-
 	// DO note this leaves the tags empty in the source config. Not sure if
 	// that should be changed.
 	for(config& value : cfg.child_range(key)) {
@@ -306,8 +243,6 @@ void config::append_children_by_move(config& cfg, const std::string& key)
 
 void config::merge_children(const std::string& key)
 {
-	check_valid();
-
 	if(child_count(key) < 2) {
 		return;
 	}
@@ -323,8 +258,6 @@ void config::merge_children(const std::string& key)
 
 void config::merge_children_by_attribute(const std::string& key, const std::string& attribute)
 {
-	check_valid();
-
 	if(child_count(key) < 2) {
 		return;
 	}
@@ -343,8 +276,6 @@ void config::merge_children_by_attribute(const std::string& key, const std::stri
 
 config::child_itors config::child_range(config_key_type key)
 {
-	check_valid();
-
 	child_map::iterator i = children_.find(key);
 	static child_list dummy;
 	child_list* p = &dummy;
@@ -357,8 +288,6 @@ config::child_itors config::child_range(config_key_type key)
 
 config::const_child_itors config::child_range(config_key_type key) const
 {
-	check_valid();
-
 	child_map::const_iterator i = children_.find(key);
 	static child_list dummy;
 	const child_list* p = &dummy;
@@ -369,10 +298,8 @@ config::const_child_itors config::child_range(config_key_type key) const
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-unsigned config::child_count(config_key_type key) const
+std::size_t config::child_count(config_key_type key) const
 {
-	check_valid();
-
 	child_map::const_iterator i = children_.find(key);
 	if(i != children_.end()) {
 		return i->second.size();
@@ -381,41 +308,35 @@ unsigned config::child_count(config_key_type key) const
 	return 0;
 }
 
-unsigned config::all_children_count() const
+std::size_t config::all_children_count() const
 {
 	return ordered_children.size();
 }
 
-unsigned config::attribute_count() const
+std::size_t config::attribute_count() const
 {
 	return std::count_if(values_.begin(), values_.end(), [](const attribute& v) { return !v.second.blank(); });
 }
 
 bool config::has_child(config_key_type key) const
 {
-	check_valid();
-
 	child_map::const_iterator i = children_.find(key);
 	return i != children_.end() && !i->second.empty();
 }
 
-config& config::child(config_key_type key, int n)
+namespace {
+template<class Tchildren>
+auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional_config_impl<std::remove_reference_t<decltype(**(*children.begin()).second.begin())>>
 {
-	check_valid();
 
-	const child_map::const_iterator i = children_.find(key);
-	if(i == children_.end()) {
+	auto i = children.find(key);
+	if(i == children.end()) {
 		DBG_CF << "The config object has no child named »" << key << "«.";
-
-		if(throw_when_child_not_found::do_throw()) {
-			throw error("Child not found");
-		} else {
-			return invalid;
-		}
+		return std::nullopt;
 	}
 
 	if(n < 0) {
-		n = i->second.size() + n;
+		n = static_cast<int>(i->second.size()) + n;
 	}
 
 	try {
@@ -423,50 +344,61 @@ config& config::child(config_key_type key, int n)
 	} catch(const std::out_of_range&) {
 		DBG_CF << "The config object has only »" << i->second.size() << "« children named »" << key
 			   << "«; request for the index »" << n << "« cannot be honored.";
-
-		if(throw_when_child_not_found::do_throw()) {
-			throw error("Child at index not found");
-		} else {
-			return invalid;
-		}
-	}
-}
-
-config& config::child(config_key_type key, const std::string& parent)
-{
-	return config_implementation::child(this, key, parent);
-}
-
-const config& config::child(config_key_type key, const std::string& parent) const
-{
-	return config_implementation::child(this, key, parent);
-}
-
-utils::optional_reference<config> config::optional_child(config_key_type key, int n)
-{
-	try {
-		throw_when_child_not_found raii_helper{};
-		return child(key, n);
-	} catch(const error&) {
 		return std::nullopt;
 	}
 }
 
-utils::optional_reference<const config> config::optional_child(config_key_type key, int n) const
+}
+
+config& config::mandatory_child(config_key_type key, const std::string& parent)
 {
-	try {
-		throw_when_child_not_found raii_helper{};
-		return child(key, n);
-	} catch(const error&) {
-		return std::nullopt;
+	if(auto res = get_child_impl(children_, key, 0)) {
+		return *res;
+	} else {
+		throw error("Mandatory WML child »[" + std::string(key) + "]« missing in »" + parent + "«. Please report this bug.");
 	}
+}
+
+const config& config::mandatory_child(config_key_type key, const std::string& parent) const
+{
+	if(auto res = get_child_impl(children_, key, 0)) {
+		return *res;
+	} else {
+		throw error("Mandatory WML child »[" + std::string(key) + "]« missing in »" + parent + "«. Please report this bug.");
+	}
+}
+
+config& config::mandatory_child(config_key_type key, int n)
+{
+	if(auto res = get_child_impl(children_, key, n)) {
+		return *res;
+	} else {
+		throw error("Child [" + std::string(key) + "] at index " + std::to_string(n) + " not found");
+	}
+}
+
+const config& config::mandatory_child(config_key_type key, int n) const
+{
+	if(auto res = get_child_impl(children_, key, n)) {
+		return *res;
+	} else {
+		throw error("Child [" + std::string(key) + "] at index " + std::to_string(n) + " not found");
+	}
+}
+
+optional_config config::optional_child(config_key_type key, int n)
+{
+	return get_child_impl(children_, key, n);
+}
+
+optional_const_config config::optional_child(config_key_type key, int n) const
+{
+	return get_child_impl(children_, key, n);
 }
 
 const config& config::child_or_empty(config_key_type key) const
 {
 	static const config empty_cfg;
-	check_valid();
-
 	child_map::const_iterator i = children_.find(key);
 	if(i != children_.end() && !i->second.empty()) {
 		return *i->second.front();
@@ -485,20 +417,19 @@ config& config::child_or_add(config_key_type key)
 	return add_child(key);
 }
 
-utils::optional_reference<const config> config::get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
-	check_valid();
-
-	if(auto i = children_.find(old_key); i != children_.end() && !i->second.empty()) {
+optional_config_impl<const config> config::get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
+{
+	if(auto res = optional_child(old_key)) {
 		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
 		deprecated_message(what, level, "", message);
-		return *i->second.front();
+		return res;
 	}
 
 	return std::nullopt;
 }
 
-config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
-	check_valid();
+config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
+{
 	static child_list dummy;
 	const child_list* p = &dummy;
 
@@ -513,8 +444,6 @@ config::const_child_itors config::get_deprecated_child_range(config_key_type old
 
 config& config::add_child(config_key_type key)
 {
-	check_valid();
-
 	child_list& v = map_get(children_, key);
 	v.emplace_back(new config());
 	ordered_children.emplace_back(children_.find(key), v.size() - 1);
@@ -523,8 +452,6 @@ config& config::add_child(config_key_type key)
 
 config& config::add_child(config_key_type key, const config& val)
 {
-	check_valid(val);
-
 	child_list& v = map_get(children_, key);
 	v.emplace_back(new config(val));
 	ordered_children.emplace_back(children_.find(key), v.size() - 1);
@@ -534,8 +461,6 @@ config& config::add_child(config_key_type key, const config& val)
 
 config& config::add_child(config_key_type key, config&& val)
 {
-	check_valid(val);
-
 	child_list& v = map_get(children_, key);
 	v.emplace_back(new config(std::move(val)));
 	ordered_children.emplace_back(children_.find(key), v.size() - 1);
@@ -543,10 +468,8 @@ config& config::add_child(config_key_type key, config&& val)
 	return *v.back();
 }
 
-config& config::add_child_at(config_key_type key, const config& val, unsigned index)
+config& config::add_child_at(config_key_type key, const config& val, std::size_t index)
 {
-	check_valid(val);
-
 	child_list& v = map_get(children_, key);
 	if(index > v.size()) {
 		throw error("illegal index to add child at");
@@ -591,7 +514,7 @@ size_t config::find_total_first_of(config_key_type key, size_t start)
 	return static_cast<size_t>(pos - ordered_begin());
 }
 
-config& config::add_child_at_total(config_key_type key, const config &val, size_t pos)
+config& config::add_child_at_total(config_key_type key, const config &val, std::size_t pos)
 {
 	assert(pos <= ordered_children.size());
 	if(pos == ordered_children.size()) {
@@ -612,7 +535,7 @@ config& config::add_child_at_total(config_key_type key, const config &val, size_
 
 	auto pl = next->pos;
 	child_list& l = pl->second;
-	unsigned int index = next->index;
+	const auto index = next->index;
 	config& res = **(l.emplace(l.begin() + index, new config(val)));
 
 	for(auto ord = next; ord != end; ++ord) {
@@ -648,8 +571,6 @@ private:
 
 void config::clear_children_impl(config_key_type key)
 {
-	check_valid();
-
 	child_map::iterator i = children_.find(key);
 	if(i == children_.end())
 		return;
@@ -663,8 +584,6 @@ void config::clear_children_impl(config_key_type key)
 
 void config::splice_children(config& src, const std::string& key)
 {
-	check_valid(src);
-
 	child_map::iterator i_src = src.children_.find(key);
 	if(i_src == src.children_.end()) {
 		return;
@@ -677,20 +596,18 @@ void config::splice_children(config& src, const std::string& key)
 	child_list& dst = map_get(children_, key);
 	child_map::iterator i_dst = children_.find(key);
 
-	unsigned before = dst.size();
+	const auto before = dst.size();
 	dst.insert(dst.end(), std::make_move_iterator(i_src->second.begin()), std::make_move_iterator(i_src->second.end()));
 	src.children_.erase(i_src);
 	// key might be a reference to i_src->first, so it is no longer usable.
 
-	for(unsigned j = before; j < dst.size(); ++j) {
+	for(std::size_t j = before; j < dst.size(); ++j) {
 		ordered_children.emplace_back(i_dst, j);
 	}
 }
 
 void config::recursive_clear_value(config_key_type key)
 {
-	check_valid();
-
 	map_erase_key(values_, key);
 
 	for(std::pair<const std::string, child_list>& p : children_) {
@@ -700,11 +617,11 @@ void config::recursive_clear_value(config_key_type key)
 	}
 }
 
-std::vector<config::child_pos>::iterator config::remove_child(const child_map::iterator& pos, unsigned index)
+std::vector<config::child_pos>::iterator config::remove_child(const child_map::iterator& pos, std::size_t index)
 {
 	/* Find the position with the correct index and decrement all the
 	   indices in the ordering that are above this index. */
-	unsigned found = 0;
+	std::size_t found = 0;
 	for(child_pos& p : ordered_children) {
 		if(p.pos != pos) {
 			continue;
@@ -729,10 +646,8 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 	return all_children_iterator(remove_child(i.i_->pos, i.i_->index));
 }
 
-void config::remove_child(config_key_type key, unsigned index)
+void config::remove_child(config_key_type key, std::size_t index)
 {
-	check_valid();
-
 	child_map::iterator i = children_.find(key);
 	if(i == children_.end() || index >= i->second.size()) {
 		ERR_CF << "Error: attempting to delete non-existing child: " << key << "[" << index << "]";
@@ -744,8 +659,6 @@ void config::remove_child(config_key_type key, unsigned index)
 
 void config::remove_children(config_key_type key, std::function<bool(const config&)> p)
 {
-	check_valid();
-
 	child_map::iterator pos = children_.find(key);
 	if(pos == children_.end()) {
 		return;
@@ -758,7 +671,7 @@ void config::remove_children(config_key_type key, std::function<bool(const confi
 
 	auto child_it = std::find_if(pos->second.begin(), pos->second.end(), predicate);
 	while(child_it != pos->second.end()) {
-		unsigned index = std::distance(pos->second.begin(), child_it);
+		const auto index = std::distance(pos->second.begin(), child_it);
 		remove_child(pos, index);
 		child_it = std::find_if(pos->second.begin() + index, pos->second.end(), predicate);
 	}
@@ -766,8 +679,6 @@ void config::remove_children(config_key_type key, std::function<bool(const confi
 
 const config::attribute_value& config::operator[](config_key_type key) const
 {
-	check_valid();
-
 	const attribute_map::const_iterator i = values_.find(key);
 	if(i != values_.end()) {
 		return i->second;
@@ -779,15 +690,12 @@ const config::attribute_value& config::operator[](config_key_type key) const
 
 const config::attribute_value* config::get(config_key_type key) const
 {
-	check_valid();
 	attribute_map::const_iterator i = values_.find(key);
 	return i != values_.end() ? &i->second : nullptr;
 }
 
 config::attribute_value& config::operator[](config_key_type key)
 {
-	check_valid();
-
 	auto res = values_.lower_bound(key);
 
 	if(res == values_.end() || key != res->first) {
@@ -799,8 +707,6 @@ config::attribute_value& config::operator[](config_key_type key)
 
 const config::attribute_value& config::get_old_attribute(config_key_type key, const std::string& old_key, const std::string& in_tag, const std::string& message) const
 {
-	check_valid();
-
 	if(has_attribute(old_key)) {
 		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
 		const std::string msg  = formatter() << "Use " << key << "= instead. " << message;
@@ -821,9 +727,8 @@ const config::attribute_value& config::get_old_attribute(config_key_type key, co
 	return empty_attribute;
 }
 
-const config::attribute_value& config::get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const {
-	check_valid();
-
+const config::attribute_value& config::get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
+{
 	if(auto i = values_.find(old_key); i != values_.end()) {
 		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
 		deprecated_message(what, level, "", message);
@@ -836,8 +741,6 @@ const config::attribute_value& config::get_deprecated_attribute(config_key_type 
 
 void config::merge_attributes(const config& cfg)
 {
-	check_valid(cfg);
-
 	assert(this != &cfg);
 	for(const attribute& v : cfg.values_) {
 		std::string key = v.first;
@@ -857,8 +760,6 @@ void config::merge_attributes(const config& cfg)
 
 config::const_attr_itors config::attribute_range() const
 {
-	check_valid();
-
 	const_attr_itors range(const_attribute_iterator(values_.begin()), const_attribute_iterator(values_.end()));
 
 	// Ensure the first element is not blank, as a few places assume this
@@ -871,7 +772,6 @@ config::const_attr_itors config::attribute_range() const
 
 config::attr_itors config::attribute_range()
 {
-	check_valid();
 	attr_itors range(attribute_iterator(values_.begin()), attribute_iterator(values_.end()));
 
 	// Ensure the first element is not blank, as a few places assume this
@@ -882,19 +782,14 @@ config::attr_itors config::attribute_range()
 	return range;
 }
 
-config& config::find_child(config_key_type key, const std::string& name, const std::string& value)
+optional_config config::find_child(config_key_type key, const std::string& name, const std::string& value)
 {
-	check_valid();
-
 	const child_map::iterator i = children_.find(key);
 	if(i == children_.end()) {
 		DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
-		if(throw_when_child_not_found::do_throw()) {
-			throw error("Child not found");
-		} else {
-			return invalid;
-		}
+
+		return std::nullopt;
 	}
 
 	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
@@ -910,12 +805,26 @@ config& config::find_child(config_key_type key, const std::string& name, const s
 
 	DBG_CF << "Key »" << name << "« value »" << value << "« pair not found as child of key »" << key << "«.";
 
-	if(throw_when_child_not_found::do_throw()) {
-		throw error("Child not found");
-	} else {
-		return invalid;
-	}
+	return std::nullopt;
 }
+
+config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value)
+{
+	auto res = find_child(key, name, value);
+	if(res) {
+		return *res;
+	}
+	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
+}
+const config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
+{
+	auto res = find_child(key, name, value);
+	if(res) {
+		return *res;
+	}
+	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
+}
+
 
 void config::clear()
 {
@@ -940,8 +849,6 @@ void config::clear_attributes()
 
 bool config::empty() const
 {
-	check_valid();
-
 	return children_.empty() && values_.empty();
 }
 
@@ -1003,8 +910,6 @@ config::all_children_itors config::all_children_range()
 
 config config::get_diff(const config& c) const
 {
-	check_valid(c);
-
 	config res;
 	get_diff(c, res);
 	return res;
@@ -1012,9 +917,6 @@ config config::get_diff(const config& c) const
 
 void config::get_diff(const config& c, config& res) const
 {
-	check_valid(c);
-	check_valid(res);
-
 	config* inserts = nullptr;
 
 	for(const auto& v : values_) {
@@ -1124,8 +1026,6 @@ void config::get_diff(const config& c, config& res) const
 
 void config::apply_diff(const config& diff, bool track /* = false */)
 {
-	check_valid(diff);
-
 	if(track) {
 		values_[diff_track_attribute] = "modified";
 	}
@@ -1159,7 +1059,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("insert_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const auto index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child item : i.all_children_range()) {
 			config& inserted = add_child_at(item.key, item.cfg, index);
 			if(track) {
@@ -1169,7 +1069,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("delete_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const auto index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child item : i.all_children_range()) {
 			if(!track) {
 				remove_child(item.key, index);
@@ -1189,7 +1089,7 @@ void config::clear_diff_track(const config& diff)
 {
 	remove_attribute(diff_track_attribute);
 	for(const config& i : diff.child_range("delete_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const auto index = lexical_cast<std::size_t>(i["index"].str());
 		for(const any_child item : i.all_children_range()) {
 			remove_child(item.key, index);
 		}
@@ -1223,8 +1123,6 @@ void config::clear_diff_track(const config& diff)
  */
 void config::merge_with(const config& c)
 {
-	check_valid(c);
-
 	std::vector<child_pos> to_remove;
 	std::map<std::string, unsigned> visitations;
 
@@ -1263,10 +1161,10 @@ void config::merge_with(const config& c)
 	}
 
 	// Remove those marked so
-	std::map<std::string, unsigned> removals;
+	std::map<std::string, std::size_t> removals;
 	for(const child_pos& pos : to_remove) {
 		const std::string& tag = pos.pos->first;
-		unsigned& removes = removals[tag];
+		auto& removes = removals[tag];
 		remove_child(tag, pos.index - removes++);
 	}
 }
@@ -1288,7 +1186,6 @@ void config::inherit_from(const config& c)
  */
 void config::inherit_attributes(const config& cfg)
 {
-	check_valid(cfg);
 	for(const attribute& v : cfg.values_) {
 		attribute_value& v2 = values_[v.first];
 		if(v2.blank()) {
@@ -1298,8 +1195,6 @@ void config::inherit_attributes(const config& cfg)
 }
 bool config::matches(const config& filter) const
 {
-	check_valid(filter);
-
 	bool result = true;
 
 	for(const attribute& i : filter.attribute_range()) {
@@ -1346,8 +1241,6 @@ bool config::matches(const config& filter) const
 
 std::string config::debug() const
 {
-	check_valid();
-
 	std::ostringstream outstream;
 	outstream << *this;
 	return outstream.str();
@@ -1391,8 +1284,6 @@ std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 
 std::string config::hash() const
 {
-	check_valid();
-
 	static const unsigned int hash_length = 128;
 	static const char hash_string[] = "+-,.<>0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char hash_str[hash_length + 1];
@@ -1446,8 +1337,6 @@ std::string config::hash() const
 
 void config::swap(config& cfg)
 {
-	check_valid(cfg);
-
 	values_.swap(cfg.values_);
 	children_.swap(cfg.children_);
 	ordered_children.swap(cfg.ordered_children);
@@ -1474,8 +1363,6 @@ bool config::validate_wml() const
 
 bool operator==(const config& a, const config& b)
 {
-	a.check_valid(b);
-
 	if(a.values_ != b.values_) {
 		return false;
 	}
