@@ -249,6 +249,9 @@ struct filter_attack : public event_filter {
 			const auto u = unit_a->shared_from_this();
 			auto temp_weapon = event_info.data.optional_child(first_ ? "first" : "second");
 			if(temp_weapon){
+				if(!first_ && temp_weapon["range"].empty()){
+					return false;
+				}
 				const_attack_ptr attack = std::make_shared<const attack_type>(*temp_weapon);
 				if(unit_d != units.end() && loc_d.matches_unit(unit_d)) {
 					const auto opp = unit_d->shared_from_this();
