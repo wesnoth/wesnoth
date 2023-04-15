@@ -1535,7 +1535,9 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 
 bool attack_type::has_special_or_ability(const std::string& special, bool special_id, bool special_tags) const
 {
-	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
+	//check if shared_from_this() is real attack or placeholder before to use or not has_weapon_ability function.
+	bool real_weapon_ability = (range() != "") ? has_weapon_ability(special, special_id, special_tags) : false;
+	return (has_special(special, false, special_id, special_tags) || real_weapon_ability);
 }
 //end of emulate weapon special functions.
 
