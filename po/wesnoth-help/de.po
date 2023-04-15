@@ -1,12 +1,12 @@
 # Translators:
-#  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005.
-#  Boris Stumm <wesnoth@bstumm.de>, 2005.
-#  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006.
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012.
-#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010.
-#  Marcel Miebach <marcel_miebach@gmx.de>, 2012.
-#  Aaron Winter <winter.aaron93@gmail.com>, 2018.
-#  mcpgal, 2021.
+# Andre Schmidt <andre@schmidtandre.de>, 2004, 2005.
+# Boris Stumm <wesnoth@bstumm.de>, 2005.
+# Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006.
+# Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012.
+# Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010.
+# Marcel Miebach <marcel_miebach@gmx.de>, 2012.
+# Aaron Winter <winter.aaron93@gmail.com>, 2018.
+# mcpgal, 2021.
 # Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2022.
 msgid ""
 msgstr ""
@@ -15,7 +15,7 @@ msgstr ""
 "POT-Creation-Date: 2023-03-18 21:33-0500\n"
 "PO-Revision-Date: 2023-01-02 12:30+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
-"Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
+"Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7105,7 +7105,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "Lähmung"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -7113,19 +7113,16 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"Dieser Angriff betäubt das Opfer, so dass keine Kontrollzone "
+"aufrechterhalten wird. Dieser Effekt wirkt nur bis zur nächsten Runde des "
+"Opfers."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-"Diese Einheit kann Gegner derart verlangsamen, dass sowohl deren Schadkraft "
-"im Kampf als auch die Bewegungsfähigkeit bis zum Ende der Runde um die "
-"Hälfte reduziert werden."
+"Diese Einheit kann Gegner lähmen und setzt so deren Kontrollzone außer Kraft."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -8876,6 +8873,22 @@ msgstr ""
 #: data/lua/feeding.lua:30 data/lua/feeding.lua:43
 msgid "+1 max HP"
 msgstr "+1 max LP"
+
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+"gelähmt: Diese Einheit ist gelähmt. Sie kann keine Kontrollzone aufrechterhalten."
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+msgid "female^stunned"
+msgstr "gelähmt"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr "gelähmt"
 
 #: src/help/help.cpp:211
 msgid "Close"
