@@ -3189,8 +3189,8 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
  * - Arg 2: string - id.
  * - Arg 3: int - the amount to progress the achievement.
  * - Arg 4: int - the limit the achievement can progress by
- * - Ret 1: int - the achievement's current progress after adding amount, -2 if not found, -1 not a progressable achievement (including if it's already achieved)
- * - Ret 2: int - the achievement's max progress, -2 if not found, or -1 not a progressable achievement
+ * - Ret 1: int - the achievement's current progress after adding amount or -1 if not a progressable achievement (including if it's already achieved)
+ * - Ret 2: int - the achievement's max progress or -1 if not a progressable achievement
  */
 int game_lua_kernel::intf_progress_achievement(lua_State *L)
 {
@@ -3229,18 +3229,14 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 				}
 			}
 			// achievement not found - existing achievement group but non-existing achievement id
-			ERR_LUA << "Achievement " << id << " not found for achievement group " << content_for;
-			lua_pushinteger(L, -2);
-			lua_pushinteger(L, -2);
-			return 2;
+			lua_push(L, "Achievement " + std::string(id) + " not found for achievement group " + content_for);
+			return lua_error(L);
 		}
 	}
 
 	// achievement group not found
-	ERR_LUA << "Achievement group " << content_for << " not found";
-	lua_pushinteger(L, -2);
-	lua_pushinteger(L, -2);
-	return 2;
+	lua_push(L, "Achievement group " + std::string(content_for) + " not found");
+	return lua_error(L);
 }
 
 /**
