@@ -1,3 +1,18 @@
+## Version 1.16.9+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.16.9
  ### Translations
    * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Turkish
