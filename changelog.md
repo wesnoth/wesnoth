@@ -1,17 +1,9 @@
-## Version 1.17.14+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
+## Version 1.17.15
  ### Multiplayer
    * The game no longer crashes when using "Back To Turn" after the game has
      ended in multiplayer #4236
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Bulgarian, Czech, French, Spanish, Turkish
- ### Units
  ### User interface
    * The "Back To Turn" menu now replays the turn in singelplayer too. However,
      the Continue button can be used to resume the game from any given position.
