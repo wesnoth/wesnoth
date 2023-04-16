@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-03-19 02:34 UTC\n"
+"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
 "PO-Revision-Date: 2023-04-15 02:08+0200\n"
 "Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -307,8 +307,8 @@ msgstr "Verteidiger"
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Schism.cfg:107
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Schism.cfg:146
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:68
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:631
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:865
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:637
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:871
 msgid "Orcs"
 msgstr "Orks"
 
@@ -324,7 +324,7 @@ msgstr "Kreg’a’shar Trr"
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:135
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:100
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:884
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1439
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1521
 msgid "Drogan"
 msgstr "Drogan"
 
@@ -934,6 +934,7 @@ msgstr ""
 
 #. [message]: speaker=Malin Keshar
 #. [message]: speaker=Darken Volk
+#. [message]: speaker=unit
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:223
 #: data/campaigns/Descent_Into_Darkness/scenarios/02_Peaceful_Valley.cfg:281
@@ -941,8 +942,11 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Spring_of_Reprisal.cfg:405
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:780
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:758
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1053
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3152
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1005
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1029
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:147
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:233
 msgid "..."
 msgstr "…"
 
@@ -1118,7 +1122,7 @@ msgstr "Teamname^Monster"
 #. [unit]: type=Necromancer, id=Darken Volk
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:95
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:62
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1525
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1607
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:35
 msgid "Darken Volk"
 msgstr "Darken Volk"
@@ -1127,7 +1131,7 @@ msgstr "Darken Volk"
 #. fake side for a single unit during a cutscene
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:105
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:140
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:187
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:192
 msgid "teamname^Illusion"
 msgstr "Phantom"
 
@@ -4081,43 +4085,44 @@ msgstr ""
 "Bruchstücke, dennoch halten sie unerklärlicherweise zusammen."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:982
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:986
 msgid "I have the book."
 msgstr "Ich habe das Buch."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:988
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:992
 msgid "My minions have captured the book."
 msgstr "Einer meiner Untergebenen hat das Buch aufgenommen."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1010
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1014
 msgid "I am sorry, master, but this book is too heavy for me."
 msgstr "Verzeiht mir, mein Meister, doch dies ist zu schwer für mich."
 
 #. [message]: speaker=unit
 #. this is just a squeaking sound a bat might make
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1027
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1031
 msgid "Neep! Neep!"
 msgstr "Niep! Niep!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1032
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1036
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1058
 msgid "It’s impossible for a bat to carry a book that heavy."
 msgstr "Es ist unmöglich für eine Fledermaus, so ein schweres Buch zu tragen."
 
 #. [unit]: type=Paladin, id=Telemon
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1044
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1070
 msgid "Telemon the Slayer"
 msgstr "Henker Telemon"
 
 #. [message]: speaker=Telemon
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1058
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1084
 msgid "Foul necromancer! Your time has come!"
 msgstr "Verfluchter Nekromant. Eure Zeit ist gekommen!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1062
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1088
 msgid ""
 "Reinforcements! I took too long to retrieve that book and now I have no way "
 "to win this battle..."
@@ -4126,7 +4131,7 @@ msgstr ""
 "Jetzt hab ich keine Chance mehr, diesen Kampf zu gewinnen."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1085
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1111
 msgid ""
 "The terrain is hazardous in these mountains. No one will be able to pursue "
 "me."
@@ -4135,7 +4140,7 @@ msgstr ""
 "können."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1090
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1116
 msgid ""
 "... then again, is there a point? Even should I escape, then what? All that "
 "I have fought for, everyone who I have tried to protect, everything is gone "
@@ -4146,7 +4151,7 @@ msgstr ""
 "versucht habe, alles steht gegen mich."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1095
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1121
 msgid ""
 "Life, death... unlife — at this point, I could accept any of them and "
 "nothing would change."
@@ -4155,17 +4160,17 @@ msgstr ""
 "und nichts würde sich ändern."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1100
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1126
 msgid "... but, I suppose giving up now would be a waste..."
 msgstr "… aber ich schätze, jetzt aufzugeben, wäre ein Vergeudung…"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1115
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1141
 msgid "So, they are all dead. The paladin, Darken Volk, Dela..."
 msgstr "So, sie sind alle tot. Der Ritter, Darken Volk, Dela…"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1120
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1146
 msgid ""
 "All that I have fought for, everyone who I have tried to protect, everything "
 "is gone. Everyone is dead. Is this truly all that I am left with?"
@@ -4174,7 +4179,7 @@ msgstr ""
 "sind sie tot. Ist das wirklich alles, was mir geblieben ist?"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1125
+#: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:1151
 msgid "... nothing at all..."
 msgstr "… nichts, überhaupt nichts…"
 
@@ -4607,7 +4612,8 @@ msgstr "… ist dort nur noch Leere."
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1701
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3015
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3115
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:118
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:123
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:26
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:17
 msgid "Mal Keshar"
 msgstr "Mal Keshar"
@@ -4643,8 +4649,8 @@ msgstr "Kommt wieder zu Kräften"
 #. [objective]: condition=win
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:1940
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:3673
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:253
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:271
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:259
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:277
 msgid "Destruction of Mal Keshar"
 msgstr "Zerstörung von Mal Keshar"
 
@@ -5138,7 +5144,7 @@ msgid "Endless Night"
 msgstr "Endlose Nacht"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:25
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:28
 msgid ""
 "Years pass. Every summer, by the time the mountainous paths and high passes "
 "shed their wintry gowns of snow, the lich sends his soldiers to attack the "
@@ -5153,7 +5159,7 @@ msgstr ""
 "Höhlen zurückziehen."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:29
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:32
 msgid ""
 "The lich sometimes wonders if his endeavors are naught but a fruitless "
 "crusade, but then again, so what? Life, unlife, death... nothing has ever "
@@ -5165,12 +5171,12 @@ msgstr ""
 "verschafft. Warum sollte es einen Grund geben müssen? Wofür?"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:33
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:36
 msgid "<i>Reason and purpose...</i>"
 msgstr "<i>Grund und Zweck…</i>"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:37
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:40
 msgid ""
 "He needs none. Philosophy only begets misery. Violence and savagery have "
 "always been the essence of his existence, a conviction that he has only "
@@ -5184,7 +5190,7 @@ msgstr ""
 "nie seine Art, Reue zu zeigen."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:41
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:44
 msgid ""
 "Rumors circulate of a lich who preys on scouting patrols. A hero, gathering "
 "his loyal troops to him, decides to put an end to the evil."
@@ -5194,7 +5200,7 @@ msgstr ""
 "entscheidet, den bösen Machenschaften des Lichs Einhalt zu gebieten."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:52
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:55
 msgid "Mal Keshar continues to study the book and re-reads the final entry."
 msgstr ""
 "Mal Keshar studiert weiterhin das Buch und liest erneut den letzten Eintrag."
@@ -5202,8 +5208,8 @@ msgstr ""
 #. [part]
 #. This text comes from the epilogue of Secrets of the Ancients, edited to avoid revealing the name of the campaign or the names of the protagonists
 #. This text comes from the epilogue of Secrets of the Ancients, edited to avoid revealing the name of the campaign or the names of the protagonists
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:57
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:73
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:60
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:76
 msgid ""
 "<i>“We prevailed today on the field, but our victory did not please me. I "
 "realize now... the world is not ready for our knowledge. They cannot "
@@ -5227,8 +5233,8 @@ msgstr ""
 #. [part]
 #. More text from the epilogue of Secrets of the Ancients
 #. More text from the epilogue of Secrets of the Ancients
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:62
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:78
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:65
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:81
 msgid ""
 "<i>“As for me, I will make my journal conspicuous on this battlefield. I "
 "suspect that most will fear it enough to try to destroy it, but I have "
@@ -5243,7 +5249,7 @@ msgstr ""
 "einer Person in Tath findet, die bereit ist …«</i>"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:82
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:85
 msgid ""
 "The final entry gnaws at Mal Keshar. While he had been Darken Volk’s pawn, "
 "both of them were being used as pawns by the author of the book. Has his "
@@ -5254,7 +5260,7 @@ msgstr ""
 "Existenz nicht mehr als die einer Marionette?"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:86
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:89
 msgid ""
 "Still, despite his misgivings about being manipulated, he feels that he can "
 "learn something from the book. Orcs had only ever been half of the story — "
@@ -5274,7 +5280,7 @@ msgstr ""
 "Gesellschaft akzeptiert werden?"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:96
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:99
 msgid ""
 "The book still sits on a dusty shelf in Mal Keshar’s keep, untended and "
 "untouched, but constantly plaguing his mind."
@@ -5283,7 +5289,7 @@ msgstr ""
 "weggeräumt, doch immer noch quält es seine Gedanken."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:100
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:103
 msgid ""
 "If he allowed a foolish hero to take a copy of the book, would others "
 "eventually follow in his footsteps? Would the author’s plan actually work, "
@@ -5304,48 +5310,49 @@ msgstr ""
 
 #. [side]
 #. not yet decided who the enemy will be, or if there will be any
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:148
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:153
 msgid "teamname^Void"
 msgstr "Die Weißen"
 
 #. [side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:162
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:167
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:61
 msgid "teamname^Inky"
 msgstr "Die Schwarzen"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:218
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:224
 msgid "Defeat the foolish hero"
 msgstr "Besiegt den törichten Helden"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:226
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:232
 msgid "Defeat another foolish hero"
 msgstr "Besiegt einen weiteren törichten Helden"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:234
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:240
 msgid "Defeat yet another foolish hero"
 msgstr "Besiegt noch einen törichten Helden"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:245
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:251
 msgid "Defeat both foolish heroes"
 msgstr "Besiegt beide törichten Helden"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:262
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:268
 msgid "Allow an enemy unit to take the book"
 msgstr "Erlaubt einer gegnerischen Einheit, das Buch zu nehmen"
 
 #. [note]: description=<b>
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:282
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:288
 msgid "Endless Night $timesForever"
 msgstr "Endlose Nacht $timesForever"
 
 #. [modify_side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:379
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:757
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:385
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:763
 msgid "Humans"
 msgstr "Menschen"
 
@@ -5354,17 +5361,17 @@ msgstr "Menschen"
 #. [unit]: type=Elvish Marshal, id=Too Foolish Hero
 #. [unit]: type=Dwarvish Lord, id=Too Foolish Hero
 #. [unit]: type=Orcish Warlord, id=Too Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:400
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:465
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:527
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:589
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:652
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:406
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:471
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:533
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:595
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:658
 msgid "Too Foolish Hero"
 msgstr "Zu törichter Held"
 
 #. [message]: speaker=Too Foolish Hero
 #. the text that the "Too Foolish Hero" speaks is identical to that in the start event and can probably be copied over
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:432
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:438
 msgid ""
 "Your doom is at hand, lich! It is nigh time you answered for your evil "
 "crimes!"
@@ -5373,15 +5380,15 @@ msgstr ""
 "töten."
 
 #. [modify_side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:442
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:789
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:448
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:795
 msgid "Bandits"
 msgstr "Banditen"
 
 #. [message]: speaker=Too Foolish Hero
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:496
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1039
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:502
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1063
 msgid ""
 "You have preyed on too many of my men. Our territory will be much more "
 "secure without your undead pestering us."
@@ -5390,15 +5397,15 @@ msgstr ""
 "gekommen, um es ein für alle Male zu beenden."
 
 #. [modify_side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:506
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:811
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:512
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:817
 msgid "Elves"
 msgstr "Elfen"
 
 #. [message]: speaker=Too Foolish Hero
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:558
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1052
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:564
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1076
 msgid ""
 "We have finally found you, lich! Long have we heard of your abominable "
 "deeds, ensnaring the living with your dark sorceries and molding them into "
@@ -5410,8 +5417,8 @@ msgstr ""
 "Geistern unserer Toten keinen Schaden mehr zufügen könnt."
 
 #. [modify_side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:568
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:838
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:574
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:844
 msgid "Dwarves"
 msgstr "Zwerge"
 
@@ -5419,8 +5426,8 @@ msgstr "Zwerge"
 #. [message]: speaker=Foolish Hero
 #. written with a dwarvish accent - regular english would be "it's been along time since I've smashed some undead. You've got plenty of bones for my hammer to break"
 #. written with a dwarvish accent - regular english would be "it's been along time since I've smashed some undead. You've got plenty of bones for my hammer to break"
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:621
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1066
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:627
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1090
 msgid ""
 "Been a long time since I’ve smashed me some undead. Ye gots ye plenty o’ "
 "bones for me hammer ta break."
@@ -5430,8 +5437,8 @@ msgstr ""
 
 #. [message]: speaker=Too Foolish Hero
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:685
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1082
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:691
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1106
 msgid ""
 "I’ve finally found your lair, lich! You have attacked my tribe and wreaked "
 "havoc on our homes for many years. You slew my father and turned his body "
@@ -5444,7 +5451,7 @@ msgstr ""
 "Eurem Tod werden uns eure Dienen nicht länger belästigen!"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:694
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:700
 msgid ""
 "I almost feel as if the universe is mocking me by sending me this many "
 "imbeciles..."
@@ -5457,26 +5464,43 @@ msgstr ""
 #. [unit]: type=Elvish Marshal, id=Foolish Hero
 #. [unit]: type=Dwarvish Lord, id=Foolish Hero
 #. [unit]: type=Orcish Warlord, id=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:749
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:781
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:803
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:830
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:857
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:755
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:787
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:809
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:836
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:863
 msgid "Foolish Hero"
 msgstr "Törichter Held"
 
 #. [message]: speaker=Mal Keshar
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:965
+msgid "That was quite the nightmare..."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:969
+msgid ""
+"...unless it was not one? No. No no no. I don’t even want to think about "
+"that."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:973
+msgid "I need to go slaughter some foolish heroes to purge that from my mind."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:989
 msgid "I will destroy you like the last foolish hero who challenged me."
 msgstr "Ich werde Euch vernichten, wie den letzten törichten Helden."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:972
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:996
 msgid "Another foolish hero? Seriously?"
 msgstr "Noch ein törichter Held? Ernsthaft?"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:979
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1003
 msgid ""
 "Is there an endless supply of foolish heroes with death wishes? Honestly, "
 "where do you all come from?"
@@ -5485,17 +5509,17 @@ msgstr ""
 "Wo kommt ihr alle her?"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:991
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1015
 msgid "Am I doomed to fight foolish heroes forever?"
 msgstr "Bin ich denn auf Ewigkeit dazu verdammt, törichte Helden zu bekämpfen?"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:998
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1022
 msgid "How long is this going to keep happening?"
 msgstr "Passiert das wirklich immer wieder?"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1011
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1035
 msgid ""
 "At this point, I would be more surprised if these foolish heroes stopped "
 "showing up."
@@ -5504,7 +5528,7 @@ msgstr ""
 "Helden mehr aufkreuzen würden."
 
 #. [message]: speaker=Foolish Hero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1025
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1049
 msgid ""
 "Your doom is at hand, lich! It is nigh time you answered for your crimes "
 "against humanity!"
@@ -5514,7 +5538,7 @@ msgstr ""
 
 #. [message]: speaker=Mal Keshar
 #. cityfolk - just a person from the city, e.g. Weldyn
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1031
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1055
 msgid ""
 "Narrow-minded and obtuse, as one would expect of cityfolk. Go back to your "
 "manors and taverns before I decide to kill you."
@@ -5524,12 +5548,12 @@ msgstr ""
 "weiter."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1044
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1068
 msgid "Not even real soldiers. How meaningless."
 msgstr "Nicht einmal richtige Soldaten. Ich werde euch hinwegfegen."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1057
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1081
 msgid ""
 "Life or death, it is all the same. There are always those who try to kill "
 "me. Ever do they fail."
@@ -5538,7 +5562,7 @@ msgstr ""
 "seid, habt Ihr euer Todesurteil unterschrieben."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1071
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1095
 msgid ""
 "And it has been some time since I’ve had a supply of dwarven corpses to work "
 "with. I suppose I can put your hammers to good use in the mines."
@@ -5548,7 +5572,7 @@ msgstr ""
 "Schlacht gefallen seid."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1087
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1111
 msgid ""
 "The Whitefang Orcs! It is you who despoiled my motherland and razed my home. "
 "It is you who forced me to resort to necromancy to protect myself. It is you "
@@ -5563,34 +5587,34 @@ msgstr ""
 "töten."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1146
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1174
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1202
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1172
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1200
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1228
 msgid "That’s an evil grimoire!"
 msgstr "Dies ist ein böses Zauberbuch!"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1151
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1179
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1177
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1205
 msgid "It might be linked to the lich’s power! Try burning it."
 msgstr "Vielleicht ist es mit dem Lich verbunden. Versucht, es zu verbrennen."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1156
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1184
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1228
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1259
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1182
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1210
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1254
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1285
 msgid "<small>(faking pain)</small> Aaargh!"
 msgstr "<small>(Schmerz vortäuschend)</small>  Aaargh!"
 
 #. [message]: role=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1161
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1189
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1187
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1215
 msgid "It’s not catching fire!"
 msgstr "Es fängt kein Feuer!"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1166
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1192
 msgid ""
 "Still, it seems to be hurting the lich. Let us retreat and bring it with us. "
 "The mages may be able to destroy this and put an end to this lich."
@@ -5600,7 +5624,7 @@ msgstr ""
 "und den Lich zu vernichten."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1194
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1220
 msgid ""
 "Still, it seems to be hurting the lich. Let us retreat and bring it with us. "
 "We may yet find another way to destroy it and put an end to this lich."
@@ -5611,7 +5635,7 @@ msgstr ""
 
 #. [message]: role=speakinghero
 #. "faerie fire" as in the elvish sylph's attack
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1208
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1234
 msgid ""
 "It must be connected to the lich’s power. Perhaps if we burn it with faerie "
 "fire, the lich will be destroyed. Let us take it and retreat."
@@ -5623,19 +5647,19 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. regular english: That's an evil grimoire!
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1217
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1243
 msgid "That be an evil grimoire!"
 msgstr "Dies ist ein böses Zauberbuch!"
 
 #. [message]: role=speakinghero
 #. regular english: Try destroying the darned thing.
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1223
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1249
 msgid "Try destroyin’ the blasted thing."
 msgstr "Versucht, das Teil kaputtzumachen."
 
 #. [message]: speaker=unit
 #. regular english: My axe can't cut the paper. It's protected by magic!
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1234
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1260
 msgid "Me axe kinna cut tha paper. It be protected by magic!"
 msgstr ""
 "Meyne Axt kann dies Papier nicht schneiden? Es muss von Magie beschützet "
@@ -5643,7 +5667,7 @@ msgstr ""
 
 #. [message]: role=speakinghero
 #. regular english: Yes, but the lich still seems to be hurt. Let's take it and retreat. Maybe the forge can destroy it.
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1240
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1266
 msgid ""
 "Aye, but the lich still seems ta be hurtin’. Let’s take it ’n retreat. Maybe "
 "tha forge ken destroy it."
@@ -5653,28 +5677,28 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. this orc has bad grammar on purpose
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1249
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1275
 msgid "Me like skull on book. It look good."
 msgstr "Ein Totenkopfbuch. Cool."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1254
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1280
 msgid "Idiot."
 msgstr "Idiot."
 
 #. [message]: speaker=unit
 #. still the same orc, still has bad grammar. Uuuuuh is a whine-like sound, indicating disappointment.
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1265
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1291
 msgid "Uuuuuh, I can’t pull skull off book, but lich scream."
 msgstr "Uhm, Ich kann den Totenkopf nicht abnehmen, aber der Lich schreit."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1270
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1296
 msgid "Defend the book, my minions! Aaargh!"
 msgstr "Verteidigt das Buch, meine Sklaven."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1275
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1301
 msgid ""
 "The book must be connected to the lich’s power! Take it and retreat. Once we "
 "smash that book, the lich should be destroyed."
@@ -5683,12 +5707,12 @@ msgstr ""
 "Wenn wir das auseinandernehmen, sollte der Lich ebenfalls auseinanderfallen."
 
 #. [story]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1281
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1307
 msgid "Epilogue"
 msgstr "Epilog"
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1283
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1309
 msgid ""
 "The foolish hero was tricked, and left believing both that the book could be "
 "destroyed, and that the lich might be weakened by doing so."
@@ -5697,7 +5721,7 @@ msgstr ""
 "Buch zerstört werden könne, als auch, dass dies den Lich schwächt."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1287
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1313
 msgid ""
 "Retreating outside the cave, the foolish hero tried to destroy the book. "
 "None of the attempts left so much as a single dent or char, yet each one "
@@ -5714,7 +5738,7 @@ msgstr ""
 "Buch sicher und gut versteckt in seinem Gepäck."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1291
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1317
 msgid ""
 "Years pass. Every summer, by the time the mountainous paths and high passes "
 "shed their wintry gowns of snow, humans, elves and dwarves patrol to resist "
@@ -5728,7 +5752,7 @@ msgstr ""
 "verblassen zu Legenden."
 
 #. [part]
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1295
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1321
 msgid ""
 "Rumors circulate about a spirit of good fortune that protects these guards. "
 "It is said that when attacked by orcs at night, the darkness itself descends "
@@ -5739,7 +5763,7 @@ msgstr ""
 "Dunkelheit höchstselbst hinabsteigt und die Angreifer zurückschlägt."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1323
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1349
 msgid ""
 "A monolith of black stone, a dark surface reflecting deep shadow infinitely "
 "into the night."
@@ -5748,48 +5772,66 @@ msgstr ""
 "sich die Nacht unendlichfach wieder."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1329
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1355
 msgid "A monolith of black stone, cold and brittle to the touch."
 msgstr "Ein Monolith aus schwarzem Stein, hart und kalt unter den Fingern."
 
 #. [unit]: type=Cuttle Fish, id=Inky
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1347
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1376
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:557
 msgid "female^Inky"
 msgstr "Inky"
 
 #. [message]: speaker=Inky
 #. this is just some kind of squishy sound that a squid might make
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1359
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1388
 msgid "Gllllbbbg!"
 msgstr "Gllllbbbg!"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1366
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1395
 msgid "A cuttlefish! Perhaps I shall make it my pet."
 msgstr "Ein Tintenfisch! Ich könnte ihn als Haustier behalten."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1374
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1403
 msgid "We meet again, squiddy one."
 msgstr "Wir sehen uns wieder, Vielarmiger."
 
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1429
+msgid "Get these tentacles off of me!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1442
+msgid "Release me at once you oversized piece of calamari— eeeeaaaaaaaaa!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1447
+#, fuzzy
+msgid "<i>Blub... blub... blub...</i>"
+msgstr "<i>Es ist … so … kalt…</i>"
+
 #. [message]: speaker=Inky
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1394
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1472
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:592
 msgid "Bloub°°°"
 msgstr "Blubb °°°"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1403
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1481
 msgid "Curses. She got away."
 msgstr "Verflixt. Sie ist entwischt."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1412
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1490
 msgid "It appears that she has evaded me once again."
 msgstr "Anscheinend ist sie mir wieder einmal entgangen."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1434
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1516
 msgid ""
 "I remember this place. It swirls with strange energy, like a pool of "
 "memories."
@@ -5799,7 +5841,7 @@ msgstr ""
 
 #. [message]: speaker=Drogan
 #. the first sentence in plain english is: Do you still remember the good old days? In the rest of the text, ’n means "and"
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1454
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1536
 msgid ""
 "D’ya still ’member tha good ol’ days? When you were little, ’n yer father "
 "had no time fer ya, we used ta train together in tha fields. Just you ’n me "
@@ -5811,7 +5853,7 @@ msgstr ""
 "zu haben."
 
 #. [message]: speaker=Drogan
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1459
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1541
 msgid ""
 "It were so much simpler back then, without yer complicated magic ’n yer "
 "crazy education ta mess things up. Don’t ya think so, Malin?"
@@ -5821,23 +5863,23 @@ msgstr ""
 "Malin?"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1468
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1550
 msgid "That name is no longer mine."
 msgstr "Ich bin nicht länger unter diesem Namen bekannt."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1480
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1562
 msgid "What does the darkness have in store for me this time?"
 msgstr "Was wird die Dunkelheit mir dieses Mal zeigen?"
 
 #. [unit]: type=Frontier Baroness, id=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1486
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1568
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:26
 msgid "Dela Keshar"
 msgstr "Dela Keshar"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1498
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1580
 msgid ""
 "I guess we were never that close, but you were still my brother. When you "
 "went to Alduin fer those eight years, I was so lonely, ya know? Bein’ the "
@@ -5853,7 +5895,7 @@ msgstr ""
 "interessierten sich nur für meinen Titel."
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1503
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1585
 msgid ""
 "When you first came back from Alduin, I was so, so happy to see ya. I "
 "thought you and me and pa could finally be a family again and I’d finally "
@@ -5869,12 +5911,12 @@ msgstr ""
 "Malin."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1512
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1594
 msgid "That is not my name."
 msgstr "Das ist nicht mein Name."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1537
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1619
 msgid ""
 "A necromancer’s existence is a solitary one. Though we may be surrounded by "
 "hordes of the undead, it is a scarce occasion that we interact with another "
@@ -5887,7 +5929,7 @@ msgstr ""
 "Jahren auf der Reise warst du mein erster und einziger Schüler."
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1542
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1624
 msgid ""
 "I taught you everything I knew. I imparted you with all the power you needed "
 "to accomplish your goals. I thought that in return, you would afford me a "
@@ -5903,52 +5945,52 @@ msgstr ""
 "Mal Keshar, der Verdammte!"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1556
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1638
 msgid "Hah."
 msgstr "Hah."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1561
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1643
 msgid "Hahahahaha."
 msgstr "Hahahahaha."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1566
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1648
 msgid "<i>HAHAHAHAHAHAHAHAHA.</i>"
 msgstr "<i>HAHAHAHAHAHAHAHAHA.</i>"
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1575
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1657
 msgid "That is indeed my name."
 msgstr "Das ist in der Tat mein Name."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1583
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1665
 msgid ""
 "Mal Keshar stares into the abyss, oddly at ease alone amongst the darkness."
 msgstr ""
 "Mal Keshar blickt in den Abgrund, seltsam entspannt allein in der Finsternis."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1648
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1730
 msgid "Slain by those who were once my countrymen..."
 msgstr "Besiegt von jenen, welche früher meine Landesmänner waren…"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1658
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1740
 msgid "His evil deeds have come to an end."
 msgstr ""
 "Seine bösen Machenschaften haben nun ein Ende, und er hat seinen Untergang "
 "gefunden."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1663
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1745
 msgid "Who do you think he was before he was corrupted by the darkness?"
 msgstr ""
 "Wer, denkt Ihr, war er, bevor er den Pfad der Finsternis beschritten hat?"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1668
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1750
 msgid ""
 "It matters not. He embraced death over life, and thus relinquished his right "
 "to mercy. Let us return home; the town will need us to defend against the "
@@ -5959,29 +6001,29 @@ msgstr ""
 "uns, auf dass wir die Angriffe der Orks zurückschlagen."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1673
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1755
 msgid "Yes, sir."
 msgstr "Ja, mein Herr."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1681
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1719
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1757
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1763
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1801
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1839
 msgid "Darkness descends... and I..."
 msgstr "Die Dunkelheit steigt hinab… und ich…"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1691
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1773
 msgid "It’s done. He’ll trouble us no more."
 msgstr "Es ist vollbracht. Er wird uns keine Schwierigkeiten mehr bereiten."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1696
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1778
 msgid "Who do you think he was before becoming a lich?"
 msgstr "Wer glaubst du war er, bevor zu einem Lich wurde?"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1701
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1783
 msgid ""
 "Likely one of those arrogant mages who think themselves superior to everyone "
 "else. He probably learned necromancy just to subjugate people like us."
@@ -5991,12 +6033,12 @@ msgstr ""
 "Leuten wie uns eins auszuwischen."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1706
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1788
 msgid "So he was an evil tyrant. How dreadful."
 msgstr "Also ein boshafter Tyrann. Wie furchteinflößend."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1711
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1793
 msgid ""
 "Probably. Anyway, there’s no use in dwelling upon one so wicked. Let’s go."
 msgstr ""
@@ -6004,12 +6046,12 @@ msgstr ""
 "Existenz nachzusinnen. Gehen wir."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1729
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1811
 msgid "Well, that is the end of his evil ways."
 msgstr "Nun ist dies das Ende seiner bösen Taten."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1734
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1816
 msgid ""
 "I wonder who this lich was in life before he turned to the evil that is "
 "undeath."
@@ -6018,7 +6060,7 @@ msgstr ""
 "bewegte, diesen dunklen Pfad zu beschreiten."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1739
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1821
 msgid ""
 "A selfish human, only greedy for power while utterly indifferent to anything "
 "but himself. A necromancer’s only purpose is to work for their own gain, "
@@ -6029,12 +6071,12 @@ msgstr ""
 "Nekromanten ist es, für seinen eigenes Wohl zu arbeiten, sonst nichts."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1744
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1826
 msgid "Pure evil, that is what they are."
 msgstr "Reine Boshaftigkeit, das ist es, was sie sind."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1749
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1831
 msgid ""
 "Indeed. We need not afford this one any compassion. Let us leave this "
 "miserable place."
@@ -6042,19 +6084,19 @@ msgstr "In der Tat. Lasst uns diesen tristen Ort verlassen."
 
 #. [message]: role=speakinghero
 #. regular english - the lich is nothing but a pile of bones now
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1768
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1850
 msgid "Tha lich be nae but a pile o’ bones now."
 msgstr "Der Lich sey unter den Trümmern begraben."
 
 #. [message]: role=second
 #. regular english - I wonder what kind of human he was in life
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1774
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1856
 msgid "I wonder what kind o’ human he did be in life."
 msgstr "Ich frâg mir, was fur eyn Art von Mensch er zu Lebzeyten gewesen sey."
 
 #. [message]: role=speakinghero
 #. regular english - I guess he was some crazy mage who wanted to make other humans his slaves. Why else do you think he would turn to dark magic?
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1780
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1862
 msgid ""
 "Me guess be that he be some loonie mage who wanted ta make other humans inta "
 "’is slaves. Why else d’ye think tha lad woul’ turn ta dark magic?"
@@ -6066,34 +6108,34 @@ msgstr ""
 
 #. [message]: role=second
 #. regular english - I don't know. You think the lich's castle can be useful
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1786
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1868
 msgid "I dinna know. Ye think tha lich’s castle ken be useful?"
 msgstr ""
 "Wer mâg es wissen.. Meynest du, die Burg des Lichs kœnnte uns noch nützen?"
 
 #. [message]: role=speakinghero
 #. regular english - Yes. Let's get to work.
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1792
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1874
 msgid "Aye. Let’s git to workin’."
 msgstr "Ja. Lasset uns ans Werk gehen."
 
 #. [message]: speaker=Mal Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1800
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1882
 msgid "Felled by an orc... so it ends... like this..."
 msgstr "Ermordet von einem Ork … es endet also… auf diese Art…"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1810
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1892
 msgid "The lich is dead! I have finally avenged my father."
 msgstr "Der Lich ist tot! Endlich habe ich meinen Vater gerächt."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1815
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1897
 msgid "Who you think he was, boss?"
 msgstr "Wer denkst du war das, Boss?"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1820
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1902
 msgid ""
 "Just some angst-ridden mage who turned to dark magic when he swore some "
 "stupid quest for revenge upon us. Amusing that he was more bothersome in "
@@ -6105,17 +6147,17 @@ msgstr ""
 "so lange gebraucht hat, ihn zu töten."
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1844
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1926
 msgid "Boss, look! The lich dropped a shiny book!"
 msgstr "Boss, schaut! Der Lich hat ein Buch fallen gelassen!"
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1849
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1931
 msgid "Well, what is it?"
 msgstr "Oh, was für ein Buch?"
 
 #. [message]: role=second
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1854
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1936
 msgid ""
 "I don’t know, but it looks like someone wrote something inside! It says:"
 msgstr ""
@@ -6125,7 +6167,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #. hahaha is Zephrin laughing
 #. this line sounds very "modern-day" but that's intentional because it's an easter egg, not meant to be taken strictly at face value
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1862
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1944
 msgid ""
 "<i>That stupid memory came back to bother me again today. It was that time "
 "at the Academy when Zephrin and I were arguing about orcs. I still remember "
@@ -6148,7 +6190,7 @@ msgstr ""
 
 #. [message]: role=speakinghero
 #. Bah is an exclamation of disgust or irritation
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1870
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1952
 msgid ""
 "Bah! Do these people believe that we are fools? They must think we are all "
 "actors in a poorly written drama! I’ve had enough of this. I’m going home."
@@ -6158,15 +6200,197 @@ msgstr ""
 "voll davon, ich bin raus."
 
 #. [message]: role=speakinghero
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1876
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1958
 msgid "Anyway, round up the wolves. I’m going home."
 msgstr "Was auch immer, macht die Wölfe bereit. Wir kehren heim."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1896
+#: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1978
 #: data/campaigns/Descent_Into_Darkness/utils/deaths.cfg:30
 msgid "... Then my battle against the orcs is lost!"
 msgstr "… Damit ist mein Kampf gegen die Orks verloren!"
+
+#. [scenario]: id=11_Squidville
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:5
+msgid "Squidville"
+msgstr ""
+
+#. [side]
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:41
+#, fuzzy
+#| msgid "teamname^Void"
+msgid "teamname^Squid"
+msgstr "Die Weißen"
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:117
+msgid "This cuttlefish will not escape me any longer! Hunt her down!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:151
+msgid ""
+"Right, I got dragged down here without any of my minions. I suppose I will "
+"have to do this myself."
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:160
+msgid "Hunt down Inky"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:216
+#, fuzzy
+#| msgid "Why are these bats chasing me?"
+msgid "Why are these tentacles so large..?"
+msgstr "Warum haben es diese Fledermäuse auf mich abgesehen?"
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:229
+msgid "(<i>huff huff huff</i>)"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:249
+msgid "I can see... the colors of the universe..!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:268
+msgid "The stars go whirly whirl and turn into..."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#. He's high so basically this is gibberish describing mushrooms
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:273
+msgid ""
+"... glowy mushrooms lighting up this dank gloom, blue and green, loomy "
+"bloomy big shroomy..."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:288
+msgid "... hi hi ho ho the shrooms go marching lo..."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:292
+msgid "... wait for me shroomies..!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:323
+msgid "(<i>huff huff</i>)"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#. He breaks the fourth wall here because he's enlightened from the shrooms of course, so he talks directly to the player
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:331
+msgid ""
+"... wait what am I doing? A skeleton cannot taste or smell or eat anything. "
+"These shrooms do not work on me. Do you think I am a fool? Am I just some "
+"kind of bad actor hired for amusement? What kind of sadistic higher power "
+"makes poor old lonely liches like me suffer so much just for the sake of "
+"entertainment? How revolting. I hope your sick enjoyment at my predicament "
+"is worth it, you monster."
+msgstr ""
+
+#. [floating_text]
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:351
+msgid "ENLIGHTENED"
+msgstr ""
+
+#. [unit]: type=Necrophage Necron, id=Necron
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:389
+msgid "Necron"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:399
+msgid ""
+"... what a horrendous pile of flesh. Even for a ghoul, this thing is beyond "
+"disgusting. Maybe I can send it to a quick death against all those Foolish "
+"Heroes."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:427
+msgid "You are not the creature I seek!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:466
+msgid "Oh for the love of... not these slimy things again..."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:498
+msgid ""
+"... wait a second, is this creature even supposed to live in this kind of "
+"habitat?"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:530
+msgid "The creatures down here keep getting stranger and stranger."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:571
+msgid "Aha!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:575
+msgid "Finally, I have found you! Now hold still for just a moment..."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:596
+msgid "Ha! I have you now!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:609
+msgid "... what’s that sound?"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:635
+msgid "Where did you come from? Get off of me!"
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:674
+msgid "Uh oh."
+msgstr ""
+
+#. [message]: speaker=Mal Keshar
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:713
+#, fuzzy
+#| msgid "Let’s get out of here."
+msgid "I’m getting out of here!"
+msgstr "Puh! Lasst uns gehen."
+
+#. [message]: speaker=unit
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:733
+msgid "Aaargh, so many tentacles! Aieeeeee!!!"
+msgstr ""
+
+#. [story]
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:743
+msgid "Bad Ending"
+msgstr ""
+
+#. [part]
+#: data/campaigns/Descent_Into_Darkness/scenarios/11_Squidville.cfg:745
+msgid ""
+"Unfortunately for him, Mal Keshar was overrun by a horde of tentacles. With "
+"his delusions of grandeur crushed, his boney remains were consigned to being "
+"no more than a few decorative elements around the watery backdrop of the "
+"village of squids for all eternity."
+msgstr ""
 
 #. [unit_type]: id=Apprentice Mage, race=human
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:4
@@ -6250,6 +6474,11 @@ msgstr ""
 "umzugehen. Die Fähigsten unter ihnen sind geübte Aufklärer, die es im Kampf "
 "mit einem Ork aufnehmen können."
 
+#. [attack]: type=blade
+#: data/campaigns/Descent_Into_Darkness/units/Ghast2.cfg:29
+msgid "bite"
+msgstr "Biss"
+
 #. [advancement]: id=mal_keshar_amla_melee
 #. [advancement]: id=eidolon_baneblade
 #. [advancement]: id=malin_keshar_amla_melee
@@ -6315,28 +6544,28 @@ msgstr "Entzieht nahen Feinden LP, doch jede Runde gehen LP verloren"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:211
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:276
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:350
 #: data/campaigns/Descent_Into_Darkness/units/Spectral_Servant.cfg:357
 msgid "touch"
 msgstr "Berührung"
 
 #. [attack]: type=cold
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:223
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:288
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:362
 msgid "chill tempest"
 msgstr "Frostwelle"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:235
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:300
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:374
 msgid "shadow wave"
 msgstr "Schattenpfeile"
 
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:252
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:326
 msgid "Ancient Lich"
 msgstr "Uralter Lich"
 
-#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:268
+#: data/campaigns/Descent_Into_Darkness/units/Mal_Keshar.cfg:342
 msgid ""
 "A lich that accrues enough power over its newfound immortal lifespan becomes "
 "one who can stain souls with despair and sow ruin across the world. "
@@ -6433,6 +6662,13 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:427
 msgid "Gains the consumption ability"
 msgstr "Erhält die Aufzehrung-Fähigkeit"
+
+#. [attack]: type=blade
+#: data/campaigns/Descent_Into_Darkness/units/Necrophage2.cfg:18
+#, fuzzy
+#| msgid "Outlaws"
+msgid "claws"
+msgstr "Geächtete"
 
 #. [advancement]
 #: data/campaigns/Descent_Into_Darkness/units/Spectral_Servant.cfg:79
@@ -6645,32 +6881,49 @@ msgstr "Gegnerische Einheiten in der Nähe richten -20% weniger Schaden an."
 msgid "Adjacent enemy units do 40% less damage."
 msgstr "Gegnerische Einheiten in der Nähe richten -40% weniger Schaden an."
 
+#. [teleport]: id=did_enlightened
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:492
+msgid "enlightened"
+msgstr ""
+
+#. [teleport]: id=did_enlightened
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:493
+#, fuzzy
+#| msgid "female^maimed"
+msgid "female^enlightened"
+msgstr "Verstümmelt"
+
+#. [teleport]: id=did_enlightened
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:494
+msgid "This unit can teleport between mushroom groves."
+msgstr ""
+
 #. [heal_on_hit]: id=did_vitalize1
 #. [heal_on_hit]: id=did_vitalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:493
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:502
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:518
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:527
 msgid "vitalize"
 msgstr "Vitalität"
 
 #. [heal_on_hit]: id=did_vitalize1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:494
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:519
 msgid "This unit heals 2 HP every time this attack hits."
 msgstr "Die Einheit heilt um +2 LP für jeden Treffer, den der Angriff erzielt."
 
 #. [heal_on_hit]: id=did_vitalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:503
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:528
 msgid "This unit heals 4 HP every time this attack hits."
 msgstr "Die Einheit heilt um +4 LP für jeden Treffer, den der Angriff erzielt."
 
 #. [attacks]: id=did_fervor
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:510
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:511
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:535
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:536
 msgid "fervor"
 msgstr "Eifer"
 
 #. [attacks]: id=did_fervor
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:512
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:513
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:537
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:538
 msgid ""
 "This attack gains 2 attacks on offense, but causes this unit to lose 4 hp "
 "per hit."
@@ -6679,14 +6932,14 @@ msgstr ""
 "Treffer verliert die Einheit -4 LP."
 
 #. [attacks]: id=did_impetuity
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:527
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:528
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:552
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:553
 msgid "impetuity"
 msgstr "Schlagkraft"
 
 #. [attacks]: id=did_impetuity
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:529
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:530
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:554
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:555
 msgid ""
 "This attack loses one strike on offense but deals three times the normal "
 "damage."
@@ -6695,29 +6948,28 @@ msgstr ""
 "der Schaden."
 
 #. [attacks]: id=did_corpse_launcher
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:544
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:569
 msgid "corpse launcher"
 msgstr "Untote Horde"
 
 #. [attacks]: id=did_corpse_launcher
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:545
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:570
 msgid ""
 "On offense, enemies cannot retaliate against this attack. This attack "
 "consumes 3 HP from each nearby allied corpse to deal 15 impact damage (per "
 "corpse) to the target on top of this attack’s base damage."
 msgstr ""
 "Beim Angreifen können sich gegnerische Einheiten nicht wehren. Der Angriff "
-"zieht jedem verbündeten Leichnam in der Nähe -3 LP ab und richtet +15"
-"Schaden durch Wucht (pro Leichnam) zusätzlich zum normalen Angriffsschaden "
-"an."
+"zieht jedem verbündeten Leichnam in der Nähe -3 LP ab und richtet +15Schaden "
+"durch Wucht (pro Leichnam) zusätzlich zum normalen Angriffsschaden an."
 
 #. [leadership]: id=did_consumption
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:671
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:696
 msgid "consumption"
 msgstr "Aufzehrung"
 
 #. [leadership]: id=did_consumption
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:672
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:697
 msgid ""
 "At night, this unit and adjacent allied undead gain 25% damage. However, "
 "this unit loses 2 HP per turn."
@@ -6726,12 +6978,12 @@ msgstr ""
 "Nähe +25% mehr Schaden an. Jedoch verliert diese Einheit -2 LP pro Runde."
 
 #. [heals]: id=did_corpse_master
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:736
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:761
 msgid "corpse master"
 msgstr "Kadavermeister"
 
 #. [heals]: id=did_corpse_master
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:737
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:762
 msgid ""
 "Adjacent allied corpses heal 8 HP per turn and gain 30% resistance to blade, "
 "impact, and pierce."
@@ -6740,12 +6992,12 @@ msgstr ""
 "und erhalten +30% Resistenz gegen Klingen-, Wucht- und Stichschaden."
 
 #. [leadership]: id=did_zombie_frenzy
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:771
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:796
 msgid "zombie frenzy"
 msgstr "Blutrausch"
 
 #. [leadership]: id=did_zombie_frenzy
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:772
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:797
 msgid "Adjacent allied corpses gain 30% damage and are berserk."
 msgstr ""
 "Verbündete Leichnam-Einheiten in der Nähe richten +30% mehr Schaden an und "
@@ -6753,13 +7005,13 @@ msgstr ""
 
 #. [regenerate]: id=did_cannibalize1
 #. [regenerate]: id=did_cannibalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:802
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:887
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:827
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:912
 msgid "cannibalize"
 msgstr "Kannibalismus"
 
 #. [regenerate]: id=did_cannibalize1
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:803
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:828
 msgid ""
 "On each turn, this unit regenerates 2 HP per adjacent allied ghoul-type "
 "unit, but consumes 1 HP from each ally in the process."
@@ -6768,7 +7020,7 @@ msgstr ""
 "Einheit in der Nähe, doch kostet es jeden Verbündeten dabei -1 LP."
 
 #. [regenerate]: id=did_cannibalize2
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:888
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:913
 msgid ""
 "On each turn, this unit regenerates 4 HP per adjacent allied ghoul-type "
 "unit, but consumes 2 HP from each ally in the process."
@@ -6777,40 +7029,90 @@ msgstr ""
 "Einheit in der Nähe, doch kostet es jeden Verbündeten dabei -2 LP."
 
 #. [dummy]: id=did_death_cloud
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:970
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:995
 msgid "death cloud"
 msgstr "Wolke des Todes"
 
 #. [dummy]: id=did_death_cloud
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:971
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:996
 msgid ""
 "This unit poisons all nearby enemy units on the start of every new turn."
 msgstr ""
 "Diese Einheit vergiftet alle gegnerischen Einheiten in der Nähe zu Beginn "
 "jeder Runde."
 
+#. [plague]: id=ghoulfication, type=Ghoul
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1039
+msgid "ghoulfication"
+msgstr ""
+
+#. [plague]: id=ghoulfication, type=Ghoul
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1040
+msgid "When a unit is killed by this attack, it turns into a ghoul."
+msgstr ""
+
+#. [dummy]: id=did_starving
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1048
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1049
+msgid "starving"
+msgstr ""
+
+#. [dummy]: id=did_starving
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1050
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1051
+msgid "This unit loses 1 hitpoint every turn."
+msgstr ""
+
+#. [leadership]: id=masochism1
+#. [leadership]: id=masochism2
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1094
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1106
+#, fuzzy
+#| msgid "Schism"
+msgid "masochism"
+msgstr "Trennung"
+
+#. [leadership]: id=masochism1
+#. [leadership]: id=masochism2
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1095
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1107
+#, fuzzy
+#| msgid "female^maimed"
+msgid "female^masochism"
+msgstr "Verstümmelt"
+
+#. [leadership]: id=masochism1
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1096
+msgid "This unit gains up to 50% damage as its hitpoints are reduced."
+msgstr ""
+
+#. [leadership]: id=masochism2
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1108
+msgid "This unit gains up to 100% damage as its hitpoints are reduced."
+msgstr ""
+
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1016
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1120
 msgid "drunk"
 msgstr "betrunken"
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1017
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1121
 msgid "female^drunk"
 msgstr "betrunken"
 
 #. [resistance]: id=did_drunk
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1018
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1122
 msgid "This unit is drunk and has 10% increased resistances."
 msgstr "Die Einheit ist betrunken und hat um +10% erhöhte Resistenzen."
 
 #. [berserk]: id=did_drunken_rage
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1026
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1130
 msgid "drunken rage"
 msgstr "Benebelte Wut"
 
 #. [berserk]: id=did_drunken_rage
-#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1027
+#: data/campaigns/Descent_Into_Darkness/utils/abilities.cfg:1131
 msgid "On offense, this attack presses the engagement for 4 rounds of attacks."
 msgstr "Beim Angreifen werden 4 Schläge ausgeteilt."
 
@@ -6911,6 +7213,20 @@ msgstr "Verbessert die Kannibalismus-Fähigkeit"
 msgid "Gains the death cloud ability"
 msgstr "Erhält die Wolke des Todes-Fähigkeit"
 
+#. [advancement]: id=necron_masochism1
+#. [advancement]: id=necron_masochism2
+#: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1029
+#: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1056
+msgid "Gain increasing damage as hitpoints are reduced"
+msgstr ""
+
+#. [advancement]: id=necron_ghoulfication
+#: data/campaigns/Descent_Into_Darkness/utils/amlas.cfg:1083
+#, fuzzy
+#| msgid "Gain the ability to hide allied units"
+msgid "Gains the ability to turn enemies into ghouls"
+msgstr "Erhält die Fähigkeit, verbündete Einheiten zu tarnen"
+
 #. [trait]: id=loyal
 #: data/campaigns/Descent_Into_Darkness/utils/characters.cfg:44
 msgid "loyal"
@@ -6972,1197 +7288,1223 @@ msgstr ""
 "<italic>text='Verstümmelte'</italic> Einheiten haben 3 Bewegungspunkte "
 "weniger als gewöhnlich."
 
-msgid ""
-"Fear is the path to the dark side. Fear leads to anger. Anger leads to hate. "
-"Hate leads to suffering."
-msgstr ""
-"Furcht ist der Pfad zur dunklen Seite. Furcht führt zu Wut, Wut führt zu "
-"Hass, Hass führt zu unsäglichem Leid."
-
-msgid "Enemy units have reduced vision (radius 3)."
-msgstr "Der Sichtweite der Feinde ist begrenzt (Radius 3)."
-
-msgid "The only thing we have to fear is fear itself."
-msgstr "Das Einzige, was wir fürchten müssen, ist die Furcht selbst."
-
-msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
-msgstr "<i>…namenloser, ungerechter, unberechtigter Terror…</i>"
-
-msgid ""
-"Such an old, worn book. It does not seem like much, but at least we’ve got "
-"it now."
-msgstr ""
-"So ein altes, abgenutztes Buch. Sieht nicht sehr wertvoll aus, aber "
-"zumindest haben wir es."
-
-msgid "Dialogue Comments and Revisions"
-msgstr "Dialoganpassungen"
-
-msgid "Difficult"
-msgstr "Schwierig"
-
-msgid ""
-"You say it will ensure our survival, but at what price? Defiling the bodies "
-"of our dead? Your soul, sold to black magic?"
-msgstr ""
-"Ihr wollt unser Überleben sichern, aber zu welchem Preis? Die Körper unserer "
-"Toten zu schänden? Eure Seele, habt Ihr vor sie an an schwarze Magie zu "
-"verkaufen?"
-
-msgid ""
-"Perhaps removing the threat of orcish raids will persuade the people of "
-"Parthyn to welcome you home."
-msgstr ""
-"Und wer weiß, vielleicht würde die Vernichtung dieser Gefahr die Menschen "
-"von Parthyn überzeugen… dich wieder daheim willkommen zu heißen.."
-
-msgid "The goblin knight is dead, master."
-msgstr "Der Koboldritter ist tot, Meister."
-
-msgid "Excellent. I’m eager to move on to some real foes."
-msgstr ""
-"Großartig. Ich kann es kaum erwarten, es endlich mit den wahren Gegnern "
-"aufzunehmen."
-
-msgid "This cave is infested with giant scorpions!"
-msgstr "Hier leben riesige Skorpione!"
-
-msgid ""
-"Annoying pests, no more than that. Killing them, however, may provide some "
-"useful experience to your skeletons."
-msgstr ""
-"Eine nervende Plage, mehr nicht. Wenn deine Skelette sie töten, sind die "
-"vielleicht nützlich gut genug, um ihnen ein bisschen Kampferfahrung zu "
-"verschaffen. "
-
-msgid "Hssss, I ssspy human vermin... I mussst kill."
-msgstr "Hssss, Ich sssehe menschlichesss Ungezzziefer… Ich töte sssie!"
-
-msgid "We will ssslay him..."
-msgstr "Wir zzzerhacken ihn…"
-
-msgid "I do not think I will be the one dying here."
-msgstr "Ich glaube nicht, dass ich hier derjenige bin, der stirbt."
-
-msgid "Hsssss..."
-msgstr "Hsssss…"
-
-msgid "Evil... dark... magicssssss..."
-msgstr "Bössse… schwarzzze… Magie…"
-
-msgid ""
-"Since you have mastered reanimating skeletons, I will now teach you to "
-"control spirits. The souls of the recently deceased do not stray far from "
-"their bodies. You should be able to sense them still."
-msgstr ""
-"Skelette kannst du schon beschwören. Jetzt zeige ich dir, wie du einen Geist "
-"beherrschst. Seelen von gerade Verstorbenen irren immer in der Nähe ihrer "
-"Körper herum. Du solltest in der Lage sein, sie zu spüren."
-
-msgid "I feel them."
-msgstr "Ich spüre sie."
-
-msgid ""
-"Controlling spirits can be somewhat hazardous even for experienced "
-"necromancers. When imprisoning a soul, use all your might to retain control "
-"over it. You must exert your will over its own, or the spirit will break "
-"free and destroy you."
-msgstr ""
-"Gib Acht. Du musst all deine Kraft aufbringen, wenn du dich einer gefallenen "
-"Seele bemächtigen willst. Andernfalls wird sie versuchen, ihren Ketten zu "
-"entfliehen und dich zu zerstören."
-
-msgid "I... I will do my best."
-msgstr "Ich… Ich versuche es."
-
-msgid ""
-"You blithering fool! How did you let your will be overcome by a half-"
-"sentient creature that can hardly come up with a single coherent sentence?! "
-"Let your will slip further and you shall join other young necromancers who "
-"have died at the hands of their own servants."
-msgstr ""
-"Du geschwätziger Narr! Wie konntest du von von einer nicht ganz "
-"existierenden Kreatur besiegt werden, die kaum einen zusammenhängenden Satz "
-"hervorbringen kann?! Mach diesen Fehler öfter, und du kannst dich zu den "
-"unzähligen jungen Nekromanten zählen, die durch die Hand ihrer eigenen "
-"Diener gestorben sind!"
-
-msgid ""
-"My will is strong, but he still does not return to me. What should I do?"
-msgstr ""
-"Mein Wille ist stark, aber der Geist folgt mir nicht mehr. Was soll ich tun?"
-
-msgid ""
-"Subdue the rebel! When you have sapped it of its energies, exert your power "
-"over it and do not lose focus."
-msgstr ""
-"Vernichte den Rebell! Wenn du seine Energie verringert hast, nutze deine "
-"Macht über ihn und verliere den Fokus nicht."
-
-msgid "Seize control back while it is weakened!"
-msgstr "Bekomme die Kontrolle zurück, solange der Geist geschwächt ist!"
-
-msgid ""
-"I think I’ve got it under control again. That was a close call. Let me try "
-"the other one now."
-msgstr ""
-"Ich glaube, ich habe wieder alles unter Kontrolle. Das war knapp. Ich werde "
-"es nochmal versuchen."
-
-msgid "No mishaps this time, but you will need to practice more."
-msgstr "Kein Fehler dieses mal, aber du musst trotzdem mehr üben."
-
-msgid "Trolls! I suppose I should have expected this."
-msgstr "Trolle! Ich denke, das hätte ich erwarten sollen."
-
-msgid ""
-"Threats to your skeletons, but no more than fodder for your ghosts. "
-"Eliminate them all."
-msgstr ""
-"Trolle werden deine Skelette einfach zerschmettern, aber deine Geister "
-"werden sie besiegen können. Vernichte sie alle."
-
-msgid ""
-"<i>If I act quickly, I can enslave another ghost to help me fight off the "
-"rest of these trolls.</i>"
-msgstr ""
-"<i>Wenn ich mich beeile, kann ich noch einen Geist erschaffen, um den Rest "
-"der Trolle zu vernichten.</i>"
-
-msgid "<i>The boy learns quickly. He should be of great use after all.</i>"
-msgstr ""
-"<i>Der Junge lernt sehr schnell. Er kann nach wie vor von großem Nutzen sein."
-"</i>"
-
-msgid "Outset of Vengeance"
-msgstr "Beginn der Rache"
-
-msgid "Orc War"
-msgstr "Krieg gegen die Orks"
-
-msgid ""
-"Word spreads to the south as well when the ever present raids are suddenly "
-"absent this year. The people at the frontier towns go about their days, "
-"gossiping about rumors of the undead, some with disgust, some with intrigue. "
-"When winter passes and spring comes again, a number of dark adepts travel "
-"northward and join the pair of necromancers. <i>“They can be quite useful,”</"
-"i> Darken Volk says to Malin, <i>“but none of them have even a tenth of your "
-"potential power.”</i>"
-msgstr ""
-"Es sprach sich bis in den Süden herum, dass die üblichen Angriffe der Orks "
-"ausblieben. Gerüchte von Untoten, die die Orks bekämpfen, machten die Runde. "
-"Zu Beginn des Frühlings trafen die Nekromanten deshalb immer wieder auf "
-"dunkle Adepten, die gen Norden reisten, um sich ihnen anzuschließen. <i>»Sie "
-"sind sehr nützlich im Kampf,«</i> sagte Darken Volk zu Malin, <i>»aber "
-"keiner unter ihnen hat auch nur ein Zehntel deines Potenzials.«</i>"
-
-msgid ""
-"Even with my new powers, I cannot fight the entire town as well as the orcs. "
-"I must flee to the west to find Darken Volk!"
-msgstr ""
-"Selbst mit meinen neuen Kräften kann ich nicht die gesamte Stadt und die "
-"Orks bekämpfen. Ich muss gen Westen fliehen und Darken Volk finden!"
-
-msgid ""
-"Even with my new powers, I cannot fight the entire town on my own. I must "
-"flee to the west to find Darken Volk!"
-msgstr ""
-"Selbst mit meinen neuen Kräften kann ich nicht die gesamte Stadt bekämpfen. "
-"Ich muss gen Westen fliehen und Darken Volk finden!"
-
-msgid "This scenario takes place entirely at night."
-msgstr "Dieses Szenario findet vollständig bei Nacht statt."
-
-msgid "What was that?!"
-msgstr "Was war das?!"
-
-msgid ""
-"That was the impact of what is known as holy water among commoners. It is "
-"brewed in a complicated procedure only known to a few priests. As you might "
-"imagine, it is quite effective against undead."
-msgstr ""
-"Das war die Wirkung dessen, was dem gemeinen Volk als Heiliges Wasser "
-"bekannt ist. Nur wenige Priester kennen die mysteriöse und komplizierte "
-"Prozedur, um es herzustellen. Es ist ein hervorragendes Mittel im Kampf "
-"gegen wiederbelebte Wesen."
-
-msgid ""
-"Learn the dark arts of necromancy in order to save your people from an "
-"orcish incursion.\n"
-"\n"
-msgstr ""
-"Lernt die dunkle Kunst der Totenbeschwörung, um Eure Heimat vor orkischen "
-"Überfällen zu schützen.\n"
-"\n"
-
-msgid "Campaign Maintenance"
-msgstr "Betreuung"
-
-msgid ""
-"When Malin was 10, a mage who passed through the town sensed strong magical "
-"abilities in the boy. His parents, seeing a chance for him to live away from "
-"the constant battles with the orcs, arranged for him to be sent to the mage "
-"community on the Isle of Alduin. There he studied for eight years, while "
-"back at home the orc raids increased in their frequency and ferocity. Before "
-"Malin could finish his training, however, he was expelled."
-msgstr ""
-"Als Malin 10 Jahre alt war, erkannte ein reisender Magier, den sein Weg "
-"durch die Stadt führte, eine Befähigung für die Künste der Magie in dem "
-"Jungen. Seine Eltern sahen die Möglichkeit, ihn fern des Kampfes aufwachsen "
-"zu lassen und so schickten sie ihn auf die Insel Alduin, wo er fortan die "
-"Geheimnisse über Zauberei und Magie erlernen sollte. Es war ein friedlicher "
-"Ort und so vollkommen verschieden zu seiner Heimat, in welcher, während der "
-"acht Jahre, in denen Malin seine Ausbildung zum Magier genoss, die "
-"Orkangriffe immer häufiger und grausamer wurden. Bevor er jedoch seine "
-"Ausbildung abschließen konnte, wurde er von der Gemeinschaft der Magier "
-"verstoßen."
-
-msgid ""
-"Malin returned to Parthyn just as summer began only to encounter more "
-"misfortune. Even as he arrived, an early, unexpected orc raid was being "
-"conducted against Parthyn. Malin watched as his father took an arrow in the "
-"chest and fell lifeless to the ground."
-msgstr ""
-"Malin erreichte zu Beginn des Sommers seine Heimat Parthyn, wo noch mehr "
-"Unglück auf ihn wartete. Die Orks führten bereits jetzt einen ihrer Raubzüge "
-"gegen die Stadt. Gerade als Malin den Truppen zu Hilfe eilen wollte, musste "
-"er mit ansehen, wie sein Vater von einem Pfeil durchbohrt wurde und "
-"daraufhin leblos zu Boden sackte."
-
-msgid "Orcs break through the river fort defenses"
-msgstr "Orks brechen durch die Befestigung am Fluss"
-
-msgid "Several weeks pass..."
-msgstr "Einige Wochen vergingen..."
-
-msgid ""
-"Although I dislike sending a raiding party out so early, they should clear "
-"out the orc encampments and leave us a relatively quiet summer."
-msgstr ""
-"Auch wenn es riskant ist, einen Stoßtrupp so früh im Jahr loszuschicken, so "
-"werden die Orks nicht auf einen Angriff ihrer Lager vorbereitet sein. Auf "
-"das wir einen ruhigeren Sommer genießen können!"
-
-msgid ""
-"The raiding party returns, and the orcs flee in the face of a superior force."
-msgstr ""
-"Der Stoßtrupp kehrt zurück und die Orks fliehen im Angesicht dieser "
-"Übermacht."
-
-msgid ""
-"The mages taught me enough. You won’t truly banish me, will you, Drogan?"
-msgstr ""
-"Sie lehrten mich genug. Ihr werdet mich doch nicht wirklich verbannen, "
-"Drogan?"
-
-#| msgid ""
-#| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
-#| "Your father would be ashamed to see the end to which you’ve come."
-msgid ""
-"Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
-"father would be ashamed to see the end to which you’ve come."
-msgstr ""
-"Verschwindet jetzt! Ich wünsche nicht, Soldaten nach euch zu schicken. Euer "
-"Vater wäre beschämt zu sehen, was aus euch geworden ist."
-
-msgid ""
-"That was bravely done, lad, holding the orcs off by yourself. The mages "
-"taught you well. But there is grave news from the village; your sister Dela "
-"was wounded in the attack. Healers attend her, but she may not live out the "
-"hour."
-msgstr ""
-"Das war sehr mutig von euch, die Orks ganz alleine aufzuhalten, Jüngling. "
-"Die Magier lehrten euch gut. Doch es gibt eine schlimme Nachricht aus dem "
-"Dorf: Eure Schwester Dela wurde bei dem Angriff verwundet. Unsere Heiler "
-"versuchen ihr Bestmögliches, doch wird sie diese Stunde vielleicht nicht "
-"überleben."
-
-msgid ""
-"Orcs. Foul, pestilent creatures. The wide green world would be a better "
-"place with them all dead. Dead!"
-msgstr ""
-"Orks. Schmutzige, verderbliche Kreaturen. Die weite grüne Welt wäre so viel "
-"besser, wären sie alle tot! Tot!"
-
-msgid ""
-"Perhaps, but if kings and great mages have not abolished them neither you "
-"nor I are ever likely to."
-msgstr ""
-"Möglicherweise. Doch wenn weder Könige noch große Magier sie je loswerden "
-"konnten, so werde weder ich noch werdet ihr jemals dazu imstande sein."
-
-msgid ""
-"Perhaps I cannot kill them all... but I see the back-trail of this band we "
-"defeated, and there will be more orcs at the other end of it. I shall pursue "
-"them."
-msgstr ""
-"Vielleicht vermag ich nicht sie alle zu töten... doch sehe ich die Spuren "
-"der Truppe, die wir bereits besiegten und es werden mehr Orks am Ende dieser "
-"Spuren sein. Ich werde sie verfolgen."
-
-msgid "And leave your sister?"
-msgstr "Und eure Schwester zurücklassen?"
-
-msgid "My hands were never apt for healing. But revenge I can give her."
-msgstr ""
-"Meine Hände waren nie geeignet zum Heilen. Doch Rache kann ich für sie üben."
-
-msgid ""
-"No! We need every man who can fight here, not lost in doomed attempt to "
-"harry the orcs in their own country!"
-msgstr ""
-"Nein! Wir brauchen jeden fähigen Kämpfer hier, nicht verloren in einem dem "
-"Untergang geweihten Versuch, die Orks in ihrem eigenen Land zu bekämpfen."
-
-msgid "I am resolved."
-msgstr "Meine Entscheidung steht fest."
-
-msgid ""
-"You’ll go without my blessing or my men, then. I won’t spare any on such an "
-"errand."
-msgstr ""
-"So geht ihr ohne meinen Segen oder meine Männer. Ich habe für ein solches "
-"Vorhaben nichts übrig."
-
-msgid "Yes! I thirst for revenge on those creatures!"
-msgstr "Ja! Es dürstet mich nach Rache an diesen Kreaturen!"
-
-msgid ""
-"Perhaps. Even Drogan would have to be thankful for a summer without orc "
-"raids."
-msgstr "Vielleicht. Selbst Drogan wäre für einen Sommer ohne Orks dankbar."
-
-msgid ""
-"In their present form they can best serve the greater good. Even now they "
-"will aid you in defeating this goblin rabble. Besides, as I said, these were "
-"men of great evil. No punishment is too great for their kind."
-msgstr ""
-"In ihrer jetzigen Gestalt können sie dem größeren Wohl dienen. Sogar jetzt "
-"werden sie dir helfen, dieses Koboldgesindel zu unterwerfen. Wie ich bereits "
-"sagte, waren diese Wesen große Übeltäter. Keine Bestrafung ist für "
-"ihresgleichen zu grausam."
-
-msgid ""
-"Your training is just beginning, Malin. With the souls from these goblins "
-"now available for our use, you will see your forces grow quickly."
-msgstr ""
-"Deine Ausbildung hat gerade erst begonnen, Malin. Mit den Seelen dieser "
-"Kobolde zur freien Verfügung, werden deine Kräfte schnell anwachsen."
-
-msgid "Outlaws"
-msgstr "Geächtete"
-
-msgid "Dap Horner"
-msgstr "Dap Horner"
-
-msgid "Gorak Cole"
-msgstr "Gorak Cole"
-
-msgid "Free Undead"
-msgstr "Befreie Untote"
-
-msgid "Clear the cave of enemies"
-msgstr "Befreit die Höhle von Feinden"
-
-msgid ""
-"Winter comes on fast, and we need a sheltered place to spend it. This cave "
-"looks promising, but from the tracks in and out several bands of outlaws "
-"already inhabit it. You should clear them out so we may use it safely."
-msgstr ""
-"Der Winter bricht bald herein und wir brauchen dringend einen geschützten "
-"Ort, um ihn zu überdauern. Diese Höhle sieht viel versprechend aus, aber den "
-"Spuren nach zu urteilen, wird sie von einigen Räubern bewohnt. Wir werden "
-"sie wohl hinauswerfen müssen, wenn wir den Winter überstehen wollen."
-
-msgid ""
-"Dwarves! They have often been our allies against the orc hordes. Surely they "
-"will allow us to winter with them."
-msgstr ""
-"Zwerge! Sie sind schon oft unsere Verbündeten gegen die Orks gewesen. Sie "
-"werden uns sicherlich erlauben, hier zu überwintern."
-
-msgid ""
-"Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna’ "
-"want tae be a walking pile o’ bones."
-msgstr ""
-"Zwei Totenbeschwörer sind am Höhleneingang. Holt eure Äxte, wenn ihr kein "
-"laufender Haufen von Knochen werden wollt!"
-
-msgid "Or not. Why do they hate us so much?"
-msgstr "Oder nicht. Warum hassen sie uns so sehr?"
-
-msgid ""
-"People fear that which they don’t understand, and death, after all, is the "
-"greatest mystery. Those who dare to investigate that mystery are bound to "
-"invoke fear and distrust. Worry not, your people will again warm to you once "
-"you deal with the orc threat at its source. For now, the cave-dwellers give "
-"us no choice."
-msgstr ""
-"Die Leute haben Angst vor dem, was sie nicht verstehen. Und der Tod ist noch "
-"immer das größte Mysterium. Jene, die es wagen, den Tod zu erforschen, "
-"werden immer Furcht und Misstrauen hervorrufen. Aber sorge dich nicht. Sie "
-"werden dir wieder freundlich gesonnen sein, sobald die Gefahr durch die Orks "
-"gebannt ist. Heute allerdings lassen uns die Höhlenbewohner keine andere "
-"Möglichkeit."
-
-msgid "Tortured Soul"
-msgstr "Gequälte Seele"
-
-msgid ""
-"Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
-"shall pay for keeping me from my final rest!"
-msgstr ""
-"Endlich frei! Eure böse Magie kann mich nicht länger versklaven, Malin, "
-"Verfluchter. Nun sollt ihr dafür bezahlen, mich von meiner letzten Ruhe "
-"abzuhalten!"
-
-msgid ""
-"Fool boy! Your will must be stronger or you will never be able to control "
-"your soldiers well enough to face the orcs. Many are the young necromancers "
-"who have died when their servants turned on them. He will attack you "
-"relentlessly."
-msgstr ""
-"Dummer Narr! Dein Wille muss stärker sein oder du wirst deine Soldaten "
-"niemals gegen die Orks führen. Viele der jungen Totenbeschwörer starben "
-"bereits, als sich ihre Diener gegen sie wandten. Er wird dich unaufhörlich "
-"angreifen."
-
-msgid "But why are they attacking me? And what should I do?!"
-msgstr "Aber warum greifen sie mich an? Was soll ich tun?!"
-
-msgid ""
-"Destroy the rebel quickly and all will be well. Wait, and he will begin to "
-"turn the rest of your forces against you."
-msgstr ""
-"Vernichte den Rebellen und alles wird gut sein. Warte und er wird auch die "
-"anderen deiner Streitmacht gegen dich aufbringen."
-
-msgid "Beginning of the Revenge"
-msgstr "Beginn der Rache"
-
-msgid ""
-"Burning inside with a desire to take his revenge against the orcs and push "
-"them further north, Malin spends the winter learning as much from Darken "
-"Volk as he can. His years of study with the mages serve him well, and his "
-"power grows quickly."
-msgstr ""
-"Mit dem brennenden Wunsch, Rache an den Orks zu nehmen und sie weiter in den "
-"Norden zurückzudrängen, verbrachte Malin den Winter damit, so viel von "
-"Darken Volk zu lernen, wie es nur möglich war. Die Zeit auf Alduin machte "
-"sich bezahlt und so wuchs seine Kraft rasch an."
-
-msgid ""
-"Orcs block the way out of the mountain pass. Destroy them, and we will move "
-"on to bigger targets."
-msgstr ""
-"Orks blockieren den Weg durch diesen Pass. Töte sie und wir können schon "
-"bald zu größeren Zielen übergehen."
-
-msgid ""
-"With the might of the undead at my command, many orcs will die this day. "
-"They shall pay for attacking Parthyn."
-msgstr ""
-"Mit der Macht über die Untoten zu meinem Befehl sollen viele Orks heute ihr "
-"Leben lassen. Sie werden für den Angriff auf Parthyn bezahlen!"
-
-msgid ""
-"Coward, yes. You must hunt him down before he can take word to the orcish "
-"council. A single chieftain, even after he gathers the survivors from this "
-"battle, should pose no problem for you, even on your own."
-msgstr ""
-"Feigling, ja. Du musst ihm folgen und ihn töten, bevor er dem Rat der Orks "
-"Bericht erstatten kann. Ein einzelner Häuptling sollte auch mit den "
-"Überlebenden aus diesem Kampf kein Problem für dich darstellen, selbst wenn "
-"du ganz auf dich allein gestellt bist."
-
-msgid "On my own? Is my apprenticeship over?"
-msgstr "Alleine? Ist meine Ausbildung nun abgeschlossen?"
-
-msgid ""
-"... Almost. The growth of your power has been truly impressive to watch. "
-"There is, however, a small favor I will ask of you. That will constitute the "
-"last part of your training. Now there are merely some... tasks... to which I "
-"must attend. They need not concern you. I will meet up with you to the west "
-"in a few weeks. In the meantime, do not let the last chieftain escape "
-"justice."
-msgstr ""
-"... Fast. Das Wachstum deiner Kräfte ist wahrhaft beeindruckend. Es gibt da "
-"noch eine kleine Gefälligkeit, um die ich dich bitten möchte. Dies wird den "
-"letzten Teil deiner Ausbildung ausmachen. Ich muss mich nun um einige "
-"andere... Dinge... kümmern. Es ist nichts von Belang. In einigen Wochen "
-"werden wir uns im Westen wiedersehen. In der Zwischenzeit sollte dem "
-"Häuptling seine Bestimmung zuteil werden."
-
-msgid ""
-"Two days travel south of the previous battle, Malin loses the trail of the "
-"regrouped orcish warriors, but soon picks it up again. The trail moves "
-"unfailingly south for several days. As soon as it crosses the Great River it "
-"immediately turns west."
-msgstr ""
-"Zwei Tagesreisen südlich der Schlacht verlor sich die Spur der "
-"neuversammelten Orkkrieger zunächst, doch konnte sie Malin schnell wieder "
-"finden. Die Orks waren einige Tage stur nach Süden marschiert. Als die Spur "
-"den großen Fluss überquerte, drehte sie plötzlich nach Westen."
-
-msgid "Within a few days, Malin recognizes some familiar surroundings..."
-msgstr ""
-"Und schon wenige Tage später erkannte Malin die ihm so vertraute Umgebung..."
-
-msgid "I bring word of a great victory against the orcs, Drogan!"
-msgstr ""
-"Ich bringe Kunde von einem großen Sieg im Kampf gegen die Orks, Drogan!"
-
-msgid ""
-"I had hoped never to see you again, Malin. You have been banished, and now "
-"return. You give me no choice but to order my soldiers to attack you."
-msgstr ""
-"Ich hoffte euch nie wieder zu sehen, Malin. Ihr wart verbannt und seid "
-"dennoch zurückgekehrt. Mir bleibt keine Wahl, als meinen Soldaten zu "
-"befehlen, euch anzugreifen."
-
-msgid ""
-"I have eliminated two orc chieftains! I doubt that we will see any orc raids "
-"this summer. The beasts will be too busy trying to regroup."
-msgstr ""
-"Ich habe zwei Häuptlinge der Orks getötet. Ich glaube nicht, dass es diesen "
-"Sommer irgendwelche Orkangriffe geben wird. Die Monster werden zu sehr damit "
-"beschäftigt sein, sich neu zu sammeln."
-
-msgid ""
-"A spirit I raised with the arts taught to me by Darken Volk. With his help, "
-"I have slain two orcish chieftains!"
-msgstr ""
-"Ein Geist, den ich mit den Künsten die mir Darken Volk beibrachte, "
-"heraufbeschwor. Mit seiner Hilfe habe ich zwei Häuptlinge der Orks besiegt!"
-
-msgid ""
-"You allowed yourself to be corrupted by the foul taint of the necromancer? "
-"Better to face the orcish menace than even dabble in dark magic! People "
-"would have rebuilt the town, just as they always have in the past. Your "
-"father would be ashamed to see the end to which you’ve come."
-msgstr ""
-"Ihr habt euch der verdorbenen Verlockung des Nekromanten anstecken lassen? "
-"Selbst der orkischen Bedrohnis gegenüber zu stehen ist besser als sich an "
-"schwarzer Magie zu versuchen! Wie schon in der Vergangenheit hatten die "
-"Menschen die Stadt wieder aufgebaut. Unser Vater wäre beschämt zu sehen, was "
-"aus euch geworden ist."
-
-msgid ""
-"I doubt that we will see any orc raids this summer. The beasts will be too "
-"busy trying to regroup! Is this how you repay me?"
-msgstr ""
-"Ich habe zwei Häuptlinge der Orks getötet. Ich glaube nicht, dass es diesen "
-"Sommer irgendwelche Orkangriffe geben wird. Die Monster werden zu sehr damit "
-"beschäftigt sein, sich neu zu sammeln."
-
-msgid ""
-"I have been tracking that band since they fled the field at my great "
-"victory! But how did they get north of the river? Let my forces be and I "
-"will deal with them."
-msgstr ""
-"Ich habe diesen Trupp verfolgt, seitdem sie vom Schlachtfeld meines großen "
-"Sieges flüchteten! Aber wie schafften sie es auf die Nordseite des Flusses? "
-"Lasst mich gegen sie kämpfen."
-
-msgid ""
-"You have saved us the trouble of killing those worthless orcs ourselves; for "
-"that I thank you. But you cannot return to Parthyn, Malin."
-msgstr ""
-"Ihr habt uns viel Ärger erspart, indem ihr diese wertlosen Orks tötetet, "
-"dafür danke ich euch. Doch könnt Ihr nicht nach Parthyn zurückkehren, Malin."
-
-msgid ""
-"What! You still do not trust my word? Well, perhaps you have lost sight of "
-"the true threat. The orcs will not be gone forever, and without me, how will "
-"the town stand? You jeopardize its very safety. Attack him!"
-msgstr ""
-"Was! Ihr vertraut meinen Worten immer noch nicht? Nun, möglicherweise habt "
-"ihr die wahre Bedrohung aus den Augen verloren. Die Orks sind nicht für "
-"immer fort, und wie soll die Stadt ohne mich standhalten? Ihr selbst "
-"gefährdet ihre Sicherheit. Greift ihn an!"
-
-msgid ""
-"You will pay for Drogan’s death. Now that I have seen the true evil to which "
-"you have come, I will commit every guardsman to your demise. It pains me to "
-"think that you were once my brother."
-msgstr ""
-"Du wirst für den Tod Drogans bezahlen! Jetzt, da ich das wahre Böse sehe, "
-"das aus dir geworden ist, werde ich jede Wache auf dich ansetzen. Es "
-"schmerzt mich, dass es soweit kommen musste, Bruder."
-
-msgid ""
-"While our forces must stay here to fight off your pet orcs, when we are done "
-"I shall come after you. You are my brother no longer."
-msgstr ""
-"Sobald wir deine orkischen Verbündeten besiegt haben, werde ich dich jagen, "
-"Malin. Du bist nicht länger mein Bruder!"
-
-msgid ""
-"While our forces must stay here and make sure the orcs are routed, when we "
-"are done I shall come after you. You are my brother no longer."
-msgstr ""
-"Sobald wir deine orkischen Verbündeten besiegt haben, werde ich dich jagen, "
-"Malin. Du bist nicht länger mein Bruder."
-
-msgid ""
-"Gods of Darkness, how did it come to this? My own sister determined on my "
-"death. Nothing has gone right since... since that day the fat toad Zephrin "
-"mocked my up-country accent and I lost my temper and cursed him with boils. "
-"<i>“A life curse goes beyond a joke,”</i> they said. <i>“Poor judgment,”</i> "
-"they said, and expelled me from the Academy."
-msgstr ""
-"Götter der Dunkelheit! Wie konnte es nur so weit kommen? Meine eigene "
-"Schwester will meinen Tod. Nichts lief wie es sollte seit... seit dem Tage "
-"als diese fette Kröte Zephrin sich über meinen Akzent lustig machte, ich die "
-"Beherrschung verlor und ihn mit Furunkeln verfluchte. <i>»Ein lebenslanger "
-"Fluch geht weit über einen Scherz hinaus.«</i> sagten sie. <i>»Schlechtes "
-"Urteil.«</i> sagten sie und verwiesen mich der Akademie."
-
-msgid ""
-"Fleeing from the city of his birth, Malin heads to the west. Soon he "
-"reunites with his teacher."
-msgstr ""
-"Ein weiteres Mal floh Malin vom Ort seiner Geburt Richtung Westen. Schon "
-"bald traf er auf seinen Lehrmeister."
-
-msgid "Townperson"
-msgstr "Stadtbewohner"
-
-msgid ""
-"Sir! Undead creatures are coming out of the forest! Wake the guard "
-"immediately!"
-msgstr "Mein Herr! Untote Kreaturen kommen aus dem Wald! Alamiert die Wachen!"
-
-msgid "What in the name of all demons of hell was this thing?"
-msgstr "Was im Namen aller Dämonen der Hölle war das?"
-
-msgid ""
-"All of the training you gave me, that was just so I would help you get that "
-"book! Return it to me now, or I will take it by force."
-msgstr ""
-"All das, was ihr mir beibrachtet, diente nur dazu, dieses Buch zu erhalten? "
-"Gebt es jetzt zurück oder ich werde es mir mit Gewalt nehmen!"
-
-msgid ""
-"Your travels in this region have not gone unnoticed, foul necromancers! We "
-"have been tracking you for weeks, with our purpose renewed this morning upon "
-"hearing of the disaster you wreaked upon the goodly city of Tath."
-msgstr ""
-"Eure Reisen in dieser Region sind nicht unbemerkt geblieben, unwürdiger "
-"Totenbeschwörer! Wir folgen euch schon seit Wochen, in unseren Absichten "
-"bestärkt, als wir von dem hörten, was ihr in der Stadt Tath angerichtet habt."
-
-msgid ""
-"Do not even think of running away — my horsemen can easily catch you. Yes, "
-"on this day you shall have to answer for your innumerable crimes."
-msgstr ""
-"Denkt nicht einmal daran, zu fliehen – meine Reiter werden euch mit "
-"Leichtigkeit einholen. An diesem Tage nun sollt ihr für die unzählbaren "
-"Verbrechen zur Rechenschaft gezogen werden."
-
-msgid ""
-"You wrong me, sister. I have only tried to help. Have you not seen fewer "
-"orcs this past summer?"
-msgstr ""
-"Du tust mir Unrecht, Schwester. Ich habe nur versucht zu helfen. Hast du "
-"vergangenen Sommer nicht weniger Orks gesehen?"
-
-msgid "I will not listen to any more of your lies. Men, attack!"
-msgstr "Ich ertrage nicht noch mehr deiner Lügen. Angriff, Männer!"
-
-msgid ""
-"The paladins will not be able to pursue me through the mountains, and Dela "
-"will not dare take the soldiers too far from Parthyn."
-msgstr ""
-"Die Paladine werden mich nicht durch die Berge verfolgen können und Dela "
-"wird es nicht wagen, ihre Soldaten zu weit von Parthyn zu entfernen."
-
-msgid "Trolls"
-msgstr "Trolle"
-
-msgid "Dumdumbadoom"
-msgstr "Dumdumbadoom"
-
-msgid ""
-"Yes... yes. The orcs are too strong for me now, but once I have undergone "
-"the transformation they’ll begin to fall before me. And I will continue to "
-"hound them until the last one falls!"
-msgstr ""
-"Ja... ja. Noch sind die Orks zu stark für mich, doch habe ich erst einmal "
-"die Verwandlung hinter mir, werden sie kein Hindernis mehr darstellen. Und "
-"ich werde sie so lange jagen, bis ich den letzten von ihnen aufgespürt und "
-"getötet habe."
-
-msgid ""
-"With his last bits of strength, Malin assembles an altar as the book "
-"instructs."
-msgstr "Mit letzter Kraft errichtet Malin wie im Buch beschrieben einen Altar."
-
-msgid "I pray that I am strong enough to complete the spell."
-msgstr "Ich bete, dass ich stark genug bin, den Zauber zu beenden."
-
-msgid ""
-"There, in along this old road, I sense a place worthy of being my home. From "
-"there I will build my armies. But I am still too weak to clear the vermin "
-"from it. I must finish regaining my strength."
-msgstr ""
-"Dort, entlang des alten Weges ist ein Platz, den ich zu meinem Heim machen "
-"will. Von dort aus werde ich meine Armeen aussenden. Doch bin ich noch zu "
-"schwach, es von denjenigen zu befreien, die es mit ihrer Anwesenheit "
-"beschmutzen. Ich muss meine Kraft zurückerlangen."
-
-msgid ""
-"I will need a castle from which to call upon my soldiers. I sense one nearby."
-msgstr ""
-"In der Nähe spüre ich eine Burg, von der aus ich meine Soldaten rufen kann."
-
-msgid "Yes, this will do until I can take my new home."
-msgstr "Ja, das wird reichen, bis ich mir mein neues Heim erobert habe."
-
-msgid "Clear your new home of trolls"
-msgstr "Befreit Euer neues Heim von Trollen"
-
-msgid ""
-"Who has awoken me from my slumber? Undead? I shall not suffer the existence "
-"of such foul creatures!"
-msgstr ""
-"Wer reißt mich aus meinem Schlaf? Untote? Ich werde die Existenz solch übler "
-"Kreaturen nicht erdulden!"
-
-msgid ""
-"The only doom at hand is yours, if you do not leave now. Go back to your "
-"manors and taverns, and do not trouble me further."
-msgstr ""
-"Der einzige, dessen Tage gezählt sind, seid ihr, solltet ihr nicht "
-"verschwinden. Kehrt zurück zu euren Höfen und Schänken und plagt mich nicht "
-"weiter."
-
-msgid ""
-"Your kind is an abomination. I am here to see that you inflict no more harm "
-"on the spirits that have passed on."
-msgstr ""
-"Ihr seid eine abscheuliche Kreatur. Ich bin hier, um mich darum zu kümmern, "
-"dass ihr den Geistern unserer Toten keinen Schaden mehr zufügen könnt."
-
-msgid ""
-"Fool! By leaving your forests and coming into my domain, you have sacrificed "
-"your own spirits."
-msgstr ""
-"Narr! Als ihr eure Wälder verlassen habt und in meine Gefilde eingedrungen "
-"seid, habt ihr euer Todesurteil unterschrieben."
-
-msgid ""
-"I’ve been itching for a chance to break some bones with my hammer, and now "
-"you’ve given me cause. Goodness knows you’ve got plenty of bones over there."
-msgstr ""
-"Ich habe schon lange auf eine Gelegenheit gewartet, ein paar Knochen mit "
-"meinem Hammer zu brechen. Für wahr, ihr habt viele Knochen zum zerbrechen..."
-
-msgid ""
-"Go back to your tunnels and your mines, and do not trouble me unless you "
-"want your hammers to work for me once you are dead."
-msgstr ""
-"Kehrt zurück in eure Tunnel und Minen und plagt mich nicht länger, wenn ihr "
-"nicht wollt, dass eure Hämmer für mich arbeiten, wenn ihr in dieser Schlacht "
-"gefallen seid."
-
-msgid ""
-"Hear that boys, he’s threatening us! It’s time he learned what real dwarves "
-"are made of."
-msgstr ""
-"Hört ihr das, Männer. Er bedroht uns! Es wird Zeit, dass er lernt, woraus "
-"echte Zwerge geschnitzt sind."
-
-msgid ""
-"So, I’ve finally found your lair, lich. You, who have been attacking the "
-"orcs for years and have destroyed many of our tribes."
-msgstr ""
-"Endlich habe ich euer Versteck gefunden. Viele Jahre habt ihr die Orks "
-"angegriffen und viele unserer Stämme vernichtet."
-
-msgid ""
-"Orcs? It is you who have forced me to choose the dark path, and it is you "
-"who ended my mortal life and made me turn into a lich. I am actually "
-"grateful to you for coming here, foolish hero. My hatred toward your race "
-"makes me stronger and I again get a chance to kill orcs!"
-msgstr ""
-"Orks? Ihr wart es, die mich zwangen, diesen dunklen Pfad einzuschlagen. Und "
-"ihr wart es auch, die mein sterbliches Leben beendeten und mich als Lich "
-"wiederkehren ließen. Ich bin geradezu dankbar, dass ihr zu mir gekommen "
-"seid, törichter Held. Mein Hass auf eure Rasse stärkt mich nur und ich werde "
-"eine weitere Gelegenheit erhalten, Orks zu töten."
-
-msgid ""
-"Nothing will stop me from taking revenge for my father who died at your hand "
-"and for the rest of my people you and your minions have killed, lich. Orcs, "
-"attack! The one who brings me his skull gets a bag of gold."
-msgstr ""
-"Nichts wird mich aufhalten, Rache für den Mord an meinem Vater und all den "
-"anderen Gefallenen meines Volkes zu nehmen, Lich. Zum Angriff, Orks! "
-"Derjenige der mir seinen Schädel bringt, erhält einen Sack voll Gold."
-
-msgid ""
-"It matters not who the lich was. He embraced death over life, and we have "
-"done our duty to defend life."
-msgstr ""
-"Es spielt keine Rolle wer der Lich war. Er zog den Tod dem Leben vor, und "
-"wir erfüllten unsere Pflicht, das Leben zu schützen."
-
-msgid "Probably an outlaw like us. Does it matter?"
-msgstr ""
-"Vermutlich ein Gesetzloser, wie wir. Was macht das schon für einen "
-"Unterschied?"
-
-msgid "No, I guess not."
-msgstr "Nein, ich denke nicht."
-
-msgid ""
-"Once he chose this unlife for himself and his soldiers, he forfeited any "
-"claim to our compassion. Does it even matter who he was?"
-msgstr ""
-"Als er dieses Leben im Tode für sich und seine Soldaten wählte, verwirkte er "
-"jedwedes Recht auf Barmherzigkeit. Spielt es da noch eine Rolle wer er war?"
-
-msgid "Hearing the crack of his bones was satisfying."
-msgstr "Das Knacken seiner Knochen zu hören war befriedigend."
-
-msgid ""
-"Probably some angst-ridden mage that could not make it at that magic academy "
-"those humans have. And when he did dark magic and got outlawed from Wesnoth, "
-"he came to hide in these caves."
-msgstr ""
-"Vermutlich irgendein angstgetriebener Magier, der es nicht in die Akademie "
-"der Magier geschafft hat, wie es diese Menschen taten. Und als er anfing, "
-"schwarze Magie zu praktizieren und aus Wesnoth getrieben wurde, kam er wohl "
-"hier her und versteckte sich in diesen Höhlen."
-
-#| msgid "I guess we'll never know for sure."
-msgid "I guess we'll never know for sure."
-msgstr "Ich vermute wir werden uns nie sicher sein können."
-
-msgid "Finally, my father and my people are avenged!"
-msgstr "Endlich sind mein Vater und mein Volk gerecht!"
-
-msgid "Who cares!"
-msgstr "Wenn kümmert es!"
-
-msgid ""
-"Despite his increased magical powers, Malin holds on to his short sword as "
-"his melee weapon of choice."
-msgstr ""
-"Trotz seiner verbesserten Fähigkeiten im Umgang mit der Magie verlässt sich "
-"Malin im Nahkampf noch immer auf sein Schwert."
-
-msgid ""
-"On the frontiers of Wesnoth, all able-bodied men and women must be able to "
-"defend the town at need. While the men are most often trained in the use of "
-"sword or bow, the women learn the use of staff and sling. The most "
-"proficient are more than a match for any orcs foolish enough to engage them "
-"in combat."
-msgstr ""
-"An der Grenze von Wesnoth müssen alle körperlich tüchtigen Männer und Frauen "
-"die Stadt in der Not beschützen können. Während die Männer meist im Umgang "
-"mit Schwert und Bogen geübt sind, lernen die Frauen mit Stab und Schleuder "
-"umzugehen. Die Fähigsten unter ihnen sind einem Ork mehr als nur ebenbürtig."
-
-msgid ""
-"As dawn breaks, the city guards force their way into the manor and capture "
-"the two necromancers."
-msgstr ""
-"Bei Tagesanbruch, dringen die Stadtwachen in das Anwesen ein und nehmen die "
-"beiden Totenbeschwörer fest."
-
-msgid "short sword"
-msgstr "Kurzschwert"
-
-msgid "staff"
-msgstr "Stab"
-
-msgid "sling"
-msgstr "Schleuder"
-
-msgid "Any zombies out there?"
-msgstr "Irgendwelche Zombies hier?"
-
-msgid "Don’t say that!"
-msgstr "Sag es nicht!"
-
-msgid "What?"
-msgstr "Was?"
-
-msgid "That!"
-msgstr "Das!"
-
-msgid "The ‘zee’ word. Don’t say it!"
-msgstr "Das Wort, welches mit »Z« beginnt. Sag es nicht!"
-
-msgid "Why not?"
-msgstr "Warum nicht?"
-
-msgid "Because it’s ridiculous!"
-msgstr "Weil es lächerlich ist."
-
-msgid "Well... are there any?"
-msgstr "Gut... sind hier welche?"
-
-msgid "I don’t see any. Maybe it’s not as bad as all that."
-msgstr "Ich sehe keine. Vielleicht ist es gar nicht so schlimm."
-
-msgid "Door"
-msgstr "Tür"
-
-msgid "Time runs out"
-msgstr "Rundenlimit überschritten"
-
-#| msgid "Become a Lich"
-msgid "Become a Lich"
-msgstr "Werdet ein Lich"
-
-msgid "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
-msgstr "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
-
-msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
-msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!!"
-
-msgid "Ghast"
-msgstr "Grässlicher Alb"
-
-msgid ""
-"The ghast is a creature taken from humankind’s most primal nightmares. "
-"Unlike their lesser cousins, ghouls and necrophages, ghasts are not patient "
-"enough to wait for their victim to die from poison before consuming the "
-"body. They attack directly with their enormous mouths, trying to rip the "
-"flesh straight from their foes. Once their enemy is defeated, they eat the "
-"rest of the body, gaining strength in the process."
-msgstr ""
-"Der grässliche Alb ist eine Kreatur aus den ursprünglichsten Albträumen der "
-"Menschheit. Im Gegensatz zu ihren kleineren Verwandten wie den Ghulen, "
-"warten sie nicht erst darauf, dass ihre Opfer an den Folgen von Gift "
-"sterben, sondern versuchen sie schon bei lebendigem Leibe mit ihren riesigen "
-"Mäulern aufzufressen. Das Auffressen ihrer Feinde nach deren Ableben stärkt "
-"diese Kreatur."
-
-msgid "bite"
-msgstr "Biss"
-
-msgid "Giant Rat"
-msgstr "Riesenratte"
-
-msgid ""
-"Given an adequate supply of food, some rats can grow to truly impressive "
-"sizes. They can also grow quite aggressive."
-msgstr ""
-"Ein entsprechendes Nahrungsangebot vorrausgesetzt, können einige Ratten "
-"wahrhaft riesig werden. Sie können auch ziemlich angriffslustig werden."
-
-msgid ""
-"Begone, now. I’ve no wish to be forced to send the soldiers after you. Your "
-"father would turn in his grave did he see the end to which you’ve come."
-msgstr ""
-"Verschwindet jetzt! Ich wünsche nicht, Soldaten nach euch zu schicken. Euer "
-"Vater würde sich im Grabe umdrehen, wüsste er was aus euch geworden ist."
-
-msgid "Make Into a Lich"
-msgstr "Werdet ein Lich"
-
-msgid "I guess we’ll never know for sure."
-msgstr "Ich vermute wir werden uns nie sicher sein können."
-
-msgid ""
-"It sickens me to be of the same blood as a necromancer. Father would turn in "
-"his grave if he could see what you’ve become. Just leave."
-msgstr ""
-"Ich ertrage es nicht, einen Nekromanten als Bruder zu haben. Vater würde "
-"sich im Grabe umdrehen, wenn er dich so sehen würde. Geh einfach. "
-"Verschwinde."
-
-msgid ""
-"Yes! These vile creatures have ruined our lives in more ways than I can "
-"name. It is time someone did the same to them. They deserve to suffer for "
-"what they have done to us."
-msgstr ""
-"Ja! Diese abscheulichen Kreaturen haben unser Leben in so vieler Hinsicht "
-"ruiniert! Wird Zeit, dass jemand etwas gegen sie unternimmt. Für das, was "
-"sie uns angetan haben, verdienen sie Leid."
-
-msgid ""
-"They should be grateful. Imagine. No need to rebuild our homes year after "
-"year. No more needless deaths, no more senseless bloodshed, no more fear..."
-msgstr ""
-"Sie sollten dankbar sein. Wenn man mal so darüber nachdenkt… wir müssten "
-"nicht mehr unsere Heimat jedes Jahr aufs neue wieder aufbauen. Und hätten "
-"weniger sinnlose Tote. Kein Blutvergießen mehr, kein Leben in Angst."
-
-msgid ""
-"Rail tracks and mines... dwarves used to live here, but there do not seem to "
-"be any guards. I wonder where they went?"
-msgstr ""
-"Schienen für Loren und Mienen… hier müssen Zwerge gelebt haben, aber ich "
-"sehe nirgends Wachen. Ich frage mich, warum sie nicht mehr hier sind."
-
-msgid "The Whitefang orcs... so that is their name."
-msgstr "Die »Reißzahn«-Orks also … das ist also ihr Name."
-
-msgid ""
-"To reach them, we must first destroy the orcs who block our way out of this "
-"mountain pass. Then, we can move on to our main target."
-msgstr ""
-"Um sie zu erreichen, müssen wir uns erst unseren Weg durch diesen "
-"Gebirgspass kämpfen. Dann können wir unser eigentliches Ziel angreifen."
-
-msgid ""
-"I have anticipated this day for a long time. At last, we shall have revenge."
-msgstr ""
-"Ich habe lange auf diesen Tag gewartet. Endlich werde ich meine Rache haben."
-
-msgid "It’s time to hunt down the Whitefangs."
-msgstr "Wird Zeit diese »Reißzähne« zu erledigen."
-
-msgid ""
-"Death is only the beginning for you. After this battle, you can be sure that "
-"I will make you into my thrall. And now for the last one—"
-msgstr ""
-"Der Tod war erst der Anfang. Nach diesem Kampf wirst du einer meiner "
-"Untergeben werden. Und was den verbleibenden Häuptling anbetrifft–"
-
-msgid ""
-"You chose the path of darkness on your own. We will not be dragged into it "
-"with you."
-msgstr ""
-"Du hast den Pfad der Dunkelheit selbst gewählt. Wir wollen damit nichts zu "
-"tun haben."
-
-msgid "If you continue to be stubborn, we will attack you. It is your choice."
-msgstr ""
-"Wenn Ihr weiterhin so stur seid, werden wir Euch angreifen. Es ist Eure Wahl."
-
-msgid ""
-"So, Malin, you have even begun to corrupt our people with your sorcerous "
-"ways. Even I did not expect you to stoop low enough to kidnap the villagers "
-"and make them into your pawns!"
-msgstr ""
-"Oh, oh, Malin, Ihr habt sogar Menschen korrumpiert? Das geht über meine "
-"kühnsten Erwartungen hinaus…"
-
-msgid ""
-"I joined Malin of my own free will! You fools simply do not understand the "
-"power that necromancy holds."
-msgstr ""
-"Ich bin Malin aus freiem Willen beigetreten. Ihr Narren versteht einfach "
-"nicht die Kraft, die Totenbeschwörung bietet."
-
-msgid ""
-"female^I joined Malin of my own free will! You fools simply do not "
-"understand the power that necromancy holds."
-msgstr ""
-"Ich bin Malin aus freiem Willen beigetreten. Ihr Narren versteht einfach "
-"nicht die Kraft, die Totenbeschwörung bietet."
-
-msgid ""
-"I understand it well enough to know that it makes all who embrace it evil."
-msgstr ""
-"Ich verstehe sie wohl genug, um zu wissen, dass alle, die damit "
-"experimentieren, böse werden."
-
-msgid ""
-"There is no point in arguing with one so obstinate. We can only show Drogan "
-"the error of his ways through force."
-msgstr ""
-"Es macht keinen Sinn, mit so einem Dickkopf zu diskutieren. Drogan versteht "
-"nur die Sprache der Gewalt."
-
-msgid ""
-"Malin! First you abandon us to the orcs on your mad quest for necromancy, "
-"then you heartlessly murder Drogan, and now... now you even kidnap the "
-"villagers and corrupt them with your sorcery! How low have you fallen?"
-msgstr ""
-"Malin! Erst hinterlässt du uns den Orks auf deiner Suche nach Nekromantie, "
-"dann ermordest du herzlos Drogan, und was seh ich da … du kidnappst die "
-"Dorfbewohner und lässt sie nach deiner Pfeife tanzen. Wie tief kann man "
-"eigentlich fallen?"
-
-msgid ""
-"I joined Malin of my own free will! The orcs would have overrun you if not "
-"for Malin’s powers!"
-msgstr ""
-"Ich bin Malin aus freien Stücken beigetreten. Wäre Malin euch nicht zu Hilfe "
-"gekommen, hätten euch dir Orks überrannt!"
-
-msgid ""
-"female^I joined Malin of my own free will! The orcs would have overrun you "
-"if not for Malin’s powers!"
-msgstr ""
-"Ich bin Malin aus freien Stücken beigetreten. Wäre Malin euch nicht zu Hilfe "
-"gekommen, hätten euch dir Orks überrannt!"
-
-msgid ""
-"You necromancers defile the bodies of the dead and slaughter the innocent "
-"for your sick perversions. Do you not see the depravity that you have "
-"become, Malin?"
-msgstr ""
-"Ihr Totenbeschwörer entweiht die Körper der Toten und schlachtet die "
-"Unschuldigen für eure verrückten Machenschaften. Siehst du nicht diese "
-"Verdorbenheit die dir innewohnt, Malin?"
-
-msgid ""
-"Malin, in truth, I do not want to fight you as one of my former friends. "
-"Leave Parthyn. I will not ask you again."
-msgstr ""
-"Malin, in aller Ehrlichkeit, Ich möchte Euch als einen ehemaligen Freund "
-"nicht bekämpfen. Verlasst Parthyn. Ich werde Euch nicht noch einmal "
-"auffordern."
-
-msgid ""
-"More orcs, and powerful ones at that! Alas, it will be impossible for me to "
-"outrun their riders..."
-msgstr ""
-"Noch mehr Orks, und mächtige diesmal. Ich werde ihren Reitern niemals "
-"entkommen können…"
-
-msgid "Cease your prattle, you decrepit old man."
-msgstr "Lass das Geschwafel, altersschwacher Mann."
-
-msgid "... have I really just been a pawn all this time?"
-msgstr "… war ich die ganze Zeit über wirklich nur eine Schachfigur?"
-
-msgid ""
-"Did you not think I would keep my word? Attack him, men! Do not let the "
-"traitor escape!"
-msgstr ""
-"Hast du gedacht, ich würde mein Wort nicht halten? Angriff, Männer. Lasst "
-"diesen Verräter nicht entkommen!"
-
-msgid ""
-"Stepping on runes provides Malin with a temporary buff. He loses any "
-"additional abilities he obtains if he steps off of the corresponding "
-"runestone."
-msgstr ""
-"Auf eine Rune zu steigen gibt Malin einen kurzfristigen Bonus. Wenn er den "
-"Runenstein verlässt, verliert er wieder alle zusätzlichen Fähigkeiten."
-
-msgid ""
-"To turn a necromancer into a lich, right-click on it while it is in a castle."
-msgstr ""
-"Um einen Totenbeschwörer in einen Lich zu verwandeln, rechtsklickt ihn, "
-"während er sich in einem Schloss befindet."
-
-msgid "Transform into a lich"
-msgstr "In einen Lich verwandeln"
-
-msgid "You can only do this in a castle."
-msgstr "Ihr könnte dies nur in einer Burg machen."
-
-msgid ""
-"Mal Keshar has had time to study the book, learning how his apprentices can "
-"become liches with less reliance on luck than Malin’s own transformation."
-msgstr ""
-"Mal Keshar hatte Zeit, das Buch ausgiebig zu studieren. Dabei lernte er, wie "
-"seien Untergeben ebenfalls zu Lichs verwandelt werden können, ohne allzu "
-"sehr auf das Glück vertrauen zu müssen, wie es bei Malins eigener "
-"Transformation der Fall war."
-
-msgid "Lich"
-msgstr "Lich"
+#~ msgid ""
+#~ "Fear is the path to the dark side. Fear leads to anger. Anger leads to "
+#~ "hate. Hate leads to suffering."
+#~ msgstr ""
+#~ "Furcht ist der Pfad zur dunklen Seite. Furcht führt zu Wut, Wut führt zu "
+#~ "Hass, Hass führt zu unsäglichem Leid."
+
+#~ msgid "Enemy units have reduced vision (radius 3)."
+#~ msgstr "Der Sichtweite der Feinde ist begrenzt (Radius 3)."
+
+#~ msgid "The only thing we have to fear is fear itself."
+#~ msgstr "Das Einzige, was wir fürchten müssen, ist die Furcht selbst."
+
+#~ msgid "<i>... nameless, unreasoning, unjustified terror...</i>"
+#~ msgstr "<i>…namenloser, ungerechter, unberechtigter Terror…</i>"
+
+#~ msgid ""
+#~ "Such an old, worn book. It does not seem like much, but at least we’ve "
+#~ "got it now."
+#~ msgstr ""
+#~ "So ein altes, abgenutztes Buch. Sieht nicht sehr wertvoll aus, aber "
+#~ "zumindest haben wir es."
+
+#~ msgid "Dialogue Comments and Revisions"
+#~ msgstr "Dialoganpassungen"
+
+#~ msgid "Difficult"
+#~ msgstr "Schwierig"
+
+#~ msgid ""
+#~ "You say it will ensure our survival, but at what price? Defiling the "
+#~ "bodies of our dead? Your soul, sold to black magic?"
+#~ msgstr ""
+#~ "Ihr wollt unser Überleben sichern, aber zu welchem Preis? Die Körper "
+#~ "unserer Toten zu schänden? Eure Seele, habt Ihr vor sie an an schwarze "
+#~ "Magie zu verkaufen?"
+
+#~ msgid ""
+#~ "Perhaps removing the threat of orcish raids will persuade the people of "
+#~ "Parthyn to welcome you home."
+#~ msgstr ""
+#~ "Und wer weiß, vielleicht würde die Vernichtung dieser Gefahr die Menschen "
+#~ "von Parthyn überzeugen… dich wieder daheim willkommen zu heißen.."
+
+#~ msgid "The goblin knight is dead, master."
+#~ msgstr "Der Koboldritter ist tot, Meister."
+
+#~ msgid "Excellent. I’m eager to move on to some real foes."
+#~ msgstr ""
+#~ "Großartig. Ich kann es kaum erwarten, es endlich mit den wahren Gegnern "
+#~ "aufzunehmen."
+
+#~ msgid "This cave is infested with giant scorpions!"
+#~ msgstr "Hier leben riesige Skorpione!"
+
+#~ msgid ""
+#~ "Annoying pests, no more than that. Killing them, however, may provide "
+#~ "some useful experience to your skeletons."
+#~ msgstr ""
+#~ "Eine nervende Plage, mehr nicht. Wenn deine Skelette sie töten, sind die "
+#~ "vielleicht nützlich gut genug, um ihnen ein bisschen Kampferfahrung zu "
+#~ "verschaffen. "
+
+#~ msgid "Hssss, I ssspy human vermin... I mussst kill."
+#~ msgstr "Hssss, Ich sssehe menschlichesss Ungezzziefer… Ich töte sssie!"
+
+#~ msgid "We will ssslay him..."
+#~ msgstr "Wir zzzerhacken ihn…"
+
+#~ msgid "I do not think I will be the one dying here."
+#~ msgstr "Ich glaube nicht, dass ich hier derjenige bin, der stirbt."
+
+#~ msgid "Hsssss..."
+#~ msgstr "Hsssss…"
+
+#~ msgid "Evil... dark... magicssssss..."
+#~ msgstr "Bössse… schwarzzze… Magie…"
+
+#~ msgid ""
+#~ "Since you have mastered reanimating skeletons, I will now teach you to "
+#~ "control spirits. The souls of the recently deceased do not stray far from "
+#~ "their bodies. You should be able to sense them still."
+#~ msgstr ""
+#~ "Skelette kannst du schon beschwören. Jetzt zeige ich dir, wie du einen "
+#~ "Geist beherrschst. Seelen von gerade Verstorbenen irren immer in der Nähe "
+#~ "ihrer Körper herum. Du solltest in der Lage sein, sie zu spüren."
+
+#~ msgid "I feel them."
+#~ msgstr "Ich spüre sie."
+
+#~ msgid ""
+#~ "Controlling spirits can be somewhat hazardous even for experienced "
+#~ "necromancers. When imprisoning a soul, use all your might to retain "
+#~ "control over it. You must exert your will over its own, or the spirit "
+#~ "will break free and destroy you."
+#~ msgstr ""
+#~ "Gib Acht. Du musst all deine Kraft aufbringen, wenn du dich einer "
+#~ "gefallenen Seele bemächtigen willst. Andernfalls wird sie versuchen, "
+#~ "ihren Ketten zu entfliehen und dich zu zerstören."
+
+#~ msgid "I... I will do my best."
+#~ msgstr "Ich… Ich versuche es."
+
+#~ msgid ""
+#~ "You blithering fool! How did you let your will be overcome by a half-"
+#~ "sentient creature that can hardly come up with a single coherent "
+#~ "sentence?! Let your will slip further and you shall join other young "
+#~ "necromancers who have died at the hands of their own servants."
+#~ msgstr ""
+#~ "Du geschwätziger Narr! Wie konntest du von von einer nicht ganz "
+#~ "existierenden Kreatur besiegt werden, die kaum einen zusammenhängenden "
+#~ "Satz hervorbringen kann?! Mach diesen Fehler öfter, und du kannst dich zu "
+#~ "den unzähligen jungen Nekromanten zählen, die durch die Hand ihrer "
+#~ "eigenen Diener gestorben sind!"
+
+#~ msgid ""
+#~ "My will is strong, but he still does not return to me. What should I do?"
+#~ msgstr ""
+#~ "Mein Wille ist stark, aber der Geist folgt mir nicht mehr. Was soll ich "
+#~ "tun?"
+
+#~ msgid ""
+#~ "Subdue the rebel! When you have sapped it of its energies, exert your "
+#~ "power over it and do not lose focus."
+#~ msgstr ""
+#~ "Vernichte den Rebell! Wenn du seine Energie verringert hast, nutze deine "
+#~ "Macht über ihn und verliere den Fokus nicht."
+
+#~ msgid "Seize control back while it is weakened!"
+#~ msgstr "Bekomme die Kontrolle zurück, solange der Geist geschwächt ist!"
+
+#~ msgid ""
+#~ "I think I’ve got it under control again. That was a close call. Let me "
+#~ "try the other one now."
+#~ msgstr ""
+#~ "Ich glaube, ich habe wieder alles unter Kontrolle. Das war knapp. Ich "
+#~ "werde es nochmal versuchen."
+
+#~ msgid "No mishaps this time, but you will need to practice more."
+#~ msgstr "Kein Fehler dieses mal, aber du musst trotzdem mehr üben."
+
+#~ msgid "Trolls! I suppose I should have expected this."
+#~ msgstr "Trolle! Ich denke, das hätte ich erwarten sollen."
+
+#~ msgid ""
+#~ "Threats to your skeletons, but no more than fodder for your ghosts. "
+#~ "Eliminate them all."
+#~ msgstr ""
+#~ "Trolle werden deine Skelette einfach zerschmettern, aber deine Geister "
+#~ "werden sie besiegen können. Vernichte sie alle."
+
+#~ msgid ""
+#~ "<i>If I act quickly, I can enslave another ghost to help me fight off the "
+#~ "rest of these trolls.</i>"
+#~ msgstr ""
+#~ "<i>Wenn ich mich beeile, kann ich noch einen Geist erschaffen, um den "
+#~ "Rest der Trolle zu vernichten.</i>"
+
+#~ msgid "<i>The boy learns quickly. He should be of great use after all.</i>"
+#~ msgstr ""
+#~ "<i>Der Junge lernt sehr schnell. Er kann nach wie vor von großem Nutzen "
+#~ "sein.</i>"
+
+#~ msgid "Outset of Vengeance"
+#~ msgstr "Beginn der Rache"
+
+#~ msgid "Orc War"
+#~ msgstr "Krieg gegen die Orks"
+
+#~ msgid ""
+#~ "Word spreads to the south as well when the ever present raids are "
+#~ "suddenly absent this year. The people at the frontier towns go about "
+#~ "their days, gossiping about rumors of the undead, some with disgust, some "
+#~ "with intrigue. When winter passes and spring comes again, a number of "
+#~ "dark adepts travel northward and join the pair of necromancers. <i>“They "
+#~ "can be quite useful,”</i> Darken Volk says to Malin, <i>“but none of them "
+#~ "have even a tenth of your potential power.”</i>"
+#~ msgstr ""
+#~ "Es sprach sich bis in den Süden herum, dass die üblichen Angriffe der "
+#~ "Orks ausblieben. Gerüchte von Untoten, die die Orks bekämpfen, machten "
+#~ "die Runde. Zu Beginn des Frühlings trafen die Nekromanten deshalb immer "
+#~ "wieder auf dunkle Adepten, die gen Norden reisten, um sich ihnen "
+#~ "anzuschließen. <i>»Sie sind sehr nützlich im Kampf,«</i> sagte Darken "
+#~ "Volk zu Malin, <i>»aber keiner unter ihnen hat auch nur ein Zehntel "
+#~ "deines Potenzials.«</i>"
+
+#~ msgid ""
+#~ "Even with my new powers, I cannot fight the entire town as well as the "
+#~ "orcs. I must flee to the west to find Darken Volk!"
+#~ msgstr ""
+#~ "Selbst mit meinen neuen Kräften kann ich nicht die gesamte Stadt und die "
+#~ "Orks bekämpfen. Ich muss gen Westen fliehen und Darken Volk finden!"
+
+#~ msgid ""
+#~ "Even with my new powers, I cannot fight the entire town on my own. I must "
+#~ "flee to the west to find Darken Volk!"
+#~ msgstr ""
+#~ "Selbst mit meinen neuen Kräften kann ich nicht die gesamte Stadt "
+#~ "bekämpfen. Ich muss gen Westen fliehen und Darken Volk finden!"
+
+#~ msgid "This scenario takes place entirely at night."
+#~ msgstr "Dieses Szenario findet vollständig bei Nacht statt."
+
+#~ msgid "What was that?!"
+#~ msgstr "Was war das?!"
+
+#~ msgid ""
+#~ "That was the impact of what is known as holy water among commoners. It is "
+#~ "brewed in a complicated procedure only known to a few priests. As you "
+#~ "might imagine, it is quite effective against undead."
+#~ msgstr ""
+#~ "Das war die Wirkung dessen, was dem gemeinen Volk als Heiliges Wasser "
+#~ "bekannt ist. Nur wenige Priester kennen die mysteriöse und komplizierte "
+#~ "Prozedur, um es herzustellen. Es ist ein hervorragendes Mittel im Kampf "
+#~ "gegen wiederbelebte Wesen."
+
+#~ msgid ""
+#~ "Learn the dark arts of necromancy in order to save your people from an "
+#~ "orcish incursion.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Lernt die dunkle Kunst der Totenbeschwörung, um Eure Heimat vor orkischen "
+#~ "Überfällen zu schützen.\n"
+#~ "\n"
+
+#~ msgid "Campaign Maintenance"
+#~ msgstr "Betreuung"
+
+#~ msgid ""
+#~ "When Malin was 10, a mage who passed through the town sensed strong "
+#~ "magical abilities in the boy. His parents, seeing a chance for him to "
+#~ "live away from the constant battles with the orcs, arranged for him to be "
+#~ "sent to the mage community on the Isle of Alduin. There he studied for "
+#~ "eight years, while back at home the orc raids increased in their "
+#~ "frequency and ferocity. Before Malin could finish his training, however, "
+#~ "he was expelled."
+#~ msgstr ""
+#~ "Als Malin 10 Jahre alt war, erkannte ein reisender Magier, den sein Weg "
+#~ "durch die Stadt führte, eine Befähigung für die Künste der Magie in dem "
+#~ "Jungen. Seine Eltern sahen die Möglichkeit, ihn fern des Kampfes "
+#~ "aufwachsen zu lassen und so schickten sie ihn auf die Insel Alduin, wo er "
+#~ "fortan die Geheimnisse über Zauberei und Magie erlernen sollte. Es war "
+#~ "ein friedlicher Ort und so vollkommen verschieden zu seiner Heimat, in "
+#~ "welcher, während der acht Jahre, in denen Malin seine Ausbildung zum "
+#~ "Magier genoss, die Orkangriffe immer häufiger und grausamer wurden. Bevor "
+#~ "er jedoch seine Ausbildung abschließen konnte, wurde er von der "
+#~ "Gemeinschaft der Magier verstoßen."
+
+#~ msgid ""
+#~ "Malin returned to Parthyn just as summer began only to encounter more "
+#~ "misfortune. Even as he arrived, an early, unexpected orc raid was being "
+#~ "conducted against Parthyn. Malin watched as his father took an arrow in "
+#~ "the chest and fell lifeless to the ground."
+#~ msgstr ""
+#~ "Malin erreichte zu Beginn des Sommers seine Heimat Parthyn, wo noch mehr "
+#~ "Unglück auf ihn wartete. Die Orks führten bereits jetzt einen ihrer "
+#~ "Raubzüge gegen die Stadt. Gerade als Malin den Truppen zu Hilfe eilen "
+#~ "wollte, musste er mit ansehen, wie sein Vater von einem Pfeil durchbohrt "
+#~ "wurde und daraufhin leblos zu Boden sackte."
+
+#~ msgid "Orcs break through the river fort defenses"
+#~ msgstr "Orks brechen durch die Befestigung am Fluss"
+
+#~ msgid "Several weeks pass..."
+#~ msgstr "Einige Wochen vergingen..."
+
+#~ msgid ""
+#~ "Although I dislike sending a raiding party out so early, they should "
+#~ "clear out the orc encampments and leave us a relatively quiet summer."
+#~ msgstr ""
+#~ "Auch wenn es riskant ist, einen Stoßtrupp so früh im Jahr loszuschicken, "
+#~ "so werden die Orks nicht auf einen Angriff ihrer Lager vorbereitet sein. "
+#~ "Auf das wir einen ruhigeren Sommer genießen können!"
+
+#~ msgid ""
+#~ "The raiding party returns, and the orcs flee in the face of a superior "
+#~ "force."
+#~ msgstr ""
+#~ "Der Stoßtrupp kehrt zurück und die Orks fliehen im Angesicht dieser "
+#~ "Übermacht."
+
+#~ msgid ""
+#~ "The mages taught me enough. You won’t truly banish me, will you, Drogan?"
+#~ msgstr ""
+#~ "Sie lehrten mich genug. Ihr werdet mich doch nicht wirklich verbannen, "
+#~ "Drogan?"
+
+#~| msgid ""
+#~| "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#~| "Your father would be ashamed to see the end to which you’ve come."
+#~ msgid ""
+#~ "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#~ "Your father would be ashamed to see the end to which you’ve come."
+#~ msgstr ""
+#~ "Verschwindet jetzt! Ich wünsche nicht, Soldaten nach euch zu schicken. "
+#~ "Euer Vater wäre beschämt zu sehen, was aus euch geworden ist."
+
+#~ msgid ""
+#~ "That was bravely done, lad, holding the orcs off by yourself. The mages "
+#~ "taught you well. But there is grave news from the village; your sister "
+#~ "Dela was wounded in the attack. Healers attend her, but she may not live "
+#~ "out the hour."
+#~ msgstr ""
+#~ "Das war sehr mutig von euch, die Orks ganz alleine aufzuhalten, Jüngling. "
+#~ "Die Magier lehrten euch gut. Doch es gibt eine schlimme Nachricht aus dem "
+#~ "Dorf: Eure Schwester Dela wurde bei dem Angriff verwundet. Unsere Heiler "
+#~ "versuchen ihr Bestmögliches, doch wird sie diese Stunde vielleicht nicht "
+#~ "überleben."
+
+#~ msgid ""
+#~ "Orcs. Foul, pestilent creatures. The wide green world would be a better "
+#~ "place with them all dead. Dead!"
+#~ msgstr ""
+#~ "Orks. Schmutzige, verderbliche Kreaturen. Die weite grüne Welt wäre so "
+#~ "viel besser, wären sie alle tot! Tot!"
+
+#~ msgid ""
+#~ "Perhaps, but if kings and great mages have not abolished them neither you "
+#~ "nor I are ever likely to."
+#~ msgstr ""
+#~ "Möglicherweise. Doch wenn weder Könige noch große Magier sie je loswerden "
+#~ "konnten, so werde weder ich noch werdet ihr jemals dazu imstande sein."
+
+#~ msgid ""
+#~ "Perhaps I cannot kill them all... but I see the back-trail of this band "
+#~ "we defeated, and there will be more orcs at the other end of it. I shall "
+#~ "pursue them."
+#~ msgstr ""
+#~ "Vielleicht vermag ich nicht sie alle zu töten... doch sehe ich die Spuren "
+#~ "der Truppe, die wir bereits besiegten und es werden mehr Orks am Ende "
+#~ "dieser Spuren sein. Ich werde sie verfolgen."
+
+#~ msgid "And leave your sister?"
+#~ msgstr "Und eure Schwester zurücklassen?"
+
+#~ msgid "My hands were never apt for healing. But revenge I can give her."
+#~ msgstr ""
+#~ "Meine Hände waren nie geeignet zum Heilen. Doch Rache kann ich für sie "
+#~ "üben."
+
+#~ msgid ""
+#~ "No! We need every man who can fight here, not lost in doomed attempt to "
+#~ "harry the orcs in their own country!"
+#~ msgstr ""
+#~ "Nein! Wir brauchen jeden fähigen Kämpfer hier, nicht verloren in einem "
+#~ "dem Untergang geweihten Versuch, die Orks in ihrem eigenen Land zu "
+#~ "bekämpfen."
+
+#~ msgid "I am resolved."
+#~ msgstr "Meine Entscheidung steht fest."
+
+#~ msgid ""
+#~ "You’ll go without my blessing or my men, then. I won’t spare any on such "
+#~ "an errand."
+#~ msgstr ""
+#~ "So geht ihr ohne meinen Segen oder meine Männer. Ich habe für ein solches "
+#~ "Vorhaben nichts übrig."
+
+#~ msgid "Yes! I thirst for revenge on those creatures!"
+#~ msgstr "Ja! Es dürstet mich nach Rache an diesen Kreaturen!"
+
+#~ msgid ""
+#~ "Perhaps. Even Drogan would have to be thankful for a summer without orc "
+#~ "raids."
+#~ msgstr "Vielleicht. Selbst Drogan wäre für einen Sommer ohne Orks dankbar."
+
+#~ msgid ""
+#~ "In their present form they can best serve the greater good. Even now they "
+#~ "will aid you in defeating this goblin rabble. Besides, as I said, these "
+#~ "were men of great evil. No punishment is too great for their kind."
+#~ msgstr ""
+#~ "In ihrer jetzigen Gestalt können sie dem größeren Wohl dienen. Sogar "
+#~ "jetzt werden sie dir helfen, dieses Koboldgesindel zu unterwerfen. Wie "
+#~ "ich bereits sagte, waren diese Wesen große Übeltäter. Keine Bestrafung "
+#~ "ist für ihresgleichen zu grausam."
+
+#~ msgid ""
+#~ "Your training is just beginning, Malin. With the souls from these goblins "
+#~ "now available for our use, you will see your forces grow quickly."
+#~ msgstr ""
+#~ "Deine Ausbildung hat gerade erst begonnen, Malin. Mit den Seelen dieser "
+#~ "Kobolde zur freien Verfügung, werden deine Kräfte schnell anwachsen."
+
+#~ msgid "Dap Horner"
+#~ msgstr "Dap Horner"
+
+#~ msgid "Gorak Cole"
+#~ msgstr "Gorak Cole"
+
+#~ msgid "Free Undead"
+#~ msgstr "Befreie Untote"
+
+#~ msgid "Clear the cave of enemies"
+#~ msgstr "Befreit die Höhle von Feinden"
+
+#~ msgid ""
+#~ "Winter comes on fast, and we need a sheltered place to spend it. This "
+#~ "cave looks promising, but from the tracks in and out several bands of "
+#~ "outlaws already inhabit it. You should clear them out so we may use it "
+#~ "safely."
+#~ msgstr ""
+#~ "Der Winter bricht bald herein und wir brauchen dringend einen geschützten "
+#~ "Ort, um ihn zu überdauern. Diese Höhle sieht viel versprechend aus, aber "
+#~ "den Spuren nach zu urteilen, wird sie von einigen Räubern bewohnt. Wir "
+#~ "werden sie wohl hinauswerfen müssen, wenn wir den Winter überstehen "
+#~ "wollen."
+
+#~ msgid ""
+#~ "Dwarves! They have often been our allies against the orc hordes. Surely "
+#~ "they will allow us to winter with them."
+#~ msgstr ""
+#~ "Zwerge! Sie sind schon oft unsere Verbündeten gegen die Orks gewesen. Sie "
+#~ "werden uns sicherlich erlauben, hier zu überwintern."
+
+#~ msgid ""
+#~ "Two necromancers are at the cave entrance! Up yer axes, boys, if ye "
+#~ "dinna’ want tae be a walking pile o’ bones."
+#~ msgstr ""
+#~ "Zwei Totenbeschwörer sind am Höhleneingang. Holt eure Äxte, wenn ihr kein "
+#~ "laufender Haufen von Knochen werden wollt!"
+
+#~ msgid "Or not. Why do they hate us so much?"
+#~ msgstr "Oder nicht. Warum hassen sie uns so sehr?"
+
+#~ msgid ""
+#~ "People fear that which they don’t understand, and death, after all, is "
+#~ "the greatest mystery. Those who dare to investigate that mystery are "
+#~ "bound to invoke fear and distrust. Worry not, your people will again warm "
+#~ "to you once you deal with the orc threat at its source. For now, the cave-"
+#~ "dwellers give us no choice."
+#~ msgstr ""
+#~ "Die Leute haben Angst vor dem, was sie nicht verstehen. Und der Tod ist "
+#~ "noch immer das größte Mysterium. Jene, die es wagen, den Tod zu "
+#~ "erforschen, werden immer Furcht und Misstrauen hervorrufen. Aber sorge "
+#~ "dich nicht. Sie werden dir wieder freundlich gesonnen sein, sobald die "
+#~ "Gefahr durch die Orks gebannt ist. Heute allerdings lassen uns die "
+#~ "Höhlenbewohner keine andere Möglichkeit."
+
+#~ msgid "Tortured Soul"
+#~ msgstr "Gequälte Seele"
+
+#~ msgid ""
+#~ "Free! Your foul spells cannot enslave me any longer, Malin the Damned. "
+#~ "You shall pay for keeping me from my final rest!"
+#~ msgstr ""
+#~ "Endlich frei! Eure böse Magie kann mich nicht länger versklaven, Malin, "
+#~ "Verfluchter. Nun sollt ihr dafür bezahlen, mich von meiner letzten Ruhe "
+#~ "abzuhalten!"
+
+#~ msgid ""
+#~ "Fool boy! Your will must be stronger or you will never be able to control "
+#~ "your soldiers well enough to face the orcs. Many are the young "
+#~ "necromancers who have died when their servants turned on them. He will "
+#~ "attack you relentlessly."
+#~ msgstr ""
+#~ "Dummer Narr! Dein Wille muss stärker sein oder du wirst deine Soldaten "
+#~ "niemals gegen die Orks führen. Viele der jungen Totenbeschwörer starben "
+#~ "bereits, als sich ihre Diener gegen sie wandten. Er wird dich "
+#~ "unaufhörlich angreifen."
+
+#~ msgid "But why are they attacking me? And what should I do?!"
+#~ msgstr "Aber warum greifen sie mich an? Was soll ich tun?!"
+
+#~ msgid ""
+#~ "Destroy the rebel quickly and all will be well. Wait, and he will begin "
+#~ "to turn the rest of your forces against you."
+#~ msgstr ""
+#~ "Vernichte den Rebellen und alles wird gut sein. Warte und er wird auch "
+#~ "die anderen deiner Streitmacht gegen dich aufbringen."
+
+#~ msgid "Beginning of the Revenge"
+#~ msgstr "Beginn der Rache"
+
+#~ msgid ""
+#~ "Burning inside with a desire to take his revenge against the orcs and "
+#~ "push them further north, Malin spends the winter learning as much from "
+#~ "Darken Volk as he can. His years of study with the mages serve him well, "
+#~ "and his power grows quickly."
+#~ msgstr ""
+#~ "Mit dem brennenden Wunsch, Rache an den Orks zu nehmen und sie weiter in "
+#~ "den Norden zurückzudrängen, verbrachte Malin den Winter damit, so viel "
+#~ "von Darken Volk zu lernen, wie es nur möglich war. Die Zeit auf Alduin "
+#~ "machte sich bezahlt und so wuchs seine Kraft rasch an."
+
+#~ msgid ""
+#~ "Orcs block the way out of the mountain pass. Destroy them, and we will "
+#~ "move on to bigger targets."
+#~ msgstr ""
+#~ "Orks blockieren den Weg durch diesen Pass. Töte sie und wir können schon "
+#~ "bald zu größeren Zielen übergehen."
+
+#~ msgid ""
+#~ "With the might of the undead at my command, many orcs will die this day. "
+#~ "They shall pay for attacking Parthyn."
+#~ msgstr ""
+#~ "Mit der Macht über die Untoten zu meinem Befehl sollen viele Orks heute "
+#~ "ihr Leben lassen. Sie werden für den Angriff auf Parthyn bezahlen!"
+
+#~ msgid ""
+#~ "Coward, yes. You must hunt him down before he can take word to the orcish "
+#~ "council. A single chieftain, even after he gathers the survivors from "
+#~ "this battle, should pose no problem for you, even on your own."
+#~ msgstr ""
+#~ "Feigling, ja. Du musst ihm folgen und ihn töten, bevor er dem Rat der "
+#~ "Orks Bericht erstatten kann. Ein einzelner Häuptling sollte auch mit den "
+#~ "Überlebenden aus diesem Kampf kein Problem für dich darstellen, selbst "
+#~ "wenn du ganz auf dich allein gestellt bist."
+
+#~ msgid "On my own? Is my apprenticeship over?"
+#~ msgstr "Alleine? Ist meine Ausbildung nun abgeschlossen?"
+
+#~ msgid ""
+#~ "... Almost. The growth of your power has been truly impressive to watch. "
+#~ "There is, however, a small favor I will ask of you. That will constitute "
+#~ "the last part of your training. Now there are merely some... tasks... to "
+#~ "which I must attend. They need not concern you. I will meet up with you "
+#~ "to the west in a few weeks. In the meantime, do not let the last "
+#~ "chieftain escape justice."
+#~ msgstr ""
+#~ "... Fast. Das Wachstum deiner Kräfte ist wahrhaft beeindruckend. Es gibt "
+#~ "da noch eine kleine Gefälligkeit, um die ich dich bitten möchte. Dies "
+#~ "wird den letzten Teil deiner Ausbildung ausmachen. Ich muss mich nun um "
+#~ "einige andere... Dinge... kümmern. Es ist nichts von Belang. In einigen "
+#~ "Wochen werden wir uns im Westen wiedersehen. In der Zwischenzeit sollte "
+#~ "dem Häuptling seine Bestimmung zuteil werden."
+
+#~ msgid ""
+#~ "Two days travel south of the previous battle, Malin loses the trail of "
+#~ "the regrouped orcish warriors, but soon picks it up again. The trail "
+#~ "moves unfailingly south for several days. As soon as it crosses the Great "
+#~ "River it immediately turns west."
+#~ msgstr ""
+#~ "Zwei Tagesreisen südlich der Schlacht verlor sich die Spur der "
+#~ "neuversammelten Orkkrieger zunächst, doch konnte sie Malin schnell wieder "
+#~ "finden. Die Orks waren einige Tage stur nach Süden marschiert. Als die "
+#~ "Spur den großen Fluss überquerte, drehte sie plötzlich nach Westen."
+
+#~ msgid "Within a few days, Malin recognizes some familiar surroundings..."
+#~ msgstr ""
+#~ "Und schon wenige Tage später erkannte Malin die ihm so vertraute "
+#~ "Umgebung..."
+
+#~ msgid "I bring word of a great victory against the orcs, Drogan!"
+#~ msgstr ""
+#~ "Ich bringe Kunde von einem großen Sieg im Kampf gegen die Orks, Drogan!"
+
+#~ msgid ""
+#~ "I had hoped never to see you again, Malin. You have been banished, and "
+#~ "now return. You give me no choice but to order my soldiers to attack you."
+#~ msgstr ""
+#~ "Ich hoffte euch nie wieder zu sehen, Malin. Ihr wart verbannt und seid "
+#~ "dennoch zurückgekehrt. Mir bleibt keine Wahl, als meinen Soldaten zu "
+#~ "befehlen, euch anzugreifen."
+
+#~ msgid ""
+#~ "I have eliminated two orc chieftains! I doubt that we will see any orc "
+#~ "raids this summer. The beasts will be too busy trying to regroup."
+#~ msgstr ""
+#~ "Ich habe zwei Häuptlinge der Orks getötet. Ich glaube nicht, dass es "
+#~ "diesen Sommer irgendwelche Orkangriffe geben wird. Die Monster werden zu "
+#~ "sehr damit beschäftigt sein, sich neu zu sammeln."
+
+#~ msgid ""
+#~ "A spirit I raised with the arts taught to me by Darken Volk. With his "
+#~ "help, I have slain two orcish chieftains!"
+#~ msgstr ""
+#~ "Ein Geist, den ich mit den Künsten die mir Darken Volk beibrachte, "
+#~ "heraufbeschwor. Mit seiner Hilfe habe ich zwei Häuptlinge der Orks "
+#~ "besiegt!"
+
+#~ msgid ""
+#~ "You allowed yourself to be corrupted by the foul taint of the "
+#~ "necromancer? Better to face the orcish menace than even dabble in dark "
+#~ "magic! People would have rebuilt the town, just as they always have in "
+#~ "the past. Your father would be ashamed to see the end to which you’ve "
+#~ "come."
+#~ msgstr ""
+#~ "Ihr habt euch der verdorbenen Verlockung des Nekromanten anstecken "
+#~ "lassen? Selbst der orkischen Bedrohnis gegenüber zu stehen ist besser als "
+#~ "sich an schwarzer Magie zu versuchen! Wie schon in der Vergangenheit "
+#~ "hatten die Menschen die Stadt wieder aufgebaut. Unser Vater wäre beschämt "
+#~ "zu sehen, was aus euch geworden ist."
+
+#~ msgid ""
+#~ "I doubt that we will see any orc raids this summer. The beasts will be "
+#~ "too busy trying to regroup! Is this how you repay me?"
+#~ msgstr ""
+#~ "Ich habe zwei Häuptlinge der Orks getötet. Ich glaube nicht, dass es "
+#~ "diesen Sommer irgendwelche Orkangriffe geben wird. Die Monster werden zu "
+#~ "sehr damit beschäftigt sein, sich neu zu sammeln."
+
+#~ msgid ""
+#~ "I have been tracking that band since they fled the field at my great "
+#~ "victory! But how did they get north of the river? Let my forces be and I "
+#~ "will deal with them."
+#~ msgstr ""
+#~ "Ich habe diesen Trupp verfolgt, seitdem sie vom Schlachtfeld meines "
+#~ "großen Sieges flüchteten! Aber wie schafften sie es auf die Nordseite des "
+#~ "Flusses? Lasst mich gegen sie kämpfen."
+
+#~ msgid ""
+#~ "You have saved us the trouble of killing those worthless orcs ourselves; "
+#~ "for that I thank you. But you cannot return to Parthyn, Malin."
+#~ msgstr ""
+#~ "Ihr habt uns viel Ärger erspart, indem ihr diese wertlosen Orks tötetet, "
+#~ "dafür danke ich euch. Doch könnt Ihr nicht nach Parthyn zurückkehren, "
+#~ "Malin."
+
+#~ msgid ""
+#~ "What! You still do not trust my word? Well, perhaps you have lost sight "
+#~ "of the true threat. The orcs will not be gone forever, and without me, "
+#~ "how will the town stand? You jeopardize its very safety. Attack him!"
+#~ msgstr ""
+#~ "Was! Ihr vertraut meinen Worten immer noch nicht? Nun, möglicherweise "
+#~ "habt ihr die wahre Bedrohung aus den Augen verloren. Die Orks sind nicht "
+#~ "für immer fort, und wie soll die Stadt ohne mich standhalten? Ihr selbst "
+#~ "gefährdet ihre Sicherheit. Greift ihn an!"
+
+#~ msgid ""
+#~ "You will pay for Drogan’s death. Now that I have seen the true evil to "
+#~ "which you have come, I will commit every guardsman to your demise. It "
+#~ "pains me to think that you were once my brother."
+#~ msgstr ""
+#~ "Du wirst für den Tod Drogans bezahlen! Jetzt, da ich das wahre Böse sehe, "
+#~ "das aus dir geworden ist, werde ich jede Wache auf dich ansetzen. Es "
+#~ "schmerzt mich, dass es soweit kommen musste, Bruder."
+
+#~ msgid ""
+#~ "While our forces must stay here to fight off your pet orcs, when we are "
+#~ "done I shall come after you. You are my brother no longer."
+#~ msgstr ""
+#~ "Sobald wir deine orkischen Verbündeten besiegt haben, werde ich dich "
+#~ "jagen, Malin. Du bist nicht länger mein Bruder!"
+
+#~ msgid ""
+#~ "While our forces must stay here and make sure the orcs are routed, when "
+#~ "we are done I shall come after you. You are my brother no longer."
+#~ msgstr ""
+#~ "Sobald wir deine orkischen Verbündeten besiegt haben, werde ich dich "
+#~ "jagen, Malin. Du bist nicht länger mein Bruder."
+
+#~ msgid ""
+#~ "Gods of Darkness, how did it come to this? My own sister determined on my "
+#~ "death. Nothing has gone right since... since that day the fat toad "
+#~ "Zephrin mocked my up-country accent and I lost my temper and cursed him "
+#~ "with boils. <i>“A life curse goes beyond a joke,”</i> they said. <i>“Poor "
+#~ "judgment,”</i> they said, and expelled me from the Academy."
+#~ msgstr ""
+#~ "Götter der Dunkelheit! Wie konnte es nur so weit kommen? Meine eigene "
+#~ "Schwester will meinen Tod. Nichts lief wie es sollte seit... seit dem "
+#~ "Tage als diese fette Kröte Zephrin sich über meinen Akzent lustig machte, "
+#~ "ich die Beherrschung verlor und ihn mit Furunkeln verfluchte. <i>»Ein "
+#~ "lebenslanger Fluch geht weit über einen Scherz hinaus.«</i> sagten sie. "
+#~ "<i>»Schlechtes Urteil.«</i> sagten sie und verwiesen mich der Akademie."
+
+#~ msgid ""
+#~ "Fleeing from the city of his birth, Malin heads to the west. Soon he "
+#~ "reunites with his teacher."
+#~ msgstr ""
+#~ "Ein weiteres Mal floh Malin vom Ort seiner Geburt Richtung Westen. Schon "
+#~ "bald traf er auf seinen Lehrmeister."
+
+#~ msgid "Townperson"
+#~ msgstr "Stadtbewohner"
+
+#~ msgid ""
+#~ "Sir! Undead creatures are coming out of the forest! Wake the guard "
+#~ "immediately!"
+#~ msgstr ""
+#~ "Mein Herr! Untote Kreaturen kommen aus dem Wald! Alamiert die Wachen!"
+
+#~ msgid "What in the name of all demons of hell was this thing?"
+#~ msgstr "Was im Namen aller Dämonen der Hölle war das?"
+
+#~ msgid ""
+#~ "All of the training you gave me, that was just so I would help you get "
+#~ "that book! Return it to me now, or I will take it by force."
+#~ msgstr ""
+#~ "All das, was ihr mir beibrachtet, diente nur dazu, dieses Buch zu "
+#~ "erhalten? Gebt es jetzt zurück oder ich werde es mir mit Gewalt nehmen!"
+
+#~ msgid ""
+#~ "Your travels in this region have not gone unnoticed, foul necromancers! "
+#~ "We have been tracking you for weeks, with our purpose renewed this "
+#~ "morning upon hearing of the disaster you wreaked upon the goodly city of "
+#~ "Tath."
+#~ msgstr ""
+#~ "Eure Reisen in dieser Region sind nicht unbemerkt geblieben, unwürdiger "
+#~ "Totenbeschwörer! Wir folgen euch schon seit Wochen, in unseren Absichten "
+#~ "bestärkt, als wir von dem hörten, was ihr in der Stadt Tath angerichtet "
+#~ "habt."
+
+#~ msgid ""
+#~ "Do not even think of running away — my horsemen can easily catch you. "
+#~ "Yes, on this day you shall have to answer for your innumerable crimes."
+#~ msgstr ""
+#~ "Denkt nicht einmal daran, zu fliehen – meine Reiter werden euch mit "
+#~ "Leichtigkeit einholen. An diesem Tage nun sollt ihr für die unzählbaren "
+#~ "Verbrechen zur Rechenschaft gezogen werden."
+
+#~ msgid ""
+#~ "You wrong me, sister. I have only tried to help. Have you not seen fewer "
+#~ "orcs this past summer?"
+#~ msgstr ""
+#~ "Du tust mir Unrecht, Schwester. Ich habe nur versucht zu helfen. Hast du "
+#~ "vergangenen Sommer nicht weniger Orks gesehen?"
+
+#~ msgid "I will not listen to any more of your lies. Men, attack!"
+#~ msgstr "Ich ertrage nicht noch mehr deiner Lügen. Angriff, Männer!"
+
+#~ msgid ""
+#~ "The paladins will not be able to pursue me through the mountains, and "
+#~ "Dela will not dare take the soldiers too far from Parthyn."
+#~ msgstr ""
+#~ "Die Paladine werden mich nicht durch die Berge verfolgen können und Dela "
+#~ "wird es nicht wagen, ihre Soldaten zu weit von Parthyn zu entfernen."
+
+#~ msgid "Trolls"
+#~ msgstr "Trolle"
+
+#~ msgid "Dumdumbadoom"
+#~ msgstr "Dumdumbadoom"
+
+#~ msgid ""
+#~ "Yes... yes. The orcs are too strong for me now, but once I have undergone "
+#~ "the transformation they’ll begin to fall before me. And I will continue "
+#~ "to hound them until the last one falls!"
+#~ msgstr ""
+#~ "Ja... ja. Noch sind die Orks zu stark für mich, doch habe ich erst einmal "
+#~ "die Verwandlung hinter mir, werden sie kein Hindernis mehr darstellen. "
+#~ "Und ich werde sie so lange jagen, bis ich den letzten von ihnen "
+#~ "aufgespürt und getötet habe."
+
+#~ msgid ""
+#~ "With his last bits of strength, Malin assembles an altar as the book "
+#~ "instructs."
+#~ msgstr ""
+#~ "Mit letzter Kraft errichtet Malin wie im Buch beschrieben einen Altar."
+
+#~ msgid "I pray that I am strong enough to complete the spell."
+#~ msgstr "Ich bete, dass ich stark genug bin, den Zauber zu beenden."
+
+#~ msgid ""
+#~ "There, in along this old road, I sense a place worthy of being my home. "
+#~ "From there I will build my armies. But I am still too weak to clear the "
+#~ "vermin from it. I must finish regaining my strength."
+#~ msgstr ""
+#~ "Dort, entlang des alten Weges ist ein Platz, den ich zu meinem Heim "
+#~ "machen will. Von dort aus werde ich meine Armeen aussenden. Doch bin ich "
+#~ "noch zu schwach, es von denjenigen zu befreien, die es mit ihrer "
+#~ "Anwesenheit beschmutzen. Ich muss meine Kraft zurückerlangen."
+
+#~ msgid ""
+#~ "I will need a castle from which to call upon my soldiers. I sense one "
+#~ "nearby."
+#~ msgstr ""
+#~ "In der Nähe spüre ich eine Burg, von der aus ich meine Soldaten rufen "
+#~ "kann."
+
+#~ msgid "Yes, this will do until I can take my new home."
+#~ msgstr "Ja, das wird reichen, bis ich mir mein neues Heim erobert habe."
+
+#~ msgid "Clear your new home of trolls"
+#~ msgstr "Befreit Euer neues Heim von Trollen"
+
+#~ msgid ""
+#~ "Who has awoken me from my slumber? Undead? I shall not suffer the "
+#~ "existence of such foul creatures!"
+#~ msgstr ""
+#~ "Wer reißt mich aus meinem Schlaf? Untote? Ich werde die Existenz solch "
+#~ "übler Kreaturen nicht erdulden!"
+
+#~ msgid ""
+#~ "The only doom at hand is yours, if you do not leave now. Go back to your "
+#~ "manors and taverns, and do not trouble me further."
+#~ msgstr ""
+#~ "Der einzige, dessen Tage gezählt sind, seid ihr, solltet ihr nicht "
+#~ "verschwinden. Kehrt zurück zu euren Höfen und Schänken und plagt mich "
+#~ "nicht weiter."
+
+#~ msgid ""
+#~ "Your kind is an abomination. I am here to see that you inflict no more "
+#~ "harm on the spirits that have passed on."
+#~ msgstr ""
+#~ "Ihr seid eine abscheuliche Kreatur. Ich bin hier, um mich darum zu "
+#~ "kümmern, dass ihr den Geistern unserer Toten keinen Schaden mehr zufügen "
+#~ "könnt."
+
+#~ msgid ""
+#~ "Fool! By leaving your forests and coming into my domain, you have "
+#~ "sacrificed your own spirits."
+#~ msgstr ""
+#~ "Narr! Als ihr eure Wälder verlassen habt und in meine Gefilde "
+#~ "eingedrungen seid, habt ihr euer Todesurteil unterschrieben."
+
+#~ msgid ""
+#~ "I’ve been itching for a chance to break some bones with my hammer, and "
+#~ "now you’ve given me cause. Goodness knows you’ve got plenty of bones over "
+#~ "there."
+#~ msgstr ""
+#~ "Ich habe schon lange auf eine Gelegenheit gewartet, ein paar Knochen mit "
+#~ "meinem Hammer zu brechen. Für wahr, ihr habt viele Knochen zum "
+#~ "zerbrechen..."
+
+#~ msgid ""
+#~ "Go back to your tunnels and your mines, and do not trouble me unless you "
+#~ "want your hammers to work for me once you are dead."
+#~ msgstr ""
+#~ "Kehrt zurück in eure Tunnel und Minen und plagt mich nicht länger, wenn "
+#~ "ihr nicht wollt, dass eure Hämmer für mich arbeiten, wenn ihr in dieser "
+#~ "Schlacht gefallen seid."
+
+#~ msgid ""
+#~ "Hear that boys, he’s threatening us! It’s time he learned what real "
+#~ "dwarves are made of."
+#~ msgstr ""
+#~ "Hört ihr das, Männer. Er bedroht uns! Es wird Zeit, dass er lernt, woraus "
+#~ "echte Zwerge geschnitzt sind."
+
+#~ msgid ""
+#~ "So, I’ve finally found your lair, lich. You, who have been attacking the "
+#~ "orcs for years and have destroyed many of our tribes."
+#~ msgstr ""
+#~ "Endlich habe ich euer Versteck gefunden. Viele Jahre habt ihr die Orks "
+#~ "angegriffen und viele unserer Stämme vernichtet."
+
+#~ msgid ""
+#~ "Orcs? It is you who have forced me to choose the dark path, and it is you "
+#~ "who ended my mortal life and made me turn into a lich. I am actually "
+#~ "grateful to you for coming here, foolish hero. My hatred toward your race "
+#~ "makes me stronger and I again get a chance to kill orcs!"
+#~ msgstr ""
+#~ "Orks? Ihr wart es, die mich zwangen, diesen dunklen Pfad einzuschlagen. "
+#~ "Und ihr wart es auch, die mein sterbliches Leben beendeten und mich als "
+#~ "Lich wiederkehren ließen. Ich bin geradezu dankbar, dass ihr zu mir "
+#~ "gekommen seid, törichter Held. Mein Hass auf eure Rasse stärkt mich nur "
+#~ "und ich werde eine weitere Gelegenheit erhalten, Orks zu töten."
+
+#~ msgid ""
+#~ "Nothing will stop me from taking revenge for my father who died at your "
+#~ "hand and for the rest of my people you and your minions have killed, "
+#~ "lich. Orcs, attack! The one who brings me his skull gets a bag of gold."
+#~ msgstr ""
+#~ "Nichts wird mich aufhalten, Rache für den Mord an meinem Vater und all "
+#~ "den anderen Gefallenen meines Volkes zu nehmen, Lich. Zum Angriff, Orks! "
+#~ "Derjenige der mir seinen Schädel bringt, erhält einen Sack voll Gold."
+
+#~ msgid ""
+#~ "It matters not who the lich was. He embraced death over life, and we have "
+#~ "done our duty to defend life."
+#~ msgstr ""
+#~ "Es spielt keine Rolle wer der Lich war. Er zog den Tod dem Leben vor, und "
+#~ "wir erfüllten unsere Pflicht, das Leben zu schützen."
+
+#~ msgid "Probably an outlaw like us. Does it matter?"
+#~ msgstr ""
+#~ "Vermutlich ein Gesetzloser, wie wir. Was macht das schon für einen "
+#~ "Unterschied?"
+
+#~ msgid "No, I guess not."
+#~ msgstr "Nein, ich denke nicht."
+
+#~ msgid ""
+#~ "Once he chose this unlife for himself and his soldiers, he forfeited any "
+#~ "claim to our compassion. Does it even matter who he was?"
+#~ msgstr ""
+#~ "Als er dieses Leben im Tode für sich und seine Soldaten wählte, verwirkte "
+#~ "er jedwedes Recht auf Barmherzigkeit. Spielt es da noch eine Rolle wer er "
+#~ "war?"
+
+#~ msgid "Hearing the crack of his bones was satisfying."
+#~ msgstr "Das Knacken seiner Knochen zu hören war befriedigend."
+
+#~ msgid ""
+#~ "Probably some angst-ridden mage that could not make it at that magic "
+#~ "academy those humans have. And when he did dark magic and got outlawed "
+#~ "from Wesnoth, he came to hide in these caves."
+#~ msgstr ""
+#~ "Vermutlich irgendein angstgetriebener Magier, der es nicht in die "
+#~ "Akademie der Magier geschafft hat, wie es diese Menschen taten. Und als "
+#~ "er anfing, schwarze Magie zu praktizieren und aus Wesnoth getrieben "
+#~ "wurde, kam er wohl hier her und versteckte sich in diesen Höhlen."
+
+#~| msgid "I guess we'll never know for sure."
+#~ msgid "I guess we'll never know for sure."
+#~ msgstr "Ich vermute wir werden uns nie sicher sein können."
+
+#~ msgid "Finally, my father and my people are avenged!"
+#~ msgstr "Endlich sind mein Vater und mein Volk gerecht!"
+
+#~ msgid "Who cares!"
+#~ msgstr "Wenn kümmert es!"
+
+#~ msgid ""
+#~ "Despite his increased magical powers, Malin holds on to his short sword "
+#~ "as his melee weapon of choice."
+#~ msgstr ""
+#~ "Trotz seiner verbesserten Fähigkeiten im Umgang mit der Magie verlässt "
+#~ "sich Malin im Nahkampf noch immer auf sein Schwert."
+
+#~ msgid ""
+#~ "On the frontiers of Wesnoth, all able-bodied men and women must be able "
+#~ "to defend the town at need. While the men are most often trained in the "
+#~ "use of sword or bow, the women learn the use of staff and sling. The most "
+#~ "proficient are more than a match for any orcs foolish enough to engage "
+#~ "them in combat."
+#~ msgstr ""
+#~ "An der Grenze von Wesnoth müssen alle körperlich tüchtigen Männer und "
+#~ "Frauen die Stadt in der Not beschützen können. Während die Männer meist "
+#~ "im Umgang mit Schwert und Bogen geübt sind, lernen die Frauen mit Stab "
+#~ "und Schleuder umzugehen. Die Fähigsten unter ihnen sind einem Ork mehr "
+#~ "als nur ebenbürtig."
+
+#~ msgid ""
+#~ "As dawn breaks, the city guards force their way into the manor and "
+#~ "capture the two necromancers."
+#~ msgstr ""
+#~ "Bei Tagesanbruch, dringen die Stadtwachen in das Anwesen ein und nehmen "
+#~ "die beiden Totenbeschwörer fest."
+
+#~ msgid "short sword"
+#~ msgstr "Kurzschwert"
+
+#~ msgid "staff"
+#~ msgstr "Stab"
+
+#~ msgid "sling"
+#~ msgstr "Schleuder"
+
+#~ msgid "Any zombies out there?"
+#~ msgstr "Irgendwelche Zombies hier?"
+
+#~ msgid "Don’t say that!"
+#~ msgstr "Sag es nicht!"
+
+#~ msgid "What?"
+#~ msgstr "Was?"
+
+#~ msgid "That!"
+#~ msgstr "Das!"
+
+#~ msgid "The ‘zee’ word. Don’t say it!"
+#~ msgstr "Das Wort, welches mit »Z« beginnt. Sag es nicht!"
+
+#~ msgid "Why not?"
+#~ msgstr "Warum nicht?"
+
+#~ msgid "Because it’s ridiculous!"
+#~ msgstr "Weil es lächerlich ist."
+
+#~ msgid "Well... are there any?"
+#~ msgstr "Gut... sind hier welche?"
+
+#~ msgid "I don’t see any. Maybe it’s not as bad as all that."
+#~ msgstr "Ich sehe keine. Vielleicht ist es gar nicht so schlimm."
+
+#~ msgid "Door"
+#~ msgstr "Tür"
+
+#~ msgid "Time runs out"
+#~ msgstr "Rundenlimit überschritten"
+
+#~| msgid "Become a Lich"
+#~ msgid "Become a Lich"
+#~ msgstr "Werdet ein Lich"
+
+#~ msgid "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
+#~ msgstr "AAAAAAAAAAaaaaaaaiiiiiiiiiggggggggghhhhhh!!!!!!!"
+
+#~ msgid "AAAAAAAaaaaaaaggggggghhhhhhh!!!!...... . . . ."
+#~ msgstr "AAAAAAAaaaaaaaggggggghhhhhhh!!!!"
+
+#~ msgid "Ghast"
+#~ msgstr "Grässlicher Alb"
+
+#~ msgid ""
+#~ "The ghast is a creature taken from humankind’s most primal nightmares. "
+#~ "Unlike their lesser cousins, ghouls and necrophages, ghasts are not "
+#~ "patient enough to wait for their victim to die from poison before "
+#~ "consuming the body. They attack directly with their enormous mouths, "
+#~ "trying to rip the flesh straight from their foes. Once their enemy is "
+#~ "defeated, they eat the rest of the body, gaining strength in the process."
+#~ msgstr ""
+#~ "Der grässliche Alb ist eine Kreatur aus den ursprünglichsten Albträumen "
+#~ "der Menschheit. Im Gegensatz zu ihren kleineren Verwandten wie den "
+#~ "Ghulen, warten sie nicht erst darauf, dass ihre Opfer an den Folgen von "
+#~ "Gift sterben, sondern versuchen sie schon bei lebendigem Leibe mit ihren "
+#~ "riesigen Mäulern aufzufressen. Das Auffressen ihrer Feinde nach deren "
+#~ "Ableben stärkt diese Kreatur."
+
+#~ msgid "Giant Rat"
+#~ msgstr "Riesenratte"
+
+#~ msgid ""
+#~ "Given an adequate supply of food, some rats can grow to truly impressive "
+#~ "sizes. They can also grow quite aggressive."
+#~ msgstr ""
+#~ "Ein entsprechendes Nahrungsangebot vorrausgesetzt, können einige Ratten "
+#~ "wahrhaft riesig werden. Sie können auch ziemlich angriffslustig werden."
+
+#~ msgid ""
+#~ "Begone, now. I’ve no wish to be forced to send the soldiers after you. "
+#~ "Your father would turn in his grave did he see the end to which you’ve "
+#~ "come."
+#~ msgstr ""
+#~ "Verschwindet jetzt! Ich wünsche nicht, Soldaten nach euch zu schicken. "
+#~ "Euer Vater würde sich im Grabe umdrehen, wüsste er was aus euch geworden "
+#~ "ist."
+
+#~ msgid "Make Into a Lich"
+#~ msgstr "Werdet ein Lich"
+
+#~ msgid "I guess we’ll never know for sure."
+#~ msgstr "Ich vermute wir werden uns nie sicher sein können."
+
+#~ msgid ""
+#~ "It sickens me to be of the same blood as a necromancer. Father would turn "
+#~ "in his grave if he could see what you’ve become. Just leave."
+#~ msgstr ""
+#~ "Ich ertrage es nicht, einen Nekromanten als Bruder zu haben. Vater würde "
+#~ "sich im Grabe umdrehen, wenn er dich so sehen würde. Geh einfach. "
+#~ "Verschwinde."
+
+#~ msgid ""
+#~ "Yes! These vile creatures have ruined our lives in more ways than I can "
+#~ "name. It is time someone did the same to them. They deserve to suffer for "
+#~ "what they have done to us."
+#~ msgstr ""
+#~ "Ja! Diese abscheulichen Kreaturen haben unser Leben in so vieler Hinsicht "
+#~ "ruiniert! Wird Zeit, dass jemand etwas gegen sie unternimmt. Für das, was "
+#~ "sie uns angetan haben, verdienen sie Leid."
+
+#~ msgid ""
+#~ "They should be grateful. Imagine. No need to rebuild our homes year after "
+#~ "year. No more needless deaths, no more senseless bloodshed, no more "
+#~ "fear..."
+#~ msgstr ""
+#~ "Sie sollten dankbar sein. Wenn man mal so darüber nachdenkt… wir müssten "
+#~ "nicht mehr unsere Heimat jedes Jahr aufs neue wieder aufbauen. Und hätten "
+#~ "weniger sinnlose Tote. Kein Blutvergießen mehr, kein Leben in Angst."
+
+#~ msgid ""
+#~ "Rail tracks and mines... dwarves used to live here, but there do not seem "
+#~ "to be any guards. I wonder where they went?"
+#~ msgstr ""
+#~ "Schienen für Loren und Mienen… hier müssen Zwerge gelebt haben, aber ich "
+#~ "sehe nirgends Wachen. Ich frage mich, warum sie nicht mehr hier sind."
+
+#~ msgid "The Whitefang orcs... so that is their name."
+#~ msgstr "Die »Reißzahn«-Orks also … das ist also ihr Name."
+
+#~ msgid ""
+#~ "To reach them, we must first destroy the orcs who block our way out of "
+#~ "this mountain pass. Then, we can move on to our main target."
+#~ msgstr ""
+#~ "Um sie zu erreichen, müssen wir uns erst unseren Weg durch diesen "
+#~ "Gebirgspass kämpfen. Dann können wir unser eigentliches Ziel angreifen."
+
+#~ msgid ""
+#~ "I have anticipated this day for a long time. At last, we shall have "
+#~ "revenge."
+#~ msgstr ""
+#~ "Ich habe lange auf diesen Tag gewartet. Endlich werde ich meine Rache "
+#~ "haben."
+
+#~ msgid "It’s time to hunt down the Whitefangs."
+#~ msgstr "Wird Zeit diese »Reißzähne« zu erledigen."
+
+#~ msgid ""
+#~ "Death is only the beginning for you. After this battle, you can be sure "
+#~ "that I will make you into my thrall. And now for the last one—"
+#~ msgstr ""
+#~ "Der Tod war erst der Anfang. Nach diesem Kampf wirst du einer meiner "
+#~ "Untergeben werden. Und was den verbleibenden Häuptling anbetrifft–"
+
+#~ msgid ""
+#~ "You chose the path of darkness on your own. We will not be dragged into "
+#~ "it with you."
+#~ msgstr ""
+#~ "Du hast den Pfad der Dunkelheit selbst gewählt. Wir wollen damit nichts "
+#~ "zu tun haben."
+
+#~ msgid ""
+#~ "If you continue to be stubborn, we will attack you. It is your choice."
+#~ msgstr ""
+#~ "Wenn Ihr weiterhin so stur seid, werden wir Euch angreifen. Es ist Eure "
+#~ "Wahl."
+
+#~ msgid ""
+#~ "So, Malin, you have even begun to corrupt our people with your sorcerous "
+#~ "ways. Even I did not expect you to stoop low enough to kidnap the "
+#~ "villagers and make them into your pawns!"
+#~ msgstr ""
+#~ "Oh, oh, Malin, Ihr habt sogar Menschen korrumpiert? Das geht über meine "
+#~ "kühnsten Erwartungen hinaus…"
+
+#~ msgid ""
+#~ "I joined Malin of my own free will! You fools simply do not understand "
+#~ "the power that necromancy holds."
+#~ msgstr ""
+#~ "Ich bin Malin aus freiem Willen beigetreten. Ihr Narren versteht einfach "
+#~ "nicht die Kraft, die Totenbeschwörung bietet."
+
+#~ msgid ""
+#~ "female^I joined Malin of my own free will! You fools simply do not "
+#~ "understand the power that necromancy holds."
+#~ msgstr ""
+#~ "Ich bin Malin aus freiem Willen beigetreten. Ihr Narren versteht einfach "
+#~ "nicht die Kraft, die Totenbeschwörung bietet."
+
+#~ msgid ""
+#~ "I understand it well enough to know that it makes all who embrace it evil."
+#~ msgstr ""
+#~ "Ich verstehe sie wohl genug, um zu wissen, dass alle, die damit "
+#~ "experimentieren, böse werden."
+
+#~ msgid ""
+#~ "There is no point in arguing with one so obstinate. We can only show "
+#~ "Drogan the error of his ways through force."
+#~ msgstr ""
+#~ "Es macht keinen Sinn, mit so einem Dickkopf zu diskutieren. Drogan "
+#~ "versteht nur die Sprache der Gewalt."
+
+#~ msgid ""
+#~ "Malin! First you abandon us to the orcs on your mad quest for necromancy, "
+#~ "then you heartlessly murder Drogan, and now... now you even kidnap the "
+#~ "villagers and corrupt them with your sorcery! How low have you fallen?"
+#~ msgstr ""
+#~ "Malin! Erst hinterlässt du uns den Orks auf deiner Suche nach "
+#~ "Nekromantie, dann ermordest du herzlos Drogan, und was seh ich da … du "
+#~ "kidnappst die Dorfbewohner und lässt sie nach deiner Pfeife tanzen. Wie "
+#~ "tief kann man eigentlich fallen?"
+
+#~ msgid ""
+#~ "I joined Malin of my own free will! The orcs would have overrun you if "
+#~ "not for Malin’s powers!"
+#~ msgstr ""
+#~ "Ich bin Malin aus freien Stücken beigetreten. Wäre Malin euch nicht zu "
+#~ "Hilfe gekommen, hätten euch dir Orks überrannt!"
+
+#~ msgid ""
+#~ "female^I joined Malin of my own free will! The orcs would have overrun "
+#~ "you if not for Malin’s powers!"
+#~ msgstr ""
+#~ "Ich bin Malin aus freien Stücken beigetreten. Wäre Malin euch nicht zu "
+#~ "Hilfe gekommen, hätten euch dir Orks überrannt!"
+
+#~ msgid ""
+#~ "You necromancers defile the bodies of the dead and slaughter the innocent "
+#~ "for your sick perversions. Do you not see the depravity that you have "
+#~ "become, Malin?"
+#~ msgstr ""
+#~ "Ihr Totenbeschwörer entweiht die Körper der Toten und schlachtet die "
+#~ "Unschuldigen für eure verrückten Machenschaften. Siehst du nicht diese "
+#~ "Verdorbenheit die dir innewohnt, Malin?"
+
+#~ msgid ""
+#~ "Malin, in truth, I do not want to fight you as one of my former friends. "
+#~ "Leave Parthyn. I will not ask you again."
+#~ msgstr ""
+#~ "Malin, in aller Ehrlichkeit, Ich möchte Euch als einen ehemaligen Freund "
+#~ "nicht bekämpfen. Verlasst Parthyn. Ich werde Euch nicht noch einmal "
+#~ "auffordern."
+
+#~ msgid ""
+#~ "More orcs, and powerful ones at that! Alas, it will be impossible for me "
+#~ "to outrun their riders..."
+#~ msgstr ""
+#~ "Noch mehr Orks, und mächtige diesmal. Ich werde ihren Reitern niemals "
+#~ "entkommen können…"
+
+#~ msgid "Cease your prattle, you decrepit old man."
+#~ msgstr "Lass das Geschwafel, altersschwacher Mann."
+
+#~ msgid "... have I really just been a pawn all this time?"
+#~ msgstr "… war ich die ganze Zeit über wirklich nur eine Schachfigur?"
+
+#~ msgid ""
+#~ "Did you not think I would keep my word? Attack him, men! Do not let the "
+#~ "traitor escape!"
+#~ msgstr ""
+#~ "Hast du gedacht, ich würde mein Wort nicht halten? Angriff, Männer. Lasst "
+#~ "diesen Verräter nicht entkommen!"
+
+#~ msgid ""
+#~ "Stepping on runes provides Malin with a temporary buff. He loses any "
+#~ "additional abilities he obtains if he steps off of the corresponding "
+#~ "runestone."
+#~ msgstr ""
+#~ "Auf eine Rune zu steigen gibt Malin einen kurzfristigen Bonus. Wenn er "
+#~ "den Runenstein verlässt, verliert er wieder alle zusätzlichen Fähigkeiten."
+
+#~ msgid ""
+#~ "To turn a necromancer into a lich, right-click on it while it is in a "
+#~ "castle."
+#~ msgstr ""
+#~ "Um einen Totenbeschwörer in einen Lich zu verwandeln, rechtsklickt ihn, "
+#~ "während er sich in einem Schloss befindet."
+
+#~ msgid "Transform into a lich"
+#~ msgstr "In einen Lich verwandeln"
+
+#~ msgid "You can only do this in a castle."
+#~ msgstr "Ihr könnte dies nur in einer Burg machen."
+
+#~ msgid ""
+#~ "Mal Keshar has had time to study the book, learning how his apprentices "
+#~ "can become liches with less reliance on luck than Malin’s own "
+#~ "transformation."
+#~ msgstr ""
+#~ "Mal Keshar hatte Zeit, das Buch ausgiebig zu studieren. Dabei lernte er, "
+#~ "wie seien Untergeben ebenfalls zu Lichs verwandelt werden können, ohne "
+#~ "allzu sehr auf das Glück vertrauen zu müssen, wie es bei Malins eigener "
+#~ "Transformation der Fall war."
+
+#~ msgid "Lich"
+#~ msgstr "Lich"
 
 #, fuzzy
 #~ msgid "Dark blue"
@@ -9224,10 +9566,6 @@ msgstr "Lich"
 #, fuzzy
 #~ msgid "There are many corpses around here. I can use them to my advantage."
 #~ msgstr "Hier gibt es Leichen im Überfluss. Die kann ich gut gebrauchen."
-
-#, fuzzy
-#~ msgid "<i>I feel... so... cold...</i>"
-#~ msgstr "<i>Es ist … so … kalt…</i>"
 
 #, fuzzy
 #~ msgid ""

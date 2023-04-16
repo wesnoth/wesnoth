@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-03-18 21:33-0500\n"
+"POT-Creation-Date: 2023-04-15 19:58-0500\n"
 "PO-Revision-Date: 2023-03-24 20:43+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -2351,7 +2351,7 @@ msgstr "Publikuj rozšíření"
 #. [button]: id=single_uninstall
 #. [button]: id=uninstall
 #: data/gui/widget/addon_list.cfg:435 data/gui/window/addon_manager.cfg:622
-#: src/gui/dialogs/addon/manager.cpp:1002
+#: src/gui/dialogs/addon/manager.cpp:1006
 msgid "Uninstall add-on"
 msgstr "Odinstalovat rozšíření"
 
@@ -2618,7 +2618,7 @@ msgstr "Závislosti:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
-#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1080
+#: data/gui/window/addon_manager.cfg:713 src/gui/dialogs/addon/manager.cpp:1084
 msgid "addon_dependencies^None"
 msgstr "Žádné"
 
@@ -2629,7 +2629,7 @@ msgstr "Překlady:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
-#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1094
+#: data/gui/window/addon_manager.cfg:748 src/gui/dialogs/addon/manager.cpp:1098
 msgid "translations^None"
 msgstr "žádné"
 
@@ -3020,7 +3020,7 @@ msgstr "Smazat ToD"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:975 src/gui/dialogs/file_dialog.cpp:303
+#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:303
 #: src/gui/dialogs/file_dialog.cpp:729
 msgid "Confirm"
 msgstr "Potvrdit"
@@ -5982,11 +5982,11 @@ msgid "operating_system^<unknown>"
 msgstr "<neznámý OS>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:635
+#: src/filesystem.cpp:665
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<relativní cesta, která nezačíná tečkou>"
 
-#: src/filesystem.cpp:638
+#: src/filesystem.cpp:668
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -5995,11 +5995,11 @@ msgstr ""
 "lomítkem"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:703 src/filesystem.cpp:725
+#: src/filesystem.cpp:733 src/filesystem.cpp:755
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<relativní cesta>"
 
-#: src/filesystem.cpp:706 src/filesystem.cpp:728
+#: src/filesystem.cpp:736 src/filesystem.cpp:758
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6018,7 +6018,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1653
+#: src/filesystem.cpp:1683
 msgid "language code for localized resources^en_US"
 msgstr "cs"
 
@@ -6144,7 +6144,7 @@ msgid "No resolution defined."
 msgstr "Není definováno žádné rozlišení."
 
 #: src/gui/core/window_builder.cpp:167 src/gui/widgets/addon_list.cpp:431
-#: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:713
+#: src/gui/widgets/chatbox.cpp:660 src/gui/widgets/listbox.cpp:712
 #: src/gui/widgets/multi_page.cpp:176 src/gui/widgets/panel.cpp:125
 #: src/gui/widgets/scroll_label.cpp:183 src/gui/widgets/scrollbar_panel.cpp:74
 #: src/gui/widgets/size_lock.cpp:111 src/gui/widgets/stacked_widget.cpp:225
@@ -6444,24 +6444,28 @@ msgstr ""
 "Vzdálená verze tohoto rozšíření je vyšší nebo stejná vůči verzi, která je "
 "nahrávána. Opravdu si přeješ pokračovat?"
 
-#: src/gui/dialogs/addon/manager.cpp:938
+#: src/gui/dialogs/addon/manager.cpp:937
+msgid "The passphrase attribute cannot be present when forum_auth is used."
+msgstr ""
+
+#: src/gui/dialogs/addon/manager.cpp:942
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr "Neplatná cesta k ikoně. Ujisti se, že cesta ukazuje na platný obrázek."
 
-#: src/gui/dialogs/addon/manager.cpp:941 src/gui/dialogs/addon/manager.cpp:983
+#: src/gui/dialogs/addon/manager.cpp:945 src/gui/dialogs/addon/manager.cpp:987
 msgid "The server responded with an error:"
 msgstr "Server odpověděl chybou:"
 
-#: src/gui/dialogs/addon/manager.cpp:944
+#: src/gui/dialogs/addon/manager.cpp:948
 msgid "The add-on was rejected by the server:"
 msgstr "Rozšíření bylo serverem odmítnuto:"
 
-#: src/gui/dialogs/addon/manager.cpp:959 src/gui/dialogs/addon/manager.cpp:986
+#: src/gui/dialogs/addon/manager.cpp:963 src/gui/dialogs/addon/manager.cpp:990
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:511
 msgid "Response"
 msgstr "Odpověď"
 
-#: src/gui/dialogs/addon/manager.cpp:971
+#: src/gui/dialogs/addon/manager.cpp:975
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -6469,21 +6473,21 @@ msgstr ""
 "Smazání '$addon|' natrvalo vymaže jeho počty stažení a nahrání na serveru "
 "s rozšířeními. Opravdu si přeješ pokračovat?"
 
-#: src/gui/dialogs/addon/manager.cpp:1003
+#: src/gui/dialogs/addon/manager.cpp:1007
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Chceš odinstalovat '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1034
+#: src/gui/dialogs/addon/manager.cpp:1038
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%-d. %B %Y, %I:%M"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
-#: src/gui/dialogs/addon/manager.cpp:1036
+#: src/gui/dialogs/addon/manager.cpp:1040
 msgid "%B %d %Y, %H:%M"
 msgstr "%-d. %B %Y, %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1097
+#: src/gui/dialogs/addon/manager.cpp:1101
 msgid "url^None"
 msgstr "Žádná"
 
@@ -6513,7 +6517,7 @@ msgid "active_modifications^None"
 msgstr "Žádné"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
-#: src/gui/dialogs/game_version_dialog.cpp:144
+#: src/gui/dialogs/game_version_dialog.cpp:141
 #: src/gui/dialogs/gamestate_inspector.cpp:416
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
@@ -6748,12 +6752,12 @@ msgstr "ne"
 msgid "yes"
 msgstr "ano"
 
-#: src/gui/dialogs/game_version_dialog.cpp:104
+#: src/gui/dialogs/game_version_dialog.cpp:101
 #: src/gui/dialogs/title_screen.cpp:200
 msgid "Version $version"
 msgstr "Verze $version"
 
-#: src/gui/dialogs/game_version_dialog.cpp:108
+#: src/gui/dialogs/game_version_dialog.cpp:105
 msgid "Running on $os"
 msgstr "Běžící na $os"
 
@@ -7114,12 +7118,12 @@ msgstr "Nepoužitelná přezdívka"
 msgid "Not on friends or ignore lists"
 msgstr "Není v seznamu přátel ani ignorovaných"
 
-#: src/gui/dialogs/preferences_dialog.cpp:849
-#: src/gui/dialogs/preferences_dialog.cpp:913
+#: src/gui/dialogs/preferences_dialog.cpp:847
+#: src/gui/dialogs/preferences_dialog.cpp:911
 msgid "No hotkey selected"
 msgstr "Nepřiřazeno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:877
+#: src/gui/dialogs/preferences_dialog.cpp:875
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -7128,15 +7132,15 @@ msgstr ""
 "b>\".\n"
 "Přejete si ji přiřadit k \"<b>$new_hotkey_action|</b>\"?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:883
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "Reassign Hotkey"
 msgstr "Znovupřiřadit klávesovou zkratku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:900
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "All hotkeys have been reset to their default values."
 msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty"
 
-#: src/gui/dialogs/preferences_dialog.cpp:900
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "Hotkeys Reset"
 msgstr "Reset klávesových zkratek"
 
@@ -7310,6 +7314,10 @@ msgstr ""
 "Zahájen soukromý rozhovor s <i>$name</i>. Jestliže od tohoto hráče nechceš "
 "přijímat zprávy, napiš <i>/ignore $name</i>."
 
+#: src/gui/widgets/drawing.cpp:119
+msgid "Missing [draw] in drawing"
+msgstr ""
+
 #: src/gui/widgets/helper.cpp:93
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Povinný ovládací prvek '$id' nebyl definován."
@@ -7326,21 +7334,29 @@ msgstr "Otevřít odkaz?"
 msgid "Copied link!"
 msgstr "Odkaz zkopírován!"
 
-#: src/gui/widgets/listbox.cpp:728 src/gui/widgets/multi_page.cpp:219
+#: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
 "'list_data' musí obsahovat stejný počet sloupců jako 'list_definition'."
 
-#: src/gui/widgets/listbox.cpp:772 src/gui/widgets/listbox.cpp:815
-#: src/gui/widgets/listbox.cpp:858 src/gui/widgets/scrollbar_panel.cpp:94
+#: src/gui/widgets/listbox.cpp:771 src/gui/widgets/listbox.cpp:814
+#: src/gui/widgets/listbox.cpp:857 src/gui/widgets/scrollbar_panel.cpp:94
 msgid "No list defined."
 msgstr "Nebyl definován žádný seznam."
 
-#: src/gui/widgets/listbox.cpp:777 src/gui/widgets/listbox.cpp:820
-#: src/gui/widgets/listbox.cpp:863
+#: src/gui/widgets/listbox.cpp:776 src/gui/widgets/listbox.cpp:819
+#: src/gui/widgets/listbox.cpp:862
 msgid "A 'list_definition' should contain one row."
 msgstr "Pro 'list_definition' je vyžadována alespoň jedna řádka."
+
+#: src/gui/widgets/matrix.cpp:188
+msgid "Missing [content] in [matrix_definition]"
+msgstr ""
+
+#: src/gui/widgets/matrix.cpp:210
+msgid "Missing [main] in [matrix]"
+msgstr ""
 
 #: src/gui/widgets/multi_page.cpp:195
 msgid "No page defined."
@@ -7364,6 +7380,10 @@ msgstr[2] "$excess dalších"
 #: src/gui/widgets/multimenu_button.cpp:238
 msgid "multimenu^None Selected"
 msgstr "Nic nevybráno"
+
+#: src/gui/widgets/pane.cpp:361
+msgid "Missing [item_definition] in [pane]"
+msgstr ""
 
 #: src/gui/widgets/pane.cpp:363
 msgid "Need at least 1 parallel item."
@@ -7457,6 +7477,10 @@ msgstr "MP: "
 #: src/gui/widgets/unit_preview_pane.cpp:550
 msgid "Abilities"
 msgstr "Schopnosti"
+
+#: src/gui/widgets/viewport.cpp:172
+msgid "Missing [widget] in [viewport]"
+msgstr ""
 
 #: src/gui/widgets/window.cpp:430
 msgid "Linked '$id' group has multiple definitions."
