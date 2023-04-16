@@ -1,3 +1,18 @@
+## Version 1.17.15+dev
+ ### Add-ons client
+ ### Add-ons server
+ ### Campaigns
+ ### Editor
+ ### Multiplayer
+ ### Lua API
+ ### Packaging
+ ### Terrain
+ ### Translations
+ ### Units
+ ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
 ## Version 1.17.15
  ### Multiplayer
    * The game no longer crashes when using "Back To Turn" after the game has
