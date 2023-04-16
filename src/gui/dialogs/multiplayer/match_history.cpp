@@ -82,7 +82,7 @@ bool mp_match_history::update_display()
 	const config history = request_history(offset_);
 
 	// request failed, nothing to do
-	if(history.child_count("game_history_result") == 0) {
+	if(history.child_count("game_history_results") == 0) {
 		return false;
 	}
 
@@ -93,7 +93,7 @@ bool mp_match_history::update_display()
 	connect_signal_notify_modified(*tab_bar, std::bind(&mp_match_history::tab_switch_callback, this));
 
 	int i = 0;
-	for(const config& game : history.child_range("game_history_result")) {
+	for(const config& game : history.mandatory_child("game_history_results").child_range("game_history_result")) {
 		widget_data row;
 		grid& history_grid = history_box->add_row(row);
 
@@ -183,17 +183,17 @@ const config mp_match_history::request_history(int offset)
 		// lobby responses are not received while this method is running, and are handled in the lobby after it completes
 		// history results are never received in the lobby
 		if(connection_.receive_data(response)) {
-			if(response.child_count("game_history_result") == 0) {
+			if(response.child_count("game_history_results") == 0) {
 				DBG_NW << "Received non-history data: " << response.debug();
 				if(!response["error"].str().empty()) {
 					ERR_NW << "Received error from server: " << response["error"].str();
 					gui2::show_error_message(_("The server responded with an error:")+response["error"].str());
 					return {};
-				} else if(!response["no_data"].str().empty()) {
-					DBG_NW << "Player has no game history data.";
-					gui2::show_error_message(_("No game history found."));
-					return {};
 				}
+			} else if(response.mandatory_child("game_history_results").child_count("game_history_result") == 0) {
+				DBG_NW << "Player has no game history data.";
+				gui2::show_error_message(_("No game history found."));
+				return {};
 			} else {
 				DBG_NW << "Received history data: " << response.debug();
 				return response;
