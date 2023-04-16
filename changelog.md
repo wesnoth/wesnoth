@@ -1,17 +1,6 @@
-## Version 1.16.8+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.16.9
  ### Translations
    * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Turkish
- ### Units
- ### User interface
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
    * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
