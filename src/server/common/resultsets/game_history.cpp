@@ -53,15 +53,11 @@ std::unique_ptr<simple_wml::document> game_history::to_doc()
 {
     auto doc = std::make_unique<simple_wml::document>();
 
-    if(results.size() == 0)
-    {
-        doc->set_attr_dup("no_data", "yes");
-        return doc;
-    }
+    simple_wml::node& results_wml = doc->root().add_child("game_history_results");
 
     for(const auto& result : results)
     {
-        simple_wml::node& ghr = doc->root().add_child("game_history_result");
+        simple_wml::node& ghr = results_wml.add_child("game_history_result");
         ghr.set_attr_dup("game_name", result.game_name.c_str());
         ghr.set_attr_dup("game_start", result.game_start.c_str());
         ghr.set_attr_dup("scenario_name", result.scenario_name.c_str());
