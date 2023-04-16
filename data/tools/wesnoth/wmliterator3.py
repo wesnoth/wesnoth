@@ -141,6 +141,13 @@ Important Attributes:
         self.reset()
         self.seek(begin)
 
+    @property
+    def element(self):
+        if type(self._element) != list:
+            return self._element[0]
+
+        return list(map(lambda t:t[0], self._element))
+
     def parseQuotes(self, lines):
         """Return the line or multiline text if a quote spans multiple lines"""
         text = lines[self.lineno]
@@ -325,7 +332,7 @@ Important Attributes:
             while scopeDelta > 0:
                 openedScopes.append(elem)
                 scopeDelta -= 1
-            resultElements.append(elem)
+            resultElements.append((elem, sortPos))
         return resultElements, openedScopes
 
     def printScopeError(self, elementType):
@@ -351,7 +358,7 @@ Important Attributes:
         self.nextScopes = []
         self.text = ""
         self.span = 1
-        self.element = ""
+        self._element = ("",-1)
         return self
 
     def seek(self, lineno, clearEnd=True):
@@ -423,17 +430,17 @@ Important Attributes:
         self.lineno = self.lineno + self.span
         self.text, self.span = self.parseQuotes(self.lines)
         self.scopes.extend(self.nextScopes)
-        self.element, nextScopes = self.parseElements(self.text)
+        self._element, nextScopes = self.parseElements(self.text)
         self.nextScopes = []
         for elem in nextScopes:
         # remember scopes by storing a copy of the iterator
             copyItor = self.copy()
-            copyItor.element = elem
+            copyItor._element = (elem,)
             self.nextScopes.append(copyItor)
             copyItor.nextScopes.append(copyItor)
-        if(len(self.element) == 1):
+        if(len(self._element) == 1):
             # currently we only wish to handle simple single assignment syntax
-            self.element = self.element[0]
+            self._element = self._element[0]
         if self.endScope is not None and not self.scopes.count(self.endScope):
             raise StopIteration
         return self
