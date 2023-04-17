@@ -198,7 +198,7 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: macOS ARM Release
+      - name: macOS Intel Release
         run: |
           export CFG=Release
           export CACHE_DIR=~/build-cache
