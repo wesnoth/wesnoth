@@ -474,6 +474,13 @@ public:
 	 */
 	const attribute_value *get(config_key_type key) const;
 
+    /**
+     * Chooses a value. If the value specified by @a key is
+     * blank, then @a default_key is chosen instead.
+     * If both values are blank or not set, then an empty value is returned.
+     */
+    const attribute_value& get_or(const config_key_type key, const config_key_type default_key) const;
+
 	/**
 	 * Function to handle backward compatibility
 	 * Get the value of key and if missing try old_key
