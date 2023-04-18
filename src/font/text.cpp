@@ -83,9 +83,7 @@ pango_text::pango_text()
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
 	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
-	// Always use grayscale AA, particularly on Windows where ClearType subpixel hinting
-	// will result in colour fringing otherwise. See from_cairo_format() further below.
-	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_GRAY);
+	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_DEFAULT);
 
 	pango_cairo_context_set_font_options(context_.get(), fo);
 	cairo_font_options_destroy(fo);
@@ -656,17 +654,6 @@ static void from_cairo_format(uint32_t & c)
 	unpremultiply(r, div);
 	unpremultiply(g, div);
 	unpremultiply(b, div);
-
-#ifdef _WIN32
-	// Grayscale AA with ClearType results in wispy unreadable text because of gamma issues
-	// that would normally be solved by rendering directly onto the destination surface without
-	// alpha blending. However, since the current game engine design would never allow us to do
-	// that, we work around that by increasing alpha at the expense of AA accuracy (which is
-	// not particularly noticeable if you don't know what you're looking for anyway).
-	if(a < 255) {
-		a = std::clamp<unsigned>(unsigned(a) * 1.75, 0, 255);
-	}
-#endif
 
 	c = (static_cast<uint32_t>(a) << 24) | (static_cast<uint32_t>(r) << 16) | (static_cast<uint32_t>(g) << 8) | static_cast<uint32_t>(b);
 }
