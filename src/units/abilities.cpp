@@ -1535,6 +1535,12 @@ bool attack_type::has_weapon_ability(const std::string& special, bool special_id
 
 bool attack_type::has_special_or_ability(const std::string& special, bool special_id, bool special_tags) const
 {
+	//Now that filter_(second)attack in event supports special_id/type_active, including abilities used as weapons,
+	//these can be detected even in placeholder attacks generated to compensate for the lack of attack in defense against an attacker using a range attack not possessed by the defender.
+	//It is therefore necessary to check if the range is not empty (proof that the weapon is not a placeholder) to decide if has_weapon_ability can be returned or not.
+	if(range().empty()){
+		return false;
+	}
 	return (has_special(special, false, special_id, special_tags) || has_weapon_ability(special, special_id, special_tags));
 }
 //end of emulate weapon special functions.
