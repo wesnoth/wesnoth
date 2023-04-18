@@ -1743,16 +1743,21 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 					}
 				}
 
-				// add leader data
+				// determine leader(s) for the side
+				// useful generally to know how often leaders are used vs other leaders
+				// also as an indication for which faction was chosen if a custom recruit list is provided since that results in "Custom" in the faction field
 				std::vector<std::string> leaders;
+				// if a type= attribute is specified for the side, add it
 				if(side.attr("type") != "") {
 					leaders.emplace_back(side.attr("type").to_string());
 				}
+				// add each [unit] in the side that has canrecruit=yes
 				for(const auto unit : side.children("unit")) {
 					if(unit->attr("canrecruit") == "yes") {
 						leaders.emplace_back(unit->attr("type").to_string());
 					}
 				}
+				// add any [leader] specified for the side
 				for(const auto leader : side.children("leader")) {
 					leaders.emplace_back(leader->attr("type").to_string());
 				}
