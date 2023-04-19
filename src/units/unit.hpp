@@ -354,11 +354,6 @@ public:
 		side_ = new_side;
 	}
 
-	/** Convert from side number to container index  */
-	int side_to_index() const {
-		return side_ - 1;
-	}
-
 	/** This unit's type, accounting for gender and variation. */
 	const unit_type& type() const
 	{

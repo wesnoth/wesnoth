@@ -2296,7 +2296,7 @@ void unit::apply_builtin_effect(std::string apply_to, const config& effect)
 	} else if(apply_to == "recall_cost") {
 		const std::string& increase = effect["increase"];
 		const std::string& set = effect["set"];
-		const int recall_cost = recall_cost_ < 0 ? resources::gameboard->teams().at(side_to_index()).recall_cost() : recall_cost_;
+		const int recall_cost = recall_cost_ < 0 ? resources::gameboard->get_team(side_).recall_cost() : recall_cost_;
 
 		if(!set.empty()) {
 			if(set.back() == '%') {
