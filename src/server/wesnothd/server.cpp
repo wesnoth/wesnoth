@@ -1743,7 +1743,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 					}
 				}
 
-				// determine leader(s) for the side
+				// approximately determine leader(s) for the side like the client does
 				// useful generally to know how often leaders are used vs other leaders
 				// also as an indication for which faction was chosen if a custom recruit list is provided since that results in "Custom" in the faction field
 				std::vector<std::string> leaders;
