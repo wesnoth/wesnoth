@@ -195,7 +195,7 @@ void playsingle_controller::skip_empty_sides(int& side_num)
 	const int sides = static_cast<int>(get_teams().size());
 	if(sides == 0) return;
 	const int max = side_num + sides;
-	while (gamestate().board_.get_team(modulo(side_num, sides)).is_empty()) {
+	while (gamestate().board_.get_team(modulo(side_num, sides, 1)).is_empty()) {
 		if(side_num == max) {
 			throw game::game_error("No teams found");
 		}
