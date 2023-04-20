@@ -93,7 +93,7 @@ elif [ "$IMAGE" == "flatpak" ]; then
 # therefore manually move stuff between where flatpak needs it and where CI caching can see it
     rm -R .flatpak-builder/*
     jq '.modules[2].sources[0]={"type":"dir","path":"/home/wesnoth-CI"} | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
-    flatpak-builder --force-clean --disable-rofiles-fuse wesnoth-app utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
+    flatpak-builder --force-clean --disable-rofiles-fuse wesnoth-app --repo=wesnoth-repo utils/dockerbuilds/CI/org.wesnoth.Wesnoth.json
     EXIT_VAL=$?
     exit $EXIT_VAL
 else
