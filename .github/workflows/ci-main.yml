@@ -185,6 +185,12 @@ jobs:
           export CLICOLOR_FORCE=1
           ./.github/workflows/ci-scripts/ubuntu.sh
 
+      - name: Upload flatpak
+        uses: actions/upload-artifact@v3
+        with:
+          name: flatpak-repo
+          path: wesnoth-repo
+
   translations:
     runs-on: ubuntu-20.04
 
