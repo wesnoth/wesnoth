@@ -186,26 +186,38 @@ jobs:
           ./.github/workflows/ci-scripts/ubuntu.sh
 
   translations:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    container:
+      image: wesnoth/wesnoth:2204-master
+      env:
+       LANGUAGE: en_US.UTF-8
+       LANG: en_US.UTF-8
+       LC_ALL: en_US.UTF-8
+       CLICOLOR_FORCE: 1
 
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: "recursive"
 
+      - name: Check for invalid characters
+        run: |
+          ./utils/CI/check_utf8.sh
+          ./utils/CI/utf8_bom_dog.sh
+
       - name: Translations
         run: |
-          export BRANCH=master
-          export IMAGE=2204
-          export NLS=only
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CLICOLOR_FORCE=1
-          ./.github/workflows/ci-scripts/ubuntu.sh
+          cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE .
+          make update-po4a-man; echo "Ran make update-po4a-man"
+          make update-po4a-manual; echo "Ran make update-po4a-manual"
+          make pot-update; echo "Ran make pot-update"
+          make mo-update; echo "Ran make mo-update"
+          make clean
+          
+          scons translations build=release --debug=time nls=true jobs=2; echo "Ran scons translations"
+          scons pot-update; echo "Ran scons pot-update"
+          scons update-po4a; echo "Ran scons update-po4a"
+          scons manual
 
   macos-intel:
     strategy:
