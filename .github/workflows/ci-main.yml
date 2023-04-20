@@ -164,7 +164,10 @@ jobs:
             ~/wesnoth-*-win64.exe
 
   flatpak:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    container:
+      image: wesnoth/wesnoth:flatpak-master
+      options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
       - uses: actions/checkout@v3
@@ -173,17 +176,8 @@ jobs:
 
       - name: Flatpak
         run: |
-          export BRANCH=master
-          export IMAGE=flatpak
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CLICOLOR_FORCE=1
-          ./.github/workflows/ci-scripts/ubuntu.sh
+          jq '.modules |= map(select(.name == "wesnoth").sources[0]+={"path":"."}) | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > org.wesnoth.Wesnoth.json
+          flatpak-builder --force-clean --disable-rofiles-fuse wesnoth-app org.wesnoth.Wesnoth.json
 
   translations:
     runs-on: ubuntu-latest
