@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-15 19:58-0500\n"
-"PO-Revision-Date: 2022-12-16 19:10+0100\n"
+"PO-Revision-Date: 2023-04-20 00:38+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1859,7 +1859,7 @@ msgstr "Finto confine mappa"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3147
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Segnaposto arte"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -2452,10 +2452,8 @@ msgstr "Profilo"
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:49
 #: data/gui/window/title_screen.cfg:257 src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Avanzamenti"
+msgstr "Risultati"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -2464,10 +2462,8 @@ msgstr "Autenticato"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:67
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Rinomina"
+msgstr "Utente:"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
@@ -2660,10 +2656,8 @@ msgstr "Website:"
 
 #. [label]
 #: data/gui/window/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Id:"
 
 #. [button]: id=delete
 #: data/gui/window/addon_manager.cfg:659
@@ -4798,31 +4792,25 @@ msgstr "Login:"
 
 #. [button]: id=replay_download
 #: data/gui/window/mp_match_history.cfg:144
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Scaricamenti"
+msgstr "Scarica"
 
 #. [label]: id=players
 #. [label]: id=modifications
 #: data/gui/window/mp_match_history.cfg:161
 #: data/gui/window/mp_match_history.cfg:178
-#, fuzzy
-#| msgid "url^None"
 msgid "None"
 msgstr "Nessuno"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:377
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:390
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Giocatori:"
+msgstr "Giocatori"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5569,8 +5557,6 @@ msgstr "Mostra sfere non mosse"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "Mostra sfere parzialmente mosse"
 
@@ -5580,11 +5566,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Se una unità può muoversi ma non può attaccare, mostra una sfera bicolore "
+"con i colori del movimento parziale e totale."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Usa una sfera bicolore per le unità disingaggiate"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5600,6 +5588,8 @@ msgstr "Mostra sfere alleati"
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Durante il turno di gioco di un alleato, usa una sfera bicolore per mostrare "
+"i movimenti"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5608,6 +5598,10 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Durante i turni di gioco degli alleati, le loro unità saranno evidenziate da "
+"una sfera bicolore. Una metà sarà del colore proprio dell’alleato, l’altra "
+"metà evidenzierà se l’unità è rimasta ferma, parzialmente mossa o totalmente "
+"mossa."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -5850,10 +5844,8 @@ msgstr "Configura le impostazioni del gioco"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:257
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "Vista: Ogni Schieramento"
+msgstr "Mostra avanzamenti"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:258
@@ -6235,7 +6227,7 @@ msgstr ""
 #: src/gui/dialogs/achievements_dialog.cpp:103
 #: src/gui/dialogs/achievements_dialog.cpp:165
 msgid "Completed"
-msgstr ""
+msgstr "Completato"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_view^All Add-ons"
@@ -8454,49 +8446,3 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
 "Nella sezione «[$section|]» la chiave obbligatoria «$key|» non è impostata."
-
-#~ msgid ""
-#~ "The key '$key' is deprecated and support will be removed in version "
-#~ "$removal_version."
-#~ msgstr ""
-#~ "La chiave «$key» è deprecata e il supporto verrà rimosso nella versione "
-#~ "$removal_version."
-
-#~ msgid ""
-#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
-#~ "'$deprecated_key' will be removed in version $removal_version."
-#~ msgstr ""
-#~ "La chiave «$deprecated_key» è stata rinominata in «$key». Il supporto per "
-#~ "«$deprecated_key» verrà rimosso nella versione $removal_version."
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "Mostra sfere disimpegnate"
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "Questo utilizza i colori per sfere parziali e mosse."
-
-#, fuzzy
-#~ msgid "Player Hosted"
-#~ msgstr "Giocatore aggiunto"
-
-#~ msgid ""
-#~ "A terrain with a string with more than 4 characters has been found, the "
-#~ "affected terrain is:"
-#~ msgstr ""
-#~ "Un terreno con una stringa di più di 4 caratteri è stato trovato, il "
-#~ "terreno incriminato è:"
-
-#~ msgid "Active Troops:"
-#~ msgstr "Truppe attive:"
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "Truppe di riserva:"
-
-#~ msgid "By:"
-#~ msgstr "Da:"
-
-#~ msgid "Area to draw has negative size"
-#~ msgstr "L’area da disegnare ha un'estensione negativa"
-
-#~ msgid "Area to draw is larger than widget size"
-#~ msgstr "L’area da disegnare ha un'estensione maggiore di quella del widget"

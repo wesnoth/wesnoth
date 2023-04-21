@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-15 19:58-0500\n"
-"PO-Revision-Date: 2022-12-16 19:01+0100\n"
+"PO-Revision-Date: 2023-04-16 17:24+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -5552,16 +5552,17 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(premi $hotkey per continuare la mossa)"
 
 #: src/actions/undo.cpp:413
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "Errore di gioco"
+msgstr "Errore di ripetizione"
 
 #: src/actions/undo.cpp:414
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
+"Lo stack di ripetizione è fuori sincro. la causa più comune è un file di "
+"salvataggio corrotto o un codice WML bacatao nell scenario o nell’era. "
+"Dettagli:"
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
@@ -6512,7 +6513,7 @@ msgid ""
 msgstr ""
 "Errore:[advancefrom] non funziona più. Le unità '$lower_level' non saranno "
 "in grado di avanzare a '$higher_level'; si prega di chiedere al creatore "
-"dell'estensione di modificarla utilizzando piuttosto [modify_unit_type]."
+"dell’estensione di modificarla utilizzando piuttosto [modify_unit_type]."
 
 #: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
@@ -7001,28 +7002,26 @@ msgid "Match History — $player"
 msgstr "Storia delle Partite — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:102
-#, fuzzy
-#| msgid "Era:"
 msgid "Era: "
-msgstr "Era:"
+msgstr "Era: "
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:103
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:194
-#, fuzzy
-#| msgid "No units found."
 msgid "No game history found."
-msgstr "Nessuna unità trovata."
+msgstr "Nessuna storia del gioco trovata."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:208
 msgid "Request timed out."
-msgstr ""
+msgstr "Richiesta scaduta."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:218
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
+"La richiesta ha incontrato un errore inaspettato, si prega di consultare i "
+"log."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7224,22 +7223,18 @@ msgid "Planning mode deactivated!"
 msgstr "Modalità di pianificazione disattivata!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:317
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
-msgstr "Vuoi continuare?"
+msgstr "Vuoi comunque caricarlo?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:333
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
-msgstr "Il file che hai provato a caricare è danneggiato"
+msgstr ""
+"Il file che hai provato a caricare non contiene informazioni di replay. "
 
 #: src/hotkey/hotkey_handler_sp.cpp:337
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
-msgstr "Il file che hai provato a caricare è danneggiato"
+msgstr ""
+"Il file che hai provato a caricare non proviene dalla sessione corrente."
 
 #: src/language.cpp:115
 msgid "System default language"
@@ -7987,38 +7982,33 @@ msgstr "Turno cambiato"
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
 msgstr ""
-"Si è verificato un errore durante lo scaricamento della lista delle "
-"estensioni dal server."
+"Si è verificato un errore durante lo scaricamento del file. Controlla i log "
+"del gioco per avere ulteriori informazioni."
 
 #: src/network_download_file.cpp:64 src/network_download_file.cpp:79
 #: src/network_download_file.cpp:87
 msgid "Download error"
-msgstr ""
+msgstr "Errore scaricamento"
 
 #: src/network_download_file.cpp:68
 msgid "Confirm overwrite"
-msgstr ""
+msgstr "Conferma sovrascrittura"
 
 #: src/network_download_file.cpp:68
 msgid "Overwrite existing file?"
-msgstr ""
+msgstr "Sovrascrivo il file esistente?"
 
 #: src/network_download_file.cpp:81
 msgid "Download complete"
-msgstr ""
+msgstr "Scaricamento completato"
 
 #: src/network_download_file.cpp:81
-#, fuzzy
-#| msgid "The game has been saved."
 msgid "The file has been downloaded."
-msgstr "La partita è stata salvata."
+msgstr "Il file è stato scaricato."
 
 #: src/pathfind/pathfind.cpp:754
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -8285,31 +8275,24 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Quest’unità è stata pietrificata: non può muoversi né attaccare."
 
 #: src/reports.cpp:357
-#, fuzzy
-#| msgid "unhealable"
 msgid "unhealable: "
-msgstr "incurabile"
+msgstr "incurabile: "
 
 #: src/reports.cpp:358
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
+"Questa unità è incurabile. Non può essere curata né dai guaritori, né in un "
+"villaggio e non ottiene benefici dal riposo."
 
 #: src/reports.cpp:361
-#, fuzzy
-#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr "invisibile: "
+msgstr "invulnerabile: "
 
 #: src/reports.cpp:362
-#, fuzzy
-#| msgid ""
-#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr ""
-"Quest’unità è invisibile: non può essere vista né attaccata dalle unità "
-"nemiche."
+msgstr "Quest’unità è invulnerabile: non può essere ferita da nessun attacco."
 
 #: src/reports.cpp:440
 msgid "Ability: "
@@ -9007,24 +8990,18 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> punti movimento"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:543
-#, fuzzy
-#| msgid "$number damage"
-#| msgid_plural "$number damage"
 msgid "$number attack used"
 msgid_plural "$number attacks used"
-msgstr[0] "$number danno"
-msgstr[1] "$number danni"
+msgstr[0] "$number attacco utilizzato"
+msgstr[1] "$number attacchi utilizzati"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:552
-#, fuzzy
-#| msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
-#| msgid_plural ""
-#| "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
-msgstr[0] "<span color=\"$color\">$number_or_percent</span> attacco per turno"
-msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacchi per turno"
+msgstr[0] "<span color=\"$color\">$number_or_percent</span> attacco utilizzato"
+msgstr[1] ""
+"<span color=\"$color\">$number_or_percent</span> attacchi utilizzati"
 
 #: src/units/helper.cpp:59
 msgid "Level: "
@@ -9137,12 +9114,14 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"Impossibile creare il file di log nella directory $logdir. Questo errore è "
+"spesso causato dai permessi della cartella di salvataggio non corretti, "
+"accesso alla cartella ristretto dall’antivirus, o se si utilizza OneDrive "
+"per gestire la cartella \"I Miei Documenti\"."
 
 #: src/wesnoth.cpp:816
-#, fuzzy
-#| msgid "Logging"
 msgid "Logging Failure"
-msgstr "Logging"
+msgstr "Logging non riuscito"
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
@@ -9167,47 +9146,3 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1141
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
-
-#~ msgid "Availability: "
-#~ msgstr "Disponibilità: "
-
-#~ msgid "Must-have"
-#~ msgstr "Obbligatorio"
-
-#~ msgid "Unavailable"
-#~ msgstr "Non disponibile"
-
-#, fuzzy
-#~| msgid "Units"
-#~ msgid "Unit Test "
-#~ msgstr "Unità"
-
-#, fuzzy
-#~| msgid "Bomb"
-#~ msgid "Bob"
-#~ msgstr "Bomba"
-
-#~ msgid ""
-#~ "Some types of terrain give unique bonuses, such as healing or "
-#~ "illumination."
-#~ msgstr ""
-#~ "Alcuni tipi di terreno hanno dei bonus peculiari, quali abilità curative "
-#~ "o illuminazione."
-
-#~ msgid "Independent"
-#~ msgstr "Indipendente"
-
-# Da controllare l'utilizzo
-#~ msgid "No Mirror"
-#~ msgstr "Nessuno Specchio"
-
-# Da controllare l'utilizzo
-#~ msgid "No Ally Mirror"
-#~ msgstr "Nessuno Specchio Alleato"
-
-#~ msgid "<room>"
-#~ msgstr "<stanza>"
-
-#, fuzzy
-#~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
-#~ msgstr "<i>― Grande mago Delfador, 516AW </i>"
