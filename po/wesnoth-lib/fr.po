@@ -161,10 +161,8 @@ msgstr "Marais"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Forêt de palmier"
+msgstr "Forêt de varech"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -265,10 +263,8 @@ msgstr "Pavés gris entretenus"
 
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
-#, fuzzy
-#| msgid "Beach Sands"
 msgid "Rocky Sands"
-msgstr "Sables de plage"
+msgstr "Sables pierreux"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -442,10 +438,8 @@ msgstr ""
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:535
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Pont de bois"
+msgstr "Palissade de bois"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:544
@@ -903,14 +897,10 @@ msgstr ""
 msgid "Gulch"
 msgstr ""
 
-# Compte tenu du fait que ces chaînes sont destinées à être affichées dans l'éditeur de cartes, il me semble important de faire court. Si l'utilisateur ne sait pas à quoi sert une surcouche, ce n'est pas dans le libellé qu'il va l'apprendre.
-# Laurent
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1227
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Surcouche impraticable"
+msgstr "Ravin impraticable"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1240
@@ -1319,10 +1309,8 @@ msgstr "Village dracan"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:1996
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Village dracan"
+msgstr "Village dracan enneigé"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2011
@@ -1822,10 +1810,8 @@ msgstr "Pont de pierre ordinaire"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2875 data/core/terrain.cfg:2887
 #: data/core/terrain.cfg:2900
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Pont de pierre ordinaire"
+msgstr "Pont de pierre enneigé"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -2309,10 +2295,8 @@ msgstr ""
 #: data/core/terrain.cfg:3421 data/core/terrain.cfg:3432
 #: data/core/terrain.cfg:3443 data/core/terrain.cfg:3454
 #: data/core/terrain.cfg:3465
-#, fuzzy
-#| msgid "Game created"
 msgid "Deprecated"
-msgstr "Partie créée"
+msgstr "Obsolète"
 
 #. [settings]
 #: data/gui/default.cfg:23
@@ -4925,10 +4909,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/window/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Information de la carte"
+msgstr "Information additionnelle :"
 
 #. [label]
 #: data/gui/window/mp_report.cfg:191
@@ -6252,7 +6234,7 @@ msgid ""
 "Grid '$grid' row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"La ligne $rw de la grille « $grid » a un nombre différent de colonnes "
+"La ligne $row de la grille « $grid » a un nombre différent de colonnes "
 "($found trouvées, $expected attendues)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:103
@@ -6575,17 +6557,13 @@ msgstr "Voulez-vous désinstaller « $addon| » ?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1038
-#, fuzzy
-#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%d-%m-%Y %I:%M %p"
+msgstr "%d-%B-%Y %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #: src/gui/dialogs/addon/manager.cpp:1040
-#, fuzzy
-#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr "%d-%m-%Y %H:%M"
+msgstr "%d-%B-%Y %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1101
 msgid "url^None"
@@ -6841,10 +6819,8 @@ msgid "controller^Idle"
 msgstr "Inactif"
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Aucun"
+msgstr "Réservé"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -7197,10 +7173,8 @@ msgid "Lobby"
 msgstr "Vestibule"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:50
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
-msgstr "Parties"
+msgstr "Partie"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:505
 msgid "Waiting for players to choose factions..."
@@ -7301,8 +7275,6 @@ msgstr ""
 "réel des attaques infligées/subites."
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "Recrues"
 
@@ -7341,10 +7313,8 @@ msgid "Screenshot"
 msgstr "Capture d'écran"
 
 #: src/gui/dialogs/title_screen.cpp:443 src/hotkey/hotkey_command.cpp:298
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Choisissez le scénario de départ"
+msgstr "Choisissez le scénario de test"
 
 #: src/gui/dialogs/unit_create.cpp:196
 msgid "unit_variation^Default Variation"
