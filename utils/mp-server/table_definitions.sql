@@ -59,7 +59,8 @@ create table extra
 -- END_TIME: when the game ends, for any particular reason
 -- REPLAY_NAME: the file name of the replay create when the game is ended
 -- OOS: Y/N flag of whether the game encountered an OOS error
--- RELOAD: Y/N flag for whether the game allows observers
+-- RELOAD: Y/N flag for whether this is a new game or a reload of a previous game
+-- OBSERVERS: Y/N flag for whether the game allows observers
 -- PASSWORD: Y/N flag for whether the game had a password set
 -- PUBLIC: Y/N flag for whether the game will have a publicly accesible replay created for it
 create table game_info
