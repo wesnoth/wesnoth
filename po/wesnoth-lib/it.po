@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2022.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-02 09:55-0500\n"
-"PO-Revision-Date: 2022-01-21 13:03+0100\n"
+"PO-Revision-Date: 2023-04-16 14:56+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -5295,8 +5295,6 @@ msgstr "Mostra sfere non mosse"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "Mostra sfere parzialmente mosse"
 
@@ -5306,11 +5304,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Se una unità può essere ancora mossa ma non può attaccare, mostra una sfera "
+"bicolore movimento parziale / movimento completato."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Utilizza sfere bicolore per le unità disingaggiate"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5326,6 +5326,8 @@ msgstr "Mostra sfere alleati"
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Durate il turno di un alleato, utilizza una sfera bicolore per mostrare i "
+"movimenti"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5334,6 +5336,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Turante i turni dei tuoi alleati, le loro unità mostreranno delle sfere "
+"bicolore. Metà sfera sarà del colore dell’alleato e l’altra metà mostrerà se "
+"l’unità è stata ferma, parzialmente mossa o completamente mossa."
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
