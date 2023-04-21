@@ -57,14 +57,11 @@ create table extra
 -- GAME_NAME: the game's displayed title in the lobby
 -- START_TIME: when the players enter the game and begin playing
 -- END_TIME: when the game ends, for any particular reason
--- MAP_NAME: the mp_scenario attribute value
--- MAP_SOURCE_ADDON: the add-on the map comes from
--- MAP_VERSION: the version of the add-on the map comes from
--- ERA_NAME: the mp_era attribute value
--- ERA_SOURCE_ADDON: the add-on the era comes from
--- ERA_VERSION: the version of the add-on the era comes from
 -- REPLAY_NAME: the file name of the replay create when the game is ended
 -- OOS: Y/N flag of whether the game encountered an OOS error
+-- RELOAD: Y/N flag for whether the game allows observers
+-- PASSWORD: Y/N flag for whether the game had a password set
+-- PUBLIC: Y/N flag for whether the game will have a publicly accesible replay created for it
 create table game_info
 (
     INSTANCE_UUID    CHAR(36) NOT NULL,
@@ -92,6 +89,7 @@ CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
 -- CLIENT_VERSION: the version of the wesnoth client used to connect
 -- CLIENT_SOURCE: where the wesnoth client was downloaded from - SourceForge, Steam, etc
 -- USER_NAME: the username logged in with
+-- LEADERS: the leader(s) for the side. if multiple leaders are found, then they are comma delimited.
 create table game_player_info
 (
     INSTANCE_UUID  CHAR(36) NOT NULL,
@@ -103,6 +101,7 @@ create table game_player_info
     CLIENT_VERSION VARCHAR(255) NOT NULL DEFAULT '',
     CLIENT_SOURCE  VARCHAR(255) NOT NULL DEFAULT '',
     USER_NAME      VARCHAR(255) NOT NULL DEFAULT '',
+    LEADERS        VARCHAR(255) NOT NULL DEFAULT '',
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);
@@ -112,7 +111,7 @@ CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);
 -- ID: the id of the content
 -- NAME: the content's user-visible name
 -- ADDON_ID: the id of the add-on that the particular content came from
--- ADDON_VERSION: the version of the source add-on
+-- ADDON_VERSION: the version of the add-on
 create table game_content_info
 (
     INSTANCE_UUID     CHAR(36) NOT NULL,
@@ -122,7 +121,7 @@ create table game_content_info
     NAME              VARCHAR(255),
     ADDON_ID          VARCHAR(100) NOT NULL,
     ADDON_VERSION     VARCHAR(255) NOT NULL,
-    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, SOURCE)
+    PRIMARY KEY (INSTANCE_UUID, GAME_ID, TYPE, ID, ADDON_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about an uploaded addon
@@ -134,6 +133,8 @@ create table game_content_info
 -- FORUM_AUTH: whether forum authentication is to be used when uploading
 -- UPLOADED_ON: when the addon was uploaded
 -- FEEDBACK_TOPIC: the forum topic ID where feedback for the addon can be posted, 0 if not set
+-- DOWNLOAD_COUNT: the number of times the add-on has been downloaded by players (does not count downloads from https://addons.wesnoth.org)
+-- UPLOADER: the author attribute or the chosen secondary_author from the _server.pbl
 create table addon_info
 (
     INSTANCE_VERSION VARCHAR(255) NOT NULL,
@@ -144,7 +145,23 @@ create table addon_info
     FORUM_AUTH       BIT(1) NOT NULL,
     UPLOADED_ON      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FEEDBACK_TOPIC   INT UNSIGNED NOT NULL,
+    DOWNLOAD_COUNT   INT UNSIGNED NOT NULL DEFAULT 0,
+    UPLOADER         VARCHAR(255),
     PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, VERSION)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- listing of the primary author and any secondary authors when forum_auth is used
+-- INSTANCE_VERSION: the version of the addons server instance
+-- ADDON_ID: the ID of the addon (folder name)
+-- AUTHOR: the author attribute or the chosen secondary_author from the _server.pbl
+-- IS_PRIMARY: whether this is the primary author or not
+create table addon_authors
+(
+    INSTANCE_VERSION VARCHAR(255) NOT NULL,
+    ADDON_ID         VARCHAR(255) NOT NULL,
+    AUTHOR           VARCHAR(255) NOT NULL,
+    IS_PRIMARY       BIT(1) NOT NULL,
+    PRIMARY KEY (INSTANCE_VERSION, ADDON_ID, AUTHOR)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- history of user sessions

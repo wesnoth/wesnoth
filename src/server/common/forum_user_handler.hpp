@@ -167,8 +167,9 @@ public:
 	 * @param version The version of Wesnoth this player is using.
 	 * @param source The source where this player downloaded Wesnoth (ie: Steam, SourceForge, etc).
 	 * @param current_user The player currently in control of this side.
+	 * @param leaders The comma-delimited list of leader unit types for that side.
 	 */
-	void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
+	void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders);
 
 	/**
 	 * Inserts information about the content being played.

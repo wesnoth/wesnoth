@@ -132,7 +132,7 @@ class dbconn
 		/**
 		 * @see forum_user_handler::db_insert_game_player_info().
 		 */
-		void insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
+		void insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders);
 
 		/**
 		 * @see forum_user_handler::db_insert_game_content_info().

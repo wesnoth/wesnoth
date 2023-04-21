@@ -1,4 +1,4 @@
-select content.ID, player.FACTION, count(*) as SIDE_COUNT
+select content.ID, player.LEADERS, count(*) as LEADER_COUNT
 from wesnothd_game_info game
 inner join wesnothd_game_player_info player
    on game.INSTANCE_UUID = player.INSTANCE_UUID
@@ -13,5 +13,6 @@ where YEAR(game.START_TIME) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
   and MONTH(game.START_TIME) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
   and game.END_TIME is not NULL
   and TIMESTAMPDIFF(MINUTE, game.START_TIME, game.END_TIME) > 5
-group by content.ID, player.FACTION
+group by content.ID, player.LEADERS
 order by count(*) desc
+
