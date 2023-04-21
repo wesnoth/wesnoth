@@ -1742,7 +1742,27 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 						source = "Default";
 					}
 				}
-				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
+
+				// approximately determine leader(s) for the side like the client does
+				// useful generally to know how often leaders are used vs other leaders
+				// also as an indication for which faction was chosen if a custom recruit list is provided since that results in "Custom" in the faction field
+				std::vector<std::string> leaders;
+				// if a type= attribute is specified for the side, add it
+				if(side.attr("type") != "") {
+					leaders.emplace_back(side.attr("type").to_string());
+				}
+				// add each [unit] in the side that has canrecruit=yes
+				for(const auto unit : side.children("unit")) {
+					if(unit->attr("canrecruit") == "yes") {
+						leaders.emplace_back(unit->attr("type").to_string());
+					}
+				}
+				// add any [leader] specified for the side
+				for(const auto leader : side.children("leader")) {
+					leaders.emplace_back(leader->attr("type").to_string());
+				}
+
+				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string(), utils::join(leaders));
 			}
 		}
 
