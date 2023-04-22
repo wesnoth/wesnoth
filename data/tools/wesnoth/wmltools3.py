@@ -497,7 +497,8 @@ class Reference:
         self.lineno_end = lineno_end
         self.docstring = docstring
         self.args = args
-        self.optional_args = optional_args
+        self._optional_args = optional_args
+        self.optional_args = {}
         self.deprecated = deprecated
         self.deprecation_level = deprecation_level
         self.removal_version = removal_version
@@ -714,10 +715,15 @@ class CrossRef:
                     elif state == States.MACRO_HEADER and line.strip():
                         if line.strip().startswith("#arg"):
                             state = States.MACRO_OPTIONAL_ARGUMENT
-                            here.optional_args.append(line.strip().split()[1])
+                            here._optional_args.append([line.strip().split()[1],""])
                         elif line.strip()[0] != "#":
                             state = States.MACRO_BODY
-                    elif state == States.MACRO_OPTIONAL_ARGUMENT and "#endarg" in line:
+                    elif state == States.MACRO_OPTIONAL_ARGUMENT and not "#endarg" in line:
+                        here._optional_args[-1][1] += line
+                    elif state == States.MACRO_OPTIONAL_ARGUMENT:
+                        end_arg_index = line.index("#endarg")
+                        here._optional_args[-1][1] += line[0:end_arg_index]
+                        here.optional_args = dict(here._optional_args)
                         state = States.MACRO_HEADER
                         continue
                     if state == States.MACRO_HEADER:
