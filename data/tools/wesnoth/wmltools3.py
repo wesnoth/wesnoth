@@ -20,6 +20,13 @@ l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.\-\[\]~\*,]*\.(png|jpe?g|webp)(?=(~.*)?)"
 
+EQUALS = '='
+QUOTE = '"'
+OPEN_BRACE = '{'
+CLOSE_BRACE = '}'
+OPEN_PARENS = '('
+CLOSE_PARENS = ')'
+
 class Substitution(object):
     __slots__ = ["sub", "start", "end"]
     def __init__(self, sub, start, end):
@@ -253,7 +260,7 @@ class Forest:
         return allfiles
 
     def __iter__(self):
-        "Return a iterator that walks through all files."
+        "Return a generator that walks through all files."
         for (directory, tree) in zip(self.dirpath, self.forest):
             for filename in tree:
                 yield (directory, filename)
@@ -287,13 +294,17 @@ def isresource(filename):
     return ext and ext[1:] in resource_extensions
 
 def parse_macroref(start, line):
-    def handle_argument():
-        nonlocal opt_arg
-        nonlocal arg
-        nonlocal optional_args
+    def handle_argument(buffer):
         nonlocal args
+        nonlocal optional_args
 
-        arg = arg.strip()
+        opt_arg = ""
+
+        arg = "".join(buffer)
+        # arg may be empty, so arg[0] may be OOB.
+        if arg[0:1].isspace():
+            arg = arg[1:]
+
         # is this an optional argument?
         # argument names are usually made of uppercase letters, numbers and underscores
         # if they're optional, they're followed by an equal sign
@@ -305,46 +316,116 @@ def parse_macroref(start, line):
             opt_arg = ""
         else:
             args.append(arg)
-        arg = ""
+        buffer.clear()
+        return True
 
-    brackdepth = parendepth = 0
-    instring = False
-    optional_args = {}
+    buffer = []
     args = []
-    opt_arg = ""
-    arg = ""
+    optional_args = {}
+
+    depth = {
+        EQUALS: 0,
+        OPEN_BRACE: 0,
+        OPEN_PARENS: 0,
+        QUOTE: 0,
+    }
+    wrapper_stack = []
+    prev_added_arg = False
+
+    # close_token - Closes all active scopes, until the matching scope is found.
+    # This is useful, for example, in {MACRO OPT_NAME=VAL}
+    # In this example, close_token("}") will implicitly close the
+    # optional argument scope.
+    def close_token(token):
+        while len(wrapper_stack) > 0:
+            last_token = wrapper_stack.pop()
+            depth[last_token] -= 1
+            if last_token == token:
+                break
+        else:
+            return False
+        return True
+
+    # close_if_token - Closes the current scope, if it matches the given token.
+    # Atomic version of close_token, which provides expressivity.
+    def close_if_token(token):
+        if wrapper_stack[-1] == token:
+            wrapper_stack.pop()
+            depth[token] -= 1
+            return True
+        return False
+
+    def open_token(token):
+        wrapper_stack.append(token)
+        depth[token] += 1
+
     for i in range(start, len(line)):
-        if instring:
-            if line[i] == '"':
-                instring = False
-            arg += line[i]
-        elif line[i] == '"':
-            instring = not instring
-            arg += line[i]
-        elif line[i] == "{":
-            if brackdepth > 0:
-                arg += line[i]
-            brackdepth += 1
-        elif line[i] == "}":
-            brackdepth -= 1
-            if brackdepth == 0:
-                if not line[i-1].isspace():
-                    handle_argument()
+        added_arg = False
+        if depth[QUOTE] > 0:
+            # If EOL, line[i+1] may be OOB, but slice is valid.
+            if line[i] == QUOTE and line[i+1:i+2] != QUOTE:
+                close_token(QUOTE)
+            buffer.append(line[i])
+        elif line[i] == QUOTE:
+            open_token(QUOTE)
+            buffer.append(line[i])
+        elif line[i] == OPEN_BRACE:
+            open_token(OPEN_BRACE)
+            buffer.append(line[i])
+        elif line[i] == CLOSE_BRACE:
+            if wrapper_stack[-1] != OPEN_PARENS:
+                close_token(OPEN_BRACE)
+            if depth[OPEN_BRACE] == 0:
+                # Flush at end
+                if not prev_added_arg and len(buffer) > 0:
+                    added_arg = handle_argument(buffer)
                 break
             else:
-                arg += line[i]
-        elif line[i] == "(":
-            parendepth += 1
-        elif line[i] == ")":
-            parendepth -= 1
-        elif not line[i-1].isspace() and \
-             line[i].isspace() and \
-             brackdepth == 1 and \
-             parendepth == 0:
-            handle_argument()
-        elif not line[i].isspace() or parendepth > 0:
-            arg += line[i]
-    return (args, optional_args, brackdepth, parendepth)
+                buffer.append(line[i])
+        elif line[i] == OPEN_PARENS:
+            if wrapper_stack[-1] == OPEN_PARENS or wrapper_stack[-2:] == [OPEN_PARENS, EQUALS]:
+                # Char in an argument
+                buffer.append(line[i])
+            else:
+                if wrapper_stack[-1] == EQUALS or (wrapper_stack[-1] == OPEN_BRACE and \
+                    not line[i-1].isspace()):
+                    close_if_token(EQUALS)
+                    if depth[OPEN_BRACE] == 1 and not prev_added_arg:
+                        added_arg = handle_argument(buffer)
+                open_token(OPEN_PARENS)
+                if depth[OPEN_BRACE] != 1:
+                    buffer.append(line[i])
+        elif line[i] == CLOSE_PARENS:
+            # Source has too many closing parens.
+            quit = not close_token(OPEN_PARENS)
+            if depth[OPEN_BRACE] != 1:
+                buffer.append(line[i])
+            elif not prev_added_arg or line[i-1] == OPEN_PARENS:
+                # {MACRO arg1()} has two arguments
+                added_arg = handle_argument(buffer)
+            if quit:
+                added_arg = handle_argument(buffer)
+                break
+        elif line[i] == EQUALS and re.match(r'^([A-Z0-9_]+?)', line[i-1]):
+            open_token(EQUALS)
+            buffer.append(line[i])
+        elif line[i].isspace():
+            if line[i-1].isspace():
+                # Ignore consecutive spaces
+                continue
+            if not prev_added_arg and \
+             depth[OPEN_BRACE] == 1 and \
+             depth[OPEN_PARENS] == 0:
+                close_if_token(EQUALS)
+                added_arg = handle_argument(buffer)
+            buffer.append(line[i])
+        else:
+            buffer.append(line[i])
+
+        prev_added_arg = added_arg
+
+    args.pop(0)
+    return (args, optional_args, depth[OPEN_BRACE] > 0)
 
 def formaltype(f):
     # Deduce the expected type of the formal
@@ -495,7 +576,7 @@ class Reference:
         self.lineno_end = lineno_end
         self.docstring = docstring
         self.args = args
-        self._optional_args = optional_args
+        self._raw_optional_args = optional_args
         self.optional_args = {}
         self.body = []
         self.deprecated = deprecated
@@ -525,7 +606,7 @@ class Reference:
             return self.filename > other.filename
 
     def mismatches(self):
-        copy = Reference(self.namespace, self.filename, self.lineno, self.lineno_end, self.docstring, self.args, self._optional_args)
+        copy = Reference(self.namespace, self.filename, self.lineno, self.lineno_end, self.docstring, self.args, self._raw_optional_args)
         copy.undef = self.undef
         for filename in self.references:
             mis = [(ln,a,oa) for (ln,a,oa) in self.references[filename] if a is not None and not argmatch(self.args, self.optional_args, a, oa)]
@@ -716,15 +797,15 @@ class CrossRef:
                     elif state == States.MACRO_HEADER and line.strip():
                         if line.strip().startswith("#arg"):
                             state = States.MACRO_OPTIONAL_ARGUMENT
-                            here._optional_args.append([line.strip().split()[1],""])
+                            here._raw_optional_args.append([line.strip().split()[1],""])
                         elif line.strip()[0] != "#":
                             state = States.MACRO_BODY
                     elif state == States.MACRO_OPTIONAL_ARGUMENT and not "#endarg" in line:
-                        here._optional_args[-1][1] += line
+                        here._raw_optional_args[-1][1] += line
                     elif state == States.MACRO_OPTIONAL_ARGUMENT:
                         end_arg_index = line.index("#endarg")
-                        here._optional_args[-1][1] += line[0:end_arg_index]
-                        here.optional_args = dict(here._optional_args)
+                        here._raw_optional_args[-1][1] += line[0:end_arg_index]
+                        here.optional_args = dict(here._raw_optional_args)
                         state = States.MACRO_HEADER
                         continue
                     if state == States.MACRO_HEADER:
@@ -897,12 +978,10 @@ class CrossRef:
                                     # Count the number of actual arguments.
                                     # Set args to None if the call doesn't
                                     # close on this line
-                                    (args, optional_args, brackdepth, parendepth) = parse_macroref(match.start(0), line)
-                                    if brackdepth > 0 or parendepth > 0:
+                                    (args, optional_args, is_unfinished) = parse_macroref(match.start(0), line)
+                                    if is_unfinished:
                                         args = None
                                         optional_args = None
-                                    else:
-                                        args.pop(0)
                                     #if args:
                                     #    print('"%s", line %d: args of %s is %s' \
                                     #          % (fn, n+1, name, args))
