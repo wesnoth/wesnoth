@@ -969,9 +969,10 @@ class CrossRef:
                 except UnicodeDecodeError as e:
                     pass # to not have the invalid UTF-8 file warning printed twice
         # Check whether each namespace has a defined export property
-        for namespace in self.dirpath:
-            if namespace not in self.properties or "export" not in self.properties[namespace]:
-                print("warning: %s has no export property" % namespace)
+        if self.warnlevel >= 1:
+            for namespace in self.dirpath:
+                if namespace not in self.properties or "export" not in self.properties[namespace]:
+                    print("warning: %s has no export property" % namespace)
     def exports(self, namespace):
         return namespace in self.properties and self.properties[namespace].get("export") == "yes"
     def subtract(self, filelist):
