@@ -576,7 +576,7 @@ class CrossRef:
         if self.exports(defn.namespace):
             # Macros and resources in subtrees with export=yes are global
             return True
-        elif not self.filelist.neighbors(defn.filename, fn):
+        elif defn.filename != fn and not self.filelist.neighbors(defn.filename, fn):
             # Otherwise, must be in the same subtree.
             return False
         else:
@@ -782,10 +782,16 @@ class CrossRef:
         except UnicodeDecodeError as e:
             print('wmlscope: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
 
-    def __init__(self, dirpath=[], exclude="", warnlevel=0, progress=False):
+    def __init__(self, dirpath=[], filelist=None, exclude="", warnlevel=0, progress=False):
         "Build cross-reference object from the specified filelist."
-        self.filelist = Forest(dirpath, exclude)
-        self.dirpath = [x for x in dirpath if not re.search(exclude, x)]
+        if filelist is None:
+            self.filelist = Forest(dirpath, exclude)
+            self.dirpath = [x for x in dirpath if not re.search(exclude, x)]
+        else:
+            # All specified files share the same namespace
+            self.filelist = [("src", filename) for filename in filelist]
+            self.dirpath = ["src"]
+            
         self.warnlevel = warnlevel
         self.xref = {}
         self.fileref = {}
