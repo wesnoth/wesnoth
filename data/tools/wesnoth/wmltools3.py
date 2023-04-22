@@ -499,6 +499,7 @@ class Reference:
         self.args = args
         self._optional_args = optional_args
         self.optional_args = {}
+        self.body = []
         self.deprecated = deprecated
         self.deprecation_level = deprecation_level
         self.removal_version = removal_version
@@ -692,6 +693,8 @@ class CrossRef:
                             current_docstring = None
                             state = States.OUTSIDE
                     elif state != States.OUTSIDE and line.strip().endswith("#enddef"):
+                        end_def_index = line.index("#enddef")
+                        here.body.append(line[0:end_def_index])
                         here.hash.update(line.encode("utf8"))
                         here.hash = here.hash.digest()
                         if name in self.xref:
@@ -748,6 +751,8 @@ class CrossRef:
                                 print("Deprecation line not matched found in {}, line {}".format(filename, n+1), file=sys.stderr)
                         else:
                             here.docstring += line.lstrip()[1:]
+                    if state == States.MACRO_BODY:
+                        here.body.append(line)
                     if state in (States.MACRO_HEADER, States.MACRO_OPTIONAL_ARGUMENT, States.MACRO_BODY):
                         here.hash.update(line.encode("utf8"))
                     elif line.strip().startswith("#undef"):
