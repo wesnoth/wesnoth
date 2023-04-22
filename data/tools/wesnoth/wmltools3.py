@@ -251,8 +251,9 @@ class Forest:
         for tree in self.forest:
             allfiles += tree
         return allfiles
-    def generator(self):
-        "Return a generator that walks through all files."
+
+    def __iter__(self):
+        "Return a iterator that walks through all files."
         for (directory, tree) in zip(self.dirpath, self.forest):
             for filename in tree:
                 yield (directory, filename)
@@ -794,7 +795,7 @@ class CrossRef:
         all_in = []
         if self.warnlevel >=2 or progress:
             print("*** Beginning definition-gathering pass...")
-        for (namespace, filename) in self.filelist.generator():
+        for (namespace, filename) in self.filelist:
             all_in.append((namespace, filename))
             if self.warnlevel > 1:
                 print(filename + ":")
