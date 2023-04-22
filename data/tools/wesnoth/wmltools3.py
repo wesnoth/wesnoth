@@ -489,11 +489,12 @@ def argmatch(formals, optional_formals, actuals, optional_actuals):
 @total_ordering
 class Reference:
     "Describes a location by file and line."
-    def __init__(self, namespace, filename, lineno=None, docstring=None, args=None,
+    def __init__(self, namespace, filename, lineno=None, lineno_end=None, docstring=None, args=None,
                  optional_args=None, deprecated=False, deprecation_level=0, removal_version=None):
         self.namespace = namespace
         self.filename = filename
         self.lineno = lineno
+        self.lineno_end = lineno_end
         self.docstring = docstring
         self.args = args
         self.optional_args = optional_args
@@ -524,7 +525,7 @@ class Reference:
             return self.filename > other.filename
 
     def mismatches(self):
-        copy = Reference(self.namespace, self.filename, self.lineno, self.docstring, self.args, self.optional_args)
+        copy = Reference(self.namespace, self.filename, self.lineno, self.lineno_end, self.docstring, self.args, self._optional_args)
         copy.undef = self.undef
         for filename in self.references:
             mis = [(ln,a,oa) for (ln,a,oa) in self.references[filename] if a is not None and not argmatch(self.args, self.optional_args, a, oa)]
@@ -656,7 +657,7 @@ class CrossRef:
                                   % (filename, n+1), file=sys.stderr)
                         else:
                             name = tokens[1]
-                            here = Reference(namespace, filename, n+1, line, args=tokens[2:], optional_args=[])
+                            here = Reference(namespace, filename, n+1, line, None, args=tokens[2:], optional_args=[])
                             here.hash = hashlib.md5()
                             here.docstring = line.lstrip()[8:] # Strip off #define_
                             current_docstring = None
@@ -706,6 +707,8 @@ class CrossRef:
                                             % (here, name, defn), file=sys.stderr)
                         if name not in self.xref:
                             self.xref[name] = []
+
+                        here.lineno_end = n+1
                         self.xref[name].append(here)
                         state = States.OUTSIDE
                     elif state == States.MACRO_HEADER and line.strip():
