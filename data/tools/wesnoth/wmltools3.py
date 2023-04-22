@@ -300,8 +300,6 @@ def parse_macroref(start, line):
         # stop matching on the first one, because the argument value might contain one too
         if re.match(r"^([A-Z0-9_]+?)=", arg):
             opt_arg, arg = arg.split("=", 1)
-        if arg.startswith('"') and arg.endswith('"'):
-            arg = arg[1:-1].strip()
         if opt_arg:
             optional_args[opt_arg] = arg
             opt_arg = ""
