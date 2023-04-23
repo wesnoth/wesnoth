@@ -1,18 +1,8 @@
-## Version 1.17.15+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.17.16
  ### Translations
    * Updated translations: British English, French, Italian
- ### Units
- ### User interface
  ### WML Engine
- ### Miscellaneous and Bug Fixes
+   * Fixed a crash when encountering a scenario with missing sides (issues #7550,#7553,#7554)
 
 ## Version 1.17.15
  ### Multiplayer
