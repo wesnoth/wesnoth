@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-15 19:58-0500\n"
+"POT-Creation-Date: 2023-04-22 22:24-0500\n"
 "PO-Revision-Date: 2023-01-27 15:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -6951,7 +6951,7 @@ msgid "Error while reading the WML: "
 msgstr "读取WML文件时出错： "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "Game Over"
 msgstr "游戏结束"
 
@@ -7059,7 +7059,7 @@ msgstr "时代："
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:194
+#: src/gui/dialogs/multiplayer/match_history.cpp:195
 #, fuzzy
 #| msgid "No units found."
 msgid "No game history found."
@@ -8092,13 +8092,13 @@ msgstr "没有可用的任务目标"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "正在撤销还没传输到服务器的操作。"
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:444
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。你想保存游戏吗？"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8106,7 +8106,7 @@ msgstr ""
 "\n"
 "你想要保存游戏吗？"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8151,11 +8151,11 @@ msgstr ""
 "此多人游戏使用了替代用的随机模式，如果你不知道这意味着什么，那就说明有人在作"
 "弊，或者重新载入了损坏的游戏存档。"
 
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "The game is over."
 msgstr "游戏结束了。"
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
 msgstr "现在是$name|的回合"
 
@@ -9053,7 +9053,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2437
+#: src/units/unit.cpp:2438
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 

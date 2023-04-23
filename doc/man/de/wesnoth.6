@@ -103,21 +103,21 @@ Informationen hierzu verfügbar).
 Aktiviert einen Debugmechanismus für Lua.
 .TP 
 \fB\-\-strict\-lua\fP
-disallow deprecated Lua API calls
+Unterstützung für veraltete Lua\-Aufrufe deaktivieren.
 .TP 
-\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
-diffs the two WML files; does not preprocess them first (to do that, run
-them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
-to the file indicated by \fI\-\-output\fP.
+\fB\-D,\-\-diff\fP\fI\ Linke\-Datei\fP\fB\ \fP\fIRechte\-Datei\fP
+Zeigt die Unterschiede zwischen zwei WML Dateien an. Der Präprozessor wird
+nicht verwendet (falls das gewünscht ist, verwende erst \fB\-p\fP). Gibt die
+Unterschiede als DiffWML im Terminal aus, oder speichert sie in der mit
+\fI\-\-output\fP angegebenen Datei.
 .TP 
 \fB\-e[\fP\fIDatei\fP\fB],\ \-\-editor[\fP\fI=Datei\fP\fB]\fP
 Den im Spiel integrierten Karteneditor direkt starten. Falls eine \fIDatei\fP
 angegeben wurde, verhält es sich wie \fB\-l \-\-load\fP.
 .TP 
 \fB\-\-fps\fP
-displays the number of frames per second the game is currently running at in
-a corner of the screen as well as writes these values to a file in the
-userdata directory.
+Aktiviert die Anzeige der Bilder pro Sekunde im Spiel und speichert die
+Werte ebenfalls in einer Datei im Verzeichnis für Nutzerdaten.
 .TP 
 \fB\-f, \-\-fullscreen\fP
 Startet das Programm im Vollbildmodus.
@@ -203,7 +203,7 @@ Startet das Spiel ohne Graphische Oberfläche. Nur in Kombination mit
 \fB\-\-multiplayer\fP oder \fB\-\-screenshot\fP oder \fB\-\-plugin\fP verfügbar.
 .TP 
 \fB\-\-nobanner\fP
-suppress the startup banner.
+Zeigt im Terminal kein Startup\-Banner an.
 .TP 
 \fB\-\-nomusic\fP
 Deaktiviert die Musik im Spiel.
@@ -215,12 +215,15 @@ Deaktiviert die Musik im Spiel.
 \fB\-\-nosound\fP
 Deaktiviert jegliche Soundeffekte im Spiel.
 .TP 
-\fB\-\-output\fP\fI\ file\fP
-output to the specified file. Applicable to diffing operations.
+\fB\-\-output\fP\fI\ Dateiname\fP
+Speichert die Ausgabe in der angegebenen Datei, anstatt sie im Terminal
+auszugeben. Zusammen mit den Diff\-Optionen verwendbar.
 .TP 
 \fB\-\-password\fP\fI\ Passwort\fP
-Benutzt das angegebene \fIPasswort\fP um sich zu einem Server zu verbinden,
-andere Einstellungen werden ignoriert. Ist unsicher.
+Benutzt das angegebene \fIPasswort\fP um sich zu einem Server zu verbinden. Ist
+insofern unsicher, dass es zum einen in der Prozesstabelle für alle Prozesse
+des Systems einsehbar ist und zum anderen ggf. in einer Datei wie
+~/.bash_history geloggt wird.
 .TP 
 \fB\-\-plugin\fP\fI\ Skript\-Datei\fP
 (experimentell) lädt eine \fISkript\-Datei\fP welche ein Wesnoth Plugin
@@ -228,10 +231,10 @@ definiert. Ähnlich zur Option \fB\-\-script\fP, aber die Lua\-Datei soll hierbe
 eine Funktion zurpckliefern. Diese wird als Korutine ausgeführt und
 regelmäßig aufgerufen.
 .TP 
-\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
-applies a DiffWML patch to a WML file; does not preprocess either of the
-files.  Outputs the patched WML to standard output or to the file indicated
-by \fI\-\-output\fP.
+\fB\-P,\-\-patch\fP\fI\ WML\-Datei\fP\fB\ \fP\fIPatch\-Datei\fP
+Wendet ein DiffWML Patch auf eine WML\-Datei an. Der Präprozessor dabei nicht
+verwendet. Das Ergebnis wird im Terminal ausgegeben, oder in die mit
+\fI\-\-output\fP angegebene Datei.
 .TP 
 \fB\-p,\ \-\-preprocess\fP\fI\ Quelldatei/Verzeichnis\fP\fB\ \fP\fIZielverzeichnis\fP
 Eine angegebene Datei/Verzeichnis vorverarbeiten. Wenn ein Verzeichnis
@@ -276,7 +279,7 @@ Erzeugt die Spielverzeichnisse und gibt Informationen für Bugreports aus.
 .TP 
 \fB\-\-rng\-seed\fP\fI\ Zahl\fP
 Füttert den Zufallszahlengenerator mit der angegebenen \fIZahl\fP. Beispiel:
-\fB\-\-rng\-seed\fP \fB0\fP.
+\fB\-\-rng\-seed\fP \fB0\fP
 .TP 
 \fB\-\-screenshot\fP\fI\ Karte\fP\fB\ \fP\fIAusgabe\fP
 Erzeugt ein Bildschirmfoto der \fIKarte\fP und speichert ihn in einer Datei
@@ -317,8 +320,9 @@ wiederum beliebige Pakete geladen werden können. Nicht mit fremden Skripten
 verwenden! Dadurch wird die Sandbox aufgebrochen, Lua hat dann dieselben
 Zugriffsrechte wie Wesnoth.
 .TP 
-\fB\-S,\-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\-\-validate\fP.
+\fB\-S,\-\-use\-schema\fP\fI\ Pfad\fP
+Gibt dem Pfad zu einem WML Schema an, welches für \fB\-V,\-\-validate\fP verwendet
+wird.
 .TP 
 \fB\-\-userconfig\-dir\fP\fI\ Name\fP
 Setzt das Konfigurationsverzeichnis des Benutzers auf \fIName\fP in $HOME oder
@@ -346,20 +350,20 @@ Zeigt an, wo sich das Verzeichnis für die Nutzerdaten (Spielstände, Add\-ons,
 …) befindet.
 .TP 
 \fB\-\-username\fP\fI\ Benutzername\fP
-Benutzt den angegebene \fIBenutzernamen\fP um sich zu einem Server zu
-verbinden, andere Einstellungen werden ignoriert.
+Benutzt den angegebenen \fIBenutzernamen\fP um sich zu einem Server zu
+verbinden.
 .TP 
-\fB\-\-validate\fP\fI\ path\fP
-validates a file against the WML schema.
+\fB\-\-validate\fP\fI\ Pfad\fP
+Validiert eine Datei gegen ein WML Schema.
 .TP 
-\fB\-\-validate\-addon\fP\fI\ addon_id\fP
-validates the WML of the given addon as you play.
+\fB\-\-validate\-addon\fP\fI\ Addon\-ID\fP
+Validiert das WML des angegebenen Add\-ons während des Spielens.
 .TP 
 \fB\-\-validate\-core\fP
-validates the core WML as you play.
+Validiert das WML des Hauptspiels des Spielens.
 .TP 
-\fB\-\-validate\-schema \ path\fP
-validates a file as a WML schema.
+\fB\-\-validate\-schema \ Pfad\fP
+Validiert, ob eine Datei ein korrektes WML\-Schema ist.
 .TP 
 \fB\-\-validcache\fP
 Nimmt an, dass der Cache gültig ist. (gefährlich)
@@ -368,7 +372,8 @@ Nimmt an, dass der Cache gültig ist. (gefährlich)
 Zeigt die Versionsnummer an und beendet das Programm.
 .TP 
 \fB\-\-simple\-version\fP
-shows the version number and nothing else, then exits.
+Zeigt nur die Versionsnummer ohne sonstige Informationen an und beendet das
+Programm.
 .TP 
 \fB\-w, \-\-windowed\fP
 Startet das Programm im Fenstermodus.

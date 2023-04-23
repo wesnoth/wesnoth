@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-15 19:58-0500\n"
+"POT-Creation-Date: 2023-04-22 22:24-0500\n"
 "PO-Revision-Date: 2019-03-28 22:12+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -6468,7 +6468,7 @@ msgid "Error while reading the WML: "
 msgstr "Klaida, skaitant WML: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "Game Over"
 msgstr "Žaidimas baigtas"
 
@@ -6576,7 +6576,7 @@ msgstr "Era:"
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:194
+#: src/gui/dialogs/multiplayer/match_history.cpp:195
 #, fuzzy
 #| msgid "No units found."
 msgid "No game history found."
@@ -7665,7 +7665,7 @@ msgstr "Nėra jokių tikslų"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Atšaukiami dar neperduoti serveriui ėjimai."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:444
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7673,7 +7673,7 @@ msgstr ""
 "Nutrūko tinklo ryšys ir žaidimas negali tęstis. Ar norite išsaugoti šį "
 "žaidimą?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "Do you really want to surrender the game?"
 msgid ""
@@ -7681,7 +7681,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Ar tikrai norite pasiduoti šiame žaidime?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "The game has been saved."
 msgid ""
@@ -7726,11 +7726,11 @@ msgstr ""
 "nežinote, ką reiškia šis pranešimas, greičiausiai kažkas sukčiauja arba "
 "kažkas įkėlė sugadintą išsaugojimą."
 
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "The game is over."
 msgstr "Žaidimas baigtas."
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
 msgstr "Dabar $name| ėjimas"
 
@@ -8676,7 +8676,7 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> ataka per ėjimą"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per ėjimą"
 
-#: src/units/unit.cpp:2437
+#: src/units/unit.cpp:2438
 msgid "$effect_description per level"
 msgstr "$effect_description lygiui"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-15 19:58-0500\n"
+"POT-Creation-Date: 2023-04-22 22:24-0500\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -6929,7 +6929,7 @@ msgid "Error while reading the WML: "
 msgstr "WML을 읽는 중 오류 발생: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "Game Over"
 msgstr "게임 오버"
 
@@ -7040,7 +7040,7 @@ msgstr "시대:"
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:194
+#: src/gui/dialogs/multiplayer/match_history.cpp:195
 #, fuzzy
 #| msgid "No era information found."
 msgid "No game history found."
@@ -8156,13 +8156,13 @@ msgstr "가능한 목표 없음"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "이동 취소는 아직 서버에 송신되지 않았습니다."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:444
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "연결이 끊어져서 게임을 더 이상 진행할 수 없습니다.저장하시겠습니까?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -8172,7 +8172,7 @@ msgstr ""
 "\n"
 "게임을 저장하겠습니까?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8223,11 +8223,11 @@ msgstr ""
 "이 멀티 플레이어 게임은 다른 난수 모드를 사용하고 있습니다.당신에게 짐작이 없"
 "다면, 누군가가 치트를 하고 있거나, 부정한 게임일 가능성이 있습니다."
 
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "The game is over."
 msgstr "게임이 끝났습니다."
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
 msgstr "지금 $name| 의 턴입니다"
 
@@ -9196,7 +9196,7 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> 공격 횟수"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> 재소집 비용"
 
-#: src/units/unit.cpp:2437
+#: src/units/unit.cpp:2438
 msgid "$effect_description per level"
 msgstr "레벨에 따른 $effect_description"
 

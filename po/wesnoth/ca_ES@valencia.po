@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-15 19:58-0500\n"
+"POT-Creation-Date: 2023-04-22 22:24-0500\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -6504,7 +6504,7 @@ msgid "Error while reading the WML: "
 msgstr "S'ha produït un error mentre es llegia el WML: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "Game Over"
 msgstr "Partida perduda"
 
@@ -6614,7 +6614,7 @@ msgstr "Era:"
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:194
+#: src/gui/dialogs/multiplayer/match_history.cpp:195
 #, fuzzy
 #| msgid "No eras found."
 msgid "No game history found."
@@ -7725,7 +7725,7 @@ msgstr "No hi ha objectius"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:444
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7734,7 +7734,7 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu alçar la partida?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -7742,7 +7742,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Esteu segur de que voleu suprimir esta partida?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -7780,11 +7780,11 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
 msgstr "És el torn de $name|."
 
@@ -8804,7 +8804,7 @@ msgstr[1] "per torn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2437
+#: src/units/unit.cpp:2438
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"

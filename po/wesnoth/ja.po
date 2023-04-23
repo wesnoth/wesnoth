@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-15 19:58-0500\n"
+"POT-Creation-Date: 2023-04-22 22:24-0500\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
 "Last-Translator: RatArmy, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
@@ -6727,7 +6727,7 @@ msgid "Error while reading the WML: "
 msgstr "WML 読み込み中のエラー："
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "Game Over"
 msgstr "ゲームオーバー"
 
@@ -6835,7 +6835,7 @@ msgstr "時代："
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:194
+#: src/gui/dialogs/multiplayer/match_history.cpp:195
 #, fuzzy
 #| msgid "No units found."
 msgid "No game history found."
@@ -7896,7 +7896,7 @@ msgstr "目標がありません"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "移動のアンドゥはまだサーバーに送信されていません。"
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:444
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7904,7 +7904,7 @@ msgstr ""
 "ネットワークが切断されたため、ゲームを続けられません。\n"
 "このゲームを保存しますか？"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7912,7 +7912,7 @@ msgstr ""
 "\n"
 "ゲームを保存しますか？"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7960,11 +7960,11 @@ msgstr ""
 "が無ければですが、誰かがチートを行っているか、不正なゲームである可能性があり"
 "ます。"
 
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "The game is over."
 msgstr "ゲーム終了です。"
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
 msgstr "$name| のターンです"
 
@@ -8869,7 +8869,7 @@ msgstr[0] "攻撃回数 <span color=\"$color\">$number_or_percent</span>"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "召喚コスト <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2437
+#: src/units/unit.cpp:2438
 msgid "$effect_description per level"
 msgstr "レベルにつき $effect_description"
 

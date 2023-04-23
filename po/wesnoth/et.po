@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-15 19:58-0500\n"
+"POT-Creation-Date: 2023-04-22 22:24-0500\n"
 "PO-Revision-Date: 2013-03-09 13:27+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -6658,7 +6658,7 @@ msgid "Error while reading the WML: "
 msgstr "Viga XML lugemisel: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "Game Over"
 msgstr "Mäng on läbi"
 
@@ -6779,7 +6779,7 @@ msgstr "Ajastu:"
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:194
+#: src/gui/dialogs/multiplayer/match_history.cpp:195
 #, fuzzy
 #| msgid "No eras found."
 msgid "No game history found."
@@ -7906,14 +7906,14 @@ msgstr "Eesmärke pole"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Käikude tühistamine ei ole veel serverile edastatud."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:444
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Võrguühendus katkes ja mäng ei saa jätkuda. Kas soovid mängu salvestada?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -7921,7 +7921,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Kas sa tahad tõesti seda mängu kustutada?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:448
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -7964,11 +7964,11 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:366
+#: src/playsingle_controller.cpp:368
 msgid "The game is over."
 msgstr "Mäng on läbi."
 
-#: src/playsingle_controller.cpp:539
+#: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
 msgstr "Praegu käib mängija $name"
 
@@ -8961,7 +8961,7 @@ msgstr[1] "käigu kohta"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "käigu kohta"
 
-#: src/units/unit.cpp:2437
+#: src/units/unit.cpp:2438
 msgid "$effect_description per level"
 msgstr "$effect_description taseme kohta"
 
