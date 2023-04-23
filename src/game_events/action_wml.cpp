@@ -910,13 +910,4 @@ WML_HANDLER_FUNCTION(unit,, cfg)
 
 }
 
-WML_HANDLER_FUNCTION(on_undo, event_info, cfg)
-{
-	if(cfg["delayed_variable_substitution"].to_bool(false)) {
-		synced_context::add_undo_commands(cfg.get_config(), event_info);
-	} else {
-		synced_context::add_undo_commands(cfg.get_parsed_config(), event_info);
-	}
-}
-
 } // end namespace game_events

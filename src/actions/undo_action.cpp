@@ -29,6 +29,27 @@
 namespace actions
 {
 
+undo_event::undo_event(int fcn_idx, const config& args, const game_events::queued_event& ctx)
+	: lua_idx(fcn_idx)
+	, commands(args)
+	, data(ctx.data)
+	, loc1(ctx.loc1)
+	, loc2(ctx.loc2)
+	, filter_loc1(ctx.loc1.filter_loc())
+	, filter_loc2(ctx.loc2.filter_loc())
+	, uid1(), uid2()
+{
+	unit_const_ptr u1 = ctx.loc1.get_unit(), u2 = ctx.loc2.get_unit();
+	if(u1) {
+		id1 = u1->id();
+		uid1 = u1->underlying_id();
+	}
+	if(u2) {
+		id2 = u2->id();
+		uid2 = u2->underlying_id();
+	}
+}
+
 undo_event::undo_event(const config& cmds, const game_events::queued_event& ctx)
 	: commands(cmds)
 	, data(ctx.data)
@@ -68,8 +89,12 @@ undo_action::undo_action()
 	, unit_id_diff(synced_context::get_unit_id_diff())
 {
 	auto& undo = synced_context::get_undo_commands();
-	auto command_transformer = [](const std::pair<config, game_events::queued_event>& p) {
-		return undo_event(p.first, p.second);
+	auto command_transformer = [](const synced_context::event_info& p) {
+		if(p.lua_.has_value()) {
+			return undo_event(*p.lua_, p.cmds_, p.evt_);
+		} else {
+			return undo_event(p.cmds_, p.evt_);
+		}
 	};
 	std::transform(undo.begin(), undo.end(), std::back_inserter(umc_commands_undo), command_transformer);
 	undo.clear();
@@ -115,7 +140,11 @@ namespace {
 		scoped_weapon_info w2("second_weapon", e.data.optional_child("second"));
 
 		game_events::queued_event q(tag, "", map_location(x1, y1, wml_loc()), map_location(x2, y2, wml_loc()), e.data);
-		resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
+		if(e.lua_idx.has_value()) {
+			resources::lua_kernel->run_wml_event(*e.lua_idx, vconfig(e.commands), q);
+		} else {
+			resources::lua_kernel->run_wml_action("command", vconfig(e.commands), q);
+		}
 		sound::commit_music_changes();
 
 		x1 = oldx1; y1 = oldy1;
@@ -142,7 +171,7 @@ void undo_action::write(config & cfg) const
 void undo_action::read_event_vector(event_vector& vec, const config& cfg, const std::string& tag)
 {
 	for(auto c : cfg.child_range(tag)) {
-		vec.emplace_back(c.child_or_empty("filter"), c.child_or_empty("filter_second"), c.child_or_empty("filter_weapons"), c.child_or_empty("command"));
+		vec.emplace_back(c.child_or_empty("filter"), c.child_or_empty("filter_second"), c.child_or_empty("data"), c.child_or_empty("command"));
 	}
 }
 
@@ -150,10 +179,14 @@ void undo_action::write_event_vector(const event_vector& vec, config& cfg, const
 {
 	for(const auto& evt : vec)
 	{
+		if(evt.lua_idx.has_value()) {
+			// TODO: Log warning that this cannot be serialized
+			continue;
+		}
 		config& entry = cfg.add_child(tag);
 		config& first = entry.add_child("filter");
 		config& second = entry.add_child("filter_second");
-		entry.add_child("filter_weapons", evt.data);
+		entry.add_child("data", evt.data);
 		entry.add_child("command", evt.commands);
 		// First location
 		first["filter_x"] = evt.filter_loc1.wml_x();
