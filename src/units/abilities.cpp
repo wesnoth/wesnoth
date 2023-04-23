@@ -1215,7 +1215,7 @@ namespace { // Helpers for attack_type::special_active()
 		                             const_attack_ptr weapon,
 		                             const config & filter,
 									 const bool for_listing,
-		                             const std::string & child_tag)
+		                             const std::string & child_tag, const std::string& tag_name)
 	{
 		if (for_listing && !loc.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
@@ -1242,7 +1242,7 @@ namespace { // Helpers for attack_type::special_active()
 
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
-			if ( !weapon || !weapon->matches_filter(*filter_weapon) )
+			if ( !weapon || !weapon->matches_filter(*filter_weapon, tag_name) )
 				return false;
 		}
 
@@ -1682,13 +1682,13 @@ bool attack_type::special_active_impl(
 	const config& special_backstab = special["backstab"].to_bool() ? cfg : special;
 
 	// Filter the units involved.
-	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self))
+	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, tag_name))
 		return false;
-	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent"))
+	if (!special_unit_matches(other, self, other_loc, other_attack, special_backstab, is_for_listing, "filter_opponent", tag_name))
 		return false;
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker"))
+	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", tag_name))
 		return false;
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender"))
+	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", tag_name))
 		return false;
 
 	const auto adjacent = get_adjacent_tiles(self_loc);
