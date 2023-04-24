@@ -172,8 +172,16 @@ jobs:
 
       - name: Flatpak
         run: |
-          jq '.modules |= map(select(.name == "wesnoth").sources[0]+={"path":"."}) | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > org.wesnoth.Wesnoth.json
-          flatpak-builder --force-clean --disable-rofiles-fuse wesnoth-app org.wesnoth.Wesnoth.json
+          jq '.modules |= map(select(.name == "wesnoth").sources[0]={"type":"dir","path":"."}) | ."build-options".env.FLATPAK_BUILDER_N_JOBS="2"' packaging/flatpak/org.wesnoth.Wesnoth.json > org.wesnoth.Wesnoth.json
+          flatpak-builder --force-clean --default-branch=ci --disable-rofiles-fuse wesnoth-app org.wesnoth.Wesnoth.json
+          flatpak build-export export wesnoth-app ci
+          flatpak build-bundle export wesnoth.flatpak org.wesnoth.Wesnoth ci --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo
+      - name: Upload flatpak bundle
+        uses: actions/upload-artifact@v3
+        with:
+          name: Flatpak-Bundle
+          path: |
+            wesnoth.flatpak
 
   translations:
     runs-on: ubuntu-latest
