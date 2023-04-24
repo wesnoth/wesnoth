@@ -88,6 +88,8 @@ namespace
 		"type",
 		"id",
 		"name",
+        "male_name",
+        "female_name",
 		"gender",
 		"random_gender",
 		"variation",
@@ -382,10 +384,10 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	type_ = &get_unit_type(cfg["parent_type"].blank() ? cfg["type"].str() : cfg["parent_type"].str());
 	race_ = &unit_race::null_race;
 	id_ = cfg["id"].str();
-	name_ = cfg["name"].t_str();
 	variation_ = cfg["variation"].empty() ? type_->default_variation() : cfg["variation"].str();
 	canrecruit_ = cfg["canrecruit"].to_bool();
 	gender_ = generate_gender(*type_, cfg);
+    name_ = gender_value(cfg, gender_, "male_name", "female_name", "name").t_str();
 	role_ = cfg["role"].str();
 	//, facing_(map_location::NDIRECTIONS)
 	//, anim_comp_(new unit_animation_component(*this))
