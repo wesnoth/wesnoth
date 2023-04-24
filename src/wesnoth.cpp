@@ -1080,23 +1080,23 @@ int main(int argc, char** argv)
 	// turn it into a CLI application. Also, --wconsole in particular attaches
 	// a console to a regular GUI game session.
 	//
-	// It's up to commandline_options later to handle these switches (other
+	// It's up to commandline_options later to handle these switches (except
 	// --wconsole) later and emit any applicable console output, but right here
 	// we need a rudimentary check for the switches in question to set up the
 	// console before proceeding any further.
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
 		static const std::set<std::string> terminal_switches = {
-			"-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
-			"--data-path", "--userdata-path", "--userconfig-path",
+			"--config-path", "--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
+			"--simple-version", "--userconfig-path", "--userdata-path", "-v", "--version"
 		};
 
 		// Switches that take arguments, the switch may have the argument past
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> terminal_arg_switches = {
-			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-schema",
+			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
+			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
