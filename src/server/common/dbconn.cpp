@@ -117,10 +117,47 @@ std::string dbconn::get_tournaments()
 	}
 }
 
-std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset)
+std::pair<bool, bool> substitute_wildcards(std::string& parameter)
+{
+	std::pair<bool, bool> leading_trailing = {false, false};
+
+	if(parameter.length() == 1)
+	{
+		parameter = "";
+	}
+	else if(parameter.length() >= 2)
+	{
+		if(parameter[0] == '*')
+		{
+			leading_trailing.first = true;
+			parameter.erase(0, 1);
+		}
+		if(parameter[parameter.length()-1] == '*')
+		{
+			leading_trailing.second = true;
+			parameter.erase(parameter.length()-1);
+		}
+	}
+
+	return leading_trailing;
+}
+
+std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content)
 {
 	try
 	{
+		const auto[search_game_name_leading, search_game_name_trailing] = substitute_wildcards(search_game_name);
+		const auto[search_content_leading, search_content_trailing] = substitute_wildcards(search_content);
+
+		// if no parameters populated, return an error
+		if(player_id == 0 && search_game_name.empty() && search_content.empty())
+		{
+			ERR_SQL << "Skipping game history query due to lack of search parameters.";
+			auto doc = std::make_unique<simple_wml::document>();
+			doc->set_attr("error", "No search parameters provided.");
+			return doc;
+		}
+
 		std::string game_history_query = "select "
 "  game.GAME_NAME, "
 "  game.START_TIME, "
@@ -147,31 +184,91 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "    select 1 "
 "    from "+db_game_player_info_table_+" player1 "
 "    where game.INSTANCE_UUID = player1.INSTANCE_UUID "
-"      and game.GAME_ID = player1.GAME_ID "
-"      and player1.USER_ID = ? "
-"  ) "
+"      and game.GAME_ID = player1.GAME_ID ";
+	game_history_query += player_id != 0 ? " and player1.USER_ID = ? " : " and player1.USER_ID != ? ";
+	game_history_query += "  ) "
 "  and game.INSTANCE_UUID = player.INSTANCE_UUID "
 "  and game.GAME_ID = player.GAME_ID "
 "  and player.USER_ID != -1 "
-"  and game.END_TIME is not NULL "
-"inner join "+db_game_content_info_table_+" scenario "
+"  and game.END_TIME is not NULL ";
+
+	if(!search_game_name.empty())
+	{
+		game_history_query += " and game.GAME_NAME like concat(";
+		game_history_query += search_game_name_leading ? "'%'," : "";
+		game_history_query += " ? ";
+		game_history_query += search_game_name_trailing ? ",'%')" : ")";
+	}
+	else
+	{
+		game_history_query += " and game.GAME_NAME != ? ";
+	}
+
+	game_history_query += "inner join "+db_game_content_info_table_+" scenario "
 "   on scenario.TYPE = 'scenario' "
 "  and scenario.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and scenario.GAME_ID = game.GAME_ID "
-"inner join "+db_game_content_info_table_+" era "
+"  and scenario.GAME_ID = game.GAME_ID ";
+	if(search_content_type == 0)
+	{
+		if(!search_content.empty())
+		{
+			game_history_query += " and scenario.ID like concat(";
+			game_history_query += search_content_leading ? "'%'," : "";
+			game_history_query += " ? ";
+			game_history_query += search_content_trailing ? ",'%')" : ")";
+		}
+		else
+		{
+			game_history_query += " and scenario.ID != ? ";
+		}
+	}
+
+	game_history_query += "inner join "+db_game_content_info_table_+" era "
 "   on era.TYPE = 'era' "
 "  and era.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and era.GAME_ID = game.GAME_ID "
-"left join "+db_game_content_info_table_+" mods "
+"  and era.GAME_ID = game.GAME_ID ";
+	if(search_content_type == 1)
+	{
+		if(!search_content.empty())
+		{
+			game_history_query += " and era.ID like concat(";
+			game_history_query += search_content_leading ? "'%'," : "";
+			game_history_query += " ? ";
+			game_history_query += search_content_trailing ? ",'%')" : ")";
+		}
+		else
+		{
+			game_history_query += " and era.ID != ? ";
+		}
+	}
+
+	// using a left join when searching by modification won't exclude anything
+	game_history_query += search_content_type == 2 && !search_content.empty() ? "inner join " : "left join ";
+	game_history_query += db_game_content_info_table_+" mods "
 "   on mods.TYPE = 'modification' "
 "  and mods.INSTANCE_UUID = game.INSTANCE_UUID "
-"  and mods.GAME_ID = game.GAME_ID "
-"group by game.INSTANCE_UUID, game.GAME_ID "
+"  and mods.GAME_ID = game.GAME_ID ";
+	if(search_content_type == 2)
+	{
+		if(!search_content.empty())
+		{
+			game_history_query += " and mods.ID like concat(";
+			game_history_query += search_content_leading ? "'%'," : "";
+			game_history_query += " ? ";
+			game_history_query += search_content_trailing ? ",'%')" : ")";
+		}
+		else
+		{
+			game_history_query += " and mods.ID != ? ";
+		}
+	}
+
+	game_history_query += "group by game.INSTANCE_UUID, game.GAME_ID "
 "order by game.START_TIME desc "
 "limit 11 offset ? ";
 
 		game_history gh;
-		get_complex_results(create_connection(), gh, game_history_query, player_id, offset);
+		get_complex_results(create_connection(), gh, game_history_query, player_id, search_game_name, search_content, offset);
 		return gh.to_doc();
 	}
 	catch(const mariadb::exception::base& e)
