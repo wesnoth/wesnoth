@@ -102,7 +102,7 @@ std::string attack_type::accuracy_parry_description() const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& tag_name)
+static bool matches_simple_filter(const attack_type & attack, const config & filter)
 {
 	const std::vector<std::string>& filter_range = utils::split(filter["range"]);
 	const std::string& filter_damage = filter["damage"];
@@ -120,26 +120,30 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
+	const std::string& filter_effective_damage = filter["effective_damage"];
+	const std::string& filter_effective_attacks = filter["effective_number"];
+
+	if ( !filter_effective_damage.empty() && !in_ranges(attack.modified_damage(), utils::parse_ranges(filter_effective_damage)) )
+		return false;
+
+	if (!filter_effective_attacks.empty()){
+		int attacks_value = attack.composite_value(attack.get_specials_and_abilities("attacks"), attack.num_attacks());
+		if ( attacks_value < 0 ) {
+			attacks_value = attack.num_attacks();
+		}
+		if (!in_ranges(attacks_value, utils::parse_ranges(filter_effective_attacks))){
+			return false;
+		}
+	}
 
 	if ( !filter_range.empty() && std::find(filter_range.begin(), filter_range.end(), attack.range()) == filter_range.end() )
 		return false;
 
-	if ( !filter_damage.empty()){
-		int damages = (tag_name == "damage") ? attack.damage() : attack.modified_damage();
-		if (!in_ranges(damages, utils::parse_ranges(filter_damage)) ){
-			return false;
-		}
-	}
+	if ( !filter_damage.empty() && !in_ranges(attack.damage(), utils::parse_ranges(filter_damage)) )
+		return false;
 
-	if (!filter_attacks.empty()){
-		int attacks_value = (tag_name == "attacks") ? attack.num_attacks() : attack.composite_value(attack.get_specials_and_abilities("attacks"), attack.num_attacks());
-		if ( attacks_value < 0 ) {
-		attacks_value = attack.num_attacks();
-		}
-		if (!in_ranges(attacks_value, utils::parse_ranges(filter_attacks))){
-			return false;
-		}
-	}
+	if (!filter_attacks.empty() && !in_ranges(attack.num_attacks(), utils::parse_ranges(filter_attacks)))
+		return false;
 
 	if (!filter_accuracy.empty() && !in_ranges(attack.accuracy(), utils::parse_ranges(filter_accuracy)))
 		return false;
@@ -257,25 +261,25 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& tag_name) const
+bool attack_type::matches_filter(const config& filter) const
 {
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, tag_name);
+	bool matches = matches_simple_filter(*this, filter);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for (const config::any_child condition : filter.all_children_range() )
 	{
 		// Handle [and]
 		if ( condition.key == "and" )
-			matches = matches && matches_filter(condition.cfg, tag_name);
+			matches = matches && matches_filter(condition.cfg);
 
 		// Handle [or]
 		else if ( condition.key == "or" )
-			matches = matches || matches_filter(condition.cfg, tag_name);
+			matches = matches || matches_filter(condition.cfg);
 
 		// Handle [not]
 		else if ( condition.key == "not" )
-			matches = matches && !matches_filter(condition.cfg, tag_name);
+			matches = matches && !matches_filter(condition.cfg);
 	}
 
 	return matches;
