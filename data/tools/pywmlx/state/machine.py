@@ -55,6 +55,9 @@ _pending_overrideinfo = None
 # it can be None or it can have an actual value.
 # Possible actual values are: 'speaker', 'id', 'role', 'description',
 #                             'condition', 'type', or 'race'
+# line number where a translatable string is expected at, for an info comment
+# to match it
+_expected_infoline = None
 _pending_winfotype = None
 
 # ----------
@@ -87,6 +90,7 @@ _linenosub = 0
 def clear_pending_infos(lineno, error=False):
     global _pending_addedinfo
     global _pending_overrideinfo
+    global _expected_infoline
     if error:
         if _pending_addedinfo is not None:
             wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
@@ -96,6 +100,7 @@ def clear_pending_infos(lineno, error=False):
                 "#po-override directive(s) not applied: %s" % _pending_overrideinfo)
     _pending_addedinfo = None
     _pending_overrideinfo = None
+    _expected_infoline = None
     
 
 def checkdomain(lineno):
@@ -203,12 +208,16 @@ class PendingLuaString:
     def store(self):
         global _pending_addedinfo
         global _pending_overrideinfo
+        global _expected_infoline
         global _linenosub
         if not checkdomain(self.lineno):
             return
         if self.istranslatable:
             _linenosub += 1
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
+            if _expected_infoline is not None and _expected_infoline != self.lineno:
+                    wmlerr(finfo, "%s directive is too far from the sentence it is applied to." %
+                    "#po-override" if _pending_addedinfo is None else "#po")
             fileno = pywmlx.nodemanip.fileno
             errcode = checksentence(self.luastring, finfo, islua=True)
             if errcode != 1:
@@ -224,7 +233,7 @@ class PendingLuaString:
                 loc_wmlinfos = []
                 loc_addedinfos = None
                 if _pending_overrideinfo is not None:
-                    loc_wmlinfos.append(_pending_overrideinfo)
+                    loc_wmlinfos.append(_pending_overrideinfo[0])
                 if (_pending_luafuncname is not None and
                         _pending_overrideinfo is None):
                     winf = '[lua]: ' + _pending_luafuncname
@@ -252,9 +261,23 @@ class PendingLuaString:
                                 addedinfos=loc_addedinfos,
                                 plural=self.storePlural()
                     ) )
-        # finally PendingLuaString.store() will clear pendinginfos,
-        # in any case (even if the pending string is not translatable)
-        clear_pending_infos(self.lineno, error=(not self.istranslatable))
+            # finally PendingLuaString.store() will consume pendinginfos
+            _pending_addedinfo = None
+            if _pending_overrideinfo is not None:
+                _pending_overrideinfo.pop(0)
+                if len(_pending_overrideinfo) == 0:
+                    _pending_overrideinfo = None
+                    _expected_infoline = None
+                else:
+                    # There are further pending overrides to be applied.
+                    # All of them MUST be applied in the current line.
+                    _expected_infoline = self.lineno
+            else:
+                _expected_infoline = None
+        elif [_pending_addedinfo, _pending_overrideinfo] != [None, None]:
+            # Met a non-translatable string. Typo?
+            # Any pending infos MUST be resolved in the current line.
+            _expected_infoline = self.lineno
 
 
 
@@ -273,6 +296,7 @@ class PendingWmlString:
     def store(self):
         global _pending_addedinfo
         global _pending_overrideinfo
+        global _expected_infoline
         global _linenosub
         global _pending_winfotype
         if _pending_winfotype is not None:
@@ -284,7 +308,13 @@ class PendingWmlString:
             return
         if self.istranslatable:
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
+            if _expected_infoline is not None and _expected_infoline != self.lineno:
+                wmlerr(finfo, "%s directive is too far from the sentence it is applied to." %
+                "#po-override" if _pending_addedinfo is None else "#po")
             errcode = checksentence(self.wmlstring, finfo, islua=False)
+            next_override = None
+            if _pending_overrideinfo is not None:
+                next_override = _pending_overrideinfo[0]
             if errcode != 1:
                 # when errcode is equal to 1, the translatable string is empty
                 # so, using "if errcode != 1"
@@ -298,9 +328,24 @@ class PendingWmlString:
                                              ismultiline=self.ismultiline,
                                              lineno=self.lineno,
                                              lineno_sub=_linenosub,
-                                             override=_pending_overrideinfo,
+                                             override=next_override,
                                              addition=_pending_addedinfo)
-        clear_pending_infos(self.lineno, error=(not self.istranslatable))
+            _pending_addedinfo = None
+            if _pending_overrideinfo is not None:
+                _pending_overrideinfo.pop(0)
+                if len(_pending_overrideinfo) == 0:
+                    _pending_overrideinfo = None
+                    _expected_infoline = None
+                else:
+                    # There are further pending overrides to be applied.
+                    # All of them MUST be applied in the current line.
+                    _expected_infoline = self.lineno
+            else:
+                _expected_infoline = None
+        elif [_pending_addedinfo, _pending_overrideinfo] != [None, None]:
+            # Met a non-translatable string. Typo?
+            # Any pending infos MUST be resolved in the current line.
+            _expected_infoline = self.lineno
 
 
 
