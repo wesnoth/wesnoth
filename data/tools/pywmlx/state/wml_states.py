@@ -203,8 +203,7 @@ class WmlTagState:
             # xdebug_str = opentag + ': ' + str(lineno)
         # print(xdebug_str, file=xdebug)
         # xdebug.close()
-        pywmlx.state.machine._pending_addedinfo = None
-        pywmlx.state.machine._pending_overrideinfo = None
+        pywmlx.state.machine.clear_pending_infos(lineno, error=True)
         xline = xline [ match.end(): ]
         return (xline, 'wml_idle')
 
