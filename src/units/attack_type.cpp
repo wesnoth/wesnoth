@@ -120,18 +120,18 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
 	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
-	const std::string& filter_effective_damage = filter["effective_damage"];
-	const std::string& filter_effective_attacks = filter["effective_number"];
+	const std::string& filter_special_damage = filter["special_damage"];
+	const std::string& filter_special_attacks = filter["special_number"];
 
-	if ( !filter_effective_damage.empty() && !in_ranges(attack.modified_damage(), utils::parse_ranges(filter_effective_damage)) )
+	if ( !filter_special_damage.empty() && !in_ranges(attack.modified_damage(), utils::parse_ranges(filter_special_damage)) )
 		return false;
 
-	if (!filter_effective_attacks.empty()){
+	if (!filter_special_attacks.empty()){
 		int attacks_value = attack.composite_value(attack.get_specials_and_abilities("attacks"), attack.num_attacks());
 		if ( attacks_value < 0 ) {
 			attacks_value = attack.num_attacks();
 		}
-		if (!in_ranges(attacks_value, utils::parse_ranges(filter_effective_attacks))){
+		if (!in_ranges(attacks_value, utils::parse_ranges(filter_special_attacks))){
 			return false;
 		}
 	}
