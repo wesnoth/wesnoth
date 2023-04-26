@@ -67,6 +67,7 @@ class WmlCheckdomState:
 
     def run(self, xline, lineno, match):
         pywmlx.state.machine._currentdomain = match.group(1)
+        pywmlx.state.machine.checkdomain(lineno)
         xline = None
         return (xline, 'wml_idle')
 

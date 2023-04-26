@@ -33,6 +33,7 @@ class LuaCheckdomState:
 
     def run(self, xline, lineno, match):
         pywmlx.state.machine._currentdomain = match.group(3)
+        pywmlx.state.machine.checkdomain(lineno)
         xline = None
         if match.group(1) is None and pywmlx.state.machine._warnall:
             finfo = pywmlx.nodemanip.fileref + ":" + str(lineno)
