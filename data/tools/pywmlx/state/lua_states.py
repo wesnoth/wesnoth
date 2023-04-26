@@ -48,6 +48,9 @@ class LuaCheckpoState:
         self.iffail = 'lua_comment'
 
     def run(self, xline, lineno, match):
+        if not pywmlx.state.machine.checkdomain(lineno):
+            return (None, 'lua_idle')
+
         # on -- #po: addedinfo
         if match.group(1) == "po":
             if pywmlx.state.machine._pending_addedinfo is None:

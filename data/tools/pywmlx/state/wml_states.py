@@ -81,6 +81,8 @@ class WmlCheckpoState:
     def run(self, xline, lineno, match):
         if match.group(1) == 'wmlxgettext':
             xline = match.group(2)
+        elif not pywmlx.state.machine.checkdomain(lineno):
+            xline = None
         # on  #po: addedinfo
         elif match.group(1) == "po":
             xline = None

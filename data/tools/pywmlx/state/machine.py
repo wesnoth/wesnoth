@@ -204,7 +204,9 @@ class PendingLuaString:
         global _pending_addedinfo
         global _pending_overrideinfo
         global _linenosub
-        if checkdomain(self.lineno) and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             _linenosub += 1
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             fileno = pywmlx.nodemanip.fileno
@@ -278,7 +280,9 @@ class PendingWmlString:
                 winf = _pending_winfotype + '=' + self.wmlstring
                 pywmlx.nodemanip.addWmlInfo(winf)
             _pending_winfotype = None
-        if checkdomain(self.lineno) and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             errcode = checksentence(self.wmlstring, finfo, islua=False)
             if errcode != 1:
