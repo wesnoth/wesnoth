@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2022
+	Copyright (C) 2022 - 2023
 	by Thomas Iorns <mesilliac@tomanui.nz>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

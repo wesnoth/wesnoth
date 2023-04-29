@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Felix Bauer <fehlxb+wesnoth@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
