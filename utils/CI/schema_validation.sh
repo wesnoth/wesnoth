@@ -76,7 +76,7 @@ validate_schema "Game Config"  "game_config"  || RET=1
 validate_schema "GUI2"         "gui"          || RET=1
 validate_schema "Server Pbl"   "pbl"          || RET=1
 validate_schema "WML Diff"     "diff"         || RET=1
-validate_schema "Achievements schema" "achievements" || RET=1
+validate_schema "Achievements" "achievements" || RET=1
 
 validate_core "Core" || RET=1
 
