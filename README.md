@@ -31,7 +31,7 @@ Steam forums:
 Features
 --------
 
-* A variety different campaigns, each with their own tactical challenges, emotionally charged story, and multiple difficulty levels.
+* A variety of different campaigns, each with their own tactical challenges, emotionally charged story, and multiple difficulty levels.
 * A detailed world and storytelling with hundreds of sprites, animations, and characters.
 * Many different unit skills and traits across several factions.
 * A map editor with multiple tools, hundreds types of terrain, and the ability for you to save and share maps with others. Create your own scenarios/battles for near infinite replayability.
