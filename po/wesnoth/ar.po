@@ -8,102 +8,103 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-22 22:24-0500\n"
-"PO-Revision-Date: 2008-05-31 16:55-0000\n"
+"PO-Revision-Date: 2023-04-28 14:40+0200\n"
 "Last-Translator: amnay <amnay@operamail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural= n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
 msgid "Custom"
-msgstr ""
+msgstr "الضيف"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
 msgid "Compress saved games"
-msgstr ""
+msgstr "ضغط ملف الحالة المسجلة"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:9
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: id=gzip
 #: data/advanced_preferences.cfg:10
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "الضغط المعتاد للملفات، الأسرع"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:14
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: id=bzip2
 #: data/advanced_preferences.cfg:15
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "الضغط الأفضل للملفات، أبطأ"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:19
 msgid "save_compression^No"
-msgstr ""
+msgstr "لا"
 
 #. [option]: id=none
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "ملفات نصية عريضة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Confirm deleting saves"
-msgstr ""
+msgstr "تأكيد محو الحالة المسجلة للعبة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Mouse scrolling"
-msgstr ""
+msgstr "تحريك الفأرة لتمرير الشاشة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Middle-click scrolling"
-msgstr ""
+msgstr "ضغط الزر الأوسط للفأرة لتحريك الشاشة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "مواصلة تحريك الفأرة عند مغادرة الشاشة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:54
 msgid "Show combat"
-msgstr ""
+msgstr "إظهار المعارك"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
 msgid "Auto-open whisper windows in lobby"
-msgstr ""
+msgstr "الفتح الآلي لنوافذ الهمس في اللعب الجماعي"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:68
 msgid "Follow unit actions"
-msgstr ""
+msgstr "متابعة حركة الوحدات"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:69
 msgid ""
 "Choose whether the map view should scroll to a unit when an action or move "
 "is animated"
-msgstr ""
+msgstr "إختيار إذا كانت الشاشة تتحرك نحو الوحدة التي تقوم بحركة ما"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:76
 msgid "Chat message aging"
-msgstr ""
+msgstr "تتابع عرض الرسائل"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:77
@@ -111,21 +112,22 @@ msgid ""
 "Number of minutes to wait before clearing an ingame chat message. Set to 0 "
 "to disable."
 msgstr ""
+"عدد الدقائق قبل محو الرسائل. ضع رقم صفر لإيقاف محو الرسائل القديمة آليا"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:87
 msgid "Use 12-hour clock format"
-msgstr ""
+msgstr "إستخدام نظام 12 ساعة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:94
 msgid "Confirm loading saves from a different version"
-msgstr ""
+msgstr "تأكيد تحميل الألعاب المسجلة من نسخ قديمة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:101
 msgid "Show all unit types in help"
-msgstr ""
+msgstr "إظهار كل الوحدات في صفحة المساعدة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:102
@@ -133,32 +135,34 @@ msgid ""
 "Show all unit types in the help (requires restart). If unset, only units "
 "that have been encountered will be shown."
 msgstr ""
+"إظهار كل الوحدات في صفحة المساعدة (يتطلب ذلك إعادة فتح اللعبة). إذا لم تقم "
+"بإختيار فسيتم عرض الوحدات التي اعترضتك في صفحة المساعدة"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:109
 msgid "Editor recent files limit"
-msgstr ""
+msgstr "حدود اخر الملفات المفتوحة في المحرر"
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:110
 msgid ""
 "The maximum number of items to display on the Recent Files menu in the editor"
-msgstr ""
+msgstr "العدد الأقصى لعرض اخر الملفات المفتوحة في المحرر"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:120
 msgid "Show color cursors"
-msgstr ""
+msgstr "إظهار الألوان المفتاحية سهم التوجيه"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:121
 msgid "Use colored mouse cursors"
-msgstr ""
+msgstr "إستخدام فأرة ملونة عند التوجيه"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:128
 msgid "Customize orb colors"
-msgstr ""
+msgstr "الألوان المعتادة للكرات الخاصة للوحدات"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:134
@@ -168,19 +172,19 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:140
 msgid "Allow damage calculation with Monte Carlo simulation"
-msgstr ""
+msgstr "السماح بحساب الإصابات عبر محاكاة مونت كارلو"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:141
 msgid ""
 "Allow the damage calculation window to simulate fights instead of using "
 "exact probability calculations"
-msgstr ""
+msgstr "السماح لنافذة حساب الإصابات بمحاكاة المعارك عوض حساب العدد المحتمل"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:148
 msgid "Show deprecation messages in-game"
-msgstr ""
+msgstr "إظهار رسائل الكودات التي ستمحى في النسخ القادمة للعبة"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:149
@@ -214,6 +218,8 @@ msgid ""
 "logged into the multiplayer server, you must log out and then log back in "
 "for this to take effect."
 msgstr ""
+"الوقت المحدد بالثواني قبل اعتبار اللاعب قد قطع الاتصال. إذا كنت متصلا بسيرفر "
+"اللاعبين المتعددين، عليك أن تقطع الاتصال ثم تعيده لتحيين هذا التغيير."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -221,20 +227,20 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:365
 #: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1056
 msgid "poisoned"
-msgstr ""
+msgstr "تم تسميمه"
 
 #. [effect]: type=fire
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:398
 #: data/core/macros/items.cfg:544
 msgid "storm trident"
-msgstr ""
+msgstr "رمح العاصفة الثلاثي"
 
 #. [objectives]
 #. [lua]: generate_objectives
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:236
 #: data/lua/wml/objectives.lua:38
 msgid "Gold carryover:"
-msgstr ""
+msgstr "الذهب المحتفظ به"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [note]
@@ -242,482 +248,482 @@ msgstr ""
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:248
 #: data/lua/wml/objectives.lua:39 src/map_command_handler.hpp:388
 msgid "Notes:"
-msgstr ""
+msgstr "ملاحظات"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
 msgid "Close"
-msgstr ""
+msgstr "غلق"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
 #: data/english.cfg:26
 msgid "blade"
-msgstr ""
+msgstr "قاطع"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
 #: data/english.cfg:29
 msgid "fire"
-msgstr ""
+msgstr "ناري"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
 #: data/english.cfg:30
 msgid "cold"
-msgstr ""
+msgstr "بارد"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
 #: data/english.cfg:27
 msgid "pierce"
-msgstr ""
+msgstr "مخترق"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
 #: data/english.cfg:28
 msgid "impact"
-msgstr ""
+msgstr "صادم"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
 #: data/english.cfg:22
 msgid "melee"
-msgstr ""
+msgstr "إلتحام"
 
 #. [language]
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
 #: data/english.cfg:23
 msgid "ranged"
-msgstr ""
+msgstr "عن بعد"
 
 #. [about]
 #: data/core/about.cfg:4
 msgid "Programming"
-msgstr ""
+msgstr "برمجة"
 
 #. [about]
 #: data/core/about.cfg:271
 msgid "General Purpose Administration and Coordination"
-msgstr ""
+msgstr "الأهداف العامة، الإدارة والتنسيق"
 
 #. [about]
 #: data/core/about.cfg:308
 msgid "Internationalization Managers"
-msgstr ""
+msgstr "فريق النشر العالمي"
 
 #. [about]
 #: data/core/about.cfg:333
 msgid "Trailers"
-msgstr ""
+msgstr "العرض الترويجي"
 
 #. [about]
 #: data/core/about.cfg:349
 msgid "Artwork and Graphics"
-msgstr ""
+msgstr "الجانب الفني والرسومات"
 
 #. [about]
 #: data/core/about.cfg:807
 msgid "Music"
-msgstr ""
+msgstr "الموسيقى"
 
 #. [about]
 #: data/core/about.cfg:844
 msgid "Sound Effects"
-msgstr ""
+msgstr "التأثيرات الصوتية"
 
 #. [about]
 #: data/core/about.cfg:868
 msgid "Campaign Design"
-msgstr ""
+msgstr "تصميم الحملة"
 
 #. [about]
 #: data/core/about.cfg:959
 msgid "Multiplayer Maps and Balancing"
-msgstr ""
+msgstr "اللعب الجماعي: الخرائط والتوازن"
 
 #. [about]
 #: data/core/about.cfg:1008
 msgid "Packagers"
-msgstr ""
+msgstr "تجميع المكونات الاعلامية"
 
 #. [about]
 #: data/core/about.cfg:1115
 msgid "Miscellaneous Contributors"
-msgstr ""
+msgstr "مشاركون في مجالات غير محددة"
 
 #. [about]
 #: data/core/about.cfg:1842
 msgid "Bots"
-msgstr ""
+msgstr "مداخل"
 
 #. [about]
 #: data/core/about_i18n.cfg:6
 msgid "Afrikaans Translation"
-msgstr ""
+msgstr "الترجمة الافريقانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:26
 msgid "Ancient Greek Translation"
-msgstr ""
+msgstr "الترجمة اليونانية القديمة"
 
 #. [about]
 #: data/core/about_i18n.cfg:34
 msgid "Arabic Translation"
-msgstr ""
+msgstr "الترجمة العربية"
 
 #. [about]
 #: data/core/about_i18n.cfg:46
 msgid "Asturian Translation"
-msgstr ""
+msgstr "الترجمة النمساوية"
 
 #. [about]
 #: data/core/about_i18n.cfg:52
 msgid "Basque Translation"
-msgstr ""
+msgstr "الترجمة الباسكية"
 
 #. [about]
 #: data/core/about_i18n.cfg:65
 msgid "Bulgarian Translation"
-msgstr ""
+msgstr "الترجمة البلغارية"
 
 #. [about]
 #: data/core/about_i18n.cfg:101
 msgid "Catalan Translation"
-msgstr ""
+msgstr "الترجمة الكاتالانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:147
 msgid "Chinese Translation"
-msgstr ""
+msgstr "الترجمة الصينية"
 
 #. [about]
 #: data/core/about_i18n.cfg:241
 msgid "Chinese (Taiwan) Translation"
-msgstr ""
+msgstr "الترجمة الصينية التايوانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:254
 msgid "Croatian Translation"
-msgstr ""
+msgstr "الترجمة الكرواتية"
 
 #. [about]
 #: data/core/about_i18n.cfg:264
 msgid "Czech Translation"
-msgstr ""
+msgstr "الترجمة التشيكة"
 
 #. [about]
 #: data/core/about_i18n.cfg:336
 msgid "Danish Translation"
-msgstr ""
+msgstr "الترجم الدنماركية"
 
 #. [about]
 #: data/core/about_i18n.cfg:367
 msgid "Dutch Translation"
-msgstr ""
+msgstr "الترجمة الألمانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:438
 msgid "English (GB) Translation"
-msgstr ""
+msgstr "الترجمة الانجليزية البريطانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:463
 msgid "English (Shaw) Translation"
-msgstr ""
+msgstr "الترجمة الانجليزية الشاوية"
 
 #. [about]
 #: data/core/about_i18n.cfg:481
 msgid "Esperanto Translation"
-msgstr ""
+msgstr "الترجمة إلى الاسبرانتو"
 
 #. [about]
 #: data/core/about_i18n.cfg:500
 msgid "Estonian Translation"
-msgstr ""
+msgstr "الترجمة الاستونية"
 
 #. [about]
 #: data/core/about_i18n.cfg:510
 msgid "Filipino Translation"
-msgstr ""
+msgstr "الترجمة الفلبينية"
 
 #. [about]
 #: data/core/about_i18n.cfg:520
 msgid "Finnish Translation"
-msgstr ""
+msgstr "الترجمة الفنلندية"
 
 #. [about]
 #: data/core/about_i18n.cfg:579
 msgid "French Translation"
-msgstr ""
+msgstr "الترجمة الفرنسية"
 
 #. [about]
 #: data/core/about_i18n.cfg:744
 msgid "Friulian Translation"
-msgstr ""
+msgstr "الترجمة الى الفريوليان"
 
 #. [about]
 #: data/core/about_i18n.cfg:748
 msgid "Galician Translation"
-msgstr ""
+msgstr "الترجمة الغالية"
 
 #. [about]
 #: data/core/about_i18n.cfg:784
 msgid "German Translation"
-msgstr ""
+msgstr "الترجمة الجرمانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:897
 msgid "Greek Translation"
-msgstr ""
+msgstr "الترجمة اليونانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:940
 msgid "Hebrew Translation"
-msgstr ""
+msgstr "الترجمة العبرية"
 
 #. [about]
 #: data/core/about_i18n.cfg:953
 msgid "Hungarian Translation"
-msgstr ""
+msgstr "الترجمة الهنغارية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1014
 msgid "Icelandic Translation"
-msgstr ""
+msgstr "الترجمة الايسلندية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1024
 msgid "Indonesian Translation"
-msgstr ""
+msgstr "الترجمة الاندونيسية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1052
 msgid "Irish Translation"
-msgstr ""
+msgstr "الترجمة الايرلندية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1059
 msgid "Italian Translation"
-msgstr ""
+msgstr "الترجمة الايطالية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1106
 msgid "Japanese Translation"
-msgstr ""
+msgstr "الترجمة اليابانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1199
 msgid "Korean Translation"
-msgstr ""
+msgstr "الترجمة الكورية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1207
 msgid "Latin Translation"
-msgstr ""
+msgstr "الترجمة اللاتينية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1233
 msgid "Latvian Translation"
-msgstr ""
+msgstr "الترجمة اللاتفية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1248
 msgid "Lithuanian Translation"
-msgstr ""
+msgstr "الترجمة الليتوانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1273
 msgid "Macedonian Translation"
-msgstr ""
+msgstr "الترجمة المقدونية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1280
 msgid "Marathi Translation"
-msgstr ""
+msgstr "الترجمة إلى الماراثي"
 
 #. [about]
 #: data/core/about_i18n.cfg:1289
 msgid "Norwegian Translation"
-msgstr ""
+msgstr "الترجمة النرويجية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1314
 msgid "Old English Translation"
-msgstr ""
+msgstr "الترجمة البريطانية القديمة"
 
 #. [about]
 #: data/core/about_i18n.cfg:1332
 msgid "Polish Translation"
-msgstr ""
+msgstr "الترجمة البولونية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1397
 msgid "Portuguese Translation"
-msgstr ""
+msgstr "الترجمة البرتغالية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1411
 msgid "Portuguese (Brazil) Translation"
-msgstr ""
+msgstr "الترجمة البرتغالية البرازيلية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1469
 msgid "Romanian Translation"
-msgstr ""
+msgstr "الترجمة الرومانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1477
 msgid "Russian Translation"
-msgstr ""
+msgstr "الترجمة الروسية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1584
 msgid "Scottish Gaelic Translation"
-msgstr ""
+msgstr "الترجمة الاسكتلاندية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1593
 msgid "Serbian Translation"
-msgstr ""
+msgstr "الترجمة الصربية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1612
 msgid "Slovak Translation"
-msgstr ""
+msgstr "الترجمة السلوفاكية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1641
 msgid "Slovenian Translation"
-msgstr ""
+msgstr "الترجمة السلوفينية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1657
 msgid "Spanish Translation"
-msgstr ""
+msgstr "الترجمة الاسبانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1747
 msgid "Swedish Translation"
-msgstr ""
+msgstr "الترجمة السويدية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1792
 msgid "Turkish Translation"
-msgstr ""
+msgstr "الترجمة التركية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1817
 msgid "Ukrainian Translation"
-msgstr ""
+msgstr "الترجمة الاوكرانية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1833
 msgid "Valencian (southern Catalan) Translation"
-msgstr ""
+msgstr "الترجمة الفالنسية الكاتالونية الجنوبية"
 
 #. [about]
 #: data/core/about_i18n.cfg:1846
 msgid "Vietnamese Translation"
-msgstr ""
+msgstr "الترجمة الفيتنامية"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
 #: data/core/about_i18n.cfg:1866
 msgid "RACV’s Translation"
-msgstr ""
+msgstr "الترجمة إلى راكف"
 
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:6
 msgid "Items"
-msgstr ""
+msgstr "أشياء"
 
 #. [item]: id=altar_evil
 #: data/core/editor/items.cfg:12
 msgid "Evil Altar"
-msgstr ""
+msgstr "محراب شر"
 
 #. [item]: id=altar
 #: data/core/editor/items.cfg:19
 msgid "Altar"
-msgstr ""
+msgstr "محراب"
 
 #. [item]: id=ankh-necklace
 #. [item]: id=ankh-necklace2
 #: data/core/editor/items.cfg:26 data/core/editor/items.cfg:33
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "قلادة عنخ"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:40
 msgid "Anvil"
-msgstr ""
+msgstr "أنفيل"
 
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:47
 msgid "Archery Target"
-msgstr ""
+msgstr "دائرة تدريب سهام"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:54
 msgid "Golden Armor"
-msgstr ""
+msgstr "درع ذهبي"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:61
 msgid "Armor"
-msgstr ""
+msgstr "درع"
 
 #. [item]: id=axe
 #. [item]: id=axe2
 #: data/core/editor/items.cfg:68 data/core/editor/items.cfg:75
 msgid "Axe"
-msgstr ""
+msgstr "فأس"
 
 #. [item]: id=axe-small
 #: data/core/editor/items.cfg:82
 msgid "Small Axe"
-msgstr ""
+msgstr "فأس صغير"
 
 #. [item]: id=axe-throwing
 #: data/core/editor/items.cfg:89
 msgid "Throwing Axe"
-msgstr ""
+msgstr "فأس رمي"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:96
 msgid "Blue Ball"
-msgstr ""
+msgstr "كرة زرقاء"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:103
 msgid "Green Ball"
-msgstr ""
+msgstr "كرة خضراء"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:110
 msgid "Magenta Ball"
-msgstr ""
+msgstr "كرة حمراء"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:117
 msgid "Barrel"
-msgstr ""
+msgstr "برميل"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:124
 msgid "Bomb"
-msgstr ""
+msgstr "قنبلة"
 
 #. [item]: id=bones
 #: data/core/editor/items.cfg:131
 msgid "Bones"
-msgstr ""
+msgstr "عظام"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:138
 msgid "Bonestack"
-msgstr ""
+msgstr "كومة عظام"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -728,30 +734,30 @@ msgstr ""
 #: data/core/editor/items.cfg:159 data/core/editor/items.cfg:166
 #: data/core/editor/items.cfg:173
 msgid "Book"
-msgstr ""
+msgstr "كتاب"
 
 #. [item]: id=bow
 #. [item]: id=bow2
 #: data/core/editor/items.cfg:180 data/core/editor/items.cfg:187
 msgid "Bow"
-msgstr ""
+msgstr "قوس"
 
 #. [item]: id=bow-crystal
 #. [item]: id=bow-crystal2
 #: data/core/editor/items.cfg:194 data/core/editor/items.cfg:201
 msgid "Crystal Bow"
-msgstr ""
+msgstr "قوس كريستالي"
 
 #. [item]: id=bow-elven
 #. [item]: id=bow-elven2
 #: data/core/editor/items.cfg:208 data/core/editor/items.cfg:215
 msgid "Elven Bow"
-msgstr ""
+msgstr "قوس إلفي"
 
 #. [item]: id=box
 #: data/core/editor/items.cfg:222
 msgid "Box"
-msgstr ""
+msgstr "صندوق"
 
 #. [item]: id=branch
 #: data/core/editor/items.cfg:229
@@ -777,94 +783,94 @@ msgstr ""
 #. [item]: id=buckler2
 #: data/core/editor/items.cfg:258 data/core/editor/items.cfg:265
 msgid "Buckler"
-msgstr ""
+msgstr "درع صغير"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:272
 msgid "Burial"
-msgstr ""
+msgstr "مدفن"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:279
 msgid "Cage"
-msgstr ""
+msgstr "قفص"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:286
 msgid "Closed Chest"
-msgstr ""
+msgstr "صندوق مغلق"
 
 #. [item]: id=chest-open
 #. Open is an adjective here, not a verb. That is, a (treasure) chest that is open, not an action to open such a chest.
 #: data/core/editor/items.cfg:294
 msgid "Open Chest"
-msgstr ""
+msgstr "صندوق مفتوح"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:301
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "صندوق مغلق مليئ"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:308
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "صندوق مفتوح مليئ"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:315
 msgid "Green Cloak"
-msgstr ""
+msgstr "جلباب أخضر"
 
 #. [item]: id=club
 #: data/core/editor/items.cfg:322
 msgid "Club"
-msgstr ""
+msgstr "عصا"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:329
 msgid "Closed Coffin"
-msgstr ""
+msgstr "تابوت مغلق"
 
 #. [item]: id=coffin-open
 #. Open is an adjective here, not a verb. That is, a coffin that is open, not an action to open a coffin.
 #: data/core/editor/items.cfg:337
 msgid "Open Coffin"
-msgstr ""
+msgstr "تابوت مفتوح"
 
 #. [item]: id=crossbow
 #: data/core/editor/items.cfg:344
 msgid "Crossbow"
-msgstr ""
+msgstr "قوس مركب"
 
 #. [item]: id=dagger
 #: data/core/editor/items.cfg:351
 msgid "Dagger"
-msgstr ""
+msgstr "خنجر"
 
 #. [item]: id=dagger-poison
 #: data/core/editor/items.cfg:358
 msgid "Poison Dagger"
-msgstr ""
+msgstr "خنجر مسموم"
 
 #. [item]: id=dagger-poison-bare
 #: data/core/editor/items.cfg:365
 msgid "Poison Dagger (clean)"
-msgstr ""
+msgstr "خنجر مسموم نظيف"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:372
 msgid "Dragon Statue"
-msgstr ""
+msgstr "تمثال تنين"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:379
 msgid "Flaming Sword"
-msgstr ""
+msgstr "سيف ناري"
 
 #. [item]: id=flame-sword-bare
 #: data/core/editor/items.cfg:386
 msgid "Unenchanted Flaming Sword"
-msgstr ""
+msgstr "سيف ناري سحري"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -873,27 +879,27 @@ msgstr ""
 #: data/core/editor/items.cfg:393 data/core/editor/items.cfg:400
 #: data/core/editor/items.cfg:407 data/core/editor/items.cfg:414
 msgid "Flower"
-msgstr ""
+msgstr "زهرة"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:421
 msgid "Go Here Overlay"
-msgstr ""
+msgstr "إشارة إذهب إلى"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:427
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "كومة ضخمة من المال"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:434
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "كومة من المال"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:441
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "كومة صغيرة من المال"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:448
@@ -903,54 +909,54 @@ msgstr ""
 #. [item]: id=hammer
 #: data/core/editor/items.cfg:455
 msgid "Hammer"
-msgstr ""
+msgstr "مطرقة"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:462
 msgid "Runic Hammer"
-msgstr ""
+msgstr "مطرقة رونية"
 
 #. [item]: id=holy-water
 #. [object]
 #: data/core/editor/items.cfg:469 data/core/macros/items.cfg:286
 msgid "Holy Water"
-msgstr ""
+msgstr "ماء مقدس"
 
 #. [item]: id=key
 #. [item]: id=key2
 #: data/core/editor/items.cfg:476 data/core/editor/items.cfg:483
 msgid "Key"
-msgstr ""
+msgstr "مفتاح"
 
 #. [item]: id=key-dark
 #: data/core/editor/items.cfg:490
 msgid "Dark Key"
-msgstr ""
+msgstr "مفتاح أسود"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:497
 msgid "Leather Pack"
-msgstr ""
+msgstr "كومة علف"
 
 #. [item]: id=mace
 #: data/core/editor/items.cfg:504
 msgid "Mace"
-msgstr ""
+msgstr "مطرقة ضرب"
 
 #. [item]: id=necklace-bone
 #: data/core/editor/items.cfg:511
 msgid "Bone Necklace"
-msgstr ""
+msgstr "قلادة عظام"
 
 #. [item]: id=necklace-stone
 #: data/core/editor/items.cfg:518
 msgid "Stone Necklace"
-msgstr ""
+msgstr "قلادة حجرية"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:525
 msgid "Orcish Flag"
-msgstr ""
+msgstr "علم أورك"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
@@ -961,58 +967,58 @@ msgstr ""
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:546
 msgid "Blue Potion"
-msgstr ""
+msgstr "مشروب أزرق"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
 msgid "Green Potion"
-msgstr ""
+msgstr "مشروب أخضر"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:560
 msgid "Gray Potion"
-msgstr ""
+msgstr "مشروب رمادي"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
 #: data/core/editor/items.cfg:567 data/core/macros/items.cfg:249
 msgid "Poison"
-msgstr ""
+msgstr "سم"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:574
 msgid "Red Potion"
-msgstr ""
+msgstr "مشروب أحمر"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:581
 msgid "Yellow Potion"
-msgstr ""
+msgstr "مشروب أصفر"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:588
 msgid "Brown Ring"
-msgstr ""
+msgstr "خاتم بني"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:595
 msgid "Golden Ring"
-msgstr ""
+msgstr "خاتم ذهبي"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:602
 msgid "Red Ring"
-msgstr ""
+msgstr "خاتم أحمر"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:609
 msgid "Silver Ring"
-msgstr ""
+msgstr "خاتم فضي"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:616
 msgid "White Ring"
-msgstr ""
+msgstr "خاتم أبيض"
 
 #. [item]: id=rock
 #. [item]: id=rock1
@@ -1023,27 +1029,27 @@ msgstr ""
 #: data/core/editor/items.cfg:1014 data/core/editor/items.cfg:1021
 #: data/core/editor/items.cfg:1028
 msgid "Rock"
-msgstr ""
+msgstr "صخرة"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:630
 msgid "Scarecrow"
-msgstr ""
+msgstr "مخيفة الطيور"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:637
 msgid "Sceptre of Fire"
-msgstr ""
+msgstr "صولجان النار"
 
 #. [item]: id=sling
 #: data/core/editor/items.cfg:644
 msgid "Sling"
-msgstr ""
+msgstr "مقلاع"
 
 #. [item]: id=spear
 #: data/core/editor/items.cfg:651
 msgid "Spear"
-msgstr ""
+msgstr "رمح"
 
 #. [item]: id=spear-fancy
 #. [item]: id=spear-fancy2
@@ -1054,24 +1060,24 @@ msgstr ""
 #. [item]: id=spear-javelin
 #: data/core/editor/items.cfg:672
 msgid "Javelin"
-msgstr ""
+msgstr "رمح قصير"
 
 #. [item]: id=staff
 #. [item]: id=staff2
 #: data/core/editor/items.cfg:679 data/core/editor/items.cfg:686
 msgid "Staff"
-msgstr ""
+msgstr "صولجان"
 
 #. [item]: id=staff-druid
 #: data/core/editor/items.cfg:693
 msgid "Druid Staff"
-msgstr ""
+msgstr "صولجان العراف"
 
 #. [item]: id=staff-magic
 #. [item]: id=staff-magic2
 #: data/core/editor/items.cfg:700 data/core/editor/items.cfg:707
 msgid "Magic Staff"
-msgstr ""
+msgstr "صولجان سحري"
 
 #. [item]: id=staff-magic-wand
 #: data/core/editor/items.cfg:714
@@ -1086,7 +1092,7 @@ msgstr ""
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:728
 msgid "Stone Tablet"
-msgstr ""
+msgstr "صخرة كتابة"
 
 #. [item]: id=storm-trident
 #. [item]: id=storm-trident2
@@ -1094,7 +1100,7 @@ msgstr ""
 #: data/core/editor/items.cfg:735 data/core/editor/items.cfg:742
 #: data/core/macros/items.cfg:537
 msgid "Storm Trident"
-msgstr ""
+msgstr "رمح العاصفة الثلاثي"
 
 #. [item]: id=straw-bale1
 #. [item]: id=straw-bale2
@@ -1106,52 +1112,52 @@ msgstr ""
 #. [item]: id=sword2
 #: data/core/editor/items.cfg:763 data/core/editor/items.cfg:770
 msgid "Sword"
-msgstr ""
+msgstr "سيف"
 
 #. [item]: id=sword-holy
 #: data/core/editor/items.cfg:777
 msgid "Holy Sword"
-msgstr ""
+msgstr "سيف مقدس"
 
 #. [item]: id=sword-short
 #: data/core/editor/items.cfg:784
 msgid "Short Sword"
-msgstr ""
+msgstr "سيف قصير"
 
 #. [item]: id=sword-wraith
 #: data/core/editor/items.cfg:791
 msgid "Wraith Sword"
-msgstr ""
+msgstr "سيف روحي"
 
 #. [item]: id=talisman-ankh
 #: data/core/editor/items.cfg:798
 msgid "Ankh Talisman"
-msgstr ""
+msgstr "طلسمان عنخ"
 
 #. [item]: id=talisman-bone
 #: data/core/editor/items.cfg:805
 msgid "Bone Talisman"
-msgstr ""
+msgstr "طلسمان عظام"
 
 #. [item]: id=talisman-stone
 #: data/core/editor/items.cfg:812
 msgid "Stone Talisman"
-msgstr ""
+msgstr "طلسمان حجري"
 
 #. [item]: id=thunderstick
 #: data/core/editor/items.cfg:819
 msgid "Thunderstick"
-msgstr ""
+msgstr "عصا النار"
 
 #. [item]: id=torch
 #: data/core/editor/items.cfg:826
 msgid "Lit Torch"
-msgstr ""
+msgstr "عصا نار مشتعلة"
 
 #. [item]: id=torch-bare
 #: data/core/editor/items.cfg:833
 msgid "Unlit Torch"
-msgstr ""
+msgstr "عصا نار غير مشتعلة"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:840
@@ -2672,33 +2678,33 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:7
 msgid "Turns run out"
-msgstr ""
+msgstr "نهاية أدوار اللعب"
 
 #: data/core/macros/objective-utils.cfg:20
 msgid "(early finish bonus)"
-msgstr ""
+msgstr "هدية إكمال اللعبة قبل نهاية الأدوار"
 
 #: data/core/macros/objective-utils.cfg:25
 msgid "Alternative objective:"
-msgstr ""
+msgstr "هدف موازي"
 
 #: data/core/macros/objective-utils.cfg:30
 msgid "Bonus objective:"
-msgstr ""
+msgstr "هدية تحقيق الهدف الموازي"
 
 #: data/core/macros/objective-utils.cfg:35
 msgid "Optional objective:"
-msgstr ""
+msgstr "أهداف اختيارية"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:60
 msgid "This is the last scenario."
-msgstr ""
+msgstr "هذا السيناريو الأخير في هذه الحملة"
 
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:67
 msgid "No turn limit"
-msgstr ""
+msgstr "عدد أدوار غير محدود"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:58
@@ -2881,74 +2887,74 @@ msgstr ""
 #. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:246
 msgid "Red"
-msgstr ""
+msgstr "أحمر"
 
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:21
 msgid "Light Red"
-msgstr ""
+msgstr "أحمر لامع"
 
 #. [color_range]: id=darkred
 #: data/core/team-colors.cfg:27
 msgid "Dark Red"
-msgstr ""
+msgstr "أحمر داكن"
 
 #. [color_range]: id=blue
 #. [color_range]: id=2
 #: data/core/team-colors.cfg:33 data/core/team-colors.cfg:252
 msgid "Blue"
-msgstr ""
+msgstr "أزرق"
 
 #. [color_range]: id=lightblue
 #: data/core/team-colors.cfg:40
 msgid "Light blue"
-msgstr ""
+msgstr "أزرق خفيف"
 
 #. [color_range]: id=green
 #. [color_range]: id=3
 #: data/core/team-colors.cfg:46 data/core/team-colors.cfg:258
 msgid "Green"
-msgstr ""
+msgstr "أخضر"
 
 #. [color_range]: id=brightgreen
 #: data/core/team-colors.cfg:53
 msgid "Bright green"
-msgstr ""
+msgstr "أخضر لامع"
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
 #: data/core/team-colors.cfg:59 data/core/team-colors.cfg:264
 msgid "Purple"
-msgstr ""
+msgstr "بنفسجي"
 
 #. [color_range]: id=black
 #. [color_range]: id=5
 #: data/core/team-colors.cfg:66 data/core/team-colors.cfg:276
 msgid "Black"
-msgstr ""
+msgstr "أسود"
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
 #: data/core/team-colors.cfg:73 data/core/team-colors.cfg:288
 msgid "Brown"
-msgstr ""
+msgstr "بني"
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
 #: data/core/team-colors.cfg:80 data/core/team-colors.cfg:270
 msgid "Orange"
-msgstr ""
+msgstr "برتقالي"
 
 #. [color_range]: id=brightorange
 #: data/core/team-colors.cfg:87
 msgid "Bright orange"
-msgstr ""
+msgstr "برتقالي لامع"
 
 #. [color_range]: id=white
 #. [color_range]: id=8
 #: data/core/team-colors.cfg:93 data/core/team-colors.cfg:282
 msgid "White"
-msgstr ""
+msgstr "أبيض"
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
@@ -2959,146 +2965,146 @@ msgstr ""
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:107
 msgid "color^Gold"
-msgstr ""
+msgstr "ذهبي"
 
 #. [color_range]: id=darkblue
 #: data/core/team-colors.cfg:114
 msgid "Dark blue"
-msgstr ""
+msgstr "أسود داكن"
 
 #. [color_range]: id=reef
 #: data/core/team-colors.cfg:123
 msgid "Reef"
-msgstr ""
+msgstr "حيد"
 
 #. [color_range]: id=shallow_water
 #: data/core/team-colors.cfg:129
 msgid "Shallow water"
-msgstr ""
+msgstr "مياه سطحية"
 
 #. [color_range]: id=deep_water
 #: data/core/team-colors.cfg:135
 msgid "Deep water"
-msgstr ""
+msgstr "مياه عميقة"
 
 #. [color_range]: id=swamp_water
 #: data/core/team-colors.cfg:141
 msgid "Swamp water"
-msgstr ""
+msgstr "مياه سبخة"
 
 #. [color_range]: id=flat
 #: data/core/team-colors.cfg:147
 msgid "Flat"
-msgstr ""
+msgstr "مسطح"
 
 #. [color_range]: id=hills
 #: data/core/team-colors.cfg:153
 msgid "Hills"
-msgstr ""
+msgstr "هضاب"
 
 #. [color_range]: id=mountains
 #: data/core/team-colors.cfg:159
 msgid "Mountains"
-msgstr ""
+msgstr "جبال"
 
 #. [color_range]: id=forest
 #: data/core/team-colors.cfg:165
 msgid "Forest"
-msgstr ""
+msgstr "غابة"
 
 #. [color_range]: id=sand
 #: data/core/team-colors.cfg:171
 msgid "Sand"
-msgstr ""
+msgstr "رمال"
 
 #. [color_range]: id=frozen
 #: data/core/team-colors.cfg:177
 msgid "Frozen"
-msgstr ""
+msgstr "متجمد"
 
 #. [color_range]: id=cave
 #: data/core/team-colors.cfg:183
 msgid "Cave"
-msgstr ""
+msgstr "كهف"
 
 #. [color_range]: id=fungus
 #: data/core/team-colors.cfg:189
 msgid "Fungus"
-msgstr ""
+msgstr "فطر"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
 #: data/core/team-colors.cfg:195 src/terrain/terrain.cpp:188
 msgid "Village"
-msgstr ""
+msgstr "مدينة"
 
 #. [color_range]: id=castle
 #: data/core/team-colors.cfg:201
 msgid "Castle"
-msgstr ""
+msgstr "قصر"
 
 #. [color_range]: id=keep
 #: data/core/team-colors.cfg:207
 msgid "Keep"
-msgstr ""
+msgstr "قلعة"
 
 #. [color_range]: id=rails
 #: data/core/team-colors.cfg:213
 msgid "Rail"
-msgstr ""
+msgstr "سكة"
 
 #. [color_range]: id=unwalkable
 #: data/core/team-colors.cfg:219
 msgid "Unwalkable"
-msgstr ""
+msgstr "غير ممهد"
 
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:225
 msgid "Impassable"
-msgstr ""
+msgstr "لا يمكن عبوره"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
 #: data/core/team-colors.cfg:231 src/game_initialization/lobby_data.cpp:386
 msgid "Fog"
-msgstr ""
+msgstr "ضباب"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
 #: data/core/team-colors.cfg:237 src/game_initialization/lobby_data.cpp:389
 #: src/game_initialization/lobby_data.cpp:392
 msgid "Shroud"
-msgstr ""
+msgstr "ظلام"
 
 #. [core]: id=default
 #: data/cores.cfg:5
 msgid "Wesnoth (Default)"
-msgstr ""
+msgstr "ويسنوث (قياسي)"
 
 #. [core]: id=default
 #: data/cores.cfg:8
 msgid "The standard Wesnoth core."
-msgstr ""
+msgstr "لب ويسنوث القياسي"
 
 #. [language]
 #: data/english.cfg:3
 msgid "Easy"
-msgstr ""
+msgstr "سهل"
 
 #. [language]
 #: data/english.cfg:4
 msgid "Medium"
-msgstr ""
+msgstr "متوسط"
 
 #. [language]
 #: data/english.cfg:5
 msgid "Hard"
-msgstr ""
+msgstr "صعب"
 
 #. [language]
 #: data/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "كابوس"
 
 #. [language]
 #: data/english.cfg:8
@@ -3115,6 +3121,7 @@ msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
+"الوحدات المحايدة لا تتأثر بتوقيت اليوم فهي تقاتل في الليل والنهار نفس المستوى"
 
 #. [language]
 #: data/english.cfg:13
@@ -3136,7 +3143,7 @@ msgstr ""
 #. [language]
 #: data/english.cfg:31
 msgid "arcane"
-msgstr ""
+msgstr "سحري"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
@@ -3328,34 +3335,34 @@ msgstr ""
 #. [server]
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
-msgstr ""
+msgstr "السيرفر الرسمي لويسنوث"
 
 #. [server]
 #: data/game_config.cfg:8
 msgid "Alternate Wesnoth Server"
-msgstr ""
+msgstr "سيرفر تعويضي لويسنوث"
 
 #. [label]: id=title
 #: data/gui/window/install_dependencies.cfg:37
 msgid "Install Dependencies"
-msgstr ""
+msgstr "تنزيل الملفات المرتبطة"
 
 #. [button]: id=ok
 #: data/gui/window/install_dependencies.cfg:84
 msgid "Yes"
-msgstr ""
+msgstr "نعم"
 
 #. [button]: id=cancel
 #: data/gui/window/install_dependencies.cfg:95
 msgid "No"
-msgstr ""
+msgstr "لا"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
 #: src/hotkey/command_executor.cpp:642
 msgid "Screenshot"
-msgstr ""
+msgstr "لقطة"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:28
@@ -3397,59 +3404,59 @@ msgstr ""
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1056
 msgid "female^poisoned"
-msgstr ""
+msgstr "تم تسميمها"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1063
 msgid "female^slowed"
-msgstr ""
+msgstr "تم إبطائها"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1063
 msgid "slowed"
-msgstr ""
+msgstr "تم إبطائه"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1069
 msgid "female^petrified"
-msgstr ""
+msgstr "تم تجميدها"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1069
 msgid "petrified"
-msgstr ""
+msgstr "تم تجميده"
 
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128
 msgid "female^unhealable"
-msgstr ""
+msgstr "غير قابلة للشفاء"
 
 #. [lua]: set_status
 #: data/lua/wml/harm_unit.lua:128
 msgid "unhealable"
-msgstr ""
+msgstr "غير قابل للشفاء"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
 #: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3403
 #: src/scripting/game_lua_kernel.cpp:3438
 msgid "input"
-msgstr ""
+msgstr "مدخل"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:36 src/game_initialization/mp_game_utils.cpp:76
 msgid "Victory:"
-msgstr ""
+msgstr "نصر"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:37
 msgid "Defeat:"
-msgstr ""
+msgstr "قياسي"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:57
@@ -3470,7 +3477,7 @@ msgstr ""
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:6
 msgid "Plan Unit Advance"
-msgstr ""
+msgstr "التخطيط المسبق"
 
 #. [modification]: id=plan_unit_advance, type=mp
 #: data/modifications.cfg:7
@@ -3480,11 +3487,13 @@ msgid ""
 "what your units advance to beforehand, either for a specific unit or for all "
 "units of the same type."
 msgstr ""
+"عند اللعب الجماعي  لا يمكنك التحكم في مسار تطور وحدتك عندما تتطور أثناء دور "
+"لاعب آخر. بهذا الاختيار يمكنك مسبقا تخطيط مسار تطور وحداتك"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:13
 msgid "Force advancement planning"
-msgstr ""
+msgstr "تفعيل مسار تطور اجباري"
 
 #. [checkbox]: id=pickadvance_force_choice
 #: data/modifications.cfg:14
@@ -3499,188 +3508,188 @@ msgstr ""
 #: data/modifications/pick_advance/dialog.lua:30
 #: data/modifications/pick_advance/main.lua:10
 msgid "Plan Advancement"
-msgstr ""
+msgstr "تخطيط التطور"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:67
 msgid ""
 "This advancement is currently the default for all units of the same type"
-msgstr ""
+msgstr "هذا التطور حاليا هو التطور القياسي لكل الوحدات من هذا النوع"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:129
 msgid "Apply to all units of this type"
-msgstr ""
+msgstr "التفعيل لكل الوحدات من هذا النوع"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:145
 msgid "Save"
-msgstr ""
+msgstr "حفظ"
 
 #. [lua]: pickadvance.show_dialog_unsynchronized
 #: data/modifications/pick_advance/dialog.lua:154
 msgid "Cancel"
-msgstr ""
+msgstr "رفض"
 
 #. [lua]: preshow
 #: data/modifications/pick_advance/dialog.lua:174
 msgid "No planned advancement"
-msgstr ""
+msgstr "لا تطور مخطط له"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
 msgid "replay^Play"
-msgstr ""
+msgstr "إعادة عرض اللعبة"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:413 data/themes/_initial.cfg:573
 msgid "continuous replay"
-msgstr ""
+msgstr "إعادة عرض متواصل"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:427
 msgid "replay^Stop"
-msgstr ""
+msgstr "إيقاف إعادة العرض"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:428
 msgid "pause after current move"
-msgstr ""
+msgstr "وقفة بعد الحركة الحالية"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:443
 msgid "replay^Reset"
-msgstr ""
+msgstr "إستكمال اعادة العرض"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:444 data/themes/_initial.cfg:601
 msgid "reset to beginning"
-msgstr ""
+msgstr "إعادة العرض من البداية"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:459 data/themes/_initial.cfg:614
 msgid "Next Turn"
-msgstr ""
+msgstr "الدور التالي"
 
 #. [action]: id=button-nextturn, type=image
 #: data/themes/_initial.cfg:460 data/themes/_initial.cfg:615
 msgid "play turn"
-msgstr ""
+msgstr "لعب دور"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:475 data/themes/_initial.cfg:628
 msgid "Next Side"
-msgstr ""
+msgstr "الطرف الموالي"
 
 #. [action]: id=button-nextside, type=image
 #: data/themes/_initial.cfg:476 data/themes/_initial.cfg:629
 msgid "play side turn"
-msgstr ""
+msgstr "لعب دور طرف"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:490 data/themes/_initial.cfg:642
 msgid "Next Move"
-msgstr ""
+msgstr "الحركة الموالية"
 
 #. [action]: id=button-nextmove, type=image
 #: data/themes/_initial.cfg:491 data/themes/_initial.cfg:643
 msgid "play single move"
-msgstr ""
+msgstr "لعب حركة واحدة"
 
 #. [menu]: id=show-what
 #: data/themes/_initial.cfg:503 data/themes/_initial.cfg:655
 msgid "Point of view"
-msgstr ""
+msgstr "زاوية الرؤية"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:514
 msgid "Continue Play"
-msgstr ""
+msgstr "إستكمال اللعب"
 
 #. [action]: id=button-continue
 #: data/themes/_initial.cfg:515
 msgid "Exit the replay mode and continue playing normally."
-msgstr ""
+msgstr "الخروج من إعادة العرض ومواصلة اللعب بطريقة عادية"
 
 #. [action]: id=skip-animation, type=checkbox
 #: data/themes/_initial.cfg:527 data/themes/_initial.cfg:667
 msgid "Skip animation"
-msgstr ""
+msgstr "تجاوز التحريك الحي للصور"
 
 #. [label]: id=replay-label
 #: data/themes/_initial.cfg:557
 msgid "Replay"
-msgstr ""
+msgstr "إعادة لعب"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:572
 msgid "Play"
-msgstr ""
+msgstr "لعب"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:586
 msgid "Stop"
-msgstr ""
+msgstr "توقف"
 
 #. [action]: id=button-stopreplay, type=image
 #: data/themes/_initial.cfg:587
 msgid "pause"
-msgstr ""
+msgstr "وقفة"
 
 #. [action]: id=button-resetreplay, type=image
 #: data/themes/_initial.cfg:600
 msgid "Reset"
-msgstr ""
+msgstr "إعادة من الصفر"
 
 #. [menu]: id=menu-main
 #: data/themes/cutscene.cfg:37 data/themes/default.cfg:91
 msgid "Menu"
-msgstr ""
+msgstr "الخيارات"
 
 #. [action]: id=button-endturn
 #: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
 msgid "End Turn"
-msgstr ""
+msgstr "إنهاء دور"
 
 #. [action]: id=button-endturn
 #: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
 msgid "End Scenario"
-msgstr ""
+msgstr "إنهاء سيناريو"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "القياسي"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
 msgid "The default theme"
-msgstr ""
+msgstr "المشهد القياسي"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:101
 msgid "Load Turn..."
-msgstr ""
+msgstr "تحميل دور"
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:109
 msgid "Actions"
-msgstr ""
+msgstr "الحركات"
 
 #. [label]: id=label-hp
 #: data/themes/default.cfg:157
 msgid "HP"
-msgstr ""
+msgstr "نقاط الحياة"
 
 #. [label]: id=label-xp
 #: data/themes/default.cfg:166
 msgid "XP"
-msgstr ""
+msgstr "نقاط الخبرة"
 
 #. [label]: id=label-mp
 #: data/themes/default.cfg:174
 msgid "MP"
-msgstr ""
+msgstr "نقاط الحركة"
 
 #. [label]: id=label-def
 #: data/themes/default.cfg:182
@@ -3690,7 +3699,7 @@ msgstr ""
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:400
 msgid "statuspanel^lvl"
-msgstr ""
+msgstr "المستوى"
 
 #. [tip]
 #: data/tips.cfg:4
@@ -4177,6 +4186,9 @@ msgid ""
 "the <b>Delay Shroud Updates</b> option when you need to move units while "
 "retaining the ability to undo, or use the new Whiteboard planning tool."
 msgstr ""
+"لا يمكن التراجع عن خطوة قمت بها اذا نتج عنها كشف سداسي كان مغطى بالضباب او "
+"الظلام. استعمل خيار 'تأخير كشف ظلام الخريطة' او نظام التخطيط المسبق للابقاء "
+"عن إمكانية التراجع"
 
 #. [tip]
 #: data/tips.cfg:201
@@ -4428,6 +4440,10 @@ msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1129
@@ -4435,6 +4451,10 @@ msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #. TRANSLATORS: Both friends and enemies sighted -- neutral message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
@@ -4449,6 +4469,10 @@ msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #. TRANSLATORS: Only friends sighted -- good message.
 #. This is shown when a move is interrupted because units were revealed from the fog of war.
@@ -4457,14 +4481,20 @@ msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: src/actions/move.cpp:1157
 msgid "(press $hotkey to keep moving)"
 msgstr ""
 
 #: src/actions/undo.cpp:413
+#, fuzzy
+#| msgid "Game Error"
 msgid "Redo Error"
-msgstr ""
+msgstr "خطأ في اللعبة"
 
 #: src/actions/undo.cpp:414
 msgid ""
@@ -4978,6 +5008,10 @@ msgid_plural ""
 "starting gold."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: src/carryover_show_gold.cpp:136
 msgid ""
@@ -5000,6 +5034,10 @@ msgid_plural ""
 "gold, whichever is higher."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: src/chat_command_handler.cpp:82
 msgid "Added to ignore list: $nick"
@@ -5336,6 +5374,10 @@ msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: src/game_config_manager.cpp:643
 msgid "Please report this to the author or maintainer of this add-on."
@@ -5506,6 +5548,10 @@ msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
 #: src/game_initialization/lobby_data.cpp:368
 msgid "mp_game_available_slots^Full"
@@ -5987,8 +6033,10 @@ msgid "Planning mode deactivated!"
 msgstr ""
 
 #: src/hotkey/hotkey_handler_sp.cpp:317
+#, fuzzy
+#| msgid "Do you really want to quit?"
 msgid "Do you want to load it anyway?"
-msgstr ""
+msgstr "هل ترغب حقا في المغادرة"
 
 #: src/hotkey/hotkey_handler_sp.cpp:333
 msgid "The file you have tried to load has no replay information. "
@@ -6745,7 +6793,7 @@ msgstr ""
 
 #: src/play_controller.cpp:1239
 msgid "Warning: broken campaign branches"
-msgstr ""
+msgstr "تحذير: حملة تحتوي قسما مكسورا"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
@@ -6778,21 +6826,23 @@ msgstr[5] ""
 
 #: src/play_controller.cpp:1256
 msgid "Once this is fixed, you will need to restart this scenario."
-msgstr ""
+msgstr "حالما يتم اصلاح الحملة، ستضطر لإعادة آخر سيناريو لعبتهفيها"
 
 #: src/play_controller.cpp:1359
 msgid "No objectives available"
-msgstr ""
+msgstr "لا أهداف محددة"
 
 #: src/playmp_controller.cpp:163
 msgid "Undoing moves not yet transmitted to the server."
-msgstr ""
+msgstr "الحركات التي تم التراجع عنها لم ترسل بعد للسيرفر"
 
 #: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
+"وقع انفصال عن السيرفر ولا يمكن استكمال اللعب. هل تريد تسجيل اللعبة حتى هذه "
+"النقطة؟"
 
 #: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
 msgid ""
@@ -6825,7 +6875,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:187
 msgid "Game Error"
-msgstr ""
+msgstr "خطأ في اللعبة"
 
 #: src/playsingle_controller.cpp:188
 msgid ""
@@ -6833,10 +6883,12 @@ msgid ""
 "what this message means, then most likely someone is cheating or someone "
 "reloaded a corrupt game."
 msgstr ""
+"هذا الدور الجماعي يستخدم نظام احتمالات عشوائي مختلف عن نظام اللعبة المعتاد. "
+"إذا لم تكن على دراية بذلك فهذا يعني أن احد الأطراف يغش أو أن اللعبة بهذا كسر"
 
 #: src/playsingle_controller.cpp:368
 msgid "The game is over."
-msgstr ""
+msgstr "اللعبة انتهت"
 
 #: src/playsingle_controller.cpp:541
 msgid "It is now $name|’s turn"
@@ -6852,19 +6904,19 @@ msgstr ""
 
 #: src/playturn.cpp:291
 msgid "Replace with AI"
-msgstr ""
+msgstr "التعويض بالذكاء الصناعي"
 
 #: src/playturn.cpp:292
 msgid "Replace with local player"
-msgstr ""
+msgstr "التعويض بلاعب محلي"
 
 #: src/playturn.cpp:293
 msgid "Set side to idle"
-msgstr ""
+msgstr "تحديد الطرف كغير فاعل"
 
 #: src/playturn.cpp:294
 msgid "Save and abort game"
-msgstr ""
+msgstr "تسجيل ومغادرة"
 
 #: src/playturn.cpp:298
 msgid ""
@@ -6874,27 +6926,27 @@ msgstr ""
 
 #: src/quit_confirmation.cpp:55
 msgid "Quit"
-msgstr ""
+msgstr "المغادرة"
 
 #: src/quit_confirmation.cpp:90
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "هل ترغب حقا في المغادرة"
 
 #: src/reports.cpp:174 src/savegame.cpp:430
 msgid "Name: "
-msgstr ""
+msgstr "الاسم:"
 
 #: src/reports.cpp:195
 msgid "Type: "
-msgstr ""
+msgstr "الصنف:"
 
 #: src/reports.cpp:198
 msgid "Special Notes:"
-msgstr ""
+msgstr "ملاحظات خاصة:"
 
 #: src/reports.cpp:221
 msgid "Race: "
-msgstr ""
+msgstr "العرق:"
 
 #: src/reports.cpp:240
 msgid "Side: <b>$side_name</b> ($color_name)"
@@ -6902,29 +6954,31 @@ msgstr ""
 
 #: src/reports.cpp:318
 msgid "Trait: "
-msgstr ""
+msgstr "الصفات الشخصية:"
 
 #: src/reports.cpp:341
 msgid "invisible: "
-msgstr ""
+msgstr "غير مرئي:"
 
 #: src/reports.cpp:342
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
-msgstr ""
+msgstr "هذه الوحدة غير مرئية. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
 
 #: src/reports.cpp:345
 msgid "slowed: "
-msgstr ""
+msgstr "تم ابطائه:"
 
 #: src/reports.cpp:346
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr ""
+"هذه الوحدة تم ابطائها. هجماتها لها نصف المفعول وتنقلها يحتاج ضعف نقاط الحركة "
+"المعتادة"
 
 #: src/reports.cpp:349
 msgid "poisoned: "
-msgstr ""
+msgstr "تم تسميمها:"
 
 #: src/reports.cpp:350
 msgid ""
@@ -6935,18 +6989,23 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
+"هذه الوحدة تم تسميمها. ستخسر 8 نقاط حياة حتى يتم علاجها من وحدة حليفة لها "
+"قدرة علاج السم أو بالبقاء في مدينة لمدة دور. السم لن يقتل الوحدة ولن تنزل "
+"نقاط حياتها إلى ما تحت نقطة واحدة"
 
 #: src/reports.cpp:353
 msgid "petrified: "
-msgstr ""
+msgstr "تم تجميدها:"
 
 #: src/reports.cpp:354
 msgid "This unit has been petrified. It may not move or attack."
-msgstr ""
+msgstr "هذه الوحدة تم تجميدها ولا يمكنها بالتالي التحرك أو الهجوم."
 
 #: src/reports.cpp:357
+#, fuzzy
+#| msgid "unhealable"
 msgid "unhealable: "
-msgstr ""
+msgstr "غير قابل للشفاء"
 
 #: src/reports.cpp:358
 msgid ""
@@ -6955,144 +7014,149 @@ msgid ""
 msgstr ""
 
 #: src/reports.cpp:361
+#, fuzzy
+#| msgid "invisible: "
 msgid "invulnerable: "
-msgstr ""
+msgstr "غير مرئي:"
 
 #: src/reports.cpp:362
+#, fuzzy
+#| msgid ""
+#| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
-msgstr ""
+msgstr "هذه الوحدة غير مرئية. لا يمكن رؤيتها أو مهاجمتها من وحدة معادية."
 
 #: src/reports.cpp:440
 msgid "Ability: "
-msgstr ""
+msgstr "القدرات:"
 
 #: src/reports.cpp:442 src/reports.cpp:987
 msgid " (inactive)"
-msgstr ""
+msgstr "(غير مفعل)"
 
 #: src/reports.cpp:510
 msgid "Resistances: "
-msgstr ""
+msgstr "المقاومة:"
 
 #: src/reports.cpp:512
 msgid "(Att / Def)"
-msgstr ""
+msgstr "(الهجوم/الدفاع)"
 
 #: src/reports.cpp:543
 msgid "Experience Modifier: "
-msgstr ""
+msgstr "تغيير الخبرة اللازمة:"
 
 #: src/reports.cpp:593
 msgid "Terrain: "
-msgstr ""
+msgstr "الارضية:"
 
 #: src/reports.cpp:610
 msgid "maximum^max."
-msgstr ""
+msgstr "الاقصى"
 
 #: src/reports.cpp:610
 msgid "minimum^min."
-msgstr ""
+msgstr "الادنى"
 
 #: src/reports.cpp:615
 msgid "Defense: "
-msgstr ""
+msgstr "الدفاع:"
 
 #: src/reports.cpp:650 src/reports.cpp:651
 msgid "vision:"
-msgstr ""
+msgstr "الرؤية:"
 
 #: src/reports.cpp:655 src/reports.cpp:656
 msgid "jamming:"
-msgstr ""
+msgstr "القفز:"
 
 #: src/reports.cpp:685
 msgid "Movement Costs:"
-msgstr ""
+msgstr "تكلفة الحركة"
 
 #: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
 msgid "Weapon: "
-msgstr ""
+msgstr "السلاح:"
 
 #: src/reports.cpp:823 src/reports.cpp:1077
 msgid "Damage: "
-msgstr ""
+msgstr "الضرر:"
 
 #: src/reports.cpp:827
 msgid "Base damage: "
-msgstr ""
+msgstr "الضرر القاعدي:"
 
 #: src/reports.cpp:829 src/reports.cpp:863 src/reports.cpp:873
 msgid "With specials: "
-msgstr ""
+msgstr "مع خاصية:"
 
 #: src/reports.cpp:832
 msgid "Time of day: "
-msgstr ""
+msgstr "وقت اليوم:"
 
 #: src/reports.cpp:836
 msgid "Leadership: "
-msgstr ""
+msgstr "القيادة:"
 
 #: src/reports.cpp:840
 msgid "Slowed: "
-msgstr ""
+msgstr "تم ابطائه:"
 
 #: src/reports.cpp:844
 msgid "Attacks: "
-msgstr ""
+msgstr "عدد الهجمات:"
 
 #: src/reports.cpp:848
 msgid "Max swarm bonus: "
-msgstr ""
+msgstr "الحد الاقصى للعزم:"
 
 #: src/reports.cpp:849 src/reports.cpp:868
 msgid "Swarm: "
-msgstr ""
+msgstr "العزم:"
 
 #: src/reports.cpp:850 src/reports.cpp:861 src/reports.cpp:872
 msgid "Base attacks: "
-msgstr ""
+msgstr "عدد الهجمات القاعدي:"
 
 #: src/reports.cpp:856
 msgid "Specials: "
-msgstr ""
+msgstr "الخاصية:"
 
 #: src/reports.cpp:866
 msgid "Subject to swarm: "
-msgstr ""
+msgstr "موضوع العزم:"
 
 #: src/reports.cpp:893
 msgid "Weapon range: "
-msgstr ""
+msgstr "مجال السلاح:"
 
 #: src/reports.cpp:894
 msgid "Damage type: "
-msgstr ""
+msgstr "نوع الضرر:"
 
 #: src/reports.cpp:895
 msgid "Damage versus: "
-msgstr ""
+msgstr "ضرر ضد:"
 
 #: src/reports.cpp:954
 msgid "Accuracy:"
-msgstr ""
+msgstr "الدقة:"
 
 #: src/reports.cpp:959
 msgid "Parry:"
-msgstr ""
+msgstr "التحدي:"
 
 #: src/reports.cpp:985
 msgid "Weapon special: "
-msgstr ""
+msgstr "خاصية السلاح:"
 
 #: src/reports.cpp:1060
 msgid "weapon^None"
-msgstr ""
+msgstr "لا سلاح"
 
 #: src/reports.cpp:1089
 msgid "Total damage"
-msgstr ""
+msgstr "الضرر الجملي"
 
 #: src/reports.cpp:1153
 msgid "Attack"
@@ -7111,66 +7175,66 @@ msgstr ""
 
 #: src/reports.cpp:1165
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "هذه الوحدة يمكنها الهجوم عدة مرات في الدور الواحد"
 
 #: src/reports.cpp:1257
 msgid "Time of day schedule:"
-msgstr ""
+msgstr "جدول توقيت اليوم:"
 
 #: src/reports.cpp:1306
 msgid "Time of day:"
-msgstr ""
+msgstr "توقيت اليوم:"
 
 #: src/reports.cpp:1307 src/reports.cpp:1361
 msgid "Lawful units: "
-msgstr ""
+msgstr "الوحدات النهارية:"
 
 #: src/reports.cpp:1309 src/reports.cpp:1363
 msgid "Neutral units: "
-msgstr ""
+msgstr "الوحدات المحايدة"
 
 #: src/reports.cpp:1310 src/reports.cpp:1364
 msgid "Chaotic units: "
-msgstr ""
+msgstr "الوحدات الليلية"
 
 #: src/reports.cpp:1312 src/reports.cpp:1366
 msgid "Liminal units: "
-msgstr ""
+msgstr "الوحدات الفجرية"
 
 #: src/reports.cpp:1425
 msgid "Turn Number"
-msgstr ""
+msgstr "رقم الدور"
 
 #: src/reports.cpp:1427
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
-msgstr ""
+msgstr "عند تجاوز عدد الأدوار الاقصى المحدد تنتهي اللعبة"
 
 #: src/reports.cpp:1452
 msgid "Gold"
-msgstr ""
+msgstr "الذهب"
 
 #: src/reports.cpp:1452
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
-msgstr ""
+msgstr "كمية الذهب المتوفرة لتجنيد وصيانة الوحدات"
 
 #: src/reports.cpp:1471
 msgid "The fraction of known villages that your side has captured."
-msgstr ""
+msgstr "عدد المدن التي يسيطر عليها طرفك"
 
 #: src/reports.cpp:1471
 msgid "Villages"
-msgstr ""
+msgstr "المدن"
 
 #: src/reports.cpp:1476
 msgid "The total number of units on your side."
-msgstr ""
+msgstr "عدد الوحدات في طرفك"
 
 #: src/reports.cpp:1476
 msgid "Units"
-msgstr ""
+msgstr "الوحدات"
 
 #: src/reports.cpp:1486
 msgid ""
@@ -7183,11 +7247,11 @@ msgstr ""
 
 #: src/reports.cpp:1486
 msgid "Upkeep"
-msgstr ""
+msgstr "الصيانة"
 
 #: src/reports.cpp:1523
 msgid "Net Income"
-msgstr ""
+msgstr "المدخول الخام"
 
 #: src/reports.cpp:1523
 msgid ""
@@ -7197,23 +7261,23 @@ msgstr ""
 
 #: src/reports.cpp:1691
 msgid "Observers:"
-msgstr ""
+msgstr "المراقبون:"
 
 #: src/reports.cpp:1733
 msgid "Clock"
-msgstr ""
+msgstr "الساعة"
 
 #: src/reports.cpp:1744
 msgid "Battery"
-msgstr ""
+msgstr "البطارية"
 
 #: src/reports.cpp:1775
 msgid "Countdown until your turn automatically ends."
-msgstr ""
+msgstr "ميقات يحدد الزمن قبل نهاية دورك آليا"
 
 #: src/reports.cpp:1775
 msgid "Turn Countdown"
-msgstr ""
+msgstr "ميقات الدور"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #: src/save_index.cpp:257
@@ -7228,12 +7292,12 @@ msgstr ""
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 #: src/save_index.cpp:279 src/savegame.cpp:588
 msgid "replay"
-msgstr ""
+msgstr "إعادة عرض"
 
 #: src/save_index.cpp:363 src/savegame.cpp:71 src/savegame.cpp:624
 #: src/savegame.cpp:626
 msgid "Auto-Save"
-msgstr ""
+msgstr "حفظ آلي"
 
 #: src/savegame.cpp:205 src/savegame.cpp:207
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
@@ -7265,7 +7329,7 @@ msgstr ""
 
 #: src/savegame.cpp:274 src/savegame.cpp:320
 msgid "Load Game"
-msgstr ""
+msgstr "تحميل اللعبة"
 
 #: src/savegame.cpp:320
 msgid "Replays are not supported in multiplayer mode."
@@ -7667,15 +7731,15 @@ msgstr ""
 
 #: src/units/helper.cpp:75
 msgid "No advancement"
-msgstr ""
+msgstr "لا تطور"
 
 #: src/units/types.cpp:841
 msgid "chaotic"
-msgstr ""
+msgstr "ظلامي"
 
 #: src/units/types.cpp:841
 msgid "lawful"
-msgstr ""
+msgstr "نهاري"
 
 #: src/units/types.cpp:841
 msgid "liminal"
@@ -7687,19 +7751,20 @@ msgstr ""
 
 #: src/units/types.cpp:842
 msgid "female^chaotic"
-msgstr ""
+msgstr "ظلامي"
 
 #: src/units/types.cpp:842
 msgid "female^lawful"
-msgstr ""
+msgstr "نهاري"
 
 #: src/units/types.cpp:842
+#, fuzzy
 msgid "female^liminal"
-msgstr ""
+msgstr "محايدة"
 
 #: src/units/types.cpp:842
 msgid "female^neutral"
-msgstr ""
+msgstr "الوحدات المحايدة"
 
 #: src/units/unit.cpp:1933
 msgid "$attack_list|: $effect_description"
@@ -7753,22 +7818,22 @@ msgstr ""
 #. TRANSLATORS: "Before Wesnoth"   - format for years prior to the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:62
 msgid "$year BW"
-msgstr ""
+msgstr "$year قبل التاريخ الوسنوثي"
 
 #. TRANSLATORS: "Year of Wesnoth"  - format for years after the founding of Wesnoth
 #: src/utils/irdya_datetime.cpp:65
 msgid "$year YW"
-msgstr ""
+msgstr "$year من التاريخ الوسنوثي"
 
 #. TRANSLATORS: "Before the Fall" -  format for years prior to the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:68
 msgid "$year BF"
-msgstr ""
+msgstr "$year قبل الانهيار"
 
 #. TRANSLATORS: "After the Fall"   - format for years after the fall of Wesnoth
 #: src/utils/irdya_datetime.cpp:71
 msgid "$year AF"
-msgstr ""
+msgstr "$year بعد الانهيار"
 
 #: src/wesnoth.cpp:815
 msgid ""
@@ -7783,27 +7848,27 @@ msgstr ""
 
 #: src/wesnothd_connection.cpp:549
 msgid "Disconnected from server."
-msgstr ""
+msgstr "مفصول عن السيرفر"
 
 #: src/whiteboard/manager.cpp:1121
 msgid "SHOW ALL allies’ plans"
-msgstr ""
+msgstr "إظهار خطط جميع الحلفاء"
 
 #: src/whiteboard/manager.cpp:1122
 msgid "HIDE ALL allies’ plans"
-msgstr ""
+msgstr "إخفاء مخططات جميع الحلفاء"
 
 #: src/whiteboard/manager.cpp:1136
 msgid "Show plans for $player"
-msgstr ""
+msgstr "إظهار مخططات اللاعب $player"
 
 #: src/whiteboard/manager.cpp:1138
 msgid "Hide plans for $player"
-msgstr ""
+msgstr " إخفاء مخططات اللاعب $player"
 
 #: src/whiteboard/manager.cpp:1141
 msgid "Whiteboard Options"
-msgstr ""
+msgstr "خيارات اللوحة"
 
 #, fuzzy
 #~| msgid ""
