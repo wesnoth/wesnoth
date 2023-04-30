@@ -1123,6 +1123,7 @@ void game::handle_random_choice()
 	simple_wml::node& random_seed = command.add_child("random_seed");
 
 	random_seed.set_attr_dup("new_seed", stream.str().c_str());
+	random_seed.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
@@ -1188,6 +1189,7 @@ void game::handle_controller_choice(const simple_wml::node& req)
 
 	change_controller_wml.set_attr_dup("controller", side_controller::get_string(*new_controller).c_str());
 	change_controller_wml.set_attr("is_local", "yes");
+	change_controller_wml.set_attr_int("request_id", last_choice_request_id_);
 
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");

@@ -251,11 +251,16 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 	}
 }
 
+int synced_context::server_choice::request_id() const
+{
+	return resources::controller->get_server_request_number();
+}
+
 void synced_context::server_choice::send_request() const
 {
 	resources::controller->send_to_wesnothd(config {
 		"request_choice", config {
-			"request_id", resources::controller->get_server_request_number(),
+			"request_id", request_id(),
 			name(), request(),
 		},
 	});
@@ -289,7 +294,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			DBG_REPLAY << "MP synchronization: local server choice";
 			leave_synced_context sync;
 			config cfg = sch.local_choice();
-
+			cfg["request_id"] = sch.request_id();
 			//-1 for "server" todo: change that.
 			resources::recorder->user_input(sch.name(), cfg, -1);
 			return cfg;
@@ -339,7 +344,11 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
 
-			return action->mandatory_child(sch.name());
+			config res = action->mandatory_child(sch.name());
+			if(res["request_id"] != sch.request_id()) {
+				WRN_REPLAY << "Unexpected request_id: " << res["request_id"] << " expected: " <<  sch.request_id();
+			}
+			return res;
 		}
 	}
 }
