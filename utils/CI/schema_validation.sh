@@ -83,6 +83,8 @@ validate_schema "GUI2/Lua"     "gui_window"   || RET=1
 validate_schema "Server Pbl"   "pbl"          || RET=1
 validate_schema "WML Diff"     "diff"         || RET=1
 validate_schema "Achievements" "achievements" || RET=1
+validate_schema "Fonts"        "fonts"        || RET=1
+validate_schema "Languages"    "languages"    || RET=1
 
 validate_core "Core" || RET=1
 
@@ -92,6 +94,9 @@ for gui in $(find data/modifications -path "*/gui/*.cfg"); do
     name=${name%%/*}
     validate_dialog "modification $name" $gui || RET=1
 done
+
+validate "Fonts" ./wesnoth --validate=data/hardwired/fonts.cfg --use-schema=data/schema/fonts.cfg
+validate "Languages" ./wesnoth --validate=data/hardwired/language.cfg --use-schema=data/schema/languages.cfg
 
 validate_misc "Editor"         "EDITOR"                                  || RET=1
 validate_misc "Multiplayer"    "MULTIPLAYER,MULTIPLAYER_A_NEW_LAND_LOAD" || RET=1
