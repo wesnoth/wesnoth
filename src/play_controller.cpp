@@ -282,18 +282,8 @@ void play_controller::init(const config& level)
 		gamestate().set_game_display(gui_.get());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_lua);
 
-		if(gamestate().first_human_team_ != -1) {
-			gui_->set_team(gamestate().first_human_team_);
-		} else if(is_observer()) {
-			// Find first team that is allowed to be observed.
-			// If not set here observer would be without fog until
-			// the first turn of observable side
-			for(const team& t : get_teams()) {
-				if(!t.get_disallow_observers()) {
-					gui_->set_team(t.side() - 1);
-				}
-			}
-		}
+		// This is required to disable "show_everything"
+		gui_->set_team(0);
 
 		init_managers();
 		gui2::dialogs::loading_screen::progress(loading_stage::start_game);
@@ -422,13 +412,9 @@ void play_controller::init_gui()
 void play_controller::init_side_begin()
 {
 	mouse_handler_.set_side(current_side());
-
-	// If we are observers we move to watch next team if it is allowed
-	if((is_observer() && !current_team().get_disallow_observers()) || (current_team().is_local_human() && !is_replay())) {
-		update_gui_to_player(current_side() - 1);
-	}
-
 	gui_->set_playing_team(std::size_t(current_side() - 1));
+
+	update_viewing_player();
 
 	gamestate().gamedata_.last_selected = map_location::null_location();
 }
@@ -790,14 +776,14 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 	}
 }
 
-int play_controller::find_last_visible_team() const
+int play_controller::find_viewing_side() const
 {
 	assert(current_side() <= static_cast<int>(get_teams().size()));
 	const int num_teams = get_teams().size();
 	const bool observer = is_observer();
 
 	for(int i = 0; i < num_teams; i++) {
-		const int team_num = modulo(current_side() - i, num_teams, 1);
+		const int team_num = modulo(current_side() + i, num_teams, 1);
 		if(is_team_visible(team_num, observer)) {
 			return team_num;
 		}

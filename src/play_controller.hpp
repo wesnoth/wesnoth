@@ -352,8 +352,9 @@ protected:
 
 
 	bool is_team_visible(int team_num, bool observer) const;
+public:
 	/** returns 0 if no such team was found. */
-	int find_last_visible_team() const;
+	int find_viewing_side() const;
 
 private:
 	const int ticks_;
