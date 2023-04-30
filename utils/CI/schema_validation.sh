@@ -88,7 +88,7 @@ validate_core "Core" || RET=1
 
 validate_achievements || RET=1
 for gui in $(find data/modifications -path "*/gui/*.cfg"); do
-    name=${gui#"data/modifications"}
+    name=${gui#"data/modifications/"}
     name=${name%%/*}
     validate_dialog "modification $name" $gui || RET=1
 done
