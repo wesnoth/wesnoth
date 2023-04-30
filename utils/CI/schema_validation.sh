@@ -34,7 +34,8 @@ validate() {
 validate_core() { validate "$1" ./wesnoth --validate data/_main.cfg; }
 validate_misc() { validate "$1" ./wesnoth --data-dir=. --validate=data/_main.cfg --preprocess-defines="$2"; }
 validate_achievements() { validate "Achievements" ./wesnoth --data-dir=. --validate=data/achievements.cfg --use-schema=data/schema/achievements.cfg; }
-validate_schema() { validate "$1" ./wesnoth --data-dir=. --validate-schema=data/schema/"$2".cfg; }
+validate_dialog() { validate "$1 dialog $(basename $2 .cfg)" ./wesnoth --data-dir=. --validate=$2 --use-schema=data/schema/gui_window.cfg; }
+validate_schema() { validate "schema $1" ./wesnoth --data-dir=. --validate-schema=data/schema/"$2".cfg; }
 
 validate_campaign() {
     local success=Yes name="$1" define="$2"
@@ -61,12 +62,16 @@ validate_campaign() {
     if [ "$success" = "Yes" ]; then
         success "$name validation complete!  Success: Yes"
         echo "------"
-        return 0
     else
         error "$name validation complete!  Success: No"
         echo "------"
-        return 1
     fi
+    
+    for gui in $(find data/campaigns/$name -path "*/gui/*.cfg"); do
+        validate_dialog $name $gui || success=No
+    done
+
+    [ "$success" = "Yes" ]
 }
 
 RET=0
@@ -74,6 +79,7 @@ RET=0
 validate_schema "WML Schema"   "schema"       || RET=1
 validate_schema "Game Config"  "game_config"  || RET=1
 validate_schema "GUI2"         "gui"          || RET=1
+validate_schema "GUI2/Lua"     "gui_window"   || RET=1
 validate_schema "Server Pbl"   "pbl"          || RET=1
 validate_schema "WML Diff"     "diff"         || RET=1
 validate_schema "Achievements" "achievements" || RET=1
@@ -81,6 +87,11 @@ validate_schema "Achievements" "achievements" || RET=1
 validate_core "Core" || RET=1
 
 validate_achievements || RET=1
+for gui in $(find data/modifications -path "*/gui/*.cfg"); do
+    name=${gui#"data/modifications"}
+    name=${name%%/*}
+    validate_dialog "modification $name" $gui || RET=1
+done
 
 validate_misc "Editor"         "EDITOR"                                  || RET=1
 validate_misc "Multiplayer"    "MULTIPLAYER,MULTIPLAYER_A_NEW_LAND_LOAD" || RET=1
