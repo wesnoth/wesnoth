@@ -242,9 +242,17 @@ void saved_game::set_defaults()
 		if(side["save_id"].empty()) {
 			side["save_id"] = side["id"];
 		}
+		if(side["save_id"].empty()) {
+			side["save_id"] = side.child_or_empty("leader")["id"];
+		}
 
-		if(!is_multiplayer_tag && side["side_name"].blank()) {
-			side["side_name"] = side["name"];
+		if(!is_multiplayer_tag) {
+			if(side["name"].blank()) {
+				side["name"] = side.child_or_empty("leader")["name"];
+			}
+			if(side["side_name"].blank()) {
+				side["side_name"] = side["name"];
+			}
 		}
 
 		if(!is_loaded_game && !side["current_player"].empty()) {
