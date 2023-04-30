@@ -69,8 +69,6 @@ public:
 
 	game_events::wmi_manager& get_wml_menu_items();
 	const game_events::wmi_manager& get_wml_menu_items() const;
-	int first_human_team_; //needed to initialize the viewpoint during setup
-	bool has_human_sides() const { return first_human_team_ != -1; }
 
 	game_state(const config & level, play_controller &);
 

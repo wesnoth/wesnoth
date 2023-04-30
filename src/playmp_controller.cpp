@@ -58,7 +58,7 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 		skip_replay_ = false;
 	}
 
-	if(gui_->is_blindfolded() && gamestate().first_human_team_ != -1) {
+	if(gui_->is_blindfolded() && !is_observer()) {
 		blindfold_.unblind();
 	}
 }

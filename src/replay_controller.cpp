@@ -256,7 +256,10 @@ void replay_controller::update_teams()
 void replay_controller::update_viewing_player()
 {
 	assert(vision_);
-	controller_.update_gui_to_player(vision_ == HUMAN_TEAM ? controller_.gamestate().first_human_team_ : controller_.current_side() - 1, *vision_ == SHOW_ALL);
+	int viewing_side_num = vision_ == HUMAN_TEAM ? controller_.find_viewing_side() : controller_.current_side();
+	if(viewing_side_num != 0) {
+		controller_.update_gui_to_player(viewing_side_num - 1, *vision_ == SHOW_ALL);
+	}
 }
 
 bool replay_controller::see_all()

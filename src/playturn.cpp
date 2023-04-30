@@ -194,6 +194,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::controller->on_not_observer();
 		}
 
+		// TODO: can we replace this with just a call to play_controller::update_viewing_player() ?
 		auto disp_set_team = [](int side_index) {
 			const bool side_changed = static_cast<int>(display::get_singleton()->viewing_team()) != side_index;
 			display::get_singleton()->set_team(side_index);

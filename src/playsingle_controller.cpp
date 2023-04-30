@@ -122,7 +122,8 @@ void playsingle_controller::init_gui()
 		gui_->scroll_to_tile(map_start_, game_display::WARP, false);
 		LOG_NG << "Found good stored ui location " << map_start_;
 	} else {
-		int scroll_team = gamestate().first_human_team_ + 1;
+
+		int scroll_team = find_viewing_side();
 		if(scroll_team == 0) {
 			scroll_team = 1;
 		}
@@ -151,6 +152,7 @@ void playsingle_controller::init_gui()
 void playsingle_controller::play_scenario_init(const config& level)
 {
 	gui_->labels().read(level);
+	update_viewing_player();
 
 	// Read sound sources
 	assert(soundsources_manager_ != nullptr);
@@ -778,8 +780,7 @@ void playsingle_controller::update_viewing_player()
 {
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
-	} else if(int side_num = play_controller::find_last_visible_team()) {
-		// Update viewing team in case it has changed during the loop.
+	} else if(int side_num = play_controller::find_viewing_side()) {
 		if(side_num != gui_->viewing_side()) {
 			update_gui_to_player(side_num - 1);
 		}
@@ -800,7 +801,7 @@ void playsingle_controller::enable_replay(bool is_unit_test)
 {
 	replay_controller_ = std::make_unique<replay_controller>(
 		*this,
- 		gamestate().has_human_sides(),
+		true,
 		std::make_shared<config>(saved_game_.get_replay_starting_point()),
 		std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)
 	);
