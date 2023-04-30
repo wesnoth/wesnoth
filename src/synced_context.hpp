@@ -182,6 +182,8 @@ public:
 		virtual config request() const = 0;
 
 		virtual const char* name() const = 0;
+
+		int request_id() const;
 		void send_request() const;
 	};
 
