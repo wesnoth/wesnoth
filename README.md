@@ -46,7 +46,6 @@ Installing
 Wesnoth can be played on Windows, macOS, and Linux, and can be installed using:
 * [Steam](https://store.steampowered.com/app/599390/Battle_for_Wesnoth/) (all)
 * [itch.io](https://wesnoth.itch.io/battle-for-wesnoth) (Windows and macOS)
-    * Download folder, unzip, then run/open wesnoth.exe
 * The [macOS App Store](https://apps.apple.com/us/app/the-battle-for-wesnoth/id1450738104)
 * standalone installers on [SourceForge](https://sourceforge.net/projects/wesnoth/files/) (Windows and macOS)
 * [Flatpak](https://flathub.org/apps/details/org.wesnoth.Wesnoth) (Linux)
