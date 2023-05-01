@@ -22,7 +22,7 @@ function pickadvance.show_dialog_unsynchronized(advance_info, unit)
 
 	local pick_advance_dialog = wml.load "modifications/pick_advance/gui/pick_advance.cfg"
 	local dialog_wml = wml.get_child(pick_advance_dialog, 'resolution')
-	
+
 -- dialog preshow function
 	local function preshow(window)
 		window.apply_to_all.visible = not unit.canrecruit
