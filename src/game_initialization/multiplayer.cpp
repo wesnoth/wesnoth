@@ -40,7 +40,6 @@
 #include "resources.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
 
@@ -617,8 +616,6 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 	// The connection should never be null here, since one should never reach this screen in local game mode.
 	assert(connection);
 
-	statistics::fresh_stats();
-
 	mp_game_metadata metadata(*connection);
 	metadata.is_host = false;
 
@@ -775,8 +772,6 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	}
 
 	DBG_MP << "entering connect mode";
-
-	statistics::fresh_stats();
 
 	{
 		ng::connect_engine connect_engine(state, true, nullptr);

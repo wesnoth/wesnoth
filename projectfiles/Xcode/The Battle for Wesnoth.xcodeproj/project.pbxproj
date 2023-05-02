@@ -17,6 +17,7 @@
 		1234567890ABCDEF12345679 /* file_progress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1234567890ABCDEF12345680 /* file_progress.cpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
+		3E9A4297B4A2828C569C8927 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
 		4291489DA38012477DA3BA7C /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		460CA6D52143362800B89741 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		460D898624DC7831000B1ABC /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897824DC7830000B1ABC /* game.cpp */; };
@@ -642,6 +643,7 @@
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
 		62D24F351519995200350848 /* palette_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F341519995200350848 /* palette_manager.cpp */; };
+		6D574EACA3483ABEE72819F0 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
 		867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */; };
 		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -1520,6 +1522,7 @@
 		1234567890ABCDEF12345680 /* file_progress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_progress.cpp; sourceTree = "<group>"; };
 		1234567890ABCDEF12345681 /* file_progress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = file_progress.hpp; sourceTree = "<group>"; };
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = statistics_record.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
 		460D897824DC7830000B1ABC /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = game.cpp; path = ../../src/server/wesnothd/game.cpp; sourceTree = SOURCE_ROOT; };
 		460D897924DC7830000B1ABC /* ban.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ban.hpp; path = ../../src/server/wesnothd/ban.hpp; sourceTree = SOURCE_ROOT; };
 		460D897A24DC7830000B1ABC /* player_network.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = player_network.hpp; path = ../../src/server/wesnothd/player_network.hpp; sourceTree = SOURCE_ROOT; };
@@ -3400,6 +3403,7 @@
 				9197972726199F54001E8133 /* wml_separators.hpp */,
 				91B621AC1B76B05700B00E0F /* xBRZ */,
 				09A440B1A671C45BE2924FB4 /* carryover_show_gold.cpp */,
+				27764FB68F02032F1C0B6748 /* statistics_record.cpp */,
 			);
 			name = src;
 			path = ../../src;
@@ -5754,6 +5758,7 @@
 				36B146FAA79A55E9F43723B1 /* general.cpp in Sources */,
 				3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */,
 				97714C7A9FF444E29DCEF0BA /* carryover_show_gold.cpp in Sources */,
+				6D574EACA3483ABEE72819F0 /* statistics_record.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6423,6 +6428,7 @@
 				4291489DA38012477DA3BA7C /* general.cpp in Sources */,
 				87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */,
 				867141839BDB89BFE876E310 /* carryover_show_gold.cpp in Sources */,
+				3E9A4297B4A2828C569C8927 /* statistics_record.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

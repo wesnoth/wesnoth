@@ -309,12 +309,12 @@ void playsingle_controller::play_scenario_main_loop()
 				local_players[i] = get_teams()[i].is_local();
 			}
 
-			if(ex.start_replay) {
-				// MP "Back to turn"
-				statistics::read_stats(*ex.stats_);
+			if(ex.stats_) {
+				// "Back to turn"
+				get_saved_game().statistics().read(*ex.stats_);
 			} else {
-				// SP replay
-				statistics::reset_current_scenario();
+				// "Reset Replay To start"
+				get_saved_game().statistics().clear_current_scenario();
 			}
 
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);

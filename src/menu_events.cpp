@@ -139,7 +139,7 @@ void menu_handler::objectives()
 
 void menu_handler::show_statistics(int side_num)
 {
-	gui2::dialogs::statistics_dialog::display(board().get_team(side_num));
+	gui2::dialogs::statistics_dialog::display(pc_.statistics(), board().get_team(side_num));
 }
 
 void menu_handler::unit_list()

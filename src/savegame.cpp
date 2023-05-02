@@ -44,7 +44,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/utf8_exception.hpp"
-#include "statistics.hpp"
 #include "video.hpp" // only for faked
 
 #include <algorithm>
@@ -530,9 +529,6 @@ void savegame::write_game(config_writer& out)
 	out.write_key_val("version", game_config::wesnoth_version.str());
 
 	gamestate_.write_general_info(out);
-	out.open_child("statistics");
-	statistics::write_stats(out);
-	out.close_child("statistics");
 }
 
 void savegame::finish_save_game(const config_writer& out)

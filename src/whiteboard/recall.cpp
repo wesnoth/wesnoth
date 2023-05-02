@@ -29,6 +29,7 @@
 #include "fake_unit_manager.hpp"
 #include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
+#include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "replay_helper.hpp"
@@ -201,7 +202,7 @@ void recall::draw_hex(const map_location& hex)
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
 		unit &it = *get_unit();
-		int cost = statistics::un_recall_unit_cost(it);
+		int cost = it.recall_cost();
 		if (cost < 0) {
 			number_text << font::unicode_minus << resources::gameboard->teams().at(team_index()).recall_cost();
 		}

@@ -51,7 +51,6 @@
 #include "serialization/unicode_cast.hpp"
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
-#include "statistics.hpp"              // for fresh_stats
 #include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
@@ -868,8 +867,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	while(true) {
-		statistics::fresh_stats();
-
 		if(!game->has_load_data()) {
 			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
 			if(cfg) {

@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/transient_message.hpp"
 #include "game_board.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"
@@ -85,8 +86,8 @@ bool recall_action::undo(int side)
 		return false;
 	}
 
-	statistics::un_recall_unit(*un);
-	int cost = statistics::un_recall_unit_cost(*un);
+	resources::controller->statistics().un_recall_unit(*un);
+	int cost = un->recall_cost();
 	if (cost < 0) {
 		current_team.spend_gold(-current_team.recall_cost());
 	}
