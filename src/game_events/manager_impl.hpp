@@ -85,6 +85,9 @@ public:
 	/** Utility to standardize the event names used in by_name_. */
 	static std::string standardize_name(const std::string& name);
 
+	/** Compare function to sort event handlers by priority. */
+	static bool cmp(const handler_ptr lhs, const handler_ptr rhs);
+
 	event_handlers()
 		: active_()
 		, by_name_()
@@ -114,7 +117,7 @@ public:
 	handler_list& get(const std::string& name);
 
 	/** Adds an event handler. */
-	pending_event_handler add_event_handler(const std::string& name, const std::string& id, bool repeat, bool is_menu_item = false);
+	pending_event_handler add_event_handler(const std::string& name, const std::string& id, bool repeat, double priority = 0., bool is_menu_item = false);
 
 	/** Removes an event handler, identified by its ID. */
 	void remove_event_handler(const std::string& id);

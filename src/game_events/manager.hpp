@@ -63,7 +63,7 @@ public:
 	/** Create an event handler from an [event] tag. */
 	void add_event_handler_from_wml(const config& handler, game_lua_kernel& lk, bool is_menu_item = false);
 	/** Create an empty event handler. Expects the caller to finish setting up the event. */
-	pending_event_handler add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat = false, bool is_menu_item = false);
+	pending_event_handler add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat = false, double priority = 0., bool is_menu_item = false);
 
 	/** Removes an event handler. */
 	void remove_event_handler(const std::string& id);
