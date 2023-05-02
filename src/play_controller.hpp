@@ -58,9 +58,7 @@ namespace soundsource {
 	class manager;
 } // namespace soundsource
 
-namespace statistics {
-	struct scenario_context;
-} // namespace statistics
+class statistics_t;
 
 namespace pathfind {
 	class manager;
@@ -324,6 +322,7 @@ public:
 
 	saved_game& get_saved_game() { return saved_game_; }
 
+	statistics_t& statistics() { return *statistics_context_; }
 	bool is_during_turn() const;
 	bool is_linger_mode() const;
 
@@ -386,7 +385,7 @@ protected:
 	//other objects
 	std::unique_ptr<game_display> gui_;
 	const std::unique_ptr<unit_experience_accelerator> xp_mod_;
-	const std::unique_ptr<const statistics::scenario_context> statistics_context_;
+	const std::unique_ptr<statistics_t> statistics_context_;
 	actions::undo_list& undo_stack() { return *gamestate().undo_stack_; }
 	const actions::undo_list& undo_stack() const { return *gamestate().undo_stack_; }
 	std::unique_ptr<replay> replay_;

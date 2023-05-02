@@ -713,7 +713,7 @@ private:
 	{
 	};
 
-	bool perform_hit(bool, statistics::attack_context&);
+	bool perform_hit(bool, statistics_attack_context&);
 	void fire_event(const std::string& n);
 	void refresh_bc();
 
@@ -957,7 +957,7 @@ void attack::refresh_bc()
 	d_.damage_ = d_stats_->damage;
 }
 
-bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
+bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 {
 	unit_info& attacker = attacker_turn ? a_ : d_;
 	unit_info& defender = attacker_turn ? d_ : a_;
@@ -1090,17 +1090,17 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context& stats)
 	if(attacker_turn) {
 		stats.attack_result(hits
 			? (dies
-				? statistics::attack_context::KILLS
-				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES,
+				? statistics_attack_context::KILLS
+				: statistics_attack_context::HITS)
+			: statistics_attack_context::MISSES,
 			attacker.cth_, damage_done, drains_damage
 		);
 	} else {
 		stats.defend_result(hits
 			? (dies
-				? statistics::attack_context::KILLS
-				: statistics::attack_context::HITS)
-			: statistics::attack_context::MISSES,
+				? statistics_attack_context::KILLS
+				: statistics_attack_context::HITS)
+			: statistics_attack_context::MISSES,
 			attacker.cth_, damage_done, drains_damage
 		);
 	}
@@ -1393,7 +1393,7 @@ void attack::perform()
 	}
 
 	DBG_NG << "getting attack statistics";
-	statistics::attack_context attack_stats(
+	statistics_attack_context attack_stats(resources::controller->statistics(),
 			a_.get_unit(), d_.get_unit(), a_stats_->chance_to_hit, d_stats_->chance_to_hit);
 
 	a_.orig_attacks_ = a_stats_->num_blows;

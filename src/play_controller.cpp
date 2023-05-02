@@ -158,7 +158,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	, persist_()
 	, gui_()
 	, xp_mod_(new unit_experience_accelerator(level["experience_modifier"].to_int(100)))
-	, statistics_context_(new statistics::scenario_context(level["name"]))
+	, statistics_context_(new statistics_t(state_of_game.statistics()))
 	, replay_(new replay(state_of_game.get_replay()))
 	, skip_replay_(skip_replay)
 	, skip_story_(state_of_game.skip_story())
@@ -301,6 +301,8 @@ void play_controller::init(const config& level)
 
 void play_controller::reset_gamestate(const config& level, int replay_pos)
 {
+	// TODO: should we update we update this->level_ with level ?
+
 	resources::gameboard = nullptr;
 	resources::gamedata = nullptr;
 	resources::tod_manager = nullptr;
@@ -1283,7 +1285,10 @@ void play_controller::play_side()
 		// This flag can be set by derived classes (in overridden functions).
 		player_type_changed_ = false;
 
-		statistics::reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
+		//TODO: this resets the "current turn" statistics whenever the controller changes,
+		//  in particular whenever a game is reloaded, wouldn't it be better if this was
+		//  only done, when a sides turn actually ends?
+		statistics().reset_turn_stats(gamestate().board_.get_team(current_side()).save_id_or_number());
 
 		play_side_impl();
 

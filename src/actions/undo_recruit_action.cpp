@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/transient_message.hpp"
 #include "game_board.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"
@@ -81,7 +82,7 @@ bool recruit_action::undo(int side)
 	}
 
 	const unit &un = *un_it;
-	statistics::un_recruit_unit(un);
+	resources::controller->statistics().un_recruit_unit(un);
 	current_team.spend_gold(-un.type().cost());
 
 	//MP_COUNTDOWN take away recruit bonus

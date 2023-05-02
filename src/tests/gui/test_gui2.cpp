@@ -1318,10 +1318,12 @@ template<>
 struct dialog_tester<statistics_dialog>
 {
 	team t;
-	dialog_tester() : t() {}
+	statistics_record::campaign_stats_t stats_record;
+	statistics_t stats;
+	dialog_tester() : t() , stats_record(), stats(stats_record) {}
 	statistics_dialog* create()
 	{
-		return new statistics_dialog(t);
+		return new statistics_dialog(stats, t);
 	}
 };
 

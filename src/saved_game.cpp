@@ -128,6 +128,7 @@ saved_game::saved_game()
 	, starting_point_type_(starting_point::NONE)
 	, starting_point_()
 	, replay_data_()
+	, statistics_()
 	, skip_story_(false)
 {
 }
@@ -141,6 +142,7 @@ saved_game::saved_game(config cfg)
 	, starting_point_type_(starting_point::NONE)
 	, starting_point_()
 	, replay_data_()
+	, statistics_()
 	, skip_story_(false)
 {
 	set_data(cfg);
@@ -155,6 +157,7 @@ saved_game::saved_game(const saved_game& state)
 	, starting_point_type_(state.starting_point_type_)
 	, starting_point_(state.starting_point_)
 	, replay_data_(state.replay_data_)
+	, statistics_(state.statistics_)
 	, skip_story_(state.skip_story_)
 {
 }
@@ -188,7 +191,6 @@ void saved_game::write_config(config_writer& out) const
 
 	out.open_child("replay");
 	replay_data_.write(out);
-
 	out.close_child("replay");
 	write_carryover(out);
 }
@@ -212,6 +214,9 @@ void saved_game::write_general_info(config_writer& out) const
 {
 	out.write(classification_.to_config());
 	out.write_child("multiplayer", mp_settings_.to_config());
+	out.open_child("statistics");
+	statistics().write(out);
+	out.close_child("statistics");
 }
 
 void saved_game::set_defaults()
@@ -555,6 +560,7 @@ void saved_game::expand_carryover()
 		}
 
 		carryover_ = sides.to_config();
+		statistics().new_scenario(get_starting_point()["name"]);
 		has_carryover_expanded_ = true;
 	}
 }
@@ -650,6 +656,7 @@ config saved_game::to_config() const
 
 	r.add_child(has_carryover_expanded_ ? "carryover_sides" : "carryover_sides_start", carryover_);
 	r.add_child("multiplayer", mp_settings_.to_config());
+	r.add_child("statistics", statistics_.to_config());
 
 	return r;
 }
@@ -780,8 +787,7 @@ void saved_game::set_data(config& cfg)
 	LOG_NG << "scenario: '" << carryover_["next_scenario"].str() << "'";
 
 	if(auto stats = cfg.optional_child("statistics")) {
-		statistics::fresh_stats();
-		statistics::read_stats(*stats);
+		statistics_.read(*stats);
 	}
 
 	classification_ = game_classification{ cfg };
@@ -800,6 +806,7 @@ void saved_game::clear()
 	replay_start_.clear();
 	starting_point_.clear();
 	starting_point_type_ = starting_point::NONE;
+	statistics_ = statistics_record::campaign_stats_t();
 }
 
 void swap(saved_game& lhs, saved_game& rhs)
