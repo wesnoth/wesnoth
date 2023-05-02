@@ -67,14 +67,20 @@ namespace game_events
 /** Create an event handler. */
 void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel& lk, bool is_menu_item)
 {
-	auto new_handler = event_handlers_->add_event_handler(handler["name"], handler["id"], !handler["first_time_only"].to_bool(true), is_menu_item);
+	auto new_handler = event_handlers_->add_event_handler(
+		handler["name"],
+		handler["id"],
+		!handler["first_time_only"].to_bool(true),
+		handler["priority"].to_double(0.),
+		is_menu_item
+	);
 	if(new_handler.valid()) {
 		new_handler->read_filters(handler);
 
 		// Strip out anything that's used by the event system itself.
 		config args;
 		for(const auto& [attr, val] : handler.attribute_range()) {
-			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr.compare(0, 6, "filter") == 0) {
+			if(attr == "id" || attr == "name" || attr == "first_time_only" || attr == "priority" || attr.compare(0, 6, "filter") == 0) {
 				continue;
 			}
 			args[attr] = val;
@@ -90,6 +96,7 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 			<< (new_handler->names_raw().empty() ? "" : "'" + new_handler->names_raw() + "'")
 			<< (new_handler->id().empty() ? "" : "{id=" + new_handler->id() + "}")
 			<< (new_handler->repeatable() ? " (repeating" : " (first time only")
+			<< "; priority " + std::to_string(new_handler->priority())
 			<< (is_menu_item ? "; menu item)" : ")")
 			<< " with the following actions:\n"
 			<< args.debug();
@@ -98,9 +105,9 @@ void manager::add_event_handler_from_wml(const config& handler, game_lua_kernel&
 	}
 }
 
-pending_event_handler manager::add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat, bool is_menu_item)
+pending_event_handler manager::add_event_handler_from_lua(const std::string& name, const std::string& id, bool repeat, double priority, bool is_menu_item)
 {
-	return event_handlers_->add_event_handler(name, id, repeat, is_menu_item);
+	return event_handlers_->add_event_handler(name, id, repeat, priority, is_menu_item);
 }
 
 /** Removes an event handler. */

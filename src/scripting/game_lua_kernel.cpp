@@ -3991,9 +3991,13 @@ static std::string read_event_name(lua_State* L, int idx)
  * id: Event ID
  * menu_item: True if this is a menu item (an ID is required); this means removing the menu item will automatically remove this event. Default false.
  * first_time_only: Whether this event should fire again after the first time; default true.
+ * priority: Number that determines execution order. Events execute in order of decreasing priority, and secondarily in order of addition.
  * filter: Event filters as a config with filter tags, a table of the form {filter_type = filter_contents}, or a function
+ * filter_args: Arbitrary data that will be passed to the filter, if it is a function. Ignored if the filter is specified as WML or a table.
  * content: The content of the event. This is a WML table passed verbatim into the event when it fires. If no function is specified, it will be interpreted as ActionWML.
  * action: The function to call when the event triggers. Defaults to wesnoth.wml_actions.command.
+ *
+ * Lua API: wesnoth.game_events.add
  */
 int game_lua_kernel::intf_add_event(lua_State *L)
 {
@@ -4001,6 +4005,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	using namespace std::literals;
 	std::string name, id = luaW_table_get_def(L, 1, "id", ""s);
 	bool repeat = !luaW_table_get_def(L, 1, "first_time_only", true), is_menu_item = luaW_table_get_def(L, 1, "menu_item", false);
+	double priority = luaW_table_get_def(L, 1, "priority", 0.);
 	if(luaW_tableget(L, 1, "name")) {
 		name = read_event_name(L, -1);
 	} else if(is_menu_item) {
@@ -4012,7 +4017,7 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 	if(id.empty() && name.empty()) {
 		return luaL_argerror(L, 1, "either a name or id is required");
 	}
-	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, priority, is_menu_item);
 	if(new_handler.valid()) {
 		bool has_lua_filter = false;
 		new_handler->set_arguments(luaW_table_get_def(L, 1, "content", config{"__empty_lua_event", true}));
@@ -4071,6 +4076,10 @@ int game_lua_kernel::intf_add_event(lua_State *L)
 /** Add a new event handler
  * Arg 1: Event to handle, as a string or list of strings; or menu item ID if this is a menu item
  * Arg 2: The function to call when the event triggers
+ *
+ * Lua API:
+ * - wesnoth.game_events.add_repeating
+ * - wesnoth.game_events.add_menu
  */
 template<bool is_menu_item>
 int game_lua_kernel::intf_add_event_simple(lua_State *L)
@@ -4078,6 +4087,7 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 	game_events::manager & man = *game_state_.events_manager_;
 	bool repeat = true;
 	std::string name = read_event_name(L, 1), id;
+	double priority = luaL_optnumber(L, 3, 0.);
 	if(name.empty()) {
 		return luaL_argerror(L, 1, "must not be empty");
 	}
@@ -4085,7 +4095,7 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 		id = name;
 		name = "menu item " + name;
 	}
-	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, is_menu_item);
+	auto new_handler = man.add_event_handler_from_lua(name, id, repeat, priority, is_menu_item);
 	if(new_handler.valid()) {
 		// An event with empty arguments is not added, so set some dummy arguments
 		new_handler->set_arguments(config{"__quick_lua_event", true});
@@ -4096,6 +4106,8 @@ int game_lua_kernel::intf_add_event_simple(lua_State *L)
 
 /** Add a new event handler
  * Arg: A full event specification as a WML config
+ *
+ * WML API: [event]
  */
 int game_lua_kernel::intf_add_event_wml(lua_State *L)
 {

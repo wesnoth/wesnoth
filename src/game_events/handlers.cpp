@@ -163,6 +163,7 @@ void event_handler::write_config(config &cfg, bool include_nonserializable) cons
 	if(!types_.empty()) cfg["name"] = types_;
 	if(!id_.empty()) cfg["id"] = id_;
 	cfg["first_time_only"] = first_time_only_;
+	cfg["priority"] = priority_;
 	for(const auto& filter : filters_) {
 		filter->serialize(cfg);
 	}

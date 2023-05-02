@@ -75,6 +75,11 @@ std::string event_handlers::standardize_name(const std::string& name)
 	return retval;
 }
 
+bool event_handlers::cmp(const handler_ptr lhs, const handler_ptr rhs)
+{
+	return lhs->priority() < rhs->priority();
+}
+
 /**
  * Read-only access to the handlers with fixed event names, by event name.
  */
@@ -93,7 +98,7 @@ handler_list& event_handlers::get(const std::string& name)
  * An event with a nonempty ID will not be added if an event with that
  * ID already exists.
  */
-pending_event_handler event_handlers::add_event_handler(const std::string& name, const std::string& id, bool repeat, bool is_menu_item)
+pending_event_handler event_handlers::add_event_handler(const std::string& name, const std::string& id, bool repeat, double priority, bool is_menu_item)
 {
 	if(!id.empty()) {
 		// Ignore this handler if there is already one with this ID.
@@ -119,6 +124,7 @@ pending_event_handler event_handlers::add_event_handler(const std::string& name,
 	// Create a new handler.
 	auto handler = std::make_shared<event_handler>(name, id);
 	handler->set_menu_item(is_menu_item);
+	handler->set_priority(priority);
 	handler->set_repeatable(repeat);
 	return {*this, handler};
 }
@@ -138,6 +144,7 @@ void event_handlers::finish_adding_event_handler(handler_ptr handler)
 	// construct weak_ptrs from the shared one.
 	DBG_EH << "inserting event handler for name=" << names << " with id=" << id;
 	active_.emplace_back(handler);
+	std::stable_sort(active_.rbegin(), active_.rend(), cmp);
 
 	// File by name.
 	if(utils::might_contain_variables(names)) {

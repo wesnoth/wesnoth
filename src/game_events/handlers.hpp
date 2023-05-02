@@ -94,6 +94,11 @@ public:
 		return id_;
 	}
 
+	const double& priority() const
+	{
+		return priority_;
+	}
+
 	bool empty() const;
 
 	bool repeatable() const
@@ -111,6 +116,10 @@ public:
 		first_time_only_ = !repeat;
 	}
 
+	void set_priority(double priority)
+	{
+		priority_ = priority;
+	}
 	void set_menu_item(bool imi)
 	{
 		is_menu_item_ = imi;
@@ -149,6 +158,7 @@ private:
 	 */
 	bool has_preloaded_;
 	int event_ref_;
+	double priority_;
 	config args_;
 	std::vector<std::shared_ptr<event_filter>> filters_;
 	std::string id_, types_;
