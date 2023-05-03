@@ -31,13 +31,12 @@
 # that point, the source code is mainly explained on source documentation at:
 # http://wmlxgettext-unoff.readthedocs.org/en/latest/srcdoc/index.html
 
-import os
-import re
-import sys
-import signal
-import warnings
 import argparse
 from datetime import datetime
+import os
+import signal
+import sys
+import warnings
 import pywmlx
 
 
@@ -171,6 +170,30 @@ def commandline(args):
 
 
 
+def extractor(files, fileref_root, offset = 0):
+    for fileno, fx in enumerate(files):
+        if fileno < offset:
+            continue
+
+        fname = os.path.normpath(os.path.join(fileref_root, fx))
+        is_file = os.path.isfile(fname)
+        if is_file:
+            infile = None
+            try:
+                infile = open(fname, 'r', encoding="utf-8")
+            except OSError as e:
+                errmsg = 'cannot read file: ' + e.args[1]
+                pywmlx.wmlerr(e.filename, errmsg, OSError)
+            if fname.lower().endswith('.cfg'):
+                pywmlx.statemachine.run(filebuf=infile, fileref=fx,
+                            fileno=fileno, startstate='wml_idle', waitwml=True)
+            if fname.lower().endswith('.lua'):
+                pywmlx.statemachine.run(filebuf=infile, fileref=fx,
+                            fileno=fileno, startstate='lua_idle', waitwml=False)
+            infile.close()
+
+
+
 def main():
     signal.signal(signal.SIGINT, sigint_handler)
     args = commandline(sys.argv[1:])
@@ -178,8 +201,8 @@ def main():
     pywmlx.wincol_setEnabled(args.text_col)
     pywmlx.set_warnall(args.warnall)
     startPath = os.path.realpath(os.path.normpath(args.start_path))
+    fileref_root = startPath
     sentlist = dict()
-    fileno = 0
     fdebug = None
     if args.folder == '-':
         args.folder = None
@@ -212,33 +235,36 @@ def main():
         # values:
         #   the first one is the parent directory of the original startPath
         #   the second one is the filelist (with the "fixed" file references)
-        # This way, we can override startPath with its parent directory
-        # containing the main directory of the wesnoth add-on, without
-        # introducing bugs.
-        startPath, filelist = pywmlx.autof.autoscan(startPath)
+        fileref_root, filelist = pywmlx.autof.autoscan(startPath)
     # this last case is equal to:
     # if args.recursive is True and args.filelist is None:
     else:
-        startPath, filelist = pywmlx.autof.autoscan(startPath)
+        fileref_root, filelist = pywmlx.autof.autoscan(startPath)
     if args.sort_by_file:
         filelist.sort()
-    for fileno, fx in enumerate(filelist):
-        fname = os.path.join(startPath, os.path.normpath(fx))
-        is_file = os.path.isfile(fname)
-        if is_file:
-            infile = None
-            try:
-                infile = open(fname, 'r', encoding="utf-8")
-            except OSError as e:
-                errmsg = 'cannot read file: ' + e.args[1]
-                pywmlx.wmlerr(e.filename, errmsg, OSError)
-            if fname.lower().endswith('.cfg'):
-                pywmlx.statemachine.run(filebuf=infile, fileref=fx,
-                            fileno=fileno, startstate='wml_idle', waitwml=True)
-            if fname.lower().endswith('.lua'):
-                pywmlx.statemachine.run(filebuf=infile, fileref=fx,
-                            fileno=fileno, startstate='lua_idle', waitwml=False)
-            infile.close()
+ 
+    extractor(filelist, fileref_root)
+
+    outfile = None
+    if args.outfile is None:
+        outfile = sys.stdout
+    else:
+        outfile_name = os.path.realpath(os.path.normpath(args.outfile))
+        try:
+            outfile = open(outfile_name, 'w', encoding="utf-8")
+        except OSError as e:
+            errmsg = 'cannot write file: ' + e.args[1]
+            pywmlx.wmlerr(e.filename, errmsg, OSError)
+    pkgversion = args.package_version + '\\n"'
+    print('msgid ""\nmsgstr ""', file=outfile)
+    print('"Project-Id-Version:', pkgversion, file=outfile)
+    print('"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\\n"', file=outfile)
+    now = datetime.utcnow()
+    cdate = '{:04d}-{:02d}-{:02d} {:02d}:{:02d} UTC\\n"'.format(now.year,
+                                                                now.month,
+                                                                now.day,
+                                                                now.hour,
+                                                                now.minute)
 
     folder = None
     filename = None
