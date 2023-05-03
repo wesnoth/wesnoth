@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <stdint.h>
 #include <string>
 
 /** See https://wiki.wesnoth.org/CompatibilityStandards for more info. */
