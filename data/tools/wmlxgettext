@@ -32,14 +32,15 @@
 # http://wmlxgettext-unoff.readthedocs.org/en/latest/srcdoc/index.html
 
 import argparse
+from copy import copy
 from datetime import datetime
 import os
 import signal
 import sys
 import warnings
 import pywmlx
-
-
+from wesnoth.wmltools3 import CrossRef
+from wesnoth.wmlmacro import AST, Macro, CrossRefHelper, ReferenceHelper
 
 def commandline(args):
     parser = argparse.ArgumentParser(
@@ -170,6 +171,9 @@ def commandline(args):
 
 
 
+class AnalysisTooNarrowException(Exception):
+    pass
+
 def extractor(files, fileref_root, offset = 0):
     for fileno, fx in enumerate(files):
         if fileno < offset:
@@ -192,6 +196,238 @@ def extractor(files, fileref_root, offset = 0):
                             fileno=fileno, startstate='lua_idle', waitwml=False)
             infile.close()
 
+
+
+def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_root="", outfile=None, fuzzy=False):
+    # In fact, Wesnoth's engine expands macros in the preprocessor step.
+    # Therefore, the input below ran through wmlxgettext should output
+    #
+    # msgid "Hello, world."
+    # msgstr ""
+    #
+    # # define GREET MODE WHOM
+    # [{MODE}]
+    #     {MODE} = _ "Hello, {WHOM}."
+    # [/{MODE}]
+    # # enddef
+    #
+    # {GREET message world}
+    #
+    # To accomplish that through all macro calls and subcalls, we identify
+    # three types of macro calls according to their context.
+    # A. Inside translatable strings.
+    # B. Inside macro definitions, but not inside a string.
+    # C. Every other macro call (top level).
+    #
+    # The simplest case is that macro type A is called directly by
+    # a single macro type C. In that case, we:
+    # 1. Identify the parameter index "n" in the definition of macro C,
+    #    associated with the call of macro A.
+    # 2. Substitute the nth parameter of macro C into the string containing
+    #    macro call A.
+    #
+    # There are several factors that complicate it:
+    # 1. There may be one or more macros of type B. We need to track their
+    #    parameters as well.
+    # 2. There may be more than one macro of type C. Each of them represents
+    #    a new string in the output.
+    # 3. It's possible the parameters of macro(s) type B and C aren't a 1:1
+    #    match.
+    # 4. Since Wesnoth 1.13.7, named optional macro parameters are available.
+    #    through the directive #arg
+    # 5. Macros may be deleted with #undef and later redefined.
+    #
+    # For example, let
+    #
+    # # define MOODY_GREET MODE QUALIFIER WHOM
+    #   {GREET {MODE} (very {QUALIFIER} {WHOM})}
+    # # enddef
+    #
+    # {MOODY_GREET message good world}
+    # {MOODY_GREET message bad world}
+    #
+    # We know that GREET's relevant parameter is the second, and it's affected by
+    # the second and third parameters of MOODY_GREET. Fortunately, MOODY_GREET has
+    # a finite universe of possible parameters, so we iterate through all of them,
+    # and we get
+    #
+    # msgid "Hello, very good world."
+    # msgstr ""
+    #
+    # msgid "Hello, very bad world."
+    # msgstr ""
+    #
+    # Note that $substitutions are bad practice for localizable strings,
+    # as the translator will only be able to relocate the variable, and not
+    # act according to their possible values. Many languages have lots of
+    # conditional declensions, which warrant exhausting all combinations.
+    # Those *are* provided by macros.
+    #
+    #
+    # Strategy:
+    # 1. Identify all strings which require preprocessing, as well as their
+    #    reference (file name, line number), and parent macro definition.
+    #    These are passed to handle_macro_po_sentences.
+    #
+    # 2. Use wmltools3.CrossRef to parse macro definitions and callsites.
+    #    2.1 Note whether there's an #undef in the same file (i.e whether 
+    #        the macro is local or global).
+    #    2.2. If any of the macros from (1) is non-local, fall back to (3).
+    #    2.3. Otherwise, go to (4).
+    #
+    # 3. Use wmltools3.CrossRef to parse macro definitions and callsites on the entire addon.
+    #    3.1. Note whether the macro contains quote marks or is multiline (error out if so.)
+    #    3.2. Go to (4).
+    # 
+    # 4. Deeply identify all macro callsites with expansions that include
+    #    strings in (1).
+    # 5. Propagate macro parameters.
+    # 6. Evaluate macro expansions.
+    #
+    ctx_macros = {}
+    ids_by_sentence = {}
+    asts_by_sentence = {}
+    (sentences_by_file, sentences_by_macro) = po_sentences
+    for fileref, sentences in sentences_by_file.items():
+        for posentence in sentences:
+            lone_identifiers, complex_identifiers = set(), set()
+            # Fill-in lone_identifiers, complex_identifiers
+            ast = AST.parse_sentence_and_ids(posentence.sentence, lone_identifiers, complex_identifiers)
+            macro = Macro(*posentence.macro)
+
+            ctx_macros[macro] = True
+            asts_by_sentence[posentence.sentence] = ast
+            ids_by_sentence[posentence.sentence] = (lone_identifiers, complex_identifiers)
+
+    args_by_macro = {}
+    xrefs_by_file = {}
+    xrefs_all = None
+
+    def resolve_strings_at(dirpath=None, single_file=None):
+        nonlocal xrefs_all
+
+        if dirpath is None:
+            # 2. Use wmltools3.CrossRef to parse macro definitions and callsites.
+            filelist = [os.path.normpath(os.path.join(fileref_root, single_file))]
+            xrefs = CrossRef(filelist=filelist)
+            xrefs_by_file[filelist[0]] = xrefs # filelist[0] abs path
+        else:
+            # 3. Use wmltools3.CrossRef to parse macro definitions and callsites on the entire addon.
+            xrefs = CrossRef(dirpath=dirpath)
+            xrefs_all = xrefs
+
+        for macro in ctx_macros:
+            if single_file and macro.fileref != single_file:
+                # Ignore in single-file analysis
+                continue
+
+            # print("Tracing %s..." % macro)
+            xref = macro.to_abs(fileref_root).get_ref(xrefs)
+            assert xref is not None, ("Macro %s not referenced" % macro)
+
+            is_local = xref.undef is not None
+            if not is_local and single_file is not None:
+                # 2.1 Note whether there's an #undef in the same file (i.e whether 
+                #     the macro is local or global).
+                # 2.2. If any of the macros from (1) is non-local, fall back to (3).
+                raise AnalysisTooNarrowException("Macro %s is exported." % macro)
+
+            contained_sentences = sentences_by_macro[macro]
+
+            # Intermediate values in extraction of parameters and macros
+            # used by translatable sentences.
+
+            # lone identifiers    : list<set<string>>
+            all_params_sets = [ids_by_sentence[s.sentence][0] for s in contained_sentences]
+            # complex identifiers : list<set<string>>
+            complex_id_sets = [ids_by_sentence[s.sentence][1] for s in contained_sentences]
+            # maybe_parameters    : set<str>
+            maybe_parameters = set.union(*all_params_sets)
+
+            # parameters: set<str>
+            # Use set to ease look-up when using them as filter.
+            parameters = set(id for id in maybe_parameters if id in xref.args or id in xref.optional_args)
+
+            # We will need to iterate over constant_macros and variable_macros.
+            # Note that it's possible for a macro with optional arguments to be listed in both.
+
+            # macro names with 0 arguments : set<str>
+            constant_macros = maybe_parameters.difference(parameters)
+            # macro names with 1+ arguments: set<str>
+            variable_macros = set.union(*complex_id_sets)
+
+            for callee_name in set.union(constant_macros, variable_macros):
+                if not callee_name in xrefs.xref:
+                    if single_file is None:
+                        print("Unknown macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro))
+                    else:
+                        raise AnalysisTooNarrowException("Macro {%s} not found at %s." % (callee_name, single_file))
+                if not any(map(ReferenceHelper.is_embeddable_macro, xrefs.xref[callee_name])):
+                    if single_file is None:
+                        print("No valid embeddable expansion for macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro))
+                    else:
+                        raise AnalysisTooNarrowException("No valid definition for macro {%s} found at %s." % (callee_name, single_file))
+
+            args_variants = ReferenceHelper.get_arguments(xref, xrefs, parameters)
+            if len(args_variants) != 0:
+                # 4. Deeply identify all macro callsites with expansions that include
+                #    strings in (1).
+                # 5. Propagate macro parameters.
+                ReferenceHelper.deep_replace_arguments(args_variants, xrefs)
+
+            args_by_macro[macro] = args_variants
+
+    try:
+        for fileref in sentences_by_file:
+            resolve_strings_at(dirpath=None, single_file=fileref)
+    except AnalysisTooNarrowException as ex:
+        print("%s Falling back to full-tree analysis." % ex.args)
+        try:
+            resolve_strings_at(dirpath=[start_path])
+        except Exception as ex:
+            # Remove the trace for AnalysisTooNarrowException.
+            raise ex from None
+            
+
+    # 2.3. Otherwise, go to (4).
+    # 3.3. Go to (4).
+    new_sentences = {}
+    for macro, sentences in sentences_by_macro.items():
+        args_variants = args_by_macro[macro]
+        file_path_abs = os.path.normpath(os.path.join(fileref_root, macro[1]))
+        xrefs = xrefs_by_file[file_path_abs] if file_path_abs in xrefs_by_file else xrefs_all
+        for po_sentence in sentences:
+            ast = asts_by_sentence[po_sentence.sentence]
+            # print("raw sentence: (%s <-> %s)" % (po_sentence.sentence, ast))
+
+            # 5. Propagate macro parameters.
+            # sub_sentences: list<(str, Macro|NoneType)>
+            sub_sentences = []
+
+            if len(ids_by_sentence[po_sentence.sentence][0]) > 0:
+                # No lone_identifiers -> No parameters
+                # Only evaluate parameters if there is at least one lone identifier.
+                sub_sentences = AST.evaluate_many_on_one(ast, args_variants)
+
+            for sub_sentence, ctx in sub_sentences:
+                po_sentence_variant = copy(po_sentence)
+                po_sentence_variant.finfos = copy(po_sentence_variant.finfos)
+                po_sentence_variant.sentence = sub_sentence
+                if '\x01' + po_sentence_variant.sentence in sentlist:
+                    # print("Ignored ref to raw sentence %s" % po_sentence_variant.sentence)
+                    # Output has already been written. TODO: FIXME?
+                    # sentlist['\x01' + po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
+                    pass
+                elif po_sentence_variant.sentence in new_sentences:
+                    # print("New ref in processed sentence %s" % po_sentence_variant.sentence)
+                    new_sentences[po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
+                else:
+                    # print("New sentence %s" % po_sentence_variant.sentence)
+                    new_sentences[po_sentence_variant.sentence] = po_sentence_variant
+
+    for posentence in new_sentences.values():
+        posentence.write(outfile, fuzzy)
+        print('', file=outfile)
 
 
 def main():
@@ -245,31 +481,11 @@ def main():
  
     extractor(filelist, fileref_root)
 
-    outfile = None
-    if args.outfile is None:
-        outfile = sys.stdout
-    else:
-        outfile_name = os.path.realpath(os.path.normpath(args.outfile))
-        try:
-            outfile = open(outfile_name, 'w', encoding="utf-8")
-        except OSError as e:
-            errmsg = 'cannot write file: ' + e.args[1]
-            pywmlx.wmlerr(e.filename, errmsg, OSError)
-    pkgversion = args.package_version + '\\n"'
-    print('msgid ""\nmsgstr ""', file=outfile)
-    print('"Project-Id-Version:', pkgversion, file=outfile)
-    print('"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\\n"', file=outfile)
-    now = datetime.utcnow()
-    cdate = '{:04d}-{:02d}-{:02d} {:02d}:{:02d} UTC\\n"'.format(now.year,
-                                                                now.month,
-                                                                now.day,
-                                                                now.hour,
-                                                                now.minute)
-
     folder = None
     filename = None
     outfile = sys.stdout
     now = datetime.utcnow()
+    cdate = '{:04d}-{:02d}-{:02d} {:02d}:{:02d} UTC\\n"'.format(now.year, now.month, now.day, now.hour, now.minute)
     if args.folder is not None:
         folder = os.path.realpath(os.path.normpath(args.folder))
         if not os.path.isdir(folder) and "." in os.path.basename(folder):
@@ -277,7 +493,7 @@ def main():
             folder, filename = os.path.split(folder)
         os.makedirs(folder, exist_ok=True)
 
-    for domain, d in sentlist.items():
+    for domain, catalog in sentlist.items():
         if folder is not None:
             try:
                 outfile = open(os.path.join(folder, "{}.pot".format(domain) if filename is None else filename), 'w', encoding="utf-8")
@@ -288,12 +504,6 @@ def main():
         print('msgid ""\nmsgstr ""', file=outfile)
         print('"Project-Id-Version:', pkgversion, file=outfile)
         print('"Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\\n"', file=outfile)
-        cdate = '{:04d}-{:02d}-{:02d} {:02d}:{:02d} UTC\\n"'.format(now.year,
-                                                                    now.month,
-                                                                    now.day,
-                                                                    now.hour,
-                                                                    now.minute)
-
         print('"POT-Creation-Date:', cdate, file=outfile)
         print('"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n"', file=outfile)
         print('"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n"', file=outfile)
@@ -302,9 +512,29 @@ def main():
         print('"Content-Type: text/plain; charset=UTF-8\\n"', file=outfile)
         print('"Content-Transfer-Encoding: 8bit\\n"\n', file=outfile)
 
-        for posentence in sorted(d.values(), key=lambda x: x.orderid):
-            posentence.write(outfile, args.fuzzy)
-            print('', file=outfile)
+        sentences_wmacro_by_file = {}
+        sentences_wmacro_by_macro = {}
+        macro_po_sentences = (sentences_wmacro_by_file, sentences_wmacro_by_macro)
+        for posentence in sorted(catalog.values(), key=lambda x: x.orderid):
+            macro = posentence.macro
+            if macro is None:
+                posentence.write(outfile, args.fuzzy)
+                print('', file=outfile)
+            else:
+                # 1. Identify all strings which require preprocessing, as well as their
+                #    reference (file name, line number), and parent macro definition.
+                #    These are passed to handle_macro_po_sentences.
+                if not macro[1] in sentences_wmacro_by_file:
+                    sentences_wmacro_by_file[macro[1]] = []
+                sentences_wmacro_by_file[macro[1]].append(posentence)
+                if not macro in sentences_wmacro_by_macro:
+                    sentences_wmacro_by_macro[macro] = []
+                sentences_wmacro_by_macro[macro].append(posentence)
+
+        if len(sentences_wmacro_by_file) > 0:
+            print("Translatable strings with macros found in %d files." % len(sentences_wmacro_by_file))
+            handle_macro_po_sentences(catalog, macro_po_sentences, start_path=startPath, fileref_root=fileref_root, outfile=outfile, fuzzy=args.fuzzy)
+
         if args.folder is not None:
             outfile.close()
         if args.debugmode:
