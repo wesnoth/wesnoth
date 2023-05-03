@@ -249,7 +249,7 @@ class PendingLuaString:
                     _dictionary[_currentdomain] = dict()
                 loc_posentence = _dictionary[_currentdomain].get(self.luastring)
                 if loc_posentence is None:
-                    _dictionary[_currentdomain][self.luastring] = PoCommentedString(
+                    _dictionary[_currentdomain]['\x01' + self.luastring] = PoCommentedString(
                                 self.luastring,
                                 _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),

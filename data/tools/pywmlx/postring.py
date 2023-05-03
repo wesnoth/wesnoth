@@ -84,8 +84,13 @@ class WmlNodeSentence:
     def __init__(self, sentence, *, domain, macro=None, ismultiline,
                  lineno, lineno_sub=0, plural=None,
                  override=None, addition=None):
-        self.sentence = sentence
         self.domain = domain
+        self.sentence = sentence
+        self.sentence_id = sentence
+        if macro is None:
+            self.sentence_id = '\x01' + sentence
+        else:
+            self.sentence_id = '\x00' + '\x00'.join(map(str, macro)) + '\x00\x00' + sentence
         # Say if it is multiline or not.
         self.ismultiline = ismultiline
         self.macro = macro

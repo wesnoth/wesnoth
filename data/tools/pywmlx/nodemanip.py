@@ -23,14 +23,18 @@ def _closenode_update_dict(podict):
                 # be ignored, then wrong context info would be attached to these sentences,
                 # or to an undetermined future sentence.
                 wmlerr(*unbalanced_wml)
+
+            # Get the relevant catalog d for this sentence. Initialize it if needed.
             if i.domain in podict:
                 d = podict[i.domain]
             else:
                 podict[i.domain] = dict()
                 d = podict[i.domain]
-            posentence = d.get(i.sentence)
+
+            dict_key = i.sentence_id
+            posentence = d.get(dict_key)
             if posentence is None:
-                d[i.sentence] = (
+                d[dict_key] = (
                        nodes[-1].nodesentence_to_posentence(i) )
             else:
                 posentence.update_with_commented_string(
