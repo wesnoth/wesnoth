@@ -70,6 +70,11 @@ _pending_winfotype = None
 # If no lua functions already encountered, this var will be None
 _pending_luafuncname = None
 
+# the macro definition currently analyzed in a wml code (if any).
+# If outside of any macros, this var will be None
+_pending_wmacroname = None
+_pending_wmacroline = None
+
 # ----------
 
 # pending lua/wml string (they will be evaluated, and if translatable it will
