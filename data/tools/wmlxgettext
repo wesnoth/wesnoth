@@ -40,7 +40,7 @@ import sys
 import warnings
 import pywmlx
 from wesnoth.wmltools3 import CrossRef
-from wesnoth.wmlmacro import AST, Macro, CrossRefHelper, ReferenceHelper
+from wesnoth.wmlmacro import AST, Macro, CrossRefHelper, ReferenceHelper, GlobalWMLMacros
 
 def commandline(args):
     parser = argparse.ArgumentParser(
@@ -270,7 +270,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
     #    These are passed to handle_macro_po_sentences.
     #
     # 2. Use wmltools3.CrossRef to parse macro definitions and callsites.
-    #    2.1 Note whether there's an #undef in the same file (i.e whether 
+    #    2.1 Note whether there's an #undef in the same file (i.e whether
     #        the macro is local or global).
     #    2.2. If any of the macros from (1) is non-local, fall back to (3).
     #    2.3. Otherwise, go to (4).
@@ -278,7 +278,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
     # 3. Use wmltools3.CrossRef to parse macro definitions and callsites on the entire addon.
     #    3.1. Note whether the macro contains quote marks or is multiline (error out if so.)
     #    3.2. Go to (4).
-    # 
+    #
     # 4. Deeply identify all macro callsites with expansions that include
     #    strings in (1).
     # 5. Propagate macro parameters.
@@ -294,10 +294,9 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
             # Fill-in lone_identifiers, complex_identifiers
             ast = AST.parse_sentence_and_ids(posentence.sentence, lone_identifiers, complex_identifiers)
             macro = Macro(*posentence.macro)
-
-            ctx_macros[macro] = True
             asts_by_sentence[posentence.sentence] = ast
             ids_by_sentence[posentence.sentence] = (lone_identifiers, complex_identifiers)
+            if macro.name is not None: ctx_macros[macro] = True
 
     args_by_macro = {}
     xrefs_by_file = {}
@@ -317,6 +316,9 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
             xrefs_all = xrefs
 
         for macro in ctx_macros:
+            if macro.name is None:
+                # Outside any macro definitions.
+                continue
             if single_file and macro.fileref != single_file:
                 # Ignore in single-file analysis
                 continue
@@ -327,7 +329,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
 
             is_local = xref.undef is not None
             if not is_local and single_file is not None:
-                # 2.1 Note whether there's an #undef in the same file (i.e whether 
+                # 2.1 Note whether there's an #undef in the same file (i.e whether
                 #     the macro is local or global).
                 # 2.2. If any of the macros from (1) is non-local, fall back to (3).
                 raise AnalysisTooNarrowException("Macro %s is exported." % macro)
@@ -357,6 +359,8 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
             variable_macros = set.union(*complex_id_sets)
 
             for callee_name in set.union(constant_macros, variable_macros):
+                if callee_name in GlobalWMLMacros:
+                    continue
                 if not callee_name in xrefs.xref:
                     if single_file is None:
                         print("Unknown macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro))
@@ -387,13 +391,13 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
         except Exception as ex:
             # Remove the trace for AnalysisTooNarrowException.
             raise ex from None
-            
+
 
     # 2.3. Otherwise, go to (4).
     # 3.3. Go to (4).
     new_sentences = {}
     for macro, sentences in sentences_by_macro.items():
-        args_variants = args_by_macro[macro]
+        args_variants = args_by_macro[macro] if macro in args_by_macro else []
         file_path_abs = os.path.normpath(os.path.join(fileref_root, macro[1]))
         xrefs = xrefs_by_file[file_path_abs] if file_path_abs in xrefs_by_file else xrefs_all
         for po_sentence in sentences:
@@ -409,21 +413,43 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
                 # Only evaluate parameters if there is at least one lone identifier.
                 sub_sentences = AST.evaluate_many_on_one(ast, args_variants)
 
-            for sub_sentence, ctx in sub_sentences:
-                po_sentence_variant = copy(po_sentence)
-                po_sentence_variant.finfos = copy(po_sentence_variant.finfos)
-                po_sentence_variant.sentence = sub_sentence
-                if '\x01' + po_sentence_variant.sentence in sentlist:
-                    # print("Ignored ref to raw sentence %s" % po_sentence_variant.sentence)
-                    # Output has already been written. TODO: FIXME?
-                    # sentlist['\x01' + po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
-                    pass
-                elif po_sentence_variant.sentence in new_sentences:
-                    # print("New ref in processed sentence %s" % po_sentence_variant.sentence)
-                    new_sentences[po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
-                else:
-                    # print("New sentence %s" % po_sentence_variant.sentence)
-                    new_sentences[po_sentence_variant.sentence] = po_sentence_variant
+            if len(sub_sentences) == 0:
+                # Ensure loop runs at least once
+                sub_sentences.append((po_sentence.sentence, None))
+
+            for sentence_after_args, ctx in sub_sentences:
+                used_macros = set()
+                ast = AST.parse_sentence_and_ids(sentence_after_args, used_macros, used_macros)
+                # print("sentence after args: (%s <-> %s)" % (sentence_after_args, ast))
+
+                # 6. Evaluate macro expansions.
+                # macro_replacements: list<(Reference|ReferenceLike, True, None)>
+                macro_replacements = []
+                if len(used_macros) > 0:
+                    valid_macros = CrossRefHelper.get_valid_macros(used_macros, xrefs)
+                    macro_replacements = CrossRefHelper.get_macro_variants(valid_macros, xrefs)
+                    CrossRefHelper.deep_replace_macros(sentence_after_args, macro_replacements, xrefs)
+
+                if len(macro_replacements) == 0:
+                    # Ensure loop runs at least once
+                    macro_replacements.append(({}, None, sentence_after_args))
+                for defs, ended, sentence_after_macro in macro_replacements:
+                    # print("sentence after macro: %s" % sentence_after_macro)
+                    # assert(isinstance(ctx, Macro|NoneType))
+                    po_sentence_variant = copy(po_sentence)
+                    po_sentence_variant.finfos = copy(po_sentence_variant.finfos)
+                    po_sentence_variant.sentence = sentence_after_macro
+                    if '\x01' + po_sentence_variant.sentence in sentlist:
+                        # print("Ignored ref to raw sentence %s" % po_sentence_variant.sentence)
+                        # Output has already been written. TODO: FIXME?
+                        # sentlist['\x01' + po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
+                        pass
+                    elif po_sentence_variant.sentence in new_sentences:
+                        # print("New ref in processed sentence %s" % po_sentence_variant.sentence)
+                        new_sentences[po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
+                    else:
+                        # print("New sentence %s" % po_sentence_variant.sentence)
+                        new_sentences[po_sentence_variant.sentence] = po_sentence_variant
 
     for posentence in new_sentences.values():
         posentence.write(outfile, fuzzy)
@@ -478,7 +504,7 @@ def main():
         fileref_root, filelist = pywmlx.autof.autoscan(startPath)
     if args.sort_by_file:
         filelist.sort()
- 
+
     extractor(filelist, fileref_root)
 
     folder = None
@@ -543,7 +569,7 @@ def main():
 
 
 def sigint_handler(signal, frame):
-    """This function defines what happens when the SIGINT signal is encountered by pressing ctrl-c during runtime. 
+    """This function defines what happens when the SIGINT signal is encountered by pressing ctrl-c during runtime.
     When ctrl-c is pressed, a one-line message is displayed and Python exits with Status 1.
     This overrides Python's default behavior of displaying a traceback when ctrl-c is pressed.
     """

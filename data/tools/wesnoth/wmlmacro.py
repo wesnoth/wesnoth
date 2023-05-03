@@ -10,6 +10,7 @@
 """
 
 # This library provides classes required to model macros.
+# - Macro definitions - modeled by the ReferenceLike class.
 # - Macro calls - modeled by an Abstract Syntax Tree (AST class).
 # - Macro positions - modeled by the Macro class.
 #
@@ -47,6 +48,15 @@ def extend_no_override(target, source):
             continue
         target[key] = value
 
+# ReferenceLike - Minimal class mimicking wmltools3.Reference.
+# It only contains properties that functionally describe a Macro,
+# i.e. its args, optional_args, and body.
+class ReferenceLike:
+    def __init__(self, args, optional_args, body):
+        self.args = args
+        self.optional_args = optional_args
+        self.body = body.split("\n")
+
 class WmlIteratorException(Exception):
     pass
 
@@ -54,6 +64,16 @@ class StrictWmlIterator(WmlIterator):
     "Raise exceptions rather than writing to stdout."
     def printError(self, *misc):
         raise WmlIteratorException("|".join(map(str, misc)))
+
+_args3 = ["A", "B", "C"]
+_args4 = ["A", "B", "C", "D"]
+GlobalWMLMacros = {
+    # GlobalWMLMacros: dict<str, ReferenceLike>
+    "LEFT_BRACE": [ReferenceLike([], {}, "{")],
+    "RIGHT_BRACE": [ReferenceLike([], {}, "}")],
+    "ON_DIFFICULTY": [ReferenceLike(_args3, {}, "{A}"), ReferenceLike(_args3, {}, "{B}"), ReferenceLike(_args3, {}, "{C}")],
+    "ON_DIFFICULTY4": [ReferenceLike(_args4, {}, "{A}"), ReferenceLike(_args4, {}, "{B}"), ReferenceLike(_args4, {}, "{C}"), ReferenceLike(_args4, {}, "{D}")],
+}
 
 # Default parameter for AST|ExpandableNode.replace()
 NO_ARGS = ({}, None)
@@ -85,7 +105,7 @@ class LiteralNode:
             parent = parent.parent
         return parent
 
-    def replace(self, args_set=NO_ARGS):
+    def replace(self, args_set=NO_ARGS, macro_defs=None):
         if len(self.value) == 0:
             return "()"
         return self.value
@@ -122,11 +142,26 @@ class ExpandableNode:
             parent = parent.parent
         return parent
 
-    def replace(self, args_set=NO_ARGS):
+    def replace(self, args_set=NO_ARGS, macro_defs=None):
         if self.name in args_set[0]:
             sub = args_set[0][self.name]
             # print("Subbed parameter %s -> %s" % (self.name, sub))
             return sub
+
+        if macro_defs is not None and self.name in macro_defs:
+            macro_args = macro_defs[self.name].args
+            if len(macro_defs[self.name].body) == 0:
+                raise Exception("Macro %s has no body" % self.name)
+
+            # body is a list of lines, but only a single-line macro
+            # is embeddable, so we retrieve its first and only line.
+            result = macro_defs[self.name].body[0]
+            for i in range(0, min(len(macro_args), len(self.children))):
+                # For each formal parameter, replace it by its value.
+                result = re.sub('{'+macro_args[i]+'}', str(self.children[i]), result)
+            # print("Subbed macro %s -> %s" % (self, result))
+
+            return result
 
         out = ["{" + self.name]
         is_first = True
@@ -134,7 +169,7 @@ class ExpandableNode:
             if not is_first:
                 # Add whitespace between arguments.
                 out.append(" ")
-            out.append(child.replace(args_set))
+            out.append(child.replace(args_set, macro_defs))
             is_first = False
         return " ".join(out) + "}"
 
@@ -173,12 +208,12 @@ class AST:
     def get_root(self):
         return self
 
-    def replace(self, args_set=NO_ARGS):
+    def replace(self, args_set=NO_ARGS, macro_defs=None):
         # args_set: (dict<str, str>, Macro)
         # return: str
         out = []
         for child in self.children:
-            out.append(child.replace(args_set))
+            out.append(child.replace(args_set, macro_defs))
         return "".join(out)
 
     @staticmethod
@@ -202,7 +237,7 @@ class AST:
                     elif elem[0] == "{":
                         ast.fill_literals(input, start)
                         assert not type(ast.active_node) == str
-                        macro_node = ExpandableNode(ast.active_node, elem[1:], start, end)  
+                        macro_node = ExpandableNode(ast.active_node, elem[1:], start, end)
                         ast.active_node.children.append(macro_node)
                         ast.active_node = macro_node
                     else:
@@ -337,7 +372,7 @@ class Macro:
                 continue
 
             assert isinstance(xref, Reference)
-            return xref 
+            return xref
 
         return None
 
@@ -356,7 +391,139 @@ class CrossRefHelper:
 
         return None
 
+    # _get_valid_macros - Given a N-tuple of macro names,
+    # return a M-tuple of macro names that can be embedded in translatable strings,
+    # M <= N.
+    @staticmethod
+    @memoize
+    def _get_valid_macros(input, xrefs):
+        macros = []
+        for name in input:
+            if name in GlobalWMLMacros:
+                macros.append(name)
+            elif name in xrefs.xref:
+                if any(map(ReferenceHelper.is_embeddable_macro, xrefs.xref[name])):
+                    macros.append(name)
+                else:
+                    print("Macro {%s} cannot be embedded in a translatable string (only simple single-line macros may.)")
+            else:
+                print("Macro {%s} not defined. Strings containing it will NOT be processed in the generated .pot file." % name)
 
+        return tuple(macros)
+
+    # get_valid_macros - Given an unsorted iterable of macro names,
+    # return a tuple of macro names that can be embedded in translatable strings.
+    @staticmethod
+    def get_valid_macros(input, xrefs):
+        return CrossRefHelper._get_valid_macros(tuple(input), xrefs)
+
+    # get_macro_variants - Returns a list of tuples.
+    # list<(Reference|ReferenceLike, True, None)>
+    @staticmethod
+    def get_macro_variants(macro_names, xrefs):
+        assert isinstance(xrefs, CrossRef), ("xrefs is %s" % xrefs)
+        assert(type(macro_names) == tuple)
+
+        # - xref_matrix[i][j]: Reference|ReferenceLike
+        # - i matches macro_names index.
+        # - j discriminates definitions.
+        xref_matrix = []
+        for name in macro_names:
+            if name in xrefs.xref:
+                xref_matrix.append(xrefs.xref[name])
+            else:
+                xref_matrix.append(GlobalWMLMacros[name])
+
+        if len(xref_matrix) > 0:
+            # product(list<Reference>, list<Reference>, ...)
+            # Cartesian product that returns an iterator (`variants_matrix`) of N-tuples (`variant`),
+            # such that variant[i] is a picked Reference for macro_names[i],
+            # and N=len(macro_names).
+            variants_matrix = itertools.product(*xref_matrix)
+        else:
+            # Nullary cartesian product is generally understood to be [()],
+            # but that doesn't fit our use case.
+            variants_matrix = []
+
+        variants = []
+        for variant in variants_matrix:
+            defs = {macro_names[i]:ref for i, ref in enumerate(variant)}
+            variants.append((defs, True, None))
+
+        # list<(Reference|ReferenceLike, True|None, None)>
+        return variants
+
+    # get_macro_replaceables - Generator function to iterate over variants with braces.
+    # variants is an unsorted mutable list.
+    @staticmethod
+    def get_macro_replaceables(input_sentence, variants):
+        # Mutates variants.
+        index = 0
+        while index < len(variants):
+            next = variants[index]
+            # next: (dict<string, Reference|ReferenceLike>, True|None, str)
+            if next[1] is None:
+                # Signals that this sentence cannot be expanded anymore.
+                index += 1
+                continue
+
+            if not has_brace(next[2]):
+                index += 1
+                continue
+
+            last = variants.pop()
+            if index != len(variants):
+                assert index < len(variants)
+                variants[index] = last
+            else:
+                # `next` removed in variants.pop().
+                assert next == last
+
+            yield next
+
+    @staticmethod
+    def deep_replace_macros(input_sentence, variants, xrefs):
+        # variants: list<dict<Reference|ReferenceLike>, True|None, str|None>
+
+        for i, variant in enumerate(variants):
+            # Seed with input_sentence.
+            variants[i] = (variants[i][0], variants[i][1], input_sentence)
+
+        iterations = 0
+        max_iterations = 256
+        for defs, sentinel, sentence in CrossRefHelper.get_macro_replaceables(input_sentence, variants):
+            # (defs, sentinel, sentence): (dict<string, Reference|ReferenceLike>, True, str)
+            assert type(defs) == dict, ("defs is not dict<Reference|ReferenceLike>: %s" % str(defs))
+
+            ast = AST.parse(sentence)
+            replaced_sentence = ast.replace(NO_ARGS, defs)
+
+            used_macros = set()
+            ast = AST.parse_sentence_and_ids(replaced_sentence, used_macros, used_macros)
+            nested_variants = []
+            if len(used_macros) > 0:
+                nested_valid_macros = CrossRefHelper.get_valid_macros(used_macros, xrefs)
+                nested_variants = CrossRefHelper.get_macro_variants(nested_valid_macros, xrefs)
+
+            if len(nested_variants) == 0:
+                # Set sentinel to None so that get_macro_replaceables()
+                # won't yield it anymore.
+                assert replaced_sentence is not None
+                variants.append(({}, None, replaced_sentence))
+            else:
+                for nested_defs, nested_sentinel, nested_sentence in nested_variants:
+                    nested_sentence = ast.replace(NO_ARGS, nested_defs)
+                    variants.append((nested_defs, True, nested_sentence))
+
+            iterations += 1
+            if iterations >= max_iterations:
+                break
+        else:
+            max_iterations += 1
+
+        if iterations >= max_iterations:
+            print("Unable to generate msgid for \"%s\" (Macro replacement stack limit exceeded.) \
+Ensure there are no circular macro references." % input_sentence)
 
 class ReferenceHelper:
     @staticmethod
@@ -460,7 +627,7 @@ class ReferenceHelper:
             else:
                 # `next` removed in variants.pop().
                 assert next == last
-                
+
             yield next
 
     # deep_replace_arguments - Iterates over variants over and over.
@@ -493,7 +660,7 @@ class ReferenceHelper:
                     asts[parameter_name] = LiteralNode(None, arg_value)
 
             resolved_args = args
-            if len(used_params) > 0:                
+            if len(used_params) > 0:
                 # parent_args: list<(dict, Macro)>
                 resolved_args = ReferenceHelper.get_arguments(xref, xrefs, used_params)
                 for parent_args, parent_macro in resolved_args:
