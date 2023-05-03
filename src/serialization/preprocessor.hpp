@@ -21,6 +21,7 @@
 #include "filesystem.hpp"
 #include "game_version.hpp"
 #include <optional>
+#include <stdint.h>
 
 #include <iosfwd>
 #include <map>
