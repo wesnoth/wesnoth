@@ -580,14 +580,11 @@ point table::calculate_best_size() const
 		);
 
 		int row_max_width = row_min_width + max_xtra;
-		int row = 0;
 
 		point row_size, total_size;
 
 		for(std::size_t n = 0; n < item_sizes.size(); n++) {
 			if(row_size.x + item_sizes[n].x > row_max_width) {
-				// Start new row
-				row++;
 
 				total_size.y += row_size.y;
 
