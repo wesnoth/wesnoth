@@ -314,28 +314,25 @@ def list_contents():
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
-            sys.stdout.write("ok\n")
+            print("ok")
         except wmlparser3.WMLError as e:
-            ef = open(logname, "w")
-            ef.write("<PARSE ERROR>\n")
-            ef.write(str(e))
-            ef.write("</PARSE ERROR>\n")
-            ef.close()
-            sys.stdout.write("failed\n")
+            with open(logname, "w") as ef
+                ef.write("<PARSE ERROR>\n")
+                ef.write(str(e))
+                ef.write("\n</PARSE ERROR>\n")
+            print("failed")
         except queue.Empty as e:
-            ef = open(logname, "w")
-            ef.write("<TIMEOUT ERROR>\n")
-            ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
-            ef.write("</TIMEOUT ERROR>\n")
-            ef.close()
-            sys.stdout.write("failed\n")
+            with open(logname, "w") as ef
+                ef.write("<TIMEOUT ERROR>\n")
+                ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
+                ef.write("\n</TIMEOUT ERROR>\n")
+            print("failed")
         except Exception as e:
-            ef = open(logname, "w")
-            ef.write("<INTERNAL ERROR>\n")
-            ef.write(repr(e))
-            ef.write("</INTERNAL ERROR>\n")
-            ef.close()
-            sys.stdout.write("failed\n")
+            with open(logname, "w") as ef
+                ef.write("<INTERNAL ERROR>\n")
+                ef.write(repr(e))
+                ef.write("\n</INTERNAL ERROR>\n")
+            print("failed")
         finally:
             move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, addon)
             for d in get_dependencies(addon):
@@ -471,21 +468,29 @@ def batch_process():
                 campaign["units"] = n
 
         except wmlparser3.WMLError as e:
-            ef = open(logname, "a")
-            ef.write("<WML ERROR>\n")
-            ef.write(str(e))
-            ef.write("</WML ERROR>\n")
-            ef.close()
             print("    " + name + " failed")
+            with open(logname, "a") as ef
+                ef.write("<WML ERROR>\n")
+                ef.write(str(e))
+                ef.write("\n</WML ERROR>\n")
+        except (AttributeError, KeyError, TypeError) as e:
+            # Common logic errors.
+            traceback.print_exc()
+            print("    " + name + " failed")
+            with open(logname, "a") as ef
+                ef.write("<INTERNAL ERROR>\n")
+                ef.write("please report as bug\n")
+                # Show last few stack frames of traceback to make bug reports more useful.
+                ef.write(traceback.format_exc(limit=-2))
+                ef.write("\n</INTERNAL ERROR>\n")
         except Exception as e:
             traceback.print_exc()
             print("    " + name + " failed")
-            ef = open(logname, "a")
-            ef.write("<INTERNAL ERROR>\n")
-            ef.write("please report as bug\n")
-            ef.write(str(e))
-            ef.write("</INTERNAL ERROR>\n")
-            ef.close()
+            with open(logname, "a") as ef
+                ef.write("<INTERNAL ERROR>\n")
+                ef.write("please report as bug\n")
+                ef.write(str(e))
+                ef.write("\n</INTERNAL ERROR>\n")
         finally:
             if name != "mainline":
                 move(os.path.join(options.config_dir, "data", "add-ons"), options.addons, name)

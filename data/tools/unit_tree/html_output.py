@@ -665,7 +665,7 @@ class HTMLOutput:
                     name = self.wesnoth.get_unit_value(un, "name",
                                                        translation=self.translation.translate)
                     if not name:
-                        error_message("Warning: Unit uid=" + uid + " has no name.\n")
+                        error_message("Warning: Unit uid=%s has no name.\n" % uid)
                         name = uid
                     add_menuitem(link, name)
                 end_menu()
@@ -758,7 +758,7 @@ class HTMLOutput:
                 try:
                     id = ability.get_text_val("id")
                 except AttributeError as e:
-                    error_message("Error: Ignoring ability " + ability.debug())
+                    error_message("Error: Ignoring ability %s" % ability.debug())
                     continue
                 if id in already:
                     continue
@@ -1299,7 +1299,7 @@ class HTMLOutput:
             if ticon:
                 terrainlist.append((name, tid, ticon))
             else:
-                error_message("Terrain " + tid + " has no symbol_image\n")
+                error_message("Terrain %s has no symbol_image\n" % tid)
         terrainlist.sort()
 
         for tname, tid, ticon in terrainlist:
@@ -1340,7 +1340,7 @@ class HTMLOutput:
 
             write('<tr>\n')
             picname = image_collector.add_image(self.addon,
-                                                "terrain/" + ticon + ".png",
+                                                "terrain/%s.png" % ticon,
                                                 no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % cleanurl(icon))
@@ -1368,9 +1368,9 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
     else:
         cid = "mainline"
     if not cid:
-        cid = addon + "_" + campaign.get_text_val("define")
+        cid = "%s_%s" % (addon, campaign.get_text_val("define"))
 
-    print(("campaign " + addon + " " + cid + " " + isocode))
+    print("campaign %s %s %s" % (addon, cid, isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):
@@ -1396,7 +1396,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 def generate_era_report(addon, isocode, era, wesnoth):
     eid = era.get_text_val("id")
 
-    print("era " + addon + " " + eid + " " + isocode)
+    print("era %s %s %s" % (addon, eid, isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):

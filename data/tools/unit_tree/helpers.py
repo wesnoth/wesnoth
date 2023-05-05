@@ -187,6 +187,7 @@ class WesnothList:
         n = 0
         for terrain in self.parser.get_all(tag="terrain_type"):
             tstring = terrain.get_text_val("string")
+            if tstring is None: continue
             self.terrain_lookup[tstring] = terrain
             n += 1
         return n
@@ -205,6 +206,8 @@ class WesnothList:
         for locale in parser.get_all(tag="locale"):
             isocode = locale.get_text_val("locale")
             name = locale.get_text_val("name")
+            if isocode is None or name is None:
+                continue
             if isocode == "ang_GB":
                 continue
             self.languages_found[isocode] = name
@@ -220,7 +223,7 @@ class WesnothList:
         era.faction_lookup = {}
         for multiplayer_side in era.get_all(tag="multiplayer_side"):
             fid = multiplayer_side.get_text_val("id")
-            if fid == "Random":
+            if fid == "Random" or fid in era.faction_lookup:
                 continue
             era.faction_lookup[fid] = multiplayer_side
             recruit = multiplayer_side.get_text_val("recruit", "").strip()
@@ -284,7 +287,7 @@ class WesnothList:
         # Find all unit types.
         newunits = getall("unit_type") + getall("unit")
         for unit in newunits:
-            uid = unit.get_text_val("id")
+            uid = unit.get_text_val("id", "none")
             unit.id = uid
 
             if unit.get_text_val("do_not_list", "no") not in ["no", "false"] or \
@@ -309,18 +312,18 @@ class WesnothList:
         for race in newraces:
             rid = race.get_text_val("id")
             if rid is None:
-                rid = race.get_text_val("name")
+                rid = race.get_text_val("name", "none")
             self.race_lookup[rid] = race
 
         # Find all movetypes.
         newmovetypes = getall("movetype")
         for movetype in newmovetypes:
             mtname = movetype.get_text_val("name")
+            if mtname is None: continue
             self.movetype_lookup[mtname] = movetype
 
         # Store race/movetype/faction of each unit for easier access later.
         for unit in newunits:
-            uid = unit.get_text_val("id")
             race = self.get_unit_value(unit, "race")
             try:
                 unit.race = self.race_lookup[race]
@@ -360,21 +363,9 @@ class WesnothList:
     def check_units(self):
         """
         Once all units have been added, do some checking.
+        This function used to handle now-removed advancefrom tags
         """
-        # handle advancefrom tags
-        for uid, unit in list(self.unit_lookup.items()):
-            for advancefrom in unit.get_all(tag="advancefrom"):
-                fromid = advancefrom.get_text_val("unit")
-                if fromid:
-                    try:
-                        fromunit = self.unit_lookup[fromid]
-                    except KeyError:
-                        error_message(
-                            "Error: Unit '%s' references non-existant [advancefrom] unit '%s'" % (
-                                uid, fromid))
-                        continue
-                    if uid not in fromunit.advance:
-                        fromunit.advance.append(uid)
+        return
 
     def find_unit_factions(self):
         for unit in list(self.unit_lookup.values()):
@@ -503,7 +494,7 @@ class UnitNode:
     def __init__(self, unit):
         self.unit = unit
         self.children = []
-        self.id = unit.get_text_val("id")
+        self.id = unit.get_text_val("id", "none")
         self.child_ids = []
         self.parent_ids = []
         self.child_ids.extend(unit.advance)
