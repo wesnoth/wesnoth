@@ -316,19 +316,19 @@ def list_contents():
             info["version"] = version
             print("ok")
         except wmlparser3.WMLError as e:
-            with open(logname, "w") as ef
+            with open(logname, "w") as ef:
                 ef.write("<PARSE ERROR>\n")
                 ef.write(str(e))
                 ef.write("\n</PARSE ERROR>\n")
             print("failed")
         except queue.Empty as e:
-            with open(logname, "w") as ef
+            with open(logname, "w") as ef:
                 ef.write("<TIMEOUT ERROR>\n")
                 ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
                 ef.write("\n</TIMEOUT ERROR>\n")
             print("failed")
         except Exception as e:
-            with open(logname, "w") as ef
+            with open(logname, "w") as ef:
                 ef.write("<INTERNAL ERROR>\n")
                 ef.write(repr(e))
                 ef.write("\n</INTERNAL ERROR>\n")
@@ -469,7 +469,7 @@ def batch_process():
 
         except wmlparser3.WMLError as e:
             print("    " + name + " failed")
-            with open(logname, "a") as ef
+            with open(logname, "a") as ef:
                 ef.write("<WML ERROR>\n")
                 ef.write(str(e))
                 ef.write("\n</WML ERROR>\n")
@@ -477,7 +477,7 @@ def batch_process():
             # Common logic errors.
             traceback.print_exc()
             print("    " + name + " failed")
-            with open(logname, "a") as ef
+            with open(logname, "a") as ef:
                 ef.write("<INTERNAL ERROR>\n")
                 ef.write("please report as bug\n")
                 # Show last few stack frames of traceback to make bug reports more useful.
@@ -486,7 +486,7 @@ def batch_process():
         except Exception as e:
             traceback.print_exc()
             print("    " + name + " failed")
-            with open(logname, "a") as ef
+            with open(logname, "a") as ef:
                 ef.write("<INTERNAL ERROR>\n")
                 ef.write("please report as bug\n")
                 ef.write(str(e))
