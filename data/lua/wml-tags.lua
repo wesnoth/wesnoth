@@ -1016,6 +1016,10 @@ function wml_actions.set_achievement(cfg)
 	wesnoth.achievements.set(cfg.content_for, cfg.id)
 end
 
+function wml_actions.set_sub_achievement(cfg)
+	wesnoth.achievements.set_sub_achievement(cfg.content_for, cfg.id, cfg.sub_id)
+end
+
 function wml_actions.progress_achievement(cfg)
 	if not tonumber(cfg.amount) then
 		wml.error("[progress_achievement] amount attribute not a number for content '"..cfg.content_for.."' and achievement '"..cfg.id.."'")

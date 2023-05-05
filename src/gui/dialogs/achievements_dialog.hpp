@@ -48,7 +48,9 @@ private:
 	listbox* achievements_box_;
 	menu_button* content_names_;
 
-	void set_achievements_content();
+	void set_sub_achievements(grid& newrow, const achievement& ach);
+
+	void set_achievements_row();
 
 	virtual const std::string& window_id() const override;
 

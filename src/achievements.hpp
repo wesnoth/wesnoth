@@ -23,6 +23,24 @@
 #include "tstring.hpp"
 
 /**
+ * Represents a distinct sub-achievement within another achievement.
+ * This is intentionally a much simpler object than the regular achievements.
+ */
+struct sub_achievement
+{
+	/** The ID of the sub-achievement. Must be unique per achievement */
+	std::string id_;
+	/** The description of the sub-achievement to be shown in its tooltip */
+	t_string description_;
+	/** The icon of the sub-achievement to show on the UI. */
+	std::string icon_;
+	/** Whether the sub-achievement has been completed. */
+	bool achieved_;
+
+	sub_achievement(const config& cfg, bool achieved);
+};
+
+/**
  * Represents a single achievement and its data.
  */
 struct achievement
@@ -51,32 +69,10 @@ struct achievement
 	int current_progress_;
 	/** The path to a sound to play when an achievement is completed */
 	std::string sound_path_;
+	/** The list of distinct sub-achievements for this achievement */
+	std::vector<sub_achievement> sub_achievements_;
 
-	achievement(const config& cfg, bool achieved, int progress)
-		: id_(cfg["id"].str())
-		, name_(cfg["name"].t_str())
-		, name_completed_(cfg["name_completed"].t_str())
-		, description_(cfg["description"].t_str())
-		, description_completed_(cfg["description_completed"].t_str())
-		, icon_(cfg["icon"].str()+"~GS()")
-		, icon_completed_(cfg["icon_completed"].str())
-		, hidden_(cfg["hidden"].to_bool())
-		, achieved_(achieved)
-		, max_progress_(cfg["max_progress"].to_int(0))
-		, current_progress_(progress)
-		, sound_path_(cfg["sound"].str())
-	{
-		if(name_completed_.empty()) {
-			name_completed_ = name_;
-		}
-		if(description_completed_.empty()) {
-			description_completed_ = description_;
-		}
-		if(icon_completed_.empty()) {
-			// avoid the ~GS() appended to icon_
-			icon_completed_ = cfg["icon"].str();
-		}
-	}
+	achievement(const config& cfg, const std::string& content_for, bool achieved, int progress);
 };
 
 /**
