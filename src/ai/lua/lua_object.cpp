@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Dmitry Kovalenko <nephro.wes@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

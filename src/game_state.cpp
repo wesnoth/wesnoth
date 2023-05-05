@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -60,12 +60,11 @@ game_state::game_state(const config& level, play_controller& pc)
 	, next_player_number_(level["next_player_number"].to_int(player_number_ + 1))
 	, do_healing_(level["do_healing"].to_bool(false))
 	, server_request_number_(level["server_request_number"].to_int())
-	, first_human_team_(-1)
 {
 	lua_kernel_->load_core();
-	if(const config& endlevel_cfg = level.child("end_level_data")) {
+	if(auto endlevel_cfg = level.optional_child("end_level_data")) {
 		end_level_data el_data;
-		el_data.read(endlevel_cfg);
+		el_data.read(*endlevel_cfg);
 		el_data.transient.carryover_report = false;
 		end_level_data_ = el_data;
 	}
@@ -177,12 +176,6 @@ void game_state::init(const config& level, play_controller & pc)
 	int team_num = 0;
 	for (const config &side : level.child_range("side"))
 	{
-		if (first_human_team_ == -1) {
-			const std::string &controller = side["controller"];
-			if (controller == side_controller::human && side["is_local"].to_bool(true)) {
-				first_human_team_ = team_num;
-			}
-		}
 		++team_num;
 
 		team_builders.emplace_back(side, board_.get_team(team_num), level, board_, team_num);

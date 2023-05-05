@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Rusty Russell <rusty@rustcorp.com.au>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1501,8 +1501,10 @@ void monte_carlo_combat_matrix::simulate()
 		bool b_slowed = rng.get_random_bool(b_initially_slowed_chance_);
 		const std::vector<double>& a_initial = a_slowed ? a_initial_slowed_ : a_initial_;
 		const std::vector<double>& b_initial = b_slowed ? b_initial_slowed_ : b_initial_;
-		unsigned int a_hp = rng.get_random_element(a_initial.begin(), a_initial.end());
-		unsigned int b_hp = rng.get_random_element(b_initial.begin(), b_initial.end());
+		// In the a_initial vector, a_initial[x] is the chance of having exactly x hp.
+		// Thus the index returned by get_random_element corresponds directly to an amount of hp.
+		auto a_hp = static_cast<unsigned int>(rng.get_random_element(a_initial.begin(), a_initial.end()));
+		auto b_hp = static_cast<unsigned int>(rng.get_random_element(b_initial.begin(), b_initial.end()));
 		unsigned int a_strikes = calc_blows_a(a_hp);
 		unsigned int b_strikes = calc_blows_b(b_hp);
 

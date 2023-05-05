@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -156,6 +156,13 @@ unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
 		return unit_race::FEMALE;
 	}
 	return def;
+}
+
+const config::attribute_value & gender_value(
+    const config & cfg, unit_race::GENDER gender, const std::string & male_key,
+    const std::string & female_key, const std::string & default_key)
+{
+    return cfg.get_or(gender == unit_race::MALE ? male_key : female_key, default_key);
 }
 
 std::string unit_race::get_icon_path_stem() const

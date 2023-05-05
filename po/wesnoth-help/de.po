@@ -1,26 +1,27 @@
 # Translators:
-#  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
-#  Boris Stumm <wesnoth@bstumm.de>, 2005
-#  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
-#  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012
-#  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010
-#  Marcel Miebach <marcel_miebach@gmx.de>, 2012
-#  Aaron Winter <winter.aaron93@gmail.com>, 2018.
-#
+# Andre Schmidt <andre@schmidtandre.de>, 2004, 2005.
+# Boris Stumm <wesnoth@bstumm.de>, 2005.
+# Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006.
+# Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2012.
+# Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010.
+# Marcel Miebach <marcel_miebach@gmx.de>, 2012.
+# Aaron Winter <winter.aaron93@gmail.com>, 2018.
+# mcpgal, 2021.
+# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2022.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.14\n"
+"Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-03-18 21:33-0500\n"
-"PO-Revision-Date: 2020-11-24 04:01+0100\n"
-"Last-Translator: Whiskeyjack\n"
-"Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
+"PO-Revision-Date: 2023-01-02 12:30+0100\n"
+"Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
+"Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Lokalize 22.04.3\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -242,10 +243,10 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:551
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:590
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:620
-#, fuzzy
-#| msgid "This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
-msgstr "Diese Einheit beherrscht die Grundlagen der Heilkunst."
+msgstr ""
+"Diese Einheit hat die Fähigkeit der einfachen Heilung und kann Dehydration "
+"verlangsamen."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:569
@@ -292,15 +293,6 @@ msgstr "Heilen +12"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:601
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -315,24 +307,19 @@ msgstr ""
 "\n"
 "Diese Heiler kombinieren Heilkräuter mit Magie, jedoch vermögen sie die "
 "Wirkung von Giften nur zu verzögern.\n"
-"Verletzte erhalten pro Runde bis zu 8 LP zurück, genau wie durch den "
+"Verletzte erhalten pro Runde bis zu 12 LP zurück, genau wie durch den "
 "Aufenthalt in einem Dorf.\n"
 "Jedoch werden Giftopfer nur durch Einheiten mit der Fähigkeit »Kurieren« "
 "oder durch eine Rast in einem Dorf geheilt."
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:626
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of healing those around it, and curing them of "
-#| "poison."
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
-"Diese Einheit ist in der Lage, alle befreundeten, direkt benachbarten "
-"Einheiten von ihren Wunden zu heilen oder von der Wirkung eines Giftes zu "
-"kurieren."
+"Diese Einheit hat die Fähigkeit, benachbarte Einheiten zu heilen, "
+"Dehydration zu verlangsamen sowie Vergiftungen zu heilen."
 
 #. [artifact]
 #. [chance]
@@ -478,20 +465,18 @@ msgstr "Karten- und Szenarieneditor"
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:13 data/core/editor/help.cfg:349
 msgid "Terrain Editor"
-msgstr "Gelände Editor"
+msgstr "Geländeeditor"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:20 data/core/editor/help.cfg:361
-#, fuzzy
-#| msgid "Map/Scenario Editor"
 msgid "Scenario Editor"
-msgstr "Karten-/Szenarieneditor"
+msgstr "Szenarieneditor"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:28
 msgid "Paint Tool"
-msgstr "Zeichenwerkzeug"
+msgstr "Malwerkzeug"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:29
@@ -512,31 +497,47 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Malt Geländefelder auf der Karte.\n"
+"\n"
+"Das Malwerkzeug macht sich die Pinselgröße und die Geländepalette zunutze.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Shift+Mausklick: Wenn eine Grundfläche ausgewählt ist, ändert es nur die "
+"Grundfläche, ohne das Overlay zu entfernen. Wenn ein Overlay ausgewählt ist, "
+"platziert es das Overlay, ohne die Grundfläche zu ändern.\n"
+"•Steuerung+Mausklick: Das Gelände unter dem Mauszeiger wird zur neuen "
+"Auswahl, genau so, als wäre es in der Palette ausgewählt worden. Gilt für "
+"Grundfläche und Overlay.\n"
+"\n"
+"<bold>text='Pinselgrößen'</bold>\n"
+"\n"
+"Der verwendete Pinsel ändert den Wirkungsbereich des Werkzeugs:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:41
 msgid "Paint single hexes."
-msgstr ""
+msgstr "Malt einzelne Felder."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:42
 msgid "Paint seven hexes at a time."
-msgstr ""
+msgstr "Malt sieben Felder gleichzeitig."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:43
 msgid "Paint nineteen hexes at a time."
-msgstr ""
+msgstr "Malt neunzehn Felder gleichzeitig."
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:44 data/core/editor/help.cfg:45
 msgid "Paint three hexes in a line."
-msgstr ""
+msgstr "Malt drei Felder in eine rschrägen Linie."
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:52
 msgid "Fill Tool"
-msgstr "Füllen-Werkzeug"
+msgstr "Füllwerkzeug"
 
 #. [topic]: id=editor_tool_fill
 #: data/core/editor/help.cfg:53
@@ -553,11 +554,23 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"Ersetzt zusammenhängende Bereiche eines Terrains mit einem anderen.\n"
+"\n"
+"Das Füll-Werkzeug benutzt die Geländepalette.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Shift+Mausklick: Wenn eine Grundfläche ausgewählt ist, ändert es nur die "
+"Grundfläche, ohne das Overlay zu entfernen. Wenn ein Overlay ausgewählt ist, "
+"platziert es das Overlay, ohne die Grundfläche zu ändern.\n"
+"•Steuerung+Mausklick: Das Gelände unter dem Mauszeiger wird zur neuen "
+"Auswahl, genau so, als wäre es in der Palette ausgewählt worden. Gilt für "
+"Grundfläche und Overlay."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:67
 msgid "Select Tool"
-msgstr "Auswahl-Werkzeug"
+msgstr "Auswahlwerkzeug"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:68
@@ -575,31 +588,46 @@ msgid ""
 "\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"Wählt eine Reihe von Feldern aus zur Verwendung mit den Schaltflächen im "
+"Bereich unter der Menüleiste. Dort finden sich neben den Funktionen zum "
+"Ausschneiden, Kopieren und Einfügen eine Funktion zum »Bereich füllen« sowie "
+"zum »Zufällig neu anordnen« der Felder.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Shift+Mausklick: »Zauberstabmodus«, wähle das Feld unter dem Mauszeiger "
+"sowie angrenzende Gelände derselben Art. Wählt dieselben Felder aus wie das "
+"Füllwerkzeug.\n"
+"• Steuerung+Mausklick: Wähle die ausgewählten Felder ab.\n"
+"\n"
+"<bold>text='Pinselgrößen'</bold>\n"
+"\n"
+"Der verwendete Pinsel ändert den Wirkungsbereich des Werkzeugs:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:78
 msgid "Select single hexes."
-msgstr ""
+msgstr "Wählt einzelne Felder aus."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:79
 msgid "Select seven hexes at a time."
-msgstr ""
+msgstr "Wählt sieben Felder gleichzeitig aus."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:80
 msgid "Select nineteen hexes at a time."
-msgstr ""
+msgstr "Wählt neunzehn Felder gleichzeitig aus."
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:81 data/core/editor/help.cfg:82
 msgid "Select three hexes in a line."
-msgstr ""
+msgstr "Wählt drei Felder in einer schrägen Linie aus."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:89
 msgid "Clipboard and Paste Tool"
-msgstr ""
+msgstr "Kopieren und Einfügen"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:90
@@ -616,33 +644,44 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"Dreht, spiegelt und fügt die Landschaft aus der Zwischenablage ein\n"
+"\n"
+"Felder können mit dem <ref>dst='editor_tool_select' text='Auswahlwerkzeug'</"
+"ref> in die Zwischenablage ausgeschnitten oder kopiert werden.\n"
+"\n"
+"Das Werkzeug zum Einfügen zeigt einen Umriss der Zwischenablage, welche mit "
+"der Hilfe eines Mausklicks eingefügt werden kann. Es wird zwar nur der "
+"Umriss gezeigt, aber Fehler beim Einfügen können mit der Rückgängig-Machen-"
+"Funktion beseitigt werden, indem man Steuerung und »Z« gleichzeitig "
+"betätigt, oder »U«\n"
+"\n"
+"Das Werkzeug zum Einfügen verfügt auch über einige Methoden, um die "
+"Zwischenablage zu manipulieren :"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:97
 msgid "Rotate clockwise by 60°."
-msgstr ""
+msgstr "Dreht im Uhrzeigersinn um 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:98
 msgid "Rotate counter-clockwise by 60°."
-msgstr ""
+msgstr "Dreht gegen den Uhrzeigersinn um 60°."
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:99
 msgid "Flip horizontally"
-msgstr ""
+msgstr "Horizontal spiegeln"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:100
 msgid "Flip vertically"
-msgstr ""
+msgstr "Vertikal spiegeln"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:107
-#, fuzzy
-#| msgid "Starting Positions Howto"
 msgid "Starting Locations Tool"
-msgstr "Startposition Kurzanleitung"
+msgstr "Startpositionswerkzeug"
 
 #. [topic]: id=editor_tool_starting
 #: data/core/editor/help.cfg:109
@@ -677,11 +716,42 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"Legt die Startposition des Seitenanführers fest.\n"
+"\n"
+"Dieses Werkzeug setzt die standardmäßig verwendete Startpositionen des "
+"Seitenanführers, sowie benannte Positionen. Beide Arten der Positionen sind "
+"sowohl im <ref>dst='..editor_mode_terrain' text='Geländeeditor'</ref> als "
+"auch im <ref>dst='..editor_mode_scenario' text='Szenarieneditor'</ref> "
+"vorhanden. In der Editorenpalette werden die Positionsnamen aufgelistet. "
+"Wenn man auf die Karte klickt, wird der Name auf das Feld gesetzt, wobei "
+"jeder Positonsname nur auf jeweils ein Feld gesetzt werden kann. Außerdem "
+"kann nur ein Positionsname gleichzeitig auf einem Feld sein. \n"
+"\n"
+"Um benannte Positionen zu erstellen, klicke »Hinzufügen« am unteren Rand der "
+"Editorenpalette und gebe den Namen ein. Ein Positionsname muss mit einem "
+"Buchstaben beginnen und darf Zahlen wie auch Unterstriche enthalten.\n"
+"\n"
+"Mehr als neun Teams können pro Karte hinzugefügt werden, indem man auf "
+"»Hinzufügen« drückt und eine Zahl wie beispielsweise »10« eingibt. Die "
+"Benutzeroberfläche zeigt dann automatisch »Spieler 10« an.\n"
+"\n"
+"Auf benannte Positionen kann in WML-Quellcode zurückgegriffen werden, indem "
+"man in einem Location Filter <italic>text='location_id='</italic> verwendet. "
+"Auf die Startposition von Spielern kann damit ebenfalls zugeriffen werden, "
+"indem man <italic>text='location_id=1'</italic>, "
+"<italic>text='location_id=2'</italic>, etc verwendet – in diesem Fall nur "
+"die Nummer angeben, ohne »Spieler « vor die Zahl zu setzen.\n"
+"\n"
+"<bold>text='Tastenkombinationen'</bold>\n"
+"\n"
+"• Steuerung+Mausklick auf ein bereits benanntes Feld: Wählt diese Position "
+"zum erneuten Platzieren aus, genau so, als hätte man diese Position in der "
+"Palette ausgewählt."
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:127
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "Terrain Overlays"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:128
@@ -691,6 +761,10 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"Im Allgemeinen sehen Karten im Editor so aus wie sie auch im Spiel aussehen. "
+"Es gibt ein paar Ausnahmen, bei denen im Editor andere Grafiken verwendet "
+"werden als im Spiel; alle hier beschriebenen Overlays sind in der Gruppe "
+"»Spezielles« des Malwerkzeugs zu finden."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -709,6 +783,18 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<bold>text='Bewegungs Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Unpassierbar und Unbegehbar\n"
+"\n"
+"Im Editor erkennt man diese Overlays direkt; im Spiel sind sie jedoch "
+"unsichtbar – für die Grafik wird nur das zugrundeliegende Geländefeld "
+"verwendet. Durch das Overlay wird das Geländefeld zu einem kombinierten "
+"Geländefeld, bei dem die Bewegungskosten auf »Unpassierbar« bzw. "
+"»Unbegehbar« geändert wird."
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -731,6 +817,23 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<bold>text='Burg Overlays'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
+"\n"
+"Diese beiden Overlays ermöglichen es, Einheiten auf diese Geländefeldern zu "
+"rekrutieren. Der Burgfried (Im Englischen »Keep« genannt) erlaubt es einem "
+"Anführer zudem, von dort aus zu rekrutieren.\n"
+"\n"
+"Man kann diese Overlays auf ein unpassierbares Geländefeld platzieren, um "
+"visuell getrennte Burgen durch eine unpassierbare Mauer zu verbinden. Man "
+"kann auch eine Burg erstellen, welche Flachland oder Gras zwischen dem "
+"Burgfried und den Türmen hat. Die verbinden Geländefelder müssen aber durch "
+"eine Einheit blockiert werden, wenn man verhindern möchte, dass Einheiten "
+"dort hin rekrutiert werden."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -744,6 +847,13 @@ msgid ""
 "\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<bold>text='Dorf Overlay'</bold>\n"
+"\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))' align=here box=yes</img>\n"
+"\n"
+"Damit wird das zugrundeliegende Geländefeld zu einem Dorf, welches Einkommen "
+"und Heilung bietet."
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -756,6 +866,13 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<bold>text='Unechter Schleier der Finsternis'</bold>\n"
+"\n"
+"<img>src=terrain/void/shroud-editor.png align=left box=yes</img>\n"
+"\n"
+"Dies sieht aus wie unerkundetes Gebiet, selbst in Szenarien, in denen der "
+"Schleier der Finsternis deaktiviert wurde und auch dann, wenn Einheiten des "
+"Spielers das Feld sehen können."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
@@ -864,10 +981,8 @@ msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:207
-#, fuzzy
-#| msgid "Base Terrain: "
 msgid "Deprecated Terrain"
-msgstr "Zugrunde liegendes Gelände: "
+msgstr "Veraltetes Gelände"
 
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
@@ -886,6 +1001,18 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
+"<img>src='terrain/grass/green.png~BLIT(terrain/deprecated-editor.png)' "
+"align=left box=yes</img>Das magentafarbene ‘D’ (steht für »Deprecated«).\n"
+"\n"
+"Das wird im Editor über veralteten Geländefeldern angezeigt. Beispiele "
+"sind:\n"
+"• das <ref>dst='terrain_fungus_grove_old' text='»^Uf« Pilzhain Overlay'</"
+"ref>,\n"
+"• die »Xol« Beleuchtete Steinmauer, welche nicht mehr verwendet wird weil "
+"die meisten Mauer-Geländefelder das Fackel-Overlay unterstützen.\n"
+"\n"
+"Die Seiten in der Hilfe beschreiben eventuell in einem zusätzlichen Text, "
+"der nur im Editor angezeigt wird, mögliche Alternativen."
 
 #. [topic]: id=editor_tool_label
 #: data/core/editor/help.cfg:223
@@ -905,11 +1032,22 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <italic>text='[label]'</italic> tag."
 msgstr ""
+"Setzt Beschriftungen auf die Karte.\n"
+"\n"
+"• Links-Klick öffnet ein Dialogfenster, mit dem Beschriftung erstellt werden "
+"oder schon bestehende bearbeitet werden können.\n"
+"• Rechts-Klick löscht die Beschriftung.\n"
+"• Mittels »Ziehen und Loslassen« (Drag and Drop) kann man mit der linken "
+"Maustaste Beschriftungen verschieben.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar, wobei die Beschriftung "
+"im Szenario durch Verwendung des WML <italic>text='[label]'</italic> Tags "
+"gespeichert wird."
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:239
 msgid "Item Tool (Scenery Tool)"
-msgstr ""
+msgstr "Gegenstandswerkzeug"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:240
@@ -925,11 +1063,23 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
+"Das Gegenstandswerkzeug erlaubt die Platzierung von Dekoration wie "
+"Windmühlen, Bücherregalen und Monolithen. Mehrere Gegenständen können auf "
+"dem selben Feld platziert werden.\n"
+"\n"
+"<bold>text='Anmerkung:'</bold> Das Werkzeug unterstützt weder die Entfernung "
+"von Gegenständen, sobald sie gesetzt worden sind, noch das Rückgängigmachen "
+"der Platzierung. Fehler können nur behoben werden, indem man die generierte "
+"WML-Datei ändert.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; die Dekorationen sind "
+"nicht Teil des Geländes und stattdessen im Szenario durch den WML Tag "
+"<italic>text='[item]'</italic> implementiert."
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:253
 msgid "Village Ownership Tool"
-msgstr "Dorf-Besitzer-Werkzeug"
+msgstr "Dorfwerkzeug"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:254
@@ -945,6 +1095,17 @@ msgid ""
 "stored by adding WML <italic>text='[village]'</italic> tags to the "
 "appropriate <italic>text='[side]'</italic>."
 msgstr ""
+"Dieses Werkzeug legt den Besitzer der Dörfer beim Start des Szenarios fest. "
+"Die Dörfer müssen erst auf dem Gelände mit dem <ref>dst='editor_tool_paint' "
+"text='Zeichenwerkzeug'</ref> gesetzt werden.\n"
+"\n"
+"• Links-Klick weist das Dorf der momentan ausgewählten Partei zu.\n"
+"• Rechts-Klick enteignet das Dorf.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; Informationen zu den "
+"Besitzrechten werden gespeichert, indem man den WML "
+"<italic>text='[village]'</italic> Tag innerhalb des jeweiligen "
+"<italic>text='[side]'</italic> Tags verwendet."
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:268
@@ -965,11 +1126,22 @@ msgid ""
 "<italic>text='[unit]'</italic> tags to the appropriate "
 "<italic>text='[side]'</italic>."
 msgstr ""
+"Setzt Einheiten, die der momentan ausgewählten Partei angehören.\n"
+"\n"
+"• Links-Klick platziert eine Einheit.\n"
+"• Ziehen und Loslassen (Drag and Drop) mit der linken Maustaste bewegt eine "
+"gesetzte Einheit.\n"
+"• Verschiedene Optionen erscheinen im Rechtsklick-Menü, wenn auf einem Feld "
+"eine Einheit ist. \n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; es fügt WML "
+"<italic>text='[unit]'</italic> Tags im entsprechenden <italic>text='[side]'</"
+"italic> Tag ein."
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:284
 msgid "Named Areas"
-msgstr "Benannte Areale"
+msgstr "Benannte Zonen"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:285
@@ -997,11 +1169,42 @@ msgid ""
 "name implies time, it is now more generic and can be used for other purposes "
 "without needing to change the time-of-day schedule in the area."
 msgstr ""
+"Bestimmt die Startposition des Anführers.\n"
+"\n"
+"Dieses Werkzeug legt die Startpositionen der Anführer und speziell benannte "
+"Orte fest. Beide Feldtypen können sowohl im <ref>dst='..editor_mode_terrain' "
+"text='Geländemodus'</ref> als auch im <ref>dst='..editor_mode_scenario' "
+"text='Szenarienmodus' erstellt werden. Die Namen für solche Positionen "
+"werden in der Editorpalette aufgelistet und ein Klick auf die Karte "
+"platziert diesen Namen auf ein Feld. Jeder Name kann nur auf einem Feld "
+"platziert werden, und pro Feld kann nur eine Bezeichnung oder Startposition "
+"festgelegt werden.\n"
+"\n"
+"Um speziell benannte Orte hinzuzufügen, klickt auf »Hinzufügen« unten in der "
+"Editorpalette und gebt den gewünschten Namen ein. Diese Namen müssen mit "
+"einem Buchstaben anfangen und dürfen Zahlen und Unterstriche enthalten.\n"
+"\n"
+"Der Karte können mehr als neun Parteien hinzugefügt werden, indem Ihr "
+"»Hinzufügen« klickt und eine Zahl, beispielsweise »10« eingebt. Diese "
+"Bezeichnung wird automatisch als »Spieler 10« angezeigt.\n"
+"\n"
+"Die WML (Wesnoth-Markupsprache) kann auf benannte Felder mit der "
+"<italic>text='location_id='</italic> des »Standard Location Filter« "
+"zugreifen. Auf Spielerstartpositionen kann auch zugegriffen werden, dafür "
+"muss <italic>text='location_id=1'</italic>, <italic>text='location_id=2'</"
+"italic> etc. verwendet werden – Es muss also nur die Zahl, ohne »Spieler « "
+"verwendet werden.\n"
+"\n"
+"<bold>text='Funktionstasten'</bold>\n"
+"\n"
+"• Strg+Mausklick auf ein Feld, die schon eine Bezeichnung hat: Wählt diese "
+"Bezeichnung aus, wie wenn sie in der Editorpalette ausgewählt wird."
 
+# Ein kurzer Titel ist besser in der Seitenleiste
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:306
 msgid "Playlist Manager"
-msgstr "Wiedergabeliste-Verwalter"
+msgstr "Wiedergabeliste"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:307
@@ -1012,6 +1215,11 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML "
 "<italic>text='[music]'</italic> tags to the scenario."
 msgstr ""
+"Zeigt eine Liste an Musikstücken an, die dem Editoren geläufig sind. Man "
+"kann sie mit den Umschaltfeldern an- und ausschalten.\n"
+"\n"
+"Dieses Werkzeug ist nur im Szenarienmodus verfügbar; es fügt WML "
+"<italic>text='[music]'</italic> Tags zum Szenario hinzu."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:317
@@ -1049,6 +1257,37 @@ msgid ""
 "at the start of the scenario. There’s also a <ref>dst='editor_playlist' "
 "text='playlist manager'</ref> for the music."
 msgstr ""
+"Wesnoths Karten- und Szenarieneditor erlaubt es, Karten zu erstellen, auf "
+"denen Szenarien stattfinden. Auch ist er mit einer begrenzten Anzahl an "
+"Funktionen ausgestattet, um ein grundlegendes Szenario zu erstellen. \n"
+"\n"
+"Der Editor kann von der <italic>text='Karteneditor'</italic> Option im "
+"Hauptmenü aufgerufen werden.\n"
+"\n"
+"<header>text='Editiermodi'</header>\n"
+"\n"
+"Der Editor liefert zwei Modi zur Anwendung: Den Geländemodus, sowie den "
+"Szenarienmodus.\n"
+"\n"
+"Der <ref>dst='..editor_mode_terrain' text='Geländemodus'</ref> ist einem "
+"einfachen Zeichenprogramm ziemlich ähnlich, mit Werkzeugen zum "
+"<ref>dst='editor_tool_paint' text='Zeichnen'</ref>, zum "
+"<ref>dst='editor_tool_fill' text='Füllen'</ref>, "
+"<ref>dst='editor_tool_select' text='Auszuwählen'</ref>, und "
+"<ref>dst='editor_tool_paste' text='Einzufügen'</ref>. Er beinhaltet auch das "
+"Werkzeug zur Festlegung der <ref>dst='editor_tool_starting' "
+"text='Startpositionen'</ref> der Anführer.\n"
+"\n"
+"Der <ref>dst='..editor_mode_scenario' text='Szenarienmodus'</ref>, liefert, "
+"als Ergänzung zu den Werkzeugen, die im Geländemodus verfügbar sind, "
+"Unterstützung zum Hinzufügungen von <ref>dst='editor_tool_label' "
+"text='Beschriftungen'</ref>, <ref>dst='editor_tool_scenery' "
+"text='Szeneriegegenständen'</ref>, <ref>dst='editor_tool_unit' "
+"text='Einheiten'</ref> (zusätzlich zum Anführer) und die Zuweisung des "
+"<ref>dst='editor_tool_village' text='Dorfsbesitzrechts'</ref> am Start des "
+"Szenarios. Außerdem gibt es eine Verwaltung zum Erstellen der "
+"<ref>dst='editor_playlist' text='Wiedergabeliste'</ref> für die "
+"Hintergrundmusik."
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:330
@@ -1075,6 +1314,28 @@ msgid ""
 "have their own terrains will need that add-on to tell the editor about their "
 "terrains."
 msgstr ""
+"<header>text='Was Ihr hier alles *nicht* bekommt'</header>\n"
+"\n"
+"• Dieselbe Kartendarstellung wie die im Spiel\n"
+"\n"
+"Die Karte wird nicht genau wie die im Editor aussehen, da diese stark von "
+"den Geländeregeln abhängig ist. Beispielsweise werden die Geländeregeln bei "
+"einer Gruppierung von mehreren Gebirgsfeldern versuchen Gebirgsketten, sowie "
+"große Grafiken, die mehrere Felder umfassen, zu bilden.\n"
+"\n"
+"• Handhabung von Ereignissen und Skripting\n"
+"\n"
+"Der Editor ist kein Werkzeug, was dir dient die Handhabung der "
+"Szenarioereignisse zu skripten.\n"
+"\n"
+"• Unendliche Abwärtskompatibilität\n"
+"\n"
+"Der Editor ist fähig die meisten Karten alter Versionen Wesnoths zu laden, "
+"nur aber nicht alle. Karten ab Version 1.3.2 und später werden wie immer "
+"unterstützt, es sei denn, diese beinhalten Gelände, die vom Hauptspiel "
+"Wesnoth nicht unterstützt werden. Karten von Erweiterungen, die ihre eigenen "
+"Gelände haben, benötigen diese Erweiterungen, um dem Editor ihre Existenz "
+"verständlich zu machen."
 
 #. [topic]: id=..editor_mode_terrain
 #: data/core/editor/help.cfg:350
@@ -1090,6 +1351,17 @@ msgid ""
 "resulting map can be found in the “Custom Maps” game type of the multiplayer "
 "“Create Game” dialog."
 msgstr ""
+"Die Funktionsweise des Geländeeditors ähnelt dem eines einfachen "
+"Zeichenprogramms.\n"
+"\n"
+"Die rechten Seitenleiste beinhaltet, von der Ober- zur Unterseite, eine "
+"Miniaturkarte, eine Werkzeugkiste (siehe die Seiten zu den verschiedenen "
+"Werkzeugen), Werkzeugoptionen, und die <ref>dst='editor_palette' "
+"text='Palette'</ref>.\n"
+"\n"
+"Nachdem man die Karte mit »Karte speichern unter« im Standardordner "
+"gesichert hat, kann die fertige Karte unter »Eigene Karten« im »Partie "
+"eröffnen« Dialog des Mehrspielermodus gefunden werden."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:362
@@ -1099,6 +1371,11 @@ msgid ""
 "additional WML to be written using a different tool; the scenario editor "
 "does not support scripting the scenario’s events."
 msgstr ""
+"Der Szenarieneditormodus fügt Unterstützung für einige kartenbetreffende WML "
+"Funktionalitäten wie die Zonen (für z.B. Höhlen ohne Tageslicht) oder "
+"Szeneriegegenstände hinzu. Eine Vielzahl an Szenarien wird jedoch weiterhin "
+"zusätzliches WML erfordern, welches mit einem Texteditor geschrieben werde "
+"muss; Der Szenarieneditor unterstützt kein Skripten der Szenarienereignisse."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:364
@@ -1110,6 +1387,15 @@ msgid ""
 "• In scenario mode the “Areas” and “Side” menus are enabled.\n"
 "• In terrain-only mode the “Areas” and “Side” menus are grayed-out."
 msgstr ""
+"<header>text='Prüft, ob der Editor sich im Szenarienmodus befindet'</"
+"header>\n"
+"\n"
+"Es ist möglich zu prüfen, welchen Modus der Editor benutzt, indem man einen "
+"Blick auf die Menüleiste wirft:\n"
+"\n"
+"• Im Szenarienmodus sind die Menüs »Zonen« und »Partei« aktiviert.\n"
+"• Im alleinigen Geländemodus sind die Menüs »Zonen« sowie »Partei« "
+"ausgegraut."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:371
@@ -1125,6 +1411,18 @@ msgid ""
 "To load a map that was created in the scenario editor, use “Load Map” from "
 "the “File” menu, and select the .cfg file (not a .map file)."
 msgstr ""
+"<header>text='Wechsel in den Szenarienmodus'</header>\n"
+"\n"
+"Zum Starten einer Karte im Szenarienmodus, wählt »Neues Szenario« im »Datei«-"
+"Menü aus.\n"
+"\n"
+"Im Falle, dass Ihr die Karte schon im Geländemodus bearbeitet habt, wählt "
+"»Szenario speichern unter« im »Datei«-Menü aus; Dies wechselt in den "
+"Szenarienmodus.\n"
+"\n"
+"Um auf eine Karte zuzugreifen, die im Szenarieneditor erstellt wurde, klickt "
+"auf »Karte laden« aus dem »Datei«-Menü und wähle die .cfg Datei aus (nicht "
+"die .map Datei)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:379
@@ -1144,12 +1442,28 @@ msgid ""
 "editor may follow the link and open the corresponding .map in terrain-only "
 "mode, as if the .map file was chosen in the file selector."
 msgstr ""
+"<header>text='.map und .cfg Dateien'</header>\n"
+"\n"
+"Der Karteneditor speichert genau eine Datei, die entweder eine .map (für den "
+"Geländemodus) oder eine .cfg (für den Szenarienmodus) ist. Im Szenarienmodus "
+"ist die Geländekarte in der .cfg gesichert, wobei es keine eigene .map gibt. "
+"Wenn Ihr erst im Geländemodus anfangt und dann in den Szenarienmodus "
+"wechselst, dann kann eine veraltete .map weiter vorhanden bleiben, die dann "
+"aber nicht vom Szenarieneditor aktualisiert wird.\n"
+"\n"
+"Eine .cfg zu laden kann je nach .cfg verschiedene Ergebnisse liefern. Bei ."
+"cfgs, die durch den Szenarieneditor erstellt wurden, werden sie in diesem "
+"geöffnet. Jedoch wird bei .cfgs, die eine externe .map benutzen (.map-"
+"Dateien können ja nicht vom Szenarieneditor erstellt werden), der Editor dem "
+"Link folgen und die entsprechende .map im alleinigen Geländemodus öffnen, "
+"als sei die .map in der Dateiauswahl ausgewählt worden."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:391
 msgid "Using a separate file for WML events"
-msgstr ""
+msgstr "Seperate Datei für WML Events"
 
+# Dass bei "{./scenarios}" keine stylischen Anfürhungsstriche verwendet werden ist gewollt - es ist Teil des Quelltextes.
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:392
 msgid ""
@@ -1202,12 +1516,61 @@ msgid ""
 "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
 "load that file"
 msgstr ""
+"Beim Laden einer .cfg versteht der Szenarieneditor von ihm erstellte "
+"Dateien, hat aber bei manuell geschriebenen Dateien meist Probleme.\n"
+"\n"
+"Dateien, die vom Szenarieneditor erstellt wurden, lassen den [scenario] Tag "
+"zu Beginn und den abschließenden [/scenario] Tag am Ende der Datei aus. Beim "
+"Erstellen einer Kampagne bzw. einer anderen Erweiterung müssen diese Tags "
+"hinzugefügt werden. Mehr Informationen dazu finden sich in der Dokumentation "
+"der <ref>dst='editor_map_format' text='Kartendateiformatierung'</ref>.\n"
+"\n"
+"Eine Möglichkeit ist es, eine separate WML Datei (eine Datei, welche "
+"ebenfalls die Dateiendung .cfg hat) anzulegen, welche mittels dem WML-"
+"Präprozessor die durch den Editor erstellte Datei einbindet. Diese separate "
+"Datei enthält den [scenario] Tag und selbst geschriebenes WML wie z.B. "
+"Events. Der Aufbau der Erweiterung würde in diesem Fall so aussehen:\n"
+"\n"
+"<header>text='Für Wesnoth in der Version 1.14'</header>\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ Schreibt \"{./scenarios}\", um das Szenarienverzeichnis einzubinden\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ Dies ist die Datei, die durch den Szenarieneditor erstellt wurde\n"
+"• scenarios/01_Forest.cfg, statt den [scenario] Tag zu öffnen, schreibe "
+"diese vier Zeilen:\n"
+"  ◦ [scenario]\n"
+"  ◦     {~add-ons/NAME_DES_ADD_ONS/maps/map_from_01.cfg}\n"
+"  ◦ [/scenario]\n"
+"  ◦ [+scenario]\n"
+"\n"
+"Die ersten drei dieser Zeilen binden die durch den Szenarieneditor "
+"generierte Datei ein und setzt sie in einen [szenario] Tag. Das »+« Symbol "
+"in der vierten Zeile bedeutet, dass zwei Szenarientags miteinander verbunden "
+"werden, wobei die Eigenschaften des zweiten die des ersten überschreiben.\n"
+"\n"
+"<header>text='Versionen ab 1.16'</header>\n"
+"\n"
+"Wenn deine Erweiterung nur für Versionen ab der 1.16 ist, gibt es eine "
+"Neuerung, mit denen man die .cfgs über »map_file« lädt, um die sich "
+"wiederholende Nennung des Namens der Erweiterung zu vermeiden.\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ Verwendet »[binary_path]« um die Verzeichnisse der Erweiterung zum Such-"
+"Pfad hinzuzufügen, damit »map_file« im »maps« Verzeichnis sucht.\n"
+"  ◦ Schreibt \"{./scenarios}\", um das »scenarios« Verzeichnis einzubinden\n"
+"• maps/map_from_01.cfg\n"
+"  ◦ Die vom Szenarieneditor erstellte Datei\n"
+"• scenarios/01_Forest.cfg\n"
+"  ◦Benutzt innerhalb des [scenario] Tags »map_file=\"map_from_01.cfg\"«, um "
+"die Datei zu laden"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:430
 msgid "Editor Mask Usage"
-msgstr "Editor Maskenverwendung"
+msgstr "Verwendung von Masken"
 
+# Es sollte auch erklärt werden, was mit einer Maske gemeint ist.
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:431
 msgid ""
@@ -1215,15 +1578,15 @@ msgid ""
 "at the same locations."
 msgstr ""
 "Masken können zwecks Wiederverwendung auf eine Basiskarte gelegt werden, um "
-"mehrere Szenarien auf der gleichen Karte spielen zu können."
+"mehrere Szenarien auf der gleichen Karte spielen zu können. Mithilfe einer "
+"Maske kann ein bestimmter Teil einer Karte in der WML nachträglich "
+"manipuliert werden."
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
 #: data/core/editor/help.cfg:439
-#, fuzzy
-#| msgid "Time Schedule Editor"
 msgid "ToD and Schedule Editor"
-msgstr "Tagesablauf Editor"
+msgstr "Tageszeitplaneditor"
 
 #. [topic]: id=editor_time_schedule
 #: data/core/editor/help.cfg:440
@@ -1237,12 +1600,22 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref>dst='editor_named_area' text='time areas'</ref>."
 msgstr ""
+"Die Schaltfläche oben rechts auf dem Bildschirm bietet eine "
+"Tageszeitvorschau, sowie einen Zeitplaneditor.\n"
+"\n"
+"Im Geländemodus wird die Karte während der verschiedenen Tageszeiten neu "
+"eingefärbt.\n"
+"\n"
+"Im Szenarienmodus erreicht man mit dieser Schaltfläche einen Editor zum "
+"Erstellen von individuellen Tageszeitabläufen für "
+"<ref>dst='editor_named_area' text='Zonen'</ref>."
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:451
 msgid "Editor Palette"
-msgstr "Editorpalette"
+msgstr "Editorenpalette"
 
+# Vielleicht Objekte statt Gegenstände, oder Elemente.
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
 #: data/core/editor/help.cfg:453
@@ -1259,31 +1632,45 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"Die Editorenpalette enthält Gegenstände, die du mit dem gerade ausgewählten "
+"Werkzeug verwenden kannst. Beispielsweise zeigt das Zeichenwerkzeug eine "
+"Liste an verfügbarem Gelände an, während das Einheitenwerkzeug eine Liste "
+"aller verfügbaren Einheiten enthält. Bei der Benutzung des "
+"Startpositionswerkzeugs wird eine Spielerliste angezeigt (»Spieler 1«, "
+"»Spieler 2«, etc.).\n"
+"\n"
+"<bold>text='Filter'</bold>\n"
+"\n"
+"Es gibt eine Filterfunktion, mit der nur einen Teil der verfügbaren "
+"Gegenstände angezeigt werden – das wäre der linke der vier Schaltflächen "
+"oberhalb der Palette. Je nachdem, was ausgewählt wurde, ändert sich die "
+"Grafik. Hier einige Beispiele:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:458
 msgid "Show all kinds of terrain"
-msgstr ""
+msgstr "Zeigt alle Arten von Gelände"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:459
 msgid "Show only water terrains"
-msgstr ""
+msgstr "Zeigt nur Gewässer an"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:460
 msgid "Show only villages"
-msgstr ""
+msgstr "Zeigt nur Dörfer an"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:472
 msgid "Wesnoth Map Format"
-msgstr "Wesnoth Kartenformat"
+msgstr "Wesnoths Kartenformat"
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:473
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
+"Wesnoth speichert seine Karten in für Menschen verständlichen Text-Dateien."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:475
@@ -1315,6 +1702,34 @@ msgid ""
 "The <italic>text='map_file'</italic> method is preferred over using a "
 "preprocessor include."
 msgstr ""
+"<header>text='Native'</header>\n"
+"\n"
+"Eine Kartendatei besteht aus Zeilen von mit Kommata getrennten "
+"Geländekodierungszeichen. Die einzige Information, die keine Geländefelder "
+"repräsentiert, sind die durch das <ref>dst='editor_tool_starting' "
+"text='Startpositionswerkzeug'</ref> festgelegten benannten Positionen. Die "
+"Dateien können mit einem einfachen Texteditor wie Notepad bearbeitet werden. "
+"Man kann sie auch mit LibreOffice Calc öffnen und tabellarisch betrachten, "
+"wenn man beim Öffnen das Komma als Trennzeichen auswählt.\n"
+"\n"
+"Diese Dateien können direkt für Spiele im Mehrspieler genutzt werden, wobei "
+"die Anzahl der Spieler durch die Anzahl der Startpositionen festgelegt wird. "
+"Wenn man im Standardverzeichnis speichert, kann die Karte unter »Eigene "
+"Karten« im »Partie eröffnen« Dialog des Mehrspielermodus gefunden werden "
+"(Bevor eine kürzlich erstellte Karte angezeigt werden kann, sollte man den "
+"Cache mithilfe von F5 im Hauptmenü aktualisieren).\n"
+"\n"
+"Auf diese Dateien kann auch in der .cfg eines Szenarios zurückgegriffen "
+"werden, wobei die .cfg weitere Informationen beinhaltet wie beispielsweise "
+"Parteien und Einheiten sowie Ereignisse wie Dialoge zwischen Einheiten. Um "
+"die Geländedaten zu laden gibt es zwei Möglichkeiten:\n"
+"\n"
+"• map_file=maps/01_First_Map.map <italic>text='– Unterstützt seit Wesnoth "
+"1.14'</italic>\n"
+"• map_data=\"{maps/01_First_Map.map}\" <italic>text='– Einbindung durch den "
+"WML Präprozessor'</italic>\n"
+"\n"
+"Die <italic>text='map_file'</italic> Methode wird bevorzugt."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:488
@@ -1335,6 +1750,21 @@ msgid ""
 "this is rarely-used code. Maps opened this way are marked (E) in the Window "
 "menu."
 msgstr ""
+"<header>text='Eingebettet'</header>\n"
+"\n"
+"Die Kartendaten werden als Teil der .cfg Datei eines Szenarios als Wert für "
+"<italic>text='map_data'</italic> gespeichert. Also genau dort, wo der WML "
+"Präprozessor im obrigen Beispiel die Kartendaten einbinden würde.\n"
+"\n"
+"<header>text='Benutzen des eingebetteten Formats im Geländemodus'</header>\n"
+"\n"
+"Bei Bearbeitung der Karte ohne die Verwendung der Unterstützung des "
+"Szenarienmodus ist es wichtig die Daten einer nativen Kartendatei "
+"anzuhängen, bevor man diese im Editor öffnet. Diese Umformung wird empfohlen "
+"– der Editor unterstützt zwar die Bearbeitung des Inhalts von map_data "
+"während der Rest der Datei außen vor gelassen wird, was aber selten "
+"genutzter Code ist. Karten, die so geöffnet wurden, werden durch ein ,,E\" "
+"im Fenstermenü markiert."
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:496
@@ -1348,7 +1778,17 @@ msgid ""
 "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
+"<header>text='Dateien erstellt durch den Szenarieneditor'</header>\n"
+"\n"
+"Im Szenarienmodus speichert der Editor die Informationen als Datei im .cfg-"
+"Format, die auch die Karteninformationen enthalten. Beim Laden einer .cfg "
+"Datei versteht der Szenarieneditor Dateien, die von ihm selbst erstellt "
+"wurden. Jedoch könnte es Schwierigkeiten bei manuell / von Hand erstellten "
+"Dateien geben; Komplikationen können vorgebeugt werden, indem man für selbst "
+"geschriebenen Code <ref>dst='editor_separate_events_file' text='eine "
+"seperate .cfg Datei benutzt'</ref>."
 
+# preprocessor und engine könnten hier anders übersetzt werden
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:500
 msgid ""
@@ -1370,6 +1810,26 @@ msgid ""
 "needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
 "to know which WML is part of each scenario."
 msgstr ""
+"<header>text='Welche Szenario Dateien verwenden den [scenario] Tag'</"
+"header>\n"
+"\n"
+"Dateien, die durch den Szenarieneditor erstellt wurden, enthalten die "
+"Inhalte eines WML Szenarioelements. jedoch nicht den öffnenden [scenario] "
+"und Schließenden [/scenario] Tag. Aus jeder .cfg im Unterverzeichnis »editor/"
+"scenario« der Benutzerdaten lädt das Spiel automatisch das Szenario, um es "
+"in die “Eigene Szenarien” Liste hinzuzufügen (wenn eine Datei nicht geladen "
+"kann, wird sie nicht hinzugefügt). In diesem Ordner ist jede Datei etwas "
+"eigenes – Dateien, die das Spiel nicht als ein Szenario klassifiziert, "
+"werden nicht berücksichtigt, Dateien dürfen die [scenario][/scenario] Tags "
+"nicht enthalten.\n"
+"\n"
+"Das Gegenteil trifft zu, wenn das Szenario Teil einer Kampagne oder einer "
+"anderen Erweiterung ist. Jedes Szenario hat seine eigene .cfg, wobei es aber "
+"obsolet ist - jede WLM in einer Erweiterung wird durch den Präprozessor "
+"eingebunden, wobei es unwichtig ist, ob die Erweiterung als eigene Datei "
+"geschrieben wurde. Die Engine braucht [scenario]...[/scenario] (oder "
+"[multiplayer]...[/multiplayer]) tags, um zu wissen, welche WML Teil eines "
+"jeden Szenarios ist."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -1387,6 +1847,7 @@ msgstr "Innen"
 # Enzyklopädie
 # ... mit dem bisher einzigen Eintrag "Geografie"  … ziemlich großspurig !
 # alternativ:  Wissenswertes
+# -Lexikon finde ich gut!
 #. [section]: id=encyclopedia
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:5 data/core/encyclopedia/_main.cfg:12
@@ -1395,19 +1856,21 @@ msgstr "Lexikon"
 
 #. [topic]: id=..encyclopedia
 #: data/core/encyclopedia/_main.cfg:14
-#, fuzzy
-#| msgid "<ref>dst='..geography' text='Geography'</ref>"
 msgid ""
 "<ref>dst='..calendar' text='Calendar'</ref>\n"
 "<ref>dst='..geography' text='Geography'</ref>"
-msgstr "<ref>dst='..geography' text='Geographie'</ref>"
+msgstr ""
+"<ref>dst='..calendar' text='Kalender'</ref>\n"
+"<ref>dst='..geography' text='Geographie'</ref>"
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
 msgid "Calendar"
-msgstr ""
+msgstr "Kalender"
 
+# Diese Name wird vielleicht umbenennen, https://github.com/wesnoth/wesnoth/pull/6010
+# -Habs trotzdem mal provisorisch rein
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
 msgid ""
@@ -1428,6 +1891,21 @@ msgid ""
 "Blackfire\n"
 "\n"
 msgstr ""
+"Jedes Jahr des Wesnoth-Kalenders besteht aus 12 Monaten. Diese sind:\n"
+"\n"
+"Weißfeuer\n"
+"Blutmond\n"
+"Streusaat\n"
+"Tiefwurzler\n"
+"Scryers Blüte\n"
+"Dornenfest\n"
+"Gipfelstern\n"
+"Junges Feuer\n"
+"Stille Saat\n"
+"Toter Mond\n"
+"Glasblüte\n"
+"Schwarzfeuer\n"
+"\n"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1573,59 +2051,6 @@ msgstr "Königreich Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:77
-#, fuzzy
-#| msgid ""
-#| "The Kingdom of Wesnoth is located in the north-central portion of the "
-#| "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
-#| "mainline campaigns revolve around it. It is bounded on the map by the "
-#| "Great River to the north, the shore of the Great Ocean to the west, the "
-#| "Aethenwood to the <ref>dst='southwest_elven_lands' text='southwest'</"
-#| "ref>, and the Bitter Swamp to the southeast (lower right corner of the "
-#| "main map).\n"
-#| "\n"
-#| "Over the River Aethen, south of Fort Tahn, is a Wesnothian frontier "
-#| "region. It is bounded to the south (off-map) by dense woods of which the "
-#| "Aethenwood may be considered a northernmost extension.\n"
-#| "\n"
-#| "<header>text='Notable cities:'</header>\n"
-#| "    • Weldyn: The capital of Wesnoth.\n"
-#| "    • Aldril: City lying on the Bay of Pearls.\n"
-#| "    • Blackwater Port: City lying south of the Bay of Pearls.\n"
-#| "    • Carcyn: Located between the Grey Woods and the Great River.\n"
-#| "    • Dan’Tonk: Wesnoth’s largest city, located in the center of the "
-#| "country, just west and north of Weldyn.\n"
-#| "    • Soradoc: The northernmost border outpost of Wesnoth, controls the "
-#| "confluence of the Weldyn River and the Great River.\n"
-#| "    • Fort Tahn: The southernmost border outpost, controls the north/"
-#| "south road crossing the River Aethen.\n"
-#| "    • Tath: Important fort city north of Dan’Tonk, exerts control over "
-#| "the wilderness country around the east of the Brown Hills and north to "
-#| "the Ford of Abez.\n"
-#| "\n"
-#| "<header>text='Notable land features:'</header>\n"
-#| "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
-#| "    • Ford of Abez: Shallow part of the Great River, it is usually "
-#| "controlled by Wesnothian forces.\n"
-#| "    • Weldyn River: It branches from the Great River and goes south.\n"
-#| "    • Great Central Plain: Area bounded by Weldyn, Dan’Tonk, and Fort "
-#| "Tahn, this plain is Wesnoth’s bread basket and home to most of its "
-#| "population.\n"
-#| "    • Dulatus Hills: These rolling hills bordering the Great Central "
-#| "Plain provide much of Wesnoth’s livestock and agriculture.\n"
-#| "    • Brown Hills: Wasteland surrounding Gryphon Mountain that is not "
-#| "well-populated and occasionally very dangerous.\n"
-#| "    • Horse Plains: Region of rolling plains just south of the Great "
-#| "River, bounded by Glyn’s Forest to the west and the River Weldyn to the "
-#| "east; the southern reach merges into the Central Plain. Home of the "
-#| "powerful Clans; the best horses in Wesnoth are bred here.\n"
-#| "    • Estmark Hills: Largish range rising south of the Great River and "
-#| "east of the Weldyn River. The northernmost portion, nearest the River "
-#| "Weldyn, has at various times been settled by Wesnothians, but the "
-#| "Kingdom’s control is tenuous at best and banditry is common.\n"
-#| "    • Glyn’s Forest: Sometimes known as the Royal Forest, named for one "
-#| "of Haldric II’s sons.\n"
-#| "    • Gray Woods: Large forest in the heart of the wilds of Wesnoth, "
-#| "located between Carcyn and Aldril and generally considered to be haunted."
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the "
 "<ref>dst='great_continent' text='Great Continent'</ref>. Most of the "
@@ -2129,7 +2554,7 @@ msgid ""
 "The <italic>text='Battle for Wesnoth'</italic> project was begun in 2003, "
 "and has been worked on by a multitude of volunteers ever since."
 msgstr ""
-"Das Spiel findet auf einem Hexfeld basierten Spielfeld statt, auf dem eure "
+"Das Spiel findet auf einem sechseck-basierten Spielfeld statt, auf dem eure "
 "Einheiten gegen einen Gegner kämpfen, der von einem Computer, einem anderen "
 "Spieler am selben Computer (hotseat), im selben Netzwerk oder im Mehrspieler "
 "Modus weltweit über das Internet gespielt werden kann.\n"
@@ -2147,7 +2572,7 @@ msgstr ""
 "erlauben. Außerdem bringt Wesnoth auch einen Karten- und Szenarieneditor mit "
 "sich, um eigene Schlachtfelder erstellen zu können.\n"
 "\n"
-"Das <italic>text='Battle for Wesnoth'</italic>erwachte 2003 zum leben, und "
+"Das <italic>text='Battle for Wesnoth'</italic>erwachte 2003 zum Leben, und "
 "seitdem wurde es von der Community und vielen freiwilligen Helfern weiter "
 "entwickelt."
 
@@ -2875,16 +3300,8 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:282
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid "<header>text='Multiplayer and undo'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Mehrspieler-Epochen und Fraktionen'</header>"
+msgstr "<header>text='Mehrspieler und die Rückgängig-Funktion'</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
@@ -2896,6 +3313,13 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"In Mehrspieler-Partien können Züge, die an das Netzwerk gesendet wurden, "
+"nicht mehr rückgängig gemacht werden; das Spiel verzögert also die "
+"Datensendungen, um die Rückgängig-Funktion zu erhalten. Wenn Ihr Euch mit "
+"Teamkameraden absprecht, bedenkt, dass diese normalerweise den Stand des "
+"letzten Kampfes oder der letzten Nebel-enthüllenden Bewegung sehen. Chat-"
+"Nachrichten und Beschriftungen werden sofort gesendet, jedoch werden durch "
+"sie nicht die rückgängig machbaren Züge gesendet."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:291
@@ -2904,15 +3328,6 @@ msgstr "Früheren Speicherstand laden"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:292
-#, fuzzy
-#| msgid ""
-#| "Random numbers are part of Wesnoth, attacks can fail and units can die "
-#| "due to bad luck. This is an expected part of the game, and one of the "
-#| "aims of the game is that a sufficiently skilled player should be able to "
-#| "complete all of the mainline campaigns, on hard, without needing to save-"
-#| "load. Going back to a previous turn to try a different strategy is a part "
-#| "of learning the game, but we recommend against reloading merely to try "
-#| "the same strategy again while hoping for better luck."
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2921,25 +3336,14 @@ msgid ""
 "hoping for better luck."
 msgstr ""
 "Zufall gehört zu Wesnoth. Angriffe können verfehlen und Einheiten können "
-"durch Pech sterben. Dies ist ein erwarteter Teil des Spiels und eines seiner "
-"Ziele ist, dass ausreichend gute Spieler in der Lage sind, alle offiziellen "
-"Kampagnen auf schwer ohne das Laden alter Speicherstände abzuschließen. Zu "
-"einem früheren Zug zurückzugehen, um eine andere Strategie auszuprobieren, "
-"gehört dazu, wenn man das Spiel lernt. Aber wir empfehlen, keine Züge neu zu "
-"laden, nur um die gleiche Strategie erneut zu versuchen und auf besseres "
-"Glück zu hoffen."
+"durch Pech sterben. Dies ist ein erwarteter Teil des Spiels. Zu einem "
+"früheren Zug zurückzugehen, um eine andere Strategie auszuprobieren, gehört "
+"dazu, wenn man das Spiel lernt. Aber wir empfehlen, keine Züge neu zu laden, "
+"nur um die gleiche Strategie erneut zu versuchen und auf besseres Glück zu "
+"hoffen."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:294
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "One of the challenges of the game is to work out how to protect your "
-#| "heroes. Small risks quickly build up: if you have five important units, "
-#| "and they each have just a 1% chance of death each turn, you can "
-#| "<italic>text='expect'</italic> one of them to die about every 20 turns. "
-#| "So, you’ll rarely make it through a scenario without having it happen."
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2947,7 +3351,6 @@ msgid ""
 "<italic>text='expect'</italic> one of them to die about every 20 turns. So, "
 "you’ll rarely make it through a scenario without having it happen."
 msgstr ""
-"\n"
 "Eine der Herausforderungen des Spiels liegt im Schutz Eurer Helden. Kleine "
 "Risiken sind schnell aufaddiert: wenn fünf Eurer Einheiten jede Runde einer "
 "1-prozentigen Todeswahrscheinlichkeit ausgesetzt sind, so könnt Ihr "
@@ -2965,6 +3368,14 @@ msgid ""
 "them in future scenarios. Your battle plan should distribute the risks based "
 "on which troops you want to recall later."
 msgstr ""
+"Über den Verlauf des Spiels gibt es auch Risiken für Eure nicht-anführenden "
+"Einheiten. Die Geschichte und die Dialoge haben normalerweise das Ziel, eine "
+"emotionale Bindung zu Euren Truppen zu schaffen. Trotzdem belohnen die "
+"Spielmechaniken es, wenn Ihr nicht vergesst, dass es nur ein Spiel ist – Es "
+"gibt so gut wie keine Strafe dafür, diese Einheiten sterben zu lassen, "
+"außer, dass Ihr sie nicht mehr einberufen könnt. Eure Strategie sollte die "
+"Risiken dementsprechend verteilen, welche Einheiten ihr später noch "
+"einberufen wollt."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
@@ -2975,21 +3386,19 @@ msgid ""
 "assuming that the player will be able to train enough troops to cope with "
 "losing some level two or level three units."
 msgstr ""
+"Die Schwierigkeitsgrade sind in der Annahme balanciert, dass der Spieler "
+"keine Speicherstände lädt. In den Hauptkampagnen haben höhere "
+"Schwierigkeitsgrade normalerweise mehr Gegner, und damit mehr "
+"Erfahrungspunkte, die der Spieler sammeln kann; Ihre Balance geht davon aus, "
+"dass der Spieler genug Einheiten trainiert, um auch mit Verlusten von "
+"Einheiten auf Level 2 oder sogar Level 3 klarzukommen."
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "That said, it’s a game; the best way to play it is whichever way gives "
-#| "you the most enjoyment."
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
-"\n"
-"\n"
 "Dennoch gilt: Wesnoth ist ein Spiel; die beste Art, es zu spielen, ist die, "
 "die Euch die meiste Freude macht!"
 
@@ -3090,21 +3499,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Barely scraping a victory in a previous scenario. At all but the "
-#| "easiest difficulties, campaigns assume that you will have some "
-#| "<italic>text='carryover gold'</italic> and some advanced units on your "
-#| "<italic>text='recall list.'</italic> (These concepts are explained in the "
-#| "tutorial.) If you win a scenario but lose most of your advanced units and "
-#| "much of your gold, the following scenario may be very difficult to beat, "
-#| "even for a more experienced player. If you find yourself in this "
-#| "situation, you may try to go back a scenario or two and win them more "
-#| "convincingly, or change to an easier difficulty. (However, remember that "
-#| "<italic>text='some'</italic> losses are expected, particularly at higher "
-#| "difficulties.)"
 msgid ""
 "\n"
 "\n"
@@ -3121,18 +3515,17 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"• Ein knapp errungener Sieg im vorhergehenden Szenario. Auf allen außer der "
-"leichtesten Schwierigkeitsstufe wird in Kampagnen davon ausgegangen, dass "
-"Ihr etwas <italic>text='Bonusgold'</italic> und einige aufgestiegene "
-"Einheiten auf eurer <italic>text='Einberufungsliste'</italic> habt. (Diese "
-"Konzepte werden in der Einführung erklärt.) Wenn Ihr ein Szenario gewinnt, "
-"aber dabei die meisten Eurer aufgestiegenen Einheiten und große Teile eures "
-"Goldes verliert, wird das folgende Szenario selbst für erfahrene Spieler "
-"schwer zu gewinnen sein. Findet Ihr euch in dieser Situation wieder, "
-"empfiehlt es sich, ein oder zwei Szenarios zurückzugehen und zu versuchen, "
-"diese entscheidender zu gewinnen. (Behaltet jedoch im Hinterkopf, dass "
-"<italic>text='einige'</italic> Verluste immer zu erwarten sind, insbesondere "
-"auf höheren Schwierigkeitsstufen.)"
+"• Ein knapp errungener Sieg im vorhergehenden Szenario.In Kampagnen wird "
+"davon ausgegangen, dass Ihr etwas <italic>text='Bonusgold'</italic> und "
+"einige aufgestiegene Einheiten auf eurer <italic>text='Einberufungsliste'</"
+"italic> habt. (Diese Konzepte werden in der Einführung erklärt.) Wenn Ihr "
+"ein Szenario gewinnt, aber dabei die meisten Eurer aufgestiegenen Einheiten "
+"und große Teile eures Goldes verliert, wird das folgende Szenario selbst für "
+"erfahrene Spieler schwer zu gewinnen sein. Findet Ihr euch in dieser "
+"Situation wieder, empfiehlt es sich, ein oder zwei Szenarios zurückzugehen "
+"und zu versuchen, diese entscheidender zu gewinnen. (Behaltet jedoch im "
+"Hinterkopf, dass <italic>text='einige'</italic> Verluste immer zu erwarten "
+"sind, insbesondere auf höheren Schwierigkeitsstufen.)"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
@@ -3534,7 +3927,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:382
 msgid "Orbs and ellipses"
-msgstr ""
+msgstr "Sphären und Ellipsen"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:383
@@ -3542,6 +3935,8 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref>dst='crowns' text='crown'</ref>)."
 msgstr ""
+"Das obere Ende des Energiebalkens jeder Einheiten zeigt eine Sphäre (und "
+"manchmal eine <ref>dst='crowns' text='Krone'). Diese Kugel ist:"
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3571,19 +3966,35 @@ msgid ""
 "• Enemy units normally don’t have orbs, however these can be enabled in the "
 "advanced preference “Customize orb colors”."
 msgstr ""
+"• <bold>text='grün'</bold>, wenn die Einheit in diesem Zug noch nicht bewegt "
+"wurde\n"
+"• <bold>text='gelb'</bold>, wenn sie bereits bewegt wurde, aber noch weiter "
+"gehen oder angreifen könnte\n"
+"• <bold>text='rot'</bold>, wenn kein Zug oder Angriff mehr möglich ist oder "
+"die Runde beendet wurde.\n"
+"    • Rot wird auch nach dem »Zug beenden«-Befehl angezeigt, und\n"
+"    • wenn sich eine Einheit mitten in einer mehrzügigen Bewegung befindet "
+"(Ihr wurde befohlen, weiter als in einem Zug möglich zu gehen).\n"
+"• <bold>text='rot und gelb'</bold>, wenn eine Einheit schon bewegt wurde "
+"oder angegriffen hat, sich noch weiter bewegen, aber nicht mehr angreifen "
+"kann.\n"
+"    • Dies kann bei kampagnenspezifischen Events oder Fähigkeiten geschehen, "
+"zum Beispiel in der Kampagne <italic>text='Unter brennenden Sonnen'</"
+"italic>.\n"
+"• <bold>text='blau'</bold>, wenn es eine verbündete Einheit ist, auf die Ihr "
+"keinen Einfluss habt.\n"
+"    • Wenn Euer Verbündeter am Zug ist, werden stattdessen die "
+"entsprechenden Farben (rot, gelb oder grün) angezeigt, ihre Bewegungen und "
+"die daraus resultierenden Sphärenänderungen werden aber entsprechend dem "
+"<ref>dst='shroud_and_fog' text='Nebel des Kriegs + Schleier der Finsternis'</"
+"ref> verzögert.\n"
+"• Gegnerische Einheiten haben normalerweise keine Status-Kugeln über ihrer "
+"Lebensanzeige, diese können jedoch in den Einstellungen aktiviert werden."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:407
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Cores'</header>"
 msgid "<header>text='Ellipses'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Kerne'</header>"
+msgstr "<header>text='Ellipsen'</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
@@ -3591,6 +4002,9 @@ msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
 msgstr ""
+"Eine Form in der Farbe der Partei wird auf das Gelände unter jeder Einheit "
+"gezeichnet. Diese wird »Ellipse« genannt, auch wenn die Ellipsen mancher "
+"Einheiten nicht elliptisch sind."
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3605,11 +4019,20 @@ msgid ""
 "• Some campaigns start with a level zero leader. Able to recruit but lacking "
 "a ZoC, these units have a broken outline version of the seven-pointed star."
 msgstr ""
+"• Die meisten Einheiten haben eine runde Ellipse.\n"
+"• Einheiten, die rekrutieren können, haben einen Stern mit sieben Spitzen.\n"
+"• <ref>dst='crowns' text='Helden'</ref> haben eine kleinere Version des "
+"Sterns, diese Einheiten können nicht rekrutieren.\n"
+"• Bei Einheiten ohne <ref>dst='movement' text='Kontrollzone'</ref> ist die "
+"Linie der Ellipse gestrichelt.\n"
+"• Einige Kampagnen starten mit einem Anführer auf Level 0. Da sie zwar "
+"rekrutieren kann, aber keine Kontrollzone hat, hat diese Einheit eine "
+"gestrichelte Version des Sterns."
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
-msgstr ""
+msgstr "Kronen und Loyalitätskennzeichnungen"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:433
@@ -3618,6 +4041,9 @@ msgid ""
 "text='orb'</ref>, and a corresponding shape to their <ref>dst='orbs' "
 "text='ellipses'</ref>:"
 msgstr ""
+"Einige Einheiten haben eine zusätzliche Markierung auf ihrer <ref>dst='orbs' "
+"text='Sphäre'</ref>, und ihre <ref>dst='orbs' text='Ellipse'</ref> hat eine "
+"entsprechende Farbe:"
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
@@ -3643,6 +4069,27 @@ msgid ""
 "campaign, assuming it doesn’t end immediately.\n"
 "• These units will never occur as random recruits."
 msgstr ""
+"• Anführer besitzen eine <bold>text='goldene Krone'</bold>.\n"
+"• Helden haben eine <bold>text='bläulich-silberne Krone'</bold>.\n"
+"• Entbehrliche Anführer werden mit einer <bold>text='silbernen Krone'</bold> "
+"angezeigt.\n"
+"• <ref>dst='traits_loyal' text='Loyale Einheiten'</ref> haben eine "
+"<bold>text='Loyalitätskennzeichnung'</bold>.\n"
+"\n"
+"Von diesen Kategorien sind nur die Anführer in den Grund-Spielregeln "
+"festgelegt. Alle anderen sind in Kampagnen zu finden, und sind als "
+"Charaktere oftmals Teil der Geschichte. Die genauen Regeln für sie werden "
+"durch die Kampagne festgelegt, sie können sich also von folgenden "
+"Erwartungen unterscheiden:\n"
+"\n"
+"• Der Tod eines Helden führt zur sofortigen Niederlage.\n"
+"• Der Tod eines entbehrlichen Anführers führt nicht zur sofortigen "
+"Niederlage, auch wenn diese Einheit rekrutieren kann.\n"
+"• Alle diese Einheiten haben den Vorteil, dass sie keinen Unterhalt "
+"verlangen.\n"
+"• Diese Einheiten zu verlieren, ist ein Nachteil im weiteren Verlauf der "
+"Kampagne, wenn es diese nicht direkt beendet.\n"
+"• Diese Einheiten werden nie als normale Rekrutierungen auftauchen."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:466
@@ -4616,7 +5063,7 @@ msgid ""
 msgstr ""
 "Um die im Weiteren aufgelisteten Befehle ausführen zu können, müsst Ihr "
 "zuerst:\n"
-"• entweder eine Kommandozeile öffnen per Tastenkombination [Umschalt]+[.]\n"
+"• entweder eine Kommandozeile öffnen per Tastenkombination [Shift]+[.]\n"
 "• oder ein Gespräch starten per Tastenkürzel [m], wobei das Präfix [/] vor "
 "dem jeweiligen Befehl notwendig ist.\n"
 "\n"
@@ -4629,6 +5076,10 @@ msgid ""
 "of only things that have changed.\n"
 "\n"
 msgstr ""
+"\n"
+"Funktioniert wie der »fps«-Befehl, aber erzwingt das Neu-Zeichnen von allem, "
+"nicht nur von den Dingen, die sich geändert haben.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:684
@@ -4670,6 +5121,19 @@ msgid ""
 "supplied.\n"
 "\n"
 msgstr ""
+"\n"
+"Kontrolle über eine Fraktion vorgeben bzw. zwischen Computer und Spieler "
+"wechseln. Der zweite Parameter bestimmt, wer die Kontrolle bekommt:\n"
+"    • Er bringt beim Wert »off« die Partei unter die Kontrolle des "
+"Spielers;\n"
+"    • Beim Wert »on« übernimmt die KI, die Züge sind alle für den Spieler "
+"sichtbar;\n"
+"    • Beim Wert »full« werden die Züge der KI wie die eines anderen Spielers "
+"dargestellt.\n"
+"Ohne den zweiten Parameter wird zwischen »on« und »off« gewechselt.\n"
+"Wenn keine Seite angegeben wird, bezieht sich der Befehl auf die momentan "
+"aktive Partei.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:694
@@ -4684,11 +5148,6 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:697
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second.\n"
-#| "\n"
 msgid ""
 "\n"
 "Toggle the display of the current frames per second. Also writes these "
@@ -4696,7 +5155,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Anzeige der Bilder pro Sekunde (FPS) aktivieren / deaktivieren\n"
+"Anzeige der Bilder pro Sekunde (FPS) aktivieren / deaktivieren. Speichert "
+"diese Werte in einer Datei im Benutzerdaten-Verzeichnis.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -5116,8 +5576,8 @@ msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
-"Diese Einheit hat so stark Selbstheilungskräfte, dass sie 8 LP zu Beginn des "
-"Zuges zurückgewinnt. Sollte sie vergiftet sein, wird statt Heilung die "
+"Diese Einheit hat so starke Selbstheilungskräfte, dass sie 8 LP zu Beginn "
+"des Zuges zurückgewinnt. Sollte sie vergiftet sein, wird statt Heilung die "
 "Wirkung des Giftes gestoppt."
 
 #. [regenerate]: id=regenerates
@@ -5215,6 +5675,8 @@ msgstr ""
 msgid "female^leadership"
 msgstr "Führungsqualitäten"
 
+# Has been rephrased in 1.16.2 (PR #6117), but the translated version seems clearer
+# than either the 1.16.0 or 1.16.2 English text.
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:201
 msgid ""
@@ -5223,6 +5685,14 @@ msgid ""
 "All adjacent lower-level units from the same side deal 25% more damage for "
 "each difference in level."
 msgstr ""
+"Weitblick und Autorität machen den einen oder anderen Krieger zum idealen "
+"Anführer, der seine Kampfgefährten in der Schlacht unterweist und zu "
+"besseren Leistungen anzuspornen vermag.\n"
+"\n"
+"Das Talent »Führungsqualitäten« lässt benachbarte eigene Einheiten "
+"niedrigerer Erfahrungsstufe um 25% mehr Schaden anrichten. Dieser Bonus "
+"vervielfacht sich noch um die Anzahl der Rangstufen, die sie sich vom "
+"Anführer unterscheiden."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:220
@@ -5310,24 +5780,15 @@ msgstr ""
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:302
 msgid "burrow"
-msgstr ""
+msgstr "Vergraben"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:303
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^burrow"
-msgstr "behäbig"
+msgstr "Vergraben"
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:304
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5336,14 +5797,13 @@ msgid ""
 "except if they have units next to it. Any enemy unit that first discovers "
 "this unit immediately loses all its remaining movement."
 msgstr ""
-"Sich im Schutz der Bäume vor den Augen des Feindes zu verbergen oder auf die "
-"Lauer legen, ist denjenigen am ehesten möglich, die im Wald aufwachsen und "
-"mit dem Gelände tief vertraut sind.\n"
+"Diese Einheit kann sich, wenn sie rastet, im Sand oder im Wald verstecken, "
+"und vor ihren Gegnern verborgen bleiben.\n"
 " \n"
-"Der Gegner kann diese Einheit weder sehen noch angreifen, solang sie sich im "
-"Wald aufhält – es sei denn, er wird von ihr angegriffen oder gelangt direkt "
-"auf ein angrenzendes Feld. Doch wer sie damit aufspürt, verliert "
-"gleichzeitig alle BP, die ihm in diesem Zug noch verblieben sind."
+"Der Gegner kann diese Einheit, wenn sie sich eine Runde nicht bewegt hat, "
+"nicht sehen. außer eine Einheit steht direkt neben ihr. Doch wer sie damit "
+"aufspürt, verliert gleichzeitig alle BP, die ihm in diesem Zug noch "
+"verblieben sind."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:325
@@ -6412,7 +6872,7 @@ msgid ""
 "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
 "suffer from a 1 point decrease in movement and melee damage."
 msgstr ""
-"Einheiten, die in Wesnoth auf natürliche Weise italic>text='gealtert'</"
+"Einheiten, die in Wesnoth auf natürliche Weise <italic>text='gealtert'</"
 "italic> sind, kämpfen zwar immer noch, aber das Alter fordert seinen Tribut: "
 "ihre Angriffe verursachen im Nahkampf einen Schadenspunkt weniger als die "
 "der Jüngeren und bei der Fortbewegung hängen sie um einen BP hinterher. Am "
@@ -6504,21 +6964,17 @@ msgstr ""
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:100
 msgid "deflect"
-msgstr ""
+msgstr "Abfälschen"
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:101
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "When used defensively, this attack reduces the opponent's chance to hit by "
 "10%."
 msgstr ""
-"In der Ruhe liegt die Kraft: Für den Angriff wohl vorbereitet trifft diese "
-"Attacke in 60% aller Fälle."
+"Wenn dieser Angriff in der Verteidigung eingesetzt wird, reduziert er die "
+"Trefferchance des Gegners um 10%."
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/weapon_specials.cfg:102
@@ -6526,6 +6982,8 @@ msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Die effektive Verteidigung dieser Einheit reduziert die gegnerische "
+"Trefferchance."
 
 #. [chance_to_hit]: id=magical
 #: data/core/macros/weapon_specials.cfg:115
@@ -6586,7 +7044,7 @@ msgstr ""
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:153
 msgid "absorb"
-msgstr ""
+msgstr "Absorbieren"
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:154
@@ -6594,12 +7052,16 @@ msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Dieser Angriff bringt die Einheit in eine vorteilhafte Position, und "
+"absorbiert einen Teil des gegnerischen Trefferschadens."
 
 #. [damage]: id=absorb
 #: data/core/macros/weapon_specials.cfg:155
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Diese Einheit kann gegnerische Angriffe abblocken, so dass sie reduzierten "
+"Schaden nimmt, wenn sie getroffen wird."
 
 # type: Content of: <book><chapter><section><section><variablelist><varlistentry><listitem><simpara>
 #. [drains]: id=drains
@@ -6643,7 +7105,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "Lähmung"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6651,19 +7113,16 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"Dieser Angriff betäubt das Opfer, so dass keine Kontrollzone "
+"aufrechterhalten wird. Dieser Effekt wirkt nur bis zur nächsten Runde des "
+"Opfers."
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
-"Diese Einheit kann Gegner derart verlangsamen, dass sowohl deren Schadkraft "
-"im Kampf als auch die Bewegungsfähigkeit bis zum Ende der Runde um die "
-"Hälfte reduziert werden."
+"Diese Einheit kann Gegner lähmen und setzt so deren Kontrollzone außer Kraft."
 
 #: data/core/units.cfg:4
 msgid ""
@@ -7135,6 +7594,77 @@ msgid ""
 "tradition, in both Wesmere and Lintanir, an enchantress from the order of "
 "elven mystics is also called upon to facilitate the transition of power."
 msgstr ""
+"Im Vergleich zu Menschen sind Elfen etwas größer, gewandter, aber weniger "
+"robust. Sie haben leicht spitz zulaufende Ohren, blasse Haut und häufig "
+"blondes Haar. Der hervorstechendste Unterschied jedoch liegt in ihrer "
+"wesentlich höheren Lebenserwartung. Die meisten Elfen – wenn unberührt von "
+"Krankheit, Unfall oder Krieg – leben wenigstens zweieinhalb Jahrhunderte. "
+"Außergewöhnliche magische Veranlagungen verlängern diese Spanne um gut und "
+"gerne hundert Jahre. Der »Herbst des Lebens« umfasst bei allen aber oft nur "
+"ein, zwei Jahre der Gebrechlichkeit und körperlichen Schwäche.\n"
+"\n"
+"Allen Elfen gemeinsam ist eine tiefe Verbundenheit mit reiner, unversehrter "
+"Natur. In offenem, unbewachsenem Gelände fühlen sie sich selten wohl. Ihr "
+"Zuhause sind die ausgedehnten Waldgebiete auf dem Großen Kontinent: die "
+"Aethenwälder im Süden, Wesmere im Norden und der Große Wald im Nordosten mit "
+"dem Lintanirforst als seinem Ausläufer gen Süden.\n"
+"\n"
+"Das Elfenvolk ist – von Waldschraten abgesehen – wohl die älteste Rasse auf "
+"dem Kontinent, einzig Trolle könnten noch älter sein. Über die ersten "
+"Ansiedlungen gibt es keine zuverlässigen Aussagen, sicher ist lediglich, "
+"dass Elfen hier schon seit mehr als tausend Jahre leben.\n"
+"\n"
+"<header>text='Magie'</header>\n"
+"Elfen sind vor Natur aus bis zu einem gewissen Grade von Magie und "
+"übernatürlicher Kraft durchströmt. Wenn auch die meisten diese nicht gezielt "
+"heraufbeschwören und in Bahnen lenken können, so ist deren verborgenes "
+"Vorhandensein die Quelle ihrer überaus scharfen Sinne und ihres langen "
+"Lebens. Auch ihr Geschick und besonderen Fähigkeiten werden durch magische "
+"Impulse stimuliert: Hervorragende Zielsicherheit beim Bogenschießen, die "
+"Gabe, sich fast bis zur Unsichtbarkeit zu tarnen und andere erstaunliche "
+"Talente lassen sie Aufgaben lösen, die gewöhnlichen Lebewesen befremden und "
+"verblüffen. Jene, die ihr Können im Alltag noch gezielt verbessern werden zu "
+"wahren Meistern und viele nutzen ihre Gaben, um andere zu heilen. Ihre Magie "
+"ist in zwei Zweige gespalten: Die Manipulation der realen Welt und des "
+"Natürlichen, oder das Eintauchen in die arkane, übernatürliche Welt.\n"
+"\n"
+"Elfische Naturmagie ist für den direkten Kampf eigentlich ungeeignet, aber "
+"durch geschickte Manipulation der Umgebung lässt sie sich auch dafür "
+"einsetzen. Die Hauptfähigkeit solcher Magiekundigen liegt allerdings im "
+"Heilen und Beschützen. Von außen wird dies in der Schönheit und Lebenskraft "
+"der elfischen Wälder sichtbar.\n"
+"\n"
+"Diejenigen, die dem arkanen Pfad folgen, sind bei anderen Elfen ebenfalls "
+"sehr angesehen, aber ihre Motive und Fähigkeiten sind nach außen hin oft "
+"unklar. Einige von ihnen erhalten feenähnliche Fähigkeiten, sie erhalten "
+"Weitblick und Langlebigkeit, werden dafür aber sensitiv gegenüber der "
+"Präsenz kalten Eisens und erleiden bei Berührung sogar Verbrennungen.\n"
+"\n"
+"<header>text='Kultur'</header>\n"
+"Jene mit weniger magischer Befähigung vervollkommnen ihre gegebenen Stärken. "
+"So stechen sie in der wohl wichtigsten Disziplin der Kriegsführung jedweden "
+"Gegner aus: Elfen, die einen Bogen mit sich führen, kommt keiner an "
+"Schnelligkeit und Treffsicherheit gleich. Auch sind Elfen hervorragende "
+"Musiker, besonders begabt sind sie mit Blas- und Zupfinstrumenten. Die "
+"äolischen Harfen der Aethenwälder beispielsweise werden aus dem feinen Holz "
+"der elfischen Eiben gefertigt und sind für ihrer weichen, sanften Klang "
+"bekannt.\n"
+"\n"
+"<header>text='Gesellschaft'</header>\n"
+"Die elfische Gesellschaft ist grob in drei Fraktionen unterteilt: eine "
+"Fraktion, die für den Schutz ihrer Wälder zuständig ist, friedliche Bürger, "
+"die normalerweise Handwerker oder Künstler sind, und Heiler und Mystiker, "
+"die die elfische Verbindung zu den Feen aufrechterhalten. Verantwortlich für "
+"die Verwaltung der verschiedenen Aspekte ist der Adel, die jedoch eher als "
+"Diener der Gesellschaft gelten, als als strenge Herrscher. Der "
+"Auswahlprozess für diesen Adel unterscheidet sich zwischen den verschiedenen "
+"elfischen Provinzen, sodass die Regierung von Wesmere – der Ka’lian – "
+"gewählt und der Adel in Litanir vererbt wird.\n"
+"\n"
+"In unruhigen Zeiten ist die Befehlshierarchie anpassungsfähiger, wobei sich "
+"der einfache Adel den kriegserfahrenen Hauptmännern unterordnet. Sowohl in "
+"Wesmere als auch in Lintanir wird traditionell eine Zauberin aus dem Orden "
+"der Elfenmystiker gerufen, um den Machtwechsel zu erleichtern."
 
 #. [race]: id=falcon
 #: data/core/units.cfg:137
@@ -7267,24 +7797,18 @@ msgstr ""
 
 #. [race]: id=horse
 #: data/core/units.cfg:183
-#, fuzzy
-#| msgid "race^Wose"
 msgid "race^Horse"
-msgstr "Waldschrat"
+msgstr "Pferd"
 
 #. [race]: id=horse
 #: data/core/units.cfg:184
-#, fuzzy
-#| msgid "race+female^Ogre"
 msgid "race+female^Horse"
-msgstr "Oger"
+msgstr "Stute"
 
 #. [race]: id=horse
 #: data/core/units.cfg:185
-#, fuzzy
-#| msgid "race^Woses"
 msgid "race^Horses"
-msgstr "Waldschrate"
+msgstr "Pferde"
 
 #. [race]: id=horse
 #: data/core/units.cfg:186
@@ -7299,6 +7823,16 @@ msgid ""
 "Winged horses, man-horse hybrids, and ghost horses have made their way into "
 "written history, though few can honestly claim to have seen such things."
 msgstr ""
+"Gezähmte Pferde gibt es in vielen Größen und Formen, von von mächtigen "
+"Schlachtrössern bis hin zu robusten Zugpferden oder wendigen Zuchtpferden. "
+"Auch wenn sie anfälliger als viele Wildtiere sind, können verwilderte Pferde "
+"dank ihrer Schnelligkeit neben ihren wilden Verwandten gedeihen.\n"
+"\n"
+"Pferde sind und waren ein wichtiger Teil vieler Zivilisationen, also ist es "
+"wenig überraschend, dass es eine Menge Mythen und Geschichten über sie gibt. "
+"Pegasus, Zentauren und Geisterpferde haben sich ihren Weg in die "
+"Geschichtsschreibung gebahnt, auch wenn solche Erscheinungen in der Realität "
+"nur selten auftauchen."
 
 #. [race]: id=human
 #: data/core/units.cfg:203
@@ -7423,65 +7957,6 @@ msgstr "Wüstenvolk"
 
 #. [race]: id=dunefolk
 #: data/core/units.cfg:225
-#, fuzzy
-#| msgid ""
-#| "An offshoot of a forgotten nomadic civilization, the Dunefolk humans lay "
-#| "claim to the river valleys and oases of the Sandy Wastes. How they came "
-#| "to inhabit this far corner of the Great Continent is unknown. Their "
-#| "legends tell of many long and perilous travels through far-flung lands, "
-#| "but the true origin of their people is a topic of endless and heated "
-#| "debate among even the most erudite of their scholars.\n"
-#| "\n"
-#| "Whatever their origin, the Dunefolk have thrived. Bustling cities stand "
-#| "proudly in the largest fertile regions. Skilled artisans, fine smiths, "
-#| "and wealthy merchants form the backbone of the urban economy. Each of "
-#| "these cities also enjoys a degree of independence less common in the more "
-#| "centralized nations to the north, many even maintaining their own "
-#| "standing armies. In times of need, however, each and all rally to a "
-#| "higher authority designated to protect the superior interest of the "
-#| "nation.\n"
-#| "\n"
-#| "Those who have not settled in these urban centers still adhere to the "
-#| "lifestyle of their ancestors, roaming the dunes and leading their herds "
-#| "from one watering hole to another. They are most active during the early "
-#| "hours of dawn and the onset of dusk, when the wastelands are neither too "
-#| "hot nor too cold. Their skill at moving through the sands is excellent "
-#| "even by Dunefolk standards. Although sometimes regarded with contempt by "
-#| "their city counterparts, they provide an invaluable service as mobile, "
-#| "light troops in war, or as escorts for trading caravans during times of "
-#| "peace.\n"
-#| "\n"
-#| "The Dunefolk’s inclination towards trade and exploration has allowed "
-#| "their cities to amass immense fortunes, a fact regarded both with "
-#| "admiration and envy by other races. Mutual interests have fostered "
-#| "cordial relations with neighboring Naga tribes, but more secretive races "
-#| "such as Drakes and Elves have always considered Dunefolk expeditions to "
-#| "be too intrusive, especially when they venture close to territorial "
-#| "boundaries. It is not uncommon for caravans to fall prey to troll "
-#| "ambushes in the mountains, something that has given rise to countless "
-#| "tales of unimaginable treasure amassed in hidden caves.\n"
-#| "\n"
-#| "As a result of living in hostile environments for centuries, the Dunefolk "
-#| "have developed rational methods of enquiry through which they continue to "
-#| "improve their understanding of the world. Their study of herbal medicine "
-#| "keeps their warriors and workers fresh and healthy. Their knowledge of "
-#| "alchemy allows them to tame fire and wield it as a deadly weapon in "
-#| "battle. At the same time, this analytical mindset has distanced them from "
-#| "magical arts; to the rational mind, magic is uncontrollable, "
-#| "unpredictable, and hence unreliable. For this reason, the Dunefolk "
-#| "especially loathe the perversions of necromancy and the dark arts, even "
-#| "more so than other races.\n"
-#| "\n"
-#| "The Dunefolk’s inquisitive and explorative nature does not preclude "
-#| "military strength. Not only do they field nimble light troops, "
-#| "cataphracts, and heavily armored infantry, but their keen knowledge of "
-#| "technology grants them a decisive advantage over their opponents. When "
-#| "facing the Dunefolk in battle, however, the most fearsome sight is "
-#| "certainly their deployment of ferocious and bizarre beasts. From the "
-#| "majestic Roc to the imposing Wyvern, their synergy with these creatures "
-#| "allows for great versatility in combat. The origins of this tradition "
-#| "likely lie in the heritage of the Dunefolk’s distant past in the exotic "
-#| "far corners of Irdya."
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7538,13 +8013,13 @@ msgid ""
 "distant past in the exotic far corners of Irdya."
 msgstr ""
 "Als Ableger einer vergessenen nomadischen Stammeskultur beanspruchen die "
-"Menschen des Dünenvolks die Wadis und Oasen der Sandwüste. Wie sie in diese "
+"Menschen des Wüstenvolks die Wadis und Oasen der Sandwüste. Wie sie in diese "
 "Ecke des Großen Kontinents kamen, ist unbekannt. Ihre Legenden erzählen von "
 "vielen langen und gefährlichen Reisen durch weit entlegene Länder, aber der "
 "wahre Ursprung ihres Volkes ist ein Thema endloser und hitziger "
 "Spekulationen unter Gelehrten.\n"
 "\n"
-"Wie auch immer ihre Herkunft sein mag, die Stämme des Dünenvolks haben sich "
+"Wie auch immer ihre Herkunft sein mag, die Stämme des Wüstenvolks haben sich "
 "ausgebreitet. Geschäftige Städte stehen in den fruchtbareren Regionen. "
 "Handwerker, Schmiede und Kaufleute bilden das Rückgrat der städtischen "
 "Wirtschaft. Jede dieser Städte genießt einen Grad an patriarchaler "
@@ -7563,7 +8038,7 @@ msgstr ""
 "unschätzbaren Dienst als mobile, leichte Truppen im Krieg oder als Begleiter "
 "für Handelskarawanen in Friedenszeiten.\n"
 "\n"
-"Die Neigung des Dünenvolks zu Handel und Eroberung hat einigen ihren Städte "
+"Die Neigung des Wüstenvolks zu Handel und Eroberung hat einigen ihren Städte "
 "erlaubt, immenses Vermögen anzusammeln, eine Tatsache, die untereinander und "
 "bei Fremden Bewunderung und Neid hervorruft. Gemeinsame Interessen haben "
 "freundschaftliche Beziehungen zu benachbarten Naga-Stämmen gefördert, aber "
@@ -7574,26 +8049,26 @@ msgstr ""
 "großen Schätzen in versteckten Trollhöhlen geführt hat.\n"
 "\n"
 "Als Ergebnis des Wanderlebens in einer kargen feindseligen Umgebung, haben "
-"die Stämme des Dünenvolks Wissen und Fähigkeiten bei anderen Völkern "
+"die Stämme des Wüstenvolks Wissen und Fähigkeiten bei anderen Völkern "
 "abgeschaut, durch die auch sie ihr Verständnis der Welt verbessern. Das "
 "Studium der einfachen Kräutermedizin hält ihre Krieger und Arbeiter frisch "
 "und gesund. Ihr Wissen mystischer Alchemie erlaubt es ihnen, Feuer zu "
 "kontrollieren und tödliche Flammenwerfer im Kampf zu benutzen. Zur gleichen "
 "Zeit haben sie sich von magischen Künsten distanziert. Für den Verstand ist "
 "Magie unkontrollierbar, unberechenbar und daher unzuverlässig. Aus diesem "
-"Grund verabscheut das Dünenvolk besonders die Perversionen der "
+"Grund verabscheut das Wüstenvolk besonders die Perversionen der "
 "Totenbeschwörung und der dunklen Künste, noch mehr als andere Fraktionen.\n"
 "\n"
-"Der erobernde Charakter des Dünenvolks schließt militärische Stärke ein. Sie "
-"setzen nicht nur flinke leichte Bodentruppen, schwer gepanzerte Infanterie "
-"und berittene Kataphrakte ein, sondern auch ihr technisches Wissen gewährt "
-"ihnen Vorteile. Wenn man jedoch im Kampf gegen das Dünenvolk steht, ist der "
-"gefährlichste Anblick sicherlich der von bizarren Kampftieren. Von den "
-"großen Roc-Greifvögeln bis zu den berittenen zweifüßigen Drachen mit "
-"Flügeln, den Wyvern, ermöglicht ihre Synergie mit diesen Kreaturen eine "
-"große Vielseitigkeit im Kampf. Die Ursprünge dieser Praxis liegen "
-"wahrscheinlich im Erbe der fernen Vergangenheit des Dünenvolks in den "
-"exotischen, weit entfernten Ecken von Irdya."
+"Der erobernde Charakter des Wüstenvolks schließt militärische Stärke ein. "
+"Sie setzen nicht nur flinke leichte Bodentruppen, schwer gepanzerte "
+"Infanterie und berittene Kataphrakte ein, sondern auch ihr technisches "
+"Wissen gewährt ihnen Vorteile. Wenn man jedoch im Kampf gegen das Wüstenvolk "
+"steht, ist der gefährlichste Anblick sicherlich der von bizarren "
+"Kampftieren. Von den großen Roc-Greifvögeln bis zu den berittenen "
+"zweifüßigen Drachen mit Flügeln, den Wyvern, ermöglicht ihre Synergie mit "
+"diesen Kreaturen eine große Vielseitigkeit im Kampf. Die Ursprünge dieser "
+"Praxis liegen wahrscheinlich im Erbe der fernen Vergangenheit des "
+"Wüstenvolks in den exotischen, weit entfernten Ecken von Irdya."
 
 #. [race]: id=lizard
 #: data/core/units.cfg:246
@@ -8111,43 +8586,6 @@ msgstr "Trolle"
 
 #. [race]: id=troll
 #: data/core/units.cfg:356
-#, fuzzy
-#| msgid ""
-#| "Trolls are ancient creatures, one of the oldest known races known to "
-#| "inhabit the Great Continent. They are large, slow, simple-minded, and "
-#| "live extremely long lives inside deep caves or atop high mountains. The "
-#| "most unique characteristic of trolls is an internal vitality that "
-#| "sustains and heals them from within. As a result they live very different "
-#| "lives from almost any known creature. Trolls have few real needs: they "
-#| "require little food or water, and thus they have little incentive to "
-#| "pursue much besides protection from those who are hostile towards them. "
-#| "This in turn means they rarely have to worry about anything and can spend "
-#| "much of their time sleeping or in contemplation. Trolls have a curious "
-#| "affinity with nature. They do not relate with living things like elves "
-#| "do, but instead with earth and stone. They are also somewhat curious of "
-#| "their surroundings and many younger whelps even enjoy traveling and "
-#| "seeing the world. As trolls grow older they tend to become increasingly "
-#| "passive, gradually losing interest in their environment and spending more "
-#| "of their time sleeping in a quiet, familiar corner of their home cave. "
-#| "This is until they finally pass away as their bodies themselves slowly "
-#| "turn into lifeless statues of stone.\n"
-#| "\n"
-#| "Trolls are seen by many as being little more than yet another race of "
-#| "savage monsters. This common misconception is in part perpetuated by orcs "
-#| "to persuade trolls to join their armies. Because they are rather simple "
-#| "and do not understand the ways of other races or sometimes cannot even "
-#| "tell them apart, it is usually easy for an orcish band to convince a "
-#| "group of trolls that by joining them they get to exact revenge on those "
-#| "that have before hunted them. These new recruits are then directed to "
-#| "attack whoever the orcs themselves are currently in conflict with, "
-#| "whether previously a foe of the trolls or not, accumulating even more "
-#| "enemies for the misled trolls. The most common enemy of trolls are "
-#| "dwarves, and the animosity between these two races is ancient.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Trolls have inhabited the mountains of the Great Continent longer than "
-#| "the dwarves who migrated there. Trolls are a common sight on the mountain "
-#| "ranges north and east of Wesnoth, and wherever Orcish hordes travel."
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8246,32 +8684,6 @@ msgstr "Untote"
 
 #. [race]: id=undead
 #: data/core/units.cfg:379
-#, fuzzy
-#| msgid ""
-#| "Undead are not really a single race of creatures, although often treated "
-#| "as such. Almost any dead creature can, by a sufficiently skilled "
-#| "necromancer, be reanimated and rise again in undeath. Undead are for the "
-#| "most part unnatural but mindless constructs, obeying whoever created them "
-#| "without question nor thought. A greater mystery of necromancy is in how "
-#| "constructs are sustained without continuous effort from the necromancer. "
-#| "An undead creature does not require the constant attention of the "
-#| "necromancer to command and sustain, but can work autonomously according "
-#| "to the commands of its master. Only rarely, perhaps once every few "
-#| "months, does the necromancer need to maintain his creation.\n"
-#| "\n"
-#| "Necromancy is almost solely limited to humans. Even the legends of "
-#| "magically apt races like elves and merfolk tell of very few of their kind "
-#| "who have ever delved in the dark arts. It is surmised that necromantic "
-#| "magic requires great adaptability and a flexible mind, extremes of which "
-#| "are most commonly found in humans. The ultimate goal of most necromancers "
-#| "is to turn the same art of preserving and imbuing life upon themselves, "
-#| "to alter themselves at whatever cost, to ultimately escape death by "
-#| "preserving their own mind and spirit.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "While undead lords arrived on the Great Continent in considerable numbers "
-#| "only in the wake of Haldric I, they were not completely unheard of by "
-#| "elves and dwarves before that."
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8462,6 +8874,22 @@ msgstr ""
 msgid "+1 max HP"
 msgstr "+1 max LP"
 
+#. [lua]: wesnoth.interface.game_display.unit_status
+#: data/lua/stun.lua:14
+msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+msgstr ""
+"gelähmt: Diese Einheit ist gelähmt. Sie kann keine Kontrollzone aufrechterhalten."
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:24
+msgid "female^stunned"
+msgstr "gelähmt"
+
+#. [lua]: on_hit
+#: data/lua/stun.lua:26
+msgid "stunned"
+msgstr "gelähmt"
+
 #: src/help/help.cpp:211
 msgid "Close"
 msgstr "Schließen"
@@ -8486,6 +8914,8 @@ msgstr "Das Schlechtere von"
 msgid ""
 "Villages allow any unit stationed therein to heal, or to be cured of poison."
 msgstr ""
+"Dörfer heilen dort stationierte Einheiten – entweder erhalten sie "
+"Lebenspunkte zurück oder sie werden von einer Vergiftung befreit."
 
 #. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
 #. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
@@ -8497,13 +8927,19 @@ msgid_plural ""
 "This terrain allows units to heal $amount hitpoints, or to be cured of "
 "poison, as if stationed in a village."
 msgstr[0] ""
+"Dieses Geländefeld heilt Vergiftungen. Gesunde Einheiten regenerieren "
+"stattdessen 1 Lebenspunkt."
 msgstr[1] ""
+"Dieses Geländefeld heilt Einheiten um $amount Trefferpunkte oder befreit sie "
+"von ihrer Vergiftungen. So, als wäre die Einheit in einem Dorf stationiert."
 
 #: src/help/help_topic_generators.cpp:173
 msgid ""
 "This terrain is a castle — units can be recruited onto it from a connected "
 "keep."
 msgstr ""
+"Dieses Geländefeld ist Teil einer Burg – Einheiten können von einem "
+"verbundenen Burgfried aus hierhin rekrutiert werden."
 
 #. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:177
@@ -8511,6 +8947,8 @@ msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
 "castle hexes."
 msgstr ""
+"Dieses Geländefeld ist ein Burgfried – ein Anführer kann von diesem Feld aus "
+"auf verbundene Burgfelder rekrutieren."
 
 #. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:180
@@ -8518,6 +8956,9 @@ msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
 "not allow a leader on a connected keep to recruit onto this hex."
 msgstr ""
+"Dieser untypische Burgfried ermöglicht es einem Anführer von hier aus auf "
+"verbundene Burgfelder zu rekrutieren, aber man kann nicht von einem anderem "
+"Burgfried aus auf diesem Burgfried eine Einheit rekrutieren."
 
 #: src/help/help_topic_generators.cpp:184
 #: src/help/help_topic_generators.cpp:601
@@ -11803,3 +12244,165 @@ msgstr "Tarnmöglichkeit"
 #~ "Eine beträchtliche Zahl von Lichfürsten gelangte erst im Kielwasser von "
 #~ "Haldic I über das Meer zum Großen Kontinent. Elfen und Zwergen waren sie "
 #~ "aber aus Vorzeiten bereits bekannt."
+
+#~ msgid ""
+#~ "This unit can hide in villages (with the exception of water villages), "
+#~ "and remain undetected by its enemies, except by those standing next to "
+#~ "it.\n"
+#~ "\n"
+#~ "Enemy units cannot see this unit while it is in a village, except if they "
+#~ "have units next to it. Any enemy unit that first discovers this unit "
+#~ "immediately loses all its remaining movement."
+#~ msgstr ""
+#~ "Einheiten mit gutem Orientierungssinn und Ortskenntnissen in Städten oder "
+#~ "Dörfern (Ausnahme sind die zu Wasser) weiß sich dort auch gut zu "
+#~ "verstecken.\n"
+#~ " \n"
+#~ "Der Gegner kann diese Einheit nicht sehen, wenn sie sich in einem Dorf zu "
+#~ "Land aufhält – es sei denn, er wird von ihr angegriffen oder gelangt "
+#~ "direkt auf ein angrenzendes Feld. Die Entdeckung kostet sie allerdings "
+#~ "alle BP, die in diesem Zug noch verblieben sind."
+
+#~ msgid ""
+#~ "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#~ "true dragons. On average, an adult drake stands around three meters tall "
+#~ "and easily weighs more than a man and a horse combined. Their skin is "
+#~ "made up of hard scales, resistant to most physical strikes except "
+#~ "piercing and cold damage. Most drakes are capable of true flight and can "
+#~ "travel long distances quickly. However, their sheer weight and bulk "
+#~ "limits their flight ability somewhat, making them ungainly in the air. "
+#~ "Where possible, they make use of terrain features such as hills, "
+#~ "mountains and trees as launch points in order to gain greater height and "
+#~ "speed. Fortunately for their enemies, they are still quite clumsy "
+#~ "creatures and surprisingly slow in combat. This, combined with their "
+#~ "large size, renders them easy targets for those who dare attack them.\n"
+#~ "\n"
+#~ "Drakes are inherently magical creatures, with a mysterious internal fire "
+#~ "fueling their very lives. This can easily be witnessed when one of their "
+#~ "kind perishes in combat; its internal fire is released, burning their "
+#~ "remains into ashes. Their internal fire is also their greatest weakness; "
+#~ "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#~ "nature, drakes are incapable of channeling magic in a controlled manner. "
+#~ "While the magic imbued within a drake’s body enables it to spit fire and "
+#~ "gives it life, they have no willful control over the functions of this "
+#~ "magic.\n"
+#~ "\n"
+#~ "<header>text='Society'</header>\n"
+#~ "Drakes are a relatively warlike race and their societies can be best "
+#~ "described as cultured martial societies. The core of a drake tribe is a "
+#~ "small group of veteran warriors headed by a mutually respected — or "
+#~ "simply feared — dominant who rules the society with an iron fist. Every "
+#~ "drake is expected to earn their place in the strict hierarchy, to obey "
+#~ "their superiors and command their inferiors. Entry to the ruling elite is "
+#~ "only possible through challenging and defeating a superior in single "
+#~ "combat, which is the way the hierarchy within the elite itself is "
+#~ "established. The use of deception of any kind towards any fellow drake "
+#~ "is, without exception, seen as cowardly and unacceptable.\n"
+#~ "\n"
+#~ "While their warlike nature and sense of territory drives them to defend "
+#~ "their territories savagely, drakes rarely invade or trespass on areas "
+#~ "already occupied by the other major races. Instead, they settle in "
+#~ "unpopulated areas to establish their own territory there. They primarily "
+#~ "feed on large game they hunt in the lowlands around their homes, but "
+#~ "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#~ "of moss and fungi they cultivate deep in their caverns. Drakes value "
+#~ "armor- and weapon-smithing, but neither know nor need other science and "
+#~ "culture besides this. Nonetheless, the few implements they do fashion are "
+#~ "almost unrivaled in quality, only matched by those produced in the finest "
+#~ "Dwarvish foundries.\n"
+#~ "\n"
+#~ "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+#~ "Death in battle is the most preferred way for a drake to leave this "
+#~ "world. Unlike the elder members of other races, drakes naturally grow "
+#~ "more aggressive and reckless towards the ends of their natural lives, "
+#~ "perhaps to help ensure their place in the heroic legends of their kind.\n"
+#~ "\n"
+#~ "<header>text='Geography'</header>\n"
+#~ "Drakes originated from an archipelago of volcanic islands called "
+#~ "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#~ "text='Great Ocean'</ref>. A combination of population pressure and the "
+#~ "subsidence of many of their home islands has caused colonies of drakes to "
+#~ "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#~ "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#~ "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#~ "warmth, their internal fire is more than capable of sustaining them even "
+#~ "in a relatively cold climate, a feature which has allowed them to "
+#~ "populate even some of the mountains of the far north of the Great "
+#~ "Continent."
+#~ msgstr ""
+#~ "Draken sind stattliche, geflügelte und feuerspeiende Kreaturen, entfernt "
+#~ "erinnern sie an echte Drachen. Im Schnitt ragt ein ausgewachsener Drake "
+#~ "etwa zwei Mann hoch, bringt aber gut und gerne das Gewicht eines Reiters "
+#~ "mitsamt dem Ross auf die Waage. Eine Haut aus beinharten Schuppen "
+#~ "vereitelt, ihnen mit physischen Angriffen beizukommen – nur mit "
+#~ "Stichwaffen hat man Aussicht auf Erfolg und gegen magische Kältewellen "
+#~ "sind sie empfindlich. Viele Draken können wirklich fliegen und legen "
+#~ "große Entfernungen in kurzer Zeit zurück – nur lässt das schiere Gewicht "
+#~ "ihrer unförmigen Leiber sie in der Luft recht unbeholfen wirken. Wo immer "
+#~ "möglich, suchen sie Gegebenheiten des Geländes auszunutzen, um sich von "
+#~ "Hügeln, Bergen oder Bäumen leichter aufzuschwingen und so größere "
+#~ "Geschwindigkeit und Höhen zu erreichen. Zum Glück für ihre Feinde sind "
+#~ "Draken recht ungeschickt und im Kampf geradezu langsam. Dies, in "
+#~ "Kombination mit ihrer Größe, macht sie zum leicht treffbaren Ziel für "
+#~ "jene, die es wagen, sie tatsächlich anzugreifen.\n"
+#~ " \n"
+#~ "Draken sind von Natur aus magische Kreaturen und ein mysteriöses, "
+#~ "innerliches Feuer erhält sie am Leben. Dies ist zu beobachten, wenn man "
+#~ "den Tod eines Draken im Kampf herbeiführt: Kaum wird das innere Feuer "
+#~ "nicht mehr gebändigt, verbrennt es die gesamte Körperhülle in kurzer Zeit "
+#~ "zu nichts als Asche. Ihr Feuer ist zugleich der Draken größter "
+#~ "Schwachpunkt – es macht sie überaus anfällig gegenüber großer Kälte, wie "
+#~ "sie manch magischer Spruch erzeugt. Trotz ihrer an sich magischen Natur "
+#~ "sind diese Geschöpfe nicht befähigt, sich magische Kräfte in "
+#~ "kontrollierter Form dienstbar zu machen. Obgleich Magie sie leben und "
+#~ "Feuer speien lässt, können sie diese Kräfte nicht willentlich "
+#~ "manipulieren.\n"
+#~ " \n"
+#~ "<header>text='Gesellschaft'</header>\n"
+#~ "Draken sind eine kriegerische Rasse, entsprechend ist ihre Gesellschaft "
+#~ "strukturiert. Kern eines Drakenstammes bildet eine Gruppe erfahrener "
+#~ "Krieger, die ein von allen respektierter oder einfach nur gefürchteter "
+#~ "'Herrscher' mit eiserner Klaue regiert. Von jedem Draken wird erwartet, "
+#~ "dass es sich seine Position in der Gesellschaft selbst erstreitet, sich "
+#~ "Befehlen der Höhergestellten fügt und Niederen selbst Befehle erteilt. "
+#~ "Einzige Möglichkeit in ihrer strikten Hierarchie aufzusteigen ist, einen "
+#~ "Ranghöheren zum Kampf herauszufordern und zu siegen. Hinterlist und "
+#~ "Intrige sind unter Draken indes verpönt und gelten als ausgesprochen "
+#~ "feige.\n"
+#~ " \n"
+#~ "Infolge ihres martialischen Naturells und ausgeprägter "
+#~ "Territorialinstinkte verteidigen Draken ihre Herrschaftsgebiete mit "
+#~ "äußerster Verbissenheit. Sie dringen aber selten in von anderen Rassen "
+#~ "beherrschte Regionen vor. Stattdessen lassen sie sich in unbesiedelten "
+#~ "Landesteilen nieder, wo sie ihr Reich nach Belieben erweitern können.\n"
+#~ " \n"
+#~ "Draken ernähren sie hauptsächlich sich von großem Wild, das sie in "
+#~ "flachen Regionen rund um ihre Heimat jagen. Frisch geschlüpfte Draken und "
+#~ "jene der unteren Kasten sind jedoch dafür bekannt, sich von gewissen, "
+#~ "tief in den Höhlen gezüchteten, Moosen und Pilzen zu ernähren. Das "
+#~ "einzige Handwerk, mit dem sich Draken abgeben, dreht sich rund um die "
+#~ "Schmiedekunst, die Herstellung von Panzerung und Waffen. Alles andere ist "
+#~ "für sie und ihre Kultur auch nicht relevant. Die wenigen Teile und "
+#~ "Geräte, die sie aus glühenden Metallen formen, sind indes von ihrer "
+#~ "Qualität her nahezu konkurrenzlos und nur mit denen zu vergleichen, die "
+#~ "in den feinsten Gießereien der Zwerge hergestellt werden.\n"
+#~ " \n"
+#~ "Draken sind Eierleger, ihre Lebenserwartung liegt für gewöhnlich zwischen "
+#~ "20 und 30 Jahren. Tod in der Schlacht gilt für sie als die bevorzugt Art, "
+#~ "das Zeitliche zu segnen. Im Gegensatz zu anderen Rassen werden Draken im "
+#~ "Alter sogar noch aggressiver als in jungen Jahren. Es mag damit "
+#~ "zusammenhängen, dass sie sich unbedingt einen Platz in den heroischen "
+#~ "Legenden ihrer Rasse sichern wollen.\n"
+#~ " \n"
+#~ "<header>text='Geographie'</header>\n"
+#~ "Die Draken stammen von der Insel <ref>dst='morogor' text='Morogor'</ref>, "
+#~ "einem Archipel vulkanischen Ursprungs mitten im <ref>dst='great_ocean' "
+#~ "text='Ozean'</ref>. Da diese Inselgruppe schon seit Jahrhunderten langsam "
+#~ "im Meer versinkt, hat die Bevölkerungsdichte dazu geführt, dass sich "
+#~ "Drakenkolonien auf dem <ref>dst='great_continent' text='Großen "
+#~ "Kontinent'</ref> verbreitet haben. Sie lassen sich am liebsten in "
+#~ "Berghöhlen nahe Vulkanen nieder, wo sie ihre Eier, Brut und Schmieden am "
+#~ "besten schützen können. Warmes Klima kommt ihrer Natur zwar eher "
+#~ "entgegen, doch hält ihr inneres Feuer die Draken auch in kühlen Gegenden "
+#~ "am Leben. Infolgedessen war es ihnen sogar möglich, die Bergen im hohen, "
+#~ "kalten Norden zu besiedeln."

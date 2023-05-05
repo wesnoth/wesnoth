@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Copyright (C) 2013 - 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -96,8 +96,8 @@ std::string format_addon_feedback_url(const std::string& format, const config& p
 
 void support_translation(config& addon, const std::string& locale_id)
 {
-	config* locale = &addon.find_child("translation", "language", locale_id);
-	if(!*locale) {
+	config* locale = addon.find_child("translation", "language", locale_id).ptr();
+	if(locale) {
 		locale = &addon.add_child("translation");
 		(*locale)["language"] = locale_id;
 	}
@@ -125,7 +125,7 @@ void find_translations(const config& base_dir, config& addon)
 
 void add_license(config& cfg)
 {
-	config& dir = cfg.child("dir");
+	auto dir = cfg.optional_child("dir");
 
 	// No top-level directory? Hm..
 	if(!dir) {
@@ -134,11 +134,11 @@ void add_license(config& cfg)
 	}
 
 	// Don't add if it already exists.
-	if(dir.find_child("file", "name", "COPYING.txt")
-	   || dir.find_child("file", "name", "COPYING")
-	   || dir.find_child("file", "name", "copying.txt")
-	   || dir.find_child("file", "name", "Copying.txt")
-	   || dir.find_child("file", "name", "COPYING.TXT"))
+	if(dir->find_child("file", "name", "COPYING.txt")
+	   || dir->find_child("file", "name", "COPYING")
+	   || dir->find_child("file", "name", "copying.txt")
+	   || dir->find_child("file", "name", "Copying.txt")
+	   || dir->find_child("file", "name", "COPYING.TXT"))
 	{
 		return;
 	}
@@ -150,7 +150,7 @@ void add_license(config& cfg)
 		return;
 	}
 
-	config& copying = dir.add_child("file");
+	config& copying = dir->add_child("file");
 	copying["name"] = "COPYING.txt";
 	copying["contents"] = contents;
 }
@@ -173,8 +173,8 @@ bool data_apply_removelist(config& data, const config& removelist)
 	}
 
 	for(const config& dir : removelist.child_range("dir")) {
-		config& data_dir = data.find_child("dir", "name", dir["name"]);
-		if(data_dir && !data_apply_removelist(data_dir, dir)) {
+		auto data_dir = data.find_child("dir", "name", dir["name"]);
+		if(data_dir && !data_apply_removelist(*data_dir, dir)) {
 			// Delete empty directories
 			data.remove_children("dir", [&dir](const config& d) { return dir["name"] == d["name"]; });
 		}
@@ -191,8 +191,8 @@ void data_apply_addlist(config& data, const config& addlist)
 	}
 
 	for(const config& dir : addlist.child_range("dir")) {
-		config* data_dir = &data.find_child("dir", "name", dir["name"]);
-		if(!*data_dir) {
+		config* data_dir = data.find_child("dir", "name", dir["name"]).ptr();
+		if(data_dir) {
 			data_dir = &data.add_child("dir");
 			(*data_dir)["name"] = dir["name"];
 		}

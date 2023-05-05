@@ -5,18 +5,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.14\n"
+"Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2022-02-20 10:48 UTC\n"
-"PO-Revision-Date: 2020-01-03 01:04+0100\n"
-"Last-Translator: Christoph Lange <christoph.t.lange@googlemail.com>\n"
-"Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
+"PO-Revision-Date: 2022-03-05 18:52+0100\n"
+"Last-Translator: s1m0n#1701\n"
+"Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -45,10 +45,8 @@ msgstr "Herausfordernd"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:19
-#, fuzzy
-#| msgid "Knight"
 msgid "Grand Knight"
-msgstr "Ritter"
+msgstr "Templer"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
@@ -66,10 +64,8 @@ msgstr ""
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
-#, fuzzy
-#| msgid "(Rookie level, 4 scenarios.)"
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Einstufung: Einsteiger, 4 Szenarien)"
+msgstr "(Einstufung: Einfach, 4 Szenarien)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:30
@@ -108,13 +104,6 @@ msgstr "Beseitigung eines Magiers"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:50
-#, fuzzy
-#| msgid ""
-#| "The remote freehold of Maghre in the western reaches of the kingdom of "
-#| "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
-#| "comings and goings of the wider world. Wars and the rumor of wars touched "
-#| "them not, until the day a dark mage settled in the region and began "
-#| "seeking sacrifices for his evil summonings."
 msgid ""
 "The remote freehold of Maghre in the western reaches of the Kingdom of "
 "Wesnoth was once a peaceful place, its inhabitants largely unaware of the "
@@ -504,23 +493,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
-#, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 V, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -545,9 +517,10 @@ msgstr ""
 "Wir suchen nun schon seit drei Tagen nach Baran und haben bisher nichts "
 "gefunden. Meine Intuition sagte mir, dass sie im Norden sein müssten, in den "
 "Grenzgebieten. Dort würden sie ein Versteck finden, das es so in den "
-"Ackerflächen, die hier vorherrschen, sonst nicht gibt. Anfangs dachte ich, "
-"die Suche sei vergebens, doch spät am ersten Tag fanden wir Spuren. Einige "
-"von Skelettfüßen.\n"
+"Ackerflächen, die hier vorherrschen, nicht gibt. Anfangs dachte ich, die "
+"Suche sei vergebens, doch spät am ersten Tag fanden wir Spuren. Einige von "
+"ihnen schienen von Skeletten zu stammen, obwohl wir zuerst nur die von "
+"Menschen fanden.\n"
 "\n"
 "Inzwischen sind wir ihnen nah genug um sicher zu sein. Sicher, dass die "
 "Spuren in den Grauen Wald führen. Seit Menschengedenken hat es niemand aus "
@@ -624,17 +597,11 @@ msgstr "Schnappt Euch die Entführer"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
-#, fuzzy
-#| msgid "Kill the Dark Adept before his reinforcements arrive"
 msgid "Kill the Dark Adept before more elves arrive"
-msgstr "Tötet den Dunklen Adepten, bevor seine Verstärkung eintrifft"
+msgstr "Tötet den Dunklen Adepten, bevor elfische Verstärkung eintrifft"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
-#, fuzzy
-#| msgid ""
-#| "The Elvish forces are spread out. Seek to fight them one at a time with "
-#| "several of your units."
 msgid ""
 "The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
@@ -685,6 +652,11 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
+"Diese Männer haben ihren Gefangenen dabei erwischt, wie er dunkle Magie "
+"praktizierte; ich hoffe für Euch, dass er nicht Euer Bruder war. Geht davon "
+"aus, dass er der Mörder Eures Bruders ist, und seid sicher, dass die grauen "
+"Magier alle Seelen befreien werden, die von seiner bösen Magie gebunden "
+"wurden."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
@@ -692,6 +664,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
 msgstr ""
+"Der Totenbeschwörer ist besiegt! Ich habe ihm selbst den finalen Schlag "
+"verpasst!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -699,6 +673,8 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
+"Der Totenbeschwörer ist besiegt! Ich habe ihn mit meinen eigenen Augen "
+"sterben sehen!"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -712,19 +688,25 @@ msgid ""
 "Either way, nothing will be gained by your intrusion into our woods. Now "
 "advance no further, for we will defend our land."
 msgstr ""
+"Vor drei Tagen haben wir den Lärm der Schlacht gehört, und der faule Geruch "
+"des Todes war unverkennbar, als der Gefangene an uns vorbeikam. Wenn der "
+"Gefangene Euer Bruder ist, dann ist er auch ein Totenbeschwörer. Erinnert "
+"Euch an Euren Bruder, und wisst, dass das Schicksal des Gefangenen gewiss "
+"Rache mit sich bringt.\n"
+"\n"
+"In jedem Fall wird Euch das Eindringen in unsere Wälder nichts bringen. Geht "
+"keinen Schritt weiter, wir werden unser Land bis zum letzten Mann "
+"verteidigen."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
-#, fuzzy
-#| msgid ""
-#| "So much for those ghost stories. Mere elves will not stop me from freeing "
-#| "Baran!"
 msgid ""
 "So much for those ghost stories, but even ghosts might have been more "
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
-"So viel zu den Geschichten über Geister. Ein paar gewöhnliche Elfen werden "
-"mich nicht davon abhalten, Baran zu befreien!"
+"So viel zu den Geschichten über Geister. Sogar diese Geister bekommen mehr "
+"von der Welt mit als diese Elfen. Trotzdem werdet Ihr mich nicht davon "
+"abhalten, Baran zu befreien!"
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:404
@@ -761,12 +743,15 @@ msgid ""
 "without arousing the elves’ suspicions. Still, no need for the disguise any "
 "more."
 msgstr ""
+"Verflucht! Wären sie nur wenige Stunden langsamer gewesen, hätte ich unsere "
+"Spuren ohne Aufsehen verwischen können. Trotzdem müssen wir uns nicht mehr "
+"verstecken."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr ""
+msgstr "Nun, Elfen? Seht ihr jetzt, wer die Totenbeschwörer sind!?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
@@ -775,6 +760,9 @@ msgid ""
 "I heard sounds of battle, but did not expect to see this. I will inform the "
 "Council, they can work out who the necromancers are."
 msgstr ""
+"Ich habe zwar Kampfgeräusche gehört, aber das hier habe ich nicht erwartet. "
+"Ich werde den Rat informieren, er soll herausfinden, wer die Totenbeschwörer "
+"sind."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
@@ -846,12 +834,12 @@ msgstr "Katklagad"
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:580
 msgid ""
 "Three days ride to the northeast, in a deserted castle. The passwords to the "
-"guards are $first_password_$first_password and $second_password_"
-"$second_password|."
+"guards are $first_password_$first_password and "
+"$second_password_$second_password|."
 msgstr ""
 "Drei Tagesritte gen Nordosten in der verlassenen Festung. Die Kennworte für "
-"die Wächter sind $first_password_$first_password und $second_password_"
-"$second_password|."
+"die Wächter sind $first_password_$first_password und "
+"$second_password_$second_password|."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:588
@@ -961,6 +949,8 @@ msgid ""
 "These elves have delayed us too long, the kidnappers’ trail will have faded "
 "by now."
 msgstr ""
+"Die Elfen haben uns zu lange aufgehalten, die Spuren der Entführer werden "
+"inzwischen verblasst sein."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
@@ -968,6 +958,8 @@ msgid ""
 "More elves are arriving; even if they believe me, the kidnappers’ trail is "
 "sure to fade before we can follow."
 msgstr ""
+"Mehr Elfen kommen, und selbst wenn sie mir glauben, sind die Spuren der "
+"Entführer sicherlich verblasst, bevor wir ihnen folgen können."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
@@ -975,6 +967,8 @@ msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
+"Verblendeter Narr! Ihr rettet einen Totenbeschwörer! Ich kann nur hoffen, "
+"dass Ihr zu spät kommt, und dass unsere Seelen in Frieden ruhen können."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
@@ -1861,186 +1855,3 @@ msgstr "Baran"
 #: data/campaigns/Two_Brothers/utils/macros.cfg:4
 msgid "Hint:"
 msgstr "Hinweis:"
-
-#~ msgid ""
-#~ "Curses! If they had been an hour slower, our master’s reinforcements "
-#~ "would already be here to meet us."
-#~ msgstr ""
-#~ "Verflucht! Wenn sie nur eine Stunde länger gebraucht hätten, wäre die "
-#~ "Verstärkung unseres Meister rechtzeitig hier gewesen …"
-
-#~ msgid "My reinforcements are here!"
-#~ msgstr "Meine Verstärkungen sind angekommen!"
-
-#~ msgid "He escaped us..."
-#~ msgstr "Er ist uns entkommen …"
-
-#~ msgid ""
-#~ "Those men told me their prisoner had attempted to murder their master, "
-#~ "and warned that evil men would follow him. Advance no further, or you "
-#~ "will die."
-#~ msgstr ""
-#~ "Diese Männer haben mir gesagt, dass der Gefangene versucht hat, ihren "
-#~ "Herren zu ermorden und sie haben mich bereits gewarnt, dass sie von einer "
-#~ "verderbten Bande verfolgt werden. Kommt nicht näher oder ihr werdet "
-#~ "sterben!"
-
-#~ msgid ""
-#~ "Foolish human, you have killed me but you will not catch the undead in "
-#~ "time. I have fulfilled my contract, and will be reanimated soon to become "
-#~ "a lord of their armies."
-#~ msgstr ""
-#~ "Närrischer Mensch. Mich konntet ihr töten, doch die Untoten werdet ihr "
-#~ "niemals rechtzeitig einholen. Ich habe mich an den Pakt gehalten und "
-#~ "werde bald wiederkehren, stärker als je zuvor, um zu einem der Anführer "
-#~ "ihrer unbesiegbaren Armeen zu werden."
-
-#~ msgid "$first_password_1|!"
-#~ msgstr "$first_password_1|!"
-
-#~ msgid "$first_password_2|!"
-#~ msgstr "$first_password_2|!"
-
-#~ msgid "$first_password_3|!"
-#~ msgstr "$first_password_3|!"
-
-#~ msgid "$first_password_4|!"
-#~ msgstr "$first_password_4|!"
-
-#~ msgid "$second_password_1|!"
-#~ msgstr "$second_password_1|!"
-
-#~ msgid "$second_password_2|!"
-#~ msgstr "$second_password_2|!"
-
-#~ msgid "$second_password_3|!"
-#~ msgstr "$second_password_3|!"
-
-#~ msgid "$second_password_4|!"
-#~ msgstr "$second_password_4|!"
-
-#~ msgid "Everything is lost now that I am dead..."
-#~ msgstr "Nun, da ich geschlagen bin, ist jegliche Hoffnung vergangen..."
-
-#~ msgid "Irongate"
-#~ msgstr "Eisentor"
-
-#~ msgid "Arne"
-#~ msgstr "Arne"
-
-#~ msgid "Bjarn"
-#~ msgstr "Bjarn"
-
-#~ msgid "Fargus"
-#~ msgstr "Fargus"
-
-#~ msgid "Erik"
-#~ msgstr "Erik"
-
-#~ msgid "Heine"
-#~ msgstr "Heine"
-
-#~ msgid "Magnus"
-#~ msgstr "Magnus"
-
-#~ msgid "Councillor Hoban"
-#~ msgstr "Greve Hoban"
-
-#~ msgid "Greetings, my brother! How may my men and I be of aid?"
-#~ msgstr ""
-#~ "Hallo Bjarn, schön dich wieder zu sehen! Wie können meine Männer und ich "
-#~ "dir behilflich sein?"
-
-#~ msgid ""
-#~ "I will lead my men, and such villagers as can keep up with us, north to "
-#~ "slay this Mordak! What will you do?"
-#~ msgstr ""
-#~ "Ich werde meine Männer und alle Dorfbewohner, die mit uns mithalten "
-#~ "können, nach Norden führen und Mordak bekämpfen! Doch was wirst du machen?"
-
-#~ msgid ""
-#~ "The pursuit had already run for several days when the pursuers came to "
-#~ "the bounds of the huge forest known as the Grey Woods. Ancient tales "
-#~ "warned of lost souls haunting the wood, hunting and killing anyone brave "
-#~ "enough to enter it."
-#~ msgstr ""
-#~ "Die Verfolgung dauerte nun schon mehrere Tage an, als die Verfolger einen "
-#~ "riesigen Forst erreichten, auch bekannt als der Graue Wald. Uralte Sagen "
-#~ "und Legenden warnen vor verlorenen Seelen, die jene heimsuchen, jagen und "
-#~ "töten, die es wagen, den Wald zu betreten."
-
-#~ msgid ""
-#~ "Heedless of those rumors, Arne followed them. His only worry was that his "
-#~ "horsemen would be at disadvantage if attacked in the forest."
-#~ msgstr ""
-#~ "Sich den Gerüchten nicht bewusst, folgte Arne ihnen in den Wald. Seine "
-#~ "einzige Sorge war, dass seine Reiter feindlichen Angriffen im Wald nahezu "
-#~ "schutzlos ausgeliefert sein würden."
-
-#~ msgid "Sounds of a scuffle were heard from the forest."
-#~ msgstr "Ihr hört ein Rascheln aus der Richtung des Waldes."
-
-#~ msgid ""
-#~ "It is whispered that hungry ghosts rule this forest, and kill everyone "
-#~ "who dares to enter."
-#~ msgstr ""
-#~ "Man sagt, dass hungrige Geister diesen Wald heimsuchen und ein jeden "
-#~ "töten, der es wagt, ihn zu betreten."
-
-#, fuzzy
-#~ msgid ""
-#~ "Arne’s men arrived at the castle and were immediately challenged by some "
-#~ "guards."
-#~ msgstr ""
-#~ "Als Arnes Mannen sich der Festung nähern, werden sie auch schon von "
-#~ "einigen Wachen aufgehalten."
-
-#~ msgid "Nooo! This is the end..."
-#~ msgstr "Neiiiinnnn! Dies ist mein Ende...."
-
-#~ msgid ""
-#~ "Good to see you, Arne. Now can you get me out of this dungeon, please?"
-#~ msgstr ""
-#~ "Gut dich zu sehen, Arne. Kannst du mich nun aus diesem Kerker holen?"
-
-#~ msgid "Finally the warlord is killed. Now you can go back to Maghre."
-#~ msgstr ""
-#~ "Letztlich haben wir den Ork getötet. Du kannst nun endlich wieder nach "
-#~ "Maghre heimkehren."
-
-#, fuzzy
-#~ msgid ""
-#~ "It took years to rebuild the village and restore the surrounding farms. "
-#~ "The people of Maghre had to work very hard, but felt better knowing "
-#~ "Arne’s men would be their firm allies in troubled times."
-#~ msgstr ""
-#~ "Es dauerte Jahre, das Dorf und die umliegenden Gehöfte wiederaufzubauen. "
-#~ "Die Bewohner von Maghre mussten hart dafür arbeiten, doch fühlten sie "
-#~ "sich nun sicherer. Sie waren sich gewiss, dass in Zeiten großer Not Arne "
-#~ "und seine Mannen ihnen beistehen würden."
-
-#, fuzzy
-#~ msgid ""
-#~ "Arne and his men left the village assured that it would be well guided by "
-#~ "Bjarn. On their journeys they faced many challenges and battles. Some "
-#~ "tales even mention Arne’s name together with that of the famous elvish "
-#~ "lord Kalenz, but this is a different story..."
-#~ msgstr ""
-#~ "Darauf vertrauend, dass Bjarn sich des Dorfes annehmen würde, verließen "
-#~ "Arne und seine Männer das Dorf. Auf ihren Reisen mussten sie vielen "
-#~ "Gefahren begegnen und so manche Schlacht überstehen. Einige Legenden "
-#~ "erwähnen den Namen Arne auch im Zusammenhang mit dem berühmten "
-#~ "Elfenfürsten Kalenz, doch dies ist eine andere Geschichte..."
-
-#~ msgid ""
-#~ "(Novice level, 4 scenarios; the ‘Hard’ version may challenge more "
-#~ "experienced players.)"
-#~ msgstr ""
-#~ "(Einstufung: Einfach, 4 Szenarien; die »schwierige« Version ist auch für "
-#~ "erfahrenere Spieler anspruchsvoll)"
-
-#~ msgid "Turns run out"
-#~ msgstr "Rundenlimit überschritten"
-
-#~ msgid "(Rookie level, 4 scenarios.)"
-#~ msgstr "(Einstufung: Einsteiger, 4 Szenarien)"

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -113,8 +113,8 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 		cfg.clear();
 		config envelope;
 		read(envelope, *stream);
-		if(config& info = envelope.child("info")) {
-			cfg = std::move(info);
+		if(auto info = envelope.optional_child("info")) {
+			cfg = std::move(*info);
 		}
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"

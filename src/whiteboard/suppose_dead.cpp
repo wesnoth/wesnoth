@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Tommy Schmitz
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -72,7 +72,7 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_underlying_id_(0)
 	, unit_id_()
-	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"], wml_loc())
+	, loc_(cfg.mandatory_child("loc_")["x"],cfg.mandatory_child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);

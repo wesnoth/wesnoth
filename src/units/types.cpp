@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -146,7 +146,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, animations_()
 	, build_status_(NOT_BUILT)
 {
-	if(const config& base_unit = cfg.child("base_unit")) {
+	if(auto base_unit = cfg.optional_child("base_unit")) {
 		base_unit_id_ = base_unit["id"].str();
 		LOG_UT << "type '" <<  id_ << "' has base unit '" << base_unit_id_ << "'";
 	}
@@ -300,21 +300,21 @@ void unit_type::build_help_index(
 		genders_.push_back(unit_race::MALE);
 	}
 
-	if(const config& abil_cfg = cfg.child("abilities")) {
-		for(const config::any_child ab : abil_cfg.all_children_range()) {
+	if(auto abil_cfg = cfg.optional_child("abilities")) {
+		for(const config::any_child ab : abil_cfg->all_children_range()) {
 			abilities_.emplace_back(ab.cfg);
 		}
 	}
 
 	for(const config& adv : cfg.child_range("advancement")) {
 		for(const config& effect : adv.child_range("effect")) {
-			const config& abil_cfg = effect.child("abilities");
+			auto abil_cfg = effect.optional_child("abilities");
 
 			if(!abil_cfg || effect["apply_to"] != "new_ability") {
 				continue;
 			}
 
-			for(const config::any_child ab : abil_cfg.all_children_range()) {
+			for(const config::any_child ab : abil_cfg->all_children_range()) {
 				adv_abilities_.emplace_back(ab.cfg);
 			}
 		}
@@ -590,8 +590,8 @@ int unit_type::experience_needed(bool with_acceleration) const
 
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
-	if(const config& abil = get_cfg().child("abilities")) {
-		for(const config::any_child ab : abil.all_children_range()) {
+	if(auto abil = get_cfg().optional_child("abilities")) {
+		for(const config::any_child ab : abil->all_children_range()) {
 			if(ab.cfg["id"] == ability) {
 				return true;
 			}
@@ -605,12 +605,12 @@ std::vector<std::string> unit_type::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	const config& abilities = get_cfg().child("abilities");
+	auto abilities = get_cfg().optional_child("abilities");
 	if(!abilities) {
 		return res;
 	}
 
-	for(const config::any_child ab : abilities.all_children_range()) {
+	for(const config::any_child ab : abilities->all_children_range()) {
 		std::string id = ab.cfg["id"];
 
 		if(!id.empty()) {
@@ -775,8 +775,8 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 	int resistance = movement_type_.resistance_against(damage_name);
 	unit_ability_list resistance_abilities;
 
-	if(const config& abilities = get_cfg().child("abilities")) {
-		for(const config& cfg : abilities.child_range("resistance")) {
+	if(auto abilities = get_cfg().optional_child("abilities")) {
+		for(const config& cfg : abilities->child_range("resistance")) {
 			if(!cfg["affect_self"].to_bool(true)) {
 				continue;
 			}
@@ -929,7 +929,7 @@ void patch_movetype(movetype& mt,
 		config cumulative_values;
 		for(const auto& x : fallback_children) {
 			if(mt_cfg.has_child(x)) {
-				cumulative_values.merge_with(mt_cfg.child(x));
+				cumulative_values.merge_with(mt_cfg.mandatory_child(x));
 			}
 			config_copies.emplace_back(cumulative_values);
 			auto val = std::make_shared<wfl::config_callable>(config_copies.back());
@@ -945,7 +945,7 @@ void patch_movetype(movetype& mt,
 		const std::array child_names {"defense", "resistance"};
 		for(const auto& x : child_names) {
 			if(mt_cfg.has_child(x)) {
-				const auto& subtag = mt_cfg.child(x);
+				const auto& subtag = mt_cfg.mandatory_child(x);
 				auto val = std::make_shared<wfl::config_callable>(subtag);
 				original.add(x, val);
 
@@ -1057,13 +1057,13 @@ void unit_type::fill_variations()
 void unit_type::fill_variations_and_gender()
 {
 	// Complete the gender-specific children of the config.
-	if(const config& male_cfg = get_cfg().child("male")) {
-		gender_types_[0] = create_sub_type(male_cfg, true);
+	if(auto male_cfg = get_cfg().optional_child("male")) {
+		gender_types_[0] = create_sub_type(*male_cfg, true);
 		gender_types_[0]->fill_variations();
 	}
 
-	if(const config& female_cfg = get_cfg().child("female")) {
-		gender_types_[1] = create_sub_type(female_cfg, true);
+	if(auto female_cfg = get_cfg().optional_child("female")) {
+		gender_types_[1] = create_sub_type(*female_cfg, true);
 		gender_types_[1]->fill_variations();
 	}
 
@@ -1162,7 +1162,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 				continue;
 			}
 
-			const config& info = terrain.child(*src_tag);
+			const config& info = terrain.mandatory_child(*src_tag);
 
 			for(const config::attribute& attr : info.attribute_range()) {
 				const std::string& mt = attr.first;
@@ -1228,9 +1228,9 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	build_all(unit_type::CREATED);
 
 	// Suppress some unit types (presumably used as base units) from the help.
-	if(const config& hide_help = cfg.child("hide_help")) {
+	if(auto hide_help = cfg.optional_child("hide_help")) {
 		hide_help_all_ = hide_help["all"].to_bool();
-		read_hide_help(hide_help);
+		read_hide_help(*hide_help);
 	}
 	DBG_UT << "Finished creating unit types";
 }
@@ -1303,10 +1303,6 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 
 void unit_type_data::read_hide_help(const config& cfg)
 {
-	if(!cfg) {
-		return;
-	}
-
 	hide_help_race_.emplace_back();
 	hide_help_type_.emplace_back();
 
@@ -1329,7 +1325,9 @@ void unit_type_data::read_hide_help(const config& cfg)
 	}
 
 	// We recursively call all the imbricated [not] tags
-	read_hide_help(cfg.child("not"));
+	if(auto cfgnot = cfg.optional_child("not")) {
+		read_hide_help(*cfgnot);
+	}
 }
 
 bool unit_type_data::hide_help(const std::string& type, const std::string& race) const

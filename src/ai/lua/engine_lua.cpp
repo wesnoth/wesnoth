@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -303,11 +303,8 @@ void engine_lua::push_ai_table()
 	}
 }
 
-void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b ){
-	if (!cfg) {
-		return;
-	}
-
+void engine_lua::do_parse_candidate_action_from_config( rca_context &context, const config &cfg, std::back_insert_iterator<std::vector< candidate_action_ptr > > b )
+{
 	if (!lua_ai_context_) {
 		return;
 	}
@@ -333,10 +330,6 @@ void engine_lua::do_parse_candidate_action_from_config( rca_context &context, co
 
 void engine_lua::do_parse_stage_from_config( ai_context &context, const config &cfg, std::back_insert_iterator<std::vector< stage_ptr > > b )
 {
-	if (!cfg) {
-		return;
-	}
-
 	if (!lua_ai_context_) {
 		return;
 	}

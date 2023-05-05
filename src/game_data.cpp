@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,6 +39,7 @@ game_data::game_data(const config& level)
 	, variables_(level.child_or_empty("variables"))
 	, phase_(INITIAL)
 	, can_end_turn_(level["can_end_turn"].to_bool(true))
+	, end_turn_forced_(level["end_turn"].to_bool())
 	, cannot_end_turn_reason_(level["cannot_end_turn_reason"].t_str())
 	, next_scenario_(level["next_scenario"])
 	, id_(level["id"])
@@ -56,8 +57,10 @@ game_data::game_data(const game_data& data)
 	, variables_(data.variables_)
 	, phase_(data.phase_)
 	, can_end_turn_(data.can_end_turn_)
+	, end_turn_forced_(data.end_turn_forced_)
 	, next_scenario_(data.next_scenario_)
 {
+	//TODO: is there a reason why this cctor is not "=default" ? (or whether it is used in the first place)
 }
 //throws
 config::attribute_value &game_data::get_variable(const std::string& key)

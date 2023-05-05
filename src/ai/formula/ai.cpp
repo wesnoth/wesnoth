@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -755,10 +755,6 @@ bool formula_ai::gamestate_change_observer::continue_check() {
 
 config formula_ai::to_config() const
 {
-	if (!cfg_)
-	{
-		return config();
-	}
 	DBG_AI << "formula_ai::to_config(): "<< cfg_;
 	config cfg = cfg_;
 

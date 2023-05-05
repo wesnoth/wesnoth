@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -114,7 +114,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	load_game_config_with_loadscreen(force_reload, nullptr, "");
 
-	game_config::load_config(game_config().child("game_config"));
+	game_config::load_config(game_config().mandatory_child("game_config"));
 
 	// It's necessary to block the event thread while load_hotkeys() runs, otherwise keyboard input
 	// can cause a crash by accessing the list of hotkeys while it's being modified.
@@ -250,7 +250,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 					continue;
 				}
 
-				if(*&valid_cores.find_child("core", "id", id)) {
+				if(valid_cores.find_child("core", "id", id)) {
 					events::call_in_main_thread([&]() {
 						gui2::dialogs::wml_error::display(
 							_("Error validating data core."),
@@ -391,6 +391,62 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 	// Set new binary paths.
 	paths_manager_.set_paths(game_config());
 }
+static void show_deprecated_warnings(config& umc_cfg)
+{
+	for(auto& units : umc_cfg.child_range("units")) {
+		for(auto& unit_type : units.child_range("unit_type")) {
+			for(const auto& advancefrom : unit_type.child_range("advancefrom")) {
+				auto symbols = utils::string_map {
+					{"lower_level", advancefrom["unit"]},
+					{"higher_level", unit_type["id"]}
+				};
+				auto message = VGETTEXT(
+					// TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
+					// The substituted strings are unit ids, not translated names; hopefully any add-ons
+					// that trigger this will be quickly fixed and stop triggering the warning.
+					"Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able to advance to ‘$higher_level’; please ask the add-on author to use [modify_unit_type] instead.",
+					symbols);
+				deprecated_message("[advancefrom]", DEP_LEVEL::REMOVED, {1, 15, 4}, message);
+			}
+			unit_type.remove_children("advancefrom", [](const config&){return true;});
+		}
+	}
+
+
+	// hardcoded list of 1.14 advancement macros, just used for the error mesage below.
+	static const std::set<std::string> deprecated_defines {
+		"ENABLE_PARAGON",
+		"DISABLE_GRAND_MARSHAL",
+		"ENABLE_ARMAGEDDON_DRAKE",
+		"ENABLE_DWARVISH_ARCANISTER",
+		"ENABLE_DWARVISH_RUNESMITH",
+		"ENABLE_WOLF_ADVANCEMENT",
+		"ENABLE_NIGHTBLADE",
+		"ENABLE_TROLL_SHAMAN",
+		"ENABLE_ANCIENT_LICH",
+		"ENABLE_DEATH_KNIGHT",
+		"ENABLE_WOSE_SHAMAN"
+	};
+
+	for(auto& campaign : umc_cfg.child_range("campaign")) {
+		for(auto str : utils::split(campaign["extra_defines"])) {
+			if(deprecated_defines.count(str) > 0) {
+				//TODO: we could try to implement a compatibility path by
+				//      somehow getting the content of that macro from the
+				//      cache_ object, but considering that 1) the breakage
+				//      isn't that bad (just one disabled unit) and 2)
+				//      it before also didn't work in all cases (see #4402)
+				//      i don't think it is worth it.
+				deprecated_message(
+					"campaign id='" + campaign["id"].str() + "' has extra_defines=" + str,
+					DEP_LEVEL::REMOVED,
+					{1, 15, 4},
+					_("instead, use the macro with the same name in the [campaign] tag")
+				);
+			}
+		}
+	}
+}
 
 void game_config_manager::load_addons_cfg()
 {
@@ -529,60 +585,7 @@ void game_config_manager::load_addons_cfg()
 
 			loading_screen::spin();
 
-			for(auto& units : umc_cfg.child_range("units")) {
-				for(auto& unit_type : units.child_range("unit_type")) {
-					for(const auto& advancefrom : unit_type.child_range("advancefrom")) {
-						auto symbols = utils::string_map {
-							{"lower_level", advancefrom["unit"]},
-							{"higher_level", unit_type["id"]}
-						};
-						auto message = VGETTEXT(
-							// TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
-							// The substituted strings are unit ids, not translated names; hopefully any add-ons
-							// that trigger this will be quickly fixed and stop triggering the warning.
-							"Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able to advance to ‘$higher_level’; please ask the add-on author to use [modify_unit_type] instead.",
-							symbols);
-						deprecated_message("[advancefrom]", DEP_LEVEL::REMOVED, {1, 15, 4}, message);
-					}
-					unit_type.remove_children("advancefrom", [](const config&){return true;});
-				}
-			}
-
-			loading_screen::spin();
-
-			// hardcoded list of 1.14 advancement macros, just used for the error mesage below.
-			static const std::set<std::string> deprecated_defines {
-				"ENABLE_PARAGON",
-				"DISABLE_GRAND_MARSHAL",
-				"ENABLE_ARMAGEDDON_DRAKE",
-				"ENABLE_DWARVISH_ARCANISTER",
-				"ENABLE_DWARVISH_RUNESMITH",
-				"ENABLE_WOLF_ADVANCEMENT",
-				"ENABLE_NIGHTBLADE",
-				"ENABLE_TROLL_SHAMAN",
-				"ENABLE_ANCIENT_LICH",
-				"ENABLE_DEATH_KNIGHT",
-				"ENABLE_WOSE_SHAMAN"
-			};
-
-			for(auto& campaign : umc_cfg.child_range("campaign")) {
-				for(auto str : utils::split(campaign["extra_defines"])) {
-					if(deprecated_defines.count(str) > 0) {
-						//TODO: we could try to implement a compatibility path by
-						//      somehow getting the content of that macro from the
-						//      cache_ object, but considering that 1) the breakage
-						//      isn't that bad (just one disabled unit) and 2)
-						//      it before also didn't work in all cases (see #4402)
-						//      i don't think it is worth it.
-						deprecated_message(
-							"campaign id='" + campaign["id"].str() + "' has extra_defines=" + str,
-							DEP_LEVEL::REMOVED,
-							{1, 15, 4},
-							_("instead, use the macro with the same name in the [campaign] tag")
-						);
-					}
-				}
-			}
+			show_deprecated_warnings(umc_cfg);
 
 			loading_screen::spin();
 

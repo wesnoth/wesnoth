@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -970,12 +970,12 @@ variant event_callable::get_value(const std::string &key) const
 		}
 	} else if(key == "weapon") {
 		if(event_info.data.has_child("first")) {
-			first_weapon = std::make_shared<attack_type>(event_info.data.child("first"));
+			first_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("first"));
 			return variant(std::make_shared<attack_type_callable>(*first_weapon));
 		}
 	} else if(key == "second_weapon") {
 		if(event_info.data.has_child("second")) {
-			second_weapon = std::make_shared<attack_type>(event_info.data.child("second"));
+			second_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("second"));
 			return variant(std::make_shared<attack_type_callable>(*second_weapon));
 		}
 	}

@@ -8,7 +8,7 @@
 About
 =====
 
-**The Battle for Wesnoth** is an Open Source, turn-based tactical strategy game with a high fantasy theme, featuring both singleplayer and online/hotseat multiplayer combat. Fight a desperate battle to reclaim the throne of Wesnoth, or take hand in any number of other adventures.
+**The Battle for Wesnoth** is an Open Source, turn-based tactical strategy game with a high fantasy theme, featuring both singleplayer and online/hotseat multiplayer combat. Fight a desperate battle to reclaim the throne of Wesnoth, search for the key to immortality, or take part in any number of other adventures.
 
 Community
 ---------
@@ -28,6 +28,17 @@ Mastodon:
 Steam forums:
   <https://steamcommunity.com/app/599390/discussions/>
 
+Features
+--------
+
+* A variety of different campaigns, each with their own tactical challenges, emotionally charged story, and multiple difficulty levels.
+* A detailed world and storytelling with hundreds of sprites, animations, and characters.
+* Many different unit skills and traits across several factions.
+* A map editor with multiple tools, hundreds types of terrain, and the ability for you to save and share maps with others. Create your own scenarios/battles for near infinite replayability.
+* Highly moddable, allowing a wide array of community created map packs, eras, and entire campaigns.
+* Online and local multiplayer gameplay to play with friends, strangers, or against the AI.
+* Changeable settings for base gameplay, with nearly limitless options for different hotkey configurations.
+* Beautifully composed playlist that captures the era and grandiosity of this lore-filled high-fantasy world.
 
 Installing
 ----------
@@ -46,7 +57,13 @@ To build the game from source, see [INSTALL](/INSTALL.md) for instructions.
 Contributing
 ------------
 
-Wesnoth is most in need of skilled C++ developers (C++14 and later), however there are things that nearly anyone can help with from simpler tasks in C++, the Lua and WML used for content scripting, Python used by various external tools, and even things like play testing and giving feedback on updated campaigns. Additionally, Wesnoth lacks art for a variety of unit animations - anyone who would be interested in lending a hand updating existing unit sprites or creating animations should take a look at the Art Forum as well as contact our current art director.
+Wesnoth is most in need of skilled C++ developers (C++14 and later), however there are things that nearly anyone can help with:
+* Simple tasks in C++. 
+* The Lua and WML used for content scripting. 
+* Python used by various external tools.
+* Even play testing and giving feedback on updated campaigns! 
+
+Additionally, Wesnoth lacks art for a variety of unit animations - anyone who would be interested in lending a hand in updating existing unit sprites or creating animations should take a look at the [Art Contributions](https://forums.wesnoth.org/viewforum.php?f=9) forum as well as contact our current art director.
 
 See also: [CONTRIBUTING](/CONTRIBUTING.md)
 
@@ -82,3 +99,11 @@ A (translated) description of how to play the game can be found in doc/manual/ma
 For information on creating your own maps, scenarios, and other content, see:
 
   <https://wiki.wesnoth.org/Create>
+
+Gallery
+-------
+
+![screenshot_main_menu](https://www.wesnoth.org/images/sshots/wesnoth-1.16.0-1.jpg)
+![scrreenshot_isars_cross](https://www.wesnoth.org/images/sshots/wesnoth-1.16.0-2.jpg)
+![screenshot_campaign_menu](https://www.wesnoth.org/images/sshots/wesnoth-1.16.0-5.jpg)
+![screenshot_map](https://www.wesnoth.org/images/sshots/wesnoth-1.16.0-8.jpg)

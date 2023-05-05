@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 #include "map/location.hpp"
 #include "terrain/translation.hpp"
 
+#include <optional>
 #include <unordered_map>
 
 class surface;
@@ -74,9 +75,8 @@ public:
 
 	locator& operator=(const locator& a);
 
-	bool operator==(const locator& a) const { return index_ == a.index_; }
-	bool operator!=(const locator& a) const { return index_ != a.index_; }
-	bool operator<(const locator& a) const { return index_ < a.index_; }
+	bool operator==(const locator& a) const { return val_ == a.val_; }
+	bool operator!=(const locator& a) const { return !operator==(a); }
 
 	const std::string& get_filename() const { return val_.filename_; }
 	bool is_data_uri() const { return val_.is_data_uri_; }
@@ -85,7 +85,6 @@ public:
 	int get_center_y() const { return val_.center_y_; }
 	const std::string& get_modifications() const {return val_.modifications_;}
 	type get_type() const { return val_.type_; }
-	// const int get_index() const { return index_; };
 
 	/**
 	 * Returns @a true if the locator does not correspond to an actual image.
@@ -115,12 +114,12 @@ public:
 	const T& locate_in_cache(cache_type<T>& cache) const;
 
 	template<typename T>
-	void add_to_cache(cache_type<T>& cache, const T& data) const;
+	std::optional<T> copy_from_cache(cache_type<T>& cache) const;
+
+	template<typename T>
+	void add_to_cache(cache_type<T>& cache, T data) const;
 
 private:
-	// Called by each constructor after actual construction to
-	// initialize the index_ field
-	void init_index();
 	void parse_arguments();
 
 	struct value
@@ -144,14 +143,15 @@ private:
 		int center_y_;
 	};
 
-public:
-	typedef std::unordered_map<value, int> locator_finder_t;
+	value val_;
 
-private:
+public:
 	friend struct std::hash<value>;
 
-	int index_;
-	value val_;
+	template<typename T>
+	friend class cache_type;
+
+	std::size_t hash() const;
 };
 
 // write a readable representation of a locator, mostly for debugging

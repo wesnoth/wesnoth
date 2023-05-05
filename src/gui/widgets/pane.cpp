@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -358,7 +358,7 @@ builder_pane::builder_pane(const config& cfg)
 	: builder_widget(cfg)
 	, grow_dir(*grow_direction::get_enum(cfg["grow_direction"].str()))
 	, parallel_items(cfg["parallel_items"])
-	, item_definition(new builder_grid(cfg.child("item_definition", "[pane]")))
+	, item_definition(new builder_grid(VALIDATE_WML_CHILD(cfg, "item_definition", _("Missing [item_definition] in [pane]"))))
 {
 	VALIDATE(parallel_items > 0, _("Need at least 1 parallel item."));
 }

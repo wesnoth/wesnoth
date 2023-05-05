@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -287,8 +287,8 @@ std::size_t vconfig::count_children(const std::string& key) const
  */
 vconfig vconfig::child(const std::string& key) const
 {
-	if (const config &natural = cfg_->child(key)) {
-		return vconfig(natural, cache_, *variables_);
+	if (auto natural = cfg_->optional_child(key)) {
+		return vconfig(*natural, cache_, *variables_);
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
 	{
@@ -314,7 +314,7 @@ vconfig vconfig::child(const std::string& key) const
  */
 bool vconfig::has_child(const std::string& key) const
 {
-	if (cfg_->child(key)) {
+	if (cfg_->has_child(key)) {
 		return true;
 	}
 	for (const config &ins : cfg_->child_range("insert_tag"))
@@ -559,7 +559,7 @@ void scoped_xy_unit::activate()
 void scoped_weapon_info::activate()
 {
 	if (data_) {
-		store(data_);
+		store(*data_);
 	}
 }
 

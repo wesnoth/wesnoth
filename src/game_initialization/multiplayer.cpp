@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,7 +40,6 @@
 #include "resources.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
-#include "statistics.hpp"
 #include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
 
@@ -520,8 +519,8 @@ bool mp_manager::enter_lobby_mode()
 
 	// We use a loop here to allow returning to the lobby if you, say, cancel game creation.
 	while(true) {
-		if(const config& cfg = game_config_manager::get()->game_config().child("lobby_music")) {
-			for(const config& i : cfg.child_range("music")) {
+		if(auto cfg = game_config_manager::get()->game_config().optional_child("lobby_music")) {
+			for(const config& i : cfg->child_range("music")) {
 				sound::play_music_config(i);
 			}
 
@@ -616,8 +615,6 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 
 	// The connection should never be null here, since one should never reach this screen in local game mode.
 	assert(connection);
-
-	statistics::fresh_stats();
 
 	mp_game_metadata metadata(*connection);
 	metadata.is_host = false;
@@ -739,7 +736,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 		state.classification().era_id = *cmdline_opts.multiplayer_era;
 	}
 
-	if(const config& cfg_era = game_config.find_child("era", "id", state.classification().era_id)) {
+	if(auto cfg_era = game_config.find_child("era", "id", state.classification().era_id)) {
 		state.classification().era_define = cfg_era["define"].str();
 	} else {
 		PLAIN_LOG << "Could not find era '" << state.classification().era_id << "'";
@@ -751,7 +748,7 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 		parameters.name = *cmdline_opts.multiplayer_scenario;
 	}
 
-	if(const config& cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
+	if(auto cfg_multiplayer = game_config.find_child("multiplayer", "id", parameters.name)) {
 		state.classification().scenario_define = cfg_multiplayer["define"].str();
 	} else {
 		PLAIN_LOG << "Could not find [multiplayer] '" << parameters.name << "'";
@@ -775,8 +772,6 @@ void start_local_game_commandline(const commandline_options& cmdline_opts)
 	}
 
 	DBG_MP << "entering connect mode";
-
-	statistics::fresh_stats();
 
 	{
 		ng::connect_engine connect_engine(state, true, nullptr);

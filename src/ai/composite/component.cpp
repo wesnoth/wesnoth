@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -185,11 +185,11 @@ bool component_manager::add_component(component *root, const std::string &path, 
 	if (c==nullptr) {
 		return false;
 	}
-	const config &ch = cfg.child(tail.property);
+	auto ch = cfg.optional_child(tail.property);
 	if (!ch) {
 		return false;
 	}
-	return c->add_child(tail, ch);
+	return c->add_child(tail, *ch);
 
 }
 
@@ -200,11 +200,11 @@ bool component_manager::change_component(component *root, const std::string &pat
 	if (c==nullptr) {
 		return false;
 	}
-	const config &ch = cfg.child(tail.property);
+	auto ch = cfg.optional_child(tail.property);
 	if (!ch) {
 		return false;
 	}
-	return c->change_child(tail,ch);
+	return c->change_child(tail, *ch);
 }
 
 bool component_manager::delete_component(component *root, const std::string &path)

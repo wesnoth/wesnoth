@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,7 +67,7 @@ std::string default_map_generator::name() const { return "default"; }
 
 std::string default_map_generator::config_name() const
 {
-	if (const config &c = cfg_.child("scenario"))
+	if (auto c = cfg_.optional_child("scenario"))
 		return c["name"];
 
 	return std::string();

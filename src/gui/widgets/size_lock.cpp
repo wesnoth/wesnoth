@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	by Jyrki Vesterinen <sandgtx@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -107,10 +107,10 @@ size_lock_definition::resolution::resolution(const config& cfg)
 	static config dummy("draw");
 	state.emplace_back(dummy);
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 namespace implementation
@@ -122,7 +122,7 @@ builder_size_lock::builder_size_lock(const config& cfg)
 	, content_(nullptr)
 {
 	VALIDATE(cfg.has_child("widget"), _("No widget defined."));
-	content_ = create_widget_builder(cfg.child("widget"));
+	content_ = create_widget_builder(cfg.mandatory_child("widget"));
 }
 
 std::unique_ptr<widget> builder_size_lock::build() const

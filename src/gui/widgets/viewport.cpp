@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,9 @@
 #include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
 #include "config.hpp"
+#include "gettext.hpp"
 #include "utils/const_clone.hpp"
+#include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER "viewport [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -167,7 +169,7 @@ namespace implementation
 
 builder_viewport::builder_viewport(const config& cfg)
 	: builder_widget(cfg)
-	, widget_(create_widget_builder(cfg.child("widget", "[viewport]")))
+	, widget_(create_widget_builder(VALIDATE_WML_CHILD(cfg, "widget", _("Missing [widget] in [viewport]"))))
 {
 }
 

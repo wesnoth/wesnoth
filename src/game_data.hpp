@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -143,6 +143,8 @@ public:
 	const std::vector<std::string>& get_victory_music() const { return victory_music_; }
 	void set_victory_music(std::vector<std::string> value) { victory_music_ = std::move(value); }
 
+	void set_end_turn_forced(bool v) { end_turn_forced_ = v; }
+	bool end_turn_forced() const { return end_turn_forced_; }
 private:
 	void activate_scope_variable(std::string var_name) const;
 	/** Used to delete variables. */
@@ -156,6 +158,7 @@ private:
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;
+	bool end_turn_forced_;
 	t_string cannot_end_turn_reason_;
 	/** the scenario coming next (for campaigns) */
 	std::string next_scenario_;

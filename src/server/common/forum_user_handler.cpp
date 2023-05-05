@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -223,8 +223,8 @@ void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::st
 	conn_.update_game_end(uuid, game_id, replay_location);
 }
 
-void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user){
-	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
+void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders){
+	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user, leaders);
 }
 
 unsigned long long fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version){

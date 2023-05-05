@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1308,12 +1308,12 @@ window_definition::window_definition(const config& cfg)
 window_definition::resolution::resolution(const config& cfg)
 	: panel_definition::resolution(cfg), grid(nullptr)
 {
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	// VALIDATE(child, _("No grid defined."));
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
-		grid = std::make_shared<builder_grid>(child);
+		grid = std::make_shared<builder_grid>(*child);
 	}
 }
 

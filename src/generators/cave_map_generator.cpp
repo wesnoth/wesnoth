@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,7 +37,7 @@ cave_map_generator::cave_map_generator(const config &cfg) :
 	village_(t_translation::UNDERGROUND_VILLAGE),
 	castle_(t_translation::DWARVEN_CASTLE),
 	keep_(t_translation::DWARVEN_KEEP),
-	cfg_(cfg ? cfg : config()),
+	cfg_(cfg),
 	width_(50),
 	height_(50),
 	village_density_(0),
@@ -193,8 +193,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 		new_chamber.center = map_location(x,y);
 		build_chamber(new_chamber.center,new_chamber.locs,chamber_size,jagged_edges);
 
-		const config &items = ch.child("items");
-		new_chamber.items = items ? &items : nullptr;
+		auto items = ch.optional_child("items");
+		new_chamber.items = items ? &*items : nullptr;
 
 		const std::string &id = ch["id"];
 		if (!id.empty()) {
@@ -231,11 +231,12 @@ void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 	for (const config::any_child it : c.items->all_children_range())
 	{
 		config cfg = it.cfg;
-		config &filter = cfg.child("filter");
+		auto filter = cfg.optional_child("filter");
 		config* object_filter = nullptr;
-		if (config &object = cfg.child("object")) {
-			if (config &of = object.child("filter"))
-				object_filter = &of;
+		if (auto object = cfg.optional_child("object")) {
+			if (auto of = object->optional_child("filter")) {
+				object_filter = &*of;
+			}
 		}
 
 		if (!it.cfg["same_location_as_previous"].to_bool()) {

@@ -1,5 +1,5 @@
 
-local _ = wesnoth.textdomain "wesnoth-units"
+local _ = wesnoth.textdomain "wesnoth-help"
 local on_event = wesnoth.require("on_event")
 local old_unit_status = wesnoth.interface.game_display.unit_status
 

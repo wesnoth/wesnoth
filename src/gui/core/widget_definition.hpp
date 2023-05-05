@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,7 @@ namespace gui2
  */
 struct state_definition
 {
-	explicit state_definition(const config& cfg);
+	explicit state_definition(optional_const_config cfg);
 
 	config canvas_cfg_;
 };

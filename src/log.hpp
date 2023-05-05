@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2022
+	Copyright (C) 2004 - 2023
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -52,6 +52,7 @@
 #endif
 
 #include <iosfwd> // needed else all files including log.hpp need to do it.
+#include <optional>
 #include <sstream> // as above. iostream (actually, iosfwd) declares stringstream as an incomplete type, but does not define it
 #include <string>
 #include <utility>
@@ -128,7 +129,7 @@ void set_strict_severity(const logger &lg);
 bool broke_strict();
 void set_log_to_file();
 void check_log_dir_writable();
-bool log_dir_writable();
+std::optional<bool> log_dir_writable();
 
 bool is_not_log_file(const std::string& filename);
 void rotate_logs(const std::string& log_dir);

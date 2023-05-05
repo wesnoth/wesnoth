@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -292,8 +292,8 @@ void ban_manager::read()
 	}
 
 	// load deleted too
-	if(const config& cfg_del = cfg.child("deleted")) {
-		for(const config& b : cfg_del.child_range("ban")) {
+	if(auto cfg_del = cfg.optional_child("deleted")) {
+		for(const config& b : cfg_del->child_range("ban")) {
 			try {
 				auto new_ban = std::make_shared<banned>(b);
 				deleted_bans_.push_back(new_ban);

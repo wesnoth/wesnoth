@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -73,7 +73,7 @@ namespace randomness
 		 * @return		The index of the selected number
 		 */
 		template <typename T>
-		unsigned int get_random_element(T first, T last);
+		typename T::difference_type get_random_element(T first, T last);
 
 		// For compatibility with the C++ UniformRandomBitGenerator concept
 		using result_type = uint32_t;
@@ -109,7 +109,7 @@ namespace randomness
 	extern rng* generator;
 
 	template <typename T>
-	unsigned int rng::get_random_element(T first, T last)
+	typename T::difference_type rng::get_random_element(T first, T last)
 	{
 		double target = get_random_double();
 		double sum = 0.0;

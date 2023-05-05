@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -298,7 +298,7 @@ void user_choice_manager::search_in_replay()
 		{
 			replay::process_error("MP synchronization: we got already our answer from side " + std::to_string(from_side) + "for [" + tagname_ + "] now we have it twice.\n");
 		}
-		res_[from_side] = action->child(tagname_);
+		res_[from_side] = action->mandatory_child(tagname_);
 		changed_event_.notify_observers();
 	}
 }
@@ -370,7 +370,7 @@ void user_choice_manager::ask_local_choice()
 	//send data to others.
 	//but if there wasn't any data sent during this turn, we don't want to begin with that now.
 	//TODO: we should send user choices during nonundoable actions immediately.
-	if(synced_context::is_simultaneous() || current_side_ != local_choice_)
+	if(synced_context::undo_blocked() || current_side_ != local_choice_)
 	{
 		synced_context::send_user_choice();
 	}

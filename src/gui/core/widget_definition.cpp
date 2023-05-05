@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2022
+	Copyright (C) 2007 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,10 +25,10 @@
 namespace gui2
 {
 
-state_definition::state_definition(const config& cfg)
-	: canvas_cfg_(cfg ? cfg.child("draw") : cfg)
+state_definition::state_definition(optional_const_config cfg)
+	: canvas_cfg_(cfg ? cfg->child_or_empty("draw") : config())
 {
-	VALIDATE(canvas_cfg_, _("No state or draw section defined."));
+	VALIDATE(cfg && cfg->has_child("draw"), _("No state or draw section defined."));
 }
 
 resolution_definition::resolution_definition(const config& cfg)

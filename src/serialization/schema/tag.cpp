@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -407,7 +407,7 @@ void wml_tag::add_switch(const config& switch_cfg)
 			// So just add an [and] tag that matches any other value
 			default_cfg.add_child("and")["glob_on_" + key] = "*";
 		}
-		conditions_.emplace_back(switch_cfg.child("else"), default_cfg);
+		conditions_.emplace_back(switch_cfg.mandatory_child("else"), default_cfg);
 		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
 	}
@@ -421,7 +421,7 @@ void wml_tag::add_filter(const config& cond_cfg)
 	// DO NOT MOVE THIS! It needs to be copied!
 	else_filter.add_child("not", filter);
 	if(cond_cfg.has_child("then")) {
-		conditions_.emplace_back(cond_cfg.child("then"), filter);
+		conditions_.emplace_back(cond_cfg.mandatory_child("then"), filter);
 		const std::string name = formatter() << get_name() << "[then]";
 		conditions_.back().set_name(name);
 	}
@@ -437,7 +437,7 @@ void wml_tag::add_filter(const config& cond_cfg)
 		conditions_.back().set_name(name);
 	}
 	if(cond_cfg.has_child("else")) {
-		conditions_.emplace_back(cond_cfg.child("else"), else_filter);
+		conditions_.emplace_back(cond_cfg.mandatory_child("else"), else_filter);
 		const std::string name = formatter() << get_name() << "[else]";
 		conditions_.back().set_name(name);
 	}

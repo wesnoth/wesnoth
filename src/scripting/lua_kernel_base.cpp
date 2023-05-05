@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -1048,8 +1048,8 @@ bool lua_kernel_base::load_string(char const * prog, const std::string& name, er
 void lua_kernel_base::run_lua_tag(const config& cfg)
 {
 	int nArgs = 0;
-	if (const config& args = cfg.child("args")) {
-		luaW_pushconfig(this->mState, args);
+	if (auto args = cfg.optional_child("args")) {
+		luaW_pushconfig(this->mState, *args);
 		++nArgs;
 	}
 	this->run(cfg["code"].str().c_str(), cfg["name"].str(), nArgs);

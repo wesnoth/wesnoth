@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -53,29 +53,8 @@ static lg::log_domain log_config("config");
 
 using game_config::tile_size;
 
-template<typename T>
-struct cache_item
-{
-	cache_item()
-		: item()
-		, loaded(false)
-	{
-	}
-
-	cache_item(const T& item)
-		: item(item)
-		, loaded(true)
-	{
-	}
-
-	T item;
-	bool loaded;
-};
-
-namespace std
-{
 template<>
-struct hash<image::locator::value>
+struct std::hash<image::locator::value>
 {
 	std::size_t operator()(const image::locator::value& val) const
 	{
@@ -96,24 +75,32 @@ struct hash<image::locator::value>
 		return hash;
 	}
 };
-}
 
 namespace image
 {
 template<typename T>
 class cache_type
 {
-public:
-	cache_type()
-		: content_()
-	{
-	}
+	using Key = locator::value;
 
-	cache_item<T>& get_element(int index)
+public:
+	struct cache_item
 	{
-		if(static_cast<unsigned>(index) >= content_.size())
-			content_.resize(index + 1);
-		return content_[index];
+		T item {};
+		bool loaded = false;
+
+		void populate(T&& value)
+		{
+			item = value;
+			loaded = true;
+		}
+	};
+
+	cache_type() = default;
+
+	cache_item& get_element(const Key& item)
+	{
+		return content_[item];
 	}
 
 	void flush()
@@ -122,41 +109,47 @@ public:
 	}
 
 private:
-	std::vector<cache_item<T>> content_;
+	std::unordered_map<Key, cache_item> content_;
 };
+
+std::size_t locator::hash() const
+{
+	return std::hash<value>{}(val_);
+}
 
 template<typename T>
 bool locator::in_cache(cache_type<T>& cache) const
 {
-	return index_ < 0 ? false : cache.get_element(index_).loaded;
+	return cache.get_element(val_).loaded;
 }
 
 template<typename T>
 const T& locator::locate_in_cache(cache_type<T>& cache) const
 {
-	static T dummy;
-	return index_ < 0 ? dummy : cache.get_element(index_).item;
+	return cache.get_element(val_).item;
 }
 
 template<typename T>
 T& locator::access_in_cache(cache_type<T>& cache) const
 {
-	static T dummy;
-	return index_ < 0 ? dummy : cache.get_element(index_).item;
+	return cache.get_element(val_).item;
 }
 
 template<typename T>
-void locator::add_to_cache(cache_type<T>& cache, const T& data) const
+std::optional<T> locator::copy_from_cache(cache_type<T>& cache) const
 {
-	if(index_ >= 0) {
-		cache.get_element(index_) = cache_item<T>(data);
-	}
+	const auto& elem = cache.get_element(val_);
+	return elem.loaded ? std::make_optional(elem.item) : std::nullopt;
+}
+
+template<typename T>
+void locator::add_to_cache(cache_type<T>& cache, T data) const
+{
+	cache.get_element(val_).populate(std::move(data));
 }
 
 namespace
 {
-image::locator::locator_finder_t locator_finder;
-
 /** Definition of all image maps */
 std::array<surface_cache, NUM_TYPES> surfaces_;
 
@@ -229,8 +222,6 @@ mini_terrain_cache_map mini_terrain_cache;
 mini_terrain_cache_map mini_fogged_terrain_cache;
 mini_terrain_cache_map mini_highlighted_terrain_cache;
 
-static int last_index_ = 0;
-
 void flush_cache()
 {
 	for(surface_cache& cache : surfaces_) {
@@ -250,22 +241,6 @@ void flush_cache()
 	mini_highlighted_terrain_cache.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
-	/* We can't reset last_index_, since some locators are still alive
-	   when using :refresh. That would cause them to point to the wrong
-	   images. Not resetting the variable causes a memory leak, though. */
-	// last_index_ = 0;
-}
-
-void locator::init_index()
-{
-	auto i = locator_finder.find(val_);
-
-	if(i == locator_finder.end()) {
-		index_ = last_index_++;
-		locator_finder.emplace(val_, index_);
-	} else {
-		index_ = i->second;
-	}
 }
 
 void locator::parse_arguments()
@@ -297,52 +272,39 @@ void locator::parse_arguments()
 }
 
 locator::locator()
-	: index_(-1)
-	, val_()
+	: val_()
 {
 }
 
 locator::locator(const locator& a, const std::string& mods)
-	: index_(-1)
-	, val_(a.val_)
+	: val_(a.val_)
 {
 	if(!mods.empty()) {
 		val_.modifications_ += mods;
 		val_.type_ = SUB_FILE;
-		init_index();
-	} else {
-		index_ = a.index_;
 	}
 }
 
 locator::locator(const char* filename)
-	: index_(-1)
-	, val_(filename)
+	: val_(filename)
 {
 	parse_arguments();
-	init_index();
 }
 
 locator::locator(const std::string& filename)
-	: index_(-1)
-	, val_(filename)
+	: val_(filename)
 {
 	parse_arguments();
-	init_index();
 }
 
 locator::locator(const std::string& filename, const std::string& modifications)
-	: index_(-1)
-	, val_(filename, modifications)
+	: val_(filename, modifications)
 {
-	init_index();
 }
 
 locator::locator(const char* filename, const char* modifications)
-	: index_(-1)
-	, val_(filename, modifications)
+	: val_(filename, modifications)
 {
-	init_index();
 }
 
 locator::locator(const std::string& filename,
@@ -350,17 +312,13 @@ locator::locator(const std::string& filename,
 		int center_x,
 		int center_y,
 		const std::string& modifications)
-	: index_(-1)
-	, val_(filename, loc, center_x, center_y, modifications)
+	: val_(filename, loc, center_x, center_y, modifications)
 {
-	init_index();
 }
 
 locator& locator::operator=(const locator& a)
 {
-	index_ = a.index_;
 	val_ = a.val_;
-
 	return *this;
 }
 
@@ -453,8 +411,8 @@ bool locator::value::operator==(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ == a.filename_;
 	} else if(type_ == SUB_FILE) {
-		return filename_ == a.filename_ && loc_ == a.loc_ && modifications_ == a.modifications_
-			   && center_x_ == a.center_x_ && center_y_ == a.center_y_;
+		return std::tie(filename_, loc_, modifications_, center_x_, center_y_) ==
+			std::tie(a.filename_, a.loc_, a.modifications_, a.center_x_, a.center_y_);
 	}
 
 	return false;
@@ -467,15 +425,8 @@ bool locator::value::operator<(const value& a) const
 	} else if(type_ == FILE) {
 		return filename_ < a.filename_;
 	} else if(type_ == SUB_FILE) {
-		if(filename_ != a.filename_)
-			return filename_ < a.filename_;
-		if(loc_ != a.loc_)
-			return loc_ < a.loc_;
-		if(center_x_ != a.center_x_)
-			return center_x_ < a.center_x_;
-		if(center_y_ != a.center_y_)
-			return center_y_ < a.center_y_;
-		return (modifications_ < a.modifications_);
+		return std::tie(filename_, loc_, modifications_, center_x_, center_y_) <
+			std::tie(a.filename_, a.loc_, a.modifications_, a.center_x_, a.center_y_);
 	}
 
 	return false;
@@ -842,8 +793,8 @@ surface get_surface(
 	surface_cache& imap = surfaces_[type];
 
 	// return the image if already cached
-	if (i_locator.in_cache(imap)) {
-		return i_locator.locate_in_cache(imap);
+	if(auto cached_item = i_locator.copy_from_cache(imap)) {
+		return *cached_item;
 	}
 
 	DBG_IMG << "surface cache [" << type << "] miss: " << i_locator;
@@ -1156,11 +1107,8 @@ texture get_texture(const image::locator& i_locator, scale_quality quality, TYPE
 	//
 	// Now attempt to find a cached texture. If found, return it.
 	//
-	bool in_cache = i_locator.in_cache(*cache);
-
-	if(in_cache) {
-		res = i_locator.locate_in_cache(*cache);
-		return res;
+	if(auto cached_item = i_locator.copy_from_cache(*cache)) {
+		return *cached_item;
 	}
 
 	DBG_IMG << "texture cache [" << type << "] miss: " << i_locator;

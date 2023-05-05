@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -221,10 +221,10 @@ stacked_widget_definition::resolution::resolution(const config& cfg)
 	static config dummy("draw");
 	state.emplace_back(dummy);
 
-	const config& child = cfg.child("grid");
+	auto child = cfg.optional_child("grid");
 	VALIDATE(child, _("No grid defined."));
 
-	grid = std::make_shared<builder_grid>(child);
+	grid = std::make_shared<builder_grid>(*child);
 }
 
 // }---------- BUILDER -----------{
@@ -235,7 +235,7 @@ namespace implementation
 builder_stacked_widget::builder_stacked_widget(const config& real_cfg)
 	: builder_styled_widget(real_cfg), stack()
 {
-	const config& cfg = real_cfg.has_child("stack") ? real_cfg.child("stack") : real_cfg;
+	const config& cfg = real_cfg.has_child("stack") ? real_cfg.mandatory_child("stack") : real_cfg;
 	if(&cfg != &real_cfg) {
 		lg::log_to_chat() << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.\n";
 		ERR_WML << "Stacked widgets no longer require a [stack] tag. Instead, place [layer] tags directly in the widget definition.";

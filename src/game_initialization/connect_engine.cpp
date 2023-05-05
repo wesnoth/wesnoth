@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -92,8 +92,8 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	config::child_itors sides = current_config()->child_range("side");
 
 	// AI algorithms.
-	if(const config& era = level_.child("era")) {
-		ai::configuration::add_era_ai_from_config(era);
+	if(auto era = level_.optional_child("era")) {
+		ai::configuration::add_era_ai_from_config(*era);
 	}
 	ai::configuration::add_mod_ai_from_config(level_.child_range("modification"));
 
@@ -174,7 +174,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	}
 
 	// Selected era's factions.
-	for(const config& era : level_.child("era").child_range("multiplayer_side")) {
+	for(const config& era : level_.mandatory_child("era").child_range("multiplayer_side")) {
 		era_factions_.push_back(&era);
 	}
 
@@ -225,11 +225,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 
 
 config* connect_engine::current_config() {
-	if(config& s = scenario()) {
-		return &s;
-	}
-
-	return nullptr;
+	return &scenario();
 }
 
 void connect_engine::import_user(const std::string& name, const bool observer, int side_taken)
@@ -422,7 +418,7 @@ void connect_engine::start_game()
 
 	// Shuffle sides (check settings and if it is a re-loaded game).
 	// Must be done after resolve_random() or shuffle sides, or they won't work.
-	if(state_.mp_settings().shuffle_sides && !force_lock_settings_ && !(level_.child("snapshot") && level_.child("snapshot").child("side"))) {
+	if(state_.mp_settings().shuffle_sides && !force_lock_settings_ && !(level_.has_child("snapshot") && level_.mandatory_child("snapshot").has_child("side"))) {
 
 		// Only playable sides should be shuffled.
 		std::vector<int> playable_sides;
@@ -506,7 +502,7 @@ void connect_engine::start_game_commandline(const commandline_options& cmdline_o
 
 		// Set AI algorithm to default for all sides,
 		// then override if commandline option was given.
-		std::string ai_algorithm = game_config.child("ais")["default_ai_algorithm"].str();
+		std::string ai_algorithm = game_config.mandatory_child("ais")["default_ai_algorithm"].str();
 		side->set_ai_algorithm(ai_algorithm);
 
 		if(cmdline_opts.multiplayer_algorithm) {
@@ -578,13 +574,13 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 {
 	std::pair<bool, bool> result(false, true);
 
-	if(data.child("leave_game")) {
+	if(data.has_child("leave_game")) {
 		result.first = true;
 		return result;
 	}
 
 	// A side has been dropped.
-	if(const config& side_drop = data.child("side_drop")) {
+	if(auto side_drop = data.optional_child("side_drop")) {
 		unsigned side_index = side_drop["side_num"].to_int() - 1;
 
 		if(side_index < side_engines_.size()) {
@@ -691,20 +687,20 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data)
 		}
 	}
 
-	if(const config& change_faction = data.child("change_faction")) {
+	if(auto change_faction = data.optional_child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
 		if(side_taken != -1 || !first_scenario_) {
-			import_user(change_faction, false, side_taken);
+			import_user(*change_faction, false, side_taken);
 			update_and_send_diff();
 		}
 	}
 
-	if(const config& observer = data.child("observer")) {
-		import_user(observer, true);
+	if(auto observer = data.optional_child("observer")) {
+		import_user(*observer, true);
 		update_and_send_diff();
 	}
 
-	if(const config& observer = data.child("observer_quit")) {
+	if(auto observer = data.optional_child("observer_quit")) {
 		const std::string& observer_name = observer["name"];
 
 		if(connected_users().find(observer_name) != connected_users().end()) {
@@ -773,12 +769,12 @@ void connect_engine::save_reserved_sides_information()
 		}
 	}
 
-	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
+	level_.mandatory_child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
 void connect_engine::load_previous_sides_users()
 {
-	std::map<std::string, std::string> side_users = utils::map_split(level_.child("multiplayer")["side_users"]);
+	std::map<std::string, std::string> side_users = utils::map_split(level_.mandatory_child("multiplayer")["side_users"]);
 	std::set<std::string> names;
 	for(side_engine_ptr side : side_engines_) {
 		const std::string& save_id = side->previous_save_id();
@@ -942,7 +938,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	}
 
 	// Initialize ai algorithm.
-	if(const config& ai = cfg.child("ai")) {
+	if(auto ai = cfg.optional_child("ai")) {
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	}
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -58,7 +58,7 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 		skip_replay_ = false;
 	}
 
-	if(gui_->is_blindfolded() && gamestate().first_human_team_ != -1) {
+	if(gui_->is_blindfolded() && !is_observer()) {
 		blindfold_.unblind();
 	}
 }
@@ -101,6 +101,7 @@ void playmp_controller::remove_blindfold()
 
 void playmp_controller::play_linger_turn()
 {
+	turn_data_.send_data();
 	if(replay_controller_.get() != nullptr) {
 		// We have probably been using the mp "back to turn" feature
 		// We continue play since we have reached the end of the replay.
@@ -184,7 +185,6 @@ void playmp_controller::play_human_turn()
 			}
 		} catch(...) {
 			DBG_NG << "Caught exception while playing a side: " << utils::get_unknown_exception_type();
-			turn_data_.send_data();
 			throw;
 		}
 
@@ -205,7 +205,6 @@ void playmp_controller::play_idle_loop()
 			SDL_Delay(1);
 		} catch(...) {
 			DBG_NG << "Caught exception while playing idle loop: " << utils::get_unknown_exception_type();
-			turn_data_.send_data();
 			throw;
 		}
 
@@ -267,35 +266,25 @@ void playmp_controller::linger()
 
 void playmp_controller::wait_for_upload()
 {
+	turn_data_.send_data();
 	// If the host is here we'll never leave since we wait for the host to
 	// upload the next scenario.
 	assert(!is_host());
+	// TODO: should we handle the case that we become the ho0st because the host disconnectes here?a
 
-	config cfg;
-	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
-
-	while(true) {
-		try {
-			bool res = false;
-			gui2::dialogs::loading_screen::display([&]() {
-				gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
-
-				res = mp_info_->connection.wait_and_receive_data(cfg);
-			});
-
-			if(res && turn_data_.process_network_data_from_reader() == turn_info::PROCESS_END_LINGER) {
-				break;
-			} else {
-				throw_quit_game_exception();
+	gui2::dialogs::loading_screen::display([&]() {
+		gui2::dialogs::loading_screen::progress(loading_stage::next_scenario);
+		while(true) {
+			auto res = turn_data_.process_network_data_from_reader();
+			if(res == turn_info::PROCESS_END_LINGER) {
+				return;
+			} else if (res != turn_info::PROCESS_CONTINUE) {
+				throw quit_game_exception();
 			}
-		} catch(const quit_game_exception&) {
-			network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg); });
-			turn_data_.send_data();
-			throw;
+			SDL_Delay(10);
+			gui2::dialogs::loading_screen::spin();
 		}
-	}
-
-	network_reader_.set_source([this](config& cfg) { return receive_from_wesnothd(cfg); });
+	});
 }
 
 void playmp_controller::after_human_turn()
@@ -380,8 +369,6 @@ void playmp_controller::process_oos(const std::string& err_msg) const
 
 void playmp_controller::handle_generic_event(const std::string& name)
 {
-	turn_data_.send_data();
-
 	if(name == "ai_user_interact") {
 		playsingle_controller::handle_generic_event(name);
 		turn_data_.send_data();
@@ -460,6 +447,7 @@ void playmp_controller::play_slice(bool is_delay_enabled)
 		// receive chat during animations and delay
 		process_network_data(true);
 		// cannot use turn_data_.send_data() here.
+		// todo: why? The checks in turn_data_.send_data() should be safe enouth.
 		replay_sender_.sync_non_undoable();
 	}
 

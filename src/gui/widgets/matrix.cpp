@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2022
+	Copyright (C) 2012 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,6 +17,7 @@
 
 #include "gui/widgets/matrix.hpp"
 
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
 #include "gui/core/log.hpp"
@@ -184,11 +185,11 @@ matrix_definition::matrix_definition(const config& cfg)
 
 matrix_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, content(new builder_grid(cfg.child("content", "[matrix_definition]")))
+	, content(new builder_grid(VALIDATE_WML_CHILD(cfg, "content", _("Missing [content] in [matrix_definition]"))))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
+	state.emplace_back(cfg.optional_child("state_enabled"));
+	state.emplace_back(cfg.optional_child("state_disabled"));
 }
 
 // }---------- BUILDER -----------{
@@ -206,22 +207,22 @@ builder_matrix::builder_matrix(const config& cfg)
 	, builder_bottom(nullptr)
 	, builder_left(nullptr)
 	, builder_right(nullptr)
-	, builder_main(create_widget_builder(cfg.child("main", "[matrix]")))
+	, builder_main(create_widget_builder(VALIDATE_WML_CHILD(cfg, "main", _("Missing [main] in [matrix]"))))
 {
-	if(const config& top = cfg.child("top")) {
-		builder_top = std::make_shared<builder_grid>(top);
+	if(auto top = cfg.optional_child("top")) {
+		builder_top = std::make_shared<builder_grid>(*top);
 	}
 
-	if(const config& bottom = cfg.child("bottom")) {
-		builder_bottom = std::make_shared<builder_grid>(bottom);
+	if(auto bottom = cfg.optional_child("bottom")) {
+		builder_bottom = std::make_shared<builder_grid>(*bottom);
 	}
 
-	if(const config& left = cfg.child("left")) {
-		builder_left = std::make_shared<builder_grid>(left);
+	if(auto left = cfg.optional_child("left")) {
+		builder_left = std::make_shared<builder_grid>(*left);
 	}
 
-	if(const config& right = cfg.child("right")) {
-		builder_right = std::make_shared<builder_grid>(right);
+	if(auto right = cfg.optional_child("right")) {
+		builder_right = std::make_shared<builder_grid>(*right);
 	}
 }
 

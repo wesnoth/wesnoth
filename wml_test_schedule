@@ -115,6 +115,7 @@
 0 replace_schedule_prestart
 0 modify_unit_facing
 0 modify_unit_which_recall_list
+0 modify_unit_recall_cost
 0 put_to_recall_and_modify
 0 event_handlers_in_events_1
 0 event_handlers_in_events_3
@@ -144,6 +145,10 @@
 0 test_ability_id_active
 0 test_ability_id_not_active
 0 event_test_filter_attack
+0 event_test_filter_attack_no_defense
+0 event_test_filter_attack_specials
+0 event_test_filter_attack_on_moveto
+0 event_test_filter_attack_opponent_weapon_condition
 0 event_test_filter_wfl
 0 event_test_filter_wfl2
 0 event_test_filter_lua_serializable

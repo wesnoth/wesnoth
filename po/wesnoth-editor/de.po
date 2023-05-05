@@ -6,18 +6,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.14\n"
+"Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-19 22:03-0600\n"
-"PO-Revision-Date: 2020-01-13 02:56+0100\n"
-"Last-Translator: Aaron Winter <winter.aaron93@gmail.com>\n"
-"Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
+"POT-Creation-Date: 2023-04-15 19:59-0500\n"
+"PO-Revision-Date: 2022-02-04 21:56+0100\n"
+"Last-Translator: s1m0n#1701\n"
+"Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -228,7 +228,7 @@ msgstr "Einheiten"
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
-msgstr "Zeitplan Menü"
+msgstr "Zeitplaneditor"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:455
@@ -242,7 +242,7 @@ msgstr "Zeitplan zuweisen"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Identifier: "
-msgstr "Kennung:"
+msgstr "Kennung: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:66
 msgid "Name: "
@@ -302,7 +302,7 @@ msgstr "Einheit umbenennen"
 
 #: src/editor/controller/editor_controller.cpp:1158
 msgid "Name:"
-msgstr "Name: "
+msgstr "Name:"
 
 #: src/editor/map/context_manager.cpp:211
 msgid "Load Map"
@@ -368,7 +368,7 @@ msgstr "Keine Generatoren für Zufallskarten gefunden."
 #: src/editor/map/context_manager.cpp:717
 #: src/editor/map/context_manager.cpp:722
 msgid "Map creation failed."
-msgstr "Erstellen der Karte fehlgeschlagen"
+msgstr "Erstellen der Karte fehlgeschlagen."
 
 #: src/editor/map/context_manager.cpp:737
 msgid "Unsaved Changes"
@@ -456,12 +456,12 @@ msgid "(Unknown Group)"
 msgstr "(Unbekannte Fraktion)"
 
 # suffix im mouseover zu den kampagnen spezifischen terrains, die extra wml erfordern, damit sie auf einer karte nutzbar sind
-#: src/editor/palette/editor_palettes.cpp:311
+#: src/editor/palette/editor_palettes.cpp:314
 msgid "(non-core)"
 msgstr "(kein Kernbestandteil)"
 
 # beschreibung im mouseover zu den kampagnen spezifischen terrains, die extra wml erfordern, damit sie auf einer karte nutzbar sind
-#: src/editor/palette/editor_palettes.cpp:312
+#: src/editor/palette/editor_palettes.cpp:315
 msgid "Will not work in game without extra care."
 msgstr "Funktioniert nicht ohne weitere Anpassungen im WML."
 
@@ -491,30 +491,30 @@ msgstr "Löschen"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr ""
+msgstr "Links-Klick: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr ""
+msgstr "Rechts-Klick: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift + Links-Klick: Zeichnet nur das Overlay"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + Rechtsklick: Zeichnet nur das Basisgelände"
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + Mausklick: Gelände kopieren"
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Strg + Mausklick: Gelände kopieren"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:94
 msgid "Clipboard support not found, contact your packager"
@@ -528,134 +528,3 @@ msgstr "Datei auswählen"
 #: src/gui/dialogs/editor/custom_tod.cpp:159
 msgid "Select"
 msgstr "Auswählen"
-
-#~ msgid "player^None"
-#~ msgstr "Keiner"
-
-#~ msgid "Player $player_number"
-#~ msgstr "Spieler $player_number"
-
-#~ msgid "(Unknown unit type: $type)"
-#~ msgstr "(Üngültige Einheitenkennung: $type)"
-
-#~ msgid "Recruit: "
-#~ msgstr "Ausbilden:"
-
-#~ msgid "FG: "
-#~ msgstr "VG: "
-
-#~ msgid "BG: "
-#~ msgstr "HG: "
-
-#~ msgid "Underground"
-#~ msgstr "Untergrund"
-
-#~ msgid "Deep Underground"
-#~ msgstr "Tiefer Untergrund"
-
-#~ msgid "Indoors"
-#~ msgstr "Innen"
-
-#~ msgid "None"
-#~ msgstr "keine"
-
-#~ msgid "(New Map)"
-#~ msgstr "(Neue Karte)"
-
-#~ msgid "(New Scenario)"
-#~ msgstr "(Neues Szenario)"
-
-#~ msgid "Choose a File to Open"
-#~ msgstr "Wählt eine Datei zum Laden aus"
-
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "Diese Datei existiert schon. Soll sie überschrieben werden?"
-
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Wählt eine Maske aus, die Ihr anwenden wollt"
-
-#~ msgid "Player"
-#~ msgstr "Spieler"
-
-#~ msgid "Quit"
-#~ msgstr "Beenden"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Verwendet die linke und rechte Maustaste, um Gelände im Vorder- oder "
-#~ "Hintergrund zu zeichnen. Haltet Shift gedrückt, um nur auf der Basisebene "
-#~ "zu zeichnen. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel "
-#~ "übernommen."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Die linke Maustaste wählt einen Bereich aus, die Rechte wählt diesen ab. "
-#~ "Haltet Shift gedrückt, um alle Felder desselben Geländetyps mit dem "
-#~ "Zauberstabwerkzeug auszuwählen."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Die linke Maustaste setzt die Spielerposition, die Rechte löscht sie. Mit "
-#~ "den Zifferntasten springt Ihr zur jeweiligen Startposition, Alt+Nummer "
-#~ "setzt die jeweilige Startposition, Entfernen löscht diese."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Klickt, um den Inhalt der Zwischenablage einzufügen. Verwendet die "
-#~ "Zoomfunktion, wenn Ihr große Gebiete einfügen wollt. Wollte Ihr den "
-#~ "Inhalt der Zwischenablage transformieren, verwendet die Funktionen aus "
-#~ "dem Menü »Bearbeiten« (Rotieren, Spiegeln)."
-
-#~ msgid "Custom setting"
-#~ msgstr "Eigene Einstellungen"
-
-#~ msgid "Edit"
-#~ msgstr "Bearbeiten"
-
-#~ msgid "Undo"
-#~ msgstr "Rückgängig"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Rückgängig machen nicht möglich"
-
-#~ msgid "Redo"
-#~ msgstr "Wiederherstellen"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Wiederholen machen nicht möglich"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Geländeübergänge automatisch aktualisieren: Ja"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Geländeübergänge automatisch aktualisieren: Teilweise"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Geländeübergänge automatisch aktualisieren: Nein"
-
-#~ msgid ""
-#~ "Which player should start here? You can use alt and a number key to set "
-#~ "the starting position for a player, and del to clear the starting "
-#~ "position under the cursor. Pressing a number key by itself will scroll to "
-#~ "that player’s starting position."
-#~ msgstr ""
-#~ "Welcher Spieler soll hier starten? Verwendet die Taste »Alt« und eine "
-#~ "Zifferntaste um die Startposition für eine Spieler zu setzen und »Entf«, "
-#~ "um die Startposition unter dem Mauszeiger zu löschen. Drückt Ihr eine "
-#~ "Zifferntaste alleine, springt der Editor zur Startposition des jeweiligen "
-#~ "Spielers."
-
-#~ msgid "FG"
-#~ msgstr "VG"
-
-#~ msgid "BG"
-#~ msgstr "HG"

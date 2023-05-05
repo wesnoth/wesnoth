@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/transient_message.hpp"
 #include "game_board.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 #include "replay.hpp"
@@ -60,7 +61,7 @@ void recruit_action::write(config & cfg) const
 	shroud_clearing_action::write(cfg);
 
 	recruit_from.write(cfg.add_child("leader"));
-	config & child = cfg.child("unit");
+	config & child = cfg.mandatory_child("unit");
 	child["type"] = u_type.parent_id();
 }
 
@@ -81,7 +82,7 @@ bool recruit_action::undo(int side)
 	}
 
 	const unit &un = *un_it;
-	statistics::un_recruit_unit(un);
+	resources::controller->statistics().un_recruit_unit(un);
 	current_team.spend_gold(-un.type().cost());
 
 	//MP_COUNTDOWN take away recruit bonus

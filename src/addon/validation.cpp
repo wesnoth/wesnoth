@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -301,9 +301,9 @@ bool contains_hashlist(const config& from, const config& to)
 	}
 
 	for(const config& d : to.child_range("dir")) {
-		const config& origin_dir = from.find_child("dir", "name", d["name"]);
+		auto origin_dir = from.find_child("dir", "name", d["name"]);
 		if(origin_dir) {
-			if(!contains_hashlist(origin_dir, d)) {
+			if(!contains_hashlist(*origin_dir, d)) {
 				return false;
 			}
 		} else {
@@ -343,10 +343,10 @@ static bool write_difference(config& pack, const config& from, const config& to,
 	}
 
 	for(const config& d : to.child_range("dir")) {
-		const config& origin_dir = from.find_child("dir", "name", d["name"]);
+		auto origin_dir = from.find_child("dir", "name", d["name"]);
 		config dir;
 		if(origin_dir) {
-			if(write_difference(dir, origin_dir, d, with_content)) {
+			if(write_difference(dir, *origin_dir, d, with_content)) {
 				pack.add_child("dir", dir);
 				has_changes = true;
 			}

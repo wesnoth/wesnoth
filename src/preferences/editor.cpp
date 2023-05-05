@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -73,14 +73,14 @@ namespace editor {
 
 		std::vector<std::string> do_read_editor_mru()
 		{
-			const config& cfg = preferences::get_child("editor_recent_files");
+			auto cfg = preferences::get_child("editor_recent_files");
 
 			std::vector<std::string> mru;
 			if(!cfg) {
 				return mru;
 			}
 
-			for(const config& child : cfg.child_range("entry"))
+			for(const config& child : cfg->child_range("entry"))
 			{
 				const std::string& entry = child["path"].str();
 				if(!entry.empty()) {

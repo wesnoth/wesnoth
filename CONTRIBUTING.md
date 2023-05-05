@@ -1,6 +1,6 @@
 # Contributing to Wesnoth
 
-Wesnoth was built with the hard work of volunteers all over the world! Everyone is welcome to come and contribute. TODO: list the different types of contributions that people can make.
+Wesnoth was built with the hard work of volunteers all over the world! Everyone is welcome to come and contribute code, art, and music to improve the game for everyone who wants to play it.
 
 ## Contacting Us
 

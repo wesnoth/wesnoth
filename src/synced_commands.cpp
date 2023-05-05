@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -241,7 +241,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 
 	// Find the unit in the recall list.
 	unit_ptr dismissed_unit = current_team.recall_list().find_if_matches_id(unit_id);
-	assert(dismissed_unit);
+	if (!dismissed_unit) {
+		error_handler("illegal disband\n");
+		return false;
+	}
 	//add dismissal to the undo stack
 	resources::undo_stack->add_dismissal(dismissed_unit);
 
@@ -338,7 +341,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  use_undo, /*show*/, /*error_
 
 	// Not clearing the undo stack here causes OOS because we added an entry to the replay but no entry to the undo stack.
 	if(use_undo) {
-		if(!undoable || !synced_context::can_undo()) {
+		if(!undoable || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();
@@ -352,7 +355,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(custom_command, child,  use_undo, /*show*/, /*er
 	assert(resources::lua_kernel);
 	resources::lua_kernel->custom_command(child["name"], child.child_or_empty("data"));
 	if(use_undo) {
-		if(!synced_context::can_undo()) {
+		if(synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		} else {
 			resources::undo_stack->add_dummy();
@@ -367,31 +370,32 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error
 	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
-	// We cannot update shroud here like 'if(active) resources::undo_stack->commit_vision();'.
-	// because the undo.cpp code assumes exactly 1 entry in the undo stack per entry in the replay.
-	// And doing so would create a second entry in the undo stack for this 'auto_shroud' entry.
+	if(active && !current_team.auto_shroud_updates()) {
+		resources::undo_stack->commit_vision();
+	}
 	current_team.set_auto_shroud_updates(active);
-	resources::undo_stack->add_auto_shroud(active);
+	if(resources::undo_stack->can_undo()) {
+		resources::undo_stack->add_auto_shroud(active);
+	}
 	return true;
 }
 
-/** from resources::undo_stack->commit_vision(bool is_replay):
- * Updates fog/shroud based on the undo stack, then updates stack as needed.
- * Call this when "updating shroud now".
- * This may fire events and change the game state.
- *
- * This means it is a synced command like any other.
- */
-
 SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, error_handler)
 {
+	// When "updating shroud now" is used.
+	// Updates fog/shroud based on the undo stack, then updates stack as needed.
+	// This may fire events and change the game state.
+
 	assert(use_undo);
 	team &current_team = resources::controller->current_team();
 	if(current_team.auto_shroud_updates()) {
 		error_handler("Team has DSU disabled but we found an explicit shroud update");
 	}
-	resources::undo_stack->commit_vision();
+	bool res = resources::undo_stack->commit_vision();
 	resources::undo_stack->add_update_shroud();
+	if(res) {
+		resources::undo_stack->clear();
+	}
 	return true;
 }
 

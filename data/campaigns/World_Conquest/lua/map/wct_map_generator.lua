@@ -39,13 +39,13 @@ local function run_postgeneration(map_data, id, scenario_content, nplayers, nhum
 	wesnoth.dofile("./postgeneration_utils/noise.lua")
 	local postgenfile = postgenerators[id] or id .. "./lua"
 	--local postgenfile = postgenerators["2f"] or id .. "./lua"
+	_G.map = wesnoth.map.create(map_data)
 	_G.scenario_data = {
 		nplayers = nplayers,
 		nhumanplayers = nhumanplayer,
 		scenario = scenario_content,
+		total_tiles = _G.map.width * _G.map.height,
 	}
-	_G.map = wesnoth.map.create(map_data)
-	_G.total_tiles = _G.map.width * _G.map.height
 	_G.prestart_event = scenario_content.event[1]
 	_G.print_time = function(msg)
 		wesnoth.log("info", msg .. " time: " .. (wesnoth.ms_since_init() - postgen_starttime))
@@ -58,7 +58,6 @@ local function run_postgeneration(map_data, id, scenario_content, nplayers, nhum
 	wct_fix_impassible_item_spawn(_G.map)
 	local map = _G.map.data
 	_G.map = nil
-	_G.total_tiles = nil
 	_G.prestart_event = nil
 	_G.scenario_data = nil
 	return map

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
+"POT-Creation-Date: 2023-04-23 03:24 UTC\n"
 "PO-Revision-Date: 2020-09-25 15:06+0200\n"
 "Last-Translator: Piotr Makarewicz <makpio@interia.pl>\n"
 "Language-Team: none\n"
@@ -17,7 +17,9 @@ msgstr ""
 "X-Poedit-SearchPath-0: /usr/local/share/wesnoth\n"
 
 #. [campaign]: id=Liberty
+#. [achievement_group]
 #: data/campaigns/Liberty/_main.cfg:10 data/campaigns/Liberty/_main.cfg:11
+#: data/campaigns/Liberty/achievements.cfg:3
 msgid "Liberty"
 msgstr "Wolność"
 
@@ -91,6 +93,59 @@ msgstr "Utrzymanie kampanii"
 #: data/campaigns/Liberty/_main.cfg:52
 msgid "Artwork and Graphics Design"
 msgstr "Projektowanie grafiki"
+
+#. [achievement]: id=liberty_or_death
+#: data/campaigns/Liberty/achievements.cfg:7
+msgid "Give Me Liberty or Give Me Death!"
+msgstr ""
+
+#. [achievement]: id=liberty_or_death
+#: data/campaigns/Liberty/achievements.cfg:8
+msgid "Complete Civil Disobedience with at least 3 peasants remaining."
+msgstr ""
+
+#. [achievement]: id=liberty_nameless
+#: data/campaigns/Liberty/achievements.cfg:14
+msgid "The Nameless General"
+msgstr ""
+
+#. [achievement]: id=liberty_nameless
+#: data/campaigns/Liberty/achievements.cfg:15
+msgid "Find out the name of the general in Unlawful Orders."
+msgstr ""
+
+#. [achievement]: id=liberty_iron
+#: data/campaigns/Liberty/achievements.cfg:21
+msgid "Harper vs. Goliath"
+msgstr ""
+
+#. [achievement]: id=liberty_iron
+#: data/campaigns/Liberty/achievements.cfg:22
+msgid "Defeat an Iron Mauler with Harper in Hide and Seek."
+msgstr ""
+
+#. [achievement]: id=liberty_hunter
+#. this is the achievement for the scenario The Hunters
+#: data/campaigns/Liberty/achievements.cfg:29
+#, fuzzy
+#| msgid "Peasant Hunter"
+msgid "Perfect Hunter"
+msgstr "Chłop myśliwy"
+
+#. [achievement]: id=liberty_hunter
+#: data/campaigns/Liberty/achievements.cfg:30
+msgid "Complete The Hunters with no losses"
+msgstr ""
+
+#. [achievement]: id=liberty_army
+#: data/campaigns/Liberty/achievements.cfg:36
+msgid "Force of Arms is Pointless Without Strategy"
+msgstr ""
+
+#. [achievement]: id=liberty_army
+#: data/campaigns/Liberty/achievements.cfg:37
+msgid "On Challenging difficulty, defeat Dommel in Glory."
+msgstr ""
 
 #. [scenario]: id=01_The_Raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
@@ -227,9 +282,9 @@ msgstr "Gobliny docierają do wioski Dallben"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:117
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:96
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:100
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:161
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:112
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:129
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:155
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:186
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:156
@@ -240,9 +295,9 @@ msgstr "Śmierć Baldrasa"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:121
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:100
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:104
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:165
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:116
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:133
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:159
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:190
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:160
@@ -694,7 +749,7 @@ msgstr "Tarwen"
 #. [side]: type=Lieutenant, id=Archarel
 #. [side]: type=General, id=Dommel
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:60
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:81
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:82
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:85
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:101
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:121
@@ -704,22 +759,22 @@ msgid "Weldyn"
 msgstr "Weldyn"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:92
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:96
 msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "Zabij kapitana armii Wesnoth, Tarwena"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:145
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:152
 msgid "Look, riders approach."
 msgstr "Patrzcie, nadciągają jeźdźcy."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:149
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:156
 msgid "Stand fast, nephew."
 msgstr "Trzymaj pozycję, siostrzeńcze."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:162
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:169
 msgid ""
 "By order of the Queen, the magistrate of this town is to travel with us to "
 "Elensefar for vetting."
@@ -728,7 +783,7 @@ msgstr ""
 "na weryfikację."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:166
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:173
 #, fuzzy
 #| msgid ""
 #| "The Crown did long since abandon our village. You Wesnothians be too busy "
@@ -744,7 +799,7 @@ msgstr ""
 "Nikt stąd nigdzie nie idzie."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:170
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:177
 msgid ""
 "Insolent peasant. Try not my patience, else I shall be forced to drag thy "
 "deceased corpse back with me to the city."
@@ -753,29 +808,29 @@ msgstr ""
 "zawlec ze sobą do miasta twoje martwe zwłoki."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:174
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:181
 msgid "Try it then, stinker."
 msgstr "No to spróbuj, śmierdzielu."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:178
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:185
 msgid "As you wish."
 msgstr "Jak sobie życzysz."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:212
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:219
 msgid "Guard the gate."
 msgstr "Pilnować bramy."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:225
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:232
 #, fuzzy
 #| msgid "<i>Uncle, since when did we have a Queen?</i>"
 msgid "<i>Uncle, since when did we have a queen?</i>"
 msgstr "<i>Wujku, od kiedy mamy Królową?</i>"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:229
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:236
 msgid ""
 "<i>Since a few years back, I thinks, but weren’t never her giving out no "
 "orders...</i>"
@@ -784,7 +839,7 @@ msgstr ""
 "rozkazach...</i>"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:233
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:240
 #, fuzzy
 #| msgid ""
 #| "<i>It don’t really matter right now. Harper, get yerself out o’ here. "
@@ -796,64 +851,64 @@ msgstr ""
 "<i>To teraz bez znaczenia. Harper, wynocha stąd. To nie bitwa dla ciebie.</i>"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:237
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:244
 msgid "I can fight!"
 msgstr "Mogę walczyć!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:241
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:248
 msgid "<i>Harper, do what I says to ya.</i>"
 msgstr "<i>Harper, rób com ci powiedział.</i>"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:245
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:252
 #, fuzzy
 #| msgid "We be in this together. Death to the Wesnothians!"
 msgid "We’re in this together. Death to the Wesnothians!"
 msgstr "Jesteśmy w tym razem. Śmierć Wesnothańczykom!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:249
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:256
 msgid "Impulsive lad..."
 msgstr "Impulsywny chłopak..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:262
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:269
 msgid "Help, help! I’m being repressed!"
 msgstr "Pomocy, pomocy! Jestem osaczony!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:274
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:281
 msgid "They just killed an innocent man! Murderers!"
 msgstr "Właśnie zabili niewinnego człowieka! Mordercy!"
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:279
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:286
 msgid "Cry thine eyes out for me, peasant."
 msgstr "Wypłacz mi się, wieśniaku."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:292
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:299
 msgid "I oughta bring out the good mace to fight off these thugs."
 msgstr "Muszę wziąć dobrą maczugę, by przepędzić tych zbirów."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:338
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:345
 msgid "Back, back ye curs!"
 msgstr "Wracać, wracać, psy!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:350
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:357
 msgid "Take that, you bullies!"
 msgstr "Co wy na to, dranie!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:364
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:371
 msgid "Get out of my village!"
 msgstr "Wynocha z mojej wsi!"
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:385
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:405
 #, fuzzy
 #| msgid ""
 #| "We beated their leader, but a couple of them riders escaped. What shoulds "
@@ -864,7 +919,7 @@ msgstr ""
 "Pokonalimy ich przywódcę, ale kilka jeźdźców uciekło. Co teraz mamy robić?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:390
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:410
 #, fuzzy
 #| msgid ""
 #| "Somethin’ be very wrong here. That Garard weren’t never no hero or "
@@ -880,7 +935,7 @@ msgstr ""
 "Królowa musiała coś jemu zrobić. Jej ludzie to nic więcej niż zwykłe zbiry."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:396
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:416
 #, fuzzy
 #| msgid ""
 #| "We’ve got to tell the people of Delwyn about this. Ol magistrate Relana "
@@ -892,7 +947,7 @@ msgstr ""
 "Musimy powiedzieć o tym ludziom z Delwyn. Stara sołtyska Relana coś wymyśli."
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:401
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:421
 #, fuzzy
 #| msgid ""
 #| "That’s true. Whenever there’s been troubles, we’ve always been the ones "
@@ -904,7 +959,7 @@ msgstr ""
 "To prawda. Kiedykolwiek bylimy w kłopotach, zawszemy pomagali se nawzajem."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:406
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:426
 #, fuzzy
 #| msgid ""
 #| "Fine. We’ll go to Delwyn, see what Relana gots to say. With them riders "
@@ -918,12 +973,12 @@ msgstr ""
 "chętnie nas dzisiaj zaatakowały, myślę że Delwyn też będzie zagrożone."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:411
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:431
 msgid "So we’ll have to fight them Wesnothians again?"
 msgstr "Więc znowu będziemy musieli walczyć z tymi Wesnothańczykami?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:416
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:436
 #, fuzzy
 #| msgid ""
 #| "Alls I can say for certain is we’ve made ourselves enemies of the Crown. "
@@ -936,27 +991,27 @@ msgstr ""
 "nas teraz polować."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:421
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:441
 msgid "Then we’re outlaws."
 msgstr "Więc jesteśmy banitami."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:426
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:446
 msgid "Aye, outlaws."
 msgstr "Tak, banitami."
 
 #. [message]: speaker=Reinforcement Knight
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:519
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:539
 msgid "At your order, Captain."
 msgstr "Na Twój rozkaz, Kapitanie."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:523
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:543
 msgid "Slay them all."
 msgstr "Zabić ich wszystkich."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:527
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:547
 #, fuzzy
 #| msgid ""
 #| "Curses! Their reinforcements has arrived. We’ve gots no chance to fight "
@@ -1479,33 +1534,23 @@ msgstr "Port w Elensefarze"
 msgid "Lord Maddock"
 msgstr "Lord Maddock"
 
-#. [side]: type=General, id=Kestrel
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:68
-msgid "Kestrel"
-msgstr "Kestrel"
-
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:108
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:125
 msgid "Defeat the enemy general"
 msgstr "Pokonaj wrogiego generała"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:120
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:137
 msgid "Death of Maddock"
 msgstr "Śmierć Maddocka"
 
-#. [event]
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:143
-msgid "Rothel"
-msgstr "Rothel"
-
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:194
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:212
 msgid "Maddock, I be coming to report—"
 msgstr "Maddock, przyszedłżem zdać sprawę..."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:198
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:216
 msgid ""
 "I am already aware of your altercation in Dallben, Baldras. Your dissent was "
 "not wise."
@@ -1515,7 +1560,7 @@ msgstr ""
 
 #. [message]: speaker=Baldras
 #. pigdirt is slang for bullshit or hogwash
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:203
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:221
 #, fuzzy
 #| msgid ""
 #| "Dissent? Maddock, I’m not trusting no strange riders who show up out of "
@@ -1530,7 +1575,7 @@ msgstr ""
 "bzdur."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:207
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:225
 #, fuzzy
 #| msgid ""
 #| "This is partially my fault, since I was not able to send a messenger to "
@@ -1549,7 +1594,7 @@ msgstr ""
 "Gararda II."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:211
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:229
 #, fuzzy
 #| msgid ""
 #| "Since Prince Eldred died in the battle as well, the Queen took the throne "
@@ -1568,7 +1613,7 @@ msgstr ""
 "wierności. Taki był cel tamtego patrolu."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:215
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:233
 #, fuzzy
 #| msgid ""
 #| "But Annuvin province be ruled by Elensefar, by you! We has no duty to "
@@ -1579,7 +1624,7 @@ msgstr ""
 "podlegamy Weldyn."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:219
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:237
 #, fuzzy
 #| msgid ""
 #| "You do now. I do not really need to tell you what happens should you "
@@ -1592,7 +1637,7 @@ msgstr ""
 "propozycję Jej Wysokości."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:223
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:241
 #, fuzzy
 #| msgid ""
 #| "Grow a spine, Maddock. If they come to ya and make you swears fealty to "
@@ -1605,7 +1650,7 @@ msgstr ""
 "Asheviere, to ty tak łatwo ulegniesz?"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:227
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:245
 msgid ""
 "Well, they do not come within the walls of my city. There is a large "
 "garrison south at the great fortress of Halstead, but even should they "
@@ -1622,12 +1667,12 @@ msgstr ""
 "miasto."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:231
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:249
 msgid "And what abouts us? Throw us like dogs to those Wesnothians?"
 msgstr "A co z nami? Rzucisz nas jak psy w stronę Wesnothańczyków?"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:235
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:253
 msgid ""
 "We have an uneasy peace to maintain. The treaty between Elensefar and "
 "Wesnoth is ancient, and I do not think Her Majesty means to break it. At the "
@@ -1640,7 +1685,7 @@ msgstr ""
 "z Weldyn, co na pewno rozumiecie."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:239
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:257
 msgid ""
 "But we can’t do nothing! The Queen even be sending them beast orcs against "
 "us, that’s how evil she is! Surely you can’t stand for this..."
@@ -1649,7 +1694,7 @@ msgstr ""
 "bestie, taka jest okrutna! Z pewnością nie możesz tego popierać!"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:243
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:261
 #, fuzzy
 #| msgid ""
 #| "Yes, I am aware of Queen Asheviere’s propensity for hiring orcs to "
@@ -1671,7 +1716,7 @@ msgstr ""
 "ale masz za to szansę ocalić swoją wioskę. Pomyśl o szerszym obrazie."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:247
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:265
 #, fuzzy
 #| msgid ""
 #| "The bigger picture of you sittin’ here with yer men instead of taking "
@@ -1686,12 +1731,12 @@ msgstr ""
 "twoich rąk."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:251
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:269
 msgid "I very much doubt they would be bold enough to attack us outright—"
 msgstr "Bardzo wątpię, żeby odważyli się nas bezpośrednio zaatakować..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:255
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:273
 #, fuzzy
 #| msgid ""
 #| "Head out o’ yer behind, Maddock, open yer eyes! Look south and tell me "
@@ -1704,7 +1749,7 @@ msgstr ""
 "jeszcze raz!"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:268
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:286
 #, fuzzy
 #| msgid ""
 #| "An invading army? No, something is not right with those soldiers... but I "
@@ -1717,17 +1762,17 @@ msgstr ""
 "nie mamy czasu się nad tym teraz zastanawiać. Do broni!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:291
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:309
 msgid "Hey, look! Some buried treasure!"
 msgstr "Ej, patrzcie! Jakiś zakopany skarb!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:316
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:334
 msgid "Looks like someone left some supplies here."
 msgstr "Wygląda na to, że ktoś zostawił tu trochę zapasów."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:341
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:359
 msgid ""
 "It says, “Here lies Daneth, child of the Light, loyal defender of Lord and "
 "Land.” Whoever that was."
@@ -1736,17 +1781,17 @@ msgstr ""
 "Lądu.” Kimkolwiek był."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:345
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:363
 msgid "Maddock’s firstborn son."
 msgstr "Pierworodny syn Maddocka."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:349
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:367
 msgid "Oh."
 msgstr "Oj."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:362
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:380
 msgid ""
 "That’s a deep well! Wonder how far down it goes. Guess I’ll chuck a rock "
 "down and find out."
@@ -1755,7 +1800,7 @@ msgstr ""
 "dowiem."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:366
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:384
 msgid ""
 "...\n"
 "...\n"
@@ -1766,12 +1811,12 @@ msgstr ""
 "..."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:372
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:390
 msgid "Plunk!"
 msgstr "Plum!"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:405
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:423
 msgid "Hold there, soldier! Can we not come to terms without bloodshed?"
 msgstr ""
 "Stój, żołnierzu! Czy nie możemy dojść do porozumienia bez rozlewu krwi?"
@@ -1779,24 +1824,24 @@ msgstr ""
 #. [message]: speaker=unit
 #. [message]: speaker=Lord Maddock
 #. [message]: type=Spearman
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:409
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:826
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:873
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:427
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:871
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:885
 msgid "..."
 msgstr "..."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:413
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:431
 msgid "Hmm. Something is quite wrong indeed..."
 msgstr "Hmm. Coś naprawdę jest nie w porządku..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:426
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:444
 msgid "<i>The sun sets...</i>"
 msgstr "<i>Słońce zachodzi...</i>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:431
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:449
 #, fuzzy
 #| msgid ""
 #| "Baldras and his men watch, petrified, as the skin and flesh of their "
@@ -1809,14 +1854,14 @@ msgstr ""
 "zaczynają się rozkładać."
 
 #. [wml_message]
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:512
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:530
 msgid "Could not convert a $stored_changers[$i].type, please report!"
 msgstr ""
 "Nie można przekonwertować $stored_changers[$i].type, prosimy o zgłoszenie "
 "błędu!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:775
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:793
 #, fuzzy
 #| msgid ""
 #| "By the Light! Them things look like evil spirits! Are they them wicked "
@@ -1829,7 +1874,7 @@ msgstr ""
 "nieumarli, o których mi opowiadałeś, Wujku?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:779
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:797
 #, fuzzy
 #| msgid ""
 #| "They bears some likeness, but these men almost seems half alive. This be "
@@ -1842,7 +1887,7 @@ msgstr ""
 "pewno jakieś prawdziwe przerażające czarnoksięstwo."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:788
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:806
 msgid ""
 "So, their human aspect returns. Whatever these creatures are, we shall crush "
 "them all under the light of the sun."
@@ -1850,13 +1895,20 @@ msgstr ""
 "Więc wraca ich ludzka strona. Czymkolwiek są te stworzenia, zmiażdżymy je "
 "wszystkie w blasku słońca."
 
+#. [modify_unit]
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:828
+#, fuzzy
+#| msgid "Kestrel"
+msgid "General Kestrel"
+msgstr "Kestrel"
+
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:802
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:835
 msgid "Who are you? What are you?"
 msgstr "Kim jesteście? Czym jesteście?"
 
 #. [message]: speaker=Kestrel
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:806
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:839
 #, fuzzy
 #| msgid ""
 #| "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
@@ -1875,12 +1927,12 @@ msgstr ""
 "przechodzą... w inną płaszczyznę piekielnego istnienia..."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:817
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:862
 msgid "Such is the price for treachery."
 msgstr "Taka jest cena zdrady."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:821
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:866
 #, fuzzy
 #| msgid "Look, Maddock, we helped you defend yer city. Wills you help us now?"
 msgid "Maddock, we helped you defend your city. Will you help us now?"
@@ -1888,7 +1940,7 @@ msgstr ""
 "Zobacz, Maddock, pomoglimy ci obronić miasto. Teraz czy ty nam pomożesz?"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:831
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:876
 #, fuzzy
 #| msgid ""
 #| "<i>Listen carefully. I shall not openly speak against Asheviere with some "
@@ -1909,12 +1961,12 @@ msgstr ""
 "</i>"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:835
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:880
 msgid "<i>What can ya offer us then?</i>"
 msgstr ""
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:839
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:884
 #, fuzzy
 #| msgid ""
 #| "<i>Well, I do not normally make my relationship with them known, but I "
@@ -1939,7 +1991,7 @@ msgstr ""
 "opóźnić ich patrole. To wszystko, co mogę dla was uczynić.</i>"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:843
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:888
 #, fuzzy
 #| msgid ""
 #| "<i>Hmph. Clear that you won’t helps us fight, but I gots no more time to "
@@ -1957,7 +2009,7 @@ msgstr ""
 "dobrego planu. Obyś ino nas nie wysyłał na śmierć, Maddock.</i>"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:863
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:908
 #, fuzzy
 #| msgid ""
 #| "More troops be coming from the south! With all them reinforcements, we’ve "
@@ -1970,7 +2022,7 @@ msgstr ""
 "szans obronić Elensefaru!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:876
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:921
 msgid ""
 "Asheviere’s armies assembled and struck before the nascent rebellion could "
 "even be planned. Without the necessary forces, Annuvin soon fell under "
@@ -2229,14 +2281,25 @@ msgstr "Zobaczyli nas! <i>Chodu</i>!"
 msgid "Quick, back into the shadows! Maybe we can still lose them!"
 msgstr "Szybko, schować się w cieniu! Może jeszcze ich zgubimy!"
 
+#. [message]: speaker=Harper
+#. Harper defeats an Iron Mauler
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:601
+msgid "Uncle, we did it! We beat one of them iron monsters!"
+msgstr ""
+
+#. [message]: speaker=Baldras
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:605
+msgid "A fine job lad, but more sure gots to be coming. Let’s keep movin’."
+msgstr ""
+
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:599
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:624
 msgid ""
 "This way, into the forest! We’ll be able to lose them in the Grey Woods."
 msgstr "W tę stronę, do lasu! Zgubimy ich w Szarym Lesie."
 
 #. [message]: speaker=Hans
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:624
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:649
 msgid ""
 "You can come if you wish, but we are mostly interested in speaking to "
 "Baldras."
@@ -2245,7 +2308,7 @@ msgstr ""
 "Baldrasem."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:644
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:669
 msgid ""
 "I haven’t run so much in years. Feels like I be a real outlaw now, "
 "infiltrating a heavily guarded city relyin’ on nothing but the cover of "
@@ -2256,17 +2319,17 @@ msgstr ""
 "własnego rozumu."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:649
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:674
 msgid "It was fun, wasn’t it?"
 msgstr "Było fajnie, prawda?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:654
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:679
 msgid "Perhaps a little."
 msgstr "No może trochu."
 
 #. [message]: speaker=Hans
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:659
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:684
 msgid ""
 "Enough chatter, you still have some guards on your tail. We need to head "
 "deeper into the Grey Woods to lose them."
@@ -2275,12 +2338,12 @@ msgstr ""
 "w głąb Szarego Lasu, aby ich zgubić."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:664
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:689
 msgid "Lead the way."
 msgstr "Prowadź."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:688
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:713
 #, fuzzy
 #| msgid ""
 #| "Blast it, we was too slow! With the sun rising already, them guards will "
@@ -2432,12 +2495,12 @@ msgid "Any allied unit is sighted by the outpost guards"
 msgstr "Dowolna jednostka sojusznicza jest zauważona przez strażników placówki"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:253
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:255
 msgid "The leader, I presumes."
 msgstr "Przywódca, jak sądzę."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:257
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:259
 #, fuzzy
 #| msgid ""
 #| "Indeed, I am Lord Helicrom, the Crow of the Grey Woods. We are "
@@ -2455,14 +2518,14 @@ msgstr ""
 "wypracować rozwiązanie dla waszej sytuacji."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:261
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:263
 #, fuzzy
 #| msgid "What be yer pursuits?"
 msgid "What be your pursuits?"
 msgstr "Macie jakie cele?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:265
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:267
 #, fuzzy
 #| msgid ""
 #| "The former King’s magic ministry kept a tight control on the training and "
@@ -2485,7 +2548,7 @@ msgstr ""
 "istnienia nie przyszły nam tanio."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:269
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:271
 #, fuzzy
 #| msgid "Then you be fellow outlaws. But why do ye wants ta help us?"
 msgid "Then you be fellow outlaws. But why do you wants to help us?"
@@ -2494,7 +2557,7 @@ msgstr ""
 "nam pomagać?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:273
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:275
 msgid ""
 "<i>Quid pro quo.</i> Our aid is never given freely. You have something that "
 "may be useful to us."
@@ -2503,12 +2566,12 @@ msgstr ""
 "nam się przydać."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:277
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:279
 msgid "Manpower. Mages be no good at fighting, I knows. But what for?"
 msgstr "Ludzi. Z magów nie ma pożytku w walce, ja to wiem. Ino po co wam oni?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:281
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:283
 #, fuzzy
 #| msgid ""
 #| "Understand this. Any weakening of the Throne of Wesnoth, whether it be "
@@ -2524,14 +2587,14 @@ msgstr ""
 "zdestabilizować ich siły na tym obszarze. Kluczem do tego jest Halstead."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:285
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:287
 #, fuzzy
 #| msgid "The great fort standin’ between Aldril and Elensefar?"
 msgid "The great fort standing between Aldril and Elensefar?"
 msgstr "Ten wielki fort między Aldril i Elensefarem?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:289
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:291
 #, fuzzy
 #| msgid ""
 #| "Yes, Harper. What the mage says be no surprise. It be a bastion of "
@@ -2550,7 +2613,7 @@ msgstr ""
 "a przynajmniej dopóki Maddock nie wyśle swoich żołnierzy do bitwy."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:293
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:295
 #, fuzzy
 #| msgid ""
 #| "Know this, Baldras. During the past week, several patrols have again "
@@ -2578,7 +2641,7 @@ msgstr ""
 "orków."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:297
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:299
 msgid ""
 "We’d never survive there. But would it be so bad if we just swore fealty to "
 "the Queen?"
@@ -2587,14 +2650,14 @@ msgstr ""
 "wierność Królowej?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:301
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:303
 #, fuzzy
 #| msgid "Only if we gots no other choices. Let’s hear the mage’s plan first."
 msgid "Only if we gots no other choice. Let’s hear the mage’s plan first."
 msgstr "Ino jakbyśmy nie mieli innego wyboru. Posłuchajmy najpierw planu maga."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:305
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:307
 #, fuzzy
 #| msgid ""
 #| "I’m not asking you to fight a war — a direct fight against Weldyn’s "
@@ -2620,29 +2683,29 @@ msgstr ""
 "siły, zanim dotrą do celu."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:309
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:311
 msgid "Then what?"
 msgstr "Więc o co ci chodzi?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:313
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:315
 msgid "I am sure you can guess, magistrate."
 msgstr "Jestem pewien, że się domyślisz, sołtysie."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:317
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:319
 #, fuzzy
 #| msgid "You mean to sack Halstead itself."
 msgid "You means to sack Halstead itself."
 msgstr "Chodzi ci o to, żebymy zgrabili Halstead."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:321
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:323
 msgid "There’s no way we can fight them all... can we?"
 msgstr "Więc nijak nie możemy z nimi wszystkimi walczyć... nie?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:325
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:327
 #, fuzzy
 #| msgid ""
 #| "I don’t know. But, fer now, ambushing their patrols seems easy enough. "
@@ -2657,7 +2720,7 @@ msgstr ""
 "obmyślili se następny krok."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:329
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:331
 #, fuzzy
 #| msgid ""
 #| "My scouts have counted five platoons of troops marching towards the "
@@ -2676,12 +2739,12 @@ msgstr ""
 "obecności, albo będziemy mieli na karku również jej siły."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:340
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:342
 msgid "The first platoon approaches..."
 msgstr "Pierwszy oddział się zbliża..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:384
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:386
 msgid ""
 "My men and I shall pincer them from the other side of this path. When we are "
 "done, no one shall fear the open roads and night sky more than the armies of "
@@ -2693,58 +2756,58 @@ msgstr ""
 "życiu."
 
 #. [message]: speaker=Linneus
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:496
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:508
 msgid "It’s an ambush! Run!"
 msgstr "To zasadzka! Uciekać!"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:511
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:523
 msgid ""
 "Ah, here it is. I was wondering where I had misplaced my favorite blade."
 msgstr "A, tu je mam. Zastanawiałem się, gdzie zgubiłem moje ulubione ostrze."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:545
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:557
 msgid "Hey, I found some old coins in this shack."
 msgstr "Hej, znalazłem trochu starych monet w tej chacie."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:581
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:593
 msgid "Bleagh, a slimy tentacle. Why’s it so big?"
 msgstr "Ble, śliska macka. Czemu jest taka wielka?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:594
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:606
 msgid "There’s a rusty key here. I wonder if it could be useful?"
 msgstr "Tu jest zardzewiały klucz. Ciekawe, na co mógłby się przydać?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:621
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:633
 msgid "There is a waterlogged coffin here."
 msgstr "Tu jest zamoczona trumna."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:634
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:646
 msgid "Hey, that key fits in this coffin. Should I open it?"
 msgstr "Ej, ten klucz pasuje do trumny. Mam ją otworzyć?"
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:639
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:651
 msgid "No, that be a terrible idea."
 msgstr "Nie, to okropny pomysł."
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:646
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:658
 msgid "Fine, do it."
 msgstr "Dobrze, zrób to."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:661
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:673
 msgid "What is this disgusting monster?"
 msgstr "Co to za obrzydliwy stwór?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:666
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:678
 #, fuzzy
 #| msgid ""
 #| "A ghoul, a creature of disease and pestilence. Kill the putrid thing — "
@@ -2757,7 +2820,7 @@ msgstr ""
 "smrodu chce mi się wymiotować."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:691
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:703
 msgid ""
 "Disgusting though it may be, perhaps that creature’s corpse could be useful."
 msgstr ""
@@ -2765,22 +2828,22 @@ msgstr ""
 "przydadzą."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:706
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:718
 msgid "Should I use this potion?"
 msgstr "Czy mam użyć tej mikstury?"
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:708
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:720
 msgid "Yes, I’ll use it."
 msgstr "Tak, użyję jej."
 
 #. [object]: id=poison_weapon
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:716
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:728
 msgid "Vile Concoction"
 msgstr "Ohydna mikstura"
 
 #. [object]: id=poison_weapon
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:718
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:730
 msgid ""
 "This unit’s melee weapons gain the poison special and this unit gains a "
 "small number of hitpoints."
@@ -2789,22 +2852,22 @@ msgstr ""
 "zyskuje małą liczbę punktów życia."
 
 #. [option]
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:752
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:764
 msgid "No, I’ll leave it for someone else."
 msgstr "Nie, zostawię ją dla kogoś innego."
 
 #. [message]: type=Spearman
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:865
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:877
 msgid "Doesn’t something about these woods feel weird to you, sir?"
 msgstr "Czy nie czujesz się dziwnie w tych lasach, panie?"
 
 #. [message]: type=Pikeman
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:869
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:881
 msgid "Afraid of ghosts, soldier?"
 msgstr "Boisz się duchów, żołnierzu?"
 
 #. [message]: type=Master at Arms
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:979
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:991
 msgid ""
 "Woods, woods, woods and more woods! Bah, that general had better have a good "
 "reason for dragging me out to Halstead with all these oafs."
@@ -2813,17 +2876,17 @@ msgstr ""
 "powód, by wyciągać mnie do Halstead z tymi wszystkimi niedołęgami."
 
 #. [message]: type=Duelist
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:983
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:995
 msgid "But cap’n, we’re your loyal troops..."
 msgstr "Ale, kapitanie, jesteśmy twoimi wiernymi żołnierzami..."
 
 #. [message]: type=Master at Arms
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:987
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:999
 msgid "Shut it and keep moving."
 msgstr "Zamknij się i idź dalej."
 
 #. [message]: speaker=Archarel
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1008
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1020
 msgid ""
 "Several platoons of troops were supposed to arrive today. I wonder if "
 "something happened to them."
@@ -2832,7 +2895,7 @@ msgstr ""
 "się z nimi stało."
 
 #. [message]: speaker=Archarel
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1025
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1037
 msgid ""
 "Something about these woods seems quite unnatural. Perhaps we should stop "
 "sending our soldiers this way."
@@ -2841,7 +2904,7 @@ msgstr ""
 "wysyłać naszych żołnierzy tą drogą."
 
 #. [message]: speaker=Archarel
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1041
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1053
 msgid ""
 "Troops, to arms! Show these fugitive scum the meaning of the Queen’s law!"
 msgstr ""
@@ -2849,7 +2912,7 @@ msgstr ""
 "Królowej!"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1045
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1057
 msgid ""
 "With the outpost aware of our presence, we can no longer harry their "
 "reinforcements. Their forces will soon grow too powerful for us to resist."
@@ -2858,7 +2921,7 @@ msgstr ""
 "posiłki. Ich siły prędko staną się dla nas za silne do odparcia."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1061
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1073
 msgid ""
 "The next morning, the local night patrol returned to the nearby outpost. "
 "They were surprised to see their fellow soldiers engaged in combat with the "
@@ -2869,12 +2932,12 @@ msgstr ""
 "rozbójników o której tyle dotąd słyszeli."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1110
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1133
 msgid "It be done. Their patrols be shattered and broken."
 msgstr "Zrobione. A ich patrole są rozbite i zniszczone."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1115
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1138
 #, fuzzy
 #| msgid ""
 #| "Well done, but the fight is far from over. We will not be able to employ "
@@ -2892,7 +2955,7 @@ msgstr ""
 "o amnestię?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1120
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1143
 #, fuzzy
 #| msgid ""
 #| "Amnesty? Knowing these Wesnothians, they’ll have my head. Then again, if "
@@ -2905,12 +2968,12 @@ msgstr ""
 "znowu, jeślibym mógł oddać życie dla ocalenia wioski, to bym je oddał."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1125
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1148
 msgid "We need you! Uncle..."
 msgstr "Potrzebujemy cię! Wujku..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1130
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1153
 #, fuzzy
 #| msgid ""
 #| "I know what you is going to say, Harper. That we should be fighting fer "
@@ -2926,7 +2989,7 @@ msgstr ""
 "chłopcze."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1135
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1158
 #, fuzzy
 #| msgid ""
 #| "If we goes back like this, that means we’ll surrender to them Wesnothians "
@@ -2942,7 +3005,7 @@ msgstr ""
 "nasłali na nas tak dużo żołnierzy, a nawet orków."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1140
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1163
 msgid ""
 "The boy is naive, but his spirit is in the right place. You risk your homes "
 "and the lives of your people, yes, but what good will they be if you live in "
@@ -2953,7 +3016,7 @@ msgstr ""
 "tyranii? Wierzcie mi, żyłem w niej. Wolałbym umrzeć, niż do niej powrócić."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1145
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1168
 #, fuzzy
 #| msgid ""
 #| "Yes... Erwen... Harper’s mom would’ve said the same. If we marches on "
@@ -2971,7 +3034,7 @@ msgstr ""
 "prowincji Annuvin."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1150
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1173
 msgid ""
 "It would be months before they could reassemble their forces here. Enough "
 "time for you to secure your homes, or relocate."
@@ -2981,14 +3044,14 @@ msgstr ""
 "przeprowadzili."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1155
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1178
 #, fuzzy
 #| msgid "Then it’s decided. We’ll attack the fort together. Luck be with us."
 msgid "Then it be decided. We’ll attack the fort together. Luck be with us."
 msgstr "No to ustalone. Razem zaatakujemy fort. Bądź z nami, szczęście."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1195
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1219
 msgid ""
 "Lieutenant, we were assaulted by a band of outlaws en route to the outpost. "
 "We were barely able to evade them and make it here!"
@@ -2997,14 +3060,14 @@ msgstr ""
 "placówki. Ledwie udało nam się im uciec i dotrzeć tutaj!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1215
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1239
 msgid "Look there! Outlaws and bandits roam these woods, harrying our patrols!"
 msgstr ""
 "Spójrzcie! Wyjęci spod prawa bandyci włóczą się w tych lasach i napadają na "
 "nasze patrole!"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1232
+#: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1256
 msgid "This is the end for me..."
 msgstr "To mój koniec..."
 
@@ -3359,8 +3422,12 @@ msgstr ""
 
 #. [message]: speaker=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:392
+#, fuzzy
+#| msgid ""
+#| "Ready thine lances, mine brethren. Let us charge down the armies of "
+#| "Weldyn!"
 msgid ""
-"Ready thine lances, mine brethren. Let us charge down the armies of Weldyn!"
+"Ready thy lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgstr ""
 "Przygotujcie lance, moi bracia. Rzućmy się w szarżę przeciw armiom Weldyn!"
 
@@ -3533,14 +3600,14 @@ msgstr ""
 "nacieszcie się swoim małym zwycięstwem, chłopi, dopóki jeszcze możecie..."
 
 #. [message]: speaker=Vashna
-#: data/campaigns/Liberty/scenarios/07_Glory.cfg:949
+#: data/campaigns/Liberty/scenarios/07_Glory.cfg:956
 #, fuzzy
 #| msgid "Grrarrghh... you blasted... fools..."
 msgid "Grrarrghh... you... fools..."
 msgstr "Grrarrghh… wy przeklęci... głupcy..."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/07_Glory.cfg:954
+#: data/campaigns/Liberty/scenarios/07_Glory.cfg:961
 msgid "Idiot orc. Know your place."
 msgstr "Głupi ork. Niech zna swoje miejsce."
 
@@ -4048,6 +4115,9 @@ msgstr "Jestem skończona..."
 #: data/campaigns/Liberty/utils/utils.cfg:66
 msgid "How can this be?"
 msgstr "Jak to możliwe?"
+
+#~ msgid "Rothel"
+#~ msgstr "Rothel"
 
 #~ msgid "Bone Knight"
 #~ msgstr "Rycerz szkielet"

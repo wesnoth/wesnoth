@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,7 +51,6 @@
 #include "serialization/unicode_cast.hpp"
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
-#include "statistics.hpp"              // for fresh_stats
 #include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
@@ -806,7 +805,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
-	if(!lg::log_dir_writable()) {
+	// if the log directory is not writable, then this is the error condition so show the error message.
+	// if the log directory is writable, then there's no issue.
+	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
+	if(!lg::log_dir_writable().value_or(true)) {
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
@@ -865,12 +867,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	while(true) {
-		statistics::fresh_stats();
-
 		if(!game->has_load_data()) {
-			const config& cfg = config_manager.game_config().child("titlescreen_music");
+			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
 			if(cfg) {
-				for(const config& i : cfg.child_range("music")) {
+				for(const config& i : cfg->child_range("music")) {
 					sound::play_music_config(i);
 				}
 
@@ -1077,23 +1077,23 @@ int main(int argc, char** argv)
 	// turn it into a CLI application. Also, --wconsole in particular attaches
 	// a console to a regular GUI game session.
 	//
-	// It's up to commandline_options later to handle these switches (other
+	// It's up to commandline_options later to handle these switches (except
 	// --wconsole) later and emit any applicable console output, but right here
 	// we need a rudimentary check for the switches in question to set up the
 	// console before proceeding any further.
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
 		static const std::set<std::string> terminal_switches = {
-			"-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
-			"--data-path", "--userdata-path", "--userconfig-path",
+			"--config-path", "--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
+			"--simple-version", "--userconfig-path", "--userdata-path", "-v", "--version"
 		};
 
 		// Switches that take arguments, the switch may have the argument past
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
 		static const std::set<std::string> terminal_arg_switches = {
-			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-schema",
+			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
+			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {

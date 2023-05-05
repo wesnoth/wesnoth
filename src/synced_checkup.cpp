@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -67,7 +67,7 @@ bool synced_checkup::local_checkup(const config& expected_data, config& real_dat
 	if(buffer_.child_count("result") > pos_)
 	{
 		//copying objects :o
-		real_data = buffer_.child("result",pos_);
+		real_data = buffer_.mandatory_child("result",pos_);
 		pos_ ++;
 		return real_data == expected_data;
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -310,10 +310,10 @@ slider_definition::resolution::resolution(const config& cfg)
 	VALIDATE(positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
-	state.emplace_back(cfg.child("state_enabled"));
-	state.emplace_back(cfg.child("state_disabled"));
-	state.emplace_back(cfg.child("state_pressed"));
-	state.emplace_back(cfg.child("state_focused"));
+	state.emplace_back(cfg.optional_child("state_enabled"));
+	state.emplace_back(cfg.optional_child("state_disabled"));
+	state.emplace_back(cfg.optional_child("state_pressed"));
+	state.emplace_back(cfg.optional_child("state_focused"));
 }
 
 // }---------- BUILDER -----------{
@@ -331,12 +331,12 @@ builder_slider::builder_slider(const config& cfg)
 	, maximum_value_label_(cfg["maximum_value_label"].t_str())
 	, value_labels_()
 {
-	const config& labels = cfg.child("value_labels");
+	auto labels = cfg.optional_child("value_labels");
 	if(!labels) {
 		return;
 	}
 
-	for(const auto& label : labels.child_range("value")) {
+	for(const auto& label : labels->child_range("value")) {
 		value_labels_.push_back(label["label"]);
 	}
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -122,7 +122,7 @@ gui_definition::gui_definition(const config& cfg)
 	 * - Override the default and above per instance of the widget, some buttons
 	 *   can give a different sound.
 	 */
-	const config& settings = cfg.child("settings");
+	const config& settings = cfg.mandatory_child("settings");
 
 	popup_show_delay_ = settings["popup_show_delay"];
 	popup_show_time_ = settings["popup_show_time"];

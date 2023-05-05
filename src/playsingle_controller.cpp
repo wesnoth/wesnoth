@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -122,7 +122,8 @@ void playsingle_controller::init_gui()
 		gui_->scroll_to_tile(map_start_, game_display::WARP, false);
 		LOG_NG << "Found good stored ui location " << map_start_;
 	} else {
-		int scroll_team = gamestate().first_human_team_ + 1;
+
+		int scroll_team = find_viewing_side();
 		if(scroll_team == 0) {
 			scroll_team = 1;
 		}
@@ -151,6 +152,7 @@ void playsingle_controller::init_gui()
 void playsingle_controller::play_scenario_init(const config& level)
 {
 	gui_->labels().read(level);
+	update_viewing_player();
 
 	// Read sound sources
 	assert(soundsources_manager_ != nullptr);
@@ -174,7 +176,9 @@ void playsingle_controller::play_scenario_init(const config& level)
 	gamestate().gamedata_.set_phase(game_data::read_phase(level));
 
 	start_game();
-
+	skip_empty_sides(gamestate_->player_number_);
+	gamestate_->player_number_ = modulo(gamestate_->player_number_, static_cast<int>(get_teams().size()), 1);
+	init_side_begin();
 	if(gamestate().in_phase(game_data::TURN_PLAYING)) {
 		init_side_end();
 	}
@@ -191,8 +195,10 @@ void playsingle_controller::play_scenario_init(const config& level)
 
 void playsingle_controller::skip_empty_sides(int& side_num)
 {
-	const int max = side_num + static_cast<int>(get_teams().size());
-	while (gamestate().board_.get_team(modulo(side_num, get_teams().size(), 1)).is_empty()) {
+	const int sides = static_cast<int>(get_teams().size());
+	if(sides == 0) return;
+	const int max = side_num + sides;
+	while (gamestate().board_.get_team(modulo(side_num, sides, 1)).is_empty()) {
 		if(side_num == max) {
 			throw game::game_error("No teams found");
 		}
@@ -202,6 +208,12 @@ void playsingle_controller::skip_empty_sides(int& side_num)
 
 void playsingle_controller::play_some()
 {
+	//TODO: Its still unclear to me when end_turn_requested_ should be reset, i guess the idea is
+	//      in particular that in rare cases when the player looses control at the same time
+	//      as he presses "end turn" and then regains control back, the "end turn" should be discarded?
+	//One of the main reasonsy why this is here is probably also that play_controller has no access to it.
+	end_turn_requested_ = gamestate().gamedata_.end_turn_forced();
+
 	assert(is_regular_game_end() || gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING, game_data::TURN_ENDED, game_data::GAME_ENDED));
 
 	if (!is_regular_game_end() && gamestate().in_phase(game_data::TURN_STARTING_WAITING, game_data::TURN_PLAYING)) {
@@ -271,6 +283,7 @@ void playsingle_controller::finish_side_turn()
 		gui_->invalidate_game_status();
 	}
 	gamestate().gamedata_.set_phase(game_data::TURN_STARTING_WAITING);
+	gamestate().gamedata_.set_end_turn_forced(false);
 	did_autosave_this_turn_ = false;
 	end_turn_requested_ = false;
 	init_side_begin();
@@ -296,12 +309,12 @@ void playsingle_controller::play_scenario_main_loop()
 				local_players[i] = get_teams()[i].is_local();
 			}
 
-			if(ex.start_replay) {
-				// MP "Back to turn"
-				statistics::read_stats(*ex.stats_);
+			if(ex.stats_) {
+				// "Back to turn"
+				get_saved_game().statistics().read(*ex.stats_);
 			} else {
-				// SP replay
-				statistics::reset_current_scenario();
+				// "Reset Replay To start"
+				get_saved_game().statistics().clear_current_scenario();
 			}
 
 			reset_gamestate(*ex.level, (*ex.level)["replay_pos"]);
@@ -711,6 +724,7 @@ void playsingle_controller::end_turn()
 
 void playsingle_controller::force_end_turn()
 {
+	gamestate().gamedata_.set_end_turn_forced(true);
 	end_turn_requested_ = true;
 }
 
@@ -766,8 +780,7 @@ void playsingle_controller::update_viewing_player()
 {
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
-	} else if(int side_num = play_controller::find_last_visible_team()) {
-		// Update viewing team in case it has changed during the loop.
+	} else if(int side_num = play_controller::find_viewing_side()) {
 		if(side_num != gui_->viewing_side()) {
 			update_gui_to_player(side_num - 1);
 		}
@@ -788,7 +801,7 @@ void playsingle_controller::enable_replay(bool is_unit_test)
 {
 	replay_controller_ = std::make_unique<replay_controller>(
 		*this,
- 		gamestate().has_human_sides(),
+		true,
 		std::make_shared<config>(saved_game_.get_replay_starting_point()),
 		std::bind(&playsingle_controller::on_replay_end, this, is_unit_test)
 	);
@@ -802,7 +815,7 @@ bool playsingle_controller::should_return_to_play_side() const
 {
 	if(player_type_changed_ || is_regular_game_end()) {
 		return true;
-	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == 0 && current_team().is_local()) {
+	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == 0 && current_team().is_local() && !current_team().is_idle()) {
 		// When we are a locally controlled side and havent done init_side yet also return to play_side
 		return true;
 	} else {
