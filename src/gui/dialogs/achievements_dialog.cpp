@@ -73,13 +73,14 @@ void achievements_dialog::pre_show(window& win)
 				row.emplace("icon", item);
 
 				if(!ach.achieved_) {
-					std::string name = ach.name_;
+					t_string name = ach.name_;
 					if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
 						name += " ("+std::to_string(ach.current_progress_)+"/"+std::to_string(ach.max_progress_)+")";
 					}
 					item["label"] = name;
 				} else {
-					item["label"] = "<span color='khaki'>"+ach.name_completed_+"</span>";
+					item["label"] = ach.name_completed_;
+					item["definition"] = "gold_large";
 				}
 				row.emplace("name", item);
 
@@ -97,6 +98,10 @@ void achievements_dialog::pre_show(window& win)
 				} else {
 					achievement_progress->set_visible(gui2::widget::visibility::invisible);
 				}
+
+				auto name = static_cast<label*>(newrow.find("name", false));
+				auto& canvas = name->get_canvas(0);
+				canvas.set_variable("achieved", wfl::variant(ach.achieved_));
 			}
 
 			label* achieved_label = find_widget<label>(&win, "achievement_count", false, true);
@@ -141,7 +146,8 @@ void achievements_dialog::set_achievements_content()
 		if(!ach.achieved_) {
 			item["label"] = ach.name_;
 		} else {
-			item["label"] = "<span color='khaki'>"+ach.name_completed_+"</span>";
+			item["label"] = ach.name_completed_;
+			item["definition"] = "gold_large";
 		}
 		row.emplace("name", item);
 
@@ -159,6 +165,10 @@ void achievements_dialog::set_achievements_content()
 		} else {
 			achievement_progress->set_visible(gui2::widget::visibility::invisible);
 		}
+
+		auto name = static_cast<label*>(newrow.find("name", false));
+		auto& canvas = name->get_canvas(0);
+		canvas.set_variable("achieved", wfl::variant(ach.achieved_));
 	}
 
 	label* achieved_label = find_widget<label>(get_window(), "achievement_count", false, true);
