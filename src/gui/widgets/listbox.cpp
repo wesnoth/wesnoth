@@ -706,11 +706,10 @@ listbox_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
+	state.emplace_back(cfg.mandatory_child("state_enabled"));
+	state.emplace_back(cfg.mandatory_child("state_disabled"));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined."));
-
 	grid = std::make_shared<builder_grid>(child);
 }
 

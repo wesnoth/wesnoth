@@ -67,13 +67,11 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.optional_child("background"));
-	state.emplace_back(cfg.optional_child("foreground"));
+	state.emplace_back(cfg.mandatory_child("background"));
+	state.emplace_back(cfg.mandatory_child("foreground"));
 
-	auto child = cfg.optional_child("grid");
-	VALIDATE(child, _("No grid defined."));
-
-	grid = std::make_shared<builder_grid>(*child);
+	auto child = cfg.mandatory_child("grid");
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{

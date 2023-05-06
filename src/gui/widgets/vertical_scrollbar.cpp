@@ -119,10 +119,10 @@ vertical_scrollbar_definition::resolution::resolution(const config& cfg)
 									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t in scrollbar.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
-	state.emplace_back(cfg.optional_child("state_pressed"));
-	state.emplace_back(cfg.optional_child("state_focused"));
+	state.emplace_back(cfg.mandatory_child("state_enabled"));
+	state.emplace_back(cfg.mandatory_child("state_disabled"));
+	state.emplace_back(cfg.mandatory_child("state_pressed"));
+	state.emplace_back(cfg.mandatory_child("state_focused"));
 }
 
 // }---------- BUILDER -----------{

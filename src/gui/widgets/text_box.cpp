@@ -406,10 +406,10 @@ text_box_definition::resolution::resolution(const config& cfg)
 	, text_y_offset(cfg["text_y_offset"])
 {
 	// Note the order should be the same as the enum state_t in text_box.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
-	state.emplace_back(cfg.optional_child("state_focused"));
-	state.emplace_back(cfg.optional_child("state_hovered"));
+	state.emplace_back(cfg.mandatory_child("state_enabled"));
+	state.emplace_back(cfg.mandatory_child("state_disabled"));
+	state.emplace_back(cfg.mandatory_child("state_focused"));
+	state.emplace_back(cfg.mandatory_child("state_hovered"));
 }
 
 // }---------- BUILDER -----------{

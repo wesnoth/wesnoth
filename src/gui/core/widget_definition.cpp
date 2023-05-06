@@ -25,10 +25,10 @@
 namespace gui2
 {
 
-state_definition::state_definition(optional_const_config cfg)
-	: canvas_cfg_(cfg ? cfg->child_or_empty("draw") : config())
+state_definition::state_definition(const config& cfg)
+	: canvas_cfg_(cfg.child_or_empty("draw"))
 {
-	VALIDATE(cfg && cfg->has_child("draw"), _("No state or draw section defined."));
+	VALIDATE(cfg.has_child("draw"), _("No draw section defined for state."));
 }
 
 resolution_definition::resolution_definition(const config& cfg)

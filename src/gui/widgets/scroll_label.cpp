@@ -176,13 +176,11 @@ scroll_label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is scroll_label.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
+	state.emplace_back(cfg.mandatory_child("state_enabled"));
+	state.emplace_back(cfg.mandatory_child("state_disabled"));
 
-	auto child = cfg.optional_child("grid");
-	VALIDATE(child, _("No grid defined."));
-
-	grid = std::make_shared<builder_grid>(*child);
+	auto child = cfg.mandatory_child("grid");
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{

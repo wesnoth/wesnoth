@@ -108,8 +108,8 @@ panel_definition::resolution::resolution(const config& cfg)
 	, right_border(cfg["right_border"])
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.optional_child("background"));
-	state.emplace_back(cfg.optional_child("foreground"));
+	state.emplace_back(cfg.mandatory_child("background"));
+	state.emplace_back(cfg.mandatory_child("foreground"));
 }
 
 // }---------- BUILDER -----------{

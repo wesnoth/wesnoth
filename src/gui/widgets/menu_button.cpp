@@ -229,10 +229,10 @@ menu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in menu_button.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
-	state.emplace_back(cfg.optional_child("state_pressed"));
-	state.emplace_back(cfg.optional_child("state_focused"));
+	state.emplace_back(cfg.mandatory_child("state_enabled"));
+	state.emplace_back(cfg.mandatory_child("state_disabled"));
+	state.emplace_back(cfg.mandatory_child("state_pressed"));
+	state.emplace_back(cfg.mandatory_child("state_focused"));
 }
 
 // }---------- BUILDER -----------{
