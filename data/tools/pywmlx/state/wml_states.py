@@ -67,6 +67,7 @@ class WmlCheckdomState:
 
     def run(self, xline, lineno, match):
         pywmlx.state.machine._currentdomain = match.group(1)
+        pywmlx.state.machine.checkdomain(lineno)
         xline = None
         return (xline, 'wml_idle')
 
@@ -81,6 +82,8 @@ class WmlCheckpoState:
     def run(self, xline, lineno, match):
         if match.group(1) == 'wmlxgettext':
             xline = match.group(2)
+        elif not pywmlx.state.machine.checkdomain(lineno):
+            xline = None
         # on  #po: addedinfo
         elif match.group(1) == "po":
             xline = None
@@ -203,8 +206,7 @@ class WmlTagState:
             # xdebug_str = opentag + ': ' + str(lineno)
         # print(xdebug_str, file=xdebug)
         # xdebug.close()
-        pywmlx.state.machine._pending_addedinfo = None
-        pywmlx.state.machine._pending_overrideinfo = None
+        pywmlx.state.machine.clear_pending_infos(lineno, error=True)
         xline = xline [ match.end(): ]
         return (xline, 'wml_idle')
 
