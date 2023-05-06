@@ -282,10 +282,6 @@ void play_controller::init(const config& level)
 		gamestate().set_game_display(gui_.get());
 		gui2::dialogs::loading_screen::progress(loading_stage::init_lua);
 
-		// This is required to disable "show_everything"
-		if(get_teams().size() != 0) {
-			gui_->set_team(0);
-		}
 		init_managers();
 		gui2::dialogs::loading_screen::progress(loading_stage::start_game);
 		// loadscreen_manager->reset();

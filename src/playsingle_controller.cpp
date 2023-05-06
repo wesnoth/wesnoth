@@ -781,7 +781,7 @@ void playsingle_controller::update_viewing_player()
 	if(replay_controller_ && replay_controller_->is_controlling_view()) {
 		replay_controller_->update_viewing_player();
 	} else if(int side_num = play_controller::find_viewing_side()) {
-		if(side_num != gui_->viewing_side()) {
+		if(side_num != gui_->viewing_side() || gui_->show_everything()) {
 			update_gui_to_player(side_num - 1);
 		}
 	}
