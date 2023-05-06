@@ -32,6 +32,7 @@
 #include "gui/widgets/widget_helpers.hpp"
 #include "gui/widgets/window.hpp"
 #include "sdl/rect.hpp"
+#include "wml_exception.hpp"
 #include <functional>
 #include <optional>
 
@@ -706,8 +707,8 @@ listbox_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t in listbox.hpp.
-	state.emplace_back(cfg.mandatory_child("state_enabled"));
-	state.emplace_back(cfg.mandatory_child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for listbox")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for listbox")));
 
 	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined."));
 	grid = std::make_shared<builder_grid>(child);

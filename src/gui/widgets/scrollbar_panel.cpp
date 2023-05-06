@@ -67,10 +67,10 @@ scrollbar_panel_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg), grid()
 {
 	// The panel needs to know the order.
-	state.emplace_back(cfg.mandatory_child("background"));
-	state.emplace_back(cfg.mandatory_child("foreground"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "background", _("Missing required background for scrollbar panel")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "foreground", _("Missing required foreground for scrollbar panel")));
 
-	auto child = cfg.mandatory_child("grid");
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("Missing required grid for scrollbar panel"));
 	grid = std::make_shared<builder_grid>(child);
 }
 

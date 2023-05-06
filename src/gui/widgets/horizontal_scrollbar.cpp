@@ -24,6 +24,7 @@
 #include "gui/widgets/settings.hpp"
 
 #include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #include <functional>
 
@@ -129,10 +130,10 @@ horizontal_scrollbar_definition::resolution::resolution(const config& cfg)
 									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is scrollbar.hpp.
-	state.emplace_back(cfg.mandatory_child("state_enabled"));
-	state.emplace_back(cfg.mandatory_child("state_disabled"));
-	state.emplace_back(cfg.mandatory_child("state_pressed"));
-	state.emplace_back(cfg.mandatory_child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for horizontal scrollbar")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for horizontal scrollbar")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", _("Missing required state for horizontal scrollbar")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for horizontal scrollbar")));
 }
 
 // }---------- BUILDER -----------{

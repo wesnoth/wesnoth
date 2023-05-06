@@ -26,10 +26,8 @@ namespace gui2
 {
 
 state_definition::state_definition(const config& cfg)
-	: canvas_cfg_(cfg.child_or_empty("draw"))
-{
-	VALIDATE(cfg.has_child("draw"), _("No draw section defined for state."));
-}
+	: canvas_cfg_(VALIDATE_WML_CHILD(cfg, "draw", _("No draw section defined for state.")))
+{}
 
 resolution_definition::resolution_definition(const config& cfg)
 	: window_width(cfg["window_width"])

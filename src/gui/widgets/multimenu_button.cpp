@@ -29,6 +29,7 @@
 #include "formula/string_utils.hpp"
 #include <functional>
 #include "gettext.hpp"
+#include "wml_exception.hpp"
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
@@ -252,10 +253,10 @@ multimenu_button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in multimenu_button.hpp.
-	state.emplace_back(cfg.mandatory_child("state_enabled"));
-	state.emplace_back(cfg.mandatory_child("state_disabled"));
-	state.emplace_back(cfg.mandatory_child("state_pressed"));
-	state.emplace_back(cfg.mandatory_child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for multimenu button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for multimenu button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", _("Missing required state for multimenu button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for multimenu button")));
 }
 
 // }---------- BUILDER -----------{

@@ -188,8 +188,8 @@ matrix_definition::resolution::resolution(const config& cfg)
 	, content(new builder_grid(VALIDATE_WML_CHILD(cfg, "content", _("Missing [content] in [matrix_definition]"))))
 {
 	// Note the order should be the same as the enum state_t in matrix.hpp.
-	state.emplace_back(cfg.mandatory_child("state_enabled"));
-	state.emplace_back(cfg.mandatory_child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for matrix definition")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for matrix definition")));
 }
 
 // }---------- BUILDER -----------{
