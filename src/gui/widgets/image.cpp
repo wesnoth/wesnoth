@@ -24,6 +24,8 @@
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #include <functional>
 
@@ -110,7 +112,7 @@ image_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in image.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for image control")));
 }
 
 // }---------- BUILDER -----------{

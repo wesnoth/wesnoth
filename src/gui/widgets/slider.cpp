@@ -310,10 +310,10 @@ slider_definition::resolution::resolution(const config& cfg)
 	VALIDATE(positioner_length, missing_mandatory_wml_key("resolution", "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum state_t is slider.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
-	state.emplace_back(cfg.optional_child("state_pressed"));
-	state.emplace_back(cfg.optional_child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for slider")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for slider")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", _("Missing required state for slider")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for slider")));
 }
 
 // }---------- BUILDER -----------{

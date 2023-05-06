@@ -265,13 +265,12 @@ tree_view_definition::resolution::resolution(const config& cfg)
 	, grid(nullptr)
 {
 	// Note the order should be the same as the enum state_t is listbox.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for tree view")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for tree view")));
 
-	auto child = cfg.optional_child("grid");
-	VALIDATE(child, _("No grid defined."));
+	auto child = VALIDATE_WML_CHILD(cfg, "grid", _("No grid defined for tree view"));
 
-	grid = std::make_shared<builder_grid>(*child);
+	grid = std::make_shared<builder_grid>(child);
 }
 
 // }---------- BUILDER -----------{

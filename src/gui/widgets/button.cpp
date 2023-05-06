@@ -26,6 +26,8 @@
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "wml_exception.hpp"
+#include "gettext.hpp"
 
 #include "sound.hpp"
 
@@ -159,10 +161,10 @@ button_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
 {
 	// Note the order should be the same as the enum state_t in button.hpp.
-	state.emplace_back(cfg.optional_child("state_enabled"));
-	state.emplace_back(cfg.optional_child("state_disabled"));
-	state.emplace_back(cfg.optional_child("state_pressed"));
-	state.emplace_back(cfg.optional_child("state_focused"));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", _("Missing required state for button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", _("Missing required state for button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_pressed", _("Missing required state for button")));
+	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_focused", _("Missing required state for button")));
 }
 
 // }---------- BUILDER -----------{
