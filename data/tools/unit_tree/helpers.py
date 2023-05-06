@@ -6,6 +6,7 @@ Various helpers for use by the wmlunits tool.
 import sys, os, re, glob, shutil, copy, subprocess
 
 import wesnoth.wmlparser3 as wmlparser3
+from unit_tree.team_colorizer import colorize
 
 def get_datadir(wesnoth_exe):
     p = subprocess.Popen([wesnoth_exe, "--data-path"],
@@ -34,7 +35,7 @@ class ImageCollector:
     A class to collect all the images which need to be copied to the HTML
     output folder.
     """
-    def __init__(self, wesnoth_exe, userdir, datadir):
+    def __init__(self, wesnoth_exe, userdir, datadir, magick_exe="convert"):
         self.images_by_addon_name = {}
         self.images_by_ipath = {}
         self.binary_paths_per_addon = {}
@@ -44,6 +45,7 @@ class ImageCollector:
         self.userdir = userdir
         if not self.userdir:
             self.userdir = get_userdir(wesnoth_exe)
+        self.magick = magick_exe
 
     def add_binary_paths_from_WML(self, addon, WML):
         for binpath in WML.get_all(tag="binary_path"):
@@ -147,12 +149,7 @@ class ImageCollector:
                 if no_tc:
                     shutil.copy2(ipath, opath)
                 else:
-                    # We assume TeamColorizer is in the same directory as the
-                    # helpers.py currently executing.
-                    command = os.path.join(os.path.dirname(__file__),
-                                           "TeamColorizer")
-                    p = subprocess.Popen([command, ipath, opath])
-                    p.wait()
+                    colorize(None, ipath, opath, magick=self.magick)
             else:
                 sys.stderr.write(
                     "Warning: Required image %s does not exist (referenced by %s).\n" % (
