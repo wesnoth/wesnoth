@@ -283,8 +283,9 @@ void play_controller::init(const config& level)
 		gui2::dialogs::loading_screen::progress(loading_stage::init_lua);
 
 		// This is required to disable "show_everything"
-		gui_->set_team(0);
-
+		if(get_teams().size() != 0) {
+			gui_->set_team(0);
+		}
 		init_managers();
 		gui2::dialogs::loading_screen::progress(loading_stage::start_game);
 		// loadscreen_manager->reset();
@@ -780,7 +781,6 @@ bool play_controller::is_team_visible(int team_num, bool observer) const
 
 int play_controller::find_viewing_side() const
 {
-	assert(current_side() <= static_cast<int>(get_teams().size()));
 	const int num_teams = get_teams().size();
 	const bool observer = is_observer();
 
