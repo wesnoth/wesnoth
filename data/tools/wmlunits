@@ -40,7 +40,7 @@ def shell_out(wesnoth_exe, com):
         com = base_com + cli_opts
         p = subprocess.run(com, capture_output=True, text=True)
         if p.returncode == 0:
-            return p.stdout.strip()
+            return os.path.normpath(p.stdout.strip())
     return ""
 
 def move(f, t, name):
@@ -635,6 +635,12 @@ if __name__ == '__main__':
 
     if not options.transdir:
         options.transdir = os.getcwd()
+
+    options.data_dir = os.path.normpath(options.data_dir)
+    options.config_dir = os.path.normpath(options.config_dir)
+    options.transdir = os.path.normpath(options.transdir)
+    if options.addons:
+        options.addons = os.path.normpath(options.addons)
 
     if options.wiki:
         wiki_output.main()
