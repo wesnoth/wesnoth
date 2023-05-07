@@ -35,8 +35,8 @@ end
 -- Metatable that redirects access to wml.variables_proxy
 local proxy_var_mt = {
 	__metatable = "WML variables",
-	__index    = function(t, k) return wml.get_variable_proxy(k) end,
-	__newindex = function(t, k, v) wml.set_variable_proxy(k, v) end,
+	__index    = function(t, k) return wml.variables_proxy[k] end,
+	__newindex = function(t, k, v) wml.variables_proxy[k] = v end,
 }
 
 function helper.set_wml_var_metatable(t)
