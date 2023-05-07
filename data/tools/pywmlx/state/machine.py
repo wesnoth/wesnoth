@@ -84,17 +84,27 @@ _linenosub = 0
 # --------------------------------------------------------------------
 
 
-
-def checkdomain():
-    global _currentdomain
-    global _domain
+def clear_pending_infos(lineno, error=False):
     global _pending_addedinfo
     global _pending_overrideinfo
+    if error:
+        if _pending_addedinfo is not None:
+            wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
+                "#po directive(s) not applied: %s" % _pending_addedinfo)
+        if _pending_overrideinfo is not None:
+            wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
+                "#po-override directive(s) not applied: %s" % _pending_overrideinfo)
+    _pending_addedinfo = None
+    _pending_overrideinfo = None
+    
+
+def checkdomain(lineno):
+    global _currentdomain
+    global _domain
     if _currentdomain == _domain:
         return True
     else:
-        _pending_addedinfo = None
-        _pending_overrideinfo = None
+        clear_pending_infos(lineno, error=True)
         return False
 
 
@@ -194,7 +204,9 @@ class PendingLuaString:
         global _pending_addedinfo
         global _pending_overrideinfo
         global _linenosub
-        if checkdomain() and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             _linenosub += 1
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             fileno = pywmlx.nodemanip.fileno
@@ -242,8 +254,7 @@ class PendingLuaString:
                     ) )
         # finally PendingLuaString.store() will clear pendinginfos,
         # in any case (even if the pending string is not translatable)
-        _pending_overrideinfo = None
-        _pending_addedinfo = None
+        clear_pending_infos(self.lineno, error=(not self.istranslatable))
 
 
 
@@ -269,7 +280,9 @@ class PendingWmlString:
                 winf = _pending_winfotype + '=' + self.wmlstring
                 pywmlx.nodemanip.addWmlInfo(winf)
             _pending_winfotype = None
-        if checkdomain() and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             errcode = checksentence(self.wmlstring, finfo, islua=False)
             if errcode != 1:
@@ -287,8 +300,7 @@ class PendingWmlString:
                                              lineno_sub=_linenosub,
                                              override=_pending_overrideinfo,
                                              addition=_pending_addedinfo)
-        _pending_overrideinfo = None
-        _pending_addedinfo = None
+        clear_pending_infos(self.lineno, error=(not self.istranslatable))
 
 
 

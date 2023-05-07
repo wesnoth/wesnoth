@@ -33,6 +33,7 @@ class LuaCheckdomState:
 
     def run(self, xline, lineno, match):
         pywmlx.state.machine._currentdomain = match.group(3)
+        pywmlx.state.machine.checkdomain(lineno)
         xline = None
         if match.group(1) is None and pywmlx.state.machine._warnall:
             finfo = pywmlx.nodemanip.fileref + ":" + str(lineno)
@@ -48,6 +49,9 @@ class LuaCheckpoState:
         self.iffail = 'lua_comment'
 
     def run(self, xline, lineno, match):
+        if not pywmlx.state.machine.checkdomain(lineno):
+            return (None, 'lua_idle')
+
         # on -- #po: addedinfo
         if match.group(1) == "po":
             if pywmlx.state.machine._pending_addedinfo is None:
