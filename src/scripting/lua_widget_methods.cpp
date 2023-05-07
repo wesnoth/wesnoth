@@ -43,6 +43,7 @@
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
 #include "tstring.hpp"
+#include "utils/scope_exit.hpp"
 #include <functional>
 
 #include <type_traits>
@@ -75,9 +76,13 @@ int intf_show_dialog(lua_State* L)
 		lua_call(L, 1, 0);
 	}
 
-	gui2::open_window_stack.push_back(wp.get());
-	int v = wp->show();
-	gui2::remove_from_window_stack(wp.get());
+	int v = [&wp]() {
+		gui2::open_window_stack.push_back(wp.get());
+		ON_SCOPE_EXIT() {
+			gui2::remove_from_window_stack(wp.get());
+		};
+		return wp->show();
+	}();
 
 	if (!lua_isnoneornil(L, 3)) {
 		lua_pushvalue(L, 3);
