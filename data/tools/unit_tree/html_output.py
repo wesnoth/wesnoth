@@ -178,6 +178,11 @@ def int_fallback(str_value, int_fallback=0):
         return int_fallback
 
 
+def path2url(url):
+    if url is None:
+        return url
+    return re.sub(r'\\', '/', url)
+
 def cleanurl(url):
     """
     Encode the given URL to ensure it only contains valid URL characters
@@ -744,7 +749,7 @@ class HTMLOutput:
                                                 no_tc=True,
                                                 check_transparent=True)
             portrait = os.path.join(PICS_LOCATION, picname)
-        return image, portrait
+        return path2url(image), path2url(portrait)
 
     def get_abilities(self, u):
         anames = []
@@ -811,7 +816,7 @@ class HTMLOutput:
         pic = image_collector.add_image("general",
                                         "../../../images/misc/leader-crown.png",
                                         no_tc=True)
-        crownimage = cleanurl(os.path.join(PICS_LOCATION, pic))
+        crownimage = cleanurl(path2url(os.path.join(PICS_LOCATION, pic)))
         ms = None
         for row in range(len(rows)):
             write('<tr>\n')
@@ -927,10 +932,10 @@ class HTMLOutput:
                                 r = T(attack, "range")
                                 t = T(attack, "type")
                                 range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
-                                range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
+                                range_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, range_icon.id_name)))
                                 range_alt_text = 'attack range %s' % cleantext(_(r), quote=False)
                                 type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
-                                type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
+                                type_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, type_icon.id_name)))
                                 type_alt_text = 'attack type %s' % cleantext(_(t), quote=False)
                                 x = '<img src="%s" alt="(%s)"/> <img src="%s" alt="(%s)"/> ' % (range_icon, range_alt_text, type_icon, type_alt_text)
                                 write (x)
