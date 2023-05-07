@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.16.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-16 00:58 UTC\n"
-"PO-Revision-Date: 2023-03-20 13:45+0100\n"
+"PO-Revision-Date: 2023-05-02 18:44+0200\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
 "Language: fr\n"
@@ -5587,14 +5587,17 @@ msgstr ""
 #, fuzzy
 #| msgid "Merman Entangler"
 msgid "Merman Brawler"
-msgstr "Rétiaire ondin"
+msgstr "Bagarreur ondin"
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:17
+#, fuzzy
 msgid ""
 "Exceptionally large and strong mermen are sometimes more comfortable with "
 "their own fists and tails than with other weapons."
 msgstr ""
+"Des ondins exceptionnellement grands et forts sont parfois plus à l'aise "
+"avec leurs propres poings et queue qu'avec d'autres armes."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
@@ -5608,14 +5611,18 @@ msgstr "queue"
 #, fuzzy
 #| msgid "Merman Triton"
 msgid "Merman Citizen"
-msgstr "Triton"
+msgstr "Citoyen ondin"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:17
+#, fuzzy
 msgid ""
 "Merfolk are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even merfolk with no weapons or training can be dangerous."
 msgstr ""
+"Les ondins sont habituellement pacifiques, mais se battront pour défendre "
+"leur territoire. Dans cette situation, même des ondins désarmés ou non "
+"entraînés peuvent être dangereux."
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -6022,7 +6029,6 @@ msgstr ""
 msgid "Soldier Ant"
 msgstr "Fourmi soldat"
 
-# À compléter
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
 #, fuzzy
@@ -6033,7 +6039,9 @@ msgid ""
 "the fray."
 msgstr ""
 "Les fourmis géantes sont présentes un peu partout, dans les grottes des "
-"profondeurs de la terre comme au sommet des grandes montagnes. [...]"
+"profondeurs de la terre comme au sommet des grandes montagnes. On trouvera "
+"couramment des fourmis ouvrières et éclaireuses, mais, en cas de conflit, "
+"les fourmis soldats interviennent."
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
@@ -8031,12 +8039,18 @@ msgstr "Javeliniste saurienne"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:19
+#, fuzzy
 msgid ""
 "After years of combat practice, saurians warriors that are the most talented "
 "in the skill of spear throwing might advance to the ranks of the "
 "javelineers. With better equipment and exceptional aim, saurian javelineers "
 "are not to be underestimated."
 msgstr ""
+"Après des années d'entraînement au combat, les guerrières sauriennes les "
+"plus douées au maniement du javelot peuvent accéder aux rangs des "
+"javelinistes. Dotées d'un meilleur équipement et d'une adresse "
+"exceptionnelle, les javelinistes sauriennes ne doivent pas être sous-"
+"estimées."
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
@@ -8110,11 +8124,16 @@ msgstr "Porte-lance saurienne"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
+#, fuzzy
 msgid ""
 "Some saurians  with particularly good aim prefer to aid their allies from "
 "the backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
+"Certaines sauriennes au lancer particulièrement précis préfèrent aider leurs "
+"alliés depuis l'arrière-garde plutôt que de pénétrer les formations "
+"ennemies. Leur talent meurtrier pour le javelot leur permet de soutenir "
+"d'autres guerriers sauriens à distance."
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -8674,11 +8693,15 @@ msgstr "Saqued'os"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:27
+#, fuzzy
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés sur "
+"le squelette de leur cheval sont sortis de la tombe par une magie impie pour "
+"semer la peur et la destruction."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Skele_Bone_Knight.cfg:44
@@ -8749,6 +8772,7 @@ msgstr "Écuyer de la mort"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
+#, fuzzy
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
 "came back to this world as Death Knights. Death Squires serve them whilst "
@@ -8756,6 +8780,12 @@ msgid ""
 "pick up a good deal of the Knight’s power, including the ability to command "
 "underlings."
 msgstr ""
+"Parfois, les guerriers et les généraux les plus puissants, maudits par la "
+"haine et l'angoisse, reviennent dans ce monde sous la forme de chevaliers de "
+"la mort. Les écuyers de la mort les servent tout en acquérant des pouvoirs "
+"maléfiques pour devenir des chevaliers de la mort. Ainsi, ils apprennent à "
+"maîtriser une bonne partie des compétences des chevaliers, y compris la "
+"capacité de commander leurs subordonnés."
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -8866,11 +8896,15 @@ msgstr "Squelette monté"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:33
+#, fuzzy
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés sur "
+"leurs chevaux squelettiques sont sortis de leur tombe par une magie impie "
+"pour semer la peur et la destruction."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
