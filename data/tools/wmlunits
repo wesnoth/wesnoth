@@ -572,6 +572,9 @@ if __name__ == '__main__':
     ap.add_argument("-t", "--transdir",
                     help="Specify the directory with gettext message catalogues. " +
                     "Defaults to ./translations.", default="translations")
+    ap.add_argument("-m", "--magick", default="convert",
+                    help="Command that executes the convert(1) program of the " +
+                    "imagemagick(1) suite. Supports subcommands (e.g. `magick convert`).")
     ap.add_argument("-T", "--timeout",
                     help="Use the timeout iven in seconds when parsing WML, default is 20 " +
                     "seconds.")
@@ -627,7 +630,8 @@ if __name__ == '__main__':
 
     image_collector = helpers.ImageCollector(options.wesnoth,
                                              options.config_dir,
-                                             options.data_dir)
+                                             options.data_dir,
+                                             magick_exe=options.magick)
     html_output.image_collector = image_collector
 
     if options.language == "all":

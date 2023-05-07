@@ -10,6 +10,8 @@ import time
 import urllib.parse
 from subprocess import Popen
 
+from unit_tree.team_colorizer import colorize
+
 #
 # HTML template bits
 #
@@ -360,7 +362,6 @@ def output(path, url, datadir, data):
 
     sys.stderr.write("Done outputting html, now generating %d TC'ed images\n" % len(images_to_tc))
     for pair in images_to_tc:
-        # wait() to ensure only one process exists at any time
-        Popen([os.path.join(am_dir, "../unit_tree/TeamColorizer"), pair[0], pair[1]]).wait()
+        colorize(None, pair[0], pair[1])
 
 # kate: indent-mode normal; encoding utf-8; space-indent on;

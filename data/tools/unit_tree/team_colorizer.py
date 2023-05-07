@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+import sys, subprocess
 
-import sys, argparse, subprocess
+MAGICK_CMD = 'convert'
 
 # Note: Luminance formula taken from the Wikipedia article on luminance:
 #   http://en.wikipedia.org/wiki/Luminance_(colorimetry)
@@ -137,7 +137,7 @@ def convert_color(color, hex=False):
              'max': { 'r': 0xff, 'g': 0xff, 'b': 0xff },
              'min': { 'r': 0x00, 'g': 0x00, 'b': 0x00 },}
 
-def get_convert_options(color):
+def get_convert_options(color, method):
     '''
     Takes a dictionary containing 'r', 'g', and 'b' keys each with an integer
     value in the range [0, 255]. Returns a list containing all of the arguments
@@ -185,100 +185,24 @@ def get_convert_options(color):
                     "#%02x%02x%02x" % (old_r, old_g, old_b) ]
     return options
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description="""Map the magenta team-color patches in the input image to red (or a custom
-color) in the output image, copy the result to output.""",
-        formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument(
-        "-d", "--dryrun",
-        action="store_true",
-        help="""Print the command to be executed, but don't actually
-generate the output image.""")
-    parser.add_argument(
-        "-v", "--verbose",
-        action="count",
-        default=0,
-        help="""Print extra information about what is going on.""")
-    parser.add_argument(
-        "-x", "--hex",
-        action="store_true",
-        help="""Use base 16 for defining custom colors. Works with the
--r, -g, and -b options.""")
-    parser.add_argument(
-        "-l", "--luminance",
-        action="store_const",
-        dest="method",
-        const="luminance",
-        default="average",
-        help="""Use luminance instead of average value for computing
-color brightness when mapping colors. This produces
-results that are noticeably poorer than those produced
-by the in-game algorithm (which is used in the absence
-of -l).""")
-    parser.add_argument(
-        "-r", "--red",
-        action="store",
-        default=None,
-        help="""Set the desired red value to RED. Should be an integer
-between 0 and 255, or a hex value in the same range if
--x is given.""")
-    parser.add_argument(
-        "-g", "--green",
-        action="store",
-        default=None,
-        help="Same as -r, but for green value.")
-    parser.add_argument(
-        "-b", "--blue",
-        action="store",
-        default=None,
-        help="Same as -r, but for blue value.")
-    parser.add_argument(
-        "--color",
-        action="store",
-        choices=sorted(team_colors.keys()),
-        default=None,
-        help="""Causes -r, -g, and -b to be ignored. Sets the desired
-color (default: red). This method uses a more complex
-color definition but produces results identical to the
-in-game algorithm.""")
-    parser.add_argument(
-        "input_file",
-        action="store")
-    parser.add_argument(
-        "output_file",
-        action="store")
-    namespace = parser.parse_args()
-    verbose = namespace.verbose
-    dryrun = namespace.dryrun
-    if dryrun:
-        verbose = max(1, verbose)
-    hex = namespace.hex
-    method = namespace.method
-    color = namespace.color
+def colorize(color, in_file, out_file, magick=MAGICK_CMD, method="average", hex=False, namespace=None):
     if not color:
-        r = 255 if namespace.red is None else namespace.red
-        g = 0 if namespace.green is None else namespace.green
-        b = 0 if namespace.blue is None else namespace.blue
+        r = 255 if namespace is None or namespace.red is None else namespace.red
+        g = 0 if namespace is None or namespace.green is None else namespace.green
+        b = 0 if namespace is None or namespace.blue is None else namespace.blue
         color = { 'mid': { 'r': r,   'g': g,   'b': b },
                   'max': { 'r':0xff, 'g':0xff, 'b':0xff },
                   'min': { 'r':0x00, 'g':0x00, 'b':0x00 }}
 
-    infilename = namespace.input_file
-    outfilename = namespace.output_file
-
     color = convert_color(color, hex)
-    options = get_convert_options(color)
-    command = ['convert'] + options +\
-              [infilename, outfilename]
+    options = get_convert_options(color, method)
+    command = magick.split(" ") + options + [in_file, out_file]
 
-    if verbose:
+    if namespace and namespace.verbose:
         print(' '.join(command))
-    if not dryrun:
+    if not namespace or not namespace.dryrun:
         ret = subprocess.call(command)
         if ret != 0:
             print("Error: Conversion command exited with error "\
                   "code %d." % ret, file=sys.stderr)
-            sys.exit(ret)
-
-# TeamColorizer ends here.
+        return ret
