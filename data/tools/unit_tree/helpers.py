@@ -3,7 +3,7 @@
 """
 Various helpers for use by the wmlunits tool.
 """
-import sys, os, re, glob, shutil, copy, subprocess
+import sys, os, re, glob, shutil, copy, subprocess, traceback
 
 import wesnoth.wmlparser3 as wmlparser3
 from unit_tree.team_colorizer import colorize
@@ -47,7 +47,10 @@ class ImageCollector:
         tilde = name.find("~")
         if tilde >= 0:
             name = name[:tilde]
-        bases = [os.path.join(self.datadir, "data/core/images"), os.path.join(self.datadir, "images")]
+        bases = [
+            os.path.join(self.datadir, "data", "core", "images"),
+            os.path.join(self.datadir, "images")
+        ]
         binpaths = self.binary_paths_per_addon.get(addon, [])[:]
         binpaths.reverse()
         for path in binpaths:
@@ -66,9 +69,10 @@ class ImageCollector:
             bases = new_bases
 
         for ipath in bases:
+            ipath = os.path.normpath(ipath)
             if os.path.exists(ipath):
-                return ipath, bases
-        return None, bases
+                return ipath, list(map(os.path.normpath, bases))
+        return None, list(map(os.path.normpath, bases))
 
     def add_image_check(self, addon, name, no_tc=False, check_transparent=False):
         if (addon, name) in self.images_by_addon_name:
@@ -105,7 +109,7 @@ class ImageCollector:
         if ipath:
             id_name = make_name(ipath)
         else:
-            id_name = make_name(addon + "/" + name)
+            id_name = make_name(os.path.join(addon, name))
 
         image = Image(id_name, ipath, bases, no_tc)
         image.addons.add(addon)
@@ -125,15 +129,18 @@ class ImageCollector:
             opath = os.path.join(target_path, "pics", image.id_name)
             try:
                 os.makedirs(os.path.dirname(opath))
-            except OSError:
+            except FileExistsError:
                 pass
+            except OSError:
+                traceback.print_exc()
 
             no_tc = image.no_tc
 
             ipath = os.path.normpath(image.ipath)
-            cdir = os.path.normpath(options.config_dir + "/data/add-ons")
-            if ipath.startswith(cdir):
-                ipath = os.path.join(options.addons, ipath[len(cdir):].lstrip("/"))
+            default_addons_dir = os.path.join(options.config_dir, "data", "add-ons")
+            if ipath.startswith(default_addons_dir):
+                # Override with custom --addons
+                ipath = os.path.join(options.addons, os.path.relpath(ipath, default_addons_dir))
             if ipath and os.path.exists(ipath) and not os.path.isdir(ipath):
                 if no_tc:
                     shutil.copy2(ipath, opath)
@@ -141,8 +148,8 @@ class ImageCollector:
                     colorize(None, ipath, opath, magick=self.magick)
             else:
                 sys.stderr.write(
-                    "Warning: Required image %s does not exist (referenced by %s).\n" % (
-                        image.id_name, ", ".join(image.addons)))
+                    "Warning: Required image %s does not exist at %s (referenced by %s).\n" % (
+                        image.id_name, ipath, ", ".join(image.addons)))
                 if options.verbose:
                     if image.bases:
                         sys.stderr.write("Warning: Looked at the following locations:\n")

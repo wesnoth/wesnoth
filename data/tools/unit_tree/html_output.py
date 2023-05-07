@@ -12,7 +12,7 @@ import urllib.parse
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser3 as wmlparser3
 
-PICS_LOCATION = "../../pics"
+PICS_LOCATION = os.path.join("..", "..", "pics")
 
 # Icons for mainline terrains used on the unit details page
 TERRAIN_ICONS = {
@@ -737,7 +737,7 @@ class HTMLOutput:
             error_message("Warning: Missing image for unit %s(%s).\n" %
                           (u.get_text_val("id"), x.name.decode("utf8")))
             return None, None
-        icpic = image_collector.add_image_check(self.addon, image)
+        icpic = image_collector.add_image_check(self.addon, os.path.normpath(image))
         if not icpic.ipath:
             error_message("Warning: No picture %s for unit %s.\n" %
                           (image, u.get_text_val("id")))
@@ -813,9 +813,11 @@ class HTMLOutput:
             write('<col class="col%d" />' % i)
         write('</colgroup>')
 
-        pic = image_collector.add_image("general",
-                                        "../../../images/misc/leader-crown.png",
-                                        no_tc=True)
+        pic = image_collector.add_image(
+            "general",
+            os.path.join("..", "..", "..", "images", "misc", "leader-crown.png"),
+            no_tc=True
+        )
         crownimage = cleanurl(path2url(os.path.join(PICS_LOCATION, pic)))
         ms = None
         for row in range(len(rows)):
@@ -931,10 +933,10 @@ class HTMLOutput:
 
                                 r = T(attack, "range")
                                 t = T(attack, "type")
-                                range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
+                                range_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s_attack.png' % r), no_tc=True)
                                 range_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, range_icon.id_name)))
                                 range_alt_text = 'attack range %s' % cleantext(_(r), quote=False)
-                                type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
+                                type_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s.png' % t), no_tc=True)
                                 type_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, type_icon.id_name)))
                                 type_alt_text = 'attack type %s' % cleantext(_(t), quote=False)
                                 x = '<img src="%s" alt="(%s)"/> <img src="%s" alt="(%s)"/> ' % (range_icon, range_alt_text, type_icon, type_alt_text)
@@ -1192,7 +1194,7 @@ class HTMLOutput:
                 if not icon:
                     icon = "attacks/%s.png" % aid
 
-                image_add = image_collector.add_image_check(self.addon, icon, no_tc=True)
+                image_add = image_collector.add_image_check(self.addon, os.path.normpath(icon), no_tc=True)
                 if not image_add.ipath:
                     error_message("Error: No attack icon '%s' found for '%s'.\n" % (
                         icon, uid))
@@ -1204,7 +1206,7 @@ class HTMLOutput:
                 write('<td><b>%s</b></td>' % cleantext(aname, quote=False))
 
                 t = T(attack, "type")
-                type_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s.png' % t, no_tc=True)
+                type_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s.png' % t), no_tc=True)
                 type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
                 type_alt_text = cleantext('%s attack' % t, quote=False)
                 x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (type_icon, type_alt_text, cleantext(_(t), quote=False))
@@ -1216,7 +1218,7 @@ class HTMLOutput:
                 write('<td><i>%s</i></td>' % x)
 
                 r = T(attack, "range")
-                range_icon = image_collector.add_image_check(self.addon, 'icons/profiles/%s_attack.png' % r, no_tc=True)
+                range_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s_attack.png' % r), no_tc=True)
                 range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
                 range_alt_text = cleantext('%s attack' % r, quote=False)
                 x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (range_icon, range_alt_text, cleantext(_(r), quote=False))
@@ -1261,7 +1263,7 @@ class HTMLOutput:
                 write('<tr>\n')
             else:
                 write('<td></td>')
-            picname = image_collector.add_image(self.addon, ricon, no_tc=True)
+            picname = image_collector.add_image(self.addon, os.path.normpath(ricon), no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
             write('<th>%s</th><td class="%s">%s</td>\n' % (cleantext(_(rid), quote=False), ' '.join(resist_classes), resist_str))
@@ -1345,7 +1347,7 @@ class HTMLOutput:
 
             write('<tr>\n')
             picname = image_collector.add_image(self.addon,
-                                                "terrain/%s.png" % ticon,
+                                                os.path.normpath("terrain/%s.png" % ticon),
                                                 no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
             write('<td><img src="%s" alt="(icon)" /></td>\n' % cleanurl(icon))
