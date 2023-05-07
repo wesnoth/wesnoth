@@ -7,6 +7,7 @@ import sys, os, re, glob, shutil, copy, subprocess, traceback
 
 import wesnoth.wmlparser3 as wmlparser3
 from unit_tree.team_colorizer import colorize
+import wesnoth.base64url as base64url
 
 class Image:
     def __init__(self, id_name, ipath, bases, no_tc):
@@ -88,28 +89,31 @@ class ImageCollector:
                 image.addons.add(addon)
             return image
 
-        def make_name(x):
-            x = x.strip("./ ")
-            d = options.config_dir.strip("./ ")
-            if x.startswith(d): x = x[len(d):]
-            d = options.data_dir.strip("./ ")
-            if x.startswith(d): x = x[len(d):]
-            x = x.strip("./ ")
-            if x.startswith("data"): x = x[len("data"):]
-            x = x.strip("./ ")
-            y = ""
-            for c in x:
-                if c == "/":
-                    c = "$"
-                elif not c.isalnum() and c not in ".+-()[]{}":
-                    c = "_"
-                y += c
-            return y
+        def make_name(vpath, hide_paths, prefix_fallback=None):
+            if prefix_fallback is not None:
+                vpath = os.path.join(prefix_fallback, vpath)
+            vpath = os.path.normpath(vpath.strip())
+            for hidden_path in hide_paths:
+                if vpath.startswith(hidden_path):
+                #if os.path.commonpath(vpath, hidden_path) == hidden_path:
+                    vpath = os.path.relpath(vpath, hidden_path)
+                    break
+            else:                
+                # root_dir is prefix after normalization
+                root_dir = vpath.split("/")[0].split("\\")[0]
+                if prefix_fallback is None or (root_dir != "general" and root_dir != prefix_fallback):
+                    print("Path \"%s\" outside valid folders." % vpath)
+                    vpath = "403.png"
+
+            encoded_dir_name = base64url.encode_str(os.path.dirname(vpath))
+            sanitized_file_name = re.sub(r'[^a-zA-Z0-9_.-]' , "", ".".join(os.path.basename(vpath).split("(")[0].split(".")[-2:]))
+            head, ext = os.path.splitext(sanitized_file_name)
+            return '%s..%s.%s' % (head, encoded_dir_name, ext)
 
         if ipath:
-            id_name = make_name(ipath)
+            id_name = make_name(ipath, self.hide_paths)
         else:
-            id_name = make_name(os.path.join(addon, name))
+            id_name = make_name(name, self.hide_paths, prefix_fallback=addon)
 
         image = Image(id_name, ipath, bases, no_tc)
         image.addons.add(addon)
