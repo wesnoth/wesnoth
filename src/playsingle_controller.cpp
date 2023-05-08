@@ -176,11 +176,13 @@ void playsingle_controller::play_scenario_init(const config& level)
 	gamestate().gamedata_.set_phase(game_data::read_phase(level));
 
 	start_game();
-	skip_empty_sides(gamestate_->player_number_);
-	gamestate_->player_number_ = modulo(gamestate_->player_number_, static_cast<int>(get_teams().size()), 1);
-	init_side_begin();
-	if(gamestate().in_phase(game_data::TURN_PLAYING)) {
-		init_side_end();
+	gamestate_->player_number_ = skip_empty_sides(gamestate_->player_number_).side_num;
+
+	if(!get_teams().empty()) {
+		init_side_begin();
+		if(gamestate().in_phase(game_data::TURN_PLAYING)) {
+			init_side_end();
+		}
 	}
 
 	if(!saved_game_.classification().random_mode.empty() && is_networked_mp()) {
@@ -193,17 +195,18 @@ void playsingle_controller::play_scenario_init(const config& level)
 	}
 }
 
-void playsingle_controller::skip_empty_sides(int& side_num)
+playsingle_controller::ses_result playsingle_controller::skip_empty_sides(int side_num)
 {
 	const int sides = static_cast<int>(get_teams().size());
-	if(sides == 0) return;
 	const int max = side_num + sides;
-	while (gamestate().board_.get_team(modulo(side_num, sides, 1)).is_empty()) {
-		if(side_num == max) {
-			throw game::game_error("No teams found");
+
+	for (; side_num != max; ++side_num) {
+		int side_num_mod = modulo(side_num, sides, 1);
+		if(!gamestate().board_.get_team(side_num_mod).is_empty()) {
+			return { side_num_mod, side_num_mod != side_num };
 		}
-		++side_num;
 	}
+	return { side_num, true };
 }
 
 void playsingle_controller::play_some()
@@ -247,7 +250,7 @@ void playsingle_controller::finish_side_turn()
 
 	/// Make a copy, since the [end_turn] was already sent to to server any changes to
 	//  next_player_number by wml would cause OOS otherwise.
-	int next_player_number = gamestate_->next_player_number_;
+	int next_player_number_temp = gamestate_->next_player_number_;
 	whiteboard_manager_->on_finish_side_turn(current_side());
 
 	finish_side_turn_events();
@@ -255,9 +258,7 @@ void playsingle_controller::finish_side_turn()
 		return;
 	}
 
-	skip_empty_sides(next_player_number);
-	bool new_turn = next_player_number > static_cast<int>(get_teams().size());
-	next_player_number = modulo(next_player_number, get_teams().size(), 1);
+	auto [next_player_number, new_turn]  = skip_empty_sides(next_player_number_temp);
 
 	if(new_turn) {
 		finish_turn();
@@ -271,10 +272,13 @@ void playsingle_controller::finish_side_turn()
 		}
 		did_tod_sound_this_turn_ = false;
 	}
-	// the turn end event might have deleted sides, so do this again.
-	skip_empty_sides(next_player_number);
 
-	gamestate_->player_number_ = modulo(next_player_number, get_teams().size(), 1);
+	gamestate_->player_number_ = next_player_number;
+	if(current_team().is_empty()) {
+		// We don't support this case (turn end events emptying the next sides controller) since the server cannot handle it.
+		throw game::game_error("Empty side after new turn events");
+	}
+
 	gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 
 	if(new_turn) {
@@ -294,10 +298,6 @@ void playsingle_controller::play_scenario_main_loop()
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks());
 
 	ai_testing::log_game_start();
-	if(get_teams().empty()) {
-		ERR_NG << "Playing game with 0 teams.";
-	}
-
 	while(!(gamestate().in_phase(game_data::GAME_ENDED) && end_turn_requested_ )) {
 		try {
 			play_some();

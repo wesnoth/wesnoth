@@ -49,7 +49,14 @@ public:
 	~playsingle_controller();
 	level_result::type play_scenario(const config& level);
 	void play_scenario_init(const config& level);
-	void skip_empty_sides(int& side_num);
+
+	struct ses_result { int side_num; bool wrapped; };
+	/// Calculates the current side, starting at @a side_num that is non-empty
+	/// @return side_num: the new side that is non-empty,
+	///                   @a side_num, if no such side was found.
+	///         wrapped:  whether we wrapped around (usually indicates a new tod turn.)
+	///                   also true if no non-empty side was found.
+	ses_result skip_empty_sides(int side_num);
 	void play_some();
 	void finish_side_turn();
 	void do_end_level();

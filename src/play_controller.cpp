@@ -1276,6 +1276,9 @@ std::set<std::string> play_controller::all_players() const
 void play_controller::play_side()
 {
 	do {
+		if(std::find_if(get_teams().begin(), get_teams().end(), [](const team& t) { return !t.is_empty(); }) == get_teams().end()){
+			throw game::game_error("The scenario has no (non-empty) sides defined");
+		}
 		update_viewing_player();
 
 		maybe_do_init_side();
