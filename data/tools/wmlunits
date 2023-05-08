@@ -66,6 +66,52 @@ def get_info(addon):
         print(e)
     return _info[addon]
 
+def get_list_batch_paths(list, batch, output):
+    # Excluding the len() > 1 cases,
+    # there are 3x3 branches to handle.
+    # Bij: list = [None, [], [FILE]][i]
+    # Bij: batch = [None, [], [FILE]][j]
+
+    default_yml_file = os.path.join(output, 'list.yml')
+    if list is None and batch is None:
+        # B00
+        sys.stderr.write("Need --list or --batch (or both).\n")
+        return (None, None)
+    if list is not None and len(list) > 1:
+        sys.stderr.write("Too many arguments provided to --list.\n")
+        return (None, None)
+    if batch is not None and len(batch) > 1:
+        sys.stderr.write("Too many arguments provided to --batch.\n")
+        return (None, None)
+    if list == [] and batch is None:
+        # B10: --list provided without --batch.
+        # Default to list.yml in the output folder.
+        return (default_yml_file, None)
+    if list is None and batch == []:
+        # B01: --batch provided without --list.
+        # That doesn't make sense.
+        sys.stderr.write("No file was specified for --batch. Provide a YAML file path.\n")
+        return (None, None)
+    if batch is None:
+        # B20: --list FILE provided without --batch
+        return (list[0], None)
+    if list is None:
+        # B02: --batch FILE provided without --list
+        return (None, batch[0])
+    if list == [] and batch == []:
+        # B11: --list --batch
+        return (default_yml_file, default_yml_file)
+    if list == []:
+        # B12: --list --batch FILE
+        return (batch[0], batch[0])
+    if batch == []:
+        # B21: --list FILE --batch
+        return (list[0], list[0])
+    # B22: --list FILE_1 --batch FILE_2
+    # Hopefully FILE_1 will be the same as FILE_2.
+    # Or FILE_2 has been previously created with --list FILE_2
+    return (list[0], batch[0])
+
 _deps = {}
 global_addons = set()
 def get_dependencies(addon):
@@ -584,10 +630,13 @@ if __name__ == '__main__':
     ap.add_argument("-a", "--addons",
                     help="Specify path to a folder with all addons. This should be " +
                     "outside the user config folder.")
-    ap.add_argument("-L", "--list",
-                    help="List available eras and campaigns.")
-    ap.add_argument("-B", "--batch",
-                    help="Batch process the given list.")
+    ap.add_argument("-L", "--list", nargs='*', # Distinguish 3 states: [--list [FILE]]
+                    help="Lists available eras and campaigns using the YAML format. "
+                    "Writes to the provided file path. Defaults to `list.yml` in "
+                    "the output folder.")
+    ap.add_argument("-B", "--batch", nargs='*', # Distinguish 3 states: [--batch [FILE]]
+                    help="Batch process the addons listed in the provided YAML file. "
+                    "Default matches --list.")
     ap.add_argument("-A", "--addons-only", action="store_true",
                     help="Do only process addons (for debugging).")
     ap.add_argument("-v", "--verbose", action="store_true")
@@ -652,8 +701,9 @@ if __name__ == '__main__':
     else:
         languages = options.language.split(",")
 
-    if not options.list and not options.batch:
-        sys.stderr.write("Need --list or --batch (or both).\n")
+    (options.list, options.batch) = get_list_batch_paths(options.list, options.batch, options.output)
+    if options.list is None and options.batch is None:
+        ap.print_help()
         sys.exit(-1)
 
     if options.output:
