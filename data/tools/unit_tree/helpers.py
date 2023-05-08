@@ -8,20 +8,6 @@ import sys, os, re, glob, shutil, copy, subprocess
 import wesnoth.wmlparser3 as wmlparser3
 from unit_tree.team_colorizer import colorize
 
-def get_datadir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--data-path"],
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out.strip()
-
-def get_userdir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--userdata-path"],
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out.strip()
-
 class Image:
     def __init__(self, id_name, ipath, bases, no_tc):
         self.id_name = id_name
@@ -40,11 +26,14 @@ class ImageCollector:
         self.images_by_ipath = {}
         self.binary_paths_per_addon = {}
         self.datadir = datadir
-        if not self.datadir:
-            self.datadir = get_datadir(wesnoth_exe)
         self.userdir = userdir
-        if not self.userdir:
-            self.userdir = get_userdir(wesnoth_exe)
+        self.hide_paths = [
+            os.path.join(self.userdir, "data", "add-ons"),
+            os.path.join(self.userdir, "data"),
+            os.path.join(self.userdir),
+            os.path.join(self.datadir, "data"),
+            os.path.join(self.datadir)
+        ]
         self.magick = magick_exe
 
     def add_binary_paths_from_WML(self, addon, WML):
