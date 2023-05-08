@@ -33,12 +33,15 @@ def copy_images():
     shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)), "unit_tree", "menu.js"),
                  options.output)
 
-def shell_out(com):
-    p = subprocess.Popen(com,
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out
+def shell_out(wesnoth_exe, com):
+    base_com = [wesnoth_exe, "--nobanner"] + com
+    cli_opt_matrix = [[], ["--no-log-to-file"], ["--wnoconsole", "--wnoredirect"]]
+    for cli_opts in cli_opt_matrix:
+        com = base_com + cli_opts
+        p = subprocess.run(com, capture_output=True, text=True)
+        if p.returncode == 0:
+            return p.stdout.strip()
+    return ""
 
 def move(f, t, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
@@ -615,11 +618,19 @@ if __name__ == '__main__':
         options.wesnoth = "wesnoth"
 
     if not options.data_dir:
-        options.data_dir = shell_out([options.wesnoth, "--data-path"]).strip().decode("utf8")
+        options.data_dir = shell_out(options.wesnoth, ["--data-path"]).strip()
+        if not options.data_dir:
+            sys.stderr.write("Need --data-dir.\n")
+            ap.print_help()
+            sys.exit(-1)
         print("Using " + options.data_dir + " as data dir.")
 
     if not options.config_dir:
-        options.config_dir = shell_out([options.wesnoth, "--userdata-path"]).strip().decode("utf8")
+        options.config_dir = shell_out(options.wesnoth, ["--userdata-path"]).strip()
+        if not options.config_dir:
+            sys.stderr.write("Need --config-dir.\n")
+            ap.print_help()
+            sys.exit(-1)
         print("Using " + options.config_dir + " as config dir.")
 
     if not options.transdir:
