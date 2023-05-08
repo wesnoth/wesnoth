@@ -1704,6 +1704,7 @@ int game_lua_kernel::impl_current_get(lua_State *L)
 	return_int_attrib("turn", play_controller_.turn());
 	return_string_attrib("synced_state", synced_state());
 	return_bool_attrib("user_can_invoke_commands", !events::commands_disabled && gamedata().phase() == game_data::TURN_PLAYING);
+	return_bool_attrib("is_replaying", play_controller_.is_replay());
 
 	if(strcmp(m, "map") == 0) {
 		return intf_terrainmap_get(L);

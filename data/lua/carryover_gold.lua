@@ -53,7 +53,7 @@ local function do_carryover_gold()
 	local has_next_scenario = wesnoth.scenario.next ~= "" and wesnoth.scenario.next ~= "null" and endlevel_data.proceed_to_next_level
 	local is_victory = endlevel_data.is_victory
 	local is_observer = get_is_observer()
-	local is_replay = false
+	local is_replay = wesnoth.current.is_replaying
 	local show_report = endlevel_data.carryover_report and (not is_observer) and (not is_replay)
 
 	local num_villages = get_num_villages()
