@@ -78,7 +78,7 @@ int intf_show_dialog(lua_State* L)
 
 	int v = [&wp]() {
 		gui2::open_window_stack.push_back(wp.get());
-		ON_SCOPE_EXIT() {
+		ON_SCOPE_EXIT(&wp) {
 			gui2::remove_from_window_stack(wp.get());
 		};
 		return wp->show();
