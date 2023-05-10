@@ -57,7 +57,7 @@ public:
 	log_file_manager(const log_file_manager&) = delete;
 	log_file_manager& operator=(const log_file_manager&) = delete;
 
-	log_file_manager(bool native_console);
+	log_file_manager();
 
 	/**
 	 * Returns whether we own the console we are attached to, if any.
@@ -76,7 +76,7 @@ private:
 	void enable_native_console_output();
 };
 
-log_file_manager::log_file_manager(bool native_console)
+log_file_manager::log_file_manager()
 	: created_wincon_(false)
 {
 	DBG_LS << "Early init message";
@@ -86,7 +86,7 @@ log_file_manager::log_file_manager(bool native_console)
 		// with the console subsystem flag and that the standard streams are
 		// already pointing to the console.
 		LOG_LS << "Console already attached at startup (built with console subsystem flag?), log file disabled.";
-	} else if(native_console) {
+	} else {
 		enable_native_console_output();
 	}
 
@@ -139,10 +139,10 @@ std::unique_ptr<log_file_manager> lfm;
 
 } // end anonymous namespace
 
-void do_console_redirect(bool native_console)
+void do_console_redirect()
 {
 	if(!lfm) {
-		lfm.reset(new log_file_manager(native_console));
+		lfm.reset(new log_file_manager());
 	}
 }
 
