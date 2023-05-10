@@ -1073,11 +1073,11 @@ int main(int argc, char** argv)
 
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-	// turn it into a CLI application. Also, --wconsole in particular attaches
+	// turn it into a CLI application. Also, --no-log-to-file in particular attaches
 	// a console to a regular GUI game session.
 	//
 	// It's up to commandline_options later to handle these switches (except
-	// --wconsole) later and emit any applicable console output, but right here
+	// --no-log-to-file) later and emit any applicable console output, but right here
 	// we need a rudimentary check for the switches in question to set up the
 	// console before proceeding any further.
 	for(const auto& arg : args) {
@@ -1104,16 +1104,6 @@ int main(int argc, char** argv)
 			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
 			write_to_log_file = false;
 		}
-
-#ifdef _WIN32
-		if(arg == "--wnoconsole") {
-			write_to_log_file = true;
-		} else if(arg == "--wconsole") {
-			write_to_log_file = false;
-		} else if(arg == "--wnoredirect") {
-			write_to_log_file = false;
-		}
-#endif
 
 		if(arg == "--no-log-to-file") {
 			write_to_log_file = false;

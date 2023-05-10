@@ -170,8 +170,7 @@ class WesnothRunner:
                 path += "-debug"
         self.common_args = [path, "--nobanner"]
         if os.name == 'nt':
-            self.common_args.append("--wnoconsole")
-            self.common_args.append("--wnoredirect")
+            self.common_args.append("--no-log-to-file")
         if options.strict_mode:
             self.common_args.append("--log-strict=warning")
         if options.clean:

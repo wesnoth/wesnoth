@@ -30,7 +30,7 @@
  * Because Wesnoth is normally built with the GUI subsystem option, there is no
  * console on startup and thus no way to see stdout/stderr output. Since
  * version 1.13.1, we can allocate a console during initialization when started
- * with the --wconsole option, but that is a somewhat clunky hack that does not
+ * with the --wconsole option (now --no-log-to-file), but that is a somewhat clunky hack that does not
  * help with post mortem debugging.
  *
  * SDL 1.2 used to redirect stdout and stderr to stdout.txt and stderr.txt in
