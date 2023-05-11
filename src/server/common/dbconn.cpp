@@ -185,7 +185,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 "    from "+db_game_player_info_table_+" player1 "
 "    where game.INSTANCE_UUID = player1.INSTANCE_UUID "
 "      and game.GAME_ID = player1.GAME_ID ";
-	game_history_query += player_id != 0 ? " and player1.USER_ID = ? " : " and player1.USER_ID != ? ";
+	game_history_query += player_id == 0 ? " and player1.USER_ID != ? " : " and player1.USER_ID = ? ";
 	game_history_query += "  ) "
 "  and game.INSTANCE_UUID = player.INSTANCE_UUID "
 "  and game.GAME_ID = player.GAME_ID "
