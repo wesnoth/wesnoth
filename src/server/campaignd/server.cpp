@@ -1943,7 +1943,7 @@ bool server::authenticate_forum(const config& addon, const std::string& passphra
 
 } // end namespace campaignd
 
-int run_campaignd(int argc, char** argv)
+static int run_campaignd(int argc, char** argv)
 {
 	campaignd::command_line cmdline{argc, argv};
 	std::string server_path = filesystem::get_cwd();
