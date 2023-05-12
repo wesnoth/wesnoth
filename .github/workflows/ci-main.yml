@@ -56,7 +56,7 @@ jobs:
                 extra_flags_config="-pipe" strict=true forum_user_handler=true \
                 nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time
               
-              apt remove libsdl2-dev libsdl2-dev libsdl2-mixer-dev
+              apt remove -y -qq libsdl2-dev libsdl2-dev libsdl2-mixer-dev
 
               scons wesnothd campaignd \
                 build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
@@ -71,7 +71,7 @@ jobs:
               make conftests
               make VERBOSE=1 -j2
 
-              apt remove libsdl2-dev libsdl2-dev libsdl2-mixer-dev
+              apt remove -y -qq libsdl2-dev libsdl2-dev libsdl2-mixer-dev
 
               cmake -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true \
                 -DENABLE_TESTS=false -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
