@@ -23,7 +23,6 @@
 
 #include "config.hpp"
 #include "deprecation.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -72,6 +71,31 @@ static lg::log_domain log_filesystem("filesystem");
 
 namespace bfs = boost::filesystem;
 using boost::system::error_code;
+
+namespace game_config
+{
+//
+// Path info
+//
+#ifdef WESNOTH_PATH
+std::string path = WESNOTH_PATH;
+#else
+std::string path = "";
+#endif
+
+#ifdef DEFAULT_PREFS_PATH
+std::string default_preferences_path = DEFAULT_PREFS_PATH;
+#else
+std::string default_preferences_path = "";
+#endif
+bool check_migration = false;
+
+std::string wesnoth_program_dir;
+
+const std::string observer_team_name = "observer";
+
+int cache_compression_level = 6;
+}
 
 namespace
 {

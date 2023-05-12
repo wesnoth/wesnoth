@@ -30,6 +30,18 @@
 #include "exceptions.hpp"
 #include "game_version.hpp"
 
+namespace game_config {
+extern std::string path;
+extern std::string default_preferences_path;
+extern bool check_migration;
+extern std::string wesnoth_program_dir;
+
+/** observer team name used for observer team chat */
+extern const std::string observer_team_name;
+
+extern int cache_compression_level;
+}
+
 class config;
 class game_config_view;
 struct SDL_RWops;

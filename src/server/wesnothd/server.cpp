@@ -22,7 +22,6 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "serialization/parser.hpp"

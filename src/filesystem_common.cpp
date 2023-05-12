@@ -18,7 +18,6 @@
 #include "wesconfig.h"
 
 #include "config.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
