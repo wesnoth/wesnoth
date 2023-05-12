@@ -22,6 +22,7 @@ set(NORMAL_DOMAINS
 	wesnoth-sotbe
 	wesnoth-tb
 	wesnoth-thot
+	wesnoth-tools
 	wesnoth-trow
 	wesnoth-tsg
 	wesnoth-tutorial
