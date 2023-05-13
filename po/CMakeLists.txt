@@ -1,7 +1,7 @@
 ############ Settings. ###########
 set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 
-# The normal domains use cpp and cfg files.
+# The normal domains use cfg, cpp, lua, py files.
 set(NORMAL_DOMAINS
 	wesnoth
 	wesnoth-anl
@@ -56,40 +56,55 @@ if(ENABLE_POT_UPDATE_TARGET)
 		# Update the source file dependencies.
 		include(update_pot_source_dependencies)
 
-		# Generate pot file for c++ data.
+		# Generate pot file for C++ strings.
 		add_custom_command(
 			# misses bug address
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# create the pot file make sure we always get output.
 			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} ${GETTEXT_XGETTEXT_OPTIONS}
-					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
+					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_CPP.in
 					--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
 			# replace the chartype
 			COMMAND sed -i
 				s/charset=CHARSET/charset=UTF-8/
 				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
-			# Remove some header info - Need to test whether needed.
-			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES.in
+			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_CPP.in
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-			COMMENT "pot-update [${DOMAIN}]: Generated source pot file."
+			COMMENT "pot-update [${DOMAIN}]: Generating source pot file."
 		)
 
-		# Generate pot file for wml data.
+		# Generate pot file for Python strings.
+		add_custom_command(
+			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
+			# create the pot file make sure we always get output.
+			COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} ${GETTEXT_XGETTEXT_OPTIONS}
+					--language=Python
+					--files-from=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_PY.in
+					--output=${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
+			# replace the chartype
+			COMMAND sed -i
+				s/charset=CHARSET/charset=UTF-8/
+				${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
+			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/POTFILES_PY.in
+			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+			COMMENT "pot-update [${DOMAIN}]: Generating python pot file."
+		)
+		# Generate pot file for WML/Lua strings.
 		add_custom_command(
 			OUTPUT ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 
-			COMMAND ${WMLXGETTEXT}
-				--directory=${PROJECT_SOURCE_DIR}
+			COMMAND ${Python_EXECUTABLE} ${WMLXGETTEXT}
+				--force-po
 				--domain=${DOMAIN}
 				`cd ${PROJECT_SOURCE_DIR} &&
 					sh ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG`
 					-o ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 			DEPENDS ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/FINDCFG
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-			COMMENT "pot-update [${DOMAIN}]: Generated wml pot file."
+			COMMENT "pot-update [${DOMAIN}]: Generating wml pot file."
 		)
 
-		# Merge both pot files
+		# Merge pot files
 		add_custom_command(
 			# The old function checked for differences in the time in the header see
 			# what we need to do with it.
@@ -98,18 +113,21 @@ if(ENABLE_POT_UPDATE_TARGET)
 			COMMAND ${GETTEXT_MSGCAT_EXECUTABLE}
 				--sort-by-file
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
+					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 				--output ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.pot
 
 			COMMAND ${CMAKE_COMMAND} -E remove
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
+					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
 					 ${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
 
 			WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
 			DEPENDS
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.cpp.pot
+					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.py.pot
 					${PROJECT_SOURCE_DIR}/po/${DOMAIN}/${DOMAIN}.wml.pot
-			COMMENT "pot-update [${DOMAIN}]: Generated pot file."
+			COMMENT "pot-update [${DOMAIN}]: Generating pot file."
 		)
 
 		# Update / generate the po files for all languages

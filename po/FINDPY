@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+#
+# Lists localizable Python scripts and modules.
+# Excludes files in .git folders.
+#
+# Syntax:
+# FINDPY DOMAIN
+#
+# In contrast to FINDCPP, there is no default domain.
+
+import argparse
+import glob
+import re
+from pathlib import Path
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('domain') # Single positional argument.
+    args = parser.parse_args()
+    # Whether the input string has defined args.domain as its text domain.
+    domain_regexp = re.compile(" *_ *= *gettext\\.translation\\((['\"])" + re.escape(args.domain) + "\\1")
+    py_files = glob.glob("data/tools/**/*.py", recursive=True)
+    # Executable files are hardcoded rather than scanning for +x (which doesn't exist in Windows),
+    # and matching shebang line.
+    py_files.extend([
+        "data/tools/GUI.pyw",
+        "data/tools/about_cfg_to_wiki",
+        "data/tools/check_mixed_indent" ,
+        "data/tools/extractbindings",
+        "data/tools/imgcheck",
+        "data/tools/steam-changelog",
+        "data/tools/TeamColorizer",
+        "data/tools/tmx_trackplacer",
+        "data/tools/wesnoth_addon_manager",
+        "data/tools/wmlflip",
+        "data/tools/wmlindent",
+        "data/tools/wmllint",
+        "data/tools/wmllint-1.4",
+        "data/tools/wmlscope",
+        "data/tools/wmlunits",
+        "data/tools/wmlxgettext"
+    ])
+    py_files.sort()
+    for p in py_files:
+        # In Windows, glob search yields paths with mixed separators (/\).
+        path = Path(p)
+        # Exclude any .git subdirectories.
+        if ".git" in path.parts:
+            continue
+        if re.search(domain_regexp, path.read_text(encoding='utf8')):
+            # Produce output with / only.
+            print(path.as_posix())
