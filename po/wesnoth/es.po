@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-22 22:24-0500\n"
-"PO-Revision-Date: 2023-04-01 14:51+0200\n"
+"PO-Revision-Date: 2023-05-12 05:59+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -5581,16 +5581,17 @@ msgid "(press $hotkey to keep moving)"
 msgstr "(presione $hotkey para seguir moviéndose)"
 
 #: src/actions/undo.cpp:413
-#, fuzzy
-#| msgid "Game Error"
 msgid "Redo Error"
-msgstr "Error del juego"
+msgstr "Error de rehacer"
 
 #: src/actions/undo.cpp:414
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
 msgstr ""
+"La pila de rehacer no está sincronizada. Esto suele deberse a un archivo de "
+"guardado corrupto o a un código WML defectuoso en el escenario o era. "
+"Detalles:"
 
 #: src/addon/client.cpp:81
 msgid "Connecting to $server_address|..."
@@ -7017,18 +7018,16 @@ msgid " UTC+0"
 msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:195
-#, fuzzy
-#| msgid "No games found."
 msgid "No game history found."
-msgstr "No se ha encontrado ninguna partida."
+msgstr "No se encontró el historial del juego."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:208
 msgid "Request timed out."
-msgstr ""
+msgstr "Tiempo de espera agotado."
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:218
 msgid "Request encountered an unexpected error, please check the logs."
-msgstr ""
+msgstr "La solicitud encontró un error inesperado, verifique el registro."
 
 #: src/gui/dialogs/multiplayer/player_info.cpp:107
 msgid "In game:"
@@ -7229,22 +7228,17 @@ msgid "Planning mode deactivated!"
 msgstr "¡Modo de planificación desactivado!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:317
-#, fuzzy
-#| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
-msgstr "¿Desea continuar?"
+msgstr "¿Quieres cargarla de todos modos?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:333
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
-msgstr "El archivo que ha intentado cargar está corrupto"
+msgstr ""
+"El archivo que has intentado cargar no tiene información de reproducción."
 
 #: src/hotkey/hotkey_handler_sp.cpp:337
-#, fuzzy
-#| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
-msgstr "El archivo que ha intentado cargar está corrupto"
+msgstr "El archivo que has intentado cargar no es de la sesión actual."
 
 #: src/language.cpp:115
 msgid "System default language"
