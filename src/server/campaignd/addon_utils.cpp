@@ -18,7 +18,6 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "addon/validation.hpp"

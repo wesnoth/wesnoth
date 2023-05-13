@@ -55,8 +55,6 @@ namespace game_config
 		return combat_experience * level;
 	}
 
-	extern std::string wesnoth_program_dir;
-
 	/** Default percentage gold carried over to the next scenario. */
 	extern const int gold_carryover_percentage;
 
@@ -67,12 +65,6 @@ namespace game_config
 
 	extern const bool& debug;
 	void set_debug(bool new_debug);
-
-	extern int cache_compression_level;
-
-	extern std::string path;
-	extern std::string default_preferences_path;
-	extern bool check_migration;
 
 	struct server_info
 	{
@@ -170,9 +162,6 @@ namespace game_config
 	extern std::map<std::string, std::vector<color_t>> team_rgb_colors;
 
 	extern std::vector<std::string> default_colors;
-
-	/** observer team name used for observer team chat */
-	extern const std::string observer_team_name;
 
 	/**
 	 * The maximum number of hexes on a map and items in an array and also used

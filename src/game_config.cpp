@@ -31,24 +31,6 @@ static lg::log_domain log_engine("engine");
 namespace game_config
 {
 //
-// Path info
-//
-#ifdef WESNOTH_PATH
-std::string path = WESNOTH_PATH;
-#else
-std::string path = "";
-#endif
-
-#ifdef DEFAULT_PREFS_PATH
-std::string default_preferences_path = DEFAULT_PREFS_PATH;
-#else
-std::string default_preferences_path = "";
-#endif
-bool check_migration = false;
-
-std::string wesnoth_program_dir;
-
-//
 // Gameplay constants
 //
 int base_income      = 2;
@@ -82,12 +64,8 @@ double xp_bar_scaling  = 0.5;
 //
 // Misc
 //
-int cache_compression_level = 6;
-
 unsigned lobby_network_timer  = 100;
 unsigned lobby_refresh        = 4000;
-
-const std::string observer_team_name = "observer";
 
 const std::size_t max_loop = 65536;
 

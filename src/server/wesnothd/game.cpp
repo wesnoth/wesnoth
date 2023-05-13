@@ -16,7 +16,6 @@
 #include "server/wesnothd/game.hpp"
 
 #include "filesystem.hpp"
-#include "game_config.hpp" // game_config::observer_team_name
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "preferences/credentials.hpp"

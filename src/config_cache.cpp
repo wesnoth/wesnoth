@@ -18,7 +18,6 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "hash.hpp"
 #include "serialization/binary_or_text.hpp"
