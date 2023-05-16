@@ -110,21 +110,6 @@ void console_handler::enable_native_console_output()
 		// something went wrong.
 		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)";
 	}
-
-	DBG_LS << "stderr to console";
-	fflush(stderr);
-	std::cerr.flush();
-	assert(freopen("CONOUT$", "wb", stderr) == stderr);
-
-	DBG_LS << "stdout to console";
-	fflush(stdout);
-	std::cout.flush();
-	assert(freopen("CONOUT$", "wb", stdout) == stdout);
-
-	DBG_LS << "stdin from console";
-	assert(freopen("CONIN$",  "rb", stdin) == stdin);
-
-	LOG_LS << "Console streams handover complete!";
 }
 
 std::unique_ptr<console_handler> lfm;
