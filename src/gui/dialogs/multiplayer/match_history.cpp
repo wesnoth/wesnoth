@@ -222,7 +222,7 @@ const config mp_match_history::request_history()
 				DBG_NW << "Received non-history data: " << response.debug();
 				if(!response["error"].str().empty()) {
 					ERR_NW << "Received error from server: " << response["error"].str();
-					gui2::show_error_message(_("The server responded with an error: ")+response["error"].str());
+					gui2::show_error_message(_("The server responded with an error:")+" "+response["error"].str());
 					return {};
 				}
 			} else if(response.mandatory_child("game_history_results").child_count("game_history_result") == 0) {

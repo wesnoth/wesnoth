@@ -29,6 +29,8 @@
 #include <vector>
 #include <unordered_map>
 
+typedef std::vector<std::variant<bool, int, long, unsigned long long, std::string, const char*>> sql_parameters;
+
 /**
  * This class is responsible for handling the database connections as well as executing queries and handling any results.
  * @note The account and connection should never ever be provided to anything outside of this class.
@@ -263,7 +265,7 @@ class dbconn
 		 * @param args The parameterized values to be inserted into the query.
 		 */
 		template<typename... Args>
-		void get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, Args&&... args);
+		void get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
@@ -273,7 +275,7 @@ class dbconn
 		 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 		 */
 		template<typename... Args>
-		std::string get_single_string(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		std::string get_single_string(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
@@ -283,7 +285,7 @@ class dbconn
 		 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 		 */
 		template<typename... Args>
-		long get_single_long(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		long get_single_long(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
@@ -292,77 +294,42 @@ class dbconn
 		 * @return True if any data was returned by the query, otherwise false.
 		 */
 		template<typename... Args>
-		bool exists(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		bool exists(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * Executes a select statement.
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return A result set containing the results of the select statement executed.
 		 */
 		template<typename... Args>
-		mariadb::result_set_ref select(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		mariadb::result_set_ref select(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * Executes non-select statements (ie: insert, update, delete).
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The number of rows modified.
 		 */
 		template<typename... Args>
-		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * Executes non-select statements (ie: insert, update, delete), but primarily intended for inserts that return a generated ID.
 		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The value of an AUTO_INCREMENT column on the table being modified.
 		 */
 		template<typename... Args>
-		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
+		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
-		/**
-		 * Begins recursively unpacking of the parameter pack in order to be able to call the correct parameterized setters on the query.
-		 *
-		 * @param connection The database connecion that will be used to execute the query.
-		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
-		 * @return A statement object with all parameterized values added. This will then be executed by either @ref modify() or @ref select().
-		 */
-		template<typename... Args>
-		mariadb::statement_ref query(mariadb::connection_ref connection, const std::string& sql, Args&&... args);
 
-		/**
-		 * The next parameter to be added is split off from the parameter pack.
-		 *
-		 * @param stmt The statement that will have parameterized values set on it.
-		 * @param i The index of the current parameterized value.
-		 * @param arg The next parameter to be added.
-		 * @param args The remaining parameters to be added.
-		 */
-		template<typename Arg, typename... Args>
-		void prepare(mariadb::statement_ref stmt, int i, Arg arg, Args&&... args);
 
-		/**
-		 * Specializations for each type of value to be parameterized.
-		 * There are other parameter setters than those currently implemented, but so far there hasn't been a reason to add them.
-		 *
-		 * @param stmt The statement that will have parameterized values set on it.
-		 * @param i The index of the current parameterized value.
-		 * @param arg The next parameter to be added.
-		 * @return The index of the next parameter to add.
-		 */
-		template<typename Arg>
-		int prepare(mariadb::statement_ref stmt, int i, Arg arg);
-
-		/**
-		 * Nothing left to parameterize, so break out of the recursion.
-		 */
-		void prepare(mariadb::statement_ref stmt, int i);
+		mariadb::statement_ref query2(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 };
