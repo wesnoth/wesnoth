@@ -287,7 +287,7 @@ class dbconn
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return True if any data was returned by the query, otherwise false.
 		 */
 		bool exists(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
@@ -324,7 +324,7 @@ class dbconn
 
 		/**
 		 * For a given connection, set the provided SQL and parameters on a statement.
-		 * 
+		 *
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
 		 * @param params The parameterized values to be inserted into the query.
