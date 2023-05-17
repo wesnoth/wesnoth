@@ -262,29 +262,26 @@ class dbconn
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param base The class that will handle reading the results.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 */
-		template<typename... Args>
 		void get_complex_results(mariadb::connection_ref connection, rs_base& base, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The single string value queried.
 		 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 		 */
-		template<typename... Args>
 		std::string get_single_string(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
 		 * @param connection The database connecion that will be used to execute the query.
 		 * @param sql The SQL text to be executed.
-		 * @param args The parameterized values to be inserted into the query.
+		 * @param params The parameterized values to be inserted into the query.
 		 * @return The single long value queried.
 		 * @throws mariadb::exception::base when the query finds no value to be retrieved.
 		 */
-		template<typename... Args>
 		long get_single_long(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
@@ -293,7 +290,6 @@ class dbconn
 		 * @param args The parameterized values to be inserted into the query.
 		 * @return True if any data was returned by the query, otherwise false.
 		 */
-		template<typename... Args>
 		bool exists(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
@@ -304,7 +300,6 @@ class dbconn
 		 * @param params The parameterized values to be inserted into the query.
 		 * @return A result set containing the results of the select statement executed.
 		 */
-		template<typename... Args>
 		mariadb::result_set_ref select(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
@@ -315,7 +310,6 @@ class dbconn
 		 * @param params The parameterized values to be inserted into the query.
 		 * @return The number of rows modified.
 		 */
-		template<typename... Args>
 		unsigned long long modify(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
 		/**
@@ -326,10 +320,15 @@ class dbconn
 		 * @param params The parameterized values to be inserted into the query.
 		 * @return The value of an AUTO_INCREMENT column on the table being modified.
 		 */
-		template<typename... Args>
 		unsigned long long modify_get_id(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 
-
-
-		mariadb::statement_ref query2(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
+		/**
+		 * For a given connection, set the provided SQL and parameters on a statement.
+		 * 
+		 * @param connection The database connecion that will be used to execute the query.
+		 * @param sql The SQL text to be executed.
+		 * @param params The parameterized values to be inserted into the query.
+		 * @return A statement ready to be executed.
+		 */
+		mariadb::statement_ref query(mariadb::connection_ref connection, const std::string& sql, const sql_parameters& params);
 };
