@@ -21,6 +21,7 @@
 
 #include "log.hpp"
 #include "serialization/unicode.hpp"
+#include "serialization/string_utils.hpp"
 
 static lg::log_domain log_sql_handler("sql_executor");
 #define ERR_SQL LOG_STREAM(err, log_sql_handler)
@@ -146,9 +147,6 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 {
 	try
 	{
-		const auto[search_game_name_leading, search_game_name_trailing] = substitute_wildcards(search_game_name);
-		const auto[search_content_leading, search_content_trailing] = substitute_wildcards(search_content);
-
 		// if no parameters populated, return an error
 		if(player_id == 0 && search_game_name.empty() && search_content.empty())
 		{
@@ -202,10 +200,9 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 
 	if(!search_game_name.empty())
 	{
-		game_history_query += " and game.GAME_NAME like concat(";
-		game_history_query += search_game_name_leading ? "'%'," : "";
-		game_history_query += " ? ";
-		game_history_query += search_game_name_trailing ? ",'%')" : ")";
+		game_history_query += " and game.GAME_NAME like concat(?)";
+
+		utils::to_sql_wildcards(search_game_name, false);
 		params.emplace_back(search_game_name);
 	}
 
@@ -217,10 +214,9 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and scenario.ID like concat(";
-			game_history_query += search_content_leading ? "'%'," : "";
-			game_history_query += " ? ";
-			game_history_query += search_content_trailing ? ",'%')" : ")";
+			game_history_query += " and scenario.ID like concat(?)";
+
+			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
 		}
 	}
@@ -233,10 +229,9 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and era.ID like concat(";
-			game_history_query += search_content_leading ? "'%'," : "";
-			game_history_query += " ? ";
-			game_history_query += search_content_trailing ? ",'%')" : ")";
+			game_history_query += " and era.ID like concat(?)";
+
+			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
 		}
 	}
@@ -251,10 +246,9 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and mods.ID like concat(";
-			game_history_query += search_content_leading ? "'%'," : "";
-			game_history_query += " ? ";
-			game_history_query += search_content_trailing ? ",'%')" : ")";
+			game_history_query += " and mods.ID like concat(?)";
+
+			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
 		}
 	}
