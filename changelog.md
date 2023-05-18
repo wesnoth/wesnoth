@@ -12,6 +12,7 @@
  ### Units
  ### User interface
  ### WML Engine
+   * Add support for distinct sub-achievements.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.16
