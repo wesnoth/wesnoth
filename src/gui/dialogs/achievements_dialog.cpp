@@ -153,7 +153,7 @@ void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& 
 		else
 		{
 			image* img = static_cast<image*>(newrow.find("sub_icon"+std::to_string(i), false));
-			img->set_label(sub_ach.icon_);
+			img->set_label(sub_ach.achieved_ ? sub_ach.icon_completed_ : sub_ach.icon_);
 			img->set_tooltip(sub_ach.description_);
 		}
 		i++;

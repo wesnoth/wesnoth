@@ -25,11 +25,11 @@
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
 
-// TODO: testing
 sub_achievement::sub_achievement(const config& cfg, bool achieved)
 		: id_(cfg["id"].str())
 		, description_(cfg["description"].t_str())
-		, icon_(achieved ? cfg["icon"].str() : cfg["icon"].str()+"~GS()")
+		, icon_(cfg["icon"].str()+"~GS()")
+		, icon_completed_(cfg["icon"].str())
 		, achieved_(achieved)
 {}
 

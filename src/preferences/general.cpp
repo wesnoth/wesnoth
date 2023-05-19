@@ -1142,11 +1142,13 @@ bool sub_achievement(const std::string& content_for, const std::string& id, cons
 		if(ach["content_for"].str() == content_for)
 		{
 			// check if the specific sub-achievement has been completed but the overall achievement is not completed
-			auto in_progress = ach.optional_child("in_progress");
-			if(in_progress.has_value() && in_progress["id"] == id)
+			for(const auto& in_progress : ach.child_range("in_progress"))
 			{
-				std::vector<std::string> sub_ids = utils::split(ach["sub_ids"]);
-				return std::find(sub_ids.begin(), sub_ids.end(), sub_id) != sub_ids.end();
+				if(in_progress["id"] == id)
+				{
+					std::vector<std::string> sub_ids = utils::split(in_progress["sub_ids"]);
+					return std::find(sub_ids.begin(), sub_ids.end(), sub_id) != sub_ids.end();
+				}
 			}
 		}
 	}
@@ -1175,10 +1177,10 @@ void set_sub_achievement(const std::string& content_for, const std::string& id, 
 
 					if(std::find(sub_ids.begin(), sub_ids.end(), sub_id) == sub_ids.end())
 					{
-						ach["sub_ids"] = ach["sub_ids"].str() + "," + sub_id;
+						in_progress["sub_ids"] = in_progress["sub_ids"].str() + "," + sub_id;
 					}
 
-					ach["progress_at"] = sub_ids.size()+1;
+					in_progress["progress_at"] = sub_ids.size()+1;
 					return;
 				}
 			}
@@ -1189,6 +1191,7 @@ void set_sub_achievement(const std::string& content_for, const std::string& id, 
 			set_progress["sub_ids"] = sub_id;
 			set_progress["progress_at"] = 1;
 			ach.add_child("in_progress", set_progress);
+			return;
 		}
 	}
 

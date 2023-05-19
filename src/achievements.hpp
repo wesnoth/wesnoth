@@ -32,8 +32,10 @@ struct sub_achievement
 	std::string id_;
 	/** The description of the sub-achievement to be shown in its tooltip */
 	t_string description_;
-	/** The icon of the sub-achievement to show on the UI. */
+	/** The icon of the sub-achievement to show on the UI when not completed. */
 	std::string icon_;
+	/** The icon of the sub-achievement to show on the UI when completed. */
+	std::string icon_completed_;
 	/** Whether the sub-achievement has been completed. */
 	bool achieved_;
 

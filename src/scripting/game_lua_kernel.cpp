@@ -3298,18 +3298,18 @@ int game_lua_kernel::intf_set_sub_achievement(lua_State *L)
 							if(sub_ach.achieved_) {
 								return 0;
 							} else {
-								sub_ach.achieved_ = true;
 								preferences::set_sub_achievement(content_for, id, sub_id);
+								sub_ach.achieved_ = true;
 								achieve.current_progress_++;
-								achieve.achieved_ = achieve.current_progress_ == achieve.max_progress_;
-								if(achieve.achieved_) {
-									preferences::set_achievement(content_for, id);
+								if(achieve.current_progress_ == achieve.max_progress_) {
+									intf_set_achievement(L);
 								}
+								return 0;
 							}
 						}
 					}
 					// sub-achievement not found - existing achievement group and achievement but non-existing sub-achievement id
-					lua_push(L, "Achievement " + std::string(id) + " not found for achievement group " + content_for);
+					lua_push(L, "Sub-achievement " + std::string(id) + " not found for achievement" + id + " in achievement group " + content_for);
 					return lua_error(L);
 				}
 			}
