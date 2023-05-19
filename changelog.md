@@ -13,6 +13,8 @@
  ### User interface
    * Fixed main menu Language button not being refreshed after switching languages
      without relaunching the game (issue #7437).
+   * Fixed changing game resolution in Preferences not refreshing the user interface
+     as expected (issue #7436).
  ### WML Engine
    * Add support for distinct sub-achievements.
  ### Miscellaneous and Bug Fixes
