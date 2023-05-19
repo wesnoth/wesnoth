@@ -11,6 +11,8 @@
    * Updated translations: Arabic, British English, Czech, French, Italian, Spanish
  ### Units
  ### User interface
+   * Fixed main menu Language button not being refreshed after switching languages
+     without relaunching the game (issue #7437).
  ### WML Engine
    * Add support for distinct sub-achievements.
  ### Miscellaneous and Bug Fixes
