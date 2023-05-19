@@ -49,7 +49,7 @@ jobs:
           pngquant --force --output "$diff_image" "$diff_image"
 
           ## Write comment body
-          curl_result=$(curl -F "image=@\"$diff_image\"" "https://api.imgur.com/3/upload")
+          curl_result=$(curl --retry 9 --retry-connrefused --retry-delay 300 -F "image=@\"$diff_image\"" "https://api.imgur.com/3/upload")
 
           echo "Imgur result:"
           echo "$curl_result"
