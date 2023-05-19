@@ -120,4 +120,5 @@ bool init_strings(const game_config_view& cfg);
 
 bool load_language_list();
 
+int get_min_translation_percent();
 void set_min_translation_percent(int percent);
