@@ -103,6 +103,9 @@ private:
 	 */
 	void update_tip(const bool previous);
 
+	/** Updates the Language button label. */
+	void update_language_label();
+
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
 
