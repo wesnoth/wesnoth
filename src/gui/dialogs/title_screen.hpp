@@ -103,8 +103,8 @@ private:
 	 */
 	void update_tip(const bool previous);
 
-	/** Updates the Language button label. */
-	void update_language_label();
+	/** Updates UI labels that are not t_string after a language change. */
+	void update_static_labels();
 
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
