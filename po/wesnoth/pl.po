@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-22 22:24-0500\n"
+"POT-Creation-Date: 2023-05-20 22:01-0500\n"
 "PO-Revision-Date: 2022-06-04 21:52+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -242,7 +242,7 @@ msgid "poisoned"
 msgstr "zatruty"
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:398
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
 #: data/core/macros/items.cfg:544
 msgid "storm trident"
 msgstr "trójząb sztormów"
@@ -4276,8 +4276,8 @@ msgstr "nie leczy się"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3403
-#: src/scripting/game_lua_kernel.cpp:3438
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3484
+#: src/scripting/game_lua_kernel.cpp:3519
 msgid "input"
 msgstr "wprowadź dane"
 
@@ -4342,39 +4342,39 @@ msgstr ""
 "\n"
 "Niektóre ery i scenariusze mają włączoną tę opcję automatycznie."
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:30
+#. [lua]: preshow
+#: data/modifications/pick_advance/dialog.lua:36
+msgid "No planned advancement"
+msgstr "Brak zaplanowanych awansów"
+
+#. [label]
+#: data/modifications/pick_advance/gui/pick_advance.cfg:14
 #: data/modifications/pick_advance/main.lua:10
 msgid "Plan Advancement"
 msgstr "Zaplanuj awans"
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:67
+#. [image]: id=global_icon
+#: data/modifications/pick_advance/gui/pick_advance.cfg:53
 msgid ""
 "This advancement is currently the default for all units of the same type"
 msgstr ""
 "Ten awans jest obecnie domyślnie ustawiony dla wszystkich jednostek tego "
 "samego typu"
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:129
+#. [toggle_button]: id=apply_to_all
+#: data/modifications/pick_advance/gui/pick_advance.cfg:118
 msgid "Apply to all units of this type"
 msgstr "Zastosuj do wszystkich jednostek danego typu"
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:145
+#. [button]
+#: data/modifications/pick_advance/gui/pick_advance.cfg:134
 msgid "Save"
 msgstr "Zapisz"
 
-#. [lua]: pickadvance.show_dialog_unsynchronized
-#: data/modifications/pick_advance/dialog.lua:154
+#. [button]: id=cancel
+#: data/modifications/pick_advance/gui/pick_advance.cfg:143
 msgid "Cancel"
 msgstr "Anuluj"
-
-#. [lua]: preshow
-#: data/modifications/pick_advance/dialog.lua:174
-msgid "No planned advancement"
-msgstr "Brak zaplanowanych awansów"
 
 #. [action]: id=button-playreplay, type=image
 #: data/themes/_initial.cfg:412
@@ -5440,43 +5440,43 @@ msgstr "czekam na"
 msgid "An invalid attacker weapon got selected."
 msgstr "Wybrano niepoprawną broń atakującego."
 
-#: src/actions/create.cpp:341
+#: src/actions/create.cpp:342
 msgid "You do not have a leader to recall with."
 msgstr "Nie masz dowódcy, który mógłby przywoływać."
 
-#: src/actions/create.cpp:345
+#: src/actions/create.cpp:346
 msgid "None of your leaders are able to recall that unit."
 msgstr "Żaden z twoich dowódców nie może przywołać tej jednostki."
 
-#: src/actions/create.cpp:349
+#: src/actions/create.cpp:350
 msgid "You must have a leader on a keep who is able to recall that unit."
 msgstr ""
 "Przywołać tę jednostkę może tylko odpowiedni przywódca stojący na polu "
 "twierdzy."
 
-#: src/actions/create.cpp:353
+#: src/actions/create.cpp:354
 msgid "There are no vacant castle tiles in which to recall the unit."
 msgstr "Nie ma pustych pól zamku, na które można by przywołać tę jednostkę."
 
-#: src/actions/create.cpp:363 src/actions/create.cpp:499
+#: src/actions/create.cpp:364 src/actions/create.cpp:500
 msgid "An unrecognized error has occurred."
 msgstr "Wystąpił nierozpoznany błąd"
 
-#: src/actions/create.cpp:477
+#: src/actions/create.cpp:478
 msgid "You do not have a leader to recruit with."
 msgstr "Nie masz dowódcy, który mógłby rekrutować."
 
-#: src/actions/create.cpp:481
+#: src/actions/create.cpp:482
 msgid "None of your leaders are able to recruit this unit."
 msgstr "Żaden z twoich dowódców nie może rekrutować tej jednostki."
 
-#: src/actions/create.cpp:485
+#: src/actions/create.cpp:486
 msgid "You must have a leader on a keep who is able to recruit the unit."
 msgstr ""
 "Rekrutować tę jednostkę może tylko odpowiedni przywódca stojący na polu "
 "twierdzy."
 
-#: src/actions/create.cpp:489
+#: src/actions/create.cpp:490
 msgid "There are no vacant castle tiles in which to recruit the unit."
 msgstr "Nie ma pustych pól zamku, na które można by rekrutować tę jednostkę."
 
@@ -5719,7 +5719,7 @@ msgid "Do you really wish to continue?"
 msgstr "Czy chcesz kontynuować?"
 
 #: src/addon/client.cpp:571 src/addon/manager_ui.cpp:171
-#: src/game_initialization/multiplayer.cpp:363
+#: src/game_initialization/multiplayer.cpp:362
 msgid "Confirm"
 msgstr "Potwiedź"
 
@@ -6366,7 +6366,7 @@ msgstr "$elem został oznaczony jako przestarzały i usunięty."
 msgid "Chat message"
 msgstr "Aktualność wiadomości czatu"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:582
+#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:560
 msgid "The Battle for Wesnoth"
 msgstr "Bitwa o Wesnoth"
 
@@ -6404,7 +6404,7 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%d %b %Y"
 
-#: src/game_config.cpp:530
+#: src/game_config.cpp:508
 msgid "Invalid color in range: "
 msgstr "Niepoprawny kolor w zakresie: "
 
@@ -6516,7 +6516,7 @@ msgstr[1] ""
 msgstr[2] ""
 "Wyślij raporty błędów do odpowiednich autorów lub zarządców tych dodatków"
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:956
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:955
 msgid "Error: "
 msgstr "Błąd: "
 
@@ -6683,7 +6683,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "Pełna"
 
 #: src/game_initialization/lobby_data.cpp:379
-#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:662
+#: src/game_initialization/lobby_data.cpp:381 src/savegame.cpp:658
 msgid "Turn"
 msgstr "Tura"
 
@@ -6719,22 +6719,22 @@ msgstr "Pokonaj przywódców wroga"
 msgid "Cannot find era '$era'"
 msgstr "Era '$era' nie została znaleziona"
 
-#: src/game_initialization/multiplayer.cpp:238
+#: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
 msgstr "Podano niepoprawny adres serwera wieloosobowego"
 
-#: src/game_initialization/multiplayer.cpp:273
+#: src/game_initialization/multiplayer.cpp:272
 msgid ""
 "The server accepts versions '$required_version', but you are using version "
 "'$your_version'"
 msgstr ""
 "Serwer wymaga gry w wersji '$required_version', a twoja to '$your_version'"
 
-#: src/game_initialization/multiplayer.cpp:286
+#: src/game_initialization/multiplayer.cpp:285
 msgid "Server-side redirect loop"
 msgstr "Pętla przekierowania po stronie serwera"
 
-#: src/game_initialization/multiplayer.cpp:336
+#: src/game_initialization/multiplayer.cpp:335
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -6743,28 +6743,28 @@ msgstr ""
 "Pseudonim „$nick” jest nieaktywny. Aby zostać właścicielem tego pseudonimu, "
 "musisz aktywować konto poprzez e-mail lub poprosić o to administratora."
 
-#: src/game_initialization/multiplayer.cpp:345
+#: src/game_initialization/multiplayer.cpp:344
 msgid "Do you want to continue?"
 msgstr "Czy chcesz kontynuować?"
 
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:346
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: src/game_initialization/multiplayer.cpp:410
+#: src/game_initialization/multiplayer.cpp:409
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr "Zdalny serwer zażądał hasła przy użyciu niezabezpieczonego połączenia."
 
-#: src/game_initialization/multiplayer.cpp:412
+#: src/game_initialization/multiplayer.cpp:411
 msgid "You must login first."
 msgstr "Musisz się najpierw zalogować."
 
-#: src/game_initialization/multiplayer.cpp:414
+#: src/game_initialization/multiplayer.cpp:413
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Pseudonim „$nick” jest już zajęty."
 
-#: src/game_initialization/multiplayer.cpp:416
+#: src/game_initialization/multiplayer.cpp:415
 msgid ""
 "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
 "characters (one at minimum), underscores and hyphens are allowed."
@@ -6772,43 +6772,43 @@ msgstr ""
 "Pseudonim „$nick” zawiera niedozwolone znaki. Dozwolone są tylko znaki "
 "alfanumeryczne (co najmniej jeden), podkreślenia i myślniki"
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:419
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr ""
 "Pseudonim „$nick” jest za długi. Pseudonim może mieć maksymalnie 20 znaków."
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:421
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Pseudonim „$nick” jest zarezerwowany i nie może być używany przez graczy."
 
-#: src/game_initialization/multiplayer.cpp:424
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Pseudonim „$nick” nie jest zarejestrowany na tym serwerze."
 
-#: src/game_initialization/multiplayer.cpp:425
+#: src/game_initialization/multiplayer.cpp:424
 msgid " This server disallows unregistered nicknames."
 msgstr " Ten serwer nie dopuszcza niezarejestrowanych pseudonimów."
 
-#: src/game_initialization/multiplayer.cpp:428
+#: src/game_initialization/multiplayer.cpp:427
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr ""
 "Pseudonim „$nick” jest zablokowany na forach tego serwera na czas $duration|."
 
-#: src/game_initialization/multiplayer.cpp:430
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Pseudonim „$nick” jest zablokowany na forach tego serwera"
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:433
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr ""
 "Twój adres IP jest zablokowany na forach tego serwera na czas $duration|."
 
-#: src/game_initialization/multiplayer.cpp:436
+#: src/game_initialization/multiplayer.cpp:435
 msgid "Your IP address is banned on this server’s forums."
 msgstr "Twój adres IP jest zablokowany na forach tego serwera."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:439
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums "
 "for $duration|."
@@ -6816,18 +6816,18 @@ msgstr ""
 "Adres e-mail dla pseudonimu „$nick” jest zablokowany na forach tego serwera "
 "na czas $duration|."
 
-#: src/game_initialization/multiplayer.cpp:442
+#: src/game_initialization/multiplayer.cpp:441
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr ""
 "Adres e-mail dla pseudonimu „$nick” jest zablokowany na forach tego serwera."
 
-#: src/game_initialization/multiplayer.cpp:445
-#: src/game_initialization/multiplayer.cpp:447
+#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:446
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Pseudonim „$nick” jest zarejestrowany na tym serwerze."
 
-#: src/game_initialization/multiplayer.cpp:448
+#: src/game_initialization/multiplayer.cpp:447
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -6835,32 +6835,32 @@ msgstr ""
 "OSTRZEŻENIE: Ten pseudonim jest już używany przez innego klienta. "
 "Zalogowanie spowoduje wyrzucenie tego klienta!"
 
-#: src/game_initialization/multiplayer.cpp:451
+#: src/game_initialization/multiplayer.cpp:450
 msgid "The password you provided was incorrect."
 msgstr "Podane hasło jest nieprawidłowe."
 
-#: src/game_initialization/multiplayer.cpp:453
+#: src/game_initialization/multiplayer.cpp:452
 msgid "You have made too many login attempts."
 msgstr "Zbyt wiele prób logowania."
 
-#: src/game_initialization/multiplayer.cpp:455
+#: src/game_initialization/multiplayer.cpp:454
 msgid "Password hashing failed."
 msgstr "Haszowanie hasła nieudane."
 
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:909
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:908
 msgid "The game could not be loaded: "
 msgstr "Gra nie może zostać wczytana:"
 
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:911
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:910
 msgid "Error while playing the game: "
 msgstr "Błąd w czasie gry:"
 
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:948
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:947
 msgid "The game map could not be loaded: "
 msgstr "Mapa gry nie może zostać wczytana:"
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:913
-#: src/game_launcher.cpp:1029
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:912
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "Błąd generatora map:"
 
@@ -6869,7 +6869,7 @@ msgid "Error while reading the WML: "
 msgstr "Błąd podczas wczytywania kodu WML: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:368
+#: src/playsingle_controller.cpp:371
 msgid "Game Over"
 msgstr "Koniec gry"
 
@@ -6885,29 +6885,29 @@ msgstr "Nieznany scenariusz: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Brak dostępnych kampanii."
 
-#: src/game_launcher.cpp:714 src/game_launcher.cpp:733
+#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
 msgid "The file you have tried to load is corrupt"
 msgstr "Wczytywany plik jest uszkodzony"
 
-#: src/game_launcher.cpp:716 src/game_launcher.cpp:735
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:154
-#: src/savegame.cpp:315
+#: src/game_launcher.cpp:715 src/game_launcher.cpp:734
+#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Wczytywany plik jest uszkodzony: „"
 
-#: src/game_launcher.cpp:725
+#: src/game_launcher.cpp:724
 msgid "File I/O Error while reading the game"
 msgstr "Błąd we/wy pliku podczas wczytywania gry"
 
-#: src/game_launcher.cpp:727
+#: src/game_launcher.cpp:726
 msgid "File I/O Error while reading the game: '"
 msgstr "Błąd we/wy pliku podczas wczytywania gry: „"
 
-#: src/game_launcher.cpp:907
+#: src/game_launcher.cpp:906
 msgid "Error while starting server: "
 msgstr "Błąd w czasie startowania serwera: "
 
-#: src/game_launcher.cpp:929
+#: src/game_launcher.cpp:928
 msgid "Connection failed: "
 msgstr "Połączenie nie powiodło się: "
 
@@ -7025,6 +7025,33 @@ msgstr "Ty"
 #: src/gui/dialogs/multiplayer/player_info.cpp:161
 msgid "Error"
 msgstr "Błąd"
+
+#: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
+#, fuzzy
+#| msgid "Other Games"
+msgid "Other aspects: "
+msgstr "Inne gry"
+
+#: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
+#: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
+msgid "Weapon: "
+msgstr "Broń: "
+
+#: src/gui/dialogs/unit_attack.cpp:171 src/gui/dialogs/unit_attack.cpp:182
+#: src/reports.cpp:823 src/reports.cpp:1077
+msgid "Damage: "
+msgstr "Obrażenia: "
+
+#: src/gui/dialogs/unit_attack.cpp:172 src/gui/dialogs/unit_attack.cpp:183
+#: src/reports.cpp:844
+msgid "Attacks: "
+msgstr "Ataki: "
+
+#: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
+#, fuzzy
+#| msgid "Advances to: "
+msgid "Chance to hit: "
+msgstr "Awansuje na: "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
@@ -7998,7 +8025,7 @@ msgstr "pozostały czas w bieżącej turze"
 msgid "current local time"
 msgstr "aktualny czas lokalny"
 
-#: src/play_controller.cpp:1059
+#: src/play_controller.cpp:1044
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8006,17 +8033,17 @@ msgstr ""
 "Gra utraciła synchronizację, więc kontynuowanie może nie mieć sensu. Czy "
 "chcesz zapisać grę?"
 
-#: src/play_controller.cpp:1060
+#: src/play_controller.cpp:1045
 msgid "Error details:"
 msgstr "Szczegóły błędu:"
 
-#: src/play_controller.cpp:1239
+#: src/play_controller.cpp:1224
 msgid "Warning: broken campaign branches"
 msgstr "Ostrzeżenie: uszkodzone połączenia kampanii"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1245
+#: src/play_controller.cpp:1230
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8031,7 +8058,7 @@ msgstr[2] ""
 "Brakuje kilku kolejnych scenariuszy. Nie będziesz w stanie ukończyć tej "
 "kampanii."
 
-#: src/play_controller.cpp:1252
+#: src/play_controller.cpp:1237
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8048,12 +8075,12 @@ msgstr[2] ""
 "Prosimy o zgłoszenie kolejnych brakujących scenariuszy do autora kampanii:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1256
+#: src/play_controller.cpp:1241
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 "Kiedy problem ten zostanie naprawiony, będzie trzeba zrestartować scenariusz."
 
-#: src/play_controller.cpp:1359
+#: src/play_controller.cpp:1350
 msgid "No objectives available"
 msgstr "Brak celów"
 
@@ -8061,7 +8088,7 @@ msgstr "Brak celów"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Wycofywanie ruchów nie przesłanych do serwera."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:446
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8069,7 +8096,7 @@ msgstr ""
 "Utracono połączenie sieciowe, nie można kontynuować gry. Czy chcesz zapisać "
 "grę?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8077,7 +8104,7 @@ msgstr ""
 "\n"
 "Czy chcesz zapisać grę?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:450
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8112,11 +8139,11 @@ msgstr ""
 "przypisana do innego kontrolera. Możesz użyć do tego poleceń :droid, :"
 "control lub :give_control."
 
-#: src/playsingle_controller.cpp:187
+#: src/playsingle_controller.cpp:192
 msgid "Game Error"
 msgstr "Błąd gry"
 
-#: src/playsingle_controller.cpp:188
+#: src/playsingle_controller.cpp:193
 msgid ""
 "This multiplayer game uses an alternative random mode, if you don't know "
 "what this message means, then most likely someone is cheating or someone "
@@ -8126,39 +8153,39 @@ msgstr ""
 "nie wiesz dlaczego tak jest, to oznacza, że ktoś załadował uszkodzony stan "
 "gry lub próbuje oszukiwać."
 
-#: src/playsingle_controller.cpp:368
+#: src/playsingle_controller.cpp:371
 msgid "The game is over."
 msgstr "Gra się skończyła."
 
-#: src/playsingle_controller.cpp:541
+#: src/playsingle_controller.cpp:544
 msgid "It is now $name|’s turn"
 msgstr "Tura gracza $name|"
 
-#: src/playturn.cpp:277
+#: src/playturn.cpp:278
 msgid "Give control to their ally $player"
 msgstr "Przekaż kontrolę ich sojusznikowi $player"
 
-#: src/playturn.cpp:286
+#: src/playturn.cpp:287
 msgid "Give control to observer $player"
 msgstr "Przekaż kontrolę obserwatorowi $player"
 
-#: src/playturn.cpp:291
+#: src/playturn.cpp:292
 msgid "Replace with AI"
 msgstr "Zastąp przez komputer"
 
-#: src/playturn.cpp:292
+#: src/playturn.cpp:293
 msgid "Replace with local player"
 msgstr "Zastąp lokalnym graczem"
 
-#: src/playturn.cpp:293
+#: src/playturn.cpp:294
 msgid "Set side to idle"
 msgstr "Ustaw stronę jako bezczynną"
 
-#: src/playturn.cpp:294
+#: src/playturn.cpp:295
 msgid "Save and abort game"
 msgstr "Zapisz i opuść grę"
 
-#: src/playturn.cpp:298
+#: src/playturn.cpp:299
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -8174,7 +8201,7 @@ msgstr "Wyjdź"
 msgid "Do you really want to quit?"
 msgstr "Czy naprawdę chcesz opuścić grę?"
 
-#: src/reports.cpp:174 src/savegame.cpp:430
+#: src/reports.cpp:174 src/savegame.cpp:429
 msgid "Name: "
 msgstr "Nazwa: "
 
@@ -8323,14 +8350,6 @@ msgstr "zasłanianie:"
 msgid "Movement Costs:"
 msgstr "Koszt ruchu:"
 
-#: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
-msgid "Weapon: "
-msgstr "Broń: "
-
-#: src/reports.cpp:823 src/reports.cpp:1077
-msgid "Damage: "
-msgstr "Obrażenia: "
-
 #: src/reports.cpp:827
 msgid "Base damage: "
 msgstr "Obrażenia bazowe: "
@@ -8350,10 +8369,6 @@ msgstr "Dowodzenie: "
 #: src/reports.cpp:840
 msgid "Slowed: "
 msgstr "Spowolnienie: "
-
-#: src/reports.cpp:844
-msgid "Attacks: "
-msgstr "Ataki: "
 
 #: src/reports.cpp:848
 msgid "Max swarm bonus: "
@@ -8544,21 +8559,21 @@ msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %Y %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:279 src/savegame.cpp:588
+#: src/save_index.cpp:279 src/savegame.cpp:584
 msgid "replay"
 msgstr "powtórka"
 
-#: src/save_index.cpp:363 src/savegame.cpp:71 src/savegame.cpp:624
-#: src/savegame.cpp:626
+#: src/save_index.cpp:363 src/savegame.cpp:70 src/savegame.cpp:620
+#: src/savegame.cpp:622
 msgid "Auto-Save"
 msgstr "Autozapis"
 
-#: src/savegame.cpp:205 src/savegame.cpp:207
+#: src/savegame.cpp:204 src/savegame.cpp:206
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Ostrzeżenie: wczytywany plik jest uszkodzony. Mimo to zostanie załadowany.\n"
 
-#: src/savegame.cpp:251
+#: src/savegame.cpp:250
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -8566,7 +8581,7 @@ msgstr ""
 "Zapisana gra pochodzi ze starej wersji gry, która nie jest wspierana "
 "($version_number|). Jej wczytanie nie jest możliwe."
 
-#: src/savegame.cpp:260
+#: src/savegame.cpp:259
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -8600,38 +8615,38 @@ msgstr ""
 "\n"
 "Czy chcesz kontynuować?"
 
-#: src/savegame.cpp:274 src/savegame.cpp:320
+#: src/savegame.cpp:273 src/savegame.cpp:319
 msgid "Load Game"
 msgstr "Wczytaj grę"
 
-#: src/savegame.cpp:320
+#: src/savegame.cpp:319
 msgid "Replays are not supported in multiplayer mode."
 msgstr "Powtórki nie są obsługiwane w trybie wieloosobowym."
 
-#: src/savegame.cpp:327
+#: src/savegame.cpp:326
 msgid "This is not a multiplayer save."
 msgstr "To nie jest zapis gry wieloosobowej."
 
-#: src/savegame.cpp:361
+#: src/savegame.cpp:360
 msgid "The game could not be saved: "
 msgstr "Nie można zapisać gry: "
 
-#: src/savegame.cpp:430
+#: src/savegame.cpp:429
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Zapisana gra już istnieje. Czy ma zostać nadpisana?"
 
-#: src/savegame.cpp:431
+#: src/savegame.cpp:430
 msgid "Overwrite?"
 msgstr "Nadpisać?"
 
-#: src/savegame.cpp:438
+#: src/savegame.cpp:437
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
 "Nazwy zapisanych gier nie mogą się kończyć na '.gz' i '.bz2'. Wybierz inną "
 "nazwę."
 
-#: src/savegame.cpp:443
+#: src/savegame.cpp:442
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
@@ -8641,31 +8656,31 @@ msgstr ""
 "jakiegokolwiek z poniższych znaków:\n"
 "    \" * / : < > ? \\ | ~"
 
-#: src/savegame.cpp:490
+#: src/savegame.cpp:489
 msgid "Saved"
 msgstr "Zapisano"
 
-#: src/savegame.cpp:490
+#: src/savegame.cpp:489
 msgid "The game has been saved."
 msgstr "Gra została zapisana."
 
-#: src/savegame.cpp:522 src/savegame.cpp:542
+#: src/savegame.cpp:521 src/savegame.cpp:538
 msgid "Could not write to file"
 msgstr "Nie udało się zapisać do pliku"
 
-#: src/savegame.cpp:577
+#: src/savegame.cpp:573
 msgid "Save Replay"
 msgstr "Zapisz powtórkę"
 
-#: src/savegame.cpp:606
+#: src/savegame.cpp:602
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Nie udało się automatycznie zapisać gry. Zapisz grę ręcznie."
 
-#: src/savegame.cpp:656
+#: src/savegame.cpp:652
 msgid "Save Game"
 msgstr "Zapisz grę"
 
-#: src/savegame.cpp:670
+#: src/savegame.cpp:666
 msgid "Game state is corrupted"
 msgstr "Stan gry jest zepsuty"
 
@@ -8894,6 +8909,24 @@ msgstr "Pora dnia"
 msgid "This Time of Day is only a Stub!"
 msgstr "Ta pora dnia jest tylko przykładem!"
 
+#: src/units/abilities.cpp:915
+#, fuzzy
+#| msgid "slowed: "
+msgid "Owned: "
+msgstr "spowolniona: "
+
+#: src/units/abilities.cpp:918
+msgid "Taught: "
+msgstr ""
+
+#: src/units/abilities.cpp:921
+msgid "Taught: (by an enemy): "
+msgstr ""
+
+#: src/units/abilities.cpp:934
+msgid "Used by opponent: "
+msgstr ""
+
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:461
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9028,34 +9061,34 @@ msgstr "półmroczna"
 msgid "female^neutral"
 msgstr "neutralna"
 
-#: src/units/unit.cpp:1933
+#: src/units/unit.cpp:2033
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:1939
+#: src/units/unit.cpp:2039
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PŻ"
 
-#: src/units/unit.cpp:1949
+#: src/units/unit.cpp:2049
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ruch"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ruchy"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ruchów"
 
-#: src/units/unit.cpp:1955
+#: src/units/unit.cpp:2055
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> zasięgu widzenia"
 
-#: src/units/unit.cpp:1959
+#: src/units/unit.cpp:2059
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> zasłaniania"
 
-#: src/units/unit.cpp:1964
+#: src/units/unit.cpp:2064
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PD do awansu"
 
-#: src/units/unit.cpp:1968
+#: src/units/unit.cpp:2068
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9063,11 +9096,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> atak na turę"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataki na turę"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ataków na turę"
 
-#: src/units/unit.cpp:1975
+#: src/units/unit.cpp:2075
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> ceny przywołania"
 
-#: src/units/unit.cpp:2438
+#: src/units/unit.cpp:2542
 msgid "$effect_description per level"
 msgstr "$effect_description na poziom"
 
@@ -9091,14 +9124,14 @@ msgstr "$year Przed Upadkiem"
 msgid "$year AF"
 msgstr "$year Po Upadku"
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:814
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:816
+#: src/wesnoth.cpp:815
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
@@ -9889,9 +9922,6 @@ msgstr "Opcje planowania"
 
 #~ msgid "Advances from: "
 #~ msgstr "Awansuje z:"
-
-#~ msgid "Advances to: "
-#~ msgstr "Awansuje na: "
 
 #~ msgid "Base unit: "
 #~ msgstr "Jednostka bazowa: "

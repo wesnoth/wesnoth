@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-23 03:24 UTC\n"
+"POT-Creation-Date: 2023-05-21 03:01 UTC\n"
 "PO-Revision-Date: 2007-05-07 14:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -278,7 +278,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:49
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:65
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:43
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:94
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:97
 msgid "Defenders"
 msgstr ""
 
@@ -346,11 +346,11 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:819
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:431
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:129
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:925
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:208
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1070
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1138
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1185
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:929
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:211
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1077
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1145
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1192
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:174
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_Alone_at_Last.cfg:900
 #: data/campaigns/Descent_Into_Darkness/scenarios/09_Descent_into_Darkness.cfg:203
@@ -556,6 +556,7 @@ msgid "Yes, yes it is. Nobody’ll support ya on yer crazy path to depravity."
 msgstr ""
 
 #. [message]: race=human
+#. Hint, that the loyal units stay behind
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:554
 msgid ""
 "We should all be glad to see you gone, necromancer. I detest having fought "
@@ -637,6 +638,7 @@ msgid "If ya go out on a quest to seek depravity, none o’ us will support ya."
 msgstr ""
 
 #. [message]: race=human
+#. Hint, that the loyal units stay behind
 #: data/campaigns/Descent_Into_Darkness/scenarios/01_Saving_Parthyn.cfg:625
 msgid "Better to die than to ally ourselves with a necromancer."
 msgstr ""
@@ -732,11 +734,11 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Schism.cfg:211
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:435
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:133
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:929
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:212
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1074
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1142
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1189
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:933
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:215
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1081
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1149
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1196
 msgid "Death of Darken Volk"
 msgstr ""
 
@@ -1274,6 +1276,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
+#. Malin Keshar breaks the fourth wall here and addresses the player, whom the 'you' refers to.
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:1239
 msgid ""
 "You. You there behind the screen. You are the one controlling me. Why are "
@@ -2479,7 +2482,7 @@ msgstr ""
 #: data/campaigns/Descent_Into_Darkness/scenarios/07a_A_Small_Favor.cfg:122
 #: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:30
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:24
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:62
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:65
 msgid "Intruders"
 msgstr ""
 
@@ -2686,67 +2689,77 @@ msgid "Lady Karae"
 msgstr ""
 
 #. [command]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:261
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:340
+#. Unit name
+#. Unit name
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:263
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:345
 msgid "Guard"
 msgstr ""
 
+#. [command]
+#. Unit name
+#. Unit name
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:265
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:347
+msgid "female^Guard"
+msgstr ""
+
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:415
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:419
 msgid ""
 "Malin and Darken Volk enter the mage lady’s manor, closing the heavy gates "
 "behind them."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:420
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:424
 msgid "That gate will not hold back the soldiers for long. We must hurry."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:435
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:439
 msgid "Undead have entered the manor! Defend yourselves!"
 msgstr ""
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:635
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:639
 msgid "Hunt down the undead! Destroy them all!"
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:639
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:643
 msgid ""
 "The city guard has entered the manor. We will have to hold them off while we "
 "search."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:653
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:657
 msgid "More guards are coming. We must hasten our search!"
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:667
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:671
 msgid "It does not look like we have much time left..."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:682
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:686
 msgid "There is only one thing that makes a dream impossible to achieve."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:695
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:699
 msgid "... the fear of failure."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:706
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:710
 msgid "<i>There is nothing good or bad, but thinking makes it so.</i>"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:717
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:721
 msgid ""
 "<i>Mirrors of shallow blue, cold and opaque, they stare,\n"
 "Piercing, unblinking, a pitiless reflection,\n"
@@ -2754,7 +2767,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:730
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:734
 msgid ""
 "<i>Emerald, verdant green gives way,\n"
 "Touched by shadow, dark dye of black,\n"
@@ -2762,7 +2775,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:743
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:747
 msgid ""
 "<i>Crimson pool, essence of life,\n"
 "Flesh and blood flow away to rot,\n"
@@ -2770,121 +2783,121 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:758
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:762
 msgid "This appears to be a wedding ring."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:771
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:775
 msgid "This vial of holy water is inscribed with a cross and two rings."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:783
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:787
 msgid "There is a torn up dress on this altar."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:796
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:800
 msgid "This amulet feels strangely cold."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:824
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:828
 msgid "The mages have hidden their gold somewhere else."
 msgstr ""
 
 #. [message]: speaker=Lady Karae
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:841
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:845
 msgid "Darken Volk! I should have known it was you! What are you doing here?"
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:845
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:849
 msgid "Taking back what is rightfully mine."
 msgstr ""
 
 #. [message]: speaker=Lady Karae
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:849
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:853
 msgid ""
 "As impudent as ever. What lies in that book is not meant for human eyes — "
 "yours or mine."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:853
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:857
 msgid "I am not here to argue."
 msgstr ""
 
 #. [message]: speaker=Lady Karae
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:857
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:861
 msgid ""
 "Of course you are not. I assume your arrogance has only grown over the years."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:861
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:865
 msgid ""
 "If you wish to continue lecturing me, by all means, do so. It will only make "
 "you easier to kill."
 msgstr ""
 
 #. [message]: speaker=Lady Karae
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:865
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:869
 msgid "I regret that it has come to this."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:877
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:881
 msgid "Someone was... messing... with some potions here."
 msgstr ""
 
 #. [message]: speaker=Lady Karae
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:889
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:893
 msgid "Darken Volk... you... wouldn’t dare..."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:893
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:897
 msgid "Enough with your decrepit prattling."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
 #. a vault is a big underground room, sort of like a gigantic basement
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:914
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:918
 msgid ""
 "I feel the breaking of an illusion spell. The book is in the vault in the "
 "northwest corner of the manor. We must find the passageway leading there!"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:921
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:925
 msgid ""
 "Move Malin Keshar or Darken Volk through the passageway in the northwest "
 "leading to the vault"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:945
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:949
 msgid "Here is the passage to the vault!"
 msgstr ""
 
 #. [message]: speaker=RGuard
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:995
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:1024
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1265
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:999
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:1028
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1272
 msgid "Surround those necromancers! They cannot escape now!"
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:999
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:1003
 msgid ""
 "Fool boy! You took too long to defeat Karae! Now we are at the mercy of the "
 "city guards!"
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:1028
+#: data/campaigns/Descent_Into_Darkness/scenarios/07b_A_Small_Favor2.cfg:1032
 msgid ""
 "Fool boy! You took too long to find the path to the vault! Now we are at the "
 "mercy of the city guards!"
@@ -2896,45 +2909,58 @@ msgid "A Small Favor — III"
 msgstr ""
 
 #. [side]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:49
+#. Book guards
 #: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:50
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:53
 msgid "Guardian"
 msgstr ""
 
+#. [side]
+#. Book guards
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:52
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:53
+msgid "female^Guardian"
+msgstr ""
+
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:204
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:207
 msgid "Retrieve the book and escape"
 msgstr ""
 
 #. [command]
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:370
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
 msgid "Mage"
 msgstr ""
 
+#. [command]
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:377
+msgid "female^Mage"
+msgstr ""
+
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:460
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:467
 msgid "The book is very close, somewhere to the northwest."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:776
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:783
 msgid "The guards continue to pursue us."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:790
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:797
 msgid "The guards are catching up to us."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:804
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:811
 msgid ""
 "<i>Beware that, when fighting monsters, you yourself do not become a "
 "monster...</i>"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:815
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:822
 msgid ""
 "<i>Death is the twilight that follows the light of day.\n"
 "Life fades with the setting sun into darkness.\n"
@@ -2942,95 +2968,95 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:828
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:835
 msgid "There are quite a few failed potions around here."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:839
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:846
 msgid "This coffin is empty."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:855
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:862
 msgid "Be careful around those urns."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:868
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:875
 msgid "Fancy, but I’ve no use for a new cloak right now."
 msgstr ""
 
 #. [message]: id=Darken Volk
 #. The speaker addresses an undead minion.
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1012
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1019
 msgid "The book! Guard it with your unlife while I come to fetch it."
 msgstr ""
 
 #. [message]: id=Darken Volk
 #. The speaker addresses a human or a bat.
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1019
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1026
 msgid "The book! Guard it with your life while I come to fetch it."
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1049
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1056
 msgid "Hand that over."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1054
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1061
 msgid "Can’t it wait until we’re away from all these guards?"
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1059
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1066
 msgid ""
 "... Fine. There is a small tunnel in the cellar to the northeast. It will "
 "lead us far enough out of the city that we can escape pursuit."
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1066
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1134
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1073
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1141
 msgid "Escape via the tunnel in the northeast cellar"
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1094
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1228
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1101
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1235
 msgid "Let’s get out of here."
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1157
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1164
 msgid "We’ve got the book, but how do we get out of here?"
 msgstr ""
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1170
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1177
 msgid "Wait, you aren’t leaving me behind, are you?"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1177
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1184
 msgid ""
 "Escape the manor (Malin reaches the tunnel in the northeast cellar before "
 "Darken Volk)"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1181
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1188
 msgid "Darken Volk reaches the tunnel before Malin does"
 msgstr ""
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1205
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1212
 msgid "You have served me well, boy."
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1211
+#: data/campaigns/Descent_Into_Darkness/scenarios/07c_A_Small_Favor3.cfg:1218
 msgid ""
 "As he heads into the tunnel, Darken Volk collapses the entrance, leaving "
 "Malin to be captured and executed by the city guards."
@@ -4792,6 +4818,7 @@ msgid "A cuttlefish! Perhaps I shall make it my pet."
 msgstr ""
 
 #. [message]: speaker=Mal Keshar
+#. squiddy means "squid-like" in this sentence
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1426
 msgid "We meet again, squiddy one."
 msgstr ""
@@ -4807,6 +4834,7 @@ msgid "Release me at once you oversized piece of calamari— eeeeaaaaaaaaa!"
 msgstr ""
 
 #. [message]: speaker=narrator
+#. Mal Keshar is sinking...
 #: data/campaigns/Descent_Into_Darkness/scenarios/10_Endless_Night.cfg:1470
 msgid "<i>Blub... blub... blub...</i>"
 msgstr ""

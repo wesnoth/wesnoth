@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"POT-Creation-Date: 2023-05-21 03:01 UTC\n"
 "PO-Revision-Date: 2021-10-27 09:46+0200\n"
 "Last-Translator: Merijn de Vet <tybonzer@live.nl>\n"
 "Language-Team: Dutch <ai0867@gmail.com>\n"
@@ -1477,7 +1477,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:504
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:702
 #, fuzzy
 msgid "Should I take this ring?"
 msgstr "Zal ik het zwaard nemen?"
@@ -1485,7 +1485,7 @@ msgstr "Zal ik het zwaard nemen?"
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:506
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1543
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:704
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07a_Dealing_with_Dwarves.cfg:583
 #: data/campaigns/Under_the_Burning_Suns/scenarios/07b_Talking_with_Trolls.cfg:575
 #, fuzzy
@@ -1508,7 +1508,7 @@ msgstr ""
 
 #. [option]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:547
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:733
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:736
 #, fuzzy
 msgid "No, I think someone else should wear it."
 msgstr "Nee, ik denk dat het beter is dat iemand anders het draagt."
@@ -3574,10 +3574,10 @@ msgstr "Kobold lafaard"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:476
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:480
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:484
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:590
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:591
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:593
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:594
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:596
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:597
 #, fuzzy
 msgid "Goblin Scout"
 msgstr "Kobold verkenner"
@@ -3622,16 +3622,27 @@ msgid "Scylla"
 msgstr "Scylla"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:559
+#. name of an enemy unit in water, not a geographic feature
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:560
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:562
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
 #, fuzzy
 msgid "Lake Naga"
 msgstr "Nagameer"
 
+#. [event]
+#. name of an enemy unit in water, not a geographic feature
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:562
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
+#, fuzzy
+msgid "female^Lake Naga"
+msgstr "Nagameer"
+
 #. [message]: speaker=Orac
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:602
 #, fuzzy
 msgid ""
 "Come forth, creatures of the lake! Fulfill the oaths you have made and help "
@@ -3641,19 +3652,19 @@ msgstr ""
 "om deze gehate wezens van onze landen te verdrijven."
 
 #. [message]: speaker=Scylla
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:604
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:764
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:607
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:767
 msgid "Yesss, we remember the oath... Sssslay them all!"
 msgstr ""
 
 #. [message]: speaker=Panok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:625
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:628
 #, fuzzy
 msgid "These elves are stronger than we thought. Send for more reinforcements!"
 msgstr "Deze elven zijn sterker dan we dachten. Zend versterkingen!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:630
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:633
 #, fuzzy
 msgid ""
 "How can he move that fast? He is faster than any goblin rider I have ever "
@@ -3663,13 +3674,13 @@ msgstr ""
 "gezien heb. Dit is zeer onnatuurlijk."
 
 #. [message]: speaker=Panok
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:645
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:648
 #, fuzzy
 msgid "Gaaghh!!"
 msgstr "Gaagghhh!!!"
 
 #. [message]: speaker=$speaking_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:658
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:661
 #, fuzzy
 msgid ""
 "Wait a minute. He was wearing a silver ring on one of his fingers. I think "
@@ -3679,19 +3690,19 @@ msgstr ""
 "magisch kunnen zijn. Misschien bewoog hij daarom zo snel."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:666
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:669
 #, fuzzy
 msgid "I think, Kaleh, that you should take the ring."
 msgstr "Kaleh, ik denk dat jij de ring moet aandoen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:674
 #, fuzzy
 msgid "Why me?"
 msgstr "Waarom ik?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:676
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:679
 #, fuzzy
 msgid ""
 "Because you tend to move slowly and if we’re going into the caves you’ll "
@@ -3705,19 +3716,19 @@ msgstr ""
 "verschil tussen leven en dood zijn."
 
 #. [object]: id=SpeedyRing
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:706
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:709
 #, fuzzy
 msgid "Ring of Speed"
 msgstr "Ring van Snelheid"
 
 #. [object]: id=SpeedyRing
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:708
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:711
 #, fuzzy
 msgid "This ring will increase your maximum speed by 1."
 msgstr "Deze ring zal uw maximum snelheid met 1 verbeteren."
 
 #. [message]: speaker=Orac
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:759
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:762
 #, fuzzy
 msgid ""
 "The elves have killed Panok the goblin! The other goblins may flee to the "
@@ -3731,7 +3742,7 @@ msgstr ""
 "gemaakt hebt en help ons om deze gehate wezens van onze landen te verdrijven."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:792
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:795
 #, fuzzy
 msgid ""
 "Ugh! These tunnels are pitch black! It’s as bad as fighting in a moonless "
@@ -3743,7 +3754,7 @@ msgstr ""
 "plaats in de wereld zijn waar ik nog minder graag binnenga."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:797
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:800
 #, fuzzy
 msgid ""
 "We have no choice. We cannot cross over these mountains, so we must go "
@@ -3756,14 +3767,14 @@ msgstr ""
 "omstandigheden ook zijn."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:803
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:806
 msgid ""
 "Remember, Kaleh, it’s nasty fighting underground. We will be at a "
 "disadvantage against orcs and other things that prefer the darkness."
 msgstr ""
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:811
 #, fuzzy
 msgid ""
 "Also, any time you find a particularly tough orc blocking a passage, my "
@@ -3773,20 +3784,20 @@ msgstr ""
 "wegblazen."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:823
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:826
 #, fuzzy
 msgid "Greebo"
 msgstr "Greebo"
 
 #. [message]: speaker=Greebo
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:830
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:833
 #, fuzzy
 msgid ""
 "Greebo keeps shinies safe from nasty orcses. And ’specially stinking elves."
 msgstr "Greebo blijft veilig voor smerige orks. En zeker voor stinkende elven."
 
 #. [message]: speaker=$explorer.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:857
 #, fuzzy
 msgid ""
 "Looks like he’s been squirreling away his stolen loot in this cave. Not that "
@@ -3796,7 +3807,7 @@ msgstr ""
 "Niet dat hij er veel heeft. Het zullen moeilijke tijden geweest zijn."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:882
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:885
 #, fuzzy
 msgid ""
 "How odd. Someone has carved a crude fountain out of the stone at the end of "
@@ -3817,13 +3828,13 @@ msgstr ""
 "te pakken?"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:884
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:887
 #, fuzzy
 msgid "I fear no creature, I will take the blade!"
 msgstr "Ik vrees geen enkel wezen, ik zal het zwaard oppakken!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:888
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:891
 #, fuzzy
 msgid ""
 "The blade is chill to the touch and gives off a cold glow. I wonder how it "
@@ -3833,13 +3844,13 @@ msgstr ""
 "vraag me af hoe het hier kwam."
 
 #. [object]: id=ColdBlade
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:899
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:902
 #, fuzzy
 msgid "Cold Blade"
 msgstr "Koud zwaard"
 
 #. [object]: id=ColdBlade
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:900
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:903
 #, fuzzy
 msgid ""
 "The unit who wields this blade will deal cold damage with its melee attack."
@@ -3847,38 +3858,38 @@ msgstr ""
 "De eenheid die dit zwaard draagt zal van dichtbij een koude aanval doen."
 
 #. [command]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:909
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:912
 #, fuzzy
 msgid "Purple Abomination"
 msgstr "Paarse verschrikking"
 
 #. [message]: speaker=Purple Abomination
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:913
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:916
 #, fuzzy
 msgid "I am an abomination, please kill me."
 msgstr "Ik ben een afschuwelijk wezen, dood me alstublieft."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:918
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:921
 #, fuzzy
 msgid "I’ve seen some ugly creatures in my day, but that thing is just wrong."
 msgstr ""
 "Ik heb lelijke wezens gezien, maar zo iets als dat heb ik nog nooit gezien."
 
 #. [message]: speaker=Purple Abomination
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:923
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:926
 #, fuzzy
 msgid "The voices say I have no choice, I must attack!"
 msgstr "De stemmen zeggen dat ik geen keuze heb, ik moet aanvallen!"
 
 #. [option]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:933
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:936
 #, fuzzy
 msgid "I don’t like the sound of this. I’m out of here."
 msgstr "Ik hou niet van dit geluid hier. Ik ga hier weg."
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:959
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:962
 #, fuzzy
 msgid ""
 "This is the end of the line. The water is too deep for me to continue any "
@@ -3892,7 +3903,7 @@ msgstr ""
 "maar ik weet niet wat mij doet denken dat het iets goeds kan zijn."
 
 #. [unit]: type=Dark Assassin Cloaked, id=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:994
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:997
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2114
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2381
 #, fuzzy
@@ -3900,31 +3911,31 @@ msgid "Cloaked Figure"
 msgstr "Gemaskerde man"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1027
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1030
 #, fuzzy
 msgid "Kaleh, I am death incarnate."
 msgstr "Kaleh, ik ben geïncarneerd."
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1033
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1036
 #, fuzzy
 msgid "And I shall avenge all those you have killed!"
 msgstr "En ik zal iedereen die je gedood hebt wreken!"
 
 #. [message]: speaker=Cloaked Figure
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1049
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1052
 #, fuzzy
 msgid "I promise we shall meet again."
 msgstr "Ik beloof je dat we elkaar opnieuw zullen ontmoeten."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1060
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1063
 #, fuzzy
 msgid "He just disappeared. That’s odd."
 msgstr "Hij verdween. Dat is vreemd."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1088
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1091
 #, fuzzy
 msgid ""
 "This passage seems different from the other tunnels and caves. It is wide "
@@ -3936,7 +3947,7 @@ msgstr ""
 "vertelde"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1093
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1096
 #, fuzzy
 msgid ""
 "This is no natural passage, and the walls are too well carved and smooth to "
@@ -3948,7 +3959,7 @@ msgstr ""
 "dwergen is geweest. Ik vraag me af of er nog steeds in deze bergen leven..."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1107
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1110
 #, fuzzy
 msgid ""
 "Having killed all the orc and goblin leaders in the immediate vicinity, we "
@@ -3963,7 +3974,7 @@ msgstr ""
 "ligt in de palm van Elohs hand; moge zij ons leiden zoals ze altijd al deed."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1114
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1117
 #, fuzzy
 msgid ""
 "Now that you’ve found the way we should be able to get the rest of our "
@@ -3977,7 +3988,7 @@ msgstr ""
 "zij ons leiden zoals ze altijd al deed."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1121
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1124
 #, fuzzy
 msgid ""
 "I’ll just be happy when I can breathe fresh air again and see the suns and "
@@ -3988,13 +3999,13 @@ msgstr ""
 "grond nog zullen tegenkomen?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1126
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1129
 #, fuzzy
 msgid "Well, there’s only one way to find out."
 msgstr "Wel, er is maar een manier om dat te weten te komen."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:1140
 #, fuzzy
 msgid ""
 "We’ve taken too long to get our people into the tunnels! Even more orcs are "
