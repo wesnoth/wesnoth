@@ -1,15 +1,6 @@
-## Version 1.17.16+dev
- ### Add-ons client
- ### Add-ons server
- ### Campaigns
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
+## Version 1.17.17
  ### Translations
    * Updated translations: Arabic, British English, Czech, French, German, Italian, Spanish
- ### Units
  ### User interface
    * Fixed main menu Language button and Version label not being refreshed after
      switching languages without relaunching the game (issue #7437).
@@ -18,7 +9,6 @@
  ### WML Engine
    * Add support for distinct sub-achievements.
    * Add [filter_ability] usable instead of [abilities][tag name] to filter attributes including the type of ability used.
- ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.16
  ### Translations
