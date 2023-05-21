@@ -17,6 +17,7 @@
      as expected (issue #7436).
  ### WML Engine
    * Add support for distinct sub-achievements.
+   * Add [filter_ability] usable instead of [abilities][tag name] to filter attributes including the type of ability used.
  ### Miscellaneous and Bug Fixes
 
 ## Version 1.17.16
