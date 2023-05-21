@@ -461,6 +461,7 @@ void play_controller::do_init_side()
 	// In case we might end up calling sync:network during the side turn events,
 	// and we don't want do_init_side to be called when a player drops.
 	gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
+	gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 
 	const std::string turn_num = std::to_string(turn());
 	const std::string side_num = std::to_string(current_side());
