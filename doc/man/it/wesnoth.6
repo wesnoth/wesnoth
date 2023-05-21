@@ -166,8 +166,8 @@ fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 \fIfiltro\fP, se usata) e termina
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+dirotta l’output loggato in un file. I log file vengono creati nella
+directory dei log nella cartella dati utente.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 il numero di immagini al secondo che il gioco può mostrare, il valore
@@ -298,10 +298,9 @@ esegue il gioco con l’interfaccia grafica, sovrascrivendo ogni implicito
 errori di validazione sono trattati come errori fatali.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere
-uno di quelli definiti con un tag WML \fBtest\fP. Una dimostrazione delle
-caratteristiche delle \fB[micro_ai]\fP può essere avviata con
-\fBmicro_ai_test\fP. Implica \fB\-\-nogui\fP.
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percentuale\fP
 Imposta a \fIpercentuale\fP il livello standard per la determinare quando una
@@ -465,7 +464,7 @@ Visita la pagina home ufficiale: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
 .br
 Questo gioco è rilasciato come Software Libero; viene rilasciato secondo i
 termini della licenza GPL versione 2 come pubblicata dalla Free Software
