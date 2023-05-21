@@ -132,8 +132,8 @@ HTML_ENTITY_HORIZONTAL_BAR = '&#8213;'
 HTML_ENTITY_MULTIPLICATION_SIGN = '&#215;'
 HTML_ENTITY_FIGURE_DASH = '&#8210;'
 
-PRE_PLACEHOLDER_CAMPAIGNS = "PLACE CAMPAIGNS HERE\n"
-PRE_PLACEHOLDER_ERAS = "PLACE ERAS HERE\n"
+PRE_PLACEHOLDER_CAMPAIGNS = b"PLACE CAMPAIGNS HERE\n"
+PRE_PLACEHOLDER_ERAS = b"PLACE ERAS HERE\n"
 
 def website_header(title='', path='../../', classes=[]):
     """Returns the website header with the specified parameters."""
@@ -563,12 +563,12 @@ class HTMLOutput:
 
         # Campaigns
         add_menu("campaigns_menu", _("addon_type^Campaign"))
-        write(PRE_PLACEHOLDER_CAMPAIGNS)
+        write(PRE_PLACEHOLDER_CAMPAIGNS.decode('utf-8'))
         end_menu()
 
         # Eras
         add_menu("eras_menu", _("Era"))
-        write(PRE_PLACEHOLDER_ERAS)
+        write(PRE_PLACEHOLDER_ERAS.decode('utf-8'))
         end_menu()
 
         # Races / Factions
@@ -1452,11 +1452,14 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         html.write_unit_report(output, unit)
         output.close()
 
-def html_postprocess_file(filename, isocode, batchlist):
-    print("postprocessing " + repr(filename))
-    chtml = ""
-    ehtml = ""
+popup_campaigns_html = {}
+popup_eras_html = {}
 
+def get_popup_campaigns_html(isocode, batchlist):
+    if isocode in popup_campaigns_html:
+        return popup_campaigns_html[isocode]
+
+    chtml = ""
     cids = [[], []]
     for addon in batchlist:
         for campaign in addon.get("campaigns", []):
@@ -1481,6 +1484,14 @@ def html_postprocess_file(filename, isocode, batchlist):
         if i == 0 and cids[1]:
             chtml += '</ul><ul>'
 
+    popup_campaigns_html[isocode] = bytes(chtml, "utf-8")
+    return popup_campaigns_html[isocode]
+
+def get_popup_eras_html(isocode, batchlist):
+    if isocode in popup_eras_html:
+        return popup_eras_html[isocode]
+
+    ehtml = ""
     eids = [[], []]
     for addon in batchlist:
         for era in addon.get("eras", []):
@@ -1505,17 +1516,26 @@ def html_postprocess_file(filename, isocode, batchlist):
         if i == 0 and eids[1]:
             ehtml += '</ul><ul>'
 
+    popup_eras_html[isocode] = bytes(ehtml, "utf-8")
+    return popup_eras_html[isocode]
+
+def html_postprocess_file(filename, isocode, batchlist):
     f = open(filename, "r+b")
-    html = f.read().decode("utf8")
-    html = html.replace(PRE_PLACEHOLDER_CAMPAIGNS, chtml)
-    html = html.replace(PRE_PLACEHOLDER_ERAS, ehtml)
+    b_html = f.read()
+    b_html = b_html.replace(PRE_PLACEHOLDER_CAMPAIGNS, get_popup_campaigns_html(isocode, batchlist))
+    b_html = b_html.replace(PRE_PLACEHOLDER_ERAS, get_popup_eras_html(isocode, batchlist))
     f.seek(0)
-    f.write(html.encode("utf8"))
+    f.write(b_html)
     f.close()
 
 def html_postprocess_all(batchlist):
+    print("Postprocessing HTML...")
     for isocode, filename in all_written_html_files:
         html_postprocess_file(filename, isocode, batchlist)
+
+    popup_eras_html.clear()
+    popup_campaigns_html.clear()
+    
 
 def write_index(out_path):
     output = MyFile(os.path.join(out_path, "index.html"), "w")

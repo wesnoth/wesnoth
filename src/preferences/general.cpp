@@ -1129,4 +1129,85 @@ int progress_achievement(const std::string& content_for, const std::string& id, 
 	return 0;
 }
 
+bool sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id)
+{
+	// this achievement is already completed
+	if(achievement(content_for, id))
+	{
+		return true;
+	}
+
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		if(ach["content_for"].str() == content_for)
+		{
+			// check if the specific sub-achievement has been completed but the overall achievement is not completed
+			for(const auto& in_progress : ach.child_range("in_progress"))
+			{
+				if(in_progress["id"] == id)
+				{
+					std::vector<std::string> sub_ids = utils::split(in_progress["sub_ids"]);
+					return std::find(sub_ids.begin(), sub_ids.end(), sub_id) != sub_ids.end();
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id)
+{
+	// this achievement is already completed
+	if(achievement(content_for, id))
+	{
+		return;
+	}
+
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		// if achievements already exist for this content and the achievement has not already been set, add it
+		if(ach["content_for"].str() == content_for)
+		{
+			// check if this achievement has had sub-achievements set before
+			for(config& in_progress : ach.child_range("in_progress"))
+			{
+				if(in_progress["id"].str() == id)
+				{
+					std::vector<std::string> sub_ids = utils::split(ach["ids"]);
+
+					if(std::find(sub_ids.begin(), sub_ids.end(), sub_id) == sub_ids.end())
+					{
+						in_progress["sub_ids"] = in_progress["sub_ids"].str() + "," + sub_id;
+					}
+
+					in_progress["progress_at"] = sub_ids.size()+1;
+					return;
+				}
+			}
+
+			// else if this is the first sub-achievement being set
+			config set_progress;
+			set_progress["id"] = id;
+			set_progress["sub_ids"] = sub_id;
+			set_progress["progress_at"] = 1;
+			ach.add_child("in_progress", set_progress);
+			return;
+		}
+	}
+
+	// else not only has this achievement not had a sub-achievement completed before, this is the first achievement for this achievement group to be added
+	config ach;
+	config set_progress;
+
+	set_progress["id"] = id;
+	set_progress["sub_ids"] = sub_id;
+	set_progress["progress_at"] = 1;
+
+	ach["content_for"] = content_for;
+	ach["ids"] = "";
+
+	ach.add_child("in_progress", set_progress);
+	prefs.add_child("achievements", ach);
+}
+
 } // end namespace preferences

@@ -441,7 +441,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_WINDOWEVENT:
 			switch(event.window.event) {
-				case SDL_WINDOWEVENT_RESIZED:
+				// Always precedes SDL_WINDOWEVENT_RESIZED, but the latter does not always
+				// happen; in particular when we change the game resolution via
+				// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
+				case SDL_WINDOWEVENT_SIZE_CHANGED:
 					video_resize(video::game_canvas_size());
 					break;
 

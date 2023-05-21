@@ -195,17 +195,6 @@ void title_screen::init_callbacks()
 	find_widget<image>(this, "logo", false).set_image(game_config::images::game_logo);
 
 	//
-	// Version string
-	//
-	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
-
-	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
-		version_label->set_label(version_string);
-	}
-
-	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
-
-	//
 	// Tip-of-the-day browser
 	//
 	multi_page* tip_pages = find_widget<multi_page>(this, "tips", false, false);
@@ -316,36 +305,12 @@ void title_screen::init_callbacks()
 		try {
 			if(game_.change_language()) {
 				on_resize();
+				update_static_labels();
 			}
 		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
 		}
 	});
-
-	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
-		const auto& locale = translation::get_effective_locale_info();
-		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
-		// and strip the charset from the Boost locale identifier.
-		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
-		const auto& langs = get_languages(true);
-
-		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
-			return lang.localename == boost_name;
-		});
-
-		if(lang_def != langs.end()) {
-			lang_button->set_label(lang_def->language.str());
-		} else if(boost_name == "c" || boost_name == "C") {
-			// HACK: sometimes System Default doesn't match anything on the list. If you fork
-			// Wesnoth and change the neutral language to something other than US English, you
-			// want to change this too.
-			lang_button->set_label("English (US)");
-		} else {
-			// If somehow the locale doesn't match a known translation, use the
-			// locale identifier as a last resort
-			lang_button->set_label(boost_name);
-		}
-	}
 
 	//
 	// Preferences
@@ -381,6 +346,53 @@ void title_screen::init_callbacks()
 	auto clock = find_widget<button>(this, "clock", false, false);
 	if(clock) {
 		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// Static labels (version and language)
+	//
+	update_static_labels();
+}
+
+void title_screen::update_static_labels()
+{
+	//
+	// Version menu label
+	//
+	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+
+	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
+		version_label->set_label(version_string);
+	}
+
+	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+
+	//
+	// Language menu label
+	//
+	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
+		const auto& locale = translation::get_effective_locale_info();
+		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
+		// and strip the charset from the Boost locale identifier.
+		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
+		const auto& langs = get_languages(true);
+
+		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
+			return lang.localename == boost_name;
+		});
+
+		if(lang_def != langs.end()) {
+			lang_button->set_label(lang_def->language.str());
+		} else if(boost_name == "c" || boost_name == "C") {
+			// HACK: sometimes System Default doesn't match anything on the list. If you fork
+			// Wesnoth and change the neutral language to something other than US English, you
+			// want to change this too.
+			lang_button->set_label("English (US)");
+		} else {
+			// If somehow the locale doesn't match a known translation, use the
+			// locale identifier as a last resort
+			lang_button->set_label(boost_name);
+		}
 	}
 }
 

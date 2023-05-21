@@ -28,7 +28,7 @@ import wesnoth.wmlparser3 as wmlparser3
 TIMEOUT = 20
 
 def copy_images():
-    print("Recolorizing pictures.")
+    print("Recolorizing pictures...")
     image_collector.copy_and_color_images(options.output)
     shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)), "unit_tree", "menu.js"),
                  options.output)

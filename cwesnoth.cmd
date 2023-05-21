@@ -11,6 +11,6 @@ setlocal
 rem Disable stdout.txt/stderr.txt redirection in SDLmain.
 set SDL_STDIO_REDIRECT=0
 
-wesnoth --wconsole %*
+wesnoth --no-log-to-file %*
 
 endlocal

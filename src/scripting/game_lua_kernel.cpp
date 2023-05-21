@@ -3077,8 +3077,8 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
  */
 int game_lua_kernel::intf_set_achievement(lua_State *L)
 {
-	const char *content_for = luaL_checkstring(L, 1);
-	const char *id = luaL_checkstring(L, 2);
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
 
 	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
 		if(group.content_for_ == content_for) {
@@ -3126,8 +3126,8 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
  */
 int game_lua_kernel::intf_has_achievement(lua_State *L)
 {
-	const char *content_for = luaL_checkstring(L, 1);
-	const char *id = luaL_checkstring(L, 2);
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
 
 	if(resources::controller->is_networked_mp() && synced_context::is_synced()) {
 		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
@@ -3147,8 +3147,8 @@ int game_lua_kernel::intf_has_achievement(lua_State *L)
  */
 int game_lua_kernel::intf_get_achievement(lua_State *L)
 {
-	const char *content_for = luaL_checkstring(L, 1);
-	const char *id = luaL_checkstring(L, 2);
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
 
 	config cfg;
 	for(const auto& group : game_config_manager::get()->get_achievements()) {
@@ -3167,6 +3167,15 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
 					cfg["achieved"] = achieve.achieved_;
 					cfg["max_progress"] = achieve.max_progress_;
 					cfg["current_progress"] = achieve.current_progress_;
+
+					for(const auto& sub_ach : achieve.sub_achievements_) {
+						config& sub = cfg.add_child("sub_achievement");
+						sub["id"] = sub_ach.id_;
+						sub["description"] = sub_ach.description_;
+						sub["icon"] = sub_ach.icon_;
+						sub["achieved"] = sub_ach.achieved_;
+					}
+
 					luaW_pushconfig(L, cfg);
 					return 1;
 				}
@@ -3186,7 +3195,7 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
 /**
  * Progresses the provided achievement.
  * - Arg 1: string - content_for.
- * - Arg 2: string - id.
+ * - Arg 2: string - achievement id.
  * - Arg 3: int - the amount to progress the achievement.
  * - Arg 4: int - the limit the achievement can progress by
  * - Ret 1: int - the achievement's current progress after adding amount or -1 if not a progressable achievement (including if it's already achieved)
@@ -3194,8 +3203,8 @@ int game_lua_kernel::intf_get_achievement(lua_State *L)
  */
 int game_lua_kernel::intf_progress_achievement(lua_State *L)
 {
-	const char *content_for = luaL_checkstring(L, 1);
-	const char *id = luaL_checkstring(L, 2);
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
 	int amount = luaL_checkinteger(L, 3);
 	int limit = luaL_optinteger(L, 4, 999999999);
 
@@ -3204,8 +3213,8 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 			for(achievement& achieve : group.achievements_) {
 				if(achieve.id_ == id) {
 					// check that this is a progressable achievement
-					if(achieve.max_progress_ == 0) {
-						ERR_LUA << "Attempted to progress achievement " << id << " for achievement group " << content_for << ", which does not have max_progress set.";
+					if(achieve.max_progress_ == 0 || achieve.sub_achievements_.size() > 0) {
+						ERR_LUA << "Attempted to progress achievement " << id << " for achievement group " << content_for << ", is not a progressible achievement.";
 						lua_pushinteger(L, -1);
 						lua_pushinteger(L, -1);
 						return 2;
@@ -3226,6 +3235,82 @@ int game_lua_kernel::intf_progress_achievement(lua_State *L)
 					lua_pushinteger(L, achieve.max_progress_);
 
 					return 2;
+				}
+			}
+			// achievement not found - existing achievement group but non-existing achievement id
+			lua_push(L, "Achievement " + std::string(id) + " not found for achievement group " + content_for);
+			return lua_error(L);
+		}
+	}
+
+	// achievement group not found
+	lua_push(L, "Achievement group " + std::string(content_for) + " not found");
+	return lua_error(L);
+}
+
+/**
+ * Returns whether an achievement has been completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - achievement id.
+ * - Arg 3: string - sub-achievement id
+ * - Ret 1: boolean.
+ */
+int game_lua_kernel::intf_has_sub_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+	const char* sub_id = luaL_checkstring(L, 3);
+
+	if(resources::controller->is_networked_mp() && synced_context::is_synced()) {
+		ERR_LUA << "Returning false for whether a player has completed an achievement due to being networked multiplayer.";
+		lua_pushboolean(L, false);
+	} else {
+		lua_pushboolean(L, preferences::sub_achievement(content_for, id, sub_id));
+	}
+
+	return 1;
+}
+
+/**
+ * Marks a single sub-achievement as completed.
+ * - Arg 1: string - content_for.
+ * - Arg 2: string - achievement id.
+ * - Arg 3: string - sub-achievement id
+ */
+int game_lua_kernel::intf_set_sub_achievement(lua_State *L)
+{
+	const char* content_for = luaL_checkstring(L, 1);
+	const char* id = luaL_checkstring(L, 2);
+	const char* sub_id = luaL_checkstring(L, 3);
+
+	for(achievement_group& group : game_config_manager::get()->get_achievements()) {
+		if(group.content_for_ == content_for) {
+			for(achievement& achieve : group.achievements_) {
+				if(achieve.id_ == id) {
+					// the whole achievement is already completed
+					if(achieve.achieved_) {
+						return 0;
+					}
+
+					for(sub_achievement& sub_ach : achieve.sub_achievements_) {
+						if(sub_ach.id_ == sub_id) {
+							// this particular sub-achievement is already achieved
+							if(sub_ach.achieved_) {
+								return 0;
+							} else {
+								preferences::set_sub_achievement(content_for, id, sub_id);
+								sub_ach.achieved_ = true;
+								achieve.current_progress_++;
+								if(achieve.current_progress_ == achieve.max_progress_) {
+									intf_set_achievement(L);
+								}
+								return 0;
+							}
+						}
+					}
+					// sub-achievement not found - existing achievement group and achievement but non-existing sub-achievement id
+					lua_push(L, "Sub-achievement " + std::string(id) + " not found for achievement" + id + " in achievement group " + content_for);
+					return lua_error(L);
 				}
 			}
 			// achievement not found - existing achievement group but non-existing achievement id
@@ -5067,6 +5152,8 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "has", &dispatch<&game_lua_kernel::intf_has_achievement> },
 		{ "get", &dispatch<&game_lua_kernel::intf_get_achievement> },
 		{ "progress", &dispatch<&game_lua_kernel::intf_progress_achievement> },
+		{ "has_sub_achievement", &dispatch<&game_lua_kernel::intf_has_sub_achievement> },
+		{ "set_sub_achievement", &dispatch<&game_lua_kernel::intf_set_sub_achievement> },
 		{ nullptr, nullptr }
 	};
 	lua_getglobal(L, "wesnoth");
