@@ -46,11 +46,11 @@ def generate(env):
             return env.MsgInit(target, source, **kw)
     env.AddMethod(MsgInitMerge)
 
-    env["PO4A_GETTEXTIZE"] = WhereIs("po4a-gettextize")
-    po4a_gettextize = Builder(
-        action = "$PO4A_GETTEXTIZE -f $PO4A_FORMAT ${''.join([' -m ' + str(source) for source in SOURCES])} -p $TARGET",
+    env["PO4A_UPDATEPO"] = WhereIs("po4a-updatepo")
+    po4a_update_po = Builder(
+        action = "$PO4A_UPDATEPO -f $PO4A_FORMAT ${''.join([' -m ' + str(source) for source in SOURCES])} -p $TARGET",
         )
-    env["BUILDERS"]["Po4aGettextize"] = po4a_gettextize
+    env["BUILDERS"]["Po4aUpdatePo"] = po4a_update_po
 
     env["PO4A_TRANSLATE"] = WhereIs("po4a-translate")
     po4a_translate = Builder(
