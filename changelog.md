@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Czech, French, Italian, Spanish
+   * Updated translations: Arabic, British English, Czech, French, German, Italian, Spanish
  ### Units
  ### User interface
    * Fixed main menu Language button and Version label not being refreshed after
