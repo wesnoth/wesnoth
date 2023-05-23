@@ -362,10 +362,7 @@ if env["prereqs"]:
     def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
-            have_libpthread = True
-        else:
-            have_libpthread = conf.CheckLib("pthread")
-        return have_libpthread & \
+        return \
             conf.CheckBoost("system") & \
             conf.CheckBoost("asio", header_only = True) & \
             conf.CheckBoost("context") & \
