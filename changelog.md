@@ -11,6 +11,8 @@
    * Updated translations: Arabic, Czech, Italian
  ### Units
  ### User interface
+   * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
+     as a possible file location on modern Linux distributions.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
