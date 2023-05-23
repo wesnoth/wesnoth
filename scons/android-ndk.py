@@ -32,3 +32,5 @@ def generate(env):
     env["ANDROID_LLVM_TRIPLE"] = abi_spec["llvm_triple"]
     env.Append(CCFLAGS = "-target $ANDROID_LLVM_TRIPLE$android_api")
     env.Append(LINKFLAGS = "-target $ANDROID_LLVM_TRIPLE$android_api")
+    env.Append(LIBS = ["android", "log", "GLESv1_CM", "GLESv2"])
+    env.Append(CPPDEFINES = ["SDL_MAIN_HANDLED"])
