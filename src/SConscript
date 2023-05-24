@@ -173,6 +173,10 @@ if env["PLATFORM"] == 'darwin':
 elif env["PLATFORM"] == 'win32':
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects + ["#/packaging/windows/wesnoth.o"], have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
+elif env["PLATFORM"] == 'android':
+    client_env["CPPDEFINES"].remove("SDL_MAIN_HANDLED")
+    wesnoth = client_env.SharedLibrary("#packaging/android/lib/libmain.so", ["wesnoth.cpp"] + wesnoth_client_sources)
+    Export("wesnoth")
 else:
     wesnoth = client_env.WesnothProgram("wesnoth", ["wesnoth.cpp"] + libwesnoth_objects, have_client_prereqs)
     client_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
