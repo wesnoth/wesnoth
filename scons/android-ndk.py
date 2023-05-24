@@ -1,6 +1,8 @@
 # vi: syntax=python:et:ts=4
 import json
 
+from SCons.Builder import Builder
+
 #Intended usage:
 #- env["ndkdir"] set to ndk home
 #- env["android_api"] set to target api
@@ -34,3 +36,33 @@ def generate(env):
     env.Append(LINKFLAGS = "-target $ANDROID_LLVM_TRIPLE$android_api")
     env.Append(LIBS = ["android", "log", "GLESv1_CM", "GLESv2"])
     env.Append(CPPDEFINES = ["SDL_MAIN_HANDLED"])
+
+    assert env["android_home"]
+    env["ENV"]["ANDROID_HOME"] = env["android_home"]
+    env.AppendENVPath("PATH", env.subst("$android_home/build-tools/33.0.2/"))
+    print(env["ENV"]["PATH"])
+    env["DEX"] = "d8"
+    env["AAPT"] = "aapt2"
+    env["ANDROID_JAR"] = "$android_home/platforms/android-$android_api/android.jar"
+    env.Append(JAVACLASSPATH = ["$ANDROID_JAR"])
+    #env['STATIC_AND_SHARED_OBJECTS_ARE_THE_SAME']=1
+    #env.Append(CCFLAGS = ["-fPIC", "-shared"])
+
+    dex = Builder(
+        action = "$DEX --lib $ANDROID_JAR --output $TARGET.dir --classpath $DEXCLASSPATH $SOURCES",
+        suffix = ".dex"
+        )
+    env["BUILDERS"]["Dex"] = dex
+
+    aapt_compile = Builder(
+        action = "$AAPT compile $SOURCE -o $TARGET.dir",
+        suffix = ".flat",
+        single_source = True
+        )
+    env["BUILDERS"]["AaptCompile"] = aapt_compile
+
+    aapt_link = Builder(
+        action = "$AAPT link -o $TARGET --manifest $SOURCES -I $JAVACLASSPATH --java $AAPTJAVADIR",
+        suffix = ".apk"
+    )
+    env["BUILDERS"]["AaptLink"] = aapt_link

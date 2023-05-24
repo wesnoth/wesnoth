@@ -13,6 +13,7 @@ def setup_cross_compile(env):
     if env["host"]:
         if env["host"].startswith("android-"):
             env.Tool("android-ndk")
+            env["PLATFORM"] = "android"
         else:
             tools = [
                 "CXX",
