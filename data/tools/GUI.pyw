@@ -444,8 +444,8 @@ It comes complete with a context menu and a directory selection screen"""
     def on_clear(self):
         self.textvariable.set("")
 
-class SelectSaveFile(Frame):
-    def __init__(self, parent, textvariable, **kwargs):
+class SelectOutputPath(Frame):
+    def __init__(self, parent, textvariable, filetypes=None, **kwargs):
         """A subclass of Frame with a readonly Entry and a Button with a browse icon.
 It has a context menu and a save file selection dialog."""
         super().__init__(parent,**kwargs)
@@ -469,19 +469,33 @@ It has a context menu and a save file selection dialog."""
                                  text="Clear",
                                  command=self.on_clear)
         self.clear_button.pack(side=LEFT)
-    def on_browse(self):
+        self.filetypes = filetypes
+    def on_browse_file(self):
         # if the user already selected a file, try to use its directory
         current_dir,current_file=os.path.split(self.textvariable.get())
         if os.path.exists(current_dir):
-            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+            return asksaveasfilename(filetypes=self.filetypes,
                                         initialdir=current_dir,
                                         initialfile=current_file,
                                         confirmoverwrite=False) # the GUI will ask later if the file should be overwritten, so disable it for now
         # otherwise attempt to detect the user's userdata folder
         else:
-            directory=asksaveasfilename(filetypes=[("POT File", "*.pot"),("All Files", "*")],
+            return asksaveasfilename(filetypes=self.filetypes,
                                         initialdir=get_addons_directory(),
                                         confirmoverwrite=False)
+        
+    def on_browse_dir(self):
+        current_dir=self.textvariable.get()
+        if os.path.exists(current_dir):
+            return askdirectory(initialdir=current_dir)
+        # otherwise attempt to detect the user's userdata folder
+        else:
+            return askdirectory(initialdir=get_addons_directory())
+    def on_browse(self):
+        if self.filetypes is None:
+            directory = self.on_browse_dir()
+        else:
+            directory = self.on_browse_file(self)
         if directory:
             # use os.path.normpath, so on Windows the usual backwards slashes are correctly shown
             self.textvariable.set(os.path.normpath(directory))
@@ -956,24 +970,17 @@ class WmlindentTab(Frame):
 class WmlxgettextTab(Frame):
     def __init__(self,parent):
         super().__init__(parent)
-        self.domain_and_output_frame=Frame(self)
-        self.domain_and_output_frame.grid(row=0,column=0,columnspan=2,sticky=N+E+S+W)
-        self.domain_label=Label(self.domain_and_output_frame,
-                                text="Textdomain:")
-        self.domain_label.grid(row=0,column=0,sticky=W)
-        self.domain_variable=StringVar()
-        self.domain_entry=Entry(self.domain_and_output_frame,
-                                textvariable=self.domain_variable)
-        self.domain_entry.grid(row=0,column=1,sticky=N+E+S+W)
-        self.output_label=Label(self.domain_and_output_frame,
-                                text="Output file:")
-        self.output_label.grid(row=1,column=0,sticky=W)
+        self.output_wrapper_frame=Frame(self)
+        self.output_wrapper_frame.grid(row=0,column=0,columnspan=2,sticky=N+E+S+W)
+        self.output_label=Label(self.output_wrapper_frame,
+                                text="Output dir:")
+        self.output_label.grid(row=0,column=0,sticky=W)
         self.output_variable=StringVar()
-        self.output_frame=SelectSaveFile(self.domain_and_output_frame,self.output_variable)
-        self.output_frame.grid(row=1,column=1,sticky=N+E+S+W)
+        self.output_frame=SelectOutputPath(self.output_wrapper_frame,textvariable=self.output_variable)
+        self.output_frame.grid(row=0,column=1,sticky=N+E+S+W)
         self.options_labelframe=LabelFrame(self,
                                            text="Options")
-        self.options_labelframe.grid(row=2,column=0,sticky=N+E+S+W)
+        self.options_labelframe.grid(row=1,column=0,sticky=N+E+S+W)
         self.recursive_variable=BooleanVar()
         self.recursive_variable.set(True)
         self.recursive_check=Checkbutton(self.options_labelframe,
@@ -992,30 +999,47 @@ class WmlxgettextTab(Frame):
         self.fuzzy_check.grid(row=2,column=0,sticky=W)
         self.advanced_labelframe=LabelFrame(self,
                                             text="Advanced options")
-        self.advanced_labelframe.grid(row=2,column=1,sticky=N+E+S+W)
+        self.advanced_labelframe.grid(row=1,column=1,sticky=N+E+S+W)
         self.package_version_variable=BooleanVar()
         self.package_version_check=Checkbutton(self.advanced_labelframe,
                                                text="Package version",
                                                variable=self.package_version_variable)
         self.package_version_check.grid(row=0,column=0,sticky=W)
         self.initialdomain_variable=BooleanVar()
+        self.textdomain_variable=BooleanVar()
+        self.textdomain_check=Checkbutton(self.advanced_labelframe,
+                                             text="Filter textdomains:",
+                                             variable=self.textdomain_variable,
+                                             command=self.textdomain_callback)
+        self.textdomain_check.grid(row=1,column=0,sticky=W)
+        self.textdomain_name=StringVar()
+        self.textdomain_entry=Entry(self.advanced_labelframe,
+                                       state=DISABLED,
+                                       width=40,
+                                       textvariable=self.textdomain_name)
+        self.textdomain_entry.grid(row=1,column=1,sticky=E+W)
         self.initialdomain_check=Checkbutton(self.advanced_labelframe,
-                                             text="Initial textdomain",
+                                             text="Initial textdomain:",
                                              variable=self.initialdomain_variable,
                                              command=self.initialdomain_callback)
-        self.initialdomain_check.grid(row=1,column=0,sticky=W)
+        self.initialdomain_check.grid(row=2,column=0,sticky=W)
         self.initialdomain_name=StringVar()
         self.initialdomain_entry=Entry(self.advanced_labelframe,
                                        state=DISABLED,
-                                       width=0,
+                                       width=40,
                                        textvariable=self.initialdomain_name)
-        self.initialdomain_entry.grid(row=1,column=1,sticky=E+W)
-        self.domain_and_output_frame.columnconfigure(1,weight=1)
-        self.domain_and_output_frame.rowconfigure(0,uniform="group")
-        self.domain_and_output_frame.rowconfigure(1,uniform="group")
+        self.initialdomain_entry.grid(row=2,column=1,sticky=E+W)
+        self.output_wrapper_frame.columnconfigure(1,weight=1)
+        self.output_wrapper_frame.rowconfigure(0,uniform="group")
         self.advanced_labelframe.columnconfigure(1,weight=1)
+        self.advanced_labelframe.columnconfigure(2,weight=1)
         self.columnconfigure(0,weight=2)
         self.columnconfigure(1,weight=1)
+    def textdomain_callback(self, event=None):
+        if self.textdomain_variable.get():
+            self.textdomain_entry.configure(state=NORMAL)
+        else:
+            self.textdomain_entry.configure(state=DISABLED)
     def initialdomain_callback(self, event=None):
         if self.initialdomain_variable.get():
             self.initialdomain_entry.configure(state=NORMAL)
@@ -1322,12 +1346,8 @@ wmlindent will be run on the Wesnoth core directory""")
         # build the command line and add the path of the Python interpreter
         wmlxgettext_command_string=[sys.executable]
         wmlxgettext_command_string.append(os.path.join(APP_DIR,"wmlxgettext"))
-        textdomain=self.wmlxgettext_tab.domain_variable.get()
-        if textdomain:
-            wmlxgettext_command_string.extend(["--domain",textdomain])
-        else:
-            showerror("Error","""No textdomain specified""")
-            return
+        if self.wmlxgettext_tab.textdomain_variable.get():
+            wmlxgettext_command_string.extend(["--domain",self.wmlxgettext_tab.textdomain_entry.get()])
         wmlxgettext_command_string.append("--directory")
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
@@ -1362,9 +1382,8 @@ wmlxgettext won't be run""")
         if self.wmlxgettext_tab.package_version_variable.get():
             wmlxgettext_command_string.append("--package-version")
         wmlxgettext_command_string.append("--no-text-colors")
-        initialdomain=self.wmlxgettext_tab.initialdomain_variable.get()
-        if initialdomain:
-            wmlxgettext_command_string.extend(["--initialdomain",initialdomain])
+        if self.wmlxgettext_tab.initialdomain_variable.get():
+            wmlxgettext_command_string.extend(["--initialdomain",self.wmlxgettext_tab.initialdomain_entry.get()])
         # start thread and wmlxgettext subprocess
         wmlxgettext_thread=ToolThread("wmlxgettext",self.queue,wmlxgettext_command_string)
         wmlxgettext_thread.start()

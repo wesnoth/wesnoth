@@ -66,8 +66,7 @@ class WmlCheckdomState:
         self.iffail = 'wml_checkpo'
 
     def run(self, xline, lineno, match):
-        pywmlx.state.machine._currentdomain = match.group(1)
-        pywmlx.state.machine.checkdomain(lineno)
+        pywmlx.state.machine.switchdomain(lineno, match.group(1))
         xline = None
         return (xline, 'wml_idle')
 
