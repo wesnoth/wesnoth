@@ -26,6 +26,7 @@ def generate(env):
     abi_spec = json.load(open(ndk + "/meta/abis.json"))[abi]
     print(abi_spec)
     env["ANDROID_TOOLCHAIN"] = f"{ndk}/toolchains/llvm/prebuilt/linux-x86_64"
+    env["ANDROID_ABI"] = abi
     env["AR"] = "$ANDROID_TOOLCHAIN/bin/llvm-ar"
     env["CC"] = "$ANDROID_TOOLCHAIN/bin/clang"
     env["CXX"] = "$ANDROID_TOOLCHAIN/bin/clang++"
