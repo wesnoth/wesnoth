@@ -51,7 +51,6 @@ private:
 
 	void shown_filter_callback();
 
-	bool show_all_;
 	const std::vector<language_def> langs_;
 	boost::dynamic_bitset<> complete_langs_;
 };
