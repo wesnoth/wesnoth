@@ -40,12 +40,10 @@ REGISTER_DIALOG(language_selection)
 
 language_selection::language_selection()
 	: modal_dialog(window_id())
-	, show_all_(get_min_translation_percent() == 0)
 	, langs_(get_languages(true))
 	, complete_langs_(langs_.size())
 {
-	// Markup needs to be enabled for the link to be highlighted
-	register_label("contrib_url", true, translations_wiki_url, true);
+	bool show_all = get_min_translation_percent() == 0;
 
 	const language_def& current_language = get_language();
 
@@ -57,12 +55,16 @@ language_selection::language_selection()
 			// too, regardless of what the initial threshold setting is.
 			complete_langs_[i] = true;
 			if(langs_[i].percent < get_min_translation_percent()) {
-				show_all_ = true;
+				show_all = true;
 			}
 		} else {
 			complete_langs_[i] = langs_[i].percent >= get_min_translation_percent();
 		}
 	}
+
+	register_bool("show_all", true, show_all);
+	// Markup needs to be enabled for the link to be highlighted
+	register_label("contrib_url", true, translations_wiki_url, true);
 }
 
 void language_selection::shown_filter_callback()
@@ -70,11 +72,9 @@ void language_selection::shown_filter_callback()
 	window& window = *get_window();
 
 	toggle_button& show_all_toggle = find_widget<toggle_button>(&window, "show_all", false);
-	show_all_ = show_all_toggle.get_value_bool();
-
 	listbox& list = find_widget<listbox>(&window, "language_list", false);
 
-	if(show_all_) {
+	if(show_all_toggle.get_value_bool()) {
 		list.set_row_shown(boost::dynamic_bitset<>{langs_.size(), ~0UL});
 	} else {
 		list.set_row_shown(complete_langs_);
@@ -89,7 +89,6 @@ void language_selection::pre_show(window& window)
 	toggle_button& show_all_toggle = find_widget<toggle_button>(&window, "show_all", false);
 	connect_signal_mouse_left_click(show_all_toggle, std::bind(
 			&language_selection::shown_filter_callback, this));
-	show_all_toggle.set_value(show_all_);
 
 	const language_def& current_language = get_language();
 
