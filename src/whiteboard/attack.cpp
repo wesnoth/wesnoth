@@ -213,20 +213,17 @@ void attack::draw_hex(const map_location& hex)
 
 	if (hex == get_dest_hex()) //add symbol to attacker hex
 	{
-		auto disp = display::get_singleton();
 
-		disp->drawing_buffer_add(layer, get_dest_hex(),
-			[=, tex = image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+		display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(),
+			[tex = image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)](const rect& d) {
+				draw::blit(tex, d);
 			});
 	}
 	else if (hex == target_hex_) //add symbol to defender hex
 	{
-		auto disp = display::get_singleton();
-
-		disp->drawing_buffer_add(layer, target_hex_,
-			[=, tex = image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+		display::get_singleton()->drawing_buffer_add(layer, target_hex_,
+			[tex = image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED)](const rect& d) {
+				draw::blit(tex, d);
 			});
 	}
 }
