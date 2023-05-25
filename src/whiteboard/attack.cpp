@@ -199,7 +199,7 @@ void attack::remove_temp_modifier(unit_map& unit_map)
 // Draws the attack indicator.
 void attack::draw_hex(const map_location& hex)
 {
-	if (hex != get_dest_hex() && hex != target_hex_) {
+	if(hex != get_dest_hex() && hex != target_hex_) {
 		return;
 	}
 
@@ -208,24 +208,15 @@ void attack::draw_hex(const map_location& hex)
 	const display::drawing_layer layer = display::LAYER_FOOTSTEPS;
 
 	//calculate direction (valid for both hexes)
-	std::string direction_text = map_location::write_direction(
-			get_dest_hex().get_relative_dir(target_hex_));
+	const std::string direction_text = map_location::write_direction(get_dest_hex().get_relative_dir(target_hex_));
 
-	if (hex == get_dest_hex()) //add symbol to attacker hex
-	{
+	texture indicator = (hex == get_dest_hex())
+		? image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)
+		: image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED);
 
-		display::get_singleton()->drawing_buffer_add(layer, get_dest_hex(),
-			[tex = image::get_texture("whiteboard/attack-indicator-src-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, d);
-			});
-	}
-	else if (hex == target_hex_) //add symbol to defender hex
-	{
-		display::get_singleton()->drawing_buffer_add(layer, target_hex_,
-			[tex = image::get_texture("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::HEXED)](const rect& d) {
-				draw::blit(tex, d);
-			});
-	}
+	// hex is either the dst or target here. Whichever it is, we want to draw there.
+	display::get_singleton()->drawing_buffer_add(
+		layer, hex, [tex = std::move(indicator)](const rect& d) { draw::blit(tex, d); });
 }
 
 void attack::redraw()
