@@ -7,6 +7,7 @@ Run without arguments to see usage.
 """
 
 import argparse
+import glob
 import multiprocessing
 import os
 import queue
@@ -46,6 +47,19 @@ def move(f, t, name):
 
     shutil.move(os.path.join(f, name), t)
 
+
+def get_filtered_addons(filter, addons_folder):
+    matches = set()
+    for input_path in filter:
+        dirname, basename = os.path.split(input_path)
+        if not dirname or dirname == addons_folder:
+            matches.add(basename)
+        else:
+            print("File \"%s\" not found inside the --addons folder)" % input_path)
+            return None
+
+    return list(matches)
+
 _info = {}
 def get_info(addon):
     global _info
@@ -61,12 +75,15 @@ def get_info(addon):
             parser.parse_file(path)
             _info[addon] = parser
         else:
-            print("Cannot find " + path)
+            print(("Cannot find %s - addon must be installed at %s, " +
+                "or copied from a valid installation.") % (path, options.addons))
     except wmlparser3.WMLError as e:
         print(e)
     return _info[addon]
 
 _deps = {}
+
+# global_addons - lists all the addons installed in the folder specified with --addons
 global_addons = set()
 def get_dependencies(addon):
     global _deps
@@ -135,7 +152,7 @@ def search(batchlist, name):
     batchlist[-1]["name"] = name
     return batchlist[-1]
 
-def list_contents():
+def list_contents(addons):
     class Empty:
         pass
 
@@ -268,12 +285,6 @@ def list_contents():
     if not options.addons_only:
         parse("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE")
         info["campaigns"] += list_campaigns(batchlist, "mainline")
-
-    addons = []
-    if options.addons:
-        addons = os.listdir(options.addons)
-    global global_addons
-    global_addons = set(addons)
 
     # fill in the map for all dependencies
     for addon in addons:
@@ -585,14 +596,18 @@ if __name__ == '__main__':
                     help="Specify path to a folder with all addons. This should be " +
                     "outside the user config folder.")
     ap.add_argument("-L", "--list",
-                    help="List available eras and campaigns.")
+                    help="Writes available eras and campaigns to the provided path. YAML "
+                    "format is used.")
     ap.add_argument("-B", "--batch",
-                    help="Batch process the given list.")
+                    help="Batch process the addons listed in the provided YAML file. Can be "
+                    "used together with -L.")
     ap.add_argument("-A", "--addons-only", action="store_true",
                     help="Do only process addons (for debugging).")
     ap.add_argument("-v", "--verbose", action="store_true")
     ap.add_argument("-W", "--wiki", action="store_true",
                     help="write wikified units list to stdout")
+    ap.add_argument("filter", nargs="*",
+                    help="Specify a subset of addons to process exclusively.")
     options = ap.parse_args()
 
     html_output.options = options
@@ -625,9 +640,18 @@ if __name__ == '__main__':
     if not options.transdir:
         options.transdir = os.getcwd()
 
+    match_addons = os.listdir(options.addons)
+    global_addons = set(match_addons)
+
+    if options.filter is not None:
+        match_addons = get_filtered_addons(options.filter, options.addons)
+        if match_addons is None:
+            sys.exit(-1)
+    
     if options.wiki:
         wiki_output.main()
         sys.exit(0)
+
 
     image_collector = helpers.ImageCollector(options.wesnoth,
                                              options.config_dir,
@@ -662,7 +686,7 @@ if __name__ == '__main__':
             os.mkdir(options.output)
 
     if options.list:
-        list_contents()
+        list_contents(match_addons)
 
     if options.batch:
         batch_process()
