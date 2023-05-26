@@ -118,31 +118,6 @@ std::string dbconn::get_tournaments()
 	}
 }
 
-std::pair<bool, bool> substitute_wildcards(std::string& parameter)
-{
-	std::pair<bool, bool> leading_trailing = {false, false};
-
-	if(parameter.length() == 1)
-	{
-		parameter = "";
-	}
-	else if(parameter.length() >= 2)
-	{
-		if(parameter[0] == '*')
-		{
-			leading_trailing.first = true;
-			parameter.erase(0, 1);
-		}
-		if(parameter[parameter.length()-1] == '*')
-		{
-			leading_trailing.second = true;
-			parameter.erase(parameter.length()-1);
-		}
-	}
-
-	return leading_trailing;
-}
-
 std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, int offset, std::string search_game_name, int search_content_type, std::string search_content)
 {
 	try
@@ -200,7 +175,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 
 	if(!search_game_name.empty())
 	{
-		game_history_query += " and game.GAME_NAME like concat(?)";
+		game_history_query += " and game.GAME_NAME like ?";
 
 		utils::to_sql_wildcards(search_game_name, false);
 		params.emplace_back(search_game_name);
@@ -214,7 +189,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and scenario.ID like concat(?)";
+			game_history_query += " and scenario.ID like ?";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
@@ -229,7 +204,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and era.ID like concat(?)";
+			game_history_query += " and era.ID like ?";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
@@ -246,7 +221,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and mods.ID like concat(?)";
+			game_history_query += " and mods.ID like ?";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
