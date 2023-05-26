@@ -13,7 +13,14 @@ from pywmlx.state.wml_states import setup_wmlstates
 import pywmlx.nodemanip
 import pdb
 
+# Universe - convenient singleton for which
+# `x in Universe` is always True
+# Passing it to a filter is equivalent to not filtering.
+class UniversalSet:
+    def __contains__(self, any):
+        return True
 
+Universe = UniversalSet()
 
 # --------------------------------------------------------------------
 #  PART 1: machine.py global variables
@@ -30,12 +37,12 @@ _fdebug = None
 _dictionary = None
 # dictionary containing lua and WML states
 _states = None
-# initialdomain value (setted with --initialdomain command line option)
+# initialdomain value (set with --initialdomain command line option)
 _initialdomain = None
 # the current domain value when parsing file (changed by #textdomain text)
 _currentdomain = None
-# the domain value (setted with --domain command line option)
-_domain = None
+# the domain value (set with --domain command line option)
+_domains = Universe
 # this boolean value will be usually:
 #   True (when the file is a WML .cfg file)
 #   False (when the file is a .lua file)
@@ -100,13 +107,19 @@ def clear_pending_infos(lineno, error=False):
 
 def checkdomain(lineno):
     global _currentdomain
-    global _domain
-    if _currentdomain == _domain:
+    global _domains
+    if _currentdomain in _domains:
         return True
     else:
         clear_pending_infos(lineno, error=True)
         return False
 
+
+def switchdomain(lineno, domain):
+    global _currentdomain
+    if _currentdomain != domain:
+        clear_pending_infos(lineno, error=True)
+        _currentdomain = domain
 
 
 def checksentence(mystring, finfo, *, islua=False):
@@ -233,10 +246,13 @@ class PendingLuaString:
                     loc_addedinfos = []
                 if _pending_addedinfo is not None:
                     loc_addedinfos = _pending_addedinfo
-                loc_posentence = _dictionary.get(self.luastring)
+                if not _currentdomain in _dictionary:
+                    _dictionary[_currentdomain] = dict()
+                loc_posentence = _dictionary[_currentdomain].get(self.luastring)
                 if loc_posentence is None:
-                    _dictionary[self.luastring] = PoCommentedString(
+                    _dictionary[_currentdomain][self.luastring] = PoCommentedString(
                                 self.luastring,
+                                _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -246,6 +262,7 @@ class PendingLuaString:
                     loc_posentence.update_with_commented_string(
                            PoCommentedString(
                                 self.luastring,
+                                _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -295,6 +312,7 @@ class PendingWmlString:
                 else:
                     self.wmlstring = re.sub('""', r'\"', self.wmlstring)
                 pywmlx.nodemanip.addNodeSentence(self.wmlstring,
+                                             domain=_currentdomain,
                                              ismultiline=self.ismultiline,
                                              lineno=self.lineno,
                                              lineno_sub=_linenosub,
@@ -312,16 +330,17 @@ def addstate(name, value):
 
 
 
-def setup(dictionary, initialdomain, domain, wall, fdebug):
+def setup(dictionary, initialdomain, domains, wall, fdebug):
     global _dictionary
     global _initialdomain
-    global _domain
+    global _domains
     global _warnall
     global _debugmode
     global _fdebug
     _dictionary = dictionary
     _initialdomain = initialdomain
-    _domain = domain
+    if domains is not None:
+        _domains = set(domains)
     _warnall = wall
     _fdebug = fdebug
     if fdebug is None:

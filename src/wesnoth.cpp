@@ -384,7 +384,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.usercache_path) {
-		PLAIN_LOG << filesystem::get_cache_dir();
+		std::cout << filesystem::get_cache_dir();
 		return 0;
 	}
 
@@ -393,7 +393,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userconfig_path) {
-		PLAIN_LOG << filesystem::get_user_config_dir();
+		std::cout << filesystem::get_user_config_dir();
 		return 0;
 	}
 
@@ -402,7 +402,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userdata_path) {
-		PLAIN_LOG << filesystem::get_user_data_dir();
+		std::cout << filesystem::get_user_data_dir();
 		return 0;
 	}
 
@@ -434,7 +434,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.data_path) {
-		PLAIN_LOG << game_config::path;
+		std::cout << game_config::path;
 		return 0;
 	}
 

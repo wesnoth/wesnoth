@@ -115,7 +115,7 @@ if "update-po" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS o
 #
 
 if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS:
-    env.Po4aGettextize("wesnoth-manual/wesnoth-manual.pot", "../doc/manual/manual.en.xml", PO4A_FORMAT = "docbook")
+    env.Po4aUpdatePo("wesnoth-manual/wesnoth-manual.pot", "../doc/manual/manual.en.xml", PO4A_FORMAT = "docbook")
     for lingua in linguas:
         env.Po4aTranslate("../doc/manual/manual." + lingua + ".xml",
             ["../doc/manual/manual.en.xml", join("wesnoth-manual", lingua + ".po")],
@@ -123,7 +123,7 @@ if "update-po4a" in COMMAND_LINE_TARGETS or "pot-update" in COMMAND_LINE_TARGETS
     Alias("update-po4a", Alias("manual"))
 
     manpages = Split("wesnoth.6 wesnothd.6")
-    env.Po4aGettextize("wesnoth-manpages/wesnoth-manpages.pot",
+    env.Po4aUpdatePo("wesnoth-manpages/wesnoth-manpages.pot",
         [join("../doc/man", man) for man in manpages], PO4A_FORMAT = "man")
     for lingua in linguas:
         for man in manpages:

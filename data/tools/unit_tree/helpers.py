@@ -3,24 +3,11 @@
 """
 Various helpers for use by the wmlunits tool.
 """
-import sys, os, re, glob, shutil, copy, subprocess
+import sys, os, re, glob, shutil, copy, subprocess, traceback
 
 import wesnoth.wmlparser3 as wmlparser3
 from unit_tree.team_colorizer import colorize
-
-def get_datadir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--data-path"],
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out.strip()
-
-def get_userdir(wesnoth_exe):
-    p = subprocess.Popen([wesnoth_exe, "--userdata-path"],
-                         stdout=subprocess.PIPE,
-                         stderr=subprocess.PIPE)
-    out, err = p.communicate()
-    return out.strip()
+import wesnoth.base64url as base64url
 
 class Image:
     def __init__(self, id_name, ipath, bases, no_tc):
@@ -40,11 +27,14 @@ class ImageCollector:
         self.images_by_ipath = {}
         self.binary_paths_per_addon = {}
         self.datadir = datadir
-        if not self.datadir:
-            self.datadir = get_datadir(wesnoth_exe)
         self.userdir = userdir
-        if not self.userdir:
-            self.userdir = get_userdir(wesnoth_exe)
+        self.hide_paths = [
+            os.path.join(self.userdir, "data", "add-ons"),
+            os.path.join(self.userdir, "data"),
+            os.path.join(self.userdir),
+            os.path.join(self.datadir, "data"),
+            os.path.join(self.datadir)
+        ]
         self.magick = magick_exe
 
     def add_binary_paths_from_WML(self, addon, WML):
@@ -58,7 +48,10 @@ class ImageCollector:
         tilde = name.find("~")
         if tilde >= 0:
             name = name[:tilde]
-        bases = [os.path.join(self.datadir, "data/core/images"), os.path.join(self.datadir, "images")]
+        bases = [
+            os.path.join(self.datadir, "data", "core", "images"),
+            os.path.join(self.datadir, "images")
+        ]
         binpaths = self.binary_paths_per_addon.get(addon, [])[:]
         binpaths.reverse()
         for path in binpaths:
@@ -77,9 +70,10 @@ class ImageCollector:
             bases = new_bases
 
         for ipath in bases:
+            ipath = os.path.normpath(ipath)
             if os.path.exists(ipath):
-                return ipath, bases
-        return None, bases
+                return ipath, list(map(os.path.normpath, bases))
+        return None, list(map(os.path.normpath, bases))
 
     def add_image_check(self, addon, name, no_tc=False, check_transparent=False):
         if (addon, name) in self.images_by_addon_name:
@@ -95,28 +89,31 @@ class ImageCollector:
                 image.addons.add(addon)
             return image
 
-        def make_name(x):
-            x = x.strip("./ ")
-            d = options.config_dir.strip("./ ")
-            if x.startswith(d): x = x[len(d):]
-            d = options.data_dir.strip("./ ")
-            if x.startswith(d): x = x[len(d):]
-            x = x.strip("./ ")
-            if x.startswith("data"): x = x[len("data"):]
-            x = x.strip("./ ")
-            y = ""
-            for c in x:
-                if c == "/":
-                    c = "$"
-                elif not c.isalnum() and c not in ".+-()[]{}":
-                    c = "_"
-                y += c
-            return y
+        def make_name(vpath, hide_paths, prefix_fallback=None):
+            if prefix_fallback is not None:
+                vpath = os.path.join(prefix_fallback, vpath)
+            vpath = os.path.normpath(vpath.strip())
+            for hidden_path in hide_paths:
+                if vpath.startswith(hidden_path):
+                #if os.path.commonpath(vpath, hidden_path) == hidden_path:
+                    vpath = os.path.relpath(vpath, hidden_path)
+                    break
+            else:                
+                # root_dir is prefix after normalization
+                root_dir = vpath.split("/")[0].split("\\")[0]
+                if prefix_fallback is None or (root_dir != "general" and root_dir != prefix_fallback):
+                    print("Path \"%s\" outside valid folders." % vpath)
+                    vpath = "403.png"
+
+            encoded_dir_name = base64url.encode_str(os.path.dirname(vpath))
+            sanitized_file_name = re.sub(r'[^a-zA-Z0-9_.-]' , "", ".".join(os.path.basename(vpath).split("(")[0].split(".")[-2:]))
+            head, ext = os.path.splitext(sanitized_file_name)
+            return '%s..%s.%s' % (head, encoded_dir_name, ext)
 
         if ipath:
-            id_name = make_name(ipath)
+            id_name = make_name(ipath, self.hide_paths)
         else:
-            id_name = make_name(addon + "/" + name)
+            id_name = make_name(name, self.hide_paths, prefix_fallback=addon)
 
         image = Image(id_name, ipath, bases, no_tc)
         image.addons.add(addon)
@@ -136,15 +133,18 @@ class ImageCollector:
             opath = os.path.join(target_path, "pics", image.id_name)
             try:
                 os.makedirs(os.path.dirname(opath))
-            except OSError:
+            except FileExistsError:
                 pass
+            except OSError:
+                traceback.print_exc()
 
             no_tc = image.no_tc
 
             ipath = os.path.normpath(image.ipath)
-            cdir = os.path.normpath(options.config_dir + "/data/add-ons")
-            if ipath.startswith(cdir):
-                ipath = os.path.join(options.addons, ipath[len(cdir):].lstrip("/"))
+            default_addons_dir = os.path.join(options.config_dir, "data", "add-ons")
+            if ipath.startswith(default_addons_dir):
+                # Override with custom --addons
+                ipath = os.path.join(options.addons, os.path.relpath(ipath, default_addons_dir))
             if ipath and os.path.exists(ipath) and not os.path.isdir(ipath):
                 if no_tc:
                     shutil.copy2(ipath, opath)
@@ -152,8 +152,8 @@ class ImageCollector:
                     colorize(None, ipath, opath, magick=self.magick)
             else:
                 sys.stderr.write(
-                    "Warning: Required image %s does not exist (referenced by %s).\n" % (
-                        image.id_name, ", ".join(image.addons)))
+                    "Warning: Required image %s does not exist at %s (referenced by %s).\n" % (
+                        image.id_name, ipath, ", ".join(image.addons)))
                 if options.verbose:
                     if image.bases:
                         sys.stderr.write("Warning: Looked at the following locations:\n")

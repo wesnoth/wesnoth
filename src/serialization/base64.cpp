@@ -52,9 +52,12 @@ char itoa(unsigned value, const std::string& map)
 
 std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<int>& atoi_map)
 {
-	const int last_char = in.find_last_not_of("=");
-	const int num_chars = last_char + 1;
-	const int length = num_chars * 6 / 8;
+	const std::size_t last_char = in.find_last_not_of("=");
+	if(last_char == std::string::npos) {
+		return {};
+	}
+	const std::size_t num_chars = last_char + 1;
+	const std::size_t length = num_chars * 6 / 8;
 
 	std::vector<uint8_t> out;
 	out.reserve(length);
@@ -77,7 +80,7 @@ std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<in
 			val &= 0xFFFF; // Prevent shifting bits off the left end, which is UB
 		}
 	}
-	if(static_cast<int>(out.size()) != length) {
+	if(out.size() != length) {
 		return {};
 	}
 
@@ -86,13 +89,16 @@ std::vector<uint8_t> generic_decode_be(std::string_view in, const std::vector<in
 
 std::vector<uint8_t> generic_decode_le(std::string_view in, const std::vector<int>& atoi_map)
 {
-	const int last_char = in.find_last_not_of("=");
-	const int length = last_char * 6 / 8;
+	const std::size_t last_char = in.find_last_not_of("=");
+	if(last_char == std::string::npos) {
+		return {};
+	}
+	const std::size_t length = last_char * 6 / 8;
 
 	std::vector<uint8_t> out;
 	out.reserve(length);
 
-	for(int i = 0; i <= last_char; i += 4) {
+	for(std::size_t i = 0; i <= last_char; i += 4) {
 		//add first char (always)
 		unsigned value = atoi_map[in[i]];
 

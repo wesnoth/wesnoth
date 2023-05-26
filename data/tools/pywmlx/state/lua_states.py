@@ -32,8 +32,7 @@ class LuaCheckdomState:
         self.iffail = 'lua_checkpo'
 
     def run(self, xline, lineno, match):
-        pywmlx.state.machine._currentdomain = match.group(3)
-        pywmlx.state.machine.checkdomain(lineno)
+        pywmlx.state.machine.switchdomain(lineno, match.group(3))
         xline = None
         if match.group(1) is None and pywmlx.state.machine._warnall:
             finfo = pywmlx.nodemanip.fileref + ":" + str(lineno)
