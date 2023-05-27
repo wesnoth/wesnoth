@@ -8,7 +8,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Finnish
+   * Updated translations: British English, Finnish, French
  ### Units
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
