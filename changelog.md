@@ -7,6 +7,7 @@
  ### Lua API
  ### Packaging
  ### Terrain
+   * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias)
  ### Translations
    * Updated translations: British English, Finnish, French
  ### Units
