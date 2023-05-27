@@ -235,7 +235,7 @@ std::string addon_info::display_icon() const
 
 	if(ret.empty()) {
 		ERR_AC << "add-on '" << id << "' doesn't have an icon path set";
-	} else if(!image::exists(ret)) {
+	} else if(!image::exists(image::locator{ret})) {
 		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'";
 	} else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
 		// HACK: prevent magenta icons, because they look awful

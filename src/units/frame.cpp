@@ -600,11 +600,11 @@ void unit_frame::redraw(const int frame_time, bool on_start_time, bool in_scope_
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
-		image_loc = image::locator(current_data.image_diagonal, current_data.image_mod);
+		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 	}
 
 	if(image_loc.is_void() || image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image_loc = image::locator(current_data.image, current_data.image_mod);
+		image_loc = current_data.image.clone(current_data.image_mod);
 	}
 
 	point image_size {0, 0};
@@ -753,11 +753,11 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
 
 	image::locator image_loc;
 	if(direction != map_location::NORTH && direction != map_location::SOUTH) {
-		image_loc = image::locator(current_data.image_diagonal, current_data.image_mod);
+		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 	}
 
 	if(image_loc.is_void() || image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image_loc = image::locator(current_data.image, current_data.image_mod);
+		image_loc = current_data.image.clone(current_data.image_mod);
 	}
 
 	// We always invalidate our own hex because we need to be called at redraw time even
