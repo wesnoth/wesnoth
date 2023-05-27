@@ -858,7 +858,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time, const
  * There is no absolute rule for merging, so creativity is the rule. If a value is never provided by the engine, assert.
  * This way if it becomes used, people will easily find the right place to look.
  */
-const frame_parameters unit_frame::merge_parameters(int current_time, const frame_parameters& animation_val,
+frame_parameters unit_frame::merge_parameters(int current_time, const frame_parameters& animation_val,
 		const frame_parameters& engine_val) const
 {
 	frame_parameters result;
