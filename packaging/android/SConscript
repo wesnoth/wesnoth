@@ -23,11 +23,7 @@ def add_libraries_to_archive(target, source, env):
     from zipfile import ZipFile
     with ZipFile(target[0].path, 'a') as apk:
         for library in source[2:]:
-            if library.name == "libSDL2-2.0.so":
-                name = "libSDL2.so"
-            else:
-                name = library.name
-            apk.write(library.path, env.subst("lib/$ANDROID_ABI/") + name)
+            apk.write(library.path, env.subst("lib/$ANDROID_ABI/") + library.name)
 
 unaligned = env.Command("wesnoth.apk.unaligned", [apk[0]] + bytecode + env.Glob("$prefix/lib/*.so*") + ["$ndkdir/sources/cxx-stl/llvm-libc++/libs/$ANDROID_ABI/libc++_shared.so", "lib/libmain.so"], [
     "cp ${SOURCES[0]} $TARGET && zip -j $TARGET ${SOURCES[1]}",
