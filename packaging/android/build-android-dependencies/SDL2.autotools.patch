@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index d4eeee402..6cfd9b13c 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -136,7 +136,7 @@ LT_AGE      = @LT_AGE@
+ LT_CURRENT  = @LT_CURRENT@
+ LT_RELEASE  = @LT_RELEASE@
+ LT_REVISION = @LT_REVISION@
+-LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE)
++LT_LDFLAGS  = -no-undefined -rpath $(libdir) -release $(LT_RELEASE) -avoid-version
+ 
+ all: $(srcdir)/configure Makefile $(objects)/$(TARGET) $(objects)/$(SDLMAIN_TARGET) $(objects)/$(SDLTEST_TARGET)
+ 

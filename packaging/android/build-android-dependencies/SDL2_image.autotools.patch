@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 0669f2b..d8bb07c 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -66,7 +66,7 @@ EXTRA_DIST = \
+ libSDL2_image_la_LDFLAGS = 	\
+ 	-no-undefined		\
+ 	-release $(LT_RELEASE)	\
+-	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
++	-avoid-version
+ libSDL2_image_la_LIBADD = $(IMG_LIBS)
+ if USE_VERSION_RC
+ libSDL2_image_la_DEPENDENCIES = version.o
