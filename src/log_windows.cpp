@@ -57,7 +57,7 @@ public:
 	console_handler(const console_handler&) = delete;
 	console_handler& operator=(const console_handler&) = delete;
 
-	console_handler();
+	console_handler(bool no_con);
 
 	/**
 	 * Returns whether we own the console we are attached to, if any.
@@ -70,10 +70,10 @@ private:
 	/**
 	 * Switches to using a native console.
 	 */
-	void enable_native_console_output();
+	void enable_native_console_output(bool no_con);
 };
 
-console_handler::console_handler()
+console_handler::console_handler(bool no_con)
 	: created_wincon_(false)
 {
 	DBG_LS << "Early init message";
@@ -84,7 +84,7 @@ console_handler::console_handler()
 		// already pointing to the console.
 		LOG_LS << "Console already attached at startup (built with console subsystem flag?), log file disabled.";
 	} else {
-		enable_native_console_output();
+		enable_native_console_output(no_con);
 	}
 
 	DBG_LS << "Windows console init complete!";
@@ -95,7 +95,7 @@ bool console_handler::owns_console() const
 	return created_wincon_;
 }
 
-void console_handler::enable_native_console_output()
+void console_handler::enable_native_console_output(bool no_con)
 {
 	if(AttachConsole(ATTACH_PARENT_PROCESS)) {
 		LOG_LS << "Attached parent process console.";
@@ -111,18 +111,20 @@ void console_handler::enable_native_console_output()
 		WRN_LS << "Cannot attach or allocate a console, continuing anyway (is this Wine?)";
 	}
 
-	DBG_LS << "stderr to console";
-	fflush(stderr);
-	std::cerr.flush();
-	assert(freopen("CONOUT$", "wb", stderr) == stderr);
+	if(!no_con) {
+		DBG_LS << "stderr to console";
+		fflush(stderr);
+		std::cerr.flush();
+		assert(freopen("CONOUT$", "wb", stderr) == stderr);
 
-	DBG_LS << "stdout to console";
-	fflush(stdout);
-	std::cout.flush();
-	assert(freopen("CONOUT$", "wb", stdout) == stdout);
+		DBG_LS << "stdout to console";
+		fflush(stdout);
+		std::cout.flush();
+		assert(freopen("CONOUT$", "wb", stdout) == stdout);
 
-	DBG_LS << "stdin from console";
-	assert(freopen("CONIN$",  "rb", stdin) == stdin);
+		DBG_LS << "stdin from console";
+		assert(freopen("CONIN$",  "rb", stdin) == stdin);
+	}
 
 	LOG_LS << "Console streams handover complete!";
 }
@@ -131,10 +133,10 @@ std::unique_ptr<console_handler> lfm;
 
 } // end anonymous namespace
 
-void do_console_redirect()
+void do_console_redirect(bool no_con)
 {
 	if(!lfm) {
-		lfm.reset(new console_handler());
+		lfm.reset(new console_handler(no_con));
 	}
 }
 
