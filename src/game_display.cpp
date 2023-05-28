@@ -414,15 +414,15 @@ void game_display::draw_movement_info(const map_location& loc)
 			drawing_buffer_add(LAYER_MOVE_INFO, loc,
 				[inv = w->second.invisible, zoc = w->second.zoc, cap = w->second.capture](const rect& dest) {
 					if(inv) {
-						draw::blit(image::get_texture("misc/hidden.png", image::HEXED), dest);
+						draw::blit(image::get_texture(image::locator{"misc/hidden.png"}, image::HEXED), dest);
 					}
 
 					if(zoc) {
-						draw::blit(image::get_texture("misc/zoc.png", image::HEXED), dest);
+						draw::blit(image::get_texture(image::locator{"misc/zoc.png"}, image::HEXED), dest);
 					}
 
 					if(cap) {
-						draw::blit(image::get_texture("misc/capture.png", image::HEXED), dest);
+						draw::blit(image::get_texture(image::locator{"misc/capture.png"}, image::HEXED), dest);
 					}
 				});
 
