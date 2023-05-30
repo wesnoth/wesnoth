@@ -93,6 +93,6 @@ public:
 	virtual void reset_replay() override
 	{ return playsingle_controller_.reset_replay(); }
 	virtual void replay_exit() override;
-	virtual void load_autosave(const std::string& filename) override;
+	virtual void load_autosave(const std::string& filename, bool start_replay = false) override;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
 };
