@@ -2797,8 +2797,8 @@ void display::draw_hex(const map_location& loc)
 	}
 
 	if(debug_flag_set(DEBUG_FOREGROUND)) {
-		drawing_buffer_add(
-			LAYER_UNIT_DEFAULT, loc, [tex = image::get_texture("terrain/foreground.png", image::TOD_COLORED)](const rect& dest) {
+		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc,
+			[tex = image::get_texture(image::locator{"terrain/foreground.png"}, image::TOD_COLORED)](const rect& dest) {
 				draw::blit(tex, dest);
 			});
 	}

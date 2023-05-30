@@ -56,10 +56,9 @@ private:
 	 * 11 rows are returned and 10 displayed - the presence of the 11th indicates whether incrementing the offset again would return any data.
 	 * A request can time out if the server takes too long to respond so that a failure by the server to respond at all doesn't lock the game indefinitely.
 	 *
-	 * @param offset
 	 * @return A config containing the game history information or an empty config if either the request times out or returns with an error
 	 */
-	const config request_history(int offset);
+	const config request_history();
 
 	/**
 	 * Updates the dialog with the information returned by the server.
@@ -74,6 +73,8 @@ private:
 	 */
 	void tab_switch_callback();
 
+	/** Executes a new search for the entered username */
+	void new_search();
 	/** Increments the offset to use for querying data by 10 and updates the information displayed by the dialog. */
 	void newer_history_offset();
 	/** Decrements the offset to use for querying data by 10 and updates the information displayed by the dialog. */

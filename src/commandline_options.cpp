@@ -254,6 +254,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-precise", "shows the timestamps in log output with more precision.")
 		("no-log-to-file", "log output is written to standard error rather than to a file.")
 		("log-to-file", "log output is written to a file even if it would normally go to standard output/error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
+		("no-con", "For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");

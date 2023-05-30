@@ -145,7 +145,7 @@ void suppose_dead::draw_hex(const map_location& hex)
 	const display::drawing_layer layer = display::LAYER_ARROWS;
 
 	display::get_singleton()->drawing_buffer_add(
-		layer, loc_, [tex = image::get_texture("whiteboard/suppose_dead.png", image::HEXED)](const rect& d) {
+		layer, loc_, [tex = image::get_texture(image::locator{"whiteboard/suppose_dead.png"}, image::HEXED)](const rect& d) {
 			draw::blit(tex, d);
 		});
 }

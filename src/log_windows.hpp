@@ -50,7 +50,7 @@ namespace lg
  * horribly wrong as soon as we try to use the logging facilities internally
  * for debug messages.
  */
-void do_console_redirect();
+void do_console_redirect(bool no_con);
 
 /**
  * Returns true if a console was allocated by the Wesnoth process.

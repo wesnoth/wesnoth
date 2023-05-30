@@ -1144,13 +1144,10 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 			int offset = request->attr("offset").to_int();
 			int player_id = 0;
 
-			// if no search_for attribute -> get the requestor's forum id
 			// if search_for attribute for offline player -> query the forum database for the forum id
 			// if search_for attribute for online player -> get the forum id from wesnothd's player info
-			if(!request->has_attr("search_for")) {
-				player_id = player->info().config_address()->attr("forum_id").to_int();
-			} else {
-				std::string player_name = request->attr("search_for").to_string();
+			if(request->has_attr("search_player") && request->attr("search_player").to_string() != "") {
+				std::string player_name = request->attr("search_player").to_string();
 				auto player_ptr = player_connections_.get<name_t>().find(player_name);
 				if(player_ptr == player_connections_.get<name_t>().end()) {
 					player_id = user_handler_->get_forum_id(player_name);
@@ -1159,10 +1156,12 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 				}
 			}
 
-			if(player_id != 0) {
-				LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`.";
-				user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset);
-			}
+			std::string search_game_name = request->attr("search_game_name").to_string();
+			int search_content_type = request->attr("search_content_type").to_int();
+			std::string search_content = request->attr("search_content").to_string();
+			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
+					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
+			user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset, search_game_name, search_content_type, search_content);
 		}
 		return;
 	}
