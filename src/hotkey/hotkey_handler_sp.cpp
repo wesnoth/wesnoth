@@ -307,9 +307,11 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 	return res;
 }
 
-void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
+void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename, bool start_replay)
 {
-
+	if(!start_replay) {
+		play_controller::hotkey_handler::load_autosave(filename);
+	}
 	auto invalid_save_file = [this, filename](std::string msg){
 		if(playsingle_controller_.is_networked_mp()) {
 			gui2::show_error_message(msg);
