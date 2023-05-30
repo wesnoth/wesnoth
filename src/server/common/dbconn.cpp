@@ -175,7 +175,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 
 	if(!search_game_name.empty())
 	{
-		game_history_query += " and game.GAME_NAME like ?";
+		game_history_query += "and game.GAME_NAME like ? ";
 
 		utils::to_sql_wildcards(search_game_name, false);
 		params.emplace_back(search_game_name);
@@ -189,7 +189,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and scenario.ID like ?";
+			game_history_query += "and scenario.ID like ? ";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
@@ -204,7 +204,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and era.ID like ?";
+			game_history_query += "and era.ID like ? ";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
@@ -221,7 +221,7 @@ std::unique_ptr<simple_wml::document> dbconn::get_game_history(int player_id, in
 	{
 		if(!search_content.empty())
 		{
-			game_history_query += " and mods.ID like ?";
+			game_history_query += "and mods.ID like ? ";
 
 			utils::to_sql_wildcards(search_content, false);
 			params.emplace_back(search_content);
