@@ -73,8 +73,7 @@ public:
 
 	/** Returns the menu items that can be shown for the given location. */
 	void get_items(const map_location& hex,
-			std::vector<std::shared_ptr<const wml_menu_item>>& items,
-			std::vector<config>& descriptions,
+			std::vector<config>& items,
 			filter_context& fc,
 			game_data& gamedata,
 			unit_map& units) const;

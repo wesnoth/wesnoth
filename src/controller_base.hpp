@@ -53,6 +53,7 @@ class mouse_handler_base;
 namespace hotkey
 {
 class command_executor;
+struct ui_command;
 }
 
 namespace soundsource
@@ -170,7 +171,7 @@ protected:
 	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
 
-	virtual bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
+	virtual bool in_context_menu(const hotkey::ui_command& cmd) const;
 
 	void long_touch_callback(int x, int y);
 

@@ -41,7 +41,7 @@ public:
 	virtual void recruit() override;
 	virtual void repeat_recruit() override;
 	virtual void recall() override;
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
+	virtual bool can_execute_command(const hotkey::ui_command& cmd) const override;
 	virtual void toggle_shroud_updates() override;
 	virtual void update_shroud_now() override;
 	virtual void end_turn() override;
@@ -94,5 +94,5 @@ public:
 	{ return playsingle_controller_.reset_replay(); }
 	virtual void replay_exit() override;
 	virtual void load_autosave(const std::string& filename, bool start_replay = false) override;
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
+	virtual hotkey::ACTION_STATE get_action_state(const hotkey::ui_command&) const override;
 };
