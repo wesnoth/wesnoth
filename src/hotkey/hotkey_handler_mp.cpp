@@ -43,9 +43,9 @@ void playmp_controller::hotkey_handler::stop_network(){
 	playmp_controller_.stop_network();
 }
 
-bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
+bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.command;
+	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_ENDTURN:
@@ -57,7 +57,7 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 			}
 			else
 			{
-				return playsingle_controller::hotkey_handler::can_execute_command(cmd, index);
+				return playsingle_controller::hotkey_handler::can_execute_command(cmd);
 			}
 		case hotkey::HOTKEY_SPEAK:
 		case hotkey::HOTKEY_SPEAK_ALLY:
@@ -72,7 +72,7 @@ bool playmp_controller::hotkey_handler::can_execute_command(const hotkey::hotkey
 			res = is_observer() && !playmp_controller_.network_processing_stopped_;
 			break;
 	    default:
-			return playsingle_controller::hotkey_handler::can_execute_command(cmd, index);
+			return playsingle_controller::hotkey_handler::can_execute_command(cmd);
 	}
 	return res;
 }

@@ -37,6 +37,6 @@ public:
 	virtual void shout() override;
 	virtual void start_network() override;
 	virtual void stop_network() override;
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
+	virtual bool can_execute_command(const hotkey::ui_command& command) const override;
 
 };

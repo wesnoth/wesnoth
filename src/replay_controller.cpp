@@ -202,9 +202,9 @@ void replay_controller::play_side_impl()
 	}
 	return;
 }
-bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int) const
+bool replay_controller::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	switch(cmd.command) {
+	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_REPLAY_SKIP_ANIMATION:
 		return true;
 	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
