@@ -15,8 +15,6 @@
 
 #include "install_dependencies.hpp"
 
-#define GETTEXT_DOMAIN "wesnoth"
-
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/addon_list.hpp"
