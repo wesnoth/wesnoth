@@ -1,6 +1,6 @@
 #!/bin/bash
 
-shopt -s globstar
+shopt -s globstar nullglob
 
 TERM=${TERM-xterm} # hopefully a good approximation of what github supports
 reset=$(tput sgr0)
