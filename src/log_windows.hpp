@@ -17,40 +17,13 @@
 
 #include <string>
 
-/**
- * @file
- * Log file control routines for Windows.
- *
- * During static object initialization, stdout and stderr are redirected to a
- * uniquely-named log file located in the user's temporary directory as defined
- * by the platform (e.g. C:/Users/username/AppData/Local/Temp/wesnoth-XXXX.log).
- * Later, a request may be issued to relocate the log file to a more permanent
- * and user-accessible location (such as the Wesnoth user data directory).
- *
- * Because Wesnoth is normally built with the GUI subsystem option, there is no
- * console on startup and thus no way to see stdout/stderr output. Since
- * version 1.13.1, we can allocate a console during initialization when started
- * with the --wconsole option (now --no-log-to-file), but that is a somewhat clunky hack that does not
- * help with post mortem debugging.
- *
- * SDL 1.2 used to redirect stdout and stderr to stdout.txt and stderr.txt in
- * the process working directory automatically, but this approach too had its
- * own shortcomings by assuming the pwd was writable by the process (or in Vista
- * and later versions, requiring UAC virtualization to be enabled).
- */
-
 namespace lg
 {
 
 /**
- * Sets up the initial temporary log file.
- *
- * This has to be done on demand (preferably as early as possible) from a
- * function rather than during static initialization, otherwise things go
- * horribly wrong as soon as we try to use the logging facilities internally
- * for debug messages.
+ * Allocates a console if needed and redirects output to CONOUT.
  */
-void do_console_redirect(bool no_con);
+void do_console_redirect();
 
 /**
  * Returns true if a console was allocated by the Wesnoth process.
