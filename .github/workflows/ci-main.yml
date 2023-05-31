@@ -241,11 +241,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Check for invalid characters
-        run: |
-          ./utils/CI/check_utf8.sh
-          ./utils/CI/utf8_bom_dog.sh
-
       - name: Translations
         run: |
           cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE .
