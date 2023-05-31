@@ -1113,7 +1113,7 @@ int main(int argc, char** argv)
 			write_to_log_file = true;
 		}
 
-		if(arg == "--no-con") {
+		if(arg == "--wnoconsole") {
 			no_con = true;
 		}
 	}
@@ -1124,7 +1124,9 @@ int main(int argc, char** argv)
 		lg::set_log_to_file();
 	} else {
 #ifdef _WIN32
-		lg::do_console_redirect(no_con);
+		if(!no_con) {
+			lg::do_console_redirect();
+		}
 #endif
 	}
 
