@@ -8,7 +8,34 @@ on:
   workflow_dispatch:
 
 jobs:
-  ubuntu-2004:
+  checks: # checks that don't need a wesnoth binary
+    runs-on: ubuntu-latest
+    container:
+      image: wesnoth/wesnoth:2204-master
+      options: --tty # docker create options
+      env:
+        CLICOLOR_FORCE: 1
+
+    steps:
+      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+
+      - name: Check for invalid characters
+        run: |
+          ./utils/CI/check_utf8.sh
+          ./utils/CI/utf8_bom_dog.sh
+      - name: Whitespace and WML indentation check
+        if: success() || failure()
+        run: |
+          git config --global --add safe.directory '*'
+          ./utils/CI/fix_whitespace.sh; git status; [ "$(git status --short | wc -l)" = 0 ]
+      - name: Run luacheck
+        if: success() || failure()
+        run: luacheck .
+      - name: Doxygen check
+        if: success() || failure()
+        run: doxygen Doxyfile
+
+  ubuntu:
     strategy:
       fail-fast: false
       matrix:
@@ -23,7 +50,7 @@ jobs:
             cxx: clang++
             cfg: debug
             lto: false
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     container:
       image: wesnoth/wesnoth:2204-master
       options: --tty # docker create options
@@ -83,17 +110,16 @@ jobs:
       - name: Start Xvfb
         if: steps.build.outcome == 'success'
         run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
-      - name: Whitespace and WML indentation check
-        if: success() || failure()
+      - name: Check path options
+        if: steps.build.outcome == 'success'
         run: |
-          git config --global --add safe.directory '*'
-          ./utils/CI/fix_whitespace.sh; git status; (( $(git status --short | wc -l) == 0 ))
-      - name: Run luacheck
-        if: success() || failure()
-        run: luacheck .
-      - name: Doxygen check
-        if: success() || failure()
-        run: ./utils/CI/doxygen-check.sh
+          ./wesnoth --version
+          for opt in config data userconfig userdata
+          do
+            output=$(./wesnoth --nobanner --"$opt"-path)
+            if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!' "$opt" >&2; exit 1; fi
+            printf '%s-path: %s\n' "$opt" "$output"
+          done
       - name: WML validation
         if: steps.build.outcome == 'success'
         run: ./utils/CI/schema_validation.sh
@@ -215,11 +241,6 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Check for invalid characters
-        run: |
-          ./utils/CI/check_utf8.sh
-          ./utils/CI/utf8_bom_dog.sh
-
       - name: Translations
         run: |
           cmake -DENABLE_NLS=true -DENABLE_GAME=false -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=false -DENABLE_POT_UPDATE_TARGET=TRUE .
@@ -272,11 +293,11 @@ jobs:
 
 # run after all other jobs have completed to check overall build status
   discord-notification:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     name: Discord Notification
 
-    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel]
+    needs: [checks, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel]
     if: always()
 
     steps:

@@ -1060,6 +1060,8 @@ int main(int argc, char** argv)
 	// if false, output will be written to the terminal
 	// on windows, if wesnoth was not started from a console, then it will allocate one
 	bool write_to_log_file = true;
+	[[maybe_unused]]
+	bool no_con = false;
 
 	// --nobanner needs to be detected before the main command-line parsing happens
 	// --log-to needs to be detected so the logging output location is set before any actual logging happens
@@ -1110,6 +1112,10 @@ int main(int argc, char** argv)
 		} else if(arg == "--log-to-file") {
 			write_to_log_file = true;
 		}
+
+		if(arg == "--wnoconsole") {
+			no_con = true;
+		}
 	}
 
 	// setup logging to file
@@ -1118,7 +1124,9 @@ int main(int argc, char** argv)
 		lg::set_log_to_file();
 	} else {
 #ifdef _WIN32
-		lg::do_console_redirect();
+		if(!no_con) {
+			lg::do_console_redirect();
+		}
 #endif
 	}
 

@@ -64,9 +64,9 @@ void mouse_action_select::set_mouse_overlay(editor_display& disp)
 {
 	texture tex;
 	if (has_shift_modifier()) {
-		tex = image::get_texture("editor/tool-overlay-select-wand.png");
+		tex = image::get_texture(image::locator{"editor/tool-overlay-select-wand.png"});
 	} else {
-		tex = image::get_texture("editor/tool-overlay-select-brush.png");
+		tex = image::get_texture(image::locator{"editor/tool-overlay-select-brush.png"});
 	}
 	disp.set_mouseover_hex_overlay(tex);
 }

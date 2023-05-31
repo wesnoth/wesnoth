@@ -279,8 +279,6 @@ void playsingle_controller::finish_side_turn()
 		throw game::game_error("Empty side after new turn events");
 	}
 
-	gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
-
 	if(new_turn) {
 		whiteboard_manager_->on_gamestate_change();
 		gui_->new_turn();
