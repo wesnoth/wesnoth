@@ -81,7 +81,7 @@ void editor_display::draw_hex(const map_location& loc)
 
 	if(map().in_selection(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc,
-			[tex = image::get_texture("editor/selection-overlay.png", image::TOD_COLORED)](const rect& d) {
+			[tex = image::get_texture(image::locator{"editor/selection-overlay.png"}, image::TOD_COLORED)](const rect& d) {
 				draw::blit(tex, d);
 			});
 	}
