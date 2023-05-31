@@ -110,6 +110,16 @@ jobs:
       - name: Start Xvfb
         if: steps.build.outcome == 'success'
         run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
+      - name: Check path options
+        if: steps.build.outcome == 'success'
+        run: |
+          ./wesnoth --version
+          for opt in config data userconfig userdata
+          do
+            output=$(./wesnoth --nobanner --"$opt"-path)
+            if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!' "$opt" >&2; exit 1; fi
+            printf '%s-path: %s\n' "$opt" "$output"
+          done
       - name: WML validation
         if: steps.build.outcome == 'success'
         run: ./utils/CI/schema_validation.sh
