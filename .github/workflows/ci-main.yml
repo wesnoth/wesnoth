@@ -298,11 +298,11 @@ jobs:
 
 # run after all other jobs have completed to check overall build status
   discord-notification:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     name: Discord Notification
 
-    needs: [ubuntu-2004, steam-runtime, mingw, flatpak, translations, macos-intel]
+    needs: [checks, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel]
     if: always()
 
     steps:
