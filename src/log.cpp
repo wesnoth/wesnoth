@@ -181,7 +181,7 @@ void set_log_to_file()
 	if(is_log_dir_writable_.value_or(false)) {
 		// get the log file stream and assign cerr+cout to it
 		output_file_path_ = filesystem::get_logs_dir()+"/"+unique_log_filename();
-		static std::unique_ptr<std::ostream> logfile { std::move(filesystem::ostream_file(output_file_path_)) };
+		static std::unique_ptr<std::ostream> logfile { filesystem::ostream_file(output_file_path_) };
 		static std::ostream cerr_stream{std::cerr.rdbuf()};
 		//static std::ostream cout_stream{std::cout.rdbuf()};
 		auto cerr_tee { boost::iostreams::tee(*logfile, cerr_stream) };
