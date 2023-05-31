@@ -6696,6 +6696,7 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
 				PRODUCT_NAME = campaignd;
 			};
 			name = SignedRelease;
@@ -6775,6 +6776,7 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
 				PRODUCT_NAME = campaignd;
 			};
 			name = Debug;
@@ -6791,6 +6793,7 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
 				PRODUCT_NAME = campaignd;
 			};
 			name = Release;
