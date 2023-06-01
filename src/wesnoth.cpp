@@ -1021,13 +1021,6 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 	return auto_dir;
 }
 
-#ifndef _WIN32
-static void wesnoth_terminate_handler(int)
-{
-	exit(0);
-}
-#endif
-
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
 	do {                                                                                                               \
@@ -1136,16 +1129,6 @@ int main(int argc, char** argv)
 		return (1);
 	}
 	atexit(SDL_Quit);
-
-#ifndef _WIN32
-	struct sigaction terminate_handler;
-	terminate_handler.sa_handler = wesnoth_terminate_handler;
-	terminate_handler.sa_flags = 0;
-
-	sigemptyset(&terminate_handler.sa_mask);
-	sigaction(SIGTERM, &terminate_handler, nullptr);
-	sigaction(SIGINT, &terminate_handler, nullptr);
-#endif
 
 	// Mac's touchpad generates touch events too.
 	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
