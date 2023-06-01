@@ -1123,6 +1123,7 @@ int main(int argc, char** argv)
 #endif
 	}
 
+	SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 	// Is there a reason not to just use SDL_INIT_EVERYTHING?
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
