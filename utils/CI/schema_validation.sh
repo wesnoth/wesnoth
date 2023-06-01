@@ -2,7 +2,7 @@
 
 shopt -s globstar nullglob
 
-TERM=${TERM-xterm} # hopefully a good approximation of what github supports
+export TERM=${TERM-xterm} # hopefully a good approximation of what github supports
 reset=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
