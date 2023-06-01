@@ -40,16 +40,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - tool: scons
-            cc: gcc
-            cxx: g++
-            cfg: release
-            lto: true
-          - tool: cmake
-            cc: clang
-            cxx: clang++
-            cfg: debug
-            lto: false
+          - { tool: scons, cc: gcc,   cxx: g++,     cfg: release, lto: true  }
+          - { tool: cmake, cc: clang, cxx: clang++, cfg: debug,   lto: false }
     runs-on: ubuntu-latest
     container:
       image: wesnoth/wesnoth:2204-master
@@ -240,12 +232,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - os: macos-11.0
-            cfg: Debug
-          - os: macos-11.0
-            cfg: Release
-    runs-on: ${{ matrix.os }}
+        cfg: [ Debug, Release ]
+    runs-on: macos-11.0
     env:
       CFG: ${{ matrix.cfg }}
 
