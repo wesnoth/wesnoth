@@ -75,7 +75,6 @@ server_base::server_base(unsigned short port, bool keep_alive)
 	, input_(io_service_)
 	, sighup_(io_service_, SIGHUP)
 #endif
-	, sigs_(io_service_, SIGINT, SIGTERM)
 {
 }
 
@@ -94,7 +93,6 @@ void server_base::start_server()
 		[=](const boost::system::error_code& error, int sig)
 			{ this->handle_sighup(error, sig); });
 #endif
-	sigs_.async_wait(std::bind(&server_base::handle_termination, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 void server_base::serve(boost::asio::yield_context yield, boost::asio::ip::tcp::acceptor& acceptor, boost::asio::ip::tcp::endpoint endpoint)
@@ -228,18 +226,6 @@ void server_base::read_from_fifo() {
 	);
 }
 #endif
-
-void server_base::handle_termination(const boost::system::error_code& error, int signal_number)
-{
-	assert(!error);
-
-	std::string signame;
-	if(signal_number == SIGINT) signame = "SIGINT";
-	else if(signal_number == SIGTERM) signame = "SIGTERM";
-	else signame = std::to_string(signal_number);
-	LOG_SERVER << signame << " caught, exiting without cleanup immediately.";
-	exit(128 + signal_number);
-}
 
 int server_base::run() {
 	for(;;) {
