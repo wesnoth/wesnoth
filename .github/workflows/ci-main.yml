@@ -70,32 +70,30 @@ jobs:
         run: |
           case $TOOL in
             scons)
-              scons wesnoth boost_unit_tests \
-                build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
-                extra_flags_config="-pipe" strict=true forum_user_handler=true \
-                nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time
-              
+              build() {
+                scons "$@" build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
+                  extra_flags_config="-pipe" strict=true forum_user_handler=true \
+                  nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time
+              }
+              build wesnoth boost_unit_tests
+
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-              scons wesnothd campaignd \
-                build="$CFG" ctool="$CC" cxxtool="$CXX" cxx_std="$CXX_STD" \
-                extra_flags_config="-pipe" strict=true forum_user_handler=true \
-                nls=false enable_lto="$LTO" force_color=true jobs=2 --debug=time
+              build wesnothd campaignd
               ;;
             cmake)
-              cmake -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false \
-                -DENABLE_TESTS=true -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
-                -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
-                -DENABLE_NLS=false -DFORCE_COLOR_OUTPUT=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 .
+              build() {
+                cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
+                  -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
+                  -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 .
+              }
+              build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
               make conftests
               make VERBOSE=1 -j2
 
               apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
 
-              cmake -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true \
-                -DENABLE_TESTS=false -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
-                -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_STRICT_COMPILATION=true -DENABLE_MYSQL=true \
-                -DENABLE_NLS=false -DFORCE_COLOR_OUTPUT=true -DENABLE_LTO="$LTO" -DLTO_JOBS=2 .
+              build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false
               make VERBOSE=1 -j2
               ;;
           esac
