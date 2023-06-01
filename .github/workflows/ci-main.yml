@@ -137,69 +137,50 @@ jobs:
         run: ./run_boost_tests
 
   steam-runtime:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
+      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
       - name: Steam Runtime
         run: |
-          export BRANCH=master
-          export IMAGE=steamrt
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc-9
-          export CXX=g++-9
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CLICOLOR_FORCE=1
-          ./.github/workflows/ci-scripts/ubuntu.sh
+          version=$(sed -n 's/#define VERSION "\(.*\)"/\1/p' src/wesconfig.h)
+          cd utils/dockerbuilds && ./make_steam_build
+          tar -cf "steambuild-$version.tar" steambuild
 
       - name: Upload
         uses: actions/upload-artifact@v3
         with:
           name: Steam-Linux
-          path: |
-            ~/steambuild-*.tar
+          path: utils/dockerbuilds/steambuild-*.tar
 
   mingw:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
+      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
       - name: MinGW Crosscompile
         run: |
-          export BRANCH=master
-          export IMAGE=mingw
-          export NLS=false
-          export TOOL=scons
-          export CC=gcc
-          export CXX=g++
-          export CXX_STD=17
-          export CFG=release
-          export LTO=false
-          export CLICOLOR_FORCE=1
-          ./.github/workflows/ci-scripts/ubuntu.sh
+          version=$(sed -n 's/#define VERSION "\(.*\)"/\1/p' src/wesconfig.h)
+          git archive --format=tar HEAD > "wesnoth-$version.tar"
+          tar -rf "wesnoth-$version.tar" src/modules/
+          bzip2 "wesnoth-$version.tar"
 
-      - name: Upload 1
+          cd utils/dockerbuilds && ./make_mingw_build
+          mv mingwbuild/wesnoth*-win64.exe "wesnoth-$version-win64.exe"
+
+      - name: Upload Source
         uses: actions/upload-artifact@v3
         with:
           name: Source
-          path: |
-            ~/wesnoth-*.tar.bz2
+          path: wesnoth-*.tar.bz2
 
-      - name: Upload 2
+      - name: Upload Windows-Installer
         uses: actions/upload-artifact@v3
         with:
           name: Windows-Installer
-          path: |
-            ~/wesnoth-*-win64.exe
+          path: utils/dockerbuilds/wesnoth-*-win64.exe
 
   flatpak:
     runs-on: ubuntu-latest
