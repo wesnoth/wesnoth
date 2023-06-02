@@ -26,6 +26,7 @@
 #include "game_state.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "log.hpp"
 #include "map/map.hpp"
 #include "play_controller.hpp"
 #include "preferences/display.hpp"
@@ -38,6 +39,12 @@
 namespace balg = boost::algorithm;
 
 #include "units/unit.hpp"
+
+
+#define ERR_G  LOG_STREAM(err,   lg::general())
+#define WRN_G  LOG_STREAM(warn,   lg::general())
+#define LOG_G  LOG_STREAM(info,  lg::general())
+#define DBG_G  LOG_STREAM(debug, lg::general())
 
 const std::string play_controller::hotkey_handler::wml_menu_hotkey_prefix = "wml_menu:";
 
@@ -257,6 +264,7 @@ void play_controller::hotkey_handler::scroll_right(bool on)
 
 bool play_controller::hotkey_handler::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
+	DBG_G << "play_controller::do_execute_command: Found command:" << cmd.id;
 	if(balg::starts_with(cmd.id, quickload_prefix)) {
 		std::string savename = std::string(cmd.id.substr(quickload_prefix.size()));
 		// Load the game by throwing load_game_exception
