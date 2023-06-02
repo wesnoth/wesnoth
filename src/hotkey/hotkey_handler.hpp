@@ -58,6 +58,7 @@ private:
 
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<config>& items, int i);
+	void expand_quickreplay(std::vector<config>& items, int i);
 
 	/**
 	 * Replaces "wml" in @a items with all active WML menu items for the current field.
