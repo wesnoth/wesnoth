@@ -180,8 +180,6 @@ protected:
 	boost::asio::signal_set sighup_;
 	virtual void handle_sighup(const boost::system::error_code& error, int signal_number) = 0;
 #endif
-	boost::asio::signal_set sigs_;
-	void handle_termination(const boost::system::error_code& error, int signal_number);
 };
 
 template<class SocketPtr> std::string client_address(SocketPtr socket);
