@@ -42,6 +42,7 @@ namespace balg = boost::algorithm;
 const std::string play_controller::hotkey_handler::wml_menu_hotkey_prefix = "wml_menu:";
 
 static const std::string quickload_prefix = "quickload:";
+static const std::string quickreplay_prefix = "quickreplay:";
 
 play_controller::hotkey_handler::hotkey_handler(play_controller & pc, saved_game & sg)
 	: play_controller_(pc)
@@ -261,6 +262,11 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::ui_comman
 		// Load the game by throwing load_game_exception
 		load_autosave(savename, false);
 	}
+	if(balg::starts_with(cmd.id, quickreplay_prefix)) {
+		std::string savename = std::string(cmd.id.substr(quickreplay_prefix.size()));
+		// Load the game by throwing load_game_exception
+		load_autosave(savename, true);
+	}
 	// TODO c++20: Use string::starts_with
 	// wml commands that don't allow hotkey bindings use hotkey::HOTKEY_NULL. othes use HOTKEY_WML
 	if(balg::starts_with(cmd.id, wml_menu_hotkey_prefix)) {
@@ -433,6 +439,22 @@ void play_controller::hotkey_handler::expand_autosaves(std::vector<config>& item
 	items.insert(pos, newitems.begin(), newitems.end());
 }
 
+void play_controller::hotkey_handler::expand_quickreplay(std::vector<config>& items, int i)
+{
+	auto pos = items.erase(items.begin() + i);
+	std::vector<config> newitems;
+
+	foreach_autosave(play_controller_.turn(), saved_game_, [&](int turn, const std::string& filename) {
+		// TODO: should this use variable substitution instead?
+		std::string label = turn > 0 ? _("Replay from Turn ") + std::to_string(turn) : _("Replay from Start");
+		newitems.emplace_back("label", label, "id", quickreplay_prefix + filename);
+	});
+	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
+	trim_items(newitems);
+
+	items.insert(pos, newitems.begin(), newitems.end());
+}
+
 void play_controller::hotkey_handler::expand_wml_commands(std::vector<config>& items, int i)
 {
 
@@ -469,6 +491,8 @@ void play_controller::hotkey_handler::show_menu(const std::vector<config>& items
 	for(int i = items.size() - 1; i >= 0; i--) {
 		if(items[i]["id"] == "AUTOSAVES") {
 			expand_autosaves(items, i);
+		} else if(items[i]["id"] == "QUICKREPLAY") {
+			expand_quickreplay(items, i);
 		} else if(items[i]["id"] == "wml") {
 			expand_wml_commands(items, i);
 		}
