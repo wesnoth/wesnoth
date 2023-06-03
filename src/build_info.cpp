@@ -171,7 +171,6 @@ std::string format_openssl_version(long v)
 	}
 
 	return fmt.str();
-
 }
 
 #endif
@@ -183,7 +182,6 @@ version_table_manager::version_table_manager()
 	, features()
 {
 	SDL_version sdl_version;
-
 
 	//
 	// SDL
