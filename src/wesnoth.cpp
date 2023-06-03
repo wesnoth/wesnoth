@@ -1158,6 +1158,21 @@ int main(int argc, char** argv)
 				}
 				game_config::path = std::move(auto_dir);
 			}
+			else {
+				bool dataDirSpecified = false;
+				for(int i=0;i<argc;i++)
+				{
+					if(std::string(argv[i]) == "--data-dir")
+					{
+						dataDirSpecified = true;
+						break;
+					}
+				}
+				if (!dataDirSpecified) {
+					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+					return 1;
+				}
+			}
 		}
 
 		const int res = do_gameloop(args);
