@@ -58,14 +58,12 @@ private:
 
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<config>& items, int i);
-
-	std::vector<std::string> savenames_;
+	void expand_quickreplay(std::vector<config>& items, int i);
 
 	/**
 	 * Replaces "wml" in @a items with all active WML menu items for the current field.
 	 */
 	void expand_wml_commands(std::vector<config>& items, int i);
-	std::vector<const_item_ptr> wml_commands_;
 	int last_context_menu_x_;
 	int last_context_menu_y_;
 
@@ -121,18 +119,18 @@ public:
 	virtual void replay_skip_animation() override
 	{ return play_controller_.toggle_skipping_replay(); }
 
-	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const override;
-	virtual void load_autosave(const std::string& filename);
-	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
+	virtual std::string get_action_image(const hotkey::ui_command&) const override;
+	virtual void load_autosave(const std::string& filename, bool start_replay = false);
+	virtual hotkey::ACTION_STATE get_action_state(const hotkey::ui_command&) const override;
 	/** Check if a command can be executed. */
-	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const override;
-	virtual bool do_execute_command(const hotkey::hotkey_command& command, int index=-1, bool press=true, bool release=false) override;
+	virtual bool can_execute_command(const hotkey::ui_command& command) const override;
+	virtual bool do_execute_command(const hotkey::ui_command& command, bool press=true, bool release=false) override;
 	void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
 
 	/**
 	 *  Determines whether the command should be in the context menu or not.
 	 *  Independent of whether or not we can actually execute the command.
 	 */
-	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
+	bool in_context_menu(const hotkey::ui_command& cmd) const;
 
 };

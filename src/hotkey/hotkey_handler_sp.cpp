@@ -35,6 +35,10 @@
 
 #include "units/unit.hpp"
 
+#include <boost/algorithm/string/predicate.hpp>
+
+namespace balg = boost::algorithm;
+
 playsingle_controller::hotkey_handler::hotkey_handler(playsingle_controller & pc, saved_game & sg)
 	: play_controller::hotkey_handler(pc, sg)
 	, playsingle_controller_(pc)
@@ -185,35 +189,34 @@ void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 	whiteboard_manager_->save_suppose_dead(*curr_unit,loc);
 }
 
-hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const
+hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
-	switch(command) {
+	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_WB_TOGGLE:
 		return whiteboard_manager_->is_active() ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	default:
-		return play_controller::hotkey_handler::get_action_state(command, index);
+		return play_controller::hotkey_handler::get_action_state(cmd);
 	}
 }
 
-bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
+bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui_command& cmd) const
 {
-	hotkey::HOTKEY_COMMAND command = cmd.command;
+	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
 	bool res = true;
+	int prefixlen = wml_menu_hotkey_prefix.length();
 	switch (command){
-
+		case hotkey::HOTKEY_NULL:
 		case hotkey::HOTKEY_WML:
 		{
-			int prefixlen = wml_menu_hotkey_prefix.length();
-			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) != 0) {
-				return false;
+			if(cmd.id.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0) {
+				game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(std::string(cmd.id.substr(prefixlen)));
+				if(!item) {
+					return false;
+				}
+				return !item->is_synced() || play_controller_.can_use_synced_wml_menu();
 			}
+			return play_controller::hotkey_handler::can_execute_command(cmd);
 
-			game_events::wmi_manager::item_ptr item = gamestate().get_wml_menu_items().get_item(cmd.id.substr(prefixlen));
-			if(!item) {
-				return false;
-			}
-
-			return !item->is_synced() || play_controller_.can_use_synced_wml_menu();
 		}
 		case hotkey::HOTKEY_SAVE_GAME:
 			return !events::commands_disabled || (playsingle_controller_.is_replay() && events::commands_disabled <  2);
@@ -298,18 +301,20 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ho
 		case hotkey::HOTKEY_REPLAY_SHOW_EACH:
 		case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
 		case hotkey::HOTKEY_REPLAY_RESET:
-			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd, index);
+			return playsingle_controller_.get_replay_controller() && playsingle_controller_.get_replay_controller()->can_execute_command(cmd);
 		case hotkey::HOTKEY_REPLAY_EXIT:
 			return playsingle_controller_.is_replay() && (!playsingle_controller_.is_networked_mp() || resources::recorder->at_end());
 		default:
-			return play_controller::hotkey_handler::can_execute_command(cmd, index);
+			return play_controller::hotkey_handler::can_execute_command(cmd);
 	}
 	return res;
 }
 
-void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename)
+void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename, bool start_replay)
 {
-
+	if(!start_replay) {
+		play_controller::hotkey_handler::load_autosave(filename);
+	}
 	auto invalid_save_file = [this, filename](std::string msg){
 		if(playsingle_controller_.is_networked_mp()) {
 			gui2::show_error_message(msg);

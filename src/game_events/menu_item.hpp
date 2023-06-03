@@ -114,12 +114,19 @@ public:
 
 	/**
 	 * The text to put in a menu for this item.
-	 * This will be either translated text or a hotkey identifier.
 	 */
 	std::string menu_text() const
 	{
+		return description_.str();
+	}
+
+	/**
+	 * The UI action id to be used in theme wml, menu items and hotkeys .
+	 */
+	std::string hotkey_id() const
+	{
 		// The space is to prevent accidental hotkey binding.
-		return use_hotkey_ ? hotkey_id_ : description_.str() + ' ';
+		return hotkey_id_;
 	}
 
 	/**

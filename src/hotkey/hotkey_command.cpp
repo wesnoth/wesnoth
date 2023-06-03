@@ -302,7 +302,7 @@ constexpr std::array<hotkey_command_temp, HOTKEY_NULL - 1> master_hotkey_list {{
 	{ LUA_CONSOLE, "global__lua__console", N_("Show Lua Console"), false, scope_game | scope_editor | scope_main, HKCAT_DEBUG, ""},
 
 	//This list item must stay at the end since it is used as terminator for iterating.
-	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, SCOPE_COUNT, HKCAT_PLACEHOLDER, "" }
+	{ HOTKEY_NULL, "null", N_("Unrecognized Command"), true, 0, HKCAT_PLACEHOLDER, "" }
 }};
 
 const std::set<HOTKEY_COMMAND> toggle_commands {
