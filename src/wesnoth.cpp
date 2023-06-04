@@ -1159,16 +1159,16 @@ int main(int argc, char** argv)
 				game_config::path = std::move(auto_dir);
 			}
 			else {
-				bool dataDirSpecified = false;
+				bool data_dir_specified = false;
 				for(int i=0;i<argc;i++)
 				{
 					if(std::string(argv[i]) == "--data-dir")
 					{
-						dataDirSpecified = true;
+						data_dir_specified = true;
 						break;
 					}
 				}
-				if (!dataDirSpecified) {
+				if (!data_dir_specified) {
 					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
 					return 1;
 				}
