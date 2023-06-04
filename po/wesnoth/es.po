@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-05-20 22:01-0500\n"
-"PO-Revision-Date: 2023-05-12 05:59+0200\n"
+"PO-Revision-Date: 2023-06-03 22:48+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -30,7 +30,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7066,10 +7066,8 @@ msgid "Error"
 msgstr "Error"
 
 #: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other aspects: "
-msgstr "Otros juegos"
+msgstr "Otros aspectos: "
 
 #: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
 #: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
@@ -7087,10 +7085,8 @@ msgid "Attacks: "
 msgstr "Ataques: "
 
 #: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Chance to hit: "
-msgstr "Promociona en: "
+msgstr "Probabilidad: "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
@@ -8940,22 +8936,20 @@ msgid "This Time of Day is only a Stub!"
 msgstr "¡Esta franja horaria es solo mínima!"
 
 #: src/units/abilities.cpp:915
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "ralentizado: "
+msgstr "Posee: "
 
 #: src/units/abilities.cpp:918
 msgid "Taught: "
-msgstr ""
+msgstr "Influye: "
 
 #: src/units/abilities.cpp:921
 msgid "Taught: (by an enemy): "
-msgstr ""
+msgstr "Influye (por enemigo): "
 
 #: src/units/abilities.cpp:934
 msgid "Used by opponent: "
-msgstr ""
+msgstr "Usado por oponente: "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:461
