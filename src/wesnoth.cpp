@@ -89,6 +89,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include <optional>
 
 #include <algorithm> // for transform
@@ -1157,13 +1158,10 @@ int main(int argc, char** argv)
 					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 				}
 				game_config::path = std::move(auto_dir);
-			}
-			else {
+			} else {
 				bool data_dir_specified = false;
-				for(int i=0;i<argc;i++)
-				{
-					if(std::string(argv[i]) == "--data-dir")
-					{
+				for(int i=0;i<argc;i++) {
+					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
 						data_dir_specified = true;
 						break;
 					}
