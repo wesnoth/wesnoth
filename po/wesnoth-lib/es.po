@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-05-20 22:01-0500\n"
-"PO-Revision-Date: 2023-05-12 06:02+0200\n"
+"PO-Revision-Date: 2023-06-04 00:11+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -1029,14 +1029,12 @@ msgstr "Pared de cueva terrosa natural"
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1412
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Setos gruesos"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1413
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Hedges Wall"
-msgstr "Pared de cueva tallada"
+msgstr "Muro de setos"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -6021,7 +6019,7 @@ msgstr "Detalles:"
 
 #: src/build_info.cpp:289
 msgid "feature^Lua console completion"
-msgstr "Finalización de consola Lua"
+msgstr "Autocompletar en consola Lua"
 
 #: src/build_info.cpp:296
 msgid "feature^D-Bus notifications back end"
@@ -6029,11 +6027,11 @@ msgstr "Sistema de notificaciones D-Bus"
 
 #: src/build_info.cpp:305
 msgid "feature^Win32 notifications back end"
-msgstr "Sistema a notificaciones Win32"
+msgstr "Sistema de notificaciones Win32"
 
 #: src/build_info.cpp:311
 msgid "feature^Cocoa notifications back end"
-msgstr "Sistema a notificaciones Cocoa"
+msgstr "Sistema de notificaciones Cocoa"
 
 #: src/build_info.cpp:349 src/desktop/version.cpp:126
 msgid "cpu_architecture^<unknown>"
@@ -6218,10 +6216,8 @@ msgid "Text has a font size of 0."
 msgstr "El tamaño de la fuente del texto es 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "No se ha definido ninguna sección de dibujo/estado."
+msgstr "No se ha definido ninguna sección de dibujo para el estado."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
@@ -7397,7 +7393,7 @@ msgstr "Borrar el complemento del servidor"
 #: src/gui/widgets/button.cpp:164 src/gui/widgets/button.cpp:165
 #: src/gui/widgets/button.cpp:166 src/gui/widgets/button.cpp:167
 msgid "Missing required state for button"
-msgstr ""
+msgstr "Falta estado requerido del botón"
 
 #: src/gui/widgets/chatbox.cpp:299
 msgid "whisper to $receiver"
@@ -7417,15 +7413,15 @@ msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:657
 msgid "Missing required background for chatbox"
-msgstr ""
+msgstr "Falta fondo requerido para la caja de chat"
 
 #: src/gui/widgets/chatbox.cpp:658
 msgid "Missing required foreground for chatbox"
-msgstr ""
+msgstr "Falta primer plano requerido para la caja de chat"
 
 #: src/gui/widgets/chatbox.cpp:660
 msgid "Missing required grid for chatbox"
-msgstr ""
+msgstr "Falta cuadrícula requerida para la caja de chat"
 
 #: src/gui/widgets/drawing.cpp:119
 msgid "Missing [draw] in drawing"
@@ -7440,11 +7436,11 @@ msgstr "El widget obligatorio «$id» no ha sido definido."
 #: src/gui/widgets/horizontal_scrollbar.cpp:135
 #: src/gui/widgets/horizontal_scrollbar.cpp:136
 msgid "Missing required state for horizontal scrollbar"
-msgstr ""
+msgstr "Falta estado requerido de la barra de desplazamiento horizontal"
 
 #: src/gui/widgets/image.cpp:115
 msgid "Missing required state for image control"
-msgstr ""
+msgstr "Falta estado requerido del control de imagen"
 
 #: src/gui/widgets/label.cpp:127
 msgid "Opening links is not supported, contact your packager"
@@ -7460,11 +7456,11 @@ msgstr "¡Enlace copiado!"
 
 #: src/gui/widgets/label.cpp:241 src/gui/widgets/label.cpp:242
 msgid "Missing required state for text label control"
-msgstr ""
+msgstr "Falta estado requerido para el control de etiquetas de texto"
 
 #: src/gui/widgets/listbox.cpp:710 src/gui/widgets/listbox.cpp:711
 msgid "Missing required state for listbox"
-msgstr ""
+msgstr "Falta estado requerido para el cuadro de lista"
 
 #: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
 msgid ""
@@ -7489,10 +7485,8 @@ msgid "Missing [content] in [matrix_definition]"
 msgstr "Falta [content] en [matrix_definition]"
 
 #: src/gui/widgets/matrix.cpp:191 src/gui/widgets/matrix.cpp:192
-#, fuzzy
-#| msgid "Missing [content] in [matrix_definition]"
 msgid "Missing required state for matrix definition"
-msgstr "Falta [content] en [matrix_definition]"
+msgstr "Falta estado requerido en la definición de matriz"
 
 #: src/gui/widgets/matrix.cpp:210
 msgid "Missing [main] in [matrix]"
@@ -7501,11 +7495,11 @@ msgstr "Falta [main] en [matrix]"
 #: src/gui/widgets/menu_button.cpp:234 src/gui/widgets/menu_button.cpp:235
 #: src/gui/widgets/menu_button.cpp:236 src/gui/widgets/menu_button.cpp:237
 msgid "Missing required state for menu button"
-msgstr ""
+msgstr "Falta estado requerido para el botón de menú"
 
 #: src/gui/widgets/minimap.cpp:117
 msgid "Missing required state for minimap control"
-msgstr ""
+msgstr "Falta estado requerido para el control del minimapa"
 
 #: src/gui/widgets/multi_page.cpp:195
 msgid "No page defined."
@@ -7534,7 +7528,7 @@ msgstr "Sin selección"
 #: src/gui/widgets/multimenu_button.cpp:258
 #: src/gui/widgets/multimenu_button.cpp:259
 msgid "Missing required state for multimenu button"
-msgstr ""
+msgstr "Falta estado requerido para el botón multimenú"
 
 #: src/gui/widgets/pane.cpp:361
 msgid "Missing [item_definition] in [pane]"
@@ -7546,42 +7540,43 @@ msgstr "Se necesita al menos un objeto paralelo."
 
 #: src/gui/widgets/panel.cpp:111
 msgid "Missing required background for panel definition"
-msgstr ""
+msgstr "Falta estado requerido para la definición del panel"
 
 #: src/gui/widgets/panel.cpp:112
 msgid "Missing required foreground for panel definition"
-msgstr ""
+msgstr "Falta primer plano requerido para la definición del panel"
 
 #: src/gui/widgets/progress_bar.cpp:96
 msgid "Missing required state for progress bar"
-msgstr ""
+msgstr "Falta estado requerido para la barra de progreso"
 
 #: src/gui/widgets/repeating_button.cpp:184
 #: src/gui/widgets/repeating_button.cpp:185
 #: src/gui/widgets/repeating_button.cpp:186
 #: src/gui/widgets/repeating_button.cpp:187
 msgid "Missing required state for repeating button"
-msgstr ""
+msgstr "Falta estado requerido para el botón de repetición"
 
 #: src/gui/widgets/scroll_label.cpp:180 src/gui/widgets/scroll_label.cpp:181
 msgid "Missing required state for scroll label control"
-msgstr ""
+msgstr "Falta estado requerido para el control de etiquetas de desplazamiento"
 
 #: src/gui/widgets/scroll_label.cpp:183
 msgid "No grid defined for scroll label control"
-msgstr ""
+msgstr "Sin cuadrícula definida para el control de etiquetas de desplazamiento"
 
 #: src/gui/widgets/scrollbar_panel.cpp:70
 msgid "Missing required background for scrollbar panel"
-msgstr ""
+msgstr "Falta fondo requerido para el panel de la barra de desplazamiento"
 
 #: src/gui/widgets/scrollbar_panel.cpp:71
 msgid "Missing required foreground for scrollbar panel"
 msgstr ""
+"Falta primer plano requerido para el panel de la barra de desplazamiento"
 
 #: src/gui/widgets/scrollbar_panel.cpp:73
 msgid "Missing required grid for scrollbar panel"
-msgstr ""
+msgstr "Falta cuadrícula requerida para el panel de la barra de desplazamiento"
 
 #: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
@@ -7594,7 +7589,7 @@ msgstr "No se ha definido un widget."
 #: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
 #: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
 msgid "Missing required state for slider"
-msgstr ""
+msgstr "Falta estado requerido para el control deslizante"
 
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
@@ -7613,27 +7608,25 @@ msgstr "Se encontró un widget con ayuda y sin descripción emergente."
 #: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
 #: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
 msgid "Missing required state for editable text box"
-msgstr ""
+msgstr "Falta estado requerido para la caja de texto editable"
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
 msgid "Missing required state for toggle button"
-msgstr ""
+msgstr "Falta estado requerido para el botón de activación"
 
 #: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
 #: src/gui/widgets/toggle_panel.cpp:304
 msgid "Missing required state for toggle panel"
-msgstr ""
+msgstr "Falta estado requerido para el panel de activación"
 
 #: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
 msgid "Missing required state for tree view"
-msgstr ""
+msgstr "Falta estado requerido para la vista de árbol"
 
 #: src/gui/widgets/tree_view.cpp:271
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tree view"
-msgstr "No hay nodos definidos para la vista de árbol."
+msgstr "No hay cuadrícula definida para la vista de árbol"
 
 #: src/gui/widgets/tree_view.cpp:291
 msgid "No nodes defined for a tree view."
@@ -7705,22 +7698,22 @@ msgstr "Habilidades"
 
 #: src/gui/widgets/unit_preview_pane.cpp:611
 msgid "Missing required background for unit preview pane"
-msgstr ""
+msgstr "Falta fondo requerido para la hoja de vista previa de unidad"
 
 #: src/gui/widgets/unit_preview_pane.cpp:612
 msgid "Missing required foreground for unit preview pane"
-msgstr ""
+msgstr "Falta primer plano requerido para la hoja de vista previa de unidad"
 
 #: src/gui/widgets/unit_preview_pane.cpp:614
 msgid "Missing required grid for unit preview pane"
-msgstr ""
+msgstr "Falta cuadrícula requerida para la hoja de vista previa de unidad"
 
 #: src/gui/widgets/vertical_scrollbar.cpp:123
 #: src/gui/widgets/vertical_scrollbar.cpp:124
 #: src/gui/widgets/vertical_scrollbar.cpp:125
 #: src/gui/widgets/vertical_scrollbar.cpp:126
 msgid "Missing required state for vertical scrollbar"
-msgstr ""
+msgstr "Falta estado requerido de la barra de desplazamiento vertical"
 
 #: src/gui/widgets/viewport.cpp:172
 msgid "Missing [widget] in [viewport]"

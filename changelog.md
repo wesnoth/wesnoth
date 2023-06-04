@@ -9,7 +9,7 @@
  ### Terrain
    * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias)
  ### Translations
-   * Updated translations: British English, Finnish, French
+   * Updated translations: British English, Finnish, French, Spanish
  ### Units
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
