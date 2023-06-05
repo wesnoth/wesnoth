@@ -434,6 +434,8 @@ void preferences_dialog::initialize_callbacks()
 	connect_signal_notify_modified(res_list,
 		std::bind(&preferences_dialog::handle_res_select, this));
 
+	connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&preferences_dialog::set_resolution_list, this, std::ref(res_list)));
+
 	/* PIXEL SCALE */
 	register_integer("pixel_scale_slider", true,
 		pixel_scale, set_pixel_scale);
