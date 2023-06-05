@@ -415,6 +415,8 @@ void preferences_dialog::post_build(window& window)
 	connect_signal_notify_modified(res_list,
 		std::bind(&preferences_dialog::handle_res_select, this));
 
+	window.connect_signal<event::SDL_VIDEO_RESIZE>(std::bind(&preferences_dialog::set_resolution_list, this, std::ref(res_list)));
+
 	/* SHOW FLOATING LABELS */
 	register_bool("show_floating_labels", true,
 		show_floating_labels, set_show_floating_labels);
