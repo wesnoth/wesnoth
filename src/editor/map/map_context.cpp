@@ -835,7 +835,7 @@ bool map_context::save_map()
 		} else {
 			std::string map_string = filesystem::read_file(get_filename());
 
-			boost::regex rexpression_map_data(R"""((.*map_data\s*=\s*")(.+?)(".*))""");
+			boost::regex rexpression_map_data(R"((.*map_data\s*=\s*")(.+?)(".*))");
 			boost::smatch matched_map_data;
 
 			if(boost::regex_search(map_string, matched_map_data, rexpression_map_data,

@@ -101,7 +101,7 @@ const std::string default_web_url = "https://add-ons.wesnoth.org/";
  * The text is intended for display on the client with Pango markup enabled and
  * sent by the server as-is, so it ought to be formatted accordingly.
  */
-const std::string default_license_notice = R"""(<span size='x-large'>General Rules</span>
+const std::string default_license_notice = R"(<span size='x-large'>General Rules</span>
 
 The current version of the server rules can be found at: https://r.wesnoth.org/t51347
 
@@ -117,7 +117,7 @@ All content within add-ons uploaded to this server must be licensed under the te
 <b>By uploading content to this server, you certify that you have the right to:</b>
 
   a) release all included art and audio explicitly denoted with a Creative Commons license in the prescribed manner under that license; <b>and</b>
-  b) release all other included content under the terms of the chosen versions of the GNU GPL.)""";
+  b) release all other included content under the terms of the chosen versions of the GNU GPL.)";
 
 bool timing_reports_enabled = false;
 
