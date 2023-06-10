@@ -108,7 +108,7 @@ WESMERE_HEADER = '''\
 </div>
 </div>
 
-<div id="content" role="main">'''
+<div id="content" role="main">'''  # TODO?: Localize header
 
 WESMERE_FOOTER = '''\
 </div> <!-- end content -->
@@ -124,7 +124,7 @@ WESMERE_FOOTER = '''\
 </div></div></div>
 
 </body></html>
-'''
+'''  # TODO?: Localize footer
 
 HTML_CLEAR_FLOATS = '<div class="reset"></div>'
 
@@ -150,7 +150,7 @@ def website_footer():
 
 def build_timestamp():
     """Returns an element containing the current date and time."""
-    return '<div id="lastmod">Last updated on %s.</div>' % time.ctime()
+    return '<div id="lastmod">Last updated on %s.</div>' % time.ctime() # TODO?: Localize timestamp
 
 
 all_written_html_files = []
@@ -477,8 +477,18 @@ class HTMLOutput:
     def write_navbar(self, report_type):
         def write(line):
             self.output.write(line)
-        def _(msgid, textdomain="wesnoth"):
-            return self.translate(msgid, textdomain)
+        # xgettext requires a different function per text domain.
+        def _w(msgid):
+            return self.translate(msgid, "wesnoth")
+
+        def _w_editor(msgid):
+            return self.translate(msgid, "wesnoth-editor")
+
+        def _w_help(msgid):
+            return self.translate(msgid, "wesnoth-help")
+
+        def _w_lib(msgid):
+            return self.translate(msgid, "wesnoth-lib")
 
         all_written_html_files.append((self.isocode, self.output.filename))
 
@@ -567,12 +577,12 @@ class HTMLOutput:
         # campaigns/eras navigation.
 
         # Campaigns
-        add_menu("campaigns_menu", _("addon_type^Campaign"))
+        add_menu("campaigns_menu", _w("addon_type^Campaign"))
         write(PRE_PLACEHOLDER_CAMPAIGNS.decode('utf-8'))
         end_menu()
 
         # Eras
-        add_menu("eras_menu", _("Era"))
+        add_menu("eras_menu", _w_lib("Era"))
         write(PRE_PLACEHOLDER_ERAS.decode('utf-8'))
         end_menu()
 
@@ -583,9 +593,9 @@ class HTMLOutput:
             target = "mainline.html"
 
         if not self.is_era:
-            add_menu("races_menu", _("Race", "wesnoth-lib"))
+            add_menu("races_menu", _w_lib("Race"))
 
-            add_menuitem('mainline.html', _("all", "wesnoth-editor"))
+            add_menuitem('mainline.html', _w_editor("all"))
 
             r = {}, {}
             for u in list(self.wesnoth.unit_lookup.values()):
@@ -620,7 +630,7 @@ class HTMLOutput:
                     add_menuitem(url, racename)
             end_menu()
         else:
-            add_menu("races_menu", _("Factions"))
+            add_menu("races_menu", _w("Factions"))
             for row in self.unitgrid:
                 for column in range(6):
                     hspan, vspan, un = row[column]
@@ -676,7 +686,7 @@ class HTMLOutput:
                 end_menu()
 
         # Languages
-        add_menu("languages_menu", _("Language", "wesnoth-lib"), is_table_container=True)
+        add_menu("languages_menu", _w_lib("Language"), is_table_container=True)
         cell = 0
         col = 0
         colcount = 5
@@ -702,7 +712,7 @@ class HTMLOutput:
         write('</table>')
         end_menu(is_table_container=True)
 
-        write('<li class="overviewlink"><a href="../../overview.html">Build Report</a></li>')
+        write('<li class="overviewlink"><a href="../../overview.html">%s</a></li>' % cleantext("Build Report", quote=False)) # TODO?: Localize build report link
 
         write('</ul></div>\n')
 
@@ -804,8 +814,18 @@ class HTMLOutput:
     def write_units(self):
         def write(line):
             self.output.write(line)
-        def _(msgid, textdomain="wesnoth"):
-            return self.translate(msgid, textdomain)
+        # xgettext requires a different function per text domain.
+        def _w(msgid):
+            return self.translate(msgid, "wesnoth")
+
+        def _w_editor(msgid):
+            return self.translate(msgid, "wesnoth-editor")
+
+        def _w_help(msgid):
+            return self.translate(msgid, "wesnoth-help")
+
+        def _w_lib(msgid):
+            return self.translate(msgid, "wesnoth-lib")
 
         rows = self.unitgrid
         write('<table class="units">\n<colgroup>')
@@ -894,10 +914,10 @@ class HTMLOutput:
 
                         if crown == " ♚":
                             write('<div class="spritebg" style="background-image:url(\'%s\')">' % image)
-                            write('<img src="%s" alt="(image)" />' % crownimage)
+                            write('<img src="%s" alt="(%s)" />' % (crownimage, cleantext(_w_lib("Image"), quote=False)))
                             write('</div>')
                         else:
-                            write('<img src="%s" alt="(image)" />' % image)
+                            write('<img src="%s" alt="(%s)" />' % (image, cleantext(_w_lib("Image"), quote=False)))
 
                         write('</a>\n</div>\n')
 
@@ -905,10 +925,10 @@ class HTMLOutput:
 
                         write('<table><colgroup><col class="attribute-label"><col class="attribute-value">')
                         attributes = (
-                            (_("Cost: "), cost),
-                            (_("HP: "), hp),
-                            (_("XP: "), xp),
-                            (_("MP: "), mp),
+                            (_w_help("Cost:"), cost),
+                            (_w_help("HP:"), hp),
+                            (_w_lib("XP: "), xp),
+                            (_w_lib("MP: "), mp),
                         )
                         for attr_label, attr_value in attributes:
                             write('<tr><th>%s</th><td>%s</td></tr>' % (cleantext(attr_label.strip(), quote=False), attr_value))
@@ -935,10 +955,10 @@ class HTMLOutput:
                                 t = T(attack, "type")
                                 range_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s_attack.png' % r), no_tc=True)
                                 range_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, range_icon.id_name)))
-                                range_alt_text = 'attack range %s' % cleantext(_(r), quote=False)
+                                range_alt_text = 'attack range %s' % cleantext(_w(r), quote=False)
                                 type_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s.png' % t), no_tc=True)
                                 type_icon = cleanurl(path2url(os.path.join(PICS_LOCATION, type_icon.id_name)))
-                                type_alt_text = 'attack type %s' % cleantext(_(t), quote=False)
+                                type_alt_text = 'attack type %s' % cleantext(_w(t), quote=False)
                                 x = '<img src="%s" alt="(%s)"/> <img src="%s" alt="(%s)"/> ' % (range_icon, range_alt_text, type_icon, type_alt_text)
                                 write (x)
 
@@ -947,7 +967,7 @@ class HTMLOutput:
                                 x = "%s %s %s " % (cleantext(x, quote=False), HTML_ENTITY_MULTIPLICATION_SIGN, cleantext(n, quote=False))
                                 write(x)
 
-                                x = '<br/>%s-%s' % (_(r), _(t))
+                                x = '<br/>%s-%s' % (cleantext(_w(r), quote=False), cleantext(_w(t), quote=False))
                                 write(x)
 
                                 s = []
@@ -1052,12 +1072,12 @@ class HTMLOutput:
                 fimage = mimage
             if not fportrait:
                 fportrait = portrait
-            write('<img src="%s" alt="(image)" />\n' % cleanurl(mimage))
-            write('<img src="%s" alt="(image)" />\n' % cleanurl(fimage))
+            write('<img src="%s" alt="(%s)" />\n' % (cleanurl(mimage), cleantext(_w_lib("Image"), quote=False)))
+            write('<img src="%s" alt="(%s)" />\n' % (cleanurl(fimage), cleantext(_w_lib("Image"), quote=False)))
             image = mimage
         else:
             image, portrait = self.pic(unit, unit)
-            write('<img src="%s" alt="(image)" />\n' % cleanurl(image))
+            write('<img src="%s" alt="(%s)" />\n' % (cleanurl(image), cleantext(_w_lib("Image"), quote=False)))
         write('</div>\n')
 
         description = clean_uval("description")
@@ -1084,7 +1104,7 @@ class HTMLOutput:
 
             write('<div class="portrait">')
             if portrait:
-                write('<img src="%s" alt="(portrait)" />\n' % cleanurl(sportrait))
+                write('<img src="%s" alt="(%s)" />\n' % (cleanurl(sportrait), cleantext("portrait", quote=False))) # TODO?: Localize alt text
             else:
                 write('<div style="background-image:url(\'%s\')">&nbsp;</div>' % cleanurl(simage))
             write('</div>')
@@ -1098,7 +1118,7 @@ class HTMLOutput:
         write('<table class="unitinfo">\n')
 
         # Advances-from list
-        write('<tr><th>%s</th><td>' % cleantext(_("Advances from: "), quote=False))
+        write('<tr><th>%s</th><td>' % cleantext(_w_help("Advances from: "), quote=False))
         have_advances = False
         for pid in self.forest.get_parents(uid):
             punit = self.wesnoth.unit_lookup[pid]
@@ -1117,7 +1137,7 @@ class HTMLOutput:
         write('</td></tr>\n')
 
         # Advances-to list
-        write('<tr><th>%s</th><td>' % cleantext(_("Advances to: "), quote=False))
+        write('<tr><th>%s</th><td>' % cleantext(_w_help("Advances to: "), quote=False))
         have_advances = False
         for cid in self.forest.get_children(uid):
             try:
@@ -1143,15 +1163,15 @@ class HTMLOutput:
         write('</td></tr>\n')
 
         attributes = [
-            ("cost",       _("Cost: ")),
-            ("hitpoints",  _("HP: ")),
-            ("movement",   _("Moves: ")),
-            ("vision",     _("Vision: ")),
-            ("jamming",    _("Jamming: ")),
-            ("experience", _("XP: ")),
-            ("level",      _("Level: ")),
-            ("alignment",  _("Alignment: ")),
-            ("id",         "Id: ")
+            ("cost",       _w_help("Cost:")),
+            ("hitpoints",  _w_help("HP:")),
+            ("movement",   _w_help("Moves:")),
+            ("vision",     _w_help("Vision:")),
+            ("jamming",    _w_help("Jamming:")),
+            ("experience", _w_lib("XP: ")),
+            ("level",      _w("Level: ")),
+            ("alignment",  _w_help("Alignment:")),
+            ("id",         _w_lib("Id:"))
         ]
 
         for attr, label in attributes:
@@ -1159,14 +1179,14 @@ class HTMLOutput:
             if not value and attr in ("jamming", "vision"):
                 continue
             if attr == "alignment":
-                value = _(value)
+                value = _w(value)
             write('<tr><th>%s</th><td class="val">%s</td></tr>\n' % (cleantext(label, quote=False), cleantext(value, quote=False)))
 
         # Write info about abilities.
         anames = self.get_abilities(unit)
 
         write('<tr>\n')
-        write('<th>%s</th>' % cleantext(_("Abilities: "), quote=False))
+        write('<th>%s</th>' % cleantext(_w_help("Abilities: "), quote=False))
         if len(anames):
             write('<td class="val">' + cleantext(', '.join(anames), quote=False) + '</td>')
         else:
@@ -1178,9 +1198,11 @@ class HTMLOutput:
         # Write info about attacks.
         attacks = self.get_recursive_attacks(unit)
         if attacks:
-            write('<h2>%s <small>(damage %s count)</small></h2>\n' %
-                  (cleantext(_("unit help^Attacks"), quote=False),
-                  HTML_ENTITY_MULTIPLICATION_SIGN))
+            write('<h2>%s <small>(%s %s %s)</small></h2>\n' %
+                  (cleantext(_w_help("unit help^Attacks"), quote=False),
+                  cleantext(_w_lib("Damage"), quote=False),
+                  HTML_ENTITY_MULTIPLICATION_SIGN,
+                  cleantext(_w_lib("Hits"), quote=False)))
             write('<table class="unitinfo attacks">\n')
             write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
 
@@ -1202,15 +1224,15 @@ class HTMLOutput:
                     icon = os.path.join(PICS_LOCATION, "shaman..Y29yZS9pbWFnZXMvdW5pdHMvZWx2ZXMtd29vZA..png")
                 else:
                     icon = os.path.join(PICS_LOCATION, image_add.id_name)
-                write('<td><img src="%s" alt="(image)"/></td>' % cleanurl(icon))
+                write('<td><img src="%s" alt="(%s)"/></td>' % (cleanurl(icon), cleantext(_w_lib("Image"), quote=False)))
 
                 write('<td><b>%s</b></td>' % cleantext(aname, quote=False))
 
                 t = T(attack, "type")
                 type_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s.png' % t), no_tc=True)
                 type_icon = cleanurl(os.path.join(PICS_LOCATION, type_icon.id_name))
-                type_alt_text = cleantext('%s attack' % t, quote=False)
-                x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (type_icon, type_alt_text, cleantext(_(t), quote=False))
+                type_alt_text = cleantext('%s attack' % t, quote=False) # TODO?: Localize alt text
+                x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (type_icon, type_alt_text, cleantext(_w(t), quote=False))
                 write(x)
 
                 n = attack.get_text_val("number")
@@ -1221,8 +1243,8 @@ class HTMLOutput:
                 r = T(attack, "range")
                 range_icon = image_collector.add_image_check(self.addon, os.path.normpath('icons/profiles/%s_attack.png' % r), no_tc=True)
                 range_icon = cleanurl(os.path.join(PICS_LOCATION, range_icon.id_name))
-                range_alt_text = cleantext('%s attack' % r, quote=False)
-                x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (range_icon, range_alt_text, cleantext(_(r), quote=False))
+                range_alt_text = cleantext('%s attack' % r, quote=False) # TODO?: Localize alt text
+                x = '<td><img src="%s" alt="(%s)"/> %s</td>' % (range_icon, range_alt_text, cleantext(_w(r), quote=False))
                 write(x)
 
                 s = []
@@ -1241,7 +1263,7 @@ class HTMLOutput:
             write('</table>\n')
 
         # Write info about resistances.
-        write('<h2>%s</h2>\n' % _("Resistances: ").strip(" :"))
+        write('<h2>%s</h2>\n' % cleantext(_w("Resistances: ").strip(" :"), quote=False))
         write('<table class="unitinfo resistances">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /><col class="col4" /><col class="col5" /><col class="col6" /></colgroup>')
         row = 0
@@ -1266,8 +1288,8 @@ class HTMLOutput:
                 write('<td></td>')
             picname = image_collector.add_image(self.addon, os.path.normpath(ricon), no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
-            write('<td><img src="%s" alt="(icon)" /></td>\n' % (icon, ))
-            write('<th>%s</th><td class="%s">%s</td>\n' % (cleantext(_(rid), quote=False), ' '.join(resist_classes), resist_str))
+            write('<td><img src="%s" alt="(%s)" /></td>\n' % (icon, cleantext("icon", quote=False))) # TODO?: Localize alt text
+            write('<th>%s</th><td class="%s">%s</td>\n' % (cleantext(_w(rid), quote=False), ' '.join(resist_classes), resist_str))
             if row % 2 == 1:
                 write('</tr>\n')
             row += 1
@@ -1278,15 +1300,15 @@ class HTMLOutput:
         write('<div class="unit-column-right">')
 
         # Write info about movement costs and terrain defense.
-        write('<h2>' + cleantext(_("Terrain"), quote=False) + '</h2>\n')
+        write('<h2>' + cleantext(_w_help("Terrain"), quote=False) + '</h2>\n')
         write('<table class="unitinfo terrain">\n')
         write('<colgroup><col class="col0" /><col class="col1" /><col class="col2" /><col class="col3" /></colgroup>')
 
         write('<thead>')
         write('<tr><th colspan="2"><span class="sr-label">%s</span></th><th class="mvtcost">%s</th><th class="numheader">%s</th></tr>\n' % (
-            cleantext(_("Terrain"), quote=False),
-            cleantext(_("Movement Cost"), quote=False),
-            cleantext(_("Defense"), quote=False)))
+            cleantext(_w_help("Terrain"), quote=False),
+            cleantext(_w_help("Movement Cost"), quote=False),
+            cleantext(_w_help("Defense"), quote=False)))
         write('</thead>')
 
         terrains = self.wesnoth.terrain_lookup
@@ -1351,7 +1373,7 @@ class HTMLOutput:
                                                 os.path.normpath("terrain/%s.png" % ticon),
                                                 no_tc=True)
             icon = os.path.join(PICS_LOCATION, picname)
-            write('<td><img src="%s" alt="(icon)" /></td>\n' % cleanurl(icon))
+            write('<td><img src="%s" alt="(%s)" /></td>\n' % (cleanurl(icon), cleantext("icon", quote=False))) # TODO?: Localize alt text
             write('<td>%s</td><td class="%s"><i>%s</i></td><td class="%s"><i>%s</i></td>\n' %
                   (cleantext(tname, quote=False),
                    ' '.join(classes_cost), move_cost,
