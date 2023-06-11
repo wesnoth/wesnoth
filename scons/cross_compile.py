@@ -33,3 +33,5 @@ def setup_cross_compile(env):
         os.environ["PKG_CONFIG_LIBDIR"] = ''
         env["ENV"]["PKG_CONFIG_LIBDIR"] = ''
         env["ENV"]["PKG_CONFIG_PATH"] = env.subst("$prefix/lib/pkgconfig")
+        if "mingw" in env["host"]:
+            env.Append(PKG_CONFIG_FLAGS = ["--define-prefix"])
