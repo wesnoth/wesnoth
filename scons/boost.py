@@ -84,7 +84,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
             env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     if not header_only:
         env.PrependUnique(LIBS = [libname])
-    if boost_lib == "thread" and env["PLATFORM"] == "posix":
+    if (boost_lib == "thread" or boost_lib == "asio") and env["PLATFORM"] == "posix":
         env.AppendUnique(CCFLAGS = ["-pthread"], LINKFLAGS = ["-pthread"])
 
     test_program = """
