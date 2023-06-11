@@ -28,7 +28,7 @@ def setup_cross_compile(env):
 
         env.PrependUnique(CPPPATH="$prefix/include", LIBPATH="$prefix/lib")
         if not env["sdldir"] and env["PLATFORM"] == "win32":
-            env["sdldir"] = "$prefix"
+            env["sdldir"] = env.subst("$prefix")
 
         os.environ["PKG_CONFIG_LIBDIR"] = ''
         env["ENV"]["PKG_CONFIG_LIBDIR"] = ''
