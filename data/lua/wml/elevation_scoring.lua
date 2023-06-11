@@ -5,8 +5,10 @@ local location_groups = {}
     [elevation_score_map]
         high_border = <terrain code> (default *^Qhh*)
         low_border = <terrain code> (default *^Qhu*)
+        test_labels = <boolean> ( default false )
     [/elevation_score_map]
 
+    creates some wml variables [elevation_area] (one per elevation marker) and [elevation_data] (one, a summary)
 ]]
 
 --[[ There are two cycles:
@@ -16,7 +18,6 @@ local location_groups = {}
 
  - Second Cycle iterates over all remaining available hexes and checks if they are a border terrain type, and if next to a high-high/low-low border or not, 
    to assign to one of the four non-default elevations.  If not a border terrain type, they stay default
-
  ]]
 
 wesnoth.wml_actions.elevation_score_map = function(cfg)
@@ -25,6 +26,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
         local border_locations = {} -- assigned hexes that will need review afterwards
         local high_border = cfg.high_border or "*^Qhh*"
         local low_border = cfg.low_border or "*^Qhu*"
+        local test_labels = cfg.test_labels or false
         local max_x = 0
         local max_y = 0
         for u, v, terrain_code in wesnoth.current.map:iter() do
@@ -54,7 +56,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 -- First cycle
-        -- start with the marked hex
+        -- start with the marked hexes
         for j in ipairs(location_groups) do
             if (location_groups[j].elevation ~= 'dummy-high' and location_groups[j].elevation ~= 'dummy-low') then
                 local anchor_hex={x=location_groups[j].x, y=location_groups[j].y}
@@ -76,7 +78,6 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                         local m = 0
                         for mm in ipairs(available_locations) do
                             -- check that new hex is an available location
-                            -- wesnoth.message("ESM Debugging", string.format("available.x = %d and new_hexes[%d].x = %d", available_locations[m].x, k, new_hexes[k].x))
                             if (new_hexes[k][1] == available_locations[mm].x) then
                                if (new_hexes[k][2] == available_locations[mm].y) then 
                                     al_found = 'yes'
@@ -118,7 +119,6 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                 else 
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
                                         table.insert(candidate_locations, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        --table.insert(border_locations, {x= new_hexes[k][1], y= new_hexes[k][2], elevation= location_groups[j].elevation})
                                         anchor_hex.x, anchor_hex.y= new_hexes[k][1], new_hexes[k][2] 
                                         -- break -- escape the for k (so we don't complete the ring around the anchor hex)
                                 end
@@ -155,7 +155,6 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                 else
                                     -- Nothing to do for high-high/low-low
                                 end
---                                table.remove(border_locations, m)                                        
                                 al_found = 'no'
                         else
                         end
@@ -183,7 +182,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                     end                
                         
                     -- failsafe
-                    if change_count >= max_map_iter then anchor_hex = {} end -- How many failures to find anything should be enough?  Depends on the map size, though not sure this is the best method
+                    if change_count >= max_map_iter then anchor_hex = {} end -- How many failures to find anything should be enough?
                 end
             end
         end
@@ -193,6 +192,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
 -- iterate over all the remaining available_locations
      -- This isn't very efficient, and can assign the hex to the wrong blob (but still correct elevation), 
      -- but it would be even less efficient if we looked for the closest marker
+        local available_locations_final = {}
         if #available_locations > 0 then
            for i in ipairs(available_locations) do
                if wesnoth.map.matches(available_locations[i].x, available_locations[i].y, {terrain = high_border}) then
@@ -204,6 +204,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                         if location_groups[m].elevation == 'high-high' then
                                             table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
                                             available_locations[i].x, available_locations[i].y = 0, 0 -- rather than than table.remove, so we don't screw with the indexes
+                                            break
                                         end
                                     end
                                end
@@ -211,11 +212,12 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                        end
                    end
                    -- if it isn't adjacent to a high-high border, it is just high
-                   if available_locations[i].x ~= 0 then
+                   if available_locations[i].x > 0 then
                        for m in ipairs (location_groups) do
                            if location_groups[m].elevation == 'high' then
                               table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
                               available_locations[i].x, available_locations[i].y = 0, 0 
+                              break
                            end
                        end
                    end
@@ -228,6 +230,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                         if location_groups[m].elevation == 'low-low' then
                                             table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
                                             available_locations[i].x, available_locations[i].y = 0, 0 
+                                            break
                                         end
                                     end
                                end
@@ -235,27 +238,90 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                        end
                    end
                    -- if it isn't adjacent to a low-low border, it is just low
-                   if available_locations[i].x ~= 0 then
+                   if available_locations[i].x > 0 then
                        for m in ipairs (location_groups) do
                            if location_groups[m].elevation == 'low' then
                               table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
                               available_locations[i].x, available_locations[i].y = 0, 0 
+                              break
                            end
                        end
                    end
+               else
+                   table.insert(available_locations_final, {x= available_locations[i].x, y= available_locations[i].y})
                end
            end
-       end
-       
+        end
+       available_locations = available_locations_final
 ------------------------------------------------------------------------------------
 -- Implementation of data collected
-        -- for now, write each location_groups to labels
+------------------------------------------------------------------------------------
+    local _ = wesnoth.textdomain("wesnoth")
+-- test_labels, this may be removed later, but it could still be useful as a tool
+-- keeping these loops separate from the real use case below
+    if test_labels then
         for i in ipairs(location_groups) do
             for j in ipairs(location_groups[i].hexes) do
-                wesnoth.map.add_label{x = location_groups[i].hexes[j].x, y = location_groups[i].hexes[j].y, text = location_groups[i].elevation}
+                wesnoth.map.add_label{x = location_groups[i].hexes[j].x, y = location_groups[i].hexes[j].y, text = location_groups[i].elevation, category = _ "Elevation"}
             end
         end
         for i in ipairs(available_locations) do
-            wesnoth.map.add_label{x = available_locations[i].x, y = available_locations[i].y, text = "default"}
+            wesnoth.map.add_label{x = available_locations[i].x, y = available_locations[i].y, text = "default", category = _ "Elevation", color = "120,90,90"}
         end
+    end
+
+-- candidate use case, at least it is accessible to WML
+    local id_name = "default"
+    local wml_index = 0
+    local ll_count = 0
+    local l_count = 0
+    local h_count = 0
+    local hh_count = 0
+    for i in ipairs(location_groups) do
+--  May be some issue with hyphens in ID, and we might want to make this customizable anyway
+        if location_groups[i].elevation == 'low-low' then
+            id_name = "low_low"
+            ll_count = ll_count + 1
+        elseif location_groups[i].elevation == 'low' then
+            id_name = "low"
+            l_count = l_count + 1
+        elseif location_groups[i].elevation == 'high' then
+            id_name = "high"
+            h_count = h_count + 1
+        elseif location_groups[i].elevation == 'high-high' then
+            id_name = "high_high"
+            hh_count = hh_count + 1
+        end
+        local area_id = id_name
+        local x_list = ""
+        local y_list = ""
+        for j in ipairs(location_groups[i].hexes) do
+                x_list = x_list .. "," .. tostring(location_groups[i].hexes[j].x)
+                y_list = y_list .. "," .. tostring(location_groups[i].hexes[j].y)
+        end
+        x_list = string.gsub(x_list,",","",1) -- remove the first comma
+        y_list = string.gsub(y_list,",","",1)
+        wml.variables["elevation_area[" .. wml_index .. "].type"] = area_id
+        wml.variables["elevation_area[" .. wml_index .. "].x"] = x_list
+        wml.variables["elevation_area[" .. wml_index .. "].y"] = y_list
+        wml_index = wml_index + 1
+    end
+    local x_list = ""
+    local y_list = ""
+    for i in ipairs(available_locations) do
+            x_list = x_list .. "," .. tostring(available_locations[i].x)
+            y_list = y_list .. "," .. tostring(available_locations[i].y)
+    end
+    x_list = string.gsub(x_list,",","",1)
+    y_list = string.gsub(y_list,",","",1)
+    wml.variables["elevation_area[" .. wml_index .. "].type"] = "elevation_default"
+    wml.variables["elevation_area[" .. wml_index .. "].x"] = x_list
+    wml.variables["elevation_area[" .. wml_index .. "].y"] = y_list
+    -- not critical
+    wml.variables["elevation_data.low_low"] = ll_count
+    wml.variables["elevation_data.low"] = l_count
+    wml.variables["elevation_data.high"] = h_count
+    wml.variables["elevation_data.default"] = 1
+    wml.variables["elevation_data.low"] = l_count
+    wml.variables["elevation_data.high_high"] = hh_count
 end
