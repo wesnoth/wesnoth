@@ -152,11 +152,8 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
                                         table.remove(border_locations, m)                                        
                                    end
-                                else
-                                    -- Nothing to do for high-high/low-low
                                 end
                                 al_found = 'no'
-                        else
                         end
                     end
                     if #candidate_locations < 1 then 
@@ -170,9 +167,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                         local on_border = true
                         while on_border do
                             local random_index = mathx.random(#candidate_locations)
-                            if wesnoth.current.map:on_border(anchor_hex.x, anchor_hex.y) then
-                                    --table.remove(candidate_locations, random_index)
-                            else
+                            if not (wesnoth.current.map:on_border(anchor_hex.x, anchor_hex.y)) then
                                     on_border = false
                                     anchor_hex.x, anchor_hex.y = candidate_locations[random_index].x, candidate_locations[random_index].y
                                     table.remove(candidate_locations, random_index)
