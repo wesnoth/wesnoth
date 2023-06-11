@@ -1,4 +1,3 @@
-local utils = wesnoth.require "wml-utils"
 local location_groups = {}
 
 --[[ usage
