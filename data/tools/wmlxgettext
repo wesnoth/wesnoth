@@ -323,7 +323,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
                 # Ignore in single-file analysis
                 continue
 
-            # print("Tracing %s..." % macro)
+            # print("Tracing %s..." % macro, file=sys.stderr)
             xref = macro.to_abs(fileref_root).get_ref(xrefs)
             assert xref is not None, ("Macro %s not referenced" % macro)
 
@@ -363,12 +363,12 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
                     continue
                 if not callee_name in xrefs.xref:
                     if single_file is None:
-                        print("Unknown macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro))
+                        print("Unknown macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro), file=sys.stderr)
                     else:
                         raise AnalysisTooNarrowException("Macro {%s} not found at %s." % (callee_name, single_file))
                 if not any(map(ReferenceHelper.is_embeddable_macro, xrefs.xref[callee_name])):
                     if single_file is None:
-                        print("No valid embeddable expansion for macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro))
+                        print("No valid embeddable expansion for macro {%s} called by %s. Strings using it will not be translated." % (callee_name, macro), file=sys.stderr)
                     else:
                         raise AnalysisTooNarrowException("No valid definition for macro {%s} found at %s." % (callee_name, single_file))
 
@@ -385,7 +385,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
         for fileref in sentences_by_file:
             resolve_strings_at(dirpath=None, single_file=fileref)
     except AnalysisTooNarrowException as ex:
-        print("%s Falling back to full-tree analysis." % ex.args)
+        print("%s Falling back to full-tree analysis." % ex.args, file=sys.stderr)
         try:
             resolve_strings_at(dirpath=[start_path])
         except Exception as ex:
@@ -402,7 +402,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
         xrefs = xrefs_by_file[file_path_abs] if file_path_abs in xrefs_by_file else xrefs_all
         for po_sentence in sentences:
             ast = asts_by_sentence[po_sentence.sentence]
-            # print("raw sentence: (%s <-> %s)" % (po_sentence.sentence, ast))
+            # print("raw sentence: (%s <-> %s)" % (po_sentence.sentence, ast), file=sys.stderr)
 
             # 5. Propagate macro parameters.
             # sub_sentences: list<(str, Macro|NoneType)>
@@ -420,7 +420,7 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
             for sentence_after_args, ctx in sub_sentences:
                 used_macros = set()
                 ast = AST.parse_sentence_and_ids(sentence_after_args, used_macros, used_macros)
-                # print("sentence after args: (%s <-> %s)" % (sentence_after_args, ast))
+                # print("sentence after args: (%s <-> %s)" % (sentence_after_args, ast), file=sys.stderr)
 
                 # 6. Evaluate macro expansions.
                 # macro_replacements: list<(Reference|ReferenceLike, True, None)>
@@ -434,21 +434,21 @@ def handle_macro_po_sentences(sentlist, po_sentences, start_path="", fileref_roo
                     # Ensure loop runs at least once
                     macro_replacements.append(({}, None, sentence_after_args))
                 for defs, ended, sentence_after_macro in macro_replacements:
-                    # print("sentence after macro: %s" % sentence_after_macro)
+                    # print("sentence after macro: %s" % sentence_after_macro, file=sys.stderr)
                     # assert(isinstance(ctx, Macro|NoneType))
                     po_sentence_variant = copy(po_sentence)
                     po_sentence_variant.finfos = copy(po_sentence_variant.finfos)
                     po_sentence_variant.sentence = sentence_after_macro
                     if '\x01' + po_sentence_variant.sentence in sentlist:
-                        # print("Ignored ref to raw sentence %s" % po_sentence_variant.sentence)
+                        # print("Ignored ref to raw sentence %s" % po_sentence_variant.sentence, file=sys.stderr)
                         # Output has already been written. TODO: FIXME?
                         # sentlist['\x01' + po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
                         pass
                     elif po_sentence_variant.sentence in new_sentences:
-                        # print("New ref in processed sentence %s" % po_sentence_variant.sentence)
+                        # print("New ref in processed sentence %s" % po_sentence_variant.sentence, file=sys.stderr)
                         new_sentences[po_sentence_variant.sentence].update_with_commented_string(po_sentence_variant)
                     else:
-                        # print("New sentence %s" % po_sentence_variant.sentence)
+                        # print("New sentence %s" % po_sentence_variant.sentence, file=sys.stderr)
                         new_sentences[po_sentence_variant.sentence] = po_sentence_variant
 
     for posentence in new_sentences.values():
@@ -558,7 +558,7 @@ def main():
                 sentences_wmacro_by_macro[macro].append(posentence)
 
         if len(sentences_wmacro_by_file) > 0:
-            print("Translatable strings with macros found in %d files." % len(sentences_wmacro_by_file))
+            print("Translatable strings with macros found in %d files." % len(sentences_wmacro_by_file), file=sys.stderr)
             handle_macro_po_sentences(catalog, macro_po_sentences, start_path=startPath, fileref_root=fileref_root, outfile=outfile, fuzzy=args.fuzzy)
 
         if args.folder is not None:

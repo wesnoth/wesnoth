@@ -20,6 +20,7 @@
 import itertools
 import os
 import re
+import sys
 from .wmltools3 import CrossRef, Reference
 from .wmliterator3 import WmlIterator
 
@@ -145,7 +146,7 @@ class ExpandableNode:
     def replace(self, args_set=NO_ARGS, macro_defs=None):
         if self.name in args_set[0]:
             sub = args_set[0][self.name]
-            # print("Subbed parameter %s -> %s" % (self.name, sub))
+            # print("Subbed parameter %s -> %s" % (self.name, sub), file=sys.stderr)
             return sub
 
         if macro_defs is not None and self.name in macro_defs:
@@ -159,7 +160,7 @@ class ExpandableNode:
             for i in range(0, min(len(macro_args), len(self.children))):
                 # For each formal parameter, replace it by its value.
                 result = re.sub('{'+macro_args[i]+'}', str(self.children[i]), result)
-            # print("Subbed macro %s -> %s" % (self, result))
+            # print("Subbed macro %s -> %s" % (self, result), file=sys.stderr)
 
             return result
 
@@ -244,9 +245,9 @@ class AST:
                         pass
                 ast.fill_literals(input, len(input))
         except WmlIteratorException as ex:
-            print("%s while parsing \"%s\"" % (ex.args + (input,)))
+            print("%s while parsing \"%s\"" % (ex.args + (input,)), file=sys.stderr)
 
-        # print("AST parsed %s <-> %s" % (input, ast))
+        # print("AST parsed %s <-> %s" % (input, ast), file=sys.stderr)
         return ast
 
     @staticmethod
@@ -363,12 +364,12 @@ class Macro:
     def get_ref(self, xrefs):
         assert isinstance(xrefs, CrossRef)
         if not self.name in xrefs.xref:
-            print("Macro %s not found" % self)
+            print("Macro %s not found" % self, file=sys.stderr)
             return None
 
         for xref in xrefs.xref[self.name]:
             if xref.filename != self.fileref or xref.lineno != self.line:
-                # print("Excluded %s@%s#%d" % (self.name, xref.filename, xref.lineno))
+                # print("Excluded %s@%s#%d" % (self.name, xref.filename, xref.lineno), file=sys.stderr)
                 continue
 
             assert isinstance(xref, Reference)
@@ -405,9 +406,9 @@ class CrossRefHelper:
                 if any(map(ReferenceHelper.is_embeddable_macro, xrefs.xref[name])):
                     macros.append(name)
                 else:
-                    print("Macro {%s} cannot be embedded in a translatable string (only simple single-line macros may.)")
+                    print("Macro {%s} cannot be embedded in a translatable string (only simple single-line macros may.)", file=sys.stderr)
             else:
-                print("Macro {%s} not defined. Strings containing it will NOT be processed in the generated .pot file." % name)
+                print("Macro {%s} not defined. Strings containing it will NOT be processed in the generated .pot file." % name, file=sys.stderr)
 
         return tuple(macros)
 
@@ -523,7 +524,7 @@ class CrossRefHelper:
 
         if iterations >= max_iterations:
             print("Unable to generate msgid for \"%s\" (Macro replacement stack limit exceeded.) \
-Ensure there are no circular macro references." % input_sentence)
+Ensure there are no circular macro references." % input_sentence, file=sys.stderr)
 
 class ReferenceHelper:
     @staticmethod
@@ -556,7 +557,7 @@ class ReferenceHelper:
                     for i, called_arg in enumerate(call_site[1]):
                         if i >= len(xref.args):
                             # Macro called with too many args.
-                            print("Macro called with more arguments (%d) than expected at %s:%d. " % (len(call_site[1]), xref_file_name, call_site[0]))
+                            print("Macro called with more arguments (%d) than expected at %s:%d. " % (len(call_site[1]), xref_file_name, call_site[0]), file=sys.stderr)
                             break
                         parameter_name = xref.args[i]
                         if parameter_name in filter_parameters:
@@ -573,7 +574,7 @@ class ReferenceHelper:
                     for parameter_name, called_arg in call_site[2].items():
                         if not parameter_name in xref.optional_args:
                             # Invalid parameter name.
-                            print("Macro called with invalid optional parameter \"%s\" at %s:%d." % (parameter_name, xref_file_name, call_site[0]))
+                            print("Macro called with invalid optional parameter \"%s\" at %s:%d." % (parameter_name, xref_file_name, call_site[0]), file=sys.stderr)
                             continue
                         if parameter_name in filter_parameters:
                             if has_quotes(called_arg):
@@ -597,7 +598,7 @@ class ReferenceHelper:
                     variants.append((called_args, parent_macro))
 
                 if untranslatable_arg is not None:
-                    print("Untranslatable quoted argument %s at %s:%d" % (untranslatable_arg, xref_file_name, call_site[0]))
+                    print("Untranslatable quoted argument %s at %s:%d" % (untranslatable_arg, xref_file_name, call_site[0]), file=sys.stderr)
 
         # list<(dictionary<str, str>, Macro|None)>
         return variants
