@@ -2,6 +2,9 @@
 
 Import("*")
 
+if not env.get("AAPT"):
+    Return()
+
 resources = Glob("res/*/*")
 compiled_resources = []
 compiled = []
