@@ -13,10 +13,10 @@ local location_groups = {}
 
 --[[ There are two cycles:
  - First Cycle that grows out from the marker terrains, placing each hex in an elevation group, stopping when it gets to a border or runs out of available hexes.
-   Most likely it gets itself stuck in a corner, rather than really running out of hexes to assign, so restart from some random candidate (non-repeating) hex 
+   Most likely it gets itself stuck in a corner, rather than really running out of hexes to assign, so restart from some random candidate (non-repeating) hex
    somewhere in that blob.
 
- - Second Cycle iterates over all remaining available hexes and checks if they are a border terrain type, and if next to a high-high/low-low border or not, 
+ - Second Cycle iterates over all remaining available hexes and checks if they are a border terrain type, and if next to a high-high/low-low border or not,
    to assign to one of the four non-default elevations.  If not a border terrain type, they stay default
  ]]
 
@@ -79,7 +79,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                         for mm in ipairs(available_locations) do
                             -- check that new hex is an available location
                             if (new_hexes[k][1] == available_locations[mm].x) then
-                               if (new_hexes[k][2] == available_locations[mm].y) then 
+                               if (new_hexes[k][2] == available_locations[mm].y) then
                                     al_found = 'yes'
                                     m = mm
                                     break -- escape the for mm
@@ -90,7 +90,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                             for mm in ipairs(border_locations) do
                             -- none of new hexes are available, but is one a known border of some sort?
                                 if (new_hexes[k][1] == border_locations[mm].x) then
-                                   if (new_hexes[k][2] == border_locations[mm].y) then 
+                                   if (new_hexes[k][2] == border_locations[mm].y) then
                                         al_found = 'maybe'
                                         m = mm
                                         break -- escape the for mm
@@ -99,7 +99,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                             end
                         end
                         if al_found == 'yes' then
-                                -- Whenever a non-border-type location is transfered out of available_locations into a location_group, 
+                                -- Whenever a non-border-type location is transfered out of available_locations into a location_group,
                                 -- it is copied to candidate_locations as well, so we can go back to it later if needed.
                                 -- If terrain is a border type, but this loop is the wrong location_groups for it, we assign it to a dummy group, and clean up later
                                 if wesnoth.map.matches(new_hexes[k][1], new_hexes[k][2], {terrain = high_border}) then
@@ -116,52 +116,52 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                         else
                                                 table.insert(border_locations, {x= new_hexes[k][1], y= new_hexes[k][2], elevation= 'dummy-low'})
                                         end
-                                else 
+                                else
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
                                         table.insert(candidate_locations, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        anchor_hex.x, anchor_hex.y= new_hexes[k][1], new_hexes[k][2] 
+                                        anchor_hex.x, anchor_hex.y= new_hexes[k][1], new_hexes[k][2]
                                         -- break -- escape the for k (so we don't complete the ring around the anchor hex)
                                 end
                                 table.remove(available_locations, m)
                         elseif al_found == 'maybe' then
-                        -- this new hex is a border between two regions, and is already part of some group, 
+                        -- this new hex is a border between two regions, and is already part of some group,
                         -- check that it is the correct type (not just whatever growing blob reached it first, or a dummy group)
                                 if border_locations[m].elevation == 'low' then
-                                   if location_groups[j].elevation == 'low-low' then 
+                                   if location_groups[j].elevation == 'low-low' then
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        table.remove(border_locations, m)                                        
+                                        table.remove(border_locations, m)
                                    end
                                 elseif border_locations[m].elevation == 'high' then
-                                   if location_groups[j].elevation == 'high-high' then 
+                                   if location_groups[j].elevation == 'high-high' then
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        table.remove(border_locations, m)                                        
+                                        table.remove(border_locations, m)
                                    end
                                 elseif border_locations[m].elevation == 'dummy-high' then
-                                   if location_groups[j].elevation == 'high-high' then 
+                                   if location_groups[j].elevation == 'high-high' then
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        table.remove(border_locations, m)                                        
-                                   elseif location_groups[j].elevation == 'high' then 
+                                        table.remove(border_locations, m)
+                                   elseif location_groups[j].elevation == 'high' then
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        table.remove(border_locations, m)                                        
+                                        table.remove(border_locations, m)
                                    end
                                 elseif border_locations[m].elevation == 'dummy-low' then
-                                   if location_groups[j].elevation == 'low-low' then 
+                                   if location_groups[j].elevation == 'low-low' then
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        table.remove(border_locations, m)                                        
-                                   elseif location_groups[j].elevation == 'low' then 
+                                        table.remove(border_locations, m)
+                                   elseif location_groups[j].elevation == 'low' then
                                         table.insert(location_groups[j].hexes, {x= new_hexes[k][1], y= new_hexes[k][2]})
-                                        table.remove(border_locations, m)                                        
+                                        table.remove(border_locations, m)
                                    end
                                 end
                                 al_found = 'no'
                         end
                     end
-                    if #candidate_locations < 1 then 
-                        anchor_hex = {} 
+                    if #candidate_locations < 1 then
+                        anchor_hex = {}
                         al_found = 'blah'
                         break
                     end
-                    -- run out of available hexes, probably because we got stuck in a NW corner.  
+                    -- run out of available hexes, probably because we got stuck in a NW corner.
                     -- Go back to some random hex in the candidate_locations group (but not a map-border hex), try again
                     if al_found == 'no' then
                         local on_border = true
@@ -174,8 +174,8 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                             end
                         end
                         change_count = change_count + 1
-                    end                
-                        
+                    end
+
                     -- failsafe
                     if change_count >= max_map_iter then anchor_hex = {} end -- How many failures to find anything should be enough?
                 end
@@ -185,7 +185,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 -- Second cycle
 -- iterate over all the remaining available_locations
-     -- This isn't very efficient, and can assign the hex to the wrong blob (but still correct elevation), 
+     -- This isn't very efficient, and can assign the hex to the wrong blob (but still correct elevation),
      -- but it would be even less efficient if we looked for the closest marker
         local available_locations_final = {}
         if #available_locations > 0 then
@@ -211,7 +211,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                        for m in ipairs (location_groups) do
                            if location_groups[m].elevation == 'high' then
                               table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
-                              available_locations[i].x, available_locations[i].y = 0, 0 
+                              available_locations[i].x, available_locations[i].y = 0, 0
                               break
                            end
                        end
@@ -224,7 +224,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                                     for m in ipairs (location_groups) do
                                         if location_groups[m].elevation == 'low-low' then
                                             table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
-                                            available_locations[i].x, available_locations[i].y = 0, 0 
+                                            available_locations[i].x, available_locations[i].y = 0, 0
                                             break
                                         end
                                     end
@@ -237,7 +237,7 @@ wesnoth.wml_actions.elevation_score_map = function(cfg)
                        for m in ipairs (location_groups) do
                            if location_groups[m].elevation == 'low' then
                               table.insert(location_groups[m].hexes, {x= available_locations[i].x, y= available_locations[i].y})
-                              available_locations[i].x, available_locations[i].y = 0, 0 
+                              available_locations[i].x, available_locations[i].y = 0, 0
                               break
                            end
                        end
