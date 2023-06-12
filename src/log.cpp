@@ -39,6 +39,14 @@
 #include <android/log.h>
 #endif
 
+#ifdef _WIN32
+#include <io.h>
+#endif
+
+#ifdef __ANDROID__
+#include <android/log.h>
+#endif
+
 static lg::log_domain log_setup("logsetup");
 #define ERR_LS LOG_STREAM(err,   log_setup)
 #define WRN_LS LOG_STREAM(warn,  log_setup)
