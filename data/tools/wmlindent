@@ -288,41 +288,51 @@ def convertor(linefilter, arglist, exclude):
                         print("wmlindent: %s excluded" % filename, file=sys.stderr)
                     continue
                 else:
+                    backup = f'{filename}-bak'
+                    if sys.platform == 'win32' and os.path.exists(backup):
+                        os.remove(backup)
+                    os.rename(filename, backup)
+
                     try:
-                        with codecs.open(filename,"r","utf8") as infp, codecs.open(filename + ".out", "w","utf8") as outfp:
+                        with codecs.open(backup, "r", "utf8") as infp,\
+                                codecs.open(filename, "w", "utf8") as outfp:
                             linefilter(filename, infp, outfp)
+
                     except bailout as e:
+                        os.remove(filename)
+                        os.rename(backup, filename)
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
-                        os.remove(filename + ".out")
+
                     except UnicodeDecodeError as e:
-                        os.remove(filename + ".out")
+                        os.remove(filename)
+                        os.rename(backup, filename)
                         print('wmlindent: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+
                     except KeyboardInterrupt:
-                        os.remove(filename + ".out")
+                        os.remove(filename)
+                        os.rename(backup, filename)
                         print("wmlindent: %s interrupted" % filename, file=sys.stderr)
+
                     else:
-                        if filecmp.cmp(filename, filename + ".out"):
+                        if filecmp.cmp(filename, backup):
                             if verbose >= 2:
                                 print("wmlindent: %s unchanged" % filename, file=sys.stderr)
-                            os.remove(filename + ".out")
+                            os.remove(filename)
+                            os.rename(backup, filename)
+
                         else:
                             if not quiet:
                                 print("wmlindent: %s changed" % filename, file=sys.stderr)
+
                             if dryrun:
-                                os.remove(filename + ".out")
+                                os.remove(filename)
+                                os.rename(backup, filename)
+
                             else:
-                                file_stat = os.stat(filename)
-
-                                os.remove(filename) # For Windows portability
-                                # There's a tiny window open if you keyboard-
-                                # interrupt here. It's unavoidable, because
-                                # there's no known way to do an atomic rename
-                                # under Windows when the target exists -- see
-                                # Python manual 14.1.4::rename()
-                                os.rename(filename + ".out", filename)
-
+                                file_stat = os.stat(backup)
                                 os.chmod(filename, file_stat.st_mode)
                                 os.chown(filename, file_stat.st_uid, file_stat.st_gid)
+                                os.remove(backup)
 
         else: # in a for .. else cycle, else is always executed after the for cycle ends
             if not found_valid_path:
