@@ -35,8 +35,8 @@
 #include <iostream>
 #include <iomanip>
 
-#ifdef _WIN32
-#include <io.h>
+#ifdef __ANDROID__
+#include <android/log.h>
 #endif
 
 static lg::log_domain log_setup("logsetup");
@@ -53,6 +53,31 @@ class null_streambuf : public std::streambuf
 public:
 	null_streambuf() {}
 };
+
+#ifdef __ANDROID__
+class android_log_buf : public std::streambuf
+{
+	std::string output;
+	void write() {
+		auto newline { output.find_first_of("\n") };
+		if(newline != std::string::npos) {
+			__android_log_write(ANDROID_LOG_INFO, "wesnoth", output.substr(0, newline).c_str());
+			output = output.substr(newline+1);
+		}
+	}
+	protected:
+	virtual std::streamsize xsputn(const char_type* s, std::streamsize n) override {
+		output.append(s, n);
+		write();
+		return n;
+	}
+	virtual int_type overflow(int_type ch) override {
+		output.push_back(ch);
+		write();
+		return 1;
+	}
+};
+#endif
 
 } // end anonymous namespace
 
@@ -74,6 +99,10 @@ static std::ostream *output_stream_ = nullptr;
  */
 static std::ostream& output()
 {
+#ifdef __ANDROID__
+	static std::ostream android_ostream(new android_log_buf);
+	return android_ostream;
+#endif
 	if(output_stream_) {
 		return *output_stream_;
 	}
