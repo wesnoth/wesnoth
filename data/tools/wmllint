@@ -1482,7 +1482,7 @@ mainline = ("Dead_Water",
             "World_Conquest",
             )
 
-spellcheck_these = (\
+spellcheck_these = (
     "cannot_use_message=",
     "caption=",
     "description=",
@@ -2383,10 +2383,7 @@ to be called on their own".format(filename, num))
             if macname in whopairs:
                 for who in whopairs[macname].split(","):
                     if who.strip().startswith("--"):
-                        try:
-                            present.remove(who.replace('--', '', 1).strip())
-                        except:
-                            ValueError
+                        present.remove(who.replace('--', '', 1).strip())
                     else:
                         present.append(who.strip())
             elif not leadmac.group().endswith('}'):
@@ -2444,8 +2441,8 @@ to be called on their own".format(filename, num))
             # Recognize units when unstored
             if (in_scenario or in_multiplayer) and in_store:
                 if key == 'id' and not in_not:
-                    if not storeid == None:
-                        storeid == storeid + ',' + value
+                    if storeid is not None:
+                        storeid = storeid + ',' + value
                     else:
                         storeid = value
                 elif key == 'variable' and '{' not in value:
@@ -2582,7 +2579,7 @@ def condition_match(p, q):
     nq = False
     if sq.startswith("!"):
         sq = sp[1:]
-        nq == True
+        nq = True
     return (sp != sq) and (np != nq)
 
 def consistency_check():
@@ -3600,9 +3597,9 @@ directory.""")
         # Handle SingleUnitWML or Standard Unit Filter or SideWML
         # Also, when macro calls have description= in them, the arg is
         # a SUF being passed in.
-        if tagstack and ((under("unit") and "units" not in filename) or \
-               standard_unit_filter() or \
-               under("side") or \
+        if tagstack and ((under("unit") and "units" not in filename) or
+               standard_unit_filter() or
+               under("side") or
                re.search("{[A-Z]+.*description=.*}", line)):
             if "id" not in tagstack[-1][1] and "_" not in line:
                 line = re.sub(r"\bdescription\s*=", "id=", line)
@@ -3755,9 +3752,15 @@ In your case, your system interprets your arguments as:
                         elif revert:
                             print("wmllint: reverting %s" % backup)
                             if not dryrun:
+                                file_stat = os.stat(fn)
+
                                 if sys.platform == 'win32':
                                     os.remove(fn)
                                 os.rename(backup, fn)
+
+                                os.chmod(fn, file_stat.st_mode)
+                                os.chown(fn, file_stat.st_uid, file_stat.st_gid)
+
                 elif diffs:
                     # Display diffs
                     if os.path.exists(backup):

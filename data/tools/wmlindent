@@ -28,7 +28,7 @@ wmlindent will ignore them.  You may need to do this for unbalanced
 macros (it's better, though, to get rid of those where possible).
 Use 'wmlindent: {start,stop} ignoring' anywhere in a comment.
 
-It is also possible to declare custom openers an closers, e.g for macros
+It is also possible to declare custom openers and closers, e.g. for macros
 that are actually control constructs.  To do this, use declarations
 
     # wmlindent: opener "{EXCEPTIONAL_OPENER "
@@ -113,7 +113,7 @@ def strip_comment(line, in_string):
     split = line.split('"')
     result = split[0]
     if not in_string and '#' in result:
-        return result.split('#')[0].rstrip();
+        return result.split('#')[0].rstrip()
     split.pop(0)
     for component in split:
         in_string = not in_string
@@ -311,6 +311,8 @@ def convertor(linefilter, arglist, exclude):
                             if dryrun:
                                 os.remove(filename + ".out")
                             else:
+                                file_stat = os.stat(filename)
+
                                 os.remove(filename) # For Windows portability
                                 # There's a tiny window open if you keyboard-
                                 # interrupt here. It's unavoidable, because
@@ -318,6 +320,10 @@ def convertor(linefilter, arglist, exclude):
                                 # under Windows when the target exists -- see
                                 # Python manual 14.1.4::rename()
                                 os.rename(filename + ".out", filename)
+
+                                os.chmod(filename, file_stat.st_mode)
+                                os.chown(filename, file_stat.st_uid, file_stat.st_gid)
+
         else: # in a for .. else cycle, else is always executed after the for cycle ends
             if not found_valid_path:
                 print("wmlindent: no WML file found, exiting", file=sys.stderr)
