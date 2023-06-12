@@ -364,8 +364,12 @@ class HTMLOutput:
         self.isocode = isocode
         global_htmlout = self
 
-    def translate(self, string, domain):
-        return self.translation.translate(string, domain)
+    def make_gettext_single(self, domain):
+        # xgettext requires a different function per text domain.
+        return lambda string: self.translation.translate(string, domain)
+
+    def make_gettext(self, *args):
+        return tuple(map(self.make_gettext_single, args))
 
     def analyze_units(self, grouper, add_parents):
         """
@@ -477,18 +481,8 @@ class HTMLOutput:
     def write_navbar(self, report_type):
         def write(line):
             self.output.write(line)
-        # xgettext requires a different function per text domain.
-        def _w(msgid):
-            return self.translate(msgid, "wesnoth")
 
-        def _w_editor(msgid):
-            return self.translate(msgid, "wesnoth-editor")
-
-        def _w_help(msgid):
-            return self.translate(msgid, "wesnoth-help")
-
-        def _w_lib(msgid):
-            return self.translate(msgid, "wesnoth-lib")
+        _w, _w_editor, _w_help, _w_lib = self.make_gettext("wesnoth", "wesnoth-editor", "wesnoth-help", "wesnoth-lib")
 
         all_written_html_files.append((self.isocode, self.output.filename))
 
@@ -814,18 +808,8 @@ class HTMLOutput:
     def write_units(self):
         def write(line):
             self.output.write(line)
-        # xgettext requires a different function per text domain.
-        def _w(msgid):
-            return self.translate(msgid, "wesnoth")
 
-        def _w_editor(msgid):
-            return self.translate(msgid, "wesnoth-editor")
-
-        def _w_help(msgid):
-            return self.translate(msgid, "wesnoth-help")
-
-        def _w_lib(msgid):
-            return self.translate(msgid, "wesnoth-lib")
+        _w, _w_editor, _w_help, _w_lib = self.make_gettext("wesnoth", "wesnoth-editor", "wesnoth-help", "wesnoth-lib")
 
         rows = self.unitgrid
         write('<table class="units">\n<colgroup>')
