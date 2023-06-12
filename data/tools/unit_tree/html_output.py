@@ -366,7 +366,7 @@ class HTMLOutput:
 
     def make_gettext_single(self, domain):
         # xgettext requires a different function per text domain.
-        return lambda string: self.translation.translate(string, domain)
+        return lambda msgid: self.translation.translate(msgid, domain)
 
     def make_gettext(self, *args):
         return tuple(map(self.make_gettext_single, args))
