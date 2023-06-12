@@ -18,7 +18,7 @@ Wesnoth's engine conforms to the C++17 standard. We encourage the use of standar
 
 ### Code Formatting
 
-All C++, WML and Lua files are in UTF-8, as we use Gettext-style translations, and translatable strings use some punctuation that's outside of the ASCII subset. More details are in the [Typography Style Guide](https://wiki.wesnoth.org/GettextForWesnothDevelopers).
+All C++, WML and Lua files are in UTF-8, as we use Gettext-style translations, and translatable strings use some punctuation that's outside of the ASCII subset. More details are in the [Typography Style Guide](https://wiki.wesnoth.org/Typography_Style_Guide) and the guide to [using Gettext strings](https://wiki.wesnoth.org/GettextForWesnothDevelopers).
 
 If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions. Make a local commit before running `clang-format`, in case more code than expected gets changed.
 
