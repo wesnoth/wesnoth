@@ -1158,7 +1158,7 @@ int main(int argc, char** argv)
 					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 				}
 				game_config::path = std::move(auto_dir);
-			} else {
+			} else if(!game_config::path.empty()) {
 				bool data_dir_specified = false;
 				for(int i=0;i<argc;i++) {
 					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
