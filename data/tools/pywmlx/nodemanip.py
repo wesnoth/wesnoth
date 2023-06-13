@@ -23,14 +23,18 @@ def _closenode_update_dict(podict):
                 # be ignored, then wrong context info would be attached to these sentences,
                 # or to an undetermined future sentence.
                 wmlerr(*unbalanced_wml)
+
+            # Get the relevant catalog d for this sentence. Initialize it if needed.
             if i.domain in podict:
                 d = podict[i.domain]
             else:
                 podict[i.domain] = dict()
                 d = podict[i.domain]
-            posentence = d.get(i.sentence)
+
+            dict_key = i.sentence_id
+            posentence = d.get(dict_key)
             if posentence is None:
-                d[i.sentence] = (
+                d[dict_key] = (
                        nodes[-1].nodesentence_to_posentence(i) )
             else:
                 posentence.update_with_commented_string(
@@ -119,13 +123,13 @@ def closenode(closetag, mydict, lineno):
             nodes = None
 
 
-def addNodeSentence(sentence, *, domain, ismultiline, lineno, lineno_sub,
-                    override, addition, plural=None):
+def addNodeSentence(sentence, *, domain, macro=None, ismultiline,
+                    lineno, lineno_sub, override, addition, plural=None):
     global nodes
     if nodes is None:
         nodes = [pos.WmlNode(fileref=fileref, fileno=fileno,
                               tagname="", autowml=False)]
-    nodes[-1].add_sentence(sentence, domain=domain, ismultiline=ismultiline,
+    nodes[-1].add_sentence(sentence, domain=domain, macro=macro, ismultiline=ismultiline,
                            lineno=lineno, lineno_sub=lineno_sub,
                            override=override, addition=addition,
                            plural=plural)

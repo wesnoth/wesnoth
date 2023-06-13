@@ -15,12 +15,13 @@ class PoCommentedStringPL:
 
 class PoCommentedString:
     def __init__(self, sentence, domain, *, orderid, ismultiline,
-                 wmlinfos, finfos, addedinfos, plural=None):
+                 wmlinfos, finfos, macro = None, addedinfos, plural=None):
         self.sentence = sentence
         self.domain = domain
         self.wmlinfos = wmlinfos
         self.addedinfos = addedinfos
         self.finfos = finfos
+        self.macro = macro
         self.orderid = orderid
         self.ismultiline = ismultiline
         self.plural = None
@@ -80,12 +81,19 @@ class PoCommentedString:
 
 # WmlNodeSentence use PoCommentedStringPL for 'plural' parameter
 class WmlNodeSentence:
-    def __init__(self, sentence, *, domain, ismultiline, lineno, lineno_sub=0,
-                 plural=None, override=None, addition=None):
-        self.sentence = sentence
+    def __init__(self, sentence, *, domain, macro=None, ismultiline,
+                 lineno, lineno_sub=0, plural=None,
+                 override=None, addition=None):
         self.domain = domain
+        self.sentence = sentence
+        self.sentence_id = sentence
+        if macro is None:
+            self.sentence_id = '\x01' + sentence
+        else:
+            self.sentence_id = '\x00' + '\x00'.join(map(str, macro)) + '\x00\x00' + sentence
         # Say if it is multiline or not.
         self.ismultiline = ismultiline
+        self.macro = macro
         self.lineno = lineno
         # lineno_sub:
         # used only in WmlNodeSentence. This parameter is actually used
@@ -128,8 +136,8 @@ class WmlNode:
         self.wmlinfos = None
         self.autowml = autowml
 
-    def add_sentence(self, sentence, *, domain, ismultiline, lineno,
-                     lineno_sub=0, plural=None, override=None, addition=None):
+    def add_sentence(self, sentence, *, domain, macro=None, ismultiline, lineno, lineno_sub=0,
+                     plural=None, override=None, addition=None):
         if self.sentences is None:
             self.sentences = []
         # 'plural' parameter accepted by WmlNode.add_sentence can be:
@@ -157,6 +165,7 @@ class WmlNode:
                 plural = None
         self.sentences.append( WmlNodeSentence(sentence,
                                           domain=domain,
+                                          macro=macro,
                                           ismultiline=ismultiline,
                                           lineno=lineno,
                                           lineno_sub=lineno_sub,
@@ -208,6 +217,7 @@ class WmlNode:
                                wmlinfos=[],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=nodesentence.addedinfo,
                                plural=nodesentence.plural )
                 else:
@@ -218,6 +228,7 @@ class WmlNode:
                                wmlinfos=[],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=[],
                                plural=nodesentence.plural )
             else: # having a non-empty override
@@ -230,6 +241,7 @@ class WmlNode:
                                wmlinfos=[nodesentence.overrideinfo],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=nodesentence.addedinfo,
                                plural=nodesentence.plural )
                 else:
@@ -240,6 +252,7 @@ class WmlNode:
                                wmlinfos=[nodesentence.overrideinfo],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=[],
                                plural=nodesentence.plural )
         # if you don't have override and autowml is true
@@ -254,6 +267,7 @@ class WmlNode:
                                wmlinfos=[self.assemble_wmlinfo()],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=nodesentence.addedinfo,
                                plural=nodesentence.plural )
             else:
@@ -264,6 +278,7 @@ class WmlNode:
                                wmlinfos=[self.assemble_wmlinfo()],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=[],
                                plural=nodesentence.plural )
         # if you don't have override and autowml is false
@@ -278,6 +293,7 @@ class WmlNode:
                                wmlinfos=[],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=nodesentence.addedinfo,
                                plural=nodesentence.plural )
             else:
@@ -288,5 +304,6 @@ class WmlNode:
                                wml_infos=[],
                                finfos=[self.fileref +
                                         str(nodesentence.lineno)],
+                               macro=nodesentence.macro,
                                addedinfos=[],
                                plural=nodesentence.plural )
