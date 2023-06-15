@@ -39,6 +39,7 @@ struct editor_team_info {
 	int side;
 	std::string id;
 	std::string name;
+	std::string recruit_list;
 	int gold;
 	int income;
 	int village_income;
@@ -69,7 +70,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, bool pure_map, const config& schedule);
+	explicit map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -79,7 +80,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const game_config_view& game_config, const std::string& filename);
+	map_context(const game_config_view& game_config, const std::string& filename, const std::string& addon_id);
 
 	/**
 	 * Map context destructor
@@ -175,14 +176,8 @@ public:
 	 */
 	void replace_local_schedule(const std::vector<time_of_day>& schedule);
 
-	/**
-	 * TODO
-	 */
 	void set_starting_time(int time);
 
-	/**
-	 * TODO
-	 */
 	void set_local_starting_time(int time) {
 		tod_manager_->set_current_time(time, active_area_);
 		++actions_since_save_;
@@ -204,7 +199,6 @@ public:
 	}
 
 	/**
-	 *
 	 * @return the index of the currently active area.
 	 */
 	int get_active_area() const {
@@ -267,15 +261,9 @@ public:
 	 */
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 
-	/**
-	 * TODO
-	 */
 	void set_scenario_setup(const std::string& id, const std::string& name, const std::string& description,
 			int turns, int xp_mod, bool victory_defeated, bool random_time);
 
-	/**
-	 * TODO
-	 */
 	void set_side_setup(editor_team_info& info);
 
 	/**
@@ -306,8 +294,6 @@ public:
 	const std::string& get_filename() const { return filename_; }
 
 	void set_filename(const std::string& fn) { filename_ = fn; }
-
-	const std::string& get_map_data_key() const { return map_data_key_; }
 
 	const std::string& get_id() const { return scenario_id_; }
 	const std::string& get_description() const { return scenario_description_; }
@@ -493,7 +479,8 @@ protected:
 	bool everything_changed_;
 
 private:
-
+	std::string addon_id_;
+	std::optional<config> previous_cfg_;
 	std::string scenario_id_, scenario_name_, scenario_description_;
 
 	std::optional<int> xp_mod_;

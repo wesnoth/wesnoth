@@ -134,9 +134,12 @@ std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_saves_dir();
+std::string get_wml_persist_dir();
 std::string get_intl_dir();
 std::string get_screenshot_dir();
+std::string get_addons_data_dir();
 std::string get_addons_dir();
+std::string get_current_editor_dir(const std::string& addon_id);
 const std::string get_version_path_suffix(const version_info& version);
 const std::string& get_version_path_suffix();
 
@@ -153,6 +156,7 @@ std::string get_user_config_dir();
 std::string get_user_data_dir();
 std::string get_logs_dir();
 std::string get_cache_dir();
+std::string get_legacy_editor_dir();
 
 struct other_version_dir
 {

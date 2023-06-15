@@ -154,10 +154,37 @@ std::string get_saves_dir()
 	return get_dir(dir_path);
 }
 
+std::string get_addons_data_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/data";
+	return get_dir(dir_path);
+}
+
 std::string get_addons_dir()
 {
-	const std::string dir_path = get_user_data_dir() + "/data/add-ons";
+	const std::string dir_path = get_addons_data_dir() + "/add-ons";
 	return get_dir(dir_path);
+}
+
+std::string get_wml_persist_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/persist";
+	return get_dir(dir_path);
+}
+
+std::string get_legacy_editor_dir()
+{
+	const std::string dir_path = get_user_data_dir() + "/editor";
+	return get_dir(dir_path);
+}
+
+std::string get_current_editor_dir(const std::string& addon_id)
+{
+	if(addon_id == "mainline") {
+		return get_dir(game_config::path) + "/data/multiplayer";
+	} else {
+		return get_addons_dir() + "/" + addon_id;
+	}
 }
 
 std::string get_intl_dir()
