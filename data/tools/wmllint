@@ -177,11 +177,20 @@
 # code.
 #
 
-import sys, os, re, argparse, string, copy, difflib, time, gzip, codecs
-from wesnoth.wmltools3 import *
-from wesnoth.wmliterator3 import *
-from collections import defaultdict
+import argparse
+import codecs
+import copy
+import difflib
+import gzip
+import os
+import re
+import shutil
+import sys
+import time
+
 from wesnoth import version
+from wesnoth.wmliterator3 import *
+from wesnoth.wmltools3 import *
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
@@ -2441,7 +2450,7 @@ to be called on their own".format(filename, num))
             # Recognize units when unstored
             if (in_scenario or in_multiplayer) and in_store:
                 if key == 'id' and not in_not:
-                    if storeid is not None:
+                    if storeid:
                         storeid = storeid + ',' + value
                     else:
                         storeid = value
@@ -3752,15 +3761,7 @@ In your case, your system interprets your arguments as:
                         elif revert:
                             print("wmllint: reverting %s" % backup)
                             if not dryrun:
-                                file_stat = os.stat(fn)
-
-                                if sys.platform == 'win32':
-                                    os.remove(fn)
-                                os.rename(backup, fn)
-
-                                os.chmod(fn, file_stat.st_mode)
-                                os.chown(fn, file_stat.st_uid, file_stat.st_gid)
-
+                                os.replace(backup, fn)
                 elif diffs:
                     # Display diffs
                     if os.path.exists(backup):
@@ -3782,17 +3783,17 @@ In your case, your system interprets your arguments as:
                         if changed:
                             print("wmllint: converting", fn)
                             if not dryrun:
-                                if sys.platform == 'win32' and os.path.exists(backup):
-                                    os.remove(backup)
-                                os.rename(fn, backup)
+                                # copy2 differs from copy in that it attempts to retain meta-data
+                                shutil.copy2(fn, backup)
+
                                 if fn.endswith(".gz"):
                                     with gzip.open(fn, "w") as ofp:
                                         ofp.write(changed)
+
                                 else:
                                     with codecs.open(fn, "w", "utf8") as ofp:
                                         ofp.write(changed)
-                    #except maptransform_error, e:
-                    #    print("wmllint: " + repr(e), file=sys.stderr)
+
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()

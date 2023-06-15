@@ -43,10 +43,10 @@ The public utility macros "{FOREACH" and "{NEXT" come as wired-in exceptions,
 because it is not guaranteed that their indent declarations will be processed
 before the macro library is reached.
 
-Interrupting will be safe, as each reindenting will be done to a copy
-that is atomically renamed when it's done.  If the output file is identical
-to the input, the output file will simply be deleted, so the timestamp
-on the input file won't be touched.
+Interrupting is not safe, as each reindenting will be done against the original
+file, with a back-up that is only removed when it's done.  If the output file
+is identical to the input, the output file will simply be deleted, so the
+timestamp on the input file won't be touched.
 
 The --dryrun option detects and reports files that would be changed
 without changing them. The --verbose or -v option enables reporting
@@ -61,9 +61,17 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, argparse, filecmp, re, codecs, signal
-from wesnoth import wmltools3 as wmltools
+import argparse
+import codecs
+import filecmp
+import os
+import re
+import shutil
+import signal
+import sys
+
 from wesnoth import version
+from wesnoth import wmltools3 as wmltools
 
 closer_prefixes = ["{NEXT "]
 opener_prefixes = ["{FOREACH "]
@@ -89,7 +97,7 @@ def opener(str):
     # This logic is a bit obscure. The 'not "[/" in str' catches the
     # obvious case of a closing tag, but it also catches the idiom
     # [allow_undo][/allow_undo] which we want to treat as a no-op.
-    elif (str.startswith("[") and not closer(str) and not "[/" in str):
+    elif str.startswith("[") and not closer(str) and not "[/" in str:
         return True
     # Trailing ( opens a scope to be closed by ).
     elif str.endswith("(\n") and '#' not in str:
@@ -288,10 +296,12 @@ def convertor(linefilter, arglist, exclude):
                         print("wmlindent: %s excluded" % filename, file=sys.stderr)
                     continue
                 else:
+                    # wmlindent originally output to a new file and if the change was kept the new file was renamed to
+                    # the original. However, this causes issues with things like file permissions (GitHub issue #7708),
+                    # so instead copy the original to a back-up and use that as the source, with the original file as
+                    # the output.
                     backup = f'{filename}-bak'
-                    if sys.platform == 'win32' and os.path.exists(backup):
-                        os.remove(backup)
-                    os.rename(filename, backup)
+                    shutil.copy2(filename, backup)  # copy2 differs from copy in that it attempts to retain meta-data
 
                     try:
                         with codecs.open(backup, "r", "utf8") as infp,\
@@ -299,39 +309,31 @@ def convertor(linefilter, arglist, exclude):
                             linefilter(filename, infp, outfp)
 
                     except bailout as e:
-                        os.remove(filename)
-                        os.rename(backup, filename)
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)
+                        os.replace(backup, filename)
 
                     except UnicodeDecodeError as e:
-                        os.remove(filename)
-                        os.rename(backup, filename)
                         print('wmlindent: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+                        os.replace(backup, filename)
 
                     except KeyboardInterrupt:
-                        os.remove(filename)
-                        os.rename(backup, filename)
                         print("wmlindent: %s interrupted" % filename, file=sys.stderr)
+                        os.replace(backup, filename)
 
                     else:
                         if filecmp.cmp(filename, backup):
                             if verbose >= 2:
                                 print("wmlindent: %s unchanged" % filename, file=sys.stderr)
-                            os.remove(filename)
-                            os.rename(backup, filename)
+                            os.replace(backup, filename)
 
                         else:
                             if not quiet:
                                 print("wmlindent: %s changed" % filename, file=sys.stderr)
 
                             if dryrun:
-                                os.remove(filename)
-                                os.rename(backup, filename)
+                                os.replace(backup, filename)
 
                             else:
-                                file_stat = os.stat(backup)
-                                os.chmod(filename, file_stat.st_mode)
-                                os.chown(filename, file_stat.st_uid, file_stat.st_gid)
                                 os.remove(backup)
 
         else: # in a for .. else cycle, else is always executed after the for cycle ends
