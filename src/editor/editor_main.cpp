@@ -91,7 +91,7 @@ void initialize_addon(const std::string& addon_id)
 	}
 }
 
-EXIT_STATUS migrate_to_addon(const std::string& addon_id)
+static EXIT_STATUS migrate_to_addon(const std::string& addon_id)
 {
 	std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
 	if(!filesystem::file_exists(addon_dir)) {
@@ -200,7 +200,7 @@ EXIT_STATUS migrate_to_addon(const std::string& addon_id)
 			//   if [unit], set the unit's side
 			// for [time]:
 			//   keep under [multiplayer]
-			for(const auto& child : temp.all_children_range()) {
+			for(const config::any_child child : temp.all_children_range()) {
 				if(child.key != "side" && child.key != "time") {
 					config& c = event.add_child(child.key);
 					c.append_attributes(child.cfg);
@@ -208,7 +208,7 @@ EXIT_STATUS migrate_to_addon(const std::string& addon_id)
 				} else if(child.key == "side") {
 					config& c = multiplayer.add_child("side");
 					c.append_attributes(child.cfg);
-					for(const auto& side_child : child.cfg.all_children_range()) {
+					for(const config::any_child side_child : child.cfg.all_children_range()) {
 						if(side_child.key == "village") {
 							config& c1 = c.add_child("village");
 							c1.append_attributes(side_child.cfg);
