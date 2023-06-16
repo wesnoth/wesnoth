@@ -91,7 +91,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 {
 }
 
-std::string get_map_location(const std::string& file_contents, const std::string& attr)
+static std::string get_map_location(const std::string& file_contents, const std::string& attr)
 {
 	std::size_t attr_name_start = file_contents.find(attr);
 	if(attr_name_start == std::string::npos) return "";
@@ -561,7 +561,7 @@ config map_context::to_config()
 	// the state of the previous scenario cfg
 	// if it exists, alter specific parts of it (sides, times, and editor events) rather than replacing it entirely
 	if(previous_cfg_) {
-		scen = previous_cfg_.value();
+		scen = *previous_cfg_;
 	}
 
 	// if this has [multiplayer], use [multiplayer]
