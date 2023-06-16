@@ -225,8 +225,7 @@ std::string read_map(const std::string& name)
 	std::string res;
 	std::string map_location = get_wml_location(name);
 	if(map_location.empty()) {
-		// If this is an add-on or campaign that's set the [binary_path] for its image directory,
-		// automatically check for a sibling maps directory.
+		// Consult [binary_path] for maps as well.
 		map_location = get_binary_file_location("maps", name);
 	}
 	if(!map_location.empty()) {
