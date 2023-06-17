@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-05-21 03:01 UTC\n"
-"PO-Revision-Date: 2023-05-12 18:43+0200\n"
+"PO-Revision-Date: 2023-05-28 13:15+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -104,10 +104,17 @@ msgstr "Různé"
 #. [entry]
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:146
 msgid "And special thanks to everyone else who I forgot to mention."
-msgstr "Zvláštní poděkování patří všem, jež zde byli opomenuti."
+msgstr "Zvláštní poděkování patří všem, již zde byli opomenuti."
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
+#, fuzzy
+#| msgid ""
+#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
+#| "damage reduced by 1 each turn during the day unless prevented by healers "
+#| "or cured by water at an oasis.\n"
+#| "\n"
+#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -115,9 +122,9 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"dehydratace: Tato jednotka je dehydrovaná. Každé kolo během dne jí ubyde "
-"život o $dehydration a zranění způsobená jejími útoky se sníží o 1, pokud "
-"tomu nezabrání léčitelé nebo dokud se neuzdraví osvěžením vodou v oáze.\n"
+"dehydratace: Tato jednotka je dehydrovaná. Každé kolo během dne ztratí "
+"4 body života a zranění způsobená jejími útoky se sníží o 1, pokud tomu "
+"nezabrání léčitelé nebo dokud se neuzdraví osvěžením vodou v oáze.\n"
 "\n"
 "V důsledku dehydratace nemohou jednotky zemřít nebo přestat udělovat zranění."
 
@@ -2269,12 +2276,14 @@ msgstr ""
 #. [resistance]: id=garak_steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:700
 msgid "steadfast"
-msgstr "vytrvalý"
+msgstr ""
 
 #. [resistance]: id=garak_steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
+#, fuzzy
+#| msgid "female^distract"
 msgid "female^steadfast"
-msgstr "vytrvalá"
+msgstr "rozptýlení"
 
 #. [resistance]: id=garak_steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:702
@@ -2282,8 +2291,6 @@ msgid ""
 "This unit's resistances are increased by 20%, up to a maximum of 50%, when "
 "defending. Vulnerabilities are not affected."
 msgstr ""
-"Odolnosti této jednotky jsou při obraně zvýšeny o 20 %, až na maximum 50 %. "
-"Odolnosti se zápornými hodnotami (zranitelnosti) nejsou ovlivněny."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:715
@@ -2486,7 +2493,7 @@ msgid ""
 "In this I shall support you, the darkness will not lift until one of us is "
 "victorious."
 msgstr ""
-"V tom s tebou musím souhlasit, slunce nesmí vyjít dokud jeden z nás "
+"V tom s tebou musím souhlasit, slunce nesmí vyjít, dokud jeden z nás "
 "nezvítězí."
 
 #. [message]: speaker=Possessed Garak
@@ -2504,7 +2511,7 @@ msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr ""
-"V tom s tebou musím souhlasit, slunce nesmí vyjít dokud jeden z nás "
+"V tom s tebou musím souhlasit, slunce nesmí vyjít, dokud jeden z nás "
 "nezvítězí."
 
 #. [message]: speaker=Nym
@@ -3031,10 +3038,6 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
-"Když už mluvíme o těchto končinách, nemáme sice Garaka, který by nás vedl, "
-"ale celá tahle krajina přesně odpovídá mapě, kterou jsme včera večer získali "
-"od skřetů! Přímo před námi je na ní skřetí tábor! Říkam si, jestli bychom se "
-"mohli kolem proplížit tak, aby nás nezpozorovali."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
@@ -3162,8 +3165,6 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
-"Stačí pár kroků a všichni tihle goblini už ví, že jsme tady! Hádám, že to "
-"není tak snadné tajně se plížit na domácí půdě někoho jiného."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:541
@@ -3919,8 +3920,10 @@ msgstr "Jejda!"
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
+#, fuzzy
+#| msgid "Kaleh, I think you should come up and see this."
 msgid "Whoa. Kaleh, you have to come see this."
-msgstr "No ne. Kalehu, na tohle se musíš přijít podívat."
+msgstr "Kalehu, myslím, že bys měl přijít a podívat se na tohle."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
@@ -11555,6 +11558,7 @@ msgstr ""
 msgid "This is—"
 msgstr "Toto je..."
 
+# pův.: A musím říct, že $intl_ally_name mě svými činy přesvědčil, že ???.
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:178
 msgid ""
@@ -13055,9 +13059,9 @@ msgid ""
 "the black citadel. I tire of all this bloodshed. Wherever Yechnagoth hides, "
 "we will find her and make her pay for all she has done."
 msgstr ""
-"Našli jsme oba klíče. Teď stačí je vzít a otevřít dveře do černé citadely. "
-"Tohle krveprolití mě unavuje. Ať už se Yechnagoth skrývá kde chce, najdeme "
-"ji a pak zaplatí za vše, co udělala."
+"Našli jsme oba klíče. Teď stačí je vzít a otevřít dveře do černé citadely. "
+"Tohle krveprolití mě unavuje. Ať už se Yechnagoth skrývá, kde chce, najdeme "
+"ji a pak zaplatí za vše, co udělala."
 
 #. [message]: speaker=Kelur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:974
@@ -13211,7 +13215,7 @@ msgstr "Pche, vy elfové jste tak předvídatelní."
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1287
 msgid "Talk all you want, we will have our vengeance!"
-msgstr "Říkej si co chceš, ale my se pomstíme!"
+msgstr "Říkej si, co chceš, ale my se pomstíme!"
 
 # tady to je dost blbé... :/
 #. [message]: speaker=Eloh
@@ -13237,9 +13241,9 @@ msgid ""
 "fruitful lives. Don’t let our sacrifices be forgotten..."
 msgstr ""
 "Musím to jít ukončit. Ale předtím bych vám chtěl všem poděkovat za vaši "
-"důvěru ve mne během této dlouhé cesty. Pokud nezvítězím, uprchněte s mořským "
-"lidem a najděte si místo, kde budete moci žít v klidu a bezpečí. Mé poslední "
-"přání je, abyste žili dlouhé a šťastné životy, ať už se stane cokoliv. "
+"důvěru ve mne během této dlouhé cesty. Pokud nezvítězím, uprchněte s mořským "
+"lidem a najděte si místo, kde budete moci žít v klidu a bezpečí. Mé poslední "
+"přání je, abyste žili dlouhé a šťastné životy, ať už se stane cokoliv. "
 "Nedopusťte, aby byly naše oběti zapomenuty..."
 
 #. [message]: speaker=Nym
@@ -13299,9 +13303,9 @@ msgid ""
 "him. He would not want us to disobey him and sacrifice our lives too."
 msgstr ""
 "Nymtesso, drahoušku, vždycky jsi byla rebelka. Ale nakonec se musíš naučit "
-"respektovat rozhodnutí tvého vůdce. Kaleh se rozhodl, a dá-li Eloh, přežije "
-"a zvítězí. Vidíš, jak mu je těžko z našich ztrát. Nechtěl by, abychom ho "
-"neposlechli a položili i naše životy."
+"respektovat rozhodnutí svého vůdce. Kaleh se rozhodl, a dá-li Eloh, přežije "
+"a zvítězí. Vidíš, jak mu je těžko z našich ztrát. Nechtěl by, abychom ho "
+"neposlechli a položili i naše životy."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1376
@@ -13323,10 +13327,10 @@ msgid ""
 "right, I’m going in. The rest of you stand guard, if we don’t come out in "
 "half an hour then flee the island with the merfolk."
 msgstr ""
-"To strašlivé děvče bude jednou má smrt! Ale i tak beze mě nemá šanci. Kaleh "
+"To strašlivé děvče bude jednou má smrt! Ale i tak beze mě nemá šanci. Kaleh "
 "je něco jiného, ale Nym potřebuje moji ochranu. No nic, jdu dovnitř. Vy "
-"ostatní buďte na stráži, a když nevyjdeme do půl hodiny, prchněte z ostrova "
-"s mořským lidem."
+"ostatní buďte na stráži, a když nevyjdeme do půl hodiny, prchněte z ostrova "
+"s mořským lidem."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1408
@@ -13518,7 +13522,7 @@ msgstr "Uctívají svou pravou bohyni."
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:533
 msgid "Come and bow down before your true master, boy."
-msgstr "Přijď a pokloň se tvé pravé paní, chlapče."
+msgstr "Přijď a pokloň se své pravé paní, chlapče."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:538
@@ -13538,10 +13542,10 @@ msgid ""
 "tired of being called boy; I am Kalehssar, the leader of my people and I "
 "will fight you until my dying breath!"
 msgstr ""
-"Překročil jsem pouště, pohoří a oceány a viděl svůj lid krvácet na každém "
+"Překročil jsem pouště, pohoří a oceány a viděl svůj lid krvácet na každém "
 "kroku té cesty. Nepřišel jsem až sem, abych se teď vzdal. Už mě unavuje být "
-"nazýván chlapcem. Jsem Kalehssar, vůdce mého lidu, a budu s tebou bojovat až "
-"do posledního dechu!"
+"nazýván chlapcem. Jsem Kalehssar, vůdce svého lidu, a budu s tebou bojovat "
+"až do posledního dechu!"
 
 #. [message]: speaker=Eloh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:595
@@ -13677,10 +13681,11 @@ msgstr ""
 "Co to? Ta věc uprostřed mě právě trefila nějakým slizem. Bolí to a... "
 "přilepilo mě to!"
 
+# tady je třeba neutrální rod - oběť může být mužského nebo ženského rodu
 #. [message]: speaker=$victim_id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1190
 msgid "Ow, I’m stuck!"
-msgstr "Au, přilepil jsem se!"
+msgstr "Au, lepí to!"
 
 # Yechnagoth natáhla brka
 #. [message]: speaker=narrator
@@ -13695,7 +13700,7 @@ msgid ""
 "while it remains vulnerable!"
 msgstr ""
 "Myslím, že konečně způsobujeme nějaké zranění. Musíme zaútočit na centrální "
-"korpus, dokud je zranitelný!"
+"korpus, dokud zůstává zranitelný!"
 
 #. [message]: type=Crawling Horror
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1413
@@ -13725,7 +13730,7 @@ msgstr "Skoro tomu nemůžu uvěřit."
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1468
 msgid "Behold, the pretender has been defeated. Eloh’s might has prevailed."
-msgstr "Zadržte, podvodnice byla poražena. Moc Eloh zvítězila."
+msgstr "Hleďte, podvodnice byla poražena. Moc Eloh zvítězila."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1475
@@ -13801,9 +13806,9 @@ msgid ""
 msgstr ""
 "Se smrtí Yechnagoth se nejspíš všichni její přisluhovači vrátili ke svým "
 "původním chaotickým tendencím. Naštěstí jsme již předtím zničili většinu "
-"nečistých obyvatel ostrova, a když přišli o původní disciplínu, neměli jsme "
-"problémy s vyčištěním zbývajících skřetů a nemrtvých. I nágy před námi "
-"uprchly a od té doby nás neobtěžovaly. Zdálo se, že nám konečně nehrozí "
+"nečistých obyvatel ostrova, a když přišli o původní disciplínu, neměli jsme "
+"problémy s vyhlazením zbývajících skřetů a nemrtvých. I nágy před námi "
+"uprchly a od té doby nás neobtěžovaly. Zdálo se, že nám konečně nehrozí "
 "bezprostřední nebezpečí."
 
 #. [message]: speaker=Kaleh
@@ -13823,19 +13828,19 @@ msgid ""
 "so many close calls. Coming here almost does seem like a miracle. If only I "
 "could forget the price we paid..."
 msgstr ""
-"O několik dní později se objevila i sama Melusand a prohlásila vyčištění "
-"tohoto ostrova zázrakem. Uzavřeli jsme pakt mezi elfy a mořským lidem a "
-"slíbili si, že budeme žít v míru a blahobytu. Melusand posvětila ostrov a "
-"nazvala jej na počest našeho lidu „Ostrov Quenoth“. Mořští lidé nám velmi "
-"pomohli; učili nás, jak si zvyknout na tuto zvláštní zemi. I tak mám stále "
-"potíže zvyknout si, že jsem neustále obklopen vodou. Bývala pro mne cennější "
-"než zlato. Nedokážu si ale představit lepší domov pro můj lid. S bohatstvím "
-"darů moře a ovocem džungle na dosah ruky nám nikdy nehrozí nedostatek "
-"potravy. Jsme bezpečně odděleni od chaosu na pevnině a mořský lid střeží "
-"vody. Melusand říká, že nadešel čas míru a rozkvětu. Kdysi jsem částečně "
-"nevěřil, že bychom mohli tu cestu přežít, tolikrát jsme unikli jen o vlásek. "
-"Náš příchod sem se zdá téměř zázrakem. Kdybych tak dokázal zapomenout cenu, "
-"kterou jsme museli zaplatit..."
+"O několik dní později se objevila i sama Melusand a prohlásila vyčištění "
+"tohoto ostrova zázrakem. Uzavřeli jsme pakt mezi elfy a mořským lidem "
+"a slíbili si, že budeme žít v míru a blahobytu. Melusand posvětila ostrov "
+"a nazvala jej na počest našeho lidu „Ostrov Quenoth“. Mořští lidé nám velmi "
+"pomohli, když nás učili, jak se přizpůsobit této zvláštní zemi, i když já "
+"mám stále potíže zvyknout si na to, že jsem obklopen vodou. Bývala pro mne "
+"cennější než zlato. Nedokážu si ale představit lepší domov pro můj lid. "
+"S bohatstvím darů moře a ovocem džungle na dosah ruky nám nikdy nehrozí "
+"nedostatek potravy. Jsme bezpečně odděleni od chaosu na pevnině a mořský lid "
+"střeží vody. Melusand říká, že nadešel čas míru a rozkvětu. Kdysi jsem "
+"částečně nevěřil, že bychom mohli tu cestu přežít, tolikrát jsme unikli jen "
+"o vlásek. Náš příchod sem se zdá téměř zázrakem. Kdybych tak dokázal "
+"zapomenout cenu, kterou jsme museli zaplatit..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:85
@@ -14307,15 +14312,15 @@ msgid ""
 "in this great land. She is a living testament to the fact that even though "
 "we were born among the sands we can thrive anywhere we have the will to live."
 msgstr ""
-"I když nejsem tak zbožný jako Zhul, každý den děkuji Eloh, že Nym přežila tu "
-"strašlivou bitvu v Černé citadele. Nikdo se nevrhl do nového života na "
-"ostrovech nadšeněji než ona. S nadšením plave a plachtí kolem mělčin; tráví "
-"ve vodě tolik času, až si někdy myslím, že je poloviční mořská panna. Její "
-"zvonivý smích a pohotový důvtip jsou pro nás každodenním darem. Baví děti "
-"děsivými (i když občas trochu nadsazenými) povídkami o naší velké cestě, a "
-"když se občas dostanu do nálady, připomene mi, jaká radost je být naživu v "
-"této skvělé zemi. Je živoucím důkazem, že i když jsme se narodili na "
-"píscích, může se nám dařit kdekoliv budeme chtít žít."
+"I když nejsem tak zbožný jako Zhul, každý den děkuji Eloh, že Nym přežila tu "
+"strašlivou bitvu v černé citadele. Nikdo se nevrhl do nového života na "
+"ostrovech nadšeněji než ona. Užívá si plavání a plachtění mezi mělčinami "
+"a tráví ve vodě tolik času, až si někdy myslím, že je poloviční mořská "
+"panna. Její zvonivý smích a pohotový důvtip jsou pro nás každodenním darem. "
+"Baví děti děsivými (i když občas trochu nadsazenými) povídkami o naší velké "
+"cestě, a když se občas dostanu do nálady, připomene mi, jaká radost je být "
+"naživu v této skvělé zemi. Je živoucím důkazem, že i když jsme se narodili "
+"na píscích, může se nám dařit kdekoliv budeme chtít žít."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:312
@@ -14333,17 +14338,18 @@ msgid ""
 "still not quite used to seeing so many trees, but perhaps, as some people "
 "say, it is a sign that the peace and prosperity of old has come again."
 msgstr ""
-"Zhul, nejstarší z přeživších elfů, se už teď pohybuje poněkud pomaleji, ale "
-"stále má v oku tu nezaměnitelnou jiskru. Navzdory strastem naší cesty a "
-"klamům, které nám uchystala Yechnagoth, naše vítězství jen posílilo její "
-"víru. Stále je tak hbitá, jako vždy, když nás opravuje v našich chybách a "
-"nevíře v síly Eloh. Nedávno mi řekla, že všechny zkoušky, vítězství a zvraty "
-"naší cesty nebyly nic než dílky ohromného plánu, který pro nás má Eloh, a "
-"tento nový domov je nám odměnou. Tráví veškerý čas učením nové generace "
-"kněžek a vyprávěním starých příběhů dětem, aby nebyly zapomenuty. Začala v "
-"džungli plánovat háj zasvěcený Eloh, takový, jaké měl náš lid ve starých "
-"časech. Stále jsem si asi nezvykl na takové množství stromů, ale jak někteří "
-"říkají, je to znamení míru a blahobytu starých věků, které znovu přicházejí."
+"Zhul, nejstarší z přeživších elfů, se už teď pohybuje poněkud pomaleji, ale "
+"stále má v oku tu nezaměnitelnou jiskru. Navzdory strastem naší cesty "
+"a klamům, které nám uchystala Yechnagoth, naše vítězství jen posílilo její "
+"víru. Stále je tak hbitá, jako vždy, když nás opravuje v našich chybách "
+"a nevíře v síly Eloh. Nedávno mi řekla, že všechny zkoušky, vítězství "
+"a zvraty naší cesty nebyly nic než dílky ohromného plánu, který pro nás má "
+"Eloh, a tento nový domov je nám odměnou. Tráví veškerý čas učením nové "
+"generace kněžek a vyprávěním starých příběhů dětem, aby nebyly zapomenuty. "
+"Začala v džungli plánovat háj zasvěcený Eloh, takový, jaké měl náš lid ve "
+"starých časech. Stále jsem si asi nezvykl na takové množství stromů, ale jak "
+"někteří říkají, je to znamení míru a blahobytu starých věků, které znovu "
+"přicházejí."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:330
@@ -14363,17 +14369,17 @@ msgid ""
 "and all that he did to aid us in our struggle."
 msgstr ""
 "Záchranou mého života naplnil Grog svůj dluh života, ale přesvědčili jsme "
-"jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném vítězství "
-"jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a radujíce se z "
-"krásy a bohatství našeho nového domova. Poté jsme se dali do práce a začali "
-"si budovat nové příbytky. Grog s námi ještě zůstal a pomáhal při stavbě, byl "
-"z nás všech nejpilnější stavitel. Ale po nějakém čase za mnou přišel a řekl "
-"mi, že se musí vrátit ke svému lidu. Čas, který s námi strávil, mu podle "
-"jeho slov připadal jako krásný sen. Slíbil, že na nás nikdy nezapomene, ale "
-"jeho lid jej potřeboval a musel se vrátit. Prý se jednou vrátí a znovu nás "
-"navštíví, ale pochybuji, že jej ještě kdy uvidím. I já si budu navždy "
-"pamatovat jej i jeho druh a dlouho budu vzpomínat na jeho neotřesitelnou "
-"důvěru a vše, čím nám v našich strastech pomohl."
+"jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném vítězství "
+"jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a radujíce se "
+"z krásy a bohatství našeho nového domova. Poté jsme se dali do práce "
+"a začali si budovat nové příbytky. Grog s námi ještě zůstal a pomáhal při "
+"stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém čase za mnou "
+"přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s námi "
+"strávil, mu podle jeho slov připadal jako krásný sen. Slíbil, že na nás "
+"nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
+"jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. "
+"I já si budu navždy pamatovat jej i jeho druh a dlouho budu vzpomínat na "
+"jeho neotřesitelnou důvěru a vše, čím nám v našich strastech pomohl."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:337
@@ -14393,17 +14399,17 @@ msgid ""
 "and all that he did to aid us in our struggle."
 msgstr ""
 "Záchranou mého života naplnil Nog svůj dluh života, ale přesvědčili jsme "
-"jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném vítězství "
-"jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a radujíce se z "
-"krásy a bohatství našeho nového domova. Poté jsme se dali do práce a začali "
-"si budovat nové příbytky. Nog s námi ještě zůstal a pomáhal při stavbě, byl "
-"z nás všech nejpilnější stavitel. Ale po nějakém čase za mnou přišel a řekl "
-"mi, že se musí vrátit ke svému lidu. Čas, který s námi strávil, mu podle "
-"jeho slov připadal jako krásný sen. Slíbil, že na nás nikdy nezapomene, ale "
-"jeho lid jej potřeboval a musel se vrátit. Prý se jednou vrátí a znovu nás "
-"navštíví, ale pochybuji, že jej ještě kdy uvidím. I já si budu navždy "
-"pamatovat jej i jeho druh a dlouho budu vzpomínat na jeho neotřesitelnou "
-"důvěru a vše, čím nám v našich strastech pomohl."
+"jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném vítězství "
+"jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a radujíce se "
+"z krásy a bohatství našeho nového domova. Poté jsme se dali do práce "
+"a začali si budovat nové příbytky. Nog s námi ještě zůstal a pomáhal při "
+"stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém čase za mnou "
+"přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s námi "
+"strávil, mu podle jeho slov připadal jako krásný sen. Slíbil, že na nás "
+"nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
+"jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. "
+"I já si budu navždy pamatovat jej i jeho druh a dlouho budu vzpomínat na "
+"jeho neotřesitelnou důvěru a vše, čím nám v našich strastech pomohl."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:344
@@ -14423,17 +14429,17 @@ msgid ""
 "steadfast loyalty and all that he did to aid us in our struggle."
 msgstr ""
 "Záchranou mého života naplnil Rogrimir svůj dluh života, ale přesvědčili "
-"jsme jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném "
-"vítězství jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a "
-"radujíce se z krásy a bohatství našeho nového domova. Poté jsme se dali do "
-"práce a začali si budovat nové příbytky. Rogrimir s námi ještě zůstal a "
-"pomáhal při stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém "
-"čase za mnou přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s "
-"námi strávil, mu podle jeho slov připadal jako krásný sen. Slíbil, že na nás "
-"nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
-"jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. I "
-"já si budu navždy pamatovat jej i jeho druh a dlouho budu vzpomínat na jeho "
-"neotřesitelnou důvěru a vše, čím nám v našich strastech pomohl."
+"jsme jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném "
+"vítězství jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu "
+"a radujíce se z krásy a bohatství našeho nového domova. Poté jsme se dali do "
+"práce a začali si budovat nové příbytky. Rogrimir s námi ještě zůstal "
+"a pomáhal při stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém "
+"čase za mnou přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který "
+"s námi strávil, mu podle jeho slov připadal jako krásný sen. Slíbil, že na "
+"nás nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
+"jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. "
+"I já si budu navždy pamatovat jej i jeho druh a dlouho budu vzpomínat na "
+"jeho neotřesitelnou důvěru a vše, čím nám v našich strastech pomohl."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:351
@@ -14453,17 +14459,17 @@ msgid ""
 "and all that he did to aid us in our struggle."
 msgstr ""
 "Záchranou mého života naplnil Jarl svůj dluh života, ale přesvědčili jsme "
-"jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném vítězství "
-"jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a radujíce se z "
-"krásy a bohatství našeho nového domova. Poté jsme se dali do práce a začali "
-"si budovat nové příbytky. Jarl s námi ještě zůstal a pomáhal při stavbě, byl "
-"z nás všech nejpilnější stavitel. Ale po nějakém čase za mnou přišel a řekl "
-"mi, že se musí vrátit ke svému lidu. Čas, který s námi strávil, mu podle "
-"jeho slov připadal jako krásný sen. Slíbil, že na nás nikdy nezapomene, ale "
-"jeho lid jej potřeboval a musel se vrátit. Prý se jednou vrátí a znovu nás "
-"navštíví, ale pochybuji, že jej ještě kdy uvidím. I já si budu navždy "
-"pamatovat jej i jeho druh a dlouho budu vzpomínat na jeho neotřesitelnou "
-"důvěru a vše, čím nám v našich strastech pomohl."
+"jej, aby s námi ještě chvíli zůstal a veselil se. Po našem úžasném vítězství "
+"jsme celé dny slavili, děkujíce Eloh a bohu mořského lidu a radujíce se "
+"z krásy a bohatství našeho nového domova. Poté jsme se dali do práce "
+"a začali si budovat nové příbytky. Jarl s námi ještě zůstal a pomáhal při "
+"stavbě, byl z nás všech nejpilnější stavitel. Ale po nějakém čase za mnou "
+"přišel a řekl mi, že se musí vrátit ke svému lidu. Čas, který s námi "
+"strávil, mu podle jeho slov připadal jako krásný sen. Slíbil, že na nás "
+"nikdy nezapomene, ale jeho lid jej potřeboval a musel se vrátit. Prý se "
+"jednou vrátí a znovu nás navštíví, ale pochybuji, že jej ještě kdy uvidím. "
+"I já si budu navždy pamatovat jej i jeho druh a dlouho budu vzpomínat na "
+"jeho neotřesitelnou důvěru a vše, čím nám v našich strastech pomohl."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:376
@@ -14521,13 +14527,13 @@ msgid ""
 "would have been proud of us. He was both a great warrior and a great "
 "teacher. He will be remembered."
 msgstr ""
-"Od našeho odchodu z pouště se toho stalo tolik, ale při pohledu zpět na "
-"celou naši cestu nechci zapomenout na Garaka a oběť, kterou přinesl. "
-"Pochybuji, že bychom se dostali z písků naživu, nebýt jej, jeho síly a "
-"moudrosti. Pamatuji se, jak se usmíval, když se vrhal do boje, a jak se poté "
-"modlil nad těly jeho padlých přátel. Občas na něj vzpomínám, jak je pohřben "
-"v píscích se svými bojovníky. Myslím, že by na nás byl hrdý. Byl jak velký "
-"válečník, tak i velký učitel. Nebude zapomenut."
+"Od našeho odchodu z pouště se toho stalo tolik, ale při pohledu zpět na "
+"celou naši cestu nechci zapomenout na Garaka a oběť, kterou přinesl. "
+"Pochybuji, že bychom se dostali z písků naživu, nebýt jej, jeho síly "
+"a moudrosti. Pamatuji se, jak se usmíval, když se vrhal do boje, a jak se "
+"poté modlil nad těly svých padlých přátel. Občas na něj vzpomínám, jak je "
+"pohřben v píscích se svými bojovníky. Myslím, že by na nás byl hrdý. Byl jak "
+"velký válečník, tak i velký učitel. Nebude zapomenut."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/13_Epilogue.cfg:411
@@ -14545,17 +14551,17 @@ msgid ""
 "as a reminder of the evil that once dwelt here and all those who gave their "
 "lives to destroy it."
 msgstr ""
-"Co se týká černé citadely, po mnohých diskusích jsme se vrátili k pradávným "
+"Co se týká černé citadely, po mnohých diskusích jsme se vrátili k pradávným "
 "rituálům pro očišťování pošpiněné země – ohněm. Naplnili jsme celou stavbu "
-"dřevem a olejem a podpálili to místo, aby bylo jisté, že budou případné "
+"dřevem a olejem a podpálili to místo, aby bylo jisté, že budou případné "
 "pozůstatky Yechnagothiny špíny zničeny svatými plameny. Pak jsme celou "
-"citadelu strhli, kámen po kameni. Byl jsem sice v pokušení použít kameny při "
-"nějaké budoucí stavbě, ale nebyl jsem si jistý, jaká nečistá magie v nich "
-"může přetrvávat, a nehodlal jsem to zkoušet v praxi. S pomocí mořského lidu "
-"jsme kameny odvlekli daleko do vod a svrhli je do hlubin oceánu, až ke dnu. "
+"citadelu strhli, kámen po kameni. Byl jsem sice v pokušení použít kameny při "
+"nějaké budoucí stavbě, ale nebyl jsem si jistý, jaká nečistá magie v nich "
+"může přetrvávat, a nehodlal jsem to zkoušet v praxi. S pomocí mořského lidu "
+"jsme kameny odvlekli daleko do vod a svrhli je do hlubin oceánu, až ke dnu. "
 "Jakmile jsme se zbavili posledního kamene, rozhodli jsme, že to místo "
-"zůstane holé bez ohledu na to co postavíme nebo vyroste poblíž; bude tak "
-"připomínkou zla, které zde jednou přebývalo, a těch, kteří za jeho zničení "
+"zůstane holé bez ohledu na to, co postavíme nebo vyroste poblíž; bude tak "
+"připomínkou zla, které zde jednou přebývalo, a těch, kteří za jeho zničení "
 "položili životy."
 
 #. [message]: speaker=Kaleh
@@ -14573,16 +14579,16 @@ msgid ""
 "mistakes so you will not repeat them. And most of all, treasure every day, "
 "for it is a gift, from us to you."
 msgstr ""
-"Od událostí, které zde popisuji, již uplynulo mnoho let a nejsem tak čiperný "
-"a hbitý, jak jsem bývával, a tak jsem se rozhodl, že nastal čas sepsat toto "
+"Od událostí, které zde popisuji, již uplynulo mnoho let a nejsem tak čiperný "
+"a hbitý, jak jsem bývával, a tak jsem se rozhodl, že nastal čas sepsat toto "
 "vše pro případ, že by se mi něco přihodilo. Mé jediné přání je, aby naši "
 "potomci nezapomněli na ty všechny, kteří přinesli nejvyšší oběť, aby mohl "
 "mít náš lid nějakou budoucnost. Při pohledu na ruiny, které po sobě "
-"zůstavily dávné říše chápu, že čas smaže vše. Zapomněli jsme toho tolik o "
-"zlatém věku. Nenechte náš příběh potkat tentýž osud. Neboť dokud jsou "
-"vyprávěny příběhy o těch, kteří již odešli, oni v jistém smyslu stále žijí a "
-"zůstávají s námi. Ctěte ty, kteří zemřeli. Pamatujte si naše chyby, ať se "
-"jich dokážete vyvarovat. A co je ze všeho nejdůležitější, pamatujte, že "
+"zůstavily dávné říše chápu, že čas smaže vše. Zapomněli jsme toho tolik "
+"o zlatém věku. Nenechte náš příběh potkat tentýž osud. Neboť dokud jsou "
+"vyprávěny příběhy o těch, kteří již odešli, oni v jistém smyslu stále žijí "
+"a zůstávají s námi. Ctěte ty, kteří zemřeli. Pamatujte si naše chyby, ať se "
+"jich dokážete vyvarovat. A co je ze všeho nejdůležitější, pamatujte, že "
 "každý den je pokladem, darem, který jste dostali od nás."
 
 #. [message]: speaker=Nym
@@ -15044,6 +15050,8 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
+#, fuzzy
+#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "písečná bouře"
 
@@ -15079,6 +15087,16 @@ msgstr "Quenothský bojovník"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
+#, fuzzy
+#| msgid ""
+#| "Long ago, during more prosperous times, elven warriors favored the use of "
+#| "swords as more elegant, versatile weapons compared to other melee "
+#| "armaments. However, in recent times, the dearth of supplies for smithing "
+#| "has reduced the availability of blade-crafting, necessitating the "
+#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
+#| "are remarkably skilled in coordinated groups, where they can counteract "
+#| "the lack of more sophisticated weaponry by forming robust spear ranks "
+#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15090,14 +15108,14 @@ msgid ""
 "his attention between multiple enemies, be they brigand, wild creature, or "
 "undead."
 msgstr ""
-"Kdysi dávno, za lepších časů, elfští válečníci upřednostňovali použití mečů, "
-"neboť jim ve srovnání s jinými zbraněmi na blízko přišly jako elegantnější "
-"a všestrannější zbraně. V současné době však nedostatek surovin pro "
-"kovářskou výrobu snížil dostupnost čepelí, což si vyžádalo výrobu levnějších "
-"a snadněji opravitelných zbraní. Aby vyrovnali tuto sníženou kvalitu "
-"výzbroje, osvojili si quenothští velkou všestrannost při jejím používání. "
-"Venku v poušti je bojovník cvičen využívat důvtip, aby rozdělil svou "
-"pozornost mezi více nepřátel, ať už jde o bandity, divoké tvory nebo nemrtvé."
+"Kdysi dávno, během prosperujících dob, elfští válečníci upřednostňovali "
+"použití mečů, neboť jim ve srovnání s jinými zbraněmi na blízko přišly jako "
+"elegantnější a všestrannější zbraně. V současné době však nedostatek surovin "
+"pro kovářskou výrobu snížil dostupnost čepelí, což si vyžádalo výrobu "
+"levnějších a snadněji opravitelných zbraní. Quenothští bojovníci jsou "
+"pozoruhodně zruční v koordinovaných skupinách, v kterých mohou čelit "
+"nedostatku sofistikovanějších zbraní vytvořením robustních kopinických "
+"formací schopných odrazit téměř jakýkoli frontální útok."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15381,13 +15399,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 msgid "sun invocation"
-msgstr "vzývání slunce"
+msgstr ""
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr "paprsek slunce"
+msgstr ""
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15419,7 +15437,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:71
 msgid "sun incarnate"
-msgstr "vtělené slunce"
+msgstr ""
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -16231,6 +16249,15 @@ msgstr "+$amount ke zkušenosti"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
+#, fuzzy
+#| msgid ""
+#| "Note: This campaign is probably not appropriate for beginners. It changes "
+#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
+#| "cycle. This campaign emphasizes role-playing elements and tends to have "
+#| "longer scenarios with objectives that change in the middle. For these "
+#| "reasons, we strongly suggest that you occasionally save your game mid-"
+#| "scenario, so you won’t lose all your progress if you get stuck and have "
+#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -16241,9 +16268,8 @@ msgid ""
 "your progress if you get stuck and have to start over."
 msgstr ""
 "Poznámka: Toto tažení pravděpodobně není pro začátečníky nejlepší volbou. "
-"Modifikuje některé standardy Wesnothu, jako třeba vlastnosti elfů, "
-"cyklus denní doby, náklady na povolávání a obecný přístup k úrovním "
-"obtížnosti. Zároveň klade důraz na RPG prvky a má delší scénáře s často se "
+"Modifikuje některé standardy Wesnothu, zejména vlastnosti elfů a denní "
+"cyklus. Zároveň klade důraz na RPG prvky a má delší scénáře s často se "
 "měnícími cíli. Z těchto důvodů je vhodné občas ukládat hru i uprostřed "
 "scénáře, abys při „zákysu“ nemusel začínat znovu."
 
@@ -17179,3 +17205,15 @@ msgstr "Hrad duchů"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Tvrz duchů"
+
+#~ msgid "Skeleton Rider"
+#~ msgstr "Jízdní kostlivec"
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the sands by unholy magic to spread fear "
+#~ "and destruction."
+#~ msgstr ""
+#~ "Tito kostlivci, kdysi velcí válečníci a postrach plání, opět osedlali "
+#~ "kostry koní, jež povstaly nečistými silami z písků spolu s nimi a vydali "
+#~ "se šířit strach a zkázu."
