@@ -28,6 +28,7 @@
      as a possible file location on modern Linux distributions.
    * Update the preferences window’s Display resolution list if the game window is resized.
    * Better error handling if the data directory is not found. (issue #6883)
+   * Rearranged some elements in Display preferences.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Move multiplayer macros to proper folder. (PR #7647)
