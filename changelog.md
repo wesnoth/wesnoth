@@ -2,20 +2,42 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Heir to the Throne
+     * S19c and S20b: Improve rewards by giving a Lieutenant instead of a Sergeant.
+   * Northern Rebirth
+     * Large grammar correction to the English text. (PRs #7643, #7663, #7676, #7680, #7682, #7683)
+   * UtBS
+     * Make the name of the dark assassin translatable again. (PR #7696)
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fixed a bug that the epic trait raised XP requirements for advancements that cost less than 60 XP.
  ### Editor
  ### Multiplayer
+   * Add some search terms to the match history dialog. (PR #7571)
  ### Lua API
  ### Packaging
  ### Terrain
-   * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias)
+   * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias). (PR #7629)
  ### Translations
    * Updated translations: British English, Czech, Finnish, French, Spanish
+   * Python files are now searched for translatable strings.
+   * Added the `wesnoth-tools` textdomain for WML-maintenance tools.
  ### Units
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
      as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
+   * Better error handling if the data directory is not found. (issue #6883)
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Move multiplayer macros to proper folder. (PR #7647)
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite. (issue #7149)
+   * On platforms where logging used to go to stdout/stderr by default, it’s now copied there even when logging to a file. (PR #7672)
+   * `GUI.pyw` now has the i18n mechanics to be translatable, but please wait until the English has been revised.
+   * Refactored hotkey handling, so it no longer has two different codepaths for WML menu items.
+   * The old `utils/change_textdomain` script has been removed. (PR #7688)
+   * wmlxgettext now supports extracting all textdomains at once. (PR #7624)
+   * Fixed a crash in the autocorrect handling on the Wesnoth console. (issue #7412)
 
 ## Version 1.17.17
  ### Translations
