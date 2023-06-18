@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-23 03:24 UTC\n"
+"POT-Creation-Date: 2023-06-18 04:20 UTC\n"
 "PO-Revision-Date: 2023-06-15 21:36+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -5949,7 +5949,9 @@ msgstr "Přesuň Konráda do jeskyně"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-msgid "Rescue the sergeant"
+#, fuzzy
+#| msgid "Rescue the sergeant"
+msgid "Rescue the lieutenant"
 msgstr "Zachraň seržanta"
 
 #. [side]
@@ -5957,8 +5959,8 @@ msgstr "Zachraň seržanta"
 msgid "Drakes"
 msgstr "Drakonidé"
 
-#. [unit]: type=Injured Sergeant, id=Warven
-#. [unit]: type=Sergeant, id=Warven
+#. [unit]: type=Injured Lieutenant, id=Warven
+#. [unit]: type=Lieutenant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:222
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:824
 msgid "Warven"
@@ -6269,8 +6271,12 @@ msgstr "Vidím někoho na nejvzdálenějším útesu!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
+#, fuzzy
+#| msgid ""
+#| "It is a young human sergeant, barely more than a boy. He appears badly "
+#| "hurt but still alive."
 msgid ""
-"It is a young human sergeant, barely more than a boy. He appears badly hurt "
+"It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
 "Je to člověk, poručík, sotva odrostlý chlapec. Vypadá těžce raněný, ale "
@@ -6349,10 +6355,15 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
+#, fuzzy
+#| msgid ""
+#| "Our main goal remains to survive ourselves, but if we can spare the "
+#| "troops, we might try to rescue the sergeant stranded on the cliff. "
+#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
-"we might try to rescue the sergeant stranded on the cliff. However, I make "
-"no promises."
+"we might try to rescue the officer stranded on the cliff. However, I make no "
+"promises."
 msgstr ""
 "Naším hlavním cílem zůstává přežít, ale pokud budeme potřebovat méně "
 "jednotek, můžeme se pokusit zachránit toho seržanta. Ale nic neslibuji."
@@ -6394,9 +6405,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
+#, fuzzy
+#| msgid ""
+#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
+#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-"healers to help you, young sergeant."
+"healers to help you, young lieutenant."
 msgstr ""
 "Jsem princezna Lisar, a toto nejsou nepřátelé. Přidej se k nám, seržante, a "
 "počkej, než se k tobě dostanou léčitelé."
@@ -7351,10 +7366,16 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
+#, fuzzy
+#| msgid ""
+#| "Upon finishing the book, $unit.name| has a much greater understanding of "
+#| "the forest, its nature and ways, and all the creatures within it. "
+#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
-"Upon finishing the book, $unit.name| has a much greater understanding of the "
-"forest, its nature and ways, and all the creatures within it. Unfortunately, "
-"as the last page was turned, the book crumbled to dust."
+"$unit.name| becomes entranced and greatly gains affinity with the forest, "
+"its nature and ways, and all the creatures within it. He feels he will "
+"quickly become more experienced once reaching the surface. Unfortunately, as "
+"the last page was turned, the book crumbled to dust."
 msgstr ""
 "Po přečtení knihy rozumí $unit.name| mnohem víc lesům, přírodě a její "
 "způsoby a všem tvorům v ní. Bohužel se po přečtení poslední stránky rozpadla "
@@ -7362,9 +7383,16 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
+#, fuzzy
+#| msgid ""
+#| "female^Upon finishing the book, $unit.name| has a much greater "
+#| "understanding of the forest, its nature and ways, and all the creatures "
+#| "within it. Unfortunately, as the last page was turned, the book crumbled "
+#| "to dust."
 msgid ""
-"female^Upon finishing the book, $unit.name| has a much greater understanding "
-"of the forest, its nature and ways, and all the creatures within it. "
+"female^$unit.name| becomes entranced and greatly gains affinity with the "
+"forest, its nature and ways, and all the creatures within it. She feels she "
+"will quickly become more experienced once reaching the surface. "
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
 "Po přečtení knihy rozumí $unit.name| mnohem víc lesům, přírodě a její "
@@ -7372,7 +7400,7 @@ msgstr ""
 "na prach."
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:276
 msgid "No"
@@ -8848,9 +8876,11 @@ msgstr ""
 "nepřátelům. Dřímá v nich však potenciál stát se jednoho dne velkými "
 "válečníky."
 
-#. [unit_type]: id=Injured Sergeant
-#: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
-msgid "Injured Sergeant"
+#. [unit_type]: id=Injured Lieutenant
+#: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
+#, fuzzy
+#| msgid "Injured Sergeant"
+msgid "Injured Lieutenant"
 msgstr "Zraněný seržant"
 
 #. [variation]

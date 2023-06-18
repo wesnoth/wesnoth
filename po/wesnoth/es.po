@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2023-06-03 22:48+0200\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
@@ -4212,7 +4212,7 @@ msgstr "No"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
@@ -4248,7 +4248,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Nivel de exclusión $level no válido (debería ser 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:875
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nivel de exclusión no válido (debería ser 1-4)"
 
@@ -4504,12 +4504,12 @@ msgid "Menu"
 msgstr "Menú"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Finalizar turno"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Finalizar escenario"
 
@@ -4528,34 +4528,41 @@ msgstr "Tema predeterminado"
 msgid "Load Turn..."
 msgstr "Cargar turno..."
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "jugar turno"
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Acciones"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "PV"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "PX"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "PM"
 
 # Me falta contexto
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr "def"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:407
 msgid "statuspanel^lvl"
 msgstr "nv"
 
@@ -5703,7 +5710,7 @@ msgstr ""
 "El complemento <i>$addon_title</i> tiene un nombre de archivo o directorio "
 "con letras mayúsculas conflictivas. Esto puede ocasionar algunos problemas."
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
 msgid "The server responded with an error:"
 msgstr "El servidor devolvió un error:"
 
@@ -6912,7 +6919,7 @@ msgid "Error while reading the WML: "
 msgstr "Error leyendo el WML: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "Fin del juego"
 
@@ -6933,7 +6940,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "El archivo que ha intentado cargar está corrupto"
 
 #: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El archivo que ha intentado cargar está corrupto: «"
@@ -6973,7 +6980,7 @@ msgstr ""
 "El grupo '$id' vinculado necesita una clave de 'fixed_width' o "
 "'fixed_height'."
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -7005,27 +7012,44 @@ msgstr "Sala de entrada"
 msgid "Other Games"
 msgstr "Otros juegos"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr "Historial de la partida — $player"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+msgid "Scenario"
+msgstr "Escenario"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "Era:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+#| msgid "Modifications:"
+msgid "Modification"
+msgstr "Modificaciones:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:134
 msgid "Era: "
 msgstr "Era: "
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:135
 msgid " UTC+0"
 msgstr " UTC+0"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
+#: src/gui/dialogs/multiplayer/match_history.cpp:230
 msgid "No game history found."
 msgstr "No se encontró el historial del juego."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
 msgstr "Tiempo de espera agotado."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr "La solicitud encontró un error inesperado, verifique el registro."
 
@@ -7214,52 +7238,64 @@ msgstr "¿Realmente quiere rendirse?"
 msgid "Surrender"
 msgstr "Rendición"
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr "Captura de mapa"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "(press $hk to disable)"
 msgstr "(presione $hk para deshabilitarlo)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr "¡Movimiento rápido activado!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr "¡Movimiento rápido desactivado!"
 
-#: src/hotkey/hotkey_handler.cpp:427
-msgid "Back to Turn "
-msgstr "Volver al turno "
-
-#: src/hotkey/hotkey_handler.cpp:433
+#: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Start"
 msgstr "Volver al comienzo"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147
+#: src/hotkey/hotkey_handler.cpp:441
+msgid "Back to Turn "
+msgstr "Volver al turno "
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Ready to start!"
+msgid "Replay from Start"
+msgstr "¡Listo para comenzar!"
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "jugar turno"
+
+#: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
 msgstr "(presione $hotkey para desactivarlo)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "¡Modo de planificación activado!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "¡Modo de planificación desactivado!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:317
+#: src/hotkey/hotkey_handler_sp.cpp:322
 msgid "Do you want to load it anyway?"
 msgstr "¿Quieres cargarla de todos modos?"
 
-#: src/hotkey/hotkey_handler_sp.cpp:333
+#: src/hotkey/hotkey_handler_sp.cpp:338
 msgid "The file you have tried to load has no replay information. "
 msgstr ""
 "El archivo que has intentado cargar no tiene información de reproducción."
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 msgid "The file you have tried to load is not from the current session."
 msgstr "El archivo que has intentado cargar no es de la sesión actual."
 
@@ -8106,7 +8142,7 @@ msgstr "No hay objetivos disponibles"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Deshaciendo movimientos que no han sido transmitidas al servidor aún."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8114,7 +8150,7 @@ msgstr ""
 "Se ha desconectado de la red y la partida no puede continuar. ¿Desea guardar "
 "la partida?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8122,7 +8158,7 @@ msgstr ""
 "\n"
 "¿Quiere guardar la partida?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8172,11 +8208,11 @@ msgstr ""
 "esté haciendo trampas o que alguien haya cargado una partida con un archivo "
 "deteriorado."
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "El juego se ha acabado."
 
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:542
 msgid "It is now $name|’s turn"
 msgstr "Es el turno de $name"
 
@@ -9132,7 +9168,7 @@ msgstr "$year AC"
 msgid "$year AF"
 msgstr "$year AñC"
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:815
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9143,7 +9179,7 @@ msgstr ""
 "restricciones por programas anti-virus, o por usar OneDrive para gestionar "
 "tu carpeta Mis Documentos."
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:816
 msgid "Logging Failure"
 msgstr "Fallo de inicio de sesión"
 
@@ -9497,9 +9533,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr ""
 #~ "Esta partida guardada es de otra versión del juego ($version_number|). "
 #~ "¿Quiere intentar cargarla igualmente?"
-
-#~ msgid "Scenario"
-#~ msgstr "Escenario"
 
 #, fuzzy
 #~ msgid "Provinces"
@@ -10426,9 +10459,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr ""
 #~ "No hay eras disponibles \n"
 #~ "para esta partida."
-
-#~ msgid "Modifications:"
-#~ msgstr "Modificaciones:"
 
 #~ msgid "Next"
 #~ msgstr "Siguiente"

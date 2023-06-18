@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2019-03-28 22:12+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -3908,7 +3908,7 @@ msgstr "Ne"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr "Ekranvaizdis"
 
@@ -3944,7 +3944,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:875
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -4211,12 +4211,12 @@ msgid "Menu"
 msgstr "Meniu"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Baigti ėjimą"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Baigti scenarijų"
 
@@ -4237,33 +4237,40 @@ msgstr "Numatyta tema"
 msgid "Load Turn..."
 msgstr "Baigti ėjimą"
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "leisti ėjimą"
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Veiksmai"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "GT"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "PT"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "DŽ"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr "gyn"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:407
 msgid "statuspanel^lvl"
 msgstr "L"
 
@@ -5295,7 +5302,7 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr "Priedo failo arba aplanko vardas neteisingas ir negali būti įdiegtas."
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
 msgid "The server responded with an error:"
 msgstr "Serveris atsakė su klaida:"
 
@@ -6468,7 +6475,7 @@ msgid "Error while reading the WML: "
 msgstr "Klaida, skaitant WML: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "Žaidimas baigtas"
 
@@ -6489,7 +6496,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 
 #: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Failas, kurį bandėte įkelti, sugadintas: „"
@@ -6526,7 +6533,7 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 #, fuzzy
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
@@ -6562,31 +6569,50 @@ msgstr "Vestibiulyje"
 msgid "Other Games"
 msgstr "Išsaugoti žaidimą"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Baigti scenarijų"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "Era:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+#| msgid "addon_type^Modification"
+msgid "Modification"
+msgstr "Pakeitimas"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:134
 #, fuzzy
 #| msgid "Era:"
 msgid "Era: "
 msgstr "Era:"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:135
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
+#: src/gui/dialogs/multiplayer/match_history.cpp:230
 #, fuzzy
 #| msgid "No units found."
 msgid "No game history found."
 msgstr "Nerasta karių."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 
@@ -6793,57 +6819,69 @@ msgstr "Ar tikrai norite pasiduoti šiame žaidime?"
 msgid "Surrender"
 msgstr "Pasiduoti"
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr "Žemėlapio ekranvaizdis"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 #, fuzzy
 msgid "(press $hk to disable)"
 msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr "Padidintas greitis įjungtas!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr "Padidintas greitis išjungtas!"
 
-#: src/hotkey/hotkey_handler.cpp:427
-msgid "Back to Turn "
-msgstr "Atgal į ėjimą "
-
-#: src/hotkey/hotkey_handler.cpp:433
+#: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Start"
 msgstr "Atgal į pradžią"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147
+#: src/hotkey/hotkey_handler.cpp:441
+msgid "Back to Turn "
+msgstr "Atgal į ėjimą "
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Ready to start!"
+msgid "Replay from Start"
+msgstr "Pasiruošęs pradėti!"
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "leisti ėjimą"
+
+#: src/hotkey/hotkey_handler_sp.cpp:151
 #, fuzzy
 msgid "(press $hotkey to deactivate)"
 msgstr "(paspauskite $hotkey ėjimo tęsimui)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "Įjungtas planavimo režimas!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "Planavimo režimas išjungtas!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:317
+#: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
 msgstr "Ar norite tęsti?"
 
-#: src/hotkey/hotkey_handler_sp.cpp:333
+#: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
 msgstr "Failas, kurį bandėte įkelti, yra sugadintas"
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -7692,7 +7730,7 @@ msgstr "Nėra jokių tikslų"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Atšaukiami dar neperduoti serveriui ėjimai."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7700,7 +7738,7 @@ msgstr ""
 "Nutrūko tinklo ryšys ir žaidimas negali tęstis. Ar norite išsaugoti šį "
 "žaidimą?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 #, fuzzy
 #| msgid "Do you really want to surrender the game?"
 msgid ""
@@ -7708,7 +7746,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Ar tikrai norite pasiduoti šiame žaidime?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 #, fuzzy
 #| msgid "The game has been saved."
 msgid ""
@@ -7753,11 +7791,11 @@ msgstr ""
 "nežinote, ką reiškia šis pranešimas, greičiausiai kažkas sukčiauja arba "
 "kažkas įkėlė sugadintą išsaugojimą."
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "Žaidimas baigtas."
 
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:542
 msgid "It is now $name|’s turn"
 msgstr "Dabar $name| ėjimas"
 
@@ -8733,14 +8771,14 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:815
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:816
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
@@ -9076,11 +9114,6 @@ msgstr "Lentos nustatymai"
 #~ msgstr ""
 #~ "Išsaugojimas yra iš kitos žaidimo versijos  ($version_number|). Ar norite "
 #~ "pabandyti jį įkelti?"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Baigti scenarijų"
 
 #, fuzzy
 #~| msgid "Enemy village"

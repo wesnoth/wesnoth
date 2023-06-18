@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2022-07-14 16:27+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -4128,7 +4128,7 @@ msgstr "否"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
@@ -4164,7 +4164,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "不正確的不維護等級：$level（應為1到4）"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:875
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "無效的廢棄等級（應為1-4）"
 
@@ -4416,12 +4416,12 @@ msgid "Menu"
 msgstr "主選單"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "結束回合"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "結束章節"
 
@@ -4440,33 +4440,40 @@ msgstr "預設主題"
 msgid "Load Turn..."
 msgstr "讀取回合……"
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "播放回合"
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "動作"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "生命值"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "經驗值"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "移動點數"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr "防禦"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:407
 msgid "statuspanel^lvl"
 msgstr "Lv"
 
@@ -5465,7 +5472,7 @@ msgstr ""
 "此模組<i>$addon_title</i>的檔案或資料夾的名稱大小寫衝突。這可能會導致錯誤發"
 "生。"
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
 msgid "The server responded with an error:"
 msgstr "伺服器回應錯誤："
 
@@ -6585,7 +6592,7 @@ msgid "Error while reading the WML: "
 msgstr "讀取WML時錯誤："
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "遊戲結束"
 
@@ -6606,7 +6613,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "你嘗試載入的檔案已損壞"
 
 #: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "你嘗試載入的檔案已損壞：'"
@@ -6643,7 +6650,7 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr "連結群組$id需要有「fixed_width」或「fixed_height」的鍵值。"
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6677,31 +6684,50 @@ msgstr "在大廳"
 msgid "Other Games"
 msgstr "儲存遊戲"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr "對戰歷史 $player"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "結束章節"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "時代："
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+#| msgid "addon_type^Modification"
+msgid "Modification"
+msgstr "資料改動"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:134
 #, fuzzy
 #| msgid "Era:"
 msgid "Era: "
 msgstr "時代："
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:135
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
+#: src/gui/dialogs/multiplayer/match_history.cpp:230
 #, fuzzy
 #| msgid "No units found."
 msgid "No game history found."
 msgstr "沒有找到單位。"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 
@@ -6896,55 +6922,67 @@ msgstr "你真的想要投降嗎？"
 msgid "Surrender"
 msgstr "投降"
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr "地圖截圖"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "(press $hk to disable)"
 msgstr "（按 $hk 來關閉）"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr "加速已啟用！"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr "加速已停用！"
 
-#: src/hotkey/hotkey_handler.cpp:427
-msgid "Back to Turn "
-msgstr "回到回合"
-
-#: src/hotkey/hotkey_handler.cpp:433
+#: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Start"
 msgstr "回到開頭"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147
+#: src/hotkey/hotkey_handler.cpp:441
+msgid "Back to Turn "
+msgstr "回到回合"
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Ready to start!"
+msgid "Replay from Start"
+msgstr "準備開始！"
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "播放回合"
+
+#: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
 msgstr "（按 $hotkey 來取消）"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "計劃模式已開啟！"
 
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "計劃模式已關閉！"
 
-#: src/hotkey/hotkey_handler_sp.cpp:317
+#: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
 msgstr "你想繼續嗎？"
 
-#: src/hotkey/hotkey_handler_sp.cpp:333
+#: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
 msgstr "你嘗試載入的檔案已損壞"
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -7745,13 +7783,13 @@ msgstr "無可用目標"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "取消還沒傳送至伺服器的移動。"
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "網路連線已中斷，將無法進行遊戲。你要儲存此遊戲嗎？"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7759,7 +7797,7 @@ msgstr ""
 "\n"
 "你想要儲存遊戲嗎？"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7803,11 +7841,11 @@ msgstr ""
 "此多人連線遊戲使用替代隨機模式，若你不了解此訊息的意思，那有可能是有人在作"
 "弊，或是重新載入損壞的遊戲。"
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "本遊戲已結束。"
 
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:542
 msgid "It is now $name|’s turn"
 msgstr "輪到 $name| 了"
 
@@ -8738,14 +8776,14 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:815
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:816
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"

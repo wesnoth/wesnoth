@@ -160,6 +160,15 @@ ty, které jej obsahují) a\ skončí.
 zabrání přesměrování výstupu záznamů do souboru. Soubory se záznamy jsou
 vytvářeny v\ adresáři logs pod složkou s\ uživatelskými daty.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 počet snímků za sekundu, které může hra zobrazit. Hodnota by měla být mezi
 \fB1\fP a\ \fB1000\fP. Výchozí hodnotou je obnovovací frekvence monitoru.
@@ -281,9 +290,9 @@ uživatelským rozhraním.
 chyby ověření jsou brány jako fatální.
 .TP 
 \fB\-t[\fP\fIid_scénáře\fP\fB],\ \-\-test[\fP\fI=id_scénáře\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+spustí hru v\ malém testovacím scénáři. Scénář by měl být definován pomocí
+WML značky \fB[test]\fP. Výchozím je \fBtest\fP. Ukázku prvku \fB[micro_ai]\fP lze
+spustit pomocí \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ procent\fP
 nastaví od kolika \fIprocent\fP je překlad považován za dost hotový na to, aby
@@ -437,9 +446,9 @@ Navštiv oficiální domovskou stránku: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
+Copyright \(co 2003–2023 David White <davidnwhite@verizon.net>
 .br
-Toto je Svobodný Software; je licencován pod licencí GPL verze 2, tak jak je
+Toto je svobodný software; je licencován pod licencí GPL verze 2, tak jak je
 publikována nadací Free Software Foundation. Tento program je bez záruky, a
 to i co se týká obchodovatelnosti a použitelnosti.
 .

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -3964,7 +3964,7 @@ msgstr "nema"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr ""
 
@@ -4000,7 +4000,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:875
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -4274,13 +4274,13 @@ msgstr "Meni"
 
 # намерно кратко, на уском дугмету
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Gotovo"
 
 # намерно кратко, на уском дугмету
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Kraj"
 
@@ -4301,34 +4301,41 @@ msgstr ""
 msgid "Load Turn..."
 msgstr "Učitaj poziciju..."
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "pusti potez"
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Radnje"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "UP"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "IP"
 
 # well-spelled: ПП
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "PP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr ""
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:407
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -5460,7 +5467,7 @@ msgid ""
 "conflicts. This may cause problems."
 msgstr "Dodatak ima loše ime datoteke ili fascikle i ne može se instalirati."
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
 #, fuzzy
 #| msgid "The server responded with an error: \""
 msgid "The server responded with an error:"
@@ -6751,7 +6758,7 @@ msgid "Error while reading the WML: "
 msgstr "Greška pri čitanju WML-a: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "Kraj igre"
 
@@ -6774,7 +6781,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka koju ste pokušali da otvorite iskvarena je"
 
 #: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka koju ste pokušali da učitate iskvarena je: '"
@@ -6815,7 +6822,7 @@ msgstr ""
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 #, fuzzy
 #| msgid ""
 #| "The selected add-on has the following dependency. Do you want to install "
@@ -6862,31 +6869,51 @@ msgstr "Igrački hol"
 msgid "Other Games"
 msgstr "Posmatraj partiju"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
+# намерно кратко, на уском дугмету
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Kraj"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "epoha:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+#| msgid "Disable notifications"
+msgid "Modification"
+msgstr "Bez obavještenja"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:134
 #, fuzzy
 #| msgid "Era:"
 msgid "Era: "
 msgstr "epoha:"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:135
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
+#: src/gui/dialogs/multiplayer/match_history.cpp:230
 #, fuzzy
 #| msgid "No eras found."
 msgid "No game history found."
 msgstr "Nema nijedne epohe."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 
@@ -7099,63 +7126,75 @@ msgstr "Želite li zaista da pokrenete server?"
 msgid "Surrender"
 msgstr ""
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "(pritisnite $hotkey da produži)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr ""
 
-#: src/hotkey/hotkey_handler.cpp:427
-#, fuzzy
-#| msgid "Back to turn "
-msgid "Back to Turn "
-msgstr "Nazad na potez "
-
-#: src/hotkey/hotkey_handler.cpp:433
+#: src/hotkey/hotkey_handler.cpp:441
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "Nazad na potez "
 
-#: src/hotkey/hotkey_handler_sp.cpp:147
+#: src/hotkey/hotkey_handler.cpp:441
+#, fuzzy
+#| msgid "Back to turn "
+msgid "Back to Turn "
+msgstr "Nazad na potez "
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Back to turn "
+msgid "Replay from Start"
+msgstr "Nazad na potez "
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "pusti potez"
+
+#: src/hotkey/hotkey_handler_sp.cpp:151
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hotkey to deactivate)"
 msgstr "(pritisnite $hotkey da produži)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "Režim planiranja aktiviran!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "Režim planiranja deaktiviran!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:317
+#: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
 msgstr "Želite li da nastavite?"
 
-#: src/hotkey/hotkey_handler_sp.cpp:333
+#: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
 msgstr "Datoteka koju ste pokušali da otvorite iskvarena je"
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -8038,7 +8077,7 @@ msgstr "Nema ciljeva"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Opoziv pokreta se ne može odaslati na server."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8046,7 +8085,7 @@ msgstr ""
 "Mrežna veza je prekinuta i igra se ne može nastaviti. Želite li da sačuvate "
 "poziciju?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 #, fuzzy
 #| msgid "Do you really want to start the server?"
 msgid ""
@@ -8054,7 +8093,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Želite li zaista da pokrenete server?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8098,11 +8137,11 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "Igra je završena."
 
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:542
 msgid "It is now $name|’s turn"
 msgstr "Na potezu je $name"
 
@@ -9144,14 +9183,14 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:815
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:816
 #, fuzzy
 #| msgid "Loading data files"
 msgid "Logging Failure"
@@ -9503,12 +9542,6 @@ msgstr "Opcije blokčeta"
 #~ msgstr ""
 #~ "Ova pozicija je sačuvana različitom verzijom igre. Želite li da pokušate "
 #~ "učitavanje?"
-
-# намерно кратко, на уском дугмету
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Kraj"
 
 #, fuzzy
 #~| msgid "Preferences"
@@ -10380,11 +10413,6 @@ msgstr "Opcije blokčeta"
 #~| msgid "Random start time"
 #~ msgid "Random map options:"
 #~ msgstr "nasumično vreme početka"
-
-#, fuzzy
-#~| msgid "Disable notifications"
-#~ msgid "Modifications:"
-#~ msgstr "Bez obavještenja"
 
 #, fuzzy
 #~| msgid "Next Turn"

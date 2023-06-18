@@ -166,6 +166,15 @@ si s'escau) i surt
 prevents redirecting logged output to a file. Log files are created in the
 logs directory under the userdata folder.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el nombre de fotogrames per segon que el joc pot mostrar; el valor hauria de
 ser entre \fB1\fP i \fB1000\fP. Per defecte, és la velocitat d'actualització del

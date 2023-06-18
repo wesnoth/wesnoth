@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2023-01-07 11:04-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -5334,7 +5334,7 @@ msgstr "Não"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr "Screenshot"
 
@@ -5370,7 +5370,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "$level nível deprecation inválido (deve ser 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:875
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nível deprecation inválido (deve ser 1-4)"
 
@@ -5834,7 +5834,7 @@ msgstr "Menu"
 # File: data/themes/dfool.cfg, line: 157
 # File: data/themes/widescreen.cfg, line: 178
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Terminar Turno"
 
@@ -5853,7 +5853,7 @@ msgstr "Terminar Turno"
 # File: data/themes/dfool.cfg, line: 158
 # File: data/themes/widescreen.cfg, line: 179
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Terminar o Cenário"
 
@@ -5877,6 +5877,17 @@ msgid "Load Turn..."
 msgstr "Carregar Turno..."
 
 #
+# File: data/themes/macros.cfg, line: 109
+# File: data/themes/macros.cfg, line: 109
+# File: data/themes/macros.cfg, line: 109
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "executar turno"
+
+#
 # File: data/themes/default.cfg, line: 123
 # File: data/themes/dfool.cfg, line: 142
 # File: data/themes/experimental.cfg, line: 104
@@ -5890,7 +5901,7 @@ msgstr "Carregar Turno..."
 # File: data/themes/experimental.cfg, line: 104
 # File: data/themes/widescreen.cfg, line: 148
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Ações"
 
@@ -5920,7 +5931,7 @@ msgstr "Ações"
 # File: src/unit.cpp, line: 2409
 # File: src/unit.cpp, line: 2609
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "HP"
 
@@ -5947,7 +5958,7 @@ msgstr "HP"
 # File: src/dialogs.cpp, line: 327
 # File: src/dialogs.cpp, line: 499
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "XP"
 
@@ -5956,12 +5967,12 @@ msgstr "XP"
 # File: data/themes/dfool.cfg, line: 249
 # File: data/themes/dfool.cfg, line: 249
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "MP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr "def"
 
@@ -5982,7 +5993,7 @@ msgstr "def"
 # File: data/themes/widescreen.cfg, line: 491
 # File: data/themes/widescreen.cfg, line: 617
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:407
 msgid "statuspanel^lvl"
 msgstr "lvl"
 
@@ -7819,7 +7830,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 328
 # File: src/addon/manager_ui.cpp, line: 333
 # File: src/addon/manager_ui.cpp, line: 815
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
 msgid "The server responded with an error:"
 msgstr "O servidor respondeu com um erro:"
 
@@ -9922,7 +9933,7 @@ msgstr "Erro ao ler o WML: "
 # File: src/playcampaign.cpp, line: 549
 # File: src/playsingle_controller.cpp, line: 462
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "Game Over"
 
@@ -9972,7 +9983,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 # File: src/game_controller.cpp, line: 431
 # File: src/savegame.cpp, line: 733
 #: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O Arquivo que você tentou carregar está corrompido: '"
@@ -10044,7 +10055,7 @@ msgstr ""
 # File: src/addon/manager_ui.cpp, line: 205
 # File: src/addon/manager_ui.cpp, line: 205
 # File: src/addon/manager_ui.cpp, line: 205
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -10095,21 +10106,52 @@ msgstr "Sala de Espera"
 msgid "Other Games"
 msgstr "Outro time"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr "Histórico de Partidas — $player"
+
+#
+# File: src/statistics_dialog.cpp, line: 225
+# File: src/statistics_dialog.cpp, line: 303
+# File: src/statistics_dialog.cpp, line: 225
+# File: src/statistics_dialog.cpp, line: 303
+# File: src/statistics_dialog.cpp, line: 225
+# File: src/statistics_dialog.cpp, line: 303
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+msgid "Scenario"
+msgstr "Cenário"
 
 #
 # File: src/multiplayer_create.cpp, line: 91
 # File: src/multiplayer_create.cpp, line: 91
 # File: src/multiplayer_create.cpp, line: 91
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "Era:"
+
+#
+# File: data/advanced_preferences.cfg, line: 99
+# File: data/advanced_preferences.cfg, line: 99
+# File: data/advanced_preferences.cfg, line: 99
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+msgid "Modification"
+msgstr "Desabilitar notificações."
+
+#
+# File: src/multiplayer_create.cpp, line: 91
+# File: src/multiplayer_create.cpp, line: 91
+# File: src/multiplayer_create.cpp, line: 91
+#: src/gui/dialogs/multiplayer/match_history.cpp:134
 #, fuzzy
 #| msgid "Era:"
 msgid "Era: "
 msgstr "Era:"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:135
 msgid " UTC+0"
 msgstr ""
 
@@ -10117,17 +10159,17 @@ msgstr ""
 # File: src/multiplayer_create.cpp, line: 266
 # File: src/multiplayer_create.cpp, line: 266
 # File: src/multiplayer_create.cpp, line: 266
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
+#: src/gui/dialogs/multiplayer/match_history.cpp:230
 #, fuzzy
 #| msgid "No eras found."
 msgid "No game history found."
 msgstr "Nenhuma Era encontrada."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 
@@ -10495,7 +10537,7 @@ msgstr "Você realmente deseja se render?"
 msgid "Surrender"
 msgstr "Render-se"
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr "Screenshot do Mapa"
 
@@ -10503,23 +10545,31 @@ msgstr "Screenshot do Mapa"
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "(press $hk to disable)"
 msgstr "(aperte $hk para desabilitar)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr "Velocidade Acelerada ativada!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr "Velocidade Acelerada desativada!"
+
+#
+# File: src/play_controller.cpp, line: 1152
+# File: src/play_controller.cpp, line: 1152
+# File: src/play_controller.cpp, line: 1152
+#: src/hotkey/hotkey_handler.cpp:441
+msgid "Back to Start"
+msgstr "Voltar para o Começo"
 
 #
 # File: src/play_controller.cpp, line: 1141
 # File: src/play_controller.cpp, line: 1141
 # File: src/play_controller.cpp, line: 1141
-#: src/hotkey/hotkey_handler.cpp:427
+#: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Turn "
 msgstr "Voltar ao turno "
 
@@ -10527,15 +10577,27 @@ msgstr "Voltar ao turno "
 # File: src/play_controller.cpp, line: 1152
 # File: src/play_controller.cpp, line: 1152
 # File: src/play_controller.cpp, line: 1152
-#: src/hotkey/hotkey_handler.cpp:433
-msgid "Back to Start"
-msgstr "Voltar para o Começo"
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Ready to start!"
+msgid "Replay from Start"
+msgstr "Pronto para começar!"
+
+#
+# File: data/themes/macros.cfg, line: 109
+# File: data/themes/macros.cfg, line: 109
+# File: data/themes/macros.cfg, line: 109
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "executar turno"
 
 #
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
-#: src/hotkey/hotkey_handler_sp.cpp:147
+#: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
 msgstr "(aperte $hotkey para desativar)"
 
@@ -10546,7 +10608,7 @@ msgstr "(aperte $hotkey para desativar)"
 # File: src/playsingle_controller.cpp, line: 221
 # File: src/menu_events.cpp, line: 3092
 # File: src/playsingle_controller.cpp, line: 221
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "Modo de planejamento ativado!"
 
@@ -10557,7 +10619,7 @@ msgstr "Modo de planejamento ativado!"
 # File: src/playsingle_controller.cpp, line: 224
 # File: src/menu_events.cpp, line: 3095
 # File: src/playsingle_controller.cpp, line: 224
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "Modo de planejamento desativado!"
 
@@ -10565,7 +10627,7 @@ msgstr "Modo de planejamento desativado!"
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
 # File: src/multiplayer.cpp, line: 256
-#: src/hotkey/hotkey_handler_sp.cpp:317
+#: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
 #| msgid "Do you want to continue?"
 msgid "Do you want to load it anyway?"
@@ -10578,7 +10640,7 @@ msgstr "Você deseja continuar?"
 # File: src/game_controller.cpp, line: 428
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
-#: src/hotkey/hotkey_handler_sp.cpp:333
+#: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
@@ -10591,7 +10653,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 # File: src/game_controller.cpp, line: 428
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -12000,7 +12062,7 @@ msgstr "Desfazendo movimentos que ainda não foram enviados para o servidor."
 # File: src/playsingle_controller.cpp, line: 544
 # File: src/playsingle_controller.cpp, line: 544
 # File: src/playsingle_controller.cpp, line: 544
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -12018,7 +12080,7 @@ msgstr ""
 # File: src/dialogs.cpp, line: 105
 # File: src/dialogs.cpp, line: 109
 # File: src/dialogs.cpp, line: 114
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -12030,7 +12092,7 @@ msgstr ""
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
 # File: src/savegame.cpp, line: 965
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -12094,7 +12156,7 @@ msgstr ""
 # File: src/playsingle_controller.cpp, line: 463
 # File: src/playsingle_controller.cpp, line: 463
 # File: src/playsingle_controller.cpp, line: 463
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "O jogo está acabado."
 
@@ -12102,7 +12164,7 @@ msgstr "O jogo está acabado."
 # File: src/playsingle_controller.cpp, line: 712
 # File: src/playsingle_controller.cpp, line: 712
 # File: src/playsingle_controller.cpp, line: 712
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:542
 msgid "It is now $name|’s turn"
 msgstr "Agora é o turno de $name|"
 
@@ -13824,14 +13886,14 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:815
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:816
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
@@ -14827,16 +14889,6 @@ msgstr "Opções do Quadro-Branco"
 
 #~ msgid "Start"
 #~ msgstr "Começo"
-
-#
-# File: src/statistics_dialog.cpp, line: 225
-# File: src/statistics_dialog.cpp, line: 303
-# File: src/statistics_dialog.cpp, line: 225
-# File: src/statistics_dialog.cpp, line: 303
-# File: src/statistics_dialog.cpp, line: 225
-# File: src/statistics_dialog.cpp, line: 303
-#~ msgid "Scenario"
-#~ msgstr "Cenário"
 
 #~ msgid "Final Battle"
 #~ msgstr "Batalha Final"
@@ -16837,14 +16889,6 @@ msgstr "Opções do Quadro-Branco"
 #~| msgid "Random start time"
 #~ msgid "Random map options:"
 #~ msgstr "Tempo inicial aleatório"
-
-#
-# File: data/advanced_preferences.cfg, line: 99
-# File: data/advanced_preferences.cfg, line: 99
-# File: data/advanced_preferences.cfg, line: 99
-#, fuzzy
-#~ msgid "Modifications:"
-#~ msgstr "Desabilitar notificações."
 
 #
 # File: data/themes/macros.cfg, line: 108

@@ -169,6 +169,15 @@ falls angegeben).
 prevents redirecting logged output to a file. Log files are created in the
 logs directory under the userdata folder.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ FPS\fP
 Setzt die Anzahl der gezeichneten Bilder pro Sekunde, die vom Spiel
 angezeigt werden. Der Wert sollte zwischen \fB1\fP und \fB1000\fP liegen. Die

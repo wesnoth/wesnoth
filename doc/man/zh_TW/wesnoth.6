@@ -131,6 +131,15 @@ http://www.wesnoth.org/wiki/CommandMode）。
 prevents redirecting logged output to a file. Log files are created in the
 logs directory under the userdata folder.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 遊戲每秒能顯示的影格數，數值應在 \fB1\fP 至 \fB1000\fP 之間，預設為螢幕刷新率。
 .TP 

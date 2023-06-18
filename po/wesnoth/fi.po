@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
 "PO-Revision-Date: 2023-01-14 14:59+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
@@ -4163,7 +4163,7 @@ msgstr "Ei"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/window/screenshot_notification.cfg:95
-#: src/hotkey/command_executor.cpp:642
+#: src/hotkey/command_executor.cpp:631
 msgid "Screenshot"
 msgstr "Kuvankaappaus"
 
@@ -4200,7 +4200,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Viallinen poistotaso $level (pitäisi olla 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:878
+#: data/lua/wml-tags.lua:875
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Viallinen poistotaso (pitäisi olla 1-4)"
 
@@ -4454,12 +4454,12 @@ msgid "Menu"
 msgstr "Valikko"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:53 data/themes/default.cfg:144
+#: data/themes/cutscene.cfg:53 data/themes/default.cfg:151
 msgid "End Turn"
 msgstr "Lopeta vuoro"
 
 #. [action]: id=button-endturn
-#: data/themes/cutscene.cfg:54 data/themes/default.cfg:145
+#: data/themes/cutscene.cfg:54 data/themes/default.cfg:152
 msgid "End Scenario"
 msgstr "Päätä skenaario"
 
@@ -4478,34 +4478,41 @@ msgstr "Tavallinen teema"
 msgid "Load Turn..."
 msgstr "Lataa vuoro..."
 
+#. [menu]: id=menu-quickreplay
+#: data/themes/default.cfg:108
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay Turn..."
+msgstr "toista vuoro"
+
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:109
+#: data/themes/default.cfg:116
 msgid "Actions"
 msgstr "Toiminnot"
 
 #. [label]: id=label-hp
-#: data/themes/default.cfg:157
+#: data/themes/default.cfg:164
 msgid "HP"
 msgstr "EP"
 
 #. [label]: id=label-xp
-#: data/themes/default.cfg:166
+#: data/themes/default.cfg:173
 msgid "XP"
 msgstr "KP"
 
 #. [label]: id=label-mp
-#: data/themes/default.cfg:174
+#: data/themes/default.cfg:181
 msgid "MP"
 msgstr "MP"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:182
+#: data/themes/default.cfg:189
 msgid "def"
 msgstr "puol"
 
 # Yli 3 kirjaiminen käännös ei mahdu sivupaneeliin.
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:400
+#: data/themes/default.cfg:407
 msgid "statuspanel^lvl"
 msgstr "T"
 
@@ -5622,7 +5629,7 @@ msgstr ""
 "Lisäosan <i>$addon_title</i> tiedoston tai hakemiston nimessä on ongelma, "
 "joka koskee suurten ja pienten merkkien konfliktia, eikä sitä voida asentaa."
 
-#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:190
+#: src/addon/client.cpp:426 src/gui/dialogs/multiplayer/match_history.cpp:225
 msgid "The server responded with an error:"
 msgstr "Palvelin vastasi virheellä:"
 
@@ -6792,7 +6799,7 @@ msgid "Error while reading the WML: "
 msgstr "Virhe luettaessa WML:ää: "
 
 #: src/game_initialization/playcampaign.cpp:218
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "Game Over"
 msgstr "Peli ohi"
 
@@ -6813,7 +6820,7 @@ msgid "The file you have tried to load is corrupt"
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
 #: src/game_launcher.cpp:715 src/game_launcher.cpp:734
-#: src/hotkey/hotkey_handler_sp.cpp:329 src/savegame.cpp:153
+#: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tiedosto, jonka yritit ladata, on vahingoittunut: '"
@@ -6851,7 +6858,7 @@ msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Yhdistetty ryhmä '$id' tarvitsee 'fixed_width' tai 'fixed_height'-avaimen."
 
-#: src/gui/dialogs/addon/install_dependencies.cpp:37
+#: src/gui/dialogs/addon/install_dependencies.cpp:35
 msgid ""
 "The selected add-on has the following dependency, which is outdated or not "
 "currently installed. Do you wish to install it before continuing?"
@@ -6881,31 +6888,50 @@ msgstr "Aula"
 msgid "Other Games"
 msgstr "Muut pelit"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:49
+#: src/gui/dialogs/multiplayer/match_history.cpp:51
+#: src/gui/dialogs/multiplayer/match_history.cpp:90
 msgid "Match History — $player"
 msgstr "Pelihistoria — $player"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:102
+#: src/gui/dialogs/multiplayer/match_history.cpp:68
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenario"
+msgstr "Päätä skenaario"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:69
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "Aikakausi:"
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:70
+#, fuzzy
+#| msgid "Disable notifications"
+msgid "Modification"
+msgstr "Poista pelin ilmoitukset käytöstä."
+
+#: src/gui/dialogs/multiplayer/match_history.cpp:134
 #, fuzzy
 #| msgid "Era:"
 msgid "Era: "
 msgstr "Aikakausi:"
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:103
+#: src/gui/dialogs/multiplayer/match_history.cpp:135
 msgid " UTC+0"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:195
+#: src/gui/dialogs/multiplayer/match_history.cpp:230
 #, fuzzy
 #| msgid "No eras found."
 msgid "No game history found."
 msgstr "Ei löydettyjä aikakausia."
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:208
+#: src/gui/dialogs/multiplayer/match_history.cpp:243
 msgid "Request timed out."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/match_history.cpp:218
+#: src/gui/dialogs/multiplayer/match_history.cpp:253
 msgid "Request encountered an unexpected error, please check the logs."
 msgstr ""
 
@@ -7098,55 +7124,67 @@ msgstr "Haluatko varmasti luovuttaa pelin?"
 msgid "Surrender"
 msgstr "Luovuta"
 
-#: src/hotkey/command_executor.cpp:818
+#: src/hotkey/command_executor.cpp:807
 msgid "Map-Screenshot"
 msgstr "Kartan kuvankaappaus"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "(press $hk to disable)"
 msgstr "(paina $hk poistaaksesi käytöstä)"
 
-#: src/hotkey/hotkey_handler.cpp:225
+#: src/hotkey/hotkey_handler.cpp:237
 msgid "Accelerated speed enabled!"
 msgstr "Nopeutettu peli käytössä!"
 
-#: src/hotkey/hotkey_handler.cpp:229
+#: src/hotkey/hotkey_handler.cpp:241
 msgid "Accelerated speed disabled!"
 msgstr "Nopeutettu peli ei käytössä!"
 
-#: src/hotkey/hotkey_handler.cpp:427
-msgid "Back to Turn "
-msgstr "Takaisin vuoroon "
-
-#: src/hotkey/hotkey_handler.cpp:433
+#: src/hotkey/hotkey_handler.cpp:441
 msgid "Back to Start"
 msgstr "Takaisin alkuun"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147
+#: src/hotkey/hotkey_handler.cpp:441
+msgid "Back to Turn "
+msgstr "Takaisin vuoroon "
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Ready to start!"
+msgid "Replay from Start"
+msgstr "Valmiina aloittamaan!"
+
+#: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "play turn"
+msgid "Replay from Turn "
+msgstr "toista vuoro"
+
+#: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
 msgstr "(paina $hotkey poistaaksesi käytöstä)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:147 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:151 src/menu_events.cpp:2101
 msgid "Planning mode activated!"
 msgstr "Suunnittelutila otettu käyttöön!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:149 src/menu_events.cpp:2104
+#: src/hotkey/hotkey_handler_sp.cpp:153 src/menu_events.cpp:2104
 msgid "Planning mode deactivated!"
 msgstr "Suunnittelutila poistettu käytöstä!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:317
+#: src/hotkey/hotkey_handler_sp.cpp:322
 #, fuzzy
 #| msgid "Do you still want to download it?"
 msgid "Do you want to load it anyway?"
 msgstr "Haluatko silti ladata sen?"
 
-#: src/hotkey/hotkey_handler_sp.cpp:333
+#: src/hotkey/hotkey_handler_sp.cpp:338
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information. "
 msgstr "Tiedosto, jonka yritit avata, on korruptoitunut"
 
-#: src/hotkey/hotkey_handler_sp.cpp:337
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -7994,14 +8032,14 @@ msgstr "Tavoitteita ei tarjolla"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Siirtojen peruutuksia ei ole vielä toimitettu palvelimelle."
 
-#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:449
+#: src/playmp_controller.cpp:250 src/playsingle_controller.cpp:447
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Verkkoyhteys on katkennut, eikä peli voi jatkua. Haluatko tallentaa pelin?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8009,7 +8047,7 @@ msgstr ""
 "\n"
 "Haluatko tallentaa pelin?"
 
-#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:453
+#: src/playmp_controller.cpp:254 src/playsingle_controller.cpp:451
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8058,11 +8096,11 @@ msgstr ""
 "viesti tarkoittaa, niin mitä todennäköisemmin joku on huijaamassa tai joku "
 "latasi uudelleen viallisen pelin."
 
-#: src/playsingle_controller.cpp:371
+#: src/playsingle_controller.cpp:369
 msgid "The game is over."
 msgstr "Peli on ohi."
 
-#: src/playsingle_controller.cpp:544
+#: src/playsingle_controller.cpp:542
 msgid "It is now $name|’s turn"
 msgstr "Nyt on vuorossa $name"
 
@@ -9020,14 +9058,14 @@ msgstr "$year eTu."
 msgid "$year AF"
 msgstr "$year jTu."
 
-#: src/wesnoth.cpp:814
+#: src/wesnoth.cpp:815
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:816
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
@@ -9219,11 +9257,6 @@ msgstr "Valkotaulun asetukset"
 #~ msgstr ""
 #~ "Tämä tallenne on pelin eri versiosta ($version_number|). Haluatko yrittää "
 #~ "ladata sen?"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Scenario"
-#~ msgstr "Päätä skenaario"
 
 #, fuzzy
 #~| msgid "Preferences"
@@ -10155,11 +10188,6 @@ msgstr "Valkotaulun asetukset"
 #~ "No eras available\n"
 #~ "for this game."
 #~ msgstr "Tässä pelissä ei ole vapaata puolta."
-
-#, fuzzy
-#~| msgid "Disable notifications"
-#~ msgid "Modifications:"
-#~ msgstr "Poista pelin ilmoitukset käytöstä."
 
 #~ msgid "Next"
 #~ msgstr "Seuraava"

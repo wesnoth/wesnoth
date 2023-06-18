@@ -128,6 +128,15 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 prevents redirecting logged output to a file. Log files are created in the
 logs directory under the userdata folder.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 游戏每秒能显示的帧数，这个值应该在\fB1\fP和\fB1000\fP之间，默认为显示器的刷新率。
 .TP 
