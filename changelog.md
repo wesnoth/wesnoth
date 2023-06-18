@@ -1,6 +1,4 @@
-## Version 1.17.17+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.18
  ### Campaigns
    * Heir to the Throne
      * S19c and S20b: Improve rewards by giving a Lieutenant instead of a Sergeant.
@@ -11,18 +9,14 @@
      * Added po hints (translation hints).
    * World Conquest
      * Fixed a bug that the epic trait raised XP requirements for advancements that cost less than 60 XP.
- ### Editor
  ### Multiplayer
    * Add some search terms to the match history dialog. (PR #7571)
- ### Lua API
- ### Packaging
  ### Terrain
    * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias). (PR #7629)
  ### Translations
    * Updated translations: British English, Czech, Finnish, French, Spanish
    * Python files are now searched for translatable strings.
    * Added the `wesnoth-tools` textdomain for WML-maintenance tools.
- ### Units
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
      as a possible file location on modern Linux distributions.
@@ -30,7 +24,6 @@
    * Better error handling if the data directory is not found. (issue #6883)
    * The Log File button is now available in the game version info dialog on non-Windows platforms.
    * Rearranged some elements in Display preferences.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Move multiplayer macros to proper folder. (PR #7647)
    * Fixed updating POT files with version 0.68-1 of the po4a toolsuite. (issue #7149)
