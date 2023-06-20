@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-18 04:20 UTC\n"
-"PO-Revision-Date: 2023-05-28 13:15+0200\n"
+"PO-Revision-Date: 2023-06-19 23:04+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -108,13 +108,6 @@ msgstr "Zvláštní poděkování patří všem, již zde byli opomenuti."
 
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/campaigns/Under_the_Burning_Suns/lua/theme.lua:15
-#, fuzzy
-#| msgid ""
-#| "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#| "damage reduced by 1 each turn during the day unless prevented by healers "
-#| "or cured by water at an oasis.\n"
-#| "\n"
-#| "Units cannot be killed or deal no damage as a result of dehydration."
 msgid ""
 "dehydrated: This unit is dehydrated. It will lose $dehydration HP and have "
 "its damage reduced by 1 each turn during the day unless prevented by healers "
@@ -122,9 +115,9 @@ msgid ""
 "\n"
 "Units cannot be killed or deal no damage as a result of dehydration."
 msgstr ""
-"dehydratace: Tato jednotka je dehydrovaná. Každé kolo během dne ztratí "
-"4 body života a zranění způsobená jejími útoky se sníží o 1, pokud tomu "
-"nezabrání léčitelé nebo dokud se neuzdraví osvěžením vodou v oáze.\n"
+"dehydratace: Tato jednotka je dehydrovaná. Každé kolo během dne jí ubyde "
+"život o $dehydration a zranění způsobená jejími útoky se sníží o 1, pokud "
+"tomu nezabrání léčitelé nebo dokud se neuzdraví osvěžením vodou v oáze.\n"
 "\n"
 "V důsledku dehydratace nemohou jednotky zemřít nebo přestat udělovat zranění."
 
@@ -2278,14 +2271,12 @@ msgstr ""
 #. [resistance]: id=garak_steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:710
 msgid "steadfast"
-msgstr ""
+msgstr "vytrvalý"
 
 #. [resistance]: id=garak_steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:711
-#, fuzzy
-#| msgid "female^distract"
 msgid "female^steadfast"
-msgstr "rozptýlení"
+msgstr "vytrvalá"
 
 #. [resistance]: id=garak_steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:712
@@ -2293,6 +2284,8 @@ msgid ""
 "This unit's resistances are increased by 20%, up to a maximum of 50%, when "
 "defending. Vulnerabilities are not affected."
 msgstr ""
+"Odolnosti této jednotky jsou při obraně zvýšeny o 20 %, až na maximum 50 %. "
+"Odolnosti se zápornými hodnotami (zranitelnosti) nejsou ovlivněny."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:725
@@ -3040,6 +3033,10 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
+"Když už mluvíme o těchto končinách, nemáme sice Garaka, který by nás vedl, "
+"ale celá tahle krajina přesně odpovídá mapě, kterou jsme včera večer získali "
+"od skřetů! Přímo před námi je na ní skřetí tábor! Říkam si, jestli bychom se "
+"mohli kolem proplížit tak, aby nás nezpozorovali."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:377
@@ -3167,6 +3164,8 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
+"Stačí pár kroků a všichni tihle goblini už ví, že jsme tady! Hádám, že to "
+"není tak snadné tajně se plížit na domácí půdě někoho jiného."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:541
@@ -3195,8 +3194,6 @@ msgstr "Jezerní nága"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:563
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:565
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:566
-#, fuzzy
-#| msgid "Lake Naga"
 msgid "female^Lake Naga"
 msgstr "Jezerní nága"
 
@@ -3922,10 +3919,8 @@ msgstr "Jejda!"
 #. [message]: speaker=$explorer.id
 #. "this" refers to the trolls and dwarves fighting
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:949
-#, fuzzy
-#| msgid "Kaleh, I think you should come up and see this."
 msgid "Whoa. Kaleh, you have to come see this."
-msgstr "Kalehu, myslím, že bys měl přijít a podívat se na tohle."
+msgstr "No ne. Kalehu, na tohle se musíš přijít podívat."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1055
@@ -8062,7 +8057,7 @@ msgstr "Tak ať. Mně už je to jedno."
 #. Name of the dark assassin who uses "speaker=Cloaked Figure" when talking
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2497
 msgid "Keratur"
-msgstr ""
+msgstr "Keratur"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2532
@@ -11573,7 +11568,6 @@ msgstr ""
 msgid "This is—"
 msgstr "Toto je..."
 
-# pův.: A musím říct, že $intl_ally_name mě svými činy přesvědčil, že ???.
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:178
 msgid ""
@@ -15065,8 +15059,6 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:40
-#, fuzzy
-#| msgid "sand storm"
 msgid "sandstorm"
 msgstr "písečná bouře"
 
@@ -15102,16 +15094,6 @@ msgstr "Quenothský bojovník"
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Long ago, during more prosperous times, elven warriors favored the use of "
-#| "swords as more elegant, versatile weapons compared to other melee "
-#| "armaments. However, in recent times, the dearth of supplies for smithing "
-#| "has reduced the availability of blade-crafting, necessitating the "
-#| "fashioning of cheaper, more easily repaired weaponry. Quenoth Fighters "
-#| "are remarkably skilled in coordinated groups, where they can counteract "
-#| "the lack of more sophisticated weaponry by forming robust spear ranks "
-#| "capable of repelling nearly any frontal assault."
 msgid ""
 "Long ago, during more prosperous times, elven warriors favored the use of "
 "swords as more elegant, versatile weapons compared to other melee armaments. "
@@ -15123,14 +15105,14 @@ msgid ""
 "his attention between multiple enemies, be they brigand, wild creature, or "
 "undead."
 msgstr ""
-"Kdysi dávno, během prosperujících dob, elfští válečníci upřednostňovali "
-"použití mečů, neboť jim ve srovnání s jinými zbraněmi na blízko přišly jako "
-"elegantnější a všestrannější zbraně. V současné době však nedostatek surovin "
-"pro kovářskou výrobu snížil dostupnost čepelí, což si vyžádalo výrobu "
-"levnějších a snadněji opravitelných zbraní. Quenothští bojovníci jsou "
-"pozoruhodně zruční v koordinovaných skupinách, v kterých mohou čelit "
-"nedostatku sofistikovanějších zbraní vytvořením robustních kopinických "
-"formací schopných odrazit téměř jakýkoli frontální útok."
+"Kdysi dávno, za lepších časů, elfští válečníci upřednostňovali použití mečů, "
+"neboť jim ve srovnání s jinými zbraněmi na blízko přišly jako elegantnější "
+"a všestrannější zbraně. V současné době však nedostatek surovin pro "
+"kovářskou výrobu snížil dostupnost čepelí, což si vyžádalo výrobu levnějších "
+"a snadněji opravitelných zbraní. Aby vyrovnali tuto sníženou kvalitu "
+"výzbroje, osvojili si quenothští velkou všestrannost při jejím používání. "
+"Venku v poušti je bojovník cvičen využívat důvtip, aby rozdělil svou "
+"pozornost mezi více nepřátel, ať už jde o bandity, divoké tvory nebo nemrtvé."
 
 #. [unit_type]: id=Quenoth Flanker, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:5
@@ -15414,13 +15396,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:39
 msgid "sun invocation"
-msgstr ""
+msgstr "vzývání slunce"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:53
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "paprsek slunce"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15452,7 +15434,7 @@ msgstr ""
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:71
 msgid "sun incarnate"
-msgstr ""
+msgstr "vtělené slunce"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -16264,15 +16246,6 @@ msgstr "+$amount ke zkušenosti"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
-#, fuzzy
-#| msgid ""
-#| "Note: This campaign is probably not appropriate for beginners. It changes "
-#| "certain Wesnoth standards, such as the elves’ stats and the day/night "
-#| "cycle. This campaign emphasizes role-playing elements and tends to have "
-#| "longer scenarios with objectives that change in the middle. For these "
-#| "reasons, we strongly suggest that you occasionally save your game mid-"
-#| "scenario, so you won’t lose all your progress if you get stuck and have "
-#| "to start over."
 msgid ""
 "Note: This campaign is probably not appropriate for beginners. It changes "
 "certain Wesnoth standards, such as the elves’ stats, the day/night cycle, "
@@ -16283,8 +16256,9 @@ msgid ""
 "your progress if you get stuck and have to start over."
 msgstr ""
 "Poznámka: Toto tažení pravděpodobně není pro začátečníky nejlepší volbou. "
-"Modifikuje některé standardy Wesnothu, zejména vlastnosti elfů a denní "
-"cyklus. Zároveň klade důraz na RPG prvky a má delší scénáře s často se "
+"Modifikuje některé standardy Wesnothu, jako třeba vlastnosti elfů, "
+"cyklus denní doby, náklady na povolávání a obecný přístup k úrovním "
+"obtížnosti. Zároveň klade důraz na RPG prvky a má delší scénáře s často se "
 "měnícími cíli. Z těchto důvodů je vhodné občas ukládat hru i uprostřed "
 "scénáře, abys při „zákysu“ nemusel začínat znovu."
 
@@ -17220,15 +17194,3 @@ msgstr "Hrad duchů"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Tvrz duchů"
-
-#~ msgid "Skeleton Rider"
-#~ msgstr "Jízdní kostlivec"
-
-#~ msgid ""
-#~ "Once great warriors across the plains, these mounted riders atop their "
-#~ "skeletal horses were raised from the sands by unholy magic to spread fear "
-#~ "and destruction."
-#~ msgstr ""
-#~ "Tito kostlivci, kdysi velcí válečníci a postrach plání, opět osedlali "
-#~ "kostry koní, jež povstaly nečistými silami z písků spolu s nimi a vydali "
-#~ "se šířit strach a zkázu."

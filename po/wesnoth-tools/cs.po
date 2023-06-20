@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-05-29 16:27-0500\n"
-"PO-Revision-Date: 2023-06-16 22:57+0200\n"
+"PO-Revision-Date: 2023-06-17 06:57+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -15,9 +15,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: data/tools/GUI.pyw:58
-#, fuzzy
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
-msgstr "Otevření grafického uživatelského rozhraní (GUI) k nástrojům WML"
+msgstr "Otevřít grafické uživatelské rozhraní (GUI) k nástrojům WML"
 
 #: data/tools/GUI.pyw:59
 msgid "LANGUAGE"
@@ -26,13 +25,12 @@ msgstr "JAZYK"
 #. TRANSLATORS: ISO 15897 "Procedures for the registration of cultural elements" specifies use
 #. of underscores in the locale id. For example, use en_GB, not en-GB.
 #: data/tools/GUI.pyw:65
-#, fuzzy
 msgid ""
 "Launch GUI.pyw in the given language. Language code must follow ISO 15897 (e."
 "g. en_GB)."
 msgstr ""
-"Spustí GUI.pyw v daném jazyce. Kód jazyka musí odpovídat normě ISO 15897 "
-"(např. en_GB)."
+"Spustit GUI.pyw v daném jazyce. Kód jazyka musí odpovídat normě ISO 15897 "
+"(např. cs_CZ)."
 
 #: data/tools/GUI.pyw:70 data/tools/GUI.pyw:77 data/tools/GUI.pyw:1254
 #: data/tools/GUI.pyw:1302 data/tools/GUI.pyw:1344 data/tools/GUI.pyw:1368
@@ -43,29 +41,29 @@ msgstr "Chyba"
 
 #. TRANSLATORS: {0} is "translations", the folder where compiled translation files (.mo) are stored.
 #: data/tools/GUI.pyw:72
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "`{0}` folder not found. Please run the GUI.pyw executable packaged with the "
 "Wesnoth installation."
 msgstr ""
-"Složka `{0}` nebyla nalezena. Spusťte prosím spustitelný soubor GUI.pyw "
-"přibalený k instalaci Wesnothu."
+"Složka `{0}` nebyla nalezena. Spusť prosím soubor GUI.pyw přibalený "
+"k instalaci Wesnothu."
 
 #. TRANSLATORS: {0} is the ISO 15897 code for the language selected by the user.
 #: data/tools/GUI.pyw:79
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Locale {0} not recognized."
-msgstr "Locale {0} není rozpoznáno."
+msgstr "Neznámé národní prostředí {0}."
 
 #. TRANSLATORS: {0} is the name of command being executed.
 #: data/tools/GUI.pyw:329
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Running: {0}\n"
 "Please wait..."
 msgstr ""
-"Běh: {0}\n"
-"Počkejte prosím..."
+"Běží: {0}\n"
+"Počkej prosím..."
 
 #: data/tools/GUI.pyw:343
 msgid "Terminate script"

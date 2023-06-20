@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-05-21 03:01 UTC\n"
-"PO-Revision-Date: 2023-06-05 22:00+0200\n"
+"PO-Revision-Date: 2023-06-05 22:05+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -2688,10 +2688,8 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:4
-#, fuzzy
-#| msgid "Dwarvish Fighter"
 msgid "Dwarvish Miner"
-msgstr "Trpasličí bojovník"
+msgstr "Trpasličí horník"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:17
@@ -2701,11 +2699,15 @@ msgid ""
 "of weapons or artifacts. They have no military training, but they can still "
 "do some damage with their picks."
 msgstr ""
+"Trpasličí horníci jsou důlními dělníky trpasličí společnosti. Dobývají ze "
+"země vzácné rudy, ale nikdy se nepodílejí na výrobě zbraní nebo artefaktů. "
+"Nemají žádný vojenský výcvik, ale přesto mohou svými špičáky způsobit nějaké "
+"zranění."
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:22
 msgid "pick"
-msgstr ""
+msgstr "špičák"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
@@ -4336,16 +4338,11 @@ msgstr ""
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Javelineer.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Compared to other loyalists, Halberdiers have a higher resistance to "
-#| "‘pierce’ attacks."
 msgid ""
 "Compared to other loyalists, Javelineers have a higher resistance to "
 "‘pierce’ attacks."
 msgstr ""
-"Oproti ostatním věrným mají halapartníci vyšší odolnost vůči útokům "
-"„bodnutím“."
+"Oproti ostatním věrným mají oštěpaři vyšší odolnost vůči útokům „bodnutím“."
 
 #. [unit_type]: id=Lieutenant, race=human
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:4
@@ -5411,10 +5408,8 @@ msgstr ""
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:4
-#, fuzzy
-#| msgid "Merman Entangler"
 msgid "Merman Brawler"
-msgstr "Mořský zaplétač"
+msgstr "Mořský rváč"
 
 #. [unit_type]: id=Merman Brawler, race=merman
 #: data/core/units/merfolk/Brawler.cfg:17
@@ -5422,6 +5417,8 @@ msgid ""
 "Exceptionally large and strong mermen are sometimes more comfortable with "
 "their own fists and tails than with other weapons."
 msgstr ""
+"Výjimečně velcí a silní mořští jedinci se někdy víc spoléhají na své pěsti "
+"a ocasy než na jiné zbraně."
 
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
@@ -5432,10 +5429,8 @@ msgstr "ocas"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:4
-#, fuzzy
-#| msgid "Merman Triton"
 msgid "Merman Citizen"
-msgstr "Mořský triton"
+msgstr "Mořský obyvatel"
 
 #. [unit_type]: id=Merman Citizen, race=merman
 #: data/core/units/merfolk/Citizen.cfg:17
@@ -5443,6 +5438,8 @@ msgid ""
 "Merfolk are mostly peaceful, but will fight to defend their homes. In this "
 "situation, even merfolk with no weapons or training can be dangerous."
 msgstr ""
+"Mořští lidé jsou většinou mírumilovní, své domovy ale budou bránit. V takové "
+"situaci může být i neozbrojený a netrénovaný mořský člověk nebezpečný."
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -5812,17 +5809,13 @@ msgstr "oheň"
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebane Ant"
-msgstr "Ohnivý mravenec"
+msgstr "Mravenec ohňomor"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Firebomb Ant"
-msgstr "Ohnivý mravenec"
+msgstr "Zápalný mravenec"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:51
@@ -5833,30 +5826,29 @@ msgid ""
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
 msgstr ""
+"Vyvinutější a specializovanější ohniví mravenci se mohou utvářet různě. "
+"Zápalní mravenci dokážou vyrobit a přenášet velké množství svého hořlavého "
+"spreje ve zbytnělém zadečku, který umí použít k strašlivému útoku, ale také "
+"je to oslabuje vůči fyzickým útokům a oheň si nedokážou udržet, když se jim "
+"zhoršuje zdraví."
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Soldier Ant"
-msgstr "Ohnivý mravenec"
+msgstr "Mravenčí voják"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. Though normally not hostile, "
-#| "they can bite at close range."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Most common are the nondescript workers "
 "and scouts, but in times of conflict, a more dangerous Soldier caste enters "
 "the fray."
 msgstr ""
-"Obří mravenci se běžně vyskytují v téměř jakémkoli prostředí, od jeskyní "
-"hluboko pod zemí až po vrcholky velehor. I když obvykle nejsou nepřátelští, "
-"při přiblížení mohou kousat."
+"Obří mravenci se běžně vyskytují v téměř jakémkoli prostředí, od jeskyní "
+"hluboko pod zemí až po vrcholky velehor. Nejobvyklejší jsou nevýrazní "
+"dělníci a zvědové, ale v časech střetů vstoupí do boje nebezpečnější kasta, "
+"vojáci."
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:4
@@ -5920,7 +5912,7 @@ msgstr ""
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:8
 msgid "Caribe"
-msgstr ""
+msgstr "Piraňa"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:28
@@ -5932,11 +5924,17 @@ msgid ""
 "use to extricate themselves from situations dire to most other fish. These "
 "fish are unusually clever and should not be underestimated."
 msgstr ""
+"Na piraně obrovské lze ve vnitrozemských řekách poblíž Weldynu narazit jen "
+"zřídka, ale zkazky o jejich zuřivých útocích se šíří široko daleko. Jejich "
+"zlobné rudé oči jsou zasazeny v obrněné hlavě. Přestože jejich nebezpečnou "
+"zbraní jsou zuby, mají i malé kostnaté pařáty, které mohou použít k tomu, "
+"aby se dostaly ze situací hrozivých pro většinu ostatních ryb. Tyto ryby "
+"jsou neobyčejně chytré a neměly by být podceňovány."
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:8
 msgid "Hunter Caribe"
-msgstr ""
+msgstr "Piraňa lovec"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:29
@@ -5944,11 +5942,13 @@ msgid ""
 "As they age, the giant caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
 msgstr ""
+"Jak piraně obrovské stárnou, rostou a stávají se nebezpečnějšími. Také se "
+"naučí používat mořské řasy na to, aby polapily kořist nebo nepřátele."
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:8
 msgid "Nibbler"
-msgstr ""
+msgstr "Ždiboun"
 
 #. [unit_type]: id=Nibbler, race=monster
 #: data/core/units/monsters/Caribe_Nibbler.cfg:43
@@ -5956,6 +5956,8 @@ msgid ""
 "Nibblers are juvenile predator fish, often more curious than dangerous. A "
 "single individual may not be a threat, but these fish seldom travel alone."
 msgstr ""
+"Ždibouni jsou nedospělé dravé ryby, často spíše zvědavé než nebezpečné. "
+"Jedinec nemusí být hrozbou, ale tyto ryby se zřídkakdy pohybují samy."
 
 # Nechávám bažinný, protože močálový mi nezní dobře.
 #. [unit_type]: id=Swamp Lizard, race=monster
@@ -6045,10 +6047,8 @@ msgstr "inkoust"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:5
-#, fuzzy
-#| msgid "Dragoon"
 msgid "Dragonfly"
-msgstr "Dragoun"
+msgstr "Vážka"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:27
@@ -6059,18 +6059,23 @@ msgid ""
 "generally territorial, but can cooperate in small groups to confront common "
 "foes or large prey."
 msgstr ""
+"Obří vážky pozorované v některých močálech, řekách a jezerech v okolí "
+"Wesnothu mají delší životní cyklus než menší, běžnější druhy. Dospělec může "
+"žít neomezeně dlouho a pomalu roste do konečné podoby. Obvykle žijí "
+"teritoriálně, ale mohou spolupracovat v malých skupinách, aby čelily "
+"společným nepřátelům nebo velké kořisti."
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:5
-#, fuzzy
-#| msgid "Grand Marshal"
 msgid "Grand Dragonfly"
-msgstr "Velký maršál"
+msgstr "Velká vážka"
 
 #. [unit_type]: id=Grand Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly_Grand.cfg:28
 msgid "Dragonflies that survive long enough grow into a final, grander form."
 msgstr ""
+"Vážky, které přežijí dostatečně dlouho, dorostou do konečné, velkolepější "
+"podoby."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Dragonfly_Grand.cfg:43
@@ -6082,7 +6087,7 @@ msgstr "bodec"
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:5
 msgid "Dragonfly Naiad"
-msgstr ""
+msgstr "Najáda vážky"
 
 #. [unit_type]: id=Dragonfly Naiad, race=monster
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:58
@@ -6092,6 +6097,10 @@ msgid ""
 "stay submerged to breathe, which explains why the giant dragonflies are "
 "usually found only near rivers, lakes, and coves."
 msgstr ""
+"Mladé vážky jsou vodní tvorové, většinou loví malé ryby nebo nymfy jiného "
+"hmyzu. Dokážou přelézt kameny a bahno, ale musí zůstávat pod vodou, aby "
+"dýchaly, což vysvětluje, proč se velké vážky obvykle vyskytují pouze poblíž "
+"řek, jezer a zátok."
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
@@ -6581,22 +6590,16 @@ msgstr "pouštní blesk"
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:5
 msgid "Kraken"
-msgstr ""
+msgstr "Kraken"
 
 #. [unit_type]: id=Kraken, race=monster
 #: data/core/units/monsters/Kraken.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Cuttlefish are gigantic creatures of the seas. They can grab their "
-#| "opponents with strong tentacles, or spit a poisonous black ink from a "
-#| "distance. The best way to survive an encounter with these monsters is to "
-#| "remain ashore."
 msgid ""
 "Krakens are gigantic creatures of the seas. They can grab their opponents "
 "with strong tentacles, or spit a poisonous black ink from a distance. The "
 "best way to survive an encounter with these monsters is to remain ashore."
 msgstr ""
-"Sépie jsou obrovská mořská stvoření. Dokáží uchopit své protivníky silnými "
+"Krakeni jsou obrovská mořská stvoření. Dokáží uchopit své protivníky silnými "
 "chapadly nebo z dálky plivat jedovatý inkoust. Nejlepší způsob jak přežít "
 "setkání s těmito obludami je zůstat na břehu."
 
@@ -6680,10 +6683,8 @@ msgstr "sprška"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:11
-#, fuzzy
-#| msgid "Sand Scuttler"
 msgid "Sand Scamperer"
-msgstr "Písečný dupkal"
+msgstr "Písečný cupkal"
 
 #. [unit_type]: id=Sand Scamperer
 #: data/core/units/monsters/Sand_Scamperer.cfg:16
@@ -6694,6 +6695,11 @@ msgid ""
 "energy, making fire and magic-based attacks the most effective way to take "
 "this venomous critter down."
 msgstr ""
+"Tento úchvatný tvor se hbitě pohybuje přes horký pouštní písek. Jeho tělo je "
+"kryto silnou vnější kostrou barvy písku, která tlumí veškerá poškození "
+"úderem. Je však také vysoce hořlavá a zranitelná vůči nezemské síle, takže "
+"nejúčinnějším způsobem, jak tuto jedovatou havěť zneškodnit, jsou útoky "
+"založené na ohni a magii."
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:4
@@ -7770,10 +7776,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Flanker"
 msgid "female^Saurian Javelineer"
-msgstr "Ještěrácká ochránkyně"
+msgstr "Ještěrácká oštěpařka"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard
 #: data/core/units/saurians/Javelineer.cfg:19
@@ -7783,6 +7787,9 @@ msgid ""
 "javelineers. With better equipment and exceptional aim, saurian javelineers "
 "are not to be underestimated."
 msgstr ""
+"Po letech cvičení v boji mohou ještěráčské válečnice, které jsou "
+"nejzdatnější v umění vrhu kopím, povýšit do hodnosti oštěpařek. Díky lepšímu "
+"vybavení a výjimečné mušce není radno ještěráčské oštěpařky podceňovat."
 
 # bylo vrhač ledu - nesedí s popisem
 #. [unit_type]: id=Saurian Oracle, race=lizard
@@ -7852,10 +7859,8 @@ msgstr ""
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:4
-#, fuzzy
-#| msgid "female^Saurian Skirmisher"
 msgid "female^Saurian Spearthrower"
-msgstr "Ještěrácká rváčka"
+msgstr "Ještěrácká vrhačka kopí"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
@@ -7864,6 +7869,10 @@ msgid ""
 "the backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
+"Někteří ještěráci se zvlášť dobrou muškou raději pomáhají svým spojencům ze "
+"zadních linií, než aby pronikali do nepřátelských formací. Jejich smrtící "
+"dovednosti v hodu kopím jim umožňují podporovat ostatní ještěrácké válečníky "
+"z dálky."
 
 #. [unit_type]: id=Great Troll, race=troll
 #: data/core/units/trolls/Great.cfg:4
@@ -8151,10 +8160,8 @@ msgstr "Štír"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:310
 #: data/core/units/undead/Corpse_Walking.cfg:311
-#, fuzzy
-#| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
-msgstr "Pavouk"
+msgstr "Dupkal"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:319
@@ -8415,10 +8422,8 @@ msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:5
-#, fuzzy
-#| msgid "Goblin Knight"
 msgid "Bone Knight"
-msgstr "Gobliní rytíř"
+msgstr "Kostlivý rytíř"
 
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:27
@@ -8427,11 +8432,14 @@ msgid ""
 "skeletal horses were raised from the ground by unholy magic to spread fear "
 "and destruction."
 msgstr ""
+"Tito kostlivci, kdysi velcí válečníci a postrach plání, opět osedlali kostry "
+"koní, jež povstaly nečistými silami ze země spolu s nimi, a vydali se šířit "
+"strach a zkázu."
 
 #. [attack]: type=impact
 #: data/core/units/undead/Skele_Bone_Knight.cfg:44
 msgid "trample"
-msgstr ""
+msgstr "dupot"
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -8493,7 +8501,7 @@ msgstr ""
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:5
 msgid "Death Squire"
-msgstr ""
+msgstr "Mrtvý šlechtic"
 
 #. [unit_type]: id=Death Squire, race=undead
 #: data/core/units/undead/Skele_Death_Squire.cfg:27
@@ -8504,6 +8512,10 @@ msgid ""
 "pick up a good deal of the Knight’s power, including the ability to command "
 "underlings."
 msgstr ""
+"Někdy ti nejmocnější válečníci a generálové, prokletí nenávistí a úzkostí, "
+"přicházejí zpět na tento svět jako rytíři Smrti. Mrtví šlechtici jim slouží, "
+"zatímco sbírají dost bezbožné síly, aby se sami stali rytíři Smrti. Při "
+"procesu přeměny dosáhnou rytířské moci, zahrnující i velení podřízeným."
 
 #. [unit_type]: id=Deathblade, race=undead
 #: data/core/units/undead/Skele_Deathblade.cfg:4
@@ -8607,10 +8619,8 @@ msgstr ""
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:5
-#, fuzzy
-#| msgid "Skeleton Archer"
 msgid "Skeleton Rider"
-msgstr "Kostlivec lučištník"
+msgstr "Kostlivý jezdec"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skeleton_Rider.cfg:33
@@ -8619,6 +8629,8 @@ msgid ""
 "their skeletal horses were raised from the grave by unholy magic to spread "
 "fear and destruction."
 msgstr ""
+"Kdysi to byli skvělí válečníci jezdící pláněmi. Teď sedlají své kostlivé "
+"koně, zrozené ze země bezbožnou magií, k šíření strachu a ničení."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -8844,11 +8856,3 @@ msgid ""
 msgstr ""
 "Tito stromoví muži jsou schopni přikázat lesním rostlinám, jako je réva a "
 "jiné popínavky, aby blokovaly nepřátele."
-
-#~ msgid "Giant Stoat"
-#~ msgstr "Obří lasice"
-
-#~ msgid "Giant Stoats are obsolete, use Frost Stoat."
-#~ msgstr ""
-#~ "Obří lasice jsou již nepoužívané jednotky, využívejte místo nich obří "
-#~ "lasice sněžné."
