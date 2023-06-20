@@ -27,14 +27,6 @@
 
 lg::log_domain log_editor("editor");
 
-// TODO: also error not just if there are macros, but also check for "<<"" for inline lua - otherwise the preprocessor will remove those on load and they won't be added back on save
-// TODO: add definitions for GUIWindowDefinitionWML in headers of choose_addon, edit_pbl, and edit_pbl_translation
-// TODO: double check that the units migrated from [side]s to the start [event] have their side attribute present
-// TODO: when migrating plain maps, can't assume that the files won't already exist - player could have chosen an already existing add-on
-// TODO: test file renaming when duplicates exist
-// TODO: how do masks work in the editor? can't seem to save them? can they only be applied, but not created?
-// TODO: updates to editor's in-game help text
-// TODO: validate the _server.pbl values? some way to use schema validator in the editor?
 namespace editor {
 
 void initialize_addon(const std::string& addon_id)

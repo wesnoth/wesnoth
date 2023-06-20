@@ -197,8 +197,8 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	}
 
 	// 1.0 Pure map data
-	if(filesystem::ends_with(filename, ".map")) {
-		LOG_ED << "Loading .map file";
+	if(filesystem::ends_with(filename, ".map") || filesystem::ends_with(filename, ".mask")) {
+		LOG_ED << "Loading map or mask file";
 		map_ = editor_map::from_string(file_string); // throws on error
 		pure_map_ = true;
 
@@ -211,10 +211,8 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 			LOG_ED << "Loading generated scenario file";
 			try {
 				load_scenario();
-			} catch(const config::error& e) {
-				throw editor_map_load_exception("load_scenario: old-style scenario", e.message);
-			} catch(const preproc_config::error& e) {
-				throw editor_map_load_exception("load_scenario: old-style scenario", e.message);
+			} catch(const std::exception& e) {
+				throw editor_map_load_exception("load_scenario: old-style scenario", e.what());
 			}
 			add_to_recent_files();
 		} else {

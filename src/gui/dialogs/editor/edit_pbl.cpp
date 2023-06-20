@@ -98,9 +98,13 @@ void editor_edit_pbl::pre_show(window& win)
 		find_widget<label>(&win, "email_label", false).set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>(&win, "password", false).set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>(&win, "password_label", false).set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>(&win, "secondary_authors", false).set_visible(gui2::widget::visibility::visible);
+		find_widget<label>(&win, "secondary_authors_label", false).set_visible(gui2::widget::visibility::visible);
 	} else {
 		find_widget<text_box>(&win, "email", false).set_value(pbl["email"]);
 		find_widget<text_box>(&win, "password", false).set_value(pbl["passphrase"]);
+		find_widget<text_box>(&win, "secondary_authors", false).set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>(&win, "secondary_authors_label", false).set_visible(gui2::widget::visibility::invisible);
 	}
 
 	if(pbl.has_child("feedback")) {
@@ -248,11 +252,15 @@ void editor_edit_pbl::toggle_auth()
 		find_widget<text_box>(get_window(), "password", false).set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>(get_window(), "email_label", false).set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>(get_window(), "password_label", false).set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>(get_window(), "secondary_authors", false).set_visible(gui2::widget::visibility::visible);
+		find_widget<label>(get_window(), "secondary_authors_label", false).set_visible(gui2::widget::visibility::visible);
 	} else {
 		find_widget<text_box>(get_window(), "email", false).set_visible(gui2::widget::visibility::visible);
 		find_widget<text_box>(get_window(), "password", false).set_visible(gui2::widget::visibility::visible);
 		find_widget<label>(get_window(), "email_label", false).set_visible(gui2::widget::visibility::visible);
 		find_widget<label>(get_window(), "password_label", false).set_visible(gui2::widget::visibility::visible);
+		find_widget<text_box>(get_window(), "secondary_authors", false).set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>(get_window(), "secondary_authors_label", false).set_visible(gui2::widget::visibility::invisible);
 	}
 }
 
