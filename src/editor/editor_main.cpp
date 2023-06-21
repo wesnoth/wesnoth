@@ -263,6 +263,10 @@ EXIT_STATUS start(const std::string& filename /* = "" */,
 
 		// don't let people try to migrate their editor stuff into mainline folders
 		if(!take_screenshot && addon_id != "mainline") {
+			if(addon_id == "newaddon") {
+				std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+				addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
+			}
 			migrate_to_addon(addon_id);
 		}
 

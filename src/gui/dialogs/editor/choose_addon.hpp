@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2023
+	Copyright (C) 2023 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@ namespace gui2::dialogs
  * Dialog for adding a translation while editing an add-on's _server.pbl.
  * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
+ * existing_addons   | @ref listbox  |yes      |A listbox that contains all available options for choosing an add-on
  */
 class editor_choose_addon : public modal_dialog
 {

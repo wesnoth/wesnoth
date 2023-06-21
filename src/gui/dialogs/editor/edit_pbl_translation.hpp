@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2023
+	Copyright (C) 2023 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,9 @@ namespace dialogs
  * Dialog for adding a translation while editing an add-on's _server.pbl.
  * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
+ * language          | text_box      |yes      |The language code for this translation.
+ * lang_title        | text_box      |yes      |The name of the language displayed on the UI.
+ * description       | text_box      |yes      |The description of the translation.
  */
 class editor_edit_pbl_translation : public modal_dialog
 {
