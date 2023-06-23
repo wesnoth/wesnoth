@@ -94,6 +94,7 @@
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/outro.hpp"
+#include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
@@ -411,6 +412,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_chat_log)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_editor_choose_addon)
 {
 	test<editor_choose_addon>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_prompt)
+{
+	test<prompt>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_core_selection)
 {
@@ -817,6 +822,16 @@ struct dialog_tester<editor_choose_addon>
 	editor_choose_addon* create()
 	{
 		return new editor_choose_addon(temp);
+	}
+};
+
+template<>
+struct dialog_tester<prompt>
+{
+	std::string temp;
+	prompt* create()
+	{
+		return new prompt(temp);
 	}
 };
 

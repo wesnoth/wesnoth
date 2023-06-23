@@ -34,7 +34,7 @@
 #include "preferences/editor.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
-#include "gui/dialogs/enter_text.hpp"
+#include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
@@ -250,7 +250,7 @@ void context_manager::edit_pbl()
 void context_manager::change_addon_id()
 {
 	std::string new_addon_id = current_addon_;
-	gui2::dialogs::enter_text::execute(new_addon_id);
+	gui2::dialogs::prompt::execute(new_addon_id);
 
 	if(!new_addon_id.empty() && new_addon_id.find(" ") == std::string::npos && filesystem::rename_dir(filesystem::get_current_editor_dir(current_addon_), filesystem::get_current_editor_dir(new_addon_id))) {
 		std::string main_cfg = filesystem::get_current_editor_dir(new_addon_id)+"/_main.cfg";

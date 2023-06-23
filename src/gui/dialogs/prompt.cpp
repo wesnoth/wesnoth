@@ -14,7 +14,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-#include "gui/dialogs/enter_text.hpp"
+#include "gui/dialogs/prompt.hpp"
 
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -22,24 +22,24 @@
 namespace gui2::dialogs
 {
 
-REGISTER_DIALOG(enter_text)
+REGISTER_DIALOG(prompt)
 
-enter_text::enter_text(std::string& value)
+prompt::prompt(std::string& value)
     : modal_dialog(window_id())
     , value_(value)
 {
-	find_widget<text_box>(get_window(), "enter_text_box", false).set_value(value);
+	find_widget<text_box>(get_window(), "prompt_box", false).set_value(value);
 }
 
-void enter_text::pre_show(window& win)
+void prompt::pre_show(window& win)
 {
-	text_box* enter_text_box = find_widget<text_box>(&win, "enter_text_box", false, true);
-	win.keyboard_capture(enter_text_box);
+	text_box* prompt_box = find_widget<text_box>(&win, "prompt_box", false, true);
+	win.keyboard_capture(prompt_box);
 }
 
-void enter_text::post_show(window& win)
+void prompt::post_show(window& win)
 {
-    value_ = find_widget<text_box>(&win, "enter_text_box", false).get_value();
+    value_ = find_widget<text_box>(&win, "prompt_box", false).get_value();
 }
 
 }

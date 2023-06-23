@@ -28,15 +28,15 @@ namespace dialogs
  * Dialog for getting a single text value from the player.
  * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
- * enter_text_box    | text_box      |yes      |The text box to enter the value into.
+ * prompt_box    | text_box      |yes      |The text box to enter the value into.
  */
-class enter_text : public modal_dialog
+class prompt : public modal_dialog
 {
 public:
-	enter_text(std::string& value);
+	prompt(std::string& value);
 
 	/** The execute function. See @ref modal_dialog for more information. */
-	DEFINE_SIMPLE_EXECUTE_WRAPPER(enter_text)
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(prompt)
 
 private:
 	virtual void pre_show(window& window) override;
