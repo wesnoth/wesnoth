@@ -390,6 +390,11 @@ public:
 	 */
 	void clear_undo_redo();
 
+	void set_addon_id(const std::string& addon_id)
+	{
+		addon_id_ = addon_id;
+	}
+
 protected:
 	/**
 	 * The actual filename of this map. An empty string indicates a new map.

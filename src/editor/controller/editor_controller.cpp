@@ -333,6 +333,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			return true;
 
 		case HOTKEY_EDITOR_PBL:
+		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
 			return true;
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
@@ -761,6 +762,10 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 
 		case HOTKEY_EDITOR_PBL:
 			context_manager_->edit_pbl();
+			return true;
+
+		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+			context_manager_->change_addon_id();
 			return true;
 
 		case HOTKEY_EDITOR_AREA_ADD:

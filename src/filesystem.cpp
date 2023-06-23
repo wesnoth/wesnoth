@@ -790,6 +790,18 @@ void set_user_data_dir(std::string newprefdir)
 	user_data_dir = normalize_path(user_data_dir.string(), true, true);
 }
 
+bool rename_dir(const std::string& old_dir, const std::string& new_dir)
+{
+	error_code ec;
+	bfs::rename(old_dir, new_dir, ec);
+
+	if(ec) {
+		ERR_FS << "Failed to rename directory '" << old_dir << "' to '" << new_dir << "'";
+		return false;
+	}
+	return true;
+}
+
 static void set_user_config_path(bfs::path newconfig)
 {
 	user_config_dir = newconfig;

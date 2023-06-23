@@ -158,6 +158,8 @@ std::string get_logs_dir();
 std::string get_cache_dir();
 std::string get_legacy_editor_dir();
 
+bool rename_dir(const std::string& old_dir, const std::string& new_dir);
+
 struct other_version_dir
 {
 	/**

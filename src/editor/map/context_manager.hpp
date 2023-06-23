@@ -169,17 +169,8 @@ public:
 		default_dir_ = str;
 	}
 
-	void current_addon(const std::string& current_addon)
-	{
-		current_addon_ = current_addon;
-	}
-
-	std::string current_addon()
-	{
-		return current_addon_;
-	}
-
 	void edit_pbl();
+	void change_addon_id();
 
 	/** Inherited from @ref filter_context. */
 	virtual const display_context& get_disp_context() const override

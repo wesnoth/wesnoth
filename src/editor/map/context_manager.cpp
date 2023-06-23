@@ -34,6 +34,7 @@
 #include "preferences/editor.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
+#include "gui/dialogs/enter_text.hpp"
 #include "gui/dialogs/editor/generate_map.hpp"
 #include "gui/dialogs/editor/new_map.hpp"
 #include "gui/dialogs/editor/resize_map.hpp"
@@ -50,6 +51,7 @@
 #include "terrain/translation.hpp"
 
 #include <memory>
+#include <boost/algorithm/string.hpp>
 
 namespace editor {
 
@@ -243,6 +245,29 @@ void context_manager::edit_pbl()
 {
 	std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
 	gui2::dialogs::editor_edit_pbl::execute(pbl);
+}
+
+void context_manager::change_addon_id()
+{
+	std::string new_addon_id = current_addon_;
+	gui2::dialogs::enter_text::execute(new_addon_id);
+
+	if(!new_addon_id.empty() && new_addon_id.find(" ") == std::string::npos && filesystem::rename_dir(filesystem::get_current_editor_dir(current_addon_), filesystem::get_current_editor_dir(new_addon_id))) {
+		std::string main_cfg = filesystem::get_current_editor_dir(new_addon_id)+"/_main.cfg";
+		std::string main = filesystem::read_file(main_cfg);
+
+		// update paths
+		boost::replace_all(main, "/"+current_addon_, "/"+new_addon_id);
+		// update textdomain
+		boost::replace_all(main, "wesnoth-"+current_addon_, "wesnoth-"+new_addon_id);
+		filesystem::write_file(main_cfg, main);
+
+		current_addon_ = new_addon_id;
+
+		for(context_ptr& context : map_contexts_) {
+			context->set_addon_id(current_addon_);
+		}
+	}
 }
 
 void context_manager::edit_scenario_dialog()
