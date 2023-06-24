@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "POT-Creation-Date: 2023-06-17 23:20-0500\n"
-"PO-Revision-Date: 2023-05-22 18:54+1000\n"
+"PO-Revision-Date: 2023-06-21 09:14+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -529,10 +529,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:195
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
@@ -540,13 +539,14 @@ msgid ""
 "log output is written to a file in addition to standard output/error. "
 "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgstr ""
+"log output is written to a file in addition to standard output/error. "
+"Cancels the effect of --no-log-to-file whether implicit or explicit."
 
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -554,6 +554,8 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"For Windows, when used with --no-log-to-file, results in output being "
+"written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 
 #. type: TP
 #: doc/man/wesnoth.6:201

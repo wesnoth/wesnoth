@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-17 23:19-0500\n"
-"PO-Revision-Date: 2023-05-22 18:53+1000\n"
+"PO-Revision-Date: 2023-06-21 09:13+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1012,10 +1012,8 @@ msgstr "Natural Earthy Cave Wall"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1413
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Natural Cave Wall"
+msgstr "Damaged Cave Wall"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1423
@@ -1090,17 +1088,13 @@ msgstr "Overgrown Stone Wall"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1542
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Stone Wall"
+msgstr "Damaged Stone Wall"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Mine Wall"
+msgstr "Ruined Wall"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -3842,19 +3836,17 @@ msgstr "Copy the full report to clipboard"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Open Log File"
+msgstr "Log File"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Opens the log file, which may contain useful debug information"
+msgstr ""
+"Opens the log file pertaining to the current session, which may contain "
+"useful debug information"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4792,10 +4784,8 @@ msgstr "None"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:328
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Players:"
+msgstr "Player:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -4804,21 +4794,17 @@ msgstr "Players:"
 #: data/gui/window/mp_match_history.cfg:382
 #: data/gui/window/mp_match_history.cfg:406
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Asterisks match all characters"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:351
-#, fuzzy
-#| msgid "Contents"
 msgid "Content Type:"
-msgstr "Contents"
+msgstr "Content Type:"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:370
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Team name:"
+msgstr "Game name:"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:561
@@ -5180,7 +5166,7 @@ msgstr "Clear Hot-key"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Window size:"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
@@ -5189,10 +5175,8 @@ msgstr "Pixel scale multiplier:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the buffer size"
 msgid "Change the game window size"
-msgstr "Change the buffer size"
+msgstr "Change the game window size"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/window/preferences/03_display.cfg:87
@@ -5215,10 +5199,8 @@ msgstr "Toggle between fullscreen and window mode"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
-#, fuzzy
-#| msgid "Pixel scale multiplier:"
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "Pixel scale multiplier:"
+msgstr "Automatic scale"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
@@ -5257,7 +5239,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Interface theme:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -5265,23 +5247,23 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Change the in-game interface theme. Additional themes may be provided by "
+"community-made add-ons"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Combat damage indicators"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Show damage and healing amounts above a unit"
+msgstr "Show amount of damage inflicted or healed as fading labels above units"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Team colour indicators"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -5295,7 +5277,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Grid overlay"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -5324,10 +5306,8 @@ msgstr "Display animated water graphics (can be slow)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Show unit standing animations"
+msgstr "Unit standing animations"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
@@ -5336,10 +5316,8 @@ msgstr "Continuously animate standing units on the battlefield"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Show unit idle animations"
+msgstr "Unit idle animations"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
