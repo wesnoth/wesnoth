@@ -376,6 +376,71 @@ void map_context::replace_local_schedule(const std::vector<time_of_day>& schedul
 	}
 }
 
+config map_context::convert_scenario(const config& old_scenario)
+{
+	config cfg;
+	config& multiplayer = cfg.add_child("multiplayer");
+	multiplayer.append_attributes(old_scenario);
+	std::string map_data = multiplayer["map_data"];
+	std::string separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(filename_, true) + ".map";
+
+	// check that there's embedded map data, since that's how the editor used to save scenarios
+	if(!map_data.empty()) {
+		// check if a .map file already exists as a separate standalone .map in the editor folders or if a .map file already exists in the add-on
+		if(filesystem::file_exists(separate_map_file)) {
+			separate_map_file = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::get_next_filename(filesystem::base_name(filename_, true), ".map");
+		}
+		multiplayer["id"] = filesystem::base_name(separate_map_file, true);
+
+		filesystem::write_file(separate_map_file, map_data);
+		multiplayer.remove_attribute("map_data");
+		multiplayer["map_file"] = filesystem::base_name(separate_map_file);
+	} else {
+		ERR_ED << "Cannot convert " << filename_ << " due to missing map_data attribute.";
+		throw editor_map_load_exception("load_scenario: no embedded map_data attribute found in old-style scenario", filename_);
+	}
+
+	config& event = multiplayer.add_child("event");
+	event["name"] = "start";
+	event["id"] = "editor_event-start";
+
+	// for all children that aren't [side] or [time], move them to an event
+	// for [side]:
+	//   keep all attributes in [side]
+	//   also keep any [village]s in [side]
+	//   move all other children to the start [event]
+	//   if [unit], set the unit's side
+	// for [time]:
+	//   keep under [multiplayer]
+	for(const config::any_child child : old_scenario.all_children_range()) {
+		if(child.key != "side" && child.key != "time") {
+			config& c = event.add_child(child.key);
+			c.append_attributes(child.cfg);
+			c.append_children(child.cfg);
+		} else if(child.key == "side") {
+			config& c = multiplayer.add_child("side");
+			c.append_attributes(child.cfg);
+			for(const config::any_child side_child : child.cfg.all_children_range()) {
+				if(side_child.key == "village") {
+					config& c1 = c.add_child("village");
+					c1.append_attributes(side_child.cfg);
+				} else {
+					config& c1 = event.add_child(side_child.key);
+					c1.append_attributes(side_child.cfg);
+					if(side_child.key == "unit") {
+						c1["side"] = child.cfg["side"];
+					}
+				}
+			}
+		} else if(child.key == "time") {
+			config& c = multiplayer.add_child("time");
+			c.append_attributes(child.cfg);
+		}
+	}
+
+	return cfg;
+}
+
 void map_context::load_scenario()
 {
 	config scen;
@@ -389,11 +454,8 @@ void map_context::load_scenario()
 	} else if(scen.has_child("test")) {
 		scenario = scen.mandatory_child("test");
 	} else {
-		ERR_ED << "Found no [scenario], [multiplayer], or [test] tag in " << filename_ << ", assuming [multiplayer]";
-		config temp("multiplayer");
-		temp.mandatory_child("multiplayer").append_children(scen);
-		temp.mandatory_child("multiplayer").append_attributes(scen);
-		scen = temp;
+		ERR_ED << "Found no [scenario], [multiplayer], or [test] tag in " << filename_ << ", assuming old-style editor scenario and defaulting to [multiplayer]";
+		scen = convert_scenario(scen);
 		scenario = scen.mandatory_child("multiplayer");
 	}
 

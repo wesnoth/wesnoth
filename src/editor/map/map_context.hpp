@@ -324,6 +324,13 @@ public:
 	 */
 	bool save_scenario();
 
+	/**
+	 * Convert an old-style editor scenario config to a config with a top level [multiplayer] tag.
+	 * 
+	 * @param old_scenario the original scenario config
+	 * @return the converted scenario config
+	 */
+	config convert_scenario(const config& old_scenario);
 	void load_scenario();
 
 	config to_config();
