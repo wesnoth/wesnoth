@@ -13,6 +13,7 @@
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
      as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
 
