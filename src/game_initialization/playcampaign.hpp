@@ -78,9 +78,6 @@ private:
 	level_result::type playsingle_scenario(end_level_data& end_level);
 	level_result::type playmp_scenario(end_level_data& end_level);
 
-	void show_carryover_message(
-		playsingle_controller& playcontroller, const end_level_data& end_level, level_result::type res);
-
 	saved_game& state_;
 	const bool is_unit_test_;
 	bool is_replay_;
