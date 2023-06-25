@@ -326,7 +326,7 @@ public:
 
 	/**
 	 * Convert an old-style editor scenario config to a config with a top level [multiplayer] tag.
-	 * 
+	 *
 	 * @param old_scenario the original scenario config
 	 * @return the converted scenario config
 	 */
