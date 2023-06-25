@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-18 04:20 UTC\n"
-"PO-Revision-Date: 2023-05-13 12:35+0300\n"
+"PO-Revision-Date: 2023-06-25 09:27+0300\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:9
@@ -6008,10 +6008,8 @@ msgstr "Saata Konrad luolalle"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-#, fuzzy
-#| msgid "Rescue the sergeant"
 msgid "Rescue the lieutenant"
-msgstr "Pelasta kersantti"
+msgstr "Pelasta luutnantti"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:154
@@ -6337,16 +6335,12 @@ msgstr "Näen jonkun kauimmaisen kallion huipulla!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
-#, fuzzy
-#| msgid ""
-#| "It is a young human sergeant, barely more than a boy. He appears badly "
-#| "hurt but still alive."
 msgid ""
 "It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
-"Se on nuori ihmiskersantti, tuskin enempää kuin poikanen. Hän näyttäisi "
-"olevan pahasti vammautunut, mutta silti elossa."
+"Se on nuori ihmisluutnantti. Hän näyttäisi olevan pahasti vammautunut, mutta "
+"silti elossa."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:724
@@ -6422,19 +6416,14 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
-#, fuzzy
-#| msgid ""
-#| "Our main goal remains to survive ourselves, but if we can spare the "
-#| "troops, we might try to rescue the sergeant stranded on the cliff. "
-#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the officer stranded on the cliff. However, I make no "
 "promises."
 msgstr ""
-"Päätavoitteemme on selviytyä itse, mutta mikäli voimme säästää joukkoja, "
-"voimme yrittää kalliolle hylätyn kersantin pelastamista. Silti, en lupaa "
-"mitään."
+"Päätavoitteemme on selviytyä itse, mutta mikäli pystymme säästämään "
+"joukkoja, voimme yrittää kalliolle hylätyn luutnantin pelastamista. Silti, "
+"en lupaa mitään."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:786
@@ -6474,16 +6463,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
-#, fuzzy
-#| msgid ""
-#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
 "healers to help you, young lieutenant."
 msgstr ""
 "Olen prinsessa Li'sar, ja me olemme ystäviä. Liity meihin ja odota "
-"parantajien apua, nuori kersantti."
+"parantajien apua, nuori lutnantti."
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:850
@@ -7457,38 +7442,27 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
-#, fuzzy
-#| msgid ""
-#| "Upon finishing the book, $unit.name| has a much greater understanding of "
-#| "the forest, its nature and ways, and all the creatures within it. "
-#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
 "$unit.name| becomes entranced and greatly gains affinity with the forest, "
 "its nature and ways, and all the creatures within it. He feels he will "
 "quickly become more experienced once reaching the surface. Unfortunately, as "
 "the last page was turned, the book crumbled to dust."
 msgstr ""
-"$unit.name| sai kirjan luettuja ja omaa nyt huomattavasti suuremman "
-"ymmärryksen metsästä, sen luonnosta ja tavasta elää, sekä kaikista sen "
-"olennoista. Valitettavasti kirja mureni tomuksi, kun sen kansi suljettiin."
+"$unit.name| lumoutuu ja saa luotua yhteyden metsään, sen luontoon sekä "
+"kaikkiin sen olentoihin. Hän tuntee, että hän saa paljon kokemusta nopeasti. "
+"Valitettavasti viimeisen sivun kääntyessä kirja mureni tomuksi."
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
-#, fuzzy
-#| msgid ""
-#| "female^Upon finishing the book, $unit.name| has a much greater "
-#| "understanding of the forest, its nature and ways, and all the creatures "
-#| "within it. Unfortunately, as the last page was turned, the book crumbled "
-#| "to dust."
 msgid ""
 "female^$unit.name| becomes entranced and greatly gains affinity with the "
 "forest, its nature and ways, and all the creatures within it. She feels she "
 "will quickly become more experienced once reaching the surface. "
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
-"$unit.name| sai kirjan luettuja ja omaa nyt huomattavasti suuremman "
-"ymmärryksen metsästä, sen luonnosta ja tavasta elää, sekä kaikista sen "
-"olennoista. Valitettavasti kirja mureni tomuksi, kun sen kansi suljettiin."
+"$unit.name| lumoutuu ja saa luotua yhteyden metsään, sen luontoon sekä "
+"kaikkiin sen olentoihin. Hän tuntee, että hän saa paljon kokemusta nopeasti. "
+"Valitettavasti viimeisen sivun kääntyessä kirja mureni tomuksi."
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
@@ -9001,10 +8975,8 @@ msgstr ""
 
 #. [unit_type]: id=Injured Lieutenant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
-#, fuzzy
-#| msgid "Injured Sergeant"
 msgid "Injured Lieutenant"
-msgstr "Haavoittunut kersantti"
+msgstr "Haavoittunut luutnantti"
 
 #. [variation]
 #. [unit_type]: id=Lord
