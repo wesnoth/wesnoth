@@ -1282,7 +1282,9 @@ unit_ability_list attack_type::get_specials_and_abilities_with_priority(const st
 
 	std::vector<double> priorityvec;
 	for(const auto& i : abil_list) {
-		priorityvec.push_back((*i.ability_cfg)["priority"].to_double(0));
+		if(!(*i.ability_cfg)["priority"].empty()){
+			priorityvec.push_back((*i.ability_cfg)["priority"].to_double(0));
+		}
 	}
 
 	if(!priorityvec.empty()){
@@ -1292,12 +1294,11 @@ unit_ability_list attack_type::get_specials_and_abilities_with_priority(const st
 				temp_list.emplace_back(i);
 			}
 		}
-	}
-	if(!temp_list.empty()){
-		return temp_list;
+	} else {
+		temp_list = abil_list;
 	}
 
-	return abil_list;
+	return temp_list;
 }
 
 int attack_type::composite_value(const unit_ability_list& abil_list, int base_value) const
