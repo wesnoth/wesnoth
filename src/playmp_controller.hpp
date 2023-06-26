@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -26,7 +26,6 @@ class playmp_controller : public playsingle_controller, public syncmp_handler
 public:
 	playmp_controller(const config& level, saved_game& state_of_game, mp_game_metadata* mp_info);
 	virtual ~playmp_controller();
-
 	void maybe_linger() override;
 	void process_oos(const std::string& err_msg) const override;
 
@@ -62,13 +61,11 @@ protected:
 	mutable bool network_processing_stopped_;
 
 	virtual void on_not_observer() override;
-	bool is_host() const;
+	virtual bool is_host() const override;
 	void remove_blindfold();
 
 	blindfold blindfold_;
 private:
-	void set_end_scenario_button();
-	void reset_end_scenario_button();
 	void process_network_data(bool chat_only = false);
 	mp_game_metadata* mp_info_;
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -112,7 +112,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "empty")))
+	, tod_manager_(new tod_manager(game_config.find_mandatory_child("editor_times", "id", "empty")))
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
@@ -130,7 +130,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	 * 2. A scenario embedding the map
 	 *    * embedded_ = true
 	 *    * pure_map_ = true
-	 *    The data/scenario-test.cfg for example.
+	 *    The scenario-test.cfg for example.
 	 *    The map is written back to the file.
 	 * 3. The map file is referenced by map_data={MACRO_ARGUEMENT}.
 	 *    * embedded_ = false

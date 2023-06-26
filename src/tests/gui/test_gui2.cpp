@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,6 +22,7 @@
 #include "filesystem.hpp"
 #include "formula/debugger.hpp"
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "game_config_view.hpp"
 #include "game_display.hpp"
 #include "game_events/manager.hpp"
@@ -37,6 +38,7 @@
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
 #include "gui/dialogs/addon/manager.hpp"
+#include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/attack_predictions.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
@@ -83,6 +85,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/mp_login.hpp"
+#include "gui/dialogs/multiplayer/match_history.hpp"
 #include "gui/dialogs/multiplayer/mp_method_selection.hpp"
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/multiplayer/mp_staging.hpp"
@@ -131,9 +134,12 @@ using namespace gui2::dialogs;
 
 struct test_gui2_fixture {
 	test_gui2_fixture()
+	: config_manager()
+	, dummy_args({"wesnoth", "--noaddons"})
 	{
 		/** The main config, which contains the entire WML tree. */
 		game_config_view game_config_view_ = game_config_view::wrap(main_config);
+		config_manager.reset(new game_config_manager(dummy_args));
 
 		game_config::config_cache& cache = game_config::config_cache::instance();
 
@@ -145,13 +151,15 @@ struct test_gui2_fixture {
 		const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
 
 		load_language_list();
-		game_config::load_config(main_config.child("game_config"));
+		game_config::load_config(main_config.mandatory_child("game_config"));
 	}
 	~test_gui2_fixture()
 	{
 	}
 	static config main_config;
 	static const std::string widgets_file;
+	std::unique_ptr<game_config_manager> config_manager;
+	std::vector<std::string> dummy_args;
 };
 config test_gui2_fixture::main_config;
 const std::string test_gui2_fixture::widgets_file = "widgets_tested.log";
@@ -589,6 +597,14 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_double)
 {
 	test<wml_message_double>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
+{
+	test<achievements_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
+{
+	test<mp_match_history>();
+}
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
 	test_popup<debug_clock>();
@@ -972,6 +988,19 @@ struct dialog_tester<mp_lobby>
 	}
 };
 
+template<>
+struct dialog_tester<mp_match_history>
+{
+	wesnothd_connection connection;
+	dialog_tester() : connection("", "")
+	{
+	}
+	mp_match_history* create()
+	{
+		return new mp_match_history("", connection, false);
+	}
+};
+
 class fake_chat_handler : public events::chat_handler {
 	void add_chat_message(const std::time_t&,
 		const std::string&, int, const std::string&,
@@ -1125,9 +1154,9 @@ struct dialog_tester<editor_generate_map>
 	{
 		for(const config &i : test_gui2_fixture::main_config.child_range("multiplayer")) {
 			if(i["scenario_generation"] == "default") {
-				const config &generator_cfg = i.child("generator");
+				auto generator_cfg = i.optional_child("generator");
 				if (generator_cfg) {
-					map_generators.emplace_back(create_map_generator("", generator_cfg));
+					map_generators.emplace_back(create_map_generator("", *generator_cfg));
 				}
 			}
 		}
@@ -1289,10 +1318,12 @@ template<>
 struct dialog_tester<statistics_dialog>
 {
 	team t;
-	dialog_tester() : t() {}
+	statistics_record::campaign_stats_t stats_record;
+	statistics_t stats;
+	dialog_tester() : t() , stats_record(), stats(stats_record) {}
 	statistics_dialog* create()
 	{
-		return new statistics_dialog(t);
+		return new statistics_dialog(stats, t);
 	}
 };
 

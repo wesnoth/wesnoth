@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2022
+	Copyright (C) 2010 - 2023
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -82,6 +82,8 @@ private:
 	int weapon_choice_;
 	int attack_movement_cost_;
 	int temp_movement_subtracted_;
+	int attack_count_;
+	int temp_attacks_subtracted_;
 };
 
 /** Dumps an attack on a stream, for debug purposes. */

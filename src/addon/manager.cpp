@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -19,7 +19,9 @@
 #include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/schema_validator.hpp"
 #include "game_version.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -65,15 +67,26 @@ bool have_addon_pbl_info(const std::string& addon_name)
 	return filesystem::file_exists(get_pbl_file_path(addon_name));
 }
 
-config get_addon_pbl_info(const std::string& addon_name)
+config get_addon_pbl_info(const std::string& addon_name, bool do_validate)
 {
 	config cfg;
 	const std::string& pbl_path = get_pbl_file_path(addon_name);
 	try {
 		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
-		read(cfg, *stream);
+		std::unique_ptr<schema_validation::schema_validator> validator;
+		if(do_validate) {
+			validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg"));
+			validator->set_create_exceptions(true);
+		}
+		read(cfg, *stream, validator.get());
 	} catch(const config::error& e) {
 		throw invalid_pbl_exception(pbl_path, e.message);
+	} catch(wml_exception& e) {
+		auto msg = e.user_message;
+		e.user_message += " in " + addon_name;
+		boost::replace_all(e.dev_message, "<unknown>", filesystem::sanitize_path(pbl_path));
+		e.show();
+		throw invalid_pbl_exception(pbl_path, msg);
 	}
 
 	return cfg;
@@ -100,8 +113,8 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 		cfg.clear();
 		config envelope;
 		read(envelope, *stream);
-		if(config& info = envelope.child("info")) {
-			cfg = std::move(info);
+		if(auto info = envelope.optional_child("info")) {
+			cfg = std::move(*info);
 		}
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"
@@ -187,7 +200,8 @@ std::map<std::string, std::string> installed_addons_and_versions()
 	for(const std::string& addon_id : installed_addons()) {
 		if(have_addon_pbl_info(addon_id)) {
 			try {
-				addons[addon_id] = get_addon_pbl_info(addon_id)["version"].str();
+				// Just grabbing the version, so don't bother validating the pbl
+				addons[addon_id] = get_addon_pbl_info(addon_id, false)["version"].str();
 			} catch(const invalid_pbl_exception&) {
 				addons[addon_id] = "Invalid pbl file, version unknown";
 			}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -197,9 +197,9 @@ void set_child(const std::string& key, const config& val) {
 	prefs.add_child(key, val);
 }
 
-const config &get_child(const std::string& key)
+optional_const_config get_child(const std::string& key)
 {
-	return prefs.child(key);
+	return prefs.optional_child(key);
 }
 
 void erase(const std::string& key) {
@@ -259,11 +259,18 @@ void load_base_prefs() {
 }
 
 
-bool show_allied_orb() {
+bool show_ally_orb() {
 	return get("show_ally_orb", game_config::show_ally_orb);
 }
-void set_show_allied_orb(bool show_orb) {
+void set_show_ally_orb(bool show_orb) {
 	prefs["show_ally_orb"] = show_orb;
+}
+
+bool show_status_on_ally_orb() {
+	return get("show_status_on_ally_orb", game_config::show_status_on_ally_orb);
+}
+void set_show_status_on_ally_orb(bool show_orb) {
+	prefs["show_status_on_ally_orb"] = show_orb;
 }
 
 bool show_enemy_orb() {
@@ -370,16 +377,6 @@ std::string partial_color() {
 }
 void set_partial_color(const std::string& color_id) {
 	prefs["partial_orb_color"] = color_id;
-}
-
-std::string disengaged_color() {
-	std::string disengaged_color = get("disengaged_orb_color");
-	if (disengaged_color.empty())
-		return game_config::colors::disengaged_orb_color;
-	return fix_orb_color_name(disengaged_color);
-}
-void set_disengaged_color(const std::string& color_id) {
-	prefs["disengaged_orb_color"] = color_id;
 }
 
 bool scroll_to_action()
@@ -948,7 +945,7 @@ void add_alias(const std::string &alias, const std::string &command)
 }
 
 
-const config &get_alias()
+optional_const_config get_alias()
 {
 	return get_child("alias");
 }
@@ -1019,5 +1016,198 @@ void set_addon_manager_saved_order_direction(sort_order::type value)
 	set("addon_manager_saved_order_direction", sort_order::get_string(value));
 }
 
+std::string selected_achievement_group()
+{
+	return get("selected_achievement_group");
+}
+
+void set_selected_achievement_group(const std::string& content_for)
+{
+	set("selected_achievement_group", content_for);
+}
+
+bool achievement(const std::string& content_for, const std::string& id)
+{
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		if(ach["content_for"].str() == content_for)
+		{
+			std::vector<std::string> ids = utils::split(ach["ids"]);
+			return std::find(ids.begin(), ids.end(), id) != ids.end();
+		}
+	}
+	return false;
+}
+
+void set_achievement(const std::string& content_for, const std::string& id)
+{
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		// if achievements already exist for this content and the achievement has not already been set, add it
+		if(ach["content_for"].str() == content_for)
+		{
+			std::vector<std::string> ids = utils::split(ach["ids"]);
+
+			if(ids.empty())
+			{
+				ach["ids"] = id;
+			}
+			else if(std::find(ids.begin(), ids.end(), id) == ids.end())
+			{
+				ach["ids"] = ach["ids"].str() + "," + id;
+			}
+			ach.remove_children("in_progress", [&id](config cfg){return cfg["id"].str() == id;});
+			return;
+		}
+	}
+
+	// else no achievements have been set for this content yet
+	config ach;
+	ach["content_for"] = content_for;
+	ach["ids"] = id;
+	prefs.add_child("achievements", ach);
+}
+
+int progress_achievement(const std::string& content_for, const std::string& id, int limit, int max_progress, int amount)
+{
+	if(achievement(content_for, id))
+	{
+		return -1;
+	}
+
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		// if achievements already exist for this content and the achievement has not already been set, add it
+		if(ach["content_for"].str() == content_for)
+		{
+			// check if this achievement has progressed before - if so then increment it
+			for(config& in_progress : ach.child_range("in_progress"))
+			{
+				if(in_progress["id"].str() == id)
+				{
+					// don't let using 'limit' decrease the achievement's current progress
+					int starting_progress = in_progress["progress_at"].to_int();
+					if(starting_progress >= limit) {
+						return starting_progress;
+					}
+
+					in_progress["progress_at"] = std::clamp(starting_progress + amount, 0, std::min(limit, max_progress));
+					return in_progress["progress_at"].to_int();
+				}
+			}
+
+			// else this is the first time this achievement is progressing
+			if(amount != 0)
+			{
+				config set_progress;
+				set_progress["id"] = id;
+				set_progress["progress_at"] = std::clamp(amount, 0, std::min(limit, max_progress));
+
+				config& child = ach.add_child("in_progress", set_progress);
+				return child["progress_at"].to_int();
+			}
+			return 0;
+		}
+	}
+
+	// else not only has this achievement not progressed before, this is the first achievement for this achievement group to be added
+	if(amount != 0)
+	{
+		config ach;
+		config set_progress;
+
+		set_progress["id"] = id;
+		set_progress["progress_at"] = std::clamp(amount, 0, std::min(limit, max_progress));
+
+		ach["content_for"] = content_for;
+		ach["ids"] = "";
+
+		config& child = ach.add_child("in_progress", set_progress);
+		prefs.add_child("achievements", ach);
+		return child["progress_at"].to_int();
+	}
+	return 0;
+}
+
+bool sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id)
+{
+	// this achievement is already completed
+	if(achievement(content_for, id))
+	{
+		return true;
+	}
+
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		if(ach["content_for"].str() == content_for)
+		{
+			// check if the specific sub-achievement has been completed but the overall achievement is not completed
+			for(const auto& in_progress : ach.child_range("in_progress"))
+			{
+				if(in_progress["id"] == id)
+				{
+					std::vector<std::string> sub_ids = utils::split(in_progress["sub_ids"]);
+					return std::find(sub_ids.begin(), sub_ids.end(), sub_id) != sub_ids.end();
+				}
+			}
+		}
+	}
+	return false;
+}
+
+void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id)
+{
+	// this achievement is already completed
+	if(achievement(content_for, id))
+	{
+		return;
+	}
+
+	for(config& ach : prefs.child_range("achievements"))
+	{
+		// if achievements already exist for this content and the achievement has not already been set, add it
+		if(ach["content_for"].str() == content_for)
+		{
+			// check if this achievement has had sub-achievements set before
+			for(config& in_progress : ach.child_range("in_progress"))
+			{
+				if(in_progress["id"].str() == id)
+				{
+					std::vector<std::string> sub_ids = utils::split(ach["ids"]);
+
+					if(std::find(sub_ids.begin(), sub_ids.end(), sub_id) == sub_ids.end())
+					{
+						in_progress["sub_ids"] = in_progress["sub_ids"].str() + "," + sub_id;
+					}
+
+					in_progress["progress_at"] = sub_ids.size()+1;
+					return;
+				}
+			}
+
+			// else if this is the first sub-achievement being set
+			config set_progress;
+			set_progress["id"] = id;
+			set_progress["sub_ids"] = sub_id;
+			set_progress["progress_at"] = 1;
+			ach.add_child("in_progress", set_progress);
+			return;
+		}
+	}
+
+	// else not only has this achievement not had a sub-achievement completed before, this is the first achievement for this achievement group to be added
+	config ach;
+	config set_progress;
+
+	set_progress["id"] = id;
+	set_progress["sub_ids"] = sub_id;
+	set_progress["progress_at"] = 1;
+
+	ach["content_for"] = content_for;
+	ach["ids"] = "";
+
+	ach.add_child("in_progress", set_progress);
+	prefs.add_child("achievements", ach);
+}
 
 } // end namespace preferences

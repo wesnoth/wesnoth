@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -103,13 +103,13 @@ class editor_controller : public controller_base,
 		void save_map() override {context_manager_->save_map();}
 
 		/** command_executor override */
-		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const override;
+		bool can_execute_command(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
+		hotkey::ACTION_STATE get_action_state(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		bool do_execute_command(const hotkey::hotkey_command& command, int index = -1, bool press = true, bool release = false) override;
+		bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false) override;
 
 		/** controller_base override */
 		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;

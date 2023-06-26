@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -294,7 +294,8 @@ void advance_unit_at(const advance_unit_params& params)
 			}
 		}
 		//we don't want to let side 1 decide it during start/prestart.
-		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
+		//The "0" parameter here is the default and gets resolves to "current player"
+		int side_for = resources::gamedata->has_current_player() ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.force_dialog_), side_for);
 		//calls actions::advance_unit.
@@ -387,7 +388,7 @@ void advance_unit(map_location loc, const advancement_option &advance_to, bool f
 	new_unit->set_location(loc);
 	if ( !use_amla )
 	{
-		statistics::advance_unit(*new_unit);
+		resources::controller->statistics().advance_unit(*new_unit);
 		preferences::encountered_units().insert(new_unit->type_id());
 		LOG_CF << "Added '" << new_unit->type_id() << "' to the encountered units.";
 	}

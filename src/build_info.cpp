@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2022
+	Copyright (C) 2015 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -49,6 +49,8 @@
 #include <openssl/opensslv.h>
 #endif
 
+#include <curl/curl.h>
+
 #include <pango/pangocairo.h>
 
 #ifdef __APPLE__
@@ -72,12 +74,10 @@ struct version_table_manager
 
 const version_table_manager versions;
 
-#if 0
 std::string format_version(unsigned a, unsigned b, unsigned c)
 {
 	return formatter() << a << '.' << b << '.' << c;
 }
-#endif
 
 std::string format_version(const SDL_version& v)
 {
@@ -171,7 +171,6 @@ std::string format_openssl_version(long v)
 	}
 
 	return fmt.str();
-
 }
 
 #endif
@@ -183,7 +182,6 @@ version_table_manager::version_table_manager()
 	, features()
 {
 	SDL_version sdl_version;
-
 
 	//
 	// SDL
@@ -249,6 +247,22 @@ version_table_manager::version_table_manager()
 	linked[LIB_CRYPTO] = format_openssl_version(SSLeay());
 	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
 #endif
+
+	//
+	// libcurl
+	//
+
+	compiled[LIB_CURL] = format_version(
+		(LIBCURL_VERSION_NUM & 0xFF0000) >> 16,
+		(LIBCURL_VERSION_NUM & 0x00FF00) >> 8,
+		LIBCURL_VERSION_NUM & 0x0000FF);
+	curl_version_info_data *curl_ver = curl_version_info(CURLVERSION_NOW);
+	if(curl_ver && curl_ver->version) {
+		linked[LIB_CURL] = curl_ver->version;
+	}
+	// This is likely to upset somebody out there, but the cURL authors
+	// consistently call it 'libcurl' (all lowercase) in all documentation.
+	names[LIB_CURL] = "libcurl";
 
 	//
 	// Cairo
@@ -521,6 +535,13 @@ inline std::string geometry_to_string(point p)
 	return std::to_string(p.x) + 'x' + std::to_string(p.y);
 }
 
+template<typename coordinateType>
+inline std::string geometry_to_string(coordinateType horizontal, coordinateType vertical)
+{
+	// Use a stream in order to control significant digits in non-integers
+	return formatter() << std::fixed << std::setprecision(2) << horizontal << 'x' << vertical;
+}
+
 std::string format_sdl_driver_list(std::vector<std::string> drivers, const std::string& current_driver)
 {
 	bool found_current_driver = false;
@@ -550,6 +571,10 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 		placeholder = "Running in non-interactive mode.";
 	}
 
+	if(!video::has_window()) {
+		placeholder = "Video not initialized yet.";
+	}
+
 	if(!placeholder.empty()) {
 		fmt.set_placeholder(placeholder);
 		return fmt;
@@ -558,11 +583,25 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	const auto& current_driver = video::current_driver();
 	auto drivers = video::enumerate_drivers();
 
+	const auto& dpi = video::get_dpi();
+	std::string dpi_report;
+
+	dpi_report = dpi.first == 0.0f || dpi.second == 0.0f ?
+				 "<unknown>" :
+				 geometry_to_string(dpi.first, dpi.second);
+
 	fmt.insert("SDL video drivers", format_sdl_driver_list(drivers, current_driver));
 	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
 	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
 	fmt.insert("Screen refresh rate", std::to_string(video::current_refresh_rate()));
+	fmt.insert("Screen dpi", dpi_report);
+
+	const auto& renderer_report = video::renderer_report();
+
+	for(const auto& info : renderer_report) {
+		fmt.insert(info.first, info.second);
+	}
 
 	return fmt;
 }

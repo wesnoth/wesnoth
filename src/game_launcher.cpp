@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,7 +52,6 @@
 #include "sdl/surface.hpp"                // for surface
 #include "serialization/compression.hpp"  // for format::NONE
 #include "serialization/string_utils.hpp" // for split
-#include "statistics.hpp"
 #include "tstring.hpp"       // for operator==, operator!=
 #include "video.hpp"
 #include "wesnothd_connection_error.hpp"
@@ -345,7 +344,7 @@ bool game_launcher::init_video()
 	video::set_window_title(game_config::get_default_title_string());
 
 #if !(defined(__APPLE__))
-	surface icon(image::get_surface("icons/icon-game.png", image::UNSCALED));
+	surface icon(image::get_surface(image::locator{"icons/icon-game.png"}, image::UNSCALED));
 	if(icon != nullptr) {
 		video::set_window_icon(icon);
 	}
@@ -753,12 +752,12 @@ bool game_launcher::load_game()
 	play_replay_ = load.data().show_replay;
 	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no");
 	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no");
-	// in case load.data().show_replay && !state_.is_mid_game_save()
+	// in case load.data().show_replay && state_.is_start_of_scenario
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
 
-	if(state_.is_mid_game_save() && load.data().show_replay) {
-		statistics::clear_current_scenario();
+	if(!state_.is_start_of_scenario() && load.data().show_replay) {
+		state_.statistics().clear_current_scenario();
 	}
 
 	if(state_.classification().is_multiplayer()) {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -53,11 +53,11 @@ namespace gui2::dialogs
 {
 REGISTER_DIALOG(statistics_dialog)
 
-statistics_dialog::statistics_dialog(const team& current_team)
+statistics_dialog::statistics_dialog(statistics_t& statistics, const team& current_team)
 	: modal_dialog(window_id())
 	, current_team_(current_team)
-	, campaign_(statistics::calculate_stats(current_team.save_id_or_number()))
-	, scenarios_(statistics::level_stats(current_team.save_id_or_number()))
+	, campaign_(statistics.calculate_stats(current_team.save_id_or_number()))
+	, scenarios_(statistics.level_stats(current_team.save_id_or_number()))
 	, selection_index_(scenarios_.size()) // The extra All Scenarios menu entry makes size() a valid initial index.
 	, main_stat_table_()
 {
@@ -101,12 +101,12 @@ void statistics_dialog::pre_show(window& window)
 	update_lists();
 }
 
-inline const statistics::stats& statistics_dialog::current_stats()
+inline const statistics_t::stats& statistics_dialog::current_stats()
 {
 	return selection_index_ == 0 ? campaign_ : *scenarios_[selection_index_ - 1].second;
 }
 
-void statistics_dialog::add_stat_row(const std::string& type, const statistics::stats::str_int_map& value, const bool has_cost)
+void statistics_dialog::add_stat_row(const std::string& type, const statistics_t::stats::str_int_map& value, const bool has_cost)
 {
 	listbox& stat_list = find_widget<listbox>(get_window(), "stats_list_main", false);
 
@@ -116,10 +116,10 @@ void statistics_dialog::add_stat_row(const std::string& type, const statistics::
 	item["label"] = type;
 	data.emplace("stat_type", item);
 
-	item["label"] = std::to_string(statistics::sum_str_int_map(value));
+	item["label"] = std::to_string(statistics_t::sum_str_int_map(value));
 	data.emplace("stat_detail", item);
 
-	item["label"] = has_cost ? std::to_string(statistics::sum_cost_str_int_map(value)) : font::unicode_em_dash;
+	item["label"] = has_cost ? std::to_string(statistics_t::sum_cost_str_int_map(value)) : font::unicode_em_dash;
 	data.emplace("stat_cost", item);
 
 	stat_list.add_row(data);
@@ -158,7 +158,7 @@ void statistics_dialog::add_damage_row(
 	item["label"] = type;
 	data.emplace("damage_type", item);
 
-	static const int shift = statistics::stats::decimal_shift;
+	static const int shift = statistics_t::stats::decimal_shift;
 
 	const auto damage_str = [](long long damage, long long expected) {
 		const long long shifted = ((expected * 20) + shift) / (2 * shift);
@@ -203,7 +203,7 @@ struct hitrate_table_element
 };
 
 // Return the strings to use in the "Hits" table, showing actual and expected number of hits.
-static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth, const bool more_is_better)
+static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_cth, const bool more_is_better)
 {
 	unsigned int overall_hits = 0;
 	double expected_hits = 0;
@@ -306,8 +306,8 @@ static hitrate_table_element tally(const statistics::stats::hitrate_map& by_cth,
 void statistics_dialog::add_hits_row(
 		const std::string& type,
 		const bool more_is_better,
-		const statistics::stats::hitrate_map& by_cth,
-		const statistics::stats::hitrate_map& turn_by_cth,
+		const statistics_t::stats::hitrate_map& by_cth,
+		const statistics_t::stats::hitrate_map& turn_by_cth,
 		const bool show_this_turn)
 {
 	listbox& hits_list = find_widget<listbox>(get_window(), "stats_list_hits", false);
@@ -363,7 +363,7 @@ void statistics_dialog::update_lists()
 	stat_list.clear();
 	main_stat_table_.clear();
 
-	const statistics::stats& stats = current_stats();
+	const statistics_t::stats& stats = current_stats();
 
 	add_stat_row(_("stats^Recruits"),     stats.recruits);
 	add_stat_row(_("Recalls"),      stats.recalls);

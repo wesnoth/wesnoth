@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -71,10 +71,18 @@ bool synced_context::run(const std::string& commandname,
 		}
 	}
 
-	// This might also be a good point to call resources::controller->check_victory();
-	// because before for example if someone kills all units during a moveto event they don't loose.
 	resources::controller->check_victory();
+
 	sync.do_final_checkup();
+
+	// TODO: It would be nice if this could automaticially detect that
+	//       no entry was pushed to the undo stack for this action
+	//       and always clear the undo stack in that case.
+	if(undo_blocked()) {
+		// This in particular helps the networking code to make sure this command is sent.
+		resources::undo_stack->clear();
+		send_user_choice();
+	}
 
 	DBG_REPLAY << "run_in_synced_context end";
 	return true;
@@ -200,12 +208,18 @@ void synced_context::set_is_simultaneous()
 	is_simultaneous_ = true;
 }
 
-bool synced_context::can_undo()
+bool synced_context::undo_blocked()
 {
 	// this method should only works in a synced context.
-	assert(is_synced());
-	// if we called the rng or if we sent data of this action over the network already, undoing is impossible.
-	return (!is_simultaneous_) && (randomness::generator->get_random_calls() == 0);
+	assert(!is_unsynced());
+	// if we sent data of this action over the network already, undoing is blocked.
+	// if we called the rng, undoing is blocked.
+	// if the game has ended, undoing is blocked.
+	// if the turn has ended undoing is blocked.
+	return is_simultaneous_
+	    || (randomness::generator->get_random_calls() != 0)
+	    || resources::controller->is_regular_game_end()
+	    || resources::gamedata->end_turn_forced();
 }
 
 int synced_context::get_unit_id_diff()
@@ -220,9 +234,10 @@ void synced_context::pull_remote_user_input()
 	syncmp_registry::pull_remote_choice();
 }
 
+// TODO: this is now also used for normal actions, maybe it should be renamed.
 void synced_context::send_user_choice()
 {
-	assert(is_simultaneous_);
+	assert(undo_blocked());
 	syncmp_registry::send_user_choice();
 }
 
@@ -236,11 +251,16 @@ std::shared_ptr<randomness::rng> synced_context::get_rng_for_action()
 	}
 }
 
+int synced_context::server_choice::request_id() const
+{
+	return resources::controller->get_server_request_number();
+}
+
 void synced_context::server_choice::send_request() const
 {
 	resources::controller->send_to_wesnothd(config {
 		"request_choice", config {
-			"request_id", resources::controller->get_server_request_number(),
+			"request_id", request_id(),
 			name(), request(),
 		},
 	});
@@ -274,7 +294,7 @@ config synced_context::ask_server_choice(const server_choice& sch)
 			DBG_REPLAY << "MP synchronization: local server choice";
 			leave_synced_context sync;
 			config cfg = sch.local_choice();
-
+			cfg["request_id"] = sch.request_id();
 			//-1 for "server" todo: change that.
 			resources::recorder->user_input(sch.name(), cfg, -1);
 			return cfg;
@@ -324,7 +344,11 @@ config synced_context::ask_server_choice(const server_choice& sch)
 				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
 			}
 
-			return action->child(sch.name());
+			config res = action->mandatory_child(sch.name());
+			if(res["request_id"] != sch.request_id()) {
+				WRN_REPLAY << "Unexpected request_id: " << res["request_id"] << " expected: " <<  sch.request_id();
+			}
+			return res;
 		}
 	}
 }

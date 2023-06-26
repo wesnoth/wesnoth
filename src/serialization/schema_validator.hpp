@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -118,6 +118,7 @@ protected:
 
 	virtual void print(message_info&);
 private:
+	void print_cache();
 
 	typedef std::deque<message_info> message_list;
 	typedef std::map<const config*, message_list> message_map;

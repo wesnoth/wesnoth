@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -65,7 +65,7 @@ struct mp_connect_fixture {
 		state->mp_settings().use_map_settings = true;
 		state->mp_settings().saved_game = saved_game_mode::type::no;
 
-		state->set_scenario(config_manager->game_config().find_child("multiplayer", "id", state->mp_settings().name));
+		state->set_scenario(config_manager->game_config().find_mandatory_child("multiplayer", "id", state->mp_settings().name));
 
 		state->mp_settings().num_turns = state->get_starting_point()["turns"];
 
@@ -94,7 +94,7 @@ static test_connect_engine* create_test_connect_engine()
 static ng::side_engine* create_side_engine(const config& defaults,
 	test_connect_engine* connect_engine)
 {
-	config side_cfg = connect_engine->current_config()->child("side");
+	config side_cfg = connect_engine->current_config()->mandatory_child("side");
 	side_cfg.remove_attributes("faction");
 	side_cfg.clear_children("default_faction");
 	side_cfg.append(defaults);

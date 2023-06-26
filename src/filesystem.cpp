@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,7 +23,6 @@
 
 #include "config.hpp"
 #include "deprecation.hpp"
-#include "game_config.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -39,8 +38,6 @@
 #include "game_config_view.hpp"
 
 #ifdef _WIN32
-#include "log_windows.hpp"
-
 #include <boost/locale.hpp>
 
 #include <windows.h>
@@ -74,6 +71,31 @@ static lg::log_domain log_filesystem("filesystem");
 
 namespace bfs = boost::filesystem;
 using boost::system::error_code;
+
+namespace game_config
+{
+//
+// Path info
+//
+#ifdef WESNOTH_PATH
+std::string path = WESNOTH_PATH;
+#else
+std::string path = "";
+#endif
+
+#ifdef DEFAULT_PREFS_PATH
+std::string default_preferences_path = DEFAULT_PREFS_PATH;
+#else
+std::string default_preferences_path = "";
+#endif
+bool check_migration = false;
+
+std::string wesnoth_program_dir;
+
+const std::string observer_team_name = "observer";
+
+int cache_compression_level = 6;
+}
 
 namespace
 {
@@ -233,6 +255,40 @@ bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostrea
 
 namespace filesystem
 {
+
+const blacklist_pattern_list default_blacklist{
+	{
+		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
+		".+",
+		"#*#",
+		"*~",
+		"*-bak",
+		"*.swp",
+		"*.pbl",
+		"*.ign",
+		"_info.cfg",
+		"*.exe",
+		"*.bat",
+		"*.cmd",
+		"*.com",
+		"*.scr",
+		"*.sh",
+		"*.js",
+		"*.vbs",
+		"*.o",
+		"*.ini",
+		/* Remove junk created by certain file manager ;) */
+		"Thumbs.db",
+		/* Eclipse plugin */
+		"*.wesnoth",
+		"*.project",
+	},
+	{
+		".+",
+		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
+		"__MACOSX",
+	}
+};
 
 static void push_if_exists(std::vector<std::string>* vec, const bfs::path& file, bool full)
 {
@@ -585,12 +641,6 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
 	create_directory_if_missing(filesystem::get_logs_dir());
-
-#ifdef _WIN32
-	lg::finish_log_file_setup();
-#else
-	lg::rotate_logs(filesystem::get_logs_dir());
-#endif
 }
 
 #ifdef _WIN32

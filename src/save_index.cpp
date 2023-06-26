@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -160,9 +160,9 @@ save_index_class::save_index_class(create_for_default_saves_dir)
 config& save_index_class::data(const std::string& name)
 {
 	config& cfg = data();
-	if(config& sv = cfg.find_child("save", "save", name)) {
-		fix_leader_image_path(sv);
-		return sv;
+	if(auto sv = cfg.find_child("save", "save", name)) {
+		fix_leader_image_path(*sv);
+		return *sv;
 	}
 
 	config& res = cfg.add_child("save");
@@ -402,16 +402,16 @@ save_info create_save_info::operator()(const std::string& filename) const
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
-	const config& cfg_snapshot = cfg_save.child("snapshot");
+	auto cfg_snapshot = cfg_save.optional_child("snapshot");
 
 	// Servergenerated replays contain [scenario] and no [replay_start]
-	const config& cfg_replay_start = cfg_save.child("replay_start")
-		? cfg_save.child("replay_start")
-		: cfg_save.child("scenario");
+	auto cfg_replay_start = cfg_save.has_child("replay_start")
+		? cfg_save.optional_child("replay_start")
+		: cfg_save.optional_child("scenario");
 
-	const config& cfg_replay = cfg_save.child("replay");
-	const bool has_replay = cfg_replay && !cfg_replay.empty();
-	const bool has_snapshot = cfg_snapshot && cfg_snapshot.has_child("side");
+	auto cfg_replay = cfg_save.optional_child("replay");
+	const bool has_replay = cfg_replay && !cfg_replay->empty();
+	const bool has_snapshot = cfg_snapshot && cfg_snapshot->has_child("side");
 
 	cfg_summary["replay"] = has_replay;
 	cfg_summary["snapshot"] = has_snapshot;
@@ -420,7 +420,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 
 	if(cfg_save.has_child("carryover_sides_start")) {
-		cfg_summary["scenario"] = cfg_save.child("carryover_sides_start")["next_scenario"];
+		cfg_summary["scenario"] = cfg_save.mandatory_child("carryover_sides_start")["next_scenario"];
 	} else {
 		cfg_summary["scenario"] = cfg_save["scenario"];
 	}
@@ -448,8 +448,8 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	bool shrouded = false;
 
-	if(const config& snapshot = *(has_snapshot ? &cfg_snapshot : &cfg_replay_start)) {
-		for(const config& side : snapshot.child_range("side")) {
+	if(auto snapshot = (has_snapshot ? cfg_snapshot : cfg_replay_start)) {
+		for(const config& side : snapshot->child_range("side")) {
 			std::string leader;
 			std::string leader_image;
 			std::string leader_image_tc_modifier;
@@ -515,13 +515,13 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	if(!shrouded) {
 		if(has_snapshot) {
-			if(!cfg_snapshot.find_child("side", "shroud", "yes") && cfg_snapshot.has_attribute("map_data")) {
+			if(!cfg_snapshot->find_child("side", "shroud", "yes") && cfg_snapshot->has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_snapshot["map_data"].str();
 			} else {
 				ERR_SAVE << "Not saving map because there is shroud";
 			}
 		} else if(has_replay) {
-			if(!cfg_replay_start.find_child("side", "shroud", "yes") && cfg_replay_start.has_attribute("map_data")) {
+			if(!cfg_replay_start->find_child("side", "shroud", "yes") && cfg_replay_start->has_attribute("map_data")) {
 				cfg_summary["map_data"] = cfg_replay_start["map_data"];
 			} else {
 				ERR_SAVE << "Not saving map because there is shroud";

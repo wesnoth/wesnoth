@@ -27,7 +27,8 @@ function wesnoth.wml_conditionals.variable(cfg)
 		local value = wml.variables[cfg.name]
 		if cfg.as_type == 'unit' then
 			value = wesnoth.units.create(value)
-			-- TODO: Consider supporting other types.
+		elseif cfg.as_type == 'weapon' then
+			value = wesnoth.units.create_weapon(value)
 		end
 		local result = wesnoth.eval_formula(cfg.formula, {value = value})
 		-- WFL considers 0 as false; Lua doesn't
@@ -36,4 +37,12 @@ function wesnoth.wml_conditionals.variable(cfg)
 	else
 		return old_variable(cfg)
 	end
+end
+
+function wesnoth.wml_conditionals.has_achievement(cfg)
+	return wesnoth.achievements.has(cfg.content_for, cfg.id);
+end
+
+function wesnoth.wml_conditionals.has_sub_achievement(cfg)
+	return wesnoth.achievements.has_sub_achievement(cfg.content_for, cfg.id, cfg.sub_id);
 end

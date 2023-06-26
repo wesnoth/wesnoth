@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,18 @@
 #include "exceptions.hpp"
 #include "game_version.hpp"
 
+namespace game_config {
+extern std::string path;
+extern std::string default_preferences_path;
+extern bool check_migration;
+extern std::string wesnoth_program_dir;
+
+/** observer team name used for observer team chat */
+extern const std::string observer_team_name;
+
+extern int cache_compression_level;
+}
+
 class config;
 class game_config_view;
 struct SDL_RWops;
@@ -39,7 +51,12 @@ namespace filesystem {
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
 
-typedef std::unique_ptr<SDL_RWops, void(*)(SDL_RWops*)> rwops_ptr;
+struct sdl_rwops_deleter
+{
+	void operator()(SDL_RWops*) const noexcept;
+};
+
+using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
 
 rwops_ptr make_read_RWops(const std::string &path);
 rwops_ptr make_write_RWops(const std::string &path);
@@ -88,39 +105,7 @@ private:
 	std::vector<std::string> directory_patterns_;
 };
 
-static const blacklist_pattern_list default_blacklist{
-	{
-		/* Blacklist dot-files/dirs, which are hidden files in UNIX platforms */
-		".+",
-		"#*#",
-		"*~",
-		"*-bak",
-		"*.swp",
-		"*.pbl",
-		"*.ign",
-		"_info.cfg",
-		"*.exe",
-		"*.bat",
-		"*.cmd",
-		"*.com",
-		"*.scr",
-		"*.sh",
-		"*.js",
-		"*.vbs",
-		"*.o",
-		"*.ini",
-		/* Remove junk created by certain file manager ;) */
-		"Thumbs.db",
-		/* Eclipse plugin */
-		"*.wesnoth",
-		"*.project",
-	},
-	{
-		".+",
-		/* macOS metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
-		"__MACOSX",
-	}
-};
+extern const blacklist_pattern_list default_blacklist;
 
 /**
  * Get a list of all files and/or directories in a given directory.

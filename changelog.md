@@ -1,4 +1,4 @@
-## Version 1.17.10+dev
+## Version 1.17.18+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
@@ -8,10 +8,196 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Finnish, French
+   * Updated translations: British English, Czech, Finnish
  ### Units
  ### User interface
  ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.18
+ ### Campaigns
+   * Heir to the Throne
+     * S19c and S20b: Improve rewards by giving a Lieutenant instead of a Sergeant.
+   * Northern Rebirth
+     * Large grammar correction to the English text. (PRs #7643, #7663, #7676, #7680, #7682, #7683)
+   * UtBS
+     * Make the name of the dark assassin translatable again. (PR #7696)
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fixed a bug that the epic trait raised XP requirements for advancements that cost less than 60 XP.
+ ### Multiplayer
+   * Add some search terms to the match history dialog. (PR #7571)
+ ### Terrain
+   * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias). (PR #7629)
+ ### Translations
+   * Updated translations: British English, Czech, Finnish, French, Spanish
+   * Python files are now searched for translatable strings.
+   * Added the `wesnoth-tools` textdomain for WML-maintenance tools.
+ ### User interface
+   * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
+     as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
+   * Better error handling if the data directory is not found. (issue #6883)
+   * The Log File button is now available in the game version info dialog on non-Windows platforms.
+   * Rearranged some elements in Display preferences.
+ ### Miscellaneous and Bug Fixes
+   * Move multiplayer macros to proper folder. (PR #7647)
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite. (issue #7149)
+   * On platforms where logging used to go to stdout/stderr by default, it’s now copied there even when logging to a file. (PR #7672)
+   * `GUI.pyw` now has the i18n mechanics to be translatable, but please wait until the English has been revised.
+   * Refactored hotkey handling, so it no longer has two different codepaths for WML menu items.
+   * The old `utils/change_textdomain` script has been removed. (PR #7688)
+   * wmlxgettext now supports extracting all textdomains at once. (PR #7624)
+   * Fixed a crash in the autocorrect handling on the Wesnoth console. (issue #7412)
+
+## Version 1.17.17
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, French, German, Italian, Spanish
+ ### User interface
+   * Fixed main menu Language button and Version label not being refreshed after
+     switching languages without relaunching the game (issue #7437).
+   * Fixed changing game resolution in Preferences not refreshing the user interface
+     as expected (issue #7436).
+ ### WML Engine
+   * Add support for distinct sub-achievements.
+   * Add [filter_ability] usable instead of [abilities][tag name] to filter attributes including the type of ability used.
+
+## Version 1.17.16
+ ### Translations
+   * Updated translations: British English, French, Italian
+ ### WML Engine
+   * Fixed a crash when encountering a scenario with missing sides (issues #7550,#7553,#7554)
+
+## Version 1.17.15
+ ### Multiplayer
+   * The game no longer crashes when using "Back To Turn" after the game has
+     ended in multiplayer #4236
+ ### Translations
+   * Updated translations: British English, Bulgarian, Czech, French, Spanish, Turkish
+ ### User interface
+   * The "Back To Turn" menu now replays the turn in singelplayer too. However,
+     the Continue button can be used to resume the game from any given position.
+ ### WML Engine
+   * Added support for `[effect] apply_to=level` (PR #7512)
+ ### Miscellaneous and Bug Fixes
+   * The replay viewer now also replays victory/defeat events properly #4667, #6180
+   * Fixes undo stack getting corrupted by reloading #7253
+   * Removed unused `--color` switch from wesnoth_addon_manager
+
+## Version 1.17.14
+ ### Campaigns
+   * Under the Burning Suns
+     * S05 Fixed the main cavern event not taking scouting into account. (issue #7394)
+ ### Packaging
+   * Curl is now a required dependency
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian, Spanish
+ ### User interface
+   * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
+ ### Miscellaneous and Bug Fixes
+   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
+   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
+   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
+   * Linux SCons and CMake scripts now support enabling `_GLIBCXX_ASSERTIONS`.
+
+## Version 1.17.13
+ ### Add-ons client
+   * Added automatic schema-validation of `_server.pbl` files when uploading an add-on. (PR #7239)
+ ### Campaigns
+   * Legend of Wesmere
+     * Adjusted gold and carryover between S11, S14 and S17. (issue #7230)
+     * S03: Fixed an event trigger when Urudin retreats. (PR #7221)
+     * S16: Updated screen flash to use new macros.
+   * Secrets of the Ancients
+     * S17: Use the new `screen_fade` visual effect.
+   * Son of the Black Eye
+     * S14: Fixed Grüü’s dialogue not appearing during the intro. (issue #7280)
+   * The South Guard
+     * S04: Updated safeguard against AI leader stupidity to match map changes.
+   * Under the Burning Suns
+     * Quenoth Rework, including the major changes listed below. (PR #7349)
+     * Redesign of the Quenoth Fighter line, with multiple attacks instead of the formation ability.
+     * Redesign of the Quenoth Shaman line, with songs and the tailwind ability.
+     * Redesign of the Tauroch Rider line, giving both Tauroch and Rider one attack each.
+     * Hide XP bars for some enemies that are never expected to advance a level.
+   * World Conquest
+     * Fix mechanic when a commander replaces a dead leader. (issue #7284)
+ ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn’t always obscure the southmost hexes of the map. (issue #6422)
+ ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs. (issue #7108)
+     * By default, they are now two-color during the ally’s turn.
+     * Added an advanced setting to always show them as single-color (the ally color).
+   * Add waterfall animations to Isar’s Cross. (PR #7348)
+ ### Terrain
+   * Added Art Placeholder overlay (terrain code `^Xxxx`), used for Isar’s Cross’ new waterfalls. (PR #7348)
+ ### Translations
+   * Updated translations: British English, Chinese (Simplified), Czech, Dutch, Finnish, French, Polish, Portuguese (Brazil), Spanish
+   * wmlxgettext always uses Unix-style file paths in .pot files, to reduce changes when working on different platforms. (issue #7380)
+ ### Units
+   * Add Merman Brawler and Citizen to core.
+   * Add Dwarvish Miner to core.
+   * Add Sand Scamperer unit.
+   * Giant Ant now advances to Soldier Ant, requiring 26 XP.
+   * Soldier Ant now costs 16 gold, has 35 HP and needs 50 XP to advance.
+ ### User interface
+   * Added icons for invulnerable and unhealable states. (PR #7363)
+   * The help browser shows groups (`[race]help_taxonomy=`) in subfolders. For example Humans/Dunefolk and Elves/Quenoth. (PR #7228)
+ ### WML API
+   * New `attacks_used` key in `[attack]` causes the attack to deduct more than 1 from `attacks_left`. (PR #7351)
+   * Fixed `[foreach]` when nested loops used the same variable name for the inner and outer loop. (issue #6305)
+   * New `[trait]require_traits=` and `[trait]exclude_traits=` to control random trait generation. (PR #7109)
+ ### WML Engine
+   * Added basic achievements functionality.
+ ### Miscellaneous and Bug Fixes
+   * Fixed a regression in 1.17.x resulting in overlarge unit HP and XP bars in some cases. (issue #7171)
+   * Fixed the editor’s unit tool crashing when placing a unit. (issue #7296)
+   * Many command-line options that log to stdout/stderr now automatically imply `--no-log-to-file`. (issue #7310)
+   * General consolidation of code paths for logging between Windows and non-Windows platforms.
+   * Fixed crash and missing output in `--report`.
+   * Schema validation accepts variables in `[harm_unit]alignment`.
+   * Schema validation no longer accepts the unused `[unit]hp_bar_scaling` and `[unit]xp_bar_scaling`.
+   * Fix an issue with schema validator not reporting errors at top level.
+   * The `unit_tree` tool which generates https://units.wesnoth.org/ now ignores the `[advancefrom]` tag.
+   * Fix the search for the game data directory when doing a local Visual Studio build.
+   * Fixed warnings when compiling with Boost 1.81.
+
+## Version 1.17.12
+ ### Add-ons server
+   * Added support for allowing multiple people to upload updates to an add-on (PR#7268)
+ ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7214)
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, French, Italian, Japanese, Portuguese (Brazil), Turkish
+ ### Units
+   * Dunefolk Rover portrait added
+   * Update sprites for Loyalist General, Spearman, Cavalryman, and Grand Knight
+   * Add more ant types
+   * Fix and adjust Falcon and Elder Falcon attacks
+ ### User interface
+   * Improved the layout of the orb colors dialog, and added tooltips.
+ ### Miscellaneous and Bug Fixes
+   * wmllint now validates `rank=` values in `[campaign]` (issue #7224)
+   * Fixed a crash when checking if abilities are active during game initialisation after loading a saved game. (issues #5643, #7238)
+
+## Version 1.17.11
+ ### Campaigns
+   * Sceptre of Fire
+     * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
+   * Heir to the Throne:
+     * S05B: Delurin now has traits Loyal + resilient + intelligent
+   * Liberty:
+     * The non-loyal character Delurin now has traits resilient + intelligent
+ ### Translations
+   * Updated translations: Arabic, British English, Finnish, French
+ ### Units
+   * Moved Kraken from campaigns to core, updated sprite
+   * Added some dragonfly units to "monsters"
+ ### Miscellaneous and Bug Fixes
+   * Fixed a crash when moving certain walking corpse variations north due to missing animations. (issue #7190)
+   * Fixed special notes being duplicated when storing units (issue #7153).
 
 ## Version 1.17.10
  ### Terrain

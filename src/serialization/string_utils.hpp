@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
@@ -285,6 +285,10 @@ std::string indent(const std::string& string, std::size_t indent_size = 4);
 std::pair<int, int> parse_range(const std::string& str);
 
 std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
+
+std::pair<double, double> parse_range_real(const std::string& str);
+
+std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);
 
 int apply_modifier(const int number, const std::string &amount, const int minimum = 0);
 

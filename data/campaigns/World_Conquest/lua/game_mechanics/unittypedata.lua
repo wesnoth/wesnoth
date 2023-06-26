@@ -50,7 +50,7 @@ type_infos = {
 	},
 	["Elvish Fighter"] = {
 		founddialogue=_"Need a friendly blade?",
-		image="units/elves-wood/fighter.png",
+		image="units/elves-wood/fighter/fighter.png",
 		name="Elvish Fighter",
 	},
 	["Elvish Archer"] = {

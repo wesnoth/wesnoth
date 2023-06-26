@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "game_config.hpp"
 #include "log.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "serialization/parser.hpp"
@@ -530,13 +529,13 @@ void server::load_config()
 	user_handler_.reset();
 
 #ifdef HAVE_MYSQLPP
-	if(const config& user_handler = cfg_.child("user_handler")) {
+	if(auto user_handler = cfg_.optional_child("user_handler")) {
 		if(server_id_ == "") {
 			ERR_SERVER << "The server id must be set when database support is used";
 			exit(1);
 		}
 
-		user_handler_.reset(new fuh(user_handler));
+		user_handler_.reset(new fuh(*user_handler));
 		uuid_ = user_handler_->get_uuid();
 		tournaments_ = user_handler_->get_tournaments();
 	}
@@ -1139,6 +1138,33 @@ void server::handle_player_in_lobby(player_iterator player, simple_wml::document
 		handle_join_game(player, *join);
 		return;
 	}
+
+ 	if(simple_wml::node* request = data.child("game_history_request")) {
+		if(user_handler_) {
+			int offset = request->attr("offset").to_int();
+			int player_id = 0;
+
+			// if search_for attribute for offline player -> query the forum database for the forum id
+			// if search_for attribute for online player -> get the forum id from wesnothd's player info
+			if(request->has_attr("search_player") && request->attr("search_player").to_string() != "") {
+				std::string player_name = request->attr("search_player").to_string();
+				auto player_ptr = player_connections_.get<name_t>().find(player_name);
+				if(player_ptr == player_connections_.get<name_t>().end()) {
+					player_id = user_handler_->get_forum_id(player_name);
+				} else {
+					player_id = player_ptr->info().config_address()->attr("forum_id").to_int();
+				}
+			}
+
+			std::string search_game_name = request->attr("search_game_name").to_string();
+			int search_content_type = request->attr("search_content_type").to_int();
+			std::string search_content = request->attr("search_content").to_string();
+			LOG_SERVER << "Querying game history requested by player `" << player->info().name() << "` for player id `" << player_id << "`."
+					   << "Searching for game name `" << search_game_name << "`, search content type `" << search_content_type << "`, search content `" << search_content << "`.";
+			user_handler_->async_get_and_send_game_history(io_service_, *this, player, player_id, offset, search_game_name, search_content_type, search_content);
+		}
+		return;
+	}
 }
 
 void server::handle_whisper(player_iterator player, simple_wml::node& whisper)
@@ -1676,11 +1702,16 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			const simple_wml::node& m = *g.level().root().child("multiplayer");
 			DBG_SERVER << simple_wml::node_to_string(m);
 			// [addon] info handling
+			std::set<std::string> primary_keys;
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
-					if(rows_inserted == 0) {
-						WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'";
+					std::string key = uuid_+"-"+std::to_string(g.db_id())+"-"+content->attr("type").to_string()+"-"+content->attr("id").to_string()+"-"+addon->attr("id").to_string();
+					if(primary_keys.count(key) == 0) {
+						primary_keys.emplace(key);
+						unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+						if(rows_inserted == 0) {
+							WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'";
+						}
 					}
 				}
 			}
@@ -1709,7 +1740,27 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 						source = "Default";
 					}
 				}
-				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string());
+
+				// approximately determine leader(s) for the side like the client does
+				// useful generally to know how often leaders are used vs other leaders
+				// also as an indication for which faction was chosen if a custom recruit list is provided since that results in "Custom" in the faction field
+				std::vector<std::string> leaders;
+				// if a type= attribute is specified for the side, add it
+				if(side.attr("type") != "") {
+					leaders.emplace_back(side.attr("type").to_string());
+				}
+				// add each [unit] in the side that has canrecruit=yes
+				for(const auto unit : side.children("unit")) {
+					if(unit->attr("canrecruit") == "yes") {
+						leaders.emplace_back(unit->attr("type").to_string());
+					}
+				}
+				// add any [leader] specified for the side
+				for(const auto leader : side.children("leader")) {
+					leaders.emplace_back(leader->attr("type").to_string());
+				}
+
+				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string(), utils::join(leaders));
 			}
 		}
 
@@ -1861,32 +1912,6 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 	} else if(data.child("stop_updates")) {
 		g.send_data(data, p);
-		return;
-	} else if(simple_wml::node* request = data.child("game_history_request")) {
-		if(user_handler_) {
-			int offset = request->attr("offset").to_int();
-			int player_id = 0;
-
-			// if no search_for attribute -> get the requestor's forum id
-			// if search_for attribute for offline player -> query the forum database for the forum id
-			// if search_for attribute for online player -> get the forum id from wesnothd's player info
-			if(!request->has_attr("search_for")) {
-				player_id = player.config_address()->attr("forum_id").to_int();
-			} else {
-				std::string player_name = request->attr("search_for").to_string();
-				auto player_ptr = player_connections_.get<name_t>().find(player_name);
-				if(player_ptr == player_connections_.get<name_t>().end()) {
-					player_id = user_handler_->get_forum_id(player_name);
-				} else {
-					player_id = player_ptr->info().config_address()->attr("forum_id").to_int();
-				}
-			}
-
-			if(player_id != 0) {
-				LOG_SERVER << "Querying game history requested by player `" << player.name() << "` for player id `" << player_id << "`.";
-				user_handler_->async_get_and_send_game_history(io_service_, *this, p, player_id, offset);
-			}
-		}
 		return;
 	// Data to ignore.
 	} else if(

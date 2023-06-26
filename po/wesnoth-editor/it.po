@@ -5,21 +5,21 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2021
+# Antonio Rosella <arosella@yahoo.com>, 2012-2023
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-09-18 23:11-0500\n"
-"PO-Revision-Date: 2021-10-26 18:50+0200\n"
+"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"PO-Revision-Date: 2022-09-25 11:11+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -124,7 +124,7 @@ msgstr "terreni speciali"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "elevazione"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -292,19 +292,19 @@ msgstr ""
 "Non è stato possibile trovare un periodo della giornata applicabile "
 "all’editor."
 
-#: src/editor/controller/editor_controller.cpp:1140
+#: src/editor/controller/editor_controller.cpp:1145
 msgid "Change Unit ID"
 msgstr "Cambia ID dell’unità"
 
-#: src/editor/controller/editor_controller.cpp:1141
+#: src/editor/controller/editor_controller.cpp:1146
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1157
+#: src/editor/controller/editor_controller.cpp:1162
 msgid "Rename Unit"
 msgstr "Rinomina unità"
 
-#: src/editor/controller/editor_controller.cpp:1158
+#: src/editor/controller/editor_controller.cpp:1163
 msgid "Name:"
 msgstr "Nome:"
 
@@ -419,7 +419,7 @@ msgstr ""
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
-#: src/editor/palette/location_palette.cpp:120
+#: src/editor/palette/location_palette.cpp:119
 msgid "Player $side_num"
 msgstr "Giocatore $side_num"
 
@@ -457,39 +457,39 @@ msgstr "Impossibile salvare nello scenario"
 msgid "Could not save the map: $msg"
 msgstr "Impossibile salvare la mappa: $msg"
 
-#: src/editor/palette/editor_palettes.cpp:53
+#: src/editor/palette/editor_palettes.cpp:52
 msgid "(Unknown Group)"
 msgstr "(Gruppo sconosciuto)"
 
-#: src/editor/palette/editor_palettes.cpp:315
+#: src/editor/palette/editor_palettes.cpp:314
 msgid "(non-core)"
 msgstr "(dato non core)"
 
-#: src/editor/palette/editor_palettes.cpp:316
+#: src/editor/palette/editor_palettes.cpp:315
 msgid "Will not work in game without extra care."
 msgstr "Non funzionerà all’interno del gioco senza particolari attenzioni."
 
-#: src/editor/palette/location_palette.cpp:250
+#: src/editor/palette/location_palette.cpp:249
 msgid "Go To"
 msgstr "Vai a"
 
-#: src/editor/palette/location_palette.cpp:257
+#: src/editor/palette/location_palette.cpp:256
 msgid "Add"
 msgstr "Aggiungi"
 
-#: src/editor/palette/location_palette.cpp:259
+#: src/editor/palette/location_palette.cpp:258
 msgid "New Location Identifier"
 msgstr "Nuovo identificativo di locazione"
 
-#: src/editor/palette/location_palette.cpp:266
+#: src/editor/palette/location_palette.cpp:265
 msgid "Error"
 msgstr "Errore"
 
-#: src/editor/palette/location_palette.cpp:267
+#: src/editor/palette/location_palette.cpp:266
 msgid "Invalid location id"
 msgstr "Id di locazione non valido"
 
-#: src/editor/palette/location_palette.cpp:274
+#: src/editor/palette/location_palette.cpp:273
 msgid "Delete"
 msgstr "Elimina"
 

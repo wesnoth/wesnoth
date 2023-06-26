@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -235,10 +235,11 @@ void editor_controller::custom_tods_dialog()
 	context_manager_->refresh_all();
 }
 
-bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
+bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
-	switch(cmd.command) {
+	int index = cmd.index;
+	switch(cmd.hotkey_command) {
 		case HOTKEY_NULL:
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
@@ -447,9 +448,11 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	}
 }
 
-hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const {
+hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_command& cmd) const
+{
 	using namespace hotkey;
-	switch (command) {
+	int index = cmd.index;
+	switch (cmd.hotkey_command) {
 
 	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 	{
@@ -508,7 +511,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_TOOL_UNIT:
 	case HOTKEY_EDITOR_TOOL_VILLAGE:
 	case HOTKEY_EDITOR_TOOL_ITEM:
-		return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+		return toolkit_->is_mouse_action_set(cmd.hotkey_command) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_COORDINATES:
 		return gui_->debug_flag_set(display::DEBUG_COORDINATES) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
@@ -580,19 +583,20 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		}
 		return ACTION_ON;
 		default:
-			return command_executor::get_action_state(command, index);
+			return command_executor::get_action_state(cmd);
 	}
 }
 
-bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
+bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.command;
+	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
 	SCOPE_ED;
 	using namespace hotkey;
+	int index = cmd.index;
 
 	// nothing here handles release; fall through to base implementation
 	if (!press) {
-		return hotkey::command_executor::do_execute_command(cmd, index, press, release);
+		return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
 
 	switch (command) {
@@ -988,7 +992,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			return true;
 		}
 		default:
-			return hotkey::command_executor::do_execute_command(cmd, index, press, release);
+			return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
 }
 
@@ -1008,10 +1012,11 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	std::vector<config> items;
 	for(const auto& c : items_arg) {
 		const std::string& id = c["id"];
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if((can_execute_command(command) && (!context_menu || in_context_menu(command.command)))
-			|| command.command == hotkey::HOTKEY_NULL)
+		const hotkey::ui_command cmd = hotkey::ui_command(hotkey::get_hotkey_command(id));
+
+		if((can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))
+			|| cmd.hotkey_command == hotkey::HOTKEY_NULL)
 		{
 			items.emplace_back("id", id);
 		}
@@ -1098,7 +1103,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 void editor_controller::preferences()
 {
-	font::clear_help_string();
+	gui_->clear_help_string();
 	gui2::dialogs::preferences_dialog::display();
 
 	gui_->queue_rerender();

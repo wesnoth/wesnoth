@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -100,11 +100,12 @@ bool have_addon_in_vcs_tree(const std::string& addon_name);
  * Gets the publish information for an add-on.
  *
  * @param addon_name              The add-on's main directory/file name.
+ * @param do_validate             Whether we want to run validation on the .pbl file.
  *
  * @exception invalid_pbl_exception If it is not possible to read the .pbl file
  *                                  (often due to invalid WML).
  */
-config get_addon_pbl_info(const std::string& addon_name);
+config get_addon_pbl_info(const std::string& addon_name, bool do_validate);
 
 /**
  * Sets the publish information for an add-on.

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -77,9 +77,6 @@ public:
 private:
 	level_result::type playsingle_scenario(end_level_data& end_level);
 	level_result::type playmp_scenario(end_level_data& end_level);
-
-	void show_carryover_message(
-		playsingle_controller& playcontroller, const end_level_data& end_level, level_result::type res);
 
 	saved_game& state_;
 	const bool is_unit_test_;

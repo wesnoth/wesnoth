@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2022
+	Copyright (C) 2009 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,6 +38,7 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/dialogs/server_info_dialog.hpp"
+#include "gui/dialogs/multiplayer/match_history.hpp"
 
 #include "addon/client.hpp"
 #include "addon/manager_ui.hpp"
@@ -575,7 +576,7 @@ void mp_lobby::pre_show(window& window)
 	window.set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	window.set_exit_hook(std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
+	window.set_exit_hook(window::exit_hook::on_all, std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
 
 	chatbox_ = find_widget<chatbox>(&window, "chat", false, true);
 
@@ -654,8 +655,8 @@ void mp_lobby::pre_show(window& window)
 			auto& profile_button = find_widget<button>(profile_panel, "view_profile", false);
 			connect_signal_mouse_left_click(profile_button, std::bind(&mp_lobby::open_profile_url, this));
 
-			// TODO: implement
-			find_widget<button>(profile_panel, "view_match_history", false).set_active(false);
+			auto& history_button = find_widget<button>(profile_panel, "view_match_history", false);
+			connect_signal_mouse_left_click(history_button, std::bind(&mp_lobby::open_match_history, this));
 		}
 	}
 
@@ -686,7 +687,7 @@ void mp_lobby::pre_show(window& window)
 
 void mp_lobby::tab_switch_callback()
 {
-	filter_auto_hosted_ = !filter_auto_hosted_;
+	filter_auto_hosted_ = find_widget<listbox>(get_window(), "games_list_tab_bar", false).get_selected_row() == 1;
 	update_gamelist_filter();
 }
 
@@ -703,6 +704,14 @@ void mp_lobby::post_show(window& /*window*/)
 	remove_timer(lobby_update_timer_);
 	lobby_update_timer_ = 0;
 	plugins_context_.reset();
+}
+
+void mp_lobby::open_match_history()
+{
+	const mp::user_info* info = player_list_.get_selected_info();
+	if(info) {
+		mp_match_history::display(info->name, network_connection_);
+	}
 }
 
 void mp_lobby::network_handler()
@@ -743,13 +752,13 @@ void mp_lobby::network_handler()
 
 void mp_lobby::process_network_data(const config& data)
 {
-	if(const config& error = data.child("error")) {
+	if(auto error = data.optional_child("error")) {
 		throw wesnothd_error(error["message"]);
-	} else if(data.child("gamelist")) {
+	} else if(data.has_child("gamelist")) {
 		process_gamelist(data);
-	} else if(const config& gamelist_diff = data.child("gamelist_diff")) {
-		process_gamelist_diff(gamelist_diff);
-	} else if(const config& info = data.child("message")) {
+	} else if(auto gamelist_diff = data.optional_child("gamelist_diff")) {
+		process_gamelist_diff(*gamelist_diff);
+	} else if(auto info = data.optional_child("message")) {
 		if(info["type"] == "server_info") {
 			server_information_ = info["message"].str();
 			return;

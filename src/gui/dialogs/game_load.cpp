@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -370,8 +370,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			case campaign_type::type::scenario: {
 				const config* campaign = nullptr;
 				if(!campaign_id.empty()) {
-					if(const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-						campaign = &c;
+					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+						campaign = c.ptr();
 					}
 				}
 
@@ -421,8 +421,8 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		case campaign_type::type::multiplayer: {
 			const config* campaign = nullptr;
 			if (!campaign_id.empty()) {
-				if (const config& c = cache_config_.find_child("campaign", "id", campaign_id)) {
-					campaign = &c;
+				if (auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
+					campaign = c.ptr();
 				}
 			}
 
@@ -433,7 +433,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			if (campaign != nullptr) {
 				str << "\n" << _("Difficulty: ");
 				try {
-					const config& difficulty = campaign->find_child("difficulty", "define", cfg_summary["difficulty"]);
+					const config& difficulty = campaign->find_mandatory_child("difficulty", "define", cfg_summary["difficulty"]);
 					std::ostringstream ss;
 					ss << difficulty["label"] << " (" << difficulty["description"] << ")";
 					str << ss.str();
@@ -463,7 +463,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		for(const auto& mod_id : active_mods) {
 			std::string mod_name;
 			try {
-				mod_name = cache_config_.find_child("modification", "id", mod_id)["name"].str();
+				mod_name = cache_config_.find_mandatory_child("modification", "id", mod_id)["name"].str();
 			} catch(const config::error&) {
 				// Fallback to nontranslatable mod id.
 				mod_name = "(" + mod_id + ")";

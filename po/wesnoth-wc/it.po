@@ -3,14 +3,14 @@
 # Copyright (C) Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Antonio Rosella <arosella@yahoo.com>, 2021-2022.
+# Antonio Rosella <arosella@yahoo.com>, 2021-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-11-20 05:31 UTC\n"
-"PO-Revision-Date: 2022-08-08 19:32+0200\n"
+"POT-Creation-Date: 2023-06-18 04:20 UTC\n"
+"PO-Revision-Date: 2023-04-29 17:30+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -77,31 +77,31 @@ msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
 msgstr "AOLM sempre con 60 PE e incrementa di 6PF il massimo di salute."
 
 #. [advancement]: id=amla_default
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:142
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:150
 msgid "Max HP bonus +6%"
 msgstr "Bonus Max PF +6%"
 
 #. [trait]: id=legendary_zombie
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:165
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:209
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:173
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:217
 msgid "legendary"
 msgstr "leggendario"
 
 #. [trait]: id=legendary_zombie
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:166
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:210
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:174
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:218
 msgid "female^legendary"
 msgstr "leggendaria"
 
 #. [trait]: id=legendary_zombie
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:167
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:175
 msgid "Special advancement to Chocobone enabled."
 msgstr "Abilitato avanzamento speciale per il Cavalcaossi."
 
 #. [trait]: id=legendary_goblin
-#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:211
+#: data/campaigns/World_Conquest/era/campaign/heroes.cfg:219
 msgid "Special advancement to Goblin Pillager enabled."
 msgstr "Abilitato avanzamento speciale per il Goblin Saccheggiatore."
 
@@ -223,21 +223,17 @@ msgstr "Artefatti"
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:396
 msgid "Recruits"
-msgstr ""
+msgstr "Reclute"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:463
-#, fuzzy
-#| msgid "Deserter"
 msgid "Deserters"
-msgstr "Disertore"
+msgstr "Disertori"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:482
-#, fuzzy
-#| msgid "Commander"
 msgid "Commanders"
-msgstr "Comandante"
+msgstr "Comandanti"
 
 #. [label]
 #. [lua]: gui.widget.add_invest_item
@@ -249,7 +245,7 @@ msgstr "Eroi"
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
 msgid "Random Leaders"
-msgstr ""
+msgstr "Condottieri casuali"
 
 #. [label]: id=title
 #. [lua]: preshow
@@ -260,20 +256,18 @@ msgstr "Impostazioni"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:588
-#, fuzzy
-#| msgid "World Conquest 1p"
 msgid "Use World Conquest Unitmarkers"
-msgstr "Conquista Mondiale 1g"
+msgstr "Usa i segnalini delle unità di Conquista Mondiale"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:608
 msgid "Use World Conquest experimental pickup"
-msgstr ""
+msgstr "Utilizza la scelta sperimentale di Conquista Mondiale"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:628
 msgid "Show pickup confirmation"
-msgstr ""
+msgstr "Mostra conferma scelta"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:648
@@ -282,10 +276,8 @@ msgstr "Difficoltà"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:669
-#, fuzzy
-#| msgid "World Conquest"
 msgid "World Conquest version"
-msgstr "Conquista Mondiale"
+msgstr "Conquista Mondiale Versione"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:34
@@ -309,7 +301,7 @@ msgstr "Dopo:"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:302
 msgid "Get This Item"
-msgstr ""
+msgstr "Raccogli Questo Oggetto"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
@@ -361,41 +353,37 @@ msgstr " mappa: "
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
 msgid "map size"
-msgstr ""
+msgstr "dimensione mappa"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
 msgid "village density"
-msgstr ""
+msgstr "densità villaggi"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
 msgid "keep size"
-msgstr ""
+msgstr "dimensione fortezza"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-#, fuzzy
-#| msgid "Factions"
 msgid "iterations"
-msgstr "Fazioni"
+msgstr "iterazioni"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
 msgid "terrain factor"
-msgstr ""
+msgstr "fattore terreno"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
 msgid "island factor"
-msgstr ""
+msgstr "fattore isola"
 
 #. [label]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-#, fuzzy
-#| msgid "Tome of secrets"
 msgid "number of keeps"
-msgstr "Tomo dei segreti"
+msgstr "quantità"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|'s pet"
@@ -2599,18 +2587,18 @@ msgstr " (non disponibile per i giocatori)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
-#: data/campaigns/World_Conquest/lua/map/main.lua:122
+#: data/campaigns/World_Conquest/lua/map/main.lua:127
 #: data/campaigns/World_Conquest/lua/map/postgeneration/1A_Start.lua:146
 msgid "Start"
 msgstr "Inizio"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:124
+#: data/campaigns/World_Conquest/lua/map/main.lua:129
 msgid "Scenario"
 msgstr "Scenario"
 
 #. [lua]: wc_ii_generate_scenario
-#: data/campaigns/World_Conquest/lua/map/main.lua:126
+#: data/campaigns/World_Conquest/lua/map/main.lua:131
 msgid "Final Battle"
 msgstr "Battaglia Finale"
 
@@ -2905,12 +2893,12 @@ msgid "The End"
 msgstr "Fine"
 
 #. [lua]: add_enemy_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:37
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:36
 msgid "Enemies"
 msgstr "Nemici"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:59
 msgid "Allies"
 msgstr "Alleati"
 
@@ -3224,11 +3212,11 @@ msgstr "19-1 a distanza , rallentamento da freddo"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:332
 msgid ""
-"Draw this magical bow summon an ice arrow that will freeze and slow its "
+"Draw this magical bow to summon an ice arrow that will freeze and slow its "
 "target upon hit."
 msgstr ""
-"Impugna questo arco magico ed evoca una freccia di ghiaccio che congelerà e "
-"rallenterà il suo bersaglio quando colpisce."
+"Impugna questo arco magico per evocare una freccia di ghiaccio che congelerà "
+"e rallenterà il suo bersaglio quando colpisce."
 
 #. [effect]: type=cold
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:337

@@ -156,9 +156,18 @@ DiffWML в стандартный вывод или в файл, указанн�
 перечислить доступные домены логов (только те, которые содержатся в
 \fBфильтре\fP, если он задан) и выйти
 .TP 
+\fB\-\-no\-log\-to\-file\fP
+prevents redirecting logged output to a file. Log files are created in the
+logs directory under the userdata folder.
+.TP 
 \fB\-\-log\-to\-file\fP
-redirects logged output to a file. Log files are created in the logs
-directory under the userdata folder.
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 граничное число кадров в секунду, которые может отобразить игра; значение
@@ -287,10 +296,9 @@ https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 ошибки подтверждения считаются критическими.
 .TP 
 \fB\-t[\fP\fIid сценария\fP\fB],\ \-\-test[\fP\fI=id сценария\fP\fB]\fP
-запустить игру на небольшом пробном сценарии. Сценарий следует обозначить
-тэгом WML \fB[test]\fP. По умолчанию \fBtest\fP.  Демонстрацию функции
-\fB[micro_ai]\fP можно запустить с помощью \fBmicro_ai_test\fP.  Подразумевает
-\fB\-\-nogui\fP.
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ процент\fP
 Установить стандарт завершённости перевода \fIв процентах\fP, определяющий,
@@ -452,7 +460,7 @@ data/multiplayer.cfg.
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Авторское право \(co Дэвид Уайт, 2003\-2022 <davidnwhite@verizon.net>
+Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

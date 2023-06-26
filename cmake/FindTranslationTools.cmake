@@ -17,7 +17,6 @@ This module defines the following variables:
 	DOS2UNIX_EXECUTABLE
 	PO4A-TRANSLATE_EXECUTABLE
 	PO4A-UPDATEPO_EXECUTABLE
-	PO4A-GETTEXTIZE_EXECUTABLE
 	XSLTPROC_EXECUTABLE
 
 #]=======================================================================]
@@ -81,14 +80,6 @@ set(PO4A-TRANSLATE_OPTIONS
 _find_translation_tool(PO4A-UPDATEPO_EXECUTABLE po4a-updatepo)
 set(PO4A-UPDATEPO_OPTIONS
 	-M utf-8
-)
-
-_find_translation_tool(PO4A-GETTEXTIZE_EXECUTABLE po4a-gettextize)
-set(PO4A-GETTEXTIZE_OPTIONS
-	--copyright-holder "Wesnoth Development Team"
-	-f docbook
-	-M utf-8
-	-L utf-8
 )
 
 _find_translation_tool(XSLTPROC_EXECUTABLE xsltproc)

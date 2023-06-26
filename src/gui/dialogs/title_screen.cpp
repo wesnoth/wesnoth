@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/auxiliary/tips.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/game_version_dialog.hpp"
@@ -163,6 +164,9 @@ void title_screen::init_callbacks()
 	register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML,
 		std::bind(&gui2::window::set_retval, std::ref(*this), RELOAD_GAME_DATA, true));
 
+	register_hotkey(hotkey::HOTKEY_ACHIEVEMENTS,
+		std::bind(&title_screen::show_achievements, this));
+
 	register_hotkey(hotkey::TITLE_SCREEN__TEST,
 		std::bind(&title_screen::hotkey_callback_select_tests, this));
 
@@ -189,17 +193,6 @@ void title_screen::init_callbacks()
 
 	find_widget<image>(this, "logo-bg", false).set_image(game_config::images::game_logo_background);
 	find_widget<image>(this, "logo", false).set_image(game_config::images::game_logo);
-
-	//
-	// Version string
-	//
-	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
-
-	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
-		version_label->set_label(version_string);
-	}
-
-	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
 
 	//
 	// Tip-of-the-day browser
@@ -312,12 +305,71 @@ void title_screen::init_callbacks()
 		try {
 			if(game_.change_language()) {
 				on_resize();
+				update_static_labels();
 			}
 		} catch(const std::runtime_error& e) {
 			gui2::show_error_message(e.what());
 		}
 	});
 
+	//
+	// Preferences
+	//
+	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
+		gui2::dialogs::preferences_dialog::display();
+	});
+
+	//
+	// Achievements
+	//
+	register_button(*this, "achievements", hotkey::HOTKEY_ACHIEVEMENTS,
+		std::bind(&title_screen::show_achievements, this));
+
+	//
+	// Credits
+	//
+	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
+
+	//
+	// Quit
+	//
+	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
+	find_widget<button>(this, "quit", false, true);
+
+	//
+	// Debug clock
+	//
+	register_button(*this, "clock", hotkey::HOTKEY_NULL,
+		std::bind(&title_screen::show_debug_clock_window, this));
+
+	auto clock = find_widget<button>(this, "clock", false, false);
+	if(clock) {
+		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
+	}
+
+	//
+	// Static labels (version and language)
+	//
+	update_static_labels();
+}
+
+void title_screen::update_static_labels()
+{
+	//
+	// Version menu label
+	//
+	const std::string& version_string = VGETTEXT("Version $version", {{ "version", game_config::revision }});
+
+	if(label* version_label = find_widget<label>(this, "revision_number", false, false)) {
+		version_label->set_label(version_string);
+	}
+
+	get_canvas(0).set_variable("revision_number", wfl::variant(version_string));
+
+	//
+	// Language menu label
+	//
 	if(auto* lang_button = find_widget<button>(this, "language", false, false); lang_button) {
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
@@ -341,36 +393,6 @@ void title_screen::init_callbacks()
 			// locale identifier as a last resort
 			lang_button->set_label(boost_name);
 		}
-	}
-
-	//
-	// Preferences
-	//
-	register_button(*this, "preferences", hotkey::HOTKEY_PREFERENCES, []() {
-		gui2::dialogs::preferences_dialog::display();
-	});
-
-	//
-	// Credits
-	//
-	register_button(*this, "credits", hotkey::TITLE_SCREEN__CREDITS, [this]() { set_retval(SHOW_ABOUT); });
-
-	//
-	// Quit
-	//
-	register_button(*this, "quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
-	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
-	find_widget<button>(this, "quit", false, true);
-
-	//
-	// Debug clock
-	//
-	register_button(*this, "clock", hotkey::HOTKEY_NULL,
-		std::bind(&title_screen::show_debug_clock_window, this));
-
-	auto clock = find_widget<button>(this, "clock", false, false);
-	if(clock) {
-		clock->set_visible(show_debug_clock_button ? widget::visibility::visible : widget::visibility::invisible);
 	}
 }
 
@@ -438,6 +460,12 @@ void title_screen::hotkey_callback_select_tests()
 		game_.set_test(options[choice]);
 		set_retval(LAUNCH_GAME);
 	}
+}
+
+void title_screen::show_achievements()
+{
+	achievements_dialog ach;
+	ach.show();
 }
 
 void title_screen::button_callback_multiplayer()

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -365,7 +365,7 @@ void team::build(const config& cfg, const gamemap& map, int gold)
 		   << ", fog: " << uses_fog() << ".";
 
 	// Load the WML-cleared fog.
-	const config& fog_override = cfg.child("fog_override");
+	auto fog_override = cfg.optional_child("fog_override");
 	if(fog_override) {
 		const std::vector<map_location> fog_vector
 				= map.parse_location_range(fog_override["x"], fog_override["y"], true);

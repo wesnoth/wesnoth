@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 #include <fstream>
 #include <locale>
 #include <map>
-#include <mutex>
 #include <boost/locale.hpp>
 #include <set>
 #include <type_traits>
@@ -44,7 +43,6 @@
 namespace bl = boost::locale;
 namespace
 {
-	std::mutex& get_mutex() { static std::mutex* m = new std::mutex(); return *m; }
 
 	class default_utf8_locale_name
 	{
@@ -424,12 +422,10 @@ namespace translation
 
 std::string dgettext(const char* domain, const char* msgid)
 {
-	std::scoped_lock lock(get_mutex());
 	return bl::dgettext(domain, msgid, get_manager().get_locale());
 }
 std::string egettext(char const *msgid)
 {
-	std::scoped_lock lock(get_mutex());
 	return msgid[0] == '\0' ? msgid : bl::gettext(msgid, get_manager().get_locale());
 }
 
@@ -465,9 +461,8 @@ inline const char* is_unlocalized_string2(const std::string& str, const char* si
 
 std::string dsngettext (const char * domainname, const char *singular, const char *plural, int n)
 {
-	//TODO: only the next line needs to be in the lock.
-	std::scoped_lock lock(get_mutex());
 	std::string msgval = bl::dngettext(domainname, singular, plural, n, get_manager().get_locale());
+
 	auto original = is_unlocalized_string2(msgval, singular, plural);
 	if (original) {
 		const char* firsthat = std::strchr (original, '^');
@@ -482,7 +477,6 @@ std::string dsngettext (const char * domainname, const char *singular, const cha
 void bind_textdomain(const char* domain, const char* directory, const char* /*encoding*/)
 {
 	LOG_G << "adding textdomain '" << domain << "' in directory '" << directory << "'";
-	std::scoped_lock lock(get_mutex());
 	get_manager().add_messages_domain(domain);
 	get_manager().add_messages_path(directory);
 	get_manager().update_locale();
@@ -491,7 +485,6 @@ void bind_textdomain(const char* domain, const char* directory, const char* /*en
 void set_default_textdomain(const char* domain)
 {
 	LOG_G << "set_default_textdomain: '" << domain << "'";
-	std::scoped_lock lock(get_mutex());
 	get_manager().set_default_messages_domain(domain);
 }
 
@@ -501,13 +494,11 @@ void set_language(const std::string& language, const std::vector<std::string>* /
 	// why should we need alternates? which languages we support should only be related
 	// to which languages we ship with and not which the os supports
 	LOG_G << "setting language to  '" << language << "'";
-	std::scoped_lock lock(get_mutex());
 	get_manager().set_language(language);
 }
 
 int compare(const std::string& s1, const std::string& s2)
 {
-	std::scoped_lock lock(get_mutex());
 
 	try {
 		return std::use_facet<std::collate<char>>(get_manager().get_locale()).compare(s1.c_str(), s1.c_str() + s1.size(), s2.c_str(), s2.c_str() + s2.size());
@@ -530,11 +521,15 @@ int icompare(const std::string& s1, const std::string& s2)
 	// https://github.com/wesnoth/wesnoth/issues/2094
 	return compare(ascii_to_lowercase(s1), ascii_to_lowercase(s2));
 #else
-	std::scoped_lock lock(get_mutex());
 
 	try {
+#if BOOST_VERSION < 108100
 		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
 			bl::collator_base::secondary, s1, s2);
+#else
+		return std::use_facet<bl::collator<char>>(get_manager().get_locale()).compare(
+			bl::collate_level::secondary, s1, s2);
+#endif
 	} catch(const std::bad_cast&) {
 		static bool bad_cast_once = false;
 
@@ -558,7 +553,6 @@ int icompare(const std::string& s1, const std::string& s2)
 std::string strftime(const std::string& format, const std::tm* time)
 {
 	std::basic_ostringstream<char> dummy;
-	std::scoped_lock lock(get_mutex());
 	dummy.imbue(get_manager().get_locale());	// TODO: Calling imbue() with hard-coded locale appears to work with put_time in glibc, but not with get_locale()...
 	// Revert to use of boost (from 1.14) instead of std::put_time() because the latter does not appear to handle locale properly in Linux
 	dummy << bl::as::ftime(format) << mktime(const_cast<std::tm*>(time));
@@ -568,7 +562,6 @@ std::string strftime(const std::string& format, const std::tm* time)
 
 bool ci_search(const std::string& s1, const std::string& s2)
 {
-	std::scoped_lock lock(get_mutex());
 	const std::locale& locale = get_manager().get_locale();
 
 	std::string ls1 = bl::to_lower(s1, locale);
@@ -580,7 +573,6 @@ bool ci_search(const std::string& s1, const std::string& s2)
 
 const boost::locale::info& get_effective_locale_info()
 {
-	std::scoped_lock lock(get_mutex());
 	return std::use_facet<boost::locale::info>(get_manager().get_locale());
 }
 }

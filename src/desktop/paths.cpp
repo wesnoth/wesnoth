@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2022
+	Copyright (C) 2016 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -106,7 +106,15 @@ void enumerate_storage_devices(std::vector<path_info>& res)
 	// reasoning here is that if any or all of them are non-empty, they are
 	// probably used for _something_ that might be of interest to the user (if not
 	// directly and actively controlled by the user themselves).
-	static const std::vector<std::string> candidates { "/media", "/mnt" };
+	// Note that the first candidate is actually /run/media/USERNAME -- we need
+	// to fetch the username at runtime from passwd to complete the path.
+	std::vector<std::string> candidates { "/media", "/mnt" };
+
+	// Fetch passwd entry for the effective user the current process runs as
+	if(const passwd* pw = getpwuid(geteuid()); pw && pw->pw_name && pw->pw_name[0]) {
+		candidates.emplace(candidates.begin(), "/run/media/");
+		candidates.front() += pw->pw_name;
+	}
 
 	for(const auto& mnt : candidates) {
 		bsys::error_code e;
@@ -144,8 +152,8 @@ inline std::string pretty_path(const std::string& path)
 
 inline config get_bookmarks_config()
 {
-	const config& cfg = preferences::get_child("dir_bookmarks");
-	return cfg ? cfg : config{};
+	auto cfg = preferences::get_child("dir_bookmarks");
+	return cfg ? *cfg : config{};
 }
 
 inline void commit_bookmarks_config(config& cfg)

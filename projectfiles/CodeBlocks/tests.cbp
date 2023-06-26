@@ -68,6 +68,7 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
+			<Add library="libcurl" />
 			<Add library="libpng" />
 			<Add library="libjpeg" />
 			<Add library="libwebp" />
@@ -100,6 +101,8 @@
 		</Unit>
 		<Unit filename="../../src/about.cpp" />
 		<Unit filename="../../src/about.hpp" />
+		<Unit filename="../../src/achievements.cpp" />
+		<Unit filename="../../src/achievements.hpp" />
 		<Unit filename="../../src/actions/advancement.cpp" />
 		<Unit filename="../../src/actions/advancement.hpp" />
 		<Unit filename="../../src/actions/attack.cpp" />
@@ -230,6 +233,8 @@
 		<Unit filename="../../src/campaign_type.hpp" />
 		<Unit filename="../../src/carryover.cpp" />
 		<Unit filename="../../src/carryover.hpp" />
+		<Unit filename="../../src/carryover_show_gold.cpp" />
+		<Unit filename="../../src/carryover_show_gold.hpp" />
 		<Unit filename="../../src/chat_command_handler.cpp" />
 		<Unit filename="../../src/chat_command_handler.hpp" />
 		<Unit filename="../../src/chat_events.cpp" />
@@ -565,6 +570,8 @@
 		<Unit filename="../../src/gui/core/window_builder/helper.hpp" />
 		<Unit filename="../../src/gui/core/window_builder/instance.cpp" />
 		<Unit filename="../../src/gui/core/window_builder/instance.hpp" />
+		<Unit filename="../../src/gui/dialogs/achievements_dialog.cpp" />
+		<Unit filename="../../src/gui/dialogs/achievements_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/addon_auth.cpp" />
 		<Unit filename="../../src/gui/dialogs/addon/addon_auth.hpp" />
 		<Unit filename="../../src/gui/dialogs/addon/connect.cpp" />
@@ -893,7 +900,6 @@
 		<Unit filename="../../src/language.hpp" />
 		<Unit filename="../../src/level_result.hpp" />
 		<Unit filename="../../src/lexical_cast.hpp" />
-		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />
@@ -930,6 +936,8 @@
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
+		<Unit filename="../../src/network_download_file.cpp" />
+		<Unit filename="../../src/network_download_file.hpp" />
 		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />
@@ -1140,6 +1148,8 @@
 		<Unit filename="../../src/spirit_po/version.hpp" />
 		<Unit filename="../../src/statistics.cpp" />
 		<Unit filename="../../src/statistics.hpp" />
+		<Unit filename="../../src/statistics_record.cpp" />
+		<Unit filename="../../src/statistics_record.hpp" />
 		<Unit filename="../../src/storyscreen/controller.cpp" />
 		<Unit filename="../../src/storyscreen/controller.hpp" />
 		<Unit filename="../../src/storyscreen/parser.cpp" />

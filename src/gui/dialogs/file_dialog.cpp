@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -258,7 +258,7 @@ void file_dialog::pre_show(window& window)
 
 	window.keyboard_capture(find_widget<text_box>(&window, "filename", false, true));
 	window.add_to_keyboard_chain(&filelist);
-	window.set_exit_hook(std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
+	window.set_exit_hook(window::exit_hook::on_all, std::bind(&file_dialog::on_exit, this, std::placeholders::_1));
 }
 
 bool file_dialog::on_exit(window& window)

@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+#
+# Lists localizable CPP files.
+# Excludes files in .git folders.
+#
+# Syntax:
+# FINDCPP DOMAIN --initialdomain INITIAL_DOMAIN
+#
+# --initialdomain: Files without an explicit domain default to this value.
+
+import argparse
+import glob
+import re
+from pathlib import Path
+
+if __name__ == '__main__':
+    ap = argparse.ArgumentParser()
+    ap.add_argument('domain') # Single positional argument
+    ap.add_argument('--initialdomain', dest='initdom') # Optional
+    args = ap.parse_args()
+    # Whether the input string has any explicit text domain.
+    any_regexp = re.compile("^#define  *GETTEXT_DOMAIN", re.MULTILINE)
+    # Whether the input string has defined args.domain as its text domain.
+    domain_regexp = re.compile("^#define  *GETTEXT_DOMAIN  *\"" + re.escape(args.domain) + "\"", re.MULTILINE)
+    cpp_files = glob.glob("src/**/*.cpp", recursive=True)
+    # Apparently, some people insist in adding translatable strings to header files (6bf76d940).
+    cpp_files.extend(glob.glob("src/**/*.hpp", recursive=True))
+    cpp_files.sort()
+    for p in cpp_files:
+        # In Windows, glob search yields paths with mixed separators (/\).
+        path = Path(p)
+        # Exclude any .git subdirectories.
+        if ".git" in path.parts:
+            continue
+        content = path.read_text(encoding='utf8')
+
+        # For the default domain, first check that there is no domain defined,
+        # but still search for domain_regexp otherwise.
+        if args.domain == args.initdom and not re.search(any_regexp, content):
+            # Produce output with / only.
+            print(path.as_posix())
+        elif re.search(domain_regexp, content):
+            # Produce output with / only.
+            print(path.as_posix())

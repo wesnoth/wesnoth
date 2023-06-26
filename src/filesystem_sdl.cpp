@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2022
+	Copyright (C) 2017 - 2023
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -41,8 +41,13 @@ static std::size_t SDLCALL ofs_write(struct SDL_RWops *context, const void *ptr,
 static int SDLCALL ifs_close(struct SDL_RWops *context);
 static int SDLCALL ofs_close(struct SDL_RWops *context);
 
+void sdl_rwops_deleter::operator()(SDL_RWops* p) const noexcept
+{
+	SDL_FreeRW(p);
+}
+
 rwops_ptr make_read_RWops(const std::string &path) {
-	rwops_ptr rw(SDL_AllocRW(), &SDL_FreeRW);
+	rwops_ptr rw(SDL_AllocRW());
 
 	rw->size = &ifs_size;
 	rw->seek = &ifs_seek;
@@ -65,7 +70,7 @@ rwops_ptr make_read_RWops(const std::string &path) {
 }
 
 rwops_ptr make_write_RWops(const std::string &path) {
-	rwops_ptr rw(SDL_AllocRW(), &SDL_FreeRW);
+	rwops_ptr rw(SDL_AllocRW());
 
 	rw->size = &ofs_size;
 	rw->seek = &ofs_seek;

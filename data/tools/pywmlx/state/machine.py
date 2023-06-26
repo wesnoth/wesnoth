@@ -13,7 +13,14 @@ from pywmlx.state.wml_states import setup_wmlstates
 import pywmlx.nodemanip
 import pdb
 
+# Universe - convenient singleton for which
+# `x in Universe` is always True
+# Passing it to a filter is equivalent to not filtering.
+class UniversalSet:
+    def __contains__(self, any):
+        return True
 
+Universe = UniversalSet()
 
 # --------------------------------------------------------------------
 #  PART 1: machine.py global variables
@@ -30,12 +37,12 @@ _fdebug = None
 _dictionary = None
 # dictionary containing lua and WML states
 _states = None
-# initialdomain value (setted with --initialdomain command line option)
+# initialdomain value (set with --initialdomain command line option)
 _initialdomain = None
 # the current domain value when parsing file (changed by #textdomain text)
 _currentdomain = None
-# the domain value (setted with --domain command line option)
-_domain = None
+# the domain value (set with --domain command line option)
+_domains = Universe
 # this boolean value will be usually:
 #   True (when the file is a WML .cfg file)
 #   False (when the file is a .lua file)
@@ -84,19 +91,35 @@ _linenosub = 0
 # --------------------------------------------------------------------
 
 
-
-def checkdomain():
-    global _currentdomain
-    global _domain
+def clear_pending_infos(lineno, error=False):
     global _pending_addedinfo
     global _pending_overrideinfo
-    if _currentdomain == _domain:
+    if error:
+        if _pending_addedinfo is not None:
+            wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
+                "#po directive(s) not applied: %s" % _pending_addedinfo)
+        if _pending_overrideinfo is not None:
+            wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
+                "#po-override directive(s) not applied: %s" % _pending_overrideinfo)
+    _pending_addedinfo = None
+    _pending_overrideinfo = None
+    
+
+def checkdomain(lineno):
+    global _currentdomain
+    global _domains
+    if _currentdomain in _domains:
         return True
     else:
-        _pending_addedinfo = None
-        _pending_overrideinfo = None
+        clear_pending_infos(lineno, error=True)
         return False
 
+
+def switchdomain(lineno, domain):
+    global _currentdomain
+    if _currentdomain != domain:
+        clear_pending_infos(lineno, error=True)
+        _currentdomain = domain
 
 
 def checksentence(mystring, finfo, *, islua=False):
@@ -194,7 +217,9 @@ class PendingLuaString:
         global _pending_addedinfo
         global _pending_overrideinfo
         global _linenosub
-        if checkdomain() and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             _linenosub += 1
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             fileno = pywmlx.nodemanip.fileno
@@ -221,10 +246,13 @@ class PendingLuaString:
                     loc_addedinfos = []
                 if _pending_addedinfo is not None:
                     loc_addedinfos = _pending_addedinfo
-                loc_posentence = _dictionary.get(self.luastring)
+                if not _currentdomain in _dictionary:
+                    _dictionary[_currentdomain] = dict()
+                loc_posentence = _dictionary[_currentdomain].get(self.luastring)
                 if loc_posentence is None:
-                    _dictionary[self.luastring] = PoCommentedString(
+                    _dictionary[_currentdomain][self.luastring] = PoCommentedString(
                                 self.luastring,
+                                _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -234,6 +262,7 @@ class PendingLuaString:
                     loc_posentence.update_with_commented_string(
                            PoCommentedString(
                                 self.luastring,
+                                _currentdomain,
                                 orderid=(fileno, self.lineno, _linenosub),
                                 ismultiline=self.ismultiline,
                                 wmlinfos=loc_wmlinfos, finfos=[finfo],
@@ -242,8 +271,7 @@ class PendingLuaString:
                     ) )
         # finally PendingLuaString.store() will clear pendinginfos,
         # in any case (even if the pending string is not translatable)
-        _pending_overrideinfo = None
-        _pending_addedinfo = None
+        clear_pending_infos(self.lineno, error=(not self.istranslatable))
 
 
 
@@ -269,7 +297,9 @@ class PendingWmlString:
                 winf = _pending_winfotype + '=' + self.wmlstring
                 pywmlx.nodemanip.addWmlInfo(winf)
             _pending_winfotype = None
-        if checkdomain() and self.istranslatable:
+        if not checkdomain(self.lineno):
+            return
+        if self.istranslatable:
             finfo = pywmlx.nodemanip.fileref + ":" + str(self.lineno)
             errcode = checksentence(self.wmlstring, finfo, islua=False)
             if errcode != 1:
@@ -282,13 +312,13 @@ class PendingWmlString:
                 else:
                     self.wmlstring = re.sub('""', r'\"', self.wmlstring)
                 pywmlx.nodemanip.addNodeSentence(self.wmlstring,
+                                             domain=_currentdomain,
                                              ismultiline=self.ismultiline,
                                              lineno=self.lineno,
                                              lineno_sub=_linenosub,
                                              override=_pending_overrideinfo,
                                              addition=_pending_addedinfo)
-        _pending_overrideinfo = None
-        _pending_addedinfo = None
+        clear_pending_infos(self.lineno, error=(not self.istranslatable))
 
 
 
@@ -300,16 +330,17 @@ def addstate(name, value):
 
 
 
-def setup(dictionary, initialdomain, domain, wall, fdebug):
+def setup(dictionary, initialdomain, domains, wall, fdebug):
     global _dictionary
     global _initialdomain
-    global _domain
+    global _domains
     global _warnall
     global _debugmode
     global _fdebug
     _dictionary = dictionary
     _initialdomain = initialdomain
-    _domain = domain
+    if domains is not None:
+        _domains = set(domains)
     _warnall = wall
     _fdebug = fdebug
     if fdebug is None:
