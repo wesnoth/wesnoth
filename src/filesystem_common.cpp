@@ -266,6 +266,26 @@ std::string read_map(const std::string& name)
 	return res;
 }
 
+std::string read_scenario(const std::string& name)
+{
+	std::string res;
+	std::string file_location = get_wml_location(name);
+	if(file_location.empty()) {
+		// If this is an add-on or campaign that's set the [binary_path] for its image directory,
+		// automatically check for a sibling scenarios directory.
+		file_location = get_binary_file_location("scenarios", name);
+	}
+	if(!file_location.empty()) {
+		res = read_file(file_location);
+	}
+
+	if(res.empty()) {
+		res = read_file(get_user_data_dir() + "/editor/scenarios/" + name);
+	}
+
+	return res;
+}
+
 static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)
 {
 

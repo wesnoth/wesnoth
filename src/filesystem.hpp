@@ -215,6 +215,7 @@ void write_file(const std::string& fname, const std::string& data, std::ios_base
 void copy_file(const std::string& src, const std::string& dest);
 
 std::string read_map(const std::string& name);
+std::string read_scenario(const std::string& name);
 
 /**
  * Creates a directory if it does not exist already.
