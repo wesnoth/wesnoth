@@ -1288,6 +1288,33 @@ linechanges = (
         ("portraits/monsters/sea-serpent.png", "portraits/monsters/sea-serpent.webp"),
         ("portraits/monsters/big-icemonax.png", "portraits/monsters/big-icemonax.webp"),
         ("portraits/monsters/ogre.png", "portraits/monsters/ogre.webp"),
+
+        # grouping of sprites sharing a color map in 1.17.4
+        # bats
+        ("units/undead/bat-", "units/bats/bat-"),
+        ("units/undead/bloodbat-", "units/bats/bloodbat-"),
+        ("units/undead/dreadbat-", "units/bats/dreadbat-"),
+        # spirits
+        ("units/undead/ghost-", "units/undead-spirit/ghost-"),
+        ("units/undead/wraith-", "units/undead-spirit/wraith-"),
+        ("units/undead/shadow-", "units/undead-spirit/shadow-"),
+        ("units/undead/spectre", "units/undead-spirit/spectre"),
+        ("units/undead/nightgaunt", "units/undead-spirit/nightgaunt"),
+        # nagas
+        ("units/nagas/fighter.png", "units/nagas/fighter/fighter.png"),
+        ("units/nagas/fighter-", "units/nagas/fighter/fighter-"),
+        ("units/nagas/warrior", "units/nagas/fighter/warrior"),
+        ("units/nagas/myrmidon", "units/nagas/fighter/myrmidon"),
+        ("units/nagas/guardian.png", "units/nagas/guardian/guardian.png"),
+        ("units/nagas/guardian-", "units/nagas/guardian/guardian-"),
+        ("units/nagas/warden", "units/nagas/guardian/warden"),
+        ("units/nagas/sentinel", "units/nagas/guardian/sentinel"),
+        ("units/nagas/dirkfang", "units/nagas/mixed/dirkfang"),
+        ("units/nagas/ringcaster", "units/nagas/mixed/ringcaster"),
+        ("units/nagas/ophidian", "units/nagas/mixed/ophidian"),
+        ("units/nagas/sicarius", "units/nagas/mixed/sicarius"),
+        ("units/nagas/zephyr", "units/nagas/mixed/zephyr"),
+
         # introduced in wesnoth 1.17.19
         ("units/elves-wood/fighter.png", "units/elves-wood/fighter/fighter.png"),
 
