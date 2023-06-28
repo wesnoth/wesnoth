@@ -96,7 +96,13 @@ static std::string extra_key_error(
 		const std::string& file, int line, const std::string& tag, const std::string& key, bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Invalid key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	ss << "Invalid key '" << key << "='";
+	if(!tag.empty()) {
+		ss << " in tag [" << tag << "]\n";
+	}
+	if(!file.empty()) {
+		ss << at(file, line) << "\n";
+	}
 	print_output(ss.str(), flag_exception);
 	return ss.str();
 }
@@ -105,7 +111,13 @@ static std::string missing_key_error(
 		const std::string& file, int line, const std::string& tag, const std::string& key, bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Missing key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	ss << "Missing key '" << key << "='";
+	if(!tag.empty()) {
+		ss << " in tag [" << tag << "]\n";
+	}
+	if(!file.empty()) {
+		ss << at(file, line) << "\n";
+	}
 	print_output(ss.str(), flag_exception);
 	return ss.str();
 }
