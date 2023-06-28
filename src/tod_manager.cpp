@@ -239,7 +239,7 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		for(std::size_t i = 0; i < locs.size(); ++i) {
 			const auto itor = units.find(locs[i]);
 			if(itor != units.end() && !itor->incapacitated()) {
-				unit_ability_list illum = itor->get_abilities("illuminates");
+				active_ability_list illum = itor->get_abilities("illuminates");
 				if(!illum.empty()) {
 					unit_abilities::effect illum_effect(illum, terrain_light);
 					const int unit_mod = illum_effect.get_composite_value();

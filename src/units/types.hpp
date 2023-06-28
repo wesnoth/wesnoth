@@ -31,7 +31,7 @@
 #include <string>
 #include <vector>
 
-class unit_ability_list;
+class active_ability_list;
 class unit_animation;
 class game_config_view;
 
@@ -216,10 +216,10 @@ public:
 		bool cumulative;
 	};
 
-	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_; }
+	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_metadata_; }
 
 	/** Some extra abilities that may be gained through AMLA advancements. */
-	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_; }
+	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_metadata_; }
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
@@ -235,6 +235,22 @@ public:
 
 	const config& abilities_cfg() const
 	{ return get_cfg().child_or_empty("abilities"); }
+
+	const ability_vector& abilities() const;
+
+	/**
+	 * @returns a vector of abilitites with tag @a tag
+	 */
+	ability_vector abilities(std::string_view tag) const
+	{
+		ability_vector res;
+		for(const ability_ptr& ab : abilities()) {
+			if(ab->tag() == tag) {
+				res.push_back(ab);
+			}
+		}
+		return res;
+	}
 
 	config::const_child_itors advancements() const
 	{ return get_cfg().child_range("advancement"); }
@@ -320,6 +336,7 @@ private:
 	mutable std::unique_ptr<config> built_cfg_;
 	mutable bool has_cfg_build_;
 	mutable attack_list attacks_cache_;
+	mutable std::optional<ability_vector> abilities_;
 
 	std::string id_;
 	/** A suffix for id_, used when logging messages. */
@@ -361,7 +378,7 @@ private:
 	/** Never nullptr, but may point to the null race. */
 	const unit_race* race_;
 
-	std::vector<ability_metadata> abilities_, adv_abilities_;
+	std::vector<ability_metadata> abilities_metadata_, adv_abilities_metadata_;
 
 	bool zoc_, hide_help_, do_not_list_;
 
@@ -454,4 +471,4 @@ private:
  *
  * @return the special notes for a unit or unit_type.
  */
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt);
+std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const ability_vector& abilities, const_attack_itors attacks, const movetype& mt);

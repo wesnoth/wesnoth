@@ -67,9 +67,11 @@ attack_type::attack_type(const config& cfg) :
 	movement_used_(cfg["movement_used"].to_int(100000)),
 	attacks_used_(cfg["attacks_used"].to_int(1)),
 	parry_(cfg["parry"]),
-	specials_(cfg.child_or_empty("specials")),
+	specials_(),
 	changed_(true)
 {
+	specials_ = unit_ability_t::cfg_to_vector(cfg.child_or_empty("specials"), true);
+
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 
@@ -151,7 +153,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
 		bool found = false;
 		for(auto& special : filter_special) {
-			if(attack.has_special(special, true)) {
+			if(attack.has_special_simple(special)) {
 				found = true;
 				break;
 			}
@@ -163,7 +165,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_id.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_id) {
-			if(attack.has_special(special, true, true, false)) {
+			if(attack.has_special_simple(special, true, false)) {
 				found = true;
 				break;
 			}
@@ -177,7 +179,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
 		bool found = false;
 		for(auto& special : filter_special_active) {
-			if(attack.has_special(special, false)) {
+			if(attack.has_special(special)) {
 				found = true;
 				break;
 			}
@@ -201,7 +203,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if(!filter_special_type.empty()) {
 		bool found = false;
 		for(auto& special : filter_special_type) {
-			if(attack.has_special(special, true, false)) {
+			if(attack.has_special_simple(special, false)) {
 				found = true;
 				break;
 			}
@@ -327,12 +329,12 @@ bool attack_type::apply_modification(const config& cfg)
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		config new_specials;
-		for (const config::any_child vp : specials_.all_children_range()) {
+		ability_vector new_specials;
+		for (const auto& p_ability : specials_) {
 			std::vector<std::string>::const_iterator found_id =
-				std::find(dsl.begin(), dsl.end(), vp.cfg["id"].str());
+				std::find(dsl.begin(), dsl.end(), p_ability->cfg()["id"].str());
 			if (found_id == dsl.end()) {
-				new_specials.add_child(vp.key, vp.cfg);
+				new_specials.push_back(p_ability);
 			}
 		}
 		specials_ = new_specials;
@@ -349,7 +351,7 @@ bool attack_type::apply_modification(const config& cfg)
 			specials_.clear();
 		}
 		for(const config::any_child value : set_specials->all_children_range()) {
-			specials_.add_child(value.key, value.cfg);
+			specials_.push_back(std::make_shared<unit_ability_t>(value.key, value.cfg));
 		}
 	}
 
@@ -578,5 +580,5 @@ void attack_type::write(config& cfg) const
 	cfg["movement_used"] = movement_used_;
 	cfg["attacks_used"] = attacks_used_;
 	cfg["parry"] = parry_;
-	cfg.add_child("specials", specials_);
+	cfg.add_child("specials", specials_cfg());
 }

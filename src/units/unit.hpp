@@ -19,6 +19,8 @@
 #include "units/unit_alignments.hpp"
 #include "units/id.hpp"
 #include "units/ptr.hpp"
+#include "units/ability.hpp"
+#include "units/active_ability_list.hpp"
 #include "units/attack_type.hpp"
 #include "units/race.hpp"
 #include "utils/variant.hpp"
@@ -35,97 +37,6 @@ class unit_formula_manager;
 class vconfig;
 struct color_t;
 
-/** Data typedef for unit_ability_list. */
-struct unit_ability
-{
-	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
-		: student_loc(student_loc)
-		, teacher_loc(teacher_loc)
-		, ability_cfg(ability_cfg)
-	{
-	}
-
-	/**
-	 * Used by the formula in the ability.
-	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
-	 * once unit_ability_list can contain abilities from different 'students', as it contains abilities from
-	 * a unit aswell from its opponents (abilities with apply_to= opponent)
-	 */
-	map_location student_loc;
-	/**
-	 * The location of the teacher, that is the unit who owns the ability tags
-	 * (different from student because of [affect_adjacent])
-	 */
-	map_location teacher_loc;
-	/** The contents of the ability tag, never nullptr. */
-	const config* ability_cfg;
-};
-
-class unit_ability_list
-{
-public:
-	unit_ability_list(const map_location& loc = map_location()) : cfgs_() , loc_(loc) {}
-
-	// Implemented in unit_abilities.cpp
-	std::pair<int, map_location> highest(const std::string& key, int def=0) const
-	{
-		return get_extremum(key, def, std::less<int>());
-	}
-	std::pair<int, map_location> lowest(const std::string& key, int def=0) const
-	{
-		return get_extremum(key, def, std::greater<int>());
-	}
-
-	template<typename TComp>
-	std::pair<int, map_location> get_extremum(const std::string& key, int def, const TComp& comp) const;
-
-	// The following make this class usable with standard library algorithms and such
-	typedef std::vector<unit_ability>::iterator       iterator;
-	typedef std::vector<unit_ability>::const_iterator const_iterator;
-
-	iterator       begin()        { return cfgs_.begin(); }
-	const_iterator begin() const  { return cfgs_.begin(); }
-	iterator       end()          { return cfgs_.end();   }
-	const_iterator end()   const  { return cfgs_.end();   }
-
-	// Vector access
-	bool                empty() const  { return cfgs_.empty(); }
-	unit_ability&       front()        { return cfgs_.front(); }
-	const unit_ability& front() const  { return cfgs_.front(); }
-	unit_ability&       back()         { return cfgs_.back();  }
-	const unit_ability& back()  const  { return cfgs_.back();  }
-
-	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
-	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
-
-	template<typename... T>
-	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
-
-	const map_location& loc() const { return loc_; }
-
-	/** Appends the abilities from @a other to @a this, ignores other.loc() */
-	void append(const unit_ability_list& other)
-	{
-		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
-	}
-
-	/**
-	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
-	 *
-	 * @param other where to copy the elements from
-	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
-	 */
-	template<typename Predicate>
-	void append_if(const unit_ability_list& other, const Predicate& predicate)
-	{
-		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
-	}
-
-private:
-	// Data
-	std::vector<unit_ability> cfgs_;
-	map_location loc_;
-};
 
 /**
  * This class represents a *single* unit of a specific type.
@@ -1702,26 +1613,43 @@ public:
 	 * @param loc The location to use for resolving abilities
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
+	active_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type.
 	 * @param tag_name The type of ability to check for
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name) const
+	active_ability_list get_abilities(const std::string& tag_name) const
 	{
 		return get_abilities(tag_name, loc_);
 	}
 
-	unit_ability_list get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	active_ability_list get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
-	unit_ability_list get_abilities_weapons(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	active_ability_list get_abilities_weapons(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
 	{
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
 
-	const config &abilities() const { return abilities_; }
+	ability_vector abilities() const { return abilities_; }
+	const ability_vector& abilities_ref() const { return abilities_; }
+
+	/**
+	 * @returns a vector of abilitites with tag @a tag
+	 *  this is used over for( : abilities_ ..) since it making a copy
+	 *  of the vector makes it mroe robust against insertions into that vector by lua code.
+	 */
+	ability_vector abilities(std::string_view tag) const
+	{
+		ability_vector res;
+		for(const ability_ptr& ab : abilities_) {
+			if(ab->tag() == tag) {
+				res.push_back(ab);
+			}
+		}
+		return res;
+	}
 
 	const std::set<std::string>& checking_tags() const { return checking_tags_; };
 
@@ -1962,7 +1890,7 @@ private:
 	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
-	config abilities_;
+	ability_vector abilities_;
 
 	std::vector<config> advancements_;
 

@@ -412,7 +412,7 @@ REPORT_GENERATOR(selected_unit_alignment, rc)
 	return unit_alignment(rc, u, hex_to_show_alignment_at);
 }
 
-static config unit_abilities(const unit* u, const map_location& loc)
+static config get_unit_abilities(const unit* u, const map_location& loc)
 {
 	if (!u) return config();
 	config res;
@@ -457,7 +457,7 @@ REPORT_GENERATOR(unit_abilities, rc)
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
 
-	return unit_abilities(u, hex);
+	return get_unit_abilities(u, hex);
 }
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
@@ -468,9 +468,9 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 
 	if (visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex))
-		return unit_abilities(u, mouseover_hex);
+		return get_unit_abilities(u, mouseover_hex);
 	else
-		return unit_abilities(u, u->get_location());
+		return get_unit_abilities(u, u->get_location());
 }
 
 

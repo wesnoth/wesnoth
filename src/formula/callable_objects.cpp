@@ -112,9 +112,9 @@ variant attack_type_callable::get_value(const std::string& key) const
 	} else if(key == "specials" || key == "special") {
 		std::vector<variant> res;
 
-		for(const auto special : att_->specials().all_children_range()) {
-			if(!special.cfg["id"].empty()) {
-				res.emplace_back(special.cfg["id"].str());
+		for(auto special : att_->specials()) {
+			if(!special->cfg()["id"].empty()) {
+				res.emplace_back(special->cfg()["id"].str());
 			}
 		}
 		return variant(res);
@@ -168,14 +168,14 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return att_->range().compare(att_callable->att_->range());
 	}
 
-	const auto self_specials = att_->specials().all_children_range();
-	const auto other_specials = att_callable->att_->specials().all_children_range();
+	const auto self_specials = att_->specials();
+	const auto other_specials = att_callable->att_->specials();
 	if(self_specials.size() != other_specials.size()) {
 		return self_specials.size() < other_specials.size() ? -1 : 1;
 	}
 	for(std::size_t i = 0; i < self_specials.size(); ++i) {
-		const auto& s = self_specials[i].cfg["id"];
-		const auto& o = other_specials[i].cfg["id"];
+		const auto& s = self_specials[i]->cfg()["id"];
+		const auto& o = other_specials[i]->cfg()["id"];
 		if(s != o) {
 			return s.str().compare(o.str());
 		}

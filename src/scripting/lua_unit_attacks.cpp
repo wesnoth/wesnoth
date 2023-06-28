@@ -266,7 +266,7 @@ static int impl_unit_attack_get(lua_State *L)
 	return_int_attrib("movement_used", attack.movement_used());
 	return_int_attrib("attacks_used", attack.attacks_used());
 	return_int_attrib("parry", attack.parry());
-	return_cfgref_attrib("specials", attack.specials());
+	return_cfgref_attrib("specials", attack.specials_cfg());
 	return_cfgref_attrib("__cfg", attack.to_config());
 	if(luaW_getmetafield(L, 1, m)) {
 		return 1;
@@ -301,7 +301,7 @@ static int impl_unit_attack_set(lua_State *L)
 	modify_int_attrib("parry", attack.set_parry(value));
 
 	if(strcmp(m, "specials") == 0) {
-		attack.set_specials(luaW_checkconfig(L, 3));
+		attack.set_specials_cfg(luaW_checkconfig(L, 3));
 		return 0;
 	}
 
