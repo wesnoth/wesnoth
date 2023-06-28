@@ -23,6 +23,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multimenu_button.hpp"
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
@@ -30,6 +31,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
+#include "serialization/schema_validator.hpp"
 
 namespace gui2::dialogs
 {
@@ -68,6 +70,7 @@ editor_edit_pbl::editor_edit_pbl(const std::string& pbl)
 	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "forum_auth", false), std::bind(&editor_edit_pbl::toggle_auth, this));
 	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_add", false), std::bind(&editor_edit_pbl::add_translation, this));
 	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_delete", false), std::bind(&editor_edit_pbl::delete_translation, this));
+	connect_signal_mouse_left_click(find_widget<button>(get_window(), "validate", false), std::bind(&editor_edit_pbl::validate, this));
 }
 
 void editor_edit_pbl::pre_show(window& win)
@@ -171,55 +174,60 @@ void editor_edit_pbl::pre_show(window& win)
 	}
 }
 
-void editor_edit_pbl::post_show(window& win)
+void editor_edit_pbl::post_show(window&)
 {
 	if(get_retval() != retval::OK) {
 		return;
 	}
 
-	config cfg;
 	filesystem::scoped_ostream stream = filesystem::ostream_file(pbl_);
+	*stream << create_cfg();
+}
 
-	if(const std::string& name = find_widget<text_box>(&win, "name", false).get_value(); !name.empty()) {
+config editor_edit_pbl::create_cfg()
+{
+	config cfg;
+
+	if(const std::string& name = find_widget<text_box>(get_window(), "name", false).get_value(); !name.empty()) {
 		cfg["title"] = name;
 	}
-	if(const std::string& description = find_widget<text_box>(&win, "description", false).get_value(); !description.empty()) {
+	if(const std::string& description = find_widget<text_box>(get_window(), "description", false).get_value(); !description.empty()) {
 		cfg["description"] = description;
 	}
-	if(const std::string& icon = find_widget<text_box>(&win, "icon", false).get_value(); !icon.empty()) {
+	if(const std::string& icon = find_widget<text_box>(get_window(), "icon", false).get_value(); !icon.empty()) {
 		cfg["icon"] = icon;
 	}
-	if(const std::string& author = find_widget<text_box>(&win, "author", false).get_value(); !author.empty()) {
+	if(const std::string& author = find_widget<text_box>(get_window(), "author", false).get_value(); !author.empty()) {
 		cfg["author"] = author;
 	}
-	if(const std::string& version = find_widget<text_box>(&win, "version", false).get_value(); !version.empty()) {
+	if(const std::string& version = find_widget<text_box>(get_window(), "version", false).get_value(); !version.empty()) {
 		cfg["version"] = version;
 	}
-	if(const std::string& dependencies = find_widget<text_box>(&win, "dependencies", false).get_value(); !dependencies.empty()) {
+	if(const std::string& dependencies = find_widget<text_box>(get_window(), "dependencies", false).get_value(); !dependencies.empty()) {
 		cfg["dependencies"] = dependencies;
 	}
 
-	if(find_widget<toggle_button>(&win, "forum_auth", false).get_value_bool()) {
+	if(find_widget<toggle_button>(get_window(), "forum_auth", false).get_value_bool()) {
 		cfg["forum_auth"] = true;
 	} else {
-		if(const std::string& email = find_widget<text_box>(&win, "email", false).get_value(); !email.empty()) {
+		if(const std::string& email = find_widget<text_box>(get_window(), "email", false).get_value(); !email.empty()) {
 			cfg["email"] = email;
 		}
-		if(const std::string& passphrase = find_widget<text_box>(&win, "password", false).get_value(); !passphrase.empty()) {
+		if(const std::string& passphrase = find_widget<text_box>(get_window(), "password", false).get_value(); !passphrase.empty()) {
 			cfg["passphrase"] = passphrase;
 		}
 	}
 
-	if(const std::string& topic_id = find_widget<text_box>(&win, "forum_thread", false).get_value(); !topic_id.empty()) {
+	if(const std::string& topic_id = find_widget<text_box>(get_window(), "forum_thread", false).get_value(); !topic_id.empty()) {
 		config& feedback = cfg.add_child("feedback");
 		feedback["topic_id"] = topic_id;
 	}
 
-	if(unsigned value = find_widget<menu_button>(&win, "type", false).get_value(); value != 0) {
+	if(unsigned value = find_widget<menu_button>(get_window(), "type", false).get_value(); value != 0) {
 		cfg["type"] = type_values[value];
 	}
 
-	multimenu_button& tags = find_widget<multimenu_button>(&win, "tags", false);
+	multimenu_button& tags = find_widget<multimenu_button>(get_window(), "tags", false);
 	boost::dynamic_bitset<> states = tags.get_toggle_states();
 	std::vector<std::string> chosen;
 	for(unsigned i = 0; i < states.size(); i++) {
@@ -231,7 +239,7 @@ void editor_edit_pbl::post_show(window& win)
 		cfg["tags"] = utils::join(chosen, ",");
 	}
 
-	listbox& translations = find_widget<listbox>(&win, "translations", false);
+	listbox& translations = find_widget<listbox>(get_window(), "translations", false);
 	for(unsigned i = 0; i < translations.get_item_count(); i++) {
 		grid* row = translations.get_row_grid(i);
 		config& translation = cfg.add_child("translation");
@@ -241,7 +249,7 @@ void editor_edit_pbl::post_show(window& win)
 		translation["description"] = dynamic_cast<label*>(row->find("translations_description", false))->get_label();
 	}
 
-	*stream << cfg;
+	return cfg;
 }
 
 void editor_edit_pbl::toggle_auth()
@@ -291,6 +299,23 @@ void editor_edit_pbl::delete_translation()
 	button& translations_delete = find_widget<button>(get_window(), "translations_delete", false);
 	if(translations.get_item_count() == 0) {
 		translations_delete.set_active(false);
+	}
+}
+
+void editor_edit_pbl::validate()
+{
+	std::unique_ptr<schema_validation::schema_validator> validator;
+	validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/pbl.cfg")));
+	validator->set_create_exceptions(false);
+
+	config temp;
+	std::stringstream ss;
+	ss << create_cfg();
+	read(temp, ss.str(), validator.get());
+	if(!validator->get_errors().empty()) {
+		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
+	} else {
+		gui2::show_message(_("Success"), _("No validation errors"), gui2::dialogs::message::button_style::auto_close);
 	}
 }
 

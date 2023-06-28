@@ -53,6 +53,11 @@ public:
 		create_exceptions_ = value;
 	}
 
+	const std::vector<std::string>& get_errors() const
+	{
+		return errors_;
+	}
+
 	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
 	virtual void close_tag() override;
 	virtual void validate(const config& cfg, const std::string& name, int start_line, const std::string& file) override;
@@ -144,6 +149,8 @@ private:
 	wml_type::map types_;
 
 	bool validate_schema_;
+
+	std::vector<std::string> errors_;
 
 protected:
 	template<typename... T>

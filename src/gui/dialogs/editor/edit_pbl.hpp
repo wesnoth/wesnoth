@@ -59,6 +59,8 @@ private:
 	void toggle_auth();
 	void add_translation();
 	void delete_translation();
+	void validate();
+	config create_cfg();
 
 	std::string pbl_;
 };
