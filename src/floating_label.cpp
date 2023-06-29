@@ -175,11 +175,6 @@ void floating_label::update(int time)
 
 	uint8_t new_alpha = get_alpha(time);
 
-	if(screen_loc_ == draw_loc && alpha_ == new_alpha) {
-		// nothing has changed
-		return;
-	}
-
 	// Invalidate former draw loc
 	draw_manager::invalidate_region(get_bg_rect(screen_loc_));
 
