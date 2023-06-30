@@ -1329,11 +1329,11 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			bool is_overwritable = (overwrite_special_affects(*j.ability_cfg) && !prior) || !overwrite_special_affects(*j.ability_cfg);
 			bool one_side_overwritable = true;
 			if(affect_side && is_overwritable){
-				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, "filter_student") || special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability)){
-					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, *j.ability_cfg, AFFECT_SELF, ability, "filter_student") || special_active_impl(shared_from_this(), other_attack_, *j.ability_cfg, AFFECT_SELF, ability);
+				if(special_affects_self(*i.ability_cfg, is_attacker_)){
+					one_side_overwritable = special_affects_self(*j.ability_cfg, is_attacker_);
 				}
-				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability)){
-					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, "filter_student") || special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability);
+				else if(special_affects_opponent(*i.ability_cfg, !is_attacker_)){
+					one_side_overwritable = special_affects_opponent(*j.ability_cfg, !is_attacker_);
 				}
 			}
 			bool special_matches = true;
