@@ -713,7 +713,8 @@ void context_manager::save_scenario_as_dialog()
 	dlg.set_title(_("Save Scenario As"))
 	   .set_save_mode(true)
 	   .set_path(input_name)
-	   .set_extension(".cfg");
+	   .set_extension(".cfg")
+	   .add_extra_path(desktop::GAME_EDITOR_MAP_DIR);
 
 	if(!dlg.show()) {
 		return;

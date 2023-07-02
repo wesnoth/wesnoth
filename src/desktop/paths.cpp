@@ -197,50 +197,55 @@ std::ostream& operator<<(std::ostream& os, const path_info& pinf)
 	return os << pinf.name << " [" << pinf.label << "] - " << pinf.path;
 }
 
-std::vector<path_info> game_paths(unsigned path_types)
+std::vector<path_info> game_paths(std::set<GAME_PATH_TYPES> paths)
 {
 	static const std::string& game_bin_dir = pretty_path(filesystem::get_exe_dir());
 	static const std::string& game_data_dir = pretty_path(game_config::path);
 	static const std::string& game_user_data_dir = pretty_path(filesystem::get_user_data_dir());
 	static const std::string& game_user_pref_dir = pretty_path(filesystem::get_user_config_dir());
+	static const std::string& game_editor_map_dir = pretty_path(filesystem::get_legacy_editor_dir() + "/maps");
 
 	std::vector<path_info> res;
 
-	if(path_types & GAME_BIN_DIR && !have_path(res, game_bin_dir)) {
+	if(paths.count(GAME_BIN_DIR) > 0 && !have_path(res, game_bin_dir)) {
 		res.push_back({{ N_("filesystem_path_game^Game executables"), GETTEXT_DOMAIN }, "", game_bin_dir});
 	}
 
-	if(path_types & GAME_CORE_DATA_DIR && !have_path(res, game_data_dir)) {
+	if(paths.count(GAME_CORE_DATA_DIR) > 0 && !have_path(res, game_data_dir)) {
 		res.push_back({{ N_("filesystem_path_game^Game data"), GETTEXT_DOMAIN }, "", game_data_dir});
 	}
 
-	if(path_types & GAME_USER_DATA_DIR && !have_path(res, game_user_data_dir)) {
+	if(paths.count(GAME_USER_DATA_DIR) > 0 && !have_path(res, game_user_data_dir)) {
 		res.push_back({{ N_("filesystem_path_game^User data"), GETTEXT_DOMAIN }, "", game_user_data_dir});
 	}
 
-	if(path_types & GAME_USER_PREFS_DIR && !have_path(res, game_user_pref_dir)) {
+	if(paths.count(GAME_USER_PREFS_DIR) > 0 && !have_path(res, game_user_pref_dir)) {
 		res.push_back({{ N_("filesystem_path_game^User preferences"), GETTEXT_DOMAIN }, "", game_user_pref_dir});
+	}
+
+	if(paths.count(GAME_EDITOR_MAP_DIR) > 0 && !have_path(res, game_editor_map_dir)) {
+		res.push_back({{ N_("filesystem_path_game^Editor maps"), GETTEXT_DOMAIN }, "", game_editor_map_dir});
 	}
 
 	return res;
 }
 
-std::vector<path_info> system_paths(unsigned path_types)
+std::vector<path_info> system_paths(std::set<SYSTEM_PATH_TYPES> paths)
 {
 	static const std::string& home_dir = user_profile_dir();
 
 	std::vector<path_info> res;
 
-	if(path_types & SYSTEM_USER_PROFILE && !home_dir.empty()) {
+	if(paths.count(SYSTEM_USER_PROFILE) > 0 && !home_dir.empty()) {
 		res.push_back({{ N_("filesystem_path_system^Home"), GETTEXT_DOMAIN }, "", home_dir});
 	}
 
-	if(path_types & SYSTEM_ALL_DRIVES) {
+	if(paths.count(SYSTEM_ALL_DRIVES) > 0) {
 		enumerate_storage_devices(res);
 	}
 
 #ifndef _WIN32
-	if(path_types & SYSTEM_ROOTFS) {
+	if(paths.count(SYSTEM_ROOTFS) > 0) {
 		res.push_back({{ N_("filesystem_path_system^Root"), GETTEXT_DOMAIN }, "", "/"});
 	}
 #endif

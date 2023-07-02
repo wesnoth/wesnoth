@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
+#include "desktop/paths.hpp"
+
 /**
  * Generic file dialog.
  *
@@ -186,6 +188,12 @@ public:
 		return *this;
 	}
 
+	file_dialog& add_extra_path(desktop::GAME_PATH_TYPES path)
+	{
+		extra_paths_.emplace(path);
+		return *this;
+	}
+
 private:
 	std::string title_;
 	std::string msg_;
@@ -204,6 +212,7 @@ private:
 	std::vector<std::string> bookmark_paths_;
 	int current_bookmark_;
 	int user_bookmarks_begin_;
+	std::set<desktop::GAME_PATH_TYPES> extra_paths_;
 
 	virtual const std::string& window_id() const override;
 

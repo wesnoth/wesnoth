@@ -117,6 +117,7 @@ file_dialog::file_dialog()
 	, bookmark_paths_()
 	, current_bookmark_()
 	, user_bookmarks_begin_()
+	, extra_paths_()
 {
 }
 
@@ -192,8 +193,10 @@ void file_dialog::pre_show(window& window)
 	// Push hard-coded bookmarks.
 	//
 
-	std::vector<desktop::path_info> bookmarks = desktop::game_paths();
-	const auto& sys_paths = desktop::system_paths();
+	extra_paths_.emplace(desktop::GAME_CORE_DATA_DIR);
+	extra_paths_.emplace(desktop::GAME_USER_DATA_DIR);
+	std::vector<desktop::path_info> bookmarks = desktop::game_paths(extra_paths_);
+	const auto& sys_paths = desktop::system_paths({desktop::SYSTEM_ALL_DRIVES, desktop::SYSTEM_USER_PROFILE, desktop::SYSTEM_ROOTFS});
 	bookmarks.insert(bookmarks.end(), sys_paths.begin(), sys_paths.end());
 
 	bookmark_paths_.clear();
