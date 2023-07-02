@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Liberty
+     * S4: Resolved nameless enemies gaining names at day-break (#7748).
  ### Editor
  ### Multiplayer
  ### Lua API
