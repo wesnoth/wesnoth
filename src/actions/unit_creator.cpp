@@ -203,9 +203,9 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		if ( loc.valid() ) {
 			board_->units().replace(loc, recall_list_element);
 			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id;
-			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 			//if id is not empty, delete units with this ID from recall list
 			team_.recall_list().erase_if_matches_id( id);
+			post_create(loc,*(board_->units().find(loc)),animate,fire_event);
 		}
 		else if ( add_to_recall_ ) {
 			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id;
