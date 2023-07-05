@@ -1367,7 +1367,7 @@ void unit_type::apply_scenario_fix(const config& cfg)
 	}
 	if(auto attr = cfg.get("add_advancement")) {
 		for(const auto& str : utils::split(attr->str())) {
-			if(std::find(begin(advances_to_), end(advances_to_), str) == std::end(advances_to_)) {
+			if(!utils::contains(advances_to_, str)) {
 				advances_to_.push_back(str);
 			}
 		}
