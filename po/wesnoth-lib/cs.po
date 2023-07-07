@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-17 23:19-0500\n"
-"PO-Revision-Date: 2023-06-12 22:38+0200\n"
+"PO-Revision-Date: 2023-06-26 23:18+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1007,10 +1007,8 @@ msgstr "Přirozená zemitá jeskynní stěna"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1413
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Přirozená jeskynní stěna"
+msgstr "Poškozená jeskynní stěna"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1423
@@ -1085,17 +1083,13 @@ msgstr "Zarostlá kamenná stěna"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1542
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Kamenná zeď"
+msgstr "Poškozená kamenná zeď"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Stěna dolu"
+msgstr "Rozpadlá zeď"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -3834,20 +3828,17 @@ msgstr "Zkopírovat celé hlášení do schránky"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Otevřít soubor s logy"
+msgstr "Soubor se záznamy"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
 msgstr ""
-"Otevře soubor s logy, který může obsahovat užitečné informace pro debugování"
+"Otevře soubor se záznamy vztahující se k současnému sezení, který může "
+"obsahovat užitečné ladicí informace."
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4789,10 +4780,8 @@ msgstr "Nikdo/nic"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:328
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Počet hráčů:"
+msgstr "Hráč:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -4801,19 +4790,17 @@ msgstr "Počet hráčů:"
 #: data/gui/window/mp_match_history.cfg:382
 #: data/gui/window/mp_match_history.cfg:406
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Hvězdičky zastupují všechny znaky"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:351
 msgid "Content Type:"
-msgstr ""
+msgstr "Druh obsahu:"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:370
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Jméno týmu:"
+msgstr "Název hry:"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:561
@@ -5182,7 +5169,7 @@ msgstr "Odebrat"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Velikost okna:"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
@@ -5191,10 +5178,8 @@ msgstr "Násobitel velikosti bodů:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the game resolution"
 msgid "Change the game window size"
-msgstr "Změna rozlišení hry"
+msgstr "Změnit velikost herního okna"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/window/preferences/03_display.cfg:87
@@ -5217,10 +5202,8 @@ msgstr "Přepnout mezi režimem celé obrazovky a režimem okna"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
-#, fuzzy
-#| msgid "Pixel scale multiplier:"
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "Násobitel velikosti bodů:"
+msgstr "Automatické měřítko"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
@@ -5259,7 +5242,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Motiv rozhraní:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -5267,23 +5250,25 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Změnit motiv rozhraní ve hře. Další motivy mohou být poskytnuty "
+"v rozšířeních vytvořených komunitou."
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Ukazatele zranění v boji"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Zobrazit počty ubraných a vyléčených životů nad jednotkou"
+msgstr ""
+"Ukazovat výši uštědřeného nebo vyléčeného poranění jako mizející popisky nad "
+"jednotkami"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Barevné ukazatele týmů"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -5296,7 +5281,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Pokrytí mřížkou"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -5325,10 +5310,8 @@ msgstr "Zobrazit animace vody (může být pomalé)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Zobrazit animace pro stojící jednotky"
+msgstr "Animace stojících jednotek"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
@@ -5337,10 +5320,8 @@ msgstr "Neustále animovat stojící jednotky na bitevním poli"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Zobrazovat náhodné animace jednotek"
+msgstr "Animace nečinných jednotek"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
@@ -8582,24 +8563,3 @@ msgstr ""
 #: src/wml_exception.cpp:101
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "V sekci '[$section|]' není nastaven povinný klíč '$key|'."
-
-#~ msgid "Resolution:"
-#~ msgstr "Rozlišení:"
-
-#~ msgid "Automatic pixel scale multiplier"
-#~ msgstr "Automatický násobitel velikosti bodů"
-
-#~ msgid "Show floating labels"
-#~ msgstr "Zobrazit plovoucí popisky"
-
-#~ msgid "Show team colors"
-#~ msgstr "Zobrazit barvy týmů"
-
-#~ msgid "Show grid"
-#~ msgstr "Zobrazit mřížku"
-
-#~ msgid "Theme"
-#~ msgstr "Motiv"
-
-#~ msgid "Change the in-game theme"
-#~ msgstr "Změnit motiv hry"
