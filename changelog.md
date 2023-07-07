@@ -13,7 +13,6 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
-   * Prevent duplicate advancements from being added to unit type. (issue #7009)
 
 ## Version 1.17.18
  ### Campaigns
