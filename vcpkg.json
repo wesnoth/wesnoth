@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "name": "wesnoth-dependencies",
   "version": "0.0.1",
-  "builtin-baseline": "877e3dc2323a4d4c3c75e7168c22a0c4e921d4db",
+  "builtin-baseline": "dafef74af53669ef1cc9015f55e0ce809ead62aa",
   "dependencies": [
     "sdl2",
     {
@@ -10,10 +10,7 @@
       "features": [ "libjpeg-turbo", "libwebp" ]
     },
     "libwebp",
-    {
-      "name": "sdl2-mixer",
-      "features": [ "libvorbis" ]
-    },
+    "sdl2-mixer",
     "bzip2",
     "zlib",
     "pango",
@@ -43,6 +40,7 @@
     "boost-scope-exit",
     "boost-circular-buffer",
     "boost-ptr-container",
+    "boost-spirit",
     "boost-test",
     {
       "name": "curl",
