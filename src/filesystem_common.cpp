@@ -187,6 +187,11 @@ std::string get_current_editor_dir(const std::string& addon_id)
 	}
 }
 
+std::string get_core_images_dir()
+{
+	return get_dir(game_config::path + "data/core/images");
+}
+
 std::string get_intl_dir()
 {
 #ifdef _WIN32
@@ -271,8 +276,7 @@ std::string read_scenario(const std::string& name)
 	std::string res;
 	std::string file_location = get_wml_location(name);
 	if(file_location.empty()) {
-		// If this is an add-on or campaign that's set the [binary_path] for its image directory,
-		// automatically check for a sibling scenarios directory.
+		// Consult [binary_path] for scenarios as well.
 		file_location = get_binary_file_location("scenarios", name);
 	}
 	if(!file_location.empty()) {

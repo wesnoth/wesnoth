@@ -20,9 +20,11 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/file_dialog.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multimenu_button.hpp"
@@ -63,14 +65,24 @@ const std::array tag_values = {
 	"terraforming",
 };
 
-editor_edit_pbl::editor_edit_pbl(const std::string& pbl)
+editor_edit_pbl::editor_edit_pbl(const std::string& pbl, const std::string& current_addon)
     : modal_dialog(window_id())
 	, pbl_(pbl)
+	, current_addon_(current_addon)
+	, dirs_()
 {
 	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "forum_auth", false), std::bind(&editor_edit_pbl::toggle_auth, this));
 	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_add", false), std::bind(&editor_edit_pbl::add_translation, this));
 	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_delete", false), std::bind(&editor_edit_pbl::delete_translation, this));
 	connect_signal_mouse_left_click(find_widget<button>(get_window(), "validate", false), std::bind(&editor_edit_pbl::validate, this));
+	connect_signal_mouse_left_click(find_widget<button>(get_window(), "select_icon", false), std::bind(&editor_edit_pbl::select_icon_file, this));
+	connect_signal_notify_modified(find_widget<text_box>(get_window(), "icon", false), std::bind(&editor_edit_pbl::update_icon_preview, this));
+	connect_signal_notify_modified(find_widget<text_box>(get_window(), "forum_thread", false), std::bind(&editor_edit_pbl::update_url_preview, this));
+	label& url = find_widget<label>(get_window(), "forum_url", false);
+	url.set_link_aware(true);
+	url.set_use_markup(true);
+	// not setting this to some value causes the modified signal to not update the label text
+	url.set_label("https://r.wesnoth.org/t");
 }
 
 void editor_edit_pbl::pre_show(window& win)
@@ -91,9 +103,29 @@ void editor_edit_pbl::pre_show(window& win)
 
 	find_widget<text_box>(&win, "description", false).set_value(pbl["description"]);
 	find_widget<text_box>(&win, "icon", false).set_value(pbl["icon"]);
+	if(!pbl["icon"].empty()) {
+		drawing& img = find_widget<drawing>(&win, "preview", false);
+		img.set_label(pbl["icon"]);
+	}
 	find_widget<text_box>(&win, "author", false).set_value(pbl["author"]);
 	find_widget<text_box>(&win, "version", false).set_value(pbl["version"]);
-	find_widget<text_box>(&win, "dependencies", false).set_value(pbl["dependencies"]);
+
+	multimenu_button& dependencies = find_widget<multimenu_button>(&win, "dependencies", false);
+	std::vector<config> addons_list;
+	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs_, filesystem::name_mode::FILE_NAME_ONLY);
+	dirs_.erase(std::remove(dirs_.begin(), dirs_.end(), current_addon_));
+
+	for(const std::string& dir : dirs_) {
+		addons_list.emplace_back("label", dir, "checkbox", false);
+	}
+	dependencies.set_values(addons_list);
+
+	std::vector<std::string> existing_dependencies = utils::split(pbl["dependencies"].str(), ',');
+	for(unsigned i = 0; i < dirs_.size(); i++) {
+		if(std::find(existing_dependencies.begin(), existing_dependencies.end(), dirs_[i]) != existing_dependencies.end()) {
+			dependencies.select_option(i);
+		}
+	}
 
 	if(pbl["forum_auth"].to_bool()) {
 		find_widget<toggle_button>(&win, "forum_auth", false).set_value(true);
@@ -203,8 +235,17 @@ config editor_edit_pbl::create_cfg()
 	if(const std::string& version = find_widget<text_box>(get_window(), "version", false).get_value(); !version.empty()) {
 		cfg["version"] = version;
 	}
-	if(const std::string& dependencies = find_widget<text_box>(get_window(), "dependencies", false).get_value(); !dependencies.empty()) {
-		cfg["dependencies"] = dependencies;
+
+	multimenu_button& dependencies = find_widget<multimenu_button>(get_window(), "dependencies", false);
+	boost::dynamic_bitset<> dep_states = dependencies.get_toggle_states();
+	std::vector<std::string> chosen_deps;
+	for(unsigned i = 0; i < dep_states.size(); i++) {
+		if(dep_states[i] == 1) {
+			chosen_deps.emplace_back(dirs_[i]);
+		}
+	}
+	if(chosen_deps.size() > 0) {
+		cfg["dependencies"] = utils::join(chosen_deps, ",");
 	}
 
 	if(find_widget<toggle_button>(get_window(), "forum_auth", false).get_value_bool()) {
@@ -228,15 +269,15 @@ config editor_edit_pbl::create_cfg()
 	}
 
 	multimenu_button& tags = find_widget<multimenu_button>(get_window(), "tags", false);
-	boost::dynamic_bitset<> states = tags.get_toggle_states();
-	std::vector<std::string> chosen;
-	for(unsigned i = 0; i < states.size(); i++) {
-		if(states[i] == 1) {
-			chosen.emplace_back(tag_values[i]);
+	boost::dynamic_bitset<> tag_states = tags.get_toggle_states();
+	std::vector<std::string> chosen_tags;
+	for(unsigned i = 0; i < tag_states.size(); i++) {
+		if(tag_states[i] == 1) {
+			chosen_tags.emplace_back(dirs_[i]);
 		}
 	}
-	if(chosen.size() > 0) {
-		cfg["tags"] = utils::join(chosen, ",");
+	if(chosen_tags.size() > 0) {
+		cfg["tags"] = utils::join(chosen_tags, ",");
 	}
 
 	listbox& translations = find_widget<listbox>(get_window(), "translations", false);
@@ -316,6 +357,49 @@ void editor_edit_pbl::validate()
 		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
 	} else {
 		gui2::show_message(_("Success"), _("No validation errors"), gui2::dialogs::message::button_style::auto_close);
+	}
+}
+
+void editor_edit_pbl::update_icon_preview()
+{
+	std::string icon = find_widget<text_box>(get_window(), "icon", false).get_value();
+	if(icon.find(".png") != std::string::npos || icon.find(".jpg") != std::string::npos || icon.find(".webp") != std::string::npos) {
+		std::string path = filesystem::get_core_images_dir()+icon;
+		drawing& img = find_widget<drawing>(get_window(), "preview", false);
+
+		if(filesystem::file_exists(path) || icon.find("data:image") != std::string::npos) {
+			img.set_label(icon);
+		} else {
+			img.set_label("");
+			ERR_ED << "Failed to find icon file: " << path;
+		}
+	}
+}
+
+void editor_edit_pbl::update_url_preview()
+{
+	std::string topic = find_widget<text_box>(get_window(), "forum_thread", false).get_value();
+	find_widget<label>(get_window(), "forum_url", false).set_label("https://r.wesnoth.org/t"+topic);
+}
+
+void editor_edit_pbl::select_icon_file()
+{
+	gui2::dialogs::file_dialog dlg;
+
+	dlg.set_title(_("Choose an icon"))
+		.set_path(filesystem::get_core_images_dir()+"/icons/");
+
+	if(dlg.show()) {
+		std::string path = dlg.path();
+		if(path.find(filesystem::get_core_images_dir()+"/icons/") == 0) {
+			std::string icon = path.substr(filesystem::get_core_images_dir().length());
+			// setting this programmatically doesn't seem to trigger connect_signal_notify_modified()
+			find_widget<text_box>(get_window(), "icon", false).set_value(icon);
+			find_widget<drawing>(get_window(), "preview", false).set_label(icon);
+		} else {
+			// TODO: convert image file to data uri
+			// filesystem::scoped_istream nonmainline_icon = filesystem::istream_file(path);
+		}
 	}
 }
 

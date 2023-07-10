@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream& os, const path_info& pinf);
 
 enum GAME_PATH_TYPES
 {
-	GAME_BIN_DIR = 1,				/**< Game executable dir. */
+	GAME_BIN_DIR = 0,				/**< Game executable dir. */
 	GAME_CORE_DATA_DIR = 1,			/**< Game data dir. */
 	GAME_USER_PREFS_DIR = 2,		/**< User preferences dir. */
 	GAME_USER_DATA_DIR = 3,			/**< User data dir. */

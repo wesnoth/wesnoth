@@ -157,6 +157,7 @@ std::string get_user_data_dir();
 std::string get_logs_dir();
 std::string get_cache_dir();
 std::string get_legacy_editor_dir();
+std::string get_core_images_dir();
 
 bool rename_dir(const std::string& old_dir, const std::string& new_dir);
 

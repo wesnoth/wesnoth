@@ -19,6 +19,7 @@
 #include "gui/auxiliary/find_widget.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
+#include "gui/widgets/toggle_button.hpp"
 
 namespace gui2::dialogs
 {
@@ -29,24 +30,9 @@ editor_choose_addon::editor_choose_addon(std::string& addon_id)
     : modal_dialog(window_id())
     , addon_id_(addon_id)
 {
-	listbox& existing_addons = find_widget<listbox>(get_window(), "existing_addons", false);
-	std::vector<std::string> dirs;
-	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs, filesystem::name_mode::FILE_NAME_ONLY);
+	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "show_all", false), std::bind(&editor_choose_addon::toggle_installed, this));
 
-	const widget_data& new_addon{
-		{ "existing_addon_id",    widget_item{{"label", _("New Add-on")}, {"tooltip", _("Create a new add-on")}} },
-	};
-	const widget_data& mainline{
-		{ "existing_addon_id",    widget_item{{"label", _("Mainline")},   {"tooltip", _("Mainline multiplayer scenarios")}} },
-	};
-	existing_addons.add_row(new_addon);
-	existing_addons.add_row(mainline);
-	for(const std::string& dir : dirs) {
-		const widget_data& entry{
-			{ "existing_addon_id",    widget_item{{"label", dir}} },
-		};
-		existing_addons.add_row(entry);
-	}
+	populate_list(false);
 }
 
 void editor_choose_addon::pre_show(window&)
@@ -61,11 +47,47 @@ void editor_choose_addon::post_show(window& win)
 
 	if(selected_row == 0) {
 		addon_id_ = "newaddon";
-	} else if(selected_row == 1) {
+	} else if(selected_row == 1 && find_widget<toggle_button>(get_window(), "show_all", false).get_value_bool()) {
 		addon_id_ = "mainline";
 	} else {
 		grid* row = existing_addons.get_row_grid(selected_row);
 		addon_id_ = dynamic_cast<label*>(row->find("existing_addon_id", false))->get_label();
+	}
+}
+
+void editor_choose_addon::toggle_installed()
+{
+	toggle_button& show_all = find_widget<toggle_button>(get_window(), "show_all", false);
+	populate_list(show_all.get_value_bool());
+}
+
+void editor_choose_addon::populate_list(bool show_all)
+{
+	listbox& existing_addons = find_widget<listbox>(get_window(), "existing_addons", false);
+	existing_addons.clear();
+
+	std::vector<std::string> dirs;
+	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs, filesystem::name_mode::FILE_NAME_ONLY);
+
+	const widget_data& new_addon{
+		{ "existing_addon_id",    widget_item{{"label", _("New Add-on")}, {"tooltip", _("Create a new add-on")}} },
+	};
+	existing_addons.add_row(new_addon);
+
+	if(show_all) {
+		const widget_data& mainline{
+			{ "existing_addon_id",    widget_item{{"label", _("Mainline")},   {"tooltip", _("Mainline multiplayer scenarios")}} },
+		};
+		existing_addons.add_row(mainline);
+	}
+
+	for(const std::string& dir : dirs) {
+		if(show_all || filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_server.pbl")) {
+			const widget_data& entry{
+				{ "existing_addon_id",    widget_item{{"label", dir}} },
+			};
+			existing_addons.add_row(entry);
+		}
 	}
 }
 

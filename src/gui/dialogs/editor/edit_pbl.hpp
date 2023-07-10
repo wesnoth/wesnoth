@@ -45,7 +45,7 @@ namespace dialogs
 class editor_edit_pbl : public modal_dialog
 {
 public:
-	editor_edit_pbl(const std::string& pbl);
+	editor_edit_pbl(const std::string& pbl, const std::string& current_addon);
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_edit_pbl)
@@ -60,9 +60,14 @@ private:
 	void add_translation();
 	void delete_translation();
 	void validate();
+	void update_icon_preview();
+	void update_url_preview();
+	void select_icon_file();
 	config create_cfg();
 
 	std::string pbl_;
+	std::string current_addon_;
+	std::vector<std::string> dirs_;
 };
 
 } // namespace dialogs

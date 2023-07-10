@@ -18,6 +18,8 @@
 #include "resources.hpp"
 #include "team.hpp"
 
+#include "addon/validation.hpp"
+
 #include "display.hpp"
 #include "editor/map/context_manager.hpp"
 #include "editor/map/map_context.hpp"
@@ -244,7 +246,7 @@ void context_manager::edit_side_dialog(int side_index)
 void context_manager::edit_pbl()
 {
 	std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
-	gui2::dialogs::editor_edit_pbl::execute(pbl);
+	gui2::dialogs::editor_edit_pbl::execute(pbl, current_addon_);
 }
 
 void context_manager::change_addon_id()
@@ -252,7 +254,7 @@ void context_manager::change_addon_id()
 	std::string new_addon_id = current_addon_;
 	gui2::dialogs::prompt::execute(new_addon_id);
 
-	if(!new_addon_id.empty() && new_addon_id.find(" ") == std::string::npos && filesystem::rename_dir(filesystem::get_current_editor_dir(current_addon_), filesystem::get_current_editor_dir(new_addon_id))) {
+	if(addon_filename_legal(new_addon_id) && filesystem::rename_dir(filesystem::get_current_editor_dir(current_addon_), filesystem::get_current_editor_dir(new_addon_id))) {
 		std::string main_cfg = filesystem::get_current_editor_dir(new_addon_id)+"/_main.cfg";
 		std::string main = filesystem::read_file(main_cfg);
 

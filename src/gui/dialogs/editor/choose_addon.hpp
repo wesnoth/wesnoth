@@ -37,6 +37,9 @@ public:
 private:
     std::string& addon_id_;
 
+	void toggle_installed();
+	void populate_list(bool show_all);
+
     virtual const std::string& window_id() const override;
 
     virtual void pre_show(window& window) override;

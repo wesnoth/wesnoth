@@ -29,6 +29,8 @@ lg::log_domain log_editor("editor");
 
 namespace editor {
 
+// TODO: convert selected icon image file to a data uri if it's a non-mainline image?
+// TODO: see about adding a multiline textbox
 void initialize_addon(const std::string& addon_id)
 {
 	std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
@@ -95,13 +97,6 @@ EXIT_STATUS start(const std::string& filename /* = "" */,
 		{
 			gui2::dialogs::editor_choose_addon choose(addon_id);
 			if(choose.show()) {
-				if(addon_id == "") {
-					gui2::show_message(_("Error"), _("The add-on ID can't be empty."), gui2::dialogs::message::auto_close);
-					continue;
-				} else if(addon_id.find(" ") != std::string::npos) {
-					gui2::show_message(_("Error"), _("Add-on IDs can't contain spaces."), gui2::dialogs::message::auto_close);
-					continue;
-				}
 				break;
 			} else {
 				return EXIT_STATUS::EXIT_NORMAL;
