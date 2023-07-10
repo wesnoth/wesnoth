@@ -902,9 +902,10 @@ template<>
 struct dialog_tester<editor_edit_pbl>
 {
 	std::string temp;
+	std::string temp1;
 	editor_edit_pbl* create()
 	{
-		return new editor_edit_pbl(temp);
+		return new editor_edit_pbl(temp, temp1);
 	}
 };
 
