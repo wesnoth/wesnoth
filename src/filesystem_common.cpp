@@ -189,7 +189,7 @@ std::string get_current_editor_dir(const std::string& addon_id)
 
 std::string get_core_images_dir()
 {
-	return get_dir(game_config::path + "data/core/images");
+	return get_dir(game_config::path + "/data/core/images");
 }
 
 std::string get_intl_dir()

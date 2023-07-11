@@ -31,6 +31,7 @@
 #include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "serialization/base64.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
@@ -394,13 +395,22 @@ void editor_edit_pbl::select_icon_file()
 	if(dlg.show()) {
 		std::string path = dlg.path();
 		if(path.find(filesystem::get_core_images_dir()+"/icons/") == 0) {
-			std::string icon = path.substr(filesystem::get_core_images_dir().length());
+			std::string icon = path.substr(filesystem::get_core_images_dir().length()+1);
 			// setting this programmatically doesn't seem to trigger connect_signal_notify_modified()
 			find_widget<text_box>(get_window(), "icon", false).set_value(icon);
 			find_widget<drawing>(get_window(), "preview", false).set_label(icon);
 		} else {
-			// TODO: convert image file to data uri
-			// filesystem::scoped_istream nonmainline_icon = filesystem::istream_file(path);
+			// TODO: needing two vectors here is dumb
+			std::vector<char> t = filesystem::read_file_binary(path);
+			std::vector<unsigned char> t1;
+			for(char c : t) {
+				t1.emplace_back(c);
+			}
+			utils::byte_string_view v = {t1.data(), t1.size()};
+			std::string name = filesystem::base_name(path);
+			std::string img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(v);
+			find_widget<text_box>(get_window(), "icon", false).set_value(img);
+			find_widget<drawing>(get_window(), "preview", false).set_label(img);
 		}
 	}
 }

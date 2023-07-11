@@ -29,7 +29,6 @@ lg::log_domain log_editor("editor");
 
 namespace editor {
 
-// TODO: convert selected icon image file to a data uri if it's a non-mainline image?
 // TODO: see about adding a multiline textbox
 void initialize_addon(const std::string& addon_id)
 {
@@ -66,20 +65,20 @@ void initialize_addon(const std::string& addon_id)
 		filesystem::scoped_ostream stream = filesystem::ostream_file(addon_dir + "/_main.cfg");
 		*stream << "#textdomain wesnoth-" << addon_id << "\n"
 				<< "[textdomain]" << "\n"
-				<< "\tname=\"wesnoth-" << addon_id << "\"\n"
-				<< "\tpath=\"data/add-ons/" << addon_id << "/translations\"\n"
+				<< "    name=\"wesnoth-" << addon_id << "\"\n"
+				<< "    path=\"data/add-ons/" << addon_id << "/translations\"\n"
 				<< "[/textdomain]\n"
 				<< "\n"
 				<< "#ifdef MULTIPLAYER\n"
 				<< "[binary_path]\n"
-				<< "\tpath=data/add-ons/" << addon_id << "\n"
+				<< "    path=data/add-ons/" << addon_id << "\n"
 				<< "[/binary_path]\n"
 				<< "\n"
 				<< "{~add-ons/" << addon_id << "/scenarios}\n"
 				<< "{~add-ons/" << addon_id << "/utils}\n"
 				<< "\n"
 				<< "[units]\n"
-				<< "\t{~add-ons/" << addon_id << "/units}\n"
+				<< "    {~add-ons/" << addon_id << "/units}\n"
 				<< "[/units]\n"
 				<< "#endif\n";
 	}

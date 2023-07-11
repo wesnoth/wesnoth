@@ -1077,6 +1077,19 @@ bool delete_file(const std::string& filename)
 	return ret;
 }
 
+std::vector<char> read_file_binary(const std::string& fname)
+{
+	std::ifstream file(fname, std::ios::binary);
+	std::vector<char> file_contents;
+	file_contents.reserve(file_size(fname));
+
+	auto a1 = std::istreambuf_iterator<char>(file);
+	auto a2 = std::istreambuf_iterator<char>();
+
+	file_contents.assign(a1, a2);
+	return file_contents;
+}
+
 std::string read_file(const std::string& fname)
 {
 	scoped_istream is = istream_file(fname);
