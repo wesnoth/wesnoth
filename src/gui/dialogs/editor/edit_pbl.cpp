@@ -36,6 +36,8 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 
+#include <boost/algorithm/string/replace.hpp>
+
 namespace gui2::dialogs
 {
 
@@ -91,7 +93,6 @@ void editor_edit_pbl::pre_show(window& win)
 	config pbl;
 	if(filesystem::file_exists(pbl_)) {
 		try {
-			// preprocessing needed to strip out comments added by the editor
 			read(pbl, *preprocess_file(pbl_));
 		} catch(const config::error& e) {
 			ERR_ED << "Caught a config error while parsing file " << pbl_ << "\n" << e.message;
@@ -230,7 +231,12 @@ config editor_edit_pbl::create_cfg()
 		cfg["description"] = description;
 	}
 	if(const std::string& icon = find_widget<text_box>(get_window(), "icon", false).get_value(); !icon.empty()) {
-		cfg["icon"] = icon;
+		if(icon.find("data:image") != std::string::npos) {
+			// properly deal with pluses in the data uri
+			cfg["icon"] = "<<"+icon+">>";
+		} else {
+			cfg["icon"] = icon;
+		}
 	}
 	if(const std::string& author = find_widget<text_box>(get_window(), "author", false).get_value(); !author.empty()) {
 		cfg["author"] = author;
@@ -400,17 +406,12 @@ void editor_edit_pbl::select_icon_file()
 			find_widget<text_box>(get_window(), "icon", false).set_value(icon);
 			find_widget<drawing>(get_window(), "preview", false).set_label(icon);
 		} else {
-			// TODO: needing two vectors here is dumb
-			std::vector<char> t = filesystem::read_file_binary(path);
-			std::vector<unsigned char> t1;
-			for(char c : t) {
-				t1.emplace_back(c);
+			std::string uri = filesystem::read_file_as_data_uri(path);
+
+			if(!uri.empty()) {
+				find_widget<text_box>(get_window(), "icon", false).set_value(uri);
+				find_widget<drawing>(get_window(), "preview", false).set_label(uri);
 			}
-			utils::byte_string_view v = {t1.data(), t1.size()};
-			std::string name = filesystem::base_name(path);
-			std::string img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(v);
-			find_widget<text_box>(get_window(), "icon", false).set_value(img);
-			find_widget<drawing>(get_window(), "preview", false).set_label(img);
 		}
 	}
 }

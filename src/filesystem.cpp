@@ -25,6 +25,7 @@
 #include "deprecation.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
@@ -1077,17 +1078,30 @@ bool delete_file(const std::string& filename)
 	return ret;
 }
 
-std::vector<char> read_file_binary(const std::string& fname)
+std::vector<uint8_t> read_file_binary(const std::string& fname)
 {
 	std::ifstream file(fname, std::ios::binary);
-	std::vector<char> file_contents;
+	std::vector<uint8_t> file_contents;
+
 	file_contents.reserve(file_size(fname));
+	file_contents.assign(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
 
-	auto a1 = std::istreambuf_iterator<char>(file);
-	auto a2 = std::istreambuf_iterator<char>();
-
-	file_contents.assign(a1, a2);
 	return file_contents;
+}
+
+std::string read_file_as_data_uri(const std::string& fname)
+{
+	std::vector<uint8_t> file_contents = filesystem::read_file_binary(fname);
+	utils::byte_string_view view = {file_contents.data(), file_contents.size()};
+	std::string name = filesystem::base_name(fname);
+	std::string img = "";
+
+	if(name.find(".") != std::string::npos) {
+		// convert to web-safe base64, since the + symbols will get stripped out when reading this back in later
+		img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(view);
+	}
+
+	return img;
 }
 
 std::string read_file(const std::string& fname)
