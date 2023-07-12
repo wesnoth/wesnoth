@@ -81,7 +81,7 @@ def get_dependencies(addon):
             deps1 = []
         for d in deps1:
             if d == addon:
-                print("Addon " + addon + " depends on itself".)
+                print("Addon " + addon + " depends on itself.")
                 continue
             if d in global_addons:
                 _deps[addon].append(d)
