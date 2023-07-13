@@ -1225,8 +1225,11 @@ int attack_type::modified_damage() const
 	return damage_value;
 }
 
-std::pair<unit_alignments::type, int> attack_type::specials_alignment() const
+std::pair<unit_alignments::type, int> attack_type::specials_alignment(bool no_check) const
 {
+	if(no_check){
+		return {(*self_).alignment(), 1};
+	}
 	unit_ability_list align_list = get_specials_and_abilities("attack_alignment");
 	if(align_list.empty()){
 		return {(*self_).alignment(), 1};

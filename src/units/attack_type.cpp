@@ -110,6 +110,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::string& filter_parry = filter["parry"];
 	const std::string& filter_movement = filter["movement_used"];
 	const std::string& filter_attacks_used = filter["attacks_used"];
+	const std::set<std::string> filter_alignment = utils::split_set(filter["attack_alignment"].str());
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::vector<std::string> filter_special = utils::split(filter["special"]);
@@ -140,6 +141,14 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if (!filter_attacks_used.empty() && !in_ranges(attack.attacks_used(), utils::parse_ranges_unsigned(filter_attacks_used)))
 		return false;
+
+	if(!filter_alignment.empty() ){
+		bool no_check = (tag_name == "attack_alignment");
+		std::string attack_alignment = unit_alignments::get_string((attack.specials_alignment(no_check)).first);
+		if (filter_alignment.count(attack_alignment) == 0 ){
+			return false;
+		}
+	}
 
 	if ( !filter_name.empty() && filter_name.count(attack.id()) == 0)
 		return false;
