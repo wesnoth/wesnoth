@@ -122,9 +122,6 @@ void connection::handle_connect(const boost::system::error_code& ec, endpoint en
 	} else {
 		LOG_NW << "Connected to " << endpoint.address();
 
-		if(endpoint.address().is_loopback()) {
-			use_tls_ = false;
-		}
 		handshake();
 	}
 }
