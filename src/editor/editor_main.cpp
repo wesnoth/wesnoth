@@ -29,7 +29,6 @@ lg::log_domain log_editor("editor");
 
 namespace editor {
 
-// TODO: see about adding a multiline textbox
 void initialize_addon(const std::string& addon_id)
 {
 	std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;

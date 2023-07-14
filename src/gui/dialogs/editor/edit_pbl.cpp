@@ -33,6 +33,7 @@
 #include "gui/widgets/text_box.hpp"
 #include "serialization/base64.hpp"
 #include "serialization/parser.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 
@@ -216,8 +217,10 @@ void editor_edit_pbl::post_show(window&)
 		return;
 	}
 
-	filesystem::scoped_ostream stream = filesystem::ostream_file(pbl_);
-	*stream << create_cfg();
+	std::stringstream wml_stream;
+	config_writer out(wml_stream, false);
+	out.write(create_cfg());
+	filesystem::write_file(pbl_, wml_stream.str());
 }
 
 config editor_edit_pbl::create_cfg()
@@ -231,12 +234,7 @@ config editor_edit_pbl::create_cfg()
 		cfg["description"] = description;
 	}
 	if(const std::string& icon = find_widget<text_box>(get_window(), "icon", false).get_value(); !icon.empty()) {
-		if(icon.find("data:image") != std::string::npos) {
-			// properly deal with pluses in the data uri
-			cfg["icon"] = "<<"+icon+">>";
-		} else {
-			cfg["icon"] = icon;
-		}
+		cfg["icon"] = icon;
 	}
 	if(const std::string& author = find_widget<text_box>(get_window(), "author", false).get_value(); !author.empty()) {
 		cfg["author"] = author;
