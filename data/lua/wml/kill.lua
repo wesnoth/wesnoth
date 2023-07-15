@@ -4,7 +4,7 @@ local kill_recursion_preventer = location_set.create()
 
 function wesnoth.wml_actions.kill(cfg)
 	if wml.get_child(cfg, "filter") then
-		wml.error "do not use [filter] in [kill]"
+		wml.error "Tag [filter] may not be used in [kill]"
 	end
 
 	local number_killed = 0
