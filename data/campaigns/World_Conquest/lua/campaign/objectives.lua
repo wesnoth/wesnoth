@@ -5,8 +5,8 @@ local strings = {
 	wct_victory_condition = _"Defeat all enemy leaders and commanders",
 	turns = _"Turns run out",
 	wct_defeat_condition = _ "Lose your leader and all your commanders",
-	difficulty = "Difficulty: ",
-	version = "Version ",
+	difficulty = _"Difficulty: ",
+	version = _"Version: ",
 	help_available = _ "An in-game help is available: right-click on any empty hex.",
 }
 
