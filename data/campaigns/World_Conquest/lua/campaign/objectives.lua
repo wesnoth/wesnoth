@@ -1,13 +1,13 @@
 --creates the objectives of the wc2 scenarios.
 
 local _ = wesnoth.textdomain 'wesnoth-wc'
-local lib = wesnoth.textdomain 'wesnoth-lib'
+local _lib = wesnoth.textdomain 'wesnoth-lib'
 local strings = {
 	wct_victory_condition = _"Defeat all enemy leaders and commanders",
 	turns = _"Turns run out",
 	wct_defeat_condition = _ "Lose your leader and all your commanders",
-	difficulty = lib("Difficulty: "),
-	version = lib("Version: "),
+	difficulty = _lib("Difficulty: "),
+	version = _lib("Version: "),
 	help_available = _ "An in-game help is available: right-click on any empty hex.",
 }
 
