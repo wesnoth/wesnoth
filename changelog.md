@@ -24,7 +24,7 @@
    * Updated translations: British English, Czech, Finnish, French, Portuguese (Brazil)
  ### Units
    * Rebels:
-     * Elvish Fighter - xp cost changed from 40 to 37.
+     * Elvish Fighter - xp cost changed from 40 to 37, and new updated sprite and animations
      * Merman Hunter - xp changed from 35 to 33.
      * Elvish Scout - xp changed from 32 to 42.
      * Elvish Hero - xp changed from 90 to 80.
@@ -189,6 +189,7 @@
      * Grand Marshal - hp changed from 60 to 68 cost changed from 66 to 101.
  ### Miscellaneous and Bug Fixes
    * Prevent duplicate advancements from being added to unit type. (issue #7009)
+   * When `[unit]` recalls a unit, remove it from the recall list before firing `[event]name=unit_placed`. (issue #7769)
 
 ## Version 1.17.18
  ### Campaigns
