@@ -22,6 +22,78 @@
      * S5: Make the loss of Hans a lose-condition (#7750).
  ### Translations
    * Updated translations: British English, Czech, Finnish, French, Portuguese (Brazil)
+ ### Units
+   * Rebels:
+     * Elvish Fighter - xp cost changed from 40 to 37.
+     * Merman Hunter - xp changed from 35 to 33.
+     * Elvish Scout - xp changed from 32 to 42.
+     * Elvish Hero - xp changed from 90 to 80.
+     * Elvish Captain - xp changed from 90 to 85.
+     * Elvish Marksman - cost changed from 31 to 34, xp changed from 80 to 80.
+     * Elvish Ranger - xp changed from 90 to 85.
+     * Elvish Rider - ranged damage changed from 9 to 11, hp changed form 46 to 49, cost changed from 28 to 35, xp changed from 53 to 75.
+     * Elvish Druid - cost changed from 27 to 25, xp changed from 80 to 85.
+     * Elvish Sorceress - cost changed from 32 to 34, xp changed from 100 to 90.
+     * Elder Wose - cost changed from 27 to 28, xp changed from 100 to 80.
+     * Merman Netcaster - cost changed from 27 to 26, xp changed from 85 to 54.
+     * Merman Spearman - cost changed from 27 to 22, xp changed from 85 to 54.
+     * Champion - melee damage changed from 9 to 8. added 10 melee accuracy, hp changed from 70 to 72, cost changed from 48 to 61.
+     * Elvish Marshal - hp changed from 62 to 68, cost changed from 54 to 67.
+     * Elvish Sharpshooter - ranged damage changed from 10 to 12. cost changed from 51 to 62.
+     * Elvish Avenger - ranged damage changed from 10 to 11, hp changed from 55 to 59, cost changed from 53 to 66.
+     * Elvish Outrider - ranged damage changed from 8 to 11, melee damage changed from 7 to 8, hp changed form 57 to 60, cost changed from 43 to 58.
+     * Elvish Shyde - hp changed from 46 to 51, melee damage changed from 6 to 7, ranged slow (entangle) changed from 6 to 8, ranged magical (thorns) changed from 8 to 14, cost changed from 52 to 69.
+     * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13, xp changed from 180 to 180.
+     * Ancient Wose - cost changed from 48 to 50.
+     * Merman Entangler - cost changed from 46 to 42.
+     * Javelineer - cost changed from 48 to 55.
+   * Undead:
+     * Skeleton - xp changed from 35 to 39.
+     * Ghoul - xp changed from 35 to 30.
+     * Blood Bat - cost changed from 22 to 23, xp changed from 70 to 37.
+     * Revenant - cost changed from 31 to 28, xp changed from 85 to 78.
+     * Dark Sorcerer - cost changed from 33 to 34, xp changed from 90 to 110.
+     * Shadow - cost changed from 38 to 44, xp changed from 100 to 77.
+     * Wraith - xp changed from 100 to 90.
+     * Necrophage - melee damage changed from 7 to 9, cost changed from 27 to 23, xp changed from 120 to 61.
+     * Bone Shooter - cost changed from 26 to 24, xp changed from 80 to 60.
+     * Dread Bat - cost changed from 34 to 32.
+     * Draug - cost changed from 47 to 70.
+     * Lich - cost changed from 50 to 90.
+     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed to 76, impact resistance changed to 10%, cost changed from 50 to 90.
+     * Nightgaunt - cost changed from 52 to 71.
+     * Specter - cost changed from 52 to 78.
+     * Ghast - melee damage changed from 10 to 12, cost changed from 43 to 50.
+     * Banebow - cost changed from 41 to 52.
+     * Ancient lich cost changed from 100 to 214.
+   * Drakes:
+     * Drake Fighter - xp changed from 42 to 41.
+     * Drake Clasher - xp changed from 43 to 41.
+     * Drake Glider - xp changed from 35 to 39.
+     * Drake Warrior - xp changed from 70 to 81, cost changed from 32 to 31.
+     * Drake Arbiter - hp changed from 62 to 63, xp changed from 105 to 81.
+     * Drake Thrasher - xp changed from 95 to 77.
+     * Drake Flare - xp changed from 80 to 86.
+     * Fire Drake - xp changed from 80 to 84.
+     * Sky Drake - xp changed from 80 to 76, cost changed from 28 to 32.
+     * Saurian Ambusher - hp changed from 36 to 38, cost changed from 24 to 22.
+     * Saurian Soothsayer - melee attack strikes changed from 2 to 3, cost changed from 25 to 28.
+     * Saurian Spearthrower - melee damage changed from 6 to 5.
+     * Drake Blademaster - cost changed from 47 to 62.
+     * Drake Warden - cost changed from 46 to 62.
+     * Drake Enforcer - cost changed from 44 to 58.
+     * Drake Flameheart - cost changed from 51 to 66.
+     * Inferno Drake - cost changed from 51 to 64.
+     * Hurricane Drake - cost changed from 43 to 59.
+     * Saurian Flanker - hp changed from 47 to 52, cost changed from 46 to 42.
+     * Saurian Javelineer - ranged attack strikes changed from 5 to 4, cost changed from 52 to 42.
+     * Armageddon drake - cost changed from 85 to 118.
+   * Dunefolk:
+   * Knalgan Alliance:
+   * Northerners:
+   * Loyalists:
+
+* Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148. 
  ### Miscellaneous and Bug Fixes
    * Prevent duplicate advancements from being added to unit type. (issue #7009)
 
