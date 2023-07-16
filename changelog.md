@@ -89,6 +89,30 @@
      * Saurian Javelineer - ranged attack strikes changed from 5 to 4, cost changed from 52 to 42.
      * Armageddon drake - cost changed from 85 to 118.
    * Dunefolk:
+     * Dune Burner - hp changed from 34 to 35, xp changed from 40 to 37.
+     * Dune Herbalist - cost changed from 14 to 13, xp changed for 39 to 36.
+     * Dune Rider - hp changed from 34 to 33, xp changed from 47 to 49.
+     * Dune Rover - hp changed from 32 to 33, xp changed from 43 to 40.
+     * Dune Soldier - cost changed from 18 to 17, xp changed from 43 to 39.
+     * Dune Skirmisher - xp changed from 34 to 39.
+     * Dune Explorer - xp changed from 80 to 73.
+     * Dune Swordsman - cost changed from 30 to 28, xp changed from 75 to 68.
+     * Dune Captain - cost changed from 30 to 29, xp changed from 75 to 74.
+     * Dune Spearguard - cost changed from 30 to 29, xp changed from 75 to 74.
+     * Dune Scorcher - ranged damage changed from 9 to 10, cost changed from 25 to 23, xp changed from 70 to 60.
+     * Dune Raider - cost changed from 34 to 35, xp changed from 70 to 77.
+     * Dune Swiftrider - xp changed from 65 to 62.
+     * Dune Sunderer - xp changed from 76 to 85.
+     * Dune Apothecary - cost changed from 27 to 23, xp changed from 65 to 50.
+     * Dune Falconer - hp changed from 38 to 39, cost changed from 23 to 29, xp changed from 78 to 70.
+     * Dune Strider - hp changed from 39 to 42, cost changed from 23 to 29, xp changed from 74 to 64.
+     * Naga Ophidian - hp changed from 43 to 44, cost changed from 22 to 24, xp changed from 76 to 62.
+     * Naga Ringcaster - hp changed from 40 to 41, cost changed from 22 to 24, ranged damage changed from 7 to 8, xp changed from 70 to 62.
+     * Dune Blademaster - hp changed from 69 to 76.
+     * Dune Spearmaster - hp changed from 67 to 68.
+     * Dune Cataphract - mace melee attack damage changed from 14 to 15, lance damage changed from 13 to 14, cost changed from 62 to 65 cost changed from 62 to 69.
+     * Dune Harrier - cost changed from 47 to 50.
+     * Dune Sky Hunter - cost changed from 50 to 54.
    * Knalgan Alliance:
    * Northerners:
    * Loyalists:
