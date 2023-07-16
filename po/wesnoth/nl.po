@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2023-02-14 17:32+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -366,7 +366,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Diverse Taken"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Bots"
 
@@ -7913,6 +7913,13 @@ msgstr ""
 "oproepopdrachten in de wachtrij staan."
 
 #: src/mouse_events.cpp:1273
+#, fuzzy
+#| msgid "Attack"
+#| msgid_plural "Attacks"
+msgid "No Attacks"
+msgstr "Aanval"
+
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr "Deze eenheid heeft geen bruikbare wapens."
 
@@ -9034,33 +9041,33 @@ msgstr "mysterieus"
 msgid "female^neutral"
 msgstr "neutraal"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> LP"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> zet"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> zetten"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> zicht"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> waarschuwingszicht"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> EP om te promoveren"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9068,12 +9075,12 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> aanval per beurt"
 msgstr[1] ""
 "<span color=\"$color\">$number_or_percent</span> aanvallen per beurt"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> kosten om op te roepen"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr "$effect_description per rang"
 

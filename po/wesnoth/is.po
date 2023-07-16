@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -361,7 +361,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Öðruvísi aðstandendur"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Þjarkar"
 
@@ -7799,6 +7799,12 @@ msgstr ""
 
 #: src/mouse_events.cpp:1273
 #, fuzzy
+#| msgid "Attacker"
+msgid "No Attacks"
+msgstr "Árásaraðili"
+
+#: src/mouse_events.cpp:1273
+#, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Engin nothæf vopn"
@@ -8972,17 +8978,17 @@ msgstr "dygg"
 msgid "female^neutral"
 msgstr "hlutlaus"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8990,25 +8996,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "hverja lotu"
 msgstr[1] "hverja lotu"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9017,13 +9023,13 @@ msgid_plural ""
 msgstr[0] "hverja lotu"
 msgstr[1] "hverja lotu"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"
@@ -9773,11 +9779,6 @@ msgstr ""
 #~| msgid "undead"
 #~ msgid "Undead"
 #~ msgstr "ódauður"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "Árásaraðili"
 
 #, fuzzy
 #~| msgid "Choose weapon:"

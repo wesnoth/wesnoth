@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2023-06-21 09:10+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -366,7 +366,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Miscellaneous Contributors"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Bots"
 
@@ -7814,6 +7814,13 @@ msgstr ""
 "recalls left."
 
 #: src/mouse_events.cpp:1273
+#, fuzzy
+#| msgid "Attack"
+#| msgid_plural "Attacks"
+msgid "No Attacks"
+msgstr "Attack"
+
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr "This unit has no usable weapons."
 
@@ -8894,44 +8901,44 @@ msgstr "liminal"
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> move"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> moves"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> vision"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> jamming"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP to advance"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cost to recall"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 
@@ -9866,12 +9873,6 @@ msgstr "Whiteboard Options"
 
 #~ msgid " replay"
 #~ msgstr " replay"
-
-#, fuzzy
-#~| msgid "Attack"
-#~| msgid_plural "Attacks"
-#~ msgid "Attacks"
-#~ msgstr "Attack"
 
 #, fuzzy
 #~| msgid "Choose Orb/Minimap Colors"

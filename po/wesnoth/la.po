@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2013-06-23 02:22-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -363,7 +363,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Varii"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Automata"
 
@@ -7516,6 +7516,12 @@ msgstr "Opus est habere ducem in arce ut unitates conscribat aut revocet."
 
 #: src/mouse_events.cpp:1273
 #, fuzzy
+#| msgid "Attacker"
+msgid "No Attacks"
+msgstr "Pugnator"
+
+#: src/mouse_events.cpp:1273
+#, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "Nullum telum utibile"
@@ -8661,17 +8667,17 @@ msgstr "anceps"
 msgid "female^neutral"
 msgstr "media"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "invicem"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8679,25 +8685,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "invicem"
 msgstr[1] "invicem"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "invicem"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "invicem"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "invicem"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8706,13 +8712,13 @@ msgid_plural ""
 msgstr[0] "invicem"
 msgstr[1] "invicem"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "invicem"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr "$effect_description per ordinem"
 
@@ -9367,11 +9373,6 @@ msgstr "Electiones Tabulae Commentationum"
 
 #~ msgid " replay"
 #~ msgstr " relusus"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "Pugnator"
 
 #, fuzzy
 #~| msgid "Choose weapon:"

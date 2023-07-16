@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2008-06-03 05:13+0100\n"
 "Last-Translator: Dimitar Ilccov <mythological@t-home.mk>\n"
 "Language-Team: mk\n"
@@ -353,7 +353,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Разни сорабонтници"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Ботови"
 
@@ -6727,6 +6727,12 @@ msgid ""
 msgstr ""
 
 #: src/mouse_events.cpp:1273
+#, fuzzy
+#| msgid "Attacker"
+msgid "No Attacks"
+msgstr "Напаѓач"
+
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr ""
 
@@ -7772,17 +7778,17 @@ msgstr ""
 msgid "female^neutral"
 msgstr "неутрален"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "Напаѓач"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -7791,25 +7797,25 @@ msgstr[0] "Напаѓач"
 msgstr[1] "Напаѓач"
 msgstr[2] "Напаѓач"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "Напаѓач"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "Напаѓач"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "Напаѓач"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -7819,13 +7825,13 @@ msgstr[0] "Напаѓач"
 msgstr[1] "Напаѓач"
 msgstr[2] "Напаѓач"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 #, fuzzy
 #| msgid "Attacker"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "Напаѓач"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr ""
 
@@ -8018,11 +8024,6 @@ msgstr ""
 #~| msgid "Defender"
 #~ msgid "Defense Cap"
 #~ msgstr "Бранител"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "Напаѓач"
 
 #, fuzzy
 #~| msgid "Attacker"

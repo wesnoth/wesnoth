@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"POT-Creation-Date: 2023-07-16 03:12 UTC\n"
 "PO-Revision-Date: 2020-03-21 13:22+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -170,8 +170,8 @@ msgstr "Kapou'e dör"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
 msgid "Kapou’e"
 msgstr "Kapou’e"
 
@@ -4972,70 +4972,6 @@ msgstr ""
 "trollet blev snart mer omtalat än Kapou'e. Berättelserna om hans mod och "
 "slughet nådde till och med så långt som till Wesnoth självt."
 
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
-msgid "Novice Orcish Shaman"
-msgstr "Orchschamannovis"
-
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Novice Shamans are still young and vigorous, but "
-#| "their spell-casting ability still needs improvement."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Novice Shamans are still young and vigorous, but their "
-"spell-casting ability still needs improvement."
-msgstr ""
-"Orchernas schamaner är orchmagins väktare. De hålls högt i ära och bildar "
-"Orchernas Råd, som fattar viktiga beslut för hela orchsamhället, och medlar "
-"i konflikter mellan stammarna. Schamanerna är fysiskt svaga för att vara "
-"orcher, men är goda besvärjare och kan förbanna sina fiender, vilket "
-"försvagar deras livskraft. Schamannoviser är unga och flitiga, men deras "
-"magikunskaper tarvar förbättring."
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
-msgid "Old Orcish Shaman"
-msgstr "Gammal orchschaman"
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-#| "tribes, they form the Orcish Council, which makes important decisions for "
-#| "the whole Orcish community and arbitrates the many conflicts that arise "
-#| "between tribes of this argumentative race. Although physically weak (for "
-#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-#| "draining their life. Old Orcish Shamans are shamans that have mastered "
-#| "magic, although their physical strength has declined with age."
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Old Orcish Shamans are shamans that have mastered "
-"magic, although their physical strength has declined with age."
-msgstr ""
-"Orchernas schamaner är orchmagins väktare. De hålls högt i ära och bildar "
-"Orchernas Råd, som fattar viktiga beslut för hela orchsamhället, och medlar "
-"i konflikter mellan stammarna. Schamanerna är fysiskt svaga för att vara "
-"orcher, men är goda besvärjare och kan förbanna sina fiender, vilket "
-"försvagar deras livskraft. De gamla schamanerna har bemästrat magin, men "
-"deras fysiska styrka har avtagit med åren."
-
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 msgid "Orcish Shaman"
@@ -5064,6 +5000,70 @@ msgstr ""
 "i konflikter mellan stammarna. Schamanerna är fysiskt svaga för att vara "
 "orcher, men är goda besvärjare och kan förbanna sina fiender, vilket "
 "försvagar deras livskraft."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
+msgid "variation^Novice"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Novice Shamans are still young and vigorous, but "
+#| "their spell-casting ability still needs improvement."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Novice Shamans are still young and vigorous, but their "
+"spell-casting ability still needs improvement."
+msgstr ""
+"Orchernas schamaner är orchmagins väktare. De hålls högt i ära och bildar "
+"Orchernas Råd, som fattar viktiga beslut för hela orchsamhället, och medlar "
+"i konflikter mellan stammarna. Schamanerna är fysiskt svaga för att vara "
+"orcher, men är goda besvärjare och kan förbanna sina fiender, vilket "
+"försvagar deras livskraft. Schamannoviser är unga och flitiga, men deras "
+"magikunskaper tarvar förbättring."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
+msgid "variation^Elder"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
+#, fuzzy
+#| msgid ""
+#| "Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+#| "tribes, they form the Orcish Council, which makes important decisions for "
+#| "the whole Orcish community and arbitrates the many conflicts that arise "
+#| "between tribes of this argumentative race. Although physically weak (for "
+#| "Orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+#| "draining their life. Old Orcish Shamans are shamans that have mastered "
+#| "magic, although their physical strength has declined with age."
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Old Orcish Shamans are shamans that have mastered "
+"magic, although their physical strength has declined with age."
+msgstr ""
+"Orchernas schamaner är orchmagins väktare. De hålls högt i ära och bildar "
+"Orchernas Råd, som fattar viktiga beslut för hela orchsamhället, och medlar "
+"i konflikter mellan stammarna. Schamanerna är fysiskt svaga för att vara "
+"orcher, men är goda besvärjare och kan förbanna sina fiender, vilket "
+"försvagar deras livskraft. De gamla schamanerna har bemästrat magin, men "
+"deras fysiska styrka har avtagit med åren."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
@@ -5103,18 +5103,24 @@ msgstr ""
 "Tusan också, utan Inarix som ledare för ödlefolket så kan vi inte räkna med "
 "deras hjälp."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
 msgid "Al’Brock"
 msgstr "Al’Brock"
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
 msgid "Flar’Tar"
 msgstr "Flar’Tar"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "Den Stora horden: underhåll för varje trupp minskas med ett. "
+
+#~ msgid "Novice Orcish Shaman"
+#~ msgstr "Orchschamannovis"
+
+#~ msgid "Old Orcish Shaman"
+#~ msgstr "Gammal orchschaman"
 
 #~ msgid ""
 #~ "In this scenario, you may ask Grüü to move to any hex by right-clicking "

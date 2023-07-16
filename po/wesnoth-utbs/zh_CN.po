@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-18 04:20 UTC\n"
+"POT-Creation-Date: 2023-07-16 03:12 UTC\n"
 "PO-Revision-Date: 2023-01-27 15:10+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -1091,8 +1091,8 @@ msgstr "还记得这片沙漠吗？"
 #. [message]: speaker=narrator
 #. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:302
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1737
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1925
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1733
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1921
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:30
 msgid "Garak"
 msgstr "伽拉克"
@@ -2097,22 +2097,26 @@ msgstr "你不能这么做，独自和这种怪物战斗会死的。我们需要
 
 #. [message]: speaker=Garak
 #. Garak dies in this scenario, and the important part of this conversation is to tell the player that.
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:666
+#, fuzzy
+#| msgid ""
+#| "I had dreams of this night Kaleh, full of gloom and darkness, my journey "
+#| "will end here one way or another."
 msgid ""
-"I had dreams of this night Kaleh, full of gloom and darkness, my journey "
-"will end here one way or another."
+"I had a dream this night Kaleh, full of gloom and darkness. My journey will "
+"end here one way or another."
 msgstr ""
 "卡勒，我曾经梦到过今晚的事，梦中一片黑暗。不论结果如何，我的旅程将在此结束。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:674
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:670
 msgid ""
 "No! That’s not true, our future is what we make of it, stay behind for this "
 "fight and..."
 msgstr "不！不是这样的，我们的未来要由我们亲手来打造，请呆在后方，然后……"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:674
 msgid ""
 "And what? You’ll help me become a coward? I lived long, I’m not afraid of "
 "the end, just let me give it some meaning."
@@ -2120,7 +2124,7 @@ msgstr ""
 "然后？帮我变成个懦夫？我活的够久了，我并不怕死，请让我死得更有价值一些吧。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:682
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 msgid ""
 "I bless you with the light that will come, I bless you with the memory and "
 "the promise. Lay down your shield, champion, and let your blade shine in the "
@@ -2130,31 +2134,31 @@ msgstr ""
 "在黑暗中闪闪发光吧。"
 
 #. [resistance]: id=garak_steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:710
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:706
 msgid "steadfast"
 msgstr ""
 
 #. [resistance]: id=garak_steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:711
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 #, fuzzy
 #| msgid "female^distract"
 msgid "female^steadfast"
 msgstr "分神"
 
 #. [resistance]: id=garak_steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
 msgid ""
 "This unit's resistances are increased by 20%, up to a maximum of 50%, when "
 "defending. Vulnerabilities are not affected."
 msgstr ""
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:725
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:721
 msgid "righteous rage"
 msgstr "正义之怒"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:727
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:723
 msgid ""
 "If used offensively or defensively against champions Grak or Zur, this "
 "attack presses the engagement until one of the combatants is slain, or 30 "
@@ -2164,149 +2168,149 @@ msgstr ""
 "直到一方被杀，或者大战30回合为止。"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:736
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
 msgid "true strike"
 msgstr "准确打击"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr "无论冠军的防守能力如何，此攻击的命中率总为70%。"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:802
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:798
 msgid "You there! Creep! Stand and face me, shade! I challenge you!"
 msgstr "你！小崽子！站著别动，我找你来了！"
 
 #. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:812
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:808
 msgid ""
 "Foolish mortal... For daring to challenge me, I’ll devour your soul and "
 "torment it for all eternity..."
 msgstr "愚蠢的东西…… 胆敢挑战我，我要吞噬你的灵魂，叫你永生不得超度……"
 
 #. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:818
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:814
 msgid ""
 "So you destroyed Zur... Come mortal, let’s cross our blades... It’s time for "
 "you to take his place..."
 msgstr "你竟然杀死了泽…… 来吧凡人，我要把你千刀万剐……你就跟着泽去吧……"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:840
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 msgid "You there! Pile of bones! I challenge you, stand and face me!"
 msgstr "你！骨头架子！我来了，和我打一架吧！"
 
 #. [message]: speaker=Zur
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:846
 msgid "Puny elf... Time to die..."
 msgstr "小子……你的死期到了……"
 
 #. [message]: speaker=Zur
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:856
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:852
 msgid ""
 "Grak was weak... But still you deserve respect... Meet my axe and take his "
 "place..."
 msgstr "格拉克软弱…… 但是你值得称赞…… 替他尝尝我的斧头……"
 
 #. [message]: speaker=$second_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:886
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:882
 msgid "And so it ends... Your champion is dead, elves... Come join him..."
 msgstr "到头了…… 你们的主力死了，精灵 …… 和他一起去吧……"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:902
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:898
 msgid "Where is Garak? Has anybody seen him?"
 msgstr "伽拉克在哪里？有人看见么？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:902
 msgid ""
 "I saw him jumping into deep darkness pursuing a group of enemies. Let’s hope "
 "nothing happened to him."
 msgstr "我看到他冲入黑暗中的敌阵。希望他平安无恙。"
 
 #. [message]: speaker=$lich_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:957
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:953
 msgid ""
 "No! This contest is not over yet, Ystara. I shall show you a taste of my "
 "true power."
 msgstr "不！你我的争斗还没结束，伊斯图拉。给你看看我真正的力量。"
 
 #. [message]: speaker=$lich_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:963
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:959
 msgid ""
 "No! This contest is not over yet, Azkotep. I shall show you a taste of my "
 "true power."
 msgstr "不！你我的争斗还没结束，阿兹卡提。给你看看我真正的力量。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:979
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1010
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1195
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:975
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1006
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1191
 msgid "Possessed Garak"
 msgstr "疯狂的伽拉克"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:983
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:979
 msgid "Eloh protect us, what has he done?"
 msgstr "伊洛保佑，他做了什么？"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:987
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1166
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:983
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1162
 msgid "I live again! I can feel!"
 msgstr "我又活了！我可以感觉到东西了！"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1002
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:998
 msgid ""
 "I will... not... yield... I defeated... your... champion... I... will... "
 "overcome... you..."
 msgstr "我不……会……屈服……我击败了……你的……手下……我要……战胜你……"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1014
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1010
 msgid "No, fool! Stop!"
 msgstr "不要，傻瓜！停下！"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1029
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1025
 msgid "The dark lord... is no more..."
 msgstr "黑暗之王……不复存在……"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1033
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1029
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr "伽拉克 的尸体倒下了，胸膛上插着自己的刀。"
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1045
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1041
 msgid ""
 "No! How dare you? I shall have my vengeance upon you for spoiling this "
 "contest! Darkness shall reign until I have triumphed!"
 msgstr "不！怎么这样？我要复仇！应该是我来之后黑暗才降临的！"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1153
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1149
 msgid "Hahaha...!"
 msgstr "哈哈哈……！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1157
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1153
 msgid "Eloh protect us, what is happening?"
 msgstr "伊洛保佑我们，发生什么了？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1170
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1166
 msgid "Garak?"
 msgstr "伽拉克？"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1174
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1170
 msgid ""
 "Hahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again my minions and feast in the slaughter!"
@@ -2315,21 +2319,21 @@ msgstr ""
 "享受杀戮的盛宴吧！"
 
 #. [message]: speaker=$lich_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1212
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1208
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. Death and decay, grant me my vengeance!"
 msgstr "不，我要复仇。黎明前就体验黑暗的伟大。死亡和屈服。赋予我复仇的力量！"
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1216
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1212
 msgid ""
 "In this I shall support you, the darkness will not lift until one of us is "
 "victorious."
 msgstr "只有这一点我同意，太阳不会在我们中任意一人胜利之前升起。"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1241
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1237
 msgid ""
 "I told you, I will be back, you fools! Now I shall have my vengeance upon "
 "you all. Darkness shall reign until I have triumphed!"
@@ -2338,14 +2342,14 @@ msgstr ""
 "直到我取得胜利！"
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1245
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1241
 msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
 msgstr "我同意，太阳不会在我们中任意一人胜利之前升起。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1279
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1275
 msgid ""
 "Look, dawn is nigh, our salvation is almost at hand. Even the long dark "
 "can’t last forever, and with the light of the sun the undead power wanes and "
@@ -2355,7 +2359,7 @@ msgstr ""
 "的黑暗魔法也会消散。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1419
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1415
 msgid ""
 "Maybe I spoke too soon. Curse Uria, he has even blotted out the stars, all "
 "is darkness. Kaleh, our course is clear, we must destroy that abomination."
@@ -2364,12 +2368,12 @@ msgstr ""
 "要消灭它们。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1430
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1426
 msgid "But to kill Garak? How can we?"
 msgstr "去杀死伽拉克？ 我们怎能做到？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1434
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1430
 msgid ""
 "That thing is not Garak. This night has lasted long enough, and too many of "
 "our people have died. How many more would you sacrifice for Garak’s sake? "
@@ -2383,22 +2387,22 @@ msgstr ""
 "代价，我们都要击败至少一个恶魔。我不愿意让那……那种东西控制我们朋友的躯体。"
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1438
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1434
 msgid "The stench of death is in the air."
 msgstr "有死亡的恶臭。"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1442
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1438
 msgid "Yes, let us end this once and for all."
 msgstr "是的。让我们一次了断吧。"
 
 #. [unit]: type=Orcish Leader, type=Orcish Ruler, id=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1485
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1481
 msgid "Ganthos"
 msgstr "甘瑟斯"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1529
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1525
 msgid ""
 "What’s this on our borders? Stinkin’ elves and more undead? We’ll teach them "
 "a lesson they won’t soon forget. Attack!"
@@ -2407,7 +2411,7 @@ msgstr ""
 "的教训。进攻！"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1533
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1529
 msgid ""
 "If those raiders capture any of our encampments, I fear our people’s fate "
 "will be just as bad as if it was captured by the undead."
@@ -2416,17 +2420,17 @@ msgstr ""
 "将面对悲惨的命运。"
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1539
 msgid "Wounded Elven Scout"
 msgstr "受伤的哨兵"
 
 #. [message]: speaker=Elven Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1546
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1542
 msgid "Orcs... Not far behind me... From the hills..."
 msgstr "兽人……后面不远处……山上……"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1574
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1570
 msgid ""
 "You got me, elf... But you won’t be so lucky with the tribes of the hills... "
 "(<i>Cough</i>)"
@@ -2434,62 +2438,62 @@ msgstr ""
 "精灵，你赢了……但是等你遇到山里的部落，就不会这么幸运了……（<b>咳嗽</b>）"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1578
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1574
 msgid "I deeply regret... I won’t be able to see that..."
 msgstr "真遗憾……没想到会这样……"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1584
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1580
 msgid "Killed by a dead creep... (<i>Cough</i>)"
 msgstr "死在这种死物手上…… （<b>咳嗽</b>）"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1594
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1590
 msgid "Look, he dropped something! I wonder what it is..."
 msgstr "看，他掉了东西！我想知道那是什么……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1613
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1609
 msgid ""
 "It’s some sort of a map. I think I recognize some of those hills ahead on it."
 msgstr "似乎是张地图。我想我能在这上面认出前方那些丘陵。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1617
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1613
 msgid ""
 "And these look like camps and patrol routes. A lot of camps and patrol "
 "routes. Kaleh, do you think we could sneak up between them?"
 msgstr "看起来是营地和巡逻线路，很多。卡勒，我们能暗中穿过去吗？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1617
 msgid ""
 "Difficult, but worth a try I guess. But first we must try to survive this "
 "mess."
 msgstr "难，但是值得一试。不过我们得先活下来。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1625
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1621
 msgid "Right, sorry. Damn creeps."
 msgstr "是的，抱歉。可恶的家伙们。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1632
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1628
 msgid "And now we’ll never know what was on that parchment. Shame."
 msgstr "我们再也不能知道那张羊皮纸上有什么了。惭愧。"
 
 #. [message]: race=orc
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1649
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1645
 msgid "Chief has fallen! Flee!"
 msgstr "首领倒下了！跑吧！"
 
 #. [message]: race=goblin,wolf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1657
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1653
 msgid "Boss dead! Run!"
 msgstr "老大死了！跑吧！"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1700
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1696
 msgid ""
 "You think you have defeated me, don’t you? Foolish boy, I shall assume a new "
 "form more powerful and horrible than you could ever imagine!"
@@ -2498,75 +2502,75 @@ msgstr ""
 "态！"
 
 #. [message]: speaker=$other_creep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1700
 msgid ""
 "How dare you interfere in our contest! I did not need your help. I shall "
 "teach you not to cross a lord of darkness."
 msgstr "你们敢插手我们的战斗！我不用你们帮忙。我要教会你们以后别惹黑暗领主。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1716
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1920
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1712
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1916
 msgid "Finally. It is over."
 msgstr "最后， 它结束了。"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1725
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1721
 msgid ""
 "See, I told you I was more powerful. This game is over, now I can leave this "
 "shell of a body."
 msgstr "看吧，我说过了我变强了。游戏结束了，现在我可以离开这副躯壳了。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1746
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1933
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1742
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1929
 msgid "He’s... he’s still breathing!"
 msgstr "他……他还有呼吸！"
 
 #. [message]: speaker=Garak_defeated
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1750
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1862
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1937
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1746
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1858
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1933
 msgid "Protect the boy for me Zhul, (<i>cough</i>) I go to a better place."
 msgstr "朱尔，帮我保护这男孩，（<b>咳嗽</b>）我要去一个好地方了。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1761
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1757
 msgid "What about Garak?"
 msgstr "伽拉克怎么办？"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1767
 msgid "I’ve asked and looked around, there is no sign of him or his body"
 msgstr "我问过了，也找过了，但没有发现他，也没看见他的尸体。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1775
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1771
 msgid ""
 "He’s probably dead, then, but he died as a warrior. Let’s respect his wishes "
 "and remember him for that."
 msgstr "他大概已经死了，但他以战士的身份逝去了。让我们尊重他的意愿并铭记他。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1781
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1777
 msgid "He died as a hero. Remember that and tell the tale, for it’s worth it."
 msgstr "他是个英雄，记住这一点并让他的事迹流传于后世，他值得我们怀念。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1817
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1813
 msgid "The undead lords are defeated at last."
 msgstr "亡灵首领终于败了。"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1821
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1817
 msgid ""
 "There’s too many of them and the night is almost gone. Pull back you "
 "wretches, pull back!"
 msgstr "他们人太多，夜晚快过去了。撤退，臭小子们，撤退！"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1825
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1821
 msgid ""
 "I can see the first rays of Naia shining over the horizon. She never looked "
 "so beautiful. The undead forces have crumbled into dust and the remaining "
@@ -2576,7 +2580,7 @@ msgstr ""
 "剩下的兽人也在黎明时撤退了。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1829
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1825
 msgid ""
 "That was a very brave thing you did, Kaleh, defeating both of those Undead "
 "Lords. It took great courage and strength. Because of your daring attack, we "
@@ -2589,8 +2593,8 @@ msgstr ""
 "晚，我们的损失可能会更多。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1833
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1998
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1829
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1994
 msgid ""
 "Though we saved almost all our people this time, we won’t always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2603,7 +2607,7 @@ msgstr ""
 "好要存点金钱了。"
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1837
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1833
 msgid ""
 "You have triumphed for the moment, but think not that the dark lords can be "
 "so easily vanquished. We shall return, and shall rule long after your bones "
@@ -2613,36 +2617,36 @@ msgstr ""
 "化成灰以后我们还是会统治着这里。这是我们的地盘，没有人能毫发无伤地离开这里。"
 
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1841
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1837
 msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
 msgstr "为了你的重要同胞，你很拼命，年轻的精灵。不过，逞英雄是要付出代价的。"
 
 #. [message]: id=Ystara,Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1850
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1846
 msgid "A token to remember us by..."
 msgstr "一个礼物，让你们记得我们……"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1850
 msgid "Aauugghh!"
 msgstr "啊啊啊！"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1858
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1854
 msgid "He just collapsed!"
 msgstr "他瓦解了！"
 
 #. [message]: id=Ystara,Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1873
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1869
 msgid ""
 "You will never see your champion again. And we will torment his soul for the "
 "rest of the eternity."
 msgstr "你再也见不到你的保护者了。我们会折磨他的灵魂，永远折磨他。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1877
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1873
 msgid ""
 "Don’t listen to them, they are powerless in their defeat. Even if Garak fell "
 "in battle his soul went to a better place and they can’t reach him there."
@@ -2651,19 +2655,19 @@ msgstr ""
 "个更美好的地方，一个这些家伙碰不到的地方。"
 
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1908
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1904
 msgid ""
 "Hah, now you have learned the flesh is always weaker than the powers of the "
 "undead."
 msgstr "哈，现在你终于知道，活人是无法与亡灵的力量相抗衡的。"
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1914
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1910
 msgid "My undead zombies shall always defeat the living."
 msgstr "我的僵尸总是击败活着的东西。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1965
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1961
 msgid ""
 "From the sands he came, to the sands he will return. We remember and honor "
 "his sacrifice, and I vow that his death will not be in vain."
@@ -2672,40 +2676,40 @@ msgstr ""
 "白流。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1969
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1965
 msgid "Goodbye, old friend. May Eloh shine her light eternal upon you."
 msgstr "再见，老伙计，愿伊洛的光辉永远笼罩着你。"
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1973
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1969
 msgid ""
 "He was as brave and valiant a fighter as I have ever seen in my travels."
 msgstr "他是我旅途中见过的最英勇的战士。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1977
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1973
 msgid ""
 "He was a bastard at times... But... but why did he have to die? It... it "
 "just doesn’t make sense."
 msgstr "他有时是很混蛋……但是……为什么必须死啊？这真是……这真是没道理。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1994
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1990
 msgid "Miraculously, all of our encampments survived the night."
 msgstr "不过，我们所有的营地都挺过了这个夜晚。"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2004
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2000
 msgid "Well, only $elven_camps encampments remain, but we will survive."
 msgstr "只有 $elven_camps 个营地保留下来，不过我们能活着。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2008
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2004
 msgid "Yes, but at what cost?"
 msgstr "算是吧。可是以什么样的代价呢？"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2018
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2014
 msgid ""
 "Though we saved almost all our people this time, we won’t always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2718,7 +2722,7 @@ msgstr ""
 "好要存点金钱了。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2030
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2026
 msgid ""
 "We have suffered losses, but we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -2731,7 +2735,7 @@ msgstr ""
 "此我们最好要存点金钱了。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2038
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2034
 msgid ""
 "We have suffered grievous losses, but we are not broken yet. Long will this "
 "slaughter be remembered by our people. Where was Eloh during the darkness? "
@@ -2745,21 +2749,21 @@ msgstr ""
 "征召新兵的耗费大幅增加。为此我们最好要存点金钱了。"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2051
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2047
 msgid ""
 "All this death and destruction. What were those shades arguing over? Was "
 "this all just some sort of demented game?"
 msgstr "满目疮痍。那些影子讨论什么？这都是痴狂发呆鬼魂的游戏？"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2055
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2051
 msgid ""
 "The lords of the dead are powerful and twisted indeed. Only Eloh knows the "
 "truth of what happened tonight."
 msgstr "死亡的主人是疯狂且强大的。只有伊洛才知道今晚故事的真相。"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2059
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2055
 msgid ""
 "I don’t want to be here tomorrow night to find out. The hills to the north "
 "are close. Let’s be far away before another nightfall."
@@ -8939,7 +8943,9 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4636
-msgid "You don’t know where to find your master?"
+#, fuzzy
+#| msgid "You don’t know where to find your master?"
+msgid "You don’t know where to find your leader?"
 msgstr "你不知道去哪里找你的主人？"
 
 #. [message]: speaker=Esanoo
@@ -9534,9 +9540,14 @@ msgstr "自然。你是正确的。原谅我。"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1103
+#, fuzzy
+#| msgid ""
+#| "No, too many merfolk have died! There are not enough of them left to "
+#| "divine the location of their master. We should have protected the merfolk "
+#| "more carefully. Now our search is hopeless."
 msgid ""
 "No, too many merfolk have died! There are not enough of them left to divine "
-"the location of their master. We should have protected the merfolk more "
+"the location of their leader. We should have protected the merfolk more "
 "carefully. Now our search is hopeless."
 msgstr ""
 "不，太多人鱼死去了！人鱼数量不足，不能推测出他们主人的下落了。我们应该更小心"
@@ -9544,9 +9555,14 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1110
+#, fuzzy
+#| msgid ""
+#| "Too many merfolk have died! Even if we save the rest, there will not be "
+#| "enough for them to divine the location of their master. We should have "
+#| "protected the merfolk more carefully. Now our search is hopeless."
 msgid ""
 "Too many merfolk have died! Even if we save the rest, there will not be "
-"enough for them to divine the location of their master. We should have "
+"enough for them to divine the location of their leader. We should have "
 "protected the merfolk more carefully. Now our search is hopeless."
 msgstr ""
 "太多人鱼死去了！即使我们救了其他人鱼，剩下的人鱼数量也不足以推测出他们主人的"
@@ -10464,9 +10480,14 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2345
+#, fuzzy
+#| msgid ""
+#| "Thank you. And I have also not forgotten the pledge I made to our merfolk "
+#| "friends. If it is possible, I would like to meet with your master. Your "
+#| "conduct is a testament to your people, and I, at least, trust you."
 msgid ""
 "Thank you. And I have also not forgotten the pledge I made to our merfolk "
-"friends. If it is possible, I would like to meet with your master. Your "
+"friends. If it is possible, I would like to meet with your leader. Your "
 "conduct is a testament to your people, and I, at least, trust you."
 msgstr ""
 "谢谢你。我可能忘了与人鱼朋友的约定。可以的话，我乐意见见你们的主人。你们这么"
@@ -10535,9 +10556,13 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2462
+#, fuzzy
+#| msgid ""
+#| "Before I decide, I have just one question: How did you merfolk plan on "
+#| "bringing us to meet your master, if she dwells far beneath the sea?"
 msgid ""
 "Before I decide, I have just one question: How did you merfolk plan on "
-"bringing us to meet your master, if she dwells far beneath the sea?"
+"bringing us to meet your leader, if she dwells far beneath the sea?"
 msgstr ""
 "我做决定之前，还有一个问题要问：人鱼的主人远在海里，你们打算怎么带我们去见你"
 "们的主人？"
@@ -15645,6 +15670,20 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:166
+#, fuzzy
+#| msgid ""
+#| "Which brings me to the other alien concept I was trying to comprehend: "
+#| "our goddess Eloh. What was her plan? Why did she want me to surrender to "
+#| "the humans? Do the humans worship her as well? The humans seem so brutish "
+#| "and vile, that I can’t imagine them worshiping the same god as us. I "
+#| "thought Eloh was just our god, I don’t remember Zhul mentioning any other "
+#| "races worshiping her after the Great Fall, though perhaps things had "
+#| "changed in the intervening years. Her commands don’t make any sense; she "
+#| "doesn’t seem at all like the goddess Zhul told me about. And what was "
+#| "Esanoo talking about? How did his master know about ‘Yechnagoth’ and "
+#| "‘Zhangor’? If Eloh won’t help me, then I desperately need some answers. I "
+#| "pray to whatever gods may be left that I’m not leading my people into a "
+#| "trap..."
 msgid ""
 "Which brings me to the other alien concept I was trying to comprehend: our "
 "goddess Eloh. What was her plan? Why did she want me to surrender to the "
@@ -15654,7 +15693,7 @@ msgid ""
 "worshiping her after the Great Fall, though perhaps things had changed in "
 "the intervening years. Her commands don’t make any sense; she doesn’t seem "
 "at all like the goddess Zhul told me about. And what was Esanoo talking "
-"about? How did his master know about ‘Yechnagoth’ and ‘Zhangor’? If Eloh "
+"about? How did his leader know about ‘Yechnagoth’ and ‘Zhangor’? If Eloh "
 "won’t help me, then I desperately need some answers. I pray to whatever gods "
 "may be left that I’m not leading my people into a trap..."
 msgstr ""
@@ -15757,9 +15796,14 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:202
+#, fuzzy
+#| msgid ""
+#| "That afternoon three of the merfolk sat in a circle and performed their "
+#| "ritual to determine the location of their master. Apparently it was a "
+#| "success, for they steered us straight towards the setting sun."
 msgid ""
 "That afternoon three of the merfolk sat in a circle and performed their "
-"ritual to determine the location of their master. Apparently it was a "
+"ritual to determine the location of their leader. Apparently it was a "
 "success, for they steered us straight towards the setting sun."
 msgstr ""
 "那天下午，三个人鱼坐成一圈，用他们的仪式来确定主人的方位。最后显然成功了，因"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -369,7 +369,7 @@ msgid "Miscellaneous Contributors"
 msgstr "𐑥𐑦𐑕𐑩𐑤𐑱𐑯𐑰𐑩𐑕 𐑒𐑩𐑯𐑑𐑮𐑦𐑚𐑘𐑩𐑑𐑻𐑟"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "𐑚𐑭𐑑𐑕"
 
@@ -7741,6 +7741,12 @@ msgstr "𐑿 𐑥𐑳𐑕𐑑 𐑣𐑨𐑝 𐑿𐑼 𐑤𐑰𐑛𐑻 𐑪𐑯 �
 
 #: src/mouse_events.cpp:1273
 #, fuzzy
+#| msgid "Attacker"
+msgid "No Attacks"
+msgstr "𐑩𐑑𐑨𐑒𐑻"
+
+#: src/mouse_events.cpp:1273
+#, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "𐑯𐑴 𐑿𐑟𐑩𐑚𐑩𐑤 𐑢𐑧𐑐𐑩𐑯"
@@ -8914,17 +8920,17 @@ msgstr "𐑤𐑶𐑩𐑤"
 msgid "female^neutral"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8932,25 +8938,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8959,13 +8965,13 @@ msgid_plural ""
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr "$effect_description 𐑐𐑻 𐑤𐑧𐑝𐑩𐑤"
 
@@ -9721,11 +9727,6 @@ msgstr ""
 #~| msgid "undead"
 #~ msgid "Undead"
 #~ msgstr "𐑳𐑯𐑛𐑧𐑛"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "𐑩𐑑𐑨𐑒𐑻"
 
 #, fuzzy
 #~| msgid "Choose weapon:"

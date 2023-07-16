@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -364,7 +364,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Altres contribucions"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Robots"
 
@@ -7645,6 +7645,12 @@ msgstr ""
 
 #: src/mouse_events.cpp:1273
 #, fuzzy
+#| msgid "Attacker"
+msgid "No Attacks"
+msgstr "Atacant"
+
+#: src/mouse_events.cpp:1273
+#, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "No hi ha cap arma disponible"
@@ -8823,17 +8829,17 @@ msgstr "lleial"
 msgid "female^neutral"
 msgstr "neutral"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -8841,25 +8847,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -8868,13 +8874,13 @@ msgid_plural ""
 msgstr[0] "per torn"
 msgstr[1] "per torn"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "per torn"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"
@@ -9623,11 +9629,6 @@ msgstr ""
 #~| msgid "undead"
 #~ msgid "Undead"
 #~ msgstr "no mort"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Attacks"
-#~ msgstr "Atacant"
 
 #, fuzzy
 #~| msgid "Choose weapon:"

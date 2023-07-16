@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2023-01-27 15:26+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -361,7 +361,7 @@ msgid "Miscellaneous Contributors"
 msgstr "其他贡献者"
 
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "机器人"
 
@@ -8016,6 +8016,13 @@ msgid ""
 msgstr "在有剩余的征募或者召回计划时，你不能将首领移动到主楼之外。"
 
 #: src/mouse_events.cpp:1273
+#, fuzzy
+#| msgid "Attack"
+#| msgid_plural "Attacks"
+msgid "No Attacks"
+msgstr "攻击手段"
+
+#: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
 msgstr "此单位没有可用的武器。"
 
@@ -9085,44 +9092,44 @@ msgstr "边缘"
 msgid "female^neutral"
 msgstr "中立"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|：$effect_description"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span>生命"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>行动数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>行动数"
 
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span>视野"
 
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span>干扰"
 
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span>升级所需经验"
 
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span>每回合攻击数"
 
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span>召回费用"
 
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr "每一等级$effect_description"
 

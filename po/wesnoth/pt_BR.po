@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:20-0500\n"
+"POT-Creation-Date: 2023-07-15 22:12-0500\n"
 "PO-Revision-Date: 2023-01-07 11:04-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -556,7 +556,7 @@ msgstr "Contribuidores Diversos"
 # File: data/core/about.cfg, line: 2947
 # File: data/core/about.cfg, line: 2947
 #. [about]
-#: data/core/about.cfg:1842
+#: data/core/about.cfg:1845
 msgid "Bots"
 msgstr "Bots"
 
@@ -11837,6 +11837,19 @@ msgstr ""
 "unidades planejadas para serem recrutadas ou convocadas."
 
 #
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+# File: src/attack_prediction_display.cpp, line: 104
+# File: src/attack_prediction_display.cpp, line: 236
+#: src/mouse_events.cpp:1273
+#, fuzzy
+#| msgid "Attacks"
+msgid "No Attacks"
+msgstr "Ataques"
+
+#
 # File: src/attack_prediction_display.cpp, line: 260
 # File: src/mouse_events.cpp, line: 842
 # File: src/attack_prediction_display.cpp, line: 260
@@ -13793,7 +13806,7 @@ msgstr "neutra"
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2032
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
@@ -13801,7 +13814,7 @@ msgstr "$attack_list|: $effect_description"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
@@ -13809,7 +13822,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2048
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimento"
@@ -13819,7 +13832,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimentos"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2055
+#: src/units/unit.cpp:2054
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> visão"
 
@@ -13827,7 +13840,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> visão"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # https://wiki.wesnoth.org/UnitTypeWML#Attacks
-#: src/units/unit.cpp:2059
+#: src/units/unit.cpp:2058
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> interferência"
 
@@ -13835,7 +13848,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> interferência"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2064
+#: src/units/unit.cpp:2063
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP para avançar"
 
@@ -13843,7 +13856,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> XP para avançar"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2068
+#: src/units/unit.cpp:2067
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -13854,7 +13867,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turnos"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2075
+#: src/units/unit.cpp:2074
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> custo para convocar"
 
@@ -13862,7 +13875,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> custo para convocar"
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
-#: src/units/unit.cpp:2542
+#: src/units/unit.cpp:2541
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
@@ -15779,16 +15792,6 @@ msgstr "Opções do Quadro-Branco"
 
 #~ msgid "Undead"
 #~ msgstr "Morto-vivo"
-
-#
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-# File: src/attack_prediction_display.cpp, line: 104
-# File: src/attack_prediction_display.cpp, line: 236
-#~ msgid "Attacks"
-#~ msgstr "Ataques"
 
 #
 # File: src/mouse_events.cpp, line: 922
