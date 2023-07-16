@@ -114,7 +114,44 @@
      * Dune Harrier - cost changed from 47 to 50.
      * Dune Sky Hunter - cost changed from 50 to 54.
    * Knalgan Alliance:
+     * Dwarvish Fighter - xp changed from 41 to 45.
+     * Dwarvish Thunderer - xp changed from 40 to 35.
+     * Dwarvish Guardsman - ranged damage increased from 5 to 6, xp changed from 47 to 40.
+     * Footpad - xp changed from 36 to 35.
+     * Thief - xp changed from 28 to 29.
+     * Poacher - xp changed from 29 to 28.
+     * Gryphon Rider - cost changed from 24 to 23, xp changed from 38 to 46.
+     * Dwarvish Steelclad - xp changed from 74 to 88.
+     * Dwarvish Thunderguard - cost changed from 27 to 24, xp changed from 95 to 65.
+     * Dwarvish Stalwart - hp changed from54 to 59, ranged damage changed from 8 to 9, xp changed from 85 to 78.
+     * Outlaw - cost changed from 26 to 24, hp changed from 42 to 47, xp changed from 77 to 71.
+     * Rogue - xp changed from 70 to 80, cost changed from 24 to 25.
+     * Trapper - hp changed from 45 to 49, melee damage changed from 4 to 5, xp changed from 65 to 73.
+     * Gryphon Master - cost changed from 38 to 40.
+     * Dwarvish Lord - cost changed from 50 to 69.
+     * Dwarvish Sentinel - cost changed from 44 to 63.
+     * Dwarvish Dragonguard - cost changed from 46 to 61.
+     * Fugitive - hp changed from 62 to 68, cost changed from 53 to 55.
+     * Huntsman - cost changed from 50 to 43.
+     * Ranger - cost changed from 52 to 43.
+     * Assassin - cost changed from 44 to 46.
    * Northerners:
+     * Orcish Archer - xp changed from 30 to 32.
+     * Naga Fighter - xp changed from 32 to 33.
+     * Wolf Rider - xp change from 30 to 34.
+     * Orcish Warrior - cost changed from 26 to 23, xp changed from 60 to 67.
+     * Goblin Pillager - cost changed from 28 to 31.
+     * Troll - cost changed from 27 to 25, xp changed from 66 to 58.
+     * Troll Rocklobber - ranged damage changed from 17 to 19, hp changed form 51 to 53.
+     * Naga Warrior - cost changed from 24 to 22, xp changed from 66 to 56.
+     * Orcish Crossbowman - melee damage changed from 4 to 6, ranged pierce damage changed from 8 to 9, hp changed from 43 to 46, cost changed from 21 to 22, xp changed from 80 to 43.
+     * Orcish Slayer - cost changed from 26 to 21, xp changed from 64 to 62.
+     * Orcish Warlord - cost changed from 48 to 52.
+     * Direwolf Rider - cost changed from 44 to 52.
+     * Troll Warrior - cost changed from 44 to 49.
+     * Naga Myrmidon - cost changed from 48 to 47.
+     * Orcish Nightblade - cost changed from 43 to 53.
+     * Orcish Slurbow - cost changed from 43 to 37. 
    * Loyalists:
 
 * Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148. 
