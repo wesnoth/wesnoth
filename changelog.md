@@ -47,6 +47,7 @@
      * Ancient Wose - cost changed from 48 to 50.
      * Merman Entangler - cost changed from 46 to 42.
      * Javelineer - cost changed from 48 to 55.
+     * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148. 
    * Undead:
      * Skeleton - xp changed from 35 to 39.
      * Ghoul - xp changed from 35 to 30.
@@ -153,8 +154,39 @@
      * Orcish Nightblade - cost changed from 43 to 53.
      * Orcish Slurbow - cost changed from 43 to 37. 
    * Loyalists:
-
-* Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148. 
+     * Cavalryman - blade resistance changed from 30% to 20%, xp changed from 40 to 44.
+     * Bowman - xp changed from 39 to 35, melee damage changed from 4 to 5.
+     * Horseman - cost changed from 23 to 24, xp changed from 44 to 54.
+     * Merman Fighter - xp changed from 36 to 34.
+     * Mage - xp changed from 54 to 48.
+     * Javelineer - ranged damage increased from 11 to 13, cost changed from 25 to 24.
+     * Pikeman - cost changed from 25 to 24, xp changed from 65 to 69.
+     * Swordsman - xp changed from 60 to 80.
+     * Knight - cost changed from 38 to 56, but I'm inclined to leave it at 50 to the fun of AoH WC players, xp changed from 120 to 100.
+     * Lancer - cost changed from 44 to 47.
+     * Shock Trooper - cost changed from 35 to 28, xp changed from 110 to 65.
+     * Red Mage - cost changed from 38 to 35, xp changed from 100 to 83.
+     * White Mage - cost changed from 38 to 31, xp changed from 136 to 75.
+     * Dragoon - cost changed from 28 to 29, xp changed from 95 to 80.
+     * Longbowman - cost changed from 26 to 23, xp changed from 68 to 65.
+     * Duelist - xp changed from 90 to 80, price changed form 29 to 31.
+     * Merman Warrior - cost changed from 26 to 24, xp changed from 80 to 60.
+     * Lieutenant - cost changed from 34 to 31, xp changed from 80 to 85.
+     * Halberdier - cost changed from 44 to 52.
+     * Royal Guard - cost changed from 44 to 61
+     * Grand Knight - hp changed from 78 to 84, lance damage changed from 17 to 19, cost changed from 58 to 86.
+     * Paladin - hp changed from 65 to 77, lance damage changed from 15 to 16, melee damage changed from 8 to 9, cost changed from 58 to 82.
+     * Iron Mauler cost changed from 50 to 49.
+     * Arch Mage - cost changed from 59 to 63 xp changed from 220 to 150.
+     * Mage of Light - cost changed from 60 to 59.
+     * Cavalier - cost changed from 52 to 62.
+     * Master Bowman - cost changed from 46 to 50.
+     * Master at Arms - melee damage increased from 7 to 8, cost changed from 44 to 65.
+     * Merman Hoplite - cost changed from 43 to 45.
+     * Merman Triton - cost changed from 43 to 46.
+     * General - hp changed from 50 to 55, cost changed from 54 to 66, xp changed from 180 to 105.
+     * Great Mage - ranged damage changed from 16 to 17, cost changed from 72 to 110.
+     * Grand Marshal - hp changed from 60 to 68 cost changed from 66 to 101.
  ### Miscellaneous and Bug Fixes
    * Prevent duplicate advancements from being added to unit type. (issue #7009)
 
