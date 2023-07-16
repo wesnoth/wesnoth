@@ -25,14 +25,14 @@
    * Updated translations: British English, Czech, Finnish, French, Portuguese (Brazil)
  ### Units
    * Rebels:
-     * Elvish Fighter - xp cost changed from 40 to 37, and new updated sprite and animations
+     * Elvish Fighter - xp changed from 40 to 37, and new updated sprite and animations
      * Merman Hunter - xp changed from 35 to 33.
      * Elvish Scout - xp changed from 32 to 42.
      * Elvish Hero - xp changed from 90 to 80.
      * Elvish Captain - xp changed from 90 to 85.
      * Elvish Marksman - cost changed from 31 to 34.
      * Elvish Ranger - xp changed from 90 to 85.
-     * Elvish Rider - ranged damage changed from 9 to 11, hp changed form 46 to 49, cost changed from 28 to 35, xp changed from 53 to 75.
+     * Elvish Rider - ranged damage changed from 9 to 11, hp changed from 46 to 49, cost changed from 28 to 35, xp changed from 53 to 75.
      * Elvish Druid - cost changed from 27 to 25, xp changed from 80 to 85.
      * Elvish Sorceress - cost changed from 32 to 34, xp changed from 100 to 90.
      * Elder Wose - cost changed from 27 to 28, xp changed from 100 to 80.
@@ -42,9 +42,9 @@
      * Elvish Marshal - hp changed from 62 to 68, cost changed from 54 to 67.
      * Elvish Sharpshooter - ranged damage changed from 10 to 12. cost changed from 51 to 62.
      * Elvish Avenger - ranged damage changed from 10 to 11, hp changed from 55 to 59, cost changed from 53 to 66.
-     * Elvish Outrider - ranged damage changed from 8 to 11, melee damage changed from 7 to 8, hp changed form 57 to 60, cost changed from 43 to 58.
-     * Elvish Shyde - hp changed from 46 to 51, melee damage changed from 6 to 7, ranged slow (entangle) changed from 6 to 8, ranged magical (thorns) changed from 8 to 14, cost changed from 52 to 69.
-     * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13, xp changed from 180 to 180.
+     * Elvish Outrider - ranged damage changed from 8 to 11, melee damage changed from 7 to 8, hp changed from 57 to 60, cost changed from 43 to 58.
+     * Elvish Shyde - hp changed from 46 to 51, melee damage changed from 6 to 7, ranged slow (entangle) damage changed from 6 to 8, ranged magical (thorns) damage changed from 8 to 14, cost changed from 52 to 69.
+     * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13.
      * Ancient Wose - cost changed from 48 to 50.
      * Merman Entangler - cost changed from 46 to 42.
      * Javelineer - cost changed from 48 to 55.
@@ -62,7 +62,7 @@
      * Dread Bat - cost changed from 34 to 32.
      * Draug - cost changed from 47 to 70.
      * Lich - cost changed from 50 to 90.
-     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed to 76, impact resistance changed to 10%, cost changed from 50 to 90.
+     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed to 76, impact resistance changed from 0% to 10%, cost changed from 50 to 90.
      * Nightgaunt - cost changed from 52 to 71.
      * Specter - cost changed from 52 to 78.
      * Ghast - melee damage changed from 10 to 12, cost changed from 43 to 50.
@@ -92,7 +92,7 @@
      * Armageddon Drake - cost changed from 85 to 118.
    * Dunefolk:
      * Dune Burner - hp changed from 34 to 35, xp changed from 40 to 37.
-     * Dune Herbalist - cost changed from 14 to 13, xp changed for 39 to 36.
+     * Dune Herbalist - cost changed from 14 to 13, xp changed from 39 to 36.
      * Dune Rider - hp changed from 34 to 33, xp changed from 47 to 49.
      * Dune Rover - hp changed from 32 to 33, xp changed from 43 to 40.
      * Dune Soldier - cost changed from 18 to 17, xp changed from 43 to 39.
@@ -112,7 +112,7 @@
      * Naga Ringcaster - hp changed from 40 to 41, cost changed from 22 to 24, ranged damage changed from 7 to 8, xp changed from 70 to 62.
      * Dune Blademaster - hp changed from 69 to 76.
      * Dune Spearmaster - hp changed from 67 to 68.
-     * Dune Cataphract - mace melee attack damage changed from 14 to 15, lance damage changed from 13 to 14, cost changed from 62 to 65 cost changed from 62 to 69.
+     * Dune Cataphract - mace melee attack damage changed from 14 to 15, lance damage changed from 13 to 14, cost changed from 62 to 69.
      * Dune Harrier - cost changed from 47 to 50.
      * Dune Sky Hunter - cost changed from 50 to 54.
    * Knalgan Alliance:
@@ -125,7 +125,7 @@
      * Gryphon Rider - cost changed from 24 to 23, xp changed from 38 to 46.
      * Dwarvish Steelclad - xp changed from 74 to 88.
      * Dwarvish Thunderguard - cost changed from 27 to 24, xp changed from 95 to 65.
-     * Dwarvish Stalwart - hp changed from54 to 59, ranged damage changed from 8 to 9, xp changed from 85 to 78.
+     * Dwarvish Stalwart - hp changed from 54 to 59, ranged damage changed from 8 to 9, xp changed from 85 to 78.
      * Outlaw - cost changed from 26 to 24, hp changed from 42 to 47, xp changed from 77 to 71.
      * Rogue - xp changed from 70 to 80, cost changed from 24 to 25.
      * Trapper - hp changed from 45 to 49, melee damage changed from 4 to 5, xp changed from 65 to 73.
@@ -140,11 +140,11 @@
    * Northerners:
      * Orcish Archer - xp changed from 30 to 32.
      * Naga Fighter - xp changed from 32 to 33.
-     * Wolf Rider - xp change from 30 to 34.
+     * Wolf Rider - xp changed from 30 to 34.
      * Orcish Warrior - cost changed from 26 to 23, xp changed from 60 to 67.
      * Goblin Pillager - cost changed from 28 to 31.
      * Troll - cost changed from 27 to 25, xp changed from 66 to 58.
-     * Troll Rocklobber - ranged damage changed from 17 to 19, hp changed form 51 to 53.
+     * Troll Rocklobber - ranged damage changed from 17 to 19, hp changed from 51 to 53.
      * Naga Warrior - cost changed from 24 to 22, xp changed from 66 to 56.
      * Orcish Crossbowman - melee damage changed from 4 to 6, ranged pierce damage changed from 8 to 9, hp changed from 43 to 46, cost changed from 21 to 22, xp changed from 80 to 43.
      * Orcish Slayer - cost changed from 26 to 21, xp changed from 64 to 62.
@@ -163,22 +163,22 @@
      * Javelineer - ranged damage increased from 11 to 13, cost changed from 25 to 24.
      * Pikeman - cost changed from 25 to 24, xp changed from 65 to 69.
      * Swordsman - xp changed from 60 to 80.
-     * Knight - cost changed from 38 to 56, but I'm inclined to leave it at 50 to the fun of AoH WC players, xp changed from 120 to 100.
+     * Knight - cost changed from 38 to 50, xp changed from 120 to 100.
      * Lancer - cost changed from 44 to 47.
      * Shock Trooper - cost changed from 35 to 28, xp changed from 110 to 65.
      * Red Mage - cost changed from 38 to 35, xp changed from 100 to 83.
      * White Mage - cost changed from 38 to 31, xp changed from 136 to 75.
      * Dragoon - cost changed from 28 to 29, xp changed from 95 to 80.
      * Longbowman - cost changed from 26 to 23, xp changed from 68 to 65.
-     * Duelist - xp changed from 90 to 80, price changed form 29 to 31.
+     * Duelist - cost changed from 29 to 31, xp changed from 90 to 80.
      * Merman Warrior - cost changed from 26 to 24, xp changed from 80 to 60.
      * Lieutenant - cost changed from 34 to 31, xp changed from 80 to 85.
      * Halberdier - cost changed from 44 to 52.
-     * Royal Guard - cost changed from 44 to 61
+     * Royal Guard - cost changed from 44 to 61.
      * Grand Knight - hp changed from 78 to 84, lance damage changed from 17 to 19, cost changed from 58 to 86.
      * Paladin - hp changed from 65 to 77, lance damage changed from 15 to 16, melee damage changed from 8 to 9, cost changed from 58 to 82.
-     * Iron Mauler cost changed from 50 to 49.
-     * Arch Mage - cost changed from 59 to 63 xp changed from 220 to 150.
+     * Iron Mauler - cost changed from 50 to 49.
+     * Arch Mage - cost changed from 59 to 63, xp changed from 220 to 150.
      * Mage of Light - cost changed from 60 to 59.
      * Cavalier - cost changed from 52 to 62.
      * Master Bowman - cost changed from 46 to 50.
@@ -1033,9 +1033,9 @@
    * Moved Naga guardian line from UtBS to core, and made some revisions
    * Dune Apothecary experience needed to level up changed from 100 to 65
    * Dune Captain experience needed to level up changed from 86 to 75
-   * Dune Herbalist cost changed form 15 to 14
-   * Dune Horse Archer experience needed to level up changed form 70 to 65
-   * Naga Sicarius hp changed form 55 to 53 and melee damage changed form 9 to 6, new special "deflect" added to melee attack
+   * Dune Herbalist cost changed from 15 to 14
+   * Dune Horse Archer experience needed to level up changed from 70 to 65
+   * Naga Sicarius hp changed from 55 to 53 and melee damage changed from 9 to 6, new special "deflect" added to melee attack
    * Fire Guardian can now level into Fire Wraith, experience needed to level up for Fire Guardian changed from 50 to 29
    * Revised statistics of all animal horses, Bay Horse can now level into Great Horse
  ### Wesnoth Formula Language
@@ -2538,7 +2538,7 @@
        the lich brothers and Krash got more gold.
    * Sceptre of Fire:
      * S4: a cave entrance has been added.
-     * S5: Gryphon Riders are now available starting form S5 (formerly S3).
+     * S5: Gryphon Riders are now available starting from S5 (formerly S3).
      * S7: it's now impossible to kill all pursuers.
    * Secrets of the Ancients:
      * Fix dialog said by wrong unit & revert previous fix (issue #3294).
@@ -3426,7 +3426,7 @@
  ### Editor
    * Fixed a crash when placing units.
    * Restored the ability to preview different ToDs. Note this still does not
-     work when invoked form the Custom ToD window.
+     work when invoked from the Custom ToD window.
    * Fixed editor sides not having the correct side number.
    * Redesigned Windows, Areas, and Sides menus.
    * The Windows menu will now display maps starting from 1 rather than 0.
