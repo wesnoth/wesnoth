@@ -2,8 +2,11 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Descent into Darkness
+     * S3: Resolved Darken Volk speaking from the darkness at the end of the scenario (#7758).
    * Liberty
      * S4: Resolved nameless enemies gaining names at day-break (#7748).
+     * S5: Make the loss of Hans a lose-condition (#7750).
  ### Editor
  ### Multiplayer
  ### Lua API
@@ -15,6 +18,7 @@
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Prevent duplicate advancements from being added to unit type. (issue #7009)
 
 ## Version 1.17.18
  ### Campaigns
