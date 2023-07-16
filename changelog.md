@@ -30,7 +30,7 @@
      * Elvish Scout - xp changed from 32 to 42.
      * Elvish Hero - xp changed from 90 to 80.
      * Elvish Captain - xp changed from 90 to 85.
-     * Elvish Marksman - cost changed from 31 to 34, xp changed from 80 to 80.
+     * Elvish Marksman - cost changed from 31 to 34.
      * Elvish Ranger - xp changed from 90 to 85.
      * Elvish Rider - ranged damage changed from 9 to 11, hp changed form 46 to 49, cost changed from 28 to 35, xp changed from 53 to 75.
      * Elvish Druid - cost changed from 27 to 25, xp changed from 80 to 85.
