@@ -87,7 +87,7 @@
      * Hurricane Drake - cost changed from 43 to 59.
      * Saurian Flanker - hp changed from 47 to 52, cost changed from 46 to 42.
      * Saurian Javelineer - ranged attack strikes changed from 5 to 4, cost changed from 52 to 42.
-     * Armageddon drake - cost changed from 85 to 118.
+     * Armageddon Drake - cost changed from 85 to 118.
    * Dunefolk:
      * Dune Burner - hp changed from 34 to 35, xp changed from 40 to 37.
      * Dune Herbalist - cost changed from 14 to 13, xp changed for 39 to 36.
