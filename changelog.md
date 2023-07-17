@@ -10,6 +10,10 @@
  ### Translations
    * Updated translations: British English
  ### Units
+   * Rebels:
+     * Elvish Outrider - movement changed from 10 to 11
+   * Drakes:
+     * Saurian Soothsayer - movement changed from 6 to 7
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
