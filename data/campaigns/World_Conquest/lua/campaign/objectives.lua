@@ -7,7 +7,6 @@ local strings = {
 	turns = _"Turns run out",
 	wct_defeat_condition = _ "Lose your leader and all your commanders",
 	difficulty = _lib("Difficulty: "),
---	version = _lib("Version: "),
 	help_available = _ "An in-game help is available: right-click on any empty hex.",
 }
 
