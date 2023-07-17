@@ -62,7 +62,7 @@
      * Dread Bat - cost changed from 34 to 32.
      * Draug - cost changed from 47 to 70.
      * Lich - cost changed from 50 to 90.
-     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed to 76, impact resistance changed from 0% to 10%, cost changed from 50 to 90.
+     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed from 70 to 76, impact resistance changed from 0% to 10%, cost changed from 50 to 90.
      * Nightgaunt - cost changed from 52 to 71.
      * Specter - cost changed from 52 to 78.
      * Ghast - melee damage changed from 10 to 12, cost changed from 43 to 50.
