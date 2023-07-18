@@ -24,13 +24,13 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(editor_edit_pbl_translation)
 
-editor_edit_pbl_translation::editor_edit_pbl_translation(std::string& language, std::string& title, std::string& description)
-    : modal_dialog(window_id())
-    , language_(language)
-    , title_(title)
-    , description_(description)
+editor_edit_pbl_translation::editor_edit_pbl_translation(
+	std::string& language, std::string& title, std::string& description)
+	: modal_dialog(window_id())
+	, language_(language)
+	, title_(title)
+	, description_(description)
 {
-
 }
 
 void editor_edit_pbl_translation::pre_show(window& win)
@@ -41,9 +41,9 @@ void editor_edit_pbl_translation::pre_show(window& win)
 
 void editor_edit_pbl_translation::post_show(window& win)
 {
-    language_ = find_widget<text_box>(&win, "language", false).get_value();
-    title_ = find_widget<text_box>(&win, "lang_title", false).get_value();
-    description_ = find_widget<text_box>(&win, "description", false).get_value();
+	language_ = find_widget<text_box>(&win, "language", false).get_value();
+	title_ = find_widget<text_box>(&win, "lang_title", false).get_value();
+	description_ = find_widget<text_box>(&win, "description", false).get_value();
 }
 
-}
+} // namespace gui2::dialogs

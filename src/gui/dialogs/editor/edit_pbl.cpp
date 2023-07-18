@@ -20,20 +20,20 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/dialogs/editor/edit_pbl_translation.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/widgets/button.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/listbox.hpp"
-#include "gui/widgets/drawing.hpp"
-#include "gui/dialogs/message.hpp"
 #include "gui/widgets/menu_button.hpp"
 #include "gui/widgets/multimenu_button.hpp"
-#include "gui/dialogs/editor/edit_pbl_translation.hpp"
-#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "serialization/base64.hpp"
-#include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/schema_validator.hpp"
 
@@ -70,18 +70,25 @@ const std::array tag_values = {
 };
 
 editor_edit_pbl::editor_edit_pbl(const std::string& pbl, const std::string& current_addon)
-    : modal_dialog(window_id())
+	: modal_dialog(window_id())
 	, pbl_(pbl)
 	, current_addon_(current_addon)
 	, dirs_()
 {
-	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "forum_auth", false), std::bind(&editor_edit_pbl::toggle_auth, this));
-	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_add", false), std::bind(&editor_edit_pbl::add_translation, this));
-	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_delete", false), std::bind(&editor_edit_pbl::delete_translation, this));
-	connect_signal_mouse_left_click(find_widget<button>(get_window(), "validate", false), std::bind(&editor_edit_pbl::validate, this));
-	connect_signal_mouse_left_click(find_widget<button>(get_window(), "select_icon", false), std::bind(&editor_edit_pbl::select_icon_file, this));
-	connect_signal_notify_modified(find_widget<text_box>(get_window(), "icon", false), std::bind(&editor_edit_pbl::update_icon_preview, this));
-	connect_signal_notify_modified(find_widget<text_box>(get_window(), "forum_thread", false), std::bind(&editor_edit_pbl::update_url_preview, this));
+	connect_signal_mouse_left_click(
+		find_widget<toggle_button>(get_window(), "forum_auth", false), std::bind(&editor_edit_pbl::toggle_auth, this));
+	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_add", false),
+		std::bind(&editor_edit_pbl::add_translation, this));
+	connect_signal_mouse_left_click(find_widget<button>(get_window(), "translations_delete", false),
+		std::bind(&editor_edit_pbl::delete_translation, this));
+	connect_signal_mouse_left_click(
+		find_widget<button>(get_window(), "validate", false), std::bind(&editor_edit_pbl::validate, this));
+	connect_signal_mouse_left_click(
+		find_widget<button>(get_window(), "select_icon", false), std::bind(&editor_edit_pbl::select_icon_file, this));
+	connect_signal_notify_modified(
+		find_widget<text_box>(get_window(), "icon", false), std::bind(&editor_edit_pbl::update_icon_preview, this));
+	connect_signal_notify_modified(find_widget<text_box>(get_window(), "forum_thread", false),
+		std::bind(&editor_edit_pbl::update_url_preview, this));
 	label& url = find_widget<label>(get_window(), "forum_url", false);
 	url.set_link_aware(true);
 	url.set_use_markup(true);
@@ -199,9 +206,9 @@ void editor_edit_pbl::pre_show(window& win)
 
 	for(const config& child : pbl.child_range("translation")) {
 		const widget_data& entry{
-			{ "translations_language",    widget_item{{"label", child["language"].str()}} },
-			{ "translations_title",       widget_item{{"label", child["title"].str()}} },
-			{ "translations_description", widget_item{{"label", child["description"].str()}} },
+			{"translations_language", widget_item{{"label", child["language"].str()}}},
+			{"translations_title", widget_item{{"label", child["title"].str()}}},
+			{"translations_description", widget_item{{"label", child["description"].str()}}},
 		};
 		translations.add_row(entry);
 	}
@@ -330,9 +337,9 @@ void editor_edit_pbl::add_translation()
 	if(!language.empty() && !title.empty()) {
 		listbox& translations = find_widget<listbox>(get_window(), "translations", false);
 		const widget_data& entry{
-			{ "translations_language",    widget_item{{"label", language}} },
-			{ "translations_title",       widget_item{{"label", title}} },
-			{ "translations_description", widget_item{{"label", description}} },
+			{"translations_language", widget_item{{"label", language}}},
+			{"translations_title", widget_item{{"label", title}}},
+			{"translations_description", widget_item{{"label", description}}},
 		};
 		translations.add_row(entry);
 		find_widget<button>(get_window(), "translations_delete", false).set_active(true);
@@ -371,7 +378,7 @@ void editor_edit_pbl::update_icon_preview()
 {
 	std::string icon = find_widget<text_box>(get_window(), "icon", false).get_value();
 	if(icon.find(".png") != std::string::npos || icon.find(".jpg") != std::string::npos || icon.find(".webp") != std::string::npos) {
-		std::string path = filesystem::get_core_images_dir()+icon;
+		std::string path = filesystem::get_core_images_dir() + icon;
 		drawing& img = find_widget<drawing>(get_window(), "preview", false);
 
 		if(filesystem::file_exists(path) || icon.find("data:image") != std::string::npos) {
@@ -386,20 +393,19 @@ void editor_edit_pbl::update_icon_preview()
 void editor_edit_pbl::update_url_preview()
 {
 	std::string topic = find_widget<text_box>(get_window(), "forum_thread", false).get_value();
-	find_widget<label>(get_window(), "forum_url", false).set_label("https://r.wesnoth.org/t"+topic);
+	find_widget<label>(get_window(), "forum_url", false).set_label("https://r.wesnoth.org/t" + topic);
 }
 
 void editor_edit_pbl::select_icon_file()
 {
 	gui2::dialogs::file_dialog dlg;
 
-	dlg.set_title(_("Choose an icon"))
-		.set_path(filesystem::get_core_images_dir()+"/icons/");
+	dlg.set_title(_("Choose an icon")).set_path(filesystem::get_core_images_dir() + "/icons/");
 
 	if(dlg.show()) {
 		std::string path = dlg.path();
-		if(path.find(filesystem::get_core_images_dir()+"/icons/") == 0) {
-			std::string icon = path.substr(filesystem::get_core_images_dir().length()+1);
+		if(path.find(filesystem::get_core_images_dir() + "/icons/") == 0) {
+			std::string icon = path.substr(filesystem::get_core_images_dir().length() + 1);
 			// setting this programmatically doesn't seem to trigger connect_signal_notify_modified()
 			find_widget<text_box>(get_window(), "icon", false).set_value(icon);
 			find_widget<drawing>(get_window(), "preview", false).set_label(icon);
@@ -414,4 +420,4 @@ void editor_edit_pbl::select_icon_file()
 	}
 }
 
-} // namespace dialogs
+} // namespace gui2::dialogs

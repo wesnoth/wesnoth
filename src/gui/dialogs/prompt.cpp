@@ -25,8 +25,8 @@ namespace gui2::dialogs
 REGISTER_DIALOG(prompt)
 
 prompt::prompt(std::string& value)
-    : modal_dialog(window_id())
-    , value_(value)
+	: modal_dialog(window_id())
+	, value_(value)
 {
 	find_widget<text_box>(get_window(), "prompt_box", false).set_value(value);
 }
@@ -39,7 +39,7 @@ void prompt::pre_show(window& win)
 
 void prompt::post_show(window& win)
 {
-    value_ = find_widget<text_box>(&win, "prompt_box", false).get_value();
+	value_ = find_widget<text_box>(&win, "prompt_box", false).get_value();
 }
 
-}
+} // namespace gui2::dialogs

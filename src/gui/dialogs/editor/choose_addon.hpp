@@ -30,21 +30,21 @@ namespace gui2::dialogs
 class editor_choose_addon : public modal_dialog
 {
 public:
-    DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_choose_addon)
+	DEFINE_SIMPLE_EXECUTE_WRAPPER(editor_choose_addon)
 
-    editor_choose_addon(std::string& addon_id);
+	editor_choose_addon(std::string& addon_id);
 
 private:
-    std::string& addon_id_;
+	std::string& addon_id_;
 
 	void toggle_installed();
 	void populate_list(bool show_all);
 
-    virtual const std::string& window_id() const override;
+	virtual const std::string& window_id() const override;
 
-    virtual void pre_show(window& window) override;
+	virtual void pre_show(window& window) override;
 
-    virtual void post_show(window& window) override;
+	virtual void post_show(window& window) override;
 };
 
-}
+} // namespace gui2::dialogs

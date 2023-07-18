@@ -27,17 +27,17 @@ namespace gui2::dialogs
 REGISTER_DIALOG(editor_choose_addon)
 
 editor_choose_addon::editor_choose_addon(std::string& addon_id)
-    : modal_dialog(window_id())
-    , addon_id_(addon_id)
+	: modal_dialog(window_id())
+	, addon_id_(addon_id)
 {
-	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "show_all", false), std::bind(&editor_choose_addon::toggle_installed, this));
+	connect_signal_mouse_left_click(find_widget<toggle_button>(get_window(), "show_all", false),
+		std::bind(&editor_choose_addon::toggle_installed, this));
 
 	populate_list(false);
 }
 
 void editor_choose_addon::pre_show(window&)
 {
-
 }
 
 void editor_choose_addon::post_show(window& win)
@@ -70,13 +70,14 @@ void editor_choose_addon::populate_list(bool show_all)
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs, filesystem::name_mode::FILE_NAME_ONLY);
 
 	const widget_data& new_addon{
-		{ "existing_addon_id",    widget_item{{"label", _("New Add-on")}, {"tooltip", _("Create a new add-on")}} },
+		{"existing_addon_id", widget_item{{"label", _("New Add-on")}, {"tooltip", _("Create a new add-on")}}},
 	};
 	existing_addons.add_row(new_addon);
 
 	if(show_all) {
 		const widget_data& mainline{
-			{ "existing_addon_id",    widget_item{{"label", _("Mainline")},   {"tooltip", _("Mainline multiplayer scenarios")}} },
+			{"existing_addon_id",
+				widget_item{{"label", _("Mainline")}, {"tooltip", _("Mainline multiplayer scenarios")}}},
 		};
 		existing_addons.add_row(mainline);
 	}
@@ -84,11 +85,11 @@ void editor_choose_addon::populate_list(bool show_all)
 	for(const std::string& dir : dirs) {
 		if(show_all || filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_server.pbl")) {
 			const widget_data& entry{
-				{ "existing_addon_id",    widget_item{{"label", dir}} },
+				{"existing_addon_id", widget_item{{"label", dir}}},
 			};
 			existing_addons.add_row(entry);
 		}
 	}
 }
 
-}
+} // namespace gui2::dialogs

@@ -28,7 +28,7 @@ namespace dialogs
  * Dialog for getting a single text value from the player.
  * Key               |Type           |Mandatory|Description
  * ------------------|---------------|---------|-----------
- * prompt_box    | text_box      |yes      |The text box to enter the value into.
+ * prompt_box        | text_box      |yes      |The text box to enter the value into.
  */
 class prompt : public modal_dialog
 {
@@ -44,8 +44,8 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-    std::string& value_;
+	std::string& value_;
 };
 
-}
-}
+} // namespace dialogs
+} // namespace gui2

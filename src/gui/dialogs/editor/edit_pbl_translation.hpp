@@ -46,10 +46,10 @@ private:
 
 	virtual const std::string& window_id() const override;
 
-    std::string& language_;
-    std::string& title_;
-    std::string& description_;
+	std::string& language_;
+	std::string& title_;
+	std::string& description_;
 };
 
-}
-}
+} // namespace dialogs
+} // namespace gui2
