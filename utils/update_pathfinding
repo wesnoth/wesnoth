@@ -1,0 +1,24 @@
+#!/bin/sh
+# Produces output suitable for data/test/macros/pathfind_answers.cfg.
+# Expects to be run from the repository root.
+# You may have to adjust PATH when calling this so the right wesnoth binary is used.
+
+# set GENERATE_ANSWERS macro in test file to 1 to generate answers
+testfile=data/test/scenarios/wml_tests/ScenarioWML/EventWML/ActionWML/InternalActionsWML/characterize_pathfinding.cfg
+sed -i.bak '/^#define GENERATE_ANSWERS/{n;s/0/1/;}' "$testfile" || exit
+if cmp -s "$testfile" "$testfile.bak"
+then
+    printf 'Failed to change GENERATE_ANSWERS macro in %s!\n' "$testfile" >&2
+    exit 1
+fi
+
+# run unit test to generate answers
+for i in 1 2 3 4 5 6 7
+do
+    printf '#define GENERATED_REACHABILITY_ANSWERS_%s\n    ' "$i"
+    wesnoth --nocache --log-debug=wml --noreplaycheck --unit characterize_pathfinding_reach_"$i" 2>&1 | sed -n 's/^.*: \([ [:digit:]]*\) ,/\1/p' | paste -sd,
+    printf '#enddef\n\n'
+done
+
+# restore test file
+mv "$testfile.bak" "$testfile"
