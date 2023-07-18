@@ -54,7 +54,7 @@ jobs:
         CXX_STD: 17
         LTO: ${{ matrix.lto }}
         CLICOLOR_FORCE: 1
-        DISPLAY: :99.0
+        SDL_VIDEODRIVER: dummy
     defaults:
       run:
         shell: bash
@@ -97,9 +97,6 @@ jobs:
               make VERBOSE=1 -j2
               ;;
           esac
-      - name: Start Xvfb
-        if: steps.build.outcome == 'success'
-        run: start-stop-daemon --start --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1024x768x24
       - name: Check path options
         if: steps.build.outcome == 'success'
         run: |
