@@ -148,6 +148,8 @@ void unit_animation_component::refresh()
 void unit_animation_component::clear_haloes ()
 {
 	unit_halo_.reset();
+	abil_halos_.clear();
+	abil_halos_ref_.clear();
 	if(anim_ ) anim_->clear_haloes();
 }
 

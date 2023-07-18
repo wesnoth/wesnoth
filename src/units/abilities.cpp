@@ -476,6 +476,50 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities_.child_range(ability).empty();
 }
 
+//this string abilitie is used for purpose of add a second halo if condition is matched.
+//It is put here header declaration commodity.
+static void create_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& tag_name)
+{
+	auto ret = std::find(image_list.begin(), image_list.end(), cfg[tag_name].str());
+	if(ret == image_list.end()){
+		image_list.push_back(cfg[tag_name].str());
+	}
+}
+
+const std::vector<std::string> unit::halo_or_icon_abilities(const std::string& tag_name, const map_location& loc) const
+{
+	std::vector<std::string> image_list;
+	for (const config &i : this->abilities_.child_range(tag_name)) {
+		if(ability_active(tag_name, i, loc) && ability_affects_self(tag_name, i, loc) && !i[tag_name + "_image"].str().empty()){
+			create_vector(image_list, i, tag_name + "_image");
+		}
+	}
+
+	const unit_map& units = get_unit_map();
+
+	const auto adjacent = get_adjacent_tiles(loc);
+	for(unsigned i = 0; i < adjacent.size(); ++i) {
+		const unit_map::const_iterator it = units.find(adjacent[i]);
+		if (it == units.end() || it->incapacitated())
+			continue;
+		if ( &*it == this )
+			continue;
+		for (const config &j : it->abilities_.child_range(tag_name)) {
+			if(affects_side(j, side(), it->side())
+				&& it->ability_active(tag_name, j, adjacent[i])
+				&& ability_affects_adjacent(tag_name, j, i, loc, *it)
+				&& !j[tag_name + "_image"].str().empty())
+			{
+				create_vector(image_list, j, tag_name + "_image");
+			}
+		}
+	}
+	if(!image_list.empty()){
+		std::sort(image_list.begin(), image_list.end());
+	}
+	return image_list;
+}
+
 void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 {
 	if(unit_const_ptr & att = is_attacker_ ? self_ : other_) {
