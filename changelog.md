@@ -3,6 +3,7 @@
  ### Add-ons server
  ### Campaigns
  ### Editor
+   * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
  ### Multiplayer
  ### Lua API
  ### Packaging
