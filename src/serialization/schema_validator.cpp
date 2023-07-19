@@ -55,7 +55,7 @@ static void print_output(const std::string& message, bool flag_exception = false
 #endif
 }
 
-static void extra_tag_error(const std::string& file,
+static std::string extra_tag_error(const std::string& file,
 		int line,
 		const std::string& name,
 		int n,
@@ -66,17 +66,19 @@ static void extra_tag_error(const std::string& file,
 	ss << "Extra tag [" << name << "]; there may only be " << n << " [" << name << "] in [" << parent << "]\n"
 	   << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
+	return ss.str();
 }
 
-static void wrong_tag_error(
+static std::string wrong_tag_error(
 		const std::string& file, int line, const std::string& name, const std::string& parent, bool flag_exception)
 {
 	std::ostringstream ss;
 	ss << "Tag [" << name << "] may not be used in [" << parent << "]\n" << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
+	return ss.str();
 }
 
-static void missing_tag_error(const std::string& file,
+static std::string missing_tag_error(const std::string& file,
 		int line,
 		const std::string& name,
 		int n,
@@ -87,25 +89,40 @@ static void missing_tag_error(const std::string& file,
 	ss << "Missing tag [" << name << "]; there must be " << n << " [" << name << "]s in [" << parent << "]\n"
 	   << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
+	return ss.str();
 }
 
-static void extra_key_error(
+static std::string extra_key_error(
 		const std::string& file, int line, const std::string& tag, const std::string& key, bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Invalid key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	ss << "Invalid key '" << key << "='";
+	if(!tag.empty()) {
+		ss << " in tag [" << tag << "]\n";
+	}
+	if(!file.empty()) {
+		ss << at(file, line) << "\n";
+	}
 	print_output(ss.str(), flag_exception);
+	return ss.str();
 }
 
-static void missing_key_error(
+static std::string missing_key_error(
 		const std::string& file, int line, const std::string& tag, const std::string& key, bool flag_exception)
 {
 	std::ostringstream ss;
-	ss << "Missing key '" << key << "=' in tag [" << tag << "]\n" << at(file, line) << "\n";
+	ss << "Missing key '" << key << "='";
+	if(!tag.empty()) {
+		ss << " in tag [" << tag << "]\n";
+	}
+	if(!file.empty()) {
+		ss << at(file, line) << "\n";
+	}
 	print_output(ss.str(), flag_exception);
+	return ss.str();
 }
 
-static void wrong_value_error(const std::string& file,
+static std::string wrong_value_error(const std::string& file,
 		int line,
 		const std::string& tag,
 		const std::string& key,
@@ -120,6 +137,7 @@ static void wrong_value_error(const std::string& file,
 	else ss << value;
 	ss << "' in key '" << key << "=' in tag [" << tag << "]\n" << " (expected value of type " << expected << ") " << at(file, line) << "\n";
 	print_output(ss.str(), flag_exception);
+	return ss.str();
 }
 
 static void wrong_path_error(const std::string& file,
@@ -191,6 +209,7 @@ schema_validator::schema_validator(const std::string& config_file_name, bool val
 	, create_exceptions_(strict_validation_enabled)
 	, config_read_(false)
 	, validate_schema_(validate_schema)
+	, errors_()
 {
 	if(!read_config_file(config_file_name)) {
 		ERR_VL << "Schema file " << config_file_name << " was not read.";
@@ -258,7 +277,7 @@ void schema_validator::open_tag(const std::string& name, const config& parent, i
 			tag = active_tag().find_tag(name, root_, parent);
 
 			if(!tag) {
-				wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_);
+				errors_.emplace_back(wrong_tag_error(file, start_line, name, stack_.top()->get_name(), create_exceptions_));
 			} else {
 				if(!addition) {
 					counter& cnt = counter_.top()[name];
@@ -408,22 +427,22 @@ void schema_validator::print(message_info& el)
 {
 	switch(el.type) {
 	case WRONG_TAG:
-		wrong_tag_error(el.file, el.line, el.tag, el.value, create_exceptions_);
+		errors_.emplace_back(wrong_tag_error(el.file, el.line, el.tag, el.value, create_exceptions_));
 		break;
 	case EXTRA_TAG:
-		extra_tag_error(el.file, el.line, el.tag, el.n, el.value, create_exceptions_);
+		errors_.emplace_back(extra_tag_error(el.file, el.line, el.tag, el.n, el.value, create_exceptions_));
 		break;
 	case MISSING_TAG:
-		missing_tag_error(el.file, el.line, el.tag, el.n, el.value, create_exceptions_);
+		errors_.emplace_back(missing_tag_error(el.file, el.line, el.tag, el.n, el.value, create_exceptions_));
 		break;
 	case EXTRA_KEY:
-		extra_key_error(el.file, el.line, el.tag, el.key, create_exceptions_);
+		errors_.emplace_back(extra_key_error(el.file, el.line, el.tag, el.key, create_exceptions_));
 		break;
 	case WRONG_VALUE:
-		wrong_value_error(el.file, el.line, el.tag, el.key, el.value, el.expected, create_exceptions_);
+		errors_.emplace_back(wrong_value_error(el.file, el.line, el.tag, el.key, el.value, el.expected, create_exceptions_));
 		break;
 	case MISSING_KEY:
-		missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_);
+		errors_.emplace_back(missing_key_error(el.file, el.line, el.tag, el.key, create_exceptions_));
 		break;
 	}
 }

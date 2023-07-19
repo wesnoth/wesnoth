@@ -44,13 +44,12 @@ namespace editor {
 
 class editor_map;
 
-std::string get_left_button_function();
-
 enum menu_type {
 	MAP,
 	LOAD_MRU,
 	PALETTE,
 	AREA,
+	ADDON,
 	SIDE,
 	TIME,
 	LOCAL_TIME,
@@ -80,7 +79,7 @@ class editor_controller : public controller_base,
 		 * to the map can be retrieved between the main loop's end and the controller's
 		 * destruction.
 		 */
-		editor_controller();
+		editor_controller(const std::string& addon_id);
 
 		~editor_controller();
 
@@ -89,9 +88,6 @@ class editor_controller : public controller_base,
 
 		/** Takes a screenshot **/
 		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.png");
-
-		/** Process a hotkey quit command */
-		void hotkey_quit();
 
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
@@ -144,8 +140,6 @@ class editor_controller : public controller_base,
 
 		/** Export the WML-compatible list of selected tiles to the system clipboard */
 		void export_selection_coords();
-
-		void update_mouse_action_highlights();
 
 		/** Save the current selection to the active area. */
 		void save_area();
@@ -210,9 +204,6 @@ class editor_controller : public controller_base,
 
 		/** init background music for the editor */
 		void init_music(const game_config_view& game_config);
-
-		/** Load editor-specific tooltips */
-		void load_tooltips();
 
 		/** Reload images */
 		void refresh_image_cache();

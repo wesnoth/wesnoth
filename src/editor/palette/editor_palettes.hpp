@@ -61,7 +61,6 @@ public:
 	void expand_palette_groups_menu(std::vector<config>& items, int i) override;
 
 	void set_group(std::size_t index) override;
-//	int active_group();
 
 	const std::vector<item_group>& get_groups() const override { return groups_; }
 

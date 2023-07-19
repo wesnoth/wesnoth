@@ -25,6 +25,7 @@
 #include "deprecation.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/base64.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"
@@ -633,14 +634,14 @@ static void setup_user_data_dir()
 	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
 
 	// Create user data and add-on directories
-	create_directory_if_missing(user_data_dir / "editor");
-	create_directory_if_missing(user_data_dir / "editor" / "maps");
-	create_directory_if_missing(user_data_dir / "editor" / "scenarios");
-	create_directory_if_missing(user_data_dir / "data");
-	create_directory_if_missing(user_data_dir / "data" / "add-ons");
-	create_directory_if_missing(user_data_dir / "saves");
-	create_directory_if_missing(user_data_dir / "persist");
-	create_directory_if_missing(filesystem::get_logs_dir());
+	create_directory_if_missing(get_legacy_editor_dir());
+	create_directory_if_missing(get_legacy_editor_dir() + "/maps");
+	create_directory_if_missing(get_legacy_editor_dir() + "/scenarios");
+	create_directory_if_missing(get_addons_data_dir());
+	create_directory_if_missing(get_addons_dir());
+	create_directory_if_missing(get_saves_dir());
+	create_directory_if_missing(get_wml_persist_dir());
+	create_directory_if_missing(get_logs_dir());
 }
 
 #ifdef _WIN32
@@ -788,6 +789,18 @@ void set_user_data_dir(std::string newprefdir)
 #endif /*_WIN32*/
 	setup_user_data_dir();
 	user_data_dir = normalize_path(user_data_dir.string(), true, true);
+}
+
+bool rename_dir(const std::string& old_dir, const std::string& new_dir)
+{
+	error_code ec;
+	bfs::rename(old_dir, new_dir, ec);
+
+	if(ec) {
+		ERR_FS << "Failed to rename directory '" << old_dir << "' to '" << new_dir << "'";
+		return false;
+	}
+	return true;
 }
 
 static void set_user_config_path(bfs::path newconfig)
@@ -1063,6 +1076,32 @@ bool delete_file(const std::string& filename)
 	}
 
 	return ret;
+}
+
+std::vector<uint8_t> read_file_binary(const std::string& fname)
+{
+	std::ifstream file(fname, std::ios::binary);
+	std::vector<uint8_t> file_contents;
+
+	file_contents.reserve(file_size(fname));
+	file_contents.assign(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>());
+
+	return file_contents;
+}
+
+std::string read_file_as_data_uri(const std::string& fname)
+{
+	std::vector<uint8_t> file_contents = filesystem::read_file_binary(fname);
+	utils::byte_string_view view = {file_contents.data(), file_contents.size()};
+	std::string name = filesystem::base_name(fname);
+	std::string img = "";
+
+	if(name.find(".") != std::string::npos) {
+		// convert to web-safe base64, since the + symbols will get stripped out when reading this back in later
+		img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(view);
+	}
+
+	return img;
 }
 
 std::string read_file(const std::string& fname)

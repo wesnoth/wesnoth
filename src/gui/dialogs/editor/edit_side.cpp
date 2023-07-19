@@ -37,6 +37,7 @@ editor_edit_side::editor_edit_side(editor::editor_team_info& info)
 
 	register_text("team_name", true, info.id, true);
 	register_text("user_team_name", true, info.name, false);
+	register_text("recruit_list", true, info.recruit_list, false);
 
 	register_integer("gold", true, info.gold);
 	register_integer("income", true, info.income);
@@ -67,6 +68,7 @@ void editor_edit_side::pre_show(window& window)
 
 	window.add_to_tab_order(find_widget<text_box>(&window, "team_name", false, true));
 	window.add_to_tab_order(find_widget<text_box>(&window, "user_team_name", false, true));
+	window.add_to_tab_order(find_widget<text_box>(&window, "recruit_list", false, true));
 }
 
 void editor_edit_side::post_show(window&)

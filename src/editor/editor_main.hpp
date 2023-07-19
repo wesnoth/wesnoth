@@ -36,4 +36,6 @@ enum EXIT_STATUS {
 
 EXIT_STATUS start(const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.png");
 
+void initialize_addon(const std::string& addon_id);
+
 } //end namespace editor

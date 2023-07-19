@@ -15,7 +15,6 @@
 
 #include "serialization/base64.hpp"
 
-#include <vector>
 #include <string>
 
 namespace {

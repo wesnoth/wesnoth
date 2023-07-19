@@ -471,7 +471,10 @@ void team::set_recruits(const std::set<std::string>& recruits)
 {
 	info_.can_recruit = recruits;
 	info_.minimum_recruit_price = 0;
-	ai::manager::get_singleton().raise_recruit_list_changed();
+	// this method gets called from the editor, which obviously has no AI present
+	if(ai::manager::has_manager()) {
+		ai::manager::get_singleton().raise_recruit_list_changed();
+	}
 }
 
 void team::add_recruit(const std::string& recruit)
