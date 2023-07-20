@@ -260,7 +260,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 						throw editor_map_load_exception(filename, _("Found the characters '<<' indicating inline lua is present - aborting"));
 					}
 					load_scenario();
-				} catch(const std::exception& e) {
+				} catch(const std::exception&) {
 					// 5.2 The file can't be loaded by the editor as a scenario, so try to just load the map
 					gui2::show_message(_("Error"), _("Failed to load the scenario, attempting to load only the map."), gui2::dialogs::message::auto_close);
 
