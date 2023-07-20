@@ -33,7 +33,7 @@ jobs:
         run: luacheck .
       - name: Doxygen check
         if: success() || failure()
-        run: cd doc/doxygen && doxygen Doxyfile
+        run: doxygen doc/doxygen/Doxyfile
 
   ubuntu:
     strategy:
