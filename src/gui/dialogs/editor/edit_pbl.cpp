@@ -404,7 +404,7 @@ void editor_edit_pbl::select_icon_file()
 
 	if(dlg.show()) {
 		std::string path = dlg.path();
-		if(path.find(filesystem::get_core_images_dir() + "/icons/") == 0) {
+		if(path.find(filesystem::get_core_images_dir()) == 0) {
 			std::string icon = path.substr(filesystem::get_core_images_dir().length() + 1);
 			// setting this programmatically doesn't seem to trigger connect_signal_notify_modified()
 			find_widget<text_box>(get_window(), "icon", false).set_value(icon);
