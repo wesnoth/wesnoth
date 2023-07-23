@@ -221,7 +221,7 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 
 			if(!map_data_loc.empty()) {
 				if(map_data_loc.find("\"{") == std::string::npos) {
-					// 2.0 Embedded map
+					// 2.0 Embedded pure map
 					LOG_ED << "Loading embedded map file";
 					embedded_ = true;
 					pure_map_ = true;

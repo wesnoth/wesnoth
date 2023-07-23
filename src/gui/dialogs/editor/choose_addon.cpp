@@ -83,7 +83,8 @@ void editor_choose_addon::populate_list(bool show_all)
 	}
 
 	for(const std::string& dir : dirs) {
-		if(show_all || filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_server.pbl")) {
+		if((show_all || filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_server.pbl"))
+			&& filesystem::file_exists(filesystem::get_addons_dir() + "/" + dir + "/_main.cfg")) {
 			const widget_data& entry{
 				{"existing_addon_id", widget_item{{"label", dir}}},
 			};

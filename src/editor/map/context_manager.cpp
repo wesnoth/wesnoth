@@ -815,6 +815,11 @@ void context_manager::save_all_maps(bool auto_save_windows)
 			if(name.empty() || filesystem::is_directory(name)) {
 				std::ostringstream s;
 				s << default_dir_ << "/" << "window_" << i + 1;
+				if(!get_map_context().is_embedded() && !get_map_context().is_pure_map()) {
+					s << ".cfg";
+				} else {
+					s << ".map";
+				}
 				name = s.str();
 				get_map_context().set_filename(name);
 			}
