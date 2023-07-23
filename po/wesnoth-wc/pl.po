@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-02 14:55 UTC\n"
+"POT-Creation-Date: 2023-07-23 03:50 UTC\n"
 "PO-Revision-Date: 2020-10-19 14:43+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1900,8 +1900,9 @@ msgstr "Nie ma tu nic ciekawego"
 msgid "From $level_before to $level_after"
 msgstr "Od $level_before do $level_after"
 
+#. an Elvish Archer joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:5
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:68
 msgid ""
 "You look like you could use some help. Mind if I join in? It’s been a while "
 "since I had a good fight!"
@@ -1910,24 +1911,27 @@ msgstr ""
 "dołączę? Trochę minęło, odkąd ostatnio się dobrze bawiłem!"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:6
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:273
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:293
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:320
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:330
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:340
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:349
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:328
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:352
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:385
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:397
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:409
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:418
 msgid "Excellent. We could always use more help."
 msgstr "Świetnie. Zawsze przyda nam się więcej wsparcia."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:9
+#. an Orcish Grunt joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:10
 msgid "’bout time. Been forever since I had a good fight, eh?"
 msgstr "W końcu. Piernik wie, kiedy ostatnio się dobrze bawiłem, eee?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:14
+#. a Troll Whelp joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:16
 msgid "Who you? I help you smash!"
 msgstr "Kto ty? Ja pomóc ci niszczyć!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:19
+#. an Orcish Archer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:22
 msgid ""
 "My clan was destroyed long ago, leaving me to fend for myself. Let me join "
 "your army and I will fight as though your clan was my own!"
@@ -1936,20 +1940,24 @@ msgstr ""
 "dołączyć do waszej armii, a będę walczyć jak gdyby wasz klan był moim "
 "własnym!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:24
+#. an Orcish Assassin joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:28
 msgid "Hey boss. Looks like you’ve got some prey that need killing."
 msgstr "Hej, szefie. Wygląda na to, że masz ofiary do pozabijania."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:29
+#. a Wolf Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
 msgid "I hunts. I join you, I hunts good for you!"
 msgstr "Ja polować. Ja dołączyć was, ja dobrze polować dla was!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:34
+#. speaker is a Wose, just after a Wolf Rider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:40
 msgid "Very well. But take care where your dog does its stuff."
 msgstr "Bardzo dobrze. Ale uważaj, gdzie twój pies robi swoje."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:38
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:372
+#. an Orcish Leader joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:45
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:446
 msgid ""
 "Heh, looks like you whelps might be getting in over your heads. Good thing "
 "I’m here now to win this fight for ya, huh?"
@@ -1957,8 +1965,10 @@ msgstr ""
 "He, wygląda na to, że nie radzicie sobie, szczeniaki. Dobrą rzeczą jest to, "
 "że jestem tu by wygrać tę walkę dla was, huh?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:43
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:362
+#. a Naga Fighter joins a player's side
+#. a Dune Soldier joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:51
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:434
 msgid ""
 "I too have come a long way to this strange land. Perhaps we were destined to "
 "join blades here."
@@ -1966,18 +1976,21 @@ msgstr ""
 "Ja też przebyłem długą drogę na ten dziwny ląd. Może jesteśmy przeznaczeni, "
 "by złączyć tu nasze ostrza."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:48
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:86
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:95
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:152
+#. speaker is a Gryphon, just after a naga or merfolk joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:57
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:102
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:112
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:179
 msgid "Looks like we fished some tasty help."
 msgstr "Wygląda na to, że złowiliśmy smaczną pomoc."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:52
+#. an Elvish Fighter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
 msgid "Need a friendly blade?"
 msgstr "Potrzebujesz przyjaznego ostrza?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:62
+#. an Elvish Shaman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:74
 msgid ""
 "The mother forest sends you her blessings. Let us join together against her "
 "foes."
@@ -1985,11 +1998,13 @@ msgstr ""
 "Matka puszcza wysyła ci swoje błogosławieństwa. Połączmy się w walce z jej "
 "wrogami."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:67
+#. speaker is an elf or wose, just after a shaman joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:80
 msgid "Yeah, flower power!"
 msgstr "Taaak, moc kwiatu!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:71
+#. an Elvish Scout joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:85
 msgid ""
 "I offer you the service of my arrows and my steed. You will find none that "
 "fly faster than either."
@@ -1997,11 +2012,13 @@ msgstr ""
 "Oferuję ci służbę moich strzał i mojego rumaka. Nie znajdziesz niczego, co "
 "leci szybciej od któregokolwiek z nich."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:76
+#. a Wose joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:91
 msgid "Hmm! Welcome, tree-friends. We will pound our enemies into dust!"
 msgstr "Hmm! Witajcie, drzewo-przyjaciele. Zmiażdżymy w proch naszych wrogów!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:81
+#. a Merman Hunter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:97
 msgid ""
 "Greetings, friends. I am a lone hunter and have no legions of warriors to "
 "offer you, but I will gladly lend my arms to your cause."
@@ -2009,7 +2026,8 @@ msgstr ""
 "Witajcie, przyjaciele. Jestem samotnym łowcą i nie mogę wam zaoferować "
 "legionów wojowników, ale z chęcią użyczę moich ramion waszej sprawie."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:90
+#. a Mermaid Initiate joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:107
 msgid ""
 "You have come a long way over the ocean, yet I see that you know little of "
 "her ways. Let me show you."
@@ -2017,8 +2035,10 @@ msgstr ""
 "Przybyłeś daleką drogę przez ocean, lecz widzę że wciąż niewiele o nim "
 "wiesz. Pozwól, że ci pokażę."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:99
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:137
+#. a Cavalryman joins a player's side
+#. a Sergeant joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:162
 msgid ""
 "You’re not from around here, but I seem to find myself between employers at "
 "the moment and I’m not picky. I’ll fight for you, if you’ll have me."
@@ -2026,22 +2046,27 @@ msgstr ""
 "Nie jesteś stąd, ale obecnie nie mam szefa, a ja nie jestem wybredny. Będę "
 "walczyć dla ciebie, jeśli chcesz mnie mieć."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:104
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:113
+#. speaker is female, just after a Cavalryman or Horseman joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:123
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:133
 msgid "Of course. How could a girl say no to a man riding a horse?"
 msgstr ""
 "Oczywiście. Jak dziewczyna mogłaby powiedzieć nie człowiekowi na koniu?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:108
+#. a Horseman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:128
 msgid ""
 "Hurrah! Now THIS is a battle too grand to be missed. Save some for me, eh?"
 msgstr ""
 "Hurra! Teraz TO jest bitwa za wielka, by ją przegapić. Zostawicie mi trochę, "
 "eee?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:117
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:353
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:367
+#. a Spearman joins a player's side
+#. a Woodsman joins a player's side
+#. a Dune Rover joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:138
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:423
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:440
 msgid ""
 "Ho there, friends! I am but a soldier of humble circumstances, yet long have "
 "I dreamed of joining great wars beyond our shores. Let me join your mission!"
@@ -2050,7 +2075,8 @@ msgstr ""
 "marzyłem by dołączyć do wielkich wojen nad naszym wybrzeżem. Pozwólcie mi "
 "dołączyć do misji!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:122
+#. a Fencer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:144
 msgid ""
 "Looks like you’re a bit down on your luck, my friends. But now that I am "
 "here, there’s nothing to worry about!"
@@ -2058,7 +2084,8 @@ msgstr ""
 "Wygląda na to, że brakuje wam troszkę szczęścia, przyjaciele. Ale odkąd ja "
 "się tu pojawiłem, nie macie się o co martwić!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:127
+#. a Heavy Infantryman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:150
 msgid ""
 "Finally reinforcements are here! I’ve been pinned down for days. Help me "
 "fight my way out of here and I’ll gladly follow you!"
@@ -2066,7 +2093,8 @@ msgstr ""
 "Wreszcie nadeszły posiłki! Byłem przyparty do muru przez wiele dni. "
 "Pozwólcie mi wydostać się stąd siłą, a z chęcią pójdę za wami!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:132
+#. a Bowman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
 msgid ""
 "Greetings, my lords. I have watched your battle from afar and yearn to join "
 "such a glorious campaign. I pledge myself to your service!"
@@ -2074,8 +2102,10 @@ msgstr ""
 "Witajcie, moi panowie. Z oddali oglądałem waszą bitwę i stęskniłem się za "
 "tak chwalebną kampanią. Oddaję się wam do usług!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:142
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
+#. a Mage joins a player's side
+#. a Dune Herbalist joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:168
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:428
 msgid ""
 "Long have I studied the ways of lore, and I have much wisdom to offer. Allow "
 "me to guide you on your quest and together we will accomplish great things!"
@@ -2083,7 +2113,8 @@ msgstr ""
 "Długo zgłębiałem tajniki wiedzy i mam do zaoferowania wiele mądrości. "
 "Pozwólcie mi prowadzić was w waszej misji, a razem dokonamy wielkich rzeczy!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:147
+#. a Merman Fighter joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:174
 msgid ""
 "I bring greetings from the merfolk. We have heard your plight, and though we "
 "have few warriors to spare among us, I would gladly lend my trident to your "
@@ -2093,13 +2124,16 @@ msgstr ""
 "mamy niewielu wojowników by się nimi dzielić, z chęcią użyczę mojego "
 "trójzębu waszej sprawie."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:156
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:210
+#. a Dwarvish Fighter joins a player's side
+#. a Dwarvish Scout joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:184
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
 msgid "Having trouble, eh? Never worry, lads, we’ll sort ’em out soon enough!"
 msgstr ""
 "Jakiś problem, eee? Nie martwcie się, chłopcy, zaraz zrobimy z nimi porządek!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:161
+#. a Thief joins a player's side. This one's British slang for "you've caught me stealing, let me work for you instead", with extra words that are just parts of the idiom.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:190
 msgid ""
 "You’ve got me, guv, it’s a fair cop! Just lemme work for you instead. You "
 "won’t regret it, guv, I promise!"
@@ -2107,7 +2141,8 @@ msgstr ""
 "Masz mnie, szefie, to niezła gratka! Po prostu pozwól mi zamiast tego "
 "pracować dla ciebie. Nie pożałujesz tego, szefie, obiecuję!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:166
+#. a Dwarvish Thunderer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:196
 msgid ""
 "Listen up, ye primitive screwheads! This... is me BOOM STICK. Lemme show you "
 "what this baby can do!"
@@ -2115,8 +2150,10 @@ msgstr ""
 "Słuchajta, prymitywne tępogłowy! To... jest mój BUM KIJ. Patrzajta, co to "
 "cacko wyrabia!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:171
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:306
+#. a Poacher joins a player's side
+#. a Thug joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:202
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:368
 msgid ""
 "What, you want my help? A guy like me? Huh, that’s rich. Oh well... let’s "
 "give it a shot, eh?"
@@ -2124,14 +2161,17 @@ msgstr ""
 "Co, chcesz mojej pomocy? Takiego gościa jak ja? Huh, i kto to mówi. No "
 "dobra... spróbujmy, eee?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:176
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:382
+#. a Dwarvish Guardsman joins a player's side
+#. a Dune Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:208
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:458
 msgid ""
 "A soldier is no good without something to fight for. Let me fight for you!"
 msgstr ""
 "Żołnierz jest niczym bez powodu do walki. Pozwólcie mi walczyć dla was!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:181
+#. a Footpad joins a player's side. The first half is "please don’t attack me", the second is "you seem to be in a difficult situation too, I’m good at talking or fighting my way out".
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:214
 msgid ""
 "Hey, hey, easy there! I done nothin’ to hurt you. We’re all friends here, "
 "right? Looks like you might be in a tight spot, but don’t worry. No one’s "
@@ -2141,32 +2181,41 @@ msgstr ""
 "przyjaciółmi, prawda? Wygląda na to że jesteś w trudnym położeniu, ale nie "
 "martw się. Nikt nie wyciąga z trudnego położenia lepiej ode mnie, szefie!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:186
+#. an Ulfserker joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
 msgid "Chin up, lads. Today is a good day to die!"
 msgstr "Głowy do góry, chłopcy! Dziś jest dobry dzień do umierania!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:191
+#. the speaker is another dwarf, after an Ulf joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:226
 msgid "Brave words. Welcome to The Fight Club..."
 msgstr "Odważne słowa. Witaj w klubie walki..."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:194
+#. The speaker is a human, after an Ulf joins their side.
+#. The Ulf’s "a good day to die" could be read as a Native American battlecry, and "brave words" as "words of an Indian Brave", yet the capitalisation doesn’t allow "little big man" to be a proper noun.
+#. This doesn't sound right as the first thing a human says to a dwarf, either with or without the culture references, however it can’t be removed in 1.16.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:232
 msgid "Brave words. Welcome little big man."
 msgstr "Odważne słowa. Witaj, mały wielki człowieku."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:198
+#. a Gryphon Rider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:237
 msgid "Need a hand? Me an’ me bird can get just about anywheres you need."
 msgstr "W czymś pomóc? Ja i mój ptak możemy się dostać, gdziekolwiek potrzeba."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:203
+#. the speaker is a naga or merfolk, after a Gryphon Rider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:243
 msgid "Sounds good. You scared me for a moment."
 msgstr "Brzmi dobrze. Przestraszyłeś mnie przez chwilę."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:206
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:248
+#. the speaker is a bat or a gryphon, after a Gryphon Rider or Drake Glider joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:247
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:297
 msgid "Cool. We could always need more air power."
 msgstr "Fajnie. Zawsze przyda się więcej sił powietrznych."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:215
+#. a Drake Fighter joins a player's side; they will have their standard weapon (a "war blade" in English)
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:258
 msgid ""
 "The ancient spirits tell me my destiny lies with yours. My sword is at your "
 "command."
@@ -2174,7 +2223,8 @@ msgstr ""
 "Starożytne duchy mówią mi, że moje przeznaczenie łączy się z twoim. Mój "
 "miecz jest na twój rozkaz."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:220
+#. a Drake Clasher joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:264
 msgid ""
 "Stand fast, for I bring you the strength of dragons to assist you in your "
 "battle!"
@@ -2182,7 +2232,8 @@ msgstr ""
 "Nie poddawajcie się, bo przynoszę wam siłę smoków, aby was wspierała w "
 "bitwie!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:225
+#. a Drake Burner joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
 msgid ""
 "Today is a most auspicious day for you, for I deem you worthy of the power "
 "of dragonfire. Show me your foes and I will incinerate them!"
@@ -2190,22 +2241,26 @@ msgstr ""
 "Dziś jest najpomyślniejszy dzień dla was, bo uznaję was za wartych potęgi "
 "smoczego ognia. Ukażcie mi waszych wrogów, a spalę ich na proch!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:230
+#. the speaker is another drake, after a Drake Burner joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:276
 msgid "Perfect. We can always use more firepower."
 msgstr "Wyśmienicie. Zawsze możemy użyć więcej ognia."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:234
+#. a Saurian Augur joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:281
 msgid ""
 "You no fight good enough, no have saurian way. I show you way of saurian!"
 msgstr ""
 "Ty nie walczyć wystarczająco dobrze, ty nie znać droga jaszczurów. Ja "
 "pokazać ci droga jaszczurów!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:239
+#. the speaker is another saurian, after a Saurian Augur joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:287
 msgid "Sure, bro..."
 msgstr "Spoko, ziom..."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:243
+#. a Drake Glider joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:292
 msgid ""
 "You may be out to take over the land and the seas, but you’ll never get "
 "anywhere without control of the skies. Fortunately I’m here to help you!"
@@ -2213,7 +2268,8 @@ msgstr ""
 "Możecie chcieć zdobywać lądy i morza, ale nigdzie się nie dostaniecie bez "
 "kontroli nad niebem. Na szczęście jestem tutaj, aby wam pomóc!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
+#. a Saurian Skirmisher joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
 msgid ""
 "Tribe fall long time ago, now tribe lost. This last fight of tribe. I fight "
 "with you, make last very great!"
@@ -2221,7 +2277,8 @@ msgstr ""
 "Plemię upadać dawno temu, teraz plemię zginąć. To ostatnia walka plemienia. "
 "Ja walczyć z wami, po raz ostatni!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:257
+#. a Skeleton joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:308
 msgid ""
 "Don’t hit me! I’m just your average regular friendly talking skeleton, see? "
 "Looks like you fellows could use some help!"
@@ -2230,7 +2287,8 @@ msgstr ""
 "szkieletem, nie widzisz? Wygląda na to, że może wam się przydać pomoc, "
 "koledzy!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:262
+#. a Skeleton Archer joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:314
 msgid ""
 "I am called forth from eternal rest, bound to follow he who called me. Show "
 "me the enemy, master!"
@@ -2238,7 +2296,8 @@ msgstr ""
 "Jestem wezwanym z wiecznego odpoczynku, zobowiązanym do podążania za tym, "
 "kto mnie wezwał. Wskaż mi wroga, mistrzu!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:267
+#. a Ghoul joins a player's side, and this line does not fit a Ghoul at all, it’s a pantomime-level stereotype of a British hero.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:321
 msgid ""
 "I say, old sport! It looks like you’ve got a spot of bother. Well, chin up, "
 "I say! I’m sure we’ll make a simply smashing team-up. We can sort this lot "
@@ -2248,12 +2307,15 @@ msgstr ""
 "do góry, mówię ci! Jestem pewien, że stworzymy miażdżącą drużynę. Zrobimy "
 "porządek z tym wszystkim i pójdziemy na herbatkę, co?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:270
+#. response to the Ghoul’s introduction line
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:325
 msgid "Have at thee, unholy abomin... wait, huh?"
 msgstr "Miej ze sobą, nieświęty wstręt... czekaj, huh?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:277
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:377
+#. a Dark Adept joins a player's side
+#. a Dune Burner joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:333
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:452
 msgid ""
 "You may not trust me or my reasons, but it seems you are not in a position "
 "to be choosy about your allies. Let me assist you and you just may survive."
@@ -2262,7 +2324,8 @@ msgstr ""
 "pozycji nie możecie być wybiórczy co do sojuszników. Pozwólcie mi wam "
 "asystować a może przetrwacie."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:282
+#. a Ghost joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:339
 msgid ""
 "Who calls me from my slumber? I sense a great battle being joined. Point me "
 "towards the enemy and I will feast upon their very souls!"
@@ -2270,11 +2333,13 @@ msgstr ""
 "Kto budzi mnie ze snu? Wyczuwam wielką bitwę. Skierujcie mnie na wrogów a "
 "nażrę się ich duszami!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:287
+#. a Vampire Bat joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:345
 msgid "Skreeeeeeee!"
 msgstr "Skriiiiiiiiiiiiiii!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:290
+#. after a Vampire Bat joins the player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:349
 msgid ""
 "This creature seems unusually intelligent for its kind. Perhaps it will help "
 "us!"
@@ -2282,42 +2347,51 @@ msgstr ""
 "To stworzenie wygląda niezwykle inteligentnie jak na swój gatunek. Może nam "
 "pomoże!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:297
+#. a Young Ogre joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:357
 msgid "You friend are? I friend help!"
 msgstr "Ty być przyjaciel? I pomagać przyjaciel!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:302
+#. the speaker is an ogre or troll, after a Young Ogre joins their side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:363
 msgid "Me friend. We can play together."
 msgstr "Ja przyjaciel. Możemy grać razem."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:311
+#. a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:374
 msgid "Ah, please no hurtings me! I helps you, see?"
 msgstr "Ach, proszę nie ranić mnie! Ja pomagać Ci, widzieć?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:314
+#. after a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:378
 msgid "Fine. We could need a small help."
 msgstr "Dobrze. Możemy potrzebować trochę pomocy."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:317
+#. after a Goblin Spearman joins a player's side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:382
 msgid "Excellent. We could always need cannon fodder."
 msgstr "Wyśmienicie. Mięso armatnie zawsze może się przydać."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:324
+#. a Walking Corpse joins a player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:390
 msgid "..."
 msgstr "..."
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:327
+#. after a Walking Corpse joins the player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:394
 msgid "Odd, it doesn’t seem to attack. I wonder if we can use it?"
 msgstr ""
 "Dziwne, nie wygląda jakby atakowało. Zastanawiam się, czy możemy tego użyć?"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:335
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:344
+#. a Peasant or Ruffian joins a player's side. This line is the speech of an overeager schoolchild.
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:403
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:413
 msgid "Oooh oooh oooh! I want to help! Pick me, pick me!"
 msgstr "Uuch, uuch, uuch! Chcę pomóc! Wybierz mnie, wybierz mnie!"
 
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:337
-#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:346
+#. after a Peasant or Ruffian joins the player’s side
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:406
+#: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:415
 msgid "...fine. I guess."
 msgstr "… dobrze. Raczej."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-02 09:55-0500\n"
+"POT-Creation-Date: 2023-07-22 22:50-0500\n"
 "PO-Revision-Date: 2022-07-14 16:49+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -4776,7 +4776,7 @@ msgstr "快速鍵"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:776
+#: src/gui/dialogs/preferences_dialog.cpp:778
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4789,7 +4789,7 @@ msgstr "遊戲中可使用"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:777
+#: src/gui/dialogs/preferences_dialog.cpp:779
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4802,7 +4802,7 @@ msgstr "地圖編輯器中可使用"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:778
+#: src/gui/dialogs/preferences_dialog.cpp:780
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5604,27 +5604,27 @@ msgstr "<unknown>"
 msgid "filesystem_path_system^Volumes"
 msgstr "捲軸"
 
-#: src/desktop/paths.cpp:201
+#: src/desktop/paths.cpp:209
 msgid "filesystem_path_game^Game executables"
 msgstr "遊戲執行檔"
 
-#: src/desktop/paths.cpp:205
+#: src/desktop/paths.cpp:213
 msgid "filesystem_path_game^Game data"
 msgstr "遊戲資料"
 
-#: src/desktop/paths.cpp:209
+#: src/desktop/paths.cpp:217
 msgid "filesystem_path_game^User data"
 msgstr "玩家資料"
 
-#: src/desktop/paths.cpp:213
+#: src/desktop/paths.cpp:221
 msgid "filesystem_path_game^User preferences"
 msgstr "玩家偏好設定"
 
-#: src/desktop/paths.cpp:226
+#: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Home"
 msgstr "主目錄"
 
-#: src/desktop/paths.cpp:235
+#: src/desktop/paths.cpp:243
 msgid "filesystem_path_system^Root"
 msgstr "根目錄"
 
@@ -6754,12 +6754,12 @@ msgstr "無效的玩家名稱"
 msgid "Not on friends or ignore lists"
 msgstr "不在好友名單及黑名單中"
 
-#: src/gui/dialogs/preferences_dialog.cpp:812
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "No hotkey selected"
 msgstr "沒有已選擇的快速鍵"
 
-#: src/gui/dialogs/preferences_dialog.cpp:843
+#: src/gui/dialogs/preferences_dialog.cpp:845
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6767,15 +6767,15 @@ msgstr ""
 "「<b>$hotkey_sequence|</b>」目前已經用在「<b>$old_hotkey_action|</b>」。\n"
 "你希望將該快速鍵指定給「<b>$new_hotkey_action|</b>」嗎？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:849
+#: src/gui/dialogs/preferences_dialog.cpp:851
 msgid "Reassign Hotkey"
 msgstr "清除快速鍵"
 
-#: src/gui/dialogs/preferences_dialog.cpp:866
+#: src/gui/dialogs/preferences_dialog.cpp:868
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有快速鍵已重置成預設值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:866
+#: src/gui/dialogs/preferences_dialog.cpp:868
 msgid "Hotkeys Reset"
 msgstr "重置快速鍵"
 

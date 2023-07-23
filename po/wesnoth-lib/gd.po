@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-02 09:55-0500\n"
+"POT-Creation-Date: 2023-07-22 22:50-0500\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -4905,7 +4905,7 @@ msgstr "Grad-iuchraichean"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:776
+#: src/gui/dialogs/preferences_dialog.cpp:778
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4918,7 +4918,7 @@ msgstr "Ri fhaighinn sa gheama"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:777
+#: src/gui/dialogs/preferences_dialog.cpp:779
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4931,7 +4931,7 @@ msgstr "Ri fhaighinn san deasaiche"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:778
+#: src/gui/dialogs/preferences_dialog.cpp:780
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5767,27 +5767,27 @@ msgstr "<chan eil fhios>"
 msgid "filesystem_path_system^Volumes"
 msgstr "Draibhean"
 
-#: src/desktop/paths.cpp:201
+#: src/desktop/paths.cpp:209
 msgid "filesystem_path_game^Game executables"
 msgstr "Faidhlichean so-ghnìomhaichte a’ gheama"
 
-#: src/desktop/paths.cpp:205
+#: src/desktop/paths.cpp:213
 msgid "filesystem_path_game^Game data"
 msgstr "Dàta a’ gheama"
 
-#: src/desktop/paths.cpp:209
+#: src/desktop/paths.cpp:217
 msgid "filesystem_path_game^User data"
 msgstr "Dàta a’ chleachdaiche"
 
-#: src/desktop/paths.cpp:213
+#: src/desktop/paths.cpp:221
 msgid "filesystem_path_game^User preferences"
 msgstr "Roghainnean a’ chleachdaiche"
 
-#: src/desktop/paths.cpp:226
+#: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Home"
 msgstr "Dhachaigh"
 
-#: src/desktop/paths.cpp:235
+#: src/desktop/paths.cpp:243
 msgid "filesystem_path_system^Root"
 msgstr "Freumh"
 
@@ -6973,12 +6973,12 @@ msgstr "Ainm cleachdaiche mì-dhligheach"
 msgid "Not on friends or ignore lists"
 msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:812
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "No hotkey selected"
 msgstr "Cha deach grad-iuchair a thaghadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:843
+#: src/gui/dialogs/preferences_dialog.cpp:845
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6987,16 +6987,16 @@ msgstr ""
 "b>”. A bheil thu airson a shònrachadh dha “<b>$new_hotkey_action|</b>” ’na "
 "àite?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:849
+#: src/gui/dialogs/preferences_dialog.cpp:851
 msgid "Reassign Hotkey"
 msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
-#: src/gui/dialogs/preferences_dialog.cpp:866
+#: src/gui/dialogs/preferences_dialog.cpp:868
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach bhunaiteach."
 
-#: src/gui/dialogs/preferences_dialog.cpp:866
+#: src/gui/dialogs/preferences_dialog.cpp:868
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na grad-iuchraichean"
 

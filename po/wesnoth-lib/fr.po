@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-02 09:55-0500\n"
+"POT-Creation-Date: 2023-07-22 22:50-0500\n"
 "PO-Revision-Date: 2023-04-06 11:42+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -4903,7 +4903,7 @@ msgstr "Raccourci clavier"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/window/preferences/02_hotkeys.cfg:118
-#: src/gui/dialogs/preferences_dialog.cpp:776
+#: src/gui/dialogs/preferences_dialog.cpp:778
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -4916,7 +4916,7 @@ msgstr "Disponible en jeu"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/window/preferences/02_hotkeys.cfg:131
-#: src/gui/dialogs/preferences_dialog.cpp:777
+#: src/gui/dialogs/preferences_dialog.cpp:779
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -4929,7 +4929,7 @@ msgstr "Disponible dans l'éditeur"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/window/preferences/02_hotkeys.cfg:144
-#: src/gui/dialogs/preferences_dialog.cpp:778
+#: src/gui/dialogs/preferences_dialog.cpp:780
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -5757,27 +5757,27 @@ msgstr "<inconnu>"
 msgid "filesystem_path_system^Volumes"
 msgstr "Volumes"
 
-#: src/desktop/paths.cpp:201
+#: src/desktop/paths.cpp:209
 msgid "filesystem_path_game^Game executables"
 msgstr "Exécutables du jeu"
 
-#: src/desktop/paths.cpp:205
+#: src/desktop/paths.cpp:213
 msgid "filesystem_path_game^Game data"
 msgstr "Données du jeu"
 
-#: src/desktop/paths.cpp:209
+#: src/desktop/paths.cpp:217
 msgid "filesystem_path_game^User data"
 msgstr "Données utilisateur"
 
-#: src/desktop/paths.cpp:213
+#: src/desktop/paths.cpp:221
 msgid "filesystem_path_game^User preferences"
 msgstr "Préférences utilisateur"
 
-#: src/desktop/paths.cpp:226
+#: src/desktop/paths.cpp:234
 msgid "filesystem_path_system^Home"
 msgstr "Répertoire personnel"
 
-#: src/desktop/paths.cpp:235
+#: src/desktop/paths.cpp:243
 msgid "filesystem_path_system^Root"
 msgstr "Racine"
 
@@ -6947,12 +6947,12 @@ msgstr "Nom d'utilisateur incorrect"
 msgid "Not on friends or ignore lists"
 msgstr "Absent de la liste des amis ou des ignorés"
 
-#: src/gui/dialogs/preferences_dialog.cpp:812
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:814
+#: src/gui/dialogs/preferences_dialog.cpp:884
 msgid "No hotkey selected"
 msgstr "Aucun raccourci sélectionné"
 
-#: src/gui/dialogs/preferences_dialog.cpp:843
+#: src/gui/dialogs/preferences_dialog.cpp:845
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -6961,16 +6961,16 @@ msgstr ""
 "».\n"
 "Voulez-vous le réattribuer à « <b>$new_hotkey_action|</b> » ?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:849
+#: src/gui/dialogs/preferences_dialog.cpp:851
 msgid "Reassign Hotkey"
 msgstr "Réassigner raccourci clavier"
 
-#: src/gui/dialogs/preferences_dialog.cpp:866
+#: src/gui/dialogs/preferences_dialog.cpp:868
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Tous les raccourcis clavier ont été réinitialisés à leurs valeurs par défaut."
 
-#: src/gui/dialogs/preferences_dialog.cpp:866
+#: src/gui/dialogs/preferences_dialog.cpp:868
 msgid "Hotkeys Reset"
 msgstr "Raccourcis clavier réinitialisés"
 
