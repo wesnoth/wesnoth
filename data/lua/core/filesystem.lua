@@ -8,7 +8,7 @@ filesystem.asset_type = {
     SOUND = 'sounds',
     MUSIC = 'music',
     MAP = 'maps',
-    SCENARIO = 'scenario',
+    SCENARIO = 'scenarios',
 }
 
 wesnoth.have_file = wesnoth.deprecate_api('wesnoth.have_file', 'filesystem.have_file', 1, nil, filesystem.have_file)
