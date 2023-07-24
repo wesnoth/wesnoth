@@ -22,7 +22,7 @@
 
 #include "config.hpp"
 #include <optional>
-#include <variant>
+#include "utils/variant.hpp"
 
 struct is_translatable
 {
@@ -36,7 +36,7 @@ struct is_translatable
 	{
 		return true;
 	}
-	bool operator()(const std::monostate&) const
+	bool operator()(const utils::monostate&) const
 	{
 		return true;
 	}
