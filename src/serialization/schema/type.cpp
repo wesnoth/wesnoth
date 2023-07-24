@@ -22,6 +22,7 @@
 
 #include "config.hpp"
 #include <optional>
+#include <variant>
 
 struct is_translatable
 {
