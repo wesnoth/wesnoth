@@ -179,11 +179,7 @@ loading_screen::~loading_screen()
 	 * the window).
 	 */
 	if(worker_result_.valid()) {
-#if defined(_LIBCPP_VERSION) || defined(__MINGW32__)
 		std::_Exit(0);
-#else
-		std::quick_exit(0);
-#endif
 	}
 
 	singleton_ = nullptr;
