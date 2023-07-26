@@ -7,6 +7,9 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
