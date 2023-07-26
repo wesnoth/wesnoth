@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VCPKG_FEATURE_FLAGS: dependencygraph
+
 jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
