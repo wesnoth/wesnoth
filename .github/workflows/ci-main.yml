@@ -288,7 +288,9 @@ jobs:
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout 4c1734ba2a969b1e6daa0ac79bc46ead7324df90
+# checkout a specific commit to prevent cmake from thinking it can't use the cached dependencies anymore
+# the commit itself is just whatever happens to be the latest commit when a newer version is needed
+          git checkout 5b081066f0740e54bdcbe4d0772d85dbb1d8e266
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
