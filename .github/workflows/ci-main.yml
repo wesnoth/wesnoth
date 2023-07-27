@@ -7,6 +7,13 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VCPKG_FEATURE_FLAGS: dependencygraph
+
 jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
@@ -284,11 +291,13 @@ jobs:
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
 
+# checkout a specific commit to prevent cmake from thinking it can't use the cached dependencies anymore
+# the commit itself is just whatever happens to be the latest commit when a newer version is needed
       - name: Build vcpkg
         run: |
           git clone https://github.com/microsoft/vcpkg.git D:/a/wesnoth/vcpkg
           cd D:/a/wesnoth/vcpkg
-          git checkout 4c1734ba2a969b1e6daa0ac79bc46ead7324df90
+          git checkout 5b081066f0740e54bdcbe4d0772d85dbb1d8e266
           D:/a/wesnoth/vcpkg/bootstrap-vcpkg.bat
 
       - name: Setup cmake
