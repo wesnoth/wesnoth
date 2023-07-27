@@ -1270,7 +1270,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	if(bc_vector.empty()) {
-		gui2::show_transient_message("No Attacks", _("This unit has no usable weapons."));
+		gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
 
 		return -1;
 	}

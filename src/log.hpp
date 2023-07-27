@@ -57,6 +57,7 @@
 #include <string>
 #include <utility>
 #include <ctime>
+#include <cstdint>
 
 #include "formatter.hpp"
 

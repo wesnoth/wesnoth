@@ -1367,7 +1367,9 @@ void unit_type::apply_scenario_fix(const config& cfg)
 	}
 	if(auto attr = cfg.get("add_advancement")) {
 		for(const auto& str : utils::split(attr->str())) {
-			advances_to_.push_back(str);
+			if(!utils::contains(advances_to_, str)) {
+				advances_to_.push_back(str);
+			}
 		}
 	}
 	if(auto attr = cfg.get("remove_advancement")) {

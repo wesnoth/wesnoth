@@ -1259,11 +1259,11 @@ unit_ability_list attack_type::get_specials_and_abilities(const std::string& spe
 {
 	unit_ability_list abil_list = get_weapon_ability(special);
 	if(!abil_list.empty()){
-		abil_list = overwrite_special_checking(special, abil_list, abil_list, "filter_student", false);
+		abil_list = overwrite_special_checking(abil_list, abil_list, false);
 	}
 	unit_ability_list spe_list = get_specials(special);
 	if(!spe_list.empty()){
-		spe_list = overwrite_special_checking(special, spe_list, abil_list, "filter_self", true);
+		spe_list = overwrite_special_checking(spe_list, abil_list, true);
 		if(special == "plague" && !spe_list.empty()){
 			return spe_list;
 		}
@@ -1283,7 +1283,7 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_checking(const std::string& ability, unit_ability_list input, unit_ability_list overwriters, const std::string& filter_self, bool is_special) const
+unit_ability_list attack_type::overwrite_special_checking(unit_ability_list input, unit_ability_list overwriters, bool is_special) const
 {
 	for(unit_ability_list::iterator i = overwriters.begin(); i != overwriters.end();) {
 		if(!overwrite_special_affects(*i->ability_cfg)) {
@@ -1302,11 +1302,11 @@ unit_ability_list attack_type::overwrite_special_checking(const std::string& abi
 			bool is_overwritable = (is_special || !overwrite_special_affects(*j.ability_cfg));
 			bool one_side_overwritable = true;
 			if(affect_side && is_overwritable){
-				if(special_active_impl(shared_from_this(), other_attack_, *i.ability_cfg, AFFECT_SELF, ability, filter_self)){
-					one_side_overwritable = special_active_impl(shared_from_this(), other_attack_, *j.ability_cfg, AFFECT_SELF, ability, filter_self);
+				if(special_affects_self(*i.ability_cfg, is_attacker_)){
+					one_side_overwritable = special_affects_self(*j.ability_cfg, is_attacker_);
 				}
-				else if(special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, filter_self)){
-					one_side_overwritable = special_active_impl(other_attack_, shared_from_this(), *j.ability_cfg, AFFECT_OTHER, ability, filter_self);
+				else if(special_affects_opponent(*i.ability_cfg, !is_attacker_)){
+					one_side_overwritable = special_affects_opponent(*j.ability_cfg, !is_attacker_);
 				}
 			}
 			return (is_overwritable && one_side_overwritable);

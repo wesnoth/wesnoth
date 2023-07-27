@@ -86,6 +86,13 @@ def commandline(args):
               'every WML/Lua file should start from this directory.')
     )
     parser.add_argument(
+        '--force-po',
+        action='store_true',
+        default=False,
+        dest='force_po',
+        help=('Write PO file even if empty.')
+    )
+    parser.add_argument(
         '--initialdomain',
         default='wesnoth',
         dest='initdom',
@@ -250,6 +257,11 @@ def main():
             # Back-compat
             folder, filename = os.path.split(folder)
         os.makedirs(folder, exist_ok=True)
+
+    if args.force_po and args.domain is not None:
+        for domain in args.domain:
+            if not domain in sentlist:
+                sentlist[domain] = dict()
 
     for domain, d in sentlist.items():
         if folder is not None:

@@ -64,7 +64,7 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-editor_controller::editor_controller()
+editor_controller::editor_controller(const std::string& addon_id)
 	: controller_base()
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
@@ -72,7 +72,7 @@ editor_controller::editor_controller()
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
-	, context_manager_(new context_manager(*gui_.get(), game_config_))
+	, context_manager_(new context_manager(*gui_.get(), game_config_, addon_id))
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
@@ -253,6 +253,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 					case editor::LOAD_MRU:
 					case editor::PALETTE:
 					case editor::AREA:
+					case editor::ADDON:
 					case editor::SIDE:
 					case editor::TIME:
 					case editor::SCHEDULE:
@@ -331,6 +332,9 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
+		case HOTKEY_EDITOR_PBL:
+		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+			return true;
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
 			return !get_current_map_context().is_pure_map();
@@ -544,6 +548,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_comman
 		case editor::AREA:
 			return index == get_current_map_context().get_active_area()
 					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::ADDON:
+			return ACTION_STATELESS;
 		case editor::SIDE:
 			return static_cast<std::size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
@@ -635,6 +641,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 					gui_->scroll_to_tiles(locs.begin(), locs.end());
 					return true;
 				}
+			case ADDON:
+				return true;
 			case TIME:
 				{
 					get_current_map_context().set_starting_time(index);
@@ -703,13 +711,11 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 
 			//Palette
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
-		{
-			//TODO this code waits for the gui2 dialog to get ready
-//			std::vector< std::pair< std::string, std::string >> blah_items;
-//			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
-//			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
-//			gui2::teditor_select_palette_group::execute(selected, blah_items);
-		}
+ 			//TODO this code waits for the gui2 dialog to get ready
+ //			std::vector< std::pair< std::string, std::string >> blah_items;
+ //			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
+ //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
+ //			gui2::teditor_select_palette_group::execute(selected, blah_items);
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
@@ -757,6 +763,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 		case HOTKEY_EDITOR_TOOL_ITEM:
 			toolkit_->hotkey_set_mouse_action(command);
+			return true;
+
+		case HOTKEY_EDITOR_PBL:
+			context_manager_->edit_pbl();
+			return true;
+
+		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+			context_manager_->change_addon_id();
 			return true;
 
 		case HOTKEY_EDITOR_AREA_ADD:
@@ -1053,6 +1067,10 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
 		context_manager_->expand_areas_menu(items, 0);
+	}
+
+	if(first_id == "editor-pbl") {
+		active_menu_ = editor::ADDON;
 	}
 
 	if(!items.empty() && items.front()["id"] == "editor-switch-time") {

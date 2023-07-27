@@ -50,18 +50,12 @@ class LuaCheckpoState:
     def run(self, xline, lineno, match):
         if not pywmlx.state.machine.checkdomain(lineno):
             return (None, 'lua_idle')
-
-        # on -- #po: addedinfo
-        if match.group(1) == "po":
-            if pywmlx.state.machine._pending_addedinfo is None:
-                pywmlx.state.machine._pending_addedinfo = [ match.group(2) ]
-            else:
-                pywmlx.state.machine._pending_addedinfo.append(match.group(2))
-        # on -- #po-override: overrideinfo
-        elif pywmlx.state.machine._pending_overrideinfo is None:
-            pywmlx.state.machine._pending_overrideinfo = [ match.group(2) ]
+        # on  -- po: addedinfo, or -- po-override: overrideinfo
+        pending_infos = pywmlx.state.machine._pending_cinfo[match.group(1)]
+        if pending_infos is None:
+            pywmlx.state.machine._pending_cinfo[match.group(1)] = [ match.group(2) ]
         else:
-            pywmlx.state.machine._pending_overrideinfo.append(match.group(2))
+            pending_infos.append(match.group(2))
         xline = None
         return (xline, 'lua_idle')
 

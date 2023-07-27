@@ -1491,8 +1491,7 @@ static bool type_value_if_present(const config& filter, const config& cfg)
 static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 {
 	if(!filter["affect_adjacent"].empty()){
-		auto cfg_adjacent = cfg.optional_child("affect_adjacent");
-		bool adjacent = cfg_adjacent ? true : false;;
+		bool adjacent = cfg.has_child("affect_adjacent");
 		if(filter["affect_adjacent"].to_bool() != adjacent){
 			return false;
 		}

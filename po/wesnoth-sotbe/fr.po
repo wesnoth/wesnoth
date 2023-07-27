@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Son_of_the_Black_Eye-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"POT-Creation-Date: 2023-07-16 03:12 UTC\n"
 "PO-Revision-Date: 2022-05-17 03:34-0500\n"
 "Last-Translator: demario\n"
 "Language-Team: French <French <wesnothfr@lists.tuxfamily.org>>\n"
@@ -173,8 +173,8 @@ msgstr "Mort de Kapou'e"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:53
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:159
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:81
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:95
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:83
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:97
 msgid "Kapou’e"
 msgstr "Kapou’e"
 
@@ -4755,56 +4755,6 @@ msgstr ""
 "et énorme devint rapidement plus célèbre que Kapou'e lui-même. Des récits de "
 "son courage et de sa ruse atteignirent même Wesnoth."
 
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:4
-msgid "Novice Orcish Shaman"
-msgstr "Chaman orc novice"
-
-#. [unit_type]: id=Novice Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:20
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Novice Shamans are still young and vigorous, but their "
-"spell-casting ability still needs improvement."
-msgstr ""
-"Les chamans orcs sont les gardiens de la magie orc. Respectés parmi les "
-"tribus, ils forment le Conseil Orc qui prend les décisions importantes pour "
-"l'ensemble de la communauté orc et règle les nombreux conflits qui émergent "
-"entre les tribus de cette race belliqueuse. Bien que physiquement faibles "
-"(pour des orcs), les chamans orcs sont habiles pour lancer des sorts et "
-"maudire leurs ennemis en aspirant leur énergie vitale. Quand aux novices, "
-"ils sont encore jeunes et vigoureux, mais leur capacité à lancer des sort a "
-"encore besoin d'être entraînée."
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:4
-msgid "Old Orcish Shaman"
-msgstr "Chaman orc âgé"
-
-#. [unit_type]: id=Old Orcish Shaman, race=orc
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:20
-msgid ""
-"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
-"tribes, they form the Orcish Council, which makes important decisions for "
-"the whole Orcish community and arbitrates the many conflicts that arise "
-"between tribes of this argumentative race. Although physically weak (for "
-"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
-"draining their life. Old Orcish Shamans are shamans that have mastered "
-"magic, although their physical strength has declined with age."
-msgstr ""
-"Les chamans orcs sont les gardiens de la magie orc. Respectés parmi les "
-"tribus, ils forment le Conseil Orc, qui prend les décisions importantes pour "
-"l'ensemble de la communauté orc et règle les nombreux conflits qui émergent "
-"entre les tribus de cette race belliqueuse. Bien que physiquement faibles "
-"(pour des orcs), les chamans orcs sont doués pour lancer des sorts et "
-"maudire leurs ennemis en drainant leur énergie vitale. Quand aux chamans "
-"orcs âgés, ils sont passés maîtres dans l'art de la magie, mais leurs forces "
-"physiques ont décliné avec l'âge."
-
 #. [unit_type]: id=Orcish Shaman, race=orc
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:4
 msgid "Orcish Shaman"
@@ -4826,6 +4776,56 @@ msgstr ""
 "entre les tribus de cette race belliqueuse. Bien que physiquement faibles "
 "(pour des orcs), les chamans savent habilement lancer des sorts et maudire "
 "leurs ennemis en drainant leur énergie vitale."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:104
+msgid "variation^Novice"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:108
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Novice Shamans are still young and vigorous, but their "
+"spell-casting ability still needs improvement."
+msgstr ""
+"Les chamans orcs sont les gardiens de la magie orc. Respectés parmi les "
+"tribus, ils forment le Conseil Orc qui prend les décisions importantes pour "
+"l'ensemble de la communauté orc et règle les nombreux conflits qui émergent "
+"entre les tribus de cette race belliqueuse. Bien que physiquement faibles "
+"(pour des orcs), les chamans orcs sont habiles pour lancer des sorts et "
+"maudire leurs ennemis en aspirant leur énergie vitale. Quand aux novices, "
+"ils sont encore jeunes et vigoureux, mais leur capacité à lancer des sort a "
+"encore besoin d'être entraînée."
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:133
+msgid "variation^Elder"
+msgstr ""
+
+#. [variation]
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:137
+msgid ""
+"Orcish Shamans are the guardians of orcish magic. Respected among orcish "
+"tribes, they form the Orcish Council, which makes important decisions for "
+"the whole Orcish community and arbitrates the many conflicts that arise "
+"between tribes of this argumentative race. Although physically weak (for "
+"orcs), Orcish Shamans are good spell casters and can curse their enemies, "
+"draining their life. Old Orcish Shamans are shamans that have mastered "
+"magic, although their physical strength has declined with age."
+msgstr ""
+"Les chamans orcs sont les gardiens de la magie orc. Respectés parmi les "
+"tribus, ils forment le Conseil Orc, qui prend les décisions importantes pour "
+"l'ensemble de la communauté orc et règle les nombreux conflits qui émergent "
+"entre les tribus de cette race belliqueuse. Bien que physiquement faibles "
+"(pour des orcs), les chamans orcs sont doués pour lancer des sorts et "
+"maudire leurs ennemis en drainant leur énergie vitale. Quand aux chamans "
+"orcs âgés, ils sont passés maîtres dans l'art de la magie, mais leurs forces "
+"physiques ont décliné avec l'âge."
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
@@ -4861,18 +4861,24 @@ msgstr ""
 "Damnation. Sans Inarix pour mener ses sauriennes, ces derniers ne nous "
 "aideront plus."
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:76
 msgid "Al’Brock"
 msgstr "Al’Brock"
 
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:88
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:90
 msgid "Flar’Tar"
 msgstr "Flar’Tar"
 
 #. [note]
-#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:101
+#: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:103
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "La Grande Horde : l'entretien de chaque unité diminue de 1 pièce."
+
+#~ msgid "Novice Orcish Shaman"
+#~ msgstr "Chaman orc novice"
+
+#~ msgid "Old Orcish Shaman"
+#~ msgstr "Chaman orc âgé"
 
 #~ msgid ""
 #~ "In this scenario, you may ask Grüü to move to any hex by right-clicking "

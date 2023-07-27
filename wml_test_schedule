@@ -214,6 +214,8 @@
 0 has_achievement
 0 test_movement_used
 0 test_attacks_used
+0 no_duplicate_advancements
+0 add_advancement
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -330,12 +332,15 @@
 0 filter_special_id_active
 0 filter_ability_special_id_active
 0 filter_special_id_not_exists
+0 special_id_active_lua_function
 0 leadership_when_other_has_special
 0 leadership_when_other_has_no_special
 0 effect_increase_attacks
 0 opponent_weapon_has_no_special
 0 opponent_weapon_has_special
+0 plague_without_priority
 0 student_teacher_are_same
+0 teacher_damage_formula
 # Math operations in ability or specials tags
 0 special_calculation_add
 0 special_calculation_add2_add3_cumulative

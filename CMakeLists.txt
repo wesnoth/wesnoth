@@ -84,6 +84,7 @@ find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
 find_package(Gettext)
+find_package(Python)
 
 find_package(X11)
 
@@ -557,7 +558,7 @@ endif()
 
 add_subdirectory(doc)
 
-if(GETTEXT_FOUND AND ENABLE_NLS)
+if(GETTEXT_FOUND AND Python_FOUND AND ENABLE_NLS)
 	add_subdirectory(po)
 endif()
 

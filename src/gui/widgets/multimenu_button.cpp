@@ -211,10 +211,6 @@ void multimenu_button::signal_handler_notify_changed()
 void multimenu_button::select_option(const unsigned option, const bool selected)
 {
 	assert(option < values_.size());
-
-	if(option < toggle_states_.size()) {
-		toggle_states_.resize(option + 1);
-	}
 	toggle_states_[option] = selected;
 	update_config_from_toggle_states();
 	update_label();

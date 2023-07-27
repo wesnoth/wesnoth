@@ -107,7 +107,7 @@ libwesnoth_client = client_env.Library("wesnoth-client", wesnoth_client_sources)
 #---lua---
 lua_sources = GetSources("lua")
 
-env_lua = env.Clone(CPPPATH = ["$CPPPATH", Dir(".").srcnode()], CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or []])
+env_lua = env.Clone(CPPPATH = ["$CPPPATH", Dir(".").srcnode()], CPPDEFINES = ["$CPPDEFINES", env["PLATFORM"] != "win32" and "LUA_USE_POSIX" or None])
 
 env_lua.AppendUnique(CCFLAGS = Split("-Wno-old-style-cast -Wno-useless-cast -Wno-stringop-overflow"))
 # Silence some Clang-specific warnings due to extra parentheses in if statements when comparing.

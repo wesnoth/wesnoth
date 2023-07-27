@@ -54,10 +54,15 @@ _on_luatag = False
 
 # ---------
 
-# pending additional infos for translators (# po: addedinfo)
-_pending_addedinfo = None
-# pending override wmlinfo for translators (# po-override: overrideinfo)
-_pending_overrideinfo = None
+# pending additional infos for translators collected from # po
+# or # po-override comments.
+_pending_cinfo = {
+    # pending additional infos for translators (# po: addedinfo)
+    "po": None,
+    # pending override wmlinfo for translators (# po-override: overrideinfo)
+    "po-override": None,
+}
+
 # type of pending wmlinfo:
 # it can be None or it can have an actual value.
 # Possible actual values are: 'speaker', 'id', 'role', 'description',
@@ -92,18 +97,19 @@ _linenosub = 0
 
 
 def clear_pending_infos(lineno, error=False):
-    global _pending_addedinfo
-    global _pending_overrideinfo
-    if error:
-        if _pending_addedinfo is not None:
+    global _pending_cinfo
+    for key in _pending_cinfo:
+        if error and _pending_cinfo[key] is not None:
             wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
-                "#po directive(s) not applied: %s" % _pending_addedinfo)
-        if _pending_overrideinfo is not None:
-            wmlerr(pywmlx.nodemanip.fileref + ":" + str(lineno),
-                "#po-override directive(s) not applied: %s" % _pending_overrideinfo)
-    _pending_addedinfo = None
-    _pending_overrideinfo = None
-    
+                "#%s directive(s) not applied: %s" % (key, _pending_cinfo[key]))
+        _pending_cinfo[key] = None
+
+
+
+def after_pending_info(lineno, error):
+    clear_pending_infos(lineno, error=error)
+
+
 
 def checkdomain(lineno):
     global _currentdomain
@@ -214,8 +220,7 @@ class PendingLuaString:
             return self.plural.convert()
 
     def store(self):
-        global _pending_addedinfo
-        global _pending_overrideinfo
+        global _pending_cinfo
         global _linenosub
         if not checkdomain(self.lineno):
             return
@@ -236,16 +241,16 @@ class PendingLuaString:
                     self.luastring = self.luastring.replace('"', r'\"')
                 loc_wmlinfos = []
                 loc_addedinfos = None
-                if _pending_overrideinfo is not None:
-                    loc_wmlinfos.append(_pending_overrideinfo)
+                if _pending_cinfo["po-override"] is not None:
+                    loc_wmlinfos.append(_pending_cinfo["po-override"])
                 if (_pending_luafuncname is not None and
-                        _pending_overrideinfo is None):
+                        _pending_cinfo["po-override"] is None):
                     winf = '[lua]: ' + _pending_luafuncname
                     loc_wmlinfos.append(winf)
-                if _pending_addedinfo is None:
+                if _pending_cinfo["po"] is None:
                     loc_addedinfos = []
-                if _pending_addedinfo is not None:
-                    loc_addedinfos = _pending_addedinfo
+                if _pending_cinfo["po"] is not None:
+                    loc_addedinfos = _pending_cinfo["po"]
                 if not _currentdomain in _dictionary:
                     _dictionary[_currentdomain] = dict()
                 loc_posentence = _dictionary[_currentdomain].get(self.luastring)
@@ -269,9 +274,10 @@ class PendingLuaString:
                                 addedinfos=loc_addedinfos,
                                 plural=self.storePlural()
                     ) )
-        # finally PendingLuaString.store() will clear pendinginfos,
+
+        # finally PendingLuaString.store() will clear pendinginfos
         # in any case (even if the pending string is not translatable)
-        clear_pending_infos(self.lineno, error=(not self.istranslatable))
+        after_pending_info(self.lineno, not self.istranslatable)
 
 
 
@@ -288,9 +294,8 @@ class PendingWmlString:
         self.wmlstring = self.wmlstring + '\n' + value.replace('\\', r'\\')
 
     def store(self):
-        global _pending_addedinfo
-        global _pending_overrideinfo
         global _linenosub
+        global _pending_cinfo
         global _pending_winfotype
         if _pending_winfotype is not None:
             if self.ismultiline is False and self.istranslatable is False:
@@ -316,9 +321,9 @@ class PendingWmlString:
                                              ismultiline=self.ismultiline,
                                              lineno=self.lineno,
                                              lineno_sub=_linenosub,
-                                             override=_pending_overrideinfo,
-                                             addition=_pending_addedinfo)
-        clear_pending_infos(self.lineno, error=(not self.istranslatable))
+                                             override=_pending_cinfo["po-override"],
+                                             addition=_pending_cinfo["po"])
+        after_pending_info(self.lineno, not self.istranslatable)
 
 
 

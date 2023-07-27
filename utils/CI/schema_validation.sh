@@ -2,7 +2,8 @@
 
 shopt -s globstar nullglob
 
-export TERM=${TERM-xterm} # hopefully a good approximation of what github supports
+# bash sets TERM to dumb by default but does not export it
+compgen -e -X '!TERM' || export TERM=xterm # hopefully a good approximation of what github supports
 reset=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)

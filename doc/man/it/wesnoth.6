@@ -169,6 +169,15 @@ fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 dirotta l’output loggato in un file. I log file vengono creati nella
 directory dei log nella cartella dati utente.
 .TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+.TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 il numero di immagini al secondo che il gioco può mostrare, il valore
 dovrebbe essere compreso tra \fI1\fP e \fI1000\fP; il valore predefinito è pari

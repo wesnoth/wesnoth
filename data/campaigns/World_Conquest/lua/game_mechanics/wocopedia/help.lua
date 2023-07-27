@@ -208,7 +208,6 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			page.checkbox_show_pickup_confirmation.selected = not wc2_utils.global_vars.skip_pickup_dialog
 			page.checkbox_show_pickup_confirmation.enabled = true
 
-			page.label_version.marked_up_text = wml.variables["wc2_host_version"] or "unknown"
 			page.label_difficulty.marked_up_text = wml.variables["wc2_difficulty.name"] or "unknown"
 
 			function page.checkbox_show_pickup_confirmation.on_modified()

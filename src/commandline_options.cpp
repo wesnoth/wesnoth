@@ -252,8 +252,8 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
 		("log-none", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'none'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in log output with more precision.")
-		("no-log-to-file", "log output is written to standard error rather than to a file.")
-		("log-to-file", "log output is written to a file even if it would normally go to standard output/error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
+		("no-log-to-file", "log output is written only to standard error rather than to a file.")
+		("log-to-file", "log output is written to a file in addition to standard output/error. Cancels the effect of --no-log-to-file whether implicit or explicit.")
 		("wnoconsole", "For Windows, when used with --no-log-to-file, results in output being written to cerr/cout instead of CONOUT. Otherwise, does nothing.")
 		;
 

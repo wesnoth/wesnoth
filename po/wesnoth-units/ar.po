@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-21 03:01 UTC\n"
+"POT-Creation-Date: 2023-07-16 03:12 UTC\n"
 "PO-Revision-Date: 2022-07-20 12:30+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -39,8 +39,6 @@ msgstr "صولجان"
 #: data/campaigns/Delfadors_Memoirs/units/Mage_Magister.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Frontier_Baroness.cfg:64
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:27
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:26
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:26
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:64
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:65
@@ -91,7 +89,7 @@ msgstr "سيف قصير"
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:35
 #: data/core/units/undead/Necro_Dark_Adept.cfg:29
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:57
-#: data/core/units/undead/Necromancer.cfg:38
+#: data/core/units/undead/Necromancer.cfg:41
 msgid "chill wave"
 msgstr "موجة البرد"
 
@@ -107,7 +105,7 @@ msgstr "موجة البرد"
 #: data/core/units/undead/Necro_Dark_Adept.cfg:41
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:69
 #: data/core/units/undead/Necro_Lich.cfg:59
-#: data/core/units/undead/Necromancer.cfg:50
+#: data/core/units/undead/Necromancer.cfg:53
 msgid "shadow wave"
 msgstr "موجة الظل"
 
@@ -191,7 +189,7 @@ msgstr "مخباط "
 #: data/core/units/elves/Scout.cfg:32 data/core/units/elves/Sharpshooter.cfg:24
 #: data/core/units/humans/Horse_Knight.cfg:23
 #: data/core/units/humans/Horse_Paladin.cfg:39
-#: data/core/units/humans/Loyalist_Cavalryman.cfg:59
+#: data/core/units/humans/Loyalist_Cavalryman.cfg:58
 #: data/core/units/humans/Loyalist_Dragoon.cfg:35
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:27
 #: data/core/units/humans/Loyalist_Longbowman.cfg:25
@@ -222,7 +220,7 @@ msgstr "سيف "
 #: data/core/units/dunefolk/Marauder.cfg:70
 #: data/core/units/dunefolk/Raider.cfg:68 data/core/units/elves/Archer.cfg:32
 #: data/core/units/elves/Avenger.cfg:48 data/core/units/elves/Captain.cfg:43
-#: data/core/units/elves/Champion.cfg:32 data/core/units/elves/Fighter.cfg:31
+#: data/core/units/elves/Champion.cfg:33 data/core/units/elves/Fighter.cfg:31
 #: data/core/units/elves/Hero.cfg:31 data/core/units/elves/Marshal.cfg:48
 #: data/core/units/elves/Outrider.cfg:54 data/core/units/elves/Ranger.cfg:47
 #: data/core/units/elves/Rider.cfg:41 data/core/units/elves/Scout.cfg:41
@@ -258,7 +256,7 @@ msgstr "قوس"
 #: data/core/units/monsters/Falcon.cfg:86
 #: data/core/units/monsters/Icemonax.cfg:53
 #: data/core/units/monsters/Icemonax_Greater.cfg:54
-#: data/core/units/monsters/Jinn.cfg:90 data/core/units/monsters/Roc.cfg:37
+#: data/core/units/monsters/Jinn.cfg:91 data/core/units/monsters/Roc.cfg:37
 #: data/core/units/monsters/Skeletal_Dragon.cfg:43
 #: data/core/units/undead/Corpse_Ghoul.cfg:32
 #: data/core/units/undead/Corpse_Necrophage.cfg:26
@@ -404,15 +402,13 @@ msgstr "مستحضر الأرواح"
 
 #. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Necromancer.cfg:11
-#: data/core/units/undead/Necromancer.cfg:26
+#: data/core/units/undead/Necromancer.cfg:29
 msgid "plague staff"
 msgstr "صولجان الطاعون"
 
 #. [attack]: type=pierce
 #. [attack]: type=cold
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
-#: data/campaigns/Son_Of_The_Black_Eye/units/Novice_Orcish_Shaman.cfg:35
-#: data/campaigns/Son_Of_The_Black_Eye/units/Old_Orcish_Shaman.cfg:35
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:36
 #: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:45
@@ -480,10 +476,10 @@ msgstr "الأنياب"
 #: data/core/units/monsters/Icemonax_Greater.cfg:63
 #: data/core/units/monsters/Scarab.cfg:44
 #: data/core/units/monsters/Seahorse.cfg:34
-#: data/core/units/monsters/Wild_Wyvern.cfg:95
+#: data/core/units/monsters/Wild_Wyvern.cfg:97
 #: data/core/units/undead/Corpse_Ghast.cfg:27
-#: data/core/units/undead/Corpse_Soulless.cfg:277
-#: data/core/units/undead/Corpse_Walking.cfg:278
+#: data/core/units/undead/Corpse_Soulless.cfg:278
+#: data/core/units/undead/Corpse_Walking.cfg:279
 msgid "bite"
 msgstr "عضة"
 
@@ -1221,7 +1217,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:29 data/core/units/drakes/Hurricane.cfg:51
 #: data/core/units/drakes/Sky.cfg:50
-#: data/core/units/monsters/Wild_Wyvern.cfg:86
+#: data/core/units/monsters/Wild_Wyvern.cfg:88
 msgid "slam"
 msgstr "ضربة الرأس"
 
@@ -4482,8 +4478,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:382
-#: data/core/units/undead/Corpse_Walking.cfg:383
+#: data/core/units/undead/Corpse_Soulless.cfg:383
+#: data/core/units/undead/Corpse_Walking.cfg:384
 msgid "tusk"
 msgstr "ناب"
 
@@ -5039,12 +5035,12 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Jinn.cfg:99
+#: data/core/units/monsters/Jinn.cfg:100
 msgid "desert windblast"
 msgstr "الرياح الصحراوية"
 
 #. [attack]: type=fire
-#: data/core/units/monsters/Jinn.cfg:108
+#: data/core/units/monsters/Jinn.cfg:109
 msgid "desert lightning"
 msgstr "برق الصحراء"
 
@@ -5249,7 +5245,7 @@ msgid "Wild Wyvern"
 msgstr "ويفرن بري"
 
 #. [unit_type]: id=Wild Wyvern, race=monster
-#: data/core/units/monsters/Wild_Wyvern.cfg:44
+#: data/core/units/monsters/Wild_Wyvern.cfg:45
 msgid ""
 "Wyverns are large reptiles that resemble dragons, but are not the "
 "intelligent, magical creatures. However, the fact that they are just wild "
@@ -6173,106 +6169,106 @@ msgid "wc_variation^Falcon"
 msgstr "جثة صقر"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:205
-#: data/core/units/undead/Corpse_Walking.cfg:206
+#: data/core/units/undead/Corpse_Soulless.cfg:206
+#: data/core/units/undead/Corpse_Walking.cfg:207
 msgid "wc_variation^Goblin"
 msgstr "جثة غوبلن"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:215
-#: data/core/units/undead/Corpse_Walking.cfg:239
+#: data/core/units/undead/Corpse_Soulless.cfg:216
+#: data/core/units/undead/Corpse_Walking.cfg:240
 msgid "wc_variation^Horse"
 msgstr "جثة حصان"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:224
-#: data/core/units/undead/Corpse_Walking.cfg:248
+#: data/core/units/undead/Corpse_Soulless.cfg:225
+#: data/core/units/undead/Corpse_Walking.cfg:249
 msgid "wc_variation^Mounted"
 msgstr "جثة راكب"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:233
-#: data/core/units/undead/Corpse_Walking.cfg:257
+#: data/core/units/undead/Corpse_Soulless.cfg:234
+#: data/core/units/undead/Corpse_Walking.cfg:258
 msgid "wc_variation^Beast-Rider"
 msgstr "جثة راكب وحش"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:242
-#: data/core/units/undead/Corpse_Walking.cfg:216
+#: data/core/units/undead/Corpse_Soulless.cfg:243
+#: data/core/units/undead/Corpse_Walking.cfg:217
 msgid "wc_variation^Gryphon"
 msgstr "جثة جرايفون"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:265
-#: data/core/units/undead/Corpse_Walking.cfg:266
+#: data/core/units/undead/Corpse_Soulless.cfg:266
+#: data/core/units/undead/Corpse_Walking.cfg:267
 msgid "wc_variation^Rat"
 msgstr "جثة فأر"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:282
-#: data/core/units/undead/Corpse_Walking.cfg:283
+#: data/core/units/undead/Corpse_Soulless.cfg:283
+#: data/core/units/undead/Corpse_Walking.cfg:284
 msgid "wc_variation^Saurian"
 msgstr "جثة سحلي"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:292
-#: data/core/units/undead/Corpse_Walking.cfg:293
+#: data/core/units/undead/Corpse_Soulless.cfg:293
+#: data/core/units/undead/Corpse_Walking.cfg:294
 msgid "wc_variation^Scorpion"
 msgstr "جثة عقرب"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:310
-#: data/core/units/undead/Corpse_Walking.cfg:311
+#: data/core/units/undead/Corpse_Soulless.cfg:311
+#: data/core/units/undead/Corpse_Walking.cfg:312
 #, fuzzy
 #| msgid "wc_variation^Spider"
 msgid "wc_variation^Scuttler"
 msgstr "جثة عنكبوت"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:319
-#: data/core/units/undead/Corpse_Walking.cfg:320
+#: data/core/units/undead/Corpse_Soulless.cfg:320
+#: data/core/units/undead/Corpse_Walking.cfg:321
 msgid "wc_variation^Spider"
 msgstr "جثة عنكبوت"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:328
-#: data/core/units/undead/Corpse_Walking.cfg:329
+#: data/core/units/undead/Corpse_Soulless.cfg:329
+#: data/core/units/undead/Corpse_Walking.cfg:330
 msgid "wc_variation^Serpent"
 msgstr "جثة ثعبان"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:347
-#: data/core/units/undead/Corpse_Walking.cfg:348
+#: data/core/units/undead/Corpse_Soulless.cfg:348
+#: data/core/units/undead/Corpse_Walking.cfg:349
 msgid "wc_variation^Swimmer"
 msgstr "جثة سبّاح"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:365
-#: data/core/units/undead/Corpse_Walking.cfg:366
+#: data/core/units/undead/Corpse_Soulless.cfg:366
+#: data/core/units/undead/Corpse_Walking.cfg:367
 msgid "wc_variation^Troll"
 msgstr "جثة ترول"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:374
-#: data/core/units/undead/Corpse_Walking.cfg:375
+#: data/core/units/undead/Corpse_Soulless.cfg:375
+#: data/core/units/undead/Corpse_Walking.cfg:376
 msgid "wc_variation^Boar"
 msgstr "جثة خنزير"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:387
-#: data/core/units/undead/Corpse_Walking.cfg:388
+#: data/core/units/undead/Corpse_Soulless.cfg:388
+#: data/core/units/undead/Corpse_Walking.cfg:389
 msgid "wc_variation^Wose"
 msgstr "جثة ووز"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:399
-#: data/core/units/undead/Corpse_Walking.cfg:400
+#: data/core/units/undead/Corpse_Soulless.cfg:400
+#: data/core/units/undead/Corpse_Walking.cfg:401
 msgid "wc_variation^Wolf"
 msgstr "جثة ذئب"
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:412
-#: data/core/units/undead/Corpse_Walking.cfg:413
+#: data/core/units/undead/Corpse_Soulless.cfg:413
+#: data/core/units/undead/Corpse_Walking.cfg:414
 msgid "wc_variation^Bat"
 msgstr "جثة خفّاش"
 
@@ -6386,7 +6382,7 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Necromancer, race=human
-#: data/core/units/undead/Necromancer.cfg:19
+#: data/core/units/undead/Necromancer.cfg:22
 msgid ""
 "One of the pinnacles of what is considered ‘black magic’ is the art of "
 "necromancy, the terrible ability to awaken the dead with false life. This "
@@ -6398,7 +6394,7 @@ msgid ""
 msgstr ""
 
 #. [female]
-#: data/core/units/undead/Necromancer.cfg:149
+#: data/core/units/undead/Necromancer.cfg:152
 msgid "female^Necromancer"
 msgstr "مستحضرة الأرواح"
 

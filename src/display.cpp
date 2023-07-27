@@ -2159,24 +2159,16 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 		if (map_center_x < r.x) {
 			target_x = r.x;
-			target_y = map_center_y;
-			if (target_y < r.y) target_y = r.y;
-			if (target_y > r.y+r.h-1) target_y = r.y+r.h-1;
+			target_y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if (map_center_x > r.x+r.w-1) {
-			target_x = r.x+r.w-1;
-			target_y = map_center_y;
-			if (target_y < r.y) target_y = r.y;
-			if (target_y >= r.y+r.h) target_y = r.y+r.h-1;
+			target_x = r.x + r.w - 1;
+			target_y = std::clamp(map_center_y, r.y, r.y + r.h - 1);
 		} else if (map_center_y < r.y) {
 			target_y = r.y;
-			target_x = map_center_x;
-			if (target_x < r.x) target_x = r.x;
-			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
+			target_x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else if (map_center_y > r.y+r.h-1) {
-			target_y = r.y+r.h-1;
-			target_x = map_center_x;
-			if (target_x < r.x) target_x = r.x;
-			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
+			target_y = r.y + r.h - 1;
+			target_x = std::clamp(map_center_x, r.x, r.x + r.w - 1);
 		} else {
 			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all...";
 			// keep the target at the center
@@ -2189,14 +2181,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 
 void display::bounds_check_position()
 {
-	if(zoom_ < MinZoom) {
-		zoom_ = MinZoom;
-	}
-
-	if(zoom_ > MaxZoom) {
-		zoom_ = MaxZoom;
-	}
-
+	zoom_ = std::clamp(zoom_, MinZoom, MaxZoom);
 	bounds_check_position(xpos_, ypos_);
 }
 
@@ -2205,24 +2190,11 @@ void display::bounds_check_position(int& xpos, int& ypos) const
 	const int tile_width = hex_width();
 
 	// Adjust for the border 2 times
-	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width/3);
-	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_/2);
+	const int xend = static_cast<int>(tile_width * (get_map().w() + 2 * theme_.border().size) + tile_width / 3);
+	const int yend = static_cast<int>(zoom_ * (get_map().h() + 2 * theme_.border().size) + zoom_ / 2);
 
-	if(xpos > xend - map_area().w) {
-		xpos = xend - map_area().w;
-	}
-
-	if(ypos > yend - map_area().h) {
-		ypos = yend - map_area().h;
-	}
-
-	if(xpos < 0) {
-		xpos = 0;
-	}
-
-	if(ypos < 0) {
-		ypos = 0;
-	}
+	xpos = std::clamp(xpos, 0, xend - map_area().w);
+	ypos = std::clamp(ypos, 0, yend - map_area().h);
 }
 
 double display::turbo_speed() const
