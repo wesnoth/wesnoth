@@ -14,7 +14,7 @@ end
 function ca_ogres_flee:execution()
     local units = AH.get_units_with_moves { side = wesnoth.current.side }
 
-    local units_noMP = wesnoth.units.find_on_map { side = wesnoth.current.side,
+    local units_no_mp = wesnoth.units.find_on_map { side = wesnoth.current.side,
         formula = 'movement_left = 0'
     }
 
@@ -22,9 +22,9 @@ function ca_ogres_flee:execution()
     local enemies = wesnoth.units.find_on_map {  { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } } }
     local enemy_attack_map = BC.get_attack_map(enemies)
 
-    local max_rating, best_hex, best_unit = - math.huge
+    local max_rating, best_hex, best_unit = - math.huge, nil, nil
     for i,u in ipairs(units) do
-        local reach = wesnoth.find_reach(u)
+        local reach = wesnoth.paths.find_reach(u)
         for j,r in ipairs(reach) do
             local unit_in_way = wesnoth.units.get(r[1], r[2])
 
@@ -58,7 +58,7 @@ function ca_ogres_flee:execution()
                 -- Also, maximize distance from own units that have already moved
                 local own_unit_weight = 0.5
                 local own_unit_rating = 0
-                for k,u_noMP in ipairs(units_noMP) do
+                for k,u_noMP in ipairs(units_no_mp) do
                     dist = M.distance_between(r[1], r[2], u_noMP.x, u_noMP.y)
                     own_unit_rating = own_unit_rating + math.sqrt(dist)
                 end
