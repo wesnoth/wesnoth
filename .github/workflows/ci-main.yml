@@ -284,9 +284,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            D:/a/wesnoth/vcpkg
             D:/a/wesnoth/wesnoth/vcpkg_installed
-          key: win-cache-master-${{ matrix.cfg }}-0001
+          key: win-cache-master-${{ matrix.cfg }}-0002
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
