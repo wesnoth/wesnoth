@@ -32,7 +32,7 @@ function wml_actions.item_dialog( cfg )
 			}
 		}
 	}
-	
+
 	local buttonbox = T.grid {
 		T.row {
 			T.column {
@@ -54,7 +54,7 @@ function wml_actions.item_dialog( cfg )
 			}
 		}
 	}
-	
+
 	local item_dialog = {
 		T.helptip { id="tooltip_large" }, -- mandatory field
 		T.tooltip { id="tooltip_large" }, -- mandatory field
