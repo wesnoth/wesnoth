@@ -456,6 +456,7 @@ void play_controller::maybe_do_init_side()
 
 void play_controller::do_init_side()
 {
+	{
 	set_scontext_synced sync;
 	log_scope("player turn");
 	// In case we might end up calling sync:network during the side turn events,
@@ -526,6 +527,7 @@ void play_controller::do_init_side()
 	check_victory();
 	sync.do_final_checkup();
 	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
+	}
 
 	init_side_end();
 
