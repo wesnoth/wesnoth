@@ -458,6 +458,7 @@ void play_controller::maybe_do_init_side()
 
 void play_controller::do_init_side()
 {
+	{
 	set_scontext_synced sync;
 	log_scope("player turn");
 	// In case we might end up calling sync:network during the side turn events,
@@ -525,9 +526,10 @@ void play_controller::do_init_side()
 	// Make sure vision is accurate.
 	actions::clear_shroud(current_side(), true);
 
-	init_side_end();
 	check_victory();
 	sync.do_final_checkup();
+	}
+	init_side_end();
 }
 
 void play_controller::init_side_end()
