@@ -62,14 +62,9 @@ jobs:
         LTO: ${{ matrix.lto }}
         CLICOLOR_FORCE: 1
         SDL_VIDEODRIVER: dummy
-    defaults:
-      run:
-        shell: bash
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: "recursive"
+      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
 # wesnothd and campaignd should be buildable without SDL2 being present
       - name: Build wesnoth, wesnothd, campaignd and unit tests
