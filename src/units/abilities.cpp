@@ -224,7 +224,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	for(const config& i : this->abilities_.child_range(tag_name)) {
 		if(ability_active(tag_name, i, loc)
 			&& ability_affects_self(tag_name, i, loc))
-			{
+		{
 			res.emplace_back(&i, loc, loc);
 		}
 	}
@@ -247,7 +247,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 			if(affects_side(j, side(), it->side())
 				&& it->ability_active(tag_name, j, adjacent[i])
 				&& ability_affects_adjacent(tag_name, j, i, loc, *it))
-				{
+			{
 				res.emplace_back(&j, loc, adjacent[i]);
 			}
 		}

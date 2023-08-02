@@ -189,7 +189,7 @@ public:
 	}
 
 	std::string generator_name() const
-		{
+	{
 		return generator_name_;
 	}
 
