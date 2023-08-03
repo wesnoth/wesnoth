@@ -83,27 +83,30 @@ void initialize_addon(const std::string& addon_id)
 	}
 }
 
-EXIT_STATUS start(const std::string& filename /* = "" */,
-	bool take_screenshot /* = false */, const std::string& screenshot_filename /* = "map_screenshot.png" */)
+EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screenshot, const std::string& screenshot_filename)
 {
 	EXIT_STATUS e = EXIT_ERROR;
 	try {
 		const hotkey::scope_changer h{hotkey::scope_editor};
 
 		std::string addon_id = "";
-		while(true)
-		{
-			gui2::dialogs::editor_choose_addon choose(addon_id);
-			if(choose.show()) {
-				break;
-			} else {
-				return EXIT_STATUS::EXIT_NORMAL;
+		if(clear_id) {
+			while(true)
+			{
+				gui2::dialogs::editor_choose_addon choose(addon_id);
+				if(choose.show()) {
+					break;
+				} else {
+					return EXIT_STATUS::EXIT_NORMAL;
+				}
 			}
-		}
 
-		if(addon_id == "newaddon") {
-			std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-			addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
+			if(addon_id == "newaddon") {
+				std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+				addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
+			}
+		} else {
+			addon_id = editor_controller::current_addon_id_;
 		}
 		editor_controller editor(addon_id);
 

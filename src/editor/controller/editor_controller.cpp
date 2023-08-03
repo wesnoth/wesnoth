@@ -64,6 +64,8 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
+std::string editor_controller::current_addon_id_ = "";
+
 editor_controller::editor_controller(const std::string& addon_id)
 	: controller_base()
 	, mouse_handler_base()
@@ -81,6 +83,8 @@ editor_controller::editor_controller(const std::string& addon_id)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_()
 {
+	editor_controller::current_addon_id_ = addon_id;
+
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config_));
