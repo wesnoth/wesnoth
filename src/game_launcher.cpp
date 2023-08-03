@@ -644,7 +644,7 @@ bool game_launcher::play_screenshot_mode()
 
 	::init_textdomains(game_config_manager::get()->game_config());
 
-	editor::start(screenshot_map_, true, screenshot_filename_);
+	editor::start(false, screenshot_map_, true, screenshot_filename_);
 	return false;
 }
 
@@ -1045,12 +1045,13 @@ void game_launcher::play_replay()
 
 editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
+	editor::EXIT_STATUS res = editor::EXIT_STATUS::EXIT_NORMAL;
 	while(true) {
 		game_config_manager::get()->load_game_config_for_editor();
 
 		::init_textdomains(game_config_manager::get()->game_config());
 
-		editor::EXIT_STATUS res = editor::start(filename);
+		res = editor::start(res != editor::EXIT_RELOAD_DATA, filename);
 
 		if(res != editor::EXIT_RELOAD_DATA) {
 			return res;

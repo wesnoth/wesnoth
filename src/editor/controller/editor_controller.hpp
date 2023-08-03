@@ -239,6 +239,8 @@ class editor_controller : public controller_base,
 		/* managers */
 	public:
 		const std::unique_ptr<context_manager> context_manager_;
+
+		static std::string current_addon_id_;
 	private:
 		std::unique_ptr<editor_toolkit> toolkit_;
 		tooltips::manager tooltip_manager_;
