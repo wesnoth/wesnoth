@@ -825,8 +825,19 @@ std::vector<std::string> quoted_split(const std::string& val, char c, int flags,
 std::pair<int, int> parse_range(const std::string& str)
 {
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
-	const std::string a(str.begin(), dash);
-	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
+	const std::string& neg_prefix = "neg";
+	std::string a(str.begin(), dash);
+	std::size_t pos = a.find(neg_prefix);
+	if (pos != std::string::npos){
+		a.replace(pos, neg_prefix.length(), "-");
+	}
+	std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
+	if (b !=a){
+		pos = b.find(neg_prefix);
+		if (pos != std::string::npos){
+		b.replace(pos, neg_prefix.length(), "-");
+		}
+	}
 	std::pair<int,int> res {0,0};
 	try {
 		if (b == "infinity") {
@@ -848,8 +859,19 @@ std::pair<int, int> parse_range(const std::string& str)
 std::pair<double, double> parse_range_real(const std::string& str)
 {
 	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
-	const std::string a(str.begin(), dash);
-	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
+	const std::string& neg_prefix = "neg";
+	std::string a(str.begin(), dash);
+	std::size_t pos = a.find(neg_prefix);
+	if (pos != std::string::npos){
+		a.replace(pos, neg_prefix.length(), "-");
+	}
+	std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
+	if (b !=a){
+		pos = b.find(neg_prefix);
+		if (pos != std::string::npos){
+		b.replace(pos, neg_prefix.length(), "-");
+		}
+	}
 	std::pair<double,double> res {0,0};
 	try {
 		if(b == "infinity") {
