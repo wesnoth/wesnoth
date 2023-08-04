@@ -46,7 +46,7 @@ void editor_choose_addon::post_show(window& win)
 	int selected_row = existing_addons.get_selected_row();
 
 	if(selected_row == 0) {
-		addon_id_ = "newaddon";
+		addon_id_ = "///newaddon///";
 	} else if(selected_row == 1 && find_widget<toggle_button>(get_window(), "show_all", false).get_value_bool()) {
 		addon_id_ = "mainline";
 	} else {

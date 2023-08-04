@@ -101,7 +101,7 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 				}
 			}
 
-			if(addon_id == "newaddon") {
+			if(addon_id == "///newaddon///") {
 				std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 				addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
 			}
