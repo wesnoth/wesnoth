@@ -824,7 +824,7 @@ std::vector<std::string> quoted_split(const std::string& val, char c, int flags,
 
 std::pair<int, int> parse_range(const std::string& str, bool alter_sep)
 {
-	const std::string::const_iterator dash = alter_sep ? std::find(str.begin(), str.end(), '_') : std::find(str.begin(), str.end(), '-');
+	const std::string::const_iterator dash = alter_sep ? std::find(str.begin(), str.end(), '~') : std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
 	std::pair<int,int> res {0,0};
@@ -847,7 +847,7 @@ std::pair<int, int> parse_range(const std::string& str, bool alter_sep)
 
 std::pair<double, double> parse_range_real(const std::string& str, bool alter_sep)
 {
-	const std::string::const_iterator dash = alter_sep ? std::find(str.begin(), str.end(), '_') : std::find(str.begin(), str.end(), '-');
+	const std::string::const_iterator dash = alter_sep ? std::find(str.begin(), str.end(), '~') : std::find(str.begin(), str.end(), '-');
 	const std::string a(str.begin(), dash);
 	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
 	std::pair<double,double> res {0,0};
