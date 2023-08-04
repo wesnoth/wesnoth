@@ -282,13 +282,13 @@ std::string bullet_list(const T& v, std::size_t indent = 4, const std::string& b
  */
 std::string indent(const std::string& string, std::size_t indent_size = 4);
 
-std::pair<int, int> parse_range(const std::string& str);
+std::pair<int, int> parse_range(const std::string& str, bool alter_sep = false);
 
-std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
+std::vector<std::pair<int, int>> parse_ranges(const std::string& str, bool alter_sep = false);
 
-std::pair<double, double> parse_range_real(const std::string& str);
+std::pair<double, double> parse_range_real(const std::string& str, bool alter_sep = false);
 
-std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);
+std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str, bool alter_sep = false);
 
 int apply_modifier(const int number, const std::string &amount, const int minimum = 0);
 

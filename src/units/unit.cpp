@@ -1454,7 +1454,7 @@ static bool int_matches_if_present(const config& filter, const config& cfg, cons
 			return false;
 		}
 	}
-	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges(filter[attribute].str()));
+	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges(filter[attribute].str(), true));
 }
 
 static bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
@@ -1463,7 +1463,7 @@ static bool double_matches_if_present(const config& filter, const config& cfg, c
 		return true;
 	}
 
-	return in_ranges<double>(cfg[attribute].to_double(1), utils::parse_ranges_real(filter[attribute].str()));
+	return in_ranges<double>(cfg[attribute].to_double(1), utils::parse_ranges_real(filter[attribute].str(), true));
 }
 
 static bool type_value_if_present(const config& filter, const config& cfg)
