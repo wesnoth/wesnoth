@@ -49,6 +49,7 @@ jobs:
     - name: Install dependencies
       if: matrix.language == 'cpp'
       run: |
+        sudo apt update
         sudo apt install scons libboost-system1.74-dev libboost-filesystem1.74-dev libboost-iostreams1.74-dev \
           libboost-serialization1.74-dev libboost-locale1.74-dev libboost-regex1.74-dev libboost-random1.74-dev \
           libboost-program-options1.74-dev libboost-thread1.74-dev libboost-context1.74-dev libboost-test-dev \
