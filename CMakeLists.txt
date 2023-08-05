@@ -58,7 +58,7 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.66")
+set(BOOST_VERSION "1.67")
 
 # set what std version to use
 if(NOT CXX_STD)
@@ -448,7 +448,7 @@ if(NOT MSVC)
 else()
 	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
-	add_definitions(-D_WIN32_WINNT=_WIN32_WINNT_WIN7 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
+	add_definitions(-D_WIN32_WINNT=0x0601 -D_CRT_SECURE_NO_WARNINGS -D_WINSOCK_DEPRECATED_NO_WARNINGS -DNOMINMAX)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
 	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")

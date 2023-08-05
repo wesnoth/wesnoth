@@ -277,7 +277,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
-          key: win-cache-master-${{ matrix.cfg }}-0004
+          key: win-cache-master-${{ matrix.cfg }}-0005
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
