@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "POT-Creation-Date: 2023-06-17 23:20-0500\n"
-"PO-Revision-Date: 2023-04-29 17:33+0200\n"
+"PO-Revision-Date: 2023-07-29 23:16+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -581,16 +581,15 @@ msgid ""
 "prevents redirecting logged output to a file. Log files are created in the "
 "logs directory under the userdata folder."
 msgstr ""
-"dirotta l’output loggato in un file. I log file vengono creati nella "
-"directory dei log nella cartella dati utente."
+"impedisce il reindirizzamento dell’output registrato in un file. I log file "
+"vengono creati nella directory dei log nella cartella dati utente."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:195
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
@@ -598,14 +597,15 @@ msgid ""
 "log output is written to a file in addition to standard output/error. "
 "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgstr ""
+"il registro di output è scritto in un file addizionale oltre allo standard "
+"output/errore. Annulla l’effetto di --no-log-to-file implicito o esplicito."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -613,6 +613,9 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"In ambiente Windows, quando usato in combinazione con --no-log-to-file, "
+"l’output viene scritto in cerr&Cout invece che in CONOUT. Altrimenti, non ha "
+"effetto."
 
 # type: TP
 #. type: TP
@@ -1078,21 +1081,14 @@ msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:358
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
 "esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere "
-"uno di quelli definiti con un tag WML B<test>. Una dimostrazione delle "
-"caratteristiche delle B<[micro_ai]> può essere avviata con B<micro_ai_test>. "
-"Implica B<--nogui>."
+"uno di quelli definiti con un tag WML B<[test]>. Una dimostrazione delle "
+"caratteristiche delle B<[micro_ai]> può essere avviata con B<micro_ai_test>."
 
 #. type: TP
 #: doc/man/wesnoth.6:358
@@ -1667,12 +1663,9 @@ msgstr "COPYRIGHT"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text

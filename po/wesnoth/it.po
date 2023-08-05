@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-07-15 22:12-0500\n"
-"PO-Revision-Date: 2023-04-16 17:24+0200\n"
+"PO-Revision-Date: 2023-07-30 16:42+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -4500,10 +4500,8 @@ msgstr "Carica Turno..."
 
 #. [menu]: id=menu-quickreplay
 #: data/themes/default.cfg:108
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay Turn..."
-msgstr "gioca il turno"
+msgstr "Gioca Turno..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:116
@@ -7010,20 +7008,14 @@ msgid "Match History — $player"
 msgstr "Storia delle Partite — $player"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:68
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenario"
-msgstr "Fine scenario"
+msgstr "Scenario"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:69
-#, fuzzy
-#| msgid "Era:"
 msgid "Era"
-msgstr "Era:"
+msgstr "Era"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:70
-#, fuzzy
-#| msgid "addon_type^Modification"
 msgid "Modification"
 msgstr "Modifica"
 
@@ -7087,10 +7079,8 @@ msgid "Error"
 msgstr "Errore"
 
 #: src/gui/dialogs/unit_attack.cpp:144 src/gui/dialogs/unit_attack.cpp:159
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other aspects: "
-msgstr "Altre partite"
+msgstr "Altri aspetti: "
 
 #: src/gui/dialogs/unit_attack.cpp:170 src/gui/dialogs/unit_attack.cpp:181
 #: src/reports.cpp:822 src/reports.cpp:1076 src/reports.cpp:1088
@@ -7109,7 +7099,7 @@ msgstr "Attacchi: "
 
 #: src/gui/dialogs/unit_attack.cpp:173 src/gui/dialogs/unit_attack.cpp:184
 msgid "Chance to hit: "
-msgstr ""
+msgstr "Probabilità di colpire: "
 
 #: src/gui/dialogs/unit_list.hpp:41
 msgid "No units found."
@@ -7262,16 +7252,12 @@ msgid "Back to Turn "
 msgstr "Torna al turno "
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "Ready to start!"
 msgid "Replay from Start"
-msgstr "Pronti per iniziare!"
+msgstr "Replay dall’inizio"
 
 #: src/hotkey/hotkey_handler.cpp:457
-#, fuzzy
-#| msgid "play turn"
 msgid "Replay from Turn "
-msgstr "gioca il turno"
+msgstr "Replay dal Turno "
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -8007,11 +7993,8 @@ msgstr ""
 "reclutamenti o dei richiami già pianificati."
 
 #: src/mouse_events.cpp:1273
-#, fuzzy
-#| msgid "Attack"
-#| msgid_plural "Attacks"
 msgid "No Attacks"
-msgstr "Attacco"
+msgstr "Nessun Attacco"
 
 #: src/mouse_events.cpp:1273
 msgid "This unit has no usable weapons."
@@ -8986,22 +8969,20 @@ msgid "This Time of Day is only a Stub!"
 msgstr "Questo periodo della giornata è soltanto una bozza!"
 
 #: src/units/abilities.cpp:915
-#, fuzzy
-#| msgid "slowed: "
 msgid "Owned: "
-msgstr "rallentato: "
+msgstr "Posseduta da: "
 
 #: src/units/abilities.cpp:918
 msgid "Taught: "
-msgstr ""
+msgstr "Appresa: "
 
 #: src/units/abilities.cpp:921
 msgid "Taught: (by an enemy): "
-msgstr ""
+msgstr "Appresa: (da un nemico): "
 
 #: src/units/abilities.cpp:934
 msgid "Used by opponent: "
-msgstr ""
+msgstr "Usata da un avversario: "
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:461

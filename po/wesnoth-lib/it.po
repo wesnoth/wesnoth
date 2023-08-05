@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-17 23:19-0500\n"
-"PO-Revision-Date: 2023-04-23 12:31+0200\n"
+"PO-Revision-Date: 2023-07-30 17:30+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1021,22 +1021,18 @@ msgstr "Parete di caverna terrosa naturale"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1413
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Parete di caverna naturale"
+msgstr "Parete di caverna danneggiata"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1423
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Siepi spesse"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1424
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Hedges Wall"
-msgstr "Parete di caverna"
+msgstr "Siepi"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1101,17 +1097,13 @@ msgstr "Parete di pietra ricoperta di vegetazione"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1542
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Parete di pietra"
+msgstr "Parete di pietra danneggiata"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Parete di miniera"
+msgstr "Parete danneggiata"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -3889,19 +3881,17 @@ msgstr "Copia questo report negli appunti"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Apri File Log"
+msgstr "Log File"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "Apre il file di log, che può contenere informazioni utili per il debug"
+msgstr ""
+"Apre il file di log della sessione corrente, che può contenere informazioni "
+"utili per il debug"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -4847,10 +4837,8 @@ msgstr "Nessuno"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:328
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Giocatori:"
+msgstr "Giocatore:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -4859,19 +4847,17 @@ msgstr "Giocatori:"
 #: data/gui/window/mp_match_history.cfg:382
 #: data/gui/window/mp_match_history.cfg:406
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "gli asterischi corrispondo a tutti i caratteri"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:351
 msgid "Content Type:"
-msgstr ""
+msgstr "Tipo di contenuto"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:370
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Nome squadra:"
+msgstr "Nome partita:"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:561
@@ -5241,7 +5227,7 @@ msgstr "Cambia la scorciatoia"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Dimensione finestra:"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
@@ -5250,8 +5236,6 @@ msgstr "Moltiplicatore scalatura Pixel:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the game resolution"
 msgid "Change the game window size"
 msgstr "Cambia la risoluzione del gioco"
 
@@ -5276,10 +5260,8 @@ msgstr "Passa da schermo intero a finestra"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
-#, fuzzy
-#| msgid "Pixel scale multiplier:"
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "Moltiplicatore scalatura Pixel:"
+msgstr "Scalatura automatica"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
@@ -5321,7 +5303,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Tema interfaccia:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -5329,23 +5311,23 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Cambia il tema dell'interfaccia in gioco. Nelle estensioni create dalla "
+"comunità si possono trovare temi aggiuntivi."
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Indicatori danni di combattimento"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Mostra danni e cure sopra un’unità"
+msgstr "Mostra danni e cure come etichette sfumate sopra un’unità"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Indicatori colore squadra"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -5359,7 +5341,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Sovrapposizione griglia"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -5388,22 +5370,18 @@ msgstr "Mostra la grafica animata per le acque (può essere lento)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Mostra animazione delle unità inattive"
+msgstr "Animazioni delle unità pronte"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
 msgid "Continuously animate standing units on the battlefield"
-msgstr "Anima continuamente le unità inattive sul campo di battaglia"
+msgstr "Anima continuamente le unità pronte sul campo di battaglia"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Mostra le animazioni delle unità inattive"
+msgstr "Animazioni delle unità inattive"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
@@ -6278,10 +6256,8 @@ msgid "Text has a font size of 0."
 msgstr "Il testo ha una dimensione di carattere di 0."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "Non è stata definita nessuna sezione state o draw."
+msgstr "Non è stata definita nessuna sezione di disegno per lo stato."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
@@ -7459,7 +7435,7 @@ msgstr "Elimina estensione dal server"
 #: src/gui/widgets/button.cpp:164 src/gui/widgets/button.cpp:165
 #: src/gui/widgets/button.cpp:166 src/gui/widgets/button.cpp:167
 msgid "Missing required state for button"
-msgstr ""
+msgstr "Stato obbligatorio mancante per il bottone"
 
 #: src/gui/widgets/chatbox.cpp:299
 msgid "whisper to $receiver"
@@ -7479,15 +7455,15 @@ msgstr ""
 
 #: src/gui/widgets/chatbox.cpp:657
 msgid "Missing required background for chatbox"
-msgstr ""
+msgstr "Sfondo obbligatorio mancante per la chat"
 
 #: src/gui/widgets/chatbox.cpp:658
 msgid "Missing required foreground for chatbox"
-msgstr ""
+msgstr "Primo piano obbligatorio mancante per la chat"
 
 #: src/gui/widgets/chatbox.cpp:660
 msgid "Missing required grid for chatbox"
-msgstr ""
+msgstr "Griglia obbligatori mancante per la chat"
 
 #: src/gui/widgets/drawing.cpp:119
 msgid "Missing [draw] in drawing"
@@ -7502,11 +7478,11 @@ msgstr "Non è stato definito il widget obbligatorio «$id»."
 #: src/gui/widgets/horizontal_scrollbar.cpp:135
 #: src/gui/widgets/horizontal_scrollbar.cpp:136
 msgid "Missing required state for horizontal scrollbar"
-msgstr ""
+msgstr "Stato obbligatorio mancante per la barra di scorrimento orizzontale"
 
 #: src/gui/widgets/image.cpp:115
 msgid "Missing required state for image control"
-msgstr ""
+msgstr "Stato obbligatorio mancante per immagine di controllo"
 
 #: src/gui/widgets/label.cpp:127
 msgid "Opening links is not supported, contact your packager"
@@ -7524,11 +7500,11 @@ msgstr "Link copiato!"
 
 #: src/gui/widgets/label.cpp:241 src/gui/widgets/label.cpp:242
 msgid "Missing required state for text label control"
-msgstr ""
+msgstr "Stato obbligatorio mancante per etichetta testuale di controllo"
 
 #: src/gui/widgets/listbox.cpp:710 src/gui/widgets/listbox.cpp:711
 msgid "Missing required state for listbox"
-msgstr ""
+msgstr "Stato obbligatorio mancante per listbox"
 
 #: src/gui/widgets/listbox.cpp:727 src/gui/widgets/multi_page.cpp:219
 msgid ""
@@ -7551,10 +7527,8 @@ msgid "Missing [content] in [matrix_definition]"
 msgstr "[content] mancante in [matrix_definition]"
 
 #: src/gui/widgets/matrix.cpp:191 src/gui/widgets/matrix.cpp:192
-#, fuzzy
-#| msgid "Missing [content] in [matrix_definition]"
 msgid "Missing required state for matrix definition"
-msgstr "[content] mancante in [matrix_definition]"
+msgstr "Manca lo stato necessario per la matrice di definizione mancante"
 
 #: src/gui/widgets/matrix.cpp:210
 msgid "Missing [main] in [matrix]"
@@ -7563,11 +7537,11 @@ msgstr "[main] mancante in [matrix]"
 #: src/gui/widgets/menu_button.cpp:234 src/gui/widgets/menu_button.cpp:235
 #: src/gui/widgets/menu_button.cpp:236 src/gui/widgets/menu_button.cpp:237
 msgid "Missing required state for menu button"
-msgstr ""
+msgstr "Stato obbligatorio mancante per bottone menu"
 
 #: src/gui/widgets/minimap.cpp:117
 msgid "Missing required state for minimap control"
-msgstr ""
+msgstr "Stato obbligatorio mancante per controllo minimappa"
 
 #: src/gui/widgets/multi_page.cpp:195
 msgid "No page defined."
@@ -7596,7 +7570,7 @@ msgstr "Nessuno selezionato"
 #: src/gui/widgets/multimenu_button.cpp:258
 #: src/gui/widgets/multimenu_button.cpp:259
 msgid "Missing required state for multimenu button"
-msgstr ""
+msgstr "Stato obbligatorio mancante per bottone multimenu"
 
 #: src/gui/widgets/pane.cpp:361
 msgid "Missing [item_definition] in [pane]"
@@ -7608,42 +7582,42 @@ msgstr "Necessita di almeno un item parallelo."
 
 #: src/gui/widgets/panel.cpp:111
 msgid "Missing required background for panel definition"
-msgstr ""
+msgstr "Sfondo obbligatorio mancante per definizione pannello"
 
 #: src/gui/widgets/panel.cpp:112
 msgid "Missing required foreground for panel definition"
-msgstr ""
+msgstr "Primo piano obbligatorio mancante per definizione pannello"
 
 #: src/gui/widgets/progress_bar.cpp:96
 msgid "Missing required state for progress bar"
-msgstr ""
+msgstr "Stato obbligatorio mancante per progress bar"
 
 #: src/gui/widgets/repeating_button.cpp:184
 #: src/gui/widgets/repeating_button.cpp:185
 #: src/gui/widgets/repeating_button.cpp:186
 #: src/gui/widgets/repeating_button.cpp:187
 msgid "Missing required state for repeating button"
-msgstr ""
+msgstr "Stato obbligatorio mancante per repeating button"
 
 #: src/gui/widgets/scroll_label.cpp:180 src/gui/widgets/scroll_label.cpp:181
 msgid "Missing required state for scroll label control"
-msgstr ""
+msgstr "Stato obbligatorio mancante per etichetta scorrimento di controllo"
 
 #: src/gui/widgets/scroll_label.cpp:183
 msgid "No grid defined for scroll label control"
-msgstr ""
+msgstr "Nessuna griglia definita per etichetta scorrimento di controllo"
 
 #: src/gui/widgets/scrollbar_panel.cpp:70
 msgid "Missing required background for scrollbar panel"
-msgstr ""
+msgstr "Sfondo obbligatorio mancante per pannello scrollbar"
 
 #: src/gui/widgets/scrollbar_panel.cpp:71
 msgid "Missing required foreground for scrollbar panel"
-msgstr ""
+msgstr "Primo piano obbligatorio mancante per pannello scrollbar"
 
 #: src/gui/widgets/scrollbar_panel.cpp:73
 msgid "Missing required grid for scrollbar panel"
-msgstr ""
+msgstr "Griglia obbligatoria mancante per pannello scrollbar"
 
 #: src/gui/widgets/size_lock.cpp:89
 msgid "Invalid size."
@@ -7656,7 +7630,7 @@ msgstr "Non è stata definito nessun widget."
 #: src/gui/widgets/slider.cpp:313 src/gui/widgets/slider.cpp:314
 #: src/gui/widgets/slider.cpp:315 src/gui/widgets/slider.cpp:316
 msgid "Missing required state for slider"
-msgstr ""
+msgstr "Stato obbligatorio mancante per slider"
 
 #: src/gui/widgets/slider.cpp:357
 msgid "The number of value_labels and values don't match."
@@ -7669,32 +7643,30 @@ msgstr "Non è stata definita nessuno stack layer."
 # XXX Controllare helptip e tooltip
 #: src/gui/widgets/styled_widget.cpp:603
 msgid "Found a widget with a helptip and without a tooltip."
-msgstr "Trovato un widget con un helptip e senza un tooltip."
+msgstr "Trovato un widget con un suggerimento e senza un commento (tooltip)."
 
 #: src/gui/widgets/text_box.cpp:411 src/gui/widgets/text_box.cpp:412
 #: src/gui/widgets/text_box.cpp:413 src/gui/widgets/text_box.cpp:414
 msgid "Missing required state for editable text box"
-msgstr ""
+msgstr "Stato obbligatorio mancante per box di testo modificabile"
 
 #: src/gui/widgets/toggle_button.cpp:214 src/gui/widgets/toggle_button.cpp:215
 #: src/gui/widgets/toggle_button.cpp:216
 msgid "Missing required state for toggle button"
-msgstr ""
+msgstr "Stato obbligatorio mancante per toggle button"
 
 #: src/gui/widgets/toggle_panel.cpp:302 src/gui/widgets/toggle_panel.cpp:303
 #: src/gui/widgets/toggle_panel.cpp:304
 msgid "Missing required state for toggle panel"
-msgstr ""
+msgstr "Stato obbligatorio mancante per toggle panel"
 
 #: src/gui/widgets/tree_view.cpp:268 src/gui/widgets/tree_view.cpp:269
 msgid "Missing required state for tree view"
-msgstr ""
+msgstr "Stato obbligatorio mancante per tree view"
 
 #: src/gui/widgets/tree_view.cpp:271
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tree view"
-msgstr "Non è stato definito nessun nodo per una vista ad albero."
+msgstr "Non è stata definita nessuna griglia per una vista ad albero"
 
 #: src/gui/widgets/tree_view.cpp:291
 msgid "No nodes defined for a tree view."
@@ -7766,22 +7738,22 @@ msgstr "Abilità"
 
 #: src/gui/widgets/unit_preview_pane.cpp:611
 msgid "Missing required background for unit preview pane"
-msgstr ""
+msgstr "Sfondo obbligatorio mancante per pannello anteprima unità"
 
 #: src/gui/widgets/unit_preview_pane.cpp:612
 msgid "Missing required foreground for unit preview pane"
-msgstr ""
+msgstr "Primo piano obbligatorio mancante per pannello anteprima unità"
 
 #: src/gui/widgets/unit_preview_pane.cpp:614
 msgid "Missing required grid for unit preview pane"
-msgstr ""
+msgstr "Griglia obbligatoria mancante per pannello anteprima unità"
 
 #: src/gui/widgets/vertical_scrollbar.cpp:123
 #: src/gui/widgets/vertical_scrollbar.cpp:124
 #: src/gui/widgets/vertical_scrollbar.cpp:125
 #: src/gui/widgets/vertical_scrollbar.cpp:126
 msgid "Missing required state for vertical scrollbar"
-msgstr ""
+msgstr "Stato obbligatorio mancante per scrollbar verticale"
 
 #: src/gui/widgets/viewport.cpp:172
 msgid "Missing [widget] in [viewport]"

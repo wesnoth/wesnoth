@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-06-18 04:20 UTC\n"
-"PO-Revision-Date: 2023-04-29 16:52+0200\n"
+"PO-Revision-Date: 2023-07-29 23:25+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -935,6 +935,8 @@ msgid ""
 "If the orcs have come here, their forces at Elensefar must be even more "
 "numerous than I feared."
 msgstr ""
+"Se gli orchi sono venuti qui, allora le loro forze ad Elensefar devono "
+"essere ancora più numerose di quanto temessi."
 
 #. [message]: speaker=Delfador
 #. a hint for players who are expecting campaigns to have a steadily-rising difficulty curve.
@@ -6225,10 +6227,8 @@ msgstr "Sposta Konrad alla caverna"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-#, fuzzy
-#| msgid "Rescue the sergeant"
 msgid "Rescue the lieutenant"
-msgstr "Salva il sergente"
+msgstr "Salva il tenente"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:154
@@ -6564,15 +6564,11 @@ msgstr "Vedo qualcuno sulla cima della scogliera più lontana!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
-#, fuzzy
-#| msgid ""
-#| "It is a young human sergeant, barely more than a boy. He appears badly "
-#| "hurt but still alive."
 msgid ""
 "It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
-"È un giovane sergente umano, poco più che un ragazzino. Sembra ferito in "
+"È un giovane ufficiale umano, poco più che un ragazzino. Sembra ferito in "
 "modo grave, ma è ancora vivo."
 
 #. [message]: speaker=unit
@@ -6649,19 +6645,14 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
-#, fuzzy
-#| msgid ""
-#| "Our main goal remains to survive ourselves, but if we can spare the "
-#| "troops, we might try to rescue the sergeant stranded on the cliff. "
-#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
 "we might try to rescue the officer stranded on the cliff. However, I make no "
 "promises."
 msgstr ""
 "Il nostro obiettivo principale rimane la sopravvivenza; ma, se riusciamo a "
-"non perdere molte truppe, potremmo anche cercare di salvare il sergente "
-"intrappolato sulla scogliera. Tuttavia, non prometto niente..."
+"non perdere molte truppe, potremmo anche cercare di salvare l’ufficiale "
+"intrappolato sul dirupo. Tuttavia, non prometto niente..."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:786
@@ -6701,16 +6692,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
-#, fuzzy
-#| msgid ""
-#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
 "healers to help you, young lieutenant."
 msgstr ""
 "Io sono la principessa Li’sar e noi siamo tuoi amici. Unisciti a noi e "
-"attendi che le nostre guaritrici ti vengano in soccorso, giovane sergente."
+"attendi che le nostre guaritrici ti vengano in soccorso, giovane tenente."
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:850
@@ -7710,40 +7697,31 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
-#, fuzzy
-#| msgid ""
-#| "Upon finishing the book, $unit.name| has a much greater understanding of "
-#| "the forest, its nature and ways, and all the creatures within it. "
-#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
 "$unit.name| becomes entranced and greatly gains affinity with the forest, "
 "its nature and ways, and all the creatures within it. He feels he will "
 "quickly become more experienced once reaching the surface. Unfortunately, as "
 "the last page was turned, the book crumbled to dust."
 msgstr ""
-"Alla fine della lettura del libro, $unit.name| ha acquisito una profonda "
-"conoscenza della foresta, della sua essenza e dei suoi modi di essere, "
-"nonché di tutte le creature che la frequentano. Sfortunatamente, non appena "
-"viene sfogliata l’ultima pagina, il libro si sbriciola in polvere."
+"$unit.name| cade in trance ed ottiene una profonda affinità con la foresta, "
+"la sua natura e i sui modi, e con tutte le creature al suo interno. Sente "
+"che diventerà rapidamente più esperto una volta raggiunta la superficie. "
+"Sfortunatamente, non appena viene sfogliata l’ultima pagina, il libro si "
+"sbriciola in polvere."
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
-#, fuzzy
-#| msgid ""
-#| "female^Upon finishing the book, $unit.name| has a much greater "
-#| "understanding of the forest, its nature and ways, and all the creatures "
-#| "within it. Unfortunately, as the last page was turned, the book crumbled "
-#| "to dust."
 msgid ""
 "female^$unit.name| becomes entranced and greatly gains affinity with the "
 "forest, its nature and ways, and all the creatures within it. She feels she "
 "will quickly become more experienced once reaching the surface. "
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
-"Alla fine della lettura del libro, $unit.name| ha acquisito una profonda "
-"conoscenza della foresta, della sua essenza e dei suoi modi di essere, "
-"nonché di tutte le creature che la frequentano. Sfortunatamente, non appena "
-"viene sfogliata l’ultima pagina, il libro si sbriciola in polvere."
+"$unit.name| cade in trance ed ottiene una profonda affinità con la foresta, "
+"la sua natura e i sui modi, e con tutte le creature al suo interno. Sente "
+"che diventerà rapidamente più esperta una volta raggiunta la superficie. "
+"Sfortunatamente, non appena viene sfogliata l’ultima pagina, il libro si "
+"sbriciola in polvere."
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
@@ -9304,10 +9282,8 @@ msgstr ""
 
 #. [unit_type]: id=Injured Lieutenant
 #: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
-#, fuzzy
-#| msgid "Injured Sergeant"
 msgid "Injured Lieutenant"
-msgstr "Sergente ferito"
+msgstr "Tenente ferito"
 
 #. [variation]
 #. [unit_type]: id=Lord
