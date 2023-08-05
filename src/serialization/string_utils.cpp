@@ -832,10 +832,10 @@ std::pair<int, int> parse_range(const std::string& str)
 		a.replace(pos, neg_prefix.length(), "-");
 	}
 	std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	if (b !=a){
+	if (b != a){
 		pos = b.find(neg_prefix);
 		if (pos != std::string::npos){
-		b.replace(pos, neg_prefix.length(), "-");
+			b.replace(pos, neg_prefix.length(), "-");
 		}
 	}
 	std::pair<int,int> res {0,0};
@@ -850,7 +850,7 @@ std::pair<int, int> parse_range(const std::string& str)
 			res.second = res.first;
 		}
 	} catch(const std::invalid_argument&) {
-	    ERR_GENERAL << "Invalid range: "<< str;
+		ERR_GENERAL << "Invalid range: "<< str;
 	}
 
 	return res;
@@ -866,10 +866,10 @@ std::pair<double, double> parse_range_real(const std::string& str)
 		a.replace(pos, neg_prefix.length(), "-");
 	}
 	std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	if (b !=a){
+	if (b != a){
 		pos = b.find(neg_prefix);
 		if (pos != std::string::npos){
-		b.replace(pos, neg_prefix.length(), "-");
+			b.replace(pos, neg_prefix.length(), "-");
 		}
 	}
 	std::pair<double,double> res {0,0};
