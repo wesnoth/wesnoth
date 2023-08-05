@@ -668,9 +668,9 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
  */
 struct inverse_table
 {
-	unsigned values[256];
+	unsigned values[256] {};
 
-	inverse_table()
+	constexpr inverse_table()
 	{
 		values[0] = 0;
 		for (int i = 1; i < 256; ++i) {
@@ -681,7 +681,7 @@ struct inverse_table
 	unsigned operator[](uint8_t i) const { return values[i]; }
 };
 
-static const inverse_table inverse_table_;
+static constexpr inverse_table inverse_table_;
 
 /***
  * Helper function for un-premultiplying alpha
