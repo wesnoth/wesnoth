@@ -28,6 +28,7 @@
 #include <cassert>
 #include <array>
 #include <limits>
+#include <optional>
 #include <stdexcept>
 
 #include <boost/algorithm/string.hpp>
@@ -822,24 +823,59 @@ std::vector<std::string> quoted_split(const std::string& val, char c, int flags,
 	return res;
 }
 
+namespace
+{
+/**
+ * Internal common code for parse_range and parse_range_real.
+ *
+ * If str contains two elements and a separator such as "a-b", returns a and b.
+ * Otherwise, returns the original string and std::nullopt.
+ */
+std::pair<std::string, std::optional<std::string>> parse_range_internal_separator(const std::string& str)
+{
+	// If turning this into a list with additional options, ensure that "-" (if present) is last. Otherwise a
+	// range such as "-2..-1" might be incorrectly split as "-2..", "1".
+	static const auto separator = std::string{"-"};
+
+	// Starting from the second character means that it won't interpret the minus
+	// sign on a negative number as the separator.
+	// No need to check the string length first, as str.find() already does that.
+	auto pos = str.find(separator, 1);
+	auto length = separator.size();
+
+	if(pos != std::string::npos && pos + length < str.size()) {
+		return {str.substr(0, pos), str.substr(pos + length)};
+	}
+
+	return {str, std::nullopt};
+}
+} // namespace
+
 std::pair<int, int> parse_range(const std::string& str)
 {
-	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
-	const std::string a(str.begin(), dash);
-	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<int,int> res {0,0};
+	auto [a, b] = parse_range_internal_separator(str);
+	std::pair<int, int> res{0, 0};
 	try {
-		if (b == "infinity") {
-			res = std::pair(std::stoi(a), std::numeric_limits<int>::max());
+		if(a == "-infinity" && b) {
+			// The "&& b" is so that we treat parse_range("-infinity") the same as parse_range("infinity"),
+			// both of those will report an invalid range.
+			res.first = std::numeric_limits<int>::min();
 		} else {
-			res = std::pair(std::stoi(a), std::stoi(b));
+			res.first = std::stoi(a);
 		}
 
-		if (res.second < res.first) {
+		if(!b) {
 			res.second = res.first;
+		} else if(*b == "infinity") {
+			res.second = std::numeric_limits<int>::max();
+		} else {
+			res.second = std::stoi(*b);
+			if(res.second < res.first) {
+				res.second = res.first;
+			}
 		}
 	} catch(const std::invalid_argument&) {
-	    ERR_GENERAL << "Invalid range: "<< str;
+		ERR_GENERAL << "Invalid range: " << str;
 	}
 
 	return res;
@@ -847,32 +883,42 @@ std::pair<int, int> parse_range(const std::string& str)
 
 std::pair<double, double> parse_range_real(const std::string& str)
 {
-	const std::string::const_iterator dash = std::find(str.begin(), str.end(), '-');
-	const std::string a(str.begin(), dash);
-	const std::string b = dash != str.end() ? std::string(dash + 1, str.end()) : a;
-	std::pair<double,double> res {0,0};
+	auto [a, b] = parse_range_internal_separator(str);
+	std::pair<double, double> res{0, 0};
 	try {
-		if(b == "infinity") {
-			res = std::pair(std::stod(a), std::numeric_limits<double>::infinity());
+		if(a == "-infinity" && b) {
+			// There's already a static-assert for is_iec559 in random.cpp, so this isn't limiting the architectures
+			// that Wesnoth can run on.
+			static_assert(std::numeric_limits<double>::is_iec559,
+				"Don't know how negative infinity is treated on this architecture");
+			res.first = -std::numeric_limits<double>::infinity();
 		} else {
-			res = std::pair(std::stod(a), std::stod(b));
+			res.first = std::stod(a);
 		}
 
-		if(res.second < res.first) {
+		if(!b) {
 			res.second = res.first;
+		} else if(*b == "infinity") {
+			res.second = std::numeric_limits<double>::infinity();
+		} else {
+			res.second = std::stod(*b);
+			if(res.second < res.first) {
+				res.second = res.first;
+			}
 		}
 	} catch(const std::invalid_argument&) {
-		ERR_GENERAL << "Invalid range: "<< str;
+		ERR_GENERAL << "Invalid range: " << str;
 	}
 
 	return res;
 }
 
-std::vector<std::pair<int, int>> parse_ranges(const std::string& str)
+std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str)
 {
-	std::vector<std::pair<int, int>> to_return;
-	for(const std::string& r : utils::split(str)) {
-		to_return.push_back(parse_range(r));
+	auto to_return = parse_ranges_int(str);
+	if(std::any_of(to_return.begin(), to_return.end(), [](const std::pair<int, int>& r) { return r.first < 0; })) {
+		ERR_GENERAL << "Invalid range (expected values to be zero or positive): " << str;
+		return {};
 	}
 
 	return to_return;
@@ -883,6 +929,16 @@ std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
 	std::vector<std::pair<double, double>> to_return;
 	for(const std::string& r : utils::split(str)) {
 		to_return.push_back(parse_range_real(r));
+	}
+
+	return to_return;
+}
+
+std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str)
+{
+	std::vector<std::pair<int, int>> to_return;
+	for(const std::string& r : utils::split(str)) {
+		to_return.push_back(parse_range(r));
 	}
 
 	return to_return;

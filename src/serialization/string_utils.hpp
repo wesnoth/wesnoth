@@ -282,10 +282,41 @@ std::string bullet_list(const T& v, std::size_t indent = 4, const std::string& b
  */
 std::string indent(const std::string& string, std::size_t indent_size = 4);
 
+/**
+ * Recognises the following patterns, and returns a {min, max} pair.
+ *
+ * * "1" returns {1, 1}
+ * * "1-3" returns {1, 3}
+ * * "1-infinity" returns {1, maximum int}
+ * * "-1" returns {-1, -1}
+ * * "-3--1" returns {-3, -1}
+ *
+ * Note that:
+ *
+ * * "3-1" returns {3, 3} and does not log an error
+ * * "-1--3" returns {-1, -1} and does not log an error
+ * * Although "-infinity--1", "2-infinity" and "-infinity-infinity" are all supported,
+ * * ranges that can't match a reasonable number, e.g. "-infinity" or "infinity..infinity", may be treated as errors.
+ */
 std::pair<int, int> parse_range(const std::string& str);
 
-std::vector<std::pair<int, int>> parse_ranges(const std::string& str);
+/**
+ * Handles a comma-separated list of inputs to parse_range, in a context that does not expect
+ * negative values. Will return an empty list if any of the ranges have a minimum that's below
+ * zero.
+ */
+std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str);
 
+/**
+ * Handles a comma-separated list of inputs to parse_range.
+ */
+std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str);
+
+/**
+ * Recognises similar patterns to parse_range, and returns a {min, max} pair.
+ *
+ * For this function, "infinity" results in std::numeric_limits<double>::infinity.
+ */
 std::pair<double, double> parse_range_real(const std::string& str);
 
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str);

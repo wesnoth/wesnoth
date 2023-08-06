@@ -52,6 +52,7 @@
 #include "units/id.hpp"
 #include "units/map.hpp" // for unit_map, etc
 #include "units/types.hpp"
+#include "utils/config_filters.hpp"
 #include "variable.hpp" // for vconfig, etc
 
 #include <cassert>                     // for assert
@@ -1420,52 +1421,6 @@ void unit::remove_ability_by_id(const std::string& ability)
 	}
 }
 
-static bool bool_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, bool def)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	return filter[attribute].to_bool() == cfg[attribute].to_bool(def);
-}
-
-static bool string_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, const std::string& def)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	const std::vector<std::string> filter_attribute = utils::split(filter[attribute]);
-	return ( std::find(filter_attribute.begin(), filter_attribute.end(), cfg[attribute].str(def)) != filter_attribute.end() );
-}
-
-static bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	if(cfg[attribute].empty() && (attribute == "add" || attribute == "sub")){
-		if(attribute == "add"){
-			return in_ranges<int>(-cfg["sub"].to_int(0), utils::parse_ranges(filter[attribute].str()));
-		} else if(attribute == "sub"){
-			return in_ranges<int>(-cfg["add"].to_int(0), utils::parse_ranges(filter[attribute].str()));
-		} else {
-			return false;
-		}
-	}
-	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges(filter[attribute].str()));
-}
-
-static bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
-{
-	if(filter[attribute].empty()) {
-		return true;
-	}
-
-	return in_ranges<double>(cfg[attribute].to_double(1), utils::parse_ranges_real(filter[attribute].str()));
-}
-
 static bool type_value_if_present(const config& filter, const config& cfg)
 {
 	if(filter["type_value"].empty()) {
@@ -1490,6 +1445,8 @@ static bool type_value_if_present(const config& filter, const config& cfg)
 
 static bool matches_ability_filter(const config & cfg, const std::string& tag_name, const config & filter)
 {
+	using namespace utils::config_filters;
+
 	if(!filter["affect_adjacent"].empty()){
 		bool adjacent = cfg.has_child("affect_adjacent");
 		if(filter["affect_adjacent"].to_bool() != adjacent){
@@ -1528,10 +1485,10 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!int_matches_if_present(filter, cfg, "value"))
 		return false;
 
-	if(!int_matches_if_present(filter, cfg, "add"))
+	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
 		return false;
 
-	if(!int_matches_if_present(filter, cfg, "sub"))
+	if(!int_matches_if_present_or_negative(filter, cfg, "sub", "add"))
 		return false;
 
 	if(!double_matches_if_present(filter, cfg, "multiply"))

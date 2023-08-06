@@ -47,7 +47,7 @@ static lg::log_domain log_wml("wml");
 namespace game_events {
 
 namespace builtin_conditions {
-	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges("1-infinity");
+	std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-infinity");
 
 	bool have_unit(const vconfig& cfg)
 	{
@@ -55,7 +55,7 @@ namespace builtin_conditions {
 			return false;
 		}
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-			? utils::parse_ranges(cfg["count"]) : default_counts;
+			? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		int match_count = 0;
 		const unit_filter ufilt(cfg);
 		for(const unit &i : resources::gameboard->units()) {
@@ -92,7 +92,7 @@ namespace builtin_conditions {
 		terrain_filter(cfg, resources::filter_con, false).get_locations(res);
 
 		std::vector<std::pair<int,int>> counts = cfg.has_attribute("count")
-		? utils::parse_ranges(cfg["count"]) : default_counts;
+		? utils::parse_ranges_unsigned(cfg["count"]) : default_counts;
 		return in_ranges<int>(res.size(), counts);
 	}
 
