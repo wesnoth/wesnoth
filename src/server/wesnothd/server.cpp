@@ -209,9 +209,7 @@ const std::string help_msg =
 
 server::server(int port,
 		bool keep_alive,
-		const std::string& config_file,
-		std::size_t /*min_threads*/,
-		std::size_t /*max_threads*/)
+		const std::string& config_file)
 	: server_base(port, keep_alive)
 	, ban_manager_()
 	, ip_log_()
@@ -2991,8 +2989,6 @@ int main(int argc, char** argv)
 {
 	int port = 15000;
 	bool keep_alive = false;
-	std::size_t min_threads = 5;
-	std::size_t max_threads = 0;
 
 	srand(static_cast<unsigned>(std::time(nullptr)));
 
@@ -3067,7 +3063,6 @@ int main(int argc, char** argv)
 					  << "                             Available levels: error, warning, info, debug.\n"
 					  << "  -p, --port <port>          Binds the server to the specified port.\n"
 					  << "  --keepalive                Enable TCP keepalive.\n"
-					  << "  -t, --threads <n>          Uses n worker threads for network I/O (default: 5).\n"
 					  << "  -v  --verbose              Turns on more verbose logging.\n"
 					  << "  -V, --version              Returns the server version.\n"
 					  << "  -w, --dump-wml             Print all WML sent to clients to stdout.\n";
@@ -3091,13 +3086,6 @@ int main(int argc, char** argv)
 
 			setsid();
 #endif
-		} else if((val == "--threads" || val == "-t") && arg + 1 != argc) {
-			min_threads = atoi(argv[++arg]);
-			if(min_threads > 30) {
-				min_threads = 30;
-			}
-		} else if((val == "--max-threads" || val == "-T") && arg + 1 != argc) {
-			max_threads = atoi(argv[++arg]);
 		} else if(val == "--request_sample_frequency" && arg + 1 != argc) {
 			wesnothd::request_sample_frequency = atoi(argv[++arg]);
 		} else {
@@ -3106,5 +3094,5 @@ int main(int argc, char** argv)
 		}
 	}
 
-	return wesnothd::server(port, keep_alive, config_file, min_threads, max_threads).run();
+	return wesnothd::server(port, keep_alive, config_file).run();
 }

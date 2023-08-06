@@ -832,15 +832,10 @@ void game_launcher::start_wesnothd()
 	}
 
 #ifndef _WIN32
-	std::string command = "\"" + wesnothd_program +"\" -c \"" + config + "\" -d -t 2 -T 5";
+	std::string command = "\"" + wesnothd_program +"\" -c \"" + config + "\" -d";
 #else
 	// start wesnoth as background job
-	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c \"" + config + "\" -t 2 -T 5";
-	// Make sure wesnothd's console output is visible on the console window by
-	// disabling SDL's stdio redirection code for this and future child
-	// processes. No need to bother cleaning this up because it's only
-	// meaningful to SDL applications during pre-main initialization.
-	SetEnvironmentVariableA("SDL_STDIO_REDIRECT", "0");
+	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c \"" + config + "\"";
 #endif
 	LOG_GENERAL << "Starting wesnothd: "<< command;
 	if (std::system(command.c_str()) == 0) {
