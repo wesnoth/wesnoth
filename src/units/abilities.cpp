@@ -389,7 +389,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -414,7 +414,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -1690,7 +1690,7 @@ bool attack_type::special_active_impl(
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
 	}
@@ -1713,7 +1713,7 @@ bool attack_type::special_active_impl(
 		if (i["count"].empty() && count != dirs.size()) {
 			return false;
 		}
-		if (!in_ranges<int>(count, utils::parse_ranges(i["count"].str()))) {
+		if (!in_ranges<int>(count, utils::parse_ranges_unsigned(i["count"].str()))) {
 			return false;
 		}
 	}
