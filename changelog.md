@@ -1,6 +1,4 @@
-## Version 1.16.9+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.16.10
  ### Campaigns
    * Heir to the Throne
      * S03: Rewrite intro text, including a hint about training troops (PR #7291)
@@ -19,18 +17,13 @@
    * World Conquest: Fixed units losing hp wheh picking up an
      artifact
    * World Conquest: Fixed "Promote to commander"
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, Czech, French, Italian, Spanish, Portuguese (Brazil)
- ### Units
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
      as a possible file location on modern Linux distributions.
    * Update the preferences window’s Display resolution list if the game window is resized.
    * Improved the layout of the orb colors dialog, and added tooltips.
- ### WML Engine
  ### Miscellaneous and Bug Fixes
    * Fixed Possible Crash when using planning mode #3768
    * Fixed Possible OOS when using planning mode #7465
