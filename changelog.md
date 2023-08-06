@@ -2,8 +2,23 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7291)
  ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn't always obscure the southmost hexes of the map. (issue #6422}
  ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs (issue #7108).
+       * By default, they are now two-color during the ally’s turn.
+       * Added an advanced setting to always show them as single-color (the ally color).
+   * "Back to Turn" menu no longer crashes the game when used
+     After the game has ended. #4236
+   * World Conquest: Fixed rare lua error when a unit is killed.
+   * World Conquest: Fixed Bezoar Item.
+   * World Conquest: Fixed some items losing their effects in
+     later scenarios.
+   * World Conquest: Fixed units losing hp wheh picking up an
+     artifact
+   * World Conquest: Fixed "Promote to commander"
  ### Lua API
  ### Packaging
  ### Terrain
@@ -14,8 +29,19 @@
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
      as a possible file location on modern Linux distributions.
    * Update the preferences window’s Display resolution list if the game window is resized.
+   * Improved the layout of the orb colors dialog, and added tooltips.
  ### WML Engine
  ### Miscellaneous and Bug Fixes
+   * Fixed Possible Crash when using planning mode #3768
+   * Fixed Possible OOS when using planning mode #7465
+   * Fixed game hanging when an enemy attacks a unit
+     with planned moves #5302
+   * Fixed custom effects implemented via wesnoth.effects
+     losing their effects in later scenarios.
+   * Fix Crash undo+redo error after reloading #7253
+   * Fix Crash when loading old replays #7253
+   * Fix Crash when a unit has bad animations replays #5032
+   * Postponed the removal of the `SPECIAL_NOTES` macro, which means there will be fewer log messages.
 
 ## Version 1.16.9
  ### Translations
