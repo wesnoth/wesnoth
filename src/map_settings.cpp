@@ -39,17 +39,17 @@ int get_turns(const std::string& value)
 
 int get_village_gold(const std::string& value, const game_classification* classification)
 {
-	return std::clamp<int>(lexical_cast_default<int>(value, ((classification && !classification->is_normal_mp_game()) ? 1 : 2)), 1, 5);
+	return lexical_cast_default<int>(value, ((classification && !classification->is_normal_mp_game()) ? 1 : 2));
 }
 
 int get_village_support(const std::string& value)
 {
-	return std::clamp<int>(lexical_cast_default<int>(value, 1), 0, 4);
+	return lexical_cast_default<int>(value, 1);
 }
 
 int get_xp_modifier(const std::string& value)
 {
-	return std::clamp<int>(lexical_cast_default<int>(value, 70), 30, 200);
+	return lexical_cast_default<int>(value, 70);
 }
 
 } // end namespace settings
