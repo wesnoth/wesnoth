@@ -51,8 +51,6 @@ namespace settings {
 	 *  Gets the village gold.
 	 *  If no valid value supplied, it will return a default.
 	 *  The default is 1 for singleplayer, and 2 for multiplayer.
-	 *  The value is also range checked.
-	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value        string containing the village gold
 	 *  @param classification
@@ -64,8 +62,6 @@ namespace settings {
 	/**
 	 *  Gets the village unit level support.
 	 *  If no valid value supplied, it will return a default.
-	 *  The value is also range checked.
-	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value        string containing the village support
 	 *
@@ -76,8 +72,6 @@ namespace settings {
 	/**
 	 *  Gets the xp modifier.
 	 *  If no valid value supplied, it will return a default.
-	 *  The value is also range checked.
-	 *  When out of bounds, it will be set to the nearest bound.
 	 *
 	 *  @param value        string containing the xp modifier
 	 *
