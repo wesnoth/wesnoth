@@ -371,7 +371,7 @@ local function world_conquest_tek_map_decoration_6a()
 		set_terrain { "Xuc",
 			f.all(
 				f.terrain("Xu"),
-				f.radius(2, f.terrain("Cud,Xos,$rand"))
+				f.radius(2, f.terrain("Cud,Xos," .. rand_choice2))
 			),
 		}
 		set_terrain { "Xuc",
