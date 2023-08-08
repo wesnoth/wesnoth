@@ -15,29 +15,46 @@
 
 ## Version 1.16.10
  ### Campaigns
-   * Heir to the Throne
-     * S03: Rewrite intro text, including a hint about training troops (PR #7291)
- ### Editor
-   * Scrolling the map north or south can move the text that overlays the map, so it doesn't always obscure the southmost hexes of the map. (issue #6422}
- ### Multiplayer
-   * Allied units’ orbs no longer look like the player’s own units’ orbs (issue #7108).
-       * By default, they are now two-color during the ally’s turn.
-       * Added an advanced setting to always show them as single-color (the ally color).
-   * "Back to Turn" menu no longer crashes the game when used
-     After the game has ended. #4236
-   * World Conquest: Fixed rare lua error when a unit is killed.
-   * World Conquest: Fixed Bezoar Item.
-   * World Conquest: Fixed some items losing their effects in
-     later scenarios.
-   * World Conquest: Fixed units losing hp wheh picking up an
-     artifact
-   * World Conquest: Fixed "Promote to commander"
+   * Under the Burning Suns
+     * S03: Ensure all of Garak’s attacks are changed to fire type (issue #7774).
+     * Make the name of the dark assassin translatable again (PR #7675).
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fix lua error at victory after promoting a replacement commander (issue #7823).
  ### Translations
    * Updated translations: Arabic, Czech, French, Italian, Spanish, Portuguese (Brazil)
  ### User interface
    * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
      as a possible file location on modern Linux distributions.
    * Update the preferences window’s Display resolution list if the game window is resized.
+   * Enable Whiteboard if the "enable planning mode on start" option is set (issue #7820).
+ ### Miscellaneous and Bug Fixes
+   * Fix compilation with Clang 16 (PR #7586).
+   * Fix crash in the Flatpak version when recruiting in Wayland (issue #7104).
+   * Fix the version dialog’s display on MacOS.
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite (issue #7149).
+
+## Version 1.16.9
+ ### Campaigns
+   * Heir to the Throne
+     * S03: Rewrite intro text, including a hint about training troops (PR #7291)
+   * World Conquest
+     * Fixed rare lua error when a unit is killed.
+     * Fixed Bezoar Item.
+     * Fixed some items losing their effects in later scenarios.
+     * Fixed units losing hp when picking up an artifact
+     * Partially fixed "Promote to commander" (but required a further fix in 1.16.10)
+ ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn't always obscure the southmost hexes of the map. (issue #6422)
+ ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs (issue #7108).
+       * By default, they are now two-color during the ally’s turn.
+       * Added an advanced setting to always show them as single-color (the ally color).
+   * "Back to Turn" menu no longer crashes the game when used
+     After the game has ended. #4236
+ ### Translations
+   * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Turkish
+ ### User interface
    * Improved the layout of the orb colors dialog, and added tooltips.
  ### Miscellaneous and Bug Fixes
    * Fixed Possible Crash when using planning mode #3768
@@ -50,16 +67,11 @@
    * Fix Crash when loading old replays #7253
    * Fix Crash when a unit has bad animations replays #5032
    * Postponed the removal of the `SPECIAL_NOTES` macro, which means there will be fewer log messages.
-
-## Version 1.16.9
- ### Translations
-   * Updated translations: British English, Bulgarian, Chinese (Simplified), Czech, Dutch, French, German, Italian, Polish, Portuguese (Brazil), Spanish, Turkish
- ### Miscellaneous and Bug Fixes
-   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
-   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
-   * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
-   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
-   * Removed unused `--color` switch from wesnoth_addon_manager
+   * `wesnoth_addon_manager` now supports SSL/TLS connection (using the `--secure` flag)
+   * `wesnoth_addon_manager` now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to `wesnoth_addon_manager` (retrieves and prints the add-ons server upload terms)
+   * w`esnoth_addon_manager` now supports the `--version` flag (reports the current Wesnoth version)
+   * Removed unused `--color` switch from `wesnoth_addon_manager`
 
 ## Version 1.16.8
  ### Editor
