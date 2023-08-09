@@ -312,17 +312,15 @@ jobs:
         run: python run_wml_tests -v -g -c -t 20 -p %CFG%/wesnoth.exe
 
 # run after all other jobs have completed to check overall build status
-  discord-notification:
+  notification:
     runs-on: ubuntu-latest
-
-    name: Discord Notification
-
     needs: [checks, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
     if: always()
 
     steps:
       - uses: technote-space/workflow-conclusion-action@v3
-      - uses: rjstone/discord-webhook-notify@v1
+      - name: Discord Notification
+        uses: rjstone/discord-webhook-notify@v1
         if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
           severity: error
@@ -331,3 +329,18 @@ jobs:
             pusher: ${{ github.actor }}
             commit: ${{ github.event.head_commit.message }}
             commit url: ${{ github.event.head_commit.url }}
+      - name: IRC Notification
+        uses: rectalogic/notify-irc@v1
+        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
+        env:
+          COLOR: ${{ fromJSON('"\u0003"') }}
+          BLUE: 02
+          PURPLE: 06
+          SILVER: 15
+        with:
+          channel: ${{ vars.IRC_CHANNEL }}
+          server: ${{ vars.IRC_SERVER }}
+          nickname: ${{ vars.IRC_NICK }} # is also used for sasl username
+          sasl_password: ${{ secrets.IRC_SASL_PASSWORD }}
+          message: >-
+            ${{ format('❌ CI workflow run failed on {0}{1}{2}{0}: {3} by {0}{4}{5}{0}: {0}{6}{7}{0}', env.COLOR, env.PURPLE, github.ref_name, github.event.head_commit.message, env.SILVER, github.actor, env.BLUE, github.event.head_commit.url) }}
