@@ -614,8 +614,7 @@ public:
 			const std::string& name = *(pos_++);
 			unsigned sz = name.size();
 
-			// Use reverse iterator to optimize testing
-			if(sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
+			if(sz == 0) {
 				continue;
 			}
 
