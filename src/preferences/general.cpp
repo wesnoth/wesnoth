@@ -1210,4 +1210,14 @@ void set_sub_achievement(const std::string& content_for, const std::string& id, 
 	prefs.add_child("achievements", ach);
 }
 
+void set_editor_chosen_addon(const std::string& addon_id)
+{
+	prefs["editor_chosen_addon"] = addon_id;
+}
+
+std::string editor_chosen_addon()
+{
+	return prefs["editor_chosen_addon"];
+}
+
 } // end namespace preferences
