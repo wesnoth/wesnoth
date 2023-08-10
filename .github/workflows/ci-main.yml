@@ -315,13 +315,11 @@ jobs:
   notification:
     runs-on: ubuntu-latest
     needs: [checks, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
-    if: always()
+    if: failure() && github.event_name == 'push'
 
     steps:
-      - uses: technote-space/workflow-conclusion-action@v3
       - name: Discord Notification
         uses: rjstone/discord-webhook-notify@v1
-        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         with:
           severity: error
           webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
@@ -331,7 +329,6 @@ jobs:
             commit url: ${{ github.event.head_commit.url }}
       - name: IRC Notification
         uses: rectalogic/notify-irc@v1
-        if: env.WORKFLOW_CONCLUSION == 'failure' && github.event_name == 'push'
         env:
           COLOR: ${{ fromJSON('"\u0003"') }}
           BLUE: 02
