@@ -100,7 +100,7 @@ jobs:
               ;;
           esac
       - name: Check path options
-        if: steps.build.outcome == 'success'
+        if: success() || steps.build.outcome == 'success'
         run: |
           ./wesnoth --version
           for opt in config data userconfig userdata
@@ -110,19 +110,19 @@ jobs:
             printf '%s-path: %s\n' "$opt" "$output"
           done
       - name: WML validation
-        if: steps.build.outcome == 'success'
+        if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/schema_validation.sh
       - name: Run WML tests
-        if: steps.build.outcome == 'success'
+        if: success() || steps.build.outcome == 'success'
         run: ./run_wml_tests -g -c -t 20
       - name: Run play tests
-        if: steps.build.outcome == 'success'
+        if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/play_test_executor.sh
       - name: Run MP tests
-        if: steps.build.outcome == 'success'
+        if: success() || steps.build.outcome == 'success'
         run: ./utils/CI/mp_test_executor.sh
       - name: Run unit tests
-        if: steps.build.outcome == 'success'
+        if: success() || steps.build.outcome == 'success'
         run: ./run_boost_tests
 
   steam-runtime:
