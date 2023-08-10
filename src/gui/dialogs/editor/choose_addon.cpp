@@ -73,13 +73,10 @@ void editor_choose_addon::populate_list(bool show_all)
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs, filesystem::name_mode::FILE_NAME_ONLY);
 
-	int i = -1;
-
 	const widget_data& new_addon{
 		{"existing_addon_id", widget_item{{"label", _("New Add-on")}, {"tooltip", _("Create a new add-on")}}},
 	};
 	existing_addons.add_row(new_addon);
-	i++;
 
 	if(show_all) {
 		const widget_data& mainline{
@@ -87,7 +84,6 @@ void editor_choose_addon::populate_list(bool show_all)
 				widget_item{{"label", _("Mainline")}, {"tooltip", _("Mainline multiplayer scenarios")}}},
 		};
 		existing_addons.add_row(mainline);
-		i++;
 	}
 
 	int selected_row = 0;
@@ -98,9 +94,8 @@ void editor_choose_addon::populate_list(bool show_all)
 				{"existing_addon_id", widget_item{{"label", dir}}},
 			};
 			existing_addons.add_row(entry);
-			i++;
 			if(dir == preferences::editor_chosen_addon()) {
-				selected_row = i;
+				selected_row = existing_addons.get_item_count()-1;
 			}
 		}
 	}

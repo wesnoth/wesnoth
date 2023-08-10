@@ -326,7 +326,14 @@ namespace preferences {
 	 */
 	void set_sub_achievement(const std::string& content_for, const std::string& id, const std::string& sub_id);
 
+	/**
+	 * @param addon_id The chosen addon id from the editor to store in the preferences.
+	 */
 	void set_editor_chosen_addon(const std::string& addon_id);
+
+	/**
+	 * @return The most recently selected add-on id from the editor. May be an empty string.
+	 */
 	std::string editor_chosen_addon();
 
 } // end namespace preferences
