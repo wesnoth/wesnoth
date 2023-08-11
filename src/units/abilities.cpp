@@ -378,6 +378,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 				return false;
 			if (!ufilt(*unit, *this))
 				return false;
+			if((*this).id() == (*unit).id())
+				return false;
 			if (i.has_attribute("is_enemy")) {
 				const display_context& dc = resources::filter_con->get_disp_context();
 				if (i["is_enemy"].to_bool() != dc.get_team(unit->side()).is_enemy(side_)) {
@@ -435,6 +437,9 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 			if (std::find(dirs.begin(), dirs.end(), direction) == dirs.end()) {
 				continue;
 			}
+		}
+		if((*this).id() == from.id()){
+			return false;
 		}
 		auto filter = i.optional_child("filter");
 		if (!filter || //filter tag given
