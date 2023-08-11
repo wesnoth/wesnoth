@@ -76,14 +76,14 @@ unchecked:
 # Although the schema isn't reindented here, it's at least checked for consistency.
 reindent:
 	@./wmlindent \
-		--exclude=../../data/languages \
-		--exclude=../../data/gui \
-		--exclude=../../data/test/scenarios/cve_tests \
-		--exclude=../../data/test/scenarios/lua_tests \
-		--exclude=../../data/test/scenarios/wml_tests/TerrainWML \
-		--exclude=../../data/schema \
+		--exclude=$(DATA)/languages \
+		--exclude=$(DATA)/gui \
+		--exclude=$(DATA)/test/scenarios/cve_tests \
+		--exclude=$(DATA)/test/scenarios/lua_tests \
+		--exclude=$(DATA)/test/scenarios/wml_tests/TerrainWML \
+		--exclude=$(DATA)/schema \
 		$(DATA)
-	@find ../../data/schema -name \*.cfg -print0 | xargs -0 ./check_mixed_indent
+	@find $(DATA)/schema -name \*.cfg -print0 | xargs -0 ./check_mixed_indent
 
 # Extract a table of keybindings
 bindings:
