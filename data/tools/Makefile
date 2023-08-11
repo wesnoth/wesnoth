@@ -85,9 +85,9 @@ reindent:
 		$(DATA)
 	@find ../../data/schema -name \*.cfg -print0 | xargs -0 ./check_mixed_indent
 
-# Extract a table of editor keybindings from the editor theme definition
-editor_bindings:
-	@./extractbindings <../themes/editor.cfg
+# Extract a table of keybindings
+bindings:
+	@./extractbindings < $(DATA)/core/hotkeys.cfg
 
 # Look at the difficulty-rank order of the campaigns
 rank:
