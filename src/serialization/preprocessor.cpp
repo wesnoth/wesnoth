@@ -1525,7 +1525,7 @@ bool preprocessor_data::get_chunk()
 				std::size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				std::size_t optional_arg_num = 0;
 
-				std::unique_ptr<std::map<std::string, std::string>> defines{new std::map<std::string, std::string>};
+				auto defines = std::make_unique<std::map<std::string, std::string>>();
 				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 
 				if(val.is_deprecated()) {
@@ -1577,7 +1577,7 @@ bool preprocessor_data::get_chunk()
 
 							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
 
-							std::unique_ptr<std::map<std::string, std::string>> temp_defines{new std::map<std::string, std::string>};
+							auto temp_defines = std::make_unique<std::map<std::string, std::string>>();
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(

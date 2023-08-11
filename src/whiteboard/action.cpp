@@ -62,19 +62,20 @@ action_ptr action::from_config(const config& cfg, bool hidden)
 	std::string type = cfg["type"];
 
 	try {
-		if(type=="move")
-			return action_ptr(new move(cfg,hidden));
-		else if(type=="attack")
-			return action_ptr(new attack(cfg,hidden));
-		else if(type=="recruit")
-			return action_ptr(new recruit(cfg,hidden));
-		else if(type=="recall")
-			return action_ptr(new recall(cfg,hidden));
-		else if(type=="suppose_dead")
-			return action_ptr(new suppose_dead(cfg,hidden));
-	} catch(const action::ctor_err&) {}
+		if(type == "move")
+			return std::make_shared<move>(cfg, hidden);
+		else if(type == "attack")
+			return std::make_shared<attack>(cfg, hidden);
+		else if(type == "recruit")
+			return std::make_shared<recruit>(cfg, hidden);
+		else if(type == "recall")
+			return std::make_shared<recall>(cfg, hidden);
+		else if(type == "suppose_dead")
+			return std::make_shared<suppose_dead>(cfg, hidden);
+	} catch(const action::ctor_err&) {
+	}
 
-	return action_ptr();
+	return nullptr;
 }
 
 void action::hide()

@@ -343,8 +343,8 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 		return;
 	}
 
-	std::shared_ptr<config> res(new config(savegame.child_or_empty("snapshot")));
-	std::shared_ptr<config> stats(new config(savegame.child_or_empty("statistics")));
+	auto res = std::make_shared<config>(savegame.child_or_empty("snapshot"));
+	auto stats = std::make_shared<config>(savegame.child_or_empty("statistics"));
 	throw reset_gamestate_exception(res, stats, false);
 }
 

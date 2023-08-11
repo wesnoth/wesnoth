@@ -707,7 +707,7 @@ void unit_filter_compound::fill(vconfig cfg)
 					const wfl::unit_callable main(args.loc, args.u);
 					wfl::map_formula_callable callable(main.fake_ptr());
 					if (args.u2) {
-						std::shared_ptr<wfl::unit_callable> secondary(new wfl::unit_callable(*args.u2));
+						auto secondary = std::make_shared<wfl::unit_callable>(*args.u2);
 						callable.add("other", wfl::variant(secondary));
 						// It's not destroyed upon scope exit because the variant holds a reference
 					}
