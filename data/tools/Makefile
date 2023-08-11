@@ -12,6 +12,9 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
 # otherwise the visibility checks aren't going to work right.
 #UMC = ../../../../wesnoth-umc-dev/trunk/*
+#
+# Macro reference destination dir.
+DEST = .
 
 sanity-check: unresolved lint
 
@@ -61,9 +64,7 @@ definitions:
 
 # Generate a reference page for the utility macros.
 macro-reference.html: helpheader.html helptrailer.html wmlscope
-	@cat helpheader.html >macro-reference.html
-	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/ >>macro-reference.html
-	@cat helptrailer.html >>macro-reference.html
+	@{ cat helpheader.html; ./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
 
 # Report on unchecked macro calls
 unchecked:
