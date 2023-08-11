@@ -164,14 +164,13 @@ namespace t_translation {
 	 * Reads a single terrain from a string.
 	 *
 	 * @param str       The string which should contain 1 terrain code;
-	 *                  the new format of a terrain code
+	 *                  the format of a terrain code
 	 *                  is 2 to 4 characters in the set
 	 *@verbatim
-	 *                  [a-Z][A-Z]/|\_
+	 *                  [a-zA-Z/|\_]
 	 *@endverbatim
 	 *                  The underscore is intended for internal use.
-	 *                  Other letters and characters are not validated but
-	 *                  users of these letters can get nasty surprises.
+	 *                  Other characters are reserved for future use.
 	 *                  The * is used as wildcard in some cases.
 	 *                  The terrain code can be two groups separated by a caret,
 	 *                  the first group is the base terrain,
