@@ -9,7 +9,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Czech, Italian
+   * Updated translations: British English, Czech, Italian, Japanese
  ### Units
    * Rebels:
      * Elvish Outrider - movement changed from 10 to 11

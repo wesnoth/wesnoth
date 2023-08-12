@@ -15,7 +15,7 @@ msgstr ""
 "POT-Creation-Date: 2023-06-17 23:19-0500\n"
 "PO-Revision-Date: 2021-06-26 08:32+0000\n"
 "Last-Translator: RatArmy, 2023\n"
-"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -5569,8 +5569,6 @@ msgstr "移動前のユニットに宝珠を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
 msgstr "移動途中のユニットに宝珠を表示"
 
@@ -5580,11 +5578,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"ユニットが戦闘不可かつ移動可の場合、移動前と移動済みの 2 色の宝珠を表示しま"
+"す。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "離脱中のユニットに 2 色の宝珠を使用"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
@@ -5599,7 +5599,7 @@ msgstr "同盟軍のユニットに宝珠を表示"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "同盟軍のターン中、2 色の宝珠で移動を表示"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5608,6 +5608,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"あなたの同盟軍のターン中、同盟軍のユニットは 2 色の宝珠を持ちます。1 つは同盟"
+"を示す宝珠の色で、もう 1 つはそのユニットが移動前か、移動中か、移動済みかを示"
+"します。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -8576,6 +8579,18 @@ msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
 "ん。"
 
+#~ msgid "By:"
+#~ msgstr "作者："
+
+#~ msgid "Gold Left:"
+#~ msgstr "所持ゴールド："
+
+#~ msgid "Active Troops:"
+#~ msgstr "マップ上の自軍ユニット："
+
+#~ msgid "Reserve Troops:"
+#~ msgstr "召還可能ユニット："
+
 #~ msgid "Resolution:"
 #~ msgstr "解像度："
 
@@ -8593,38 +8608,6 @@ msgstr ""
 
 #~ msgid "Change the in-game theme"
 #~ msgstr "ゲーム時のテーマを変更します"
-
-#~ msgid ""
-#~ "The key '$key' is deprecated and support will be removed in version "
-#~ "$removal_version."
-#~ msgstr ""
-#~ "キー「$key」は推奨されておらず、バージョン $removal_version でサポートが取"
-#~ "り除かれます。"
-
-#~ msgid ""
-#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
-#~ "'$deprecated_key' will be removed in version $removal_version."
-#~ msgstr ""
-#~ "キー「$deprecated_key」は「$key」に名前が変更されました。"
-#~ "「$deprecated_key」のサポートはバージョン$removal_versionで削除されます。"
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "離脱中のユニットに宝珠を表示"
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "移動前および移動途中の宝珠と同じ色が使用されます。"
-
-#~ msgid "By:"
-#~ msgstr "作者："
-
-#~ msgid "Gold Left:"
-#~ msgstr "所持ゴールド："
-
-#~ msgid "Active Troops:"
-#~ msgstr "マップ上の自軍ユニット："
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "召還可能ユニット："
 
 #~ msgid "Area to draw has negative size"
 #~ msgstr "負のサイズを持つ描画エリア"
@@ -8648,3 +8631,17 @@ msgstr ""
 #~ "A terrain with a string with more than 4 characters has been found, the "
 #~ "affected terrain is:"
 #~ msgstr "4 文字以上の文字列を持つ地形が見つかりました。影響する地形："
+
+#~ msgid ""
+#~ "The key '$key' is deprecated and support will be removed in version "
+#~ "$removal_version."
+#~ msgstr ""
+#~ "キー「$key」は推奨されておらず、バージョン $removal_version でサポートが取"
+#~ "り除かれます。"
+
+#~ msgid ""
+#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
+#~ "'$deprecated_key' will be removed in version $removal_version."
+#~ msgstr ""
+#~ "キー「$deprecated_key」は「$key」に名前が変更されました。"
+#~ "「$deprecated_key」のサポートはバージョン$removal_versionで削除されます。"
