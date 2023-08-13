@@ -20,10 +20,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include <boost/mpl/vector.hpp>
-#include <boost/mpl/copy.hpp>
-#include <boost/mpl/back_inserter.hpp>
-#include <boost/mpl/contains.hpp>
+#include <tuple>
 
 namespace test_throw {
 
@@ -39,7 +36,7 @@ namespace test_throw {
 #pragma warning(pop)
 #endif
 
-typedef boost::mpl::vector<
+using test_match_types = std::tuple<
 	/* note Wesnoth's coding style doesn't allow w_char so ignore them. */
 
 	bool,
@@ -52,17 +49,11 @@ typedef boost::mpl::vector<
 	char, signed char, unsigned char,
 	short, int, long, long long,
 	unsigned short, unsigned int, unsigned long, unsigned long long
-	> test_match_types;
+	>;
 
-typedef boost::mpl::vector<
-	float, double, long double
-	> test_nomatch_types;
+using test_nomatch_types = std::tuple<float, double, long double>;
 
-typedef boost::mpl::copy<
-	test_nomatch_types,
-	boost::mpl::back_inserter<test_match_types>
-	>::type test_types;
-
+using test_types = decltype(std::tuple_cat(test_nomatch_types{}, test_match_types{}));
 
 namespace {
 
@@ -93,12 +84,11 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
 
-	typedef typename boost::mpl::contains<test_match_types, T>::type test;
-	typedef typename boost::mpl::contains<test_match_types, int >::type match;
-
-	result = typeid(test) == typeid(match)
-			? "specialized - To std::string - From integral (pointer)"
-			: "generic";
+	if constexpr(std::is_same_v<T, int>) {
+		result = "specialized - To std::string - From integral (pointer)";
+	} else {
+		result = "generic";
+	}
 
 	TEST_CASE(T, );
 	TEST_CASE(const T, );
@@ -115,11 +105,11 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 
 #undef TEST_CASE
 
-typedef boost::mpl::vector<
+using test_lexical_cast_signed_types = std::tuple<
 	  signed char
 	, short
 	, int
-	, long> test_lexical_cast_signed_types;
+	, long>;
 
 BOOST_AUTO_TEST_CASE_TEMPLATE(
 		test_lexical_cast_signed, T, test_lexical_cast_signed_types)
@@ -154,11 +144,11 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_long_long)
 			std::string(value)), const char*, validate);
 }
 
-typedef boost::mpl::vector<
+using test_lexical_cast_unsigned_types = std::tuple<
 	  unsigned char
 	, unsigned short
 	, unsigned int
-	, unsigned long> test_lexical_cast_unsigned_types;
+	, unsigned long>;
 
 BOOST_AUTO_TEST_CASE_TEMPLATE(
 		test_lexical_cast_unsigned, T, test_lexical_cast_unsigned_types)
@@ -210,10 +200,10 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_bool)
 			std::string(value)), const char*, validate);
 }
 
-typedef boost::mpl::vector<
+using test_lexical_cast_floating_point_types = std::tuple<
 	  float
 	, double
-	, long double> test_lexical_cast_floating_point_types;
+	, long double>;
 
 BOOST_AUTO_TEST_CASE_TEMPLATE(
 		test_lexical_cast_floating_point, T, test_lexical_cast_floating_point_types)
