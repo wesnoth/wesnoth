@@ -70,11 +70,10 @@ bool validate(const char* str)
 	}
 }
 
-template<typename T, typename Tuple, std::size_t I = 0>
-constexpr bool contains_type()
+template<typename Test, typename... Types>
+constexpr bool contains_type(std::tuple<Types...>)
 {
-	return std::is_same_v<T, std::tuple_element_t<I, Tuple>>
-		|| (I < std::tuple_size_v<Tuple> && contains_type<T, Tuple, I + 1>());
+	return (std::is_same_v<Test, Types> || ...);
 }
 
 } // namespace
@@ -91,7 +90,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
 
-	if constexpr(contains_type<T, test_match_types>()) {
+	if constexpr(contains_type<T>(test_match_types{})) {
 		result = "specialized - To std::string - From integral (pointer)";
 	} else {
 		result = "generic";
