@@ -91,7 +91,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 {
 	T value = T();
 
-	if constexpr(contains_type<T, test_match_types>) {
+	if constexpr(contains_type<T, test_match_types>()) {
 		result = "specialized - To std::string - From integral (pointer)";
 	} else {
 		result = "generic";
