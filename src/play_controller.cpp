@@ -456,77 +456,77 @@ void play_controller::maybe_do_init_side()
 
 void play_controller::do_init_side()
 {
-	{
-	set_scontext_synced sync;
-	log_scope("player turn");
-	// In case we might end up calling sync:network during the side turn events,
-	// and we don't want do_init_side to be called when a player drops.
-	gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
-	gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
+	{ // Block for set_scontext_synced
+		set_scontext_synced sync;
+		log_scope("player turn");
+		// In case we might end up calling sync:network during the side turn events,
+		// and we don't want do_init_side to be called when a player drops.
+		gamestate().gamedata_.set_phase(game_data::TURN_STARTING);
+		gamestate_->next_player_number_ = gamestate_->player_number_ + 1;
 
-	const std::string turn_num = std::to_string(turn());
-	const std::string side_num = std::to_string(current_side());
+		const std::string turn_num = std::to_string(turn());
+		const std::string side_num = std::to_string(current_side());
 
-	gamestate().gamedata_.get_variable("side_number") = current_side();
+		gamestate().gamedata_.get_variable("side_number") = current_side();
 
-	// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
-	if(!gamestate().tod_manager_.has_turn_event_fired()) {
-		pump().fire("turn_" + turn_num);
-		pump().fire("new_turn");
-		gamestate().tod_manager_.turn_event_fired();
-	}
-
-	pump().fire("side_turn");
-	pump().fire("side_" + side_num + "_turn");
-	pump().fire("side_turn_" + turn_num);
-	pump().fire("side_" + side_num + "_turn_" + turn_num);
-
-	// We want to work out if units for this player should get healed,
-	// and the player should get income now.
-	// Healing/income happen if it's not the first turn of processing,
-	// or if we are loading a game.
-	if(turn() > 1) {
-		gamestate().board_.new_turn(current_side());
-		current_team().new_turn();
-
-		// If the expense is less than the number of villages owned
-		// times the village support capacity,
-		// then we don't have to pay anything at all
-		int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
-		if(expense > 0) {
-			current_team().spend_gold(expense);
+		// We might have skipped some sides because they were empty so it is not enough to check for side_num==1
+		if(!gamestate().tod_manager_.has_turn_event_fired()) {
+			pump().fire("turn_" + turn_num);
+			pump().fire("new_turn");
+			gamestate().tod_manager_.turn_event_fired();
 		}
-	}
 
-	if(do_healing()) {
-		calculate_healing(current_side(), !is_skipping_replay());
-	}
+		pump().fire("side_turn");
+		pump().fire("side_" + side_num + "_turn");
+		pump().fire("side_turn_" + turn_num);
+		pump().fire("side_" + side_num + "_turn_" + turn_num);
 
-	// Do healing on every side turn except the very first side turn.
-	// (1.14 and earlier did healing whenever turn >= 2.)
-	set_do_healing(true);
+		// We want to work out if units for this player should get healed,
+		// and the player should get income now.
+		// Healing/income happen if it's not the first turn of processing,
+		// or if we are loading a game.
+		if(turn() > 1) {
+			gamestate().board_.new_turn(current_side());
+			current_team().new_turn();
 
-	// Set resting now after the healing has been done.
-	for(unit& patient : resources::gameboard->units()) {
-		if(patient.side() == current_side()) {
-			patient.set_resting(true);
+			// If the expense is less than the number of villages owned
+			// times the village support capacity,
+			// then we don't have to pay anything at all
+			int expense = gamestate().board_.side_upkeep(current_side()) - current_team().support();
+			if(expense > 0) {
+				current_team().spend_gold(expense);
+			}
 		}
-	}
 
-	// Prepare the undo stack.
-	undo_stack().new_side_turn(current_side());
+		if(do_healing()) {
+			calculate_healing(current_side(), !is_skipping_replay());
+		}
 
-	pump().fire("turn_refresh");
-	pump().fire("side_" + side_num + "_turn_refresh");
-	pump().fire("turn_" + turn_num + "_refresh");
-	pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
+		// Do healing on every side turn except the very first side turn.
+		// (1.14 and earlier did healing whenever turn >= 2.)
+		set_do_healing(true);
 
-	// Make sure vision is accurate.
-	actions::clear_shroud(current_side(), true);
+		// Set resting now after the healing has been done.
+		for(unit& patient : resources::gameboard->units()) {
+			if(patient.side() == current_side()) {
+				patient.set_resting(true);
+			}
+		}
 
-	check_victory();
-	sync.do_final_checkup();
-	gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
+		// Prepare the undo stack.
+		undo_stack().new_side_turn(current_side());
+
+		pump().fire("turn_refresh");
+		pump().fire("side_" + side_num + "_turn_refresh");
+		pump().fire("turn_" + turn_num + "_refresh");
+		pump().fire("side_" + side_num + "_turn_" + turn_num + "_refresh");
+
+		// Make sure vision is accurate.
+		actions::clear_shroud(current_side(), true);
+
+		check_victory();
+		sync.do_final_checkup();
+		gamestate().gamedata_.set_phase(game_data::TURN_PLAYING);
 	}
 
 	init_side_end();
