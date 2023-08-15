@@ -1324,7 +1324,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			const std::string& symbol = read_word();
 			if(symbol.empty()) {
-				parent_.error("No macro argument found after #ifdef/#ifndef directive", linenum);
+				parent_.error("No macro argument found after #ifdef/#ifndef directive", linenum_);
 			}
 			bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined");
@@ -1334,7 +1334,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			const std::string& symbol = read_word();
 			if(symbol.empty()) {
-				parent_.error("No path argument found after #ifhave/#ifnhave directive", linenum);
+				parent_.error("No path argument found after #ifhave/#ifnhave directive", linenum_);
 			}
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
