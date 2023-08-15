@@ -1634,7 +1634,7 @@ bool preprocessor_data::get_chunk()
 					put(res.str());
 				}
 			} else if(parent_.depth() < 40) {
-				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.";
+				LOG_PREPROC << "Macro definition not found for " << symbol << ", attempting to open as file.";
 				pop_token();
 
 				std::string nfname = filesystem::get_wml_location(symbol, directory_);
