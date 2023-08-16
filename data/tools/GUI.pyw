@@ -1289,15 +1289,19 @@ Please select a directory or disable the "Skip core directory" option"""))
             # the realpaths are here just in case that the user
             # attempts to fool the script by feeding it a symlink
             if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
-                showwarning(_("Warning"),_("""You selected the core directory or one of its subdirectories in the add-on selection box.
+                answer=askokcancel(_("Warning"),_("""You selected the core directory or one of its subdirectories in the add-on selection box.
 
-wmllint will be run only on the Wesnoth core directory"""))
+wmllint will be run only on the Wesnoth core directory"""),icon=WARNING)
+                if not answer:
+                    return
             else:
                 wmllint_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
-            showwarning(_("Warning"),_("""You didn't select a directory.
+            answer=askokcancel(_("Warning"),_("""You didn't select a directory.
 
-wmllint will be run only on the Wesnoth core directory"""))
+wmllint will be run only on the Wesnoth core directory"""),icon=WARNING)
+            if not answer:
+                return
         else: # path doesn't exist and isn't empty
             showerror(_("Error"),_("""The selected directory does not exists"""))
             return # stop here
@@ -1355,15 +1359,19 @@ wmllint will be run only on the Wesnoth core directory"""))
             # the realpaths are here just in case that the user
             # attempts to fool the script by feeding it a symlink
             if os.path.realpath(WESNOTH_CORE_DIR) in os.path.realpath(umc_dir):
-                showwarning(_("Warning"),_("""You selected the core directory or one of its subdirectories in the add-on selection box.
+                answer=askokcancel(_("Warning"),_("""You selected the core directory or one of its subdirectories in the add-on selection box.
 
-wmlscope will be run only on the Wesnoth core directory"""))
+wmlscope will be run only on the Wesnoth core directory"""),icon=WARNING)
+                if not answer:
+                    return
             else:
                 wmlscope_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
-            showwarning(_("Warning"),_("""You didn't select a directory.
+            answer=askokcancel(_("Warning"),_("""You didn't select a directory.
 
-wmlscope will be run only on the Wesnoth core directory"""))
+wmlscope will be run only on the Wesnoth core directory"""),icon=WARNING)
+            if not answer:
+                return
         else: # path doesn't exist and isn't empty
             showerror(_("Error"),_("""The selected directory does not exists"""))
             return # stop here
@@ -1395,9 +1403,11 @@ wmlscope will be run only on the Wesnoth core directory"""))
         if os.path.exists(umc_dir): # add-on exists
             wmlindent_command_string.append(umc_dir)
         elif not umc_dir: # path does not exists because the box was left empty
-            showwarning(_("Warning"),_("""You didn't select a directory.
+            answer=askokcancel(_("Warning"),_("""You didn't select a directory.
 
-wmlindent will be run on the Wesnoth core directory"""))
+wmlindent will be run on the Wesnoth core directory"""),icon=WARNING)
+            if not answer:
+                return
             wmlindent_command_string.append(WESNOTH_CORE_DIR)
         else: # path doesn't exist and isn't empty
             showerror(_("Error"),_("""The selected directory does not exists"""))
