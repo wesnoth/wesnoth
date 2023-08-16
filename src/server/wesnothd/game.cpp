@@ -260,6 +260,8 @@ void game::start_game(player_iterator starter)
 	started_ = true;
 	// Prevent inserting empty keys when reading.
 	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
+	// Delete message buffer
+	msg_queue_.clear();
 
 	const bool save = multiplayer["savegame"].to_bool();
 	LOG_GAME
@@ -883,7 +885,8 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
-
+	// Buffer message for sending message history to newly joined players
+	msg_queue_.push_back(std::pair<std::string, std::string>(user->info().name(), msg.to_string()));
 	send_data(data, user);
 }
 
@@ -1424,6 +1427,21 @@ bool game::add_player(player_iterator player, bool observer)
 			user->info().name() + " has the same IP as: " + clones);
 	}
 
+	// If not observer, send the game chat log.
+	if (!started_ && (!became_observer && !observer)) {
+		// Send game chat log:
+		// If the game did not start yet 
+		for(auto i : msg_queue_) {
+			simple_wml::document cresend;
+			simple_wml::node& resend = cresend.root().add_child("message");
+			const simple_wml::string_span& sender = i.first.c_str();
+			const simple_wml::string_span& msg = i.second.c_str();
+			resend.set_attr_dup("sender", sender);
+			resend.set_attr_dup("message", msg);
+			server.send_to_player(player, cresend);
+		}
+	}
+	
 	if(became_observer) {
 		// in case someone took the last slot right before this player
 		send_server_message("You are an observer.", player);

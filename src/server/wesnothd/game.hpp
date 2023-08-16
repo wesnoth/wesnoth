@@ -898,6 +898,12 @@ private:
 	 * New requests should never have a lower value than this.
 	 */
 	int last_choice_request_id_;
+	/**
+	 * The buffer for all game-specific messages publicly exchanged.
+	 * It will be sent to newly joining players.
+	 * <sender, message>
+	 */
+	std::vector<std::pair<std::string, std::string>> msg_queue_;
 };
 
 } // namespace wesnothd
