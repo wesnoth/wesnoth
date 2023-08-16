@@ -91,6 +91,7 @@ public:
 	void clear_data()
 	{
 		data.clear();
+		pages.clear();
 	}
 
 	void set_data(const std::string& new_data)
