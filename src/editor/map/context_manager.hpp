@@ -163,6 +163,14 @@ public:
 		return *map_contexts_[current_context_index_];
 	}
 
+	void set_addon_id(const std::string& id)
+	{
+		current_addon_ = id;
+		for(auto& map : map_contexts_) {
+			map->set_addon_id(id);
+		}
+	}
+
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 	void set_default_dir(const std::string& str)
 	{

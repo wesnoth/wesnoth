@@ -29,9 +29,34 @@ lg::log_domain log_editor("editor");
 
 namespace editor {
 
-void initialize_addon(const std::string& addon_id)
+// TODO: remember refreshing through F5
+std::string initialize_addon()
 {
+	std::string addon_id = "";
+	while(true)
+	{
+		gui2::dialogs::editor_choose_addon choose(addon_id);
+		if(choose.show()) {
+			break;
+		} else {
+			return "";
+		}
+	}
+
+	if(addon_id == "///newaddon///") {
+		std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+		addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
+	}
+
+	if(addon_id == "mainline") {
+		return addon_id;
+	}
+
 	std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
+
+	if(filesystem::file_exists(addon_dir)) {
+		return addon_id;
+	}
 
 	// create folders
 	filesystem::create_directory_if_missing(addon_dir);
@@ -81,6 +106,8 @@ void initialize_addon(const std::string& addon_id)
 				<< "[/units]\n"
 				<< "#endif\n";
 	}
+
+	return addon_id;
 }
 
 EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screenshot, const std::string& screenshot_filename)
@@ -89,34 +116,7 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 	try {
 		const hotkey::scope_changer h{hotkey::scope_editor};
 
-		std::string addon_id = "";
-		if(clear_id) {
-			while(true)
-			{
-				gui2::dialogs::editor_choose_addon choose(addon_id);
-				if(choose.show()) {
-					break;
-				} else {
-					return EXIT_STATUS::EXIT_NORMAL;
-				}
-			}
-
-			if(addon_id == "///newaddon///") {
-				std::int64_t current_millis = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-				addon_id = "MyAwesomeAddon-"+std::to_string(current_millis);
-			}
-		} else {
-			addon_id = editor_controller::current_addon_id_;
-		}
-		editor_controller editor(addon_id);
-
-		// don't let people try to migrate their editor stuff into mainline folders
-		if(!take_screenshot && addon_id != "mainline") {
-			std::string addon_dir = filesystem::get_addons_dir() + "/" + addon_id;
-			if(!filesystem::file_exists(addon_dir)) {
-				initialize_addon(addon_id);
-			}
-		}
+		editor_controller editor(clear_id);
 
 		if (!filename.empty() && filesystem::file_exists (filename)) {
 			if (filesystem::is_directory(filename)) {
