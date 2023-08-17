@@ -208,7 +208,9 @@ std::size_t context_manager::modified_maps(std::string& message)
 void context_manager::load_map_dialog(bool force_same_context /* = false */)
 {
 	std::string fn = filesystem::directory_name(get_map_context().get_filename());
-	if(fn.empty()) {
+	if(current_addon_ == "") {
+		fn = filesystem::get_legacy_editor_dir()+"/maps";
+	} else if(fn.empty()) {
 		fn = filesystem::get_dir(filesystem::get_current_editor_dir(current_addon_) + "/maps");
 	}
 
@@ -245,8 +247,10 @@ void context_manager::edit_side_dialog(int side_index)
 
 void context_manager::edit_pbl()
 {
-	std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
-	gui2::dialogs::editor_edit_pbl::execute(pbl, current_addon_);
+	if(current_addon_ != "") {
+		std::string pbl = filesystem::get_current_editor_dir(current_addon_) + "/_server.pbl";
+		gui2::dialogs::editor_edit_pbl::execute(pbl, current_addon_);
+	}
 }
 
 void context_manager::change_addon_id()
@@ -674,7 +678,9 @@ void context_manager::resize_map_dialog()
 void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
-	if(input_name.empty() || input_name.find("/maps") == std::string::npos) {
+	if(current_addon_ == "") {
+		input_name = filesystem::get_legacy_editor_dir()+"/maps";
+	} else if(input_name.empty() || input_name.find("/maps") == std::string::npos) {
 		input_name = filesystem::get_dir(filesystem::get_current_editor_dir(current_addon_) +  + "/maps");
 	}
 
@@ -905,6 +911,17 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 {
 	if(new_context && check_switch_open_map(filename)) {
 		return;
+	}
+
+	if(filesystem::ends_with(filename, ".cfg")) {
+		if(editor_controller::current_addon_id_ == "") {
+			editor_controller::current_addon_id_ = editor::initialize_addon();
+			set_addon_id(editor_controller::current_addon_id_);
+		}
+
+		if(editor_controller::current_addon_id_ == "") {
+			return;
+		}
 	}
 
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");

@@ -66,7 +66,7 @@ namespace editor {
 
 std::string editor_controller::current_addon_id_ = "";
 
-editor_controller::editor_controller(const std::string& addon_id)
+editor_controller::editor_controller(bool clear_id)
 	: controller_base()
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
@@ -74,7 +74,7 @@ editor_controller::editor_controller(const std::string& addon_id)
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
-	, context_manager_(new context_manager(*gui_.get(), game_config_, addon_id))
+	, context_manager_(new context_manager(*gui_.get(), game_config_, clear_id ? "" : editor_controller::current_addon_id_))
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
@@ -83,7 +83,9 @@ editor_controller::editor_controller(const std::string& addon_id)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_()
 {
-	editor_controller::current_addon_id_ = addon_id;
+	if(clear_id) {
+		editor_controller::current_addon_id_ = "";
+	}
 
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
@@ -770,11 +772,25 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			return true;
 
 		case HOTKEY_EDITOR_PBL:
-			context_manager_->edit_pbl();
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->edit_pbl();
+			}
 			return true;
 
 		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
-			context_manager_->change_addon_id();
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->change_addon_id();
+			}
 			return true;
 
 		case HOTKEY_EDITOR_AREA_ADD:
@@ -913,7 +929,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			context_manager_->new_scenario_dialog();
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->new_scenario_dialog();
+			}
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();
@@ -925,7 +948,14 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			context_manager_->save_scenario_as_dialog();
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->save_scenario_as_dialog();
+			}
 			return true;
 		case HOTKEY_EDITOR_MAP_GENERATE:
 			context_manager_->generate_map_dialog();
