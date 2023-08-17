@@ -58,6 +58,9 @@
 #include "wml_exception.hpp" // for wml_exception
 
 #include <algorithm> // for copy, max, min, stable_sort
+#ifdef _WIN32
+#include <boost/process/windows.hpp>
+#endif
 #include <boost/process.hpp>
 #include <cstdlib>   // for system
 #include <new>
