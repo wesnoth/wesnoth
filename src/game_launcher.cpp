@@ -819,7 +819,7 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
-	const std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
+	std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
 		? filesystem::get_program_invocation("wesnothd")
 		: preferences::get_mp_server_program_name();
 
@@ -838,6 +838,7 @@ void game_launcher::start_wesnothd()
 		bp::child c(wesnothd_program, "-c", config, bp::windows::create_no_window);
 #endif
 		c.detach();
+		// Give server a moment to start up
 		SDL_Delay(50);
 		return;
 	}
@@ -846,7 +847,7 @@ void game_launcher::start_wesnothd()
 		preferences::set_mp_server_program_name("");
 
 		// Couldn't start server so throw error
-		WRN_GENERAL << "Failed to run server start script: " << e.what();
+		WRN_GENERAL << "Failed to start server " << wesnothd_program << ":\n" << e.what();
 		throw game::mp_server_error("Starting MP server failed!");
 	}
 }

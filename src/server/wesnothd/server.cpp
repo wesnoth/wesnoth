@@ -3094,12 +3094,5 @@ int main(int argc, char** argv)
 		}
 	}
 
-const std::string title = "wesnoth server";
-#ifdef WIN32
-	SetConsoleTitleA(title.c_str());
-#else
-	std::cout << "\033]0;" << title << "\007";
-#endif
-
 	return wesnothd::server(port, keep_alive, config_file).run();
 }
