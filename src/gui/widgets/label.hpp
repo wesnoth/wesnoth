@@ -32,12 +32,9 @@ namespace implementation
 /**
  * @ingroup GUIWidgetWML
  *
- * A label displays a text, the text can be wrapped but no scrollbars are provided.
+ * A label displays text that can be wrapped but no scrollbars are provided.
  *
- * Although the label itself has no event interaction it still has two states.
- * The reason is that labels are often used as visual indication of the state of the widget it labels.
- *
- * Note: The above is outdated, if "link_aware" is enabled then there is interaction.
+ * A label has two states because labels are often used as visual indication of the state of the widget it labels.
  *
  * The following states exist:
  * * state_enabled - the label is enabled.
@@ -45,7 +42,6 @@ namespace implementation
  *
  * Key                |Type                                |Default |Description
  * -------------------|------------------------------------|--------|-------------
- * link_aware         | @ref guivartype_f_bool "f_bool"    |false   |Whether the label is link aware. This means it is rendered with links highlighted, and responds to click events on those links.
  * link_color         | @ref guivartype_string "string"    |\#ffff00|The color to render links with. This string will be used verbatim in pango markup for each link.
  *
  * The label specific variables:
@@ -53,6 +49,9 @@ namespace implementation
  * -------------------|------------------------------------|-------|-------------
  * wrap               | @ref guivartype_bool "bool"        |false  |Is wrapping enabled for the label.
  * characters_per_line| @ref guivartype_unsigned "unsigned"|0      |Sets the maximum number of characters per line. The amount is an approximate since the width of a character differs. E.g. iii is smaller than MMM. When the value is non-zero it also implies can_wrap is true. When having long strings wrapping them can increase readability, often 66 characters per line is considered the optimum for a one column text.
+ * text_alignment     | @ref guivartype_h_align "h_align"  |left   |The way the text is aligned inside the canvas.
+ * can_shrink         | @ref guivartype_bool "bool"        |false  |Whether the label can shrink past its optimal size.
+ * link_aware         | @ref guivartype_bool "bool"        |false  |Whether the label is link aware. This means it is rendered with links highlighted, and responds to click events on those links.
  */
 class label : public styled_widget
 {
