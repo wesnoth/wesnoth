@@ -310,10 +310,9 @@ static secure_buffer aes_encrypt(const secure_buffer& plaintext, const secure_bu
 		return secure_buffer();
 	}
 
-	// TODO: use EVP_EncryptInit_ex2 once openssl 3.0 is more widespread
-	if(EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key.data(), iv) != 1)
+	if(EVP_EncryptInit_ex2(ctx, EVP_aes_256_cbc(), key.data(), iv, NULL) != 1)
 	{
-		ERR_CFG << "AES EVP_EncryptInit_ex failed with error:";
+		ERR_CFG << "AES EVP_EncryptInit_ex2 failed with error:";
 		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
 		EVP_CIPHER_CTX_free(ctx);
 		return secure_buffer();
@@ -401,8 +400,7 @@ static secure_buffer aes_decrypt(const secure_buffer& encrypted, const secure_bu
 		return secure_buffer();
 	}
 
-	// TODO: use EVP_DecryptInit_ex2 once openssl 3.0 is more widespread
-	if(EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key.data(), iv) != 1)
+	if(EVP_DecryptInit_ex2(ctx, EVP_aes_256_cbc(), key.data(), iv, NULL) != 1)
 	{
 		ERR_CFG << "AES EVP_DecryptInit_ex failed with error:";
 		ERR_CFG << ERR_error_string(ERR_get_error(), NULL);
