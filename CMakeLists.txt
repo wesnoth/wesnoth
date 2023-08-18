@@ -70,7 +70,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # forbid defaulting to gnu++NN instead of c++NN
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(OpenSSL 1.0 REQUIRED)
+find_package(OpenSSL 3.0 REQUIRED)
 
 if(APPLE)
 	find_library(APPKIT_LIBRARY AppKit REQUIRED)
