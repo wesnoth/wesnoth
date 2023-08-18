@@ -166,7 +166,11 @@ namespace
 			return msg;
 		}
 
+#if BOOST_VERSION < 108300
 		const char* get(int domain_id, const char* ctx, const char* sid, int n) const override
+#else
+		const char* get(int domain_id, const char* ctx, const char* sid, bl::count_type n) const override
+#endif
 		{
 			auto& base = get_base();
 			const char* msg = base.get(domain_id, ctx, sid, n);
