@@ -28,7 +28,7 @@ order to build Wesnoth:
  * Vorbisfile aka libvorbis
  * libbz2
  * libz
- * libssl
+ * libssl                      >= 3.0
  * libcrypto (from OpenSSL)
  * libcurl4 (OpenSSL version)
 
