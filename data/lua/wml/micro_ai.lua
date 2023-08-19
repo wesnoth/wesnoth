@@ -19,9 +19,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then wml.error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then wml.error("[micro_ai] is missing required side= key") end
-    if string.find(cfg.side, ',') then
-        local sides = stringx.split(cfg.side)
-        for _,side in ipairs(sides) do
+    if string.find(cfg.side, ',') or string.find(cfg.side, '-') then
+        for side in stringx.iter_ranges(cfg.side) do
             cfg.side = tonumber(side)
             wesnoth.wml_actions.micro_ai(cfg)
         end
