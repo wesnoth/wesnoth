@@ -1,6 +1,4 @@
-## Version 1.17.19+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.20
  ### Campaigns
    * A Tale of Two Brothers
      * Remove the magic communication amulets from the story.
@@ -8,10 +6,6 @@
      * S3: Ensure all of Garak’s attacks are changed to fire type (#7774).
  ### Editor
    * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: British English, Czech, Italian, Japanese
  ### Units
@@ -31,7 +25,6 @@
      * Mage of Light - arcane resistance changed from 60% to 50%.
    * Undead:
      * Lich - arcane resistance changed from -40% to -20%.
- ### User interface
  ### WML Engine
    * Add support for filters to match negative values
  ### Miscellaneous and Bug Fixes
