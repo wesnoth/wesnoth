@@ -2,6 +2,10 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * A Tale of Two Brothers
+     * Remove the magic communication amulets from the story.
+   * Under the Burning Suns
+     * S3: Ensure all of Garak’s attacks are changed to fire type (#7774).
  ### Editor
    * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
  ### Multiplayer
@@ -15,9 +19,23 @@
      * Elvish Outrider - movement changed from 10 to 11
    * Drakes:
      * Saurian Soothsayer - movement changed from 6 to 7
+   * Movement type changes:
+     * Smallfoot, armoredfoot, elusivefoot, mounted, fly, smallfly, lightfly, deepsea, mountainfoot, gurefoot, rodentfoot, lizard, dunefoot, duneelusivefoot, dunearmoredfoot, dunehorse, dunearmoredhorse - arcane resistance changed from 20% to 10%.
+     * Treefolk - arcane resistance changed from -30% to -20%.
+     * Undeadfoot - arcane resistance changed from -50% to -20%.
+     * Undeadfly - arcane resistance changed from -40% to -20%.
+     * Drakefly, drakeglide, drakeglide2, drakefoot - arcane resistance changed from -30% to -10%.
+   * Loyalists:
+     * Paladin - arcane resistance changed from 60% to 30%.
+     * White mage - arcane resistance changed from 40% to 30%.
+     * Mage of Light - arcane resistance changed from 60% to 50%.
+   * Undead:
+     * Lich - arcane resistance changed from -40% to -20%.
  ### User interface
  ### WML Engine
+   * Add support for filters to match negative values
  ### Miscellaneous and Bug Fixes
+   * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
 
 ## Version 1.17.19
  ### Campaigns
