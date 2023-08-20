@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-07-15 22:12-0500\n"
+"POT-Creation-Date: 2023-08-19 20:56-0500\n"
 "PO-Revision-Date: 2023-04-06 11:16+0800\n"
 "Last-Translator: demario\n"
 "Language-Team: French <>\n"
@@ -270,7 +270,7 @@ msgid "Notes:"
 msgstr "Remarques :"
 
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:691
 msgid "Close"
 msgstr "Fermer"
 
@@ -6554,7 +6554,7 @@ msgstr[1] ""
 "Merci de fournir ces informations aux auteurs ou aux mainteneurs respectifs "
 "de ces extensions."
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:955
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "Erreur : "
 
@@ -6895,20 +6895,20 @@ msgstr "Vous avez réalisé trop de tentatives d'authentification."
 msgid "Password hashing failed."
 msgstr "Le hachage du mot de passe à échoué."
 
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "Le jeu n'a pas pu être chargé : "
 
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "Erreur lors du déroulement de la partie : "
 
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:947
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "La carte n'a pas pu être chargée : "
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:912
-#: src/game_launcher.cpp:1028
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1023
 msgid "Map generator error: "
 msgstr "Erreur du générateur de carte : "
 
@@ -6951,11 +6951,11 @@ msgstr "Erreur d'E/S en chargeant le jeu"
 msgid "File I/O Error while reading the game: '"
 msgstr "Erreur d'E/S en chargeant le jeu : « "
 
-#: src/game_launcher.cpp:906
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "Erreur lors du démarrage du serveur : "
 
-#: src/game_launcher.cpp:928
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "Erreur de connexion : "
 
@@ -6991,6 +6991,28 @@ msgstr[1] ""
 "L'extension sélectionnée a les dépendances suivantes, qui ne sont "
 "actuellement pas installées ou pas à jour. Souhaitez-vous les installer "
 "avant de continuer ?"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+#, fuzzy
+#| msgid "Create a unit."
+msgid "Create a new add-on"
+msgstr "Créer une unité."
+
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+#, fuzzy
+#| msgid "Manage Add-ons"
+msgid "New Add-on"
+msgstr "Mettre à jour les extensions"
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+msgid "Mainline"
+msgstr ""
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+#, fuzzy
+#| msgid "No multiplayer sides."
+msgid "Mainline multiplayer scenarios"
+msgstr "Aucun camp multijoueur."
 
 #: src/gui/dialogs/game_stats.hpp:42
 msgid "No visible sides found."
@@ -8128,7 +8150,7 @@ msgstr "temps restant pour ce tour"
 msgid "current local time"
 msgstr "heure locale"
 
-#: src/play_controller.cpp:1044
+#: src/play_controller.cpp:1046
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8136,17 +8158,17 @@ msgstr ""
 "Le jeu est désynchronisé. Continuer n'aurait aucun sens. Voulez-vous "
 "sauvegarder votre partie ?"
 
-#: src/play_controller.cpp:1045
+#: src/play_controller.cpp:1047
 msgid "Error details:"
 msgstr "Détails de l'erreur :"
 
-#: src/play_controller.cpp:1224
+#: src/play_controller.cpp:1226
 msgid "Warning: broken campaign branches"
 msgstr "Avertissement : branches de campagnes cassées "
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1230
+#: src/play_controller.cpp:1232
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8158,7 +8180,7 @@ msgstr[1] ""
 "Certains des scénarios possible suivant manquent, il est possible que vous "
 "ne puissiez finir cette campagne."
 
-#: src/play_controller.cpp:1237
+#: src/play_controller.cpp:1239
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8172,11 +8194,11 @@ msgstr[1] ""
 "Merci de signaler les scénarios manquant à l'auteur de la campagne :\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1241
+#: src/play_controller.cpp:1243
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Une fois le problème résolu, vous devrez redémarrer ce scénario."
 
-#: src/play_controller.cpp:1350
+#: src/play_controller.cpp:1352
 msgid "No objectives available"
 msgstr "Aucun objectif disponible"
 
@@ -8635,19 +8657,19 @@ msgstr ""
 msgid "Observers:"
 msgstr "Observateurs :"
 
-#: src/reports.cpp:1733
+#: src/reports.cpp:1711
 msgid "Clock"
 msgstr "Horloge"
 
-#: src/reports.cpp:1744
+#: src/reports.cpp:1722
 msgid "Battery"
 msgstr "Batterie"
 
-#: src/reports.cpp:1775
+#: src/reports.cpp:1753
 msgid "Countdown until your turn automatically ends."
 msgstr "Compte à rebours avant que votre tour se termine."
 
-#: src/reports.cpp:1775
+#: src/reports.cpp:1753
 msgid "Turn Countdown"
 msgstr "Compte à rebours des tours"
 
@@ -8859,77 +8881,77 @@ msgstr "en $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "Valeur : \"$value\" Précédente : \"$previous_value\""
 
-#: src/serialization/string_utils.cpp:551
+#: src/serialization/string_utils.cpp:552
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:552
+#: src/serialization/string_utils.cpp:553
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:553
+#: src/serialization/string_utils.cpp:554
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:554
+#: src/serialization/string_utils.cpp:555
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:555
+#: src/serialization/string_utils.cpp:556
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:556
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:557
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:558
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_yocto^y"
 msgstr "y"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:596
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8984,7 +9006,7 @@ msgstr "saisie"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1003
+#: src/team.cpp:1006
 msgid "“$color_id”"
 msgstr "« $color_id »"
 
@@ -9019,21 +9041,21 @@ msgstr "Moment de la journée bidon"
 msgid "This Time of Day is only a Stub!"
 msgstr "Ce moment de la journée est bidon !"
 
-#: src/units/abilities.cpp:915
+#: src/units/abilities.cpp:920
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "ralenti : "
 
-#: src/units/abilities.cpp:918
+#: src/units/abilities.cpp:923
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:921
+#: src/units/abilities.cpp:926
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:934
+#: src/units/abilities.cpp:939
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9164,44 +9186,44 @@ msgstr "liminale"
 msgid "female^neutral"
 msgstr "neutre"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:1989
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list| : $effect_description"
 
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:1995
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PV"
 
-#: src/units/unit.cpp:2048
+#: src/units/unit.cpp:2005
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> déplacement"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> déplacements"
 
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2011
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> vision"
 
-#: src/units/unit.cpp:2058
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> brouillage"
 
-#: src/units/unit.cpp:2063
+#: src/units/unit.cpp:2020
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP pour progresser"
 
-#: src/units/unit.cpp:2067
+#: src/units/unit.cpp:2024
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attaque par tour"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attaques par tour"
 
-#: src/units/unit.cpp:2074
+#: src/units/unit.cpp:2031
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> coût de rappel"
 
-#: src/units/unit.cpp:2541
+#: src/units/unit.cpp:2498
 msgid "$effect_description per level"
 msgstr "$effect_description par niveau"
 
@@ -12005,10 +12027,6 @@ msgstr "Options du tableau blanc"
 #~| msgid "Multiplayer"
 #~ msgid "Start Multiplayer Game"
 #~ msgstr "Multijoueur"
-
-#~| msgid "Update add-ons"
-#~ msgid "Manage Add-ons"
-#~ msgstr "Mettre à jour les extensions"
 
 #~| msgid "Start the map editor"
 #~ msgid "Start Editor"
@@ -17681,9 +17699,6 @@ msgstr "Options du tableau blanc"
 
 #~ msgid "time left"
 #~ msgstr "Limite de temps"
-
-#~ msgid "No multiplayer sides."
-#~ msgstr "Aucun camp multijoueur."
 
 # Benoît : à voir si ça colle dans le contexte
 #~ msgid "TitleScreen button^More"

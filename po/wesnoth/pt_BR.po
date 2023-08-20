@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-07-15 22:12-0500\n"
+"POT-Creation-Date: 2023-08-19 20:56-0500\n"
 "PO-Revision-Date: 2023-01-07 11:04-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -378,7 +378,7 @@ msgstr "Notas:"
 # File: src/menu_events.cpp, line: 166
 # File: src/statistics_dialog.cpp, line: 182
 #. [button]: id=ok
-#: data/campaigns/World_Conquest/gui/help_dialog.cfg:712
+#: data/campaigns/World_Conquest/gui/help_dialog.cfg:691
 msgid "Close"
 msgstr "Fechar"
 
@@ -9226,7 +9226,7 @@ msgstr[1] ""
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:955
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "Erro: "
 
@@ -9880,7 +9880,7 @@ msgstr "Password hashing falhou."
 # File: src/game_controller.cpp, line: 819
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:908
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -9894,7 +9894,7 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/game_controller.cpp, line: 821
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -9908,12 +9908,12 @@ msgstr "Erro durante o jogo: "
 # File: src/game_controller.cpp, line: 839
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:947
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:912
-#: src/game_launcher.cpp:1028
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1023
 msgid "Map generator error: "
 msgstr "Erro no gerador de mapa: "
 
@@ -10008,7 +10008,7 @@ msgstr "Erro de I/O ao ler o jogo: '"
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
-#: src/game_launcher.cpp:906
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "Erro ao iniciar o server: "
 
@@ -10022,7 +10022,7 @@ msgstr "Erro ao iniciar o server: "
 # File: src/multiplayer.cpp, line: 235
 # File: src/multiplayer.cpp, line: 320
 # File: src/multiplayer_ui.cpp, line: 84
-#: src/game_launcher.cpp:928
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "A conexão falhou: "
 
@@ -10068,6 +10068,28 @@ msgstr[0] ""
 msgstr[1] ""
 "O add-on selecionado tem as seguintes dependências que estão desatualizadas "
 "ou não encontram-se instaladas. Deseja instalá-la?"
+
+#
+# File: src/menu_events.cpp, line: 2036
+# File: src/menu_events.cpp, line: 2036
+# File: src/menu_events.cpp, line: 2036
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+#, fuzzy
+#| msgid "Create a unit."
+msgid "Create a new add-on"
+msgstr "Criar uma unidade."
+
+#: src/gui/dialogs/editor/choose_addon.cpp:77
+msgid "New Add-on"
+msgstr ""
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+msgid "Mainline"
+msgstr ""
+
+#: src/gui/dialogs/editor/choose_addon.cpp:84
+msgid "Mainline multiplayer scenarios"
+msgstr ""
 
 #
 # File: src/multiplayer_wait.cpp, line: 268
@@ -11999,7 +12021,7 @@ msgstr "hora local atual"
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:1044
+#: src/play_controller.cpp:1046
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -12014,17 +12036,17 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:1045
+#: src/play_controller.cpp:1047
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
-#: src/play_controller.cpp:1224
+#: src/play_controller.cpp:1226
 msgid "Warning: broken campaign branches"
 msgstr "Aviso: ramificações da campanha não funcionando"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1230
+#: src/play_controller.cpp:1232
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -12036,7 +12058,7 @@ msgstr[1] ""
 "Alguns dos próximos cenários estão faltando. Talvez você não tenha como "
 "terminar a campanha."
 
-#: src/play_controller.cpp:1237
+#: src/play_controller.cpp:1239
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -12051,7 +12073,7 @@ msgstr[1] ""
 "faltando:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1241
+#: src/play_controller.cpp:1243
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Quando isso for consertado, você precisará reiniciar o cenário."
 
@@ -12059,7 +12081,7 @@ msgstr "Quando isso for consertado, você precisará reiniciar o cenário."
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
 # File: src/dialogs.cpp, line: 451
-#: src/play_controller.cpp:1350
+#: src/play_controller.cpp:1352
 msgid "No objectives available"
 msgstr "Nenhum objetivo disponível"
 
@@ -12895,19 +12917,19 @@ msgstr ""
 msgid "Observers:"
 msgstr "Observadores:"
 
-#: src/reports.cpp:1733
+#: src/reports.cpp:1711
 msgid "Clock"
 msgstr "Relógio"
 
-#: src/reports.cpp:1744
+#: src/reports.cpp:1722
 msgid "Battery"
 msgstr "Bateria"
 
-#: src/reports.cpp:1775
+#: src/reports.cpp:1753
 msgid "Countdown until your turn automatically ends."
 msgstr "Contagem Regressiva até que o seu turno termine automaticamente."
 
-#: src/reports.cpp:1775
+#: src/reports.cpp:1753
 msgid "Turn Countdown"
 msgstr "Contagem Regressiva do Turno"
 
@@ -13297,7 +13319,7 @@ msgstr "Valor: '$value' Anterior: '$previous_value'"
 # File: src/serialization/string_utils.cpp, line: 484
 # File: src/serialization/string_utils.cpp, line: 520
 # File: src/serialization/string_utils.cpp, line: 520
-#: src/serialization/string_utils.cpp:551
+#: src/serialization/string_utils.cpp:552
 msgid "prefix_milli^m"
 msgstr "m"
 
@@ -13305,7 +13327,7 @@ msgstr "m"
 # File: src/serialization/string_utils.cpp, line: 485
 # File: src/serialization/string_utils.cpp, line: 521
 # File: src/serialization/string_utils.cpp, line: 521
-#: src/serialization/string_utils.cpp:552
+#: src/serialization/string_utils.cpp:553
 msgid "prefix_micro^µ"
 msgstr "µ"
 
@@ -13313,7 +13335,7 @@ msgstr "µ"
 # File: src/serialization/string_utils.cpp, line: 486
 # File: src/serialization/string_utils.cpp, line: 522
 # File: src/serialization/string_utils.cpp, line: 522
-#: src/serialization/string_utils.cpp:553
+#: src/serialization/string_utils.cpp:554
 msgid "prefix_nano^n"
 msgstr "n"
 
@@ -13321,7 +13343,7 @@ msgstr "n"
 # File: src/serialization/string_utils.cpp, line: 487
 # File: src/serialization/string_utils.cpp, line: 523
 # File: src/serialization/string_utils.cpp, line: 523
-#: src/serialization/string_utils.cpp:554
+#: src/serialization/string_utils.cpp:555
 msgid "prefix_pico^p"
 msgstr "p"
 
@@ -13329,7 +13351,7 @@ msgstr "p"
 # File: src/serialization/string_utils.cpp, line: 488
 # File: src/serialization/string_utils.cpp, line: 524
 # File: src/serialization/string_utils.cpp, line: 524
-#: src/serialization/string_utils.cpp:555
+#: src/serialization/string_utils.cpp:556
 msgid "prefix_femto^f"
 msgstr "f"
 
@@ -13337,7 +13359,7 @@ msgstr "f"
 # File: src/serialization/string_utils.cpp, line: 489
 # File: src/serialization/string_utils.cpp, line: 525
 # File: src/serialization/string_utils.cpp, line: 525
-#: src/serialization/string_utils.cpp:556
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_atto^a"
 msgstr "a"
 
@@ -13345,7 +13367,7 @@ msgstr "a"
 # File: src/serialization/string_utils.cpp, line: 490
 # File: src/serialization/string_utils.cpp, line: 526
 # File: src/serialization/string_utils.cpp, line: 526
-#: src/serialization/string_utils.cpp:557
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_zepto^z"
 msgstr "z"
 
@@ -13353,7 +13375,7 @@ msgstr "z"
 # File: src/serialization/string_utils.cpp, line: 491
 # File: src/serialization/string_utils.cpp, line: 527
 # File: src/serialization/string_utils.cpp, line: 527
-#: src/serialization/string_utils.cpp:558
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_yocto^y"
 msgstr "y"
 
@@ -13362,7 +13384,7 @@ msgstr "y"
 # File: src/serialization/string_utils.cpp, line: 539
 # File: src/serialization/string_utils.cpp, line: 539
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_kibi^K"
 msgstr "K"
 
@@ -13370,7 +13392,7 @@ msgstr "K"
 # File: src/serialization/string_utils.cpp, line: 504
 # File: src/serialization/string_utils.cpp, line: 540
 # File: src/serialization/string_utils.cpp, line: 540
-#: src/serialization/string_utils.cpp:572
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_kilo^k"
 msgstr "k"
 
@@ -13378,7 +13400,7 @@ msgstr "k"
 # File: src/serialization/string_utils.cpp, line: 506
 # File: src/serialization/string_utils.cpp, line: 542
 # File: src/serialization/string_utils.cpp, line: 542
-#: src/serialization/string_utils.cpp:574
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_mega^M"
 msgstr "M"
 
@@ -13386,7 +13408,7 @@ msgstr "M"
 # File: src/serialization/string_utils.cpp, line: 507
 # File: src/serialization/string_utils.cpp, line: 543
 # File: src/serialization/string_utils.cpp, line: 543
-#: src/serialization/string_utils.cpp:575
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_giga^G"
 msgstr "G"
 
@@ -13394,7 +13416,7 @@ msgstr "G"
 # File: src/serialization/string_utils.cpp, line: 508
 # File: src/serialization/string_utils.cpp, line: 544
 # File: src/serialization/string_utils.cpp, line: 544
-#: src/serialization/string_utils.cpp:576
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_tera^T"
 msgstr "T"
 
@@ -13402,7 +13424,7 @@ msgstr "T"
 # File: src/serialization/string_utils.cpp, line: 509
 # File: src/serialization/string_utils.cpp, line: 545
 # File: src/serialization/string_utils.cpp, line: 545
-#: src/serialization/string_utils.cpp:577
+#: src/serialization/string_utils.cpp:578
 msgid "prefix_peta^P"
 msgstr "P"
 
@@ -13410,7 +13432,7 @@ msgstr "P"
 # File: src/serialization/string_utils.cpp, line: 510
 # File: src/serialization/string_utils.cpp, line: 546
 # File: src/serialization/string_utils.cpp, line: 546
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_exa^E"
 msgstr "E"
 
@@ -13418,7 +13440,7 @@ msgstr "E"
 # File: src/serialization/string_utils.cpp, line: 511
 # File: src/serialization/string_utils.cpp, line: 547
 # File: src/serialization/string_utils.cpp, line: 547
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
@@ -13426,7 +13448,7 @@ msgstr "Z"
 # File: src/serialization/string_utils.cpp, line: 512
 # File: src/serialization/string_utils.cpp, line: 548
 # File: src/serialization/string_utils.cpp, line: 548
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
@@ -13435,7 +13457,7 @@ msgstr "Y"
 # File: src/serialization/string_utils.cpp, line: 562
 # File: src/serialization/string_utils.cpp, line: 562
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:595
+#: src/serialization/string_utils.cpp:596
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -13501,7 +13523,7 @@ msgstr "input"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:1003
+#: src/team.cpp:1006
 msgid "“$color_id”"
 msgstr "“$color_id”"
 
@@ -13557,21 +13579,21 @@ msgstr "Este Período do Dia é só um Exemplo!"
 # File: src/reports.cpp, line: 311
 # File: src/reports.cpp, line: 311
 # File: src/reports.cpp, line: 311
-#: src/units/abilities.cpp:915
+#: src/units/abilities.cpp:920
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "lento: "
 
-#: src/units/abilities.cpp:918
+#: src/units/abilities.cpp:923
 msgid "Taught: "
 msgstr ""
 
-#: src/units/abilities.cpp:921
+#: src/units/abilities.cpp:926
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:934
+#: src/units/abilities.cpp:939
 msgid "Used by opponent: "
 msgstr ""
 
@@ -13806,7 +13828,7 @@ msgstr "neutra"
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:1989
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
@@ -13814,7 +13836,7 @@ msgstr "$attack_list|: $effect_description"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:1995
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 
@@ -13822,7 +13844,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> HP"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2048
+#: src/units/unit.cpp:2005
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimento"
@@ -13832,7 +13854,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimentos"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2011
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> visão"
 
@@ -13840,7 +13862,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> visão"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # https://wiki.wesnoth.org/UnitTypeWML#Attacks
-#: src/units/unit.cpp:2058
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> interferência"
 
@@ -13848,7 +13870,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> interferência"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2063
+#: src/units/unit.cpp:2020
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> XP para avançar"
 
@@ -13856,7 +13878,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> XP para avançar"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2067
+#: src/units/unit.cpp:2024
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -13867,7 +13889,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turnos"
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
 # File: src/playsingle_controller.cpp, line: 274
-#: src/units/unit.cpp:2074
+#: src/units/unit.cpp:2031
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> custo para convocar"
 
@@ -13875,7 +13897,7 @@ msgstr "<span color=\"$color\">$number_or_percent</span> custo para convocar"
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
-#: src/units/unit.cpp:2541
+#: src/units/unit.cpp:2498
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 

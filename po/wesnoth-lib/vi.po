@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-06-17 23:19-0500\n"
+"POT-Creation-Date: 2023-08-19 20:56-0500\n"
 "PO-Revision-Date: 2014-06-05 22:47+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -2000,7 +2000,7 @@ msgstr ""
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:3204 data/gui/window/editor_edit_side.cfg:179
+#: data/core/terrain.cfg:3204 data/gui/window/editor_edit_side.cfg:206
 #: data/gui/window/game_stats.cfg:384 data/gui/window/mp_create_game.cfg:405
 msgid "Shroud"
 msgstr "Màn che"
@@ -2675,7 +2675,7 @@ msgstr ""
 #. [label]
 #. [grid]
 #: data/gui/window/achievements_dialog.cfg:79
-#: data/gui/window/title_screen.cfg:257 src/hotkey/hotkey_command.cpp:97
+#: data/gui/window/title_screen.cfg:259 src/hotkey/hotkey_command.cpp:97
 #, fuzzy
 #| msgid "sound^Advanced Options"
 msgid "Achievements"
@@ -2694,7 +2694,9 @@ msgid "Username:"
 msgstr "Đổi tên đơn vị"
 
 #. [label]
-#: data/gui/window/addon_auth.cfg:99 data/gui/window/mp_create_game.cfg:1036
+#. [grid]
+#: data/gui/window/addon_auth.cfg:99 data/gui/window/editor_edit_pbl.cfg:216
+#: data/gui/window/mp_create_game.cfg:1036
 #: data/gui/window/mp_join_game_password_prompt.cfg:90
 #: data/gui/window/mp_login.cfg:143
 msgid "Password:"
@@ -2713,9 +2715,11 @@ msgstr "Lưu mật khẩu vào tùy thích (văn bản không mã hóa)"
 #: data/gui/window/addon_auth.cfg:167 data/gui/window/custom_tod.cfg:431
 #: data/gui/window/depcheck_select_new.cfg:151
 #: data/gui/window/edit_label.cfg:139 data/gui/window/edit_text.cfg:116
+#: data/gui/window/editor_choose_addon.cfg:217
 #: data/gui/window/editor_edit_label.cfg:301
+#: data/gui/window/editor_edit_pbl_translation.cfg:125
 #: data/gui/window/editor_edit_scenario.cfg:287
-#: data/gui/window/editor_edit_side.cfg:442 data/gui/window/file_dialog.cfg:437
+#: data/gui/window/editor_edit_side.cfg:469 data/gui/window/file_dialog.cfg:437
 #: data/gui/window/folder_create.cfg:119 data/gui/window/label_settings.cfg:137
 #: data/gui/window/language_selection.cfg:148 data/gui/window/logging.cfg:259
 #: data/gui/window/migrate_version_selection.cfg:114
@@ -2723,7 +2727,8 @@ msgstr "Lưu mật khẩu vào tùy thích (văn bản không mã hóa)"
 #: data/gui/window/mp_faction_select.cfg:381
 #: data/gui/window/mp_join_game_password_prompt.cfg:136
 #: data/gui/window/mp_login.cfg:243 data/gui/window/mp_method_selection.cfg:327
-#: data/gui/window/mp_report.cfg:235 data/gui/window/select_orb_colors.cfg:181
+#: data/gui/window/mp_report.cfg:235 data/gui/window/prompt.cfg:86
+#: data/gui/window/select_orb_colors.cfg:181
 #: data/gui/window/simple_item_selector.cfg:145
 #: data/gui/window/sp_options_configure.cfg:105
 #: data/gui/window/theme_list.cfg:142 data/gui/window/unit_advance.cfg:191
@@ -2744,9 +2749,12 @@ msgstr "Đồng ý"
 #: data/gui/window/core_dialog.cfg:241 data/gui/window/custom_tod.cfg:444
 #: data/gui/window/depcheck_select_new.cfg:165
 #: data/gui/window/edit_label.cfg:153 data/gui/window/edit_text.cfg:130
+#: data/gui/window/editor_choose_addon.cfg:231
 #: data/gui/window/editor_edit_label.cfg:315
+#: data/gui/window/editor_edit_pbl.cfg:475
+#: data/gui/window/editor_edit_pbl_translation.cfg:137
 #: data/gui/window/editor_edit_scenario.cfg:301
-#: data/gui/window/editor_edit_side.cfg:454
+#: data/gui/window/editor_edit_side.cfg:481
 #: data/gui/window/editor_generate_map.cfg:214
 #: data/gui/window/editor_new_map.cfg:126
 #: data/gui/window/editor_resize_map.cfg:282
@@ -2831,7 +2839,9 @@ msgid "Traffic between the game and server is encrypted"
 msgstr ""
 
 #. [label]
+#. [grid]
 #: data/gui/window/addon_manager.cfg:162 data/gui/window/addon_manager.cfg:817
+#: data/gui/window/editor_edit_pbl.cfg:210
 msgid "Type:"
 msgstr "Kiểu:"
 
@@ -2874,7 +2884,9 @@ msgid "No description available."
 msgstr "Không có mô tả."
 
 #. [label]: id=version_string
+#. [grid]
 #: data/gui/window/addon_manager.cfg:456
+#: data/gui/window/editor_edit_pbl.cfg:207
 msgid "Version:"
 msgstr "Phiên bản:"
 
@@ -2905,7 +2917,9 @@ msgid "Delete add-on"
 msgstr "Xóa TĐTN"
 
 #. [label]
+#. [grid]
 #: data/gui/window/addon_manager.cfg:698
+#: data/gui/window/editor_edit_pbl.cfg:208
 msgid "Dependencies:"
 msgstr "Thành phần phụ thuộc:"
 
@@ -2916,7 +2930,9 @@ msgid "addon_dependencies^None"
 msgstr "Không có"
 
 #. [label]
+#. [label]: id=translations_label
 #: data/gui/window/addon_manager.cfg:733
+#: data/gui/window/editor_edit_pbl.cfg:228
 msgid "Translations:"
 msgstr "Bản dịch:"
 
@@ -2939,15 +2955,19 @@ msgid "State:"
 msgstr "Trạng thái:"
 
 #. [label]
+#. [grid]
 #: data/gui/window/addon_manager.cfg:844
+#: data/gui/window/editor_edit_pbl.cfg:209
 msgid "Tags:"
 msgstr ""
 
 #. [label]
+#. [label]: id=translations_language
 #. [button]: id=language
 #: data/gui/window/addon_manager.cfg:870
+#: data/gui/window/editor_edit_pbl.cfg:257
 #: data/gui/window/language_selection.cfg:41
-#: data/gui/window/title_screen.cfg:487
+#: data/gui/window/title_screen.cfg:489
 msgid "Language"
 msgstr "Ngôn ngữ"
 
@@ -3163,12 +3183,14 @@ msgstr "Chơi một chiến dịch"
 msgid "game^Play"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/window/campaign_difficulty.cfg:53
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
+#: src/gui/dialogs/editor/edit_pbl.cpp:191
 msgid "Difficulty"
 msgstr "Độ khó"
 
@@ -3181,7 +3203,7 @@ msgstr "Chọn mức độ khó:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:282
+#: data/gui/window/chat_log.cfg:36 src/hotkey/hotkey_command.cpp:285
 msgid "Chat Log"
 msgstr "Nhật ký tán gẫu"
 
@@ -3197,7 +3219,7 @@ msgstr "Cuối cùng"
 
 #. [button]: id=previous_page
 #. [button]: id=previous_tip
-#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:190
+#: data/gui/window/chat_log.cfg:105 data/gui/window/title_screen.cfg:192
 msgid "Previous"
 msgstr "Trước"
 
@@ -3208,7 +3230,7 @@ msgstr "Trang trước"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
-#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:205
+#: data/gui/window/chat_log.cfg:114 data/gui/window/title_screen.cfg:207
 msgid "Next"
 msgstr "Kế tiếp"
 
@@ -3352,8 +3374,8 @@ msgstr "Xóa TĐTN"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/window/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:303
-#: src/gui/dialogs/file_dialog.cpp:729
+#: src/gui/dialogs/addon/manager.cpp:979 src/gui/dialogs/file_dialog.cpp:306
+#: src/gui/dialogs/file_dialog.cpp:732
 msgid "Confirm"
 msgstr "Xác nhận"
 
@@ -3410,6 +3432,40 @@ msgid "Team only"
 msgstr "Chỉ cho đội"
 
 #. [label]
+#: data/gui/window/editor_choose_addon.cfg:45
+#, fuzzy
+#| msgid "Details:"
+msgid "Add-on selection"
+msgstr "Chi tiết:"
+
+#. [label]
+#: data/gui/window/editor_choose_addon.cfg:62
+msgid ""
+"Choose an add-on to be associated with the current editor session. If the "
+"New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
+"option."
+msgstr ""
+
+#. [label]: id=existing_addon_id
+#: data/gui/window/editor_choose_addon.cfg:98
+#, fuzzy
+#| msgid "Add-ons"
+msgid "Add-on ID"
+msgstr "Phần bổ sung"
+
+#. [label]
+#: data/gui/window/editor_choose_addon.cfg:172
+#, fuzzy
+#| msgid "Show all lobby joins"
+msgid "Show all"
+msgstr "Hiện mọi sự kiện tham gia phòng gặp gỡ"
+
+#. [toggle_button]: id=show_all
+#: data/gui/window/editor_choose_addon.cfg:184
+msgid "Whether to show all installed add-ons or only your add-ons"
+msgstr ""
+
+#. [label]
 #: data/gui/window/editor_edit_label.cfg:106
 msgid "Category:"
 msgstr ""
@@ -3440,6 +3496,230 @@ msgid "Visible in shroud"
 msgstr "Nhìn thấy trong màn che"
 
 #. [label]: id=title
+#: data/gui/window/editor_edit_pbl.cfg:84
+msgid "Add-on Publishing Setup"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:150
+msgid "The name of the add-on displayed in-game."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:150
+msgid "Title:"
+msgstr ""
+
+#. [grid]
+#. [label]
+#: data/gui/window/editor_edit_pbl.cfg:151
+#: data/gui/window/editor_edit_pbl_translation.cfg:99
+#: data/gui/window/editor_edit_scenario.cfg:140
+msgid "Description:"
+msgstr "Mô tả:"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:151
+msgid "The description of the add-on to display in the add-ons manager."
+msgstr ""
+
+#. [label]: id=icon_label
+#: data/gui/window/editor_edit_pbl.cfg:162
+msgid "Icon:"
+msgstr ""
+
+#. [button]: id=select_icon
+#: data/gui/window/editor_edit_pbl.cfg:182
+#, fuzzy
+#| msgid "Select None"
+msgid "Select an icon file"
+msgstr "Không chọn gì"
+
+#. [text_box]: id=icon
+#: data/gui/window/editor_edit_pbl.cfg:195
+msgid ""
+"The path to the icon image to display to display in the add-ons manager. "
+"Must be an image from mainline."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:206
+msgid "Author:"
+msgstr "Tác giả:"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:206
+msgid ""
+"The author of this add-on. If forum authentication is used, this is your "
+"forum username."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:207
+msgid "The add-on’s current version. This should be of the form X.Y.Z."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:208
+msgid ""
+"A comma delimited list of the IDs of any other add-ons that this add-on "
+"depends on. The add-on ID is the folder name in your operating system’s file "
+"explorer, not the add-on’s name."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:211
+msgid "Forum thread:"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:211
+msgid ""
+"The numeric topic ID of a thread on the Wesnoth forums where players can "
+"post feedback."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:212
+msgid "Forum URL"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:212
+msgid "The full URL of your feedback thread on the forums."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:213
+msgid "Forum Authentication:"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:213
+msgid ""
+"Whether to use your forum username and password when uploading or to store "
+"your password and email address in the add-on’s _server.pbl."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:214
+msgid ""
+"Comma delimited list of forum usernames of other people who are allowed to "
+"upload updates for this add-on."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:214
+msgid "Secondary Authors:"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:215
+msgid ""
+"An email address you can be contacted at in case of issues with your add-on."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:215
+msgid "Email:"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl.cfg:216
+msgid ""
+"The add-on’s current password. Using forum authentication is recommended "
+"instead since this password is not stored securely."
+msgstr ""
+
+#. [label]: id=translations_title
+#: data/gui/window/editor_edit_pbl.cfg:274
+msgid "Title"
+msgstr ""
+
+#. [label]: id=translations_description
+#: data/gui/window/editor_edit_pbl.cfg:291
+#, fuzzy
+#| msgid "Description:"
+msgid "Description"
+msgstr "Mô tả:"
+
+#. [button]: id=translations_add
+#. [button]: id=server_add
+#: data/gui/window/editor_edit_pbl.cfg:406 data/gui/window/mp_connect.cfg:270
+#, fuzzy
+#| msgid "Address"
+msgid "Add"
+msgstr "Địa chỉ"
+
+#. [button]: id=translations_delete
+#. [button]: id=delete_file
+#. [button]: id=delete
+#. [button]: id=server_delete
+#: data/gui/window/editor_edit_pbl.cfg:420 data/gui/window/file_dialog.cfg:339
+#: data/gui/window/game_load.cfg:623 data/gui/window/mp_connect.cfg:284
+msgid "Delete"
+msgstr "Xóa"
+
+#. [button]: id=validate
+#: data/gui/window/editor_edit_pbl.cfg:451
+msgid "Validate"
+msgstr ""
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [button]: id=ok
+#. [button]: id=save
+#: data/gui/window/editor_edit_pbl.cfg:463 data/gui/window/game_save.cfg:120
+#: data/gui/window/screenshot_notification.cfg:201
+#: src/gui/dialogs/file_dialog.cpp:183
+#, fuzzy
+#| msgid "Save Map"
+msgid "Save"
+msgstr "Lưu bản đồ"
+
+#. [label]: id=title
+#: data/gui/window/editor_edit_pbl_translation.cfg:69
+#, fuzzy
+#| msgid "Translations:"
+msgid "Translation"
+msgstr "Bản dịch:"
+
+#. [label]
+#: data/gui/window/editor_edit_pbl_translation.cfg:84
+#, fuzzy
+#| msgid "Password Required"
+msgid "* Required"
+msgstr "Cần mật khẩu"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:97
+#, fuzzy
+#| msgid "Language"
+msgid "* Language:"
+msgstr "Ngôn ngữ"
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:97
+msgid ""
+"The language code of the translation, such as sv (Swedish) or zh_CN "
+"(Simplified Chinese)."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:98
+msgid "* Title:"
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:98
+msgid "The translation of the addon’s title."
+msgstr ""
+
+#. [grid]
+#: data/gui/window/editor_edit_pbl_translation.cfg:99
+msgid "The translation of the addon’s description."
+msgstr ""
+
+#. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
 msgid "Edit Scenario Settings"
 msgstr "Sửa thiết lập trình hiệu chỉnh"
@@ -3448,11 +3728,6 @@ msgstr "Sửa thiết lập trình hiệu chỉnh"
 #: data/gui/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
 msgstr "Định danh:"
-
-#. [label]
-#: data/gui/window/editor_edit_scenario.cfg:140
-msgid "Description:"
-msgstr "Mô tả:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3496,85 +3771,92 @@ msgstr "Định danh đội:"
 msgid "Team name:"
 msgstr "Tên đội:"
 
+#. [label]
+#: data/gui/window/editor_edit_side.cfg:164
+#, fuzzy
+#| msgid "Recruit"
+msgid "Recruit list:"
+msgstr "Tuyển quân"
+
 #. [toggle_button]: id=no_leader
-#: data/gui/window/editor_edit_side.cfg:191
+#: data/gui/window/editor_edit_side.cfg:218
 msgid "No leader"
 msgstr "Không có người lãnh đạo"
 
 #. [toggle_button]: id=fog
-#: data/gui/window/editor_edit_side.cfg:207
+#: data/gui/window/editor_edit_side.cfg:234
 msgid "Fog of war"
 msgstr "Sương mù chiến tranh"
 
 #. [toggle_button]: id=hidden
-#: data/gui/window/editor_edit_side.cfg:219
+#: data/gui/window/editor_edit_side.cfg:246
 msgid "Hide in status table"
 msgstr "Ẩn trong bảng trạng thái"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:248 data/gui/window/mp_staging.cfg:330
+#: data/gui/window/editor_edit_side.cfg:275 data/gui/window/mp_staging.cfg:330
 msgid "Gold:"
 msgstr "Vàng:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:276
+#: data/gui/window/editor_edit_side.cfg:303
 #: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Gold per village:"
 msgstr "Vàng mỗi làng:"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:304 data/gui/window/mp_staging.cfg:362
+#: data/gui/window/editor_edit_side.cfg:331 data/gui/window/mp_staging.cfg:362
 msgid "Income:"
 msgstr "Thu nhập:"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:332
+#: data/gui/window/editor_edit_side.cfg:359
 msgid "Support per village:"
 msgstr "Hỗ trợ mỗi làng:"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:362
+#: data/gui/window/editor_edit_side.cfg:389
 msgid "Controller:"
 msgstr "Điều khiển:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:372 src/gui/dialogs/game_stats.cpp:71
+#: data/gui/window/editor_edit_side.cfg:399 src/gui/dialogs/game_stats.cpp:71
 msgid "controller^Human"
 msgstr "Con người"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:374
+#: data/gui/window/editor_edit_side.cfg:401
 msgid "controller^AI only"
 msgstr "Chỉ trí tuệ nhân tạo"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:376
+#: data/gui/window/editor_edit_side.cfg:403
 msgid "controller^None"
 msgstr "Không có"
 
 #. [label]
-#: data/gui/window/editor_edit_side.cfg:395
+#: data/gui/window/editor_edit_side.cfg:422
 #, fuzzy
 #| msgid "Share view"
 msgid "Share Vision:"
 msgstr "Chia sẻ khung nhìn"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:405
+#: data/gui/window/editor_edit_side.cfg:432
 msgid "vision^All"
 msgstr ""
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:407
+#: data/gui/window/editor_edit_side.cfg:434
 #, fuzzy
 #| msgid "Shroud"
 msgid "vision^Shroud"
 msgstr "Màn che"
 
 #. [row]
-#: data/gui/window/editor_edit_side.cfg:409
+#: data/gui/window/editor_edit_side.cfg:436
 #, fuzzy
 #| msgid "translations^None"
 msgid "vision^None"
@@ -3698,14 +3980,6 @@ msgstr ""
 msgid "Removes the current bookmark"
 msgstr ""
 
-#. [button]: id=delete_file
-#. [button]: id=delete
-#. [button]: id=server_delete
-#: data/gui/window/file_dialog.cfg:339 data/gui/window/game_load.cfg:623
-#: data/gui/window/mp_connect.cfg:284
-msgid "Delete"
-msgstr "Xóa"
-
 #. [button]: id=new_dir
 #. [label]: id=title
 #: data/gui/window/file_dialog.cfg:352 data/gui/window/folder_create.cfg:43
@@ -3773,7 +4047,7 @@ msgstr "Dấu vết thi hành"
 #. [button]: id=quit_without_surrender
 #. [grid]
 #: data/gui/window/formula_debugger.cfg:234
-#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:259
+#: data/gui/window/surrender_quit.cfg:99 data/gui/window/title_screen.cfg:261
 msgid "Quit"
 msgstr "Thoát"
 
@@ -3893,7 +4167,7 @@ msgstr "Hủy bỏ mọi di chuyển còn lại của đơn vị trong bản lư
 
 #. [button]: id=ok
 #. [grid]
-#: data/gui/window/game_load.cfg:638 data/gui/window/title_screen.cfg:253
+#: data/gui/window/game_load.cfg:638 data/gui/window/title_screen.cfg:255
 msgid "Load"
 msgstr "Tải"
 
@@ -3903,17 +4177,6 @@ msgstr "Tải"
 #: data/gui/window/game_save_oos.cfg:42 src/hotkey/hotkey_command.cpp:106
 msgid "Save Game"
 msgstr "Lưu trò chơi"
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=ok
-#. [button]: id=save
-#: data/gui/window/game_save.cfg:120
-#: data/gui/window/screenshot_notification.cfg:201
-#: src/gui/dialogs/file_dialog.cpp:182
-#, fuzzy
-#| msgid "Save Map"
-msgid "Save"
-msgstr "Lưu bản đồ"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/window/game_save_oos.cfg:141
@@ -4392,7 +4655,7 @@ msgstr "Tùy chọn nâng cao"
 #. [label]: id=title
 #. [grid]
 #: data/gui/window/lobby_main.cfg:569 data/gui/window/lobby_main.cfg:770
-#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:256
+#: data/gui/window/preferences.cfg:213 data/gui/window/title_screen.cfg:258
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Preferences"
 msgstr "Tùy thích"
@@ -4799,13 +5062,6 @@ msgstr "Địa chỉ"
 #. [label]: id=address
 #: data/gui/window/mp_connect.cfg:176
 msgid "Address"
-msgstr "Địa chỉ"
-
-#. [button]: id=server_add
-#: data/gui/window/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
-msgid "Add"
 msgstr "Địa chỉ"
 
 #. [label]
@@ -5298,7 +5554,7 @@ msgstr "Chọn bản sửa đổi"
 #. [widget]: id=label
 #. [grid]
 #: data/gui/window/mp_method_selection.cfg:46
-#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:252
+#: data/gui/window/preferences.cfg:365 data/gui/window/title_screen.cfg:254
 #: src/gui/dialogs/game_load.cpp:395
 msgid "Multiplayer"
 msgstr "Nhiều người chơi"
@@ -5433,7 +5689,7 @@ msgid "Advanced"
 msgstr "Tùy chọn nâng cao"
 
 #. [button]: id=about
-#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:466
+#: data/gui/window/preferences.cfg:419 data/gui/window/title_screen.cfg:468
 msgid "Display the game version and build information"
 msgstr ""
 
@@ -6297,39 +6553,39 @@ msgstr "Chọn sắc thái"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:174 src/hotkey/hotkey_command.cpp:280
+#: data/gui/window/title_screen.cfg:176 src/hotkey/hotkey_command.cpp:283
 msgid "Help"
 msgstr "Trợ giúp"
 
 #. [button]: id=help
-#: data/gui/window/title_screen.cfg:175
+#: data/gui/window/title_screen.cfg:177
 msgid "Show Battle for Wesnoth help"
 msgstr "Hiện trợ giúp Trận chiến vì Wesnoth"
 
 #. [button]: id=previous_tip
-#: data/gui/window/title_screen.cfg:191
+#: data/gui/window/title_screen.cfg:193
 msgid "Show previous tip of the day"
 msgstr "Hiển thị lời khuyên trước"
 
 #. [button]: id=next_tip
-#: data/gui/window/title_screen.cfg:206
+#: data/gui/window/title_screen.cfg:208
 msgid "Show next tip of the day"
 msgstr "Hiển thị lời khuyên kế tiếp"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:251
+#: data/gui/window/title_screen.cfg:253
 #, fuzzy
 #| msgid "Campaign"
 msgid "Campaigns"
 msgstr "Chiến dịch"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:251
+#: data/gui/window/title_screen.cfg:253
 msgid "Start a new single player campaign"
 msgstr "Bắt đầu chiến dịch một người chơi mới"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:252
+#: data/gui/window/title_screen.cfg:254
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -6338,59 +6594,59 @@ msgstr ""
 "hoặc một màn chơi đấu với máy tính"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:253
+#: data/gui/window/title_screen.cfg:255
 msgid "Load a saved game"
 msgstr "Tải một trò chơi đã lưu"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:254
+#: data/gui/window/title_screen.cfg:256
 msgid "Add-ons"
 msgstr "Phần bổ sung"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:254
+#: data/gui/window/title_screen.cfg:256
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr "Tải về chiến dịch, thời đại, hoặc gói bản đồ do người dùng tạo"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:255
+#: data/gui/window/title_screen.cfg:257
 msgid "Map Editor"
 msgstr "Chỉnh sửa bản đồ"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:255
+#: data/gui/window/title_screen.cfg:257
 msgid "Start the map editor"
 msgstr "Bắt đầu chương trình chỉnh sửa bản đồ"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:256
+#: data/gui/window/title_screen.cfg:258
 msgid "Configure the game’s settings"
 msgstr "Cấu hình các thiết lập của trò chơi"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:257
+#: data/gui/window/title_screen.cfg:259
 #, fuzzy
 #| msgid "Each Team"
 msgid "View achievements"
 msgstr "Mỗi đội"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:258
+#: data/gui/window/title_screen.cfg:260
 msgid "Credits"
 msgstr "Đóng góp"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:258
+#: data/gui/window/title_screen.cfg:260
 msgid "View the credits"
 msgstr "Xem danh sách đóng góp"
 
 #. [grid]
-#: data/gui/window/title_screen.cfg:259
+#: data/gui/window/title_screen.cfg:261
 msgid "Quit the game"
 msgstr "Thoát trò chơi"
 
 #. [button]: id=language
-#: data/gui/window/title_screen.cfg:488
+#: data/gui/window/title_screen.cfg:490
 msgid "Change the language"
 msgstr "Thay đổi ngôn ngữ"
 
@@ -6559,27 +6815,31 @@ msgstr ""
 msgid "filesystem_path_system^Volumes"
 msgstr ""
 
-#: src/desktop/paths.cpp:210
+#: src/desktop/paths.cpp:211
 msgid "filesystem_path_game^Game executables"
 msgstr ""
 
-#: src/desktop/paths.cpp:214
+#: src/desktop/paths.cpp:215
 msgid "filesystem_path_game^Game data"
 msgstr ""
 
-#: src/desktop/paths.cpp:218
+#: src/desktop/paths.cpp:219
 msgid "filesystem_path_game^User data"
 msgstr ""
 
-#: src/desktop/paths.cpp:222
+#: src/desktop/paths.cpp:223
 msgid "filesystem_path_game^User preferences"
 msgstr ""
 
-#: src/desktop/paths.cpp:235
+#: src/desktop/paths.cpp:227
+msgid "filesystem_path_game^Editor maps"
+msgstr ""
+
+#: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
 msgstr ""
 
-#: src/desktop/paths.cpp:244
+#: src/desktop/paths.cpp:249
 msgid "filesystem_path_system^Root"
 msgstr ""
 
@@ -6588,22 +6848,22 @@ msgid "operating_system^<unknown>"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:689
+#: src/filesystem.cpp:690
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:692
+#: src/filesystem.cpp:693
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:757 src/filesystem.cpp:779
+#: src/filesystem.cpp:758 src/filesystem.cpp:780
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:760 src/filesystem.cpp:782
+#: src/filesystem.cpp:761 src/filesystem.cpp:783
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6619,7 +6879,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1707
+#: src/filesystem.cpp:1746
 msgid "language code for localized resources^en_US"
 msgstr "vi"
 
@@ -7129,7 +7389,7 @@ msgstr "Chọn bản sửa đổi"
 
 #: src/gui/dialogs/chat_log.cpp:398 src/gui/dialogs/game_cache_options.cpp:69
 #: src/gui/dialogs/game_version_dialog.cpp:141
-#: src/gui/dialogs/gamestate_inspector.cpp:416
+#: src/gui/dialogs/gamestate_inspector.cpp:417
 #: src/gui/dialogs/lua_interpreter.cpp:475
 #: src/gui/dialogs/screenshot_notification.cpp:70
 #: src/gui/dialogs/wml_error.cpp:192
@@ -7168,6 +7428,111 @@ msgstr ""
 "Bản sửa đổi hiện được chọn không tương thích với thiết lập của bạn.\n"
 "Xin chọn một bản sửa đổi tương thích."
 
+#: src/gui/dialogs/editor/edit_pbl.cpp:172
+#, fuzzy
+#| msgid "Forest"
+msgid "Core"
+msgstr "Rừng"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:173
+#, fuzzy
+#| msgid "Campaign"
+msgid "Campaign"
+msgstr "Chiến dịch"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:174
+#, fuzzy
+#| msgid "Campaign"
+msgid "Hybrid Campaign"
+msgstr "Chiến dịch"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:175
+#, fuzzy
+#| msgid "Multiplayer Options"
+msgid "Multiplayer Campaign"
+msgstr "Tùy chọn nhiều người chơi"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:176
+#, fuzzy
+#| msgid "Scenario start"
+msgid "Scenario"
+msgstr "Mở đầu màn"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:177
+#, fuzzy
+#| msgid "Multiplayer"
+msgid "Multiplayer Scenario"
+msgstr "Nhiều người chơi"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:178
+#, fuzzy
+#| msgid "Action"
+msgid "Faction"
+msgstr "Hành động"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:179
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
+#, fuzzy
+#| msgid "Era:"
+msgid "Era"
+msgstr "Thời đại:"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:180
+msgid "Map Pack"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:181
+#, fuzzy
+#| msgid "Choose Modifications"
+msgid "Modification"
+msgstr "Chọn bản sửa đổi"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:182
+msgid "Media"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:183
+#, fuzzy
+#| msgid "Other games"
+msgid "Other"
+msgstr "Trò chơi khác"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:189
+msgid "Cooperative"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:190
+msgid "Cosmetic"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:192
+msgid "RNG"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:193
+msgid "Survival"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:194
+#, fuzzy
+#| msgid "Map Information"
+msgid "Terraforming"
+msgstr "Thông tin bản đồ"
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:373
+msgid "No validation errors"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:373
+msgid "Success"
+msgstr ""
+
+#: src/gui/dialogs/editor/edit_pbl.cpp:403
+#, fuzzy
+#| msgid "Choose Resolution"
+msgid "Choose an icon"
+msgstr "Chọn độ phân giải"
+
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
 msgstr "/1000 ô"
@@ -7188,45 +7553,45 @@ msgstr "Đảo"
 msgid "Find File"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:182
+#: src/gui/dialogs/file_dialog.cpp:183
 msgid "Open"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:302
+#: src/gui/dialogs/file_dialog.cpp:305
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "The file already exists. Do you wish to overwrite it?"
 msgstr "Bản lưu đã tồn tại. Bạn có muốn ghi đè lên không?"
 
-#: src/gui/dialogs/file_dialog.cpp:326
+#: src/gui/dialogs/file_dialog.cpp:329
 msgid "The file or folder $path cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:332
+#: src/gui/dialogs/file_dialog.cpp:335
 msgid "The file or folder $path does not exist."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:707
+#: src/gui/dialogs/file_dialog.cpp:710
 msgid ""
 "Could not create a new folder at $path|. Make sure you have the appropriate "
 "permissions to write to this location."
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:725
+#: src/gui/dialogs/file_dialog.cpp:728
 msgid "The following folder and its contents will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:726
+#: src/gui/dialogs/file_dialog.cpp:729
 msgid "The following file will be permanently deleted:"
 msgstr ""
 
-#: src/gui/dialogs/file_dialog.cpp:727
+#: src/gui/dialogs/file_dialog.cpp:730
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid "Do you wish to continue?"
 msgstr "Bạn có thực sự muốn xóa trò chơi này không?"
 
-#: src/gui/dialogs/file_dialog.cpp:739
+#: src/gui/dialogs/file_dialog.cpp:742
 msgid ""
 "Could not delete $path|. Make sure you have the appropriate permissions to "
 "write to this location."
@@ -7563,12 +7928,6 @@ msgstr ""
 #| msgid "addon_state^Not installed"
 msgid "era_or_mod^not installed"
 msgstr "Chưa cài đặt"
-
-#: src/gui/dialogs/multiplayer/lobby.cpp:426
-#, fuzzy
-#| msgid "Era:"
-msgid "Era"
-msgstr "Thời đại:"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:458
 #, fuzzy
@@ -7910,7 +8269,7 @@ msgstr ""
 msgid "Screenshot"
 msgstr "Chụp màn hình"
 
-#: src/gui/dialogs/title_screen.cpp:455 src/hotkey/hotkey_command.cpp:298
+#: src/gui/dialogs/title_screen.cpp:455 src/hotkey/hotkey_command.cpp:301
 #, fuzzy
 #| msgid "Test scenario"
 msgid "Choose Test Scenario"
@@ -8125,14 +8484,14 @@ msgid_plural "$excess others"
 msgstr[0] ""
 
 #: src/gui/widgets/multimenu_button.cpp:183
-#: src/gui/widgets/multimenu_button.cpp:239
+#: src/gui/widgets/multimenu_button.cpp:235
 msgid "multimenu^None Selected"
 msgstr ""
 
-#: src/gui/widgets/multimenu_button.cpp:256
-#: src/gui/widgets/multimenu_button.cpp:257
-#: src/gui/widgets/multimenu_button.cpp:258
-#: src/gui/widgets/multimenu_button.cpp:259
+#: src/gui/widgets/multimenu_button.cpp:252
+#: src/gui/widgets/multimenu_button.cpp:253
+#: src/gui/widgets/multimenu_button.cpp:254
+#: src/gui/widgets/multimenu_button.cpp:255
 msgid "Missing required state for multimenu button"
 msgstr ""
 
@@ -8343,7 +8702,7 @@ msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Nhấn giải tán cần một nút 'click_dismiss' hoặc 'ok'."
 
 #: src/gui/widgets/window.cpp:841 src/gui/widgets/window.cpp:878
-#: src/tests/gui/test_gui2.cpp:701
+#: src/tests/gui/test_gui2.cpp:721
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
 
@@ -9098,122 +9457,132 @@ msgid "Add New Area"
 msgstr "Thêm khu vực mới"
 
 #: src/hotkey/hotkey_command.cpp:270
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#: src/hotkey/hotkey_command.cpp:271
+#, fuzzy
+#| msgid "Manage Add-ons"
+msgid "Change Add-on ID"
+msgstr "Quản lý phần bổ sung"
+
+#: src/hotkey/hotkey_command.cpp:273
 msgid "Edit Scenario"
 msgstr "Sửa màn chơi"
 
-#: src/hotkey/hotkey_command.cpp:271
+#: src/hotkey/hotkey_command.cpp:274
 msgid "Edit Side"
 msgstr "Sửa phe"
 
-#: src/hotkey/hotkey_command.cpp:272
+#: src/hotkey/hotkey_command.cpp:275
 msgid "Remove Side"
 msgstr "Xóa phe"
 
-#: src/hotkey/hotkey_command.cpp:274
+#: src/hotkey/hotkey_command.cpp:277
 msgid "Delay Shroud Updates"
 msgstr "Trễ cập nhật màn che"
 
-#: src/hotkey/hotkey_command.cpp:275
+#: src/hotkey/hotkey_command.cpp:278
 msgid "Update Shroud Now"
 msgstr "Cập nhật màn che ngay"
 
-#: src/hotkey/hotkey_command.cpp:276
+#: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
 #| msgid "Continue Move"
 msgid "Continue Interrupted Move"
 msgstr "Tiếp tục di chuyển"
 
-#: src/hotkey/hotkey_command.cpp:277
+#: src/hotkey/hotkey_command.cpp:280
 msgid "Find Label or Unit"
 msgstr "Tìm nhãn hoặc đơn vị"
 
-#: src/hotkey/hotkey_command.cpp:278
+#: src/hotkey/hotkey_command.cpp:281
 msgid "Speak to Ally"
 msgstr "Nói với đồng minh"
 
-#: src/hotkey/hotkey_command.cpp:279
+#: src/hotkey/hotkey_command.cpp:282
 msgid "Speak to All"
 msgstr "Nói với tất cả"
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Help about save-loading"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:281
+#: src/hotkey/hotkey_command.cpp:284
 msgid "Hint: save-loading is unnecessary"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:283
+#: src/hotkey/hotkey_command.cpp:286
 #, fuzzy
 #| msgid "Enter User Command"
 msgid "Enter Command"
 msgstr "Nhập lệnh người dùng"
 
-#: src/hotkey/hotkey_command.cpp:284
+#: src/hotkey/hotkey_command.cpp:287
 msgid "Custom Command"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/hotkey/hotkey_command.cpp:285
+#: src/hotkey/hotkey_command.cpp:288
 msgid "Run Formula"
 msgstr "Chạy công thức"
 
-#: src/hotkey/hotkey_command.cpp:286
+#: src/hotkey/hotkey_command.cpp:289
 #, fuzzy
 #| msgid "Players: "
 msgid "Clear Chat"
 msgstr "Số người chơi: "
 
-#: src/hotkey/hotkey_command.cpp:288
+#: src/hotkey/hotkey_command.cpp:291
 msgid "Change Language"
 msgstr "Thay đổi ngôn ngữ"
 
-#: src/hotkey/hotkey_command.cpp:289
+#: src/hotkey/hotkey_command.cpp:292
 msgid "Refresh WML"
 msgstr "Tải lại WML"
 
-#: src/hotkey/hotkey_command.cpp:290
+#: src/hotkey/hotkey_command.cpp:293
 msgid "Next Tip of the Day"
 msgstr "Lời khuyên kế tiếp"
 
-#: src/hotkey/hotkey_command.cpp:291
+#: src/hotkey/hotkey_command.cpp:294
 msgid "Previous Tip of the Day"
 msgstr "Lời khuyên trước"
 
-#: src/hotkey/hotkey_command.cpp:292
+#: src/hotkey/hotkey_command.cpp:295
 msgid "Start Campaign"
 msgstr "Bắt đầu chiến dịch"
 
-#: src/hotkey/hotkey_command.cpp:293
+#: src/hotkey/hotkey_command.cpp:296
 msgid "Start Multiplayer Game"
 msgstr "Bắt đầu trò chơi nhiều người chơi"
 
-#: src/hotkey/hotkey_command.cpp:294
+#: src/hotkey/hotkey_command.cpp:297
 msgid "Manage Add-ons"
 msgstr "Quản lý phần bổ sung"
 
-#: src/hotkey/hotkey_command.cpp:295
+#: src/hotkey/hotkey_command.cpp:298
 #, fuzzy
 #| msgid "Manage Add-ons"
 msgid "Manage Cores"
 msgstr "Quản lý phần bổ sung"
 
-#: src/hotkey/hotkey_command.cpp:296
+#: src/hotkey/hotkey_command.cpp:299
 msgid "Start Editor"
 msgstr "Khởi chạy trình chỉnh sửa bản đồ"
 
-#: src/hotkey/hotkey_command.cpp:297
+#: src/hotkey/hotkey_command.cpp:300
 msgid "Show Credits"
 msgstr "Hiện danh sách đóng góp"
 
-#: src/hotkey/hotkey_command.cpp:300
+#: src/hotkey/hotkey_command.cpp:303
 msgid "Show Helptip"
 msgstr "Hiện phần trợ giúp"
 
-#: src/hotkey/hotkey_command.cpp:302
+#: src/hotkey/hotkey_command.cpp:305
 msgid "Show Lua Console"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:305
+#: src/hotkey/hotkey_command.cpp:308
 msgid "Unrecognized Command"
 msgstr "Lệnh không xác định"
 
@@ -9360,11 +9729,6 @@ msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được th
 #~ msgstr "Giới tính:"
 
 #, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Recruits:"
-#~ msgstr "Tuyển quân"
-
-#, fuzzy
 #~| msgid "Starting Positions Tool"
 #~ msgid "Starting position:"
 #~ msgstr "Công cụ Vị trí ban đầu"
@@ -9373,11 +9737,6 @@ msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được th
 #~| msgid "Selected game"
 #~ msgid "Selected Game"
 #~ msgstr "Trò chơi được chọn"
-
-#, fuzzy
-#~| msgid "Other games"
-#~ msgid "Other Games"
-#~ msgstr "Trò chơi khác"
 
 #, fuzzy
 #~| msgid "Team 1"
@@ -9554,11 +9913,6 @@ msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được th
 #~ msgstr "Hướng dẫn làm quen với trò chơi"
 
 #, fuzzy
-#~| msgid "Forest"
-#~ msgid "Cores"
-#~ msgstr "Rừng"
-
-#, fuzzy
 #~| msgid "Selected game"
 #~ msgid "Select the game core data"
 #~ msgstr "Trò chơi được chọn"
@@ -9615,16 +9969,6 @@ msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được th
 #~ msgstr "Tốc độ di chuyển và chiến đấu của đơn vị"
 
 #, fuzzy
-#~| msgid "Scenario start"
-#~ msgid "Scenario"
-#~ msgstr "Mở đầu màn"
-
-#, fuzzy
-#~| msgid "Campaign"
-#~ msgid "Campaign"
-#~ msgstr "Chiến dịch"
-
-#, fuzzy
 #~| msgid "Settings"
 #~ msgid "Settings:"
 #~ msgstr "Thiết lập"
@@ -9642,11 +9986,6 @@ msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được th
 
 #~ msgid "Screenshot Saved"
 #~ msgstr "Đã lưu hình chụp màn hình"
-
-#, fuzzy
-#~| msgid "Choose Resolution"
-#~ msgid "Choose weapon:"
-#~ msgstr "Chọn độ phân giải"
 
 #, fuzzy
 #~| msgid "addon_state^Unknown"
@@ -9770,9 +10109,6 @@ msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được th
 
 #~ msgid "Experimental Fake Map Edge"
 #~ msgstr "Cạnh bản đồ giả thử nghiệm"
-
-#~ msgid "Author:"
-#~ msgstr "Tác giả:"
 
 #~ msgid "Options"
 #~ msgstr "Tùy chọn"

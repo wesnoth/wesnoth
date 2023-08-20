@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-05-20 22:01-0500\n"
+"POT-Creation-Date: 2023-08-19 20:56-0500\n"
 "PO-Revision-Date: 2023-04-16 17:13+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -122,55 +122,61 @@ msgstr "Questo attacco utilizza 5 attacchi"
 msgid "This attack uses 6 attacks"
 msgstr "Questo attacco utilizza 6 attacchi"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:252
-msgid "This attack can only be used as the first verse of the song."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
+msgid ""
+"This attack is the first verse of the Song of Sun Ascension, which "
+"progresses by one verse each turn this unit uses a song verse attack. When "
+"the last verse is sung or the song sequence is broken due to not attacking "
+"for a turn, the song starts again from the first verse."
 msgstr ""
-"Questo attacco può essere usato soltanto durante la prima strofa della "
-"canzone."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:255
-msgid "This attack can only be used as the second verse of the song."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
+msgid ""
+"This attack is the second verse of the Song of Sun Ascension, which "
+"progresses by one verse each turn this unit uses a song verse attack. When "
+"the last verse is sung or the song sequence is broken due to not attacking "
+"for a turn, the song starts again from the first verse."
 msgstr ""
-"Questo attacco può essere usato soltanto durante la seconda strofa della "
-"canzone."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:258
-msgid "This attack can only be used as the third verse of the song."
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:83
+msgid ""
+"This attack is the third verse of the Song of Sun Ascension, which "
+"progresses by one verse each turn this unit uses a song verse attack. When "
+"the last verse is sung or the song sequence is broken due to not attacking "
+"for a turn, the song starts again from the first verse."
 msgstr ""
-"Questo attacco può essere usato soltanto durante la terza strofa della "
-"canzone."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:261
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
 msgid "first verse"
 msgstr "prima strofa"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:264
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:89
 msgid "second verse"
 msgstr "seconda strofa"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:267
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:92
 msgid "third verse"
 msgstr "terza strofa"
 
 #. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:279
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
 msgid "once per turn"
 msgstr "una volta per turno"
 
 #. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:280
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
 msgid "This attack can be used offensively only once per turn"
 msgstr ""
 "Questo attacco può essere utilizzato in attacco soltanto una volta per ogni "
 "turno"
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:358
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:403
 msgid "nova"
 msgstr "supernova"
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:359
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:404
 msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
@@ -179,19 +185,19 @@ msgstr ""
 "adiacenti al lanciatore quando colpisce."
 
 #. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:360
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:405
 msgid "This unit has wide-area attacks centered on the caster."
 msgstr ""
 "Questa unità possiede degli attacchi ad ampia superficie centrati sul "
 "lanciatore."
 
 #. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:395
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:440
 msgid "ray"
 msgstr "raggio"
 
 #. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:396
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:441
 msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
@@ -199,7 +205,7 @@ msgstr ""
 "Quando viene utilizzata in attacco, quest’arma è in grado di danneggiare "
 "anche una unità dietro il bersaglio."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:520
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:565
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
@@ -207,7 +213,7 @@ msgstr ""
 "All’inizio del turno, questa unità incrementa i muti movimento delle unità "
 "circostanti dei un fattore +1"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:523
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:568
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
@@ -216,24 +222,24 @@ msgstr ""
 "circostanti dei un fattore +2"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:527
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:572
 msgid "tailwind +"
 msgstr "vento in poppa +"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:545
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:590
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:546
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:591
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:547
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:592
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -253,28 +259,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:551
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:590
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:620
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:596
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:635
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:665
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Quest’unità è in grado di fornire cure di primo soccorso e rallentare la "
 "disidratazione."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:569
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:614
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:570
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:615
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:571
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:616
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -294,17 +300,17 @@ msgstr ""
 "“cura”."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:644
 msgid "heals +12"
 msgstr "guarisce +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:600
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:645
 msgid "female^heals +12"
 msgstr "guarisce +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:601
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:646
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -324,7 +330,7 @@ msgstr ""
 "“cura”."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:626
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:671
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -475,13 +481,13 @@ msgstr "Editor Mappe e Scenari"
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:350
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:372
 msgid "Terrain Editor"
 msgstr "Editor dei terreni"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:362
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:384
 msgid "Scenario Editor"
 msgstr "Editor Scenario"
 
@@ -1253,17 +1259,76 @@ msgstr ""
 "Questo strumento è disponibile soltanto in modalità Scenario, in quanto "
 "aggiunge tag WML <italic>text='[music]'</italic> ad uno scenario."
 
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:319
+#, fuzzy
+#| msgid "Using Add-ons"
+msgid "Change Add-on ID"
+msgstr "Utilizzare le estensioni"
+
+#. [topic]: id=editor_addon_id
+#: data/core/editor/help.cfg:320
+msgid ""
+"Allows changing the ID of an add-on, which is the name of the folder it’s "
+"in. This will only rename that folder and update any references to it in the "
+"_main.cfg file. Any other place will need to be updated manually."
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:329
+msgid "Add-on Publishing Editor"
+msgstr ""
+
+#. [topic]: id=editor_pbl_editor
+#: data/core/editor/help.cfg:330
+msgid ""
+"Allows setting up an add-on’s _server.pbl file, which is required for "
+"publishing an add-on to the add-ons server for other players to download. "
+"The Validate button will check whether all required fields have valid values."
+msgstr ""
+
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:318
+#: data/core/editor/help.cfg:338
 msgid "Map/Scenario Editor"
 msgstr "Editor Mappa/Scenario"
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:319
+#: data/core/editor/help.cfg:339
+#, fuzzy
+#| msgid ""
+#| "Wesnoth’s Map and Scenario Editor allows users to create and edit the "
+#| "maps on which every Wesnoth scenario takes place. It also provides a "
+#| "limited set of features for setting up a basic scenario.\n"
+#| "\n"
+#| "The editor can be launched from the <italic>text='Map Editor'</italic> "
+#| "option at the title screen.\n"
+#| "\n"
+#| "<header>text='Editing Modes'</header>\n"
+#| "\n"
+#| "The editor features two modes of operation: terrain mode and scenario "
+#| "mode.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_terrain' text='Terrain Mode'</ref> is similar "
+#| "to a simple paint application, with tools to <ref>dst='editor_tool_paint' "
+#| "text='paint'</ref>, <ref>dst='editor_tool_fill' text='fill'</ref>, "
+#| "<ref>dst='editor_tool_select' text='select (and copy)'</ref>, and "
+#| "<ref>dst='editor_tool_paste' text='paste'</ref>. It also has the tool for "
+#| "setting the leaders’ <ref>dst='editor_tool_starting' text='starting "
+#| "locations'</ref>.\n"
+#| "\n"
+#| "The <ref>dst='..editor_mode_scenario' text='Scenario Mode'</ref>, in "
+#| "addition to the tools available in terrain mode, adds support for adding "
+#| "<ref>dst='editor_tool_label' text='labels'</ref>, "
+#| "<ref>dst='editor_tool_scenery' text='scenery items'</ref>, "
+#| "<ref>dst='editor_tool_unit' text='units'</ref> in addition to the leader, "
+#| "and assigning <ref>dst='editor_tool_village' text='village ownership'</"
+#| "ref> at the start of the scenario. There’s also a "
+#| "<ref>dst='editor_playlist' text='playlist manager'</ref> for the music."
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
-"of features for setting up a basic scenario.\n"
+"of features for setting up a basic scenario as well as initializing an add-"
+"on which can be used to distribute the scenarios you create.\n"
 "\n"
 "The editor can be launched from the <italic>text='Map Editor'</italic> "
 "option at the title screen.\n"
@@ -1321,7 +1386,19 @@ msgstr ""
 "un <ref>dst='editor_playlist' text='gestore di scalette'</ref> per la musica."
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:331
+#: data/core/editor/help.cfg:351
+msgid ""
+"In either mode, you will be prompted to choose an add-on to use for the "
+"scenarios you create. This can be an existing add-on or a brand new add-on. "
+"If you choose to use a brand new add-on, then the add-on will have all the "
+"required files and folders automatically created as well as a default ID "
+"assigned. Unless you are editing an already existing map file, using "
+"scenario mode is required in order for your maps to be selectable during "
+"game creation."
+msgstr ""
+
+#. [topic]: id=..editor
+#: data/core/editor/help.cfg:353
 msgid ""
 "<header>text='What you do *not* get'</header>\n"
 "\n"
@@ -1370,7 +1447,7 @@ msgstr ""
 "informazioni di questi terreni."
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:351
+#: data/core/editor/help.cfg:373
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -1396,7 +1473,7 @@ msgstr ""
 "Partita”."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:363
+#: data/core/editor/help.cfg:385
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1410,7 +1487,7 @@ msgstr ""
 "scenari non supporta la stesura di script per gli eventi di scenario."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:365
+#: data/core/editor/help.cfg:387
 msgid ""
 "<header>text='Checking whether the editor is in scenario mode'</header>\n"
 "\n"
@@ -1428,7 +1505,7 @@ msgstr ""
 "grigio)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:372
+#: data/core/editor/help.cfg:394
 msgid ""
 "<header>text='Entering scenario mode'</header>\n"
 "\n"
@@ -1454,22 +1531,36 @@ msgstr ""
 "tipo .map)."
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:380
+#: data/core/editor/help.cfg:402
+#, fuzzy
+#| msgid ""
+#| "<header>text='The files: .map and .cfg'</header>\n"
+#| "\n"
+#| "The map editor saves exactly one file, either a .map (for terrain mode) "
+#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
+#| "inside the .cfg file; there is no separate .map file. If you start "
+#| "editing in terrain mode and then switch to scenario mode then an old .map "
+#| "file might remain, but this is not updated by the scenario editor.\n"
+#| "\n"
+#| "Loading a .cfg file has different results depending on the contents of "
+#| "the .cfg file. For .cfg files that were created by the scenario editor, "
+#| "it will open the .cfg in the scenario editor. However, for .cfg files "
+#| "that use a separate .map file (which can't be created by the scenario "
+#| "editor), the editor may follow the link and open the corresponding .map "
+#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
-"The map editor saves exactly one file, either a .map (for terrain mode) or "
-"a .cfg (for scenario mode). In scenario mode the terrain map is saved inside "
-"the .cfg file; there is no separate .map file. If you start editing in "
-"terrain mode and then switch to scenario mode then an old .map file might "
-"remain, but this is not updated by the scenario editor.\n"
+"The map editor saves one file when in terrain mode (a .map) or two files "
+"when in scenario mode (both a .map and a .cfg).\n"
 "\n"
 "Loading a .cfg file has different results depending on the contents of the ."
 "cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that use a "
-"separate .map file (which can't be created by the scenario editor), the "
-"editor may follow the link and open the corresponding .map in terrain-only "
-"mode, as if the .map file was chosen in the file selector."
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
+"scenario's map data and open the corresponding .map file in terrain-only "
+"mode, as if the .map file was chosen in the file selector. It is recommended "
+"in those cases to simply load the .map file directly instead."
 msgstr ""
 "<header>text='I file: .map e .cfg'</header>\n"
 "\n"
@@ -1489,122 +1580,51 @@ msgstr ""
 "map."
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:392
+#: data/core/editor/help.cfg:414
 msgid "Using a separate file for WML events"
 msgstr "Usare un file separato per gli eventi WML"
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:393
+#: data/core/editor/help.cfg:415
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
 "been edited by hand.\n"
 "\n"
-"Files created by the scenario editor omit the opening [scenario] and closing "
-"[/scenario] tags. If you are creating a campaign (or other add-on), then "
-"those tags need to be added; there is more detail about this in the "
-"<ref>dst='editor_map_format' text='map file format'</ref> documentation.\n"
-"\n"
-"One workflow is to create a separate WML file, also with the .cfg extension, "
+"One option is to create a separate WML file, also with the .cfg extension, "
 "which uses the WML preprocessor to include the editor-created file. This "
 "separate file contains both the [scenario] tag and any hand-edited WML such "
 "as events. With this workflow, the add-on’s file structure could look like "
 "this:\n"
 "\n"
-"<header>text='For Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-"these four lines:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-"The first three of those lines insert the scenario-generated file inside a "
-"[scenario] tag. The ‘+’ sign on the fourth line means that two scenario tags "
-"will be combined, with attributes in the second one overriding attributes in "
-"the first one.\n"
-"\n"
-"<header>text='1.16 and later'</header>\n"
-"\n"
-"If your add-on will only be used on 1.16 and later, there are new features "
-"to load .cfg files via map_file, and to avoid repeating the add-on’s name "
-"within the .cfg files.\n"
+"<header>text='Example'</header>\n"
+"If your add-on will only be used on 1.18 and later, it is instead "
+"recommended to use the new include_file attribute to load a .cfg file "
+"containing additional WML into the scenario.\n"
 "\n"
 "• _main.cfg:\n"
 "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-"which makes “map_file” search the “maps” directory.\n"
-"  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ this is the file created by the scenario editor\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-"load that file"
+"which makes “map_file” search the “maps” directory\n"
+"• maps/first.map\n"
+"  ◦ this is the .map file created by the scenario editor when saving in "
+"scenario mode\n"
+"• scenarios/other.cfg\n"
+"  ◦ this is the .cfg file containing everything that the scenario editor "
+"doesn't understand\n"
+"• scenarios/first.cfg\n"
+"  ◦ inside the [scenario] element, use “map_file=\"first.map\"” to load the "
+"map file\n"
+"  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
+"the additional cfg file"
 msgstr ""
-"Quando si carica un file di tipo .cfg, l’editor degli scenari è in grado di "
-"interpretare i file da lui creati, ma ha delle difficoltà con i file creati "
-"a mano.\n"
-"\n"
-"Quelli creati dall’editor non presentano i tag di apertura [scenario] e "
-"quello di chiusura [/scenario]. Se stai creando una campagna (o un’altra "
-"estensione), allora questi tag vanno aggiunti. Puoi trovare altre "
-"informazioni a proposito nella documentazione sul "
-"<ref>dst='editor_map_format' text='formato file mappa'</ref>.\n"
-"\n"
-"Una possibile strada da seguire è quella di creare un file WML separato, "
-"sempre con estensione .cfg, che utilizzi il preprocessore WML per includere "
-"il file creato con l’editor. Questo file separato contiene sia il tag "
-"[scenario] che qualsiasi altro componente WML creato a mano, come ad esempio "
-"gli eventi. In questo modo, la struttura del file estensione sarebbe "
-"questa:\n"
-"\n"
-"<header>text='Per Wesnoth 1.14'</header>\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ utilizza “{./scenarios}” per includere la directory “scenarios”\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ questo è il file creato dall’editor di scenario\n"
-"• scenarios/01_Forest.cfg, al posto del tag di apertura [scenario] presenta "
-"queste quattro linee:\n"
-"  ◦ [scenario]\n"
-"  ◦     {~add-ons/NOME_ESTENSIONE/maps/map_from_01.cfg}\n"
-"  ◦ [/scenario]\n"
-"  ◦ [+scenario]\n"
-"\n"
-" Le prime tre righe servono per inserire il file generato dall’editor "
-"all’interno di un tag [scenario]; il carattere ‘+’ nella questa linea serve "
-"per combinare insieme due tag scenario, con gli attributi del secondo che "
-"sovrascrivono quelli del primo.\n"
-"\n"
-"<header>text='versione 1.16 e successive'</header>\n"
-"\n"
-"Se la tua estensione verrà utilizzata soltanto per la versione 1.16 e "
-"successive, ci sono anche altri sistemi per caricare un file .cfg tramite "
-"una mappa, evitando così di ripetere il nome dell’estensione all’interno dei "
-"file .cfg .\n"
-"\n"
-"• _main.cfg:\n"
-"  ◦ usa “[binary_path]” per aggiungere le directory degli eseguibili "
-"dell’estensione, in modo che il “file_mappa” possa cercare nella directory "
-"“maps”.\n"
-"  ◦ usa “{./scenarios}” per includere la directory “scenarios”\n"
-"• maps/map_from_01.cfg\n"
-"  ◦ questo è il file creato dall’editor di scenario\n"
-"• scenarios/01_Forest.cfg\n"
-"  ◦ all’interno dell’elemento [scenario], usa “map_file=\"map_from_01.cfg\"” "
-"per caricare quel file"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:431
+#: data/core/editor/help.cfg:438
 msgid "Editor Mask Usage"
 msgstr "Utilizzo dell’editor delle maschere"
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:432
+#: data/core/editor/help.cfg:439
 msgid ""
 "Masks can be applied to a base map for reusal in several scenarios playing "
 "at the same locations."
@@ -1614,12 +1634,12 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:440
+#: data/core/editor/help.cfg:447
 msgid "ToD and Schedule Editor"
 msgstr "Editor Andamento Temporale e tabella di marcia"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:441
+#: data/core/editor/help.cfg:448
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1642,13 +1662,13 @@ msgstr ""
 "text='aree temporali'</ref>."
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:452
+#: data/core/editor/help.cfg:459
 msgid "Editor Palette"
 msgstr "Tavolozza dell’editor"
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:454
+#: data/core/editor/help.cfg:461
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1678,34 +1698,34 @@ msgstr ""
 "Alcuni esempi:"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:459
+#: data/core/editor/help.cfg:466
 msgid "Show all kinds of terrain"
 msgstr "Mostra tutti i tipi di terreno"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:460
+#: data/core/editor/help.cfg:467
 msgid "Show only water terrains"
 msgstr "Mostra solo i terreni acquatici"
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:461
+#: data/core/editor/help.cfg:468
 msgid "Show only villages"
 msgstr "Mostra solo i villaggi"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:473
+#: data/core/editor/help.cfg:480
 msgid "Wesnoth Map Format"
 msgstr "Formato Mappa Wesnoth"
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:474
+#: data/core/editor/help.cfg:481
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 "Wesnoth memorizza le sue mappe in un formato di testo puro leggibile da un "
 "umano."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:476
+#: data/core/editor/help.cfg:483
 msgid ""
 "<header>text='Native'</header>\n"
 "\n"
@@ -1764,7 +1784,7 @@ msgstr ""
 "all’utilizzo dell’inclusione da preprocessore."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:489
+#: data/core/editor/help.cfg:496
 msgid ""
 "<header>text='Embedded'</header>\n"
 "\n"
@@ -1800,15 +1820,26 @@ msgstr ""
 "finestra."
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:497
+#: data/core/editor/help.cfg:504
+#, fuzzy
+#| msgid ""
+#| "<header>text='Files created by the Scenario Editor'</header>\n"
+#| "\n"
+#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
+#| "map data. When loading a .cfg file, the scenario editor understands files "
+#| "created by the scenario editor itself, but is likely to have difficulty "
+#| "with files that have been edited by hand; problems can be avoided by "
+#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
-"In scenario mode, the editor saves the data as a .cfg file with embedded map "
-"data. When loading a .cfg file, the scenario editor understands files "
-"created by the scenario editor itself, but is likely to have difficulty with "
-"files that have been edited by hand; problems can be avoided by "
-"<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
+"In scenario mode, the editor saves the scenario data as a .cfg file and the "
+"map data as a separate .map file. The scenario then references the .map file "
+"via map_file. When loading a .cfg file, the scenario editor understands "
+"files created by the scenario editor itself, but is likely to have "
+"difficulty with files that have been edited by hand; problems can be avoided "
+"by <ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
 "ref> for the hand-edited parts."
 msgstr ""
 "<header>text='File creati dall’Editor di Scenario'</header>\n"
@@ -1819,47 +1850,6 @@ msgstr ""
 "difficoltà con dei file modificati manualmente. Questi problemi possono "
 "essere evitati <ref>dst='editor_separate_events_file' text='utilizzando un "
 "file .cfg separato'</ref> per le parti editate a mano."
-
-#. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:501
-msgid ""
-"<header>text='Which scenario files use the [scenario] tag'</header>\n"
-"\n"
-"Files created by the scenario editor have the contents of a WML scenario "
-"element, but don’t include the opening [scenario] and closing [/scenario] "
-"tags. For each .cfg file in the userdata folder’s editor/scenarios "
-"subfolder, the game will automatically try to load a scenario from it to "
-"include in the “Custom Scenarios” list (files that fail to load are "
-"ignored). In this folder each file is a separate item - files that fail to "
-"parse as a scenario are ignored, and files must not contain the [scenario][/"
-"scenario] tags.\n"
-"\n"
-"The opposite applies when a scenario is part of a campaign or other add-on. "
-"Typically each scenario has its own .cfg file, however this is unnecessary - "
-"all of the WML in an add-on will be combined by the preprocessor, it doesn’t "
-"matter whether the add-on is written as separate files or not. The engine "
-"needs the [scenario]...[/scenario] (or [multiplayer]...[/multiplayer]) tags "
-"to know which WML is part of each scenario."
-msgstr ""
-"<header>text='Quali file scenario usano il tag [scenario]'</header>\n"
-"\n"
-"I file creati dall’editor di scenario contengono un elemento WML di "
-"scenario, ma non includono i tag di apertura di chiusura [scenario] e [/"
-"scenario]. Per ogni file .cfg presente nella sottocartella editor/scenari "
-"nella cartella userdata, il gioco proverà a caricare automaticamente da esso "
-"uno scenario da includere nell’elenco “Scenari Personalizzati” (i file che "
-"falliscono il caricamento vengono ignorati). In questa cartella ogni file è "
-"un elemento separato: i file che non vengono riconosciuti come scenario "
-"vengono ignorati, e i file non devono contenere i tags [scenario][/"
-"scenario].\n"
-"\n"
-"Si applica esattamente l’opposto quando uno scenario è parte di una campagna "
-"o di altre estensioni Tipicamente ogni scenario ha il suo personale file ."
-"cfg, ma questo non è necessario: tutto il WML in una estensione viene "
-"combinato dal prepocessore, non importa se l’estensione è scritta come file "
-"distinti o meno. Il motore ha bisogno dei tag [scenario]...[/scenario] (o "
-"[multiplayer]...[/multiplayer]) per sapere quale WML fa parte di ciascun "
-"scenario."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -8992,6 +8982,165 @@ msgstr "Costo di visione"
 #: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Costo di disturbo"
+
+#~ msgid "This attack can only be used as the first verse of the song."
+#~ msgstr ""
+#~ "Questo attacco può essere usato soltanto durante la prima strofa della "
+#~ "canzone."
+
+#~ msgid "This attack can only be used as the second verse of the song."
+#~ msgstr ""
+#~ "Questo attacco può essere usato soltanto durante la seconda strofa della "
+#~ "canzone."
+
+#~ msgid "This attack can only be used as the third verse of the song."
+#~ msgstr ""
+#~ "Questo attacco può essere usato soltanto durante la terza strofa della "
+#~ "canzone."
+
+#~ msgid ""
+#~ "When loading a .cfg file, the scenario editor understands files created "
+#~ "by the scenario editor, but is likely to have difficulty with files that "
+#~ "have been edited by hand.\n"
+#~ "\n"
+#~ "Files created by the scenario editor omit the opening [scenario] and "
+#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
+#~ "on), then those tags need to be added; there is more detail about this in "
+#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
+#~ "documentation.\n"
+#~ "\n"
+#~ "One workflow is to create a separate WML file, also with the .cfg "
+#~ "extension, which uses the WML preprocessor to include the editor-created "
+#~ "file. This separate file contains both the [scenario] tag and any hand-"
+#~ "edited WML such as events. With this workflow, the add-on’s file "
+#~ "structure could look like this:\n"
+#~ "\n"
+#~ "<header>text='For Wesnoth 1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
+#~ "these four lines:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ "The first three of those lines insert the scenario-generated file inside "
+#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
+#~ "tags will be combined, with attributes in the second one overriding "
+#~ "attributes in the first one.\n"
+#~ "\n"
+#~ "<header>text='1.16 and later'</header>\n"
+#~ "\n"
+#~ "If your add-on will only be used on 1.16 and later, there are new "
+#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
+#~ "on’s name within the .cfg files.\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
+#~ "which makes “map_file” search the “maps” directory.\n"
+#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ this is the file created by the scenario editor\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
+#~ "load that file"
+#~ msgstr ""
+#~ "Quando si carica un file di tipo .cfg, l’editor degli scenari è in grado "
+#~ "di interpretare i file da lui creati, ma ha delle difficoltà con i file "
+#~ "creati a mano.\n"
+#~ "\n"
+#~ "Quelli creati dall’editor non presentano i tag di apertura [scenario] e "
+#~ "quello di chiusura [/scenario]. Se stai creando una campagna (o un’altra "
+#~ "estensione), allora questi tag vanno aggiunti. Puoi trovare altre "
+#~ "informazioni a proposito nella documentazione sul "
+#~ "<ref>dst='editor_map_format' text='formato file mappa'</ref>.\n"
+#~ "\n"
+#~ "Una possibile strada da seguire è quella di creare un file WML separato, "
+#~ "sempre con estensione .cfg, che utilizzi il preprocessore WML per "
+#~ "includere il file creato con l’editor. Questo file separato contiene sia "
+#~ "il tag [scenario] che qualsiasi altro componente WML creato a mano, come "
+#~ "ad esempio gli eventi. In questo modo, la struttura del file estensione "
+#~ "sarebbe questa:\n"
+#~ "\n"
+#~ "<header>text='Per Wesnoth 1.14'</header>\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ utilizza “{./scenarios}” per includere la directory “scenarios”\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ questo è il file creato dall’editor di scenario\n"
+#~ "• scenarios/01_Forest.cfg, al posto del tag di apertura [scenario] "
+#~ "presenta queste quattro linee:\n"
+#~ "  ◦ [scenario]\n"
+#~ "  ◦     {~add-ons/NOME_ESTENSIONE/maps/map_from_01.cfg}\n"
+#~ "  ◦ [/scenario]\n"
+#~ "  ◦ [+scenario]\n"
+#~ "\n"
+#~ " Le prime tre righe servono per inserire il file generato dall’editor "
+#~ "all’interno di un tag [scenario]; il carattere ‘+’ nella questa linea "
+#~ "serve per combinare insieme due tag scenario, con gli attributi del "
+#~ "secondo che sovrascrivono quelli del primo.\n"
+#~ "\n"
+#~ "<header>text='versione 1.16 e successive'</header>\n"
+#~ "\n"
+#~ "Se la tua estensione verrà utilizzata soltanto per la versione 1.16 e "
+#~ "successive, ci sono anche altri sistemi per caricare un file .cfg tramite "
+#~ "una mappa, evitando così di ripetere il nome dell’estensione all’interno "
+#~ "dei file .cfg .\n"
+#~ "\n"
+#~ "• _main.cfg:\n"
+#~ "  ◦ usa “[binary_path]” per aggiungere le directory degli eseguibili "
+#~ "dell’estensione, in modo che il “file_mappa” possa cercare nella "
+#~ "directory “maps”.\n"
+#~ "  ◦ usa “{./scenarios}” per includere la directory “scenarios”\n"
+#~ "• maps/map_from_01.cfg\n"
+#~ "  ◦ questo è il file creato dall’editor di scenario\n"
+#~ "• scenarios/01_Forest.cfg\n"
+#~ "  ◦ all’interno dell’elemento [scenario], usa “map_file=\"map_from_01."
+#~ "cfg\"” per caricare quel file"
+
+#~ msgid ""
+#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
+#~ "\n"
+#~ "Files created by the scenario editor have the contents of a WML scenario "
+#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
+#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
+#~ "subfolder, the game will automatically try to load a scenario from it to "
+#~ "include in the “Custom Scenarios” list (files that fail to load are "
+#~ "ignored). In this folder each file is a separate item - files that fail "
+#~ "to parse as a scenario are ignored, and files must not contain the "
+#~ "[scenario][/scenario] tags.\n"
+#~ "\n"
+#~ "The opposite applies when a scenario is part of a campaign or other add-"
+#~ "on. Typically each scenario has its own .cfg file, however this is "
+#~ "unnecessary - all of the WML in an add-on will be combined by the "
+#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
+#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
+#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
+#~ "scenario."
+#~ msgstr ""
+#~ "<header>text='Quali file scenario usano il tag [scenario]'</header>\n"
+#~ "\n"
+#~ "I file creati dall’editor di scenario contengono un elemento WML di "
+#~ "scenario, ma non includono i tag di apertura di chiusura [scenario] e [/"
+#~ "scenario]. Per ogni file .cfg presente nella sottocartella editor/scenari "
+#~ "nella cartella userdata, il gioco proverà a caricare automaticamente da "
+#~ "esso uno scenario da includere nell’elenco “Scenari Personalizzati” (i "
+#~ "file che falliscono il caricamento vengono ignorati). In questa cartella "
+#~ "ogni file è un elemento separato: i file che non vengono riconosciuti "
+#~ "come scenario vengono ignorati, e i file non devono contenere i tags "
+#~ "[scenario][/scenario].\n"
+#~ "\n"
+#~ "Si applica esattamente l’opposto quando uno scenario è parte di una "
+#~ "campagna o di altre estensioni Tipicamente ogni scenario ha il suo "
+#~ "personale file .cfg, ma questo non è necessario: tutto il WML in una "
+#~ "estensione viene combinato dal prepocessore, non importa se l’estensione "
+#~ "è scritta come file distinti o meno. Il motore ha bisogno dei tag "
+#~ "[scenario]...[/scenario] (o [multiplayer]...[/multiplayer]) per sapere "
+#~ "quale WML fa parte di ciascun scenario."
 
 #~ msgid ""
 #~ "This unit can lead your own units that are next to it, making them fight "

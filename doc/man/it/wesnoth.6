@@ -166,17 +166,17 @@ fornisce un elenco dei log domains definiti ( soltanto quelli contenenti
 \fIfiltro\fP, se usata) e termina
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-dirotta l’output loggato in un file. I log file vengono creati nella
-directory dei log nella cartella dati utente.
+impedisce il reindirizzamento dell’output registrato in un file. I log file
+vengono creati nella directory dei log nella cartella dati utente.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file in addition to standard
-output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
-explicit.
+il registro di output è scritto in un file addizionale oltre allo standard
+output/errore. Annulla l’effetto di \-\-no\-log\-to\-file implicito o esplicito.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+In ambiente Windows, quando usato in combinazione con \-\-no\-log\-to\-file,
+l’output viene scritto in cerr&Cout invece che in CONOUT. Altrimenti, non ha
+effetto.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 il numero di immagini al secondo che il gioco può mostrare, il valore
@@ -307,9 +307,9 @@ esegue il gioco con l’interfaccia grafica, sovrascrivendo ogni implicito
 errori di validazione sono trattati come errori fatali.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+esegue il gioco in un piccolo scenario di test. Lo scenario dovrebbe essere
+uno di quelli definiti con un tag WML \fB[test]\fP. Una dimostrazione delle
+caratteristiche delle \fB[micro_ai]\fP può essere avviata con \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percentuale\fP
 Imposta a \fIpercentuale\fP il livello standard per la determinare quando una
