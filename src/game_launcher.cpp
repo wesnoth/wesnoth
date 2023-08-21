@@ -58,6 +58,10 @@
 #include "wml_exception.hpp" // for wml_exception
 
 #include <algorithm> // for copy, max, min, stable_sort
+#ifdef _WIN32
+#include <boost/process/windows.hpp>
+#endif
+#include <boost/process.hpp>
 #include <cstdlib>   // for system
 #include <new>
 #include <utility> // for pair
@@ -67,14 +71,6 @@
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-
-// For wesnothd launch code.
-#ifdef _WIN32
-
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-
-#endif // _WIN32
 
 struct incorrect_map_format_error;
 
@@ -98,6 +94,8 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
+
+namespace bp = boost::process;
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
@@ -821,7 +819,7 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
-	const std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
+	std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
 		? filesystem::get_program_invocation("wesnothd")
 		: preferences::get_mp_server_program_name();
 
@@ -831,23 +829,27 @@ void game_launcher::start_wesnothd()
 		filesystem::write_file(config, filesystem::read_file(filesystem::get_wml_location("lan_server.cfg")));
 	}
 
+	LOG_GENERAL << "Starting wesnothd";
+	try
+	{
 #ifndef _WIN32
-	std::string command = "\"" + wesnothd_program +"\" -c \"" + config + "\" -d";
+		bp::child c(wesnothd_program, "-c", config);
 #else
-	// start wesnoth as background job
-	std::string command = "cmd /C start \"wesnoth server\" /B \"" + wesnothd_program + "\" -c \"" + config + "\"";
+		bp::child c(wesnothd_program, "-c", config, bp::windows::create_no_window);
 #endif
-	LOG_GENERAL << "Starting wesnothd: "<< command;
-	if (std::system(command.c_str()) == 0) {
+		c.detach();
 		// Give server a moment to start up
 		SDL_Delay(50);
 		return;
 	}
-	preferences::set_mp_server_program_name("");
+	catch(const bp::process_error& e)
+	{
+		preferences::set_mp_server_program_name("");
 
-	// Couldn't start server so throw error
-	WRN_GENERAL << "Failed to run server start script";
-	throw game::mp_server_error("Starting MP server failed!");
+		// Couldn't start server so throw error
+		WRN_GENERAL << "Failed to start server " << wesnothd_program << ":\n" << e.what();
+		throw game::mp_server_error("Starting MP server failed!");
+	}
 }
 
 bool game_launcher::play_multiplayer(mp_mode mode)

@@ -186,7 +186,7 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = "1.66"
+boost_version = "1.67"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
