@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Liberty
+     * Make Harper a girl and revise some dialogue
  ### Editor
    * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
  ### Multiplayer
@@ -53,7 +55,7 @@
      * Ancient Wose - cost changed from 48 to 50.
      * Merman Entangler - cost changed from 46 to 42.
      * Javelineer - cost changed from 48 to 55.
-     * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148. 
+     * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148.
    * Undead:
      * Skeleton - xp changed from 35 to 39.
      * Ghoul - xp changed from 35 to 30.
@@ -158,7 +160,7 @@
      * Troll Warrior - cost changed from 44 to 49.
      * Naga Myrmidon - cost changed from 48 to 47.
      * Orcish Nightblade - cost changed from 43 to 53.
-     * Orcish Slurbow - cost changed from 43 to 37. 
+     * Orcish Slurbow - cost changed from 43 to 37.
    * Loyalists:
      * Cavalryman - blade resistance changed from 30% to 20%, xp changed from 40 to 44.
      * Bowman - xp changed from 39 to 35, melee damage changed from 4 to 5.
