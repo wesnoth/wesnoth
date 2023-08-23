@@ -241,9 +241,14 @@ jobs:
       - name: Build wesnoth and unit tests
         working-directory: projectfiles/Xcode
         run: xcodebuild ARCHS=x86_64 -project "The Battle for Wesnoth.xcodeproj" -target "The Battle for Wesnoth" -target "unit_tests" -configuration "$CFG"
-#      - name: Create disk image
-#        working-directory: projectfiles/Xcode
-#        run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+      - name: Create disk image
+        working-directory: projectfiles/Xcode
+        run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
+      - name: Upload disk image
+        uses: actions/upload-artifact@v3
+        with:
+          name: MacOS ${{ matrix.cfg }} disk image
+          path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
       - name: Run WML tests
         if: matrix.cfg == 'Release'
         run: ./run_wml_tests -g -c -t 30 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth"
