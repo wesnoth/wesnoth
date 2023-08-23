@@ -7,13 +7,6 @@ on:
     branches: [ master ]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  VCPKG_FEATURE_FLAGS: dependencygraph
-
 jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
@@ -264,6 +257,9 @@ jobs:
         cfg: [Debug, Release]
     env:
       CFG: ${{ matrix.cfg }}
+      VCPKG_FEATURE_FLAGS: dependencygraph
+    permissions:
+      contents: write # for dependency graph
     defaults:
       run:
         shell: cmd
