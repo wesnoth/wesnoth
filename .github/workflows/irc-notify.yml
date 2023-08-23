@@ -5,11 +5,12 @@ on:
     types: [ opened, closed, reopened ]
   issues:
     types: [ opened, closed, reopened ]
-  create:
+  # create: # creation also gets mentioned when pushing
   delete:
 
 jobs:
   notify:
+    if: vars.IRC_CHANNEL != '' # skip if not set up (like in a fork for example)
     runs-on: ubuntu-latest
     steps:
       - name: Prepare message
