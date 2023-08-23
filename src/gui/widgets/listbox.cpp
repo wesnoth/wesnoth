@@ -136,6 +136,18 @@ void listbox::set_row_active(const unsigned row, const bool active)
 	generator_->item(row).set_active(active);
 }
 
+void listbox::set_rows_shown_by(std::function<bool(std::size_t)> func)
+{
+	boost::dynamic_bitset<> mask{};
+	mask.resize(get_item_count(), true);
+
+	for(std::size_t i = 0; i < mask.size(); ++i) {
+		mask[i] = std::invoke(func, i);
+	}
+
+	set_row_shown(mask);
+}
+
 void listbox::set_row_shown(const unsigned row, const bool shown)
 {
 	assert(generator_);

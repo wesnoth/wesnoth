@@ -143,6 +143,8 @@ public:
 	 */
 	void set_row_shown(const boost::dynamic_bitset<>& shown);
 
+	void set_rows_shown_by(std::function<bool(std::size_t)> func);
+
 	/**
 	 * Returns a list of visible rows
 	 *

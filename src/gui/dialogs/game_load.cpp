@@ -48,6 +48,9 @@
 
 #include <cctype>
 
+#include <boost/regex.hpp>
+#include <fmt/format.h>
+
 static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 #define ERR_GAMELOADDLG   LOG_STREAM(err,   log_gameloaddlg)
 #define WRN_GAMELOADDLG   LOG_STREAM(warn,  log_gameloaddlg)
@@ -90,7 +93,6 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 	, summary_(data.summary)
 	, games_()
 	, cache_config_(cache_config)
-	, last_words_()
 {
 }
 
@@ -314,40 +316,15 @@ void game_load::display_savegame()
 
 void game_load::filter_text_changed(const std::string& text)
 {
-	listbox& list = find_widget<listbox>(get_window(), "savegame_list", false);
+	auto split = utils::split(text, ' ');
+	std::transform(split.begin(), split.end(), split.begin(),
+		[](std::string_view str) { return fmt::format("(?=.*{})", str); });
 
-	const std::vector<std::string> words = utils::split(text, ' ');
+	boost::regex regex{fmt::to_string(fmt::join(split, "")), boost::regex::icase};
+	auto filter = [this, match = std::move(regex)](std::size_t index)
+		{ return boost::regex_search(games_[index].name(), match); };
 
-	if(words == last_words_)
-		return;
-	last_words_ = words;
-
-	boost::dynamic_bitset<> show_items;
-	show_items.resize(list.get_item_count(), true);
-
-	if(!text.empty()) {
-		for(unsigned int i = 0; i < list.get_item_count() && i < games_.size(); i++) {
-			bool found = false;
-			for(const auto & word : words)
-			{
-				found = std::search(games_[i].name().begin(),
-									games_[i].name().end(),
-									word.begin(),
-									word.end(),
-									utils::chars_equal_insensitive)
-						!= games_[i].name().end();
-
-				if(!found) {
-					// one word doesn't match, we don't reach words.end()
-					break;
-				}
-			}
-
-			show_items[i] = found;
-		}
-	}
-
-	list.set_row_shown(show_items);
+	find_widget<listbox>(get_window(), "savegame_list", false).set_rows_shown_by(filter);
 }
 
 void game_load::evaluate_summary_string(std::stringstream& str, const config& cfg_summary)
