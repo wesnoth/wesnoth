@@ -93,8 +93,6 @@ std::string default_preferences_path = "";
 #endif
 bool check_migration = false;
 
-std::string wesnoth_program_dir;
-
 const std::string observer_team_name = "observer";
 
 int cache_compression_level = 6;
@@ -1015,16 +1013,16 @@ std::string get_exe_dir()
 	}
 
 	// check the PATH for wesnoth's location
-	// versionless
-	std::string exe = filesystem::base_name(filesystem::get_program_invocation("wesnoth"));
+	// with version
+	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
+	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
 	bfs::path search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
 		return search.parent_path().string();
 	}
 
-	// with version
-	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
-	exe = filesystem::base_name(filesystem::get_program_invocation("wesnoth-"+version));
+	// versionless
+	exe = filesystem::get_program_invocation("wesnoth");
 	search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
 		return search.parent_path().string();
