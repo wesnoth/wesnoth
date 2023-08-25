@@ -36,6 +36,7 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
+#include <boost/process.hpp>
 #include "game_config_view.hpp"
 
 #ifdef _WIN32
@@ -70,6 +71,7 @@ static lg::log_domain log_filesystem("filesystem");
 #define WRN_FS LOG_STREAM(warn, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
+namespace bp = boost::process;
 namespace bfs = boost::filesystem;
 using boost::system::error_code;
 
@@ -1002,18 +1004,34 @@ std::string get_exe_dir()
 	bfs::path exe(process_path);
 	return exe.parent_path().string();
 #else
+	// first check /proc
 	if(bfs::exists("/proc/")) {
 		bfs::path self_exe("/proc/self/exe");
 		error_code ec;
 		bfs::path exe = bfs::read_symlink(self_exe, ec);
-		if(ec) {
-			return std::string();
+		if(!ec) {
+			return exe.parent_path().string();
 		}
-
-		return exe.parent_path().string();
-	} else {
-		return get_cwd();
 	}
+
+	// check the PATH for wesnoth's location
+	// versionless
+	std::string exe = filesystem::base_name(filesystem::get_program_invocation("wesnoth"));
+	bfs::path search = bp::search_path(exe).string();
+	if(!search.string().empty()) {
+		return search.parent_path().string();
+	}
+
+	// with version
+	std::string version = game_config::wesnoth_version.major_version() + "." + game_config::wesnoth_version.minor_version();
+	exe = filesystem::base_name(filesystem::get_program_invocation("wesnoth-"+version));
+	search = bp::search_path(exe).string();
+	if(!search.string().empty()) {
+		return search.parent_path().string();
+	}
+
+	// return the current working directory
+	return get_cwd();
 #endif
 }
 
@@ -1698,7 +1716,7 @@ std::string get_program_invocation(const std::string& program_name)
 #endif
 	);
 
-	return (bfs::path(game_config::wesnoth_program_dir) / real_program_name).string();
+	return real_program_name;
 }
 
 std::string sanitize_path(const std::string& path)
