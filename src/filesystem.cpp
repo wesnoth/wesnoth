@@ -1023,7 +1023,7 @@ std::string get_exe_dir()
 	}
 
 	// with version
-	std::string version = game_config::wesnoth_version.major_version() + "." + game_config::wesnoth_version.minor_version();
+	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
 	exe = filesystem::base_name(filesystem::get_program_invocation("wesnoth-"+version));
 	search = bp::search_path(exe).string();
 	if(!search.string().empty()) {
