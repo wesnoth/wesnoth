@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-08-20 01:56 UTC\n"
-"PO-Revision-Date: 2023-02-23 09:09+1100\n"
+"PO-Revision-Date: 2023-08-25 09:09+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2448,44 +2448,42 @@ msgid ""
 "throne of a king? This free for all map has 38 villages and bonus income for "
 "the leader on the center keep."
 msgstr ""
+"The King is dead. Without an heir, his quarrelsome lords now vie for the "
+"hill-top throne and all the power and wealth it commands. Are you mighty "
+"enough to take this seat of power before your rivals do? Can you hold out "
+"against their many assassins? Is your arse truly great enough to fill the "
+"throne of a king? This free for all map has 38 villages and bonus income for "
+"the leader on the centre keep."
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:63
-#, fuzzy
-#| msgid "teamname^Southwest"
 msgid "Southwest"
 msgstr "South-West"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:73
-#, fuzzy
-#| msgid "teamname^Southeast"
 msgid "Southeast"
 msgstr "South-East"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:83
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northeast"
-msgstr "Northerners"
+msgstr "North-East"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:93
-#, fuzzy
-#| msgid "Northerners"
 msgid "Northwest"
-msgstr "Northerners"
+msgstr "North-West"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:106
 msgid "High Guard"
-msgstr ""
+msgstr "High Guard"
 
 #. [slider]: id=bonus_income
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:121
 msgid "Hill Bonus Income"
-msgstr ""
+msgstr "Hill Bonus Income"
 
 #. [slider]: id=bonus_income
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:122
@@ -2493,23 +2491,23 @@ msgid ""
 "The amount of extra gold per turn granted to the leader who occupies the "
 "hill keep."
 msgstr ""
+"The amount of extra gold per turn granted to the leader who occupies the "
+"hill keep."
 
 #. [slider]: id=chest_gold
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:130
 msgid "Treasure Chest Gold"
-msgstr ""
+msgstr "Treasure Chest Gold"
 
 #. [slider]: id=chest_gold
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:131
 msgid "The amount of gold stashed inside the treasure chest on the hill."
-msgstr ""
+msgstr "The amount of gold stashed inside the treasure chest on the hill."
 
 #. [objective]: condition=win
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:139
-#, fuzzy
-#| msgid "Defeat all enemy leaders"
 msgid "Defeat enemy leaders"
-msgstr "Defeat all enemy leaders"
+msgstr "Defeat enemy leaders"
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:143
@@ -2517,6 +2515,8 @@ msgid ""
 "The treasure chest on the hill keep can only be unlocked by a leader, for a "
 "bonus of $chest_gold gold."
 msgstr ""
+"The treasure chest on the hill keep can only be unlocked by a leader, for a "
+"bonus of $chest_gold gold."
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:146
@@ -2524,6 +2524,8 @@ msgid ""
 "A side with a leader holding the hill keep gets +$bonus_income gold income "
 "each turn."
 msgstr ""
+"A side with a leader holding the hill keep gets +$bonus_income gold income "
+"each turn."
 
 #. [note]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:149
@@ -2531,16 +2533,18 @@ msgid ""
 "Each side gets two leaders. Whenever a leader is lost then another appears "
 "on the recall list at its full cost."
 msgstr ""
+"Each side gets two leaders. Whenever a leader is lost then another appears "
+"on the recall list at its full cost."
 
 #. [floating_text]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:233
 msgid "<span color='gold'>+$bonus_income gold</span>"
-msgstr ""
+msgstr "<span color='gold'>+$bonus_income gold</span>"
 
 #. [floating_text]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:270
 msgid "<span color='gold'>+$chest_gold gold</span>"
-msgstr ""
+msgstr "<span color='gold'>+$chest_gold gold</span>"
 
 #. [multiplayer]: id=multiplayer_Loris_River
 #: data/multiplayer/scenarios/4p_Loris_River.cfg:7

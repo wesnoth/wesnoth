@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-08-19 20:56-0500\n"
-"PO-Revision-Date: 2022-09-22 06:17+1000\n"
+"PO-Revision-Date: 2023-08-25 08:27+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -198,7 +198,7 @@ msgstr "Window"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -411,14 +411,8 @@ msgid "Map loaded from scenario"
 msgstr "Map loaded from scenario"
 
 #: src/editor/map/context_manager.cpp:950
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Loaded referenced map file:\n"
-"$new"
+msgstr "Loaded referenced map file:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -439,7 +433,7 @@ msgstr "Empty file"
 
 #: src/editor/map/map_context.cpp:195
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "File does not have .map or .cfg extension"
 
 #: src/editor/map/map_context.cpp:241
 msgid ""
@@ -451,7 +445,7 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:260
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
+msgstr "Found the characters '<<' indicating inline lua is present - aborting"
 
 #: src/editor/map/map_context.cpp:265
 #: src/editor/palette/location_palette.cpp:265
@@ -460,23 +454,19 @@ msgstr "Error"
 
 #: src/editor/map/map_context.cpp:265
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "Failed to load the scenario, attempting to load only the map."
 
 #: src/editor/map/map_context.cpp:272
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 
 #: src/editor/map/map_context.cpp:287
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Unable to parse file to find map data"
 
 #: src/editor/map/map_context.cpp:811
 msgid "Could not save the scenario: $msg"
