@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Descent into Darkness
+     * Buff soul rend
    * Liberty
      * Make Harper a girl and revise some dialogue
  ### Editor
