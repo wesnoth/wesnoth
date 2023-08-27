@@ -751,7 +751,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	srand(std::time(nullptr));
 
 	commandline_options cmdline_opts = commandline_options(args);
-	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
 
 	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {

@@ -820,7 +820,7 @@ bool game_launcher::goto_editor()
 void game_launcher::start_wesnothd()
 {
 	std::string wesnothd_program = preferences::get_mp_server_program_name().empty()
-		? filesystem::get_program_invocation("wesnothd")
+		? filesystem::get_exe_dir() + "/" + filesystem::get_program_invocation("wesnothd")
 		: preferences::get_mp_server_program_name();
 
 	std::string config = filesystem::get_user_config_dir() + "/lan_server.cfg";
