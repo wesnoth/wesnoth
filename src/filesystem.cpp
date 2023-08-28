@@ -445,6 +445,7 @@ void get_files_in_dir(const std::string& dir,
 	}
 
 	for(; di != end; ++di) {
+		ec.clear();
 		bfs::file_status st = di->status(ec);
 		if(ec) {
 			LOG_FS << "Failed to get file status of " << di->path().string() << ": " << ec.message();
