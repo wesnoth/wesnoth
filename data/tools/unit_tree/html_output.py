@@ -997,6 +997,8 @@ class HTMLOutput:
         return n
 
     def write_unit_report(self, output, unit):
+        _w, _w_editor, _w_help, _w_lib = self.make_gettext("wesnoth", "wesnoth-editor", "wesnoth-help", "wesnoth-lib")
+
         def write(line):
             self.output.write(line)
         def _(msgid, textdomain="wesnoth"):
