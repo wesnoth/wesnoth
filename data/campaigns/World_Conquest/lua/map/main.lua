@@ -10,7 +10,7 @@ wesnoth.dofile("./scenario_utils/plot.lua")
 wesnoth.dofile("./scenario_utils/side_definitions.lua")
 settings = globals.settings or {}
 
-local n_villages = {27, 40, 53, 63}
+local early_victory_bonus = {27, 40, 53, 63}
 
 local function get_map_generator(scenario_data)
 	if globals.settings.default_id then
@@ -45,7 +45,9 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 	std_print("test_nplayers", wml.variables.test_nplayers)
 	local scenario_data = get_scenario_data(nplayers, scenario_num)
 
-	local prestart_event = { name = "prestart" }
+	local prestart_event = {
+		name = "prestart",
+	}
 	-- our [scenario] skeleton
 	local scenario = {
 		event = {
@@ -71,6 +73,7 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 				description="enables the buildin mod to mark units, disable this to be compatible with other mods that do the same thing",
 			},
 		},
+		-- note: in later scenarios these variables will probably be overwritten by whatever is present in the carryover.
 		variables = {
 			wc2_scenario = scenario_num,
 			wc2_player_count = nplayers,
@@ -81,6 +84,8 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 		description = "WC_II_" .. nplayers .. "p_desc",
 		modify_placing = false,
 		turns = scenario_data.turns,
+		carryover_percentage = 15,
+		carryover_add = true,
 	}
 
 	-- add [side]s to the [scenario]
@@ -89,21 +94,6 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 
 	-- add plot (that is [event] with [message]s)
 	add_plot(scenario, scenario_num, nplayers)
-
-	-- add the gold carryover event
-	if scenario_num < #n_villages then
-		table.insert(scenario.event, {
-			name = "victory",
-			wml.tag.wc2_store_carryover {
-				nvillages = n_villages[scenario_num] + 2 * nplayers,
-				wml.tag.sides {
-					side="1,2,3",
-					wml.tag.has_unit {
-					}
-				}
-			}
-		})
-	end
 
 	-- add some wc2 specific wml [event]s
 	for side_num = 1, nplayers do
@@ -115,6 +105,15 @@ function wc_ii_generate_scenario(nplayers, gen_args)
 			wml.tag.wc2_invest {
 			}
 		})
+	end
+
+	if early_victory_bonus[scenario_num] then
+		table.insert(prestart_event,
+			wml.tag.set_variable {
+				name = "wc2_early_victory_bonus",
+				value = early_victory_bonus[scenario_num] + 2 * nplayers,
+			}
+		)
 	end
 
 	-- generate the map. (this also adds certain events for example to create [item]s or [sound_source]s)
