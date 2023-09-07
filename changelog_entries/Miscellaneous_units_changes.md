@@ -6,20 +6,23 @@
      * Young Ogre – cost changed from 15 to 13, xp changed from 32 to 34, mountain defense changed from 60% to 50%, arcane resistance changed from 20% to 10%.
      * Ogre – cost changed from 30 to 27, mountain defense changed from 60% to 50%, arcane resistance changed from 20% to 10%.
    * Miscellaneous:
-     * Falcon – xp changed from 24 to 22.
+     * Elder Falcon - cost changed from 18 to 20.
+     * Giant Ant – xp changed from 26 to 16.
      * Soldier ant – cost changed from 16 to 12, hp changed from 35 to 36.
+     * Fire Ant - xp changed from 50 to 22.
+     * Firebomb Ant - hp changed from 38 to 45, cost changed from 14 to 19.
      * Yeti - cost changed from 80 to 151.
      * Piglet – xp changed from 26 to 20.
      * Woodland Boar – cost changed from 15 to 16, hp changed from 35 to 34.
-     * Fire guardian – xp changed from 29 to 24.
+     * Fire guardian – xp changed from 29 to 24, hp changed from 23 to 25.
      * Fire Wraith – gold cost changed from 22 to 17.
      * Bay Horse and Dark Horse – xp changed from 44 to 24.
-     * Ant – xp changed from 26 to 16.
      * Mermaid Initiate – cost changed from 19 to 16, xp changed from 50 to 42.
      * Mermaind Priestess – cost changed from 38 to 31, xp changed from 132 to 61.
      * Mermaid Diviner – cost changed from 57 to 49.
      * Mermaid Enchanterss – cost changed from 33 to 32, xp changed from 90 to 46.
      * Mermaid Siren – cost changed from 52 to 42.
+     * Merman Brawler - cost changed from 19 to 17.
      * Naga Guardian – xp changed from 35 to 36.
      * Naga Warden – xp changed from 70 to 54.
      * Troll Hero – cost changed from 30 to 42, xp changed from 52 to 90.
@@ -47,3 +50,8 @@
      * Dragonfly Naiad – cost changed from 8 to 11, xp changed from 23 to 16.
      * Dragonfly – cost changed from 13 to 16, xp changed from 23 to 25.
      * Grand Dragonfly – hp changed from 34 to 39, cost changed from 22 to 30.
+     * Ruffian - cost changed from 6 to 7.
+     * Thug - xp changed from 42 to 32.
+     * Bandit - cost changed from 23 to 22, xp changed from 70 to 61.
+     * Peasant and Woodsman - xp changed from 23 to 19.
+     * Elder Mage - cost changed from 65 to 90. 
