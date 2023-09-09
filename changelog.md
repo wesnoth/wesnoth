@@ -12,7 +12,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, French
+   * Updated translations: British English, Czech, French
  ### Units
    * Updates to Troll sprites and animations (#7844)
  ### User interface

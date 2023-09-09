@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-08-19 20:56-0500\n"
-"PO-Revision-Date: 2023-06-26 23:18+0200\n"
+"PO-Revision-Date: 2023-09-08 18:36+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -3130,10 +3130,8 @@ msgstr "Pouze pro tým"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Add-on Details"
 msgid "Add-on selection"
-msgstr "Podrobnosti o rozšíření"
+msgstr "Výběr rozšíření"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3145,17 +3143,13 @@ msgstr ""
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "Rozšíření"
+msgstr "ID rozšíření"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Zobrazit kouli spojenců"
+msgstr "Ukázat všechna"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
@@ -3227,10 +3221,8 @@ msgstr ""
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Zrušit výběr"
+msgstr "Vybrat soubor s ikonou"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3241,10 +3233,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
-#, fuzzy
-#| msgid "Author"
 msgid "Author:"
-msgstr "Autor"
+msgstr "Autor:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3290,10 +3280,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
-#, fuzzy
-#| msgid "Authenticate"
 msgid "Forum Authentication:"
-msgstr "Prokaž se"
+msgstr "Ověření z fóra:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3339,10 +3327,8 @@ msgstr ""
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Popis:"
+msgstr "Popis"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3375,24 +3361,18 @@ msgstr "Uložit"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Překlady:"
+msgstr "Překlad"
 
 #. [label]
 #: data/gui/window/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Je zapotřebí heslo"
+msgstr "* Povinné"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Jazyk"
+msgstr "* Jazyk:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
@@ -3470,10 +3450,8 @@ msgstr "Jméno týmu:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruit Unit"
 msgid "Recruit list:"
-msgstr "Naverbovat jednotku"
+msgstr "Seznam rekrutů:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -6292,10 +6270,8 @@ msgid "filesystem_path_game^User preferences"
 msgstr "Uživatelské nastavení"
 
 #: src/desktop/paths.cpp:227
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "Herní data"
+msgstr "Mapy editoru"
 
 #: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
@@ -6883,47 +6859,33 @@ msgstr ""
 "Prosím vyber nějakou slučitelnou."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:172
-#, fuzzy
-#| msgid "Load Core"
 msgid "Core"
-msgstr "Načíst jádro"
+msgstr "Jádro"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Campaign"
 msgstr "Tažení"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
-#, fuzzy
-#| msgid "Start Campaign"
 msgid "Hybrid Campaign"
-msgstr "Začít tažení"
+msgstr "Smíšené tažení"
 
 # !!!! možný konflikt ohledně velikosti tlačítka a délky textu - prověřit
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
 msgstr "Tažení pro více hráčů"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:176
-#, fuzzy
-#| msgid "Scenarios"
 msgid "Scenario"
-msgstr "Scénáře"
+msgstr "Scénář"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Upozornění ve hře více hráčů"
+msgstr "Scénář pro více hráčů"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Akce"
+msgstr "Frakce"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
@@ -6935,10 +6897,8 @@ msgid "Map Pack"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Rozšíření"
+msgstr "Modifikace"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Media"
@@ -6949,14 +6909,10 @@ msgid "Other"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:189
-#, fuzzy
-#| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Spolupracující"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Kosmetické"
 
@@ -6965,14 +6921,10 @@ msgid "RNG"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
-#, fuzzy
-#| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Přežití"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:194
-#, fuzzy
-#| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
 msgstr "Terraformace"
 
@@ -6985,10 +6937,8 @@ msgid "Success"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:403
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose an icon"
-msgstr "Vybrat počáteční scénář"
+msgstr "Vybrat ikonu"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -8776,10 +8726,8 @@ msgid "Add-on Publishing Editor"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:271
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Spravovat rozšíření"
+msgstr "Změnit ID rozšíření"
 
 #: src/hotkey/hotkey_command.cpp:273
 msgid "Edit Scenario"
