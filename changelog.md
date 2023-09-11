@@ -15,6 +15,7 @@
    * Updated translations: Arabic, British English, Czech, French
  ### Units
    * Updates to Troll sprites and animations (#7844)
+   * Giant Ant Queen, Fire Ant Queen, Ant Eggs, and Ant Zombies
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
