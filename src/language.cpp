@@ -395,5 +395,3 @@ bool init_strings(const game_config_view& cfg)
 	}
 	return load_strings(true);
 }
-
-/* vim:set encoding=utf-8: */
