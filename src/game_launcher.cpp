@@ -968,7 +968,12 @@ bool game_launcher::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	mp::start_local_game_commandline(cmdline_opts_);
+	try {
+		mp::start_local_game_commandline(cmdline_opts_);
+	} catch(savegame::load_game_exception& e) {
+		load_data_ = std::move(e.data_);
+		return true;
+	}
 
 	return false;
 }
