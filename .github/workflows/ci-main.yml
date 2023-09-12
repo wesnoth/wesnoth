@@ -17,8 +17,13 @@ jobs:
         CLICOLOR_FORCE: 1
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v3, with: { submodules: "recursive", fetch-depth: "0" } }
 
+      - name: Copyright check
+        if: success() || failure()
+        run: |
+          git config --global --add safe.directory /__w/wesnoth/wesnoth
+          ./update_copyrights --output=""
       - name: Check for invalid characters
         run: |
           ./utils/CI/check_utf8.sh
