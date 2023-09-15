@@ -280,7 +280,8 @@ jobs:
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
           # the final key part needs to be changed if anything in the build process changes that is not already included here
-          key: win-cache-master-${{ matrix.cfg }}-${{ env.VCPKG_COMMIT }}-${{ hashFiles('vcpkg.json') }}-0001
+          # env.ImageVersion is the version of the runner image (https://github.com/actions/runner-images/releases)
+          key: win-cache-master-${{ matrix.cfg }}-${{ env.ImageVersion }}-${{ hashFiles('vcpkg.json') }}-0001
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
