@@ -1,20 +1,383 @@
-## Version 1.17.12+dev
+## Version 1.17.20+dev
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Descent into Darkness
+     * Buff soul rend
+   * Liberty
+     * Make Harper a girl and revise some dialogue
  ### Editor
  ### Multiplayer
  ### Lua API
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: British English, Chinese (Simplified), Finnish, French, Portuguese (Brazil), Spanish
+   * Updated translations: Arabic, British English, Czech, French
  ### Units
-   * Add Merman Brawler and Citizen to core
+   * Updates to Troll sprites and animations (#7844)
+   * Giant Ant Queen, Fire Ant Queen, Ant Eggs, and Ant Zombies
  ### User interface
+ ### WML Engine
+ ### Miscellaneous and Bug Fixes
+
+## Version 1.17.20
+ ### Campaigns
+   * A Tale of Two Brothers
+     * Remove the magic communication amulets from the story.
+   * Under the Burning Suns
+     * S3: Ensure all of Garak’s attacks are changed to fire type (#7774).
+ ### Editor
+   * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
+ ### Translations
+   * Updated translations: British English, Czech, Italian, Japanese
+ ### Units
+   * Rebels:
+     * Elvish Outrider - movement changed from 10 to 11
+   * Drakes:
+     * Saurian Soothsayer - movement changed from 6 to 7
+   * Movement type changes:
+     * Smallfoot, armoredfoot, elusivefoot, mounted, fly, smallfly, lightfly, deepsea, mountainfoot, gurefoot, rodentfoot, lizard, dunefoot, duneelusivefoot, dunearmoredfoot, dunehorse, dunearmoredhorse - arcane resistance changed from 20% to 10%.
+     * Treefolk - arcane resistance changed from -30% to -20%.
+     * Undeadfoot - arcane resistance changed from -50% to -20%.
+     * Undeadfly - arcane resistance changed from -40% to -20%.
+     * Drakefly, drakeglide, drakeglide2, drakefoot - arcane resistance changed from -30% to -10%.
+   * Loyalists:
+     * Paladin - arcane resistance changed from 60% to 30%.
+     * White mage - arcane resistance changed from 40% to 30%.
+     * Mage of Light - arcane resistance changed from 60% to 50%.
+   * Undead:
+     * Lich - arcane resistance changed from -40% to -20%.
+ ### WML Engine
+   * Add support for filters to match negative values
+ ### Miscellaneous and Bug Fixes
+   * Fix a crash in the `:inspect` window when pagination is used (issue #7851).
+
+## Version 1.17.19
+ ### Campaigns
+   * Descent into Darkness
+     * S3: Resolved Darken Volk speaking from the darkness at the end of the scenario (#7758).
+   * Liberty
+     * S4: Resolved nameless enemies gaining names at day-break (#7748).
+     * S5: Make the loss of Hans a lose-condition (#7750).
+ ### Translations
+   * Updated translations: British English, Czech, Finnish, French, Portuguese (Brazil)
+ ### Units
+   * Rebels:
+     * Elvish Fighter - xp changed from 40 to 37, and new updated sprite and animations
+     * Merman Hunter - xp changed from 35 to 33.
+     * Elvish Scout - xp changed from 32 to 42.
+     * Elvish Hero - xp changed from 90 to 80.
+     * Elvish Captain - xp changed from 90 to 85.
+     * Elvish Marksman - cost changed from 31 to 34.
+     * Elvish Ranger - xp changed from 90 to 85.
+     * Elvish Rider - ranged damage changed from 9 to 11, hp changed from 46 to 49, cost changed from 28 to 35, xp changed from 53 to 75.
+     * Elvish Druid - cost changed from 27 to 25, xp changed from 80 to 85.
+     * Elvish Sorceress - cost changed from 32 to 34, xp changed from 100 to 90.
+     * Elder Wose - cost changed from 27 to 28, xp changed from 100 to 80.
+     * Merman Netcaster - cost changed from 27 to 26, xp changed from 85 to 54.
+     * Merman Spearman - cost changed from 27 to 22, xp changed from 85 to 54.
+     * Champion - melee damage changed from 9 to 8. added 10 melee accuracy, hp changed from 70 to 72, cost changed from 48 to 61.
+     * Elvish Marshal - hp changed from 62 to 68, cost changed from 54 to 67.
+     * Elvish Sharpshooter - ranged damage changed from 10 to 12. cost changed from 51 to 62.
+     * Elvish Avenger - ranged damage changed from 10 to 11, hp changed from 55 to 59, cost changed from 53 to 66.
+     * Elvish Outrider - ranged damage changed from 8 to 11, melee damage changed from 7 to 8, hp changed from 57 to 60, cost changed from 43 to 58.
+     * Elvish Shyde - hp changed from 46 to 51, melee damage changed from 6 to 7, ranged slow (entangle) damage changed from 6 to 8, ranged magical (thorns) damage changed from 8 to 14, cost changed from 52 to 69.
+     * Elvish Enchantress - cost changed from 55 to 70, ranged slow damage changed from 5 to 7, ranged magical damage changed from 9 to 13.
+     * Ancient Wose - cost changed from 48 to 50.
+     * Merman Entangler - cost changed from 46 to 42.
+     * Javelineer - cost changed from 48 to 55.
+     * Elvish Sylph - hp changed from 60 to 68, ranged slow damage changed from 6 to 7, ranged magical damage changed from 10 to 16, cost changed from 67 to 148.
+   * Undead:
+     * Skeleton - xp changed from 35 to 39.
+     * Ghoul - xp changed from 35 to 30.
+     * Blood Bat - cost changed from 22 to 23, xp changed from 70 to 37.
+     * Revenant - cost changed from 31 to 28, xp changed from 85 to 78.
+     * Dark Sorcerer - cost changed from 33 to 34, xp changed from 90 to 110.
+     * Shadow - cost changed from 38 to 44, xp changed from 100 to 77.
+     * Wraith - xp changed from 100 to 90.
+     * Necrophage - melee damage changed from 7 to 9, cost changed from 27 to 23, xp changed from 120 to 61.
+     * Bone Shooter - cost changed from 26 to 24, xp changed from 80 to 60.
+     * Dread Bat - cost changed from 34 to 32.
+     * Draug - cost changed from 47 to 70.
+     * Lich - cost changed from 50 to 90.
+     * Necromancer - ranged cold damage changed from 17 to 19, ranged arcane damage changed from 12 to 16, hp changed from 70 to 76, impact resistance changed from 0% to 10%, cost changed from 50 to 90.
+     * Nightgaunt - cost changed from 52 to 71.
+     * Specter - cost changed from 52 to 78.
+     * Ghast - melee damage changed from 10 to 12, cost changed from 43 to 50.
+     * Banebow - cost changed from 41 to 52.
+     * Ancient lich cost changed from 100 to 214.
+   * Drakes:
+     * Drake Fighter - xp changed from 42 to 41.
+     * Drake Clasher - xp changed from 43 to 41.
+     * Drake Glider - xp changed from 35 to 39.
+     * Drake Warrior - xp changed from 70 to 81, cost changed from 32 to 31.
+     * Drake Arbiter - hp changed from 62 to 63, xp changed from 105 to 81.
+     * Drake Thrasher - xp changed from 95 to 77.
+     * Drake Flare - xp changed from 80 to 86.
+     * Fire Drake - xp changed from 80 to 84.
+     * Sky Drake - xp changed from 80 to 76, cost changed from 28 to 32.
+     * Saurian Ambusher - hp changed from 36 to 38, cost changed from 24 to 22.
+     * Saurian Soothsayer - melee attack strikes changed from 2 to 3, cost changed from 25 to 28.
+     * Saurian Spearthrower - melee damage changed from 6 to 5.
+     * Drake Blademaster - cost changed from 47 to 62.
+     * Drake Warden - cost changed from 46 to 62.
+     * Drake Enforcer - cost changed from 44 to 58.
+     * Drake Flameheart - cost changed from 51 to 66.
+     * Inferno Drake - cost changed from 51 to 64.
+     * Hurricane Drake - cost changed from 43 to 59.
+     * Saurian Flanker - hp changed from 47 to 52, cost changed from 46 to 42.
+     * Saurian Javelineer - ranged attack strikes changed from 5 to 4, cost changed from 52 to 42.
+     * Armageddon Drake - cost changed from 85 to 118.
+   * Dunefolk:
+     * Dune Burner - hp changed from 34 to 35, xp changed from 40 to 37.
+     * Dune Herbalist - cost changed from 14 to 13, xp changed from 39 to 36.
+     * Dune Rider - hp changed from 34 to 33, xp changed from 47 to 49.
+     * Dune Rover - hp changed from 32 to 33, xp changed from 43 to 40.
+     * Dune Soldier - cost changed from 18 to 17, xp changed from 43 to 39.
+     * Dune Skirmisher - xp changed from 34 to 39.
+     * Dune Explorer - xp changed from 80 to 73.
+     * Dune Swordsman - cost changed from 30 to 28, xp changed from 75 to 68.
+     * Dune Captain - cost changed from 30 to 29, xp changed from 75 to 74.
+     * Dune Spearguard - cost changed from 30 to 29, xp changed from 75 to 74.
+     * Dune Scorcher - ranged damage changed from 9 to 10, cost changed from 25 to 23, xp changed from 70 to 60.
+     * Dune Raider - cost changed from 34 to 35, xp changed from 70 to 77.
+     * Dune Swiftrider - xp changed from 65 to 62.
+     * Dune Sunderer - xp changed from 76 to 85.
+     * Dune Apothecary - cost changed from 27 to 23, xp changed from 65 to 50.
+     * Dune Falconer - hp changed from 38 to 39, cost changed from 23 to 29, xp changed from 78 to 70.
+     * Dune Strider - hp changed from 39 to 42, cost changed from 23 to 29, xp changed from 74 to 64.
+     * Naga Ophidian - hp changed from 43 to 44, cost changed from 22 to 24, xp changed from 76 to 62.
+     * Naga Ringcaster - hp changed from 40 to 41, cost changed from 22 to 24, ranged damage changed from 7 to 8, xp changed from 70 to 62.
+     * Dune Blademaster - hp changed from 69 to 76.
+     * Dune Spearmaster - hp changed from 67 to 68.
+     * Dune Cataphract - mace melee attack damage changed from 14 to 15, lance damage changed from 13 to 14, cost changed from 62 to 69.
+     * Dune Harrier - cost changed from 47 to 50.
+     * Dune Sky Hunter - cost changed from 50 to 54.
+   * Knalgan Alliance:
+     * Dwarvish Fighter - xp changed from 41 to 45.
+     * Dwarvish Thunderer - xp changed from 40 to 35.
+     * Dwarvish Guardsman - ranged damage increased from 5 to 6, xp changed from 47 to 40.
+     * Footpad - xp changed from 36 to 35.
+     * Thief - xp changed from 28 to 29.
+     * Poacher - xp changed from 29 to 28.
+     * Gryphon Rider - cost changed from 24 to 23, xp changed from 38 to 46.
+     * Dwarvish Steelclad - xp changed from 74 to 88.
+     * Dwarvish Thunderguard - cost changed from 27 to 24, xp changed from 95 to 65.
+     * Dwarvish Stalwart - hp changed from 54 to 59, ranged damage changed from 8 to 9, xp changed from 85 to 78.
+     * Outlaw - cost changed from 26 to 24, hp changed from 42 to 47, xp changed from 77 to 71.
+     * Rogue - xp changed from 70 to 80, cost changed from 24 to 25.
+     * Trapper - hp changed from 45 to 49, melee damage changed from 4 to 5, xp changed from 65 to 73.
+     * Gryphon Master - cost changed from 38 to 40.
+     * Dwarvish Lord - cost changed from 50 to 69.
+     * Dwarvish Sentinel - cost changed from 44 to 63.
+     * Dwarvish Dragonguard - cost changed from 46 to 61.
+     * Fugitive - hp changed from 62 to 68, cost changed from 53 to 55.
+     * Huntsman - cost changed from 50 to 43.
+     * Ranger - cost changed from 52 to 43.
+     * Assassin - cost changed from 44 to 46.
+   * Northerners:
+     * Orcish Archer - xp changed from 30 to 32.
+     * Naga Fighter - xp changed from 32 to 33.
+     * Wolf Rider - xp changed from 30 to 34.
+     * Orcish Warrior - cost changed from 26 to 23, xp changed from 60 to 67.
+     * Goblin Pillager - cost changed from 28 to 31.
+     * Troll - cost changed from 27 to 25, xp changed from 66 to 58.
+     * Troll Rocklobber - ranged damage changed from 17 to 19, hp changed from 51 to 53.
+     * Naga Warrior - cost changed from 24 to 22, xp changed from 66 to 56.
+     * Orcish Crossbowman - melee damage changed from 4 to 6, ranged pierce damage changed from 8 to 9, hp changed from 43 to 46, cost changed from 21 to 22, xp changed from 80 to 43.
+     * Orcish Slayer - cost changed from 26 to 21, xp changed from 64 to 62.
+     * Orcish Warlord - cost changed from 48 to 52.
+     * Direwolf Rider - cost changed from 44 to 52.
+     * Troll Warrior - cost changed from 44 to 49.
+     * Naga Myrmidon - cost changed from 48 to 47.
+     * Orcish Nightblade - cost changed from 43 to 53.
+     * Orcish Slurbow - cost changed from 43 to 37.
+   * Loyalists:
+     * Cavalryman - blade resistance changed from 30% to 20%, xp changed from 40 to 44.
+     * Bowman - xp changed from 39 to 35, melee damage changed from 4 to 5.
+     * Horseman - cost changed from 23 to 24, xp changed from 44 to 54.
+     * Merman Fighter - xp changed from 36 to 34.
+     * Mage - xp changed from 54 to 48.
+     * Javelineer - ranged damage increased from 11 to 13, cost changed from 25 to 24.
+     * Pikeman - cost changed from 25 to 24, xp changed from 65 to 69.
+     * Swordsman - xp changed from 60 to 80.
+     * Knight - cost changed from 38 to 50, xp changed from 120 to 100.
+     * Lancer - cost changed from 44 to 47.
+     * Shock Trooper - cost changed from 35 to 28, xp changed from 110 to 65.
+     * Red Mage - cost changed from 38 to 35, xp changed from 100 to 83.
+     * White Mage - cost changed from 38 to 31, xp changed from 136 to 75.
+     * Dragoon - cost changed from 28 to 29, xp changed from 95 to 80.
+     * Longbowman - cost changed from 26 to 23, xp changed from 68 to 65.
+     * Duelist - cost changed from 29 to 31, xp changed from 90 to 80.
+     * Merman Warrior - cost changed from 26 to 24, xp changed from 80 to 60.
+     * Lieutenant - cost changed from 34 to 31, xp changed from 80 to 85.
+     * Halberdier - cost changed from 44 to 52.
+     * Royal Guard - cost changed from 44 to 61.
+     * Grand Knight - hp changed from 78 to 84, lance damage changed from 17 to 19, cost changed from 58 to 86.
+     * Paladin - hp changed from 65 to 77, lance damage changed from 15 to 16, melee damage changed from 8 to 9, cost changed from 58 to 82.
+     * Iron Mauler - cost changed from 50 to 49.
+     * Arch Mage - cost changed from 59 to 63, xp changed from 220 to 150.
+     * Mage of Light - cost changed from 60 to 59.
+     * Cavalier - cost changed from 52 to 62.
+     * Master Bowman - cost changed from 46 to 50.
+     * Master at Arms - melee damage increased from 7 to 8, cost changed from 44 to 65.
+     * Merman Hoplite - cost changed from 43 to 45.
+     * Merman Triton - cost changed from 43 to 46.
+     * General - hp changed from 50 to 55, cost changed from 54 to 66, xp changed from 180 to 105.
+     * Great Mage - ranged damage changed from 16 to 17, cost changed from 72 to 110.
+     * Grand Marshal - hp changed from 60 to 68 cost changed from 66 to 101.
+ ### Miscellaneous and Bug Fixes
+   * Prevent duplicate advancements from being added to unit type. (issue #7009)
+   * When `[unit]` recalls a unit, remove it from the recall list before firing `[event]name=unit_placed`. (issue #7769)
+
+## Version 1.17.18
+ ### Campaigns
+   * Heir to the Throne
+     * S19c and S20b: Improve rewards by giving a Lieutenant instead of a Sergeant.
+   * Northern Rebirth
+     * Large grammar correction to the English text. (PRs #7643, #7663, #7676, #7680, #7682, #7683)
+   * UtBS
+     * Make the name of the dark assassin translatable again. (PR #7696)
+     * Added po hints (translation hints).
+   * World Conquest
+     * Fixed a bug that the epic trait raised XP requirements for advancements that cost less than 60 XP.
+ ### Multiplayer
+   * Add some search terms to the match history dialog. (PR #7571)
+ ### Terrain
+   * Added ruined walls terrain variations: Xur (damaged Xu); Xor (damaged Xos); and Exos (ruined Xos, is Flat/Cave alias). (PR #7629)
+ ### Translations
+   * Updated translations: British English, Czech, Finnish, French, Spanish
+   * Python files are now searched for translatable strings.
+   * Added the `wesnoth-tools` textdomain for WML-maintenance tools.
+ ### User interface
+   * Fix file dialogs (e.g. Save As dialog in the Map Editor) not listing /run/media/USER
+     as a possible file location on modern Linux distributions.
+   * Update the preferences window’s Display resolution list if the game window is resized.
+   * Better error handling if the data directory is not found. (issue #6883)
+   * The Log File button is now available in the game version info dialog on non-Windows platforms.
+   * Rearranged some elements in Display preferences.
+ ### Miscellaneous and Bug Fixes
+   * Move multiplayer macros to proper folder. (PR #7647)
+   * Fixed updating POT files with version 0.68-1 of the po4a toolsuite. (issue #7149)
+   * On platforms where logging used to go to stdout/stderr by default, it’s now copied there even when logging to a file. (PR #7672)
+   * `GUI.pyw` now has the i18n mechanics to be translatable, but please wait until the English has been revised.
+   * Refactored hotkey handling, so it no longer has two different codepaths for WML menu items.
+   * The old `utils/change_textdomain` script has been removed. (PR #7688)
+   * wmlxgettext now supports extracting all textdomains at once. (PR #7624)
+   * Fixed a crash in the autocorrect handling on the Wesnoth console. (issue #7412)
+
+## Version 1.17.17
+ ### Translations
+   * Updated translations: Arabic, British English, Czech, French, German, Italian, Spanish
+ ### User interface
+   * Fixed main menu Language button and Version label not being refreshed after
+     switching languages without relaunching the game (issue #7437).
+   * Fixed changing game resolution in Preferences not refreshing the user interface
+     as expected (issue #7436).
+ ### WML Engine
+   * Add support for distinct sub-achievements.
+   * Add [filter_ability] usable instead of [abilities][tag name] to filter attributes including the type of ability used.
+
+## Version 1.17.16
+ ### Translations
+   * Updated translations: British English, French, Italian
+ ### WML Engine
+   * Fixed a crash when encountering a scenario with missing sides (issues #7550,#7553,#7554)
+
+## Version 1.17.15
+ ### Multiplayer
+   * The game no longer crashes when using "Back To Turn" after the game has
+     ended in multiplayer #4236
+ ### Translations
+   * Updated translations: British English, Bulgarian, Czech, French, Spanish, Turkish
+ ### User interface
+   * The "Back To Turn" menu now replays the turn in singelplayer too. However,
+     the Continue button can be used to resume the game from any given position.
+ ### WML Engine
+   * Added support for `[effect] apply_to=level` (PR #7512)
+ ### Miscellaneous and Bug Fixes
+   * The replay viewer now also replays victory/defeat events properly #4667, #6180
+   * Fixes undo stack getting corrupted by reloading #7253
+   * Removed unused `--color` switch from wesnoth_addon_manager
+
+## Version 1.17.14
+ ### Campaigns
+   * Under the Burning Suns
+     * S05 Fixed the main cavern event not taking scouting into account. (issue #7394)
+ ### Packaging
+   * Curl is now a required dependency
+ ### Translations
+   * Updated translations: British English, Czech, French, Italian, Spanish
+ ### User interface
+   * The match history button in the multiplayer lobby is now enabled. This allows viewing the game history of the player you have selected in the righthand sidebar.
+ ### Miscellaneous and Bug Fixes
+   * wesnoth_addon_manager now supports SSL/TLS connection (using the `--secure` flag)
+   * wesnoth_addon_manager now supports IPv6 connection (using the `--ipv6` flag)
+   * Added new command line flag `--terms` to wesnoth_addon_manager (retrieves and prints the add-ons server upload terms)
+   * wesnoth_addon_manager now supports the `--version` flag (reports the current Wesnoth version)
+   * Linux SCons and CMake scripts now support enabling `_GLIBCXX_ASSERTIONS`.
+
+## Version 1.17.13
+ ### Add-ons client
+   * Added automatic schema-validation of `_server.pbl` files when uploading an add-on. (PR #7239)
+ ### Campaigns
+   * Legend of Wesmere
+     * Adjusted gold and carryover between S11, S14 and S17. (issue #7230)
+     * S03: Fixed an event trigger when Urudin retreats. (PR #7221)
+     * S16: Updated screen flash to use new macros.
+   * Secrets of the Ancients
+     * S17: Use the new `screen_fade` visual effect.
+   * Son of the Black Eye
+     * S14: Fixed Grüü’s dialogue not appearing during the intro. (issue #7280)
+   * The South Guard
+     * S04: Updated safeguard against AI leader stupidity to match map changes.
+   * Under the Burning Suns
+     * Quenoth Rework, including the major changes listed below. (PR #7349)
+     * Redesign of the Quenoth Fighter line, with multiple attacks instead of the formation ability.
+     * Redesign of the Quenoth Shaman line, with songs and the tailwind ability.
+     * Redesign of the Tauroch Rider line, giving both Tauroch and Rider one attack each.
+     * Hide XP bars for some enemies that are never expected to advance a level.
+   * World Conquest
+     * Fix mechanic when a commander replaces a dead leader. (issue #7284)
+ ### Editor
+   * Scrolling the map north or south can move the text that overlays the map, so it doesn’t always obscure the southmost hexes of the map. (issue #6422)
+ ### Multiplayer
+   * Allied units’ orbs no longer look like the player’s own units’ orbs. (issue #7108)
+     * By default, they are now two-color during the ally’s turn.
+     * Added an advanced setting to always show them as single-color (the ally color).
+   * Add waterfall animations to Isar’s Cross. (PR #7348)
+ ### Terrain
+   * Added Art Placeholder overlay (terrain code `^Xxxx`), used for Isar’s Cross’ new waterfalls. (PR #7348)
+ ### Translations
+   * Updated translations: British English, Chinese (Simplified), Czech, Dutch, Finnish, French, Polish, Portuguese (Brazil), Spanish
+   * wmlxgettext always uses Unix-style file paths in .pot files, to reduce changes when working on different platforms. (issue #7380)
+ ### Units
+   * Add Merman Brawler and Citizen to core.
+   * Add Dwarvish Miner to core.
+   * Add Sand Scamperer unit.
+   * Giant Ant now advances to Soldier Ant, requiring 26 XP.
+   * Soldier Ant now costs 16 gold, has 35 HP and needs 50 XP to advance.
+ ### User interface
+   * Added icons for invulnerable and unhealable states. (PR #7363)
+   * The help browser shows groups (`[race]help_taxonomy=`) in subfolders. For example Humans/Dunefolk and Elves/Quenoth. (PR #7228)
+ ### WML API
+   * New `attacks_used` key in `[attack]` causes the attack to deduct more than 1 from `attacks_left`. (PR #7351)
+   * Fixed `[foreach]` when nested loops used the same variable name for the inner and outer loop. (issue #6305)
+   * New `[trait]require_traits=` and `[trait]exclude_traits=` to control random trait generation. (PR #7109)
  ### WML Engine
    * Added basic achievements functionality.
  ### Miscellaneous and Bug Fixes
+   * Fixed a regression in 1.17.x resulting in overlarge unit HP and XP bars in some cases. (issue #7171)
+   * Fixed the editor’s unit tool crashing when placing a unit. (issue #7296)
+   * Many command-line options that log to stdout/stderr now automatically imply `--no-log-to-file`. (issue #7310)
+   * General consolidation of code paths for logging between Windows and non-Windows platforms.
+   * Fixed crash and missing output in `--report`.
+   * Schema validation accepts variables in `[harm_unit]alignment`.
+   * Schema validation no longer accepts the unused `[unit]hp_bar_scaling` and `[unit]xp_bar_scaling`.
+   * Fix an issue with schema validator not reporting errors at top level.
+   * The `unit_tree` tool which generates https://units.wesnoth.org/ now ignores the `[advancefrom]` tag.
+   * Fix the search for the game data directory when doing a local Visual Studio build.
+   * Fixed warnings when compiling with Boost 1.81.
 
 ## Version 1.17.12
  ### Add-ons server
@@ -39,10 +402,10 @@
  ### Campaigns
    * Sceptre of Fire
      * S9: Update for terrain codes introduced in 1.17.9 (issue #7210)
-   * Heir to the Throne: 
+   * Heir to the Throne:
      * S05B: Delurin now has traits Loyal + resilient + intelligent
    * Liberty:
-     * The non-loyal character Delurin now has traits resilient + intelligent 
+     * The non-loyal character Delurin now has traits resilient + intelligent
  ### Translations
    * Updated translations: Arabic, British English, Finnish, French
  ### Units
@@ -708,9 +1071,9 @@
    * Moved Naga guardian line from UtBS to core, and made some revisions
    * Dune Apothecary experience needed to level up changed from 100 to 65
    * Dune Captain experience needed to level up changed from 86 to 75
-   * Dune Herbalist cost changed form 15 to 14
-   * Dune Horse Archer experience needed to level up changed form 70 to 65
-   * Naga Sicarius hp changed form 55 to 53 and melee damage changed form 9 to 6, new special "deflect" added to melee attack
+   * Dune Herbalist cost changed from 15 to 14
+   * Dune Horse Archer experience needed to level up changed from 70 to 65
+   * Naga Sicarius hp changed from 55 to 53 and melee damage changed from 9 to 6, new special "deflect" added to melee attack
    * Fire Guardian can now level into Fire Wraith, experience needed to level up for Fire Guardian changed from 50 to 29
    * Revised statistics of all animal horses, Bay Horse can now level into Great Horse
  ### Wesnoth Formula Language
@@ -2213,7 +2576,7 @@
        the lich brothers and Krash got more gold.
    * Sceptre of Fire:
      * S4: a cave entrance has been added.
-     * S5: Gryphon Riders are now available starting form S5 (formerly S3).
+     * S5: Gryphon Riders are now available starting from S5 (formerly S3).
      * S7: it's now impossible to kill all pursuers.
    * Secrets of the Ancients:
      * Fix dialog said by wrong unit & revert previous fix (issue #3294).
@@ -3101,7 +3464,7 @@
  ### Editor
    * Fixed a crash when placing units.
    * Restored the ability to preview different ToDs. Note this still does not
-     work when invoked form the Custom ToD window.
+     work when invoked from the Custom ToD window.
    * Fixed editor sides not having the correct side number.
    * Redesigned Windows, Areas, and Sides menus.
    * The Windows menu will now display maps starting from 1 rather than 0.

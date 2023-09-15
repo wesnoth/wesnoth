@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,9 +33,6 @@
 #include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/window.hpp"
-#ifdef _WIN32
-#include "log_windows.hpp"
-#endif
 
 #include <functional>
 
@@ -145,15 +142,9 @@ void game_version::pre_show(window& window)
 		}
 	}
 
-#ifndef _WIN32
-	for(const auto& wid : {"win32_paths"}) {
-		find_widget<widget>(&window, wid, false).set_visible(widget::visibility::invisible);
-	}
-#else
 	button& stderr_button = find_widget<button>(&window, "open_stderr", false);
 	connect_signal_mouse_left_click(stderr_button, std::bind(&game_version::browse_directory_callback, this, log_path_));
 	stderr_button.set_active(!log_path_.empty());
-#endif
 
 	//
 	// Build info tab.

@@ -8,7 +8,7 @@ function wesnoth.micro_ais.bottleneck_defense(cfg)
 
 	local required_keys = {}
 	local optional_keys = { location_id = 'string', x = 'integer_list', y = 'integer_list',
-	    enemy_loc = 'string', enemy_x = 'integer_list', enemy_y = 'integer_list',
+		enemy_loc = 'string', enemy_x = 'integer_list', enemy_y = 'integer_list',
 		healer_loc = 'string', healer_x = 'integer_list', healer_y = 'integer_list',
 		leadership_loc = 'string', leadership_x = 'integer_list', leadership_y = 'integer_list',
 		filter = 'tag', active_side_leader = 'boolean'
@@ -19,5 +19,5 @@ function wesnoth.micro_ais.bottleneck_defense(cfg)
 		{ ca_id = 'move', location = 'ca_bottleneck_move.lua', score = score },
 		{ ca_id = 'attack', location = 'ca_bottleneck_attack.lua', score = score - 1 }
 	}
-    return required_keys, optional_keys, CA_parms
+	return required_keys, optional_keys, CA_parms
 end

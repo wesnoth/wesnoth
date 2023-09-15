@@ -59,5 +59,5 @@ function wesnoth.micro_ais.protect_unit(cfg)
 		MAIH.add_aspects(cfg.side, aspect_parms)
 	end
 
-    return { unit = 'tag' }, { disable_move_leader_to_keep = 'boolean' }, CA_parms
+	return { unit = 'tag' }, { disable_move_leader_to_keep = 'boolean' }, CA_parms
 end

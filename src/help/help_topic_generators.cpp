@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -686,7 +686,7 @@ std::string unit_topic_generator::operator()() const {
 		for (const config & t : traits) {
 			if (t["availability"].str() == "musthave") {
 				for (const config & effect : t.child_range("effect")) {
-					if (!effect.child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
+					if (!effect.has_child("filter") // If this is musthave but has a unit filter, it might not always apply, so don't apply it in the help.
 							&& movetype::effects.find(effect["apply_to"].str()) != movetype::effects.end()) {
 						movement_type.merge(effect, effect["replace"].to_bool());
 					}

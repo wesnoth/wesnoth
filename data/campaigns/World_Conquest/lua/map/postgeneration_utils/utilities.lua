@@ -47,7 +47,7 @@ function world_conquest_tek_map_rebuild(cave, reef)
 
 	-- replace hills for mushrooms
 	-- base amount in map surface
-	local r = mathx.random_choice(tostring(total_tiles // 500) .. ".." .. tostring(total_tiles // 250))
+	local r = mathx.random_choice(tostring(scenario_data.total_tiles // 500) .. ".." .. tostring(scenario_data.total_tiles // 250))
 	-- just to be sure.
 	r = tonumber(r)
 	set_terrain { "Hh^Tf",

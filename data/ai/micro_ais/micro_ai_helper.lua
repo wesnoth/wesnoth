@@ -235,21 +235,21 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     for k_name,k_type in pairs(required_keys) do
         if (type(k_name) == 'number') then
             -- Old syntax is supported for Wesnoth 1.17/1.18
-			if k_type:match('%[[a-zA-Z0-9_]+%]')  then
-				k_type = k_type:sub(2,-2)
-				if not wml.get_child(cfg, k_type) then
-					wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. k_type .. "]")
-				end
-				for child in wml.child_range(cfg, k_type) do
-					table.insert(CA_cfg, T[k_type](child))
-				end
-			else
-				if not cfg[k_type] then
-					wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. k_type .."=")
-				end
-				CA_cfg[k_type] = cfg[k_type]
-			end
-			show_deprecation_message(cfg.ai_type)
+            if k_type:match('%[[a-zA-Z0-9_]+%]')  then
+                k_type = k_type:sub(2,-2)
+                if not wml.get_child(cfg, k_type) then
+                    wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: [" .. k_type .. "]")
+                end
+                for child in wml.child_range(cfg, k_type) do
+                    table.insert(CA_cfg, T[k_type](child))
+                end
+            else
+                if not cfg[k_type] then
+                    wml.error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. k_type .."=")
+                end
+                CA_cfg[k_type] = cfg[k_type]
+            end
+            show_deprecation_message(cfg.ai_type)
         elseif (k_type == 'tag') then
             -- Check that this is not a scalar parameter
             if cfg[k_name] then
@@ -274,15 +274,15 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     for k_name,k_type in pairs(optional_keys) do
         if (type(k_name) == 'number') then
             -- Old syntax is supported for Wesnoth 1.17/1.18
-			if k_type:match('%[[a-zA-Z0-9_]+%]')  then
-				k_type = k_type:sub(2,-2)
-				for child in wml.child_range(cfg, k_type) do
-					table.insert(CA_cfg, T[k_type](child))
-				end
-			else
-				CA_cfg[k_type] = cfg[k_type]
-			end
-			show_deprecation_message(cfg.ai_type)
+            if k_type:match('%[[a-zA-Z0-9_]+%]')  then
+                k_type = k_type:sub(2,-2)
+                for child in wml.child_range(cfg, k_type) do
+                    table.insert(CA_cfg, T[k_type](child))
+                end
+            else
+                CA_cfg[k_type] = cfg[k_type]
+            end
+            show_deprecation_message(cfg.ai_type)
         elseif (k_type == 'tag') then
             -- Check that this is not a scalar parameter
             if cfg[k_name] then

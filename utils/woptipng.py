@@ -37,7 +37,8 @@ parser.add_argument("inpath", help="file or path (recursively) to be searched fo
 parser.add_argument("-d", "--debug", help="print debug information", action='store_true')
 parser.add_argument("-t", "--threshold", help="size reduction below this percentage will be discarded, default: 10", metavar='n', nargs='?', default=10, type=float)
 parser.add_argument("-j", "--jobs", help="max amount of jobs/threads. If unspecified, take number of cores found", metavar='n', nargs='?', default=multiprocessing.cpu_count(), type=int)
-parser.add_argument("-n", "--nice", help="niceness of all threads (must be positive)", metavar='n', nargs="?", default=19, type=int)
+parser.add_argument("-n", "--nice", help="niceness of all threads (must be positive, \
+doesn't have any effect on Windows)", metavar='n', nargs="?", default=19, type=int)
 
 args = parser.parse_args()
 
@@ -50,7 +51,8 @@ EXEC_OPTIPNG = shutil.which("optipng")
 EXEC_IMAGEMAGICK = shutil.which("convert")
 EXEC_ADVDEF = shutil.which("advdef")
 
-os.nice(args.nice) # set niceness
+if os.name == "posix":
+    os.nice(args.nice) # set niceness, not available on Windows
 
 input_files=[]
 bad_input_files=[]

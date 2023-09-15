@@ -165,8 +165,17 @@ muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fIfiltro\fP si es indicado) y regresa
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. Log files are created in the
-logs directory under the userdata folder.
+evita redirigir la salida registrada a un archivo. Los archivos de registro
+se crean en el directorio de registros en la carpeta de datos de usuario.
+.TP 
+\fB\-\-log\-to\-file\fP
+log output is written to a file in addition to standard
+output/error. Cancels the effect of \-\-no\-log\-to\-file whether implicit or
+explicit.
+.TP 
+\fB\-\-wnoconsole\fP
+For Windows, when used with \-\-no\-log\-to\-file, results in output being
+written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
@@ -296,10 +305,9 @@ cualquier \fB\-\-nogui.\fP implícito.
 trata los errores de validación como fatales.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-ejecuta el juego en un pequeño escenario de prueba. El escenario debería de
-ser alguno definido con una etiqueta WML \fB[test]\fP. Por omisión es
-\fBtest\fP. Una demostración de la característica \fB[micro_ai]\fP puede ser
-iniciada con \fBmicro_ai_test\fP. Implica \fB\-\-nogui\fP.
+runs the game in a small test scenario. The scenario should be one defined
+with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
+\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 Establece a \fIpercent\fP el estándar para considerar que una traducción está
@@ -366,7 +374,7 @@ asume que el caché es válido (peligroso).
 muestra el número de versión y finaliza.
 .TP 
 \fB\-\-simple\-version\fP
-shows the version number and nothing else, then exits.
+muestra el número de versión y nada más, y finaliza.
 .TP 
 \fB\-w, \-\-windowed\fP
 ejecuta el juego en una ventana.
@@ -465,7 +473,7 @@ Visite la página web oficial: https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
-Copyright \(co 2003\-2022 David White <davidnwhite@verizon.net>
+Copyright \(co 2003\-2023 David White <davidnwhite@verizon.net>
 .br
 Esto es Software Libre; este software está licenciado bajo GPL versión 2,
 tal y como ha sido publicada por la Free Software Foundation.  No existe

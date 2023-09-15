@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,6 +34,8 @@ enum EXIT_STATUS {
  *          go back to the titlescreen or quit to desktop altogether)
  */
 
-EXIT_STATUS start(const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.png");
+EXIT_STATUS start(bool clear_id, const std::string& filename = "", bool take_screenshot = false, const std::string& screenshot_filename = "map_screenshot.png");
+
+std::string initialize_addon();
 
 } //end namespace editor

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,7 +19,6 @@
 
 #include "gettext.hpp"
 #include "font/text_formatting.hpp"
-#include "floating_label.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
 #include "filesystem.hpp"
@@ -163,7 +162,10 @@ std::size_t editor_palette<Item>::active_group_index()
 template<class Item>
 void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 {
-	const int items_fitting = (target.h / item_space_) * columns_;
+	// The number of columns is passed to the constructor, and isn't changed afterwards. It's likely to be
+	// exactly 4, but will always be a small number which makes the next cast reasonable.
+	const int items_fitting = static_cast<int>((target.h / item_space_) * columns_);
+
 	// This might be called while the palette is not visible onscreen.
 	// If that happens, no items will fit and we'll have a negative number here.
 	// Just skip it in that case.
@@ -184,15 +186,14 @@ void editor_palette<Item>::adjust_size(const SDL_Rect& target)
 	dstrect.w = item_size_ + 2;
 	dstrect.h = item_size_ + 2;
 	for(std::size_t i = 0; i < buttons_.size(); ++i) {
-		dstrect.x = target.x + (i % columns_) * item_space_;
-		dstrect.y = target.y + (i / columns_) * item_space_;
+		dstrect.x = target.x + static_cast<int>(i % columns_) * item_space_;
+		dstrect.y = target.y + static_cast<int>(i / columns_) * item_space_;
 		buttons_[i].set_location(dstrect);
 	}
 
 	set_location(target);
 	set_dirty(true);
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -202,8 +203,7 @@ void editor_palette<Item>::select_fg_item(const std::string& item_id)
 		selected_fg_item_ = item_id;
 		set_dirty();
 	}
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -213,8 +213,7 @@ void editor_palette<Item>::select_bg_item(const std::string& item_id)
 		selected_bg_item_ = item_id;
 		set_dirty();
 	}
-	font::clear_help_string();
-	font::set_help_string(get_help_string());
+	gui_.set_help_string(get_help_string());
 }
 
 template<class Item>
@@ -239,9 +238,9 @@ void editor_palette<Item>::hide(bool hidden)
 	widget::hide(hidden);
 
 	if (!hidden) {
-		font::set_help_string(get_help_string());
+		gui_.set_help_string(get_help_string());
 	} else {
-		font::clear_help_string();
+		gui_.clear_help_string();
 	}
 
 	for (gui::widget& w : buttons_) {

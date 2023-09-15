@@ -3,6 +3,10 @@ local location_set = wesnoth.require "location_set"
 local kill_recursion_preventer = location_set.create()
 
 function wesnoth.wml_actions.kill(cfg)
+	if wml.get_child(cfg, "filter") then
+		wml.error "Tag [filter] may not be used in [kill]"
+	end
+
 	local number_killed = 0
 	local secondary_unit = wml.get_child(cfg, "secondary_unit")
 	local killer_loc = {0, 0}

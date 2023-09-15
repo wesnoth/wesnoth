@@ -1,15 +1,15 @@
 #
 # Translators:
-# RatArmy, 2022
+# RatArmy, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-15 00:21 UTC\n"
+"POT-Creation-Date: 2023-06-18 04:20 UTC\n"
 "PO-Revision-Date: 2021-06-26 08:31+0000\n"
-"Last-Translator: RatArmy, 2022\n"
-"Language-Team: Japanese (https://www.transifex.com/wesnoth-jp/teams/60513/"
+"Last-Translator: RatArmy, 2023\n"
+"Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -879,7 +879,7 @@ msgstr "Alduin 島"
 #. a hint that the player has 3 scenarios before the first main test of their XP management
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:45
 msgid "You’ll need experienced troops at Elensefar."
-msgstr ""
+msgstr "Elensefar の熟練の兵が必要となるでしょう。"
 
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:72
@@ -917,6 +917,8 @@ msgid ""
 "If the orcs have come here, their forces at Elensefar must be even more "
 "numerous than I feared."
 msgstr ""
+"オークがここにもいるとなれば、Elensefar にはわしが恐れていたよりもさらに多く"
+"の軍勢がいるに違いない。"
 
 #. [message]: speaker=Delfador
 #. a hint for players who are expecting campaigns to have a steadily-rising difficulty curve.
@@ -926,19 +928,17 @@ msgid ""
 "reach Elensefar, then our journey is likely to end in sight of the city’s "
 "gates."
 msgstr ""
+"Konrad、訓練は重要じゃ。Elensefar にたどり着いたときに未熟な兵しかおらねば、"
+"わしらの旅は都市の門を拝むだけで終わってしまうじゃろう。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:216
-#, fuzzy
-#| msgid ""
-#| "I did not think the orcs would have come here. This island used to be so "
-#| "beautiful. We must recapture it! To arms!"
 msgid ""
 "This island is the place where I was born, and where I learned magic; it "
 "used to be so beautiful. We must recapture it! To arms!"
 msgstr ""
-"オーク族がここにやって来ようとは思っていなかった。かつてこの島はとても美し"
-"かったのに。この島を取り返さずにはいられん！ 戦闘準備！"
+"ここはわしの生まれ故郷であり、魔術を学んだ場所でもある。ここはかつては非常に"
+"美しかった。その景色を取り戻さねばならぬ！戦の準備じゃ！"
 
 #. [unit]: id=Elrian, type=Mage
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:229
@@ -6023,7 +6023,9 @@ msgstr "Konrad を洞窟まで移動させる"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-msgid "Rescue the sergeant"
+#, fuzzy
+#| msgid "Rescue the sergeant"
+msgid "Rescue the lieutenant"
 msgstr "軍曹を救助する"
 
 #. [side]
@@ -6031,8 +6033,8 @@ msgstr "軍曹を救助する"
 msgid "Drakes"
 msgstr "ドレーク族"
 
-#. [unit]: type=Injured Sergeant, id=Warven
-#. [unit]: type=Sergeant, id=Warven
+#. [unit]: type=Injured Lieutenant, id=Warven
+#. [unit]: type=Lieutenant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:222
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:824
 msgid "Warven"
@@ -6347,8 +6349,12 @@ msgstr "一番遠くにある断崖の頂上に誰かいる！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
+#, fuzzy
+#| msgid ""
+#| "It is a young human sergeant, barely more than a boy. He appears badly "
+#| "hurt but still alive."
 msgid ""
-"It is a young human sergeant, barely more than a boy. He appears badly hurt "
+"It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
 "若い人間の軍曹です。ほとんど少年と言っていい。酷く傷ついているようですが、ま"
@@ -6419,17 +6425,22 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:778
 msgid ""
 "Very well. If you convince him not to raise his sword against us, the "
-"Lintair elves shall grant him safe passage."
+"Lintanir elves shall grant him safe passage."
 msgstr ""
-"よかろう。もしも我等に刃を向けぬように説得できたならば、 Lintair のエルフは彼"
-"に危害を加えぬことを保証しよう。"
+"よかろう。もしも我等に刃を向けぬように説得できたならば、 Lintanir のエルフは"
+"彼に危害を加えぬことを保証しよう。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
+#, fuzzy
+#| msgid ""
+#| "Our main goal remains to survive ourselves, but if we can spare the "
+#| "troops, we might try to rescue the sergeant stranded on the cliff. "
+#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
-"we might try to rescue the sergeant stranded on the cliff. However, I make "
-"no promises."
+"we might try to rescue the officer stranded on the cliff. However, I make no "
+"promises."
 msgstr ""
 "私たちの重要な目標は私たち自身が生き残る事です。でも、もし部隊を割く事ができ"
 "るなら、断崖に取り残されている軍曹の救助に挑戦してみましょう。とはいえ、約束"
@@ -6471,9 +6482,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
+#, fuzzy
+#| msgid ""
+#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
+#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-"healers to help you, young sergeant."
+"healers to help you, young lieutenant."
 msgstr ""
 "私は Li'sar 王女、私たちは味方よ。私たちに加わり、ヒーラーが助けにいくまで"
 "待っていてください。若い軍曹さん。"
@@ -7070,7 +7085,8 @@ msgstr "トカゲ"
 msgid "Muff Argulak"
 msgstr "Muff Argulak"
 
-#. ['Haralamdum is ancient, and his mind does not work well any more. He takes things very slowly and carefully, even for a Wose. He halts and pauses, often searching for something in his memory, using meaningless syllables to fill the gap. The syllables of his name come from the phrase he uses to mean "that is all" or "I am done" which he says often, usually out of frustration with how hasty everyone seems. Nobody alive knows his real name, and he has likely forgotten as well. Feel free to add, move, or remove pauses to break up, or even scatter, his train of thought. For inspiration, think of Asperger Syndrome.']
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. Haralamdum is ancient, and his mind does not work well any more. He takes things very slowly and carefully, even for a Wose. He halts and pauses, often searching for something in his memory, using meaningless syllables to fill the gap. The syllables of his name come from the phrase he uses to mean "that is all" or "I am done" which he says often, usually out of frustration with how hasty everyone seems. Nobody alive knows his real name, and he has likely forgotten as well. Feel free to add, move, or remove pauses to break up, or even scatter, his train of thought. For inspiration, think of Asperger Syndrome.
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:128
 msgid "Haralamdum"
 msgstr "Haralamdum"
@@ -7439,10 +7455,16 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
+#, fuzzy
+#| msgid ""
+#| "Upon finishing the book, $unit.name| has a much greater understanding of "
+#| "the forest, its nature and ways, and all the creatures within it. "
+#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
-"Upon finishing the book, $unit.name| has a much greater understanding of the "
-"forest, its nature and ways, and all the creatures within it. Unfortunately, "
-"as the last page was turned, the book crumbled to dust."
+"$unit.name| becomes entranced and greatly gains affinity with the forest, "
+"its nature and ways, and all the creatures within it. He feels he will "
+"quickly become more experienced once reaching the surface. Unfortunately, as "
+"the last page was turned, the book crumbled to dust."
 msgstr ""
 "本を読み終えると、$unit.name| の森に関する理解はたいへん深くなっていました。"
 "その生態と、森のなかの全ての生き物について。残念なことに、最後のページをめく"
@@ -7450,9 +7472,16 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
+#, fuzzy
+#| msgid ""
+#| "female^Upon finishing the book, $unit.name| has a much greater "
+#| "understanding of the forest, its nature and ways, and all the creatures "
+#| "within it. Unfortunately, as the last page was turned, the book crumbled "
+#| "to dust."
 msgid ""
-"female^Upon finishing the book, $unit.name| has a much greater understanding "
-"of the forest, its nature and ways, and all the creatures within it. "
+"female^$unit.name| becomes entranced and greatly gains affinity with the "
+"forest, its nature and ways, and all the creatures within it. She feels she "
+"will quickly become more experienced once reaching the surface. "
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
 "本を読み終えると、$unit.name| の森に関する理解はたいへん深くなっていました。"
@@ -7460,7 +7489,7 @@ msgstr ""
 "ると、本は砕けて塵となってしまいました。"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:276
 msgid "No"
@@ -8953,9 +8982,11 @@ msgstr ""
 "若く向こう見ずな戦士は剣で戦います。より経験を積んだ敵からの攻撃にはかないま"
 "せん。しかしながら、いつの日か偉大な戦士となる素質を秘めています。"
 
-#. [unit_type]: id=Injured Sergeant
-#: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
-msgid "Injured Sergeant"
+#. [unit_type]: id=Injured Lieutenant
+#: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
+#, fuzzy
+#| msgid "Injured Sergeant"
+msgid "Injured Lieutenant"
 msgstr "負傷した軍曹"
 
 #. [variation]
@@ -9428,10 +9459,3 @@ msgstr ""
 "Delfador は南西部の Wesnoth の国境を越えて Aethenwood の森へと逃げ、エルフ族"
 "の守護の下で幼い Konrad を育てました。地上に Asheviere の恐怖の支配が始まった"
 "のを悲しげに見つめながら……"
-
-#~ msgid ""
-#~ "I fear so, Konrad. It seems that the orcs have come even here. Here to "
-#~ "the place where I was born, where I was trained."
-#~ msgstr ""
-#~ "Konrad、残念だがそのようじゃ。オーク族がここにさえも来たようじゃ。わしが生"
-#~ "まれ、修行したこの地にも。"

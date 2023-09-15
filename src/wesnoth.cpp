@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,7 +51,7 @@
 #include "serialization/unicode_cast.hpp"
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
-#include "statistics.hpp"              // for fresh_stats
+#include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
@@ -89,6 +89,7 @@
 
 #include <boost/iostreams/filtering_stream.hpp> // for filtering_stream
 #include <boost/program_options/errors.hpp>     // for error
+#include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include <optional>
 
 #include <algorithm> // for transform
@@ -384,7 +385,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.usercache_path) {
-		PLAIN_LOG << filesystem::get_cache_dir();
+		std::cout << filesystem::get_cache_dir();
 		return 0;
 	}
 
@@ -393,7 +394,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userconfig_path) {
-		PLAIN_LOG << filesystem::get_user_config_dir();
+		std::cout << filesystem::get_user_config_dir();
 		return 0;
 	}
 
@@ -402,7 +403,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.userdata_path) {
-		PLAIN_LOG << filesystem::get_user_data_dir();
+		std::cout << filesystem::get_user_data_dir();
 		return 0;
 	}
 
@@ -434,7 +435,7 @@ static int process_command_args(const commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.data_path) {
-		PLAIN_LOG << game_config::path;
+		std::cout << game_config::path;
 		return 0;
 	}
 
@@ -750,7 +751,6 @@ static int do_gameloop(const std::vector<std::string>& args)
 	srand(std::time(nullptr));
 
 	commandline_options cmdline_opts = commandline_options(args);
-	game_config::wesnoth_program_dir = filesystem::directory_name(args[0]);
 
 	int finished = process_command_args(cmdline_opts);
 	if(finished != -1) {
@@ -805,6 +805,16 @@ static int do_gameloop(const std::vector<std::string>& args)
 	gui2::init();
 	const gui2::event::manager gui_event_manager;
 
+	// if the log directory is not writable, then this is the error condition so show the error message.
+	// if the log directory is writable, then there's no issue.
+	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
+	if(!lg::log_dir_writable().value_or(true)) {
+		utils::string_map symbols;
+		symbols["logdir"] = filesystem::get_logs_dir();
+		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
+		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+	}
+
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
@@ -857,12 +867,10 @@ static int do_gameloop(const std::vector<std::string>& args)
 	plugins.set_callback("exit", [](const config& cfg) { safe_exit(cfg["code"].to_int(0)); }, false);
 
 	while(true) {
-		statistics::fresh_stats();
-
 		if(!game->has_load_data()) {
-			const config& cfg = config_manager.game_config().child("titlescreen_music");
+			auto cfg = config_manager.game_config().optional_child("titlescreen_music");
 			if(cfg) {
-				for(const config& i : cfg.child_range("music")) {
+				for(const config& i : cfg->child_range("music")) {
 					sound::play_music_config(i);
 				}
 
@@ -1013,13 +1021,6 @@ static std::string autodetect_game_data_dir(std::string exe_dir)
 	return auto_dir;
 }
 
-#ifndef _WIN32
-static void wesnoth_terminate_handler(int)
-{
-	exit(0);
-}
-#endif
-
 #ifdef _WIN32
 #define error_exit(res)                                                                                                \
 	do {                                                                                                               \
@@ -1043,55 +1044,50 @@ int main(int argc, char** argv)
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
+#ifdef _WIN32
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+#endif
+
+	// write_to_log_file means that writing to the log file will be done, if true.
+	// if false, output will be written to the terminal
+	// on windows, if wesnoth was not started from a console, then it will allocate one
+	bool write_to_log_file = true;
+	[[maybe_unused]]
+	bool no_con = false;
+
 	// --nobanner needs to be detected before the main command-line parsing happens
 	// --log-to needs to be detected so the logging output location is set before any actual logging happens
 	bool nobanner = false;
-	bool log_to_file = true;
 	for(const auto& arg : args) {
 		if(arg == "--nobanner") {
 			nobanner = true;
 			break;
 		}
-		else if(arg == "--no-log-to-file") {
-			log_to_file = false;
-		}
 	}
-#ifndef _WIN32
-	if(log_to_file) {
-		lg::set_log_to_file();
-	}
-#endif
-
-#ifdef _WIN32
-	bool log_redirect = true, native_console_implied = false;
-	// This is optional<bool> instead of tribool because value_or() is exactly the required semantic
-	std::optional<bool> native_console_force;
-
-	_putenv("PANGOCAIRO_BACKEND=fontconfig");
-	_putenv("FONTCONFIG_PATH=fonts");
 
 	// Some switches force a Windows console to be attached to the process even
 	// if Wesnoth is an IMAGE_SUBSYSTEM_WINDOWS_GUI executable because they
-	// turn it into a CLI application. Also, --wconsole in particular attaches
+	// turn it into a CLI application. Also, --no-log-to-file in particular attaches
 	// a console to a regular GUI game session.
 	//
-	// It's up to commandline_options later to handle these switches (other
-	// --wconsole) later and emit any applicable console output, but right here
+	// It's up to commandline_options later to handle these switches (except
+	// --no-log-to-file) later and emit any applicable console output, but right here
 	// we need a rudimentary check for the switches in question to set up the
 	// console before proceeding any further.
 	for(const auto& arg : args) {
 		// Switches that don't take arguments
-		static const std::set<std::string> wincon_switches = {
-			"--wconsole", "-h", "--help", "-v", "--version", "-R", "--report", "--logdomains",
-			"--data-path", "--userdata-path", "--userconfig-path",
+		static const std::set<std::string> terminal_switches = {
+			"--config-path", "--data-path", "-h", "--help", "--logdomains", "--nogui", "-R", "--report",
+			"--simple-version", "--userconfig-path", "--userdata-path", "-v", "--version"
 		};
 
 		// Switches that take arguments, the switch may have the argument past
 		// the first = character, or in a subsequent argv entry which we don't
 		// care about -- we just want to see if the switch is there.
-		static const std::set<std::string> wincon_arg_switches = {
-			"-D", "--diff", "-p", "--preprocess", "-P", "--patch", "--render-image",
-			 "--screenshot", "-V", "--validate", "--validate-schema",
+		static const std::set<std::string> terminal_arg_switches = {
+			"--bunzip2", "--bzip2", "-D", "--diff", "--gunzip", "--gzip", "-p", "--preprocess", "-P", "--patch",
+			"--render-image", "--screenshot", "-u", "--unit", "-V", "--validate", "--validate-schema"
 		};
 
 		auto switch_matches_arg = [&arg](const std::string& sw) {
@@ -1099,42 +1095,41 @@ int main(int argc, char** argv)
 			return pos == std::string::npos ? arg == sw : arg.substr(0, pos) == sw;
 		};
 
-		if(wincon_switches.find(arg) != wincon_switches.end() ||
-			std::find_if(wincon_arg_switches.begin(), wincon_arg_switches.end(), switch_matches_arg) != wincon_arg_switches.end()) {
-			native_console_implied = true;
+		if(terminal_switches.find(arg) != terminal_switches.end() ||
+			std::find_if(terminal_arg_switches.begin(), terminal_arg_switches.end(), switch_matches_arg) != terminal_arg_switches.end()) {
+			write_to_log_file = false;
+		}
+
+		if(arg == "--no-log-to-file") {
+			write_to_log_file = false;
+		} else if(arg == "--log-to-file") {
+			write_to_log_file = true;
 		}
 
 		if(arg == "--wnoconsole") {
-			native_console_force = false;
-		} else if(arg == "--wconsole") {
-			native_console_force = true;
-		} else if(arg == "--wnoredirect") {
-			log_redirect = false;
+			no_con = true;
 		}
 	}
 
-	if(native_console_force.value_or(native_console_implied)) {
-		lg::enable_native_console_output();
-	}
-	lg::early_log_file_setup(!log_redirect);
+	// setup logging to file
+	// else handle redirecting the output and potentially attaching a console on windows
+	if(write_to_log_file) {
+		lg::set_log_to_file();
+	} else {
+#ifdef _WIN32
+		if(!no_con) {
+			lg::do_console_redirect();
+		}
 #endif
+	}
 
+	SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 	// Is there a reason not to just use SDL_INIT_EVERYTHING?
 	if(SDL_Init(SDL_INIT_TIMER) < 0) {
 		PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
 		return (1);
 	}
 	atexit(SDL_Quit);
-
-#ifndef _WIN32
-	struct sigaction terminate_handler;
-	terminate_handler.sa_handler = wesnoth_terminate_handler;
-	terminate_handler.sa_flags = 0;
-
-	sigemptyset(&terminate_handler.sa_mask);
-	sigaction(SIGTERM, &terminate_handler, nullptr);
-	sigaction(SIGINT, &terminate_handler, nullptr);
-#endif
 
 	// Mac's touchpad generates touch events too.
 	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
@@ -1162,6 +1157,18 @@ int main(int argc, char** argv)
 					PLAIN_LOG << "Automatically found a possible data directory at: " << auto_dir;
 				}
 				game_config::path = std::move(auto_dir);
+			} else if(game_config::path.empty()) {
+				bool data_dir_specified = false;
+				for(int i=0;i<argc;i++) {
+					if(std::string(argv[i]) == "--data-dir" || boost::algorithm::starts_with(argv[i], "--data-dir=")) {
+						data_dir_specified = true;
+						break;
+					}
+				}
+				if (!data_dir_specified) {
+					PLAIN_LOG << "Cannot find a data directory. Specify one with --data-dir";
+					return 1;
+				}
 			}
 		}
 

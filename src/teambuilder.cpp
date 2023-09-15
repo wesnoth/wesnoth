@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2022
+	Copyright (C) 2014 - 2023
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -66,6 +66,10 @@ void team_builder::build_team_stage_one()
 	// If the game state specifies additional units that can be recruited by the player, add them.
 	previous_recruits();
 
+}
+
+void team_builder::build_team_stage_two()
+{
 	// place leader
 	leader();
 
@@ -73,7 +77,7 @@ void team_builder::build_team_stage_one()
 	prepare_units();
 }
 
-void team_builder::build_team_stage_two()
+void team_builder::build_team_stage_three()
 {
 	// place units
 	// this is separate stage because we need to place units only after every other team is constructed
@@ -135,11 +139,6 @@ void team_builder::objectives()
 void team_builder::previous_recruits()
 {
 	log_step("previous recruits");
-	// If the game state specifies units that
-	// can be recruited for the player, add them.
-	if(!side_cfg_) {
-		return;
-	}
 
 	if(const config::attribute_value* v = side_cfg_.get("previous_recruits")) {
 		for(const std::string& rec : utils::split(*v)) {

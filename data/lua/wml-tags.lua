@@ -12,9 +12,6 @@ Note: When adding new WML tags, unless they're very simple, it's preferred to
 add a new file in the "data/lua/wml" directory rather than implementing it in this file.
 The file will then automatically be loaded by the above require statement.
 
-Also note: The above on_load event needs to be registered before any other on_load events.
-That means before loading the WML tags via wesnoth.require "wml".
-
 ]]
 
 function wml_actions.sync_variable(cfg)
@@ -107,7 +104,7 @@ function wml_actions.clear_variable(cfg, variables)
 	local names = cfg.name or
 		wml.error "[clear_variable] missing required name= attribute."
 	if variables == nil then variables = wml.variables end
-	for _,w in ipairs(names:split()) do
+	for _,w in ipairs(tostring(names):split()) do
 		variables[w:trim()] = nil
 	end
 end
@@ -1013,10 +1010,18 @@ function wml_actions.remove_trait(cfg)
 end
 
 function wml_actions.set_achievement(cfg)
-	local achievement = wesnoth.achievements.get(cfg.content_for, cfg.id)
-	-- don't show the achievement popup for an achievement they already have
-	if not achievement.achieved then
-		wesnoth.achievements.set(cfg.content_for, cfg.id)
-		gui.show_popup(achievement.name_completed, achievement.description_completed, achievement.icon_completed)
+	wesnoth.achievements.set(cfg.content_for, cfg.id)
+end
+
+function wml_actions.set_sub_achievement(cfg)
+	wesnoth.achievements.set_sub_achievement(cfg.content_for, cfg.id, cfg.sub_id)
+end
+
+function wml_actions.progress_achievement(cfg)
+	if not tonumber(cfg.amount) then
+		wml.error("[progress_achievement] amount attribute not a number for content '"..cfg.content_for.."' and achievement '"..cfg.id.."'")
+		return
 	end
+
+	wesnoth.achievements.progress(cfg.content_for, cfg.id, cfg.amount, tonumber(cfg.limit) or 999999999)
 end

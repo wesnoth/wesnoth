@@ -61,6 +61,7 @@ animated.cpp
 attack_prediction.cpp
 build_info.cpp
 carryover.cpp
+carryover_show_gold.cpp
 chat_command_handler.cpp
 chat_events.cpp
 chat_log.cpp
@@ -167,13 +168,13 @@ gui/core/widget_definition.cpp
 gui/core/window_builder.cpp
 gui/core/window_builder/helper.cpp
 gui/core/window_builder/instance.cpp
+gui/dialogs/achievements_dialog.cpp
 gui/dialogs/addon/addon_auth.cpp
 gui/dialogs/addon/connect.cpp
 gui/dialogs/addon/install_dependencies.cpp
 gui/dialogs/addon/license_prompt.cpp
 gui/dialogs/addon/manager.cpp
 gui/dialogs/addon/uninstall_list.cpp
-gui/dialogs/achievements_dialog.cpp
 gui/dialogs/attack_predictions.cpp
 gui/dialogs/campaign_difficulty.cpp
 gui/dialogs/campaign_selection.cpp
@@ -185,8 +186,11 @@ gui/dialogs/depcheck_select_new.cpp
 gui/dialogs/drop_down_menu.cpp
 gui/dialogs/edit_label.cpp
 gui/dialogs/edit_text.cpp
+gui/dialogs/editor/choose_addon.cpp
 gui/dialogs/editor/custom_tod.cpp
 gui/dialogs/editor/edit_label.cpp
+gui/dialogs/editor/edit_pbl.cpp
+gui/dialogs/editor/edit_pbl_translation.cpp
 gui/dialogs/editor/edit_scenario.cpp
 gui/dialogs/editor/edit_side.cpp
 gui/dialogs/editor/generate_map.cpp
@@ -194,6 +198,7 @@ gui/dialogs/editor/generator_settings.cpp
 gui/dialogs/editor/new_map.cpp
 gui/dialogs/editor/resize_map.cpp
 gui/dialogs/end_credits.cpp
+gui/dialogs/prompt.cpp
 gui/dialogs/file_dialog.cpp
 gui/dialogs/file_progress.cpp
 gui/dialogs/folder_create.cpp
@@ -294,6 +299,7 @@ movetype.cpp
 mp_game_settings.cpp
 mp_ui_alerts.cpp
 network_asio.cpp
+network_download_file.cpp
 pathfind/pathfind.cpp
 pathfind/teleport.cpp
 persist_context.cpp
@@ -356,6 +362,7 @@ sdl/point.cpp
 sdl/texture.cpp
 side_filter.cpp
 statistics.cpp
+statistics_record.cpp
 storyscreen/controller.cpp
 storyscreen/parser.cpp
 storyscreen/part.cpp
@@ -386,6 +393,7 @@ units/race.cpp
 units/types.cpp
 units/udisplay.cpp
 units/unit.cpp
+utils/config_filters.cpp
 utils/context_free_grammar_generator.cpp
 utils/irdya_datetime.cpp
 utils/markov_generator.cpp

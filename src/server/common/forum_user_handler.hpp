@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -129,8 +129,11 @@ public:
 	 * @param player The player iterator used to communicate with the player's client.
 	 * @param player_id The forum ID of the player to get the game history for.
 	 * @param offset Where to start returning rows to the client from the query results.
+	 * @param search_game_name Query for games matching this name. Supports leading and/or trailing wildcards.
+	 * @param search_content_type The content type to query for (ie: scenario)
+	 * @param search_content Query for games using this content ID. Supports leading and/or trailing wildcards.
 	 */
-	void async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset);
+	void async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content);
 
 	/**
 	 * Inserts game related information.
@@ -167,8 +170,9 @@ public:
 	 * @param version The version of Wesnoth this player is using.
 	 * @param source The source where this player downloaded Wesnoth (ie: Steam, SourceForge, etc).
 	 * @param current_user The player currently in control of this side.
+	 * @param leaders The comma-delimited list of leader unit types for that side.
 	 */
-	void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user);
+	void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders);
 
 	/**
 	 * Inserts information about the content being played.

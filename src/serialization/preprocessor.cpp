@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2022
+	Copyright (C) 2005 - 2023
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -23,7 +23,6 @@
 
 #include "buffered_istream.hpp"
 #include "config.hpp"
-#include "filesystem.hpp"
 #include "log.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
@@ -1324,6 +1323,9 @@ bool preprocessor_data::get_chunk()
 			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
+			if(symbol.empty()) {
+				parent_.error("No macro argument found after #ifdef/#ifndef directive", linenum_);
+			}
 			bool found = parent_.defines_->count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined");
 			conditional_skip(negate ? found : !found);
@@ -1331,6 +1333,9 @@ bool preprocessor_data::get_chunk()
 			const bool negate = command[2] == 'n';
 			skip_spaces();
 			const std::string& symbol = read_word();
+			if(symbol.empty()) {
+				parent_.error("No path argument found after #ifhave/#ifnhave directive", linenum_);
+			}
 			bool found = !filesystem::get_wml_location(symbol, directory_).empty();
 			DBG_PREPROC << "testing for file or directory " << symbol << ": " << (found ? "found" : "not found");
 			conditional_skip(negate ? found : !found);
@@ -1526,7 +1531,7 @@ bool preprocessor_data::get_chunk()
 				std::size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				std::size_t optional_arg_num = 0;
 
-				std::unique_ptr<std::map<std::string, std::string>> defines{new std::map<std::string, std::string>};
+				auto defines = std::make_unique<std::map<std::string, std::string>>();
 				const std::string& dir = filesystem::directory_name(val.location.substr(0, val.location.find(' ')));
 
 				if(val.is_deprecated()) {
@@ -1578,7 +1583,7 @@ bool preprocessor_data::get_chunk()
 
 							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
 
-							std::unique_ptr<std::map<std::string, std::string>> temp_defines{new std::map<std::string, std::string>};
+							auto temp_defines = std::make_unique<std::map<std::string, std::string>>();
 							temp_defines->insert(defines->begin(), defines->end());
 
 							buf->add_preprocessor<preprocessor_data>(
@@ -1635,7 +1640,7 @@ bool preprocessor_data::get_chunk()
 					put(res.str());
 				}
 			} else if(parent_.depth() < 40) {
-				LOG_PREPROC << "Macro definition not found for " << symbol << " , attempting to open as file.";
+				LOG_PREPROC << "Macro definition not found for " << symbol << ", attempting to open as file.";
 				pop_token();
 
 				std::string nfname = filesystem::get_wml_location(symbol, directory_);

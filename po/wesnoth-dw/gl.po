@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2018-04-08 18:08+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -115,13 +115,6 @@ msgstr "Asesoramento técnico e adaptación ás normas oficiais"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Material gráfico"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"Atordado: esta unidade está atordada, e non pode exercer a súa zona de "
-"control."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3368,32 +3361,6 @@ msgstr ""
 "Tinteiro viviu con Crelis na corte, xogando entre as camas de algas de Ioza, "
 "ata que a idade o volveu gordo e preguiceiro."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Sirénido pelexador"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Os sirénidos excepcionalmente grandes e fortes séntense ás veces máis "
-"cómodos cos seus puños e colas que con calquera outra arma."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "atordado"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "atordada"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3421,25 +3388,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "cetro"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Sirénido cidadán"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Mermen are mostly peaceful, but will fight to defend their homes. In this "
-#| "situation, even mermen with no weapons or training can be dangerous."
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Os sirénidos son unha especie pacífica, pero están dispostos a loitar para "
-"defender as súas terras. En tales circunstancias, ata os sirénidos sen armas "
-"nin adestramento resultan perigosos."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3635,30 +3583,64 @@ msgstr ""
 "O bruxo levaba un anel con el! Pode que sexa máxico. Alguén debería probalo, "
 "a ver que fai."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "atorda"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "Atordado: esta unidade está atordada, e non pode exercer a súa zona de "
+#~ "control."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Este ataque é tan forte que o defensor perde a consciencia e no pode manter "
-"a súa zona de control. O efecto pásase na seguinte quenda do opoñente."
+#~ msgid "Merman Brawler"
+#~ msgstr "Sirénido pelexador"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Os sirénidos excepcionalmente grandes e fortes séntense ás veces máis "
+#~ "cómodos cos seus puños e colas que con calquera outra arma."
+
+#~ msgid "stunned"
+#~ msgstr "atordado"
+
+#~ msgid "female^stunned"
+#~ msgstr "atordada"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Sirénido cidadán"
+
 #, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-" Esta unidade pode deixar atordados aos seus inimigos, suprimindo a súa zona "
-"de control."
+#~| msgid ""
+#~| "Mermen are mostly peaceful, but will fight to defend their homes. In "
+#~| "this situation, even mermen with no weapons or training can be dangerous."
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Os sirénidos son unha especie pacífica, pero están dispostos a loitar "
+#~ "para defender as súas terras. En tales circunstancias, ata os sirénidos "
+#~ "sen armas nin adestramento resultan perigosos."
+
+#~ msgid "stun"
+#~ msgstr "atorda"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Este ataque é tan forte que o defensor perde a consciencia e no pode "
+#~ "manter a súa zona de control. O efecto pásase na seguinte quenda do "
+#~ "opoñente."
+
+#, fuzzy
+#~| msgid ""
+#~| " This unit is able to stun its enemies, disrupting their zones of "
+#~| "control."
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ " Esta unidade pode deixar atordados aos seus inimigos, suprimindo a súa "
+#~ "zona de control."
 
 #~ msgid "Kraken"
 #~ msgstr "Kraken"

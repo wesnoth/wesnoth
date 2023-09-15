@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2022
+	Copyright (C) 2006 - 2023
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -1270,7 +1270,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	const int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	if(bc_vector.empty()) {
-		gui2::show_transient_message("No Attacks", _("This unit has no usable weapons."));
+		gui2::show_transient_message(_("No Attacks"), _("This unit has no usable weapons."));
 
 		return -1;
 	}

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2022-08-07 13:07+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -105,13 +105,6 @@ msgstr "Correzione testi e adattamento alle campagne ufficiali"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Progettazione grafica"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"stordita: questa unità è stordita. Non può far rispettare la sua zona di "
-"controllo."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3223,32 +3216,6 @@ msgstr ""
 "Inky visse con Krellis a corte scorrazzando nei letti di alghe di Jotha "
 "finché divenne grasso e pigro nella sua vecchiaia."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Nereide azzuffatore"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Nereidi eccezionalmente grandi e forti qualche volta si trovano meglio ad "
-"usare come arma pugni e coda piuttosto che altre armi."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "stordito"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "stordita"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3270,21 +3237,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "scettro"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Nereide Cittadino"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"I nereidi sono per lo più pacifici, ma combatteranno per difendere le loro "
-"case. In questa situazione, anche un nereide senza armi o addestramento può "
-"essere pericoloso."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3469,28 +3421,56 @@ msgstr ""
 "Il mago umano aveva un anello! Forse è magico. Qualcuno dovrebbe provarlo "
 "per vedere cosa fa."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "stordimento"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "stordita: questa unità è stordita. Non può far rispettare la sua zona di "
+#~ "controllo."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Questo attacco colpisce così forte che chi lo subisce è stordito e non può "
-"più far rispettare la sua zona di controllo. L’effetto svanisce il turno "
-"successivo."
+#~ msgid "Merman Brawler"
+#~ msgstr "Nereide azzuffatore"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Questa unità è capace di stordire i nemici, facendogli perdere la zona di "
-"controllo."
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Nereidi eccezionalmente grandi e forti qualche volta si trovano meglio ad "
+#~ "usare come arma pugni e coda piuttosto che altre armi."
+
+#~ msgid "stunned"
+#~ msgstr "stordito"
+
+#~ msgid "female^stunned"
+#~ msgstr "stordita"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Nereide Cittadino"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "I nereidi sono per lo più pacifici, ma combatteranno per difendere le "
+#~ "loro case. In questa situazione, anche un nereide senza armi o "
+#~ "addestramento può essere pericoloso."
+
+#~ msgid "stun"
+#~ msgstr "stordimento"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Questo attacco colpisce così forte che chi lo subisce è stordito e non "
+#~ "può più far rispettare la sua zona di controllo. L’effetto svanisce il "
+#~ "turno successivo."
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Questa unità è capace di stordire i nemici, facendogli perdere la zona di "
+#~ "controllo."
 
 #~ msgid "Kraken"
 #~ msgstr "Kraken"

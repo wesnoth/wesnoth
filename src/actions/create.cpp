@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,6 +35,7 @@
 #include "log.hpp"
 #include "map/map.hpp"
 #include "pathfind/pathfind.hpp"
+#include "play_controller.hpp"
 #include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
@@ -722,7 +723,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 	// Place the recruit.
 	place_recruit_result res = place_recruit(new_unit, loc, from, u_type.cost(), false, map_location::NDIRECTIONS, show);
-	statistics::recruit_unit(*new_unit);
+	resources::controller->statistics().recruit_unit(*new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
@@ -731,7 +732,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 		resources::undo_stack->add_recruit(new_unit, loc, from, std::get<1>(res), std::get<2>(res));
 		// Check for information uncovered or randomness used.
 
-		if ( std::get<0>(res) || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -767,14 +768,14 @@ bool recall_unit(const std::string & id, team & current_team,
 		res = place_recruit(recall, loc, from, recall->recall_cost(),
 	                             true, facing, show);
 	}
-	statistics::recall_unit(*recall);
+	resources::controller->statistics().recall_unit(*recall);
 
 	// To speed things a bit, don't bother with the undo stack during
 	// an AI turn. The AI will not undo nor delay shroud updates.
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from, std::get<1>(res), std::get<2>(res));
-		if ( std::get<0>(res) || !synced_context::can_undo()) {
+		if ( std::get<0>(res) || synced_context::undo_blocked()) {
 			resources::undo_stack->clear();
 		}
 	}

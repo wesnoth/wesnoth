@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2022
+	Copyright (C) 2013 - 2023
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -189,7 +189,7 @@ public:
 	}
 
 	std::string generator_name() const
-		{
+	{
 		return generator_name_;
 	}
 

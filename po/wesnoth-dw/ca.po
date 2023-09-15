@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2021-01-07 14:44+0100\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -102,13 +102,6 @@ msgstr "Script-doctoring i neteja de la línia principal"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Il·lustracions"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"atordit: Aquesta unitat està atordida. No pot fer servir la seva Zona de "
-"Control."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3295,32 +3288,6 @@ msgstr ""
 "Inky visqué amb Krellis a la cort i s'enjogassà als llits d'algues de Jotha "
 "fins que esdevingué gras i gandul quan es feu gran."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Lluitador sirènid"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Els sirènids excepcionalment grossos i forts a vegades se senten més còmodes "
-"amb llurs propis punys i cues que amb altres armes."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "atordit"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "female^aturdida"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3342,21 +3309,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "ceptre"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Ciutadà sirènid"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Els sirènids solen ser pacífics, però lluitaran per a defensar llurs llars. "
-"En aquesta situació, àdhuc els sirènids sense cap arma o entrenament poden "
-"ser perillosos."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3548,31 +3500,60 @@ msgstr ""
 "El mag humà portava un anell! Potser és màgic. Algú se l'hauria d'emprovar "
 "per a veure què fa."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "atordir"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "atordit: Aquesta unitat està atordida. No pot fer servir la seva Zona de "
+#~ "Control."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Aquest atac colpeja tan dur que l'oponent es mareja i deixa de poder "
-"mantenir una zona de control. L'efecte desapareix al torn següent de "
-"l'oponent."
+#~ msgid "Merman Brawler"
+#~ msgstr "Lluitador sirènid"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Els sirènids excepcionalment grossos i forts a vegades se senten més "
+#~ "còmodes amb llurs propis punys i cues que amb altres armes."
+
+#~ msgid "stunned"
+#~ msgstr "atordit"
+
+#~ msgid "female^stunned"
+#~ msgstr "female^aturdida"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Ciutadà sirènid"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Els sirènids solen ser pacífics, però lluitaran per a defensar llurs "
+#~ "llars. En aquesta situació, àdhuc els sirènids sense cap arma o "
+#~ "entrenament poden ser perillosos."
+
+#~ msgid "stun"
+#~ msgstr "atordir"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Aquest atac colpeja tan dur que l'oponent es mareja i deixa de poder "
+#~ "mantenir una zona de control. L'efecte desapareix al torn següent de "
+#~ "l'oponent."
+
 #, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-" Aquesta unitat pot atordir els seus enemics i trencar-ne les zones de "
-"control."
+#~| msgid ""
+#~| " This unit is able to stun its enemies, disrupting their zones of "
+#~| "control."
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ " Aquesta unitat pot atordir els seus enemics i trencar-ne les zones de "
+#~ "control."
 
 #~ msgid "Kraken"
 #~ msgstr "Kraken"

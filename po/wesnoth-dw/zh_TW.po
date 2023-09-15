@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2022-05-30 14:44+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -106,11 +106,6 @@ msgstr "劇本修飾和主線劇情改編"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "藝術"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "暈眩：此單位暈眩了。他無法堅守自己的控制區域。"
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3006,32 +3001,6 @@ msgstr ""
 "墨黑和克瑞利斯一起住在王宮裡。牠喜歡在礁沙海底的海藻床中嬉戲，直到牠老年之"
 "時，變得又懶又肥為止。"
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "人魚鬥士"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"體型特別龐大且身體強壯的人魚有時候用不慣別的武器，他們覺得自己的拳頭和尾巴用"
-"起來更自在。"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "暈眩"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "暈眩"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3052,20 +3021,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "權杖"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "人魚平民"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"人魚通常很和平，但一旦他們的家園受到威脅，即使是手無寸鐵未經訓練的人魚也會變"
-"得很危險。"
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3238,26 +3193,52 @@ msgstr ""
 "這個人類巫師戴著一枚戒指！也許它蘊藏著魔力，應該要有一個人試著將它戴上，看看"
 "它是做什麼用的。"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "擊暈"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr "暈眩：此單位暈眩了。他無法堅守自己的控制區域。"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"這種攻擊可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域。而"
-"暈眩的效果將在敵人的下個回合解除。"
+#~ msgid "Merman Brawler"
+#~ msgstr "人魚鬥士"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"這個單位可以擊暈敵人，使其無法控制周圍的區域（無法遮擋敵方單位的移動區域）。"
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "體型特別龐大且身體強壯的人魚有時候用不慣別的武器，他們覺得自己的拳頭和尾巴"
+#~ "用起來更自在。"
+
+#~ msgid "stunned"
+#~ msgstr "暈眩"
+
+#~ msgid "female^stunned"
+#~ msgstr "暈眩"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "人魚平民"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "人魚通常很和平，但一旦他們的家園受到威脅，即使是手無寸鐵未經訓練的人魚也會"
+#~ "變得很危險。"
+
+#~ msgid "stun"
+#~ msgstr "擊暈"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "這種攻擊可以透過重擊使敵人陷入暈眩的狀態，因此對方將無法堅守他的控制區域。"
+#~ "而暈眩的效果將在敵人的下個回合解除。"
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "這個單位可以擊暈敵人，使其無法控制周圍的區域（無法遮擋敵方單位的移動區"
+#~ "域）。"
 
 #~ msgid "Kraken"
 #~ msgstr "克拉肯"

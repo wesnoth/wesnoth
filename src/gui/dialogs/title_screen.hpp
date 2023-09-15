@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -102,6 +102,9 @@ private:
 	 * @param previous            Show the previous tip, else shows the next one.
 	 */
 	void update_tip(const bool previous);
+
+	/** Updates UI labels that are not t_string after a language change. */
+	void update_static_labels();
 
 	/** Shows the debug clock. */
 	void show_debug_clock_window();

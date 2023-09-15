@@ -3,14 +3,14 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2022
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-08-21 00:46 UTC\n"
-"PO-Revision-Date: 2022-11-17 19:33+0100\n"
+"POT-Creation-Date: 2023-04-16 00:58 UTC\n"
+"PO-Revision-Date: 2023-04-23 10:45+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -26,7 +26,9 @@ msgstr "Bojový výcvik"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
+#. [achievement_group]
 #: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:30
+#: data/campaigns/tutorial/achievements.cfg:3
 msgid "Tutorial"
 msgstr "Tutoriál"
 
@@ -42,6 +44,16 @@ msgstr ""
 #: data/campaigns/tutorial/_main.cfg:31
 msgid "Beginner"
 msgstr "Začátečník"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:7
+msgid "Completed the Tutorial"
+msgstr "Dokončen tutoriál"
+
+#. [achievement]: id=completed
+#: data/campaigns/tutorial/achievements.cfg:8
+msgid "Complete the Battle Training."
+msgstr "Dokonči bojový výcvik."
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.10\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2012-09-14 13:13+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,11 +111,6 @@ msgstr "Коригування сценарію"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Графіка"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3314,30 +3309,6 @@ msgid ""
 "until he became fat and lazy in his old age."
 msgstr ""
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Водяний Забіяка"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "оглушений"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "оглушена"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3360,22 +3331,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "скіпетр"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Водяний міщанин"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-#, fuzzy
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Водяні у більшості своїй миролюбні, але вони битимуться, щоб захистити свій "
-"дім. Якщо справа доходить до цього, водяною може бути дуже небезпечний "
-"навіть якщо він не навчений і беззбройний."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3566,29 +3521,45 @@ msgstr ""
 "Чарівник носив це кільце! Напевно воно зачароване. Хтось повинен спробувати "
 "надіти його, щоб побачити ефект."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "приголомшення"
+#~ msgid "Merman Brawler"
+#~ msgstr "Водяний Забіяка"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-#, fuzzy
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Ця атака така сильна, що приголомшує супротивника: оглушений боєць не може "
-"стежити за зоною контролю. Ефект закінчується на наступному ходу того, що "
-"обороняється."
+#~ msgid "stunned"
+#~ msgstr "оглушений"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid "female^stunned"
+#~ msgstr "оглушена"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Водяний міщанин"
+
 #, fuzzy
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Цей боєць може приголомшувати своїх ворогів, позбавляючи їх зони контролю."
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Водяні у більшості своїй миролюбні, але вони битимуться, щоб захистити "
+#~ "свій дім. Якщо справа доходить до цього, водяною може бути дуже "
+#~ "небезпечний навіть якщо він не навчений і беззбройний."
+
+#~ msgid "stun"
+#~ msgstr "приголомшення"
+
+#, fuzzy
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Ця атака така сильна, що приголомшує супротивника: оглушений боєць не "
+#~ "може стежити за зоною контролю. Ефект закінчується на наступному ходу "
+#~ "того, що обороняється."
+
+#, fuzzy
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Цей боєць може приголомшувати своїх ворогів, позбавляючи їх зони контролю."
 
 #~ msgid "Kraken"
 #~ msgstr "Кракен"

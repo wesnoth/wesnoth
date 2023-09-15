@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,10 +44,13 @@ public:
 
 private:
 	achievements achieve_;
+	std::string last_selected_;
 	listbox* achievements_box_;
 	menu_button* content_names_;
 
-	void set_achievements_content();
+	void set_sub_achievements(grid& newrow, const achievement& ach);
+
+	void set_achievements_row();
 
 	virtual const std::string& window_id() const override;
 

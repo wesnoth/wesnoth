@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,13 +44,12 @@ namespace editor {
 
 class editor_map;
 
-std::string get_left_button_function();
-
 enum menu_type {
 	MAP,
 	LOAD_MRU,
 	PALETTE,
 	AREA,
+	ADDON,
 	SIDE,
 	TIME,
 	LOCAL_TIME,
@@ -80,7 +79,7 @@ class editor_controller : public controller_base,
 		 * to the map can be retrieved between the main loop's end and the controller's
 		 * destruction.
 		 */
-		editor_controller();
+		editor_controller(bool clear_id);
 
 		~editor_controller();
 
@@ -89,9 +88,6 @@ class editor_controller : public controller_base,
 
 		/** Takes a screenshot **/
 		void do_screenshot(const std::string& screenshot_filename = "map_screenshot.png");
-
-		/** Process a hotkey quit command */
-		void hotkey_quit();
 
 		/** Show a quit confirmation dialog and returns true if the user pressed 'yes' */
 		bool quit_confirm();
@@ -103,13 +99,13 @@ class editor_controller : public controller_base,
 		void save_map() override {context_manager_->save_map();}
 
 		/** command_executor override */
-		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const override;
+		bool can_execute_command(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const override;
+		hotkey::ACTION_STATE get_action_state(const hotkey::ui_command& command) const override;
 
 		/** command_executor override */
-		bool do_execute_command(const hotkey::hotkey_command& command, int index = -1, bool press = true, bool release = false) override;
+		bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false) override;
 
 		/** controller_base override */
 		void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp) override;
@@ -144,8 +140,6 @@ class editor_controller : public controller_base,
 
 		/** Export the WML-compatible list of selected tiles to the system clipboard */
 		void export_selection_coords();
-
-		void update_mouse_action_highlights();
 
 		/** Save the current selection to the active area. */
 		void save_area();
@@ -211,9 +205,6 @@ class editor_controller : public controller_base,
 		/** init background music for the editor */
 		void init_music(const game_config_view& game_config);
 
-		/** Load editor-specific tooltips */
-		void load_tooltips();
-
 		/** Reload images */
 		void refresh_image_cache();
 
@@ -248,6 +239,8 @@ class editor_controller : public controller_base,
 		/* managers */
 	public:
 		const std::unique_ptr<context_manager> context_manager_;
+
+		static std::string current_addon_id_;
 	private:
 		std::unique_ptr<editor_toolkit> toolkit_;
 		tooltips::manager tooltip_manager_;

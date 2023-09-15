@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2023-01-19 09:41+0100\n"
 "Last-Translator: Toranks <toranksmervat@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -104,12 +104,6 @@ msgstr "Arreglos de código y limpieza para las campañas oficiales"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Trabajo artístico"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
-"aturdida: Esta unidad está aturdida. No puede mantener su Zona de Control."
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3197,32 +3191,6 @@ msgstr ""
 "Inky vivió con Krellis en la corte y retozó en los lechos de algas de Jotha "
 "hasta que se volvió gordo y perezoso en su vejez."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Alborotador tritón"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Tritones excepcionalmente grandes y fuertes se sienten a veces más cómodos "
-"con sus propios puños y colas que con otras armas."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "aturdido"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "aturdida"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3244,21 +3212,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "cetro"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Ciudadano Sirénido"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Los sirénidos son en su mayoría pacíficos, pero lucharán para defender sus "
-"hogares. En esta situación, hasta los sirénidos sin armas ni entrenamiento "
-"pueden ser peligrosos."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3441,28 +3394,55 @@ msgstr ""
 "¡El mago humano llevaba un anillo! Quizá sea mágico. Alguien debería "
 "probarlo para ver que hace."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "aturdir"
+#~ msgid ""
+#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
+#~ msgstr ""
+#~ "aturdida: Esta unidad está aturdida. No puede mantener su Zona de Control."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Este ataque golpea con tanta fuerza que el oponente queda aturdido y ya no "
-"puede imponer una zona de control. El efecto desaparece en el siguiente "
-"turno."
+#~ msgid "Merman Brawler"
+#~ msgstr "Alborotador tritón"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Esta unidad es capaz de aturdir a sus enemigos, neutralizando sus zonas de "
-"control."
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Tritones excepcionalmente grandes y fuertes se sienten a veces más "
+#~ "cómodos con sus propios puños y colas que con otras armas."
+
+#~ msgid "stunned"
+#~ msgstr "aturdido"
+
+#~ msgid "female^stunned"
+#~ msgstr "aturdida"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Ciudadano Sirénido"
+
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Los sirénidos son en su mayoría pacíficos, pero lucharán para defender "
+#~ "sus hogares. En esta situación, hasta los sirénidos sin armas ni "
+#~ "entrenamiento pueden ser peligrosos."
+
+#~ msgid "stun"
+#~ msgstr "aturdir"
+
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Este ataque golpea con tanta fuerza que el oponente queda aturdido y ya "
+#~ "no puede imponer una zona de control. El efecto desaparece en el "
+#~ "siguiente turno."
+
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Esta unidad es capaz de aturdir a sus enemigos, neutralizando sus zonas "
+#~ "de control."
 
 #~ msgid "Kraken"
 #~ msgstr "Kraken"

@@ -9,7 +9,7 @@ function wesnoth.micro_ais.messenger_escort(cfg)
 	end
 	local required_keys = {}
 	local optional_keys = { avoid = 'tag', id = 'string', enemy_death_chance = 'float', filter = 'tag', filter_second = 'tag',
-	    invert_order = 'boolean', messenger_death_chance = 'float', waypoint_loc = 'string', waypoint_x = 'integer_list', waypoint_y = 'integer_list'
+		invert_order = 'boolean', messenger_death_chance = 'float', waypoint_loc = 'string', waypoint_x = 'integer_list', waypoint_y = 'integer_list'
 	}
 	local score = cfg.ca_score or 300000
 	local CA_parms = {
@@ -18,5 +18,5 @@ function wesnoth.micro_ais.messenger_escort(cfg)
 		{ ca_id = 'move', location = 'ca_messenger_move.lua', score = score - 1 },
 		{ ca_id = 'escort_move', location = 'ca_messenger_escort_move.lua', score = score - 2 }
 	}
-    return required_keys, optional_keys, CA_parms
+	return required_keys, optional_keys, CA_parms
 end

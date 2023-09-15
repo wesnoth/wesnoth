@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -187,14 +187,6 @@ inline int rounded_division(int a, int b)
 {
 	auto res = std::div(a,b);
 	return 2 * res.rem > b ? (res.quot + 1) : res.quot;
-}
-
-/**
- * Converts a double to a fixed point.
- */
-constexpr int32_t floating_to_fixed_point(double n)
-{
-	return int32_t(n * (1 << 8));
 }
 
 /**

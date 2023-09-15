@@ -12,6 +12,9 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 # Note, this needs to expand to a list with one subdirectory per UMC campaign,
 # otherwise the visibility checks aren't going to work right.
 #UMC = ../../../../wesnoth-umc-dev/trunk/*
+#
+# Macro reference destination dir.
+DEST = .
 
 sanity-check: unresolved lint
 
@@ -61,37 +64,34 @@ definitions:
 
 # Generate a reference page for the utility macros.
 macro-reference.html: helpheader.html helptrailer.html wmlscope
-	@cat helpheader.html >macro-reference.html
-	@./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/ >>macro-reference.html
-	@cat helptrailer.html >>macro-reference.html
+	@{ cat helpheader.html; ./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
 
 # Report on unchecked macro calls
 unchecked:
 	@./wmlscope --unchecked $(MAINLINE) $(UMC)
 
 # Reindent the mainline content
+#
+# The schema and GUI directories are currently mainly indented with tabs.
+# Although the schema isn't reindented here, it's at least checked for consistency.
 reindent:
 	@./wmlindent \
-		--exclude=../../data/languages \
-		--exclude=../../data/gui \
-		--exclude=../../data/test/scenarios/cve_tests \
-		--exclude=../../data/test/scenarios/lua_tests \
-		--exclude=../../data/test/scenarios/wml_tests/TerrainWML \
-		--exclude=../../data/schema \
+		--exclude=$(DATA)/languages \
+		--exclude=$(DATA)/gui \
+		--exclude=$(DATA)/test/scenarios/cve_tests \
+		--exclude=$(DATA)/test/scenarios/lua_tests \
+		--exclude=$(DATA)/test/scenarios/wml_tests/TerrainWML \
+		--exclude=$(DATA)/schema \
 		$(DATA)
+	@find $(DATA)/schema -name \*.cfg -print0 | xargs -0 ./check_mixed_indent
 
-# Extract a table of editor keybindings from the editor theme definition
-editor_bindings:
-	@./extractbindings <../themes/editor.cfg
+# Extract a table of keybindings
+bindings:
+	@./extractbindings < $(DATA)/core/hotkeys.cfg
 
 # Look at the difficulty-rank order of the campaigns
 rank:
-	 @grep rank ../campaigns/*/_main.cfg | sed -n \
-		-e '/rank=/s///' \
-		-e '/..\/campaigns\//s///' \
-		-e '/\/_main.cfg:/s///p' \
-		| sort -n -k 2 \
-		| awk '{print $$2, "\t", $$1}'
+	@awk -F= '$$1 ~ "^[[:blank:]]*rank$$" { n=split(FILENAME, f, "/"); print $$2, "\t", f[n-1] }' $(DATA)/campaigns/*/_main.cfg | sort -n
 
 # For performing test lifts of mainline
 lift:

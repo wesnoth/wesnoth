@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -60,7 +60,7 @@ public:
 	 * @param[in]  definition  The WML defining this menu item.
 	 * @param[in]  original    The previous version of the menu item with this id.
 	 */
-	wml_menu_item(const std::string& id, const vconfig& definition, const wml_menu_item& original);
+	wml_menu_item(const std::string& id, const vconfig& definition, wml_menu_item& original);
 
 	/** The id of this item. */
 	const std::string& id() const
@@ -114,12 +114,19 @@ public:
 
 	/**
 	 * The text to put in a menu for this item.
-	 * This will be either translated text or a hotkey identifier.
 	 */
 	std::string menu_text() const
 	{
+		return description_.str();
+	}
+
+	/**
+	 * The UI action id to be used in theme wml, menu items and hotkeys .
+	 */
+	std::string hotkey_id() const
+	{
 		// The space is to prevent accidental hotkey binding.
-		return use_hotkey_ ? hotkey_id_ : description_.str() + ' ';
+		return hotkey_id_;
 	}
 
 	/**

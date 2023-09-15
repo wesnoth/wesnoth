@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -51,6 +51,11 @@ public:
 	void set_create_exceptions(bool value)
 	{
 		create_exceptions_ = value;
+	}
+
+	const std::vector<std::string>& get_errors() const
+	{
+		return errors_;
 	}
 
 	virtual void open_tag(const std::string& name, const config& parent, int start_line = 0, const std::string& file = "", bool addition = false) override;
@@ -144,6 +149,8 @@ private:
 	wml_type::map types_;
 
 	bool validate_schema_;
+
+	std::vector<std::string> errors_;
 
 protected:
 	template<typename... T>

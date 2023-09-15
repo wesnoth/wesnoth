@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -64,7 +64,9 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-editor_controller::editor_controller()
+std::string editor_controller::current_addon_id_ = "";
+
+editor_controller::editor_controller(bool clear_id)
 	: controller_base()
 	, mouse_handler_base()
 	, quit_confirmation(std::bind(&editor_controller::quit_confirm, this))
@@ -72,7 +74,7 @@ editor_controller::editor_controller()
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
-	, context_manager_(new context_manager(*gui_.get(), game_config_))
+	, context_manager_(new context_manager(*gui_.get(), game_config_, clear_id ? "" : editor_controller::current_addon_id_))
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
@@ -81,6 +83,10 @@ editor_controller::editor_controller()
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_()
 {
+	if(clear_id) {
+		editor_controller::current_addon_id_ = "";
+	}
+
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), key_, game_config_, *context_manager_.get()));
 	help_manager_.reset(new help::help_manager(&game_config_));
@@ -235,10 +241,11 @@ void editor_controller::custom_tods_dialog()
 	context_manager_->refresh_all();
 }
 
-bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
+bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
-	switch(cmd.command) {
+	int index = cmd.index;
+	switch(cmd.hotkey_command) {
 		case HOTKEY_NULL:
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
@@ -252,6 +259,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 					case editor::LOAD_MRU:
 					case editor::PALETTE:
 					case editor::AREA:
+					case editor::ADDON:
 					case editor::SIDE:
 					case editor::TIME:
 					case editor::SCHEDULE:
@@ -330,6 +338,9 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
+		case HOTKEY_EDITOR_PBL:
+		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+			return true;
 		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
 			return !get_current_map_context().is_pure_map();
@@ -447,9 +458,11 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	}
 }
 
-hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const {
+hotkey::ACTION_STATE editor_controller::get_action_state(const hotkey::ui_command& cmd) const
+{
 	using namespace hotkey;
-	switch (command) {
+	int index = cmd.index;
+	switch (cmd.hotkey_command) {
 
 	case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 	{
@@ -508,7 +521,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_TOOL_UNIT:
 	case HOTKEY_EDITOR_TOOL_VILLAGE:
 	case HOTKEY_EDITOR_TOOL_ITEM:
-		return toolkit_->is_mouse_action_set(command) ? ACTION_ON : ACTION_OFF;
+		return toolkit_->is_mouse_action_set(cmd.hotkey_command) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_COORDINATES:
 		return gui_->debug_flag_set(display::DEBUG_COORDINATES) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
@@ -541,6 +554,8 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::AREA:
 			return index == get_current_map_context().get_active_area()
 					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::ADDON:
+			return ACTION_STATELESS;
 		case editor::SIDE:
 			return static_cast<std::size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
@@ -580,19 +595,20 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		}
 		return ACTION_ON;
 		default:
-			return command_executor::get_action_state(command, index);
+			return command_executor::get_action_state(cmd);
 	}
 }
 
-bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, int index, bool press, bool release)
+bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool press, bool release)
 {
-	hotkey::HOTKEY_COMMAND command = cmd.command;
+	hotkey::HOTKEY_COMMAND command = cmd.hotkey_command;
 	SCOPE_ED;
 	using namespace hotkey;
+	int index = cmd.index;
 
 	// nothing here handles release; fall through to base implementation
 	if (!press) {
-		return hotkey::command_executor::do_execute_command(cmd, index, press, release);
+		return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
 
 	switch (command) {
@@ -631,6 +647,8 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 					gui_->scroll_to_tiles(locs.begin(), locs.end());
 					return true;
 				}
+			case ADDON:
+				return true;
 			case TIME:
 				{
 					get_current_map_context().set_starting_time(index);
@@ -699,13 +717,11 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 
 			//Palette
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
-		{
-			//TODO this code waits for the gui2 dialog to get ready
-//			std::vector< std::pair< std::string, std::string >> blah_items;
-//			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
-//			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
-//			gui2::teditor_select_palette_group::execute(selected, blah_items);
-		}
+ 			//TODO this code waits for the gui2 dialog to get ready
+ //			std::vector< std::pair< std::string, std::string >> blah_items;
+ //			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
+ //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
+ //			gui2::teditor_select_palette_group::execute(selected, blah_items);
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
@@ -753,6 +769,28 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 		case HOTKEY_EDITOR_TOOL_ITEM:
 			toolkit_->hotkey_set_mouse_action(command);
+			return true;
+
+		case HOTKEY_EDITOR_PBL:
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->edit_pbl();
+			}
+			return true;
+
+		case HOTKEY_EDITOR_CHANGE_ADDON_ID:
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->change_addon_id();
+			}
 			return true;
 
 		case HOTKEY_EDITOR_AREA_ADD:
@@ -891,7 +929,14 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			context_manager_->new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-			context_manager_->new_scenario_dialog();
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->new_scenario_dialog();
+			}
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();
@@ -903,7 +948,14 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			context_manager_->save_map_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
-			context_manager_->save_scenario_as_dialog();
+			if(current_addon_id_ == "") {
+				current_addon_id_ = editor::initialize_addon();
+				context_manager_->set_addon_id(current_addon_id_);
+			}
+
+			if(current_addon_id_ != "") {
+				context_manager_->save_scenario_as_dialog();
+			}
 			return true;
 		case HOTKEY_EDITOR_MAP_GENERATE:
 			context_manager_->generate_map_dialog();
@@ -988,7 +1040,7 @@ bool editor_controller::do_execute_command(const hotkey::hotkey_command& cmd, in
 			return true;
 		}
 		default:
-			return hotkey::command_executor::do_execute_command(cmd, index, press, release);
+			return hotkey::command_executor::do_execute_command(cmd, press, release);
 	}
 }
 
@@ -1008,10 +1060,11 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	std::vector<config> items;
 	for(const auto& c : items_arg) {
 		const std::string& id = c["id"];
-		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(id);
 
-		if((can_execute_command(command) && (!context_menu || in_context_menu(command.command)))
-			|| command.command == hotkey::HOTKEY_NULL)
+		const hotkey::ui_command cmd = hotkey::ui_command(hotkey::get_hotkey_command(id));
+
+		if((can_execute_command(cmd) && (!context_menu || in_context_menu(cmd)))
+			|| cmd.hotkey_command == hotkey::HOTKEY_NULL)
 		{
 			items.emplace_back("id", id);
 		}
@@ -1048,6 +1101,10 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 	if(first_id == "editor-switch-area") {
 		active_menu_ = editor::AREA;
 		context_manager_->expand_areas_menu(items, 0);
+	}
+
+	if(first_id == "editor-pbl") {
+		active_menu_ = editor::ADDON;
 	}
 
 	if(!items.empty() && items.front()["id"] == "editor-switch-time") {
@@ -1098,7 +1155,7 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, int xloc
 
 void editor_controller::preferences()
 {
-	font::clear_help_string();
+	gui_->clear_help_string();
 	gui2::dialogs::preferences_dialog::display();
 
 	gui_->queue_rerender();

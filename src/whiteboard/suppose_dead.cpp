@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2022
+	Copyright (C) 2011 - 2023
 	by Tommy Schmitz
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -72,7 +72,7 @@ suppose_dead::suppose_dead(const config& cfg, bool hidden)
 	: action(cfg,hidden)
 	, unit_underlying_id_(0)
 	, unit_id_()
-	, loc_(cfg.child("loc_")["x"],cfg.child("loc_")["y"], wml_loc())
+	, loc_(cfg.mandatory_child("loc_")["x"],cfg.mandatory_child("loc_")["y"], wml_loc())
 {
 	// Construct and validate unit_
 	unit_map::iterator unit_itor = resources::gameboard->units().find(cfg["unit_"]);
@@ -144,11 +144,9 @@ void suppose_dead::draw_hex(const map_location& hex)
 	//@todo: Possibly use a different layer
 	const display::drawing_layer layer = display::LAYER_ARROWS;
 
-	auto disp = display::get_singleton();
-
-	disp->drawing_buffer_add(
-		layer, loc_, [=, tex = image::get_texture("whiteboard/suppose_dead.png", image::HEXED)](const rect& d) {
-			draw::blit(tex, disp->scaled_to_zoom({d.x, d.y, tex.w(), tex.h()}));
+	display::get_singleton()->drawing_buffer_add(
+		layer, loc_, [tex = image::get_texture(image::locator{"whiteboard/suppose_dead.png"}, image::HEXED)](const rect& d) {
+			draw::blit(tex, d);
 		});
 }
 

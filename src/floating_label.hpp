@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -152,16 +152,5 @@ void show_floating_label(int handle, bool show);
 SDL_Rect get_floating_label_rect(int handle);
 void draw_floating_labels();
 void update_floating_labels();
-
-/**
- * Displays a help string with the given text. A 'help string' is like a tooltip,
- * but appears at the bottom of the screen so as to not be intrusive.
- *
- * @param str                 The text to display.
- */
-void set_help_string(const std::string& str);
-
-/** Removes the help string. */
-void clear_help_string();
 
 } // end namespace font

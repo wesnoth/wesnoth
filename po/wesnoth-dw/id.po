@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2022-12-18 01:09 UTC\n"
+"POT-Creation-Date: 2023-02-20 04:03 UTC\n"
 "PO-Revision-Date: 2012-11-25 15:34+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -107,11 +107,6 @@ msgstr "Pembetulan-naskah dan pembersihan arus utama"
 #: data/campaigns/Dead_Water/_main.cfg:43
 msgid "Artwork"
 msgstr "Karya seni"
-
-#. [lua]: wesnoth.interface.game_display.unit_status
-#: data/campaigns/Dead_Water/_main.cfg:94
-msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
 
 #. [scenario]: id=01_Invasion
 #: data/campaigns/Dead_Water/scenarios/01_Invasion.cfg:36
@@ -3504,33 +3499,6 @@ msgstr ""
 "tumbuhan laut yang besar di Jotha sampai ia menjadi gemuk dan malas dalam "
 "usia tuanya."
 
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:4
-msgid "Merman Brawler"
-msgstr "Manusia Duyung Penengkar"
-
-#. [unit_type]: id=Merman Brawler, race=merman
-#: data/campaigns/Dead_Water/units/Brawler.cfg:17
-msgid ""
-"Exceptionally large and strong mermen are sometimes more comfortable with "
-"their own fists and tails than with other weapons."
-msgstr ""
-"Manusia duyung yang sangat besar dan kuat kadang-kadang lebih nyaman dengan "
-"tinju-tinju dan ekor mereka sendiri dibandingkan dengan senjata-senjata "
-"lainnya."
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:95
-#: data/campaigns/Dead_Water/units/Brawler.cfg:142
-msgid "stunned"
-msgstr "membingungkan"
-
-#. [unstore_unit]
-#: data/campaigns/Dead_Water/units/Brawler.cfg:96
-#: data/campaigns/Dead_Water/units/Brawler.cfg:143
-msgid "female^stunned"
-msgstr "membingungkan"
-
 #. [unit_type]: id=Merman Child King, race=merman
 #: data/campaigns/Dead_Water/units/Child_King.cfg:4
 msgid "Child King"
@@ -3559,25 +3527,6 @@ msgstr ""
 #: data/campaigns/Dead_Water/units/Child_King.cfg:22
 msgid "scepter"
 msgstr "tongkat kerajaan"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:4
-msgid "Merman Citizen"
-msgstr "Manusia Duyung Warganegara"
-
-#. [unit_type]: id=Merman Citizen, race=merman
-#: data/campaigns/Dead_Water/units/Citizen.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Mermen are mostly peaceful, but will fight to defend their homes. In this "
-#| "situation, even mermen with no weapons or training can be dangerous."
-msgid ""
-"Merfolk are mostly peaceful, but will fight to defend their homes. In this "
-"situation, even merfolk with no weapons or training can be dangerous."
-msgstr ""
-"Manusia duyung kebanyakan cinta damai, tetapi akan berjuang untuk "
-"mempertahankan rumah-rumah mereka. Dalam situasi ini, bahkan manusia duyung "
-"tanpa senjata-senjata atau pelatihan dapat membahayakan."
 
 #. [unit_type]: id=Merman Soldier King, race=merman
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:4
@@ -3781,36 +3730,64 @@ msgstr ""
 "Penyihir manusia itu mengenakan sebuah cincin! Mungkin itu adalah sihir. "
 "Seseorang harus mencoba menggunakannya untuk melihat apa kegunaannya."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:6
-msgid "stun"
-msgstr "membingungkan"
+#~ msgid "Merman Brawler"
+#~ msgstr "Manusia Duyung Penengkar"
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:7
-#, fuzzy
-#| msgid ""
-#| "This attack hits so hard that the defender is dazed and can no longer "
-#| "enforce a zone of control. The effect wears off on the defender’s next "
-#| "turn."
-msgid ""
-"This attack hits so hard that the opponent is dazed and can no longer "
-"enforce a zone of control. The effect wears off on the opponent’s next turn."
-msgstr ""
-"Serangan ini memukul begitu keras agar pembela linglung dan tidak dapat lagi "
-"mempertahankan suatu zona kontrol. Efeknya habis pada pembela saat giliran "
-"berikutnya"
+#~ msgid ""
+#~ "Exceptionally large and strong mermen are sometimes more comfortable with "
+#~ "their own fists and tails than with other weapons."
+#~ msgstr ""
+#~ "Manusia duyung yang sangat besar dan kuat kadang-kadang lebih nyaman "
+#~ "dengan tinju-tinju dan ekor mereka sendiri dibandingkan dengan senjata-"
+#~ "senjata lainnya."
 
-#. [damage]: id=tail_stun
-#: data/campaigns/Dead_Water/utils/specials.cfg:8
+#~ msgid "stunned"
+#~ msgstr "membingungkan"
+
+#~ msgid "female^stunned"
+#~ msgstr "membingungkan"
+
+#~ msgid "Merman Citizen"
+#~ msgstr "Manusia Duyung Warganegara"
+
 #, fuzzy
-#| msgid ""
-#| " This unit is able to stun its enemies, disrupting their zones of control."
-msgid ""
-"This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"Unit ini dapat melinglungkan musuh-musuhnya, mengacaukan zona-zona kontrol "
-"mereka."
+#~| msgid ""
+#~| "Mermen are mostly peaceful, but will fight to defend their homes. In "
+#~| "this situation, even mermen with no weapons or training can be dangerous."
+#~ msgid ""
+#~ "Merfolk are mostly peaceful, but will fight to defend their homes. In "
+#~ "this situation, even merfolk with no weapons or training can be dangerous."
+#~ msgstr ""
+#~ "Manusia duyung kebanyakan cinta damai, tetapi akan berjuang untuk "
+#~ "mempertahankan rumah-rumah mereka. Dalam situasi ini, bahkan manusia "
+#~ "duyung tanpa senjata-senjata atau pelatihan dapat membahayakan."
+
+#~ msgid "stun"
+#~ msgstr "membingungkan"
+
+#, fuzzy
+#~| msgid ""
+#~| "This attack hits so hard that the defender is dazed and can no longer "
+#~| "enforce a zone of control. The effect wears off on the defender’s next "
+#~| "turn."
+#~ msgid ""
+#~ "This attack hits so hard that the opponent is dazed and can no longer "
+#~ "enforce a zone of control. The effect wears off on the opponent’s next "
+#~ "turn."
+#~ msgstr ""
+#~ "Serangan ini memukul begitu keras agar pembela linglung dan tidak dapat "
+#~ "lagi mempertahankan suatu zona kontrol. Efeknya habis pada pembela saat "
+#~ "giliran berikutnya"
+
+#, fuzzy
+#~| msgid ""
+#~| " This unit is able to stun its enemies, disrupting their zones of "
+#~| "control."
+#~ msgid ""
+#~ "This unit is able to stun its enemies, disrupting their zones of control."
+#~ msgstr ""
+#~ "Unit ini dapat melinglungkan musuh-musuhnya, mengacaukan zona-zona "
+#~ "kontrol mereka."
 
 #~ msgid "Kraken"
 #~ msgstr "Kraken"

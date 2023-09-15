@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -207,9 +207,9 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
-void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset) {
-	boost::asio::post([this, &s, player, player_id, offset, &io_service] {
-		boost::asio::post(io_service, [player, &s, doc = conn_.get_game_history(player_id, offset)]{
+void fuh::async_get_and_send_game_history(boost::asio::io_service& io_service, wesnothd::server& s, wesnothd::player_iterator player, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
+	boost::asio::post([this, &s, player, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
+		boost::asio::post(io_service, [player, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
 			s.send_to_player(player, *doc);
 		});
 	 });
@@ -223,8 +223,8 @@ void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::st
 	conn_.update_game_end(uuid, game_id, replay_location);
 }
 
-void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user){
-	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user);
+void fuh::db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders){
+	conn_.insert_game_player_info(uuid, game_id, username, side_number, is_host, faction, version, source, current_user, leaders);
 }
 
 unsigned long long fuh::db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version){

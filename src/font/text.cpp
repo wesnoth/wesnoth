@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2022
+	Copyright (C) 2008 - 2023
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -138,13 +138,6 @@ surface pango_text::render_surface(const SDL_Rect& viewport)
 	update_pixel_scale(); // TODO: this should be in recalculate()
 	recalculate();
 	return create_surface(viewport);
-}
-
-surface pango_text::render_surface()
-{
-	update_pixel_scale(); // TODO: this should be in recalculate()
-	recalculate();
-	return create_surface();
 }
 
 texture pango_text::with_draw_scale(const texture& t) const
@@ -675,9 +668,9 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
  */
 struct inverse_table
 {
-	unsigned values[256];
+	unsigned values[256] {};
 
-	inverse_table()
+	constexpr inverse_table()
 	{
 		values[0] = 0;
 		for (int i = 1; i < 256; ++i) {
@@ -688,7 +681,7 @@ struct inverse_table
 	unsigned operator[](uint8_t i) const { return values[i]; }
 };
 
-static const inverse_table inverse_table_;
+static constexpr inverse_table inverse_table_;
 
 /***
  * Helper function for un-premultiplying alpha

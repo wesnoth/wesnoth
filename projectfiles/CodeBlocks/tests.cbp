@@ -68,6 +68,7 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
+			<Add library="libcurl" />
 			<Add library="libpng" />
 			<Add library="libjpeg" />
 			<Add library="libwebp" />
@@ -232,6 +233,8 @@
 		<Unit filename="../../src/campaign_type.hpp" />
 		<Unit filename="../../src/carryover.cpp" />
 		<Unit filename="../../src/carryover.hpp" />
+		<Unit filename="../../src/carryover_show_gold.cpp" />
+		<Unit filename="../../src/carryover_show_gold.hpp" />
 		<Unit filename="../../src/chat_command_handler.cpp" />
 		<Unit filename="../../src/chat_command_handler.hpp" />
 		<Unit filename="../../src/chat_events.cpp" />
@@ -603,10 +606,16 @@
 		<Unit filename="../../src/gui/dialogs/edit_label.hpp" />
 		<Unit filename="../../src/gui/dialogs/edit_text.cpp" />
 		<Unit filename="../../src/gui/dialogs/edit_text.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/choose_addon.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/choose_addon.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/custom_tod.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/custom_tod.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_label.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_label.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl.hpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl_translation.cpp" />
+		<Unit filename="../../src/gui/dialogs/editor/edit_pbl_translation.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_scenario.cpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_scenario.hpp" />
 		<Unit filename="../../src/gui/dialogs/editor/edit_side.cpp" />
@@ -621,6 +630,8 @@
 		<Unit filename="../../src/gui/dialogs/editor/resize_map.hpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.cpp" />
 		<Unit filename="../../src/gui/dialogs/end_credits.hpp" />
+		<Unit filename="../../src/gui/dialogs/prompt.cpp" />
+		<Unit filename="../../src/gui/dialogs/prompt.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.cpp" />
 		<Unit filename="../../src/gui/dialogs/file_dialog.hpp" />
 		<Unit filename="../../src/gui/dialogs/file_progress.cpp" />
@@ -897,7 +908,6 @@
 		<Unit filename="../../src/language.hpp" />
 		<Unit filename="../../src/level_result.hpp" />
 		<Unit filename="../../src/lexical_cast.hpp" />
-		<Unit filename="../../src/libc_error.hpp" />
 		<Unit filename="../../src/log.cpp" />
 		<Unit filename="../../src/log.hpp" />
 		<Unit filename="../../src/log_windows.cpp" />
@@ -934,6 +944,8 @@
 		<Unit filename="../../src/multiplayer_error_codes.hpp" />
 		<Unit filename="../../src/network_asio.cpp" />
 		<Unit filename="../../src/network_asio.hpp" />
+		<Unit filename="../../src/network_download_file.cpp" />
+		<Unit filename="../../src/network_download_file.hpp" />
 		<Unit filename="../../src/overlay.hpp" />
 		<Unit filename="../../src/pathfind/astarsearch.cpp" />
 		<Unit filename="../../src/pathfind/pathfind.cpp" />
@@ -1144,6 +1156,8 @@
 		<Unit filename="../../src/spirit_po/version.hpp" />
 		<Unit filename="../../src/statistics.cpp" />
 		<Unit filename="../../src/statistics.hpp" />
+		<Unit filename="../../src/statistics_record.cpp" />
+		<Unit filename="../../src/statistics_record.hpp" />
 		<Unit filename="../../src/storyscreen/controller.cpp" />
 		<Unit filename="../../src/storyscreen/controller.hpp" />
 		<Unit filename="../../src/storyscreen/parser.cpp" />
@@ -1185,6 +1199,7 @@
 		<Unit filename="../../src/tests/test_commandline_options.cpp" />
 		<Unit filename="../../src/tests/test_config.cpp" />
 		<Unit filename="../../src/tests/test_config_cache.cpp" />
+		<Unit filename="../../src/tests/test_config_filters.cpp" />
 		<Unit filename="../../src/tests/test_filesystem.cpp" />
 		<Unit filename="../../src/tests/test_formula_core.cpp" />
 		<Unit filename="../../src/tests/test_formula_function.cpp" />
@@ -1264,6 +1279,8 @@
 		<Unit filename="../../src/units/unit.hpp" />
 		<Unit filename="../../src/units/unit_alignments.hpp" />
 		<Unit filename="../../src/utils/any.hpp" />
+		<Unit filename="../../src/utils/config_filters.cpp" />
+		<Unit filename="../../src/utils/config_filters.hpp" />
 		<Unit filename="../../src/utils/const_clone.hpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.cpp" />
 		<Unit filename="../../src/utils/context_free_grammar_generator.hpp" />

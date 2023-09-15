@@ -7,14 +7,16 @@ on:
 
 jobs:
   comment-map-diff:
+    permissions:
+      pull-requests: write
     continue-on-error: true
     runs-on: ubuntu-20.04
     defaults:
       run:
         working-directory: utils/wesnoth-map-diff
     steps:
-    - uses: actions/checkout@v3.0.0
-    - uses: actions/setup-node@v3.0.0
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
         node-version: '16'
     - name: Package install
@@ -54,12 +56,10 @@ jobs:
           echo "Imgur result:"
           echo "$curl_result"
 
-          image_link=$(jq -r ".data.link" <<< "$curl_result")
-
-          comment_body="$comment_body<h3>$map_path</h3><img src=\"$image_link\" /><br />"
+          comment_body+=$(jq -r --arg path "$map_path" '@html "<h3>\($path)</h3><img src=\"\(.data.link)\" /> <br />"' <<< "$curl_result")
         done
 
-        echo "::set-output name=COMMENT_BODY::$comment_body"
+        printf 'COMMENT_BODY=%s\n' "$comment_body" >> "$GITHUB_OUTPUT"
     - name: Find comment
       uses: peter-evans/find-comment@v2
       id: fc
@@ -67,10 +67,9 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
     - name: Add comment
-      uses: peter-evans/create-or-update-comment@v1.4.5
+      uses: peter-evans/create-or-update-comment@v3
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-id: ${{ steps.fc.outputs.comment-id }}
         edit-mode: replace
-        body: |
-          ${{ steps.get-maps-diff.outputs.COMMENT_BODY }}
+        body: ${{ steps.get-maps-diff.outputs.COMMENT_BODY }}

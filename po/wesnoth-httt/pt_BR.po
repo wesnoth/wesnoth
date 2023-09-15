@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-01-15 00:21 UTC\n"
-"PO-Revision-Date: 2022-09-22 17:13-0300\n"
+"POT-Creation-Date: 2023-06-18 04:20 UTC\n"
+"PO-Revision-Date: 2023-07-06 09:12-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil <gnome-l10n-br@listas.cipsga.org.br>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #
 # File: data/campaigns/Heir_To_The_Throne/_main.cfg, line: 11
@@ -1479,7 +1479,7 @@ msgstr "A Ilha de Alduin"
 #. a hint that the player has 3 scenarios before the first main test of their XP management
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:45
 msgid "You’ll need experienced troops at Elensefar."
-msgstr ""
+msgstr "Você precisará de tropas veteranas em Elensefar."
 
 #
 # File: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg, line: 67
@@ -1533,6 +1533,8 @@ msgid ""
 "If the orcs have come here, their forces at Elensefar must be even more "
 "numerous than I feared."
 msgstr ""
+"Se os orcs vieram até aqui, suas forças em Elensefar devem ser mais "
+"numerosas do que eu temia."
 
 #. [message]: speaker=Delfador
 #. a hint for players who are expecting campaigns to have a steadily-rising difficulty curve.
@@ -1542,22 +1544,21 @@ msgid ""
 "reach Elensefar, then our journey is likely to end in sight of the city’s "
 "gates."
 msgstr ""
+"Konrad, é importante treinar. Se só tivermos tropas inexperientes quando "
+"chegarmos em Elensefar, é provável que nossa jornada termine nos portões da "
+"cidade."
 
 #
 # File: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg, line: 206
 # File: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg, line: 206
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:216
-#, fuzzy
-#| msgid ""
-#| "I did not think the orcs would have come here. This island used to be so "
-#| "beautiful. We must recapture it! To arms!"
 msgid ""
 "This island is the place where I was born, and where I learned magic; it "
 "used to be so beautiful. We must recapture it! To arms!"
 msgstr ""
-"Eu não achei que os orcs viriam até aqui. Esta ilha costumava ser tão "
-"bonita. Precisamos recapturá-la! Às armas!"
+"Foi aqui que eu nasci e aprendi magia. Esta ilha costumava ser tão bonita. "
+"Precisamos recapturá-la! Às armas!"
 
 #
 # File: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg, line: 219
@@ -8847,7 +8848,9 @@ msgstr "Mova Konrad para a caverna"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 846
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:92
-msgid "Rescue the sergeant"
+#, fuzzy
+#| msgid "Rescue the sergeant"
+msgid "Rescue the lieutenant"
 msgstr "Resgate o sargento"
 
 #
@@ -8865,8 +8868,8 @@ msgstr "Draconatos"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 893
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 249
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 893
-#. [unit]: type=Injured Sergeant, id=Warven
-#. [unit]: type=Sergeant, id=Warven
+#. [unit]: type=Injured Lieutenant, id=Warven
+#. [unit]: type=Lieutenant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:222
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:824
 msgid "Warven"
@@ -9308,8 +9311,12 @@ msgstr "Estou vendo alguém no topo da colina mais distante!"
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 768
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:719
+#, fuzzy
+#| msgid ""
+#| "It is a young human sergeant, barely more than a boy. He appears badly "
+#| "hurt but still alive."
 msgid ""
-"It is a young human sergeant, barely more than a boy. He appears badly hurt "
+"It is a young human officer, barely more than a boy. He appears badly hurt "
 "but still alive."
 msgstr ""
 "É um jovem sargento humano, pouco mais que um garoto. Ele parece estar muito "
@@ -9406,20 +9413,25 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:778
 msgid ""
 "Very well. If you convince him not to raise his sword against us, the "
-"Lintair elves shall grant him safe passage."
+"Lintanir elves shall grant him safe passage."
 msgstr ""
 "Muito bem. Se você convencer ele a não erguer sua espada contra nós, os "
-"elfos de Lintair lhe darão salvo-conduto."
+"elfos de Lintair lhe concederão um salvo-conduto."
 
 #
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 824
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 824
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:782
+#, fuzzy
+#| msgid ""
+#| "Our main goal remains to survive ourselves, but if we can spare the "
+#| "troops, we might try to rescue the sergeant stranded on the cliff. "
+#| "However, I make no promises."
 msgid ""
 "Our main goal remains to survive ourselves, but if we can spare the troops, "
-"we might try to rescue the sergeant stranded on the cliff. However, I make "
-"no promises."
+"we might try to rescue the officer stranded on the cliff. However, I make no "
+"promises."
 msgstr ""
 "Nosso objetivo principal ainda é a nossa sobrevivência, mas se tivermos "
 "tropas sobrando, podemos tentar resgatar o sargento encalhado na colina. Mas "
@@ -9477,9 +9489,13 @@ msgstr ""
 # File: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg, line: 915
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:846
+#, fuzzy
+#| msgid ""
+#| "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
+#| "healers to help you, young sergeant."
 msgid ""
 "I am the Princess, Li’sar, and we are friends. Join us and wait for the "
-"healers to help you, young sergeant."
+"healers to help you, young lieutenant."
 msgstr ""
 "Eu sou a Princesa Li'sar, e nós somos amigos. Junte-se a nós e espere pelos "
 "curandeiros lhe ajudarem, jovem sargento."
@@ -10318,7 +10334,8 @@ msgstr "Muff Argulak"
 #
 # File: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg, line: 124
 # File: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg, line: 124
-#. ['Haralamdum is ancient, and his mind does not work well any more. He takes things very slowly and carefully, even for a Wose. He halts and pauses, often searching for something in his memory, using meaningless syllables to fill the gap. The syllables of his name come from the phrase he uses to mean "that is all" or "I am done" which he says often, usually out of frustration with how hasty everyone seems. Nobody alive knows his real name, and he has likely forgotten as well. Feel free to add, move, or remove pauses to break up, or even scatter, his train of thought. For inspiration, think of Asperger Syndrome.']
+#. [side]: type=Ancient Wose, id=Haralamdum
+#. Haralamdum is ancient, and his mind does not work well any more. He takes things very slowly and carefully, even for a Wose. He halts and pauses, often searching for something in his memory, using meaningless syllables to fill the gap. The syllables of his name come from the phrase he uses to mean "that is all" or "I am done" which he says often, usually out of frustration with how hasty everyone seems. Nobody alive knows his real name, and he has likely forgotten as well. Feel free to add, move, or remove pauses to break up, or even scatter, his train of thought. For inspiration, think of Asperger Syndrome.
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:128
 msgid "Haralamdum"
 msgstr "Haralamdum"
@@ -10714,10 +10731,16 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:639
+#, fuzzy
+#| msgid ""
+#| "Upon finishing the book, $unit.name| has a much greater understanding of "
+#| "the forest, its nature and ways, and all the creatures within it. "
+#| "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgid ""
-"Upon finishing the book, $unit.name| has a much greater understanding of the "
-"forest, its nature and ways, and all the creatures within it. Unfortunately, "
-"as the last page was turned, the book crumbled to dust."
+"$unit.name| becomes entranced and greatly gains affinity with the forest, "
+"its nature and ways, and all the creatures within it. He feels he will "
+"quickly become more experienced once reaching the surface. Unfortunately, as "
+"the last page was turned, the book crumbled to dust."
 msgstr ""
 "Ao terminar o livro, $unit.name| sobre a floresta, sua natureza e todas as "
 "criaturas que vivem nela. Infelizmente, quando a última página foi virada, o "
@@ -10725,9 +10748,16 @@ msgstr ""
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:640
+#, fuzzy
+#| msgid ""
+#| "female^Upon finishing the book, $unit.name| has a much greater "
+#| "understanding of the forest, its nature and ways, and all the creatures "
+#| "within it. Unfortunately, as the last page was turned, the book crumbled "
+#| "to dust."
 msgid ""
-"female^Upon finishing the book, $unit.name| has a much greater understanding "
-"of the forest, its nature and ways, and all the creatures within it. "
+"female^$unit.name| becomes entranced and greatly gains affinity with the "
+"forest, its nature and ways, and all the creatures within it. She feels she "
+"will quickly become more experienced once reaching the surface. "
 "Unfortunately, as the last page was turned, the book crumbled to dust."
 msgstr ""
 "$unit.name|, ao terminar o livro, possui um entendimento muito melhor sobre "
@@ -10740,7 +10770,7 @@ msgstr ""
 # File: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg, line: 122
 # File: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg, line: 232
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:671
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:166
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:276
 msgid "No"
@@ -12832,9 +12862,11 @@ msgstr ""
 #
 # File: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg, line: 7
 # File: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg, line: 7
-#. [unit_type]: id=Injured Sergeant
-#: data/campaigns/Heir_To_The_Throne/units/Injured_Sergeant.cfg:7
-msgid "Injured Sergeant"
+#. [unit_type]: id=Injured Lieutenant
+#: data/campaigns/Heir_To_The_Throne/units/Injured_Lieutenant.cfg:7
+#, fuzzy
+#| msgid "Injured Sergeant"
+msgid "Injured Lieutenant"
 msgstr "Sargento Ferido"
 
 #

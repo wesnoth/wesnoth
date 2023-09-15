@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -198,7 +198,7 @@ public:
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	/** The playing team is the team whose turn it is. */
-	virtual int playing_side() const override { return activeTeam_ + 1; }
+	virtual int playing_side() const override { return static_cast<int>(activeTeam_) + 1; }
 
 	std::string current_team_name() const;
 
@@ -245,7 +245,7 @@ private:
 
 	map_location displayedUnitHex_;
 
-	bool in_game_;
+	bool first_turn_, in_game_;
 
 	const std::unique_ptr<display_chat_manager> chat_man_;
 

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2022
+	Copyright (C) 2003 - 2023
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,7 +31,7 @@ class context_manager : public filter_context
 public:
 	using context_ptr = std::unique_ptr<map_context>;
 
-	context_manager(editor_display& gui, const game_config_view& game_config);
+	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
 	~context_manager();
 
 	bool is_active_transitions_hotkey(const std::string& item);
@@ -163,11 +163,22 @@ public:
 		return *map_contexts_[current_context_index_];
 	}
 
+	void set_addon_id(const std::string& id)
+	{
+		current_addon_ = id;
+		for(auto& map : map_contexts_) {
+			map->set_addon_id(id);
+		}
+	}
+
 	/** Set the default dir (where the filebrowser is pointing at when there is no map file opened) */
 	void set_default_dir(const std::string& str)
 	{
 		default_dir_ = str;
 	}
+
+	void edit_pbl();
+	void change_addon_id();
 
 	/** Inherited from @ref filter_context. */
 	virtual const display_context& get_disp_context() const override
@@ -252,14 +263,6 @@ public:
 
 private:
 	/**
-	 * Save the map under a given filename.
-	 * @return true on success
-	 */
-	bool save_map_as(const std::string& filename);
-	//TODO
-	bool save_scenario_as(const std::string& filename);
-
-	/**
 	 * Save the map under a given filename. Displays an error message on failure.
 	 * @return true on success
 	 */
@@ -318,6 +321,9 @@ private:
 
 	/** Default directory for map load/save as dialogs */
 	std::string default_dir_;
+
+	/** The currently selected add-on */
+	std::string current_addon_;
 
 	/** Available random map generators */
 	std::vector<std::unique_ptr<map_generator>> map_generators_;
