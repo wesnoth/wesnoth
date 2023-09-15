@@ -2,6 +2,8 @@
  ### Add-ons client
  ### Add-ons server
  ### Campaigns
+   * Eastern Invasion
+     * Revise entire campaign (Dalas version)
    * Descent into Darkness
      * Buff soul rend
    * Liberty
