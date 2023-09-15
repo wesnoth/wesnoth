@@ -1431,7 +1431,7 @@ bool game::add_player(player_iterator player, bool observer)
 	// If not observer, send the game chat log.
 	if (!started_ && (!became_observer && !observer)) {
 		// Send game chat log:
-		// If the game did not start yet 
+		// If the game did not start yet
 		for(auto i : msg_queue_) {
 			simple_wml::document cresend;
 			simple_wml::node& resend = cresend.root().add_child("message");
@@ -1442,7 +1442,7 @@ bool game::add_player(player_iterator player, bool observer)
 			server.send_to_player(player, cresend);
 		}
 	}
-	
+
 	if(became_observer) {
 		// in case someone took the last slot right before this player
 		send_server_message("You are an observer.", player);
