@@ -30,6 +30,13 @@
      * S3: Ensure all of Garak’s attacks are changed to fire type (#7774).
  ### Editor
    * Added the ability to create a basic add-on - the _server.pbl, folder structure, and saving scenario files in a format which works with add-ons.
+ ### Multiplayer
+   * New game mechanics for 4p King of the Hill:
+     * A side with a leader holding the hill keep gets bonus gold each turn.
+     * A treasure chest which only a leader can unlock further rewards the first player to take the hill.
+     * Each side gets two leaders. If one dies then another can be "recalled" (recruited) from the recall list at its full unit cost.
+     * Computer players will try to take the hill with one of their two leaders.
+     * Revised map.
  ### Translations
    * Updated translations: British English, Czech, Italian, Japanese
  ### Units
