@@ -263,7 +263,6 @@ jobs:
     env:
       CFG: ${{ matrix.cfg }}
       VCPKG_FEATURE_FLAGS: dependencygraph
-      VCPKG_COMMIT: 417119555f155f6044dec7a379cd25466e339873
     permissions:
       contents: write # for dependency graph
     defaults:
@@ -274,45 +273,28 @@ jobs:
     steps:
       - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
+      - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
+        run: echo IMAGE_VERSION=%ImageVersion% >> %GITHUB_ENV%
+
       - name: Cache object files
         id: windows-cache
         uses: actions/cache@v3
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
           # the final key part needs to be changed if anything in the build process changes that is not already included here
-          # env.ImageVersion is the version of the runner image (https://github.com/actions/runner-images/releases)
-          key: win-cache-master-${{ matrix.cfg }}-${{ env.ImageVersion }}-${{ hashFiles('vcpkg.json') }}-0001
+          key: win-cache-master-${{ matrix.cfg }}-${{ env.IMAGE_VERSION }}-${{ hashFiles('vcpkg.json') }}-0001
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
 
-# checkout a specific commit to prevent vcpkg ABI changes from invalidating the cache (https://learn.microsoft.com/en-us/vcpkg/users/binarycaching#abi-hash)
-# the commit itself is just whatever happens to be the latest commit when a newer version is needed
-      - name: Build vcpkg
-        run: |
-          git clone https://github.com/microsoft/vcpkg
-          git -C vcpkg checkout %VCPKG_COMMIT%
-          vcpkg/bootstrap-vcpkg.bat
-
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.13
-        with:
-          cmake-version: '3.20.6'
-
       - name: Run cmake
-        run: |
-          cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true ^
-            -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false ^
-            -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DVCPKG_INSTALL_OPTIONS=--debug ^
-            -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+        run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
+          -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false
+          -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_INSTALL_OPTIONS=--debug
+          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
 
-# delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
-# otherwise the job was failing when trying to write a .obj file
-# building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
       - name: Build wesnoth, wesnothd, campaignd and unit tests
-        run: |
-          rmdir /s /q vcpkg\buildtrees
-          MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
+        run: MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
 
       - name: Run WML unit tests
         if: matrix.cfg == 'Release'
