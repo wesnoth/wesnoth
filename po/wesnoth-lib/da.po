@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5+CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
+"POT-Creation-Date: 2023-09-16 22:33-0500\n"
 "PO-Revision-Date: 2008-01-13 20:06+0100\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
@@ -3286,8 +3286,8 @@ msgstr "Vælg alt"
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
 msgid ""
-"The path to the icon image to display to display in the add-ons manager. "
-"Must be an image from mainline."
+"The path to the icon image to display in the add-ons manager. Must be an "
+"image from mainline."
 msgstr ""
 
 #. [grid]
@@ -3312,7 +3312,7 @@ msgstr ""
 msgid ""
 "A comma delimited list of the IDs of any other add-ons that this add-on "
 "depends on. The add-on ID is the folder name in your operating system’s file "
-"explorer, not the add-on’s name."
+"manager, not the add-on’s name."
 msgstr ""
 
 #. [grid]
@@ -3443,7 +3443,7 @@ msgstr "Skift sprog"
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
 msgid ""
-"The language code of the translation, such as sv (Swedish) or zh_CN "
+"The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
 
@@ -3454,12 +3454,12 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
-msgid "The translation of the addon’s title."
+msgid "The translation of the add-on’s title."
 msgstr ""
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
-msgid "The translation of the addon’s description."
+msgid "The translation of the add-on’s description."
 msgstr ""
 
 #. [label]: id=title
@@ -6527,22 +6527,22 @@ msgid "operating_system^<unknown>"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:690
+#: src/filesystem.cpp:691
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr ""
 
-#: src/filesystem.cpp:693
+#: src/filesystem.cpp:694
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
 msgstr ""
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:758 src/filesystem.cpp:780
+#: src/filesystem.cpp:759 src/filesystem.cpp:781
 msgid "--userdata-dir=<relative path>"
 msgstr ""
 
-#: src/filesystem.cpp:761 src/filesystem.cpp:783
+#: src/filesystem.cpp:762 src/filesystem.cpp:784
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6558,7 +6558,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1746
+#: src/filesystem.cpp:1763
 msgid "language code for localized resources^en_US"
 msgstr "da,sv"
 

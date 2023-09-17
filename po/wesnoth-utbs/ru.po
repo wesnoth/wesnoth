@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-20 01:56 UTC\n"
+"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
 "PO-Revision-Date: 2022-08-28 19:41+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -1155,8 +1155,8 @@ msgstr "Помнишь что-нибудь об этих песках?"
 #. [message]: speaker=narrator
 #. [unit]: type=Defeated Corrupted Quenoth Elf, id=Garak_defeated
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:302
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1735
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1923
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1922
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:30
 msgid "Garak"
 msgstr "Гарак"
@@ -2278,37 +2278,18 @@ msgstr ""
 "обещанием. Отложи лук, витязь, и пусть твой клинок воссияет во тьме."
 
 #. [resistance]: id=garak_steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:706
-msgid "steadfast"
-msgstr ""
-
-#. [resistance]: id=garak_steadfast
+#. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
-#, fuzzy
-#| msgid "female^distract"
-msgid "female^steadfast"
-msgstr "отвлечение"
-
-#. [resistance]: id=garak_steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
-#, fuzzy
-#| msgid ""
-#| "This unit’s resistances are increased by 20% in daylight, on defense and "
-#| "attack. Vulnerabilities are not affected."
-msgid ""
-"This unit's resistances are increased by 20%, up to a maximum of 50%, when "
-"defending. Vulnerabilities are not affected."
+msgid "Garak’s resistances are increased by 20% when defending."
 msgstr ""
-"Сопротивляемость этого бойца при свете дня увеличивается на 20%, при защите "
-"и нападении. Уязвимости не затрагиваются."
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:721
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:719
 msgid "righteous rage"
 msgstr "праведная ярость"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:723
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:721
 msgid ""
 "If used offensively or defensively against champions Grak or Zur, this "
 "attack presses the engagement until one of the combatants is slain, or 30 "
@@ -2319,12 +2300,12 @@ msgstr ""
 "пройдут 30 полных циклов атаки."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:730
 msgid "true strike"
 msgstr "истинный удар"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:734
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:732
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
@@ -2333,12 +2314,12 @@ msgstr ""
 "защиты витязя, на которого происходит нападение."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:800
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:798
 msgid "You there! Creep! Stand and face me, shade! I challenge you!"
 msgstr "Эй ты! Монстр! Остановись и обернись ко мне, тень! Я вызываю тебя!"
 
 #. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:810
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:808
 msgid ""
 "Foolish mortal... For daring to challenge me, I’ll devour your soul and "
 "torment it for all eternity..."
@@ -2347,7 +2328,7 @@ msgstr ""
 "душу и буду мучить её вечно..."
 
 #. [message]: speaker=Grak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:816
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:814
 msgid ""
 "So you destroyed Zur... Come mortal, let’s cross our blades... It’s time for "
 "you to take his place..."
@@ -2356,17 +2337,17 @@ msgstr ""
 "Настала пора тебе занять его место..."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:838
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:836
 msgid "You there! Pile of bones! I challenge you, stand and face me!"
 msgstr "Эй ты! Груда костей! Я вызываю тебя, стой и обернись ко мне!"
 
 #. [message]: speaker=Zur
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:848
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:846
 msgid "Puny elf... Time to die..."
 msgstr "Жалкий эльф... Время умирать..."
 
 #. [message]: speaker=Zur
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:854
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:852
 msgid ""
 "Grak was weak... But still you deserve respect... Meet my axe and take his "
 "place..."
@@ -2375,18 +2356,18 @@ msgstr ""
 "топором и займи его место..."
 
 #. [message]: speaker=$second_unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:884
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:882
 msgid "And so it ends... Your champion is dead, elves... Come join him..."
 msgstr ""
 "Вот и всё... Ваш лучший боец мертв, эльфы... Пора присоединиться к нему..."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:900
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:898
 msgid "Where is Garak? Has anybody seen him?"
 msgstr "Где Гарак? Кто-нибудь видел его?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:904
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:902
 msgid ""
 "I saw him jumping into deep darkness pursuing a group of enemies. Let’s hope "
 "nothing happened to him."
@@ -2395,39 +2376,39 @@ msgstr ""
 "ним всё в порядке."
 
 #. [message]: speaker=$lich_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:955
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:953
 msgid ""
 "No! This contest is not over yet, Ystara. I shall show you a taste of my "
 "true power."
 msgstr "Нет! Наш спор ещё не закончился, Истара. Отведай мою настоящую силу."
 
 #. [message]: speaker=$lich_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:961
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:959
 msgid ""
 "No! This contest is not over yet, Azkotep. I shall show you a taste of my "
 "true power."
 msgstr "Нет! Наш спор ещё не закончился, Азкотеп. Отведай мою настоящую силу."
 
 #. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:977
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1008
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1193
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:975
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1006
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1191
 msgid "Possessed Garak"
 msgstr "Одержимый Гарак"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:981
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:979
 msgid "Eloh protect us, what has he done?"
 msgstr "Храни нас Эло, что он такое сотворил?"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:985
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1164
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:983
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1162
 msgid "I live again! I can feel!"
 msgstr "Я снова жив! Я могу чувствовать!"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1000
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:998
 msgid ""
 "I will... not... yield... I defeated... your... champion... I... will... "
 "overcome... you..."
@@ -2436,23 +2417,23 @@ msgstr ""
 "тебя..."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1012
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1010
 msgid "No, fool! Stop!"
 msgstr "Нет! Стой, дурак!"
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1027
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1025
 msgid "The dark lord... is no more..."
 msgstr "Владыки тьмы... больше нет..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1031
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1029
 msgid ""
 "Garak collapses to the ground with his own blade sticking from his chest."
 msgstr "Гарак падает наземь, пронзив грудь собственным клинком."
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1043
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1041
 msgid ""
 "No! How dare you? I shall have my vengeance upon you for spoiling this "
 "contest! Darkness shall reign until I have triumphed!"
@@ -2461,22 +2442,22 @@ msgstr ""
 "будет царствовать до моей победы!"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1151
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1149
 msgid "Hahaha...!"
 msgstr "Хахаха...!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1155
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1153
 msgid "Eloh protect us, what is happening?"
 msgstr "Храни нас Эло, что происходит?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1168
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1166
 msgid "Garak?"
 msgstr "Гарак?"
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1172
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1170
 msgid ""
 "Hahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again my minions and feast in the slaughter!"
@@ -2485,7 +2466,7 @@ msgstr ""
 "Восстаньте вновь, мои любимцы, и устройте кровавую резню!"
 
 #. [message]: speaker=$lich_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1210
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1208
 msgid ""
 "No, I shall have my revenge. I shall show you that darkness is strongest "
 "just before dawn. Death and decay, grant me my vengeance!"
@@ -2494,7 +2475,7 @@ msgstr ""
 "Смерть и разрушение, позвольте мне отомстить!"
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1214
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1212
 msgid ""
 "In this I shall support you, the darkness will not lift until one of us is "
 "victorious."
@@ -2502,7 +2483,7 @@ msgstr ""
 "В этом я с тобой соглашусь, ночь не закончится, пока один из нас не победит."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1239
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1237
 msgid ""
 "I told you, I will be back, you fools! Now I shall have my vengeance upon "
 "you all. Darkness shall reign until I have triumphed!"
@@ -2511,7 +2492,7 @@ msgstr ""
 "развеется до моей победы!"
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1243
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1241
 msgid ""
 "In this I shall support you, the darkness shall not lift until one of us is "
 "victorious."
@@ -2519,7 +2500,7 @@ msgstr ""
 "В этом я соглашусь с тобой, тьма не поднимется пока один из нас не победит."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1277
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1275
 msgid ""
 "Look, dawn is nigh, our salvation is almost at hand. Even the long dark "
 "can’t last forever, and with the light of the sun the undead power wanes and "
@@ -2530,7 +2511,7 @@ msgstr ""
 "рассеивается."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1417
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1415
 msgid ""
 "Maybe I spoke too soon. Curse Uria, he has even blotted out the stars, all "
 "is darkness. Kaleh, our course is clear, we must destroy that abomination."
@@ -2539,12 +2520,12 @@ msgstr ""
 "всё ясно — мы должны уничтожить это чудовище."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1428
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1426
 msgid "But to kill Garak? How can we?"
 msgstr "Но убить Гарака? Разве так можно?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1432
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1430
 msgid ""
 "That thing is not Garak. This night has lasted long enough, and too many of "
 "our people have died. How many more would you sacrifice for Garak’s sake? "
@@ -2560,22 +2541,22 @@ msgstr ""
 "стоило. Я не позволю этому... созданию владеть телом нашего друга."
 
 #. [message]: speaker=$other_lord.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1436
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1434
 msgid "The stench of death is in the air."
 msgstr "Запах смерти витает в воздухе."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1440
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1438
 msgid "Yes, let us end this once and for all."
 msgstr "Да, покончим с этим раз и навсегда."
 
 #. [unit]: type=Orcish Leader, type=Orcish Ruler, id=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1483
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1481
 msgid "Ganthos"
 msgstr "Гантос"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1527
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1525
 msgid ""
 "What’s this on our borders? Stinkin’ elves and more undead? We’ll teach them "
 "a lesson they won’t soon forget. Attack!"
@@ -2584,7 +2565,7 @@ msgstr ""
 "проучим их так, что они не скоро забудут. В атаку!"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1531
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1529
 msgid ""
 "If those raiders capture any of our encampments, I fear our people’s fate "
 "will be just as bad as if it was captured by the undead."
@@ -2592,18 +2573,20 @@ msgstr ""
 "Если те всадники захватят наши лагеря, боюсь, судьба нашего народа будет "
 "такой же плачевной, как если бы нас схватила нежить."
 
-#. [event]
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1541
-msgid "Wounded Elven Scout"
+#. ['A unit’s name, should be short.']
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1540
+#, fuzzy
+#| msgid "Wounded Elven Scout"
+msgid "Wounded Scout"
 msgstr "Раненый эльфийский наездник"
 
 #. [message]: speaker=Elven Scout
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1544
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1543
 msgid "Orcs... Not far behind me... From the hills..."
 msgstr "Орки... Недалеко отсюда... С холмов..."
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1572
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1571
 msgid ""
 "You got me, elf... But you won’t be so lucky with the tribes of the hills... "
 "(<i>Cough</i>)"
@@ -2612,28 +2595,28 @@ msgstr ""
 "(<i>Кашель</i>)"
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1576
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1575
 msgid "I deeply regret... I won’t be able to see that..."
 msgstr "Я сожалею... Что не смогу этого увидеть..."
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1582
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1581
 msgid "Killed by a dead creep... (<i>Cough</i>)"
 msgstr "Умереть от рук мертвяков... (<i>Кашель</i>)"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1592
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1591
 msgid "Look, he dropped something! I wonder what it is..."
 msgstr "Смотрите, он что-то уронил! Интересно, что это..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1611
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1610
 msgid ""
 "It’s some sort of a map. I think I recognize some of those hills ahead on it."
 msgstr "Похоже на карту. Думаю я узнаю некоторые из холмов на ней."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1615
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1614
 msgid ""
 "And these look like camps and patrol routes. A lot of camps and patrol "
 "routes. Kaleh, do you think we could sneak up between them?"
@@ -2642,7 +2625,7 @@ msgstr ""
 "патрулей. Кале, думаешь мы сможем пробраться незаметно между ними?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1619
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1618
 msgid ""
 "Difficult, but worth a try I guess. But first we must try to survive this "
 "mess."
@@ -2650,27 +2633,27 @@ msgstr ""
 "Сложно, но можно попробовать. Но сначала нам надо пережить эту заварушку."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1623
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1622
 msgid "Right, sorry. Damn creeps."
 msgstr "Точно, прости. Чёртовы твари."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1630
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1629
 msgid "And now we’ll never know what was on that parchment. Shame."
 msgstr "А теперь мы никогда не узнаем что было на том пергаменте. Позор."
 
 #. [message]: race=orc
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1647
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1646
 msgid "Chief has fallen! Flee!"
 msgstr "Главарь убит! Спасайся кто может!"
 
 #. [message]: race=goblin,wolf
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1655
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1654
 msgid "Boss dead! Run!"
 msgstr "Хозяин умер! Бежим!"
 
 #. [message]: speaker=$unit.id
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1698
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1697
 msgid ""
 "You think you have defeated me, don’t you? Foolish boy, I shall assume a new "
 "form more powerful and horrible than you could ever imagine!"
@@ -2679,7 +2662,7 @@ msgstr ""
 "тело, ещё более мощное и ужасное, чем ты можешь себе представить!"
 
 #. [message]: speaker=$other_creep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1702
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1701
 msgid ""
 "How dare you interfere in our contest! I did not need your help. I shall "
 "teach you not to cross a lord of darkness."
@@ -2688,13 +2671,13 @@ msgstr ""
 "помощи. Я покажу тебе, что значит пересекать дорогу лорду тьмы."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1714
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1918
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1713
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1917
 msgid "Finally. It is over."
 msgstr "Всё. Это конец."
 
 #. [message]: speaker=Possessed Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1723
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1722
 msgid ""
 "See, I told you I was more powerful. This game is over, now I can leave this "
 "shell of a body."
@@ -2703,32 +2686,32 @@ msgstr ""
 "эту оболочку."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1744
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1931
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1743
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1930
 msgid "He’s... he’s still breathing!"
 msgstr "Он... он всё ещё дышит!"
 
 #. [message]: speaker=Garak_defeated
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1748
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1860
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1935
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1747
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1859
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1934
 msgid "Protect the boy for me Zhul, (<i>cough</i>) I go to a better place."
 msgstr ""
 "Жул, я ухожу в лучшее место(<i>кашель</i>). Защити мальчика в память обо мне."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1759
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1758
 msgid "What about Garak?"
 msgstr "Что с Гараком?"
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1769
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1768
 msgid "I’ve asked and looked around, there is no sign of him or his body"
 msgstr "Я звал и искал в округе, но нигде нет ни его, ни его тела."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1773
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1772
 msgid ""
 "He’s probably dead, then, but he died as a warrior. Let’s respect his wishes "
 "and remember him for that."
@@ -2737,25 +2720,25 @@ msgstr ""
 "и помнить его за это."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1779
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1778
 msgid "He died as a hero. Remember that and tell the tale, for it’s worth it."
 msgstr ""
 "Он умер как герой. Помните это и напишите легенду, он заслуживает этого."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1815
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1814
 msgid "The undead lords are defeated at last."
 msgstr "Повелители мертвых наконец-то побеждены."
 
 #. [message]: speaker=Ganthos
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1819
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1818
 msgid ""
 "There’s too many of them and the night is almost gone. Pull back you "
 "wretches, pull back!"
 msgstr "Их слишком много, и ночь почти закончилась. Назад, негодяи, назад!"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1823
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1822
 msgid ""
 "I can see the first rays of Naia shining over the horizon. She never looked "
 "so beautiful. The undead forces have crumbled into dust and the remaining "
@@ -2766,7 +2749,7 @@ msgstr ""
 "наступлением зари."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1827
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1826
 msgid ""
 "That was a very brave thing you did, Kaleh, defeating both of those Undead "
 "Lords. It took great courage and strength. Because of your daring attack, we "
@@ -2780,8 +2763,8 @@ msgstr ""
 "людей, чем если бы нам пришлось держаться всю ночь."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1831
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1996
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1830
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1995
 msgid ""
 "Though we saved almost all our people this time, we won’t always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2796,7 +2779,7 @@ msgstr ""
 "мудро создать на этот случай запас золота."
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1835
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1834
 msgid ""
 "You have triumphed for the moment, but think not that the dark lords can be "
 "so easily vanquished. We shall return, and shall rule long after your bones "
@@ -2807,7 +2790,7 @@ msgstr ""
 "превратятся в пыль. Это наш земля, и никто не покинет ее невредимым."
 
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1839
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1838
 msgid ""
 "You fought so hard to protect your precious people, young elf. No great deed "
 "should go unpunished."
@@ -2816,22 +2799,22 @@ msgstr ""
 "деяния не проходят безнаказанными."
 
 #. [message]: id=Ystara,Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1848
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1847
 msgid "A token to remember us by..."
 msgstr "Вот вам на память о нас..."
 
 #. [message]: speaker=Garak
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1852
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1851
 msgid "Aauugghh!"
 msgstr "Ооой!"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1856
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1855
 msgid "He just collapsed!"
 msgstr "Он умирает!"
 
 #. [message]: id=Ystara,Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1871
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1870
 msgid ""
 "You will never see your champion again. And we will torment his soul for the "
 "rest of the eternity."
@@ -2840,7 +2823,7 @@ msgstr ""
 "его душу."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1875
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1874
 msgid ""
 "Don’t listen to them, they are powerless in their defeat. Even if Garak fell "
 "in battle his soul went to a better place and they can’t reach him there."
@@ -2849,19 +2832,19 @@ msgstr ""
 "его душа уже в лучшем месте, и они не смогут достать его там."
 
 #. [message]: speaker=Azkotep
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1906
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1905
 msgid ""
 "Hah, now you have learned the flesh is always weaker than the powers of the "
 "undead."
 msgstr "Ха, теперь ты узнал, что плоть всегда слабее сил смерти."
 
 #. [message]: speaker=Ystara
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1912
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1911
 msgid "My undead zombies shall always defeat the living."
 msgstr "Мои зомби всегда будут побеждать живых."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1963
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1962
 msgid ""
 "From the sands he came, to the sands he will return. We remember and honor "
 "his sacrifice, and I vow that his death will not be in vain."
@@ -2870,12 +2853,12 @@ msgstr ""
 "клянусь, что его смерть не станет напрасной."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1967
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1966
 msgid "Goodbye, old friend. May Eloh shine her light eternal upon you."
 msgstr "Прощай, старый друг. Да осветит тебя сияние Эло."
 
 #. [message]: speaker=Elyssa
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1971
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1970
 msgid ""
 "He was as brave and valiant a fighter as I have ever seen in my travels."
 msgstr ""
@@ -2883,7 +2866,7 @@ msgstr ""
 "странствиях."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1975
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1974
 msgid ""
 "He was a bastard at times... But... but why did he have to die? It... it "
 "just doesn’t make sense."
@@ -2892,22 +2875,22 @@ msgstr ""
 "Это просто бессмысленно."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1992
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1991
 msgid "Miraculously, all of our encampments survived the night."
 msgstr "Невообразимо, все наши лагеря остались целы этой ночью."
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2002
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2001
 msgid "Well, only $elven_camps encampments remain, but we will survive."
 msgstr "Осталось только $elven_camps лагерей, но мы выживем."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2006
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2005
 msgid "Yes, but at what cost?"
 msgstr "Да, но какой ценой?"
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2016
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2015
 msgid ""
 "Though we saved almost all our people this time, we won’t always be so "
 "lucky. While elves who have fought with you in the past will gladly return, "
@@ -2922,7 +2905,7 @@ msgstr ""
 "этот случай запас золота."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2028
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2027
 msgid ""
 "We have suffered losses, but we are not broken yet. We have saved most of "
 "our people tonight. But while elves who have fought with you in the past "
@@ -2937,7 +2920,7 @@ msgstr ""
 "запас золота."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2036
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2035
 msgid ""
 "We have suffered grievous losses, but we are not broken yet. Long will this "
 "slaughter be remembered by our people. Where was Eloh during the darkness? "
@@ -2953,7 +2936,7 @@ msgstr ""
 "мудро создать на этот случай запас золота."
 
 #. [message]: speaker=Kaleh
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2049
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2048
 msgid ""
 "All this death and destruction. What were those shades arguing over? Was "
 "this all just some sort of demented game?"
@@ -2962,7 +2945,7 @@ msgstr ""
 "вроде сумасшедшей игры?"
 
 #. [message]: speaker=Zhul
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2053
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2052
 msgid ""
 "The lords of the dead are powerful and twisted indeed. Only Eloh knows the "
 "truth of what happened tonight."
@@ -2971,7 +2954,7 @@ msgstr ""
 "известно, что произошло этой ночью."
 
 #. [message]: speaker=Nym
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2057
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:2056
 msgid ""
 "I don’t want to be here tomorrow night to find out. The hills to the north "
 "are close. Let’s be far away before another nightfall."
@@ -15929,23 +15912,165 @@ msgstr ""
 "Раса этого бойца ещё не может быть раскрыта. Вам придётся встретить её в "
 "игре, чтобы узнать описание."
 
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
+msgid "uses 1 attack"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
+msgid "uses 2 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
+msgid "uses 3 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
+msgid "uses 4 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
+msgid "uses 5 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
+msgid "uses 6 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
+msgid "This attack uses 1 attack"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
+msgid "This attack uses 2 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
+msgid "This attack uses 3 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
+msgid "This attack uses 4 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
+msgid "This attack uses 5 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
+msgid "This attack uses 6 attacks"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
+msgid ""
+"This attack is the first verse of the Song of Sun Ascension, which "
+"progresses by one verse each turn this unit uses a song verse attack. When "
+"the last verse is sung or the song sequence is broken due to not attacking "
+"for a turn, the song starts again from the first verse."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
+msgid ""
+"This attack is the second verse of the Song of Sun Ascension, which "
+"progresses by one verse each turn this unit uses a song verse attack. When "
+"the last verse is sung or the song sequence is broken due to not attacking "
+"for a turn, the song starts again from the first verse."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:83
+msgid ""
+"This attack is the third verse of the Song of Sun Ascension, which "
+"progresses by one verse each turn this unit uses a song verse attack. When "
+"the last verse is sung or the song sequence is broken due to not attacking "
+"for a turn, the song starts again from the first verse."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
+msgid "first verse"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:89
+msgid "second verse"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:92
+msgid "third verse"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
+msgid "once per turn"
+msgstr ""
+
+#. [disable]: id=once_per_turn
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
+msgid "This attack can be used offensively only once per turn"
+msgstr ""
+
+#. [dummy]: id=nova
+#. weapon special
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:404
+msgid "nova"
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:405
+msgid ""
+"This weapon, when used offensively, deals damage to all units adjacent to "
+"the caster when it hits."
+msgstr ""
+
+#. [dummy]: id=nova
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:406
+msgid "This unit has wide-area attacks centered on the caster."
+msgstr ""
+
+#. [dummy]: id=ray
+#. weapon special
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:442
+msgid "ray"
+msgstr ""
+
+#. [dummy]: id=ray
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:443
+msgid ""
+"This weapon, when used offensively, also deals damage to a unit behind the "
+"target."
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:567
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +1"
+msgstr ""
+
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:570
+msgid ""
+"At the start of the turn this unit increases movement points of surrounding "
+"units by +2"
+msgstr ""
+
+#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:574
+msgid "tailwind +"
+msgstr ""
+
 #. [special_note]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:691
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
 msgid "SPECIAL_NOTE^This unit is able to move through solid stone walls."
 msgstr "Этот боец способен проходить сквозь сплошные каменные стены."
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:700
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:703
 msgid "teaching"
 msgstr "обучение"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:704
 msgid "female^teaching"
 msgstr "обучение"
 
 #. [dummy]: id=teaching
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:702
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:705
 msgid ""
 "At the start of every turn, this unit redistributes its experience points to "
 "all the units of the same side adjacent to it. If no suitable unit is "
@@ -15956,12 +16081,12 @@ msgstr ""
 "падает до нуля."
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:711
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:714
 msgid "shock"
 msgstr "шок"
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:712
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:715
 msgid ""
 "When this attack is used on offense, the opponent will retaliate with one "
 "less strike than normally, to a minimum of one strike."
@@ -15970,7 +16095,7 @@ msgstr ""
 "ударом меньше, чем обычно, минимум до одного удара."
 
 #. [attacks]: id=shock
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:713
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:716
 msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
@@ -15979,17 +16104,17 @@ msgstr ""
 "ответные действия."
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:744
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:747
 msgid "formation"
 msgstr "строй"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:745
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:748
 msgid "female^formation"
 msgstr "строй"
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:746
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:749
 msgid ""
 "This unit gains a +10% bonus to defense when another unit with the same "
 "ability is adjacent to it. However, this cannot raise the unit’s defense "
@@ -16000,22 +16125,22 @@ msgstr ""
 "этих бойцов выше 70%."
 
 #. [chance_to_hit]: id=formation
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:747
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:750
 msgid "Groups of units of this type are able to shield each other in combat."
 msgstr "Группы бойцов этого типа способны защищать друг друга в бою."
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:770
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:773
 msgid "disengage"
 msgstr "выход из боя"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:771
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:774
 msgid "female^disengage"
 msgstr "выход из боя"
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:772
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:775
 msgid ""
 "If this unit doesn’t move before attacking, it will retain its movement "
 "points after the attack."
@@ -16024,17 +16149,17 @@ msgstr ""
 "передвижения после атаки."
 
 #. [dummy]: id=disengage
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:773
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:776
 msgid "This unit can move either before or after attacking."
 msgstr "Этот боец может перемещаться как до, так и после атаки."
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:780
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
 msgid "daze"
 msgstr "ослепление"
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:781
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -16052,7 +16177,7 @@ msgstr ""
 "выше 60%."
 
 #. [dummy]: id=daze
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:788
 msgid ""
 "This unit can daze its enemies, reducing their accuracy and defense until "
 "they end a turn."
@@ -16061,17 +16186,17 @@ msgstr ""
 "способность к самозащите до конца хода."
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:792
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:795
 msgid "distract"
 msgstr "отвлечение"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:793
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:796
 msgid "female^distract"
 msgstr "отвлечение"
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:794
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:797
 msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
@@ -16080,7 +16205,7 @@ msgstr ""
 "бойцов (но не для себя)."
 
 #. [skirmisher]: id=distract
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:795
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:798
 msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
@@ -16089,27 +16214,27 @@ msgstr ""
 "в их зоны контроля и беспрепятственно перемещаться вокруг них."
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:806
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid "support"
 msgstr "поддержка"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:807
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:810
 msgid "female^support"
 msgstr "поддержка"
 
 #. [dummy]: id=support
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:811
 msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr "Расходы на содержание смежных дружественных бойцов снижены на 1."
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:857
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:860
 msgid "dazed"
 msgstr "ослеплен"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:858
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:861
 msgid "female^dazed"
 msgstr "ослеплена"
 
@@ -17222,6 +17347,22 @@ msgstr "Фантомный замок"
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:64
 msgid "Phantom Keep"
 msgstr "Лагерь-призрак"
+
+#, fuzzy
+#~| msgid "female^distract"
+#~ msgid "female^steadfast"
+#~ msgstr "отвлечение"
+
+#, fuzzy
+#~| msgid ""
+#~| "This unit’s resistances are increased by 20% in daylight, on defense and "
+#~| "attack. Vulnerabilities are not affected."
+#~ msgid ""
+#~ "This unit's resistances are increased by 20%, up to a maximum of 50%, "
+#~ "when defending. Vulnerabilities are not affected."
+#~ msgstr ""
+#~ "Сопротивляемость этого бойца при свете дня увеличивается на 20%, при "
+#~ "защите и нападении. Уязвимости не затрагиваются."
 
 #~ msgid "Skeleton Rider"
 #~ msgstr "Скелет-всадник"

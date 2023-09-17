@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
 "PO-Revision-Date: 2020-09-03 18:13+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
@@ -6571,7 +6571,7 @@ msgstr[0] "Informeu-ne a l'autor o mantenidor d'aquest complement."
 msgstr[1] ""
 "Informeu-ne als autors o mantenidors respectius d'aquests complements."
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:950
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Error: "
 
@@ -6908,20 +6908,20 @@ msgstr "Heu fet massa intents d'inici de sessió."
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:903
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "No s'ha pogut carregar la partida: "
 
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:905
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "S'ha produït un error durant la partida: "
 
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:942
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "No s'ha pogut carregar el mapa: "
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:907
-#: src/game_launcher.cpp:1023
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "Error del generador de mapes: "
 
@@ -6946,29 +6946,29 @@ msgstr "Escenari desconegut: «$scenario|»"
 msgid "No campaigns are available."
 msgstr "No hi ha campanyes disponibles."
 
-#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
+#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
 msgid "The file you have tried to load is corrupt"
 msgstr "El fitxer que heu intentat carregar està malmès"
 
-#: src/game_launcher.cpp:715 src/game_launcher.cpp:734
+#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
 #: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "El fitxer que heu intentat carregar està corromput: '"
 
-#: src/game_launcher.cpp:724
+#: src/game_launcher.cpp:722
 msgid "File I/O Error while reading the game"
 msgstr "Error d'E/S en el fitxer mentre es llegia la partida"
 
-#: src/game_launcher.cpp:726
+#: src/game_launcher.cpp:724
 msgid "File I/O Error while reading the game: '"
 msgstr "S'ha produït un error d'E/S de fitxer en llegir la partida: «"
 
-#: src/game_launcher.cpp:901
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "S'ha produït un error mentre s'iniciava el servidor: "
 
-#: src/game_launcher.cpp:923
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "Ha fallat la connexió: "
 
@@ -9221,14 +9221,14 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:814
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:816
+#: src/wesnoth.cpp:815
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"
