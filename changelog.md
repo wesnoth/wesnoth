@@ -1,6 +1,4 @@
-## Version 1.17.20+dev
- ### Add-ons client
- ### Add-ons server
+## Version 1.17.21
  ### Campaigns
    * Eastern Invasion
      * Revise entire campaign (Dalas version)
@@ -10,11 +8,6 @@
      * Make Harper a girl and revise some dialogue
    * Legend of Wesmere
      * Replace lingering instances of ‘old’ style gold carry over for S9, S11 and S14 (issue #7862)
- ### Editor
- ### Multiplayer
- ### Lua API
- ### Packaging
- ### Terrain
  ### Translations
    * Updated translations: Arabic, British English, Czech, German, French
  ### Units
@@ -75,10 +68,7 @@
      * Thug - xp changed from 42 to 32.
      * Bandit - cost changed from 23 to 22, xp changed from 70 to 61.
      * Peasant and Woodsman - xp changed from 23 to 19.
-     * Elder Mage - cost changed from 65 to 90. 
- ### User interface
- ### WML Engine
- ### Miscellaneous and Bug Fixes
+     * Elder Mage - cost changed from 65 to 90.
 
 ## Version 1.17.20
  ### Campaigns
