@@ -14,7 +14,7 @@
  ### Packaging
  ### Terrain
  ### Translations
-   * Updated translations: Arabic, British English, Czech, French
+   * Updated translations: Arabic, British English, Czech, German, French
  ### Units
    * Updates to Troll sprites and animations (#7844)
    * Giant Ant Queen, Fire Ant Queen, Ant Eggs, and Ant Zombies
