@@ -274,7 +274,7 @@ jobs:
       - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
       - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
-        run: echo IMAGE_VERSION=%ImageVersion% >> %GITHUB_ENV%
+        run: echo IMAGE_VERSION=%ImageVersion%>> %GITHUB_ENV%
 
       - name: Cache object files
         id: windows-cache
