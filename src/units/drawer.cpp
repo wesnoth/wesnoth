@@ -470,7 +470,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	}
 
 	const std::vector<std::string> halos_abilities = u.halo_abilities();
-	bool has_abil_halo = !ac.abil_halos_.empty();
+	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
 	if(!has_abil_halo && !halos_abilities.empty()) {
 		for(const std::string& halo_ab : halos_abilities){
 			halo::handle abil_halo = halo_man.add(
