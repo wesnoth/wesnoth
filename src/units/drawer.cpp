@@ -470,14 +470,17 @@ void unit_drawer::redraw_unit(const unit& u) const
 	}
 
 	const std::vector<std::string> halos_abilities = u.halo_abilities();
-	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front() && ac.abil_halos_.front()->valid();
+	bool has_abil_halo = !ac.abil_halos_.empty();
 	if(!has_abil_halo && !halos_abilities.empty()) {
 		for(const std::string& halo_ab : halos_abilities){
-			ac.abil_halos_.push_back(halo_man.add(
+			halo::handle abil_halo = halo_man.add(
 				halo_x, halo_y,
 				halo_ab + u.TC_image_mods(),
 				map_location(-1, -1)
-			));
+			);
+			if(abil_halo->valid()){
+				ac.abil_halos_.push_back(abil_halo);
+			}
 		}
 	}
 	if(has_abil_halo && (ac.abil_halos_ref_ != halos_abilities || halos_abilities.empty())){
@@ -487,11 +490,14 @@ void unit_drawer::redraw_unit(const unit& u) const
 		ac.abil_halos_.clear();
 		if(!halos_abilities.empty()){
 			for(const std::string& halo_ab : halos_abilities){
-				ac.abil_halos_.push_back(halo_man.add(
+				halo::handle abil_halo = halo_man.add(
 					halo_x, halo_y,
 					halo_ab + u.TC_image_mods(),
 					map_location(-1, -1)
-				));
+				);
+				if(abil_halo->valid()){
+					ac.abil_halos_.push_back(abil_halo);
+				}
 			}
 		}
 	} else if(has_abil_halo){
