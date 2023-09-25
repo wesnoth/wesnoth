@@ -810,6 +810,11 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 	synced_context::run_and_throw("debug_kill", config {"x", loc.wml_x(), "y", loc.wml_y()});
 }
 
+void menu_handler::teleport_unit(mouse_handler& mousehandler)
+{
+	std::cout << "Trying to teleport... "<< std::endl;
+}
+
 void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 {
 	const map_location& loc = mousehandler.get_last_hex();

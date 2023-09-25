@@ -203,6 +203,9 @@ bool command_executor::do_execute_command(const hotkey::ui_command& cmd, bool pr
 		case HOTKEY_KILL_UNIT:
 			kill_unit();
 			break;
+		case HOTKEY_TELEPORT_UNIT:
+			
+			break;
 		case HOTKEY_PREFERENCES:
 			preferences();
 			break;
