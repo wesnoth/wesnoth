@@ -19,12 +19,8 @@ jobs:
     steps:
       - { uses: actions/checkout@v3, with: { submodules: "recursive", fetch-depth: "0" } }
 
-      - name: Copyright check
-        if: success() || failure()
-        run: |
-          git config --global --add safe.directory '*'
-          ./update_copyrights --output=""
       - name: Check for invalid characters
+        if: success() || failure()
         run: |
           ./utils/CI/check_utf8.sh
           ./utils/CI/utf8_bom_dog.sh
@@ -38,6 +34,11 @@ jobs:
       - name: Doxygen check
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
+      - name: Copyright check
+        if: success() || failure()
+        run: |
+          git config --global --add safe.directory '*'
+          ./update_copyrights --output=""
 
   ubuntu:
     strategy:
