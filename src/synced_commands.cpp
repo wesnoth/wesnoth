@@ -598,6 +598,29 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_lua, child, use_undo, /*show*/, /*error_ha
 	return true;
 }
 
+SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*error_handler*/)
+{
+	if (use_undo) {
+		resources::undo_stack->clear();
+	}
+	debug_cmd_notification("teleport");
+
+	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
+	const map_location loc2(child["x"].to_int() + 10, child["y"].to_int() + 10, wml_loc());
+	/*
+	const unit_map::iterator i = resources::gameboard->units().find(loc);
+	if (i != resources::gameboard->units().end()) {
+		if (i.valid()) {
+			//unit_display::teleport_unit_between(loc, loc2, *i);
+		}
+		display::get_singleton()->redraw_minimap();
+	} 
+	*/
+	
+	// Maybe use proceed_to from udisplay.cpp to simulate a teleport
+	return true;
+}
+
 SYNCED_COMMAND_HANDLER_FUNCTION(debug_kill, child, use_undo, /*show*/, /*error_handler*/)
 {
 	if (use_undo) {
