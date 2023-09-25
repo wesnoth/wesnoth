@@ -249,6 +249,7 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 		case hotkey::HOTKEY_CREATE_UNIT:
 		case hotkey::HOTKEY_CHANGE_SIDE:
 		case hotkey::HOTKEY_KILL_UNIT:
+		case hotkey::HOTKEY_TELEPORT_UNIT:
 			return !events::commands_disabled && game_config::debug && play_controller_.get_map().on_board(mouse_handler_.get_last_hex()) && play_controller_.current_team().is_local();
 
 		case hotkey::HOTKEY_CLEAR_LABELS:
