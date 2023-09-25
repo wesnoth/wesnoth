@@ -58,7 +58,7 @@ jobs:
           html=$(jq -r --arg path "$map_path" 'if .data.link != null
             then @html "<h3>\($path)</h3><img src=\"\(.data.link)\" /> <br />"
             elif has("errors") then .errors[].status | halt_error
-            else "Unexpected JSON structure!\n" | halt_error end') || continue
+            else "Unexpected JSON structure!\n" | halt_error end' <<< "$json") || continue
           comment_body+=$html
         done
 
