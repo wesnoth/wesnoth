@@ -22,7 +22,7 @@ jobs:
       - name: Copyright check
         if: success() || failure()
         run: |
-          git config --global --add safe.directory /__w/wesnoth/wesnoth
+          git config --global --add safe.directory '*'
           ./update_copyrights --output=""
       - name: Check for invalid characters
         run: |
@@ -31,7 +31,6 @@ jobs:
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: |
-          git config --global --add safe.directory '*'
           ./utils/CI/fix_whitespace.sh; git status; [ "$(git status --short | wc -l)" = 0 ]
       - name: Run luacheck
         if: success() || failure()
