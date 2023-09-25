@@ -389,6 +389,13 @@ void unit_drawer::redraw_unit(const unit& u) const
 			}
 		};
 
+		const std::vector<std::string> overlays_abilities = u.overlays_abilities();
+		for(const std::string& ov : overlays_abilities) {
+			if(texture tex = image::get_texture(ov)) {
+				textures.push_back(std::move(tex));
+			}
+		};
+
 		disp.drawing_buffer_add(display::LAYER_UNIT_BAR, loc, [=,
 			textures      = std::move(textures),
 			adj_y         = adjusted_params.y,
@@ -461,6 +468,45 @@ void unit_drawer::redraw_unit(const unit& u) const
 	} else if(has_halo) {
 		halo_man.set_location(ac.unit_halo_, halo_x, halo_y);
 	}
+
+	const std::vector<std::string> halos_abilities = u.halo_abilities();
+	bool has_abil_halo = !ac.abil_halos_.empty() && ac.abil_halos_.front()->valid();
+	if(!has_abil_halo && !halos_abilities.empty()) {
+		for(const std::string& halo_ab : halos_abilities){
+			halo::handle abil_halo = halo_man.add(
+				halo_x, halo_y,
+				halo_ab + u.TC_image_mods(),
+				map_location(-1, -1)
+			);
+			if(abil_halo->valid()){
+				ac.abil_halos_.push_back(abil_halo);
+			}
+		}
+	}
+	if(has_abil_halo && (ac.abil_halos_ref_ != halos_abilities || halos_abilities.empty())){
+		for(halo::handle& abil_halo : ac.abil_halos_){
+			halo_man.remove(abil_halo);
+		}
+		ac.abil_halos_.clear();
+		if(!halos_abilities.empty()){
+			for(const std::string& halo_ab : halos_abilities){
+				halo::handle abil_halo = halo_man.add(
+					halo_x, halo_y,
+					halo_ab + u.TC_image_mods(),
+					map_location(-1, -1)
+				);
+				if(abil_halo->valid()){
+					ac.abil_halos_.push_back(abil_halo);
+				}
+			}
+		}
+	} else if(has_abil_halo){
+		for(halo::handle& abil_halo : ac.abil_halos_){
+			halo_man.set_location(abil_halo, halo_x, halo_y);
+		}
+	}
+
+	ac.abil_halos_ref_ = halos_abilities;
 
 	ac.anim_->redraw(params, halo_man);
 	ac.refreshing_ = false;

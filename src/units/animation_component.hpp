@@ -44,7 +44,9 @@ public:
 		frame_begin_time_(0),
 		draw_bars_(false),
 		refreshing_(false),
-		unit_halo_() {}
+		unit_halo_(),
+		abil_halos_(),
+		abil_halos_ref_() {}
 
 	/** Copy construct a unit animation component, for use when copy constructing a unit. */
 	unit_animation_component(unit & my_unit, const unit_animation_component & o) :
@@ -56,7 +58,9 @@ public:
 		frame_begin_time_(o.frame_begin_time_),
 		draw_bars_(o.draw_bars_),
 		refreshing_(o.refreshing_),
-		unit_halo_() {}
+		unit_halo_(),
+		abil_halos_(),
+		abil_halos_ref_() {}
 
 	/** Chooses an appropriate animation from the list of known animations. */
 	const unit_animation* choose_animation(
@@ -134,4 +138,8 @@ private:
 
 	/** handle to the halo of this unit */
 	halo::handle unit_halo_;
+	/** handle to the abilities halos of this unit */
+	std::vector<halo::handle> abil_halos_;
+	/** vector used to check that halo_abilities vector isn't modified between each read */
+	std::vector<std::string> abil_halos_ref_;
 };
