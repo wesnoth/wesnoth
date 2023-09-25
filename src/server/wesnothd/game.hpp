@@ -443,6 +443,11 @@ public:
 	void clear_history();
 
 	/**
+	 * Clears the history of recorded chat WML documents.
+	 */
+	void clear_chat_history();
+
+	/**
 	 * Records a WML document in the game's history.
 	 *
 	 * @param data The WML document to record.
@@ -715,6 +720,7 @@ private:
 	void send_observerjoins(std::optional<player_iterator> player = {});
 	void send_observerquit(player_iterator observer);
 	void send_history(player_iterator sock) const;
+	void send_chat_history(player_iterator sock) const;
 
 	/** In case of a host transfer, notify the new host about its status. */
 	void notify_new_host();
@@ -858,6 +864,8 @@ private:
 
 	/** Replay data. */
 	mutable std::vector<std::unique_ptr<simple_wml::document>> history_;
+	/** Replay chat history data. */
+	mutable std::vector<std::unique_ptr<simple_wml::document>> chat_history_;
 
 	/** Pointer to the game's description in the games_and_users_list_. */
 	simple_wml::node* description_;
@@ -898,12 +906,6 @@ private:
 	 * New requests should never have a lower value than this.
 	 */
 	int last_choice_request_id_;
-	/**
-	 * The buffer for all game-specific messages publicly exchanged.
-	 * It will be sent to newly joining players.
-	 * <sender, message>
-	 */
-	std::vector<std::pair<std::string, std::string>> msg_queue_;
 };
 
 } // namespace wesnothd

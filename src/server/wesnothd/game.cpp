@@ -95,6 +95,7 @@ game::game(wesnothd::server& server, player_connections& player_connections,
 	, started_(false)
 	, level_()
 	, history_()
+	, chat_history_()
 	, description_(nullptr)
 	, current_turn_(0)
 	, current_side_index_(0)
@@ -259,8 +260,6 @@ void game::start_game(player_iterator starter)
 	started_ = true;
 	// Prevent inserting empty keys when reading.
 	const simple_wml::node& multiplayer = get_multiplayer(level_.root());
-	// Delete message buffer
-	msg_queue_.clear();
 
 	const bool save = multiplayer["savegame"].to_bool();
 	LOG_GAME
@@ -320,6 +319,7 @@ void game::start_game(player_iterator starter)
 
 	update_turn_data();
 	clear_history();
+	clear_chat_history();
 
 	// Send [observer] tags for all observers that are already in the game.
 	send_observerjoins();
@@ -881,11 +881,10 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 	simple_wml::node* const message = data.root().child("message");
 	assert(message);
 	message->set_attr_dup("sender", user->info().name().c_str());
-
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
-	// Buffer message for sending message history to newly joined players
-	msg_queue_.push_back(std::pair<std::string, std::string>(user->info().name(), msg.to_string()));
+	// Save chat as history to be sent to newly joining players
+	chat_history_.push_back(std::move(data.clone()));
 	send_data(data, user);
 }
 
@@ -1428,19 +1427,9 @@ bool game::add_player(player_iterator player, bool observer)
 			user->info().name() + " has the same IP as: " + clones);
 	}
 
-	// If not observer, send the game chat log.
-	if (!started_ && (!became_observer && !observer)) {
-		// Send game chat log:
-		// If the game did not start yet
-		for(auto i : msg_queue_) {
-			simple_wml::document cresend;
-			simple_wml::node& resend = cresend.root().add_child("message");
-			const simple_wml::string_span& sender = i.first.c_str();
-			const simple_wml::string_span& msg = i.second.c_str();
-			resend.set_attr_dup("sender", sender);
-			resend.set_attr_dup("message", msg);
-			server.send_to_player(player, cresend);
-		}
+	// Send the game chat log, regardless if observer or not
+	if (!started_) {
+		send_chat_history(player);
 	}
 
 	if(became_observer) {
@@ -1766,6 +1755,24 @@ void game::send_history(player_iterator player) const
 	}
 }
 
+void game::send_chat_history(player_iterator player) const
+{
+	if(chat_history_.empty()) {
+		return;
+	}
+	try {
+		for(auto& h : chat_history_) {
+			std::string buf = h->output();
+			auto doc = std::make_unique<simple_wml::document>(buf.c_str(), simple_wml::INIT_STATIC);
+			doc->compress();
+			server.send_to_player(player, *doc);
+		}
+	} catch(const simple_wml::error& e) {
+		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
+	}
+}
+
+
 static bool is_invalid_filename_char(char c)
 {
 	return !(isalnum(c) ||
@@ -1861,6 +1868,11 @@ void game::record_data(std::unique_ptr<simple_wml::document> data)
 void game::clear_history()
 {
 	history_.clear();
+}
+
+void game::clear_chat_history()
+{
+	chat_history_.clear();
 }
 
 void game::set_description(simple_wml::node* desc)
