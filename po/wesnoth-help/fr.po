@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Help-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
 "PO-Revision-Date: 2022-10-28 10:10+0200\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -76,164 +76,34 @@ msgstr ""
 "que celle ayant la peste. Cela ne fonctionne pas sur les morts-vivants ou "
 "sur les unités stationnées dans les villages."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:4
-msgid "uses 1 attack"
-msgstr ""
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/core/macros/abilities.cfg:130
+msgid "steadfast"
+msgstr "inébranlable"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:7
-msgid "uses 2 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:10
-msgid "uses 3 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:13
-msgid "uses 4 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
-msgid "uses 5 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:19
-msgid "uses 6 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
-msgid "This attack uses 1 attack"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:25
-msgid "This attack uses 2 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:28
-msgid "This attack uses 3 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:31
-msgid "This attack uses 4 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:34
-msgid "This attack uses 5 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:37
-msgid "This attack uses 6 attacks"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:77
-msgid ""
-"This attack is the first verse of the Song of Sun Ascension, which "
-"progresses by one verse each turn this unit uses a song verse attack. When "
-"the last verse is sung or the song sequence is broken due to not attacking "
-"for a turn, the song starts again from the first verse."
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:80
-msgid ""
-"This attack is the second verse of the Song of Sun Ascension, which "
-"progresses by one verse each turn this unit uses a song verse attack. When "
-"the last verse is sung or the song sequence is broken due to not attacking "
-"for a turn, the song starts again from the first verse."
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:83
-msgid ""
-"This attack is the third verse of the Song of Sun Ascension, which "
-"progresses by one verse each turn this unit uses a song verse attack. When "
-"the last verse is sung or the song sequence is broken due to not attacking "
-"for a turn, the song starts again from the first verse."
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:86
-#, fuzzy
-#| msgid "first strike"
-msgid "first verse"
-msgstr "initiative"
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:89
-#, fuzzy
-#| msgid "Second Dusk"
-msgid "second verse"
-msgstr "Deuxième crépuscule"
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:92
-msgid "third verse"
-msgstr ""
-
-#. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
-msgid "once per turn"
-msgstr ""
-
-#. [disable]: id=once_per_turn
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
-msgid "This attack can be used offensively only once per turn"
-msgstr ""
-
-#. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:403
-msgid "nova"
-msgstr ""
-
-#. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:404
-msgid ""
-"This weapon, when used offensively, deals damage to all units adjacent to "
-"the caster when it hits."
-msgstr ""
-
-#. [dummy]: id=nova
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:405
-msgid "This unit has wide-area attacks centered on the caster."
-msgstr ""
-
-#. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:440
-msgid "ray"
-msgstr ""
-
-#. [dummy]: id=ray
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:441
-msgid ""
-"This weapon, when used offensively, also deals damage to a unit behind the "
-"target."
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:565
-msgid ""
-"At the start of the turn this unit increases movement points of surrounding "
-"units by +1"
-msgstr ""
-
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:568
-msgid ""
-"At the start of the turn this unit increases movement points of surrounding "
-"units by +2"
-msgstr ""
-
-#. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:572
-msgid "tailwind +"
-msgstr ""
+#. [resistance]: id=garak_steadfast
+#. [resistance]: id=steadfast
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/core/macros/abilities.cfg:131
+msgid "female^steadfast"
+msgstr "inébranlable"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:590
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:593
 #: data/core/macros/abilities.cfg:9
 msgid "heals +4"
 msgstr "soins +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:591
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:594
 #: data/core/macros/abilities.cfg:10
 msgid "female^heals +4"
 msgstr "soins +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:592
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:595
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -252,28 +122,28 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:596
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:635
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:665
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:599
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:638
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:668
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Cette unité est capable de prodiguer des soins de base et de ralentir la "
 "déshydratation."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:614
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:617
 #: data/core/macros/abilities.cfg:35
 msgid "heals +8"
 msgstr "soins +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:615
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:618
 #: data/core/macros/abilities.cfg:36
 msgid "female^heals +8"
 msgstr "soins +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:616
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:619
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -293,17 +163,17 @@ msgstr ""
 "trouver un village ou une unité avec la capacité de guérison."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:644
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:647
 msgid "heals +12"
 msgstr "soins +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:645
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:648
 msgid "female^heals +12"
 msgstr "soins +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:646
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:649
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -323,7 +193,7 @@ msgstr ""
 "trouver un village ou une unité avec la capacité de guérison."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:671
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:674
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -4935,6 +4805,32 @@ msgstr "Installation des extensions"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
+#, fuzzy
+#| msgid ""
+#| "User-made add-ons can be obtained and updated through the "
+#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
+#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
+#| "italic>), you will be presented with a list of add-ons available on the "
+#| "server for downloading.\n"
+#| "\n"
+#| "The installation status for each add-on is shown below each entry. For "
+#| "add-ons that are <italic>text='upgradable'</italic> or "
+#| "<italic>text='outdated'</italic> on the server, their installed and "
+#| "published versions will be shown in the <italic>text='Version'</italic> "
+#| "column.\n"
+#| "\n"
+#| "To search for add-ons by keywords, type any relevant terms in any order "
+#| "in the search box, separated by spaces. You can also sort the add-on list "
+#| "by clicking the column headers. It is also possible to choose to only "
+#| "display add-ons of specific categories by clicking on the "
+#| "<bold>text='Type'</bold> dropdown.\n"
+#| "\n"
+#| "To install an add-on, select it from the list and click the "
+#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
+#| "If the window is too small to show them inline, the <bold>text='Addon "
+#| "Details'</bold> button provides you with additional details about the add-"
+#| "on, such as its full description, installation status, and available "
+#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4954,7 +4850,7 @@ msgid ""
 "\n"
 "To install an add-on, select it from the list and click the <bold>text='+'</"
 "bold> icon, or simply double-click on the add-on’s title. If the window is "
-"too small to show them inline, the <bold>text='Addon Details'</bold> button "
+"too small to show them inline, the <bold>text='Add-on Details'</bold> button "
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
@@ -5544,16 +5440,6 @@ msgstr ""
 "elle était toujours stationnée dans un village."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:130
-msgid "steadfast"
-msgstr "inébranlable"
-
-#. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:131
-msgid "female^steadfast"
-msgstr "inébranlable"
-
-#. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:132
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
@@ -6135,6 +6021,18 @@ msgstr ""
 "dans un village."
 
 #: data/core/macros/special-notes.cfg:73
+#, fuzzy
+#| msgid ""
+#| "Foes who lose their life to the plague will rise again in unlife, unless "
+#| "they are standing on a village."
+msgid ""
+"Foes who lose their life to certain horrors of nature become nourishment for "
+"a rapidly growing larva, unless they are standing in a village."
+msgstr ""
+" Ceux qui meurent de la peste deviendront des morts-vivants, sauf s'ils sont "
+"dans un village."
+
+#: data/core/macros/special-notes.cfg:76
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -6142,13 +6040,13 @@ msgstr ""
 " Cette unité peut ralentir ses ennemis, réduisant de moitié leur déplacement "
 "et leurs dégâts jusqu'à la fin de leur tour."
 
-#: data/core/macros/special-notes.cfg:76
+#: data/core/macros/special-notes.cfg:79
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 " Cette capacité de pétrification rend cette unité extrêmement dangereuse."
 
-#: data/core/macros/special-notes.cfg:79
+#: data/core/macros/special-notes.cfg:82
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -6156,7 +6054,7 @@ msgstr ""
 " Le tir d'élite donne à cette unité de fortes chances de toucher l'ennemi, "
 "mais seulement en attaque."
 
-#: data/core/macros/special-notes.cfg:82
+#: data/core/macros/special-notes.cfg:85
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -6164,7 +6062,7 @@ msgstr ""
 " L'attaque à distance de cette unité est magique et a toujours de fortes "
 "chances de toucher sa cible."
 
-#: data/core/macros/special-notes.cfg:85
+#: data/core/macros/special-notes.cfg:88
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -6172,7 +6070,7 @@ msgstr ""
 " L'attaque multiple de cette unité devient moins efficace lorsqu'elle est "
 "blessée."
 
-#: data/core/macros/special-notes.cfg:88
+#: data/core/macros/special-notes.cfg:91
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -6180,14 +6078,14 @@ msgstr ""
 " La charge double à la fois les dégâts infligés et subits. Cela n'affecte "
 "pas la riposte en défense."
 
-#: data/core/macros/special-notes.cfg:91
+#: data/core/macros/special-notes.cfg:94
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 " Pendant un combat, cette unité draine la vie de ses victimes pour "
 "renouveler la sienne."
 
-#: data/core/macros/special-notes.cfg:94
+#: data/core/macros/special-notes.cfg:97
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -6195,7 +6093,7 @@ msgstr ""
 " La longueur de son arme permet à cette unité d'attaquer en premier au corps "
 "à corps, en attaque comme en défense."
 
-#: data/core/macros/special-notes.cfg:97
+#: data/core/macros/special-notes.cfg:100
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -6204,7 +6102,7 @@ msgstr ""
 "jusqu'à ce qu'elles soient guéries dans un village ou par une unité "
 "guérisseuse."
 
-#: data/core/macros/special-notes.cfg:100
+#: data/core/macros/special-notes.cfg:103
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -6214,7 +6112,7 @@ msgstr ""
 "terrain."
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
-#: data/core/macros/special-notes.cfg:119
+#: data/core/macros/special-notes.cfg:122
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
@@ -8907,6 +8805,16 @@ msgstr "Coût de la vision"
 #: src/help/help_topic_generators.cpp:753
 msgid "Jamming Cost"
 msgstr "Coût du brouillage"
+
+#, fuzzy
+#~| msgid "first strike"
+#~ msgid "first verse"
+#~ msgstr "initiative"
+
+#, fuzzy
+#~| msgid "Second Dusk"
+#~ msgid "second verse"
+#~ msgstr "Deuxième crépuscule"
 
 #~ msgid ""
 #~ "When loading a .cfg file, the scenario editor understands files created "

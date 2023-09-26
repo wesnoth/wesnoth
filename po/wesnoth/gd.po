@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
 "PO-Revision-Date: 2022-01-13 19:15+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -6761,7 +6761,7 @@ msgstr[1] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 msgstr[2] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 msgstr[3] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:950
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "Mearachd: "
 
@@ -7112,20 +7112,20 @@ msgstr "Dh’fheuch thu ri logadh a-steach ro thric."
 msgid "Password hashing failed."
 msgstr "Dh’fhàillig hais an fhacail-fhaire."
 
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:903
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "Cha b’ urrainn dhuinn an geama luchdadh: "
 
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:905
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "Mearachd ann an cluiche a’ gheama: "
 
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:942
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "Cha b’ urrainn dhuinn mapa a’ gheama luchdadh: "
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:907
-#: src/game_launcher.cpp:1023
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "Mearachd le gineadair nam mapa: "
 
@@ -7152,29 +7152,29 @@ msgstr "Cnàmh-sgeul nach aithne dhuinn: “$scenario|”"
 msgid "No campaigns are available."
 msgstr "Chan eil iomairt ri fhaighinn."
 
-#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
+#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
 msgid "The file you have tried to load is corrupt"
 msgstr "Tha am faidhle a dh’fheuch thu ri luchdadh coirbte"
 
-#: src/game_launcher.cpp:715 src/game_launcher.cpp:734
+#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
 #: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tha am faidhle a dh’fheuch thu ri luchdadh coirbte: ‘"
 
-#: src/game_launcher.cpp:724
+#: src/game_launcher.cpp:722
 msgid "File I/O Error while reading the game"
 msgstr "Mearachd faidhle I/O ann an leughadh a’ gheama"
 
-#: src/game_launcher.cpp:726
+#: src/game_launcher.cpp:724
 msgid "File I/O Error while reading the game: '"
 msgstr "Mearachd faidhle I/O ann an leughadh a’ gheama: ‘"
 
-#: src/game_launcher.cpp:901
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "Mearachd ann an tòiseachadh an fhrithealaiche: "
 
-#: src/game_launcher.cpp:923
+#: src/game_launcher.cpp:925
 msgid "Connection failed: "
 msgstr "Dh’fhàillig leis a’ cheangal: "
 
@@ -9539,14 +9539,14 @@ msgstr "$year RF"
 msgid "$year AF"
 msgstr "$year BF"
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:814
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:816
+#: src/wesnoth.cpp:815
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"

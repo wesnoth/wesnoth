@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
+"POT-Creation-Date: 2023-09-16 22:32-0500\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -6553,7 +6553,7 @@ msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "이 주소의 제작자나 유지자에게 보고해 주십시오."
 
-#: src/game_events/pump.cpp:392 src/game_launcher.cpp:950
+#: src/game_events/pump.cpp:392 src/game_launcher.cpp:952
 msgid "Error: "
 msgstr "에러: "
 
@@ -6914,20 +6914,20 @@ msgstr "로그인 시도를 너무 많이 했습니다"
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:903
+#: src/game_initialization/playcampaign.cpp:157 src/game_launcher.cpp:905
 msgid "The game could not be loaded: "
 msgstr "로드가 안됩니다: "
 
-#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:905
+#: src/game_initialization/playcampaign.cpp:163 src/game_launcher.cpp:907
 msgid "Error while playing the game: "
 msgstr "게임을 하는 중 오류 발생: "
 
-#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:942
+#: src/game_initialization/playcampaign.cpp:166 src/game_launcher.cpp:944
 msgid "The game map could not be loaded: "
 msgstr "게임 지도를 불러올 수 없음: "
 
-#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:907
-#: src/game_launcher.cpp:1023
+#: src/game_initialization/playcampaign.cpp:169 src/game_launcher.cpp:909
+#: src/game_launcher.cpp:1030
 msgid "Map generator error: "
 msgstr "지도 생성기 오류:"
 
@@ -6954,29 +6954,29 @@ msgstr "불분명한 시나리오: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "가능한 캠패인 없음"
 
-#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
+#: src/game_launcher.cpp:711 src/game_launcher.cpp:730
 msgid "The file you have tried to load is corrupt"
 msgstr "로드하려는 파일이 손상되었습니다"
 
-#: src/game_launcher.cpp:715 src/game_launcher.cpp:734
+#: src/game_launcher.cpp:713 src/game_launcher.cpp:732
 #: src/hotkey/hotkey_handler_sp.cpp:334 src/savegame.cpp:153
 #: src/savegame.cpp:314
 msgid "The file you have tried to load is corrupt: '"
 msgstr "로드하려는 파일이 손상되었습니다: '"
 
-#: src/game_launcher.cpp:724
+#: src/game_launcher.cpp:722
 msgid "File I/O Error while reading the game"
 msgstr "게임 읽기 중 파일 I/O 오류"
 
-#: src/game_launcher.cpp:726
+#: src/game_launcher.cpp:724
 msgid "File I/O Error while reading the game: '"
 msgstr "게임 읽기 중 파일 I/O 오류: '"
 
-#: src/game_launcher.cpp:901
+#: src/game_launcher.cpp:903
 msgid "Error while starting server: "
 msgstr "서버를 시작하는 중 오류 발생: "
 
-#: src/game_launcher.cpp:923
+#: src/game_launcher.cpp:925
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -9317,14 +9317,14 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:815
+#: src/wesnoth.cpp:814
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:816
+#: src/wesnoth.cpp:815
 #, fuzzy
 #| msgid "Logging"
 msgid "Logging Failure"

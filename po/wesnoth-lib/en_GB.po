@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-19 20:56-0500\n"
-"PO-Revision-Date: 2023-08-25 10:08+1000\n"
+"POT-Creation-Date: 2023-09-16 22:33-0500\n"
+"PO-Revision-Date: 2023-09-18 13:52+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -3243,11 +3243,11 @@ msgstr "Select an icon file"
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
 msgid ""
-"The path to the icon image to display to display in the add-ons manager. "
-"Must be an image from mainline."
+"The path to the icon image to display in the add-ons manager. Must be an "
+"image from mainline."
 msgstr ""
 "The path to the icon image to display in the add-ons manager. Must be an "
-"image from the core files."
+"image from core."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3273,11 +3273,11 @@ msgstr "The add-on’s current version. This should be of the form X.Y.Z."
 msgid ""
 "A comma delimited list of the IDs of any other add-ons that this add-on "
 "depends on. The add-on ID is the folder name in your operating system’s file "
-"explorer, not the add-on’s name."
+"manager, not the add-on’s name."
 msgstr ""
 "A comma delimited list of the IDs of any other add-ons that this add-on "
 "depends on. The add-on ID is the folder name in your operating system’s file "
-"manager not the add-on’s name."
+"manager, not the add-on’s name."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3409,10 +3409,10 @@ msgstr "* Language:"
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
 msgid ""
-"The language code of the translation, such as sv (Swedish) or zh_CN "
+"The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
-"The language code of the translation, such as sv (Swedish) or zh_CN "
+"The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 
 #. [grid]
@@ -3422,12 +3422,12 @@ msgstr "* Title:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
-msgid "The translation of the addon’s title."
+msgid "The translation of the add-on’s title."
 msgstr "The translation of the add-on’s title."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
-msgid "The translation of the addon’s description."
+msgid "The translation of the add-on’s description."
 msgstr "The translation of the add-on’s description."
 
 #. [label]: id=title
@@ -6300,11 +6300,11 @@ msgid "operating_system^<unknown>"
 msgstr "<unknown>"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:690
+#: src/filesystem.cpp:691
 msgid "--userdata-dir=<relative path that doesn't start with a period>"
 msgstr "--userdata-dir=<relative path that doesn't start with a full-stop>"
 
-#: src/filesystem.cpp:693
+#: src/filesystem.cpp:694
 msgid ""
 "Use an absolute path, or a relative path that starts with a period and a "
 "backslash"
@@ -6313,11 +6313,11 @@ msgstr ""
 "backslash"
 
 #. TRANSLATORS: translate the part inside <...> only
-#: src/filesystem.cpp:758 src/filesystem.cpp:780
+#: src/filesystem.cpp:759 src/filesystem.cpp:781
 msgid "--userdata-dir=<relative path>"
 msgstr "--userdata-dir=<relative path>"
 
-#: src/filesystem.cpp:761 src/filesystem.cpp:783
+#: src/filesystem.cpp:762 src/filesystem.cpp:784
 msgid ""
 "Use absolute paths. Relative paths are deprecated because they are "
 "interpreted relative to $HOME"
@@ -6335,7 +6335,7 @@ msgstr ""
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1746
+#: src/filesystem.cpp:1763
 msgid "language code for localized resources^en_US"
 msgstr "en_GB"
 

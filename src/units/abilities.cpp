@@ -476,6 +476,56 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities_.child_range(ability).empty();
 }
 
+//these two functions below are used in order to add to the unit
+//a second set of halo encoded in the abilities (like illuminates halo in [illuminates] ability for example)
+static void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
+{
+	auto ret = std::find(image_list.begin(), image_list.end(), cfg[attribute_name].str());
+	if(ret == image_list.end()){
+		image_list.push_back(cfg[attribute_name].str());
+	}
+}
+
+const std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
+{
+	std::vector<std::string> image_list;
+	for (const config::any_child sp : abilities_.all_children_range()){
+		bool is_active = ability_active(sp.key, sp.cfg, loc_);
+		//Add halo/overlay to owner of ability if active and affect_self is true.
+		if( !(sp.cfg)[image_type + "_image"].str().empty() && is_active && ability_affects_self(sp.key, sp.cfg, loc_)){
+			add_string_to_vector(image_list, sp.cfg,image_type + "_image");
+		}
+		//Add halo/overlay to owner of ability who affect adjacent only if active.
+		if(!(sp.cfg)[image_type + "_image_self"].str().empty() && is_active){
+			add_string_to_vector(image_list, sp.cfg, image_type + "_image_self");
+		}
+	}
+
+	const unit_map& units = get_unit_map();
+
+	//Add halo/overlay to unit under abilities owned by adjacent who has [affect_adjacent]
+	//if condition matched
+	const auto adjacent = get_adjacent_tiles(loc_);
+	for(unsigned i = 0; i < adjacent.size(); ++i) {
+		const unit_map::const_iterator it = units.find(adjacent[i]);
+		if (it == units.end() || it->incapacitated())
+			continue;
+		if ( &*it == this )
+			continue;
+		for(const config::any_child j : it->abilities_.all_children_range()) {
+			if(!(j.cfg)[image_type + "_image"].str().empty() && affects_side(j.cfg, side(), it->side()) && it->ability_active(j.key, j.cfg, adjacent[i]) && ability_affects_adjacent(j.key, j.cfg, i, loc_, *it))
+			{
+				add_string_to_vector(image_list, j.cfg, image_type + "_image");
+			}
+		}
+	}
+	//rearranges vector alphabetically when its size equals or exceeds two.
+	if(image_list.size() >= 2){
+		std::sort(image_list.begin(), image_list.end());
+	}
+	return image_list;
+}
+
 void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 {
 	if(unit_const_ptr & att = is_attacker_ ? self_ : other_) {

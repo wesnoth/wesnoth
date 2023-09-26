@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2023-08-20 01:56 UTC\n"
+"POT-Creation-Date: 2023-09-17 03:32 UTC\n"
 "PO-Revision-Date: 2008-06-03 05:13+0100\n"
 "Last-Translator: Dimitar Ilccov <mythological@t-home.mk>\n"
 "Language-Team: mk\n"
@@ -131,30 +131,7 @@ msgid "sling"
 msgstr ""
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
-msgid "greatsword"
-msgstr ""
-
-#. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:33
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:36
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:38
-#: data/campaigns/tutorial/units/Quintain.cfg:25
-#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
-#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
-#: data/core/units/humans/Mage_of_Light.cfg:50
-msgid "flail"
-msgstr ""
-
-#. [attack]: type=blade
 #. [attack]: type=arcane
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:131
 #: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:24
@@ -444,8 +421,10 @@ msgstr ""
 #: data/core/units/goblins/Pillager.cfg:32
 #: data/core/units/goblins/Wolf_Rider.cfg:46
 #: data/core/units/monsters/Ant.cfg:32 data/core/units/monsters/Ant_Fire.cfg:69
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:73
 #: data/core/units/monsters/Ant_Firebane.cfg:70
 #: data/core/units/monsters/Ant_Firebomb.cfg:72
+#: data/core/units/monsters/Ant_Queen.cfg:36
 #: data/core/units/monsters/Ant_Soldier.cfg:38
 #: data/core/units/monsters/Bear.cfg:42 data/core/units/monsters/Caribe.cfg:114
 #: data/core/units/monsters/Caribe_Hunter.cfg:115
@@ -484,8 +463,10 @@ msgstr ""
 #: data/core/units/monsters/Seahorse.cfg:34
 #: data/core/units/monsters/Wild_Wyvern.cfg:97
 #: data/core/units/undead/Corpse_Ghast.cfg:27
-#: data/core/units/undead/Corpse_Soulless.cfg:278
-#: data/core/units/undead/Corpse_Walking.cfg:279
+#: data/core/units/undead/Corpse_Soulless.cfg:154
+#: data/core/units/undead/Corpse_Soulless.cfg:294
+#: data/core/units/undead/Corpse_Walking.cfg:155
+#: data/core/units/undead/Corpse_Walking.cfg:295
 msgid "bite"
 msgstr ""
 
@@ -530,6 +511,17 @@ msgstr ""
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:274
 #: data/core/units/undead/Corpse_Soulless.cfg:101
 msgid "Soulless"
+msgstr ""
+
+#. [attack]: type=impact
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:33
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:36
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:38
+#: data/campaigns/tutorial/units/Quintain.cfg:25
+#: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
+#: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
+#: data/core/units/humans/Mage_of_Light.cfg:50
+msgid "flail"
 msgstr ""
 
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
@@ -614,12 +606,12 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:34
+#: data/core/units/undead/Skele_Bone_Knight.cfg:52
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:40
+#: data/core/units/undead/Skeleton_Rider.cfg:52
 msgid "axe"
 msgstr ""
 
@@ -633,7 +625,7 @@ msgstr ""
 #: data/core/units/dwarves/Runemaster.cfg:29
 #: data/core/units/dwarves/Runesmith.cfg:28
 #: data/core/units/dwarves/Steelclad.cfg:57 data/core/units/trolls/Great.cfg:25
-#: data/core/units/trolls/Hero.cfg:25 data/core/units/trolls/Warrior.cfg:25
+#: data/core/units/trolls/Hero.cfg:25 data/core/units/trolls/Warrior.cfg:38
 msgid "hammer"
 msgstr ""
 
@@ -1930,7 +1922,7 @@ msgid ""
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
 "these sunderers are sturdy, robust warriors who have both the disposition "
 "and skill to survive multiple skirmishes. Though not particularly creative "
-"or special warriors, such a rider is not impotent in any way  — even a small "
+"or special warriors, such a rider is not impotent in any way — even a small "
 "group of sunderers is powerful enough to breach most enemy lines through "
 "sheer force. In a situation that requires it, these horsemen also possess "
 "enough skill at archery to weaken enemy forces or pick off fleeing "
@@ -4385,6 +4377,46 @@ msgid ""
 "bite at close range."
 msgstr ""
 
+#: data/core/units/monsters/Ant_Egg.cfg:4
+msgid ""
+"The giant ant eggs have a tough, leathery shell that takes a dedicated "
+"effort to break through. While this shell makes it difficult to know the "
+"status of the inhabitant from the outside, it does not obscure the outside "
+"world from the rapidly developing ant larva within. Any predator or foe who "
+"approaches an ant egg or breaches the shell of an adjacent brood member will "
+"spur that ant to hatch as a fully formed adult."
+msgstr ""
+
+#. [unit_type]: id=Giant Ant Egg, race=monster
+#: data/core/units/monsters/Ant_Egg.cfg:9
+msgid "Giant Ant Egg"
+msgstr ""
+
+#. [unit_type]: id=Giant Ant Egg, race=monster
+#: data/core/units/monsters/Ant_Egg.cfg:71
+msgid ""
+"Giant Ants are common in almost any environment, and the eggs from which "
+"they emerge can often be found in caves or any sheltered environment. Most "
+"eggs come from one of the colony queens, but the workers transport them to "
+"any suitable location.\n"
+"\n"
+msgstr ""
+
+#. [unit_type]: id=Fire Ant Egg
+#: data/core/units/monsters/Ant_Egg.cfg:169
+msgid "Fire Ant Egg"
+msgstr ""
+
+#. [unit_type]: id=Fire Ant Egg
+#: data/core/units/monsters/Ant_Egg.cfg:174
+msgid ""
+"In large numbers, Fire Ants can be a real menace to other races and those "
+"threatening numbers start with their eggs. Most Fire Ant eggs come from one "
+"of the colony queens, but the workers transport them to any suitable "
+"location.\n"
+"\n"
+msgstr ""
+
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
 msgid "Fire Ant"
@@ -4403,9 +4435,22 @@ msgstr ""
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Ant_Fire.cfg:78
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:88
 #: data/core/units/monsters/Ant_Firebane.cfg:79
 #: data/core/units/monsters/Ant_Firebomb.cfg:81
 msgid "fire"
+msgstr ""
+
+#. [unit_type]: id=Fire Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:11
+msgid "Fire Ant Queen"
+msgstr ""
+
+#. [unit_type]: id=Fire Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Fire_Queen.cfg:52
+msgid ""
+"Fire ants possess fierce fangs and an unusual ability to generate fire, and "
+"the queen is no different."
 msgstr ""
 
 #. [unit_type]: id=Firebane Ant, race=monster
@@ -4426,6 +4471,24 @@ msgid ""
 "spray in a swollen abdomen, which can make for a fearsome attack, but it "
 "also makes them weak to physical attacks and they cannot sustain the fire as "
 "their health fails."
+msgstr ""
+
+#. [unit_type]: id=Giant Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Queen.cfg:4
+msgid "Giant Ant Queen"
+msgstr ""
+
+#. [unit_type]: id=Giant Ant Queen, race=monster
+#: data/core/units/monsters/Ant_Queen.cfg:19
+msgid ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. The queens are not royalty as many "
+"other races would understand, but they are the heart of any functioning nest "
+"and will be defended at all costs.  As the nest core, they must be capable "
+"tacticians, and as a target of rival nests, they must also be deft "
+"warriors.  The typical human or orc that finds an audience with an Ant Queen "
+"can expect a very short continued existence - and if their flesh is warm and "
+"nourishing, they can host an ant egg."
 msgstr ""
 
 #. [unit_type]: id=Soldier Ant, race=monster
@@ -4472,8 +4535,8 @@ msgstr ""
 #. [attack]: type=pierce
 #. [variation]
 #: data/core/units/monsters/Boar.cfg:59
-#: data/core/units/undead/Corpse_Soulless.cfg:383
-#: data/core/units/undead/Corpse_Walking.cfg:384
+#: data/core/units/undead/Corpse_Soulless.cfg:399
+#: data/core/units/undead/Corpse_Walking.cfg:400
 msgid "tusk"
 msgstr ""
 
@@ -5598,7 +5661,7 @@ msgid "Ogre"
 msgstr ""
 
 #. [unit_type]: id=Ogre, race=ogre
-#: data/core/units/ogres/Ogre.cfg:21
+#: data/core/units/ogres/Ogre.cfg:24
 msgid ""
 "Ogres are giant creatures that usually live alone in the wilderness, "
 "remarkably similar to humans in form, though large and misshapen. While they "
@@ -5607,7 +5670,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/ogres/Ogre.cfg:25 data/core/units/ogres/Young_Ogre.cfg:24
+#: data/core/units/ogres/Ogre.cfg:28 data/core/units/ogres/Young_Ogre.cfg:27
 msgid "cleaver"
 msgstr ""
 
@@ -5617,7 +5680,7 @@ msgid "Young Ogre"
 msgstr ""
 
 #. [unit_type]: id=Young Ogre, race=ogre
-#: data/core/units/ogres/Young_Ogre.cfg:20
+#: data/core/units/ogres/Young_Ogre.cfg:23
 msgid ""
 "When still young, Ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -5750,6 +5813,12 @@ msgid ""
 "something that cannot be accomplished by force alone. Such an orc is "
 "inevitably the most shrewd and perceptive among his peers and has won the "
 "respect of his brethren through leadership rather than coercion."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:24 data/core/units/orcs/Warrior.cfg:38
+msgid "greatsword"
 msgstr ""
 
 #. [unit_type]: id=Orcish Slayer, race=orc
@@ -5965,8 +6034,8 @@ msgstr ""
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
 msgid ""
-"Some saurians  with particularly good aim prefer to aid their allies from "
-"the backlines rather than to infiltrate enemy formations. Their deadly spear "
+"Some saurians with particularly good aim prefer to aid their allies from the "
+"backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
 
@@ -6135,120 +6204,126 @@ msgstr ""
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:143
 #: data/core/units/undead/Corpse_Walking.cfg:144
+msgid "wc_variation^Ant"
+msgstr ""
+
+#. [variation]
+#: data/core/units/undead/Corpse_Soulless.cfg:159
+#: data/core/units/undead/Corpse_Walking.cfg:160
 msgid "wc_variation^Drake"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:158
-#: data/core/units/undead/Corpse_Walking.cfg:159
+#: data/core/units/undead/Corpse_Soulless.cfg:174
+#: data/core/units/undead/Corpse_Walking.cfg:175
 msgid "wc_variation^Dwarf"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:171
-#: data/core/units/undead/Corpse_Walking.cfg:172
+#: data/core/units/undead/Corpse_Soulless.cfg:187
+#: data/core/units/undead/Corpse_Walking.cfg:188
 msgid "wc_variation^Falcon"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:206
-#: data/core/units/undead/Corpse_Walking.cfg:207
+#: data/core/units/undead/Corpse_Soulless.cfg:222
+#: data/core/units/undead/Corpse_Walking.cfg:223
 msgid "wc_variation^Goblin"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:216
-#: data/core/units/undead/Corpse_Walking.cfg:240
+#: data/core/units/undead/Corpse_Soulless.cfg:232
+#: data/core/units/undead/Corpse_Walking.cfg:256
 msgid "wc_variation^Horse"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:225
-#: data/core/units/undead/Corpse_Walking.cfg:249
+#: data/core/units/undead/Corpse_Soulless.cfg:241
+#: data/core/units/undead/Corpse_Walking.cfg:265
 msgid "wc_variation^Mounted"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:234
-#: data/core/units/undead/Corpse_Walking.cfg:258
+#: data/core/units/undead/Corpse_Soulless.cfg:250
+#: data/core/units/undead/Corpse_Walking.cfg:274
 msgid "wc_variation^Beast-Rider"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:243
-#: data/core/units/undead/Corpse_Walking.cfg:217
+#: data/core/units/undead/Corpse_Soulless.cfg:259
+#: data/core/units/undead/Corpse_Walking.cfg:233
 msgid "wc_variation^Gryphon"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:266
-#: data/core/units/undead/Corpse_Walking.cfg:267
+#: data/core/units/undead/Corpse_Soulless.cfg:282
+#: data/core/units/undead/Corpse_Walking.cfg:283
 msgid "wc_variation^Rat"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:283
-#: data/core/units/undead/Corpse_Walking.cfg:284
+#: data/core/units/undead/Corpse_Soulless.cfg:299
+#: data/core/units/undead/Corpse_Walking.cfg:300
 msgid "wc_variation^Saurian"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:293
-#: data/core/units/undead/Corpse_Walking.cfg:294
+#: data/core/units/undead/Corpse_Soulless.cfg:309
+#: data/core/units/undead/Corpse_Walking.cfg:310
 msgid "wc_variation^Scorpion"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:311
-#: data/core/units/undead/Corpse_Walking.cfg:312
+#: data/core/units/undead/Corpse_Soulless.cfg:327
+#: data/core/units/undead/Corpse_Walking.cfg:328
 msgid "wc_variation^Scuttler"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:320
-#: data/core/units/undead/Corpse_Walking.cfg:321
+#: data/core/units/undead/Corpse_Soulless.cfg:336
+#: data/core/units/undead/Corpse_Walking.cfg:337
 msgid "wc_variation^Spider"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:329
-#: data/core/units/undead/Corpse_Walking.cfg:330
+#: data/core/units/undead/Corpse_Soulless.cfg:345
+#: data/core/units/undead/Corpse_Walking.cfg:346
 msgid "wc_variation^Serpent"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:348
-#: data/core/units/undead/Corpse_Walking.cfg:349
+#: data/core/units/undead/Corpse_Soulless.cfg:364
+#: data/core/units/undead/Corpse_Walking.cfg:365
 msgid "wc_variation^Swimmer"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:366
-#: data/core/units/undead/Corpse_Walking.cfg:367
+#: data/core/units/undead/Corpse_Soulless.cfg:382
+#: data/core/units/undead/Corpse_Walking.cfg:383
 msgid "wc_variation^Troll"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:375
-#: data/core/units/undead/Corpse_Walking.cfg:376
+#: data/core/units/undead/Corpse_Soulless.cfg:391
+#: data/core/units/undead/Corpse_Walking.cfg:392
 msgid "wc_variation^Boar"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:388
-#: data/core/units/undead/Corpse_Walking.cfg:389
+#: data/core/units/undead/Corpse_Soulless.cfg:404
+#: data/core/units/undead/Corpse_Walking.cfg:405
 msgid "wc_variation^Wose"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:400
-#: data/core/units/undead/Corpse_Walking.cfg:401
+#: data/core/units/undead/Corpse_Soulless.cfg:416
+#: data/core/units/undead/Corpse_Walking.cfg:417
 msgid "wc_variation^Wolf"
 msgstr ""
 
 #. [variation]
-#: data/core/units/undead/Corpse_Soulless.cfg:413
-#: data/core/units/undead/Corpse_Walking.cfg:414
+#: data/core/units/undead/Corpse_Soulless.cfg:429
+#: data/core/units/undead/Corpse_Walking.cfg:430
 msgid "wc_variation^Bat"
 msgstr ""
 
@@ -6399,7 +6474,7 @@ msgid "Bone Knight"
 msgstr ""
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:27
+#: data/core/units/undead/Skele_Bone_Knight.cfg:45
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -6407,7 +6482,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/undead/Skele_Bone_Knight.cfg:44
+#: data/core/units/undead/Skele_Bone_Knight.cfg:62
 msgid "trample"
 msgstr ""
 
@@ -6550,7 +6625,7 @@ msgid "Skeleton Rider"
 msgstr ""
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:33
+#: data/core/units/undead/Skeleton_Rider.cfg:45
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "

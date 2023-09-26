@@ -17,20 +17,28 @@ jobs:
         CLICOLOR_FORCE: 1
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v3, with: { submodules: "recursive", fetch-depth: "0" } }
 
+      - name: Set git safe directory
+        if: success() || failure()
+        run: |
+          git config --global --add safe.directory '*'
       - name: Check for invalid characters
+        if: success() || failure()
         run: |
           ./utils/CI/check_utf8.sh
           ./utils/CI/utf8_bom_dog.sh
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: |
-          git config --global --add safe.directory '*'
           ./utils/CI/fix_whitespace.sh; git status; [ "$(git status --short | wc -l)" = 0 ]
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
+      - name: Copyright check # doxygen creates some image files, so it needs to be done after the copyright check
+        if: success() || failure()
+        run: |
+          ./update_copyrights --output=""
       - name: Doxygen check
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
@@ -273,40 +281,28 @@ jobs:
     steps:
       - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
+      - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
+        run: echo IMAGE_VERSION=%ImageVersion%>> %GITHUB_ENV%
+
       - name: Cache object files
         id: windows-cache
         uses: actions/cache@v3
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
-          key: win-cache-master-${{ matrix.cfg }}-0006
+          # the final key part needs to be changed if anything in the build process changes that is not already included here
+          key: win-cache-master-${{ matrix.cfg }}-${{ env.IMAGE_VERSION }}-${{ hashFiles('vcpkg.json') }}-0001
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1.1.3
 
-# checkout a specific commit to prevent vcpkg ABI changes from invalidating the cache (https://learn.microsoft.com/en-us/vcpkg/users/binarycaching#abi-hash)
-# the commit itself is just whatever happens to be the latest commit when a newer version is needed
-      - name: Build vcpkg
-        run: |
-          git clone https://github.com/microsoft/vcpkg
-          git -C vcpkg checkout 417119555f155f6044dec7a379cd25466e339873
-          vcpkg/bootstrap-vcpkg.bat
-
-      - name: Setup cmake
-        uses: jwlawson/actions-setup-cmake@v1.13
-        with:
-          cmake-version: '3.20.6'
-
       - name: Run cmake
-        run: |
-          cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
+        run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
+          -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false
+          -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_INSTALL_OPTIONS=--debug
+          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 16 2019" .
 
-# delete buildtrees directory to free up space after cmake invokes vcpkg to build the dependencies
-# otherwise the job was failing when trying to write a .obj file
-# building vcpkg on the more spacious C drive didn't work since for some reason vcpkg decides to not create the pango/cairo pkgconfig files there
       - name: Build wesnoth, wesnothd, campaignd and unit tests
-        run: |
-          rmdir /s /q vcpkg\buildtrees
-          MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
+        run: MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
 
       - name: Run WML unit tests
         if: matrix.cfg == 'Release'

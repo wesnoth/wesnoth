@@ -28,35 +28,38 @@ jobs:
       env:
         SHA: ${{ github.event.pull_request.head.sha }}
       run: |
-        sudo apt-get install -y pngquant
+        sudo apt-get -y -q install pngquant
         comment_body=""
+        log() { printf '\e[1m%s\e[m\n' "$*"; } # write log message in bold
 
-        ## Get maps changed
+        ## Get changed maps
         git fetch --depth=1 origin "$SHA"
         mapfile -t map_paths < <(git diff --name-only HEAD "$SHA" | grep '\.map$')
 
         for map_path in "${map_paths[@]}"
         do
-          echo "** Working on $map_path **"
-
           ## Get new map version
+          log "Check out $map_path from $SHA..."
           new_map=${map_path##*/}
           git show "$SHA":"$map_path" > "$new_map"
 
-          ## Run map diff
-          diff_image=${new_map%.map}.png
-          node build/index.js "../../$map_path" "$new_map" "$diff_image"
+          log "Generate map diff image for $map_path..."
+          node build/index.js "../../$map_path" "$new_map" diff_image.png
+          identify diff_image.png
 
-          ## Compress image
-          pngquant --force --output "$diff_image" "$diff_image"
+          log 'Compress image...'
+          pngquant --force --output diff_image.png diff_image.png
+          identify diff_image.png
 
-          ## Write comment body
-          curl_result=$(curl -F "image=@\"$diff_image\"" "https://api.imgur.com/3/upload")
+          log 'Uploading diff_image.png...'
+          json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr) || continue
 
-          echo "Imgur result:"
-          echo "$curl_result"
-
-          comment_body+=$(jq -r --arg path "$map_path" '@html "<h3>\($path)</h3><img src=\"\(.data.link)\" /> <br />"' <<< "$curl_result")
+          log 'Generating HTML comment...'
+          html=$(jq -r --arg path "$map_path" 'if .data.link != null
+            then @html "<h3>\($path)</h3><img src=\"\(.data.link)\" /> <br />"
+            elif has("errors") then .errors[].status | halt_error
+            else "Unexpected JSON structure!\n" | halt_error end' <<< "$json") || continue
+          comment_body+=$html
         done
 
         printf 'COMMENT_BODY=%s\n' "$comment_body" >> "$GITHUB_OUTPUT"
