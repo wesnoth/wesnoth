@@ -1591,7 +1591,7 @@ REPORT_GENERATOR(terrain_info, rc)
 			std::string side = std::to_string(owner_team.side());
 			
 			add_image(cfg, flag_icon + mods, tooltip);
-			cfg.append(text_report(side, tooltip));
+			add_text(cfg, side, tooltip);
 		}
 	}
 
