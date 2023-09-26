@@ -76,6 +76,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
 	, over_route_(false)
 	, reachmap_invalid_(false)
 	, show_partial_move_(false)
+	, teleport_action_(false)
 	, preventing_units_highlight_(false)
 {
 	singleton_ = this;
@@ -783,6 +784,53 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 	return gui().map_area().contains(x, y);
 }
 
+
+void mouse_handler::select_or_teleport(bool browse)
+{
+	// Load whiteboard partial moves
+	wb::future_map_if_active planned_unit_map;
+
+	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
+		lk->select_hex_callback(last_hex_);
+	}
+
+	unit_map::iterator clicked_u = find_unit(last_hex_);
+	unit_map::iterator selected_u = find_unit(selected_hex_);
+
+	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
+	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+	) {
+		select_teleport_hex(last_hex_, false);
+	}
+}
+
+void mouse_handler::teleport_action(bool browse)
+{
+	// Lock whiteboard activation state to avoid problems due to
+	// its changing while an animation takes place.
+	wb::whiteboard_lock wb_lock = pc_.get_whiteboard()->get_activation_state_lock();
+
+	// we use the last registered highlighted hex
+	// since it's what update our global state
+	map_location hex = last_hex_;
+
+}
+
+void mouse_handler::select_teleport_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event)
+{
+	selected_hex_ = hex;
+	gui().select_hex(selected_hex_);
+	gui().clear_attack_indicator();
+	//gui().set_route(nullptr);
+	show_partial_move_ = false;
+	preventing_units_highlight_ = true;
+	teleport_action_ = true;
+
+	wb::future_map_if_active planned_unit_map; // lasts for whole method
+
+	map_location src = selected_hex_;
+}
+
 void mouse_handler::select_or_action(bool browse)
 {
 	if(!pc_.get_map().on_board(last_hex_)) {
@@ -800,13 +848,18 @@ void mouse_handler::select_or_action(bool browse)
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 
-	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
-	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
-	) {
-		select_hex(last_hex_, false);
+	if(teleport_action_){
+		teleport_action(browse);
 	} else {
-		move_action(browse);
+		if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
+		(clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+		) {
+			select_hex(last_hex_, false);
+		} else {
+			move_action(browse);
+		}
 	}
+	teleport_action_ = false;
 }
 
 void mouse_handler::move_action(bool browse)

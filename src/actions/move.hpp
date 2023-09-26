@@ -100,6 +100,7 @@ private:
  */
 game_events::pump_result_t get_village(const map_location& loc, int side, bool *time_bonus = nullptr, bool fire_event = true);
 
+
 /**
  * Moves a unit across the board.
  * And enters the synced context.

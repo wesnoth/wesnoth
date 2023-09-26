@@ -135,6 +135,10 @@ void play_controller::hotkey_handler::select_and_action() {
 	mouse_handler_.select_or_action(browse());
 }
 
+void play_controller::hotkey_handler::select_and_teleport(){
+	mouse_handler_.select_or_teleport(browse());
+}
+
 void play_controller::hotkey_handler::touch_hex() {
 	auto touched_hex = gui()->mouseover_hex();
 	mouse_handler_.touch_action(touched_hex, false);
@@ -144,11 +148,20 @@ void play_controller::hotkey_handler::move_action(){
 	mouse_handler_.move_action(browse());
 }
 
+void play_controller::hotkey_handler::teleport_action(){
+	mouse_handler_.teleport_action(browse());
+}
+
+
 void play_controller::hotkey_handler::deselect_hex(){
 	mouse_handler_.deselect_hex();
 }
 void play_controller::hotkey_handler::select_hex(){
 	mouse_handler_.select_hex(gui()->mouseover_hex(), false);
+}
+
+void play_controller::hotkey_handler::select_teleport_hex(){
+	mouse_handler_.select_teleport_hex(gui()->mouseover_hex(), false);
 }
 
 void play_controller::hotkey_handler::right_mouse_click(){

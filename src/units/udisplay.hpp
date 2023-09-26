@@ -108,6 +108,9 @@ void unit_sheath_weapon( const map_location& loc, unit_ptr u=unit_ptr(), const_a
 	unit_ptr winner = unit_ptr());
 
 
+void unit_teleport_help(const map_location& start_loc, unit& u, const map_location& end_loc);
+
+
 /**
  *  Make the unit on tile 'a' attack the unit on tile 'b'.
  *

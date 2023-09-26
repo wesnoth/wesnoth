@@ -517,6 +517,11 @@ void move_unit(const std::vector<map_location>& path, unit_ptr u,
 	mover.finish(u, dir);
 }
 
+void unit_teleport_help(const map_location& start_loc, unit& u, const map_location& end_loc)
+{
+	display* disp = display::get_singleton();
+	teleport_unit_between(start_loc, end_loc, u, *disp);
+}
 
 void reset_helpers(const unit *attacker,const unit *defender);
 

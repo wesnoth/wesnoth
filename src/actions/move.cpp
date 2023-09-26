@@ -209,6 +209,8 @@ namespace { // Private helpers for move_unit()
 		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
 
+		void teleport(); // TODO: FIX
+
 		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
 		{ return std::vector<map_location>(begin_, expected_end_); }
@@ -1011,6 +1013,16 @@ namespace { // Private helpers for move_unit()
 		// event_mutated_ does not get unset, regardless of other reasons
 		// for stopping, but we do save its current value.
 		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
+	}
+
+
+	void unit_mover::teleport()
+	{
+		// Prepare to animate.
+		unit_display::unit_mover animator(route_, true);
+		animator.start(move_it_.get_shared_ptr());
+
+		//bool new_animation = do_move(begin_, expected_end)
 	}
 
 
