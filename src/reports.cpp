@@ -1575,6 +1575,26 @@ REPORT_GENERATOR(terrain_info, rc)
 			continue;
 		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res, terrain_name);
 	}
+
+	if (map.is_village(mouseover_hex)) {
+		int owner = rc.dc().village_owner(mouseover_hex);
+		if (owner != 0) {
+			const team &owner_team = rc.dc().get_team(owner);
+
+			std::string flag_icon = owner_team.flag_icon();
+			std::string old_rgb = game_config::flag_rgb;
+			std::string new_rgb = team::get_side_color_id(owner_team.side());
+			std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
+			if (flag_icon.empty())
+				flag_icon = game_config::images::flag_icon;
+			std::string tooltip = side_tooltip(owner_team);
+			std::string side = std::to_string(owner_team.side());
+			
+			add_image(cfg, flag_icon + mods, tooltip);
+			cfg.append(text_report(side, tooltip));
+		}
+	}
+
 	return cfg;
 }
 
