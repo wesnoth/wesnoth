@@ -884,7 +884,7 @@ void game::process_message(simple_wml::document& data, player_iterator user)
 	const simple_wml::string_span& msg = (*message)["message"];
 	chat_message::truncate_message(msg, *message);
 	// Save chat as history to be sent to newly joining players
-	chat_history_.push_back(std::move(data.clone()));
+	chat_history_.push_back(data.clone());
 	send_data(data, user);
 }
 
