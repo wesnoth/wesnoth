@@ -124,7 +124,7 @@ void set_about(const game_config_view& cfg)
 
 	images_campaigns.clear();
 	images_general.clear();
-
+	/*
 	//
 	// Parse all [credits_group] tags
 	//
@@ -157,7 +157,7 @@ void set_about(const game_config_view& cfg)
 		if(campaign.has_child("about")) {
 			parsed_credits_data.emplace_back(campaign, true);
 		}
-	}
+	}*/
 }
 
 } // end namespace about
