@@ -1559,6 +1559,14 @@ public:
 		return halo_.value_or("");
 	}
 
+	const std::vector<std::string> halo_or_icon_abilities(const std::string& image_type) const;
+
+	/** Get the [halo] abilities halo image(s). */
+	const std::vector<std::string> halo_abilities() const
+	{
+		return halo_or_icon_abilities("halo");
+	}
+
 	/** Set the unit's halo image. */
 	void set_image_halo(const std::string& halo);
 
@@ -1602,6 +1610,11 @@ public:
 		return overlays_;
 	}
 
+	/** Get the [overlay] ability overlay images. */
+	const std::vector<std::string> overlays_abilities() const
+	{
+		return halo_or_icon_abilities("overlay");
+	}
 	/**
 	 * Color for this unit's *current* hitpoints.
 	 *

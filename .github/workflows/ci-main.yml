@@ -17,20 +17,28 @@ jobs:
         CLICOLOR_FORCE: 1
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v3, with: { submodules: "recursive", fetch-depth: "0" } }
 
+      - name: Set git safe directory
+        if: success() || failure()
+        run: |
+          git config --global --add safe.directory '*'
       - name: Check for invalid characters
+        if: success() || failure()
         run: |
           ./utils/CI/check_utf8.sh
           ./utils/CI/utf8_bom_dog.sh
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: |
-          git config --global --add safe.directory '*'
           ./utils/CI/fix_whitespace.sh; git status; [ "$(git status --short | wc -l)" = 0 ]
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
+      - name: Copyright check # doxygen creates some image files, so it needs to be done after the copyright check
+        if: success() || failure()
+        run: |
+          ./update_copyrights --output=""
       - name: Doxygen check
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
@@ -274,7 +282,7 @@ jobs:
       - { uses: actions/checkout@v3, with: { submodules: "recursive" } }
 
       - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
-        run: echo IMAGE_VERSION=%ImageVersion% >> %GITHUB_ENV%
+        run: echo IMAGE_VERSION=%ImageVersion%>> %GITHUB_ENV%
 
       - name: Cache object files
         id: windows-cache

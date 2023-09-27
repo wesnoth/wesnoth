@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-17 03:32 UTC\n"
-"PO-Revision-Date: 2023-04-17 07:46+1000\n"
+"PO-Revision-Date: 2023-09-18 14:03+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -2372,17 +2372,6 @@ msgstr "Dune Sunderer"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Among the many different type of Dune horsemen, there are those who most "
-#| "enjoy the frantic melee at the heart of battle. Bearing short-ranged "
-#| "maces, these sunderers are sturdy, robust warriors who have both the "
-#| "disposition and skill to survive multiple skirmishes. Though not "
-#| "particularly creative or special warriors, such a rider is not impotent "
-#| "in any way  — even a small group of sunderers is powerful enough to "
-#| "breach most enemy lines through sheer force. In a situation that requires "
-#| "it, these horsemen also possess enough skill at archery to weaken enemy "
-#| "forces or pick off fleeing stragglers."
 msgid ""
 "Among the many different type of Dune horsemen, there are those who most "
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
@@ -5803,13 +5792,17 @@ msgid ""
 "approaches an ant egg or breaches the shell of an adjacent brood member will "
 "spur that ant to hatch as a fully formed adult."
 msgstr ""
+"The giant ant eggs have a tough, leathery shell that takes a dedicated "
+"effort to break through. While this shell makes it difficult to know the "
+"status of the inhabitant from the outside, it does not obscure the outside "
+"world from the rapidly developing ant larva within. Any predator or foe who "
+"approaches an ant egg or breaches the shell of an adjacent brood member will "
+"spur that ant to hatch as a fully formed adult."
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:9
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Egg"
-msgstr "Giant Ant"
+msgstr "Giant Ant Egg"
 
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
@@ -5820,13 +5813,16 @@ msgid ""
 "any suitable location.\n"
 "\n"
 msgstr ""
+"Giant Ants are common in almost any environment, and the eggs from which "
+"they emerge can often be found in caves or any sheltered environment. Most "
+"eggs come from one of the colony queens, but the workers transport them to "
+"any suitable location.\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Egg"
-msgstr "Fire Ant"
+msgstr "Fire Ant Egg"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
@@ -5837,6 +5833,11 @@ msgid ""
 "location.\n"
 "\n"
 msgstr ""
+"In large numbers, Fire Ants can be a real menace to other races and those "
+"threatening numbers start with their eggs. Most Fire Ant eggs come from one "
+"of the colony queens, but the workers transport them to any suitable "
+"location.\n"
+"\n"
 
 #. [unit_type]: id=Fire Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:11
@@ -5868,10 +5869,8 @@ msgstr "fire"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:11
-#, fuzzy
-#| msgid "Fire Ant"
 msgid "Fire Ant Queen"
-msgstr "Fire Ant"
+msgstr "Fire Ant Queen"
 
 #. [unit_type]: id=Fire Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Fire_Queen.cfg:52
@@ -5879,6 +5878,8 @@ msgid ""
 "Fire ants possess fierce fangs and an unusual ability to generate fire, and "
 "the queen is no different."
 msgstr ""
+"Fire ants possess fierce fangs and an unusual ability to generate fire, and "
+"the queen is no different."
 
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
@@ -5907,10 +5908,8 @@ msgstr ""
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:4
-#, fuzzy
-#| msgid "Giant Ant"
 msgid "Giant Ant Queen"
-msgstr "Giant Ant"
+msgstr "Giant Ant Queen"
 
 #. [unit_type]: id=Giant Ant Queen, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:19
@@ -5924,6 +5923,14 @@ msgid ""
 "can expect a very short continued existence - and if their flesh is warm and "
 "nourishing, they can host an ant egg."
 msgstr ""
+"Giant Ants are common in almost any environment, from caverns deep under the "
+"earth to the tops of tall mountains. The queens are not royalty as many "
+"other races would understand, but they are the heart of any functioning nest "
+"and will be defended at all costs. As the nest core, they must be capable "
+"tacticians, and as a target of rival nests, they must also be deft warriors. "
+"The typical human or orc that finds an audience with an Ant Queen can expect "
+"a very short continued existence - and if their flesh is warm and "
+"nourishing, they can host an ant egg."
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:4
@@ -7947,19 +7954,13 @@ msgstr "Saurian Spearthrower"
 
 #. [unit_type]: id=Saurian Spearthrower, race=lizard
 #: data/core/units/saurians/Spearthrower.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Some saurians  with particularly good aim prefer to aid their allies from "
-#| "the backlines rather than to infiltrate enemy formations. Their deadly "
-#| "spear throwing skills allow them to support other saurian warriors from "
-#| "afar."
 msgid ""
 "Some saurians with particularly good aim prefer to aid their allies from the "
 "backlines rather than to infiltrate enemy formations. Their deadly spear "
 "throwing skills allow them to support other saurian warriors from afar."
 msgstr ""
 "Some saurians with particularly good aim prefer to aid their allies from the "
-"rear rather than infiltrating enemy formations. Their deadly spear throwing "
+"rear rather than infiltrate enemy formations. Their deadly spear throwing "
 "skills allow them to support other saurian warriors from afar."
 
 #. [unit_type]: id=Great Troll, race=troll
@@ -8184,10 +8185,8 @@ msgstr ""
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:143
 #: data/core/units/undead/Corpse_Walking.cfg:144
-#, fuzzy
-#| msgid "wc_variation^Rat"
 msgid "wc_variation^Ant"
-msgstr "Rat"
+msgstr "Ant"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:159
