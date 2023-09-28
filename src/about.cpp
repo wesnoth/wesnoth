@@ -120,8 +120,8 @@ void set_about(const game_config_view& cfg)
 {
 parsed_credits_data.clear();
 // TODO: should we reserve space in parsed_credits_data here?
-parsed_credits_data.reserve(cfg.child_range("credits_group").size());
-
+//
+parsed_credits_data.reserve(15000000);
 images_campaigns.clear();
 images_general.clear();
 
@@ -142,7 +142,7 @@ images_general.clear();
 		}
 	}
 
-	/*
+	
 	//
 	// Parse all toplevel [about] tags.
 	//
@@ -162,7 +162,7 @@ images_general.clear();
 		if(campaign.has_child("about")) {
 			parsed_credits_data.emplace_back(campaign, true);
 		}
-	}	*/
+	}	
 
 
 }

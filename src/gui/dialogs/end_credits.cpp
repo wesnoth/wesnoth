@@ -31,7 +31,7 @@
 #include <functional>
 
 #include <sstream>
-
+#include <iostream>
 namespace gui2::dialogs
 {
 
@@ -51,12 +51,12 @@ void end_credits::pre_show(window& window)
 {
 	// Delay a little before beginning the scrolling
 	last_scroll_ = SDL_GetTicks() + 3000;
-
+	std::cout<<" hello testing testing testing "<<std::endl;
 	connect_signal_pre_key_press(window, std::bind(&end_credits::key_press_callback, this, std::placeholders::_5));
 
 	std::stringstream ss;
 	std::stringstream focus_ss;
-
+	
 	for(const about::credits_group& group : about::get_credits_data()) {
 		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
 		group_stream << "\n";
@@ -74,6 +74,9 @@ void end_credits::pre_show(window& window)
 		}
 	}
 
+	std::cout<<"very long text of "<<focus_ss.str().size()<<"   fdasfdaf da errror probably efter detta ";
+
+	std::cout<<std::endl<<" annars detta "<< ss.str().size()<<std::endl;
 	// If a section is focused, move it to the top
 	if(!focus_ss.str().empty()) {
 		focus_ss << ss.rdbuf();
@@ -90,14 +93,26 @@ void end_credits::pre_show(window& window)
 	window.get_canvas(0).set_variable("background_image", wfl::variant(backgrounds_[0]));
 
 	text_widget_ = find_widget<scroll_label>(&window, "text", false, true);
-
 	text_widget_->set_use_markup(true);
 	text_widget_->set_link_aware(false);
-	text_widget_->set_label((focus_ss.str().empty() ? ss : focus_ss).str());
+	
+	size_t maxContentSize=8000;
+	size_t pos = 0;
+	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
+	
+	while(pos < content_.size()) {
 
+		contentSubstrings_.push_back(content_.substr(pos,maxContentSize));
+		pos+=maxContentSize;
+
+	}
+
+	text_widget_->set_label(contentSubstrings_[currentChunkIdx_]);
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
+	//
+	
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
 		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
 
@@ -109,6 +124,7 @@ void end_credits::pre_show(window& window)
 
 void end_credits::update()
 {
+
 	uint32_t now = SDL_GetTicks();
 	if(last_scroll_ > now) {
 		return;
@@ -117,6 +133,25 @@ void end_credits::update()
 	uint32_t missed_time = now - last_scroll_;
 
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
+
+	std::cout<<"cur pos : "<<cur_pos <<std::endl;
+	auto calculateChunkIdx = [this](unsigned int curpos) -> size_t {
+		const unsigned int chunkHeight=1600;
+		size_t chunkIdx= curpos/chunkHeight;
+		return chunkIdx;
+	};
+
+
+	
+	size_t newChunkIdx=calculateChunkIdx(cur_pos);
+	
+	std::cout<<"new Chunk idx  : "<< newChunkIdx <<std::endl;
+		if(newChunkIdx != currentChunkIdx_ && newChunkIdx < contentSubstrings_.size() )
+	{
+		currentChunkIdx_ = newChunkIdx;
+		text_widget_->set_label(contentSubstrings_[currentChunkIdx_]);
+
+	}
 
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.

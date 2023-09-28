@@ -57,6 +57,10 @@ private:
 	int scroll_speed_;
 
 	uint32_t last_scroll_;
+	size_t currentChunkIdx_=0;
+	std::string content_;
+	std::vector<std::string> contentSubstrings_;
+	
 };
 
 } // namespace dialogs

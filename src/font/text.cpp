@@ -37,6 +37,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/functional/hash_fwd.hpp>
 
+#include <iostream>
 #include <cassert>
 #include <cstring>
 #include <stdexcept>
@@ -727,8 +728,11 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const uns
 	std::unique_ptr<cairo_surface_t, std::function<void(cairo_surface_t*)>> cairo_surface(
 		cairo_image_surface_create_for_data(buffer, format, viewport.w, viewport.h, stride), cairo_surface_destroy);
 	std::unique_ptr<cairo_t, std::function<void(cairo_t*)>> cr(cairo_create(cairo_surface.get()), cairo_destroy);
-
+	
+	
 	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
+
+	//	std::cout<<"do we enter this hello ....  ..... \n"<<std::endl;
 		throw std::length_error("Text is too long to render");
 	}
 
@@ -794,6 +798,8 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 	// The size of the viewport should already provide a far lower limit on the
 	// maximum size, but this is left in as a sanity check.
 	if(viewport.h > std::numeric_limits<int>::max() / stride) {
+		
+		std::cout<<"THIS IS the ERROR 801 " << std::endl;
 		throw std::length_error("Text is too long to render");
 	}
 
@@ -961,7 +967,7 @@ std::vector<std::string> pango_text::get_lines() const
 pango_text& get_text_renderer()
 {
 	static pango_text text_renderer;
-	return text_renderer;
+return text_renderer;
 }
 
 int get_max_height(unsigned size, font::family_class fclass, pango_text::FONT_STYLE style)
