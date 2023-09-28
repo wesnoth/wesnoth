@@ -22,7 +22,7 @@
 #include "serialization/string_utils.hpp"
 
 #include <map>
-
+#include <iostream>
 /**
  * @namespace about
  * Display credits %about all contributors.
@@ -45,9 +45,9 @@ void gather_images(const config& from, std::vector<std::string>& to)
 } // namespace
 
 credits_group::credits_group(const config& cfg, bool is_campaign_credits)
-	: sections()
-	, id()
-	, header()
+: sections()
+, id()
+, header()
 {
 	if(is_campaign_credits) {
 		id = cfg["id"].str();
@@ -105,31 +105,35 @@ std::optional<credits_data::const_iterator> get_campaign_credits(const std::stri
 
 std::vector<std::string> get_background_images(const std::string& campaign)
 {
-	if(campaign.empty()) {
-		return images_general;
-	}
-
-	if(const auto it = images_campaigns.find(campaign); it != images_campaigns.cend()) {
-		return it->second;
-	}
-
+if(campaign.empty()) {
 	return images_general;
+}
+
+if(const auto it = images_campaigns.find(campaign); it != images_campaigns.cend()) {
+	return it->second;
+}
+
+return images_general;
 }
 
 void set_about(const game_config_view& cfg)
 {
-	parsed_credits_data.clear();
+parsed_credits_data.clear();
+// TODO: should we reserve space in parsed_credits_data here?
+parsed_credits_data.reserve(cfg.child_range("credits_group").size());
 
-	// TODO: should we reserve space in parsed_credits_data here?
+images_campaigns.clear();
+images_general.clear();
 
-	images_campaigns.clear();
-	images_general.clear();
-	/*
+
+//std::cout<<" hello lhlegajsefgkjdakjfdafj adf ad kfa djaf k " << cfg.child_range("credits_group").size() << " end " << std::endl;	
 	//
 	// Parse all [credits_group] tags
 	//
 	for(const config& group : cfg.child_range("credits_group")) {
 		if(group.has_child("about")) {
+//			parsed_credits_data.push_back({group,false});	
+			//std::cout<<"lägg in sak har <<"<<std::endl;
 			parsed_credits_data.emplace_back(group, false);
 
 			// Not in the credits_group since we don't want to inadvertently
@@ -138,6 +142,7 @@ void set_about(const game_config_view& cfg)
 		}
 	}
 
+	/*
 	//
 	// Parse all toplevel [about] tags.
 	//
@@ -157,7 +162,9 @@ void set_about(const game_config_view& cfg)
 		if(campaign.has_child("about")) {
 			parsed_credits_data.emplace_back(campaign, true);
 		}
-	}*/
+	}	*/
+
+
 }
 
 } // end namespace about
