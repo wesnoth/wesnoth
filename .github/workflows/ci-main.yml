@@ -17,7 +17,7 @@ jobs:
         CLICOLOR_FORCE: 1
 
     steps:
-      - { uses: actions/checkout@v3, with: { submodules: "recursive", fetch-depth: "0" } }
+      - uses: actions/checkout@v4
 
       - name: Set git safe directory
         if: success() || failure()
@@ -34,13 +34,17 @@ jobs:
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
-      - name: Copyright check # doxygen creates some image files, so it needs to be done after the copyright check
-        if: success() || failure()
-        run: |
-          ./update_copyrights --output=""
       - name: Doxygen check
         if: success() || failure()
         run: doxygen doc/doxygen/Doxyfile
+
+  copyright: # check takes a bit longer and does not need to run in docker
+    runs-on: ubuntu-latest
+    steps:
+      - { uses: actions/checkout@v4, with: { fetch-depth: 0 } }
+
+      - name: Copyright check
+        run: ./update_copyrights --output=
 
   ubuntu:
     strategy:
