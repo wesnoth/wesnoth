@@ -100,7 +100,7 @@ void end_credits::pre_show(window& window)
 	
 	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
 	
-
+	windowH=window.get_height();
 	auto calcMax=[]() -> size_t {
 		const size_t pixelChar = 5;
 		const size_t maxHeight = 6400;
@@ -108,36 +108,48 @@ void end_credits::pre_show(window& window)
 		return maxChunkSize;
 	};
 
-	auto populateChunks=[this](size_t maxChunkSize) -> void {
+
+	auto populateChunks = [this](size_t maxChunkSize) -> void {
 		size_t startPos = 0;
 		while (startPos < content_.size()) {
 			size_t endPos = startPos + maxChunkSize;
 			if (endPos >= content_.size()) {
 				endPos = content_.size();
 			} else {
-				size_t tagPos = content_.rfind('<', endPos);
-				if (tagPos != std::string::npos && tagPos >= startPos) {
-					size_t tagEndPos = content_.find('>', tagPos);
-					if (tagEndPos != std::string::npos && tagEndPos > endPos) {
-						endPos = tagPos;
+				// Look for the closest newline or closing tag before endPos
+				size_t newlinePos = content_.rfind('\n', endPos);
+				size_t tagClosePos = content_.rfind("</span>", endPos);
+				endPos = std::max(newlinePos, tagClosePos);
+
+				// If neither newline nor closing tag is found, fallback to the original logic
+				if (endPos == std::string::npos) {
+					size_t tagPos = content_.rfind('<', endPos);
+					if (tagPos != std::string::npos && tagPos >= startPos) {
+						size_t tagEndPos = content_.find('>', tagPos);
+						if (tagEndPos != std::string::npos && tagEndPos > endPos) {
+							endPos = tagPos;
+						}
 					}
 				}
 			}
 			contentSubstrings_.push_back(content_.substr(startPos, endPos - startPos));
-			std::cout<<contentSubstrings_.size() << " size av vector"<< std::endl;
+			std::cout << contentSubstrings_.size() << " size of vector" << std::endl;
 
 			startPos = endPos;
 		}
 	};
 
+
+
 	size_t maxChunkSize = calcMax();
 	populateChunks(maxChunkSize);
 	
-
-
-	//std::cout<<std::endl<<contentSubstrings_.at(0)<<std::endl; //contentSubstrings_.size()-1) <<std::endl;
 	
 
+	//std::cout<<std::endl<<contentSubstrings_.at(0)<<std::endl; //contentSubstrings_.size()-1) <<std::endl;
+	//std::cout<<"print 2 "<<std::endl;
+	//std::cout<<std::endl<<contentSubstrings_.at(1)<<std::endl; //contentSubstrings_.size()-1) <<std::endl;
+	
 
 /*
 	for(size_t i=0; i< contentSubstrings_.size(); ++i)
@@ -164,12 +176,16 @@ void end_credits::pre_show(window& window)
 		contentSubstrings_.push_back(content_.substr(pos, endPos - pos));
 		pos = endPos;
 	}*/
-
-
+	const size_t max_per_view=3;
+	slidingContent_.clear();
+	for(size_t i=0; i<max_per_view; ++i){
+		slidingContent_+=contentSubstrings_.at(i);
+	
+	}
 
 	
-
-	text_widget_->set_label(contentSubstrings_[currentChunkIdx_]);
+	//concat 3 substring
+	text_widget_->set_label(slidingContent_);
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
@@ -234,8 +250,20 @@ void end_credits::update()
 
 	std::cout<< " cur_pos + needed_dist "<< cur_pos + needed_dist << " chunkIndex " << "1" <<std::endl;	
 	
+
 // logic needed
 	
+
+	auto mod=[this](unsigned int cur_pos) -> void{
+		if(cur_pos == 900)
+		{	
+			slidingContent_.erase(0,contentSubstrings_[0].length());
+			slidingContent_+=(contentSubstrings_[1]);
+			text_widget_->set_label(slidingContent_);
+		}
+	};
+
+	mod(cur_pos);
 
 	
 
