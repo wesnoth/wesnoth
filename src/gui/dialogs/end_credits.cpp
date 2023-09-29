@@ -132,6 +132,8 @@ void end_credits::pre_show(window& window)
 
 	size_t maxChunkSize = calcMax();
 	populateChunks(maxChunkSize);
+	
+
 
 	//std::cout<<std::endl<<contentSubstrings_.at(0)<<std::endl; //contentSubstrings_.size()-1) <<std::endl;
 	
@@ -144,7 +146,6 @@ void end_credits::pre_show(window& window)
 	
 
 
-	/*
 	const unsigned int maxChunkSize = 8000;
 	size_t pos = 0;
 	while (pos < content_.size()) {
@@ -194,8 +195,11 @@ void end_credits::update()
 	uint32_t missed_time = now - last_scroll_;
 	
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
+	
 
-	size_t scaled_cur_pos = static_cast<size_t>(cur_pos) * 15;
+
+
+	/*size_t scaled_cur_pos = static_cast<size_t>(cur_pos) * 15;
 
 	size_t maxChunkSize = 4000;
 	size_t newChunkIndex = scaled_cur_pos / maxChunkSize;
@@ -204,7 +208,8 @@ void end_credits::update()
 			currentChunkIdx_ = newChunkIndex;
 			std::string newChunk = contentSubstrings_[currentChunkIdx_];
 			text_widget_->set_label(newChunk);
-	}
+	}*/
+
 /*
 	auto calculateChunkIdx = [this](unsigned int curpos) -> size_t {
 		const unsigned int chunkHeight=3200;
@@ -227,6 +232,14 @@ void end_credits::update()
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
 
+	std::cout<< " cur_pos + needed_dist "<< cur_pos + needed_dist << " chunkIndex " << "1" <<std::endl;	
+	
+// logic needed
+	
+
+	
+
+
 	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 
 	last_scroll_ = now;
@@ -241,6 +254,8 @@ void end_credits::key_press_callback(const SDL_Keycode key)
 	if(key == SDLK_DOWN && scroll_speed_ > 50) {
 		scroll_speed_ >>= 1;
 	}
+}
+//end dialogs
 }
 
 
