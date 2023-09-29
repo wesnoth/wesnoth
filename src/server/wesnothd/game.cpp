@@ -1762,10 +1762,7 @@ void game::send_chat_history(player_iterator player) const
 	}
 	try {
 		for(auto& h : chat_history_) {
-			std::string buf = h->output();
-			auto doc = std::make_unique<simple_wml::document>(buf.c_str(), simple_wml::INIT_STATIC);
-			doc->compress();
-			server.send_to_player(player, *doc);
+			server.send_to_player(player, *h);
 		}
 	} catch(const simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message;
