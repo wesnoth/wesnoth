@@ -47,10 +47,10 @@ private:
 	void timer_callback();
 	void key_press_callback(const SDL_Keycode key);
 
+	
 	const std::string& focus_on_;
 
 	std::vector<std::string> backgrounds_;
-
 	scroll_label* text_widget_;
 
 	// The speed of auto-scrolling, specified as px/s

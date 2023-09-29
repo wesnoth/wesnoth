@@ -57,6 +57,7 @@ void end_credits::pre_show(window& window)
 	std::stringstream ss;
 	std::stringstream focus_ss;
 	
+	
 	for(const about::credits_group& group : about::get_credits_data()) {
 		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
 		group_stream << "\n";
@@ -73,6 +74,7 @@ void end_credits::pre_show(window& window)
 			}
 		}
 	}
+
 
 	std::cout<<"very long text of "<<focus_ss.str().size()<<"   fdasfdaf da errror probably efter detta ";
 
@@ -96,16 +98,75 @@ void end_credits::pre_show(window& window)
 	text_widget_->set_use_markup(true);
 	text_widget_->set_link_aware(false);
 	
-	size_t maxContentSize=8000;
-	size_t pos = 0;
 	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
 	
-	while(pos < content_.size()) {
 
-		contentSubstrings_.push_back(content_.substr(pos,maxContentSize));
-		pos+=maxContentSize;
+	auto calcMax=[]() -> size_t {
+		const size_t pixelChar = 5;
+		const size_t maxHeight = 6400;
+		const size_t maxChunkSize = maxHeight /pixelChar;
+		return maxChunkSize;
+	};
 
+	auto populateChunks=[this](size_t maxChunkSize) -> void {
+		size_t startPos = 0;
+		while (startPos < content_.size()) {
+			size_t endPos = startPos + maxChunkSize;
+			if (endPos >= content_.size()) {
+				endPos = content_.size();
+			} else {
+				size_t tagPos = content_.rfind('<', endPos);
+				if (tagPos != std::string::npos && tagPos >= startPos) {
+					size_t tagEndPos = content_.find('>', tagPos);
+					if (tagEndPos != std::string::npos && tagEndPos > endPos) {
+						endPos = tagPos;
+					}
+				}
+			}
+			contentSubstrings_.push_back(content_.substr(startPos, endPos - startPos));
+			std::cout<<contentSubstrings_.size() << " size av vector"<< std::endl;
+
+			startPos = endPos;
+		}
+	};
+
+	size_t maxChunkSize = calcMax();
+	populateChunks(maxChunkSize);
+
+	//std::cout<<std::endl<<contentSubstrings_.at(0)<<std::endl; //contentSubstrings_.size()-1) <<std::endl;
+	
+
+
+/*
+	for(size_t i=0; i< contentSubstrings_.size(); ++i)
+	{
 	}
+	
+
+
+	/*
+	const unsigned int maxChunkSize = 8000;
+	size_t pos = 0;
+	while (pos < content_.size()) {
+		size_t endPos = pos + maxChunkSize;
+		if (endPos >= content_.size()) {
+			endPos = content_.size();
+		} else {
+			size_t nextClosePos = content_.find("</span>", endPos);
+			if (nextClosePos != std::string::npos) {
+				endPos = nextClosePos + 7; // 7 is the length of "</span>"
+			} else {
+				endPos = content_.size();
+			}
+		}
+		// Push the valid chunk to contentChunks
+		contentSubstrings_.push_back(content_.substr(pos, endPos - pos));
+		pos = endPos;
+	}*/
+
+
+
+	
 
 	text_widget_->set_label(contentSubstrings_[currentChunkIdx_]);
 	// HACK: always hide the scrollbar, even if it's needed.
@@ -131,27 +192,36 @@ void end_credits::update()
 	}
 
 	uint32_t missed_time = now - last_scroll_;
-
+	
 	unsigned int cur_pos = text_widget_->get_vertical_scrollbar_item_position();
 
-	std::cout<<"cur pos : "<<cur_pos <<std::endl;
+	size_t scaled_cur_pos = static_cast<size_t>(cur_pos) * 15;
+
+	size_t maxChunkSize = 4000;
+	size_t newChunkIndex = scaled_cur_pos / maxChunkSize;
+		
+	if(newChunkIndex != currentChunkIdx_ && newChunkIndex < contentSubstrings_.size()){
+			currentChunkIdx_ = newChunkIndex;
+			std::string newChunk = contentSubstrings_[currentChunkIdx_];
+			text_widget_->set_label(newChunk);
+	}
+/*
 	auto calculateChunkIdx = [this](unsigned int curpos) -> size_t {
-		const unsigned int chunkHeight=1600;
+		const unsigned int chunkHeight=3200;
 		size_t chunkIdx= curpos/chunkHeight;
-		return chunkIdx;
+		return std::min(chunkIdx,contentSubstrings_.size() -1);
 	};
 
-
-	
 	size_t newChunkIdx=calculateChunkIdx(cur_pos);
-	
-	std::cout<<"new Chunk idx  : "<< newChunkIdx <<std::endl;
-		if(newChunkIdx != currentChunkIdx_ && newChunkIdx < contentSubstrings_.size() )
+	if(newChunkIdx != currentChunkIdx_)
 	{
 		currentChunkIdx_ = newChunkIdx;
+		std::string newChunk = getChunkByIndex(content_,9500,currentChunkIdx_);
+		text_widget_->set_use_markup(true);
 		text_widget_->set_label(contentSubstrings_[currentChunkIdx_]);
 
 	}
+*/	
 
 	// Calculate how far the text should have scrolled by now
 	// The division by 1000 is to convert milliseconds to seconds.
@@ -173,4 +243,4 @@ void end_credits::key_press_callback(const SDL_Keycode key)
 	}
 }
 
-} // namespace dialogs
+
