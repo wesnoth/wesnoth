@@ -84,4 +84,14 @@ BOOST_AUTO_TEST_CASE(test_int_add_sub_filter)
 	BOOST_ASSERT(int_matches_if_present_or_negative(sub_2_to_4, add_minus_3, "sub", "add"));
 }
 
+BOOST_AUTO_TEST_CASE(test_without_attribute_filter)
+{
+	config add_3 {"add", 3};
+	config value_3 {"value", 3};
+
+	BOOST_ASSERT(!int_matches_if_present(value_3, add_3, "value"));
+	BOOST_ASSERT(int_matches_if_present(value_3, add_3, "value", 3));
+	BOOST_ASSERT(!int_matches_if_present_or_negative(add_3, value_3, "add", "sub"));
+}
+
 BOOST_AUTO_TEST_SUITE_END()

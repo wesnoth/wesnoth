@@ -1435,7 +1435,7 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!bool_matches_if_present(filter, cfg, "affect_self", true))
 		return false;
 
-	if(!bool_matches_if_present(filter, cfg, "affect_allies", true))
+	if(!bool_or_empty(filter, cfg, "affect_allies"))
 		return false;
 
 	if(!bool_matches_if_present(filter, cfg, "affect_enemies", false))
@@ -1460,8 +1460,28 @@ static bool matches_ability_filter(const config & cfg, const std::string& tag_na
 	if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 		return false;
 
-	if(!int_matches_if_present(filter, cfg, "value"))
-		return false;
+	if(!filter["value"].empty()){
+		bool has_other_key = (!cfg["add"].empty() || !cfg["sub"].empty() || !cfg["multiply"].empty() || !cfg["divide"].empty());
+		if(!has_other_key){
+			if(tag_name == "drains"){
+				if(!int_matches_if_present(filter, cfg, "value", 50)){
+					return false;
+				}
+			} else if(tag_name == "berserk"){
+				if(!int_matches_if_present(filter, cfg, "value", 1)){
+					return false;
+				}
+			} else if(tag_name == "heal_on_hit" || tag_name == "heals" || tag_name == "regenerate" || tag_name == "leadership"){
+				if(!int_matches_if_present(filter, cfg, "value" , 0)){
+					return false;
+				}
+			}
+		} else {
+			if(!int_matches_if_present(filter, cfg, "value")){
+				return false;
+			}
+		}
+	}
 
 	if(!int_matches_if_present_or_negative(filter, cfg, "add", "sub"))
 		return false;

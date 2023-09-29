@@ -32,7 +32,7 @@ bool utils::config_filters::bool_matches_if_present(const config& filter, const 
 bool utils::config_filters::string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def)
 {
-	if(filter[attribute].empty()) {
+	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
 
@@ -43,43 +43,81 @@ bool utils::config_filters::string_matches_if_present(
 
 bool utils::config_filters::unsigned_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
 {
-	if(filter[attribute].empty()) {
+	if(!filter.has_attribute(attribute)) {
 		return true;
+	}
+	if(!cfg.has_attribute(attribute)) {
+		return false;
 	}
 
 	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges_unsigned(filter[attribute].str()));
 }
 
-bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
+bool utils::config_filters::int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<int> def)
 {
-	if(filter[attribute].empty()) {
+	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
+	if(!cfg.has_attribute(attribute) && !def) {
+		return false;
+	}
 
-	return in_ranges<int>(cfg[attribute].to_int(0), utils::parse_ranges_int(filter[attribute].str()));
+	int value_def = def ? (*def) : 0;
+	return in_ranges<int>(cfg[attribute].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
 }
 
 bool utils::config_filters::int_matches_if_present_or_negative(
-	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite)
+	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, std::optional<int> def)
 {
-	if(int_matches_if_present(filter, cfg, attribute)) {
+	if(int_matches_if_present(filter, cfg, attribute, def)) {
 		return true;
 	}
 
-	// don't check for !cfg[opposite].empty(), as this assumes a default value of zero (similarly to
-	// int_matches_if_present)
-	if(cfg[attribute].empty()) {
-		return in_ranges<int>(-cfg[opposite].to_int(0), utils::parse_ranges_int(filter[attribute].str()));
+	// Check if cfg[opposite].empty() and have optional def.
+	// If def don't exist return false.
+	if(!cfg.has_attribute(attribute)) {
+		if(!cfg.has_attribute(opposite) && !def) {
+			return false;
+		}
+		int value_def = def ? (*def) : 0;
+		return in_ranges<int>(-cfg[opposite].to_int(value_def), utils::parse_ranges_int(filter[attribute].str()));
 	}
 
 	return false;
 }
 
-bool utils::config_filters::double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute)
+bool utils::config_filters::double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<double> def)
 {
-	if(filter[attribute].empty()) {
+	if(!filter.has_attribute(attribute)) {
+		return true;
+	}
+	if(!cfg.has_attribute(attribute) && !def) {
+		return false;
+	}
+
+	double value_def = def ? (*def) : 1;
+	return in_ranges<double>(cfg[attribute].to_double(value_def), utils::parse_ranges_real(filter[attribute].str()));
+}
+
+bool utils::config_filters::bool_or_empty(const config& filter, const config& cfg, const std::string& attribute)
+{
+	if(!filter.has_attribute(attribute)) {
 		return true;
 	}
 
-	return in_ranges<double>(cfg[attribute].to_double(1), utils::parse_ranges_real(filter[attribute].str()));
+	std::set<std::string> filter_attribute = utils::split_set(filter[attribute].str());
+	bool is_matches = false;
+	if(cfg.has_attribute(attribute)){
+		if(filter_attribute.count("yes") != 0 || filter_attribute.count("true") != 0){
+			is_matches = cfg[attribute].to_bool();
+		}
+		if(!is_matches && (filter_attribute.count("no") != 0 || filter_attribute.count("false") != 0)){
+			is_matches = !cfg[attribute].to_bool();
+		}
+	} else {
+		if(filter_attribute.count("none") != 0){
+			is_matches = true;
+		}
+	}
+	return is_matches;
 }

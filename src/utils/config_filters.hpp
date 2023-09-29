@@ -34,8 +34,14 @@ namespace utils::config_filters
  */
 bool bool_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, bool def);
 
-bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute);
-bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute);
+/**
+ * Checks whether the filter matches the value of @a cfg[@a attribute]. If @a cfg doesn't have that
+ * attribute, assume that an unset value is equivalent to @a def if exist, else value false is returned.
+ *
+ * Always returns true if the filter puts no restriction on the value of @a cfg[@a attribute].
+ */
+bool double_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<double> def = NULL);
+bool int_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, std::optional<int> def = NULL);
 
 /**
  * Restricts filters to only looking for values that are zero or more.
@@ -50,15 +56,17 @@ bool unsigned_matches_if_present(const config& filter, const config& cfg, const 
  * `add=1` or `sub=-1`; this assumes that code elsewhere has already checked that cfg contains at most one of those
  * keys.
  *
- * This only checks for the presence of @a attribute in the filter, so the caller should call this function a second
- * time, with @a attribute and @a opposite reversed.
+ * This only checks for the presence of @a attribute and @a opposite in the filter, so the caller should call this function a second
+ * time, with @a attribute and @a opposite reversed and if none of these attribute is here value false is returned.
  *
  * The function is named "negative" in case we later want to add a "reciprocal" for the "multiply"/"divide" pair.
  */
 bool int_matches_if_present_or_negative(
-	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite);
+	const config& filter, const config& cfg, const std::string& attribute, const std::string& opposite, std::optional<int> def = NULL);
 
 bool string_matches_if_present(
 	const config& filter, const config& cfg, const std::string& attribute, const std::string& def);
+
+bool bool_or_empty(const config& filter, const config& cfg, const std::string& attribute);
 
 } // namespace utils::config_filters
