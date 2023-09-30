@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-09-16 22:33-0500\n"
-"PO-Revision-Date: 2023-01-27 15:20+0800\n"
+"PO-Revision-Date: 2023-09-10 09:01+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -2407,7 +2407,7 @@ msgstr "档案"
 #, fuzzy
 #| msgid "Advancements"
 msgid "Achievements"
-msgstr "次升级"
+msgstr "升级"
 
 #. [label]
 #: data/gui/window/addon_auth.cfg:41
@@ -5772,14 +5772,12 @@ msgstr "选择状态球/小地图颜色"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
-msgstr "显示未移动状态球"
+msgstr "显示“尚未移动”状态球"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
-msgstr "显示部分移动状态球"
+msgstr "显示“已部分移动”状态球"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -5787,16 +5785,18 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移"
+"动”和“已完全移动”的颜色。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "用双色状态球代表脱战的单位"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:150
 msgid "Show moved orb"
-msgstr "显示已移动状态球"
+msgstr "显示“已移动”状态球"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:153
@@ -5806,7 +5806,7 @@ msgstr "显示友军状态球"
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
-msgstr ""
+msgstr "在友军回合中，用双色状态球来显示移动状态"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:154
@@ -5815,6 +5815,8 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"在你的友军的回合中，其单位有双色状态球。其中一半为代表友军的颜色，另一半则显"
+"示该单位是尚未移动、已部分移动还是已完全移动。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:156
@@ -7556,29 +7558,29 @@ msgstr "次征募"
 
 #: src/gui/dialogs/statistics_dialog.cpp:369
 msgid "Recalls"
-msgstr "次召回"
+msgstr "召回"
 
 #: src/gui/dialogs/statistics_dialog.cpp:370
 msgid "Advancements"
-msgstr "次升级"
+msgstr "升级"
 
 #: src/gui/dialogs/statistics_dialog.cpp:371
 msgid "Losses"
-msgstr "次损失"
+msgstr "损失"
 
 #: src/gui/dialogs/statistics_dialog.cpp:372
 msgid "Kills"
-msgstr "次击杀"
+msgstr "击杀"
 
 #: src/gui/dialogs/statistics_dialog.cpp:394
 #: src/gui/dialogs/statistics_dialog.cpp:401
 msgid "Inflicted"
-msgstr "点造成的伤害"
+msgstr "造成的伤害"
 
 #: src/gui/dialogs/statistics_dialog.cpp:407
 #: src/gui/dialogs/statistics_dialog.cpp:414
 msgid "Taken"
-msgstr "点受到的伤害"
+msgstr "受到的伤害"
 
 #: src/gui/dialogs/statistics_dialog.cpp:455
 msgid "$count|× $name"
@@ -8868,6 +8870,18 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有设定值。"
 
+#~ msgid "By:"
+#~ msgstr "作者："
+
+#~ msgid "Gold Left:"
+#~ msgstr "剩余金币："
+
+#~ msgid "Active Troops:"
+#~ msgstr "出战部队数："
+
+#~ msgid "Reserve Troops:"
+#~ msgstr "后备部队数："
+
 #~ msgid "Resolution:"
 #~ msgstr "分辨率："
 
@@ -8885,37 +8899,6 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 
 #~ msgid "Change the in-game theme"
 #~ msgstr "改变游戏中的主题"
-
-#~ msgid ""
-#~ "The key '$key' is deprecated and support will be removed in version "
-#~ "$removal_version."
-#~ msgstr ""
-#~ "主键‘$key|’已废弃，且对此主键的支持将在版本$removal_version|中移除。"
-
-#~ msgid ""
-#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
-#~ "'$deprecated_key' will be removed in version $removal_version."
-#~ msgstr ""
-#~ "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
-#~ "$removal_version|中移除。"
-
-#~ msgid "By:"
-#~ msgstr "作者："
-
-#~ msgid "Gold Left:"
-#~ msgstr "剩余金币："
-
-#~ msgid "Active Troops:"
-#~ msgstr "出战部队数："
-
-#~ msgid "Reserve Troops:"
-#~ msgstr "后备部队数："
-
-#~ msgid "Show disengaged orb"
-#~ msgstr "显示脱战状态球"
-
-#~ msgid "This uses the colors for partial and moved orbs."
-#~ msgstr "这将使用部分移动和已移动状态球的颜色。"
 
 #~ msgid "Area to draw has negative size"
 #~ msgstr "绘图区域的尺寸为负值"
@@ -8936,3 +8919,16 @@ msgstr "在小节‘[$section|]’中，必须设定的主键‘$key|’没有�
 #~ "A terrain with a string with more than 4 characters has been found, the "
 #~ "affected terrain is:"
 #~ msgstr "找到一个具有长度超过4个字符的字符串的地形，受影响的地形是："
+
+#~ msgid ""
+#~ "The key '$key' is deprecated and support will be removed in version "
+#~ "$removal_version."
+#~ msgstr ""
+#~ "主键‘$key|’已废弃，且对此主键的支持将在版本$removal_version|中移除。"
+
+#~ msgid ""
+#~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
+#~ "'$deprecated_key' will be removed in version $removal_version."
+#~ msgstr ""
+#~ "主键‘$deprecated_key|’已重命名为‘$key’。对‘$deprecated_key|’的支持将在版本"
+#~ "$removal_version|中移除。"
