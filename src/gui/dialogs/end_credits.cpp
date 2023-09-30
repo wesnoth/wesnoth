@@ -110,6 +110,8 @@ void end_credits::pre_show(window& window)
 	};
 
 
+	
+
 	auto populateChunks = [this](size_t maxChunkSize) -> void {
 		size_t startPos = 0;
 		while (startPos < content_.size()) {
@@ -120,16 +122,22 @@ void end_credits::pre_show(window& window)
 				// Look for the closest newline or closing tag before endPos
 				size_t newlinePos = content_.rfind('\n', endPos);
 				size_t tagClosePos = content_.rfind("</span>", endPos);
-				endPos = std::max(newlinePos, tagClosePos);
 
-				// If neither newline nor closing tag is found, fallback to the original logic
-				if (endPos == std::string::npos) {
-					size_t tagPos = content_.rfind('<', endPos);
-					if (tagPos != std::string::npos && tagPos >= startPos) {
-						size_t tagEndPos = content_.find('>', tagPos);
-						if (tagEndPos != std::string::npos && tagEndPos > endPos) {
-							endPos = tagPos;
-						}
+				if (newlinePos != std::string::npos || tagClosePos != std::string::npos) {
+					endPos = std::max(newlinePos, tagClosePos) + 1;  // +1 to include newline or closing tag
+				} else {
+					// If neither is found, search forward for the next newline or closing tag
+					newlinePos = content_.find('\n', endPos);
+					tagClosePos = content_.find("</span>", endPos);
+					endPos = (newlinePos == std::string::npos) ? tagClosePos + 1 : std::min(newlinePos, tagClosePos) + 1;
+				}
+
+				// Ensure the chunk doesn't end right after an opening tag
+				size_t tagOpenPos = content_.rfind("<span", endPos);
+				if (tagOpenPos != std::string::npos && tagOpenPos > newlinePos) {
+					tagClosePos = content_.find("</span>", tagOpenPos);
+					if (tagClosePos != std::string::npos) {
+						endPos = tagClosePos + 7;  // +7 to include the closing tag
 					}
 				}
 			}
@@ -139,6 +147,8 @@ void end_credits::pre_show(window& window)
 			startPos = endPos;
 		}
 	};
+
+
 
 
 
@@ -197,7 +207,7 @@ void end_credits::pre_show(window& window)
 	//
 	
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		//find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
+		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
 
 		// TODO: enable again if e24336afeb7 is reverted.
 		//find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
@@ -283,26 +293,30 @@ void end_credits::update()
 	
 //	std::cout<<" height :  "<<text_widget_->get_height()<<" \n";
 
-//	std::cout<<" item: y mod : " << (cur_pos % text_widget_->get_height())/1240 << std::endl;
-	if(!(cur_pos > 1240+screenSpace)){	
+	//std::cout<<" cur_pos: : " << (cur_pos) << std::endl;
+
+	if(!(cur_pos > text_widget_->get_height()+screenSpace - 150)){	
 	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 	}
-	else
-	{
+	else {
+		
+		if(firstIdx < contentSubstrings_.size()-slidingSize){
 		++firstIdx;
 		lastIdx = firstIdx + slidingSize;	
 		std::cout<< "first Idx "<< firstIdx << " "<< std::endl; 
 		std::cout<<"last idx "<< lastIdx << " "<<std::endl;
 		slidingContent_="";
-		if(lastIdx < contentSubstrings_.size()){
-		for(size_t i=firstIdx; i< lastIdx; ++i)
-		{
-			slidingContent_+=contentSubstrings_[i];
-		}
+		if(lastIdx <= contentSubstrings_.size()){
+			for(size_t i=firstIdx; i< lastIdx; ++i)
+			{
+				slidingContent_+=contentSubstrings_[i];
+			}
 		}
 		text_widget_->set_label(slidingContent_);
-		cur_pos=0;
+		cur_pos-=(text_widget_->get_height()+screenSpace - 150);
+		}
 	}
+
 	last_scroll_ = now;
 }
 
