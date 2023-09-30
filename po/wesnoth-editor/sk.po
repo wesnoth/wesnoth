@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2023-04-02 09:56-0500\n"
-"PO-Revision-Date: 2018-06-10 17:40+0200\n"
+"PO-Revision-Date: 2023-09-29 22:15+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 3.3.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -398,12 +398,12 @@ msgid "Map loaded from scenario"
 msgstr "Mapa načítaná zo scény"
 
 #: src/editor/map/context_manager.cpp:923
+#, fuzzy
+#| msgid "Loaded referenced map file:"
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
-msgstr ""
-"Načítal sa odkazovaný súbor mapy:\n"
-"$new"
+msgstr "Načítaný odkazovaný súbor mapy:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:120
@@ -480,11 +480,11 @@ msgstr "Vymazať"
 
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Left-click: "
-msgstr ""
+msgstr "Klikni ľavým tlačidlom myši: "
 
 #: src/editor/palette/terrain_palettes.cpp:231
 msgid "Right-click: "
-msgstr ""
+msgstr "Kliknite pravým tlačidlom myši: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
@@ -492,18 +492,19 @@ msgstr ""
 #: src/editor/palette/terrain_palettes.cpp:236
 msgid "Shift + left-click: paint overlay layer only"
 msgstr ""
+"Shift + kliknutie ľavým tlačidlom myši: maľovanie iba prekryvnej vrstvy"
 
 #: src/editor/palette/terrain_palettes.cpp:238
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + kliknutie ľavým tlačidlom myši: maľovanie iba základnej vrstvy"
 
 #: src/editor/palette/terrain_palettes.cpp:241
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + kliknutie: kopírovanie terénu"
 
 #: src/editor/palette/terrain_palettes.cpp:243
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + klik: kopírovanie terénu"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:93
 msgid "Clipboard support not found, contact your packager"
@@ -516,6 +517,33 @@ msgstr "Vyberte súbor s mapou"
 #: src/gui/dialogs/editor/custom_tod.cpp:158
 msgid "Select"
 msgstr "Vybrať"
+
+#~ msgid "elevation"
+#~ msgstr "prevýšenie"
+
+#~ msgid "Add-on"
+#~ msgstr "Doplnok"
+
+#~ msgid "File does not have .map or .cfg extension"
+#~ msgstr "Súbor nemá príponu .map alebo .cfg"
+
+#~ msgid ""
+#~ "Found the characters '<<' indicating inline lua is present - aborting"
+#~ msgstr ""
+#~ "Nájdené znaky '<<' indikujúce prítomnosť inline lua - prerušujem akciu"
+
+#~ msgid "Failed to load the scenario, attempting to load only the map."
+#~ msgstr "Nepodarilo sa načítať scenár, pokúšam sa načítať iba mapu."
+
+#~ msgid ""
+#~ "The map file looks like a scenario, but the map_file value does not point "
+#~ "to an existing file"
+#~ msgstr ""
+#~ "Súbor mapy vyzerá ako scenár, ale hodnota map_file neukazuje na "
+#~ "existujúci súbor"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Nie je možné analyzovať súbor na vyhľadanie údajov mapy"
 
 #~ msgid "player^None"
 #~ msgstr "Žiaden"
