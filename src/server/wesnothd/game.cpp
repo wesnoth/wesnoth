@@ -1419,17 +1419,14 @@ bool game::add_player(player_iterator player, bool observer)
 		send_history(player);
 	} else {
 		send_user_list();
+		// Send the game chat log, regardless if observer or not
+		send_chat_history(player);
 	}
 
 	const std::string clones = has_same_ip(player);
 	if(!clones.empty()) {
 		send_and_record_server_message(
 			user->info().name() + " has the same IP as: " + clones);
-	}
-
-	// Send the game chat log, regardless if observer or not
-	if (!started_) {
-		send_chat_history(player);
 	}
 
 	if(became_observer) {
