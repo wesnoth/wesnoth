@@ -12,6 +12,7 @@
 	See the COPYING file for more details.
 */
 
+#include "end_credits.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/end_credits.hpp"
@@ -100,7 +101,7 @@ void end_credits::pre_show(window& window)
 	
 	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
 	
-	windowH=window.get_height();
+	std::cout<< "window height set to x";
 	auto calcMax=[]() -> size_t {
 		const size_t pixelChar = 5;
 		const size_t maxHeight = 6400;
@@ -179,6 +180,8 @@ void end_credits::pre_show(window& window)
 	const size_t max_per_view=3;
 	slidingContent_.clear();
 	for(size_t i=0; i<max_per_view; ++i){
+		if(i==0){ firstIdx = 0; }
+		if(i==2){ lastIdx = 2;   };
 		slidingContent_+=contentSubstrings_.at(i);
 	
 	}
@@ -186,13 +189,15 @@ void end_credits::pre_show(window& window)
 	
 	//concat 3 substring
 	text_widget_->set_label(slidingContent_);
+
+	//text_widget_->set_vertical_scrollbar_item_position(-500);
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
 	//
 	
 	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
-		find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
+		//find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).set_visible(widget::visibility::hidden);
 
 		// TODO: enable again if e24336afeb7 is reverted.
 		//find_widget<repeating_button>(v_grid, "_half_page_up", false).set_visible(widget::visibility::hidden);
@@ -248,8 +253,17 @@ void end_credits::update()
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
 
-	std::cout<< " cur_pos + needed_dist "<< cur_pos + needed_dist << " chunkIndex " << "1" <<std::endl;	
+//	std::cout<< " cur_pos + needed_dist "<< cur_pos + needed_dist << " chunkIndex " << "1" <<std::endl;	
 	
+	
+
+/*	if(grid* v_grid = dynamic_cast<grid*>(text_widget_->find("_vertical_scrollbar_grid", false))) {
+	
+		std::cout<< " max höjd?? " <<find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).get_height()<<" \n"<<std::endl;
+		std::cout<< " pos y  " <<find_widget<scrollbar_base>(v_grid, "_vertical_scrollbar", false).get_item_position();
+
+	}
+
 
 // logic needed
 	
@@ -264,12 +278,31 @@ void end_credits::update()
 	};
 
 	mod(cur_pos);
-
+*/
 	
+	
+//	std::cout<<" height :  "<<text_widget_->get_height()<<" \n";
 
-
+//	std::cout<<" item: y mod : " << (cur_pos % text_widget_->get_height())/1240 << std::endl;
+	if(!(cur_pos > 1240+screenSpace)){	
 	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
-
+	}
+	else
+	{
+		++firstIdx;
+		lastIdx = firstIdx + slidingSize;	
+		std::cout<< "first Idx "<< firstIdx << " "<< std::endl; 
+		std::cout<<"last idx "<< lastIdx << " "<<std::endl;
+		slidingContent_="";
+		if(lastIdx < contentSubstrings_.size()){
+		for(size_t i=firstIdx; i< lastIdx; ++i)
+		{
+			slidingContent_+=contentSubstrings_[i];
+		}
+		}
+		text_widget_->set_label(slidingContent_);
+		cur_pos=0;
+	}
 	last_scroll_ = now;
 }
 

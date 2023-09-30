@@ -57,8 +57,11 @@ private:
 	int scroll_speed_;
 
 	uint32_t last_scroll_;
-
-	size_t windowH=1;
+	
+	size_t slidingSize=2;  //n -1  
+	size_t firstIdx=0;
+	size_t lastIdx=firstIdx + slidingSize;
+	const size_t screenSpace  = 300; 
 	size_t currentChunkIdx_=0;
 	std::string content_;
 	std::string slidingContent_;
