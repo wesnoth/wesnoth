@@ -96,49 +96,48 @@ void end_credits::pre_show(window& window)
 	//substrings it doesn't cut in between spans and thus making markup invalid
 	//when combinding multiple substrings for the sliding window
 	//IrregularBismuth 2023-09-30
-	auto populateChunks = [this](const size_t& maxChunkSize) -> void {
-		size_t startPos = 0;
-		while (startPos < content_.size()) {
-			size_t endPos = startPos + maxChunkSize;
-			if (endPos >= content_.size()) {
-				endPos = content_.size();
+	auto populate_chunks = [this](const size_t& max_chunk_size) -> void {
+		size_t start_pos = 0;
+		while (start_pos < content_.size()) {
+			size_t end_pos = start_pos + max_chunk_size;
+			if (end_pos >= content_.size()) {
+				end_pos = content_.size();
 			} else {
-				// Look for the closest newline or closing tag before endPos
-				size_t newlinePos = content_.rfind('\n', endPos);
-				size_t tagClosePos = content_.rfind("</span>", endPos);
+				// Look for the closest newline or closing tag before end_pos
+				size_t newline_pos = content_.rfind('\n', end_pos);
+				size_t tag_close_pos = content_.rfind("</span>", end_pos);
 
-				if (newlinePos != std::string::npos || tagClosePos != std::string::npos) {
-					endPos = std::max(newlinePos, tagClosePos) + 1;  // +1 to include newline or closing tag
+				if (newline_pos != std::string::npos || tag_close_pos != std::string::npos) {
+					end_pos = std::max(newline_pos, tag_close_pos) + 1;  // +1 to include newline or closing tag
 				} else {
 					// If neither is found, search forward for the next newline or closing tag
-					newlinePos = content_.find('\n', endPos);
-					tagClosePos = content_.find("</span>", endPos);
-					endPos = (newlinePos == std::string::npos) ? tagClosePos + 1 : std::min(newlinePos, tagClosePos) + 1;
+					newline_pos = content_.find('\n', end_pos);
+					tag_close_pos = content_.find("</span>", end_pos);
+					end_pos = (newline_pos == std::string::npos) ? tag_close_pos + 1 : std::min(newline_pos, tag_close_pos) + 1;
 				}
-
 				// Ensure the chunk doesn't end right after an opening tag
-				size_t tagOpenPos = content_.rfind("<span", endPos);
-				if (tagOpenPos != std::string::npos && tagOpenPos > newlinePos) {
-					tagClosePos = content_.find("</span>", tagOpenPos);
-					if (tagClosePos != std::string::npos) {
-						endPos = tagClosePos + 7;  // +7 to include the closing tag
+				size_t tag_open_pos = content_.rfind("<span", end_pos);
+				if (tag_open_pos != std::string::npos && tag_open_pos > newline_pos) {
+					tag_close_pos = content_.find("</span>", tag_open_pos);
+					if (tag_close_pos != std::string::npos) {
+						end_pos = tag_close_pos + 7;  // +7 to include the closing tag
 					}
 				}
 			}
-		contentSubstrings_.push_back(content_.substr(startPos, endPos - startPos));
+		content_substrings_.push_back(content_.substr(start_pos, end_pos - start_pos));
 		//	std::cout << contentSubstrings_.size() << " size of vector" << std::endl;
-			startPos = endPos;
+			start_pos = end_pos;
 		}
 	};
 
-	static constexpr size_t maxChunkSize = 1280;
-	populateChunks(maxChunkSize);
-	slidingContent_.clear();
-	for(size_t i=0; i<=slidingSize_; ++i){
-		slidingContent_+=contentSubstrings_.at(i);
+	static constexpr size_t max_chunk_size = 1280;
+	populate_chunks(max_chunk_size);
+	sliding_content_.clear();
+	for(size_t i=0; i<=sliding_size_; ++i){
+		sliding_content_+=content_substrings_.at(i);
 	}	
 	//concat substring strings
-	text_widget_->set_label(slidingContent_);
+	text_widget_->set_label(sliding_content_);
 	//text_widget_->set_vertical_scrollbar_item_position(-500);
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
@@ -169,22 +168,22 @@ void end_credits::update()
 	//this doesn't allow for scrolling up again after been scrolled down 
 	//  only the content in the current sliding window can be scrolled up
 	// TODO : lock scroll bar content
-	if(!(cur_pos > text_widget_->get_height()+screenSpace_ - magicNumber_)){	
+	if(!(cur_pos > text_widget_->get_height()+screen_space_ - magic_number_)){	
 		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 	}
 	else {
-		if(firstIdx_ < contentSubstrings_.size()-slidingSize_){
-			++firstIdx_;
-			lastIdx_ = firstIdx_ + slidingSize_;	
-			slidingContent_="";
-			if(lastIdx_ <= contentSubstrings_.size()){
-				for(size_t i=firstIdx_; i< lastIdx_; ++i)
+		if(first_idx_ < content_substrings_.size()-sliding_size_){
+			++first_idx_;
+			last_idx_ = first_idx_ + sliding_size_;	
+			sliding_content_="";
+			if(last_idx_ <= content_substrings_.size()){
+				for(size_t i=first_idx_; i< last_idx_; ++i)
 				{
-					slidingContent_+=contentSubstrings_[i];
+					sliding_content_+=content_substrings_[i];
 				}
 			}
-			text_widget_->set_label(slidingContent_); //updates the sliding window 
-			cur_pos-=(text_widget_->get_height()+screenSpace_ - magicNumber_);
+			text_widget_->set_label(sliding_content_); //updates the sliding window 
+			cur_pos-=(text_widget_->get_height()+screen_space_ - magic_number_);
 		}
 	}
 	last_scroll_ = now;
