@@ -189,11 +189,11 @@ void end_credits::update()
 
 		if(firstIdx_ < contentSubstrings_.size()-slidingSize_){
 			++firstIdx_;
-			lastIdx_ = firstIdx + slidingSize_;	
+			lastIdx_ = firstIdx_ + slidingSize_;	
 			//std::cout<< "first Idx "<< firstIdx << " "<< std::endl; 
 			//std::cout<<"last idx "<< lastIdx << " "<<std::endl;
 			slidingContent_="";
-			if(lastIdx <= contentSubstrings_.size()){
+			if(lastIdx_ <= contentSubstrings_.size()){
 				for(size_t i=firstIdx_; i< lastIdx_; ++i)
 				{
 					slidingContent_+=contentSubstrings_[i];
