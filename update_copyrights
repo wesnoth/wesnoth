@@ -8,44 +8,56 @@
 import argparse
 import contextlib
 import csv
+import hashlib
 from operator import itemgetter
 import os
 from pathlib import Path
 from subprocess import check_output
 import sys
 
+##
+# csv file layout:
+# [0] = current git commit date
+# [1] = file path, relative to the repository root
+# [2] = license name(s)
+# [3] = authorship information
+# [4] = notes
+# [5] = new git commit date, if different from the value in [0]
+# [6] = current md5 hash
+##
+
 def do_git(file):
-    result = str(check_output(["git", "log", "-1", "--format=%ad,,,,,", "--date=format:%Y/%m/%d", file]), 'UTF-8').split(sep=",")
-    if(len(result) < 6):
-        print("bad result for file"+file+"`: "+",".join(result)+"`")
-    result[1] = os.path.normpath(result[1])
-    return result
+    return str(check_output(["git", "log", "-1", "--format=%ad", "--date=format:%Y/%m/%d", file]), 'UTF-8').rstrip('\n')
+
+def do_hash(file):
+    md5 = hashlib.md5()
+    with open(file, 'rb') as f:
+        while True:
+            data = f.read(65536)
+            if not data:
+                break
+            md5.update(data)
+    return str(md5.hexdigest())
+
+##
+# program logic start
+##
 
 args = argparse.ArgumentParser()
 args.add_argument("--repo", default=".", help="The directory of the Wesnoth repository to run this script against.")
 args.add_argument("--output", default="output.csv", help="The file to write the results of this script to.")
 args.add_argument("--input", default="copyrights.csv", help="The file to read the existing copyright data from.")
-
 options = args.parse_args()
 os.chdir(options.repo)
 
 with contextlib.suppress(FileNotFoundError):
     os.remove(options.output)
 
-current_data = {}
-for root, _, files in os.walk(options.repo):
-    for filename in files:
-        filetype = Path(filename).suffix
-        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp" or filetype == ".wav" or filetype == ".ogg":
-            file = os.path.join(root, filename)
-            current_data[os.path.normpath(file)] = do_git(file)
-
+csv_data = {}
 added = []
 changed = []
 unchanged = []
 removed = []
-
-previous_data = {}
 
 with open(options.input) as csvfile:
     reader = csv.reader(csvfile)
@@ -53,25 +65,29 @@ with open(options.input) as csvfile:
         if row[0] == "Date":
             continue
 
-        date = row[0]
         file = row[1]
 
-        if file in current_data:
-            if(date != current_data[file][0]):
-                while(len(row) != 6):
-                    row.append("")
-                row[5] = current_data[file][0]
-                changed.append(row)
-            else:
-                unchanged.append(row)
-        else:
-            removed.append(row)
-        
-        previous_data[file] = row
+        if not os.path.exists(file):
+            removed.append(file)
+            continue
 
-for key in current_data:
-    if not key in previous_data:
-        added.append(["", key, "", "", "", current_data[key][0]])
+        csv_data[file] = row
+
+for root, _, files in os.walk(options.repo):
+    for filename in files:
+        filetype = Path(filename).suffix
+        if filetype == ".png" or filetype == ".jpg" or filetype == ".webp" or filetype == ".wav" or filetype == ".ogg":
+            file = os.path.normpath(os.path.join(root, filename))
+            hash = do_hash(file)
+
+            if not file in csv_data:
+                added.append(["", file, "", "", "", do_git(file), hash])
+            elif csv_data[file][6] != hash:
+                csv_data[file][5] = do_git(file)
+                csv_data[file][6] = hash
+                changed.append(csv_data[file])
+            else:
+                unchanged.append(csv_data[file])
 
 added.sort(key=itemgetter(1))
 changed.sort(key=itemgetter(1))
@@ -81,12 +97,12 @@ final_output = added + changed + unchanged
 
 if options.output != "":
     with open(options.output, 'w') as f:
-        f.write("Date,File,License,Author - Real Name(other name);Real Name(other name);etc,Notes,Needs Update\n")
+        f.write("Date,File,License,Author - Real Name(other name);Real Name(other name);etc,Notes,Needs Update,MD5\n")
         for row in final_output:
             f.write(",".join(row)+"\n")
 else:
     for row in final_output:
-        print(",".join(row)+"\n")
+        print(",".join(row))
 
 if len(removed) > 0:
     print("There are "+str(len(removed))+" removed images")
