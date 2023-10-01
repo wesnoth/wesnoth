@@ -96,16 +96,12 @@ void end_credits::pre_show(window& window)
 	
 	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
 
-
-
-	
-	auto calcMax=[]() -> size_t {
-		const size_t pixelChar = 5;
-		const size_t maxHeight = 6400;
-		const size_t maxChunkSize = maxHeight /pixelChar;
-		return maxChunkSize;
-	};
-
+	//TODO: Fix this better ? 
+	//Don't really know how to deal with this the best way but 
+	//lambda fucntion to parse the markup language ensure when storing the 
+	//substrings it doesn't cut in between spans and thus making markup invalid
+	//when combinding multiple substrings for the sliding window
+	//IrregularBismuth 2023-09-30
 	auto populateChunks = [this](size_t maxChunkSize) -> void {
 		size_t startPos = 0;
 		while (startPos < content_.size()) {
@@ -137,12 +133,11 @@ void end_credits::pre_show(window& window)
 			}
 		contentSubstrings_.push_back(content_.substr(startPos, endPos - startPos));
 		//	std::cout << contentSubstrings_.size() << " size of vector" << std::endl;
-
 			startPos = endPos;
 		}
 	};
 
-	size_t maxChunkSize = calcMax();
+	size_t maxChunkSize = 1280;
 	populateChunks(maxChunkSize);
 
 	
@@ -189,24 +184,24 @@ void end_credits::update()
 	//  only the content in the current sliding window can be scrolled up
 	// TODO : lock scroll bar content
 	if(!(cur_pos > text_widget_->get_height()+screenSpace_ - magicNumber_)){	
-	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
+		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 	}
 	else {
-		
+
 		if(firstIdx < contentSubstrings_.size()-slidingSize_){
-		++firstIdx;
-		lastIdx = firstIdx + slidingSize_;	
-		//std::cout<< "first Idx "<< firstIdx << " "<< std::endl; 
-		//std::cout<<"last idx "<< lastIdx << " "<<std::endl;
-		slidingContent_="";
-		if(lastIdx <= contentSubstrings_.size()){
-			for(size_t i=firstIdx; i< lastIdx; ++i)
-			{
-				slidingContent_+=contentSubstrings_[i];
+			++firstIdx;
+			lastIdx = firstIdx + slidingSize_;	
+			//std::cout<< "first Idx "<< firstIdx << " "<< std::endl; 
+			//std::cout<<"last idx "<< lastIdx << " "<<std::endl;
+			slidingContent_="";
+			if(lastIdx <= contentSubstrings_.size()){
+				for(size_t i=firstIdx; i< lastIdx; ++i)
+				{
+					slidingContent_+=contentSubstrings_[i];
+				}
 			}
-		}
-		text_widget_->set_label(slidingContent_); //updates the sliding window 
-		cur_pos-=(text_widget_->get_height()+screenSpace_ - magicNumber_);
+			text_widget_->set_label(slidingContent_); //updates the sliding window 
+			cur_pos-=(text_widget_->get_height()+screenSpace_ - magicNumber_);
 		}
 	}
 

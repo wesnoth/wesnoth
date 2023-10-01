@@ -22,7 +22,6 @@
 #include "serialization/string_utils.hpp"
 
 #include <map>
-#include <iostream>
 /**
  * @namespace about
  * Display credits %about all contributors.
@@ -121,7 +120,6 @@ void set_about(const game_config_view& cfg)
 parsed_credits_data.clear();
 // TODO: should we reserve space in parsed_credits_data here?
 //
-parsed_credits_data.reserve(15000000);
 images_campaigns.clear();
 images_general.clear();
 
@@ -132,10 +130,7 @@ images_general.clear();
 	//
 	for(const config& group : cfg.child_range("credits_group")) {
 		if(group.has_child("about")) {
-//			parsed_credits_data.push_back({group,false});	
-			//std::cout<<"lägg in sak har <<"<<std::endl;
 			parsed_credits_data.emplace_back(group, false);
-
 			// Not in the credits_group since we don't want to inadvertently
 			// pick up images from campaigns.
 			gather_images(group, images_general);

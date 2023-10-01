@@ -731,8 +731,6 @@ void pango_text::render(PangoLayout& layout, const SDL_Rect& viewport, const uns
 	
 	
 	if(cairo_status(cr.get()) == CAIRO_STATUS_INVALID_SIZE) {
-
-	//	std::cout<<"do we enter this hello ....  ..... \n"<<std::endl;
 		throw std::length_error("Text is too long to render");
 	}
 
