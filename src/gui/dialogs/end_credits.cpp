@@ -57,7 +57,6 @@ void end_credits::pre_show(window& window)
 	std::stringstream ss;
 	std::stringstream focus_ss;
 	
-	
 	for(const about::credits_group& group : about::get_credits_data()) {
 		std::stringstream& group_stream = (group.id == focus_on_) ? focus_ss : ss;
 		group_stream << "\n";
@@ -188,14 +187,14 @@ void end_credits::update()
 	}
 	else {
 
-		if(firstIdx < contentSubstrings_.size()-slidingSize_){
-			++firstIdx;
-			lastIdx = firstIdx + slidingSize_;	
+		if(firstIdx_ < contentSubstrings_.size()-slidingSize_){
+			++firstIdx_;
+			lastIdx_ = firstIdx + slidingSize_;	
 			//std::cout<< "first Idx "<< firstIdx << " "<< std::endl; 
 			//std::cout<<"last idx "<< lastIdx << " "<<std::endl;
 			slidingContent_="";
 			if(lastIdx <= contentSubstrings_.size()){
-				for(size_t i=firstIdx; i< lastIdx; ++i)
+				for(size_t i=firstIdx_; i< lastIdx_; ++i)
 				{
 					slidingContent_+=contentSubstrings_[i];
 				}

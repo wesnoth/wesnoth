@@ -65,9 +65,9 @@ private:
 	static constexpr size_t magicNumber_ = 150; // magic number #2
 												// these numbers are for when trying to modify the sliding window so you
 												// don't see the previous string	
-	size_t firstIdx=0;
-	size_t lastIdx=firstIdx + slidingSize_;
-
+	size_t firstIdx_=0;
+	size_t lastIdx_=firstIdx_ + slidingSize_;
+	
 	std::string content_;
 	std::string slidingContent_;
 	std::vector<std::string> contentSubstrings_;

@@ -37,7 +37,6 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/functional/hash_fwd.hpp>
 
-#include <iostream>
 #include <cassert>
 #include <cstring>
 #include <stdexcept>
@@ -796,8 +795,6 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 	// The size of the viewport should already provide a far lower limit on the
 	// maximum size, but this is left in as a sanity check.
 	if(viewport.h > std::numeric_limits<int>::max() / stride) {
-		
-		std::cout<<"THIS IS the ERROR 801 " << std::endl;
 		throw std::length_error("Text is too long to render");
 	}
 
