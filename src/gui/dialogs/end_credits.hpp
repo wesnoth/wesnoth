@@ -57,22 +57,18 @@ private:
 	int scroll_speed_;
 
 	uint32_t last_scroll_;
-	
 	//Fix credits crash 
 	static constexpr size_t slidingSize_=2; // slidingSize alters how many of the sliding contents are to be run at once 
-						  // n-1 => 2 => 3 strings at once concatinated 
+						  // n-1 = 2 => 3 strings at once concatinated 
 	static constexpr size_t screenSpace_ = 300; // magic number #1  
 	static constexpr size_t magicNumber_ = 150; // magic number #2
 												// these numbers are for when trying to modify the sliding window so you
 												// don't see the previous string	
 	size_t firstIdx_=0;
 	size_t lastIdx_=firstIdx_ + slidingSize_;
-	
 	std::string content_;
 	std::string slidingContent_;
 	std::vector<std::string> contentSubstrings_;
-	
-
 };
 
 } // namespace dialogs
