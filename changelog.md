@@ -10,6 +10,8 @@
  ### Translations
    * Updated translations: British English, Chinese (Simplified), French, Slovak
  ### Units
+   * Update graphics and stats of Roc
+   * New monster unit line - Ravens
  ### User interface
  ### WML Engine
  ### Miscellaneous and Bug Fixes
