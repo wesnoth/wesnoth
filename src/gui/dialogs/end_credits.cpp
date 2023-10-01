@@ -102,7 +102,7 @@ void end_credits::pre_show(window& window)
 	//substrings it doesn't cut in between spans and thus making markup invalid
 	//when combinding multiple substrings for the sliding window
 	//IrregularBismuth 2023-09-30
-	auto populateChunks = [this](size_t maxChunkSize) -> void {
+	auto populateChunks = [this](const size_t& maxChunkSize) -> void {
 		size_t startPos = 0;
 		while (startPos < content_.size()) {
 			size_t endPos = startPos + maxChunkSize;
@@ -137,7 +137,7 @@ void end_credits::pre_show(window& window)
 		}
 	};
 
-	size_t maxChunkSize = 1280;
+	static constexpr size_t maxChunkSize = 1280;
 	populateChunks(maxChunkSize);
 
 	
