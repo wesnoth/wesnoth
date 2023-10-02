@@ -1664,7 +1664,10 @@ REPORT_GENERATOR(terrain_info, rc)
 
 	if(map.is_village(mouseover_hex)) {
 		int owner = rc.dc().village_owner(mouseover_hex);
-		if(owner != 0) {
+		int viewing_side = rc.screen().viewing_side();
+		const team& viewing_team = rc.dc().get_team(viewing_side);
+
+		if(owner != 0 && !viewing_team.fogged(mouseover_hex)) {
 			const team& owner_team = rc.dc().get_team(owner);
 
 			std::string flag_icon = owner_team.flag_icon();
