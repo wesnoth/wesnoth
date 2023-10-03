@@ -824,6 +824,15 @@ void mouse_handler::teleport_action(bool browse)
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
 
+	select_hex(last_hex_, false, false, false);
+	selected_hex_ = map_location();
+	gui().select_hex(map_location());
+	gui().clear_attack_indicator();
+	gui().set_route(nullptr);
+	gui().unhighlight_reach();
+	pc_.get_whiteboard()->save_temp_move();
+
+	current_route_.steps.clear();
 
 }
 
@@ -832,14 +841,12 @@ void mouse_handler::select_teleport_hex(const map_location& hex, const bool brow
 	selected_hex_ = hex;
 	gui().select_hex(selected_hex_);
 	gui().clear_attack_indicator();
-	//gui().set_route(nullptr);
+	gui().set_route(nullptr);
+
 	show_partial_move_ = false;
 	preventing_units_highlight_ = true;
 	teleport_action_ = true;
-
-	wb::future_map_if_active planned_unit_map; // lasts for whole method
-
-	map_location src = selected_hex_;
+	
 }
 
 void mouse_handler::select_or_action(bool browse)
