@@ -605,8 +605,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*err
 	}
 	debug_cmd_notification("teleport");
 
-	const map_location loc(child["x"].to_int(), child["y"].to_int(), wml_loc());
-	const map_location loc2(child["x"].to_int() + 1, child["y"].to_int(), wml_loc());
+	const map_location loc(child["start_hex_x"].to_int(), child["start_hex_y"].to_int(), wml_loc());
+	const map_location loc2(child["end_hex_x"].to_int() + 1, child["end_hex_y"].to_int(), wml_loc());
 	
 	const unit_map::iterator i = resources::gameboard->units().find(loc);
 	if (i != resources::gameboard->units().end()) {

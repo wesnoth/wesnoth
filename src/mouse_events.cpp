@@ -813,6 +813,17 @@ void mouse_handler::teleport_action(bool browse)
 	// we use the last registered highlighted hex
 	// since it's what update our global state
 	map_location hex = last_hex_;
+	LOG_NG << "(Debug) Telport unit from " << last_hex_.x << " : " << last_hex_.y
+	 << " to " << selected_hex_.x << " : " << selected_hex_.y;
+
+	//std::cout << "last_hex_: " << last_hex_.x << " : " << last_hex_.y << std::endl;
+	//std::cout << "selected_hex_: " << selected_hex_.x << " : " << selected_hex_.y << std::endl;
+	actions::teleport_unit_and_record(last_hex_, selected_hex_);
+
+
+	cursor::set(cursor::NORMAL);
+	gui().invalidate_game_status();
+
 
 }
 
@@ -848,18 +859,13 @@ void mouse_handler::select_or_action(bool browse)
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 
-	if(teleport_action_){
-		teleport_action(browse);
+	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
+	(clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+	) {
+		select_hex(last_hex_, false);
 	} else {
-		if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
-		(clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
-		) {
-			select_hex(last_hex_, false);
-		} else {
-			move_action(browse);
-		}
+		move_action(browse);
 	}
-	teleport_action_ = false;
 }
 
 void mouse_handler::move_action(bool browse)
@@ -904,8 +910,22 @@ void mouse_handler::move_action(bool browse)
 		attack_from = current_unit_attacks_from(hex);
 	} // end planned unit map scope
 
+	// See if we are using teleport debug option
+	if(teleport_action_)
+	{
+		// Don't move if the unit already has actions
+		// from the whiteboard.
+		if(pc_.get_whiteboard()->unit_has_actions(u ? u : clicked_u)) {
+			return;
+		}
+
+		teleport_action(browse);
+		teleport_action_ = false;
+
+	}
+
 	// see if we're trying to do a attack or move-and-attack
-	if((!browse || pc_.get_whiteboard()->is_active()) && attack_from.valid()) {
+	else if((!browse || pc_.get_whiteboard()->is_active()) && attack_from.valid()) {
 		// Ignore this command if commands are disabled.
 		if(commands_disabled) {
 			return;
@@ -1048,7 +1068,7 @@ void mouse_handler::move_action(bool browse)
 				select_hex(selected_hex_, browse);
 			}
 		}
-
+		teleport_action_ = false;
 		return;
 	}
 }

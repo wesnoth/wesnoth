@@ -209,7 +209,7 @@ namespace { // Private helpers for move_unit()
 		/** Shows the various on-screen messages, for use after movement. */
 		void feedback() const;
 
-		void teleport(); // TODO: FIX
+		void teleport(const map_location& start_hex, const map_location& end_hex, unit_mover& mover); // TODO: FIX
 
 		/** After checking expected movement, this is the expected path. */
 		std::vector<map_location> expected_path() const
@@ -362,7 +362,7 @@ namespace { // Private helpers for move_unit()
 		, expected_end_(begin_)
 		, ambush_limit_(begin_)
 		, obstructed_(full_end_)
-		, real_end_(begin_)
+		, real_end_(begin_)	
 		// Unit information:
 		, move_it_(resources::gameboard->units().find(*begin_))
 		, orig_side_(( static_cast<void>(assert(move_it_ != resources::gameboard->units().end())), move_it_->side() ))
@@ -370,7 +370,7 @@ namespace { // Private helpers for move_unit()
 		, orig_dir_(move_it_->facing())
 		, goto_( is_ai_move() ? move_it_->get_goto() : route.back() )
 		, current_side_(orig_side_)
-		, current_team_(&resources::gameboard->get_team(current_side_))
+		, current_team_(&resources::gameboard->get_team(current_side_))	
 		, current_uses_fog_(current_team_->fog_or_shroud() && current_team_->auto_shroud_updates())
 		, move_loc_(begin_)
 		// The remaining fields are set to some sort of "zero state".
@@ -1016,14 +1016,51 @@ namespace { // Private helpers for move_unit()
 	}
 
 
-	void unit_mover::teleport()
+	void unit_mover::teleport(const map_location& start_hex, const map_location& end_hex, unit_mover& mover)
 	{
 		// Prepare to animate.
 		unit_display::unit_mover animator(route_, true);
 		animator.start(move_it_.get_shared_ptr());
 
-		//bool new_animation = do_move(begin_, expected_end)
-	}
+		game_display &disp = *game_display::get_singleton();
+
+		
+		// Adjust the movement even if we cannot move yet.
+		// We will eventually be able to move if nothing unexpected
+		// happens, and if something does happen, this movement is the
+		// cost to discover it.
+		move_it_->set_movement(moves_left_.front(), true);
+		moves_left_.pop_front();
+
+		// Invalidate before moving so we invalidate neighbor hexes if needed.
+		move_it_->anim_comp().invalidate(disp);
+
+		// Attempt actually moving. Fails if *step_to is occupied.
+		auto [unit_it, success] = resources::gameboard->units().move(start_hex, end_hex);
+
+		if(success) {
+			// Update the moving unit.
+			move_it_ = unit_it;
+			//move_it_->set_facing(start_hex->get_relative_dir(*end_hex));
+			// Disable bars. The expectation here is that the animation
+			// unit_mover::finish() will clean after us at a later point. Ugly,
+			// but it works.
+			move_it_->anim_comp().set_standing(false);
+			disp.invalidate_unit_after_move(start_hex, end_hex);
+			disp.invalidate(end_hex);
+			//move_loc_ = step_to;
+
+			// Show this move.
+			/*
+			animator.proceed_to(move_it_.get_shared_ptr(), step_to - begin_,
+			                    move_it_->appearance_changed(), false);
+			
+			*/
+			move_it_->set_appearance_changed(false);
+			disp.redraw_minimap();
+		}
+	
+	} 
 
 
 	/**
@@ -1216,6 +1253,44 @@ static std::size_t move_unit_internal(undo_list* undo_stack,
 	}
 
 	return mover.steps_travelled();
+}
+
+void teleport_unit_and_record(const map_location& start_hex, const map_location& end_hex, 
+	bool continued_move, move_unit_spectator* move_spectator)
+{
+	const bool skip_ally_sighted = true;
+	const map_location start = map_location(start_hex.wml_x(), start_hex.wml_y());
+	const map_location end = map_location(end_hex.wml_x() - 1, end_hex.wml_y() - 1);
+
+	const std::vector<map_location> & route{end, start};
+
+	std::cout << "start: " << start.x << " : " << start.y << std::endl;
+	std::cout << "end: " << end.x << " : " << end.y << std::endl;
+	unit_map::iterator test = resources::gameboard->units().find(end);
+
+	
+	unit_mover mover(route, move_spectator, continued_move, skip_ally_sighted);
+	
+	if(synced_context::get_synced_state() != synced_context::SYNCED)
+	{
+	
+		/*
+			enter the synced mode and do the actual movement.
+		*/
+		
+		resources::recorder->add_synced_command("debug_teleport", config {"start_hex_x", start_hex.wml_x(), "start_hex_y", start_hex.wml_y(),
+		"end_hex_x", end_hex.wml_x(), "end_hex_y", end_hex.wml_y() });
+		set_scontext_synced sync;
+		mover.teleport(end_hex, start_hex, mover);
+		sync.do_final_checkup();
+		
+	}
+	else
+	{
+		//we are already in synced mode and don't need to reenter it again.
+		mover.teleport(end_hex, start_hex, mover);
+	}
+	
 }
 
 /**
