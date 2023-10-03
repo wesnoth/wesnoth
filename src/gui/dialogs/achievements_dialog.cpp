@@ -20,8 +20,8 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.hpp"
+#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/grid.hpp"
-#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/window.hpp"
@@ -152,7 +152,7 @@ void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& 
 		}
 		else
 		{
-			image* img = static_cast<image*>(newrow.find("sub_icon"+std::to_string(i), false));
+			drawing* img = static_cast<drawing*>(newrow.find("sub_icon"+std::to_string(i), false));
 			img->set_label(sub_ach.achieved_ ? sub_ach.icon_completed_ : sub_ach.icon_);
 			img->set_tooltip(sub_ach.description_);
 		}
@@ -162,7 +162,7 @@ void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& 
 	// if an achievement hasn't defined the maximum possible sub-achievements, hide the [image]s for the rest
 	for(; i < sub_achievements_limit; i++)
 	{
-		static_cast<image*>(newrow.find("sub_icon"+std::to_string(i), false))->set_visible(visibility::invisible);
+		static_cast<drawing*>(newrow.find("sub_icon"+std::to_string(i), false))->set_visible(visibility::invisible);
 	}
 }
 
