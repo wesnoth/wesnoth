@@ -1017,14 +1017,6 @@ namespace { // Private helpers for move_unit()
 		event_mutated_mid_move_ = wml_removed_unit_ || wml_move_aborted_;
 	}
 
-	void unit_mover::try_actual_teleport(const map_location& start_hex, const map_location& end_hex, unit_mover& mover)
-	{
-		static const std::string enter_hex_str("enter hex");
-		static const std::string exit_hex_str("exit hex");
-
-
-	}
-
 	void unit_mover::teleport(const map_location& start_hex, const map_location& end_hex, unit_mover& mover)
 	{
 		// Prepare to animate.
