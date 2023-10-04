@@ -83,13 +83,18 @@ public:
 		const bool highlight = true,
 		const bool fire_event = true);
 
+	void select_teleport_hex(const map_location& hex, const bool browse,
+		const bool highlight = true,
+		const bool fire_event = true);
+
+
 	void move_action(bool browse);
 	void teleport_action(bool browse);
 
 	void touch_action(const map_location hex, bool browse);
 
 	void select_or_action(bool browse);
-	void select_teleport(bool browse);
+	void select_or_teleport(bool browse);
 
 
 	/**

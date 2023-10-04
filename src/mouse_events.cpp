@@ -785,7 +785,7 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 }
 
 
-void mouse_handler::select_teleport(bool browse)
+void mouse_handler::select_or_teleport(bool browse)
 {
 	// Load whiteboard partial moves
 	wb::future_map_if_active planned_unit_map;
@@ -800,24 +800,26 @@ void mouse_handler::select_teleport(bool browse)
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
 	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
-		//TODO: test if all of this is necessary
-		selected_hex_ = last_hex_;
-		gui().select_hex(selected_hex_);
-		gui().clear_attack_indicator();
-		gui().set_route(nullptr);
-		show_partial_move_ = false;
-		preventing_units_highlight_ = true;
-		teleport_action_ = true;	
+		select_teleport_hex(last_hex_, false);
 	}
 }
 
 void mouse_handler::teleport_action(bool browse)
 {
+	// Lock whiteboard activation state to avoid problems due to
+	// its changing while an animation takes place.
+	wb::whiteboard_lock wb_lock = pc_.get_whiteboard()->get_activation_state_lock();
+
+	// we use the last registered highlighted hex
+	// since it's what update our global state
+	map_location hex = last_hex_;
 	LOG_NG << "(Debug) Telport unit from " << last_hex_.x << " : " << last_hex_.y
 	 << " to " << selected_hex_.x << " : " << selected_hex_.y;
-	teleport_action_ = false;
 
+	//std::cout << "last_hex_: " << last_hex_.x << " : " << last_hex_.y << std::endl;
+	//std::cout << "selected_hex_: " << selected_hex_.x << " : " << selected_hex_.y << std::endl;
 	actions::teleport_unit_and_record(last_hex_, selected_hex_);
+
 
 	cursor::set(cursor::NORMAL);
 	gui().invalidate_game_status();
@@ -831,6 +833,20 @@ void mouse_handler::teleport_action(bool browse)
 	pc_.get_whiteboard()->save_temp_move();
 
 	current_route_.steps.clear();
+
+}
+
+void mouse_handler::select_teleport_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event)
+{
+	selected_hex_ = hex;
+	gui().select_hex(selected_hex_);
+	gui().clear_attack_indicator();
+	gui().set_route(nullptr);
+
+	show_partial_move_ = false;
+	preventing_units_highlight_ = true;
+	teleport_action_ = true;
+	
 }
 
 void mouse_handler::select_or_action(bool browse)
@@ -911,6 +927,8 @@ void mouse_handler::move_action(bool browse)
 		}
 
 		teleport_action(browse);
+		teleport_action_ = false;
+
 	}
 
 	// see if we're trying to do a attack or move-and-attack
