@@ -195,7 +195,7 @@ private:
 	bool over_route_;
 	bool reachmap_invalid_;
 	bool show_partial_move_;
-	bool teleport_action_;
+	bool teleport_selected_;
 
 	static mouse_handler * singleton_;
 

@@ -936,7 +936,7 @@ namespace { // Private helpers for move_unit()
 		// Check for hidden units along the expected path before we start
 		// animating and firing events.
 		cache_hidden_units(begin_, expected_end_);
-		
+
 		if ( begin_ != ambush_limit_ ) {
 			// Cache the moving unit's visibility.
 			std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);

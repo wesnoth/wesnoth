@@ -140,8 +140,6 @@ public:
 	virtual void select_and_action() {}
 	virtual void select_teleport() {}
 	virtual void teleport_action() {};
-
-
 	virtual void touch_hex() {}
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}

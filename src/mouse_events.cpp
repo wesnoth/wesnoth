@@ -76,7 +76,7 @@ mouse_handler::mouse_handler(game_display* gui, play_controller& pc)
 	, over_route_(false)
 	, reachmap_invalid_(false)
 	, show_partial_move_(false)
-	, teleport_action_(false)
+	, teleport_selected_(false)
 	, preventing_units_highlight_(false)
 {
 	singleton_ = this;
@@ -798,7 +798,7 @@ void mouse_handler::select_teleport()
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
-	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+	   (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
 		//TODO: test if all of this is necessary
 		selected_hex_ = last_hex_;
@@ -807,7 +807,7 @@ void mouse_handler::select_teleport()
 		gui().set_route(nullptr);
 		show_partial_move_ = false;
 		preventing_units_highlight_ = true;
-		teleport_action_ = true;	
+		teleport_selected_ = true;	
 	}
 }
 
@@ -815,7 +815,7 @@ void mouse_handler::teleport_action()
 {
 	LOG_NG << "(Debug) Telport unit from " << last_hex_.x << " : " << last_hex_.y
 	 << " to " << selected_hex_.x << " : " << selected_hex_.y;
-	teleport_action_ = false;
+	teleport_selected_ = false;
 
 	actions::teleport_unit_and_record(last_hex_, selected_hex_);
 	cursor::set(cursor::NORMAL);
@@ -851,7 +851,7 @@ void mouse_handler::select_or_action(bool browse)
 	unit_map::iterator selected_u = find_unit(selected_hex_);
 
 	if(clicked_u && (!selected_u || selected_u->side() != side_num_ ||
-	(clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
+	   (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
 		select_hex(last_hex_, false);
 	} else {
@@ -902,7 +902,7 @@ void mouse_handler::move_action(bool browse)
 	} // end planned unit map scope
 
 	// See if we are using teleport debug option
-	if(teleport_action_)
+	if(teleport_selected_)
 	{
 		// Don't teleport if the unit already has actions
 		// from the whiteboard.
@@ -1057,7 +1057,7 @@ void mouse_handler::move_action(bool browse)
 				select_hex(selected_hex_, browse);
 			}
 		}
-		teleport_action_ = false;
+		teleport_selected_ = false;
 		return;
 	}
 }
