@@ -22,7 +22,6 @@
 #include "units/map.hpp"
 
 #include <vector>
-#include <iostream>
 
 class game_state;
 class gamemap;

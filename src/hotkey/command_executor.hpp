@@ -135,11 +135,10 @@ public:
 	virtual void whiteboard_bump_down_action() {}
 	virtual void whiteboard_suppose_dead() {}
 	virtual void select_hex() {}
-	virtual void select_teleport_hex() {}
 	virtual void deselect_hex() {}
 	virtual void move_action() {}
 	virtual void select_and_action() {}
-	virtual void select_and_teleport() {}
+	virtual void select_teleport() {}
 	virtual void teleport_action() {};
 
 

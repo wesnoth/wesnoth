@@ -605,19 +605,17 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_teleport, child, use_undo, /*show*/, /*err
 	}
 	debug_cmd_notification("teleport");
 
-	const map_location loc(child["start_hex_x"].to_int(), child["start_hex_y"].to_int(), wml_loc());
-	const map_location loc2(child["end_hex_x"].to_int() + 1, child["end_hex_y"].to_int(), wml_loc());
+	const map_location begin(child["start_hex_x"].to_int(), child["start_hex_y"].to_int(), wml_loc());
+	const map_location end(child["end_hex_x"].to_int() + 1, child["end_hex_y"].to_int(), wml_loc());
 	
-	const unit_map::iterator i = resources::gameboard->units().find(loc);
-	if (i != resources::gameboard->units().end()) {
-		if (i.valid()) {
-			unit_display::unit_teleport_help(loc, *i, loc2);
+	const unit_map::iterator unit_iter = resources::gameboard->units().find(begin);
+	if (unit_iter != resources::gameboard->units().end()) {
+		if (unit_iter.valid()) {
+			unit_display::unit_teleport(begin, *unit_iter, end);
 		}
 		display::get_singleton()->redraw_minimap();
 	} 
 	
-	
-	// Maybe use proceed_to from udisplay.cpp to simulate a teleport
 	return true;
 }
 
