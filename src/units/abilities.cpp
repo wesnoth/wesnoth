@@ -1337,14 +1337,9 @@ static bool overwrite_special_affects(const config& special)
 unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const
 {
 	std::vector<double> priorityvec;
-	int list_count = 0;
-	//remove element without overwrite_specials key, if list empty after check
-	//return empty list.
-	//If element contains priority with overwrite_specials key valid,
-	//value added in vector.
+	//remove element without overwrite_specials key, if list empty after check return empty list.
 	utils::erase_if(overwriters, [&](const unit_ability& i) {
 		if(overwrite_special_affects(*i.ability_cfg)){
-			list_count += 1;
 			auto overwrite_specials = (*i.ability_cfg).optional_child("overwrite");
 			if(overwrite_specials && !overwrite_specials["priority"].empty()){
 				auto ret = std::find(priorityvec.begin(), priorityvec.end(), overwrite_specials["priority"].to_double(0));
@@ -1361,7 +1356,7 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 	}
 
 	//if vector no empty and list contain 2 or more elements, continue checking else return list.
-	if(!priorityvec.empty() && (list_count >= 2)){
+	if(!priorityvec.empty() && (overwriters.size())){
 		if(priorityvec.size() >= 2){
 			std::sort(priorityvec.begin(), priorityvec.end(),[](const double &l, const double &r)
 				{
@@ -1376,19 +1371,16 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 				bool is_overwritable = false;
 				if(overwrite_specials && overwrite_specials["priority"].to_double(0) == priority){
 					is_overwritable = overwrite_special_checking(overwriters, *i.ability_cfg, tag_name);
-					if(is_overwritable && list_count > 0){
-						list_count -= 1;
-					}
 				}
 				return (is_overwritable);
 			});
-			if(list_count <= 1){
+			if(overwriters.size() <= 1){
 				break;
 			}
 		}
 		//remove elements without priority who matches conditions
 		//determined by priority elements remaining in list.
-		if(list_count > 1){
+		if(overwriters.size() > 1){
 			utils::erase_if(overwriters, [&](const unit_ability& i) {
 				auto overwrite_specials = (*i.ability_cfg).optional_child("overwrite");
 				bool is_overwritable = false;
