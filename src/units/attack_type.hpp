@@ -144,15 +144,15 @@ private:
 	 */
 	unit_ability_list overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const;
 	/**
-	 * Filter a list of abilities or weapon specials, removing any entries that are overridden by
+	 * Filter a element of list of abilities or weapon specials, and return true if element must be removed by
 	 * the overwrite_specials attributes of a second list.
 	 *
-	 * @param input list to check, a filtered copy of this list is returned by the function.
-	 * @param overwriters list that have overwrite_specials attributes if not empty.
+	 * @return True if element checked is overwritable.
+	 * @param overwriters list used for check if element is overwritable.
+	 * @param cfg element checked.
 	 * @param tag_name type of abilitie/special checked.
-	 * @param list_count used for count size of input when function called in overwrite_special_overwriter.
 	 */
-	void overwrite_special_checking(unit_ability_list& input, unit_ability_list& overwriters, const std::string& tag_name, int& list_count) const;
+	bool overwrite_special_checking(unit_ability_list& overwriters, const config& cfg, const std::string& tag_name) const;
 	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a special is active.
 	 * @param cfg the config to one special ability checked.
