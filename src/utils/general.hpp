@@ -106,4 +106,14 @@ void erase_if(Container& container, const Predicate& predicate)
 	container.erase(std::remove_if(container.begin(), container.end(), predicate), container.end());
 }
 
+/**
+ * Convenience wrapper for using std::sort on a container.
+ *
+ */
+template<typename Container, typename Predicate>
+void sort_if(Container& container, const Predicate& predicate)
+{
+	std::sort(container.begin(), container.end(), predicate);
+}
+
 } // namespace utils

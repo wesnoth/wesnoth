@@ -1336,18 +1336,8 @@ static bool overwrite_special_affects(const config& special)
 
 unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const
 {
-	std::vector<double> priorityvec;
 	//remove element without overwrite_specials key, if list empty after check return empty list.
 	utils::erase_if(overwriters, [&](const unit_ability& i) {
-		if(overwrite_special_affects(*i.ability_cfg)){
-			auto overwrite_specials = (*i.ability_cfg).optional_child("overwrite");
-			if(overwrite_specials && !overwrite_specials["priority"].empty()){
-				auto ret = std::find(priorityvec.begin(), priorityvec.end(), overwrite_specials["priority"].to_double(0));
-				if(ret == priorityvec.end()){
-					priorityvec.push_back(overwrite_specials["priority"].to_double(0));
-				}
-			}
-		}
 		return (!overwrite_special_affects(*i.ability_cfg));
 	});
 
@@ -1355,41 +1345,23 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 		return overwriters;
 	}
 
-	//if vector no empty and list contain 2 or more elements, continue checking else return list.
-	if(!priorityvec.empty() && (overwriters.size())){
-		if(priorityvec.size() >= 2){
-			std::sort(priorityvec.begin(), priorityvec.end(),[](const double &l, const double &r)
-				{
-					return l > r;
-				}
-			);
-		}
-		for(double priority : priorityvec){
-			//erase elements with priority who matches conditions
-			utils::erase_if(overwriters, [&](const unit_ability& i) {
-				auto overwrite_specials = (*i.ability_cfg).optional_child("overwrite");
-				bool is_overwritable = false;
-				if(overwrite_specials && overwrite_specials["priority"].to_double(0) == priority){
-					is_overwritable = overwrite_special_checking(overwriters, *i.ability_cfg, tag_name);
-				}
-				return (is_overwritable);
-			});
-			if(overwriters.size() <= 1){
-				break;
+	if(overwriters.size() >= 2){
+		utils::sort_if(overwriters,[](const unit_ability& i, const unit_ability& j){
+			auto oi = (*i.ability_cfg).optional_child("overwrite");
+			double l = 0;
+			if(oi && !oi["priority"].empty()){
+				l = oi["priority"].to_double(0);
 			}
-		}
-		//remove elements without priority who matches conditions
-		//determined by priority elements remaining in list.
-		if(overwriters.size() > 1){
-			utils::erase_if(overwriters, [&](const unit_ability& i) {
-				auto overwrite_specials = (*i.ability_cfg).optional_child("overwrite");
-				bool is_overwritable = false;
-				if(!overwrite_specials || overwrite_specials["priority"].empty()){
-					is_overwritable = overwrite_special_checking(overwriters, *i.ability_cfg, tag_name);
-				}
-				return (is_overwritable);
-			});
-		}
+			auto oj = (*j.ability_cfg).optional_child("overwrite");
+			double r = 0;
+			if(oj && !oj["priority"].empty()){
+				r = oj["priority"].to_double(0);
+			}
+			return l > r;
+		});
+		utils::erase_if(overwriters, [&](const unit_ability& i) {
+			return (overwrite_special_checking(overwriters, *i.ability_cfg, tag_name));
+		});
 	}
 	return overwriters;
 }
