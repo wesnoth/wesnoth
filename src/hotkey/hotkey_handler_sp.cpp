@@ -98,8 +98,8 @@ void playsingle_controller::hotkey_handler::kill_unit(){
 	menu_handler_.kill_unit(mouse_handler_);
 }
 
-void playsingle_controller::hotkey_handler::teleport_unit(){
-	menu_handler_.teleport_unit(mouse_handler_);
+void playsingle_controller::hotkey_handler::select_teleport(){
+	mouse_handler_.select_teleport();
 }
 
 void playsingle_controller::hotkey_handler::label_terrain(bool team_only){

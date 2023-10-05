@@ -82,7 +82,7 @@ public:
 	void create_unit(mouse_handler& mousehandler);
 	void change_side(mouse_handler& mousehandler);
 	void kill_unit(mouse_handler& mousehandler);
-	void teleport_unit(mouse_handler& mousehandler);
+	void select_teleport(mouse_handler& mousehandler);
 	void label_terrain(mouse_handler& mousehandler, bool team_only);
 	void clear_labels();
 	void label_settings();

@@ -810,7 +810,7 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 	synced_context::run_and_throw("debug_kill", config {"x", loc.wml_x(), "y", loc.wml_y()});
 }
 
-void menu_handler::teleport_unit(mouse_handler& mousehandler)
+void menu_handler::select_teleport(mouse_handler& mousehandler)
 {
 	const map_location loc = mousehandler.get_last_hex();
 	synced_context::run_and_throw("debug_teleport", config {"x", loc.wml_x(), "y", loc.wml_y()});
